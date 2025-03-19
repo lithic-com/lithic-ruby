@@ -1,0 +1,14 @@
+module Lithic
+  module Models
+    type tokenization_unpause_params = {  } & Lithic::request_parameters
+
+    class TokenizationUnpauseParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      def initialize: (?request_options: Lithic::request_opts) -> void
+
+      def to_hash: -> Lithic::Models::tokenization_unpause_params
+    end
+  end
+end

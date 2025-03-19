@@ -1,0 +1,11 @@
+module Lithic
+  module Resources
+    class ThreeDS
+      attr_reader authentication: Lithic::Resources::ThreeDS::Authentication
+
+      attr_reader decisioning: Lithic::Resources::ThreeDS::Decisioning
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

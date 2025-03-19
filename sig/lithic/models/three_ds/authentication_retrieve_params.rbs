@@ -1,0 +1,16 @@
+module Lithic
+  module Models
+    module ThreeDS
+      type authentication_retrieve_params = {  } & Lithic::request_parameters
+
+      class AuthenticationRetrieveParams < Lithic::BaseModel
+        extend Lithic::RequestParameters::Converter
+        include Lithic::RequestParameters
+
+        def initialize: (?request_options: Lithic::request_opts) -> void
+
+        def to_hash: -> Lithic::Models::ThreeDS::authentication_retrieve_params
+      end
+    end
+  end
+end

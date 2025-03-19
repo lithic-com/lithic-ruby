@@ -1,0 +1,49 @@
+module Lithic
+  module Models
+    type dispute_list_evidences_params =
+      {
+        begin_: Time,
+        end_: Time,
+        ending_before: String,
+        page_size: Integer,
+        starting_after: String
+      }
+      & Lithic::request_parameters
+
+    class DisputeListEvidencesParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader begin_: Time?
+
+      def begin_=: (Time) -> Time
+
+      attr_reader end_: Time?
+
+      def end_=: (Time) -> Time
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      def initialize: (
+        ?begin_: Time,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::dispute_list_evidences_params
+    end
+  end
+end

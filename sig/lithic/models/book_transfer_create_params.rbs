@@ -1,0 +1,147 @@
+module Lithic
+  module Models
+    type book_transfer_create_params =
+      {
+        amount: Integer,
+        category: Lithic::Models::BookTransferCreateParams::category,
+        from_financial_account_token: String,
+        subtype: String,
+        to_financial_account_token: String,
+        type: Lithic::Models::BookTransferCreateParams::type_,
+        token: String,
+        memo: String
+      }
+      & Lithic::request_parameters
+
+    class BookTransferCreateParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor amount: Integer
+
+      attr_accessor category: Lithic::Models::BookTransferCreateParams::category
+
+      attr_accessor from_financial_account_token: String
+
+      attr_accessor subtype: String
+
+      attr_accessor to_financial_account_token: String
+
+      attr_accessor type: Lithic::Models::BookTransferCreateParams::type_
+
+      attr_reader token: String?
+
+      def token=: (String) -> String
+
+      attr_reader memo: String?
+
+      def memo=: (String) -> String
+
+      def initialize: (
+        amount: Integer,
+        category: Lithic::Models::BookTransferCreateParams::category,
+        from_financial_account_token: String,
+        subtype: String,
+        to_financial_account_token: String,
+        type: Lithic::Models::BookTransferCreateParams::type_,
+        ?token: String,
+        ?memo: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::book_transfer_create_params
+
+      type category =
+        :ADJUSTMENT
+        | :BALANCE_OR_FUNDING
+        | :DERECOGNITION
+        | :DISPUTE
+        | :FEE
+        | :REWARD
+        | :TRANSFER
+
+      class Category < Lithic::Enum
+        ADJUSTMENT: :ADJUSTMENT
+        BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
+        DERECOGNITION: :DERECOGNITION
+        DISPUTE: :DISPUTE
+        FEE: :FEE
+        REWARD: :REWARD
+        TRANSFER: :TRANSFER
+
+        def self.values: -> ::Array[Lithic::Models::BookTransferCreateParams::category]
+      end
+
+      type type_ =
+        :ATM_WITHDRAWAL
+        | :ATM_DECLINE
+        | :INTERNATIONAL_ATM_WITHDRAWAL
+        | :INACTIVITY
+        | :STATEMENT
+        | :MONTHLY
+        | :QUARTERLY
+        | :ANNUAL
+        | :CUSTOMER_SERVICE
+        | :ACCOUNT_MAINTENANCE
+        | :ACCOUNT_ACTIVATION
+        | :ACCOUNT_CLOSURE
+        | :CARD_REPLACEMENT
+        | :CARD_DELIVERY
+        | :CARD_CREATE
+        | :CURRENCY_CONVERSION
+        | :INTEREST
+        | :LATE_PAYMENT
+        | :BILL_PAYMENT
+        | :CASH_BACK
+        | :ACCOUNT_TO_ACCOUNT
+        | :CARD_TO_CARD
+        | :DISBURSE
+        | :BILLING_ERROR
+        | :LOSS_WRITE_OFF
+        | :EXPIRED_CARD
+        | :EARLY_DERECOGNITION
+        | :ESCHEATMENT
+        | :INACTIVITY_FEE_DOWN
+        | :PROVISIONAL_CREDIT
+        | :DISPUTE_WON
+        | :TRANSFER
+
+      class Type < Lithic::Enum
+        ATM_WITHDRAWAL: :ATM_WITHDRAWAL
+        ATM_DECLINE: :ATM_DECLINE
+        INTERNATIONAL_ATM_WITHDRAWAL: :INTERNATIONAL_ATM_WITHDRAWAL
+        INACTIVITY: :INACTIVITY
+        STATEMENT: :STATEMENT
+        MONTHLY: :MONTHLY
+        QUARTERLY: :QUARTERLY
+        ANNUAL: :ANNUAL
+        CUSTOMER_SERVICE: :CUSTOMER_SERVICE
+        ACCOUNT_MAINTENANCE: :ACCOUNT_MAINTENANCE
+        ACCOUNT_ACTIVATION: :ACCOUNT_ACTIVATION
+        ACCOUNT_CLOSURE: :ACCOUNT_CLOSURE
+        CARD_REPLACEMENT: :CARD_REPLACEMENT
+        CARD_DELIVERY: :CARD_DELIVERY
+        CARD_CREATE: :CARD_CREATE
+        CURRENCY_CONVERSION: :CURRENCY_CONVERSION
+        INTEREST: :INTEREST
+        LATE_PAYMENT: :LATE_PAYMENT
+        BILL_PAYMENT: :BILL_PAYMENT
+        CASH_BACK: :CASH_BACK
+        ACCOUNT_TO_ACCOUNT: :ACCOUNT_TO_ACCOUNT
+        CARD_TO_CARD: :CARD_TO_CARD
+        DISBURSE: :DISBURSE
+        BILLING_ERROR: :BILLING_ERROR
+        LOSS_WRITE_OFF: :LOSS_WRITE_OFF
+        EXPIRED_CARD: :EXPIRED_CARD
+        EARLY_DERECOGNITION: :EARLY_DERECOGNITION
+        ESCHEATMENT: :ESCHEATMENT
+        INACTIVITY_FEE_DOWN: :INACTIVITY_FEE_DOWN
+        PROVISIONAL_CREDIT: :PROVISIONAL_CREDIT
+        DISPUTE_WON: :DISPUTE_WON
+        TRANSFER: :TRANSFER
+
+        def self.values: -> ::Array[Lithic::Models::BookTransferCreateParams::type_]
+      end
+    end
+  end
+end

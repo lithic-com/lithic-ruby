@@ -1,0 +1,122 @@
+module Lithic
+  module Models
+    type account_holder_create_response =
+      {
+        token: String,
+        account_token: String,
+        status: Lithic::Models::AccountHolderCreateResponse::status,
+        status_reasons: ::Array[Lithic::Models::AccountHolderCreateResponse::status_reason],
+        created: Time,
+        external_id: String,
+        required_documents: ::Array[Lithic::Models::RequiredDocument]
+      }
+
+    class AccountHolderCreateResponse < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor account_token: String
+
+      attr_accessor status: Lithic::Models::AccountHolderCreateResponse::status
+
+      attr_accessor status_reasons: ::Array[Lithic::Models::AccountHolderCreateResponse::status_reason]
+
+      attr_reader created: Time?
+
+      def created=: (Time) -> Time
+
+      attr_reader external_id: String?
+
+      def external_id=: (String) -> String
+
+      attr_reader required_documents: ::Array[Lithic::Models::RequiredDocument]?
+
+      def required_documents=: (
+        ::Array[Lithic::Models::RequiredDocument]
+      ) -> ::Array[Lithic::Models::RequiredDocument]
+
+      def initialize: (
+        token: String,
+        account_token: String,
+        status: Lithic::Models::AccountHolderCreateResponse::status,
+        status_reasons: ::Array[Lithic::Models::AccountHolderCreateResponse::status_reason],
+        ?created: Time,
+        ?external_id: String,
+        ?required_documents: ::Array[Lithic::Models::RequiredDocument]
+      ) -> void
+
+      def to_hash: -> Lithic::Models::account_holder_create_response
+
+      type status =
+        :ACCEPTED
+        | :PENDING_REVIEW
+        | :PENDING_DOCUMENT
+        | :PENDING_RESUBMIT
+        | :REJECTED
+
+      class Status < Lithic::Enum
+        ACCEPTED: :ACCEPTED
+        PENDING_REVIEW: :PENDING_REVIEW
+        PENDING_DOCUMENT: :PENDING_DOCUMENT
+        PENDING_RESUBMIT: :PENDING_RESUBMIT
+        REJECTED: :REJECTED
+
+        def self.values: -> ::Array[Lithic::Models::AccountHolderCreateResponse::status]
+      end
+
+      type status_reason =
+        :ADDRESS_VERIFICATION_FAILURE
+        | :AGE_THRESHOLD_FAILURE
+        | :COMPLETE_VERIFICATION_FAILURE
+        | :DOB_VERIFICATION_FAILURE
+        | :ID_VERIFICATION_FAILURE
+        | :MAX_DOCUMENT_ATTEMPTS
+        | :MAX_RESUBMISSION_ATTEMPTS
+        | :NAME_VERIFICATION_FAILURE
+        | :OTHER_VERIFICATION_FAILURE
+        | :RISK_THRESHOLD_FAILURE
+        | :WATCHLIST_ALERT_FAILURE
+        | :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE
+        | :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE
+        | :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE
+        | :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED
+        | :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE
+        | :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED
+        | :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE
+        | :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE
+        | :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE
+        | :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE
+        | :CONTROL_PERSON_ID_VERIFICATION_FAILURE
+        | :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
+        | :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
+
+      class StatusReason < Lithic::Enum
+        ADDRESS_VERIFICATION_FAILURE: :ADDRESS_VERIFICATION_FAILURE
+        AGE_THRESHOLD_FAILURE: :AGE_THRESHOLD_FAILURE
+        COMPLETE_VERIFICATION_FAILURE: :COMPLETE_VERIFICATION_FAILURE
+        DOB_VERIFICATION_FAILURE: :DOB_VERIFICATION_FAILURE
+        ID_VERIFICATION_FAILURE: :ID_VERIFICATION_FAILURE
+        MAX_DOCUMENT_ATTEMPTS: :MAX_DOCUMENT_ATTEMPTS
+        MAX_RESUBMISSION_ATTEMPTS: :MAX_RESUBMISSION_ATTEMPTS
+        NAME_VERIFICATION_FAILURE: :NAME_VERIFICATION_FAILURE
+        OTHER_VERIFICATION_FAILURE: :OTHER_VERIFICATION_FAILURE
+        RISK_THRESHOLD_FAILURE: :RISK_THRESHOLD_FAILURE
+        WATCHLIST_ALERT_FAILURE: :WATCHLIST_ALERT_FAILURE
+        PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE: :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE
+        PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE: :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE
+        PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE: :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE
+        PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED: :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED
+        PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE: :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE
+        PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED: :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED
+        PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE: :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE
+        PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE: :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE
+        PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE: :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE
+        CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE: :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE
+        CONTROL_PERSON_ID_VERIFICATION_FAILURE: :CONTROL_PERSON_ID_VERIFICATION_FAILURE
+        CONTROL_PERSON_DOB_VERIFICATION_FAILURE: :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
+        CONTROL_PERSON_NAME_VERIFICATION_FAILURE: :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
+
+        def self.values: -> ::Array[Lithic::Models::AccountHolderCreateResponse::status_reason]
+      end
+    end
+  end
+end

@@ -1,0 +1,23 @@
+module Lithic
+  module Resources
+    class FinancialAccounts
+      class CreditConfiguration
+        def retrieve: (
+          String financial_account_token,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig
+
+        def update: (
+          String financial_account_token,
+          ?credit_limit: Integer,
+          ?credit_product_token: String,
+          ?external_bank_account_token: String,
+          ?tier: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

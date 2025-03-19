@@ -1,0 +1,104 @@
+module Lithic
+  module Models
+    type payment_create_params =
+      {
+        amount: Integer,
+        external_bank_account_token: String,
+        financial_account_token: String,
+        method_: Lithic::Models::PaymentCreateParams::method_,
+        method_attributes: Lithic::Models::PaymentCreateParams::MethodAttributes,
+        type: Lithic::Models::PaymentCreateParams::type_,
+        token: String,
+        memo: String,
+        user_defined_id: String
+      }
+      & Lithic::request_parameters
+
+    class PaymentCreateParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor amount: Integer
+
+      attr_accessor external_bank_account_token: String
+
+      attr_accessor financial_account_token: String
+
+      attr_accessor method_: Lithic::Models::PaymentCreateParams::method_
+
+      attr_accessor method_attributes: Lithic::Models::PaymentCreateParams::MethodAttributes
+
+      attr_accessor type: Lithic::Models::PaymentCreateParams::type_
+
+      attr_reader token: String?
+
+      def token=: (String) -> String
+
+      attr_reader memo: String?
+
+      def memo=: (String) -> String
+
+      attr_reader user_defined_id: String?
+
+      def user_defined_id=: (String) -> String
+
+      def initialize: (
+        amount: Integer,
+        external_bank_account_token: String,
+        financial_account_token: String,
+        method_: Lithic::Models::PaymentCreateParams::method_,
+        method_attributes: Lithic::Models::PaymentCreateParams::MethodAttributes,
+        type: Lithic::Models::PaymentCreateParams::type_,
+        ?token: String,
+        ?memo: String,
+        ?user_defined_id: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::payment_create_params
+
+      type method_ = :ACH_NEXT_DAY | :ACH_SAME_DAY
+
+      class Method < Lithic::Enum
+        ACH_NEXT_DAY: :ACH_NEXT_DAY
+        ACH_SAME_DAY: :ACH_SAME_DAY
+
+        def self.values: -> ::Array[Lithic::Models::PaymentCreateParams::method_]
+      end
+
+      type method_attributes =
+        {
+          sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code
+        }
+
+      class MethodAttributes < Lithic::BaseModel
+        attr_accessor sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code
+
+        def initialize: (
+          sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code
+        ) -> void
+
+        def to_hash: -> Lithic::Models::PaymentCreateParams::method_attributes
+
+        type sec_code = :CCD | :PPD | :WEB
+
+        class SecCode < Lithic::Enum
+          CCD: :CCD
+          PPD: :PPD
+          WEB: :WEB
+
+          def self.values: -> ::Array[Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code]
+        end
+      end
+
+      type type_ = :COLLECTION | :PAYMENT
+
+      class Type < Lithic::Enum
+        COLLECTION: :COLLECTION
+        PAYMENT: :PAYMENT
+
+        def self.values: -> ::Array[Lithic::Models::PaymentCreateParams::type_]
+      end
+    end
+  end
+end

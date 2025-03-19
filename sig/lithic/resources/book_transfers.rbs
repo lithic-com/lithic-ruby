@@ -1,0 +1,45 @@
+module Lithic
+  module Resources
+    class BookTransfers
+      def create: (
+        amount: Integer,
+        category: Lithic::Models::BookTransferCreateParams::category,
+        from_financial_account_token: String,
+        subtype: String,
+        to_financial_account_token: String,
+        type: Lithic::Models::BookTransferCreateParams::type_,
+        ?token: String,
+        ?memo: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::BookTransferResponse
+
+      def retrieve: (
+        String book_transfer_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::BookTransferResponse
+
+      def list: (
+        ?account_token: String,
+        ?begin_: Time,
+        ?business_account_token: String,
+        ?category: Lithic::Models::BookTransferListParams::category,
+        ?end_: Time,
+        ?ending_before: String,
+        ?financial_account_token: String,
+        ?page_size: Integer,
+        ?result: Lithic::Models::BookTransferListParams::result,
+        ?starting_after: String,
+        ?status: Lithic::Models::BookTransferListParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CursorPage[Lithic::Models::BookTransferResponse]
+
+      def reverse: (
+        String book_transfer_token,
+        ?memo: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::BookTransferResponse
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

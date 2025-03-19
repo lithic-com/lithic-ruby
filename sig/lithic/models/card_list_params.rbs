@@ -1,0 +1,76 @@
+module Lithic
+  module Models
+    type card_list_params =
+      {
+        account_token: String,
+        begin_: Time,
+        end_: Time,
+        ending_before: String,
+        page_size: Integer,
+        starting_after: String,
+        state: Lithic::Models::CardListParams::state
+      }
+      & Lithic::request_parameters
+
+    class CardListParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader account_token: String?
+
+      def account_token=: (String) -> String
+
+      attr_reader begin_: Time?
+
+      def begin_=: (Time) -> Time
+
+      attr_reader end_: Time?
+
+      def end_=: (Time) -> Time
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      attr_reader state: Lithic::Models::CardListParams::state?
+
+      def state=: (
+        Lithic::Models::CardListParams::state
+      ) -> Lithic::Models::CardListParams::state
+
+      def initialize: (
+        ?account_token: String,
+        ?begin_: Time,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?state: Lithic::Models::CardListParams::state,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::card_list_params
+
+      type state =
+        :CLOSED | :OPEN | :PAUSED | :PENDING_ACTIVATION | :PENDING_FULFILLMENT
+
+      class State < Lithic::Enum
+        CLOSED: :CLOSED
+        OPEN: :OPEN
+        PAUSED: :PAUSED
+        PENDING_ACTIVATION: :PENDING_ACTIVATION
+        PENDING_FULFILLMENT: :PENDING_FULFILLMENT
+
+        def self.values: -> ::Array[Lithic::Models::CardListParams::state]
+      end
+    end
+  end
+end

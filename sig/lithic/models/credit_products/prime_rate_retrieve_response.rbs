@@ -1,0 +1,36 @@
+module Lithic
+  module Models
+    module CreditProducts
+      type prime_rate_retrieve_response =
+        {
+          data: ::Array[Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data],
+          has_more: bool
+        }
+
+      class PrimeRateRetrieveResponse < Lithic::BaseModel
+        attr_accessor data: ::Array[Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data]
+
+        attr_accessor has_more: bool
+
+        def initialize: (
+          data: ::Array[Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data],
+          has_more: bool
+        ) -> void
+
+        def to_hash: -> Lithic::Models::CreditProducts::prime_rate_retrieve_response
+
+        type data = { effective_date: Date, rate: String }
+
+        class Data < Lithic::BaseModel
+          attr_accessor effective_date: Date
+
+          attr_accessor rate: String
+
+          def initialize: (effective_date: Date, rate: String) -> void
+
+          def to_hash: -> Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::data
+        end
+      end
+    end
+  end
+end

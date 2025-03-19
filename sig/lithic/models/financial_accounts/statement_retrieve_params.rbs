@@ -1,0 +1,22 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type statement_retrieve_params =
+        { financial_account_token: String } & Lithic::request_parameters
+
+      class StatementRetrieveParams < Lithic::BaseModel
+        extend Lithic::RequestParameters::Converter
+        include Lithic::RequestParameters
+
+        attr_accessor financial_account_token: String
+
+        def initialize: (
+          financial_account_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> Lithic::Models::FinancialAccounts::statement_retrieve_params
+      end
+    end
+  end
+end

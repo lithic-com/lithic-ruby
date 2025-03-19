@@ -1,0 +1,22 @@
+module Lithic
+  module Models
+    type external_bank_account_retry_micro_deposits_params =
+      { financial_account_token: String } & Lithic::request_parameters
+
+    class ExternalBankAccountRetryMicroDepositsParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader financial_account_token: String?
+
+      def financial_account_token=: (String) -> String
+
+      def initialize: (
+        ?financial_account_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::external_bank_account_retry_micro_deposits_params
+    end
+  end
+end

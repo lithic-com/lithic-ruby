@@ -1,0 +1,30 @@
+module Lithic
+  module Models
+    module Cards
+      type balance_list_params =
+        { balance_date: Time, last_transaction_event_token: String }
+        & Lithic::request_parameters
+
+      class BalanceListParams < Lithic::BaseModel
+        extend Lithic::RequestParameters::Converter
+        include Lithic::RequestParameters
+
+        attr_reader balance_date: Time?
+
+        def balance_date=: (Time) -> Time
+
+        attr_reader last_transaction_event_token: String?
+
+        def last_transaction_event_token=: (String) -> String
+
+        def initialize: (
+          ?balance_date: Time,
+          ?last_transaction_event_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Cards::balance_list_params
+      end
+    end
+  end
+end

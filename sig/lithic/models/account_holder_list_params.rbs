@@ -1,0 +1,85 @@
+module Lithic
+  module Models
+    type account_holder_list_params =
+      {
+        begin_: Time,
+        email: String,
+        end_: Time,
+        ending_before: String,
+        external_id: String,
+        first_name: String,
+        last_name: String,
+        legal_business_name: String,
+        limit: Integer,
+        phone_number: String,
+        starting_after: String
+      }
+      & Lithic::request_parameters
+
+    class AccountHolderListParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader begin_: Time?
+
+      def begin_=: (Time) -> Time
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      attr_reader end_: Time?
+
+      def end_=: (Time) -> Time
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader external_id: String?
+
+      def external_id=: (String) -> String
+
+      attr_reader first_name: String?
+
+      def first_name=: (String) -> String
+
+      attr_reader last_name: String?
+
+      def last_name=: (String) -> String
+
+      attr_reader legal_business_name: String?
+
+      def legal_business_name=: (String) -> String
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> Integer
+
+      attr_reader phone_number: String?
+
+      def phone_number=: (String) -> String
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      def initialize: (
+        ?begin_: Time,
+        ?email: String,
+        ?end_: Time,
+        ?ending_before: String,
+        ?external_id: String,
+        ?first_name: String,
+        ?last_name: String,
+        ?legal_business_name: String,
+        ?limit: Integer,
+        ?phone_number: String,
+        ?starting_after: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::account_holder_list_params
+    end
+  end
+end

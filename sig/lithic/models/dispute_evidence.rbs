@@ -1,0 +1,60 @@
+module Lithic
+  module Models
+    type dispute_evidence =
+      {
+        token: String,
+        created: Time,
+        dispute_token: String,
+        upload_status: Lithic::Models::DisputeEvidence::upload_status,
+        download_url: String,
+        filename: String,
+        upload_url: String
+      }
+
+    class DisputeEvidence < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor created: Time
+
+      attr_accessor dispute_token: String
+
+      attr_accessor upload_status: Lithic::Models::DisputeEvidence::upload_status
+
+      attr_reader download_url: String?
+
+      def download_url=: (String) -> String
+
+      attr_reader filename: String?
+
+      def filename=: (String) -> String
+
+      attr_reader upload_url: String?
+
+      def upload_url=: (String) -> String
+
+      def initialize: (
+        token: String,
+        created: Time,
+        dispute_token: String,
+        upload_status: Lithic::Models::DisputeEvidence::upload_status,
+        ?download_url: String,
+        ?filename: String,
+        ?upload_url: String
+      ) -> void
+
+      def to_hash: -> Lithic::Models::dispute_evidence
+
+      type upload_status = :DELETED | :ERROR | :PENDING | :REJECTED | :UPLOADED
+
+      class UploadStatus < Lithic::Enum
+        DELETED: :DELETED
+        ERROR: :ERROR
+        PENDING: :PENDING
+        REJECTED: :REJECTED
+        UPLOADED: :UPLOADED
+
+        def self.values: -> ::Array[Lithic::Models::DisputeEvidence::upload_status]
+      end
+    end
+  end
+end

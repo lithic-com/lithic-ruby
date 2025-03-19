@@ -1,0 +1,108 @@
+module Lithic
+  module Models
+    type account_spend_limits =
+      {
+        available_spend_limit: Lithic::Models::AccountSpendLimits::AvailableSpendLimit,
+        spend_limit: Lithic::Models::AccountSpendLimits::SpendLimit,
+        spend_velocity: Lithic::Models::AccountSpendLimits::SpendVelocity
+      }
+
+    class AccountSpendLimits < Lithic::BaseModel
+      attr_accessor available_spend_limit: Lithic::Models::AccountSpendLimits::AvailableSpendLimit
+
+      attr_reader spend_limit: Lithic::Models::AccountSpendLimits::SpendLimit?
+
+      def spend_limit=: (
+        Lithic::Models::AccountSpendLimits::SpendLimit
+      ) -> Lithic::Models::AccountSpendLimits::SpendLimit
+
+      attr_reader spend_velocity: Lithic::Models::AccountSpendLimits::SpendVelocity?
+
+      def spend_velocity=: (
+        Lithic::Models::AccountSpendLimits::SpendVelocity
+      ) -> Lithic::Models::AccountSpendLimits::SpendVelocity
+
+      def initialize: (
+        available_spend_limit: Lithic::Models::AccountSpendLimits::AvailableSpendLimit,
+        ?spend_limit: Lithic::Models::AccountSpendLimits::SpendLimit,
+        ?spend_velocity: Lithic::Models::AccountSpendLimits::SpendVelocity
+      ) -> void
+
+      def to_hash: -> Lithic::Models::account_spend_limits
+
+      type available_spend_limit =
+        { daily: Integer, lifetime: Integer, monthly: Integer }
+
+      class AvailableSpendLimit < Lithic::BaseModel
+        attr_reader daily: Integer?
+
+        def daily=: (Integer) -> Integer
+
+        attr_reader lifetime: Integer?
+
+        def lifetime=: (Integer) -> Integer
+
+        attr_reader monthly: Integer?
+
+        def monthly=: (Integer) -> Integer
+
+        def initialize: (
+          ?daily: Integer,
+          ?lifetime: Integer,
+          ?monthly: Integer
+        ) -> void
+
+        def to_hash: -> Lithic::Models::AccountSpendLimits::available_spend_limit
+      end
+
+      type spend_limit = { daily: Integer, lifetime: Integer, monthly: Integer }
+
+      class SpendLimit < Lithic::BaseModel
+        attr_reader daily: Integer?
+
+        def daily=: (Integer) -> Integer
+
+        attr_reader lifetime: Integer?
+
+        def lifetime=: (Integer) -> Integer
+
+        attr_reader monthly: Integer?
+
+        def monthly=: (Integer) -> Integer
+
+        def initialize: (
+          ?daily: Integer,
+          ?lifetime: Integer,
+          ?monthly: Integer
+        ) -> void
+
+        def to_hash: -> Lithic::Models::AccountSpendLimits::spend_limit
+      end
+
+      type spend_velocity =
+        { daily: Integer, lifetime: Integer, monthly: Integer }
+
+      class SpendVelocity < Lithic::BaseModel
+        attr_reader daily: Integer?
+
+        def daily=: (Integer) -> Integer
+
+        attr_reader lifetime: Integer?
+
+        def lifetime=: (Integer) -> Integer
+
+        attr_reader monthly: Integer?
+
+        def monthly=: (Integer) -> Integer
+
+        def initialize: (
+          ?daily: Integer,
+          ?lifetime: Integer,
+          ?monthly: Integer
+        ) -> void
+
+        def to_hash: -> Lithic::Models::AccountSpendLimits::spend_velocity
+      end
+    end
+  end
+end

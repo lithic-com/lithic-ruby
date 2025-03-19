@@ -1,0 +1,53 @@
+module Lithic
+  module Models
+    type digital_card_art_api =
+      {
+        token: String,
+        card_program_token: String,
+        created: Time,
+        description: String,
+        is_enabled: bool,
+        network: Lithic::Models::DigitalCardArtAPI::network,
+        is_card_program_default: bool
+      }
+
+    class DigitalCardArtAPI < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor card_program_token: String
+
+      attr_accessor created: Time
+
+      attr_accessor description: String
+
+      attr_accessor is_enabled: bool
+
+      attr_accessor network: Lithic::Models::DigitalCardArtAPI::network
+
+      attr_reader is_card_program_default: bool?
+
+      def is_card_program_default=: (bool) -> bool
+
+      def initialize: (
+        token: String,
+        card_program_token: String,
+        created: Time,
+        description: String,
+        is_enabled: bool,
+        network: Lithic::Models::DigitalCardArtAPI::network,
+        ?is_card_program_default: bool
+      ) -> void
+
+      def to_hash: -> Lithic::Models::digital_card_art_api
+
+      type network = :MASTERCARD | :VISA
+
+      class Network < Lithic::Enum
+        MASTERCARD: :MASTERCARD
+        VISA: :VISA
+
+        def self.values: -> ::Array[Lithic::Models::DigitalCardArtAPI::network]
+      end
+    end
+  end
+end

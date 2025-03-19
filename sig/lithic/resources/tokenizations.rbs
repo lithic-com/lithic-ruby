@@ -1,0 +1,68 @@
+module Lithic
+  module Resources
+    class Tokenizations
+      def retrieve: (
+        String tokenization_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::TokenizationRetrieveResponse
+
+      def list: (
+        ?account_token: String,
+        ?begin_: Date,
+        ?card_token: String,
+        ?end_: Date,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?tokenization_channel: Lithic::Models::TokenizationListParams::tokenization_channel,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CursorPage[Lithic::Models::Tokenization]
+
+      def activate: (
+        String tokenization_token,
+        ?request_options: Lithic::request_opts
+      ) -> nil
+
+      def deactivate: (
+        String tokenization_token,
+        ?request_options: Lithic::request_opts
+      ) -> nil
+
+      def pause: (
+        String tokenization_token,
+        ?request_options: Lithic::request_opts
+      ) -> nil
+
+      def resend_activation_code: (
+        String tokenization_token,
+        ?activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::activation_method_type,
+        ?request_options: Lithic::request_opts
+      ) -> nil
+
+      def simulate: (
+        cvv: String,
+        expiration_date: String,
+        pan: String,
+        tokenization_source: Lithic::Models::TokenizationSimulateParams::tokenization_source,
+        ?account_score: Integer,
+        ?device_score: Integer,
+        ?entity: String,
+        ?wallet_recommended_decision: Lithic::Models::TokenizationSimulateParams::wallet_recommended_decision,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::TokenizationSimulateResponse
+
+      def unpause: (
+        String tokenization_token,
+        ?request_options: Lithic::request_opts
+      ) -> nil
+
+      def update_digital_card_art: (
+        String tokenization_token,
+        ?digital_card_art_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::TokenizationUpdateDigitalCardArtResponse
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,44 @@
+module Lithic
+  module Models
+    type responder_endpoint_create_params =
+      {
+        type: Lithic::Models::ResponderEndpointCreateParams::type_,
+        url: String
+      }
+      & Lithic::request_parameters
+
+    class ResponderEndpointCreateParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader type: Lithic::Models::ResponderEndpointCreateParams::type_?
+
+      def type=: (
+        Lithic::Models::ResponderEndpointCreateParams::type_
+      ) -> Lithic::Models::ResponderEndpointCreateParams::type_
+
+      attr_reader url: String?
+
+      def url=: (String) -> String
+
+      def initialize: (
+        ?type: Lithic::Models::ResponderEndpointCreateParams::type_,
+        ?url: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::responder_endpoint_create_params
+
+      type type_ =
+        :AUTH_STREAM_ACCESS | :THREE_DS_DECISIONING | :TOKENIZATION_DECISIONING
+
+      class Type < Lithic::Enum
+        AUTH_STREAM_ACCESS: :AUTH_STREAM_ACCESS
+        THREE_DS_DECISIONING: :THREE_DS_DECISIONING
+        TOKENIZATION_DECISIONING: :TOKENIZATION_DECISIONING
+
+        def self.values: -> ::Array[Lithic::Models::ResponderEndpointCreateParams::type_]
+      end
+    end
+  end
+end

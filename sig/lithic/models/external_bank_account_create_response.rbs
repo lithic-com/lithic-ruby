@@ -1,0 +1,173 @@
+module Lithic
+  module Models
+    type external_bank_account_create_response =
+      {
+        token: String,
+        country: String,
+        created: Time,
+        currency: String,
+        last_four: String,
+        owner: String,
+        owner_type: Lithic::Models::ExternalBankAccountCreateResponse::owner_type,
+        routing_number: String,
+        state: Lithic::Models::ExternalBankAccountCreateResponse::state,
+        type: Lithic::Models::ExternalBankAccountCreateResponse::type_,
+        verification_attempts: Integer,
+        verification_method: Lithic::Models::ExternalBankAccountCreateResponse::verification_method,
+        verification_state: Lithic::Models::ExternalBankAccountCreateResponse::verification_state,
+        account_token: String,
+        address: Lithic::Models::ExternalBankAccountAddress,
+        company_id: String,
+        dob: Date,
+        doing_business_as: String,
+        financial_account_token: String,
+        name: String,
+        user_defined_id: String,
+        verification_failed_reason: String
+      }
+
+    class ExternalBankAccountCreateResponse < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor country: String
+
+      attr_accessor created: Time
+
+      attr_accessor currency: String
+
+      attr_accessor last_four: String
+
+      attr_accessor owner: String
+
+      attr_accessor owner_type: Lithic::Models::ExternalBankAccountCreateResponse::owner_type
+
+      attr_accessor routing_number: String
+
+      attr_accessor state: Lithic::Models::ExternalBankAccountCreateResponse::state
+
+      attr_accessor type: Lithic::Models::ExternalBankAccountCreateResponse::type_
+
+      attr_accessor verification_attempts: Integer
+
+      attr_accessor verification_method: Lithic::Models::ExternalBankAccountCreateResponse::verification_method
+
+      attr_accessor verification_state: Lithic::Models::ExternalBankAccountCreateResponse::verification_state
+
+      attr_reader account_token: String?
+
+      def account_token=: (String) -> String
+
+      attr_reader address: Lithic::Models::ExternalBankAccountAddress?
+
+      def address=: (
+        Lithic::Models::ExternalBankAccountAddress
+      ) -> Lithic::Models::ExternalBankAccountAddress
+
+      attr_reader company_id: String?
+
+      def company_id=: (String) -> String
+
+      attr_reader dob: Date?
+
+      def dob=: (Date) -> Date
+
+      attr_reader doing_business_as: String?
+
+      def doing_business_as=: (String) -> String
+
+      attr_reader financial_account_token: String?
+
+      def financial_account_token=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader user_defined_id: String?
+
+      def user_defined_id=: (String) -> String
+
+      attr_reader verification_failed_reason: String?
+
+      def verification_failed_reason=: (String) -> String
+
+      def initialize: (
+        token: String,
+        country: String,
+        created: Time,
+        currency: String,
+        last_four: String,
+        owner: String,
+        owner_type: Lithic::Models::ExternalBankAccountCreateResponse::owner_type,
+        routing_number: String,
+        state: Lithic::Models::ExternalBankAccountCreateResponse::state,
+        type: Lithic::Models::ExternalBankAccountCreateResponse::type_,
+        verification_attempts: Integer,
+        verification_method: Lithic::Models::ExternalBankAccountCreateResponse::verification_method,
+        verification_state: Lithic::Models::ExternalBankAccountCreateResponse::verification_state,
+        ?account_token: String,
+        ?address: Lithic::Models::ExternalBankAccountAddress,
+        ?company_id: String,
+        ?dob: Date,
+        ?doing_business_as: String,
+        ?financial_account_token: String,
+        ?name: String,
+        ?user_defined_id: String,
+        ?verification_failed_reason: String
+      ) -> void
+
+      def to_hash: -> Lithic::Models::external_bank_account_create_response
+
+      type owner_type = :BUSINESS | :INDIVIDUAL
+
+      class OwnerType < Lithic::Enum
+        BUSINESS: :BUSINESS
+        INDIVIDUAL: :INDIVIDUAL
+
+        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateResponse::owner_type]
+      end
+
+      type state = :ENABLED | :CLOSED | :PAUSED
+
+      class State < Lithic::Enum
+        ENABLED: :ENABLED
+        CLOSED: :CLOSED
+        PAUSED: :PAUSED
+
+        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateResponse::state]
+      end
+
+      type type_ = :CHECKING | :SAVINGS
+
+      class Type < Lithic::Enum
+        CHECKING: :CHECKING
+        SAVINGS: :SAVINGS
+
+        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateResponse::type_]
+      end
+
+      type verification_method = :MANUAL | :MICRO_DEPOSIT | :PLAID | :PRENOTE
+
+      class VerificationMethod < Lithic::Enum
+        MANUAL: :MANUAL
+        MICRO_DEPOSIT: :MICRO_DEPOSIT
+        PLAID: :PLAID
+        PRENOTE: :PRENOTE
+
+        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateResponse::verification_method]
+      end
+
+      type verification_state =
+        :PENDING | :ENABLED | :FAILED_VERIFICATION | :INSUFFICIENT_FUNDS
+
+      class VerificationState < Lithic::Enum
+        PENDING: :PENDING
+        ENABLED: :ENABLED
+        FAILED_VERIFICATION: :FAILED_VERIFICATION
+        INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
+
+        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateResponse::verification_state]
+      end
+    end
+  end
+end

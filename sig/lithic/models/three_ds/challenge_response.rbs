@@ -1,0 +1,24 @@
+module Lithic
+  module Models
+    module ThreeDS
+      type challenge_response =
+        {
+          token: String,
+          challenge_response: Lithic::Models::ThreeDS::challenge_result
+        }
+
+      class ChallengeResponse < Lithic::BaseModel
+        attr_accessor token: String
+
+        attr_accessor challenge_response: Lithic::Models::ThreeDS::challenge_result
+
+        def initialize: (
+          token: String,
+          challenge_response: Lithic::Models::ThreeDS::challenge_result
+        ) -> void
+
+        def to_hash: -> Lithic::Models::ThreeDS::challenge_response
+      end
+    end
+  end
+end

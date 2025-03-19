@@ -1,0 +1,76 @@
+module Lithic
+  module Models
+    type settlement_summary_details =
+      {
+        currency: String,
+        disputes_gross_amount: Integer,
+        institution: String,
+        interchange_gross_amount: Integer,
+        network: Lithic::Models::SettlementSummaryDetails::network,
+        other_fees_gross_amount: Integer,
+        settled_net_amount: Integer,
+        transactions_gross_amount: Integer
+      }
+
+    class SettlementSummaryDetails < Lithic::BaseModel
+      attr_reader currency: String?
+
+      def currency=: (String) -> String
+
+      attr_reader disputes_gross_amount: Integer?
+
+      def disputes_gross_amount=: (Integer) -> Integer
+
+      attr_reader institution: String?
+
+      def institution=: (String) -> String
+
+      attr_reader interchange_gross_amount: Integer?
+
+      def interchange_gross_amount=: (Integer) -> Integer
+
+      attr_reader network: Lithic::Models::SettlementSummaryDetails::network?
+
+      def network=: (
+        Lithic::Models::SettlementSummaryDetails::network
+      ) -> Lithic::Models::SettlementSummaryDetails::network
+
+      attr_reader other_fees_gross_amount: Integer?
+
+      def other_fees_gross_amount=: (Integer) -> Integer
+
+      attr_reader settled_net_amount: Integer?
+
+      def settled_net_amount=: (Integer) -> Integer
+
+      attr_reader transactions_gross_amount: Integer?
+
+      def transactions_gross_amount=: (Integer) -> Integer
+
+      def initialize: (
+        ?currency: String,
+        ?disputes_gross_amount: Integer,
+        ?institution: String,
+        ?interchange_gross_amount: Integer,
+        ?network: Lithic::Models::SettlementSummaryDetails::network,
+        ?other_fees_gross_amount: Integer,
+        ?settled_net_amount: Integer,
+        ?transactions_gross_amount: Integer
+      ) -> void
+
+      def to_hash: -> Lithic::Models::settlement_summary_details
+
+      type network = :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
+
+      class Network < Lithic::Enum
+        INTERLINK: :INTERLINK
+        MAESTRO: :MAESTRO
+        MASTERCARD: :MASTERCARD
+        UNKNOWN: :UNKNOWN
+        VISA: :VISA
+
+        def self.values: -> ::Array[Lithic::Models::SettlementSummaryDetails::network]
+      end
+    end
+  end
+end

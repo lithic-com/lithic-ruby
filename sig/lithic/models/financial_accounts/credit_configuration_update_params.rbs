@@ -1,0 +1,45 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type credit_configuration_update_params =
+        {
+          credit_limit: Integer,
+          credit_product_token: String,
+          external_bank_account_token: String,
+          tier: String
+        }
+        & Lithic::request_parameters
+
+      class CreditConfigurationUpdateParams < Lithic::BaseModel
+        extend Lithic::RequestParameters::Converter
+        include Lithic::RequestParameters
+
+        attr_reader credit_limit: Integer?
+
+        def credit_limit=: (Integer) -> Integer
+
+        attr_reader credit_product_token: String?
+
+        def credit_product_token=: (String) -> String
+
+        attr_reader external_bank_account_token: String?
+
+        def external_bank_account_token=: (String) -> String
+
+        attr_reader tier: String?
+
+        def tier=: (String) -> String
+
+        def initialize: (
+          ?credit_limit: Integer,
+          ?credit_product_token: String,
+          ?external_bank_account_token: String,
+          ?tier: String,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> Lithic::Models::FinancialAccounts::credit_configuration_update_params
+      end
+    end
+  end
+end

@@ -1,0 +1,37 @@
+module Lithic
+  module Models
+    type tokenization_resend_activation_code_params =
+      {
+        activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::activation_method_type
+      }
+      & Lithic::request_parameters
+
+    class TokenizationResendActivationCodeParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::activation_method_type?
+
+      def activation_method_type=: (
+        Lithic::Models::TokenizationResendActivationCodeParams::activation_method_type
+      ) -> Lithic::Models::TokenizationResendActivationCodeParams::activation_method_type
+
+      def initialize: (
+        ?activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::activation_method_type,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::tokenization_resend_activation_code_params
+
+      type activation_method_type =
+        :EMAIL_TO_CARDHOLDER_ADDRESS | :TEXT_TO_CARDHOLDER_NUMBER
+
+      class ActivationMethodType < Lithic::Enum
+        EMAIL_TO_CARDHOLDER_ADDRESS: :EMAIL_TO_CARDHOLDER_ADDRESS
+        TEXT_TO_CARDHOLDER_NUMBER: :TEXT_TO_CARDHOLDER_NUMBER
+
+        def self.values: -> ::Array[Lithic::Models::TokenizationResendActivationCodeParams::activation_method_type]
+      end
+    end
+  end
+end

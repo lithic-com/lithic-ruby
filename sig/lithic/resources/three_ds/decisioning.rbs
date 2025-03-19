@@ -1,0 +1,21 @@
+module Lithic
+  module Resources
+    class ThreeDS
+      class Decisioning
+        def challenge_response: (
+          token: String,
+          challenge_response: Lithic::Models::ThreeDS::challenge_result,
+          ?request_options: Lithic::request_opts
+        ) -> nil
+
+        def retrieve_secret: (
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::ThreeDS::DecisioningRetrieveSecretResponse
+
+        def rotate_secret: (?request_options: Lithic::request_opts) -> nil
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

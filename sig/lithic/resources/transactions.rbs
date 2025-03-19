@@ -1,0 +1,88 @@
+module Lithic
+  module Resources
+    class Transactions
+      attr_reader enhanced_commercial_data: Lithic::Resources::Transactions::EnhancedCommercialData
+
+      attr_reader events: Lithic::Resources::Transactions::Events
+
+      def retrieve: (
+        String transaction_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::Transaction
+
+      def list: (
+        ?account_token: String,
+        ?begin_: Time,
+        ?card_token: String,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?result: Lithic::Models::TransactionListParams::result,
+        ?starting_after: String,
+        ?status: Lithic::Models::TransactionListParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CursorPage[Lithic::Models::Transaction]
+
+      def expire_authorization: (
+        String transaction_token,
+        ?request_options: Lithic::request_opts
+      ) -> nil
+
+      def simulate_authorization: (
+        amount: Integer,
+        descriptor: String,
+        pan: String,
+        ?mcc: String,
+        ?merchant_acceptor_id: String,
+        ?merchant_amount: Integer,
+        ?merchant_currency: String,
+        ?partial_approval_capable: bool,
+        ?pin: String,
+        ?status: Lithic::Models::TransactionSimulateAuthorizationParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::TransactionSimulateAuthorizationResponse
+
+      def simulate_authorization_advice: (
+        token: String,
+        amount: Integer,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::TransactionSimulateAuthorizationAdviceResponse
+
+      def simulate_clearing: (
+        token: String,
+        ?amount: Integer,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::TransactionSimulateClearingResponse
+
+      def simulate_credit_authorization: (
+        amount: Integer,
+        descriptor: String,
+        pan: String,
+        ?mcc: String,
+        ?merchant_acceptor_id: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::TransactionSimulateCreditAuthorizationResponse
+
+      def simulate_return: (
+        amount: Integer,
+        descriptor: String,
+        pan: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::TransactionSimulateReturnResponse
+
+      def simulate_return_reversal: (
+        token: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::TransactionSimulateReturnReversalResponse
+
+      def simulate_void: (
+        token: String,
+        ?amount: Integer,
+        ?type: Lithic::Models::TransactionSimulateVoidParams::type_,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::TransactionSimulateVoidResponse
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

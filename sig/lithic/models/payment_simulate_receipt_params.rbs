@@ -1,0 +1,50 @@
+module Lithic
+  module Models
+    type payment_simulate_receipt_params =
+      {
+        token: String,
+        amount: Integer,
+        financial_account_token: String,
+        receipt_type: Lithic::Models::PaymentSimulateReceiptParams::receipt_type,
+        memo: String
+      }
+      & Lithic::request_parameters
+
+    class PaymentSimulateReceiptParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor token: String
+
+      attr_accessor amount: Integer
+
+      attr_accessor financial_account_token: String
+
+      attr_accessor receipt_type: Lithic::Models::PaymentSimulateReceiptParams::receipt_type
+
+      attr_reader memo: String?
+
+      def memo=: (String) -> String
+
+      def initialize: (
+        token: String,
+        amount: Integer,
+        financial_account_token: String,
+        receipt_type: Lithic::Models::PaymentSimulateReceiptParams::receipt_type,
+        ?memo: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::payment_simulate_receipt_params
+
+      type receipt_type = :RECEIPT_CREDIT | :RECEIPT_DEBIT
+
+      class ReceiptType < Lithic::Enum
+        RECEIPT_CREDIT: :RECEIPT_CREDIT
+        RECEIPT_DEBIT: :RECEIPT_DEBIT
+
+        def self.values: -> ::Array[Lithic::Models::PaymentSimulateReceiptParams::receipt_type]
+      end
+    end
+  end
+end

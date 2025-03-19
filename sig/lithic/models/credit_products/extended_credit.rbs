@@ -1,0 +1,15 @@
+module Lithic
+  module Models
+    module CreditProducts
+      type credit_products_extended_credit = { credit_extended: Integer }
+
+      class CreditProductsExtendedCredit < Lithic::BaseModel
+        attr_accessor credit_extended: Integer
+
+        def initialize: (credit_extended: Integer) -> void
+
+        def to_hash: -> Lithic::Models::CreditProducts::credit_products_extended_credit
+      end
+    end
+  end
+end

@@ -1,0 +1,73 @@
+module Lithic
+  module Resources
+    class Payments
+      def create: (
+        amount: Integer,
+        external_bank_account_token: String,
+        financial_account_token: String,
+        method_: Lithic::Models::PaymentCreateParams::method_,
+        method_attributes: Lithic::Models::PaymentCreateParams::MethodAttributes,
+        type: Lithic::Models::PaymentCreateParams::type_,
+        ?token: String,
+        ?memo: String,
+        ?user_defined_id: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::PaymentCreateResponse
+
+      def retrieve: (
+        String payment_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::Payment
+
+      def list: (
+        ?account_token: String,
+        ?begin_: Time,
+        ?business_account_token: String,
+        ?category: Lithic::Models::PaymentListParams::category,
+        ?end_: Time,
+        ?ending_before: String,
+        ?financial_account_token: String,
+        ?page_size: Integer,
+        ?result: Lithic::Models::PaymentListParams::result,
+        ?starting_after: String,
+        ?status: Lithic::Models::PaymentListParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CursorPage[Lithic::Models::Payment]
+
+      def retry_: (
+        String payment_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::PaymentRetryResponse
+
+      def simulate_action: (
+        String payment_token,
+        event_type: Lithic::Models::PaymentSimulateActionParams::event_type,
+        ?decline_reason: Lithic::Models::PaymentSimulateActionParams::decline_reason,
+        ?return_reason_code: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::PaymentSimulateActionResponse
+
+      def simulate_receipt: (
+        token: String,
+        amount: Integer,
+        financial_account_token: String,
+        receipt_type: Lithic::Models::PaymentSimulateReceiptParams::receipt_type,
+        ?memo: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::PaymentSimulateReceiptResponse
+
+      def simulate_release: (
+        payment_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::PaymentSimulateReleaseResponse
+
+      def simulate_return: (
+        payment_token: String,
+        ?return_reason_code: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::PaymentSimulateReturnResponse
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

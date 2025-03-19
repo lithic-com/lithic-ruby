@@ -1,0 +1,58 @@
+module Lithic
+  module Models
+    type settlement_report =
+      {
+        created: Time,
+        currency: String,
+        details: ::Array[Lithic::Models::SettlementSummaryDetails],
+        disputes_gross_amount: Integer,
+        interchange_gross_amount: Integer,
+        is_complete: bool,
+        other_fees_gross_amount: Integer,
+        report_date: String,
+        settled_net_amount: Integer,
+        transactions_gross_amount: Integer,
+        updated: Time
+      }
+
+    class SettlementReport < Lithic::BaseModel
+      attr_accessor created: Time
+
+      attr_accessor currency: String
+
+      attr_accessor details: ::Array[Lithic::Models::SettlementSummaryDetails]
+
+      attr_accessor disputes_gross_amount: Integer
+
+      attr_accessor interchange_gross_amount: Integer
+
+      attr_accessor is_complete: bool
+
+      attr_accessor other_fees_gross_amount: Integer
+
+      attr_accessor report_date: String
+
+      attr_accessor settled_net_amount: Integer
+
+      attr_accessor transactions_gross_amount: Integer
+
+      attr_accessor updated: Time
+
+      def initialize: (
+        created: Time,
+        currency: String,
+        details: ::Array[Lithic::Models::SettlementSummaryDetails],
+        disputes_gross_amount: Integer,
+        interchange_gross_amount: Integer,
+        is_complete: bool,
+        other_fees_gross_amount: Integer,
+        report_date: String,
+        settled_net_amount: Integer,
+        transactions_gross_amount: Integer,
+        updated: Time
+      ) -> void
+
+      def to_hash: -> Lithic::Models::settlement_report
+    end
+  end
+end

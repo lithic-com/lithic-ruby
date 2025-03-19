@@ -1,0 +1,14 @@
+module Lithic
+  module Models
+    type spend_limit_duration = :ANNUALLY | :FOREVER | :MONTHLY | :TRANSACTION
+
+    class SpendLimitDuration < Lithic::Enum
+      ANNUALLY: :ANNUALLY
+      FOREVER: :FOREVER
+      MONTHLY: :MONTHLY
+      TRANSACTION: :TRANSACTION
+
+      def self.values: -> ::Array[Lithic::Models::spend_limit_duration]
+    end
+  end
+end
