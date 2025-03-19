@@ -1,0 +1,28 @@
+module Lithic
+  module Resources
+    class ThreeDS
+      class Authentication
+        def retrieve: (
+          String three_ds_authentication_token,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse
+
+        def simulate: (
+          merchant: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant,
+          pan: String,
+          transaction: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction,
+          ?card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::card_expiry_check,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::ThreeDS::AuthenticationSimulateResponse
+
+        def simulate_otp_entry: (
+          token: String,
+          otp: String,
+          ?request_options: Lithic::request_opts
+        ) -> nil
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,83 @@
+module Lithic
+  module Models
+    type tokenization_simulate_params =
+      {
+        cvv: String,
+        expiration_date: String,
+        pan: String,
+        tokenization_source: Lithic::Models::TokenizationSimulateParams::tokenization_source,
+        account_score: Integer,
+        device_score: Integer,
+        entity: String,
+        wallet_recommended_decision: Lithic::Models::TokenizationSimulateParams::wallet_recommended_decision
+      }
+      & Lithic::request_parameters
+
+    class TokenizationSimulateParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor cvv: String
+
+      attr_accessor expiration_date: String
+
+      attr_accessor pan: String
+
+      attr_accessor tokenization_source: Lithic::Models::TokenizationSimulateParams::tokenization_source
+
+      attr_reader account_score: Integer?
+
+      def account_score=: (Integer) -> Integer
+
+      attr_reader device_score: Integer?
+
+      def device_score=: (Integer) -> Integer
+
+      attr_reader entity: String?
+
+      def entity=: (String) -> String
+
+      attr_reader wallet_recommended_decision: Lithic::Models::TokenizationSimulateParams::wallet_recommended_decision?
+
+      def wallet_recommended_decision=: (
+        Lithic::Models::TokenizationSimulateParams::wallet_recommended_decision
+      ) -> Lithic::Models::TokenizationSimulateParams::wallet_recommended_decision
+
+      def initialize: (
+        cvv: String,
+        expiration_date: String,
+        pan: String,
+        tokenization_source: Lithic::Models::TokenizationSimulateParams::tokenization_source,
+        ?account_score: Integer,
+        ?device_score: Integer,
+        ?entity: String,
+        ?wallet_recommended_decision: Lithic::Models::TokenizationSimulateParams::wallet_recommended_decision,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::tokenization_simulate_params
+
+      type tokenization_source = :APPLE_PAY | :GOOGLE | :SAMSUNG_PAY | :MERCHANT
+
+      class TokenizationSource < Lithic::Enum
+        APPLE_PAY: :APPLE_PAY
+        GOOGLE: :GOOGLE
+        SAMSUNG_PAY: :SAMSUNG_PAY
+        MERCHANT: :MERCHANT
+
+        def self.values: -> ::Array[Lithic::Models::TokenizationSimulateParams::tokenization_source]
+      end
+
+      type wallet_recommended_decision =
+        :APPROVED | :DECLINED | :REQUIRE_ADDITIONAL_AUTHENTICATION
+
+      class WalletRecommendedDecision < Lithic::Enum
+        APPROVED: :APPROVED
+        DECLINED: :DECLINED
+        REQUIRE_ADDITIONAL_AUTHENTICATION: :REQUIRE_ADDITIONAL_AUTHENTICATION
+
+        def self.values: -> ::Array[Lithic::Models::TokenizationSimulateParams::wallet_recommended_decision]
+      end
+    end
+  end
+end

@@ -1,0 +1,46 @@
+module Lithic
+  module Models
+    type external_payment_settle_params =
+      {
+        effective_date: Date,
+        memo: String,
+        progress_to: Lithic::Models::ExternalPaymentSettleParams::progress_to
+      }
+      & Lithic::request_parameters
+
+    class ExternalPaymentSettleParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor effective_date: Date
+
+      attr_reader memo: String?
+
+      def memo=: (String) -> String
+
+      attr_reader progress_to: Lithic::Models::ExternalPaymentSettleParams::progress_to?
+
+      def progress_to=: (
+        Lithic::Models::ExternalPaymentSettleParams::progress_to
+      ) -> Lithic::Models::ExternalPaymentSettleParams::progress_to
+
+      def initialize: (
+        effective_date: Date,
+        ?memo: String,
+        ?progress_to: Lithic::Models::ExternalPaymentSettleParams::progress_to,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::external_payment_settle_params
+
+      type progress_to = :SETTLED | :RELEASED
+
+      class ProgressTo < Lithic::Enum
+        SETTLED: :SETTLED
+        RELEASED: :RELEASED
+
+        def self.values: -> ::Array[Lithic::Models::ExternalPaymentSettleParams::progress_to]
+      end
+    end
+  end
+end

@@ -1,0 +1,15 @@
+module Lithic
+  module Models
+    type api_status = { message: String }
+
+    class APIStatus < Lithic::BaseModel
+      attr_reader message: String?
+
+      def message=: (String) -> String
+
+      def initialize: (?message: String) -> void
+
+      def to_hash: -> Lithic::Models::api_status
+    end
+  end
+end

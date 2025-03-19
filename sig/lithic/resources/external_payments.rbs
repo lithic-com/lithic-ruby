@@ -1,0 +1,68 @@
+module Lithic
+  module Resources
+    class ExternalPayments
+      def create: (
+        amount: Integer,
+        category: Lithic::Models::ExternalPaymentCreateParams::category,
+        effective_date: Date,
+        financial_account_token: String,
+        payment_type: Lithic::Models::ExternalPaymentCreateParams::payment_type,
+        ?token: String,
+        ?memo: String,
+        ?progress_to: Lithic::Models::ExternalPaymentCreateParams::progress_to,
+        ?user_defined_id: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ExternalPayment
+
+      def retrieve: (
+        String external_payment_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ExternalPayment
+
+      def list: (
+        ?begin_: Time,
+        ?business_account_token: String,
+        ?category: Lithic::Models::ExternalPaymentListParams::category,
+        ?end_: Time,
+        ?ending_before: String,
+        ?financial_account_token: String,
+        ?page_size: Integer,
+        ?result: Lithic::Models::ExternalPaymentListParams::result,
+        ?starting_after: String,
+        ?status: Lithic::Models::ExternalPaymentListParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CursorPage[Lithic::Models::ExternalPayment]
+
+      def cancel: (
+        String external_payment_token,
+        effective_date: Date,
+        ?memo: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ExternalPayment
+
+      def release: (
+        String external_payment_token,
+        effective_date: Date,
+        ?memo: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ExternalPayment
+
+      def reverse: (
+        String external_payment_token,
+        effective_date: Date,
+        ?memo: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ExternalPayment
+
+      def settle: (
+        String external_payment_token,
+        effective_date: Date,
+        ?memo: String,
+        ?progress_to: Lithic::Models::ExternalPaymentSettleParams::progress_to,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ExternalPayment
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

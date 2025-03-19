@@ -1,0 +1,17 @@
+module Lithic
+  module Models
+    module AuthRules
+      type v2_report_response = { report_token: String }
+
+      class V2ReportResponse < Lithic::BaseModel
+        attr_reader report_token: String?
+
+        def report_token=: (String) -> String
+
+        def initialize: (?report_token: String) -> void
+
+        def to_hash: -> Lithic::Models::AuthRules::v2_report_response
+      end
+    end
+  end
+end

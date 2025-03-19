@@ -1,0 +1,22 @@
+module Lithic
+  module Models
+    type dispute_initiate_evidence_upload_params =
+      { filename: String } & Lithic::request_parameters
+
+    class DisputeInitiateEvidenceUploadParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader filename: String?
+
+      def filename=: (String) -> String
+
+      def initialize: (
+        ?filename: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::dispute_initiate_evidence_upload_params
+    end
+  end
+end

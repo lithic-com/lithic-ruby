@@ -1,0 +1,51 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type loan_tape_list_params =
+        {
+          begin_: Date,
+          end_: Date,
+          ending_before: String,
+          page_size: Integer,
+          starting_after: String
+        }
+        & Lithic::request_parameters
+
+      class LoanTapeListParams < Lithic::BaseModel
+        extend Lithic::RequestParameters::Converter
+        include Lithic::RequestParameters
+
+        attr_reader begin_: Date?
+
+        def begin_=: (Date) -> Date
+
+        attr_reader end_: Date?
+
+        def end_=: (Date) -> Date
+
+        attr_reader ending_before: String?
+
+        def ending_before=: (String) -> String
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader starting_after: String?
+
+        def starting_after=: (String) -> String
+
+        def initialize: (
+          ?begin_: Date,
+          ?end_: Date,
+          ?ending_before: String,
+          ?page_size: Integer,
+          ?starting_after: String,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> Lithic::Models::FinancialAccounts::loan_tape_list_params
+      end
+    end
+  end
+end

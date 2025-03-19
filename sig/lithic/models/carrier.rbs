@@ -1,0 +1,15 @@
+module Lithic
+  module Models
+    type carrier = { qr_code_url: String }
+
+    class Carrier < Lithic::BaseModel
+      attr_reader qr_code_url: String?
+
+      def qr_code_url=: (String) -> String
+
+      def initialize: (?qr_code_url: String) -> void
+
+      def to_hash: -> Lithic::Models::carrier
+    end
+  end
+end

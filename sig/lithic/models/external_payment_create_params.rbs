@@ -1,0 +1,95 @@
+module Lithic
+  module Models
+    type external_payment_create_params =
+      {
+        amount: Integer,
+        category: Lithic::Models::ExternalPaymentCreateParams::category,
+        effective_date: Date,
+        financial_account_token: String,
+        payment_type: Lithic::Models::ExternalPaymentCreateParams::payment_type,
+        token: String,
+        memo: String,
+        progress_to: Lithic::Models::ExternalPaymentCreateParams::progress_to,
+        user_defined_id: String
+      }
+      & Lithic::request_parameters
+
+    class ExternalPaymentCreateParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor amount: Integer
+
+      attr_accessor category: Lithic::Models::ExternalPaymentCreateParams::category
+
+      attr_accessor effective_date: Date
+
+      attr_accessor financial_account_token: String
+
+      attr_accessor payment_type: Lithic::Models::ExternalPaymentCreateParams::payment_type
+
+      attr_reader token: String?
+
+      def token=: (String) -> String
+
+      attr_reader memo: String?
+
+      def memo=: (String) -> String
+
+      attr_reader progress_to: Lithic::Models::ExternalPaymentCreateParams::progress_to?
+
+      def progress_to=: (
+        Lithic::Models::ExternalPaymentCreateParams::progress_to
+      ) -> Lithic::Models::ExternalPaymentCreateParams::progress_to
+
+      attr_reader user_defined_id: String?
+
+      def user_defined_id=: (String) -> String
+
+      def initialize: (
+        amount: Integer,
+        category: Lithic::Models::ExternalPaymentCreateParams::category,
+        effective_date: Date,
+        financial_account_token: String,
+        payment_type: Lithic::Models::ExternalPaymentCreateParams::payment_type,
+        ?token: String,
+        ?memo: String,
+        ?progress_to: Lithic::Models::ExternalPaymentCreateParams::progress_to,
+        ?user_defined_id: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::external_payment_create_params
+
+      type category =
+        :EXTERNAL_WIRE | :EXTERNAL_ACH | :EXTERNAL_CHECK | :EXTERNAL_TRANSFER
+
+      class Category < Lithic::Enum
+        EXTERNAL_WIRE: :EXTERNAL_WIRE
+        EXTERNAL_ACH: :EXTERNAL_ACH
+        EXTERNAL_CHECK: :EXTERNAL_CHECK
+        EXTERNAL_TRANSFER: :EXTERNAL_TRANSFER
+
+        def self.values: -> ::Array[Lithic::Models::ExternalPaymentCreateParams::category]
+      end
+
+      type payment_type = :DEPOSIT | :WITHDRAWAL
+
+      class PaymentType < Lithic::Enum
+        DEPOSIT: :DEPOSIT
+        WITHDRAWAL: :WITHDRAWAL
+
+        def self.values: -> ::Array[Lithic::Models::ExternalPaymentCreateParams::payment_type]
+      end
+
+      type progress_to = :SETTLED | :RELEASED
+
+      class ProgressTo < Lithic::Enum
+        SETTLED: :SETTLED
+        RELEASED: :RELEASED
+
+        def self.values: -> ::Array[Lithic::Models::ExternalPaymentCreateParams::progress_to]
+      end
+    end
+  end
+end

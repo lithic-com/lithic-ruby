@@ -1,0 +1,282 @@
+module Lithic
+  module Models
+    type payment =
+      {
+        token: String,
+        category: Lithic::Models::Payment::category,
+        created: Time,
+        currency: String,
+        descriptor: String,
+        direction: Lithic::Models::Payment::direction,
+        events: ::Array[Lithic::Models::Payment::Event],
+        external_bank_account_token: String?,
+        financial_account_token: String,
+        method_: Lithic::Models::Payment::method_,
+        method_attributes: Lithic::Models::Payment::MethodAttributes,
+        pending_amount: Integer,
+        result: Lithic::Models::Payment::result,
+        settled_amount: Integer,
+        source: Lithic::Models::Payment::source,
+        status: Lithic::Models::Payment::status,
+        updated: Time,
+        user_defined_id: String?
+      }
+
+    class Payment < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor category: Lithic::Models::Payment::category
+
+      attr_accessor created: Time
+
+      attr_accessor currency: String
+
+      attr_accessor descriptor: String
+
+      attr_accessor direction: Lithic::Models::Payment::direction
+
+      attr_accessor events: ::Array[Lithic::Models::Payment::Event]
+
+      attr_accessor external_bank_account_token: String?
+
+      attr_accessor financial_account_token: String
+
+      attr_accessor method_: Lithic::Models::Payment::method_
+
+      attr_accessor method_attributes: Lithic::Models::Payment::MethodAttributes
+
+      attr_accessor pending_amount: Integer
+
+      attr_accessor result: Lithic::Models::Payment::result
+
+      attr_accessor settled_amount: Integer
+
+      attr_accessor source: Lithic::Models::Payment::source
+
+      attr_accessor status: Lithic::Models::Payment::status
+
+      attr_accessor updated: Time
+
+      attr_accessor user_defined_id: String?
+
+      def initialize: (
+        token: String,
+        category: Lithic::Models::Payment::category,
+        created: Time,
+        currency: String,
+        descriptor: String,
+        direction: Lithic::Models::Payment::direction,
+        events: ::Array[Lithic::Models::Payment::Event],
+        external_bank_account_token: String?,
+        financial_account_token: String,
+        method_: Lithic::Models::Payment::method_,
+        method_attributes: Lithic::Models::Payment::MethodAttributes,
+        pending_amount: Integer,
+        result: Lithic::Models::Payment::result,
+        settled_amount: Integer,
+        source: Lithic::Models::Payment::source,
+        status: Lithic::Models::Payment::status,
+        updated: Time,
+        user_defined_id: String?
+      ) -> void
+
+      def to_hash: -> Lithic::Models::payment
+
+      type category = :ACH
+
+      class Category < Lithic::Enum
+        ACH: :ACH
+
+        def self.values: -> ::Array[Lithic::Models::Payment::category]
+      end
+
+      type direction = :CREDIT | :DEBIT
+
+      class Direction < Lithic::Enum
+        CREDIT: :CREDIT
+        DEBIT: :DEBIT
+
+        def self.values: -> ::Array[Lithic::Models::Payment::direction]
+      end
+
+      type event =
+        {
+          token: String,
+          amount: Integer,
+          created: Time,
+          result: Lithic::Models::Payment::Event::result,
+          type: Lithic::Models::Payment::Event::type_,
+          detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result]
+        }
+
+      class Event < Lithic::BaseModel
+        attr_accessor token: String
+
+        attr_accessor amount: Integer
+
+        attr_accessor created: Time
+
+        attr_accessor result: Lithic::Models::Payment::Event::result
+
+        attr_accessor type: Lithic::Models::Payment::Event::type_
+
+        attr_reader detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result]?
+
+        def detailed_results=: (
+          ::Array[Lithic::Models::Payment::Event::detailed_result]
+        ) -> ::Array[Lithic::Models::Payment::Event::detailed_result]
+
+        def initialize: (
+          token: String,
+          amount: Integer,
+          created: Time,
+          result: Lithic::Models::Payment::Event::result,
+          type: Lithic::Models::Payment::Event::type_,
+          ?detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result]
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Payment::event
+
+        type result = :APPROVED | :DECLINED
+
+        class Result < Lithic::Enum
+          APPROVED: :APPROVED
+          DECLINED: :DECLINED
+
+          def self.values: -> ::Array[Lithic::Models::Payment::Event::result]
+        end
+
+        type type_ =
+          :ACH_ORIGINATION_CANCELLED
+          | :ACH_ORIGINATION_INITIATED
+          | :ACH_ORIGINATION_PROCESSED
+          | :ACH_ORIGINATION_SETTLED
+          | :ACH_ORIGINATION_RELEASED
+          | :ACH_ORIGINATION_REVIEWED
+          | :ACH_RECEIPT_PROCESSED
+          | :ACH_RECEIPT_SETTLED
+          | :ACH_RETURN_INITIATED
+          | :ACH_RETURN_PROCESSED
+          | :ACH_RETURN_SETTLED
+
+        class Type < Lithic::Enum
+          ACH_ORIGINATION_CANCELLED: :ACH_ORIGINATION_CANCELLED
+          ACH_ORIGINATION_INITIATED: :ACH_ORIGINATION_INITIATED
+          ACH_ORIGINATION_PROCESSED: :ACH_ORIGINATION_PROCESSED
+          ACH_ORIGINATION_SETTLED: :ACH_ORIGINATION_SETTLED
+          ACH_ORIGINATION_RELEASED: :ACH_ORIGINATION_RELEASED
+          ACH_ORIGINATION_REVIEWED: :ACH_ORIGINATION_REVIEWED
+          ACH_RECEIPT_PROCESSED: :ACH_RECEIPT_PROCESSED
+          ACH_RECEIPT_SETTLED: :ACH_RECEIPT_SETTLED
+          ACH_RETURN_INITIATED: :ACH_RETURN_INITIATED
+          ACH_RETURN_PROCESSED: :ACH_RETURN_PROCESSED
+          ACH_RETURN_SETTLED: :ACH_RETURN_SETTLED
+
+          def self.values: -> ::Array[Lithic::Models::Payment::Event::type_]
+        end
+
+        type detailed_result =
+          :APPROVED
+          | :FUNDS_INSUFFICIENT
+          | :ACCOUNT_INVALID
+          | :PROGRAM_TRANSACTION_LIMIT_EXCEEDED
+          | :PROGRAM_DAILY_LIMIT_EXCEEDED
+          | :PROGRAM_MONTHLY_LIMIT_EXCEEDED
+
+        class DetailedResult < Lithic::Enum
+          APPROVED: :APPROVED
+          FUNDS_INSUFFICIENT: :FUNDS_INSUFFICIENT
+          ACCOUNT_INVALID: :ACCOUNT_INVALID
+          PROGRAM_TRANSACTION_LIMIT_EXCEEDED: :PROGRAM_TRANSACTION_LIMIT_EXCEEDED
+          PROGRAM_DAILY_LIMIT_EXCEEDED: :PROGRAM_DAILY_LIMIT_EXCEEDED
+          PROGRAM_MONTHLY_LIMIT_EXCEEDED: :PROGRAM_MONTHLY_LIMIT_EXCEEDED
+
+          def self.values: -> ::Array[Lithic::Models::Payment::Event::detailed_result]
+        end
+      end
+
+      type method_ = :ACH_NEXT_DAY | :ACH_SAME_DAY
+
+      class Method < Lithic::Enum
+        ACH_NEXT_DAY: :ACH_NEXT_DAY
+        ACH_SAME_DAY: :ACH_SAME_DAY
+
+        def self.values: -> ::Array[Lithic::Models::Payment::method_]
+      end
+
+      type method_attributes =
+        {
+          company_id: String?,
+          receipt_routing_number: String?,
+          retries: Integer?,
+          return_reason_code: String?,
+          sec_code: Lithic::Models::Payment::MethodAttributes::sec_code,
+          trace_numbers: ::Array[String?]
+        }
+
+      class MethodAttributes < Lithic::BaseModel
+        attr_accessor company_id: String?
+
+        attr_accessor receipt_routing_number: String?
+
+        attr_accessor retries: Integer?
+
+        attr_accessor return_reason_code: String?
+
+        attr_accessor sec_code: Lithic::Models::Payment::MethodAttributes::sec_code
+
+        attr_accessor trace_numbers: ::Array[String?]
+
+        def initialize: (
+          company_id: String?,
+          receipt_routing_number: String?,
+          retries: Integer?,
+          return_reason_code: String?,
+          sec_code: Lithic::Models::Payment::MethodAttributes::sec_code,
+          trace_numbers: ::Array[String?]
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Payment::method_attributes
+
+        type sec_code = :CCD | :PPD | :WEB
+
+        class SecCode < Lithic::Enum
+          CCD: :CCD
+          PPD: :PPD
+          WEB: :WEB
+
+          def self.values: -> ::Array[Lithic::Models::Payment::MethodAttributes::sec_code]
+        end
+      end
+
+      type result = :APPROVED | :DECLINED
+
+      class Result < Lithic::Enum
+        APPROVED: :APPROVED
+        DECLINED: :DECLINED
+
+        def self.values: -> ::Array[Lithic::Models::Payment::result]
+      end
+
+      type source = :CUSTOMER | :LITHIC
+
+      class Source < Lithic::Enum
+        CUSTOMER: :CUSTOMER
+        LITHIC: :LITHIC
+
+        def self.values: -> ::Array[Lithic::Models::Payment::source]
+      end
+
+      type status = :DECLINED | :PENDING | :RETURNED | :SETTLED
+
+      class Status < Lithic::Enum
+        DECLINED: :DECLINED
+        PENDING: :PENDING
+        RETURNED: :RETURNED
+        SETTLED: :SETTLED
+
+        def self.values: -> ::Array[Lithic::Models::Payment::status]
+      end
+    end
+  end
+end

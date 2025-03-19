@@ -1,0 +1,36 @@
+module Lithic
+  module Models
+    module AuthRules
+      type conditional_attribute =
+        :MCC
+        | :COUNTRY
+        | :CURRENCY
+        | :MERCHANT_ID
+        | :DESCRIPTOR
+        | :LIABILITY_SHIFT
+        | :PAN_ENTRY_MODE
+        | :TRANSACTION_AMOUNT
+        | :RISK_SCORE
+        | :CARD_TRANSACTION_COUNT_1H
+        | :CARD_TRANSACTION_COUNT_24H
+        | :CARD_STATE
+
+      class ConditionalAttribute < Lithic::Enum
+        MCC: :MCC
+        COUNTRY: :COUNTRY
+        CURRENCY: :CURRENCY
+        MERCHANT_ID: :MERCHANT_ID
+        DESCRIPTOR: :DESCRIPTOR
+        LIABILITY_SHIFT: :LIABILITY_SHIFT
+        PAN_ENTRY_MODE: :PAN_ENTRY_MODE
+        TRANSACTION_AMOUNT: :TRANSACTION_AMOUNT
+        RISK_SCORE: :RISK_SCORE
+        CARD_TRANSACTION_COUNT_1_H: :CARD_TRANSACTION_COUNT_1H
+        CARD_TRANSACTION_COUNT_24_H: :CARD_TRANSACTION_COUNT_24H
+        CARD_STATE: :CARD_STATE
+
+        def self.values: -> ::Array[Lithic::Models::AuthRules::conditional_attribute]
+      end
+    end
+  end
+end

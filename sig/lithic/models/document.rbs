@@ -1,0 +1,181 @@
+module Lithic
+  module Models
+    type document =
+      {
+        token: String,
+        account_holder_token: String,
+        document_type: Lithic::Models::Document::document_type,
+        entity_token: String,
+        required_document_uploads: ::Array[Lithic::Models::Document::RequiredDocumentUpload]
+      }
+
+    class Document < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor account_holder_token: String
+
+      attr_accessor document_type: Lithic::Models::Document::document_type
+
+      attr_accessor entity_token: String
+
+      attr_accessor required_document_uploads: ::Array[Lithic::Models::Document::RequiredDocumentUpload]
+
+      def initialize: (
+        token: String,
+        account_holder_token: String,
+        document_type: Lithic::Models::Document::document_type,
+        entity_token: String,
+        required_document_uploads: ::Array[Lithic::Models::Document::RequiredDocumentUpload]
+      ) -> void
+
+      def to_hash: -> Lithic::Models::document
+
+      type document_type =
+        :DRIVERS_LICENSE
+        | :PASSPORT
+        | :PASSPORT_CARD
+        | :EIN_LETTER
+        | :TAX_RETURN
+        | :OPERATING_AGREEMENT
+        | :CERTIFICATE_OF_FORMATION
+        | :CERTIFICATE_OF_GOOD_STANDING
+        | :ARTICLES_OF_INCORPORATION
+        | :ARTICLES_OF_ORGANIZATION
+        | :BYLAWS
+        | :GOVERNMENT_BUSINESS_LICENSE
+        | :PARTNERSHIP_AGREEMENT
+        | :SS4_FORM
+        | :BANK_STATEMENT
+        | :UTILITY_BILL_STATEMENT
+        | :SSN_CARD
+        | :ITIN_LETTER
+        | :FINCEN_BOI_REPORT
+
+      class DocumentType < Lithic::Enum
+        DRIVERS_LICENSE: :DRIVERS_LICENSE
+        PASSPORT: :PASSPORT
+        PASSPORT_CARD: :PASSPORT_CARD
+        EIN_LETTER: :EIN_LETTER
+        TAX_RETURN: :TAX_RETURN
+        OPERATING_AGREEMENT: :OPERATING_AGREEMENT
+        CERTIFICATE_OF_FORMATION: :CERTIFICATE_OF_FORMATION
+        CERTIFICATE_OF_GOOD_STANDING: :CERTIFICATE_OF_GOOD_STANDING
+        ARTICLES_OF_INCORPORATION: :ARTICLES_OF_INCORPORATION
+        ARTICLES_OF_ORGANIZATION: :ARTICLES_OF_ORGANIZATION
+        BYLAWS: :BYLAWS
+        GOVERNMENT_BUSINESS_LICENSE: :GOVERNMENT_BUSINESS_LICENSE
+        PARTNERSHIP_AGREEMENT: :PARTNERSHIP_AGREEMENT
+        SS4_FORM: :SS4_FORM
+        BANK_STATEMENT: :BANK_STATEMENT
+        UTILITY_BILL_STATEMENT: :UTILITY_BILL_STATEMENT
+        SSN_CARD: :SSN_CARD
+        ITIN_LETTER: :ITIN_LETTER
+        FINCEN_BOI_REPORT: :FINCEN_BOI_REPORT
+
+        def self.values: -> ::Array[Lithic::Models::Document::document_type]
+      end
+
+      type required_document_upload =
+        {
+          token: String,
+          accepted_entity_status_reasons: ::Array[String],
+          created: Time,
+          image_type: Lithic::Models::Document::RequiredDocumentUpload::image_type,
+          rejected_entity_status_reasons: ::Array[String],
+          status: Lithic::Models::Document::RequiredDocumentUpload::status,
+          status_reasons: ::Array[Lithic::Models::Document::RequiredDocumentUpload::status_reason],
+          updated: Time,
+          upload_url: String
+        }
+
+      class RequiredDocumentUpload < Lithic::BaseModel
+        attr_accessor token: String
+
+        attr_accessor accepted_entity_status_reasons: ::Array[String]
+
+        attr_accessor created: Time
+
+        attr_accessor image_type: Lithic::Models::Document::RequiredDocumentUpload::image_type
+
+        attr_accessor rejected_entity_status_reasons: ::Array[String]
+
+        attr_accessor status: Lithic::Models::Document::RequiredDocumentUpload::status
+
+        attr_accessor status_reasons: ::Array[Lithic::Models::Document::RequiredDocumentUpload::status_reason]
+
+        attr_accessor updated: Time
+
+        attr_accessor upload_url: String
+
+        def initialize: (
+          token: String,
+          accepted_entity_status_reasons: ::Array[String],
+          created: Time,
+          image_type: Lithic::Models::Document::RequiredDocumentUpload::image_type,
+          rejected_entity_status_reasons: ::Array[String],
+          status: Lithic::Models::Document::RequiredDocumentUpload::status,
+          status_reasons: ::Array[Lithic::Models::Document::RequiredDocumentUpload::status_reason],
+          updated: Time,
+          upload_url: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Document::required_document_upload
+
+        type image_type = :FRONT | :BACK
+
+        class ImageType < Lithic::Enum
+          FRONT: :FRONT
+          BACK: :BACK
+
+          def self.values: -> ::Array[Lithic::Models::Document::RequiredDocumentUpload::image_type]
+        end
+
+        type status =
+          :ACCEPTED
+          | :REJECTED
+          | :PENDING_UPLOAD
+          | :UPLOADED
+          | :PARTIAL_APPROVAL
+
+        class Status < Lithic::Enum
+          ACCEPTED: :ACCEPTED
+          REJECTED: :REJECTED
+          PENDING_UPLOAD: :PENDING_UPLOAD
+          UPLOADED: :UPLOADED
+          PARTIAL_APPROVAL: :PARTIAL_APPROVAL
+
+          def self.values: -> ::Array[Lithic::Models::Document::RequiredDocumentUpload::status]
+        end
+
+        type status_reason =
+          :DOCUMENT_MISSING_REQUIRED_DATA
+          | :DOCUMENT_UPLOAD_TOO_BLURRY
+          | :FILE_SIZE_TOO_LARGE
+          | :INVALID_DOCUMENT_TYPE
+          | :INVALID_DOCUMENT_UPLOAD
+          | :INVALID_ENTITY
+          | :DOCUMENT_EXPIRED
+          | :DOCUMENT_ISSUED_GREATER_THAN_30_DAYS
+          | :DOCUMENT_TYPE_NOT_SUPPORTED
+          | :UNKNOWN_FAILURE_REASON
+          | :UNKNOWN_ERROR
+
+        class StatusReason < Lithic::Enum
+          DOCUMENT_MISSING_REQUIRED_DATA: :DOCUMENT_MISSING_REQUIRED_DATA
+          DOCUMENT_UPLOAD_TOO_BLURRY: :DOCUMENT_UPLOAD_TOO_BLURRY
+          FILE_SIZE_TOO_LARGE: :FILE_SIZE_TOO_LARGE
+          INVALID_DOCUMENT_TYPE: :INVALID_DOCUMENT_TYPE
+          INVALID_DOCUMENT_UPLOAD: :INVALID_DOCUMENT_UPLOAD
+          INVALID_ENTITY: :INVALID_ENTITY
+          DOCUMENT_EXPIRED: :DOCUMENT_EXPIRED
+          DOCUMENT_ISSUED_GREATER_THAN_30_DAYS: :DOCUMENT_ISSUED_GREATER_THAN_30_DAYS
+          DOCUMENT_TYPE_NOT_SUPPORTED: :DOCUMENT_TYPE_NOT_SUPPORTED
+          UNKNOWN_FAILURE_REASON: :UNKNOWN_FAILURE_REASON
+          UNKNOWN_ERROR: :UNKNOWN_ERROR
+
+          def self.values: -> ::Array[Lithic::Models::Document::RequiredDocumentUpload::status_reason]
+        end
+      end
+    end
+  end
+end

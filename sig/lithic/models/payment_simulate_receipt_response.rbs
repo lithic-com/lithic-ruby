@@ -1,0 +1,35 @@
+module Lithic
+  module Models
+    type payment_simulate_receipt_response =
+      {
+        debugging_request_id: String,
+        result: Lithic::Models::PaymentSimulateReceiptResponse::result,
+        transaction_event_token: String
+      }
+
+    class PaymentSimulateReceiptResponse < Lithic::BaseModel
+      attr_accessor debugging_request_id: String
+
+      attr_accessor result: Lithic::Models::PaymentSimulateReceiptResponse::result
+
+      attr_accessor transaction_event_token: String
+
+      def initialize: (
+        debugging_request_id: String,
+        result: Lithic::Models::PaymentSimulateReceiptResponse::result,
+        transaction_event_token: String
+      ) -> void
+
+      def to_hash: -> Lithic::Models::payment_simulate_receipt_response
+
+      type result = :APPROVED | :DECLINED
+
+      class Result < Lithic::Enum
+        APPROVED: :APPROVED
+        DECLINED: :DECLINED
+
+        def self.values: -> ::Array[Lithic::Models::PaymentSimulateReceiptResponse::result]
+      end
+    end
+  end
+end

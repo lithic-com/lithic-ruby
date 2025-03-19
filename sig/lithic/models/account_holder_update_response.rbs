@@ -1,0 +1,702 @@
+module Lithic
+  module Models
+    type account_holder_update_response =
+      Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse
+      | Lithic::Models::AccountHolderUpdateResponse::PatchResponse
+
+    class AccountHolderUpdateResponse < Lithic::Union
+      type kybkyc_patch_response =
+        {
+          token: String,
+          account_token: String,
+          beneficial_owner_entities: ::Array[Lithic::Models::KYBBusinessEntity],
+          beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual],
+          business_account_token: String,
+          business_entity: Lithic::Models::KYBBusinessEntity,
+          control_person: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
+          created: Time,
+          email: String,
+          exemption_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::exemption_type,
+          external_id: String,
+          individual: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual,
+          nature_of_business: String,
+          phone_number: String,
+          required_documents: ::Array[Lithic::Models::RequiredDocument],
+          status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status,
+          status_reasons: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status_reason],
+          user_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::user_type,
+          verification_application: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication,
+          website_url: String
+        }
+
+      class KYBKYCPatchResponse < Lithic::BaseModel
+        attr_reader token: String?
+
+        def token=: (String) -> String
+
+        attr_reader account_token: String?
+
+        def account_token=: (String) -> String
+
+        attr_reader beneficial_owner_entities: ::Array[Lithic::Models::KYBBusinessEntity]?
+
+        def beneficial_owner_entities=: (
+          ::Array[Lithic::Models::KYBBusinessEntity]
+        ) -> ::Array[Lithic::Models::KYBBusinessEntity]
+
+        attr_reader beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual]?
+
+        def beneficial_owner_individuals=: (
+          ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual]
+        ) -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual]
+
+        attr_reader business_account_token: String?
+
+        def business_account_token=: (String) -> String
+
+        attr_reader business_entity: Lithic::Models::KYBBusinessEntity?
+
+        def business_entity=: (
+          Lithic::Models::KYBBusinessEntity
+        ) -> Lithic::Models::KYBBusinessEntity
+
+        attr_reader control_person: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson?
+
+        def control_person=: (
+          Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson
+        ) -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson
+
+        attr_reader created: Time?
+
+        def created=: (Time) -> Time
+
+        attr_reader email: String?
+
+        def email=: (String) -> String
+
+        attr_reader exemption_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::exemption_type?
+
+        def exemption_type=: (
+          Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::exemption_type
+        ) -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::exemption_type
+
+        attr_reader external_id: String?
+
+        def external_id=: (String) -> String
+
+        attr_reader individual: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual?
+
+        def individual=: (
+          Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual
+        ) -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual
+
+        attr_reader nature_of_business: String?
+
+        def nature_of_business=: (String) -> String
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader required_documents: ::Array[Lithic::Models::RequiredDocument]?
+
+        def required_documents=: (
+          ::Array[Lithic::Models::RequiredDocument]
+        ) -> ::Array[Lithic::Models::RequiredDocument]
+
+        attr_reader status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status?
+
+        def status=: (
+          Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status
+        ) -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status
+
+        attr_reader status_reasons: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status_reason]?
+
+        def status_reasons=: (
+          ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status_reason]
+        ) -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status_reason]
+
+        attr_reader user_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::user_type?
+
+        def user_type=: (
+          Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::user_type
+        ) -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::user_type
+
+        attr_reader verification_application: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication?
+
+        def verification_application=: (
+          Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication
+        ) -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication
+
+        attr_reader website_url: String?
+
+        def website_url=: (String) -> String
+
+        def initialize: (
+          ?token: String,
+          ?account_token: String,
+          ?beneficial_owner_entities: ::Array[Lithic::Models::KYBBusinessEntity],
+          ?beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual],
+          ?business_account_token: String,
+          ?business_entity: Lithic::Models::KYBBusinessEntity,
+          ?control_person: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
+          ?created: Time,
+          ?email: String,
+          ?exemption_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::exemption_type,
+          ?external_id: String,
+          ?individual: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual,
+          ?nature_of_business: String,
+          ?phone_number: String,
+          ?required_documents: ::Array[Lithic::Models::RequiredDocument],
+          ?status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status,
+          ?status_reasons: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status_reason],
+          ?user_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::user_type,
+          ?verification_application: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication,
+          ?website_url: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::kybkyc_patch_response
+
+        type beneficial_owner_individual =
+          {
+            address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address,
+            dob: String,
+            email: String,
+            first_name: String,
+            government_id: String,
+            last_name: String,
+            phone_number: String
+          }
+
+        class BeneficialOwnerIndividual < Lithic::BaseModel
+          attr_reader address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address?
+
+          def address=: (
+            Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address
+          ) -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address
+
+          attr_reader dob: String?
+
+          def dob=: (String) -> String
+
+          attr_reader email: String?
+
+          def email=: (String) -> String
+
+          attr_reader first_name: String?
+
+          def first_name=: (String) -> String
+
+          attr_reader last_name: String?
+
+          def last_name=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          def initialize: (
+            ?address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address,
+            ?dob: String,
+            ?email: String,
+            ?first_name: String,
+            ?last_name: String,
+            ?phone_number: String
+          ) -> void
+
+          def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::beneficial_owner_individual
+
+          type address =
+            {
+              :address1 => String,
+              city: String,
+              country: String,
+              postal_code: String,
+              state: String,
+              :address2 => String
+            }
+
+          class Address < Lithic::BaseModel
+            attr_accessor address1: String
+
+            attr_accessor city: String
+
+            attr_accessor country: String
+
+            attr_accessor postal_code: String
+
+            attr_accessor state: String
+
+            attr_reader address2: String?
+
+            def address2=: (String) -> String
+
+            def initialize: (
+              address1: String,
+              city: String,
+              country: String,
+              postal_code: String,
+              state: String,
+              ?address2: String
+            ) -> void
+
+            def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::address
+          end
+        end
+
+        type control_person =
+          {
+            address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address,
+            dob: String,
+            email: String,
+            first_name: String,
+            government_id: String,
+            last_name: String,
+            phone_number: String
+          }
+
+        class ControlPerson < Lithic::BaseModel
+          attr_reader address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address?
+
+          def address=: (
+            Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address
+          ) -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address
+
+          attr_reader dob: String?
+
+          def dob=: (String) -> String
+
+          attr_reader email: String?
+
+          def email=: (String) -> String
+
+          attr_reader first_name: String?
+
+          def first_name=: (String) -> String
+
+          attr_reader last_name: String?
+
+          def last_name=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          def initialize: (
+            ?address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address,
+            ?dob: String,
+            ?email: String,
+            ?first_name: String,
+            ?last_name: String,
+            ?phone_number: String
+          ) -> void
+
+          def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::control_person
+
+          type address =
+            {
+              :address1 => String,
+              city: String,
+              country: String,
+              postal_code: String,
+              state: String,
+              :address2 => String
+            }
+
+          class Address < Lithic::BaseModel
+            attr_accessor address1: String
+
+            attr_accessor city: String
+
+            attr_accessor country: String
+
+            attr_accessor postal_code: String
+
+            attr_accessor state: String
+
+            attr_reader address2: String?
+
+            def address2=: (String) -> String
+
+            def initialize: (
+              address1: String,
+              city: String,
+              country: String,
+              postal_code: String,
+              state: String,
+              ?address2: String
+            ) -> void
+
+            def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::address
+          end
+        end
+
+        type exemption_type = :AUTHORIZED_USER | :PREPAID_CARD_USER
+
+        class ExemptionType < Lithic::Enum
+          AUTHORIZED_USER: :AUTHORIZED_USER
+          PREPAID_CARD_USER: :PREPAID_CARD_USER
+
+          def self.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::exemption_type]
+        end
+
+        type individual =
+          {
+            address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address,
+            dob: String,
+            email: String,
+            first_name: String,
+            government_id: String,
+            last_name: String,
+            phone_number: String
+          }
+
+        class Individual < Lithic::BaseModel
+          attr_reader address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address?
+
+          def address=: (
+            Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address
+          ) -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address
+
+          attr_reader dob: String?
+
+          def dob=: (String) -> String
+
+          attr_reader email: String?
+
+          def email=: (String) -> String
+
+          attr_reader first_name: String?
+
+          def first_name=: (String) -> String
+
+          attr_reader last_name: String?
+
+          def last_name=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          def initialize: (
+            ?address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address,
+            ?dob: String,
+            ?email: String,
+            ?first_name: String,
+            ?last_name: String,
+            ?phone_number: String
+          ) -> void
+
+          def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::individual
+
+          type address =
+            {
+              :address1 => String,
+              city: String,
+              country: String,
+              postal_code: String,
+              state: String,
+              :address2 => String
+            }
+
+          class Address < Lithic::BaseModel
+            attr_accessor address1: String
+
+            attr_accessor city: String
+
+            attr_accessor country: String
+
+            attr_accessor postal_code: String
+
+            attr_accessor state: String
+
+            attr_reader address2: String?
+
+            def address2=: (String) -> String
+
+            def initialize: (
+              address1: String,
+              city: String,
+              country: String,
+              postal_code: String,
+              state: String,
+              ?address2: String
+            ) -> void
+
+            def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::address
+          end
+        end
+
+        type status =
+          :ACCEPTED | :PENDING_DOCUMENT | :PENDING_RESUBMIT | :REJECTED
+
+        class Status < Lithic::Enum
+          ACCEPTED: :ACCEPTED
+          PENDING_DOCUMENT: :PENDING_DOCUMENT
+          PENDING_RESUBMIT: :PENDING_RESUBMIT
+          REJECTED: :REJECTED
+
+          def self.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status]
+        end
+
+        type status_reason =
+          :ADDRESS_VERIFICATION_FAILURE
+          | :AGE_THRESHOLD_FAILURE
+          | :COMPLETE_VERIFICATION_FAILURE
+          | :DOB_VERIFICATION_FAILURE
+          | :ID_VERIFICATION_FAILURE
+          | :MAX_DOCUMENT_ATTEMPTS
+          | :MAX_RESUBMISSION_ATTEMPTS
+          | :NAME_VERIFICATION_FAILURE
+          | :OTHER_VERIFICATION_FAILURE
+          | :RISK_THRESHOLD_FAILURE
+          | :WATCHLIST_ALERT_FAILURE
+          | :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE
+          | :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE
+          | :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE
+          | :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED
+          | :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE
+          | :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED
+          | :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE
+          | :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE
+          | :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE
+          | :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE
+          | :CONTROL_PERSON_ID_VERIFICATION_FAILURE
+          | :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
+          | :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
+
+        class StatusReason < Lithic::Enum
+          ADDRESS_VERIFICATION_FAILURE: :ADDRESS_VERIFICATION_FAILURE
+          AGE_THRESHOLD_FAILURE: :AGE_THRESHOLD_FAILURE
+          COMPLETE_VERIFICATION_FAILURE: :COMPLETE_VERIFICATION_FAILURE
+          DOB_VERIFICATION_FAILURE: :DOB_VERIFICATION_FAILURE
+          ID_VERIFICATION_FAILURE: :ID_VERIFICATION_FAILURE
+          MAX_DOCUMENT_ATTEMPTS: :MAX_DOCUMENT_ATTEMPTS
+          MAX_RESUBMISSION_ATTEMPTS: :MAX_RESUBMISSION_ATTEMPTS
+          NAME_VERIFICATION_FAILURE: :NAME_VERIFICATION_FAILURE
+          OTHER_VERIFICATION_FAILURE: :OTHER_VERIFICATION_FAILURE
+          RISK_THRESHOLD_FAILURE: :RISK_THRESHOLD_FAILURE
+          WATCHLIST_ALERT_FAILURE: :WATCHLIST_ALERT_FAILURE
+          PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE: :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE
+          PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE: :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE
+          PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE: :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE
+          PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED: :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED
+          PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE: :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE
+          PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED: :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED
+          PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE: :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE
+          PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE: :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE
+          PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE: :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE
+          CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE: :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE
+          CONTROL_PERSON_ID_VERIFICATION_FAILURE: :CONTROL_PERSON_ID_VERIFICATION_FAILURE
+          CONTROL_PERSON_DOB_VERIFICATION_FAILURE: :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
+          CONTROL_PERSON_NAME_VERIFICATION_FAILURE: :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
+
+          def self.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status_reason]
+        end
+
+        type user_type = :BUSINESS | :INDIVIDUAL
+
+        class UserType < Lithic::Enum
+          BUSINESS: :BUSINESS
+          INDIVIDUAL: :INDIVIDUAL
+
+          def self.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::user_type]
+        end
+
+        type verification_application =
+          {
+            created: Time,
+            status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status,
+            status_reasons: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status_reason],
+            updated: Time
+          }
+
+        class VerificationApplication < Lithic::BaseModel
+          attr_accessor created: Time
+
+          attr_accessor status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status
+
+          attr_accessor status_reasons: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status_reason]
+
+          attr_accessor updated: Time
+
+          def initialize: (
+            created: Time,
+            status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status,
+            status_reasons: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status_reason],
+            updated: Time
+          ) -> void
+
+          def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::verification_application
+
+          type status =
+            :ACCEPTED | :PENDING_DOCUMENT | :PENDING_RESUBMIT | :REJECTED
+
+          class Status < Lithic::Enum
+            ACCEPTED: :ACCEPTED
+            PENDING_DOCUMENT: :PENDING_DOCUMENT
+            PENDING_RESUBMIT: :PENDING_RESUBMIT
+            REJECTED: :REJECTED
+
+            def self.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status]
+          end
+
+          type status_reason =
+            :ADDRESS_VERIFICATION_FAILURE
+            | :AGE_THRESHOLD_FAILURE
+            | :COMPLETE_VERIFICATION_FAILURE
+            | :DOB_VERIFICATION_FAILURE
+            | :ID_VERIFICATION_FAILURE
+            | :MAX_DOCUMENT_ATTEMPTS
+            | :MAX_RESUBMISSION_ATTEMPTS
+            | :NAME_VERIFICATION_FAILURE
+            | :OTHER_VERIFICATION_FAILURE
+            | :RISK_THRESHOLD_FAILURE
+            | :WATCHLIST_ALERT_FAILURE
+            | :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE
+            | :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE
+            | :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE
+            | :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED
+            | :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE
+            | :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED
+            | :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE
+            | :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE
+            | :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE
+            | :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE
+            | :CONTROL_PERSON_ID_VERIFICATION_FAILURE
+            | :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
+            | :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
+
+          class StatusReason < Lithic::Enum
+            ADDRESS_VERIFICATION_FAILURE: :ADDRESS_VERIFICATION_FAILURE
+            AGE_THRESHOLD_FAILURE: :AGE_THRESHOLD_FAILURE
+            COMPLETE_VERIFICATION_FAILURE: :COMPLETE_VERIFICATION_FAILURE
+            DOB_VERIFICATION_FAILURE: :DOB_VERIFICATION_FAILURE
+            ID_VERIFICATION_FAILURE: :ID_VERIFICATION_FAILURE
+            MAX_DOCUMENT_ATTEMPTS: :MAX_DOCUMENT_ATTEMPTS
+            MAX_RESUBMISSION_ATTEMPTS: :MAX_RESUBMISSION_ATTEMPTS
+            NAME_VERIFICATION_FAILURE: :NAME_VERIFICATION_FAILURE
+            OTHER_VERIFICATION_FAILURE: :OTHER_VERIFICATION_FAILURE
+            RISK_THRESHOLD_FAILURE: :RISK_THRESHOLD_FAILURE
+            WATCHLIST_ALERT_FAILURE: :WATCHLIST_ALERT_FAILURE
+            PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE: :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE
+            PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE: :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE
+            PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE: :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE
+            PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED: :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED
+            PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE: :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE
+            PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED: :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED
+            PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE: :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE
+            PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE: :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE
+            PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE: :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE
+            CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE: :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE
+            CONTROL_PERSON_ID_VERIFICATION_FAILURE: :CONTROL_PERSON_ID_VERIFICATION_FAILURE
+            CONTROL_PERSON_DOB_VERIFICATION_FAILURE: :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
+            CONTROL_PERSON_NAME_VERIFICATION_FAILURE: :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
+
+            def self.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status_reason]
+          end
+        end
+      end
+
+      type patch_response =
+        {
+          token: String,
+          address: Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address,
+          business_account_token: String,
+          email: String,
+          first_name: String,
+          last_name: String,
+          legal_business_name: String,
+          phone_number: String
+        }
+
+      class PatchResponse < Lithic::BaseModel
+        attr_reader token: String?
+
+        def token=: (String) -> String
+
+        attr_reader address: Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address?
+
+        def address=: (
+          Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address
+        ) -> Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address
+
+        attr_reader business_account_token: String?
+
+        def business_account_token=: (String) -> String
+
+        attr_reader email: String?
+
+        def email=: (String) -> String
+
+        attr_reader first_name: String?
+
+        def first_name=: (String) -> String
+
+        attr_reader last_name: String?
+
+        def last_name=: (String) -> String
+
+        attr_reader legal_business_name: String?
+
+        def legal_business_name=: (String) -> String
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        def initialize: (
+          ?token: String,
+          ?address: Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address,
+          ?business_account_token: String,
+          ?email: String,
+          ?first_name: String,
+          ?last_name: String,
+          ?legal_business_name: String,
+          ?phone_number: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::patch_response
+
+        type address =
+          {
+            :address1 => String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String,
+            :address2 => String
+          }
+
+        class Address < Lithic::BaseModel
+          attr_accessor address1: String
+
+          attr_accessor city: String
+
+          attr_accessor country: String
+
+          attr_accessor postal_code: String
+
+          attr_accessor state: String
+
+          attr_reader address2: String?
+
+          def address2=: (String) -> String
+
+          def initialize: (
+            address1: String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String,
+            ?address2: String
+          ) -> void
+
+          def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::PatchResponse::address
+        end
+      end
+
+      def self.variants: -> [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse, Lithic::Models::AccountHolderUpdateResponse::PatchResponse]
+    end
+  end
+end

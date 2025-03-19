@@ -1,0 +1,130 @@
+module Lithic
+  module Models
+    module AuthRules
+      type v2_create_response =
+        {
+          token: String,
+          account_tokens: ::Array[String],
+          card_tokens: ::Array[String],
+          current_version: Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion?,
+          draft_version: Lithic::Models::AuthRules::V2CreateResponse::DraftVersion?,
+          name: String?,
+          program_level: bool,
+          state: Lithic::Models::AuthRules::V2CreateResponse::state,
+          type: Lithic::Models::AuthRules::V2CreateResponse::type_,
+          excluded_card_tokens: ::Array[String]
+        }
+
+      class V2CreateResponse < Lithic::BaseModel
+        attr_accessor token: String
+
+        attr_accessor account_tokens: ::Array[String]
+
+        attr_accessor card_tokens: ::Array[String]
+
+        attr_accessor current_version: Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion?
+
+        attr_accessor draft_version: Lithic::Models::AuthRules::V2CreateResponse::DraftVersion?
+
+        attr_accessor name: String?
+
+        attr_accessor program_level: bool
+
+        attr_accessor state: Lithic::Models::AuthRules::V2CreateResponse::state
+
+        attr_accessor type: Lithic::Models::AuthRules::V2CreateResponse::type_
+
+        attr_reader excluded_card_tokens: ::Array[String]?
+
+        def excluded_card_tokens=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          token: String,
+          account_tokens: ::Array[String],
+          card_tokens: ::Array[String],
+          current_version: Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion?,
+          draft_version: Lithic::Models::AuthRules::V2CreateResponse::DraftVersion?,
+          name: String?,
+          program_level: bool,
+          state: Lithic::Models::AuthRules::V2CreateResponse::state,
+          type: Lithic::Models::AuthRules::V2CreateResponse::type_,
+          ?excluded_card_tokens: ::Array[String]
+        ) -> void
+
+        def to_hash: -> Lithic::Models::AuthRules::v2_create_response
+
+        type current_version =
+          {
+            parameters: Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion::parameters,
+            version: Integer
+          }
+
+        class CurrentVersion < Lithic::BaseModel
+          attr_accessor parameters: Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion::parameters
+
+          attr_accessor version: Integer
+
+          def initialize: (
+            parameters: Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion::parameters,
+            version: Integer
+          ) -> void
+
+          def to_hash: -> Lithic::Models::AuthRules::V2CreateResponse::current_version
+
+          type parameters =
+            Lithic::Models::AuthRules::ConditionalBlockParameters
+            | Lithic::Models::AuthRules::VelocityLimitParams
+
+          class Parameters < Lithic::Union
+            def self.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+          end
+        end
+
+        type draft_version =
+          {
+            parameters: Lithic::Models::AuthRules::V2CreateResponse::DraftVersion::parameters,
+            version: Integer
+          }
+
+        class DraftVersion < Lithic::BaseModel
+          attr_accessor parameters: Lithic::Models::AuthRules::V2CreateResponse::DraftVersion::parameters
+
+          attr_accessor version: Integer
+
+          def initialize: (
+            parameters: Lithic::Models::AuthRules::V2CreateResponse::DraftVersion::parameters,
+            version: Integer
+          ) -> void
+
+          def to_hash: -> Lithic::Models::AuthRules::V2CreateResponse::draft_version
+
+          type parameters =
+            Lithic::Models::AuthRules::ConditionalBlockParameters
+            | Lithic::Models::AuthRules::VelocityLimitParams
+
+          class Parameters < Lithic::Union
+            def self.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+          end
+        end
+
+        type state = :ACTIVE | :INACTIVE
+
+        class State < Lithic::Enum
+          ACTIVE: :ACTIVE
+          INACTIVE: :INACTIVE
+
+          def self.values: -> ::Array[Lithic::Models::AuthRules::V2CreateResponse::state]
+        end
+
+        type type_ = :CONDITIONAL_BLOCK | :VELOCITY_LIMIT
+
+        class Type < Lithic::Enum
+          CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
+          VELOCITY_LIMIT: :VELOCITY_LIMIT
+
+          def self.values: -> ::Array[Lithic::Models::AuthRules::V2CreateResponse::type_]
+        end
+      end
+    end
+  end
+end

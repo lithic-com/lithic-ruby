@@ -1,0 +1,28 @@
+module Lithic
+  module Resources
+    class FinancialAccounts
+      class Statements
+        attr_reader line_items: Lithic::Resources::FinancialAccounts::Statements::LineItems
+
+        def retrieve: (
+          String statement_token,
+          financial_account_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::FinancialAccounts::Statement
+
+        def list: (
+          String financial_account_token,
+          ?begin_: Date,
+          ?end_: Date,
+          ?ending_before: String,
+          ?include_initial_statements: bool,
+          ?page_size: Integer,
+          ?starting_after: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::CursorPage[Lithic::Models::FinancialAccounts::Statement]
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

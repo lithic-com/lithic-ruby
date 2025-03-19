@@ -1,0 +1,23 @@
+module Lithic
+  module Resources
+    class ResponderEndpoints
+      def create: (
+        ?type: Lithic::Models::ResponderEndpointCreateParams::type_,
+        ?url: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ResponderEndpointCreateResponse
+
+      def delete: (
+        type: Lithic::Models::ResponderEndpointDeleteParams::type_,
+        ?request_options: Lithic::request_opts
+      ) -> nil
+
+      def check_status: (
+        type: Lithic::Models::ResponderEndpointCheckStatusParams::type_,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ResponderEndpointStatus
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

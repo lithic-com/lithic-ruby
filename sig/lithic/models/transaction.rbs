@@ -1,0 +1,1291 @@
+module Lithic
+  module Models
+    type transaction =
+      {
+        token: String,
+        account_token: String,
+        acquirer_fee: Integer?,
+        acquirer_reference_number: String?,
+        amount: Integer,
+        amounts: Lithic::Models::Transaction::Amounts,
+        authorization_amount: Integer?,
+        authorization_code: String?,
+        avs: Lithic::Models::Transaction::Avs?,
+        card_token: String,
+        cardholder_authentication: Lithic::Models::Transaction::CardholderAuthentication?,
+        created: Time,
+        merchant: Lithic::Models::Transaction::Merchant,
+        merchant_amount: Integer?,
+        merchant_authorization_amount: Integer?,
+        merchant_currency: String,
+        network: Lithic::Models::Transaction::network?,
+        network_risk_score: Integer?,
+        pos: Lithic::Models::Transaction::Pos,
+        result: Lithic::Models::Transaction::result,
+        settled_amount: Integer,
+        status: Lithic::Models::Transaction::status,
+        token_info: Lithic::Models::Transaction::TokenInfo?,
+        updated: Time,
+        events: ::Array[Lithic::Models::Transaction::Event]
+      }
+
+    class Transaction < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor account_token: String
+
+      attr_accessor acquirer_fee: Integer?
+
+      attr_accessor acquirer_reference_number: String?
+
+      attr_accessor amount: Integer
+
+      attr_accessor amounts: Lithic::Models::Transaction::Amounts
+
+      attr_accessor authorization_amount: Integer?
+
+      attr_accessor authorization_code: String?
+
+      attr_accessor avs: Lithic::Models::Transaction::Avs?
+
+      attr_accessor card_token: String
+
+      attr_accessor cardholder_authentication: Lithic::Models::Transaction::CardholderAuthentication?
+
+      attr_accessor created: Time
+
+      attr_accessor merchant: Lithic::Models::Transaction::Merchant
+
+      attr_accessor merchant_amount: Integer?
+
+      attr_accessor merchant_authorization_amount: Integer?
+
+      attr_accessor merchant_currency: String
+
+      attr_accessor network: Lithic::Models::Transaction::network?
+
+      attr_accessor network_risk_score: Integer?
+
+      attr_accessor pos: Lithic::Models::Transaction::Pos
+
+      attr_accessor result: Lithic::Models::Transaction::result
+
+      attr_accessor settled_amount: Integer
+
+      attr_accessor status: Lithic::Models::Transaction::status
+
+      attr_accessor token_info: Lithic::Models::Transaction::TokenInfo?
+
+      attr_accessor updated: Time
+
+      attr_reader events: ::Array[Lithic::Models::Transaction::Event]?
+
+      def events=: (
+        ::Array[Lithic::Models::Transaction::Event]
+      ) -> ::Array[Lithic::Models::Transaction::Event]
+
+      def initialize: (
+        token: String,
+        account_token: String,
+        acquirer_fee: Integer?,
+        acquirer_reference_number: String?,
+        amount: Integer,
+        amounts: Lithic::Models::Transaction::Amounts,
+        authorization_amount: Integer?,
+        authorization_code: String?,
+        avs: Lithic::Models::Transaction::Avs?,
+        card_token: String,
+        cardholder_authentication: Lithic::Models::Transaction::CardholderAuthentication?,
+        created: Time,
+        merchant: Lithic::Models::Transaction::Merchant,
+        merchant_amount: Integer?,
+        merchant_authorization_amount: Integer?,
+        merchant_currency: String,
+        network: Lithic::Models::Transaction::network?,
+        network_risk_score: Integer?,
+        pos: Lithic::Models::Transaction::Pos,
+        result: Lithic::Models::Transaction::result,
+        settled_amount: Integer,
+        status: Lithic::Models::Transaction::status,
+        token_info: Lithic::Models::Transaction::TokenInfo?,
+        updated: Time,
+        ?events: ::Array[Lithic::Models::Transaction::Event]
+      ) -> void
+
+      def to_hash: -> Lithic::Models::transaction
+
+      type amounts =
+        {
+          cardholder: Lithic::Models::Transaction::Amounts::Cardholder,
+          hold: Lithic::Models::Transaction::Amounts::Hold,
+          merchant: Lithic::Models::Transaction::Amounts::Merchant,
+          settlement: Lithic::Models::Transaction::Amounts::Settlement
+        }
+
+      class Amounts < Lithic::BaseModel
+        attr_accessor cardholder: Lithic::Models::Transaction::Amounts::Cardholder
+
+        attr_accessor hold: Lithic::Models::Transaction::Amounts::Hold
+
+        attr_accessor merchant: Lithic::Models::Transaction::Amounts::Merchant
+
+        attr_accessor settlement: Lithic::Models::Transaction::Amounts::Settlement
+
+        def initialize: (
+          cardholder: Lithic::Models::Transaction::Amounts::Cardholder,
+          hold: Lithic::Models::Transaction::Amounts::Hold,
+          merchant: Lithic::Models::Transaction::Amounts::Merchant,
+          settlement: Lithic::Models::Transaction::Amounts::Settlement
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Transaction::amounts
+
+        type cardholder =
+          { amount: Integer, conversion_rate: String, currency: String }
+
+        class Cardholder < Lithic::BaseModel
+          attr_accessor amount: Integer
+
+          attr_accessor conversion_rate: String
+
+          attr_accessor currency: String
+
+          def initialize: (
+            amount: Integer,
+            conversion_rate: String,
+            currency: String
+          ) -> void
+
+          def to_hash: -> Lithic::Models::Transaction::Amounts::cardholder
+        end
+
+        type hold = { amount: Integer, currency: String }
+
+        class Hold < Lithic::BaseModel
+          attr_accessor amount: Integer
+
+          attr_accessor currency: String
+
+          def initialize: (amount: Integer, currency: String) -> void
+
+          def to_hash: -> Lithic::Models::Transaction::Amounts::hold
+        end
+
+        type merchant = { amount: Integer, currency: String }
+
+        class Merchant < Lithic::BaseModel
+          attr_accessor amount: Integer
+
+          attr_accessor currency: String
+
+          def initialize: (amount: Integer, currency: String) -> void
+
+          def to_hash: -> Lithic::Models::Transaction::Amounts::merchant
+        end
+
+        type settlement = { amount: Integer, currency: String }
+
+        class Settlement < Lithic::BaseModel
+          attr_accessor amount: Integer
+
+          attr_accessor currency: String
+
+          def initialize: (amount: Integer, currency: String) -> void
+
+          def to_hash: -> Lithic::Models::Transaction::Amounts::settlement
+        end
+      end
+
+      type avs = { address: String, zipcode: String }
+
+      class Avs < Lithic::BaseModel
+        attr_accessor address: String
+
+        attr_accessor zipcode: String
+
+        def initialize: (address: String, zipcode: String) -> void
+
+        def to_hash: -> Lithic::Models::Transaction::avs
+      end
+
+      type cardholder_authentication =
+        {
+          three_ds_version: String?,
+          acquirer_exemption: Lithic::Models::Transaction::CardholderAuthentication::acquirer_exemption,
+          authentication_result: Lithic::Models::Transaction::CardholderAuthentication::authentication_result,
+          decision_made_by: Lithic::Models::Transaction::CardholderAuthentication::decision_made_by,
+          liability_shift: Lithic::Models::Transaction::CardholderAuthentication::liability_shift,
+          three_ds_authentication_token: String?,
+          verification_attempted: Lithic::Models::Transaction::CardholderAuthentication::verification_attempted,
+          verification_result: Lithic::Models::Transaction::CardholderAuthentication::verification_result
+        }
+
+      class CardholderAuthentication < Lithic::BaseModel
+        attr_accessor three_ds_version: String?
+
+        attr_accessor acquirer_exemption: Lithic::Models::Transaction::CardholderAuthentication::acquirer_exemption
+
+        attr_accessor authentication_result: Lithic::Models::Transaction::CardholderAuthentication::authentication_result
+
+        attr_accessor decision_made_by: Lithic::Models::Transaction::CardholderAuthentication::decision_made_by
+
+        attr_accessor liability_shift: Lithic::Models::Transaction::CardholderAuthentication::liability_shift
+
+        attr_accessor three_ds_authentication_token: String?
+
+        attr_accessor verification_attempted: Lithic::Models::Transaction::CardholderAuthentication::verification_attempted
+
+        attr_accessor verification_result: Lithic::Models::Transaction::CardholderAuthentication::verification_result
+
+        def initialize: (
+          three_ds_version: String?,
+          acquirer_exemption: Lithic::Models::Transaction::CardholderAuthentication::acquirer_exemption,
+          authentication_result: Lithic::Models::Transaction::CardholderAuthentication::authentication_result,
+          decision_made_by: Lithic::Models::Transaction::CardholderAuthentication::decision_made_by,
+          liability_shift: Lithic::Models::Transaction::CardholderAuthentication::liability_shift,
+          three_ds_authentication_token: String?,
+          verification_attempted: Lithic::Models::Transaction::CardholderAuthentication::verification_attempted,
+          verification_result: Lithic::Models::Transaction::CardholderAuthentication::verification_result
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Transaction::cardholder_authentication
+
+        type acquirer_exemption =
+          :AUTHENTICATION_OUTAGE_EXCEPTION
+          | :LOW_VALUE
+          | :MERCHANT_INITIATED_TRANSACTION
+          | :NONE
+          | :RECURRING_PAYMENT
+          | :SECURE_CORPORATE_PAYMENT
+          | :STRONG_CUSTOMER_AUTHENTICATION_DELEGATION
+          | :TRANSACTION_RISK_ANALYSIS
+
+        class AcquirerExemption < Lithic::Enum
+          AUTHENTICATION_OUTAGE_EXCEPTION: :AUTHENTICATION_OUTAGE_EXCEPTION
+          LOW_VALUE: :LOW_VALUE
+          MERCHANT_INITIATED_TRANSACTION: :MERCHANT_INITIATED_TRANSACTION
+          NONE: :NONE
+          RECURRING_PAYMENT: :RECURRING_PAYMENT
+          SECURE_CORPORATE_PAYMENT: :SECURE_CORPORATE_PAYMENT
+          STRONG_CUSTOMER_AUTHENTICATION_DELEGATION: :STRONG_CUSTOMER_AUTHENTICATION_DELEGATION
+          TRANSACTION_RISK_ANALYSIS: :TRANSACTION_RISK_ANALYSIS
+
+          def self.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::acquirer_exemption]
+        end
+
+        type authentication_result = :ATTEMPTS | :DECLINE | :NONE | :SUCCESS
+
+        class AuthenticationResult < Lithic::Enum
+          ATTEMPTS: :ATTEMPTS
+          DECLINE: :DECLINE
+          NONE: :NONE
+          SUCCESS: :SUCCESS
+
+          def self.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::authentication_result]
+        end
+
+        type decision_made_by =
+          :CUSTOMER_ENDPOINT
+          | :LITHIC_DEFAULT
+          | :LITHIC_RULES
+          | :NETWORK
+          | :UNKNOWN
+
+        class DecisionMadeBy < Lithic::Enum
+          CUSTOMER_ENDPOINT: :CUSTOMER_ENDPOINT
+          LITHIC_DEFAULT: :LITHIC_DEFAULT
+          LITHIC_RULES: :LITHIC_RULES
+          NETWORK: :NETWORK
+          UNKNOWN: :UNKNOWN
+
+          def self.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::decision_made_by]
+        end
+
+        type liability_shift =
+          :"3DS_AUTHENTICATED"
+          | :ACQUIRER_EXEMPTION
+          | :NONE
+          | :TOKEN_AUTHENTICATED
+
+        class LiabilityShift < Lithic::Enum
+          NUMBER_3DS_AUTHENTICATED: :"3DS_AUTHENTICATED"
+          ACQUIRER_EXEMPTION: :ACQUIRER_EXEMPTION
+          NONE: :NONE
+          TOKEN_AUTHENTICATED: :TOKEN_AUTHENTICATED
+
+          def self.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::liability_shift]
+        end
+
+        type verification_attempted = :NONE | :OTHER
+
+        class VerificationAttempted < Lithic::Enum
+          NONE: :NONE
+          OTHER: :OTHER
+
+          def self.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::verification_attempted]
+        end
+
+        type verification_result =
+          :CANCELLED
+          | :FAILED
+          | :FRICTIONLESS
+          | :NOT_ATTEMPTED
+          | :REJECTED
+          | :SUCCESS
+
+        class VerificationResult < Lithic::Enum
+          CANCELLED: :CANCELLED
+          FAILED: :FAILED
+          FRICTIONLESS: :FRICTIONLESS
+          NOT_ATTEMPTED: :NOT_ATTEMPTED
+          REJECTED: :REJECTED
+          SUCCESS: :SUCCESS
+
+          def self.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::verification_result]
+        end
+      end
+
+      type merchant =
+        {
+          acceptor_id: String,
+          acquiring_institution_id: String,
+          city: String,
+          country: String,
+          descriptor: String,
+          mcc: String,
+          state: String
+        }
+
+      class Merchant < Lithic::BaseModel
+        attr_accessor acceptor_id: String
+
+        attr_accessor acquiring_institution_id: String
+
+        attr_accessor city: String
+
+        attr_accessor country: String
+
+        attr_accessor descriptor: String
+
+        attr_accessor mcc: String
+
+        attr_accessor state: String
+
+        def initialize: (
+          acceptor_id: String,
+          acquiring_institution_id: String,
+          city: String,
+          country: String,
+          descriptor: String,
+          mcc: String,
+          state: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Transaction::merchant
+      end
+
+      type network = :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
+
+      class Network < Lithic::Enum
+        INTERLINK: :INTERLINK
+        MAESTRO: :MAESTRO
+        MASTERCARD: :MASTERCARD
+        UNKNOWN: :UNKNOWN
+        VISA: :VISA
+
+        def self.values: -> ::Array[Lithic::Models::Transaction::network]
+      end
+
+      type pos =
+        {
+          entry_mode: Lithic::Models::Transaction::Pos::EntryMode,
+          terminal: Lithic::Models::Transaction::Pos::Terminal
+        }
+
+      class Pos < Lithic::BaseModel
+        attr_accessor entry_mode: Lithic::Models::Transaction::Pos::EntryMode
+
+        attr_accessor terminal: Lithic::Models::Transaction::Pos::Terminal
+
+        def initialize: (
+          entry_mode: Lithic::Models::Transaction::Pos::EntryMode,
+          terminal: Lithic::Models::Transaction::Pos::Terminal
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Transaction::pos
+
+        type entry_mode =
+          {
+            card: Lithic::Models::Transaction::Pos::EntryMode::card,
+            cardholder: Lithic::Models::Transaction::Pos::EntryMode::cardholder,
+            pan: Lithic::Models::Transaction::Pos::EntryMode::pan,
+            pin_entered: bool
+          }
+
+        class EntryMode < Lithic::BaseModel
+          attr_accessor card: Lithic::Models::Transaction::Pos::EntryMode::card
+
+          attr_accessor cardholder: Lithic::Models::Transaction::Pos::EntryMode::cardholder
+
+          attr_accessor pan: Lithic::Models::Transaction::Pos::EntryMode::pan
+
+          attr_accessor pin_entered: bool
+
+          def initialize: (
+            card: Lithic::Models::Transaction::Pos::EntryMode::card,
+            cardholder: Lithic::Models::Transaction::Pos::EntryMode::cardholder,
+            pan: Lithic::Models::Transaction::Pos::EntryMode::pan,
+            pin_entered: bool
+          ) -> void
+
+          def to_hash: -> Lithic::Models::Transaction::Pos::entry_mode
+
+          type card = :NOT_PRESENT | :PREAUTHORIZED | :PRESENT | :UNKNOWN
+
+          class Card < Lithic::Enum
+            NOT_PRESENT: :NOT_PRESENT
+            PREAUTHORIZED: :PREAUTHORIZED
+            PRESENT: :PRESENT
+            UNKNOWN: :UNKNOWN
+
+            def self.values: -> ::Array[Lithic::Models::Transaction::Pos::EntryMode::card]
+          end
+
+          type cardholder =
+            :DEFERRED_BILLING
+            | :ELECTRONIC_ORDER
+            | :INSTALLMENT
+            | :MAIL_ORDER
+            | :NOT_PRESENT
+            | :PREAUTHORIZED
+            | :PRESENT
+            | :REOCCURRING
+            | :TELEPHONE_ORDER
+            | :UNKNOWN
+
+          class Cardholder < Lithic::Enum
+            DEFERRED_BILLING: :DEFERRED_BILLING
+            ELECTRONIC_ORDER: :ELECTRONIC_ORDER
+            INSTALLMENT: :INSTALLMENT
+            MAIL_ORDER: :MAIL_ORDER
+            NOT_PRESENT: :NOT_PRESENT
+            PREAUTHORIZED: :PREAUTHORIZED
+            PRESENT: :PRESENT
+            REOCCURRING: :REOCCURRING
+            TELEPHONE_ORDER: :TELEPHONE_ORDER
+            UNKNOWN: :UNKNOWN
+
+            def self.values: -> ::Array[Lithic::Models::Transaction::Pos::EntryMode::cardholder]
+          end
+
+          type pan =
+            :AUTO_ENTRY
+            | :BAR_CODE
+            | :CONTACTLESS
+            | :CREDENTIAL_ON_FILE
+            | :ECOMMERCE
+            | :ERROR_KEYED
+            | :ERROR_MAGNETIC_STRIPE
+            | :ICC
+            | :KEY_ENTERED
+            | :MAGNETIC_STRIPE
+            | :MANUAL
+            | :OCR
+            | :SECURE_CARDLESS
+            | :UNKNOWN
+            | :UNSPECIFIED
+
+          class Pan < Lithic::Enum
+            AUTO_ENTRY: :AUTO_ENTRY
+            BAR_CODE: :BAR_CODE
+            CONTACTLESS: :CONTACTLESS
+            CREDENTIAL_ON_FILE: :CREDENTIAL_ON_FILE
+            ECOMMERCE: :ECOMMERCE
+            ERROR_KEYED: :ERROR_KEYED
+            ERROR_MAGNETIC_STRIPE: :ERROR_MAGNETIC_STRIPE
+            ICC: :ICC
+            KEY_ENTERED: :KEY_ENTERED
+            MAGNETIC_STRIPE: :MAGNETIC_STRIPE
+            MANUAL: :MANUAL
+            OCR: :OCR
+            SECURE_CARDLESS: :SECURE_CARDLESS
+            UNKNOWN: :UNKNOWN
+            UNSPECIFIED: :UNSPECIFIED
+
+            def self.values: -> ::Array[Lithic::Models::Transaction::Pos::EntryMode::pan]
+          end
+        end
+
+        type terminal =
+          {
+            attended: bool,
+            card_retention_capable: bool,
+            on_premise: bool,
+            operator: Lithic::Models::Transaction::Pos::Terminal::operator,
+            partial_approval_capable: bool,
+            pin_capability: Lithic::Models::Transaction::Pos::Terminal::pin_capability,
+            type: Lithic::Models::Transaction::Pos::Terminal::type_
+          }
+
+        class Terminal < Lithic::BaseModel
+          attr_accessor attended: bool
+
+          attr_accessor card_retention_capable: bool
+
+          attr_accessor on_premise: bool
+
+          attr_accessor operator: Lithic::Models::Transaction::Pos::Terminal::operator
+
+          attr_accessor partial_approval_capable: bool
+
+          attr_accessor pin_capability: Lithic::Models::Transaction::Pos::Terminal::pin_capability
+
+          attr_accessor type: Lithic::Models::Transaction::Pos::Terminal::type_
+
+          def initialize: (
+            attended: bool,
+            card_retention_capable: bool,
+            on_premise: bool,
+            operator: Lithic::Models::Transaction::Pos::Terminal::operator,
+            partial_approval_capable: bool,
+            pin_capability: Lithic::Models::Transaction::Pos::Terminal::pin_capability,
+            type: Lithic::Models::Transaction::Pos::Terminal::type_
+          ) -> void
+
+          def to_hash: -> Lithic::Models::Transaction::Pos::terminal
+
+          type operator =
+            :ADMINISTRATIVE | :CARDHOLDER | :CARD_ACCEPTOR | :UNKNOWN
+
+          class Operator < Lithic::Enum
+            ADMINISTRATIVE: :ADMINISTRATIVE
+            CARDHOLDER: :CARDHOLDER
+            CARD_ACCEPTOR: :CARD_ACCEPTOR
+            UNKNOWN: :UNKNOWN
+
+            def self.values: -> ::Array[Lithic::Models::Transaction::Pos::Terminal::operator]
+          end
+
+          type pin_capability =
+            :CAPABLE | :INOPERATIVE | :NOT_CAPABLE | :UNSPECIFIED
+
+          class PinCapability < Lithic::Enum
+            CAPABLE: :CAPABLE
+            INOPERATIVE: :INOPERATIVE
+            NOT_CAPABLE: :NOT_CAPABLE
+            UNSPECIFIED: :UNSPECIFIED
+
+            def self.values: -> ::Array[Lithic::Models::Transaction::Pos::Terminal::pin_capability]
+          end
+
+          type type_ =
+            :ADMINISTRATIVE
+            | :ATM
+            | :AUTHORIZATION
+            | :COUPON_MACHINE
+            | :DIAL_TERMINAL
+            | :ECOMMERCE
+            | :ECR
+            | :FUEL_MACHINE
+            | :HOME_TERMINAL
+            | :MICR
+            | :OFF_PREMISE
+            | :PAYMENT
+            | :PDA
+            | :PHONE
+            | :POINT
+            | :POS_TERMINAL
+            | :PUBLIC_UTILITY
+            | :SELF_SERVICE
+            | :TELEVISION
+            | :TELLER
+            | :TRAVELERS_CHECK_MACHINE
+            | :VENDING
+            | :VOICE
+            | :UNKNOWN
+
+          class Type < Lithic::Enum
+            ADMINISTRATIVE: :ADMINISTRATIVE
+            ATM: :ATM
+            AUTHORIZATION: :AUTHORIZATION
+            COUPON_MACHINE: :COUPON_MACHINE
+            DIAL_TERMINAL: :DIAL_TERMINAL
+            ECOMMERCE: :ECOMMERCE
+            ECR: :ECR
+            FUEL_MACHINE: :FUEL_MACHINE
+            HOME_TERMINAL: :HOME_TERMINAL
+            MICR: :MICR
+            OFF_PREMISE: :OFF_PREMISE
+            PAYMENT: :PAYMENT
+            PDA: :PDA
+            PHONE: :PHONE
+            POINT: :POINT
+            POS_TERMINAL: :POS_TERMINAL
+            PUBLIC_UTILITY: :PUBLIC_UTILITY
+            SELF_SERVICE: :SELF_SERVICE
+            TELEVISION: :TELEVISION
+            TELLER: :TELLER
+            TRAVELERS_CHECK_MACHINE: :TRAVELERS_CHECK_MACHINE
+            VENDING: :VENDING
+            VOICE: :VOICE
+            UNKNOWN: :UNKNOWN
+
+            def self.values: -> ::Array[Lithic::Models::Transaction::Pos::Terminal::type_]
+          end
+        end
+      end
+
+      type result =
+        :ACCOUNT_STATE_TRANSACTION_FAIL
+        | :APPROVED
+        | :BANK_CONNECTION_ERROR
+        | :BANK_NOT_VERIFIED
+        | :CARD_CLOSED
+        | :CARD_PAUSED
+        | :DECLINED
+        | :FRAUD_ADVICE
+        | :IGNORED_TTL_EXPIRY
+        | :INACTIVE_ACCOUNT
+        | :INCORRECT_PIN
+        | :INVALID_CARD_DETAILS
+        | :INSUFFICIENT_FUNDS
+        | :INSUFFICIENT_FUNDS_PRELOAD
+        | :INVALID_TRANSACTION
+        | :MERCHANT_BLACKLIST
+        | :ORIGINAL_NOT_FOUND
+        | :PREVIOUSLY_COMPLETED
+        | :SINGLE_USE_RECHARGED
+        | :SWITCH_INOPERATIVE_ADVICE
+        | :UNAUTHORIZED_MERCHANT
+        | :UNKNOWN_HOST_TIMEOUT
+        | :USER_TRANSACTION_LIMIT
+
+      class Result < Lithic::Enum
+        ACCOUNT_STATE_TRANSACTION_FAIL: :ACCOUNT_STATE_TRANSACTION_FAIL
+        APPROVED: :APPROVED
+        BANK_CONNECTION_ERROR: :BANK_CONNECTION_ERROR
+        BANK_NOT_VERIFIED: :BANK_NOT_VERIFIED
+        CARD_CLOSED: :CARD_CLOSED
+        CARD_PAUSED: :CARD_PAUSED
+        DECLINED: :DECLINED
+        FRAUD_ADVICE: :FRAUD_ADVICE
+        IGNORED_TTL_EXPIRY: :IGNORED_TTL_EXPIRY
+        INACTIVE_ACCOUNT: :INACTIVE_ACCOUNT
+        INCORRECT_PIN: :INCORRECT_PIN
+        INVALID_CARD_DETAILS: :INVALID_CARD_DETAILS
+        INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
+        INSUFFICIENT_FUNDS_PRELOAD: :INSUFFICIENT_FUNDS_PRELOAD
+        INVALID_TRANSACTION: :INVALID_TRANSACTION
+        MERCHANT_BLACKLIST: :MERCHANT_BLACKLIST
+        ORIGINAL_NOT_FOUND: :ORIGINAL_NOT_FOUND
+        PREVIOUSLY_COMPLETED: :PREVIOUSLY_COMPLETED
+        SINGLE_USE_RECHARGED: :SINGLE_USE_RECHARGED
+        SWITCH_INOPERATIVE_ADVICE: :SWITCH_INOPERATIVE_ADVICE
+        UNAUTHORIZED_MERCHANT: :UNAUTHORIZED_MERCHANT
+        UNKNOWN_HOST_TIMEOUT: :UNKNOWN_HOST_TIMEOUT
+        USER_TRANSACTION_LIMIT: :USER_TRANSACTION_LIMIT
+
+        def self.values: -> ::Array[Lithic::Models::Transaction::result]
+      end
+
+      type status = :DECLINED | :EXPIRED | :PENDING | :SETTLED | :VOIDED
+
+      class Status < Lithic::Enum
+        DECLINED: :DECLINED
+        EXPIRED: :EXPIRED
+        PENDING: :PENDING
+        SETTLED: :SETTLED
+        VOIDED: :VOIDED
+
+        def self.values: -> ::Array[Lithic::Models::Transaction::status]
+      end
+
+      type token_info =
+        { wallet_type: Lithic::Models::Transaction::TokenInfo::wallet_type }
+
+      class TokenInfo < Lithic::BaseModel
+        attr_accessor wallet_type: Lithic::Models::Transaction::TokenInfo::wallet_type
+
+        def initialize: (
+          wallet_type: Lithic::Models::Transaction::TokenInfo::wallet_type
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Transaction::token_info
+
+        type wallet_type =
+          :APPLE_PAY
+          | :GOOGLE_PAY
+          | :MASTERPASS
+          | :MERCHANT
+          | :OTHER
+          | :SAMSUNG_PAY
+
+        class WalletType < Lithic::Enum
+          APPLE_PAY: :APPLE_PAY
+          GOOGLE_PAY: :GOOGLE_PAY
+          MASTERPASS: :MASTERPASS
+          MERCHANT: :MERCHANT
+          OTHER: :OTHER
+          SAMSUNG_PAY: :SAMSUNG_PAY
+
+          def self.values: -> ::Array[Lithic::Models::Transaction::TokenInfo::wallet_type]
+        end
+      end
+
+      type event =
+        {
+          token: String,
+          amount: Integer,
+          amounts: Lithic::Models::Transaction::Event::Amounts,
+          created: Time,
+          detailed_results: ::Array[Lithic::Models::Transaction::Event::detailed_result],
+          effective_polarity: Lithic::Models::Transaction::Event::effective_polarity,
+          network_info: Lithic::Models::Transaction::Event::NetworkInfo?,
+          result: Lithic::Models::Transaction::Event::result,
+          rule_results: ::Array[Lithic::Models::Transaction::Event::RuleResult],
+          type: Lithic::Models::Transaction::Event::type_
+        }
+
+      class Event < Lithic::BaseModel
+        attr_accessor token: String
+
+        attr_accessor amount: Integer
+
+        attr_accessor amounts: Lithic::Models::Transaction::Event::Amounts
+
+        attr_accessor created: Time
+
+        attr_accessor detailed_results: ::Array[Lithic::Models::Transaction::Event::detailed_result]
+
+        attr_accessor effective_polarity: Lithic::Models::Transaction::Event::effective_polarity
+
+        attr_accessor network_info: Lithic::Models::Transaction::Event::NetworkInfo?
+
+        attr_accessor result: Lithic::Models::Transaction::Event::result
+
+        attr_accessor rule_results: ::Array[Lithic::Models::Transaction::Event::RuleResult]
+
+        attr_accessor type: Lithic::Models::Transaction::Event::type_
+
+        def initialize: (
+          token: String,
+          amount: Integer,
+          amounts: Lithic::Models::Transaction::Event::Amounts,
+          created: Time,
+          detailed_results: ::Array[Lithic::Models::Transaction::Event::detailed_result],
+          effective_polarity: Lithic::Models::Transaction::Event::effective_polarity,
+          network_info: Lithic::Models::Transaction::Event::NetworkInfo?,
+          result: Lithic::Models::Transaction::Event::result,
+          rule_results: ::Array[Lithic::Models::Transaction::Event::RuleResult],
+          type: Lithic::Models::Transaction::Event::type_
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Transaction::event
+
+        type amounts =
+          {
+            cardholder: Lithic::Models::Transaction::Event::Amounts::Cardholder,
+            merchant: Lithic::Models::Transaction::Event::Amounts::Merchant,
+            settlement: Lithic::Models::Transaction::Event::Amounts::Settlement?
+          }
+
+        class Amounts < Lithic::BaseModel
+          attr_accessor cardholder: Lithic::Models::Transaction::Event::Amounts::Cardholder
+
+          attr_accessor merchant: Lithic::Models::Transaction::Event::Amounts::Merchant
+
+          attr_accessor settlement: Lithic::Models::Transaction::Event::Amounts::Settlement?
+
+          def initialize: (
+            cardholder: Lithic::Models::Transaction::Event::Amounts::Cardholder,
+            merchant: Lithic::Models::Transaction::Event::Amounts::Merchant,
+            settlement: Lithic::Models::Transaction::Event::Amounts::Settlement?
+          ) -> void
+
+          def to_hash: -> Lithic::Models::Transaction::Event::amounts
+
+          type cardholder =
+            { amount: Integer, conversion_rate: String, currency: String }
+
+          class Cardholder < Lithic::BaseModel
+            attr_accessor amount: Integer
+
+            attr_accessor conversion_rate: String
+
+            attr_accessor currency: String
+
+            def initialize: (
+              amount: Integer,
+              conversion_rate: String,
+              currency: String
+            ) -> void
+
+            def to_hash: -> Lithic::Models::Transaction::Event::Amounts::cardholder
+          end
+
+          type merchant = { amount: Integer, currency: String }
+
+          class Merchant < Lithic::BaseModel
+            attr_accessor amount: Integer
+
+            attr_accessor currency: String
+
+            def initialize: (amount: Integer, currency: String) -> void
+
+            def to_hash: -> Lithic::Models::Transaction::Event::Amounts::merchant
+          end
+
+          type settlement =
+            { amount: Integer, conversion_rate: String, currency: String }
+
+          class Settlement < Lithic::BaseModel
+            attr_accessor amount: Integer
+
+            attr_accessor conversion_rate: String
+
+            attr_accessor currency: String
+
+            def initialize: (
+              amount: Integer,
+              conversion_rate: String,
+              currency: String
+            ) -> void
+
+            def to_hash: -> Lithic::Models::Transaction::Event::Amounts::settlement
+          end
+        end
+
+        type detailed_result =
+          :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
+          | :ACCOUNT_DELINQUENT
+          | :ACCOUNT_INACTIVE
+          | :ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED
+          | :ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED
+          | :ACCOUNT_UNDER_REVIEW
+          | :ADDRESS_INCORRECT
+          | :APPROVED
+          | :AUTH_RULE_ALLOWED_COUNTRY
+          | :AUTH_RULE_ALLOWED_MCC
+          | :AUTH_RULE_BLOCKED_COUNTRY
+          | :AUTH_RULE_BLOCKED_MCC
+          | :CARD_CLOSED
+          | :CARD_CRYPTOGRAM_VALIDATION_FAILURE
+          | :CARD_EXPIRED
+          | :CARD_EXPIRY_DATE_INCORRECT
+          | :CARD_INVALID
+          | :CARD_NOT_ACTIVATED
+          | :CARD_PAUSED
+          | :CARD_PIN_INCORRECT
+          | :CARD_RESTRICTED
+          | :CARD_SECURITY_CODE_INCORRECT
+          | :CARD_SPEND_LIMIT_EXCEEDED
+          | :CONTACT_CARD_ISSUER
+          | :CUSTOMER_ASA_TIMEOUT
+          | :CUSTOM_ASA_RESULT
+          | :DECLINED
+          | :DO_NOT_HONOR
+          | :DRIVER_NUMBER_INVALID
+          | :FORMAT_ERROR
+          | :INSUFFICIENT_FUNDING_SOURCE_BALANCE
+          | :INSUFFICIENT_FUNDS
+          | :LITHIC_SYSTEM_ERROR
+          | :LITHIC_SYSTEM_RATE_LIMIT
+          | :MALFORMED_ASA_RESPONSE
+          | :MERCHANT_INVALID
+          | :MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE
+          | :MERCHANT_NOT_PERMITTED
+          | :OVER_REVERSAL_ATTEMPTED
+          | :PIN_BLOCKED
+          | :PROGRAM_CARD_SPEND_LIMIT_EXCEEDED
+          | :PROGRAM_SUSPENDED
+          | :PROGRAM_USAGE_RESTRICTION
+          | :REVERSAL_UNMATCHED
+          | :SECURITY_VIOLATION
+          | :SINGLE_USE_CARD_REATTEMPTED
+          | :TRANSACTION_INVALID
+          | :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
+          | :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER
+          | :TRANSACTION_PREVIOUSLY_COMPLETED
+          | :UNAUTHORIZED_MERCHANT
+          | :VEHICLE_NUMBER_INVALID
+
+        class DetailedResult < Lithic::Enum
+          ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED: :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
+          ACCOUNT_DELINQUENT: :ACCOUNT_DELINQUENT
+          ACCOUNT_INACTIVE: :ACCOUNT_INACTIVE
+          ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED: :ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED
+          ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED: :ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED
+          ACCOUNT_UNDER_REVIEW: :ACCOUNT_UNDER_REVIEW
+          ADDRESS_INCORRECT: :ADDRESS_INCORRECT
+          APPROVED: :APPROVED
+          AUTH_RULE_ALLOWED_COUNTRY: :AUTH_RULE_ALLOWED_COUNTRY
+          AUTH_RULE_ALLOWED_MCC: :AUTH_RULE_ALLOWED_MCC
+          AUTH_RULE_BLOCKED_COUNTRY: :AUTH_RULE_BLOCKED_COUNTRY
+          AUTH_RULE_BLOCKED_MCC: :AUTH_RULE_BLOCKED_MCC
+          CARD_CLOSED: :CARD_CLOSED
+          CARD_CRYPTOGRAM_VALIDATION_FAILURE: :CARD_CRYPTOGRAM_VALIDATION_FAILURE
+          CARD_EXPIRED: :CARD_EXPIRED
+          CARD_EXPIRY_DATE_INCORRECT: :CARD_EXPIRY_DATE_INCORRECT
+          CARD_INVALID: :CARD_INVALID
+          CARD_NOT_ACTIVATED: :CARD_NOT_ACTIVATED
+          CARD_PAUSED: :CARD_PAUSED
+          CARD_PIN_INCORRECT: :CARD_PIN_INCORRECT
+          CARD_RESTRICTED: :CARD_RESTRICTED
+          CARD_SECURITY_CODE_INCORRECT: :CARD_SECURITY_CODE_INCORRECT
+          CARD_SPEND_LIMIT_EXCEEDED: :CARD_SPEND_LIMIT_EXCEEDED
+          CONTACT_CARD_ISSUER: :CONTACT_CARD_ISSUER
+          CUSTOMER_ASA_TIMEOUT: :CUSTOMER_ASA_TIMEOUT
+          CUSTOM_ASA_RESULT: :CUSTOM_ASA_RESULT
+          DECLINED: :DECLINED
+          DO_NOT_HONOR: :DO_NOT_HONOR
+          DRIVER_NUMBER_INVALID: :DRIVER_NUMBER_INVALID
+          FORMAT_ERROR: :FORMAT_ERROR
+          INSUFFICIENT_FUNDING_SOURCE_BALANCE: :INSUFFICIENT_FUNDING_SOURCE_BALANCE
+          INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
+          LITHIC_SYSTEM_ERROR: :LITHIC_SYSTEM_ERROR
+          LITHIC_SYSTEM_RATE_LIMIT: :LITHIC_SYSTEM_RATE_LIMIT
+          MALFORMED_ASA_RESPONSE: :MALFORMED_ASA_RESPONSE
+          MERCHANT_INVALID: :MERCHANT_INVALID
+          MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE: :MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE
+          MERCHANT_NOT_PERMITTED: :MERCHANT_NOT_PERMITTED
+          OVER_REVERSAL_ATTEMPTED: :OVER_REVERSAL_ATTEMPTED
+          PIN_BLOCKED: :PIN_BLOCKED
+          PROGRAM_CARD_SPEND_LIMIT_EXCEEDED: :PROGRAM_CARD_SPEND_LIMIT_EXCEEDED
+          PROGRAM_SUSPENDED: :PROGRAM_SUSPENDED
+          PROGRAM_USAGE_RESTRICTION: :PROGRAM_USAGE_RESTRICTION
+          REVERSAL_UNMATCHED: :REVERSAL_UNMATCHED
+          SECURITY_VIOLATION: :SECURITY_VIOLATION
+          SINGLE_USE_CARD_REATTEMPTED: :SINGLE_USE_CARD_REATTEMPTED
+          TRANSACTION_INVALID: :TRANSACTION_INVALID
+          TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL: :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
+          TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER: :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER
+          TRANSACTION_PREVIOUSLY_COMPLETED: :TRANSACTION_PREVIOUSLY_COMPLETED
+          UNAUTHORIZED_MERCHANT: :UNAUTHORIZED_MERCHANT
+          VEHICLE_NUMBER_INVALID: :VEHICLE_NUMBER_INVALID
+
+          def self.values: -> ::Array[Lithic::Models::Transaction::Event::detailed_result]
+        end
+
+        type effective_polarity = :CREDIT | :DEBIT
+
+        class EffectivePolarity < Lithic::Enum
+          CREDIT: :CREDIT
+          DEBIT: :DEBIT
+
+          def self.values: -> ::Array[Lithic::Models::Transaction::Event::effective_polarity]
+        end
+
+        type network_info =
+          {
+            acquirer: Lithic::Models::Transaction::Event::NetworkInfo::Acquirer?,
+            mastercard: Lithic::Models::Transaction::Event::NetworkInfo::Mastercard?,
+            visa: Lithic::Models::Transaction::Event::NetworkInfo::Visa?
+          }
+
+        class NetworkInfo < Lithic::BaseModel
+          attr_accessor acquirer: Lithic::Models::Transaction::Event::NetworkInfo::Acquirer?
+
+          attr_accessor mastercard: Lithic::Models::Transaction::Event::NetworkInfo::Mastercard?
+
+          attr_accessor visa: Lithic::Models::Transaction::Event::NetworkInfo::Visa?
+
+          def initialize: (
+            acquirer: Lithic::Models::Transaction::Event::NetworkInfo::Acquirer?,
+            mastercard: Lithic::Models::Transaction::Event::NetworkInfo::Mastercard?,
+            visa: Lithic::Models::Transaction::Event::NetworkInfo::Visa?
+          ) -> void
+
+          def to_hash: -> Lithic::Models::Transaction::Event::network_info
+
+          type acquirer =
+            {
+              acquirer_reference_number: String?,
+              retrieval_reference_number: String?
+            }
+
+          class Acquirer < Lithic::BaseModel
+            attr_accessor acquirer_reference_number: String?
+
+            attr_accessor retrieval_reference_number: String?
+
+            def initialize: (
+              acquirer_reference_number: String?,
+              retrieval_reference_number: String?
+            ) -> void
+
+            def to_hash: -> Lithic::Models::Transaction::Event::NetworkInfo::acquirer
+          end
+
+          type mastercard =
+            {
+              banknet_reference_number: String?,
+              original_banknet_reference_number: String?,
+              original_switch_serial_number: String?,
+              switch_serial_number: String?
+            }
+
+          class Mastercard < Lithic::BaseModel
+            attr_accessor banknet_reference_number: String?
+
+            attr_accessor original_banknet_reference_number: String?
+
+            attr_accessor original_switch_serial_number: String?
+
+            attr_accessor switch_serial_number: String?
+
+            def initialize: (
+              banknet_reference_number: String?,
+              original_banknet_reference_number: String?,
+              original_switch_serial_number: String?,
+              switch_serial_number: String?
+            ) -> void
+
+            def to_hash: -> Lithic::Models::Transaction::Event::NetworkInfo::mastercard
+          end
+
+          type visa =
+            { original_transaction_id: String?, transaction_id: String? }
+
+          class Visa < Lithic::BaseModel
+            attr_accessor original_transaction_id: String?
+
+            attr_accessor transaction_id: String?
+
+            def initialize: (
+              original_transaction_id: String?,
+              transaction_id: String?
+            ) -> void
+
+            def to_hash: -> Lithic::Models::Transaction::Event::NetworkInfo::visa
+          end
+        end
+
+        type result =
+          :ACCOUNT_STATE_TRANSACTION_FAIL
+          | :APPROVED
+          | :BANK_CONNECTION_ERROR
+          | :BANK_NOT_VERIFIED
+          | :CARD_CLOSED
+          | :CARD_PAUSED
+          | :DECLINED
+          | :FRAUD_ADVICE
+          | :IGNORED_TTL_EXPIRY
+          | :INACTIVE_ACCOUNT
+          | :INCORRECT_PIN
+          | :INVALID_CARD_DETAILS
+          | :INSUFFICIENT_FUNDS
+          | :INSUFFICIENT_FUNDS_PRELOAD
+          | :INVALID_TRANSACTION
+          | :MERCHANT_BLACKLIST
+          | :ORIGINAL_NOT_FOUND
+          | :PREVIOUSLY_COMPLETED
+          | :SINGLE_USE_RECHARGED
+          | :SWITCH_INOPERATIVE_ADVICE
+          | :UNAUTHORIZED_MERCHANT
+          | :UNKNOWN_HOST_TIMEOUT
+          | :USER_TRANSACTION_LIMIT
+
+        class Result < Lithic::Enum
+          ACCOUNT_STATE_TRANSACTION_FAIL: :ACCOUNT_STATE_TRANSACTION_FAIL
+          APPROVED: :APPROVED
+          BANK_CONNECTION_ERROR: :BANK_CONNECTION_ERROR
+          BANK_NOT_VERIFIED: :BANK_NOT_VERIFIED
+          CARD_CLOSED: :CARD_CLOSED
+          CARD_PAUSED: :CARD_PAUSED
+          DECLINED: :DECLINED
+          FRAUD_ADVICE: :FRAUD_ADVICE
+          IGNORED_TTL_EXPIRY: :IGNORED_TTL_EXPIRY
+          INACTIVE_ACCOUNT: :INACTIVE_ACCOUNT
+          INCORRECT_PIN: :INCORRECT_PIN
+          INVALID_CARD_DETAILS: :INVALID_CARD_DETAILS
+          INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
+          INSUFFICIENT_FUNDS_PRELOAD: :INSUFFICIENT_FUNDS_PRELOAD
+          INVALID_TRANSACTION: :INVALID_TRANSACTION
+          MERCHANT_BLACKLIST: :MERCHANT_BLACKLIST
+          ORIGINAL_NOT_FOUND: :ORIGINAL_NOT_FOUND
+          PREVIOUSLY_COMPLETED: :PREVIOUSLY_COMPLETED
+          SINGLE_USE_RECHARGED: :SINGLE_USE_RECHARGED
+          SWITCH_INOPERATIVE_ADVICE: :SWITCH_INOPERATIVE_ADVICE
+          UNAUTHORIZED_MERCHANT: :UNAUTHORIZED_MERCHANT
+          UNKNOWN_HOST_TIMEOUT: :UNKNOWN_HOST_TIMEOUT
+          USER_TRANSACTION_LIMIT: :USER_TRANSACTION_LIMIT
+
+          def self.values: -> ::Array[Lithic::Models::Transaction::Event::result]
+        end
+
+        type rule_result =
+          {
+            auth_rule_token: String?,
+            explanation: String?,
+            name: String?,
+            result: Lithic::Models::Transaction::Event::RuleResult::result
+          }
+
+        class RuleResult < Lithic::BaseModel
+          attr_accessor auth_rule_token: String?
+
+          attr_accessor explanation: String?
+
+          attr_accessor name: String?
+
+          attr_accessor result: Lithic::Models::Transaction::Event::RuleResult::result
+
+          def initialize: (
+            auth_rule_token: String?,
+            explanation: String?,
+            name: String?,
+            result: Lithic::Models::Transaction::Event::RuleResult::result
+          ) -> void
+
+          def to_hash: -> Lithic::Models::Transaction::Event::rule_result
+
+          type result =
+            :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
+            | :ACCOUNT_DELINQUENT
+            | :ACCOUNT_INACTIVE
+            | :ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED
+            | :ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED
+            | :ACCOUNT_UNDER_REVIEW
+            | :ADDRESS_INCORRECT
+            | :APPROVED
+            | :AUTH_RULE_ALLOWED_COUNTRY
+            | :AUTH_RULE_ALLOWED_MCC
+            | :AUTH_RULE_BLOCKED_COUNTRY
+            | :AUTH_RULE_BLOCKED_MCC
+            | :CARD_CLOSED
+            | :CARD_CRYPTOGRAM_VALIDATION_FAILURE
+            | :CARD_EXPIRED
+            | :CARD_EXPIRY_DATE_INCORRECT
+            | :CARD_INVALID
+            | :CARD_NOT_ACTIVATED
+            | :CARD_PAUSED
+            | :CARD_PIN_INCORRECT
+            | :CARD_RESTRICTED
+            | :CARD_SECURITY_CODE_INCORRECT
+            | :CARD_SPEND_LIMIT_EXCEEDED
+            | :CONTACT_CARD_ISSUER
+            | :CUSTOMER_ASA_TIMEOUT
+            | :CUSTOM_ASA_RESULT
+            | :DECLINED
+            | :DO_NOT_HONOR
+            | :DRIVER_NUMBER_INVALID
+            | :FORMAT_ERROR
+            | :INSUFFICIENT_FUNDING_SOURCE_BALANCE
+            | :INSUFFICIENT_FUNDS
+            | :LITHIC_SYSTEM_ERROR
+            | :LITHIC_SYSTEM_RATE_LIMIT
+            | :MALFORMED_ASA_RESPONSE
+            | :MERCHANT_INVALID
+            | :MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE
+            | :MERCHANT_NOT_PERMITTED
+            | :OVER_REVERSAL_ATTEMPTED
+            | :PIN_BLOCKED
+            | :PROGRAM_CARD_SPEND_LIMIT_EXCEEDED
+            | :PROGRAM_SUSPENDED
+            | :PROGRAM_USAGE_RESTRICTION
+            | :REVERSAL_UNMATCHED
+            | :SECURITY_VIOLATION
+            | :SINGLE_USE_CARD_REATTEMPTED
+            | :TRANSACTION_INVALID
+            | :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
+            | :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER
+            | :TRANSACTION_PREVIOUSLY_COMPLETED
+            | :UNAUTHORIZED_MERCHANT
+            | :VEHICLE_NUMBER_INVALID
+
+          class Result < Lithic::Enum
+            ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED: :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
+            ACCOUNT_DELINQUENT: :ACCOUNT_DELINQUENT
+            ACCOUNT_INACTIVE: :ACCOUNT_INACTIVE
+            ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED: :ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED
+            ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED: :ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED
+            ACCOUNT_UNDER_REVIEW: :ACCOUNT_UNDER_REVIEW
+            ADDRESS_INCORRECT: :ADDRESS_INCORRECT
+            APPROVED: :APPROVED
+            AUTH_RULE_ALLOWED_COUNTRY: :AUTH_RULE_ALLOWED_COUNTRY
+            AUTH_RULE_ALLOWED_MCC: :AUTH_RULE_ALLOWED_MCC
+            AUTH_RULE_BLOCKED_COUNTRY: :AUTH_RULE_BLOCKED_COUNTRY
+            AUTH_RULE_BLOCKED_MCC: :AUTH_RULE_BLOCKED_MCC
+            CARD_CLOSED: :CARD_CLOSED
+            CARD_CRYPTOGRAM_VALIDATION_FAILURE: :CARD_CRYPTOGRAM_VALIDATION_FAILURE
+            CARD_EXPIRED: :CARD_EXPIRED
+            CARD_EXPIRY_DATE_INCORRECT: :CARD_EXPIRY_DATE_INCORRECT
+            CARD_INVALID: :CARD_INVALID
+            CARD_NOT_ACTIVATED: :CARD_NOT_ACTIVATED
+            CARD_PAUSED: :CARD_PAUSED
+            CARD_PIN_INCORRECT: :CARD_PIN_INCORRECT
+            CARD_RESTRICTED: :CARD_RESTRICTED
+            CARD_SECURITY_CODE_INCORRECT: :CARD_SECURITY_CODE_INCORRECT
+            CARD_SPEND_LIMIT_EXCEEDED: :CARD_SPEND_LIMIT_EXCEEDED
+            CONTACT_CARD_ISSUER: :CONTACT_CARD_ISSUER
+            CUSTOMER_ASA_TIMEOUT: :CUSTOMER_ASA_TIMEOUT
+            CUSTOM_ASA_RESULT: :CUSTOM_ASA_RESULT
+            DECLINED: :DECLINED
+            DO_NOT_HONOR: :DO_NOT_HONOR
+            DRIVER_NUMBER_INVALID: :DRIVER_NUMBER_INVALID
+            FORMAT_ERROR: :FORMAT_ERROR
+            INSUFFICIENT_FUNDING_SOURCE_BALANCE: :INSUFFICIENT_FUNDING_SOURCE_BALANCE
+            INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
+            LITHIC_SYSTEM_ERROR: :LITHIC_SYSTEM_ERROR
+            LITHIC_SYSTEM_RATE_LIMIT: :LITHIC_SYSTEM_RATE_LIMIT
+            MALFORMED_ASA_RESPONSE: :MALFORMED_ASA_RESPONSE
+            MERCHANT_INVALID: :MERCHANT_INVALID
+            MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE: :MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE
+            MERCHANT_NOT_PERMITTED: :MERCHANT_NOT_PERMITTED
+            OVER_REVERSAL_ATTEMPTED: :OVER_REVERSAL_ATTEMPTED
+            PIN_BLOCKED: :PIN_BLOCKED
+            PROGRAM_CARD_SPEND_LIMIT_EXCEEDED: :PROGRAM_CARD_SPEND_LIMIT_EXCEEDED
+            PROGRAM_SUSPENDED: :PROGRAM_SUSPENDED
+            PROGRAM_USAGE_RESTRICTION: :PROGRAM_USAGE_RESTRICTION
+            REVERSAL_UNMATCHED: :REVERSAL_UNMATCHED
+            SECURITY_VIOLATION: :SECURITY_VIOLATION
+            SINGLE_USE_CARD_REATTEMPTED: :SINGLE_USE_CARD_REATTEMPTED
+            TRANSACTION_INVALID: :TRANSACTION_INVALID
+            TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL: :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
+            TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER: :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER
+            TRANSACTION_PREVIOUSLY_COMPLETED: :TRANSACTION_PREVIOUSLY_COMPLETED
+            UNAUTHORIZED_MERCHANT: :UNAUTHORIZED_MERCHANT
+            VEHICLE_NUMBER_INVALID: :VEHICLE_NUMBER_INVALID
+
+            def self.values: -> ::Array[Lithic::Models::Transaction::Event::RuleResult::result]
+          end
+        end
+
+        type type_ =
+          :AUTHORIZATION
+          | :AUTHORIZATION_ADVICE
+          | :AUTHORIZATION_EXPIRY
+          | :AUTHORIZATION_REVERSAL
+          | :BALANCE_INQUIRY
+          | :CLEARING
+          | :CORRECTION_CREDIT
+          | :CORRECTION_DEBIT
+          | :CREDIT_AUTHORIZATION
+          | :CREDIT_AUTHORIZATION_ADVICE
+          | :FINANCIAL_AUTHORIZATION
+          | :FINANCIAL_CREDIT_AUTHORIZATION
+          | :RETURN
+          | :RETURN_REVERSAL
+
+        class Type < Lithic::Enum
+          AUTHORIZATION: :AUTHORIZATION
+          AUTHORIZATION_ADVICE: :AUTHORIZATION_ADVICE
+          AUTHORIZATION_EXPIRY: :AUTHORIZATION_EXPIRY
+          AUTHORIZATION_REVERSAL: :AUTHORIZATION_REVERSAL
+          BALANCE_INQUIRY: :BALANCE_INQUIRY
+          CLEARING: :CLEARING
+          CORRECTION_CREDIT: :CORRECTION_CREDIT
+          CORRECTION_DEBIT: :CORRECTION_DEBIT
+          CREDIT_AUTHORIZATION: :CREDIT_AUTHORIZATION
+          CREDIT_AUTHORIZATION_ADVICE: :CREDIT_AUTHORIZATION_ADVICE
+          FINANCIAL_AUTHORIZATION: :FINANCIAL_AUTHORIZATION
+          FINANCIAL_CREDIT_AUTHORIZATION: :FINANCIAL_CREDIT_AUTHORIZATION
+          RETURN: :RETURN
+          RETURN_REVERSAL: :RETURN_REVERSAL
+
+          def self.values: -> ::Array[Lithic::Models::Transaction::Event::type_]
+        end
+      end
+    end
+  end
+end

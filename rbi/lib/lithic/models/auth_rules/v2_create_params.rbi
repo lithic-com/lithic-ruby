@@ -1,0 +1,171 @@
+# typed: strong
+
+module Lithic
+  module Models
+    module AuthRules
+      class V2CreateParams < Lithic::BaseModel
+        extend Lithic::RequestParameters::Converter
+        include Lithic::RequestParameters
+
+        # Account tokens to which the Auth Rule applies.
+        sig { returns(T::Array[String]) }
+        def account_tokens
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def account_tokens=(_)
+        end
+
+        # Auth Rule Name
+        sig { returns(T.nilable(String)) }
+        def name
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def name=(_)
+        end
+
+        # Parameters for the Auth Rule
+        sig do
+          returns(
+            T.nilable(
+              T.any(
+                Lithic::Models::AuthRules::ConditionalBlockParameters,
+                Lithic::Models::AuthRules::VelocityLimitParams
+              )
+            )
+          )
+        end
+        def parameters
+        end
+
+        sig do
+          params(
+            _: T.any(
+              Lithic::Models::AuthRules::ConditionalBlockParameters,
+              Lithic::Models::AuthRules::VelocityLimitParams
+            )
+          )
+            .returns(
+              T.any(
+                Lithic::Models::AuthRules::ConditionalBlockParameters,
+                Lithic::Models::AuthRules::VelocityLimitParams
+              )
+            )
+        end
+        def parameters=(_)
+        end
+
+        # The type of Auth Rule
+        sig { returns(T.nilable(Symbol)) }
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
+
+        # Card tokens to which the Auth Rule applies.
+        sig { returns(T::Array[String]) }
+        def card_tokens
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def card_tokens=(_)
+        end
+
+        # Whether the Auth Rule applies to all authorizations on the card program.
+        sig { returns(T::Boolean) }
+        def program_level
+        end
+
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def program_level=(_)
+        end
+
+        # Card tokens to which the Auth Rule does not apply.
+        sig { returns(T.nilable(T::Array[String])) }
+        def excluded_card_tokens
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def excluded_card_tokens=(_)
+        end
+
+        sig do
+          params(
+            account_tokens: T::Array[String],
+            card_tokens: T::Array[String],
+            program_level: T::Boolean,
+            name: T.nilable(String),
+            parameters: T.any(
+              Lithic::Models::AuthRules::ConditionalBlockParameters,
+              Lithic::Models::AuthRules::VelocityLimitParams
+            ),
+            type: Symbol,
+            excluded_card_tokens: T::Array[String],
+            request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          )
+            .returns(T.attached_class)
+        end
+        def self.new(
+          account_tokens:,
+          card_tokens:,
+          program_level:,
+          name: nil,
+          parameters: nil,
+          type: nil,
+          excluded_card_tokens: nil,
+          request_options: {}
+        )
+        end
+
+        sig do
+          override
+            .returns(
+              {
+                account_tokens: T::Array[String],
+                name: T.nilable(String),
+                parameters: T.any(
+                  Lithic::Models::AuthRules::ConditionalBlockParameters,
+                  Lithic::Models::AuthRules::VelocityLimitParams
+                ),
+                type: Symbol,
+                card_tokens: T::Array[String],
+                program_level: T::Boolean,
+                excluded_card_tokens: T::Array[String],
+                request_options: Lithic::RequestOptions
+              }
+            )
+        end
+        def to_hash
+        end
+
+        # Parameters for the Auth Rule
+        class Parameters < Lithic::Union
+          abstract!
+
+          Variants =
+            type_template(:out) do
+              {
+                fixed: T.any(
+                  Lithic::Models::AuthRules::ConditionalBlockParameters,
+                  Lithic::Models::AuthRules::VelocityLimitParams
+                )
+              }
+            end
+        end
+
+        # The type of Auth Rule
+        class Type < Lithic::Enum
+          abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
+
+          CONDITIONAL_BLOCK = :CONDITIONAL_BLOCK
+          VELOCITY_LIMIT = :VELOCITY_LIMIT
+        end
+      end
+    end
+  end
+end

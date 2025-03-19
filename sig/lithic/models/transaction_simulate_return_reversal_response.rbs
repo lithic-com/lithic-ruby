@@ -1,0 +1,16 @@
+module Lithic
+  module Models
+    type transaction_simulate_return_reversal_response =
+      { debugging_request_id: String }
+
+    class TransactionSimulateReturnReversalResponse < Lithic::BaseModel
+      attr_reader debugging_request_id: String?
+
+      def debugging_request_id=: (String) -> String
+
+      def initialize: (?debugging_request_id: String) -> void
+
+      def to_hash: -> Lithic::Models::transaction_simulate_return_reversal_response
+    end
+  end
+end

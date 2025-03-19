@@ -1,0 +1,18 @@
+module Lithic
+  module Models
+    type account_holder_list_documents_response =
+      { data: ::Array[Lithic::Models::Document] }
+
+    class AccountHolderListDocumentsResponse < Lithic::BaseModel
+      attr_reader data: ::Array[Lithic::Models::Document]?
+
+      def data=: (
+        ::Array[Lithic::Models::Document]
+      ) -> ::Array[Lithic::Models::Document]
+
+      def initialize: (?data: ::Array[Lithic::Models::Document]) -> void
+
+      def to_hash: -> Lithic::Models::account_holder_list_documents_response
+    end
+  end
+end

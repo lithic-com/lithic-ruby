@@ -1,0 +1,16 @@
+module Lithic
+  module Models
+    module CreditProducts
+      type extended_credit_retrieve_params = {  } & Lithic::request_parameters
+
+      class ExtendedCreditRetrieveParams < Lithic::BaseModel
+        extend Lithic::RequestParameters::Converter
+        include Lithic::RequestParameters
+
+        def initialize: (?request_options: Lithic::request_opts) -> void
+
+        def to_hash: -> Lithic::Models::CreditProducts::extended_credit_retrieve_params
+      end
+    end
+  end
+end

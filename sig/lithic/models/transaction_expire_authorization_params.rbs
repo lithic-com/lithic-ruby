@@ -1,0 +1,15 @@
+module Lithic
+  module Models
+    type transaction_expire_authorization_params =
+      {  } & Lithic::request_parameters
+
+    class TransactionExpireAuthorizationParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      def initialize: (?request_options: Lithic::request_opts) -> void
+
+      def to_hash: -> Lithic::Models::transaction_expire_authorization_params
+    end
+  end
+end

@@ -1,0 +1,57 @@
+module Lithic
+  module Models
+    type message_attempt =
+      {
+        token: String,
+        created: Time,
+        event_subscription_token: String,
+        event_token: String,
+        response: String,
+        response_status_code: Integer,
+        status: Lithic::Models::MessageAttempt::status,
+        url: String
+      }
+
+    class MessageAttempt < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor created: Time
+
+      attr_accessor event_subscription_token: String
+
+      attr_accessor event_token: String
+
+      attr_accessor response: String
+
+      attr_accessor response_status_code: Integer
+
+      attr_accessor status: Lithic::Models::MessageAttempt::status
+
+      attr_accessor url: String
+
+      def initialize: (
+        token: String,
+        created: Time,
+        event_subscription_token: String,
+        event_token: String,
+        response: String,
+        response_status_code: Integer,
+        status: Lithic::Models::MessageAttempt::status,
+        url: String
+      ) -> void
+
+      def to_hash: -> Lithic::Models::message_attempt
+
+      type status = :FAILED | :PENDING | :SENDING | :SUCCESS
+
+      class Status < Lithic::Enum
+        FAILED: :FAILED
+        PENDING: :PENDING
+        SENDING: :SENDING
+        SUCCESS: :SUCCESS
+
+        def self.values: -> ::Array[Lithic::Models::MessageAttempt::status]
+      end
+    end
+  end
+end

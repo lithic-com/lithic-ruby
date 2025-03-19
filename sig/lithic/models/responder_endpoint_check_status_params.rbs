@@ -1,0 +1,32 @@
+module Lithic
+  module Models
+    type responder_endpoint_check_status_params =
+      { type: Lithic::Models::ResponderEndpointCheckStatusParams::type_ }
+      & Lithic::request_parameters
+
+    class ResponderEndpointCheckStatusParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor type: Lithic::Models::ResponderEndpointCheckStatusParams::type_
+
+      def initialize: (
+        type: Lithic::Models::ResponderEndpointCheckStatusParams::type_,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::responder_endpoint_check_status_params
+
+      type type_ =
+        :AUTH_STREAM_ACCESS | :THREE_DS_DECISIONING | :TOKENIZATION_DECISIONING
+
+      class Type < Lithic::Enum
+        AUTH_STREAM_ACCESS: :AUTH_STREAM_ACCESS
+        THREE_DS_DECISIONING: :THREE_DS_DECISIONING
+        TOKENIZATION_DECISIONING: :TOKENIZATION_DECISIONING
+
+        def self.values: -> ::Array[Lithic::Models::ResponderEndpointCheckStatusParams::type_]
+      end
+    end
+  end
+end

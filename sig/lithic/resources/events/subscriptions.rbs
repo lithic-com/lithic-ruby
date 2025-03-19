@@ -1,0 +1,84 @@
+module Lithic
+  module Resources
+    class Events
+      class Subscriptions
+        def create: (
+          url: String,
+          ?description: String,
+          ?disabled: bool,
+          ?event_types: ::Array[Lithic::Models::Events::SubscriptionCreateParams::event_type],
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::EventSubscription
+
+        def retrieve: (
+          String event_subscription_token,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::EventSubscription
+
+        def update: (
+          String event_subscription_token,
+          url: String,
+          ?description: String,
+          ?disabled: bool,
+          ?event_types: ::Array[Lithic::Models::Events::SubscriptionUpdateParams::event_type],
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::EventSubscription
+
+        def list: (
+          ?ending_before: String,
+          ?page_size: Integer,
+          ?starting_after: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::CursorPage[Lithic::Models::EventSubscription]
+
+        def delete: (
+          String event_subscription_token,
+          ?request_options: Lithic::request_opts
+        ) -> nil
+
+        def list_attempts: (
+          String event_subscription_token,
+          ?begin_: Time,
+          ?end_: Time,
+          ?ending_before: String,
+          ?page_size: Integer,
+          ?starting_after: String,
+          ?status: Lithic::Models::Events::SubscriptionListAttemptsParams::status,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::CursorPage[Lithic::Models::MessageAttempt]
+
+        def recover: (
+          String event_subscription_token,
+          ?begin_: Time,
+          ?end_: Time,
+          ?request_options: Lithic::request_opts
+        ) -> nil
+
+        def replay_missing: (
+          String event_subscription_token,
+          ?begin_: Time,
+          ?end_: Time,
+          ?request_options: Lithic::request_opts
+        ) -> nil
+
+        def retrieve_secret: (
+          String event_subscription_token,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::Events::SubscriptionRetrieveSecretResponse
+
+        def rotate_secret: (
+          String event_subscription_token,
+          ?request_options: Lithic::request_opts
+        ) -> nil
+
+        def send_simulated_example: (
+          String event_subscription_token,
+          ?event_type: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::event_type,
+          ?request_options: Lithic::request_opts
+        ) -> nil
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

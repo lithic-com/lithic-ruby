@@ -1,0 +1,149 @@
+module Lithic
+  module Models
+    type settlement_detail =
+      {
+        token: String,
+        account_token: String,
+        card_program_token: String,
+        card_token: String,
+        created: Time,
+        currency: String,
+        disputes_gross_amount: Integer,
+        event_tokens: ::Array[String],
+        institution: String,
+        interchange_fee_extended_precision: Integer,
+        interchange_gross_amount: Integer,
+        network: Lithic::Models::SettlementDetail::network,
+        other_fees_details: Lithic::Models::SettlementDetail::OtherFeesDetails,
+        other_fees_gross_amount: Integer,
+        report_date: String,
+        settlement_date: String,
+        transaction_token: String,
+        transactions_gross_amount: Integer,
+        type: Lithic::Models::SettlementDetail::type_,
+        updated: Time,
+        fee_description: String
+      }
+
+    class SettlementDetail < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor account_token: String
+
+      attr_accessor card_program_token: String
+
+      attr_accessor card_token: String
+
+      attr_accessor created: Time
+
+      attr_accessor currency: String
+
+      attr_accessor disputes_gross_amount: Integer
+
+      attr_accessor event_tokens: ::Array[String]
+
+      attr_accessor institution: String
+
+      attr_accessor interchange_fee_extended_precision: Integer
+
+      attr_accessor interchange_gross_amount: Integer
+
+      attr_accessor network: Lithic::Models::SettlementDetail::network
+
+      attr_accessor other_fees_details: Lithic::Models::SettlementDetail::OtherFeesDetails
+
+      attr_accessor other_fees_gross_amount: Integer
+
+      attr_accessor report_date: String
+
+      attr_accessor settlement_date: String
+
+      attr_accessor transaction_token: String
+
+      attr_accessor transactions_gross_amount: Integer
+
+      attr_accessor type: Lithic::Models::SettlementDetail::type_
+
+      attr_accessor updated: Time
+
+      attr_reader fee_description: String?
+
+      def fee_description=: (String) -> String
+
+      def initialize: (
+        token: String,
+        account_token: String,
+        card_program_token: String,
+        card_token: String,
+        created: Time,
+        currency: String,
+        disputes_gross_amount: Integer,
+        event_tokens: ::Array[String],
+        institution: String,
+        interchange_fee_extended_precision: Integer,
+        interchange_gross_amount: Integer,
+        network: Lithic::Models::SettlementDetail::network,
+        other_fees_details: Lithic::Models::SettlementDetail::OtherFeesDetails,
+        other_fees_gross_amount: Integer,
+        report_date: String,
+        settlement_date: String,
+        transaction_token: String,
+        transactions_gross_amount: Integer,
+        type: Lithic::Models::SettlementDetail::type_,
+        updated: Time,
+        ?fee_description: String
+      ) -> void
+
+      def to_hash: -> Lithic::Models::settlement_detail
+
+      type network = :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
+
+      class Network < Lithic::Enum
+        INTERLINK: :INTERLINK
+        MAESTRO: :MAESTRO
+        MASTERCARD: :MASTERCARD
+        UNKNOWN: :UNKNOWN
+        VISA: :VISA
+
+        def self.values: -> ::Array[Lithic::Models::SettlementDetail::network]
+      end
+
+      type other_fees_details = { isa: Integer }
+
+      class OtherFeesDetails < Lithic::BaseModel
+        attr_reader isa: Integer?
+
+        def isa=: (Integer) -> Integer
+
+        def initialize: (?isa: Integer) -> void
+
+        def to_hash: -> Lithic::Models::SettlementDetail::other_fees_details
+      end
+
+      type type_ =
+        :ADJUSTMENT
+        | :ARBITRATION
+        | :CHARGEBACK
+        | :CLEARING
+        | :FEE
+        | :FINANCIAL
+        | :"NON-FINANCIAL"
+        | :PREARBITRATION
+        | :REPRESENTMENT
+
+      class Type < Lithic::Enum
+        ADJUSTMENT: :ADJUSTMENT
+        ARBITRATION: :ARBITRATION
+        CHARGEBACK: :CHARGEBACK
+        CLEARING: :CLEARING
+        FEE: :FEE
+        FINANCIAL: :FINANCIAL
+        NON_FINANCIAL: :"NON-FINANCIAL"
+        PREARBITRATION: :PREARBITRATION
+        REPRESENTMENT: :REPRESENTMENT
+
+        def self.values: -> ::Array[Lithic::Models::SettlementDetail::type_]
+      end
+    end
+  end
+end

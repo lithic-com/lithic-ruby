@@ -1,0 +1,75 @@
+module Lithic
+  module Resources
+    class ExternalBankAccounts
+      attr_reader micro_deposits: Lithic::Resources::ExternalBankAccounts::MicroDeposits
+
+      def create: (
+        account_number: String,
+        country: String,
+        currency: String,
+        financial_account_token: String,
+        owner: String,
+        owner_type: Lithic::Models::owner_type,
+        routing_number: String,
+        type: Lithic::Models::ExternalBankAccountCreateParams::type_,
+        verification_method: Lithic::Models::ExternalBankAccountCreateParams::verification_method,
+        processor_token: String,
+        ?account_token: String,
+        ?address: Lithic::Models::ExternalBankAccountAddress,
+        ?company_id: String,
+        ?dob: Date,
+        ?doing_business_as: String,
+        ?name: String,
+        ?user_defined_id: String,
+        ?verification_enforcement: bool,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ExternalBankAccountCreateResponse
+
+      def retrieve: (
+        String external_bank_account_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ExternalBankAccountRetrieveResponse
+
+      def update: (
+        String external_bank_account_token,
+        ?address: Lithic::Models::ExternalBankAccountAddress,
+        ?company_id: String,
+        ?dob: Date,
+        ?doing_business_as: String,
+        ?name: String,
+        ?owner: String,
+        ?owner_type: Lithic::Models::owner_type,
+        ?type: Lithic::Models::ExternalBankAccountUpdateParams::type_,
+        ?user_defined_id: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ExternalBankAccountUpdateResponse
+
+      def list: (
+        ?account_token: String,
+        ?account_types: ::Array[Lithic::Models::ExternalBankAccountListParams::account_type],
+        ?countries: ::Array[String],
+        ?ending_before: String,
+        ?owner_types: ::Array[Lithic::Models::owner_type],
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?states: ::Array[Lithic::Models::ExternalBankAccountListParams::state],
+        ?verification_states: ::Array[Lithic::Models::ExternalBankAccountListParams::verification_state],
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CursorPage[Lithic::Models::ExternalBankAccountListResponse]
+
+      def retry_micro_deposits: (
+        String external_bank_account_token,
+        ?financial_account_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse
+
+      def retry_prenote: (
+        String external_bank_account_token,
+        ?financial_account_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ExternalBankAccountRetryPrenoteResponse
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

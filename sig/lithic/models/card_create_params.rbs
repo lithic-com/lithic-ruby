@@ -1,0 +1,174 @@
+module Lithic
+  module Models
+    type card_create_params =
+      {
+        type: Lithic::Models::CardCreateParams::type_,
+        account_token: String,
+        card_program_token: String,
+        carrier: Lithic::Models::Carrier,
+        digital_card_art_token: String,
+        exp_month: String,
+        exp_year: String,
+        memo: String,
+        pin: String,
+        product_id: String,
+        replacement_account_token: String,
+        replacement_for: String,
+        shipping_address: Lithic::Models::ShippingAddress,
+        shipping_method: Lithic::Models::CardCreateParams::shipping_method,
+        spend_limit: Integer,
+        spend_limit_duration: Lithic::Models::spend_limit_duration,
+        state: Lithic::Models::CardCreateParams::state
+      }
+      & Lithic::request_parameters
+
+    class CardCreateParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor type: Lithic::Models::CardCreateParams::type_
+
+      attr_reader account_token: String?
+
+      def account_token=: (String) -> String
+
+      attr_reader card_program_token: String?
+
+      def card_program_token=: (String) -> String
+
+      attr_reader carrier: Lithic::Models::Carrier?
+
+      def carrier=: (Lithic::Models::Carrier) -> Lithic::Models::Carrier
+
+      attr_reader digital_card_art_token: String?
+
+      def digital_card_art_token=: (String) -> String
+
+      attr_reader exp_month: String?
+
+      def exp_month=: (String) -> String
+
+      attr_reader exp_year: String?
+
+      def exp_year=: (String) -> String
+
+      attr_reader memo: String?
+
+      def memo=: (String) -> String
+
+      attr_reader pin: String?
+
+      def pin=: (String) -> String
+
+      attr_reader product_id: String?
+
+      def product_id=: (String) -> String
+
+      attr_reader replacement_account_token: String?
+
+      def replacement_account_token=: (String) -> String
+
+      attr_reader replacement_for: String?
+
+      def replacement_for=: (String) -> String
+
+      attr_reader shipping_address: Lithic::Models::ShippingAddress?
+
+      def shipping_address=: (
+        Lithic::Models::ShippingAddress
+      ) -> Lithic::Models::ShippingAddress
+
+      attr_reader shipping_method: Lithic::Models::CardCreateParams::shipping_method?
+
+      def shipping_method=: (
+        Lithic::Models::CardCreateParams::shipping_method
+      ) -> Lithic::Models::CardCreateParams::shipping_method
+
+      attr_reader spend_limit: Integer?
+
+      def spend_limit=: (Integer) -> Integer
+
+      attr_reader spend_limit_duration: Lithic::Models::spend_limit_duration?
+
+      def spend_limit_duration=: (
+        Lithic::Models::spend_limit_duration
+      ) -> Lithic::Models::spend_limit_duration
+
+      attr_reader state: Lithic::Models::CardCreateParams::state?
+
+      def state=: (
+        Lithic::Models::CardCreateParams::state
+      ) -> Lithic::Models::CardCreateParams::state
+
+      def initialize: (
+        type: Lithic::Models::CardCreateParams::type_,
+        ?account_token: String,
+        ?card_program_token: String,
+        ?carrier: Lithic::Models::Carrier,
+        ?digital_card_art_token: String,
+        ?exp_month: String,
+        ?exp_year: String,
+        ?memo: String,
+        ?pin: String,
+        ?product_id: String,
+        ?replacement_account_token: String,
+        ?replacement_for: String,
+        ?shipping_address: Lithic::Models::ShippingAddress,
+        ?shipping_method: Lithic::Models::CardCreateParams::shipping_method,
+        ?spend_limit: Integer,
+        ?spend_limit_duration: Lithic::Models::spend_limit_duration,
+        ?state: Lithic::Models::CardCreateParams::state,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::card_create_params
+
+      type type_ =
+        :MERCHANT_LOCKED
+        | :PHYSICAL
+        | :SINGLE_USE
+        | :VIRTUAL
+        | :UNLOCKED
+        | :DIGITAL_WALLET
+
+      class Type < Lithic::Enum
+        MERCHANT_LOCKED: :MERCHANT_LOCKED
+        PHYSICAL: :PHYSICAL
+        SINGLE_USE: :SINGLE_USE
+        VIRTUAL: :VIRTUAL
+        UNLOCKED: :UNLOCKED
+        DIGITAL_WALLET: :DIGITAL_WALLET
+
+        def self.values: -> ::Array[Lithic::Models::CardCreateParams::type_]
+      end
+
+      type shipping_method =
+        :"2_DAY"
+        | :EXPEDITED
+        | :EXPRESS
+        | :PRIORITY
+        | :STANDARD
+        | :STANDARD_WITH_TRACKING
+
+      class ShippingMethod < Lithic::Enum
+        NUMBER_2_DAY: :"2_DAY"
+        EXPEDITED: :EXPEDITED
+        EXPRESS: :EXPRESS
+        PRIORITY: :PRIORITY
+        STANDARD: :STANDARD
+        STANDARD_WITH_TRACKING: :STANDARD_WITH_TRACKING
+
+        def self.values: -> ::Array[Lithic::Models::CardCreateParams::shipping_method]
+      end
+
+      type state = :OPEN | :PAUSED
+
+      class State < Lithic::Enum
+        OPEN: :OPEN
+        PAUSED: :PAUSED
+
+        def self.values: -> ::Array[Lithic::Models::CardCreateParams::state]
+      end
+    end
+  end
+end

@@ -1,0 +1,104 @@
+module Lithic
+  module Models
+    type management_operation_list_params =
+      {
+        begin_: Time,
+        business_account_token: String,
+        category: Lithic::Models::ManagementOperationListParams::category,
+        end_: Time,
+        ending_before: String,
+        financial_account_token: String,
+        page_size: Integer,
+        starting_after: String,
+        status: Lithic::Models::ManagementOperationListParams::status
+      }
+      & Lithic::request_parameters
+
+    class ManagementOperationListParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader begin_: Time?
+
+      def begin_=: (Time) -> Time
+
+      attr_reader business_account_token: String?
+
+      def business_account_token=: (String) -> String
+
+      attr_reader category: Lithic::Models::ManagementOperationListParams::category?
+
+      def category=: (
+        Lithic::Models::ManagementOperationListParams::category
+      ) -> Lithic::Models::ManagementOperationListParams::category
+
+      attr_reader end_: Time?
+
+      def end_=: (Time) -> Time
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader financial_account_token: String?
+
+      def financial_account_token=: (String) -> String
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      attr_reader status: Lithic::Models::ManagementOperationListParams::status?
+
+      def status=: (
+        Lithic::Models::ManagementOperationListParams::status
+      ) -> Lithic::Models::ManagementOperationListParams::status
+
+      def initialize: (
+        ?begin_: Time,
+        ?business_account_token: String,
+        ?category: Lithic::Models::ManagementOperationListParams::category,
+        ?end_: Time,
+        ?ending_before: String,
+        ?financial_account_token: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?status: Lithic::Models::ManagementOperationListParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::management_operation_list_params
+
+      type category =
+        :MANAGEMENT_FEE
+        | :MANAGEMENT_DISPUTE
+        | :MANAGEMENT_REWARD
+        | :MANAGEMENT_ADJUSTMENT
+
+      class Category < Lithic::Enum
+        MANAGEMENT_FEE: :MANAGEMENT_FEE
+        MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
+        MANAGEMENT_REWARD: :MANAGEMENT_REWARD
+        MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
+
+        def self.values: -> ::Array[Lithic::Models::ManagementOperationListParams::category]
+      end
+
+      type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
+
+      class Status < Lithic::Enum
+        PENDING: :PENDING
+        SETTLED: :SETTLED
+        DECLINED: :DECLINED
+        REVERSED: :REVERSED
+        CANCELED: :CANCELED
+
+        def self.values: -> ::Array[Lithic::Models::ManagementOperationListParams::status]
+      end
+    end
+  end
+end

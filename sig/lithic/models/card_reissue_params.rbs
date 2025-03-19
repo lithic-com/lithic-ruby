@@ -1,0 +1,66 @@
+module Lithic
+  module Models
+    type card_reissue_params =
+      {
+        carrier: Lithic::Models::Carrier,
+        product_id: String,
+        shipping_address: Lithic::Models::ShippingAddress,
+        shipping_method: Lithic::Models::CardReissueParams::shipping_method
+      }
+      & Lithic::request_parameters
+
+    class CardReissueParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader carrier: Lithic::Models::Carrier?
+
+      def carrier=: (Lithic::Models::Carrier) -> Lithic::Models::Carrier
+
+      attr_reader product_id: String?
+
+      def product_id=: (String) -> String
+
+      attr_reader shipping_address: Lithic::Models::ShippingAddress?
+
+      def shipping_address=: (
+        Lithic::Models::ShippingAddress
+      ) -> Lithic::Models::ShippingAddress
+
+      attr_reader shipping_method: Lithic::Models::CardReissueParams::shipping_method?
+
+      def shipping_method=: (
+        Lithic::Models::CardReissueParams::shipping_method
+      ) -> Lithic::Models::CardReissueParams::shipping_method
+
+      def initialize: (
+        ?carrier: Lithic::Models::Carrier,
+        ?product_id: String,
+        ?shipping_address: Lithic::Models::ShippingAddress,
+        ?shipping_method: Lithic::Models::CardReissueParams::shipping_method,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::card_reissue_params
+
+      type shipping_method =
+        :"2-DAY"
+        | :EXPEDITED
+        | :EXPRESS
+        | :PRIORITY
+        | :STANDARD
+        | :STANDARD_WITH_TRACKING
+
+      class ShippingMethod < Lithic::Enum
+        NUMBER_2_DAY: :"2-DAY"
+        EXPEDITED: :EXPEDITED
+        EXPRESS: :EXPRESS
+        PRIORITY: :PRIORITY
+        STANDARD: :STANDARD
+        STANDARD_WITH_TRACKING: :STANDARD_WITH_TRACKING
+
+        def self.values: -> ::Array[Lithic::Models::CardReissueParams::shipping_method]
+      end
+    end
+  end
+end

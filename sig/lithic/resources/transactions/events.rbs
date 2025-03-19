@@ -1,0 +1,11 @@
+module Lithic
+  module Resources
+    class Transactions
+      class Events
+        attr_reader enhanced_commercial_data: Lithic::Resources::Transactions::Events::EnhancedCommercialData
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

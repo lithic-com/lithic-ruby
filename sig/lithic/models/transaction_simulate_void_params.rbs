@@ -1,0 +1,46 @@
+module Lithic
+  module Models
+    type transaction_simulate_void_params =
+      {
+        token: String,
+        amount: Integer,
+        type: Lithic::Models::TransactionSimulateVoidParams::type_
+      }
+      & Lithic::request_parameters
+
+    class TransactionSimulateVoidParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor token: String
+
+      attr_reader amount: Integer?
+
+      def amount=: (Integer) -> Integer
+
+      attr_reader type: Lithic::Models::TransactionSimulateVoidParams::type_?
+
+      def type=: (
+        Lithic::Models::TransactionSimulateVoidParams::type_
+      ) -> Lithic::Models::TransactionSimulateVoidParams::type_
+
+      def initialize: (
+        token: String,
+        ?amount: Integer,
+        ?type: Lithic::Models::TransactionSimulateVoidParams::type_,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::transaction_simulate_void_params
+
+      type type_ = :AUTHORIZATION_EXPIRY | :AUTHORIZATION_REVERSAL
+
+      class Type < Lithic::Enum
+        AUTHORIZATION_EXPIRY: :AUTHORIZATION_EXPIRY
+        AUTHORIZATION_REVERSAL: :AUTHORIZATION_REVERSAL
+
+        def self.values: -> ::Array[Lithic::Models::TransactionSimulateVoidParams::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,66 @@
+module Lithic
+  module Models
+    type shipping_address =
+      {
+        :address1 => String,
+        city: String,
+        country: String,
+        first_name: String,
+        last_name: String,
+        postal_code: String,
+        state: String,
+        :address2 => String,
+        email: String,
+        :line2_text => String,
+        phone_number: String
+      }
+
+    class ShippingAddress < Lithic::BaseModel
+      attr_accessor address1: String
+
+      attr_accessor city: String
+
+      attr_accessor country: String
+
+      attr_accessor first_name: String
+
+      attr_accessor last_name: String
+
+      attr_accessor postal_code: String
+
+      attr_accessor state: String
+
+      attr_reader address2: String?
+
+      def address2=: (String) -> String
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      attr_reader line2_text: String?
+
+      def line2_text=: (String) -> String
+
+      attr_reader phone_number: String?
+
+      def phone_number=: (String) -> String
+
+      def initialize: (
+        address1: String,
+        city: String,
+        country: String,
+        first_name: String,
+        last_name: String,
+        postal_code: String,
+        state: String,
+        ?address2: String,
+        ?email: String,
+        ?line2_text: String,
+        ?phone_number: String
+      ) -> void
+
+      def to_hash: -> Lithic::Models::shipping_address
+    end
+  end
+end

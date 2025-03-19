@@ -1,0 +1,20 @@
+module Lithic
+  module Resources
+    class FinancialAccounts
+      class Statements
+        class LineItems
+          def list: (
+            String statement_token,
+            financial_account_token: String,
+            ?ending_before: String,
+            ?page_size: Integer,
+            ?starting_after: String,
+            ?request_options: Lithic::request_opts
+          ) -> Lithic::CursorPage[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data]
+
+          def initialize: (client: Lithic::Client) -> void
+        end
+      end
+    end
+  end
+end

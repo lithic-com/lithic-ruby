@@ -1,0 +1,29 @@
+module Lithic
+  module Models
+    module Events
+      type subscription_recover_params =
+        { begin_: Time, end_: Time } & Lithic::request_parameters
+
+      class SubscriptionRecoverParams < Lithic::BaseModel
+        extend Lithic::RequestParameters::Converter
+        include Lithic::RequestParameters
+
+        attr_reader begin_: Time?
+
+        def begin_=: (Time) -> Time
+
+        attr_reader end_: Time?
+
+        def end_=: (Time) -> Time
+
+        def initialize: (
+          ?begin_: Time,
+          ?end_: Time,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Events::subscription_recover_params
+      end
+    end
+  end
+end

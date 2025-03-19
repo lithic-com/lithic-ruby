@@ -1,0 +1,76 @@
+module Lithic
+  module Models
+    module AuthRules
+      type v2_create_params =
+        {
+          account_tokens: ::Array[String],
+          name: String?,
+          parameters: Lithic::Models::AuthRules::V2CreateParams::parameters,
+          type: Lithic::Models::AuthRules::V2CreateParams::type_,
+          card_tokens: ::Array[String],
+          program_level: bool,
+          excluded_card_tokens: ::Array[String]
+        }
+        & Lithic::request_parameters
+
+      class V2CreateParams < Lithic::BaseModel
+        extend Lithic::RequestParameters::Converter
+        include Lithic::RequestParameters
+
+        attr_accessor account_tokens: ::Array[String]
+
+        attr_accessor name: String?
+
+        attr_reader parameters: Lithic::Models::AuthRules::V2CreateParams::parameters?
+
+        def parameters=: (
+          Lithic::Models::AuthRules::V2CreateParams::parameters
+        ) -> Lithic::Models::AuthRules::V2CreateParams::parameters
+
+        attr_reader type: Lithic::Models::AuthRules::V2CreateParams::type_?
+
+        def type=: (
+          Lithic::Models::AuthRules::V2CreateParams::type_
+        ) -> Lithic::Models::AuthRules::V2CreateParams::type_
+
+        attr_accessor card_tokens: ::Array[String]
+
+        attr_accessor program_level: bool
+
+        attr_reader excluded_card_tokens: ::Array[String]?
+
+        def excluded_card_tokens=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          account_tokens: ::Array[String],
+          card_tokens: ::Array[String],
+          program_level: bool,
+          ?name: String?,
+          ?parameters: Lithic::Models::AuthRules::V2CreateParams::parameters,
+          ?type: Lithic::Models::AuthRules::V2CreateParams::type_,
+          ?excluded_card_tokens: ::Array[String],
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> Lithic::Models::AuthRules::v2_create_params
+
+        type parameters =
+          Lithic::Models::AuthRules::ConditionalBlockParameters
+          | Lithic::Models::AuthRules::VelocityLimitParams
+
+        class Parameters < Lithic::Union
+          def self.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+        end
+
+        type type_ = :CONDITIONAL_BLOCK | :VELOCITY_LIMIT
+
+        class Type < Lithic::Enum
+          CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
+          VELOCITY_LIMIT: :VELOCITY_LIMIT
+
+          def self.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::type_]
+        end
+      end
+    end
+  end
+end

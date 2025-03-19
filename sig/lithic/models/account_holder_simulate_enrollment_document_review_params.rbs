@@ -1,0 +1,81 @@
+module Lithic
+  module Models
+    type account_holder_simulate_enrollment_document_review_params =
+      {
+        document_upload_token: String,
+        status: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status,
+        accepted_entity_status_reasons: ::Array[String],
+        status_reason: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status_reason
+      }
+      & Lithic::request_parameters
+
+    class AccountHolderSimulateEnrollmentDocumentReviewParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor document_upload_token: String
+
+      attr_accessor status: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status
+
+      attr_reader accepted_entity_status_reasons: ::Array[String]?
+
+      def accepted_entity_status_reasons=: (::Array[String]) -> ::Array[String]
+
+      attr_reader status_reason: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status_reason?
+
+      def status_reason=: (
+        Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status_reason
+      ) -> Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status_reason
+
+      def initialize: (
+        document_upload_token: String,
+        status: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status,
+        ?accepted_entity_status_reasons: ::Array[String],
+        ?status_reason: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status_reason,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::account_holder_simulate_enrollment_document_review_params
+
+      type status = :UPLOADED | :ACCEPTED | :REJECTED | :PARTIAL_APPROVAL
+
+      class Status < Lithic::Enum
+        UPLOADED: :UPLOADED
+        ACCEPTED: :ACCEPTED
+        REJECTED: :REJECTED
+        PARTIAL_APPROVAL: :PARTIAL_APPROVAL
+
+        def self.values: -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status]
+      end
+
+      type status_reason =
+        :DOCUMENT_MISSING_REQUIRED_DATA
+        | :DOCUMENT_UPLOAD_TOO_BLURRY
+        | :FILE_SIZE_TOO_LARGE
+        | :INVALID_DOCUMENT_TYPE
+        | :INVALID_DOCUMENT_UPLOAD
+        | :INVALID_ENTITY
+        | :DOCUMENT_EXPIRED
+        | :DOCUMENT_ISSUED_GREATER_THAN_30_DAYS
+        | :DOCUMENT_TYPE_NOT_SUPPORTED
+        | :UNKNOWN_FAILURE_REASON
+        | :UNKNOWN_ERROR
+
+      class StatusReason < Lithic::Enum
+        DOCUMENT_MISSING_REQUIRED_DATA: :DOCUMENT_MISSING_REQUIRED_DATA
+        DOCUMENT_UPLOAD_TOO_BLURRY: :DOCUMENT_UPLOAD_TOO_BLURRY
+        FILE_SIZE_TOO_LARGE: :FILE_SIZE_TOO_LARGE
+        INVALID_DOCUMENT_TYPE: :INVALID_DOCUMENT_TYPE
+        INVALID_DOCUMENT_UPLOAD: :INVALID_DOCUMENT_UPLOAD
+        INVALID_ENTITY: :INVALID_ENTITY
+        DOCUMENT_EXPIRED: :DOCUMENT_EXPIRED
+        DOCUMENT_ISSUED_GREATER_THAN_30_DAYS: :DOCUMENT_ISSUED_GREATER_THAN_30_DAYS
+        DOCUMENT_TYPE_NOT_SUPPORTED: :DOCUMENT_TYPE_NOT_SUPPORTED
+        UNKNOWN_FAILURE_REASON: :UNKNOWN_FAILURE_REASON
+        UNKNOWN_ERROR: :UNKNOWN_ERROR
+
+        def self.values: -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status_reason]
+      end
+    end
+  end
+end
