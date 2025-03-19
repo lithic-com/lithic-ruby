@@ -1,0 +1,12 @@
+module Lithic
+  module Models
+    type owner_type = :INDIVIDUAL | :BUSINESS
+
+    class OwnerType < Lithic::Enum
+      INDIVIDUAL: :INDIVIDUAL
+      BUSINESS: :BUSINESS
+
+      def self.values: -> ::Array[Lithic::Models::owner_type]
+    end
+  end
+end

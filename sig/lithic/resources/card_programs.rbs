@@ -1,0 +1,19 @@
+module Lithic
+  module Resources
+    class CardPrograms
+      def retrieve: (
+        String card_program_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::CardProgram
+
+      def list: (
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CursorPage[Lithic::Models::CardProgram]
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,46 @@
+module Lithic
+  module Resources
+    class ManagementOperations
+      def create: (
+        amount: Integer,
+        category: Lithic::Models::ManagementOperationCreateParams::category,
+        direction: Lithic::Models::ManagementOperationCreateParams::direction,
+        effective_date: Date,
+        event_type: Lithic::Models::ManagementOperationCreateParams::event_type,
+        financial_account_token: String,
+        ?token: String,
+        ?memo: String,
+        ?subtype: String,
+        ?user_defined_id: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ManagementOperationTransaction
+
+      def retrieve: (
+        String management_operation_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ManagementOperationTransaction
+
+      def list: (
+        ?begin_: Time,
+        ?business_account_token: String,
+        ?category: Lithic::Models::ManagementOperationListParams::category,
+        ?end_: Time,
+        ?ending_before: String,
+        ?financial_account_token: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?status: Lithic::Models::ManagementOperationListParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CursorPage[Lithic::Models::ManagementOperationTransaction]
+
+      def reverse: (
+        String management_operation_token,
+        effective_date: Date,
+        ?memo: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ManagementOperationTransaction
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

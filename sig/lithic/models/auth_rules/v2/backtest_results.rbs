@@ -1,0 +1,198 @@
+module Lithic
+  module Models
+    module AuthRules
+      module V2
+        type backtest_results =
+          {
+            backtest_token: String,
+            results: Lithic::Models::AuthRules::V2::BacktestResults::Results,
+            simulation_parameters: Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters
+          }
+
+        class BacktestResults < Lithic::BaseModel
+          attr_accessor backtest_token: String
+
+          attr_accessor results: Lithic::Models::AuthRules::V2::BacktestResults::Results
+
+          attr_accessor simulation_parameters: Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters
+
+          def initialize: (
+            backtest_token: String,
+            results: Lithic::Models::AuthRules::V2::BacktestResults::Results,
+            simulation_parameters: Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters
+          ) -> void
+
+          def to_hash: -> Lithic::Models::AuthRules::V2::backtest_results
+
+          type results =
+            {
+              current_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion?,
+              draft_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion?
+            }
+
+          class Results < Lithic::BaseModel
+            attr_accessor current_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion?
+
+            attr_accessor draft_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion?
+
+            def initialize: (
+              ?current_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion?,
+              ?draft_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion?
+            ) -> void
+
+            def to_hash: -> Lithic::Models::AuthRules::V2::BacktestResults::results
+
+            type current_version =
+              {
+                approved: Integer,
+                declined: Integer,
+                examples: ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example],
+                version: Integer
+              }
+
+            class CurrentVersion < Lithic::BaseModel
+              attr_reader approved: Integer?
+
+              def approved=: (Integer) -> Integer
+
+              attr_reader declined: Integer?
+
+              def declined=: (Integer) -> Integer
+
+              attr_reader examples: ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example]?
+
+              def examples=: (
+                ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example]
+              ) -> ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example]
+
+              attr_reader version: Integer?
+
+              def version=: (Integer) -> Integer
+
+              def initialize: (
+                ?approved: Integer,
+                ?declined: Integer,
+                ?examples: ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example],
+                ?version: Integer
+              ) -> void
+
+              def to_hash: -> Lithic::Models::AuthRules::V2::BacktestResults::Results::current_version
+
+              type example =
+                { approved: bool, event_token: String, timestamp: Time }
+
+              class Example < Lithic::BaseModel
+                attr_reader approved: bool?
+
+                def approved=: (bool) -> bool
+
+                attr_reader event_token: String?
+
+                def event_token=: (String) -> String
+
+                attr_reader timestamp: Time?
+
+                def timestamp=: (Time) -> Time
+
+                def initialize: (
+                  ?approved: bool,
+                  ?event_token: String,
+                  ?timestamp: Time
+                ) -> void
+
+                def to_hash: -> Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::example
+              end
+            end
+
+            type draft_version =
+              {
+                approved: Integer,
+                declined: Integer,
+                examples: ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example],
+                version: Integer
+              }
+
+            class DraftVersion < Lithic::BaseModel
+              attr_reader approved: Integer?
+
+              def approved=: (Integer) -> Integer
+
+              attr_reader declined: Integer?
+
+              def declined=: (Integer) -> Integer
+
+              attr_reader examples: ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example]?
+
+              def examples=: (
+                ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example]
+              ) -> ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example]
+
+              attr_reader version: Integer?
+
+              def version=: (Integer) -> Integer
+
+              def initialize: (
+                ?approved: Integer,
+                ?declined: Integer,
+                ?examples: ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example],
+                ?version: Integer
+              ) -> void
+
+              def to_hash: -> Lithic::Models::AuthRules::V2::BacktestResults::Results::draft_version
+
+              type example =
+                { approved: bool, event_token: String, timestamp: Time }
+
+              class Example < Lithic::BaseModel
+                attr_reader approved: bool?
+
+                def approved=: (bool) -> bool
+
+                attr_reader event_token: String?
+
+                def event_token=: (String) -> String
+
+                attr_reader timestamp: Time?
+
+                def timestamp=: (Time) -> Time
+
+                def initialize: (
+                  ?approved: bool,
+                  ?event_token: String,
+                  ?timestamp: Time
+                ) -> void
+
+                def to_hash: -> Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::example
+              end
+            end
+          end
+
+          type simulation_parameters =
+            { auth_rule_token: String, end_: Time, start: Time }
+
+          class SimulationParameters < Lithic::BaseModel
+            attr_reader auth_rule_token: String?
+
+            def auth_rule_token=: (String) -> String
+
+            attr_reader end_: Time?
+
+            def end_=: (Time) -> Time
+
+            attr_reader start: Time?
+
+            def start=: (Time) -> Time
+
+            def initialize: (
+              ?auth_rule_token: String,
+              ?end_: Time,
+              ?start: Time
+            ) -> void
+
+            def to_hash: -> Lithic::Models::AuthRules::V2::BacktestResults::simulation_parameters
+          end
+        end
+      end
+    end
+  end
+end

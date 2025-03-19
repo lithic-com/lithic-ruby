@@ -1,0 +1,16 @@
+module Lithic
+  module Models
+    module Reports
+      type settlement_summary_params = {  } & Lithic::request_parameters
+
+      class SettlementSummaryParams < Lithic::BaseModel
+        extend Lithic::RequestParameters::Converter
+        include Lithic::RequestParameters
+
+        def initialize: (?request_options: Lithic::request_opts) -> void
+
+        def to_hash: -> Lithic::Models::Reports::settlement_summary_params
+      end
+    end
+  end
+end

@@ -1,0 +1,150 @@
+module Lithic
+  module Models
+    type account =
+      {
+        token: String,
+        created: Time?,
+        spend_limit: Lithic::Models::Account::SpendLimit,
+        state: Lithic::Models::Account::state,
+        account_holder: Lithic::Models::Account::AccountHolder,
+        auth_rule_tokens: ::Array[String],
+        cardholder_currency: String,
+        verification_address: Lithic::Models::Account::VerificationAddress
+      }
+
+    class Account < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor created: Time?
+
+      attr_accessor spend_limit: Lithic::Models::Account::SpendLimit
+
+      attr_accessor state: Lithic::Models::Account::state
+
+      attr_reader account_holder: Lithic::Models::Account::AccountHolder?
+
+      def account_holder=: (
+        Lithic::Models::Account::AccountHolder
+      ) -> Lithic::Models::Account::AccountHolder
+
+      attr_reader auth_rule_tokens: ::Array[String]?
+
+      def auth_rule_tokens=: (::Array[String]) -> ::Array[String]
+
+      attr_reader cardholder_currency: String?
+
+      def cardholder_currency=: (String) -> String
+
+      attr_reader verification_address: Lithic::Models::Account::VerificationAddress?
+
+      def verification_address=: (
+        Lithic::Models::Account::VerificationAddress
+      ) -> Lithic::Models::Account::VerificationAddress
+
+      def initialize: (
+        token: String,
+        created: Time?,
+        spend_limit: Lithic::Models::Account::SpendLimit,
+        state: Lithic::Models::Account::state,
+        ?account_holder: Lithic::Models::Account::AccountHolder,
+        ?auth_rule_tokens: ::Array[String],
+        ?cardholder_currency: String,
+        ?verification_address: Lithic::Models::Account::VerificationAddress
+      ) -> void
+
+      def to_hash: -> Lithic::Models::account
+
+      type spend_limit = { daily: Integer, lifetime: Integer, monthly: Integer }
+
+      class SpendLimit < Lithic::BaseModel
+        attr_accessor daily: Integer
+
+        attr_accessor lifetime: Integer
+
+        attr_accessor monthly: Integer
+
+        def initialize: (
+          daily: Integer,
+          lifetime: Integer,
+          monthly: Integer
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Account::spend_limit
+      end
+
+      type state = :ACTIVE | :PAUSED | :CLOSED
+
+      class State < Lithic::Enum
+        ACTIVE: :ACTIVE
+        PAUSED: :PAUSED
+        CLOSED: :CLOSED
+
+        def self.values: -> ::Array[Lithic::Models::Account::state]
+      end
+
+      type account_holder =
+        {
+          token: String,
+          business_account_token: String,
+          email: String,
+          phone_number: String
+        }
+
+      class AccountHolder < Lithic::BaseModel
+        attr_accessor token: String
+
+        attr_accessor business_account_token: String
+
+        attr_accessor email: String
+
+        attr_accessor phone_number: String
+
+        def initialize: (
+          token: String,
+          business_account_token: String,
+          email: String,
+          phone_number: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Account::account_holder
+      end
+
+      type verification_address =
+        {
+          :address1 => String,
+          city: String,
+          country: String,
+          postal_code: String,
+          state: String,
+          :address2 => String
+        }
+
+      class VerificationAddress < Lithic::BaseModel
+        attr_accessor address1: String
+
+        attr_accessor city: String
+
+        attr_accessor country: String
+
+        attr_accessor postal_code: String
+
+        attr_accessor state: String
+
+        attr_reader address2: String?
+
+        def address2=: (String) -> String
+
+        def initialize: (
+          address1: String,
+          city: String,
+          country: String,
+          postal_code: String,
+          state: String,
+          ?address2: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Account::verification_address
+      end
+    end
+  end
+end

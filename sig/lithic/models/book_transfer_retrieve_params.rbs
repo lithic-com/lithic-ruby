@@ -1,0 +1,14 @@
+module Lithic
+  module Models
+    type book_transfer_retrieve_params = {  } & Lithic::request_parameters
+
+    class BookTransferRetrieveParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      def initialize: (?request_options: Lithic::request_opts) -> void
+
+      def to_hash: -> Lithic::Models::book_transfer_retrieve_params
+    end
+  end
+end

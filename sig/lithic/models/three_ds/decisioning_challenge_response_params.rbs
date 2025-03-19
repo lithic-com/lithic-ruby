@@ -1,0 +1,17 @@
+module Lithic
+  module Models
+    module ThreeDS
+      type decisioning_challenge_response_params =
+        {  } & Lithic::request_parameters
+
+      class DecisioningChallengeResponseParams < Lithic::Models::ThreeDS::ChallengeResponse
+        extend Lithic::RequestParameters::Converter
+        include Lithic::RequestParameters
+
+        def initialize: (?request_options: Lithic::request_opts) -> void
+
+        def to_hash: -> Lithic::Models::ThreeDS::decisioning_challenge_response_params
+      end
+    end
+  end
+end

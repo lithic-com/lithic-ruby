@@ -1,0 +1,68 @@
+module Lithic
+  module Models
+    type event_list_attempts_params =
+      {
+        begin_: Time,
+        end_: Time,
+        ending_before: String,
+        page_size: Integer,
+        starting_after: String,
+        status: Lithic::Models::EventListAttemptsParams::status
+      }
+      & Lithic::request_parameters
+
+    class EventListAttemptsParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader begin_: Time?
+
+      def begin_=: (Time) -> Time
+
+      attr_reader end_: Time?
+
+      def end_=: (Time) -> Time
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      attr_reader status: Lithic::Models::EventListAttemptsParams::status?
+
+      def status=: (
+        Lithic::Models::EventListAttemptsParams::status
+      ) -> Lithic::Models::EventListAttemptsParams::status
+
+      def initialize: (
+        ?begin_: Time,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?status: Lithic::Models::EventListAttemptsParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::event_list_attempts_params
+
+      type status = :FAILED | :PENDING | :SENDING | :SUCCESS
+
+      class Status < Lithic::Enum
+        FAILED: :FAILED
+        PENDING: :PENDING
+        SENDING: :SENDING
+        SUCCESS: :SUCCESS
+
+        def self.values: -> ::Array[Lithic::Models::EventListAttemptsParams::status]
+      end
+    end
+  end
+end

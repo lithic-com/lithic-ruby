@@ -1,0 +1,98 @@
+module Lithic
+  module Models
+    type transaction_list_params =
+      {
+        account_token: String,
+        begin_: Time,
+        card_token: String,
+        end_: Time,
+        ending_before: String,
+        page_size: Integer,
+        result: Lithic::Models::TransactionListParams::result,
+        starting_after: String,
+        status: Lithic::Models::TransactionListParams::status
+      }
+      & Lithic::request_parameters
+
+    class TransactionListParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader account_token: String?
+
+      def account_token=: (String) -> String
+
+      attr_reader begin_: Time?
+
+      def begin_=: (Time) -> Time
+
+      attr_reader card_token: String?
+
+      def card_token=: (String) -> String
+
+      attr_reader end_: Time?
+
+      def end_=: (Time) -> Time
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader result: Lithic::Models::TransactionListParams::result?
+
+      def result=: (
+        Lithic::Models::TransactionListParams::result
+      ) -> Lithic::Models::TransactionListParams::result
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      attr_reader status: Lithic::Models::TransactionListParams::status?
+
+      def status=: (
+        Lithic::Models::TransactionListParams::status
+      ) -> Lithic::Models::TransactionListParams::status
+
+      def initialize: (
+        ?account_token: String,
+        ?begin_: Time,
+        ?card_token: String,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?result: Lithic::Models::TransactionListParams::result,
+        ?starting_after: String,
+        ?status: Lithic::Models::TransactionListParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::transaction_list_params
+
+      type result = :APPROVED | :DECLINED
+
+      class Result < Lithic::Enum
+        APPROVED: :APPROVED
+        DECLINED: :DECLINED
+
+        def self.values: -> ::Array[Lithic::Models::TransactionListParams::result]
+      end
+
+      type status = :PENDING | :VOIDED | :SETTLED | :DECLINED | :EXPIRED
+
+      class Status < Lithic::Enum
+        PENDING: :PENDING
+        VOIDED: :VOIDED
+        SETTLED: :SETTLED
+        DECLINED: :DECLINED
+        EXPIRED: :EXPIRED
+
+        def self.values: -> ::Array[Lithic::Models::TransactionListParams::status]
+      end
+    end
+  end
+end

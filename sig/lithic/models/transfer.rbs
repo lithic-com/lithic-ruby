@@ -1,0 +1,322 @@
+module Lithic
+  module Models
+    type transfer =
+      {
+        token: String,
+        category: Lithic::Models::Transfer::category,
+        created: Time,
+        currency: String,
+        descriptor: String,
+        events: ::Array[Lithic::Models::Transfer::Event],
+        from_balance: ::Array[Lithic::Models::Balance],
+        pending_amount: Integer,
+        result: Lithic::Models::Transfer::result,
+        settled_amount: Integer,
+        status: Lithic::Models::Transfer::status,
+        to_balance: ::Array[Lithic::Models::Balance],
+        updated: Time
+      }
+
+    class Transfer < Lithic::BaseModel
+      attr_reader token: String?
+
+      def token=: (String) -> String
+
+      attr_reader category: Lithic::Models::Transfer::category?
+
+      def category=: (
+        Lithic::Models::Transfer::category
+      ) -> Lithic::Models::Transfer::category
+
+      attr_reader created: Time?
+
+      def created=: (Time) -> Time
+
+      attr_reader currency: String?
+
+      def currency=: (String) -> String
+
+      attr_reader descriptor: String?
+
+      def descriptor=: (String) -> String
+
+      attr_reader events: ::Array[Lithic::Models::Transfer::Event]?
+
+      def events=: (
+        ::Array[Lithic::Models::Transfer::Event]
+      ) -> ::Array[Lithic::Models::Transfer::Event]
+
+      attr_reader from_balance: ::Array[Lithic::Models::Balance]?
+
+      def from_balance=: (
+        ::Array[Lithic::Models::Balance]
+      ) -> ::Array[Lithic::Models::Balance]
+
+      attr_reader pending_amount: Integer?
+
+      def pending_amount=: (Integer) -> Integer
+
+      attr_reader result: Lithic::Models::Transfer::result?
+
+      def result=: (
+        Lithic::Models::Transfer::result
+      ) -> Lithic::Models::Transfer::result
+
+      attr_reader settled_amount: Integer?
+
+      def settled_amount=: (Integer) -> Integer
+
+      attr_reader status: Lithic::Models::Transfer::status?
+
+      def status=: (
+        Lithic::Models::Transfer::status
+      ) -> Lithic::Models::Transfer::status
+
+      attr_reader to_balance: ::Array[Lithic::Models::Balance]?
+
+      def to_balance=: (
+        ::Array[Lithic::Models::Balance]
+      ) -> ::Array[Lithic::Models::Balance]
+
+      attr_reader updated: Time?
+
+      def updated=: (Time) -> Time
+
+      def initialize: (
+        ?token: String,
+        ?category: Lithic::Models::Transfer::category,
+        ?created: Time,
+        ?currency: String,
+        ?descriptor: String,
+        ?events: ::Array[Lithic::Models::Transfer::Event],
+        ?from_balance: ::Array[Lithic::Models::Balance],
+        ?pending_amount: Integer,
+        ?result: Lithic::Models::Transfer::result,
+        ?settled_amount: Integer,
+        ?status: Lithic::Models::Transfer::status,
+        ?to_balance: ::Array[Lithic::Models::Balance],
+        ?updated: Time
+      ) -> void
+
+      def to_hash: -> Lithic::Models::transfer
+
+      type category = :TRANSFER
+
+      class Category < Lithic::Enum
+        TRANSFER: :TRANSFER
+
+        def self.values: -> ::Array[Lithic::Models::Transfer::category]
+      end
+
+      type event =
+        {
+          token: String,
+          amount: Integer,
+          created: Time,
+          result: Lithic::Models::Transfer::Event::result,
+          type: Lithic::Models::Transfer::Event::type_
+        }
+
+      class Event < Lithic::BaseModel
+        attr_reader token: String?
+
+        def token=: (String) -> String
+
+        attr_reader amount: Integer?
+
+        def amount=: (Integer) -> Integer
+
+        attr_reader created: Time?
+
+        def created=: (Time) -> Time
+
+        attr_reader result: Lithic::Models::Transfer::Event::result?
+
+        def result=: (
+          Lithic::Models::Transfer::Event::result
+        ) -> Lithic::Models::Transfer::Event::result
+
+        attr_reader type: Lithic::Models::Transfer::Event::type_?
+
+        def type=: (
+          Lithic::Models::Transfer::Event::type_
+        ) -> Lithic::Models::Transfer::Event::type_
+
+        def initialize: (
+          ?token: String,
+          ?amount: Integer,
+          ?created: Time,
+          ?result: Lithic::Models::Transfer::Event::result,
+          ?type: Lithic::Models::Transfer::Event::type_
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Transfer::event
+
+        type result = :APPROVED | :DECLINED
+
+        class Result < Lithic::Enum
+          APPROVED: :APPROVED
+          DECLINED: :DECLINED
+
+          def self.values: -> ::Array[Lithic::Models::Transfer::Event::result]
+        end
+
+        type type_ =
+          :ACH_ORIGINATION_CANCELLED
+          | :ACH_ORIGINATION_INITIATED
+          | :ACH_ORIGINATION_PROCESSED
+          | :ACH_ORIGINATION_RELEASED
+          | :ACH_ORIGINATION_REVIEWED
+          | :ACH_ORIGINATION_SETTLED
+          | :ACH_RECEIPT_PROCESSED
+          | :ACH_RECEIPT_SETTLED
+          | :ACH_RETURN_INITIATED
+          | :ACH_RETURN_PROCESSED
+          | :ACH_RETURN_SETTLED
+          | :AUTHORIZATION
+          | :AUTHORIZATION_ADVICE
+          | :AUTHORIZATION_EXPIRY
+          | :AUTHORIZATION_REVERSAL
+          | :BALANCE_INQUIRY
+          | :BILLING_ERROR
+          | :BILLING_ERROR_REVERSAL
+          | :CARD_TO_CARD
+          | :CASH_BACK
+          | :CASH_BACK_REVERSAL
+          | :CLEARING
+          | :CORRECTION_CREDIT
+          | :CORRECTION_DEBIT
+          | :CREDIT_AUTHORIZATION
+          | :CREDIT_AUTHORIZATION_ADVICE
+          | :CURRENCY_CONVERSION
+          | :CURRENCY_CONVERSION_REVERSAL
+          | :DISPUTE_WON
+          | :EXTERNAL_ACH_CANCELED
+          | :EXTERNAL_ACH_INITIATED
+          | :EXTERNAL_ACH_RELEASED
+          | :EXTERNAL_ACH_REVERSED
+          | :EXTERNAL_ACH_SETTLED
+          | :EXTERNAL_CHECK_CANCELED
+          | :EXTERNAL_CHECK_INITIATED
+          | :EXTERNAL_CHECK_RELEASED
+          | :EXTERNAL_CHECK_REVERSED
+          | :EXTERNAL_CHECK_SETTLED
+          | :EXTERNAL_TRANSFER_CANCELED
+          | :EXTERNAL_TRANSFER_INITIATED
+          | :EXTERNAL_TRANSFER_RELEASED
+          | :EXTERNAL_TRANSFER_REVERSED
+          | :EXTERNAL_TRANSFER_SETTLED
+          | :EXTERNAL_WIRE_CANCELED
+          | :EXTERNAL_WIRE_INITIATED
+          | :EXTERNAL_WIRE_RELEASED
+          | :EXTERNAL_WIRE_REVERSED
+          | :EXTERNAL_WIRE_SETTLED
+          | :FINANCIAL_AUTHORIZATION
+          | :FINANCIAL_CREDIT_AUTHORIZATION
+          | :INTEREST
+          | :INTEREST_REVERSAL
+          | :INTERNAL_ADJUSTMENT
+          | :LATE_PAYMENT
+          | :LATE_PAYMENT_REVERSAL
+          | :PROVISIONAL_CREDIT
+          | :PROVISIONAL_CREDIT_REVERSAL
+          | :RETURN
+          | :RETURN_REVERSAL
+          | :TRANSFER
+          | :TRANSFER_INSUFFICIENT_FUNDS
+          | :RETURNED_PAYMENT
+          | :RETURNED_PAYMENT_REVERSAL
+
+        class Type < Lithic::Enum
+          ACH_ORIGINATION_CANCELLED: :ACH_ORIGINATION_CANCELLED
+          ACH_ORIGINATION_INITIATED: :ACH_ORIGINATION_INITIATED
+          ACH_ORIGINATION_PROCESSED: :ACH_ORIGINATION_PROCESSED
+          ACH_ORIGINATION_RELEASED: :ACH_ORIGINATION_RELEASED
+          ACH_ORIGINATION_REVIEWED: :ACH_ORIGINATION_REVIEWED
+          ACH_ORIGINATION_SETTLED: :ACH_ORIGINATION_SETTLED
+          ACH_RECEIPT_PROCESSED: :ACH_RECEIPT_PROCESSED
+          ACH_RECEIPT_SETTLED: :ACH_RECEIPT_SETTLED
+          ACH_RETURN_INITIATED: :ACH_RETURN_INITIATED
+          ACH_RETURN_PROCESSED: :ACH_RETURN_PROCESSED
+          ACH_RETURN_SETTLED: :ACH_RETURN_SETTLED
+          AUTHORIZATION: :AUTHORIZATION
+          AUTHORIZATION_ADVICE: :AUTHORIZATION_ADVICE
+          AUTHORIZATION_EXPIRY: :AUTHORIZATION_EXPIRY
+          AUTHORIZATION_REVERSAL: :AUTHORIZATION_REVERSAL
+          BALANCE_INQUIRY: :BALANCE_INQUIRY
+          BILLING_ERROR: :BILLING_ERROR
+          BILLING_ERROR_REVERSAL: :BILLING_ERROR_REVERSAL
+          CARD_TO_CARD: :CARD_TO_CARD
+          CASH_BACK: :CASH_BACK
+          CASH_BACK_REVERSAL: :CASH_BACK_REVERSAL
+          CLEARING: :CLEARING
+          CORRECTION_CREDIT: :CORRECTION_CREDIT
+          CORRECTION_DEBIT: :CORRECTION_DEBIT
+          CREDIT_AUTHORIZATION: :CREDIT_AUTHORIZATION
+          CREDIT_AUTHORIZATION_ADVICE: :CREDIT_AUTHORIZATION_ADVICE
+          CURRENCY_CONVERSION: :CURRENCY_CONVERSION
+          CURRENCY_CONVERSION_REVERSAL: :CURRENCY_CONVERSION_REVERSAL
+          DISPUTE_WON: :DISPUTE_WON
+          EXTERNAL_ACH_CANCELED: :EXTERNAL_ACH_CANCELED
+          EXTERNAL_ACH_INITIATED: :EXTERNAL_ACH_INITIATED
+          EXTERNAL_ACH_RELEASED: :EXTERNAL_ACH_RELEASED
+          EXTERNAL_ACH_REVERSED: :EXTERNAL_ACH_REVERSED
+          EXTERNAL_ACH_SETTLED: :EXTERNAL_ACH_SETTLED
+          EXTERNAL_CHECK_CANCELED: :EXTERNAL_CHECK_CANCELED
+          EXTERNAL_CHECK_INITIATED: :EXTERNAL_CHECK_INITIATED
+          EXTERNAL_CHECK_RELEASED: :EXTERNAL_CHECK_RELEASED
+          EXTERNAL_CHECK_REVERSED: :EXTERNAL_CHECK_REVERSED
+          EXTERNAL_CHECK_SETTLED: :EXTERNAL_CHECK_SETTLED
+          EXTERNAL_TRANSFER_CANCELED: :EXTERNAL_TRANSFER_CANCELED
+          EXTERNAL_TRANSFER_INITIATED: :EXTERNAL_TRANSFER_INITIATED
+          EXTERNAL_TRANSFER_RELEASED: :EXTERNAL_TRANSFER_RELEASED
+          EXTERNAL_TRANSFER_REVERSED: :EXTERNAL_TRANSFER_REVERSED
+          EXTERNAL_TRANSFER_SETTLED: :EXTERNAL_TRANSFER_SETTLED
+          EXTERNAL_WIRE_CANCELED: :EXTERNAL_WIRE_CANCELED
+          EXTERNAL_WIRE_INITIATED: :EXTERNAL_WIRE_INITIATED
+          EXTERNAL_WIRE_RELEASED: :EXTERNAL_WIRE_RELEASED
+          EXTERNAL_WIRE_REVERSED: :EXTERNAL_WIRE_REVERSED
+          EXTERNAL_WIRE_SETTLED: :EXTERNAL_WIRE_SETTLED
+          FINANCIAL_AUTHORIZATION: :FINANCIAL_AUTHORIZATION
+          FINANCIAL_CREDIT_AUTHORIZATION: :FINANCIAL_CREDIT_AUTHORIZATION
+          INTEREST: :INTEREST
+          INTEREST_REVERSAL: :INTEREST_REVERSAL
+          INTERNAL_ADJUSTMENT: :INTERNAL_ADJUSTMENT
+          LATE_PAYMENT: :LATE_PAYMENT
+          LATE_PAYMENT_REVERSAL: :LATE_PAYMENT_REVERSAL
+          PROVISIONAL_CREDIT: :PROVISIONAL_CREDIT
+          PROVISIONAL_CREDIT_REVERSAL: :PROVISIONAL_CREDIT_REVERSAL
+          RETURN: :RETURN
+          RETURN_REVERSAL: :RETURN_REVERSAL
+          TRANSFER: :TRANSFER
+          TRANSFER_INSUFFICIENT_FUNDS: :TRANSFER_INSUFFICIENT_FUNDS
+          RETURNED_PAYMENT: :RETURNED_PAYMENT
+          RETURNED_PAYMENT_REVERSAL: :RETURNED_PAYMENT_REVERSAL
+
+          def self.values: -> ::Array[Lithic::Models::Transfer::Event::type_]
+        end
+      end
+
+      type result = :APPROVED | :DECLINED
+
+      class Result < Lithic::Enum
+        APPROVED: :APPROVED
+        DECLINED: :DECLINED
+
+        def self.values: -> ::Array[Lithic::Models::Transfer::result]
+      end
+
+      type status = :DECLINED | :EXPIRED | :PENDING | :SETTLED | :VOIDED
+
+      class Status < Lithic::Enum
+        DECLINED: :DECLINED
+        EXPIRED: :EXPIRED
+        PENDING: :PENDING
+        SETTLED: :SETTLED
+        VOIDED: :VOIDED
+
+        def self.values: -> ::Array[Lithic::Models::Transfer::status]
+      end
+    end
+  end
+end

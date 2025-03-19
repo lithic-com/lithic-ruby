@@ -1,0 +1,118 @@
+module Lithic
+  module Resources
+    class Cards
+      attr_reader aggregate_balances: Lithic::Resources::Cards::AggregateBalances
+
+      attr_reader balances: Lithic::Resources::Cards::Balances
+
+      attr_reader financial_transactions: Lithic::Resources::Cards::FinancialTransactions
+
+      def create: (
+        type: Lithic::Models::CardCreateParams::type_,
+        ?account_token: String,
+        ?card_program_token: String,
+        ?carrier: Lithic::Models::Carrier,
+        ?digital_card_art_token: String,
+        ?exp_month: String,
+        ?exp_year: String,
+        ?memo: String,
+        ?pin: String,
+        ?product_id: String,
+        ?replacement_account_token: String,
+        ?replacement_for: String,
+        ?shipping_address: Lithic::Models::ShippingAddress,
+        ?shipping_method: Lithic::Models::CardCreateParams::shipping_method,
+        ?spend_limit: Integer,
+        ?spend_limit_duration: Lithic::Models::spend_limit_duration,
+        ?state: Lithic::Models::CardCreateParams::state,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::Card
+
+      def retrieve: (
+        String card_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::Card
+
+      def update: (
+        String card_token,
+        ?digital_card_art_token: String,
+        ?memo: String,
+        ?pin: String,
+        ?pin_status: Lithic::Models::CardUpdateParams::pin_status,
+        ?spend_limit: Integer,
+        ?spend_limit_duration: Lithic::Models::spend_limit_duration,
+        ?state: Lithic::Models::CardUpdateParams::state,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::Card
+
+      def list: (
+        ?account_token: String,
+        ?begin_: Time,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?state: Lithic::Models::CardListParams::state,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CursorPage[Lithic::Models::Card]
+
+      def convert_physical: (
+        String card_token,
+        shipping_address: Lithic::Models::ShippingAddress,
+        ?carrier: Lithic::Models::Carrier,
+        ?product_id: String,
+        ?shipping_method: Lithic::Models::CardConvertPhysicalParams::shipping_method,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::Card
+
+      def embed: (
+        embed_request: String,
+        hmac: String,
+        ?request_options: Lithic::request_opts
+      ) -> String
+
+      def provision: (
+        String card_token,
+        ?certificate: String,
+        ?client_device_id: String,
+        ?client_wallet_account_id: String,
+        ?digital_wallet: Lithic::Models::CardProvisionParams::digital_wallet,
+        ?nonce: String,
+        ?nonce_signature: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::CardProvisionResponse
+
+      def reissue: (
+        String card_token,
+        ?carrier: Lithic::Models::Carrier,
+        ?product_id: String,
+        ?shipping_address: Lithic::Models::ShippingAddress,
+        ?shipping_method: Lithic::Models::CardReissueParams::shipping_method,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::Card
+
+      def renew: (
+        String card_token,
+        shipping_address: Lithic::Models::ShippingAddress,
+        ?carrier: Lithic::Models::Carrier,
+        ?exp_month: String,
+        ?exp_year: String,
+        ?product_id: String,
+        ?shipping_method: Lithic::Models::CardRenewParams::shipping_method,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::Card
+
+      def retrieve_spend_limits: (
+        String card_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::CardSpendLimits
+
+      def search_by_pan: (
+        pan: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::Card
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

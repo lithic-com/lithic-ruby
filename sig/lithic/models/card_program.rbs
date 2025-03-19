@@ -1,0 +1,46 @@
+module Lithic
+  module Models
+    type card_program =
+      {
+        token: String,
+        created: Time,
+        name: String,
+        pan_range_end: String,
+        pan_range_start: String,
+        cardholder_currency: String,
+        settlement_currencies: ::Array[String]
+      }
+
+    class CardProgram < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor created: Time
+
+      attr_accessor name: String
+
+      attr_accessor pan_range_end: String
+
+      attr_accessor pan_range_start: String
+
+      attr_reader cardholder_currency: String?
+
+      def cardholder_currency=: (String) -> String
+
+      attr_reader settlement_currencies: ::Array[String]?
+
+      def settlement_currencies=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        token: String,
+        created: Time,
+        name: String,
+        pan_range_end: String,
+        pan_range_start: String,
+        ?cardholder_currency: String,
+        ?settlement_currencies: ::Array[String]
+      ) -> void
+
+      def to_hash: -> Lithic::Models::card_program
+    end
+  end
+end

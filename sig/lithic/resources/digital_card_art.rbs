@@ -1,0 +1,19 @@
+module Lithic
+  module Resources
+    class DigitalCardArt
+      def retrieve: (
+        String digital_card_art_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::DigitalCardArtAPI
+
+      def list: (
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CursorPage[Lithic::Models::DigitalCardArtAPI]
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,16 @@
+module Lithic
+  module Models
+    type verification_method =
+      :MANUAL | :MICRO_DEPOSIT | :PLAID | :PRENOTE | :EXTERNALLY_VERIFIED
+
+    class VerificationMethod < Lithic::Enum
+      MANUAL: :MANUAL
+      MICRO_DEPOSIT: :MICRO_DEPOSIT
+      PLAID: :PLAID
+      PRENOTE: :PRENOTE
+      EXTERNALLY_VERIFIED: :EXTERNALLY_VERIFIED
+
+      def self.values: -> ::Array[Lithic::Models::verification_method]
+    end
+  end
+end

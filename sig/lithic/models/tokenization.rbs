@@ -1,0 +1,216 @@
+module Lithic
+  module Models
+    type tokenization =
+      {
+        token: String,
+        account_token: String,
+        card_token: String,
+        created_at: Time,
+        dpan: String?,
+        status: Lithic::Models::Tokenization::status,
+        token_requestor_name: Lithic::Models::Tokenization::token_requestor_name,
+        token_unique_reference: String,
+        tokenization_channel: Lithic::Models::Tokenization::tokenization_channel,
+        updated_at: Time,
+        digital_card_art_token: String,
+        events: ::Array[Lithic::Models::Tokenization::Event],
+        payment_account_reference_id: String?
+      }
+
+    class Tokenization < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor account_token: String
+
+      attr_accessor card_token: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor dpan: String?
+
+      attr_accessor status: Lithic::Models::Tokenization::status
+
+      attr_accessor token_requestor_name: Lithic::Models::Tokenization::token_requestor_name
+
+      attr_accessor token_unique_reference: String
+
+      attr_accessor tokenization_channel: Lithic::Models::Tokenization::tokenization_channel
+
+      attr_accessor updated_at: Time
+
+      attr_reader digital_card_art_token: String?
+
+      def digital_card_art_token=: (String) -> String
+
+      attr_reader events: ::Array[Lithic::Models::Tokenization::Event]?
+
+      def events=: (
+        ::Array[Lithic::Models::Tokenization::Event]
+      ) -> ::Array[Lithic::Models::Tokenization::Event]
+
+      attr_accessor payment_account_reference_id: String?
+
+      def initialize: (
+        token: String,
+        account_token: String,
+        card_token: String,
+        created_at: Time,
+        dpan: String?,
+        status: Lithic::Models::Tokenization::status,
+        token_requestor_name: Lithic::Models::Tokenization::token_requestor_name,
+        token_unique_reference: String,
+        tokenization_channel: Lithic::Models::Tokenization::tokenization_channel,
+        updated_at: Time,
+        ?digital_card_art_token: String,
+        ?events: ::Array[Lithic::Models::Tokenization::Event],
+        ?payment_account_reference_id: String?
+      ) -> void
+
+      def to_hash: -> Lithic::Models::tokenization
+
+      type status =
+        :ACTIVE
+        | :DEACTIVATED
+        | :INACTIVE
+        | :PAUSED
+        | :PENDING_2FA
+        | :PENDING_ACTIVATION
+        | :UNKNOWN
+
+      class Status < Lithic::Enum
+        ACTIVE: :ACTIVE
+        DEACTIVATED: :DEACTIVATED
+        INACTIVE: :INACTIVE
+        PAUSED: :PAUSED
+        PENDING_2_FA: :PENDING_2FA
+        PENDING_ACTIVATION: :PENDING_ACTIVATION
+        UNKNOWN: :UNKNOWN
+
+        def self.values: -> ::Array[Lithic::Models::Tokenization::status]
+      end
+
+      type token_requestor_name =
+        :AMAZON_ONE
+        | :ANDROID_PAY
+        | :APPLE_PAY
+        | :FACEBOOK
+        | :FITBIT_PAY
+        | :GARMIN_PAY
+        | :MICROSOFT_PAY
+        | :NETFLIX
+        | :SAMSUNG_PAY
+        | :UNKNOWN
+        | :VISA_CHECKOUT
+
+      class TokenRequestorName < Lithic::Enum
+        AMAZON_ONE: :AMAZON_ONE
+        ANDROID_PAY: :ANDROID_PAY
+        APPLE_PAY: :APPLE_PAY
+        FACEBOOK: :FACEBOOK
+        FITBIT_PAY: :FITBIT_PAY
+        GARMIN_PAY: :GARMIN_PAY
+        MICROSOFT_PAY: :MICROSOFT_PAY
+        NETFLIX: :NETFLIX
+        SAMSUNG_PAY: :SAMSUNG_PAY
+        UNKNOWN: :UNKNOWN
+        VISA_CHECKOUT: :VISA_CHECKOUT
+
+        def self.values: -> ::Array[Lithic::Models::Tokenization::token_requestor_name]
+      end
+
+      type tokenization_channel = :DIGITAL_WALLET | :MERCHANT
+
+      class TokenizationChannel < Lithic::Enum
+        DIGITAL_WALLET: :DIGITAL_WALLET
+        MERCHANT: :MERCHANT
+
+        def self.values: -> ::Array[Lithic::Models::Tokenization::tokenization_channel]
+      end
+
+      type event =
+        {
+          token: String,
+          created_at: Time,
+          result: Lithic::Models::Tokenization::Event::result,
+          type: Lithic::Models::Tokenization::Event::type_
+        }
+
+      class Event < Lithic::BaseModel
+        attr_reader token: String?
+
+        def token=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader result: Lithic::Models::Tokenization::Event::result?
+
+        def result=: (
+          Lithic::Models::Tokenization::Event::result
+        ) -> Lithic::Models::Tokenization::Event::result
+
+        attr_reader type: Lithic::Models::Tokenization::Event::type_?
+
+        def type=: (
+          Lithic::Models::Tokenization::Event::type_
+        ) -> Lithic::Models::Tokenization::Event::type_
+
+        def initialize: (
+          ?token: String,
+          ?created_at: Time,
+          ?result: Lithic::Models::Tokenization::Event::result,
+          ?type: Lithic::Models::Tokenization::Event::type_
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Tokenization::event
+
+        type result =
+          :APPROVED
+          | :DECLINED
+          | :NOTIFICATION_DELIVERED
+          | :REQUIRE_ADDITIONAL_AUTHENTICATION
+          | :TOKEN_ACTIVATED
+          | :TOKEN_CREATED
+          | :TOKEN_DEACTIVATED
+          | :TOKEN_INACTIVE
+          | :TOKEN_STATE_UNKNOWN
+          | :TOKEN_SUSPENDED
+          | :TOKEN_UPDATED
+
+        class Result < Lithic::Enum
+          APPROVED: :APPROVED
+          DECLINED: :DECLINED
+          NOTIFICATION_DELIVERED: :NOTIFICATION_DELIVERED
+          REQUIRE_ADDITIONAL_AUTHENTICATION: :REQUIRE_ADDITIONAL_AUTHENTICATION
+          TOKEN_ACTIVATED: :TOKEN_ACTIVATED
+          TOKEN_CREATED: :TOKEN_CREATED
+          TOKEN_DEACTIVATED: :TOKEN_DEACTIVATED
+          TOKEN_INACTIVE: :TOKEN_INACTIVE
+          TOKEN_STATE_UNKNOWN: :TOKEN_STATE_UNKNOWN
+          TOKEN_SUSPENDED: :TOKEN_SUSPENDED
+          TOKEN_UPDATED: :TOKEN_UPDATED
+
+          def self.values: -> ::Array[Lithic::Models::Tokenization::Event::result]
+        end
+
+        type type_ =
+          :TOKENIZATION_2FA
+          | :TOKENIZATION_AUTHORIZATION
+          | :TOKENIZATION_DECISIONING
+          | :TOKENIZATION_ELIGIBILITY_CHECK
+          | :TOKENIZATION_UPDATED
+
+        class Type < Lithic::Enum
+          TOKENIZATION_2_FA: :TOKENIZATION_2FA
+          TOKENIZATION_AUTHORIZATION: :TOKENIZATION_AUTHORIZATION
+          TOKENIZATION_DECISIONING: :TOKENIZATION_DECISIONING
+          TOKENIZATION_ELIGIBILITY_CHECK: :TOKENIZATION_ELIGIBILITY_CHECK
+          TOKENIZATION_UPDATED: :TOKENIZATION_UPDATED
+
+          def self.values: -> ::Array[Lithic::Models::Tokenization::Event::type_]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,27 @@
+module Lithic
+  module Models
+    type transaction_simulate_return_params =
+      { amount: Integer, descriptor: String, pan: String }
+      & Lithic::request_parameters
+
+    class TransactionSimulateReturnParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor amount: Integer
+
+      attr_accessor descriptor: String
+
+      attr_accessor pan: String
+
+      def initialize: (
+        amount: Integer,
+        descriptor: String,
+        pan: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::transaction_simulate_return_params
+    end
+  end
+end

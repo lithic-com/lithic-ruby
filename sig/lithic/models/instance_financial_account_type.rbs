@@ -1,0 +1,22 @@
+module Lithic
+  module Models
+    type instance_financial_account_type =
+      :ISSUING
+      | :RESERVE
+      | :OPERATING
+      | :CHARGED_OFF_FEES
+      | :CHARGED_OFF_INTEREST
+      | :CHARGED_OFF_PRINCIPAL
+
+    class InstanceFinancialAccountType < Lithic::Enum
+      ISSUING: :ISSUING
+      RESERVE: :RESERVE
+      OPERATING: :OPERATING
+      CHARGED_OFF_FEES: :CHARGED_OFF_FEES
+      CHARGED_OFF_INTEREST: :CHARGED_OFF_INTEREST
+      CHARGED_OFF_PRINCIPAL: :CHARGED_OFF_PRINCIPAL
+
+      def self.values: -> ::Array[Lithic::Models::instance_financial_account_type]
+    end
+  end
+end

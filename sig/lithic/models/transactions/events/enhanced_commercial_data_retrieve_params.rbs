@@ -1,0 +1,19 @@
+module Lithic
+  module Models
+    module Transactions
+      module Events
+        type enhanced_commercial_data_retrieve_params =
+          {  } & Lithic::request_parameters
+
+        class EnhancedCommercialDataRetrieveParams < Lithic::BaseModel
+          extend Lithic::RequestParameters::Converter
+          include Lithic::RequestParameters
+
+          def initialize: (?request_options: Lithic::request_opts) -> void
+
+          def to_hash: -> Lithic::Models::Transactions::Events::enhanced_commercial_data_retrieve_params
+        end
+      end
+    end
+  end
+end

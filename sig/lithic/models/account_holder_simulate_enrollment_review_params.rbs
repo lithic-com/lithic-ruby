@@ -1,0 +1,91 @@
+module Lithic
+  module Models
+    type account_holder_simulate_enrollment_review_params =
+      {
+        account_holder_token: String,
+        status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status,
+        status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason]
+      }
+      & Lithic::request_parameters
+
+    class AccountHolderSimulateEnrollmentReviewParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader account_holder_token: String?
+
+      def account_holder_token=: (String) -> String
+
+      attr_reader status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status?
+
+      def status=: (
+        Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status
+      ) -> Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status
+
+      attr_reader status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason]?
+
+      def status_reasons=: (
+        ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason]
+      ) -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason]
+
+      def initialize: (
+        ?account_holder_token: String,
+        ?status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status,
+        ?status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason],
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::account_holder_simulate_enrollment_review_params
+
+      type status = :ACCEPTED | :REJECTED
+
+      class Status < Lithic::Enum
+        ACCEPTED: :ACCEPTED
+        REJECTED: :REJECTED
+
+        def self.values: -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status]
+      end
+
+      type status_reason =
+        :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE
+        | :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE
+        | :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE
+        | :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED
+        | :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE
+        | :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED
+        | :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE
+        | :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE
+        | :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE
+        | :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE
+        | :CONTROL_PERSON_ID_VERIFICATION_FAILURE
+        | :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
+        | :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
+        | :BENEFICIAL_OWNER_INDIVIDUAL_DOB_VERIFICATION_FAILURE
+        | :BENEFICIAL_OWNER_INDIVIDUAL_BLOCKLIST_ALERT_FAILURE
+        | :BENEFICIAL_OWNER_INDIVIDUAL_ID_VERIFICATION_FAILURE
+        | :BENEFICIAL_OWNER_INDIVIDUAL_NAME_VERIFICATION_FAILURE
+
+      class StatusReason < Lithic::Enum
+        PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE: :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE
+        PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE: :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE
+        PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE: :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE
+        PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED: :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED
+        PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE: :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE
+        PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED: :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED
+        PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE: :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE
+        PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE: :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE
+        PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE: :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE
+        CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE: :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE
+        CONTROL_PERSON_ID_VERIFICATION_FAILURE: :CONTROL_PERSON_ID_VERIFICATION_FAILURE
+        CONTROL_PERSON_DOB_VERIFICATION_FAILURE: :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
+        CONTROL_PERSON_NAME_VERIFICATION_FAILURE: :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
+        BENEFICIAL_OWNER_INDIVIDUAL_DOB_VERIFICATION_FAILURE: :BENEFICIAL_OWNER_INDIVIDUAL_DOB_VERIFICATION_FAILURE
+        BENEFICIAL_OWNER_INDIVIDUAL_BLOCKLIST_ALERT_FAILURE: :BENEFICIAL_OWNER_INDIVIDUAL_BLOCKLIST_ALERT_FAILURE
+        BENEFICIAL_OWNER_INDIVIDUAL_ID_VERIFICATION_FAILURE: :BENEFICIAL_OWNER_INDIVIDUAL_ID_VERIFICATION_FAILURE
+        BENEFICIAL_OWNER_INDIVIDUAL_NAME_VERIFICATION_FAILURE: :BENEFICIAL_OWNER_INDIVIDUAL_NAME_VERIFICATION_FAILURE
+
+        def self.values: -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason]
+      end
+    end
+  end
+end

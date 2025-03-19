@@ -1,0 +1,15 @@
+module Lithic
+  module Models
+    type payment_retry_response = { balance: Lithic::Models::Balance }
+
+    class PaymentRetryResponse < Lithic::Models::Payment
+      def balance: -> Lithic::Models::Balance?
+
+      def balance=: (Lithic::Models::Balance _) -> Lithic::Models::Balance
+
+      def initialize: (?balance: Lithic::Models::Balance) -> void
+
+      def to_hash: -> Lithic::Models::payment_retry_response
+    end
+  end
+end

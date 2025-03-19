@@ -1,0 +1,163 @@
+module Lithic
+  module Models
+    type book_transfer_response =
+      {
+        token: String,
+        category: Lithic::Models::BookTransferResponse::category,
+        created: Time,
+        currency: String,
+        events: ::Array[Lithic::Models::BookTransferResponse::Event],
+        from_financial_account_token: String,
+        pending_amount: Integer,
+        result: Lithic::Models::BookTransferResponse::result,
+        settled_amount: Integer,
+        status: Lithic::Models::BookTransferResponse::status,
+        to_financial_account_token: top,
+        updated: Time
+      }
+
+    class BookTransferResponse < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor category: Lithic::Models::BookTransferResponse::category
+
+      attr_accessor created: Time
+
+      attr_accessor currency: String
+
+      attr_accessor events: ::Array[Lithic::Models::BookTransferResponse::Event]
+
+      attr_accessor from_financial_account_token: String
+
+      attr_accessor pending_amount: Integer
+
+      attr_accessor result: Lithic::Models::BookTransferResponse::result
+
+      attr_accessor settled_amount: Integer
+
+      attr_accessor status: Lithic::Models::BookTransferResponse::status
+
+      attr_accessor to_financial_account_token: top
+
+      attr_accessor updated: Time
+
+      def initialize: (
+        token: String,
+        category: Lithic::Models::BookTransferResponse::category,
+        created: Time,
+        currency: String,
+        events: ::Array[Lithic::Models::BookTransferResponse::Event],
+        from_financial_account_token: String,
+        pending_amount: Integer,
+        result: Lithic::Models::BookTransferResponse::result,
+        settled_amount: Integer,
+        status: Lithic::Models::BookTransferResponse::status,
+        to_financial_account_token: top,
+        updated: Time
+      ) -> void
+
+      def to_hash: -> Lithic::Models::book_transfer_response
+
+      type category =
+        :ADJUSTMENT
+        | :BALANCE_OR_FUNDING
+        | :DERECOGNITION
+        | :DISPUTE
+        | :FEE
+        | :REWARD
+        | :TRANSFER
+
+      class Category < Lithic::Enum
+        ADJUSTMENT: :ADJUSTMENT
+        BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
+        DERECOGNITION: :DERECOGNITION
+        DISPUTE: :DISPUTE
+        FEE: :FEE
+        REWARD: :REWARD
+        TRANSFER: :TRANSFER
+
+        def self.values: -> ::Array[Lithic::Models::BookTransferResponse::category]
+      end
+
+      type event =
+        {
+          token: String,
+          amount: Integer,
+          created: Time,
+          detailed_results: ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result],
+          memo: String,
+          result: Lithic::Models::BookTransferResponse::Event::result,
+          subtype: String,
+          type: String
+        }
+
+      class Event < Lithic::BaseModel
+        attr_accessor token: String
+
+        attr_accessor amount: Integer
+
+        attr_accessor created: Time
+
+        attr_accessor detailed_results: ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result]
+
+        attr_accessor memo: String
+
+        attr_accessor result: Lithic::Models::BookTransferResponse::Event::result
+
+        attr_accessor subtype: String
+
+        attr_accessor type: String
+
+        def initialize: (
+          token: String,
+          amount: Integer,
+          created: Time,
+          detailed_results: ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result],
+          memo: String,
+          result: Lithic::Models::BookTransferResponse::Event::result,
+          subtype: String,
+          type: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::BookTransferResponse::event
+
+        type detailed_result = :APPROVED | :FUNDS_INSUFFICIENT
+
+        class DetailedResult < Lithic::Enum
+          APPROVED: :APPROVED
+          FUNDS_INSUFFICIENT: :FUNDS_INSUFFICIENT
+
+          def self.values: -> ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result]
+        end
+
+        type result = :APPROVED | :DECLINED
+
+        class Result < Lithic::Enum
+          APPROVED: :APPROVED
+          DECLINED: :DECLINED
+
+          def self.values: -> ::Array[Lithic::Models::BookTransferResponse::Event::result]
+        end
+      end
+
+      type result = :APPROVED | :DECLINED
+
+      class Result < Lithic::Enum
+        APPROVED: :APPROVED
+        DECLINED: :DECLINED
+
+        def self.values: -> ::Array[Lithic::Models::BookTransferResponse::result]
+      end
+
+      type status = :DECLINED | :REVERSED | :SETTLED
+
+      class Status < Lithic::Enum
+        DECLINED: :DECLINED
+        REVERSED: :REVERSED
+        SETTLED: :SETTLED
+
+        def self.values: -> ::Array[Lithic::Models::BookTransferResponse::status]
+      end
+    end
+  end
+end

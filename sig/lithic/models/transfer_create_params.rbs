@@ -1,0 +1,37 @@
+module Lithic
+  module Models
+    type transfer_create_params =
+      { amount: Integer, from: String, to: String, token: String, memo: String }
+      & Lithic::request_parameters
+
+    class TransferCreateParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor amount: Integer
+
+      attr_accessor from: String
+
+      attr_accessor to: String
+
+      attr_reader token: String?
+
+      def token=: (String) -> String
+
+      attr_reader memo: String?
+
+      def memo=: (String) -> String
+
+      def initialize: (
+        amount: Integer,
+        from: String,
+        to: String,
+        ?token: String,
+        ?memo: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::transfer_create_params
+    end
+  end
+end

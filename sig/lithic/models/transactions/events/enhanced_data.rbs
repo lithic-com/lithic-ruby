@@ -1,0 +1,539 @@
+module Lithic
+  module Models
+    module Transactions
+      module Events
+        type enhanced_data =
+          {
+            token: String,
+            common: Lithic::Models::Transactions::Events::EnhancedData::Common,
+            event_token: String,
+            fleet: ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet],
+            transaction_token: String
+          }
+
+        class EnhancedData < Lithic::BaseModel
+          attr_accessor token: String
+
+          attr_accessor common: Lithic::Models::Transactions::Events::EnhancedData::Common
+
+          attr_accessor event_token: String
+
+          attr_accessor fleet: ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet]
+
+          attr_accessor transaction_token: String
+
+          def initialize: (
+            token: String,
+            common: Lithic::Models::Transactions::Events::EnhancedData::Common,
+            event_token: String,
+            fleet: ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet],
+            transaction_token: String
+          ) -> void
+
+          def to_hash: -> Lithic::Models::Transactions::Events::enhanced_data
+
+          type common =
+            {
+              line_items: ::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem],
+              tax: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax,
+              customer_reference_number: String,
+              merchant_reference_number: String,
+              order_date: Date
+            }
+
+          class Common < Lithic::BaseModel
+            attr_accessor line_items: ::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem]
+
+            attr_accessor tax: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax
+
+            attr_reader customer_reference_number: String?
+
+            def customer_reference_number=: (String) -> String
+
+            attr_reader merchant_reference_number: String?
+
+            def merchant_reference_number=: (String) -> String
+
+            attr_reader order_date: Date?
+
+            def order_date=: (Date) -> Date
+
+            def initialize: (
+              line_items: ::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem],
+              tax: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax,
+              ?customer_reference_number: String,
+              ?merchant_reference_number: String,
+              ?order_date: Date
+            ) -> void
+
+            def to_hash: -> Lithic::Models::Transactions::Events::EnhancedData::common
+
+            type line_item =
+              {
+                amount: Float,
+                description: String,
+                product_code: String,
+                quantity: Float
+              }
+
+            class LineItem < Lithic::BaseModel
+              attr_reader amount: Float?
+
+              def amount=: (Float) -> Float
+
+              attr_reader description: String?
+
+              def description=: (String) -> String
+
+              attr_reader product_code: String?
+
+              def product_code=: (String) -> String
+
+              attr_reader quantity: Float?
+
+              def quantity=: (Float) -> Float
+
+              def initialize: (
+                ?amount: Float,
+                ?description: String,
+                ?product_code: String,
+                ?quantity: Float
+              ) -> void
+
+              def to_hash: -> Lithic::Models::Transactions::Events::EnhancedData::Common::line_item
+            end
+
+            type tax =
+              {
+                amount: Integer,
+                exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt,
+                merchant_tax_id: String
+              }
+
+            class Tax < Lithic::BaseModel
+              attr_reader amount: Integer?
+
+              def amount=: (Integer) -> Integer
+
+              attr_reader exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt?
+
+              def exempt=: (
+                Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt
+              ) -> Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt
+
+              attr_reader merchant_tax_id: String?
+
+              def merchant_tax_id=: (String) -> String
+
+              def initialize: (
+                ?amount: Integer,
+                ?exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt,
+                ?merchant_tax_id: String
+              ) -> void
+
+              def to_hash: -> Lithic::Models::Transactions::Events::EnhancedData::Common::tax
+
+              type exempt = :TAX_INCLUDED | :TAX_NOT_INCLUDED | :NOT_SUPPORTED
+
+              class Exempt < Lithic::Enum
+                TAX_INCLUDED: :TAX_INCLUDED
+                TAX_NOT_INCLUDED: :TAX_NOT_INCLUDED
+                NOT_SUPPORTED: :NOT_SUPPORTED
+
+                def self.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt]
+              end
+            end
+          end
+
+          type fleet =
+            {
+              amount_totals: Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals,
+              fuel: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel,
+              driver_number: String,
+              odometer: Integer,
+              service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type,
+              vehicle_number: String
+            }
+
+          class Fleet < Lithic::BaseModel
+            attr_accessor amount_totals: Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals
+
+            attr_accessor fuel: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel
+
+            attr_reader driver_number: String?
+
+            def driver_number=: (String) -> String
+
+            attr_reader odometer: Integer?
+
+            def odometer=: (Integer) -> Integer
+
+            attr_reader service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type?
+
+            def service_type=: (
+              Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type
+            ) -> Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type
+
+            attr_reader vehicle_number: String?
+
+            def vehicle_number=: (String) -> String
+
+            def initialize: (
+              amount_totals: Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals,
+              fuel: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel,
+              ?driver_number: String,
+              ?odometer: Integer,
+              ?service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type,
+              ?vehicle_number: String
+            ) -> void
+
+            def to_hash: -> Lithic::Models::Transactions::Events::EnhancedData::fleet
+
+            type amount_totals =
+              { discount: Integer, gross_sale: Integer, net_sale: Integer }
+
+            class AmountTotals < Lithic::BaseModel
+              attr_reader discount: Integer?
+
+              def discount=: (Integer) -> Integer
+
+              attr_reader gross_sale: Integer?
+
+              def gross_sale=: (Integer) -> Integer
+
+              attr_reader net_sale: Integer?
+
+              def net_sale=: (Integer) -> Integer
+
+              def initialize: (
+                ?discount: Integer,
+                ?gross_sale: Integer,
+                ?net_sale: Integer
+              ) -> void
+
+              def to_hash: -> Lithic::Models::Transactions::Events::EnhancedData::Fleet::amount_totals
+            end
+
+            type fuel =
+              {
+                quantity: Float,
+                type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_,
+                unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure,
+                unit_price: Integer
+              }
+
+            class Fuel < Lithic::BaseModel
+              attr_reader quantity: Float?
+
+              def quantity=: (Float) -> Float
+
+              attr_reader type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_?
+
+              def type=: (
+                Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_
+              ) -> Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_
+
+              attr_reader unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure?
+
+              def unit_of_measure=: (
+                Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure
+              ) -> Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure
+
+              attr_reader unit_price: Integer?
+
+              def unit_price=: (Integer) -> Integer
+
+              def initialize: (
+                ?quantity: Float,
+                ?type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_,
+                ?unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure,
+                ?unit_price: Integer
+              ) -> void
+
+              def to_hash: -> Lithic::Models::Transactions::Events::EnhancedData::Fleet::fuel
+
+              type type_ =
+                :UNKNOWN
+                | :REGULAR
+                | :MID_PLUS
+                | :PREMIUM_SUPER
+                | :MID_PLUS_2
+                | :PREMIUM_SUPER_2
+                | :ETHANOL_5_7_BLEND
+                | :MID_PLUS_ETHANOL_5_7_PERCENT_BLEND
+                | :PREMIUM_SUPER_ETHANOL_5_7_PERCENT_BLEND
+                | :ETHANOL_7_7_PERCENT_BLEND
+                | :MID_PLUS_ETHANOL_7_7_PERCENT_BLEND
+                | :GREEN_GASOLINE_REGULAR
+                | :GREEN_GASOLINE_MID_PLUS
+                | :GREEN_GASOLINE_PREMIUM_SUPER
+                | :REGULAR_DIESEL_2
+                | :PREMIUM_DIESEL_2
+                | :REGULAR_DIESEL_1
+                | :COMPRESSED_NATURAL_GAS
+                | :LIQUID_PROPANE_GAS
+                | :LIQUID_NATURAL_GAS
+                | :E_85
+                | :REFORMULATED_1
+                | :REFORMULATED_2
+                | :REFORMULATED_3
+                | :REFORMULATED_4
+                | :REFORMULATED_5
+                | :DIESEL_OFF_ROAD_1_AND_2_NON_TAXABLE
+                | :DIESEL_OFF_ROAD_NON_TAXABLE
+                | :BIODIESEL_BLEND_OFF_ROAD_NON_TAXABLE
+                | :UNDEFINED_FUEL
+                | :RACING_FUEL
+                | :MID_PLUS_2_10_PERCENT_BLEND
+                | :PREMIUM_SUPER_2_10_PERCENT_BLEND
+                | :MID_PLUS_ETHANOL_2_15_PERCENT_BLEND
+                | :PREMIUM_SUPER_ETHANOL_2_15_PERCENT_BLEND
+                | :PREMIUM_SUPER_ETHANOL_7_7_PERCENT_BLEND
+                | :REGULAR_ETHANOL_10_PERCENT_BLEND
+                | :MID_PLUS_ETHANOL_10_PERCENT_BLEND
+                | :PREMIUM_SUPER_ETHANOL_10_PERCENT_BLEND
+                | :B2_DIESEL_BLEND_2_PERCENT_BIODIESEL
+                | :B5_DIESEL_BLEND_5_PERCENT_BIODIESEL
+                | :B10_DIESEL_BLEND_10_PERCENT_BIODIESEL
+                | :B11_DIESEL_BLEND_11_PERCENT_BIODIESEL
+                | :B15_DIESEL_BLEND_15_PERCENT_BIODIESEL
+                | :B20_DIESEL_BLEND_20_PERCENT_BIODIESEL
+                | :B100_DIESEL_BLEND_100_PERCENT_BIODIESEL
+                | :B1_DIESEL_BLEND_1_PERCENT_BIODIESEL
+                | :ADDITIZED_DIESEL_2
+                | :ADDITIZED_DIESEL_3
+                | :RENEWABLE_DIESEL_R95
+                | :RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT
+                | :DIESEL_EXHAUST_FLUID
+                | :PREMIUM_DIESEL_1
+                | :REGULAR_ETHANOL_15_PERCENT_BLEND
+                | :MID_PLUS_ETHANOL_15_PERCENT_BLEND
+                | :PREMIUM_SUPER_ETHANOL_15_PERCENT_BLEND
+                | :PREMIUM_DIESEL_BLEND_LESS_THAN_20_PERCENT_BIODIESEL
+                | :PREMIUM_DIESEL_BLEND_GREATER_THAN_20_PERCENT_BIODIESEL
+                | :B75_DIESEL_BLEND_75_PERCENT_BIODIESEL
+                | :B99_DIESEL_BLEND_99_PERCENT_BIODIESEL
+                | :MISCELLANEOUS_FUEL
+                | :JET_FUEL
+                | :AVIATION_FUEL_REGULAR
+                | :AVIATION_FUEL_PREMIUM
+                | :AVIATION_FUEL_JP8
+                | :AVIATION_FUEL_4
+                | :AVIATION_FUEL_5
+                | :BIOJET_DIESEL
+                | :AVIATION_BIOFUEL_GASOLINE
+                | :MISCELLANEOUS_AVIATION_FUEL
+                | :MARINE_FUEL_1
+                | :MARINE_FUEL_2
+                | :MARINE_FUEL_3
+                | :MARINE_FUEL_4
+                | :MARINE_FUEL_5
+                | :MARINE_OTHER
+                | :MARINE_DIESEL
+                | :MISCELLANEOUS_MARINE_FUEL
+                | :KEROSENE_LOW_SULFUR
+                | :WHITE_GAS
+                | :HEATING_OIL
+                | :OTHER_FUEL_NON_TAXABLE
+                | :KEROSENE_ULTRA_LOW_SULFUR
+                | :KEROSENE_LOW_SULFUR_NON_TAXABLE
+                | :KEROSENE_ULTRA_LOW_SULFUR_NON_TAXABLE
+                | :EVC_1_LEVEL_1_CHARGE_110V_15_AMP
+                | :EVC_2_LEVEL_2_CHARGE_240V_15_40_AMP
+                | :EVC_3_LEVEL_3_CHARGE_480V_3_PHASE_CHARGE
+                | :BIODIESEL_BLEND_2_PERCENT_OFF_ROAD_NON_TAXABLE
+                | :BIODIESEL_BLEND_5_PERCENT_OFF_ROAD_NON_TAXABLE
+                | :BIODIESEL_BLEND_10_PERCENT_OFF_ROAD_NON_TAXABLE
+                | :BIODIESEL_BLEND_11_PERCENT_OFF_ROAD_NON_TAXABLE
+                | :BIODIESEL_BLEND_15_PERCENT_OFF_ROAD_NON_TAXABLE
+                | :BIODIESEL_BLEND_20_PERCENT_OFF_ROAD_NON_TAXABLE
+                | :DIESEL_1_OFF_ROAD_NON_TAXABLE
+                | :DIESEL_2_OFF_ROAD_NON_TAXABLE
+                | :DIESEL_1_PREMIUM_OFF_ROAD_NON_TAXABLE
+                | :DIESEL_2_PREMIUM_OFF_ROAD_NON_TAXABLE
+                | :ADDITIVE_DOSAGE
+                | :ETHANOL_BLENDS_E16_E84
+                | :LOW_OCTANE_UNL
+                | :BLENDED_DIESEL_1_AND_2
+                | :OFF_ROAD_REGULAR_NON_TAXABLE
+                | :OFF_ROAD_MID_PLUS_NON_TAXABLE
+                | :OFF_ROAD_PREMIUM_SUPER_NON_TAXABLE
+                | :OFF_ROAD_MID_PLUS_2_NON_TAXABLE
+                | :OFF_ROAD_PREMIUM_SUPER_2_NON_TAXABLE
+                | :RECREATIONAL_FUEL_90_OCTANE
+                | :HYDROGEN_H35
+                | :HYDROGEN_H70
+                | :RENEWABLE_DIESEL_R95_OFF_ROAD_NON_TAXABLE
+                | :BIODIESEL_BLEND_1_PERCENT_OFF_ROAD_NON_TAXABLE
+                | :BIODIESEL_BLEND_75_PERCENT_OFF_ROAD_NON_TAXABLE
+                | :BIODIESEL_BLEND_99_PERCENT_OFF_ROAD_NON_TAXABLE
+                | :BIODIESEL_BLEND_100_PERCENT_OFF_ROAD_NON_TAXABLE
+                | :RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT_OFF_ROAD_NON_TAXABLE
+                | :MISCELLANEOUS_OTHER_FUEL
+
+              class Type < Lithic::Enum
+                UNKNOWN: :UNKNOWN
+                REGULAR: :REGULAR
+                MID_PLUS: :MID_PLUS
+                PREMIUM_SUPER: :PREMIUM_SUPER
+                MID_PLUS_2: :MID_PLUS_2
+                PREMIUM_SUPER_2: :PREMIUM_SUPER_2
+                ETHANOL_5_7_BLEND: :ETHANOL_5_7_BLEND
+                MID_PLUS_ETHANOL_5_7_PERCENT_BLEND: :MID_PLUS_ETHANOL_5_7_PERCENT_BLEND
+                PREMIUM_SUPER_ETHANOL_5_7_PERCENT_BLEND: :PREMIUM_SUPER_ETHANOL_5_7_PERCENT_BLEND
+                ETHANOL_7_7_PERCENT_BLEND: :ETHANOL_7_7_PERCENT_BLEND
+                MID_PLUS_ETHANOL_7_7_PERCENT_BLEND: :MID_PLUS_ETHANOL_7_7_PERCENT_BLEND
+                GREEN_GASOLINE_REGULAR: :GREEN_GASOLINE_REGULAR
+                GREEN_GASOLINE_MID_PLUS: :GREEN_GASOLINE_MID_PLUS
+                GREEN_GASOLINE_PREMIUM_SUPER: :GREEN_GASOLINE_PREMIUM_SUPER
+                REGULAR_DIESEL_2: :REGULAR_DIESEL_2
+                PREMIUM_DIESEL_2: :PREMIUM_DIESEL_2
+                REGULAR_DIESEL_1: :REGULAR_DIESEL_1
+                COMPRESSED_NATURAL_GAS: :COMPRESSED_NATURAL_GAS
+                LIQUID_PROPANE_GAS: :LIQUID_PROPANE_GAS
+                LIQUID_NATURAL_GAS: :LIQUID_NATURAL_GAS
+                E_85: :E_85
+                REFORMULATED_1: :REFORMULATED_1
+                REFORMULATED_2: :REFORMULATED_2
+                REFORMULATED_3: :REFORMULATED_3
+                REFORMULATED_4: :REFORMULATED_4
+                REFORMULATED_5: :REFORMULATED_5
+                DIESEL_OFF_ROAD_1_AND_2_NON_TAXABLE: :DIESEL_OFF_ROAD_1_AND_2_NON_TAXABLE
+                DIESEL_OFF_ROAD_NON_TAXABLE: :DIESEL_OFF_ROAD_NON_TAXABLE
+                BIODIESEL_BLEND_OFF_ROAD_NON_TAXABLE: :BIODIESEL_BLEND_OFF_ROAD_NON_TAXABLE
+                UNDEFINED_FUEL: :UNDEFINED_FUEL
+                RACING_FUEL: :RACING_FUEL
+                MID_PLUS_2_10_PERCENT_BLEND: :MID_PLUS_2_10_PERCENT_BLEND
+                PREMIUM_SUPER_2_10_PERCENT_BLEND: :PREMIUM_SUPER_2_10_PERCENT_BLEND
+                MID_PLUS_ETHANOL_2_15_PERCENT_BLEND: :MID_PLUS_ETHANOL_2_15_PERCENT_BLEND
+                PREMIUM_SUPER_ETHANOL_2_15_PERCENT_BLEND: :PREMIUM_SUPER_ETHANOL_2_15_PERCENT_BLEND
+                PREMIUM_SUPER_ETHANOL_7_7_PERCENT_BLEND: :PREMIUM_SUPER_ETHANOL_7_7_PERCENT_BLEND
+                REGULAR_ETHANOL_10_PERCENT_BLEND: :REGULAR_ETHANOL_10_PERCENT_BLEND
+                MID_PLUS_ETHANOL_10_PERCENT_BLEND: :MID_PLUS_ETHANOL_10_PERCENT_BLEND
+                PREMIUM_SUPER_ETHANOL_10_PERCENT_BLEND: :PREMIUM_SUPER_ETHANOL_10_PERCENT_BLEND
+                B2_DIESEL_BLEND_2_PERCENT_BIODIESEL: :B2_DIESEL_BLEND_2_PERCENT_BIODIESEL
+                B5_DIESEL_BLEND_5_PERCENT_BIODIESEL: :B5_DIESEL_BLEND_5_PERCENT_BIODIESEL
+                B10_DIESEL_BLEND_10_PERCENT_BIODIESEL: :B10_DIESEL_BLEND_10_PERCENT_BIODIESEL
+                B11_DIESEL_BLEND_11_PERCENT_BIODIESEL: :B11_DIESEL_BLEND_11_PERCENT_BIODIESEL
+                B15_DIESEL_BLEND_15_PERCENT_BIODIESEL: :B15_DIESEL_BLEND_15_PERCENT_BIODIESEL
+                B20_DIESEL_BLEND_20_PERCENT_BIODIESEL: :B20_DIESEL_BLEND_20_PERCENT_BIODIESEL
+                B100_DIESEL_BLEND_100_PERCENT_BIODIESEL: :B100_DIESEL_BLEND_100_PERCENT_BIODIESEL
+                B1_DIESEL_BLEND_1_PERCENT_BIODIESEL: :B1_DIESEL_BLEND_1_PERCENT_BIODIESEL
+                ADDITIZED_DIESEL_2: :ADDITIZED_DIESEL_2
+                ADDITIZED_DIESEL_3: :ADDITIZED_DIESEL_3
+                RENEWABLE_DIESEL_R95: :RENEWABLE_DIESEL_R95
+                RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT: :RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT
+                DIESEL_EXHAUST_FLUID: :DIESEL_EXHAUST_FLUID
+                PREMIUM_DIESEL_1: :PREMIUM_DIESEL_1
+                REGULAR_ETHANOL_15_PERCENT_BLEND: :REGULAR_ETHANOL_15_PERCENT_BLEND
+                MID_PLUS_ETHANOL_15_PERCENT_BLEND: :MID_PLUS_ETHANOL_15_PERCENT_BLEND
+                PREMIUM_SUPER_ETHANOL_15_PERCENT_BLEND: :PREMIUM_SUPER_ETHANOL_15_PERCENT_BLEND
+                PREMIUM_DIESEL_BLEND_LESS_THAN_20_PERCENT_BIODIESEL: :PREMIUM_DIESEL_BLEND_LESS_THAN_20_PERCENT_BIODIESEL
+                PREMIUM_DIESEL_BLEND_GREATER_THAN_20_PERCENT_BIODIESEL: :PREMIUM_DIESEL_BLEND_GREATER_THAN_20_PERCENT_BIODIESEL
+                B75_DIESEL_BLEND_75_PERCENT_BIODIESEL: :B75_DIESEL_BLEND_75_PERCENT_BIODIESEL
+                B99_DIESEL_BLEND_99_PERCENT_BIODIESEL: :B99_DIESEL_BLEND_99_PERCENT_BIODIESEL
+                MISCELLANEOUS_FUEL: :MISCELLANEOUS_FUEL
+                JET_FUEL: :JET_FUEL
+                AVIATION_FUEL_REGULAR: :AVIATION_FUEL_REGULAR
+                AVIATION_FUEL_PREMIUM: :AVIATION_FUEL_PREMIUM
+                AVIATION_FUEL_JP8: :AVIATION_FUEL_JP8
+                AVIATION_FUEL_4: :AVIATION_FUEL_4
+                AVIATION_FUEL_5: :AVIATION_FUEL_5
+                BIOJET_DIESEL: :BIOJET_DIESEL
+                AVIATION_BIOFUEL_GASOLINE: :AVIATION_BIOFUEL_GASOLINE
+                MISCELLANEOUS_AVIATION_FUEL: :MISCELLANEOUS_AVIATION_FUEL
+                MARINE_FUEL_1: :MARINE_FUEL_1
+                MARINE_FUEL_2: :MARINE_FUEL_2
+                MARINE_FUEL_3: :MARINE_FUEL_3
+                MARINE_FUEL_4: :MARINE_FUEL_4
+                MARINE_FUEL_5: :MARINE_FUEL_5
+                MARINE_OTHER: :MARINE_OTHER
+                MARINE_DIESEL: :MARINE_DIESEL
+                MISCELLANEOUS_MARINE_FUEL: :MISCELLANEOUS_MARINE_FUEL
+                KEROSENE_LOW_SULFUR: :KEROSENE_LOW_SULFUR
+                WHITE_GAS: :WHITE_GAS
+                HEATING_OIL: :HEATING_OIL
+                OTHER_FUEL_NON_TAXABLE: :OTHER_FUEL_NON_TAXABLE
+                KEROSENE_ULTRA_LOW_SULFUR: :KEROSENE_ULTRA_LOW_SULFUR
+                KEROSENE_LOW_SULFUR_NON_TAXABLE: :KEROSENE_LOW_SULFUR_NON_TAXABLE
+                KEROSENE_ULTRA_LOW_SULFUR_NON_TAXABLE: :KEROSENE_ULTRA_LOW_SULFUR_NON_TAXABLE
+                EVC_1_LEVEL_1_CHARGE_110_V_15_AMP: :EVC_1_LEVEL_1_CHARGE_110V_15_AMP
+                EVC_2_LEVEL_2_CHARGE_240_V_15_40_AMP: :EVC_2_LEVEL_2_CHARGE_240V_15_40_AMP
+                EVC_3_LEVEL_3_CHARGE_480_V_3_PHASE_CHARGE: :EVC_3_LEVEL_3_CHARGE_480V_3_PHASE_CHARGE
+                BIODIESEL_BLEND_2_PERCENT_OFF_ROAD_NON_TAXABLE: :BIODIESEL_BLEND_2_PERCENT_OFF_ROAD_NON_TAXABLE
+                BIODIESEL_BLEND_5_PERCENT_OFF_ROAD_NON_TAXABLE: :BIODIESEL_BLEND_5_PERCENT_OFF_ROAD_NON_TAXABLE
+                BIODIESEL_BLEND_10_PERCENT_OFF_ROAD_NON_TAXABLE: :BIODIESEL_BLEND_10_PERCENT_OFF_ROAD_NON_TAXABLE
+                BIODIESEL_BLEND_11_PERCENT_OFF_ROAD_NON_TAXABLE: :BIODIESEL_BLEND_11_PERCENT_OFF_ROAD_NON_TAXABLE
+                BIODIESEL_BLEND_15_PERCENT_OFF_ROAD_NON_TAXABLE: :BIODIESEL_BLEND_15_PERCENT_OFF_ROAD_NON_TAXABLE
+                BIODIESEL_BLEND_20_PERCENT_OFF_ROAD_NON_TAXABLE: :BIODIESEL_BLEND_20_PERCENT_OFF_ROAD_NON_TAXABLE
+                DIESEL_1_OFF_ROAD_NON_TAXABLE: :DIESEL_1_OFF_ROAD_NON_TAXABLE
+                DIESEL_2_OFF_ROAD_NON_TAXABLE: :DIESEL_2_OFF_ROAD_NON_TAXABLE
+                DIESEL_1_PREMIUM_OFF_ROAD_NON_TAXABLE: :DIESEL_1_PREMIUM_OFF_ROAD_NON_TAXABLE
+                DIESEL_2_PREMIUM_OFF_ROAD_NON_TAXABLE: :DIESEL_2_PREMIUM_OFF_ROAD_NON_TAXABLE
+                ADDITIVE_DOSAGE: :ADDITIVE_DOSAGE
+                ETHANOL_BLENDS_E16_E84: :ETHANOL_BLENDS_E16_E84
+                LOW_OCTANE_UNL: :LOW_OCTANE_UNL
+                BLENDED_DIESEL_1_AND_2: :BLENDED_DIESEL_1_AND_2
+                OFF_ROAD_REGULAR_NON_TAXABLE: :OFF_ROAD_REGULAR_NON_TAXABLE
+                OFF_ROAD_MID_PLUS_NON_TAXABLE: :OFF_ROAD_MID_PLUS_NON_TAXABLE
+                OFF_ROAD_PREMIUM_SUPER_NON_TAXABLE: :OFF_ROAD_PREMIUM_SUPER_NON_TAXABLE
+                OFF_ROAD_MID_PLUS_2_NON_TAXABLE: :OFF_ROAD_MID_PLUS_2_NON_TAXABLE
+                OFF_ROAD_PREMIUM_SUPER_2_NON_TAXABLE: :OFF_ROAD_PREMIUM_SUPER_2_NON_TAXABLE
+                RECREATIONAL_FUEL_90_OCTANE: :RECREATIONAL_FUEL_90_OCTANE
+                HYDROGEN_H35: :HYDROGEN_H35
+                HYDROGEN_H70: :HYDROGEN_H70
+                RENEWABLE_DIESEL_R95_OFF_ROAD_NON_TAXABLE: :RENEWABLE_DIESEL_R95_OFF_ROAD_NON_TAXABLE
+                BIODIESEL_BLEND_1_PERCENT_OFF_ROAD_NON_TAXABLE: :BIODIESEL_BLEND_1_PERCENT_OFF_ROAD_NON_TAXABLE
+                BIODIESEL_BLEND_75_PERCENT_OFF_ROAD_NON_TAXABLE: :BIODIESEL_BLEND_75_PERCENT_OFF_ROAD_NON_TAXABLE
+                BIODIESEL_BLEND_99_PERCENT_OFF_ROAD_NON_TAXABLE: :BIODIESEL_BLEND_99_PERCENT_OFF_ROAD_NON_TAXABLE
+                BIODIESEL_BLEND_100_PERCENT_OFF_ROAD_NON_TAXABLE: :BIODIESEL_BLEND_100_PERCENT_OFF_ROAD_NON_TAXABLE
+                RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT_OFF_ROAD_NON_TAXABLE: :RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT_OFF_ROAD_NON_TAXABLE
+                MISCELLANEOUS_OTHER_FUEL: :MISCELLANEOUS_OTHER_FUEL
+
+                def self.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_]
+              end
+
+              type unit_of_measure =
+                :GALLONS
+                | :LITERS
+                | :POUNDS
+                | :KILOGRAMS
+                | :IMPERIAL_GALLONS
+                | :NOT_APPLICABLE
+                | :UNKNOWN
+
+              class UnitOfMeasure < Lithic::Enum
+                GALLONS: :GALLONS
+                LITERS: :LITERS
+                POUNDS: :POUNDS
+                KILOGRAMS: :KILOGRAMS
+                IMPERIAL_GALLONS: :IMPERIAL_GALLONS
+                NOT_APPLICABLE: :NOT_APPLICABLE
+                UNKNOWN: :UNKNOWN
+
+                def self.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure]
+              end
+            end
+
+            type service_type =
+              :UNKNOWN
+              | :UNDEFINED
+              | :SELF_SERVICE
+              | :FULL_SERVICE
+              | :NON_FUEL_ONLY
+
+            class ServiceType < Lithic::Enum
+              UNKNOWN: :UNKNOWN
+              UNDEFINED: :UNDEFINED
+              SELF_SERVICE: :SELF_SERVICE
+              FULL_SERVICE: :FULL_SERVICE
+              NON_FUEL_ONLY: :NON_FUEL_ONLY
+
+              def self.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type]
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,109 @@
+module Lithic
+  module Models
+    type account_update_params =
+      {
+        daily_spend_limit: Integer,
+        lifetime_spend_limit: Integer,
+        monthly_spend_limit: Integer,
+        state: Lithic::Models::AccountUpdateParams::state,
+        verification_address: Lithic::Models::AccountUpdateParams::VerificationAddress
+      }
+      & Lithic::request_parameters
+
+    class AccountUpdateParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader daily_spend_limit: Integer?
+
+      def daily_spend_limit=: (Integer) -> Integer
+
+      attr_reader lifetime_spend_limit: Integer?
+
+      def lifetime_spend_limit=: (Integer) -> Integer
+
+      attr_reader monthly_spend_limit: Integer?
+
+      def monthly_spend_limit=: (Integer) -> Integer
+
+      attr_reader state: Lithic::Models::AccountUpdateParams::state?
+
+      def state=: (
+        Lithic::Models::AccountUpdateParams::state
+      ) -> Lithic::Models::AccountUpdateParams::state
+
+      attr_reader verification_address: Lithic::Models::AccountUpdateParams::VerificationAddress?
+
+      def verification_address=: (
+        Lithic::Models::AccountUpdateParams::VerificationAddress
+      ) -> Lithic::Models::AccountUpdateParams::VerificationAddress
+
+      def initialize: (
+        ?daily_spend_limit: Integer,
+        ?lifetime_spend_limit: Integer,
+        ?monthly_spend_limit: Integer,
+        ?state: Lithic::Models::AccountUpdateParams::state,
+        ?verification_address: Lithic::Models::AccountUpdateParams::VerificationAddress,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::account_update_params
+
+      type state = :ACTIVE | :PAUSED
+
+      class State < Lithic::Enum
+        ACTIVE: :ACTIVE
+        PAUSED: :PAUSED
+
+        def self.values: -> ::Array[Lithic::Models::AccountUpdateParams::state]
+      end
+
+      type verification_address =
+        {
+          :address1 => String,
+          :address2 => String,
+          city: String,
+          country: String,
+          postal_code: String,
+          state: String
+        }
+
+      class VerificationAddress < Lithic::BaseModel
+        attr_reader address1: String?
+
+        def address1=: (String) -> String
+
+        attr_reader address2: String?
+
+        def address2=: (String) -> String
+
+        attr_reader city: String?
+
+        def city=: (String) -> String
+
+        attr_reader country: String?
+
+        def country=: (String) -> String
+
+        attr_reader postal_code: String?
+
+        def postal_code=: (String) -> String
+
+        attr_reader state: String?
+
+        def state=: (String) -> String
+
+        def initialize: (
+          ?address1: String,
+          ?address2: String,
+          ?city: String,
+          ?country: String,
+          ?postal_code: String,
+          ?state: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::AccountUpdateParams::verification_address
+      end
+    end
+  end
+end

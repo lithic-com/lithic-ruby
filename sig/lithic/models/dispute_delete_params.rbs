@@ -1,0 +1,14 @@
+module Lithic
+  module Models
+    type dispute_delete_params = {  } & Lithic::request_parameters
+
+    class DisputeDeleteParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      def initialize: (?request_options: Lithic::request_opts) -> void
+
+      def to_hash: -> Lithic::Models::dispute_delete_params
+    end
+  end
+end

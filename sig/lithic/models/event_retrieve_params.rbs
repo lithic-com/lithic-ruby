@@ -1,0 +1,14 @@
+module Lithic
+  module Models
+    type event_retrieve_params = {  } & Lithic::request_parameters
+
+    class EventRetrieveParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      def initialize: (?request_options: Lithic::request_opts) -> void
+
+      def to_hash: -> Lithic::Models::event_retrieve_params
+    end
+  end
+end

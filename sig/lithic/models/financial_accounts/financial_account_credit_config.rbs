@@ -1,0 +1,72 @@
+module Lithic
+  module Models
+    
+    class FinancialAccountCreditConfig = FinancialAccounts::FinancialAccountCreditConfig
+
+    module FinancialAccounts
+      type financial_account_credit_config =
+        {
+          account_token: String,
+          charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
+          credit_limit: Integer?,
+          credit_product_token: String?,
+          external_bank_account_token: String?,
+          financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state,
+          is_spend_blocked: bool,
+          tier: String?
+        }
+
+      class FinancialAccountCreditConfig < Lithic::BaseModel
+        attr_accessor account_token: String
+
+        attr_accessor charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?
+
+        attr_accessor credit_limit: Integer?
+
+        attr_accessor credit_product_token: String?
+
+        attr_accessor external_bank_account_token: String?
+
+        attr_accessor financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state
+
+        attr_accessor is_spend_blocked: bool
+
+        attr_accessor tier: String?
+
+        def initialize: (
+          account_token: String,
+          charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
+          credit_limit: Integer?,
+          credit_product_token: String?,
+          external_bank_account_token: String?,
+          financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state,
+          is_spend_blocked: bool,
+          tier: String?
+        ) -> void
+
+        def to_hash: -> Lithic::Models::FinancialAccounts::financial_account_credit_config
+
+        type charged_off_reason = :DELINQUENT | :FRAUD
+
+        class ChargedOffReason < Lithic::Enum
+          DELINQUENT: :DELINQUENT
+          FRAUD: :FRAUD
+
+          def self.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason]
+        end
+
+        type financial_account_state =
+          :PENDING | :CURRENT | :DELINQUENT | :CHARGED_OFF
+
+        class FinancialAccountState < Lithic::Enum
+          PENDING: :PENDING
+          CURRENT: :CURRENT
+          DELINQUENT: :DELINQUENT
+          CHARGED_OFF: :CHARGED_OFF
+
+          def self.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state]
+        end
+      end
+    end
+  end
+end

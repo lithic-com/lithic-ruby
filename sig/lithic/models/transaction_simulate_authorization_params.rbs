@@ -1,0 +1,92 @@
+module Lithic
+  module Models
+    type transaction_simulate_authorization_params =
+      {
+        amount: Integer,
+        descriptor: String,
+        pan: String,
+        mcc: String,
+        merchant_acceptor_id: String,
+        merchant_amount: Integer,
+        merchant_currency: String,
+        partial_approval_capable: bool,
+        pin: String,
+        status: Lithic::Models::TransactionSimulateAuthorizationParams::status
+      }
+      & Lithic::request_parameters
+
+    class TransactionSimulateAuthorizationParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor amount: Integer
+
+      attr_accessor descriptor: String
+
+      attr_accessor pan: String
+
+      attr_reader mcc: String?
+
+      def mcc=: (String) -> String
+
+      attr_reader merchant_acceptor_id: String?
+
+      def merchant_acceptor_id=: (String) -> String
+
+      attr_reader merchant_amount: Integer?
+
+      def merchant_amount=: (Integer) -> Integer
+
+      attr_reader merchant_currency: String?
+
+      def merchant_currency=: (String) -> String
+
+      attr_reader partial_approval_capable: bool?
+
+      def partial_approval_capable=: (bool) -> bool
+
+      attr_reader pin: String?
+
+      def pin=: (String) -> String
+
+      attr_reader status: Lithic::Models::TransactionSimulateAuthorizationParams::status?
+
+      def status=: (
+        Lithic::Models::TransactionSimulateAuthorizationParams::status
+      ) -> Lithic::Models::TransactionSimulateAuthorizationParams::status
+
+      def initialize: (
+        amount: Integer,
+        descriptor: String,
+        pan: String,
+        ?mcc: String,
+        ?merchant_acceptor_id: String,
+        ?merchant_amount: Integer,
+        ?merchant_currency: String,
+        ?partial_approval_capable: bool,
+        ?pin: String,
+        ?status: Lithic::Models::TransactionSimulateAuthorizationParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::transaction_simulate_authorization_params
+
+      type status =
+        :AUTHORIZATION
+        | :BALANCE_INQUIRY
+        | :CREDIT_AUTHORIZATION
+        | :FINANCIAL_AUTHORIZATION
+        | :FINANCIAL_CREDIT_AUTHORIZATION
+
+      class Status < Lithic::Enum
+        AUTHORIZATION: :AUTHORIZATION
+        BALANCE_INQUIRY: :BALANCE_INQUIRY
+        CREDIT_AUTHORIZATION: :CREDIT_AUTHORIZATION
+        FINANCIAL_AUTHORIZATION: :FINANCIAL_AUTHORIZATION
+        FINANCIAL_CREDIT_AUTHORIZATION: :FINANCIAL_CREDIT_AUTHORIZATION
+
+        def self.values: -> ::Array[Lithic::Models::TransactionSimulateAuthorizationParams::status]
+      end
+    end
+  end
+end
