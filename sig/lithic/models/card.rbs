@@ -1,0 +1,232 @@
+module Lithic
+  module Models
+    type card =
+      {
+        token: String,
+        account_token: String,
+        card_program_token: String,
+        created: Time,
+        funding: Lithic::Models::Card::Funding,
+        last_four: String,
+        pin_status: Lithic::Models::Card::pin_status,
+        spend_limit: Integer,
+        spend_limit_duration: Lithic::Models::spend_limit_duration,
+        state: Lithic::Models::Card::state,
+        type: Lithic::Models::Card::type_,
+        auth_rule_tokens: ::Array[String],
+        cardholder_currency: String,
+        cvv: String,
+        digital_card_art_token: String,
+        exp_month: String,
+        exp_year: String,
+        hostname: String,
+        memo: String,
+        pan: String,
+        pending_commands: ::Array[String],
+        product_id: String,
+        replacement_for: String?
+      }
+
+    class Card < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor account_token: String
+
+      attr_accessor card_program_token: String
+
+      attr_accessor created: Time
+
+      attr_accessor funding: Lithic::Models::Card::Funding
+
+      attr_accessor last_four: String
+
+      attr_accessor pin_status: Lithic::Models::Card::pin_status
+
+      attr_accessor spend_limit: Integer
+
+      attr_accessor spend_limit_duration: Lithic::Models::spend_limit_duration
+
+      attr_accessor state: Lithic::Models::Card::state
+
+      attr_accessor type: Lithic::Models::Card::type_
+
+      attr_reader auth_rule_tokens: ::Array[String]?
+
+      def auth_rule_tokens=: (::Array[String]) -> ::Array[String]
+
+      attr_reader cardholder_currency: String?
+
+      def cardholder_currency=: (String) -> String
+
+      attr_reader cvv: String?
+
+      def cvv=: (String) -> String
+
+      attr_reader digital_card_art_token: String?
+
+      def digital_card_art_token=: (String) -> String
+
+      attr_reader exp_month: String?
+
+      def exp_month=: (String) -> String
+
+      attr_reader exp_year: String?
+
+      def exp_year=: (String) -> String
+
+      attr_reader hostname: String?
+
+      def hostname=: (String) -> String
+
+      attr_reader memo: String?
+
+      def memo=: (String) -> String
+
+      attr_reader pan: String?
+
+      def pan=: (String) -> String
+
+      attr_reader pending_commands: ::Array[String]?
+
+      def pending_commands=: (::Array[String]) -> ::Array[String]
+
+      attr_reader product_id: String?
+
+      def product_id=: (String) -> String
+
+      attr_accessor replacement_for: String?
+
+      def initialize: (
+        token: String,
+        account_token: String,
+        card_program_token: String,
+        created: Time,
+        funding: Lithic::Models::Card::Funding,
+        last_four: String,
+        pin_status: Lithic::Models::Card::pin_status,
+        spend_limit: Integer,
+        spend_limit_duration: Lithic::Models::spend_limit_duration,
+        state: Lithic::Models::Card::state,
+        type: Lithic::Models::Card::type_,
+        ?auth_rule_tokens: ::Array[String],
+        ?cardholder_currency: String,
+        ?cvv: String,
+        ?digital_card_art_token: String,
+        ?exp_month: String,
+        ?exp_year: String,
+        ?hostname: String,
+        ?memo: String,
+        ?pan: String,
+        ?pending_commands: ::Array[String],
+        ?product_id: String,
+        ?replacement_for: String?
+      ) -> void
+
+      def to_hash: -> Lithic::Models::card
+
+      type funding =
+        {
+          token: String,
+          created: Time,
+          last_four: String,
+          state: Lithic::Models::Card::Funding::state,
+          type: Lithic::Models::Card::Funding::type_,
+          account_name: String,
+          nickname: String
+        }
+
+      class Funding < Lithic::BaseModel
+        attr_accessor token: String
+
+        attr_accessor created: Time
+
+        attr_accessor last_four: String
+
+        attr_accessor state: Lithic::Models::Card::Funding::state
+
+        attr_accessor type: Lithic::Models::Card::Funding::type_
+
+        attr_reader account_name: String?
+
+        def account_name=: (String) -> String
+
+        attr_reader nickname: String?
+
+        def nickname=: (String) -> String
+
+        def initialize: (
+          token: String,
+          created: Time,
+          last_four: String,
+          state: Lithic::Models::Card::Funding::state,
+          type: Lithic::Models::Card::Funding::type_,
+          ?account_name: String,
+          ?nickname: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Card::funding
+
+        type state = :DELETED | :ENABLED | :PENDING
+
+        class State < Lithic::Enum
+          DELETED: :DELETED
+          ENABLED: :ENABLED
+          PENDING: :PENDING
+
+          def self.values: -> ::Array[Lithic::Models::Card::Funding::state]
+        end
+
+        type type_ = :DEPOSITORY_CHECKING | :DEPOSITORY_SAVINGS
+
+        class Type < Lithic::Enum
+          DEPOSITORY_CHECKING: :DEPOSITORY_CHECKING
+          DEPOSITORY_SAVINGS: :DEPOSITORY_SAVINGS
+
+          def self.values: -> ::Array[Lithic::Models::Card::Funding::type_]
+        end
+      end
+
+      type pin_status = :OK | :BLOCKED | :NOT_SET
+
+      class PinStatus < Lithic::Enum
+        OK: :OK
+        BLOCKED: :BLOCKED
+        NOT_SET: :NOT_SET
+
+        def self.values: -> ::Array[Lithic::Models::Card::pin_status]
+      end
+
+      type state =
+        :CLOSED | :OPEN | :PAUSED | :PENDING_ACTIVATION | :PENDING_FULFILLMENT
+
+      class State < Lithic::Enum
+        CLOSED: :CLOSED
+        OPEN: :OPEN
+        PAUSED: :PAUSED
+        PENDING_ACTIVATION: :PENDING_ACTIVATION
+        PENDING_FULFILLMENT: :PENDING_FULFILLMENT
+
+        def self.values: -> ::Array[Lithic::Models::Card::state]
+      end
+
+      type type_ =
+        :MERCHANT_LOCKED
+        | :PHYSICAL
+        | :SINGLE_USE
+        | :VIRTUAL
+        | :UNLOCKED
+        | :DIGITAL_WALLET
+
+      class Type < Lithic::Enum
+        MERCHANT_LOCKED: :MERCHANT_LOCKED
+        PHYSICAL: :PHYSICAL
+        SINGLE_USE: :SINGLE_USE
+        VIRTUAL: :VIRTUAL
+        UNLOCKED: :UNLOCKED
+        DIGITAL_WALLET: :DIGITAL_WALLET
+
+        def self.values: -> ::Array[Lithic::Models::Card::type_]
+      end
+    end
+  end
+end

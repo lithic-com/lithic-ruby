@@ -1,0 +1,128 @@
+module Lithic
+  module Models
+    type management_operation_create_params =
+      {
+        amount: Integer,
+        category: Lithic::Models::ManagementOperationCreateParams::category,
+        direction: Lithic::Models::ManagementOperationCreateParams::direction,
+        effective_date: Date,
+        event_type: Lithic::Models::ManagementOperationCreateParams::event_type,
+        financial_account_token: String,
+        token: String,
+        memo: String,
+        subtype: String,
+        user_defined_id: String
+      }
+      & Lithic::request_parameters
+
+    class ManagementOperationCreateParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor amount: Integer
+
+      attr_accessor category: Lithic::Models::ManagementOperationCreateParams::category
+
+      attr_accessor direction: Lithic::Models::ManagementOperationCreateParams::direction
+
+      attr_accessor effective_date: Date
+
+      attr_accessor event_type: Lithic::Models::ManagementOperationCreateParams::event_type
+
+      attr_accessor financial_account_token: String
+
+      attr_reader token: String?
+
+      def token=: (String) -> String
+
+      attr_reader memo: String?
+
+      def memo=: (String) -> String
+
+      attr_reader subtype: String?
+
+      def subtype=: (String) -> String
+
+      attr_reader user_defined_id: String?
+
+      def user_defined_id=: (String) -> String
+
+      def initialize: (
+        amount: Integer,
+        category: Lithic::Models::ManagementOperationCreateParams::category,
+        direction: Lithic::Models::ManagementOperationCreateParams::direction,
+        effective_date: Date,
+        event_type: Lithic::Models::ManagementOperationCreateParams::event_type,
+        financial_account_token: String,
+        ?token: String,
+        ?memo: String,
+        ?subtype: String,
+        ?user_defined_id: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::management_operation_create_params
+
+      type category =
+        :MANAGEMENT_FEE
+        | :MANAGEMENT_DISPUTE
+        | :MANAGEMENT_REWARD
+        | :MANAGEMENT_ADJUSTMENT
+
+      class Category < Lithic::Enum
+        MANAGEMENT_FEE: :MANAGEMENT_FEE
+        MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
+        MANAGEMENT_REWARD: :MANAGEMENT_REWARD
+        MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
+
+        def self.values: -> ::Array[Lithic::Models::ManagementOperationCreateParams::category]
+      end
+
+      type direction = :CREDIT | :DEBIT
+
+      class Direction < Lithic::Enum
+        CREDIT: :CREDIT
+        DEBIT: :DEBIT
+
+        def self.values: -> ::Array[Lithic::Models::ManagementOperationCreateParams::direction]
+      end
+
+      type event_type =
+        :CASH_BACK
+        | :CURRENCY_CONVERSION
+        | :INTEREST
+        | :LATE_PAYMENT
+        | :BILLING_ERROR
+        | :PROVISIONAL_CREDIT
+        | :LOSS_WRITE_OFF
+        | :CASH_BACK_REVERSAL
+        | :CURRENCY_CONVERSION_REVERSAL
+        | :INTEREST_REVERSAL
+        | :LATE_PAYMENT_REVERSAL
+        | :BILLING_ERROR_REVERSAL
+        | :PROVISIONAL_CREDIT_REVERSAL
+        | :RETURNED_PAYMENT
+        | :RETURNED_PAYMENT_REVERSAL
+
+      class EventType < Lithic::Enum
+        CASH_BACK: :CASH_BACK
+        CURRENCY_CONVERSION: :CURRENCY_CONVERSION
+        INTEREST: :INTEREST
+        LATE_PAYMENT: :LATE_PAYMENT
+        BILLING_ERROR: :BILLING_ERROR
+        PROVISIONAL_CREDIT: :PROVISIONAL_CREDIT
+        LOSS_WRITE_OFF: :LOSS_WRITE_OFF
+        CASH_BACK_REVERSAL: :CASH_BACK_REVERSAL
+        CURRENCY_CONVERSION_REVERSAL: :CURRENCY_CONVERSION_REVERSAL
+        INTEREST_REVERSAL: :INTEREST_REVERSAL
+        LATE_PAYMENT_REVERSAL: :LATE_PAYMENT_REVERSAL
+        BILLING_ERROR_REVERSAL: :BILLING_ERROR_REVERSAL
+        PROVISIONAL_CREDIT_REVERSAL: :PROVISIONAL_CREDIT_REVERSAL
+        RETURNED_PAYMENT: :RETURNED_PAYMENT
+        RETURNED_PAYMENT_REVERSAL: :RETURNED_PAYMENT_REVERSAL
+
+        def self.values: -> ::Array[Lithic::Models::ManagementOperationCreateParams::event_type]
+      end
+    end
+  end
+end

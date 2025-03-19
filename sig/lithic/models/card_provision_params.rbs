@@ -1,0 +1,67 @@
+module Lithic
+  module Models
+    type card_provision_params =
+      {
+        certificate: String,
+        client_device_id: String,
+        client_wallet_account_id: String,
+        digital_wallet: Lithic::Models::CardProvisionParams::digital_wallet,
+        nonce: String,
+        nonce_signature: String
+      }
+      & Lithic::request_parameters
+
+    class CardProvisionParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader certificate: String?
+
+      def certificate=: (String) -> String
+
+      attr_reader client_device_id: String?
+
+      def client_device_id=: (String) -> String
+
+      attr_reader client_wallet_account_id: String?
+
+      def client_wallet_account_id=: (String) -> String
+
+      attr_reader digital_wallet: Lithic::Models::CardProvisionParams::digital_wallet?
+
+      def digital_wallet=: (
+        Lithic::Models::CardProvisionParams::digital_wallet
+      ) -> Lithic::Models::CardProvisionParams::digital_wallet
+
+      attr_reader nonce: String?
+
+      def nonce=: (String) -> String
+
+      attr_reader nonce_signature: String?
+
+      def nonce_signature=: (String) -> String
+
+      def initialize: (
+        ?certificate: String,
+        ?client_device_id: String,
+        ?client_wallet_account_id: String,
+        ?digital_wallet: Lithic::Models::CardProvisionParams::digital_wallet,
+        ?nonce: String,
+        ?nonce_signature: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::card_provision_params
+
+      type digital_wallet = :APPLE_PAY | :GOOGLE_PAY | :SAMSUNG_PAY
+
+      class DigitalWallet < Lithic::Enum
+        APPLE_PAY: :APPLE_PAY
+        GOOGLE_PAY: :GOOGLE_PAY
+        SAMSUNG_PAY: :SAMSUNG_PAY
+
+        def self.values: -> ::Array[Lithic::Models::CardProvisionParams::digital_wallet]
+      end
+    end
+  end
+end

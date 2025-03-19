@@ -1,0 +1,229 @@
+module Lithic
+  module Models
+    type kyb =
+      {
+        beneficial_owner_entities: ::Array[Lithic::Models::KYB::BeneficialOwnerEntity],
+        beneficial_owner_individuals: ::Array[Lithic::Models::KYB::BeneficialOwnerIndividual],
+        business_entity: Lithic::Models::KYB::BusinessEntity,
+        control_person: Lithic::Models::KYB::ControlPerson,
+        nature_of_business: String,
+        tos_timestamp: String,
+        workflow: Lithic::Models::KYB::workflow,
+        external_id: String,
+        kyb_passed_timestamp: String,
+        website_url: String
+      }
+
+    class KYB < Lithic::BaseModel
+      attr_accessor beneficial_owner_entities: ::Array[Lithic::Models::KYB::BeneficialOwnerEntity]
+
+      attr_accessor beneficial_owner_individuals: ::Array[Lithic::Models::KYB::BeneficialOwnerIndividual]
+
+      attr_accessor business_entity: Lithic::Models::KYB::BusinessEntity
+
+      attr_accessor control_person: Lithic::Models::KYB::ControlPerson
+
+      attr_accessor nature_of_business: String
+
+      attr_accessor tos_timestamp: String
+
+      attr_accessor workflow: Lithic::Models::KYB::workflow
+
+      attr_reader external_id: String?
+
+      def external_id=: (String) -> String
+
+      attr_reader kyb_passed_timestamp: String?
+
+      def kyb_passed_timestamp=: (String) -> String
+
+      attr_reader website_url: String?
+
+      def website_url=: (String) -> String
+
+      def initialize: (
+        beneficial_owner_entities: ::Array[Lithic::Models::KYB::BeneficialOwnerEntity],
+        beneficial_owner_individuals: ::Array[Lithic::Models::KYB::BeneficialOwnerIndividual],
+        business_entity: Lithic::Models::KYB::BusinessEntity,
+        control_person: Lithic::Models::KYB::ControlPerson,
+        nature_of_business: String,
+        tos_timestamp: String,
+        workflow: Lithic::Models::KYB::workflow,
+        ?external_id: String,
+        ?kyb_passed_timestamp: String,
+        ?website_url: String
+      ) -> void
+
+      def to_hash: -> Lithic::Models::kyb
+
+      type beneficial_owner_entity =
+        {
+          address: Lithic::Models::Address,
+          government_id: String,
+          legal_business_name: String,
+          phone_numbers: ::Array[String],
+          dba_business_name: String,
+          parent_company: String
+        }
+
+      class BeneficialOwnerEntity < Lithic::BaseModel
+        attr_accessor address: Lithic::Models::Address
+
+        attr_accessor government_id: String
+
+        attr_accessor legal_business_name: String
+
+        attr_accessor phone_numbers: ::Array[String]
+
+        attr_reader dba_business_name: String?
+
+        def dba_business_name=: (String) -> String
+
+        attr_reader parent_company: String?
+
+        def parent_company=: (String) -> String
+
+        def initialize: (
+          address: Lithic::Models::Address,
+          government_id: String,
+          legal_business_name: String,
+          phone_numbers: ::Array[String],
+          ?dba_business_name: String,
+          ?parent_company: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::KYB::beneficial_owner_entity
+      end
+
+      type beneficial_owner_individual =
+        {
+          address: Lithic::Models::Address,
+          dob: String,
+          email: String,
+          first_name: String,
+          government_id: String,
+          last_name: String,
+          phone_number: String
+        }
+
+      class BeneficialOwnerIndividual < Lithic::BaseModel
+        attr_accessor address: Lithic::Models::Address
+
+        attr_accessor dob: String
+
+        attr_accessor email: String
+
+        attr_accessor first_name: String
+
+        attr_accessor government_id: String
+
+        attr_accessor last_name: String
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        def initialize: (
+          address: Lithic::Models::Address,
+          dob: String,
+          email: String,
+          first_name: String,
+          government_id: String,
+          last_name: String,
+          ?phone_number: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::KYB::beneficial_owner_individual
+      end
+
+      type business_entity =
+        {
+          address: Lithic::Models::Address,
+          government_id: String,
+          legal_business_name: String,
+          phone_numbers: ::Array[String],
+          dba_business_name: String,
+          parent_company: String
+        }
+
+      class BusinessEntity < Lithic::BaseModel
+        attr_accessor address: Lithic::Models::Address
+
+        attr_accessor government_id: String
+
+        attr_accessor legal_business_name: String
+
+        attr_accessor phone_numbers: ::Array[String]
+
+        attr_reader dba_business_name: String?
+
+        def dba_business_name=: (String) -> String
+
+        attr_reader parent_company: String?
+
+        def parent_company=: (String) -> String
+
+        def initialize: (
+          address: Lithic::Models::Address,
+          government_id: String,
+          legal_business_name: String,
+          phone_numbers: ::Array[String],
+          ?dba_business_name: String,
+          ?parent_company: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::KYB::business_entity
+      end
+
+      type control_person =
+        {
+          address: Lithic::Models::Address,
+          dob: String,
+          email: String,
+          first_name: String,
+          government_id: String,
+          last_name: String,
+          phone_number: String
+        }
+
+      class ControlPerson < Lithic::BaseModel
+        attr_accessor address: Lithic::Models::Address
+
+        attr_accessor dob: String
+
+        attr_accessor email: String
+
+        attr_accessor first_name: String
+
+        attr_accessor government_id: String
+
+        attr_accessor last_name: String
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        def initialize: (
+          address: Lithic::Models::Address,
+          dob: String,
+          email: String,
+          first_name: String,
+          government_id: String,
+          last_name: String,
+          ?phone_number: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::KYB::control_person
+      end
+
+      type workflow = :KYB_BASIC | :KYB_BYO
+
+      class Workflow < Lithic::Enum
+        KYB_BASIC: :KYB_BASIC
+        KYB_BYO: :KYB_BYO
+
+        def self.values: -> ::Array[Lithic::Models::KYB::workflow]
+      end
+    end
+  end
+end

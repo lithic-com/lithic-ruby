@@ -1,0 +1,24 @@
+module Lithic
+  module Models
+    module AuthRules
+      module V2
+        type backtest_retrieve_params =
+          { auth_rule_token: String } & Lithic::request_parameters
+
+        class BacktestRetrieveParams < Lithic::BaseModel
+          extend Lithic::RequestParameters::Converter
+          include Lithic::RequestParameters
+
+          attr_accessor auth_rule_token: String
+
+          def initialize: (
+            auth_rule_token: String,
+            ?request_options: Lithic::request_opts
+          ) -> void
+
+          def to_hash: -> Lithic::Models::AuthRules::V2::backtest_retrieve_params
+        end
+      end
+    end
+  end
+end

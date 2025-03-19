@@ -1,0 +1,17 @@
+module Lithic
+  module Models
+    type responder_endpoint_status = { enrolled: bool, url: String? }
+
+    class ResponderEndpointStatus < Lithic::BaseModel
+      attr_reader enrolled: bool?
+
+      def enrolled=: (bool) -> bool
+
+      attr_accessor url: String?
+
+      def initialize: (?enrolled: bool, ?url: String?) -> void
+
+      def to_hash: -> Lithic::Models::responder_endpoint_status
+    end
+  end
+end

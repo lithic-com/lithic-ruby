@@ -1,0 +1,25 @@
+module Lithic
+  module Models
+    type external_payment_reverse_params =
+      { effective_date: Date, memo: String } & Lithic::request_parameters
+
+    class ExternalPaymentReverseParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor effective_date: Date
+
+      attr_reader memo: String?
+
+      def memo=: (String) -> String
+
+      def initialize: (
+        effective_date: Date,
+        ?memo: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::external_payment_reverse_params
+    end
+  end
+end

@@ -1,0 +1,88 @@
+module Lithic
+  module Models
+    type external_bank_account_update_params =
+      {
+        address: Lithic::Models::ExternalBankAccountAddress,
+        company_id: String,
+        dob: Date,
+        doing_business_as: String,
+        name: String,
+        owner: String,
+        owner_type: Lithic::Models::owner_type,
+        type: Lithic::Models::ExternalBankAccountUpdateParams::type_,
+        user_defined_id: String
+      }
+      & Lithic::request_parameters
+
+    class ExternalBankAccountUpdateParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader address: Lithic::Models::ExternalBankAccountAddress?
+
+      def address=: (
+        Lithic::Models::ExternalBankAccountAddress
+      ) -> Lithic::Models::ExternalBankAccountAddress
+
+      attr_reader company_id: String?
+
+      def company_id=: (String) -> String
+
+      attr_reader dob: Date?
+
+      def dob=: (Date) -> Date
+
+      attr_reader doing_business_as: String?
+
+      def doing_business_as=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader owner: String?
+
+      def owner=: (String) -> String
+
+      attr_reader owner_type: Lithic::Models::owner_type?
+
+      def owner_type=: (
+        Lithic::Models::owner_type
+      ) -> Lithic::Models::owner_type
+
+      attr_reader type: Lithic::Models::ExternalBankAccountUpdateParams::type_?
+
+      def type=: (
+        Lithic::Models::ExternalBankAccountUpdateParams::type_
+      ) -> Lithic::Models::ExternalBankAccountUpdateParams::type_
+
+      attr_reader user_defined_id: String?
+
+      def user_defined_id=: (String) -> String
+
+      def initialize: (
+        ?address: Lithic::Models::ExternalBankAccountAddress,
+        ?company_id: String,
+        ?dob: Date,
+        ?doing_business_as: String,
+        ?name: String,
+        ?owner: String,
+        ?owner_type: Lithic::Models::owner_type,
+        ?type: Lithic::Models::ExternalBankAccountUpdateParams::type_,
+        ?user_defined_id: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::external_bank_account_update_params
+
+      type type_ = :CHECKING | :SAVINGS
+
+      class Type < Lithic::Enum
+        CHECKING: :CHECKING
+        SAVINGS: :SAVINGS
+
+        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountUpdateParams::type_]
+      end
+    end
+  end
+end

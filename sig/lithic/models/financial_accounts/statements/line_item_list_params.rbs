@@ -1,0 +1,45 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      module Statements
+        type line_item_list_params =
+          {
+            financial_account_token: String,
+            ending_before: String,
+            page_size: Integer,
+            starting_after: String
+          }
+          & Lithic::request_parameters
+
+        class LineItemListParams < Lithic::BaseModel
+          extend Lithic::RequestParameters::Converter
+          include Lithic::RequestParameters
+
+          attr_accessor financial_account_token: String
+
+          attr_reader ending_before: String?
+
+          def ending_before=: (String) -> String
+
+          attr_reader page_size: Integer?
+
+          def page_size=: (Integer) -> Integer
+
+          attr_reader starting_after: String?
+
+          def starting_after=: (String) -> String
+
+          def initialize: (
+            financial_account_token: String,
+            ?ending_before: String,
+            ?page_size: Integer,
+            ?starting_after: String,
+            ?request_options: Lithic::request_opts
+          ) -> void
+
+          def to_hash: -> Lithic::Models::FinancialAccounts::Statements::line_item_list_params
+        end
+      end
+    end
+  end
+end

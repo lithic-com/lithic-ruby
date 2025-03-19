@@ -1,0 +1,216 @@
+module Lithic
+  module Models
+    type management_operation_transaction =
+      {
+        token: String,
+        category: Lithic::Models::ManagementOperationTransaction::category,
+        created: Time,
+        currency: String,
+        direction: Lithic::Models::ManagementOperationTransaction::direction,
+        events: ::Array[Lithic::Models::ManagementOperationTransaction::Event],
+        financial_account_token: String,
+        pending_amount: Integer,
+        result: Lithic::Models::ManagementOperationTransaction::result,
+        settled_amount: Integer,
+        status: Lithic::Models::ManagementOperationTransaction::status,
+        updated: Time,
+        user_defined_id: String
+      }
+
+    class ManagementOperationTransaction < Lithic::BaseModel
+      attr_accessor token: String
+
+      attr_accessor category: Lithic::Models::ManagementOperationTransaction::category
+
+      attr_accessor created: Time
+
+      attr_accessor currency: String
+
+      attr_accessor direction: Lithic::Models::ManagementOperationTransaction::direction
+
+      attr_accessor events: ::Array[Lithic::Models::ManagementOperationTransaction::Event]
+
+      attr_accessor financial_account_token: String
+
+      attr_accessor pending_amount: Integer
+
+      attr_accessor result: Lithic::Models::ManagementOperationTransaction::result
+
+      attr_accessor settled_amount: Integer
+
+      attr_accessor status: Lithic::Models::ManagementOperationTransaction::status
+
+      attr_accessor updated: Time
+
+      attr_reader user_defined_id: String?
+
+      def user_defined_id=: (String) -> String
+
+      def initialize: (
+        token: String,
+        category: Lithic::Models::ManagementOperationTransaction::category,
+        created: Time,
+        currency: String,
+        direction: Lithic::Models::ManagementOperationTransaction::direction,
+        events: ::Array[Lithic::Models::ManagementOperationTransaction::Event],
+        financial_account_token: String,
+        pending_amount: Integer,
+        result: Lithic::Models::ManagementOperationTransaction::result,
+        settled_amount: Integer,
+        status: Lithic::Models::ManagementOperationTransaction::status,
+        updated: Time,
+        ?user_defined_id: String
+      ) -> void
+
+      def to_hash: -> Lithic::Models::management_operation_transaction
+
+      type category =
+        :MANAGEMENT_FEE
+        | :MANAGEMENT_DISPUTE
+        | :MANAGEMENT_REWARD
+        | :MANAGEMENT_ADJUSTMENT
+
+      class Category < Lithic::Enum
+        MANAGEMENT_FEE: :MANAGEMENT_FEE
+        MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
+        MANAGEMENT_REWARD: :MANAGEMENT_REWARD
+        MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
+
+        def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::category]
+      end
+
+      type direction = :CREDIT | :DEBIT
+
+      class Direction < Lithic::Enum
+        CREDIT: :CREDIT
+        DEBIT: :DEBIT
+
+        def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::direction]
+      end
+
+      type event =
+        {
+          token: String,
+          amount: Integer,
+          created: Time,
+          detailed_results: ::Array[Lithic::Models::ManagementOperationTransaction::Event::detailed_result],
+          effective_date: Date,
+          memo: String,
+          result: Lithic::Models::ManagementOperationTransaction::Event::result,
+          type: Lithic::Models::ManagementOperationTransaction::Event::type_,
+          subtype: String
+        }
+
+      class Event < Lithic::BaseModel
+        attr_accessor token: String
+
+        attr_accessor amount: Integer
+
+        attr_accessor created: Time
+
+        attr_accessor detailed_results: ::Array[Lithic::Models::ManagementOperationTransaction::Event::detailed_result]
+
+        attr_accessor effective_date: Date
+
+        attr_accessor memo: String
+
+        attr_accessor result: Lithic::Models::ManagementOperationTransaction::Event::result
+
+        attr_accessor type: Lithic::Models::ManagementOperationTransaction::Event::type_
+
+        attr_reader subtype: String?
+
+        def subtype=: (String) -> String
+
+        def initialize: (
+          token: String,
+          amount: Integer,
+          created: Time,
+          detailed_results: ::Array[Lithic::Models::ManagementOperationTransaction::Event::detailed_result],
+          effective_date: Date,
+          memo: String,
+          result: Lithic::Models::ManagementOperationTransaction::Event::result,
+          type: Lithic::Models::ManagementOperationTransaction::Event::type_,
+          ?subtype: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::ManagementOperationTransaction::event
+
+        type detailed_result = :APPROVED
+
+        class DetailedResult < Lithic::Enum
+          APPROVED: :APPROVED
+
+          def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::detailed_result]
+        end
+
+        type result = :APPROVED | :DECLINED
+
+        class Result < Lithic::Enum
+          APPROVED: :APPROVED
+          DECLINED: :DECLINED
+
+          def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::result]
+        end
+
+        type type_ =
+          :CASH_BACK
+          | :CURRENCY_CONVERSION
+          | :INTEREST
+          | :LATE_PAYMENT
+          | :BILLING_ERROR
+          | :PROVISIONAL_CREDIT
+          | :LOSS_WRITE_OFF
+          | :CASH_BACK_REVERSAL
+          | :CURRENCY_CONVERSION_REVERSAL
+          | :INTEREST_REVERSAL
+          | :LATE_PAYMENT_REVERSAL
+          | :BILLING_ERROR_REVERSAL
+          | :PROVISIONAL_CREDIT_REVERSAL
+          | :RETURNED_PAYMENT
+          | :RETURNED_PAYMENT_REVERSAL
+
+        class Type < Lithic::Enum
+          CASH_BACK: :CASH_BACK
+          CURRENCY_CONVERSION: :CURRENCY_CONVERSION
+          INTEREST: :INTEREST
+          LATE_PAYMENT: :LATE_PAYMENT
+          BILLING_ERROR: :BILLING_ERROR
+          PROVISIONAL_CREDIT: :PROVISIONAL_CREDIT
+          LOSS_WRITE_OFF: :LOSS_WRITE_OFF
+          CASH_BACK_REVERSAL: :CASH_BACK_REVERSAL
+          CURRENCY_CONVERSION_REVERSAL: :CURRENCY_CONVERSION_REVERSAL
+          INTEREST_REVERSAL: :INTEREST_REVERSAL
+          LATE_PAYMENT_REVERSAL: :LATE_PAYMENT_REVERSAL
+          BILLING_ERROR_REVERSAL: :BILLING_ERROR_REVERSAL
+          PROVISIONAL_CREDIT_REVERSAL: :PROVISIONAL_CREDIT_REVERSAL
+          RETURNED_PAYMENT: :RETURNED_PAYMENT
+          RETURNED_PAYMENT_REVERSAL: :RETURNED_PAYMENT_REVERSAL
+
+          def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::type_]
+        end
+      end
+
+      type result = :APPROVED | :DECLINED
+
+      class Result < Lithic::Enum
+        APPROVED: :APPROVED
+        DECLINED: :DECLINED
+
+        def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::result]
+      end
+
+      type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
+
+      class Status < Lithic::Enum
+        PENDING: :PENDING
+        SETTLED: :SETTLED
+        DECLINED: :DECLINED
+        REVERSED: :REVERSED
+        CANCELED: :CANCELED
+
+        def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::status]
+      end
+    end
+  end
+end

@@ -1,0 +1,103 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type financial_transaction_list_params =
+        {
+          begin_: Time,
+          category: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category,
+          end_: Time,
+          ending_before: String,
+          result: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::result,
+          starting_after: String,
+          status: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::status
+        }
+        & Lithic::request_parameters
+
+      class FinancialTransactionListParams < Lithic::BaseModel
+        extend Lithic::RequestParameters::Converter
+        include Lithic::RequestParameters
+
+        attr_reader begin_: Time?
+
+        def begin_=: (Time) -> Time
+
+        attr_reader category: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category?
+
+        def category=: (
+          Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category
+        ) -> Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category
+
+        attr_reader end_: Time?
+
+        def end_=: (Time) -> Time
+
+        attr_reader ending_before: String?
+
+        def ending_before=: (String) -> String
+
+        attr_reader result: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::result?
+
+        def result=: (
+          Lithic::Models::FinancialAccounts::FinancialTransactionListParams::result
+        ) -> Lithic::Models::FinancialAccounts::FinancialTransactionListParams::result
+
+        attr_reader starting_after: String?
+
+        def starting_after=: (String) -> String
+
+        attr_reader status: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::status?
+
+        def status=: (
+          Lithic::Models::FinancialAccounts::FinancialTransactionListParams::status
+        ) -> Lithic::Models::FinancialAccounts::FinancialTransactionListParams::status
+
+        def initialize: (
+          ?begin_: Time,
+          ?category: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category,
+          ?end_: Time,
+          ?ending_before: String,
+          ?result: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::result,
+          ?starting_after: String,
+          ?status: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::status,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> Lithic::Models::FinancialAccounts::financial_transaction_list_params
+
+        type category = :ACH | :CARD | :INTERNAL | :TRANSFER
+
+        class Category < Lithic::Enum
+          ACH: :ACH
+          CARD: :CARD
+          INTERNAL: :INTERNAL
+          TRANSFER: :TRANSFER
+
+          def self.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category]
+        end
+
+        type result = :APPROVED | :DECLINED
+
+        class Result < Lithic::Enum
+          APPROVED: :APPROVED
+          DECLINED: :DECLINED
+
+          def self.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::result]
+        end
+
+        type status =
+          :DECLINED | :EXPIRED | :PENDING | :RETURNED | :SETTLED | :VOIDED
+
+        class Status < Lithic::Enum
+          DECLINED: :DECLINED
+          EXPIRED: :EXPIRED
+          PENDING: :PENDING
+          RETURNED: :RETURNED
+          SETTLED: :SETTLED
+          VOIDED: :VOIDED
+
+          def self.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::status]
+        end
+      end
+    end
+  end
+end

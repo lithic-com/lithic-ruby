@@ -1,0 +1,27 @@
+module Lithic
+  module Resources
+    class Cards
+      class FinancialTransactions
+        def retrieve: (
+          String financial_transaction_token,
+          card_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::FinancialTransaction
+
+        def list: (
+          String card_token,
+          ?begin_: Time,
+          ?category: Lithic::Models::Cards::FinancialTransactionListParams::category,
+          ?end_: Time,
+          ?ending_before: String,
+          ?result: Lithic::Models::Cards::FinancialTransactionListParams::result,
+          ?starting_after: String,
+          ?status: Lithic::Models::Cards::FinancialTransactionListParams::status,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::SinglePage[Lithic::Models::FinancialTransaction]
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

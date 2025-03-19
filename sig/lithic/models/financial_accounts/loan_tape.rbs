@@ -1,0 +1,535 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type loan_tape =
+        {
+          token: String,
+          account_standing: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding,
+          available_credit: Integer,
+          balances: Lithic::Models::FinancialAccounts::LoanTape::Balances,
+          created: Time,
+          credit_limit: Integer,
+          credit_product_token: String,
+          date: Date,
+          day_totals: Lithic::Models::FinancialAccounts::LoanTape::DayTotals,
+          ending_balance: Integer,
+          excess_credits: Integer,
+          financial_account_token: String,
+          interest_details: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails?,
+          minimum_payment_balance: Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance,
+          payment_allocation: Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation,
+          period_totals: Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals,
+          previous_statement_balance: Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance,
+          starting_balance: Integer,
+          updated: Time,
+          version: Integer,
+          ytd_totals: Lithic::Models::FinancialAccounts::LoanTape::YtdTotals,
+          tier: String
+        }
+
+      class LoanTape < Lithic::BaseModel
+        attr_accessor token: String
+
+        attr_accessor account_standing: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding
+
+        attr_accessor available_credit: Integer
+
+        attr_accessor balances: Lithic::Models::FinancialAccounts::LoanTape::Balances
+
+        attr_accessor created: Time
+
+        attr_accessor credit_limit: Integer
+
+        attr_accessor credit_product_token: String
+
+        attr_accessor date: Date
+
+        attr_accessor day_totals: Lithic::Models::FinancialAccounts::LoanTape::DayTotals
+
+        attr_accessor ending_balance: Integer
+
+        attr_accessor excess_credits: Integer
+
+        attr_accessor financial_account_token: String
+
+        attr_accessor interest_details: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails?
+
+        attr_accessor minimum_payment_balance: Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance
+
+        attr_accessor payment_allocation: Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation
+
+        attr_accessor period_totals: Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals
+
+        attr_accessor previous_statement_balance: Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance
+
+        attr_accessor starting_balance: Integer
+
+        attr_accessor updated: Time
+
+        attr_accessor version: Integer
+
+        attr_accessor ytd_totals: Lithic::Models::FinancialAccounts::LoanTape::YtdTotals
+
+        attr_reader tier: String?
+
+        def tier=: (String) -> String
+
+        def initialize: (
+          token: String,
+          account_standing: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding,
+          available_credit: Integer,
+          balances: Lithic::Models::FinancialAccounts::LoanTape::Balances,
+          created: Time,
+          credit_limit: Integer,
+          credit_product_token: String,
+          date: Date,
+          day_totals: Lithic::Models::FinancialAccounts::LoanTape::DayTotals,
+          ending_balance: Integer,
+          excess_credits: Integer,
+          financial_account_token: String,
+          interest_details: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails?,
+          minimum_payment_balance: Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance,
+          payment_allocation: Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation,
+          period_totals: Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals,
+          previous_statement_balance: Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance,
+          starting_balance: Integer,
+          updated: Time,
+          version: Integer,
+          ytd_totals: Lithic::Models::FinancialAccounts::LoanTape::YtdTotals,
+          ?tier: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::FinancialAccounts::loan_tape
+
+        type account_standing =
+          {
+            consecutive_full_payments_made: Integer,
+            consecutive_minimum_payments_made: Integer,
+            consecutive_minimum_payments_missed: Integer,
+            days_past_due: Integer,
+            has_grace: bool,
+            period_number: Integer,
+            period_state: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::period_state
+          }
+
+        class AccountStanding < Lithic::BaseModel
+          attr_accessor consecutive_full_payments_made: Integer
+
+          attr_accessor consecutive_minimum_payments_made: Integer
+
+          attr_accessor consecutive_minimum_payments_missed: Integer
+
+          attr_accessor days_past_due: Integer
+
+          attr_accessor has_grace: bool
+
+          attr_accessor period_number: Integer
+
+          attr_accessor period_state: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::period_state
+
+          def initialize: (
+            consecutive_full_payments_made: Integer,
+            consecutive_minimum_payments_made: Integer,
+            consecutive_minimum_payments_missed: Integer,
+            days_past_due: Integer,
+            has_grace: bool,
+            period_number: Integer,
+            period_state: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::period_state
+          ) -> void
+
+          def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::account_standing
+
+          type period_state = :STANDARD | :PROMO | :PENALTY
+
+          class PeriodState < Lithic::Enum
+            STANDARD: :STANDARD
+            PROMO: :PROMO
+            PENALTY: :PENALTY
+
+            def self.values: -> ::Array[Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::period_state]
+          end
+        end
+
+        type balances =
+          {
+            due: Lithic::Models::FinancialAccounts::LoanTape::Balances::Due,
+            next_statement_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue,
+            past_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue,
+            past_statements_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue
+          }
+
+        class Balances < Lithic::BaseModel
+          attr_accessor due: Lithic::Models::FinancialAccounts::LoanTape::Balances::Due
+
+          attr_accessor next_statement_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue
+
+          attr_accessor past_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue
+
+          attr_accessor past_statements_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue
+
+          def initialize: (
+            due: Lithic::Models::FinancialAccounts::LoanTape::Balances::Due,
+            next_statement_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue,
+            past_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue,
+            past_statements_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue
+          ) -> void
+
+          def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::balances
+
+          type due = { fees: Integer, interest: Integer, principal: Integer }
+
+          class Due < Lithic::BaseModel
+            attr_accessor fees: Integer
+
+            attr_accessor interest: Integer
+
+            attr_accessor principal: Integer
+
+            def initialize: (
+              fees: Integer,
+              interest: Integer,
+              principal: Integer
+            ) -> void
+
+            def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::Balances::due
+          end
+
+          type next_statement_due =
+            { fees: Integer, interest: Integer, principal: Integer }
+
+          class NextStatementDue < Lithic::BaseModel
+            attr_accessor fees: Integer
+
+            attr_accessor interest: Integer
+
+            attr_accessor principal: Integer
+
+            def initialize: (
+              fees: Integer,
+              interest: Integer,
+              principal: Integer
+            ) -> void
+
+            def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::Balances::next_statement_due
+          end
+
+          type past_due =
+            { fees: Integer, interest: Integer, principal: Integer }
+
+          class PastDue < Lithic::BaseModel
+            attr_accessor fees: Integer
+
+            attr_accessor interest: Integer
+
+            attr_accessor principal: Integer
+
+            def initialize: (
+              fees: Integer,
+              interest: Integer,
+              principal: Integer
+            ) -> void
+
+            def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::Balances::past_due
+          end
+
+          type past_statements_due =
+            { fees: Integer, interest: Integer, principal: Integer }
+
+          class PastStatementsDue < Lithic::BaseModel
+            attr_accessor fees: Integer
+
+            attr_accessor interest: Integer
+
+            attr_accessor principal: Integer
+
+            def initialize: (
+              fees: Integer,
+              interest: Integer,
+              principal: Integer
+            ) -> void
+
+            def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::Balances::past_statements_due
+          end
+        end
+
+        type day_totals =
+          {
+            balance_transfers: Integer,
+            cash_advances: Integer,
+            credits: Integer,
+            fees: Integer,
+            interest: Integer,
+            payments: Integer,
+            purchases: Integer
+          }
+
+        class DayTotals < Lithic::BaseModel
+          attr_accessor balance_transfers: Integer
+
+          attr_accessor cash_advances: Integer
+
+          attr_accessor credits: Integer
+
+          attr_accessor fees: Integer
+
+          attr_accessor interest: Integer
+
+          attr_accessor payments: Integer
+
+          attr_accessor purchases: Integer
+
+          def initialize: (
+            balance_transfers: Integer,
+            cash_advances: Integer,
+            credits: Integer,
+            fees: Integer,
+            interest: Integer,
+            payments: Integer,
+            purchases: Integer
+          ) -> void
+
+          def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::day_totals
+        end
+
+        type interest_details =
+          {
+            actual_interest_charged: Integer?,
+            daily_balance_amounts: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
+            effective_apr: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr,
+            interest_calculation_method: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::interest_calculation_method,
+            interest_for_period: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
+            prime_rate: String?,
+            minimum_interest_charged: Integer?
+          }
+
+        class InterestDetails < Lithic::BaseModel
+          attr_accessor actual_interest_charged: Integer?
+
+          attr_accessor daily_balance_amounts: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts
+
+          attr_accessor effective_apr: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr
+
+          attr_accessor interest_calculation_method: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::interest_calculation_method
+
+          attr_accessor interest_for_period: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod
+
+          attr_accessor prime_rate: String?
+
+          attr_accessor minimum_interest_charged: Integer?
+
+          def initialize: (
+            actual_interest_charged: Integer?,
+            daily_balance_amounts: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
+            effective_apr: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr,
+            interest_calculation_method: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::interest_calculation_method,
+            interest_for_period: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
+            prime_rate: String?,
+            ?minimum_interest_charged: Integer?
+          ) -> void
+
+          def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::interest_details
+
+          type daily_balance_amounts =
+            {
+              balance_transfers: String,
+              cash_advances: String,
+              purchases: String
+            }
+
+          class DailyBalanceAmounts < Lithic::BaseModel
+            attr_accessor balance_transfers: String
+
+            attr_accessor cash_advances: String
+
+            attr_accessor purchases: String
+
+            def initialize: (
+              balance_transfers: String,
+              cash_advances: String,
+              purchases: String
+            ) -> void
+
+            def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::daily_balance_amounts
+          end
+
+          type effective_apr =
+            {
+              balance_transfers: String,
+              cash_advances: String,
+              purchases: String
+            }
+
+          class EffectiveApr < Lithic::BaseModel
+            attr_accessor balance_transfers: String
+
+            attr_accessor cash_advances: String
+
+            attr_accessor purchases: String
+
+            def initialize: (
+              balance_transfers: String,
+              cash_advances: String,
+              purchases: String
+            ) -> void
+
+            def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::effective_apr
+          end
+
+          type interest_calculation_method = :DAILY | :AVERAGE_DAILY
+
+          class InterestCalculationMethod < Lithic::Enum
+            DAILY: :DAILY
+            AVERAGE_DAILY: :AVERAGE_DAILY
+
+            def self.values: -> ::Array[Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::interest_calculation_method]
+          end
+
+          type interest_for_period =
+            {
+              balance_transfers: String,
+              cash_advances: String,
+              purchases: String
+            }
+
+          class InterestForPeriod < Lithic::BaseModel
+            attr_accessor balance_transfers: String
+
+            attr_accessor cash_advances: String
+
+            attr_accessor purchases: String
+
+            def initialize: (
+              balance_transfers: String,
+              cash_advances: String,
+              purchases: String
+            ) -> void
+
+            def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::interest_for_period
+          end
+        end
+
+        type minimum_payment_balance = { amount: Integer, remaining: Integer }
+
+        class MinimumPaymentBalance < Lithic::BaseModel
+          attr_accessor amount: Integer
+
+          attr_accessor remaining: Integer
+
+          def initialize: (amount: Integer, remaining: Integer) -> void
+
+          def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::minimum_payment_balance
+        end
+
+        type payment_allocation =
+          { fees: Integer, interest: Integer, principal: Integer }
+
+        class PaymentAllocation < Lithic::BaseModel
+          attr_accessor fees: Integer
+
+          attr_accessor interest: Integer
+
+          attr_accessor principal: Integer
+
+          def initialize: (
+            fees: Integer,
+            interest: Integer,
+            principal: Integer
+          ) -> void
+
+          def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::payment_allocation
+        end
+
+        type period_totals =
+          {
+            balance_transfers: Integer,
+            cash_advances: Integer,
+            credits: Integer,
+            fees: Integer,
+            interest: Integer,
+            payments: Integer,
+            purchases: Integer
+          }
+
+        class PeriodTotals < Lithic::BaseModel
+          attr_accessor balance_transfers: Integer
+
+          attr_accessor cash_advances: Integer
+
+          attr_accessor credits: Integer
+
+          attr_accessor fees: Integer
+
+          attr_accessor interest: Integer
+
+          attr_accessor payments: Integer
+
+          attr_accessor purchases: Integer
+
+          def initialize: (
+            balance_transfers: Integer,
+            cash_advances: Integer,
+            credits: Integer,
+            fees: Integer,
+            interest: Integer,
+            payments: Integer,
+            purchases: Integer
+          ) -> void
+
+          def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::period_totals
+        end
+
+        type previous_statement_balance =
+          { amount: Integer, remaining: Integer }
+
+        class PreviousStatementBalance < Lithic::BaseModel
+          attr_accessor amount: Integer
+
+          attr_accessor remaining: Integer
+
+          def initialize: (amount: Integer, remaining: Integer) -> void
+
+          def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::previous_statement_balance
+        end
+
+        type ytd_totals =
+          {
+            balance_transfers: Integer,
+            cash_advances: Integer,
+            credits: Integer,
+            fees: Integer,
+            interest: Integer,
+            payments: Integer,
+            purchases: Integer
+          }
+
+        class YtdTotals < Lithic::BaseModel
+          attr_accessor balance_transfers: Integer
+
+          attr_accessor cash_advances: Integer
+
+          attr_accessor credits: Integer
+
+          attr_accessor fees: Integer
+
+          attr_accessor interest: Integer
+
+          attr_accessor payments: Integer
+
+          attr_accessor purchases: Integer
+
+          def initialize: (
+            balance_transfers: Integer,
+            cash_advances: Integer,
+            credits: Integer,
+            fees: Integer,
+            interest: Integer,
+            payments: Integer,
+            purchases: Integer
+          ) -> void
+
+          def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::ytd_totals
+        end
+      end
+    end
+  end
+end

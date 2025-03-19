@@ -1,0 +1,49 @@
+module Lithic
+  module Models
+    type financial_account_list_params =
+      {
+        account_token: String,
+        business_account_token: String,
+        type: Lithic::Models::FinancialAccountListParams::type_
+      }
+      & Lithic::request_parameters
+
+    class FinancialAccountListParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader account_token: String?
+
+      def account_token=: (String) -> String
+
+      attr_reader business_account_token: String?
+
+      def business_account_token=: (String) -> String
+
+      attr_reader type: Lithic::Models::FinancialAccountListParams::type_?
+
+      def type=: (
+        Lithic::Models::FinancialAccountListParams::type_
+      ) -> Lithic::Models::FinancialAccountListParams::type_
+
+      def initialize: (
+        ?account_token: String,
+        ?business_account_token: String,
+        ?type: Lithic::Models::FinancialAccountListParams::type_,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::financial_account_list_params
+
+      type type_ = :ISSUING | :OPERATING | :RESERVE
+
+      class Type < Lithic::Enum
+        ISSUING: :ISSUING
+        OPERATING: :OPERATING
+        RESERVE: :RESERVE
+
+        def self.values: -> ::Array[Lithic::Models::FinancialAccountListParams::type_]
+      end
+    end
+  end
+end

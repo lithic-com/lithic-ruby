@@ -1,0 +1,84 @@
+module Lithic
+  class Client < Lithic::BaseClient
+    DEFAULT_MAX_RETRIES: 2
+
+    DEFAULT_TIMEOUT_IN_SECONDS: Float
+
+    DEFAULT_INITIAL_RETRY_DELAY: Float
+
+    DEFAULT_MAX_RETRY_DELAY: Float
+
+    ENVIRONMENTS: {
+      production: "https://api.lithic.com",
+      sandbox: "https://sandbox.lithic.com"
+    }
+
+    attr_reader api_key: String
+
+    attr_reader accounts: Lithic::Resources::Accounts
+
+    attr_reader account_holders: Lithic::Resources::AccountHolders
+
+    attr_reader auth_rules: Lithic::Resources::AuthRules
+
+    attr_reader auth_stream_enrollment: Lithic::Resources::AuthStreamEnrollment
+
+    attr_reader tokenization_decisioning: Lithic::Resources::TokenizationDecisioning
+
+    attr_reader tokenizations: Lithic::Resources::Tokenizations
+
+    attr_reader cards: Lithic::Resources::Cards
+
+    attr_reader balances: Lithic::Resources::Balances
+
+    attr_reader aggregate_balances: Lithic::Resources::AggregateBalances
+
+    attr_reader disputes: Lithic::Resources::Disputes
+
+    attr_reader events: Lithic::Resources::Events
+
+    attr_reader transfers: Lithic::Resources::Transfers
+
+    attr_reader financial_accounts: Lithic::Resources::FinancialAccounts
+
+    attr_reader transactions: Lithic::Resources::Transactions
+
+    attr_reader responder_endpoints: Lithic::Resources::ResponderEndpoints
+
+    attr_reader external_bank_accounts: Lithic::Resources::ExternalBankAccounts
+
+    attr_reader payments: Lithic::Resources::Payments
+
+    attr_reader three_ds: Lithic::Resources::ThreeDS
+
+    attr_reader reports: Lithic::Resources::Reports
+
+    attr_reader card_programs: Lithic::Resources::CardPrograms
+
+    attr_reader digital_card_art: Lithic::Resources::DigitalCardArt
+
+    attr_reader book_transfers: Lithic::Resources::BookTransfers
+
+    attr_reader credit_products: Lithic::Resources::CreditProducts
+
+    attr_reader external_payments: Lithic::Resources::ExternalPayments
+
+    attr_reader management_operations: Lithic::Resources::ManagementOperations
+
+    def api_status: (
+      ?request_options: Lithic::request_opts
+    ) -> Lithic::Models::APIStatus
+
+    private def auth_headers: -> ::Hash[String, String]
+
+    def initialize: (
+      ?environment: :production | :sandbox | nil,
+      ?base_url: String?,
+      ?api_key: String?,
+      ?max_retries: Integer,
+      ?timeout: Float,
+      ?initial_retry_delay: Float,
+      ?max_retry_delay: Float
+    ) -> void
+  end
+end

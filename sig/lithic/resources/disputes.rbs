@@ -1,0 +1,74 @@
+module Lithic
+  module Resources
+    class Disputes
+      def create: (
+        amount: Integer,
+        reason: Lithic::Models::DisputeCreateParams::reason,
+        transaction_token: String,
+        ?customer_filed_date: Time,
+        ?customer_note: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::Dispute
+
+      def retrieve: (
+        String dispute_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::Dispute
+
+      def update: (
+        String dispute_token,
+        ?amount: Integer,
+        ?customer_filed_date: Time,
+        ?customer_note: String,
+        ?reason: Lithic::Models::DisputeUpdateParams::reason,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::Dispute
+
+      def list: (
+        ?begin_: Time,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?status: Lithic::Models::DisputeListParams::status,
+        ?transaction_tokens: ::Array[String],
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CursorPage[Lithic::Models::Dispute]
+
+      def delete: (
+        String dispute_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::Dispute
+
+      def delete_evidence: (
+        String evidence_token,
+        dispute_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::DisputeEvidence
+
+      def initiate_evidence_upload: (
+        String dispute_token,
+        ?filename: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::DisputeEvidence
+
+      def list_evidences: (
+        String dispute_token,
+        ?begin_: Time,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CursorPage[Lithic::Models::DisputeEvidence]
+
+      def retrieve_evidence: (
+        String evidence_token,
+        dispute_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::DisputeEvidence
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

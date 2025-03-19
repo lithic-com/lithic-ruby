@@ -1,0 +1,86 @@
+module Lithic
+  module Models
+    type dispute_list_params =
+      {
+        begin_: Time,
+        end_: Time,
+        ending_before: String,
+        page_size: Integer,
+        starting_after: String,
+        status: Lithic::Models::DisputeListParams::status,
+        transaction_tokens: ::Array[String]
+      }
+      & Lithic::request_parameters
+
+    class DisputeListParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader begin_: Time?
+
+      def begin_=: (Time) -> Time
+
+      attr_reader end_: Time?
+
+      def end_=: (Time) -> Time
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      attr_reader status: Lithic::Models::DisputeListParams::status?
+
+      def status=: (
+        Lithic::Models::DisputeListParams::status
+      ) -> Lithic::Models::DisputeListParams::status
+
+      attr_reader transaction_tokens: ::Array[String]?
+
+      def transaction_tokens=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        ?begin_: Time,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?status: Lithic::Models::DisputeListParams::status,
+        ?transaction_tokens: ::Array[String],
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::dispute_list_params
+
+      type status =
+        :ARBITRATION
+        | :CASE_CLOSED
+        | :CASE_WON
+        | :NEW
+        | :PENDING_CUSTOMER
+        | :PREARBITRATION
+        | :REPRESENTMENT
+        | :SUBMITTED
+
+      class Status < Lithic::Enum
+        ARBITRATION: :ARBITRATION
+        CASE_CLOSED: :CASE_CLOSED
+        CASE_WON: :CASE_WON
+        NEW: :NEW
+        PENDING_CUSTOMER: :PENDING_CUSTOMER
+        PREARBITRATION: :PREARBITRATION
+        REPRESENTMENT: :REPRESENTMENT
+        SUBMITTED: :SUBMITTED
+
+        def self.values: -> ::Array[Lithic::Models::DisputeListParams::status]
+      end
+    end
+  end
+end

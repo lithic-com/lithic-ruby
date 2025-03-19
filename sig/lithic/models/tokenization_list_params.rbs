@@ -1,0 +1,79 @@
+module Lithic
+  module Models
+    type tokenization_list_params =
+      {
+        account_token: String,
+        begin_: Date,
+        card_token: String,
+        end_: Date,
+        ending_before: String,
+        page_size: Integer,
+        starting_after: String,
+        tokenization_channel: Lithic::Models::TokenizationListParams::tokenization_channel
+      }
+      & Lithic::request_parameters
+
+    class TokenizationListParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader account_token: String?
+
+      def account_token=: (String) -> String
+
+      attr_reader begin_: Date?
+
+      def begin_=: (Date) -> Date
+
+      attr_reader card_token: String?
+
+      def card_token=: (String) -> String
+
+      attr_reader end_: Date?
+
+      def end_=: (Date) -> Date
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      attr_reader tokenization_channel: Lithic::Models::TokenizationListParams::tokenization_channel?
+
+      def tokenization_channel=: (
+        Lithic::Models::TokenizationListParams::tokenization_channel
+      ) -> Lithic::Models::TokenizationListParams::tokenization_channel
+
+      def initialize: (
+        ?account_token: String,
+        ?begin_: Date,
+        ?card_token: String,
+        ?end_: Date,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?tokenization_channel: Lithic::Models::TokenizationListParams::tokenization_channel,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::tokenization_list_params
+
+      type tokenization_channel = :DIGITAL_WALLET | :MERCHANT | :ALL
+
+      class TokenizationChannel < Lithic::Enum
+        DIGITAL_WALLET: :DIGITAL_WALLET
+        MERCHANT: :MERCHANT
+        ALL: :ALL
+
+        def self.values: -> ::Array[Lithic::Models::TokenizationListParams::tokenization_channel]
+      end
+    end
+  end
+end

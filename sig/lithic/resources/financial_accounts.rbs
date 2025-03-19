@@ -1,0 +1,51 @@
+module Lithic
+  module Resources
+    class FinancialAccounts
+      attr_reader balances: Lithic::Resources::FinancialAccounts::Balances
+
+      attr_reader financial_transactions: Lithic::Resources::FinancialAccounts::FinancialTransactions
+
+      attr_reader credit_configuration: Lithic::Resources::FinancialAccounts::CreditConfiguration
+
+      attr_reader statements: Lithic::Resources::FinancialAccounts::Statements
+
+      attr_reader loan_tapes: Lithic::Resources::FinancialAccounts::LoanTapes
+
+      def create: (
+        nickname: String,
+        type: Lithic::Models::FinancialAccountCreateParams::type_,
+        ?account_token: String,
+        ?is_for_benefit_of: bool,
+        ?idempotency_key: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::FinancialAccount
+
+      def retrieve: (
+        String financial_account_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::FinancialAccount
+
+      def update: (
+        String financial_account_token,
+        ?nickname: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::FinancialAccount
+
+      def list: (
+        ?account_token: String,
+        ?business_account_token: String,
+        ?type: Lithic::Models::FinancialAccountListParams::type_,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::SinglePage[Lithic::Models::FinancialAccount]
+
+      def update_status: (
+        String financial_account_token,
+        status: Lithic::Models::FinancialAccountUpdateStatusParams::status,
+        status_change_reason: Lithic::Models::FinancialAccountUpdateStatusParams::status_change_reason?,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::FinancialAccount
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

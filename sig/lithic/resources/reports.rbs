@@ -1,0 +1,9 @@
+module Lithic
+  module Resources
+    class Reports
+      attr_reader settlement: Lithic::Resources::Reports::Settlement
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

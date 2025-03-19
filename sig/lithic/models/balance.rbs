@@ -1,0 +1,64 @@
+module Lithic
+  module Models
+    type balance =
+      {
+        available_amount: Integer,
+        created: Time,
+        currency: String,
+        financial_account_token: String,
+        financial_account_type: Lithic::Models::Balance::financial_account_type,
+        last_transaction_event_token: String,
+        last_transaction_token: String,
+        pending_amount: Integer,
+        total_amount: Integer,
+        updated: Time
+      }
+
+    class Balance < Lithic::BaseModel
+      attr_accessor available_amount: Integer
+
+      attr_accessor created: Time
+
+      attr_accessor currency: String
+
+      attr_accessor financial_account_token: String
+
+      attr_accessor financial_account_type: Lithic::Models::Balance::financial_account_type
+
+      attr_accessor last_transaction_event_token: String
+
+      attr_accessor last_transaction_token: String
+
+      attr_accessor pending_amount: Integer
+
+      attr_accessor total_amount: Integer
+
+      attr_accessor updated: Time
+
+      def initialize: (
+        available_amount: Integer,
+        created: Time,
+        currency: String,
+        financial_account_token: String,
+        financial_account_type: Lithic::Models::Balance::financial_account_type,
+        last_transaction_event_token: String,
+        last_transaction_token: String,
+        pending_amount: Integer,
+        total_amount: Integer,
+        updated: Time
+      ) -> void
+
+      def to_hash: -> Lithic::Models::balance
+
+      type financial_account_type = :ISSUING | :OPERATING | :RESERVE
+
+      class FinancialAccountType < Lithic::Enum
+        ISSUING: :ISSUING
+        OPERATING: :OPERATING
+        RESERVE: :RESERVE
+
+        def self.values: -> ::Array[Lithic::Models::Balance::financial_account_type]
+      end
+    end
+  end
+end

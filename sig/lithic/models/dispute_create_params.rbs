@@ -1,0 +1,78 @@
+module Lithic
+  module Models
+    type dispute_create_params =
+      {
+        amount: Integer,
+        reason: Lithic::Models::DisputeCreateParams::reason,
+        transaction_token: String,
+        customer_filed_date: Time,
+        customer_note: String
+      }
+      & Lithic::request_parameters
+
+    class DisputeCreateParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor amount: Integer
+
+      attr_accessor reason: Lithic::Models::DisputeCreateParams::reason
+
+      attr_accessor transaction_token: String
+
+      attr_reader customer_filed_date: Time?
+
+      def customer_filed_date=: (Time) -> Time
+
+      attr_reader customer_note: String?
+
+      def customer_note=: (String) -> String
+
+      def initialize: (
+        amount: Integer,
+        reason: Lithic::Models::DisputeCreateParams::reason,
+        transaction_token: String,
+        ?customer_filed_date: Time,
+        ?customer_note: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::dispute_create_params
+
+      type reason =
+        :ATM_CASH_MISDISPENSE
+        | :CANCELLED
+        | :DUPLICATED
+        | :FRAUD_CARD_NOT_PRESENT
+        | :FRAUD_CARD_PRESENT
+        | :FRAUD_OTHER
+        | :GOODS_SERVICES_NOT_AS_DESCRIBED
+        | :GOODS_SERVICES_NOT_RECEIVED
+        | :INCORRECT_AMOUNT
+        | :MISSING_AUTH
+        | :OTHER
+        | :PROCESSING_ERROR
+        | :RECURRING_TRANSACTION_NOT_CANCELLED
+        | :REFUND_NOT_PROCESSED
+
+      class Reason < Lithic::Enum
+        ATM_CASH_MISDISPENSE: :ATM_CASH_MISDISPENSE
+        CANCELLED: :CANCELLED
+        DUPLICATED: :DUPLICATED
+        FRAUD_CARD_NOT_PRESENT: :FRAUD_CARD_NOT_PRESENT
+        FRAUD_CARD_PRESENT: :FRAUD_CARD_PRESENT
+        FRAUD_OTHER: :FRAUD_OTHER
+        GOODS_SERVICES_NOT_AS_DESCRIBED: :GOODS_SERVICES_NOT_AS_DESCRIBED
+        GOODS_SERVICES_NOT_RECEIVED: :GOODS_SERVICES_NOT_RECEIVED
+        INCORRECT_AMOUNT: :INCORRECT_AMOUNT
+        MISSING_AUTH: :MISSING_AUTH
+        OTHER: :OTHER
+        PROCESSING_ERROR: :PROCESSING_ERROR
+        RECURRING_TRANSACTION_NOT_CANCELLED: :RECURRING_TRANSACTION_NOT_CANCELLED
+        REFUND_NOT_PROCESSED: :REFUND_NOT_PROCESSED
+
+        def self.values: -> ::Array[Lithic::Models::DisputeCreateParams::reason]
+      end
+    end
+  end
+end

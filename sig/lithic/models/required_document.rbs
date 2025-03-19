@@ -1,0 +1,26 @@
+module Lithic
+  module Models
+    type required_document =
+      {
+        entity_token: String,
+        status_reasons: ::Array[String],
+        valid_documents: ::Array[String]
+      }
+
+    class RequiredDocument < Lithic::BaseModel
+      attr_accessor entity_token: String
+
+      attr_accessor status_reasons: ::Array[String]
+
+      attr_accessor valid_documents: ::Array[String]
+
+      def initialize: (
+        entity_token: String,
+        status_reasons: ::Array[String],
+        valid_documents: ::Array[String]
+      ) -> void
+
+      def to_hash: -> Lithic::Models::required_document
+    end
+  end
+end

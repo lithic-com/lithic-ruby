@@ -1,0 +1,24 @@
+module Lithic
+  module Resources
+    class Reports
+      class Settlement
+        attr_reader network_totals: Lithic::Resources::Reports::Settlement::NetworkTotals
+
+        def list_details: (
+          Date report_date,
+          ?ending_before: String,
+          ?page_size: Integer,
+          ?starting_after: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::CursorPage[Lithic::Models::SettlementDetail]
+
+        def summary: (
+          Date report_date,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::SettlementReport
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

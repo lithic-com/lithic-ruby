@@ -1,0 +1,119 @@
+module Lithic
+  module Models
+    type payment_list_params =
+      {
+        account_token: String,
+        begin_: Time,
+        business_account_token: String,
+        category: Lithic::Models::PaymentListParams::category,
+        end_: Time,
+        ending_before: String,
+        financial_account_token: String,
+        page_size: Integer,
+        result: Lithic::Models::PaymentListParams::result,
+        starting_after: String,
+        status: Lithic::Models::PaymentListParams::status
+      }
+      & Lithic::request_parameters
+
+    class PaymentListParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader account_token: String?
+
+      def account_token=: (String) -> String
+
+      attr_reader begin_: Time?
+
+      def begin_=: (Time) -> Time
+
+      attr_reader business_account_token: String?
+
+      def business_account_token=: (String) -> String
+
+      attr_reader category: Lithic::Models::PaymentListParams::category?
+
+      def category=: (
+        Lithic::Models::PaymentListParams::category
+      ) -> Lithic::Models::PaymentListParams::category
+
+      attr_reader end_: Time?
+
+      def end_=: (Time) -> Time
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader financial_account_token: String?
+
+      def financial_account_token=: (String) -> String
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader result: Lithic::Models::PaymentListParams::result?
+
+      def result=: (
+        Lithic::Models::PaymentListParams::result
+      ) -> Lithic::Models::PaymentListParams::result
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      attr_reader status: Lithic::Models::PaymentListParams::status?
+
+      def status=: (
+        Lithic::Models::PaymentListParams::status
+      ) -> Lithic::Models::PaymentListParams::status
+
+      def initialize: (
+        ?account_token: String,
+        ?begin_: Time,
+        ?business_account_token: String,
+        ?category: Lithic::Models::PaymentListParams::category,
+        ?end_: Time,
+        ?ending_before: String,
+        ?financial_account_token: String,
+        ?page_size: Integer,
+        ?result: Lithic::Models::PaymentListParams::result,
+        ?starting_after: String,
+        ?status: Lithic::Models::PaymentListParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::payment_list_params
+
+      type category = :ACH
+
+      class Category < Lithic::Enum
+        ACH: :ACH
+
+        def self.values: -> ::Array[Lithic::Models::PaymentListParams::category]
+      end
+
+      type result = :APPROVED | :DECLINED
+
+      class Result < Lithic::Enum
+        APPROVED: :APPROVED
+        DECLINED: :DECLINED
+
+        def self.values: -> ::Array[Lithic::Models::PaymentListParams::result]
+      end
+
+      type status = :DECLINED | :PENDING | :RETURNED | :SETTLED
+
+      class Status < Lithic::Enum
+        DECLINED: :DECLINED
+        PENDING: :PENDING
+        RETURNED: :RETURNED
+        SETTLED: :SETTLED
+
+        def self.values: -> ::Array[Lithic::Models::PaymentListParams::status]
+      end
+    end
+  end
+end

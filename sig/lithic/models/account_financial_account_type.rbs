@@ -1,0 +1,12 @@
+module Lithic
+  module Models
+    type account_financial_account_type = :ISSUING | :OPERATING
+
+    class AccountFinancialAccountType < Lithic::Enum
+      ISSUING: :ISSUING
+      OPERATING: :OPERATING
+
+      def self.values: -> ::Array[Lithic::Models::account_financial_account_type]
+    end
+  end
+end

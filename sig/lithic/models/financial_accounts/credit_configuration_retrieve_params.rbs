@@ -1,0 +1,17 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type credit_configuration_retrieve_params =
+        {  } & Lithic::request_parameters
+
+      class CreditConfigurationRetrieveParams < Lithic::BaseModel
+        extend Lithic::RequestParameters::Converter
+        include Lithic::RequestParameters
+
+        def initialize: (?request_options: Lithic::request_opts) -> void
+
+        def to_hash: -> Lithic::Models::FinancialAccounts::credit_configuration_retrieve_params
+      end
+    end
+  end
+end

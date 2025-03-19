@@ -1,0 +1,11 @@
+module Lithic
+  module Resources
+    class CreditProducts
+      attr_reader extended_credit: Lithic::Resources::CreditProducts::ExtendedCredit
+
+      attr_reader prime_rates: Lithic::Resources::CreditProducts::PrimeRates
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

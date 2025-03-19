@@ -1,0 +1,15 @@
+module Lithic
+  module Resources
+    class Balances
+      def list: (
+        ?account_token: String,
+        ?balance_date: Time,
+        ?business_account_token: String,
+        ?financial_account_type: Lithic::Models::BalanceListParams::financial_account_type,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::SinglePage[Lithic::Models::Balance]
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,22 @@
+module Lithic
+  module Models
+    type tokenization_update_digital_card_art_params =
+      { digital_card_art_token: String } & Lithic::request_parameters
+
+    class TokenizationUpdateDigitalCardArtParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader digital_card_art_token: String?
+
+      def digital_card_art_token=: (String) -> String
+
+      def initialize: (
+        ?digital_card_art_token: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::tokenization_update_digital_card_art_params
+    end
+  end
+end

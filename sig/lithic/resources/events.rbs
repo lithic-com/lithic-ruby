@@ -1,0 +1,36 @@
+module Lithic
+  module Resources
+    class Events
+      attr_reader subscriptions: Lithic::Resources::Events::Subscriptions
+
+      def retrieve: (
+        String event_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::Event
+
+      def list: (
+        ?begin_: Time,
+        ?end_: Time,
+        ?ending_before: String,
+        ?event_types: ::Array[Lithic::Models::EventListParams::event_type],
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?with_content: bool,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CursorPage[Lithic::Models::Event]
+
+      def list_attempts: (
+        String event_token,
+        ?begin_: Time,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?status: Lithic::Models::EventListAttemptsParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CursorPage[Lithic::Models::MessageAttempt]
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

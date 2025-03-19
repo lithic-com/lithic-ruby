@@ -1,0 +1,55 @@
+module Lithic
+  module Models
+    type balance_list_params =
+      {
+        account_token: String,
+        balance_date: Time,
+        business_account_token: String,
+        financial_account_type: Lithic::Models::BalanceListParams::financial_account_type
+      }
+      & Lithic::request_parameters
+
+    class BalanceListParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_reader account_token: String?
+
+      def account_token=: (String) -> String
+
+      attr_reader balance_date: Time?
+
+      def balance_date=: (Time) -> Time
+
+      attr_reader business_account_token: String?
+
+      def business_account_token=: (String) -> String
+
+      attr_reader financial_account_type: Lithic::Models::BalanceListParams::financial_account_type?
+
+      def financial_account_type=: (
+        Lithic::Models::BalanceListParams::financial_account_type
+      ) -> Lithic::Models::BalanceListParams::financial_account_type
+
+      def initialize: (
+        ?account_token: String,
+        ?balance_date: Time,
+        ?business_account_token: String,
+        ?financial_account_type: Lithic::Models::BalanceListParams::financial_account_type,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::balance_list_params
+
+      type financial_account_type = :ISSUING | :OPERATING | :RESERVE
+
+      class FinancialAccountType < Lithic::Enum
+        ISSUING: :ISSUING
+        OPERATING: :OPERATING
+        RESERVE: :RESERVE
+
+        def self.values: -> ::Array[Lithic::Models::BalanceListParams::financial_account_type]
+      end
+    end
+  end
+end
