@@ -70,7 +70,7 @@ module Lithic
 
         OK: :OK
 
-        def self.values: -> ::Array[Lithic::Models::CardUpdateParams::pin_status]
+        def self?.values: -> ::Array[Lithic::Models::CardUpdateParams::pin_status]
       end
 
       type state = :CLOSED | :OPEN | :PAUSED
@@ -82,7 +82,7 @@ module Lithic
         OPEN: :OPEN
         PAUSED: :PAUSED
 
-        def self.values: -> ::Array[Lithic::Models::CardUpdateParams::state]
+        def self?.values: -> ::Array[Lithic::Models::CardUpdateParams::state]
       end
     end
   end

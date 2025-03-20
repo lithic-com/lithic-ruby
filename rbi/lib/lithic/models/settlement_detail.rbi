@@ -300,6 +300,12 @@ module Lithic
         MASTERCARD = T.let(:MASTERCARD, Lithic::Models::SettlementDetail::Network::TaggedSymbol)
         UNKNOWN = T.let(:UNKNOWN, Lithic::Models::SettlementDetail::Network::TaggedSymbol)
         VISA = T.let(:VISA, Lithic::Models::SettlementDetail::Network::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::SettlementDetail::Network::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class OtherFeesDetails < Lithic::BaseModel
@@ -337,6 +343,12 @@ module Lithic
         NON_FINANCIAL = T.let(:"NON-FINANCIAL", Lithic::Models::SettlementDetail::Type::TaggedSymbol)
         PREARBITRATION = T.let(:PREARBITRATION, Lithic::Models::SettlementDetail::Type::TaggedSymbol)
         REPRESENTMENT = T.let(:REPRESENTMENT, Lithic::Models::SettlementDetail::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::SettlementDetail::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

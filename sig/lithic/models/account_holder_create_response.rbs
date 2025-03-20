@@ -62,7 +62,7 @@ module Lithic
         PENDING_RESUBMIT: :PENDING_RESUBMIT
         REJECTED: :REJECTED
 
-        def self.values: -> ::Array[Lithic::Models::AccountHolderCreateResponse::status]
+        def self?.values: -> ::Array[Lithic::Models::AccountHolderCreateResponse::status]
       end
 
       type status_reason =
@@ -119,7 +119,7 @@ module Lithic
         CONTROL_PERSON_DOB_VERIFICATION_FAILURE: :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
         CONTROL_PERSON_NAME_VERIFICATION_FAILURE: :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
 
-        def self.values: -> ::Array[Lithic::Models::AccountHolderCreateResponse::status_reason]
+        def self?.values: -> ::Array[Lithic::Models::AccountHolderCreateResponse::status_reason]
       end
     end
   end

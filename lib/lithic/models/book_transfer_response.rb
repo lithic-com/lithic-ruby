@@ -131,6 +131,12 @@ module Lithic
         TRANSFER = :TRANSFER
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Event < Lithic::BaseModel
@@ -206,6 +212,12 @@ module Lithic
           FUNDS_INSUFFICIENT = :FUNDS_INSUFFICIENT
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # APPROVED financial events were successful while DECLINED financial events were
@@ -217,6 +229,12 @@ module Lithic
           DECLINED = :DECLINED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -229,6 +247,12 @@ module Lithic
         DECLINED = :DECLINED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
@@ -241,6 +265,12 @@ module Lithic
         SETTLED = :SETTLED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

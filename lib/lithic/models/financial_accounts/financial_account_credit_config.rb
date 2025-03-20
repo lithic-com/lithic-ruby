@@ -86,6 +86,12 @@ module Lithic
           FRAUD = :FRAUD
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # State of the financial account
@@ -98,6 +104,12 @@ module Lithic
           CHARGED_OFF = :CHARGED_OFF
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

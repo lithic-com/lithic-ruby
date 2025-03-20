@@ -116,6 +116,12 @@ module Lithic
           TRANSFER = :TRANSFER
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Financial Transaction result to be returned.
@@ -126,6 +132,12 @@ module Lithic
           DECLINED = :DECLINED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Financial Transaction status to be returned.
@@ -140,6 +152,12 @@ module Lithic
           VOIDED = :VOIDED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

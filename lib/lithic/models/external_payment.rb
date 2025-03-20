@@ -117,6 +117,12 @@ module Lithic
         EXTERNAL_TRANSFER = :EXTERNAL_TRANSFER
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Event < Lithic::BaseModel
@@ -181,6 +187,12 @@ module Lithic
           APPROVED = :APPROVED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         module Result
@@ -190,6 +202,12 @@ module Lithic
           DECLINED = :DECLINED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         module Type
@@ -217,6 +235,12 @@ module Lithic
           EXTERNAL_CHECK_RELEASED = :EXTERNAL_CHECK_RELEASED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -227,6 +251,12 @@ module Lithic
         WITHDRAWAL = :WITHDRAWAL
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module Result
@@ -236,6 +266,12 @@ module Lithic
         DECLINED = :DECLINED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module Status
@@ -248,6 +284,12 @@ module Lithic
         CANCELED = :CANCELED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

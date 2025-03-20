@@ -47,21 +47,27 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::ConditionalAttribute) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol) }
 
-        MCC = T.let(:MCC, Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
-        COUNTRY = T.let(:COUNTRY, Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
-        CURRENCY = T.let(:CURRENCY, Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
-        MERCHANT_ID = T.let(:MERCHANT_ID, Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
-        DESCRIPTOR = T.let(:DESCRIPTOR, Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
-        LIABILITY_SHIFT = T.let(:LIABILITY_SHIFT, Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
-        PAN_ENTRY_MODE = T.let(:PAN_ENTRY_MODE, Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
+        MCC = T.let(:MCC, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
+        COUNTRY = T.let(:COUNTRY, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
+        CURRENCY = T.let(:CURRENCY, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
+        MERCHANT_ID = T.let(:MERCHANT_ID, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
+        DESCRIPTOR = T.let(:DESCRIPTOR, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
+        LIABILITY_SHIFT = T.let(:LIABILITY_SHIFT, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
+        PAN_ENTRY_MODE = T.let(:PAN_ENTRY_MODE, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
         TRANSACTION_AMOUNT =
-          T.let(:TRANSACTION_AMOUNT, Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
-        RISK_SCORE = T.let(:RISK_SCORE, Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
+          T.let(:TRANSACTION_AMOUNT, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
+        RISK_SCORE = T.let(:RISK_SCORE, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
         CARD_TRANSACTION_COUNT_1_H =
-          T.let(:CARD_TRANSACTION_COUNT_1H, Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
+          T.let(:CARD_TRANSACTION_COUNT_1H, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
         CARD_TRANSACTION_COUNT_24_H =
-          T.let(:CARD_TRANSACTION_COUNT_24H, Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
-        CARD_STATE = T.let(:CARD_STATE, Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
+          T.let(:CARD_TRANSACTION_COUNT_24H, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
+        CARD_STATE = T.let(:CARD_STATE, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -93,9 +93,15 @@ module Lithic
           T.type_alias { T.any(Symbol, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::TaggedSymbol) }
 
         RECEIPT_CREDIT =
-          T.let(:RECEIPT_CREDIT, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol)
+          T.let(:RECEIPT_CREDIT, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::TaggedSymbol)
         RECEIPT_DEBIT =
-          T.let(:RECEIPT_DEBIT, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol)
+          T.let(:RECEIPT_DEBIT, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -41,7 +41,7 @@ module Lithic
         SETTLED: :SETTLED
         RELEASED: :RELEASED
 
-        def self.values: -> ::Array[Lithic::Models::ExternalPaymentSettleParams::progress_to]
+        def self?.values: -> ::Array[Lithic::Models::ExternalPaymentSettleParams::progress_to]
       end
     end
   end

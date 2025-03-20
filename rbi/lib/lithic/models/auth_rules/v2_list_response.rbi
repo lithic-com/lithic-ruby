@@ -240,6 +240,17 @@ module Lithic
                   )
                 }
               end
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+                  )
+              end
+              def variants
+              end
+            end
           end
         end
 
@@ -324,6 +335,17 @@ module Lithic
                   )
                 }
               end
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+                  )
+              end
+              def variants
+              end
+            end
           end
         end
 
@@ -336,6 +358,12 @@ module Lithic
 
           ACTIVE = T.let(:ACTIVE, Lithic::Models::AuthRules::V2ListResponse::State::TaggedSymbol)
           INACTIVE = T.let(:INACTIVE, Lithic::Models::AuthRules::V2ListResponse::State::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::AuthRules::V2ListResponse::State::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # The type of Auth Rule
@@ -348,6 +376,12 @@ module Lithic
           CONDITIONAL_BLOCK =
             T.let(:CONDITIONAL_BLOCK, Lithic::Models::AuthRules::V2ListResponse::Type::TaggedSymbol)
           VELOCITY_LIMIT = T.let(:VELOCITY_LIMIT, Lithic::Models::AuthRules::V2ListResponse::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::AuthRules::V2ListResponse::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

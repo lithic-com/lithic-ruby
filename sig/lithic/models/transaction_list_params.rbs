@@ -81,7 +81,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self.values: -> ::Array[Lithic::Models::TransactionListParams::result]
+        def self?.values: -> ::Array[Lithic::Models::TransactionListParams::result]
       end
 
       type status = :PENDING | :VOIDED | :SETTLED | :DECLINED | :EXPIRED
@@ -95,7 +95,7 @@ module Lithic
         DECLINED: :DECLINED
         EXPIRED: :EXPIRED
 
-        def self.values: -> ::Array[Lithic::Models::TransactionListParams::status]
+        def self?.values: -> ::Array[Lithic::Models::TransactionListParams::status]
       end
     end
   end

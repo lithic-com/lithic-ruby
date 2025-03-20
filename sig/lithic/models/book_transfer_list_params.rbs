@@ -107,7 +107,7 @@ module Lithic
         DISPUTE: :DISPUTE
         INTERNAL: :INTERNAL
 
-        def self.values: -> ::Array[Lithic::Models::BookTransferListParams::category]
+        def self?.values: -> ::Array[Lithic::Models::BookTransferListParams::category]
       end
 
       type result = :APPROVED | :DECLINED
@@ -118,7 +118,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self.values: -> ::Array[Lithic::Models::BookTransferListParams::result]
+        def self?.values: -> ::Array[Lithic::Models::BookTransferListParams::result]
       end
 
       type status = :DECLINED | :SETTLED
@@ -129,7 +129,7 @@ module Lithic
         DECLINED: :DECLINED
         SETTLED: :SETTLED
 
-        def self.values: -> ::Array[Lithic::Models::BookTransferListParams::status]
+        def self?.values: -> ::Array[Lithic::Models::BookTransferListParams::status]
       end
     end
   end

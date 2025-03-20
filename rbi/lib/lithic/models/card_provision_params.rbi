@@ -122,9 +122,15 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol) }
 
-        APPLE_PAY = T.let(:APPLE_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol)
-        GOOGLE_PAY = T.let(:GOOGLE_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol)
-        SAMSUNG_PAY = T.let(:SAMSUNG_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol)
+        APPLE_PAY = T.let(:APPLE_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol)
+        GOOGLE_PAY = T.let(:GOOGLE_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol)
+        SAMSUNG_PAY = T.let(:SAMSUNG_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

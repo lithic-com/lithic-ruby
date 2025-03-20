@@ -185,6 +185,12 @@ module Lithic
           INACTIVE = :INACTIVE
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The type of Auth Rule
@@ -195,6 +201,12 @@ module Lithic
           VELOCITY_LIMIT = :VELOCITY_LIMIT
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

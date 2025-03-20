@@ -18,7 +18,7 @@ module Lithic
       CHARGED_OFF_INTEREST: :CHARGED_OFF_INTEREST
       CHARGED_OFF_PRINCIPAL: :CHARGED_OFF_PRINCIPAL
 
-      def self.values: -> ::Array[Lithic::Models::instance_financial_account_type]
+      def self?.values: -> ::Array[Lithic::Models::instance_financial_account_type]
     end
   end
 end

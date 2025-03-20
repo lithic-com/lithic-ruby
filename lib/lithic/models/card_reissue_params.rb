@@ -94,6 +94,12 @@ module Lithic
         STANDARD_WITH_TRACKING = :STANDARD_WITH_TRACKING
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

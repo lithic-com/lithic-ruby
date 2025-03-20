@@ -40,6 +40,12 @@ module Lithic
         PENDING = :PENDING
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Reason for the financial account status change
@@ -52,6 +58,12 @@ module Lithic
         CHARGED_OFF_DELINQUENT = :CHARGED_OFF_DELINQUENT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

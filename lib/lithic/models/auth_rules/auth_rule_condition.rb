@@ -92,6 +92,12 @@ module Lithic
           IS_LESS_THAN = :IS_LESS_THAN
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`

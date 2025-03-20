@@ -44,7 +44,7 @@ module Lithic
         OPERATING: :OPERATING
         RESERVE: :RESERVE
 
-        def self.values: -> ::Array[Lithic::Models::FinancialAccountListParams::type_]
+        def self?.values: -> ::Array[Lithic::Models::FinancialAccountListParams::type_]
       end
     end
   end

@@ -125,6 +125,12 @@ module Lithic
         PENDING = T.let(:PENDING, Lithic::Models::MessageAttempt::Status::TaggedSymbol)
         SENDING = T.let(:SENDING, Lithic::Models::MessageAttempt::Status::TaggedSymbol)
         SUCCESS = T.let(:SUCCESS, Lithic::Models::MessageAttempt::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::MessageAttempt::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

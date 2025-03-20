@@ -148,7 +148,7 @@ module Lithic
             PROMO: :PROMO
             PENALTY: :PENALTY
 
-            def self.values: -> ::Array[Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::period_state]
+            def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::period_state]
           end
         end
 
@@ -385,7 +385,7 @@ module Lithic
             DAILY: :DAILY
             AVERAGE_DAILY: :AVERAGE_DAILY
 
-            def self.values: -> ::Array[Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::interest_calculation_method]
+            def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::interest_calculation_method]
           end
 
           type interest_for_period =

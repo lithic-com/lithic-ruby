@@ -107,7 +107,7 @@ module Lithic
 
         TRANSFER: :TRANSFER
 
-        def self.values: -> ::Array[Lithic::Models::Transfer::category]
+        def self?.values: -> ::Array[Lithic::Models::Transfer::category]
       end
 
       type event =
@@ -162,7 +162,7 @@ module Lithic
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
-          def self.values: -> ::Array[Lithic::Models::Transfer::Event::result]
+          def self?.values: -> ::Array[Lithic::Models::Transfer::Event::result]
         end
 
         type type_ =
@@ -299,7 +299,7 @@ module Lithic
           RETURNED_PAYMENT: :RETURNED_PAYMENT
           RETURNED_PAYMENT_REVERSAL: :RETURNED_PAYMENT_REVERSAL
 
-          def self.values: -> ::Array[Lithic::Models::Transfer::Event::type_]
+          def self?.values: -> ::Array[Lithic::Models::Transfer::Event::type_]
         end
       end
 
@@ -311,7 +311,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self.values: -> ::Array[Lithic::Models::Transfer::result]
+        def self?.values: -> ::Array[Lithic::Models::Transfer::result]
       end
 
       type status = :DECLINED | :EXPIRED | :PENDING | :SETTLED | :VOIDED
@@ -325,7 +325,7 @@ module Lithic
         SETTLED: :SETTLED
         VOIDED: :VOIDED
 
-        def self.values: -> ::Array[Lithic::Models::Transfer::status]
+        def self?.values: -> ::Array[Lithic::Models::Transfer::status]
       end
     end
   end

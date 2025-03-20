@@ -57,6 +57,12 @@ module Lithic
         ACH_RETURN_SETTLED = :ACH_RETURN_SETTLED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Decline reason
@@ -68,6 +74,12 @@ module Lithic
         PROGRAM_MONTHLY_LIMIT_EXCEEDED = :PROGRAM_MONTHLY_LIMIT_EXCEEDED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

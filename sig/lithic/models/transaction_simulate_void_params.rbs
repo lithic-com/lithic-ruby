@@ -41,7 +41,7 @@ module Lithic
         AUTHORIZATION_EXPIRY: :AUTHORIZATION_EXPIRY
         AUTHORIZATION_REVERSAL: :AUTHORIZATION_REVERSAL
 
-        def self.values: -> ::Array[Lithic::Models::TransactionSimulateVoidParams::type_]
+        def self?.values: -> ::Array[Lithic::Models::TransactionSimulateVoidParams::type_]
       end
     end
   end

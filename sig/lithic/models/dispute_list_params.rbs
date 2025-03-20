@@ -81,7 +81,7 @@ module Lithic
         REPRESENTMENT: :REPRESENTMENT
         SUBMITTED: :SUBMITTED
 
-        def self.values: -> ::Array[Lithic::Models::DisputeListParams::status]
+        def self?.values: -> ::Array[Lithic::Models::DisputeListParams::status]
       end
     end
   end

@@ -120,6 +120,12 @@ module Lithic
           NOT_PRESENT = :NOT_PRESENT
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

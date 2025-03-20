@@ -142,6 +142,12 @@ module Lithic
         UNKNOWN = :UNKNOWN
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The entity that requested the tokenization. Represents a Digital Wallet or
@@ -162,6 +168,12 @@ module Lithic
         VISA_CHECKOUT = :VISA_CHECKOUT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The channel through which the tokenization was made.
@@ -172,6 +184,12 @@ module Lithic
         MERCHANT = :MERCHANT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Event < Lithic::BaseModel
@@ -242,6 +260,12 @@ module Lithic
           TOKEN_UPDATED = :TOKEN_UPDATED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Enum representing the type of tokenization event that occurred
@@ -255,6 +279,12 @@ module Lithic
           TOKENIZATION_UPDATED = :TOKENIZATION_UPDATED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

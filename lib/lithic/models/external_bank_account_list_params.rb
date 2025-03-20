@@ -132,6 +132,12 @@ module Lithic
         SAVINGS = :SAVINGS
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module State
@@ -142,6 +148,12 @@ module Lithic
         PAUSED = :PAUSED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module VerificationState
@@ -153,6 +165,12 @@ module Lithic
         INSUFFICIENT_FUNDS = :INSUFFICIENT_FUNDS
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

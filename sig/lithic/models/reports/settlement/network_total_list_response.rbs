@@ -97,7 +97,7 @@ module Lithic
             MAESTRO: :MAESTRO
             INTERLINK: :INTERLINK
 
-            def self.values: -> ::Array[Lithic::Models::Reports::Settlement::NetworkTotalListResponse::network]
+            def self?.values: -> ::Array[Lithic::Models::Reports::Settlement::NetworkTotalListResponse::network]
           end
         end
       end

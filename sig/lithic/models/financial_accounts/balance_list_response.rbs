@@ -60,7 +60,7 @@ module Lithic
           OPERATING: :OPERATING
           RESERVE: :RESERVE
 
-          def self.values: -> ::Array[Lithic::Models::FinancialAccounts::BalanceListResponse::type_]
+          def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::BalanceListResponse::type_]
         end
       end
     end

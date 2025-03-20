@@ -67,7 +67,7 @@ module Lithic
         SAMSUNG_PAY: :SAMSUNG_PAY
         MERCHANT: :MERCHANT
 
-        def self.values: -> ::Array[Lithic::Models::TokenizationSimulateParams::tokenization_source]
+        def self?.values: -> ::Array[Lithic::Models::TokenizationSimulateParams::tokenization_source]
       end
 
       type wallet_recommended_decision =
@@ -80,7 +80,7 @@ module Lithic
         DECLINED: :DECLINED
         REQUIRE_ADDITIONAL_AUTHENTICATION: :REQUIRE_ADDITIONAL_AUTHENTICATION
 
-        def self.values: -> ::Array[Lithic::Models::TokenizationSimulateParams::wallet_recommended_decision]
+        def self?.values: -> ::Array[Lithic::Models::TokenizationSimulateParams::wallet_recommended_decision]
       end
     end
   end

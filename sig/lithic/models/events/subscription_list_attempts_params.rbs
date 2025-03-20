@@ -64,7 +64,7 @@ module Lithic
           SENDING: :SENDING
           SUCCESS: :SUCCESS
 
-          def self.values: -> ::Array[Lithic::Models::Events::SubscriptionListAttemptsParams::status]
+          def self?.values: -> ::Array[Lithic::Models::Events::SubscriptionListAttemptsParams::status]
         end
       end
     end

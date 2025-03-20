@@ -115,10 +115,16 @@ module Lithic
           OrSymbol =
             T.type_alias { T.any(Symbol, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol) }
 
-          FAILED = T.let(:FAILED, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol)
-          PENDING = T.let(:PENDING, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol)
-          SENDING = T.let(:SENDING, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol)
-          SUCCESS = T.let(:SUCCESS, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol)
+          FAILED = T.let(:FAILED, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol)
+          PENDING = T.let(:PENDING, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol)
+          SENDING = T.let(:SENDING, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol)
+          SUCCESS = T.let(:SUCCESS, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

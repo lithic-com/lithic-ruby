@@ -200,6 +200,12 @@ module Lithic
                 NOT_SUPPORTED = :NOT_SUPPORTED
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
           end
@@ -489,6 +495,12 @@ module Lithic
                 MISCELLANEOUS_OTHER_FUEL = :MISCELLANEOUS_OTHER_FUEL
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Unit of measure for fuel disbursement.
@@ -504,6 +516,12 @@ module Lithic
                 UNKNOWN = :UNKNOWN
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -518,6 +536,12 @@ module Lithic
               NON_FUEL_ONLY = :NON_FUEL_ONLY
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
         end

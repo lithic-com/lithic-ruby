@@ -71,6 +71,12 @@ module Lithic
         PARTIAL_APPROVAL = :PARTIAL_APPROVAL
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Status reason that will be associated with the simulated account holder status.
@@ -91,6 +97,12 @@ module Lithic
         UNKNOWN_ERROR = :UNKNOWN_ERROR
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

@@ -167,6 +167,12 @@ module Lithic
         ACH = :ACH
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module Direction
@@ -176,6 +182,12 @@ module Lithic
         DEBIT = :DEBIT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Event < Lithic::BaseModel
@@ -261,6 +273,12 @@ module Lithic
           DECLINED = :DECLINED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Event types:
@@ -299,6 +317,12 @@ module Lithic
           ACH_RETURN_SETTLED = :ACH_RETURN_SETTLED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         module DetailedResult
@@ -312,6 +336,12 @@ module Lithic
           PROGRAM_MONTHLY_LIMIT_EXCEEDED = :PROGRAM_MONTHLY_LIMIT_EXCEEDED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -322,6 +352,12 @@ module Lithic
         ACH_SAME_DAY = :ACH_SAME_DAY
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class MethodAttributes < Lithic::BaseModel
@@ -375,6 +411,12 @@ module Lithic
           WEB = :WEB
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -387,6 +429,12 @@ module Lithic
         DECLINED = :DECLINED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module Source
@@ -396,6 +444,12 @@ module Lithic
         LITHIC = :LITHIC
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Status types:
@@ -414,6 +468,12 @@ module Lithic
         SETTLED = :SETTLED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

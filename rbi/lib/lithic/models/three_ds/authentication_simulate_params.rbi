@@ -170,11 +170,21 @@ module Lithic
           OrSymbol =
             T.type_alias { T.any(Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol) }
 
-          MATCH = T.let(:MATCH, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol)
+          MATCH =
+            T.let(:MATCH, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol)
           MISMATCH =
-            T.let(:MISMATCH, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol)
+            T.let(:MISMATCH, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol)
           NOT_PRESENT =
-            T.let(:NOT_PRESENT, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol)
+            T.let(:NOT_PRESENT, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
     end

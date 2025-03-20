@@ -47,7 +47,7 @@ module Lithic
         REJECTED: :REJECTED
         PARTIAL_APPROVAL: :PARTIAL_APPROVAL
 
-        def self.values: -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status]
+        def self?.values: -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status]
       end
 
       type status_reason =
@@ -78,7 +78,7 @@ module Lithic
         UNKNOWN_FAILURE_REASON: :UNKNOWN_FAILURE_REASON
         UNKNOWN_ERROR: :UNKNOWN_ERROR
 
-        def self.values: -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status_reason]
+        def self?.values: -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status_reason]
       end
     end
   end

@@ -206,6 +206,12 @@ module Lithic
         SAVINGS = :SAVINGS
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Verification Method
@@ -215,6 +221,12 @@ module Lithic
         EXTERNALLY_VERIFIED = :EXTERNALLY_VERIFIED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

@@ -139,6 +139,12 @@ module Lithic
         OK = :OK
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Card state values:
@@ -157,6 +163,12 @@ module Lithic
         PAUSED = :PAUSED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

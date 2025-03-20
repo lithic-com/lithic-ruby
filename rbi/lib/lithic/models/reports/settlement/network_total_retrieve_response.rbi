@@ -259,6 +259,17 @@ module Lithic
                 :INTERLINK,
                 Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
       end

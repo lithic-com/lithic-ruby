@@ -31,7 +31,7 @@ module Lithic
         CARD_TRANSACTION_COUNT_24_H: :CARD_TRANSACTION_COUNT_24H
         CARD_STATE: :CARD_STATE
 
-        def self.values: -> ::Array[Lithic::Models::AuthRules::conditional_attribute]
+        def self?.values: -> ::Array[Lithic::Models::AuthRules::conditional_attribute]
       end
     end
   end

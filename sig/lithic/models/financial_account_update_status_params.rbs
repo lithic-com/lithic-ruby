@@ -33,7 +33,7 @@ module Lithic
         SUSPENDED: :SUSPENDED
         PENDING: :PENDING
 
-        def self.values: -> ::Array[Lithic::Models::FinancialAccountUpdateStatusParams::status]
+        def self?.values: -> ::Array[Lithic::Models::FinancialAccountUpdateStatusParams::status]
       end
 
       type status_change_reason =
@@ -50,7 +50,7 @@ module Lithic
         BANK_REQUEST: :BANK_REQUEST
         CHARGED_OFF_DELINQUENT: :CHARGED_OFF_DELINQUENT
 
-        def self.values: -> ::Array[Lithic::Models::FinancialAccountUpdateStatusParams::status_change_reason]
+        def self?.values: -> ::Array[Lithic::Models::FinancialAccountUpdateStatusParams::status_change_reason]
       end
     end
   end

@@ -53,6 +53,12 @@ module Lithic
         FINCEN_BOI_REPORT = :FINCEN_BOI_REPORT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

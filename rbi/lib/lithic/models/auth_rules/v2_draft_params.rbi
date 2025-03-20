@@ -87,6 +87,17 @@ module Lithic
                 )
               }
             end
+
+          class << self
+            sig do
+              override
+                .returns(
+                  [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+                )
+            end
+            def variants
+            end
+          end
         end
       end
     end

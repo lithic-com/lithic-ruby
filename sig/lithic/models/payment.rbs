@@ -89,7 +89,7 @@ module Lithic
 
         ACH: :ACH
 
-        def self.values: -> ::Array[Lithic::Models::Payment::category]
+        def self?.values: -> ::Array[Lithic::Models::Payment::category]
       end
 
       type direction = :CREDIT | :DEBIT
@@ -100,7 +100,7 @@ module Lithic
         CREDIT: :CREDIT
         DEBIT: :DEBIT
 
-        def self.values: -> ::Array[Lithic::Models::Payment::direction]
+        def self?.values: -> ::Array[Lithic::Models::Payment::direction]
       end
 
       type event =
@@ -149,7 +149,7 @@ module Lithic
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
-          def self.values: -> ::Array[Lithic::Models::Payment::Event::result]
+          def self?.values: -> ::Array[Lithic::Models::Payment::Event::result]
         end
 
         type type_ =
@@ -180,7 +180,7 @@ module Lithic
           ACH_RETURN_PROCESSED: :ACH_RETURN_PROCESSED
           ACH_RETURN_SETTLED: :ACH_RETURN_SETTLED
 
-          def self.values: -> ::Array[Lithic::Models::Payment::Event::type_]
+          def self?.values: -> ::Array[Lithic::Models::Payment::Event::type_]
         end
 
         type detailed_result =
@@ -201,7 +201,7 @@ module Lithic
           PROGRAM_DAILY_LIMIT_EXCEEDED: :PROGRAM_DAILY_LIMIT_EXCEEDED
           PROGRAM_MONTHLY_LIMIT_EXCEEDED: :PROGRAM_MONTHLY_LIMIT_EXCEEDED
 
-          def self.values: -> ::Array[Lithic::Models::Payment::Event::detailed_result]
+          def self?.values: -> ::Array[Lithic::Models::Payment::Event::detailed_result]
         end
       end
 
@@ -213,7 +213,7 @@ module Lithic
         ACH_NEXT_DAY: :ACH_NEXT_DAY
         ACH_SAME_DAY: :ACH_SAME_DAY
 
-        def self.values: -> ::Array[Lithic::Models::Payment::method_]
+        def self?.values: -> ::Array[Lithic::Models::Payment::method_]
       end
 
       type method_attributes =
@@ -259,7 +259,7 @@ module Lithic
           PPD: :PPD
           WEB: :WEB
 
-          def self.values: -> ::Array[Lithic::Models::Payment::MethodAttributes::sec_code]
+          def self?.values: -> ::Array[Lithic::Models::Payment::MethodAttributes::sec_code]
         end
       end
 
@@ -271,7 +271,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self.values: -> ::Array[Lithic::Models::Payment::result]
+        def self?.values: -> ::Array[Lithic::Models::Payment::result]
       end
 
       type source = :CUSTOMER | :LITHIC
@@ -282,7 +282,7 @@ module Lithic
         CUSTOMER: :CUSTOMER
         LITHIC: :LITHIC
 
-        def self.values: -> ::Array[Lithic::Models::Payment::source]
+        def self?.values: -> ::Array[Lithic::Models::Payment::source]
       end
 
       type status = :DECLINED | :PENDING | :RETURNED | :SETTLED
@@ -295,7 +295,7 @@ module Lithic
         RETURNED: :RETURNED
         SETTLED: :SETTLED
 
-        def self.values: -> ::Array[Lithic::Models::Payment::status]
+        def self?.values: -> ::Array[Lithic::Models::Payment::status]
       end
     end
   end

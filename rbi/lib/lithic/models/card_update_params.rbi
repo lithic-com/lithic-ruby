@@ -157,7 +157,13 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardUpdateParams::PinStatus) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::CardUpdateParams::PinStatus::TaggedSymbol) }
 
-        OK = T.let(:OK, Lithic::Models::CardUpdateParams::PinStatus::OrSymbol)
+        OK = T.let(:OK, Lithic::Models::CardUpdateParams::PinStatus::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::CardUpdateParams::PinStatus::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Card state values:
@@ -174,9 +180,15 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardUpdateParams::State) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::CardUpdateParams::State::TaggedSymbol) }
 
-        CLOSED = T.let(:CLOSED, Lithic::Models::CardUpdateParams::State::OrSymbol)
-        OPEN = T.let(:OPEN, Lithic::Models::CardUpdateParams::State::OrSymbol)
-        PAUSED = T.let(:PAUSED, Lithic::Models::CardUpdateParams::State::OrSymbol)
+        CLOSED = T.let(:CLOSED, Lithic::Models::CardUpdateParams::State::TaggedSymbol)
+        OPEN = T.let(:OPEN, Lithic::Models::CardUpdateParams::State::TaggedSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::Models::CardUpdateParams::State::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::CardUpdateParams::State::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

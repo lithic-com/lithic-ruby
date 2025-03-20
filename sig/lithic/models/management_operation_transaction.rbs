@@ -78,7 +78,7 @@ module Lithic
         MANAGEMENT_REWARD: :MANAGEMENT_REWARD
         MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
 
-        def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::category]
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::category]
       end
 
       type direction = :CREDIT | :DEBIT
@@ -89,7 +89,7 @@ module Lithic
         CREDIT: :CREDIT
         DEBIT: :DEBIT
 
-        def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::direction]
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::direction]
       end
 
       type event =
@@ -147,7 +147,7 @@ module Lithic
 
           APPROVED: :APPROVED
 
-          def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::detailed_result]
+          def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::detailed_result]
         end
 
         type result = :APPROVED | :DECLINED
@@ -158,7 +158,7 @@ module Lithic
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
-          def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::result]
+          def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::result]
         end
 
         type type_ =
@@ -197,7 +197,7 @@ module Lithic
           RETURNED_PAYMENT: :RETURNED_PAYMENT
           RETURNED_PAYMENT_REVERSAL: :RETURNED_PAYMENT_REVERSAL
 
-          def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::type_]
+          def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::type_]
         end
       end
 
@@ -209,7 +209,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::result]
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::result]
       end
 
       type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
@@ -223,7 +223,7 @@ module Lithic
         REVERSED: :REVERSED
         CANCELED: :CANCELED
 
-        def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::status]
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::status]
       end
     end
   end

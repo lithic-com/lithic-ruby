@@ -313,6 +313,12 @@ module Lithic
         DIGITAL_WALLET = :DIGITAL_WALLET
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
@@ -338,6 +344,12 @@ module Lithic
         STANDARD_WITH_TRACKING = :STANDARD_WITH_TRACKING
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Card state values:
@@ -353,6 +365,12 @@ module Lithic
         PAUSED = :PAUSED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

@@ -45,7 +45,7 @@ module Lithic
         ACCEPTED: :ACCEPTED
         REJECTED: :REJECTED
 
-        def self.values: -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status]
+        def self?.values: -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status]
       end
 
       type status_reason =
@@ -88,7 +88,7 @@ module Lithic
         BENEFICIAL_OWNER_INDIVIDUAL_ID_VERIFICATION_FAILURE: :BENEFICIAL_OWNER_INDIVIDUAL_ID_VERIFICATION_FAILURE
         BENEFICIAL_OWNER_INDIVIDUAL_NAME_VERIFICATION_FAILURE: :BENEFICIAL_OWNER_INDIVIDUAL_NAME_VERIFICATION_FAILURE
 
-        def self.values: -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason]
+        def self?.values: -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason]
       end
     end
   end

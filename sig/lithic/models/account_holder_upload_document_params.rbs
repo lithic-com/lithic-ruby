@@ -67,7 +67,7 @@ module Lithic
         ITIN_LETTER: :ITIN_LETTER
         FINCEN_BOI_REPORT: :FINCEN_BOI_REPORT
 
-        def self.values: -> ::Array[Lithic::Models::AccountHolderUploadDocumentParams::document_type]
+        def self?.values: -> ::Array[Lithic::Models::AccountHolderUploadDocumentParams::document_type]
       end
     end
   end

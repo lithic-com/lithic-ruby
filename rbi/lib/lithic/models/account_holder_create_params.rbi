@@ -745,7 +745,13 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderCreateParams::Workflow::TaggedSymbol) }
 
-        KYC_EXEMPT = T.let(:KYC_EXEMPT, Lithic::Models::AccountHolderCreateParams::Workflow::OrSymbol)
+        KYC_EXEMPT = T.let(:KYC_EXEMPT, Lithic::Models::AccountHolderCreateParams::Workflow::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateParams::Workflow::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Individual < Lithic::BaseModel
@@ -865,9 +871,15 @@ module Lithic
           T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol) }
 
         AUTHORIZED_USER =
-          T.let(:AUTHORIZED_USER, Lithic::Models::AccountHolderCreateParams::KYCExemptionType::OrSymbol)
+          T.let(:AUTHORIZED_USER, Lithic::Models::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol)
         PREPAID_CARD_USER =
-          T.let(:PREPAID_CARD_USER, Lithic::Models::AccountHolderCreateParams::KYCExemptionType::OrSymbol)
+          T.let(:PREPAID_CARD_USER, Lithic::Models::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

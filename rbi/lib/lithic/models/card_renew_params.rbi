@@ -142,13 +142,19 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardRenewParams::ShippingMethod) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol) }
 
-        NUMBER_2_DAY = T.let(:"2-DAY", Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)
-        EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)
-        EXPRESS = T.let(:EXPRESS, Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)
-        PRIORITY = T.let(:PRIORITY, Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)
-        STANDARD = T.let(:STANDARD, Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)
+        NUMBER_2_DAY = T.let(:"2-DAY", Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
+        EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
+        EXPRESS = T.let(:EXPRESS, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
+        PRIORITY = T.let(:PRIORITY, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
+        STANDARD = T.let(:STANDARD, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
         STANDARD_WITH_TRACKING =
-          T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)
+          T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

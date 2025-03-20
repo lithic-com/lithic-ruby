@@ -168,6 +168,12 @@ module Lithic
 
           Variants =
             type_template(:out) { {fixed: T.any(Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol)} }
+
+          class << self
+            sig { override.returns([Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol]) }
+            def variants
+            end
+          end
         end
 
         module Scope
@@ -177,8 +183,14 @@ module Lithic
           OrSymbol =
             T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol) }
 
-          CARD = T.let(:CARD, Lithic::Models::AuthRules::VelocityLimitParams::Scope::OrSymbol)
-          ACCOUNT = T.let(:ACCOUNT, Lithic::Models::AuthRules::VelocityLimitParams::Scope::OrSymbol)
+          CARD = T.let(:CARD, Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol)
+          ACCOUNT = T.let(:ACCOUNT, Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

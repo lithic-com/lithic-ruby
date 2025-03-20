@@ -58,7 +58,7 @@ module Lithic
         AUTHORIZED_USER: :AUTHORIZED_USER
         PREPAID_CARD_USER: :PREPAID_CARD_USER
 
-        def self.values: -> ::Array[Lithic::Models::KYCExempt::kyc_exemption_type]
+        def self?.values: -> ::Array[Lithic::Models::KYCExempt::kyc_exemption_type]
       end
 
       type workflow = :KYC_EXEMPT
@@ -68,7 +68,7 @@ module Lithic
 
         KYC_EXEMPT: :KYC_EXEMPT
 
-        def self.values: -> ::Array[Lithic::Models::KYCExempt::workflow]
+        def self?.values: -> ::Array[Lithic::Models::KYCExempt::workflow]
       end
     end
   end
