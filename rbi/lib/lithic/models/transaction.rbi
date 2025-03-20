@@ -57,7 +57,10 @@ module Lithic
       def amounts
       end
 
-      sig { params(_: Lithic::Models::Transaction::Amounts).returns(Lithic::Models::Transaction::Amounts) }
+      sig do
+        params(_: T.any(Lithic::Models::Transaction::Amounts, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::Transaction::Amounts, Lithic::Util::AnyHash))
+      end
       def amounts=(_)
       end
 
@@ -86,7 +89,8 @@ module Lithic
       end
 
       sig do
-        params(_: T.nilable(Lithic::Models::Transaction::Avs)).returns(T.nilable(Lithic::Models::Transaction::Avs))
+        params(_: T.nilable(T.any(Lithic::Models::Transaction::Avs, Lithic::Util::AnyHash)))
+          .returns(T.nilable(T.any(Lithic::Models::Transaction::Avs, Lithic::Util::AnyHash)))
       end
       def avs=(_)
       end
@@ -105,8 +109,8 @@ module Lithic
       end
 
       sig do
-        params(_: T.nilable(Lithic::Models::Transaction::CardholderAuthentication))
-          .returns(T.nilable(Lithic::Models::Transaction::CardholderAuthentication))
+        params(_: T.nilable(T.any(Lithic::Models::Transaction::CardholderAuthentication, Lithic::Util::AnyHash)))
+          .returns(T.nilable(T.any(Lithic::Models::Transaction::CardholderAuthentication, Lithic::Util::AnyHash)))
       end
       def cardholder_authentication=(_)
       end
@@ -124,7 +128,10 @@ module Lithic
       def merchant
       end
 
-      sig { params(_: Lithic::Models::Transaction::Merchant).returns(Lithic::Models::Transaction::Merchant) }
+      sig do
+        params(_: T.any(Lithic::Models::Transaction::Merchant, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::Transaction::Merchant, Lithic::Util::AnyHash))
+      end
       def merchant=(_)
       end
 
@@ -186,7 +193,10 @@ module Lithic
       def pos
       end
 
-      sig { params(_: Lithic::Models::Transaction::Pos).returns(Lithic::Models::Transaction::Pos) }
+      sig do
+        params(_: T.any(Lithic::Models::Transaction::Pos, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::Transaction::Pos, Lithic::Util::AnyHash))
+      end
       def pos=(_)
       end
 
@@ -227,8 +237,8 @@ module Lithic
       end
 
       sig do
-        params(_: T.nilable(Lithic::Models::Transaction::TokenInfo))
-          .returns(T.nilable(Lithic::Models::Transaction::TokenInfo))
+        params(_: T.nilable(T.any(Lithic::Models::Transaction::TokenInfo, Lithic::Util::AnyHash)))
+          .returns(T.nilable(T.any(Lithic::Models::Transaction::TokenInfo, Lithic::Util::AnyHash)))
       end
       def token_info=(_)
       end
@@ -353,8 +363,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::Transaction::Amounts::Cardholder)
-            .returns(Lithic::Models::Transaction::Amounts::Cardholder)
+          params(_: T.any(Lithic::Models::Transaction::Amounts::Cardholder, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::Transaction::Amounts::Cardholder, Lithic::Util::AnyHash))
         end
         def cardholder=(_)
         end
@@ -363,7 +373,10 @@ module Lithic
         def hold
         end
 
-        sig { params(_: Lithic::Models::Transaction::Amounts::Hold).returns(Lithic::Models::Transaction::Amounts::Hold) }
+        sig do
+          params(_: T.any(Lithic::Models::Transaction::Amounts::Hold, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::Transaction::Amounts::Hold, Lithic::Util::AnyHash))
+        end
         def hold=(_)
         end
 
@@ -372,8 +385,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::Transaction::Amounts::Merchant)
-            .returns(Lithic::Models::Transaction::Amounts::Merchant)
+          params(_: T.any(Lithic::Models::Transaction::Amounts::Merchant, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::Transaction::Amounts::Merchant, Lithic::Util::AnyHash))
         end
         def merchant=(_)
         end
@@ -383,8 +396,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::Transaction::Amounts::Settlement)
-            .returns(Lithic::Models::Transaction::Amounts::Settlement)
+          params(_: T.any(Lithic::Models::Transaction::Amounts::Settlement, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::Transaction::Amounts::Settlement, Lithic::Util::AnyHash))
         end
         def settlement=(_)
         end
@@ -1018,7 +1031,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::Transaction::Pos::EntryMode).returns(Lithic::Models::Transaction::Pos::EntryMode)
+          params(_: T.any(Lithic::Models::Transaction::Pos::EntryMode, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::Transaction::Pos::EntryMode, Lithic::Util::AnyHash))
         end
         def entry_mode=(_)
         end
@@ -1027,7 +1041,10 @@ module Lithic
         def terminal
         end
 
-        sig { params(_: Lithic::Models::Transaction::Pos::Terminal).returns(Lithic::Models::Transaction::Pos::Terminal) }
+        sig do
+          params(_: T.any(Lithic::Models::Transaction::Pos::Terminal, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::Transaction::Pos::Terminal, Lithic::Util::AnyHash))
+        end
         def terminal=(_)
         end
 
@@ -1495,7 +1512,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::Transaction::Event::Amounts).returns(Lithic::Models::Transaction::Event::Amounts)
+          params(_: T.any(Lithic::Models::Transaction::Event::Amounts, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::Transaction::Event::Amounts, Lithic::Util::AnyHash))
         end
         def amounts=(_)
         end
@@ -1546,8 +1564,8 @@ module Lithic
         end
 
         sig do
-          params(_: T.nilable(Lithic::Models::Transaction::Event::NetworkInfo))
-            .returns(T.nilable(Lithic::Models::Transaction::Event::NetworkInfo))
+          params(_: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo, Lithic::Util::AnyHash)))
+            .returns(T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo, Lithic::Util::AnyHash)))
         end
         def network_info=(_)
         end
@@ -1641,8 +1659,8 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::Transaction::Event::Amounts::Cardholder)
-              .returns(Lithic::Models::Transaction::Event::Amounts::Cardholder)
+            params(_: T.any(Lithic::Models::Transaction::Event::Amounts::Cardholder, Lithic::Util::AnyHash))
+              .returns(T.any(Lithic::Models::Transaction::Event::Amounts::Cardholder, Lithic::Util::AnyHash))
           end
           def cardholder=(_)
           end
@@ -1652,8 +1670,8 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::Transaction::Event::Amounts::Merchant)
-              .returns(Lithic::Models::Transaction::Event::Amounts::Merchant)
+            params(_: T.any(Lithic::Models::Transaction::Event::Amounts::Merchant, Lithic::Util::AnyHash))
+              .returns(T.any(Lithic::Models::Transaction::Event::Amounts::Merchant, Lithic::Util::AnyHash))
           end
           def merchant=(_)
           end
@@ -1663,8 +1681,10 @@ module Lithic
           end
 
           sig do
-            params(_: T.nilable(Lithic::Models::Transaction::Event::Amounts::Settlement))
-              .returns(T.nilable(Lithic::Models::Transaction::Event::Amounts::Settlement))
+            params(
+              _: T.nilable(T.any(Lithic::Models::Transaction::Event::Amounts::Settlement, Lithic::Util::AnyHash))
+            )
+              .returns(T.nilable(T.any(Lithic::Models::Transaction::Event::Amounts::Settlement, Lithic::Util::AnyHash)))
           end
           def settlement=(_)
           end
@@ -1951,8 +1971,12 @@ module Lithic
           end
 
           sig do
-            params(_: T.nilable(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer))
-              .returns(T.nilable(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer))
+            params(
+              _: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, Lithic::Util::AnyHash))
+            )
+              .returns(
+                T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, Lithic::Util::AnyHash))
+              )
           end
           def acquirer=(_)
           end
@@ -1962,8 +1986,12 @@ module Lithic
           end
 
           sig do
-            params(_: T.nilable(Lithic::Models::Transaction::Event::NetworkInfo::Mastercard))
-              .returns(T.nilable(Lithic::Models::Transaction::Event::NetworkInfo::Mastercard))
+            params(
+              _: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Mastercard, Lithic::Util::AnyHash))
+            )
+              .returns(
+                T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Mastercard, Lithic::Util::AnyHash))
+              )
           end
           def mastercard=(_)
           end
@@ -1973,8 +2001,8 @@ module Lithic
           end
 
           sig do
-            params(_: T.nilable(Lithic::Models::Transaction::Event::NetworkInfo::Visa))
-              .returns(T.nilable(Lithic::Models::Transaction::Event::NetworkInfo::Visa))
+            params(_: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Visa, Lithic::Util::AnyHash)))
+              .returns(T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Visa, Lithic::Util::AnyHash)))
           end
           def visa=(_)
           end

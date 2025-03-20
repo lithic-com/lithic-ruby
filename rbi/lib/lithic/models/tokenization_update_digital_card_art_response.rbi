@@ -7,7 +7,10 @@ module Lithic
       def data
       end
 
-      sig { params(_: Lithic::Models::Tokenization).returns(Lithic::Models::Tokenization) }
+      sig do
+        params(_: T.any(Lithic::Models::Tokenization, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::Tokenization, Lithic::Util::AnyHash))
+      end
       def data=(_)
       end
 

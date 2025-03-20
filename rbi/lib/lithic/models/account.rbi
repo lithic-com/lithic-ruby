@@ -33,7 +33,10 @@ module Lithic
       def spend_limit
       end
 
-      sig { params(_: Lithic::Models::Account::SpendLimit).returns(Lithic::Models::Account::SpendLimit) }
+      sig do
+        params(_: T.any(Lithic::Models::Account::SpendLimit, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::Account::SpendLimit, Lithic::Util::AnyHash))
+      end
       def spend_limit=(_)
       end
 
@@ -63,7 +66,10 @@ module Lithic
       def account_holder
       end
 
-      sig { params(_: Lithic::Models::Account::AccountHolder).returns(Lithic::Models::Account::AccountHolder) }
+      sig do
+        params(_: T.any(Lithic::Models::Account::AccountHolder, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::Account::AccountHolder, Lithic::Util::AnyHash))
+      end
       def account_holder=(_)
       end
 
@@ -93,8 +99,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::Account::VerificationAddress)
-          .returns(Lithic::Models::Account::VerificationAddress)
+        params(_: T.any(Lithic::Models::Account::VerificationAddress, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::Account::VerificationAddress, Lithic::Util::AnyHash))
       end
       def verification_address=(_)
       end

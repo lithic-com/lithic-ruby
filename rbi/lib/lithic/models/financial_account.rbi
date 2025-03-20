@@ -33,8 +33,8 @@ module Lithic
       end
 
       sig do
-        params(_: T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration))
-          .returns(T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration))
+        params(_: T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Util::AnyHash)))
+          .returns(T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Util::AnyHash)))
       end
       def credit_configuration=(_)
       end

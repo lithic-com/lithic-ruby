@@ -19,8 +19,8 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::AuthRules::V2::BacktestResults::Results)
-              .returns(Lithic::Models::AuthRules::V2::BacktestResults::Results)
+            params(_: T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results, Lithic::Util::AnyHash))
+              .returns(T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results, Lithic::Util::AnyHash))
           end
           def results=(_)
           end
@@ -30,8 +30,12 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters)
-              .returns(Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters)
+            params(
+              _: T.any(Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters, Lithic::Util::AnyHash)
+            )
+              .returns(
+                T.any(Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters, Lithic::Util::AnyHash)
+              )
           end
           def simulation_parameters=(_)
           end
@@ -66,8 +70,16 @@ module Lithic
             end
 
             sig do
-              params(_: T.nilable(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion))
-                .returns(T.nilable(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion))
+              params(
+                _: T.nilable(
+                  T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion, Lithic::Util::AnyHash)
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion, Lithic::Util::AnyHash)
+                  )
+                )
             end
             def current_version=(_)
             end
@@ -77,8 +89,16 @@ module Lithic
             end
 
             sig do
-              params(_: T.nilable(Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion))
-                .returns(T.nilable(Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion))
+              params(
+                _: T.nilable(
+                  T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion, Lithic::Util::AnyHash)
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion, Lithic::Util::AnyHash)
+                  )
+                )
             end
             def draft_version=(_)
             end

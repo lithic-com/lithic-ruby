@@ -124,8 +124,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::SettlementDetail::OtherFeesDetails)
-          .returns(Lithic::Models::SettlementDetail::OtherFeesDetails)
+        params(_: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Util::AnyHash))
       end
       def other_fees_details=(_)
       end

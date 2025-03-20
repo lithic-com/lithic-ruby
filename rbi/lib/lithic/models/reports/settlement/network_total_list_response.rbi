@@ -19,8 +19,12 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Amounts)
-              .returns(Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Amounts)
+            params(
+              _: T.any(Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Amounts, Lithic::Util::AnyHash)
+            )
+              .returns(
+                T.any(Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Amounts, Lithic::Util::AnyHash)
+              )
           end
           def amounts=(_)
           end

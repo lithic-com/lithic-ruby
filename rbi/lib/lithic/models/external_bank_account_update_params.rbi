@@ -11,7 +11,10 @@ module Lithic
       def address
       end
 
-      sig { params(_: Lithic::Models::ExternalBankAccountAddress).returns(Lithic::Models::ExternalBankAccountAddress) }
+      sig do
+        params(_: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash))
+      end
       def address=(_)
       end
 

@@ -18,8 +18,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding)
-            .returns(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding)
+          params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding, Lithic::Util::AnyHash))
         end
         def account_standing=(_)
         end
@@ -38,8 +38,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::FinancialAccounts::LoanTape::Balances)
-            .returns(Lithic::Models::FinancialAccounts::LoanTape::Balances)
+          params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances, Lithic::Util::AnyHash))
         end
         def balances=(_)
         end
@@ -87,8 +87,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::FinancialAccounts::LoanTape::DayTotals)
-            .returns(Lithic::Models::FinancialAccounts::LoanTape::DayTotals)
+          params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::DayTotals, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::DayTotals, Lithic::Util::AnyHash))
         end
         def day_totals=(_)
         end
@@ -127,8 +127,12 @@ module Lithic
         end
 
         sig do
-          params(_: T.nilable(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails))
-            .returns(T.nilable(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails))
+          params(
+            _: T.nilable(T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails, Lithic::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails, Lithic::Util::AnyHash))
+            )
         end
         def interest_details=(_)
         end
@@ -138,8 +142,10 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance)
-            .returns(Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance)
+          params(
+            _: T.any(Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance, Lithic::Util::AnyHash)
+          )
+            .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance, Lithic::Util::AnyHash))
         end
         def minimum_payment_balance=(_)
         end
@@ -149,8 +155,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation)
-            .returns(Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation)
+          params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation, Lithic::Util::AnyHash))
         end
         def payment_allocation=(_)
         end
@@ -160,8 +166,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals)
-            .returns(Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals)
+          params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals, Lithic::Util::AnyHash))
         end
         def period_totals=(_)
         end
@@ -171,8 +177,12 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance)
-            .returns(Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance)
+          params(
+            _: T.any(Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance, Lithic::Util::AnyHash)
+          )
+            .returns(
+              T.any(Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance, Lithic::Util::AnyHash)
+            )
         end
         def previous_statement_balance=(_)
         end
@@ -209,8 +219,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::FinancialAccounts::LoanTape::YtdTotals)
-            .returns(Lithic::Models::FinancialAccounts::LoanTape::YtdTotals)
+          params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::YtdTotals, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::YtdTotals, Lithic::Util::AnyHash))
         end
         def ytd_totals=(_)
         end
@@ -440,8 +450,8 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::FinancialAccounts::LoanTape::Balances::Due)
-              .returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::Due)
+            params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::Due, Lithic::Util::AnyHash))
+              .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::Due, Lithic::Util::AnyHash))
           end
           def due=(_)
           end
@@ -454,8 +464,12 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue)
-              .returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue)
+            params(
+              _: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue, Lithic::Util::AnyHash)
+            )
+              .returns(
+                T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue, Lithic::Util::AnyHash)
+              )
           end
           def next_statement_due=(_)
           end
@@ -466,8 +480,8 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue)
-              .returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue)
+            params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue, Lithic::Util::AnyHash))
+              .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue, Lithic::Util::AnyHash))
           end
           def past_due=(_)
           end
@@ -478,8 +492,12 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue)
-              .returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue)
+            params(
+              _: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue, Lithic::Util::AnyHash)
+            )
+              .returns(
+                T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue, Lithic::Util::AnyHash)
+              )
           end
           def past_statements_due=(_)
           end
@@ -766,8 +784,18 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts)
-              .returns(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts)
+            params(
+              _: T.any(
+                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
+                Lithic::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
+                  Lithic::Util::AnyHash
+                )
+              )
           end
           def daily_balance_amounts=(_)
           end
@@ -777,8 +805,12 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr)
-              .returns(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr)
+            params(
+              _: T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr, Lithic::Util::AnyHash)
+            )
+              .returns(
+                T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr, Lithic::Util::AnyHash)
+              )
           end
           def effective_apr=(_)
           end
@@ -807,8 +839,18 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod)
-              .returns(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod)
+            params(
+              _: T.any(
+                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
+                Lithic::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
+                  Lithic::Util::AnyHash
+                )
+              )
           end
           def interest_for_period=(_)
           end

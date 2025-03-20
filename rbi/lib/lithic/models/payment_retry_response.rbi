@@ -8,7 +8,10 @@ module Lithic
       def balance
       end
 
-      sig { params(_: Lithic::Models::Balance).returns(Lithic::Models::Balance) }
+      sig do
+        params(_: T.any(Lithic::Models::Balance, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::Balance, Lithic::Util::AnyHash))
+      end
       def balance=(_)
       end
 
