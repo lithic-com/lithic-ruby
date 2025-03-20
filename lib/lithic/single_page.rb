@@ -2,32 +2,26 @@
 
 module Lithic
   # @example
-  # ```ruby
-  # if single_page.has_next?
-  #   single_page = single_page.next_page
-  # end
-  # ```
+  #   if single_page.has_next?
+  #     single_page = single_page.next_page
+  #   end
   #
   # @example
-  # ```ruby
-  # single_page.auto_paging_each do |account_holder|
-  #   puts(account_holder)
-  # end
-  # ```
+  #   single_page.auto_paging_each do |account_holder|
+  #     puts(account_holder)
+  #   end
   #
   # @example
-  # ```ruby
-  # account_holders =
-  #   single_page
-  #   .to_enum
-  #   .lazy
-  #   .select { _1.object_id.even? }
-  #   .map(&:itself)
-  #   .take(2)
-  #   .to_a
+  #   account_holders =
+  #     single_page
+  #     .to_enum
+  #     .lazy
+  #     .select { _1.object_id.even? }
+  #     .map(&:itself)
+  #     .take(2)
+  #     .to_a
   #
-  # account_holders => Array
-  # ```
+  #   account_holders => Array
   class SinglePage
     include Lithic::BasePage
 

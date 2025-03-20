@@ -288,29 +288,25 @@ module Lithic
   #   values safely.
   #
   # @example
-  # ```ruby
-  # # `account_financial_account_type` is a `Lithic::Models::AccountFinancialAccountType`
-  # case account_financial_account_type
-  # when Lithic::Models::AccountFinancialAccountType::ISSUING
-  #   # ...
-  # when Lithic::Models::AccountFinancialAccountType::OPERATING
-  #   # ...
-  # else
-  #   puts(account_financial_account_type)
-  # end
-  # ```
+  #   # `account_financial_account_type` is a `Lithic::Models::AccountFinancialAccountType`
+  #   case account_financial_account_type
+  #   when Lithic::Models::AccountFinancialAccountType::ISSUING
+  #     # ...
+  #   when Lithic::Models::AccountFinancialAccountType::OPERATING
+  #     # ...
+  #   else
+  #     puts(account_financial_account_type)
+  #   end
   #
   # @example
-  # ```ruby
-  # case account_financial_account_type
-  # in :ISSUING
-  #   # ...
-  # in :OPERATING
-  #   # ...
-  # else
-  #   puts(account_financial_account_type)
-  # end
-  # ```
+  #   case account_financial_account_type
+  #   in :ISSUING
+  #     # ...
+  #   in :OPERATING
+  #     # ...
+  #   else
+  #     puts(account_financial_account_type)
+  #   end
   module Enum
     include Lithic::Converter
 
@@ -383,17 +379,15 @@ module Lithic
   # @api private
   #
   # @example
-  # ```ruby
-  # # `account_holder_update_response` is a `Lithic::Models::AccountHolderUpdateResponse`
-  # case account_holder_update_response
-  # when Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse
-  #   puts(account_holder_update_response.token)
-  # when Lithic::Models::AccountHolderUpdateResponse::PatchResponse
-  #   puts(account_holder_update_response.address)
-  # else
-  #   puts(account_holder_update_response)
-  # end
-  # ```
+  #   # `account_holder_update_response` is a `Lithic::Models::AccountHolderUpdateResponse`
+  #   case account_holder_update_response
+  #   when Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse
+  #     puts(account_holder_update_response.token)
+  #   when Lithic::Models::AccountHolderUpdateResponse::PatchResponse
+  #     puts(account_holder_update_response.address)
+  #   else
+  #     puts(account_holder_update_response)
+  #   end
   module Union
     include Lithic::Converter
 
@@ -858,14 +852,12 @@ module Lithic
   # @abstract
   #
   # @example
-  # ```ruby
-  # # `address` is a `Lithic::Models::Address`
-  # address => {
-  #   address1: address1,
-  #   city: city,
-  #   country: country
-  # }
-  # ```
+  #   # `address` is a `Lithic::Models::Address`
+  #   address => {
+  #     address1: address1,
+  #     city: city,
+  #     country: country
+  #   }
   class BaseModel
     extend Lithic::Converter
 
