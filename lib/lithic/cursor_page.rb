@@ -2,32 +2,26 @@
 
 module Lithic
   # @example
-  # ```ruby
-  # if cursor_page.has_next?
-  #   cursor_page = cursor_page.next_page
-  # end
-  # ```
+  #   if cursor_page.has_next?
+  #     cursor_page = cursor_page.next_page
+  #   end
   #
   # @example
-  # ```ruby
-  # cursor_page.auto_paging_each do |account|
-  #   puts(account)
-  # end
-  # ```
+  #   cursor_page.auto_paging_each do |account|
+  #     puts(account)
+  #   end
   #
   # @example
-  # ```ruby
-  # accounts =
-  #   cursor_page
-  #   .to_enum
-  #   .lazy
-  #   .select { _1.object_id.even? }
-  #   .map(&:itself)
-  #   .take(2)
-  #   .to_a
+  #   accounts =
+  #     cursor_page
+  #     .to_enum
+  #     .lazy
+  #     .select { _1.object_id.even? }
+  #     .map(&:itself)
+  #     .take(2)
+  #     .to_a
   #
-  # accounts => Array
-  # ```
+  #   accounts => Array
   class CursorPage
     include Lithic::BasePage
 
