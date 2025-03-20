@@ -486,6 +486,12 @@ module Lithic
           TRANSACTION_RISK_ANALYSIS = :TRANSACTION_RISK_ANALYSIS
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Indicates what the outcome of the 3DS authentication process is.
@@ -498,6 +504,12 @@ module Lithic
           SUCCESS = :SUCCESS
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Indicates which party made the 3DS authentication decision.
@@ -511,6 +523,12 @@ module Lithic
           UNKNOWN = :UNKNOWN
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Indicates whether chargeback liability shift applies to the transaction.
@@ -534,6 +552,12 @@ module Lithic
           TOKEN_AUTHENTICATED = :TOKEN_AUTHENTICATED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Indicates whether a 3DS challenge flow was used, and if so, what the
@@ -545,6 +569,12 @@ module Lithic
           OTHER = :OTHER
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
@@ -560,6 +590,12 @@ module Lithic
           SUCCESS = :SUCCESS
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -636,6 +672,12 @@ module Lithic
         VISA = :VISA
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Pos < Lithic::BaseModel
@@ -702,6 +744,12 @@ module Lithic
             UNKNOWN = :UNKNOWN
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # Cardholder presence indicator
@@ -720,6 +768,12 @@ module Lithic
             UNKNOWN = :UNKNOWN
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # Method of entry for the PAN
@@ -743,6 +797,12 @@ module Lithic
             UNSPECIFIED = :UNSPECIFIED
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -827,6 +887,12 @@ module Lithic
             UNKNOWN = :UNKNOWN
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # Status of whether the POS is able to accept PINs
@@ -839,6 +905,12 @@ module Lithic
             UNSPECIFIED = :UNSPECIFIED
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # POS Type
@@ -871,6 +943,12 @@ module Lithic
             UNKNOWN = :UNKNOWN
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end
@@ -903,6 +981,12 @@ module Lithic
         USER_TRANSACTION_LIMIT = :USER_TRANSACTION_LIMIT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Status of the transaction.
@@ -916,6 +1000,12 @@ module Lithic
         VOIDED = :VOIDED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class TokenInfo < Lithic::BaseModel
@@ -950,6 +1040,12 @@ module Lithic
           SAMSUNG_PAY = :SAMSUNG_PAY
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1214,6 +1310,12 @@ module Lithic
           VEHICLE_NUMBER_INVALID = :VEHICLE_NUMBER_INVALID
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Indicates whether the transaction event is a credit or debit to the account.
@@ -1224,6 +1326,12 @@ module Lithic
           DEBIT = :DEBIT
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class NetworkInfo < Lithic::BaseModel
@@ -1401,6 +1509,12 @@ module Lithic
           USER_TRANSACTION_LIMIT = :USER_TRANSACTION_LIMIT
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class RuleResult < Lithic::BaseModel
@@ -1499,6 +1613,12 @@ module Lithic
             VEHICLE_NUMBER_INVALID = :VEHICLE_NUMBER_INVALID
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -1522,6 +1642,12 @@ module Lithic
           RETURN_REVERSAL = :RETURN_REVERSAL
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

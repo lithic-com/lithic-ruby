@@ -74,7 +74,7 @@ module Lithic
         MERCHANT: :MERCHANT
         ALL: :ALL
 
-        def self.values: -> ::Array[Lithic::Models::TokenizationListParams::tokenization_channel]
+        def self?.values: -> ::Array[Lithic::Models::TokenizationListParams::tokenization_channel]
       end
     end
   end

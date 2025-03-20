@@ -71,7 +71,7 @@ module Lithic
           ACTIVE: :ACTIVE
           INACTIVE: :INACTIVE
 
-          def self.values: -> ::Array[Lithic::Models::AuthRules::AuthRule::state]
+          def self?.values: -> ::Array[Lithic::Models::AuthRules::AuthRule::state]
         end
       end
     end

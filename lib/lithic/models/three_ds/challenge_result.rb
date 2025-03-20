@@ -11,6 +11,12 @@ module Lithic
         DECLINE_BY_CUSTOMER = :DECLINE_BY_CUSTOMER
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

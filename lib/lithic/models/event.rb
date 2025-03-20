@@ -146,6 +146,12 @@ module Lithic
         TOKENIZATION_UPDATED = :"tokenization.updated"
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

@@ -144,8 +144,14 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentCreateParams::Method) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::PaymentCreateParams::Method::TaggedSymbol) }
 
-        ACH_NEXT_DAY = T.let(:ACH_NEXT_DAY, Lithic::Models::PaymentCreateParams::Method::OrSymbol)
-        ACH_SAME_DAY = T.let(:ACH_SAME_DAY, Lithic::Models::PaymentCreateParams::Method::OrSymbol)
+        ACH_NEXT_DAY = T.let(:ACH_NEXT_DAY, Lithic::Models::PaymentCreateParams::Method::TaggedSymbol)
+        ACH_SAME_DAY = T.let(:ACH_SAME_DAY, Lithic::Models::PaymentCreateParams::Method::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::PaymentCreateParams::Method::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class MethodAttributes < Lithic::BaseModel
@@ -179,9 +185,15 @@ module Lithic
           OrSymbol =
             T.type_alias { T.any(Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol) }
 
-          CCD = T.let(:CCD, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol)
-          PPD = T.let(:PPD, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol)
-          WEB = T.let(:WEB, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol)
+          CCD = T.let(:CCD, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol)
+          PPD = T.let(:PPD, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol)
+          WEB = T.let(:WEB, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -191,8 +203,14 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentCreateParams::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::PaymentCreateParams::Type::TaggedSymbol) }
 
-        COLLECTION = T.let(:COLLECTION, Lithic::Models::PaymentCreateParams::Type::OrSymbol)
-        PAYMENT = T.let(:PAYMENT, Lithic::Models::PaymentCreateParams::Type::OrSymbol)
+        COLLECTION = T.let(:COLLECTION, Lithic::Models::PaymentCreateParams::Type::TaggedSymbol)
+        PAYMENT = T.let(:PAYMENT, Lithic::Models::PaymentCreateParams::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::PaymentCreateParams::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

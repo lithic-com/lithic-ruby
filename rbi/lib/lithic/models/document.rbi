@@ -117,6 +117,12 @@ module Lithic
         SSN_CARD = T.let(:SSN_CARD, Lithic::Models::Document::DocumentType::TaggedSymbol)
         ITIN_LETTER = T.let(:ITIN_LETTER, Lithic::Models::Document::DocumentType::TaggedSymbol)
         FINCEN_BOI_REPORT = T.let(:FINCEN_BOI_REPORT, Lithic::Models::Document::DocumentType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::Document::DocumentType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class RequiredDocumentUpload < Lithic::BaseModel
@@ -274,6 +280,12 @@ module Lithic
 
           FRONT = T.let(:FRONT, Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol)
           BACK = T.let(:BACK, Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # Status of an account holder's document upload.
@@ -291,6 +303,12 @@ module Lithic
           UPLOADED = T.let(:UPLOADED, Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol)
           PARTIAL_APPROVAL =
             T.let(:PARTIAL_APPROVAL, Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # The status reasons for an account holder document upload that is not ACCEPTED
@@ -345,6 +363,12 @@ module Lithic
             )
           UNKNOWN_ERROR =
             T.let(:UNKNOWN_ERROR, Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

@@ -65,7 +65,7 @@ module Lithic
         module Period
           extend Lithic::Union
 
-          def self.variants: -> [Integer, Lithic::Models::AuthRules::velocity_limit_params_period_window]
+          def self?.variants: -> [Integer, Lithic::Models::AuthRules::velocity_limit_params_period_window]
         end
 
         type scope = :CARD | :ACCOUNT
@@ -76,7 +76,7 @@ module Lithic
           CARD: :CARD
           ACCOUNT: :ACCOUNT
 
-          def self.values: -> ::Array[Lithic::Models::AuthRules::VelocityLimitParams::scope]
+          def self?.values: -> ::Array[Lithic::Models::AuthRules::VelocityLimitParams::scope]
         end
       end
     end

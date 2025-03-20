@@ -17,9 +17,15 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol) }
 
-        DAY = T.let(:DAY, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol)
-        WEEK = T.let(:WEEK, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol)
-        MONTH = T.let(:MONTH, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol)
+        DAY = T.let(:DAY, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol)
+        WEEK = T.let(:WEEK, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol)
+        MONTH = T.let(:MONTH, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

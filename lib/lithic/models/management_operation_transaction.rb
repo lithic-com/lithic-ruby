@@ -117,6 +117,12 @@ module Lithic
         MANAGEMENT_ADJUSTMENT = :MANAGEMENT_ADJUSTMENT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module Direction
@@ -126,6 +132,12 @@ module Lithic
         DEBIT = :DEBIT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Event < Lithic::BaseModel
@@ -200,6 +212,12 @@ module Lithic
           APPROVED = :APPROVED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         module Result
@@ -209,6 +227,12 @@ module Lithic
           DECLINED = :DECLINED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         module Type
@@ -231,6 +255,12 @@ module Lithic
           RETURNED_PAYMENT_REVERSAL = :RETURNED_PAYMENT_REVERSAL
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -241,6 +271,12 @@ module Lithic
         DECLINED = :DECLINED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module Status
@@ -253,6 +289,12 @@ module Lithic
         CANCELED = :CANCELED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

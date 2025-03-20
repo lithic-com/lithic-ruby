@@ -27,7 +27,7 @@ module Lithic
         THREE_DS_DECISIONING: :THREE_DS_DECISIONING
         TOKENIZATION_DECISIONING: :TOKENIZATION_DECISIONING
 
-        def self.values: -> ::Array[Lithic::Models::ResponderEndpointDeleteParams::type_]
+        def self?.values: -> ::Array[Lithic::Models::ResponderEndpointDeleteParams::type_]
       end
     end
   end

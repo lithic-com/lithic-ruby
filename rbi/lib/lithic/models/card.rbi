@@ -502,6 +502,12 @@ module Lithic
           DELETED = T.let(:DELETED, Lithic::Models::Card::Funding::State::TaggedSymbol)
           ENABLED = T.let(:ENABLED, Lithic::Models::Card::Funding::State::TaggedSymbol)
           PENDING = T.let(:PENDING, Lithic::Models::Card::Funding::State::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Card::Funding::State::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # Types of funding source:
@@ -516,6 +522,12 @@ module Lithic
 
           DEPOSITORY_CHECKING = T.let(:DEPOSITORY_CHECKING, Lithic::Models::Card::Funding::Type::TaggedSymbol)
           DEPOSITORY_SAVINGS = T.let(:DEPOSITORY_SAVINGS, Lithic::Models::Card::Funding::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Card::Funding::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -530,6 +542,12 @@ module Lithic
         OK = T.let(:OK, Lithic::Models::Card::PinStatus::TaggedSymbol)
         BLOCKED = T.let(:BLOCKED, Lithic::Models::Card::PinStatus::TaggedSymbol)
         NOT_SET = T.let(:NOT_SET, Lithic::Models::Card::PinStatus::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::Card::PinStatus::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Card state values:
@@ -564,6 +582,12 @@ module Lithic
         PAUSED = T.let(:PAUSED, Lithic::Models::Card::State::TaggedSymbol)
         PENDING_ACTIVATION = T.let(:PENDING_ACTIVATION, Lithic::Models::Card::State::TaggedSymbol)
         PENDING_FULFILLMENT = T.let(:PENDING_FULFILLMENT, Lithic::Models::Card::State::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::Card::State::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Card types:
@@ -594,6 +618,12 @@ module Lithic
         VIRTUAL = T.let(:VIRTUAL, Lithic::Models::Card::Type::TaggedSymbol)
         UNLOCKED = T.let(:UNLOCKED, Lithic::Models::Card::Type::TaggedSymbol)
         DIGITAL_WALLET = T.let(:DIGITAL_WALLET, Lithic::Models::Card::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::Card::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

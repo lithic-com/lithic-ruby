@@ -567,6 +567,12 @@ module Lithic
         PREPAID_CARD_USER = :PREPAID_CARD_USER
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Individual < Lithic::BaseModel
@@ -646,6 +652,12 @@ module Lithic
         REJECTED = :REJECTED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module StatusReason
@@ -664,6 +676,12 @@ module Lithic
         WATCHLIST_ALERT_FAILURE = :WATCHLIST_ALERT_FAILURE
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
@@ -677,6 +695,12 @@ module Lithic
         INDIVIDUAL = :INDIVIDUAL
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class VerificationApplication < Lithic::BaseModel
@@ -752,6 +776,12 @@ module Lithic
           REJECTED = :REJECTED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         module StatusReason
@@ -770,6 +800,12 @@ module Lithic
           WATCHLIST_ALERT_FAILURE = :WATCHLIST_ALERT_FAILURE
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

@@ -143,11 +143,19 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol) }
 
-        EXTERNAL_WIRE = T.let(:EXTERNAL_WIRE, Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol)
-        EXTERNAL_ACH = T.let(:EXTERNAL_ACH, Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol)
-        EXTERNAL_CHECK = T.let(:EXTERNAL_CHECK, Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol)
+        EXTERNAL_WIRE =
+          T.let(:EXTERNAL_WIRE, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol)
+        EXTERNAL_ACH = T.let(:EXTERNAL_ACH, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol)
+        EXTERNAL_CHECK =
+          T.let(:EXTERNAL_CHECK, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol)
         EXTERNAL_TRANSFER =
-          T.let(:EXTERNAL_TRANSFER, Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol)
+          T.let(:EXTERNAL_TRANSFER, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       module PaymentType
@@ -157,8 +165,14 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol) }
 
-        DEPOSIT = T.let(:DEPOSIT, Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol)
-        WITHDRAWAL = T.let(:WITHDRAWAL, Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol)
+        DEPOSIT = T.let(:DEPOSIT, Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol)
+        WITHDRAWAL = T.let(:WITHDRAWAL, Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       module ProgressTo
@@ -168,8 +182,14 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol) }
 
-        SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol)
-        RELEASED = T.let(:RELEASED, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol)
+        RELEASED = T.let(:RELEASED, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

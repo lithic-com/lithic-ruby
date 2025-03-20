@@ -73,6 +73,12 @@ module Lithic
         FINCEN_BOI_REPORT = :FINCEN_BOI_REPORT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class RequiredDocumentUpload < Lithic::BaseModel
@@ -175,6 +181,12 @@ module Lithic
           BACK = :BACK
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Status of an account holder's document upload.
@@ -188,6 +200,12 @@ module Lithic
           PARTIAL_APPROVAL = :PARTIAL_APPROVAL
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The status reasons for an account holder document upload that is not ACCEPTED
@@ -207,6 +225,12 @@ module Lithic
           UNKNOWN_ERROR = :UNKNOWN_ERROR
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

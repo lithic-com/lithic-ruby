@@ -425,6 +425,15 @@ module Lithic
           DEBIT = T.let(:DEBIT, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol)
           NOT_APPLICABLE =
             T.let(:NOT_APPLICABLE, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # Indicates the outcome of the 3DS authentication process.
@@ -456,6 +465,17 @@ module Lithic
               :PENDING_DECISION,
               Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # Indicates whether the expiration date provided by the cardholder during checkout
@@ -477,6 +497,15 @@ module Lithic
               :NOT_PRESENT,
               Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         class Cardholder < Lithic::BaseModel
@@ -823,6 +852,12 @@ module Lithic
               :THREE_DS_REQUESTOR_INITIATED,
               Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol
             )
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class Merchant < Lithic::BaseModel
@@ -1181,6 +1216,19 @@ module Lithic
                   :TWO_DAY_OR_MORE_SHIPPING,
                   Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
+              end
             end
 
             # Indicates whether the purchase is for merchandise that is available now or at a
@@ -1210,6 +1258,19 @@ module Lithic
                   :MERCHANDISE_AVAILABLE,
                   Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
+              end
             end
 
             # Indicates whether the cardholder is reordering previously purchased merchandise.
@@ -1239,6 +1300,19 @@ module Lithic
                   :REORDERED,
                   Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
+              end
             end
 
             # Shipping method that the cardholder chose for the transaction. If purchase
@@ -1305,6 +1379,19 @@ module Lithic
                   :TRAVEL_AND_EVENT_TICKETS,
                   Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
+              end
             end
           end
         end
@@ -1330,6 +1417,15 @@ module Lithic
               :PAYMENT_AUTHENTICATION,
               Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # Indicates whether a challenge is requested for this transaction
@@ -1390,6 +1486,17 @@ module Lithic
               :OTHER,
               Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         class AdditionalData < Lithic::BaseModel
@@ -1484,6 +1591,17 @@ module Lithic
                 :NOT_LOW_RISK,
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -1585,6 +1703,17 @@ module Lithic
               :SPLIT_SHIPMENT,
               Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         class Browser < Lithic::BaseModel
@@ -1758,6 +1887,17 @@ module Lithic
                 :OUT_OF_BAND,
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -1790,6 +1930,17 @@ module Lithic
               :NO_CHALLENGE,
               Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # Entity that made the authentication decision.
@@ -1820,6 +1971,15 @@ module Lithic
             T.let(:NETWORK, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol)
           UNKNOWN =
             T.let(:UNKNOWN, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # Type of 3DS Requestor Initiated (3RI) request i.e., a 3DS authentication that
@@ -1912,6 +2072,17 @@ module Lithic
               :TRUST_LIST_STATUS_CHECK,
               Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         class Transaction < Lithic::BaseModel
@@ -2040,6 +2211,17 @@ module Lithic
                 :QUASI_CASH_TRANSACTION,
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
       end

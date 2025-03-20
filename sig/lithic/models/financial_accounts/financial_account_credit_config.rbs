@@ -53,7 +53,7 @@ module Lithic
           DELINQUENT: :DELINQUENT
           FRAUD: :FRAUD
 
-          def self.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason]
+          def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason]
         end
 
         type financial_account_state =
@@ -67,7 +67,7 @@ module Lithic
           DELINQUENT: :DELINQUENT
           CHARGED_OFF: :CHARGED_OFF
 
-          def self.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state]
+          def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state]
         end
       end
     end

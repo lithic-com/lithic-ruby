@@ -57,6 +57,12 @@ module Lithic
         REJECTED = :REJECTED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module StatusReason
@@ -87,6 +93,12 @@ module Lithic
           :BENEFICIAL_OWNER_INDIVIDUAL_NAME_VERIFICATION_FAILURE
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

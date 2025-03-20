@@ -135,13 +135,31 @@ module Lithic
           OrSymbol =
             T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol) }
 
-          ACH = T.let(:ACH, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::OrSymbol)
+          ACH =
+            T.let(:ACH, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol)
           CARD =
-            T.let(:CARD, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::OrSymbol)
+            T.let(:CARD, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol)
           INTERNAL =
-            T.let(:INTERNAL, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::OrSymbol)
+            T.let(
+              :INTERNAL,
+              Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol
+            )
           TRANSFER =
-            T.let(:TRANSFER, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::OrSymbol)
+            T.let(
+              :TRANSFER,
+              Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol
+            )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # Financial Transaction result to be returned.
@@ -154,9 +172,18 @@ module Lithic
             T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::TaggedSymbol) }
 
           APPROVED =
-            T.let(:APPROVED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::OrSymbol)
+            T.let(:APPROVED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::TaggedSymbol)
           DECLINED =
-            T.let(:DECLINED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::OrSymbol)
+            T.let(:DECLINED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # Financial Transaction status to be returned.
@@ -169,17 +196,26 @@ module Lithic
             T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol) }
 
           DECLINED =
-            T.let(:DECLINED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::OrSymbol)
+            T.let(:DECLINED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol)
           EXPIRED =
-            T.let(:EXPIRED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::OrSymbol)
+            T.let(:EXPIRED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol)
           PENDING =
-            T.let(:PENDING, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::OrSymbol)
+            T.let(:PENDING, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol)
           RETURNED =
-            T.let(:RETURNED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::OrSymbol)
+            T.let(:RETURNED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol)
           SETTLED =
-            T.let(:SETTLED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::OrSymbol)
+            T.let(:SETTLED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol)
           VOIDED =
-            T.let(:VOIDED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::OrSymbol)
+            T.let(:VOIDED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
     end

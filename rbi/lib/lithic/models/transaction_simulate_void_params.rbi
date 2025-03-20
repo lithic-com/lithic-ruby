@@ -80,9 +80,15 @@ module Lithic
           T.type_alias { T.any(Symbol, Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol) }
 
         AUTHORIZATION_EXPIRY =
-          T.let(:AUTHORIZATION_EXPIRY, Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol)
+          T.let(:AUTHORIZATION_EXPIRY, Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol)
         AUTHORIZATION_REVERSAL =
-          T.let(:AUTHORIZATION_REVERSAL, Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol)
+          T.let(:AUTHORIZATION_REVERSAL, Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

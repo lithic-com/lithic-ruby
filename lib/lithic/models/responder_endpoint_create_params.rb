@@ -45,6 +45,12 @@ module Lithic
         TOKENIZATION_DECISIONING = :TOKENIZATION_DECISIONING
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

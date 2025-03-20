@@ -151,8 +151,14 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType::TaggedSymbol) }
 
-        CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol)
-        SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol)
+        CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountListParams::AccountType::TaggedSymbol)
+        SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountListParams::AccountType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       module State
@@ -162,9 +168,15 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol) }
 
-        ENABLED = T.let(:ENABLED, Lithic::Models::ExternalBankAccountListParams::State::OrSymbol)
-        CLOSED = T.let(:CLOSED, Lithic::Models::ExternalBankAccountListParams::State::OrSymbol)
-        PAUSED = T.let(:PAUSED, Lithic::Models::ExternalBankAccountListParams::State::OrSymbol)
+        ENABLED = T.let(:ENABLED, Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol)
+        CLOSED = T.let(:CLOSED, Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       module VerificationState
@@ -175,12 +187,21 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol) }
 
-        PENDING = T.let(:PENDING, Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol)
-        ENABLED = T.let(:ENABLED, Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol)
+        PENDING = T.let(:PENDING, Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol)
+        ENABLED = T.let(:ENABLED, Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol)
         FAILED_VERIFICATION =
-          T.let(:FAILED_VERIFICATION, Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol)
+          T.let(
+            :FAILED_VERIFICATION,
+            Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol
+          )
         INSUFFICIENT_FUNDS =
-          T.let(:INSUFFICIENT_FUNDS, Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol)
+          T.let(:INSUFFICIENT_FUNDS, Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

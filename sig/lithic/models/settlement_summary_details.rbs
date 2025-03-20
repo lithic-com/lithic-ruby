@@ -71,7 +71,7 @@ module Lithic
         UNKNOWN: :UNKNOWN
         VISA: :VISA
 
-        def self.values: -> ::Array[Lithic::Models::SettlementSummaryDetails::network]
+        def self?.values: -> ::Array[Lithic::Models::SettlementSummaryDetails::network]
       end
     end
   end

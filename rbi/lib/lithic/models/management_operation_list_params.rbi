@@ -155,13 +155,19 @@ module Lithic
           T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol) }
 
         MANAGEMENT_FEE =
-          T.let(:MANAGEMENT_FEE, Lithic::Models::ManagementOperationListParams::Category::OrSymbol)
+          T.let(:MANAGEMENT_FEE, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
         MANAGEMENT_DISPUTE =
-          T.let(:MANAGEMENT_DISPUTE, Lithic::Models::ManagementOperationListParams::Category::OrSymbol)
+          T.let(:MANAGEMENT_DISPUTE, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
         MANAGEMENT_REWARD =
-          T.let(:MANAGEMENT_REWARD, Lithic::Models::ManagementOperationListParams::Category::OrSymbol)
+          T.let(:MANAGEMENT_REWARD, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
         MANAGEMENT_ADJUSTMENT =
-          T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Models::ManagementOperationListParams::Category::OrSymbol)
+          T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Management operation status to be returned.
@@ -172,11 +178,17 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol) }
 
-        PENDING = T.let(:PENDING, Lithic::Models::ManagementOperationListParams::Status::OrSymbol)
-        SETTLED = T.let(:SETTLED, Lithic::Models::ManagementOperationListParams::Status::OrSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationListParams::Status::OrSymbol)
-        REVERSED = T.let(:REVERSED, Lithic::Models::ManagementOperationListParams::Status::OrSymbol)
-        CANCELED = T.let(:CANCELED, Lithic::Models::ManagementOperationListParams::Status::OrSymbol)
+        PENDING = T.let(:PENDING, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
+        REVERSED = T.let(:REVERSED, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
+        CANCELED = T.let(:CANCELED, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -208,6 +208,12 @@ module Lithic
         PENDING_2_FA = T.let(:PENDING_2FA, Lithic::Models::Tokenization::Status::TaggedSymbol)
         PENDING_ACTIVATION = T.let(:PENDING_ACTIVATION, Lithic::Models::Tokenization::Status::TaggedSymbol)
         UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Tokenization::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::Tokenization::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The entity that requested the tokenization. Represents a Digital Wallet or
@@ -229,6 +235,12 @@ module Lithic
         SAMSUNG_PAY = T.let(:SAMSUNG_PAY, Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol)
         UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol)
         VISA_CHECKOUT = T.let(:VISA_CHECKOUT, Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The channel through which the tokenization was made.
@@ -241,6 +253,12 @@ module Lithic
 
         DIGITAL_WALLET = T.let(:DIGITAL_WALLET, Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol)
         MERCHANT = T.let(:MERCHANT, Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Event < Lithic::BaseModel
@@ -333,6 +351,12 @@ module Lithic
             T.let(:TOKEN_STATE_UNKNOWN, Lithic::Models::Tokenization::Event::Result::TaggedSymbol)
           TOKEN_SUSPENDED = T.let(:TOKEN_SUSPENDED, Lithic::Models::Tokenization::Event::Result::TaggedSymbol)
           TOKEN_UPDATED = T.let(:TOKEN_UPDATED, Lithic::Models::Tokenization::Event::Result::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Tokenization::Event::Result::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # Enum representing the type of tokenization event that occurred
@@ -351,6 +375,12 @@ module Lithic
             T.let(:TOKENIZATION_ELIGIBILITY_CHECK, Lithic::Models::Tokenization::Event::Type::TaggedSymbol)
           TOKENIZATION_UPDATED =
             T.let(:TOKENIZATION_UPDATED, Lithic::Models::Tokenization::Event::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Tokenization::Event::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

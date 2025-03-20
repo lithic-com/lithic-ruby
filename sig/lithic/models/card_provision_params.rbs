@@ -62,7 +62,7 @@ module Lithic
         GOOGLE_PAY: :GOOGLE_PAY
         SAMSUNG_PAY: :SAMSUNG_PAY
 
-        def self.values: -> ::Array[Lithic::Models::CardProvisionParams::digital_wallet]
+        def self?.values: -> ::Array[Lithic::Models::CardProvisionParams::digital_wallet]
       end
     end
   end

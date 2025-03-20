@@ -81,7 +81,7 @@ module Lithic
         PAUSED: :PAUSED
         CLOSED: :CLOSED
 
-        def self.values: -> ::Array[Lithic::Models::Account::state]
+        def self?.values: -> ::Array[Lithic::Models::Account::state]
       end
 
       type account_holder =

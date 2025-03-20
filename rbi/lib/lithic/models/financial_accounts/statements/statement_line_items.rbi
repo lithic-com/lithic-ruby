@@ -284,6 +284,17 @@ module Lithic
                   :MANAGEMENT_REWARD,
                   Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol]
+                    )
+                end
+                def values
+                end
+              end
             end
 
             module EventType
@@ -619,6 +630,17 @@ module Lithic
                   :RETURNED_PAYMENT_REVERSAL,
                   Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol]
+                    )
+                end
+                def values
+                end
+              end
             end
           end
         end

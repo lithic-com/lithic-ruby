@@ -8,7 +8,7 @@ module Lithic
       ISSUING: :ISSUING
       OPERATING: :OPERATING
 
-      def self.values: -> ::Array[Lithic::Models::account_financial_account_type]
+      def self?.values: -> ::Array[Lithic::Models::account_financial_account_type]
     end
   end
 end

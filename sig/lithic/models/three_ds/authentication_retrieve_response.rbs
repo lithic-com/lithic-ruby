@@ -108,7 +108,7 @@ module Lithic
           DEBIT: :DEBIT
           NOT_APPLICABLE: :NOT_APPLICABLE
 
-          def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::account_type]
+          def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::account_type]
         end
 
         type authentication_result =
@@ -122,7 +122,7 @@ module Lithic
           PENDING_CHALLENGE: :PENDING_CHALLENGE
           PENDING_DECISION: :PENDING_DECISION
 
-          def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::authentication_result]
+          def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::authentication_result]
         end
 
         type card_expiry_check = :MATCH | :MISMATCH | :NOT_PRESENT
@@ -134,7 +134,7 @@ module Lithic
           MISMATCH: :MISMATCH
           NOT_PRESENT: :NOT_PRESENT
 
-          def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::card_expiry_check]
+          def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::card_expiry_check]
         end
 
         type cardholder =
@@ -267,7 +267,7 @@ module Lithic
           BROWSER: :BROWSER
           THREE_DS_REQUESTOR_INITIATED: :THREE_DS_REQUESTOR_INITIATED
 
-          def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::channel]
+          def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::channel]
         end
 
         type merchant =
@@ -360,7 +360,7 @@ module Lithic
               SAME_DAY_SHIPPING: :SAME_DAY_SHIPPING
               TWO_DAY_OR_MORE_SHIPPING: :TWO_DAY_OR_MORE_SHIPPING
 
-              def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::delivery_time_frame]
+              def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::delivery_time_frame]
             end
 
             type order_availability =
@@ -372,7 +372,7 @@ module Lithic
               FUTURE_AVAILABILITY: :FUTURE_AVAILABILITY
               MERCHANDISE_AVAILABLE: :MERCHANDISE_AVAILABLE
 
-              def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::order_availability]
+              def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::order_availability]
             end
 
             type reorder_items = :FIRST_TIME_ORDERED | :REORDERED
@@ -383,7 +383,7 @@ module Lithic
               FIRST_TIME_ORDERED: :FIRST_TIME_ORDERED
               REORDERED: :REORDERED
 
-              def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::reorder_items]
+              def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::reorder_items]
             end
 
             type shipping_method =
@@ -410,7 +410,7 @@ module Lithic
               SHIP_TO_STORE: :SHIP_TO_STORE
               TRAVEL_AND_EVENT_TICKETS: :TRAVEL_AND_EVENT_TICKETS
 
-              def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::shipping_method]
+              def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::shipping_method]
             end
           end
         end
@@ -424,7 +424,7 @@ module Lithic
           NON_PAYMENT_AUTHENTICATION: :NON_PAYMENT_AUTHENTICATION
           PAYMENT_AUTHENTICATION: :PAYMENT_AUTHENTICATION
 
-          def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::message_category]
+          def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::message_category]
         end
 
         type three_ds_requestor_challenge_indicator =
@@ -447,7 +447,7 @@ module Lithic
           DATA_SHARE_ONLY: :DATA_SHARE_ONLY
           OTHER: :OTHER
 
-          def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::three_ds_requestor_challenge_indicator]
+          def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::three_ds_requestor_challenge_indicator]
         end
 
         type additional_data =
@@ -476,7 +476,7 @@ module Lithic
             LOW_RISK: :LOW_RISK
             NOT_LOW_RISK: :NOT_LOW_RISK
 
-            def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::network_decision]
+            def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::network_decision]
           end
         end
 
@@ -520,7 +520,7 @@ module Lithic
           SPLIT_PAYMENT: :SPLIT_PAYMENT
           SPLIT_SHIPMENT: :SPLIT_SHIPMENT
 
-          def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::authentication_request_type]
+          def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::authentication_request_type]
         end
 
         type browser =
@@ -584,7 +584,7 @@ module Lithic
             SMS_OTP: :SMS_OTP
             OUT_OF_BAND: :OUT_OF_BAND
 
-            def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::method_type]
+            def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::method_type]
           end
         end
 
@@ -597,7 +597,7 @@ module Lithic
           CUSTOMER: :CUSTOMER
           NO_CHALLENGE: :NO_CHALLENGE
 
-          def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::challenge_orchestrated_by]
+          def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::challenge_orchestrated_by]
         end
 
         type decision_made_by =
@@ -616,7 +616,7 @@ module Lithic
           NETWORK: :NETWORK
           UNKNOWN: :UNKNOWN
 
-          def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::decision_made_by]
+          def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::decision_made_by]
         end
 
         type three_ri_request_type =
@@ -657,7 +657,7 @@ module Lithic
           TOP_UP: :TOP_UP
           TRUST_LIST_STATUS_CHECK: :TRUST_LIST_STATUS_CHECK
 
-          def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::three_ri_request_type]
+          def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::three_ri_request_type]
         end
 
         type transaction =
@@ -706,7 +706,7 @@ module Lithic
             PREPAID_ACTIVATION_AND_LOAD: :PREPAID_ACTIVATION_AND_LOAD
             QUASI_CASH_TRANSACTION: :QUASI_CASH_TRANSACTION
 
-            def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::type_]
+            def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::type_]
           end
         end
       end

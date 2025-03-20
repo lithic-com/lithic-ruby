@@ -127,7 +127,7 @@ module Lithic
           BUSINESS: :BUSINESS
           INDIVIDUAL: :INDIVIDUAL
 
-          def self.values: -> ::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::owner_type]
+          def self?.values: -> ::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::owner_type]
         end
 
         type state = :ENABLED | :CLOSED | :PAUSED
@@ -139,7 +139,7 @@ module Lithic
           CLOSED: :CLOSED
           PAUSED: :PAUSED
 
-          def self.values: -> ::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::state]
+          def self?.values: -> ::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::state]
         end
 
         type type_ = :CHECKING | :SAVINGS
@@ -150,7 +150,7 @@ module Lithic
           CHECKING: :CHECKING
           SAVINGS: :SAVINGS
 
-          def self.values: -> ::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::type_]
+          def self?.values: -> ::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::type_]
         end
 
         type verification_method = :MANUAL | :MICRO_DEPOSIT | :PLAID | :PRENOTE
@@ -163,7 +163,7 @@ module Lithic
           PLAID: :PLAID
           PRENOTE: :PRENOTE
 
-          def self.values: -> ::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::verification_method]
+          def self?.values: -> ::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::verification_method]
         end
 
         type verification_state =
@@ -177,7 +177,7 @@ module Lithic
           FAILED_VERIFICATION: :FAILED_VERIFICATION
           INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
 
-          def self.values: -> ::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::verification_state]
+          def self?.values: -> ::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::verification_state]
         end
       end
     end

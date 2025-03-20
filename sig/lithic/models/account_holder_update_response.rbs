@@ -341,7 +341,7 @@ module Lithic
           AUTHORIZED_USER: :AUTHORIZED_USER
           PREPAID_CARD_USER: :PREPAID_CARD_USER
 
-          def self.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::exemption_type]
+          def self?.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::exemption_type]
         end
 
         type individual =
@@ -442,7 +442,7 @@ module Lithic
           PENDING_RESUBMIT: :PENDING_RESUBMIT
           REJECTED: :REJECTED
 
-          def self.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status]
+          def self?.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status]
         end
 
         type status_reason =
@@ -499,7 +499,7 @@ module Lithic
           CONTROL_PERSON_DOB_VERIFICATION_FAILURE: :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
           CONTROL_PERSON_NAME_VERIFICATION_FAILURE: :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
 
-          def self.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status_reason]
+          def self?.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status_reason]
         end
 
         type user_type = :BUSINESS | :INDIVIDUAL
@@ -510,7 +510,7 @@ module Lithic
           BUSINESS: :BUSINESS
           INDIVIDUAL: :INDIVIDUAL
 
-          def self.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::user_type]
+          def self?.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::user_type]
         end
 
         type verification_application =
@@ -550,7 +550,7 @@ module Lithic
             PENDING_RESUBMIT: :PENDING_RESUBMIT
             REJECTED: :REJECTED
 
-            def self.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status]
+            def self?.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status]
           end
 
           type status_reason =
@@ -607,7 +607,7 @@ module Lithic
             CONTROL_PERSON_DOB_VERIFICATION_FAILURE: :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
             CONTROL_PERSON_NAME_VERIFICATION_FAILURE: :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
 
-            def self.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status_reason]
+            def self?.values: -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status_reason]
           end
         end
       end
@@ -710,7 +710,7 @@ module Lithic
         end
       end
 
-      def self.variants: -> [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse, Lithic::Models::AccountHolderUpdateResponse::PatchResponse]
+      def self?.variants: -> [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse, Lithic::Models::AccountHolderUpdateResponse::PatchResponse]
     end
   end
 end

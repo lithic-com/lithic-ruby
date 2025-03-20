@@ -114,6 +114,12 @@ module Lithic
         MANAGEMENT_ADJUSTMENT = :MANAGEMENT_ADJUSTMENT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module Direction
@@ -123,6 +129,12 @@ module Lithic
         DEBIT = :DEBIT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module EventType
@@ -145,6 +157,12 @@ module Lithic
         RETURNED_PAYMENT_REVERSAL = :RETURNED_PAYMENT_REVERSAL
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

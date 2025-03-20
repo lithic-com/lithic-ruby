@@ -71,7 +71,7 @@ module Lithic
         REWARD: :REWARD
         TRANSFER: :TRANSFER
 
-        def self.values: -> ::Array[Lithic::Models::BookTransferCreateParams::category]
+        def self?.values: -> ::Array[Lithic::Models::BookTransferCreateParams::category]
       end
 
       type type_ =
@@ -144,7 +144,7 @@ module Lithic
         DISPUTE_WON: :DISPUTE_WON
         TRANSFER: :TRANSFER
 
-        def self.values: -> ::Array[Lithic::Models::BookTransferCreateParams::type_]
+        def self?.values: -> ::Array[Lithic::Models::BookTransferCreateParams::type_]
       end
     end
   end

@@ -61,6 +61,12 @@ module Lithic
         RECEIPT_DEBIT = :RECEIPT_DEBIT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

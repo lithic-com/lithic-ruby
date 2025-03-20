@@ -12,7 +12,7 @@ module Lithic
       PRENOTE: :PRENOTE
       EXTERNALLY_VERIFIED: :EXTERNALLY_VERIFIED
 
-      def self.values: -> ::Array[Lithic::Models::verification_method]
+      def self?.values: -> ::Array[Lithic::Models::verification_method]
     end
   end
 end

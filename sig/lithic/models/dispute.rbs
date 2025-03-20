@@ -120,7 +120,7 @@ module Lithic
         RECURRING_TRANSACTION_NOT_CANCELLED: :RECURRING_TRANSACTION_NOT_CANCELLED
         REFUND_NOT_PROCESSED: :REFUND_NOT_PROCESSED
 
-        def self.values: -> ::Array[Lithic::Models::Dispute::reason]
+        def self?.values: -> ::Array[Lithic::Models::Dispute::reason]
       end
 
       type resolution_reason =
@@ -163,7 +163,7 @@ module Lithic
         WON_FIRST_CHARGEBACK: :WON_FIRST_CHARGEBACK
         WON_PREARBITRATION: :WON_PREARBITRATION
 
-        def self.values: -> ::Array[Lithic::Models::Dispute::resolution_reason]
+        def self?.values: -> ::Array[Lithic::Models::Dispute::resolution_reason]
       end
 
       type status =
@@ -188,7 +188,7 @@ module Lithic
         REPRESENTMENT: :REPRESENTMENT
         SUBMITTED: :SUBMITTED
 
-        def self.values: -> ::Array[Lithic::Models::Dispute::status]
+        def self?.values: -> ::Array[Lithic::Models::Dispute::status]
       end
     end
   end

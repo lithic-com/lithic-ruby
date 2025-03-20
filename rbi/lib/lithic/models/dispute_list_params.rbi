@@ -126,14 +126,20 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DisputeListParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::DisputeListParams::Status::TaggedSymbol) }
 
-        ARBITRATION = T.let(:ARBITRATION, Lithic::Models::DisputeListParams::Status::OrSymbol)
-        CASE_CLOSED = T.let(:CASE_CLOSED, Lithic::Models::DisputeListParams::Status::OrSymbol)
-        CASE_WON = T.let(:CASE_WON, Lithic::Models::DisputeListParams::Status::OrSymbol)
-        NEW = T.let(:NEW, Lithic::Models::DisputeListParams::Status::OrSymbol)
-        PENDING_CUSTOMER = T.let(:PENDING_CUSTOMER, Lithic::Models::DisputeListParams::Status::OrSymbol)
-        PREARBITRATION = T.let(:PREARBITRATION, Lithic::Models::DisputeListParams::Status::OrSymbol)
-        REPRESENTMENT = T.let(:REPRESENTMENT, Lithic::Models::DisputeListParams::Status::OrSymbol)
-        SUBMITTED = T.let(:SUBMITTED, Lithic::Models::DisputeListParams::Status::OrSymbol)
+        ARBITRATION = T.let(:ARBITRATION, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
+        CASE_CLOSED = T.let(:CASE_CLOSED, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
+        CASE_WON = T.let(:CASE_WON, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
+        NEW = T.let(:NEW, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
+        PENDING_CUSTOMER = T.let(:PENDING_CUSTOMER, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
+        PREARBITRATION = T.let(:PREARBITRATION, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
+        REPRESENTMENT = T.let(:REPRESENTMENT, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
+        SUBMITTED = T.let(:SUBMITTED, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::DisputeListParams::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

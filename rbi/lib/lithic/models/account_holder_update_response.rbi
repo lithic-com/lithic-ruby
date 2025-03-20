@@ -830,6 +830,17 @@ module Lithic
               :PREPAID_CARD_USER,
               Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         class Individual < Lithic::BaseModel
@@ -1055,6 +1066,15 @@ module Lithic
             )
           REJECTED =
             T.let(:REJECTED, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # Status Reasons for KYC/KYB enrollment states
@@ -1191,6 +1211,17 @@ module Lithic
               :CONTROL_PERSON_NAME_VERIFICATION_FAILURE,
               Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
@@ -1215,6 +1246,17 @@ module Lithic
               :INDIVIDUAL,
               Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         class VerificationApplication < Lithic::BaseModel
@@ -1355,6 +1397,19 @@ module Lithic
                 :REJECTED,
                 Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
+                    ]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           # Status Reasons for KYC/KYB enrollment states
@@ -1493,6 +1548,19 @@ module Lithic
                 :CONTROL_PERSON_NAME_VERIFICATION_FAILURE,
                 Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+                    ]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
       end
@@ -1706,6 +1774,17 @@ module Lithic
           end
           def to_hash
           end
+        end
+      end
+
+      class << self
+        sig do
+          override
+            .returns(
+              [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse, Lithic::Models::AccountHolderUpdateResponse::PatchResponse]
+            )
+        end
+        def variants
         end
       end
     end

@@ -9,7 +9,7 @@ module Lithic
         APPROVE: :APPROVE
         DECLINE_BY_CUSTOMER: :DECLINE_BY_CUSTOMER
 
-        def self.values: -> ::Array[Lithic::Models::ThreeDS::challenge_result]
+        def self?.values: -> ::Array[Lithic::Models::ThreeDS::challenge_result]
       end
     end
   end

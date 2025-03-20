@@ -74,7 +74,7 @@ module Lithic
         ITIN_LETTER: :ITIN_LETTER
         FINCEN_BOI_REPORT: :FINCEN_BOI_REPORT
 
-        def self.values: -> ::Array[Lithic::Models::Document::document_type]
+        def self?.values: -> ::Array[Lithic::Models::Document::document_type]
       end
 
       type required_document_upload =
@@ -131,7 +131,7 @@ module Lithic
           FRONT: :FRONT
           BACK: :BACK
 
-          def self.values: -> ::Array[Lithic::Models::Document::RequiredDocumentUpload::image_type]
+          def self?.values: -> ::Array[Lithic::Models::Document::RequiredDocumentUpload::image_type]
         end
 
         type status =
@@ -150,7 +150,7 @@ module Lithic
           UPLOADED: :UPLOADED
           PARTIAL_APPROVAL: :PARTIAL_APPROVAL
 
-          def self.values: -> ::Array[Lithic::Models::Document::RequiredDocumentUpload::status]
+          def self?.values: -> ::Array[Lithic::Models::Document::RequiredDocumentUpload::status]
         end
 
         type status_reason =
@@ -181,7 +181,7 @@ module Lithic
           UNKNOWN_FAILURE_REASON: :UNKNOWN_FAILURE_REASON
           UNKNOWN_ERROR: :UNKNOWN_ERROR
 
-          def self.values: -> ::Array[Lithic::Models::Document::RequiredDocumentUpload::status_reason]
+          def self?.values: -> ::Array[Lithic::Models::Document::RequiredDocumentUpload::status_reason]
         end
       end
     end

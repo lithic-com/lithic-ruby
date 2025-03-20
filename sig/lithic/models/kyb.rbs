@@ -224,7 +224,7 @@ module Lithic
         KYB_BASIC: :KYB_BASIC
         KYB_BYO: :KYB_BYO
 
-        def self.values: -> ::Array[Lithic::Models::KYB::workflow]
+        def self?.values: -> ::Array[Lithic::Models::KYB::workflow]
       end
     end
   end

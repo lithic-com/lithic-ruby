@@ -72,6 +72,12 @@ module Lithic
         OPERATING = :OPERATING
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

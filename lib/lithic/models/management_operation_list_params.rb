@@ -141,6 +141,12 @@ module Lithic
         MANAGEMENT_ADJUSTMENT = :MANAGEMENT_ADJUSTMENT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Management operation status to be returned.
@@ -154,6 +160,12 @@ module Lithic
         CANCELED = :CANCELED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

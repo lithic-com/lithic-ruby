@@ -179,6 +179,12 @@ module Lithic
           FRAUD = :FRAUD
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # State of the financial account
@@ -191,6 +197,12 @@ module Lithic
           CHARGED_OFF = :CHARGED_OFF
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -204,6 +216,12 @@ module Lithic
         PENDING = :PENDING
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module Type
@@ -217,6 +235,12 @@ module Lithic
         CHARGED_OFF_PRINCIPAL = :CHARGED_OFF_PRINCIPAL
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Reason for the financial account status change
@@ -230,6 +254,12 @@ module Lithic
         DELINQUENT = :DELINQUENT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

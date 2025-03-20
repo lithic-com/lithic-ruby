@@ -20,10 +20,16 @@ module Lithic
       TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::SpendLimitDuration) }
       OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::SpendLimitDuration::TaggedSymbol) }
 
-      ANNUALLY = T.let(:ANNUALLY, Lithic::Models::SpendLimitDuration::OrSymbol)
-      FOREVER = T.let(:FOREVER, Lithic::Models::SpendLimitDuration::OrSymbol)
-      MONTHLY = T.let(:MONTHLY, Lithic::Models::SpendLimitDuration::OrSymbol)
-      TRANSACTION = T.let(:TRANSACTION, Lithic::Models::SpendLimitDuration::OrSymbol)
+      ANNUALLY = T.let(:ANNUALLY, Lithic::Models::SpendLimitDuration::TaggedSymbol)
+      FOREVER = T.let(:FOREVER, Lithic::Models::SpendLimitDuration::TaggedSymbol)
+      MONTHLY = T.let(:MONTHLY, Lithic::Models::SpendLimitDuration::TaggedSymbol)
+      TRANSACTION = T.let(:TRANSACTION, Lithic::Models::SpendLimitDuration::TaggedSymbol)
+
+      class << self
+        sig { override.returns(T::Array[Lithic::Models::SpendLimitDuration::TaggedSymbol]) }
+        def values
+        end
+      end
     end
   end
 end

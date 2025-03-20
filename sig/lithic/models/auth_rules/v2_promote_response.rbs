@@ -78,7 +78,7 @@ module Lithic
           module Parameters
             extend Lithic::Union
 
-            def self.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+            def self?.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
           end
         end
 
@@ -107,7 +107,7 @@ module Lithic
           module Parameters
             extend Lithic::Union
 
-            def self.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+            def self?.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
           end
         end
 
@@ -119,7 +119,7 @@ module Lithic
           ACTIVE: :ACTIVE
           INACTIVE: :INACTIVE
 
-          def self.values: -> ::Array[Lithic::Models::AuthRules::V2PromoteResponse::state]
+          def self?.values: -> ::Array[Lithic::Models::AuthRules::V2PromoteResponse::state]
         end
 
         type type_ = :CONDITIONAL_BLOCK | :VELOCITY_LIMIT
@@ -130,7 +130,7 @@ module Lithic
           CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
           VELOCITY_LIMIT: :VELOCITY_LIMIT
 
-          def self.values: -> ::Array[Lithic::Models::AuthRules::V2PromoteResponse::type_]
+          def self?.values: -> ::Array[Lithic::Models::AuthRules::V2PromoteResponse::type_]
         end
       end
     end

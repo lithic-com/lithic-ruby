@@ -75,7 +75,7 @@ module Lithic
         EXTERNAL_CHECK: :EXTERNAL_CHECK
         EXTERNAL_TRANSFER: :EXTERNAL_TRANSFER
 
-        def self.values: -> ::Array[Lithic::Models::ExternalPayment::category]
+        def self?.values: -> ::Array[Lithic::Models::ExternalPayment::category]
       end
 
       type event =
@@ -127,7 +127,7 @@ module Lithic
 
           APPROVED: :APPROVED
 
-          def self.values: -> ::Array[Lithic::Models::ExternalPayment::Event::detailed_result]
+          def self?.values: -> ::Array[Lithic::Models::ExternalPayment::Event::detailed_result]
         end
 
         type result = :APPROVED | :DECLINED
@@ -138,7 +138,7 @@ module Lithic
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
-          def self.values: -> ::Array[Lithic::Models::ExternalPayment::Event::result]
+          def self?.values: -> ::Array[Lithic::Models::ExternalPayment::Event::result]
         end
 
         type type_ =
@@ -187,7 +187,7 @@ module Lithic
           EXTERNAL_CHECK_REVERSED: :EXTERNAL_CHECK_REVERSED
           EXTERNAL_CHECK_RELEASED: :EXTERNAL_CHECK_RELEASED
 
-          def self.values: -> ::Array[Lithic::Models::ExternalPayment::Event::type_]
+          def self?.values: -> ::Array[Lithic::Models::ExternalPayment::Event::type_]
         end
       end
 
@@ -199,7 +199,7 @@ module Lithic
         DEPOSIT: :DEPOSIT
         WITHDRAWAL: :WITHDRAWAL
 
-        def self.values: -> ::Array[Lithic::Models::ExternalPayment::payment_type]
+        def self?.values: -> ::Array[Lithic::Models::ExternalPayment::payment_type]
       end
 
       type result = :APPROVED | :DECLINED
@@ -210,7 +210,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self.values: -> ::Array[Lithic::Models::ExternalPayment::result]
+        def self?.values: -> ::Array[Lithic::Models::ExternalPayment::result]
       end
 
       type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
@@ -224,7 +224,7 @@ module Lithic
         REVERSED: :REVERSED
         CANCELED: :CANCELED
 
-        def self.values: -> ::Array[Lithic::Models::ExternalPayment::status]
+        def self?.values: -> ::Array[Lithic::Models::ExternalPayment::status]
       end
     end
   end

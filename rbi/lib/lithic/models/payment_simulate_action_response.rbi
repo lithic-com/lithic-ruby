@@ -67,6 +67,12 @@ module Lithic
 
         APPROVED = T.let(:APPROVED, Lithic::Models::PaymentSimulateActionResponse::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::PaymentSimulateActionResponse::Result::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::PaymentSimulateActionResponse::Result::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end
