@@ -11,7 +11,10 @@ module Lithic
       def carrier
       end
 
-      sig { params(_: Lithic::Models::Carrier).returns(Lithic::Models::Carrier) }
+      sig do
+        params(_: T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash))
+      end
       def carrier=(_)
       end
 
@@ -31,7 +34,10 @@ module Lithic
       def shipping_address
       end
 
-      sig { params(_: Lithic::Models::ShippingAddress).returns(Lithic::Models::ShippingAddress) }
+      sig do
+        params(_: T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash))
+      end
       def shipping_address=(_)
       end
 

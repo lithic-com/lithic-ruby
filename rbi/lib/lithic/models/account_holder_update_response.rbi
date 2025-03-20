@@ -86,7 +86,10 @@ module Lithic
         def business_entity
         end
 
-        sig { params(_: Lithic::Models::KYBBusinessEntity).returns(Lithic::Models::KYBBusinessEntity) }
+        sig do
+          params(_: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash))
+        end
         def business_entity=(_)
         end
 
@@ -106,8 +109,18 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson)
-            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson)
+          params(
+            _: T.any(
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
+              Lithic::Util::AnyHash
+            )
+          )
+            .returns(
+              T.any(
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
+                Lithic::Util::AnyHash
+              )
+            )
         end
         def control_person=(_)
         end
@@ -167,8 +180,12 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual)
-            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual)
+          params(
+            _: T.any(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual, Lithic::Util::AnyHash)
+          )
+            .returns(
+              T.any(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual, Lithic::Util::AnyHash)
+            )
         end
         def individual=(_)
         end
@@ -277,8 +294,18 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication)
-            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication)
+          params(
+            _: T.any(
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication,
+              Lithic::Util::AnyHash
+            )
+          )
+            .returns(
+              T.any(
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication,
+                Lithic::Util::AnyHash
+              )
+            )
         end
         def verification_application=(_)
         end
@@ -386,10 +413,16 @@ module Lithic
 
           sig do
             params(
-              _: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address
+              _: T.any(
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address,
+                Lithic::Util::AnyHash
+              )
             )
               .returns(
-                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address
+                T.any(
+                  Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address,
+                  Lithic::Util::AnyHash
+                )
               )
           end
           def address=(_)
@@ -576,8 +609,18 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address)
-              .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address)
+            params(
+              _: T.any(
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address,
+                Lithic::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address,
+                  Lithic::Util::AnyHash
+                )
+              )
           end
           def address=(_)
           end
@@ -797,8 +840,18 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address)
-              .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address)
+            params(
+              _: T.any(
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address,
+                Lithic::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address,
+                  Lithic::Util::AnyHash
+                )
+              )
           end
           def address=(_)
           end
@@ -1460,8 +1513,10 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address)
-            .returns(Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address)
+          params(
+            _: T.any(Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address, Lithic::Util::AnyHash)
+          )
+            .returns(T.any(Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address, Lithic::Util::AnyHash))
         end
         def address=(_)
         end

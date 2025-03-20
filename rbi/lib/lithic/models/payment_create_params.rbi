@@ -46,8 +46,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::PaymentCreateParams::MethodAttributes)
-          .returns(Lithic::Models::PaymentCreateParams::MethodAttributes)
+        params(_: T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Util::AnyHash))
       end
       def method_attributes=(_)
       end

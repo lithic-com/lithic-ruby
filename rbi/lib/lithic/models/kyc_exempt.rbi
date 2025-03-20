@@ -9,7 +9,10 @@ module Lithic
       def address
       end
 
-      sig { params(_: Lithic::Models::Address).returns(Lithic::Models::Address) }
+      sig do
+        params(_: T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
+      end
       def address=(_)
       end
 

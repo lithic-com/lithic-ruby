@@ -12,8 +12,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant)
-            .returns(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant)
+          params(_: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Util::AnyHash))
         end
         def merchant=(_)
         end
@@ -32,8 +32,10 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction)
-            .returns(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction)
+          params(
+            _: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Util::AnyHash)
+          )
+            .returns(T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Util::AnyHash))
         end
         def transaction=(_)
         end

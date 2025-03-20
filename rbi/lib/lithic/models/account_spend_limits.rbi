@@ -8,8 +8,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountSpendLimits::AvailableSpendLimit)
-          .returns(Lithic::Models::AccountSpendLimits::AvailableSpendLimit)
+        params(_: T.any(Lithic::Models::AccountSpendLimits::AvailableSpendLimit, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::AccountSpendLimits::AvailableSpendLimit, Lithic::Util::AnyHash))
       end
       def available_spend_limit=(_)
       end
@@ -19,8 +19,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountSpendLimits::SpendLimit)
-          .returns(Lithic::Models::AccountSpendLimits::SpendLimit)
+        params(_: T.any(Lithic::Models::AccountSpendLimits::SpendLimit, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::AccountSpendLimits::SpendLimit, Lithic::Util::AnyHash))
       end
       def spend_limit=(_)
       end
@@ -30,8 +30,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountSpendLimits::SpendVelocity)
-          .returns(Lithic::Models::AccountSpendLimits::SpendVelocity)
+        params(_: T.any(Lithic::Models::AccountSpendLimits::SpendVelocity, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::AccountSpendLimits::SpendVelocity, Lithic::Util::AnyHash))
       end
       def spend_velocity=(_)
       end

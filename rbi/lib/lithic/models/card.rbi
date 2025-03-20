@@ -44,7 +44,10 @@ module Lithic
       def funding
       end
 
-      sig { params(_: Lithic::Models::Card::Funding).returns(Lithic::Models::Card::Funding) }
+      sig do
+        params(_: T.any(Lithic::Models::Card::Funding, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::Card::Funding, Lithic::Util::AnyHash))
+      end
       def funding=(_)
       end
 

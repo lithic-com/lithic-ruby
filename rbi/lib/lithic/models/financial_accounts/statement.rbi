@@ -18,8 +18,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::FinancialAccounts::Statement::AccountStanding)
-            .returns(Lithic::Models::FinancialAccounts::Statement::AccountStanding)
+          params(_: T.any(Lithic::Models::FinancialAccounts::Statement::AccountStanding, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::FinancialAccounts::Statement::AccountStanding, Lithic::Util::AnyHash))
         end
         def account_standing=(_)
         end
@@ -29,8 +29,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::FinancialAccounts::Statement::AmountDue)
-            .returns(Lithic::Models::FinancialAccounts::Statement::AmountDue)
+          params(_: T.any(Lithic::Models::FinancialAccounts::Statement::AmountDue, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::FinancialAccounts::Statement::AmountDue, Lithic::Util::AnyHash))
         end
         def amount_due=(_)
         end
@@ -113,8 +113,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::FinancialAccounts::Statement::PeriodTotals)
-            .returns(Lithic::Models::FinancialAccounts::Statement::PeriodTotals)
+          params(_: T.any(Lithic::Models::FinancialAccounts::Statement::PeriodTotals, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::FinancialAccounts::Statement::PeriodTotals, Lithic::Util::AnyHash))
         end
         def period_totals=(_)
         end
@@ -171,8 +171,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::FinancialAccounts::Statement::YtdTotals)
-            .returns(Lithic::Models::FinancialAccounts::Statement::YtdTotals)
+          params(_: T.any(Lithic::Models::FinancialAccounts::Statement::YtdTotals, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::FinancialAccounts::Statement::YtdTotals, Lithic::Util::AnyHash))
         end
         def ytd_totals=(_)
         end
@@ -182,8 +182,12 @@ module Lithic
         end
 
         sig do
-          params(_: T.nilable(Lithic::Models::FinancialAccounts::Statement::InterestDetails))
-            .returns(T.nilable(Lithic::Models::FinancialAccounts::Statement::InterestDetails))
+          params(
+            _: T.nilable(T.any(Lithic::Models::FinancialAccounts::Statement::InterestDetails, Lithic::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Lithic::Models::FinancialAccounts::Statement::InterestDetails, Lithic::Util::AnyHash))
+            )
         end
         def interest_details=(_)
         end
@@ -666,8 +670,18 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts)
-              .returns(Lithic::Models::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts)
+            params(
+              _: T.any(
+                Lithic::Models::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts,
+                Lithic::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Lithic::Models::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts,
+                  Lithic::Util::AnyHash
+                )
+              )
           end
           def daily_balance_amounts=(_)
           end
@@ -677,8 +691,12 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::FinancialAccounts::Statement::InterestDetails::EffectiveApr)
-              .returns(Lithic::Models::FinancialAccounts::Statement::InterestDetails::EffectiveApr)
+            params(
+              _: T.any(Lithic::Models::FinancialAccounts::Statement::InterestDetails::EffectiveApr, Lithic::Util::AnyHash)
+            )
+              .returns(
+                T.any(Lithic::Models::FinancialAccounts::Statement::InterestDetails::EffectiveApr, Lithic::Util::AnyHash)
+              )
           end
           def effective_apr=(_)
           end
@@ -707,8 +725,18 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestForPeriod)
-              .returns(Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestForPeriod)
+            params(
+              _: T.any(
+                Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestForPeriod,
+                Lithic::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestForPeriod,
+                  Lithic::Util::AnyHash
+                )
+              )
           end
           def interest_for_period=(_)
           end
