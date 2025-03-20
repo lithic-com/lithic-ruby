@@ -60,11 +60,14 @@ module Lithic
       end
 
       # The status of the event attempt.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::MessageAttempt::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::MessageAttempt::Status::TaggedSymbol)
+          .returns(Lithic::Models::MessageAttempt::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -85,7 +88,7 @@ module Lithic
           event_token: String,
           response: String,
           response_status_code: Integer,
-          status: Symbol,
+          status: Lithic::Models::MessageAttempt::Status::TaggedSymbol,
           url: String
         )
           .returns(T.attached_class)
@@ -103,7 +106,7 @@ module Lithic
               event_token: String,
               response: String,
               response_status_code: Integer,
-              status: Symbol,
+              status: Lithic::Models::MessageAttempt::Status::TaggedSymbol,
               url: String
             }
           )
@@ -112,15 +115,16 @@ module Lithic
       end
 
       # The status of the event attempt.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::MessageAttempt::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::MessageAttempt::Status::TaggedSymbol) }
 
-        FAILED = :FAILED
-        PENDING = :PENDING
-        SENDING = :SENDING
-        SUCCESS = :SUCCESS
+        FAILED = T.let(:FAILED, Lithic::Models::MessageAttempt::Status::TaggedSymbol)
+        PENDING = T.let(:PENDING, Lithic::Models::MessageAttempt::Status::TaggedSymbol)
+        SENDING = T.let(:SENDING, Lithic::Models::MessageAttempt::Status::TaggedSymbol)
+        SUCCESS = T.let(:SUCCESS, Lithic::Models::MessageAttempt::Status::TaggedSymbol)
       end
     end
   end

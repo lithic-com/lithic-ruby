@@ -22,11 +22,14 @@ module Lithic
       def memo=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol)) }
       def progress_to
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol)
+          .returns(Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol)
+      end
       def progress_to=(_)
       end
 
@@ -34,7 +37,7 @@ module Lithic
         params(
           effective_date: Date,
           memo: String,
-          progress_to: Symbol,
+          progress_to: Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -45,19 +48,26 @@ module Lithic
       sig do
         override
           .returns(
-            {effective_date: Date, memo: String, progress_to: Symbol, request_options: Lithic::RequestOptions}
+            {
+              effective_date: Date,
+              memo: String,
+              progress_to: Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol,
+              request_options: Lithic::RequestOptions
+            }
           )
       end
       def to_hash
       end
 
-      class ProgressTo < Lithic::Enum
-        abstract!
+      module ProgressTo
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentSettleParams::ProgressTo) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentSettleParams::ProgressTo::TaggedSymbol) }
 
-        SETTLED = :SETTLED
-        RELEASED = :RELEASED
+        SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol)
+        RELEASED = T.let(:RELEASED, Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol)
       end
     end
   end

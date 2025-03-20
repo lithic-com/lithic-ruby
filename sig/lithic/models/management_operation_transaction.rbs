@@ -70,7 +70,9 @@ module Lithic
         | :MANAGEMENT_REWARD
         | :MANAGEMENT_ADJUSTMENT
 
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         MANAGEMENT_FEE: :MANAGEMENT_FEE
         MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
         MANAGEMENT_REWARD: :MANAGEMENT_REWARD
@@ -81,7 +83,9 @@ module Lithic
 
       type direction = :CREDIT | :DEBIT
 
-      class Direction < Lithic::Enum
+      module Direction
+        extend Lithic::Enum
+
         CREDIT: :CREDIT
         DEBIT: :DEBIT
 
@@ -138,7 +142,9 @@ module Lithic
 
         type detailed_result = :APPROVED
 
-        class DetailedResult < Lithic::Enum
+        module DetailedResult
+          extend Lithic::Enum
+
           APPROVED: :APPROVED
 
           def self.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::detailed_result]
@@ -146,7 +152,9 @@ module Lithic
 
         type result = :APPROVED | :DECLINED
 
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
@@ -170,7 +178,9 @@ module Lithic
           | :RETURNED_PAYMENT
           | :RETURNED_PAYMENT_REVERSAL
 
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           CASH_BACK: :CASH_BACK
           CURRENCY_CONVERSION: :CURRENCY_CONVERSION
           INTEREST: :INTEREST
@@ -193,7 +203,9 @@ module Lithic
 
       type result = :APPROVED | :DECLINED
 
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
@@ -202,7 +214,9 @@ module Lithic
 
       type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         PENDING: :PENDING
         SETTLED: :SETTLED
         DECLINED: :DECLINED

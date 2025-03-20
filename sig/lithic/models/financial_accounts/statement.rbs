@@ -139,7 +139,9 @@ module Lithic
 
           type period_state = :STANDARD | :PROMO | :PENALTY
 
-          class PeriodState < Lithic::Enum
+          module PeriodState
+            extend Lithic::Enum
+
             STANDARD: :STANDARD
             PROMO: :PROMO
             PENALTY: :PENALTY
@@ -201,7 +203,9 @@ module Lithic
 
         type statement_type = :INITIAL | :PERIOD_END | :FINAL
 
-        class StatementType < Lithic::Enum
+        module StatementType
+          extend Lithic::Enum
+
           INITIAL: :INITIAL
           PERIOD_END: :PERIOD_END
           FINAL: :FINAL
@@ -334,7 +338,9 @@ module Lithic
 
           type interest_calculation_method = :DAILY | :AVERAGE_DAILY
 
-          class InterestCalculationMethod < Lithic::Enum
+          module InterestCalculationMethod
+            extend Lithic::Enum
+
             DAILY: :DAILY
             AVERAGE_DAILY: :AVERAGE_DAILY
 

@@ -90,10 +90,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Account states.
-      class State < Lithic::Enum
+      module State
+        extend Lithic::Enum
+
         ACTIVE = :ACTIVE
         PAUSED = :PAUSED
 

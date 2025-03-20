@@ -10,14 +10,16 @@ module Lithic
       #     Eastern Time.
       #   - `MONTH`: Velocity over the current month since 00:00 / 12 AM on the first of
       #     the month in Eastern Time.
-      class VelocityLimitParamsPeriodWindow < Lithic::Enum
-        abstract!
+      module VelocityLimitParamsPeriodWindow
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol) }
 
-        DAY = :DAY
-        WEEK = :WEEK
-        MONTH = :MONTH
+        DAY = T.let(:DAY, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol)
+        WEEK = T.let(:WEEK, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol)
+        MONTH = T.let(:MONTH, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol)
       end
     end
   end

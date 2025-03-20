@@ -3,17 +3,20 @@
 module Lithic
   module Models
     # Type of instance financial account
-    class InstanceFinancialAccountType < Lithic::Enum
-      abstract!
+    module InstanceFinancialAccountType
+      extend Lithic::Enum
 
-      Value = type_template(:out) { {fixed: Symbol} }
+      TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::InstanceFinancialAccountType) }
+      OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::InstanceFinancialAccountType::TaggedSymbol) }
 
-      ISSUING = :ISSUING
-      RESERVE = :RESERVE
-      OPERATING = :OPERATING
-      CHARGED_OFF_FEES = :CHARGED_OFF_FEES
-      CHARGED_OFF_INTEREST = :CHARGED_OFF_INTEREST
-      CHARGED_OFF_PRINCIPAL = :CHARGED_OFF_PRINCIPAL
+      ISSUING = T.let(:ISSUING, Lithic::Models::InstanceFinancialAccountType::OrSymbol)
+      RESERVE = T.let(:RESERVE, Lithic::Models::InstanceFinancialAccountType::OrSymbol)
+      OPERATING = T.let(:OPERATING, Lithic::Models::InstanceFinancialAccountType::OrSymbol)
+      CHARGED_OFF_FEES = T.let(:CHARGED_OFF_FEES, Lithic::Models::InstanceFinancialAccountType::OrSymbol)
+      CHARGED_OFF_INTEREST =
+        T.let(:CHARGED_OFF_INTEREST, Lithic::Models::InstanceFinancialAccountType::OrSymbol)
+      CHARGED_OFF_PRINCIPAL =
+        T.let(:CHARGED_OFF_PRINCIPAL, Lithic::Models::InstanceFinancialAccountType::OrSymbol)
     end
   end
 end

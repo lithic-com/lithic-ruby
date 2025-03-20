@@ -7,27 +7,33 @@ module Lithic
       include Lithic::RequestParameters
 
       # Status of the financial account
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol)
+          .returns(Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol)
+      end
       def status=(_)
       end
 
       # Reason for the financial account status change
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol)) }
       def status_change_reason
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol))
+          .returns(T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol))
+      end
       def status_change_reason=(_)
       end
 
       sig do
         params(
-          status: Symbol,
-          status_change_reason: T.nilable(Symbol),
+          status: Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol,
+          status_change_reason: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol),
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -38,34 +44,53 @@ module Lithic
       sig do
         override
           .returns(
-            {status: Symbol, status_change_reason: T.nilable(Symbol), request_options: Lithic::RequestOptions}
+            {
+              status: Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol,
+              status_change_reason: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol),
+              request_options: Lithic::RequestOptions
+            }
           )
       end
       def to_hash
       end
 
       # Status of the financial account
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol) }
 
-        OPEN = :OPEN
-        CLOSED = :CLOSED
-        SUSPENDED = :SUSPENDED
-        PENDING = :PENDING
+        OPEN = T.let(:OPEN, Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol)
+        CLOSED = T.let(:CLOSED, Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol)
+        SUSPENDED = T.let(:SUSPENDED, Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol)
+        PENDING = T.let(:PENDING, Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol)
       end
 
       # Reason for the financial account status change
-      class StatusChangeReason < Lithic::Enum
-        abstract!
+      module StatusChangeReason
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol) }
 
-        CHARGED_OFF_FRAUD = :CHARGED_OFF_FRAUD
-        END_USER_REQUEST = :END_USER_REQUEST
-        BANK_REQUEST = :BANK_REQUEST
-        CHARGED_OFF_DELINQUENT = :CHARGED_OFF_DELINQUENT
+        CHARGED_OFF_FRAUD =
+          T.let(
+            :CHARGED_OFF_FRAUD,
+            Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol
+          )
+        END_USER_REQUEST =
+          T.let(:END_USER_REQUEST, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol)
+        BANK_REQUEST =
+          T.let(:BANK_REQUEST, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol)
+        CHARGED_OFF_DELINQUENT =
+          T.let(
+            :CHARGED_OFF_DELINQUENT,
+            Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol
+          )
       end
     end
   end

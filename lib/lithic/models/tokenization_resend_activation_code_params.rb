@@ -28,12 +28,12 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # The communication method that the user has selected to use to receive the
       #   authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
       #   = "EMAIL_TO_CARDHOLDER_ADDRESS"
-      class ActivationMethodType < Lithic::Enum
+      module ActivationMethodType
+        extend Lithic::Enum
+
         EMAIL_TO_CARDHOLDER_ADDRESS = :EMAIL_TO_CARDHOLDER_ADDRESS
         TEXT_TO_CARDHOLDER_NUMBER = :TEXT_TO_CARDHOLDER_NUMBER
 

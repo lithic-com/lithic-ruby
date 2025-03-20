@@ -39,7 +39,9 @@ module Lithic
 
       type receipt_type = :RECEIPT_CREDIT | :RECEIPT_DEBIT
 
-      class ReceiptType < Lithic::Enum
+      module ReceiptType
+        extend Lithic::Enum
+
         RECEIPT_CREDIT: :RECEIPT_CREDIT
         RECEIPT_DEBIT: :RECEIPT_DEBIT
 

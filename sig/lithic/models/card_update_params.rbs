@@ -65,7 +65,9 @@ module Lithic
 
       type pin_status = :OK
 
-      class PinStatus < Lithic::Enum
+      module PinStatus
+        extend Lithic::Enum
+
         OK: :OK
 
         def self.values: -> ::Array[Lithic::Models::CardUpdateParams::pin_status]
@@ -73,7 +75,9 @@ module Lithic
 
       type state = :CLOSED | :OPEN | :PAUSED
 
-      class State < Lithic::Enum
+      module State
+        extend Lithic::Enum
+
         CLOSED: :CLOSED
         OPEN: :OPEN
         PAUSED: :PAUSED

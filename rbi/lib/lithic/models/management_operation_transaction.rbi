@@ -11,11 +11,14 @@ module Lithic
       def token=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol) }
       def category
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol)
+          .returns(Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol)
+      end
       def category=(_)
       end
 
@@ -35,11 +38,14 @@ module Lithic
       def currency=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol) }
       def direction
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol)
+          .returns(Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol)
+      end
       def direction=(_)
       end
 
@@ -70,11 +76,14 @@ module Lithic
       def pending_amount=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol) }
       def result
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol)
+          .returns(Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol)
+      end
       def result=(_)
       end
 
@@ -86,11 +95,14 @@ module Lithic
       def settled_amount=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
+          .returns(Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -113,16 +125,16 @@ module Lithic
       sig do
         params(
           token: String,
-          category: Symbol,
+          category: Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol,
           created: Time,
           currency: String,
-          direction: Symbol,
+          direction: Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol,
           events: T::Array[Lithic::Models::ManagementOperationTransaction::Event],
           financial_account_token: String,
           pending_amount: Integer,
-          result: Symbol,
+          result: Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol,
           settled_amount: Integer,
-          status: Symbol,
+          status: Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol,
           updated: Time,
           user_defined_id: String
         )
@@ -150,16 +162,16 @@ module Lithic
           .returns(
             {
               token: String,
-              category: Symbol,
+              category: Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol,
               created: Time,
               currency: String,
-              direction: Symbol,
+              direction: Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol,
               events: T::Array[Lithic::Models::ManagementOperationTransaction::Event],
               financial_account_token: String,
               pending_amount: Integer,
-              result: Symbol,
+              result: Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol,
               settled_amount: Integer,
-              status: Symbol,
+              status: Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol,
               updated: Time,
               user_defined_id: String
             }
@@ -168,24 +180,32 @@ module Lithic
       def to_hash
       end
 
-      class Category < Lithic::Enum
-        abstract!
+      module Category
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Category) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol) }
 
-        MANAGEMENT_FEE = :MANAGEMENT_FEE
-        MANAGEMENT_DISPUTE = :MANAGEMENT_DISPUTE
-        MANAGEMENT_REWARD = :MANAGEMENT_REWARD
-        MANAGEMENT_ADJUSTMENT = :MANAGEMENT_ADJUSTMENT
+        MANAGEMENT_FEE =
+          T.let(:MANAGEMENT_FEE, Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol)
+        MANAGEMENT_DISPUTE =
+          T.let(:MANAGEMENT_DISPUTE, Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol)
+        MANAGEMENT_REWARD =
+          T.let(:MANAGEMENT_REWARD, Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol)
+        MANAGEMENT_ADJUSTMENT =
+          T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol)
       end
 
-      class Direction < Lithic::Enum
-        abstract!
+      module Direction
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Direction) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol) }
 
-        CREDIT = :CREDIT
-        DEBIT = :DEBIT
+        CREDIT = T.let(:CREDIT, Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol)
+        DEBIT = T.let(:DEBIT, Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol)
       end
 
       class Event < Lithic::BaseModel
@@ -213,11 +233,14 @@ module Lithic
         def created=(_)
         end
 
-        sig { returns(T::Array[Symbol]) }
+        sig { returns(T::Array[Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol]) }
         def detailed_results
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol])
+            .returns(T::Array[Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol])
+        end
         def detailed_results=(_)
         end
 
@@ -237,19 +260,25 @@ module Lithic
         def memo=(_)
         end
 
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol) }
         def result
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol)
+            .returns(Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol)
+        end
         def result=(_)
         end
 
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
+            .returns(Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
@@ -266,11 +295,11 @@ module Lithic
             token: String,
             amount: Integer,
             created: Time,
-            detailed_results: T::Array[Symbol],
+            detailed_results: T::Array[Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol],
             effective_date: Date,
             memo: String,
-            result: Symbol,
-            type: Symbol,
+            result: Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol,
+            type: Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol,
             subtype: String
           )
             .returns(T.attached_class)
@@ -285,11 +314,11 @@ module Lithic
                 token: String,
                 amount: Integer,
                 created: Time,
-                detailed_results: T::Array[Symbol],
+                detailed_results: T::Array[Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol],
                 effective_date: Date,
                 memo: String,
-                result: Symbol,
-                type: Symbol,
+                result: Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol,
+                type: Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol,
                 subtype: String
               }
             )
@@ -297,65 +326,101 @@ module Lithic
         def to_hash
         end
 
-        class DetailedResult < Lithic::Enum
-          abstract!
+        module DetailedResult
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol) }
 
-          APPROVED = :APPROVED
+          APPROVED =
+            T.let(:APPROVED, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol)
         end
 
-        class Result < Lithic::Enum
-          abstract!
+        module Result
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Event::Result) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol) }
 
-          APPROVED = :APPROVED
-          DECLINED = :DECLINED
+          APPROVED = T.let(:APPROVED, Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol)
+          DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol)
         end
 
-        class Type < Lithic::Enum
-          abstract!
+        module Type
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Event::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol) }
 
-          CASH_BACK = :CASH_BACK
-          CURRENCY_CONVERSION = :CURRENCY_CONVERSION
-          INTEREST = :INTEREST
-          LATE_PAYMENT = :LATE_PAYMENT
-          BILLING_ERROR = :BILLING_ERROR
-          PROVISIONAL_CREDIT = :PROVISIONAL_CREDIT
-          LOSS_WRITE_OFF = :LOSS_WRITE_OFF
-          CASH_BACK_REVERSAL = :CASH_BACK_REVERSAL
-          CURRENCY_CONVERSION_REVERSAL = :CURRENCY_CONVERSION_REVERSAL
-          INTEREST_REVERSAL = :INTEREST_REVERSAL
-          LATE_PAYMENT_REVERSAL = :LATE_PAYMENT_REVERSAL
-          BILLING_ERROR_REVERSAL = :BILLING_ERROR_REVERSAL
-          PROVISIONAL_CREDIT_REVERSAL = :PROVISIONAL_CREDIT_REVERSAL
-          RETURNED_PAYMENT = :RETURNED_PAYMENT
-          RETURNED_PAYMENT_REVERSAL = :RETURNED_PAYMENT_REVERSAL
+          CASH_BACK = T.let(:CASH_BACK, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
+          CURRENCY_CONVERSION =
+            T.let(:CURRENCY_CONVERSION, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
+          INTEREST = T.let(:INTEREST, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
+          LATE_PAYMENT =
+            T.let(:LATE_PAYMENT, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
+          BILLING_ERROR =
+            T.let(:BILLING_ERROR, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
+          PROVISIONAL_CREDIT =
+            T.let(:PROVISIONAL_CREDIT, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
+          LOSS_WRITE_OFF =
+            T.let(:LOSS_WRITE_OFF, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
+          CASH_BACK_REVERSAL =
+            T.let(:CASH_BACK_REVERSAL, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
+          CURRENCY_CONVERSION_REVERSAL =
+            T.let(
+              :CURRENCY_CONVERSION_REVERSAL,
+              Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol
+            )
+          INTEREST_REVERSAL =
+            T.let(:INTEREST_REVERSAL, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
+          LATE_PAYMENT_REVERSAL =
+            T.let(:LATE_PAYMENT_REVERSAL, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
+          BILLING_ERROR_REVERSAL =
+            T.let(:BILLING_ERROR_REVERSAL, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
+          PROVISIONAL_CREDIT_REVERSAL =
+            T.let(
+              :PROVISIONAL_CREDIT_REVERSAL,
+              Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol
+            )
+          RETURNED_PAYMENT =
+            T.let(:RETURNED_PAYMENT, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
+          RETURNED_PAYMENT_REVERSAL =
+            T.let(
+              :RETURNED_PAYMENT_REVERSAL,
+              Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol
+            )
         end
       end
 
-      class Result < Lithic::Enum
-        abstract!
+      module Result
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Result) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol) }
 
-        APPROVED = :APPROVED
-        DECLINED = :DECLINED
+        APPROVED = T.let(:APPROVED, Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol)
       end
 
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol) }
 
-        PENDING = :PENDING
-        SETTLED = :SETTLED
-        DECLINED = :DECLINED
-        REVERSED = :REVERSED
-        CANCELED = :CANCELED
+        PENDING = T.let(:PENDING, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
+        REVERSED = T.let(:REVERSED, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
+        CANCELED = T.let(:CANCELED, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
       end
     end
   end

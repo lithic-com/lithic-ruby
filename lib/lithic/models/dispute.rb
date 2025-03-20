@@ -215,8 +215,6 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Dispute reason:
       #
       #   - `ATM_CASH_MISDISPENSE`: ATM cash misdispense.
@@ -236,7 +234,9 @@ module Lithic
       #   - `REFUND_NOT_PROCESSED`: The refund was not processed.
       #   - `RECURRING_TRANSACTION_NOT_CANCELLED`: The recurring transaction was not
       #     cancelled.
-      class Reason < Lithic::Enum
+      module Reason
+        extend Lithic::Enum
+
         ATM_CASH_MISDISPENSE = :ATM_CASH_MISDISPENSE
         CANCELLED = :CANCELLED
         DUPLICATED = :DUPLICATED
@@ -255,8 +255,6 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Reason for the dispute resolution:
       #
       #   - `CASE_LOST`: This case was lost at final arbitration.
@@ -276,7 +274,9 @@ module Lithic
       #   - `WON_ARBITRATION`: Won arbitration.
       #   - `WON_FIRST_CHARGEBACK`: Won first chargeback.
       #   - `WON_PREARBITRATION`: Won prearbitration.
-      class ResolutionReason < Lithic::Enum
+      module ResolutionReason
+        extend Lithic::Enum
+
         CASE_LOST = :CASE_LOST
         NETWORK_REJECTED = :NETWORK_REJECTED
         NO_DISPUTE_RIGHTS_3DS = :NO_DISPUTE_RIGHTS_3DS
@@ -298,8 +298,6 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Status types:
       #
       #   - `NEW` - New dispute case is opened.
@@ -311,7 +309,9 @@ module Lithic
       #   - `ARBITRATION` - Case has entered arbitration.
       #   - `CASE_WON` - Case was won and credit will be issued.
       #   - `CASE_CLOSED` - Case was lost or withdrawn.
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         ARBITRATION = :ARBITRATION
         CASE_CLOSED = :CASE_CLOSED
         CASE_WON = :CASE_WON

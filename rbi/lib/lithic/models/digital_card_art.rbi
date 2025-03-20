@@ -49,11 +49,14 @@ module Lithic
       end
 
       # Card network.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol) }
       def network
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol)
+          .returns(Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol)
+      end
       def network=(_)
       end
 
@@ -73,7 +76,7 @@ module Lithic
           created: Time,
           description: String,
           is_enabled: T::Boolean,
-          network: Symbol,
+          network: Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol,
           is_card_program_default: T::Boolean
         )
           .returns(T.attached_class)
@@ -90,7 +93,7 @@ module Lithic
               created: Time,
               description: String,
               is_enabled: T::Boolean,
-              network: Symbol,
+              network: Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol,
               is_card_program_default: T::Boolean
             }
           )
@@ -99,13 +102,14 @@ module Lithic
       end
 
       # Card network.
-      class Network < Lithic::Enum
-        abstract!
+      module Network
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DigitalCardArtAPI::Network) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol) }
 
-        MASTERCARD = :MASTERCARD
-        VISA = :VISA
+        MASTERCARD = T.let(:MASTERCARD, Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol)
+        VISA = T.let(:VISA, Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol)
       end
     end
   end

@@ -160,17 +160,18 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Payment category
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         ACH = :ACH
 
         finalize!
       end
 
-      # @abstract
-      class Direction < Lithic::Enum
+      module Direction
+        extend Lithic::Enum
+
         CREDIT = :CREDIT
         DEBIT = :DEBIT
 
@@ -251,19 +252,17 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           APPROVED = :APPROVED
           DECLINED = :DECLINED
 
           finalize!
         end
 
-        # @abstract
-        #
         # Event types:
         #
         #   - `ACH_ORIGINATION_INITIATED` - ACH origination received and pending
@@ -284,7 +283,9 @@ module Lithic
         #     balance.
         #   - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
         #     Financial Institution.
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           ACH_ORIGINATION_CANCELLED = :ACH_ORIGINATION_CANCELLED
           ACH_ORIGINATION_INITIATED = :ACH_ORIGINATION_INITIATED
           ACH_ORIGINATION_PROCESSED = :ACH_ORIGINATION_PROCESSED
@@ -300,8 +301,9 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        class DetailedResult < Lithic::Enum
+        module DetailedResult
+          extend Lithic::Enum
+
           APPROVED = :APPROVED
           FUNDS_INSUFFICIENT = :FUNDS_INSUFFICIENT
           ACCOUNT_INVALID = :ACCOUNT_INVALID
@@ -313,8 +315,9 @@ module Lithic
         end
       end
 
-      # @abstract
-      class Method < Lithic::Enum
+      module Method
+        extend Lithic::Enum
+
         ACH_NEXT_DAY = :ACH_NEXT_DAY
         ACH_SAME_DAY = :ACH_SAME_DAY
 
@@ -364,8 +367,9 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        class SecCode < Lithic::Enum
+        module SecCode
+          extend Lithic::Enum
+
           CCD = :CCD
           PPD = :PPD
           WEB = :WEB
@@ -374,27 +378,26 @@ module Lithic
         end
       end
 
-      # @abstract
-      #
       # APPROVED payments were successful while DECLINED payments were declined by
       #   Lithic or returned.
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
         finalize!
       end
 
-      # @abstract
-      class Source < Lithic::Enum
+      module Source
+        extend Lithic::Enum
+
         CUSTOMER = :CUSTOMER
         LITHIC = :LITHIC
 
         finalize!
       end
 
-      # @abstract
-      #
       # Status types:
       #
       #   - `DECLINED` - The payment was declined.
@@ -402,7 +405,9 @@ module Lithic
       #     (origination debit).
       #   - `RETURNED` - The payment has been returned.
       #   - `SETTLED` - The payment is completed.
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         DECLINED = :DECLINED
         PENDING = :PENDING
         RETURNED = :RETURNED

@@ -18,12 +18,12 @@ module Lithic
           control_person: Lithic::Models::AccountHolderCreateParams::ControlPerson,
           nature_of_business: String,
           tos_timestamp: String,
-          workflow: Symbol,
+          workflow: Lithic::Models::AccountHolderCreateParams::Workflow::OrSymbol,
           individual: Lithic::Models::AccountHolderCreateParams::Individual,
           address: Lithic::Models::Address,
           email: String,
           first_name: String,
-          kyc_exemption_type: Symbol,
+          kyc_exemption_type: Lithic::Models::AccountHolderCreateParams::KYCExemptionType::OrSymbol,
           last_name: String,
           phone_number: String,
           external_id: String,
@@ -347,9 +347,9 @@ module Lithic
       sig do
         params(
           document_upload_token: String,
-          status: Symbol,
+          status: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol,
           accepted_entity_status_reasons: T::Array[String],
-          status_reason: Symbol,
+          status_reason: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::Models::Document)
@@ -373,8 +373,8 @@ module Lithic
       sig do
         params(
           account_holder_token: String,
-          status: Symbol,
-          status_reasons: T::Array[Symbol],
+          status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::OrSymbol,
+          status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol],
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse)
@@ -412,7 +412,7 @@ module Lithic
       sig do
         params(
           account_holder_token: String,
-          document_type: Symbol,
+          document_type: Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
           entity_token: String,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )

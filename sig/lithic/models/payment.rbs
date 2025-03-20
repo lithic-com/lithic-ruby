@@ -84,7 +84,9 @@ module Lithic
 
       type category = :ACH
 
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         ACH: :ACH
 
         def self.values: -> ::Array[Lithic::Models::Payment::category]
@@ -92,7 +94,9 @@ module Lithic
 
       type direction = :CREDIT | :DEBIT
 
-      class Direction < Lithic::Enum
+      module Direction
+        extend Lithic::Enum
+
         CREDIT: :CREDIT
         DEBIT: :DEBIT
 
@@ -139,7 +143,9 @@ module Lithic
 
         type result = :APPROVED | :DECLINED
 
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
@@ -159,7 +165,9 @@ module Lithic
           | :ACH_RETURN_PROCESSED
           | :ACH_RETURN_SETTLED
 
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           ACH_ORIGINATION_CANCELLED: :ACH_ORIGINATION_CANCELLED
           ACH_ORIGINATION_INITIATED: :ACH_ORIGINATION_INITIATED
           ACH_ORIGINATION_PROCESSED: :ACH_ORIGINATION_PROCESSED
@@ -183,7 +191,9 @@ module Lithic
           | :PROGRAM_DAILY_LIMIT_EXCEEDED
           | :PROGRAM_MONTHLY_LIMIT_EXCEEDED
 
-        class DetailedResult < Lithic::Enum
+        module DetailedResult
+          extend Lithic::Enum
+
           APPROVED: :APPROVED
           FUNDS_INSUFFICIENT: :FUNDS_INSUFFICIENT
           ACCOUNT_INVALID: :ACCOUNT_INVALID
@@ -197,7 +207,9 @@ module Lithic
 
       type method_ = :ACH_NEXT_DAY | :ACH_SAME_DAY
 
-      class Method < Lithic::Enum
+      module Method
+        extend Lithic::Enum
+
         ACH_NEXT_DAY: :ACH_NEXT_DAY
         ACH_SAME_DAY: :ACH_SAME_DAY
 
@@ -240,7 +252,9 @@ module Lithic
 
         type sec_code = :CCD | :PPD | :WEB
 
-        class SecCode < Lithic::Enum
+        module SecCode
+          extend Lithic::Enum
+
           CCD: :CCD
           PPD: :PPD
           WEB: :WEB
@@ -251,7 +265,9 @@ module Lithic
 
       type result = :APPROVED | :DECLINED
 
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
@@ -260,7 +276,9 @@ module Lithic
 
       type source = :CUSTOMER | :LITHIC
 
-      class Source < Lithic::Enum
+      module Source
+        extend Lithic::Enum
+
         CUSTOMER: :CUSTOMER
         LITHIC: :LITHIC
 
@@ -269,7 +287,9 @@ module Lithic
 
       type status = :DECLINED | :PENDING | :RETURNED | :SETTLED
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         DECLINED: :DECLINED
         PENDING: :PENDING
         RETURNED: :RETURNED

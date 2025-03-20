@@ -100,10 +100,10 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # Type of financial account.
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           ISSUING = :ISSUING
           OPERATING = :OPERATING
           RESERVE = :RESERVE

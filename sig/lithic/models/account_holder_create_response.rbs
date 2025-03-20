@@ -53,7 +53,9 @@ module Lithic
         | :PENDING_RESUBMIT
         | :REJECTED
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         ACCEPTED: :ACCEPTED
         PENDING_REVIEW: :PENDING_REVIEW
         PENDING_DOCUMENT: :PENDING_DOCUMENT
@@ -89,7 +91,9 @@ module Lithic
         | :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
         | :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
 
-      class StatusReason < Lithic::Enum
+      module StatusReason
+        extend Lithic::Enum
+
         ADDRESS_VERIFICATION_FAILURE: :ADDRESS_VERIFICATION_FAILURE
         AGE_THRESHOLD_FAILURE: :AGE_THRESHOLD_FAILURE
         COMPLETE_VERIFICATION_FAILURE: :COMPLETE_VERIFICATION_FAILURE

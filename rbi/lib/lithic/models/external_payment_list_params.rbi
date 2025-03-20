@@ -25,11 +25,14 @@ module Lithic
       end
 
       # External Payment category to be returned.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::ExternalPaymentListParams::Category::OrSymbol)) }
       def category
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ExternalPaymentListParams::Category::OrSymbol)
+          .returns(Lithic::Models::ExternalPaymentListParams::Category::OrSymbol)
+      end
       def category=(_)
       end
 
@@ -73,11 +76,14 @@ module Lithic
       end
 
       # External Payment result to be returned.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::ExternalPaymentListParams::Result::OrSymbol)) }
       def result
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ExternalPaymentListParams::Result::OrSymbol)
+          .returns(Lithic::Models::ExternalPaymentListParams::Result::OrSymbol)
+      end
       def result=(_)
       end
 
@@ -92,11 +98,14 @@ module Lithic
       end
 
       # Book transfer status to be returned.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::ExternalPaymentListParams::Status::OrSymbol)) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ExternalPaymentListParams::Status::OrSymbol)
+          .returns(Lithic::Models::ExternalPaymentListParams::Status::OrSymbol)
+      end
       def status=(_)
       end
 
@@ -104,14 +113,14 @@ module Lithic
         params(
           begin_: Time,
           business_account_token: String,
-          category: Symbol,
+          category: Lithic::Models::ExternalPaymentListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
-          result: Symbol,
+          result: Lithic::Models::ExternalPaymentListParams::Result::OrSymbol,
           starting_after: String,
-          status: Symbol,
+          status: Lithic::Models::ExternalPaymentListParams::Status::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -137,14 +146,14 @@ module Lithic
             {
               begin_: Time,
               business_account_token: String,
-              category: Symbol,
+              category: Lithic::Models::ExternalPaymentListParams::Category::OrSymbol,
               end_: Time,
               ending_before: String,
               financial_account_token: String,
               page_size: Integer,
-              result: Symbol,
+              result: Lithic::Models::ExternalPaymentListParams::Result::OrSymbol,
               starting_after: String,
-              status: Symbol,
+              status: Lithic::Models::ExternalPaymentListParams::Status::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -153,38 +162,45 @@ module Lithic
       end
 
       # External Payment category to be returned.
-      class Category < Lithic::Enum
-        abstract!
+      module Category
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentListParams::Category) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol) }
 
-        EXTERNAL_WIRE = :EXTERNAL_WIRE
-        EXTERNAL_ACH = :EXTERNAL_ACH
-        EXTERNAL_CHECK = :EXTERNAL_CHECK
-        EXTERNAL_TRANSFER = :EXTERNAL_TRANSFER
+        EXTERNAL_WIRE = T.let(:EXTERNAL_WIRE, Lithic::Models::ExternalPaymentListParams::Category::OrSymbol)
+        EXTERNAL_ACH = T.let(:EXTERNAL_ACH, Lithic::Models::ExternalPaymentListParams::Category::OrSymbol)
+        EXTERNAL_CHECK = T.let(:EXTERNAL_CHECK, Lithic::Models::ExternalPaymentListParams::Category::OrSymbol)
+        EXTERNAL_TRANSFER =
+          T.let(:EXTERNAL_TRANSFER, Lithic::Models::ExternalPaymentListParams::Category::OrSymbol)
       end
 
       # External Payment result to be returned.
-      class Result < Lithic::Enum
-        abstract!
+      module Result
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentListParams::Result) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentListParams::Result::TaggedSymbol) }
 
-        APPROVED = :APPROVED
-        DECLINED = :DECLINED
+        APPROVED = T.let(:APPROVED, Lithic::Models::ExternalPaymentListParams::Result::OrSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPaymentListParams::Result::OrSymbol)
       end
 
       # Book transfer status to be returned.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentListParams::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol) }
 
-        PENDING = :PENDING
-        SETTLED = :SETTLED
-        DECLINED = :DECLINED
-        REVERSED = :REVERSED
-        CANCELED = :CANCELED
+        PENDING = T.let(:PENDING, Lithic::Models::ExternalPaymentListParams::Status::OrSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPaymentListParams::Status::OrSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPaymentListParams::Status::OrSymbol)
+        REVERSED = T.let(:REVERSED, Lithic::Models::ExternalPaymentListParams::Status::OrSymbol)
+        CANCELED = T.let(:CANCELED, Lithic::Models::ExternalPaymentListParams::Status::OrSymbol)
       end
     end
   end

@@ -92,11 +92,11 @@ module Lithic
           # def initialize: (Hash | Lithic::BaseModel) -> void
         end
 
-        # @abstract
-        #
         # The size of the trailing window to calculate Spend Velocity over in seconds. The
         #   minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
-        class Period < Lithic::Union
+        module Period
+          extend Lithic::Union
+
           # The size of the trailing window to calculate Spend Velocity over in seconds. The minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
           variant Integer
 
@@ -114,8 +114,9 @@ module Lithic
           #   end
         end
 
-        # @abstract
-        class Scope < Lithic::Enum
+        module Scope
+          extend Lithic::Enum
+
           CARD = :CARD
           ACCOUNT = :ACCOUNT
 

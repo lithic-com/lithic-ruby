@@ -171,20 +171,20 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # Reason for the financial account being marked as Charged Off
-        class ChargedOffReason < Lithic::Enum
+        module ChargedOffReason
+          extend Lithic::Enum
+
           DELINQUENT = :DELINQUENT
           FRAUD = :FRAUD
 
           finalize!
         end
 
-        # @abstract
-        #
         # State of the financial account
-        class FinancialAccountState < Lithic::Enum
+        module FinancialAccountState
+          extend Lithic::Enum
+
           PENDING = :PENDING
           CURRENT = :CURRENT
           DELINQUENT = :DELINQUENT
@@ -194,10 +194,10 @@ module Lithic
         end
       end
 
-      # @abstract
-      #
       # Status of the financial account
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         OPEN = :OPEN
         CLOSED = :CLOSED
         SUSPENDED = :SUSPENDED
@@ -206,8 +206,9 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         ISSUING = :ISSUING
         RESERVE = :RESERVE
         OPERATING = :OPERATING
@@ -218,10 +219,10 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Reason for the financial account status change
-      class StatusChangeReason < Lithic::Enum
+      module StatusChangeReason
+        extend Lithic::Enum
+
         CHARGED_OFF_DELINQUENT = :CHARGED_OFF_DELINQUENT
         CHARGED_OFF_FRAUD = :CHARGED_OFF_FRAUD
         END_USER_REQUEST = :END_USER_REQUEST

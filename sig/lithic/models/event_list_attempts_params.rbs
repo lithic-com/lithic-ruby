@@ -55,7 +55,9 @@ module Lithic
 
       type status = :FAILED | :PENDING | :SENDING | :SUCCESS
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         FAILED: :FAILED
         PENDING: :PENDING
         SENDING: :SENDING

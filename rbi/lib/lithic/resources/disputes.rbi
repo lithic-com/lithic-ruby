@@ -7,7 +7,7 @@ module Lithic
       sig do
         params(
           amount: Integer,
-          reason: Symbol,
+          reason: Lithic::Models::DisputeCreateParams::Reason::OrSymbol,
           transaction_token: String,
           customer_filed_date: Time,
           customer_note: String,
@@ -48,7 +48,7 @@ module Lithic
           amount: Integer,
           customer_filed_date: Time,
           customer_note: String,
-          reason: Symbol,
+          reason: Lithic::Models::DisputeUpdateParams::Reason::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::Models::Dispute)
@@ -75,7 +75,7 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          status: Symbol,
+          status: Lithic::Models::DisputeListParams::Status::OrSymbol,
           transaction_tokens: T::Array[String],
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )

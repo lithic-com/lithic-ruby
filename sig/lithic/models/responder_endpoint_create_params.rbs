@@ -32,7 +32,9 @@ module Lithic
       type type_ =
         :AUTH_STREAM_ACCESS | :THREE_DS_DECISIONING | :TOKENIZATION_DECISIONING
 
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         AUTH_STREAM_ACCESS: :AUTH_STREAM_ACCESS
         THREE_DS_DECISIONING: :THREE_DS_DECISIONING
         TOKENIZATION_DECISIONING: :TOKENIZATION_DECISIONING

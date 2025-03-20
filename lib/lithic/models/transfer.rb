@@ -184,13 +184,13 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Status types:
       #
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #     program.
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         TRANSFER = :TRANSFER
 
         finalize!
@@ -259,19 +259,20 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           APPROVED = :APPROVED
           DECLINED = :DECLINED
 
           finalize!
         end
 
-        # @abstract
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           ACH_ORIGINATION_CANCELLED = :ACH_ORIGINATION_CANCELLED
           ACH_ORIGINATION_INITIATED = :ACH_ORIGINATION_INITIATED
           ACH_ORIGINATION_PROCESSED = :ACH_ORIGINATION_PROCESSED
@@ -341,19 +342,17 @@ module Lithic
         end
       end
 
-      # @abstract
-      #
       # APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
         finalize!
       end
 
-      # @abstract
-      #
       # Status types:
       #
       #   - `DECLINED` - The transfer was declined.
@@ -361,7 +360,9 @@ module Lithic
       #   - `PENDING` - The transfer is pending release from a hold.
       #   - `SETTLED` - The transfer is completed.
       #   - `VOIDED` - The transfer was reversed before it settled.
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         DECLINED = :DECLINED
         EXPIRED = :EXPIRED
         PENDING = :PENDING

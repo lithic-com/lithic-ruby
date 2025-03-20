@@ -65,11 +65,14 @@ module Lithic
       end
 
       # Returns cards with the specified state.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::CardListParams::State::OrSymbol)) }
       def state
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::CardListParams::State::OrSymbol)
+          .returns(Lithic::Models::CardListParams::State::OrSymbol)
+      end
       def state=(_)
       end
 
@@ -81,7 +84,7 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          state: Symbol,
+          state: Lithic::Models::CardListParams::State::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -108,7 +111,7 @@ module Lithic
               ending_before: String,
               page_size: Integer,
               starting_after: String,
-              state: Symbol,
+              state: Lithic::Models::CardListParams::State::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -117,16 +120,17 @@ module Lithic
       end
 
       # Returns cards with the specified state.
-      class State < Lithic::Enum
-        abstract!
+      module State
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardListParams::State) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::CardListParams::State::TaggedSymbol) }
 
-        CLOSED = :CLOSED
-        OPEN = :OPEN
-        PAUSED = :PAUSED
-        PENDING_ACTIVATION = :PENDING_ACTIVATION
-        PENDING_FULFILLMENT = :PENDING_FULFILLMENT
+        CLOSED = T.let(:CLOSED, Lithic::Models::CardListParams::State::OrSymbol)
+        OPEN = T.let(:OPEN, Lithic::Models::CardListParams::State::OrSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::Models::CardListParams::State::OrSymbol)
+        PENDING_ACTIVATION = T.let(:PENDING_ACTIVATION, Lithic::Models::CardListParams::State::OrSymbol)
+        PENDING_FULFILLMENT = T.let(:PENDING_FULFILLMENT, Lithic::Models::CardListParams::State::OrSymbol)
       end
     end
   end

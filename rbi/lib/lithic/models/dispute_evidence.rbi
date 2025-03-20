@@ -37,11 +37,14 @@ module Lithic
       #   - `PENDING` - Evidence is pending upload.
       #   - `REJECTED` - Evidence was rejected.
       #   - `UPLOADED` - Evidence was uploaded.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol) }
       def upload_status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
+          .returns(Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
+      end
       def upload_status=(_)
       end
 
@@ -79,7 +82,7 @@ module Lithic
           token: String,
           created: Time,
           dispute_token: String,
-          upload_status: Symbol,
+          upload_status: Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol,
           download_url: String,
           filename: String,
           upload_url: String
@@ -96,7 +99,7 @@ module Lithic
               token: String,
               created: Time,
               dispute_token: String,
-              upload_status: Symbol,
+              upload_status: Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol,
               download_url: String,
               filename: String,
               upload_url: String
@@ -113,16 +116,17 @@ module Lithic
       #   - `PENDING` - Evidence is pending upload.
       #   - `REJECTED` - Evidence was rejected.
       #   - `UPLOADED` - Evidence was uploaded.
-      class UploadStatus < Lithic::Enum
-        abstract!
+      module UploadStatus
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DisputeEvidence::UploadStatus) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol) }
 
-        DELETED = :DELETED
-        ERROR = :ERROR
-        PENDING = :PENDING
-        REJECTED = :REJECTED
-        UPLOADED = :UPLOADED
+        DELETED = T.let(:DELETED, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
+        ERROR = T.let(:ERROR, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
+        PENDING = T.let(:PENDING, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
+        REJECTED = T.let(:REJECTED, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
+        UPLOADED = T.let(:UPLOADED, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
       end
     end
   end

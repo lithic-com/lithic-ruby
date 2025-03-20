@@ -75,8 +75,8 @@ module Lithic
         end
 
         # Parameters for the Auth Rule
-        class Parameters < Lithic::Union
-          abstract!
+        module Parameters
+          extend Lithic::Union
 
           Variants =
             type_template(:out) do

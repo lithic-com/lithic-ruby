@@ -7,17 +7,20 @@ module Lithic
       include Lithic::RequestParameters
 
       # Get the aggregate balance for a given Financial Account type.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)) }
       def financial_account_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)
+          .returns(Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)
+      end
       def financial_account_type=(_)
       end
 
       sig do
         params(
-          financial_account_type: Symbol,
+          financial_account_type: Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -25,19 +28,30 @@ module Lithic
       def self.new(financial_account_type: nil, request_options: {})
       end
 
-      sig { override.returns({financial_account_type: Symbol, request_options: Lithic::RequestOptions}) }
+      sig do
+        override
+          .returns(
+            {
+              financial_account_type: Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol,
+              request_options: Lithic::RequestOptions
+            }
+          )
+      end
       def to_hash
       end
 
       # Get the aggregate balance for a given Financial Account type.
-      class FinancialAccountType < Lithic::Enum
-        abstract!
+      module FinancialAccountType
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol) }
 
-        ISSUING = :ISSUING
-        OPERATING = :OPERATING
-        RESERVE = :RESERVE
+        ISSUING = T.let(:ISSUING, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)
+        OPERATING = T.let(:OPERATING, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)
+        RESERVE = T.let(:RESERVE, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)
       end
     end
   end

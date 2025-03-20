@@ -103,10 +103,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # The source of the tokenization request.
-      class TokenizationSource < Lithic::Enum
+      module TokenizationSource
+        extend Lithic::Enum
+
         APPLE_PAY = :APPLE_PAY
         GOOGLE = :GOOGLE
         SAMSUNG_PAY = :SAMSUNG_PAY
@@ -115,10 +115,10 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # The decision that the Digital Wallet's recommend
-      class WalletRecommendedDecision < Lithic::Enum
+      module WalletRecommendedDecision
+        extend Lithic::Enum
+
         APPROVED = :APPROVED
         DECLINED = :DECLINED
         REQUIRE_ADDITIONAL_AUTHENTICATION = :REQUIRE_ADDITIONAL_AUTHENTICATION

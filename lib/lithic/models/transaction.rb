@@ -472,10 +472,10 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # Whether an acquirer exemption applied to the transaction.
-        class AcquirerExemption < Lithic::Enum
+        module AcquirerExemption
+          extend Lithic::Enum
+
           AUTHENTICATION_OUTAGE_EXCEPTION = :AUTHENTICATION_OUTAGE_EXCEPTION
           LOW_VALUE = :LOW_VALUE
           MERCHANT_INITIATED_TRANSACTION = :MERCHANT_INITIATED_TRANSACTION
@@ -488,10 +488,10 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # Indicates what the outcome of the 3DS authentication process is.
-        class AuthenticationResult < Lithic::Enum
+        module AuthenticationResult
+          extend Lithic::Enum
+
           ATTEMPTS = :ATTEMPTS
           DECLINE = :DECLINE
           NONE = :NONE
@@ -500,10 +500,10 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # Indicates which party made the 3DS authentication decision.
-        class DecisionMadeBy < Lithic::Enum
+        module DecisionMadeBy
+          extend Lithic::Enum
+
           CUSTOMER_ENDPOINT = :CUSTOMER_ENDPOINT
           LITHIC_DEFAULT = :LITHIC_DEFAULT
           LITHIC_RULES = :LITHIC_RULES
@@ -513,8 +513,6 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # Indicates whether chargeback liability shift applies to the transaction.
         #   Possible enum values:
         #
@@ -527,7 +525,9 @@ module Lithic
         #   - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
         #     cryptography, possibly recurring. Chargeback liability shift to the issuer
         #     applies.
-        class LiabilityShift < Lithic::Enum
+        module LiabilityShift
+          extend Lithic::Enum
+
           NUMBER_3DS_AUTHENTICATED = :"3DS_AUTHENTICATED"
           ACQUIRER_EXEMPTION = :ACQUIRER_EXEMPTION
           NONE = :NONE
@@ -536,22 +536,22 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # Indicates whether a 3DS challenge flow was used, and if so, what the
         #   verification method was. (deprecated, use `authentication_result`)
-        class VerificationAttempted < Lithic::Enum
+        module VerificationAttempted
+          extend Lithic::Enum
+
           NONE = :NONE
           OTHER = :OTHER
 
           finalize!
         end
 
-        # @abstract
-        #
         # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
         #   use `authentication_result`)
-        class VerificationResult < Lithic::Enum
+        module VerificationResult
+          extend Lithic::Enum
+
           CANCELLED = :CANCELLED
           FAILED = :FAILED
           FRICTIONLESS = :FRICTIONLESS
@@ -623,12 +623,12 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
       #   `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
       #   network code from the upstream provider.
-      class Network < Lithic::Enum
+      module Network
+        extend Lithic::Enum
+
         INTERLINK = :INTERLINK
         MAESTRO = :MAESTRO
         MASTERCARD = :MASTERCARD
@@ -692,10 +692,10 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
-          # @abstract
-          #
           # Card presence indicator
-          class Card < Lithic::Enum
+          module Card
+            extend Lithic::Enum
+
             NOT_PRESENT = :NOT_PRESENT
             PREAUTHORIZED = :PREAUTHORIZED
             PRESENT = :PRESENT
@@ -704,10 +704,10 @@ module Lithic
             finalize!
           end
 
-          # @abstract
-          #
           # Cardholder presence indicator
-          class Cardholder < Lithic::Enum
+          module Cardholder
+            extend Lithic::Enum
+
             DEFERRED_BILLING = :DEFERRED_BILLING
             ELECTRONIC_ORDER = :ELECTRONIC_ORDER
             INSTALLMENT = :INSTALLMENT
@@ -722,10 +722,10 @@ module Lithic
             finalize!
           end
 
-          # @abstract
-          #
           # Method of entry for the PAN
-          class Pan < Lithic::Enum
+          module Pan
+            extend Lithic::Enum
+
             AUTO_ENTRY = :AUTO_ENTRY
             BAR_CODE = :BAR_CODE
             CONTACTLESS = :CONTACTLESS
@@ -817,10 +817,10 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
-          # @abstract
-          #
           # The person that is designated to swipe the card
-          class Operator < Lithic::Enum
+          module Operator
+            extend Lithic::Enum
+
             ADMINISTRATIVE = :ADMINISTRATIVE
             CARDHOLDER = :CARDHOLDER
             CARD_ACCEPTOR = :CARD_ACCEPTOR
@@ -829,10 +829,10 @@ module Lithic
             finalize!
           end
 
-          # @abstract
-          #
           # Status of whether the POS is able to accept PINs
-          class PinCapability < Lithic::Enum
+          module PinCapability
+            extend Lithic::Enum
+
             CAPABLE = :CAPABLE
             INOPERATIVE = :INOPERATIVE
             NOT_CAPABLE = :NOT_CAPABLE
@@ -841,10 +841,10 @@ module Lithic
             finalize!
           end
 
-          # @abstract
-          #
           # POS Type
-          class Type < Lithic::Enum
+          module Type
+            extend Lithic::Enum
+
             ADMINISTRATIVE = :ADMINISTRATIVE
             ATM = :ATM
             AUTHORIZATION = :AUTHORIZATION
@@ -875,8 +875,9 @@ module Lithic
         end
       end
 
-      # @abstract
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         ACCOUNT_STATE_TRANSACTION_FAIL = :ACCOUNT_STATE_TRANSACTION_FAIL
         APPROVED = :APPROVED
         BANK_CONNECTION_ERROR = :BANK_CONNECTION_ERROR
@@ -904,10 +905,10 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Status of the transaction.
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         DECLINED = :DECLINED
         EXPIRED = :EXPIRED
         PENDING = :PENDING
@@ -934,13 +935,13 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # The wallet_type field will indicate the source of the token. Possible token
         #   sources include digital wallets (Apple, Google, or Samsung Pay), merchant
         #   tokenization, and “other” sources like in-flight commerce. Masterpass is not
         #   currently supported and is included for future use.
-        class WalletType < Lithic::Enum
+        module WalletType
+          extend Lithic::Enum
+
           APPLE_PAY = :APPLE_PAY
           GOOGLE_PAY = :GOOGLE_PAY
           MASTERPASS = :MASTERPASS
@@ -1156,8 +1157,9 @@ module Lithic
           end
         end
 
-        # @abstract
-        class DetailedResult < Lithic::Enum
+        module DetailedResult
+          extend Lithic::Enum
+
           ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED = :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
           ACCOUNT_DELINQUENT = :ACCOUNT_DELINQUENT
           ACCOUNT_INACTIVE = :ACCOUNT_INACTIVE
@@ -1214,10 +1216,10 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # Indicates whether the transaction event is a credit or debit to the account.
-        class EffectivePolarity < Lithic::Enum
+        module EffectivePolarity
+          extend Lithic::Enum
+
           CREDIT = :CREDIT
           DEBIT = :DEBIT
 
@@ -1371,8 +1373,9 @@ module Lithic
           end
         end
 
-        # @abstract
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           ACCOUNT_STATE_TRANSACTION_FAIL = :ACCOUNT_STATE_TRANSACTION_FAIL
           APPROVED = :APPROVED
           BANK_CONNECTION_ERROR = :BANK_CONNECTION_ERROR
@@ -1438,10 +1441,10 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
-          # @abstract
-          #
           # The detailed_result associated with this rule's decline.
-          class Result < Lithic::Enum
+          module Result
+            extend Lithic::Enum
+
             ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED = :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
             ACCOUNT_DELINQUENT = :ACCOUNT_DELINQUENT
             ACCOUNT_INACTIVE = :ACCOUNT_INACTIVE
@@ -1499,10 +1502,10 @@ module Lithic
           end
         end
 
-        # @abstract
-        #
         # Type of transaction event
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           AUTHORIZATION = :AUTHORIZATION
           AUTHORIZATION_ADVICE = :AUTHORIZATION_ADVICE
           AUTHORIZATION_EXPIRY = :AUTHORIZATION_EXPIRY

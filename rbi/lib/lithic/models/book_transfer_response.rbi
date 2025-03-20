@@ -14,11 +14,14 @@ module Lithic
       end
 
       # Category of the book transfer
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::BookTransferResponse::Category::TaggedSymbol) }
       def category
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
+          .returns(Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
+      end
       def category=(_)
       end
 
@@ -76,11 +79,14 @@ module Lithic
 
       # APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::BookTransferResponse::Result::TaggedSymbol) }
       def result
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::BookTransferResponse::Result::TaggedSymbol)
+          .returns(Lithic::Models::BookTransferResponse::Result::TaggedSymbol)
+      end
       def result=(_)
       end
 
@@ -96,11 +102,14 @@ module Lithic
 
       # Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
       #   transfer was reversed \* `SETTLED` - The transfer is completed.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::BookTransferResponse::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::BookTransferResponse::Status::TaggedSymbol)
+          .returns(Lithic::Models::BookTransferResponse::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -126,15 +135,15 @@ module Lithic
       sig do
         params(
           token: String,
-          category: Symbol,
+          category: Lithic::Models::BookTransferResponse::Category::TaggedSymbol,
           created: Time,
           currency: String,
           events: T::Array[Lithic::Models::BookTransferResponse::Event],
           from_financial_account_token: String,
           pending_amount: Integer,
-          result: Symbol,
+          result: Lithic::Models::BookTransferResponse::Result::TaggedSymbol,
           settled_amount: Integer,
-          status: Symbol,
+          status: Lithic::Models::BookTransferResponse::Status::TaggedSymbol,
           to_financial_account_token: T.anything,
           updated: Time
         )
@@ -161,15 +170,15 @@ module Lithic
           .returns(
             {
               token: String,
-              category: Symbol,
+              category: Lithic::Models::BookTransferResponse::Category::TaggedSymbol,
               created: Time,
               currency: String,
               events: T::Array[Lithic::Models::BookTransferResponse::Event],
               from_financial_account_token: String,
               pending_amount: Integer,
-              result: Symbol,
+              result: Lithic::Models::BookTransferResponse::Result::TaggedSymbol,
               settled_amount: Integer,
-              status: Symbol,
+              status: Lithic::Models::BookTransferResponse::Status::TaggedSymbol,
               to_financial_account_token: T.anything,
               updated: Time
             }
@@ -179,18 +188,20 @@ module Lithic
       end
 
       # Category of the book transfer
-      class Category < Lithic::Enum
-        abstract!
+      module Category
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Category) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferResponse::Category::TaggedSymbol) }
 
-        ADJUSTMENT = :ADJUSTMENT
-        BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
-        DERECOGNITION = :DERECOGNITION
-        DISPUTE = :DISPUTE
-        FEE = :FEE
-        REWARD = :REWARD
-        TRANSFER = :TRANSFER
+        ADJUSTMENT = T.let(:ADJUSTMENT, Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
+        BALANCE_OR_FUNDING =
+          T.let(:BALANCE_OR_FUNDING, Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
+        DERECOGNITION = T.let(:DERECOGNITION, Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
+        DISPUTE = T.let(:DISPUTE, Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
+        FEE = T.let(:FEE, Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
+        REWARD = T.let(:REWARD, Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
+        TRANSFER = T.let(:TRANSFER, Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
       end
 
       class Event < Lithic::BaseModel
@@ -223,11 +234,14 @@ module Lithic
         end
 
         # Detailed Results
-        sig { returns(T::Array[Symbol]) }
+        sig { returns(T::Array[Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol]) }
         def detailed_results
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol])
+            .returns(T::Array[Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol])
+        end
         def detailed_results=(_)
         end
 
@@ -242,11 +256,14 @@ module Lithic
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol) }
         def result
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol)
+            .returns(Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol)
+        end
         def result=(_)
         end
 
@@ -273,9 +290,9 @@ module Lithic
             token: String,
             amount: Integer,
             created: Time,
-            detailed_results: T::Array[Symbol],
+            detailed_results: T::Array[Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol],
             memo: String,
-            result: Symbol,
+            result: Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol,
             subtype: String,
             type: String
           )
@@ -291,9 +308,9 @@ module Lithic
                 token: String,
                 amount: Integer,
                 created: Time,
-                detailed_results: T::Array[Symbol],
+                detailed_results: T::Array[Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol],
                 memo: String,
-                result: Symbol,
+                result: Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol,
                 subtype: String,
                 type: String
               }
@@ -302,48 +319,56 @@ module Lithic
         def to_hash
         end
 
-        class DetailedResult < Lithic::Enum
-          abstract!
+        module DetailedResult
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResult) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol) }
 
-          APPROVED = :APPROVED
-          FUNDS_INSUFFICIENT = :FUNDS_INSUFFICIENT
+          APPROVED = T.let(:APPROVED, Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol)
+          FUNDS_INSUFFICIENT =
+            T.let(:FUNDS_INSUFFICIENT, Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol)
         end
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
-        class Result < Lithic::Enum
-          abstract!
+        module Result
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Event::Result) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol) }
 
-          APPROVED = :APPROVED
-          DECLINED = :DECLINED
+          APPROVED = T.let(:APPROVED, Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol)
+          DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol)
         end
       end
 
       # APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
-      class Result < Lithic::Enum
-        abstract!
+      module Result
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Result) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferResponse::Result::TaggedSymbol) }
 
-        APPROVED = :APPROVED
-        DECLINED = :DECLINED
+        APPROVED = T.let(:APPROVED, Lithic::Models::BookTransferResponse::Result::TaggedSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferResponse::Result::TaggedSymbol)
       end
 
       # Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
       #   transfer was reversed \* `SETTLED` - The transfer is completed.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferResponse::Status::TaggedSymbol) }
 
-        DECLINED = :DECLINED
-        REVERSED = :REVERSED
-        SETTLED = :SETTLED
+        DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferResponse::Status::TaggedSymbol)
+        REVERSED = T.let(:REVERSED, Lithic::Models::BookTransferResponse::Status::TaggedSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::BookTransferResponse::Status::TaggedSymbol)
       end
     end
   end

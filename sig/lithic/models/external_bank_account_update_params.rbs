@@ -77,7 +77,9 @@ module Lithic
 
       type type_ = :CHECKING | :SAVINGS
 
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         CHECKING: :CHECKING
         SAVINGS: :SAVINGS
 

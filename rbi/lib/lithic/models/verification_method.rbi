@@ -2,16 +2,17 @@
 
 module Lithic
   module Models
-    class VerificationMethod < Lithic::Enum
-      abstract!
+    module VerificationMethod
+      extend Lithic::Enum
 
-      Value = type_template(:out) { {fixed: Symbol} }
+      TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::VerificationMethod) }
+      OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::VerificationMethod::TaggedSymbol) }
 
-      MANUAL = :MANUAL
-      MICRO_DEPOSIT = :MICRO_DEPOSIT
-      PLAID = :PLAID
-      PRENOTE = :PRENOTE
-      EXTERNALLY_VERIFIED = :EXTERNALLY_VERIFIED
+      MANUAL = T.let(:MANUAL, Lithic::Models::VerificationMethod::OrSymbol)
+      MICRO_DEPOSIT = T.let(:MICRO_DEPOSIT, Lithic::Models::VerificationMethod::OrSymbol)
+      PLAID = T.let(:PLAID, Lithic::Models::VerificationMethod::OrSymbol)
+      PRENOTE = T.let(:PRENOTE, Lithic::Models::VerificationMethod::OrSymbol)
+      EXTERNALLY_VERIFIED = T.let(:EXTERNALLY_VERIFIED, Lithic::Models::VerificationMethod::OrSymbol)
     end
   end
 end

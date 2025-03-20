@@ -118,11 +118,11 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Filter for tokenizations by tokenization channel. If this is not specified, only
       #   DIGITAL_WALLET tokenizations will be returned.
-      class TokenizationChannel < Lithic::Enum
+      module TokenizationChannel
+        extend Lithic::Enum
+
         DIGITAL_WALLET = :DIGITAL_WALLET
         MERCHANT = :MERCHANT
         ALL = :ALL

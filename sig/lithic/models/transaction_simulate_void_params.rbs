@@ -35,7 +35,9 @@ module Lithic
 
       type type_ = :AUTHORIZATION_EXPIRY | :AUTHORIZATION_REVERSAL
 
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         AUTHORIZATION_EXPIRY: :AUTHORIZATION_EXPIRY
         AUTHORIZATION_REVERSAL: :AUTHORIZATION_REVERSAL
 

@@ -69,7 +69,9 @@ module Lithic
         | :MANAGEMENT_REWARD
         | :MANAGEMENT_ADJUSTMENT
 
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         MANAGEMENT_FEE: :MANAGEMENT_FEE
         MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
         MANAGEMENT_REWARD: :MANAGEMENT_REWARD
@@ -80,7 +82,9 @@ module Lithic
 
       type direction = :CREDIT | :DEBIT
 
-      class Direction < Lithic::Enum
+      module Direction
+        extend Lithic::Enum
+
         CREDIT: :CREDIT
         DEBIT: :DEBIT
 
@@ -104,7 +108,9 @@ module Lithic
         | :RETURNED_PAYMENT
         | :RETURNED_PAYMENT_REVERSAL
 
-      class EventType < Lithic::Enum
+      module EventType
+        extend Lithic::Enum
+
         CASH_BACK: :CASH_BACK
         CURRENCY_CONVERSION: :CURRENCY_CONVERSION
         INTEREST: :INTEREST

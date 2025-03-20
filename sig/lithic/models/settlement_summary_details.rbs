@@ -62,7 +62,9 @@ module Lithic
 
       type network = :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
 
-      class Network < Lithic::Enum
+      module Network
+        extend Lithic::Enum
+
         INTERLINK: :INTERLINK
         MAESTRO: :MAESTRO
         MASTERCARD: :MASTERCARD

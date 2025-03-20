@@ -79,7 +79,9 @@ module Lithic
         | :MANAGEMENT_REWARD
         | :MANAGEMENT_ADJUSTMENT
 
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         MANAGEMENT_FEE: :MANAGEMENT_FEE
         MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
         MANAGEMENT_REWARD: :MANAGEMENT_REWARD
@@ -90,7 +92,9 @@ module Lithic
 
       type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         PENDING: :PENDING
         SETTLED: :SETTLED
         DECLINED: :DECLINED

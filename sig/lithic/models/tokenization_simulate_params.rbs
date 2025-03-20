@@ -59,7 +59,9 @@ module Lithic
 
       type tokenization_source = :APPLE_PAY | :GOOGLE | :SAMSUNG_PAY | :MERCHANT
 
-      class TokenizationSource < Lithic::Enum
+      module TokenizationSource
+        extend Lithic::Enum
+
         APPLE_PAY: :APPLE_PAY
         GOOGLE: :GOOGLE
         SAMSUNG_PAY: :SAMSUNG_PAY
@@ -71,7 +73,9 @@ module Lithic
       type wallet_recommended_decision =
         :APPROVED | :DECLINED | :REQUIRE_ADDITIONAL_AUTHENTICATION
 
-      class WalletRecommendedDecision < Lithic::Enum
+      module WalletRecommendedDecision
+        extend Lithic::Enum
+
         APPROVED: :APPROVED
         DECLINED: :DECLINED
         REQUIRE_ADDITIONAL_AUTHENTICATION: :REQUIRE_ADDITIONAL_AUTHENTICATION

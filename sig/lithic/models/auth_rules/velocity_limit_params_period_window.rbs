@@ -3,7 +3,9 @@ module Lithic
     module AuthRules
       type velocity_limit_params_period_window = :DAY | :WEEK | :MONTH
 
-      class VelocityLimitParamsPeriodWindow < Lithic::Enum
+      module VelocityLimitParamsPeriodWindow
+        extend Lithic::Enum
+
         DAY: :DAY
         WEEK: :WEEK
         MONTH: :MONTH

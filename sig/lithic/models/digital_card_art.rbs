@@ -42,7 +42,9 @@ module Lithic
 
       type network = :MASTERCARD | :VISA
 
-      class Network < Lithic::Enum
+      module Network
+        extend Lithic::Enum
+
         MASTERCARD: :MASTERCARD
         VISA: :VISA
 

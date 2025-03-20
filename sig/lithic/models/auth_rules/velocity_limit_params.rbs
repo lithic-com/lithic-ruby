@@ -62,13 +62,17 @@ module Lithic
           Integer
           | Lithic::Models::AuthRules::velocity_limit_params_period_window
 
-        class Period < Lithic::Union
+        module Period
+          extend Lithic::Union
+
           def self.variants: -> [Integer, Lithic::Models::AuthRules::velocity_limit_params_period_window]
         end
 
         type scope = :CARD | :ACCOUNT
 
-        class Scope < Lithic::Enum
+        module Scope
+          extend Lithic::Enum
+
           CARD: :CARD
           ACCOUNT: :ACCOUNT
 

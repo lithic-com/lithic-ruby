@@ -73,10 +73,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Card network.
-      class Network < Lithic::Enum
+      module Network
+        extend Lithic::Enum
+
         MASTERCARD = :MASTERCARD
         VISA = :VISA
 

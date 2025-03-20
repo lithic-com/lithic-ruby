@@ -41,11 +41,14 @@ module Lithic
       end
 
       # Card network where the transaction took place
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)) }
       def network
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
+          .returns(Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
+      end
       def network=(_)
       end
 
@@ -84,7 +87,7 @@ module Lithic
           disputes_gross_amount: Integer,
           institution: String,
           interchange_gross_amount: Integer,
-          network: Symbol,
+          network: Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol,
           other_fees_gross_amount: Integer,
           settled_net_amount: Integer,
           transactions_gross_amount: Integer
@@ -111,7 +114,7 @@ module Lithic
               disputes_gross_amount: Integer,
               institution: String,
               interchange_gross_amount: Integer,
-              network: Symbol,
+              network: Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol,
               other_fees_gross_amount: Integer,
               settled_net_amount: Integer,
               transactions_gross_amount: Integer
@@ -122,16 +125,18 @@ module Lithic
       end
 
       # Card network where the transaction took place
-      class Network < Lithic::Enum
-        abstract!
+      module Network
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::SettlementSummaryDetails::Network) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol) }
 
-        INTERLINK = :INTERLINK
-        MAESTRO = :MAESTRO
-        MASTERCARD = :MASTERCARD
-        UNKNOWN = :UNKNOWN
-        VISA = :VISA
+        INTERLINK = T.let(:INTERLINK, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
+        MAESTRO = T.let(:MAESTRO, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
+        MASTERCARD = T.let(:MASTERCARD, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
+        UNKNOWN = T.let(:UNKNOWN, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
+        VISA = T.let(:VISA, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
       end
     end
   end

@@ -125,16 +125,18 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      class AccountType < Lithic::Enum
+      module AccountType
+        extend Lithic::Enum
+
         CHECKING = :CHECKING
         SAVINGS = :SAVINGS
 
         finalize!
       end
 
-      # @abstract
-      class State < Lithic::Enum
+      module State
+        extend Lithic::Enum
+
         ENABLED = :ENABLED
         CLOSED = :CLOSED
         PAUSED = :PAUSED
@@ -142,8 +144,9 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      class VerificationState < Lithic::Enum
+      module VerificationState
+        extend Lithic::Enum
+
         PENDING = :PENDING
         ENABLED = :ENABLED
         FAILED_VERIFICATION = :FAILED_VERIFICATION

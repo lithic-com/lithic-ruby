@@ -21,10 +21,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # The type of the endpoint.
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         AUTH_STREAM_ACCESS = :AUTH_STREAM_ACCESS
         THREE_DS_DECISIONING = :THREE_DS_DECISIONING
         TOKENIZATION_DECISIONING = :TOKENIZATION_DECISIONING

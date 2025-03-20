@@ -56,11 +56,14 @@ module Lithic
       end
 
       # List disputes of a specific status.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::DisputeListParams::Status::OrSymbol)) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::DisputeListParams::Status::OrSymbol)
+          .returns(Lithic::Models::DisputeListParams::Status::OrSymbol)
+      end
       def status=(_)
       end
 
@@ -80,7 +83,7 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          status: Symbol,
+          status: Lithic::Models::DisputeListParams::Status::OrSymbol,
           transaction_tokens: T::Array[String],
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
@@ -107,7 +110,7 @@ module Lithic
               ending_before: String,
               page_size: Integer,
               starting_after: String,
-              status: Symbol,
+              status: Lithic::Models::DisputeListParams::Status::OrSymbol,
               transaction_tokens: T::Array[String],
               request_options: Lithic::RequestOptions
             }
@@ -117,19 +120,20 @@ module Lithic
       end
 
       # List disputes of a specific status.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DisputeListParams::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::DisputeListParams::Status::TaggedSymbol) }
 
-        ARBITRATION = :ARBITRATION
-        CASE_CLOSED = :CASE_CLOSED
-        CASE_WON = :CASE_WON
-        NEW = :NEW
-        PENDING_CUSTOMER = :PENDING_CUSTOMER
-        PREARBITRATION = :PREARBITRATION
-        REPRESENTMENT = :REPRESENTMENT
-        SUBMITTED = :SUBMITTED
+        ARBITRATION = T.let(:ARBITRATION, Lithic::Models::DisputeListParams::Status::OrSymbol)
+        CASE_CLOSED = T.let(:CASE_CLOSED, Lithic::Models::DisputeListParams::Status::OrSymbol)
+        CASE_WON = T.let(:CASE_WON, Lithic::Models::DisputeListParams::Status::OrSymbol)
+        NEW = T.let(:NEW, Lithic::Models::DisputeListParams::Status::OrSymbol)
+        PENDING_CUSTOMER = T.let(:PENDING_CUSTOMER, Lithic::Models::DisputeListParams::Status::OrSymbol)
+        PREARBITRATION = T.let(:PREARBITRATION, Lithic::Models::DisputeListParams::Status::OrSymbol)
+        REPRESENTMENT = T.let(:REPRESENTMENT, Lithic::Models::DisputeListParams::Status::OrSymbol)
+        SUBMITTED = T.let(:SUBMITTED, Lithic::Models::DisputeListParams::Status::OrSymbol)
       end
     end
   end

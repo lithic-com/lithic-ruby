@@ -1,6 +1,5 @@
 module Lithic
   module Models
-    
     class AuthRuleCondition = AuthRules::AuthRuleCondition
 
     module AuthRules
@@ -46,7 +45,9 @@ module Lithic
           | :IS_GREATER_THAN
           | :IS_LESS_THAN
 
-        class Operation < Lithic::Enum
+        module Operation
+          extend Lithic::Enum
+
           IS_ONE_OF: :IS_ONE_OF
           IS_NOT_ONE_OF: :IS_NOT_ONE_OF
           MATCHES: :MATCHES
@@ -59,7 +60,9 @@ module Lithic
 
         type value = String | Integer | ::Array[String]
 
-        class Value < Lithic::Union
+        module Value
+          extend Lithic::Union
+
           type string_array = ::Array[String]
 
           StringArray: string_array

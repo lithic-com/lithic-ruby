@@ -13,11 +13,14 @@ module Lithic
       end
 
       # Request Result
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::PaymentSimulateReturnResponse::Result::TaggedSymbol) }
       def result
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::PaymentSimulateReturnResponse::Result::TaggedSymbol)
+          .returns(Lithic::Models::PaymentSimulateReturnResponse::Result::TaggedSymbol)
+      end
       def result=(_)
       end
 
@@ -31,26 +34,39 @@ module Lithic
       end
 
       sig do
-        params(debugging_request_id: String, result: Symbol, transaction_event_token: String)
+        params(
+          debugging_request_id: String,
+          result: Lithic::Models::PaymentSimulateReturnResponse::Result::TaggedSymbol,
+          transaction_event_token: String
+        )
           .returns(T.attached_class)
       end
       def self.new(debugging_request_id:, result:, transaction_event_token:)
       end
 
       sig do
-        override.returns({debugging_request_id: String, result: Symbol, transaction_event_token: String})
+        override
+          .returns(
+            {
+              debugging_request_id: String,
+              result: Lithic::Models::PaymentSimulateReturnResponse::Result::TaggedSymbol,
+              transaction_event_token: String
+            }
+          )
       end
       def to_hash
       end
 
       # Request Result
-      class Result < Lithic::Enum
-        abstract!
+      module Result
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentSimulateReturnResponse::Result) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::PaymentSimulateReturnResponse::Result::TaggedSymbol) }
 
-        APPROVED = :APPROVED
-        DECLINED = :DECLINED
+        APPROVED = T.let(:APPROVED, Lithic::Models::PaymentSimulateReturnResponse::Result::TaggedSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::PaymentSimulateReturnResponse::Result::TaggedSymbol)
       end
     end
   end

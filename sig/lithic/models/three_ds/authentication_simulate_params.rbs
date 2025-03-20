@@ -72,7 +72,9 @@ module Lithic
 
         type card_expiry_check = :MATCH | :MISMATCH | :NOT_PRESENT
 
-        class CardExpiryCheck < Lithic::Enum
+        module CardExpiryCheck
+          extend Lithic::Enum
+
           MATCH: :MATCH
           MISMATCH: :MISMATCH
           NOT_PRESENT: :NOT_PRESENT

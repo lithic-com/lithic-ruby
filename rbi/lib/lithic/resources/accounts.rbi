@@ -27,7 +27,7 @@ module Lithic
           daily_spend_limit: Integer,
           lifetime_spend_limit: Integer,
           monthly_spend_limit: Integer,
-          state: Symbol,
+          state: Lithic::Models::AccountUpdateParams::State::OrSymbol,
           verification_address: Lithic::Models::AccountUpdateParams::VerificationAddress,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )

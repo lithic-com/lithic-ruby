@@ -64,7 +64,9 @@ module Lithic
       type category =
         :EXTERNAL_WIRE | :EXTERNAL_ACH | :EXTERNAL_CHECK | :EXTERNAL_TRANSFER
 
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         EXTERNAL_WIRE: :EXTERNAL_WIRE
         EXTERNAL_ACH: :EXTERNAL_ACH
         EXTERNAL_CHECK: :EXTERNAL_CHECK
@@ -75,7 +77,9 @@ module Lithic
 
       type payment_type = :DEPOSIT | :WITHDRAWAL
 
-      class PaymentType < Lithic::Enum
+      module PaymentType
+        extend Lithic::Enum
+
         DEPOSIT: :DEPOSIT
         WITHDRAWAL: :WITHDRAWAL
 
@@ -84,7 +88,9 @@ module Lithic
 
       type progress_to = :SETTLED | :RELEASED
 
-      class ProgressTo < Lithic::Enum
+      module ProgressTo
+        extend Lithic::Enum
+
         SETTLED: :SETTLED
         RELEASED: :RELEASED
 

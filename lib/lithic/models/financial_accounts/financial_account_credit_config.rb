@@ -78,20 +78,20 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # Reason for the financial account being marked as Charged Off
-        class ChargedOffReason < Lithic::Enum
+        module ChargedOffReason
+          extend Lithic::Enum
+
           DELINQUENT = :DELINQUENT
           FRAUD = :FRAUD
 
           finalize!
         end
 
-        # @abstract
-        #
         # State of the financial account
-        class FinancialAccountState < Lithic::Enum
+        module FinancialAccountState
+          extend Lithic::Enum
+
           PENDING = :PENDING
           CURRENT = :CURRENT
           DELINQUENT = :DELINQUENT

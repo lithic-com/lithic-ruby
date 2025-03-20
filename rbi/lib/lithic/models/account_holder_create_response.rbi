@@ -26,20 +26,26 @@ module Lithic
       #   Note:
       #
       #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
+          .returns(Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
       # Reason for the evaluation status.
-      sig { returns(T::Array[Symbol]) }
+      sig { returns(T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol]) }
       def status_reasons
       end
 
-      sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+      sig do
+        params(_: T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol])
+          .returns(T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol])
+      end
       def status_reasons=(_)
       end
 
@@ -76,8 +82,8 @@ module Lithic
         params(
           token: String,
           account_token: String,
-          status: Symbol,
-          status_reasons: T::Array[Symbol],
+          status: Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol,
+          status_reasons: T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol],
           created: Time,
           external_id: String,
           required_documents: T::Array[Lithic::Models::RequiredDocument]
@@ -93,8 +99,8 @@ module Lithic
             {
               token: String,
               account_token: String,
-              status: Symbol,
-              status_reasons: T::Array[Symbol],
+              status: Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol,
+              status_reasons: T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol],
               created: Time,
               external_id: String,
               required_documents: T::Array[Lithic::Models::RequiredDocument]
@@ -109,50 +115,127 @@ module Lithic
       #   Note:
       #
       #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderCreateResponse::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol) }
 
-        ACCEPTED = :ACCEPTED
-        PENDING_REVIEW = :PENDING_REVIEW
-        PENDING_DOCUMENT = :PENDING_DOCUMENT
-        PENDING_RESUBMIT = :PENDING_RESUBMIT
-        REJECTED = :REJECTED
+        ACCEPTED = T.let(:ACCEPTED, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
+        PENDING_REVIEW =
+          T.let(:PENDING_REVIEW, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
+        PENDING_DOCUMENT =
+          T.let(:PENDING_DOCUMENT, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
+        PENDING_RESUBMIT =
+          T.let(:PENDING_RESUBMIT, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
+        REJECTED = T.let(:REJECTED, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
       end
 
       # Status Reasons for KYC/KYB enrollment states
-      class StatusReason < Lithic::Enum
-        abstract!
+      module StatusReason
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderCreateResponse::StatusReason) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol) }
 
-        ADDRESS_VERIFICATION_FAILURE = :ADDRESS_VERIFICATION_FAILURE
-        AGE_THRESHOLD_FAILURE = :AGE_THRESHOLD_FAILURE
-        COMPLETE_VERIFICATION_FAILURE = :COMPLETE_VERIFICATION_FAILURE
-        DOB_VERIFICATION_FAILURE = :DOB_VERIFICATION_FAILURE
-        ID_VERIFICATION_FAILURE = :ID_VERIFICATION_FAILURE
-        MAX_DOCUMENT_ATTEMPTS = :MAX_DOCUMENT_ATTEMPTS
-        MAX_RESUBMISSION_ATTEMPTS = :MAX_RESUBMISSION_ATTEMPTS
-        NAME_VERIFICATION_FAILURE = :NAME_VERIFICATION_FAILURE
-        OTHER_VERIFICATION_FAILURE = :OTHER_VERIFICATION_FAILURE
-        RISK_THRESHOLD_FAILURE = :RISK_THRESHOLD_FAILURE
-        WATCHLIST_ALERT_FAILURE = :WATCHLIST_ALERT_FAILURE
-        PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE = :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE
+        ADDRESS_VERIFICATION_FAILURE =
+          T.let(
+            :ADDRESS_VERIFICATION_FAILURE,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
+        AGE_THRESHOLD_FAILURE =
+          T.let(:AGE_THRESHOLD_FAILURE, Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol)
+        COMPLETE_VERIFICATION_FAILURE =
+          T.let(
+            :COMPLETE_VERIFICATION_FAILURE,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
+        DOB_VERIFICATION_FAILURE =
+          T.let(:DOB_VERIFICATION_FAILURE, Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol)
+        ID_VERIFICATION_FAILURE =
+          T.let(:ID_VERIFICATION_FAILURE, Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol)
+        MAX_DOCUMENT_ATTEMPTS =
+          T.let(:MAX_DOCUMENT_ATTEMPTS, Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol)
+        MAX_RESUBMISSION_ATTEMPTS =
+          T.let(:MAX_RESUBMISSION_ATTEMPTS, Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol)
+        NAME_VERIFICATION_FAILURE =
+          T.let(:NAME_VERIFICATION_FAILURE, Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol)
+        OTHER_VERIFICATION_FAILURE =
+          T.let(
+            :OTHER_VERIFICATION_FAILURE,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
+        RISK_THRESHOLD_FAILURE =
+          T.let(:RISK_THRESHOLD_FAILURE, Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol)
+        WATCHLIST_ALERT_FAILURE =
+          T.let(:WATCHLIST_ALERT_FAILURE, Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol)
+        PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE =
+          T.let(
+            :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
         PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE =
-          :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE
-        PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE = :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE
+          T.let(
+            :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
+        PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE =
+          T.let(
+            :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
         PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED =
-          :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED
-        PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE = :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE
-        PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED = :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED
-        PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE = :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE
-        PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE = :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE
-        PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE = :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE
-        CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE = :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE
-        CONTROL_PERSON_ID_VERIFICATION_FAILURE = :CONTROL_PERSON_ID_VERIFICATION_FAILURE
-        CONTROL_PERSON_DOB_VERIFICATION_FAILURE = :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
-        CONTROL_PERSON_NAME_VERIFICATION_FAILURE = :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
+          T.let(
+            :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
+        PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE =
+          T.let(
+            :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
+        PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED =
+          T.let(
+            :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
+        PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE =
+          T.let(
+            :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
+        PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE =
+          T.let(
+            :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
+        PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE =
+          T.let(
+            :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
+        CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE =
+          T.let(
+            :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
+        CONTROL_PERSON_ID_VERIFICATION_FAILURE =
+          T.let(
+            :CONTROL_PERSON_ID_VERIFICATION_FAILURE,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
+        CONTROL_PERSON_DOB_VERIFICATION_FAILURE =
+          T.let(
+            :CONTROL_PERSON_DOB_VERIFICATION_FAILURE,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
+        CONTROL_PERSON_NAME_VERIFICATION_FAILURE =
+          T.let(
+            :CONTROL_PERSON_NAME_VERIFICATION_FAILURE,
+            Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
+          )
       end
     end
   end

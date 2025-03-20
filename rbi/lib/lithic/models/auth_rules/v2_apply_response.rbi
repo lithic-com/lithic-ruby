@@ -72,20 +72,26 @@ module Lithic
         end
 
         # The state of the Auth Rule
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::AuthRules::V2ApplyResponse::State::TaggedSymbol) }
         def state
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::AuthRules::V2ApplyResponse::State::TaggedSymbol)
+            .returns(Lithic::Models::AuthRules::V2ApplyResponse::State::TaggedSymbol)
+        end
         def state=(_)
         end
 
         # The type of Auth Rule
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::AuthRules::V2ApplyResponse::Type::TaggedSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::AuthRules::V2ApplyResponse::Type::TaggedSymbol)
+            .returns(Lithic::Models::AuthRules::V2ApplyResponse::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
@@ -107,8 +113,8 @@ module Lithic
             draft_version: T.nilable(Lithic::Models::AuthRules::V2ApplyResponse::DraftVersion),
             name: T.nilable(String),
             program_level: T::Boolean,
-            state: Symbol,
-            type: Symbol,
+            state: Lithic::Models::AuthRules::V2ApplyResponse::State::TaggedSymbol,
+            type: Lithic::Models::AuthRules::V2ApplyResponse::Type::TaggedSymbol,
             excluded_card_tokens: T::Array[String]
           )
             .returns(T.attached_class)
@@ -138,8 +144,8 @@ module Lithic
                 draft_version: T.nilable(Lithic::Models::AuthRules::V2ApplyResponse::DraftVersion),
                 name: T.nilable(String),
                 program_level: T::Boolean,
-                state: Symbol,
-                type: Symbol,
+                state: Lithic::Models::AuthRules::V2ApplyResponse::State::TaggedSymbol,
+                type: Lithic::Models::AuthRules::V2ApplyResponse::Type::TaggedSymbol,
                 excluded_card_tokens: T::Array[String]
               }
             )
@@ -216,8 +222,8 @@ module Lithic
           end
 
           # Parameters for the Auth Rule
-          class Parameters < Lithic::Union
-            abstract!
+          module Parameters
+            extend Lithic::Union
 
             Variants =
               type_template(:out) do
@@ -300,8 +306,8 @@ module Lithic
           end
 
           # Parameters for the Auth Rule
-          class Parameters < Lithic::Union
-            abstract!
+          module Parameters
+            extend Lithic::Union
 
             Variants =
               type_template(:out) do
@@ -316,23 +322,27 @@ module Lithic
         end
 
         # The state of the Auth Rule
-        class State < Lithic::Enum
-          abstract!
+        module State
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::V2ApplyResponse::State) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::V2ApplyResponse::State::TaggedSymbol) }
 
-          ACTIVE = :ACTIVE
-          INACTIVE = :INACTIVE
+          ACTIVE = T.let(:ACTIVE, Lithic::Models::AuthRules::V2ApplyResponse::State::TaggedSymbol)
+          INACTIVE = T.let(:INACTIVE, Lithic::Models::AuthRules::V2ApplyResponse::State::TaggedSymbol)
         end
 
         # The type of Auth Rule
-        class Type < Lithic::Enum
-          abstract!
+        module Type
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::V2ApplyResponse::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::V2ApplyResponse::Type::TaggedSymbol) }
 
-          CONDITIONAL_BLOCK = :CONDITIONAL_BLOCK
-          VELOCITY_LIMIT = :VELOCITY_LIMIT
+          CONDITIONAL_BLOCK =
+            T.let(:CONDITIONAL_BLOCK, Lithic::Models::AuthRules::V2ApplyResponse::Type::TaggedSymbol)
+          VELOCITY_LIMIT = T.let(:VELOCITY_LIMIT, Lithic::Models::AuthRules::V2ApplyResponse::Type::TaggedSymbol)
         end
       end
     end

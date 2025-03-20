@@ -88,10 +88,10 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # Parameters for the Auth Rule
-        class Parameters < Lithic::Union
+        module Parameters
+          extend Lithic::Union
+
           variant -> { Lithic::Models::AuthRules::ConditionalBlockParameters }
 
           variant -> { Lithic::Models::AuthRules::VelocityLimitParams }
@@ -103,10 +103,10 @@ module Lithic
           #   end
         end
 
-        # @abstract
-        #
         # The type of Auth Rule
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           CONDITIONAL_BLOCK = :CONDITIONAL_BLOCK
           VELOCITY_LIMIT = :VELOCITY_LIMIT
 

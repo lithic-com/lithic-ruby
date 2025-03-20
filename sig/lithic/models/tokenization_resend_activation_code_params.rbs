@@ -26,7 +26,9 @@ module Lithic
       type activation_method_type =
         :EMAIL_TO_CARDHOLDER_ADDRESS | :TEXT_TO_CARDHOLDER_NUMBER
 
-      class ActivationMethodType < Lithic::Enum
+      module ActivationMethodType
+        extend Lithic::Enum
+
         EMAIL_TO_CARDHOLDER_ADDRESS: :EMAIL_TO_CARDHOLDER_ADDRESS
         TEXT_TO_CARDHOLDER_NUMBER: :TEXT_TO_CARDHOLDER_NUMBER
 

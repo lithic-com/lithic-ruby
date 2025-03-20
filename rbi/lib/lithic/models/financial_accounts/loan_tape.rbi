@@ -364,11 +364,14 @@ module Lithic
           def period_number=(_)
           end
 
-          sig { returns(Symbol) }
+          sig { returns(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol) }
           def period_state
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol)
+              .returns(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol)
+          end
           def period_state=(_)
           end
 
@@ -380,7 +383,7 @@ module Lithic
               days_past_due: Integer,
               has_grace: T::Boolean,
               period_number: Integer,
-              period_state: Symbol
+              period_state: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol
             )
               .returns(T.attached_class)
           end
@@ -405,21 +408,27 @@ module Lithic
                   days_past_due: Integer,
                   has_grace: T::Boolean,
                   period_number: Integer,
-                  period_state: Symbol
+                  period_state: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol
                 }
               )
           end
           def to_hash
           end
 
-          class PeriodState < Lithic::Enum
-            abstract!
+          module PeriodState
+            extend Lithic::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol) }
 
-            STANDARD = :STANDARD
-            PROMO = :PROMO
-            PENALTY = :PENALTY
+            STANDARD =
+              T.let(:STANDARD, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol)
+            PROMO =
+              T.let(:PROMO, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol)
+            PENALTY =
+              T.let(:PENALTY, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol)
           end
         end
 
@@ -774,11 +783,22 @@ module Lithic
           def effective_apr=(_)
           end
 
-          sig { returns(Symbol) }
+          sig do
+            returns(
+              Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
+            )
+          end
           def interest_calculation_method
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(
+              _: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
+            )
+              .returns(
+                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
+              )
+          end
           def interest_calculation_method=(_)
           end
 
@@ -814,7 +834,7 @@ module Lithic
               actual_interest_charged: T.nilable(Integer),
               daily_balance_amounts: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
               effective_apr: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr,
-              interest_calculation_method: Symbol,
+              interest_calculation_method: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol,
               interest_for_period: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
               prime_rate: T.nilable(String),
               minimum_interest_charged: T.nilable(Integer)
@@ -839,7 +859,7 @@ module Lithic
                   actual_interest_charged: T.nilable(Integer),
                   daily_balance_amounts: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
                   effective_apr: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr,
-                  interest_calculation_method: Symbol,
+                  interest_calculation_method: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol,
                   interest_for_period: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
                   prime_rate: T.nilable(String),
                   minimum_interest_charged: T.nilable(Integer)
@@ -929,13 +949,29 @@ module Lithic
             end
           end
 
-          class InterestCalculationMethod < Lithic::Enum
-            abstract!
+          module InterestCalculationMethod
+            extend Lithic::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod) }
+            OrSymbol =
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
+                )
+              end
 
-            DAILY = :DAILY
-            AVERAGE_DAILY = :AVERAGE_DAILY
+            DAILY =
+              T.let(
+                :DAILY,
+                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
+              )
+            AVERAGE_DAILY =
+              T.let(
+                :AVERAGE_DAILY,
+                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
+              )
           end
 
           class InterestForPeriod < Lithic::BaseModel
