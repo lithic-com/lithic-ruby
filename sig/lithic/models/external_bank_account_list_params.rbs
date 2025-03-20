@@ -85,7 +85,7 @@ module Lithic
         CHECKING: :CHECKING
         SAVINGS: :SAVINGS
 
-        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountListParams::account_type]
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountListParams::account_type]
       end
 
       type state = :ENABLED | :CLOSED | :PAUSED
@@ -97,7 +97,7 @@ module Lithic
         CLOSED: :CLOSED
         PAUSED: :PAUSED
 
-        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountListParams::state]
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountListParams::state]
       end
 
       type verification_state =
@@ -111,7 +111,7 @@ module Lithic
         FAILED_VERIFICATION: :FAILED_VERIFICATION
         INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
 
-        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountListParams::verification_state]
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountListParams::verification_state]
       end
     end
   end

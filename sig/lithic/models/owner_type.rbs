@@ -8,7 +8,7 @@ module Lithic
       INDIVIDUAL: :INDIVIDUAL
       BUSINESS: :BUSINESS
 
-      def self.values: -> ::Array[Lithic::Models::owner_type]
+      def self?.values: -> ::Array[Lithic::Models::owner_type]
     end
   end
 end

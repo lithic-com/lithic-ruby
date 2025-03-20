@@ -773,6 +773,15 @@ module Lithic
               :TRANSACTION_RISK_ANALYSIS,
               Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # Indicates what the outcome of the 3DS authentication process is.
@@ -795,6 +804,17 @@ module Lithic
             T.let(:NONE, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol)
           SUCCESS =
             T.let(:SUCCESS, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # Indicates which party made the 3DS authentication decision.
@@ -822,6 +842,15 @@ module Lithic
             T.let(:NETWORK, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol)
           UNKNOWN =
             T.let(:UNKNOWN, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # Indicates whether chargeback liability shift applies to the transaction.
@@ -860,6 +889,15 @@ module Lithic
               :TOKEN_AUTHENTICATED,
               Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # Indicates whether a 3DS challenge flow was used, and if so, what the
@@ -876,6 +914,17 @@ module Lithic
             T.let(:NONE, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol)
           OTHER =
             T.let(:OTHER, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
@@ -906,6 +955,15 @@ module Lithic
             T.let(:REJECTED, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol)
           SUCCESS =
             T.let(:SUCCESS, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -1023,6 +1081,12 @@ module Lithic
         MASTERCARD = T.let(:MASTERCARD, Lithic::Models::Transaction::Network::TaggedSymbol)
         UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Network::TaggedSymbol)
         VISA = T.let(:VISA, Lithic::Models::Transaction::Network::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::Transaction::Network::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Pos < Lithic::BaseModel
@@ -1154,6 +1218,12 @@ module Lithic
             PREAUTHORIZED = T.let(:PREAUTHORIZED, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
             PRESENT = T.let(:PRESENT, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
             UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol]) }
+              def values
+              end
+            end
           end
 
           # Cardholder presence indicator
@@ -1178,6 +1248,12 @@ module Lithic
             TELEPHONE_ORDER =
               T.let(:TELEPHONE_ORDER, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
             UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol]) }
+              def values
+              end
+            end
           end
 
           # Method of entry for the PAN
@@ -1204,6 +1280,12 @@ module Lithic
             SECURE_CARDLESS = T.let(:SECURE_CARDLESS, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
             UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
             UNSPECIFIED = T.let(:UNSPECIFIED, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -1337,6 +1419,12 @@ module Lithic
             CARDHOLDER = T.let(:CARDHOLDER, Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
             CARD_ACCEPTOR = T.let(:CARD_ACCEPTOR, Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
             UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol]) }
+              def values
+              end
+            end
           end
 
           # Status of whether the POS is able to accept PINs
@@ -1354,6 +1442,12 @@ module Lithic
               T.let(:NOT_CAPABLE, Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol)
             UNSPECIFIED =
               T.let(:UNSPECIFIED, Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol]) }
+              def values
+              end
+            end
           end
 
           # POS Type
@@ -1388,6 +1482,12 @@ module Lithic
             VENDING = T.let(:VENDING, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
             VOICE = T.let(:VOICE, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
             UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
       end
@@ -1425,6 +1525,12 @@ module Lithic
         UNKNOWN_HOST_TIMEOUT = T.let(:UNKNOWN_HOST_TIMEOUT, Lithic::Models::Transaction::Result::TaggedSymbol)
         USER_TRANSACTION_LIMIT =
           T.let(:USER_TRANSACTION_LIMIT, Lithic::Models::Transaction::Result::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::Transaction::Result::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Status of the transaction.
@@ -1439,6 +1545,12 @@ module Lithic
         PENDING = T.let(:PENDING, Lithic::Models::Transaction::Status::TaggedSymbol)
         SETTLED = T.let(:SETTLED, Lithic::Models::Transaction::Status::TaggedSymbol)
         VOIDED = T.let(:VOIDED, Lithic::Models::Transaction::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::Transaction::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class TokenInfo < Lithic::BaseModel
@@ -1485,6 +1597,12 @@ module Lithic
           MERCHANT = T.let(:MERCHANT, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
           OTHER = T.let(:OTHER, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
           SAMSUNG_PAY = T.let(:SAMSUNG_PAY, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1951,6 +2069,12 @@ module Lithic
             T.let(:UNAUTHORIZED_MERCHANT, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
           VEHICLE_NUMBER_INVALID =
             T.let(:VEHICLE_NUMBER_INVALID, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # Indicates whether the transaction event is a credit or debit to the account.
@@ -1963,6 +2087,12 @@ module Lithic
 
           CREDIT = T.let(:CREDIT, Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol)
           DEBIT = T.let(:DEBIT, Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class NetworkInfo < Lithic::BaseModel
@@ -2251,6 +2381,12 @@ module Lithic
             T.let(:UNKNOWN_HOST_TIMEOUT, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
           USER_TRANSACTION_LIMIT =
             T.let(:USER_TRANSACTION_LIMIT, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Transaction::Event::Result::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class RuleResult < Lithic::BaseModel
@@ -2455,6 +2591,12 @@ module Lithic
               T.let(:UNAUTHORIZED_MERCHANT, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
             VEHICLE_NUMBER_INVALID =
               T.let(:VEHICLE_NUMBER_INVALID, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -2486,6 +2628,12 @@ module Lithic
             T.let(:FINANCIAL_CREDIT_AUTHORIZATION, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
           RETURN = T.let(:RETURN, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
           RETURN_REVERSAL = T.let(:RETURN_REVERSAL, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Transaction::Event::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

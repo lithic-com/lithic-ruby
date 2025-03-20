@@ -74,21 +74,27 @@ module Lithic
           T.type_alias { T.any(Symbol, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol) }
 
         ACH_ORIGINATION_REVIEWED =
-          T.let(:ACH_ORIGINATION_REVIEWED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+          T.let(:ACH_ORIGINATION_REVIEWED, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol)
         ACH_ORIGINATION_RELEASED =
-          T.let(:ACH_ORIGINATION_RELEASED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+          T.let(:ACH_ORIGINATION_RELEASED, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol)
         ACH_ORIGINATION_PROCESSED =
-          T.let(:ACH_ORIGINATION_PROCESSED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+          T.let(:ACH_ORIGINATION_PROCESSED, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol)
         ACH_ORIGINATION_SETTLED =
-          T.let(:ACH_ORIGINATION_SETTLED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+          T.let(:ACH_ORIGINATION_SETTLED, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol)
         ACH_RECEIPT_SETTLED =
-          T.let(:ACH_RECEIPT_SETTLED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+          T.let(:ACH_RECEIPT_SETTLED, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol)
         ACH_RETURN_INITIATED =
-          T.let(:ACH_RETURN_INITIATED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+          T.let(:ACH_RETURN_INITIATED, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol)
         ACH_RETURN_PROCESSED =
-          T.let(:ACH_RETURN_PROCESSED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+          T.let(:ACH_RETURN_PROCESSED, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol)
         ACH_RETURN_SETTLED =
-          T.let(:ACH_RETURN_SETTLED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+          T.let(:ACH_RETURN_SETTLED, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Decline reason
@@ -102,15 +108,24 @@ module Lithic
         PROGRAM_TRANSACTION_LIMIT_EXCEEDED =
           T.let(
             :PROGRAM_TRANSACTION_LIMIT_EXCEEDED,
-            Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol
+            Lithic::Models::PaymentSimulateActionParams::DeclineReason::TaggedSymbol
           )
         PROGRAM_DAILY_LIMIT_EXCEEDED =
-          T.let(:PROGRAM_DAILY_LIMIT_EXCEEDED, Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol)
+          T.let(
+            :PROGRAM_DAILY_LIMIT_EXCEEDED,
+            Lithic::Models::PaymentSimulateActionParams::DeclineReason::TaggedSymbol
+          )
         PROGRAM_MONTHLY_LIMIT_EXCEEDED =
           T.let(
             :PROGRAM_MONTHLY_LIMIT_EXCEEDED,
-            Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol
+            Lithic::Models::PaymentSimulateActionParams::DeclineReason::TaggedSymbol
           )
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::PaymentSimulateActionParams::DeclineReason::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

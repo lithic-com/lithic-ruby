@@ -90,6 +90,12 @@ module Lithic
         SUCCESS = :SUCCESS
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

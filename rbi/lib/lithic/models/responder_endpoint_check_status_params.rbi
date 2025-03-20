@@ -49,11 +49,17 @@ module Lithic
           T.type_alias { T.any(Symbol, Lithic::Models::ResponderEndpointCheckStatusParams::Type::TaggedSymbol) }
 
         AUTH_STREAM_ACCESS =
-          T.let(:AUTH_STREAM_ACCESS, Lithic::Models::ResponderEndpointCheckStatusParams::Type::OrSymbol)
+          T.let(:AUTH_STREAM_ACCESS, Lithic::Models::ResponderEndpointCheckStatusParams::Type::TaggedSymbol)
         THREE_DS_DECISIONING =
-          T.let(:THREE_DS_DECISIONING, Lithic::Models::ResponderEndpointCheckStatusParams::Type::OrSymbol)
+          T.let(:THREE_DS_DECISIONING, Lithic::Models::ResponderEndpointCheckStatusParams::Type::TaggedSymbol)
         TOKENIZATION_DECISIONING =
-          T.let(:TOKENIZATION_DECISIONING, Lithic::Models::ResponderEndpointCheckStatusParams::Type::OrSymbol)
+          T.let(:TOKENIZATION_DECISIONING, Lithic::Models::ResponderEndpointCheckStatusParams::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ResponderEndpointCheckStatusParams::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

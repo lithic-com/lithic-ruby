@@ -167,6 +167,12 @@ module Lithic
         INTERNAL = :INTERNAL
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Book transfer result to be returned.
@@ -177,6 +183,12 @@ module Lithic
         DECLINED = :DECLINED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Book transfer status to be returned.
@@ -187,6 +199,12 @@ module Lithic
         SETTLED = :SETTLED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

@@ -112,8 +112,14 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountUpdateParams::State) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AccountUpdateParams::State::TaggedSymbol) }
 
-        ACTIVE = T.let(:ACTIVE, Lithic::Models::AccountUpdateParams::State::OrSymbol)
-        PAUSED = T.let(:PAUSED, Lithic::Models::AccountUpdateParams::State::OrSymbol)
+        ACTIVE = T.let(:ACTIVE, Lithic::Models::AccountUpdateParams::State::TaggedSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::Models::AccountUpdateParams::State::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::AccountUpdateParams::State::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class VerificationAddress < Lithic::BaseModel

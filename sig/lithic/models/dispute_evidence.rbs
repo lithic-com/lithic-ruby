@@ -55,7 +55,7 @@ module Lithic
         REJECTED: :REJECTED
         UPLOADED: :UPLOADED
 
-        def self.values: -> ::Array[Lithic::Models::DisputeEvidence::upload_status]
+        def self?.values: -> ::Array[Lithic::Models::DisputeEvidence::upload_status]
       end
     end
   end

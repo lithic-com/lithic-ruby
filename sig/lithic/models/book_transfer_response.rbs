@@ -78,7 +78,7 @@ module Lithic
         REWARD: :REWARD
         TRANSFER: :TRANSFER
 
-        def self.values: -> ::Array[Lithic::Models::BookTransferResponse::category]
+        def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::category]
       end
 
       type event =
@@ -131,7 +131,7 @@ module Lithic
           APPROVED: :APPROVED
           FUNDS_INSUFFICIENT: :FUNDS_INSUFFICIENT
 
-          def self.values: -> ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result]
+          def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result]
         end
 
         type result = :APPROVED | :DECLINED
@@ -142,7 +142,7 @@ module Lithic
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
-          def self.values: -> ::Array[Lithic::Models::BookTransferResponse::Event::result]
+          def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::Event::result]
         end
       end
 
@@ -154,7 +154,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self.values: -> ::Array[Lithic::Models::BookTransferResponse::result]
+        def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::result]
       end
 
       type status = :DECLINED | :REVERSED | :SETTLED
@@ -166,7 +166,7 @@ module Lithic
         REVERSED: :REVERSED
         SETTLED: :SETTLED
 
-        def self.values: -> ::Array[Lithic::Models::BookTransferResponse::status]
+        def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::status]
       end
     end
   end

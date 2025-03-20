@@ -79,7 +79,7 @@ module Lithic
           MISMATCH: :MISMATCH
           NOT_PRESENT: :NOT_PRESENT
 
-          def self.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationSimulateParams::card_expiry_check]
+          def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationSimulateParams::card_expiry_check]
         end
       end
     end

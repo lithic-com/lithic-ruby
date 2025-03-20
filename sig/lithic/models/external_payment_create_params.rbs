@@ -72,7 +72,7 @@ module Lithic
         EXTERNAL_CHECK: :EXTERNAL_CHECK
         EXTERNAL_TRANSFER: :EXTERNAL_TRANSFER
 
-        def self.values: -> ::Array[Lithic::Models::ExternalPaymentCreateParams::category]
+        def self?.values: -> ::Array[Lithic::Models::ExternalPaymentCreateParams::category]
       end
 
       type payment_type = :DEPOSIT | :WITHDRAWAL
@@ -83,7 +83,7 @@ module Lithic
         DEPOSIT: :DEPOSIT
         WITHDRAWAL: :WITHDRAWAL
 
-        def self.values: -> ::Array[Lithic::Models::ExternalPaymentCreateParams::payment_type]
+        def self?.values: -> ::Array[Lithic::Models::ExternalPaymentCreateParams::payment_type]
       end
 
       type progress_to = :SETTLED | :RELEASED
@@ -94,7 +94,7 @@ module Lithic
         SETTLED: :SETTLED
         RELEASED: :RELEASED
 
-        def self.values: -> ::Array[Lithic::Models::ExternalPaymentCreateParams::progress_to]
+        def self?.values: -> ::Array[Lithic::Models::ExternalPaymentCreateParams::progress_to]
       end
     end
   end

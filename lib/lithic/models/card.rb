@@ -398,6 +398,12 @@ module Lithic
           PENDING = :PENDING
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Types of funding source:
@@ -411,6 +417,12 @@ module Lithic
           DEPOSITORY_SAVINGS = :DEPOSITORY_SAVINGS
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -424,6 +436,12 @@ module Lithic
         NOT_SET = :NOT_SET
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Card state values:
@@ -457,6 +475,12 @@ module Lithic
         PENDING_FULFILLMENT = :PENDING_FULFILLMENT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Card types:
@@ -486,6 +510,12 @@ module Lithic
         DIGITAL_WALLET = :DIGITAL_WALLET
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

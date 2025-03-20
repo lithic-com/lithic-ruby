@@ -45,7 +45,7 @@ module Lithic
         RECEIPT_CREDIT: :RECEIPT_CREDIT
         RECEIPT_DEBIT: :RECEIPT_DEBIT
 
-        def self.values: -> ::Array[Lithic::Models::PaymentSimulateReceiptParams::receipt_type]
+        def self?.values: -> ::Array[Lithic::Models::PaymentSimulateReceiptParams::receipt_type]
       end
     end
   end

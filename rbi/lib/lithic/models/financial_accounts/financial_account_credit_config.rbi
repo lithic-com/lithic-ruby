@@ -162,6 +162,17 @@ module Lithic
               :FRAUD,
               Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # State of the financial account
@@ -198,6 +209,17 @@ module Lithic
               :CHARGED_OFF,
               Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
       end
     end

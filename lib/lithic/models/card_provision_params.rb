@@ -111,6 +111,12 @@ module Lithic
         SAMSUNG_PAY = :SAMSUNG_PAY
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

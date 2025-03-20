@@ -10,8 +10,14 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::ChallengeResult) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol) }
 
-        APPROVE = T.let(:APPROVE, Lithic::Models::ThreeDS::ChallengeResult::OrSymbol)
-        DECLINE_BY_CUSTOMER = T.let(:DECLINE_BY_CUSTOMER, Lithic::Models::ThreeDS::ChallengeResult::OrSymbol)
+        APPROVE = T.let(:APPROVE, Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol)
+        DECLINE_BY_CUSTOMER = T.let(:DECLINE_BY_CUSTOMER, Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

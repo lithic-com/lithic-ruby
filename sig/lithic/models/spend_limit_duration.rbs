@@ -10,7 +10,7 @@ module Lithic
       MONTHLY: :MONTHLY
       TRANSACTION: :TRANSACTION
 
-      def self.values: -> ::Array[Lithic::Models::spend_limit_duration]
+      def self?.values: -> ::Array[Lithic::Models::spend_limit_duration]
     end
   end
 end

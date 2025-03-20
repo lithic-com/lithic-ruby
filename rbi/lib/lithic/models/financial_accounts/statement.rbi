@@ -412,6 +412,17 @@ module Lithic
               T.let(:PROMO, Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState::TaggedSymbol)
             PENALTY =
               T.let(:PENALTY, Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -556,6 +567,12 @@ module Lithic
           PERIOD_END =
             T.let(:PERIOD_END, Lithic::Models::FinancialAccounts::Statement::StatementType::TaggedSymbol)
           FINAL = T.let(:FINAL, Lithic::Models::FinancialAccounts::Statement::StatementType::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::FinancialAccounts::Statement::StatementType::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class YtdTotals < Lithic::BaseModel
@@ -900,6 +917,17 @@ module Lithic
                 :AVERAGE_DAILY,
                 Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           class InterestForPeriod < Lithic::BaseModel

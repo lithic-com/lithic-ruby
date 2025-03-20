@@ -175,7 +175,7 @@ module Lithic
           ENABLED: :ENABLED
           PENDING: :PENDING
 
-          def self.values: -> ::Array[Lithic::Models::Card::Funding::state]
+          def self?.values: -> ::Array[Lithic::Models::Card::Funding::state]
         end
 
         type type_ = :DEPOSITORY_CHECKING | :DEPOSITORY_SAVINGS
@@ -186,7 +186,7 @@ module Lithic
           DEPOSITORY_CHECKING: :DEPOSITORY_CHECKING
           DEPOSITORY_SAVINGS: :DEPOSITORY_SAVINGS
 
-          def self.values: -> ::Array[Lithic::Models::Card::Funding::type_]
+          def self?.values: -> ::Array[Lithic::Models::Card::Funding::type_]
         end
       end
 
@@ -199,7 +199,7 @@ module Lithic
         BLOCKED: :BLOCKED
         NOT_SET: :NOT_SET
 
-        def self.values: -> ::Array[Lithic::Models::Card::pin_status]
+        def self?.values: -> ::Array[Lithic::Models::Card::pin_status]
       end
 
       type state =
@@ -214,7 +214,7 @@ module Lithic
         PENDING_ACTIVATION: :PENDING_ACTIVATION
         PENDING_FULFILLMENT: :PENDING_FULFILLMENT
 
-        def self.values: -> ::Array[Lithic::Models::Card::state]
+        def self?.values: -> ::Array[Lithic::Models::Card::state]
       end
 
       type type_ =
@@ -235,7 +235,7 @@ module Lithic
         UNLOCKED: :UNLOCKED
         DIGITAL_WALLET: :DIGITAL_WALLET
 
-        def self.values: -> ::Array[Lithic::Models::Card::type_]
+        def self?.values: -> ::Array[Lithic::Models::Card::type_]
       end
     end
   end

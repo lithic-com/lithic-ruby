@@ -295,6 +295,15 @@ module Lithic
                     :NOT_SUPPORTED,
                     Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol])
+                  end
+                  def values
+                  end
+                end
               end
             end
           end
@@ -1042,6 +1051,15 @@ module Lithic
                     :MISCELLANEOUS_OTHER_FUEL,
                     Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol])
+                  end
+                  def values
+                  end
+                end
               end
 
               # Unit of measure for fuel disbursement.
@@ -1093,6 +1111,17 @@ module Lithic
                     :UNKNOWN,
                     Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
             end
 
@@ -1118,6 +1147,15 @@ module Lithic
                   :NON_FUEL_ONLY,
                   Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol])
+                end
+                def values
+                end
+              end
             end
           end
         end

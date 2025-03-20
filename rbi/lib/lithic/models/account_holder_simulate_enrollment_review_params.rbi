@@ -80,9 +80,18 @@ module Lithic
           T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::TaggedSymbol) }
 
         ACCEPTED =
-          T.let(:ACCEPTED, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::OrSymbol)
+          T.let(:ACCEPTED, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::TaggedSymbol)
         REJECTED =
-          T.let(:REJECTED, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::OrSymbol)
+          T.let(:REJECTED, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::TaggedSymbol)
+
+        class << self
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::TaggedSymbol])
+          end
+          def values
+          end
+        end
       end
 
       module StatusReason
@@ -96,88 +105,97 @@ module Lithic
         PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE =
           T.let(
             :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE =
           T.let(
             :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE =
           T.let(
             :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED =
           T.let(
             :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE =
           T.let(
             :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED =
           T.let(
             :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE =
           T.let(
             :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE =
           T.let(
             :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE =
           T.let(
             :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE =
           T.let(
             :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         CONTROL_PERSON_ID_VERIFICATION_FAILURE =
           T.let(
             :CONTROL_PERSON_ID_VERIFICATION_FAILURE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         CONTROL_PERSON_DOB_VERIFICATION_FAILURE =
           T.let(
             :CONTROL_PERSON_DOB_VERIFICATION_FAILURE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         CONTROL_PERSON_NAME_VERIFICATION_FAILURE =
           T.let(
             :CONTROL_PERSON_NAME_VERIFICATION_FAILURE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         BENEFICIAL_OWNER_INDIVIDUAL_DOB_VERIFICATION_FAILURE =
           T.let(
             :BENEFICIAL_OWNER_INDIVIDUAL_DOB_VERIFICATION_FAILURE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         BENEFICIAL_OWNER_INDIVIDUAL_BLOCKLIST_ALERT_FAILURE =
           T.let(
             :BENEFICIAL_OWNER_INDIVIDUAL_BLOCKLIST_ALERT_FAILURE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         BENEFICIAL_OWNER_INDIVIDUAL_ID_VERIFICATION_FAILURE =
           T.let(
             :BENEFICIAL_OWNER_INDIVIDUAL_ID_VERIFICATION_FAILURE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
         BENEFICIAL_OWNER_INDIVIDUAL_NAME_VERIFICATION_FAILURE =
           T.let(
             :BENEFICIAL_OWNER_INDIVIDUAL_NAME_VERIFICATION_FAILURE,
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
+
+        class << self
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol])
+          end
+          def values
+          end
+        end
       end
     end
   end

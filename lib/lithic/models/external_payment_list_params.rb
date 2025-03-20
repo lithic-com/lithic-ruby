@@ -153,6 +153,12 @@ module Lithic
         EXTERNAL_TRANSFER = :EXTERNAL_TRANSFER
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # External Payment result to be returned.
@@ -163,6 +169,12 @@ module Lithic
         DECLINED = :DECLINED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Book transfer status to be returned.
@@ -176,6 +188,12 @@ module Lithic
         CANCELED = :CANCELED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

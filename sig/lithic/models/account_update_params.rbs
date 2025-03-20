@@ -57,7 +57,7 @@ module Lithic
         ACTIVE: :ACTIVE
         PAUSED: :PAUSED
 
-        def self.values: -> ::Array[Lithic::Models::AccountUpdateParams::state]
+        def self?.values: -> ::Array[Lithic::Models::AccountUpdateParams::state]
       end
 
       type verification_address =

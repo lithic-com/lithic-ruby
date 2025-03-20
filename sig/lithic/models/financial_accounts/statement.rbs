@@ -146,7 +146,7 @@ module Lithic
             PROMO: :PROMO
             PENALTY: :PENALTY
 
-            def self.values: -> ::Array[Lithic::Models::FinancialAccounts::Statement::AccountStanding::period_state]
+            def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statement::AccountStanding::period_state]
           end
         end
 
@@ -210,7 +210,7 @@ module Lithic
           PERIOD_END: :PERIOD_END
           FINAL: :FINAL
 
-          def self.values: -> ::Array[Lithic::Models::FinancialAccounts::Statement::statement_type]
+          def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statement::statement_type]
         end
 
         type ytd_totals =
@@ -344,7 +344,7 @@ module Lithic
             DAILY: :DAILY
             AVERAGE_DAILY: :AVERAGE_DAILY
 
-            def self.values: -> ::Array[Lithic::Models::FinancialAccounts::Statement::InterestDetails::interest_calculation_method]
+            def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statement::InterestDetails::interest_calculation_method]
           end
 
           type interest_for_period =

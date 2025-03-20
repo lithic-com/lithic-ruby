@@ -179,12 +179,22 @@ module Lithic
             OrSymbol =
               T.type_alias { T.any(Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol) }
 
-            VISA = T.let(:VISA, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)
+            VISA = T.let(:VISA, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol)
             MASTERCARD =
-              T.let(:MASTERCARD, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)
-            MAESTRO = T.let(:MAESTRO, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)
+              T.let(:MASTERCARD, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol)
+            MAESTRO =
+              T.let(:MAESTRO, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol)
             INTERLINK =
-              T.let(:INTERLINK, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)
+              T.let(:INTERLINK, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
       end

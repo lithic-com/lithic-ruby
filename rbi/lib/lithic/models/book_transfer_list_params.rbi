@@ -180,13 +180,19 @@ module Lithic
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferListParams::Category::TaggedSymbol) }
 
         BALANCE_OR_FUNDING =
-          T.let(:BALANCE_OR_FUNDING, Lithic::Models::BookTransferListParams::Category::OrSymbol)
-        FEE = T.let(:FEE, Lithic::Models::BookTransferListParams::Category::OrSymbol)
-        REWARD = T.let(:REWARD, Lithic::Models::BookTransferListParams::Category::OrSymbol)
-        ADJUSTMENT = T.let(:ADJUSTMENT, Lithic::Models::BookTransferListParams::Category::OrSymbol)
-        DERECOGNITION = T.let(:DERECOGNITION, Lithic::Models::BookTransferListParams::Category::OrSymbol)
-        DISPUTE = T.let(:DISPUTE, Lithic::Models::BookTransferListParams::Category::OrSymbol)
-        INTERNAL = T.let(:INTERNAL, Lithic::Models::BookTransferListParams::Category::OrSymbol)
+          T.let(:BALANCE_OR_FUNDING, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
+        FEE = T.let(:FEE, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
+        REWARD = T.let(:REWARD, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
+        ADJUSTMENT = T.let(:ADJUSTMENT, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
+        DERECOGNITION = T.let(:DERECOGNITION, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
+        DISPUTE = T.let(:DISPUTE, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
+        INTERNAL = T.let(:INTERNAL, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Category::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Book transfer result to be returned.
@@ -196,8 +202,14 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferListParams::Result) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferListParams::Result::TaggedSymbol) }
 
-        APPROVED = T.let(:APPROVED, Lithic::Models::BookTransferListParams::Result::OrSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferListParams::Result::OrSymbol)
+        APPROVED = T.let(:APPROVED, Lithic::Models::BookTransferListParams::Result::TaggedSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferListParams::Result::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Result::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Book transfer status to be returned.
@@ -207,8 +219,14 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferListParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferListParams::Status::TaggedSymbol) }
 
-        DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferListParams::Status::OrSymbol)
-        SETTLED = T.let(:SETTLED, Lithic::Models::BookTransferListParams::Status::OrSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferListParams::Status::TaggedSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::BookTransferListParams::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

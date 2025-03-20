@@ -142,11 +142,18 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource::TaggedSymbol) }
 
-        APPLE_PAY = T.let(:APPLE_PAY, Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol)
-        GOOGLE = T.let(:GOOGLE, Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol)
+        APPLE_PAY =
+          T.let(:APPLE_PAY, Lithic::Models::TokenizationSimulateParams::TokenizationSource::TaggedSymbol)
+        GOOGLE = T.let(:GOOGLE, Lithic::Models::TokenizationSimulateParams::TokenizationSource::TaggedSymbol)
         SAMSUNG_PAY =
-          T.let(:SAMSUNG_PAY, Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol)
-        MERCHANT = T.let(:MERCHANT, Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol)
+          T.let(:SAMSUNG_PAY, Lithic::Models::TokenizationSimulateParams::TokenizationSource::TaggedSymbol)
+        MERCHANT = T.let(:MERCHANT, Lithic::Models::TokenizationSimulateParams::TokenizationSource::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::TokenizationSimulateParams::TokenizationSource::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The decision that the Digital Wallet's recommend
@@ -159,14 +166,23 @@ module Lithic
           T.type_alias { T.any(Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::TaggedSymbol) }
 
         APPROVED =
-          T.let(:APPROVED, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol)
+          T.let(:APPROVED, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::TaggedSymbol)
         DECLINED =
-          T.let(:DECLINED, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol)
+          T.let(:DECLINED, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::TaggedSymbol)
         REQUIRE_ADDITIONAL_AUTHENTICATION =
           T.let(
             :REQUIRE_ADDITIONAL_AUTHENTICATION,
-            Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol
+            Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::TaggedSymbol
           )
+
+        class << self
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::TaggedSymbol])
+          end
+          def values
+          end
+        end
       end
     end
   end

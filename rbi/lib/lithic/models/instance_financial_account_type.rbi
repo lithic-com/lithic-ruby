@@ -9,14 +9,20 @@ module Lithic
       TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::InstanceFinancialAccountType) }
       OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::InstanceFinancialAccountType::TaggedSymbol) }
 
-      ISSUING = T.let(:ISSUING, Lithic::Models::InstanceFinancialAccountType::OrSymbol)
-      RESERVE = T.let(:RESERVE, Lithic::Models::InstanceFinancialAccountType::OrSymbol)
-      OPERATING = T.let(:OPERATING, Lithic::Models::InstanceFinancialAccountType::OrSymbol)
-      CHARGED_OFF_FEES = T.let(:CHARGED_OFF_FEES, Lithic::Models::InstanceFinancialAccountType::OrSymbol)
+      ISSUING = T.let(:ISSUING, Lithic::Models::InstanceFinancialAccountType::TaggedSymbol)
+      RESERVE = T.let(:RESERVE, Lithic::Models::InstanceFinancialAccountType::TaggedSymbol)
+      OPERATING = T.let(:OPERATING, Lithic::Models::InstanceFinancialAccountType::TaggedSymbol)
+      CHARGED_OFF_FEES = T.let(:CHARGED_OFF_FEES, Lithic::Models::InstanceFinancialAccountType::TaggedSymbol)
       CHARGED_OFF_INTEREST =
-        T.let(:CHARGED_OFF_INTEREST, Lithic::Models::InstanceFinancialAccountType::OrSymbol)
+        T.let(:CHARGED_OFF_INTEREST, Lithic::Models::InstanceFinancialAccountType::TaggedSymbol)
       CHARGED_OFF_PRINCIPAL =
-        T.let(:CHARGED_OFF_PRINCIPAL, Lithic::Models::InstanceFinancialAccountType::OrSymbol)
+        T.let(:CHARGED_OFF_PRINCIPAL, Lithic::Models::InstanceFinancialAccountType::TaggedSymbol)
+
+      class << self
+        sig { override.returns(T::Array[Lithic::Models::InstanceFinancialAccountType::TaggedSymbol]) }
+        def values
+        end
+      end
     end
   end
 end

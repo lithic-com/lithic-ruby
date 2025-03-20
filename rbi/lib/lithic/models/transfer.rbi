@@ -213,6 +213,12 @@ module Lithic
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transfer::Category::TaggedSymbol) }
 
         TRANSFER = T.let(:TRANSFER, Lithic::Models::Transfer::Category::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::Transfer::Category::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Event < Lithic::BaseModel
@@ -306,6 +312,12 @@ module Lithic
 
           APPROVED = T.let(:APPROVED, Lithic::Models::Transfer::Event::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::Transfer::Event::Result::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Transfer::Event::Result::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         module Type
@@ -414,6 +426,12 @@ module Lithic
           RETURNED_PAYMENT = T.let(:RETURNED_PAYMENT, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
           RETURNED_PAYMENT_REVERSAL =
             T.let(:RETURNED_PAYMENT_REVERSAL, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Transfer::Event::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -427,6 +445,12 @@ module Lithic
 
         APPROVED = T.let(:APPROVED, Lithic::Models::Transfer::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::Transfer::Result::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::Transfer::Result::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Status types:
@@ -447,6 +471,12 @@ module Lithic
         PENDING = T.let(:PENDING, Lithic::Models::Transfer::Status::TaggedSymbol)
         SETTLED = T.let(:SETTLED, Lithic::Models::Transfer::Status::TaggedSymbol)
         VOIDED = T.let(:VOIDED, Lithic::Models::Transfer::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::Transfer::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

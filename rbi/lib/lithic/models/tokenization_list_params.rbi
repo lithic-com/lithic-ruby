@@ -141,9 +141,15 @@ module Lithic
           T.type_alias { T.any(Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel::TaggedSymbol) }
 
         DIGITAL_WALLET =
-          T.let(:DIGITAL_WALLET, Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol)
-        MERCHANT = T.let(:MERCHANT, Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol)
-        ALL = T.let(:ALL, Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol)
+          T.let(:DIGITAL_WALLET, Lithic::Models::TokenizationListParams::TokenizationChannel::TaggedSymbol)
+        MERCHANT = T.let(:MERCHANT, Lithic::Models::TokenizationListParams::TokenizationChannel::TaggedSymbol)
+        ALL = T.let(:ALL, Lithic::Models::TokenizationListParams::TokenizationChannel::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::TokenizationListParams::TokenizationChannel::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

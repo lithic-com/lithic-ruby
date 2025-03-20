@@ -74,7 +74,7 @@ module Lithic
           INTERNAL: :INTERNAL
           TRANSFER: :TRANSFER
 
-          def self.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category]
+          def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category]
         end
 
         type result = :APPROVED | :DECLINED
@@ -85,7 +85,7 @@ module Lithic
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
-          def self.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::result]
+          def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::result]
         end
 
         type status =
@@ -101,7 +101,7 @@ module Lithic
           SETTLED: :SETTLED
           VOIDED: :VOIDED
 
-          def self.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::status]
+          def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::status]
         end
       end
     end

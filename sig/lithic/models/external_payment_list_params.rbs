@@ -92,7 +92,7 @@ module Lithic
         EXTERNAL_CHECK: :EXTERNAL_CHECK
         EXTERNAL_TRANSFER: :EXTERNAL_TRANSFER
 
-        def self.values: -> ::Array[Lithic::Models::ExternalPaymentListParams::category]
+        def self?.values: -> ::Array[Lithic::Models::ExternalPaymentListParams::category]
       end
 
       type result = :APPROVED | :DECLINED
@@ -103,7 +103,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self.values: -> ::Array[Lithic::Models::ExternalPaymentListParams::result]
+        def self?.values: -> ::Array[Lithic::Models::ExternalPaymentListParams::result]
       end
 
       type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
@@ -117,7 +117,7 @@ module Lithic
         REVERSED: :REVERSED
         CANCELED: :CANCELED
 
-        def self.values: -> ::Array[Lithic::Models::ExternalPaymentListParams::status]
+        def self?.values: -> ::Array[Lithic::Models::ExternalPaymentListParams::status]
       end
     end
   end

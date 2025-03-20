@@ -52,7 +52,7 @@ module Lithic
         SENDING: :SENDING
         SUCCESS: :SUCCESS
 
-        def self.values: -> ::Array[Lithic::Models::MessageAttempt::status]
+        def self?.values: -> ::Array[Lithic::Models::MessageAttempt::status]
       end
     end
   end

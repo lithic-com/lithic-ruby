@@ -126,7 +126,7 @@ module Lithic
         BUSINESS: :BUSINESS
         INDIVIDUAL: :INDIVIDUAL
 
-        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountListResponse::owner_type]
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountListResponse::owner_type]
       end
 
       type state = :ENABLED | :CLOSED | :PAUSED
@@ -138,7 +138,7 @@ module Lithic
         CLOSED: :CLOSED
         PAUSED: :PAUSED
 
-        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountListResponse::state]
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountListResponse::state]
       end
 
       type type_ = :CHECKING | :SAVINGS
@@ -149,7 +149,7 @@ module Lithic
         CHECKING: :CHECKING
         SAVINGS: :SAVINGS
 
-        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountListResponse::type_]
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountListResponse::type_]
       end
 
       type verification_method = :MANUAL | :MICRO_DEPOSIT | :PLAID | :PRENOTE
@@ -162,7 +162,7 @@ module Lithic
         PLAID: :PLAID
         PRENOTE: :PRENOTE
 
-        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountListResponse::verification_method]
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountListResponse::verification_method]
       end
 
       type verification_state =
@@ -176,7 +176,7 @@ module Lithic
         FAILED_VERIFICATION: :FAILED_VERIFICATION
         INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
 
-        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountListResponse::verification_state]
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountListResponse::verification_state]
       end
     end
   end

@@ -25,7 +25,7 @@ module Lithic
         module Parameters
           extend Lithic::Union
 
-          def self.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+          def self?.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
         end
       end
     end

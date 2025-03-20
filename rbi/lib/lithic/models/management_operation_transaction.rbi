@@ -195,6 +195,12 @@ module Lithic
           T.let(:MANAGEMENT_REWARD, Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol)
         MANAGEMENT_ADJUSTMENT =
           T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       module Direction
@@ -206,6 +212,12 @@ module Lithic
 
         CREDIT = T.let(:CREDIT, Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol)
         DEBIT = T.let(:DEBIT, Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Event < Lithic::BaseModel
@@ -336,6 +348,15 @@ module Lithic
 
           APPROVED =
             T.let(:APPROVED, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         module Result
@@ -348,6 +369,12 @@ module Lithic
 
           APPROVED = T.let(:APPROVED, Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         module Type
@@ -395,6 +422,12 @@ module Lithic
               :RETURNED_PAYMENT_REVERSAL,
               Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol
             )
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -407,6 +440,12 @@ module Lithic
 
         APPROVED = T.let(:APPROVED, Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       module Status
@@ -421,6 +460,12 @@ module Lithic
         DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
         REVERSED = T.let(:REVERSED, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
         CANCELED = T.let(:CANCELED, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

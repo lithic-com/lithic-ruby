@@ -137,6 +137,12 @@ module Lithic
         MASTERCARD = T.let(:MASTERCARD, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
         UNKNOWN = T.let(:UNKNOWN, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
         VISA = T.let(:VISA, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

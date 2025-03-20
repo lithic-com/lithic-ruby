@@ -81,7 +81,7 @@ module Lithic
         KYC_BASIC: :KYC_BASIC
         KYC_BYO: :KYC_BYO
 
-        def self.values: -> ::Array[Lithic::Models::KYC::workflow]
+        def self?.values: -> ::Array[Lithic::Models::KYC::workflow]
       end
     end
   end

@@ -268,6 +268,12 @@ module Lithic
             PENALTY = :PENALTY
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -607,6 +613,12 @@ module Lithic
             AVERAGE_DAILY = :AVERAGE_DAILY
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class InterestForPeriod < Lithic::BaseModel

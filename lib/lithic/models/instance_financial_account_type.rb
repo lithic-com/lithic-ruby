@@ -14,6 +14,12 @@ module Lithic
       CHARGED_OFF_PRINCIPAL = :CHARGED_OFF_PRINCIPAL
 
       finalize!
+
+      class << self
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def values; end
+      end
     end
   end
 end

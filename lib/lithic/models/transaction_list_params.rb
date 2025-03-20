@@ -141,6 +141,12 @@ module Lithic
         DECLINED = :DECLINED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Filters for transactions using transaction status field.
@@ -154,6 +160,12 @@ module Lithic
         EXPIRED = :EXPIRED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

@@ -110,6 +110,12 @@ module Lithic
 
         MASTERCARD = T.let(:MASTERCARD, Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol)
         VISA = T.let(:VISA, Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

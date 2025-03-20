@@ -83,7 +83,7 @@ module Lithic
         CHECKING: :CHECKING
         SAVINGS: :SAVINGS
 
-        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountUpdateParams::type_]
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountUpdateParams::type_]
       end
     end
   end

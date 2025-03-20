@@ -345,6 +345,17 @@ module Lithic
               :INDIVIDUAL,
               Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # Account State
@@ -362,6 +373,15 @@ module Lithic
             T.let(:CLOSED, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol)
           PAUSED =
             T.let(:PAUSED, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # Account Type
@@ -377,6 +397,15 @@ module Lithic
             T.let(:CHECKING, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol)
           SAVINGS =
             T.let(:SAVINGS, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # Verification Method
@@ -413,6 +442,17 @@ module Lithic
               :PRENOTE,
               Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # Verification State
@@ -449,6 +489,17 @@ module Lithic
               :INSUFFICIENT_FUNDS,
               Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
       end
     end

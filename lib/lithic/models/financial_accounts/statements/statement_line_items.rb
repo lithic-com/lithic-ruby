@@ -155,6 +155,12 @@ module Lithic
               MANAGEMENT_REWARD = :MANAGEMENT_REWARD
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             module EventType
@@ -226,6 +232,12 @@ module Lithic
               RETURNED_PAYMENT_REVERSAL = :RETURNED_PAYMENT_REVERSAL
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
         end

@@ -155,8 +155,14 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::TransactionListParams::Result) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::TransactionListParams::Result::TaggedSymbol) }
 
-        APPROVED = T.let(:APPROVED, Lithic::Models::TransactionListParams::Result::OrSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::TransactionListParams::Result::OrSymbol)
+        APPROVED = T.let(:APPROVED, Lithic::Models::TransactionListParams::Result::TaggedSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::TransactionListParams::Result::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::TransactionListParams::Result::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Filters for transactions using transaction status field.
@@ -166,11 +172,17 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::TransactionListParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::TransactionListParams::Status::TaggedSymbol) }
 
-        PENDING = T.let(:PENDING, Lithic::Models::TransactionListParams::Status::OrSymbol)
-        VOIDED = T.let(:VOIDED, Lithic::Models::TransactionListParams::Status::OrSymbol)
-        SETTLED = T.let(:SETTLED, Lithic::Models::TransactionListParams::Status::OrSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::TransactionListParams::Status::OrSymbol)
-        EXPIRED = T.let(:EXPIRED, Lithic::Models::TransactionListParams::Status::OrSymbol)
+        PENDING = T.let(:PENDING, Lithic::Models::TransactionListParams::Status::TaggedSymbol)
+        VOIDED = T.let(:VOIDED, Lithic::Models::TransactionListParams::Status::TaggedSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::TransactionListParams::Status::TaggedSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::TransactionListParams::Status::TaggedSymbol)
+        EXPIRED = T.let(:EXPIRED, Lithic::Models::TransactionListParams::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::TransactionListParams::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

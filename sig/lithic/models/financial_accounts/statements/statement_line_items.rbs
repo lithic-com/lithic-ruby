@@ -112,7 +112,7 @@ module Lithic
               MANAGEMENT_FEE: :MANAGEMENT_FEE
               MANAGEMENT_REWARD: :MANAGEMENT_REWARD
 
-              def self.values: -> ::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::category]
+              def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::category]
             end
 
             type event_type =
@@ -249,7 +249,7 @@ module Lithic
               RETURNED_PAYMENT: :RETURNED_PAYMENT
               RETURNED_PAYMENT_REVERSAL: :RETURNED_PAYMENT_REVERSAL
 
-              def self.values: -> ::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::event_type]
+              def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::event_type]
             end
           end
         end

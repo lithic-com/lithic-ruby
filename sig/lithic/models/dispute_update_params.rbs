@@ -75,7 +75,7 @@ module Lithic
         RECURRING_TRANSACTION_NOT_CANCELLED: :RECURRING_TRANSACTION_NOT_CANCELLED
         REFUND_NOT_PROCESSED: :REFUND_NOT_PROCESSED
 
-        def self.values: -> ::Array[Lithic::Models::DisputeUpdateParams::reason]
+        def self?.values: -> ::Array[Lithic::Models::DisputeUpdateParams::reason]
       end
     end
   end

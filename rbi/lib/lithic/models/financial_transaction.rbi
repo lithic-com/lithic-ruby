@@ -203,6 +203,12 @@ module Lithic
         CARD = T.let(:CARD, Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
         INTERNAL = T.let(:INTERNAL, Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
         TRANSFER = T.let(:TRANSFER, Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::FinancialTransaction::Category::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Event < Lithic::BaseModel
@@ -297,6 +303,12 @@ module Lithic
 
           APPROVED = T.let(:APPROVED, Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         module Type
@@ -424,6 +436,12 @@ module Lithic
             T.let(:RETURNED_PAYMENT, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
           RETURNED_PAYMENT_REVERSAL =
             T.let(:RETURNED_PAYMENT_REVERSAL, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -437,6 +455,12 @@ module Lithic
 
         APPROVED = T.let(:APPROVED, Lithic::Models::FinancialTransaction::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::FinancialTransaction::Result::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::FinancialTransaction::Result::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Status types:
@@ -460,6 +484,12 @@ module Lithic
         RETURNED = T.let(:RETURNED, Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
         SETTLED = T.let(:SETTLED, Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
         VOIDED = T.let(:VOIDED, Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::FinancialTransaction::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end
