@@ -2,8 +2,6 @@
 
 module Lithic
   module Models
-    # @abstract
-    #
     # Spend limit duration values:
     #
     #   - `ANNUALLY` - Card will authorize transactions up to spend limit for the
@@ -16,7 +14,9 @@ module Lithic
     #     starts 6 days after the current calendar date one month prior.
     #   - `TRANSACTION` - Card will authorize multiple transactions if each individual
     #     transaction is under the spend limit.
-    class SpendLimitDuration < Lithic::Enum
+    module SpendLimitDuration
+      extend Lithic::Enum
+
       ANNUALLY = :ANNUALLY
       FOREVER = :FOREVER
       MONTHLY = :MONTHLY

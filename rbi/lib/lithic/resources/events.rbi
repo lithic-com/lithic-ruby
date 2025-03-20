@@ -24,7 +24,7 @@ module Lithic
           begin_: Time,
           end_: Time,
           ending_before: String,
-          event_types: T::Array[Symbol],
+          event_types: T::Array[Lithic::Models::EventListParams::EventType::OrSymbol],
           page_size: Integer,
           starting_after: String,
           with_content: T::Boolean,
@@ -64,7 +64,7 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          status: Symbol,
+          status: Lithic::Models::EventListAttemptsParams::Status::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::CursorPage[Lithic::Models::MessageAttempt])

@@ -30,10 +30,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Request Result
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 

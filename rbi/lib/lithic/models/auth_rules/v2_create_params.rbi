@@ -57,11 +57,14 @@ module Lithic
         end
 
         # The type of Auth Rule
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol)) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol)
+            .returns(Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol)
+        end
         def type=(_)
         end
 
@@ -102,7 +105,7 @@ module Lithic
               Lithic::Models::AuthRules::ConditionalBlockParameters,
               Lithic::Models::AuthRules::VelocityLimitParams
             ),
-            type: Symbol,
+            type: Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol,
             excluded_card_tokens: T::Array[String],
             request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
           )
@@ -130,7 +133,7 @@ module Lithic
                   Lithic::Models::AuthRules::ConditionalBlockParameters,
                   Lithic::Models::AuthRules::VelocityLimitParams
                 ),
-                type: Symbol,
+                type: Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol,
                 card_tokens: T::Array[String],
                 program_level: T::Boolean,
                 excluded_card_tokens: T::Array[String],
@@ -142,8 +145,8 @@ module Lithic
         end
 
         # Parameters for the Auth Rule
-        class Parameters < Lithic::Union
-          abstract!
+        module Parameters
+          extend Lithic::Union
 
           Variants =
             type_template(:out) do
@@ -157,13 +160,14 @@ module Lithic
         end
 
         # The type of Auth Rule
-        class Type < Lithic::Enum
-          abstract!
+        module Type
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::V2CreateParams::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol) }
 
-          CONDITIONAL_BLOCK = :CONDITIONAL_BLOCK
-          VELOCITY_LIMIT = :VELOCITY_LIMIT
+          CONDITIONAL_BLOCK = T.let(:CONDITIONAL_BLOCK, Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol)
+          VELOCITY_LIMIT = T.let(:VELOCITY_LIMIT, Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol)
         end
       end
     end

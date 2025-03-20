@@ -52,7 +52,9 @@ module Lithic
 
       type kyc_exemption_type = :AUTHORIZED_USER | :PREPAID_CARD_USER
 
-      class KYCExemptionType < Lithic::Enum
+      module KYCExemptionType
+        extend Lithic::Enum
+
         AUTHORIZED_USER: :AUTHORIZED_USER
         PREPAID_CARD_USER: :PREPAID_CARD_USER
 
@@ -61,7 +63,9 @@ module Lithic
 
       type workflow = :KYC_EXEMPT
 
-      class Workflow < Lithic::Enum
+      module Workflow
+        extend Lithic::Enum
+
         KYC_EXEMPT: :KYC_EXEMPT
 
         def self.values: -> ::Array[Lithic::Models::KYCExempt::workflow]

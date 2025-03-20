@@ -67,7 +67,9 @@ module Lithic
         | :REWARD
         | :TRANSFER
 
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         ADJUSTMENT: :ADJUSTMENT
         BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
         DERECOGNITION: :DERECOGNITION
@@ -123,7 +125,9 @@ module Lithic
 
         type detailed_result = :APPROVED | :FUNDS_INSUFFICIENT
 
-        class DetailedResult < Lithic::Enum
+        module DetailedResult
+          extend Lithic::Enum
+
           APPROVED: :APPROVED
           FUNDS_INSUFFICIENT: :FUNDS_INSUFFICIENT
 
@@ -132,7 +136,9 @@ module Lithic
 
         type result = :APPROVED | :DECLINED
 
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
@@ -142,7 +148,9 @@ module Lithic
 
       type result = :APPROVED | :DECLINED
 
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
@@ -151,7 +159,9 @@ module Lithic
 
       type status = :DECLINED | :REVERSED | :SETTLED
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         DECLINED: :DECLINED
         REVERSED: :REVERSED
         SETTLED: :SETTLED

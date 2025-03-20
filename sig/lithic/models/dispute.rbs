@@ -102,7 +102,9 @@ module Lithic
         | :RECURRING_TRANSACTION_NOT_CANCELLED
         | :REFUND_NOT_PROCESSED
 
-      class Reason < Lithic::Enum
+      module Reason
+        extend Lithic::Enum
+
         ATM_CASH_MISDISPENSE: :ATM_CASH_MISDISPENSE
         CANCELLED: :CANCELLED
         DUPLICATED: :DUPLICATED
@@ -140,7 +142,9 @@ module Lithic
         | :WON_FIRST_CHARGEBACK
         | :WON_PREARBITRATION
 
-      class ResolutionReason < Lithic::Enum
+      module ResolutionReason
+        extend Lithic::Enum
+
         CASE_LOST: :CASE_LOST
         NETWORK_REJECTED: :NETWORK_REJECTED
         NO_DISPUTE_RIGHTS_3DS: :NO_DISPUTE_RIGHTS_3DS
@@ -172,7 +176,9 @@ module Lithic
         | :REPRESENTMENT
         | :SUBMITTED
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         ARBITRATION: :ARBITRATION
         CASE_CLOSED: :CASE_CLOSED
         CASE_WON: :CASE_WON

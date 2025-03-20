@@ -143,10 +143,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # External Payment category to be returned.
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         EXTERNAL_WIRE = :EXTERNAL_WIRE
         EXTERNAL_ACH = :EXTERNAL_ACH
         EXTERNAL_CHECK = :EXTERNAL_CHECK
@@ -155,20 +155,20 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # External Payment result to be returned.
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
         finalize!
       end
 
-      # @abstract
-      #
       # Book transfer status to be returned.
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         PENDING = :PENDING
         SETTLED = :SETTLED
         DECLINED = :DECLINED

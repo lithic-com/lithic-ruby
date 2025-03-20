@@ -108,8 +108,9 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         MANAGEMENT_FEE = :MANAGEMENT_FEE
         MANAGEMENT_DISPUTE = :MANAGEMENT_DISPUTE
         MANAGEMENT_REWARD = :MANAGEMENT_REWARD
@@ -118,8 +119,9 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      class Direction < Lithic::Enum
+      module Direction
+        extend Lithic::Enum
+
         CREDIT = :CREDIT
         DEBIT = :DEBIT
 
@@ -192,23 +194,26 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        class DetailedResult < Lithic::Enum
+        module DetailedResult
+          extend Lithic::Enum
+
           APPROVED = :APPROVED
 
           finalize!
         end
 
-        # @abstract
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           APPROVED = :APPROVED
           DECLINED = :DECLINED
 
           finalize!
         end
 
-        # @abstract
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           CASH_BACK = :CASH_BACK
           CURRENCY_CONVERSION = :CURRENCY_CONVERSION
           INTEREST = :INTEREST
@@ -229,16 +234,18 @@ module Lithic
         end
       end
 
-      # @abstract
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
         finalize!
       end
 
-      # @abstract
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         PENDING = :PENDING
         SETTLED = :SETTLED
         DECLINED = :DECLINED

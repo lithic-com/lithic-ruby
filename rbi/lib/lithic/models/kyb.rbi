@@ -87,11 +87,11 @@ module Lithic
       end
 
       # Specifies the type of KYB workflow to run.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::KYB::Workflow::OrSymbol) }
       def workflow
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig { params(_: Lithic::Models::KYB::Workflow::OrSymbol).returns(Lithic::Models::KYB::Workflow::OrSymbol) }
       def workflow=(_)
       end
 
@@ -134,7 +134,7 @@ module Lithic
           control_person: Lithic::Models::KYB::ControlPerson,
           nature_of_business: String,
           tos_timestamp: String,
-          workflow: Symbol,
+          workflow: Lithic::Models::KYB::Workflow::OrSymbol,
           external_id: String,
           kyb_passed_timestamp: String,
           website_url: String
@@ -165,7 +165,7 @@ module Lithic
               control_person: Lithic::Models::KYB::ControlPerson,
               nature_of_business: String,
               tos_timestamp: String,
-              workflow: Symbol,
+              workflow: Lithic::Models::KYB::Workflow::OrSymbol,
               external_id: String,
               kyb_passed_timestamp: String,
               website_url: String
@@ -587,13 +587,14 @@ module Lithic
       end
 
       # Specifies the type of KYB workflow to run.
-      class Workflow < Lithic::Enum
-        abstract!
+      module Workflow
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::KYB::Workflow) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::KYB::Workflow::TaggedSymbol) }
 
-        KYB_BASIC = :KYB_BASIC
-        KYB_BYO = :KYB_BYO
+        KYB_BASIC = T.let(:KYB_BASIC, Lithic::Models::KYB::Workflow::OrSymbol)
+        KYB_BYO = T.let(:KYB_BYO, Lithic::Models::KYB::Workflow::OrSymbol)
       end
     end
   end

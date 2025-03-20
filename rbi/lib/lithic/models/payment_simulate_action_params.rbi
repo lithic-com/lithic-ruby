@@ -7,20 +7,26 @@ module Lithic
       include Lithic::RequestParameters
 
       # Event Type
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol) }
       def event_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+          .returns(Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+      end
       def event_type=(_)
       end
 
       # Decline reason
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol)) }
       def decline_reason
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol)
+          .returns(Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol)
+      end
       def decline_reason=(_)
       end
 
@@ -35,8 +41,8 @@ module Lithic
 
       sig do
         params(
-          event_type: Symbol,
-          decline_reason: Symbol,
+          event_type: Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol,
+          decline_reason: Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol,
           return_reason_code: String,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
@@ -49,8 +55,8 @@ module Lithic
         override
           .returns(
             {
-              event_type: Symbol,
-              decline_reason: Symbol,
+              event_type: Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol,
+              decline_reason: Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol,
               return_reason_code: String,
               request_options: Lithic::RequestOptions
             }
@@ -60,30 +66,51 @@ module Lithic
       end
 
       # Event Type
-      class EventType < Lithic::Enum
-        abstract!
+      module EventType
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentSimulateActionParams::EventType) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol) }
 
-        ACH_ORIGINATION_REVIEWED = :ACH_ORIGINATION_REVIEWED
-        ACH_ORIGINATION_RELEASED = :ACH_ORIGINATION_RELEASED
-        ACH_ORIGINATION_PROCESSED = :ACH_ORIGINATION_PROCESSED
-        ACH_ORIGINATION_SETTLED = :ACH_ORIGINATION_SETTLED
-        ACH_RECEIPT_SETTLED = :ACH_RECEIPT_SETTLED
-        ACH_RETURN_INITIATED = :ACH_RETURN_INITIATED
-        ACH_RETURN_PROCESSED = :ACH_RETURN_PROCESSED
-        ACH_RETURN_SETTLED = :ACH_RETURN_SETTLED
+        ACH_ORIGINATION_REVIEWED =
+          T.let(:ACH_ORIGINATION_REVIEWED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+        ACH_ORIGINATION_RELEASED =
+          T.let(:ACH_ORIGINATION_RELEASED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+        ACH_ORIGINATION_PROCESSED =
+          T.let(:ACH_ORIGINATION_PROCESSED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+        ACH_ORIGINATION_SETTLED =
+          T.let(:ACH_ORIGINATION_SETTLED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+        ACH_RECEIPT_SETTLED =
+          T.let(:ACH_RECEIPT_SETTLED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+        ACH_RETURN_INITIATED =
+          T.let(:ACH_RETURN_INITIATED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+        ACH_RETURN_PROCESSED =
+          T.let(:ACH_RETURN_PROCESSED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
+        ACH_RETURN_SETTLED =
+          T.let(:ACH_RETURN_SETTLED, Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
       end
 
       # Decline reason
-      class DeclineReason < Lithic::Enum
-        abstract!
+      module DeclineReason
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason::TaggedSymbol) }
 
-        PROGRAM_TRANSACTION_LIMIT_EXCEEDED = :PROGRAM_TRANSACTION_LIMIT_EXCEEDED
-        PROGRAM_DAILY_LIMIT_EXCEEDED = :PROGRAM_DAILY_LIMIT_EXCEEDED
-        PROGRAM_MONTHLY_LIMIT_EXCEEDED = :PROGRAM_MONTHLY_LIMIT_EXCEEDED
+        PROGRAM_TRANSACTION_LIMIT_EXCEEDED =
+          T.let(
+            :PROGRAM_TRANSACTION_LIMIT_EXCEEDED,
+            Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol
+          )
+        PROGRAM_DAILY_LIMIT_EXCEEDED =
+          T.let(:PROGRAM_DAILY_LIMIT_EXCEEDED, Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol)
+        PROGRAM_MONTHLY_LIMIT_EXCEEDED =
+          T.let(
+            :PROGRAM_MONTHLY_LIMIT_EXCEEDED,
+            Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol
+          )
       end
     end
   end

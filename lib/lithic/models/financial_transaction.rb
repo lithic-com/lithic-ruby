@@ -121,8 +121,6 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Status types:
       #
       #   - `CARD` - Issuing card transaction.
@@ -130,7 +128,9 @@ module Lithic
       #   - `INTERNAL` - Transaction for internal adjustment.
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #     program.
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         ACH = :ACH
         CARD = :CARD
         INTERNAL = :INTERNAL
@@ -202,19 +202,20 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           APPROVED = :APPROVED
           DECLINED = :DECLINED
 
           finalize!
         end
 
-        # @abstract
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           ACH_ORIGINATION_CANCELLED = :ACH_ORIGINATION_CANCELLED
           ACH_ORIGINATION_INITIATED = :ACH_ORIGINATION_INITIATED
           ACH_ORIGINATION_PROCESSED = :ACH_ORIGINATION_PROCESSED
@@ -284,19 +285,17 @@ module Lithic
         end
       end
 
-      # @abstract
-      #
       # APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
         finalize!
       end
 
-      # @abstract
-      #
       # Status types:
       #
       #   - `DECLINED` - The transaction was declined.
@@ -306,7 +305,9 @@ module Lithic
       #   - `RETURNED` - The transaction has been returned.
       #   - `SETTLED` - The transaction is completed.
       #   - `VOIDED` - The transaction was voided. Card transaction only.
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         DECLINED = :DECLINED
         EXPIRED = :EXPIRED
         PENDING = :PENDING

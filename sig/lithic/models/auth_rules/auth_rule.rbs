@@ -1,6 +1,5 @@
 module Lithic
   module Models
-    
     class AuthRule = AuthRules::AuthRule
 
     module AuthRules
@@ -66,7 +65,9 @@ module Lithic
 
         type state = :ACTIVE | :INACTIVE
 
-        class State < Lithic::Enum
+        module State
+          extend Lithic::Enum
+
           ACTIVE: :ACTIVE
           INACTIVE: :INACTIVE
 

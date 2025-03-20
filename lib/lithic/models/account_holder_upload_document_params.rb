@@ -28,10 +28,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # The type of document to upload
-      class DocumentType < Lithic::Enum
+      module DocumentType
+        extend Lithic::Enum
+
         EIN_LETTER = :EIN_LETTER
         TAX_RETURN = :TAX_RETURN
         OPERATING_AGREEMENT = :OPERATING_AGREEMENT

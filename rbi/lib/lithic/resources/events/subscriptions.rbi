@@ -10,7 +10,7 @@ module Lithic
             url: String,
             description: String,
             disabled: T::Boolean,
-            event_types: T::Array[Symbol],
+            event_types: T::Array[Lithic::Models::Events::SubscriptionCreateParams::EventType::OrSymbol],
             request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Lithic::Models::EventSubscription)
@@ -47,7 +47,7 @@ module Lithic
             url: String,
             description: String,
             disabled: T::Boolean,
-            event_types: T::Array[Symbol],
+            event_types: T::Array[Lithic::Models::Events::SubscriptionUpdateParams::EventType::OrSymbol],
             request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Lithic::Models::EventSubscription)
@@ -110,7 +110,7 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            status: Symbol,
+            status: Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol,
             request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Lithic::CursorPage[Lithic::Models::MessageAttempt])
@@ -211,7 +211,7 @@ module Lithic
         sig do
           params(
             event_subscription_token: String,
-            event_type: Symbol,
+            event_type: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::OrSymbol,
             request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .void

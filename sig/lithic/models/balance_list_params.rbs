@@ -43,7 +43,9 @@ module Lithic
 
       type financial_account_type = :ISSUING | :OPERATING | :RESERVE
 
-      class FinancialAccountType < Lithic::Enum
+      module FinancialAccountType
+        extend Lithic::Enum
+
         ISSUING: :ISSUING
         OPERATING: :OPERATING
         RESERVE: :RESERVE

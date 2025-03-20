@@ -109,10 +109,10 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # Financial Transaction category to be returned.
-        class Category < Lithic::Enum
+        module Category
+          extend Lithic::Enum
+
           ACH = :ACH
           CARD = :CARD
           INTERNAL = :INTERNAL
@@ -121,20 +121,20 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # Financial Transaction result to be returned.
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           APPROVED = :APPROVED
           DECLINED = :DECLINED
 
           finalize!
         end
 
-        # @abstract
-        #
         # Financial Transaction status to be returned.
-        class Status < Lithic::Enum
+        module Status
+          extend Lithic::Enum
+
           DECLINED = :DECLINED
           EXPIRED = :EXPIRED
           PENDING = :PENDING

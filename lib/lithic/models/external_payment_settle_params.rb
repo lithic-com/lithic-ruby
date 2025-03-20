@@ -40,8 +40,9 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      class ProgressTo < Lithic::Enum
+      module ProgressTo
+        extend Lithic::Enum
+
         SETTLED = :SETTLED
         RELEASED = :RELEASED
 

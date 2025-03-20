@@ -30,11 +30,14 @@ module Lithic
         #   Note that only deactivating an Auth Rule through this endpoint is supported at
         #   this time. If you need to (re-)activate an Auth Rule the /promote endpoint
         #   should be used to promote a draft to the currently active version.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol)) }
         def state
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol)
+            .returns(Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol)
+        end
         def state=(_)
         end
 
@@ -69,7 +72,7 @@ module Lithic
           params(
             account_tokens: T::Array[String],
             name: T.nilable(String),
-            state: Symbol,
+            state: Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol,
             card_tokens: T::Array[String],
             excluded_card_tokens: T::Array[String],
             program_level: T::Boolean,
@@ -94,7 +97,7 @@ module Lithic
               {
                 account_tokens: T::Array[String],
                 name: T.nilable(String),
-                state: Symbol,
+                state: Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol,
                 card_tokens: T::Array[String],
                 excluded_card_tokens: T::Array[String],
                 program_level: T::Boolean,
@@ -110,12 +113,13 @@ module Lithic
         #   Note that only deactivating an Auth Rule through this endpoint is supported at
         #   this time. If you need to (re-)activate an Auth Rule the /promote endpoint
         #   should be used to promote a draft to the currently active version.
-        class State < Lithic::Enum
-          abstract!
+        module State
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::V2UpdateParams::State) }
+          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::V2UpdateParams::State::TaggedSymbol) }
 
-          INACTIVE = :INACTIVE
+          INACTIVE = T.let(:INACTIVE, Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol)
         end
       end
     end

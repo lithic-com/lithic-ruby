@@ -98,7 +98,9 @@ module Lithic
 
         type charged_off_reason = :DELINQUENT | :FRAUD
 
-        class ChargedOffReason < Lithic::Enum
+        module ChargedOffReason
+          extend Lithic::Enum
+
           DELINQUENT: :DELINQUENT
           FRAUD: :FRAUD
 
@@ -108,7 +110,9 @@ module Lithic
         type financial_account_state =
           :PENDING | :CURRENT | :DELINQUENT | :CHARGED_OFF
 
-        class FinancialAccountState < Lithic::Enum
+        module FinancialAccountState
+          extend Lithic::Enum
+
           PENDING: :PENDING
           CURRENT: :CURRENT
           DELINQUENT: :DELINQUENT
@@ -120,7 +124,9 @@ module Lithic
 
       type status = :OPEN | :CLOSED | :SUSPENDED | :PENDING
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         OPEN: :OPEN
         CLOSED: :CLOSED
         SUSPENDED: :SUSPENDED
@@ -137,7 +143,9 @@ module Lithic
         | :CHARGED_OFF_INTEREST
         | :CHARGED_OFF_PRINCIPAL
 
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         ISSUING: :ISSUING
         RESERVE: :RESERVE
         OPERATING: :OPERATING
@@ -155,7 +163,9 @@ module Lithic
         | :BANK_REQUEST
         | :DELINQUENT
 
-      class StatusChangeReason < Lithic::Enum
+      module StatusChangeReason
+        extend Lithic::Enum
+
         CHARGED_OFF_DELINQUENT: :CHARGED_OFF_DELINQUENT
         CHARGED_OFF_FRAUD: :CHARGED_OFF_FRAUD
         END_USER_REQUEST: :END_USER_REQUEST

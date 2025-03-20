@@ -112,10 +112,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Card network where the transaction took place
-      class Network < Lithic::Enum
+      module Network
+        extend Lithic::Enum
+
         INTERLINK = :INTERLINK
         MAESTRO = :MAESTRO
         MASTERCARD = :MASTERCARD

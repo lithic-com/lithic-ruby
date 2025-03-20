@@ -8,11 +8,11 @@ module Lithic
       sig do
         params(
           amount: Integer,
-          category: Symbol,
+          category: Lithic::Models::BookTransferCreateParams::Category::OrSymbol,
           from_financial_account_token: String,
           subtype: String,
           to_financial_account_token: String,
-          type: Symbol,
+          type: Lithic::Models::BookTransferCreateParams::Type::OrSymbol,
           token: String,
           memo: String,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
@@ -65,14 +65,14 @@ module Lithic
           account_token: String,
           begin_: Time,
           business_account_token: String,
-          category: Symbol,
+          category: Lithic::Models::BookTransferListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
-          result: Symbol,
+          result: Lithic::Models::BookTransferListParams::Result::OrSymbol,
           starting_after: String,
-          status: Symbol,
+          status: Lithic::Models::BookTransferListParams::Status::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::CursorPage[Lithic::Models::BookTransferResponse])

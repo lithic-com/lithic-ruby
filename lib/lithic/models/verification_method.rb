@@ -2,8 +2,9 @@
 
 module Lithic
   module Models
-    # @abstract
-    class VerificationMethod < Lithic::Enum
+    module VerificationMethod
+      extend Lithic::Enum
+
       MANUAL = :MANUAL
       MICRO_DEPOSIT = :MICRO_DEPOSIT
       PLAID = :PLAID

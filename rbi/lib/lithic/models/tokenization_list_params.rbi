@@ -73,11 +73,14 @@ module Lithic
 
       # Filter for tokenizations by tokenization channel. If this is not specified, only
       #   DIGITAL_WALLET tokenizations will be returned.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol)) }
       def tokenization_channel
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol)
+          .returns(Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol)
+      end
       def tokenization_channel=(_)
       end
 
@@ -90,7 +93,7 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          tokenization_channel: Symbol,
+          tokenization_channel: Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -119,7 +122,7 @@ module Lithic
               ending_before: String,
               page_size: Integer,
               starting_after: String,
-              tokenization_channel: Symbol,
+              tokenization_channel: Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -129,14 +132,18 @@ module Lithic
 
       # Filter for tokenizations by tokenization channel. If this is not specified, only
       #   DIGITAL_WALLET tokenizations will be returned.
-      class TokenizationChannel < Lithic::Enum
-        abstract!
+      module TokenizationChannel
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel::TaggedSymbol) }
 
-        DIGITAL_WALLET = :DIGITAL_WALLET
-        MERCHANT = :MERCHANT
-        ALL = :ALL
+        DIGITAL_WALLET =
+          T.let(:DIGITAL_WALLET, Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol)
+        MERCHANT = T.let(:MERCHANT, Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol)
+        ALL = T.let(:ALL, Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol)
       end
     end
   end

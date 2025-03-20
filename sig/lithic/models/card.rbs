@@ -168,7 +168,9 @@ module Lithic
 
         type state = :DELETED | :ENABLED | :PENDING
 
-        class State < Lithic::Enum
+        module State
+          extend Lithic::Enum
+
           DELETED: :DELETED
           ENABLED: :ENABLED
           PENDING: :PENDING
@@ -178,7 +180,9 @@ module Lithic
 
         type type_ = :DEPOSITORY_CHECKING | :DEPOSITORY_SAVINGS
 
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           DEPOSITORY_CHECKING: :DEPOSITORY_CHECKING
           DEPOSITORY_SAVINGS: :DEPOSITORY_SAVINGS
 
@@ -188,7 +192,9 @@ module Lithic
 
       type pin_status = :OK | :BLOCKED | :NOT_SET
 
-      class PinStatus < Lithic::Enum
+      module PinStatus
+        extend Lithic::Enum
+
         OK: :OK
         BLOCKED: :BLOCKED
         NOT_SET: :NOT_SET
@@ -199,7 +205,9 @@ module Lithic
       type state =
         :CLOSED | :OPEN | :PAUSED | :PENDING_ACTIVATION | :PENDING_FULFILLMENT
 
-      class State < Lithic::Enum
+      module State
+        extend Lithic::Enum
+
         CLOSED: :CLOSED
         OPEN: :OPEN
         PAUSED: :PAUSED
@@ -217,7 +225,9 @@ module Lithic
         | :UNLOCKED
         | :DIGITAL_WALLET
 
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         MERCHANT_LOCKED: :MERCHANT_LOCKED
         PHYSICAL: :PHYSICAL
         SINGLE_USE: :SINGLE_USE

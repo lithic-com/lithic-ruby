@@ -519,10 +519,10 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # Specifies the workflow type. This must be 'KYC_EXEMPT'
-      class Workflow < Lithic::Enum
+      module Workflow
+        extend Lithic::Enum
+
         KYC_EXEMPT = :KYC_EXEMPT
 
         finalize!
@@ -593,10 +593,10 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # Specifies the type of KYC Exempt user
-      class KYCExemptionType < Lithic::Enum
+      module KYCExemptionType
+        extend Lithic::Enum
+
         AUTHORIZED_USER = :AUTHORIZED_USER
         PREPAID_CARD_USER = :PREPAID_CARD_USER
 

@@ -98,7 +98,9 @@ module Lithic
 
       type network = :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
 
-      class Network < Lithic::Enum
+      module Network
+        extend Lithic::Enum
+
         INTERLINK: :INTERLINK
         MAESTRO: :MAESTRO
         MASTERCARD: :MASTERCARD
@@ -131,7 +133,9 @@ module Lithic
         | :PREARBITRATION
         | :REPRESENTMENT
 
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         ADJUSTMENT: :ADJUSTMENT
         ARBITRATION: :ARBITRATION
         CHARGEBACK: :CHARGEBACK

@@ -260,7 +260,9 @@ module Lithic
           | :STRONG_CUSTOMER_AUTHENTICATION_DELEGATION
           | :TRANSACTION_RISK_ANALYSIS
 
-        class AcquirerExemption < Lithic::Enum
+        module AcquirerExemption
+          extend Lithic::Enum
+
           AUTHENTICATION_OUTAGE_EXCEPTION: :AUTHENTICATION_OUTAGE_EXCEPTION
           LOW_VALUE: :LOW_VALUE
           MERCHANT_INITIATED_TRANSACTION: :MERCHANT_INITIATED_TRANSACTION
@@ -275,7 +277,9 @@ module Lithic
 
         type authentication_result = :ATTEMPTS | :DECLINE | :NONE | :SUCCESS
 
-        class AuthenticationResult < Lithic::Enum
+        module AuthenticationResult
+          extend Lithic::Enum
+
           ATTEMPTS: :ATTEMPTS
           DECLINE: :DECLINE
           NONE: :NONE
@@ -291,7 +295,9 @@ module Lithic
           | :NETWORK
           | :UNKNOWN
 
-        class DecisionMadeBy < Lithic::Enum
+        module DecisionMadeBy
+          extend Lithic::Enum
+
           CUSTOMER_ENDPOINT: :CUSTOMER_ENDPOINT
           LITHIC_DEFAULT: :LITHIC_DEFAULT
           LITHIC_RULES: :LITHIC_RULES
@@ -307,7 +313,9 @@ module Lithic
           | :NONE
           | :TOKEN_AUTHENTICATED
 
-        class LiabilityShift < Lithic::Enum
+        module LiabilityShift
+          extend Lithic::Enum
+
           NUMBER_3DS_AUTHENTICATED: :"3DS_AUTHENTICATED"
           ACQUIRER_EXEMPTION: :ACQUIRER_EXEMPTION
           NONE: :NONE
@@ -318,7 +326,9 @@ module Lithic
 
         type verification_attempted = :NONE | :OTHER
 
-        class VerificationAttempted < Lithic::Enum
+        module VerificationAttempted
+          extend Lithic::Enum
+
           NONE: :NONE
           OTHER: :OTHER
 
@@ -333,7 +343,9 @@ module Lithic
           | :REJECTED
           | :SUCCESS
 
-        class VerificationResult < Lithic::Enum
+        module VerificationResult
+          extend Lithic::Enum
+
           CANCELLED: :CANCELLED
           FAILED: :FAILED
           FRICTIONLESS: :FRICTIONLESS
@@ -386,7 +398,9 @@ module Lithic
 
       type network = :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
 
-      class Network < Lithic::Enum
+      module Network
+        extend Lithic::Enum
+
         INTERLINK: :INTERLINK
         MAESTRO: :MAESTRO
         MASTERCARD: :MASTERCARD
@@ -442,7 +456,9 @@ module Lithic
 
           type card = :NOT_PRESENT | :PREAUTHORIZED | :PRESENT | :UNKNOWN
 
-          class Card < Lithic::Enum
+          module Card
+            extend Lithic::Enum
+
             NOT_PRESENT: :NOT_PRESENT
             PREAUTHORIZED: :PREAUTHORIZED
             PRESENT: :PRESENT
@@ -463,7 +479,9 @@ module Lithic
             | :TELEPHONE_ORDER
             | :UNKNOWN
 
-          class Cardholder < Lithic::Enum
+          module Cardholder
+            extend Lithic::Enum
+
             DEFERRED_BILLING: :DEFERRED_BILLING
             ELECTRONIC_ORDER: :ELECTRONIC_ORDER
             INSTALLMENT: :INSTALLMENT
@@ -495,7 +513,9 @@ module Lithic
             | :UNKNOWN
             | :UNSPECIFIED
 
-          class Pan < Lithic::Enum
+          module Pan
+            extend Lithic::Enum
+
             AUTO_ENTRY: :AUTO_ENTRY
             BAR_CODE: :BAR_CODE
             CONTACTLESS: :CONTACTLESS
@@ -557,7 +577,9 @@ module Lithic
           type operator =
             :ADMINISTRATIVE | :CARDHOLDER | :CARD_ACCEPTOR | :UNKNOWN
 
-          class Operator < Lithic::Enum
+          module Operator
+            extend Lithic::Enum
+
             ADMINISTRATIVE: :ADMINISTRATIVE
             CARDHOLDER: :CARDHOLDER
             CARD_ACCEPTOR: :CARD_ACCEPTOR
@@ -569,7 +591,9 @@ module Lithic
           type pin_capability =
             :CAPABLE | :INOPERATIVE | :NOT_CAPABLE | :UNSPECIFIED
 
-          class PinCapability < Lithic::Enum
+          module PinCapability
+            extend Lithic::Enum
+
             CAPABLE: :CAPABLE
             INOPERATIVE: :INOPERATIVE
             NOT_CAPABLE: :NOT_CAPABLE
@@ -604,7 +628,9 @@ module Lithic
             | :VOICE
             | :UNKNOWN
 
-          class Type < Lithic::Enum
+          module Type
+            extend Lithic::Enum
+
             ADMINISTRATIVE: :ADMINISTRATIVE
             ATM: :ATM
             AUTHORIZATION: :AUTHORIZATION
@@ -660,7 +686,9 @@ module Lithic
         | :UNKNOWN_HOST_TIMEOUT
         | :USER_TRANSACTION_LIMIT
 
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         ACCOUNT_STATE_TRANSACTION_FAIL: :ACCOUNT_STATE_TRANSACTION_FAIL
         APPROVED: :APPROVED
         BANK_CONNECTION_ERROR: :BANK_CONNECTION_ERROR
@@ -690,7 +718,9 @@ module Lithic
 
       type status = :DECLINED | :EXPIRED | :PENDING | :SETTLED | :VOIDED
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         DECLINED: :DECLINED
         EXPIRED: :EXPIRED
         PENDING: :PENDING
@@ -720,7 +750,9 @@ module Lithic
           | :OTHER
           | :SAMSUNG_PAY
 
-        class WalletType < Lithic::Enum
+        module WalletType
+          extend Lithic::Enum
+
           APPLE_PAY: :APPLE_PAY
           GOOGLE_PAY: :GOOGLE_PAY
           MASTERPASS: :MASTERPASS
@@ -909,7 +941,9 @@ module Lithic
           | :UNAUTHORIZED_MERCHANT
           | :VEHICLE_NUMBER_INVALID
 
-        class DetailedResult < Lithic::Enum
+        module DetailedResult
+          extend Lithic::Enum
+
           ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED: :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
           ACCOUNT_DELINQUENT: :ACCOUNT_DELINQUENT
           ACCOUNT_INACTIVE: :ACCOUNT_INACTIVE
@@ -968,7 +1002,9 @@ module Lithic
 
         type effective_polarity = :CREDIT | :DEBIT
 
-        class EffectivePolarity < Lithic::Enum
+        module EffectivePolarity
+          extend Lithic::Enum
+
           CREDIT: :CREDIT
           DEBIT: :DEBIT
 
@@ -1085,7 +1121,9 @@ module Lithic
           | :UNKNOWN_HOST_TIMEOUT
           | :USER_TRANSACTION_LIMIT
 
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           ACCOUNT_STATE_TRANSACTION_FAIL: :ACCOUNT_STATE_TRANSACTION_FAIL
           APPROVED: :APPROVED
           BANK_CONNECTION_ERROR: :BANK_CONNECTION_ERROR
@@ -1193,7 +1231,9 @@ module Lithic
             | :UNAUTHORIZED_MERCHANT
             | :VEHICLE_NUMBER_INVALID
 
-          class Result < Lithic::Enum
+          module Result
+            extend Lithic::Enum
+
             ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED: :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
             ACCOUNT_DELINQUENT: :ACCOUNT_DELINQUENT
             ACCOUNT_INACTIVE: :ACCOUNT_INACTIVE
@@ -1267,7 +1307,9 @@ module Lithic
           | :RETURN
           | :RETURN_REVERSAL
 
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           AUTHORIZATION: :AUTHORIZATION
           AUTHORIZATION_ADVICE: :AUTHORIZATION_ADVICE
           AUTHORIZATION_EXPIRY: :AUTHORIZATION_EXPIRY

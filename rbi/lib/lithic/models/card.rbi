@@ -59,11 +59,14 @@ module Lithic
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       #   attempts).
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Card::PinStatus::TaggedSymbol) }
       def pin_status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::Card::PinStatus::TaggedSymbol)
+          .returns(Lithic::Models::Card::PinStatus::TaggedSymbol)
+      end
       def pin_status=(_)
       end
 
@@ -89,11 +92,14 @@ module Lithic
       #     starts 6 days after the current calendar date one month prior.
       #   - `TRANSACTION` - Card will authorize multiple transactions if each individual
       #     transaction is under the spend limit.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::SpendLimitDuration::TaggedSymbol) }
       def spend_limit_duration
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::SpendLimitDuration::TaggedSymbol)
+          .returns(Lithic::Models::SpendLimitDuration::TaggedSymbol)
+      end
       def spend_limit_duration=(_)
       end
 
@@ -118,11 +124,11 @@ module Lithic
       #
       #   In sandbox, the same daily batch fulfillment occurs, but no cards are actually
       #   manufactured.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Card::State::TaggedSymbol) }
       def state
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig { params(_: Lithic::Models::Card::State::TaggedSymbol).returns(Lithic::Models::Card::State::TaggedSymbol) }
       def state=(_)
       end
 
@@ -142,11 +148,11 @@ module Lithic
       #     VIRTUAL instead.
       #   - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
       #     use VIRTUAL instead.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Card::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig { params(_: Lithic::Models::Card::Type::TaggedSymbol).returns(Lithic::Models::Card::Type::TaggedSymbol) }
       def type=(_)
       end
 
@@ -279,11 +285,11 @@ module Lithic
           created: Time,
           funding: Lithic::Models::Card::Funding,
           last_four: String,
-          pin_status: Symbol,
+          pin_status: Lithic::Models::Card::PinStatus::TaggedSymbol,
           spend_limit: Integer,
-          spend_limit_duration: Symbol,
-          state: Symbol,
-          type: Symbol,
+          spend_limit_duration: Lithic::Models::SpendLimitDuration::TaggedSymbol,
+          state: Lithic::Models::Card::State::TaggedSymbol,
+          type: Lithic::Models::Card::Type::TaggedSymbol,
           auth_rule_tokens: T::Array[String],
           cardholder_currency: String,
           cvv: String,
@@ -336,11 +342,11 @@ module Lithic
               created: Time,
               funding: Lithic::Models::Card::Funding,
               last_four: String,
-              pin_status: Symbol,
+              pin_status: Lithic::Models::Card::PinStatus::TaggedSymbol,
               spend_limit: Integer,
-              spend_limit_duration: Symbol,
-              state: Symbol,
-              type: Symbol,
+              spend_limit_duration: Lithic::Models::SpendLimitDuration::TaggedSymbol,
+              state: Lithic::Models::Card::State::TaggedSymbol,
+              type: Lithic::Models::Card::Type::TaggedSymbol,
               auth_rule_tokens: T::Array[String],
               cardholder_currency: String,
               cvv: String,
@@ -398,11 +404,14 @@ module Lithic
         #   - `PENDING` - The funding account is still being verified e.g. bank
         #     micro-deposits verification.
         #   - `DELETED` - The founding account has been deleted.
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Card::Funding::State::TaggedSymbol) }
         def state
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Card::Funding::State::TaggedSymbol)
+            .returns(Lithic::Models::Card::Funding::State::TaggedSymbol)
+        end
         def state=(_)
         end
 
@@ -410,11 +419,14 @@ module Lithic
         #
         #   - `DEPOSITORY_CHECKING` - Bank checking account.
         #   - `DEPOSITORY_SAVINGS` - Bank savings account.
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Card::Funding::Type::TaggedSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Card::Funding::Type::TaggedSymbol)
+            .returns(Lithic::Models::Card::Funding::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
@@ -442,8 +454,8 @@ module Lithic
             token: String,
             created: Time,
             last_four: String,
-            state: Symbol,
-            type: Symbol,
+            state: Lithic::Models::Card::Funding::State::TaggedSymbol,
+            type: Lithic::Models::Card::Funding::Type::TaggedSymbol,
             account_name: String,
             nickname: String
           )
@@ -459,8 +471,8 @@ module Lithic
                 token: String,
                 created: Time,
                 last_four: String,
-                state: Symbol,
-                type: Symbol,
+                state: Lithic::Models::Card::Funding::State::TaggedSymbol,
+                type: Lithic::Models::Card::Funding::Type::TaggedSymbol,
                 account_name: String,
                 nickname: String
               }
@@ -478,40 +490,43 @@ module Lithic
         #   - `PENDING` - The funding account is still being verified e.g. bank
         #     micro-deposits verification.
         #   - `DELETED` - The founding account has been deleted.
-        class State < Lithic::Enum
-          abstract!
+        module State
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::Funding::State) }
+          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Card::Funding::State::TaggedSymbol) }
 
-          DELETED = :DELETED
-          ENABLED = :ENABLED
-          PENDING = :PENDING
+          DELETED = T.let(:DELETED, Lithic::Models::Card::Funding::State::TaggedSymbol)
+          ENABLED = T.let(:ENABLED, Lithic::Models::Card::Funding::State::TaggedSymbol)
+          PENDING = T.let(:PENDING, Lithic::Models::Card::Funding::State::TaggedSymbol)
         end
 
         # Types of funding source:
         #
         #   - `DEPOSITORY_CHECKING` - Bank checking account.
         #   - `DEPOSITORY_SAVINGS` - Bank savings account.
-        class Type < Lithic::Enum
-          abstract!
+        module Type
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::Funding::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Card::Funding::Type::TaggedSymbol) }
 
-          DEPOSITORY_CHECKING = :DEPOSITORY_CHECKING
-          DEPOSITORY_SAVINGS = :DEPOSITORY_SAVINGS
+          DEPOSITORY_CHECKING = T.let(:DEPOSITORY_CHECKING, Lithic::Models::Card::Funding::Type::TaggedSymbol)
+          DEPOSITORY_SAVINGS = T.let(:DEPOSITORY_SAVINGS, Lithic::Models::Card::Funding::Type::TaggedSymbol)
         end
       end
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       #   attempts).
-      class PinStatus < Lithic::Enum
-        abstract!
+      module PinStatus
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::PinStatus) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Card::PinStatus::TaggedSymbol) }
 
-        OK = :OK
-        BLOCKED = :BLOCKED
-        NOT_SET = :NOT_SET
+        OK = T.let(:OK, Lithic::Models::Card::PinStatus::TaggedSymbol)
+        BLOCKED = T.let(:BLOCKED, Lithic::Models::Card::PinStatus::TaggedSymbol)
+        NOT_SET = T.let(:NOT_SET, Lithic::Models::Card::PinStatus::TaggedSymbol)
       end
 
       # Card state values:
@@ -535,16 +550,17 @@ module Lithic
       #
       #   In sandbox, the same daily batch fulfillment occurs, but no cards are actually
       #   manufactured.
-      class State < Lithic::Enum
-        abstract!
+      module State
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::State) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Card::State::TaggedSymbol) }
 
-        CLOSED = :CLOSED
-        OPEN = :OPEN
-        PAUSED = :PAUSED
-        PENDING_ACTIVATION = :PENDING_ACTIVATION
-        PENDING_FULFILLMENT = :PENDING_FULFILLMENT
+        CLOSED = T.let(:CLOSED, Lithic::Models::Card::State::TaggedSymbol)
+        OPEN = T.let(:OPEN, Lithic::Models::Card::State::TaggedSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::Models::Card::State::TaggedSymbol)
+        PENDING_ACTIVATION = T.let(:PENDING_ACTIVATION, Lithic::Models::Card::State::TaggedSymbol)
+        PENDING_FULFILLMENT = T.let(:PENDING_FULFILLMENT, Lithic::Models::Card::State::TaggedSymbol)
       end
 
       # Card types:
@@ -563,17 +579,18 @@ module Lithic
       #     VIRTUAL instead.
       #   - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
       #     use VIRTUAL instead.
-      class Type < Lithic::Enum
-        abstract!
+      module Type
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Card::Type::TaggedSymbol) }
 
-        MERCHANT_LOCKED = :MERCHANT_LOCKED
-        PHYSICAL = :PHYSICAL
-        SINGLE_USE = :SINGLE_USE
-        VIRTUAL = :VIRTUAL
-        UNLOCKED = :UNLOCKED
-        DIGITAL_WALLET = :DIGITAL_WALLET
+        MERCHANT_LOCKED = T.let(:MERCHANT_LOCKED, Lithic::Models::Card::Type::TaggedSymbol)
+        PHYSICAL = T.let(:PHYSICAL, Lithic::Models::Card::Type::TaggedSymbol)
+        SINGLE_USE = T.let(:SINGLE_USE, Lithic::Models::Card::Type::TaggedSymbol)
+        VIRTUAL = T.let(:VIRTUAL, Lithic::Models::Card::Type::TaggedSymbol)
+        UNLOCKED = T.let(:UNLOCKED, Lithic::Models::Card::Type::TaggedSymbol)
+        DIGITAL_WALLET = T.let(:DIGITAL_WALLET, Lithic::Models::Card::Type::TaggedSymbol)
       end
     end
   end

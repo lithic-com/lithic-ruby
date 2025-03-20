@@ -25,11 +25,14 @@ module Lithic
       end
 
       # List financial accounts of a given type
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::FinancialAccountListParams::Type::OrSymbol)) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::FinancialAccountListParams::Type::OrSymbol)
+          .returns(Lithic::Models::FinancialAccountListParams::Type::OrSymbol)
+      end
       def type=(_)
       end
 
@@ -37,7 +40,7 @@ module Lithic
         params(
           account_token: String,
           business_account_token: String,
-          type: Symbol,
+          type: Lithic::Models::FinancialAccountListParams::Type::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -51,7 +54,7 @@ module Lithic
             {
               account_token: String,
               business_account_token: String,
-              type: Symbol,
+              type: Lithic::Models::FinancialAccountListParams::Type::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -60,14 +63,15 @@ module Lithic
       end
 
       # List financial accounts of a given type
-      class Type < Lithic::Enum
-        abstract!
+      module Type
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccountListParams::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccountListParams::Type::TaggedSymbol) }
 
-        ISSUING = :ISSUING
-        OPERATING = :OPERATING
-        RESERVE = :RESERVE
+        ISSUING = T.let(:ISSUING, Lithic::Models::FinancialAccountListParams::Type::OrSymbol)
+        OPERATING = T.let(:OPERATING, Lithic::Models::FinancialAccountListParams::Type::OrSymbol)
+        RESERVE = T.let(:RESERVE, Lithic::Models::FinancialAccountListParams::Type::OrSymbol)
       end
     end
   end

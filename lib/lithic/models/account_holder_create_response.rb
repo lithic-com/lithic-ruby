@@ -88,14 +88,14 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # KYC and KYB evaluation states.
       #
       #   Note:
       #
       #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         ACCEPTED = :ACCEPTED
         PENDING_REVIEW = :PENDING_REVIEW
         PENDING_DOCUMENT = :PENDING_DOCUMENT
@@ -105,10 +105,10 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Status Reasons for KYC/KYB enrollment states
-      class StatusReason < Lithic::Enum
+      module StatusReason
+        extend Lithic::Enum
+
         ADDRESS_VERIFICATION_FAILURE = :ADDRESS_VERIFICATION_FAILURE
         AGE_THRESHOLD_FAILURE = :AGE_THRESHOLD_FAILURE
         COMPLETE_VERIFICATION_FAILURE = :COMPLETE_VERIFICATION_FAILURE

@@ -25,11 +25,11 @@ module Lithic
       end
 
       # Specifies the type of KYC workflow to run.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::KYC::Workflow::OrSymbol) }
       def workflow
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig { params(_: Lithic::Models::KYC::Workflow::OrSymbol).returns(Lithic::Models::KYC::Workflow::OrSymbol) }
       def workflow=(_)
       end
 
@@ -59,7 +59,7 @@ module Lithic
         params(
           individual: Lithic::Models::KYC::Individual,
           tos_timestamp: String,
-          workflow: Symbol,
+          workflow: Lithic::Models::KYC::Workflow::OrSymbol,
           external_id: String,
           kyc_passed_timestamp: String
         )
@@ -74,7 +74,7 @@ module Lithic
             {
               individual: Lithic::Models::KYC::Individual,
               tos_timestamp: String,
-              workflow: Symbol,
+              workflow: Lithic::Models::KYC::Workflow::OrSymbol,
               external_id: String,
               kyc_passed_timestamp: String
             }
@@ -188,13 +188,14 @@ module Lithic
       end
 
       # Specifies the type of KYC workflow to run.
-      class Workflow < Lithic::Enum
-        abstract!
+      module Workflow
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::KYC::Workflow) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::KYC::Workflow::TaggedSymbol) }
 
-        KYC_BASIC = :KYC_BASIC
-        KYC_BYO = :KYC_BYO
+        KYC_BASIC = T.let(:KYC_BASIC, Lithic::Models::KYC::Workflow::OrSymbol)
+        KYC_BYO = T.let(:KYC_BYO, Lithic::Models::KYC::Workflow::OrSymbol)
       end
     end
   end

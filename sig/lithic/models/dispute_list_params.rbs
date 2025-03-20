@@ -69,7 +69,9 @@ module Lithic
         | :REPRESENTMENT
         | :SUBMITTED
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         ARBITRATION: :ARBITRATION
         CASE_CLOSED: :CASE_CLOSED
         CASE_WON: :CASE_WON

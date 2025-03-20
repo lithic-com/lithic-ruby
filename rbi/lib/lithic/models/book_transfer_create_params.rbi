@@ -17,11 +17,14 @@ module Lithic
       end
 
       # Category of the book transfer
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::BookTransferCreateParams::Category::OrSymbol) }
       def category
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::BookTransferCreateParams::Category::OrSymbol)
+          .returns(Lithic::Models::BookTransferCreateParams::Category::OrSymbol)
+      end
       def category=(_)
       end
 
@@ -55,11 +58,14 @@ module Lithic
       end
 
       # Type of book_transfer
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::BookTransferCreateParams::Type::OrSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+          .returns(Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+      end
       def type=(_)
       end
 
@@ -85,11 +91,11 @@ module Lithic
       sig do
         params(
           amount: Integer,
-          category: Symbol,
+          category: Lithic::Models::BookTransferCreateParams::Category::OrSymbol,
           from_financial_account_token: String,
           subtype: String,
           to_financial_account_token: String,
-          type: Symbol,
+          type: Lithic::Models::BookTransferCreateParams::Type::OrSymbol,
           token: String,
           memo: String,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
@@ -114,11 +120,11 @@ module Lithic
           .returns(
             {
               amount: Integer,
-              category: Symbol,
+              category: Lithic::Models::BookTransferCreateParams::Category::OrSymbol,
               from_financial_account_token: String,
               subtype: String,
               to_financial_account_token: String,
-              type: Symbol,
+              type: Lithic::Models::BookTransferCreateParams::Type::OrSymbol,
               token: String,
               memo: String,
               request_options: Lithic::RequestOptions
@@ -129,58 +135,67 @@ module Lithic
       end
 
       # Category of the book transfer
-      class Category < Lithic::Enum
-        abstract!
+      module Category
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferCreateParams::Category) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::BookTransferCreateParams::Category::TaggedSymbol) }
 
-        ADJUSTMENT = :ADJUSTMENT
-        BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
-        DERECOGNITION = :DERECOGNITION
-        DISPUTE = :DISPUTE
-        FEE = :FEE
-        REWARD = :REWARD
-        TRANSFER = :TRANSFER
+        ADJUSTMENT = T.let(:ADJUSTMENT, Lithic::Models::BookTransferCreateParams::Category::OrSymbol)
+        BALANCE_OR_FUNDING =
+          T.let(:BALANCE_OR_FUNDING, Lithic::Models::BookTransferCreateParams::Category::OrSymbol)
+        DERECOGNITION = T.let(:DERECOGNITION, Lithic::Models::BookTransferCreateParams::Category::OrSymbol)
+        DISPUTE = T.let(:DISPUTE, Lithic::Models::BookTransferCreateParams::Category::OrSymbol)
+        FEE = T.let(:FEE, Lithic::Models::BookTransferCreateParams::Category::OrSymbol)
+        REWARD = T.let(:REWARD, Lithic::Models::BookTransferCreateParams::Category::OrSymbol)
+        TRANSFER = T.let(:TRANSFER, Lithic::Models::BookTransferCreateParams::Category::OrSymbol)
       end
 
       # Type of book_transfer
-      class Type < Lithic::Enum
-        abstract!
+      module Type
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferCreateParams::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol) }
 
-        ATM_WITHDRAWAL = :ATM_WITHDRAWAL
-        ATM_DECLINE = :ATM_DECLINE
-        INTERNATIONAL_ATM_WITHDRAWAL = :INTERNATIONAL_ATM_WITHDRAWAL
-        INACTIVITY = :INACTIVITY
-        STATEMENT = :STATEMENT
-        MONTHLY = :MONTHLY
-        QUARTERLY = :QUARTERLY
-        ANNUAL = :ANNUAL
-        CUSTOMER_SERVICE = :CUSTOMER_SERVICE
-        ACCOUNT_MAINTENANCE = :ACCOUNT_MAINTENANCE
-        ACCOUNT_ACTIVATION = :ACCOUNT_ACTIVATION
-        ACCOUNT_CLOSURE = :ACCOUNT_CLOSURE
-        CARD_REPLACEMENT = :CARD_REPLACEMENT
-        CARD_DELIVERY = :CARD_DELIVERY
-        CARD_CREATE = :CARD_CREATE
-        CURRENCY_CONVERSION = :CURRENCY_CONVERSION
-        INTEREST = :INTEREST
-        LATE_PAYMENT = :LATE_PAYMENT
-        BILL_PAYMENT = :BILL_PAYMENT
-        CASH_BACK = :CASH_BACK
-        ACCOUNT_TO_ACCOUNT = :ACCOUNT_TO_ACCOUNT
-        CARD_TO_CARD = :CARD_TO_CARD
-        DISBURSE = :DISBURSE
-        BILLING_ERROR = :BILLING_ERROR
-        LOSS_WRITE_OFF = :LOSS_WRITE_OFF
-        EXPIRED_CARD = :EXPIRED_CARD
-        EARLY_DERECOGNITION = :EARLY_DERECOGNITION
-        ESCHEATMENT = :ESCHEATMENT
-        INACTIVITY_FEE_DOWN = :INACTIVITY_FEE_DOWN
-        PROVISIONAL_CREDIT = :PROVISIONAL_CREDIT
-        DISPUTE_WON = :DISPUTE_WON
-        TRANSFER = :TRANSFER
+        ATM_WITHDRAWAL = T.let(:ATM_WITHDRAWAL, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        ATM_DECLINE = T.let(:ATM_DECLINE, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        INTERNATIONAL_ATM_WITHDRAWAL =
+          T.let(:INTERNATIONAL_ATM_WITHDRAWAL, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        INACTIVITY = T.let(:INACTIVITY, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        STATEMENT = T.let(:STATEMENT, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        MONTHLY = T.let(:MONTHLY, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        QUARTERLY = T.let(:QUARTERLY, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        ANNUAL = T.let(:ANNUAL, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        CUSTOMER_SERVICE = T.let(:CUSTOMER_SERVICE, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        ACCOUNT_MAINTENANCE =
+          T.let(:ACCOUNT_MAINTENANCE, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        ACCOUNT_ACTIVATION = T.let(:ACCOUNT_ACTIVATION, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        ACCOUNT_CLOSURE = T.let(:ACCOUNT_CLOSURE, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        CARD_REPLACEMENT = T.let(:CARD_REPLACEMENT, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        CARD_DELIVERY = T.let(:CARD_DELIVERY, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        CARD_CREATE = T.let(:CARD_CREATE, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        CURRENCY_CONVERSION =
+          T.let(:CURRENCY_CONVERSION, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        INTEREST = T.let(:INTEREST, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        LATE_PAYMENT = T.let(:LATE_PAYMENT, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        BILL_PAYMENT = T.let(:BILL_PAYMENT, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        CASH_BACK = T.let(:CASH_BACK, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        ACCOUNT_TO_ACCOUNT = T.let(:ACCOUNT_TO_ACCOUNT, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        CARD_TO_CARD = T.let(:CARD_TO_CARD, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        DISBURSE = T.let(:DISBURSE, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        BILLING_ERROR = T.let(:BILLING_ERROR, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        LOSS_WRITE_OFF = T.let(:LOSS_WRITE_OFF, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        EXPIRED_CARD = T.let(:EXPIRED_CARD, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        EARLY_DERECOGNITION =
+          T.let(:EARLY_DERECOGNITION, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        ESCHEATMENT = T.let(:ESCHEATMENT, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        INACTIVITY_FEE_DOWN =
+          T.let(:INACTIVITY_FEE_DOWN, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        PROVISIONAL_CREDIT = T.let(:PROVISIONAL_CREDIT, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        DISPUTE_WON = T.let(:DISPUTE_WON, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
+        TRANSFER = T.let(:TRANSFER, Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
       end
     end
   end

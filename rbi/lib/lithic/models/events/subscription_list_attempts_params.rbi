@@ -56,11 +56,14 @@ module Lithic
         def starting_after=(_)
         end
 
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol)) }
         def status
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol)
+            .returns(Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol)
+        end
         def status=(_)
         end
 
@@ -71,7 +74,7 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            status: Symbol,
+            status: Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol,
             request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
           )
             .returns(T.attached_class)
@@ -96,7 +99,7 @@ module Lithic
                 ending_before: String,
                 page_size: Integer,
                 starting_after: String,
-                status: Symbol,
+                status: Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol,
                 request_options: Lithic::RequestOptions
               }
             )
@@ -104,15 +107,18 @@ module Lithic
         def to_hash
         end
 
-        class Status < Lithic::Enum
-          abstract!
+        module Status
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::Events::SubscriptionListAttemptsParams::Status) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol) }
 
-          FAILED = :FAILED
-          PENDING = :PENDING
-          SENDING = :SENDING
-          SUCCESS = :SUCCESS
+          FAILED = T.let(:FAILED, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol)
+          PENDING = T.let(:PENDING, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol)
+          SENDING = T.let(:SENDING, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol)
+          SUCCESS = T.let(:SUCCESS, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol)
         end
       end
     end

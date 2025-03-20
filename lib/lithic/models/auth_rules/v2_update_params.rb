@@ -92,14 +92,14 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # The desired state of the Auth Rule.
         #
         #   Note that only deactivating an Auth Rule through this endpoint is supported at
         #   this time. If you need to (re-)activate an Auth Rule the /promote endpoint
         #   should be used to promote a draft to the currently active version.
-        class State < Lithic::Enum
+        module State
+          extend Lithic::Enum
+
           INACTIVE = :INACTIVE
 
           finalize!

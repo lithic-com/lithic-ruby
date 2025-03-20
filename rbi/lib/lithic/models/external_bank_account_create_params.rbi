@@ -54,11 +54,11 @@ module Lithic
       end
 
       # Owner Type
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::OwnerType::OrSymbol) }
       def owner_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig { params(_: Lithic::Models::OwnerType::OrSymbol).returns(Lithic::Models::OwnerType::OrSymbol) }
       def owner_type=(_)
       end
 
@@ -72,20 +72,26 @@ module Lithic
       end
 
       # Account Type
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol)
+          .returns(Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol)
+      end
       def type=(_)
       end
 
       # Verification Method
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol) }
       def verification_method
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol)
+          .returns(Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol)
+      end
       def verification_method=(_)
       end
 
@@ -177,10 +183,10 @@ module Lithic
           currency: String,
           financial_account_token: String,
           owner: String,
-          owner_type: Symbol,
+          owner_type: Lithic::Models::OwnerType::OrSymbol,
           routing_number: String,
-          type: Symbol,
-          verification_method: Symbol,
+          type: Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol,
+          verification_method: Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol,
           processor_token: String,
           account_token: String,
           address: Lithic::Models::ExternalBankAccountAddress,
@@ -226,10 +232,10 @@ module Lithic
               currency: String,
               financial_account_token: String,
               owner: String,
-              owner_type: Symbol,
+              owner_type: Lithic::Models::OwnerType::OrSymbol,
               routing_number: String,
-              type: Symbol,
-              verification_method: Symbol,
+              type: Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol,
+              verification_method: Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol,
               account_token: String,
               address: Lithic::Models::ExternalBankAccountAddress,
               company_id: String,
@@ -247,22 +253,28 @@ module Lithic
       end
 
       # Account Type
-      class Type < Lithic::Enum
-        abstract!
+      module Type
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountCreateParams::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountCreateParams::Type::TaggedSymbol) }
 
-        CHECKING = :CHECKING
-        SAVINGS = :SAVINGS
+        CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol)
+        SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol)
       end
 
       # Verification Method
-      class VerificationMethod < Lithic::Enum
-        abstract!
+      module VerificationMethod
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::TaggedSymbol) }
 
-        EXTERNALLY_VERIFIED = :EXTERNALLY_VERIFIED
+        EXTERNALLY_VERIFIED =
+          T.let(:EXTERNALLY_VERIFIED, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol)
       end
     end
   end

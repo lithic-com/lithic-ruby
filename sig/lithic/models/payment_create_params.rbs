@@ -59,7 +59,9 @@ module Lithic
 
       type method_ = :ACH_NEXT_DAY | :ACH_SAME_DAY
 
-      class Method < Lithic::Enum
+      module Method
+        extend Lithic::Enum
+
         ACH_NEXT_DAY: :ACH_NEXT_DAY
         ACH_SAME_DAY: :ACH_SAME_DAY
 
@@ -82,7 +84,9 @@ module Lithic
 
         type sec_code = :CCD | :PPD | :WEB
 
-        class SecCode < Lithic::Enum
+        module SecCode
+          extend Lithic::Enum
+
           CCD: :CCD
           PPD: :PPD
           WEB: :WEB
@@ -93,7 +97,9 @@ module Lithic
 
       type type_ = :COLLECTION | :PAYMENT
 
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         COLLECTION: :COLLECTION
         PAYMENT: :PAYMENT
 

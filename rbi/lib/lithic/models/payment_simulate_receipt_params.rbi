@@ -34,11 +34,14 @@ module Lithic
       end
 
       # Receipt Type
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol) }
       def receipt_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol)
+          .returns(Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol)
+      end
       def receipt_type=(_)
       end
 
@@ -56,7 +59,7 @@ module Lithic
           token: String,
           amount: Integer,
           financial_account_token: String,
-          receipt_type: Symbol,
+          receipt_type: Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol,
           memo: String,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
@@ -72,7 +75,7 @@ module Lithic
               token: String,
               amount: Integer,
               financial_account_token: String,
-              receipt_type: Symbol,
+              receipt_type: Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol,
               memo: String,
               request_options: Lithic::RequestOptions
             }
@@ -82,13 +85,17 @@ module Lithic
       end
 
       # Receipt Type
-      class ReceiptType < Lithic::Enum
-        abstract!
+      module ReceiptType
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::TaggedSymbol) }
 
-        RECEIPT_CREDIT = :RECEIPT_CREDIT
-        RECEIPT_DEBIT = :RECEIPT_DEBIT
+        RECEIPT_CREDIT =
+          T.let(:RECEIPT_CREDIT, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol)
+        RECEIPT_DEBIT =
+          T.let(:RECEIPT_DEBIT, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol)
       end
     end
   end

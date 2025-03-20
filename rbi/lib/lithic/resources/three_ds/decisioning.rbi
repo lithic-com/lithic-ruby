@@ -8,7 +8,7 @@ module Lithic
         sig do
           params(
             token: String,
-            challenge_response: Symbol,
+            challenge_response: Lithic::Models::ThreeDS::ChallengeResult::OrSymbol,
             request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .void

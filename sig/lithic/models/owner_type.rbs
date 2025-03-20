@@ -2,7 +2,9 @@ module Lithic
   module Models
     type owner_type = :INDIVIDUAL | :BUSINESS
 
-    class OwnerType < Lithic::Enum
+    module OwnerType
+      extend Lithic::Enum
+
       INDIVIDUAL: :INDIVIDUAL
       BUSINESS: :BUSINESS
 

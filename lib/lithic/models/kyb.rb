@@ -425,10 +425,10 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # Specifies the type of KYB workflow to run.
-      class Workflow < Lithic::Enum
+      module Workflow
+        extend Lithic::Enum
+
         KYB_BASIC = :KYB_BASIC
         KYB_BYO = :KYB_BYO
 

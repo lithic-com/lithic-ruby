@@ -55,7 +55,9 @@ module Lithic
 
       type digital_wallet = :APPLE_PAY | :GOOGLE_PAY | :SAMSUNG_PAY
 
-      class DigitalWallet < Lithic::Enum
+      module DigitalWallet
+        extend Lithic::Enum
+
         APPLE_PAY: :APPLE_PAY
         GOOGLE_PAY: :GOOGLE_PAY
         SAMSUNG_PAY: :SAMSUNG_PAY

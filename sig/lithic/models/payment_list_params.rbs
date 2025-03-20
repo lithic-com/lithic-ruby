@@ -89,7 +89,9 @@ module Lithic
 
       type category = :ACH
 
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         ACH: :ACH
 
         def self.values: -> ::Array[Lithic::Models::PaymentListParams::category]
@@ -97,7 +99,9 @@ module Lithic
 
       type result = :APPROVED | :DECLINED
 
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
@@ -106,7 +110,9 @@ module Lithic
 
       type status = :DECLINED | :PENDING | :RETURNED | :SETTLED
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         DECLINED: :DECLINED
         PENDING: :PENDING
         RETURNED: :RETURNED

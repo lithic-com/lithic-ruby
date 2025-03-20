@@ -381,8 +381,6 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # State of funding source.
         #
         #   Funding source states:
@@ -392,7 +390,9 @@ module Lithic
         #   - `PENDING` - The funding account is still being verified e.g. bank
         #     micro-deposits verification.
         #   - `DELETED` - The founding account has been deleted.
-        class State < Lithic::Enum
+        module State
+          extend Lithic::Enum
+
           DELETED = :DELETED
           ENABLED = :ENABLED
           PENDING = :PENDING
@@ -400,13 +400,13 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # Types of funding source:
         #
         #   - `DEPOSITORY_CHECKING` - Bank checking account.
         #   - `DEPOSITORY_SAVINGS` - Bank savings account.
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           DEPOSITORY_CHECKING = :DEPOSITORY_CHECKING
           DEPOSITORY_SAVINGS = :DEPOSITORY_SAVINGS
 
@@ -414,11 +414,11 @@ module Lithic
         end
       end
 
-      # @abstract
-      #
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       #   attempts).
-      class PinStatus < Lithic::Enum
+      module PinStatus
+        extend Lithic::Enum
+
         OK = :OK
         BLOCKED = :BLOCKED
         NOT_SET = :NOT_SET
@@ -426,8 +426,6 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Card state values:
       #
       #   - `CLOSED` - Card will no longer approve authorizations. Closing a card cannot
@@ -449,7 +447,9 @@ module Lithic
       #
       #   In sandbox, the same daily batch fulfillment occurs, but no cards are actually
       #   manufactured.
-      class State < Lithic::Enum
+      module State
+        extend Lithic::Enum
+
         CLOSED = :CLOSED
         OPEN = :OPEN
         PAUSED = :PAUSED
@@ -459,8 +459,6 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Card types:
       #
       #   - `VIRTUAL` - Card will authorize at any merchant and can be added to a digital
@@ -477,7 +475,9 @@ module Lithic
       #     VIRTUAL instead.
       #   - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
       #     use VIRTUAL instead.
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         MERCHANT_LOCKED = :MERCHANT_LOCKED
         PHYSICAL = :PHYSICAL
         SINGLE_USE = :SINGLE_USE

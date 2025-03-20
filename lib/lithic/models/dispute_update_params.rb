@@ -58,10 +58,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Reason for dispute
-      class Reason < Lithic::Enum
+      module Reason
+        extend Lithic::Enum
+
         ATM_CASH_MISDISPENSE = :ATM_CASH_MISDISPENSE
         CANCELLED = :CANCELLED
         DUPLICATED = :DUPLICATED

@@ -131,7 +131,9 @@ module Lithic
         | :UNLOCKED
         | :DIGITAL_WALLET
 
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         MERCHANT_LOCKED: :MERCHANT_LOCKED
         PHYSICAL: :PHYSICAL
         SINGLE_USE: :SINGLE_USE
@@ -150,7 +152,9 @@ module Lithic
         | :STANDARD
         | :STANDARD_WITH_TRACKING
 
-      class ShippingMethod < Lithic::Enum
+      module ShippingMethod
+        extend Lithic::Enum
+
         NUMBER_2_DAY: :"2_DAY"
         EXPEDITED: :EXPEDITED
         EXPRESS: :EXPRESS
@@ -163,7 +167,9 @@ module Lithic
 
       type state = :OPEN | :PAUSED
 
-      class State < Lithic::Enum
+      module State
+        extend Lithic::Enum
+
         OPEN: :OPEN
         PAUSED: :PAUSED
 

@@ -30,11 +30,14 @@ module Lithic
       def financial_account_token=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::PaymentCreateParams::Method::OrSymbol) }
       def method_
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::PaymentCreateParams::Method::OrSymbol)
+          .returns(Lithic::Models::PaymentCreateParams::Method::OrSymbol)
+      end
       def method_=(_)
       end
 
@@ -49,11 +52,14 @@ module Lithic
       def method_attributes=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::PaymentCreateParams::Type::OrSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::PaymentCreateParams::Type::OrSymbol)
+          .returns(Lithic::Models::PaymentCreateParams::Type::OrSymbol)
+      end
       def type=(_)
       end
 
@@ -88,9 +94,9 @@ module Lithic
           amount: Integer,
           external_bank_account_token: String,
           financial_account_token: String,
-          method_: Symbol,
+          method_: Lithic::Models::PaymentCreateParams::Method::OrSymbol,
           method_attributes: Lithic::Models::PaymentCreateParams::MethodAttributes,
-          type: Symbol,
+          type: Lithic::Models::PaymentCreateParams::Type::OrSymbol,
           token: String,
           memo: String,
           user_defined_id: String,
@@ -119,9 +125,9 @@ module Lithic
               amount: Integer,
               external_bank_account_token: String,
               financial_account_token: String,
-              method_: Symbol,
+              method_: Lithic::Models::PaymentCreateParams::Method::OrSymbol,
               method_attributes: Lithic::Models::PaymentCreateParams::MethodAttributes,
-              type: Symbol,
+              type: Lithic::Models::PaymentCreateParams::Type::OrSymbol,
               token: String,
               memo: String,
               user_defined_id: String,
@@ -132,50 +138,61 @@ module Lithic
       def to_hash
       end
 
-      class Method < Lithic::Enum
-        abstract!
+      module Method
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentCreateParams::Method) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::PaymentCreateParams::Method::TaggedSymbol) }
 
-        ACH_NEXT_DAY = :ACH_NEXT_DAY
-        ACH_SAME_DAY = :ACH_SAME_DAY
+        ACH_NEXT_DAY = T.let(:ACH_NEXT_DAY, Lithic::Models::PaymentCreateParams::Method::OrSymbol)
+        ACH_SAME_DAY = T.let(:ACH_SAME_DAY, Lithic::Models::PaymentCreateParams::Method::OrSymbol)
       end
 
       class MethodAttributes < Lithic::BaseModel
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol) }
         def sec_code
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol)
+            .returns(Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol)
+        end
         def sec_code=(_)
         end
 
-        sig { params(sec_code: Symbol).returns(T.attached_class) }
+        sig do
+          params(sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol)
+            .returns(T.attached_class)
+        end
         def self.new(sec_code:)
         end
 
-        sig { override.returns({sec_code: Symbol}) }
+        sig { override.returns({sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol}) }
         def to_hash
         end
 
-        class SecCode < Lithic::Enum
-          abstract!
+        module SecCode
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol) }
 
-          CCD = :CCD
-          PPD = :PPD
-          WEB = :WEB
+          CCD = T.let(:CCD, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol)
+          PPD = T.let(:PPD, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol)
+          WEB = T.let(:WEB, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol)
         end
       end
 
-      class Type < Lithic::Enum
-        abstract!
+      module Type
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentCreateParams::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::PaymentCreateParams::Type::TaggedSymbol) }
 
-        COLLECTION = :COLLECTION
-        PAYMENT = :PAYMENT
+        COLLECTION = T.let(:COLLECTION, Lithic::Models::PaymentCreateParams::Type::OrSymbol)
+        PAYMENT = T.let(:PAYMENT, Lithic::Models::PaymentCreateParams::Type::OrSymbol)
       end
     end
   end

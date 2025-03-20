@@ -48,11 +48,14 @@ module Lithic
           end
 
           # Network to filter on.
-          sig { returns(T.nilable(Symbol)) }
+          sig { returns(T.nilable(Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)) }
           def network
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)
+              .returns(Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)
+          end
           def network=(_)
           end
 
@@ -118,7 +121,7 @@ module Lithic
               end_: Time,
               ending_before: String,
               institution_id: String,
-              network: Symbol,
+              network: Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol,
               page_size: Integer,
               report_date: Date,
               report_date_begin: Date,
@@ -153,7 +156,7 @@ module Lithic
                   end_: Time,
                   ending_before: String,
                   institution_id: String,
-                  network: Symbol,
+                  network: Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol,
                   page_size: Integer,
                   report_date: Date,
                   report_date_begin: Date,
@@ -168,15 +171,20 @@ module Lithic
           end
 
           # Network to filter on.
-          class Network < Lithic::Enum
-            abstract!
+          module Network
+            extend Lithic::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol) }
 
-            VISA = :VISA
-            MASTERCARD = :MASTERCARD
-            MAESTRO = :MAESTRO
-            INTERLINK = :INTERLINK
+            VISA = T.let(:VISA, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)
+            MASTERCARD =
+              T.let(:MASTERCARD, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)
+            MAESTRO = T.let(:MAESTRO, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)
+            INTERLINK =
+              T.let(:INTERLINK, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)
           end
         end
       end

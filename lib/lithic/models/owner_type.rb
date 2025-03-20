@@ -2,8 +2,9 @@
 
 module Lithic
   module Models
-    # @abstract
-    class OwnerType < Lithic::Enum
+    module OwnerType
+      extend Lithic::Enum
+
       INDIVIDUAL = :INDIVIDUAL
       BUSINESS = :BUSINESS
 

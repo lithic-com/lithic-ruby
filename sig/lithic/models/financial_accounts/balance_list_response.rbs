@@ -53,7 +53,9 @@ module Lithic
 
         type type_ = :ISSUING | :OPERATING | :RESERVE
 
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           ISSUING: :ISSUING
           OPERATING: :OPERATING
           RESERVE: :RESERVE

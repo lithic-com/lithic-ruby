@@ -43,7 +43,9 @@ module Lithic
 
       type type_ = :OPERATING
 
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         OPERATING: :OPERATING
 
         def self.values: -> ::Array[Lithic::Models::FinancialAccountCreateParams::type_]

@@ -35,7 +35,9 @@ module Lithic
 
       type progress_to = :SETTLED | :RELEASED
 
-      class ProgressTo < Lithic::Enum
+      module ProgressTo
+        extend Lithic::Enum
+
         SETTLED: :SETTLED
         RELEASED: :RELEASED
 

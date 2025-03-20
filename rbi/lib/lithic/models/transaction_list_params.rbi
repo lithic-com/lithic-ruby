@@ -65,11 +65,14 @@ module Lithic
 
       # Filters for transactions using transaction result field. Can filter by
       #   `APPROVED`, and `DECLINED`.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::TransactionListParams::Result::OrSymbol)) }
       def result
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::TransactionListParams::Result::OrSymbol)
+          .returns(Lithic::Models::TransactionListParams::Result::OrSymbol)
+      end
       def result=(_)
       end
 
@@ -84,11 +87,14 @@ module Lithic
       end
 
       # Filters for transactions using transaction status field.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::TransactionListParams::Status::OrSymbol)) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::TransactionListParams::Status::OrSymbol)
+          .returns(Lithic::Models::TransactionListParams::Status::OrSymbol)
+      end
       def status=(_)
       end
 
@@ -100,9 +106,9 @@ module Lithic
           end_: Time,
           ending_before: String,
           page_size: Integer,
-          result: Symbol,
+          result: Lithic::Models::TransactionListParams::Result::OrSymbol,
           starting_after: String,
-          status: Symbol,
+          status: Lithic::Models::TransactionListParams::Status::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -131,9 +137,9 @@ module Lithic
               end_: Time,
               ending_before: String,
               page_size: Integer,
-              result: Symbol,
+              result: Lithic::Models::TransactionListParams::Result::OrSymbol,
               starting_after: String,
-              status: Symbol,
+              status: Lithic::Models::TransactionListParams::Status::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -143,26 +149,28 @@ module Lithic
 
       # Filters for transactions using transaction result field. Can filter by
       #   `APPROVED`, and `DECLINED`.
-      class Result < Lithic::Enum
-        abstract!
+      module Result
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::TransactionListParams::Result) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::TransactionListParams::Result::TaggedSymbol) }
 
-        APPROVED = :APPROVED
-        DECLINED = :DECLINED
+        APPROVED = T.let(:APPROVED, Lithic::Models::TransactionListParams::Result::OrSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::TransactionListParams::Result::OrSymbol)
       end
 
       # Filters for transactions using transaction status field.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::TransactionListParams::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::TransactionListParams::Status::TaggedSymbol) }
 
-        PENDING = :PENDING
-        VOIDED = :VOIDED
-        SETTLED = :SETTLED
-        DECLINED = :DECLINED
-        EXPIRED = :EXPIRED
+        PENDING = T.let(:PENDING, Lithic::Models::TransactionListParams::Status::OrSymbol)
+        VOIDED = T.let(:VOIDED, Lithic::Models::TransactionListParams::Status::OrSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::TransactionListParams::Status::OrSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::TransactionListParams::Status::OrSymbol)
+        EXPIRED = T.let(:EXPIRED, Lithic::Models::TransactionListParams::Status::OrSymbol)
       end
     end
   end

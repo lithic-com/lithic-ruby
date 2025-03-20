@@ -132,21 +132,21 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Filters for transactions using transaction result field. Can filter by
       #   `APPROVED`, and `DECLINED`.
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
         finalize!
       end
 
-      # @abstract
-      #
       # Filters for transactions using transaction status field.
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         PENDING = :PENDING
         VOIDED = :VOIDED
         SETTLED = :SETTLED

@@ -122,11 +122,14 @@ module Lithic
       #   - `REFUND_NOT_PROCESSED`: The refund was not processed.
       #   - `RECURRING_TRANSACTION_NOT_CANCELLED`: The recurring transaction was not
       #     cancelled.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Dispute::Reason::TaggedSymbol) }
       def reason
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::Dispute::Reason::TaggedSymbol)
+          .returns(Lithic::Models::Dispute::Reason::TaggedSymbol)
+      end
       def reason=(_)
       end
 
@@ -185,11 +188,14 @@ module Lithic
       #   - `WON_ARBITRATION`: Won arbitration.
       #   - `WON_FIRST_CHARGEBACK`: Won first chargeback.
       #   - `WON_PREARBITRATION`: Won prearbitration.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)) }
       def resolution_reason
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Lithic::Models::Dispute::ResolutionReason::TaggedSymbol))
+          .returns(T.nilable(Lithic::Models::Dispute::ResolutionReason::TaggedSymbol))
+      end
       def resolution_reason=(_)
       end
 
@@ -204,11 +210,14 @@ module Lithic
       #   - `ARBITRATION` - Case has entered arbitration.
       #   - `CASE_WON` - Case was won and credit will be issued.
       #   - `CASE_CLOSED` - Case was lost or withdrawn.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Dispute::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::Dispute::Status::TaggedSymbol)
+          .returns(Lithic::Models::Dispute::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -236,13 +245,13 @@ module Lithic
           network_reason_code: T.nilable(String),
           prearbitration_date: T.nilable(Time),
           primary_claim_id: T.nilable(String),
-          reason: Symbol,
+          reason: Lithic::Models::Dispute::Reason::TaggedSymbol,
           representment_date: T.nilable(Time),
           resolution_amount: T.nilable(Integer),
           resolution_date: T.nilable(Time),
           resolution_note: T.nilable(String),
-          resolution_reason: T.nilable(Symbol),
-          status: Symbol,
+          resolution_reason: T.nilable(Lithic::Models::Dispute::ResolutionReason::TaggedSymbol),
+          status: Lithic::Models::Dispute::Status::TaggedSymbol,
           transaction_token: String
         )
           .returns(T.attached_class)
@@ -285,13 +294,13 @@ module Lithic
               network_reason_code: T.nilable(String),
               prearbitration_date: T.nilable(Time),
               primary_claim_id: T.nilable(String),
-              reason: Symbol,
+              reason: Lithic::Models::Dispute::Reason::TaggedSymbol,
               representment_date: T.nilable(Time),
               resolution_amount: T.nilable(Integer),
               resolution_date: T.nilable(Time),
               resolution_note: T.nilable(String),
-              resolution_reason: T.nilable(Symbol),
-              status: Symbol,
+              resolution_reason: T.nilable(Lithic::Models::Dispute::ResolutionReason::TaggedSymbol),
+              status: Lithic::Models::Dispute::Status::TaggedSymbol,
               transaction_token: String
             }
           )
@@ -318,25 +327,29 @@ module Lithic
       #   - `REFUND_NOT_PROCESSED`: The refund was not processed.
       #   - `RECURRING_TRANSACTION_NOT_CANCELLED`: The recurring transaction was not
       #     cancelled.
-      class Reason < Lithic::Enum
-        abstract!
+      module Reason
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Dispute::Reason) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Dispute::Reason::TaggedSymbol) }
 
-        ATM_CASH_MISDISPENSE = :ATM_CASH_MISDISPENSE
-        CANCELLED = :CANCELLED
-        DUPLICATED = :DUPLICATED
-        FRAUD_CARD_NOT_PRESENT = :FRAUD_CARD_NOT_PRESENT
-        FRAUD_CARD_PRESENT = :FRAUD_CARD_PRESENT
-        FRAUD_OTHER = :FRAUD_OTHER
-        GOODS_SERVICES_NOT_AS_DESCRIBED = :GOODS_SERVICES_NOT_AS_DESCRIBED
-        GOODS_SERVICES_NOT_RECEIVED = :GOODS_SERVICES_NOT_RECEIVED
-        INCORRECT_AMOUNT = :INCORRECT_AMOUNT
-        MISSING_AUTH = :MISSING_AUTH
-        OTHER = :OTHER
-        PROCESSING_ERROR = :PROCESSING_ERROR
-        RECURRING_TRANSACTION_NOT_CANCELLED = :RECURRING_TRANSACTION_NOT_CANCELLED
-        REFUND_NOT_PROCESSED = :REFUND_NOT_PROCESSED
+        ATM_CASH_MISDISPENSE = T.let(:ATM_CASH_MISDISPENSE, Lithic::Models::Dispute::Reason::TaggedSymbol)
+        CANCELLED = T.let(:CANCELLED, Lithic::Models::Dispute::Reason::TaggedSymbol)
+        DUPLICATED = T.let(:DUPLICATED, Lithic::Models::Dispute::Reason::TaggedSymbol)
+        FRAUD_CARD_NOT_PRESENT = T.let(:FRAUD_CARD_NOT_PRESENT, Lithic::Models::Dispute::Reason::TaggedSymbol)
+        FRAUD_CARD_PRESENT = T.let(:FRAUD_CARD_PRESENT, Lithic::Models::Dispute::Reason::TaggedSymbol)
+        FRAUD_OTHER = T.let(:FRAUD_OTHER, Lithic::Models::Dispute::Reason::TaggedSymbol)
+        GOODS_SERVICES_NOT_AS_DESCRIBED =
+          T.let(:GOODS_SERVICES_NOT_AS_DESCRIBED, Lithic::Models::Dispute::Reason::TaggedSymbol)
+        GOODS_SERVICES_NOT_RECEIVED =
+          T.let(:GOODS_SERVICES_NOT_RECEIVED, Lithic::Models::Dispute::Reason::TaggedSymbol)
+        INCORRECT_AMOUNT = T.let(:INCORRECT_AMOUNT, Lithic::Models::Dispute::Reason::TaggedSymbol)
+        MISSING_AUTH = T.let(:MISSING_AUTH, Lithic::Models::Dispute::Reason::TaggedSymbol)
+        OTHER = T.let(:OTHER, Lithic::Models::Dispute::Reason::TaggedSymbol)
+        PROCESSING_ERROR = T.let(:PROCESSING_ERROR, Lithic::Models::Dispute::Reason::TaggedSymbol)
+        RECURRING_TRANSACTION_NOT_CANCELLED =
+          T.let(:RECURRING_TRANSACTION_NOT_CANCELLED, Lithic::Models::Dispute::Reason::TaggedSymbol)
+        REFUND_NOT_PROCESSED = T.let(:REFUND_NOT_PROCESSED, Lithic::Models::Dispute::Reason::TaggedSymbol)
       end
 
       # Reason for the dispute resolution:
@@ -358,28 +371,39 @@ module Lithic
       #   - `WON_ARBITRATION`: Won arbitration.
       #   - `WON_FIRST_CHARGEBACK`: Won first chargeback.
       #   - `WON_PREARBITRATION`: Won prearbitration.
-      class ResolutionReason < Lithic::Enum
-        abstract!
+      module ResolutionReason
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Dispute::ResolutionReason) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol) }
 
-        CASE_LOST = :CASE_LOST
-        NETWORK_REJECTED = :NETWORK_REJECTED
-        NO_DISPUTE_RIGHTS_3DS = :NO_DISPUTE_RIGHTS_3DS
-        NO_DISPUTE_RIGHTS_BELOW_THRESHOLD = :NO_DISPUTE_RIGHTS_BELOW_THRESHOLD
-        NO_DISPUTE_RIGHTS_CONTACTLESS = :NO_DISPUTE_RIGHTS_CONTACTLESS
-        NO_DISPUTE_RIGHTS_HYBRID = :NO_DISPUTE_RIGHTS_HYBRID
-        NO_DISPUTE_RIGHTS_MAX_CHARGEBACKS = :NO_DISPUTE_RIGHTS_MAX_CHARGEBACKS
-        NO_DISPUTE_RIGHTS_OTHER = :NO_DISPUTE_RIGHTS_OTHER
-        PAST_FILING_DATE = :PAST_FILING_DATE
-        PREARBITRATION_REJECTED = :PREARBITRATION_REJECTED
-        PROCESSOR_REJECTED_OTHER = :PROCESSOR_REJECTED_OTHER
-        REFUNDED = :REFUNDED
-        REFUNDED_AFTER_CHARGEBACK = :REFUNDED_AFTER_CHARGEBACK
-        WITHDRAWN = :WITHDRAWN
-        WON_ARBITRATION = :WON_ARBITRATION
-        WON_FIRST_CHARGEBACK = :WON_FIRST_CHARGEBACK
-        WON_PREARBITRATION = :WON_PREARBITRATION
+        CASE_LOST = T.let(:CASE_LOST, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        NETWORK_REJECTED = T.let(:NETWORK_REJECTED, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        NO_DISPUTE_RIGHTS_3DS =
+          T.let(:NO_DISPUTE_RIGHTS_3DS, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        NO_DISPUTE_RIGHTS_BELOW_THRESHOLD =
+          T.let(:NO_DISPUTE_RIGHTS_BELOW_THRESHOLD, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        NO_DISPUTE_RIGHTS_CONTACTLESS =
+          T.let(:NO_DISPUTE_RIGHTS_CONTACTLESS, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        NO_DISPUTE_RIGHTS_HYBRID =
+          T.let(:NO_DISPUTE_RIGHTS_HYBRID, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        NO_DISPUTE_RIGHTS_MAX_CHARGEBACKS =
+          T.let(:NO_DISPUTE_RIGHTS_MAX_CHARGEBACKS, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        NO_DISPUTE_RIGHTS_OTHER =
+          T.let(:NO_DISPUTE_RIGHTS_OTHER, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        PAST_FILING_DATE = T.let(:PAST_FILING_DATE, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        PREARBITRATION_REJECTED =
+          T.let(:PREARBITRATION_REJECTED, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        PROCESSOR_REJECTED_OTHER =
+          T.let(:PROCESSOR_REJECTED_OTHER, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        REFUNDED = T.let(:REFUNDED, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        REFUNDED_AFTER_CHARGEBACK =
+          T.let(:REFUNDED_AFTER_CHARGEBACK, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        WITHDRAWN = T.let(:WITHDRAWN, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        WON_ARBITRATION = T.let(:WON_ARBITRATION, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        WON_FIRST_CHARGEBACK =
+          T.let(:WON_FIRST_CHARGEBACK, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
+        WON_PREARBITRATION = T.let(:WON_PREARBITRATION, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
       end
 
       # Status types:
@@ -393,19 +417,20 @@ module Lithic
       #   - `ARBITRATION` - Case has entered arbitration.
       #   - `CASE_WON` - Case was won and credit will be issued.
       #   - `CASE_CLOSED` - Case was lost or withdrawn.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Dispute::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Dispute::Status::TaggedSymbol) }
 
-        ARBITRATION = :ARBITRATION
-        CASE_CLOSED = :CASE_CLOSED
-        CASE_WON = :CASE_WON
-        NEW = :NEW
-        PENDING_CUSTOMER = :PENDING_CUSTOMER
-        PREARBITRATION = :PREARBITRATION
-        REPRESENTMENT = :REPRESENTMENT
-        SUBMITTED = :SUBMITTED
+        ARBITRATION = T.let(:ARBITRATION, Lithic::Models::Dispute::Status::TaggedSymbol)
+        CASE_CLOSED = T.let(:CASE_CLOSED, Lithic::Models::Dispute::Status::TaggedSymbol)
+        CASE_WON = T.let(:CASE_WON, Lithic::Models::Dispute::Status::TaggedSymbol)
+        NEW = T.let(:NEW, Lithic::Models::Dispute::Status::TaggedSymbol)
+        PENDING_CUSTOMER = T.let(:PENDING_CUSTOMER, Lithic::Models::Dispute::Status::TaggedSymbol)
+        PREARBITRATION = T.let(:PREARBITRATION, Lithic::Models::Dispute::Status::TaggedSymbol)
+        REPRESENTMENT = T.let(:REPRESENTMENT, Lithic::Models::Dispute::Status::TaggedSymbol)
+        SUBMITTED = T.let(:SUBMITTED, Lithic::Models::Dispute::Status::TaggedSymbol)
       end
     end
   end

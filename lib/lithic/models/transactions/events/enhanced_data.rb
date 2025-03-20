@@ -191,10 +191,10 @@ module Lithic
 
               # def initialize: (Hash | Lithic::BaseModel) -> void
 
-              # @abstract
-              #
               # A flag indicating whether the transaction is tax exempt or not.
-              class Exempt < Lithic::Enum
+              module Exempt
+                extend Lithic::Enum
+
                 TAX_INCLUDED = :TAX_INCLUDED
                 TAX_NOT_INCLUDED = :TAX_NOT_INCLUDED
                 NOT_SUPPORTED = :NOT_SUPPORTED
@@ -363,10 +363,10 @@ module Lithic
 
               # def initialize: (Hash | Lithic::BaseModel) -> void
 
-              # @abstract
-              #
               # The type of fuel purchased.
-              class Type < Lithic::Enum
+              module Type
+                extend Lithic::Enum
+
                 UNKNOWN = :UNKNOWN
                 REGULAR = :REGULAR
                 MID_PLUS = :MID_PLUS
@@ -491,10 +491,10 @@ module Lithic
                 finalize!
               end
 
-              # @abstract
-              #
               # Unit of measure for fuel disbursement.
-              class UnitOfMeasure < Lithic::Enum
+              module UnitOfMeasure
+                extend Lithic::Enum
+
                 GALLONS = :GALLONS
                 LITERS = :LITERS
                 POUNDS = :POUNDS
@@ -507,10 +507,10 @@ module Lithic
               end
             end
 
-            # @abstract
-            #
             # The type of fuel service.
-            class ServiceType < Lithic::Enum
+            module ServiceType
+              extend Lithic::Enum
+
               UNKNOWN = :UNKNOWN
               UNDEFINED = :UNDEFINED
               SELF_SERVICE = :SELF_SERVICE

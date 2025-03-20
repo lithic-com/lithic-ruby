@@ -3,7 +3,9 @@ module Lithic
     type verification_method =
       :MANUAL | :MICRO_DEPOSIT | :PLAID | :PRENOTE | :EXTERNALLY_VERIFIED
 
-    class VerificationMethod < Lithic::Enum
+    module VerificationMethod
+      extend Lithic::Enum
+
       MANUAL: :MANUAL
       MICRO_DEPOSIT: :MICRO_DEPOSIT
       PLAID: :PLAID

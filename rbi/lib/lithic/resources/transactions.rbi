@@ -37,9 +37,9 @@ module Lithic
           end_: Time,
           ending_before: String,
           page_size: Integer,
-          result: Symbol,
+          result: Lithic::Models::TransactionListParams::Result::OrSymbol,
           starting_after: String,
-          status: Symbol,
+          status: Lithic::Models::TransactionListParams::Status::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::CursorPage[Lithic::Models::Transaction])
@@ -106,7 +106,7 @@ module Lithic
           merchant_currency: String,
           partial_approval_capable: T::Boolean,
           pin: String,
-          status: Symbol,
+          status: Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::Models::TransactionSimulateAuthorizationResponse)
@@ -293,7 +293,7 @@ module Lithic
         params(
           token: String,
           amount: Integer,
-          type: Symbol,
+          type: Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::Models::TransactionSimulateVoidResponse)

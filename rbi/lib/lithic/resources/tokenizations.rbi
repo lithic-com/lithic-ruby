@@ -28,7 +28,7 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          tokenization_channel: Symbol,
+          tokenization_channel: Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::CursorPage[Lithic::Models::Tokenization])
@@ -137,7 +137,7 @@ module Lithic
       sig do
         params(
           tokenization_token: String,
-          activation_method_type: Symbol,
+          activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .void
@@ -160,11 +160,11 @@ module Lithic
           cvv: String,
           expiration_date: String,
           pan: String,
-          tokenization_source: Symbol,
+          tokenization_source: Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol,
           account_score: Integer,
           device_score: Integer,
           entity: String,
-          wallet_recommended_decision: Symbol,
+          wallet_recommended_decision: Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::Models::TokenizationSimulateResponse)

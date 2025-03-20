@@ -124,10 +124,10 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # Specifies the type of KYC workflow to run.
-      class Workflow < Lithic::Enum
+      module Workflow
+        extend Lithic::Enum
+
         KYC_BASIC = :KYC_BASIC
         KYC_BYO = :KYC_BYO
 

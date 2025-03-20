@@ -40,11 +40,14 @@ module Lithic
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       #   attempts). Can only be set to `OK` to unblock a card.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::CardUpdateParams::PinStatus::OrSymbol)) }
       def pin_status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::CardUpdateParams::PinStatus::OrSymbol)
+          .returns(Lithic::Models::CardUpdateParams::PinStatus::OrSymbol)
+      end
       def pin_status=(_)
       end
 
@@ -73,11 +76,14 @@ module Lithic
       #     starts 6 days after the current calendar date one month prior.
       #   - `TRANSACTION` - Card will authorize multiple transactions if each individual
       #     transaction is under the spend limit.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::SpendLimitDuration::OrSymbol)) }
       def spend_limit_duration
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::SpendLimitDuration::OrSymbol)
+          .returns(Lithic::Models::SpendLimitDuration::OrSymbol)
+      end
       def spend_limit_duration=(_)
       end
 
@@ -89,11 +95,14 @@ module Lithic
       #     parameters).
       #   - `PAUSED` - Card will decline authorizations, but can be resumed at a later
       #     time.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::CardUpdateParams::State::OrSymbol)) }
       def state
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::CardUpdateParams::State::OrSymbol)
+          .returns(Lithic::Models::CardUpdateParams::State::OrSymbol)
+      end
       def state=(_)
       end
 
@@ -102,10 +111,10 @@ module Lithic
           digital_card_art_token: String,
           memo: String,
           pin: String,
-          pin_status: Symbol,
+          pin_status: Lithic::Models::CardUpdateParams::PinStatus::OrSymbol,
           spend_limit: Integer,
-          spend_limit_duration: Symbol,
-          state: Symbol,
+          spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
+          state: Lithic::Models::CardUpdateParams::State::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -129,10 +138,10 @@ module Lithic
               digital_card_art_token: String,
               memo: String,
               pin: String,
-              pin_status: Symbol,
+              pin_status: Lithic::Models::CardUpdateParams::PinStatus::OrSymbol,
               spend_limit: Integer,
-              spend_limit_duration: Symbol,
-              state: Symbol,
+              spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
+              state: Lithic::Models::CardUpdateParams::State::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -142,12 +151,13 @@ module Lithic
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       #   attempts). Can only be set to `OK` to unblock a card.
-      class PinStatus < Lithic::Enum
-        abstract!
+      module PinStatus
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardUpdateParams::PinStatus) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::CardUpdateParams::PinStatus::TaggedSymbol) }
 
-        OK = :OK
+        OK = T.let(:OK, Lithic::Models::CardUpdateParams::PinStatus::OrSymbol)
       end
 
       # Card state values:
@@ -158,14 +168,15 @@ module Lithic
       #     parameters).
       #   - `PAUSED` - Card will decline authorizations, but can be resumed at a later
       #     time.
-      class State < Lithic::Enum
-        abstract!
+      module State
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardUpdateParams::State) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::CardUpdateParams::State::TaggedSymbol) }
 
-        CLOSED = :CLOSED
-        OPEN = :OPEN
-        PAUSED = :PAUSED
+        CLOSED = T.let(:CLOSED, Lithic::Models::CardUpdateParams::State::OrSymbol)
+        OPEN = T.let(:OPEN, Lithic::Models::CardUpdateParams::State::OrSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::Models::CardUpdateParams::State::OrSymbol)
       end
     end
   end

@@ -139,8 +139,9 @@ module Lithic
 
             # def initialize: (Hash | Lithic::BaseModel) -> void
 
-            # @abstract
-            class Category < Lithic::Enum
+            module Category
+              extend Lithic::Enum
+
               ACH = :ACH
               BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
               CARD = :CARD
@@ -156,8 +157,9 @@ module Lithic
               finalize!
             end
 
-            # @abstract
-            class EventType < Lithic::Enum
+            module EventType
+              extend Lithic::Enum
+
               ACH_ORIGINATION_CANCELLED = :ACH_ORIGINATION_CANCELLED
               ACH_ORIGINATION_INITIATED = :ACH_ORIGINATION_INITIATED
               ACH_ORIGINATION_PROCESSED = :ACH_ORIGINATION_PROCESSED

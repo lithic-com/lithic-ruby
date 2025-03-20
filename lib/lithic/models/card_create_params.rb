@@ -286,8 +286,6 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Card types:
       #
       #   - `VIRTUAL` - Card will authorize at any merchant and can be added to a digital
@@ -304,7 +302,9 @@ module Lithic
       #     VIRTUAL instead.
       #   - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
       #     use VIRTUAL instead.
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         MERCHANT_LOCKED = :MERCHANT_LOCKED
         PHYSICAL = :PHYSICAL
         SINGLE_USE = :SINGLE_USE
@@ -315,8 +315,6 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
       #   options besides `STANDARD` require additional permissions.
       #
@@ -329,7 +327,9 @@ module Lithic
       #   - `2_DAY` - FedEx 2-day shipping, with tracking
       #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #     tracking
-      class ShippingMethod < Lithic::Enum
+      module ShippingMethod
+        extend Lithic::Enum
+
         NUMBER_2_DAY = :"2_DAY"
         EXPEDITED = :EXPEDITED
         EXPRESS = :EXPRESS
@@ -340,15 +340,15 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Card state values:
       #
       #   - `OPEN` - Card will approve authorizations (if they match card and account
       #     parameters).
       #   - `PAUSED` - Card will decline authorizations, but can be resumed at a later
       #     time.
-      class State < Lithic::Enum
+      module State
+        extend Lithic::Enum
+
         OPEN = :OPEN
         PAUSED = :PAUSED
 

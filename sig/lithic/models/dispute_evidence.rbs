@@ -46,7 +46,9 @@ module Lithic
 
       type upload_status = :DELETED | :ERROR | :PENDING | :REJECTED | :UPLOADED
 
-      class UploadStatus < Lithic::Enum
+      module UploadStatus
+        extend Lithic::Enum
+
         DELETED: :DELETED
         ERROR: :ERROR
         PENDING: :PENDING

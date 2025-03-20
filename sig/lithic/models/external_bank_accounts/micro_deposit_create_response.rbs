@@ -121,7 +121,9 @@ module Lithic
 
         type owner_type = :BUSINESS | :INDIVIDUAL
 
-        class OwnerType < Lithic::Enum
+        module OwnerType
+          extend Lithic::Enum
+
           BUSINESS: :BUSINESS
           INDIVIDUAL: :INDIVIDUAL
 
@@ -130,7 +132,9 @@ module Lithic
 
         type state = :ENABLED | :CLOSED | :PAUSED
 
-        class State < Lithic::Enum
+        module State
+          extend Lithic::Enum
+
           ENABLED: :ENABLED
           CLOSED: :CLOSED
           PAUSED: :PAUSED
@@ -140,7 +144,9 @@ module Lithic
 
         type type_ = :CHECKING | :SAVINGS
 
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           CHECKING: :CHECKING
           SAVINGS: :SAVINGS
 
@@ -149,7 +155,9 @@ module Lithic
 
         type verification_method = :MANUAL | :MICRO_DEPOSIT | :PLAID | :PRENOTE
 
-        class VerificationMethod < Lithic::Enum
+        module VerificationMethod
+          extend Lithic::Enum
+
           MANUAL: :MANUAL
           MICRO_DEPOSIT: :MICRO_DEPOSIT
           PLAID: :PLAID
@@ -161,7 +169,9 @@ module Lithic
         type verification_state =
           :PENDING | :ENABLED | :FAILED_VERIFICATION | :INSUFFICIENT_FUNDS
 
-        class VerificationState < Lithic::Enum
+        module VerificationState
+          extend Lithic::Enum
+
           PENDING: :PENDING
           ENABLED: :ENABLED
           FAILED_VERIFICATION: :FAILED_VERIFICATION

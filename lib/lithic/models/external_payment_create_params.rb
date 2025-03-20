@@ -98,8 +98,9 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         EXTERNAL_WIRE = :EXTERNAL_WIRE
         EXTERNAL_ACH = :EXTERNAL_ACH
         EXTERNAL_CHECK = :EXTERNAL_CHECK
@@ -108,16 +109,18 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      class PaymentType < Lithic::Enum
+      module PaymentType
+        extend Lithic::Enum
+
         DEPOSIT = :DEPOSIT
         WITHDRAWAL = :WITHDRAWAL
 
         finalize!
       end
 
-      # @abstract
-      class ProgressTo < Lithic::Enum
+      module ProgressTo
+        extend Lithic::Enum
+
         SETTLED = :SETTLED
         RELEASED = :RELEASED
 

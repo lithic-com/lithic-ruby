@@ -34,11 +34,14 @@ module Lithic
       end
 
       # The source of the tokenization request.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol) }
       def tokenization_source
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol)
+          .returns(Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol)
+      end
       def tokenization_source=(_)
       end
 
@@ -73,11 +76,14 @@ module Lithic
       end
 
       # The decision that the Digital Wallet's recommend
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol)) }
       def wallet_recommended_decision
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol)
+          .returns(Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol)
+      end
       def wallet_recommended_decision=(_)
       end
 
@@ -86,11 +92,11 @@ module Lithic
           cvv: String,
           expiration_date: String,
           pan: String,
-          tokenization_source: Symbol,
+          tokenization_source: Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol,
           account_score: Integer,
           device_score: Integer,
           entity: String,
-          wallet_recommended_decision: Symbol,
+          wallet_recommended_decision: Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -115,11 +121,11 @@ module Lithic
               cvv: String,
               expiration_date: String,
               pan: String,
-              tokenization_source: Symbol,
+              tokenization_source: Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol,
               account_score: Integer,
               device_score: Integer,
               entity: String,
-              wallet_recommended_decision: Symbol,
+              wallet_recommended_decision: Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -128,26 +134,39 @@ module Lithic
       end
 
       # The source of the tokenization request.
-      class TokenizationSource < Lithic::Enum
-        abstract!
+      module TokenizationSource
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource::TaggedSymbol) }
 
-        APPLE_PAY = :APPLE_PAY
-        GOOGLE = :GOOGLE
-        SAMSUNG_PAY = :SAMSUNG_PAY
-        MERCHANT = :MERCHANT
+        APPLE_PAY = T.let(:APPLE_PAY, Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol)
+        GOOGLE = T.let(:GOOGLE, Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol)
+        SAMSUNG_PAY =
+          T.let(:SAMSUNG_PAY, Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol)
+        MERCHANT = T.let(:MERCHANT, Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol)
       end
 
       # The decision that the Digital Wallet's recommend
-      class WalletRecommendedDecision < Lithic::Enum
-        abstract!
+      module WalletRecommendedDecision
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::TaggedSymbol) }
 
-        APPROVED = :APPROVED
-        DECLINED = :DECLINED
-        REQUIRE_ADDITIONAL_AUTHENTICATION = :REQUIRE_ADDITIONAL_AUTHENTICATION
+        APPROVED =
+          T.let(:APPROVED, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol)
+        DECLINED =
+          T.let(:DECLINED, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol)
+        REQUIRE_ADDITIONAL_AUTHENTICATION =
+          T.let(
+            :REQUIRE_ADDITIONAL_AUTHENTICATION,
+            Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol
+          )
       end
     end
   end

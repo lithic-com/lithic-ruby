@@ -14,11 +14,14 @@ module Lithic
       def account_token=(_)
       end
 
-      sig { returns(T.nilable(T::Array[Symbol])) }
+      sig { returns(T.nilable(T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol])) }
       def account_types
       end
 
-      sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+      sig do
+        params(_: T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol])
+          .returns(T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol])
+      end
       def account_types=(_)
       end
 
@@ -40,11 +43,14 @@ module Lithic
       def ending_before=(_)
       end
 
-      sig { returns(T.nilable(T::Array[Symbol])) }
+      sig { returns(T.nilable(T::Array[Lithic::Models::OwnerType::OrSymbol])) }
       def owner_types
       end
 
-      sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+      sig do
+        params(_: T::Array[Lithic::Models::OwnerType::OrSymbol])
+          .returns(T::Array[Lithic::Models::OwnerType::OrSymbol])
+      end
       def owner_types=(_)
       end
 
@@ -67,33 +73,39 @@ module Lithic
       def starting_after=(_)
       end
 
-      sig { returns(T.nilable(T::Array[Symbol])) }
+      sig { returns(T.nilable(T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol])) }
       def states
       end
 
-      sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+      sig do
+        params(_: T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol])
+          .returns(T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol])
+      end
       def states=(_)
       end
 
-      sig { returns(T.nilable(T::Array[Symbol])) }
+      sig { returns(T.nilable(T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol])) }
       def verification_states
       end
 
-      sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+      sig do
+        params(_: T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol])
+          .returns(T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol])
+      end
       def verification_states=(_)
       end
 
       sig do
         params(
           account_token: String,
-          account_types: T::Array[Symbol],
+          account_types: T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol],
           countries: T::Array[String],
           ending_before: String,
-          owner_types: T::Array[Symbol],
+          owner_types: T::Array[Lithic::Models::OwnerType::OrSymbol],
           page_size: Integer,
           starting_after: String,
-          states: T::Array[Symbol],
-          verification_states: T::Array[Symbol],
+          states: T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol],
+          verification_states: T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol],
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -117,14 +129,14 @@ module Lithic
           .returns(
             {
               account_token: String,
-              account_types: T::Array[Symbol],
+              account_types: T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol],
               countries: T::Array[String],
               ending_before: String,
-              owner_types: T::Array[Symbol],
+              owner_types: T::Array[Lithic::Models::OwnerType::OrSymbol],
               page_size: Integer,
               starting_after: String,
-              states: T::Array[Symbol],
-              verification_states: T::Array[Symbol],
+              states: T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol],
+              verification_states: T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol],
               request_options: Lithic::RequestOptions
             }
           )
@@ -132,34 +144,43 @@ module Lithic
       def to_hash
       end
 
-      class AccountType < Lithic::Enum
-        abstract!
+      module AccountType
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType::TaggedSymbol) }
 
-        CHECKING = :CHECKING
-        SAVINGS = :SAVINGS
+        CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol)
+        SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol)
       end
 
-      class State < Lithic::Enum
-        abstract!
+      module State
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountListParams::State) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol) }
 
-        ENABLED = :ENABLED
-        CLOSED = :CLOSED
-        PAUSED = :PAUSED
+        ENABLED = T.let(:ENABLED, Lithic::Models::ExternalBankAccountListParams::State::OrSymbol)
+        CLOSED = T.let(:CLOSED, Lithic::Models::ExternalBankAccountListParams::State::OrSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::Models::ExternalBankAccountListParams::State::OrSymbol)
       end
 
-      class VerificationState < Lithic::Enum
-        abstract!
+      module VerificationState
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol) }
 
-        PENDING = :PENDING
-        ENABLED = :ENABLED
-        FAILED_VERIFICATION = :FAILED_VERIFICATION
-        INSUFFICIENT_FUNDS = :INSUFFICIENT_FUNDS
+        PENDING = T.let(:PENDING, Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol)
+        ENABLED = T.let(:ENABLED, Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol)
+        FAILED_VERIFICATION =
+          T.let(:FAILED_VERIFICATION, Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol)
+        INSUFFICIENT_FUNDS =
+          T.let(:INSUFFICIENT_FUNDS, Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol)
       end
     end
   end

@@ -32,11 +32,14 @@ module Lithic
       end
 
       # Specifies the type of KYC Exempt user
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol) }
       def kyc_exemption_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol)
+          .returns(Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol)
+      end
       def kyc_exemption_type=(_)
       end
 
@@ -59,11 +62,14 @@ module Lithic
       end
 
       # Specifies the workflow type. This must be 'KYC_EXEMPT'
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::KYCExempt::Workflow::OrSymbol) }
       def workflow
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::KYCExempt::Workflow::OrSymbol)
+          .returns(Lithic::Models::KYCExempt::Workflow::OrSymbol)
+      end
       def workflow=(_)
       end
 
@@ -93,10 +99,10 @@ module Lithic
           address: Lithic::Models::Address,
           email: String,
           first_name: String,
-          kyc_exemption_type: Symbol,
+          kyc_exemption_type: Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol,
           last_name: String,
           phone_number: String,
-          workflow: Symbol,
+          workflow: Lithic::Models::KYCExempt::Workflow::OrSymbol,
           business_account_token: String,
           external_id: String
         )
@@ -122,10 +128,10 @@ module Lithic
               address: Lithic::Models::Address,
               email: String,
               first_name: String,
-              kyc_exemption_type: Symbol,
+              kyc_exemption_type: Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol,
               last_name: String,
               phone_number: String,
-              workflow: Symbol,
+              workflow: Lithic::Models::KYCExempt::Workflow::OrSymbol,
               business_account_token: String,
               external_id: String
             }
@@ -135,22 +141,24 @@ module Lithic
       end
 
       # Specifies the type of KYC Exempt user
-      class KYCExemptionType < Lithic::Enum
-        abstract!
+      module KYCExemptionType
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::KYCExempt::KYCExemptionType) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::KYCExempt::KYCExemptionType::TaggedSymbol) }
 
-        AUTHORIZED_USER = :AUTHORIZED_USER
-        PREPAID_CARD_USER = :PREPAID_CARD_USER
+        AUTHORIZED_USER = T.let(:AUTHORIZED_USER, Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol)
+        PREPAID_CARD_USER = T.let(:PREPAID_CARD_USER, Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol)
       end
 
       # Specifies the workflow type. This must be 'KYC_EXEMPT'
-      class Workflow < Lithic::Enum
-        abstract!
+      module Workflow
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::KYCExempt::Workflow) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::KYCExempt::Workflow::TaggedSymbol) }
 
-        KYC_EXEMPT = :KYC_EXEMPT
+        KYC_EXEMPT = T.let(:KYC_EXEMPT, Lithic::Models::KYCExempt::Workflow::OrSymbol)
       end
     end
   end

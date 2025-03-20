@@ -32,11 +32,14 @@ module Lithic
       def business_account_token=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::PaymentListParams::Category::OrSymbol)) }
       def category
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::PaymentListParams::Category::OrSymbol)
+          .returns(Lithic::Models::PaymentListParams::Category::OrSymbol)
+      end
       def category=(_)
       end
 
@@ -77,11 +80,14 @@ module Lithic
       def page_size=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::PaymentListParams::Result::OrSymbol)) }
       def result
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::PaymentListParams::Result::OrSymbol)
+          .returns(Lithic::Models::PaymentListParams::Result::OrSymbol)
+      end
       def result=(_)
       end
 
@@ -95,11 +101,14 @@ module Lithic
       def starting_after=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::PaymentListParams::Status::OrSymbol)) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::PaymentListParams::Status::OrSymbol)
+          .returns(Lithic::Models::PaymentListParams::Status::OrSymbol)
+      end
       def status=(_)
       end
 
@@ -108,14 +117,14 @@ module Lithic
           account_token: String,
           begin_: Time,
           business_account_token: String,
-          category: Symbol,
+          category: Lithic::Models::PaymentListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
-          result: Symbol,
+          result: Lithic::Models::PaymentListParams::Result::OrSymbol,
           starting_after: String,
-          status: Symbol,
+          status: Lithic::Models::PaymentListParams::Status::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -143,14 +152,14 @@ module Lithic
               account_token: String,
               begin_: Time,
               business_account_token: String,
-              category: Symbol,
+              category: Lithic::Models::PaymentListParams::Category::OrSymbol,
               end_: Time,
               ending_before: String,
               financial_account_token: String,
               page_size: Integer,
-              result: Symbol,
+              result: Lithic::Models::PaymentListParams::Result::OrSymbol,
               starting_after: String,
-              status: Symbol,
+              status: Lithic::Models::PaymentListParams::Status::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -158,32 +167,35 @@ module Lithic
       def to_hash
       end
 
-      class Category < Lithic::Enum
-        abstract!
+      module Category
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentListParams::Category) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::PaymentListParams::Category::TaggedSymbol) }
 
-        ACH = :ACH
+        ACH = T.let(:ACH, Lithic::Models::PaymentListParams::Category::OrSymbol)
       end
 
-      class Result < Lithic::Enum
-        abstract!
+      module Result
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentListParams::Result) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::PaymentListParams::Result::TaggedSymbol) }
 
-        APPROVED = :APPROVED
-        DECLINED = :DECLINED
+        APPROVED = T.let(:APPROVED, Lithic::Models::PaymentListParams::Result::OrSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::PaymentListParams::Result::OrSymbol)
       end
 
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentListParams::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::PaymentListParams::Status::TaggedSymbol) }
 
-        DECLINED = :DECLINED
-        PENDING = :PENDING
-        RETURNED = :RETURNED
-        SETTLED = :SETTLED
+        DECLINED = T.let(:DECLINED, Lithic::Models::PaymentListParams::Status::OrSymbol)
+        PENDING = T.let(:PENDING, Lithic::Models::PaymentListParams::Status::OrSymbol)
+        RETURNED = T.let(:RETURNED, Lithic::Models::PaymentListParams::Status::OrSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::PaymentListParams::Status::OrSymbol)
       end
     end
   end

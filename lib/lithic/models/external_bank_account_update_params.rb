@@ -127,8 +127,9 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         CHECKING = :CHECKING
         SAVINGS = :SAVINGS
 

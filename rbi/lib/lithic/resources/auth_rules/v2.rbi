@@ -19,7 +19,7 @@ module Lithic
               Lithic::Models::AuthRules::ConditionalBlockParameters,
               Lithic::Models::AuthRules::VelocityLimitParams
             ),
-            type: Symbol,
+            type: Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol,
             excluded_card_tokens: T::Array[String],
             request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
           )
@@ -69,7 +69,7 @@ module Lithic
             auth_rule_token: String,
             account_tokens: T::Array[String],
             name: T.nilable(String),
-            state: Symbol,
+            state: Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol,
             card_tokens: T::Array[String],
             excluded_card_tokens: T::Array[String],
             program_level: T::Boolean,

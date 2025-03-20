@@ -7,11 +7,14 @@ module Lithic
       include Lithic::RequestParameters
 
       # The type of document to upload
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol) }
       def document_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+          .returns(Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+      end
       def document_type=(_)
       end
 
@@ -26,7 +29,7 @@ module Lithic
 
       sig do
         params(
-          document_type: Symbol,
+          document_type: Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
           entity_token: String,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
@@ -36,42 +39,76 @@ module Lithic
       end
 
       sig do
-        override.returns(
-          {
-            document_type: Symbol,
-            entity_token: String,
-            request_options: Lithic::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              document_type: Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
+              entity_token: String,
+              request_options: Lithic::RequestOptions
+            }
+          )
       end
       def to_hash
       end
 
       # The type of document to upload
-      class DocumentType < Lithic::Enum
-        abstract!
+      module DocumentType
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol) }
 
-        EIN_LETTER = :EIN_LETTER
-        TAX_RETURN = :TAX_RETURN
-        OPERATING_AGREEMENT = :OPERATING_AGREEMENT
-        CERTIFICATE_OF_FORMATION = :CERTIFICATE_OF_FORMATION
-        DRIVERS_LICENSE = :DRIVERS_LICENSE
-        PASSPORT = :PASSPORT
-        PASSPORT_CARD = :PASSPORT_CARD
-        CERTIFICATE_OF_GOOD_STANDING = :CERTIFICATE_OF_GOOD_STANDING
-        ARTICLES_OF_INCORPORATION = :ARTICLES_OF_INCORPORATION
-        ARTICLES_OF_ORGANIZATION = :ARTICLES_OF_ORGANIZATION
-        BYLAWS = :BYLAWS
-        GOVERNMENT_BUSINESS_LICENSE = :GOVERNMENT_BUSINESS_LICENSE
-        PARTNERSHIP_AGREEMENT = :PARTNERSHIP_AGREEMENT
-        SS4_FORM = :SS4_FORM
-        BANK_STATEMENT = :BANK_STATEMENT
-        UTILITY_BILL_STATEMENT = :UTILITY_BILL_STATEMENT
-        SSN_CARD = :SSN_CARD
-        ITIN_LETTER = :ITIN_LETTER
-        FINCEN_BOI_REPORT = :FINCEN_BOI_REPORT
+        EIN_LETTER =
+          T.let(:EIN_LETTER, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+        TAX_RETURN =
+          T.let(:TAX_RETURN, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+        OPERATING_AGREEMENT =
+          T.let(:OPERATING_AGREEMENT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+        CERTIFICATE_OF_FORMATION =
+          T.let(
+            :CERTIFICATE_OF_FORMATION,
+            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol
+          )
+        DRIVERS_LICENSE =
+          T.let(:DRIVERS_LICENSE, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+        PASSPORT = T.let(:PASSPORT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+        PASSPORT_CARD =
+          T.let(:PASSPORT_CARD, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+        CERTIFICATE_OF_GOOD_STANDING =
+          T.let(
+            :CERTIFICATE_OF_GOOD_STANDING,
+            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol
+          )
+        ARTICLES_OF_INCORPORATION =
+          T.let(
+            :ARTICLES_OF_INCORPORATION,
+            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol
+          )
+        ARTICLES_OF_ORGANIZATION =
+          T.let(
+            :ARTICLES_OF_ORGANIZATION,
+            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol
+          )
+        BYLAWS = T.let(:BYLAWS, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+        GOVERNMENT_BUSINESS_LICENSE =
+          T.let(
+            :GOVERNMENT_BUSINESS_LICENSE,
+            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol
+          )
+        PARTNERSHIP_AGREEMENT =
+          T.let(:PARTNERSHIP_AGREEMENT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+        SS4_FORM = T.let(:SS4_FORM, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+        BANK_STATEMENT =
+          T.let(:BANK_STATEMENT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+        UTILITY_BILL_STATEMENT =
+          T.let(:UTILITY_BILL_STATEMENT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+        SSN_CARD = T.let(:SSN_CARD, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+        ITIN_LETTER =
+          T.let(:ITIN_LETTER, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+        FINCEN_BOI_REPORT =
+          T.let(:FINCEN_BOI_REPORT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
       end
     end
   end
