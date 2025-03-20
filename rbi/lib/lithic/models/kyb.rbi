@@ -45,7 +45,10 @@ module Lithic
       def business_entity
       end
 
-      sig { params(_: Lithic::Models::KYB::BusinessEntity).returns(Lithic::Models::KYB::BusinessEntity) }
+      sig do
+        params(_: T.any(Lithic::Models::KYB::BusinessEntity, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::KYB::BusinessEntity, Lithic::Util::AnyHash))
+      end
       def business_entity=(_)
       end
 
@@ -61,7 +64,10 @@ module Lithic
       def control_person
       end
 
-      sig { params(_: Lithic::Models::KYB::ControlPerson).returns(Lithic::Models::KYB::ControlPerson) }
+      sig do
+        params(_: T.any(Lithic::Models::KYB::ControlPerson, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::KYB::ControlPerson, Lithic::Util::AnyHash))
+      end
       def control_person=(_)
       end
 
@@ -182,7 +188,10 @@ module Lithic
         def address
         end
 
-        sig { params(_: Lithic::Models::Address).returns(Lithic::Models::Address) }
+        sig do
+          params(_: T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
+        end
         def address=(_)
         end
 
@@ -280,7 +289,10 @@ module Lithic
         def address
         end
 
-        sig { params(_: Lithic::Models::Address).returns(Lithic::Models::Address) }
+        sig do
+          params(_: T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
+        end
         def address=(_)
         end
 
@@ -383,7 +395,10 @@ module Lithic
         def address
         end
 
-        sig { params(_: Lithic::Models::Address).returns(Lithic::Models::Address) }
+        sig do
+          params(_: T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
+        end
         def address=(_)
         end
 
@@ -483,7 +498,10 @@ module Lithic
         def address
         end
 
-        sig { params(_: Lithic::Models::Address).returns(Lithic::Models::Address) }
+        sig do
+          params(_: T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
+        end
         def address=(_)
         end
 

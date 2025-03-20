@@ -36,8 +36,12 @@ module Lithic
         end
 
         sig do
-          params(_: T.nilable(Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion))
-            .returns(T.nilable(Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion))
+          params(
+            _: T.nilable(T.any(Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion, Lithic::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion, Lithic::Util::AnyHash))
+            )
         end
         def current_version=(_)
         end
@@ -47,8 +51,10 @@ module Lithic
         end
 
         sig do
-          params(_: T.nilable(Lithic::Models::AuthRules::V2DraftResponse::DraftVersion))
-            .returns(T.nilable(Lithic::Models::AuthRules::V2DraftResponse::DraftVersion))
+          params(
+            _: T.nilable(T.any(Lithic::Models::AuthRules::V2DraftResponse::DraftVersion, Lithic::Util::AnyHash))
+          )
+            .returns(T.nilable(T.any(Lithic::Models::AuthRules::V2DraftResponse::DraftVersion, Lithic::Util::AnyHash)))
         end
         def draft_version=(_)
         end

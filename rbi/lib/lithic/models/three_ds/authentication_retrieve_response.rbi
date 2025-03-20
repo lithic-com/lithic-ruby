@@ -67,8 +67,10 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder)
-            .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder)
+          params(
+            _: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder, Lithic::Util::AnyHash)
+          )
+            .returns(T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder, Lithic::Util::AnyHash))
         end
         def cardholder=(_)
         end
@@ -101,8 +103,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant)
-            .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant)
+          params(_: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant, Lithic::Util::AnyHash))
         end
         def merchant=(_)
         end
@@ -158,8 +160,16 @@ module Lithic
         end
 
         sig do
-          params(_: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData))
-            .returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData))
+          params(
+            _: T.nilable(
+              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData, Lithic::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData, Lithic::Util::AnyHash)
+              )
+            )
         end
         def additional_data=(_)
         end
@@ -171,8 +181,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App)
-            .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App)
+          params(_: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, Lithic::Util::AnyHash))
         end
         def app=(_)
         end
@@ -212,8 +222,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser)
-            .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser)
+          params(_: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, Lithic::Util::AnyHash))
         end
         def browser=(_)
         end
@@ -224,8 +234,16 @@ module Lithic
         end
 
         sig do
-          params(_: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata))
-            .returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata))
+          params(
+            _: T.nilable(
+              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata, Lithic::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata, Lithic::Util::AnyHash)
+              )
+            )
         end
         def challenge_metadata=(_)
         end
@@ -295,8 +313,16 @@ module Lithic
         end
 
         sig do
-          params(_: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction))
-            .returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction))
+          params(
+            _: T.nilable(
+              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction, Lithic::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction, Lithic::Util::AnyHash)
+              )
+            )
         end
         def transaction=(_)
         end
@@ -472,8 +498,18 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress)
-              .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress)
+            params(
+              _: T.any(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
+                Lithic::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
+                  Lithic::Util::AnyHash
+                )
+              )
           end
           def billing_address=(_)
           end
@@ -533,8 +569,18 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress)
-              .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress)
+            params(
+              _: T.any(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress,
+                Lithic::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress,
+                  Lithic::Util::AnyHash
+                )
+              )
           end
           def shipping_address=(_)
           end
@@ -826,8 +872,18 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator)
-              .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator)
+            params(
+              _: T.any(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator,
+                Lithic::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator,
+                  Lithic::Util::AnyHash
+                )
+              )
           end
           def risk_indicator=(_)
           end
