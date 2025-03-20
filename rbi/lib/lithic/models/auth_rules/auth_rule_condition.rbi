@@ -115,7 +115,7 @@ module Lithic
 
           Variants = type_template(:out) { {fixed: T.any(String, Integer, T::Array[String])} }
 
-          StringArray = T.type_alias { T::Array[String] }
+          StringArray = T.let(Lithic::ArrayOf[String], Lithic::Converter)
         end
       end
     end
