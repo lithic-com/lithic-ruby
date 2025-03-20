@@ -19,8 +19,8 @@ module Lithic
           end
 
           sig do
-            params(_: Lithic::Models::Transactions::Events::EnhancedData::Common)
-              .returns(Lithic::Models::Transactions::Events::EnhancedData::Common)
+            params(_: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Util::AnyHash))
+              .returns(T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Util::AnyHash))
           end
           def common=(_)
           end
@@ -99,8 +99,8 @@ module Lithic
             end
 
             sig do
-              params(_: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax)
-                .returns(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax)
+              params(_: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Util::AnyHash))
+                .returns(T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Util::AnyHash))
             end
             def tax=(_)
             end
@@ -305,8 +305,12 @@ module Lithic
             end
 
             sig do
-              params(_: Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals)
-                .returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals)
+              params(
+                _: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals, Lithic::Util::AnyHash)
+              )
+                .returns(
+                  T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals, Lithic::Util::AnyHash)
+                )
             end
             def amount_totals=(_)
             end
@@ -316,8 +320,8 @@ module Lithic
             end
 
             sig do
-              params(_: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel)
-                .returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel)
+              params(_: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Util::AnyHash))
+                .returns(T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Util::AnyHash))
             end
             def fuel=(_)
             end

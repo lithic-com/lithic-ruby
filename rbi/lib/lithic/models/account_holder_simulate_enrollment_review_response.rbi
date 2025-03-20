@@ -73,7 +73,10 @@ module Lithic
       def business_entity
       end
 
-      sig { params(_: Lithic::Models::KYBBusinessEntity).returns(Lithic::Models::KYBBusinessEntity) }
+      sig do
+        params(_: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash))
+      end
       def business_entity=(_)
       end
 
@@ -93,8 +96,12 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson)
-          .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson)
+        params(
+          _: T.any(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson, Lithic::Util::AnyHash)
+        )
+          .returns(
+            T.any(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson, Lithic::Util::AnyHash)
+          )
       end
       def control_person=(_)
       end
@@ -154,8 +161,12 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual)
-          .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual)
+        params(
+          _: T.any(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual, Lithic::Util::AnyHash)
+        )
+          .returns(
+            T.any(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual, Lithic::Util::AnyHash)
+          )
       end
       def individual=(_)
       end
@@ -256,8 +267,18 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication)
-          .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication)
+        params(
+          _: T.any(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
+            Lithic::Util::AnyHash
+          )
+        )
+          .returns(
+            T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
+              Lithic::Util::AnyHash
+            )
+          )
       end
       def verification_application=(_)
       end
@@ -365,9 +386,17 @@ module Lithic
 
         sig do
           params(
-            _: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address
+            _: T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
+              Lithic::Util::AnyHash
+            )
           )
-            .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address)
+            .returns(
+              T.any(
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
+                Lithic::Util::AnyHash
+              )
+            )
         end
         def address=(_)
         end
@@ -549,8 +578,18 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address)
-            .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address)
+          params(
+            _: T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address,
+              Lithic::Util::AnyHash
+            )
+          )
+            .returns(
+              T.any(
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address,
+                Lithic::Util::AnyHash
+              )
+            )
         end
         def address=(_)
         end
@@ -765,8 +804,18 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address)
-            .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address)
+          params(
+            _: T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address,
+              Lithic::Util::AnyHash
+            )
+          )
+            .returns(
+              T.any(
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address,
+                Lithic::Util::AnyHash
+              )
+            )
         end
         def address=(_)
         end

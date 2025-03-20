@@ -49,8 +49,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountHolderUpdateParams::BusinessEntity)
-          .returns(Lithic::Models::AccountHolderUpdateParams::BusinessEntity)
+        params(_: T.any(Lithic::Models::AccountHolderUpdateParams::BusinessEntity, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::AccountHolderUpdateParams::BusinessEntity, Lithic::Util::AnyHash))
       end
       def business_entity=(_)
       end
@@ -68,8 +68,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountHolderUpdateParams::ControlPerson)
-          .returns(Lithic::Models::AccountHolderUpdateParams::ControlPerson)
+        params(_: T.any(Lithic::Models::AccountHolderUpdateParams::ControlPerson, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::AccountHolderUpdateParams::ControlPerson, Lithic::Util::AnyHash))
       end
       def control_person=(_)
       end
@@ -110,8 +110,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountHolderUpdateParams::Individual)
-          .returns(Lithic::Models::AccountHolderUpdateParams::Individual)
+        params(_: T.any(Lithic::Models::AccountHolderUpdateParams::Individual, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::AccountHolderUpdateParams::Individual, Lithic::Util::AnyHash))
       end
       def individual=(_)
       end
@@ -121,7 +121,10 @@ module Lithic
       def address
       end
 
-      sig { params(_: Lithic::Models::AddressUpdate).returns(Lithic::Models::AddressUpdate) }
+      sig do
+        params(_: T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash))
+      end
       def address=(_)
       end
 
@@ -267,7 +270,10 @@ module Lithic
         def address
         end
 
-        sig { params(_: Lithic::Models::AddressUpdate).returns(Lithic::Models::AddressUpdate) }
+        sig do
+          params(_: T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash))
+        end
         def address=(_)
         end
 
@@ -377,7 +383,10 @@ module Lithic
         def address
         end
 
-        sig { params(_: Lithic::Models::AddressUpdate).returns(Lithic::Models::AddressUpdate) }
+        sig do
+          params(_: T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash))
+        end
         def address=(_)
         end
 
@@ -500,7 +509,10 @@ module Lithic
         def address
         end
 
-        sig { params(_: Lithic::Models::AddressUpdate).returns(Lithic::Models::AddressUpdate) }
+        sig do
+          params(_: T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash))
+        end
         def address=(_)
         end
 
@@ -612,7 +624,10 @@ module Lithic
         def address
         end
 
-        sig { params(_: Lithic::Models::AddressUpdate).returns(Lithic::Models::AddressUpdate) }
+        sig do
+          params(_: T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash))
+        end
         def address=(_)
         end
 
@@ -742,7 +757,10 @@ module Lithic
         def address
         end
 
-        sig { params(_: Lithic::Models::AddressUpdate).returns(Lithic::Models::AddressUpdate) }
+        sig do
+          params(_: T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash))
+        end
         def address=(_)
         end
 

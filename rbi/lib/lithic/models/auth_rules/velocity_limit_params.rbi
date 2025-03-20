@@ -9,8 +9,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::AuthRules::VelocityLimitParams::Filters)
-            .returns(Lithic::Models::AuthRules::VelocityLimitParams::Filters)
+          params(_: T.any(Lithic::Models::AuthRules::VelocityLimitParams::Filters, Lithic::Util::AnyHash))
+            .returns(T.any(Lithic::Models::AuthRules::VelocityLimitParams::Filters, Lithic::Util::AnyHash))
         end
         def filters=(_)
         end

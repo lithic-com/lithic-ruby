@@ -62,8 +62,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountUpdateParams::VerificationAddress)
-          .returns(Lithic::Models::AccountUpdateParams::VerificationAddress)
+        params(_: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Util::AnyHash))
+          .returns(T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Util::AnyHash))
       end
       def verification_address=(_)
       end
