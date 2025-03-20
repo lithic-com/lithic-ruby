@@ -165,6 +165,12 @@ module Lithic
         CLOSED = :CLOSED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class AccountHolder < Lithic::BaseModel

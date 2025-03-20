@@ -60,6 +60,12 @@ module Lithic
         AUTHORIZATION_REVERSAL = :AUTHORIZATION_REVERSAL
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

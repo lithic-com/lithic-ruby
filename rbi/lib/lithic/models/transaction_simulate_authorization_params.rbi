@@ -201,18 +201,27 @@ module Lithic
           T.type_alias { T.any(Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol) }
 
         AUTHORIZATION =
-          T.let(:AUTHORIZATION, Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)
+          T.let(:AUTHORIZATION, Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol)
         BALANCE_INQUIRY =
-          T.let(:BALANCE_INQUIRY, Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)
+          T.let(:BALANCE_INQUIRY, Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol)
         CREDIT_AUTHORIZATION =
-          T.let(:CREDIT_AUTHORIZATION, Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)
+          T.let(:CREDIT_AUTHORIZATION, Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol)
         FINANCIAL_AUTHORIZATION =
-          T.let(:FINANCIAL_AUTHORIZATION, Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)
+          T.let(
+            :FINANCIAL_AUTHORIZATION,
+            Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol
+          )
         FINANCIAL_CREDIT_AUTHORIZATION =
           T.let(
             :FINANCIAL_CREDIT_AUTHORIZATION,
-            Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol
+            Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol
           )
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -87,7 +87,7 @@ module Lithic
         MANAGEMENT_REWARD: :MANAGEMENT_REWARD
         MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
 
-        def self.values: -> ::Array[Lithic::Models::ManagementOperationListParams::category]
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationListParams::category]
       end
 
       type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
@@ -101,7 +101,7 @@ module Lithic
         REVERSED: :REVERSED
         CANCELED: :CANCELED
 
-        def self.values: -> ::Array[Lithic::Models::ManagementOperationListParams::status]
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationListParams::status]
       end
     end
   end

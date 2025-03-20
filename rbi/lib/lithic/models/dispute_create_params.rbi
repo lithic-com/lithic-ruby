@@ -92,25 +92,32 @@ module Lithic
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol) }
 
         ATM_CASH_MISDISPENSE =
-          T.let(:ATM_CASH_MISDISPENSE, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
-        CANCELLED = T.let(:CANCELLED, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
-        DUPLICATED = T.let(:DUPLICATED, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+          T.let(:ATM_CASH_MISDISPENSE, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+        CANCELLED = T.let(:CANCELLED, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+        DUPLICATED = T.let(:DUPLICATED, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
         FRAUD_CARD_NOT_PRESENT =
-          T.let(:FRAUD_CARD_NOT_PRESENT, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
-        FRAUD_CARD_PRESENT = T.let(:FRAUD_CARD_PRESENT, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
-        FRAUD_OTHER = T.let(:FRAUD_OTHER, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+          T.let(:FRAUD_CARD_NOT_PRESENT, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+        FRAUD_CARD_PRESENT =
+          T.let(:FRAUD_CARD_PRESENT, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+        FRAUD_OTHER = T.let(:FRAUD_OTHER, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
         GOODS_SERVICES_NOT_AS_DESCRIBED =
-          T.let(:GOODS_SERVICES_NOT_AS_DESCRIBED, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+          T.let(:GOODS_SERVICES_NOT_AS_DESCRIBED, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
         GOODS_SERVICES_NOT_RECEIVED =
-          T.let(:GOODS_SERVICES_NOT_RECEIVED, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
-        INCORRECT_AMOUNT = T.let(:INCORRECT_AMOUNT, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
-        MISSING_AUTH = T.let(:MISSING_AUTH, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
-        OTHER = T.let(:OTHER, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
-        PROCESSING_ERROR = T.let(:PROCESSING_ERROR, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+          T.let(:GOODS_SERVICES_NOT_RECEIVED, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+        INCORRECT_AMOUNT = T.let(:INCORRECT_AMOUNT, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+        MISSING_AUTH = T.let(:MISSING_AUTH, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+        OTHER = T.let(:OTHER, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+        PROCESSING_ERROR = T.let(:PROCESSING_ERROR, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
         RECURRING_TRANSACTION_NOT_CANCELLED =
-          T.let(:RECURRING_TRANSACTION_NOT_CANCELLED, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+          T.let(:RECURRING_TRANSACTION_NOT_CANCELLED, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
         REFUND_NOT_PROCESSED =
-          T.let(:REFUND_NOT_PROCESSED, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+          T.let(:REFUND_NOT_PROCESSED, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

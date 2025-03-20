@@ -107,7 +107,7 @@ module Lithic
         UNKNOWN: :UNKNOWN
         VISA: :VISA
 
-        def self.values: -> ::Array[Lithic::Models::SettlementDetail::network]
+        def self?.values: -> ::Array[Lithic::Models::SettlementDetail::network]
       end
 
       type other_fees_details = { isa: Integer }
@@ -146,7 +146,7 @@ module Lithic
         PREARBITRATION: :PREARBITRATION
         REPRESENTMENT: :REPRESENTMENT
 
-        def self.values: -> ::Array[Lithic::Models::SettlementDetail::type_]
+        def self?.values: -> ::Array[Lithic::Models::SettlementDetail::type_]
       end
     end
   end

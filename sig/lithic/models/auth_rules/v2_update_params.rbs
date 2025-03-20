@@ -59,7 +59,7 @@ module Lithic
 
           INACTIVE: :INACTIVE
 
-          def self.values: -> ::Array[Lithic::Models::AuthRules::V2UpdateParams::state]
+          def self?.values: -> ::Array[Lithic::Models::AuthRules::V2UpdateParams::state]
         end
       end
     end

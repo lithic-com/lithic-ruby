@@ -104,7 +104,7 @@ module Lithic
           DELINQUENT: :DELINQUENT
           FRAUD: :FRAUD
 
-          def self.values: -> ::Array[Lithic::Models::FinancialAccount::CreditConfiguration::charged_off_reason]
+          def self?.values: -> ::Array[Lithic::Models::FinancialAccount::CreditConfiguration::charged_off_reason]
         end
 
         type financial_account_state =
@@ -118,7 +118,7 @@ module Lithic
           DELINQUENT: :DELINQUENT
           CHARGED_OFF: :CHARGED_OFF
 
-          def self.values: -> ::Array[Lithic::Models::FinancialAccount::CreditConfiguration::financial_account_state]
+          def self?.values: -> ::Array[Lithic::Models::FinancialAccount::CreditConfiguration::financial_account_state]
         end
       end
 
@@ -132,7 +132,7 @@ module Lithic
         SUSPENDED: :SUSPENDED
         PENDING: :PENDING
 
-        def self.values: -> ::Array[Lithic::Models::FinancialAccount::status]
+        def self?.values: -> ::Array[Lithic::Models::FinancialAccount::status]
       end
 
       type type_ =
@@ -153,7 +153,7 @@ module Lithic
         CHARGED_OFF_INTEREST: :CHARGED_OFF_INTEREST
         CHARGED_OFF_PRINCIPAL: :CHARGED_OFF_PRINCIPAL
 
-        def self.values: -> ::Array[Lithic::Models::FinancialAccount::type_]
+        def self?.values: -> ::Array[Lithic::Models::FinancialAccount::type_]
       end
 
       type status_change_reason =
@@ -172,7 +172,7 @@ module Lithic
         BANK_REQUEST: :BANK_REQUEST
         DELINQUENT: :DELINQUENT
 
-        def self.values: -> ::Array[Lithic::Models::FinancialAccount::status_change_reason]
+        def self?.values: -> ::Array[Lithic::Models::FinancialAccount::status_change_reason]
       end
     end
   end

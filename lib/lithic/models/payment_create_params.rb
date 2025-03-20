@@ -103,6 +103,12 @@ module Lithic
         ACH_SAME_DAY = :ACH_SAME_DAY
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class MethodAttributes < Lithic::BaseModel
@@ -126,6 +132,12 @@ module Lithic
           WEB = :WEB
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -136,6 +148,12 @@ module Lithic
         PAYMENT = :PAYMENT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

@@ -327,6 +327,12 @@ module Lithic
         BUSINESS = T.let(:BUSINESS, Lithic::Models::ExternalBankAccountRetrieveResponse::OwnerType::TaggedSymbol)
         INDIVIDUAL =
           T.let(:INDIVIDUAL, Lithic::Models::ExternalBankAccountRetrieveResponse::OwnerType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountRetrieveResponse::OwnerType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Account State
@@ -340,6 +346,12 @@ module Lithic
         ENABLED = T.let(:ENABLED, Lithic::Models::ExternalBankAccountRetrieveResponse::State::TaggedSymbol)
         CLOSED = T.let(:CLOSED, Lithic::Models::ExternalBankAccountRetrieveResponse::State::TaggedSymbol)
         PAUSED = T.let(:PAUSED, Lithic::Models::ExternalBankAccountRetrieveResponse::State::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountRetrieveResponse::State::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Account Type
@@ -352,6 +364,12 @@ module Lithic
 
         CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountRetrieveResponse::Type::TaggedSymbol)
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountRetrieveResponse::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountRetrieveResponse::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Verification Method
@@ -374,6 +392,15 @@ module Lithic
           T.let(:PLAID, Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationMethod::TaggedSymbol)
         PRENOTE =
           T.let(:PRENOTE, Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationMethod::TaggedSymbol)
+
+        class << self
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationMethod::TaggedSymbol])
+          end
+          def values
+          end
+        end
       end
 
       # Verification State
@@ -399,6 +426,15 @@ module Lithic
             :INSUFFICIENT_FUNDS,
             Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationState::TaggedSymbol
           )
+
+        class << self
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationState::TaggedSymbol])
+          end
+          def values
+          end
+        end
       end
     end
   end

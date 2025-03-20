@@ -105,6 +105,12 @@ module Lithic
         PREPAID_CARD_USER = :PREPAID_CARD_USER
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Specifies the workflow type. This must be 'KYC_EXEMPT'
@@ -114,6 +120,12 @@ module Lithic
         KYC_EXEMPT = :KYC_EXEMPT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

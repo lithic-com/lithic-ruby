@@ -253,6 +253,12 @@ module Lithic
         REFUND_NOT_PROCESSED = :REFUND_NOT_PROCESSED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Reason for the dispute resolution:
@@ -296,6 +302,12 @@ module Lithic
         WON_PREARBITRATION = :WON_PREARBITRATION
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Status types:
@@ -322,6 +334,12 @@ module Lithic
         SUBMITTED = :SUBMITTED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

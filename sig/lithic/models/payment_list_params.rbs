@@ -94,7 +94,7 @@ module Lithic
 
         ACH: :ACH
 
-        def self.values: -> ::Array[Lithic::Models::PaymentListParams::category]
+        def self?.values: -> ::Array[Lithic::Models::PaymentListParams::category]
       end
 
       type result = :APPROVED | :DECLINED
@@ -105,7 +105,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self.values: -> ::Array[Lithic::Models::PaymentListParams::result]
+        def self?.values: -> ::Array[Lithic::Models::PaymentListParams::result]
       end
 
       type status = :DECLINED | :PENDING | :RETURNED | :SETTLED
@@ -118,7 +118,7 @@ module Lithic
         RETURNED: :RETURNED
         SETTLED: :SETTLED
 
-        def self.values: -> ::Array[Lithic::Models::PaymentListParams::status]
+        def self?.values: -> ::Array[Lithic::Models::PaymentListParams::status]
       end
     end
   end

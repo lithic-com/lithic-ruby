@@ -316,7 +316,7 @@ module Lithic
         AUTHORIZED_USER: :AUTHORIZED_USER
         PREPAID_CARD_USER: :PREPAID_CARD_USER
 
-        def self.values: -> ::Array[Lithic::Models::AccountHolder::exemption_type]
+        def self?.values: -> ::Array[Lithic::Models::AccountHolder::exemption_type]
       end
 
       type individual =
@@ -374,7 +374,7 @@ module Lithic
         PENDING_RESUBMIT: :PENDING_RESUBMIT
         REJECTED: :REJECTED
 
-        def self.values: -> ::Array[Lithic::Models::AccountHolder::status]
+        def self?.values: -> ::Array[Lithic::Models::AccountHolder::status]
       end
 
       type status_reason =
@@ -405,7 +405,7 @@ module Lithic
         RISK_THRESHOLD_FAILURE: :RISK_THRESHOLD_FAILURE
         WATCHLIST_ALERT_FAILURE: :WATCHLIST_ALERT_FAILURE
 
-        def self.values: -> ::Array[Lithic::Models::AccountHolder::status_reason]
+        def self?.values: -> ::Array[Lithic::Models::AccountHolder::status_reason]
       end
 
       type user_type = :BUSINESS | :INDIVIDUAL
@@ -416,7 +416,7 @@ module Lithic
         BUSINESS: :BUSINESS
         INDIVIDUAL: :INDIVIDUAL
 
-        def self.values: -> ::Array[Lithic::Models::AccountHolder::user_type]
+        def self?.values: -> ::Array[Lithic::Models::AccountHolder::user_type]
       end
 
       type verification_application =
@@ -473,7 +473,7 @@ module Lithic
           PENDING_RESUBMIT: :PENDING_RESUBMIT
           REJECTED: :REJECTED
 
-          def self.values: -> ::Array[Lithic::Models::AccountHolder::VerificationApplication::status]
+          def self?.values: -> ::Array[Lithic::Models::AccountHolder::VerificationApplication::status]
         end
 
         type status_reason =
@@ -504,7 +504,7 @@ module Lithic
           RISK_THRESHOLD_FAILURE: :RISK_THRESHOLD_FAILURE
           WATCHLIST_ALERT_FAILURE: :WATCHLIST_ALERT_FAILURE
 
-          def self.values: -> ::Array[Lithic::Models::AccountHolder::VerificationApplication::status_reason]
+          def self?.values: -> ::Array[Lithic::Models::AccountHolder::VerificationApplication::status_reason]
         end
       end
     end

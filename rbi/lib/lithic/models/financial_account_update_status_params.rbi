@@ -62,10 +62,16 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol) }
 
-        OPEN = T.let(:OPEN, Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol)
-        CLOSED = T.let(:CLOSED, Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol)
-        SUSPENDED = T.let(:SUSPENDED, Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol)
-        PENDING = T.let(:PENDING, Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol)
+        OPEN = T.let(:OPEN, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol)
+        CLOSED = T.let(:CLOSED, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol)
+        SUSPENDED = T.let(:SUSPENDED, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol)
+        PENDING = T.let(:PENDING, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Reason for the financial account status change
@@ -80,17 +86,29 @@ module Lithic
         CHARGED_OFF_FRAUD =
           T.let(
             :CHARGED_OFF_FRAUD,
-            Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol
+            Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol
           )
         END_USER_REQUEST =
-          T.let(:END_USER_REQUEST, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol)
+          T.let(
+            :END_USER_REQUEST,
+            Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol
+          )
         BANK_REQUEST =
-          T.let(:BANK_REQUEST, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol)
+          T.let(:BANK_REQUEST, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol)
         CHARGED_OFF_DELINQUENT =
           T.let(
             :CHARGED_OFF_DELINQUENT,
-            Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol
+            Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol
           )
+
+        class << self
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol])
+          end
+          def values
+          end
+        end
       end
     end
   end

@@ -57,7 +57,7 @@ module Lithic
         STANDARD: :STANDARD
         STANDARD_WITH_TRACKING: :STANDARD_WITH_TRACKING
 
-        def self.values: -> ::Array[Lithic::Models::CardConvertPhysicalParams::shipping_method]
+        def self?.values: -> ::Array[Lithic::Models::CardConvertPhysicalParams::shipping_method]
       end
     end
   end

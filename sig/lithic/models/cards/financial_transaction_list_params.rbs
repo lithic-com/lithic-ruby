@@ -72,7 +72,7 @@ module Lithic
           CARD: :CARD
           TRANSFER: :TRANSFER
 
-          def self.values: -> ::Array[Lithic::Models::Cards::FinancialTransactionListParams::category]
+          def self?.values: -> ::Array[Lithic::Models::Cards::FinancialTransactionListParams::category]
         end
 
         type result = :APPROVED | :DECLINED
@@ -83,7 +83,7 @@ module Lithic
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
-          def self.values: -> ::Array[Lithic::Models::Cards::FinancialTransactionListParams::result]
+          def self?.values: -> ::Array[Lithic::Models::Cards::FinancialTransactionListParams::result]
         end
 
         type status =
@@ -99,7 +99,7 @@ module Lithic
           SETTLED: :SETTLED
           VOIDED: :VOIDED
 
-          def self.values: -> ::Array[Lithic::Models::Cards::FinancialTransactionListParams::status]
+          def self?.values: -> ::Array[Lithic::Models::Cards::FinancialTransactionListParams::status]
         end
       end
     end

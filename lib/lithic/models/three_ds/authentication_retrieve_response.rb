@@ -238,6 +238,12 @@ module Lithic
           NOT_APPLICABLE = :NOT_APPLICABLE
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Indicates the outcome of the 3DS authentication process.
@@ -250,6 +256,12 @@ module Lithic
           PENDING_DECISION = :PENDING_DECISION
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Indicates whether the expiration date provided by the cardholder during checkout
@@ -262,6 +274,12 @@ module Lithic
           NOT_PRESENT = :NOT_PRESENT
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Cardholder < Lithic::BaseModel
@@ -474,6 +492,12 @@ module Lithic
           THREE_DS_REQUESTOR_INITIATED = :THREE_DS_REQUESTOR_INITIATED
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Merchant < Lithic::BaseModel
@@ -643,6 +667,12 @@ module Lithic
               TWO_DAY_OR_MORE_SHIPPING = :TWO_DAY_OR_MORE_SHIPPING
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             # Indicates whether the purchase is for merchandise that is available now or at a
@@ -654,6 +684,12 @@ module Lithic
               MERCHANDISE_AVAILABLE = :MERCHANDISE_AVAILABLE
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             # Indicates whether the cardholder is reordering previously purchased merchandise.
@@ -665,6 +701,12 @@ module Lithic
               REORDERED = :REORDERED
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             # Shipping method that the cardholder chose for the transaction. If purchase
@@ -685,6 +727,12 @@ module Lithic
               TRAVEL_AND_EVENT_TICKETS = :TRAVEL_AND_EVENT_TICKETS
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
         end
@@ -699,6 +747,12 @@ module Lithic
           PAYMENT_AUTHENTICATION = :PAYMENT_AUTHENTICATION
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Indicates whether a challenge is requested for this transaction
@@ -723,6 +777,12 @@ module Lithic
           OTHER = :OTHER
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class AdditionalData < Lithic::BaseModel
@@ -763,6 +823,12 @@ module Lithic
             NOT_LOW_RISK = :NOT_LOW_RISK
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -815,6 +881,12 @@ module Lithic
           SPLIT_SHIPMENT = :SPLIT_SHIPMENT
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Browser < Lithic::BaseModel
@@ -908,6 +980,12 @@ module Lithic
             OUT_OF_BAND = :OUT_OF_BAND
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -920,6 +998,12 @@ module Lithic
           NO_CHALLENGE = :NO_CHALLENGE
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Entity that made the authentication decision.
@@ -933,6 +1017,12 @@ module Lithic
           UNKNOWN = :UNKNOWN
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Type of 3DS Requestor Initiated (3RI) request i.e., a 3DS authentication that
@@ -961,6 +1051,12 @@ module Lithic
           TRUST_LIST_STATUS_CHECK = :TRUST_LIST_STATUS_CHECK
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Transaction < Lithic::BaseModel
@@ -1026,6 +1122,12 @@ module Lithic
             QUASI_CASH_TRANSACTION = :QUASI_CASH_TRANSACTION
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end

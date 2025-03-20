@@ -56,13 +56,24 @@ module Lithic
         EMAIL_TO_CARDHOLDER_ADDRESS =
           T.let(
             :EMAIL_TO_CARDHOLDER_ADDRESS,
-            Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol
+            Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::TaggedSymbol
           )
         TEXT_TO_CARDHOLDER_NUMBER =
           T.let(
             :TEXT_TO_CARDHOLDER_NUMBER,
-            Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol
+            Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::TaggedSymbol
           )
+
+        class << self
+          sig do
+            override
+              .returns(
+                T::Array[Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::TaggedSymbol]
+              )
+          end
+          def values
+          end
+        end
       end
     end
   end

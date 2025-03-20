@@ -55,7 +55,7 @@ module Lithic
           IS_GREATER_THAN: :IS_GREATER_THAN
           IS_LESS_THAN: :IS_LESS_THAN
 
-          def self.values: -> ::Array[Lithic::Models::AuthRules::AuthRuleCondition::operation]
+          def self?.values: -> ::Array[Lithic::Models::AuthRules::AuthRuleCondition::operation]
         end
 
         type value = String | Integer | ::Array[String]
@@ -67,7 +67,7 @@ module Lithic
 
           StringArray: string_array
 
-          def self.variants: -> [String, Integer, ::Array[String]]
+          def self?.variants: -> [String, Integer, ::Array[String]]
         end
       end
     end

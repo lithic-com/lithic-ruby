@@ -157,6 +157,17 @@ module Lithic
                 )
               }
             end
+
+          class << self
+            sig do
+              override
+                .returns(
+                  [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+                )
+            end
+            def variants
+            end
+          end
         end
 
         # The type of Auth Rule
@@ -166,8 +177,15 @@ module Lithic
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::V2CreateParams::Type) }
           OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol) }
 
-          CONDITIONAL_BLOCK = T.let(:CONDITIONAL_BLOCK, Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol)
-          VELOCITY_LIMIT = T.let(:VELOCITY_LIMIT, Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol)
+          CONDITIONAL_BLOCK =
+            T.let(:CONDITIONAL_BLOCK, Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol)
+          VELOCITY_LIMIT = T.let(:VELOCITY_LIMIT, Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

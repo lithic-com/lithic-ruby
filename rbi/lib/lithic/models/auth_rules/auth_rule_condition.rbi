@@ -114,14 +114,22 @@ module Lithic
           OrSymbol =
             T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol) }
 
-          IS_ONE_OF = T.let(:IS_ONE_OF, Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
-          IS_NOT_ONE_OF = T.let(:IS_NOT_ONE_OF, Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
-          MATCHES = T.let(:MATCHES, Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
+          IS_ONE_OF = T.let(:IS_ONE_OF, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
+          IS_NOT_ONE_OF =
+            T.let(:IS_NOT_ONE_OF, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
+          MATCHES = T.let(:MATCHES, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
           DOES_NOT_MATCH =
-            T.let(:DOES_NOT_MATCH, Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
+            T.let(:DOES_NOT_MATCH, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
           IS_GREATER_THAN =
-            T.let(:IS_GREATER_THAN, Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
-          IS_LESS_THAN = T.let(:IS_LESS_THAN, Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
+            T.let(:IS_GREATER_THAN, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
+          IS_LESS_THAN =
+            T.let(:IS_LESS_THAN, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
@@ -131,6 +139,12 @@ module Lithic
           Variants = type_template(:out) { {fixed: T.any(String, Integer, T::Array[String])} }
 
           StringArray = T.let(Lithic::ArrayOf[String], Lithic::Converter)
+
+          class << self
+            sig { override.returns([String, Integer, T::Array[String]]) }
+            def variants
+            end
+          end
         end
       end
     end

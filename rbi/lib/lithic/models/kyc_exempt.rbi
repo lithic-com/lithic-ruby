@@ -150,8 +150,14 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::KYCExempt::KYCExemptionType) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::KYCExempt::KYCExemptionType::TaggedSymbol) }
 
-        AUTHORIZED_USER = T.let(:AUTHORIZED_USER, Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol)
-        PREPAID_CARD_USER = T.let(:PREPAID_CARD_USER, Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol)
+        AUTHORIZED_USER = T.let(:AUTHORIZED_USER, Lithic::Models::KYCExempt::KYCExemptionType::TaggedSymbol)
+        PREPAID_CARD_USER = T.let(:PREPAID_CARD_USER, Lithic::Models::KYCExempt::KYCExemptionType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::KYCExempt::KYCExemptionType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Specifies the workflow type. This must be 'KYC_EXEMPT'
@@ -161,7 +167,13 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::KYCExempt::Workflow) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::KYCExempt::Workflow::TaggedSymbol) }
 
-        KYC_EXEMPT = T.let(:KYC_EXEMPT, Lithic::Models::KYCExempt::Workflow::OrSymbol)
+        KYC_EXEMPT = T.let(:KYC_EXEMPT, Lithic::Models::KYCExempt::Workflow::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::KYCExempt::Workflow::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

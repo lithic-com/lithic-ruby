@@ -111,13 +111,19 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol) }
 
-        NUMBER_2_DAY = T.let(:"2-DAY", Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol)
-        EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol)
-        EXPRESS = T.let(:EXPRESS, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol)
-        PRIORITY = T.let(:PRIORITY, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol)
-        STANDARD = T.let(:STANDARD, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol)
+        NUMBER_2_DAY = T.let(:"2-DAY", Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)
+        EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)
+        EXPRESS = T.let(:EXPRESS, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)
+        PRIORITY = T.let(:PRIORITY, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)
+        STANDARD = T.let(:STANDARD, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)
         STANDARD_WITH_TRACKING =
-          T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol)
+          T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

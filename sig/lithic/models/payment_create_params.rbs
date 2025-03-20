@@ -65,7 +65,7 @@ module Lithic
         ACH_NEXT_DAY: :ACH_NEXT_DAY
         ACH_SAME_DAY: :ACH_SAME_DAY
 
-        def self.values: -> ::Array[Lithic::Models::PaymentCreateParams::method_]
+        def self?.values: -> ::Array[Lithic::Models::PaymentCreateParams::method_]
       end
 
       type method_attributes =
@@ -91,7 +91,7 @@ module Lithic
           PPD: :PPD
           WEB: :WEB
 
-          def self.values: -> ::Array[Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code]
+          def self?.values: -> ::Array[Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code]
         end
       end
 
@@ -103,7 +103,7 @@ module Lithic
         COLLECTION: :COLLECTION
         PAYMENT: :PAYMENT
 
-        def self.values: -> ::Array[Lithic::Models::PaymentCreateParams::type_]
+        def self?.values: -> ::Array[Lithic::Models::PaymentCreateParams::type_]
       end
     end
   end

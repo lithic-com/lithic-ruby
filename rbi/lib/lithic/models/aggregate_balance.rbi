@@ -161,6 +161,12 @@ module Lithic
         ISSUING = T.let(:ISSUING, Lithic::Models::AggregateBalance::FinancialAccountType::TaggedSymbol)
         OPERATING = T.let(:OPERATING, Lithic::Models::AggregateBalance::FinancialAccountType::TaggedSymbol)
         RESERVE = T.let(:RESERVE, Lithic::Models::AggregateBalance::FinancialAccountType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::AggregateBalance::FinancialAccountType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -169,11 +169,18 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol) }
 
-        EXTERNAL_WIRE = T.let(:EXTERNAL_WIRE, Lithic::Models::ExternalPaymentListParams::Category::OrSymbol)
-        EXTERNAL_ACH = T.let(:EXTERNAL_ACH, Lithic::Models::ExternalPaymentListParams::Category::OrSymbol)
-        EXTERNAL_CHECK = T.let(:EXTERNAL_CHECK, Lithic::Models::ExternalPaymentListParams::Category::OrSymbol)
+        EXTERNAL_WIRE = T.let(:EXTERNAL_WIRE, Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol)
+        EXTERNAL_ACH = T.let(:EXTERNAL_ACH, Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol)
+        EXTERNAL_CHECK =
+          T.let(:EXTERNAL_CHECK, Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol)
         EXTERNAL_TRANSFER =
-          T.let(:EXTERNAL_TRANSFER, Lithic::Models::ExternalPaymentListParams::Category::OrSymbol)
+          T.let(:EXTERNAL_TRANSFER, Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # External Payment result to be returned.
@@ -184,8 +191,14 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentListParams::Result::TaggedSymbol) }
 
-        APPROVED = T.let(:APPROVED, Lithic::Models::ExternalPaymentListParams::Result::OrSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPaymentListParams::Result::OrSymbol)
+        APPROVED = T.let(:APPROVED, Lithic::Models::ExternalPaymentListParams::Result::TaggedSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPaymentListParams::Result::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Result::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Book transfer status to be returned.
@@ -196,11 +209,17 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol) }
 
-        PENDING = T.let(:PENDING, Lithic::Models::ExternalPaymentListParams::Status::OrSymbol)
-        SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPaymentListParams::Status::OrSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPaymentListParams::Status::OrSymbol)
-        REVERSED = T.let(:REVERSED, Lithic::Models::ExternalPaymentListParams::Status::OrSymbol)
-        CANCELED = T.let(:CANCELED, Lithic::Models::ExternalPaymentListParams::Status::OrSymbol)
+        PENDING = T.let(:PENDING, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol)
+        REVERSED = T.let(:REVERSED, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol)
+        CANCELED = T.let(:CANCELED, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

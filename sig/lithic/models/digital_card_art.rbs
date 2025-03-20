@@ -48,7 +48,7 @@ module Lithic
         MASTERCARD: :MASTERCARD
         VISA: :VISA
 
-        def self.values: -> ::Array[Lithic::Models::DigitalCardArtAPI::network]
+        def self?.values: -> ::Array[Lithic::Models::DigitalCardArtAPI::network]
       end
     end
   end

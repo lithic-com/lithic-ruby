@@ -263,8 +263,14 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountCreateParams::Type::TaggedSymbol) }
 
-        CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol)
-        SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol)
+        CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountCreateParams::Type::TaggedSymbol)
+        SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountCreateParams::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountCreateParams::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Verification Method
@@ -277,7 +283,19 @@ module Lithic
           T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::TaggedSymbol) }
 
         EXTERNALLY_VERIFIED =
-          T.let(:EXTERNALLY_VERIFIED, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol)
+          T.let(
+            :EXTERNALLY_VERIFIED,
+            Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::TaggedSymbol
+          )
+
+        class << self
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::TaggedSymbol])
+          end
+          def values
+          end
+        end
       end
     end
   end

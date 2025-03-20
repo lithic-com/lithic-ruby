@@ -10,7 +10,7 @@ module Lithic
         WEEK: :WEEK
         MONTH: :MONTH
 
-        def self.values: -> ::Array[Lithic::Models::AuthRules::velocity_limit_params_period_window]
+        def self?.values: -> ::Array[Lithic::Models::AuthRules::velocity_limit_params_period_window]
       end
     end
   end

@@ -48,7 +48,7 @@ module Lithic
 
         OPERATING: :OPERATING
 
-        def self.values: -> ::Array[Lithic::Models::FinancialAccountCreateParams::type_]
+        def self?.values: -> ::Array[Lithic::Models::FinancialAccountCreateParams::type_]
       end
     end
   end

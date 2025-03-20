@@ -339,12 +339,18 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardCreateParams::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::CardCreateParams::Type::TaggedSymbol) }
 
-        MERCHANT_LOCKED = T.let(:MERCHANT_LOCKED, Lithic::Models::CardCreateParams::Type::OrSymbol)
-        PHYSICAL = T.let(:PHYSICAL, Lithic::Models::CardCreateParams::Type::OrSymbol)
-        SINGLE_USE = T.let(:SINGLE_USE, Lithic::Models::CardCreateParams::Type::OrSymbol)
-        VIRTUAL = T.let(:VIRTUAL, Lithic::Models::CardCreateParams::Type::OrSymbol)
-        UNLOCKED = T.let(:UNLOCKED, Lithic::Models::CardCreateParams::Type::OrSymbol)
-        DIGITAL_WALLET = T.let(:DIGITAL_WALLET, Lithic::Models::CardCreateParams::Type::OrSymbol)
+        MERCHANT_LOCKED = T.let(:MERCHANT_LOCKED, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
+        PHYSICAL = T.let(:PHYSICAL, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
+        SINGLE_USE = T.let(:SINGLE_USE, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
+        VIRTUAL = T.let(:VIRTUAL, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
+        UNLOCKED = T.let(:UNLOCKED, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
+        DIGITAL_WALLET = T.let(:DIGITAL_WALLET, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::CardCreateParams::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
@@ -365,13 +371,19 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardCreateParams::ShippingMethod) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol) }
 
-        NUMBER_2_DAY = T.let(:"2_DAY", Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol)
-        EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol)
-        EXPRESS = T.let(:EXPRESS, Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol)
-        PRIORITY = T.let(:PRIORITY, Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol)
-        STANDARD = T.let(:STANDARD, Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol)
+        NUMBER_2_DAY = T.let(:"2_DAY", Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
+        EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
+        EXPRESS = T.let(:EXPRESS, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
+        PRIORITY = T.let(:PRIORITY, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
+        STANDARD = T.let(:STANDARD, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
         STANDARD_WITH_TRACKING =
-          T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol)
+          T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Card state values:
@@ -386,8 +398,14 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardCreateParams::State) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::CardCreateParams::State::TaggedSymbol) }
 
-        OPEN = T.let(:OPEN, Lithic::Models::CardCreateParams::State::OrSymbol)
-        PAUSED = T.let(:PAUSED, Lithic::Models::CardCreateParams::State::OrSymbol)
+        OPEN = T.let(:OPEN, Lithic::Models::CardCreateParams::State::TaggedSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::Models::CardCreateParams::State::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::CardCreateParams::State::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

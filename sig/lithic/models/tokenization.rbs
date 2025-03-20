@@ -88,7 +88,7 @@ module Lithic
         PENDING_ACTIVATION: :PENDING_ACTIVATION
         UNKNOWN: :UNKNOWN
 
-        def self.values: -> ::Array[Lithic::Models::Tokenization::status]
+        def self?.values: -> ::Array[Lithic::Models::Tokenization::status]
       end
 
       type token_requestor_name =
@@ -119,7 +119,7 @@ module Lithic
         UNKNOWN: :UNKNOWN
         VISA_CHECKOUT: :VISA_CHECKOUT
 
-        def self.values: -> ::Array[Lithic::Models::Tokenization::token_requestor_name]
+        def self?.values: -> ::Array[Lithic::Models::Tokenization::token_requestor_name]
       end
 
       type tokenization_channel = :DIGITAL_WALLET | :MERCHANT
@@ -130,7 +130,7 @@ module Lithic
         DIGITAL_WALLET: :DIGITAL_WALLET
         MERCHANT: :MERCHANT
 
-        def self.values: -> ::Array[Lithic::Models::Tokenization::tokenization_channel]
+        def self?.values: -> ::Array[Lithic::Models::Tokenization::tokenization_channel]
       end
 
       type event =
@@ -199,7 +199,7 @@ module Lithic
           TOKEN_SUSPENDED: :TOKEN_SUSPENDED
           TOKEN_UPDATED: :TOKEN_UPDATED
 
-          def self.values: -> ::Array[Lithic::Models::Tokenization::Event::result]
+          def self?.values: -> ::Array[Lithic::Models::Tokenization::Event::result]
         end
 
         type type_ =
@@ -218,7 +218,7 @@ module Lithic
           TOKENIZATION_ELIGIBILITY_CHECK: :TOKENIZATION_ELIGIBILITY_CHECK
           TOKENIZATION_UPDATED: :TOKENIZATION_UPDATED
 
-          def self.values: -> ::Array[Lithic::Models::Tokenization::Event::type_]
+          def self?.values: -> ::Array[Lithic::Models::Tokenization::Event::type_]
         end
       end
     end

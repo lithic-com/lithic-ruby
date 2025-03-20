@@ -107,6 +107,12 @@ module Lithic
         EXTERNAL_TRANSFER = :EXTERNAL_TRANSFER
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module PaymentType
@@ -116,6 +122,12 @@ module Lithic
         WITHDRAWAL = :WITHDRAWAL
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module ProgressTo
@@ -125,6 +137,12 @@ module Lithic
         RELEASED = :RELEASED
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

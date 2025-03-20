@@ -126,11 +126,17 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardListParams::State) }
         OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::CardListParams::State::TaggedSymbol) }
 
-        CLOSED = T.let(:CLOSED, Lithic::Models::CardListParams::State::OrSymbol)
-        OPEN = T.let(:OPEN, Lithic::Models::CardListParams::State::OrSymbol)
-        PAUSED = T.let(:PAUSED, Lithic::Models::CardListParams::State::OrSymbol)
-        PENDING_ACTIVATION = T.let(:PENDING_ACTIVATION, Lithic::Models::CardListParams::State::OrSymbol)
-        PENDING_FULFILLMENT = T.let(:PENDING_FULFILLMENT, Lithic::Models::CardListParams::State::OrSymbol)
+        CLOSED = T.let(:CLOSED, Lithic::Models::CardListParams::State::TaggedSymbol)
+        OPEN = T.let(:OPEN, Lithic::Models::CardListParams::State::TaggedSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::Models::CardListParams::State::TaggedSymbol)
+        PENDING_ACTIVATION = T.let(:PENDING_ACTIVATION, Lithic::Models::CardListParams::State::TaggedSymbol)
+        PENDING_FULFILLMENT = T.let(:PENDING_FULFILLMENT, Lithic::Models::CardListParams::State::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::CardListParams::State::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

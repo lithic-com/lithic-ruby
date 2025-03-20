@@ -135,8 +135,15 @@ module Lithic
           OrSymbol =
             T.type_alias { T.any(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol) }
 
-          CARD = T.let(:CARD, Lithic::Models::Cards::FinancialTransactionListParams::Category::OrSymbol)
-          TRANSFER = T.let(:TRANSFER, Lithic::Models::Cards::FinancialTransactionListParams::Category::OrSymbol)
+          CARD = T.let(:CARD, Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol)
+          TRANSFER =
+            T.let(:TRANSFER, Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # Financial Transaction result to be returned.
@@ -148,8 +155,14 @@ module Lithic
           OrSymbol =
             T.type_alias { T.any(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol) }
 
-          APPROVED = T.let(:APPROVED, Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol)
-          DECLINED = T.let(:DECLINED, Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol)
+          APPROVED = T.let(:APPROVED, Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol)
+          DECLINED = T.let(:DECLINED, Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # Financial Transaction status to be returned.
@@ -161,12 +174,18 @@ module Lithic
           OrSymbol =
             T.type_alias { T.any(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol) }
 
-          DECLINED = T.let(:DECLINED, Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)
-          EXPIRED = T.let(:EXPIRED, Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)
-          PENDING = T.let(:PENDING, Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)
-          RETURNED = T.let(:RETURNED, Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)
-          SETTLED = T.let(:SETTLED, Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)
-          VOIDED = T.let(:VOIDED, Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)
+          DECLINED = T.let(:DECLINED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
+          EXPIRED = T.let(:EXPIRED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
+          PENDING = T.let(:PENDING, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
+          RETURNED = T.let(:RETURNED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
+          SETTLED = T.let(:SETTLED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
+          VOIDED = T.let(:VOIDED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

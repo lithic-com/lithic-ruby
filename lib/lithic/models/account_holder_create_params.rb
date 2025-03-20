@@ -526,6 +526,12 @@ module Lithic
         KYC_EXEMPT = :KYC_EXEMPT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Individual < Lithic::BaseModel
@@ -601,6 +607,12 @@ module Lithic
         PREPAID_CARD_USER = :PREPAID_CARD_USER
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

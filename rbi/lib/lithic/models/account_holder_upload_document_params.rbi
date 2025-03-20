@@ -61,54 +61,69 @@ module Lithic
           T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol) }
 
         EIN_LETTER =
-          T.let(:EIN_LETTER, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+          T.let(:EIN_LETTER, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
         TAX_RETURN =
-          T.let(:TAX_RETURN, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+          T.let(:TAX_RETURN, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
         OPERATING_AGREEMENT =
-          T.let(:OPERATING_AGREEMENT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+          T.let(:OPERATING_AGREEMENT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
         CERTIFICATE_OF_FORMATION =
           T.let(
             :CERTIFICATE_OF_FORMATION,
-            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol
+            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
           )
         DRIVERS_LICENSE =
-          T.let(:DRIVERS_LICENSE, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
-        PASSPORT = T.let(:PASSPORT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+          T.let(:DRIVERS_LICENSE, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
+        PASSPORT =
+          T.let(:PASSPORT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
         PASSPORT_CARD =
-          T.let(:PASSPORT_CARD, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+          T.let(:PASSPORT_CARD, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
         CERTIFICATE_OF_GOOD_STANDING =
           T.let(
             :CERTIFICATE_OF_GOOD_STANDING,
-            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol
+            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
           )
         ARTICLES_OF_INCORPORATION =
           T.let(
             :ARTICLES_OF_INCORPORATION,
-            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol
+            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
           )
         ARTICLES_OF_ORGANIZATION =
           T.let(
             :ARTICLES_OF_ORGANIZATION,
-            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol
+            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
           )
-        BYLAWS = T.let(:BYLAWS, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+        BYLAWS = T.let(:BYLAWS, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
         GOVERNMENT_BUSINESS_LICENSE =
           T.let(
             :GOVERNMENT_BUSINESS_LICENSE,
-            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol
+            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
           )
         PARTNERSHIP_AGREEMENT =
-          T.let(:PARTNERSHIP_AGREEMENT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
-        SS4_FORM = T.let(:SS4_FORM, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+          T.let(
+            :PARTNERSHIP_AGREEMENT,
+            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+          )
+        SS4_FORM =
+          T.let(:SS4_FORM, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
         BANK_STATEMENT =
-          T.let(:BANK_STATEMENT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+          T.let(:BANK_STATEMENT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
         UTILITY_BILL_STATEMENT =
-          T.let(:UTILITY_BILL_STATEMENT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
-        SSN_CARD = T.let(:SSN_CARD, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+          T.let(
+            :UTILITY_BILL_STATEMENT,
+            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+          )
+        SSN_CARD =
+          T.let(:SSN_CARD, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
         ITIN_LETTER =
-          T.let(:ITIN_LETTER, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+          T.let(:ITIN_LETTER, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
         FINCEN_BOI_REPORT =
-          T.let(:FINCEN_BOI_REPORT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
+          T.let(:FINCEN_BOI_REPORT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

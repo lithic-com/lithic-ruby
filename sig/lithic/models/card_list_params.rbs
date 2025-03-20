@@ -71,7 +71,7 @@ module Lithic
         PENDING_ACTIVATION: :PENDING_ACTIVATION
         PENDING_FULFILLMENT: :PENDING_FULFILLMENT
 
-        def self.values: -> ::Array[Lithic::Models::CardListParams::state]
+        def self?.values: -> ::Array[Lithic::Models::CardListParams::state]
       end
     end
   end

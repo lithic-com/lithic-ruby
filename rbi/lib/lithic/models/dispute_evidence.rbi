@@ -127,6 +127,12 @@ module Lithic
         PENDING = T.let(:PENDING, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
         REJECTED = T.let(:REJECTED, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
         UPLOADED = T.let(:UPLOADED, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

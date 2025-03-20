@@ -113,7 +113,7 @@ module Lithic
         CHECKING: :CHECKING
         SAVINGS: :SAVINGS
 
-        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateParams::type_]
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateParams::type_]
       end
 
       type verification_method = :EXTERNALLY_VERIFIED
@@ -123,7 +123,7 @@ module Lithic
 
         EXTERNALLY_VERIFIED: :EXTERNALLY_VERIFIED
 
-        def self.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateParams::verification_method]
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateParams::verification_method]
       end
     end
   end

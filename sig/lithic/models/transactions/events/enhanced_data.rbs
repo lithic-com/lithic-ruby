@@ -142,7 +142,7 @@ module Lithic
                 TAX_NOT_INCLUDED: :TAX_NOT_INCLUDED
                 NOT_SUPPORTED: :NOT_SUPPORTED
 
-                def self.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt]
+                def self?.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt]
               end
             end
           end
@@ -494,7 +494,7 @@ module Lithic
                 RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT_OFF_ROAD_NON_TAXABLE: :RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT_OFF_ROAD_NON_TAXABLE
                 MISCELLANEOUS_OTHER_FUEL: :MISCELLANEOUS_OTHER_FUEL
 
-                def self.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_]
+                def self?.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_]
               end
 
               type unit_of_measure =
@@ -517,7 +517,7 @@ module Lithic
                 NOT_APPLICABLE: :NOT_APPLICABLE
                 UNKNOWN: :UNKNOWN
 
-                def self.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure]
+                def self?.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure]
               end
             end
 
@@ -537,7 +537,7 @@ module Lithic
               FULL_SERVICE: :FULL_SERVICE
               NON_FUEL_ONLY: :NON_FUEL_ONLY
 
-              def self.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type]
+              def self?.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type]
             end
           end
         end

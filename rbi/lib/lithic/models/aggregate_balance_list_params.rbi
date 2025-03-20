@@ -49,9 +49,16 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol) }
 
-        ISSUING = T.let(:ISSUING, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)
-        OPERATING = T.let(:OPERATING, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)
-        RESERVE = T.let(:RESERVE, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)
+        ISSUING = T.let(:ISSUING, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol)
+        OPERATING =
+          T.let(:OPERATING, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol)
+        RESERVE = T.let(:RESERVE, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

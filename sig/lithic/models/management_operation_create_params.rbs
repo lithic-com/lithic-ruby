@@ -77,7 +77,7 @@ module Lithic
         MANAGEMENT_REWARD: :MANAGEMENT_REWARD
         MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
 
-        def self.values: -> ::Array[Lithic::Models::ManagementOperationCreateParams::category]
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationCreateParams::category]
       end
 
       type direction = :CREDIT | :DEBIT
@@ -88,7 +88,7 @@ module Lithic
         CREDIT: :CREDIT
         DEBIT: :DEBIT
 
-        def self.values: -> ::Array[Lithic::Models::ManagementOperationCreateParams::direction]
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationCreateParams::direction]
       end
 
       type event_type =
@@ -127,7 +127,7 @@ module Lithic
         RETURNED_PAYMENT: :RETURNED_PAYMENT
         RETURNED_PAYMENT_REVERSAL: :RETURNED_PAYMENT_REVERSAL
 
-        def self.values: -> ::Array[Lithic::Models::ManagementOperationCreateParams::event_type]
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationCreateParams::event_type]
       end
     end
   end

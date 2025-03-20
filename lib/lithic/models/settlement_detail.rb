@@ -201,6 +201,12 @@ module Lithic
         VISA = :VISA
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class OtherFeesDetails < Lithic::BaseModel
@@ -238,6 +244,12 @@ module Lithic
         REPRESENTMENT = :REPRESENTMENT
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

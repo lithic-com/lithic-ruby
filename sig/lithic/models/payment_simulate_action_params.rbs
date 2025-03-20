@@ -55,7 +55,7 @@ module Lithic
         ACH_RETURN_PROCESSED: :ACH_RETURN_PROCESSED
         ACH_RETURN_SETTLED: :ACH_RETURN_SETTLED
 
-        def self.values: -> ::Array[Lithic::Models::PaymentSimulateActionParams::event_type]
+        def self?.values: -> ::Array[Lithic::Models::PaymentSimulateActionParams::event_type]
       end
 
       type decline_reason =
@@ -70,7 +70,7 @@ module Lithic
         PROGRAM_DAILY_LIMIT_EXCEEDED: :PROGRAM_DAILY_LIMIT_EXCEEDED
         PROGRAM_MONTHLY_LIMIT_EXCEEDED: :PROGRAM_MONTHLY_LIMIT_EXCEEDED
 
-        def self.values: -> ::Array[Lithic::Models::PaymentSimulateActionParams::decline_reason]
+        def self?.values: -> ::Array[Lithic::Models::PaymentSimulateActionParams::decline_reason]
       end
     end
   end

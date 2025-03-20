@@ -433,6 +433,12 @@ module Lithic
         KYB_BYO = :KYB_BYO
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

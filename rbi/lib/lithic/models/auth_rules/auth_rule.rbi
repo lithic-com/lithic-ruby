@@ -147,8 +147,14 @@ module Lithic
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::AuthRule::State) }
           OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol) }
 
-          ACTIVE = T.let(:ACTIVE, Lithic::Models::AuthRules::AuthRule::State::OrSymbol)
-          INACTIVE = T.let(:INACTIVE, Lithic::Models::AuthRules::AuthRule::State::OrSymbol)
+          ACTIVE = T.let(:ACTIVE, Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol)
+          INACTIVE = T.let(:INACTIVE, Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

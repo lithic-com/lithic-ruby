@@ -87,7 +87,7 @@ module Lithic
         FINANCIAL_AUTHORIZATION: :FINANCIAL_AUTHORIZATION
         FINANCIAL_CREDIT_AUTHORIZATION: :FINANCIAL_CREDIT_AUTHORIZATION
 
-        def self.values: -> ::Array[Lithic::Models::TransactionSimulateAuthorizationParams::status]
+        def self?.values: -> ::Array[Lithic::Models::TransactionSimulateAuthorizationParams::status]
       end
     end
   end

@@ -30,7 +30,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self.values: -> ::Array[Lithic::Models::PaymentSimulateReceiptResponse::result]
+        def self?.values: -> ::Array[Lithic::Models::PaymentSimulateReceiptResponse::result]
       end
     end
   end

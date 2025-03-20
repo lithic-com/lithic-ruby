@@ -130,6 +130,12 @@ module Lithic
         PENDING_RESUBMIT =
           T.let(:PENDING_RESUBMIT, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
         REJECTED = T.let(:REJECTED, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Status Reasons for KYC/KYB enrollment states
@@ -236,6 +242,12 @@ module Lithic
             :CONTROL_PERSON_NAME_VERIFICATION_FAILURE,
             Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
           )
+
+        class << self
+          sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

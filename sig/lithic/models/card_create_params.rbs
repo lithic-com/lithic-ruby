@@ -141,7 +141,7 @@ module Lithic
         UNLOCKED: :UNLOCKED
         DIGITAL_WALLET: :DIGITAL_WALLET
 
-        def self.values: -> ::Array[Lithic::Models::CardCreateParams::type_]
+        def self?.values: -> ::Array[Lithic::Models::CardCreateParams::type_]
       end
 
       type shipping_method =
@@ -162,7 +162,7 @@ module Lithic
         STANDARD: :STANDARD
         STANDARD_WITH_TRACKING: :STANDARD_WITH_TRACKING
 
-        def self.values: -> ::Array[Lithic::Models::CardCreateParams::shipping_method]
+        def self?.values: -> ::Array[Lithic::Models::CardCreateParams::shipping_method]
       end
 
       type state = :OPEN | :PAUSED
@@ -173,7 +173,7 @@ module Lithic
         OPEN: :OPEN
         PAUSED: :PAUSED
 
-        def self.values: -> ::Array[Lithic::Models::CardCreateParams::state]
+        def self?.values: -> ::Array[Lithic::Models::CardCreateParams::state]
       end
     end
   end
