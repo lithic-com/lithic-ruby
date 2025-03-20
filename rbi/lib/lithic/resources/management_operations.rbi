@@ -7,10 +7,10 @@ module Lithic
       sig do
         params(
           amount: Integer,
-          category: Symbol,
-          direction: Symbol,
+          category: Lithic::Models::ManagementOperationCreateParams::Category::OrSymbol,
+          direction: Lithic::Models::ManagementOperationCreateParams::Direction::OrSymbol,
           effective_date: Date,
-          event_type: Symbol,
+          event_type: Lithic::Models::ManagementOperationCreateParams::EventType::OrSymbol,
           financial_account_token: String,
           token: String,
           memo: String,
@@ -55,13 +55,13 @@ module Lithic
         params(
           begin_: Time,
           business_account_token: String,
-          category: Symbol,
+          category: Lithic::Models::ManagementOperationListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
           starting_after: String,
-          status: Symbol,
+          status: Lithic::Models::ManagementOperationListParams::Status::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::CursorPage[Lithic::Models::ManagementOperationTransaction])

@@ -47,10 +47,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # List financial accounts of a given type
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         ISSUING = :ISSUING
         OPERATING = :OPERATING
         RESERVE = :RESERVE

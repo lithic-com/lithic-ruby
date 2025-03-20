@@ -152,8 +152,6 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Type of event to simulate.
       #
       #   - `AUTHORIZATION` is a dual message purchase authorization, meaning a subsequent
@@ -170,7 +168,9 @@ module Lithic
       #   - `FINANCIAL_CREDIT_AUTHORIZATION` is a single message request from a merchant
       #     to credit funds immediately, and no subsequent clearing is required to settle
       #     the transaction.
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         AUTHORIZATION = :AUTHORIZATION
         BALANCE_INQUIRY = :BALANCE_INQUIRY
         CREDIT_AUTHORIZATION = :CREDIT_AUTHORIZATION

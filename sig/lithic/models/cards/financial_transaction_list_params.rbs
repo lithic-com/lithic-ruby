@@ -66,7 +66,9 @@ module Lithic
 
         type category = :CARD | :TRANSFER
 
-        class Category < Lithic::Enum
+        module Category
+          extend Lithic::Enum
+
           CARD: :CARD
           TRANSFER: :TRANSFER
 
@@ -75,7 +77,9 @@ module Lithic
 
         type result = :APPROVED | :DECLINED
 
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
@@ -85,7 +89,9 @@ module Lithic
         type status =
           :DECLINED | :EXPIRED | :PENDING | :RETURNED | :SETTLED | :VOIDED
 
-        class Status < Lithic::Enum
+        module Status
+          extend Lithic::Enum
+
           DECLINED: :DECLINED
           EXPIRED: :EXPIRED
           PENDING: :PENDING

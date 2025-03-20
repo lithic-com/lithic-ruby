@@ -7,34 +7,50 @@ module Lithic
       include Lithic::RequestParameters
 
       # The type of the endpoint.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::ResponderEndpointDeleteParams::Type::OrSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ResponderEndpointDeleteParams::Type::OrSymbol)
+          .returns(Lithic::Models::ResponderEndpointDeleteParams::Type::OrSymbol)
+      end
       def type=(_)
       end
 
       sig do
-        params(type: Symbol, request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+        params(
+          type: Lithic::Models::ResponderEndpointDeleteParams::Type::OrSymbol,
+          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+        )
           .returns(T.attached_class)
       end
       def self.new(type:, request_options: {})
       end
 
-      sig { override.returns({type: Symbol, request_options: Lithic::RequestOptions}) }
+      sig do
+        override
+          .returns(
+            {type: Lithic::Models::ResponderEndpointDeleteParams::Type::OrSymbol, request_options: Lithic::RequestOptions}
+          )
+      end
       def to_hash
       end
 
       # The type of the endpoint.
-      class Type < Lithic::Enum
-        abstract!
+      module Type
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ResponderEndpointDeleteParams::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ResponderEndpointDeleteParams::Type::TaggedSymbol) }
 
-        AUTH_STREAM_ACCESS = :AUTH_STREAM_ACCESS
-        THREE_DS_DECISIONING = :THREE_DS_DECISIONING
-        TOKENIZATION_DECISIONING = :TOKENIZATION_DECISIONING
+        AUTH_STREAM_ACCESS =
+          T.let(:AUTH_STREAM_ACCESS, Lithic::Models::ResponderEndpointDeleteParams::Type::OrSymbol)
+        THREE_DS_DECISIONING =
+          T.let(:THREE_DS_DECISIONING, Lithic::Models::ResponderEndpointDeleteParams::Type::OrSymbol)
+        TOKENIZATION_DECISIONING =
+          T.let(:TOKENIZATION_DECISIONING, Lithic::Models::ResponderEndpointDeleteParams::Type::OrSymbol)
       end
     end
   end

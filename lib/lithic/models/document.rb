@@ -48,10 +48,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Type of documentation to be submitted for verification of an account holder
-      class DocumentType < Lithic::Enum
+      module DocumentType
+        extend Lithic::Enum
+
         DRIVERS_LICENSE = :DRIVERS_LICENSE
         PASSPORT = :PASSPORT
         PASSPORT_CARD = :PASSPORT_CARD
@@ -167,20 +167,20 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # Type of image to upload.
-        class ImageType < Lithic::Enum
+        module ImageType
+          extend Lithic::Enum
+
           FRONT = :FRONT
           BACK = :BACK
 
           finalize!
         end
 
-        # @abstract
-        #
         # Status of an account holder's document upload.
-        class Status < Lithic::Enum
+        module Status
+          extend Lithic::Enum
+
           ACCEPTED = :ACCEPTED
           REJECTED = :REJECTED
           PENDING_UPLOAD = :PENDING_UPLOAD
@@ -190,10 +190,10 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # The status reasons for an account holder document upload that is not ACCEPTED
-        class StatusReason < Lithic::Enum
+        module StatusReason
+          extend Lithic::Enum
+
           DOCUMENT_MISSING_REQUIRED_DATA = :DOCUMENT_MISSING_REQUIRED_DATA
           DOCUMENT_UPLOAD_TOO_BLURRY = :DOCUMENT_UPLOAD_TOO_BLURRY
           FILE_SIZE_TOO_LARGE = :FILE_SIZE_TOO_LARGE

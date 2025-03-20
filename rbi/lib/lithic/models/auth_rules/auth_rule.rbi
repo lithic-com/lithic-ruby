@@ -14,11 +14,14 @@ module Lithic
         end
 
         # Indicates whether the Auth Rule is ACTIVE or INACTIVE
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::AuthRules::AuthRule::State::OrSymbol) }
         def state
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::AuthRules::AuthRule::State::OrSymbol)
+            .returns(Lithic::Models::AuthRules::AuthRule::State::OrSymbol)
+        end
         def state=(_)
         end
 
@@ -94,7 +97,7 @@ module Lithic
         sig do
           params(
             token: String,
-            state: Symbol,
+            state: Lithic::Models::AuthRules::AuthRule::State::OrSymbol,
             account_tokens: T::Array[String],
             allowed_countries: T::Array[String],
             allowed_mcc: T::Array[String],
@@ -123,7 +126,7 @@ module Lithic
             .returns(
               {
                 token: String,
-                state: Symbol,
+                state: Lithic::Models::AuthRules::AuthRule::State::OrSymbol,
                 account_tokens: T::Array[String],
                 allowed_countries: T::Array[String],
                 allowed_mcc: T::Array[String],
@@ -138,13 +141,14 @@ module Lithic
         end
 
         # Indicates whether the Auth Rule is ACTIVE or INACTIVE
-        class State < Lithic::Enum
-          abstract!
+        module State
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::AuthRule::State) }
+          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol) }
 
-          ACTIVE = :ACTIVE
-          INACTIVE = :INACTIVE
+          ACTIVE = T.let(:ACTIVE, Lithic::Models::AuthRules::AuthRule::State::OrSymbol)
+          INACTIVE = T.let(:INACTIVE, Lithic::Models::AuthRules::AuthRule::State::OrSymbol)
         end
       end
     end

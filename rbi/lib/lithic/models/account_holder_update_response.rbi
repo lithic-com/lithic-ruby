@@ -2,8 +2,8 @@
 
 module Lithic
   module Models
-    class AccountHolderUpdateResponse < Lithic::Union
-      abstract!
+    module AccountHolderUpdateResponse
+      extend Lithic::Union
 
       Variants =
         type_template(:out) do
@@ -135,11 +135,18 @@ module Lithic
 
         # The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
         #   holder is not KYC-Exempt.
-        sig { returns(T.nilable(Symbol)) }
+        sig do
+          returns(
+            T.nilable(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol)
+          )
+        end
         def exemption_type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol)
+            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol)
+        end
         def exemption_type=(_)
         end
 
@@ -204,21 +211,37 @@ module Lithic
         #
         #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
         #   `ADVANCED` workflow.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol)) }
         def status
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol)
+            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol)
+        end
         def status=(_)
         end
 
         # <Deprecated. Use verification_application.status_reasons> Reason for the
         #   evaluation status.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol]
+            )
+          )
+        end
         def status_reasons
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(
+            _: T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol]
+          )
+            .returns(
+              T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol]
+            )
+        end
         def status_reasons=(_)
         end
 
@@ -229,11 +252,18 @@ module Lithic
         #   "beneficial_owner_individuals", "beneficial_owner_entities",
         #
         #   "nature_of_business", and "website_url" attributes will be present.
-        sig { returns(T.nilable(Symbol)) }
+        sig do
+          returns(
+            T.nilable(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol)
+          )
+        end
         def user_type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol)
+            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol)
+        end
         def user_type=(_)
         end
 
@@ -273,15 +303,15 @@ module Lithic
             control_person: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
             created: Time,
             email: String,
-            exemption_type: Symbol,
+            exemption_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol,
             external_id: String,
             individual: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual,
             nature_of_business: String,
             phone_number: String,
             required_documents: T::Array[Lithic::Models::RequiredDocument],
-            status: Symbol,
-            status_reasons: T::Array[Symbol],
-            user_type: Symbol,
+            status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol,
+            status_reasons: T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol],
+            user_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol,
             verification_application: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication,
             website_url: String
           )
@@ -324,15 +354,15 @@ module Lithic
                 control_person: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
                 created: Time,
                 email: String,
-                exemption_type: Symbol,
+                exemption_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol,
                 external_id: String,
                 individual: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual,
                 nature_of_business: String,
                 phone_number: String,
                 required_documents: T::Array[Lithic::Models::RequiredDocument],
-                status: Symbol,
-                status_reasons: T::Array[Symbol],
-                user_type: Symbol,
+                status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol,
+                status_reasons: T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol],
+                user_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol,
                 verification_application: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication,
                 website_url: String
               }
@@ -734,13 +764,29 @@ module Lithic
 
         # The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
         #   holder is not KYC-Exempt.
-        class ExemptionType < Lithic::Enum
-          abstract!
+        module ExemptionType
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol
+              )
+            end
 
-          AUTHORIZED_USER = :AUTHORIZED_USER
-          PREPAID_CARD_USER = :PREPAID_CARD_USER
+          AUTHORIZED_USER =
+            T.let(
+              :AUTHORIZED_USER,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol
+            )
+          PREPAID_CARD_USER =
+            T.let(
+              :PREPAID_CARD_USER,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol
+            )
         end
 
         class Individual < Lithic::BaseModel
@@ -934,49 +980,164 @@ module Lithic
         #
         #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
         #   `ADVANCED` workflow.
-        class Status < Lithic::Enum
-          abstract!
+        module Status
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol) }
 
-          ACCEPTED = :ACCEPTED
-          PENDING_DOCUMENT = :PENDING_DOCUMENT
-          PENDING_RESUBMIT = :PENDING_RESUBMIT
-          REJECTED = :REJECTED
+          ACCEPTED =
+            T.let(:ACCEPTED, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol)
+          PENDING_DOCUMENT =
+            T.let(
+              :PENDING_DOCUMENT,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol
+            )
+          PENDING_RESUBMIT =
+            T.let(
+              :PENDING_RESUBMIT,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol
+            )
+          REJECTED =
+            T.let(:REJECTED, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol)
         end
 
         # Status Reasons for KYC/KYB enrollment states
-        class StatusReason < Lithic::Enum
-          abstract!
+        module StatusReason
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+              )
+            end
 
-          ADDRESS_VERIFICATION_FAILURE = :ADDRESS_VERIFICATION_FAILURE
-          AGE_THRESHOLD_FAILURE = :AGE_THRESHOLD_FAILURE
-          COMPLETE_VERIFICATION_FAILURE = :COMPLETE_VERIFICATION_FAILURE
-          DOB_VERIFICATION_FAILURE = :DOB_VERIFICATION_FAILURE
-          ID_VERIFICATION_FAILURE = :ID_VERIFICATION_FAILURE
-          MAX_DOCUMENT_ATTEMPTS = :MAX_DOCUMENT_ATTEMPTS
-          MAX_RESUBMISSION_ATTEMPTS = :MAX_RESUBMISSION_ATTEMPTS
-          NAME_VERIFICATION_FAILURE = :NAME_VERIFICATION_FAILURE
-          OTHER_VERIFICATION_FAILURE = :OTHER_VERIFICATION_FAILURE
-          RISK_THRESHOLD_FAILURE = :RISK_THRESHOLD_FAILURE
-          WATCHLIST_ALERT_FAILURE = :WATCHLIST_ALERT_FAILURE
-          PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE = :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE
+          ADDRESS_VERIFICATION_FAILURE =
+            T.let(
+              :ADDRESS_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          AGE_THRESHOLD_FAILURE =
+            T.let(
+              :AGE_THRESHOLD_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          COMPLETE_VERIFICATION_FAILURE =
+            T.let(
+              :COMPLETE_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          DOB_VERIFICATION_FAILURE =
+            T.let(
+              :DOB_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          ID_VERIFICATION_FAILURE =
+            T.let(
+              :ID_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          MAX_DOCUMENT_ATTEMPTS =
+            T.let(
+              :MAX_DOCUMENT_ATTEMPTS,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          MAX_RESUBMISSION_ATTEMPTS =
+            T.let(
+              :MAX_RESUBMISSION_ATTEMPTS,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          NAME_VERIFICATION_FAILURE =
+            T.let(
+              :NAME_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          OTHER_VERIFICATION_FAILURE =
+            T.let(
+              :OTHER_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          RISK_THRESHOLD_FAILURE =
+            T.let(
+              :RISK_THRESHOLD_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          WATCHLIST_ALERT_FAILURE =
+            T.let(
+              :WATCHLIST_ALERT_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE =
+            T.let(
+              :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
           PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE =
-            :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE
-          PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE = :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE
+            T.let(
+              :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE =
+            T.let(
+              :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
           PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED =
-            :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED
-          PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE = :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE
-          PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED = :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED
-          PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE = :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE
-          PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE = :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE
-          PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE = :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE
-          CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE = :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE
-          CONTROL_PERSON_ID_VERIFICATION_FAILURE = :CONTROL_PERSON_ID_VERIFICATION_FAILURE
-          CONTROL_PERSON_DOB_VERIFICATION_FAILURE = :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
-          CONTROL_PERSON_NAME_VERIFICATION_FAILURE = :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
+            T.let(
+              :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE =
+            T.let(
+              :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED =
+            T.let(
+              :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE =
+            T.let(
+              :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE =
+            T.let(
+              :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE =
+            T.let(
+              :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE =
+            T.let(
+              :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          CONTROL_PERSON_ID_VERIFICATION_FAILURE =
+            T.let(
+              :CONTROL_PERSON_ID_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          CONTROL_PERSON_DOB_VERIFICATION_FAILURE =
+            T.let(
+              :CONTROL_PERSON_DOB_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
+          CONTROL_PERSON_NAME_VERIFICATION_FAILURE =
+            T.let(
+              :CONTROL_PERSON_NAME_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
+            )
         end
 
         # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
@@ -986,13 +1147,21 @@ module Lithic
         #   "beneficial_owner_individuals", "beneficial_owner_entities",
         #
         #   "nature_of_business", and "website_url" attributes will be present.
-        class UserType < Lithic::Enum
-          abstract!
+        module UserType
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol) }
 
-          BUSINESS = :BUSINESS
-          INDIVIDUAL = :INDIVIDUAL
+          BUSINESS =
+            T.let(:BUSINESS, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol)
+          INDIVIDUAL =
+            T.let(
+              :INDIVIDUAL,
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol
+            )
         end
 
         class VerificationApplication < Lithic::BaseModel
@@ -1009,20 +1178,48 @@ module Lithic
           #
           #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
           #   `ADVANCED` workflow.
-          sig { returns(Symbol) }
+          sig do
+            returns(
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
+            )
+          end
           def status
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(
+              _: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
+            )
+              .returns(
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
+              )
+          end
           def status=(_)
           end
 
           # Reason for the evaluation status.
-          sig { returns(T::Array[Symbol]) }
+          sig do
+            returns(
+              T::Array[
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              ]
+            )
+          end
           def status_reasons
           end
 
-          sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+          sig do
+            params(
+              _: T::Array[
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              ]
+            )
+              .returns(
+                T::Array[
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+                ]
+              )
+          end
           def status_reasons=(_)
           end
 
@@ -1037,14 +1234,31 @@ module Lithic
 
           # Information about the most recent identity verification attempt
           sig do
-            params(created: Time, status: Symbol, status_reasons: T::Array[Symbol], updated: Time)
+            params(
+              created: Time,
+              status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol,
+              status_reasons: T::Array[
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              ],
+              updated: Time
+            )
               .returns(T.attached_class)
           end
           def self.new(created:, status:, status_reasons:, updated:)
           end
 
           sig do
-            override.returns({created: Time, status: Symbol, status_reasons: T::Array[Symbol], updated: Time})
+            override
+              .returns(
+                {
+                  created: Time,
+                  status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol,
+                  status_reasons: T::Array[
+                  Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+                  ],
+                  updated: Time
+                }
+              )
           end
           def to_hash
           end
@@ -1053,49 +1267,179 @@ module Lithic
           #
           #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
           #   `ADVANCED` workflow.
-          class Status < Lithic::Enum
-            abstract!
+          module Status
+            extend Lithic::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status)
+              end
+            OrSymbol =
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
+                )
+              end
 
-            ACCEPTED = :ACCEPTED
-            PENDING_DOCUMENT = :PENDING_DOCUMENT
-            PENDING_RESUBMIT = :PENDING_RESUBMIT
-            REJECTED = :REJECTED
+            ACCEPTED =
+              T.let(
+                :ACCEPTED,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
+              )
+            PENDING_DOCUMENT =
+              T.let(
+                :PENDING_DOCUMENT,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
+              )
+            PENDING_RESUBMIT =
+              T.let(
+                :PENDING_RESUBMIT,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
+              )
+            REJECTED =
+              T.let(
+                :REJECTED,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
+              )
           end
 
           # Status Reasons for KYC/KYB enrollment states
-          class StatusReason < Lithic::Enum
-            abstract!
+          module StatusReason
+            extend Lithic::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason)
+              end
+            OrSymbol =
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+                )
+              end
 
-            ADDRESS_VERIFICATION_FAILURE = :ADDRESS_VERIFICATION_FAILURE
-            AGE_THRESHOLD_FAILURE = :AGE_THRESHOLD_FAILURE
-            COMPLETE_VERIFICATION_FAILURE = :COMPLETE_VERIFICATION_FAILURE
-            DOB_VERIFICATION_FAILURE = :DOB_VERIFICATION_FAILURE
-            ID_VERIFICATION_FAILURE = :ID_VERIFICATION_FAILURE
-            MAX_DOCUMENT_ATTEMPTS = :MAX_DOCUMENT_ATTEMPTS
-            MAX_RESUBMISSION_ATTEMPTS = :MAX_RESUBMISSION_ATTEMPTS
-            NAME_VERIFICATION_FAILURE = :NAME_VERIFICATION_FAILURE
-            OTHER_VERIFICATION_FAILURE = :OTHER_VERIFICATION_FAILURE
-            RISK_THRESHOLD_FAILURE = :RISK_THRESHOLD_FAILURE
-            WATCHLIST_ALERT_FAILURE = :WATCHLIST_ALERT_FAILURE
-            PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE = :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE
+            ADDRESS_VERIFICATION_FAILURE =
+              T.let(
+                :ADDRESS_VERIFICATION_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            AGE_THRESHOLD_FAILURE =
+              T.let(
+                :AGE_THRESHOLD_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            COMPLETE_VERIFICATION_FAILURE =
+              T.let(
+                :COMPLETE_VERIFICATION_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            DOB_VERIFICATION_FAILURE =
+              T.let(
+                :DOB_VERIFICATION_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            ID_VERIFICATION_FAILURE =
+              T.let(
+                :ID_VERIFICATION_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            MAX_DOCUMENT_ATTEMPTS =
+              T.let(
+                :MAX_DOCUMENT_ATTEMPTS,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            MAX_RESUBMISSION_ATTEMPTS =
+              T.let(
+                :MAX_RESUBMISSION_ATTEMPTS,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            NAME_VERIFICATION_FAILURE =
+              T.let(
+                :NAME_VERIFICATION_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            OTHER_VERIFICATION_FAILURE =
+              T.let(
+                :OTHER_VERIFICATION_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            RISK_THRESHOLD_FAILURE =
+              T.let(
+                :RISK_THRESHOLD_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            WATCHLIST_ALERT_FAILURE =
+              T.let(
+                :WATCHLIST_ALERT_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE =
+              T.let(
+                :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
             PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE =
-              :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE
-            PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE = :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE
+              T.let(
+                :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE =
+              T.let(
+                :PRIMARY_BUSINESS_ENTITY_NAME_VERIFICATION_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
             PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED =
-              :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED
-            PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE = :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE
-            PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED = :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED
-            PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE = :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE
-            PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE = :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE
-            PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE = :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE
-            CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE = :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE
-            CONTROL_PERSON_ID_VERIFICATION_FAILURE = :CONTROL_PERSON_ID_VERIFICATION_FAILURE
-            CONTROL_PERSON_DOB_VERIFICATION_FAILURE = :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
-            CONTROL_PERSON_NAME_VERIFICATION_FAILURE = :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
+              T.let(
+                :PRIMARY_BUSINESS_ENTITY_BUSINESS_OFFICERS_NOT_MATCHED,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE =
+              T.let(
+                :PRIMARY_BUSINESS_ENTITY_SOS_FILING_INACTIVE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED =
+              T.let(
+                :PRIMARY_BUSINESS_ENTITY_SOS_NOT_MATCHED,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE =
+              T.let(
+                :PRIMARY_BUSINESS_ENTITY_CMRA_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE =
+              T.let(
+                :PRIMARY_BUSINESS_ENTITY_WATCHLIST_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE =
+              T.let(
+                :PRIMARY_BUSINESS_ENTITY_REGISTERED_AGENT_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE =
+              T.let(
+                :CONTROL_PERSON_BLOCKLIST_ALERT_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            CONTROL_PERSON_ID_VERIFICATION_FAILURE =
+              T.let(
+                :CONTROL_PERSON_ID_VERIFICATION_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            CONTROL_PERSON_DOB_VERIFICATION_FAILURE =
+              T.let(
+                :CONTROL_PERSON_DOB_VERIFICATION_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
+            CONTROL_PERSON_NAME_VERIFICATION_FAILURE =
+              T.let(
+                :CONTROL_PERSON_NAME_VERIFICATION_FAILURE,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              )
           end
         end
       end

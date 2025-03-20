@@ -146,8 +146,6 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # Account state:
       #
       #   - `ACTIVE` - Account is able to transact and create new cards.
@@ -159,7 +157,9 @@ module Lithic
       #     risk/compliance reasons. Please contact
       #     [support@lithic.com](mailto:support@lithic.com) if you believe this was in
       #     error.
-      class State < Lithic::Enum
+      module State
+        extend Lithic::Enum
+
         ACTIVE = :ACTIVE
         PAUSED = :PAUSED
         CLOSED = :CLOSED

@@ -158,10 +158,10 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
-          # @abstract
-          #
           # Network to filter on.
-          class Network < Lithic::Enum
+          module Network
+            extend Lithic::Enum
+
             VISA = :VISA
             MASTERCARD = :MASTERCARD
             MAESTRO = :MAESTRO

@@ -113,11 +113,14 @@ module Lithic
       #   - `FINANCIAL_CREDIT_AUTHORIZATION` is a single message request from a merchant
       #     to credit funds immediately, and no subsequent clearing is required to settle
       #     the transaction.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)
+          .returns(Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)
+      end
       def status=(_)
       end
 
@@ -132,7 +135,7 @@ module Lithic
           merchant_currency: String,
           partial_approval_capable: T::Boolean,
           pin: String,
-          status: Symbol,
+          status: Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -165,7 +168,7 @@ module Lithic
               merchant_currency: String,
               partial_approval_capable: T::Boolean,
               pin: String,
-              status: Symbol,
+              status: Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -189,16 +192,27 @@ module Lithic
       #   - `FINANCIAL_CREDIT_AUTHORIZATION` is a single message request from a merchant
       #     to credit funds immediately, and no subsequent clearing is required to settle
       #     the transaction.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol) }
 
-        AUTHORIZATION = :AUTHORIZATION
-        BALANCE_INQUIRY = :BALANCE_INQUIRY
-        CREDIT_AUTHORIZATION = :CREDIT_AUTHORIZATION
-        FINANCIAL_AUTHORIZATION = :FINANCIAL_AUTHORIZATION
-        FINANCIAL_CREDIT_AUTHORIZATION = :FINANCIAL_CREDIT_AUTHORIZATION
+        AUTHORIZATION =
+          T.let(:AUTHORIZATION, Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)
+        BALANCE_INQUIRY =
+          T.let(:BALANCE_INQUIRY, Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)
+        CREDIT_AUTHORIZATION =
+          T.let(:CREDIT_AUTHORIZATION, Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)
+        FINANCIAL_AUTHORIZATION =
+          T.let(:FINANCIAL_AUTHORIZATION, Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)
+        FINANCIAL_CREDIT_AUTHORIZATION =
+          T.let(
+            :FINANCIAL_CREDIT_AUTHORIZATION,
+            Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol
+          )
       end
     end
   end

@@ -16,11 +16,14 @@ module Lithic
       end
 
       # Reason for dispute
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::DisputeCreateParams::Reason::OrSymbol) }
       def reason
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+          .returns(Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+      end
       def reason=(_)
       end
 
@@ -54,7 +57,7 @@ module Lithic
       sig do
         params(
           amount: Integer,
-          reason: Symbol,
+          reason: Lithic::Models::DisputeCreateParams::Reason::OrSymbol,
           transaction_token: String,
           customer_filed_date: Time,
           customer_note: String,
@@ -70,7 +73,7 @@ module Lithic
           .returns(
             {
               amount: Integer,
-              reason: Symbol,
+              reason: Lithic::Models::DisputeCreateParams::Reason::OrSymbol,
               transaction_token: String,
               customer_filed_date: Time,
               customer_note: String,
@@ -82,25 +85,32 @@ module Lithic
       end
 
       # Reason for dispute
-      class Reason < Lithic::Enum
-        abstract!
+      module Reason
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DisputeCreateParams::Reason) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol) }
 
-        ATM_CASH_MISDISPENSE = :ATM_CASH_MISDISPENSE
-        CANCELLED = :CANCELLED
-        DUPLICATED = :DUPLICATED
-        FRAUD_CARD_NOT_PRESENT = :FRAUD_CARD_NOT_PRESENT
-        FRAUD_CARD_PRESENT = :FRAUD_CARD_PRESENT
-        FRAUD_OTHER = :FRAUD_OTHER
-        GOODS_SERVICES_NOT_AS_DESCRIBED = :GOODS_SERVICES_NOT_AS_DESCRIBED
-        GOODS_SERVICES_NOT_RECEIVED = :GOODS_SERVICES_NOT_RECEIVED
-        INCORRECT_AMOUNT = :INCORRECT_AMOUNT
-        MISSING_AUTH = :MISSING_AUTH
-        OTHER = :OTHER
-        PROCESSING_ERROR = :PROCESSING_ERROR
-        RECURRING_TRANSACTION_NOT_CANCELLED = :RECURRING_TRANSACTION_NOT_CANCELLED
-        REFUND_NOT_PROCESSED = :REFUND_NOT_PROCESSED
+        ATM_CASH_MISDISPENSE =
+          T.let(:ATM_CASH_MISDISPENSE, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+        CANCELLED = T.let(:CANCELLED, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+        DUPLICATED = T.let(:DUPLICATED, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+        FRAUD_CARD_NOT_PRESENT =
+          T.let(:FRAUD_CARD_NOT_PRESENT, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+        FRAUD_CARD_PRESENT = T.let(:FRAUD_CARD_PRESENT, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+        FRAUD_OTHER = T.let(:FRAUD_OTHER, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+        GOODS_SERVICES_NOT_AS_DESCRIBED =
+          T.let(:GOODS_SERVICES_NOT_AS_DESCRIBED, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+        GOODS_SERVICES_NOT_RECEIVED =
+          T.let(:GOODS_SERVICES_NOT_RECEIVED, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+        INCORRECT_AMOUNT = T.let(:INCORRECT_AMOUNT, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+        MISSING_AUTH = T.let(:MISSING_AUTH, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+        OTHER = T.let(:OTHER, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+        PROCESSING_ERROR = T.let(:PROCESSING_ERROR, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+        RECURRING_TRANSACTION_NOT_CANCELLED =
+          T.let(:RECURRING_TRANSACTION_NOT_CANCELLED, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
+        REFUND_NOT_PROCESSED =
+          T.let(:REFUND_NOT_PROCESSED, Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
       end
     end
   end

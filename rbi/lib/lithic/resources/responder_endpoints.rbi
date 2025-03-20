@@ -6,7 +6,7 @@ module Lithic
       # Enroll a responder endpoint
       sig do
         params(
-          type: Symbol,
+          type: Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol,
           url: String,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
@@ -24,7 +24,7 @@ module Lithic
       # Disenroll a responder endpoint
       sig do
         params(
-          type: Symbol,
+          type: Lithic::Models::ResponderEndpointDeleteParams::Type::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .void
@@ -39,7 +39,7 @@ module Lithic
       # Check the status of a responder endpoint
       sig do
         params(
-          type: Symbol,
+          type: Lithic::Models::ResponderEndpointCheckStatusParams::Type::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::Models::ResponderEndpointStatus)

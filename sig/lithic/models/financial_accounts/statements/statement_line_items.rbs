@@ -1,7 +1,6 @@
 module Lithic
   module Models
     module FinancialAccounts
-      
       class StatementLineItems = Statements::StatementLineItems
 
       module Statements
@@ -98,7 +97,9 @@ module Lithic
               | :MANAGEMENT_FEE
               | :MANAGEMENT_REWARD
 
-            class Category < Lithic::Enum
+            module Category
+              extend Lithic::Enum
+
               ACH: :ACH
               BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
               CARD: :CARD
@@ -180,7 +181,9 @@ module Lithic
               | :RETURNED_PAYMENT
               | :RETURNED_PAYMENT_REVERSAL
 
-            class EventType < Lithic::Enum
+            module EventType
+              extend Lithic::Enum
+
               ACH_ORIGINATION_CANCELLED: :ACH_ORIGINATION_CANCELLED
               ACH_ORIGINATION_INITIATED: :ACH_ORIGINATION_INITIATED
               ACH_ORIGINATION_PROCESSED: :ACH_ORIGINATION_PROCESSED

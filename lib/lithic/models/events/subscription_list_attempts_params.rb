@@ -95,8 +95,9 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        class Status < Lithic::Enum
+        module Status
+          extend Lithic::Enum
+
           FAILED = :FAILED
           PENDING = :PENDING
           SENDING = :SENDING

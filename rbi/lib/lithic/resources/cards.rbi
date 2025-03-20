@@ -19,7 +19,7 @@ module Lithic
       #   `product_id` only apply to physical cards.
       sig do
         params(
-          type: Symbol,
+          type: Lithic::Models::CardCreateParams::Type::OrSymbol,
           account_token: String,
           card_program_token: String,
           carrier: Lithic::Models::Carrier,
@@ -32,10 +32,10 @@ module Lithic
           replacement_account_token: String,
           replacement_for: String,
           shipping_address: Lithic::Models::ShippingAddress,
-          shipping_method: Symbol,
+          shipping_method: Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol,
           spend_limit: Integer,
-          spend_limit_duration: Symbol,
-          state: Symbol,
+          spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
+          state: Lithic::Models::CardCreateParams::State::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::Models::Card)
@@ -168,10 +168,10 @@ module Lithic
           digital_card_art_token: String,
           memo: String,
           pin: String,
-          pin_status: Symbol,
+          pin_status: Lithic::Models::CardUpdateParams::PinStatus::OrSymbol,
           spend_limit: Integer,
-          spend_limit_duration: Symbol,
-          state: Symbol,
+          spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
+          state: Lithic::Models::CardUpdateParams::State::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::Models::Card)
@@ -233,7 +233,7 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          state: Symbol,
+          state: Lithic::Models::CardListParams::State::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::CursorPage[Lithic::Models::Card])
@@ -277,7 +277,7 @@ module Lithic
           shipping_address: Lithic::Models::ShippingAddress,
           carrier: Lithic::Models::Carrier,
           product_id: String,
-          shipping_method: Symbol,
+          shipping_method: Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::Models::Card)
@@ -365,7 +365,7 @@ module Lithic
           certificate: String,
           client_device_id: String,
           client_wallet_account_id: String,
-          digital_wallet: Symbol,
+          digital_wallet: Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol,
           nonce: String,
           nonce_signature: String,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
@@ -413,7 +413,7 @@ module Lithic
           carrier: Lithic::Models::Carrier,
           product_id: String,
           shipping_address: Lithic::Models::ShippingAddress,
-          shipping_method: Symbol,
+          shipping_method: Lithic::Models::CardReissueParams::ShippingMethod::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::Models::Card)
@@ -459,7 +459,7 @@ module Lithic
           exp_month: String,
           exp_year: String,
           product_id: String,
-          shipping_method: Symbol,
+          shipping_method: Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::Models::Card)

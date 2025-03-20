@@ -254,8 +254,9 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
-          # @abstract
-          class PeriodState < Lithic::Enum
+          module PeriodState
+            extend Lithic::Enum
+
             STANDARD = :STANDARD
             PROMO = :PROMO
             PENALTY = :PENALTY
@@ -347,8 +348,9 @@ module Lithic
           # def initialize: (Hash | Lithic::BaseModel) -> void
         end
 
-        # @abstract
-        class StatementType < Lithic::Enum
+        module StatementType
+          extend Lithic::Enum
+
           INITIAL = :INITIAL
           PERIOD_END = :PERIOD_END
           FINAL = :FINAL
@@ -530,8 +532,9 @@ module Lithic
             # def initialize: (Hash | Lithic::BaseModel) -> void
           end
 
-          # @abstract
-          class InterestCalculationMethod < Lithic::Enum
+          module InterestCalculationMethod
+            extend Lithic::Enum
+
             DAILY = :DAILY
             AVERAGE_DAILY = :AVERAGE_DAILY
 

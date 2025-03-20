@@ -110,11 +110,11 @@ module Lithic
           # def initialize: (Hash | Lithic::BaseModel) -> void
         end
 
-        # @abstract
-        #
         # When set will use the following values as part of the Simulated Authentication.
         #   When not set defaults to MATCH
-        class CardExpiryCheck < Lithic::Enum
+        module CardExpiryCheck
+          extend Lithic::Enum
+
           MATCH = :MATCH
           MISMATCH = :MISMATCH
           NOT_PRESENT = :NOT_PRESENT

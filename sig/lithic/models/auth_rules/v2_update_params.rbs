@@ -54,7 +54,9 @@ module Lithic
 
         type state = :INACTIVE
 
-        class State < Lithic::Enum
+        module State
+          extend Lithic::Enum
+
           INACTIVE: :INACTIVE
 
           def self.values: -> ::Array[Lithic::Models::AuthRules::V2UpdateParams::state]

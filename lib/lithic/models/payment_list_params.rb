@@ -149,23 +149,26 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         ACH = :ACH
 
         finalize!
       end
 
-      # @abstract
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
         finalize!
       end
 
-      # @abstract
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         DECLINED = :DECLINED
         PENDING = :PENDING
         RETURNED = :RETURNED

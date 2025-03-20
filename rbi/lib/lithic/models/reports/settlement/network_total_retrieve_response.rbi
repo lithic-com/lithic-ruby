@@ -56,11 +56,14 @@ module Lithic
 
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
           #   INTERLINK.
-          sig { returns(Symbol) }
+          sig { returns(Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol) }
           def network
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol)
+              .returns(Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol)
+          end
           def network=(_)
           end
 
@@ -118,7 +121,7 @@ module Lithic
               created: Time,
               currency: String,
               institution_id: String,
-              network: Symbol,
+              network: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol,
               report_date: Date,
               settlement_institution_id: String,
               settlement_service: String,
@@ -151,7 +154,7 @@ module Lithic
                   created: Time,
                   currency: String,
                   institution_id: String,
-                  network: Symbol,
+                  network: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol,
                   report_date: Date,
                   settlement_institution_id: String,
                   settlement_service: String,
@@ -230,15 +233,28 @@ module Lithic
 
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
           #   INTERLINK.
-          class Network < Lithic::Enum
-            abstract!
+          module Network
+            extend Lithic::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol) }
 
-            VISA = :VISA
-            MASTERCARD = :MASTERCARD
-            MAESTRO = :MAESTRO
-            INTERLINK = :INTERLINK
+            VISA =
+              T.let(:VISA, Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol)
+            MASTERCARD =
+              T.let(
+                :MASTERCARD,
+                Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol
+              )
+            MAESTRO =
+              T.let(:MAESTRO, Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol)
+            INTERLINK =
+              T.let(
+                :INTERLINK,
+                Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol
+              )
           end
         end
       end

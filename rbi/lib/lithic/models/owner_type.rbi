@@ -2,13 +2,14 @@
 
 module Lithic
   module Models
-    class OwnerType < Lithic::Enum
-      abstract!
+    module OwnerType
+      extend Lithic::Enum
 
-      Value = type_template(:out) { {fixed: Symbol} }
+      TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::OwnerType) }
+      OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::OwnerType::TaggedSymbol) }
 
-      INDIVIDUAL = :INDIVIDUAL
-      BUSINESS = :BUSINESS
+      INDIVIDUAL = T.let(:INDIVIDUAL, Lithic::Models::OwnerType::OrSymbol)
+      BUSINESS = T.let(:BUSINESS, Lithic::Models::OwnerType::OrSymbol)
     end
   end
 end

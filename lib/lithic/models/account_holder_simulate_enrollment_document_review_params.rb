@@ -61,10 +61,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # An account holder document's upload status for use within the simulation.
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         UPLOADED = :UPLOADED
         ACCEPTED = :ACCEPTED
         REJECTED = :REJECTED
@@ -73,11 +73,11 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Status reason that will be associated with the simulated account holder status.
       #   Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
-      class StatusReason < Lithic::Enum
+      module StatusReason
+        extend Lithic::Enum
+
         DOCUMENT_MISSING_REQUIRED_DATA = :DOCUMENT_MISSING_REQUIRED_DATA
         DOCUMENT_UPLOAD_TOO_BLURRY = :DOCUMENT_UPLOAD_TOO_BLURRY
         FILE_SIZE_TOO_LARGE = :FILE_SIZE_TOO_LARGE

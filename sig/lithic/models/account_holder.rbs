@@ -310,7 +310,9 @@ module Lithic
 
       type exemption_type = :AUTHORIZED_USER | :PREPAID_CARD_USER
 
-      class ExemptionType < Lithic::Enum
+      module ExemptionType
+        extend Lithic::Enum
+
         AUTHORIZED_USER: :AUTHORIZED_USER
         PREPAID_CARD_USER: :PREPAID_CARD_USER
 
@@ -363,7 +365,9 @@ module Lithic
         | :PENDING_RESUBMIT
         | :REJECTED
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         ACCEPTED: :ACCEPTED
         PENDING_REVIEW: :PENDING_REVIEW
         PENDING_DOCUMENT: :PENDING_DOCUMENT
@@ -386,7 +390,9 @@ module Lithic
         | :RISK_THRESHOLD_FAILURE
         | :WATCHLIST_ALERT_FAILURE
 
-      class StatusReason < Lithic::Enum
+      module StatusReason
+        extend Lithic::Enum
+
         ADDRESS_VERIFICATION_FAILURE: :ADDRESS_VERIFICATION_FAILURE
         AGE_THRESHOLD_FAILURE: :AGE_THRESHOLD_FAILURE
         COMPLETE_VERIFICATION_FAILURE: :COMPLETE_VERIFICATION_FAILURE
@@ -404,7 +410,9 @@ module Lithic
 
       type user_type = :BUSINESS | :INDIVIDUAL
 
-      class UserType < Lithic::Enum
+      module UserType
+        extend Lithic::Enum
+
         BUSINESS: :BUSINESS
         INDIVIDUAL: :INDIVIDUAL
 
@@ -456,7 +464,9 @@ module Lithic
           | :PENDING_RESUBMIT
           | :REJECTED
 
-        class Status < Lithic::Enum
+        module Status
+          extend Lithic::Enum
+
           ACCEPTED: :ACCEPTED
           PENDING_REVIEW: :PENDING_REVIEW
           PENDING_DOCUMENT: :PENDING_DOCUMENT
@@ -479,7 +489,9 @@ module Lithic
           | :RISK_THRESHOLD_FAILURE
           | :WATCHLIST_ALERT_FAILURE
 
-        class StatusReason < Lithic::Enum
+        module StatusReason
+          extend Lithic::Enum
+
           ADDRESS_VERIFICATION_FAILURE: :ADDRESS_VERIFICATION_FAILURE
           AGE_THRESHOLD_FAILURE: :AGE_THRESHOLD_FAILURE
           COMPLETE_VERIFICATION_FAILURE: :COMPLETE_VERIFICATION_FAILURE

@@ -14,11 +14,14 @@ module Lithic
       def nickname=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::FinancialAccountCreateParams::Type::OrSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::FinancialAccountCreateParams::Type::OrSymbol)
+          .returns(Lithic::Models::FinancialAccountCreateParams::Type::OrSymbol)
+      end
       def type=(_)
       end
 
@@ -49,7 +52,7 @@ module Lithic
       sig do
         params(
           nickname: String,
-          type: Symbol,
+          type: Lithic::Models::FinancialAccountCreateParams::Type::OrSymbol,
           account_token: String,
           is_for_benefit_of: T::Boolean,
           idempotency_key: String,
@@ -65,7 +68,7 @@ module Lithic
           .returns(
             {
               nickname: String,
-              type: Symbol,
+              type: Lithic::Models::FinancialAccountCreateParams::Type::OrSymbol,
               account_token: String,
               is_for_benefit_of: T::Boolean,
               idempotency_key: String,
@@ -76,12 +79,14 @@ module Lithic
       def to_hash
       end
 
-      class Type < Lithic::Enum
-        abstract!
+      module Type
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccountCreateParams::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccountCreateParams::Type::TaggedSymbol) }
 
-        OPERATING = :OPERATING
+        OPERATING = T.let(:OPERATING, Lithic::Models::FinancialAccountCreateParams::Type::OrSymbol)
       end
     end
   end

@@ -110,11 +110,14 @@ module Lithic
       end
 
       # The type of KYC exemption for a KYC-Exempt Account Holder.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol)) }
       def exemption_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol)
+          .returns(Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol)
+      end
       def exemption_type=(_)
       end
 
@@ -177,21 +180,27 @@ module Lithic
       #   Note:
       #
       #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::AccountHolder::Status::TaggedSymbol)) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::AccountHolder::Status::TaggedSymbol)
+          .returns(Lithic::Models::AccountHolder::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
       # <Deprecated. Use verification_application.status_reasons> Reason for the
       #   evaluation status.
-      sig { returns(T.nilable(T::Array[Symbol])) }
+      sig { returns(T.nilable(T::Array[Lithic::Models::AccountHolder::StatusReason::TaggedSymbol])) }
       def status_reasons
       end
 
-      sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+      sig do
+        params(_: T::Array[Lithic::Models::AccountHolder::StatusReason::TaggedSymbol])
+          .returns(T::Array[Lithic::Models::AccountHolder::StatusReason::TaggedSymbol])
+      end
       def status_reasons=(_)
       end
 
@@ -199,11 +208,14 @@ module Lithic
       #   attribute will be present. If the type is "BUSINESS" then the "business_entity",
       #   "control_person", "beneficial_owner_individuals", "beneficial_owner_entities",
       #   "nature_of_business", and "website_url" attributes will be present.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::AccountHolder::UserType::TaggedSymbol)) }
       def user_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::AccountHolder::UserType::TaggedSymbol)
+          .returns(Lithic::Models::AccountHolder::UserType::TaggedSymbol)
+      end
       def user_type=(_)
       end
 
@@ -239,15 +251,15 @@ module Lithic
           business_entity: Lithic::Models::AccountHolder::BusinessEntity,
           control_person: Lithic::Models::AccountHolder::ControlPerson,
           email: String,
-          exemption_type: Symbol,
+          exemption_type: Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol,
           external_id: String,
           individual: Lithic::Models::AccountHolder::Individual,
           nature_of_business: String,
           phone_number: String,
           required_documents: T::Array[Lithic::Models::RequiredDocument],
-          status: Symbol,
-          status_reasons: T::Array[Symbol],
-          user_type: Symbol,
+          status: Lithic::Models::AccountHolder::Status::TaggedSymbol,
+          status_reasons: T::Array[Lithic::Models::AccountHolder::StatusReason::TaggedSymbol],
+          user_type: Lithic::Models::AccountHolder::UserType::TaggedSymbol,
           verification_application: Lithic::Models::AccountHolder::VerificationApplication,
           website_url: String
         )
@@ -290,15 +302,15 @@ module Lithic
               business_entity: Lithic::Models::AccountHolder::BusinessEntity,
               control_person: Lithic::Models::AccountHolder::ControlPerson,
               email: String,
-              exemption_type: Symbol,
+              exemption_type: Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol,
               external_id: String,
               individual: Lithic::Models::AccountHolder::Individual,
               nature_of_business: String,
               phone_number: String,
               required_documents: T::Array[Lithic::Models::RequiredDocument],
-              status: Symbol,
-              status_reasons: T::Array[Symbol],
-              user_type: Symbol,
+              status: Lithic::Models::AccountHolder::Status::TaggedSymbol,
+              status_reasons: T::Array[Lithic::Models::AccountHolder::StatusReason::TaggedSymbol],
+              user_type: Lithic::Models::AccountHolder::UserType::TaggedSymbol,
               verification_application: Lithic::Models::AccountHolder::VerificationApplication,
               website_url: String
             }
@@ -733,13 +745,14 @@ module Lithic
       end
 
       # The type of KYC exemption for a KYC-Exempt Account Holder.
-      class ExemptionType < Lithic::Enum
-        abstract!
+      module ExemptionType
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolder::ExemptionType) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol) }
 
-        AUTHORIZED_USER = :AUTHORIZED_USER
-        PREPAID_CARD_USER = :PREPAID_CARD_USER
+        AUTHORIZED_USER = T.let(:AUTHORIZED_USER, Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol)
+        PREPAID_CARD_USER = T.let(:PREPAID_CARD_USER, Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol)
       end
 
       class Individual < Lithic::BaseModel
@@ -848,47 +861,61 @@ module Lithic
       #   Note:
       #
       #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolder::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AccountHolder::Status::TaggedSymbol) }
 
-        ACCEPTED = :ACCEPTED
-        PENDING_REVIEW = :PENDING_REVIEW
-        PENDING_DOCUMENT = :PENDING_DOCUMENT
-        PENDING_RESUBMIT = :PENDING_RESUBMIT
-        REJECTED = :REJECTED
+        ACCEPTED = T.let(:ACCEPTED, Lithic::Models::AccountHolder::Status::TaggedSymbol)
+        PENDING_REVIEW = T.let(:PENDING_REVIEW, Lithic::Models::AccountHolder::Status::TaggedSymbol)
+        PENDING_DOCUMENT = T.let(:PENDING_DOCUMENT, Lithic::Models::AccountHolder::Status::TaggedSymbol)
+        PENDING_RESUBMIT = T.let(:PENDING_RESUBMIT, Lithic::Models::AccountHolder::Status::TaggedSymbol)
+        REJECTED = T.let(:REJECTED, Lithic::Models::AccountHolder::Status::TaggedSymbol)
       end
 
-      class StatusReason < Lithic::Enum
-        abstract!
+      module StatusReason
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolder::StatusReason) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol) }
 
-        ADDRESS_VERIFICATION_FAILURE = :ADDRESS_VERIFICATION_FAILURE
-        AGE_THRESHOLD_FAILURE = :AGE_THRESHOLD_FAILURE
-        COMPLETE_VERIFICATION_FAILURE = :COMPLETE_VERIFICATION_FAILURE
-        DOB_VERIFICATION_FAILURE = :DOB_VERIFICATION_FAILURE
-        ID_VERIFICATION_FAILURE = :ID_VERIFICATION_FAILURE
-        MAX_DOCUMENT_ATTEMPTS = :MAX_DOCUMENT_ATTEMPTS
-        MAX_RESUBMISSION_ATTEMPTS = :MAX_RESUBMISSION_ATTEMPTS
-        NAME_VERIFICATION_FAILURE = :NAME_VERIFICATION_FAILURE
-        OTHER_VERIFICATION_FAILURE = :OTHER_VERIFICATION_FAILURE
-        RISK_THRESHOLD_FAILURE = :RISK_THRESHOLD_FAILURE
-        WATCHLIST_ALERT_FAILURE = :WATCHLIST_ALERT_FAILURE
+        ADDRESS_VERIFICATION_FAILURE =
+          T.let(:ADDRESS_VERIFICATION_FAILURE, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol)
+        AGE_THRESHOLD_FAILURE =
+          T.let(:AGE_THRESHOLD_FAILURE, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol)
+        COMPLETE_VERIFICATION_FAILURE =
+          T.let(:COMPLETE_VERIFICATION_FAILURE, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol)
+        DOB_VERIFICATION_FAILURE =
+          T.let(:DOB_VERIFICATION_FAILURE, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol)
+        ID_VERIFICATION_FAILURE =
+          T.let(:ID_VERIFICATION_FAILURE, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol)
+        MAX_DOCUMENT_ATTEMPTS =
+          T.let(:MAX_DOCUMENT_ATTEMPTS, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol)
+        MAX_RESUBMISSION_ATTEMPTS =
+          T.let(:MAX_RESUBMISSION_ATTEMPTS, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol)
+        NAME_VERIFICATION_FAILURE =
+          T.let(:NAME_VERIFICATION_FAILURE, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol)
+        OTHER_VERIFICATION_FAILURE =
+          T.let(:OTHER_VERIFICATION_FAILURE, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol)
+        RISK_THRESHOLD_FAILURE =
+          T.let(:RISK_THRESHOLD_FAILURE, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol)
+        WATCHLIST_ALERT_FAILURE =
+          T.let(:WATCHLIST_ALERT_FAILURE, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol)
       end
 
       # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
       #   attribute will be present. If the type is "BUSINESS" then the "business_entity",
       #   "control_person", "beneficial_owner_individuals", "beneficial_owner_entities",
       #   "nature_of_business", and "website_url" attributes will be present.
-      class UserType < Lithic::Enum
-        abstract!
+      module UserType
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolder::UserType) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AccountHolder::UserType::TaggedSymbol) }
 
-        BUSINESS = :BUSINESS
-        INDIVIDUAL = :INDIVIDUAL
+        BUSINESS = T.let(:BUSINESS, Lithic::Models::AccountHolder::UserType::TaggedSymbol)
+        INDIVIDUAL = T.let(:INDIVIDUAL, Lithic::Models::AccountHolder::UserType::TaggedSymbol)
       end
 
       class VerificationApplication < Lithic::BaseModel
@@ -906,20 +933,30 @@ module Lithic
         #   Note:
         #
         #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)) }
         def status
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)
+            .returns(Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)
+        end
         def status=(_)
         end
 
         # Reason for the evaluation status.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig do
+          returns(
+            T.nilable(T::Array[Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol])
+          )
+        end
         def status_reasons
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol])
+            .returns(T::Array[Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol])
+        end
         def status_reasons=(_)
         end
 
@@ -934,14 +971,27 @@ module Lithic
 
         # Information about the most recent identity verification attempt
         sig do
-          params(created: Time, status: Symbol, status_reasons: T::Array[Symbol], updated: Time)
+          params(
+            created: Time,
+            status: Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol,
+            status_reasons: T::Array[Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol],
+            updated: Time
+          )
             .returns(T.attached_class)
         end
         def self.new(created: nil, status: nil, status_reasons: nil, updated: nil)
         end
 
         sig do
-          override.returns({created: Time, status: Symbol, status_reasons: T::Array[Symbol], updated: Time})
+          override
+            .returns(
+              {
+                created: Time,
+                status: Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol,
+                status_reasons: T::Array[Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol],
+                updated: Time
+              }
+            )
         end
         def to_hash
         end
@@ -951,34 +1001,87 @@ module Lithic
         #   Note:
         #
         #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
-        class Status < Lithic::Enum
-          abstract!
+        module Status
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::AccountHolder::VerificationApplication::Status) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol) }
 
-          ACCEPTED = :ACCEPTED
-          PENDING_REVIEW = :PENDING_REVIEW
-          PENDING_DOCUMENT = :PENDING_DOCUMENT
-          PENDING_RESUBMIT = :PENDING_RESUBMIT
-          REJECTED = :REJECTED
+          ACCEPTED = T.let(:ACCEPTED, Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)
+          PENDING_REVIEW =
+            T.let(:PENDING_REVIEW, Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)
+          PENDING_DOCUMENT =
+            T.let(:PENDING_DOCUMENT, Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)
+          PENDING_RESUBMIT =
+            T.let(:PENDING_RESUBMIT, Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)
+          REJECTED = T.let(:REJECTED, Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)
         end
 
-        class StatusReason < Lithic::Enum
-          abstract!
+        module StatusReason
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::AccountHolder::VerificationApplication::StatusReason) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol) }
 
-          ADDRESS_VERIFICATION_FAILURE = :ADDRESS_VERIFICATION_FAILURE
-          AGE_THRESHOLD_FAILURE = :AGE_THRESHOLD_FAILURE
-          COMPLETE_VERIFICATION_FAILURE = :COMPLETE_VERIFICATION_FAILURE
-          DOB_VERIFICATION_FAILURE = :DOB_VERIFICATION_FAILURE
-          ID_VERIFICATION_FAILURE = :ID_VERIFICATION_FAILURE
-          MAX_DOCUMENT_ATTEMPTS = :MAX_DOCUMENT_ATTEMPTS
-          MAX_RESUBMISSION_ATTEMPTS = :MAX_RESUBMISSION_ATTEMPTS
-          NAME_VERIFICATION_FAILURE = :NAME_VERIFICATION_FAILURE
-          OTHER_VERIFICATION_FAILURE = :OTHER_VERIFICATION_FAILURE
-          RISK_THRESHOLD_FAILURE = :RISK_THRESHOLD_FAILURE
-          WATCHLIST_ALERT_FAILURE = :WATCHLIST_ALERT_FAILURE
+          ADDRESS_VERIFICATION_FAILURE =
+            T.let(
+              :ADDRESS_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol
+            )
+          AGE_THRESHOLD_FAILURE =
+            T.let(
+              :AGE_THRESHOLD_FAILURE,
+              Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol
+            )
+          COMPLETE_VERIFICATION_FAILURE =
+            T.let(
+              :COMPLETE_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol
+            )
+          DOB_VERIFICATION_FAILURE =
+            T.let(
+              :DOB_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol
+            )
+          ID_VERIFICATION_FAILURE =
+            T.let(
+              :ID_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol
+            )
+          MAX_DOCUMENT_ATTEMPTS =
+            T.let(
+              :MAX_DOCUMENT_ATTEMPTS,
+              Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol
+            )
+          MAX_RESUBMISSION_ATTEMPTS =
+            T.let(
+              :MAX_RESUBMISSION_ATTEMPTS,
+              Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol
+            )
+          NAME_VERIFICATION_FAILURE =
+            T.let(
+              :NAME_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol
+            )
+          OTHER_VERIFICATION_FAILURE =
+            T.let(
+              :OTHER_VERIFICATION_FAILURE,
+              Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol
+            )
+          RISK_THRESHOLD_FAILURE =
+            T.let(
+              :RISK_THRESHOLD_FAILURE,
+              Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol
+            )
+          WATCHLIST_ALERT_FAILURE =
+            T.let(
+              :WATCHLIST_ALERT_FAILURE,
+              Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol
+            )
         end
       end
     end

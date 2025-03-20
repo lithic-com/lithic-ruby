@@ -42,20 +42,26 @@ module Lithic
         #   - `CARD_STATE`: The current state of the card associated with the transaction.
         #     Valid values are `CLOSED`, `OPEN`, `PAUSED`, `PENDING_ACTIVATION`,
         #     `PENDING_FULFILLMENT`.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)) }
         def attribute
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
+            .returns(Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
+        end
         def attribute=(_)
         end
 
         # The operation to apply to the attribute
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)) }
         def operation
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
+            .returns(Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
+        end
         def operation=(_)
         end
 
@@ -77,41 +83,50 @@ module Lithic
         end
 
         sig do
-          params(attribute: Symbol, operation: Symbol, value: T.any(String, Integer, T::Array[String]))
+          params(
+            attribute: Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol,
+            operation: Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol,
+            value: T.any(String, Integer, T::Array[String])
+          )
             .returns(T.attached_class)
         end
         def self.new(attribute: nil, operation: nil, value: nil)
         end
 
         sig do
-          override.returns(
-            {
-              attribute: Symbol,
-              operation: Symbol,
-              value: T.any(String, Integer, T::Array[String])
-            }
-          )
+          override
+            .returns(
+              {
+                attribute: Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol,
+                operation: Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol,
+                value: T.any(String, Integer, T::Array[String])
+              }
+            )
         end
         def to_hash
         end
 
         # The operation to apply to the attribute
-        class Operation < Lithic::Enum
-          abstract!
+        module Operation
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol) }
 
-          IS_ONE_OF = :IS_ONE_OF
-          IS_NOT_ONE_OF = :IS_NOT_ONE_OF
-          MATCHES = :MATCHES
-          DOES_NOT_MATCH = :DOES_NOT_MATCH
-          IS_GREATER_THAN = :IS_GREATER_THAN
-          IS_LESS_THAN = :IS_LESS_THAN
+          IS_ONE_OF = T.let(:IS_ONE_OF, Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
+          IS_NOT_ONE_OF = T.let(:IS_NOT_ONE_OF, Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
+          MATCHES = T.let(:MATCHES, Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
+          DOES_NOT_MATCH =
+            T.let(:DOES_NOT_MATCH, Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
+          IS_GREATER_THAN =
+            T.let(:IS_GREATER_THAN, Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
+          IS_LESS_THAN = T.let(:IS_LESS_THAN, Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
         end
 
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
-        class Value < Lithic::Union
-          abstract!
+        module Value
+          extend Lithic::Union
 
           Variants = type_template(:out) { {fixed: T.any(String, Integer, T::Array[String])} }
 

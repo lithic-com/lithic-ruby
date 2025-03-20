@@ -14,11 +14,14 @@ module Lithic
       def amount=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol) }
       def category
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol)
+          .returns(Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol)
+      end
       def category=(_)
       end
 
@@ -38,11 +41,14 @@ module Lithic
       def financial_account_token=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol) }
       def payment_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol)
+          .returns(Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol)
+      end
       def payment_type=(_)
       end
 
@@ -62,11 +68,14 @@ module Lithic
       def memo=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol)) }
       def progress_to
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol)
+          .returns(Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol)
+      end
       def progress_to=(_)
       end
 
@@ -81,13 +90,13 @@ module Lithic
       sig do
         params(
           amount: Integer,
-          category: Symbol,
+          category: Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol,
           effective_date: Date,
           financial_account_token: String,
-          payment_type: Symbol,
+          payment_type: Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol,
           token: String,
           memo: String,
-          progress_to: Symbol,
+          progress_to: Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol,
           user_defined_id: String,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
@@ -112,13 +121,13 @@ module Lithic
           .returns(
             {
               amount: Integer,
-              category: Symbol,
+              category: Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol,
               effective_date: Date,
               financial_account_token: String,
-              payment_type: Symbol,
+              payment_type: Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol,
               token: String,
               memo: String,
-              progress_to: Symbol,
+              progress_to: Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol,
               user_defined_id: String,
               request_options: Lithic::RequestOptions
             }
@@ -127,33 +136,40 @@ module Lithic
       def to_hash
       end
 
-      class Category < Lithic::Enum
-        abstract!
+      module Category
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::Category) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol) }
 
-        EXTERNAL_WIRE = :EXTERNAL_WIRE
-        EXTERNAL_ACH = :EXTERNAL_ACH
-        EXTERNAL_CHECK = :EXTERNAL_CHECK
-        EXTERNAL_TRANSFER = :EXTERNAL_TRANSFER
+        EXTERNAL_WIRE = T.let(:EXTERNAL_WIRE, Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol)
+        EXTERNAL_ACH = T.let(:EXTERNAL_ACH, Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol)
+        EXTERNAL_CHECK = T.let(:EXTERNAL_CHECK, Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol)
+        EXTERNAL_TRANSFER =
+          T.let(:EXTERNAL_TRANSFER, Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol)
       end
 
-      class PaymentType < Lithic::Enum
-        abstract!
+      module PaymentType
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol) }
 
-        DEPOSIT = :DEPOSIT
-        WITHDRAWAL = :WITHDRAWAL
+        DEPOSIT = T.let(:DEPOSIT, Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol)
+        WITHDRAWAL = T.let(:WITHDRAWAL, Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol)
       end
 
-      class ProgressTo < Lithic::Enum
-        abstract!
+      module ProgressTo
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol) }
 
-        SETTLED = :SETTLED
-        RELEASED = :RELEASED
+        SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol)
+        RELEASED = T.let(:RELEASED, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol)
       end
     end
   end

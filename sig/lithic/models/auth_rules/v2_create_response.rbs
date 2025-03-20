@@ -75,7 +75,9 @@ module Lithic
             Lithic::Models::AuthRules::ConditionalBlockParameters
             | Lithic::Models::AuthRules::VelocityLimitParams
 
-          class Parameters < Lithic::Union
+          module Parameters
+            extend Lithic::Union
+
             def self.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
           end
         end
@@ -102,14 +104,18 @@ module Lithic
             Lithic::Models::AuthRules::ConditionalBlockParameters
             | Lithic::Models::AuthRules::VelocityLimitParams
 
-          class Parameters < Lithic::Union
+          module Parameters
+            extend Lithic::Union
+
             def self.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
           end
         end
 
         type state = :ACTIVE | :INACTIVE
 
-        class State < Lithic::Enum
+        module State
+          extend Lithic::Enum
+
           ACTIVE: :ACTIVE
           INACTIVE: :INACTIVE
 
@@ -118,7 +124,9 @@ module Lithic
 
         type type_ = :CONDITIONAL_BLOCK | :VELOCITY_LIMIT
 
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
           VELOCITY_LIMIT: :VELOCITY_LIMIT
 

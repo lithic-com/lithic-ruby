@@ -78,7 +78,9 @@ module Lithic
         | :FINANCIAL_AUTHORIZATION
         | :FINANCIAL_CREDIT_AUTHORIZATION
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         AUTHORIZATION: :AUTHORIZATION
         BALANCE_INQUIRY: :BALANCE_INQUIRY
         CREDIT_AUTHORIZATION: :CREDIT_AUTHORIZATION

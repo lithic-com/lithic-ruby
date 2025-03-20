@@ -51,7 +51,9 @@ module Lithic
         | :ITIN_LETTER
         | :FINCEN_BOI_REPORT
 
-      class DocumentType < Lithic::Enum
+      module DocumentType
+        extend Lithic::Enum
+
         DRIVERS_LICENSE: :DRIVERS_LICENSE
         PASSPORT: :PASSPORT
         PASSPORT_CARD: :PASSPORT_CARD
@@ -123,7 +125,9 @@ module Lithic
 
         type image_type = :FRONT | :BACK
 
-        class ImageType < Lithic::Enum
+        module ImageType
+          extend Lithic::Enum
+
           FRONT: :FRONT
           BACK: :BACK
 
@@ -137,7 +141,9 @@ module Lithic
           | :UPLOADED
           | :PARTIAL_APPROVAL
 
-        class Status < Lithic::Enum
+        module Status
+          extend Lithic::Enum
+
           ACCEPTED: :ACCEPTED
           REJECTED: :REJECTED
           PENDING_UPLOAD: :PENDING_UPLOAD
@@ -160,7 +166,9 @@ module Lithic
           | :UNKNOWN_FAILURE_REASON
           | :UNKNOWN_ERROR
 
-        class StatusReason < Lithic::Enum
+        module StatusReason
+          extend Lithic::Enum
+
           DOCUMENT_MISSING_REQUIRED_DATA: :DOCUMENT_MISSING_REQUIRED_DATA
           DOCUMENT_UPLOAD_TOO_BLURRY: :DOCUMENT_UPLOAD_TOO_BLURRY
           FILE_SIZE_TOO_LARGE: :FILE_SIZE_TOO_LARGE

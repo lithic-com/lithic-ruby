@@ -25,7 +25,9 @@ module Lithic
 
       type status = :OPEN | :CLOSED | :SUSPENDED | :PENDING
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         OPEN: :OPEN
         CLOSED: :CLOSED
         SUSPENDED: :SUSPENDED
@@ -40,7 +42,9 @@ module Lithic
         | :BANK_REQUEST
         | :CHARGED_OFF_DELINQUENT
 
-      class StatusChangeReason < Lithic::Enum
+      module StatusChangeReason
+        extend Lithic::Enum
+
         CHARGED_OFF_FRAUD: :CHARGED_OFF_FRAUD
         END_USER_REQUEST: :END_USER_REQUEST
         BANK_REQUEST: :BANK_REQUEST

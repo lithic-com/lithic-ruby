@@ -131,10 +131,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Management operation category to be returned.
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         MANAGEMENT_FEE = :MANAGEMENT_FEE
         MANAGEMENT_DISPUTE = :MANAGEMENT_DISPUTE
         MANAGEMENT_REWARD = :MANAGEMENT_REWARD
@@ -143,10 +143,10 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Management operation status to be returned.
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         PENDING = :PENDING
         SETTLED = :SETTLED
         DECLINED = :DECLINED

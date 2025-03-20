@@ -15,7 +15,9 @@ module Lithic
         | :CARD_TRANSACTION_COUNT_24H
         | :CARD_STATE
 
-      class ConditionalAttribute < Lithic::Enum
+      module ConditionalAttribute
+        extend Lithic::Enum
+
         MCC: :MCC
         COUNTRY: :COUNTRY
         CURRENCY: :CURRENCY

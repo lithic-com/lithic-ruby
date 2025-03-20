@@ -68,7 +68,9 @@ module Lithic
           | :"tokenization.two_factor_authentication_code_sent"
           | :"tokenization.updated"
 
-        class EventType < Lithic::Enum
+        module EventType
+          extend Lithic::Enum
+
           ACCOUNT_HOLDER_CREATED: :"account_holder.created"
           ACCOUNT_HOLDER_UPDATED: :"account_holder.updated"
           ACCOUNT_HOLDER_VERIFICATION: :"account_holder.verification"

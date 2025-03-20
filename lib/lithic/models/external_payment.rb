@@ -108,8 +108,9 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         EXTERNAL_WIRE = :EXTERNAL_WIRE
         EXTERNAL_ACH = :EXTERNAL_ACH
         EXTERNAL_CHECK = :EXTERNAL_CHECK
@@ -174,23 +175,26 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        class DetailedResult < Lithic::Enum
+        module DetailedResult
+          extend Lithic::Enum
+
           APPROVED = :APPROVED
 
           finalize!
         end
 
-        # @abstract
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           APPROVED = :APPROVED
           DECLINED = :DECLINED
 
           finalize!
         end
 
-        # @abstract
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           EXTERNAL_WIRE_INITIATED = :EXTERNAL_WIRE_INITIATED
           EXTERNAL_WIRE_CANCELED = :EXTERNAL_WIRE_CANCELED
           EXTERNAL_WIRE_SETTLED = :EXTERNAL_WIRE_SETTLED
@@ -216,24 +220,27 @@ module Lithic
         end
       end
 
-      # @abstract
-      class PaymentType < Lithic::Enum
+      module PaymentType
+        extend Lithic::Enum
+
         DEPOSIT = :DEPOSIT
         WITHDRAWAL = :WITHDRAWAL
 
         finalize!
       end
 
-      # @abstract
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
         finalize!
       end
 
-      # @abstract
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         PENDING = :PENDING
         SETTLED = :SETTLED
         DECLINED = :DECLINED

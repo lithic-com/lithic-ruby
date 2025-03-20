@@ -154,10 +154,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Book Transfer category to be returned.
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
         FEE = :FEE
         REWARD = :REWARD
@@ -169,20 +169,20 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Book transfer result to be returned.
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
         finalize!
       end
 
-      # @abstract
-      #
       # Book transfer status to be returned.
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         DECLINED = :DECLINED
         SETTLED = :SETTLED
 

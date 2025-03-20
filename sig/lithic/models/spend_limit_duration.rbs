@@ -2,7 +2,9 @@ module Lithic
   module Models
     type spend_limit_duration = :ANNUALLY | :FOREVER | :MONTHLY | :TRANSACTION
 
-    class SpendLimitDuration < Lithic::Enum
+    module SpendLimitDuration
+      extend Lithic::Enum
+
       ANNUALLY: :ANNUALLY
       FOREVER: :FOREVER
       MONTHLY: :MONTHLY

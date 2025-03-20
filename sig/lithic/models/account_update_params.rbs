@@ -51,7 +51,9 @@ module Lithic
 
       type state = :ACTIVE | :PAUSED
 
-      class State < Lithic::Enum
+      module State
+        extend Lithic::Enum
+
         ACTIVE: :ACTIVE
         PAUSED: :PAUSED
 

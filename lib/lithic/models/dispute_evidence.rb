@@ -79,8 +79,6 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Upload status types:
       #
       #   - `DELETED` - Evidence was deleted.
@@ -88,7 +86,9 @@ module Lithic
       #   - `PENDING` - Evidence is pending upload.
       #   - `REJECTED` - Evidence was rejected.
       #   - `UPLOADED` - Evidence was uploaded.
-      class UploadStatus < Lithic::Enum
+      module UploadStatus
+        extend Lithic::Enum
+
         DELETED = :DELETED
         ERROR = :ERROR
         PENDING = :PENDING

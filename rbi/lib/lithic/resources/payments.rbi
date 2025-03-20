@@ -9,9 +9,9 @@ module Lithic
           amount: Integer,
           external_bank_account_token: String,
           financial_account_token: String,
-          method_: Symbol,
+          method_: Lithic::Models::PaymentCreateParams::Method::OrSymbol,
           method_attributes: Lithic::Models::PaymentCreateParams::MethodAttributes,
-          type: Symbol,
+          type: Lithic::Models::PaymentCreateParams::Type::OrSymbol,
           token: String,
           memo: String,
           user_defined_id: String,
@@ -52,14 +52,14 @@ module Lithic
           account_token: String,
           begin_: Time,
           business_account_token: String,
-          category: Symbol,
+          category: Lithic::Models::PaymentListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
-          result: Symbol,
+          result: Lithic::Models::PaymentListParams::Result::OrSymbol,
           starting_after: String,
-          status: Symbol,
+          status: Lithic::Models::PaymentListParams::Status::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::CursorPage[Lithic::Models::Payment])
@@ -104,8 +104,8 @@ module Lithic
       sig do
         params(
           payment_token: String,
-          event_type: Symbol,
-          decline_reason: Symbol,
+          event_type: Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol,
+          decline_reason: Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol,
           return_reason_code: String,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
@@ -129,7 +129,7 @@ module Lithic
           token: String,
           amount: Integer,
           financial_account_token: String,
-          receipt_type: Symbol,
+          receipt_type: Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol,
           memo: String,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )

@@ -44,7 +44,9 @@ module Lithic
         | :ITIN_LETTER
         | :FINCEN_BOI_REPORT
 
-      class DocumentType < Lithic::Enum
+      module DocumentType
+        extend Lithic::Enum
+
         EIN_LETTER: :EIN_LETTER
         TAX_RETURN: :TAX_RETURN
         OPERATING_AGREEMENT: :OPERATING_AGREEMENT

@@ -7,11 +7,14 @@ module Lithic
       include Lithic::RequestParameters
 
       # The type of the endpoint.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol)) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol)
+          .returns(Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol)
+      end
       def type=(_)
       end
 
@@ -26,7 +29,7 @@ module Lithic
 
       sig do
         params(
-          type: Symbol,
+          type: Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol,
           url: String,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
@@ -35,19 +38,33 @@ module Lithic
       def self.new(type: nil, url: nil, request_options: {})
       end
 
-      sig { override.returns({type: Symbol, url: String, request_options: Lithic::RequestOptions}) }
+      sig do
+        override
+          .returns(
+            {
+              type: Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol,
+              url: String,
+              request_options: Lithic::RequestOptions
+            }
+          )
+      end
       def to_hash
       end
 
       # The type of the endpoint.
-      class Type < Lithic::Enum
-        abstract!
+      module Type
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ResponderEndpointCreateParams::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ResponderEndpointCreateParams::Type::TaggedSymbol) }
 
-        AUTH_STREAM_ACCESS = :AUTH_STREAM_ACCESS
-        THREE_DS_DECISIONING = :THREE_DS_DECISIONING
-        TOKENIZATION_DECISIONING = :TOKENIZATION_DECISIONING
+        AUTH_STREAM_ACCESS =
+          T.let(:AUTH_STREAM_ACCESS, Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol)
+        THREE_DS_DECISIONING =
+          T.let(:THREE_DS_DECISIONING, Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol)
+        TOKENIZATION_DECISIONING =
+          T.let(:TOKENIZATION_DECISIONING, Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol)
       end
     end
   end

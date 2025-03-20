@@ -25,11 +25,14 @@ module Lithic
       end
 
       # Management operation category to be returned.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::ManagementOperationListParams::Category::OrSymbol)) }
       def category
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ManagementOperationListParams::Category::OrSymbol)
+          .returns(Lithic::Models::ManagementOperationListParams::Category::OrSymbol)
+      end
       def category=(_)
       end
 
@@ -83,11 +86,14 @@ module Lithic
       end
 
       # Management operation status to be returned.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::ManagementOperationListParams::Status::OrSymbol)) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ManagementOperationListParams::Status::OrSymbol)
+          .returns(Lithic::Models::ManagementOperationListParams::Status::OrSymbol)
+      end
       def status=(_)
       end
 
@@ -95,13 +101,13 @@ module Lithic
         params(
           begin_: Time,
           business_account_token: String,
-          category: Symbol,
+          category: Lithic::Models::ManagementOperationListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
           starting_after: String,
-          status: Symbol,
+          status: Lithic::Models::ManagementOperationListParams::Status::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -126,13 +132,13 @@ module Lithic
             {
               begin_: Time,
               business_account_token: String,
-              category: Symbol,
+              category: Lithic::Models::ManagementOperationListParams::Category::OrSymbol,
               end_: Time,
               ending_before: String,
               financial_account_token: String,
               page_size: Integer,
               starting_after: String,
-              status: Symbol,
+              status: Lithic::Models::ManagementOperationListParams::Status::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -141,28 +147,36 @@ module Lithic
       end
 
       # Management operation category to be returned.
-      class Category < Lithic::Enum
-        abstract!
+      module Category
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationListParams::Category) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol) }
 
-        MANAGEMENT_FEE = :MANAGEMENT_FEE
-        MANAGEMENT_DISPUTE = :MANAGEMENT_DISPUTE
-        MANAGEMENT_REWARD = :MANAGEMENT_REWARD
-        MANAGEMENT_ADJUSTMENT = :MANAGEMENT_ADJUSTMENT
+        MANAGEMENT_FEE =
+          T.let(:MANAGEMENT_FEE, Lithic::Models::ManagementOperationListParams::Category::OrSymbol)
+        MANAGEMENT_DISPUTE =
+          T.let(:MANAGEMENT_DISPUTE, Lithic::Models::ManagementOperationListParams::Category::OrSymbol)
+        MANAGEMENT_REWARD =
+          T.let(:MANAGEMENT_REWARD, Lithic::Models::ManagementOperationListParams::Category::OrSymbol)
+        MANAGEMENT_ADJUSTMENT =
+          T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Models::ManagementOperationListParams::Category::OrSymbol)
       end
 
       # Management operation status to be returned.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationListParams::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol) }
 
-        PENDING = :PENDING
-        SETTLED = :SETTLED
-        DECLINED = :DECLINED
-        REVERSED = :REVERSED
-        CANCELED = :CANCELED
+        PENDING = T.let(:PENDING, Lithic::Models::ManagementOperationListParams::Status::OrSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::ManagementOperationListParams::Status::OrSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationListParams::Status::OrSymbol)
+        REVERSED = T.let(:REVERSED, Lithic::Models::ManagementOperationListParams::Status::OrSymbol)
+        CANCELED = T.let(:CANCELED, Lithic::Models::ManagementOperationListParams::Status::OrSymbol)
       end
     end
   end

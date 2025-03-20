@@ -16,11 +16,14 @@ module Lithic
       end
 
       # An account holder document's upload status for use within the simulation.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol)
+          .returns(Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol)
+      end
       def status=(_)
       end
 
@@ -35,20 +38,27 @@ module Lithic
 
       # Status reason that will be associated with the simulated account holder status.
       #   Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
-      sig { returns(T.nilable(Symbol)) }
+      sig do
+        returns(
+          T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol)
+        )
+      end
       def status_reason
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol)
+          .returns(Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol)
+      end
       def status_reason=(_)
       end
 
       sig do
         params(
           document_upload_token: String,
-          status: Symbol,
+          status: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol,
           accepted_entity_status_reasons: T::Array[String],
-          status_reason: Symbol,
+          status_reason: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -67,9 +77,9 @@ module Lithic
           .returns(
             {
               document_upload_token: String,
-              status: Symbol,
+              status: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol,
               accepted_entity_status_reasons: T::Array[String],
-              status_reason: Symbol,
+              status_reason: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -78,35 +88,97 @@ module Lithic
       end
 
       # An account holder document's upload status for use within the simulation.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::TaggedSymbol) }
 
-        UPLOADED = :UPLOADED
-        ACCEPTED = :ACCEPTED
-        REJECTED = :REJECTED
-        PARTIAL_APPROVAL = :PARTIAL_APPROVAL
+        UPLOADED =
+          T.let(:UPLOADED, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol)
+        ACCEPTED =
+          T.let(:ACCEPTED, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol)
+        REJECTED =
+          T.let(:REJECTED, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol)
+        PARTIAL_APPROVAL =
+          T.let(
+            :PARTIAL_APPROVAL,
+            Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol
+          )
       end
 
       # Status reason that will be associated with the simulated account holder status.
       #   Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
-      class StatusReason < Lithic::Enum
-        abstract!
+      module StatusReason
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason) }
+        OrSymbol =
+          T.type_alias do
+            T.any(
+              Symbol,
+              Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::TaggedSymbol
+            )
+          end
 
-        DOCUMENT_MISSING_REQUIRED_DATA = :DOCUMENT_MISSING_REQUIRED_DATA
-        DOCUMENT_UPLOAD_TOO_BLURRY = :DOCUMENT_UPLOAD_TOO_BLURRY
-        FILE_SIZE_TOO_LARGE = :FILE_SIZE_TOO_LARGE
-        INVALID_DOCUMENT_TYPE = :INVALID_DOCUMENT_TYPE
-        INVALID_DOCUMENT_UPLOAD = :INVALID_DOCUMENT_UPLOAD
-        INVALID_ENTITY = :INVALID_ENTITY
-        DOCUMENT_EXPIRED = :DOCUMENT_EXPIRED
-        DOCUMENT_ISSUED_GREATER_THAN_30_DAYS = :DOCUMENT_ISSUED_GREATER_THAN_30_DAYS
-        DOCUMENT_TYPE_NOT_SUPPORTED = :DOCUMENT_TYPE_NOT_SUPPORTED
-        UNKNOWN_FAILURE_REASON = :UNKNOWN_FAILURE_REASON
-        UNKNOWN_ERROR = :UNKNOWN_ERROR
+        DOCUMENT_MISSING_REQUIRED_DATA =
+          T.let(
+            :DOCUMENT_MISSING_REQUIRED_DATA,
+            Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol
+          )
+        DOCUMENT_UPLOAD_TOO_BLURRY =
+          T.let(
+            :DOCUMENT_UPLOAD_TOO_BLURRY,
+            Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol
+          )
+        FILE_SIZE_TOO_LARGE =
+          T.let(
+            :FILE_SIZE_TOO_LARGE,
+            Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol
+          )
+        INVALID_DOCUMENT_TYPE =
+          T.let(
+            :INVALID_DOCUMENT_TYPE,
+            Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol
+          )
+        INVALID_DOCUMENT_UPLOAD =
+          T.let(
+            :INVALID_DOCUMENT_UPLOAD,
+            Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol
+          )
+        INVALID_ENTITY =
+          T.let(
+            :INVALID_ENTITY,
+            Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol
+          )
+        DOCUMENT_EXPIRED =
+          T.let(
+            :DOCUMENT_EXPIRED,
+            Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol
+          )
+        DOCUMENT_ISSUED_GREATER_THAN_30_DAYS =
+          T.let(
+            :DOCUMENT_ISSUED_GREATER_THAN_30_DAYS,
+            Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol
+          )
+        DOCUMENT_TYPE_NOT_SUPPORTED =
+          T.let(
+            :DOCUMENT_TYPE_NOT_SUPPORTED,
+            Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol
+          )
+        UNKNOWN_FAILURE_REASON =
+          T.let(
+            :UNKNOWN_FAILURE_REASON,
+            Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol
+          )
+        UNKNOWN_ERROR =
+          T.let(
+            :UNKNOWN_ERROR,
+            Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol
+          )
       end
     end
   end

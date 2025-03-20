@@ -42,11 +42,14 @@ module Lithic
       end
 
       # Account states.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::AccountUpdateParams::State::OrSymbol)) }
       def state
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::AccountUpdateParams::State::OrSymbol)
+          .returns(Lithic::Models::AccountUpdateParams::State::OrSymbol)
+      end
       def state=(_)
       end
 
@@ -70,7 +73,7 @@ module Lithic
           daily_spend_limit: Integer,
           lifetime_spend_limit: Integer,
           monthly_spend_limit: Integer,
-          state: Symbol,
+          state: Lithic::Models::AccountUpdateParams::State::OrSymbol,
           verification_address: Lithic::Models::AccountUpdateParams::VerificationAddress,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
@@ -93,7 +96,7 @@ module Lithic
               daily_spend_limit: Integer,
               lifetime_spend_limit: Integer,
               monthly_spend_limit: Integer,
-              state: Symbol,
+              state: Lithic::Models::AccountUpdateParams::State::OrSymbol,
               verification_address: Lithic::Models::AccountUpdateParams::VerificationAddress,
               request_options: Lithic::RequestOptions
             }
@@ -103,13 +106,14 @@ module Lithic
       end
 
       # Account states.
-      class State < Lithic::Enum
-        abstract!
+      module State
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountUpdateParams::State) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AccountUpdateParams::State::TaggedSymbol) }
 
-        ACTIVE = :ACTIVE
-        PAUSED = :PAUSED
+        ACTIVE = T.let(:ACTIVE, Lithic::Models::AccountUpdateParams::State::OrSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::Models::AccountUpdateParams::State::OrSymbol)
       end
 
       class VerificationAddress < Lithic::BaseModel

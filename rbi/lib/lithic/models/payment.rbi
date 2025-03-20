@@ -13,11 +13,14 @@ module Lithic
       end
 
       # Payment category
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Payment::Category::TaggedSymbol) }
       def category
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::Payment::Category::TaggedSymbol)
+          .returns(Lithic::Models::Payment::Category::TaggedSymbol)
+      end
       def category=(_)
       end
 
@@ -49,11 +52,14 @@ module Lithic
       def descriptor=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Payment::Direction::TaggedSymbol) }
       def direction
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::Payment::Direction::TaggedSymbol)
+          .returns(Lithic::Models::Payment::Direction::TaggedSymbol)
+      end
       def direction=(_)
       end
 
@@ -82,11 +88,14 @@ module Lithic
       def financial_account_token=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Payment::Method::TaggedSymbol) }
       def method_
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::Payment::Method::TaggedSymbol)
+          .returns(Lithic::Models::Payment::Method::TaggedSymbol)
+      end
       def method_=(_)
       end
 
@@ -110,11 +119,14 @@ module Lithic
 
       # APPROVED payments were successful while DECLINED payments were declined by
       #   Lithic or returned.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Payment::Result::TaggedSymbol) }
       def result
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::Payment::Result::TaggedSymbol)
+          .returns(Lithic::Models::Payment::Result::TaggedSymbol)
+      end
       def result=(_)
       end
 
@@ -128,11 +140,14 @@ module Lithic
       def settled_amount=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Payment::Source::TaggedSymbol) }
       def source
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::Payment::Source::TaggedSymbol)
+          .returns(Lithic::Models::Payment::Source::TaggedSymbol)
+      end
       def source=(_)
       end
 
@@ -143,11 +158,14 @@ module Lithic
       #     (origination debit).
       #   - `RETURNED` - The payment has been returned.
       #   - `SETTLED` - The payment is completed.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Payment::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::Payment::Status::TaggedSymbol)
+          .returns(Lithic::Models::Payment::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -171,21 +189,21 @@ module Lithic
       sig do
         params(
           token: String,
-          category: Symbol,
+          category: Lithic::Models::Payment::Category::TaggedSymbol,
           created: Time,
           currency: String,
           descriptor: String,
-          direction: Symbol,
+          direction: Lithic::Models::Payment::Direction::TaggedSymbol,
           events: T::Array[Lithic::Models::Payment::Event],
           external_bank_account_token: T.nilable(String),
           financial_account_token: String,
-          method_: Symbol,
+          method_: Lithic::Models::Payment::Method::TaggedSymbol,
           method_attributes: Lithic::Models::Payment::MethodAttributes,
           pending_amount: Integer,
-          result: Symbol,
+          result: Lithic::Models::Payment::Result::TaggedSymbol,
           settled_amount: Integer,
-          source: Symbol,
-          status: Symbol,
+          source: Lithic::Models::Payment::Source::TaggedSymbol,
+          status: Lithic::Models::Payment::Status::TaggedSymbol,
           updated: Time,
           user_defined_id: T.nilable(String)
         )
@@ -218,21 +236,21 @@ module Lithic
           .returns(
             {
               token: String,
-              category: Symbol,
+              category: Lithic::Models::Payment::Category::TaggedSymbol,
               created: Time,
               currency: String,
               descriptor: String,
-              direction: Symbol,
+              direction: Lithic::Models::Payment::Direction::TaggedSymbol,
               events: T::Array[Lithic::Models::Payment::Event],
               external_bank_account_token: T.nilable(String),
               financial_account_token: String,
-              method_: Symbol,
+              method_: Lithic::Models::Payment::Method::TaggedSymbol,
               method_attributes: Lithic::Models::Payment::MethodAttributes,
               pending_amount: Integer,
-              result: Symbol,
+              result: Lithic::Models::Payment::Result::TaggedSymbol,
               settled_amount: Integer,
-              source: Symbol,
-              status: Symbol,
+              source: Lithic::Models::Payment::Source::TaggedSymbol,
+              status: Lithic::Models::Payment::Status::TaggedSymbol,
               updated: Time,
               user_defined_id: T.nilable(String)
             }
@@ -242,21 +260,23 @@ module Lithic
       end
 
       # Payment category
-      class Category < Lithic::Enum
-        abstract!
+      module Category
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Category) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Category::TaggedSymbol) }
 
-        ACH = :ACH
+        ACH = T.let(:ACH, Lithic::Models::Payment::Category::TaggedSymbol)
       end
 
-      class Direction < Lithic::Enum
-        abstract!
+      module Direction
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Direction) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Direction::TaggedSymbol) }
 
-        CREDIT = :CREDIT
-        DEBIT = :DEBIT
+        CREDIT = T.let(:CREDIT, Lithic::Models::Payment::Direction::TaggedSymbol)
+        DEBIT = T.let(:DEBIT, Lithic::Models::Payment::Direction::TaggedSymbol)
       end
 
       class Event < Lithic::BaseModel
@@ -290,11 +310,14 @@ module Lithic
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Payment::Event::Result::TaggedSymbol) }
         def result
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Payment::Event::Result::TaggedSymbol)
+            .returns(Lithic::Models::Payment::Event::Result::TaggedSymbol)
+        end
         def result=(_)
         end
 
@@ -318,20 +341,26 @@ module Lithic
         #     balance.
         #   - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
         #     Financial Institution.
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Payment::Event::Type::TaggedSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Payment::Event::Type::TaggedSymbol)
+            .returns(Lithic::Models::Payment::Event::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
         # More detailed reasons for the event
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol])) }
         def detailed_results
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol])
+            .returns(T::Array[Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol])
+        end
         def detailed_results=(_)
         end
 
@@ -340,9 +369,9 @@ module Lithic
             token: String,
             amount: Integer,
             created: Time,
-            result: Symbol,
-            type: Symbol,
-            detailed_results: T::Array[Symbol]
+            result: Lithic::Models::Payment::Event::Result::TaggedSymbol,
+            type: Lithic::Models::Payment::Event::Type::TaggedSymbol,
+            detailed_results: T::Array[Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol]
           )
             .returns(T.attached_class)
         end
@@ -356,9 +385,9 @@ module Lithic
                 token: String,
                 amount: Integer,
                 created: Time,
-                result: Symbol,
-                type: Symbol,
-                detailed_results: T::Array[Symbol]
+                result: Lithic::Models::Payment::Event::Result::TaggedSymbol,
+                type: Lithic::Models::Payment::Event::Type::TaggedSymbol,
+                detailed_results: T::Array[Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol]
               }
             )
         end
@@ -367,13 +396,14 @@ module Lithic
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
-        class Result < Lithic::Enum
-          abstract!
+        module Result
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Event::Result) }
+          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Event::Result::TaggedSymbol) }
 
-          APPROVED = :APPROVED
-          DECLINED = :DECLINED
+          APPROVED = T.let(:APPROVED, Lithic::Models::Payment::Event::Result::TaggedSymbol)
+          DECLINED = T.let(:DECLINED, Lithic::Models::Payment::Event::Result::TaggedSymbol)
         end
 
         # Event types:
@@ -396,45 +426,58 @@ module Lithic
         #     balance.
         #   - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
         #     Financial Institution.
-        class Type < Lithic::Enum
-          abstract!
+        module Type
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Event::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Event::Type::TaggedSymbol) }
 
-          ACH_ORIGINATION_CANCELLED = :ACH_ORIGINATION_CANCELLED
-          ACH_ORIGINATION_INITIATED = :ACH_ORIGINATION_INITIATED
-          ACH_ORIGINATION_PROCESSED = :ACH_ORIGINATION_PROCESSED
-          ACH_ORIGINATION_SETTLED = :ACH_ORIGINATION_SETTLED
-          ACH_ORIGINATION_RELEASED = :ACH_ORIGINATION_RELEASED
-          ACH_ORIGINATION_REVIEWED = :ACH_ORIGINATION_REVIEWED
-          ACH_RECEIPT_PROCESSED = :ACH_RECEIPT_PROCESSED
-          ACH_RECEIPT_SETTLED = :ACH_RECEIPT_SETTLED
-          ACH_RETURN_INITIATED = :ACH_RETURN_INITIATED
-          ACH_RETURN_PROCESSED = :ACH_RETURN_PROCESSED
-          ACH_RETURN_SETTLED = :ACH_RETURN_SETTLED
+          ACH_ORIGINATION_CANCELLED =
+            T.let(:ACH_ORIGINATION_CANCELLED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
+          ACH_ORIGINATION_INITIATED =
+            T.let(:ACH_ORIGINATION_INITIATED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
+          ACH_ORIGINATION_PROCESSED =
+            T.let(:ACH_ORIGINATION_PROCESSED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
+          ACH_ORIGINATION_SETTLED =
+            T.let(:ACH_ORIGINATION_SETTLED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
+          ACH_ORIGINATION_RELEASED =
+            T.let(:ACH_ORIGINATION_RELEASED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
+          ACH_ORIGINATION_REVIEWED =
+            T.let(:ACH_ORIGINATION_REVIEWED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
+          ACH_RECEIPT_PROCESSED = T.let(:ACH_RECEIPT_PROCESSED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
+          ACH_RECEIPT_SETTLED = T.let(:ACH_RECEIPT_SETTLED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
+          ACH_RETURN_INITIATED = T.let(:ACH_RETURN_INITIATED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
+          ACH_RETURN_PROCESSED = T.let(:ACH_RETURN_PROCESSED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
+          ACH_RETURN_SETTLED = T.let(:ACH_RETURN_SETTLED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
         end
 
-        class DetailedResult < Lithic::Enum
-          abstract!
+        module DetailedResult
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Event::DetailedResult) }
+          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol) }
 
-          APPROVED = :APPROVED
-          FUNDS_INSUFFICIENT = :FUNDS_INSUFFICIENT
-          ACCOUNT_INVALID = :ACCOUNT_INVALID
-          PROGRAM_TRANSACTION_LIMIT_EXCEEDED = :PROGRAM_TRANSACTION_LIMIT_EXCEEDED
-          PROGRAM_DAILY_LIMIT_EXCEEDED = :PROGRAM_DAILY_LIMIT_EXCEEDED
-          PROGRAM_MONTHLY_LIMIT_EXCEEDED = :PROGRAM_MONTHLY_LIMIT_EXCEEDED
+          APPROVED = T.let(:APPROVED, Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol)
+          FUNDS_INSUFFICIENT =
+            T.let(:FUNDS_INSUFFICIENT, Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol)
+          ACCOUNT_INVALID = T.let(:ACCOUNT_INVALID, Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol)
+          PROGRAM_TRANSACTION_LIMIT_EXCEEDED =
+            T.let(:PROGRAM_TRANSACTION_LIMIT_EXCEEDED, Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol)
+          PROGRAM_DAILY_LIMIT_EXCEEDED =
+            T.let(:PROGRAM_DAILY_LIMIT_EXCEEDED, Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol)
+          PROGRAM_MONTHLY_LIMIT_EXCEEDED =
+            T.let(:PROGRAM_MONTHLY_LIMIT_EXCEEDED, Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol)
         end
       end
 
-      class Method < Lithic::Enum
-        abstract!
+      module Method
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Method) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Method::TaggedSymbol) }
 
-        ACH_NEXT_DAY = :ACH_NEXT_DAY
-        ACH_SAME_DAY = :ACH_SAME_DAY
+        ACH_NEXT_DAY = T.let(:ACH_NEXT_DAY, Lithic::Models::Payment::Method::TaggedSymbol)
+        ACH_SAME_DAY = T.let(:ACH_SAME_DAY, Lithic::Models::Payment::Method::TaggedSymbol)
       end
 
       class MethodAttributes < Lithic::BaseModel
@@ -470,11 +513,14 @@ module Lithic
         def return_reason_code=(_)
         end
 
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol) }
         def sec_code
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol)
+            .returns(Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol)
+        end
         def sec_code=(_)
         end
 
@@ -492,7 +538,7 @@ module Lithic
             receipt_routing_number: T.nilable(String),
             retries: T.nilable(Integer),
             return_reason_code: T.nilable(String),
-            sec_code: Symbol,
+            sec_code: Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol,
             trace_numbers: T::Array[T.nilable(String)]
           )
             .returns(T.attached_class)
@@ -508,7 +554,7 @@ module Lithic
                 receipt_routing_number: T.nilable(String),
                 retries: T.nilable(Integer),
                 return_reason_code: T.nilable(String),
-                sec_code: Symbol,
+                sec_code: Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol,
                 trace_numbers: T::Array[T.nilable(String)]
               }
             )
@@ -516,35 +562,39 @@ module Lithic
         def to_hash
         end
 
-        class SecCode < Lithic::Enum
-          abstract!
+        module SecCode
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::MethodAttributes::SecCode) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol) }
 
-          CCD = :CCD
-          PPD = :PPD
-          WEB = :WEB
+          CCD = T.let(:CCD, Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol)
+          PPD = T.let(:PPD, Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol)
+          WEB = T.let(:WEB, Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol)
         end
       end
 
       # APPROVED payments were successful while DECLINED payments were declined by
       #   Lithic or returned.
-      class Result < Lithic::Enum
-        abstract!
+      module Result
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Result) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Result::TaggedSymbol) }
 
-        APPROVED = :APPROVED
-        DECLINED = :DECLINED
+        APPROVED = T.let(:APPROVED, Lithic::Models::Payment::Result::TaggedSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::Payment::Result::TaggedSymbol)
       end
 
-      class Source < Lithic::Enum
-        abstract!
+      module Source
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Source) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Source::TaggedSymbol) }
 
-        CUSTOMER = :CUSTOMER
-        LITHIC = :LITHIC
+        CUSTOMER = T.let(:CUSTOMER, Lithic::Models::Payment::Source::TaggedSymbol)
+        LITHIC = T.let(:LITHIC, Lithic::Models::Payment::Source::TaggedSymbol)
       end
 
       # Status types:
@@ -554,15 +604,16 @@ module Lithic
       #     (origination debit).
       #   - `RETURNED` - The payment has been returned.
       #   - `SETTLED` - The payment is completed.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Status::TaggedSymbol) }
 
-        DECLINED = :DECLINED
-        PENDING = :PENDING
-        RETURNED = :RETURNED
-        SETTLED = :SETTLED
+        DECLINED = T.let(:DECLINED, Lithic::Models::Payment::Status::TaggedSymbol)
+        PENDING = T.let(:PENDING, Lithic::Models::Payment::Status::TaggedSymbol)
+        RETURNED = T.let(:RETURNED, Lithic::Models::Payment::Status::TaggedSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::Payment::Status::TaggedSymbol)
       end
     end
   end

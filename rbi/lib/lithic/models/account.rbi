@@ -48,11 +48,14 @@ module Lithic
       #     risk/compliance reasons. Please contact
       #     [support@lithic.com](mailto:support@lithic.com) if you believe this was in
       #     error.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Account::State::TaggedSymbol) }
       def state
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::Account::State::TaggedSymbol)
+          .returns(Lithic::Models::Account::State::TaggedSymbol)
+      end
       def state=(_)
       end
 
@@ -101,7 +104,7 @@ module Lithic
           token: String,
           created: T.nilable(Time),
           spend_limit: Lithic::Models::Account::SpendLimit,
-          state: Symbol,
+          state: Lithic::Models::Account::State::TaggedSymbol,
           account_holder: Lithic::Models::Account::AccountHolder,
           auth_rule_tokens: T::Array[String],
           cardholder_currency: String,
@@ -128,7 +131,7 @@ module Lithic
               token: String,
               created: T.nilable(Time),
               spend_limit: Lithic::Models::Account::SpendLimit,
-              state: Symbol,
+              state: Lithic::Models::Account::State::TaggedSymbol,
               account_holder: Lithic::Models::Account::AccountHolder,
               auth_rule_tokens: T::Array[String],
               cardholder_currency: String,
@@ -192,14 +195,15 @@ module Lithic
       #     risk/compliance reasons. Please contact
       #     [support@lithic.com](mailto:support@lithic.com) if you believe this was in
       #     error.
-      class State < Lithic::Enum
-        abstract!
+      module State
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Account::State) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Account::State::TaggedSymbol) }
 
-        ACTIVE = :ACTIVE
-        PAUSED = :PAUSED
-        CLOSED = :CLOSED
+        ACTIVE = T.let(:ACTIVE, Lithic::Models::Account::State::TaggedSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::Models::Account::State::TaggedSymbol)
+        CLOSED = T.let(:CLOSED, Lithic::Models::Account::State::TaggedSymbol)
       end
 
       class AccountHolder < Lithic::BaseModel

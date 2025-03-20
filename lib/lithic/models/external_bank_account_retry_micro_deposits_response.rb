@@ -239,20 +239,20 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Owner Type
-      class OwnerType < Lithic::Enum
+      module OwnerType
+        extend Lithic::Enum
+
         BUSINESS = :BUSINESS
         INDIVIDUAL = :INDIVIDUAL
 
         finalize!
       end
 
-      # @abstract
-      #
       # Account State
-      class State < Lithic::Enum
+      module State
+        extend Lithic::Enum
+
         ENABLED = :ENABLED
         CLOSED = :CLOSED
         PAUSED = :PAUSED
@@ -260,20 +260,20 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Account Type
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         CHECKING = :CHECKING
         SAVINGS = :SAVINGS
 
         finalize!
       end
 
-      # @abstract
-      #
       # Verification Method
-      class VerificationMethod < Lithic::Enum
+      module VerificationMethod
+        extend Lithic::Enum
+
         MANUAL = :MANUAL
         MICRO_DEPOSIT = :MICRO_DEPOSIT
         PLAID = :PLAID
@@ -282,10 +282,10 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Verification State
-      class VerificationState < Lithic::Enum
+      module VerificationState
+        extend Lithic::Enum
+
         PENDING = :PENDING
         ENABLED = :ENABLED
         FAILED_VERIFICATION = :FAILED_VERIFICATION

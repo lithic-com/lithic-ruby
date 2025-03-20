@@ -15,10 +15,10 @@ module Lithic
           currency: String,
           financial_account_token: String,
           owner: String,
-          owner_type: Symbol,
+          owner_type: Lithic::Models::OwnerType::OrSymbol,
           routing_number: String,
-          type: Symbol,
-          verification_method: Symbol,
+          type: Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol,
+          verification_method: Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol,
           processor_token: String,
           account_token: String,
           address: Lithic::Models::ExternalBankAccountAddress,
@@ -96,8 +96,8 @@ module Lithic
           doing_business_as: String,
           name: String,
           owner: String,
-          owner_type: Symbol,
-          type: Symbol,
+          owner_type: Lithic::Models::OwnerType::OrSymbol,
+          type: Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol,
           user_defined_id: String,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
@@ -131,14 +131,14 @@ module Lithic
       sig do
         params(
           account_token: String,
-          account_types: T::Array[Symbol],
+          account_types: T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol],
           countries: T::Array[String],
           ending_before: String,
-          owner_types: T::Array[Symbol],
+          owner_types: T::Array[Lithic::Models::OwnerType::OrSymbol],
           page_size: Integer,
           starting_after: String,
-          states: T::Array[Symbol],
-          verification_states: T::Array[Symbol],
+          states: T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol],
+          verification_states: T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol],
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::CursorPage[Lithic::Models::ExternalBankAccountListResponse])

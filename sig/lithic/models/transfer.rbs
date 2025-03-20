@@ -102,7 +102,9 @@ module Lithic
 
       type category = :TRANSFER
 
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         TRANSFER: :TRANSFER
 
         def self.values: -> ::Array[Lithic::Models::Transfer::category]
@@ -154,7 +156,9 @@ module Lithic
 
         type result = :APPROVED | :DECLINED
 
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
@@ -227,7 +231,9 @@ module Lithic
           | :RETURNED_PAYMENT
           | :RETURNED_PAYMENT_REVERSAL
 
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           ACH_ORIGINATION_CANCELLED: :ACH_ORIGINATION_CANCELLED
           ACH_ORIGINATION_INITIATED: :ACH_ORIGINATION_INITIATED
           ACH_ORIGINATION_PROCESSED: :ACH_ORIGINATION_PROCESSED
@@ -299,7 +305,9 @@ module Lithic
 
       type result = :APPROVED | :DECLINED
 
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
@@ -308,7 +316,9 @@ module Lithic
 
       type status = :DECLINED | :EXPIRED | :PENDING | :SETTLED | :VOIDED
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         DECLINED: :DECLINED
         EXPIRED: :EXPIRED
         PENDING: :PENDING

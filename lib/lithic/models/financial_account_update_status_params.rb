@@ -30,10 +30,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Status of the financial account
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         OPEN = :OPEN
         CLOSED = :CLOSED
         SUSPENDED = :SUSPENDED
@@ -42,10 +42,10 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Reason for the financial account status change
-      class StatusChangeReason < Lithic::Enum
+      module StatusChangeReason
+        extend Lithic::Enum
+
         CHARGED_OFF_FRAUD = :CHARGED_OFF_FRAUD
         END_USER_REQUEST = :END_USER_REQUEST
         BANK_REQUEST = :BANK_REQUEST
