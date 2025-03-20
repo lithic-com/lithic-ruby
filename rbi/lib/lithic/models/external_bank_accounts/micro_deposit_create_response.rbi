@@ -66,11 +66,14 @@ module Lithic
         end
 
         # Owner Type
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol) }
         def owner_type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol)
+            .returns(Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol)
+        end
         def owner_type=(_)
         end
 
@@ -84,20 +87,26 @@ module Lithic
         end
 
         # Account State
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol) }
         def state
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol)
+            .returns(Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol)
+        end
         def state=(_)
         end
 
         # Account Type
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol)
+            .returns(Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
@@ -111,20 +120,36 @@ module Lithic
         end
 
         # Verification Method
-        sig { returns(Symbol) }
+        sig do
+          returns(
+            Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol
+          )
+        end
         def verification_method
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(
+            _: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol
+          )
+            .returns(
+              Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol
+            )
+        end
         def verification_method=(_)
         end
 
         # Verification State
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol) }
         def verification_state
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(
+            _: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol
+          )
+            .returns(Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol)
+        end
         def verification_state=(_)
         end
 
@@ -221,13 +246,13 @@ module Lithic
             currency: String,
             last_four: String,
             owner: String,
-            owner_type: Symbol,
+            owner_type: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol,
             routing_number: String,
-            state: Symbol,
-            type: Symbol,
+            state: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol,
+            type: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol,
             verification_attempts: Integer,
-            verification_method: Symbol,
-            verification_state: Symbol,
+            verification_method: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol,
+            verification_state: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol,
             account_token: String,
             address: Lithic::Models::ExternalBankAccountAddress,
             company_id: String,
@@ -276,13 +301,13 @@ module Lithic
                 currency: String,
                 last_four: String,
                 owner: String,
-                owner_type: Symbol,
+                owner_type: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol,
                 routing_number: String,
-                state: Symbol,
-                type: Symbol,
+                state: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol,
+                type: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol,
                 verification_attempts: Integer,
-                verification_method: Symbol,
-                verification_state: Symbol,
+                verification_method: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol,
+                verification_state: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol,
                 account_token: String,
                 address: Lithic::Models::ExternalBankAccountAddress,
                 company_id: String,
@@ -299,58 +324,128 @@ module Lithic
         end
 
         # Owner Type
-        class OwnerType < Lithic::Enum
-          abstract!
+        module OwnerType
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol) }
 
-          BUSINESS = :BUSINESS
-          INDIVIDUAL = :INDIVIDUAL
+          BUSINESS =
+            T.let(
+              :BUSINESS,
+              Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol
+            )
+          INDIVIDUAL =
+            T.let(
+              :INDIVIDUAL,
+              Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol
+            )
         end
 
         # Account State
-        class State < Lithic::Enum
-          abstract!
+        module State
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol) }
 
-          ENABLED = :ENABLED
-          CLOSED = :CLOSED
-          PAUSED = :PAUSED
+          ENABLED =
+            T.let(:ENABLED, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol)
+          CLOSED =
+            T.let(:CLOSED, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol)
+          PAUSED =
+            T.let(:PAUSED, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol)
         end
 
         # Account Type
-        class Type < Lithic::Enum
-          abstract!
+        module Type
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol) }
 
-          CHECKING = :CHECKING
-          SAVINGS = :SAVINGS
+          CHECKING =
+            T.let(:CHECKING, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol)
+          SAVINGS =
+            T.let(:SAVINGS, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol)
         end
 
         # Verification Method
-        class VerificationMethod < Lithic::Enum
-          abstract!
+        module VerificationMethod
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol
+              )
+            end
 
-          MANUAL = :MANUAL
-          MICRO_DEPOSIT = :MICRO_DEPOSIT
-          PLAID = :PLAID
-          PRENOTE = :PRENOTE
+          MANUAL =
+            T.let(
+              :MANUAL,
+              Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol
+            )
+          MICRO_DEPOSIT =
+            T.let(
+              :MICRO_DEPOSIT,
+              Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol
+            )
+          PLAID =
+            T.let(
+              :PLAID,
+              Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol
+            )
+          PRENOTE =
+            T.let(
+              :PRENOTE,
+              Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol
+            )
         end
 
         # Verification State
-        class VerificationState < Lithic::Enum
-          abstract!
+        module VerificationState
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol
+              )
+            end
 
-          PENDING = :PENDING
-          ENABLED = :ENABLED
-          FAILED_VERIFICATION = :FAILED_VERIFICATION
-          INSUFFICIENT_FUNDS = :INSUFFICIENT_FUNDS
+          PENDING =
+            T.let(
+              :PENDING,
+              Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol
+            )
+          ENABLED =
+            T.let(
+              :ENABLED,
+              Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol
+            )
+          FAILED_VERIFICATION =
+            T.let(
+              :FAILED_VERIFICATION,
+              Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol
+            )
+          INSUFFICIENT_FUNDS =
+            T.let(
+              :INSUFFICIENT_FUNDS,
+              Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol
+            )
         end
       end
     end

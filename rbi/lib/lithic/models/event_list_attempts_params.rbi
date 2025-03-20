@@ -55,11 +55,14 @@ module Lithic
       def starting_after=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::EventListAttemptsParams::Status::OrSymbol)) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::EventListAttemptsParams::Status::OrSymbol)
+          .returns(Lithic::Models::EventListAttemptsParams::Status::OrSymbol)
+      end
       def status=(_)
       end
 
@@ -70,7 +73,7 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          status: Symbol,
+          status: Lithic::Models::EventListAttemptsParams::Status::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -95,7 +98,7 @@ module Lithic
               ending_before: String,
               page_size: Integer,
               starting_after: String,
-              status: Symbol,
+              status: Lithic::Models::EventListAttemptsParams::Status::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -103,15 +106,16 @@ module Lithic
       def to_hash
       end
 
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::EventListAttemptsParams::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::EventListAttemptsParams::Status::TaggedSymbol) }
 
-        FAILED = :FAILED
-        PENDING = :PENDING
-        SENDING = :SENDING
-        SUCCESS = :SUCCESS
+        FAILED = T.let(:FAILED, Lithic::Models::EventListAttemptsParams::Status::OrSymbol)
+        PENDING = T.let(:PENDING, Lithic::Models::EventListAttemptsParams::Status::OrSymbol)
+        SENDING = T.let(:SENDING, Lithic::Models::EventListAttemptsParams::Status::OrSymbol)
+        SUCCESS = T.let(:SUCCESS, Lithic::Models::EventListAttemptsParams::Status::OrSymbol)
       end
     end
   end

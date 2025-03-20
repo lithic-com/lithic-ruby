@@ -14,11 +14,22 @@ module Lithic
         end
 
         # Reason for the financial account being marked as Charged Off
-        sig { returns(T.nilable(Symbol)) }
+        sig do
+          returns(
+            T.nilable(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol)
+          )
+        end
         def charged_off_reason
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(
+            _: T.nilable(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol)
+          )
+            .returns(
+              T.nilable(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol)
+            )
+        end
         def charged_off_reason=(_)
         end
 
@@ -48,11 +59,22 @@ module Lithic
         end
 
         # State of the financial account
-        sig { returns(Symbol) }
+        sig do
+          returns(
+            Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
+          )
+        end
         def financial_account_state
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(
+            _: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
+          )
+            .returns(
+              Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
+            )
+        end
         def financial_account_state=(_)
         end
 
@@ -76,11 +98,11 @@ module Lithic
         sig do
           params(
             account_token: String,
-            charged_off_reason: T.nilable(Symbol),
+            charged_off_reason: T.nilable(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol),
             credit_limit: T.nilable(Integer),
             credit_product_token: T.nilable(String),
             external_bank_account_token: T.nilable(String),
-            financial_account_state: Symbol,
+            financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol,
             is_spend_blocked: T::Boolean,
             tier: T.nilable(String)
           )
@@ -103,11 +125,11 @@ module Lithic
             .returns(
               {
                 account_token: String,
-                charged_off_reason: T.nilable(Symbol),
+                charged_off_reason: T.nilable(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol),
                 credit_limit: T.nilable(Integer),
                 credit_product_token: T.nilable(String),
                 external_bank_account_token: T.nilable(String),
-                financial_account_state: Symbol,
+                financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol,
                 is_spend_blocked: T::Boolean,
                 tier: T.nilable(String)
               }
@@ -117,25 +139,65 @@ module Lithic
         end
 
         # Reason for the financial account being marked as Charged Off
-        class ChargedOffReason < Lithic::Enum
-          abstract!
+        module ChargedOffReason
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol
+              )
+            end
 
-          DELINQUENT = :DELINQUENT
-          FRAUD = :FRAUD
+          DELINQUENT =
+            T.let(
+              :DELINQUENT,
+              Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol
+            )
+          FRAUD =
+            T.let(
+              :FRAUD,
+              Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol
+            )
         end
 
         # State of the financial account
-        class FinancialAccountState < Lithic::Enum
-          abstract!
+        module FinancialAccountState
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
+              )
+            end
 
-          PENDING = :PENDING
-          CURRENT = :CURRENT
-          DELINQUENT = :DELINQUENT
-          CHARGED_OFF = :CHARGED_OFF
+          PENDING =
+            T.let(
+              :PENDING,
+              Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
+            )
+          CURRENT =
+            T.let(
+              :CURRENT,
+              Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
+            )
+          DELINQUENT =
+            T.let(
+              :DELINQUENT,
+              Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
+            )
+          CHARGED_OFF =
+            T.let(
+              :CHARGED_OFF,
+              Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
+            )
         end
       end
     end

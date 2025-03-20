@@ -135,7 +135,9 @@ module Lithic
 
               type exempt = :TAX_INCLUDED | :TAX_NOT_INCLUDED | :NOT_SUPPORTED
 
-              class Exempt < Lithic::Enum
+              module Exempt
+                extend Lithic::Enum
+
                 TAX_INCLUDED: :TAX_INCLUDED
                 TAX_NOT_INCLUDED: :TAX_NOT_INCLUDED
                 NOT_SUPPORTED: :NOT_SUPPORTED
@@ -371,7 +373,9 @@ module Lithic
                 | :RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT_OFF_ROAD_NON_TAXABLE
                 | :MISCELLANEOUS_OTHER_FUEL
 
-              class Type < Lithic::Enum
+              module Type
+                extend Lithic::Enum
+
                 UNKNOWN: :UNKNOWN
                 REGULAR: :REGULAR
                 MID_PLUS: :MID_PLUS
@@ -502,7 +506,9 @@ module Lithic
                 | :NOT_APPLICABLE
                 | :UNKNOWN
 
-              class UnitOfMeasure < Lithic::Enum
+              module UnitOfMeasure
+                extend Lithic::Enum
+
                 GALLONS: :GALLONS
                 LITERS: :LITERS
                 POUNDS: :POUNDS
@@ -522,7 +528,9 @@ module Lithic
               | :FULL_SERVICE
               | :NON_FUEL_ONLY
 
-            class ServiceType < Lithic::Enum
+            module ServiceType
+              extend Lithic::Enum
+
               UNKNOWN: :UNKNOWN
               UNDEFINED: :UNDEFINED
               SELF_SERVICE: :SELF_SERVICE

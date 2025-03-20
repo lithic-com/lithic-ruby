@@ -79,7 +79,9 @@ module Lithic
 
       type account_type = :CHECKING | :SAVINGS
 
-      class AccountType < Lithic::Enum
+      module AccountType
+        extend Lithic::Enum
+
         CHECKING: :CHECKING
         SAVINGS: :SAVINGS
 
@@ -88,7 +90,9 @@ module Lithic
 
       type state = :ENABLED | :CLOSED | :PAUSED
 
-      class State < Lithic::Enum
+      module State
+        extend Lithic::Enum
+
         ENABLED: :ENABLED
         CLOSED: :CLOSED
         PAUSED: :PAUSED
@@ -99,7 +103,9 @@ module Lithic
       type verification_state =
         :PENDING | :ENABLED | :FAILED_VERIFICATION | :INSUFFICIENT_FUNDS
 
-      class VerificationState < Lithic::Enum
+      module VerificationState
+        extend Lithic::Enum
+
         PENDING: :PENDING
         ENABLED: :ENABLED
         FAILED_VERIFICATION: :FAILED_VERIFICATION

@@ -131,18 +131,16 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       #   attempts). Can only be set to `OK` to unblock a card.
-      class PinStatus < Lithic::Enum
+      module PinStatus
+        extend Lithic::Enum
+
         OK = :OK
 
         finalize!
       end
 
-      # @abstract
-      #
       # Card state values:
       #
       #   - `CLOSED` - Card will no longer approve authorizations. Closing a card cannot
@@ -151,7 +149,9 @@ module Lithic
       #     parameters).
       #   - `PAUSED` - Card will decline authorizations, but can be resumed at a later
       #     time.
-      class State < Lithic::Enum
+      module State
+        extend Lithic::Enum
+
         CLOSED = :CLOSED
         OPEN = :OPEN
         PAUSED = :PAUSED

@@ -14,15 +14,16 @@ module Lithic
     #     starts 6 days after the current calendar date one month prior.
     #   - `TRANSACTION` - Card will authorize multiple transactions if each individual
     #     transaction is under the spend limit.
-    class SpendLimitDuration < Lithic::Enum
-      abstract!
+    module SpendLimitDuration
+      extend Lithic::Enum
 
-      Value = type_template(:out) { {fixed: Symbol} }
+      TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::SpendLimitDuration) }
+      OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::SpendLimitDuration::TaggedSymbol) }
 
-      ANNUALLY = :ANNUALLY
-      FOREVER = :FOREVER
-      MONTHLY = :MONTHLY
-      TRANSACTION = :TRANSACTION
+      ANNUALLY = T.let(:ANNUALLY, Lithic::Models::SpendLimitDuration::OrSymbol)
+      FOREVER = T.let(:FOREVER, Lithic::Models::SpendLimitDuration::OrSymbol)
+      MONTHLY = T.let(:MONTHLY, Lithic::Models::SpendLimitDuration::OrSymbol)
+      TRANSACTION = T.let(:TRANSACTION, Lithic::Models::SpendLimitDuration::OrSymbol)
     end
   end
 end

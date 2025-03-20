@@ -120,10 +120,10 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # Indicates whether the Auth Rule is ACTIVE or INACTIVE
-        class State < Lithic::Enum
+        module State
+          extend Lithic::Enum
+
           ACTIVE = :ACTIVE
           INACTIVE = :INACTIVE
 

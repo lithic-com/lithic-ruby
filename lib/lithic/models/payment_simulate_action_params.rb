@@ -43,10 +43,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Event Type
-      class EventType < Lithic::Enum
+      module EventType
+        extend Lithic::Enum
+
         ACH_ORIGINATION_REVIEWED = :ACH_ORIGINATION_REVIEWED
         ACH_ORIGINATION_RELEASED = :ACH_ORIGINATION_RELEASED
         ACH_ORIGINATION_PROCESSED = :ACH_ORIGINATION_PROCESSED
@@ -59,10 +59,10 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Decline reason
-      class DeclineReason < Lithic::Enum
+      module DeclineReason
+        extend Lithic::Enum
+
         PROGRAM_TRANSACTION_LIMIT_EXCEEDED = :PROGRAM_TRANSACTION_LIMIT_EXCEEDED
         PROGRAM_DAILY_LIMIT_EXCEEDED = :PROGRAM_DAILY_LIMIT_EXCEEDED
         PROGRAM_MONTHLY_LIMIT_EXCEEDED = :PROGRAM_MONTHLY_LIMIT_EXCEEDED

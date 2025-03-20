@@ -95,10 +95,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Category of the book transfer
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         ADJUSTMENT = :ADJUSTMENT
         BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
         DERECOGNITION = :DERECOGNITION
@@ -110,10 +110,10 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # Type of book_transfer
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         ATM_WITHDRAWAL = :ATM_WITHDRAWAL
         ATM_DECLINE = :ATM_DECLINE
         INTERNATIONAL_ATM_WITHDRAWAL = :INTERNATIONAL_ATM_WITHDRAWAL

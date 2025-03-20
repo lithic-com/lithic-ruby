@@ -77,7 +77,9 @@ module Lithic
         | :PENDING_ACTIVATION
         | :UNKNOWN
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         ACTIVE: :ACTIVE
         DEACTIVATED: :DEACTIVATED
         INACTIVE: :INACTIVE
@@ -102,7 +104,9 @@ module Lithic
         | :UNKNOWN
         | :VISA_CHECKOUT
 
-      class TokenRequestorName < Lithic::Enum
+      module TokenRequestorName
+        extend Lithic::Enum
+
         AMAZON_ONE: :AMAZON_ONE
         ANDROID_PAY: :ANDROID_PAY
         APPLE_PAY: :APPLE_PAY
@@ -120,7 +124,9 @@ module Lithic
 
       type tokenization_channel = :DIGITAL_WALLET | :MERCHANT
 
-      class TokenizationChannel < Lithic::Enum
+      module TokenizationChannel
+        extend Lithic::Enum
+
         DIGITAL_WALLET: :DIGITAL_WALLET
         MERCHANT: :MERCHANT
 
@@ -178,7 +184,9 @@ module Lithic
           | :TOKEN_SUSPENDED
           | :TOKEN_UPDATED
 
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           APPROVED: :APPROVED
           DECLINED: :DECLINED
           NOTIFICATION_DELIVERED: :NOTIFICATION_DELIVERED
@@ -201,7 +209,9 @@ module Lithic
           | :TOKENIZATION_ELIGIBILITY_CHECK
           | :TOKENIZATION_UPDATED
 
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           TOKENIZATION_2_FA: :TOKENIZATION_2FA
           TOKENIZATION_AUTHORIZATION: :TOKENIZATION_AUTHORIZATION
           TOKENIZATION_DECISIONING: :TOKENIZATION_DECISIONING

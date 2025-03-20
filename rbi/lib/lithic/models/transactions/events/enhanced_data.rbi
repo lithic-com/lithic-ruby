@@ -227,11 +227,14 @@ module Lithic
               end
 
               # A flag indicating whether the transaction is tax exempt or not.
-              sig { returns(T.nilable(Symbol)) }
+              sig { returns(T.nilable(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol)) }
               def exempt
               end
 
-              sig { params(_: Symbol).returns(Symbol) }
+              sig do
+                params(_: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol)
+                  .returns(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol)
+              end
               def exempt=(_)
               end
 
@@ -245,24 +248,53 @@ module Lithic
               end
 
               sig do
-                params(amount: Integer, exempt: Symbol, merchant_tax_id: String).returns(T.attached_class)
+                params(
+                  amount: Integer,
+                  exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol,
+                  merchant_tax_id: String
+                )
+                  .returns(T.attached_class)
               end
               def self.new(amount: nil, exempt: nil, merchant_tax_id: nil)
               end
 
-              sig { override.returns({amount: Integer, exempt: Symbol, merchant_tax_id: String}) }
+              sig do
+                override
+                  .returns(
+                    {
+                      amount: Integer,
+                      exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol,
+                      merchant_tax_id: String
+                    }
+                  )
+              end
               def to_hash
               end
 
               # A flag indicating whether the transaction is tax exempt or not.
-              class Exempt < Lithic::Enum
-                abstract!
+              module Exempt
+                extend Lithic::Enum
 
-                Value = type_template(:out) { {fixed: Symbol} }
+                TaggedSymbol =
+                  T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt) }
+                OrSymbol =
+                  T.type_alias { T.any(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol) }
 
-                TAX_INCLUDED = :TAX_INCLUDED
-                TAX_NOT_INCLUDED = :TAX_NOT_INCLUDED
-                NOT_SUPPORTED = :NOT_SUPPORTED
+                TAX_INCLUDED =
+                  T.let(
+                    :TAX_INCLUDED,
+                    Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
+                  )
+                TAX_NOT_INCLUDED =
+                  T.let(
+                    :TAX_NOT_INCLUDED,
+                    Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
+                  )
+                NOT_SUPPORTED =
+                  T.let(
+                    :NOT_SUPPORTED,
+                    Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
+                  )
               end
             end
           end
@@ -310,11 +342,14 @@ module Lithic
             end
 
             # The type of fuel service.
-            sig { returns(T.nilable(Symbol)) }
+            sig { returns(T.nilable(Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)) }
             def service_type
             end
 
-            sig { params(_: Symbol).returns(Symbol) }
+            sig do
+              params(_: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)
+                .returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)
+            end
             def service_type=(_)
             end
 
@@ -334,7 +369,7 @@ module Lithic
                 fuel: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel,
                 driver_number: String,
                 odometer: Integer,
-                service_type: Symbol,
+                service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol,
                 vehicle_number: String
               )
                 .returns(T.attached_class)
@@ -350,7 +385,7 @@ module Lithic
                     fuel: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel,
                     driver_number: String,
                     odometer: Integer,
-                    service_type: Symbol,
+                    service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol,
                     vehicle_number: String
                   }
                 )
@@ -408,20 +443,30 @@ module Lithic
               end
 
               # The type of fuel purchased.
-              sig { returns(T.nilable(Symbol)) }
+              sig { returns(T.nilable(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)) }
               def type
               end
 
-              sig { params(_: Symbol).returns(Symbol) }
+              sig do
+                params(_: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  .returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+              end
               def type=(_)
               end
 
               # Unit of measure for fuel disbursement.
-              sig { returns(T.nilable(Symbol)) }
+              sig do
+                returns(
+                  T.nilable(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol)
+                )
+              end
               def unit_of_measure
               end
 
-              sig { params(_: Symbol).returns(Symbol) }
+              sig do
+                params(_: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol)
+                  .returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol)
+              end
               def unit_of_measure=(_)
               end
 
@@ -435,180 +480,640 @@ module Lithic
               end
 
               sig do
-                params(quantity: Float, type: Symbol, unit_of_measure: Symbol, unit_price: Integer)
+                params(
+                  quantity: Float,
+                  type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol,
+                  unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol,
+                  unit_price: Integer
+                )
                   .returns(T.attached_class)
               end
               def self.new(quantity: nil, type: nil, unit_of_measure: nil, unit_price: nil)
               end
 
               sig do
-                override.returns(
-                  {
-                    quantity: Float,
-                    type: Symbol,
-                    unit_of_measure: Symbol,
-                    unit_price: Integer
-                  }
-                )
+                override
+                  .returns(
+                    {
+                      quantity: Float,
+                      type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol,
+                      unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol,
+                      unit_price: Integer
+                    }
+                  )
               end
               def to_hash
               end
 
               # The type of fuel purchased.
-              class Type < Lithic::Enum
-                abstract!
+              module Type
+                extend Lithic::Enum
 
-                Value = type_template(:out) { {fixed: Symbol} }
+                TaggedSymbol =
+                  T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type) }
+                OrSymbol =
+                  T.type_alias { T.any(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol) }
 
-                UNKNOWN = :UNKNOWN
-                REGULAR = :REGULAR
-                MID_PLUS = :MID_PLUS
-                PREMIUM_SUPER = :PREMIUM_SUPER
-                MID_PLUS_2 = :MID_PLUS_2
-                PREMIUM_SUPER_2 = :PREMIUM_SUPER_2
-                ETHANOL_5_7_BLEND = :ETHANOL_5_7_BLEND
-                MID_PLUS_ETHANOL_5_7_PERCENT_BLEND = :MID_PLUS_ETHANOL_5_7_PERCENT_BLEND
-                PREMIUM_SUPER_ETHANOL_5_7_PERCENT_BLEND = :PREMIUM_SUPER_ETHANOL_5_7_PERCENT_BLEND
-                ETHANOL_7_7_PERCENT_BLEND = :ETHANOL_7_7_PERCENT_BLEND
-                MID_PLUS_ETHANOL_7_7_PERCENT_BLEND = :MID_PLUS_ETHANOL_7_7_PERCENT_BLEND
-                GREEN_GASOLINE_REGULAR = :GREEN_GASOLINE_REGULAR
-                GREEN_GASOLINE_MID_PLUS = :GREEN_GASOLINE_MID_PLUS
-                GREEN_GASOLINE_PREMIUM_SUPER = :GREEN_GASOLINE_PREMIUM_SUPER
-                REGULAR_DIESEL_2 = :REGULAR_DIESEL_2
-                PREMIUM_DIESEL_2 = :PREMIUM_DIESEL_2
-                REGULAR_DIESEL_1 = :REGULAR_DIESEL_1
-                COMPRESSED_NATURAL_GAS = :COMPRESSED_NATURAL_GAS
-                LIQUID_PROPANE_GAS = :LIQUID_PROPANE_GAS
-                LIQUID_NATURAL_GAS = :LIQUID_NATURAL_GAS
-                E_85 = :E_85
-                REFORMULATED_1 = :REFORMULATED_1
-                REFORMULATED_2 = :REFORMULATED_2
-                REFORMULATED_3 = :REFORMULATED_3
-                REFORMULATED_4 = :REFORMULATED_4
-                REFORMULATED_5 = :REFORMULATED_5
-                DIESEL_OFF_ROAD_1_AND_2_NON_TAXABLE = :DIESEL_OFF_ROAD_1_AND_2_NON_TAXABLE
-                DIESEL_OFF_ROAD_NON_TAXABLE = :DIESEL_OFF_ROAD_NON_TAXABLE
-                BIODIESEL_BLEND_OFF_ROAD_NON_TAXABLE = :BIODIESEL_BLEND_OFF_ROAD_NON_TAXABLE
-                UNDEFINED_FUEL = :UNDEFINED_FUEL
-                RACING_FUEL = :RACING_FUEL
-                MID_PLUS_2_10_PERCENT_BLEND = :MID_PLUS_2_10_PERCENT_BLEND
-                PREMIUM_SUPER_2_10_PERCENT_BLEND = :PREMIUM_SUPER_2_10_PERCENT_BLEND
-                MID_PLUS_ETHANOL_2_15_PERCENT_BLEND = :MID_PLUS_ETHANOL_2_15_PERCENT_BLEND
-                PREMIUM_SUPER_ETHANOL_2_15_PERCENT_BLEND = :PREMIUM_SUPER_ETHANOL_2_15_PERCENT_BLEND
-                PREMIUM_SUPER_ETHANOL_7_7_PERCENT_BLEND = :PREMIUM_SUPER_ETHANOL_7_7_PERCENT_BLEND
-                REGULAR_ETHANOL_10_PERCENT_BLEND = :REGULAR_ETHANOL_10_PERCENT_BLEND
-                MID_PLUS_ETHANOL_10_PERCENT_BLEND = :MID_PLUS_ETHANOL_10_PERCENT_BLEND
-                PREMIUM_SUPER_ETHANOL_10_PERCENT_BLEND = :PREMIUM_SUPER_ETHANOL_10_PERCENT_BLEND
-                B2_DIESEL_BLEND_2_PERCENT_BIODIESEL = :B2_DIESEL_BLEND_2_PERCENT_BIODIESEL
-                B5_DIESEL_BLEND_5_PERCENT_BIODIESEL = :B5_DIESEL_BLEND_5_PERCENT_BIODIESEL
-                B10_DIESEL_BLEND_10_PERCENT_BIODIESEL = :B10_DIESEL_BLEND_10_PERCENT_BIODIESEL
-                B11_DIESEL_BLEND_11_PERCENT_BIODIESEL = :B11_DIESEL_BLEND_11_PERCENT_BIODIESEL
-                B15_DIESEL_BLEND_15_PERCENT_BIODIESEL = :B15_DIESEL_BLEND_15_PERCENT_BIODIESEL
-                B20_DIESEL_BLEND_20_PERCENT_BIODIESEL = :B20_DIESEL_BLEND_20_PERCENT_BIODIESEL
-                B100_DIESEL_BLEND_100_PERCENT_BIODIESEL = :B100_DIESEL_BLEND_100_PERCENT_BIODIESEL
-                B1_DIESEL_BLEND_1_PERCENT_BIODIESEL = :B1_DIESEL_BLEND_1_PERCENT_BIODIESEL
-                ADDITIZED_DIESEL_2 = :ADDITIZED_DIESEL_2
-                ADDITIZED_DIESEL_3 = :ADDITIZED_DIESEL_3
-                RENEWABLE_DIESEL_R95 = :RENEWABLE_DIESEL_R95
-                RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT = :RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT
-                DIESEL_EXHAUST_FLUID = :DIESEL_EXHAUST_FLUID
-                PREMIUM_DIESEL_1 = :PREMIUM_DIESEL_1
-                REGULAR_ETHANOL_15_PERCENT_BLEND = :REGULAR_ETHANOL_15_PERCENT_BLEND
-                MID_PLUS_ETHANOL_15_PERCENT_BLEND = :MID_PLUS_ETHANOL_15_PERCENT_BLEND
-                PREMIUM_SUPER_ETHANOL_15_PERCENT_BLEND = :PREMIUM_SUPER_ETHANOL_15_PERCENT_BLEND
+                UNKNOWN =
+                  T.let(:UNKNOWN, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                REGULAR =
+                  T.let(:REGULAR, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                MID_PLUS =
+                  T.let(:MID_PLUS, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                PREMIUM_SUPER =
+                  T.let(:PREMIUM_SUPER, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                MID_PLUS_2 =
+                  T.let(:MID_PLUS_2, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                PREMIUM_SUPER_2 =
+                  T.let(
+                    :PREMIUM_SUPER_2,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                ETHANOL_5_7_BLEND =
+                  T.let(
+                    :ETHANOL_5_7_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                MID_PLUS_ETHANOL_5_7_PERCENT_BLEND =
+                  T.let(
+                    :MID_PLUS_ETHANOL_5_7_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                PREMIUM_SUPER_ETHANOL_5_7_PERCENT_BLEND =
+                  T.let(
+                    :PREMIUM_SUPER_ETHANOL_5_7_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                ETHANOL_7_7_PERCENT_BLEND =
+                  T.let(
+                    :ETHANOL_7_7_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                MID_PLUS_ETHANOL_7_7_PERCENT_BLEND =
+                  T.let(
+                    :MID_PLUS_ETHANOL_7_7_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                GREEN_GASOLINE_REGULAR =
+                  T.let(
+                    :GREEN_GASOLINE_REGULAR,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                GREEN_GASOLINE_MID_PLUS =
+                  T.let(
+                    :GREEN_GASOLINE_MID_PLUS,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                GREEN_GASOLINE_PREMIUM_SUPER =
+                  T.let(
+                    :GREEN_GASOLINE_PREMIUM_SUPER,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                REGULAR_DIESEL_2 =
+                  T.let(
+                    :REGULAR_DIESEL_2,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                PREMIUM_DIESEL_2 =
+                  T.let(
+                    :PREMIUM_DIESEL_2,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                REGULAR_DIESEL_1 =
+                  T.let(
+                    :REGULAR_DIESEL_1,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                COMPRESSED_NATURAL_GAS =
+                  T.let(
+                    :COMPRESSED_NATURAL_GAS,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                LIQUID_PROPANE_GAS =
+                  T.let(
+                    :LIQUID_PROPANE_GAS,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                LIQUID_NATURAL_GAS =
+                  T.let(
+                    :LIQUID_NATURAL_GAS,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                E_85 = T.let(:E_85, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                REFORMULATED_1 =
+                  T.let(
+                    :REFORMULATED_1,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                REFORMULATED_2 =
+                  T.let(
+                    :REFORMULATED_2,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                REFORMULATED_3 =
+                  T.let(
+                    :REFORMULATED_3,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                REFORMULATED_4 =
+                  T.let(
+                    :REFORMULATED_4,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                REFORMULATED_5 =
+                  T.let(
+                    :REFORMULATED_5,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                DIESEL_OFF_ROAD_1_AND_2_NON_TAXABLE =
+                  T.let(
+                    :DIESEL_OFF_ROAD_1_AND_2_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                DIESEL_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :DIESEL_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                BIODIESEL_BLEND_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :BIODIESEL_BLEND_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                UNDEFINED_FUEL =
+                  T.let(
+                    :UNDEFINED_FUEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                RACING_FUEL =
+                  T.let(:RACING_FUEL, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                MID_PLUS_2_10_PERCENT_BLEND =
+                  T.let(
+                    :MID_PLUS_2_10_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                PREMIUM_SUPER_2_10_PERCENT_BLEND =
+                  T.let(
+                    :PREMIUM_SUPER_2_10_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                MID_PLUS_ETHANOL_2_15_PERCENT_BLEND =
+                  T.let(
+                    :MID_PLUS_ETHANOL_2_15_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                PREMIUM_SUPER_ETHANOL_2_15_PERCENT_BLEND =
+                  T.let(
+                    :PREMIUM_SUPER_ETHANOL_2_15_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                PREMIUM_SUPER_ETHANOL_7_7_PERCENT_BLEND =
+                  T.let(
+                    :PREMIUM_SUPER_ETHANOL_7_7_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                REGULAR_ETHANOL_10_PERCENT_BLEND =
+                  T.let(
+                    :REGULAR_ETHANOL_10_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                MID_PLUS_ETHANOL_10_PERCENT_BLEND =
+                  T.let(
+                    :MID_PLUS_ETHANOL_10_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                PREMIUM_SUPER_ETHANOL_10_PERCENT_BLEND =
+                  T.let(
+                    :PREMIUM_SUPER_ETHANOL_10_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                B2_DIESEL_BLEND_2_PERCENT_BIODIESEL =
+                  T.let(
+                    :B2_DIESEL_BLEND_2_PERCENT_BIODIESEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                B5_DIESEL_BLEND_5_PERCENT_BIODIESEL =
+                  T.let(
+                    :B5_DIESEL_BLEND_5_PERCENT_BIODIESEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                B10_DIESEL_BLEND_10_PERCENT_BIODIESEL =
+                  T.let(
+                    :B10_DIESEL_BLEND_10_PERCENT_BIODIESEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                B11_DIESEL_BLEND_11_PERCENT_BIODIESEL =
+                  T.let(
+                    :B11_DIESEL_BLEND_11_PERCENT_BIODIESEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                B15_DIESEL_BLEND_15_PERCENT_BIODIESEL =
+                  T.let(
+                    :B15_DIESEL_BLEND_15_PERCENT_BIODIESEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                B20_DIESEL_BLEND_20_PERCENT_BIODIESEL =
+                  T.let(
+                    :B20_DIESEL_BLEND_20_PERCENT_BIODIESEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                B100_DIESEL_BLEND_100_PERCENT_BIODIESEL =
+                  T.let(
+                    :B100_DIESEL_BLEND_100_PERCENT_BIODIESEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                B1_DIESEL_BLEND_1_PERCENT_BIODIESEL =
+                  T.let(
+                    :B1_DIESEL_BLEND_1_PERCENT_BIODIESEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                ADDITIZED_DIESEL_2 =
+                  T.let(
+                    :ADDITIZED_DIESEL_2,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                ADDITIZED_DIESEL_3 =
+                  T.let(
+                    :ADDITIZED_DIESEL_3,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                RENEWABLE_DIESEL_R95 =
+                  T.let(
+                    :RENEWABLE_DIESEL_R95,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT =
+                  T.let(
+                    :RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                DIESEL_EXHAUST_FLUID =
+                  T.let(
+                    :DIESEL_EXHAUST_FLUID,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                PREMIUM_DIESEL_1 =
+                  T.let(
+                    :PREMIUM_DIESEL_1,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                REGULAR_ETHANOL_15_PERCENT_BLEND =
+                  T.let(
+                    :REGULAR_ETHANOL_15_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                MID_PLUS_ETHANOL_15_PERCENT_BLEND =
+                  T.let(
+                    :MID_PLUS_ETHANOL_15_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                PREMIUM_SUPER_ETHANOL_15_PERCENT_BLEND =
+                  T.let(
+                    :PREMIUM_SUPER_ETHANOL_15_PERCENT_BLEND,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 PREMIUM_DIESEL_BLEND_LESS_THAN_20_PERCENT_BIODIESEL =
-                  :PREMIUM_DIESEL_BLEND_LESS_THAN_20_PERCENT_BIODIESEL
+                  T.let(
+                    :PREMIUM_DIESEL_BLEND_LESS_THAN_20_PERCENT_BIODIESEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 PREMIUM_DIESEL_BLEND_GREATER_THAN_20_PERCENT_BIODIESEL =
-                  :PREMIUM_DIESEL_BLEND_GREATER_THAN_20_PERCENT_BIODIESEL
-                B75_DIESEL_BLEND_75_PERCENT_BIODIESEL = :B75_DIESEL_BLEND_75_PERCENT_BIODIESEL
-                B99_DIESEL_BLEND_99_PERCENT_BIODIESEL = :B99_DIESEL_BLEND_99_PERCENT_BIODIESEL
-                MISCELLANEOUS_FUEL = :MISCELLANEOUS_FUEL
-                JET_FUEL = :JET_FUEL
-                AVIATION_FUEL_REGULAR = :AVIATION_FUEL_REGULAR
-                AVIATION_FUEL_PREMIUM = :AVIATION_FUEL_PREMIUM
-                AVIATION_FUEL_JP8 = :AVIATION_FUEL_JP8
-                AVIATION_FUEL_4 = :AVIATION_FUEL_4
-                AVIATION_FUEL_5 = :AVIATION_FUEL_5
-                BIOJET_DIESEL = :BIOJET_DIESEL
-                AVIATION_BIOFUEL_GASOLINE = :AVIATION_BIOFUEL_GASOLINE
-                MISCELLANEOUS_AVIATION_FUEL = :MISCELLANEOUS_AVIATION_FUEL
-                MARINE_FUEL_1 = :MARINE_FUEL_1
-                MARINE_FUEL_2 = :MARINE_FUEL_2
-                MARINE_FUEL_3 = :MARINE_FUEL_3
-                MARINE_FUEL_4 = :MARINE_FUEL_4
-                MARINE_FUEL_5 = :MARINE_FUEL_5
-                MARINE_OTHER = :MARINE_OTHER
-                MARINE_DIESEL = :MARINE_DIESEL
-                MISCELLANEOUS_MARINE_FUEL = :MISCELLANEOUS_MARINE_FUEL
-                KEROSENE_LOW_SULFUR = :KEROSENE_LOW_SULFUR
-                WHITE_GAS = :WHITE_GAS
-                HEATING_OIL = :HEATING_OIL
-                OTHER_FUEL_NON_TAXABLE = :OTHER_FUEL_NON_TAXABLE
-                KEROSENE_ULTRA_LOW_SULFUR = :KEROSENE_ULTRA_LOW_SULFUR
-                KEROSENE_LOW_SULFUR_NON_TAXABLE = :KEROSENE_LOW_SULFUR_NON_TAXABLE
-                KEROSENE_ULTRA_LOW_SULFUR_NON_TAXABLE = :KEROSENE_ULTRA_LOW_SULFUR_NON_TAXABLE
-                EVC_1_LEVEL_1_CHARGE_110_V_15_AMP = :EVC_1_LEVEL_1_CHARGE_110V_15_AMP
-                EVC_2_LEVEL_2_CHARGE_240_V_15_40_AMP = :EVC_2_LEVEL_2_CHARGE_240V_15_40_AMP
-                EVC_3_LEVEL_3_CHARGE_480_V_3_PHASE_CHARGE = :EVC_3_LEVEL_3_CHARGE_480V_3_PHASE_CHARGE
-                BIODIESEL_BLEND_2_PERCENT_OFF_ROAD_NON_TAXABLE = :BIODIESEL_BLEND_2_PERCENT_OFF_ROAD_NON_TAXABLE
-                BIODIESEL_BLEND_5_PERCENT_OFF_ROAD_NON_TAXABLE = :BIODIESEL_BLEND_5_PERCENT_OFF_ROAD_NON_TAXABLE
-                BIODIESEL_BLEND_10_PERCENT_OFF_ROAD_NON_TAXABLE = :BIODIESEL_BLEND_10_PERCENT_OFF_ROAD_NON_TAXABLE
-                BIODIESEL_BLEND_11_PERCENT_OFF_ROAD_NON_TAXABLE = :BIODIESEL_BLEND_11_PERCENT_OFF_ROAD_NON_TAXABLE
-                BIODIESEL_BLEND_15_PERCENT_OFF_ROAD_NON_TAXABLE = :BIODIESEL_BLEND_15_PERCENT_OFF_ROAD_NON_TAXABLE
-                BIODIESEL_BLEND_20_PERCENT_OFF_ROAD_NON_TAXABLE = :BIODIESEL_BLEND_20_PERCENT_OFF_ROAD_NON_TAXABLE
-                DIESEL_1_OFF_ROAD_NON_TAXABLE = :DIESEL_1_OFF_ROAD_NON_TAXABLE
-                DIESEL_2_OFF_ROAD_NON_TAXABLE = :DIESEL_2_OFF_ROAD_NON_TAXABLE
-                DIESEL_1_PREMIUM_OFF_ROAD_NON_TAXABLE = :DIESEL_1_PREMIUM_OFF_ROAD_NON_TAXABLE
-                DIESEL_2_PREMIUM_OFF_ROAD_NON_TAXABLE = :DIESEL_2_PREMIUM_OFF_ROAD_NON_TAXABLE
-                ADDITIVE_DOSAGE = :ADDITIVE_DOSAGE
-                ETHANOL_BLENDS_E16_E84 = :ETHANOL_BLENDS_E16_E84
-                LOW_OCTANE_UNL = :LOW_OCTANE_UNL
-                BLENDED_DIESEL_1_AND_2 = :BLENDED_DIESEL_1_AND_2
-                OFF_ROAD_REGULAR_NON_TAXABLE = :OFF_ROAD_REGULAR_NON_TAXABLE
-                OFF_ROAD_MID_PLUS_NON_TAXABLE = :OFF_ROAD_MID_PLUS_NON_TAXABLE
-                OFF_ROAD_PREMIUM_SUPER_NON_TAXABLE = :OFF_ROAD_PREMIUM_SUPER_NON_TAXABLE
-                OFF_ROAD_MID_PLUS_2_NON_TAXABLE = :OFF_ROAD_MID_PLUS_2_NON_TAXABLE
-                OFF_ROAD_PREMIUM_SUPER_2_NON_TAXABLE = :OFF_ROAD_PREMIUM_SUPER_2_NON_TAXABLE
-                RECREATIONAL_FUEL_90_OCTANE = :RECREATIONAL_FUEL_90_OCTANE
-                HYDROGEN_H35 = :HYDROGEN_H35
-                HYDROGEN_H70 = :HYDROGEN_H70
-                RENEWABLE_DIESEL_R95_OFF_ROAD_NON_TAXABLE = :RENEWABLE_DIESEL_R95_OFF_ROAD_NON_TAXABLE
-                BIODIESEL_BLEND_1_PERCENT_OFF_ROAD_NON_TAXABLE = :BIODIESEL_BLEND_1_PERCENT_OFF_ROAD_NON_TAXABLE
-                BIODIESEL_BLEND_75_PERCENT_OFF_ROAD_NON_TAXABLE = :BIODIESEL_BLEND_75_PERCENT_OFF_ROAD_NON_TAXABLE
-                BIODIESEL_BLEND_99_PERCENT_OFF_ROAD_NON_TAXABLE = :BIODIESEL_BLEND_99_PERCENT_OFF_ROAD_NON_TAXABLE
-                BIODIESEL_BLEND_100_PERCENT_OFF_ROAD_NON_TAXABLE = :BIODIESEL_BLEND_100_PERCENT_OFF_ROAD_NON_TAXABLE
+                  T.let(
+                    :PREMIUM_DIESEL_BLEND_GREATER_THAN_20_PERCENT_BIODIESEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                B75_DIESEL_BLEND_75_PERCENT_BIODIESEL =
+                  T.let(
+                    :B75_DIESEL_BLEND_75_PERCENT_BIODIESEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                B99_DIESEL_BLEND_99_PERCENT_BIODIESEL =
+                  T.let(
+                    :B99_DIESEL_BLEND_99_PERCENT_BIODIESEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                MISCELLANEOUS_FUEL =
+                  T.let(
+                    :MISCELLANEOUS_FUEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                JET_FUEL =
+                  T.let(:JET_FUEL, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                AVIATION_FUEL_REGULAR =
+                  T.let(
+                    :AVIATION_FUEL_REGULAR,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                AVIATION_FUEL_PREMIUM =
+                  T.let(
+                    :AVIATION_FUEL_PREMIUM,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                AVIATION_FUEL_JP8 =
+                  T.let(
+                    :AVIATION_FUEL_JP8,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                AVIATION_FUEL_4 =
+                  T.let(
+                    :AVIATION_FUEL_4,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                AVIATION_FUEL_5 =
+                  T.let(
+                    :AVIATION_FUEL_5,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                BIOJET_DIESEL =
+                  T.let(:BIOJET_DIESEL, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                AVIATION_BIOFUEL_GASOLINE =
+                  T.let(
+                    :AVIATION_BIOFUEL_GASOLINE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                MISCELLANEOUS_AVIATION_FUEL =
+                  T.let(
+                    :MISCELLANEOUS_AVIATION_FUEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                MARINE_FUEL_1 =
+                  T.let(:MARINE_FUEL_1, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                MARINE_FUEL_2 =
+                  T.let(:MARINE_FUEL_2, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                MARINE_FUEL_3 =
+                  T.let(:MARINE_FUEL_3, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                MARINE_FUEL_4 =
+                  T.let(:MARINE_FUEL_4, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                MARINE_FUEL_5 =
+                  T.let(:MARINE_FUEL_5, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                MARINE_OTHER =
+                  T.let(:MARINE_OTHER, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                MARINE_DIESEL =
+                  T.let(:MARINE_DIESEL, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                MISCELLANEOUS_MARINE_FUEL =
+                  T.let(
+                    :MISCELLANEOUS_MARINE_FUEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                KEROSENE_LOW_SULFUR =
+                  T.let(
+                    :KEROSENE_LOW_SULFUR,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                WHITE_GAS =
+                  T.let(:WHITE_GAS, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                HEATING_OIL =
+                  T.let(:HEATING_OIL, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                OTHER_FUEL_NON_TAXABLE =
+                  T.let(
+                    :OTHER_FUEL_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                KEROSENE_ULTRA_LOW_SULFUR =
+                  T.let(
+                    :KEROSENE_ULTRA_LOW_SULFUR,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                KEROSENE_LOW_SULFUR_NON_TAXABLE =
+                  T.let(
+                    :KEROSENE_LOW_SULFUR_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                KEROSENE_ULTRA_LOW_SULFUR_NON_TAXABLE =
+                  T.let(
+                    :KEROSENE_ULTRA_LOW_SULFUR_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                EVC_1_LEVEL_1_CHARGE_110_V_15_AMP =
+                  T.let(
+                    :EVC_1_LEVEL_1_CHARGE_110V_15_AMP,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                EVC_2_LEVEL_2_CHARGE_240_V_15_40_AMP =
+                  T.let(
+                    :EVC_2_LEVEL_2_CHARGE_240V_15_40_AMP,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                EVC_3_LEVEL_3_CHARGE_480_V_3_PHASE_CHARGE =
+                  T.let(
+                    :EVC_3_LEVEL_3_CHARGE_480V_3_PHASE_CHARGE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                BIODIESEL_BLEND_2_PERCENT_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :BIODIESEL_BLEND_2_PERCENT_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                BIODIESEL_BLEND_5_PERCENT_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :BIODIESEL_BLEND_5_PERCENT_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                BIODIESEL_BLEND_10_PERCENT_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :BIODIESEL_BLEND_10_PERCENT_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                BIODIESEL_BLEND_11_PERCENT_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :BIODIESEL_BLEND_11_PERCENT_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                BIODIESEL_BLEND_15_PERCENT_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :BIODIESEL_BLEND_15_PERCENT_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                BIODIESEL_BLEND_20_PERCENT_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :BIODIESEL_BLEND_20_PERCENT_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                DIESEL_1_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :DIESEL_1_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                DIESEL_2_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :DIESEL_2_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                DIESEL_1_PREMIUM_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :DIESEL_1_PREMIUM_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                DIESEL_2_PREMIUM_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :DIESEL_2_PREMIUM_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                ADDITIVE_DOSAGE =
+                  T.let(
+                    :ADDITIVE_DOSAGE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                ETHANOL_BLENDS_E16_E84 =
+                  T.let(
+                    :ETHANOL_BLENDS_E16_E84,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                LOW_OCTANE_UNL =
+                  T.let(
+                    :LOW_OCTANE_UNL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                BLENDED_DIESEL_1_AND_2 =
+                  T.let(
+                    :BLENDED_DIESEL_1_AND_2,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                OFF_ROAD_REGULAR_NON_TAXABLE =
+                  T.let(
+                    :OFF_ROAD_REGULAR_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                OFF_ROAD_MID_PLUS_NON_TAXABLE =
+                  T.let(
+                    :OFF_ROAD_MID_PLUS_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                OFF_ROAD_PREMIUM_SUPER_NON_TAXABLE =
+                  T.let(
+                    :OFF_ROAD_PREMIUM_SUPER_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                OFF_ROAD_MID_PLUS_2_NON_TAXABLE =
+                  T.let(
+                    :OFF_ROAD_MID_PLUS_2_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                OFF_ROAD_PREMIUM_SUPER_2_NON_TAXABLE =
+                  T.let(
+                    :OFF_ROAD_PREMIUM_SUPER_2_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                RECREATIONAL_FUEL_90_OCTANE =
+                  T.let(
+                    :RECREATIONAL_FUEL_90_OCTANE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                HYDROGEN_H35 =
+                  T.let(:HYDROGEN_H35, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                HYDROGEN_H70 =
+                  T.let(:HYDROGEN_H70, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                RENEWABLE_DIESEL_R95_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :RENEWABLE_DIESEL_R95_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                BIODIESEL_BLEND_1_PERCENT_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :BIODIESEL_BLEND_1_PERCENT_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                BIODIESEL_BLEND_75_PERCENT_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :BIODIESEL_BLEND_75_PERCENT_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                BIODIESEL_BLEND_99_PERCENT_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :BIODIESEL_BLEND_99_PERCENT_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                BIODIESEL_BLEND_100_PERCENT_OFF_ROAD_NON_TAXABLE =
+                  T.let(
+                    :BIODIESEL_BLEND_100_PERCENT_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT_OFF_ROAD_NON_TAXABLE =
-                  :RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT_OFF_ROAD_NON_TAXABLE
-                MISCELLANEOUS_OTHER_FUEL = :MISCELLANEOUS_OTHER_FUEL
+                  T.let(
+                    :RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT_OFF_ROAD_NON_TAXABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                MISCELLANEOUS_OTHER_FUEL =
+                  T.let(
+                    :MISCELLANEOUS_OTHER_FUEL,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
               end
 
               # Unit of measure for fuel disbursement.
-              class UnitOfMeasure < Lithic::Enum
-                abstract!
+              module UnitOfMeasure
+                extend Lithic::Enum
 
-                Value = type_template(:out) { {fixed: Symbol} }
+                TaggedSymbol =
+                  T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure) }
+                OrSymbol =
+                  T.type_alias do
+                    T.any(
+                      Symbol,
+                      Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                    )
+                  end
 
-                GALLONS = :GALLONS
-                LITERS = :LITERS
-                POUNDS = :POUNDS
-                KILOGRAMS = :KILOGRAMS
-                IMPERIAL_GALLONS = :IMPERIAL_GALLONS
-                NOT_APPLICABLE = :NOT_APPLICABLE
-                UNKNOWN = :UNKNOWN
+                GALLONS =
+                  T.let(
+                    :GALLONS,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                  )
+                LITERS =
+                  T.let(
+                    :LITERS,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                  )
+                POUNDS =
+                  T.let(
+                    :POUNDS,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                  )
+                KILOGRAMS =
+                  T.let(
+                    :KILOGRAMS,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                  )
+                IMPERIAL_GALLONS =
+                  T.let(
+                    :IMPERIAL_GALLONS,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                  )
+                NOT_APPLICABLE =
+                  T.let(
+                    :NOT_APPLICABLE,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                  )
+                UNKNOWN =
+                  T.let(
+                    :UNKNOWN,
+                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                  )
               end
             end
 
             # The type of fuel service.
-            class ServiceType < Lithic::Enum
-              abstract!
+            module ServiceType
+              extend Lithic::Enum
 
-              Value = type_template(:out) { {fixed: Symbol} }
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType) }
+              OrSymbol =
+                T.type_alias { T.any(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol) }
 
-              UNKNOWN = :UNKNOWN
-              UNDEFINED = :UNDEFINED
-              SELF_SERVICE = :SELF_SERVICE
-              FULL_SERVICE = :FULL_SERVICE
-              NON_FUEL_ONLY = :NON_FUEL_ONLY
+              UNKNOWN =
+                T.let(:UNKNOWN, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)
+              UNDEFINED =
+                T.let(:UNDEFINED, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)
+              SELF_SERVICE =
+                T.let(:SELF_SERVICE, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)
+              FULL_SERVICE =
+                T.let(:FULL_SERVICE, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)
+              NON_FUEL_ONLY =
+                T.let(
+                  :NON_FUEL_ONLY,
+                  Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol
+                )
             end
           end
         end

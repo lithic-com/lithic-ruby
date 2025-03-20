@@ -198,20 +198,20 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Account Type
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         CHECKING = :CHECKING
         SAVINGS = :SAVINGS
 
         finalize!
       end
 
-      # @abstract
-      #
       # Verification Method
-      class VerificationMethod < Lithic::Enum
+      module VerificationMethod
+        extend Lithic::Enum
+
         EXTERNALLY_VERIFIED = :EXTERNALLY_VERIFIED
 
         finalize!

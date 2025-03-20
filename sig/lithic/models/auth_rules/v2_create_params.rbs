@@ -58,13 +58,17 @@ module Lithic
           Lithic::Models::AuthRules::ConditionalBlockParameters
           | Lithic::Models::AuthRules::VelocityLimitParams
 
-        class Parameters < Lithic::Union
+        module Parameters
+          extend Lithic::Union
+
           def self.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
         end
 
         type type_ = :CONDITIONAL_BLOCK | :VELOCITY_LIMIT
 
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
           VELOCITY_LIMIT: :VELOCITY_LIMIT
 

@@ -27,7 +27,7 @@ module Lithic
               end_: Time,
               ending_before: String,
               institution_id: String,
-              network: Symbol,
+              network: Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol,
               page_size: Integer,
               report_date: Date,
               report_date_begin: Date,

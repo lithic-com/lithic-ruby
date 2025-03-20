@@ -3,7 +3,9 @@ module Lithic
     module ThreeDS
       type challenge_result = :APPROVE | :DECLINE_BY_CUSTOMER
 
-      class ChallengeResult < Lithic::Enum
+      module ChallengeResult
+        extend Lithic::Enum
+
         APPROVE: :APPROVE
         DECLINE_BY_CUSTOMER: :DECLINE_BY_CUSTOMER
 

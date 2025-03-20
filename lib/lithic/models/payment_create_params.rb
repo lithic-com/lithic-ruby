@@ -96,8 +96,9 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      class Method < Lithic::Enum
+      module Method
+        extend Lithic::Enum
+
         ACH_NEXT_DAY = :ACH_NEXT_DAY
         ACH_SAME_DAY = :ACH_SAME_DAY
 
@@ -117,8 +118,9 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        class SecCode < Lithic::Enum
+        module SecCode
+          extend Lithic::Enum
+
           CCD = :CCD
           PPD = :PPD
           WEB = :WEB
@@ -127,8 +129,9 @@ module Lithic
         end
       end
 
-      # @abstract
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         COLLECTION = :COLLECTION
         PAYMENT = :PAYMENT
 

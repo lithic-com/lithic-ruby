@@ -24,7 +24,9 @@ module Lithic
 
       type result = :APPROVED | :DECLINED
 
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 

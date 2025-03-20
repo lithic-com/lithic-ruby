@@ -47,7 +47,9 @@ module Lithic
         | :STANDARD
         | :STANDARD_WITH_TRACKING
 
-      class ShippingMethod < Lithic::Enum
+      module ShippingMethod
+        extend Lithic::Enum
+
         NUMBER_2_DAY: :"2-DAY"
         EXPEDITED: :EXPEDITED
         EXPRESS: :EXPRESS

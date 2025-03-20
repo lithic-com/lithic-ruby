@@ -33,11 +33,14 @@ module Lithic
       end
 
       # Book Transfer category to be returned.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::BookTransferListParams::Category::OrSymbol)) }
       def category
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::BookTransferListParams::Category::OrSymbol)
+          .returns(Lithic::Models::BookTransferListParams::Category::OrSymbol)
+      end
       def category=(_)
       end
 
@@ -81,11 +84,14 @@ module Lithic
       end
 
       # Book transfer result to be returned.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::BookTransferListParams::Result::OrSymbol)) }
       def result
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::BookTransferListParams::Result::OrSymbol)
+          .returns(Lithic::Models::BookTransferListParams::Result::OrSymbol)
+      end
       def result=(_)
       end
 
@@ -100,11 +106,14 @@ module Lithic
       end
 
       # Book transfer status to be returned.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::BookTransferListParams::Status::OrSymbol)) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::BookTransferListParams::Status::OrSymbol)
+          .returns(Lithic::Models::BookTransferListParams::Status::OrSymbol)
+      end
       def status=(_)
       end
 
@@ -113,14 +122,14 @@ module Lithic
           account_token: String,
           begin_: Time,
           business_account_token: String,
-          category: Symbol,
+          category: Lithic::Models::BookTransferListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
-          result: Symbol,
+          result: Lithic::Models::BookTransferListParams::Result::OrSymbol,
           starting_after: String,
-          status: Symbol,
+          status: Lithic::Models::BookTransferListParams::Status::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -148,14 +157,14 @@ module Lithic
               account_token: String,
               begin_: Time,
               business_account_token: String,
-              category: Symbol,
+              category: Lithic::Models::BookTransferListParams::Category::OrSymbol,
               end_: Time,
               ending_before: String,
               financial_account_token: String,
               page_size: Integer,
-              result: Symbol,
+              result: Lithic::Models::BookTransferListParams::Result::OrSymbol,
               starting_after: String,
-              status: Symbol,
+              status: Lithic::Models::BookTransferListParams::Status::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -164,38 +173,42 @@ module Lithic
       end
 
       # Book Transfer category to be returned.
-      class Category < Lithic::Enum
-        abstract!
+      module Category
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferListParams::Category) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferListParams::Category::TaggedSymbol) }
 
-        BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
-        FEE = :FEE
-        REWARD = :REWARD
-        ADJUSTMENT = :ADJUSTMENT
-        DERECOGNITION = :DERECOGNITION
-        DISPUTE = :DISPUTE
-        INTERNAL = :INTERNAL
+        BALANCE_OR_FUNDING =
+          T.let(:BALANCE_OR_FUNDING, Lithic::Models::BookTransferListParams::Category::OrSymbol)
+        FEE = T.let(:FEE, Lithic::Models::BookTransferListParams::Category::OrSymbol)
+        REWARD = T.let(:REWARD, Lithic::Models::BookTransferListParams::Category::OrSymbol)
+        ADJUSTMENT = T.let(:ADJUSTMENT, Lithic::Models::BookTransferListParams::Category::OrSymbol)
+        DERECOGNITION = T.let(:DERECOGNITION, Lithic::Models::BookTransferListParams::Category::OrSymbol)
+        DISPUTE = T.let(:DISPUTE, Lithic::Models::BookTransferListParams::Category::OrSymbol)
+        INTERNAL = T.let(:INTERNAL, Lithic::Models::BookTransferListParams::Category::OrSymbol)
       end
 
       # Book transfer result to be returned.
-      class Result < Lithic::Enum
-        abstract!
+      module Result
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferListParams::Result) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferListParams::Result::TaggedSymbol) }
 
-        APPROVED = :APPROVED
-        DECLINED = :DECLINED
+        APPROVED = T.let(:APPROVED, Lithic::Models::BookTransferListParams::Result::OrSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferListParams::Result::OrSymbol)
       end
 
       # Book transfer status to be returned.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferListParams::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferListParams::Status::TaggedSymbol) }
 
-        DECLINED = :DECLINED
-        SETTLED = :SETTLED
+        DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferListParams::Status::OrSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::BookTransferListParams::Status::OrSymbol)
       end
     end
   end

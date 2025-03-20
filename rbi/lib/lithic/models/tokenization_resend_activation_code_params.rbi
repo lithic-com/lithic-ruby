@@ -9,17 +9,20 @@ module Lithic
       # The communication method that the user has selected to use to receive the
       #   authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
       #   = "EMAIL_TO_CARDHOLDER_ADDRESS"
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol)) }
       def activation_method_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol)
+          .returns(Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol)
+      end
       def activation_method_type=(_)
       end
 
       sig do
         params(
-          activation_method_type: Symbol,
+          activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -27,20 +30,39 @@ module Lithic
       def self.new(activation_method_type: nil, request_options: {})
       end
 
-      sig { override.returns({activation_method_type: Symbol, request_options: Lithic::RequestOptions}) }
+      sig do
+        override
+          .returns(
+            {
+              activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol,
+              request_options: Lithic::RequestOptions
+            }
+          )
+      end
       def to_hash
       end
 
       # The communication method that the user has selected to use to receive the
       #   authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
       #   = "EMAIL_TO_CARDHOLDER_ADDRESS"
-      class ActivationMethodType < Lithic::Enum
-        abstract!
+      module ActivationMethodType
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::TaggedSymbol) }
 
-        EMAIL_TO_CARDHOLDER_ADDRESS = :EMAIL_TO_CARDHOLDER_ADDRESS
-        TEXT_TO_CARDHOLDER_NUMBER = :TEXT_TO_CARDHOLDER_NUMBER
+        EMAIL_TO_CARDHOLDER_ADDRESS =
+          T.let(
+            :EMAIL_TO_CARDHOLDER_ADDRESS,
+            Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol
+          )
+        TEXT_TO_CARDHOLDER_NUMBER =
+          T.let(
+            :TEXT_TO_CARDHOLDER_NUMBER,
+            Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol
+          )
       end
     end
   end

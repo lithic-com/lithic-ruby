@@ -40,11 +40,14 @@ module Lithic
       end
 
       # Type of financial account.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Balance::FinancialAccountType::TaggedSymbol) }
       def financial_account_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::Balance::FinancialAccountType::TaggedSymbol)
+          .returns(Lithic::Models::Balance::FinancialAccountType::TaggedSymbol)
+      end
       def financial_account_type=(_)
       end
 
@@ -104,7 +107,7 @@ module Lithic
           created: Time,
           currency: String,
           financial_account_token: String,
-          financial_account_type: Symbol,
+          financial_account_type: Lithic::Models::Balance::FinancialAccountType::TaggedSymbol,
           last_transaction_event_token: String,
           last_transaction_token: String,
           pending_amount: Integer,
@@ -135,7 +138,7 @@ module Lithic
               created: Time,
               currency: String,
               financial_account_token: String,
-              financial_account_type: Symbol,
+              financial_account_type: Lithic::Models::Balance::FinancialAccountType::TaggedSymbol,
               last_transaction_event_token: String,
               last_transaction_token: String,
               pending_amount: Integer,
@@ -148,14 +151,15 @@ module Lithic
       end
 
       # Type of financial account.
-      class FinancialAccountType < Lithic::Enum
-        abstract!
+      module FinancialAccountType
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Balance::FinancialAccountType) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Balance::FinancialAccountType::TaggedSymbol) }
 
-        ISSUING = :ISSUING
-        OPERATING = :OPERATING
-        RESERVE = :RESERVE
+        ISSUING = T.let(:ISSUING, Lithic::Models::Balance::FinancialAccountType::TaggedSymbol)
+        OPERATING = T.let(:OPERATING, Lithic::Models::Balance::FinancialAccountType::TaggedSymbol)
+        RESERVE = T.let(:RESERVE, Lithic::Models::Balance::FinancialAccountType::TaggedSymbol)
       end
     end
   end

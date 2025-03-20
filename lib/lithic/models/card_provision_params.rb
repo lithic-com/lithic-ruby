@@ -102,10 +102,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Name of digital wallet provider.
-      class DigitalWallet < Lithic::Enum
+      module DigitalWallet
+        extend Lithic::Enum
+
         APPLE_PAY = :APPLE_PAY
         GOOGLE_PAY = :GOOGLE_PAY
         SAMSUNG_PAY = :SAMSUNG_PAY

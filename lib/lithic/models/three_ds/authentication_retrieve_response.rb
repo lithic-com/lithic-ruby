@@ -228,11 +228,11 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # Type of account/card that is being used for the transaction. Maps to EMV 3DS
         #   field `acctType`.
-        class AccountType < Lithic::Enum
+        module AccountType
+          extend Lithic::Enum
+
           CREDIT = :CREDIT
           DEBIT = :DEBIT
           NOT_APPLICABLE = :NOT_APPLICABLE
@@ -240,10 +240,10 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # Indicates the outcome of the 3DS authentication process.
-        class AuthenticationResult < Lithic::Enum
+        module AuthenticationResult
+          extend Lithic::Enum
+
           DECLINE = :DECLINE
           SUCCESS = :SUCCESS
           PENDING_CHALLENGE = :PENDING_CHALLENGE
@@ -252,11 +252,11 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # Indicates whether the expiration date provided by the cardholder during checkout
         #   matches Lithic's record of the card's expiration date.
-        class CardExpiryCheck < Lithic::Enum
+        module CardExpiryCheck
+          extend Lithic::Enum
+
           MATCH = :MATCH
           MISMATCH = :MISMATCH
           NOT_PRESENT = :NOT_PRESENT
@@ -465,10 +465,10 @@ module Lithic
           end
         end
 
-        # @abstract
-        #
         # Channel in which the authentication occurs. Maps to EMV 3DS field deviceChannel.
-        class Channel < Lithic::Enum
+        module Channel
+          extend Lithic::Enum
+
           APP_BASED = :APP_BASED
           BROWSER = :BROWSER
           THREE_DS_REQUESTOR_INITIATED = :THREE_DS_REQUESTOR_INITIATED
@@ -632,11 +632,11 @@ module Lithic
 
             # def initialize: (Hash | Lithic::BaseModel) -> void
 
-            # @abstract
-            #
             # The delivery time frame for the merchandise. Maps to EMV 3DS field
             #   deliveryTimeframe.
-            class DeliveryTimeFrame < Lithic::Enum
+            module DeliveryTimeFrame
+              extend Lithic::Enum
+
               ELECTRONIC_DELIVERY = :ELECTRONIC_DELIVERY
               OVERNIGHT_SHIPPING = :OVERNIGHT_SHIPPING
               SAME_DAY_SHIPPING = :SAME_DAY_SHIPPING
@@ -645,35 +645,35 @@ module Lithic
               finalize!
             end
 
-            # @abstract
-            #
             # Indicates whether the purchase is for merchandise that is available now or at a
             #   future date. Maps to EMV 3DS field preOrderPurchaseInd.
-            class OrderAvailability < Lithic::Enum
+            module OrderAvailability
+              extend Lithic::Enum
+
               FUTURE_AVAILABILITY = :FUTURE_AVAILABILITY
               MERCHANDISE_AVAILABLE = :MERCHANDISE_AVAILABLE
 
               finalize!
             end
 
-            # @abstract
-            #
             # Indicates whether the cardholder is reordering previously purchased merchandise.
             #   Maps to EMV 3DS field reorderItemsInd.
-            class ReorderItems < Lithic::Enum
+            module ReorderItems
+              extend Lithic::Enum
+
               FIRST_TIME_ORDERED = :FIRST_TIME_ORDERED
               REORDERED = :REORDERED
 
               finalize!
             end
 
-            # @abstract
-            #
             # Shipping method that the cardholder chose for the transaction. If purchase
             #   includes one or more item, this indicator is used for the physical goods; if the
             #   purchase only includes digital goods, this indicator is used to describe the
             #   most expensive item purchased. Maps to EMV 3DS field shipIndicator.
-            class ShippingMethod < Lithic::Enum
+            module ShippingMethod
+              extend Lithic::Enum
+
               DIGITAL_GOODS = :DIGITAL_GOODS
               LOCKER_DELIVERY = :LOCKER_DELIVERY
               OTHER = :OTHER
@@ -689,20 +689,18 @@ module Lithic
           end
         end
 
-        # @abstract
-        #
         # Either PAYMENT_AUTHENTICATION or NON_PAYMENT_AUTHENTICATION. For
         #   NON_PAYMENT_AUTHENTICATION, additional_data and transaction fields are not
         #   populated.
-        class MessageCategory < Lithic::Enum
+        module MessageCategory
+          extend Lithic::Enum
+
           NON_PAYMENT_AUTHENTICATION = :NON_PAYMENT_AUTHENTICATION
           PAYMENT_AUTHENTICATION = :PAYMENT_AUTHENTICATION
 
           finalize!
         end
 
-        # @abstract
-        #
         # Indicates whether a challenge is requested for this transaction
         #
         #   - `NO_PREFERENCE` - No Preference
@@ -713,7 +711,9 @@ module Lithic
         #     risk analysis is already performed)
         #   - `DATA_SHARE_ONLY` - No Challenge requested (Data Share Only)
         #   - `OTHER` - Other indicators not captured by above. These are rarely used
-        class ThreeDSRequestorChallengeIndicator < Lithic::Enum
+        module ThreeDSRequestorChallengeIndicator
+          extend Lithic::Enum
+
           NO_PREFERENCE = :NO_PREFERENCE
           NO_CHALLENGE_REQUESTED = :NO_CHALLENGE_REQUESTED
           CHALLENGE_PREFERENCE = :CHALLENGE_PREFERENCE
@@ -754,11 +754,11 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
-          # @abstract
-          #
           # Mastercard only: Indicates whether the network would have considered the
           #   authentication request to be low risk or not.
-          class NetworkDecision < Lithic::Enum
+          module NetworkDecision
+            extend Lithic::Enum
+
             LOW_RISK = :LOW_RISK
             NOT_LOW_RISK = :NOT_LOW_RISK
 
@@ -797,12 +797,12 @@ module Lithic
           # def initialize: (Hash | Lithic::BaseModel) -> void
         end
 
-        # @abstract
-        #
         # Type of authentication request - i.e., the type of transaction or interaction is
         #   causing the merchant to request an authentication. Maps to EMV 3DS field
         #   threeDSRequestorAuthenticationInd.
-        class AuthenticationRequestType < Lithic::Enum
+        module AuthenticationRequestType
+          extend Lithic::Enum
+
           ADD_CARD = :ADD_CARD
           BILLING_AGREEMENT = :BILLING_AGREEMENT
           DELAYED_SHIPMENT = :DELAYED_SHIPMENT
@@ -900,10 +900,10 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
-          # @abstract
-          #
           # The type of challenge method used for authentication.
-          class MethodType < Lithic::Enum
+          module MethodType
+            extend Lithic::Enum
+
             SMS_OTP = :SMS_OTP
             OUT_OF_BAND = :OUT_OF_BAND
 
@@ -911,10 +911,10 @@ module Lithic
           end
         end
 
-        # @abstract
-        #
         # Entity that orchestrates the challenge.
-        class ChallengeOrchestratedBy < Lithic::Enum
+        module ChallengeOrchestratedBy
+          extend Lithic::Enum
+
           LITHIC = :LITHIC
           CUSTOMER = :CUSTOMER
           NO_CHALLENGE = :NO_CHALLENGE
@@ -922,10 +922,10 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # Entity that made the authentication decision.
-        class DecisionMadeBy < Lithic::Enum
+        module DecisionMadeBy
+          extend Lithic::Enum
+
           CUSTOMER_ENDPOINT = :CUSTOMER_ENDPOINT
           LITHIC_DEFAULT = :LITHIC_DEFAULT
           LITHIC_RULES = :LITHIC_RULES
@@ -935,14 +935,14 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # Type of 3DS Requestor Initiated (3RI) request i.e., a 3DS authentication that
         #   takes place at the initiation of the merchant rather than the cardholder. The
         #   most common example of this is where a merchant is authenticating before billing
         #   for a recurring transaction such as a pay TV subscription or a utility bill.
         #   Maps to EMV 3DS field threeRIInd.
-        class ThreeRiRequestType < Lithic::Enum
+        module ThreeRiRequestType
+          extend Lithic::Enum
+
           ACCOUNT_VERIFICATION = :ACCOUNT_VERIFICATION
           ADD_CARD = :ADD_CARD
           BILLING_AGREEMENT = :BILLING_AGREEMENT
@@ -1014,11 +1014,11 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
-          # @abstract
-          #
           # Type of the transaction for which a 3DS authentication request is occurring.
           #   Maps to EMV 3DS field transType.
-          class Type < Lithic::Enum
+          module Type
+            extend Lithic::Enum
+
             ACCOUNT_FUNDING = :ACCOUNT_FUNDING
             CHECK_ACCEPTANCE = :CHECK_ACCEPTANCE
             GOODS_SERVICE_PURCHASE = :GOODS_SERVICE_PURCHASE

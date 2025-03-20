@@ -107,10 +107,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Returns cards with the specified state.
-      class State < Lithic::Enum
+      module State
+        extend Lithic::Enum
+
         CLOSED = :CLOSED
         OPEN = :OPEN
         PAUSED = :PAUSED

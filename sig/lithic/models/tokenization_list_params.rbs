@@ -67,7 +67,9 @@ module Lithic
 
       type tokenization_channel = :DIGITAL_WALLET | :MERCHANT | :ALL
 
-      class TokenizationChannel < Lithic::Enum
+      module TokenizationChannel
+        extend Lithic::Enum
+
         DIGITAL_WALLET: :DIGITAL_WALLET
         MERCHANT: :MERCHANT
         ALL: :ALL

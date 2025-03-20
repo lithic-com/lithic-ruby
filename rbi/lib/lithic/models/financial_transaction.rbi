@@ -19,11 +19,14 @@ module Lithic
       #   - `INTERNAL` - Transaction for internal adjustment.
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #     program.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::FinancialTransaction::Category::TaggedSymbol) }
       def category
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
+          .returns(Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
+      end
       def category=(_)
       end
 
@@ -81,11 +84,14 @@ module Lithic
 
       # APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::FinancialTransaction::Result::TaggedSymbol) }
       def result
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::FinancialTransaction::Result::TaggedSymbol)
+          .returns(Lithic::Models::FinancialTransaction::Result::TaggedSymbol)
+      end
       def result=(_)
       end
 
@@ -108,11 +114,14 @@ module Lithic
       #   - `RETURNED` - The transaction has been returned.
       #   - `SETTLED` - The transaction is completed.
       #   - `VOIDED` - The transaction was voided. Card transaction only.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::FinancialTransaction::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
+          .returns(Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -128,15 +137,15 @@ module Lithic
       sig do
         params(
           token: String,
-          category: Symbol,
+          category: Lithic::Models::FinancialTransaction::Category::TaggedSymbol,
           created: Time,
           currency: String,
           descriptor: String,
           events: T::Array[Lithic::Models::FinancialTransaction::Event],
           pending_amount: Integer,
-          result: Symbol,
+          result: Lithic::Models::FinancialTransaction::Result::TaggedSymbol,
           settled_amount: Integer,
-          status: Symbol,
+          status: Lithic::Models::FinancialTransaction::Status::TaggedSymbol,
           updated: Time
         )
           .returns(T.attached_class)
@@ -161,15 +170,15 @@ module Lithic
           .returns(
             {
               token: String,
-              category: Symbol,
+              category: Lithic::Models::FinancialTransaction::Category::TaggedSymbol,
               created: Time,
               currency: String,
               descriptor: String,
               events: T::Array[Lithic::Models::FinancialTransaction::Event],
               pending_amount: Integer,
-              result: Symbol,
+              result: Lithic::Models::FinancialTransaction::Result::TaggedSymbol,
               settled_amount: Integer,
-              status: Symbol,
+              status: Lithic::Models::FinancialTransaction::Status::TaggedSymbol,
               updated: Time
             }
           )
@@ -184,15 +193,16 @@ module Lithic
       #   - `INTERNAL` - Transaction for internal adjustment.
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #     program.
-      class Category < Lithic::Enum
-        abstract!
+      module Category
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Category) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::FinancialTransaction::Category::TaggedSymbol) }
 
-        ACH = :ACH
-        CARD = :CARD
-        INTERNAL = :INTERNAL
-        TRANSFER = :TRANSFER
+        ACH = T.let(:ACH, Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
+        CARD = T.let(:CARD, Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
+        INTERNAL = T.let(:INTERNAL, Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
+        TRANSFER = T.let(:TRANSFER, Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
       end
 
       class Event < Lithic::BaseModel
@@ -226,127 +236,207 @@ module Lithic
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol)) }
         def result
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol)
+            .returns(Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol)
+        end
         def result=(_)
         end
 
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+            .returns(Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
         sig do
-          params(token: String, amount: Integer, created: Time, result: Symbol, type: Symbol)
+          params(
+            token: String,
+            amount: Integer,
+            created: Time,
+            result: Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol,
+            type: Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol
+          )
             .returns(T.attached_class)
         end
         def self.new(token: nil, amount: nil, created: nil, result: nil, type: nil)
         end
 
         sig do
-          override.returns({token: String, amount: Integer, created: Time, result: Symbol, type: Symbol})
+          override
+            .returns(
+              {
+                token: String,
+                amount: Integer,
+                created: Time,
+                result: Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol,
+                type: Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol
+              }
+            )
         end
         def to_hash
         end
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
-        class Result < Lithic::Enum
-          abstract!
+        module Result
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Event::Result) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol) }
 
-          APPROVED = :APPROVED
-          DECLINED = :DECLINED
+          APPROVED = T.let(:APPROVED, Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol)
+          DECLINED = T.let(:DECLINED, Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol)
         end
 
-        class Type < Lithic::Enum
-          abstract!
+        module Type
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Event::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol) }
 
-          ACH_ORIGINATION_CANCELLED = :ACH_ORIGINATION_CANCELLED
-          ACH_ORIGINATION_INITIATED = :ACH_ORIGINATION_INITIATED
-          ACH_ORIGINATION_PROCESSED = :ACH_ORIGINATION_PROCESSED
-          ACH_ORIGINATION_RELEASED = :ACH_ORIGINATION_RELEASED
-          ACH_ORIGINATION_REVIEWED = :ACH_ORIGINATION_REVIEWED
-          ACH_ORIGINATION_SETTLED = :ACH_ORIGINATION_SETTLED
-          ACH_RECEIPT_PROCESSED = :ACH_RECEIPT_PROCESSED
-          ACH_RECEIPT_SETTLED = :ACH_RECEIPT_SETTLED
-          ACH_RETURN_INITIATED = :ACH_RETURN_INITIATED
-          ACH_RETURN_PROCESSED = :ACH_RETURN_PROCESSED
-          ACH_RETURN_SETTLED = :ACH_RETURN_SETTLED
-          AUTHORIZATION = :AUTHORIZATION
-          AUTHORIZATION_ADVICE = :AUTHORIZATION_ADVICE
-          AUTHORIZATION_EXPIRY = :AUTHORIZATION_EXPIRY
-          AUTHORIZATION_REVERSAL = :AUTHORIZATION_REVERSAL
-          BALANCE_INQUIRY = :BALANCE_INQUIRY
-          BILLING_ERROR = :BILLING_ERROR
-          BILLING_ERROR_REVERSAL = :BILLING_ERROR_REVERSAL
-          CARD_TO_CARD = :CARD_TO_CARD
-          CASH_BACK = :CASH_BACK
-          CASH_BACK_REVERSAL = :CASH_BACK_REVERSAL
-          CLEARING = :CLEARING
-          CORRECTION_CREDIT = :CORRECTION_CREDIT
-          CORRECTION_DEBIT = :CORRECTION_DEBIT
-          CREDIT_AUTHORIZATION = :CREDIT_AUTHORIZATION
-          CREDIT_AUTHORIZATION_ADVICE = :CREDIT_AUTHORIZATION_ADVICE
-          CURRENCY_CONVERSION = :CURRENCY_CONVERSION
-          CURRENCY_CONVERSION_REVERSAL = :CURRENCY_CONVERSION_REVERSAL
-          DISPUTE_WON = :DISPUTE_WON
-          EXTERNAL_ACH_CANCELED = :EXTERNAL_ACH_CANCELED
-          EXTERNAL_ACH_INITIATED = :EXTERNAL_ACH_INITIATED
-          EXTERNAL_ACH_RELEASED = :EXTERNAL_ACH_RELEASED
-          EXTERNAL_ACH_REVERSED = :EXTERNAL_ACH_REVERSED
-          EXTERNAL_ACH_SETTLED = :EXTERNAL_ACH_SETTLED
-          EXTERNAL_CHECK_CANCELED = :EXTERNAL_CHECK_CANCELED
-          EXTERNAL_CHECK_INITIATED = :EXTERNAL_CHECK_INITIATED
-          EXTERNAL_CHECK_RELEASED = :EXTERNAL_CHECK_RELEASED
-          EXTERNAL_CHECK_REVERSED = :EXTERNAL_CHECK_REVERSED
-          EXTERNAL_CHECK_SETTLED = :EXTERNAL_CHECK_SETTLED
-          EXTERNAL_TRANSFER_CANCELED = :EXTERNAL_TRANSFER_CANCELED
-          EXTERNAL_TRANSFER_INITIATED = :EXTERNAL_TRANSFER_INITIATED
-          EXTERNAL_TRANSFER_RELEASED = :EXTERNAL_TRANSFER_RELEASED
-          EXTERNAL_TRANSFER_REVERSED = :EXTERNAL_TRANSFER_REVERSED
-          EXTERNAL_TRANSFER_SETTLED = :EXTERNAL_TRANSFER_SETTLED
-          EXTERNAL_WIRE_CANCELED = :EXTERNAL_WIRE_CANCELED
-          EXTERNAL_WIRE_INITIATED = :EXTERNAL_WIRE_INITIATED
-          EXTERNAL_WIRE_RELEASED = :EXTERNAL_WIRE_RELEASED
-          EXTERNAL_WIRE_REVERSED = :EXTERNAL_WIRE_REVERSED
-          EXTERNAL_WIRE_SETTLED = :EXTERNAL_WIRE_SETTLED
-          FINANCIAL_AUTHORIZATION = :FINANCIAL_AUTHORIZATION
-          FINANCIAL_CREDIT_AUTHORIZATION = :FINANCIAL_CREDIT_AUTHORIZATION
-          INTEREST = :INTEREST
-          INTEREST_REVERSAL = :INTEREST_REVERSAL
-          INTERNAL_ADJUSTMENT = :INTERNAL_ADJUSTMENT
-          LATE_PAYMENT = :LATE_PAYMENT
-          LATE_PAYMENT_REVERSAL = :LATE_PAYMENT_REVERSAL
-          PROVISIONAL_CREDIT = :PROVISIONAL_CREDIT
-          PROVISIONAL_CREDIT_REVERSAL = :PROVISIONAL_CREDIT_REVERSAL
-          RETURN = :RETURN
-          RETURN_REVERSAL = :RETURN_REVERSAL
-          TRANSFER = :TRANSFER
-          TRANSFER_INSUFFICIENT_FUNDS = :TRANSFER_INSUFFICIENT_FUNDS
-          RETURNED_PAYMENT = :RETURNED_PAYMENT
-          RETURNED_PAYMENT_REVERSAL = :RETURNED_PAYMENT_REVERSAL
+          ACH_ORIGINATION_CANCELLED =
+            T.let(:ACH_ORIGINATION_CANCELLED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          ACH_ORIGINATION_INITIATED =
+            T.let(:ACH_ORIGINATION_INITIATED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          ACH_ORIGINATION_PROCESSED =
+            T.let(:ACH_ORIGINATION_PROCESSED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          ACH_ORIGINATION_RELEASED =
+            T.let(:ACH_ORIGINATION_RELEASED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          ACH_ORIGINATION_REVIEWED =
+            T.let(:ACH_ORIGINATION_REVIEWED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          ACH_ORIGINATION_SETTLED =
+            T.let(:ACH_ORIGINATION_SETTLED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          ACH_RECEIPT_PROCESSED =
+            T.let(:ACH_RECEIPT_PROCESSED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          ACH_RECEIPT_SETTLED =
+            T.let(:ACH_RECEIPT_SETTLED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          ACH_RETURN_INITIATED =
+            T.let(:ACH_RETURN_INITIATED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          ACH_RETURN_PROCESSED =
+            T.let(:ACH_RETURN_PROCESSED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          ACH_RETURN_SETTLED =
+            T.let(:ACH_RETURN_SETTLED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          AUTHORIZATION = T.let(:AUTHORIZATION, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          AUTHORIZATION_ADVICE =
+            T.let(:AUTHORIZATION_ADVICE, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          AUTHORIZATION_EXPIRY =
+            T.let(:AUTHORIZATION_EXPIRY, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          AUTHORIZATION_REVERSAL =
+            T.let(:AUTHORIZATION_REVERSAL, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          BALANCE_INQUIRY =
+            T.let(:BALANCE_INQUIRY, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          BILLING_ERROR = T.let(:BILLING_ERROR, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          BILLING_ERROR_REVERSAL =
+            T.let(:BILLING_ERROR_REVERSAL, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          CARD_TO_CARD = T.let(:CARD_TO_CARD, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          CASH_BACK = T.let(:CASH_BACK, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          CASH_BACK_REVERSAL =
+            T.let(:CASH_BACK_REVERSAL, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          CLEARING = T.let(:CLEARING, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          CORRECTION_CREDIT =
+            T.let(:CORRECTION_CREDIT, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          CORRECTION_DEBIT =
+            T.let(:CORRECTION_DEBIT, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          CREDIT_AUTHORIZATION =
+            T.let(:CREDIT_AUTHORIZATION, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          CREDIT_AUTHORIZATION_ADVICE =
+            T.let(:CREDIT_AUTHORIZATION_ADVICE, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          CURRENCY_CONVERSION =
+            T.let(:CURRENCY_CONVERSION, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          CURRENCY_CONVERSION_REVERSAL =
+            T.let(:CURRENCY_CONVERSION_REVERSAL, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          DISPUTE_WON = T.let(:DISPUTE_WON, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_ACH_CANCELED =
+            T.let(:EXTERNAL_ACH_CANCELED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_ACH_INITIATED =
+            T.let(:EXTERNAL_ACH_INITIATED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_ACH_RELEASED =
+            T.let(:EXTERNAL_ACH_RELEASED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_ACH_REVERSED =
+            T.let(:EXTERNAL_ACH_REVERSED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_ACH_SETTLED =
+            T.let(:EXTERNAL_ACH_SETTLED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_CHECK_CANCELED =
+            T.let(:EXTERNAL_CHECK_CANCELED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_CHECK_INITIATED =
+            T.let(:EXTERNAL_CHECK_INITIATED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_CHECK_RELEASED =
+            T.let(:EXTERNAL_CHECK_RELEASED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_CHECK_REVERSED =
+            T.let(:EXTERNAL_CHECK_REVERSED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_CHECK_SETTLED =
+            T.let(:EXTERNAL_CHECK_SETTLED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_TRANSFER_CANCELED =
+            T.let(:EXTERNAL_TRANSFER_CANCELED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_TRANSFER_INITIATED =
+            T.let(:EXTERNAL_TRANSFER_INITIATED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_TRANSFER_RELEASED =
+            T.let(:EXTERNAL_TRANSFER_RELEASED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_TRANSFER_REVERSED =
+            T.let(:EXTERNAL_TRANSFER_REVERSED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_TRANSFER_SETTLED =
+            T.let(:EXTERNAL_TRANSFER_SETTLED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_WIRE_CANCELED =
+            T.let(:EXTERNAL_WIRE_CANCELED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_WIRE_INITIATED =
+            T.let(:EXTERNAL_WIRE_INITIATED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_WIRE_RELEASED =
+            T.let(:EXTERNAL_WIRE_RELEASED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_WIRE_REVERSED =
+            T.let(:EXTERNAL_WIRE_REVERSED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          EXTERNAL_WIRE_SETTLED =
+            T.let(:EXTERNAL_WIRE_SETTLED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          FINANCIAL_AUTHORIZATION =
+            T.let(:FINANCIAL_AUTHORIZATION, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          FINANCIAL_CREDIT_AUTHORIZATION =
+            T.let(:FINANCIAL_CREDIT_AUTHORIZATION, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          INTEREST = T.let(:INTEREST, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          INTEREST_REVERSAL =
+            T.let(:INTEREST_REVERSAL, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          INTERNAL_ADJUSTMENT =
+            T.let(:INTERNAL_ADJUSTMENT, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          LATE_PAYMENT = T.let(:LATE_PAYMENT, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          LATE_PAYMENT_REVERSAL =
+            T.let(:LATE_PAYMENT_REVERSAL, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          PROVISIONAL_CREDIT =
+            T.let(:PROVISIONAL_CREDIT, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          PROVISIONAL_CREDIT_REVERSAL =
+            T.let(:PROVISIONAL_CREDIT_REVERSAL, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          RETURN = T.let(:RETURN, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          RETURN_REVERSAL =
+            T.let(:RETURN_REVERSAL, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          TRANSFER = T.let(:TRANSFER, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          TRANSFER_INSUFFICIENT_FUNDS =
+            T.let(:TRANSFER_INSUFFICIENT_FUNDS, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          RETURNED_PAYMENT =
+            T.let(:RETURNED_PAYMENT, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          RETURNED_PAYMENT_REVERSAL =
+            T.let(:RETURNED_PAYMENT_REVERSAL, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
         end
       end
 
       # APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
-      class Result < Lithic::Enum
-        abstract!
+      module Result
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Result) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::FinancialTransaction::Result::TaggedSymbol) }
 
-        APPROVED = :APPROVED
-        DECLINED = :DECLINED
+        APPROVED = T.let(:APPROVED, Lithic::Models::FinancialTransaction::Result::TaggedSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::FinancialTransaction::Result::TaggedSymbol)
       end
 
       # Status types:
@@ -358,17 +448,18 @@ module Lithic
       #   - `RETURNED` - The transaction has been returned.
       #   - `SETTLED` - The transaction is completed.
       #   - `VOIDED` - The transaction was voided. Card transaction only.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::FinancialTransaction::Status::TaggedSymbol) }
 
-        DECLINED = :DECLINED
-        EXPIRED = :EXPIRED
-        PENDING = :PENDING
-        RETURNED = :RETURNED
-        SETTLED = :SETTLED
-        VOIDED = :VOIDED
+        DECLINED = T.let(:DECLINED, Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
+        EXPIRED = T.let(:EXPIRED, Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
+        PENDING = T.let(:PENDING, Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
+        RETURNED = T.let(:RETURNED, Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
+        VOIDED = T.let(:VOIDED, Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
       end
     end
   end

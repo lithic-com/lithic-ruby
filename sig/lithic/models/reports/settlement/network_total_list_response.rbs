@@ -89,7 +89,9 @@ module Lithic
 
           type network = :VISA | :MASTERCARD | :MAESTRO | :INTERLINK
 
-          class Network < Lithic::Enum
+          module Network
+            extend Lithic::Enum
+
             VISA: :VISA
             MASTERCARD: :MASTERCARD
             MAESTRO: :MAESTRO

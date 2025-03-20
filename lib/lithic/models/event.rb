@@ -68,8 +68,6 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Event types:
       #
       #   - `account_holder.created` - Notification that a new account holder has been
@@ -99,7 +97,9 @@ module Lithic
       #     wallet has been sent to the end user.
       #   - `digital_wallet.tokenization_updated` - Notification that a digital wallet
       #     tokenization's status has changed.
-      class EventType < Lithic::Enum
+      module EventType
+        extend Lithic::Enum
+
         ACCOUNT_HOLDER_CREATED = :"account_holder.created"
         ACCOUNT_HOLDER_UPDATED = :"account_holder.updated"
         ACCOUNT_HOLDER_VERIFICATION = :"account_holder.verification"

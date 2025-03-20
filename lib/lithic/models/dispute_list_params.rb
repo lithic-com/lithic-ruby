@@ -107,10 +107,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # List disputes of a specific status.
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         ARBITRATION = :ARBITRATION
         CASE_CLOSED = :CASE_CLOSED
         CASE_WON = :CASE_WON

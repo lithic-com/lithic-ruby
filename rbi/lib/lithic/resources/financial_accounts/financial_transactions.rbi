@@ -27,12 +27,12 @@ module Lithic
           params(
             financial_account_token: String,
             begin_: Time,
-            category: Symbol,
+            category: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::OrSymbol,
             end_: Time,
             ending_before: String,
-            result: Symbol,
+            result: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::OrSymbol,
             starting_after: String,
-            status: Symbol,
+            status: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::OrSymbol,
             request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Lithic::SinglePage[Lithic::Models::FinancialTransaction])

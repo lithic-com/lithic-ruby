@@ -7,13 +7,13 @@ module Lithic
       sig do
         params(
           amount: Integer,
-          category: Symbol,
+          category: Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol,
           effective_date: Date,
           financial_account_token: String,
-          payment_type: Symbol,
+          payment_type: Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol,
           token: String,
           memo: String,
-          progress_to: Symbol,
+          progress_to: Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol,
           user_defined_id: String,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
@@ -53,14 +53,14 @@ module Lithic
         params(
           begin_: Time,
           business_account_token: String,
-          category: Symbol,
+          category: Lithic::Models::ExternalPaymentListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
-          result: Symbol,
+          result: Lithic::Models::ExternalPaymentListParams::Result::OrSymbol,
           starting_after: String,
-          status: Symbol,
+          status: Lithic::Models::ExternalPaymentListParams::Status::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::CursorPage[Lithic::Models::ExternalPayment])
@@ -157,7 +157,7 @@ module Lithic
           external_payment_token: String,
           effective_date: Date,
           memo: String,
-          progress_to: Symbol,
+          progress_to: Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::Models::ExternalPayment)

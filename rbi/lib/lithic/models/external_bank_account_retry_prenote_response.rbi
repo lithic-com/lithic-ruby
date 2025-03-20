@@ -65,11 +65,11 @@ module Lithic
       end
 
       # Owner Type
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::OwnerType::TaggedSymbol) }
       def owner_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig { params(_: Lithic::Models::OwnerType::TaggedSymbol).returns(Lithic::Models::OwnerType::TaggedSymbol) }
       def owner_type=(_)
       end
 
@@ -83,20 +83,26 @@ module Lithic
       end
 
       # Account State
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol) }
       def state
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol)
+          .returns(Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol)
+      end
       def state=(_)
       end
 
       # Account Type
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol)
+          .returns(Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -110,20 +116,26 @@ module Lithic
       end
 
       # Verification Method
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::VerificationMethod::TaggedSymbol) }
       def verification_method
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::VerificationMethod::TaggedSymbol)
+          .returns(Lithic::Models::VerificationMethod::TaggedSymbol)
+      end
       def verification_method=(_)
       end
 
       # Verification State
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol) }
       def verification_state
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol)
+          .returns(Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol)
+      end
       def verification_state=(_)
       end
 
@@ -220,13 +232,13 @@ module Lithic
           currency: String,
           last_four: String,
           owner: String,
-          owner_type: Symbol,
+          owner_type: Lithic::Models::OwnerType::TaggedSymbol,
           routing_number: String,
-          state: Symbol,
-          type: Symbol,
+          state: Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol,
+          type: Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol,
           verification_attempts: Integer,
-          verification_method: Symbol,
-          verification_state: Symbol,
+          verification_method: Lithic::Models::VerificationMethod::TaggedSymbol,
+          verification_state: Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol,
           account_token: String,
           address: Lithic::Models::ExternalBankAccountAddress,
           company_id: String,
@@ -275,13 +287,13 @@ module Lithic
               currency: String,
               last_four: String,
               owner: String,
-              owner_type: Symbol,
+              owner_type: Lithic::Models::OwnerType::TaggedSymbol,
               routing_number: String,
-              state: Symbol,
-              type: Symbol,
+              state: Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol,
+              type: Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol,
               verification_attempts: Integer,
-              verification_method: Symbol,
-              verification_state: Symbol,
+              verification_method: Lithic::Models::VerificationMethod::TaggedSymbol,
+              verification_state: Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol,
               account_token: String,
               address: Lithic::Models::ExternalBankAccountAddress,
               company_id: String,
@@ -298,36 +310,55 @@ module Lithic
       end
 
       # Account State
-      class State < Lithic::Enum
-        abstract!
+      module State
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol) }
 
-        ENABLED = :ENABLED
-        CLOSED = :CLOSED
-        PAUSED = :PAUSED
+        ENABLED = T.let(:ENABLED, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol)
+        CLOSED = T.let(:CLOSED, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol)
       end
 
       # Account Type
-      class Type < Lithic::Enum
-        abstract!
+      module Type
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol) }
 
-        CHECKING = :CHECKING
-        SAVINGS = :SAVINGS
+        CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol)
+        SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol)
       end
 
       # Verification State
-      class VerificationState < Lithic::Enum
-        abstract!
+      module VerificationState
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol) }
 
-        PENDING = :PENDING
-        ENABLED = :ENABLED
-        FAILED_VERIFICATION = :FAILED_VERIFICATION
-        INSUFFICIENT_FUNDS = :INSUFFICIENT_FUNDS
+        PENDING =
+          T.let(:PENDING, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol)
+        ENABLED =
+          T.let(:ENABLED, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol)
+        FAILED_VERIFICATION =
+          T.let(
+            :FAILED_VERIFICATION,
+            Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol
+          )
+        INSUFFICIENT_FUNDS =
+          T.let(
+            :INSUFFICIENT_FUNDS,
+            Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol
+          )
       end
     end
   end

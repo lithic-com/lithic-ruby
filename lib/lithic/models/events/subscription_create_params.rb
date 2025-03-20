@@ -57,8 +57,9 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        class EventType < Lithic::Enum
+        module EventType
+          extend Lithic::Enum
+
           ACCOUNT_HOLDER_CREATED = :"account_holder.created"
           ACCOUNT_HOLDER_UPDATED = :"account_holder.updated"
           ACCOUNT_HOLDER_VERIFICATION = :"account_holder.verification"

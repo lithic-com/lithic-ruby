@@ -48,14 +48,14 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`.
       #
       #   - `AUTHORIZATION_EXPIRY` indicates authorization has expired and been reversed
       #     by Lithic.
       #   - `AUTHORIZATION_REVERSAL` indicates authorization was reversed by the merchant.
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         AUTHORIZATION_EXPIRY = :AUTHORIZATION_EXPIRY
         AUTHORIZATION_REVERSAL = :AUTHORIZATION_REVERSAL
 

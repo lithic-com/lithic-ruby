@@ -80,10 +80,10 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # The operation to apply to the attribute
-        class Operation < Lithic::Enum
+        module Operation
+          extend Lithic::Enum
+
           IS_ONE_OF = :IS_ONE_OF
           IS_NOT_ONE_OF = :IS_NOT_ONE_OF
           MATCHES = :MATCHES
@@ -94,10 +94,10 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
-        class Value < Lithic::Union
+        module Value
+          extend Lithic::Union
+
           StringArray = Lithic::ArrayOf[String]
 
           # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`

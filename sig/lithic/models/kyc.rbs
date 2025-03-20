@@ -75,7 +75,9 @@ module Lithic
 
       type workflow = :KYC_BASIC | :KYC_BYO
 
-      class Workflow < Lithic::Enum
+      module Workflow
+        extend Lithic::Enum
+
         KYC_BASIC: :KYC_BASIC
         KYC_BYO: :KYC_BYO
 

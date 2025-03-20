@@ -3,13 +3,14 @@
 module Lithic
   module Models
     # Type of account financial account
-    class AccountFinancialAccountType < Lithic::Enum
-      abstract!
+    module AccountFinancialAccountType
+      extend Lithic::Enum
 
-      Value = type_template(:out) { {fixed: Symbol} }
+      TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountFinancialAccountType) }
+      OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AccountFinancialAccountType::TaggedSymbol) }
 
-      ISSUING = :ISSUING
-      OPERATING = :OPERATING
+      ISSUING = T.let(:ISSUING, Lithic::Models::AccountFinancialAccountType::OrSymbol)
+      OPERATING = T.let(:OPERATING, Lithic::Models::AccountFinancialAccountType::OrSymbol)
     end
   end
 end

@@ -53,10 +53,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Receipt Type
-      class ReceiptType < Lithic::Enum
+      module ReceiptType
+        extend Lithic::Enum
+
         RECEIPT_CREDIT = :RECEIPT_CREDIT
         RECEIPT_DEBIT = :RECEIPT_DEBIT
 

@@ -62,7 +62,9 @@ module Lithic
       type state =
         :CLOSED | :OPEN | :PAUSED | :PENDING_ACTIVATION | :PENDING_FULFILLMENT
 
-      class State < Lithic::Enum
+      module State
+        extend Lithic::Enum
+
         CLOSED: :CLOSED
         OPEN: :OPEN
         PAUSED: :PAUSED

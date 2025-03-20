@@ -190,10 +190,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Card network where the transaction took place.
-      class Network < Lithic::Enum
+      module Network
+        extend Lithic::Enum
+
         INTERLINK = :INTERLINK
         MAESTRO = :MAESTRO
         MASTERCARD = :MASTERCARD
@@ -223,10 +223,10 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # The type of settlement record.
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         ADJUSTMENT = :ADJUSTMENT
         ARBITRATION = :ARBITRATION
         CHARGEBACK = :CHARGEBACK

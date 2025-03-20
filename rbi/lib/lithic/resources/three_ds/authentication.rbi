@@ -28,7 +28,7 @@ module Lithic
             merchant: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant,
             pan: String,
             transaction: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction,
-            card_expiry_check: Symbol,
+            card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
             request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Lithic::Models::ThreeDS::AuthenticationSimulateResponse)

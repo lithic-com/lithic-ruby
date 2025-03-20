@@ -41,11 +41,14 @@ module Lithic
       end
 
       # Name of digital wallet provider.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol)) }
       def digital_wallet
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol)
+          .returns(Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol)
+      end
       def digital_wallet=(_)
       end
 
@@ -76,7 +79,7 @@ module Lithic
           certificate: String,
           client_device_id: String,
           client_wallet_account_id: String,
-          digital_wallet: Symbol,
+          digital_wallet: Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol,
           nonce: String,
           nonce_signature: String,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
@@ -101,7 +104,7 @@ module Lithic
               certificate: String,
               client_device_id: String,
               client_wallet_account_id: String,
-              digital_wallet: Symbol,
+              digital_wallet: Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol,
               nonce: String,
               nonce_signature: String,
               request_options: Lithic::RequestOptions
@@ -112,14 +115,16 @@ module Lithic
       end
 
       # Name of digital wallet provider.
-      class DigitalWallet < Lithic::Enum
-        abstract!
+      module DigitalWallet
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardProvisionParams::DigitalWallet) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol) }
 
-        APPLE_PAY = :APPLE_PAY
-        GOOGLE_PAY = :GOOGLE_PAY
-        SAMSUNG_PAY = :SAMSUNG_PAY
+        APPLE_PAY = T.let(:APPLE_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol)
+        GOOGLE_PAY = T.let(:GOOGLE_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol)
+        SAMSUNG_PAY = T.let(:SAMSUNG_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol)
       end
     end
   end

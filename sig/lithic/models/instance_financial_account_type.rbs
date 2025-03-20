@@ -8,7 +8,9 @@ module Lithic
       | :CHARGED_OFF_INTEREST
       | :CHARGED_OFF_PRINCIPAL
 
-    class InstanceFinancialAccountType < Lithic::Enum
+    module InstanceFinancialAccountType
+      extend Lithic::Enum
+
       ISSUING: :ISSUING
       RESERVE: :RESERVE
       OPERATING: :OPERATING

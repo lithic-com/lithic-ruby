@@ -67,11 +67,14 @@ module Lithic
       #   - `2_DAY` - FedEx 2-day shipping, with tracking
       #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #     tracking
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)) }
       def shipping_method
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)
+          .returns(Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)
+      end
       def shipping_method=(_)
       end
 
@@ -82,7 +85,7 @@ module Lithic
           exp_month: String,
           exp_year: String,
           product_id: String,
-          shipping_method: Symbol,
+          shipping_method: Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -107,7 +110,7 @@ module Lithic
               exp_month: String,
               exp_year: String,
               product_id: String,
-              shipping_method: Symbol,
+              shipping_method: Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -127,17 +130,19 @@ module Lithic
       #   - `2_DAY` - FedEx 2-day shipping, with tracking
       #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #     tracking
-      class ShippingMethod < Lithic::Enum
-        abstract!
+      module ShippingMethod
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardRenewParams::ShippingMethod) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol) }
 
-        NUMBER_2_DAY = :"2-DAY"
-        EXPEDITED = :EXPEDITED
-        EXPRESS = :EXPRESS
-        PRIORITY = :PRIORITY
-        STANDARD = :STANDARD
-        STANDARD_WITH_TRACKING = :STANDARD_WITH_TRACKING
+        NUMBER_2_DAY = T.let(:"2-DAY", Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)
+        EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)
+        EXPRESS = T.let(:EXPRESS, Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)
+        PRIORITY = T.let(:PRIORITY, Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)
+        STANDARD = T.let(:STANDARD, Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)
+        STANDARD_WITH_TRACKING =
+          T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)
       end
     end
   end

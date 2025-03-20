@@ -2,7 +2,9 @@ module Lithic
   module Models
     type account_financial_account_type = :ISSUING | :OPERATING
 
-    class AccountFinancialAccountType < Lithic::Enum
+    module AccountFinancialAccountType
+      extend Lithic::Enum
+
       ISSUING: :ISSUING
       OPERATING: :OPERATING
 

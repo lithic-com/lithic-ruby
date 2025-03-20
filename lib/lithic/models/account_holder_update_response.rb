@@ -2,8 +2,9 @@
 
 module Lithic
   module Models
-    # @abstract
-    class AccountHolderUpdateResponse < Lithic::Union
+    module AccountHolderUpdateResponse
+      extend Lithic::Union
+
       variant -> { Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse }
 
       variant -> { Lithic::Models::AccountHolderUpdateResponse::PatchResponse }
@@ -589,11 +590,11 @@ module Lithic
           end
         end
 
-        # @abstract
-        #
         # The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
         #   holder is not KYC-Exempt.
-        class ExemptionType < Lithic::Enum
+        module ExemptionType
+          extend Lithic::Enum
+
           AUTHORIZED_USER = :AUTHORIZED_USER
           PREPAID_CARD_USER = :PREPAID_CARD_USER
 
@@ -740,15 +741,15 @@ module Lithic
           end
         end
 
-        # @abstract
-        #
         # <Deprecated. Use verification_application.status instead>
         #
         #   KYC and KYB evaluation states.
         #
         #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
         #   `ADVANCED` workflow.
-        class Status < Lithic::Enum
+        module Status
+          extend Lithic::Enum
+
           ACCEPTED = :ACCEPTED
           PENDING_DOCUMENT = :PENDING_DOCUMENT
           PENDING_RESUBMIT = :PENDING_RESUBMIT
@@ -757,10 +758,10 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # Status Reasons for KYC/KYB enrollment states
-        class StatusReason < Lithic::Enum
+        module StatusReason
+          extend Lithic::Enum
+
           ADDRESS_VERIFICATION_FAILURE = :ADDRESS_VERIFICATION_FAILURE
           AGE_THRESHOLD_FAILURE = :AGE_THRESHOLD_FAILURE
           COMPLETE_VERIFICATION_FAILURE = :COMPLETE_VERIFICATION_FAILURE
@@ -791,8 +792,6 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
         #   attribute will be present.
         #
@@ -800,7 +799,9 @@ module Lithic
         #   "beneficial_owner_individuals", "beneficial_owner_entities",
         #
         #   "nature_of_business", and "website_url" attributes will be present.
-        class UserType < Lithic::Enum
+        module UserType
+          extend Lithic::Enum
+
           BUSINESS = :BUSINESS
           INDIVIDUAL = :INDIVIDUAL
 
@@ -853,13 +854,13 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
-          # @abstract
-          #
           # KYC and KYB evaluation states.
           #
           #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
           #   `ADVANCED` workflow.
-          class Status < Lithic::Enum
+          module Status
+            extend Lithic::Enum
+
             ACCEPTED = :ACCEPTED
             PENDING_DOCUMENT = :PENDING_DOCUMENT
             PENDING_RESUBMIT = :PENDING_RESUBMIT
@@ -868,10 +869,10 @@ module Lithic
             finalize!
           end
 
-          # @abstract
-          #
           # Status Reasons for KYC/KYB enrollment states
-          class StatusReason < Lithic::Enum
+          module StatusReason
+            extend Lithic::Enum
+
             ADDRESS_VERIFICATION_FAILURE = :ADDRESS_VERIFICATION_FAILURE
             AGE_THRESHOLD_FAILURE = :AGE_THRESHOLD_FAILURE
             COMPLETE_VERIFICATION_FAILURE = :COMPLETE_VERIFICATION_FAILURE

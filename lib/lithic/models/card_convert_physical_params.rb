@@ -67,8 +67,6 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # Shipping method for the card. Use of options besides `STANDARD` require
       #   additional permissions.
       #
@@ -81,7 +79,9 @@ module Lithic
       #   - `2_DAY` - FedEx 2-day shipping, with tracking
       #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #     tracking
-      class ShippingMethod < Lithic::Enum
+      module ShippingMethod
+        extend Lithic::Enum
+
         NUMBER_2_DAY = :"2-DAY"
         EXPEDITED = :EXPEDITED
         EXPRESS = :EXPRESS

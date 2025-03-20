@@ -84,7 +84,9 @@ module Lithic
       type category =
         :EXTERNAL_WIRE | :EXTERNAL_ACH | :EXTERNAL_CHECK | :EXTERNAL_TRANSFER
 
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         EXTERNAL_WIRE: :EXTERNAL_WIRE
         EXTERNAL_ACH: :EXTERNAL_ACH
         EXTERNAL_CHECK: :EXTERNAL_CHECK
@@ -95,7 +97,9 @@ module Lithic
 
       type result = :APPROVED | :DECLINED
 
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
@@ -104,7 +108,9 @@ module Lithic
 
       type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         PENDING: :PENDING
         SETTLED: :SETTLED
         DECLINED: :DECLINED

@@ -27,7 +27,7 @@ module Lithic
       sig do
         params(
           nickname: String,
-          type: Symbol,
+          type: Lithic::Models::FinancialAccountCreateParams::Type::OrSymbol,
           account_token: String,
           is_for_benefit_of: T::Boolean,
           idempotency_key: String,
@@ -79,7 +79,7 @@ module Lithic
         params(
           account_token: String,
           business_account_token: String,
-          type: Symbol,
+          type: Lithic::Models::FinancialAccountListParams::Type::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::SinglePage[Lithic::Models::FinancialAccount])
@@ -99,8 +99,8 @@ module Lithic
       sig do
         params(
           financial_account_token: String,
-          status: Symbol,
-          status_change_reason: T.nilable(Symbol),
+          status: Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol,
+          status_change_reason: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol),
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::Models::FinancialAccount)

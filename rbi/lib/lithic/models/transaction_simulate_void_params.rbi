@@ -30,11 +30,14 @@ module Lithic
       #   - `AUTHORIZATION_EXPIRY` indicates authorization has expired and been reversed
       #     by Lithic.
       #   - `AUTHORIZATION_REVERSAL` indicates authorization was reversed by the merchant.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol)) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol)
+          .returns(Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol)
+      end
       def type=(_)
       end
 
@@ -42,7 +45,7 @@ module Lithic
         params(
           token: String,
           amount: Integer,
-          type: Symbol,
+          type: Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -51,14 +54,15 @@ module Lithic
       end
 
       sig do
-        override.returns(
-          {
-            token: String,
-            amount: Integer,
-            type: Symbol,
-            request_options: Lithic::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              token: String,
+              amount: Integer,
+              type: Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol,
+              request_options: Lithic::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -68,13 +72,17 @@ module Lithic
       #   - `AUTHORIZATION_EXPIRY` indicates authorization has expired and been reversed
       #     by Lithic.
       #   - `AUTHORIZATION_REVERSAL` indicates authorization was reversed by the merchant.
-      class Type < Lithic::Enum
-        abstract!
+      module Type
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::TransactionSimulateVoidParams::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol) }
 
-        AUTHORIZATION_EXPIRY = :AUTHORIZATION_EXPIRY
-        AUTHORIZATION_REVERSAL = :AUTHORIZATION_REVERSAL
+        AUTHORIZATION_EXPIRY =
+          T.let(:AUTHORIZATION_EXPIRY, Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol)
+        AUTHORIZATION_REVERSAL =
+          T.let(:AUTHORIZATION_REVERSAL, Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol)
       end
     end
   end

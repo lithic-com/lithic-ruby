@@ -3,8 +3,6 @@
 module Lithic
   module Models
     module AuthRules
-      # @abstract
-      #
       # The window of time to calculate Spend Velocity over.
       #
       #   - `DAY`: Velocity over the current day since midnight Eastern Time.
@@ -12,7 +10,9 @@ module Lithic
       #     Eastern Time.
       #   - `MONTH`: Velocity over the current month since 00:00 / 12 AM on the first of
       #     the month in Eastern Time.
-      class VelocityLimitParamsPeriodWindow < Lithic::Enum
+      module VelocityLimitParamsPeriodWindow
+        extend Lithic::Enum
+
         DAY = :DAY
         WEEK = :WEEK
         MONTH = :MONTH

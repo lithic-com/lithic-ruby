@@ -22,10 +22,10 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # Parameters for the Auth Rule
-        class Parameters < Lithic::Union
+        module Parameters
+          extend Lithic::Union
+
           variant -> { Lithic::Models::AuthRules::ConditionalBlockParameters }
 
           variant -> { Lithic::Models::AuthRules::VelocityLimitParams }

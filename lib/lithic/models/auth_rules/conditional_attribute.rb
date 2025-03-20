@@ -3,8 +3,6 @@
 module Lithic
   module Models
     module AuthRules
-      # @abstract
-      #
       # The attribute to target.
       #
       #   The following attributes may be targeted:
@@ -43,7 +41,9 @@ module Lithic
       #   - `CARD_STATE`: The current state of the card associated with the transaction.
       #     Valid values are `CLOSED`, `OPEN`, `PAUSED`, `PENDING_ACTIVATION`,
       #     `PENDING_FULFILLMENT`.
-      class ConditionalAttribute < Lithic::Enum
+      module ConditionalAttribute
+        extend Lithic::Enum
+
         MCC = :MCC
         COUNTRY = :COUNTRY
         CURRENCY = :CURRENCY

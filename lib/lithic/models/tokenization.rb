@@ -129,10 +129,10 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # The status of the tokenization request
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         ACTIVE = :ACTIVE
         DEACTIVATED = :DEACTIVATED
         INACTIVE = :INACTIVE
@@ -144,11 +144,11 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # The entity that requested the tokenization. Represents a Digital Wallet or
       #   merchant.
-      class TokenRequestorName < Lithic::Enum
+      module TokenRequestorName
+        extend Lithic::Enum
+
         AMAZON_ONE = :AMAZON_ONE
         ANDROID_PAY = :ANDROID_PAY
         APPLE_PAY = :APPLE_PAY
@@ -164,10 +164,10 @@ module Lithic
         finalize!
       end
 
-      # @abstract
-      #
       # The channel through which the tokenization was made.
-      class TokenizationChannel < Lithic::Enum
+      module TokenizationChannel
+        extend Lithic::Enum
+
         DIGITAL_WALLET = :DIGITAL_WALLET
         MERCHANT = :MERCHANT
 
@@ -225,10 +225,10 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
-        # @abstract
-        #
         # Enum representing the result of the tokenization event
-        class Result < Lithic::Enum
+        module Result
+          extend Lithic::Enum
+
           APPROVED = :APPROVED
           DECLINED = :DECLINED
           NOTIFICATION_DELIVERED = :NOTIFICATION_DELIVERED
@@ -244,10 +244,10 @@ module Lithic
           finalize!
         end
 
-        # @abstract
-        #
         # Enum representing the type of tokenization event that occurred
-        class Type < Lithic::Enum
+        module Type
+          extend Lithic::Enum
+
           TOKENIZATION_2_FA = :TOKENIZATION_2FA
           TOKENIZATION_AUTHORIZATION = :TOKENIZATION_AUTHORIZATION
           TOKENIZATION_DECISIONING = :TOKENIZATION_DECISIONING

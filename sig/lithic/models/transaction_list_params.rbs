@@ -75,7 +75,9 @@ module Lithic
 
       type result = :APPROVED | :DECLINED
 
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
@@ -84,7 +86,9 @@ module Lithic
 
       type status = :PENDING | :VOIDED | :SETTLED | :DECLINED | :EXPIRED
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         PENDING: :PENDING
         VOIDED: :VOIDED
         SETTLED: :SETTLED

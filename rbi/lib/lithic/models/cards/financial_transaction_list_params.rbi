@@ -18,11 +18,14 @@ module Lithic
         end
 
         # Financial Transaction category to be returned.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Lithic::Models::Cards::FinancialTransactionListParams::Category::OrSymbol)) }
         def category
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Cards::FinancialTransactionListParams::Category::OrSymbol)
+            .returns(Lithic::Models::Cards::FinancialTransactionListParams::Category::OrSymbol)
+        end
         def category=(_)
         end
 
@@ -47,11 +50,14 @@ module Lithic
         end
 
         # Financial Transaction result to be returned.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol)) }
         def result
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol)
+            .returns(Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol)
+        end
         def result=(_)
         end
 
@@ -66,23 +72,26 @@ module Lithic
         end
 
         # Financial Transaction status to be returned.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)) }
         def status
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)
+            .returns(Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)
+        end
         def status=(_)
         end
 
         sig do
           params(
             begin_: Time,
-            category: Symbol,
+            category: Lithic::Models::Cards::FinancialTransactionListParams::Category::OrSymbol,
             end_: Time,
             ending_before: String,
-            result: Symbol,
+            result: Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol,
             starting_after: String,
-            status: Symbol,
+            status: Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol,
             request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
           )
             .returns(T.attached_class)
@@ -104,12 +113,12 @@ module Lithic
             .returns(
               {
                 begin_: Time,
-                category: Symbol,
+                category: Lithic::Models::Cards::FinancialTransactionListParams::Category::OrSymbol,
                 end_: Time,
                 ending_before: String,
-                result: Symbol,
+                result: Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol,
                 starting_after: String,
-                status: Symbol,
+                status: Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol,
                 request_options: Lithic::RequestOptions
               }
             )
@@ -118,37 +127,46 @@ module Lithic
         end
 
         # Financial Transaction category to be returned.
-        class Category < Lithic::Enum
-          abstract!
+        module Category
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Category) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol) }
 
-          CARD = :CARD
-          TRANSFER = :TRANSFER
+          CARD = T.let(:CARD, Lithic::Models::Cards::FinancialTransactionListParams::Category::OrSymbol)
+          TRANSFER = T.let(:TRANSFER, Lithic::Models::Cards::FinancialTransactionListParams::Category::OrSymbol)
         end
 
         # Financial Transaction result to be returned.
-        class Result < Lithic::Enum
-          abstract!
+        module Result
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Result) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol) }
 
-          APPROVED = :APPROVED
-          DECLINED = :DECLINED
+          APPROVED = T.let(:APPROVED, Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol)
+          DECLINED = T.let(:DECLINED, Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol)
         end
 
         # Financial Transaction status to be returned.
-        class Status < Lithic::Enum
-          abstract!
+        module Status
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Status) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol) }
 
-          DECLINED = :DECLINED
-          EXPIRED = :EXPIRED
-          PENDING = :PENDING
-          RETURNED = :RETURNED
-          SETTLED = :SETTLED
-          VOIDED = :VOIDED
+          DECLINED = T.let(:DECLINED, Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)
+          EXPIRED = T.let(:EXPIRED, Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)
+          PENDING = T.let(:PENDING, Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)
+          RETURNED = T.let(:RETURNED, Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)
+          SETTLED = T.let(:SETTLED, Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)
+          VOIDED = T.let(:VOIDED, Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)
         end
       end
     end

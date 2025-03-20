@@ -107,7 +107,9 @@ module Lithic
 
       type type_ = :CHECKING | :SAVINGS
 
-      class Type < Lithic::Enum
+      module Type
+        extend Lithic::Enum
+
         CHECKING: :CHECKING
         SAVINGS: :SAVINGS
 
@@ -116,7 +118,9 @@ module Lithic
 
       type verification_method = :EXTERNALLY_VERIFIED
 
-      class VerificationMethod < Lithic::Enum
+      module VerificationMethod
+        extend Lithic::Enum
+
         EXTERNALLY_VERIFIED: :EXTERNALLY_VERIFIED
 
         def self.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateParams::verification_method]

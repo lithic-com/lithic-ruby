@@ -40,11 +40,14 @@ module Lithic
 
         # When set will use the following values as part of the Simulated Authentication.
         #   When not set defaults to MATCH
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol)) }
         def card_expiry_check
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol)
+            .returns(Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol)
+        end
         def card_expiry_check=(_)
         end
 
@@ -53,7 +56,7 @@ module Lithic
             merchant: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant,
             pan: String,
             transaction: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction,
-            card_expiry_check: Symbol,
+            card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
             request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
           )
             .returns(T.attached_class)
@@ -68,7 +71,7 @@ module Lithic
                 merchant: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant,
                 pan: String,
                 transaction: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction,
-                card_expiry_check: Symbol,
+                card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
                 request_options: Lithic::RequestOptions
               }
             )
@@ -157,14 +160,19 @@ module Lithic
 
         # When set will use the following values as part of the Simulated Authentication.
         #   When not set defaults to MATCH
-        class CardExpiryCheck < Lithic::Enum
-          abstract!
+        module CardExpiryCheck
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol) }
 
-          MATCH = :MATCH
-          MISMATCH = :MISMATCH
-          NOT_PRESENT = :NOT_PRESENT
+          MATCH = T.let(:MATCH, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol)
+          MISMATCH =
+            T.let(:MISMATCH, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol)
+          NOT_PRESENT =
+            T.let(:NOT_PRESENT, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol)
         end
       end
     end

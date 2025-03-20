@@ -7,7 +7,7 @@ module Lithic
       #   type
       sig do
         params(
-          financial_account_type: Symbol,
+          financial_account_type: Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Lithic::SinglePage[Lithic::Models::AggregateBalance])

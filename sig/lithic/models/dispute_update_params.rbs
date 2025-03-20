@@ -57,7 +57,9 @@ module Lithic
         | :RECURRING_TRANSACTION_NOT_CANCELLED
         | :REFUND_NOT_PROCESSED
 
-      class Reason < Lithic::Enum
+      module Reason
+        extend Lithic::Enum
+
         ATM_CASH_MISDISPENSE: :ATM_CASH_MISDISPENSE
         CANCELLED: :CANCELLED
         DUPLICATED: :DUPLICATED

@@ -17,19 +17,25 @@ module Lithic
         end
 
         # Whether the Cardholder has Approved or Declined the issued Challenge
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::ThreeDS::ChallengeResult::OrSymbol) }
         def challenge_response
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::ThreeDS::ChallengeResult::OrSymbol)
+            .returns(Lithic::Models::ThreeDS::ChallengeResult::OrSymbol)
+        end
         def challenge_response=(_)
         end
 
-        sig { params(token: String, challenge_response: Symbol).returns(T.attached_class) }
+        sig do
+          params(token: String, challenge_response: Lithic::Models::ThreeDS::ChallengeResult::OrSymbol)
+            .returns(T.attached_class)
+        end
         def self.new(token:, challenge_response:)
         end
 
-        sig { override.returns({token: String, challenge_response: Symbol}) }
+        sig { override.returns({token: String, challenge_response: Lithic::Models::ThreeDS::ChallengeResult::OrSymbol}) }
         def to_hash
         end
       end

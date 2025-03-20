@@ -49,18 +49,19 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
-      # @abstract
-      #
       # An account holder's status for use within the simulation.
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         ACCEPTED = :ACCEPTED
         REJECTED = :REJECTED
 
         finalize!
       end
 
-      # @abstract
-      class StatusReason < Lithic::Enum
+      module StatusReason
+        extend Lithic::Enum
+
         PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE = :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE
         PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE =
           :PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE

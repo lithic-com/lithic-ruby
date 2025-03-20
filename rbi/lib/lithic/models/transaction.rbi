@@ -158,11 +158,14 @@ module Lithic
       # Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
       #   `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
       #   network code from the upstream provider.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::Transaction::Network::TaggedSymbol)) }
       def network
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Lithic::Models::Transaction::Network::TaggedSymbol))
+          .returns(T.nilable(Lithic::Models::Transaction::Network::TaggedSymbol))
+      end
       def network=(_)
       end
 
@@ -187,11 +190,14 @@ module Lithic
       def pos=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Transaction::Result::TaggedSymbol) }
       def result
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::Transaction::Result::TaggedSymbol)
+          .returns(Lithic::Models::Transaction::Result::TaggedSymbol)
+      end
       def result=(_)
       end
 
@@ -205,11 +211,14 @@ module Lithic
       end
 
       # Status of the transaction.
-      sig { returns(Symbol) }
+      sig { returns(Lithic::Models::Transaction::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::Transaction::Status::TaggedSymbol)
+          .returns(Lithic::Models::Transaction::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -262,12 +271,12 @@ module Lithic
           merchant_amount: T.nilable(Integer),
           merchant_authorization_amount: T.nilable(Integer),
           merchant_currency: String,
-          network: T.nilable(Symbol),
+          network: T.nilable(Lithic::Models::Transaction::Network::TaggedSymbol),
           network_risk_score: T.nilable(Integer),
           pos: Lithic::Models::Transaction::Pos,
-          result: Symbol,
+          result: Lithic::Models::Transaction::Result::TaggedSymbol,
           settled_amount: Integer,
-          status: Symbol,
+          status: Lithic::Models::Transaction::Status::TaggedSymbol,
           token_info: T.nilable(Lithic::Models::Transaction::TokenInfo),
           updated: Time,
           events: T::Array[Lithic::Models::Transaction::Event]
@@ -323,12 +332,12 @@ module Lithic
               merchant_amount: T.nilable(Integer),
               merchant_authorization_amount: T.nilable(Integer),
               merchant_currency: String,
-              network: T.nilable(Symbol),
+              network: T.nilable(Lithic::Models::Transaction::Network::TaggedSymbol),
               network_risk_score: T.nilable(Integer),
               pos: Lithic::Models::Transaction::Pos,
-              result: Symbol,
+              result: Lithic::Models::Transaction::Result::TaggedSymbol,
               settled_amount: Integer,
-              status: Symbol,
+              status: Lithic::Models::Transaction::Status::TaggedSymbol,
               token_info: T.nilable(Lithic::Models::Transaction::TokenInfo),
               updated: Time,
               events: T::Array[Lithic::Models::Transaction::Event]
@@ -569,29 +578,38 @@ module Lithic
         end
 
         # Whether an acquirer exemption applied to the transaction.
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol) }
         def acquirer_exemption
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol)
+            .returns(Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol)
+        end
         def acquirer_exemption=(_)
         end
 
         # Indicates what the outcome of the 3DS authentication process is.
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol) }
         def authentication_result
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol)
+            .returns(Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol)
+        end
         def authentication_result=(_)
         end
 
         # Indicates which party made the 3DS authentication decision.
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol) }
         def decision_made_by
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol)
+            .returns(Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol)
+        end
         def decision_made_by=(_)
         end
 
@@ -607,11 +625,14 @@ module Lithic
         #   - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
         #     cryptography, possibly recurring. Chargeback liability shift to the issuer
         #     applies.
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol) }
         def liability_shift
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol)
+            .returns(Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol)
+        end
         def liability_shift=(_)
         end
 
@@ -629,34 +650,40 @@ module Lithic
 
         # Indicates whether a 3DS challenge flow was used, and if so, what the
         #   verification method was. (deprecated, use `authentication_result`)
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol) }
         def verification_attempted
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol)
+            .returns(Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol)
+        end
         def verification_attempted=(_)
         end
 
         # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
         #   use `authentication_result`)
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol) }
         def verification_result
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol)
+            .returns(Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol)
+        end
         def verification_result=(_)
         end
 
         sig do
           params(
             three_ds_version: T.nilable(String),
-            acquirer_exemption: Symbol,
-            authentication_result: Symbol,
-            decision_made_by: Symbol,
-            liability_shift: Symbol,
+            acquirer_exemption: Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol,
+            authentication_result: Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol,
+            decision_made_by: Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol,
+            liability_shift: Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol,
             three_ds_authentication_token: T.nilable(String),
-            verification_attempted: Symbol,
-            verification_result: Symbol
+            verification_attempted: Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol,
+            verification_result: Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
           )
             .returns(T.attached_class)
         end
@@ -677,13 +704,13 @@ module Lithic
             .returns(
               {
                 three_ds_version: T.nilable(String),
-                acquirer_exemption: Symbol,
-                authentication_result: Symbol,
-                decision_made_by: Symbol,
-                liability_shift: Symbol,
+                acquirer_exemption: Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol,
+                authentication_result: Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol,
+                decision_made_by: Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol,
+                liability_shift: Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol,
                 three_ds_authentication_token: T.nilable(String),
-                verification_attempted: Symbol,
-                verification_result: Symbol
+                verification_attempted: Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol,
+                verification_result: Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
               }
             )
         end
@@ -691,44 +718,97 @@ module Lithic
         end
 
         # Whether an acquirer exemption applied to the transaction.
-        class AcquirerExemption < Lithic::Enum
-          abstract!
+        module AcquirerExemption
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol) }
 
-          AUTHENTICATION_OUTAGE_EXCEPTION = :AUTHENTICATION_OUTAGE_EXCEPTION
-          LOW_VALUE = :LOW_VALUE
-          MERCHANT_INITIATED_TRANSACTION = :MERCHANT_INITIATED_TRANSACTION
-          NONE = :NONE
-          RECURRING_PAYMENT = :RECURRING_PAYMENT
-          SECURE_CORPORATE_PAYMENT = :SECURE_CORPORATE_PAYMENT
-          STRONG_CUSTOMER_AUTHENTICATION_DELEGATION = :STRONG_CUSTOMER_AUTHENTICATION_DELEGATION
-          TRANSACTION_RISK_ANALYSIS = :TRANSACTION_RISK_ANALYSIS
+          AUTHENTICATION_OUTAGE_EXCEPTION =
+            T.let(
+              :AUTHENTICATION_OUTAGE_EXCEPTION,
+              Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
+            )
+          LOW_VALUE =
+            T.let(:LOW_VALUE, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol)
+          MERCHANT_INITIATED_TRANSACTION =
+            T.let(
+              :MERCHANT_INITIATED_TRANSACTION,
+              Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
+            )
+          NONE =
+            T.let(:NONE, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol)
+          RECURRING_PAYMENT =
+            T.let(
+              :RECURRING_PAYMENT,
+              Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
+            )
+          SECURE_CORPORATE_PAYMENT =
+            T.let(
+              :SECURE_CORPORATE_PAYMENT,
+              Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
+            )
+          STRONG_CUSTOMER_AUTHENTICATION_DELEGATION =
+            T.let(
+              :STRONG_CUSTOMER_AUTHENTICATION_DELEGATION,
+              Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
+            )
+          TRANSACTION_RISK_ANALYSIS =
+            T.let(
+              :TRANSACTION_RISK_ANALYSIS,
+              Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
+            )
         end
 
         # Indicates what the outcome of the 3DS authentication process is.
-        class AuthenticationResult < Lithic::Enum
-          abstract!
+        module AuthenticationResult
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol) }
 
-          ATTEMPTS = :ATTEMPTS
-          DECLINE = :DECLINE
-          NONE = :NONE
-          SUCCESS = :SUCCESS
+          ATTEMPTS =
+            T.let(
+              :ATTEMPTS,
+              Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol
+            )
+          DECLINE =
+            T.let(:DECLINE, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol)
+          NONE =
+            T.let(:NONE, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol)
+          SUCCESS =
+            T.let(:SUCCESS, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol)
         end
 
         # Indicates which party made the 3DS authentication decision.
-        class DecisionMadeBy < Lithic::Enum
-          abstract!
+        module DecisionMadeBy
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol) }
 
-          CUSTOMER_ENDPOINT = :CUSTOMER_ENDPOINT
-          LITHIC_DEFAULT = :LITHIC_DEFAULT
-          LITHIC_RULES = :LITHIC_RULES
-          NETWORK = :NETWORK
-          UNKNOWN = :UNKNOWN
+          CUSTOMER_ENDPOINT =
+            T.let(
+              :CUSTOMER_ENDPOINT,
+              Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol
+            )
+          LITHIC_DEFAULT =
+            T.let(
+              :LITHIC_DEFAULT,
+              Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol
+            )
+          LITHIC_RULES =
+            T.let(:LITHIC_RULES, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol)
+          NETWORK =
+            T.let(:NETWORK, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol)
+          UNKNOWN =
+            T.let(:UNKNOWN, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol)
         end
 
         # Indicates whether chargeback liability shift applies to the transaction.
@@ -743,41 +823,76 @@ module Lithic
         #   - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
         #     cryptography, possibly recurring. Chargeback liability shift to the issuer
         #     applies.
-        class LiabilityShift < Lithic::Enum
-          abstract!
+        module LiabilityShift
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol) }
 
-          NUMBER_3DS_AUTHENTICATED = :"3DS_AUTHENTICATED"
-          ACQUIRER_EXEMPTION = :ACQUIRER_EXEMPTION
-          NONE = :NONE
-          TOKEN_AUTHENTICATED = :TOKEN_AUTHENTICATED
+          NUMBER_3DS_AUTHENTICATED =
+            T.let(
+              :"3DS_AUTHENTICATED",
+              Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
+            )
+          ACQUIRER_EXEMPTION =
+            T.let(
+              :ACQUIRER_EXEMPTION,
+              Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
+            )
+          NONE = T.let(:NONE, Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol)
+          TOKEN_AUTHENTICATED =
+            T.let(
+              :TOKEN_AUTHENTICATED,
+              Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
+            )
         end
 
         # Indicates whether a 3DS challenge flow was used, and if so, what the
         #   verification method was. (deprecated, use `authentication_result`)
-        class VerificationAttempted < Lithic::Enum
-          abstract!
+        module VerificationAttempted
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol) }
 
-          NONE = :NONE
-          OTHER = :OTHER
+          NONE =
+            T.let(:NONE, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol)
+          OTHER =
+            T.let(:OTHER, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol)
         end
 
         # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
         #   use `authentication_result`)
-        class VerificationResult < Lithic::Enum
-          abstract!
+        module VerificationResult
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol) }
 
-          CANCELLED = :CANCELLED
-          FAILED = :FAILED
-          FRICTIONLESS = :FRICTIONLESS
-          NOT_ATTEMPTED = :NOT_ATTEMPTED
-          REJECTED = :REJECTED
-          SUCCESS = :SUCCESS
+          CANCELLED =
+            T.let(:CANCELLED, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol)
+          FAILED =
+            T.let(:FAILED, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol)
+          FRICTIONLESS =
+            T.let(
+              :FRICTIONLESS,
+              Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
+            )
+          NOT_ATTEMPTED =
+            T.let(
+              :NOT_ATTEMPTED,
+              Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
+            )
+          REJECTED =
+            T.let(:REJECTED, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol)
+          SUCCESS =
+            T.let(:SUCCESS, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol)
         end
       end
 
@@ -884,16 +999,17 @@ module Lithic
       # Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
       #   `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
       #   network code from the upstream provider.
-      class Network < Lithic::Enum
-        abstract!
+      module Network
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Network) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Network::TaggedSymbol) }
 
-        INTERLINK = :INTERLINK
-        MAESTRO = :MAESTRO
-        MASTERCARD = :MASTERCARD
-        UNKNOWN = :UNKNOWN
-        VISA = :VISA
+        INTERLINK = T.let(:INTERLINK, Lithic::Models::Transaction::Network::TaggedSymbol)
+        MAESTRO = T.let(:MAESTRO, Lithic::Models::Transaction::Network::TaggedSymbol)
+        MASTERCARD = T.let(:MASTERCARD, Lithic::Models::Transaction::Network::TaggedSymbol)
+        UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Network::TaggedSymbol)
+        VISA = T.let(:VISA, Lithic::Models::Transaction::Network::TaggedSymbol)
       end
 
       class Pos < Lithic::BaseModel
@@ -939,29 +1055,38 @@ module Lithic
 
         class EntryMode < Lithic::BaseModel
           # Card presence indicator
-          sig { returns(Symbol) }
+          sig { returns(Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol) }
           def card
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
+              .returns(Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
+          end
           def card=(_)
           end
 
           # Cardholder presence indicator
-          sig { returns(Symbol) }
+          sig { returns(Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol) }
           def cardholder
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
+              .returns(Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
+          end
           def cardholder=(_)
           end
 
           # Method of entry for the PAN
-          sig { returns(Symbol) }
+          sig { returns(Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol) }
           def pan
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+              .returns(Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+          end
           def pan=(_)
           end
 
@@ -976,70 +1101,92 @@ module Lithic
 
           sig do
             params(
-              card: Symbol,
-              cardholder: Symbol,
-              pan: Symbol,
+              card: Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol,
+              cardholder: Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol,
+              pan: Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol,
               pin_entered: T::Boolean
-            ).returns(T.attached_class)
+            )
+              .returns(T.attached_class)
           end
           def self.new(card:, cardholder:, pan:, pin_entered:)
           end
 
-          sig { override.returns({card: Symbol, cardholder: Symbol, pan: Symbol, pin_entered: T::Boolean}) }
+          sig do
+            override
+              .returns(
+                {
+                  card: Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol,
+                  cardholder: Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol,
+                  pan: Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol,
+                  pin_entered: T::Boolean
+                }
+              )
+          end
           def to_hash
           end
 
           # Card presence indicator
-          class Card < Lithic::Enum
-            abstract!
+          module Card
+            extend Lithic::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Pos::EntryMode::Card) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol) }
 
-            NOT_PRESENT = :NOT_PRESENT
-            PREAUTHORIZED = :PREAUTHORIZED
-            PRESENT = :PRESENT
-            UNKNOWN = :UNKNOWN
+            NOT_PRESENT = T.let(:NOT_PRESENT, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
+            PREAUTHORIZED = T.let(:PREAUTHORIZED, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
+            PRESENT = T.let(:PRESENT, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
+            UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
           end
 
           # Cardholder presence indicator
-          class Cardholder < Lithic::Enum
-            abstract!
+          module Cardholder
+            extend Lithic::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Pos::EntryMode::Cardholder) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol) }
 
-            DEFERRED_BILLING = :DEFERRED_BILLING
-            ELECTRONIC_ORDER = :ELECTRONIC_ORDER
-            INSTALLMENT = :INSTALLMENT
-            MAIL_ORDER = :MAIL_ORDER
-            NOT_PRESENT = :NOT_PRESENT
-            PREAUTHORIZED = :PREAUTHORIZED
-            PRESENT = :PRESENT
-            REOCCURRING = :REOCCURRING
-            TELEPHONE_ORDER = :TELEPHONE_ORDER
-            UNKNOWN = :UNKNOWN
+            DEFERRED_BILLING =
+              T.let(:DEFERRED_BILLING, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
+            ELECTRONIC_ORDER =
+              T.let(:ELECTRONIC_ORDER, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
+            INSTALLMENT = T.let(:INSTALLMENT, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
+            MAIL_ORDER = T.let(:MAIL_ORDER, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
+            NOT_PRESENT = T.let(:NOT_PRESENT, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
+            PREAUTHORIZED =
+              T.let(:PREAUTHORIZED, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
+            PRESENT = T.let(:PRESENT, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
+            REOCCURRING = T.let(:REOCCURRING, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
+            TELEPHONE_ORDER =
+              T.let(:TELEPHONE_ORDER, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
+            UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
           end
 
           # Method of entry for the PAN
-          class Pan < Lithic::Enum
-            abstract!
+          module Pan
+            extend Lithic::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Pos::EntryMode::Pan) }
+            OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol) }
 
-            AUTO_ENTRY = :AUTO_ENTRY
-            BAR_CODE = :BAR_CODE
-            CONTACTLESS = :CONTACTLESS
-            CREDENTIAL_ON_FILE = :CREDENTIAL_ON_FILE
-            ECOMMERCE = :ECOMMERCE
-            ERROR_KEYED = :ERROR_KEYED
-            ERROR_MAGNETIC_STRIPE = :ERROR_MAGNETIC_STRIPE
-            ICC = :ICC
-            KEY_ENTERED = :KEY_ENTERED
-            MAGNETIC_STRIPE = :MAGNETIC_STRIPE
-            MANUAL = :MANUAL
-            OCR = :OCR
-            SECURE_CARDLESS = :SECURE_CARDLESS
-            UNKNOWN = :UNKNOWN
-            UNSPECIFIED = :UNSPECIFIED
+            AUTO_ENTRY = T.let(:AUTO_ENTRY, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+            BAR_CODE = T.let(:BAR_CODE, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+            CONTACTLESS = T.let(:CONTACTLESS, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+            CREDENTIAL_ON_FILE =
+              T.let(:CREDENTIAL_ON_FILE, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+            ECOMMERCE = T.let(:ECOMMERCE, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+            ERROR_KEYED = T.let(:ERROR_KEYED, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+            ERROR_MAGNETIC_STRIPE =
+              T.let(:ERROR_MAGNETIC_STRIPE, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+            ICC = T.let(:ICC, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+            KEY_ENTERED = T.let(:KEY_ENTERED, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+            MAGNETIC_STRIPE = T.let(:MAGNETIC_STRIPE, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+            MANUAL = T.let(:MANUAL, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+            OCR = T.let(:OCR, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+            SECURE_CARDLESS = T.let(:SECURE_CARDLESS, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+            UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
+            UNSPECIFIED = T.let(:UNSPECIFIED, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
           end
         end
 
@@ -1072,11 +1219,14 @@ module Lithic
           end
 
           # The person that is designated to swipe the card
-          sig { returns(Symbol) }
+          sig { returns(Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol) }
           def operator
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
+              .returns(Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
+          end
           def operator=(_)
           end
 
@@ -1094,20 +1244,26 @@ module Lithic
           end
 
           # Status of whether the POS is able to accept PINs
-          sig { returns(Symbol) }
+          sig { returns(Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol) }
           def pin_capability
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol)
+              .returns(Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol)
+          end
           def pin_capability=(_)
           end
 
           # POS Type
-          sig { returns(Symbol) }
+          sig { returns(Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol) }
           def type
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+              .returns(Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+          end
           def type=(_)
           end
 
@@ -1116,10 +1272,10 @@ module Lithic
               attended: T::Boolean,
               card_retention_capable: T::Boolean,
               on_premise: T::Boolean,
-              operator: Symbol,
+              operator: Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol,
               partial_approval_capable: T::Boolean,
-              pin_capability: Symbol,
-              type: Symbol
+              pin_capability: Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol,
+              type: Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol
             )
               .returns(T.attached_class)
           end
@@ -1141,10 +1297,10 @@ module Lithic
                   attended: T::Boolean,
                   card_retention_capable: T::Boolean,
                   on_premise: T::Boolean,
-                  operator: Symbol,
+                  operator: Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol,
                   partial_approval_capable: T::Boolean,
-                  pin_capability: Symbol,
-                  type: Symbol
+                  pin_capability: Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol,
+                  type: Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol
                 }
               )
           end
@@ -1152,104 +1308,120 @@ module Lithic
           end
 
           # The person that is designated to swipe the card
-          class Operator < Lithic::Enum
-            abstract!
+          module Operator
+            extend Lithic::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Pos::Terminal::Operator) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol) }
 
-            ADMINISTRATIVE = :ADMINISTRATIVE
-            CARDHOLDER = :CARDHOLDER
-            CARD_ACCEPTOR = :CARD_ACCEPTOR
-            UNKNOWN = :UNKNOWN
+            ADMINISTRATIVE =
+              T.let(:ADMINISTRATIVE, Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
+            CARDHOLDER = T.let(:CARDHOLDER, Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
+            CARD_ACCEPTOR = T.let(:CARD_ACCEPTOR, Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
+            UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
           end
 
           # Status of whether the POS is able to accept PINs
-          class PinCapability < Lithic::Enum
-            abstract!
+          module PinCapability
+            extend Lithic::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Pos::Terminal::PinCapability) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol) }
 
-            CAPABLE = :CAPABLE
-            INOPERATIVE = :INOPERATIVE
-            NOT_CAPABLE = :NOT_CAPABLE
-            UNSPECIFIED = :UNSPECIFIED
+            CAPABLE = T.let(:CAPABLE, Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol)
+            INOPERATIVE =
+              T.let(:INOPERATIVE, Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol)
+            NOT_CAPABLE =
+              T.let(:NOT_CAPABLE, Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol)
+            UNSPECIFIED =
+              T.let(:UNSPECIFIED, Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol)
           end
 
           # POS Type
-          class Type < Lithic::Enum
-            abstract!
+          module Type
+            extend Lithic::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Pos::Terminal::Type) }
+            OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol) }
 
-            ADMINISTRATIVE = :ADMINISTRATIVE
-            ATM = :ATM
-            AUTHORIZATION = :AUTHORIZATION
-            COUPON_MACHINE = :COUPON_MACHINE
-            DIAL_TERMINAL = :DIAL_TERMINAL
-            ECOMMERCE = :ECOMMERCE
-            ECR = :ECR
-            FUEL_MACHINE = :FUEL_MACHINE
-            HOME_TERMINAL = :HOME_TERMINAL
-            MICR = :MICR
-            OFF_PREMISE = :OFF_PREMISE
-            PAYMENT = :PAYMENT
-            PDA = :PDA
-            PHONE = :PHONE
-            POINT = :POINT
-            POS_TERMINAL = :POS_TERMINAL
-            PUBLIC_UTILITY = :PUBLIC_UTILITY
-            SELF_SERVICE = :SELF_SERVICE
-            TELEVISION = :TELEVISION
-            TELLER = :TELLER
-            TRAVELERS_CHECK_MACHINE = :TRAVELERS_CHECK_MACHINE
-            VENDING = :VENDING
-            VOICE = :VOICE
-            UNKNOWN = :UNKNOWN
+            ADMINISTRATIVE = T.let(:ADMINISTRATIVE, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            ATM = T.let(:ATM, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            AUTHORIZATION = T.let(:AUTHORIZATION, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            COUPON_MACHINE = T.let(:COUPON_MACHINE, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            DIAL_TERMINAL = T.let(:DIAL_TERMINAL, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            ECOMMERCE = T.let(:ECOMMERCE, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            ECR = T.let(:ECR, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            FUEL_MACHINE = T.let(:FUEL_MACHINE, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            HOME_TERMINAL = T.let(:HOME_TERMINAL, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            MICR = T.let(:MICR, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            OFF_PREMISE = T.let(:OFF_PREMISE, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            PAYMENT = T.let(:PAYMENT, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            PDA = T.let(:PDA, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            PHONE = T.let(:PHONE, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            POINT = T.let(:POINT, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            POS_TERMINAL = T.let(:POS_TERMINAL, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            PUBLIC_UTILITY = T.let(:PUBLIC_UTILITY, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            SELF_SERVICE = T.let(:SELF_SERVICE, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            TELEVISION = T.let(:TELEVISION, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            TELLER = T.let(:TELLER, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            TRAVELERS_CHECK_MACHINE =
+              T.let(:TRAVELERS_CHECK_MACHINE, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            VENDING = T.let(:VENDING, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            VOICE = T.let(:VOICE, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
+            UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
           end
         end
       end
 
-      class Result < Lithic::Enum
-        abstract!
+      module Result
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Result) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Result::TaggedSymbol) }
 
-        ACCOUNT_STATE_TRANSACTION_FAIL = :ACCOUNT_STATE_TRANSACTION_FAIL
-        APPROVED = :APPROVED
-        BANK_CONNECTION_ERROR = :BANK_CONNECTION_ERROR
-        BANK_NOT_VERIFIED = :BANK_NOT_VERIFIED
-        CARD_CLOSED = :CARD_CLOSED
-        CARD_PAUSED = :CARD_PAUSED
-        DECLINED = :DECLINED
-        FRAUD_ADVICE = :FRAUD_ADVICE
-        IGNORED_TTL_EXPIRY = :IGNORED_TTL_EXPIRY
-        INACTIVE_ACCOUNT = :INACTIVE_ACCOUNT
-        INCORRECT_PIN = :INCORRECT_PIN
-        INVALID_CARD_DETAILS = :INVALID_CARD_DETAILS
-        INSUFFICIENT_FUNDS = :INSUFFICIENT_FUNDS
-        INSUFFICIENT_FUNDS_PRELOAD = :INSUFFICIENT_FUNDS_PRELOAD
-        INVALID_TRANSACTION = :INVALID_TRANSACTION
-        MERCHANT_BLACKLIST = :MERCHANT_BLACKLIST
-        ORIGINAL_NOT_FOUND = :ORIGINAL_NOT_FOUND
-        PREVIOUSLY_COMPLETED = :PREVIOUSLY_COMPLETED
-        SINGLE_USE_RECHARGED = :SINGLE_USE_RECHARGED
-        SWITCH_INOPERATIVE_ADVICE = :SWITCH_INOPERATIVE_ADVICE
-        UNAUTHORIZED_MERCHANT = :UNAUTHORIZED_MERCHANT
-        UNKNOWN_HOST_TIMEOUT = :UNKNOWN_HOST_TIMEOUT
-        USER_TRANSACTION_LIMIT = :USER_TRANSACTION_LIMIT
+        ACCOUNT_STATE_TRANSACTION_FAIL =
+          T.let(:ACCOUNT_STATE_TRANSACTION_FAIL, Lithic::Models::Transaction::Result::TaggedSymbol)
+        APPROVED = T.let(:APPROVED, Lithic::Models::Transaction::Result::TaggedSymbol)
+        BANK_CONNECTION_ERROR = T.let(:BANK_CONNECTION_ERROR, Lithic::Models::Transaction::Result::TaggedSymbol)
+        BANK_NOT_VERIFIED = T.let(:BANK_NOT_VERIFIED, Lithic::Models::Transaction::Result::TaggedSymbol)
+        CARD_CLOSED = T.let(:CARD_CLOSED, Lithic::Models::Transaction::Result::TaggedSymbol)
+        CARD_PAUSED = T.let(:CARD_PAUSED, Lithic::Models::Transaction::Result::TaggedSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Models::Transaction::Result::TaggedSymbol)
+        FRAUD_ADVICE = T.let(:FRAUD_ADVICE, Lithic::Models::Transaction::Result::TaggedSymbol)
+        IGNORED_TTL_EXPIRY = T.let(:IGNORED_TTL_EXPIRY, Lithic::Models::Transaction::Result::TaggedSymbol)
+        INACTIVE_ACCOUNT = T.let(:INACTIVE_ACCOUNT, Lithic::Models::Transaction::Result::TaggedSymbol)
+        INCORRECT_PIN = T.let(:INCORRECT_PIN, Lithic::Models::Transaction::Result::TaggedSymbol)
+        INVALID_CARD_DETAILS = T.let(:INVALID_CARD_DETAILS, Lithic::Models::Transaction::Result::TaggedSymbol)
+        INSUFFICIENT_FUNDS = T.let(:INSUFFICIENT_FUNDS, Lithic::Models::Transaction::Result::TaggedSymbol)
+        INSUFFICIENT_FUNDS_PRELOAD =
+          T.let(:INSUFFICIENT_FUNDS_PRELOAD, Lithic::Models::Transaction::Result::TaggedSymbol)
+        INVALID_TRANSACTION = T.let(:INVALID_TRANSACTION, Lithic::Models::Transaction::Result::TaggedSymbol)
+        MERCHANT_BLACKLIST = T.let(:MERCHANT_BLACKLIST, Lithic::Models::Transaction::Result::TaggedSymbol)
+        ORIGINAL_NOT_FOUND = T.let(:ORIGINAL_NOT_FOUND, Lithic::Models::Transaction::Result::TaggedSymbol)
+        PREVIOUSLY_COMPLETED = T.let(:PREVIOUSLY_COMPLETED, Lithic::Models::Transaction::Result::TaggedSymbol)
+        SINGLE_USE_RECHARGED = T.let(:SINGLE_USE_RECHARGED, Lithic::Models::Transaction::Result::TaggedSymbol)
+        SWITCH_INOPERATIVE_ADVICE =
+          T.let(:SWITCH_INOPERATIVE_ADVICE, Lithic::Models::Transaction::Result::TaggedSymbol)
+        UNAUTHORIZED_MERCHANT = T.let(:UNAUTHORIZED_MERCHANT, Lithic::Models::Transaction::Result::TaggedSymbol)
+        UNKNOWN_HOST_TIMEOUT = T.let(:UNKNOWN_HOST_TIMEOUT, Lithic::Models::Transaction::Result::TaggedSymbol)
+        USER_TRANSACTION_LIMIT =
+          T.let(:USER_TRANSACTION_LIMIT, Lithic::Models::Transaction::Result::TaggedSymbol)
       end
 
       # Status of the transaction.
-      class Status < Lithic::Enum
-        abstract!
+      module Status
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Status::TaggedSymbol) }
 
-        DECLINED = :DECLINED
-        EXPIRED = :EXPIRED
-        PENDING = :PENDING
-        SETTLED = :SETTLED
-        VOIDED = :VOIDED
+        DECLINED = T.let(:DECLINED, Lithic::Models::Transaction::Status::TaggedSymbol)
+        EXPIRED = T.let(:EXPIRED, Lithic::Models::Transaction::Status::TaggedSymbol)
+        PENDING = T.let(:PENDING, Lithic::Models::Transaction::Status::TaggedSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::Models::Transaction::Status::TaggedSymbol)
+        VOIDED = T.let(:VOIDED, Lithic::Models::Transaction::Status::TaggedSymbol)
       end
 
       class TokenInfo < Lithic::BaseModel
@@ -1257,19 +1429,25 @@ module Lithic
         #   sources include digital wallets (Apple, Google, or Samsung Pay), merchant
         #   tokenization, and “other” sources like in-flight commerce. Masterpass is not
         #   currently supported and is included for future use.
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol) }
         def wallet_type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
+            .returns(Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
+        end
         def wallet_type=(_)
         end
 
-        sig { params(wallet_type: Symbol).returns(T.attached_class) }
+        sig do
+          params(wallet_type: Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
+            .returns(T.attached_class)
+        end
         def self.new(wallet_type:)
         end
 
-        sig { override.returns({wallet_type: Symbol}) }
+        sig { override.returns({wallet_type: Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol}) }
         def to_hash
         end
 
@@ -1277,17 +1455,19 @@ module Lithic
         #   sources include digital wallets (Apple, Google, or Samsung Pay), merchant
         #   tokenization, and “other” sources like in-flight commerce. Masterpass is not
         #   currently supported and is included for future use.
-        class WalletType < Lithic::Enum
-          abstract!
+        module WalletType
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::TokenInfo::WalletType) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol) }
 
-          APPLE_PAY = :APPLE_PAY
-          GOOGLE_PAY = :GOOGLE_PAY
-          MASTERPASS = :MASTERPASS
-          MERCHANT = :MERCHANT
-          OTHER = :OTHER
-          SAMSUNG_PAY = :SAMSUNG_PAY
+          APPLE_PAY = T.let(:APPLE_PAY, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
+          GOOGLE_PAY = T.let(:GOOGLE_PAY, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
+          MASTERPASS = T.let(:MASTERPASS, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
+          MERCHANT = T.let(:MERCHANT, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
+          OTHER = T.let(:OTHER, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
+          SAMSUNG_PAY = T.let(:SAMSUNG_PAY, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
         end
       end
 
@@ -1329,20 +1509,26 @@ module Lithic
         def created=(_)
         end
 
-        sig { returns(T::Array[Symbol]) }
+        sig { returns(T::Array[Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol]) }
         def detailed_results
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol])
+            .returns(T::Array[Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol])
+        end
         def detailed_results=(_)
         end
 
         # Indicates whether the transaction event is a credit or debit to the account.
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol) }
         def effective_polarity
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol)
+            .returns(Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol)
+        end
         def effective_polarity=(_)
         end
 
@@ -1366,11 +1552,14 @@ module Lithic
         def network_info=(_)
         end
 
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Transaction::Event::Result::TaggedSymbol) }
         def result
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+            .returns(Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+        end
         def result=(_)
         end
 
@@ -1386,11 +1575,14 @@ module Lithic
         end
 
         # Type of transaction event
-        sig { returns(Symbol) }
+        sig { returns(Lithic::Models::Transaction::Event::Type::TaggedSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+            .returns(Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
@@ -1400,12 +1592,12 @@ module Lithic
             amount: Integer,
             amounts: Lithic::Models::Transaction::Event::Amounts,
             created: Time,
-            detailed_results: T::Array[Symbol],
-            effective_polarity: Symbol,
+            detailed_results: T::Array[Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol],
+            effective_polarity: Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol,
             network_info: T.nilable(Lithic::Models::Transaction::Event::NetworkInfo),
-            result: Symbol,
+            result: Lithic::Models::Transaction::Event::Result::TaggedSymbol,
             rule_results: T::Array[Lithic::Models::Transaction::Event::RuleResult],
-            type: Symbol
+            type: Lithic::Models::Transaction::Event::Type::TaggedSymbol
           )
             .returns(T.attached_class)
         end
@@ -1431,12 +1623,12 @@ module Lithic
                 amount: Integer,
                 amounts: Lithic::Models::Transaction::Event::Amounts,
                 created: Time,
-                detailed_results: T::Array[Symbol],
-                effective_polarity: Symbol,
+                detailed_results: T::Array[Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol],
+                effective_polarity: Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol,
                 network_info: T.nilable(Lithic::Models::Transaction::Event::NetworkInfo),
-                result: Symbol,
+                result: Lithic::Models::Transaction::Event::Result::TaggedSymbol,
                 rule_results: T::Array[Lithic::Models::Transaction::Event::RuleResult],
-                type: Symbol
+                type: Lithic::Models::Transaction::Event::Type::TaggedSymbol
               }
             )
         end
@@ -1610,73 +1802,147 @@ module Lithic
           end
         end
 
-        class DetailedResult < Lithic::Enum
-          abstract!
+        module DetailedResult
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Event::DetailedResult) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol) }
 
-          ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED = :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
-          ACCOUNT_DELINQUENT = :ACCOUNT_DELINQUENT
-          ACCOUNT_INACTIVE = :ACCOUNT_INACTIVE
-          ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED = :ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED
-          ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED = :ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED
-          ACCOUNT_UNDER_REVIEW = :ACCOUNT_UNDER_REVIEW
-          ADDRESS_INCORRECT = :ADDRESS_INCORRECT
-          APPROVED = :APPROVED
-          AUTH_RULE_ALLOWED_COUNTRY = :AUTH_RULE_ALLOWED_COUNTRY
-          AUTH_RULE_ALLOWED_MCC = :AUTH_RULE_ALLOWED_MCC
-          AUTH_RULE_BLOCKED_COUNTRY = :AUTH_RULE_BLOCKED_COUNTRY
-          AUTH_RULE_BLOCKED_MCC = :AUTH_RULE_BLOCKED_MCC
-          CARD_CLOSED = :CARD_CLOSED
-          CARD_CRYPTOGRAM_VALIDATION_FAILURE = :CARD_CRYPTOGRAM_VALIDATION_FAILURE
-          CARD_EXPIRED = :CARD_EXPIRED
-          CARD_EXPIRY_DATE_INCORRECT = :CARD_EXPIRY_DATE_INCORRECT
-          CARD_INVALID = :CARD_INVALID
-          CARD_NOT_ACTIVATED = :CARD_NOT_ACTIVATED
-          CARD_PAUSED = :CARD_PAUSED
-          CARD_PIN_INCORRECT = :CARD_PIN_INCORRECT
-          CARD_RESTRICTED = :CARD_RESTRICTED
-          CARD_SECURITY_CODE_INCORRECT = :CARD_SECURITY_CODE_INCORRECT
-          CARD_SPEND_LIMIT_EXCEEDED = :CARD_SPEND_LIMIT_EXCEEDED
-          CONTACT_CARD_ISSUER = :CONTACT_CARD_ISSUER
-          CUSTOMER_ASA_TIMEOUT = :CUSTOMER_ASA_TIMEOUT
-          CUSTOM_ASA_RESULT = :CUSTOM_ASA_RESULT
-          DECLINED = :DECLINED
-          DO_NOT_HONOR = :DO_NOT_HONOR
-          DRIVER_NUMBER_INVALID = :DRIVER_NUMBER_INVALID
-          FORMAT_ERROR = :FORMAT_ERROR
-          INSUFFICIENT_FUNDING_SOURCE_BALANCE = :INSUFFICIENT_FUNDING_SOURCE_BALANCE
-          INSUFFICIENT_FUNDS = :INSUFFICIENT_FUNDS
-          LITHIC_SYSTEM_ERROR = :LITHIC_SYSTEM_ERROR
-          LITHIC_SYSTEM_RATE_LIMIT = :LITHIC_SYSTEM_RATE_LIMIT
-          MALFORMED_ASA_RESPONSE = :MALFORMED_ASA_RESPONSE
-          MERCHANT_INVALID = :MERCHANT_INVALID
-          MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE = :MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE
-          MERCHANT_NOT_PERMITTED = :MERCHANT_NOT_PERMITTED
-          OVER_REVERSAL_ATTEMPTED = :OVER_REVERSAL_ATTEMPTED
-          PIN_BLOCKED = :PIN_BLOCKED
-          PROGRAM_CARD_SPEND_LIMIT_EXCEEDED = :PROGRAM_CARD_SPEND_LIMIT_EXCEEDED
-          PROGRAM_SUSPENDED = :PROGRAM_SUSPENDED
-          PROGRAM_USAGE_RESTRICTION = :PROGRAM_USAGE_RESTRICTION
-          REVERSAL_UNMATCHED = :REVERSAL_UNMATCHED
-          SECURITY_VIOLATION = :SECURITY_VIOLATION
-          SINGLE_USE_CARD_REATTEMPTED = :SINGLE_USE_CARD_REATTEMPTED
-          TRANSACTION_INVALID = :TRANSACTION_INVALID
-          TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL = :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
-          TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER = :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER
-          TRANSACTION_PREVIOUSLY_COMPLETED = :TRANSACTION_PREVIOUSLY_COMPLETED
-          UNAUTHORIZED_MERCHANT = :UNAUTHORIZED_MERCHANT
-          VEHICLE_NUMBER_INVALID = :VEHICLE_NUMBER_INVALID
+          ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED =
+            T.let(
+              :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED,
+              Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol
+            )
+          ACCOUNT_DELINQUENT =
+            T.let(:ACCOUNT_DELINQUENT, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          ACCOUNT_INACTIVE =
+            T.let(:ACCOUNT_INACTIVE, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED =
+            T.let(
+              :ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED,
+              Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol
+            )
+          ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED =
+            T.let(
+              :ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED,
+              Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol
+            )
+          ACCOUNT_UNDER_REVIEW =
+            T.let(:ACCOUNT_UNDER_REVIEW, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          ADDRESS_INCORRECT =
+            T.let(:ADDRESS_INCORRECT, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          APPROVED = T.let(:APPROVED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          AUTH_RULE_ALLOWED_COUNTRY =
+            T.let(:AUTH_RULE_ALLOWED_COUNTRY, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          AUTH_RULE_ALLOWED_MCC =
+            T.let(:AUTH_RULE_ALLOWED_MCC, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          AUTH_RULE_BLOCKED_COUNTRY =
+            T.let(:AUTH_RULE_BLOCKED_COUNTRY, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          AUTH_RULE_BLOCKED_MCC =
+            T.let(:AUTH_RULE_BLOCKED_MCC, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          CARD_CLOSED = T.let(:CARD_CLOSED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          CARD_CRYPTOGRAM_VALIDATION_FAILURE =
+            T.let(
+              :CARD_CRYPTOGRAM_VALIDATION_FAILURE,
+              Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol
+            )
+          CARD_EXPIRED = T.let(:CARD_EXPIRED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          CARD_EXPIRY_DATE_INCORRECT =
+            T.let(:CARD_EXPIRY_DATE_INCORRECT, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          CARD_INVALID = T.let(:CARD_INVALID, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          CARD_NOT_ACTIVATED =
+            T.let(:CARD_NOT_ACTIVATED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          CARD_PAUSED = T.let(:CARD_PAUSED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          CARD_PIN_INCORRECT =
+            T.let(:CARD_PIN_INCORRECT, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          CARD_RESTRICTED =
+            T.let(:CARD_RESTRICTED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          CARD_SECURITY_CODE_INCORRECT =
+            T.let(:CARD_SECURITY_CODE_INCORRECT, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          CARD_SPEND_LIMIT_EXCEEDED =
+            T.let(:CARD_SPEND_LIMIT_EXCEEDED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          CONTACT_CARD_ISSUER =
+            T.let(:CONTACT_CARD_ISSUER, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          CUSTOMER_ASA_TIMEOUT =
+            T.let(:CUSTOMER_ASA_TIMEOUT, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          CUSTOM_ASA_RESULT =
+            T.let(:CUSTOM_ASA_RESULT, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          DECLINED = T.let(:DECLINED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          DO_NOT_HONOR = T.let(:DO_NOT_HONOR, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          DRIVER_NUMBER_INVALID =
+            T.let(:DRIVER_NUMBER_INVALID, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          FORMAT_ERROR = T.let(:FORMAT_ERROR, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          INSUFFICIENT_FUNDING_SOURCE_BALANCE =
+            T.let(
+              :INSUFFICIENT_FUNDING_SOURCE_BALANCE,
+              Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol
+            )
+          INSUFFICIENT_FUNDS =
+            T.let(:INSUFFICIENT_FUNDS, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          LITHIC_SYSTEM_ERROR =
+            T.let(:LITHIC_SYSTEM_ERROR, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          LITHIC_SYSTEM_RATE_LIMIT =
+            T.let(:LITHIC_SYSTEM_RATE_LIMIT, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          MALFORMED_ASA_RESPONSE =
+            T.let(:MALFORMED_ASA_RESPONSE, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          MERCHANT_INVALID =
+            T.let(:MERCHANT_INVALID, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE =
+            T.let(
+              :MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE,
+              Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol
+            )
+          MERCHANT_NOT_PERMITTED =
+            T.let(:MERCHANT_NOT_PERMITTED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          OVER_REVERSAL_ATTEMPTED =
+            T.let(:OVER_REVERSAL_ATTEMPTED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          PIN_BLOCKED = T.let(:PIN_BLOCKED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          PROGRAM_CARD_SPEND_LIMIT_EXCEEDED =
+            T.let(
+              :PROGRAM_CARD_SPEND_LIMIT_EXCEEDED,
+              Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol
+            )
+          PROGRAM_SUSPENDED =
+            T.let(:PROGRAM_SUSPENDED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          PROGRAM_USAGE_RESTRICTION =
+            T.let(:PROGRAM_USAGE_RESTRICTION, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          REVERSAL_UNMATCHED =
+            T.let(:REVERSAL_UNMATCHED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          SECURITY_VIOLATION =
+            T.let(:SECURITY_VIOLATION, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          SINGLE_USE_CARD_REATTEMPTED =
+            T.let(:SINGLE_USE_CARD_REATTEMPTED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          TRANSACTION_INVALID =
+            T.let(:TRANSACTION_INVALID, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL =
+            T.let(
+              :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL,
+              Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol
+            )
+          TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER =
+            T.let(
+              :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER,
+              Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol
+            )
+          TRANSACTION_PREVIOUSLY_COMPLETED =
+            T.let(:TRANSACTION_PREVIOUSLY_COMPLETED, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          UNAUTHORIZED_MERCHANT =
+            T.let(:UNAUTHORIZED_MERCHANT, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
+          VEHICLE_NUMBER_INVALID =
+            T.let(:VEHICLE_NUMBER_INVALID, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
         end
 
         # Indicates whether the transaction event is a credit or debit to the account.
-        class EffectivePolarity < Lithic::Enum
-          abstract!
+        module EffectivePolarity
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Event::EffectivePolarity) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol) }
 
-          CREDIT = :CREDIT
-          DEBIT = :DEBIT
+          CREDIT = T.let(:CREDIT, Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol)
+          DEBIT = T.let(:DEBIT, Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol)
         end
 
         class NetworkInfo < Lithic::BaseModel
@@ -1917,34 +2183,46 @@ module Lithic
           end
         end
 
-        class Result < Lithic::Enum
-          abstract!
+        module Result
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Event::Result) }
+          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Event::Result::TaggedSymbol) }
 
-          ACCOUNT_STATE_TRANSACTION_FAIL = :ACCOUNT_STATE_TRANSACTION_FAIL
-          APPROVED = :APPROVED
-          BANK_CONNECTION_ERROR = :BANK_CONNECTION_ERROR
-          BANK_NOT_VERIFIED = :BANK_NOT_VERIFIED
-          CARD_CLOSED = :CARD_CLOSED
-          CARD_PAUSED = :CARD_PAUSED
-          DECLINED = :DECLINED
-          FRAUD_ADVICE = :FRAUD_ADVICE
-          IGNORED_TTL_EXPIRY = :IGNORED_TTL_EXPIRY
-          INACTIVE_ACCOUNT = :INACTIVE_ACCOUNT
-          INCORRECT_PIN = :INCORRECT_PIN
-          INVALID_CARD_DETAILS = :INVALID_CARD_DETAILS
-          INSUFFICIENT_FUNDS = :INSUFFICIENT_FUNDS
-          INSUFFICIENT_FUNDS_PRELOAD = :INSUFFICIENT_FUNDS_PRELOAD
-          INVALID_TRANSACTION = :INVALID_TRANSACTION
-          MERCHANT_BLACKLIST = :MERCHANT_BLACKLIST
-          ORIGINAL_NOT_FOUND = :ORIGINAL_NOT_FOUND
-          PREVIOUSLY_COMPLETED = :PREVIOUSLY_COMPLETED
-          SINGLE_USE_RECHARGED = :SINGLE_USE_RECHARGED
-          SWITCH_INOPERATIVE_ADVICE = :SWITCH_INOPERATIVE_ADVICE
-          UNAUTHORIZED_MERCHANT = :UNAUTHORIZED_MERCHANT
-          UNKNOWN_HOST_TIMEOUT = :UNKNOWN_HOST_TIMEOUT
-          USER_TRANSACTION_LIMIT = :USER_TRANSACTION_LIMIT
+          ACCOUNT_STATE_TRANSACTION_FAIL =
+            T.let(:ACCOUNT_STATE_TRANSACTION_FAIL, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          APPROVED = T.let(:APPROVED, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          BANK_CONNECTION_ERROR =
+            T.let(:BANK_CONNECTION_ERROR, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          BANK_NOT_VERIFIED = T.let(:BANK_NOT_VERIFIED, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          CARD_CLOSED = T.let(:CARD_CLOSED, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          CARD_PAUSED = T.let(:CARD_PAUSED, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          DECLINED = T.let(:DECLINED, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          FRAUD_ADVICE = T.let(:FRAUD_ADVICE, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          IGNORED_TTL_EXPIRY = T.let(:IGNORED_TTL_EXPIRY, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          INACTIVE_ACCOUNT = T.let(:INACTIVE_ACCOUNT, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          INCORRECT_PIN = T.let(:INCORRECT_PIN, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          INVALID_CARD_DETAILS =
+            T.let(:INVALID_CARD_DETAILS, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          INSUFFICIENT_FUNDS = T.let(:INSUFFICIENT_FUNDS, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          INSUFFICIENT_FUNDS_PRELOAD =
+            T.let(:INSUFFICIENT_FUNDS_PRELOAD, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          INVALID_TRANSACTION =
+            T.let(:INVALID_TRANSACTION, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          MERCHANT_BLACKLIST = T.let(:MERCHANT_BLACKLIST, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          ORIGINAL_NOT_FOUND = T.let(:ORIGINAL_NOT_FOUND, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          PREVIOUSLY_COMPLETED =
+            T.let(:PREVIOUSLY_COMPLETED, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          SINGLE_USE_RECHARGED =
+            T.let(:SINGLE_USE_RECHARGED, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          SWITCH_INOPERATIVE_ADVICE =
+            T.let(:SWITCH_INOPERATIVE_ADVICE, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          UNAUTHORIZED_MERCHANT =
+            T.let(:UNAUTHORIZED_MERCHANT, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          UNKNOWN_HOST_TIMEOUT =
+            T.let(:UNKNOWN_HOST_TIMEOUT, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
+          USER_TRANSACTION_LIMIT =
+            T.let(:USER_TRANSACTION_LIMIT, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
         end
 
         class RuleResult < Lithic::BaseModel
@@ -1979,11 +2257,14 @@ module Lithic
           end
 
           # The detailed_result associated with this rule's decline.
-          sig { returns(Symbol) }
+          sig { returns(Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol) }
           def result
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+              .returns(Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+          end
           def result=(_)
           end
 
@@ -1992,7 +2273,7 @@ module Lithic
               auth_rule_token: T.nilable(String),
               explanation: T.nilable(String),
               name: T.nilable(String),
-              result: Symbol
+              result: Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol
             )
               .returns(T.attached_class)
           end
@@ -2006,7 +2287,7 @@ module Lithic
                   auth_rule_token: T.nilable(String),
                   explanation: T.nilable(String),
                   name: T.nilable(String),
-                  result: Symbol
+                  result: Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol
                 }
               )
           end
@@ -2014,86 +2295,169 @@ module Lithic
           end
 
           # The detailed_result associated with this rule's decline.
-          class Result < Lithic::Enum
-            abstract!
+          module Result
+            extend Lithic::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Event::RuleResult::Result) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol) }
 
-            ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED = :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
-            ACCOUNT_DELINQUENT = :ACCOUNT_DELINQUENT
-            ACCOUNT_INACTIVE = :ACCOUNT_INACTIVE
-            ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED = :ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED
-            ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED = :ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED
-            ACCOUNT_UNDER_REVIEW = :ACCOUNT_UNDER_REVIEW
-            ADDRESS_INCORRECT = :ADDRESS_INCORRECT
-            APPROVED = :APPROVED
-            AUTH_RULE_ALLOWED_COUNTRY = :AUTH_RULE_ALLOWED_COUNTRY
-            AUTH_RULE_ALLOWED_MCC = :AUTH_RULE_ALLOWED_MCC
-            AUTH_RULE_BLOCKED_COUNTRY = :AUTH_RULE_BLOCKED_COUNTRY
-            AUTH_RULE_BLOCKED_MCC = :AUTH_RULE_BLOCKED_MCC
-            CARD_CLOSED = :CARD_CLOSED
-            CARD_CRYPTOGRAM_VALIDATION_FAILURE = :CARD_CRYPTOGRAM_VALIDATION_FAILURE
-            CARD_EXPIRED = :CARD_EXPIRED
-            CARD_EXPIRY_DATE_INCORRECT = :CARD_EXPIRY_DATE_INCORRECT
-            CARD_INVALID = :CARD_INVALID
-            CARD_NOT_ACTIVATED = :CARD_NOT_ACTIVATED
-            CARD_PAUSED = :CARD_PAUSED
-            CARD_PIN_INCORRECT = :CARD_PIN_INCORRECT
-            CARD_RESTRICTED = :CARD_RESTRICTED
-            CARD_SECURITY_CODE_INCORRECT = :CARD_SECURITY_CODE_INCORRECT
-            CARD_SPEND_LIMIT_EXCEEDED = :CARD_SPEND_LIMIT_EXCEEDED
-            CONTACT_CARD_ISSUER = :CONTACT_CARD_ISSUER
-            CUSTOMER_ASA_TIMEOUT = :CUSTOMER_ASA_TIMEOUT
-            CUSTOM_ASA_RESULT = :CUSTOM_ASA_RESULT
-            DECLINED = :DECLINED
-            DO_NOT_HONOR = :DO_NOT_HONOR
-            DRIVER_NUMBER_INVALID = :DRIVER_NUMBER_INVALID
-            FORMAT_ERROR = :FORMAT_ERROR
-            INSUFFICIENT_FUNDING_SOURCE_BALANCE = :INSUFFICIENT_FUNDING_SOURCE_BALANCE
-            INSUFFICIENT_FUNDS = :INSUFFICIENT_FUNDS
-            LITHIC_SYSTEM_ERROR = :LITHIC_SYSTEM_ERROR
-            LITHIC_SYSTEM_RATE_LIMIT = :LITHIC_SYSTEM_RATE_LIMIT
-            MALFORMED_ASA_RESPONSE = :MALFORMED_ASA_RESPONSE
-            MERCHANT_INVALID = :MERCHANT_INVALID
-            MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE = :MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE
-            MERCHANT_NOT_PERMITTED = :MERCHANT_NOT_PERMITTED
-            OVER_REVERSAL_ATTEMPTED = :OVER_REVERSAL_ATTEMPTED
-            PIN_BLOCKED = :PIN_BLOCKED
-            PROGRAM_CARD_SPEND_LIMIT_EXCEEDED = :PROGRAM_CARD_SPEND_LIMIT_EXCEEDED
-            PROGRAM_SUSPENDED = :PROGRAM_SUSPENDED
-            PROGRAM_USAGE_RESTRICTION = :PROGRAM_USAGE_RESTRICTION
-            REVERSAL_UNMATCHED = :REVERSAL_UNMATCHED
-            SECURITY_VIOLATION = :SECURITY_VIOLATION
-            SINGLE_USE_CARD_REATTEMPTED = :SINGLE_USE_CARD_REATTEMPTED
-            TRANSACTION_INVALID = :TRANSACTION_INVALID
-            TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL = :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
-            TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER = :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER
-            TRANSACTION_PREVIOUSLY_COMPLETED = :TRANSACTION_PREVIOUSLY_COMPLETED
-            UNAUTHORIZED_MERCHANT = :UNAUTHORIZED_MERCHANT
-            VEHICLE_NUMBER_INVALID = :VEHICLE_NUMBER_INVALID
+            ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED =
+              T.let(
+                :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED,
+                Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            ACCOUNT_DELINQUENT =
+              T.let(:ACCOUNT_DELINQUENT, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            ACCOUNT_INACTIVE =
+              T.let(:ACCOUNT_INACTIVE, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED =
+              T.let(
+                :ACCOUNT_LIFETIME_SPEND_LIMIT_EXCEEDED,
+                Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED =
+              T.let(
+                :ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED,
+                Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            ACCOUNT_UNDER_REVIEW =
+              T.let(:ACCOUNT_UNDER_REVIEW, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            ADDRESS_INCORRECT =
+              T.let(:ADDRESS_INCORRECT, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            APPROVED = T.let(:APPROVED, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            AUTH_RULE_ALLOWED_COUNTRY =
+              T.let(:AUTH_RULE_ALLOWED_COUNTRY, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            AUTH_RULE_ALLOWED_MCC =
+              T.let(:AUTH_RULE_ALLOWED_MCC, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            AUTH_RULE_BLOCKED_COUNTRY =
+              T.let(:AUTH_RULE_BLOCKED_COUNTRY, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            AUTH_RULE_BLOCKED_MCC =
+              T.let(:AUTH_RULE_BLOCKED_MCC, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            CARD_CLOSED = T.let(:CARD_CLOSED, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            CARD_CRYPTOGRAM_VALIDATION_FAILURE =
+              T.let(
+                :CARD_CRYPTOGRAM_VALIDATION_FAILURE,
+                Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            CARD_EXPIRED = T.let(:CARD_EXPIRED, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            CARD_EXPIRY_DATE_INCORRECT =
+              T.let(:CARD_EXPIRY_DATE_INCORRECT, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            CARD_INVALID = T.let(:CARD_INVALID, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            CARD_NOT_ACTIVATED =
+              T.let(:CARD_NOT_ACTIVATED, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            CARD_PAUSED = T.let(:CARD_PAUSED, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            CARD_PIN_INCORRECT =
+              T.let(:CARD_PIN_INCORRECT, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            CARD_RESTRICTED =
+              T.let(:CARD_RESTRICTED, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            CARD_SECURITY_CODE_INCORRECT =
+              T.let(:CARD_SECURITY_CODE_INCORRECT, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            CARD_SPEND_LIMIT_EXCEEDED =
+              T.let(:CARD_SPEND_LIMIT_EXCEEDED, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            CONTACT_CARD_ISSUER =
+              T.let(:CONTACT_CARD_ISSUER, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            CUSTOMER_ASA_TIMEOUT =
+              T.let(:CUSTOMER_ASA_TIMEOUT, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            CUSTOM_ASA_RESULT =
+              T.let(:CUSTOM_ASA_RESULT, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            DECLINED = T.let(:DECLINED, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            DO_NOT_HONOR = T.let(:DO_NOT_HONOR, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            DRIVER_NUMBER_INVALID =
+              T.let(:DRIVER_NUMBER_INVALID, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            FORMAT_ERROR = T.let(:FORMAT_ERROR, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            INSUFFICIENT_FUNDING_SOURCE_BALANCE =
+              T.let(
+                :INSUFFICIENT_FUNDING_SOURCE_BALANCE,
+                Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            INSUFFICIENT_FUNDS =
+              T.let(:INSUFFICIENT_FUNDS, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            LITHIC_SYSTEM_ERROR =
+              T.let(:LITHIC_SYSTEM_ERROR, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            LITHIC_SYSTEM_RATE_LIMIT =
+              T.let(:LITHIC_SYSTEM_RATE_LIMIT, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            MALFORMED_ASA_RESPONSE =
+              T.let(:MALFORMED_ASA_RESPONSE, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            MERCHANT_INVALID =
+              T.let(:MERCHANT_INVALID, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE =
+              T.let(
+                :MERCHANT_LOCKED_CARD_ATTEMPTED_ELSEWHERE,
+                Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            MERCHANT_NOT_PERMITTED =
+              T.let(:MERCHANT_NOT_PERMITTED, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            OVER_REVERSAL_ATTEMPTED =
+              T.let(:OVER_REVERSAL_ATTEMPTED, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            PIN_BLOCKED = T.let(:PIN_BLOCKED, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            PROGRAM_CARD_SPEND_LIMIT_EXCEEDED =
+              T.let(
+                :PROGRAM_CARD_SPEND_LIMIT_EXCEEDED,
+                Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            PROGRAM_SUSPENDED =
+              T.let(:PROGRAM_SUSPENDED, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            PROGRAM_USAGE_RESTRICTION =
+              T.let(:PROGRAM_USAGE_RESTRICTION, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            REVERSAL_UNMATCHED =
+              T.let(:REVERSAL_UNMATCHED, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            SECURITY_VIOLATION =
+              T.let(:SECURITY_VIOLATION, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            SINGLE_USE_CARD_REATTEMPTED =
+              T.let(:SINGLE_USE_CARD_REATTEMPTED, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            TRANSACTION_INVALID =
+              T.let(:TRANSACTION_INVALID, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL =
+              T.let(
+                :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL,
+                Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER =
+              T.let(
+                :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER,
+                Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            TRANSACTION_PREVIOUSLY_COMPLETED =
+              T.let(
+                :TRANSACTION_PREVIOUSLY_COMPLETED,
+                Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            UNAUTHORIZED_MERCHANT =
+              T.let(:UNAUTHORIZED_MERCHANT, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
+            VEHICLE_NUMBER_INVALID =
+              T.let(:VEHICLE_NUMBER_INVALID, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
           end
         end
 
         # Type of transaction event
-        class Type < Lithic::Enum
-          abstract!
+        module Type
+          extend Lithic::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Event::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Event::Type::TaggedSymbol) }
 
-          AUTHORIZATION = :AUTHORIZATION
-          AUTHORIZATION_ADVICE = :AUTHORIZATION_ADVICE
-          AUTHORIZATION_EXPIRY = :AUTHORIZATION_EXPIRY
-          AUTHORIZATION_REVERSAL = :AUTHORIZATION_REVERSAL
-          BALANCE_INQUIRY = :BALANCE_INQUIRY
-          CLEARING = :CLEARING
-          CORRECTION_CREDIT = :CORRECTION_CREDIT
-          CORRECTION_DEBIT = :CORRECTION_DEBIT
-          CREDIT_AUTHORIZATION = :CREDIT_AUTHORIZATION
-          CREDIT_AUTHORIZATION_ADVICE = :CREDIT_AUTHORIZATION_ADVICE
-          FINANCIAL_AUTHORIZATION = :FINANCIAL_AUTHORIZATION
-          FINANCIAL_CREDIT_AUTHORIZATION = :FINANCIAL_CREDIT_AUTHORIZATION
-          RETURN = :RETURN
-          RETURN_REVERSAL = :RETURN_REVERSAL
+          AUTHORIZATION = T.let(:AUTHORIZATION, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+          AUTHORIZATION_ADVICE =
+            T.let(:AUTHORIZATION_ADVICE, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+          AUTHORIZATION_EXPIRY =
+            T.let(:AUTHORIZATION_EXPIRY, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+          AUTHORIZATION_REVERSAL =
+            T.let(:AUTHORIZATION_REVERSAL, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+          BALANCE_INQUIRY = T.let(:BALANCE_INQUIRY, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+          CLEARING = T.let(:CLEARING, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+          CORRECTION_CREDIT = T.let(:CORRECTION_CREDIT, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+          CORRECTION_DEBIT = T.let(:CORRECTION_DEBIT, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+          CREDIT_AUTHORIZATION =
+            T.let(:CREDIT_AUTHORIZATION, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+          CREDIT_AUTHORIZATION_ADVICE =
+            T.let(:CREDIT_AUTHORIZATION_ADVICE, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+          FINANCIAL_AUTHORIZATION =
+            T.let(:FINANCIAL_AUTHORIZATION, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+          FINANCIAL_CREDIT_AUTHORIZATION =
+            T.let(:FINANCIAL_CREDIT_AUTHORIZATION, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+          RETURN = T.let(:RETURN, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
+          RETURN_REVERSAL = T.let(:RETURN_REVERSAL, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
         end
       end
     end

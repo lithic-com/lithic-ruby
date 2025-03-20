@@ -35,11 +35,14 @@ module Lithic
       end
 
       # List balances for a given Financial Account type.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol)) }
       def financial_account_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol)
+          .returns(Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol)
+      end
       def financial_account_type=(_)
       end
 
@@ -48,7 +51,7 @@ module Lithic
           account_token: String,
           balance_date: Time,
           business_account_token: String,
-          financial_account_type: Symbol,
+          financial_account_type: Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol,
           request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -69,7 +72,7 @@ module Lithic
               account_token: String,
               balance_date: Time,
               business_account_token: String,
-              financial_account_type: Symbol,
+              financial_account_type: Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol,
               request_options: Lithic::RequestOptions
             }
           )
@@ -78,14 +81,16 @@ module Lithic
       end
 
       # List balances for a given Financial Account type.
-      class FinancialAccountType < Lithic::Enum
-        abstract!
+      module FinancialAccountType
+        extend Lithic::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BalanceListParams::FinancialAccountType) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Lithic::Models::BalanceListParams::FinancialAccountType::TaggedSymbol) }
 
-        ISSUING = :ISSUING
-        OPERATING = :OPERATING
-        RESERVE = :RESERVE
+        ISSUING = T.let(:ISSUING, Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol)
+        OPERATING = T.let(:OPERATING, Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol)
+        RESERVE = T.let(:RESERVE, Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol)
       end
     end
   end

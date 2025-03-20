@@ -96,7 +96,9 @@ module Lithic
         | :DISPUTE
         | :INTERNAL
 
-      class Category < Lithic::Enum
+      module Category
+        extend Lithic::Enum
+
         BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
         FEE: :FEE
         REWARD: :REWARD
@@ -110,7 +112,9 @@ module Lithic
 
       type result = :APPROVED | :DECLINED
 
-      class Result < Lithic::Enum
+      module Result
+        extend Lithic::Enum
+
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
@@ -119,7 +123,9 @@ module Lithic
 
       type status = :DECLINED | :SETTLED
 
-      class Status < Lithic::Enum
+      module Status
+        extend Lithic::Enum
+
         DECLINED: :DECLINED
         SETTLED: :SETTLED
 
