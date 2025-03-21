@@ -147,10 +147,8 @@ module Lithic
         EXTERNAL_TRANSFER =
           T.let(:EXTERNAL_TRANSFER, Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -165,10 +163,8 @@ module Lithic
         APPROVED = T.let(:APPROVED, Lithic::Models::ExternalPaymentListParams::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPaymentListParams::Result::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Result::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Result::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -186,10 +182,8 @@ module Lithic
         REVERSED = T.let(:REVERSED, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol)
         CANCELED = T.let(:CANCELED, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

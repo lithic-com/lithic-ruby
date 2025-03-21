@@ -189,15 +189,13 @@ module Lithic
                 Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end

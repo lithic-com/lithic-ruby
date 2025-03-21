@@ -75,10 +75,8 @@ module Lithic
         ACH_RETURN_SETTLED =
           T.let(:ACH_RETURN_SETTLED, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -106,10 +104,8 @@ module Lithic
             Lithic::Models::PaymentSimulateActionParams::DeclineReason::TaggedSymbol
           )
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::PaymentSimulateActionParams::DeclineReason::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::PaymentSimulateActionParams::DeclineReason::TaggedSymbol]) }
+        def self.values
         end
       end
     end

@@ -63,10 +63,8 @@ module Lithic
           T.let(:CARD_TRANSACTION_COUNT_24H, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
         CARD_STATE = T.let(:CARD_STATE, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol]) }
+        def self.values
         end
       end
     end

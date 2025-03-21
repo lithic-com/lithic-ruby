@@ -130,15 +130,13 @@ module Lithic
               Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
 
@@ -156,13 +154,11 @@ module Lithic
           DECLINED =
             T.let(:DECLINED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -188,13 +184,11 @@ module Lithic
           VOIDED =
             T.let(:VOIDED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end

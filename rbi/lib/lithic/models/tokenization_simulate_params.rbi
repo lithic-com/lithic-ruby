@@ -120,10 +120,8 @@ module Lithic
           T.let(:SAMSUNG_PAY, Lithic::Models::TokenizationSimulateParams::TokenizationSource::TaggedSymbol)
         MERCHANT = T.let(:MERCHANT, Lithic::Models::TokenizationSimulateParams::TokenizationSource::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::TokenizationSimulateParams::TokenizationSource::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::TokenizationSimulateParams::TokenizationSource::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -146,13 +144,11 @@ module Lithic
             Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::TaggedSymbol
           )
 
-        class << self
-          sig do
-            override
-              .returns(T::Array[Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::TaggedSymbol])
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(T::Array[Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::TaggedSymbol])
+        end
+        def self.values
         end
       end
     end

@@ -87,10 +87,8 @@ module Lithic
         ITIN_LETTER = T.let(:ITIN_LETTER, Lithic::Models::Document::DocumentType::TaggedSymbol)
         FINCEN_BOI_REPORT = T.let(:FINCEN_BOI_REPORT, Lithic::Models::Document::DocumentType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Document::DocumentType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Document::DocumentType::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -196,10 +194,8 @@ module Lithic
           FRONT = T.let(:FRONT, Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol)
           BACK = T.let(:BACK, Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -219,10 +215,8 @@ module Lithic
           PARTIAL_APPROVAL =
             T.let(:PARTIAL_APPROVAL, Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -279,10 +273,8 @@ module Lithic
           UNKNOWN_ERROR =
             T.let(:UNKNOWN_ERROR, Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol]) }
+          def self.values
           end
         end
       end

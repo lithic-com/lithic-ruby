@@ -291,10 +291,8 @@ module Lithic
         UNLOCKED = T.let(:UNLOCKED, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
         DIGITAL_WALLET = T.let(:DIGITAL_WALLET, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::CardCreateParams::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::CardCreateParams::Type::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -324,10 +322,8 @@ module Lithic
         STANDARD_WITH_TRACKING =
           T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -346,10 +342,8 @@ module Lithic
         OPEN = T.let(:OPEN, Lithic::Models::CardCreateParams::State::TaggedSymbol)
         PAUSED = T.let(:PAUSED, Lithic::Models::CardCreateParams::State::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::CardCreateParams::State::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::CardCreateParams::State::TaggedSymbol]) }
+        def self.values
         end
       end
     end

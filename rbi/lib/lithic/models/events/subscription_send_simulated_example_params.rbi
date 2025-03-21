@@ -259,13 +259,11 @@ module Lithic
               Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end

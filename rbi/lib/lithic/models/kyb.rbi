@@ -455,10 +455,8 @@ module Lithic
         KYB_BASIC = T.let(:KYB_BASIC, Lithic::Models::KYB::Workflow::TaggedSymbol)
         KYB_BYO = T.let(:KYB_BYO, Lithic::Models::KYB::Workflow::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::KYB::Workflow::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::KYB::Workflow::TaggedSymbol]) }
+        def self.values
         end
       end
     end

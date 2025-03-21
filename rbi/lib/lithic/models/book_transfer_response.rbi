@@ -131,10 +131,8 @@ module Lithic
         REWARD = T.let(:REWARD, Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
         TRANSFER = T.let(:TRANSFER, Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Category::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Category::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -219,10 +217,8 @@ module Lithic
           FUNDS_INSUFFICIENT =
             T.let(:FUNDS_INSUFFICIENT, Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -238,10 +234,8 @@ module Lithic
           APPROVED = T.let(:APPROVED, Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -257,10 +251,8 @@ module Lithic
         APPROVED = T.let(:APPROVED, Lithic::Models::BookTransferResponse::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferResponse::Result::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Result::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Result::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -276,10 +268,8 @@ module Lithic
         REVERSED = T.let(:REVERSED, Lithic::Models::BookTransferResponse::Status::TaggedSymbol)
         SETTLED = T.let(:SETTLED, Lithic::Models::BookTransferResponse::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

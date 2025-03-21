@@ -138,10 +138,8 @@ module Lithic
         PENDING_ACTIVATION = T.let(:PENDING_ACTIVATION, Lithic::Models::Tokenization::Status::TaggedSymbol)
         UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Tokenization::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Tokenization::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Tokenization::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -165,10 +163,8 @@ module Lithic
         UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol)
         VISA_CHECKOUT = T.let(:VISA_CHECKOUT, Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -183,10 +179,8 @@ module Lithic
         DIGITAL_WALLET = T.let(:DIGITAL_WALLET, Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol)
         MERCHANT = T.let(:MERCHANT, Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -267,10 +261,8 @@ module Lithic
           TOKEN_SUSPENDED = T.let(:TOKEN_SUSPENDED, Lithic::Models::Tokenization::Event::Result::TaggedSymbol)
           TOKEN_UPDATED = T.let(:TOKEN_UPDATED, Lithic::Models::Tokenization::Event::Result::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Tokenization::Event::Result::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Tokenization::Event::Result::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -291,10 +283,8 @@ module Lithic
           TOKENIZATION_UPDATED =
             T.let(:TOKENIZATION_UPDATED, Lithic::Models::Tokenization::Event::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Tokenization::Event::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Tokenization::Event::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end

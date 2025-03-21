@@ -247,10 +247,8 @@ module Lithic
           T.let(:RECURRING_TRANSACTION_NOT_CANCELLED, Lithic::Models::Dispute::Reason::TaggedSymbol)
         REFUND_NOT_PROCESSED = T.let(:REFUND_NOT_PROCESSED, Lithic::Models::Dispute::Reason::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Dispute::Reason::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Dispute::Reason::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -307,10 +305,8 @@ module Lithic
           T.let(:WON_FIRST_CHARGEBACK, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
         WON_PREARBITRATION = T.let(:WON_PREARBITRATION, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Dispute::ResolutionReason::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Dispute::ResolutionReason::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -340,10 +336,8 @@ module Lithic
         REPRESENTMENT = T.let(:REPRESENTMENT, Lithic::Models::Dispute::Status::TaggedSymbol)
         SUBMITTED = T.let(:SUBMITTED, Lithic::Models::Dispute::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Dispute::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Dispute::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

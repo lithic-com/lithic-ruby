@@ -163,10 +163,8 @@ module Lithic
 
         ACH = T.let(:ACH, Lithic::Models::Payment::Category::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Payment::Category::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Payment::Category::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -179,10 +177,8 @@ module Lithic
         CREDIT = T.let(:CREDIT, Lithic::Models::Payment::Direction::TaggedSymbol)
         DEBIT = T.let(:DEBIT, Lithic::Models::Payment::Direction::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Payment::Direction::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Payment::Direction::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -276,10 +272,8 @@ module Lithic
           APPROVED = T.let(:APPROVED, Lithic::Models::Payment::Event::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::Payment::Event::Result::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Payment::Event::Result::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Payment::Event::Result::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -327,10 +321,8 @@ module Lithic
           ACH_RETURN_PROCESSED = T.let(:ACH_RETURN_PROCESSED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
           ACH_RETURN_SETTLED = T.let(:ACH_RETURN_SETTLED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Payment::Event::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Payment::Event::Type::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -351,10 +343,8 @@ module Lithic
           PROGRAM_MONTHLY_LIMIT_EXCEEDED =
             T.let(:PROGRAM_MONTHLY_LIMIT_EXCEEDED, Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -368,10 +358,8 @@ module Lithic
         ACH_NEXT_DAY = T.let(:ACH_NEXT_DAY, Lithic::Models::Payment::Method::TaggedSymbol)
         ACH_SAME_DAY = T.let(:ACH_SAME_DAY, Lithic::Models::Payment::Method::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Payment::Method::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Payment::Method::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -435,10 +423,8 @@ module Lithic
           PPD = T.let(:PPD, Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol)
           WEB = T.let(:WEB, Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -454,10 +440,8 @@ module Lithic
         APPROVED = T.let(:APPROVED, Lithic::Models::Payment::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::Payment::Result::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Payment::Result::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Payment::Result::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -470,10 +454,8 @@ module Lithic
         CUSTOMER = T.let(:CUSTOMER, Lithic::Models::Payment::Source::TaggedSymbol)
         LITHIC = T.let(:LITHIC, Lithic::Models::Payment::Source::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Payment::Source::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Payment::Source::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -495,10 +477,8 @@ module Lithic
         RETURNED = T.let(:RETURNED, Lithic::Models::Payment::Status::TaggedSymbol)
         SETTLED = T.let(:SETTLED, Lithic::Models::Payment::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Payment::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Payment::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

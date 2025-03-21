@@ -128,10 +128,8 @@ module Lithic
         CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol)
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

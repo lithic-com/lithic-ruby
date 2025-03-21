@@ -669,15 +669,13 @@ module Lithic
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol
           )
 
-        class << self
-          sig do
-            override
-              .returns(
-                T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol]
-              )
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(
+              T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol]
+            )
+        end
+        def self.values
         end
       end
 
@@ -864,13 +862,11 @@ module Lithic
         REJECTED =
           T.let(:REJECTED, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol)
 
-        class << self
-          sig do
-            override
-              .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol])
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol])
+        end
+        def self.values
         end
       end
 
@@ -1004,15 +1000,13 @@ module Lithic
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol
           )
 
-        class << self
-          sig do
-            override
-              .returns(
-                T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol]
-              )
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(
+              T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol]
+            )
+        end
+        def self.values
         end
       end
 
@@ -1036,13 +1030,11 @@ module Lithic
         INDIVIDUAL =
           T.let(:INDIVIDUAL, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol)
 
-        class << self
-          sig do
-            override
-              .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol])
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol])
+        end
+        def self.values
         end
       end
 
@@ -1147,17 +1139,15 @@ module Lithic
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[
-                  Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::TaggedSymbol
-                  ]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::TaggedSymbol
+                ]
+              )
+          end
+          def self.values
           end
         end
 
@@ -1298,17 +1288,15 @@ module Lithic
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[
-                  Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
-                  ]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
+                ]
+              )
+          end
+          def self.values
           end
         end
       end

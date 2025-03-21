@@ -47,10 +47,8 @@ module Lithic
         TOKENIZATION_DECISIONING =
           T.let(:TOKENIZATION_DECISIONING, Lithic::Models::ResponderEndpointCheckStatusParams::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ResponderEndpointCheckStatusParams::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ResponderEndpointCheckStatusParams::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

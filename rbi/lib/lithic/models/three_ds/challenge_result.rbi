@@ -13,10 +13,8 @@ module Lithic
         APPROVE = T.let(:APPROVE, Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol)
         DECLINE_BY_CUSTOMER = T.let(:DECLINE_BY_CUSTOMER, Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol]) }
+        def self.values
         end
       end
     end
