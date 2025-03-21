@@ -21,8 +21,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::Transfer::Category::TaggedSymbol)
-          .returns(Lithic::Models::Transfer::Category::TaggedSymbol)
+        params(_: Lithic::Models::Transfer::Category::OrSymbol)
+          .returns(Lithic::Models::Transfer::Category::OrSymbol)
       end
       def category=(_)
       end
@@ -61,7 +61,10 @@ module Lithic
       def events
       end
 
-      sig { params(_: T::Array[Lithic::Models::Transfer::Event]).returns(T::Array[Lithic::Models::Transfer::Event]) }
+      sig do
+        params(_: T::Array[T.any(Lithic::Models::Transfer::Event, Lithic::Util::AnyHash)])
+          .returns(T::Array[T.any(Lithic::Models::Transfer::Event, Lithic::Util::AnyHash)])
+      end
       def events=(_)
       end
 
@@ -70,7 +73,10 @@ module Lithic
       def from_balance
       end
 
-      sig { params(_: T::Array[Lithic::Models::Balance]).returns(T::Array[Lithic::Models::Balance]) }
+      sig do
+        params(_: T::Array[T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)])
+          .returns(T::Array[T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)])
+      end
       def from_balance=(_)
       end
 
@@ -91,10 +97,7 @@ module Lithic
       def result
       end
 
-      sig do
-        params(_: Lithic::Models::Transfer::Result::TaggedSymbol)
-          .returns(Lithic::Models::Transfer::Result::TaggedSymbol)
-      end
+      sig { params(_: Lithic::Models::Transfer::Result::OrSymbol).returns(Lithic::Models::Transfer::Result::OrSymbol) }
       def result=(_)
       end
 
@@ -119,10 +122,7 @@ module Lithic
       def status
       end
 
-      sig do
-        params(_: Lithic::Models::Transfer::Status::TaggedSymbol)
-          .returns(Lithic::Models::Transfer::Status::TaggedSymbol)
-      end
+      sig { params(_: Lithic::Models::Transfer::Status::OrSymbol).returns(Lithic::Models::Transfer::Status::OrSymbol) }
       def status=(_)
       end
 
@@ -131,7 +131,10 @@ module Lithic
       def to_balance
       end
 
-      sig { params(_: T::Array[Lithic::Models::Balance]).returns(T::Array[Lithic::Models::Balance]) }
+      sig do
+        params(_: T::Array[T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)])
+          .returns(T::Array[T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)])
+      end
       def to_balance=(_)
       end
 
@@ -147,17 +150,17 @@ module Lithic
       sig do
         params(
           token: String,
-          category: Lithic::Models::Transfer::Category::TaggedSymbol,
+          category: Lithic::Models::Transfer::Category::OrSymbol,
           created: Time,
           currency: String,
           descriptor: String,
-          events: T::Array[Lithic::Models::Transfer::Event],
-          from_balance: T::Array[Lithic::Models::Balance],
+          events: T::Array[T.any(Lithic::Models::Transfer::Event, Lithic::Util::AnyHash)],
+          from_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)],
           pending_amount: Integer,
-          result: Lithic::Models::Transfer::Result::TaggedSymbol,
+          result: Lithic::Models::Transfer::Result::OrSymbol,
           settled_amount: Integer,
-          status: Lithic::Models::Transfer::Status::TaggedSymbol,
-          to_balance: T::Array[Lithic::Models::Balance],
+          status: Lithic::Models::Transfer::Status::OrSymbol,
+          to_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)],
           updated: Time
         )
           .returns(T.attached_class)
@@ -257,8 +260,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::Transfer::Event::Result::TaggedSymbol)
-            .returns(Lithic::Models::Transfer::Event::Result::TaggedSymbol)
+          params(_: Lithic::Models::Transfer::Event::Result::OrSymbol)
+            .returns(Lithic::Models::Transfer::Event::Result::OrSymbol)
         end
         def result=(_)
         end
@@ -268,8 +271,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::Transfer::Event::Type::TaggedSymbol)
-            .returns(Lithic::Models::Transfer::Event::Type::TaggedSymbol)
+          params(_: Lithic::Models::Transfer::Event::Type::OrSymbol)
+            .returns(Lithic::Models::Transfer::Event::Type::OrSymbol)
         end
         def type=(_)
         end
@@ -279,8 +282,8 @@ module Lithic
             token: String,
             amount: Integer,
             created: Time,
-            result: Lithic::Models::Transfer::Event::Result::TaggedSymbol,
-            type: Lithic::Models::Transfer::Event::Type::TaggedSymbol
+            result: Lithic::Models::Transfer::Event::Result::OrSymbol,
+            type: Lithic::Models::Transfer::Event::Type::OrSymbol
           )
             .returns(T.attached_class)
         end

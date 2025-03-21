@@ -245,13 +245,13 @@ module Lithic
           network_reason_code: T.nilable(String),
           prearbitration_date: T.nilable(Time),
           primary_claim_id: T.nilable(String),
-          reason: Lithic::Models::Dispute::Reason::TaggedSymbol,
+          reason: Lithic::Models::Dispute::Reason::OrSymbol,
           representment_date: T.nilable(Time),
           resolution_amount: T.nilable(Integer),
           resolution_date: T.nilable(Time),
           resolution_note: T.nilable(String),
-          resolution_reason: T.nilable(Lithic::Models::Dispute::ResolutionReason::TaggedSymbol),
-          status: Lithic::Models::Dispute::Status::TaggedSymbol,
+          resolution_reason: T.nilable(Lithic::Models::Dispute::ResolutionReason::OrSymbol),
+          status: Lithic::Models::Dispute::Status::OrSymbol,
           transaction_token: String
         )
           .returns(T.attached_class)

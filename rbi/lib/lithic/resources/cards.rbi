@@ -22,7 +22,7 @@ module Lithic
           type: Lithic::Models::CardCreateParams::Type::OrSymbol,
           account_token: String,
           card_program_token: String,
-          carrier: Lithic::Models::Carrier,
+          carrier: T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash),
           digital_card_art_token: String,
           exp_month: String,
           exp_year: String,
@@ -31,7 +31,7 @@ module Lithic
           product_id: String,
           replacement_account_token: String,
           replacement_for: String,
-          shipping_address: Lithic::Models::ShippingAddress,
+          shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash),
           shipping_method: Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol,
           spend_limit: Integer,
           spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
@@ -274,8 +274,8 @@ module Lithic
       sig do
         params(
           card_token: String,
-          shipping_address: Lithic::Models::ShippingAddress,
-          carrier: Lithic::Models::Carrier,
+          shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash),
+          carrier: T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash),
           product_id: String,
           shipping_method: Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
@@ -410,9 +410,9 @@ module Lithic
       sig do
         params(
           card_token: String,
-          carrier: Lithic::Models::Carrier,
+          carrier: T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash),
           product_id: String,
-          shipping_address: Lithic::Models::ShippingAddress,
+          shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash),
           shipping_method: Lithic::Models::CardReissueParams::ShippingMethod::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
@@ -454,8 +454,8 @@ module Lithic
       sig do
         params(
           card_token: String,
-          shipping_address: Lithic::Models::ShippingAddress,
-          carrier: Lithic::Models::Carrier,
+          shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash),
+          carrier: T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash),
           exp_month: String,
           exp_year: String,
           product_id: String,

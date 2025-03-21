@@ -237,8 +237,8 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_entities: T::Array[Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity],
-          beneficial_owner_individuals: T::Array[Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual],
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity, Lithic::Util::AnyHash)],
+          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual, Lithic::Util::AnyHash)],
           business_entity: T.any(Lithic::Models::AccountHolderCreateParams::BusinessEntity, Lithic::Util::AnyHash),
           control_person: T.any(Lithic::Models::AccountHolderCreateParams::ControlPerson, Lithic::Util::AnyHash),
           nature_of_business: String,

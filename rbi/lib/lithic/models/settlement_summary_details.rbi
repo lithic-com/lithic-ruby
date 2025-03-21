@@ -46,8 +46,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
-          .returns(Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
+        params(_: Lithic::Models::SettlementSummaryDetails::Network::OrSymbol)
+          .returns(Lithic::Models::SettlementSummaryDetails::Network::OrSymbol)
       end
       def network=(_)
       end
@@ -87,7 +87,7 @@ module Lithic
           disputes_gross_amount: Integer,
           institution: String,
           interchange_gross_amount: Integer,
-          network: Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol,
+          network: Lithic::Models::SettlementSummaryDetails::Network::OrSymbol,
           other_fees_gross_amount: Integer,
           settled_net_amount: Integer,
           transactions_gross_amount: Integer

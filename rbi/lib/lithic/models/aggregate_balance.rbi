@@ -106,7 +106,7 @@ module Lithic
           available_amount: Integer,
           created: Time,
           currency: String,
-          financial_account_type: Lithic::Models::AggregateBalance::FinancialAccountType::TaggedSymbol,
+          financial_account_type: Lithic::Models::AggregateBalance::FinancialAccountType::OrSymbol,
           last_financial_account_token: String,
           last_transaction_event_token: String,
           last_transaction_token: String,

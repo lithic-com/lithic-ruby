@@ -15,7 +15,10 @@ module Lithic
         def conditions=(_)
         end
 
-        sig { params(conditions: T::Array[Lithic::Models::AuthRules::AuthRuleCondition]).returns(T.attached_class) }
+        sig do
+          params(conditions: T::Array[T.any(Lithic::Models::AuthRules::AuthRuleCondition, Lithic::Util::AnyHash)])
+            .returns(T.attached_class)
+        end
         def self.new(conditions:)
         end
 

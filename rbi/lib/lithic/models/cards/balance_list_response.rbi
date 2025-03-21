@@ -112,7 +112,7 @@ module Lithic
             last_transaction_token: String,
             pending_amount: Integer,
             total_amount: Integer,
-            type: Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol,
+            type: Lithic::Models::Cards::BalanceListResponse::Type::OrSymbol,
             updated: Time
           )
             .returns(T.attached_class)

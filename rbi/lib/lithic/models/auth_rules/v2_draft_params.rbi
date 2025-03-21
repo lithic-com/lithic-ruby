@@ -47,6 +47,7 @@ module Lithic
             parameters: T.nilable(
               T.any(
                 Lithic::Models::AuthRules::ConditionalBlockParameters,
+                Lithic::Util::AnyHash,
                 Lithic::Models::AuthRules::VelocityLimitParams
               )
             ),

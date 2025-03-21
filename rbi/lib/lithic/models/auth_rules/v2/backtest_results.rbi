@@ -162,8 +162,22 @@ module Lithic
               end
 
               sig do
-                params(_: T::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example])
-                  .returns(T::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example])
+                params(
+                  _: T::Array[
+                  T.any(
+                    Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example,
+                    Lithic::Util::AnyHash
+                  )
+                  ]
+                )
+                  .returns(
+                    T::Array[
+                    T.any(
+                      Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example,
+                      Lithic::Util::AnyHash
+                    )
+                    ]
+                  )
               end
               def examples=(_)
               end
@@ -182,7 +196,12 @@ module Lithic
                 params(
                   approved: Integer,
                   declined: Integer,
-                  examples: T::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example],
+                  examples: T::Array[
+                  T.any(
+                    Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example,
+                    Lithic::Util::AnyHash
+                  )
+                  ],
                   version: Integer
                 )
                   .returns(T.attached_class)
@@ -277,8 +296,22 @@ module Lithic
               end
 
               sig do
-                params(_: T::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example])
-                  .returns(T::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example])
+                params(
+                  _: T::Array[
+                  T.any(
+                    Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example,
+                    Lithic::Util::AnyHash
+                  )
+                  ]
+                )
+                  .returns(
+                    T::Array[
+                    T.any(
+                      Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example,
+                      Lithic::Util::AnyHash
+                    )
+                    ]
+                  )
               end
               def examples=(_)
               end
@@ -297,7 +330,12 @@ module Lithic
                 params(
                   approved: Integer,
                   declined: Integer,
-                  examples: T::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example],
+                  examples: T::Array[
+                  T.any(
+                    Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example,
+                    Lithic::Util::AnyHash
+                  )
+                  ],
                   version: Integer
                 )
                   .returns(T.attached_class)

@@ -18,8 +18,12 @@ module Lithic
       end
 
       sig do
-        params(_: T::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity])
-          .returns(T::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity])
+        params(
+          _: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity, Lithic::Util::AnyHash)]
+        )
+          .returns(
+            T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity, Lithic::Util::AnyHash)]
+          )
       end
       def beneficial_owner_entities=(_)
       end
@@ -36,8 +40,12 @@ module Lithic
       end
 
       sig do
-        params(_: T::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual])
-          .returns(T::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual])
+        params(
+          _: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual, Lithic::Util::AnyHash)]
+        )
+          .returns(
+            T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual, Lithic::Util::AnyHash)]
+          )
       end
       def beneficial_owner_individuals=(_)
       end
@@ -189,8 +197,8 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_entities: T::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity],
-          beneficial_owner_individuals: T::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual],
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity, Lithic::Util::AnyHash)],
+          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual, Lithic::Util::AnyHash)],
           business_entity: T.any(Lithic::Models::AccountHolderUpdateParams::BusinessEntity, Lithic::Util::AnyHash),
           control_person: T.any(Lithic::Models::AccountHolderUpdateParams::ControlPerson, Lithic::Util::AnyHash),
           external_id: String,

@@ -121,8 +121,8 @@ module Lithic
       end
 
       sig do
-        params(_: T::Array[Lithic::Models::Tokenization::Event])
-          .returns(T::Array[Lithic::Models::Tokenization::Event])
+        params(_: T::Array[T.any(Lithic::Models::Tokenization::Event, Lithic::Util::AnyHash)])
+          .returns(T::Array[T.any(Lithic::Models::Tokenization::Event, Lithic::Util::AnyHash)])
       end
       def events=(_)
       end
@@ -143,13 +143,13 @@ module Lithic
           card_token: String,
           created_at: Time,
           dpan: T.nilable(String),
-          status: Lithic::Models::Tokenization::Status::TaggedSymbol,
-          token_requestor_name: Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol,
+          status: Lithic::Models::Tokenization::Status::OrSymbol,
+          token_requestor_name: Lithic::Models::Tokenization::TokenRequestorName::OrSymbol,
           token_unique_reference: String,
-          tokenization_channel: Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol,
+          tokenization_channel: Lithic::Models::Tokenization::TokenizationChannel::OrSymbol,
           updated_at: Time,
           digital_card_art_token: String,
-          events: T::Array[Lithic::Models::Tokenization::Event],
+          events: T::Array[T.any(Lithic::Models::Tokenization::Event, Lithic::Util::AnyHash)],
           payment_account_reference_id: T.nilable(String)
         )
           .returns(T.attached_class)
@@ -286,8 +286,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::Tokenization::Event::Result::TaggedSymbol)
-            .returns(Lithic::Models::Tokenization::Event::Result::TaggedSymbol)
+          params(_: Lithic::Models::Tokenization::Event::Result::OrSymbol)
+            .returns(Lithic::Models::Tokenization::Event::Result::OrSymbol)
         end
         def result=(_)
         end
@@ -298,8 +298,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::Tokenization::Event::Type::TaggedSymbol)
-            .returns(Lithic::Models::Tokenization::Event::Type::TaggedSymbol)
+          params(_: Lithic::Models::Tokenization::Event::Type::OrSymbol)
+            .returns(Lithic::Models::Tokenization::Event::Type::OrSymbol)
         end
         def type=(_)
         end
@@ -308,8 +308,8 @@ module Lithic
           params(
             token: String,
             created_at: Time,
-            result: Lithic::Models::Tokenization::Event::Result::TaggedSymbol,
-            type: Lithic::Models::Tokenization::Event::Type::TaggedSymbol
+            result: Lithic::Models::Tokenization::Event::Result::OrSymbol,
+            type: Lithic::Models::Tokenization::Event::Type::OrSymbol
           )
             .returns(T.attached_class)
         end

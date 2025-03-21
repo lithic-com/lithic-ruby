@@ -123,12 +123,12 @@ module Lithic
           credit_configuration: T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Util::AnyHash)),
           is_for_benefit_of: T::Boolean,
           nickname: T.nilable(String),
-          status: Lithic::Models::FinancialAccount::Status::TaggedSymbol,
-          type: Lithic::Models::FinancialAccount::Type::TaggedSymbol,
+          status: Lithic::Models::FinancialAccount::Status::OrSymbol,
+          type: Lithic::Models::FinancialAccount::Type::OrSymbol,
           updated: Time,
           account_number: T.nilable(String),
           routing_number: T.nilable(String),
-          status_change_reason: T.nilable(Lithic::Models::FinancialAccount::StatusChangeReason::TaggedSymbol)
+          status_change_reason: T.nilable(Lithic::Models::FinancialAccount::StatusChangeReason::OrSymbol)
         )
           .returns(T.attached_class)
       end
@@ -249,11 +249,11 @@ module Lithic
 
         sig do
           params(
-            charged_off_reason: T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason::TaggedSymbol),
+            charged_off_reason: T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason::OrSymbol),
             credit_limit: T.nilable(Integer),
             credit_product_token: T.nilable(String),
             external_bank_account_token: T.nilable(String),
-            financial_account_state: T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState::TaggedSymbol),
+            financial_account_state: T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState::OrSymbol),
             is_spend_blocked: T::Boolean,
             tier: T.nilable(String)
           )
