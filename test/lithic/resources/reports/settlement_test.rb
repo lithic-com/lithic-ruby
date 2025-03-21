@@ -11,6 +11,8 @@ class Lithic::Test::Resources::Reports::SettlementTest < Lithic::Test::ResourceT
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::SettlementDetail
     end

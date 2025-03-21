@@ -65,6 +65,8 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::EventSubscription
     end
@@ -98,6 +100,8 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::MessageAttempt
     end

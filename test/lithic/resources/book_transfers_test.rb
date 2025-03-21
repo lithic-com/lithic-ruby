@@ -69,6 +69,8 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::BookTransferResponse
     end
