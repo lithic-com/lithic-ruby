@@ -299,20 +299,23 @@ module Lithic
           beneficial_owner_entities: T::Array[Lithic::Models::KYBBusinessEntity],
           beneficial_owner_individuals: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual],
           business_account_token: String,
-          business_entity: Lithic::Models::KYBBusinessEntity,
-          control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
+          business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash),
+          control_person: T.any(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson, Lithic::Util::AnyHash),
           created: Time,
           email: String,
           exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol,
           external_id: String,
-          individual: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
+          individual: T.any(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual, Lithic::Util::AnyHash),
           nature_of_business: String,
           phone_number: String,
           required_documents: T::Array[Lithic::Models::RequiredDocument],
           status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol,
           status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol],
           user_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol,
-          verification_application: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
+          verification_application: T.any(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
+            Lithic::Util::AnyHash
+          ),
           website_url: String
         )
           .returns(T.attached_class)
@@ -449,7 +452,10 @@ module Lithic
 
         sig do
           params(
-            address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
+            address: T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
+              Lithic::Util::AnyHash
+            ),
             dob: String,
             email: String,
             first_name: String,
@@ -653,7 +659,10 @@ module Lithic
         #   be a beneficial owner listed above.
         sig do
           params(
-            address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address,
+            address: T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address,
+              Lithic::Util::AnyHash
+            ),
             dob: String,
             email: String,
             first_name: String,
@@ -881,7 +890,10 @@ module Lithic
         #   for which the account is being opened and KYC is being run.
         sig do
           params(
-            address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address,
+            address: T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address,
+              Lithic::Util::AnyHash
+            ),
             dob: String,
             email: String,
             first_name: String,

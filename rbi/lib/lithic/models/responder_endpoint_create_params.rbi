@@ -31,7 +31,7 @@ module Lithic
         params(
           type: Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol,
           url: String,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

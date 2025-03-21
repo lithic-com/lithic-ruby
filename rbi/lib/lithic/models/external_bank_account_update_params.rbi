@@ -95,7 +95,7 @@ module Lithic
 
       sig do
         params(
-          address: Lithic::Models::ExternalBankAccountAddress,
+          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash),
           company_id: String,
           dob: Date,
           doing_business_as: String,
@@ -104,7 +104,7 @@ module Lithic
           owner_type: Lithic::Models::OwnerType::OrSymbol,
           type: Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol,
           user_defined_id: String,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

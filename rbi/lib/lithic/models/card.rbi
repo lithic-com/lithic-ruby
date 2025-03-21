@@ -286,7 +286,7 @@ module Lithic
           account_token: String,
           card_program_token: String,
           created: Time,
-          funding: Lithic::Models::Card::Funding,
+          funding: T.any(Lithic::Models::Card::Funding, Lithic::Util::AnyHash),
           last_four: String,
           pin_status: Lithic::Models::Card::PinStatus::TaggedSymbol,
           spend_limit: Integer,

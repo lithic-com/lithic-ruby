@@ -38,9 +38,9 @@ module Lithic
 
       sig do
         params(
-          available_spend_limit: Lithic::Models::CardSpendLimits::AvailableSpendLimit,
-          spend_limit: Lithic::Models::CardSpendLimits::SpendLimit,
-          spend_velocity: Lithic::Models::CardSpendLimits::SpendVelocity
+          available_spend_limit: T.any(Lithic::Models::CardSpendLimits::AvailableSpendLimit, Lithic::Util::AnyHash),
+          spend_limit: T.any(Lithic::Models::CardSpendLimits::SpendLimit, Lithic::Util::AnyHash),
+          spend_velocity: T.any(Lithic::Models::CardSpendLimits::SpendVelocity, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

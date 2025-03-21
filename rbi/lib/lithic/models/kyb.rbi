@@ -136,8 +136,8 @@ module Lithic
         params(
           beneficial_owner_entities: T::Array[Lithic::Models::KYB::BeneficialOwnerEntity],
           beneficial_owner_individuals: T::Array[Lithic::Models::KYB::BeneficialOwnerIndividual],
-          business_entity: Lithic::Models::KYB::BusinessEntity,
-          control_person: Lithic::Models::KYB::ControlPerson,
+          business_entity: T.any(Lithic::Models::KYB::BusinessEntity, Lithic::Util::AnyHash),
+          control_person: T.any(Lithic::Models::KYB::ControlPerson, Lithic::Util::AnyHash),
           nature_of_business: String,
           tos_timestamp: String,
           workflow: Lithic::Models::KYB::Workflow::OrSymbol,
@@ -246,7 +246,7 @@ module Lithic
 
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             government_id: String,
             legal_business_name: String,
             phone_numbers: T::Array[String],
@@ -357,7 +357,7 @@ module Lithic
         # Individuals associated with a KYB application. Phone number is optional.
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             dob: String,
             email: String,
             first_name: String,
@@ -455,7 +455,7 @@ module Lithic
         #   run.
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             government_id: String,
             legal_business_name: String,
             phone_numbers: T::Array[String],
@@ -573,7 +573,7 @@ module Lithic
         #   (Section II) for more background.
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             dob: String,
             email: String,
             first_name: String,

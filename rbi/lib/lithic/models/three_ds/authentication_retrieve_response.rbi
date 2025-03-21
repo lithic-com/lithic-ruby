@@ -334,23 +334,29 @@ module Lithic
             authentication_result: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol,
             card_expiry_check: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol,
             card_token: String,
-            cardholder: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder,
+            cardholder: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder, Lithic::Util::AnyHash),
             channel: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol,
             created: Time,
-            merchant: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant,
+            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant, Lithic::Util::AnyHash),
             message_category: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol,
             three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::TaggedSymbol,
-            additional_data: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData),
-            app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App,
+            additional_data: T.nilable(
+              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData, Lithic::Util::AnyHash)
+            ),
+            app: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, Lithic::Util::AnyHash),
             authentication_request_type: T.nilable(
               Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::TaggedSymbol
             ),
-            browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser,
-            challenge_metadata: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata),
+            browser: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, Lithic::Util::AnyHash),
+            challenge_metadata: T.nilable(
+              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata, Lithic::Util::AnyHash)
+            ),
             challenge_orchestrated_by: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol),
             decision_made_by: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol),
             three_ri_request_type: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol),
-            transaction: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction)
+            transaction: T.nilable(
+              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction, Lithic::Util::AnyHash)
+            )
           )
             .returns(T.attached_class)
         end
@@ -618,13 +624,19 @@ module Lithic
           sig do
             params(
               address_match: T.nilable(T::Boolean),
-              billing_address: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
+              billing_address: T.any(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
+                Lithic::Util::AnyHash
+              ),
               email: T.nilable(String),
               name: T.nilable(String),
               phone_number_home: T.nilable(String),
               phone_number_mobile: T.nilable(String),
               phone_number_work: T.nilable(String),
-              shipping_address: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress
+              shipping_address: T.any(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress,
+                Lithic::Util::AnyHash
+              )
             )
               .returns(T.attached_class)
           end
@@ -931,7 +943,10 @@ module Lithic
               country: String,
               mcc: String,
               name: String,
-              risk_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator
+              risk_indicator: T.any(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator,
+                Lithic::Util::AnyHash
+              )
             )
               .returns(T.attached_class)
           end

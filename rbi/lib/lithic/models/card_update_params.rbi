@@ -115,7 +115,7 @@ module Lithic
           spend_limit: Integer,
           spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
           state: Lithic::Models::CardUpdateParams::State::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

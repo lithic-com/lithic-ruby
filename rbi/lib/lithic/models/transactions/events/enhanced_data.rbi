@@ -57,7 +57,7 @@ module Lithic
           sig do
             params(
               token: String,
-              common: Lithic::Models::Transactions::Events::EnhancedData::Common,
+              common: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Util::AnyHash),
               event_token: String,
               fleet: T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet],
               transaction_token: String
@@ -135,7 +135,7 @@ module Lithic
             sig do
               params(
                 line_items: T::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem],
-                tax: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax,
+                tax: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Util::AnyHash),
                 customer_reference_number: String,
                 merchant_reference_number: String,
                 order_date: Date
@@ -378,8 +378,8 @@ module Lithic
 
             sig do
               params(
-                amount_totals: Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals,
-                fuel: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel,
+                amount_totals: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals, Lithic::Util::AnyHash),
+                fuel: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Util::AnyHash),
                 driver_number: String,
                 odometer: Integer,
                 service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol,

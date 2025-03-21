@@ -108,7 +108,7 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           status: Lithic::Models::ManagementOperationListParams::Status::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

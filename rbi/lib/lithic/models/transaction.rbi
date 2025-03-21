@@ -270,24 +270,24 @@ module Lithic
           acquirer_fee: T.nilable(Integer),
           acquirer_reference_number: T.nilable(String),
           amount: Integer,
-          amounts: Lithic::Models::Transaction::Amounts,
+          amounts: T.any(Lithic::Models::Transaction::Amounts, Lithic::Util::AnyHash),
           authorization_amount: T.nilable(Integer),
           authorization_code: T.nilable(String),
-          avs: T.nilable(Lithic::Models::Transaction::Avs),
+          avs: T.nilable(T.any(Lithic::Models::Transaction::Avs, Lithic::Util::AnyHash)),
           card_token: String,
-          cardholder_authentication: T.nilable(Lithic::Models::Transaction::CardholderAuthentication),
+          cardholder_authentication: T.nilable(T.any(Lithic::Models::Transaction::CardholderAuthentication, Lithic::Util::AnyHash)),
           created: Time,
-          merchant: Lithic::Models::Transaction::Merchant,
+          merchant: T.any(Lithic::Models::Transaction::Merchant, Lithic::Util::AnyHash),
           merchant_amount: T.nilable(Integer),
           merchant_authorization_amount: T.nilable(Integer),
           merchant_currency: String,
           network: T.nilable(Lithic::Models::Transaction::Network::TaggedSymbol),
           network_risk_score: T.nilable(Integer),
-          pos: Lithic::Models::Transaction::Pos,
+          pos: T.any(Lithic::Models::Transaction::Pos, Lithic::Util::AnyHash),
           result: Lithic::Models::Transaction::Result::TaggedSymbol,
           settled_amount: Integer,
           status: Lithic::Models::Transaction::Status::TaggedSymbol,
-          token_info: T.nilable(Lithic::Models::Transaction::TokenInfo),
+          token_info: T.nilable(T.any(Lithic::Models::Transaction::TokenInfo, Lithic::Util::AnyHash)),
           updated: Time,
           events: T::Array[Lithic::Models::Transaction::Event]
         )
@@ -404,10 +404,10 @@ module Lithic
 
         sig do
           params(
-            cardholder: Lithic::Models::Transaction::Amounts::Cardholder,
-            hold: Lithic::Models::Transaction::Amounts::Hold,
-            merchant: Lithic::Models::Transaction::Amounts::Merchant,
-            settlement: Lithic::Models::Transaction::Amounts::Settlement
+            cardholder: T.any(Lithic::Models::Transaction::Amounts::Cardholder, Lithic::Util::AnyHash),
+            hold: T.any(Lithic::Models::Transaction::Amounts::Hold, Lithic::Util::AnyHash),
+            merchant: T.any(Lithic::Models::Transaction::Amounts::Merchant, Lithic::Util::AnyHash),
+            settlement: T.any(Lithic::Models::Transaction::Amounts::Settlement, Lithic::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -1114,8 +1114,8 @@ module Lithic
 
         sig do
           params(
-            entry_mode: Lithic::Models::Transaction::Pos::EntryMode,
-            terminal: Lithic::Models::Transaction::Pos::Terminal
+            entry_mode: T.any(Lithic::Models::Transaction::Pos::EntryMode, Lithic::Util::AnyHash),
+            terminal: T.any(Lithic::Models::Transaction::Pos::Terminal, Lithic::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -1726,11 +1726,11 @@ module Lithic
           params(
             token: String,
             amount: Integer,
-            amounts: Lithic::Models::Transaction::Event::Amounts,
+            amounts: T.any(Lithic::Models::Transaction::Event::Amounts, Lithic::Util::AnyHash),
             created: Time,
             detailed_results: T::Array[Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol],
             effective_polarity: Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol,
-            network_info: T.nilable(Lithic::Models::Transaction::Event::NetworkInfo),
+            network_info: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo, Lithic::Util::AnyHash)),
             result: Lithic::Models::Transaction::Event::Result::TaggedSymbol,
             rule_results: T::Array[Lithic::Models::Transaction::Event::RuleResult],
             type: Lithic::Models::Transaction::Event::Type::TaggedSymbol
@@ -1809,9 +1809,9 @@ module Lithic
 
           sig do
             params(
-              cardholder: Lithic::Models::Transaction::Event::Amounts::Cardholder,
-              merchant: Lithic::Models::Transaction::Event::Amounts::Merchant,
-              settlement: T.nilable(Lithic::Models::Transaction::Event::Amounts::Settlement)
+              cardholder: T.any(Lithic::Models::Transaction::Event::Amounts::Cardholder, Lithic::Util::AnyHash),
+              merchant: T.any(Lithic::Models::Transaction::Event::Amounts::Merchant, Lithic::Util::AnyHash),
+              settlement: T.nilable(T.any(Lithic::Models::Transaction::Event::Amounts::Settlement, Lithic::Util::AnyHash))
             )
               .returns(T.attached_class)
           end
@@ -2148,9 +2148,9 @@ module Lithic
           #   for more details about these fields and how to use them.
           sig do
             params(
-              acquirer: T.nilable(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer),
-              mastercard: T.nilable(Lithic::Models::Transaction::Event::NetworkInfo::Mastercard),
-              visa: T.nilable(Lithic::Models::Transaction::Event::NetworkInfo::Visa)
+              acquirer: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, Lithic::Util::AnyHash)),
+              mastercard: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Mastercard, Lithic::Util::AnyHash)),
+              visa: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Visa, Lithic::Util::AnyHash))
             )
               .returns(T.attached_class)
           end

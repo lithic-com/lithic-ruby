@@ -74,8 +74,8 @@ module Lithic
           lifetime_spend_limit: Integer,
           monthly_spend_limit: Integer,
           state: Lithic::Models::AccountUpdateParams::State::OrSymbol,
-          verification_address: Lithic::Models::AccountUpdateParams::VerificationAddress,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Util::AnyHash),
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

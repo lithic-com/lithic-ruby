@@ -36,7 +36,7 @@ module Lithic
           spend_limit: Integer,
           spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
           state: Lithic::Models::CardCreateParams::State::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::Card)
       end
@@ -150,7 +150,7 @@ module Lithic
       sig do
         params(
           card_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::Card)
       end
@@ -172,7 +172,7 @@ module Lithic
           spend_limit: Integer,
           spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
           state: Lithic::Models::CardUpdateParams::State::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::Card)
       end
@@ -234,7 +234,7 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           state: Lithic::Models::CardListParams::State::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::CursorPage[Lithic::Models::Card])
       end
@@ -278,7 +278,7 @@ module Lithic
           carrier: Lithic::Models::Carrier,
           product_id: String,
           shipping_method: Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::Card)
       end
@@ -340,7 +340,7 @@ module Lithic
         params(
           embed_request: String,
           hmac: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(String)
       end
@@ -368,7 +368,7 @@ module Lithic
           digital_wallet: Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol,
           nonce: String,
           nonce_signature: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::CardProvisionResponse)
       end
@@ -414,7 +414,7 @@ module Lithic
           product_id: String,
           shipping_address: Lithic::Models::ShippingAddress,
           shipping_method: Lithic::Models::CardReissueParams::ShippingMethod::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::Card)
       end
@@ -460,7 +460,7 @@ module Lithic
           exp_year: String,
           product_id: String,
           shipping_method: Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::Card)
       end
@@ -504,7 +504,7 @@ module Lithic
       sig do
         params(
           card_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::CardSpendLimits)
       end
@@ -517,10 +517,7 @@ module Lithic
       #   `POST` endpoint because it is more secure to send sensitive data in a request
       #   body than in a URL._
       sig do
-        params(
-          pan: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+        params(pan: String, request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)))
           .returns(Lithic::Models::Card)
       end
       def search_by_pan(

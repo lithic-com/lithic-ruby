@@ -66,11 +66,11 @@ module Lithic
 
       sig do
         params(
-          carrier: Lithic::Models::Carrier,
+          carrier: T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash),
           product_id: String,
-          shipping_address: Lithic::Models::ShippingAddress,
+          shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash),
           shipping_method: Lithic::Models::CardReissueParams::ShippingMethod::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

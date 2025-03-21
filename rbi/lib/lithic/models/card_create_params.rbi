@@ -249,7 +249,7 @@ module Lithic
           type: Lithic::Models::CardCreateParams::Type::OrSymbol,
           account_token: String,
           card_program_token: String,
-          carrier: Lithic::Models::Carrier,
+          carrier: T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash),
           digital_card_art_token: String,
           exp_month: String,
           exp_year: String,
@@ -258,12 +258,12 @@ module Lithic
           product_id: String,
           replacement_account_token: String,
           replacement_for: String,
-          shipping_address: Lithic::Models::ShippingAddress,
+          shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash),
           shipping_method: Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol,
           spend_limit: Integer,
           spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
           state: Lithic::Models::CardCreateParams::State::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -47,7 +47,7 @@ module Lithic
             credit_product_token: String,
             external_bank_account_token: String,
             tier: String,
-            request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

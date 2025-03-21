@@ -21,7 +21,7 @@ module Lithic
             ),
             type: Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol,
             excluded_card_tokens: T::Array[String],
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::Models::AuthRules::V2CreateResponse)
         end
@@ -48,7 +48,7 @@ module Lithic
         sig do
           params(
             auth_rule_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::Models::AuthRules::V2RetrieveResponse)
         end
@@ -73,7 +73,7 @@ module Lithic
             card_tokens: T::Array[String],
             excluded_card_tokens: T::Array[String],
             program_level: T::Boolean,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::Models::AuthRules::V2UpdateResponse)
         end
@@ -108,7 +108,7 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::CursorPage[Lithic::Models::AuthRules::V2ListResponse])
         end
@@ -133,7 +133,7 @@ module Lithic
         sig do
           params(
             auth_rule_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .void
         end
@@ -155,7 +155,7 @@ module Lithic
             card_tokens: T::Array[String],
             program_level: T::Boolean,
             excluded_card_tokens: T::Array[String],
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::Models::AuthRules::V2ApplyResponse)
         end
@@ -187,7 +187,7 @@ module Lithic
                 Lithic::Models::AuthRules::VelocityLimitParams
               )
             ),
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::Models::AuthRules::V2DraftResponse)
         end
@@ -205,7 +205,7 @@ module Lithic
         sig do
           params(
             auth_rule_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::Models::AuthRules::V2PromoteResponse)
         end
@@ -270,7 +270,7 @@ module Lithic
         sig do
           params(
             auth_rule_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::Models::AuthRules::V2ReportResponse)
         end
