@@ -25,9 +25,9 @@ module Lithic
         #   properly (respond with a valid JSON).
         sig do
           params(
-            merchant: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant,
+            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Util::AnyHash),
             pan: String,
-            transaction: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction,
+            transaction: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Util::AnyHash),
             card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
             request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )

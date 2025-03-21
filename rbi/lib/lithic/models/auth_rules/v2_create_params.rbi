@@ -43,12 +43,14 @@ module Lithic
           params(
             _: T.any(
               Lithic::Models::AuthRules::ConditionalBlockParameters,
+              Lithic::Util::AnyHash,
               Lithic::Models::AuthRules::VelocityLimitParams
             )
           )
             .returns(
               T.any(
                 Lithic::Models::AuthRules::ConditionalBlockParameters,
+                Lithic::Util::AnyHash,
                 Lithic::Models::AuthRules::VelocityLimitParams
               )
             )
@@ -103,6 +105,7 @@ module Lithic
             name: T.nilable(String),
             parameters: T.any(
               Lithic::Models::AuthRules::ConditionalBlockParameters,
+              Lithic::Util::AnyHash,
               Lithic::Models::AuthRules::VelocityLimitParams
             ),
             type: Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol,

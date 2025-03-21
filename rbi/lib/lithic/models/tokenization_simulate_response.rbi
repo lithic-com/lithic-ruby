@@ -7,11 +7,17 @@ module Lithic
       def data
       end
 
-      sig { params(_: T::Array[Lithic::Models::Tokenization]).returns(T::Array[Lithic::Models::Tokenization]) }
+      sig do
+        params(_: T::Array[T.any(Lithic::Models::Tokenization, Lithic::Util::AnyHash)])
+          .returns(T::Array[T.any(Lithic::Models::Tokenization, Lithic::Util::AnyHash)])
+      end
       def data=(_)
       end
 
-      sig { params(data: T::Array[Lithic::Models::Tokenization]).returns(T.attached_class) }
+      sig do
+        params(data: T::Array[T.any(Lithic::Models::Tokenization, Lithic::Util::AnyHash)])
+          .returns(T.attached_class)
+      end
       def self.new(data: nil)
       end
 

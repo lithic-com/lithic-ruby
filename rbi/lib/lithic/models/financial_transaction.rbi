@@ -137,15 +137,15 @@ module Lithic
       sig do
         params(
           token: String,
-          category: Lithic::Models::FinancialTransaction::Category::TaggedSymbol,
+          category: Lithic::Models::FinancialTransaction::Category::OrSymbol,
           created: Time,
           currency: String,
           descriptor: String,
-          events: T::Array[Lithic::Models::FinancialTransaction::Event],
+          events: T::Array[T.any(Lithic::Models::FinancialTransaction::Event, Lithic::Util::AnyHash)],
           pending_amount: Integer,
-          result: Lithic::Models::FinancialTransaction::Result::TaggedSymbol,
+          result: Lithic::Models::FinancialTransaction::Result::OrSymbol,
           settled_amount: Integer,
-          status: Lithic::Models::FinancialTransaction::Status::TaggedSymbol,
+          status: Lithic::Models::FinancialTransaction::Status::OrSymbol,
           updated: Time
         )
           .returns(T.attached_class)
@@ -247,8 +247,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol)
-            .returns(Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol)
+          params(_: Lithic::Models::FinancialTransaction::Event::Result::OrSymbol)
+            .returns(Lithic::Models::FinancialTransaction::Event::Result::OrSymbol)
         end
         def result=(_)
         end
@@ -258,8 +258,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
-            .returns(Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
+          params(_: Lithic::Models::FinancialTransaction::Event::Type::OrSymbol)
+            .returns(Lithic::Models::FinancialTransaction::Event::Type::OrSymbol)
         end
         def type=(_)
         end
@@ -269,8 +269,8 @@ module Lithic
             token: String,
             amount: Integer,
             created: Time,
-            result: Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol,
-            type: Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol
+            result: Lithic::Models::FinancialTransaction::Event::Result::OrSymbol,
+            type: Lithic::Models::FinancialTransaction::Event::Type::OrSymbol
           )
             .returns(T.attached_class)
         end

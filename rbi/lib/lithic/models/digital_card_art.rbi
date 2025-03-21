@@ -76,7 +76,7 @@ module Lithic
           created: Time,
           description: String,
           is_enabled: T::Boolean,
-          network: Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol,
+          network: Lithic::Models::DigitalCardArtAPI::Network::OrSymbol,
           is_card_program_default: T::Boolean
         )
           .returns(T.attached_class)

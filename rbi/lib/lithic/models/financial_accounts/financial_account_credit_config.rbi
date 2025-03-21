@@ -98,11 +98,11 @@ module Lithic
         sig do
           params(
             account_token: String,
-            charged_off_reason: T.nilable(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol),
+            charged_off_reason: T.nilable(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::OrSymbol),
             credit_limit: T.nilable(Integer),
             credit_product_token: T.nilable(String),
             external_bank_account_token: T.nilable(String),
-            financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol,
+            financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::OrSymbol,
             is_spend_blocked: T::Boolean,
             tier: T.nilable(String)
           )

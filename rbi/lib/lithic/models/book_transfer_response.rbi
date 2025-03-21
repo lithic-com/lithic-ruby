@@ -135,15 +135,15 @@ module Lithic
       sig do
         params(
           token: String,
-          category: Lithic::Models::BookTransferResponse::Category::TaggedSymbol,
+          category: Lithic::Models::BookTransferResponse::Category::OrSymbol,
           created: Time,
           currency: String,
-          events: T::Array[Lithic::Models::BookTransferResponse::Event],
+          events: T::Array[T.any(Lithic::Models::BookTransferResponse::Event, Lithic::Util::AnyHash)],
           from_financial_account_token: String,
           pending_amount: Integer,
-          result: Lithic::Models::BookTransferResponse::Result::TaggedSymbol,
+          result: Lithic::Models::BookTransferResponse::Result::OrSymbol,
           settled_amount: Integer,
-          status: Lithic::Models::BookTransferResponse::Status::TaggedSymbol,
+          status: Lithic::Models::BookTransferResponse::Status::OrSymbol,
           to_financial_account_token: T.anything,
           updated: Time
         )
@@ -296,9 +296,9 @@ module Lithic
             token: String,
             amount: Integer,
             created: Time,
-            detailed_results: T::Array[Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol],
+            detailed_results: T::Array[Lithic::Models::BookTransferResponse::Event::DetailedResult::OrSymbol],
             memo: String,
-            result: Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol,
+            result: Lithic::Models::BookTransferResponse::Event::Result::OrSymbol,
             subtype: String,
             type: String
           )

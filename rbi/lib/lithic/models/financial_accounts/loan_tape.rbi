@@ -393,7 +393,7 @@ module Lithic
               days_past_due: Integer,
               has_grace: T::Boolean,
               period_number: Integer,
-              period_state: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol
+              period_state: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::OrSymbol
             )
               .returns(T.attached_class)
           end
@@ -888,7 +888,7 @@ module Lithic
                 Lithic::Util::AnyHash
               ),
               effective_apr: T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr, Lithic::Util::AnyHash),
-              interest_calculation_method: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol,
+              interest_calculation_method: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::OrSymbol,
               interest_for_period: T.any(
                 Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
                 Lithic::Util::AnyHash

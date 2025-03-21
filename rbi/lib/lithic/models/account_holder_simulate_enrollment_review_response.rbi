@@ -28,7 +28,8 @@ module Lithic
       end
 
       sig do
-        params(_: T::Array[Lithic::Models::KYBBusinessEntity]).returns(T::Array[Lithic::Models::KYBBusinessEntity])
+        params(_: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)])
+          .returns(T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)])
       end
       def beneficial_owner_entities=(_)
       end
@@ -47,10 +48,20 @@ module Lithic
 
       sig do
         params(
-          _: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual]
+          _: T::Array[
+          T.any(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
+            Lithic::Util::AnyHash
+          )
+          ]
         )
           .returns(
-            T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual]
+            T::Array[
+            T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
+              Lithic::Util::AnyHash
+            )
+            ]
           )
       end
       def beneficial_owner_individuals=(_)
@@ -138,8 +149,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol)
-          .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol)
+        params(_: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::OrSymbol)
+          .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::OrSymbol)
       end
       def exemption_type=(_)
       end
@@ -199,7 +210,10 @@ module Lithic
       def required_documents
       end
 
-      sig { params(_: T::Array[Lithic::Models::RequiredDocument]).returns(T::Array[Lithic::Models::RequiredDocument]) }
+      sig do
+        params(_: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)])
+          .returns(T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)])
+      end
       def required_documents=(_)
       end
 
@@ -214,8 +228,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol)
-          .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol)
+        params(_: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::OrSymbol)
+          .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::OrSymbol)
       end
       def status=(_)
       end
@@ -233,12 +247,8 @@ module Lithic
       end
 
       sig do
-        params(
-          _: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol]
-        )
-          .returns(
-            T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol]
-          )
+        params(_: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::OrSymbol])
+          .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::OrSymbol])
       end
       def status_reasons=(_)
       end
@@ -255,8 +265,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol)
-          .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol)
+        params(_: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::OrSymbol)
+          .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::OrSymbol)
       end
       def user_type=(_)
       end
@@ -296,22 +306,27 @@ module Lithic
         params(
           token: String,
           account_token: String,
-          beneficial_owner_entities: T::Array[Lithic::Models::KYBBusinessEntity],
-          beneficial_owner_individuals: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual],
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)],
+          beneficial_owner_individuals: T::Array[
+          T.any(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
+            Lithic::Util::AnyHash
+          )
+          ],
           business_account_token: String,
           business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash),
           control_person: T.any(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson, Lithic::Util::AnyHash),
           created: Time,
           email: String,
-          exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol,
+          exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::OrSymbol,
           external_id: String,
           individual: T.any(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual, Lithic::Util::AnyHash),
           nature_of_business: String,
           phone_number: String,
-          required_documents: T::Array[Lithic::Models::RequiredDocument],
-          status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol,
-          status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol],
-          user_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol,
+          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)],
+          status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::OrSymbol,
+          status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::OrSymbol],
+          user_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::OrSymbol,
           verification_application: T.any(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
             Lithic::Util::AnyHash
@@ -1297,9 +1312,9 @@ module Lithic
         sig do
           params(
             created: Time,
-            status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::TaggedSymbol,
+            status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::OrSymbol,
             status_reasons: T::Array[
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::OrSymbol
             ],
             updated: Time
           )

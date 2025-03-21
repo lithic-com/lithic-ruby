@@ -10,7 +10,7 @@ module Lithic
           external_bank_account_token: String,
           financial_account_token: String,
           method_: Lithic::Models::PaymentCreateParams::Method::OrSymbol,
-          method_attributes: Lithic::Models::PaymentCreateParams::MethodAttributes,
+          method_attributes: T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Util::AnyHash),
           type: Lithic::Models::PaymentCreateParams::Type::OrSymbol,
           token: String,
           memo: String,

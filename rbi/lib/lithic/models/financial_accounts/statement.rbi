@@ -227,7 +227,7 @@ module Lithic
             starting_balance: Integer,
             statement_end_date: Date,
             statement_start_date: Date,
-            statement_type: Lithic::Models::FinancialAccounts::Statement::StatementType::TaggedSymbol,
+            statement_type: Lithic::Models::FinancialAccounts::Statement::StatementType::OrSymbol,
             updated: Time,
             ytd_totals: T.any(Lithic::Models::FinancialAccounts::Statement::YtdTotals, Lithic::Util::AnyHash),
             interest_details: T.nilable(T.any(Lithic::Models::FinancialAccounts::Statement::InterestDetails, Lithic::Util::AnyHash)),
@@ -366,7 +366,7 @@ module Lithic
               days_past_due: Integer,
               has_grace: T::Boolean,
               period_number: Integer,
-              period_state: Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState::TaggedSymbol
+              period_state: Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState::OrSymbol
             )
               .returns(T.attached_class)
           end
@@ -782,7 +782,7 @@ module Lithic
                 Lithic::Util::AnyHash
               ),
               effective_apr: T.any(Lithic::Models::FinancialAccounts::Statement::InterestDetails::EffectiveApr, Lithic::Util::AnyHash),
-              interest_calculation_method: Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod::TaggedSymbol,
+              interest_calculation_method: Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod::OrSymbol,
               interest_for_period: T.any(
                 Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestForPeriod,
                 Lithic::Util::AnyHash

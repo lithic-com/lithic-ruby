@@ -24,7 +24,10 @@ module Lithic
         end
 
         sig do
-          params(data: T::Array[Lithic::Models::FinancialAccounts::Statement], has_more: T::Boolean)
+          params(
+            data: T::Array[T.any(Lithic::Models::FinancialAccounts::Statement, Lithic::Util::AnyHash)],
+            has_more: T::Boolean
+          )
             .returns(T.attached_class)
         end
         def self.new(data:, has_more:)

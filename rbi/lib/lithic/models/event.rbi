@@ -76,7 +76,7 @@ module Lithic
         params(
           token: String,
           created: Time,
-          event_type: Lithic::Models::Event::EventType::TaggedSymbol,
+          event_type: Lithic::Models::Event::EventType::OrSymbol,
           payload: T::Hash[Symbol, T.anything]
         )
           .returns(T.attached_class)

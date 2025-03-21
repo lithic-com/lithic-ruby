@@ -192,21 +192,21 @@ module Lithic
       sig do
         params(
           token: String,
-          category: Lithic::Models::Payment::Category::TaggedSymbol,
+          category: Lithic::Models::Payment::Category::OrSymbol,
           created: Time,
           currency: String,
           descriptor: String,
-          direction: Lithic::Models::Payment::Direction::TaggedSymbol,
-          events: T::Array[Lithic::Models::Payment::Event],
+          direction: Lithic::Models::Payment::Direction::OrSymbol,
+          events: T::Array[T.any(Lithic::Models::Payment::Event, Lithic::Util::AnyHash)],
           external_bank_account_token: T.nilable(String),
           financial_account_token: String,
-          method_: Lithic::Models::Payment::Method::TaggedSymbol,
+          method_: Lithic::Models::Payment::Method::OrSymbol,
           method_attributes: T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Util::AnyHash),
           pending_amount: Integer,
-          result: Lithic::Models::Payment::Result::TaggedSymbol,
+          result: Lithic::Models::Payment::Result::OrSymbol,
           settled_amount: Integer,
-          source: Lithic::Models::Payment::Source::TaggedSymbol,
-          status: Lithic::Models::Payment::Status::TaggedSymbol,
+          source: Lithic::Models::Payment::Source::OrSymbol,
+          status: Lithic::Models::Payment::Status::OrSymbol,
           updated: Time,
           user_defined_id: T.nilable(String)
         )
@@ -373,8 +373,8 @@ module Lithic
         end
 
         sig do
-          params(_: T::Array[Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol])
-            .returns(T::Array[Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol])
+          params(_: T::Array[Lithic::Models::Payment::Event::DetailedResult::OrSymbol])
+            .returns(T::Array[Lithic::Models::Payment::Event::DetailedResult::OrSymbol])
         end
         def detailed_results=(_)
         end
@@ -384,9 +384,9 @@ module Lithic
             token: String,
             amount: Integer,
             created: Time,
-            result: Lithic::Models::Payment::Event::Result::TaggedSymbol,
-            type: Lithic::Models::Payment::Event::Type::TaggedSymbol,
-            detailed_results: T::Array[Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol]
+            result: Lithic::Models::Payment::Event::Result::OrSymbol,
+            type: Lithic::Models::Payment::Event::Type::OrSymbol,
+            detailed_results: T::Array[Lithic::Models::Payment::Event::DetailedResult::OrSymbol]
           )
             .returns(T.attached_class)
         end
@@ -577,7 +577,7 @@ module Lithic
             receipt_routing_number: T.nilable(String),
             retries: T.nilable(Integer),
             return_reason_code: T.nilable(String),
-            sec_code: Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol,
+            sec_code: Lithic::Models::Payment::MethodAttributes::SecCode::OrSymbol,
             trace_numbers: T::Array[T.nilable(String)]
           )
             .returns(T.attached_class)

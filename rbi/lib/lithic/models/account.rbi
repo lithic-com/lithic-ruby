@@ -110,7 +110,7 @@ module Lithic
           token: String,
           created: T.nilable(Time),
           spend_limit: T.any(Lithic::Models::Account::SpendLimit, Lithic::Util::AnyHash),
-          state: Lithic::Models::Account::State::TaggedSymbol,
+          state: Lithic::Models::Account::State::OrSymbol,
           account_holder: T.any(Lithic::Models::Account::AccountHolder, Lithic::Util::AnyHash),
           auth_rule_tokens: T::Array[String],
           cardholder_currency: String,
