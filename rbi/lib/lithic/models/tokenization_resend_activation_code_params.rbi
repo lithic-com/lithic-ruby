@@ -10,15 +10,15 @@ module Lithic
       #   authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
       #   = "EMAIL_TO_CARDHOLDER_ADDRESS"
       sig { returns(T.nilable(Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol)) }
-      def activation_method_type
-      end
+      attr_reader :activation_method_type
 
       sig do
-        params(_: Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol)
-          .returns(Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol)
+        params(
+          activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol
+        )
+          .void
       end
-      def activation_method_type=(_)
-      end
+      attr_writer :activation_method_type
 
       sig do
         params(

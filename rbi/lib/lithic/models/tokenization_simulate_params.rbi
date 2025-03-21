@@ -8,84 +8,55 @@ module Lithic
 
       # The three digit cvv for the card.
       sig { returns(String) }
-      def cvv
-      end
-
-      sig { params(_: String).returns(String) }
-      def cvv=(_)
-      end
+      attr_accessor :cvv
 
       # The expiration date of the card in 'MM/YY' format.
       sig { returns(String) }
-      def expiration_date
-      end
-
-      sig { params(_: String).returns(String) }
-      def expiration_date=(_)
-      end
+      attr_accessor :expiration_date
 
       # The sixteen digit card number.
       sig { returns(String) }
-      def pan
-      end
-
-      sig { params(_: String).returns(String) }
-      def pan=(_)
-      end
+      attr_accessor :pan
 
       # The source of the tokenization request.
       sig { returns(Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol) }
-      def tokenization_source
-      end
-
-      sig do
-        params(_: Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol)
-          .returns(Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol)
-      end
-      def tokenization_source=(_)
-      end
+      attr_accessor :tokenization_source
 
       # The account score (1-5) that represents how the Digital Wallet's view on how
       #   reputable an end user's account is.
       sig { returns(T.nilable(Integer)) }
-      def account_score
-      end
+      attr_reader :account_score
 
-      sig { params(_: Integer).returns(Integer) }
-      def account_score=(_)
-      end
+      sig { params(account_score: Integer).void }
+      attr_writer :account_score
 
       # The device score (1-5) that represents how the Digital Wallet's view on how
       #   reputable an end user's device is.
       sig { returns(T.nilable(Integer)) }
-      def device_score
-      end
+      attr_reader :device_score
 
-      sig { params(_: Integer).returns(Integer) }
-      def device_score=(_)
-      end
+      sig { params(device_score: Integer).void }
+      attr_writer :device_score
 
       # Optional field to specify the token requestor name for a merchant token
       #   simulation. Ignored when tokenization_source is not MERCHANT.
       sig { returns(T.nilable(String)) }
-      def entity
-      end
+      attr_reader :entity
 
-      sig { params(_: String).returns(String) }
-      def entity=(_)
-      end
+      sig { params(entity: String).void }
+      attr_writer :entity
 
       # The decision that the Digital Wallet's recommend
       sig { returns(T.nilable(Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol)) }
-      def wallet_recommended_decision
-      end
+      attr_reader :wallet_recommended_decision
 
       sig do
-        params(_: Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol)
-          .returns(Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol)
+        params(
+          wallet_recommended_decision: Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol
+        )
+          .void
       end
-      def wallet_recommended_decision=(_)
-      end
+      attr_writer :wallet_recommended_decision
 
       sig do
         params(

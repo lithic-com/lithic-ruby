@@ -5,69 +5,34 @@ module Lithic
     class DigitalCardArtAPI < Lithic::BaseModel
       # Globally unique identifier for the card art.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Globally unique identifier for the card program.
       sig { returns(String) }
-      def card_program_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def card_program_token=(_)
-      end
+      attr_accessor :card_program_token
 
       # Timestamp of when card art was created.
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Description of the card art.
       sig { returns(String) }
-      def description
-      end
-
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # Whether the card art is enabled.
       sig { returns(T::Boolean) }
-      def is_enabled
-      end
-
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def is_enabled=(_)
-      end
+      attr_accessor :is_enabled
 
       # Card network.
       sig { returns(Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol) }
-      def network
-      end
-
-      sig do
-        params(_: Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol)
-          .returns(Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol)
-      end
-      def network=(_)
-      end
+      attr_accessor :network
 
       # Whether the card art is the default card art to be added upon tokenization.
       sig { returns(T.nilable(T::Boolean)) }
-      def is_card_program_default
-      end
+      attr_reader :is_card_program_default
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def is_card_program_default=(_)
-      end
+      sig { params(is_card_program_default: T::Boolean).void }
+      attr_writer :is_card_program_default
 
       sig do
         params(

@@ -5,67 +5,38 @@ module Lithic
     class CardProgram < Lithic::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Timestamp of when the card program was created.
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # The name of the card program.
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # The first digits of the card number that this card program ends with.
       sig { returns(String) }
-      def pan_range_end
-      end
-
-      sig { params(_: String).returns(String) }
-      def pan_range_end=(_)
-      end
+      attr_accessor :pan_range_end
 
       # The first digits of the card number that this card program starts with.
       sig { returns(String) }
-      def pan_range_start
-      end
-
-      sig { params(_: String).returns(String) }
-      def pan_range_start=(_)
-      end
+      attr_accessor :pan_range_start
 
       # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
       sig { returns(T.nilable(String)) }
-      def cardholder_currency
-      end
+      attr_reader :cardholder_currency
 
-      sig { params(_: String).returns(String) }
-      def cardholder_currency=(_)
-      end
+      sig { params(cardholder_currency: String).void }
+      attr_writer :cardholder_currency
 
       # List of 3-character alphabetic ISO 4217 codes for the currencies that the card
       #   program supports for settlement.
       sig { returns(T.nilable(T::Array[String])) }
-      def settlement_currencies
-      end
+      attr_reader :settlement_currencies
 
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def settlement_currencies=(_)
-      end
+      sig { params(settlement_currencies: T::Array[String]).void }
+      attr_writer :settlement_currencies
 
       sig do
         params(

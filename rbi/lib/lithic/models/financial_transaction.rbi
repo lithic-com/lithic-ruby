@@ -5,12 +5,7 @@ module Lithic
     class FinancialTransaction < Lithic::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Status types:
       #
@@ -20,90 +15,41 @@ module Lithic
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #     program.
       sig { returns(Lithic::Models::FinancialTransaction::Category::TaggedSymbol) }
-      def category
-      end
-
-      sig do
-        params(_: Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
-          .returns(Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
-      end
-      def category=(_)
-      end
+      attr_accessor :category
 
       # Date and time when the financial transaction first occurred. UTC time zone.
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # 3-character alphabetic ISO 4217 code for the settling currency of the
       #   transaction.
       sig { returns(String) }
-      def currency
-      end
-
-      sig { params(_: String).returns(String) }
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       # A string that provides a description of the financial transaction; may be useful
       #   to display to users.
       sig { returns(String) }
-      def descriptor
-      end
-
-      sig { params(_: String).returns(String) }
-      def descriptor=(_)
-      end
+      attr_accessor :descriptor
 
       # A list of all financial events that have modified this financial transaction.
       sig { returns(T::Array[Lithic::Models::FinancialTransaction::Event]) }
-      def events
-      end
-
-      sig do
-        params(_: T::Array[Lithic::Models::FinancialTransaction::Event])
-          .returns(T::Array[Lithic::Models::FinancialTransaction::Event])
-      end
-      def events=(_)
-      end
+      attr_accessor :events
 
       # Pending amount of the transaction in the currency's smallest unit (e.g., cents),
       #   including any acquirer fees. The value of this field will go to zero over time
       #   once the financial transaction is settled.
       sig { returns(Integer) }
-      def pending_amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def pending_amount=(_)
-      end
+      attr_accessor :pending_amount
 
       # APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
       sig { returns(Lithic::Models::FinancialTransaction::Result::TaggedSymbol) }
-      def result
-      end
-
-      sig do
-        params(_: Lithic::Models::FinancialTransaction::Result::TaggedSymbol)
-          .returns(Lithic::Models::FinancialTransaction::Result::TaggedSymbol)
-      end
-      def result=(_)
-      end
+      attr_accessor :result
 
       # Amount of the transaction that has been settled in the currency's smallest unit
       #   (e.g., cents), including any acquirer fees. This may change over time.
       sig { returns(Integer) }
-      def settled_amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def settled_amount=(_)
-      end
+      attr_accessor :settled_amount
 
       # Status types:
       #
@@ -115,24 +61,11 @@ module Lithic
       #   - `SETTLED` - The transaction is completed.
       #   - `VOIDED` - The transaction was voided. Card transaction only.
       sig { returns(Lithic::Models::FinancialTransaction::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
-          .returns(Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # Date and time when the financial transaction was last updated. UTC time zone.
       sig { returns(Time) }
-      def updated
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def updated=(_)
-      end
+      attr_accessor :updated
 
       sig do
         params(
@@ -214,55 +147,39 @@ module Lithic
       class Event < Lithic::BaseModel
         # Globally unique identifier.
         sig { returns(T.nilable(String)) }
-        def token
-        end
+        attr_reader :token
 
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        sig { params(token: String).void }
+        attr_writer :token
 
         # Amount of the financial event that has been settled in the currency's smallest
         #   unit (e.g., cents).
         sig { returns(T.nilable(Integer)) }
-        def amount
-        end
+        attr_reader :amount
 
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        sig { params(amount: Integer).void }
+        attr_writer :amount
 
         # Date and time when the financial event occurred. UTC time zone.
         sig { returns(T.nilable(Time)) }
-        def created
-        end
+        attr_reader :created
 
-        sig { params(_: Time).returns(Time) }
-        def created=(_)
-        end
+        sig { params(created: Time).void }
+        attr_writer :created
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         sig { returns(T.nilable(Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol)) }
-        def result
-        end
+        attr_reader :result
 
-        sig do
-          params(_: Lithic::Models::FinancialTransaction::Event::Result::OrSymbol)
-            .returns(Lithic::Models::FinancialTransaction::Event::Result::OrSymbol)
-        end
-        def result=(_)
-        end
+        sig { params(result: Lithic::Models::FinancialTransaction::Event::Result::OrSymbol).void }
+        attr_writer :result
 
         sig { returns(T.nilable(Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)) }
-        def type
-        end
+        attr_reader :type
 
-        sig do
-          params(_: Lithic::Models::FinancialTransaction::Event::Type::OrSymbol)
-            .returns(Lithic::Models::FinancialTransaction::Event::Type::OrSymbol)
-        end
-        def type=(_)
-        end
+        sig { params(type: Lithic::Models::FinancialTransaction::Event::Type::OrSymbol).void }
+        attr_writer :type
 
         sig do
           params(

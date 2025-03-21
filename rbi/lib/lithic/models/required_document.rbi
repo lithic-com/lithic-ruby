@@ -5,32 +5,17 @@ module Lithic
     class RequiredDocument < Lithic::BaseModel
       # Globally unique identifier for an entity.
       sig { returns(String) }
-      def entity_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def entity_token=(_)
-      end
+      attr_accessor :entity_token
 
       # rovides the status reasons that will be satisfied by providing one of the valid
       #   documents.
       sig { returns(T::Array[String]) }
-      def status_reasons
-      end
-
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def status_reasons=(_)
-      end
+      attr_accessor :status_reasons
 
       # A list of valid documents that will satisfy the KYC requirements for the
       #   specified entity.
       sig { returns(T::Array[String]) }
-      def valid_documents
-      end
-
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def valid_documents=(_)
-      end
+      attr_accessor :valid_documents
 
       sig do
         params(entity_token: String, status_reasons: T::Array[String], valid_documents: T::Array[String])

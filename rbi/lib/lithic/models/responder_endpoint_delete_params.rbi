@@ -8,15 +8,7 @@ module Lithic
 
       # The type of the endpoint.
       sig { returns(Lithic::Models::ResponderEndpointDeleteParams::Type::OrSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Lithic::Models::ResponderEndpointDeleteParams::Type::OrSymbol)
-          .returns(Lithic::Models::ResponderEndpointDeleteParams::Type::OrSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       sig do
         params(

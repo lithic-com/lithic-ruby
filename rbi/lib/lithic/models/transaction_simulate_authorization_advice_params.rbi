@@ -8,22 +8,12 @@ module Lithic
 
       # The transaction token returned from the /v1/simulate/authorize. response.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Amount (in cents) to authorize. This amount will override the transaction's
       #   amount that was originally set by /v1/simulate/authorize.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       sig do
         params(

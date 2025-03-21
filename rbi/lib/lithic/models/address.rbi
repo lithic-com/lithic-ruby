@@ -5,62 +5,35 @@ module Lithic
     class Address < Lithic::BaseModel
       # Valid deliverable address (no PO boxes).
       sig { returns(String) }
-      def address1
-      end
-
-      sig { params(_: String).returns(String) }
-      def address1=(_)
-      end
+      attr_accessor :address1
 
       # Name of city.
       sig { returns(String) }
-      def city
-      end
-
-      sig { params(_: String).returns(String) }
-      def city=(_)
-      end
+      attr_accessor :city
 
       # Valid country code, entered in uppercase ISO 3166-1 alpha-3 three-character
       #   format. Only USA is currently supported for all workflows. KYC_EXEMPT supports
       #   CAN additionally.
       sig { returns(String) }
-      def country
-      end
-
-      sig { params(_: String).returns(String) }
-      def country=(_)
-      end
+      attr_accessor :country
 
       # Valid postal code. USA postal codes (ZIP codes) are supported, entered as a
       #   five-digit postal code or nine-digit postal code (ZIP+4) using the format
       #   12345-1234. KYC_EXEMPT supports Canadian postal codes.
       sig { returns(String) }
-      def postal_code
-      end
-
-      sig { params(_: String).returns(String) }
-      def postal_code=(_)
-      end
+      attr_accessor :postal_code
 
       # Valid state code. USA state codes are supported, entered in uppercase ISO 3166-2
       #   two-character format. KYC_EXEMPT supports Canadian province codes.
       sig { returns(String) }
-      def state
-      end
-
-      sig { params(_: String).returns(String) }
-      def state=(_)
-      end
+      attr_accessor :state
 
       # Unit or apartment number (if applicable).
       sig { returns(T.nilable(String)) }
-      def address2
-      end
+      attr_reader :address2
 
-      sig { params(_: String).returns(String) }
-      def address2=(_)
-      end
+      sig { params(address2: String).void }
+      attr_writer :address2
 
       sig do
         params(

@@ -5,30 +5,15 @@ module Lithic
     class DisputeEvidence < Lithic::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Timestamp of when dispute evidence was created.
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Dispute token evidence is attached to.
       sig { returns(String) }
-      def dispute_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def dispute_token=(_)
-      end
+      attr_accessor :dispute_token
 
       # Upload status types:
       #
@@ -38,43 +23,29 @@ module Lithic
       #   - `REJECTED` - Evidence was rejected.
       #   - `UPLOADED` - Evidence was uploaded.
       sig { returns(Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol) }
-      def upload_status
-      end
-
-      sig do
-        params(_: Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
-          .returns(Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
-      end
-      def upload_status=(_)
-      end
+      attr_accessor :upload_status
 
       # URL to download evidence. Only shown when `upload_status` is `UPLOADED`.
       sig { returns(T.nilable(String)) }
-      def download_url
-      end
+      attr_reader :download_url
 
-      sig { params(_: String).returns(String) }
-      def download_url=(_)
-      end
+      sig { params(download_url: String).void }
+      attr_writer :download_url
 
       # File name of evidence. Recommended to give the dispute evidence a human-readable
       #   identifier.
       sig { returns(T.nilable(String)) }
-      def filename
-      end
+      attr_reader :filename
 
-      sig { params(_: String).returns(String) }
-      def filename=(_)
-      end
+      sig { params(filename: String).void }
+      attr_writer :filename
 
       # URL to upload evidence. Only shown when `upload_status` is `PENDING`.
       sig { returns(T.nilable(String)) }
-      def upload_url
-      end
+      attr_reader :upload_url
 
-      sig { params(_: String).returns(String) }
-      def upload_url=(_)
-      end
+      sig { params(upload_url: String).void }
+      attr_writer :upload_url
 
       # Dispute evidence.
       sig do

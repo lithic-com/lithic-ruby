@@ -4,12 +4,10 @@ module Lithic
   module Models
     class APIStatus < Lithic::BaseModel
       sig { returns(T.nilable(String)) }
-      def message
-      end
+      attr_reader :message
 
-      sig { params(_: String).returns(String) }
-      def message=(_)
-      end
+      sig { params(message: String).void }
+      attr_writer :message
 
       sig { params(message: String).returns(T.attached_class) }
       def self.new(message: nil)

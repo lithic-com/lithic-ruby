@@ -7,87 +7,50 @@ module Lithic
       include Lithic::RequestParameters
 
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       sig { returns(String) }
-      def external_bank_account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def external_bank_account_token=(_)
-      end
+      attr_accessor :external_bank_account_token
 
       sig { returns(String) }
-      def financial_account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def financial_account_token=(_)
-      end
+      attr_accessor :financial_account_token
 
       sig { returns(Lithic::Models::PaymentCreateParams::Method::OrSymbol) }
-      def method_
-      end
-
-      sig do
-        params(_: Lithic::Models::PaymentCreateParams::Method::OrSymbol)
-          .returns(Lithic::Models::PaymentCreateParams::Method::OrSymbol)
-      end
-      def method_=(_)
-      end
+      attr_accessor :method_
 
       sig { returns(Lithic::Models::PaymentCreateParams::MethodAttributes) }
-      def method_attributes
-      end
+      attr_reader :method_attributes
 
       sig do
-        params(_: T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Util::AnyHash))
+        params(
+          method_attributes: T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Util::AnyHash)
+        )
+          .void
       end
-      def method_attributes=(_)
-      end
+      attr_writer :method_attributes
 
       sig { returns(Lithic::Models::PaymentCreateParams::Type::OrSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Lithic::Models::PaymentCreateParams::Type::OrSymbol)
-          .returns(Lithic::Models::PaymentCreateParams::Type::OrSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Customer-provided token that will serve as an idempotency token. This token will
       #   become the transaction token.
       sig { returns(T.nilable(String)) }
-      def token
-      end
+      attr_reader :token
 
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      sig { params(token: String).void }
+      attr_writer :token
 
       sig { returns(T.nilable(String)) }
-      def memo
-      end
+      attr_reader :memo
 
-      sig { params(_: String).returns(String) }
-      def memo=(_)
-      end
+      sig { params(memo: String).void }
+      attr_writer :memo
 
       sig { returns(T.nilable(String)) }
-      def user_defined_id
-      end
+      attr_reader :user_defined_id
 
-      sig { params(_: String).returns(String) }
-      def user_defined_id=(_)
-      end
+      sig { params(user_defined_id: String).void }
+      attr_writer :user_defined_id
 
       sig do
         params(
@@ -156,15 +119,7 @@ module Lithic
 
       class MethodAttributes < Lithic::BaseModel
         sig { returns(Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol) }
-        def sec_code
-        end
-
-        sig do
-          params(_: Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol)
-            .returns(Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol)
-        end
-        def sec_code=(_)
-        end
+        attr_accessor :sec_code
 
         sig do
           params(sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol)

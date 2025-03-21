@@ -4,12 +4,10 @@ module Lithic
   module Resources
     class Transactions
       sig { returns(Lithic::Resources::Transactions::EnhancedCommercialData) }
-      def enhanced_commercial_data
-      end
+      attr_reader :enhanced_commercial_data
 
       sig { returns(Lithic::Resources::Transactions::Events) }
-      def events
-      end
+      attr_reader :events
 
       # Get a specific card transaction. All amounts are in the smallest unit of their
       #   respective currency (e.g., cents for USD).

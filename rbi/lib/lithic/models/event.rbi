@@ -5,23 +5,13 @@ module Lithic
     class Event < Lithic::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # An RFC 3339 timestamp for when the event was created. UTC time zone.
       #
       #   If no timezone is specified, UTC will be used.
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Event types:
       #
@@ -53,23 +43,10 @@ module Lithic
       #   - `digital_wallet.tokenization_updated` - Notification that a digital wallet
       #     tokenization's status has changed.
       sig { returns(Lithic::Models::Event::EventType::TaggedSymbol) }
-      def event_type
-      end
-
-      sig do
-        params(_: Lithic::Models::Event::EventType::TaggedSymbol)
-          .returns(Lithic::Models::Event::EventType::TaggedSymbol)
-      end
-      def event_type=(_)
-      end
+      attr_accessor :event_type
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      def payload
-      end
-
-      sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
-      def payload=(_)
-      end
+      attr_accessor :payload
 
       # A single event that affects the transaction state and lifecycle.
       sig do

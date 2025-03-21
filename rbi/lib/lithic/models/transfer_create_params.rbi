@@ -9,51 +9,32 @@ module Lithic
       # Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
       #   This should always be a positive value.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # Globally unique identifier for the financial account or card that will send the
       #   funds. Accepted type dependent on the program's use case.
       sig { returns(String) }
-      def from
-      end
-
-      sig { params(_: String).returns(String) }
-      def from=(_)
-      end
+      attr_accessor :from
 
       # Globally unique identifier for the financial account or card that will receive
       #   the funds. Accepted type dependent on the program's use case.
       sig { returns(String) }
-      def to
-      end
-
-      sig { params(_: String).returns(String) }
-      def to=(_)
-      end
+      attr_accessor :to
 
       # Customer-provided token that will serve as an idempotency token. This token will
       #   become the transaction token.
       sig { returns(T.nilable(String)) }
-      def token
-      end
+      attr_reader :token
 
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      sig { params(token: String).void }
+      attr_writer :token
 
       # Optional descriptor for the transfer.
       sig { returns(T.nilable(String)) }
-      def memo
-      end
+      attr_reader :memo
 
-      sig { params(_: String).returns(String) }
-      def memo=(_)
-      end
+      sig { params(memo: String).void }
+      attr_writer :memo
 
       sig do
         params(

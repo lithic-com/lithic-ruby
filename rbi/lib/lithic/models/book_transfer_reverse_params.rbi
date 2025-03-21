@@ -8,12 +8,10 @@ module Lithic
 
       # Optional descriptor for the reversal.
       sig { returns(T.nilable(String)) }
-      def memo
-      end
+      attr_reader :memo
 
-      sig { params(_: String).returns(String) }
-      def memo=(_)
-      end
+      sig { params(memo: String).void }
+      attr_writer :memo
 
       sig do
         params(memo: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))

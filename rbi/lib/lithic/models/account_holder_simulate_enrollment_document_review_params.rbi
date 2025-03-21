@@ -8,33 +8,18 @@ module Lithic
 
       # The account holder document upload which to perform the simulation upon.
       sig { returns(String) }
-      def document_upload_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def document_upload_token=(_)
-      end
+      attr_accessor :document_upload_token
 
       # An account holder document's upload status for use within the simulation.
       sig { returns(Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol)
-          .returns(Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A list of status reasons associated with a KYB account holder in PENDING_REVIEW
       sig { returns(T.nilable(T::Array[String])) }
-      def accepted_entity_status_reasons
-      end
+      attr_reader :accepted_entity_status_reasons
 
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def accepted_entity_status_reasons=(_)
-      end
+      sig { params(accepted_entity_status_reasons: T::Array[String]).void }
+      attr_writer :accepted_entity_status_reasons
 
       # Status reason that will be associated with the simulated account holder status.
       #   Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
@@ -43,15 +28,15 @@ module Lithic
           T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol)
         )
       end
-      def status_reason
-      end
+      attr_reader :status_reason
 
       sig do
-        params(_: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol)
-          .returns(Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol)
+        params(
+          status_reason: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol
+        )
+          .void
       end
-      def status_reason=(_)
-      end
+      attr_writer :status_reason
 
       sig do
         params(

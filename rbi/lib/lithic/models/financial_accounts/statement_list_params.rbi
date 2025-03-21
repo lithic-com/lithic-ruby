@@ -10,60 +10,48 @@ module Lithic
         # Date string in RFC 3339 format. Only entries created after the specified date
         #   will be included.
         sig { returns(T.nilable(Date)) }
-        def begin_
-        end
+        attr_reader :begin_
 
-        sig { params(_: Date).returns(Date) }
-        def begin_=(_)
-        end
+        sig { params(begin_: Date).void }
+        attr_writer :begin_
 
         # Date string in RFC 3339 format. Only entries created before the specified date
         #   will be included.
         sig { returns(T.nilable(Date)) }
-        def end_
-        end
+        attr_reader :end_
 
-        sig { params(_: Date).returns(Date) }
-        def end_=(_)
-        end
+        sig { params(end_: Date).void }
+        attr_writer :end_
 
         # A cursor representing an item's token before which a page of results should end.
         #   Used to retrieve the previous page of results before this item.
         sig { returns(T.nilable(String)) }
-        def ending_before
-        end
+        attr_reader :ending_before
 
-        sig { params(_: String).returns(String) }
-        def ending_before=(_)
-        end
+        sig { params(ending_before: String).void }
+        attr_writer :ending_before
 
         # Whether to include the initial statement. It is not included by default.
         sig { returns(T.nilable(T::Boolean)) }
-        def include_initial_statements
-        end
+        attr_reader :include_initial_statements
 
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def include_initial_statements=(_)
-        end
+        sig { params(include_initial_statements: T::Boolean).void }
+        attr_writer :include_initial_statements
 
         # Page size (for pagination).
         sig { returns(T.nilable(Integer)) }
-        def page_size
-        end
+        attr_reader :page_size
 
-        sig { params(_: Integer).returns(Integer) }
-        def page_size=(_)
-        end
+        sig { params(page_size: Integer).void }
+        attr_writer :page_size
 
         # A cursor representing an item's token after which a page of results should
         #   begin. Used to retrieve the next page of results after this item.
         sig { returns(T.nilable(String)) }
-        def starting_after
-        end
+        attr_reader :starting_after
 
-        sig { params(_: String).returns(String) }
-        def starting_after=(_)
-        end
+        sig { params(starting_after: String).void }
+        attr_writer :starting_after
 
         sig do
           params(

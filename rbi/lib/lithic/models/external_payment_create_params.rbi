@@ -7,85 +7,43 @@ module Lithic
       include Lithic::RequestParameters
 
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       sig { returns(Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol) }
-      def category
-      end
-
-      sig do
-        params(_: Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol)
-          .returns(Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol)
-      end
-      def category=(_)
-      end
+      attr_accessor :category
 
       sig { returns(Date) }
-      def effective_date
-      end
-
-      sig { params(_: Date).returns(Date) }
-      def effective_date=(_)
-      end
+      attr_accessor :effective_date
 
       sig { returns(String) }
-      def financial_account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def financial_account_token=(_)
-      end
+      attr_accessor :financial_account_token
 
       sig { returns(Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol) }
-      def payment_type
-      end
-
-      sig do
-        params(_: Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol)
-          .returns(Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol)
-      end
-      def payment_type=(_)
-      end
+      attr_accessor :payment_type
 
       sig { returns(T.nilable(String)) }
-      def token
-      end
+      attr_reader :token
 
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      sig { params(token: String).void }
+      attr_writer :token
 
       sig { returns(T.nilable(String)) }
-      def memo
-      end
+      attr_reader :memo
 
-      sig { params(_: String).returns(String) }
-      def memo=(_)
-      end
+      sig { params(memo: String).void }
+      attr_writer :memo
 
       sig { returns(T.nilable(Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol)) }
-      def progress_to
-      end
+      attr_reader :progress_to
 
-      sig do
-        params(_: Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol)
-          .returns(Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol)
-      end
-      def progress_to=(_)
-      end
+      sig { params(progress_to: Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol).void }
+      attr_writer :progress_to
 
       sig { returns(T.nilable(String)) }
-      def user_defined_id
-      end
+      attr_reader :user_defined_id
 
-      sig { params(_: String).returns(String) }
-      def user_defined_id=(_)
-      end
+      sig { params(user_defined_id: String).void }
+      attr_writer :user_defined_id
 
       sig do
         params(

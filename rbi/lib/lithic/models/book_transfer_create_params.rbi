@@ -9,84 +9,44 @@ module Lithic
       # Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
       #   This should always be a positive value.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # Category of the book transfer
       sig { returns(Lithic::Models::BookTransferCreateParams::Category::OrSymbol) }
-      def category
-      end
-
-      sig do
-        params(_: Lithic::Models::BookTransferCreateParams::Category::OrSymbol)
-          .returns(Lithic::Models::BookTransferCreateParams::Category::OrSymbol)
-      end
-      def category=(_)
-      end
+      attr_accessor :category
 
       # Globally unique identifier for the financial account or card that will send the
       #   funds. Accepted type dependent on the program's use case.
       sig { returns(String) }
-      def from_financial_account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def from_financial_account_token=(_)
-      end
+      attr_accessor :from_financial_account_token
 
       # The program specific subtype code for the specified category/type.
       sig { returns(String) }
-      def subtype
-      end
-
-      sig { params(_: String).returns(String) }
-      def subtype=(_)
-      end
+      attr_accessor :subtype
 
       # Globally unique identifier for the financial account or card that will receive
       #   the funds. Accepted type dependent on the program's use case.
       sig { returns(String) }
-      def to_financial_account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def to_financial_account_token=(_)
-      end
+      attr_accessor :to_financial_account_token
 
       # Type of book_transfer
       sig { returns(Lithic::Models::BookTransferCreateParams::Type::OrSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
-          .returns(Lithic::Models::BookTransferCreateParams::Type::OrSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Customer-provided token that will serve as an idempotency token. This token will
       #   become the transaction token.
       sig { returns(T.nilable(String)) }
-      def token
-      end
+      attr_reader :token
 
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      sig { params(token: String).void }
+      attr_writer :token
 
       # Optional descriptor for the transfer.
       sig { returns(T.nilable(String)) }
-      def memo
-      end
+      attr_reader :memo
 
-      sig { params(_: String).returns(String) }
-      def memo=(_)
-      end
+      sig { params(memo: String).void }
+      attr_writer :memo
 
       sig do
         params(

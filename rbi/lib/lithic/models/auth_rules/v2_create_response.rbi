@@ -6,111 +6,60 @@ module Lithic
       class V2CreateResponse < Lithic::BaseModel
         # Auth Rule Token
         sig { returns(String) }
-        def token
-        end
-
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        attr_accessor :token
 
         # Account tokens to which the Auth Rule applies.
         sig { returns(T::Array[String]) }
-        def account_tokens
-        end
-
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def account_tokens=(_)
-        end
+        attr_accessor :account_tokens
 
         # Card tokens to which the Auth Rule applies.
         sig { returns(T::Array[String]) }
-        def card_tokens
-        end
-
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def card_tokens=(_)
-        end
+        attr_accessor :card_tokens
 
         sig { returns(T.nilable(Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion)) }
-        def current_version
-        end
+        attr_reader :current_version
 
         sig do
           params(
-            _: T.nilable(T.any(Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion, Lithic::Util::AnyHash))
+            current_version: T.nilable(T.any(Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion, Lithic::Util::AnyHash))
           )
-            .returns(
-              T.nilable(T.any(Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion, Lithic::Util::AnyHash))
-            )
+            .void
         end
-        def current_version=(_)
-        end
+        attr_writer :current_version
 
         sig { returns(T.nilable(Lithic::Models::AuthRules::V2CreateResponse::DraftVersion)) }
-        def draft_version
-        end
+        attr_reader :draft_version
 
         sig do
           params(
-            _: T.nilable(T.any(Lithic::Models::AuthRules::V2CreateResponse::DraftVersion, Lithic::Util::AnyHash))
+            draft_version: T.nilable(T.any(Lithic::Models::AuthRules::V2CreateResponse::DraftVersion, Lithic::Util::AnyHash))
           )
-            .returns(
-              T.nilable(T.any(Lithic::Models::AuthRules::V2CreateResponse::DraftVersion, Lithic::Util::AnyHash))
-            )
+            .void
         end
-        def draft_version=(_)
-        end
+        attr_writer :draft_version
 
         # Auth Rule Name
         sig { returns(T.nilable(String)) }
-        def name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def name=(_)
-        end
+        attr_accessor :name
 
         # Whether the Auth Rule applies to all authorizations on the card program.
         sig { returns(T::Boolean) }
-        def program_level
-        end
-
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def program_level=(_)
-        end
+        attr_accessor :program_level
 
         # The state of the Auth Rule
         sig { returns(Lithic::Models::AuthRules::V2CreateResponse::State::TaggedSymbol) }
-        def state
-        end
-
-        sig do
-          params(_: Lithic::Models::AuthRules::V2CreateResponse::State::TaggedSymbol)
-            .returns(Lithic::Models::AuthRules::V2CreateResponse::State::TaggedSymbol)
-        end
-        def state=(_)
-        end
+        attr_accessor :state
 
         # The type of Auth Rule
         sig { returns(Lithic::Models::AuthRules::V2CreateResponse::Type::TaggedSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: Lithic::Models::AuthRules::V2CreateResponse::Type::TaggedSymbol)
-            .returns(Lithic::Models::AuthRules::V2CreateResponse::Type::TaggedSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         # Card tokens to which the Auth Rule does not apply.
         sig { returns(T.nilable(T::Array[String])) }
-        def excluded_card_tokens
-        end
+        attr_reader :excluded_card_tokens
 
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def excluded_card_tokens=(_)
-        end
+        sig { params(excluded_card_tokens: T::Array[String]).void }
+        attr_writer :excluded_card_tokens
 
         sig do
           params(
@@ -171,35 +120,12 @@ module Lithic
               )
             )
           end
-          def parameters
-          end
-
-          sig do
-            params(
-              _: T.any(
-                Lithic::Models::AuthRules::ConditionalBlockParameters,
-                Lithic::Models::AuthRules::VelocityLimitParams
-              )
-            )
-              .returns(
-                T.any(
-                  Lithic::Models::AuthRules::ConditionalBlockParameters,
-                  Lithic::Models::AuthRules::VelocityLimitParams
-                )
-              )
-          end
-          def parameters=(_)
-          end
+          attr_accessor :parameters
 
           # The version of the rule, this is incremented whenever the rule's parameters
           #   change.
           sig { returns(Integer) }
-          def version
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def version=(_)
-          end
+          attr_accessor :version
 
           sig do
             params(
@@ -267,35 +193,12 @@ module Lithic
               )
             )
           end
-          def parameters
-          end
-
-          sig do
-            params(
-              _: T.any(
-                Lithic::Models::AuthRules::ConditionalBlockParameters,
-                Lithic::Models::AuthRules::VelocityLimitParams
-              )
-            )
-              .returns(
-                T.any(
-                  Lithic::Models::AuthRules::ConditionalBlockParameters,
-                  Lithic::Models::AuthRules::VelocityLimitParams
-                )
-              )
-          end
-          def parameters=(_)
-          end
+          attr_accessor :parameters
 
           # The version of the rule, this is incremented whenever the rule's parameters
           #   change.
           sig { returns(Integer) }
-          def version
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def version=(_)
-          end
+          attr_accessor :version
 
           sig do
             params(

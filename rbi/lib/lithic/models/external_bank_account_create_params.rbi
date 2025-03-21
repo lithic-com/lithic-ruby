@@ -8,176 +8,101 @@ module Lithic
 
       # Account Number
       sig { returns(String) }
-      def account_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_number=(_)
-      end
+      attr_accessor :account_number
 
       # The country that the bank account is located in using ISO 3166-1. We will only
       #   accept USA bank accounts e.g., USA
       sig { returns(String) }
-      def country
-      end
-
-      sig { params(_: String).returns(String) }
-      def country=(_)
-      end
+      attr_accessor :country
 
       # currency of the external account 3-character alphabetic ISO 4217 code
       sig { returns(String) }
-      def currency
-      end
-
-      sig { params(_: String).returns(String) }
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       # The financial account token of the operating account to fund the micro deposits
       sig { returns(String) }
-      def financial_account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def financial_account_token=(_)
-      end
+      attr_accessor :financial_account_token
 
       # Legal Name of the business or individual who owns the external account. This
       #   will appear in statements
       sig { returns(String) }
-      def owner
-      end
-
-      sig { params(_: String).returns(String) }
-      def owner=(_)
-      end
+      attr_accessor :owner
 
       # Owner Type
       sig { returns(Lithic::Models::OwnerType::OrSymbol) }
-      def owner_type
-      end
-
-      sig { params(_: Lithic::Models::OwnerType::OrSymbol).returns(Lithic::Models::OwnerType::OrSymbol) }
-      def owner_type=(_)
-      end
+      attr_accessor :owner_type
 
       # Routing Number
       sig { returns(String) }
-      def routing_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def routing_number=(_)
-      end
+      attr_accessor :routing_number
 
       # Account Type
       sig { returns(Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol)
-          .returns(Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Verification Method
       sig { returns(Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol) }
-      def verification_method
-      end
-
-      sig do
-        params(_: Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol)
-          .returns(Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol)
-      end
-      def verification_method=(_)
-      end
+      attr_accessor :verification_method
 
       # Indicates which Lithic account the external account is associated with. For
       #   external accounts that are associated with the program, account_token field
       #   returned will be null
       sig { returns(T.nilable(String)) }
-      def account_token
-      end
+      attr_reader :account_token
 
-      sig { params(_: String).returns(String) }
-      def account_token=(_)
-      end
+      sig { params(account_token: String).void }
+      attr_writer :account_token
 
       # Address
       sig { returns(T.nilable(Lithic::Models::ExternalBankAccountAddress)) }
-      def address
-      end
+      attr_reader :address
 
-      sig do
-        params(_: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash))
-      end
-      def address=(_)
-      end
+      sig { params(address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash)).void }
+      attr_writer :address
 
       # Optional field that helps identify bank accounts in receipts
       sig { returns(T.nilable(String)) }
-      def company_id
-      end
+      attr_reader :company_id
 
-      sig { params(_: String).returns(String) }
-      def company_id=(_)
-      end
+      sig { params(company_id: String).void }
+      attr_writer :company_id
 
       # Date of Birth of the Individual that owns the external bank account
       sig { returns(T.nilable(Date)) }
-      def dob
-      end
+      attr_reader :dob
 
-      sig { params(_: Date).returns(Date) }
-      def dob=(_)
-      end
+      sig { params(dob: Date).void }
+      attr_writer :dob
 
       # Doing Business As
       sig { returns(T.nilable(String)) }
-      def doing_business_as
-      end
+      attr_reader :doing_business_as
 
-      sig { params(_: String).returns(String) }
-      def doing_business_as=(_)
-      end
+      sig { params(doing_business_as: String).void }
+      attr_writer :doing_business_as
 
       # The nickname for this External Bank Account
       sig { returns(T.nilable(String)) }
-      def name
-      end
+      attr_reader :name
 
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      sig { params(name: String).void }
+      attr_writer :name
 
       # User Defined ID
       sig { returns(T.nilable(String)) }
-      def user_defined_id
-      end
+      attr_reader :user_defined_id
 
-      sig { params(_: String).returns(String) }
-      def user_defined_id=(_)
-      end
+      sig { params(user_defined_id: String).void }
+      attr_writer :user_defined_id
 
       sig { returns(T.nilable(T::Boolean)) }
-      def verification_enforcement
-      end
+      attr_reader :verification_enforcement
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def verification_enforcement=(_)
-      end
+      sig { params(verification_enforcement: T::Boolean).void }
+      attr_writer :verification_enforcement
 
       sig { returns(String) }
-      def processor_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def processor_token=(_)
-      end
+      attr_accessor :processor_token
 
       sig do
         params(

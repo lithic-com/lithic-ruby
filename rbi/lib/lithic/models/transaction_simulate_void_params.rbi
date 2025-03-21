@@ -8,22 +8,15 @@ module Lithic
 
       # The transaction token returned from the /v1/simulate/authorize response.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Amount (in cents) to void. Typically this will match the amount in the original
       #   authorization, but can be less.
       sig { returns(T.nilable(Integer)) }
-      def amount
-      end
+      attr_reader :amount
 
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      sig { params(amount: Integer).void }
+      attr_writer :amount
 
       # Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`.
       #
@@ -31,15 +24,10 @@ module Lithic
       #     by Lithic.
       #   - `AUTHORIZATION_REVERSAL` indicates authorization was reversed by the merchant.
       sig { returns(T.nilable(Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol)) }
-      def type
-      end
+      attr_reader :type
 
-      sig do
-        params(_: Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol)
-          .returns(Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol)
-      end
-      def type=(_)
-      end
+      sig { params(type: Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol).void }
+      attr_writer :type
 
       sig do
         params(

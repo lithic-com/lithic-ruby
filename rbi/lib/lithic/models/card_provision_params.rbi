@@ -11,68 +11,53 @@ module Lithic
       #   encoded in PEM format with headers `(-----BEGIN CERTIFICATE-----)` and trailers
       #   omitted. Provided by the device's wallet.
       sig { returns(T.nilable(String)) }
-      def certificate
-      end
+      attr_reader :certificate
 
-      sig { params(_: String).returns(String) }
-      def certificate=(_)
-      end
+      sig { params(certificate: String).void }
+      attr_writer :certificate
 
       # Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the
       #   card is on the Visa network. Stable device identification set by the wallet
       #   provider.
       sig { returns(T.nilable(String)) }
-      def client_device_id
-      end
+      attr_reader :client_device_id
 
-      sig { params(_: String).returns(String) }
-      def client_device_id=(_)
-      end
+      sig { params(client_device_id: String).void }
+      attr_writer :client_device_id
 
       # Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the
       #   card is on the Visa network. Consumer ID that identifies the wallet account
       #   holder entity.
       sig { returns(T.nilable(String)) }
-      def client_wallet_account_id
-      end
+      attr_reader :client_wallet_account_id
 
-      sig { params(_: String).returns(String) }
-      def client_wallet_account_id=(_)
-      end
+      sig { params(client_wallet_account_id: String).void }
+      attr_writer :client_wallet_account_id
 
       # Name of digital wallet provider.
       sig { returns(T.nilable(Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol)) }
-      def digital_wallet
-      end
+      attr_reader :digital_wallet
 
-      sig do
-        params(_: Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol)
-          .returns(Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol)
-      end
-      def digital_wallet=(_)
-      end
+      sig { params(digital_wallet: Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol).void }
+      attr_writer :digital_wallet
 
       # Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
       #   `activationData` in the response. Base64 cryptographic nonce provided by the
       #   device's wallet.
       sig { returns(T.nilable(String)) }
-      def nonce
-      end
+      attr_reader :nonce
 
-      sig { params(_: String).returns(String) }
-      def nonce=(_)
-      end
+      sig { params(nonce: String).void }
+      attr_writer :nonce
 
       # Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
       #   `activationData` in the response. Base64 cryptographic nonce provided by the
       #   device's wallet.
       sig { returns(T.nilable(String)) }
-      def nonce_signature
-      end
+      attr_reader :nonce_signature
 
-      sig { params(_: String).returns(String) }
-      def nonce_signature=(_)
-      end
+      sig { params(nonce_signature: String).void }
+      attr_writer :nonce_signature
 
       sig do
         params(

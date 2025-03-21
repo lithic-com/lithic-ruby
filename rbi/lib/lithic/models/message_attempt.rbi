@@ -5,79 +5,36 @@ module Lithic
     class MessageAttempt < Lithic::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # An RFC 3339 timestamp for when the event was created. UTC time zone.
       #
       #   If no timezone is specified, UTC will be used.
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Globally unique identifier.
       sig { returns(String) }
-      def event_subscription_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def event_subscription_token=(_)
-      end
+      attr_accessor :event_subscription_token
 
       # Globally unique identifier.
       sig { returns(String) }
-      def event_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def event_token=(_)
-      end
+      attr_accessor :event_token
 
       # The response body from the event subscription's URL.
       sig { returns(String) }
-      def response
-      end
-
-      sig { params(_: String).returns(String) }
-      def response=(_)
-      end
+      attr_accessor :response
 
       # The response status code from the event subscription's URL.
       sig { returns(Integer) }
-      def response_status_code
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def response_status_code=(_)
-      end
+      attr_accessor :response_status_code
 
       # The status of the event attempt.
       sig { returns(Lithic::Models::MessageAttempt::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Lithic::Models::MessageAttempt::Status::TaggedSymbol)
-          .returns(Lithic::Models::MessageAttempt::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       sig { returns(String) }
-      def url
-      end
-
-      sig { params(_: String).returns(String) }
-      def url=(_)
-      end
+      attr_accessor :url
 
       # A subscription to specific event types.
       sig do

@@ -7,12 +7,10 @@ module Lithic
         class BacktestCreateResponse < Lithic::BaseModel
           # Auth Rule Backtest Token
           sig { returns(T.nilable(String)) }
-          def backtest_token
-          end
+          attr_reader :backtest_token
 
-          sig { params(_: String).returns(String) }
-          def backtest_token=(_)
-          end
+          sig { params(backtest_token: String).void }
+          attr_writer :backtest_token
 
           sig { params(backtest_token: String).returns(T.attached_class) }
           def self.new(backtest_token: nil)

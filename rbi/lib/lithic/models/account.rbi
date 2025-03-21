@@ -7,22 +7,12 @@ module Lithic
       #   account_token returned by the enroll endpoint. If using this parameter, do not
       #   include pagination.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Timestamp of when the account was created. For accounts created before
       #   2023-05-11, this field will be null.
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Spend limit information for the user containing the daily, monthly, and lifetime
       #   spend limit of the account. Any charges to a card owned by this account will be
@@ -30,15 +20,10 @@ module Lithic
       #   time limit (rolling). A lifetime limit of 0 indicates that the lifetime limit
       #   feature is disabled.
       sig { returns(Lithic::Models::Account::SpendLimit) }
-      def spend_limit
-      end
+      attr_reader :spend_limit
 
-      sig do
-        params(_: T.any(Lithic::Models::Account::SpendLimit, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::Account::SpendLimit, Lithic::Util::AnyHash))
-      end
-      def spend_limit=(_)
-      end
+      sig { params(spend_limit: T.any(Lithic::Models::Account::SpendLimit, Lithic::Util::AnyHash)).void }
+      attr_writer :spend_limit
 
       # Account state:
       #
@@ -52,58 +37,39 @@ module Lithic
       #     [support@lithic.com](mailto:support@lithic.com) if you believe this was in
       #     error.
       sig { returns(Lithic::Models::Account::State::TaggedSymbol) }
-      def state
-      end
-
-      sig do
-        params(_: Lithic::Models::Account::State::TaggedSymbol)
-          .returns(Lithic::Models::Account::State::TaggedSymbol)
-      end
-      def state=(_)
-      end
+      attr_accessor :state
 
       sig { returns(T.nilable(Lithic::Models::Account::AccountHolder)) }
-      def account_holder
-      end
+      attr_reader :account_holder
 
-      sig do
-        params(_: T.any(Lithic::Models::Account::AccountHolder, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::Account::AccountHolder, Lithic::Util::AnyHash))
-      end
-      def account_holder=(_)
-      end
+      sig { params(account_holder: T.any(Lithic::Models::Account::AccountHolder, Lithic::Util::AnyHash)).void }
+      attr_writer :account_holder
 
       # List of identifiers for the Auth Rule(s) that are applied on the account. This
       #   field is deprecated and will no longer be populated in the `account_holder`
       #   object. The key will be removed from the schema in a future release. Use the
       #   `/auth_rules` endpoints to fetch Auth Rule information instead.
       sig { returns(T.nilable(T::Array[String])) }
-      def auth_rule_tokens
-      end
+      attr_reader :auth_rule_tokens
 
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def auth_rule_tokens=(_)
-      end
+      sig { params(auth_rule_tokens: T::Array[String]).void }
+      attr_writer :auth_rule_tokens
 
       # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
       sig { returns(T.nilable(String)) }
-      def cardholder_currency
-      end
+      attr_reader :cardholder_currency
 
-      sig { params(_: String).returns(String) }
-      def cardholder_currency=(_)
-      end
+      sig { params(cardholder_currency: String).void }
+      attr_writer :cardholder_currency
 
       sig { returns(T.nilable(Lithic::Models::Account::VerificationAddress)) }
-      def verification_address
-      end
+      attr_reader :verification_address
 
       sig do
-        params(_: T.any(Lithic::Models::Account::VerificationAddress, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::Account::VerificationAddress, Lithic::Util::AnyHash))
+        params(verification_address: T.any(Lithic::Models::Account::VerificationAddress, Lithic::Util::AnyHash))
+          .void
       end
-      def verification_address=(_)
-      end
+      attr_writer :verification_address
 
       sig do
         params(
@@ -151,30 +117,15 @@ module Lithic
       class SpendLimit < Lithic::BaseModel
         # Daily spend limit (in cents).
         sig { returns(Integer) }
-        def daily
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def daily=(_)
-        end
+        attr_accessor :daily
 
         # Total spend limit over account lifetime (in cents).
         sig { returns(Integer) }
-        def lifetime
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def lifetime=(_)
-        end
+        attr_accessor :lifetime
 
         # Monthly spend limit (in cents).
         sig { returns(Integer) }
-        def monthly
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def monthly=(_)
-        end
+        attr_accessor :monthly
 
         # Spend limit information for the user containing the daily, monthly, and lifetime
         #   spend limit of the account. Any charges to a card owned by this account will be
@@ -221,41 +172,21 @@ module Lithic
       class AccountHolder < Lithic::BaseModel
         # Globally unique identifier for the account holder.
         sig { returns(String) }
-        def token
-        end
-
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        attr_accessor :token
 
         # Only applicable for customers using the KYC-Exempt workflow to enroll authorized
         #   users of businesses. Account_token of the enrolled business associated with an
         #   enrolled AUTHORIZED_USER individual.
         sig { returns(String) }
-        def business_account_token
-        end
-
-        sig { params(_: String).returns(String) }
-        def business_account_token=(_)
-        end
+        attr_accessor :business_account_token
 
         # Email address.
         sig { returns(String) }
-        def email
-        end
-
-        sig { params(_: String).returns(String) }
-        def email=(_)
-        end
+        attr_accessor :email
 
         # Phone number of the individual.
         sig { returns(String) }
-        def phone_number
-        end
-
-        sig { params(_: String).returns(String) }
-        def phone_number=(_)
-        end
+        attr_accessor :phone_number
 
         sig do
           params(token: String, business_account_token: String, email: String, phone_number: String)
@@ -281,60 +212,33 @@ module Lithic
       class VerificationAddress < Lithic::BaseModel
         # Valid deliverable address (no PO boxes).
         sig { returns(String) }
-        def address1
-        end
-
-        sig { params(_: String).returns(String) }
-        def address1=(_)
-        end
+        attr_accessor :address1
 
         # City name.
         sig { returns(String) }
-        def city
-        end
-
-        sig { params(_: String).returns(String) }
-        def city=(_)
-        end
+        attr_accessor :city
 
         # Country name. Only USA is currently supported.
         sig { returns(String) }
-        def country
-        end
-
-        sig { params(_: String).returns(String) }
-        def country=(_)
-        end
+        attr_accessor :country
 
         # Valid postal code. Only USA postal codes (ZIP codes) are currently supported,
         #   entered as a five-digit postal code or nine-digit postal code (ZIP+4) using the
         #   format 12345-1234.
         sig { returns(String) }
-        def postal_code
-        end
-
-        sig { params(_: String).returns(String) }
-        def postal_code=(_)
-        end
+        attr_accessor :postal_code
 
         # Valid state code. Only USA state codes are currently supported, entered in
         #   uppercase ISO 3166-2 two-character format.
         sig { returns(String) }
-        def state
-        end
-
-        sig { params(_: String).returns(String) }
-        def state=(_)
-        end
+        attr_accessor :state
 
         # Unit or apartment number (if applicable).
         sig { returns(T.nilable(String)) }
-        def address2
-        end
+        attr_reader :address2
 
-        sig { params(_: String).returns(String) }
-        def address2=(_)
-        end
+        sig { params(address2: String).void }
+        attr_writer :address2
 
         sig do
           params(

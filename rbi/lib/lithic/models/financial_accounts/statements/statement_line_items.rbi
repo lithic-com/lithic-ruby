@@ -6,23 +6,10 @@ module Lithic
       module Statements
         class StatementLineItems < Lithic::BaseModel
           sig { returns(T::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data]) }
-          def data
-          end
-
-          sig do
-            params(_: T::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data])
-              .returns(T::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data])
-          end
-          def data=(_)
-          end
+          attr_accessor :data
 
           sig { returns(T::Boolean) }
-          def has_more
-          end
-
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def has_more=(_)
-          end
+          attr_accessor :has_more
 
           sig do
             params(
@@ -49,117 +36,55 @@ module Lithic
           class Data < Lithic::BaseModel
             # Globally unique identifier for a Statement Line Item
             sig { returns(String) }
-            def token
-            end
-
-            sig { params(_: String).returns(String) }
-            def token=(_)
-            end
+            attr_accessor :token
 
             # Transaction amount in cents
             sig { returns(Integer) }
-            def amount
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def amount=(_)
-            end
+            attr_accessor :amount
 
             sig { returns(Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol) }
-            def category
-            end
-
-            sig do
-              params(_: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol)
-                .returns(Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol)
-            end
-            def category=(_)
-            end
+            attr_accessor :category
 
             # Timestamp of when the line item was generated
             sig { returns(Time) }
-            def created
-            end
-
-            sig { params(_: Time).returns(Time) }
-            def created=(_)
-            end
+            attr_accessor :created
 
             # 3-character alphabetic ISO 4217 code for the settling currency of the
             #   transaction
             sig { returns(String) }
-            def currency
-            end
-
-            sig { params(_: String).returns(String) }
-            def currency=(_)
-            end
+            attr_accessor :currency
 
             # Date that the transaction effected the account balance
             sig { returns(Date) }
-            def effective_date
-            end
-
-            sig { params(_: Date).returns(Date) }
-            def effective_date=(_)
-            end
+            attr_accessor :effective_date
 
             sig { returns(Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol) }
-            def event_type
-            end
-
-            sig do
-              params(
-                _: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
-              )
-                .returns(Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol)
-            end
-            def event_type=(_)
-            end
+            attr_accessor :event_type
 
             # Globally unique identifier for a financial account
             sig { returns(String) }
-            def financial_account_token
-            end
-
-            sig { params(_: String).returns(String) }
-            def financial_account_token=(_)
-            end
+            attr_accessor :financial_account_token
 
             # Globally unique identifier for a financial transaction event
             sig { returns(String) }
-            def financial_transaction_event_token
-            end
-
-            sig { params(_: String).returns(String) }
-            def financial_transaction_event_token=(_)
-            end
+            attr_accessor :financial_transaction_event_token
 
             # Globally unique identifier for a financial transaction
             sig { returns(String) }
-            def financial_transaction_token
-            end
-
-            sig { params(_: String).returns(String) }
-            def financial_transaction_token=(_)
-            end
+            attr_accessor :financial_transaction_token
 
             # Globally unique identifier for a card
             sig { returns(T.nilable(String)) }
-            def card_token
-            end
+            attr_reader :card_token
 
-            sig { params(_: String).returns(String) }
-            def card_token=(_)
-            end
+            sig { params(card_token: String).void }
+            attr_writer :card_token
 
             sig { returns(T.nilable(String)) }
-            def descriptor
-            end
+            attr_reader :descriptor
 
-            sig { params(_: String).returns(String) }
-            def descriptor=(_)
-            end
+            sig { params(descriptor: String).void }
+            attr_writer :descriptor
 
             sig do
               params(

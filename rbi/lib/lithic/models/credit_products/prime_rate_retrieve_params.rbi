@@ -9,21 +9,17 @@ module Lithic
 
         # The effective date that the prime rates ends before
         sig { returns(T.nilable(Date)) }
-        def ending_before
-        end
+        attr_reader :ending_before
 
-        sig { params(_: Date).returns(Date) }
-        def ending_before=(_)
-        end
+        sig { params(ending_before: Date).void }
+        attr_writer :ending_before
 
         # The effective date that the prime rate starts after
         sig { returns(T.nilable(Date)) }
-        def starting_after
-        end
+        attr_reader :starting_after
 
-        sig { params(_: Date).returns(Date) }
-        def starting_after=(_)
-        end
+        sig { params(starting_after: Date).void }
+        attr_writer :starting_after
 
         sig do
           params(

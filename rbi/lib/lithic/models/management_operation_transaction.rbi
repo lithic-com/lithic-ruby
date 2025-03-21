@@ -4,123 +4,46 @@ module Lithic
   module Models
     class ManagementOperationTransaction < Lithic::BaseModel
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       sig { returns(Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol) }
-      def category
-      end
-
-      sig do
-        params(_: Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol)
-          .returns(Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol)
-      end
-      def category=(_)
-      end
+      attr_accessor :category
 
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       sig { returns(String) }
-      def currency
-      end
-
-      sig { params(_: String).returns(String) }
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       sig { returns(Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol) }
-      def direction
-      end
-
-      sig do
-        params(_: Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol)
-          .returns(Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol)
-      end
-      def direction=(_)
-      end
+      attr_accessor :direction
 
       sig { returns(T::Array[Lithic::Models::ManagementOperationTransaction::Event]) }
-      def events
-      end
-
-      sig do
-        params(_: T::Array[Lithic::Models::ManagementOperationTransaction::Event])
-          .returns(T::Array[Lithic::Models::ManagementOperationTransaction::Event])
-      end
-      def events=(_)
-      end
+      attr_accessor :events
 
       sig { returns(String) }
-      def financial_account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def financial_account_token=(_)
-      end
+      attr_accessor :financial_account_token
 
       sig { returns(Integer) }
-      def pending_amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def pending_amount=(_)
-      end
+      attr_accessor :pending_amount
 
       sig { returns(Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol) }
-      def result
-      end
-
-      sig do
-        params(_: Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol)
-          .returns(Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol)
-      end
-      def result=(_)
-      end
+      attr_accessor :result
 
       sig { returns(Integer) }
-      def settled_amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def settled_amount=(_)
-      end
+      attr_accessor :settled_amount
 
       sig { returns(Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
-          .returns(Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       sig { returns(Time) }
-      def updated
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def updated=(_)
-      end
+      attr_accessor :updated
 
       sig { returns(T.nilable(String)) }
-      def user_defined_id
-      end
+      attr_reader :user_defined_id
 
-      sig { params(_: String).returns(String) }
-      def user_defined_id=(_)
-      end
+      sig { params(user_defined_id: String).void }
+      attr_writer :user_defined_id
 
       sig do
         params(
@@ -222,85 +145,34 @@ module Lithic
 
       class Event < Lithic::BaseModel
         sig { returns(String) }
-        def token
-        end
-
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        attr_accessor :token
 
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         sig { returns(Time) }
-        def created
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created=(_)
-        end
+        attr_accessor :created
 
         sig { returns(T::Array[Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol]) }
-        def detailed_results
-        end
-
-        sig do
-          params(_: T::Array[Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol])
-            .returns(T::Array[Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol])
-        end
-        def detailed_results=(_)
-        end
+        attr_accessor :detailed_results
 
         sig { returns(Date) }
-        def effective_date
-        end
-
-        sig { params(_: Date).returns(Date) }
-        def effective_date=(_)
-        end
+        attr_accessor :effective_date
 
         sig { returns(String) }
-        def memo
-        end
-
-        sig { params(_: String).returns(String) }
-        def memo=(_)
-        end
+        attr_accessor :memo
 
         sig { returns(Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol) }
-        def result
-        end
-
-        sig do
-          params(_: Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol)
-            .returns(Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol)
-        end
-        def result=(_)
-        end
+        attr_accessor :result
 
         sig { returns(Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
-            .returns(Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         sig { returns(T.nilable(String)) }
-        def subtype
-        end
+        attr_reader :subtype
 
-        sig { params(_: String).returns(String) }
-        def subtype=(_)
-        end
+        sig { params(subtype: String).void }
+        attr_writer :subtype
 
         sig do
           params(

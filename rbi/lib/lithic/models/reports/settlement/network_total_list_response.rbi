@@ -7,116 +7,62 @@ module Lithic
         class NetworkTotalListResponse < Lithic::BaseModel
           # Globally unique identifier.
           sig { returns(String) }
-          def token
-          end
-
-          sig { params(_: String).returns(String) }
-          def token=(_)
-          end
+          attr_accessor :token
 
           sig { returns(Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Amounts) }
-          def amounts
-          end
+          attr_reader :amounts
 
           sig do
             params(
-              _: T.any(Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Amounts, Lithic::Util::AnyHash)
+              amounts: T.any(Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Amounts, Lithic::Util::AnyHash)
             )
-              .returns(
-                T.any(Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Amounts, Lithic::Util::AnyHash)
-              )
+              .void
           end
-          def amounts=(_)
-          end
+          attr_writer :amounts
 
           # RFC 3339 timestamp for when the record was created. UTC time zone.
           sig { returns(Time) }
-          def created
-          end
-
-          sig { params(_: Time).returns(Time) }
-          def created=(_)
-          end
+          attr_accessor :created
 
           # 3-character alphabetic ISO 4217 code.
           sig { returns(String) }
-          def currency
-          end
-
-          sig { params(_: String).returns(String) }
-          def currency=(_)
-          end
+          attr_accessor :currency
 
           # The institution that activity occurred on. For Mastercard: ICA (Interbank Card
           #   Association). For Maestro: institution ID. For Visa: lowest level SRE
           #   (Settlement Reporting Entity).
           sig { returns(String) }
-          def institution_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def institution_id=(_)
-          end
+          attr_accessor :institution_id
 
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
           #   INTERLINK.
           sig { returns(Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Network::TaggedSymbol) }
-          def network
-          end
-
-          sig do
-            params(_: Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Network::TaggedSymbol)
-              .returns(Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Network::TaggedSymbol)
-          end
-          def network=(_)
-          end
+          attr_accessor :network
 
           # Date that the network total record applies to. YYYY-MM-DD format.
           sig { returns(Date) }
-          def report_date
-          end
-
-          sig { params(_: Date).returns(Date) }
-          def report_date=(_)
-          end
+          attr_accessor :report_date
 
           # The institution responsible for settlement. For Mastercard: same as
           #   `institution_id`. For Maestro: billing ICA. For Visa: Funds Transfer SRE
           #   (FTSRE).
           sig { returns(String) }
-          def settlement_institution_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def settlement_institution_id=(_)
-          end
+          attr_accessor :settlement_institution_id
 
           # Settlement service.
           sig { returns(String) }
-          def settlement_service
-          end
-
-          sig { params(_: String).returns(String) }
-          def settlement_service=(_)
-          end
+          attr_accessor :settlement_service
 
           # RFC 3339 timestamp for when the record was last updated. UTC time zone.
           sig { returns(Time) }
-          def updated
-          end
-
-          sig { params(_: Time).returns(Time) }
-          def updated=(_)
-          end
+          attr_accessor :updated
 
           # The clearing cycle that the network total record applies to. Mastercard only.
           sig { returns(T.nilable(Integer)) }
-          def cycle
-          end
+          attr_reader :cycle
 
-          sig { params(_: Integer).returns(Integer) }
-          def cycle=(_)
-          end
+          sig { params(cycle: Integer).void }
+          attr_writer :cycle
 
           sig do
             params(
@@ -173,40 +119,23 @@ module Lithic
           class Amounts < Lithic::BaseModel
             # Total settlement amount excluding interchange, in currency's smallest unit.
             sig { returns(Integer) }
-            def gross_settlement
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def gross_settlement=(_)
-            end
+            attr_accessor :gross_settlement
 
             # Interchange amount, in currency's smallest unit.
             sig { returns(Integer) }
-            def interchange_fees
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def interchange_fees=(_)
-            end
+            attr_accessor :interchange_fees
 
             # `gross_settlement` net of `interchange_fees` and `visa_charges` (if applicable),
             #   in currency's smallest unit.
             sig { returns(Integer) }
-            def net_settlement
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def net_settlement=(_)
-            end
+            attr_accessor :net_settlement
 
             # Charges specific to Visa/Interlink, in currency's smallest unit.
             sig { returns(T.nilable(Integer)) }
-            def visa_charges
-            end
+            attr_reader :visa_charges
 
-            sig { params(_: Integer).returns(Integer) }
-            def visa_charges=(_)
-            end
+            sig { params(visa_charges: Integer).void }
+            attr_writer :visa_charges
 
             sig do
               params(

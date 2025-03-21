@@ -8,36 +8,21 @@ module Lithic
 
       # Event Type
       sig { returns(Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol) }
-      def event_type
-      end
-
-      sig do
-        params(_: Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
-          .returns(Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol)
-      end
-      def event_type=(_)
-      end
+      attr_accessor :event_type
 
       # Decline reason
       sig { returns(T.nilable(Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol)) }
-      def decline_reason
-      end
+      attr_reader :decline_reason
 
-      sig do
-        params(_: Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol)
-          .returns(Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol)
-      end
-      def decline_reason=(_)
-      end
+      sig { params(decline_reason: Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol).void }
+      attr_writer :decline_reason
 
       # Return Reason Code
       sig { returns(T.nilable(String)) }
-      def return_reason_code
-      end
+      attr_reader :return_reason_code
 
-      sig { params(_: String).returns(String) }
-      def return_reason_code=(_)
-      end
+      sig { params(return_reason_code: String).void }
+      attr_writer :return_reason_code
 
       sig do
         params(

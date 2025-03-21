@@ -10,22 +10,18 @@ module Lithic
         # Date string in RFC 3339 format. Only entries created after the specified time
         #   will be included. UTC time zone.
         sig { returns(T.nilable(Time)) }
-        def begin_
-        end
+        attr_reader :begin_
 
-        sig { params(_: Time).returns(Time) }
-        def begin_=(_)
-        end
+        sig { params(begin_: Time).void }
+        attr_writer :begin_
 
         # Date string in RFC 3339 format. Only entries created before the specified time
         #   will be included. UTC time zone.
         sig { returns(T.nilable(Time)) }
-        def end_
-        end
+        attr_reader :end_
 
-        sig { params(_: Time).returns(Time) }
-        def end_=(_)
-        end
+        sig { params(end_: Time).void }
+        attr_writer :end_
 
         sig do
           params(

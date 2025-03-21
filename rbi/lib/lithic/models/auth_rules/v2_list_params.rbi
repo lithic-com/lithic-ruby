@@ -9,50 +9,40 @@ module Lithic
 
         # Only return Authorization Rules that are bound to the provided account token.
         sig { returns(T.nilable(String)) }
-        def account_token
-        end
+        attr_reader :account_token
 
-        sig { params(_: String).returns(String) }
-        def account_token=(_)
-        end
+        sig { params(account_token: String).void }
+        attr_writer :account_token
 
         # Only return Authorization Rules that are bound to the provided card token.
         sig { returns(T.nilable(String)) }
-        def card_token
-        end
+        attr_reader :card_token
 
-        sig { params(_: String).returns(String) }
-        def card_token=(_)
-        end
+        sig { params(card_token: String).void }
+        attr_writer :card_token
 
         # A cursor representing an item's token before which a page of results should end.
         #   Used to retrieve the previous page of results before this item.
         sig { returns(T.nilable(String)) }
-        def ending_before
-        end
+        attr_reader :ending_before
 
-        sig { params(_: String).returns(String) }
-        def ending_before=(_)
-        end
+        sig { params(ending_before: String).void }
+        attr_writer :ending_before
 
         # Page size (for pagination).
         sig { returns(T.nilable(Integer)) }
-        def page_size
-        end
+        attr_reader :page_size
 
-        sig { params(_: Integer).returns(Integer) }
-        def page_size=(_)
-        end
+        sig { params(page_size: Integer).void }
+        attr_writer :page_size
 
         # A cursor representing an item's token after which a page of results should
         #   begin. Used to retrieve the next page of results after this item.
         sig { returns(T.nilable(String)) }
-        def starting_after
-        end
+        attr_reader :starting_after
 
-        sig { params(_: String).returns(String) }
-        def starting_after=(_)
-        end
+        sig { params(starting_after: String).void }
+        attr_writer :starting_after
 
         sig do
           params(

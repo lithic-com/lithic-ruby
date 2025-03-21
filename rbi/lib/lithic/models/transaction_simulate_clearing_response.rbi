@@ -5,12 +5,10 @@ module Lithic
     class TransactionSimulateClearingResponse < Lithic::BaseModel
       # Debugging request ID to share with Lithic Support team.
       sig { returns(T.nilable(String)) }
-      def debugging_request_id
-      end
+      attr_reader :debugging_request_id
 
-      sig { params(_: String).returns(String) }
-      def debugging_request_id=(_)
-      end
+      sig { params(debugging_request_id: String).void }
+      attr_writer :debugging_request_id
 
       sig { params(debugging_request_id: String).returns(T.attached_class) }
       def self.new(debugging_request_id: nil)

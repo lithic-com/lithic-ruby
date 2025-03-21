@@ -5,176 +5,93 @@ module Lithic
     class Transaction < Lithic::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # The token for the account associated with this transaction.
       sig { returns(String) }
-      def account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_token=(_)
-      end
+      attr_accessor :account_token
 
       # Fee assessed by the merchant and paid for by the cardholder in the smallest unit
       #   of the currency. Will be zero if no fee is assessed. Rebates may be transmitted
       #   as a negative value to indicate credited fees.
       sig { returns(T.nilable(Integer)) }
-      def acquirer_fee
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def acquirer_fee=(_)
-      end
+      attr_accessor :acquirer_fee
 
       # Unique identifier assigned to a transaction by the acquirer that can be used in
       #   dispute and chargeback filing.
       sig { returns(T.nilable(String)) }
-      def acquirer_reference_number
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def acquirer_reference_number=(_)
-      end
+      attr_accessor :acquirer_reference_number
 
       # When the transaction is pending, this represents the authorization amount of the
       #   transaction in the anticipated settlement currency. Once the transaction has
       #   settled, this field represents the settled amount in the settlement currency.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       sig { returns(Lithic::Models::Transaction::Amounts) }
-      def amounts
-      end
+      attr_reader :amounts
 
-      sig do
-        params(_: T.any(Lithic::Models::Transaction::Amounts, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::Transaction::Amounts, Lithic::Util::AnyHash))
-      end
-      def amounts=(_)
-      end
+      sig { params(amounts: T.any(Lithic::Models::Transaction::Amounts, Lithic::Util::AnyHash)).void }
+      attr_writer :amounts
 
       # The authorization amount of the transaction in the anticipated settlement
       #   currency.
       sig { returns(T.nilable(Integer)) }
-      def authorization_amount
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def authorization_amount=(_)
-      end
+      attr_accessor :authorization_amount
 
       # A fixed-width 6-digit numeric identifier that can be used to identify a
       #   transaction with networks.
       sig { returns(T.nilable(String)) }
-      def authorization_code
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def authorization_code=(_)
-      end
+      attr_accessor :authorization_code
 
       sig { returns(T.nilable(Lithic::Models::Transaction::Avs)) }
-      def avs
-      end
+      attr_reader :avs
 
-      sig do
-        params(_: T.nilable(T.any(Lithic::Models::Transaction::Avs, Lithic::Util::AnyHash)))
-          .returns(T.nilable(T.any(Lithic::Models::Transaction::Avs, Lithic::Util::AnyHash)))
-      end
-      def avs=(_)
-      end
+      sig { params(avs: T.nilable(T.any(Lithic::Models::Transaction::Avs, Lithic::Util::AnyHash))).void }
+      attr_writer :avs
 
       # Token for the card used in this transaction.
       sig { returns(String) }
-      def card_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def card_token=(_)
-      end
+      attr_accessor :card_token
 
       sig { returns(T.nilable(Lithic::Models::Transaction::CardholderAuthentication)) }
-      def cardholder_authentication
-      end
+      attr_reader :cardholder_authentication
 
       sig do
-        params(_: T.nilable(T.any(Lithic::Models::Transaction::CardholderAuthentication, Lithic::Util::AnyHash)))
-          .returns(T.nilable(T.any(Lithic::Models::Transaction::CardholderAuthentication, Lithic::Util::AnyHash)))
+        params(
+          cardholder_authentication: T.nilable(T.any(Lithic::Models::Transaction::CardholderAuthentication, Lithic::Util::AnyHash))
+        )
+          .void
       end
-      def cardholder_authentication=(_)
-      end
+      attr_writer :cardholder_authentication
 
       # Date and time when the transaction first occurred. UTC time zone.
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       sig { returns(Lithic::Models::Transaction::Merchant) }
-      def merchant
-      end
+      attr_reader :merchant
 
-      sig do
-        params(_: T.any(Lithic::Models::Transaction::Merchant, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::Transaction::Merchant, Lithic::Util::AnyHash))
-      end
-      def merchant=(_)
-      end
+      sig { params(merchant: T.any(Lithic::Models::Transaction::Merchant, Lithic::Util::AnyHash)).void }
+      attr_writer :merchant
 
       # Analogous to the 'amount', but in the merchant currency.
       sig { returns(T.nilable(Integer)) }
-      def merchant_amount
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def merchant_amount=(_)
-      end
+      attr_accessor :merchant_amount
 
       # Analogous to the 'authorization_amount', but in the merchant currency.
       sig { returns(T.nilable(Integer)) }
-      def merchant_authorization_amount
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def merchant_authorization_amount=(_)
-      end
+      attr_accessor :merchant_authorization_amount
 
       # 3-character alphabetic ISO 4217 code for the local currency of the transaction.
       sig { returns(String) }
-      def merchant_currency
-      end
-
-      sig { params(_: String).returns(String) }
-      def merchant_currency=(_)
-      end
+      attr_accessor :merchant_currency
 
       # Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
       #   `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
       #   network code from the upstream provider.
       sig { returns(T.nilable(Lithic::Models::Transaction::Network::TaggedSymbol)) }
-      def network
-      end
-
-      sig do
-        params(_: T.nilable(Lithic::Models::Transaction::Network::TaggedSymbol))
-          .returns(T.nilable(Lithic::Models::Transaction::Network::TaggedSymbol))
-      end
-      def network=(_)
-      end
+      attr_accessor :network
 
       # Network-provided score assessing risk level associated with a given
       #   authorization. Scores are on a range of 0-999, with 0 representing the lowest
@@ -182,86 +99,40 @@ module Lithic
       #   score has a range of 0-99, Lithic will normalize the score by multiplying the
       #   raw score by 10x.
       sig { returns(T.nilable(Integer)) }
-      def network_risk_score
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def network_risk_score=(_)
-      end
+      attr_accessor :network_risk_score
 
       sig { returns(Lithic::Models::Transaction::Pos) }
-      def pos
-      end
+      attr_reader :pos
 
-      sig do
-        params(_: T.any(Lithic::Models::Transaction::Pos, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::Transaction::Pos, Lithic::Util::AnyHash))
-      end
-      def pos=(_)
-      end
+      sig { params(pos: T.any(Lithic::Models::Transaction::Pos, Lithic::Util::AnyHash)).void }
+      attr_writer :pos
 
       sig { returns(Lithic::Models::Transaction::Result::TaggedSymbol) }
-      def result
-      end
-
-      sig do
-        params(_: Lithic::Models::Transaction::Result::TaggedSymbol)
-          .returns(Lithic::Models::Transaction::Result::TaggedSymbol)
-      end
-      def result=(_)
-      end
+      attr_accessor :result
 
       # The settled amount of the transaction in the settlement currency.
       sig { returns(Integer) }
-      def settled_amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def settled_amount=(_)
-      end
+      attr_accessor :settled_amount
 
       # Status of the transaction.
       sig { returns(Lithic::Models::Transaction::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Lithic::Models::Transaction::Status::TaggedSymbol)
-          .returns(Lithic::Models::Transaction::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       sig { returns(T.nilable(Lithic::Models::Transaction::TokenInfo)) }
-      def token_info
-      end
+      attr_reader :token_info
 
-      sig do
-        params(_: T.nilable(T.any(Lithic::Models::Transaction::TokenInfo, Lithic::Util::AnyHash)))
-          .returns(T.nilable(T.any(Lithic::Models::Transaction::TokenInfo, Lithic::Util::AnyHash)))
-      end
-      def token_info=(_)
-      end
+      sig { params(token_info: T.nilable(T.any(Lithic::Models::Transaction::TokenInfo, Lithic::Util::AnyHash))).void }
+      attr_writer :token_info
 
       # Date and time when the transaction last updated. UTC time zone.
       sig { returns(Time) }
-      def updated
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def updated=(_)
-      end
+      attr_accessor :updated
 
       sig { returns(T.nilable(T::Array[Lithic::Models::Transaction::Event])) }
-      def events
-      end
+      attr_reader :events
 
-      sig do
-        params(_: T::Array[T.any(Lithic::Models::Transaction::Event, Lithic::Util::AnyHash)])
-          .returns(T::Array[T.any(Lithic::Models::Transaction::Event, Lithic::Util::AnyHash)])
-      end
-      def events=(_)
-      end
+      sig { params(events: T::Array[T.any(Lithic::Models::Transaction::Event, Lithic::Util::AnyHash)]).void }
+      attr_writer :events
 
       sig do
         params(
@@ -359,48 +230,28 @@ module Lithic
 
       class Amounts < Lithic::BaseModel
         sig { returns(Lithic::Models::Transaction::Amounts::Cardholder) }
-        def cardholder
-        end
+        attr_reader :cardholder
 
-        sig do
-          params(_: T.any(Lithic::Models::Transaction::Amounts::Cardholder, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::Transaction::Amounts::Cardholder, Lithic::Util::AnyHash))
-        end
-        def cardholder=(_)
-        end
+        sig { params(cardholder: T.any(Lithic::Models::Transaction::Amounts::Cardholder, Lithic::Util::AnyHash)).void }
+        attr_writer :cardholder
 
         sig { returns(Lithic::Models::Transaction::Amounts::Hold) }
-        def hold
-        end
+        attr_reader :hold
 
-        sig do
-          params(_: T.any(Lithic::Models::Transaction::Amounts::Hold, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::Transaction::Amounts::Hold, Lithic::Util::AnyHash))
-        end
-        def hold=(_)
-        end
+        sig { params(hold: T.any(Lithic::Models::Transaction::Amounts::Hold, Lithic::Util::AnyHash)).void }
+        attr_writer :hold
 
         sig { returns(Lithic::Models::Transaction::Amounts::Merchant) }
-        def merchant
-        end
+        attr_reader :merchant
 
-        sig do
-          params(_: T.any(Lithic::Models::Transaction::Amounts::Merchant, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::Transaction::Amounts::Merchant, Lithic::Util::AnyHash))
-        end
-        def merchant=(_)
-        end
+        sig { params(merchant: T.any(Lithic::Models::Transaction::Amounts::Merchant, Lithic::Util::AnyHash)).void }
+        attr_writer :merchant
 
         sig { returns(Lithic::Models::Transaction::Amounts::Settlement) }
-        def settlement
-        end
+        attr_reader :settlement
 
-        sig do
-          params(_: T.any(Lithic::Models::Transaction::Amounts::Settlement, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::Transaction::Amounts::Settlement, Lithic::Util::AnyHash))
-        end
-        def settlement=(_)
-        end
+        sig { params(settlement: T.any(Lithic::Models::Transaction::Amounts::Settlement, Lithic::Util::AnyHash)).void }
+        attr_writer :settlement
 
         sig do
           params(
@@ -432,31 +283,16 @@ module Lithic
           # The estimated settled amount of the transaction in the cardholder billing
           #   currency.
           sig { returns(Integer) }
-          def amount
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def amount=(_)
-          end
+          attr_accessor :amount
 
           # The exchange rate used to convert the merchant amount to the cardholder billing
           #   amount.
           sig { returns(String) }
-          def conversion_rate
-          end
-
-          sig { params(_: String).returns(String) }
-          def conversion_rate=(_)
-          end
+          attr_accessor :conversion_rate
 
           # 3-character alphabetic ISO 4217 currency
           sig { returns(String) }
-          def currency
-          end
-
-          sig { params(_: String).returns(String) }
-          def currency=(_)
-          end
+          attr_accessor :currency
 
           sig { params(amount: Integer, conversion_rate: String, currency: String).returns(T.attached_class) }
           def self.new(amount:, conversion_rate:, currency:)
@@ -470,21 +306,11 @@ module Lithic
         class Hold < Lithic::BaseModel
           # The pending amount of the transaction in the anticipated settlement currency.
           sig { returns(Integer) }
-          def amount
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def amount=(_)
-          end
+          attr_accessor :amount
 
           # 3-character alphabetic ISO 4217 currency
           sig { returns(String) }
-          def currency
-          end
-
-          sig { params(_: String).returns(String) }
-          def currency=(_)
-          end
+          attr_accessor :currency
 
           sig { params(amount: Integer, currency: String).returns(T.attached_class) }
           def self.new(amount:, currency:)
@@ -498,21 +324,11 @@ module Lithic
         class Merchant < Lithic::BaseModel
           # The settled amount of the transaction in the merchant currency.
           sig { returns(Integer) }
-          def amount
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def amount=(_)
-          end
+          attr_accessor :amount
 
           # 3-character alphabetic ISO 4217 currency
           sig { returns(String) }
-          def currency
-          end
-
-          sig { params(_: String).returns(String) }
-          def currency=(_)
-          end
+          attr_accessor :currency
 
           sig { params(amount: Integer, currency: String).returns(T.attached_class) }
           def self.new(amount:, currency:)
@@ -526,21 +342,11 @@ module Lithic
         class Settlement < Lithic::BaseModel
           # The settled amount of the transaction in the settlement currency.
           sig { returns(Integer) }
-          def amount
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def amount=(_)
-          end
+          attr_accessor :amount
 
           # 3-character alphabetic ISO 4217 currency
           sig { returns(String) }
-          def currency
-          end
-
-          sig { params(_: String).returns(String) }
-          def currency=(_)
-          end
+          attr_accessor :currency
 
           sig { params(amount: Integer, currency: String).returns(T.attached_class) }
           def self.new(amount:, currency:)
@@ -555,21 +361,11 @@ module Lithic
       class Avs < Lithic::BaseModel
         # Cardholder address
         sig { returns(String) }
-        def address
-        end
-
-        sig { params(_: String).returns(String) }
-        def address=(_)
-        end
+        attr_accessor :address
 
         # Cardholder ZIP code
         sig { returns(String) }
-        def zipcode
-        end
-
-        sig { params(_: String).returns(String) }
-        def zipcode=(_)
-        end
+        attr_accessor :zipcode
 
         sig { params(address: String, zipcode: String).returns(T.attached_class) }
         def self.new(address:, zipcode:)
@@ -583,48 +379,19 @@ module Lithic
       class CardholderAuthentication < Lithic::BaseModel
         # The 3DS version used for the authentication
         sig { returns(T.nilable(String)) }
-        def three_ds_version
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def three_ds_version=(_)
-        end
+        attr_accessor :three_ds_version
 
         # Whether an acquirer exemption applied to the transaction.
         sig { returns(Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol) }
-        def acquirer_exemption
-        end
-
-        sig do
-          params(_: Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol)
-            .returns(Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol)
-        end
-        def acquirer_exemption=(_)
-        end
+        attr_accessor :acquirer_exemption
 
         # Indicates what the outcome of the 3DS authentication process is.
         sig { returns(Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol) }
-        def authentication_result
-        end
-
-        sig do
-          params(_: Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol)
-            .returns(Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol)
-        end
-        def authentication_result=(_)
-        end
+        attr_accessor :authentication_result
 
         # Indicates which party made the 3DS authentication decision.
         sig { returns(Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol) }
-        def decision_made_by
-        end
-
-        sig do
-          params(_: Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol)
-            .returns(Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol)
-        end
-        def decision_made_by=(_)
-        end
+        attr_accessor :decision_made_by
 
         # Indicates whether chargeback liability shift applies to the transaction.
         #   Possible enum values:
@@ -639,53 +406,24 @@ module Lithic
         #     cryptography, possibly recurring. Chargeback liability shift to the issuer
         #     applies.
         sig { returns(Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol) }
-        def liability_shift
-        end
-
-        sig do
-          params(_: Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol)
-            .returns(Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol)
-        end
-        def liability_shift=(_)
-        end
+        attr_accessor :liability_shift
 
         # Unique identifier you can use to match a given 3DS authentication (available via
         #   the three_ds_authentication.created event webhook) and the transaction. Note
         #   that in cases where liability shift does not occur, this token is matched to the
         #   transaction on a best-effort basis.
         sig { returns(T.nilable(String)) }
-        def three_ds_authentication_token
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def three_ds_authentication_token=(_)
-        end
+        attr_accessor :three_ds_authentication_token
 
         # Indicates whether a 3DS challenge flow was used, and if so, what the
         #   verification method was. (deprecated, use `authentication_result`)
         sig { returns(Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol) }
-        def verification_attempted
-        end
-
-        sig do
-          params(_: Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol)
-            .returns(Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol)
-        end
-        def verification_attempted=(_)
-        end
+        attr_accessor :verification_attempted
 
         # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
         #   use `authentication_result`)
         sig { returns(Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol) }
-        def verification_result
-        end
-
-        sig do
-          params(_: Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol)
-            .returns(Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol)
-        end
-        def verification_result=(_)
-        end
+        attr_accessor :verification_result
 
         sig do
           params(
@@ -970,69 +708,34 @@ module Lithic
       class Merchant < Lithic::BaseModel
         # Unique alphanumeric identifier for the payment card acceptor (merchant).
         sig { returns(String) }
-        def acceptor_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def acceptor_id=(_)
-        end
+        attr_accessor :acceptor_id
 
         # Unique numeric identifier of the acquiring institution.
         sig { returns(String) }
-        def acquiring_institution_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def acquiring_institution_id=(_)
-        end
+        attr_accessor :acquiring_institution_id
 
         # City of card acceptor. Note that in many cases, particularly in card-not-present
         #   transactions, merchants may send through a phone number or URL in this field.
         sig { returns(String) }
-        def city
-        end
-
-        sig { params(_: String).returns(String) }
-        def city=(_)
-        end
+        attr_accessor :city
 
         # Country or entity of card acceptor. Possible values are: (1) all ISO 3166-1
         #   alpha-3 country codes, (2) QZZ for Kosovo, and (3) ANT for Netherlands Antilles.
         sig { returns(String) }
-        def country
-        end
-
-        sig { params(_: String).returns(String) }
-        def country=(_)
-        end
+        attr_accessor :country
 
         # Short description of card acceptor.
         sig { returns(String) }
-        def descriptor
-        end
-
-        sig { params(_: String).returns(String) }
-        def descriptor=(_)
-        end
+        attr_accessor :descriptor
 
         # Merchant category code (MCC). A four-digit number listed in ISO 18245. An MCC is
         #   used to classify a business by the types of goods or services it provides.
         sig { returns(String) }
-        def mcc
-        end
-
-        sig { params(_: String).returns(String) }
-        def mcc=(_)
-        end
+        attr_accessor :mcc
 
         # Geographic state of card acceptor.
         sig { returns(String) }
-        def state
-        end
-
-        sig { params(_: String).returns(String) }
-        def state=(_)
-        end
+        attr_accessor :state
 
         sig do
           params(
@@ -1091,26 +794,16 @@ module Lithic
 
       class Pos < Lithic::BaseModel
         sig { returns(Lithic::Models::Transaction::Pos::EntryMode) }
-        def entry_mode
-        end
+        attr_reader :entry_mode
 
-        sig do
-          params(_: T.any(Lithic::Models::Transaction::Pos::EntryMode, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::Transaction::Pos::EntryMode, Lithic::Util::AnyHash))
-        end
-        def entry_mode=(_)
-        end
+        sig { params(entry_mode: T.any(Lithic::Models::Transaction::Pos::EntryMode, Lithic::Util::AnyHash)).void }
+        attr_writer :entry_mode
 
         sig { returns(Lithic::Models::Transaction::Pos::Terminal) }
-        def terminal
-        end
+        attr_reader :terminal
 
-        sig do
-          params(_: T.any(Lithic::Models::Transaction::Pos::Terminal, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::Transaction::Pos::Terminal, Lithic::Util::AnyHash))
-        end
-        def terminal=(_)
-        end
+        sig { params(terminal: T.any(Lithic::Models::Transaction::Pos::Terminal, Lithic::Util::AnyHash)).void }
+        attr_writer :terminal
 
         sig do
           params(
@@ -1137,48 +830,19 @@ module Lithic
         class EntryMode < Lithic::BaseModel
           # Card presence indicator
           sig { returns(Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol) }
-          def card
-          end
-
-          sig do
-            params(_: Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
-              .returns(Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
-          end
-          def card=(_)
-          end
+          attr_accessor :card
 
           # Cardholder presence indicator
           sig { returns(Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol) }
-          def cardholder
-          end
-
-          sig do
-            params(_: Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
-              .returns(Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
-          end
-          def cardholder=(_)
-          end
+          attr_accessor :cardholder
 
           # Method of entry for the PAN
           sig { returns(Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol) }
-          def pan
-          end
-
-          sig do
-            params(_: Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
-              .returns(Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
-          end
-          def pan=(_)
-          end
+          attr_accessor :pan
 
           # Indicates whether the cardholder entered the PIN. True if the PIN was entered.
           sig { returns(T::Boolean) }
-          def pin_entered
-          end
-
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def pin_entered=(_)
-          end
+          attr_accessor :pin_entered
 
           sig do
             params(
@@ -1292,42 +956,19 @@ module Lithic
         class Terminal < Lithic::BaseModel
           # True if a clerk is present at the sale.
           sig { returns(T::Boolean) }
-          def attended
-          end
-
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def attended=(_)
-          end
+          attr_accessor :attended
 
           # True if the terminal is capable of retaining the card.
           sig { returns(T::Boolean) }
-          def card_retention_capable
-          end
-
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def card_retention_capable=(_)
-          end
+          attr_accessor :card_retention_capable
 
           # True if the sale was made at the place of business (vs. mobile).
           sig { returns(T::Boolean) }
-          def on_premise
-          end
-
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def on_premise=(_)
-          end
+          attr_accessor :on_premise
 
           # The person that is designated to swipe the card
           sig { returns(Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol) }
-          def operator
-          end
-
-          sig do
-            params(_: Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
-              .returns(Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
-          end
-          def operator=(_)
-          end
+          attr_accessor :operator
 
           # True if the terminal is capable of partial approval. Partial approval is when
           #   part of a transaction is approved and another payment must be used for the
@@ -1335,36 +976,15 @@ module Lithic
           #   with a $25 balance. If partial approval is enabled, $25 can be authorized, at
           #   which point the POS will prompt the user for an additional payment of $15.
           sig { returns(T::Boolean) }
-          def partial_approval_capable
-          end
-
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def partial_approval_capable=(_)
-          end
+          attr_accessor :partial_approval_capable
 
           # Status of whether the POS is able to accept PINs
           sig { returns(Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol) }
-          def pin_capability
-          end
-
-          sig do
-            params(_: Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol)
-              .returns(Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol)
-          end
-          def pin_capability=(_)
-          end
+          attr_accessor :pin_capability
 
           # POS Type
           sig { returns(Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
-              .returns(Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(
@@ -1559,15 +1179,7 @@ module Lithic
         #   tokenization, and “other” sources like in-flight commerce. Masterpass is not
         #   currently supported and is included for future use.
         sig { returns(Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol) }
-        def wallet_type
-        end
-
-        sig do
-          params(_: Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
-            .returns(Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
-        end
-        def wallet_type=(_)
-        end
+        attr_accessor :wallet_type
 
         sig do
           params(wallet_type: Lithic::Models::Transaction::TokenInfo::WalletType::OrSymbol).returns(T.attached_class)
@@ -1608,64 +1220,28 @@ module Lithic
       class Event < Lithic::BaseModel
         # Transaction event identifier.
         sig { returns(String) }
-        def token
-        end
-
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        attr_accessor :token
 
         # Amount of the event in the settlement currency.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         sig { returns(Lithic::Models::Transaction::Event::Amounts) }
-        def amounts
-        end
+        attr_reader :amounts
 
-        sig do
-          params(_: T.any(Lithic::Models::Transaction::Event::Amounts, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::Transaction::Event::Amounts, Lithic::Util::AnyHash))
-        end
-        def amounts=(_)
-        end
+        sig { params(amounts: T.any(Lithic::Models::Transaction::Event::Amounts, Lithic::Util::AnyHash)).void }
+        attr_writer :amounts
 
         # RFC 3339 date and time this event entered the system. UTC time zone.
         sig { returns(Time) }
-        def created
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created=(_)
-        end
+        attr_accessor :created
 
         sig { returns(T::Array[Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol]) }
-        def detailed_results
-        end
-
-        sig do
-          params(_: T::Array[Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol])
-            .returns(T::Array[Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol])
-        end
-        def detailed_results=(_)
-        end
+        attr_accessor :detailed_results
 
         # Indicates whether the transaction event is a credit or debit to the account.
         sig { returns(Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol) }
-        def effective_polarity
-        end
-
-        sig do
-          params(_: Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol)
-            .returns(Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol)
-        end
-        def effective_polarity=(_)
-        end
+        attr_accessor :effective_polarity
 
         # Information provided by the card network in each event. This includes common
         #   identifiers shared between you, Lithic, the card network and in some cases the
@@ -1677,49 +1253,25 @@ module Lithic
         #   unless otherwise specified. Please consult the official network documentation
         #   for more details about these fields and how to use them.
         sig { returns(T.nilable(Lithic::Models::Transaction::Event::NetworkInfo)) }
-        def network_info
-        end
+        attr_reader :network_info
 
         sig do
-          params(_: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo, Lithic::Util::AnyHash)))
-            .returns(T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo, Lithic::Util::AnyHash)))
+          params(
+            network_info: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo, Lithic::Util::AnyHash))
+          )
+            .void
         end
-        def network_info=(_)
-        end
+        attr_writer :network_info
 
         sig { returns(Lithic::Models::Transaction::Event::Result::TaggedSymbol) }
-        def result
-        end
-
-        sig do
-          params(_: Lithic::Models::Transaction::Event::Result::TaggedSymbol)
-            .returns(Lithic::Models::Transaction::Event::Result::TaggedSymbol)
-        end
-        def result=(_)
-        end
+        attr_accessor :result
 
         sig { returns(T::Array[Lithic::Models::Transaction::Event::RuleResult]) }
-        def rule_results
-        end
-
-        sig do
-          params(_: T::Array[Lithic::Models::Transaction::Event::RuleResult])
-            .returns(T::Array[Lithic::Models::Transaction::Event::RuleResult])
-        end
-        def rule_results=(_)
-        end
+        attr_accessor :rule_results
 
         # Type of transaction event
         sig { returns(Lithic::Models::Transaction::Event::Type::TaggedSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: Lithic::Models::Transaction::Event::Type::TaggedSymbol)
-            .returns(Lithic::Models::Transaction::Event::Type::TaggedSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         sig do
           params(
@@ -1772,39 +1324,30 @@ module Lithic
 
         class Amounts < Lithic::BaseModel
           sig { returns(Lithic::Models::Transaction::Event::Amounts::Cardholder) }
-          def cardholder
-          end
+          attr_reader :cardholder
 
           sig do
-            params(_: T.any(Lithic::Models::Transaction::Event::Amounts::Cardholder, Lithic::Util::AnyHash))
-              .returns(T.any(Lithic::Models::Transaction::Event::Amounts::Cardholder, Lithic::Util::AnyHash))
+            params(cardholder: T.any(Lithic::Models::Transaction::Event::Amounts::Cardholder, Lithic::Util::AnyHash))
+              .void
           end
-          def cardholder=(_)
-          end
+          attr_writer :cardholder
 
           sig { returns(Lithic::Models::Transaction::Event::Amounts::Merchant) }
-          def merchant
-          end
+          attr_reader :merchant
 
-          sig do
-            params(_: T.any(Lithic::Models::Transaction::Event::Amounts::Merchant, Lithic::Util::AnyHash))
-              .returns(T.any(Lithic::Models::Transaction::Event::Amounts::Merchant, Lithic::Util::AnyHash))
-          end
-          def merchant=(_)
-          end
+          sig { params(merchant: T.any(Lithic::Models::Transaction::Event::Amounts::Merchant, Lithic::Util::AnyHash)).void }
+          attr_writer :merchant
 
           sig { returns(T.nilable(Lithic::Models::Transaction::Event::Amounts::Settlement)) }
-          def settlement
-          end
+          attr_reader :settlement
 
           sig do
             params(
-              _: T.nilable(T.any(Lithic::Models::Transaction::Event::Amounts::Settlement, Lithic::Util::AnyHash))
+              settlement: T.nilable(T.any(Lithic::Models::Transaction::Event::Amounts::Settlement, Lithic::Util::AnyHash))
             )
-              .returns(T.nilable(T.any(Lithic::Models::Transaction::Event::Amounts::Settlement, Lithic::Util::AnyHash)))
+              .void
           end
-          def settlement=(_)
-          end
+          attr_writer :settlement
 
           sig do
             params(
@@ -1833,31 +1376,16 @@ module Lithic
           class Cardholder < Lithic::BaseModel
             # Amount of the event in the cardholder billing currency.
             sig { returns(Integer) }
-            def amount
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def amount=(_)
-            end
+            attr_accessor :amount
 
             # Exchange rate used to convert the merchant amount to the cardholder billing
             #   amount.
             sig { returns(String) }
-            def conversion_rate
-            end
-
-            sig { params(_: String).returns(String) }
-            def conversion_rate=(_)
-            end
+            attr_accessor :conversion_rate
 
             # 3-character alphabetic ISO 4217 currency
             sig { returns(String) }
-            def currency
-            end
-
-            sig { params(_: String).returns(String) }
-            def currency=(_)
-            end
+            attr_accessor :currency
 
             sig do
               params(amount: Integer, conversion_rate: String, currency: String).returns(T.attached_class)
@@ -1873,21 +1401,11 @@ module Lithic
           class Merchant < Lithic::BaseModel
             # Amount of the event in the merchant currency.
             sig { returns(Integer) }
-            def amount
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def amount=(_)
-            end
+            attr_accessor :amount
 
             # 3-character alphabetic ISO 4217 currency
             sig { returns(String) }
-            def currency
-            end
-
-            sig { params(_: String).returns(String) }
-            def currency=(_)
-            end
+            attr_accessor :currency
 
             sig { params(amount: Integer, currency: String).returns(T.attached_class) }
             def self.new(amount:, currency:)
@@ -1902,30 +1420,15 @@ module Lithic
             # Amount of the event, if it is financial, in the settlement currency.
             #   Non-financial events do not contain this amount because they do not move funds.
             sig { returns(Integer) }
-            def amount
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def amount=(_)
-            end
+            attr_accessor :amount
 
             # Exchange rate used to convert the merchant amount to the settlement amount.
             sig { returns(String) }
-            def conversion_rate
-            end
-
-            sig { params(_: String).returns(String) }
-            def conversion_rate=(_)
-            end
+            attr_accessor :conversion_rate
 
             # 3-character alphabetic ISO 4217 currency
             sig { returns(String) }
-            def currency
-            end
-
-            sig { params(_: String).returns(String) }
-            def currency=(_)
-            end
+            attr_accessor :currency
 
             sig do
               params(amount: Integer, conversion_rate: String, currency: String).returns(T.attached_class)
@@ -2096,45 +1599,37 @@ module Lithic
 
         class NetworkInfo < Lithic::BaseModel
           sig { returns(T.nilable(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer)) }
-          def acquirer
-          end
+          attr_reader :acquirer
 
           sig do
             params(
-              _: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, Lithic::Util::AnyHash))
+              acquirer: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, Lithic::Util::AnyHash))
             )
-              .returns(
-                T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, Lithic::Util::AnyHash))
-              )
+              .void
           end
-          def acquirer=(_)
-          end
+          attr_writer :acquirer
 
           sig { returns(T.nilable(Lithic::Models::Transaction::Event::NetworkInfo::Mastercard)) }
-          def mastercard
-          end
+          attr_reader :mastercard
 
           sig do
             params(
-              _: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Mastercard, Lithic::Util::AnyHash))
+              mastercard: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Mastercard, Lithic::Util::AnyHash))
             )
-              .returns(
-                T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Mastercard, Lithic::Util::AnyHash))
-              )
+              .void
           end
-          def mastercard=(_)
-          end
+          attr_writer :mastercard
 
           sig { returns(T.nilable(Lithic::Models::Transaction::Event::NetworkInfo::Visa)) }
-          def visa
-          end
+          attr_reader :visa
 
           sig do
-            params(_: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Visa, Lithic::Util::AnyHash)))
-              .returns(T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Visa, Lithic::Util::AnyHash)))
+            params(
+              visa: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Visa, Lithic::Util::AnyHash))
+            )
+              .void
           end
-          def visa=(_)
-          end
+          attr_writer :visa
 
           # Information provided by the card network in each event. This includes common
           #   identifiers shared between you, Lithic, the card network and in some cases the
@@ -2176,21 +1671,11 @@ module Lithic
             #   fuel dispenser transactions). A single transaction can contain multiple ARNs if
             #   the merchant sends multiple clearings.
             sig { returns(T.nilable(String)) }
-            def acquirer_reference_number
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def acquirer_reference_number=(_)
-            end
+            attr_accessor :acquirer_reference_number
 
             # Identifier assigned by the acquirer.
             sig { returns(T.nilable(String)) }
-            def retrieval_reference_number
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def retrieval_reference_number=(_)
-            end
+            attr_accessor :retrieval_reference_number
 
             sig do
               params(
@@ -2217,12 +1702,7 @@ module Lithic
             # Identifier assigned by Mastercard. Guaranteed by Mastercard to be unique for any
             #   transaction within a specific financial network on any processing day.
             sig { returns(T.nilable(String)) }
-            def banknet_reference_number
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def banknet_reference_number=(_)
-            end
+            attr_accessor :banknet_reference_number
 
             # Identifier assigned by Mastercard. Matches the `banknet_reference_number` of a
             #   prior related event. May be populated in authorization reversals, incremental
@@ -2236,33 +1716,18 @@ module Lithic
             #   the banknet reference number of the initial authorization, which Lithic does not
             #   receive.
             sig { returns(T.nilable(String)) }
-            def original_banknet_reference_number
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def original_banknet_reference_number=(_)
-            end
+            attr_accessor :original_banknet_reference_number
 
             # Identifier assigned by Mastercard. Matches the `switch_serial_number` of a prior
             #   related event. May be populated in returns and return reversals. Applicable to
             #   single-message transactions only.
             sig { returns(T.nilable(String)) }
-            def original_switch_serial_number
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def original_switch_serial_number=(_)
-            end
+            attr_accessor :original_switch_serial_number
 
             # Identifier assigned by Mastercard, applicable to single-message transactions
             #   only.
             sig { returns(T.nilable(String)) }
-            def switch_serial_number
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def switch_serial_number=(_)
-            end
+            attr_accessor :switch_serial_number
 
             sig do
               params(
@@ -2302,23 +1767,13 @@ module Lithic
             #   that augment a previously authorized amount), authorization advices, financial
             #   authorizations, and clearings.
             sig { returns(T.nilable(String)) }
-            def original_transaction_id
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def original_transaction_id=(_)
-            end
+            attr_accessor :original_transaction_id
 
             # Identifier assigned by Visa to link original messages to subsequent messages.
             #   Guaranteed by Visa to be unique for each original authorization and financial
             #   authorization.
             sig { returns(T.nilable(String)) }
-            def transaction_id
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def transaction_id=(_)
-            end
+            attr_accessor :transaction_id
 
             sig do
               params(original_transaction_id: T.nilable(String), transaction_id: T.nilable(String))
@@ -2394,42 +1849,19 @@ module Lithic
           #   customer-configured Auth Rule. This may happen in cases where a transaction is
           #   declined due to a Lithic-configured security or compliance rule, for example.
           sig { returns(T.nilable(String)) }
-          def auth_rule_token
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def auth_rule_token=(_)
-          end
+          attr_accessor :auth_rule_token
 
           # A human-readable explanation outlining the motivation for the rule's decline.
           sig { returns(T.nilable(String)) }
-          def explanation
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def explanation=(_)
-          end
+          attr_accessor :explanation
 
           # The name for the rule, if any was configured.
           sig { returns(T.nilable(String)) }
-          def name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # The detailed_result associated with this rule's decline.
           sig { returns(Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol) }
-          def result
-          end
-
-          sig do
-            params(_: Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
-              .returns(Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
-          end
-          def result=(_)
-          end
+          attr_accessor :result
 
           sig do
             params(

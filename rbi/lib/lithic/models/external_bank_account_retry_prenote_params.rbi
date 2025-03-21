@@ -7,12 +7,10 @@ module Lithic
       include Lithic::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      def financial_account_token
-      end
+      attr_reader :financial_account_token
 
-      sig { params(_: String).returns(String) }
-      def financial_account_token=(_)
-      end
+      sig { params(financial_account_token: String).void }
+      attr_writer :financial_account_token
 
       sig do
         params(

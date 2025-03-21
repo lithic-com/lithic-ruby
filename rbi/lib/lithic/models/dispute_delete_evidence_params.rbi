@@ -7,12 +7,7 @@ module Lithic
       include Lithic::RequestParameters
 
       sig { returns(String) }
-      def dispute_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def dispute_token=(_)
-      end
+      attr_accessor :dispute_token
 
       sig do
         params(dispute_token: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))

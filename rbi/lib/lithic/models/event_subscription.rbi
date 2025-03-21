@@ -5,49 +5,21 @@ module Lithic
     class EventSubscription < Lithic::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # A description of the subscription.
       sig { returns(String) }
-      def description
-      end
-
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # Whether the subscription is disabled.
       sig { returns(T::Boolean) }
-      def disabled
-      end
-
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def disabled=(_)
-      end
+      attr_accessor :disabled
 
       sig { returns(String) }
-      def url
-      end
-
-      sig { params(_: String).returns(String) }
-      def url=(_)
-      end
+      attr_accessor :url
 
       sig { returns(T.nilable(T::Array[Lithic::Models::EventSubscription::EventType::TaggedSymbol])) }
-      def event_types
-      end
-
-      sig do
-        params(_: T.nilable(T::Array[Lithic::Models::EventSubscription::EventType::TaggedSymbol]))
-          .returns(T.nilable(T::Array[Lithic::Models::EventSubscription::EventType::TaggedSymbol]))
-      end
-      def event_types=(_)
-      end
+      attr_accessor :event_types
 
       # A subscription to specific event types.
       sig do

@@ -8,12 +8,7 @@ module Lithic
 
       # The PAN for the card being retrieved.
       sig { returns(String) }
-      def pan
-      end
-
-      sig { params(_: String).returns(String) }
-      def pan=(_)
-      end
+      attr_accessor :pan
 
       sig do
         params(pan: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))

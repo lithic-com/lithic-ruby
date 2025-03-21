@@ -8,43 +8,32 @@ module Lithic
 
       # List balances for all financial accounts of a given account_token.
       sig { returns(T.nilable(String)) }
-      def account_token
-      end
+      attr_reader :account_token
 
-      sig { params(_: String).returns(String) }
-      def account_token=(_)
-      end
+      sig { params(account_token: String).void }
+      attr_writer :account_token
 
       # UTC date and time of the balances to retrieve. Defaults to latest available
       #   balances
       sig { returns(T.nilable(Time)) }
-      def balance_date
-      end
+      attr_reader :balance_date
 
-      sig { params(_: Time).returns(Time) }
-      def balance_date=(_)
-      end
+      sig { params(balance_date: Time).void }
+      attr_writer :balance_date
 
       # List balances for all financial accounts of a given business_account_token.
       sig { returns(T.nilable(String)) }
-      def business_account_token
-      end
+      attr_reader :business_account_token
 
-      sig { params(_: String).returns(String) }
-      def business_account_token=(_)
-      end
+      sig { params(business_account_token: String).void }
+      attr_writer :business_account_token
 
       # List balances for a given Financial Account type.
       sig { returns(T.nilable(Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol)) }
-      def financial_account_type
-      end
+      attr_reader :financial_account_type
 
-      sig do
-        params(_: Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol)
-          .returns(Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol)
-      end
-      def financial_account_type=(_)
-      end
+      sig { params(financial_account_type: Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol).void }
+      attr_writer :financial_account_type
 
       sig do
         params(

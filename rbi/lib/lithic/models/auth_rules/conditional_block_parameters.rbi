@@ -5,15 +5,7 @@ module Lithic
     module AuthRules
       class ConditionalBlockParameters < Lithic::BaseModel
         sig { returns(T::Array[Lithic::Models::AuthRules::AuthRuleCondition]) }
-        def conditions
-        end
-
-        sig do
-          params(_: T::Array[Lithic::Models::AuthRules::AuthRuleCondition])
-            .returns(T::Array[Lithic::Models::AuthRules::AuthRuleCondition])
-        end
-        def conditions=(_)
-        end
+        attr_accessor :conditions
 
         sig do
           params(conditions: T::Array[T.any(Lithic::Models::AuthRules::AuthRuleCondition, Lithic::Util::AnyHash)])

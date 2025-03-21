@@ -4,12 +4,10 @@ module Lithic
   module Models
     class CardProvisionResponse < Lithic::BaseModel
       sig { returns(T.nilable(String)) }
-      def provisioning_payload
-      end
+      attr_reader :provisioning_payload
 
-      sig { params(_: String).returns(String) }
-      def provisioning_payload=(_)
-      end
+      sig { params(provisioning_payload: String).void }
+      attr_writer :provisioning_payload
 
       sig { params(provisioning_payload: String).returns(T.attached_class) }
       def self.new(provisioning_payload: nil)

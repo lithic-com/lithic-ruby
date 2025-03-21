@@ -17,108 +17,82 @@ module Lithic
       )
 
     sig { returns(String) }
-    def api_key
-    end
+    attr_reader :api_key
 
     sig { returns(Lithic::Resources::Accounts) }
-    def accounts
-    end
+    attr_reader :accounts
 
     sig { returns(Lithic::Resources::AccountHolders) }
-    def account_holders
-    end
+    attr_reader :account_holders
 
     sig { returns(Lithic::Resources::AuthRules) }
-    def auth_rules
-    end
+    attr_reader :auth_rules
 
     sig { returns(Lithic::Resources::AuthStreamEnrollment) }
-    def auth_stream_enrollment
-    end
+    attr_reader :auth_stream_enrollment
 
     sig { returns(Lithic::Resources::TokenizationDecisioning) }
-    def tokenization_decisioning
-    end
+    attr_reader :tokenization_decisioning
 
     sig { returns(Lithic::Resources::Tokenizations) }
-    def tokenizations
-    end
+    attr_reader :tokenizations
 
     sig { returns(Lithic::Resources::Cards) }
-    def cards
-    end
+    attr_reader :cards
 
     sig { returns(Lithic::Resources::Balances) }
-    def balances
-    end
+    attr_reader :balances
 
     sig { returns(Lithic::Resources::AggregateBalances) }
-    def aggregate_balances
-    end
+    attr_reader :aggregate_balances
 
     sig { returns(Lithic::Resources::Disputes) }
-    def disputes
-    end
+    attr_reader :disputes
 
     sig { returns(Lithic::Resources::Events) }
-    def events
-    end
+    attr_reader :events
 
     sig { returns(Lithic::Resources::Transfers) }
-    def transfers
-    end
+    attr_reader :transfers
 
     sig { returns(Lithic::Resources::FinancialAccounts) }
-    def financial_accounts
-    end
+    attr_reader :financial_accounts
 
     sig { returns(Lithic::Resources::Transactions) }
-    def transactions
-    end
+    attr_reader :transactions
 
     sig { returns(Lithic::Resources::ResponderEndpoints) }
-    def responder_endpoints
-    end
+    attr_reader :responder_endpoints
 
     sig { returns(Lithic::Resources::ExternalBankAccounts) }
-    def external_bank_accounts
-    end
+    attr_reader :external_bank_accounts
 
     sig { returns(Lithic::Resources::Payments) }
-    def payments
-    end
+    attr_reader :payments
 
     sig { returns(Lithic::Resources::ThreeDS) }
-    def three_ds
-    end
+    attr_reader :three_ds
 
     sig { returns(Lithic::Resources::Reports) }
-    def reports
-    end
+    attr_reader :reports
 
     sig { returns(Lithic::Resources::CardPrograms) }
-    def card_programs
-    end
+    attr_reader :card_programs
 
     sig { returns(Lithic::Resources::DigitalCardArt) }
-    def digital_card_art
-    end
+    attr_reader :digital_card_art
 
     sig { returns(Lithic::Resources::BookTransfers) }
-    def book_transfers
-    end
+    attr_reader :book_transfers
 
     sig { returns(Lithic::Resources::CreditProducts) }
-    def credit_products
-    end
+    attr_reader :credit_products
 
     sig { returns(Lithic::Resources::ExternalPayments) }
-    def external_payments
-    end
+    attr_reader :external_payments
 
     sig { returns(Lithic::Resources::ManagementOperations) }
-    def management_operations
-    end
+    attr_reader :management_operations
 
     # Status of api
     sig do
