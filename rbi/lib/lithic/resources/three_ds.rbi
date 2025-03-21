@@ -4,12 +4,10 @@ module Lithic
   module Resources
     class ThreeDS
       sig { returns(Lithic::Resources::ThreeDS::Authentication) }
-      def authentication
-      end
+      attr_reader :authentication
 
       sig { returns(Lithic::Resources::ThreeDS::Decisioning) }
-      def decisioning
-      end
+      attr_reader :decisioning
 
       sig { params(client: Lithic::Client).returns(T.attached_class) }
       def self.new(client:)

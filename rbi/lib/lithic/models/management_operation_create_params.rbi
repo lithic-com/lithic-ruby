@@ -7,93 +7,46 @@ module Lithic
       include Lithic::RequestParameters
 
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       sig { returns(Lithic::Models::ManagementOperationCreateParams::Category::OrSymbol) }
-      def category
-      end
-
-      sig do
-        params(_: Lithic::Models::ManagementOperationCreateParams::Category::OrSymbol)
-          .returns(Lithic::Models::ManagementOperationCreateParams::Category::OrSymbol)
-      end
-      def category=(_)
-      end
+      attr_accessor :category
 
       sig { returns(Lithic::Models::ManagementOperationCreateParams::Direction::OrSymbol) }
-      def direction
-      end
-
-      sig do
-        params(_: Lithic::Models::ManagementOperationCreateParams::Direction::OrSymbol)
-          .returns(Lithic::Models::ManagementOperationCreateParams::Direction::OrSymbol)
-      end
-      def direction=(_)
-      end
+      attr_accessor :direction
 
       sig { returns(Date) }
-      def effective_date
-      end
-
-      sig { params(_: Date).returns(Date) }
-      def effective_date=(_)
-      end
+      attr_accessor :effective_date
 
       sig { returns(Lithic::Models::ManagementOperationCreateParams::EventType::OrSymbol) }
-      def event_type
-      end
-
-      sig do
-        params(_: Lithic::Models::ManagementOperationCreateParams::EventType::OrSymbol)
-          .returns(Lithic::Models::ManagementOperationCreateParams::EventType::OrSymbol)
-      end
-      def event_type=(_)
-      end
+      attr_accessor :event_type
 
       sig { returns(String) }
-      def financial_account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def financial_account_token=(_)
-      end
+      attr_accessor :financial_account_token
 
       sig { returns(T.nilable(String)) }
-      def token
-      end
+      attr_reader :token
 
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      sig { params(token: String).void }
+      attr_writer :token
 
       sig { returns(T.nilable(String)) }
-      def memo
-      end
+      attr_reader :memo
 
-      sig { params(_: String).returns(String) }
-      def memo=(_)
-      end
+      sig { params(memo: String).void }
+      attr_writer :memo
 
       sig { returns(T.nilable(String)) }
-      def subtype
-      end
+      attr_reader :subtype
 
-      sig { params(_: String).returns(String) }
-      def subtype=(_)
-      end
+      sig { params(subtype: String).void }
+      attr_writer :subtype
 
       sig { returns(T.nilable(String)) }
-      def user_defined_id
-      end
+      attr_reader :user_defined_id
 
-      sig { params(_: String).returns(String) }
-      def user_defined_id=(_)
-      end
+      sig { params(user_defined_id: String).void }
+      attr_writer :user_defined_id
 
       sig do
         params(

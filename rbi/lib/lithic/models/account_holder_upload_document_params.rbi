@@ -8,24 +8,11 @@ module Lithic
 
       # The type of document to upload
       sig { returns(Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol) }
-      def document_type
-      end
-
-      sig do
-        params(_: Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
-          .returns(Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol)
-      end
-      def document_type=(_)
-      end
+      attr_accessor :document_type
 
       # Globally unique identifier for the entity.
       sig { returns(String) }
-      def entity_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def entity_token=(_)
-      end
+      attr_accessor :entity_token
 
       sig do
         params(

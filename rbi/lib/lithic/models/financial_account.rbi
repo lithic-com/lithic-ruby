@@ -5,115 +5,51 @@ module Lithic
     class FinancialAccount < Lithic::BaseModel
       # Globally unique identifier for the account
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       sig { returns(T.nilable(String)) }
-      def account_token
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def account_token=(_)
-      end
+      attr_accessor :account_token
 
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       sig { returns(T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration)) }
-      def credit_configuration
-      end
+      attr_reader :credit_configuration
 
       sig do
-        params(_: T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Util::AnyHash)))
-          .returns(T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Util::AnyHash)))
+        params(
+          credit_configuration: T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Util::AnyHash))
+        )
+          .void
       end
-      def credit_configuration=(_)
-      end
+      attr_writer :credit_configuration
 
       # Whether financial account is for the benefit of another entity
       sig { returns(T::Boolean) }
-      def is_for_benefit_of
-      end
-
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def is_for_benefit_of=(_)
-      end
+      attr_accessor :is_for_benefit_of
 
       sig { returns(T.nilable(String)) }
-      def nickname
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def nickname=(_)
-      end
+      attr_accessor :nickname
 
       # Status of the financial account
       sig { returns(Lithic::Models::FinancialAccount::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Lithic::Models::FinancialAccount::Status::TaggedSymbol)
-          .returns(Lithic::Models::FinancialAccount::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       sig { returns(Lithic::Models::FinancialAccount::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Lithic::Models::FinancialAccount::Type::TaggedSymbol)
-          .returns(Lithic::Models::FinancialAccount::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       sig { returns(Time) }
-      def updated
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def updated=(_)
-      end
+      attr_accessor :updated
 
       sig { returns(T.nilable(String)) }
-      def account_number
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def account_number=(_)
-      end
+      attr_accessor :account_number
 
       sig { returns(T.nilable(String)) }
-      def routing_number
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def routing_number=(_)
-      end
+      attr_accessor :routing_number
 
       # Reason for the financial account status change
       sig { returns(T.nilable(Lithic::Models::FinancialAccount::StatusChangeReason::TaggedSymbol)) }
-      def status_change_reason
-      end
-
-      sig do
-        params(_: T.nilable(Lithic::Models::FinancialAccount::StatusChangeReason::TaggedSymbol))
-          .returns(T.nilable(Lithic::Models::FinancialAccount::StatusChangeReason::TaggedSymbol))
-      end
-      def status_change_reason=(_)
-      end
+      attr_accessor :status_change_reason
 
       sig do
         params(
@@ -173,42 +109,17 @@ module Lithic
       class CreditConfiguration < Lithic::BaseModel
         # Reason for the financial account being marked as Charged Off
         sig { returns(T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason::TaggedSymbol)) }
-        def charged_off_reason
-        end
-
-        sig do
-          params(
-            _: T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason::TaggedSymbol)
-          )
-            .returns(T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason::TaggedSymbol))
-        end
-        def charged_off_reason=(_)
-        end
+        attr_accessor :charged_off_reason
 
         sig { returns(T.nilable(Integer)) }
-        def credit_limit
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def credit_limit=(_)
-        end
+        attr_accessor :credit_limit
 
         # Globally unique identifier for the credit product
         sig { returns(T.nilable(String)) }
-        def credit_product_token
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def credit_product_token=(_)
-        end
+        attr_accessor :credit_product_token
 
         sig { returns(T.nilable(String)) }
-        def external_bank_account_token
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def external_bank_account_token=(_)
-        end
+        attr_accessor :external_bank_account_token
 
         # State of the financial account
         sig do
@@ -216,36 +127,14 @@ module Lithic
             T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState::TaggedSymbol)
           )
         end
-        def financial_account_state
-        end
-
-        sig do
-          params(
-            _: T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState::TaggedSymbol)
-          )
-            .returns(
-              T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState::TaggedSymbol)
-            )
-        end
-        def financial_account_state=(_)
-        end
+        attr_accessor :financial_account_state
 
         sig { returns(T::Boolean) }
-        def is_spend_blocked
-        end
-
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def is_spend_blocked=(_)
-        end
+        attr_accessor :is_spend_blocked
 
         # Tier assigned to the financial account
         sig { returns(T.nilable(String)) }
-        def tier
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def tier=(_)
-        end
+        attr_accessor :tier
 
         sig do
           params(

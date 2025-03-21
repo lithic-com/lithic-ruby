@@ -5,21 +5,11 @@ module Lithic
     class AccountHolderCreateResponse < Lithic::BaseModel
       # Globally unique identifier for the account holder.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Globally unique identifier for the account.
       sig { returns(String) }
-      def account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_token=(_)
-      end
+      attr_accessor :account_token
 
       # KYC and KYB evaluation states.
       #
@@ -27,59 +17,34 @@ module Lithic
       #
       #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
       sig { returns(Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
-          .returns(Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # Reason for the evaluation status.
       sig { returns(T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol]) }
-      def status_reasons
-      end
-
-      sig do
-        params(_: T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol])
-          .returns(T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol])
-      end
-      def status_reasons=(_)
-      end
+      attr_accessor :status_reasons
 
       # Timestamp of when the account holder was created.
       sig { returns(T.nilable(Time)) }
-      def created
-      end
+      attr_reader :created
 
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      sig { params(created: Time).void }
+      attr_writer :created
 
       # Customer-provided token that indicates a relationship with an object outside of
       #   the Lithic ecosystem.
       sig { returns(T.nilable(String)) }
-      def external_id
-      end
+      attr_reader :external_id
 
-      sig { params(_: String).returns(String) }
-      def external_id=(_)
-      end
+      sig { params(external_id: String).void }
+      attr_writer :external_id
 
       # Only present for "KYB_BASIC" workflow. A list of documents required for the
       #   account holder to be approved.
       sig { returns(T.nilable(T::Array[Lithic::Models::RequiredDocument])) }
-      def required_documents
-      end
+      attr_reader :required_documents
 
-      sig do
-        params(_: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)])
-          .returns(T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)])
-      end
-      def required_documents=(_)
-      end
+      sig { params(required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)]).void }
+      attr_writer :required_documents
 
       sig do
         params(

@@ -8,24 +8,17 @@ module Lithic
 
       # The type of the endpoint.
       sig { returns(T.nilable(Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol)) }
-      def type
-      end
+      attr_reader :type
 
-      sig do
-        params(_: Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol)
-          .returns(Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol)
-      end
-      def type=(_)
-      end
+      sig { params(type: Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol).void }
+      attr_writer :type
 
       # The URL for the responder endpoint (must be http(s)).
       sig { returns(T.nilable(String)) }
-      def url
-      end
+      attr_reader :url
 
-      sig { params(_: String).returns(String) }
-      def url=(_)
-      end
+      sig { params(url: String).void }
+      attr_writer :url
 
       sig do
         params(

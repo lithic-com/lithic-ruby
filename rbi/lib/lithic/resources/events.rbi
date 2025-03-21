@@ -4,8 +4,7 @@ module Lithic
   module Resources
     class Events
       sig { returns(Lithic::Resources::Events::Subscriptions) }
-      def subscriptions
-      end
+      attr_reader :subscriptions
 
       # Get an event.
       sig do

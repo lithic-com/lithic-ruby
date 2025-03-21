@@ -5,83 +5,40 @@ module Lithic
     class Card < Lithic::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Globally unique identifier for the account to which the card belongs.
       sig { returns(String) }
-      def account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_token=(_)
-      end
+      attr_accessor :account_token
 
       # Globally unique identifier for the card program on which the card exists.
       sig { returns(String) }
-      def card_program_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def card_program_token=(_)
-      end
+      attr_accessor :card_program_token
 
       # An RFC 3339 timestamp for when the card was created. UTC time zone.
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Deprecated: Funding account for the card.
       sig { returns(Lithic::Models::Card::Funding) }
-      def funding
-      end
+      attr_reader :funding
 
-      sig do
-        params(_: T.any(Lithic::Models::Card::Funding, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::Card::Funding, Lithic::Util::AnyHash))
-      end
-      def funding=(_)
-      end
+      sig { params(funding: T.any(Lithic::Models::Card::Funding, Lithic::Util::AnyHash)).void }
+      attr_writer :funding
 
       # Last four digits of the card number.
       sig { returns(String) }
-      def last_four
-      end
-
-      sig { params(_: String).returns(String) }
-      def last_four=(_)
-      end
+      attr_accessor :last_four
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       #   attempts).
       sig { returns(Lithic::Models::Card::PinStatus::TaggedSymbol) }
-      def pin_status
-      end
-
-      sig do
-        params(_: Lithic::Models::Card::PinStatus::TaggedSymbol)
-          .returns(Lithic::Models::Card::PinStatus::TaggedSymbol)
-      end
-      def pin_status=(_)
-      end
+      attr_accessor :pin_status
 
       # Amount (in cents) to limit approved authorizations (e.g. 100000 would be a
       #   $1,000 limit). Transaction requests above the spend limit will be declined.
       sig { returns(Integer) }
-      def spend_limit
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def spend_limit=(_)
-      end
+      attr_accessor :spend_limit
 
       # Spend limit duration values:
       #
@@ -96,15 +53,7 @@ module Lithic
       #   - `TRANSACTION` - Card will authorize multiple transactions if each individual
       #     transaction is under the spend limit.
       sig { returns(Lithic::Models::SpendLimitDuration::TaggedSymbol) }
-      def spend_limit_duration
-      end
-
-      sig do
-        params(_: Lithic::Models::SpendLimitDuration::TaggedSymbol)
-          .returns(Lithic::Models::SpendLimitDuration::TaggedSymbol)
-      end
-      def spend_limit_duration=(_)
-      end
+      attr_accessor :spend_limit_duration
 
       # Card state values:
       #
@@ -128,12 +77,7 @@ module Lithic
       #   In sandbox, the same daily batch fulfillment occurs, but no cards are actually
       #   manufactured.
       sig { returns(Lithic::Models::Card::State::TaggedSymbol) }
-      def state
-      end
-
-      sig { params(_: Lithic::Models::Card::State::TaggedSymbol).returns(Lithic::Models::Card::State::TaggedSymbol) }
-      def state=(_)
-      end
+      attr_accessor :state
 
       # Card types:
       #
@@ -152,133 +96,101 @@ module Lithic
       #   - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
       #     use VIRTUAL instead.
       sig { returns(Lithic::Models::Card::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig { params(_: Lithic::Models::Card::Type::TaggedSymbol).returns(Lithic::Models::Card::Type::TaggedSymbol) }
-      def type=(_)
-      end
+      attr_accessor :type
 
       # List of identifiers for the Auth Rule(s) that are applied on the card. This
       #   field is deprecated and will no longer be populated in the `Card` object. The
       #   key will be removed from the schema in a future release. Use the `/auth_rules`
       #   endpoints to fetch Auth Rule information instead.
       sig { returns(T.nilable(T::Array[String])) }
-      def auth_rule_tokens
-      end
+      attr_reader :auth_rule_tokens
 
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def auth_rule_tokens=(_)
-      end
+      sig { params(auth_rule_tokens: T::Array[String]).void }
+      attr_writer :auth_rule_tokens
 
       # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
       sig { returns(T.nilable(String)) }
-      def cardholder_currency
-      end
+      attr_reader :cardholder_currency
 
-      sig { params(_: String).returns(String) }
-      def cardholder_currency=(_)
-      end
+      sig { params(cardholder_currency: String).void }
+      attr_writer :cardholder_currency
 
       # Three digit cvv printed on the back of the card.
       sig { returns(T.nilable(String)) }
-      def cvv
-      end
+      attr_reader :cvv
 
-      sig { params(_: String).returns(String) }
-      def cvv=(_)
-      end
+      sig { params(cvv: String).void }
+      attr_writer :cvv
 
       # Specifies the digital card art to be displayed in the user’s digital wallet
       #   after tokenization. This artwork must be approved by Mastercard and configured
       #   by Lithic to use. See
       #   [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
       sig { returns(T.nilable(String)) }
-      def digital_card_art_token
-      end
+      attr_reader :digital_card_art_token
 
-      sig { params(_: String).returns(String) }
-      def digital_card_art_token=(_)
-      end
+      sig { params(digital_card_art_token: String).void }
+      attr_writer :digital_card_art_token
 
       # Two digit (MM) expiry month.
       sig { returns(T.nilable(String)) }
-      def exp_month
-      end
+      attr_reader :exp_month
 
-      sig { params(_: String).returns(String) }
-      def exp_month=(_)
-      end
+      sig { params(exp_month: String).void }
+      attr_writer :exp_month
 
       # Four digit (yyyy) expiry year.
       sig { returns(T.nilable(String)) }
-      def exp_year
-      end
+      attr_reader :exp_year
 
-      sig { params(_: String).returns(String) }
-      def exp_year=(_)
-      end
+      sig { params(exp_year: String).void }
+      attr_writer :exp_year
 
       # Hostname of card’s locked merchant (will be empty if not applicable).
       sig { returns(T.nilable(String)) }
-      def hostname
-      end
+      attr_reader :hostname
 
-      sig { params(_: String).returns(String) }
-      def hostname=(_)
-      end
+      sig { params(hostname: String).void }
+      attr_writer :hostname
 
       # Friendly name to identify the card.
       sig { returns(T.nilable(String)) }
-      def memo
-      end
+      attr_reader :memo
 
-      sig { params(_: String).returns(String) }
-      def memo=(_)
-      end
+      sig { params(memo: String).void }
+      attr_writer :memo
 
       # Primary Account Number (PAN) (i.e. the card number). Customers must be PCI
       #   compliant to have PAN returned as a field in production. Please contact
       #   [support@lithic.com](mailto:support@lithic.com) for questions.
       sig { returns(T.nilable(String)) }
-      def pan
-      end
+      attr_reader :pan
 
-      sig { params(_: String).returns(String) }
-      def pan=(_)
-      end
+      sig { params(pan: String).void }
+      attr_writer :pan
 
       # Indicates if there are offline PIN changes pending card interaction with an
       #   offline PIN terminal. Possible commands are: CHANGE_PIN, UNBLOCK_PIN. Applicable
       #   only to cards issued in markets supporting offline PINs.
       sig { returns(T.nilable(T::Array[String])) }
-      def pending_commands
-      end
+      attr_reader :pending_commands
 
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def pending_commands=(_)
-      end
+      sig { params(pending_commands: T::Array[String]).void }
+      attr_writer :pending_commands
 
       # Only applicable to cards of type `PHYSICAL`. This must be configured with Lithic
       #   before use. Specifies the configuration (i.e., physical card art) that the card
       #   should be manufactured with.
       sig { returns(T.nilable(String)) }
-      def product_id
-      end
+      attr_reader :product_id
 
-      sig { params(_: String).returns(String) }
-      def product_id=(_)
-      end
+      sig { params(product_id: String).void }
+      attr_writer :product_id
 
       # If the card is a replacement for another card, the globally unique identifier
       #   for the card that was replaced.
       sig { returns(T.nilable(String)) }
-      def replacement_for
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def replacement_for=(_)
-      end
+      attr_accessor :replacement_for
 
       sig do
         params(
@@ -371,32 +283,17 @@ module Lithic
       class Funding < Lithic::BaseModel
         # A globally unique identifier for this FundingAccount.
         sig { returns(String) }
-        def token
-        end
-
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        attr_accessor :token
 
         # An RFC 3339 string representing when this funding source was added to the Lithic
         #   account. This may be `null`. UTC time zone.
         sig { returns(Time) }
-        def created
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created=(_)
-        end
+        attr_accessor :created
 
         # The last 4 digits of the account (e.g. bank account, debit card) associated with
         #   this FundingAccount. This may be null.
         sig { returns(String) }
-        def last_four
-        end
-
-        sig { params(_: String).returns(String) }
-        def last_four=(_)
-        end
+        attr_accessor :last_four
 
         # State of funding source.
         #
@@ -408,48 +305,28 @@ module Lithic
         #     micro-deposits verification.
         #   - `DELETED` - The founding account has been deleted.
         sig { returns(Lithic::Models::Card::Funding::State::TaggedSymbol) }
-        def state
-        end
-
-        sig do
-          params(_: Lithic::Models::Card::Funding::State::TaggedSymbol)
-            .returns(Lithic::Models::Card::Funding::State::TaggedSymbol)
-        end
-        def state=(_)
-        end
+        attr_accessor :state
 
         # Types of funding source:
         #
         #   - `DEPOSITORY_CHECKING` - Bank checking account.
         #   - `DEPOSITORY_SAVINGS` - Bank savings account.
         sig { returns(Lithic::Models::Card::Funding::Type::TaggedSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: Lithic::Models::Card::Funding::Type::TaggedSymbol)
-            .returns(Lithic::Models::Card::Funding::Type::TaggedSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         # Account name identifying the funding source. This may be `null`.
         sig { returns(T.nilable(String)) }
-        def account_name
-        end
+        attr_reader :account_name
 
-        sig { params(_: String).returns(String) }
-        def account_name=(_)
-        end
+        sig { params(account_name: String).void }
+        attr_writer :account_name
 
         # The nickname given to the `FundingAccount` or `null` if it has no nickname.
         sig { returns(T.nilable(String)) }
-        def nickname
-        end
+        attr_reader :nickname
 
-        sig { params(_: String).returns(String) }
-        def nickname=(_)
-        end
+        sig { params(nickname: String).void }
+        attr_writer :nickname
 
         # Deprecated: Funding account for the card.
         sig do

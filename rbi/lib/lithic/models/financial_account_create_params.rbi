@@ -7,47 +7,28 @@ module Lithic
       include Lithic::RequestParameters
 
       sig { returns(String) }
-      def nickname
-      end
-
-      sig { params(_: String).returns(String) }
-      def nickname=(_)
-      end
+      attr_accessor :nickname
 
       sig { returns(Lithic::Models::FinancialAccountCreateParams::Type::OrSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Lithic::Models::FinancialAccountCreateParams::Type::OrSymbol)
-          .returns(Lithic::Models::FinancialAccountCreateParams::Type::OrSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       sig { returns(T.nilable(String)) }
-      def account_token
-      end
+      attr_reader :account_token
 
-      sig { params(_: String).returns(String) }
-      def account_token=(_)
-      end
+      sig { params(account_token: String).void }
+      attr_writer :account_token
 
       sig { returns(T.nilable(T::Boolean)) }
-      def is_for_benefit_of
-      end
+      attr_reader :is_for_benefit_of
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def is_for_benefit_of=(_)
-      end
+      sig { params(is_for_benefit_of: T::Boolean).void }
+      attr_writer :is_for_benefit_of
 
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
+      attr_reader :idempotency_key
 
-      sig { params(_: String).returns(String) }
-      def idempotency_key=(_)
-      end
+      sig { params(idempotency_key: String).void }
+      attr_writer :idempotency_key
 
       sig do
         params(

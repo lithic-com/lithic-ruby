@@ -8,12 +8,7 @@ module Lithic
 
       # The transaction token returned from the /v1/simulate/authorize response.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Amount (in cents) to clear. Typically this will match the amount in the original
       #   authorization, but can be higher or lower. The sign of this amount will
@@ -25,12 +20,10 @@ module Lithic
       #   Transactions that have already cleared, either partially or fully, cannot be
       #   cleared again using this endpoint.
       sig { returns(T.nilable(Integer)) }
-      def amount
-      end
+      attr_reader :amount
 
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      sig { params(amount: Integer).void }
+      attr_writer :amount
 
       sig do
         params(

@@ -9,21 +9,17 @@ module Lithic
 
         # Cardholder to retrieve aggregate balances for.
         sig { returns(T.nilable(String)) }
-        def account_token
-        end
+        attr_reader :account_token
 
-        sig { params(_: String).returns(String) }
-        def account_token=(_)
-        end
+        sig { params(account_token: String).void }
+        attr_writer :account_token
 
         # Business to retrieve aggregate balances for.
         sig { returns(T.nilable(String)) }
-        def business_account_token
-        end
+        attr_reader :business_account_token
 
-        sig { params(_: String).returns(String) }
-        def business_account_token=(_)
-        end
+        sig { params(business_account_token: String).void }
+        attr_writer :business_account_token
 
         sig do
           params(

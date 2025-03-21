@@ -6,122 +6,65 @@ module Lithic
       class AuthenticationRetrieveResponse < Lithic::BaseModel
         # Globally unique identifier for the 3DS authentication.
         sig { returns(String) }
-        def token
-        end
-
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        attr_accessor :token
 
         # Type of account/card that is being used for the transaction. Maps to EMV 3DS
         #   field `acctType`.
         sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol)) }
-        def account_type
-        end
-
-        sig do
-          params(_: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol))
-            .returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol))
-        end
-        def account_type=(_)
-        end
+        attr_accessor :account_type
 
         # Indicates the outcome of the 3DS authentication process.
         sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol) }
-        def authentication_result
-        end
-
-        sig do
-          params(_: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol)
-            .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol)
-        end
-        def authentication_result=(_)
-        end
+        attr_accessor :authentication_result
 
         # Indicates whether the expiration date provided by the cardholder during checkout
         #   matches Lithic's record of the card's expiration date.
         sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol) }
-        def card_expiry_check
-        end
-
-        sig do
-          params(_: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol)
-            .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol)
-        end
-        def card_expiry_check=(_)
-        end
+        attr_accessor :card_expiry_check
 
         # Globally unique identifier for the card on which the 3DS authentication has
         #   occurred.
         sig { returns(String) }
-        def card_token
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_token=(_)
-        end
+        attr_accessor :card_token
 
         # Object containing data about the cardholder provided during the transaction.
         sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder) }
-        def cardholder
-        end
+        attr_reader :cardholder
 
         sig do
           params(
-            _: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder, Lithic::Util::AnyHash)
+            cardholder: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder, Lithic::Util::AnyHash)
           )
-            .returns(T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder, Lithic::Util::AnyHash))
+            .void
         end
-        def cardholder=(_)
-        end
+        attr_writer :cardholder
 
         # Channel in which the authentication occurs. Maps to EMV 3DS field deviceChannel.
         sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol) }
-        def channel
-        end
-
-        sig do
-          params(_: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol)
-            .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol)
-        end
-        def channel=(_)
-        end
+        attr_accessor :channel
 
         # Date and time when the authentication was created in Lithic's system.
         sig { returns(Time) }
-        def created
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created=(_)
-        end
+        attr_accessor :created
 
         # Object containing data about the merchant involved in the e-commerce
         #   transaction.
         sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant) }
-        def merchant
-        end
+        attr_reader :merchant
 
         sig do
-          params(_: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant, Lithic::Util::AnyHash))
+          params(
+            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant, Lithic::Util::AnyHash)
+          )
+            .void
         end
-        def merchant=(_)
-        end
+        attr_writer :merchant
 
         # Either PAYMENT_AUTHENTICATION or NON_PAYMENT_AUTHENTICATION. For
         #   NON_PAYMENT_AUTHENTICATION, additional_data and transaction fields are not
         #   populated.
         sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol) }
-        def message_category
-        end
-
-        sig do
-          params(_: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol)
-            .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol)
-        end
-        def message_category=(_)
-        end
+        attr_accessor :message_category
 
         # Indicates whether a challenge is requested for this transaction
         #
@@ -138,54 +81,34 @@ module Lithic
             Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::TaggedSymbol
           )
         end
-        def three_ds_requestor_challenge_indicator
-        end
-
-        sig do
-          params(
-            _: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::TaggedSymbol
-          )
-            .returns(
-              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::TaggedSymbol
-            )
-        end
-        def three_ds_requestor_challenge_indicator=(_)
-        end
+        attr_accessor :three_ds_requestor_challenge_indicator
 
         # Object containing additional data about the 3DS request that is beyond the EMV
         #   3DS standard spec (e.g., specific fields that only certain card networks send
         #   but are not required across all 3DS requests).
         sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData)) }
-        def additional_data
-        end
+        attr_reader :additional_data
 
         sig do
           params(
-            _: T.nilable(
+            additional_data: T.nilable(
               T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData, Lithic::Util::AnyHash)
             )
           )
-            .returns(
-              T.nilable(
-                T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData, Lithic::Util::AnyHash)
-              )
-            )
+            .void
         end
-        def additional_data=(_)
-        end
+        attr_writer :additional_data
 
         # Object containing data about the app used in the e-commerce transaction. Present
         #   if the channel is 'APP_BASED'.
         sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App)) }
-        def app
-        end
+        attr_reader :app
 
         sig do
-          params(_: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, Lithic::Util::AnyHash))
+          params(app: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, Lithic::Util::AnyHash))
+            .void
         end
-        def app=(_)
-        end
+        attr_writer :app
 
         # Type of authentication request - i.e., the type of transaction or interaction is
         #   causing the merchant to request an authentication. Maps to EMV 3DS field
@@ -197,56 +120,34 @@ module Lithic
             )
           )
         end
-        def authentication_request_type
-        end
-
-        sig do
-          params(
-            _: T.nilable(
-              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::TaggedSymbol
-            )
-          )
-            .returns(
-              T.nilable(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::TaggedSymbol
-              )
-            )
-        end
-        def authentication_request_type=(_)
-        end
+        attr_accessor :authentication_request_type
 
         # Object containing data about the browser used in the e-commerce transaction.
         #   Present if the channel is 'BROWSER'.
         sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser)) }
-        def browser
-        end
-
-        sig do
-          params(_: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, Lithic::Util::AnyHash))
-        end
-        def browser=(_)
-        end
-
-        # Metadata about the challenge method and delivery.
-        sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata)) }
-        def challenge_metadata
-        end
+        attr_reader :browser
 
         sig do
           params(
-            _: T.nilable(
+            browser: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, Lithic::Util::AnyHash)
+          )
+            .void
+        end
+        attr_writer :browser
+
+        # Metadata about the challenge method and delivery.
+        sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata)) }
+        attr_reader :challenge_metadata
+
+        sig do
+          params(
+            challenge_metadata: T.nilable(
               T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata, Lithic::Util::AnyHash)
             )
           )
-            .returns(
-              T.nilable(
-                T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata, Lithic::Util::AnyHash)
-              )
-            )
+            .void
         end
-        def challenge_metadata=(_)
-        end
+        attr_writer :challenge_metadata
 
         # Entity that orchestrates the challenge.
         sig do
@@ -254,33 +155,11 @@ module Lithic
             T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol)
           )
         end
-        def challenge_orchestrated_by
-        end
-
-        sig do
-          params(
-            _: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol)
-          )
-            .returns(
-              T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol)
-            )
-        end
-        def challenge_orchestrated_by=(_)
-        end
+        attr_accessor :challenge_orchestrated_by
 
         # Entity that made the authentication decision.
         sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol)) }
-        def decision_made_by
-        end
-
-        sig do
-          params(
-            _: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol)
-          )
-            .returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol))
-        end
-        def decision_made_by=(_)
-        end
+        attr_accessor :decision_made_by
 
         # Type of 3DS Requestor Initiated (3RI) request i.e., a 3DS authentication that
         #   takes place at the initiation of the merchant rather than the cardholder. The
@@ -292,40 +171,22 @@ module Lithic
             T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol)
           )
         end
-        def three_ri_request_type
-        end
-
-        sig do
-          params(
-            _: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol)
-          )
-            .returns(
-              T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol)
-            )
-        end
-        def three_ri_request_type=(_)
-        end
+        attr_accessor :three_ri_request_type
 
         # Object containing data about the e-commerce transaction for which the merchant
         #   is requesting authentication.
         sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction)) }
-        def transaction
-        end
+        attr_reader :transaction
 
         sig do
           params(
-            _: T.nilable(
+            transaction: T.nilable(
               T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction, Lithic::Util::AnyHash)
             )
           )
-            .returns(
-              T.nilable(
-                T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction, Lithic::Util::AnyHash)
-              )
-            )
+            .void
         end
-        def transaction=(_)
-        end
+        attr_writer :transaction
 
         sig do
           params(
@@ -518,105 +379,61 @@ module Lithic
           #   match - is provided directly in the 3DS request and is not determined by Lithic.
           #   Maps to EMV 3DS field addrMatch.
           sig { returns(T.nilable(T::Boolean)) }
-          def address_match
-          end
-
-          sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-          def address_match=(_)
-          end
+          attr_accessor :address_match
 
           # Object containing data on the billing address provided during the transaction.
           sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress)) }
-          def billing_address
-          end
+          attr_reader :billing_address
 
           sig do
             params(
-              _: T.any(
+              billing_address: T.any(
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
                 Lithic::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
-                  Lithic::Util::AnyHash
-                )
-              )
+              .void
           end
-          def billing_address=(_)
-          end
+          attr_writer :billing_address
 
           # Email address that is either provided by the cardholder or is on file with the
           #   merchant in a 3RI request. Maps to EMV 3DS field email.
           sig { returns(T.nilable(String)) }
-          def email
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def email=(_)
-          end
+          attr_accessor :email
 
           # Name of the cardholder. Maps to EMV 3DS field cardholderName.
           sig { returns(T.nilable(String)) }
-          def name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # Home phone number provided by the cardholder. Maps to EMV 3DS fields
           #   homePhone.cc and homePhone.subscriber.
           sig { returns(T.nilable(String)) }
-          def phone_number_home
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def phone_number_home=(_)
-          end
+          attr_accessor :phone_number_home
 
           # Mobile/cell phone number provided by the cardholder. Maps to EMV 3DS fields
           #   mobilePhone.cc and mobilePhone.subscriber.
           sig { returns(T.nilable(String)) }
-          def phone_number_mobile
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def phone_number_mobile=(_)
-          end
+          attr_accessor :phone_number_mobile
 
           # Work phone number provided by the cardholder. Maps to EMV 3DS fields
           #   workPhone.cc and workPhone.subscriber.
           sig { returns(T.nilable(String)) }
-          def phone_number_work
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def phone_number_work=(_)
-          end
+          attr_accessor :phone_number_work
 
           # Object containing data on the shipping address provided during the transaction.
           sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress)) }
-          def shipping_address
-          end
+          attr_reader :shipping_address
 
           sig do
             params(
-              _: T.any(
+              shipping_address: T.any(
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress,
                 Lithic::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress,
-                  Lithic::Util::AnyHash
-                )
-              )
+              .void
           end
-          def shipping_address=(_)
-          end
+          attr_writer :shipping_address
 
           # Object containing data about the cardholder provided during the transaction.
           sig do
@@ -671,58 +488,28 @@ module Lithic
           class BillingAddress < Lithic::BaseModel
             # First line of the street address provided by the cardholder.
             sig { returns(T.nilable(String)) }
-            def address1
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def address1=(_)
-            end
+            attr_accessor :address1
 
             # Second line of the street address provided by the cardholder.
             sig { returns(T.nilable(String)) }
-            def address2
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def address2=(_)
-            end
+            attr_accessor :address2
 
             # Third line of the street address provided by the cardholder.
             sig { returns(T.nilable(String)) }
-            def address3
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def address3=(_)
-            end
+            attr_accessor :address3
 
             # City of the address provided by the cardholder.
             sig { returns(T.nilable(String)) }
-            def city
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def city=(_)
-            end
+            attr_accessor :city
 
             # Country of the address provided by the cardholder in ISO 3166-1 alpha-3 format
             #   (e.g. USA)
             sig { returns(T.nilable(String)) }
-            def country
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def country=(_)
-            end
+            attr_accessor :country
 
             # Postal code (e.g., ZIP code) of the address provided by the cardholder
             sig { returns(T.nilable(String)) }
-            def postal_code
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def postal_code=(_)
-            end
+            attr_accessor :postal_code
 
             # Object containing data on the billing address provided during the transaction.
             sig do
@@ -759,58 +546,28 @@ module Lithic
           class ShippingAddress < Lithic::BaseModel
             # First line of the street address provided by the cardholder.
             sig { returns(T.nilable(String)) }
-            def address1
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def address1=(_)
-            end
+            attr_accessor :address1
 
             # Second line of the street address provided by the cardholder.
             sig { returns(T.nilable(String)) }
-            def address2
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def address2=(_)
-            end
+            attr_accessor :address2
 
             # Third line of the street address provided by the cardholder.
             sig { returns(T.nilable(String)) }
-            def address3
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def address3=(_)
-            end
+            attr_accessor :address3
 
             # City of the address provided by the cardholder.
             sig { returns(T.nilable(String)) }
-            def city
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def city=(_)
-            end
+            attr_accessor :city
 
             # Country of the address provided by the cardholder in ISO 3166-1 alpha-3 format
             #   (e.g. USA)
             sig { returns(T.nilable(String)) }
-            def country
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def country=(_)
-            end
+            attr_accessor :country
 
             # Postal code (e.g., ZIP code) of the address provided by the cardholder
             sig { returns(T.nilable(String)) }
-            def postal_code
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def postal_code=(_)
-            end
+            attr_accessor :postal_code
 
             # Object containing data on the shipping address provided during the transaction.
             sig do
@@ -874,64 +631,37 @@ module Lithic
           # Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field
           #   acquirerMerchantId.
           sig { returns(String) }
-          def id
-          end
-
-          sig { params(_: String).returns(String) }
-          def id=(_)
-          end
+          attr_accessor :id
 
           # Country code of the merchant requesting 3DS authentication. Maps to EMV 3DS
           #   field merchantCountryCode.
           sig { returns(String) }
-          def country
-          end
-
-          sig { params(_: String).returns(String) }
-          def country=(_)
-          end
+          attr_accessor :country
 
           # Merchant category code assigned to the merchant that describes its business
           #   activity type. Maps to EMV 3DS field mcc.
           sig { returns(String) }
-          def mcc
-          end
-
-          sig { params(_: String).returns(String) }
-          def mcc=(_)
-          end
+          attr_accessor :mcc
 
           # Name of the merchant. Maps to EMV 3DS field merchantName.
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # Object containing additional data indicating additional risk factors related to
           #   the e-commerce transaction.
           sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator) }
-          def risk_indicator
-          end
+          attr_reader :risk_indicator
 
           sig do
             params(
-              _: T.any(
+              risk_indicator: T.any(
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator,
                 Lithic::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator,
-                  Lithic::Util::AnyHash
-                )
-              )
+              .void
           end
-          def risk_indicator=(_)
-          end
+          attr_writer :risk_indicator
 
           # Object containing data about the merchant involved in the e-commerce
           #   transaction.
@@ -970,12 +700,7 @@ module Lithic
             # In transactions with electronic delivery, email address to which merchandise is
             #   delivered. Maps to EMV 3DS field deliveryEmailAddress.
             sig { returns(T.nilable(String)) }
-            def delivery_email_address
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def delivery_email_address=(_)
-            end
+            attr_accessor :delivery_email_address
 
             # The delivery time frame for the merchandise. Maps to EMV 3DS field
             #   deliveryTimeframe.
@@ -986,54 +711,23 @@ module Lithic
                 )
               )
             end
-            def delivery_time_frame
-            end
-
-            sig do
-              params(
-                _: T.nilable(
-                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame::TaggedSymbol
-                )
-              )
-                .returns(
-                  T.nilable(
-                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame::TaggedSymbol
-                  )
-                )
-            end
-            def delivery_time_frame=(_)
-            end
+            attr_accessor :delivery_time_frame
 
             # In prepaid or gift card purchase transactions, purchase amount total in major
             #   units (e.g., a purchase of USD $205.10 would be 205). Maps to EMV 3DS field
             #   giftCardAmount.
             sig { returns(T.nilable(Integer)) }
-            def gift_card_amount
-            end
-
-            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-            def gift_card_amount=(_)
-            end
+            attr_accessor :gift_card_amount
 
             # In prepaid or gift card purchase transactions, count of individual prepaid or
             #   gift cards/codes purchased. Maps to EMV 3DS field giftCardCount.
             sig { returns(T.nilable(Integer)) }
-            def gift_card_count
-            end
-
-            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-            def gift_card_count=(_)
-            end
+            attr_accessor :gift_card_count
 
             # In prepaid or gift card purchase transactions, currency code of the gift card.
             #   Maps to EMV 3DS field giftCardCurr.
             sig { returns(T.nilable(String)) }
-            def gift_card_currency
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def gift_card_currency=(_)
-            end
+            attr_accessor :gift_card_currency
 
             # Indicates whether the purchase is for merchandise that is available now or at a
             #   future date. Maps to EMV 3DS field preOrderPurchaseInd.
@@ -1044,33 +738,12 @@ module Lithic
                 )
               )
             end
-            def order_availability
-            end
-
-            sig do
-              params(
-                _: T.nilable(
-                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability::TaggedSymbol
-                )
-              )
-                .returns(
-                  T.nilable(
-                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability::TaggedSymbol
-                  )
-                )
-            end
-            def order_availability=(_)
-            end
+            attr_accessor :order_availability
 
             # In pre-order purchase transactions, the expected date that the merchandise will
             #   be available. Maps to EMV 3DS field preOrderDate.
             sig { returns(T.nilable(Time)) }
-            def pre_order_available_date
-            end
-
-            sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-            def pre_order_available_date=(_)
-            end
+            attr_accessor :pre_order_available_date
 
             # Indicates whether the cardholder is reordering previously purchased merchandise.
             #   Maps to EMV 3DS field reorderItemsInd.
@@ -1081,23 +754,7 @@ module Lithic
                 )
               )
             end
-            def reorder_items
-            end
-
-            sig do
-              params(
-                _: T.nilable(
-                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems::TaggedSymbol
-                )
-              )
-                .returns(
-                  T.nilable(
-                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems::TaggedSymbol
-                  )
-                )
-            end
-            def reorder_items=(_)
-            end
+            attr_accessor :reorder_items
 
             # Shipping method that the cardholder chose for the transaction. If purchase
             #   includes one or more item, this indicator is used for the physical goods; if the
@@ -1110,23 +767,7 @@ module Lithic
                 )
               )
             end
-            def shipping_method
-            end
-
-            sig do
-              params(
-                _: T.nilable(
-                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod::TaggedSymbol
-                )
-              )
-                .returns(
-                  T.nilable(
-                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod::TaggedSymbol
-                  )
-                )
-            end
-            def shipping_method=(_)
-            end
+            attr_accessor :shipping_method
 
             # Object containing additional data indicating additional risk factors related to
             #   the e-commerce transaction.
@@ -1522,33 +1163,12 @@ module Lithic
               )
             )
           end
-          def network_decision
-          end
-
-          sig do
-            params(
-              _: T.nilable(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision::TaggedSymbol
-              )
-            )
-              .returns(
-                T.nilable(
-                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision::TaggedSymbol
-                )
-              )
-          end
-          def network_decision=(_)
-          end
+          attr_accessor :network_decision
 
           # Mastercard only: Assessment by the network of the authentication risk level,
           #   with a higher value indicating a higher amount of risk.
           sig { returns(T.nilable(Integer)) }
-          def network_risk_score
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def network_risk_score=(_)
-          end
+          attr_accessor :network_risk_score
 
           # Object containing additional data about the 3DS request that is beyond the EMV
           #   3DS standard spec (e.g., specific fields that only certain card networks send
@@ -1622,22 +1242,15 @@ module Lithic
           # Device information gathered from the cardholder's device - JSON name/value pairs
           #   that is Base64url encoded. Maps to EMV 3DS field deviceInfo.
           sig { returns(T.nilable(String)) }
-          def device_info
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def device_info=(_)
-          end
+          attr_accessor :device_info
 
           # External IP address used by the app generating the 3DS authentication request.
           #   Maps to EMV 3DS field appIp.
           sig { returns(T.nilable(String)) }
-          def ip
-          end
+          attr_reader :ip
 
-          sig { params(_: String).returns(String) }
-          def ip=(_)
-          end
+          sig { params(ip: String).void }
+          attr_writer :ip
 
           # Object containing data about the app used in the e-commerce transaction. Present
           #   if the channel is 'APP_BASED'.
@@ -1733,62 +1346,32 @@ module Lithic
           # IP address of the browser as returned by the HTTP headers to the 3DS requestor
           #   (e.g., merchant or digital wallet). Maps to EMV 3DS field browserIP.
           sig { returns(T.nilable(String)) }
-          def ip
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def ip=(_)
-          end
+          attr_accessor :ip
 
           # Indicates whether the cardholder's browser has the ability to execute Java. Maps
           #   to EMV 3DS field browserJavaEnabled.
           sig { returns(T.nilable(T::Boolean)) }
-          def java_enabled
-          end
-
-          sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-          def java_enabled=(_)
-          end
+          attr_accessor :java_enabled
 
           # Indicates whether the cardholder's browser has the ability to execute
           #   JavaScript. Maps to EMV 3DS field browserJavascriptEnabled.
           sig { returns(T.nilable(T::Boolean)) }
-          def javascript_enabled
-          end
-
-          sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-          def javascript_enabled=(_)
-          end
+          attr_accessor :javascript_enabled
 
           # Language of the cardholder's browser as defined in IETF BCP47. Maps to EMV 3DS
           #   field browserLanguage.
           sig { returns(T.nilable(String)) }
-          def language
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def language=(_)
-          end
+          attr_accessor :language
 
           # Time zone of the cardholder's browser offset in minutes between UTC and the
           #   cardholder browser's local time. The offset is positive if the local time is
           #   behind UTC and negative if it is ahead. Maps to EMV 3DS field browserTz.
           sig { returns(T.nilable(String)) }
-          def time_zone
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def time_zone=(_)
-          end
+          attr_accessor :time_zone
 
           # Content of the HTTP user-agent header. Maps to EMV 3DS field browserUserAgent.
           sig { returns(T.nilable(String)) }
-          def user_agent
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def user_agent=(_)
-          end
+          attr_accessor :user_agent
 
           # Object containing data about the browser used in the e-commerce transaction.
           #   Present if the channel is 'BROWSER'.
@@ -1830,28 +1413,11 @@ module Lithic
               Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol
             )
           end
-          def method_type
-          end
-
-          sig do
-            params(
-              _: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol
-            )
-              .returns(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol
-              )
-          end
-          def method_type=(_)
-          end
+          attr_accessor :method_type
 
           # The phone number used for delivering the OTP. Relevant only for SMS_OTP method.
           sig { returns(T.nilable(String)) }
-          def phone_number
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def phone_number=(_)
-          end
+          attr_accessor :phone_number
 
           # Metadata about the challenge method and delivery.
           sig do
@@ -2102,41 +1668,21 @@ module Lithic
           # Amount of the purchase in minor units of currency with all punctuation removed.
           #   Maps to EMV 3DS field purchaseAmount.
           sig { returns(Float) }
-          def amount
-          end
-
-          sig { params(_: Float).returns(Float) }
-          def amount=(_)
-          end
+          attr_accessor :amount
 
           # Currency of the purchase. Maps to EMV 3DS field purchaseCurrency.
           sig { returns(String) }
-          def currency
-          end
-
-          sig { params(_: String).returns(String) }
-          def currency=(_)
-          end
+          attr_accessor :currency
 
           # Minor units of currency, as specified in ISO 4217 currency exponent. Maps to EMV
           #   3DS field purchaseExponent.
           sig { returns(Float) }
-          def currency_exponent
-          end
-
-          sig { params(_: Float).returns(Float) }
-          def currency_exponent=(_)
-          end
+          attr_accessor :currency_exponent
 
           # Date and time when the authentication was generated by the merchant/acquirer's
           #   3DS server. Maps to EMV 3DS field purchaseDate.
           sig { returns(Time) }
-          def date_time
-          end
-
-          sig { params(_: Time).returns(Time) }
-          def date_time=(_)
-          end
+          attr_accessor :date_time
 
           # Type of the transaction for which a 3DS authentication request is occurring.
           #   Maps to EMV 3DS field transType.
@@ -2145,19 +1691,7 @@ module Lithic
               T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::TaggedSymbol)
             )
           end
-          def type
-          end
-
-          sig do
-            params(
-              _: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::TaggedSymbol)
-            )
-              .returns(
-                T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::TaggedSymbol)
-              )
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           # Object containing data about the e-commerce transaction for which the merchant
           #   is requesting authentication.

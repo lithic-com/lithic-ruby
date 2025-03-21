@@ -9,12 +9,7 @@ module Lithic
 
         # Globally unique identifier for financial account.
         sig { returns(String) }
-        def financial_account_token
-        end
-
-        sig { params(_: String).returns(String) }
-        def financial_account_token=(_)
-        end
+        attr_accessor :financial_account_token
 
         sig do
           params(

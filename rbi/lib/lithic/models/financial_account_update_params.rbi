@@ -7,12 +7,10 @@ module Lithic
       include Lithic::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      def nickname
-      end
+      attr_reader :nickname
 
-      sig { params(_: String).returns(String) }
-      def nickname=(_)
-      end
+      sig { params(nickname: String).void }
+      attr_writer :nickname
 
       sig do
         params(nickname: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))

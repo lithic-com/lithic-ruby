@@ -10,21 +10,17 @@ module Lithic
 
           # The end time of the backtest.
           sig { returns(T.nilable(Time)) }
-          def end_
-          end
+          attr_reader :end_
 
-          sig { params(_: Time).returns(Time) }
-          def end_=(_)
-          end
+          sig { params(end_: Time).void }
+          attr_writer :end_
 
           # The start time of the backtest.
           sig { returns(T.nilable(Time)) }
-          def start
-          end
+          attr_reader :start
 
-          sig { params(_: Time).returns(Time) }
-          def start=(_)
-          end
+          sig { params(start: Time).void }
+          attr_writer :start
 
           sig do
             params(

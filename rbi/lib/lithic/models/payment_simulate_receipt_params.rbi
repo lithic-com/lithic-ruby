@@ -8,51 +8,26 @@ module Lithic
 
       # Payment token
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Amount
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # Financial Account Token
       sig { returns(String) }
-      def financial_account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def financial_account_token=(_)
-      end
+      attr_accessor :financial_account_token
 
       # Receipt Type
       sig { returns(Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol) }
-      def receipt_type
-      end
-
-      sig do
-        params(_: Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol)
-          .returns(Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol)
-      end
-      def receipt_type=(_)
-      end
+      attr_accessor :receipt_type
 
       # Memo
       sig { returns(T.nilable(String)) }
-      def memo
-      end
+      attr_reader :memo
 
-      sig { params(_: String).returns(String) }
-      def memo=(_)
-      end
+      sig { params(memo: String).void }
+      attr_writer :memo
 
       sig do
         params(

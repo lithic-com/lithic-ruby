@@ -5,15 +5,10 @@ module Lithic
     class PaymentRetryResponse < Lithic::Models::Payment
       # Balance
       sig { returns(T.nilable(Lithic::Models::Balance)) }
-      def balance
-      end
+      attr_reader :balance
 
-      sig do
-        params(_: T.any(Lithic::Models::Balance, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::Balance, Lithic::Util::AnyHash))
-      end
-      def balance=(_)
-      end
+      sig { params(balance: T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)).void }
+      attr_writer :balance
 
       sig { params(balance: T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)).returns(T.attached_class) }
       def self.new(balance: nil)

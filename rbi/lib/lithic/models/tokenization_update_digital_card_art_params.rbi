@@ -11,12 +11,10 @@ module Lithic
       #   Lithic to use. See
       #   [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
       sig { returns(T.nilable(String)) }
-      def digital_card_art_token
-      end
+      attr_reader :digital_card_art_token
 
-      sig { params(_: String).returns(String) }
-      def digital_card_art_token=(_)
-      end
+      sig { params(digital_card_art_token: String).void }
+      attr_writer :digital_card_art_token
 
       sig do
         params(

@@ -6,233 +6,152 @@ module Lithic
       class LoanTape < Lithic::BaseModel
         # Globally unique identifier for a loan tape
         sig { returns(String) }
-        def token
-        end
-
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        attr_accessor :token
 
         sig { returns(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding) }
-        def account_standing
-        end
+        attr_reader :account_standing
 
         sig do
-          params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding, Lithic::Util::AnyHash))
+          params(
+            account_standing: T.any(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding, Lithic::Util::AnyHash)
+          )
+            .void
         end
-        def account_standing=(_)
-        end
+        attr_writer :account_standing
 
         # Amount of credit available to spend in cents
         sig { returns(Integer) }
-        def available_credit
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def available_credit=(_)
-        end
+        attr_accessor :available_credit
 
         sig { returns(Lithic::Models::FinancialAccounts::LoanTape::Balances) }
-        def balances
-        end
+        attr_reader :balances
 
-        sig do
-          params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances, Lithic::Util::AnyHash))
-        end
-        def balances=(_)
-        end
+        sig { params(balances: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances, Lithic::Util::AnyHash)).void }
+        attr_writer :balances
 
         # Timestamp of when the loan tape was created
         sig { returns(Time) }
-        def created
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created=(_)
-        end
+        attr_accessor :created
 
         # For prepay accounts, this is the minimum prepay balance that must be maintained.
         #   For charge card accounts, this is the maximum credit balance extended by a
         #   lender
         sig { returns(Integer) }
-        def credit_limit
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def credit_limit=(_)
-        end
+        attr_accessor :credit_limit
 
         # Globally unique identifier for a credit product
         sig { returns(String) }
-        def credit_product_token
-        end
-
-        sig { params(_: String).returns(String) }
-        def credit_product_token=(_)
-        end
+        attr_accessor :credit_product_token
 
         # Date of transactions that this loan tape covers
         sig { returns(Date) }
-        def date
-        end
-
-        sig { params(_: Date).returns(Date) }
-        def date=(_)
-        end
+        attr_accessor :date
 
         sig { returns(Lithic::Models::FinancialAccounts::LoanTape::DayTotals) }
-        def day_totals
-        end
+        attr_reader :day_totals
 
         sig do
-          params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::DayTotals, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::DayTotals, Lithic::Util::AnyHash))
+          params(day_totals: T.any(Lithic::Models::FinancialAccounts::LoanTape::DayTotals, Lithic::Util::AnyHash))
+            .void
         end
-        def day_totals=(_)
-        end
+        attr_writer :day_totals
 
         # Balance at the end of the day
         sig { returns(Integer) }
-        def ending_balance
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def ending_balance=(_)
-        end
+        attr_accessor :ending_balance
 
         # Excess credits in the form of provisional credits, payments, or purchase
         #   refunds. If positive, the account is in net credit state with no outstanding
         #   balances. An overpayment could land an account in this state
         sig { returns(Integer) }
-        def excess_credits
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def excess_credits=(_)
-        end
+        attr_accessor :excess_credits
 
         # Globally unique identifier for a financial account
         sig { returns(String) }
-        def financial_account_token
-        end
-
-        sig { params(_: String).returns(String) }
-        def financial_account_token=(_)
-        end
+        attr_accessor :financial_account_token
 
         sig { returns(T.nilable(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails)) }
-        def interest_details
-        end
+        attr_reader :interest_details
 
         sig do
           params(
-            _: T.nilable(T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails, Lithic::Util::AnyHash))
+            interest_details: T.nilable(T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails, Lithic::Util::AnyHash))
           )
-            .returns(
-              T.nilable(T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails, Lithic::Util::AnyHash))
-            )
+            .void
         end
-        def interest_details=(_)
-        end
+        attr_writer :interest_details
 
         sig { returns(Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance) }
-        def minimum_payment_balance
-        end
+        attr_reader :minimum_payment_balance
 
         sig do
           params(
-            _: T.any(Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance, Lithic::Util::AnyHash)
+            minimum_payment_balance: T.any(Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance, Lithic::Util::AnyHash)
           )
-            .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance, Lithic::Util::AnyHash))
+            .void
         end
-        def minimum_payment_balance=(_)
-        end
+        attr_writer :minimum_payment_balance
 
         sig { returns(Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation) }
-        def payment_allocation
-        end
-
-        sig do
-          params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation, Lithic::Util::AnyHash))
-        end
-        def payment_allocation=(_)
-        end
-
-        sig { returns(Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals) }
-        def period_totals
-        end
-
-        sig do
-          params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals, Lithic::Util::AnyHash))
-        end
-        def period_totals=(_)
-        end
-
-        sig { returns(Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance) }
-        def previous_statement_balance
-        end
+        attr_reader :payment_allocation
 
         sig do
           params(
-            _: T.any(Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance, Lithic::Util::AnyHash)
+            payment_allocation: T.any(Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation, Lithic::Util::AnyHash)
           )
-            .returns(
-              T.any(Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance, Lithic::Util::AnyHash)
-            )
+            .void
         end
-        def previous_statement_balance=(_)
+        attr_writer :payment_allocation
+
+        sig { returns(Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals) }
+        attr_reader :period_totals
+
+        sig do
+          params(
+            period_totals: T.any(Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals, Lithic::Util::AnyHash)
+          )
+            .void
         end
+        attr_writer :period_totals
+
+        sig { returns(Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance) }
+        attr_reader :previous_statement_balance
+
+        sig do
+          params(
+            previous_statement_balance: T.any(Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance, Lithic::Util::AnyHash)
+          )
+            .void
+        end
+        attr_writer :previous_statement_balance
 
         # Balance at the start of the day
         sig { returns(Integer) }
-        def starting_balance
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def starting_balance=(_)
-        end
+        attr_accessor :starting_balance
 
         # Timestamp of when the loan tape was updated
         sig { returns(Time) }
-        def updated
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def updated=(_)
-        end
+        attr_accessor :updated
 
         # Version number of the loan tape. This starts at 1
         sig { returns(Integer) }
-        def version
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def version=(_)
-        end
+        attr_accessor :version
 
         sig { returns(Lithic::Models::FinancialAccounts::LoanTape::YtdTotals) }
-        def ytd_totals
-        end
+        attr_reader :ytd_totals
 
         sig do
-          params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::YtdTotals, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::YtdTotals, Lithic::Util::AnyHash))
+          params(ytd_totals: T.any(Lithic::Models::FinancialAccounts::LoanTape::YtdTotals, Lithic::Util::AnyHash))
+            .void
         end
-        def ytd_totals=(_)
-        end
+        attr_writer :ytd_totals
 
         # Interest tier to which this account belongs to
         sig { returns(T.nilable(String)) }
-        def tier
-        end
+        attr_reader :tier
 
-        sig { params(_: String).returns(String) }
-        def tier=(_)
-        end
+        sig { params(tier: String).void }
+        attr_writer :tier
 
         sig do
           params(
@@ -322,68 +241,30 @@ module Lithic
         class AccountStanding < Lithic::BaseModel
           # Number of consecutive full payments made
           sig { returns(Integer) }
-          def consecutive_full_payments_made
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def consecutive_full_payments_made=(_)
-          end
+          attr_accessor :consecutive_full_payments_made
 
           # Number of consecutive minimum payments made
           sig { returns(Integer) }
-          def consecutive_minimum_payments_made
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def consecutive_minimum_payments_made=(_)
-          end
+          attr_accessor :consecutive_minimum_payments_made
 
           # Number of consecutive minimum payments missed
           sig { returns(Integer) }
-          def consecutive_minimum_payments_missed
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def consecutive_minimum_payments_missed=(_)
-          end
+          attr_accessor :consecutive_minimum_payments_missed
 
           # Number of days past due
           sig { returns(Integer) }
-          def days_past_due
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def days_past_due=(_)
-          end
+          attr_accessor :days_past_due
 
           # Whether the account currently has grace or not
           sig { returns(T::Boolean) }
-          def has_grace
-          end
-
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def has_grace=(_)
-          end
+          attr_accessor :has_grace
 
           # Current overall period number
           sig { returns(Integer) }
-          def period_number
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def period_number=(_)
-          end
+          attr_accessor :period_number
 
           sig { returns(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol) }
-          def period_state
-          end
-
-          sig do
-            params(_: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol)
-              .returns(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol)
-          end
-          def period_state=(_)
-          end
+          attr_accessor :period_state
 
           sig do
             params(
@@ -455,61 +336,48 @@ module Lithic
           # Amount due for the prior billing cycle. Any amounts not fully paid off on this
           #   due date will be considered past due the next day
           sig { returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::Due) }
-          def due
-          end
+          attr_reader :due
 
-          sig do
-            params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::Due, Lithic::Util::AnyHash))
-              .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::Due, Lithic::Util::AnyHash))
-          end
-          def due=(_)
-          end
+          sig { params(due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::Due, Lithic::Util::AnyHash)).void }
+          attr_writer :due
 
           # Amount due for the current billing cycle. Any amounts not paid off by early
           #   payments or credits will be considered due at the end of the current billing
           #   period
           sig { returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue) }
-          def next_statement_due
-          end
+          attr_reader :next_statement_due
 
           sig do
             params(
-              _: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue, Lithic::Util::AnyHash)
+              next_statement_due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue, Lithic::Util::AnyHash)
             )
-              .returns(
-                T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue, Lithic::Util::AnyHash)
-              )
+              .void
           end
-          def next_statement_due=(_)
-          end
+          attr_writer :next_statement_due
 
           # Amount not paid off on previous due dates
           sig { returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue) }
-          def past_due
-          end
-
-          sig do
-            params(_: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue, Lithic::Util::AnyHash))
-              .returns(T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue, Lithic::Util::AnyHash))
-          end
-          def past_due=(_)
-          end
-
-          # Amount due for the past billing cycles.
-          sig { returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue) }
-          def past_statements_due
-          end
+          attr_reader :past_due
 
           sig do
             params(
-              _: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue, Lithic::Util::AnyHash)
+              past_due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue, Lithic::Util::AnyHash)
             )
-              .returns(
-                T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue, Lithic::Util::AnyHash)
-              )
+              .void
           end
-          def past_statements_due=(_)
+          attr_writer :past_due
+
+          # Amount due for the past billing cycles.
+          sig { returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue) }
+          attr_reader :past_statements_due
+
+          sig do
+            params(
+              past_statements_due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue, Lithic::Util::AnyHash)
+            )
+              .void
           end
+          attr_writer :past_statements_due
 
           sig do
             params(
@@ -539,28 +407,13 @@ module Lithic
 
           class Due < Lithic::BaseModel
             sig { returns(Integer) }
-            def fees
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def fees=(_)
-            end
+            attr_accessor :fees
 
             sig { returns(Integer) }
-            def interest
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def interest=(_)
-            end
+            attr_accessor :interest
 
             sig { returns(Integer) }
-            def principal
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def principal=(_)
-            end
+            attr_accessor :principal
 
             # Amount due for the prior billing cycle. Any amounts not fully paid off on this
             #   due date will be considered past due the next day
@@ -575,28 +428,13 @@ module Lithic
 
           class NextStatementDue < Lithic::BaseModel
             sig { returns(Integer) }
-            def fees
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def fees=(_)
-            end
+            attr_accessor :fees
 
             sig { returns(Integer) }
-            def interest
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def interest=(_)
-            end
+            attr_accessor :interest
 
             sig { returns(Integer) }
-            def principal
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def principal=(_)
-            end
+            attr_accessor :principal
 
             # Amount due for the current billing cycle. Any amounts not paid off by early
             #   payments or credits will be considered due at the end of the current billing
@@ -612,28 +450,13 @@ module Lithic
 
           class PastDue < Lithic::BaseModel
             sig { returns(Integer) }
-            def fees
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def fees=(_)
-            end
+            attr_accessor :fees
 
             sig { returns(Integer) }
-            def interest
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def interest=(_)
-            end
+            attr_accessor :interest
 
             sig { returns(Integer) }
-            def principal
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def principal=(_)
-            end
+            attr_accessor :principal
 
             # Amount not paid off on previous due dates
             sig { params(fees: Integer, interest: Integer, principal: Integer).returns(T.attached_class) }
@@ -647,28 +470,13 @@ module Lithic
 
           class PastStatementsDue < Lithic::BaseModel
             sig { returns(Integer) }
-            def fees
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def fees=(_)
-            end
+            attr_accessor :fees
 
             sig { returns(Integer) }
-            def interest
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def interest=(_)
-            end
+            attr_accessor :interest
 
             sig { returns(Integer) }
-            def principal
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def principal=(_)
-            end
+            attr_accessor :principal
 
             # Amount due for the past billing cycles.
             sig { params(fees: Integer, interest: Integer, principal: Integer).returns(T.attached_class) }
@@ -684,67 +492,32 @@ module Lithic
         class DayTotals < Lithic::BaseModel
           # Opening balance transferred from previous account in cents
           sig { returns(Integer) }
-          def balance_transfers
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def balance_transfers=(_)
-          end
+          attr_accessor :balance_transfers
 
           # ATM and cashback transactions in cents
           sig { returns(Integer) }
-          def cash_advances
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def cash_advances=(_)
-          end
+          attr_accessor :cash_advances
 
           # Volume of credit management operation transactions less any balance transfers in
           #   cents
           sig { returns(Integer) }
-          def credits
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def credits=(_)
-          end
+          attr_accessor :credits
 
           # Volume of debit management operation transactions less any interest in cents
           sig { returns(Integer) }
-          def fees
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def fees=(_)
-          end
+          attr_accessor :fees
 
           # Interest accrued in cents
           sig { returns(Integer) }
-          def interest
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def interest=(_)
-          end
+          attr_accessor :interest
 
           # Any funds transfers which affective the balance in cents
           sig { returns(Integer) }
-          def payments
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def payments=(_)
-          end
+          attr_accessor :payments
 
           # Net card transaction volume less any cash advances in cents
           sig { returns(Integer) }
-          def purchases
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def purchases=(_)
-          end
+          attr_accessor :purchases
 
           sig do
             params(
@@ -781,104 +554,59 @@ module Lithic
 
         class InterestDetails < Lithic::BaseModel
           sig { returns(T.nilable(Integer)) }
-          def actual_interest_charged
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def actual_interest_charged=(_)
-          end
+          attr_accessor :actual_interest_charged
 
           sig { returns(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts) }
-          def daily_balance_amounts
-          end
+          attr_reader :daily_balance_amounts
 
           sig do
             params(
-              _: T.any(
+              daily_balance_amounts: T.any(
                 Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
                 Lithic::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
-                  Lithic::Util::AnyHash
-                )
-              )
+              .void
           end
-          def daily_balance_amounts=(_)
-          end
+          attr_writer :daily_balance_amounts
 
           sig { returns(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr) }
-          def effective_apr
-          end
+          attr_reader :effective_apr
 
           sig do
             params(
-              _: T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr, Lithic::Util::AnyHash)
+              effective_apr: T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr, Lithic::Util::AnyHash)
             )
-              .returns(
-                T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr, Lithic::Util::AnyHash)
-              )
+              .void
           end
-          def effective_apr=(_)
-          end
+          attr_writer :effective_apr
 
           sig do
             returns(
               Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
             )
           end
-          def interest_calculation_method
-          end
-
-          sig do
-            params(
-              _: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
-            )
-              .returns(
-                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
-              )
-          end
-          def interest_calculation_method=(_)
-          end
+          attr_accessor :interest_calculation_method
 
           sig { returns(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod) }
-          def interest_for_period
-          end
+          attr_reader :interest_for_period
 
           sig do
             params(
-              _: T.any(
+              interest_for_period: T.any(
                 Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
                 Lithic::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
-                  Lithic::Util::AnyHash
-                )
-              )
+              .void
           end
-          def interest_for_period=(_)
-          end
+          attr_writer :interest_for_period
 
           sig { returns(T.nilable(String)) }
-          def prime_rate
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def prime_rate=(_)
-          end
+          attr_accessor :prime_rate
 
           sig { returns(T.nilable(Integer)) }
-          def minimum_interest_charged
-          end
-
-          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-          def minimum_interest_charged=(_)
-          end
+          attr_accessor :minimum_interest_charged
 
           sig do
             params(
@@ -928,28 +656,13 @@ module Lithic
 
           class DailyBalanceAmounts < Lithic::BaseModel
             sig { returns(String) }
-            def balance_transfers
-            end
-
-            sig { params(_: String).returns(String) }
-            def balance_transfers=(_)
-            end
+            attr_accessor :balance_transfers
 
             sig { returns(String) }
-            def cash_advances
-            end
-
-            sig { params(_: String).returns(String) }
-            def cash_advances=(_)
-            end
+            attr_accessor :cash_advances
 
             sig { returns(String) }
-            def purchases
-            end
-
-            sig { params(_: String).returns(String) }
-            def purchases=(_)
-            end
+            attr_accessor :purchases
 
             sig do
               params(
@@ -968,28 +681,13 @@ module Lithic
 
           class EffectiveApr < Lithic::BaseModel
             sig { returns(String) }
-            def balance_transfers
-            end
-
-            sig { params(_: String).returns(String) }
-            def balance_transfers=(_)
-            end
+            attr_accessor :balance_transfers
 
             sig { returns(String) }
-            def cash_advances
-            end
-
-            sig { params(_: String).returns(String) }
-            def cash_advances=(_)
-            end
+            attr_accessor :cash_advances
 
             sig { returns(String) }
-            def purchases
-            end
-
-            sig { params(_: String).returns(String) }
-            def purchases=(_)
-            end
+            attr_accessor :purchases
 
             sig do
               params(
@@ -1044,28 +742,13 @@ module Lithic
 
           class InterestForPeriod < Lithic::BaseModel
             sig { returns(String) }
-            def balance_transfers
-            end
-
-            sig { params(_: String).returns(String) }
-            def balance_transfers=(_)
-            end
+            attr_accessor :balance_transfers
 
             sig { returns(String) }
-            def cash_advances
-            end
-
-            sig { params(_: String).returns(String) }
-            def cash_advances=(_)
-            end
+            attr_accessor :cash_advances
 
             sig { returns(String) }
-            def purchases
-            end
-
-            sig { params(_: String).returns(String) }
-            def purchases=(_)
-            end
+            attr_accessor :purchases
 
             sig do
               params(
@@ -1085,20 +768,10 @@ module Lithic
 
         class MinimumPaymentBalance < Lithic::BaseModel
           sig { returns(Integer) }
-          def amount
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def amount=(_)
-          end
+          attr_accessor :amount
 
           sig { returns(Integer) }
-          def remaining
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def remaining=(_)
-          end
+          attr_accessor :remaining
 
           sig { params(amount: Integer, remaining: Integer).returns(T.attached_class) }
           def self.new(amount:, remaining:)
@@ -1111,28 +784,13 @@ module Lithic
 
         class PaymentAllocation < Lithic::BaseModel
           sig { returns(Integer) }
-          def fees
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def fees=(_)
-          end
+          attr_accessor :fees
 
           sig { returns(Integer) }
-          def interest
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def interest=(_)
-          end
+          attr_accessor :interest
 
           sig { returns(Integer) }
-          def principal
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def principal=(_)
-          end
+          attr_accessor :principal
 
           sig { params(fees: Integer, interest: Integer, principal: Integer).returns(T.attached_class) }
           def self.new(fees:, interest:, principal:)
@@ -1146,67 +804,32 @@ module Lithic
         class PeriodTotals < Lithic::BaseModel
           # Opening balance transferred from previous account in cents
           sig { returns(Integer) }
-          def balance_transfers
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def balance_transfers=(_)
-          end
+          attr_accessor :balance_transfers
 
           # ATM and cashback transactions in cents
           sig { returns(Integer) }
-          def cash_advances
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def cash_advances=(_)
-          end
+          attr_accessor :cash_advances
 
           # Volume of credit management operation transactions less any balance transfers in
           #   cents
           sig { returns(Integer) }
-          def credits
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def credits=(_)
-          end
+          attr_accessor :credits
 
           # Volume of debit management operation transactions less any interest in cents
           sig { returns(Integer) }
-          def fees
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def fees=(_)
-          end
+          attr_accessor :fees
 
           # Interest accrued in cents
           sig { returns(Integer) }
-          def interest
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def interest=(_)
-          end
+          attr_accessor :interest
 
           # Any funds transfers which affective the balance in cents
           sig { returns(Integer) }
-          def payments
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def payments=(_)
-          end
+          attr_accessor :payments
 
           # Net card transaction volume less any cash advances in cents
           sig { returns(Integer) }
-          def purchases
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def purchases=(_)
-          end
+          attr_accessor :purchases
 
           sig do
             params(
@@ -1243,20 +866,10 @@ module Lithic
 
         class PreviousStatementBalance < Lithic::BaseModel
           sig { returns(Integer) }
-          def amount
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def amount=(_)
-          end
+          attr_accessor :amount
 
           sig { returns(Integer) }
-          def remaining
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def remaining=(_)
-          end
+          attr_accessor :remaining
 
           sig { params(amount: Integer, remaining: Integer).returns(T.attached_class) }
           def self.new(amount:, remaining:)
@@ -1270,67 +883,32 @@ module Lithic
         class YtdTotals < Lithic::BaseModel
           # Opening balance transferred from previous account in cents
           sig { returns(Integer) }
-          def balance_transfers
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def balance_transfers=(_)
-          end
+          attr_accessor :balance_transfers
 
           # ATM and cashback transactions in cents
           sig { returns(Integer) }
-          def cash_advances
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def cash_advances=(_)
-          end
+          attr_accessor :cash_advances
 
           # Volume of credit management operation transactions less any balance transfers in
           #   cents
           sig { returns(Integer) }
-          def credits
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def credits=(_)
-          end
+          attr_accessor :credits
 
           # Volume of debit management operation transactions less any interest in cents
           sig { returns(Integer) }
-          def fees
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def fees=(_)
-          end
+          attr_accessor :fees
 
           # Interest accrued in cents
           sig { returns(Integer) }
-          def interest
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def interest=(_)
-          end
+          attr_accessor :interest
 
           # Any funds transfers which affective the balance in cents
           sig { returns(Integer) }
-          def payments
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def payments=(_)
-          end
+          attr_accessor :payments
 
           # Net card transaction volume less any cash advances in cents
           sig { returns(Integer) }
-          def purchases
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def purchases=(_)
-          end
+          attr_accessor :purchases
 
           sig do
             params(

@@ -5,60 +5,48 @@ module Lithic
     class AddressUpdate < Lithic::BaseModel
       # Valid deliverable address (no PO boxes).
       sig { returns(T.nilable(String)) }
-      def address1
-      end
+      attr_reader :address1
 
-      sig { params(_: String).returns(String) }
-      def address1=(_)
-      end
+      sig { params(address1: String).void }
+      attr_writer :address1
 
       # Unit or apartment number (if applicable).
       sig { returns(T.nilable(String)) }
-      def address2
-      end
+      attr_reader :address2
 
-      sig { params(_: String).returns(String) }
-      def address2=(_)
-      end
+      sig { params(address2: String).void }
+      attr_writer :address2
 
       # Name of city.
       sig { returns(T.nilable(String)) }
-      def city
-      end
+      attr_reader :city
 
-      sig { params(_: String).returns(String) }
-      def city=(_)
-      end
+      sig { params(city: String).void }
+      attr_writer :city
 
       # Valid country code. Only USA is currently supported, entered in uppercase ISO
       #   3166-1 alpha-3 three-character format.
       sig { returns(T.nilable(String)) }
-      def country
-      end
+      attr_reader :country
 
-      sig { params(_: String).returns(String) }
-      def country=(_)
-      end
+      sig { params(country: String).void }
+      attr_writer :country
 
       # Valid postal code. Only USA ZIP codes are currently supported, entered as a
       #   five-digit ZIP or nine-digit ZIP+4.
       sig { returns(T.nilable(String)) }
-      def postal_code
-      end
+      attr_reader :postal_code
 
-      sig { params(_: String).returns(String) }
-      def postal_code=(_)
-      end
+      sig { params(postal_code: String).void }
+      attr_writer :postal_code
 
       # Valid state code. Only USA state codes are currently supported, entered in
       #   uppercase ISO 3166-2 two-character format.
       sig { returns(T.nilable(String)) }
-      def state
-      end
+      attr_reader :state
 
-      sig { params(_: String).returns(String) }
-      def state=(_)
-      end
+      sig { params(state: String).void }
+      attr_writer :state
 
       sig do
         params(

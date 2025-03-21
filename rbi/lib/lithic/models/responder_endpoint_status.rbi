@@ -5,21 +5,14 @@ module Lithic
     class ResponderEndpointStatus < Lithic::BaseModel
       # True if the instance has an endpoint enrolled.
       sig { returns(T.nilable(T::Boolean)) }
-      def enrolled
-      end
+      attr_reader :enrolled
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def enrolled=(_)
-      end
+      sig { params(enrolled: T::Boolean).void }
+      attr_writer :enrolled
 
       # The URL of the currently enrolled endpoint or null.
       sig { returns(T.nilable(String)) }
-      def url
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def url=(_)
-      end
+      attr_accessor :url
 
       sig { params(enrolled: T::Boolean, url: T.nilable(String)).returns(T.attached_class) }
       def self.new(enrolled: nil, url: nil)

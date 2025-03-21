@@ -18,34 +18,30 @@ module Lithic
       class KYBKYCPatchResponse < Lithic::BaseModel
         # Globally unique identifier for the account holder.
         sig { returns(T.nilable(String)) }
-        def token
-        end
+        attr_reader :token
 
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        sig { params(token: String).void }
+        attr_writer :token
 
         # Globally unique identifier for the account.
         sig { returns(T.nilable(String)) }
-        def account_token
-        end
+        attr_reader :account_token
 
-        sig { params(_: String).returns(String) }
-        def account_token=(_)
-        end
+        sig { params(account_token: String).void }
+        attr_writer :account_token
 
         # Only present when user_type == "BUSINESS". List of all entities with >25%
         #   ownership in the company.
         sig { returns(T.nilable(T::Array[Lithic::Models::KYBBusinessEntity])) }
-        def beneficial_owner_entities
-        end
+        attr_reader :beneficial_owner_entities
 
         sig do
-          params(_: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)])
-            .returns(T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)])
+          params(
+            beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)]
+          )
+            .void
         end
-        def beneficial_owner_entities=(_)
-        end
+        attr_writer :beneficial_owner_entities
 
         # Only present when user_type == "BUSINESS". List of all individuals with >25%
         #   ownership in the company.
@@ -56,53 +52,37 @@ module Lithic
             )
           )
         end
-        def beneficial_owner_individuals
-        end
+        attr_reader :beneficial_owner_individuals
 
         sig do
           params(
-            _: T::Array[
+            beneficial_owner_individuals: T::Array[
             T.any(
               Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual,
               Lithic::Util::AnyHash
             )
             ]
           )
-            .returns(
-              T::Array[
-              T.any(
-                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual,
-                Lithic::Util::AnyHash
-              )
-              ]
-            )
+            .void
         end
-        def beneficial_owner_individuals=(_)
-        end
+        attr_writer :beneficial_owner_individuals
 
         # Only applicable for customers using the KYC-Exempt workflow to enroll authorized
         #   users of businesses. Pass the account_token of the enrolled business associated
         #   with the AUTHORIZED_USER in this field.
         sig { returns(T.nilable(String)) }
-        def business_account_token
-        end
+        attr_reader :business_account_token
 
-        sig { params(_: String).returns(String) }
-        def business_account_token=(_)
-        end
+        sig { params(business_account_token: String).void }
+        attr_writer :business_account_token
 
         # Only present when user_type == "BUSINESS". Information about the business for
         #   which the account is being opened and KYB is being run.
         sig { returns(T.nilable(Lithic::Models::KYBBusinessEntity)) }
-        def business_entity
-        end
+        attr_reader :business_entity
 
-        sig do
-          params(_: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash))
-        end
-        def business_entity=(_)
-        end
+        sig { params(business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)).void }
+        attr_writer :business_entity
 
         # Only present when user_type == "BUSINESS".
         #
@@ -116,46 +96,35 @@ module Lithic
         #   to the cards that Lithic will provide. In some cases, this individual could also
         #   be a beneficial owner listed above.
         sig { returns(T.nilable(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson)) }
-        def control_person
-        end
+        attr_reader :control_person
 
         sig do
           params(
-            _: T.any(
+            control_person: T.any(
               Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
               Lithic::Util::AnyHash
             )
           )
-            .returns(
-              T.any(
-                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
-                Lithic::Util::AnyHash
-              )
-            )
+            .void
         end
-        def control_person=(_)
-        end
+        attr_writer :control_person
 
         # Timestamp of when the account holder was created.
         sig { returns(T.nilable(Time)) }
-        def created
-        end
+        attr_reader :created
 
-        sig { params(_: Time).returns(Time) }
-        def created=(_)
-        end
+        sig { params(created: Time).void }
+        attr_writer :created
 
         # < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
         #   individual.phone_number when user_type == "INDIVIDUAL".
         #
         #   > Primary email of Account Holder.
         sig { returns(T.nilable(String)) }
-        def email
-        end
+        attr_reader :email
 
-        sig { params(_: String).returns(String) }
-        def email=(_)
-        end
+        sig { params(email: String).void }
+        attr_writer :email
 
         # The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
         #   holder is not KYC-Exempt.
@@ -164,77 +133,62 @@ module Lithic
             T.nilable(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol)
           )
         end
-        def exemption_type
-        end
+        attr_reader :exemption_type
 
         sig do
-          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::OrSymbol)
-            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::OrSymbol)
+          params(
+            exemption_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::OrSymbol
+          )
+            .void
         end
-        def exemption_type=(_)
-        end
+        attr_writer :exemption_type
 
         # Customer-provided token that indicates a relationship with an object outside of
         #   the Lithic ecosystem.
         sig { returns(T.nilable(String)) }
-        def external_id
-        end
+        attr_reader :external_id
 
-        sig { params(_: String).returns(String) }
-        def external_id=(_)
-        end
+        sig { params(external_id: String).void }
+        attr_writer :external_id
 
         # Only present when user_type == "INDIVIDUAL". Information about the individual
         #   for which the account is being opened and KYC is being run.
         sig { returns(T.nilable(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual)) }
-        def individual
-        end
+        attr_reader :individual
 
         sig do
           params(
-            _: T.any(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual, Lithic::Util::AnyHash)
+            individual: T.any(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual, Lithic::Util::AnyHash)
           )
-            .returns(
-              T.any(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual, Lithic::Util::AnyHash)
-            )
+            .void
         end
-        def individual=(_)
-        end
+        attr_writer :individual
 
         # Only present when user_type == "BUSINESS". User-submitted description of the
         #   business.
         sig { returns(T.nilable(String)) }
-        def nature_of_business
-        end
+        attr_reader :nature_of_business
 
-        sig { params(_: String).returns(String) }
-        def nature_of_business=(_)
-        end
+        sig { params(nature_of_business: String).void }
+        attr_writer :nature_of_business
 
         # < Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
         #   individual.phone_number when user_type == "INDIVIDUAL".
         #
         #   > Primary phone of Account Holder, entered in E.164 format.
         sig { returns(T.nilable(String)) }
-        def phone_number
-        end
+        attr_reader :phone_number
 
-        sig { params(_: String).returns(String) }
-        def phone_number=(_)
-        end
+        sig { params(phone_number: String).void }
+        attr_writer :phone_number
 
         # Only present for "KYB_BASIC" and "KYC_ADVANCED" workflows. A list of documents
         #   required for the account holder to be approved.
         sig { returns(T.nilable(T::Array[Lithic::Models::RequiredDocument])) }
-        def required_documents
-        end
+        attr_reader :required_documents
 
-        sig do
-          params(_: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)])
-            .returns(T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)])
-        end
-        def required_documents=(_)
-        end
+        sig { params(required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)]).void }
+        attr_writer :required_documents
 
         # <Deprecated. Use verification_application.status instead>
         #
@@ -243,15 +197,10 @@ module Lithic
         #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
         #   `ADVANCED` workflow.
         sig { returns(T.nilable(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol)) }
-        def status
-        end
+        attr_reader :status
 
-        sig do
-          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::OrSymbol)
-            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::OrSymbol)
-        end
-        def status=(_)
-        end
+        sig { params(status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::OrSymbol).void }
+        attr_writer :status
 
         # <Deprecated. Use verification_application.status_reasons> Reason for the
         #   evaluation status.
@@ -262,19 +211,15 @@ module Lithic
             )
           )
         end
-        def status_reasons
-        end
+        attr_reader :status_reasons
 
         sig do
           params(
-            _: T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::OrSymbol]
+            status_reasons: T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::OrSymbol]
           )
-            .returns(
-              T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::OrSymbol]
-            )
+            .void
         end
-        def status_reasons=(_)
-        end
+        attr_writer :status_reasons
 
         # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
         #   attribute will be present.
@@ -288,15 +233,13 @@ module Lithic
             T.nilable(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol)
           )
         end
-        def user_type
-        end
+        attr_reader :user_type
 
         sig do
-          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::OrSymbol)
-            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::OrSymbol)
+          params(user_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::OrSymbol)
+            .void
         end
-        def user_type=(_)
-        end
+        attr_writer :user_type
 
         # Information about the most recent identity verification attempt
         sig do
@@ -304,34 +247,25 @@ module Lithic
             T.nilable(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication)
           )
         end
-        def verification_application
-        end
+        attr_reader :verification_application
 
         sig do
           params(
-            _: T.any(
+            verification_application: T.any(
               Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication,
               Lithic::Util::AnyHash
             )
           )
-            .returns(
-              T.any(
-                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication,
-                Lithic::Util::AnyHash
-              )
-            )
+            .void
         end
-        def verification_application=(_)
-        end
+        attr_writer :verification_application
 
         # Only present when user_type == "BUSINESS". Business's primary website.
         sig { returns(T.nilable(String)) }
-        def website_url
-        end
+        attr_reader :website_url
 
-        sig { params(_: String).returns(String) }
-        def website_url=(_)
-        end
+        sig { params(website_url: String).void }
+        attr_writer :website_url
 
         sig do
           params(
@@ -433,71 +367,54 @@ module Lithic
               )
             )
           end
-          def address
-          end
+          attr_reader :address
 
           sig do
             params(
-              _: T.any(
+              address: T.any(
                 Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address,
                 Lithic::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address,
-                  Lithic::Util::AnyHash
-                )
-              )
+              .void
           end
-          def address=(_)
-          end
+          attr_writer :address
 
           # Individual's date of birth, as an RFC 3339 date.
           sig { returns(T.nilable(String)) }
-          def dob
-          end
+          attr_reader :dob
 
-          sig { params(_: String).returns(String) }
-          def dob=(_)
-          end
+          sig { params(dob: String).void }
+          attr_writer :dob
 
           # Individual's email address. If utilizing Lithic for chargeback processing, this
           #   customer email address may be used to communicate dispute status and resolution.
           sig { returns(T.nilable(String)) }
-          def email
-          end
+          attr_reader :email
 
-          sig { params(_: String).returns(String) }
-          def email=(_)
-          end
+          sig { params(email: String).void }
+          attr_writer :email
 
           # Individual's first name, as it appears on government-issued identity documents.
           sig { returns(T.nilable(String)) }
-          def first_name
-          end
+          attr_reader :first_name
 
-          sig { params(_: String).returns(String) }
-          def first_name=(_)
-          end
+          sig { params(first_name: String).void }
+          attr_writer :first_name
 
           # Individual's last name, as it appears on government-issued identity documents.
           sig { returns(T.nilable(String)) }
-          def last_name
-          end
+          attr_reader :last_name
 
-          sig { params(_: String).returns(String) }
-          def last_name=(_)
-          end
+          sig { params(last_name: String).void }
+          attr_writer :last_name
 
           # Individual's phone number, entered in E.164 format.
           sig { returns(T.nilable(String)) }
-          def phone_number
-          end
+          attr_reader :phone_number
 
-          sig { params(_: String).returns(String) }
-          def phone_number=(_)
-          end
+          sig { params(phone_number: String).void }
+          attr_writer :phone_number
 
           sig do
             params(
@@ -536,60 +453,33 @@ module Lithic
           class Address < Lithic::BaseModel
             # Valid deliverable address (no PO boxes).
             sig { returns(String) }
-            def address1
-            end
-
-            sig { params(_: String).returns(String) }
-            def address1=(_)
-            end
+            attr_accessor :address1
 
             # Name of city.
             sig { returns(String) }
-            def city
-            end
-
-            sig { params(_: String).returns(String) }
-            def city=(_)
-            end
+            attr_accessor :city
 
             # Valid country code. Only USA is currently supported, entered in uppercase ISO
             #   3166-1 alpha-3 three-character format.
             sig { returns(String) }
-            def country
-            end
-
-            sig { params(_: String).returns(String) }
-            def country=(_)
-            end
+            attr_accessor :country
 
             # Valid postal code. Only USA ZIP codes are currently supported, entered as a
             #   five-digit ZIP or nine-digit ZIP+4.
             sig { returns(String) }
-            def postal_code
-            end
-
-            sig { params(_: String).returns(String) }
-            def postal_code=(_)
-            end
+            attr_accessor :postal_code
 
             # Valid state code. Only USA state codes are currently supported, entered in
             #   uppercase ISO 3166-2 two-character format.
             sig { returns(String) }
-            def state
-            end
-
-            sig { params(_: String).returns(String) }
-            def state=(_)
-            end
+            attr_accessor :state
 
             # Unit or apartment number (if applicable).
             sig { returns(T.nilable(String)) }
-            def address2
-            end
+            attr_reader :address2
 
-            sig { params(_: String).returns(String) }
-            def address2=(_)
-            end
+            sig { params(address2: String).void }
+            attr_writer :address2
 
             # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
             #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -633,71 +523,54 @@ module Lithic
               T.nilable(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address)
             )
           end
-          def address
-          end
+          attr_reader :address
 
           sig do
             params(
-              _: T.any(
+              address: T.any(
                 Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address,
                 Lithic::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address,
-                  Lithic::Util::AnyHash
-                )
-              )
+              .void
           end
-          def address=(_)
-          end
+          attr_writer :address
 
           # Individual's date of birth, as an RFC 3339 date.
           sig { returns(T.nilable(String)) }
-          def dob
-          end
+          attr_reader :dob
 
-          sig { params(_: String).returns(String) }
-          def dob=(_)
-          end
+          sig { params(dob: String).void }
+          attr_writer :dob
 
           # Individual's email address. If utilizing Lithic for chargeback processing, this
           #   customer email address may be used to communicate dispute status and resolution.
           sig { returns(T.nilable(String)) }
-          def email
-          end
+          attr_reader :email
 
-          sig { params(_: String).returns(String) }
-          def email=(_)
-          end
+          sig { params(email: String).void }
+          attr_writer :email
 
           # Individual's first name, as it appears on government-issued identity documents.
           sig { returns(T.nilable(String)) }
-          def first_name
-          end
+          attr_reader :first_name
 
-          sig { params(_: String).returns(String) }
-          def first_name=(_)
-          end
+          sig { params(first_name: String).void }
+          attr_writer :first_name
 
           # Individual's last name, as it appears on government-issued identity documents.
           sig { returns(T.nilable(String)) }
-          def last_name
-          end
+          attr_reader :last_name
 
-          sig { params(_: String).returns(String) }
-          def last_name=(_)
-          end
+          sig { params(last_name: String).void }
+          attr_writer :last_name
 
           # Individual's phone number, entered in E.164 format.
           sig { returns(T.nilable(String)) }
-          def phone_number
-          end
+          attr_reader :phone_number
 
-          sig { params(_: String).returns(String) }
-          def phone_number=(_)
-          end
+          sig { params(phone_number: String).void }
+          attr_writer :phone_number
 
           # Only present when user_type == "BUSINESS".
           #
@@ -747,60 +620,33 @@ module Lithic
           class Address < Lithic::BaseModel
             # Valid deliverable address (no PO boxes).
             sig { returns(String) }
-            def address1
-            end
-
-            sig { params(_: String).returns(String) }
-            def address1=(_)
-            end
+            attr_accessor :address1
 
             # Name of city.
             sig { returns(String) }
-            def city
-            end
-
-            sig { params(_: String).returns(String) }
-            def city=(_)
-            end
+            attr_accessor :city
 
             # Valid country code. Only USA is currently supported, entered in uppercase ISO
             #   3166-1 alpha-3 three-character format.
             sig { returns(String) }
-            def country
-            end
-
-            sig { params(_: String).returns(String) }
-            def country=(_)
-            end
+            attr_accessor :country
 
             # Valid postal code. Only USA ZIP codes are currently supported, entered as a
             #   five-digit ZIP or nine-digit ZIP+4.
             sig { returns(String) }
-            def postal_code
-            end
-
-            sig { params(_: String).returns(String) }
-            def postal_code=(_)
-            end
+            attr_accessor :postal_code
 
             # Valid state code. Only USA state codes are currently supported, entered in
             #   uppercase ISO 3166-2 two-character format.
             sig { returns(String) }
-            def state
-            end
-
-            sig { params(_: String).returns(String) }
-            def state=(_)
-            end
+            attr_accessor :state
 
             # Unit or apartment number (if applicable).
             sig { returns(T.nilable(String)) }
-            def address2
-            end
+            attr_reader :address2
 
-            sig { params(_: String).returns(String) }
-            def address2=(_)
-            end
+            sig { params(address2: String).void }
+            attr_writer :address2
 
             # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
             #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -878,71 +724,54 @@ module Lithic
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
           #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
           sig { returns(T.nilable(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address)) }
-          def address
-          end
+          attr_reader :address
 
           sig do
             params(
-              _: T.any(
+              address: T.any(
                 Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address,
                 Lithic::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address,
-                  Lithic::Util::AnyHash
-                )
-              )
+              .void
           end
-          def address=(_)
-          end
+          attr_writer :address
 
           # Individual's date of birth, as an RFC 3339 date.
           sig { returns(T.nilable(String)) }
-          def dob
-          end
+          attr_reader :dob
 
-          sig { params(_: String).returns(String) }
-          def dob=(_)
-          end
+          sig { params(dob: String).void }
+          attr_writer :dob
 
           # Individual's email address. If utilizing Lithic for chargeback processing, this
           #   customer email address may be used to communicate dispute status and resolution.
           sig { returns(T.nilable(String)) }
-          def email
-          end
+          attr_reader :email
 
-          sig { params(_: String).returns(String) }
-          def email=(_)
-          end
+          sig { params(email: String).void }
+          attr_writer :email
 
           # Individual's first name, as it appears on government-issued identity documents.
           sig { returns(T.nilable(String)) }
-          def first_name
-          end
+          attr_reader :first_name
 
-          sig { params(_: String).returns(String) }
-          def first_name=(_)
-          end
+          sig { params(first_name: String).void }
+          attr_writer :first_name
 
           # Individual's last name, as it appears on government-issued identity documents.
           sig { returns(T.nilable(String)) }
-          def last_name
-          end
+          attr_reader :last_name
 
-          sig { params(_: String).returns(String) }
-          def last_name=(_)
-          end
+          sig { params(last_name: String).void }
+          attr_writer :last_name
 
           # Individual's phone number, entered in E.164 format.
           sig { returns(T.nilable(String)) }
-          def phone_number
-          end
+          attr_reader :phone_number
 
-          sig { params(_: String).returns(String) }
-          def phone_number=(_)
-          end
+          sig { params(phone_number: String).void }
+          attr_writer :phone_number
 
           # Only present when user_type == "INDIVIDUAL". Information about the individual
           #   for which the account is being opened and KYC is being run.
@@ -983,60 +812,33 @@ module Lithic
           class Address < Lithic::BaseModel
             # Valid deliverable address (no PO boxes).
             sig { returns(String) }
-            def address1
-            end
-
-            sig { params(_: String).returns(String) }
-            def address1=(_)
-            end
+            attr_accessor :address1
 
             # Name of city.
             sig { returns(String) }
-            def city
-            end
-
-            sig { params(_: String).returns(String) }
-            def city=(_)
-            end
+            attr_accessor :city
 
             # Valid country code. Only USA is currently supported, entered in uppercase ISO
             #   3166-1 alpha-3 three-character format.
             sig { returns(String) }
-            def country
-            end
-
-            sig { params(_: String).returns(String) }
-            def country=(_)
-            end
+            attr_accessor :country
 
             # Valid postal code. Only USA ZIP codes are currently supported, entered as a
             #   five-digit ZIP or nine-digit ZIP+4.
             sig { returns(String) }
-            def postal_code
-            end
-
-            sig { params(_: String).returns(String) }
-            def postal_code=(_)
-            end
+            attr_accessor :postal_code
 
             # Valid state code. Only USA state codes are currently supported, entered in
             #   uppercase ISO 3166-2 two-character format.
             sig { returns(String) }
-            def state
-            end
-
-            sig { params(_: String).returns(String) }
-            def state=(_)
-            end
+            attr_accessor :state
 
             # Unit or apartment number (if applicable).
             sig { returns(T.nilable(String)) }
-            def address2
-            end
+            attr_reader :address2
 
-            sig { params(_: String).returns(String) }
-            def address2=(_)
-            end
+            sig { params(address2: String).void }
+            attr_writer :address2
 
             # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
             #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -1296,12 +1098,7 @@ module Lithic
         class VerificationApplication < Lithic::BaseModel
           # Timestamp of when the application was created.
           sig { returns(Time) }
-          def created
-          end
-
-          sig { params(_: Time).returns(Time) }
-          def created=(_)
-          end
+          attr_accessor :created
 
           # KYC and KYB evaluation states.
           #
@@ -1312,19 +1109,7 @@ module Lithic
               Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
             )
           end
-          def status
-          end
-
-          sig do
-            params(
-              _: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
-            )
-              .returns(
-                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
-              )
-          end
-          def status=(_)
-          end
+          attr_accessor :status
 
           # Reason for the evaluation status.
           sig do
@@ -1334,32 +1119,11 @@ module Lithic
               ]
             )
           end
-          def status_reasons
-          end
-
-          sig do
-            params(
-              _: T::Array[
-              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
-              ]
-            )
-              .returns(
-                T::Array[
-                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
-                ]
-              )
-          end
-          def status_reasons=(_)
-          end
+          attr_accessor :status_reasons
 
           # Timestamp of when the application was last updated.
           sig { returns(Time) }
-          def updated
-          end
-
-          sig { params(_: Time).returns(Time) }
-          def updated=(_)
-          end
+          attr_accessor :updated
 
           # Information about the most recent identity verification attempt
           sig do
@@ -1602,80 +1366,64 @@ module Lithic
       class PatchResponse < Lithic::BaseModel
         # The token for the account holder that was updated
         sig { returns(T.nilable(String)) }
-        def token
-        end
+        attr_reader :token
 
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        sig { params(token: String).void }
+        attr_writer :token
 
         # The address for the account holder
         sig { returns(T.nilable(Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address)) }
-        def address
-        end
+        attr_reader :address
 
         sig do
           params(
-            _: T.any(Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address, Lithic::Util::AnyHash)
+            address: T.any(Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address, Lithic::Util::AnyHash)
           )
-            .returns(T.any(Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address, Lithic::Util::AnyHash))
+            .void
         end
-        def address=(_)
-        end
+        attr_writer :address
 
         # The token for the business account that the account holder is associated with
         sig { returns(T.nilable(String)) }
-        def business_account_token
-        end
+        attr_reader :business_account_token
 
-        sig { params(_: String).returns(String) }
-        def business_account_token=(_)
-        end
+        sig { params(business_account_token: String).void }
+        attr_writer :business_account_token
 
         # The email for the account holder
         sig { returns(T.nilable(String)) }
-        def email
-        end
+        attr_reader :email
 
-        sig { params(_: String).returns(String) }
-        def email=(_)
-        end
+        sig { params(email: String).void }
+        attr_writer :email
 
         # The first name for the account holder
         sig { returns(T.nilable(String)) }
-        def first_name
-        end
+        attr_reader :first_name
 
-        sig { params(_: String).returns(String) }
-        def first_name=(_)
-        end
+        sig { params(first_name: String).void }
+        attr_writer :first_name
 
         # The last name for the account holder
         sig { returns(T.nilable(String)) }
-        def last_name
-        end
+        attr_reader :last_name
 
-        sig { params(_: String).returns(String) }
-        def last_name=(_)
-        end
+        sig { params(last_name: String).void }
+        attr_writer :last_name
 
         # The legal business name for the account holder
         sig { returns(T.nilable(String)) }
-        def legal_business_name
-        end
+        attr_reader :legal_business_name
 
-        sig { params(_: String).returns(String) }
-        def legal_business_name=(_)
-        end
+        sig { params(legal_business_name: String).void }
+        attr_writer :legal_business_name
 
         # The phone_number for the account holder
         sig { returns(T.nilable(String)) }
-        def phone_number
-        end
+        attr_reader :phone_number
 
-        sig { params(_: String).returns(String) }
-        def phone_number=(_)
-        end
+        sig { params(phone_number: String).void }
+        attr_writer :phone_number
 
         sig do
           params(
@@ -1723,60 +1471,33 @@ module Lithic
         class Address < Lithic::BaseModel
           # Valid deliverable address (no PO boxes).
           sig { returns(String) }
-          def address1
-          end
-
-          sig { params(_: String).returns(String) }
-          def address1=(_)
-          end
+          attr_accessor :address1
 
           # Name of city.
           sig { returns(String) }
-          def city
-          end
-
-          sig { params(_: String).returns(String) }
-          def city=(_)
-          end
+          attr_accessor :city
 
           # Valid country code. Only USA is currently supported, entered in uppercase ISO
           #   3166-1 alpha-3 three-character format.
           sig { returns(String) }
-          def country
-          end
-
-          sig { params(_: String).returns(String) }
-          def country=(_)
-          end
+          attr_accessor :country
 
           # Valid postal code. Only USA ZIP codes are currently supported, entered as a
           #   five-digit ZIP or nine-digit ZIP+4.
           sig { returns(String) }
-          def postal_code
-          end
-
-          sig { params(_: String).returns(String) }
-          def postal_code=(_)
-          end
+          attr_accessor :postal_code
 
           # Valid state code. Only USA state codes are currently supported, entered in
           #   uppercase ISO 3166-2 two-character format.
           sig { returns(String) }
-          def state
-          end
-
-          sig { params(_: String).returns(String) }
-          def state=(_)
-          end
+          attr_accessor :state
 
           # Unit or apartment number (if applicable).
           sig { returns(T.nilable(String)) }
-          def address2
-          end
+          attr_reader :address2
 
-          sig { params(_: String).returns(String) }
-          def address2=(_)
-          end
+          sig { params(address2: String).void }
+          attr_writer :address2
 
           # The address for the account holder
           sig do

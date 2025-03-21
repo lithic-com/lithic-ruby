@@ -9,23 +9,19 @@ module Lithic
 
         # UTC date of the balance to retrieve. Defaults to latest available balance
         sig { returns(T.nilable(Time)) }
-        def balance_date
-        end
+        attr_reader :balance_date
 
-        sig { params(_: Time).returns(Time) }
-        def balance_date=(_)
-        end
+        sig { params(balance_date: Time).void }
+        attr_writer :balance_date
 
         # Balance after a given financial event occured. For example, passing the
         #   event_token of a $5 CARD_CLEARING financial event will return a balance
         #   decreased by $5
         sig { returns(T.nilable(String)) }
-        def last_transaction_event_token
-        end
+        attr_reader :last_transaction_event_token
 
-        sig { params(_: String).returns(String) }
-        def last_transaction_event_token=(_)
-        end
+        sig { params(last_transaction_event_token: String).void }
+        attr_writer :last_transaction_event_token
 
         sig do
           params(

@@ -11,15 +11,7 @@ module Lithic
       #   empty list. However, either this parameter or `beneficial_owner_individuals`
       #   must be populated. on entities that should be included.
       sig { returns(T::Array[Lithic::Models::KYB::BeneficialOwnerEntity]) }
-      def beneficial_owner_entities
-      end
-
-      sig do
-        params(_: T::Array[Lithic::Models::KYB::BeneficialOwnerEntity])
-          .returns(T::Array[Lithic::Models::KYB::BeneficialOwnerEntity])
-      end
-      def beneficial_owner_entities=(_)
-      end
+      attr_accessor :beneficial_owner_entities
 
       # List of all direct and indirect individuals with >25% ownership in the company.
       #   If no entity or individual owns >25% of the company, and the largest shareholder
@@ -29,28 +21,15 @@ module Lithic
       #   individual is an entity, pass in an empty list. However, either this parameter
       #   or `beneficial_owner_entities` must be populated.
       sig { returns(T::Array[Lithic::Models::KYB::BeneficialOwnerIndividual]) }
-      def beneficial_owner_individuals
-      end
-
-      sig do
-        params(_: T::Array[Lithic::Models::KYB::BeneficialOwnerIndividual])
-          .returns(T::Array[Lithic::Models::KYB::BeneficialOwnerIndividual])
-      end
-      def beneficial_owner_individuals=(_)
-      end
+      attr_accessor :beneficial_owner_individuals
 
       # Information for business for which the account is being opened and KYB is being
       #   run.
       sig { returns(Lithic::Models::KYB::BusinessEntity) }
-      def business_entity
-      end
+      attr_reader :business_entity
 
-      sig do
-        params(_: T.any(Lithic::Models::KYB::BusinessEntity, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::KYB::BusinessEntity, Lithic::Util::AnyHash))
-      end
-      def business_entity=(_)
-      end
+      sig { params(business_entity: T.any(Lithic::Models::KYB::BusinessEntity, Lithic::Util::AnyHash)).void }
+      attr_writer :business_entity
 
       # An individual with significant responsibility for managing the legal entity
       #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
@@ -61,76 +40,50 @@ module Lithic
       #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
       #   (Section II) for more background.
       sig { returns(Lithic::Models::KYB::ControlPerson) }
-      def control_person
-      end
+      attr_reader :control_person
 
-      sig do
-        params(_: T.any(Lithic::Models::KYB::ControlPerson, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::KYB::ControlPerson, Lithic::Util::AnyHash))
-      end
-      def control_person=(_)
-      end
+      sig { params(control_person: T.any(Lithic::Models::KYB::ControlPerson, Lithic::Util::AnyHash)).void }
+      attr_writer :control_person
 
       # Short description of the company's line of business (i.e., what does the company
       #   do?).
       sig { returns(String) }
-      def nature_of_business
-      end
-
-      sig { params(_: String).returns(String) }
-      def nature_of_business=(_)
-      end
+      attr_accessor :nature_of_business
 
       # An RFC 3339 timestamp indicating when the account holder accepted the applicable
       #   legal agreements (e.g., cardholder terms) as agreed upon during API customer's
       #   implementation with Lithic.
       sig { returns(String) }
-      def tos_timestamp
-      end
-
-      sig { params(_: String).returns(String) }
-      def tos_timestamp=(_)
-      end
+      attr_accessor :tos_timestamp
 
       # Specifies the type of KYB workflow to run.
       sig { returns(Lithic::Models::KYB::Workflow::OrSymbol) }
-      def workflow
-      end
-
-      sig { params(_: Lithic::Models::KYB::Workflow::OrSymbol).returns(Lithic::Models::KYB::Workflow::OrSymbol) }
-      def workflow=(_)
-      end
+      attr_accessor :workflow
 
       # A user provided id that can be used to link an account holder with an external
       #   system
       sig { returns(T.nilable(String)) }
-      def external_id
-      end
+      attr_reader :external_id
 
-      sig { params(_: String).returns(String) }
-      def external_id=(_)
-      end
+      sig { params(external_id: String).void }
+      attr_writer :external_id
 
       # An RFC 3339 timestamp indicating when precomputed KYC was completed on the
       #   business with a pass result.
       #
       #   This field is required only if workflow type is `KYB_BYO`.
       sig { returns(T.nilable(String)) }
-      def kyb_passed_timestamp
-      end
+      attr_reader :kyb_passed_timestamp
 
-      sig { params(_: String).returns(String) }
-      def kyb_passed_timestamp=(_)
-      end
+      sig { params(kyb_passed_timestamp: String).void }
+      attr_writer :kyb_passed_timestamp
 
       # Company website URL.
       sig { returns(T.nilable(String)) }
-      def website_url
-      end
+      attr_reader :website_url
 
-      sig { params(_: String).returns(String) }
-      def website_url=(_)
-      end
+      sig { params(website_url: String).void }
+      attr_writer :website_url
 
       sig do
         params(
@@ -185,64 +138,40 @@ module Lithic
         # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable.
         sig { returns(Lithic::Models::Address) }
-        def address
-        end
+        attr_reader :address
 
-        sig do
-          params(_: T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
-        end
-        def address=(_)
-        end
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+        attr_writer :address
 
         # Government-issued identification number. US Federal Employer Identification
         #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
         #   without hyphens.
         sig { returns(String) }
-        def government_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def government_id=(_)
-        end
+        attr_accessor :government_id
 
         # Legal (formal) business name.
         sig { returns(String) }
-        def legal_business_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def legal_business_name=(_)
-        end
+        attr_accessor :legal_business_name
 
         # One or more of the business's phone number(s), entered as a list in E.164
         #   format.
         sig { returns(T::Array[String]) }
-        def phone_numbers
-        end
-
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def phone_numbers=(_)
-        end
+        attr_accessor :phone_numbers
 
         # Any name that the business operates under that is not its legal business name
         #   (if applicable).
         sig { returns(T.nilable(String)) }
-        def dba_business_name
-        end
+        attr_reader :dba_business_name
 
-        sig { params(_: String).returns(String) }
-        def dba_business_name=(_)
-        end
+        sig { params(dba_business_name: String).void }
+        attr_writer :dba_business_name
 
         # Parent company name (if applicable).
         sig { returns(T.nilable(String)) }
-        def parent_company
-        end
+        attr_reader :parent_company
 
-        sig { params(_: String).returns(String) }
-        def parent_company=(_)
-        end
+        sig { params(parent_company: String).void }
+        attr_writer :parent_company
 
         sig do
           params(
@@ -286,73 +215,41 @@ module Lithic
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig { returns(Lithic::Models::Address) }
-        def address
-        end
+        attr_reader :address
 
-        sig do
-          params(_: T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
-        end
-        def address=(_)
-        end
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+        attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
         sig { returns(String) }
-        def dob
-        end
-
-        sig { params(_: String).returns(String) }
-        def dob=(_)
-        end
+        attr_accessor :dob
 
         # Individual's email address. If utilizing Lithic for chargeback processing, this
         #   customer email address may be used to communicate dispute status and resolution.
         sig { returns(String) }
-        def email
-        end
-
-        sig { params(_: String).returns(String) }
-        def email=(_)
-        end
+        attr_accessor :email
 
         # Individual's first name, as it appears on government-issued identity documents.
         sig { returns(String) }
-        def first_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def first_name=(_)
-        end
+        attr_accessor :first_name
 
         # Government-issued identification number (required for identity verification and
         #   compliance with banking regulations). Social Security Numbers (SSN) and
         #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
         #   entered as full nine-digits, with or without hyphens
         sig { returns(String) }
-        def government_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def government_id=(_)
-        end
+        attr_accessor :government_id
 
         # Individual's last name, as it appears on government-issued identity documents.
         sig { returns(String) }
-        def last_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def last_name=(_)
-        end
+        attr_accessor :last_name
 
         # Individual's phone number, entered in E.164 format.
         sig { returns(T.nilable(String)) }
-        def phone_number
-        end
+        attr_reader :phone_number
 
-        sig { params(_: String).returns(String) }
-        def phone_number=(_)
-        end
+        sig { params(phone_number: String).void }
+        attr_writer :phone_number
 
         # Individuals associated with a KYB application. Phone number is optional.
         sig do
@@ -392,64 +289,40 @@ module Lithic
         # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable.
         sig { returns(Lithic::Models::Address) }
-        def address
-        end
+        attr_reader :address
 
-        sig do
-          params(_: T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
-        end
-        def address=(_)
-        end
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+        attr_writer :address
 
         # Government-issued identification number. US Federal Employer Identification
         #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
         #   without hyphens.
         sig { returns(String) }
-        def government_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def government_id=(_)
-        end
+        attr_accessor :government_id
 
         # Legal (formal) business name.
         sig { returns(String) }
-        def legal_business_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def legal_business_name=(_)
-        end
+        attr_accessor :legal_business_name
 
         # One or more of the business's phone number(s), entered as a list in E.164
         #   format.
         sig { returns(T::Array[String]) }
-        def phone_numbers
-        end
-
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def phone_numbers=(_)
-        end
+        attr_accessor :phone_numbers
 
         # Any name that the business operates under that is not its legal business name
         #   (if applicable).
         sig { returns(T.nilable(String)) }
-        def dba_business_name
-        end
+        attr_reader :dba_business_name
 
-        sig { params(_: String).returns(String) }
-        def dba_business_name=(_)
-        end
+        sig { params(dba_business_name: String).void }
+        attr_writer :dba_business_name
 
         # Parent company name (if applicable).
         sig { returns(T.nilable(String)) }
-        def parent_company
-        end
+        attr_reader :parent_company
 
-        sig { params(_: String).returns(String) }
-        def parent_company=(_)
-        end
+        sig { params(parent_company: String).void }
+        attr_writer :parent_company
 
         # Information for business for which the account is being opened and KYB is being
         #   run.
@@ -495,73 +368,41 @@ module Lithic
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig { returns(Lithic::Models::Address) }
-        def address
-        end
+        attr_reader :address
 
-        sig do
-          params(_: T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
-        end
-        def address=(_)
-        end
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+        attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
         sig { returns(String) }
-        def dob
-        end
-
-        sig { params(_: String).returns(String) }
-        def dob=(_)
-        end
+        attr_accessor :dob
 
         # Individual's email address. If utilizing Lithic for chargeback processing, this
         #   customer email address may be used to communicate dispute status and resolution.
         sig { returns(String) }
-        def email
-        end
-
-        sig { params(_: String).returns(String) }
-        def email=(_)
-        end
+        attr_accessor :email
 
         # Individual's first name, as it appears on government-issued identity documents.
         sig { returns(String) }
-        def first_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def first_name=(_)
-        end
+        attr_accessor :first_name
 
         # Government-issued identification number (required for identity verification and
         #   compliance with banking regulations). Social Security Numbers (SSN) and
         #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
         #   entered as full nine-digits, with or without hyphens
         sig { returns(String) }
-        def government_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def government_id=(_)
-        end
+        attr_accessor :government_id
 
         # Individual's last name, as it appears on government-issued identity documents.
         sig { returns(String) }
-        def last_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def last_name=(_)
-        end
+        attr_accessor :last_name
 
         # Individual's phone number, entered in E.164 format.
         sig { returns(T.nilable(String)) }
-        def phone_number
-        end
+        attr_reader :phone_number
 
-        sig { params(_: String).returns(String) }
-        def phone_number=(_)
-        end
+        sig { params(phone_number: String).void }
+        attr_writer :phone_number
 
         # An individual with significant responsibility for managing the legal entity
         #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating

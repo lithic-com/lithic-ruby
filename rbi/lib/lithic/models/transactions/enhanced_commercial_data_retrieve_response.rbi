@@ -5,15 +5,7 @@ module Lithic
     module Transactions
       class EnhancedCommercialDataRetrieveResponse < Lithic::BaseModel
         sig { returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData]) }
-        def data
-        end
-
-        sig do
-          params(_: T::Array[Lithic::Models::Transactions::Events::EnhancedData])
-            .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData])
-        end
-        def data=(_)
-        end
+        attr_accessor :data
 
         sig do
           params(data: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData, Lithic::Util::AnyHash)])

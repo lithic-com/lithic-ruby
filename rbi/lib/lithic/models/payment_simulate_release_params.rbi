@@ -8,12 +8,7 @@ module Lithic
 
       # Payment Token
       sig { returns(String) }
-      def payment_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def payment_token=(_)
-      end
+      attr_accessor :payment_token
 
       sig do
         params(payment_token: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))

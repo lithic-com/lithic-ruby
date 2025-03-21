@@ -7,52 +7,27 @@ module Lithic
         class EnhancedData < Lithic::BaseModel
           # A unique identifier for the enhanced commercial data.
           sig { returns(String) }
-          def token
-          end
-
-          sig { params(_: String).returns(String) }
-          def token=(_)
-          end
+          attr_accessor :token
 
           sig { returns(Lithic::Models::Transactions::Events::EnhancedData::Common) }
-          def common
-          end
+          attr_reader :common
 
           sig do
-            params(_: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Util::AnyHash))
-              .returns(T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Util::AnyHash))
+            params(common: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Util::AnyHash))
+              .void
           end
-          def common=(_)
-          end
+          attr_writer :common
 
           # The token of the event that the enhanced data is associated with.
           sig { returns(String) }
-          def event_token
-          end
-
-          sig { params(_: String).returns(String) }
-          def event_token=(_)
-          end
+          attr_accessor :event_token
 
           sig { returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet]) }
-          def fleet
-          end
-
-          sig do
-            params(_: T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet])
-              .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet])
-          end
-          def fleet=(_)
-          end
+          attr_accessor :fleet
 
           # The token of the transaction that the enhanced data is associated with.
           sig { returns(String) }
-          def transaction_token
-          end
-
-          sig { params(_: String).returns(String) }
-          def transaction_token=(_)
-          end
+          attr_accessor :transaction_token
 
           sig do
             params(
@@ -84,53 +59,37 @@ module Lithic
 
           class Common < Lithic::BaseModel
             sig { returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem]) }
-            def line_items
-            end
-
-            sig do
-              params(_: T::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem])
-                .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem])
-            end
-            def line_items=(_)
-            end
+            attr_accessor :line_items
 
             sig { returns(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax) }
-            def tax
-            end
+            attr_reader :tax
 
             sig do
-              params(_: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Util::AnyHash))
-                .returns(T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Util::AnyHash))
+              params(tax: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Util::AnyHash))
+                .void
             end
-            def tax=(_)
-            end
+            attr_writer :tax
 
             # A customer identifier.
             sig { returns(T.nilable(String)) }
-            def customer_reference_number
-            end
+            attr_reader :customer_reference_number
 
-            sig { params(_: String).returns(String) }
-            def customer_reference_number=(_)
-            end
+            sig { params(customer_reference_number: String).void }
+            attr_writer :customer_reference_number
 
             # A merchant identifier.
             sig { returns(T.nilable(String)) }
-            def merchant_reference_number
-            end
+            attr_reader :merchant_reference_number
 
-            sig { params(_: String).returns(String) }
-            def merchant_reference_number=(_)
-            end
+            sig { params(merchant_reference_number: String).void }
+            attr_writer :merchant_reference_number
 
             # The date of the order.
             sig { returns(T.nilable(Date)) }
-            def order_date
-            end
+            attr_reader :order_date
 
-            sig { params(_: Date).returns(Date) }
-            def order_date=(_)
-            end
+            sig { params(order_date: Date).void }
+            attr_writer :order_date
 
             sig do
               params(
@@ -163,39 +122,31 @@ module Lithic
             class LineItem < Lithic::BaseModel
               # The price of the item purchased in merchant currency.
               sig { returns(T.nilable(Float)) }
-              def amount
-              end
+              attr_reader :amount
 
-              sig { params(_: Float).returns(Float) }
-              def amount=(_)
-              end
+              sig { params(amount: Float).void }
+              attr_writer :amount
 
               # A human-readable description of the item.
               sig { returns(T.nilable(String)) }
-              def description
-              end
+              attr_reader :description
 
-              sig { params(_: String).returns(String) }
-              def description=(_)
-              end
+              sig { params(description: String).void }
+              attr_writer :description
 
               # An identifier for the item purchased.
               sig { returns(T.nilable(String)) }
-              def product_code
-              end
+              attr_reader :product_code
 
-              sig { params(_: String).returns(String) }
-              def product_code=(_)
-              end
+              sig { params(product_code: String).void }
+              attr_writer :product_code
 
               # The quantity of the item purchased.
               sig { returns(T.nilable(Float)) }
-              def quantity
-              end
+              attr_reader :quantity
 
-              sig { params(_: Float).returns(Float) }
-              def quantity=(_)
-              end
+              sig { params(quantity: Float).void }
+              attr_writer :quantity
 
               # An L2/L3 enhanced commercial data line item.
               sig do
@@ -219,33 +170,24 @@ module Lithic
             class Tax < Lithic::BaseModel
               # The amount of tax collected.
               sig { returns(T.nilable(Integer)) }
-              def amount
-              end
+              attr_reader :amount
 
-              sig { params(_: Integer).returns(Integer) }
-              def amount=(_)
-              end
+              sig { params(amount: Integer).void }
+              attr_writer :amount
 
               # A flag indicating whether the transaction is tax exempt or not.
               sig { returns(T.nilable(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol)) }
-              def exempt
-              end
+              attr_reader :exempt
 
-              sig do
-                params(_: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::OrSymbol)
-                  .returns(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::OrSymbol)
-              end
-              def exempt=(_)
-              end
+              sig { params(exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::OrSymbol).void }
+              attr_writer :exempt
 
               # The tax ID of the merchant.
               sig { returns(T.nilable(String)) }
-              def merchant_tax_id
-              end
+              attr_reader :merchant_tax_id
 
-              sig { params(_: String).returns(String) }
-              def merchant_tax_id=(_)
-              end
+              sig { params(merchant_tax_id: String).void }
+              attr_writer :merchant_tax_id
 
               sig do
                 params(
@@ -310,71 +252,56 @@ module Lithic
 
           class Fleet < Lithic::BaseModel
             sig { returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals) }
-            def amount_totals
-            end
+            attr_reader :amount_totals
 
             sig do
               params(
-                _: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals, Lithic::Util::AnyHash)
+                amount_totals: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals, Lithic::Util::AnyHash)
               )
-                .returns(
-                  T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals, Lithic::Util::AnyHash)
-                )
+                .void
             end
-            def amount_totals=(_)
-            end
+            attr_writer :amount_totals
 
             sig { returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel) }
-            def fuel
-            end
+            attr_reader :fuel
 
             sig do
-              params(_: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Util::AnyHash))
-                .returns(T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Util::AnyHash))
+              params(
+                fuel: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Util::AnyHash)
+              )
+                .void
             end
-            def fuel=(_)
-            end
+            attr_writer :fuel
 
             # The driver number entered into the terminal at the time of sale, with leading
             #   zeros stripped.
             sig { returns(T.nilable(String)) }
-            def driver_number
-            end
+            attr_reader :driver_number
 
-            sig { params(_: String).returns(String) }
-            def driver_number=(_)
-            end
+            sig { params(driver_number: String).void }
+            attr_writer :driver_number
 
             # The odometer reading entered into the terminal at the time of sale.
             sig { returns(T.nilable(Integer)) }
-            def odometer
-            end
+            attr_reader :odometer
 
-            sig { params(_: Integer).returns(Integer) }
-            def odometer=(_)
-            end
+            sig { params(odometer: Integer).void }
+            attr_writer :odometer
 
             # The type of fuel service.
             sig { returns(T.nilable(Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)) }
-            def service_type
-            end
+            attr_reader :service_type
 
-            sig do
-              params(_: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol)
-                .returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol)
-            end
-            def service_type=(_)
-            end
+            sig { params(service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol).void }
+            attr_writer :service_type
 
             # The vehicle number entered into the terminal at the time of sale, with leading
             #   zeros stripped.
             sig { returns(T.nilable(String)) }
-            def vehicle_number
-            end
+            attr_reader :vehicle_number
 
-            sig { params(_: String).returns(String) }
-            def vehicle_number=(_)
-            end
+            sig { params(vehicle_number: String).void }
+            attr_writer :vehicle_number
 
             sig do
               params(
@@ -409,30 +336,24 @@ module Lithic
             class AmountTotals < Lithic::BaseModel
               # The discount applied to the gross sale amount.
               sig { returns(T.nilable(Integer)) }
-              def discount
-              end
+              attr_reader :discount
 
-              sig { params(_: Integer).returns(Integer) }
-              def discount=(_)
-              end
+              sig { params(discount: Integer).void }
+              attr_writer :discount
 
               # The gross sale amount.
               sig { returns(T.nilable(Integer)) }
-              def gross_sale
-              end
+              attr_reader :gross_sale
 
-              sig { params(_: Integer).returns(Integer) }
-              def gross_sale=(_)
-              end
+              sig { params(gross_sale: Integer).void }
+              attr_writer :gross_sale
 
               # The amount after discount.
               sig { returns(T.nilable(Integer)) }
-              def net_sale
-              end
+              attr_reader :net_sale
 
-              sig { params(_: Integer).returns(Integer) }
-              def net_sale=(_)
-              end
+              sig { params(net_sale: Integer).void }
+              attr_writer :net_sale
 
               sig do
                 params(discount: Integer, gross_sale: Integer, net_sale: Integer).returns(T.attached_class)
@@ -448,24 +369,17 @@ module Lithic
             class Fuel < Lithic::BaseModel
               # The quantity of fuel purchased.
               sig { returns(T.nilable(Float)) }
-              def quantity
-              end
+              attr_reader :quantity
 
-              sig { params(_: Float).returns(Float) }
-              def quantity=(_)
-              end
+              sig { params(quantity: Float).void }
+              attr_writer :quantity
 
               # The type of fuel purchased.
               sig { returns(T.nilable(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)) }
-              def type
-              end
+              attr_reader :type
 
-              sig do
-                params(_: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::OrSymbol)
-                  .returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::OrSymbol)
-              end
-              def type=(_)
-              end
+              sig { params(type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::OrSymbol).void }
+              attr_writer :type
 
               # Unit of measure for fuel disbursement.
               sig do
@@ -473,24 +387,22 @@ module Lithic
                   T.nilable(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol)
                 )
               end
-              def unit_of_measure
-              end
+              attr_reader :unit_of_measure
 
               sig do
-                params(_: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::OrSymbol)
-                  .returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::OrSymbol)
+                params(
+                  unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::OrSymbol
+                )
+                  .void
               end
-              def unit_of_measure=(_)
-              end
+              attr_writer :unit_of_measure
 
               # The price per unit of fuel.
               sig { returns(T.nilable(Integer)) }
-              def unit_price
-              end
+              attr_reader :unit_price
 
-              sig { params(_: Integer).returns(Integer) }
-              def unit_price=(_)
-              end
+              sig { params(unit_price: Integer).void }
+              attr_writer :unit_price
 
               sig do
                 params(

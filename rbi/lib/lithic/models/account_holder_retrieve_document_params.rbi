@@ -7,12 +7,7 @@ module Lithic
       include Lithic::RequestParameters
 
       sig { returns(String) }
-      def account_holder_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_holder_token=(_)
-      end
+      attr_accessor :account_holder_token
 
       sig do
         params(

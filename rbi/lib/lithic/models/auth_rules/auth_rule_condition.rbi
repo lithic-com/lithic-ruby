@@ -43,44 +43,24 @@ module Lithic
         #     Valid values are `CLOSED`, `OPEN`, `PAUSED`, `PENDING_ACTIVATION`,
         #     `PENDING_FULFILLMENT`.
         sig { returns(T.nilable(Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)) }
-        def attribute
-        end
+        attr_reader :attribute
 
-        sig do
-          params(_: Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
-            .returns(Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)
-        end
-        def attribute=(_)
-        end
+        sig { params(attribute: Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol).void }
+        attr_writer :attribute
 
         # The operation to apply to the attribute
         sig { returns(T.nilable(Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)) }
-        def operation
-        end
+        attr_reader :operation
 
-        sig do
-          params(_: Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
-            .returns(Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)
-        end
-        def operation=(_)
-        end
+        sig { params(operation: Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol).void }
+        attr_writer :operation
 
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
         sig { returns(T.nilable(T.any(String, Integer, T::Array[String]))) }
-        def value
-        end
+        attr_reader :value
 
-        sig do
-          params(
-            _: T.any(
-              String,
-              Integer,
-              T::Array[String]
-            )
-          ).returns(T.any(String, Integer, T::Array[String]))
-        end
-        def value=(_)
-        end
+        sig { params(value: T.any(String, Integer, T::Array[String])).void }
+        attr_writer :value
 
         sig do
           params(

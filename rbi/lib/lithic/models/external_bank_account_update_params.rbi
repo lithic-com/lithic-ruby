@@ -8,90 +8,66 @@ module Lithic
 
       # Address
       sig { returns(T.nilable(Lithic::Models::ExternalBankAccountAddress)) }
-      def address
-      end
+      attr_reader :address
 
-      sig do
-        params(_: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash))
-      end
-      def address=(_)
-      end
+      sig { params(address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash)).void }
+      attr_writer :address
 
       # Optional field that helps identify bank accounts in receipts
       sig { returns(T.nilable(String)) }
-      def company_id
-      end
+      attr_reader :company_id
 
-      sig { params(_: String).returns(String) }
-      def company_id=(_)
-      end
+      sig { params(company_id: String).void }
+      attr_writer :company_id
 
       # Date of Birth of the Individual that owns the external bank account
       sig { returns(T.nilable(Date)) }
-      def dob
-      end
+      attr_reader :dob
 
-      sig { params(_: Date).returns(Date) }
-      def dob=(_)
-      end
+      sig { params(dob: Date).void }
+      attr_writer :dob
 
       # Doing Business As
       sig { returns(T.nilable(String)) }
-      def doing_business_as
-      end
+      attr_reader :doing_business_as
 
-      sig { params(_: String).returns(String) }
-      def doing_business_as=(_)
-      end
+      sig { params(doing_business_as: String).void }
+      attr_writer :doing_business_as
 
       # The nickname for this External Bank Account
       sig { returns(T.nilable(String)) }
-      def name
-      end
+      attr_reader :name
 
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      sig { params(name: String).void }
+      attr_writer :name
 
       # Legal Name of the business or individual who owns the external account. This
       #   will appear in statements
       sig { returns(T.nilable(String)) }
-      def owner
-      end
+      attr_reader :owner
 
-      sig { params(_: String).returns(String) }
-      def owner=(_)
-      end
+      sig { params(owner: String).void }
+      attr_writer :owner
 
       # Owner Type
       sig { returns(T.nilable(Lithic::Models::OwnerType::OrSymbol)) }
-      def owner_type
-      end
+      attr_reader :owner_type
 
-      sig { params(_: Lithic::Models::OwnerType::OrSymbol).returns(Lithic::Models::OwnerType::OrSymbol) }
-      def owner_type=(_)
-      end
+      sig { params(owner_type: Lithic::Models::OwnerType::OrSymbol).void }
+      attr_writer :owner_type
 
       sig { returns(T.nilable(Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol)) }
-      def type
-      end
+      attr_reader :type
 
-      sig do
-        params(_: Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol)
-          .returns(Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol)
-      end
-      def type=(_)
-      end
+      sig { params(type: Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol).void }
+      attr_writer :type
 
       # User Defined ID
       sig { returns(T.nilable(String)) }
-      def user_defined_id
-      end
+      attr_reader :user_defined_id
 
-      sig { params(_: String).returns(String) }
-      def user_defined_id=(_)
-      end
+      sig { params(user_defined_id: String).void }
+      attr_writer :user_defined_id
 
       sig do
         params(

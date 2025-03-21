@@ -8,38 +8,30 @@ module Lithic
         include Lithic::RequestParameters
 
         sig { returns(T.nilable(Integer)) }
-        def credit_limit
-        end
+        attr_reader :credit_limit
 
-        sig { params(_: Integer).returns(Integer) }
-        def credit_limit=(_)
-        end
+        sig { params(credit_limit: Integer).void }
+        attr_writer :credit_limit
 
         # Globally unique identifier for the credit product
         sig { returns(T.nilable(String)) }
-        def credit_product_token
-        end
+        attr_reader :credit_product_token
 
-        sig { params(_: String).returns(String) }
-        def credit_product_token=(_)
-        end
+        sig { params(credit_product_token: String).void }
+        attr_writer :credit_product_token
 
         sig { returns(T.nilable(String)) }
-        def external_bank_account_token
-        end
+        attr_reader :external_bank_account_token
 
-        sig { params(_: String).returns(String) }
-        def external_bank_account_token=(_)
-        end
+        sig { params(external_bank_account_token: String).void }
+        attr_writer :external_bank_account_token
 
         # Tier to assign to a financial account
         sig { returns(T.nilable(String)) }
-        def tier
-        end
+        attr_reader :tier
 
-        sig { params(_: String).returns(String) }
-        def tier=(_)
-        end
+        sig { params(tier: String).void }
+        attr_writer :tier
 
         sig do
           params(

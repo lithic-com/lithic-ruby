@@ -6,21 +6,17 @@ module Lithic
       # A unique token to reference this transaction with later calls to void or clear
       #   the authorization.
       sig { returns(T.nilable(String)) }
-      def token
-      end
+      attr_reader :token
 
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      sig { params(token: String).void }
+      attr_writer :token
 
       # Debugging request ID to share with Lithic Support team.
       sig { returns(T.nilable(String)) }
-      def debugging_request_id
-      end
+      attr_reader :debugging_request_id
 
-      sig { params(_: String).returns(String) }
-      def debugging_request_id=(_)
-      end
+      sig { params(debugging_request_id: String).void }
+      attr_writer :debugging_request_id
 
       sig { params(token: String, debugging_request_id: String).returns(T.attached_class) }
       def self.new(token: nil, debugging_request_id: nil)

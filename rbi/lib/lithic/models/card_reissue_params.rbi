@@ -8,38 +8,26 @@ module Lithic
 
       # If omitted, the previous carrier will be used.
       sig { returns(T.nilable(Lithic::Models::Carrier)) }
-      def carrier
-      end
+      attr_reader :carrier
 
-      sig do
-        params(_: T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash))
-      end
-      def carrier=(_)
-      end
+      sig { params(carrier: T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash)).void }
+      attr_writer :carrier
 
       # Specifies the configuration (e.g. physical card art) that the card should be
       #   manufactured with, and only applies to cards of type `PHYSICAL`. This must be
       #   configured with Lithic before use.
       sig { returns(T.nilable(String)) }
-      def product_id
-      end
+      attr_reader :product_id
 
-      sig { params(_: String).returns(String) }
-      def product_id=(_)
-      end
+      sig { params(product_id: String).void }
+      attr_writer :product_id
 
       # If omitted, the previous shipping address will be used.
       sig { returns(T.nilable(Lithic::Models::ShippingAddress)) }
-      def shipping_address
-      end
+      attr_reader :shipping_address
 
-      sig do
-        params(_: T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash))
-      end
-      def shipping_address=(_)
-      end
+      sig { params(shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash)).void }
+      attr_writer :shipping_address
 
       # Shipping method for the card. Use of options besides `STANDARD` require
       #   additional permissions.
@@ -54,15 +42,10 @@ module Lithic
       #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #     tracking
       sig { returns(T.nilable(Lithic::Models::CardReissueParams::ShippingMethod::OrSymbol)) }
-      def shipping_method
-      end
+      attr_reader :shipping_method
 
-      sig do
-        params(_: Lithic::Models::CardReissueParams::ShippingMethod::OrSymbol)
-          .returns(Lithic::Models::CardReissueParams::ShippingMethod::OrSymbol)
-      end
-      def shipping_method=(_)
-      end
+      sig { params(shipping_method: Lithic::Models::CardReissueParams::ShippingMethod::OrSymbol).void }
+      attr_writer :shipping_method
 
       sig do
         params(

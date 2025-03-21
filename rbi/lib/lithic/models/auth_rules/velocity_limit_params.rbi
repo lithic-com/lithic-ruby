@@ -5,50 +5,24 @@ module Lithic
     module AuthRules
       class VelocityLimitParams < Lithic::BaseModel
         sig { returns(Lithic::Models::AuthRules::VelocityLimitParams::Filters) }
-        def filters
-        end
+        attr_reader :filters
 
-        sig do
-          params(_: T.any(Lithic::Models::AuthRules::VelocityLimitParams::Filters, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::AuthRules::VelocityLimitParams::Filters, Lithic::Util::AnyHash))
-        end
-        def filters=(_)
-        end
+        sig { params(filters: T.any(Lithic::Models::AuthRules::VelocityLimitParams::Filters, Lithic::Util::AnyHash)).void }
+        attr_writer :filters
 
         # The size of the trailing window to calculate Spend Velocity over in seconds. The
         #   minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
         sig { returns(T.any(Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol)) }
-        def period
-        end
-
-        sig do
-          params(_: T.any(Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol))
-            .returns(T.any(Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol))
-        end
-        def period=(_)
-        end
+        attr_accessor :period
 
         sig { returns(Lithic::Models::AuthRules::VelocityLimitParams::Scope::OrSymbol) }
-        def scope
-        end
-
-        sig do
-          params(_: Lithic::Models::AuthRules::VelocityLimitParams::Scope::OrSymbol)
-            .returns(Lithic::Models::AuthRules::VelocityLimitParams::Scope::OrSymbol)
-        end
-        def scope=(_)
-        end
+        attr_accessor :scope
 
         # The maximum amount of spend velocity allowed in the period in minor units (the
         #   smallest unit of a currency, e.g. cents for USD). Transactions exceeding this
         #   limit will be declined.
         sig { returns(T.nilable(Integer)) }
-        def limit_amount
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def limit_amount=(_)
-        end
+        attr_accessor :limit_amount
 
         # The number of spend velocity impacting transactions may not exceed this limit in
         #   the period. Transactions exceeding this limit will be declined. A spend velocity
@@ -56,12 +30,7 @@ module Lithic
         #   settled, or a force post (a transaction that settled without prior
         #   authorization).
         sig { returns(T.nilable(Integer)) }
-        def limit_count
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def limit_count=(_)
-        end
+        attr_accessor :limit_count
 
         sig do
           params(
@@ -96,43 +65,23 @@ module Lithic
           #   Transactions matching any of the provided will be excluded from the calculated
           #   velocity.
           sig { returns(T.nilable(T::Array[String])) }
-          def exclude_countries
-          end
-
-          sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-          def exclude_countries=(_)
-          end
+          attr_accessor :exclude_countries
 
           # Merchant Category Codes to exclude from the velocity calculation. Transactions
           #   matching this MCC will be excluded from the calculated velocity.
           sig { returns(T.nilable(T::Array[String])) }
-          def exclude_mccs
-          end
-
-          sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-          def exclude_mccs=(_)
-          end
+          attr_accessor :exclude_mccs
 
           # ISO-3166-1 alpha-3 Country Codes to include in the velocity calculation.
           #   Transactions not matching any of the provided will not be included in the
           #   calculated velocity.
           sig { returns(T.nilable(T::Array[String])) }
-          def include_countries
-          end
-
-          sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-          def include_countries=(_)
-          end
+          attr_accessor :include_countries
 
           # Merchant Category Codes to include in the velocity calculation. Transactions not
           #   matching this MCC will not be included in the calculated velocity.
           sig { returns(T.nilable(T::Array[String])) }
-          def include_mccs
-          end
-
-          sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-          def include_mccs=(_)
-          end
+          attr_accessor :include_mccs
 
           sig do
             params(

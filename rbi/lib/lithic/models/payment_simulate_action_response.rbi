@@ -5,33 +5,15 @@ module Lithic
     class PaymentSimulateActionResponse < Lithic::BaseModel
       # Debugging Request Id
       sig { returns(String) }
-      def debugging_request_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def debugging_request_id=(_)
-      end
+      attr_accessor :debugging_request_id
 
       # Request Result
       sig { returns(Lithic::Models::PaymentSimulateActionResponse::Result::TaggedSymbol) }
-      def result
-      end
-
-      sig do
-        params(_: Lithic::Models::PaymentSimulateActionResponse::Result::TaggedSymbol)
-          .returns(Lithic::Models::PaymentSimulateActionResponse::Result::TaggedSymbol)
-      end
-      def result=(_)
-      end
+      attr_accessor :result
 
       # Transaction Event Token
       sig { returns(String) }
-      def transaction_event_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def transaction_event_token=(_)
-      end
+      attr_accessor :transaction_event_token
 
       sig do
         params(

@@ -6,96 +6,51 @@ module Lithic
       # KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
       #   acceptable; APO/FPO are acceptable.
       sig { returns(Lithic::Models::Address) }
-      def address
-      end
+      attr_reader :address
 
-      sig do
-        params(_: T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::Address, Lithic::Util::AnyHash))
-      end
-      def address=(_)
-      end
+      sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+      attr_writer :address
 
       # The KYC Exempt user's email
       sig { returns(String) }
-      def email
-      end
-
-      sig { params(_: String).returns(String) }
-      def email=(_)
-      end
+      attr_accessor :email
 
       # The KYC Exempt user's first name
       sig { returns(String) }
-      def first_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def first_name=(_)
-      end
+      attr_accessor :first_name
 
       # Specifies the type of KYC Exempt user
       sig { returns(Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol) }
-      def kyc_exemption_type
-      end
-
-      sig do
-        params(_: Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol)
-          .returns(Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol)
-      end
-      def kyc_exemption_type=(_)
-      end
+      attr_accessor :kyc_exemption_type
 
       # The KYC Exempt user's last name
       sig { returns(String) }
-      def last_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def last_name=(_)
-      end
+      attr_accessor :last_name
 
       # The KYC Exempt user's phone number, entered in E.164 format.
       sig { returns(String) }
-      def phone_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def phone_number=(_)
-      end
+      attr_accessor :phone_number
 
       # Specifies the workflow type. This must be 'KYC_EXEMPT'
       sig { returns(Lithic::Models::KYCExempt::Workflow::OrSymbol) }
-      def workflow
-      end
-
-      sig do
-        params(_: Lithic::Models::KYCExempt::Workflow::OrSymbol)
-          .returns(Lithic::Models::KYCExempt::Workflow::OrSymbol)
-      end
-      def workflow=(_)
-      end
+      attr_accessor :workflow
 
       # Only applicable for customers using the KYC-Exempt workflow to enroll authorized
       #   users of businesses. Pass the account_token of the enrolled business associated
       #   with the AUTHORIZED_USER in this field.
       sig { returns(T.nilable(String)) }
-      def business_account_token
-      end
+      attr_reader :business_account_token
 
-      sig { params(_: String).returns(String) }
-      def business_account_token=(_)
-      end
+      sig { params(business_account_token: String).void }
+      attr_writer :business_account_token
 
       # A user provided id that can be used to link an account holder with an external
       #   system
       sig { returns(T.nilable(String)) }
-      def external_id
-      end
+      attr_reader :external_id
 
-      sig { params(_: String).returns(String) }
-      def external_id=(_)
-      end
+      sig { params(external_id: String).void }
+      attr_writer :external_id
 
       sig do
         params(

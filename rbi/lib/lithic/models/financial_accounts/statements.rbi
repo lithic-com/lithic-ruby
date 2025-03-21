@@ -5,23 +5,10 @@ module Lithic
     module FinancialAccounts
       class FinancialAccountsStatements < Lithic::BaseModel
         sig { returns(T::Array[Lithic::Models::FinancialAccounts::Statement]) }
-        def data
-        end
-
-        sig do
-          params(_: T::Array[Lithic::Models::FinancialAccounts::Statement])
-            .returns(T::Array[Lithic::Models::FinancialAccounts::Statement])
-        end
-        def data=(_)
-        end
+        attr_accessor :data
 
         sig { returns(T::Boolean) }
-        def has_more
-        end
-
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def has_more=(_)
-        end
+        attr_accessor :has_more
 
         sig do
           params(

@@ -5,12 +5,10 @@ module Lithic
     module AuthRules
       class V2ReportResponse < Lithic::BaseModel
         sig { returns(T.nilable(String)) }
-        def report_token
-        end
+        attr_reader :report_token
 
-        sig { params(_: String).returns(String) }
-        def report_token=(_)
-        end
+        sig { params(report_token: String).void }
+        attr_writer :report_token
 
         sig { params(report_token: String).returns(T.attached_class) }
         def self.new(report_token: nil)
