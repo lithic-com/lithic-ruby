@@ -125,16 +125,16 @@ module Lithic
       sig do
         params(
           token: String,
-          category: Lithic::Models::ExternalPayment::Category::TaggedSymbol,
+          category: Lithic::Models::ExternalPayment::Category::OrSymbol,
           created: Time,
           currency: String,
-          events: T::Array[Lithic::Models::ExternalPayment::Event],
+          events: T::Array[T.any(Lithic::Models::ExternalPayment::Event, Lithic::Util::AnyHash)],
           financial_account_token: String,
-          payment_type: Lithic::Models::ExternalPayment::PaymentType::TaggedSymbol,
+          payment_type: Lithic::Models::ExternalPayment::PaymentType::OrSymbol,
           pending_amount: Integer,
-          result: Lithic::Models::ExternalPayment::Result::TaggedSymbol,
+          result: Lithic::Models::ExternalPayment::Result::OrSymbol,
           settled_amount: Integer,
-          status: Lithic::Models::ExternalPayment::Status::TaggedSymbol,
+          status: Lithic::Models::ExternalPayment::Status::OrSymbol,
           updated: Time,
           user_defined_id: String
         )
@@ -277,11 +277,11 @@ module Lithic
             token: String,
             amount: Integer,
             created: Time,
-            detailed_results: T::Array[Lithic::Models::ExternalPayment::Event::DetailedResult::TaggedSymbol],
+            detailed_results: T::Array[Lithic::Models::ExternalPayment::Event::DetailedResult::OrSymbol],
             effective_date: Date,
             memo: String,
-            result: Lithic::Models::ExternalPayment::Event::Result::TaggedSymbol,
-            type: Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol
+            result: Lithic::Models::ExternalPayment::Event::Result::OrSymbol,
+            type: Lithic::Models::ExternalPayment::Event::Type::OrSymbol
           )
             .returns(T.attached_class)
         end

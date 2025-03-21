@@ -15,7 +15,10 @@ module Lithic
         def data=(_)
         end
 
-        sig { params(data: T::Array[Lithic::Models::Transactions::Events::EnhancedData]).returns(T.attached_class) }
+        sig do
+          params(data: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData, Lithic::Util::AnyHash)])
+            .returns(T.attached_class)
+        end
         def self.new(data:)
         end
 

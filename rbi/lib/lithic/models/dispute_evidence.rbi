@@ -82,7 +82,7 @@ module Lithic
           token: String,
           created: Time,
           dispute_token: String,
-          upload_status: Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol,
+          upload_status: Lithic::Models::DisputeEvidence::UploadStatus::OrSymbol,
           download_url: String,
           filename: String,
           upload_url: String

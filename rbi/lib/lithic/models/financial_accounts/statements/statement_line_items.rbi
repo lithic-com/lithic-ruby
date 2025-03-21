@@ -26,7 +26,7 @@ module Lithic
 
           sig do
             params(
-              data: T::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data],
+              data: T::Array[T.any(Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data, Lithic::Util::AnyHash)],
               has_more: T::Boolean
             )
               .returns(T.attached_class)
@@ -165,11 +165,11 @@ module Lithic
               params(
                 token: String,
                 amount: Integer,
-                category: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol,
+                category: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::OrSymbol,
                 created: Time,
                 currency: String,
                 effective_date: Date,
-                event_type: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol,
+                event_type: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::OrSymbol,
                 financial_account_token: String,
                 financial_transaction_event_token: String,
                 financial_transaction_token: String,

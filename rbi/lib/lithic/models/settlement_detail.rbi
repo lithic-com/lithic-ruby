@@ -219,14 +219,14 @@ module Lithic
           institution: String,
           interchange_fee_extended_precision: Integer,
           interchange_gross_amount: Integer,
-          network: Lithic::Models::SettlementDetail::Network::TaggedSymbol,
+          network: Lithic::Models::SettlementDetail::Network::OrSymbol,
           other_fees_details: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Util::AnyHash),
           other_fees_gross_amount: Integer,
           report_date: String,
           settlement_date: String,
           transaction_token: String,
           transactions_gross_amount: Integer,
-          type: Lithic::Models::SettlementDetail::Type::TaggedSymbol,
+          type: Lithic::Models::SettlementDetail::Type::OrSymbol,
           updated: Time,
           fee_description: String
         )

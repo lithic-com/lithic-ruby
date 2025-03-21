@@ -59,7 +59,7 @@ module Lithic
               token: String,
               common: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Util::AnyHash),
               event_token: String,
-              fleet: T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet],
+              fleet: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet, Lithic::Util::AnyHash)],
               transaction_token: String
             )
               .returns(T.attached_class)
@@ -134,7 +134,7 @@ module Lithic
 
             sig do
               params(
-                line_items: T::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem],
+                line_items: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem, Lithic::Util::AnyHash)],
                 tax: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Util::AnyHash),
                 customer_reference_number: String,
                 merchant_reference_number: String,
@@ -232,8 +232,8 @@ module Lithic
               end
 
               sig do
-                params(_: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol)
-                  .returns(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol)
+                params(_: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::OrSymbol)
+                  .returns(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::OrSymbol)
               end
               def exempt=(_)
               end
@@ -250,7 +250,7 @@ module Lithic
               sig do
                 params(
                   amount: Integer,
-                  exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol,
+                  exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::OrSymbol,
                   merchant_tax_id: String
                 )
                   .returns(T.attached_class)
@@ -360,8 +360,8 @@ module Lithic
             end
 
             sig do
-              params(_: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)
-                .returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)
+              params(_: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol)
+                .returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol)
             end
             def service_type=(_)
             end
@@ -382,7 +382,7 @@ module Lithic
                 fuel: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Util::AnyHash),
                 driver_number: String,
                 odometer: Integer,
-                service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol,
+                service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol,
                 vehicle_number: String
               )
                 .returns(T.attached_class)
@@ -461,8 +461,8 @@ module Lithic
               end
 
               sig do
-                params(_: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
-                  .returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                params(_: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::OrSymbol)
+                  .returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::OrSymbol)
               end
               def type=(_)
               end
@@ -477,8 +477,8 @@ module Lithic
               end
 
               sig do
-                params(_: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol)
-                  .returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol)
+                params(_: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::OrSymbol)
+                  .returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::OrSymbol)
               end
               def unit_of_measure=(_)
               end
@@ -495,8 +495,8 @@ module Lithic
               sig do
                 params(
                   quantity: Float,
-                  type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol,
-                  unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol,
+                  type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::OrSymbol,
+                  unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::OrSymbol,
                   unit_price: Integer
                 )
                   .returns(T.attached_class)

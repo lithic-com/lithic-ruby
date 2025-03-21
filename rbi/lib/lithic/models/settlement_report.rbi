@@ -123,7 +123,7 @@ module Lithic
         params(
           created: Time,
           currency: String,
-          details: T::Array[Lithic::Models::SettlementSummaryDetails],
+          details: T::Array[T.any(Lithic::Models::SettlementSummaryDetails, Lithic::Util::AnyHash)],
           disputes_gross_amount: Integer,
           interchange_gross_amount: Integer,
           is_complete: T::Boolean,

@@ -107,7 +107,7 @@ module Lithic
           created: Time,
           currency: String,
           financial_account_token: String,
-          financial_account_type: Lithic::Models::Balance::FinancialAccountType::TaggedSymbol,
+          financial_account_type: Lithic::Models::Balance::FinancialAccountType::OrSymbol,
           last_transaction_event_token: String,
           last_transaction_token: String,
           pending_amount: Integer,
