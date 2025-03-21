@@ -102,10 +102,8 @@ module Lithic
         STANDARD_WITH_TRACKING =
           T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol]) }
+        def self.values
         end
       end
     end

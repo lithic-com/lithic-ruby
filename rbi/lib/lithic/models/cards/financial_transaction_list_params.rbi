@@ -116,10 +116,8 @@ module Lithic
           TRANSFER =
             T.let(:TRANSFER, Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -135,10 +133,8 @@ module Lithic
           APPROVED = T.let(:APPROVED, Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -158,10 +154,8 @@ module Lithic
           SETTLED = T.let(:SETTLED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
           VOIDED = T.let(:VOIDED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol]) }
+          def self.values
           end
         end
       end

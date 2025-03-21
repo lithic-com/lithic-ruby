@@ -238,13 +238,11 @@ module Lithic
                     Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol])
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol])
+                end
+                def self.values
                 end
               end
             end
@@ -964,13 +962,11 @@ module Lithic
                     Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol])
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol])
+                end
+                def self.values
                 end
               end
 
@@ -1024,15 +1020,13 @@ module Lithic
                     Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -1060,13 +1054,11 @@ module Lithic
                   Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol])
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol])
+              end
+              def self.values
               end
             end
           end

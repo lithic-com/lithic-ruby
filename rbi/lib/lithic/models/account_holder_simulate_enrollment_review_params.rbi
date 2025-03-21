@@ -77,13 +77,11 @@ module Lithic
         REJECTED =
           T.let(:REJECTED, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::TaggedSymbol)
 
-        class << self
-          sig do
-            override
-              .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::TaggedSymbol])
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::TaggedSymbol])
+        end
+        def self.values
         end
       end
 
@@ -181,13 +179,11 @@ module Lithic
             Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
           )
 
-        class << self
-          sig do
-            override
-              .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol])
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol])
+        end
+        def self.values
         end
       end
     end

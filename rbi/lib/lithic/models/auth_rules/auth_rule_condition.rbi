@@ -105,10 +105,8 @@ module Lithic
           IS_LESS_THAN =
             T.let(:IS_LESS_THAN, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -116,14 +114,10 @@ module Lithic
         module Value
           extend Lithic::Union
 
-          Variants = type_template(:out) { {fixed: T.any(String, Integer, T::Array[String])} }
-
           StringArray = T.let(Lithic::ArrayOf[String], Lithic::Converter)
 
-          class << self
-            sig { override.returns([String, Integer, T::Array[String]]) }
-            def variants
-            end
+          sig { override.returns([String, Integer, T::Array[String]]) }
+          def self.variants
           end
         end
       end

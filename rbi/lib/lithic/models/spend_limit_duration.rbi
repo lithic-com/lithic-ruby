@@ -25,10 +25,8 @@ module Lithic
       MONTHLY = T.let(:MONTHLY, Lithic::Models::SpendLimitDuration::TaggedSymbol)
       TRANSACTION = T.let(:TRANSACTION, Lithic::Models::SpendLimitDuration::TaggedSymbol)
 
-      class << self
-        sig { override.returns(T::Array[Lithic::Models::SpendLimitDuration::TaggedSymbol]) }
-        def values
-        end
+      sig { override.returns(T::Array[Lithic::Models::SpendLimitDuration::TaggedSymbol]) }
+      def self.values
       end
     end
   end

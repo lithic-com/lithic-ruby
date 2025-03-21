@@ -111,10 +111,8 @@ module Lithic
         GOOGLE_PAY = T.let(:GOOGLE_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol)
         SAMSUNG_PAY = T.let(:SAMSUNG_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol]) }
+        def self.values
         end
       end
     end

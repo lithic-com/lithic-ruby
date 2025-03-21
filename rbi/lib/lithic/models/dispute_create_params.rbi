@@ -91,10 +91,8 @@ module Lithic
         REFUND_NOT_PROCESSED =
           T.let(:REFUND_NOT_PROCESSED, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol]) }
+        def self.values
         end
       end
     end

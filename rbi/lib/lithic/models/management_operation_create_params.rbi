@@ -116,10 +116,8 @@ module Lithic
         MANAGEMENT_ADJUSTMENT =
           T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -133,10 +131,8 @@ module Lithic
         CREDIT = T.let(:CREDIT, Lithic::Models::ManagementOperationCreateParams::Direction::TaggedSymbol)
         DEBIT = T.let(:DEBIT, Lithic::Models::ManagementOperationCreateParams::Direction::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ManagementOperationCreateParams::Direction::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ManagementOperationCreateParams::Direction::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -185,10 +181,8 @@ module Lithic
             Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

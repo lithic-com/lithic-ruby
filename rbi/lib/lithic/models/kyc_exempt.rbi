@@ -108,10 +108,8 @@ module Lithic
         AUTHORIZED_USER = T.let(:AUTHORIZED_USER, Lithic::Models::KYCExempt::KYCExemptionType::TaggedSymbol)
         PREPAID_CARD_USER = T.let(:PREPAID_CARD_USER, Lithic::Models::KYCExempt::KYCExemptionType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::KYCExempt::KYCExemptionType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::KYCExempt::KYCExemptionType::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -124,10 +122,8 @@ module Lithic
 
         KYC_EXEMPT = T.let(:KYC_EXEMPT, Lithic::Models::KYCExempt::Workflow::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::KYCExempt::Workflow::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::KYCExempt::Workflow::TaggedSymbol]) }
+        def self.values
         end
       end
     end

@@ -198,10 +198,8 @@ module Lithic
         UNKNOWN = T.let(:UNKNOWN, Lithic::Models::SettlementDetail::Network::TaggedSymbol)
         VISA = T.let(:VISA, Lithic::Models::SettlementDetail::Network::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::SettlementDetail::Network::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::SettlementDetail::Network::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -239,10 +237,8 @@ module Lithic
         PREARBITRATION = T.let(:PREARBITRATION, Lithic::Models::SettlementDetail::Type::TaggedSymbol)
         REPRESENTMENT = T.let(:REPRESENTMENT, Lithic::Models::SettlementDetail::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::SettlementDetail::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::SettlementDetail::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

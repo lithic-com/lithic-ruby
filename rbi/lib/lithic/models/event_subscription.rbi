@@ -152,10 +152,8 @@ module Lithic
         TOKENIZATION_UPDATED =
           T.let(:"tokenization.updated", Lithic::Models::EventSubscription::EventType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::EventSubscription::EventType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::EventSubscription::EventType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

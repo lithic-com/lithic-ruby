@@ -72,10 +72,8 @@ module Lithic
         AUTHORIZATION_REVERSAL =
           T.let(:AUTHORIZATION_REVERSAL, Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

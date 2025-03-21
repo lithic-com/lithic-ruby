@@ -157,10 +157,8 @@ module Lithic
         DISPUTE = T.let(:DISPUTE, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
         INTERNAL = T.let(:INTERNAL, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Category::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Category::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -174,10 +172,8 @@ module Lithic
         APPROVED = T.let(:APPROVED, Lithic::Models::BookTransferListParams::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferListParams::Result::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Result::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Result::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -191,10 +187,8 @@ module Lithic
         DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferListParams::Status::TaggedSymbol)
         SETTLED = T.let(:SETTLED, Lithic::Models::BookTransferListParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

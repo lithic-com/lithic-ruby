@@ -123,10 +123,8 @@ module Lithic
           ACTIVE = T.let(:ACTIVE, Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol)
           INACTIVE = T.let(:INACTIVE, Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol]) }
+          def self.values
           end
         end
       end

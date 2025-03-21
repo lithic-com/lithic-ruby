@@ -93,11 +93,9 @@ module Lithic
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
@@ -116,10 +114,8 @@ module Lithic
           variant Lithic::Models::AuthRules::AuthRuleCondition::Value::StringArray
 
           # @!parse
-          #   class << self
-          #     # @return [Array(String, Integer, Array<String>)]
-          #     def variants; end
-          #   end
+          #   # @return [Array(String, Integer, Array<String>)]
+          #   def self.variants; end
         end
       end
     end

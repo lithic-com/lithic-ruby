@@ -239,15 +239,13 @@ module Lithic
               Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
 
@@ -267,13 +265,11 @@ module Lithic
           PAUSED =
             T.let(:PAUSED, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -291,13 +287,11 @@ module Lithic
           SAVINGS =
             T.let(:SAVINGS, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -336,15 +330,13 @@ module Lithic
               Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
 
@@ -383,15 +375,13 @@ module Lithic
               Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
       end

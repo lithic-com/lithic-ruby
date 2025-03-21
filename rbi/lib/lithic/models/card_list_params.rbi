@@ -115,10 +115,8 @@ module Lithic
         PENDING_ACTIVATION = T.let(:PENDING_ACTIVATION, Lithic::Models::CardListParams::State::TaggedSymbol)
         PENDING_FULFILLMENT = T.let(:PENDING_FULFILLMENT, Lithic::Models::CardListParams::State::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::CardListParams::State::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::CardListParams::State::TaggedSymbol]) }
+        def self.values
         end
       end
     end
