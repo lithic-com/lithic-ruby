@@ -17,6 +17,7 @@ module Lithic
             name: T.nilable(String),
             parameters: T.any(
               Lithic::Models::AuthRules::ConditionalBlockParameters,
+              Lithic::Util::AnyHash,
               Lithic::Models::AuthRules::VelocityLimitParams
             ),
             type: Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol,
@@ -184,6 +185,7 @@ module Lithic
             parameters: T.nilable(
               T.any(
                 Lithic::Models::AuthRules::ConditionalBlockParameters,
+                Lithic::Util::AnyHash,
                 Lithic::Models::AuthRules::VelocityLimitParams
               )
             ),

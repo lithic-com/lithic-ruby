@@ -74,7 +74,10 @@ module Lithic
       def required_documents
       end
 
-      sig { params(_: T::Array[Lithic::Models::RequiredDocument]).returns(T::Array[Lithic::Models::RequiredDocument]) }
+      sig do
+        params(_: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)])
+          .returns(T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)])
+      end
       def required_documents=(_)
       end
 
@@ -82,11 +85,11 @@ module Lithic
         params(
           token: String,
           account_token: String,
-          status: Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol,
-          status_reasons: T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol],
+          status: Lithic::Models::AccountHolderCreateResponse::Status::OrSymbol,
+          status_reasons: T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::OrSymbol],
           created: Time,
           external_id: String,
-          required_documents: T::Array[Lithic::Models::RequiredDocument]
+          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)]
         )
           .returns(T.attached_class)
       end

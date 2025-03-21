@@ -37,8 +37,8 @@ module Lithic
       end
 
       sig do
-        params(_: T::Array[Lithic::Models::AccountHolder::BeneficialOwnerEntity])
-          .returns(T::Array[Lithic::Models::AccountHolder::BeneficialOwnerEntity])
+        params(_: T::Array[T.any(Lithic::Models::AccountHolder::BeneficialOwnerEntity, Lithic::Util::AnyHash)])
+          .returns(T::Array[T.any(Lithic::Models::AccountHolder::BeneficialOwnerEntity, Lithic::Util::AnyHash)])
       end
       def beneficial_owner_entities=(_)
       end
@@ -50,8 +50,10 @@ module Lithic
       end
 
       sig do
-        params(_: T::Array[Lithic::Models::AccountHolder::BeneficialOwnerIndividual])
-          .returns(T::Array[Lithic::Models::AccountHolder::BeneficialOwnerIndividual])
+        params(
+          _: T::Array[T.any(Lithic::Models::AccountHolder::BeneficialOwnerIndividual, Lithic::Util::AnyHash)]
+        )
+          .returns(T::Array[T.any(Lithic::Models::AccountHolder::BeneficialOwnerIndividual, Lithic::Util::AnyHash)])
       end
       def beneficial_owner_individuals=(_)
       end
@@ -115,8 +117,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol)
-          .returns(Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol)
+        params(_: Lithic::Models::AccountHolder::ExemptionType::OrSymbol)
+          .returns(Lithic::Models::AccountHolder::ExemptionType::OrSymbol)
       end
       def exemption_type=(_)
       end
@@ -172,7 +174,10 @@ module Lithic
       def required_documents
       end
 
-      sig { params(_: T::Array[Lithic::Models::RequiredDocument]).returns(T::Array[Lithic::Models::RequiredDocument]) }
+      sig do
+        params(_: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)])
+          .returns(T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)])
+      end
       def required_documents=(_)
       end
 
@@ -188,8 +193,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountHolder::Status::TaggedSymbol)
-          .returns(Lithic::Models::AccountHolder::Status::TaggedSymbol)
+        params(_: Lithic::Models::AccountHolder::Status::OrSymbol)
+          .returns(Lithic::Models::AccountHolder::Status::OrSymbol)
       end
       def status=(_)
       end
@@ -201,8 +206,8 @@ module Lithic
       end
 
       sig do
-        params(_: T::Array[Lithic::Models::AccountHolder::StatusReason::TaggedSymbol])
-          .returns(T::Array[Lithic::Models::AccountHolder::StatusReason::TaggedSymbol])
+        params(_: T::Array[Lithic::Models::AccountHolder::StatusReason::OrSymbol])
+          .returns(T::Array[Lithic::Models::AccountHolder::StatusReason::OrSymbol])
       end
       def status_reasons=(_)
       end
@@ -216,8 +221,8 @@ module Lithic
       end
 
       sig do
-        params(_: Lithic::Models::AccountHolder::UserType::TaggedSymbol)
-          .returns(Lithic::Models::AccountHolder::UserType::TaggedSymbol)
+        params(_: Lithic::Models::AccountHolder::UserType::OrSymbol)
+          .returns(Lithic::Models::AccountHolder::UserType::OrSymbol)
       end
       def user_type=(_)
       end
@@ -248,21 +253,21 @@ module Lithic
           token: String,
           created: Time,
           account_token: String,
-          beneficial_owner_entities: T::Array[Lithic::Models::AccountHolder::BeneficialOwnerEntity],
-          beneficial_owner_individuals: T::Array[Lithic::Models::AccountHolder::BeneficialOwnerIndividual],
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolder::BeneficialOwnerEntity, Lithic::Util::AnyHash)],
+          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolder::BeneficialOwnerIndividual, Lithic::Util::AnyHash)],
           business_account_token: String,
           business_entity: T.any(Lithic::Models::AccountHolder::BusinessEntity, Lithic::Util::AnyHash),
           control_person: T.any(Lithic::Models::AccountHolder::ControlPerson, Lithic::Util::AnyHash),
           email: String,
-          exemption_type: Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol,
+          exemption_type: Lithic::Models::AccountHolder::ExemptionType::OrSymbol,
           external_id: String,
           individual: T.any(Lithic::Models::AccountHolder::Individual, Lithic::Util::AnyHash),
           nature_of_business: String,
           phone_number: String,
-          required_documents: T::Array[Lithic::Models::RequiredDocument],
-          status: Lithic::Models::AccountHolder::Status::TaggedSymbol,
-          status_reasons: T::Array[Lithic::Models::AccountHolder::StatusReason::TaggedSymbol],
-          user_type: Lithic::Models::AccountHolder::UserType::TaggedSymbol,
+          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)],
+          status: Lithic::Models::AccountHolder::Status::OrSymbol,
+          status_reasons: T::Array[Lithic::Models::AccountHolder::StatusReason::OrSymbol],
+          user_type: Lithic::Models::AccountHolder::UserType::OrSymbol,
           verification_application: T.any(Lithic::Models::AccountHolder::VerificationApplication, Lithic::Util::AnyHash),
           website_url: String
         )
@@ -980,8 +985,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)
-            .returns(Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)
+          params(_: Lithic::Models::AccountHolder::VerificationApplication::Status::OrSymbol)
+            .returns(Lithic::Models::AccountHolder::VerificationApplication::Status::OrSymbol)
         end
         def status=(_)
         end
@@ -996,8 +1001,8 @@ module Lithic
         end
 
         sig do
-          params(_: T::Array[Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol])
-            .returns(T::Array[Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol])
+          params(_: T::Array[Lithic::Models::AccountHolder::VerificationApplication::StatusReason::OrSymbol])
+            .returns(T::Array[Lithic::Models::AccountHolder::VerificationApplication::StatusReason::OrSymbol])
         end
         def status_reasons=(_)
         end
@@ -1015,8 +1020,8 @@ module Lithic
         sig do
           params(
             created: Time,
-            status: Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol,
-            status_reasons: T::Array[Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol],
+            status: Lithic::Models::AccountHolder::VerificationApplication::Status::OrSymbol,
+            status_reasons: T::Array[Lithic::Models::AccountHolder::VerificationApplication::StatusReason::OrSymbol],
             updated: Time
           )
             .returns(T.attached_class)

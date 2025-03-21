@@ -27,7 +27,7 @@ module Lithic
 
         sig do
           params(
-            data: T::Array[Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data],
+            data: T::Array[T.any(Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data, Lithic::Util::AnyHash)],
             has_more: T::Boolean
           )
             .returns(T.attached_class)

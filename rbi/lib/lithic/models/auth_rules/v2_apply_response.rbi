@@ -119,8 +119,8 @@ module Lithic
             draft_version: T.nilable(T.any(Lithic::Models::AuthRules::V2ApplyResponse::DraftVersion, Lithic::Util::AnyHash)),
             name: T.nilable(String),
             program_level: T::Boolean,
-            state: Lithic::Models::AuthRules::V2ApplyResponse::State::TaggedSymbol,
-            type: Lithic::Models::AuthRules::V2ApplyResponse::Type::TaggedSymbol,
+            state: Lithic::Models::AuthRules::V2ApplyResponse::State::OrSymbol,
+            type: Lithic::Models::AuthRules::V2ApplyResponse::Type::OrSymbol,
             excluded_card_tokens: T::Array[String]
           )
             .returns(T.attached_class)
@@ -203,6 +203,7 @@ module Lithic
             params(
               parameters: T.any(
                 Lithic::Models::AuthRules::ConditionalBlockParameters,
+                Lithic::Util::AnyHash,
                 Lithic::Models::AuthRules::VelocityLimitParams
               ),
               version: Integer
@@ -298,6 +299,7 @@ module Lithic
             params(
               parameters: T.any(
                 Lithic::Models::AuthRules::ConditionalBlockParameters,
+                Lithic::Util::AnyHash,
                 Lithic::Models::AuthRules::VelocityLimitParams
               ),
               version: Integer

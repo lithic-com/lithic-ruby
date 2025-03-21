@@ -134,8 +134,8 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_entities: T::Array[Lithic::Models::KYB::BeneficialOwnerEntity],
-          beneficial_owner_individuals: T::Array[Lithic::Models::KYB::BeneficialOwnerIndividual],
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYB::BeneficialOwnerEntity, Lithic::Util::AnyHash)],
+          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::KYB::BeneficialOwnerIndividual, Lithic::Util::AnyHash)],
           business_entity: T.any(Lithic::Models::KYB::BusinessEntity, Lithic::Util::AnyHash),
           control_person: T.any(Lithic::Models::KYB::ControlPerson, Lithic::Util::AnyHash),
           nature_of_business: String,

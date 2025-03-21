@@ -125,16 +125,16 @@ module Lithic
       sig do
         params(
           token: String,
-          category: Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol,
+          category: Lithic::Models::ManagementOperationTransaction::Category::OrSymbol,
           created: Time,
           currency: String,
-          direction: Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol,
-          events: T::Array[Lithic::Models::ManagementOperationTransaction::Event],
+          direction: Lithic::Models::ManagementOperationTransaction::Direction::OrSymbol,
+          events: T::Array[T.any(Lithic::Models::ManagementOperationTransaction::Event, Lithic::Util::AnyHash)],
           financial_account_token: String,
           pending_amount: Integer,
-          result: Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol,
+          result: Lithic::Models::ManagementOperationTransaction::Result::OrSymbol,
           settled_amount: Integer,
-          status: Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol,
+          status: Lithic::Models::ManagementOperationTransaction::Status::OrSymbol,
           updated: Time,
           user_defined_id: String
         )
@@ -307,11 +307,11 @@ module Lithic
             token: String,
             amount: Integer,
             created: Time,
-            detailed_results: T::Array[Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol],
+            detailed_results: T::Array[Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::OrSymbol],
             effective_date: Date,
             memo: String,
-            result: Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol,
-            type: Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol,
+            result: Lithic::Models::ManagementOperationTransaction::Event::Result::OrSymbol,
+            type: Lithic::Models::ManagementOperationTransaction::Event::Type::OrSymbol,
             subtype: String
           )
             .returns(T.attached_class)

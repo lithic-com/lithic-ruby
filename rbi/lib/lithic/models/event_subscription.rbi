@@ -56,7 +56,7 @@ module Lithic
           description: String,
           disabled: T::Boolean,
           url: String,
-          event_types: T.nilable(T::Array[Lithic::Models::EventSubscription::EventType::TaggedSymbol])
+          event_types: T.nilable(T::Array[Lithic::Models::EventSubscription::EventType::OrSymbol])
         )
           .returns(T.attached_class)
       end

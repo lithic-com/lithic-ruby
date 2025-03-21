@@ -36,7 +36,7 @@ module Lithic
       sig do
         params(
           debugging_request_id: String,
-          result: Lithic::Models::PaymentSimulateActionResponse::Result::TaggedSymbol,
+          result: Lithic::Models::PaymentSimulateActionResponse::Result::OrSymbol,
           transaction_event_token: String
         )
           .returns(T.attached_class)

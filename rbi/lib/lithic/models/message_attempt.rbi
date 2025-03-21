@@ -88,7 +88,7 @@ module Lithic
           event_token: String,
           response: String,
           response_status_code: Integer,
-          status: Lithic::Models::MessageAttempt::Status::TaggedSymbol,
+          status: Lithic::Models::MessageAttempt::Status::OrSymbol,
           url: String
         )
           .returns(T.attached_class)

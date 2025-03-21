@@ -41,7 +41,8 @@ module Lithic
         end
 
         sig do
-          params(_: T::Array[Lithic::Models::KYBBusinessEntity]).returns(T::Array[Lithic::Models::KYBBusinessEntity])
+          params(_: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)])
+            .returns(T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)])
         end
         def beneficial_owner_entities=(_)
         end
@@ -60,10 +61,20 @@ module Lithic
 
         sig do
           params(
-            _: T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual]
+            _: T::Array[
+            T.any(
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual,
+              Lithic::Util::AnyHash
+            )
+            ]
           )
             .returns(
-              T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual]
+              T::Array[
+              T.any(
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual,
+                Lithic::Util::AnyHash
+              )
+              ]
             )
         end
         def beneficial_owner_individuals=(_)
@@ -157,8 +168,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol)
-            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol)
+          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::OrSymbol)
+            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::OrSymbol)
         end
         def exemption_type=(_)
         end
@@ -218,7 +229,10 @@ module Lithic
         def required_documents
         end
 
-        sig { params(_: T::Array[Lithic::Models::RequiredDocument]).returns(T::Array[Lithic::Models::RequiredDocument]) }
+        sig do
+          params(_: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)])
+            .returns(T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)])
+        end
         def required_documents=(_)
         end
 
@@ -233,8 +247,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol)
-            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol)
+          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::OrSymbol)
+            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::OrSymbol)
         end
         def status=(_)
         end
@@ -253,10 +267,10 @@ module Lithic
 
         sig do
           params(
-            _: T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol]
+            _: T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::OrSymbol]
           )
             .returns(
-              T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol]
+              T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::OrSymbol]
             )
         end
         def status_reasons=(_)
@@ -278,8 +292,8 @@ module Lithic
         end
 
         sig do
-          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol)
-            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol)
+          params(_: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::OrSymbol)
+            .returns(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::OrSymbol)
         end
         def user_type=(_)
         end
@@ -323,8 +337,13 @@ module Lithic
           params(
             token: String,
             account_token: String,
-            beneficial_owner_entities: T::Array[Lithic::Models::KYBBusinessEntity],
-            beneficial_owner_individuals: T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual],
+            beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)],
+            beneficial_owner_individuals: T::Array[
+            T.any(
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual,
+              Lithic::Util::AnyHash
+            )
+            ],
             business_account_token: String,
             business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash),
             control_person: T.any(
@@ -333,15 +352,15 @@ module Lithic
             ),
             created: Time,
             email: String,
-            exemption_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol,
+            exemption_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::OrSymbol,
             external_id: String,
             individual: T.any(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual, Lithic::Util::AnyHash),
             nature_of_business: String,
             phone_number: String,
-            required_documents: T::Array[Lithic::Models::RequiredDocument],
-            status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol,
-            status_reasons: T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol],
-            user_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol,
+            required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)],
+            status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::OrSymbol,
+            status_reasons: T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::OrSymbol],
+            user_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::OrSymbol,
             verification_application: T.any(
               Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication,
               Lithic::Util::AnyHash
@@ -1346,9 +1365,9 @@ module Lithic
           sig do
             params(
               created: Time,
-              status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol,
+              status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::OrSymbol,
               status_reasons: T::Array[
-              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::OrSymbol
               ],
               updated: Time
             )

@@ -60,9 +60,9 @@ module Lithic
         params(
           token: String,
           account_holder_token: String,
-          document_type: Lithic::Models::Document::DocumentType::TaggedSymbol,
+          document_type: Lithic::Models::Document::DocumentType::OrSymbol,
           entity_token: String,
-          required_document_uploads: T::Array[Lithic::Models::Document::RequiredDocumentUpload]
+          required_document_uploads: T::Array[T.any(Lithic::Models::Document::RequiredDocumentUpload, Lithic::Util::AnyHash)]
         )
           .returns(T.attached_class)
       end
@@ -228,10 +228,10 @@ module Lithic
             token: String,
             accepted_entity_status_reasons: T::Array[String],
             created: Time,
-            image_type: Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol,
+            image_type: Lithic::Models::Document::RequiredDocumentUpload::ImageType::OrSymbol,
             rejected_entity_status_reasons: T::Array[String],
-            status: Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol,
-            status_reasons: T::Array[Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol],
+            status: Lithic::Models::Document::RequiredDocumentUpload::Status::OrSymbol,
+            status_reasons: T::Array[Lithic::Models::Document::RequiredDocumentUpload::StatusReason::OrSymbol],
             updated: Time,
             upload_url: String
           )

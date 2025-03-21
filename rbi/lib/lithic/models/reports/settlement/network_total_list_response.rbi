@@ -125,7 +125,7 @@ module Lithic
               created: Time,
               currency: String,
               institution_id: String,
-              network: Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Network::TaggedSymbol,
+              network: Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Network::OrSymbol,
               report_date: Date,
               settlement_institution_id: String,
               settlement_service: String,

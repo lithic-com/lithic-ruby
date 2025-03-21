@@ -21,7 +21,7 @@ module Lithic
           verification_method: Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol,
           processor_token: String,
           account_token: String,
-          address: Lithic::Models::ExternalBankAccountAddress,
+          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash),
           company_id: String,
           dob: Date,
           doing_business_as: String,
@@ -90,7 +90,7 @@ module Lithic
       sig do
         params(
           external_bank_account_token: String,
-          address: Lithic::Models::ExternalBankAccountAddress,
+          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash),
           company_id: String,
           dob: Date,
           doing_business_as: String,

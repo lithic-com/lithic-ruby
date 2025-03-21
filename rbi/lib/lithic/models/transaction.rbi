@@ -257,8 +257,8 @@ module Lithic
       end
 
       sig do
-        params(_: T::Array[Lithic::Models::Transaction::Event])
-          .returns(T::Array[Lithic::Models::Transaction::Event])
+        params(_: T::Array[T.any(Lithic::Models::Transaction::Event, Lithic::Util::AnyHash)])
+          .returns(T::Array[T.any(Lithic::Models::Transaction::Event, Lithic::Util::AnyHash)])
       end
       def events=(_)
       end
@@ -281,15 +281,15 @@ module Lithic
           merchant_amount: T.nilable(Integer),
           merchant_authorization_amount: T.nilable(Integer),
           merchant_currency: String,
-          network: T.nilable(Lithic::Models::Transaction::Network::TaggedSymbol),
+          network: T.nilable(Lithic::Models::Transaction::Network::OrSymbol),
           network_risk_score: T.nilable(Integer),
           pos: T.any(Lithic::Models::Transaction::Pos, Lithic::Util::AnyHash),
-          result: Lithic::Models::Transaction::Result::TaggedSymbol,
+          result: Lithic::Models::Transaction::Result::OrSymbol,
           settled_amount: Integer,
-          status: Lithic::Models::Transaction::Status::TaggedSymbol,
+          status: Lithic::Models::Transaction::Status::OrSymbol,
           token_info: T.nilable(T.any(Lithic::Models::Transaction::TokenInfo, Lithic::Util::AnyHash)),
           updated: Time,
-          events: T::Array[Lithic::Models::Transaction::Event]
+          events: T::Array[T.any(Lithic::Models::Transaction::Event, Lithic::Util::AnyHash)]
         )
           .returns(T.attached_class)
       end
@@ -690,13 +690,13 @@ module Lithic
         sig do
           params(
             three_ds_version: T.nilable(String),
-            acquirer_exemption: Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol,
-            authentication_result: Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol,
-            decision_made_by: Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol,
-            liability_shift: Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol,
+            acquirer_exemption: Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::OrSymbol,
+            authentication_result: Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::OrSymbol,
+            decision_made_by: Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::OrSymbol,
+            liability_shift: Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::OrSymbol,
             three_ds_authentication_token: T.nilable(String),
-            verification_attempted: Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol,
-            verification_result: Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
+            verification_attempted: Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::OrSymbol,
+            verification_result: Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::OrSymbol
           )
             .returns(T.attached_class)
         end
@@ -1182,9 +1182,9 @@ module Lithic
 
           sig do
             params(
-              card: Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol,
-              cardholder: Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol,
-              pan: Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol,
+              card: Lithic::Models::Transaction::Pos::EntryMode::Card::OrSymbol,
+              cardholder: Lithic::Models::Transaction::Pos::EntryMode::Cardholder::OrSymbol,
+              pan: Lithic::Models::Transaction::Pos::EntryMode::Pan::OrSymbol,
               pin_entered: T::Boolean
             )
               .returns(T.attached_class)
@@ -1371,10 +1371,10 @@ module Lithic
               attended: T::Boolean,
               card_retention_capable: T::Boolean,
               on_premise: T::Boolean,
-              operator: Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol,
+              operator: Lithic::Models::Transaction::Pos::Terminal::Operator::OrSymbol,
               partial_approval_capable: T::Boolean,
-              pin_capability: Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol,
-              type: Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol
+              pin_capability: Lithic::Models::Transaction::Pos::Terminal::PinCapability::OrSymbol,
+              type: Lithic::Models::Transaction::Pos::Terminal::Type::OrSymbol
             )
               .returns(T.attached_class)
           end
@@ -1570,8 +1570,7 @@ module Lithic
         end
 
         sig do
-          params(wallet_type: Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
-            .returns(T.attached_class)
+          params(wallet_type: Lithic::Models::Transaction::TokenInfo::WalletType::OrSymbol).returns(T.attached_class)
         end
         def self.new(wallet_type:)
         end
@@ -1728,12 +1727,12 @@ module Lithic
             amount: Integer,
             amounts: T.any(Lithic::Models::Transaction::Event::Amounts, Lithic::Util::AnyHash),
             created: Time,
-            detailed_results: T::Array[Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol],
-            effective_polarity: Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol,
+            detailed_results: T::Array[Lithic::Models::Transaction::Event::DetailedResult::OrSymbol],
+            effective_polarity: Lithic::Models::Transaction::Event::EffectivePolarity::OrSymbol,
             network_info: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo, Lithic::Util::AnyHash)),
-            result: Lithic::Models::Transaction::Event::Result::TaggedSymbol,
-            rule_results: T::Array[Lithic::Models::Transaction::Event::RuleResult],
-            type: Lithic::Models::Transaction::Event::Type::TaggedSymbol
+            result: Lithic::Models::Transaction::Event::Result::OrSymbol,
+            rule_results: T::Array[T.any(Lithic::Models::Transaction::Event::RuleResult, Lithic::Util::AnyHash)],
+            type: Lithic::Models::Transaction::Event::Type::OrSymbol
           )
             .returns(T.attached_class)
         end
@@ -2437,7 +2436,7 @@ module Lithic
               auth_rule_token: T.nilable(String),
               explanation: T.nilable(String),
               name: T.nilable(String),
-              result: Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol
+              result: Lithic::Models::Transaction::Event::RuleResult::Result::OrSymbol
             )
               .returns(T.attached_class)
           end
