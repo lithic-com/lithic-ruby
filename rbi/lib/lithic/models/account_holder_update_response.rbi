@@ -5,16 +5,6 @@ module Lithic
     module AccountHolderUpdateResponse
       extend Lithic::Union
 
-      Variants =
-        type_template(:out) do
-          {
-            fixed: T.any(
-              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse,
-              Lithic::Models::AccountHolderUpdateResponse::PatchResponse
-            )
-          }
-        end
-
       class KYBKYCPatchResponse < Lithic::BaseModel
         # Globally unique identifier for the account holder.
         sig { returns(T.nilable(String)) }
@@ -708,15 +698,13 @@ module Lithic
               Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
 
@@ -903,13 +891,11 @@ module Lithic
           REJECTED =
             T.let(:REJECTED, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -1048,15 +1034,13 @@ module Lithic
               Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
 
@@ -1083,15 +1067,13 @@ module Lithic
               Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
 
@@ -1196,17 +1178,15 @@ module Lithic
                 Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
-                    ]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[
+                  Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
+                  ]
+                )
+            end
+            def self.values
             end
           end
 
@@ -1347,17 +1327,15 @@ module Lithic
                 Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
-                    ]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[
+                  Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+                  ]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -1532,15 +1510,13 @@ module Lithic
         end
       end
 
-      class << self
-        sig do
-          override
-            .returns(
-              [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse, Lithic::Models::AccountHolderUpdateResponse::PatchResponse]
-            )
-        end
-        def variants
-        end
+      sig do
+        override
+          .returns(
+            [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse, Lithic::Models::AccountHolderUpdateResponse::PatchResponse]
+          )
+      end
+      def self.variants
       end
     end
   end

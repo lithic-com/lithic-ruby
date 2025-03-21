@@ -99,10 +99,8 @@ module Lithic
         REJECTED = T.let(:REJECTED, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
         UPLOADED = T.let(:UPLOADED, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol]) }
+        def self.values
         end
       end
     end

@@ -185,10 +185,8 @@ module Lithic
             Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol
           )
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

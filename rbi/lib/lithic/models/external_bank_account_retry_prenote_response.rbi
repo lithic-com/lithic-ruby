@@ -227,10 +227,8 @@ module Lithic
         CLOSED = T.let(:CLOSED, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol)
         PAUSED = T.let(:PAUSED, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -246,10 +244,8 @@ module Lithic
         CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol)
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -277,15 +273,13 @@ module Lithic
             Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol
           )
 
-        class << self
-          sig do
-            override
-              .returns(
-                T::Array[Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol]
-              )
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(
+              T::Array[Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol]
+            )
+        end
+        def self.values
         end
       end
     end

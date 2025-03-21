@@ -102,15 +102,13 @@ module Lithic
             Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::TaggedSymbol
           )
 
-        class << self
-          sig do
-            override
-              .returns(
-                T::Array[Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::TaggedSymbol]
-              )
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(
+              T::Array[Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::TaggedSymbol]
+            )
+        end
+        def self.values
         end
       end
 
@@ -185,15 +183,13 @@ module Lithic
             Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::TaggedSymbol
           )
 
-        class << self
-          sig do
-            override
-              .returns(
-                T::Array[Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::TaggedSymbol]
-              )
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(
+              T::Array[Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::TaggedSymbol]
+            )
+        end
+        def self.values
         end
       end
     end

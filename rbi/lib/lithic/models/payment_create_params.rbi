@@ -110,10 +110,8 @@ module Lithic
         ACH_NEXT_DAY = T.let(:ACH_NEXT_DAY, Lithic::Models::PaymentCreateParams::Method::TaggedSymbol)
         ACH_SAME_DAY = T.let(:ACH_SAME_DAY, Lithic::Models::PaymentCreateParams::Method::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::PaymentCreateParams::Method::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::PaymentCreateParams::Method::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -144,10 +142,8 @@ module Lithic
           PPD = T.let(:PPD, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol)
           WEB = T.let(:WEB, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -161,10 +157,8 @@ module Lithic
         COLLECTION = T.let(:COLLECTION, Lithic::Models::PaymentCreateParams::Type::TaggedSymbol)
         PAYMENT = T.let(:PAYMENT, Lithic::Models::PaymentCreateParams::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::PaymentCreateParams::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::PaymentCreateParams::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

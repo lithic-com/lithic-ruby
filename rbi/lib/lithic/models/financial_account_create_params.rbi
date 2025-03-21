@@ -69,10 +69,8 @@ module Lithic
 
         OPERATING = T.let(:OPERATING, Lithic::Models::FinancialAccountCreateParams::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::FinancialAccountCreateParams::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::FinancialAccountCreateParams::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

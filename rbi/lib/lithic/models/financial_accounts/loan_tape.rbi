@@ -321,13 +321,11 @@ module Lithic
             PENALTY =
               T.let(:PENALTY, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -728,15 +726,13 @@ module Lithic
                 Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
 

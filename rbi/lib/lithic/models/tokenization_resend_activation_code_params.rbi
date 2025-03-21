@@ -64,15 +64,13 @@ module Lithic
             Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::TaggedSymbol
           )
 
-        class << self
-          sig do
-            override
-              .returns(
-                T::Array[Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::TaggedSymbol]
-              )
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(
+              T::Array[Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::TaggedSymbol]
+            )
+        end
+        def self.values
         end
       end
     end

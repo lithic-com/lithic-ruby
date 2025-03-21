@@ -210,15 +210,13 @@ module Lithic
                   Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -556,15 +554,13 @@ module Lithic
                   Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol]
+                  )
+              end
+              def self.values
               end
             end
           end

@@ -118,10 +118,8 @@ module Lithic
         REPRESENTMENT = T.let(:REPRESENTMENT, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
         SUBMITTED = T.let(:SUBMITTED, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::DisputeListParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::DisputeListParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

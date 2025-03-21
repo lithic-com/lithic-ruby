@@ -574,10 +574,8 @@ module Lithic
         AUTHORIZED_USER = T.let(:AUTHORIZED_USER, Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol)
         PREPAID_CARD_USER = T.let(:PREPAID_CARD_USER, Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -667,10 +665,8 @@ module Lithic
         PENDING_RESUBMIT = T.let(:PENDING_RESUBMIT, Lithic::Models::AccountHolder::Status::TaggedSymbol)
         REJECTED = T.let(:REJECTED, Lithic::Models::AccountHolder::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::AccountHolder::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::AccountHolder::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -703,10 +699,8 @@ module Lithic
         WATCHLIST_ALERT_FAILURE =
           T.let(:WATCHLIST_ALERT_FAILURE, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::AccountHolder::StatusReason::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::AccountHolder::StatusReason::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -723,10 +717,8 @@ module Lithic
         BUSINESS = T.let(:BUSINESS, Lithic::Models::AccountHolder::UserType::TaggedSymbol)
         INDIVIDUAL = T.let(:INDIVIDUAL, Lithic::Models::AccountHolder::UserType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::AccountHolder::UserType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::AccountHolder::UserType::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -821,10 +813,8 @@ module Lithic
             T.let(:PENDING_RESUBMIT, Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)
           REJECTED = T.let(:REJECTED, Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -892,13 +882,11 @@ module Lithic
               Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end

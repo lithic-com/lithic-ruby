@@ -136,10 +136,8 @@ module Lithic
 
         OK = T.let(:OK, Lithic::Models::CardUpdateParams::PinStatus::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::CardUpdateParams::PinStatus::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::CardUpdateParams::PinStatus::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -161,10 +159,8 @@ module Lithic
         OPEN = T.let(:OPEN, Lithic::Models::CardUpdateParams::State::TaggedSymbol)
         PAUSED = T.let(:PAUSED, Lithic::Models::CardUpdateParams::State::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::CardUpdateParams::State::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::CardUpdateParams::State::TaggedSymbol]) }
+        def self.values
         end
       end
     end

@@ -51,10 +51,8 @@ module Lithic
         SUSPENDED = T.let(:SUSPENDED, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol)
         PENDING = T.let(:PENDING, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -85,13 +83,11 @@ module Lithic
             Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol
           )
 
-        class << self
-          sig do
-            override
-              .returns(T::Array[Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol])
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(T::Array[Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol])
+        end
+        def self.values
         end
       end
     end

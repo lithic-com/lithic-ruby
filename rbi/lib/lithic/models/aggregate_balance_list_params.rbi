@@ -52,10 +52,8 @@ module Lithic
           T.let(:OPERATING, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol)
         RESERVE = T.let(:RESERVE, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

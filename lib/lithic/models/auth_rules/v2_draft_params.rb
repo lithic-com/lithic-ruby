@@ -31,10 +31,8 @@ module Lithic
           variant -> { Lithic::Models::AuthRules::VelocityLimitParams }
 
           # @!parse
-          #   class << self
-          #     # @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams)]
-          #     def variants; end
-          #   end
+          #   # @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams)]
+          #   def self.variants; end
         end
       end
     end

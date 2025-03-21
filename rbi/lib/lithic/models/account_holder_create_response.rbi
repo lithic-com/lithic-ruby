@@ -99,10 +99,8 @@ module Lithic
           T.let(:PENDING_RESUBMIT, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
         REJECTED = T.let(:REJECTED, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -211,10 +209,8 @@ module Lithic
             Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol
           )
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol]) }
+        def self.values
         end
       end
     end

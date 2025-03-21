@@ -512,13 +512,11 @@ module Lithic
               Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -543,15 +541,13 @@ module Lithic
           SUCCESS =
             T.let(:SUCCESS, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
 
@@ -581,13 +577,11 @@ module Lithic
           UNKNOWN =
             T.let(:UNKNOWN, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -628,13 +622,11 @@ module Lithic
               Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -653,15 +645,13 @@ module Lithic
           OTHER =
             T.let(:OTHER, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
 
@@ -694,13 +684,11 @@ module Lithic
           SUCCESS =
             T.let(:SUCCESS, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end
@@ -785,10 +773,8 @@ module Lithic
         UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Network::TaggedSymbol)
         VISA = T.let(:VISA, Lithic::Models::Transaction::Network::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Transaction::Network::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Transaction::Network::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -883,10 +869,8 @@ module Lithic
             PRESENT = T.let(:PRESENT, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
             UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol]) }
+            def self.values
             end
           end
 
@@ -913,10 +897,8 @@ module Lithic
               T.let(:TELEPHONE_ORDER, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
             UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol]) }
+            def self.values
             end
           end
 
@@ -945,10 +927,8 @@ module Lithic
             UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
             UNSPECIFIED = T.let(:UNSPECIFIED, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -1040,10 +1020,8 @@ module Lithic
             CARD_ACCEPTOR = T.let(:CARD_ACCEPTOR, Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
             UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol]) }
+            def self.values
             end
           end
 
@@ -1063,10 +1041,8 @@ module Lithic
             UNSPECIFIED =
               T.let(:UNSPECIFIED, Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol]) }
+            def self.values
             end
           end
 
@@ -1103,10 +1079,8 @@ module Lithic
             VOICE = T.let(:VOICE, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
             UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -1146,10 +1120,8 @@ module Lithic
         USER_TRANSACTION_LIMIT =
           T.let(:USER_TRANSACTION_LIMIT, Lithic::Models::Transaction::Result::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Transaction::Result::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Transaction::Result::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -1166,10 +1138,8 @@ module Lithic
         SETTLED = T.let(:SETTLED, Lithic::Models::Transaction::Status::TaggedSymbol)
         VOIDED = T.let(:VOIDED, Lithic::Models::Transaction::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Transaction::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Transaction::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -1209,10 +1179,8 @@ module Lithic
           OTHER = T.let(:OTHER, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
           SAMSUNG_PAY = T.let(:SAMSUNG_PAY, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -1572,10 +1540,8 @@ module Lithic
           VEHICLE_NUMBER_INVALID =
             T.let(:VEHICLE_NUMBER_INVALID, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -1590,10 +1556,8 @@ module Lithic
           CREDIT = T.let(:CREDIT, Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol)
           DEBIT = T.let(:DEBIT, Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -1836,10 +1800,8 @@ module Lithic
           USER_TRANSACTION_LIMIT =
             T.let(:USER_TRANSACTION_LIMIT, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Transaction::Event::Result::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Transaction::Event::Result::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -2023,10 +1985,8 @@ module Lithic
             VEHICLE_NUMBER_INVALID =
               T.let(:VEHICLE_NUMBER_INVALID, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -2060,10 +2020,8 @@ module Lithic
           RETURN = T.let(:RETURN, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
           RETURN_REVERSAL = T.let(:RETURN_REVERSAL, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::Transaction::Event::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::Transaction::Event::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end

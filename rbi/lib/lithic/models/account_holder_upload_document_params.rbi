@@ -106,10 +106,8 @@ module Lithic
         FINCEN_BOI_REPORT =
           T.let(:FINCEN_BOI_REPORT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol]) }
+        def self.values
         end
       end
     end
