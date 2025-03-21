@@ -23,27 +23,17 @@ module Lithic
       #   - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
       #     use VIRTUAL instead.
       sig { returns(Lithic::Models::CardCreateParams::Type::OrSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Lithic::Models::CardCreateParams::Type::OrSymbol)
-          .returns(Lithic::Models::CardCreateParams::Type::OrSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Globally unique identifier for the account that the card will be associated
       #   with. Required for programs enrolling users using the
       #   [/account_holders endpoint](https://docs.lithic.com/docs/account-holders-kyc).
       #   See [Managing Your Program](doc:managing-your-program) for more information.
       sig { returns(T.nilable(String)) }
-      def account_token
-      end
+      attr_reader :account_token
 
-      sig { params(_: String).returns(String) }
-      def account_token=(_)
-      end
+      sig { params(account_token: String).void }
+      attr_writer :account_token
 
       # For card programs with more than one BIN range. This must be configured with
       #   Lithic before use. Identifies the card program/BIN range under which to create
@@ -52,86 +42,67 @@ module Lithic
       #   00000000-0000-0000-2000-000000000000 to test creating cards on specific card
       #   programs.
       sig { returns(T.nilable(String)) }
-      def card_program_token
-      end
+      attr_reader :card_program_token
 
-      sig { params(_: String).returns(String) }
-      def card_program_token=(_)
-      end
+      sig { params(card_program_token: String).void }
+      attr_writer :card_program_token
 
       sig { returns(T.nilable(Lithic::Models::Carrier)) }
-      def carrier
-      end
+      attr_reader :carrier
 
-      sig do
-        params(_: T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash))
-      end
-      def carrier=(_)
-      end
+      sig { params(carrier: T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash)).void }
+      attr_writer :carrier
 
       # Specifies the digital card art to be displayed in the user’s digital wallet
       #   after tokenization. This artwork must be approved by Mastercard and configured
       #   by Lithic to use. See
       #   [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
       sig { returns(T.nilable(String)) }
-      def digital_card_art_token
-      end
+      attr_reader :digital_card_art_token
 
-      sig { params(_: String).returns(String) }
-      def digital_card_art_token=(_)
-      end
+      sig { params(digital_card_art_token: String).void }
+      attr_writer :digital_card_art_token
 
       # Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` is provided,
       #   an expiration date will be generated.
       sig { returns(T.nilable(String)) }
-      def exp_month
-      end
+      attr_reader :exp_month
 
-      sig { params(_: String).returns(String) }
-      def exp_month=(_)
-      end
+      sig { params(exp_month: String).void }
+      attr_writer :exp_month
 
       # Four digit (yyyy) expiry year. If neither `exp_month` nor `exp_year` is
       #   provided, an expiration date will be generated.
       sig { returns(T.nilable(String)) }
-      def exp_year
-      end
+      attr_reader :exp_year
 
-      sig { params(_: String).returns(String) }
-      def exp_year=(_)
-      end
+      sig { params(exp_year: String).void }
+      attr_writer :exp_year
 
       # Friendly name to identify the card.
       sig { returns(T.nilable(String)) }
-      def memo
-      end
+      attr_reader :memo
 
-      sig { params(_: String).returns(String) }
-      def memo=(_)
-      end
+      sig { params(memo: String).void }
+      attr_writer :memo
 
       # Encrypted PIN block (in base64). Applies to cards of type `PHYSICAL` and
       #   `VIRTUAL`. See
       #   [Encrypted PIN Block](https://docs.lithic.com/docs/cards#encrypted-pin-block).
       sig { returns(T.nilable(String)) }
-      def pin
-      end
+      attr_reader :pin
 
-      sig { params(_: String).returns(String) }
-      def pin=(_)
-      end
+      sig { params(pin: String).void }
+      attr_writer :pin
 
       # Only applicable to cards of type `PHYSICAL`. This must be configured with Lithic
       #   before use. Specifies the configuration (i.e., physical card art) that the card
       #   should be manufactured with.
       sig { returns(T.nilable(String)) }
-      def product_id
-      end
+      attr_reader :product_id
 
-      sig { params(_: String).returns(String) }
-      def product_id=(_)
-      end
+      sig { params(product_id: String).void }
+      attr_writer :product_id
 
       # Restricted field limited to select use cases. Lithic will reach out directly if
       #   this field should be used. Globally unique identifier for the replacement card's
@@ -139,34 +110,25 @@ module Lithic
       #   If `replacement_for` is specified and this field is omitted, the replacement
       #   card's account will be inferred from the card being replaced.
       sig { returns(T.nilable(String)) }
-      def replacement_account_token
-      end
+      attr_reader :replacement_account_token
 
-      sig { params(_: String).returns(String) }
-      def replacement_account_token=(_)
-      end
+      sig { params(replacement_account_token: String).void }
+      attr_writer :replacement_account_token
 
       # Globally unique identifier for the card that this card will replace. If the card
       #   type is `PHYSICAL` it will be replaced by a `PHYSICAL` card. If the card type is
       #   `VIRTUAL` it will be replaced by a `VIRTUAL` card.
       sig { returns(T.nilable(String)) }
-      def replacement_for
-      end
+      attr_reader :replacement_for
 
-      sig { params(_: String).returns(String) }
-      def replacement_for=(_)
-      end
+      sig { params(replacement_for: String).void }
+      attr_writer :replacement_for
 
       sig { returns(T.nilable(Lithic::Models::ShippingAddress)) }
-      def shipping_address
-      end
+      attr_reader :shipping_address
 
-      sig do
-        params(_: T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash))
-      end
-      def shipping_address=(_)
-      end
+      sig { params(shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash)).void }
+      attr_writer :shipping_address
 
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
       #   options besides `STANDARD` require additional permissions.
@@ -181,15 +143,10 @@ module Lithic
       #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #     tracking
       sig { returns(T.nilable(Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol)) }
-      def shipping_method
-      end
+      attr_reader :shipping_method
 
-      sig do
-        params(_: Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol)
-          .returns(Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol)
-      end
-      def shipping_method=(_)
-      end
+      sig { params(shipping_method: Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol).void }
+      attr_writer :shipping_method
 
       # Amount (in cents) to limit approved authorizations (e.g. 100000 would be a
       #   $1,000 limit). Transaction requests above the spend limit will be declined. Note
@@ -197,12 +154,10 @@ module Lithic
       #   reset or remove a prior limit. Only a limit of 1 or above will result in
       #   declined transactions due to checks against the card limit.
       sig { returns(T.nilable(Integer)) }
-      def spend_limit
-      end
+      attr_reader :spend_limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def spend_limit=(_)
-      end
+      sig { params(spend_limit: Integer).void }
+      attr_writer :spend_limit
 
       # Spend limit duration values:
       #
@@ -217,15 +172,10 @@ module Lithic
       #   - `TRANSACTION` - Card will authorize multiple transactions if each individual
       #     transaction is under the spend limit.
       sig { returns(T.nilable(Lithic::Models::SpendLimitDuration::OrSymbol)) }
-      def spend_limit_duration
-      end
+      attr_reader :spend_limit_duration
 
-      sig do
-        params(_: Lithic::Models::SpendLimitDuration::OrSymbol)
-          .returns(Lithic::Models::SpendLimitDuration::OrSymbol)
-      end
-      def spend_limit_duration=(_)
-      end
+      sig { params(spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol).void }
+      attr_writer :spend_limit_duration
 
       # Card state values:
       #
@@ -234,15 +184,10 @@ module Lithic
       #   - `PAUSED` - Card will decline authorizations, but can be resumed at a later
       #     time.
       sig { returns(T.nilable(Lithic::Models::CardCreateParams::State::OrSymbol)) }
-      def state
-      end
+      attr_reader :state
 
-      sig do
-        params(_: Lithic::Models::CardCreateParams::State::OrSymbol)
-          .returns(Lithic::Models::CardCreateParams::State::OrSymbol)
-      end
-      def state=(_)
-      end
+      sig { params(state: Lithic::Models::CardCreateParams::State::OrSymbol).void }
+      attr_writer :state
 
       sig do
         params(

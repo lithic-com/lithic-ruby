@@ -8,33 +8,24 @@ module Lithic
 
       # List financial accounts for a given account_token or business_account_token
       sig { returns(T.nilable(String)) }
-      def account_token
-      end
+      attr_reader :account_token
 
-      sig { params(_: String).returns(String) }
-      def account_token=(_)
-      end
+      sig { params(account_token: String).void }
+      attr_writer :account_token
 
       # List financial accounts for a given business_account_token
       sig { returns(T.nilable(String)) }
-      def business_account_token
-      end
+      attr_reader :business_account_token
 
-      sig { params(_: String).returns(String) }
-      def business_account_token=(_)
-      end
+      sig { params(business_account_token: String).void }
+      attr_writer :business_account_token
 
       # List financial accounts of a given type
       sig { returns(T.nilable(Lithic::Models::FinancialAccountListParams::Type::OrSymbol)) }
-      def type
-      end
+      attr_reader :type
 
-      sig do
-        params(_: Lithic::Models::FinancialAccountListParams::Type::OrSymbol)
-          .returns(Lithic::Models::FinancialAccountListParams::Type::OrSymbol)
-      end
-      def type=(_)
-      end
+      sig { params(type: Lithic::Models::FinancialAccountListParams::Type::OrSymbol).void }
+      attr_writer :type
 
       sig do
         params(

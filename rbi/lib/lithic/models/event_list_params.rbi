@@ -9,72 +9,55 @@ module Lithic
       # Date string in RFC 3339 format. Only entries created after the specified time
       #   will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
-      def begin_
-      end
+      attr_reader :begin_
 
-      sig { params(_: Time).returns(Time) }
-      def begin_=(_)
-      end
+      sig { params(begin_: Time).void }
+      attr_writer :begin_
 
       # Date string in RFC 3339 format. Only entries created before the specified time
       #   will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
-      def end_
-      end
+      attr_reader :end_
 
-      sig { params(_: Time).returns(Time) }
-      def end_=(_)
-      end
+      sig { params(end_: Time).void }
+      attr_writer :end_
 
       # A cursor representing an item's token before which a page of results should end.
       #   Used to retrieve the previous page of results before this item.
       sig { returns(T.nilable(String)) }
-      def ending_before
-      end
+      attr_reader :ending_before
 
-      sig { params(_: String).returns(String) }
-      def ending_before=(_)
-      end
+      sig { params(ending_before: String).void }
+      attr_writer :ending_before
 
       # Event types to filter events by.
       sig { returns(T.nilable(T::Array[Lithic::Models::EventListParams::EventType::OrSymbol])) }
-      def event_types
-      end
+      attr_reader :event_types
 
-      sig do
-        params(_: T::Array[Lithic::Models::EventListParams::EventType::OrSymbol])
-          .returns(T::Array[Lithic::Models::EventListParams::EventType::OrSymbol])
-      end
-      def event_types=(_)
-      end
+      sig { params(event_types: T::Array[Lithic::Models::EventListParams::EventType::OrSymbol]).void }
+      attr_writer :event_types
 
       # Page size (for pagination).
       sig { returns(T.nilable(Integer)) }
-      def page_size
-      end
+      attr_reader :page_size
 
-      sig { params(_: Integer).returns(Integer) }
-      def page_size=(_)
-      end
+      sig { params(page_size: Integer).void }
+      attr_writer :page_size
 
       # A cursor representing an item's token after which a page of results should
       #   begin. Used to retrieve the next page of results after this item.
       sig { returns(T.nilable(String)) }
-      def starting_after
-      end
+      attr_reader :starting_after
 
-      sig { params(_: String).returns(String) }
-      def starting_after=(_)
-      end
+      sig { params(starting_after: String).void }
+      attr_writer :starting_after
 
       # Whether to include the event payload content in the response.
       sig { returns(T.nilable(T::Boolean)) }
-      def with_content
-      end
+      attr_reader :with_content
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def with_content=(_)
-      end
+      sig { params(with_content: T::Boolean).void }
+      attr_writer :with_content
 
       sig do
         params(

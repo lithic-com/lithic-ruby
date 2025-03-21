@@ -5,8 +5,7 @@ module Lithic
     class FinancialAccounts
       class Statements
         sig { returns(Lithic::Resources::FinancialAccounts::Statements::LineItems) }
-        def line_items
-        end
+        attr_reader :line_items
 
         # Get a specific statement for a given financial account.
         sig do

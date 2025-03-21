@@ -10,78 +10,58 @@ module Lithic
         # Date string in RFC 3339 format. Only entries created after the specified time
         #   will be included. UTC time zone.
         sig { returns(T.nilable(Time)) }
-        def begin_
-        end
+        attr_reader :begin_
 
-        sig { params(_: Time).returns(Time) }
-        def begin_=(_)
-        end
+        sig { params(begin_: Time).void }
+        attr_writer :begin_
 
         # Financial Transaction category to be returned.
         sig { returns(T.nilable(Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::OrSymbol)) }
-        def category
-        end
+        attr_reader :category
 
         sig do
-          params(_: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::OrSymbol)
-            .returns(Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::OrSymbol)
+          params(category: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::OrSymbol)
+            .void
         end
-        def category=(_)
-        end
+        attr_writer :category
 
         # Date string in RFC 3339 format. Only entries created before the specified time
         #   will be included. UTC time zone.
         sig { returns(T.nilable(Time)) }
-        def end_
-        end
+        attr_reader :end_
 
-        sig { params(_: Time).returns(Time) }
-        def end_=(_)
-        end
+        sig { params(end_: Time).void }
+        attr_writer :end_
 
         # A cursor representing an item's token before which a page of results should end.
         #   Used to retrieve the previous page of results before this item.
         sig { returns(T.nilable(String)) }
-        def ending_before
-        end
+        attr_reader :ending_before
 
-        sig { params(_: String).returns(String) }
-        def ending_before=(_)
-        end
+        sig { params(ending_before: String).void }
+        attr_writer :ending_before
 
         # Financial Transaction result to be returned.
         sig { returns(T.nilable(Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::OrSymbol)) }
-        def result
-        end
+        attr_reader :result
 
-        sig do
-          params(_: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::OrSymbol)
-            .returns(Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::OrSymbol)
-        end
-        def result=(_)
-        end
+        sig { params(result: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::OrSymbol).void }
+        attr_writer :result
 
         # A cursor representing an item's token after which a page of results should
         #   begin. Used to retrieve the next page of results after this item.
         sig { returns(T.nilable(String)) }
-        def starting_after
-        end
+        attr_reader :starting_after
 
-        sig { params(_: String).returns(String) }
-        def starting_after=(_)
-        end
+        sig { params(starting_after: String).void }
+        attr_writer :starting_after
 
         # Financial Transaction status to be returned.
         sig { returns(T.nilable(Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::OrSymbol)) }
-        def status
-        end
+        attr_reader :status
 
-        sig do
-          params(_: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::OrSymbol)
-            .returns(Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::OrSymbol)
-        end
-        def status=(_)
-        end
+        sig { params(status: Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::OrSymbol).void }
+        attr_writer :status
 
         sig do
           params(

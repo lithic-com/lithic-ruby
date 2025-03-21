@@ -9,21 +9,14 @@ module Lithic
 
         # Account tokens to which the Auth Rule applies.
         sig { returns(T.nilable(T::Array[String])) }
-        def account_tokens
-        end
+        attr_reader :account_tokens
 
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def account_tokens=(_)
-        end
+        sig { params(account_tokens: T::Array[String]).void }
+        attr_writer :account_tokens
 
         # Auth Rule Name
         sig { returns(T.nilable(String)) }
-        def name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def name=(_)
-        end
+        attr_accessor :name
 
         # The desired state of the Auth Rule.
         #
@@ -31,42 +24,31 @@ module Lithic
         #   this time. If you need to (re-)activate an Auth Rule the /promote endpoint
         #   should be used to promote a draft to the currently active version.
         sig { returns(T.nilable(Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol)) }
-        def state
-        end
+        attr_reader :state
 
-        sig do
-          params(_: Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol)
-            .returns(Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol)
-        end
-        def state=(_)
-        end
+        sig { params(state: Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol).void }
+        attr_writer :state
 
         # Card tokens to which the Auth Rule applies.
         sig { returns(T.nilable(T::Array[String])) }
-        def card_tokens
-        end
+        attr_reader :card_tokens
 
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def card_tokens=(_)
-        end
+        sig { params(card_tokens: T::Array[String]).void }
+        attr_writer :card_tokens
 
         # Card tokens to which the Auth Rule does not apply.
         sig { returns(T.nilable(T::Array[String])) }
-        def excluded_card_tokens
-        end
+        attr_reader :excluded_card_tokens
 
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def excluded_card_tokens=(_)
-        end
+        sig { params(excluded_card_tokens: T::Array[String]).void }
+        attr_writer :excluded_card_tokens
 
         # Whether the Auth Rule applies to all authorizations on the card program.
         sig { returns(T.nilable(T::Boolean)) }
-        def program_level
-        end
+        attr_reader :program_level
 
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def program_level=(_)
-        end
+        sig { params(program_level: T::Boolean).void }
+        attr_writer :program_level
 
         sig do
           params(

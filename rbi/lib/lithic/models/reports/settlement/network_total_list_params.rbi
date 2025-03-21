@@ -11,109 +11,84 @@ module Lithic
           # Datetime in RFC 3339 format. Only entries created after the specified time will
           #   be included. UTC time zone.
           sig { returns(T.nilable(Time)) }
-          def begin_
-          end
+          attr_reader :begin_
 
-          sig { params(_: Time).returns(Time) }
-          def begin_=(_)
-          end
+          sig { params(begin_: Time).void }
+          attr_writer :begin_
 
           # Datetime in RFC 3339 format. Only entries created before the specified time will
           #   be included. UTC time zone.
           sig { returns(T.nilable(Time)) }
-          def end_
-          end
+          attr_reader :end_
 
-          sig { params(_: Time).returns(Time) }
-          def end_=(_)
-          end
+          sig { params(end_: Time).void }
+          attr_writer :end_
 
           # A cursor representing an item's token before which a page of results should end.
           #   Used to retrieve the previous page of results before this item.
           sig { returns(T.nilable(String)) }
-          def ending_before
-          end
+          attr_reader :ending_before
 
-          sig { params(_: String).returns(String) }
-          def ending_before=(_)
-          end
+          sig { params(ending_before: String).void }
+          attr_writer :ending_before
 
           # Institution ID to filter on.
           sig { returns(T.nilable(String)) }
-          def institution_id
-          end
+          attr_reader :institution_id
 
-          sig { params(_: String).returns(String) }
-          def institution_id=(_)
-          end
+          sig { params(institution_id: String).void }
+          attr_writer :institution_id
 
           # Network to filter on.
           sig { returns(T.nilable(Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)) }
-          def network
-          end
+          attr_reader :network
 
-          sig do
-            params(_: Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)
-              .returns(Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)
-          end
-          def network=(_)
-          end
+          sig { params(network: Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol).void }
+          attr_writer :network
 
           # Number of records per page.
           sig { returns(T.nilable(Integer)) }
-          def page_size
-          end
+          attr_reader :page_size
 
-          sig { params(_: Integer).returns(Integer) }
-          def page_size=(_)
-          end
+          sig { params(page_size: Integer).void }
+          attr_writer :page_size
 
           # Singular report date to filter on (YYYY-MM-DD). Cannot be populated in
           #   conjunction with report_date_begin or report_date_end.
           sig { returns(T.nilable(Date)) }
-          def report_date
-          end
+          attr_reader :report_date
 
-          sig { params(_: Date).returns(Date) }
-          def report_date=(_)
-          end
+          sig { params(report_date: Date).void }
+          attr_writer :report_date
 
           # Earliest report date to filter on, inclusive (YYYY-MM-DD).
           sig { returns(T.nilable(Date)) }
-          def report_date_begin
-          end
+          attr_reader :report_date_begin
 
-          sig { params(_: Date).returns(Date) }
-          def report_date_begin=(_)
-          end
+          sig { params(report_date_begin: Date).void }
+          attr_writer :report_date_begin
 
           # Latest report date to filter on, inclusive (YYYY-MM-DD).
           sig { returns(T.nilable(Date)) }
-          def report_date_end
-          end
+          attr_reader :report_date_end
 
-          sig { params(_: Date).returns(Date) }
-          def report_date_end=(_)
-          end
+          sig { params(report_date_end: Date).void }
+          attr_writer :report_date_end
 
           # Settlement institution ID to filter on.
           sig { returns(T.nilable(String)) }
-          def settlement_institution_id
-          end
+          attr_reader :settlement_institution_id
 
-          sig { params(_: String).returns(String) }
-          def settlement_institution_id=(_)
-          end
+          sig { params(settlement_institution_id: String).void }
+          attr_writer :settlement_institution_id
 
           # A cursor representing an item's token after which a page of results should
           #   begin. Used to retrieve the next page of results after this item.
           sig { returns(T.nilable(String)) }
-          def starting_after
-          end
+          attr_reader :starting_after
 
-          sig { params(_: String).returns(String) }
-          def starting_after=(_)
-          end
+          sig { params(starting_after: String).void }
+          attr_writer :starting_after
 
           sig do
             params(

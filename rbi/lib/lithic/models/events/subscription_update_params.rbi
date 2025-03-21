@@ -9,43 +9,29 @@ module Lithic
 
         # URL to which event webhooks will be sent. URL must be a valid HTTPS address.
         sig { returns(String) }
-        def url
-        end
-
-        sig { params(_: String).returns(String) }
-        def url=(_)
-        end
+        attr_accessor :url
 
         # Event subscription description.
         sig { returns(T.nilable(String)) }
-        def description
-        end
+        attr_reader :description
 
-        sig { params(_: String).returns(String) }
-        def description=(_)
-        end
+        sig { params(description: String).void }
+        attr_writer :description
 
         # Whether the event subscription is active (false) or inactive (true).
         sig { returns(T.nilable(T::Boolean)) }
-        def disabled
-        end
+        attr_reader :disabled
 
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def disabled=(_)
-        end
+        sig { params(disabled: T::Boolean).void }
+        attr_writer :disabled
 
         # Indicates types of events that will be sent to this subscription. If left blank,
         #   all types will be sent.
         sig { returns(T.nilable(T::Array[Lithic::Models::Events::SubscriptionUpdateParams::EventType::OrSymbol])) }
-        def event_types
-        end
+        attr_reader :event_types
 
-        sig do
-          params(_: T::Array[Lithic::Models::Events::SubscriptionUpdateParams::EventType::OrSymbol])
-            .returns(T::Array[Lithic::Models::Events::SubscriptionUpdateParams::EventType::OrSymbol])
-        end
-        def event_types=(_)
-        end
+        sig { params(event_types: T::Array[Lithic::Models::Events::SubscriptionUpdateParams::EventType::OrSymbol]).void }
+        attr_writer :event_types
 
         sig do
           params(

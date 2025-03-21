@@ -8,15 +8,13 @@ module Lithic
 
       # Get the aggregate balance for a given Financial Account type.
       sig { returns(T.nilable(Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)) }
-      def financial_account_type
-      end
+      attr_reader :financial_account_type
 
       sig do
-        params(_: Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)
-          .returns(Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)
+        params(financial_account_type: Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)
+          .void
       end
-      def financial_account_type=(_)
-      end
+      attr_writer :financial_account_type
 
       sig do
         params(

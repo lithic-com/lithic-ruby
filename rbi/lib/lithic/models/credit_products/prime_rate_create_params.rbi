@@ -9,21 +9,11 @@ module Lithic
 
         # Date the rate goes into effect
         sig { returns(Date) }
-        def effective_date
-        end
-
-        sig { params(_: Date).returns(Date) }
-        def effective_date=(_)
-        end
+        attr_accessor :effective_date
 
         # The rate in decimal format
         sig { returns(String) }
-        def rate
-        end
-
-        sig { params(_: String).returns(String) }
-        def rate=(_)
-        end
+        attr_accessor :rate
 
         sig do
           params(

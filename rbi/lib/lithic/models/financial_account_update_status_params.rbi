@@ -8,27 +8,11 @@ module Lithic
 
       # Status of the financial account
       sig { returns(Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol)
-          .returns(Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # Reason for the financial account status change
       sig { returns(T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol)) }
-      def status_change_reason
-      end
-
-      sig do
-        params(_: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol))
-          .returns(T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol))
-      end
-      def status_change_reason=(_)
-      end
+      attr_accessor :status_change_reason
 
       sig do
         params(

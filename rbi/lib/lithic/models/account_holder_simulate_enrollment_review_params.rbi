@@ -8,24 +8,17 @@ module Lithic
 
       # The account holder which to perform the simulation upon.
       sig { returns(T.nilable(String)) }
-      def account_holder_token
-      end
+      attr_reader :account_holder_token
 
-      sig { params(_: String).returns(String) }
-      def account_holder_token=(_)
-      end
+      sig { params(account_holder_token: String).void }
+      attr_writer :account_holder_token
 
       # An account holder's status for use within the simulation.
       sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::OrSymbol)) }
-      def status
-      end
+      attr_reader :status
 
-      sig do
-        params(_: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::OrSymbol)
-          .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::OrSymbol)
-      end
-      def status=(_)
-      end
+      sig { params(status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::OrSymbol).void }
+      attr_writer :status
 
       # Status reason that will be associated with the simulated account holder status.
       #   Only required for a `REJECTED` status.
@@ -34,15 +27,15 @@ module Lithic
           T.nilable(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol])
         )
       end
-      def status_reasons
-      end
+      attr_reader :status_reasons
 
       sig do
-        params(_: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol])
-          .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol])
+        params(
+          status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol]
+        )
+          .void
       end
-      def status_reasons=(_)
-      end
+      attr_writer :status_reasons
 
       sig do
         params(

@@ -8,12 +8,10 @@ module Lithic
 
       # Filename of the evidence.
       sig { returns(T.nilable(String)) }
-      def filename
-      end
+      attr_reader :filename
 
-      sig { params(_: String).returns(String) }
-      def filename=(_)
-      end
+      sig { params(filename: String).void }
+      attr_writer :filename
 
       sig do
         params(filename: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))

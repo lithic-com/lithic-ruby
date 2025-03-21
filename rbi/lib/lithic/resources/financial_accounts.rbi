@@ -4,24 +4,19 @@ module Lithic
   module Resources
     class FinancialAccounts
       sig { returns(Lithic::Resources::FinancialAccounts::Balances) }
-      def balances
-      end
+      attr_reader :balances
 
       sig { returns(Lithic::Resources::FinancialAccounts::FinancialTransactions) }
-      def financial_transactions
-      end
+      attr_reader :financial_transactions
 
       sig { returns(Lithic::Resources::FinancialAccounts::CreditConfiguration) }
-      def credit_configuration
-      end
+      attr_reader :credit_configuration
 
       sig { returns(Lithic::Resources::FinancialAccounts::Statements) }
-      def statements
-      end
+      attr_reader :statements
 
       sig { returns(Lithic::Resources::FinancialAccounts::LoanTapes) }
-      def loan_tapes
-      end
+      attr_reader :loan_tapes
 
       # Create a new financial account
       sig do

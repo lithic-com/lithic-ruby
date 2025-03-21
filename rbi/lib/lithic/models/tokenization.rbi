@@ -5,136 +5,65 @@ module Lithic
     class Tokenization < Lithic::BaseModel
       # Globally unique identifier for a Tokenization
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # The account token associated with the card being tokenized.
       sig { returns(String) }
-      def account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_token=(_)
-      end
+      attr_accessor :account_token
 
       # The card token associated with the card being tokenized.
       sig { returns(String) }
-      def card_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def card_token=(_)
-      end
+      attr_accessor :card_token
 
       # Date and time when the tokenization first occurred. UTC time zone.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The dynamic pan assigned to the token by the network.
       sig { returns(T.nilable(String)) }
-      def dpan
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def dpan=(_)
-      end
+      attr_accessor :dpan
 
       # The status of the tokenization request
       sig { returns(Lithic::Models::Tokenization::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Lithic::Models::Tokenization::Status::TaggedSymbol)
-          .returns(Lithic::Models::Tokenization::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # The entity that requested the tokenization. Represents a Digital Wallet or
       #   merchant.
       sig { returns(Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol) }
-      def token_requestor_name
-      end
-
-      sig do
-        params(_: Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol)
-          .returns(Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol)
-      end
-      def token_requestor_name=(_)
-      end
+      attr_accessor :token_requestor_name
 
       # The network's unique reference for the tokenization.
       sig { returns(String) }
-      def token_unique_reference
-      end
-
-      sig { params(_: String).returns(String) }
-      def token_unique_reference=(_)
-      end
+      attr_accessor :token_unique_reference
 
       # The channel through which the tokenization was made.
       sig { returns(Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol) }
-      def tokenization_channel
-      end
-
-      sig do
-        params(_: Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol)
-          .returns(Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol)
-      end
-      def tokenization_channel=(_)
-      end
+      attr_accessor :tokenization_channel
 
       # Latest date and time when the tokenization was updated. UTC time zone.
       sig { returns(Time) }
-      def updated_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def updated_at=(_)
-      end
+      attr_accessor :updated_at
 
       # Specifies the digital card art displayed in the user’s digital wallet after
       #   tokenization. This will be null if the tokenization was created without an
       #   associated digital card art. See
       #   [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
       sig { returns(T.nilable(String)) }
-      def digital_card_art_token
-      end
+      attr_reader :digital_card_art_token
 
-      sig { params(_: String).returns(String) }
-      def digital_card_art_token=(_)
-      end
+      sig { params(digital_card_art_token: String).void }
+      attr_writer :digital_card_art_token
 
       # A list of events related to the tokenization.
       sig { returns(T.nilable(T::Array[Lithic::Models::Tokenization::Event])) }
-      def events
-      end
+      attr_reader :events
 
-      sig do
-        params(_: T::Array[T.any(Lithic::Models::Tokenization::Event, Lithic::Util::AnyHash)])
-          .returns(T::Array[T.any(Lithic::Models::Tokenization::Event, Lithic::Util::AnyHash)])
-      end
-      def events=(_)
-      end
+      sig { params(events: T::Array[T.any(Lithic::Models::Tokenization::Event, Lithic::Util::AnyHash)]).void }
+      attr_writer :events
 
       # The network's unique reference for the card that is tokenized.
       sig { returns(T.nilable(String)) }
-      def payment_account_reference_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def payment_account_reference_id=(_)
-      end
+      attr_accessor :payment_account_reference_id
 
       sig do
         params(
@@ -264,45 +193,31 @@ module Lithic
       class Event < Lithic::BaseModel
         # Globally unique identifier for a Tokenization Event
         sig { returns(T.nilable(String)) }
-        def token
-        end
+        attr_reader :token
 
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        sig { params(token: String).void }
+        attr_writer :token
 
         # Date and time when the tokenization event first occurred. UTC time zone.
         sig { returns(T.nilable(Time)) }
-        def created_at
-        end
+        attr_reader :created_at
 
-        sig { params(_: Time).returns(Time) }
-        def created_at=(_)
-        end
+        sig { params(created_at: Time).void }
+        attr_writer :created_at
 
         # Enum representing the result of the tokenization event
         sig { returns(T.nilable(Lithic::Models::Tokenization::Event::Result::TaggedSymbol)) }
-        def result
-        end
+        attr_reader :result
 
-        sig do
-          params(_: Lithic::Models::Tokenization::Event::Result::OrSymbol)
-            .returns(Lithic::Models::Tokenization::Event::Result::OrSymbol)
-        end
-        def result=(_)
-        end
+        sig { params(result: Lithic::Models::Tokenization::Event::Result::OrSymbol).void }
+        attr_writer :result
 
         # Enum representing the type of tokenization event that occurred
         sig { returns(T.nilable(Lithic::Models::Tokenization::Event::Type::TaggedSymbol)) }
-        def type
-        end
+        attr_reader :type
 
-        sig do
-          params(_: Lithic::Models::Tokenization::Event::Type::OrSymbol)
-            .returns(Lithic::Models::Tokenization::Event::Type::OrSymbol)
-        end
-        def type=(_)
-        end
+        sig { params(type: Lithic::Models::Tokenization::Event::Type::OrSymbol).void }
+        attr_writer :type
 
         sig do
           params(

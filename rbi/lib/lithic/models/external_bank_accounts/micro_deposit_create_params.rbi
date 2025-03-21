@@ -8,12 +8,7 @@ module Lithic
         include Lithic::RequestParameters
 
         sig { returns(T::Array[Integer]) }
-        def micro_deposits
-        end
-
-        sig { params(_: T::Array[Integer]).returns(T::Array[Integer]) }
-        def micro_deposits=(_)
-        end
+        attr_accessor :micro_deposits
 
         sig do
           params(

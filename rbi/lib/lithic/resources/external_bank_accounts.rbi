@@ -4,8 +4,7 @@ module Lithic
   module Resources
     class ExternalBankAccounts
       sig { returns(Lithic::Resources::ExternalBankAccounts::MicroDeposits) }
-      def micro_deposits
-      end
+      attr_reader :micro_deposits
 
       # Creates an external bank account within a program or Lithic account.
       sig do

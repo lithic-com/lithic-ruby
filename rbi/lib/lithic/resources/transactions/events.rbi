@@ -5,8 +5,7 @@ module Lithic
     class Transactions
       class Events
         sig { returns(Lithic::Resources::Transactions::Events::EnhancedCommercialData) }
-        def enhanced_commercial_data
-        end
+        attr_reader :enhanced_commercial_data
 
         sig { params(client: Lithic::Client).returns(T.attached_class) }
         def self.new(client:)

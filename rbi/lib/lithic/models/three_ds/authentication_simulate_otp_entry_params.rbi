@@ -10,21 +10,11 @@ module Lithic
         # A unique token returned as part of a /v1/three_ds_authentication/simulate call
         #   that resulted in PENDING_CHALLENGE authentication result.
         sig { returns(String) }
-        def token
-        end
-
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        attr_accessor :token
 
         # The OTP entered by the cardholder
         sig { returns(String) }
-        def otp
-        end
-
-        sig { params(_: String).returns(String) }
-        def otp=(_)
-        end
+        attr_accessor :otp
 
         sig do
           params(

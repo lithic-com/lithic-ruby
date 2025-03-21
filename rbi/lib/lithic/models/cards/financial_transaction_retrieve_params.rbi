@@ -8,12 +8,7 @@ module Lithic
         include Lithic::RequestParameters
 
         sig { returns(String) }
-        def card_token
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_token=(_)
-        end
+        attr_accessor :card_token
 
         sig do
           params(card_token: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))

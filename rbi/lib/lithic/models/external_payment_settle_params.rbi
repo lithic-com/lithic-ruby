@@ -7,31 +7,19 @@ module Lithic
       include Lithic::RequestParameters
 
       sig { returns(Date) }
-      def effective_date
-      end
-
-      sig { params(_: Date).returns(Date) }
-      def effective_date=(_)
-      end
+      attr_accessor :effective_date
 
       sig { returns(T.nilable(String)) }
-      def memo
-      end
+      attr_reader :memo
 
-      sig { params(_: String).returns(String) }
-      def memo=(_)
-      end
+      sig { params(memo: String).void }
+      attr_writer :memo
 
       sig { returns(T.nilable(Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol)) }
-      def progress_to
-      end
+      attr_reader :progress_to
 
-      sig do
-        params(_: Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol)
-          .returns(Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol)
-      end
-      def progress_to=(_)
-      end
+      sig { params(progress_to: Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol).void }
+      attr_writer :progress_to
 
       sig do
         params(

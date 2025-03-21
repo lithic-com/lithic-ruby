@@ -10,50 +10,31 @@ module Lithic
       #   the simulated transaction. For example, entering 100 in this field will appear
       #   as a -100 amount in the transaction.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # Merchant descriptor.
       sig { returns(String) }
-      def descriptor
-      end
-
-      sig { params(_: String).returns(String) }
-      def descriptor=(_)
-      end
+      attr_accessor :descriptor
 
       # Sixteen digit card number.
       sig { returns(String) }
-      def pan
-      end
-
-      sig { params(_: String).returns(String) }
-      def pan=(_)
-      end
+      attr_accessor :pan
 
       # Merchant category code for the transaction to be simulated. A four-digit number
       #   listed in ISO 18245. Supported merchant category codes can be found
       #   [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
       sig { returns(T.nilable(String)) }
-      def mcc
-      end
+      attr_reader :mcc
 
-      sig { params(_: String).returns(String) }
-      def mcc=(_)
-      end
+      sig { params(mcc: String).void }
+      attr_writer :mcc
 
       # Unique identifier to identify the payment card acceptor.
       sig { returns(T.nilable(String)) }
-      def merchant_acceptor_id
-      end
+      attr_reader :merchant_acceptor_id
 
-      sig { params(_: String).returns(String) }
-      def merchant_acceptor_id=(_)
-      end
+      sig { params(merchant_acceptor_id: String).void }
+      attr_writer :merchant_acceptor_id
 
       sig do
         params(
