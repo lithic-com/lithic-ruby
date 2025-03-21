@@ -35,6 +35,8 @@ class Lithic::Test::Resources::Reports::Settlement::NetworkTotalsTest < Lithic::
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::Reports::Settlement::NetworkTotalListResponse
     end

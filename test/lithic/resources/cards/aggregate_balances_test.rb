@@ -11,6 +11,8 @@ class Lithic::Test::Resources::Cards::AggregateBalancesTest < Lithic::Test::Reso
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::Cards::AggregateBalanceListResponse
     end

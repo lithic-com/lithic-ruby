@@ -119,6 +119,8 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::Card
     end

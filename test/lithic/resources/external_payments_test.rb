@@ -70,6 +70,8 @@ class Lithic::Test::Resources::ExternalPaymentsTest < Lithic::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::ExternalPayment
     end

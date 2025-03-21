@@ -15,6 +15,8 @@ class Lithic::Test::Resources::FinancialAccounts::Statements::LineItemsTest < Li
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data
     end

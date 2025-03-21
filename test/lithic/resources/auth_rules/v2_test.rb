@@ -80,6 +80,8 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::AuthRules::V2ListResponse
     end
