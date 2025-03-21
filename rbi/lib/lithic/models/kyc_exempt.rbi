@@ -99,7 +99,7 @@ module Lithic
 
       sig do
         params(
-          address: Lithic::Models::Address,
+          address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
           email: String,
           first_name: String,
           kyc_exemption_type: Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol,

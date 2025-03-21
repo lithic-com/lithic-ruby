@@ -31,7 +31,7 @@ module Lithic
           params(
             balance_date: Time,
             last_transaction_event_token: String,
-            request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -31,7 +31,7 @@ module Lithic
           website_url: String,
           kyc_passed_timestamp: String,
           business_account_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::AccountHolderCreateResponse)
       end
@@ -117,7 +117,7 @@ module Lithic
       sig do
         params(
           account_holder_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::AccountHolder)
       end
@@ -155,7 +155,7 @@ module Lithic
           last_name: String,
           legal_business_name: String,
           phone_number: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(
             T.any(
@@ -244,7 +244,7 @@ module Lithic
           limit: Integer,
           phone_number: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::SinglePage[Lithic::Models::AccountHolder])
       end
@@ -301,7 +301,7 @@ module Lithic
       sig do
         params(
           account_holder_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::AccountHolderListDocumentsResponse)
       end
@@ -330,7 +330,7 @@ module Lithic
         params(
           document_token: String,
           account_holder_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::Document)
       end
@@ -350,7 +350,7 @@ module Lithic
           status: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol,
           accepted_entity_status_reasons: T::Array[String],
           status_reason: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::Document)
       end
@@ -375,7 +375,7 @@ module Lithic
           account_holder_token: String,
           status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::OrSymbol,
           status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol],
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse)
       end
@@ -414,7 +414,7 @@ module Lithic
           account_holder_token: String,
           document_type: Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
           entity_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::Document)
       end

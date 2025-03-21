@@ -85,7 +85,7 @@ module Lithic
           starting_after: String,
           status: Lithic::Models::DisputeListParams::Status::OrSymbol,
           transaction_tokens: T::Array[String],
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -326,20 +326,26 @@ module Lithic
             beneficial_owner_entities: T::Array[Lithic::Models::KYBBusinessEntity],
             beneficial_owner_individuals: T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual],
             business_account_token: String,
-            business_entity: Lithic::Models::KYBBusinessEntity,
-            control_person: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
+            business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash),
+            control_person: T.any(
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
+              Lithic::Util::AnyHash
+            ),
             created: Time,
             email: String,
             exemption_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol,
             external_id: String,
-            individual: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual,
+            individual: T.any(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual, Lithic::Util::AnyHash),
             nature_of_business: String,
             phone_number: String,
             required_documents: T::Array[Lithic::Models::RequiredDocument],
             status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol,
             status_reasons: T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol],
             user_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol,
-            verification_application: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication,
+            verification_application: T.any(
+              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication,
+              Lithic::Util::AnyHash
+            ),
             website_url: String
           )
             .returns(T.attached_class)
@@ -476,7 +482,10 @@ module Lithic
 
           sig do
             params(
-              address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address,
+              address: T.any(
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address,
+                Lithic::Util::AnyHash
+              ),
               dob: String,
               email: String,
               first_name: String,
@@ -684,7 +693,10 @@ module Lithic
           #   be a beneficial owner listed above.
           sig do
             params(
-              address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address,
+              address: T.any(
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address,
+                Lithic::Util::AnyHash
+              ),
               dob: String,
               email: String,
               first_name: String,
@@ -917,7 +929,10 @@ module Lithic
           #   for which the account is being opened and KYC is being run.
           sig do
             params(
-              address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address,
+              address: T.any(
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address,
+                Lithic::Util::AnyHash
+              ),
               dob: String,
               email: String,
               first_name: String,
@@ -1646,7 +1661,7 @@ module Lithic
         sig do
           params(
             token: String,
-            address: Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address,
+            address: T.any(Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address, Lithic::Util::AnyHash),
             business_account_token: String,
             email: String,
             first_name: String,

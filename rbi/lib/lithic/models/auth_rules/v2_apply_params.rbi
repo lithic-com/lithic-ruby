@@ -49,7 +49,7 @@ module Lithic
             card_tokens: T::Array[String],
             program_level: T::Boolean,
             excluded_card_tokens: T::Array[String],
-            request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

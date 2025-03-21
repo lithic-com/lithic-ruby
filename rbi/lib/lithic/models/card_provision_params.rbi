@@ -82,7 +82,7 @@ module Lithic
           digital_wallet: Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol,
           nonce: String,
           nonce_signature: String,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

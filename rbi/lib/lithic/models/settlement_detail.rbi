@@ -220,7 +220,7 @@ module Lithic
           interchange_fee_extended_precision: Integer,
           interchange_gross_amount: Integer,
           network: Lithic::Models::SettlementDetail::Network::TaggedSymbol,
-          other_fees_details: Lithic::Models::SettlementDetail::OtherFeesDetails,
+          other_fees_details: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Util::AnyHash),
           other_fees_gross_amount: Integer,
           report_date: String,
           settlement_date: String,

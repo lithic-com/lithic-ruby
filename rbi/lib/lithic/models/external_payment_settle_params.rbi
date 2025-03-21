@@ -38,7 +38,7 @@ module Lithic
           effective_date: Date,
           memo: String,
           progress_to: Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

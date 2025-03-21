@@ -49,7 +49,7 @@ module Lithic
           account_holder_token: String,
           status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::OrSymbol,
           status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol],
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

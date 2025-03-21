@@ -237,26 +237,26 @@ module Lithic
         sig do
           params(
             token: String,
-            account_standing: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding,
+            account_standing: T.any(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding, Lithic::Util::AnyHash),
             available_credit: Integer,
-            balances: Lithic::Models::FinancialAccounts::LoanTape::Balances,
+            balances: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances, Lithic::Util::AnyHash),
             created: Time,
             credit_limit: Integer,
             credit_product_token: String,
             date: Date,
-            day_totals: Lithic::Models::FinancialAccounts::LoanTape::DayTotals,
+            day_totals: T.any(Lithic::Models::FinancialAccounts::LoanTape::DayTotals, Lithic::Util::AnyHash),
             ending_balance: Integer,
             excess_credits: Integer,
             financial_account_token: String,
-            interest_details: T.nilable(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails),
-            minimum_payment_balance: Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance,
-            payment_allocation: Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation,
-            period_totals: Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals,
-            previous_statement_balance: Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance,
+            interest_details: T.nilable(T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails, Lithic::Util::AnyHash)),
+            minimum_payment_balance: T.any(Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance, Lithic::Util::AnyHash),
+            payment_allocation: T.any(Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation, Lithic::Util::AnyHash),
+            period_totals: T.any(Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals, Lithic::Util::AnyHash),
+            previous_statement_balance: T.any(Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance, Lithic::Util::AnyHash),
             starting_balance: Integer,
             updated: Time,
             version: Integer,
-            ytd_totals: Lithic::Models::FinancialAccounts::LoanTape::YtdTotals,
+            ytd_totals: T.any(Lithic::Models::FinancialAccounts::LoanTape::YtdTotals, Lithic::Util::AnyHash),
             tier: String
           )
             .returns(T.attached_class)
@@ -513,10 +513,10 @@ module Lithic
 
           sig do
             params(
-              due: Lithic::Models::FinancialAccounts::LoanTape::Balances::Due,
-              next_statement_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue,
-              past_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue,
-              past_statements_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue
+              due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::Due, Lithic::Util::AnyHash),
+              next_statement_due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue, Lithic::Util::AnyHash),
+              past_due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue, Lithic::Util::AnyHash),
+              past_statements_due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue, Lithic::Util::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -883,10 +883,16 @@ module Lithic
           sig do
             params(
               actual_interest_charged: T.nilable(Integer),
-              daily_balance_amounts: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
-              effective_apr: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr,
+              daily_balance_amounts: T.any(
+                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
+                Lithic::Util::AnyHash
+              ),
+              effective_apr: T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr, Lithic::Util::AnyHash),
               interest_calculation_method: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol,
-              interest_for_period: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
+              interest_for_period: T.any(
+                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
+                Lithic::Util::AnyHash
+              ),
               prime_rate: T.nilable(String),
               minimum_interest_charged: T.nilable(Integer)
             )

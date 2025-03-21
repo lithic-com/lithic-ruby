@@ -192,14 +192,14 @@ module Lithic
           verification_method: Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol,
           processor_token: String,
           account_token: String,
-          address: Lithic::Models::ExternalBankAccountAddress,
+          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash),
           company_id: String,
           dob: Date,
           doing_business_as: String,
           name: String,
           user_defined_id: String,
           verification_enforcement: T::Boolean,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

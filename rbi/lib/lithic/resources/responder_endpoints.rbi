@@ -8,7 +8,7 @@ module Lithic
         params(
           type: Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol,
           url: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::ResponderEndpointCreateResponse)
       end
@@ -25,7 +25,7 @@ module Lithic
       sig do
         params(
           type: Lithic::Models::ResponderEndpointDeleteParams::Type::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .void
       end
@@ -40,7 +40,7 @@ module Lithic
       sig do
         params(
           type: Lithic::Models::ResponderEndpointCheckStatusParams::Type::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::ResponderEndpointStatus)
       end

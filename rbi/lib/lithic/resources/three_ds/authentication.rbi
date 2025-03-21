@@ -8,7 +8,7 @@ module Lithic
         sig do
           params(
             three_ds_authentication_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse)
         end
@@ -29,7 +29,7 @@ module Lithic
             pan: String,
             transaction: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction,
             card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::Models::ThreeDS::AuthenticationSimulateResponse)
         end
@@ -53,7 +53,7 @@ module Lithic
           params(
             token: String,
             otp: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .void
         end

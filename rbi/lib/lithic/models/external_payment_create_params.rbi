@@ -98,7 +98,7 @@ module Lithic
           memo: String,
           progress_to: Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol,
           user_defined_id: String,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

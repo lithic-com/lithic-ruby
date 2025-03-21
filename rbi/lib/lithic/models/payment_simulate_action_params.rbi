@@ -44,7 +44,7 @@ module Lithic
           event_type: Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol,
           decline_reason: Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol,
           return_reason_code: String,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

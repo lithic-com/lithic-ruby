@@ -61,7 +61,7 @@ module Lithic
           transaction_token: String,
           customer_filed_date: Time,
           customer_note: String,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

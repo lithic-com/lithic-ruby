@@ -55,11 +55,11 @@ module Lithic
 
         sig do
           params(
-            merchant: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant,
+            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Util::AnyHash),
             pan: String,
-            transaction: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction,
+            transaction: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Util::AnyHash),
             card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
-            request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
