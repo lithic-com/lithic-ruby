@@ -8,21 +8,11 @@ module Lithic
 
       # A base64 encoded JSON string of an EmbedRequest to specify which card to load.
       sig { returns(String) }
-      def embed_request
-      end
-
-      sig { params(_: String).returns(String) }
-      def embed_request=(_)
-      end
+      attr_accessor :embed_request
 
       # SHA256 HMAC of the embed_request JSON string with base64 digest.
       sig { returns(String) }
-      def hmac
-      end
-
-      sig { params(_: String).returns(String) }
-      def hmac=(_)
-      end
+      attr_accessor :hmac
 
       sig do
         params(

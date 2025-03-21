@@ -18,29 +18,7 @@ module Lithic
             )
           )
         end
-        def parameters
-        end
-
-        sig do
-          params(
-            _: T.nilable(
-              T.any(
-                Lithic::Models::AuthRules::ConditionalBlockParameters,
-                Lithic::Models::AuthRules::VelocityLimitParams
-              )
-            )
-          )
-            .returns(
-              T.nilable(
-                T.any(
-                  Lithic::Models::AuthRules::ConditionalBlockParameters,
-                  Lithic::Models::AuthRules::VelocityLimitParams
-                )
-              )
-            )
-        end
-        def parameters=(_)
-        end
+        attr_accessor :parameters
 
         sig do
           params(

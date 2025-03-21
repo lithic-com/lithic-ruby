@@ -11,45 +11,34 @@ module Lithic
       #   by Lithic to use. See
       #   [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
       sig { returns(T.nilable(String)) }
-      def digital_card_art_token
-      end
+      attr_reader :digital_card_art_token
 
-      sig { params(_: String).returns(String) }
-      def digital_card_art_token=(_)
-      end
+      sig { params(digital_card_art_token: String).void }
+      attr_writer :digital_card_art_token
 
       # Friendly name to identify the card.
       sig { returns(T.nilable(String)) }
-      def memo
-      end
+      attr_reader :memo
 
-      sig { params(_: String).returns(String) }
-      def memo=(_)
-      end
+      sig { params(memo: String).void }
+      attr_writer :memo
 
       # Encrypted PIN block (in base64). Only applies to cards of type `PHYSICAL` and
       #   `VIRTUAL`. Changing PIN also resets PIN status to `OK`. See
       #   [Encrypted PIN Block](https://docs.lithic.com/docs/cards#encrypted-pin-block).
       sig { returns(T.nilable(String)) }
-      def pin
-      end
+      attr_reader :pin
 
-      sig { params(_: String).returns(String) }
-      def pin=(_)
-      end
+      sig { params(pin: String).void }
+      attr_writer :pin
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       #   attempts). Can only be set to `OK` to unblock a card.
       sig { returns(T.nilable(Lithic::Models::CardUpdateParams::PinStatus::OrSymbol)) }
-      def pin_status
-      end
+      attr_reader :pin_status
 
-      sig do
-        params(_: Lithic::Models::CardUpdateParams::PinStatus::OrSymbol)
-          .returns(Lithic::Models::CardUpdateParams::PinStatus::OrSymbol)
-      end
-      def pin_status=(_)
-      end
+      sig { params(pin_status: Lithic::Models::CardUpdateParams::PinStatus::OrSymbol).void }
+      attr_writer :pin_status
 
       # Amount (in cents) to limit approved authorizations (e.g. 100000 would be a
       #   $1,000 limit). Transaction requests above the spend limit will be declined. Note
@@ -57,12 +46,10 @@ module Lithic
       #   reset or remove a prior limit. Only a limit of 1 or above will result in
       #   declined transactions due to checks against the card limit.
       sig { returns(T.nilable(Integer)) }
-      def spend_limit
-      end
+      attr_reader :spend_limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def spend_limit=(_)
-      end
+      sig { params(spend_limit: Integer).void }
+      attr_writer :spend_limit
 
       # Spend limit duration values:
       #
@@ -77,15 +64,10 @@ module Lithic
       #   - `TRANSACTION` - Card will authorize multiple transactions if each individual
       #     transaction is under the spend limit.
       sig { returns(T.nilable(Lithic::Models::SpendLimitDuration::OrSymbol)) }
-      def spend_limit_duration
-      end
+      attr_reader :spend_limit_duration
 
-      sig do
-        params(_: Lithic::Models::SpendLimitDuration::OrSymbol)
-          .returns(Lithic::Models::SpendLimitDuration::OrSymbol)
-      end
-      def spend_limit_duration=(_)
-      end
+      sig { params(spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol).void }
+      attr_writer :spend_limit_duration
 
       # Card state values:
       #
@@ -96,15 +78,10 @@ module Lithic
       #   - `PAUSED` - Card will decline authorizations, but can be resumed at a later
       #     time.
       sig { returns(T.nilable(Lithic::Models::CardUpdateParams::State::OrSymbol)) }
-      def state
-      end
+      attr_reader :state
 
-      sig do
-        params(_: Lithic::Models::CardUpdateParams::State::OrSymbol)
-          .returns(Lithic::Models::CardUpdateParams::State::OrSymbol)
-      end
-      def state=(_)
-      end
+      sig { params(state: Lithic::Models::CardUpdateParams::State::OrSymbol).void }
+      attr_writer :state
 
       sig do
         params(

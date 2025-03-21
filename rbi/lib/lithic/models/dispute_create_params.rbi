@@ -8,51 +8,29 @@ module Lithic
 
       # Amount to dispute
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # Reason for dispute
       sig { returns(Lithic::Models::DisputeCreateParams::Reason::OrSymbol) }
-      def reason
-      end
-
-      sig do
-        params(_: Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
-          .returns(Lithic::Models::DisputeCreateParams::Reason::OrSymbol)
-      end
-      def reason=(_)
-      end
+      attr_accessor :reason
 
       # Transaction to dispute
       sig { returns(String) }
-      def transaction_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def transaction_token=(_)
-      end
+      attr_accessor :transaction_token
 
       # Date the customer filed the dispute
       sig { returns(T.nilable(Time)) }
-      def customer_filed_date
-      end
+      attr_reader :customer_filed_date
 
-      sig { params(_: Time).returns(Time) }
-      def customer_filed_date=(_)
-      end
+      sig { params(customer_filed_date: Time).void }
+      attr_writer :customer_filed_date
 
       # Customer description of dispute
       sig { returns(T.nilable(String)) }
-      def customer_note
-      end
+      attr_reader :customer_note
 
-      sig { params(_: String).returns(String) }
-      def customer_note=(_)
-      end
+      sig { params(customer_note: String).void }
+      attr_writer :customer_note
 
       sig do
         params(

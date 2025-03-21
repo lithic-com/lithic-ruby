@@ -8,21 +8,14 @@ module Lithic
 
       # Payment Token
       sig { returns(String) }
-      def payment_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def payment_token=(_)
-      end
+      attr_accessor :payment_token
 
       # Return Reason Code
       sig { returns(T.nilable(String)) }
-      def return_reason_code
-      end
+      attr_reader :return_reason_code
 
-      sig { params(_: String).returns(String) }
-      def return_reason_code=(_)
-      end
+      sig { params(return_reason_code: String).void }
+      attr_writer :return_reason_code
 
       sig do
         params(

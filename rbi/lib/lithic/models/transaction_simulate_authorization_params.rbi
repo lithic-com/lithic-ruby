@@ -12,90 +12,63 @@ module Lithic
       #   in a -100 amount in the transaction. For balance inquiries, this field must be
       #   set to 0.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # Merchant descriptor.
       sig { returns(String) }
-      def descriptor
-      end
-
-      sig { params(_: String).returns(String) }
-      def descriptor=(_)
-      end
+      attr_accessor :descriptor
 
       # Sixteen digit card number.
       sig { returns(String) }
-      def pan
-      end
-
-      sig { params(_: String).returns(String) }
-      def pan=(_)
-      end
+      attr_accessor :pan
 
       # Merchant category code for the transaction to be simulated. A four-digit number
       #   listed in ISO 18245. Supported merchant category codes can be found
       #   [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
       sig { returns(T.nilable(String)) }
-      def mcc
-      end
+      attr_reader :mcc
 
-      sig { params(_: String).returns(String) }
-      def mcc=(_)
-      end
+      sig { params(mcc: String).void }
+      attr_writer :mcc
 
       # Unique identifier to identify the payment card acceptor.
       sig { returns(T.nilable(String)) }
-      def merchant_acceptor_id
-      end
+      attr_reader :merchant_acceptor_id
 
-      sig { params(_: String).returns(String) }
-      def merchant_acceptor_id=(_)
-      end
+      sig { params(merchant_acceptor_id: String).void }
+      attr_writer :merchant_acceptor_id
 
       # Amount of the transaction to be simulated in currency specified in
       #   merchant_currency, including any acquirer fees.
       sig { returns(T.nilable(Integer)) }
-      def merchant_amount
-      end
+      attr_reader :merchant_amount
 
-      sig { params(_: Integer).returns(Integer) }
-      def merchant_amount=(_)
-      end
+      sig { params(merchant_amount: Integer).void }
+      attr_writer :merchant_amount
 
       # 3-character alphabetic ISO 4217 currency code. Note: Simulator only accepts USD,
       #   GBP, EUR and defaults to GBP if another ISO 4217 code is provided
       sig { returns(T.nilable(String)) }
-      def merchant_currency
-      end
+      attr_reader :merchant_currency
 
-      sig { params(_: String).returns(String) }
-      def merchant_currency=(_)
-      end
+      sig { params(merchant_currency: String).void }
+      attr_writer :merchant_currency
 
       # Set to true if the terminal is capable of partial approval otherwise false.
       #   Partial approval is when part of a transaction is approved and another payment
       #   must be used for the remainder.
       sig { returns(T.nilable(T::Boolean)) }
-      def partial_approval_capable
-      end
+      attr_reader :partial_approval_capable
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def partial_approval_capable=(_)
-      end
+      sig { params(partial_approval_capable: T::Boolean).void }
+      attr_writer :partial_approval_capable
 
       # Simulate entering a PIN. If omitted, PIN check will not be performed.
       sig { returns(T.nilable(String)) }
-      def pin
-      end
+      attr_reader :pin
 
-      sig { params(_: String).returns(String) }
-      def pin=(_)
-      end
+      sig { params(pin: String).void }
+      attr_writer :pin
 
       # Type of event to simulate.
       #
@@ -114,15 +87,10 @@ module Lithic
       #     to credit funds immediately, and no subsequent clearing is required to settle
       #     the transaction.
       sig { returns(T.nilable(Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)) }
-      def status
-      end
+      attr_reader :status
 
-      sig do
-        params(_: Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)
-          .returns(Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)
-      end
-      def status=(_)
-      end
+      sig { params(status: Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol).void }
+      attr_writer :status
 
       sig do
         params(

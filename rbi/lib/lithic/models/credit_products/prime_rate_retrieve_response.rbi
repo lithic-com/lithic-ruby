@@ -6,24 +6,11 @@ module Lithic
       class PrimeRateRetrieveResponse < Lithic::BaseModel
         # List of prime rates
         sig { returns(T::Array[Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data]) }
-        def data
-        end
-
-        sig do
-          params(_: T::Array[Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data])
-            .returns(T::Array[Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data])
-        end
-        def data=(_)
-        end
+        attr_accessor :data
 
         # Whether there are more prime rates
         sig { returns(T::Boolean) }
-        def has_more
-        end
-
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def has_more=(_)
-        end
+        attr_accessor :has_more
 
         sig do
           params(
@@ -47,21 +34,11 @@ module Lithic
         class Data < Lithic::BaseModel
           # Date the rate goes into effect
           sig { returns(Date) }
-          def effective_date
-          end
-
-          sig { params(_: Date).returns(Date) }
-          def effective_date=(_)
-          end
+          attr_accessor :effective_date
 
           # The rate in decimal format
           sig { returns(String) }
-          def rate
-          end
-
-          sig { params(_: String).returns(String) }
-          def rate=(_)
-          end
+          attr_accessor :rate
 
           sig { params(effective_date: Date, rate: String).returns(T.attached_class) }
           def self.new(effective_date:, rate:)

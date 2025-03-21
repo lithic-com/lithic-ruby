@@ -4,37 +4,30 @@ module Lithic
   module Models
     class AccountSpendLimits < Lithic::BaseModel
       sig { returns(Lithic::Models::AccountSpendLimits::AvailableSpendLimit) }
-      def available_spend_limit
-      end
+      attr_reader :available_spend_limit
 
       sig do
-        params(_: T.any(Lithic::Models::AccountSpendLimits::AvailableSpendLimit, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::AccountSpendLimits::AvailableSpendLimit, Lithic::Util::AnyHash))
+        params(
+          available_spend_limit: T.any(Lithic::Models::AccountSpendLimits::AvailableSpendLimit, Lithic::Util::AnyHash)
+        )
+          .void
       end
-      def available_spend_limit=(_)
-      end
+      attr_writer :available_spend_limit
 
       sig { returns(T.nilable(Lithic::Models::AccountSpendLimits::SpendLimit)) }
-      def spend_limit
-      end
+      attr_reader :spend_limit
 
-      sig do
-        params(_: T.any(Lithic::Models::AccountSpendLimits::SpendLimit, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::AccountSpendLimits::SpendLimit, Lithic::Util::AnyHash))
-      end
-      def spend_limit=(_)
-      end
+      sig { params(spend_limit: T.any(Lithic::Models::AccountSpendLimits::SpendLimit, Lithic::Util::AnyHash)).void }
+      attr_writer :spend_limit
 
       sig { returns(T.nilable(Lithic::Models::AccountSpendLimits::SpendVelocity)) }
-      def spend_velocity
-      end
+      attr_reader :spend_velocity
 
       sig do
-        params(_: T.any(Lithic::Models::AccountSpendLimits::SpendVelocity, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::AccountSpendLimits::SpendVelocity, Lithic::Util::AnyHash))
+        params(spend_velocity: T.any(Lithic::Models::AccountSpendLimits::SpendVelocity, Lithic::Util::AnyHash))
+          .void
       end
-      def spend_velocity=(_)
-      end
+      attr_writer :spend_velocity
 
       sig do
         params(
@@ -64,32 +57,26 @@ module Lithic
         # The available spend limit (in cents) relative to the daily limit configured on
         #   the Account (e.g. 100000 would be a $1,000 limit).
         sig { returns(T.nilable(Integer)) }
-        def daily
-        end
+        attr_reader :daily
 
-        sig { params(_: Integer).returns(Integer) }
-        def daily=(_)
-        end
+        sig { params(daily: Integer).void }
+        attr_writer :daily
 
         # The available spend limit (in cents) relative to the lifetime limit configured
         #   on the Account.
         sig { returns(T.nilable(Integer)) }
-        def lifetime
-        end
+        attr_reader :lifetime
 
-        sig { params(_: Integer).returns(Integer) }
-        def lifetime=(_)
-        end
+        sig { params(lifetime: Integer).void }
+        attr_writer :lifetime
 
         # The available spend limit (in cents) relative to the monthly limit configured on
         #   the Account.
         sig { returns(T.nilable(Integer)) }
-        def monthly
-        end
+        attr_reader :monthly
 
-        sig { params(_: Integer).returns(Integer) }
-        def monthly=(_)
-        end
+        sig { params(monthly: Integer).void }
+        attr_writer :monthly
 
         sig { params(daily: Integer, lifetime: Integer, monthly: Integer).returns(T.attached_class) }
         def self.new(daily: nil, lifetime: nil, monthly: nil)
@@ -103,30 +90,24 @@ module Lithic
       class SpendLimit < Lithic::BaseModel
         # The configured daily spend limit (in cents) on the Account.
         sig { returns(T.nilable(Integer)) }
-        def daily
-        end
+        attr_reader :daily
 
-        sig { params(_: Integer).returns(Integer) }
-        def daily=(_)
-        end
+        sig { params(daily: Integer).void }
+        attr_writer :daily
 
         # The configured lifetime spend limit (in cents) on the Account.
         sig { returns(T.nilable(Integer)) }
-        def lifetime
-        end
+        attr_reader :lifetime
 
-        sig { params(_: Integer).returns(Integer) }
-        def lifetime=(_)
-        end
+        sig { params(lifetime: Integer).void }
+        attr_writer :lifetime
 
         # The configured monthly spend limit (in cents) on the Account.
         sig { returns(T.nilable(Integer)) }
-        def monthly
-        end
+        attr_reader :monthly
 
-        sig { params(_: Integer).returns(Integer) }
-        def monthly=(_)
-        end
+        sig { params(monthly: Integer).void }
+        attr_writer :monthly
 
         sig { params(daily: Integer, lifetime: Integer, monthly: Integer).returns(T.attached_class) }
         def self.new(daily: nil, lifetime: nil, monthly: nil)
@@ -141,32 +122,26 @@ module Lithic
         # Current daily spend velocity (in cents) on the Account. Present if daily spend
         #   limit is set.
         sig { returns(T.nilable(Integer)) }
-        def daily
-        end
+        attr_reader :daily
 
-        sig { params(_: Integer).returns(Integer) }
-        def daily=(_)
-        end
+        sig { params(daily: Integer).void }
+        attr_writer :daily
 
         # Current lifetime spend velocity (in cents) on the Account. Present if lifetime
         #   spend limit is set.
         sig { returns(T.nilable(Integer)) }
-        def lifetime
-        end
+        attr_reader :lifetime
 
-        sig { params(_: Integer).returns(Integer) }
-        def lifetime=(_)
-        end
+        sig { params(lifetime: Integer).void }
+        attr_writer :lifetime
 
         # Current monthly spend velocity (in cents) on the Account. Present if monthly
         #   spend limit is set.
         sig { returns(T.nilable(Integer)) }
-        def monthly
-        end
+        attr_reader :monthly
 
-        sig { params(_: Integer).returns(Integer) }
-        def monthly=(_)
-        end
+        sig { params(monthly: Integer).void }
+        attr_writer :monthly
 
         sig { params(daily: Integer, lifetime: Integer, monthly: Integer).returns(T.attached_class) }
         def self.new(daily: nil, lifetime: nil, monthly: nil)

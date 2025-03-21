@@ -4,15 +4,10 @@ module Lithic
   module Models
     class TokenizationSimulateResponse < Lithic::BaseModel
       sig { returns(T.nilable(T::Array[Lithic::Models::Tokenization])) }
-      def data
-      end
+      attr_reader :data
 
-      sig do
-        params(_: T::Array[T.any(Lithic::Models::Tokenization, Lithic::Util::AnyHash)])
-          .returns(T::Array[T.any(Lithic::Models::Tokenization, Lithic::Util::AnyHash)])
-      end
-      def data=(_)
-      end
+      sig { params(data: T::Array[T.any(Lithic::Models::Tokenization, Lithic::Util::AnyHash)]).void }
+      attr_writer :data
 
       sig do
         params(data: T::Array[T.any(Lithic::Models::Tokenization, Lithic::Util::AnyHash)])

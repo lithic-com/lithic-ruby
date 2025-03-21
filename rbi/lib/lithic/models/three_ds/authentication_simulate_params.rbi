@@ -8,50 +8,43 @@ module Lithic
         include Lithic::RequestParameters
 
         sig { returns(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant) }
-        def merchant
-        end
-
-        sig do
-          params(_: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Util::AnyHash))
-            .returns(T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Util::AnyHash))
-        end
-        def merchant=(_)
-        end
-
-        # Sixteen digit card number.
-        sig { returns(String) }
-        def pan
-        end
-
-        sig { params(_: String).returns(String) }
-        def pan=(_)
-        end
-
-        sig { returns(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction) }
-        def transaction
-        end
+        attr_reader :merchant
 
         sig do
           params(
-            _: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Util::AnyHash)
+            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Util::AnyHash)
           )
-            .returns(T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Util::AnyHash))
+            .void
         end
-        def transaction=(_)
+        attr_writer :merchant
+
+        # Sixteen digit card number.
+        sig { returns(String) }
+        attr_accessor :pan
+
+        sig { returns(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction) }
+        attr_reader :transaction
+
+        sig do
+          params(
+            transaction: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Util::AnyHash)
+          )
+            .void
         end
+        attr_writer :transaction
 
         # When set will use the following values as part of the Simulated Authentication.
         #   When not set defaults to MATCH
         sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol)) }
-        def card_expiry_check
-        end
+        attr_reader :card_expiry_check
 
         sig do
-          params(_: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol)
-            .returns(Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol)
+          params(
+            card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol
+          )
+            .void
         end
-        def card_expiry_check=(_)
-        end
+        attr_writer :card_expiry_check
 
         sig do
           params(
@@ -85,43 +78,23 @@ module Lithic
           # Unique identifier to identify the payment card acceptor. Corresponds to
           #   `merchant_acceptor_id` in authorization.
           sig { returns(String) }
-          def id
-          end
-
-          sig { params(_: String).returns(String) }
-          def id=(_)
-          end
+          attr_accessor :id
 
           # Country of the address provided by the cardholder in ISO 3166-1 alpha-3 format
           #   (e.g. USA)
           sig { returns(String) }
-          def country
-          end
-
-          sig { params(_: String).returns(String) }
-          def country=(_)
-          end
+          attr_accessor :country
 
           # Merchant category code for the transaction to be simulated. A four-digit number
           #   listed in ISO 18245. Supported merchant category codes can be found
           #   [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
           sig { returns(String) }
-          def mcc
-          end
-
-          sig { params(_: String).returns(String) }
-          def mcc=(_)
-          end
+          attr_accessor :mcc
 
           # Merchant descriptor, corresponds to `descriptor` in authorization. If CHALLENGE
           #   keyword is included, Lithic will trigger a challenge.
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           sig { params(id: String, country: String, mcc: String, name: String).returns(T.attached_class) }
           def self.new(id:, country:, mcc:, name:)
@@ -135,21 +108,11 @@ module Lithic
         class Transaction < Lithic::BaseModel
           # Amount (in cents) to authenticate.
           sig { returns(Integer) }
-          def amount
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def amount=(_)
-          end
+          attr_accessor :amount
 
           # 3-character alphabetic ISO 4217 currency code.
           sig { returns(String) }
-          def currency
-          end
-
-          sig { params(_: String).returns(String) }
-          def currency=(_)
-          end
+          attr_accessor :currency
 
           sig { params(amount: Integer, currency: String).returns(T.attached_class) }
           def self.new(amount:, currency:)

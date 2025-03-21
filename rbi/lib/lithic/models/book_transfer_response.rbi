@@ -6,131 +6,59 @@ module Lithic
       # Customer-provided token that will serve as an idempotency token. This token will
       #   become the transaction token.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Category of the book transfer
       sig { returns(Lithic::Models::BookTransferResponse::Category::TaggedSymbol) }
-      def category
-      end
-
-      sig do
-        params(_: Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
-          .returns(Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
-      end
-      def category=(_)
-      end
+      attr_accessor :category
 
       # Date and time when the transfer occurred. UTC time zone.
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # 3-character alphabetic ISO 4217 code for the settling currency of the
       #   transaction.
       sig { returns(String) }
-      def currency
-      end
-
-      sig { params(_: String).returns(String) }
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       # A list of all financial events that have modified this transfer.
       sig { returns(T::Array[Lithic::Models::BookTransferResponse::Event]) }
-      def events
-      end
-
-      sig do
-        params(_: T::Array[Lithic::Models::BookTransferResponse::Event])
-          .returns(T::Array[Lithic::Models::BookTransferResponse::Event])
-      end
-      def events=(_)
-      end
+      attr_accessor :events
 
       # Globally unique identifier for the financial account or card that will send the
       #   funds. Accepted type dependent on the program's use case.
       sig { returns(String) }
-      def from_financial_account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def from_financial_account_token=(_)
-      end
+      attr_accessor :from_financial_account_token
 
       # Pending amount of the transaction in the currency's smallest unit (e.g., cents),
       #   including any acquirer fees. The value of this field will go to zero over time
       #   once the financial transaction is settled.
       sig { returns(Integer) }
-      def pending_amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def pending_amount=(_)
-      end
+      attr_accessor :pending_amount
 
       # APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
       sig { returns(Lithic::Models::BookTransferResponse::Result::TaggedSymbol) }
-      def result
-      end
-
-      sig do
-        params(_: Lithic::Models::BookTransferResponse::Result::TaggedSymbol)
-          .returns(Lithic::Models::BookTransferResponse::Result::TaggedSymbol)
-      end
-      def result=(_)
-      end
+      attr_accessor :result
 
       # Amount of the transaction that has been settled in the currency's smallest unit
       #   (e.g., cents).
       sig { returns(Integer) }
-      def settled_amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def settled_amount=(_)
-      end
+      attr_accessor :settled_amount
 
       # Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
       #   transfer was reversed \* `SETTLED` - The transfer is completed.
       sig { returns(Lithic::Models::BookTransferResponse::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Lithic::Models::BookTransferResponse::Status::TaggedSymbol)
-          .returns(Lithic::Models::BookTransferResponse::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # Globally unique identifier for the financial account or card that will receive
       #   the funds. Accepted type dependent on the program's use case.
       sig { returns(T.anything) }
-      def to_financial_account_token
-      end
-
-      sig { params(_: T.anything).returns(T.anything) }
-      def to_financial_account_token=(_)
-      end
+      attr_accessor :to_financial_account_token
 
       # Date and time when the financial transaction was last updated. UTC time zone.
       sig { returns(Time) }
-      def updated
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def updated=(_)
-      end
+      attr_accessor :updated
 
       sig do
         params(
@@ -213,83 +141,37 @@ module Lithic
       class Event < Lithic::BaseModel
         # Globally unique identifier.
         sig { returns(String) }
-        def token
-        end
-
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        attr_accessor :token
 
         # Amount of the financial event that has been settled in the currency's smallest
         #   unit (e.g., cents).
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # Date and time when the financial event occurred. UTC time zone.
         sig { returns(Time) }
-        def created
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created=(_)
-        end
+        attr_accessor :created
 
         # Detailed Results
         sig { returns(T::Array[Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol]) }
-        def detailed_results
-        end
-
-        sig do
-          params(_: T::Array[Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol])
-            .returns(T::Array[Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol])
-        end
-        def detailed_results=(_)
-        end
+        attr_accessor :detailed_results
 
         # Memo for the transfer.
         sig { returns(String) }
-        def memo
-        end
-
-        sig { params(_: String).returns(String) }
-        def memo=(_)
-        end
+        attr_accessor :memo
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         sig { returns(Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol) }
-        def result
-        end
-
-        sig do
-          params(_: Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol)
-            .returns(Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol)
-        end
-        def result=(_)
-        end
+        attr_accessor :result
 
         # The program specific subtype code for the specified category/type.
         sig { returns(String) }
-        def subtype
-        end
-
-        sig { params(_: String).returns(String) }
-        def subtype=(_)
-        end
+        attr_accessor :subtype
 
         # Type of the book transfer
         sig { returns(String) }
-        def type
-        end
-
-        sig { params(_: String).returns(String) }
-        def type=(_)
-        end
+        attr_accessor :type
 
         sig do
           params(

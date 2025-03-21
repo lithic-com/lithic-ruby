@@ -7,93 +7,68 @@ module Lithic
       include Lithic::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      def account_token
-      end
+      attr_reader :account_token
 
-      sig { params(_: String).returns(String) }
-      def account_token=(_)
-      end
+      sig { params(account_token: String).void }
+      attr_writer :account_token
 
       sig { returns(T.nilable(T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol])) }
-      def account_types
-      end
+      attr_reader :account_types
 
-      sig do
-        params(_: T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol])
-          .returns(T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol])
-      end
-      def account_types=(_)
-      end
+      sig { params(account_types: T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol]).void }
+      attr_writer :account_types
 
       sig { returns(T.nilable(T::Array[String])) }
-      def countries
-      end
+      attr_reader :countries
 
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def countries=(_)
-      end
+      sig { params(countries: T::Array[String]).void }
+      attr_writer :countries
 
       # A cursor representing an item's token before which a page of results should end.
       #   Used to retrieve the previous page of results before this item.
       sig { returns(T.nilable(String)) }
-      def ending_before
-      end
+      attr_reader :ending_before
 
-      sig { params(_: String).returns(String) }
-      def ending_before=(_)
-      end
+      sig { params(ending_before: String).void }
+      attr_writer :ending_before
 
       sig { returns(T.nilable(T::Array[Lithic::Models::OwnerType::OrSymbol])) }
-      def owner_types
-      end
+      attr_reader :owner_types
 
-      sig do
-        params(_: T::Array[Lithic::Models::OwnerType::OrSymbol])
-          .returns(T::Array[Lithic::Models::OwnerType::OrSymbol])
-      end
-      def owner_types=(_)
-      end
+      sig { params(owner_types: T::Array[Lithic::Models::OwnerType::OrSymbol]).void }
+      attr_writer :owner_types
 
       # Page size (for pagination).
       sig { returns(T.nilable(Integer)) }
-      def page_size
-      end
+      attr_reader :page_size
 
-      sig { params(_: Integer).returns(Integer) }
-      def page_size=(_)
-      end
+      sig { params(page_size: Integer).void }
+      attr_writer :page_size
 
       # A cursor representing an item's token after which a page of results should
       #   begin. Used to retrieve the next page of results after this item.
       sig { returns(T.nilable(String)) }
-      def starting_after
-      end
+      attr_reader :starting_after
 
-      sig { params(_: String).returns(String) }
-      def starting_after=(_)
-      end
+      sig { params(starting_after: String).void }
+      attr_writer :starting_after
 
       sig { returns(T.nilable(T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol])) }
-      def states
-      end
+      attr_reader :states
 
-      sig do
-        params(_: T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol])
-          .returns(T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol])
-      end
-      def states=(_)
-      end
+      sig { params(states: T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol]).void }
+      attr_writer :states
 
       sig { returns(T.nilable(T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol])) }
-      def verification_states
-      end
+      attr_reader :verification_states
 
       sig do
-        params(_: T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol])
-          .returns(T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol])
+        params(
+          verification_states: T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol]
+        )
+          .void
       end
-      def verification_states=(_)
-      end
+      attr_writer :verification_states
 
       sig do
         params(

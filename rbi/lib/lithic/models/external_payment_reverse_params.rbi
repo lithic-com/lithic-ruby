@@ -7,20 +7,13 @@ module Lithic
       include Lithic::RequestParameters
 
       sig { returns(Date) }
-      def effective_date
-      end
-
-      sig { params(_: Date).returns(Date) }
-      def effective_date=(_)
-      end
+      attr_accessor :effective_date
 
       sig { returns(T.nilable(String)) }
-      def memo
-      end
+      attr_reader :memo
 
-      sig { params(_: String).returns(String) }
-      def memo=(_)
-      end
+      sig { params(memo: String).void }
+      attr_writer :memo
 
       sig do
         params(

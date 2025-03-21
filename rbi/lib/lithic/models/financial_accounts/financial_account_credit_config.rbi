@@ -6,12 +6,7 @@ module Lithic
       class FinancialAccountCreditConfig < Lithic::BaseModel
         # Globally unique identifier for the account
         sig { returns(String) }
-        def account_token
-        end
-
-        sig { params(_: String).returns(String) }
-        def account_token=(_)
-        end
+        attr_accessor :account_token
 
         # Reason for the financial account being marked as Charged Off
         sig do
@@ -19,44 +14,17 @@ module Lithic
             T.nilable(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol)
           )
         end
-        def charged_off_reason
-        end
-
-        sig do
-          params(
-            _: T.nilable(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol)
-          )
-            .returns(
-              T.nilable(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol)
-            )
-        end
-        def charged_off_reason=(_)
-        end
+        attr_accessor :charged_off_reason
 
         sig { returns(T.nilable(Integer)) }
-        def credit_limit
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def credit_limit=(_)
-        end
+        attr_accessor :credit_limit
 
         # Globally unique identifier for the credit product
         sig { returns(T.nilable(String)) }
-        def credit_product_token
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def credit_product_token=(_)
-        end
+        attr_accessor :credit_product_token
 
         sig { returns(T.nilable(String)) }
-        def external_bank_account_token
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def external_bank_account_token=(_)
-        end
+        attr_accessor :external_bank_account_token
 
         # State of the financial account
         sig do
@@ -64,36 +32,14 @@ module Lithic
             Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
           )
         end
-        def financial_account_state
-        end
-
-        sig do
-          params(
-            _: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
-          )
-            .returns(
-              Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
-            )
-        end
-        def financial_account_state=(_)
-        end
+        attr_accessor :financial_account_state
 
         sig { returns(T::Boolean) }
-        def is_spend_blocked
-        end
-
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def is_spend_blocked=(_)
-        end
+        attr_accessor :is_spend_blocked
 
         # Tier assigned to the financial account
         sig { returns(T.nilable(String)) }
-        def tier
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def tier=(_)
-        end
+        attr_accessor :tier
 
         sig do
           params(

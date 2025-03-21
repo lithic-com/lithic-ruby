@@ -8,30 +8,15 @@ module Lithic
 
       # Amount (in cents) to authorize.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # Merchant descriptor.
       sig { returns(String) }
-      def descriptor
-      end
-
-      sig { params(_: String).returns(String) }
-      def descriptor=(_)
-      end
+      attr_accessor :descriptor
 
       # Sixteen digit card number.
       sig { returns(String) }
-      def pan
-      end
-
-      sig { params(_: String).returns(String) }
-      def pan=(_)
-      end
+      attr_accessor :pan
 
       sig do
         params(

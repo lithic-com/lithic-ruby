@@ -5,103 +5,48 @@ module Lithic
     class Dispute < Lithic::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Amount under dispute. May be different from the original transaction amount.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # Date dispute entered arbitration.
       sig { returns(T.nilable(Time)) }
-      def arbitration_date
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def arbitration_date=(_)
-      end
+      attr_accessor :arbitration_date
 
       # Timestamp of when first Dispute was reported.
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Date that the dispute was filed by the customer making the dispute.
       sig { returns(T.nilable(Time)) }
-      def customer_filed_date
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def customer_filed_date=(_)
-      end
+      attr_accessor :customer_filed_date
 
       # End customer description of the reason for the dispute.
       sig { returns(T.nilable(String)) }
-      def customer_note
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def customer_note=(_)
-      end
+      attr_accessor :customer_note
 
       # Unique identifiers for the dispute from the network.
       sig { returns(T.nilable(T::Array[String])) }
-      def network_claim_ids
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def network_claim_ids=(_)
-      end
+      attr_accessor :network_claim_ids
 
       # Date that the dispute was submitted to the network.
       sig { returns(T.nilable(Time)) }
-      def network_filed_date
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def network_filed_date=(_)
-      end
+      attr_accessor :network_filed_date
 
       # Network reason code used to file the dispute.
       sig { returns(T.nilable(String)) }
-      def network_reason_code
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def network_reason_code=(_)
-      end
+      attr_accessor :network_reason_code
 
       # Date dispute entered pre-arbitration.
       sig { returns(T.nilable(Time)) }
-      def prearbitration_date
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def prearbitration_date=(_)
-      end
+      attr_accessor :prearbitration_date
 
       # Unique identifier for the dispute from the network. If there are multiple, this
       #   will be the first claim id set by the network
       sig { returns(T.nilable(String)) }
-      def primary_claim_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def primary_claim_id=(_)
-      end
+      attr_accessor :primary_claim_id
 
       # Dispute reason:
       #
@@ -123,51 +68,23 @@ module Lithic
       #   - `RECURRING_TRANSACTION_NOT_CANCELLED`: The recurring transaction was not
       #     cancelled.
       sig { returns(Lithic::Models::Dispute::Reason::TaggedSymbol) }
-      def reason
-      end
-
-      sig do
-        params(_: Lithic::Models::Dispute::Reason::TaggedSymbol)
-          .returns(Lithic::Models::Dispute::Reason::TaggedSymbol)
-      end
-      def reason=(_)
-      end
+      attr_accessor :reason
 
       # Date the representment was received.
       sig { returns(T.nilable(Time)) }
-      def representment_date
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def representment_date=(_)
-      end
+      attr_accessor :representment_date
 
       # Resolution amount net of network fees.
       sig { returns(T.nilable(Integer)) }
-      def resolution_amount
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def resolution_amount=(_)
-      end
+      attr_accessor :resolution_amount
 
       # Date that the dispute was resolved.
       sig { returns(T.nilable(Time)) }
-      def resolution_date
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def resolution_date=(_)
-      end
+      attr_accessor :resolution_date
 
       # Note by Dispute team on the case resolution.
       sig { returns(T.nilable(String)) }
-      def resolution_note
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def resolution_note=(_)
-      end
+      attr_accessor :resolution_note
 
       # Reason for the dispute resolution:
       #
@@ -189,15 +106,7 @@ module Lithic
       #   - `WON_FIRST_CHARGEBACK`: Won first chargeback.
       #   - `WON_PREARBITRATION`: Won prearbitration.
       sig { returns(T.nilable(Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)) }
-      def resolution_reason
-      end
-
-      sig do
-        params(_: T.nilable(Lithic::Models::Dispute::ResolutionReason::TaggedSymbol))
-          .returns(T.nilable(Lithic::Models::Dispute::ResolutionReason::TaggedSymbol))
-      end
-      def resolution_reason=(_)
-      end
+      attr_accessor :resolution_reason
 
       # Status types:
       #
@@ -211,25 +120,12 @@ module Lithic
       #   - `CASE_WON` - Case was won and credit will be issued.
       #   - `CASE_CLOSED` - Case was lost or withdrawn.
       sig { returns(Lithic::Models::Dispute::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Lithic::Models::Dispute::Status::TaggedSymbol)
-          .returns(Lithic::Models::Dispute::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # The transaction that is being disputed. A transaction can only be disputed once
       #   but may have multiple dispute cases.
       sig { returns(String) }
-      def transaction_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def transaction_token=(_)
-      end
+      attr_accessor :transaction_token
 
       # Dispute.
       sig do

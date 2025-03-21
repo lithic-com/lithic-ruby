@@ -9,15 +9,13 @@ module Lithic
 
         # Event type to send example message for.
         sig { returns(T.nilable(Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::OrSymbol)) }
-        def event_type
-        end
+        attr_reader :event_type
 
         sig do
-          params(_: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::OrSymbol)
-            .returns(Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::OrSymbol)
+          params(event_type: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::OrSymbol)
+            .void
         end
-        def event_type=(_)
-        end
+        attr_writer :event_type
 
         sig do
           params(

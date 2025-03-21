@@ -7,110 +7,79 @@ module Lithic
       include Lithic::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      def account_token
-      end
+      attr_reader :account_token
 
-      sig { params(_: String).returns(String) }
-      def account_token=(_)
-      end
+      sig { params(account_token: String).void }
+      attr_writer :account_token
 
       # Date string in RFC 3339 format. Only entries created after the specified time
       #   will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
-      def begin_
-      end
+      attr_reader :begin_
 
-      sig { params(_: Time).returns(Time) }
-      def begin_=(_)
-      end
+      sig { params(begin_: Time).void }
+      attr_writer :begin_
 
       sig { returns(T.nilable(String)) }
-      def business_account_token
-      end
+      attr_reader :business_account_token
 
-      sig { params(_: String).returns(String) }
-      def business_account_token=(_)
-      end
+      sig { params(business_account_token: String).void }
+      attr_writer :business_account_token
 
       sig { returns(T.nilable(Lithic::Models::PaymentListParams::Category::OrSymbol)) }
-      def category
-      end
+      attr_reader :category
 
-      sig do
-        params(_: Lithic::Models::PaymentListParams::Category::OrSymbol)
-          .returns(Lithic::Models::PaymentListParams::Category::OrSymbol)
-      end
-      def category=(_)
-      end
+      sig { params(category: Lithic::Models::PaymentListParams::Category::OrSymbol).void }
+      attr_writer :category
 
       # Date string in RFC 3339 format. Only entries created before the specified time
       #   will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
-      def end_
-      end
+      attr_reader :end_
 
-      sig { params(_: Time).returns(Time) }
-      def end_=(_)
-      end
+      sig { params(end_: Time).void }
+      attr_writer :end_
 
       # A cursor representing an item's token before which a page of results should end.
       #   Used to retrieve the previous page of results before this item.
       sig { returns(T.nilable(String)) }
-      def ending_before
-      end
+      attr_reader :ending_before
 
-      sig { params(_: String).returns(String) }
-      def ending_before=(_)
-      end
+      sig { params(ending_before: String).void }
+      attr_writer :ending_before
 
       sig { returns(T.nilable(String)) }
-      def financial_account_token
-      end
+      attr_reader :financial_account_token
 
-      sig { params(_: String).returns(String) }
-      def financial_account_token=(_)
-      end
+      sig { params(financial_account_token: String).void }
+      attr_writer :financial_account_token
 
       # Page size (for pagination).
       sig { returns(T.nilable(Integer)) }
-      def page_size
-      end
+      attr_reader :page_size
 
-      sig { params(_: Integer).returns(Integer) }
-      def page_size=(_)
-      end
+      sig { params(page_size: Integer).void }
+      attr_writer :page_size
 
       sig { returns(T.nilable(Lithic::Models::PaymentListParams::Result::OrSymbol)) }
-      def result
-      end
+      attr_reader :result
 
-      sig do
-        params(_: Lithic::Models::PaymentListParams::Result::OrSymbol)
-          .returns(Lithic::Models::PaymentListParams::Result::OrSymbol)
-      end
-      def result=(_)
-      end
+      sig { params(result: Lithic::Models::PaymentListParams::Result::OrSymbol).void }
+      attr_writer :result
 
       # A cursor representing an item's token after which a page of results should
       #   begin. Used to retrieve the next page of results after this item.
       sig { returns(T.nilable(String)) }
-      def starting_after
-      end
+      attr_reader :starting_after
 
-      sig { params(_: String).returns(String) }
-      def starting_after=(_)
-      end
+      sig { params(starting_after: String).void }
+      attr_writer :starting_after
 
       sig { returns(T.nilable(Lithic::Models::PaymentListParams::Status::OrSymbol)) }
-      def status
-      end
+      attr_reader :status
 
-      sig do
-        params(_: Lithic::Models::PaymentListParams::Status::OrSymbol)
-          .returns(Lithic::Models::PaymentListParams::Status::OrSymbol)
-      end
-      def status=(_)
-      end
+      sig { params(status: Lithic::Models::PaymentListParams::Status::OrSymbol).void }
+      attr_writer :status
 
       sig do
         params(

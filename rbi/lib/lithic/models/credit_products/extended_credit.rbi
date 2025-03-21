@@ -5,12 +5,7 @@ module Lithic
     module CreditProducts
       class CreditProductsExtendedCredit < Lithic::BaseModel
         sig { returns(Integer) }
-        def credit_extended
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def credit_extended=(_)
-        end
+        attr_accessor :credit_extended
 
         sig { params(credit_extended: Integer).returns(T.attached_class) }
         def self.new(credit_extended:)

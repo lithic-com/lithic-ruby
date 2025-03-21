@@ -5,8 +5,7 @@ module Lithic
     class AuthRules
       class V2
         sig { returns(Lithic::Resources::AuthRules::V2::Backtests) }
-        def backtests
-        end
+        attr_reader :backtests
 
         # Creates a new V2 authorization rule in draft mode
         sig do

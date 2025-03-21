@@ -9,12 +9,10 @@ module Lithic
       # Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a
       #   $1,000 limit). By default the daily spend limit is set to $1,250.
       sig { returns(T.nilable(Integer)) }
-      def daily_spend_limit
-      end
+      attr_reader :daily_spend_limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def daily_spend_limit=(_)
-      end
+      sig { params(daily_spend_limit: Integer).void }
+      attr_writer :daily_spend_limit
 
       # Amount (in cents) for the account's lifetime spend limit (e.g. 100000 would be a
       #   $1,000 limit). Once this limit is reached, no transactions will be accepted on
@@ -24,49 +22,40 @@ module Lithic
       #   to checks against the account limit. This behavior differs from the daily spend
       #   limit and the monthly spend limit.
       sig { returns(T.nilable(Integer)) }
-      def lifetime_spend_limit
-      end
+      attr_reader :lifetime_spend_limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def lifetime_spend_limit=(_)
-      end
+      sig { params(lifetime_spend_limit: Integer).void }
+      attr_writer :lifetime_spend_limit
 
       # Amount (in cents) for the account's monthly spend limit (e.g. 100000 would be a
       #   $1,000 limit). By default the monthly spend limit is set to $5,000.
       sig { returns(T.nilable(Integer)) }
-      def monthly_spend_limit
-      end
+      attr_reader :monthly_spend_limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def monthly_spend_limit=(_)
-      end
+      sig { params(monthly_spend_limit: Integer).void }
+      attr_writer :monthly_spend_limit
 
       # Account states.
       sig { returns(T.nilable(Lithic::Models::AccountUpdateParams::State::OrSymbol)) }
-      def state
-      end
+      attr_reader :state
 
-      sig do
-        params(_: Lithic::Models::AccountUpdateParams::State::OrSymbol)
-          .returns(Lithic::Models::AccountUpdateParams::State::OrSymbol)
-      end
-      def state=(_)
-      end
+      sig { params(state: Lithic::Models::AccountUpdateParams::State::OrSymbol).void }
+      attr_writer :state
 
       # Address used during Address Verification Service (AVS) checks during
       #   transactions if enabled via Auth Rules. This field is deprecated as AVS checks
       #   are no longer supported by Authorization Rules. The field will be removed from
       #   the schema in a future release.
       sig { returns(T.nilable(Lithic::Models::AccountUpdateParams::VerificationAddress)) }
-      def verification_address
-      end
+      attr_reader :verification_address
 
       sig do
-        params(_: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Util::AnyHash))
+        params(
+          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Util::AnyHash)
+        )
+          .void
       end
-      def verification_address=(_)
-      end
+      attr_writer :verification_address
 
       sig do
         params(
@@ -124,52 +113,40 @@ module Lithic
 
       class VerificationAddress < Lithic::BaseModel
         sig { returns(T.nilable(String)) }
-        def address1
-        end
+        attr_reader :address1
 
-        sig { params(_: String).returns(String) }
-        def address1=(_)
-        end
+        sig { params(address1: String).void }
+        attr_writer :address1
 
         sig { returns(T.nilable(String)) }
-        def address2
-        end
+        attr_reader :address2
 
-        sig { params(_: String).returns(String) }
-        def address2=(_)
-        end
+        sig { params(address2: String).void }
+        attr_writer :address2
 
         sig { returns(T.nilable(String)) }
-        def city
-        end
+        attr_reader :city
 
-        sig { params(_: String).returns(String) }
-        def city=(_)
-        end
+        sig { params(city: String).void }
+        attr_writer :city
 
         sig { returns(T.nilable(String)) }
-        def country
-        end
+        attr_reader :country
 
-        sig { params(_: String).returns(String) }
-        def country=(_)
-        end
+        sig { params(country: String).void }
+        attr_writer :country
 
         sig { returns(T.nilable(String)) }
-        def postal_code
-        end
+        attr_reader :postal_code
 
-        sig { params(_: String).returns(String) }
-        def postal_code=(_)
-        end
+        sig { params(postal_code: String).void }
+        attr_writer :postal_code
 
         sig { returns(T.nilable(String)) }
-        def state
-        end
+        attr_reader :state
 
-        sig { params(_: String).returns(String) }
-        def state=(_)
-        end
+        sig { params(state: String).void }
+        attr_writer :state
 
         # Address used during Address Verification Service (AVS) checks during
         #   transactions if enabled via Auth Rules. This field is deprecated as AVS checks

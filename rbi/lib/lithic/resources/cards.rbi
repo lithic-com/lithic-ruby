@@ -4,16 +4,13 @@ module Lithic
   module Resources
     class Cards
       sig { returns(Lithic::Resources::Cards::AggregateBalances) }
-      def aggregate_balances
-      end
+      attr_reader :aggregate_balances
 
       sig { returns(Lithic::Resources::Cards::Balances) }
-      def balances
-      end
+      attr_reader :balances
 
       sig { returns(Lithic::Resources::Cards::FinancialTransactions) }
-      def financial_transactions
-      end
+      attr_reader :financial_transactions
 
       # Create a new virtual or physical card. Parameters `shipping_address` and
       #   `product_id` only apply to physical cards.

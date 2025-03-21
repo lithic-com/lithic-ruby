@@ -7,115 +7,84 @@ module Lithic
       include Lithic::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      def account_token
-      end
+      attr_reader :account_token
 
-      sig { params(_: String).returns(String) }
-      def account_token=(_)
-      end
+      sig { params(account_token: String).void }
+      attr_writer :account_token
 
       # Date string in RFC 3339 format. Only entries created after the specified time
       #   will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
-      def begin_
-      end
+      attr_reader :begin_
 
-      sig { params(_: Time).returns(Time) }
-      def begin_=(_)
-      end
+      sig { params(begin_: Time).void }
+      attr_writer :begin_
 
       sig { returns(T.nilable(String)) }
-      def business_account_token
-      end
+      attr_reader :business_account_token
 
-      sig { params(_: String).returns(String) }
-      def business_account_token=(_)
-      end
+      sig { params(business_account_token: String).void }
+      attr_writer :business_account_token
 
       # Book Transfer category to be returned.
       sig { returns(T.nilable(Lithic::Models::BookTransferListParams::Category::OrSymbol)) }
-      def category
-      end
+      attr_reader :category
 
-      sig do
-        params(_: Lithic::Models::BookTransferListParams::Category::OrSymbol)
-          .returns(Lithic::Models::BookTransferListParams::Category::OrSymbol)
-      end
-      def category=(_)
-      end
+      sig { params(category: Lithic::Models::BookTransferListParams::Category::OrSymbol).void }
+      attr_writer :category
 
       # Date string in RFC 3339 format. Only entries created before the specified time
       #   will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
-      def end_
-      end
+      attr_reader :end_
 
-      sig { params(_: Time).returns(Time) }
-      def end_=(_)
-      end
+      sig { params(end_: Time).void }
+      attr_writer :end_
 
       # A cursor representing an item's token before which a page of results should end.
       #   Used to retrieve the previous page of results before this item.
       sig { returns(T.nilable(String)) }
-      def ending_before
-      end
+      attr_reader :ending_before
 
-      sig { params(_: String).returns(String) }
-      def ending_before=(_)
-      end
+      sig { params(ending_before: String).void }
+      attr_writer :ending_before
 
       # Globally unique identifier for the financial account or card that will send the
       #   funds. Accepted type dependent on the program's use case.
       sig { returns(T.nilable(String)) }
-      def financial_account_token
-      end
+      attr_reader :financial_account_token
 
-      sig { params(_: String).returns(String) }
-      def financial_account_token=(_)
-      end
+      sig { params(financial_account_token: String).void }
+      attr_writer :financial_account_token
 
       # Page size (for pagination).
       sig { returns(T.nilable(Integer)) }
-      def page_size
-      end
+      attr_reader :page_size
 
-      sig { params(_: Integer).returns(Integer) }
-      def page_size=(_)
-      end
+      sig { params(page_size: Integer).void }
+      attr_writer :page_size
 
       # Book transfer result to be returned.
       sig { returns(T.nilable(Lithic::Models::BookTransferListParams::Result::OrSymbol)) }
-      def result
-      end
+      attr_reader :result
 
-      sig do
-        params(_: Lithic::Models::BookTransferListParams::Result::OrSymbol)
-          .returns(Lithic::Models::BookTransferListParams::Result::OrSymbol)
-      end
-      def result=(_)
-      end
+      sig { params(result: Lithic::Models::BookTransferListParams::Result::OrSymbol).void }
+      attr_writer :result
 
       # A cursor representing an item's token after which a page of results should
       #   begin. Used to retrieve the next page of results after this item.
       sig { returns(T.nilable(String)) }
-      def starting_after
-      end
+      attr_reader :starting_after
 
-      sig { params(_: String).returns(String) }
-      def starting_after=(_)
-      end
+      sig { params(starting_after: String).void }
+      attr_writer :starting_after
 
       # Book transfer status to be returned.
       sig { returns(T.nilable(Lithic::Models::BookTransferListParams::Status::OrSymbol)) }
-      def status
-      end
+      attr_reader :status
 
-      sig do
-        params(_: Lithic::Models::BookTransferListParams::Status::OrSymbol)
-          .returns(Lithic::Models::BookTransferListParams::Status::OrSymbol)
-      end
-      def status=(_)
-      end
+      sig { params(status: Lithic::Models::BookTransferListParams::Status::OrSymbol).void }
+      attr_writer :status
 
       sig do
         params(

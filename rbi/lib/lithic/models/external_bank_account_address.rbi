@@ -4,52 +4,25 @@ module Lithic
   module Models
     class ExternalBankAccountAddress < Lithic::BaseModel
       sig { returns(String) }
-      def address1
-      end
-
-      sig { params(_: String).returns(String) }
-      def address1=(_)
-      end
+      attr_accessor :address1
 
       sig { returns(String) }
-      def city
-      end
-
-      sig { params(_: String).returns(String) }
-      def city=(_)
-      end
+      attr_accessor :city
 
       sig { returns(String) }
-      def country
-      end
-
-      sig { params(_: String).returns(String) }
-      def country=(_)
-      end
+      attr_accessor :country
 
       sig { returns(String) }
-      def postal_code
-      end
-
-      sig { params(_: String).returns(String) }
-      def postal_code=(_)
-      end
+      attr_accessor :postal_code
 
       sig { returns(String) }
-      def state
-      end
-
-      sig { params(_: String).returns(String) }
-      def state=(_)
-      end
+      attr_accessor :state
 
       sig { returns(T.nilable(String)) }
-      def address2
-      end
+      attr_reader :address2
 
-      sig { params(_: String).returns(String) }
-      def address2=(_)
-      end
+      sig { params(address2: String).void }
+      attr_writer :address2
 
       sig do
         params(

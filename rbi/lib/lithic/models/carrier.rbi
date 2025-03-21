@@ -5,12 +5,10 @@ module Lithic
     class Carrier < Lithic::BaseModel
       # QR code url to display on the card carrier
       sig { returns(T.nilable(String)) }
-      def qr_code_url
-      end
+      attr_reader :qr_code_url
 
-      sig { params(_: String).returns(String) }
-      def qr_code_url=(_)
-      end
+      sig { params(qr_code_url: String).void }
+      attr_writer :qr_code_url
 
       sig { params(qr_code_url: String).returns(T.attached_class) }
       def self.new(qr_code_url: nil)

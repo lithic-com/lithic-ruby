@@ -9,109 +9,87 @@ module Lithic
       # Date string in RFC 3339 format. Only entries created after the specified time
       #   will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
-      def begin_
-      end
+      attr_reader :begin_
 
-      sig { params(_: Time).returns(Time) }
-      def begin_=(_)
-      end
+      sig { params(begin_: Time).void }
+      attr_writer :begin_
 
       # Email address of the account holder. The query must be an exact match, case
       #   insensitive.
       sig { returns(T.nilable(String)) }
-      def email
-      end
+      attr_reader :email
 
-      sig { params(_: String).returns(String) }
-      def email=(_)
-      end
+      sig { params(email: String).void }
+      attr_writer :email
 
       # Date string in RFC 3339 format. Only entries created before the specified time
       #   will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
-      def end_
-      end
+      attr_reader :end_
 
-      sig { params(_: Time).returns(Time) }
-      def end_=(_)
-      end
+      sig { params(end_: Time).void }
+      attr_writer :end_
 
       # A cursor representing an item's token before which a page of results should end.
       #   Used to retrieve the previous page of results before this item.
       sig { returns(T.nilable(String)) }
-      def ending_before
-      end
+      attr_reader :ending_before
 
-      sig { params(_: String).returns(String) }
-      def ending_before=(_)
-      end
+      sig { params(ending_before: String).void }
+      attr_writer :ending_before
 
       # If applicable, represents the external_id associated with the account_holder.
       sig { returns(T.nilable(String)) }
-      def external_id
-      end
+      attr_reader :external_id
 
-      sig { params(_: String).returns(String) }
-      def external_id=(_)
-      end
+      sig { params(external_id: String).void }
+      attr_writer :external_id
 
       # (Individual Account Holders only) The first name of the account holder. The
       #   query is case insensitive and supports partial matches.
       sig { returns(T.nilable(String)) }
-      def first_name
-      end
+      attr_reader :first_name
 
-      sig { params(_: String).returns(String) }
-      def first_name=(_)
-      end
+      sig { params(first_name: String).void }
+      attr_writer :first_name
 
       # (Individual Account Holders only) The last name of the account holder. The query
       #   is case insensitive and supports partial matches.
       sig { returns(T.nilable(String)) }
-      def last_name
-      end
+      attr_reader :last_name
 
-      sig { params(_: String).returns(String) }
-      def last_name=(_)
-      end
+      sig { params(last_name: String).void }
+      attr_writer :last_name
 
       # (Business Account Holders only) The legal business name of the account holder.
       #   The query is case insensitive and supports partial matches.
       sig { returns(T.nilable(String)) }
-      def legal_business_name
-      end
+      attr_reader :legal_business_name
 
-      sig { params(_: String).returns(String) }
-      def legal_business_name=(_)
-      end
+      sig { params(legal_business_name: String).void }
+      attr_writer :legal_business_name
 
       # The number of account_holders to limit the response to.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
+      attr_reader :limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def limit=(_)
-      end
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       # Phone number of the account holder. The query must be an exact match.
       sig { returns(T.nilable(String)) }
-      def phone_number
-      end
+      attr_reader :phone_number
 
-      sig { params(_: String).returns(String) }
-      def phone_number=(_)
-      end
+      sig { params(phone_number: String).void }
+      attr_writer :phone_number
 
       # A cursor representing an item's token after which a page of results should
       #   begin. Used to retrieve the next page of results after this item.
       sig { returns(T.nilable(String)) }
-      def starting_after
-      end
+      attr_reader :starting_after
 
-      sig { params(_: String).returns(String) }
-      def starting_after=(_)
-      end
+      sig { params(starting_after: String).void }
+      attr_writer :starting_after
 
       sig do
         params(

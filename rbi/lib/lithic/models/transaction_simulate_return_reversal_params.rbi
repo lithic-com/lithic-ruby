@@ -8,12 +8,7 @@ module Lithic
 
       # The transaction token returned from the /v1/simulate/authorize response.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       sig do
         params(token: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))

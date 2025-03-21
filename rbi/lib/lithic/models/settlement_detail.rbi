@@ -5,206 +5,103 @@ module Lithic
     class SettlementDetail < Lithic::BaseModel
       # Globally unique identifier denoting the Settlement Detail.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
       #   for Visa).
       sig { returns(String) }
-      def account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_token=(_)
-      end
+      attr_accessor :account_token
 
       # Globally unique identifier denoting the card program that the associated
       #   Transaction occurred on.
       sig { returns(String) }
-      def card_program_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def card_program_token=(_)
-      end
+      attr_accessor :card_program_token
 
       # Globally unique identifier denoting the card that the associated Transaction
       #   occurred on.
       sig { returns(String) }
-      def card_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def card_token=(_)
-      end
+      attr_accessor :card_token
 
       # Date and time when the transaction first occurred. UTC time zone.
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Three-character alphabetic ISO 4217 code.
       sig { returns(String) }
-      def currency
-      end
-
-      sig { params(_: String).returns(String) }
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       # The total gross amount of disputes settlements.
       sig { returns(Integer) }
-      def disputes_gross_amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def disputes_gross_amount=(_)
-      end
+      attr_accessor :disputes_gross_amount
 
       # Globally unique identifiers denoting the Events associated with this settlement.
       sig { returns(T::Array[String]) }
-      def event_tokens
-      end
-
-      sig { params(_: T::Array[String]).returns(T::Array[String]) }
-      def event_tokens=(_)
-      end
+      attr_accessor :event_tokens
 
       # The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
       #   for Visa).
       sig { returns(String) }
-      def institution
-      end
-
-      sig { params(_: String).returns(String) }
-      def institution=(_)
-      end
+      attr_accessor :institution
 
       # The total amount of interchange in six-digit extended precision.
       sig { returns(Integer) }
-      def interchange_fee_extended_precision
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def interchange_fee_extended_precision=(_)
-      end
+      attr_accessor :interchange_fee_extended_precision
 
       # The total amount of interchange.
       sig { returns(Integer) }
-      def interchange_gross_amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def interchange_gross_amount=(_)
-      end
+      attr_accessor :interchange_gross_amount
 
       # Card network where the transaction took place.
       sig { returns(Lithic::Models::SettlementDetail::Network::TaggedSymbol) }
-      def network
-      end
-
-      sig do
-        params(_: Lithic::Models::SettlementDetail::Network::TaggedSymbol)
-          .returns(Lithic::Models::SettlementDetail::Network::TaggedSymbol)
-      end
-      def network=(_)
-      end
+      attr_accessor :network
 
       # The total gross amount of other fees by type.
       sig { returns(Lithic::Models::SettlementDetail::OtherFeesDetails) }
-      def other_fees_details
-      end
+      attr_reader :other_fees_details
 
       sig do
-        params(_: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Util::AnyHash))
+        params(
+          other_fees_details: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Util::AnyHash)
+        )
+          .void
       end
-      def other_fees_details=(_)
-      end
+      attr_writer :other_fees_details
 
       # Total amount of gross other fees outside of interchange.
       sig { returns(Integer) }
-      def other_fees_gross_amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def other_fees_gross_amount=(_)
-      end
+      attr_accessor :other_fees_gross_amount
 
       # Date of when the report was first generated.
       sig { returns(String) }
-      def report_date
-      end
-
-      sig { params(_: String).returns(String) }
-      def report_date=(_)
-      end
+      attr_accessor :report_date
 
       # Date of when money movement is triggered for the transaction.
       sig { returns(String) }
-      def settlement_date
-      end
-
-      sig { params(_: String).returns(String) }
-      def settlement_date=(_)
-      end
+      attr_accessor :settlement_date
 
       # Globally unique identifier denoting the associated Transaction object.
       sig { returns(String) }
-      def transaction_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def transaction_token=(_)
-      end
+      attr_accessor :transaction_token
 
       # The total amount of settlement impacting transactions (excluding interchange,
       #   fees, and disputes).
       sig { returns(Integer) }
-      def transactions_gross_amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def transactions_gross_amount=(_)
-      end
+      attr_accessor :transactions_gross_amount
 
       # The type of settlement record.
       sig { returns(Lithic::Models::SettlementDetail::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Lithic::Models::SettlementDetail::Type::TaggedSymbol)
-          .returns(Lithic::Models::SettlementDetail::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Date and time when the transaction first occurred. UTC time zone.
       sig { returns(Time) }
-      def updated
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def updated=(_)
-      end
+      attr_accessor :updated
 
       # Network's description of a fee, only present on records with type `FEE`.
       sig { returns(T.nilable(String)) }
-      def fee_description
-      end
+      attr_reader :fee_description
 
-      sig { params(_: String).returns(String) }
-      def fee_description=(_)
-      end
+      sig { params(fee_description: String).void }
+      attr_writer :fee_description
 
       sig do
         params(
@@ -310,12 +207,10 @@ module Lithic
 
       class OtherFeesDetails < Lithic::BaseModel
         sig { returns(T.nilable(Integer)) }
-        def isa
-        end
+        attr_reader :isa
 
-        sig { params(_: Integer).returns(Integer) }
-        def isa=(_)
-        end
+        sig { params(isa: Integer).void }
+        attr_writer :isa
 
         # The total gross amount of other fees by type.
         sig { params(isa: Integer).returns(T.attached_class) }

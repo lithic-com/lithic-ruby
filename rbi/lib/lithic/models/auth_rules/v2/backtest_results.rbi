@@ -7,38 +7,24 @@ module Lithic
         class BacktestResults < Lithic::BaseModel
           # Auth Rule Backtest Token
           sig { returns(String) }
-          def backtest_token
-          end
-
-          sig { params(_: String).returns(String) }
-          def backtest_token=(_)
-          end
+          attr_accessor :backtest_token
 
           sig { returns(Lithic::Models::AuthRules::V2::BacktestResults::Results) }
-          def results
-          end
+          attr_reader :results
 
-          sig do
-            params(_: T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results, Lithic::Util::AnyHash))
-              .returns(T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results, Lithic::Util::AnyHash))
-          end
-          def results=(_)
-          end
+          sig { params(results: T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results, Lithic::Util::AnyHash)).void }
+          attr_writer :results
 
           sig { returns(Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters) }
-          def simulation_parameters
-          end
+          attr_reader :simulation_parameters
 
           sig do
             params(
-              _: T.any(Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters, Lithic::Util::AnyHash)
+              simulation_parameters: T.any(Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters, Lithic::Util::AnyHash)
             )
-              .returns(
-                T.any(Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters, Lithic::Util::AnyHash)
-              )
+              .void
           end
-          def simulation_parameters=(_)
-          end
+          attr_writer :simulation_parameters
 
           sig do
             params(
@@ -66,42 +52,30 @@ module Lithic
 
           class Results < Lithic::BaseModel
             sig { returns(T.nilable(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion)) }
-            def current_version
-            end
+            attr_reader :current_version
 
             sig do
               params(
-                _: T.nilable(
+                current_version: T.nilable(
                   T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion, Lithic::Util::AnyHash)
                 )
               )
-                .returns(
-                  T.nilable(
-                    T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion, Lithic::Util::AnyHash)
-                  )
-                )
+                .void
             end
-            def current_version=(_)
-            end
+            attr_writer :current_version
 
             sig { returns(T.nilable(Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion)) }
-            def draft_version
-            end
+            attr_reader :draft_version
 
             sig do
               params(
-                _: T.nilable(
+                draft_version: T.nilable(
                   T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion, Lithic::Util::AnyHash)
                 )
               )
-                .returns(
-                  T.nilable(
-                    T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion, Lithic::Util::AnyHash)
-                  )
-                )
+                .void
             end
-            def draft_version=(_)
-            end
+            attr_writer :draft_version
 
             sig do
               params(
@@ -134,23 +108,19 @@ module Lithic
               #   backtest period, or the number of transactions that would have been approved if
               #   the rule was evaluated in shadow mode.
               sig { returns(T.nilable(Integer)) }
-              def approved
-              end
+              attr_reader :approved
 
-              sig { params(_: Integer).returns(Integer) }
-              def approved=(_)
-              end
+              sig { params(approved: Integer).void }
+              attr_writer :approved
 
               # The total number of historical transactions declined by this rule during the
               #   backtest period, or the number of transactions that would have been declined if
               #   the rule was evaluated in shadow mode.
               sig { returns(T.nilable(Integer)) }
-              def declined
-              end
+              attr_reader :declined
 
-              sig { params(_: Integer).returns(Integer) }
-              def declined=(_)
-              end
+              sig { params(declined: Integer).void }
+              attr_writer :declined
 
               # Example authorization request events that would have been approved or declined.
               sig do
@@ -158,39 +128,28 @@ module Lithic
                   T.nilable(T::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example])
                 )
               end
-              def examples
-              end
+              attr_reader :examples
 
               sig do
                 params(
-                  _: T::Array[
+                  examples: T::Array[
                   T.any(
                     Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example,
                     Lithic::Util::AnyHash
                   )
                   ]
                 )
-                  .returns(
-                    T::Array[
-                    T.any(
-                      Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example,
-                      Lithic::Util::AnyHash
-                    )
-                    ]
-                  )
+                  .void
               end
-              def examples=(_)
-              end
+              attr_writer :examples
 
               # The version of the rule, this is incremented whenever the rule's parameters
               #   change.
               sig { returns(T.nilable(Integer)) }
-              def version
-              end
+              attr_reader :version
 
-              sig { params(_: Integer).returns(Integer) }
-              def version=(_)
-              end
+              sig { params(version: Integer).void }
+              attr_writer :version
 
               sig do
                 params(
@@ -226,30 +185,24 @@ module Lithic
               class Example < Lithic::BaseModel
                 # Whether the rule would have approved the authorization request.
                 sig { returns(T.nilable(T::Boolean)) }
-                def approved
-                end
+                attr_reader :approved
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def approved=(_)
-                end
+                sig { params(approved: T::Boolean).void }
+                attr_writer :approved
 
                 # The authorization request event token.
                 sig { returns(T.nilable(String)) }
-                def event_token
-                end
+                attr_reader :event_token
 
-                sig { params(_: String).returns(String) }
-                def event_token=(_)
-                end
+                sig { params(event_token: String).void }
+                attr_writer :event_token
 
                 # The timestamp of the authorization request event.
                 sig { returns(T.nilable(Time)) }
-                def timestamp
-                end
+                attr_reader :timestamp
 
-                sig { params(_: Time).returns(Time) }
-                def timestamp=(_)
-                end
+                sig { params(timestamp: Time).void }
+                attr_writer :timestamp
 
                 sig do
                   params(approved: T::Boolean, event_token: String, timestamp: Time).returns(T.attached_class)
@@ -268,23 +221,19 @@ module Lithic
               #   backtest period, or the number of transactions that would have been approved if
               #   the rule was evaluated in shadow mode.
               sig { returns(T.nilable(Integer)) }
-              def approved
-              end
+              attr_reader :approved
 
-              sig { params(_: Integer).returns(Integer) }
-              def approved=(_)
-              end
+              sig { params(approved: Integer).void }
+              attr_writer :approved
 
               # The total number of historical transactions declined by this rule during the
               #   backtest period, or the number of transactions that would have been declined if
               #   the rule was evaluated in shadow mode.
               sig { returns(T.nilable(Integer)) }
-              def declined
-              end
+              attr_reader :declined
 
-              sig { params(_: Integer).returns(Integer) }
-              def declined=(_)
-              end
+              sig { params(declined: Integer).void }
+              attr_writer :declined
 
               # Example authorization request events that would have been approved or declined.
               sig do
@@ -292,39 +241,28 @@ module Lithic
                   T.nilable(T::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example])
                 )
               end
-              def examples
-              end
+              attr_reader :examples
 
               sig do
                 params(
-                  _: T::Array[
+                  examples: T::Array[
                   T.any(
                     Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example,
                     Lithic::Util::AnyHash
                   )
                   ]
                 )
-                  .returns(
-                    T::Array[
-                    T.any(
-                      Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example,
-                      Lithic::Util::AnyHash
-                    )
-                    ]
-                  )
+                  .void
               end
-              def examples=(_)
-              end
+              attr_writer :examples
 
               # The version of the rule, this is incremented whenever the rule's parameters
               #   change.
               sig { returns(T.nilable(Integer)) }
-              def version
-              end
+              attr_reader :version
 
-              sig { params(_: Integer).returns(Integer) }
-              def version=(_)
-              end
+              sig { params(version: Integer).void }
+              attr_writer :version
 
               sig do
                 params(
@@ -360,30 +298,24 @@ module Lithic
               class Example < Lithic::BaseModel
                 # Whether the rule would have approved the authorization request.
                 sig { returns(T.nilable(T::Boolean)) }
-                def approved
-                end
+                attr_reader :approved
 
-                sig { params(_: T::Boolean).returns(T::Boolean) }
-                def approved=(_)
-                end
+                sig { params(approved: T::Boolean).void }
+                attr_writer :approved
 
                 # The authorization request event token.
                 sig { returns(T.nilable(String)) }
-                def event_token
-                end
+                attr_reader :event_token
 
-                sig { params(_: String).returns(String) }
-                def event_token=(_)
-                end
+                sig { params(event_token: String).void }
+                attr_writer :event_token
 
                 # The timestamp of the authorization request event.
                 sig { returns(T.nilable(Time)) }
-                def timestamp
-                end
+                attr_reader :timestamp
 
-                sig { params(_: Time).returns(Time) }
-                def timestamp=(_)
-                end
+                sig { params(timestamp: Time).void }
+                attr_writer :timestamp
 
                 sig do
                   params(approved: T::Boolean, event_token: String, timestamp: Time).returns(T.attached_class)
@@ -401,30 +333,24 @@ module Lithic
           class SimulationParameters < Lithic::BaseModel
             # Auth Rule Token
             sig { returns(T.nilable(String)) }
-            def auth_rule_token
-            end
+            attr_reader :auth_rule_token
 
-            sig { params(_: String).returns(String) }
-            def auth_rule_token=(_)
-            end
+            sig { params(auth_rule_token: String).void }
+            attr_writer :auth_rule_token
 
             # The end time of the simulation.
             sig { returns(T.nilable(Time)) }
-            def end_
-            end
+            attr_reader :end_
 
-            sig { params(_: Time).returns(Time) }
-            def end_=(_)
-            end
+            sig { params(end_: Time).void }
+            attr_writer :end_
 
             # The start time of the simulation.
             sig { returns(T.nilable(Time)) }
-            def start
-            end
+            attr_reader :start
 
-            sig { params(_: Time).returns(Time) }
-            def start=(_)
-            end
+            sig { params(start: Time).void }
+            attr_writer :start
 
             sig { params(auth_rule_token: String, end_: Time, start: Time).returns(T.attached_class) }
             def self.new(auth_rule_token: nil, end_: nil, start: nil)

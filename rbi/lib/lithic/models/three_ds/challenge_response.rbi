@@ -9,24 +9,11 @@ module Lithic
         #   Event in the [ThreeDSAuthentication](#/components/schemas/ThreeDSAuthentication)
         #   object
         sig { returns(String) }
-        def token
-        end
-
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        attr_accessor :token
 
         # Whether the Cardholder has Approved or Declined the issued Challenge
         sig { returns(Lithic::Models::ThreeDS::ChallengeResult::OrSymbol) }
-        def challenge_response
-        end
-
-        sig do
-          params(_: Lithic::Models::ThreeDS::ChallengeResult::OrSymbol)
-            .returns(Lithic::Models::ThreeDS::ChallengeResult::OrSymbol)
-        end
-        def challenge_response=(_)
-        end
+        attr_accessor :challenge_response
 
         sig do
           params(token: String, challenge_response: Lithic::Models::ThreeDS::ChallengeResult::OrSymbol)

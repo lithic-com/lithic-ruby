@@ -9,12 +9,7 @@ module Lithic
           include Lithic::RequestParameters
 
           sig { returns(String) }
-          def auth_rule_token
-          end
-
-          sig { params(_: String).returns(String) }
-          def auth_rule_token=(_)
-          end
+          attr_accessor :auth_rule_token
 
           sig do
             params(

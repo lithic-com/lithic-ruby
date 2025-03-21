@@ -5,54 +5,23 @@ module Lithic
     class Document < Lithic::BaseModel
       # Globally unique identifier for the document.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Globally unique identifier for the account holder.
       sig { returns(String) }
-      def account_holder_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_holder_token=(_)
-      end
+      attr_accessor :account_holder_token
 
       # Type of documentation to be submitted for verification of an account holder
       sig { returns(Lithic::Models::Document::DocumentType::TaggedSymbol) }
-      def document_type
-      end
-
-      sig do
-        params(_: Lithic::Models::Document::DocumentType::TaggedSymbol)
-          .returns(Lithic::Models::Document::DocumentType::TaggedSymbol)
-      end
-      def document_type=(_)
-      end
+      attr_accessor :document_type
 
       # Globally unique identifier for an entity.
       sig { returns(String) }
-      def entity_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def entity_token=(_)
-      end
+      attr_accessor :entity_token
 
       # Represents a single image of the document to upload.
       sig { returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload]) }
-      def required_document_uploads
-      end
-
-      sig do
-        params(_: T::Array[Lithic::Models::Document::RequiredDocumentUpload])
-          .returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload])
-      end
-      def required_document_uploads=(_)
-      end
+      attr_accessor :required_document_uploads
 
       # Describes the document and the required document image uploads required to
       #   re-run KYC
@@ -128,86 +97,37 @@ module Lithic
       class RequiredDocumentUpload < Lithic::BaseModel
         # Globally unique identifier for the document upload.
         sig { returns(String) }
-        def token
-        end
-
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        attr_accessor :token
 
         # A list of status reasons associated with a KYB account holder that have been
         #   satisfied by the document upload
         sig { returns(T::Array[String]) }
-        def accepted_entity_status_reasons
-        end
-
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def accepted_entity_status_reasons=(_)
-        end
+        attr_accessor :accepted_entity_status_reasons
 
         # When the document upload was created
         sig { returns(Time) }
-        def created
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created=(_)
-        end
+        attr_accessor :created
 
         # Type of image to upload.
         sig { returns(Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol) }
-        def image_type
-        end
-
-        sig do
-          params(_: Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol)
-            .returns(Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol)
-        end
-        def image_type=(_)
-        end
+        attr_accessor :image_type
 
         # A list of status reasons associated with a KYB account holder that have not been
         #   satisfied by the document upload
         sig { returns(T::Array[String]) }
-        def rejected_entity_status_reasons
-        end
-
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def rejected_entity_status_reasons=(_)
-        end
+        attr_accessor :rejected_entity_status_reasons
 
         # Status of an account holder's document upload.
         sig { returns(Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol) }
-        def status
-        end
-
-        sig do
-          params(_: Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol)
-            .returns(Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol)
-        end
-        def status=(_)
-        end
+        attr_accessor :status
 
         # Reasons for document image upload status.
         sig { returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol]) }
-        def status_reasons
-        end
-
-        sig do
-          params(_: T::Array[Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol])
-            .returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol])
-        end
-        def status_reasons=(_)
-        end
+        attr_accessor :status_reasons
 
         # When the document upload was last updated
         sig { returns(Time) }
-        def updated
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def updated=(_)
-        end
+        attr_accessor :updated
 
         # URL to upload document image to.
         #
@@ -215,12 +135,7 @@ module Lithic
         #   refresh the URLs by retrieving the document upload from
         #   `GET /account_holders/{account_holder_token}/documents`.
         sig { returns(String) }
-        def upload_url
-        end
-
-        sig { params(_: String).returns(String) }
-        def upload_url=(_)
-        end
+        attr_accessor :upload_url
 
         # Represents a single image of the document to upload.
         sig do

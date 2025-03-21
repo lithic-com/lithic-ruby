@@ -5,154 +5,64 @@ module Lithic
     class Payment < Lithic::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
-      def token
-      end
-
-      sig { params(_: String).returns(String) }
-      def token=(_)
-      end
+      attr_accessor :token
 
       # Payment category
       sig { returns(Lithic::Models::Payment::Category::TaggedSymbol) }
-      def category
-      end
-
-      sig do
-        params(_: Lithic::Models::Payment::Category::TaggedSymbol)
-          .returns(Lithic::Models::Payment::Category::TaggedSymbol)
-      end
-      def category=(_)
-      end
+      attr_accessor :category
 
       # Date and time when the payment first occurred. UTC time zone.
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # 3-character alphabetic ISO 4217 code for the settling currency of the payment.
       sig { returns(String) }
-      def currency
-      end
-
-      sig { params(_: String).returns(String) }
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       # A string that provides a description of the payment; may be useful to display to
       #   users.
       sig { returns(String) }
-      def descriptor
-      end
-
-      sig { params(_: String).returns(String) }
-      def descriptor=(_)
-      end
+      attr_accessor :descriptor
 
       sig { returns(Lithic::Models::Payment::Direction::TaggedSymbol) }
-      def direction
-      end
-
-      sig do
-        params(_: Lithic::Models::Payment::Direction::TaggedSymbol)
-          .returns(Lithic::Models::Payment::Direction::TaggedSymbol)
-      end
-      def direction=(_)
-      end
+      attr_accessor :direction
 
       # A list of all payment events that have modified this payment.
       sig { returns(T::Array[Lithic::Models::Payment::Event]) }
-      def events
-      end
-
-      sig { params(_: T::Array[Lithic::Models::Payment::Event]).returns(T::Array[Lithic::Models::Payment::Event]) }
-      def events=(_)
-      end
+      attr_accessor :events
 
       sig { returns(T.nilable(String)) }
-      def external_bank_account_token
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def external_bank_account_token=(_)
-      end
+      attr_accessor :external_bank_account_token
 
       sig { returns(String) }
-      def financial_account_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def financial_account_token=(_)
-      end
+      attr_accessor :financial_account_token
 
       sig { returns(Lithic::Models::Payment::Method::TaggedSymbol) }
-      def method_
-      end
-
-      sig do
-        params(_: Lithic::Models::Payment::Method::TaggedSymbol)
-          .returns(Lithic::Models::Payment::Method::TaggedSymbol)
-      end
-      def method_=(_)
-      end
+      attr_accessor :method_
 
       sig { returns(Lithic::Models::Payment::MethodAttributes) }
-      def method_attributes
-      end
+      attr_reader :method_attributes
 
-      sig do
-        params(_: T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Util::AnyHash))
-          .returns(T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Util::AnyHash))
-      end
-      def method_attributes=(_)
-      end
+      sig { params(method_attributes: T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Util::AnyHash)).void }
+      attr_writer :method_attributes
 
       # Pending amount of the payment in the currency's smallest unit (e.g., cents). The
       #   value of this field will go to zero over time once the payment is settled.
       sig { returns(Integer) }
-      def pending_amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def pending_amount=(_)
-      end
+      attr_accessor :pending_amount
 
       # APPROVED payments were successful while DECLINED payments were declined by
       #   Lithic or returned.
       sig { returns(Lithic::Models::Payment::Result::TaggedSymbol) }
-      def result
-      end
-
-      sig do
-        params(_: Lithic::Models::Payment::Result::TaggedSymbol)
-          .returns(Lithic::Models::Payment::Result::TaggedSymbol)
-      end
-      def result=(_)
-      end
+      attr_accessor :result
 
       # Amount of the payment that has been settled in the currency's smallest unit
       #   (e.g., cents).
       sig { returns(Integer) }
-      def settled_amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def settled_amount=(_)
-      end
+      attr_accessor :settled_amount
 
       sig { returns(Lithic::Models::Payment::Source::TaggedSymbol) }
-      def source
-      end
-
-      sig do
-        params(_: Lithic::Models::Payment::Source::TaggedSymbol)
-          .returns(Lithic::Models::Payment::Source::TaggedSymbol)
-      end
-      def source=(_)
-      end
+      attr_accessor :source
 
       # Status types:
       #
@@ -162,32 +72,14 @@ module Lithic
       #   - `RETURNED` - The payment has been returned.
       #   - `SETTLED` - The payment is completed.
       sig { returns(Lithic::Models::Payment::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Lithic::Models::Payment::Status::TaggedSymbol)
-          .returns(Lithic::Models::Payment::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # Date and time when the financial transaction was last updated. UTC time zone.
       sig { returns(Time) }
-      def updated
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def updated=(_)
-      end
+      attr_accessor :updated
 
       sig { returns(T.nilable(String)) }
-      def user_defined_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def user_defined_id=(_)
-      end
+      attr_accessor :user_defined_id
 
       sig do
         params(
@@ -297,44 +189,21 @@ module Lithic
       class Event < Lithic::BaseModel
         # Globally unique identifier.
         sig { returns(String) }
-        def token
-        end
-
-        sig { params(_: String).returns(String) }
-        def token=(_)
-        end
+        attr_accessor :token
 
         # Amount of the financial event that has been settled in the currency's smallest
         #   unit (e.g., cents).
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # Date and time when the financial event occurred. UTC time zone.
         sig { returns(Time) }
-        def created
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created=(_)
-        end
+        attr_accessor :created
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         sig { returns(Lithic::Models::Payment::Event::Result::TaggedSymbol) }
-        def result
-        end
-
-        sig do
-          params(_: Lithic::Models::Payment::Event::Result::TaggedSymbol)
-            .returns(Lithic::Models::Payment::Event::Result::TaggedSymbol)
-        end
-        def result=(_)
-        end
+        attr_accessor :result
 
         # Event types:
         #
@@ -357,27 +226,14 @@ module Lithic
         #   - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
         #     Financial Institution.
         sig { returns(Lithic::Models::Payment::Event::Type::TaggedSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: Lithic::Models::Payment::Event::Type::TaggedSymbol)
-            .returns(Lithic::Models::Payment::Event::Type::TaggedSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         # More detailed reasons for the event
         sig { returns(T.nilable(T::Array[Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol])) }
-        def detailed_results
-        end
+        attr_reader :detailed_results
 
-        sig do
-          params(_: T::Array[Lithic::Models::Payment::Event::DetailedResult::OrSymbol])
-            .returns(T::Array[Lithic::Models::Payment::Event::DetailedResult::OrSymbol])
-        end
-        def detailed_results=(_)
-        end
+        sig { params(detailed_results: T::Array[Lithic::Models::Payment::Event::DetailedResult::OrSymbol]).void }
+        attr_writer :detailed_results
 
         sig do
           params(
@@ -521,55 +377,22 @@ module Lithic
 
       class MethodAttributes < Lithic::BaseModel
         sig { returns(T.nilable(String)) }
-        def company_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def company_id=(_)
-        end
+        attr_accessor :company_id
 
         sig { returns(T.nilable(String)) }
-        def receipt_routing_number
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def receipt_routing_number=(_)
-        end
+        attr_accessor :receipt_routing_number
 
         sig { returns(T.nilable(Integer)) }
-        def retries
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def retries=(_)
-        end
+        attr_accessor :retries
 
         sig { returns(T.nilable(String)) }
-        def return_reason_code
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def return_reason_code=(_)
-        end
+        attr_accessor :return_reason_code
 
         sig { returns(Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol) }
-        def sec_code
-        end
-
-        sig do
-          params(_: Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol)
-            .returns(Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol)
-        end
-        def sec_code=(_)
-        end
+        attr_accessor :sec_code
 
         sig { returns(T::Array[T.nilable(String)]) }
-        def trace_numbers
-        end
-
-        sig { params(_: T::Array[T.nilable(String)]).returns(T::Array[T.nilable(String)]) }
-        def trace_numbers=(_)
-        end
+        attr_accessor :trace_numbers
 
         sig do
           params(

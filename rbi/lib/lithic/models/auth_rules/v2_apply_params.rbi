@@ -9,39 +9,22 @@ module Lithic
 
         # Account tokens to which the Auth Rule applies.
         sig { returns(T::Array[String]) }
-        def account_tokens
-        end
-
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def account_tokens=(_)
-        end
+        attr_accessor :account_tokens
 
         # Card tokens to which the Auth Rule applies.
         sig { returns(T::Array[String]) }
-        def card_tokens
-        end
-
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def card_tokens=(_)
-        end
+        attr_accessor :card_tokens
 
         # Whether the Auth Rule applies to all authorizations on the card program.
         sig { returns(T::Boolean) }
-        def program_level
-        end
-
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def program_level=(_)
-        end
+        attr_accessor :program_level
 
         # Card tokens to which the Auth Rule does not apply.
         sig { returns(T.nilable(T::Array[String])) }
-        def excluded_card_tokens
-        end
+        attr_reader :excluded_card_tokens
 
-        sig { params(_: T::Array[String]).returns(T::Array[String]) }
-        def excluded_card_tokens=(_)
-        end
+        sig { params(excluded_card_tokens: T::Array[String]).void }
+        attr_writer :excluded_card_tokens
 
         sig do
           params(
