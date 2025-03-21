@@ -15,10 +15,7 @@ module Lithic
       end
 
       sig do
-        params(
-          dispute_token: String,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+        params(dispute_token: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(dispute_token:, request_options: {})

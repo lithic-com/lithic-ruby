@@ -16,10 +16,7 @@ module Lithic
         end
 
         sig do
-          params(
-            card_token: String,
-            request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
-          )
+          params(card_token: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
             .returns(T.attached_class)
         end
         def self.new(card_token:, request_options: {})

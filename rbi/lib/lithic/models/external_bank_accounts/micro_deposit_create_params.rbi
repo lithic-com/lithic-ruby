@@ -18,7 +18,7 @@ module Lithic
         sig do
           params(
             micro_deposits: T::Array[Integer],
-            request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

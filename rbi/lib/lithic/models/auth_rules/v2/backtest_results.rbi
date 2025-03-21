@@ -43,8 +43,8 @@ module Lithic
           sig do
             params(
               backtest_token: String,
-              results: Lithic::Models::AuthRules::V2::BacktestResults::Results,
-              simulation_parameters: Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters
+              results: T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results, Lithic::Util::AnyHash),
+              simulation_parameters: T.any(Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters, Lithic::Util::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -105,8 +105,12 @@ module Lithic
 
             sig do
               params(
-                current_version: T.nilable(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion),
-                draft_version: T.nilable(Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion)
+                current_version: T.nilable(
+                  T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion, Lithic::Util::AnyHash)
+                ),
+                draft_version: T.nilable(
+                  T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion, Lithic::Util::AnyHash)
+                )
               )
                 .returns(T.attached_class)
             end

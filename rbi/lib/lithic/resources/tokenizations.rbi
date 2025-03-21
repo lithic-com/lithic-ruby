@@ -7,7 +7,7 @@ module Lithic
       sig do
         params(
           tokenization_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::TokenizationRetrieveResponse)
       end
@@ -29,7 +29,7 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           tokenization_channel: Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::CursorPage[Lithic::Models::Tokenization])
       end
@@ -68,7 +68,7 @@ module Lithic
       sig do
         params(
           tokenization_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .void
       end
@@ -91,7 +91,7 @@ module Lithic
       sig do
         params(
           tokenization_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .void
       end
@@ -113,7 +113,7 @@ module Lithic
       sig do
         params(
           tokenization_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .void
       end
@@ -138,7 +138,7 @@ module Lithic
         params(
           tokenization_token: String,
           activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .void
       end
@@ -165,7 +165,7 @@ module Lithic
           device_score: Integer,
           entity: String,
           wallet_recommended_decision: Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::TokenizationSimulateResponse)
       end
@@ -203,7 +203,7 @@ module Lithic
       sig do
         params(
           tokenization_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .void
       end
@@ -226,7 +226,7 @@ module Lithic
         params(
           tokenization_token: String,
           digital_card_art_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::TokenizationUpdateDigitalCardArtResponse)
       end

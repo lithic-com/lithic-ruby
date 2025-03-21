@@ -9,7 +9,7 @@ module Lithic
         sig do
           params(
             transaction_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::Models::Transactions::EnhancedCommercialDataRetrieveResponse)
         end

@@ -41,7 +41,7 @@ module Lithic
           account_token: String,
           business_account_token: String,
           type: Lithic::Models::FinancialAccountListParams::Type::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

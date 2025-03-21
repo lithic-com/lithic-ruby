@@ -10,7 +10,7 @@ module Lithic
           balance_date: Time,
           business_account_token: String,
           financial_account_type: Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::SinglePage[Lithic::Models::Balance])
       end

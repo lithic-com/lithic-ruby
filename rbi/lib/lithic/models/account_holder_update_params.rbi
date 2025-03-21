@@ -191,20 +191,20 @@ module Lithic
         params(
           beneficial_owner_entities: T::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity],
           beneficial_owner_individuals: T::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual],
-          business_entity: Lithic::Models::AccountHolderUpdateParams::BusinessEntity,
-          control_person: Lithic::Models::AccountHolderUpdateParams::ControlPerson,
+          business_entity: T.any(Lithic::Models::AccountHolderUpdateParams::BusinessEntity, Lithic::Util::AnyHash),
+          control_person: T.any(Lithic::Models::AccountHolderUpdateParams::ControlPerson, Lithic::Util::AnyHash),
           external_id: String,
           nature_of_business: String,
           website_url: String,
-          individual: Lithic::Models::AccountHolderUpdateParams::Individual,
-          address: Lithic::Models::AddressUpdate,
+          individual: T.any(Lithic::Models::AccountHolderUpdateParams::Individual, Lithic::Util::AnyHash),
+          address: T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash),
           business_account_token: String,
           email: String,
           first_name: String,
           last_name: String,
           legal_business_name: String,
           phone_number: String,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -329,7 +329,7 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: Lithic::Models::AddressUpdate,
+            address: T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash),
             dba_business_name: String,
             government_id: String,
             legal_business_name: String,
@@ -452,7 +452,7 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: Lithic::Models::AddressUpdate,
+            address: T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash),
             dob: String,
             email: String,
             first_name: String,
@@ -570,7 +570,7 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: Lithic::Models::AddressUpdate,
+            address: T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash),
             dba_business_name: String,
             government_id: String,
             legal_business_name: String,
@@ -700,7 +700,7 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: Lithic::Models::AddressUpdate,
+            address: T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash),
             dob: String,
             email: String,
             first_name: String,
@@ -827,7 +827,7 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: Lithic::Models::AddressUpdate,
+            address: T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash),
             dob: String,
             email: String,
             first_name: String,

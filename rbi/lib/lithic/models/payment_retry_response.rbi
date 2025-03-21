@@ -15,7 +15,7 @@ module Lithic
       def balance=(_)
       end
 
-      sig { params(balance: Lithic::Models::Balance).returns(T.attached_class) }
+      sig { params(balance: T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)).returns(T.attached_class) }
       def self.new(balance: nil)
       end
 

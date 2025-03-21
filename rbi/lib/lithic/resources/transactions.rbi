@@ -16,7 +16,7 @@ module Lithic
       sig do
         params(
           transaction_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::Transaction)
       end
@@ -40,7 +40,7 @@ module Lithic
           result: Lithic::Models::TransactionListParams::Result::OrSymbol,
           starting_after: String,
           status: Lithic::Models::TransactionListParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::CursorPage[Lithic::Models::Transaction])
       end
@@ -76,7 +76,7 @@ module Lithic
       sig do
         params(
           transaction_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .void
       end
@@ -107,7 +107,7 @@ module Lithic
           partial_approval_capable: T::Boolean,
           pin: String,
           status: Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::TransactionSimulateAuthorizationResponse)
       end
@@ -168,7 +168,7 @@ module Lithic
         params(
           token: String,
           amount: Integer,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::TransactionSimulateAuthorizationAdviceResponse)
       end
@@ -192,7 +192,7 @@ module Lithic
         params(
           token: String,
           amount: Integer,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::TransactionSimulateClearingResponse)
       end
@@ -222,7 +222,7 @@ module Lithic
           pan: String,
           mcc: String,
           merchant_acceptor_id: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::TransactionSimulateCreditAuthorizationResponse)
       end
@@ -253,7 +253,7 @@ module Lithic
           amount: Integer,
           descriptor: String,
           pan: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::TransactionSimulateReturnResponse)
       end
@@ -274,7 +274,12 @@ module Lithic
       sig do
         params(
           token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(
+            T.any(
+              Lithic::RequestOptions,
+              Lithic::Util::AnyHash
+            )
+          )
         )
           .returns(Lithic::Models::TransactionSimulateReturnReversalResponse)
       end
@@ -294,7 +299,7 @@ module Lithic
           token: String,
           amount: Integer,
           type: Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
           .returns(Lithic::Models::TransactionSimulateVoidResponse)
       end

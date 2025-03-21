@@ -26,7 +26,7 @@ module Lithic
           page: T.nilable(T::Class[Lithic::BasePage[Lithic::BaseModel]]),
           stream: T.nilable(T::Class[T.anything]),
           model: T.nilable(Lithic::Converter::Input),
-          options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+          options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         }
       end
 
@@ -129,7 +129,7 @@ module Lithic
     # @api private
     sig do
       overridable
-        .params(req: Lithic::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
+        .params(req: Lithic::BaseClient::RequestComponentsShape, opts: Lithic::Util::AnyHash)
         .returns(Lithic::BaseClient::RequestInputShape)
     end
     private def build_request(req, opts)
@@ -175,7 +175,7 @@ module Lithic
         page: T.nilable(T::Class[Lithic::BasePage[Lithic::BaseModel]]),
         stream: T.nilable(T::Class[T.anything]),
         model: T.nilable(Lithic::Converter::Input),
-        options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+        options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
       )
         .returns(T.anything)
     end

@@ -251,19 +251,19 @@ module Lithic
           beneficial_owner_entities: T::Array[Lithic::Models::AccountHolder::BeneficialOwnerEntity],
           beneficial_owner_individuals: T::Array[Lithic::Models::AccountHolder::BeneficialOwnerIndividual],
           business_account_token: String,
-          business_entity: Lithic::Models::AccountHolder::BusinessEntity,
-          control_person: Lithic::Models::AccountHolder::ControlPerson,
+          business_entity: T.any(Lithic::Models::AccountHolder::BusinessEntity, Lithic::Util::AnyHash),
+          control_person: T.any(Lithic::Models::AccountHolder::ControlPerson, Lithic::Util::AnyHash),
           email: String,
           exemption_type: Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol,
           external_id: String,
-          individual: Lithic::Models::AccountHolder::Individual,
+          individual: T.any(Lithic::Models::AccountHolder::Individual, Lithic::Util::AnyHash),
           nature_of_business: String,
           phone_number: String,
           required_documents: T::Array[Lithic::Models::RequiredDocument],
           status: Lithic::Models::AccountHolder::Status::TaggedSymbol,
           status_reasons: T::Array[Lithic::Models::AccountHolder::StatusReason::TaggedSymbol],
           user_type: Lithic::Models::AccountHolder::UserType::TaggedSymbol,
-          verification_application: Lithic::Models::AccountHolder::VerificationApplication,
+          verification_application: T.any(Lithic::Models::AccountHolder::VerificationApplication, Lithic::Util::AnyHash),
           website_url: String
         )
           .returns(T.attached_class)
@@ -396,7 +396,7 @@ module Lithic
 
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             dba_business_name: String,
             entity_token: String,
             government_id: String,
@@ -507,7 +507,7 @@ module Lithic
         #   id.
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             dob: String,
             email: String,
             entity_token: String,
@@ -614,7 +614,7 @@ module Lithic
         #   which the account is being opened and KYB is being run.
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             dba_business_name: String,
             entity_token: String,
             government_id: String,
@@ -728,7 +728,7 @@ module Lithic
         #   In some cases, this individual could also be a beneficial owner listed above.
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             dob: String,
             email: String,
             entity_token: String,
@@ -847,7 +847,7 @@ module Lithic
         #   for which the account is being opened and KYC is being run.
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             dob: String,
             email: String,
             entity_token: String,

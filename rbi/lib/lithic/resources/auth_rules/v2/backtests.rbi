@@ -35,7 +35,7 @@ module Lithic
               auth_rule_token: String,
               end_: Time,
               start: Time,
-              request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
             )
               .returns(Lithic::Models::AuthRules::V2::BacktestCreateResponse)
           end
@@ -72,7 +72,7 @@ module Lithic
             params(
               auth_rule_backtest_token: String,
               auth_rule_token: String,
-              request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
             )
               .returns(Lithic::Models::AuthRules::V2::BacktestResults)
           end

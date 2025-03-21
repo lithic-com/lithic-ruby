@@ -53,7 +53,7 @@ module Lithic
             description: String,
             disabled: T::Boolean,
             event_types: T::Array[Lithic::Models::Events::SubscriptionUpdateParams::EventType::OrSymbol],
-            request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -246,7 +246,7 @@ module Lithic
           verification_method: Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol,
           verification_state: Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::TaggedSymbol,
           account_token: String,
-          address: Lithic::Models::ExternalBankAccountAddress,
+          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash),
           company_id: String,
           dob: Date,
           doing_business_as: String,

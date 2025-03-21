@@ -109,7 +109,7 @@ module Lithic
           result: Lithic::Models::TransactionListParams::Result::OrSymbol,
           starting_after: String,
           status: Lithic::Models::TransactionListParams::Status::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

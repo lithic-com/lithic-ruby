@@ -7,8 +7,12 @@ module Lithic
       include Lithic::RequestParameters
 
       sig do
-        params(request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
-          .returns(T.attached_class)
+        params(
+          request_options: T.any(
+            Lithic::RequestOptions,
+            Lithic::Util::AnyHash
+          )
+        ).returns(T.attached_class)
       end
       def self.new(request_options: {})
       end
