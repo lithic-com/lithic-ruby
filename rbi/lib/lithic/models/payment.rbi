@@ -201,7 +201,7 @@ module Lithic
           external_bank_account_token: T.nilable(String),
           financial_account_token: String,
           method_: Lithic::Models::Payment::Method::TaggedSymbol,
-          method_attributes: Lithic::Models::Payment::MethodAttributes,
+          method_attributes: T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Util::AnyHash),
           pending_amount: Integer,
           result: Lithic::Models::Payment::Result::TaggedSymbol,
           settled_amount: Integer,

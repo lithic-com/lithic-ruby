@@ -120,7 +120,7 @@ module Lithic
           token: String,
           account_token: T.nilable(String),
           created: Time,
-          credit_configuration: T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration),
+          credit_configuration: T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Util::AnyHash)),
           is_for_benefit_of: T::Boolean,
           nickname: T.nilable(String),
           status: Lithic::Models::FinancialAccount::Status::TaggedSymbol,

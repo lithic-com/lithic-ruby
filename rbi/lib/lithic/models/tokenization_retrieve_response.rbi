@@ -14,7 +14,7 @@ module Lithic
       def data=(_)
       end
 
-      sig { params(data: Lithic::Models::Tokenization).returns(T.attached_class) }
+      sig { params(data: T.any(Lithic::Models::Tokenization, Lithic::Util::AnyHash)).returns(T.attached_class) }
       def self.new(data: nil)
       end
 

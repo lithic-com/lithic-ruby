@@ -109,12 +109,12 @@ module Lithic
         params(
           token: String,
           created: T.nilable(Time),
-          spend_limit: Lithic::Models::Account::SpendLimit,
+          spend_limit: T.any(Lithic::Models::Account::SpendLimit, Lithic::Util::AnyHash),
           state: Lithic::Models::Account::State::TaggedSymbol,
-          account_holder: Lithic::Models::Account::AccountHolder,
+          account_holder: T.any(Lithic::Models::Account::AccountHolder, Lithic::Util::AnyHash),
           auth_rule_tokens: T::Array[String],
           cardholder_currency: String,
-          verification_address: Lithic::Models::Account::VerificationAddress
+          verification_address: T.any(Lithic::Models::Account::VerificationAddress, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

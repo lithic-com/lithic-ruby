@@ -67,7 +67,7 @@ module Lithic
 
       sig do
         params(
-          address: Lithic::Models::KYBBusinessEntity::Address,
+          address: T.any(Lithic::Models::KYBBusinessEntity::Address, Lithic::Util::AnyHash),
           government_id: String,
           legal_business_name: String,
           phone_numbers: T::Array[String],

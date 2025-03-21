@@ -11,7 +11,7 @@ module Lithic
             description: String,
             disabled: T::Boolean,
             event_types: T::Array[Lithic::Models::Events::SubscriptionCreateParams::EventType::OrSymbol],
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::Models::EventSubscription)
         end
@@ -33,7 +33,7 @@ module Lithic
         sig do
           params(
             event_subscription_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::Models::EventSubscription)
         end
@@ -48,7 +48,7 @@ module Lithic
             description: String,
             disabled: T::Boolean,
             event_types: T::Array[Lithic::Models::Events::SubscriptionUpdateParams::EventType::OrSymbol],
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::Models::EventSubscription)
         end
@@ -73,7 +73,7 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::CursorPage[Lithic::Models::EventSubscription])
         end
@@ -94,7 +94,7 @@ module Lithic
         sig do
           params(
             event_subscription_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .void
         end
@@ -111,7 +111,7 @@ module Lithic
             page_size: Integer,
             starting_after: String,
             status: Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::CursorPage[Lithic::Models::MessageAttempt])
         end
@@ -142,7 +142,7 @@ module Lithic
             event_subscription_token: String,
             begin_: Time,
             end_: Time,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .void
         end
@@ -168,7 +168,7 @@ module Lithic
             event_subscription_token: String,
             begin_: Time,
             end_: Time,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .void
         end
@@ -188,7 +188,7 @@ module Lithic
         sig do
           params(
             event_subscription_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .returns(Lithic::Models::Events::SubscriptionRetrieveSecretResponse)
         end
@@ -200,7 +200,7 @@ module Lithic
         sig do
           params(
             event_subscription_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .void
         end
@@ -212,7 +212,7 @@ module Lithic
           params(
             event_subscription_token: String,
             event_type: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::OrSymbol,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           )
             .void
         end

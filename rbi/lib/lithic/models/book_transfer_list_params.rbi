@@ -130,7 +130,7 @@ module Lithic
           result: Lithic::Models::BookTransferListParams::Result::OrSymbol,
           starting_after: String,
           status: Lithic::Models::BookTransferListParams::Status::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

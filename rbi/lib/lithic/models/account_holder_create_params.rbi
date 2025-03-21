@@ -239,13 +239,13 @@ module Lithic
         params(
           beneficial_owner_entities: T::Array[Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity],
           beneficial_owner_individuals: T::Array[Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual],
-          business_entity: Lithic::Models::AccountHolderCreateParams::BusinessEntity,
-          control_person: Lithic::Models::AccountHolderCreateParams::ControlPerson,
+          business_entity: T.any(Lithic::Models::AccountHolderCreateParams::BusinessEntity, Lithic::Util::AnyHash),
+          control_person: T.any(Lithic::Models::AccountHolderCreateParams::ControlPerson, Lithic::Util::AnyHash),
           nature_of_business: String,
           tos_timestamp: String,
           workflow: Lithic::Models::AccountHolderCreateParams::Workflow::OrSymbol,
-          individual: Lithic::Models::AccountHolderCreateParams::Individual,
-          address: Lithic::Models::Address,
+          individual: T.any(Lithic::Models::AccountHolderCreateParams::Individual, Lithic::Util::AnyHash),
+          address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
           email: String,
           first_name: String,
           kyc_exemption_type: Lithic::Models::AccountHolderCreateParams::KYCExemptionType::OrSymbol,
@@ -256,7 +256,7 @@ module Lithic
           website_url: String,
           kyc_passed_timestamp: String,
           business_account_token: String,
-          request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -379,7 +379,7 @@ module Lithic
 
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             government_id: String,
             legal_business_name: String,
             phone_numbers: T::Array[String],
@@ -490,7 +490,7 @@ module Lithic
         # Individuals associated with a KYB application. Phone number is optional.
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             dob: String,
             email: String,
             first_name: String,
@@ -588,7 +588,7 @@ module Lithic
         #   run.
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             government_id: String,
             legal_business_name: String,
             phone_numbers: T::Array[String],
@@ -706,7 +706,7 @@ module Lithic
         #   (Section II) for more background.
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             dob: String,
             email: String,
             first_name: String,
@@ -830,7 +830,7 @@ module Lithic
         #   run.
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             dob: String,
             email: String,
             first_name: String,

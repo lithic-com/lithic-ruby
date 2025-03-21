@@ -257,7 +257,7 @@ module Lithic
             verification_method: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol,
             verification_state: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol,
             account_token: String,
-            address: Lithic::Models::ExternalBankAccountAddress,
+            address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash),
             company_id: String,
             dob: Date,
             doing_business_as: String,

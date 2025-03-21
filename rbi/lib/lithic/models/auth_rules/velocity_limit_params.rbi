@@ -65,7 +65,7 @@ module Lithic
 
         sig do
           params(
-            filters: Lithic::Models::AuthRules::VelocityLimitParams::Filters,
+            filters: T.any(Lithic::Models::AuthRules::VelocityLimitParams::Filters, Lithic::Util::AnyHash),
             period: T.any(Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol),
             scope: Lithic::Models::AuthRules::VelocityLimitParams::Scope::OrSymbol,
             limit_amount: T.nilable(Integer),

@@ -121,7 +121,7 @@ module Lithic
           sig do
             params(
               token: String,
-              amounts: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts,
+              amounts: T.any(Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts, Lithic::Util::AnyHash),
               created: Time,
               currency: String,
               institution_id: String,

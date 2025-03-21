@@ -60,7 +60,7 @@ module Lithic
 
       sig do
         params(
-          individual: Lithic::Models::KYC::Individual,
+          individual: T.any(Lithic::Models::KYC::Individual, Lithic::Util::AnyHash),
           tos_timestamp: String,
           workflow: Lithic::Models::KYC::Workflow::OrSymbol,
           external_id: String,
@@ -162,7 +162,7 @@ module Lithic
         #   run.
         sig do
           params(
-            address: Lithic::Models::Address,
+            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
             dob: String,
             email: String,
             first_name: String,

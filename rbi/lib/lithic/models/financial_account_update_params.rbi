@@ -15,7 +15,7 @@ module Lithic
       end
 
       sig do
-        params(nickname: String, request_options: T.any(Lithic::RequestOptions, T::Hash[Symbol, T.anything]))
+        params(nickname: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(nickname: nil, request_options: {})
