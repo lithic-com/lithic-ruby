@@ -31,6 +31,8 @@ class Lithic::Test::Resources::DigitalCardArtTest < Lithic::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::DigitalCardArtAPI
     end

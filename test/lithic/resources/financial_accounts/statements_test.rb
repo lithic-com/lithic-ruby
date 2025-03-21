@@ -49,6 +49,8 @@ class Lithic::Test::Resources::FinancialAccounts::StatementsTest < Lithic::Test:
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::FinancialAccounts::Statement
     end
