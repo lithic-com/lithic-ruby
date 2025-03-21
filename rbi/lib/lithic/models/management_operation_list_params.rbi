@@ -139,10 +139,8 @@ module Lithic
         MANAGEMENT_ADJUSTMENT =
           T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -160,10 +158,8 @@ module Lithic
         REVERSED = T.let(:REVERSED, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
         CANCELED = T.let(:CANCELED, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

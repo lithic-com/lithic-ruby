@@ -116,25 +116,13 @@ module Lithic
         module Parameters
           extend Lithic::Union
 
-          Variants =
-            type_template(:out) do
-              {
-                fixed: T.any(
-                  Lithic::Models::AuthRules::ConditionalBlockParameters,
-                  Lithic::Models::AuthRules::VelocityLimitParams
-                )
-              }
-            end
-
-          class << self
-            sig do
-              override
-                .returns(
-                  [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
-                )
-            end
-            def variants
-            end
+          sig do
+            override
+              .returns(
+                [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+              )
+          end
+          def self.variants
           end
         end
 
@@ -149,10 +137,8 @@ module Lithic
             T.let(:CONDITIONAL_BLOCK, Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol)
           VELOCITY_LIMIT = T.let(:VELOCITY_LIMIT, Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end

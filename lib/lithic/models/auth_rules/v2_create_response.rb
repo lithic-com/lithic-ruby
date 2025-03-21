@@ -130,10 +130,8 @@ module Lithic
             variant -> { Lithic::Models::AuthRules::VelocityLimitParams }
 
             # @!parse
-            #   class << self
-            #     # @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams)]
-            #     def variants; end
-            #   end
+            #   # @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams)]
+            #   def self.variants; end
           end
         end
 
@@ -170,10 +168,8 @@ module Lithic
             variant -> { Lithic::Models::AuthRules::VelocityLimitParams }
 
             # @!parse
-            #   class << self
-            #     # @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams)]
-            #     def variants; end
-            #   end
+            #   # @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams)]
+            #   def self.variants; end
           end
         end
 
@@ -186,11 +182,9 @@ module Lithic
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         # The type of Auth Rule
@@ -202,11 +196,9 @@ module Lithic
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
     end

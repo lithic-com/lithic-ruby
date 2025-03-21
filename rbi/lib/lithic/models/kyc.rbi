@@ -149,10 +149,8 @@ module Lithic
         KYC_BASIC = T.let(:KYC_BASIC, Lithic::Models::KYC::Workflow::TaggedSymbol)
         KYC_BYO = T.let(:KYC_BYO, Lithic::Models::KYC::Workflow::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::KYC::Workflow::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::KYC::Workflow::TaggedSymbol]) }
+        def self.values
         end
       end
     end

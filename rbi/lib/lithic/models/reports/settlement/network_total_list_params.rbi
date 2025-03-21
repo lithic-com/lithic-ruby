@@ -162,13 +162,11 @@ module Lithic
             INTERLINK =
               T.let(:INTERLINK, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end

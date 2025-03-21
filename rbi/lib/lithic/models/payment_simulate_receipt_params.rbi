@@ -72,10 +72,8 @@ module Lithic
         RECEIPT_DEBIT =
           T.let(:RECEIPT_DEBIT, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

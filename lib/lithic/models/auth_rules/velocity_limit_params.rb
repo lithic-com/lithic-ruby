@@ -108,10 +108,8 @@ module Lithic
           variant enum: -> { Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow }
 
           # @!parse
-          #   class << self
-          #     # @return [Array(Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow)]
-          #     def variants; end
-          #   end
+          #   # @return [Array(Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow)]
+          #   def self.variants; end
         end
 
         module Scope
@@ -122,11 +120,9 @@ module Lithic
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
     end

@@ -556,10 +556,8 @@ module Lithic
 
         KYC_EXEMPT = T.let(:KYC_EXEMPT, Lithic::Models::AccountHolderCreateParams::Workflow::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateParams::Workflow::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateParams::Workflow::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -649,10 +647,8 @@ module Lithic
         PREPAID_CARD_USER =
           T.let(:PREPAID_CARD_USER, Lithic::Models::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

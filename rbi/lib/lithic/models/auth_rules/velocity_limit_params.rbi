@@ -115,13 +115,8 @@ module Lithic
         module Period
           extend Lithic::Union
 
-          Variants =
-            type_template(:out) { {fixed: T.any(Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol)} }
-
-          class << self
-            sig { override.returns([Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol]) }
-            def variants
-            end
+          sig { override.returns([Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol]) }
+          def self.variants
           end
         end
 
@@ -135,10 +130,8 @@ module Lithic
           CARD = T.let(:CARD, Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol)
           ACCOUNT = T.let(:ACCOUNT, Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol]) }
+          def self.values
           end
         end
       end

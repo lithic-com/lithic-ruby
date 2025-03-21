@@ -162,10 +162,8 @@ module Lithic
         PAUSED = T.let(:PAUSED, Lithic::Models::Account::State::TaggedSymbol)
         CLOSED = T.let(:CLOSED, Lithic::Models::Account::State::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Account::State::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Account::State::TaggedSymbol]) }
+        def self.values
         end
       end
 

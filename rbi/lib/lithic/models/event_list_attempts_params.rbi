@@ -102,10 +102,8 @@ module Lithic
         SENDING = T.let(:SENDING, Lithic::Models::EventListAttemptsParams::Status::TaggedSymbol)
         SUCCESS = T.let(:SUCCESS, Lithic::Models::EventListAttemptsParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::EventListAttemptsParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::EventListAttemptsParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

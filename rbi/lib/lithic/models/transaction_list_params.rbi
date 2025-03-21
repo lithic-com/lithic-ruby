@@ -134,10 +134,8 @@ module Lithic
         APPROVED = T.let(:APPROVED, Lithic::Models::TransactionListParams::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::TransactionListParams::Result::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::TransactionListParams::Result::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::TransactionListParams::Result::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -154,10 +152,8 @@ module Lithic
         DECLINED = T.let(:DECLINED, Lithic::Models::TransactionListParams::Status::TaggedSymbol)
         EXPIRED = T.let(:EXPIRED, Lithic::Models::TransactionListParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::TransactionListParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::TransactionListParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

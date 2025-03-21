@@ -187,10 +187,8 @@ module Lithic
           T.let(:"tokenization.two_factor_authentication_code_sent", Lithic::Models::Event::EventType::TaggedSymbol)
         TOKENIZATION_UPDATED = T.let(:"tokenization.updated", Lithic::Models::Event::EventType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::Event::EventType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::Event::EventType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

@@ -57,10 +57,8 @@ module Lithic
         SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPaymentSettleParams::ProgressTo::TaggedSymbol)
         RELEASED = T.let(:RELEASED, Lithic::Models::ExternalPaymentSettleParams::ProgressTo::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ExternalPaymentSettleParams::ProgressTo::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ExternalPaymentSettleParams::ProgressTo::TaggedSymbol]) }
+        def self.values
         end
       end
     end

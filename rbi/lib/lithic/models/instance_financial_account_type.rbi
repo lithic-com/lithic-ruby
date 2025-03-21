@@ -18,10 +18,8 @@ module Lithic
       CHARGED_OFF_PRINCIPAL =
         T.let(:CHARGED_OFF_PRINCIPAL, Lithic::Models::InstanceFinancialAccountType::TaggedSymbol)
 
-      class << self
-        sig { override.returns(T::Array[Lithic::Models::InstanceFinancialAccountType::TaggedSymbol]) }
-        def values
-        end
+      sig { override.returns(T::Array[Lithic::Models::InstanceFinancialAccountType::TaggedSymbol]) }
+      def self.values
       end
     end
   end

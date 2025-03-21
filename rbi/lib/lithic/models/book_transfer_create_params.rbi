@@ -111,10 +111,8 @@ module Lithic
         REWARD = T.let(:REWARD, Lithic::Models::BookTransferCreateParams::Category::TaggedSymbol)
         TRANSFER = T.let(:TRANSFER, Lithic::Models::BookTransferCreateParams::Category::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::BookTransferCreateParams::Category::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::BookTransferCreateParams::Category::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -166,10 +164,8 @@ module Lithic
         DISPUTE_WON = T.let(:DISPUTE_WON, Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol)
         TRANSFER = T.let(:TRANSFER, Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

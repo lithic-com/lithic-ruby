@@ -227,10 +227,8 @@ module Lithic
         INDIVIDUAL =
           T.let(:INDIVIDUAL, Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -246,10 +244,8 @@ module Lithic
         CLOSED = T.let(:CLOSED, Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol)
         PAUSED = T.let(:PAUSED, Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -264,10 +260,8 @@ module Lithic
         CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountUpdateResponse::Type::TaggedSymbol)
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountUpdateResponse::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::Type::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -289,13 +283,11 @@ module Lithic
         PRENOTE =
           T.let(:PRENOTE, Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol)
 
-        class << self
-          sig do
-            override
-              .returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol])
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol])
+        end
+        def self.values
         end
       end
 
@@ -323,13 +315,11 @@ module Lithic
             Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::TaggedSymbol
           )
 
-        class << self
-          sig do
-            override
-              .returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::TaggedSymbol])
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::TaggedSymbol])
+        end
+        def self.values
         end
       end
     end

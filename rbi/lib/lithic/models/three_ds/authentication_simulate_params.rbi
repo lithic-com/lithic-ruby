@@ -140,13 +140,11 @@ module Lithic
           NOT_PRESENT =
             T.let(:NOT_PRESENT, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end

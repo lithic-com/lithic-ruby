@@ -290,15 +290,13 @@ module Lithic
             PENALTY =
               T.let(:PENALTY, Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -400,10 +398,8 @@ module Lithic
             T.let(:PERIOD_END, Lithic::Models::FinancialAccounts::Statement::StatementType::TaggedSymbol)
           FINAL = T.let(:FINAL, Lithic::Models::FinancialAccounts::Statement::StatementType::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Lithic::Models::FinancialAccounts::Statement::StatementType::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Lithic::Models::FinancialAccounts::Statement::StatementType::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -646,15 +642,13 @@ module Lithic
                 Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
 

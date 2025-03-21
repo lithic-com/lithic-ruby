@@ -104,10 +104,8 @@ module Lithic
         ACTIVE = T.let(:ACTIVE, Lithic::Models::AccountUpdateParams::State::TaggedSymbol)
         PAUSED = T.let(:PAUSED, Lithic::Models::AccountUpdateParams::State::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::AccountUpdateParams::State::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::AccountUpdateParams::State::TaggedSymbol]) }
+        def self.values
         end
       end
 

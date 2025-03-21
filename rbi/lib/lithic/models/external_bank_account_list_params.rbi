@@ -129,10 +129,8 @@ module Lithic
         CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountListParams::AccountType::TaggedSymbol)
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountListParams::AccountType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -147,10 +145,8 @@ module Lithic
         CLOSED = T.let(:CLOSED, Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol)
         PAUSED = T.let(:PAUSED, Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -172,10 +168,8 @@ module Lithic
         INSUFFICIENT_FUNDS =
           T.let(:INSUFFICIENT_FUNDS, Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol]) }
+        def self.values
         end
       end
     end
