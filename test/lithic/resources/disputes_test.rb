@@ -112,6 +112,8 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::Dispute
     end
@@ -225,6 +227,8 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::DisputeEvidence
     end

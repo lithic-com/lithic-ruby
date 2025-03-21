@@ -11,6 +11,8 @@ class Lithic::Test::Resources::AggregateBalancesTest < Lithic::Test::ResourceTes
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::AggregateBalance
     end

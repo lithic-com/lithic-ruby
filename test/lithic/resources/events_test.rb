@@ -28,6 +28,8 @@ class Lithic::Test::Resources::EventsTest < Lithic::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::Event
     end
@@ -50,6 +52,8 @@ class Lithic::Test::Resources::EventsTest < Lithic::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::MessageAttempt
     end

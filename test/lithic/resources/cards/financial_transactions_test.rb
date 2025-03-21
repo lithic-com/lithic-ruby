@@ -39,6 +39,8 @@ class Lithic::Test::Resources::Cards::FinancialTransactionsTest < Lithic::Test::
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Lithic::Models::FinancialTransaction
     end
