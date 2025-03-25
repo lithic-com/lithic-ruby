@@ -105,6 +105,7 @@ module Lithic
             consecutive_minimum_payments_made: Integer,
             consecutive_minimum_payments_missed: Integer,
             days_past_due: Integer,
+            financial_account_state: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState,
             has_grace: bool,
             period_number: Integer,
             period_state: Lithic::Models::FinancialAccounts::Statement::AccountStanding::period_state
@@ -119,6 +120,8 @@ module Lithic
 
           attr_accessor days_past_due: Integer
 
+          attr_accessor financial_account_state: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState
+
           attr_accessor has_grace: bool
 
           attr_accessor period_number: Integer
@@ -130,12 +133,64 @@ module Lithic
             consecutive_minimum_payments_made: Integer,
             consecutive_minimum_payments_missed: Integer,
             days_past_due: Integer,
+            financial_account_state: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState,
             has_grace: bool,
             period_number: Integer,
             period_state: Lithic::Models::FinancialAccounts::Statement::AccountStanding::period_state
           ) -> void
 
           def to_hash: -> Lithic::Models::FinancialAccounts::Statement::account_standing
+
+          type financial_account_state =
+            {
+              status: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status,
+              status_change_reason: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status_change_reason?
+            }
+
+          class FinancialAccountState < Lithic::BaseModel
+            attr_accessor status: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status
+
+            attr_accessor status_change_reason: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status_change_reason?
+
+            def initialize: (
+              status: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status,
+              ?status_change_reason: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status_change_reason?
+            ) -> void
+
+            def to_hash: -> Lithic::Models::FinancialAccounts::Statement::AccountStanding::financial_account_state
+
+            type status = :OPEN | :CLOSED | :SUSPENDED | :PENDING
+
+            module Status
+              extend Lithic::Enum
+
+              OPEN: :OPEN
+              CLOSED: :CLOSED
+              SUSPENDED: :SUSPENDED
+              PENDING: :PENDING
+
+              def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status]
+            end
+
+            type status_change_reason =
+              :CHARGED_OFF_DELINQUENT
+              | :CHARGED_OFF_FRAUD
+              | :END_USER_REQUEST
+              | :BANK_REQUEST
+              | :DELINQUENT
+
+            module StatusChangeReason
+              extend Lithic::Enum
+
+              CHARGED_OFF_DELINQUENT: :CHARGED_OFF_DELINQUENT
+              CHARGED_OFF_FRAUD: :CHARGED_OFF_FRAUD
+              END_USER_REQUEST: :END_USER_REQUEST
+              BANK_REQUEST: :BANK_REQUEST
+              DELINQUENT: :DELINQUENT
+
+              def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status_change_reason]
+            end
+          end
 
           type period_state = :STANDARD | :PROMO | :PENALTY
 

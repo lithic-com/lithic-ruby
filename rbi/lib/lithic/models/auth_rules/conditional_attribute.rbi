@@ -34,6 +34,8 @@ module Lithic
       #     lowest risk and 999 representing the highest risk. For Visa transactions,
       #     where the raw score has a range of 0-99, Lithic will normalize the score by
       #     multiplying the raw score by 10x.
+      #   - `CARD_TRANSACTION_COUNT_15M`: The number of transactions on the card in the
+      #     trailing 15 minutes before the authorization.
       #   - `CARD_TRANSACTION_COUNT_1H`: The number of transactions on the card in the
       #     trailing hour up and until the authorization.
       #   - `CARD_TRANSACTION_COUNT_24H`: The number of transactions on the card in the
@@ -41,6 +43,13 @@ module Lithic
       #   - `CARD_STATE`: The current state of the card associated with the transaction.
       #     Valid values are `CLOSED`, `OPEN`, `PAUSED`, `PENDING_ACTIVATION`,
       #     `PENDING_FULFILLMENT`.
+      #   - `PIN_ENTERED`: Indicates whether a PIN was entered during the transaction.
+      #     Valid values are `TRUE`, `FALSE`.
+      #   - `PIN_STATUS`: The current state of card's PIN. Valid values are `NOT_SET`,
+      #     `OK`, `BLOCKED`.
+      #   - `WALLET_TYPE`: For transactions using a digital wallet token, indicates the
+      #     source of the token. Valid values are `APPLE_PAY`, `GOOGLE_PAY`,
+      #     `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
       module ConditionalAttribute
         extend Lithic::Enum
 
@@ -57,11 +66,16 @@ module Lithic
         TRANSACTION_AMOUNT =
           T.let(:TRANSACTION_AMOUNT, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
         RISK_SCORE = T.let(:RISK_SCORE, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
+        CARD_TRANSACTION_COUNT_15_M =
+          T.let(:CARD_TRANSACTION_COUNT_15M, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
         CARD_TRANSACTION_COUNT_1_H =
           T.let(:CARD_TRANSACTION_COUNT_1H, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
         CARD_TRANSACTION_COUNT_24_H =
           T.let(:CARD_TRANSACTION_COUNT_24H, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
         CARD_STATE = T.let(:CARD_STATE, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
+        PIN_ENTERED = T.let(:PIN_ENTERED, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
+        PIN_STATUS = T.let(:PIN_STATUS, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
+        WALLET_TYPE = T.let(:WALLET_TYPE, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol]) }
         def self.values
