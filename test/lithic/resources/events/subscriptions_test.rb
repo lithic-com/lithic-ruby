@@ -83,7 +83,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
   end
 
   def test_delete
-    skip("Prism Mock server doesnt want Accept header, but server requires it.")
+    skip("Prism Mock server doesn't want Accept header, but server requires it.")
 
     response = @lithic.events.subscriptions.delete("event_subscription_token")
 
@@ -121,7 +121,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
   end
 
   def test_recover
-    skip("Prism Mock server doesnt want Accept header, but server requires it.")
+    skip("Prism Mock server doesn't want Accept header, but server requires it.")
 
     response = @lithic.events.subscriptions.recover("event_subscription_token")
 
@@ -131,7 +131,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
   end
 
   def test_replay_missing
-    skip("Prism Mock server doesnt want Accept header, but server requires it.")
+    skip("Prism Mock server doesn't want Accept header, but server requires it.")
 
     response = @lithic.events.subscriptions.replay_missing("event_subscription_token")
 
@@ -155,7 +155,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
   end
 
   def test_rotate_secret
-    skip("Prism Mock server doesnt want Accept header, but server requires it.")
+    skip("Prism Mock server doesn't want Accept header, but server requires it.")
 
     response = @lithic.events.subscriptions.rotate_secret("event_subscription_token")
 
