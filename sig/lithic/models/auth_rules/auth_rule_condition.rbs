@@ -63,11 +63,11 @@ module Lithic
         module Value
           extend Lithic::Union
 
+          def self?.variants: -> [String, Integer, ::Array[String]]
+
           type string_array = ::Array[String]
 
           StringArray: string_array
-
-          def self?.variants: -> [String, Integer, ::Array[String]]
         end
       end
     end
