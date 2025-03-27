@@ -23,14 +23,14 @@ module Lithic
       sig { returns(String) }
       attr_accessor :pan_range_start
 
-      # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
+      # 3-digit alphabetic ISO 4217 code for the currency of the cardholder.
       sig { returns(T.nilable(String)) }
       attr_reader :cardholder_currency
 
       sig { params(cardholder_currency: String).void }
       attr_writer :cardholder_currency
 
-      # List of 3-character alphabetic ISO 4217 codes for the currencies that the card
+      # List of 3-digit alphabetic ISO 4217 codes for the currencies that the card
       #   program supports for settlement.
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :settlement_currencies

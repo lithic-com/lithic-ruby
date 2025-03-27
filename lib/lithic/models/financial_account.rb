@@ -35,12 +35,6 @@ module Lithic
       #   @return [String, nil]
       required :nickname, String, nil?: true
 
-      # @!attribute status
-      #   Status of the financial account
-      #
-      #   @return [Symbol, Lithic::Models::FinancialAccount::Status]
-      required :status, enum: -> { Lithic::Models::FinancialAccount::Status }
-
       # @!attribute type
       #
       #   @return [Symbol, Lithic::Models::FinancialAccount::Type]
@@ -61,14 +55,6 @@ module Lithic
       #   @return [String, nil]
       optional :routing_number, String, nil?: true
 
-      # @!attribute status_change_reason
-      #   Reason for the financial account status change
-      #
-      #   @return [Symbol, Lithic::Models::FinancialAccount::StatusChangeReason, nil]
-      optional :status_change_reason,
-               enum: -> { Lithic::Models::FinancialAccount::StatusChangeReason },
-               nil?: true
-
       # @!parse
       #   # @param token [String]
       #   # @param account_token [String, nil]
@@ -76,12 +62,10 @@ module Lithic
       #   # @param credit_configuration [Lithic::Models::FinancialAccount::CreditConfiguration, nil]
       #   # @param is_for_benefit_of [Boolean]
       #   # @param nickname [String, nil]
-      #   # @param status [Symbol, Lithic::Models::FinancialAccount::Status]
       #   # @param type [Symbol, Lithic::Models::FinancialAccount::Type]
       #   # @param updated [Time]
       #   # @param account_number [String, nil]
       #   # @param routing_number [String, nil]
-      #   # @param status_change_reason [Symbol, Lithic::Models::FinancialAccount::StatusChangeReason, nil]
       #   #
       #   def initialize(
       #     token:,
@@ -90,12 +74,10 @@ module Lithic
       #     credit_configuration:,
       #     is_for_benefit_of:,
       #     nickname:,
-      #     status:,
       #     type:,
       #     updated:,
       #     account_number: nil,
       #     routing_number: nil,
-      #     status_change_reason: nil,
       #     **
       #   )
       #     super
@@ -202,48 +184,12 @@ module Lithic
         end
       end
 
-      # Status of the financial account
-      module Status
-        extend Lithic::Enum
-
-        OPEN = :OPEN
-        CLOSED = :CLOSED
-        SUSPENDED = :SUSPENDED
-        PENDING = :PENDING
-
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
-      end
-
       module Type
         extend Lithic::Enum
 
         ISSUING = :ISSUING
         RESERVE = :RESERVE
         OPERATING = :OPERATING
-        CHARGED_OFF_FEES = :CHARGED_OFF_FEES
-        CHARGED_OFF_INTEREST = :CHARGED_OFF_INTEREST
-        CHARGED_OFF_PRINCIPAL = :CHARGED_OFF_PRINCIPAL
-
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
-      end
-
-      # Reason for the financial account status change
-      module StatusChangeReason
-        extend Lithic::Enum
-
-        CHARGED_OFF_DELINQUENT = :CHARGED_OFF_DELINQUENT
-        CHARGED_OFF_FRAUD = :CHARGED_OFF_FRAUD
-        END_USER_REQUEST = :END_USER_REQUEST
-        BANK_REQUEST = :BANK_REQUEST
-        DELINQUENT = :DELINQUENT
 
         finalize!
 

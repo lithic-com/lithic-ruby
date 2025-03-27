@@ -64,14 +64,13 @@ module Lithic
 
         def to_hash: -> Lithic::Models::FinancialAccounts::financial_transaction_list_params
 
-        type category = :ACH | :CARD | :INTERNAL | :TRANSFER
+        type category = :ACH | :CARD | :TRANSFER
 
         module Category
           extend Lithic::Enum
 
           ACH: :ACH
           CARD: :CARD
-          INTERNAL: :INTERNAL
           TRANSFER: :TRANSFER
 
           def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::category]

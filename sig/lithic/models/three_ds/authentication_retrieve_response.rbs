@@ -11,6 +11,7 @@ module Lithic
           cardholder: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder,
           channel: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::channel,
           created: Time,
+          decision_made_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::decision_made_by?,
           merchant: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant,
           message_category: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::message_category,
           three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::three_ds_requestor_challenge_indicator,
@@ -18,9 +19,7 @@ module Lithic
           app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App,
           authentication_request_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::authentication_request_type?,
           browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser,
-          challenge_metadata: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata?,
           challenge_orchestrated_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::challenge_orchestrated_by?,
-          decision_made_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::decision_made_by?,
           three_ri_request_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::three_ri_request_type?,
           transaction: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction?
         }
@@ -41,6 +40,8 @@ module Lithic
         attr_accessor channel: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::channel
 
         attr_accessor created: Time
+
+        attr_accessor decision_made_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::decision_made_by?
 
         attr_accessor merchant: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant
 
@@ -64,11 +65,7 @@ module Lithic
           Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser
         ) -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser
 
-        attr_accessor challenge_metadata: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata?
-
         attr_accessor challenge_orchestrated_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::challenge_orchestrated_by?
-
-        attr_accessor decision_made_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::decision_made_by?
 
         attr_accessor three_ri_request_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::three_ri_request_type?
 
@@ -83,6 +80,7 @@ module Lithic
           cardholder: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder,
           channel: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::channel,
           created: Time,
+          decision_made_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::decision_made_by?,
           merchant: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant,
           message_category: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::message_category,
           three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::three_ds_requestor_challenge_indicator,
@@ -90,9 +88,7 @@ module Lithic
           ?app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App,
           ?authentication_request_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::authentication_request_type?,
           ?browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser,
-          ?challenge_metadata: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata?,
           ?challenge_orchestrated_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::challenge_orchestrated_by?,
-          ?decision_made_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::decision_made_by?,
           ?three_ri_request_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::three_ri_request_type?,
           ?transaction: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction?
         ) -> void
@@ -268,6 +264,25 @@ module Lithic
           THREE_DS_REQUESTOR_INITIATED: :THREE_DS_REQUESTOR_INITIATED
 
           def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::channel]
+        end
+
+        type decision_made_by =
+          :CUSTOMER_ENDPOINT
+          | :LITHIC_DEFAULT
+          | :LITHIC_RULES
+          | :NETWORK
+          | :UNKNOWN
+
+        module DecisionMadeBy
+          extend Lithic::Enum
+
+          CUSTOMER_ENDPOINT: :CUSTOMER_ENDPOINT
+          LITHIC_DEFAULT: :LITHIC_DEFAULT
+          LITHIC_RULES: :LITHIC_RULES
+          NETWORK: :NETWORK
+          UNKNOWN: :UNKNOWN
+
+          def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::decision_made_by]
         end
 
         type merchant =
@@ -558,36 +573,6 @@ module Lithic
           def to_hash: -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::browser
         end
 
-        type challenge_metadata =
-          {
-            method_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::method_type,
-            phone_number: String?
-          }
-
-        class ChallengeMetadata < Lithic::BaseModel
-          attr_accessor method_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::method_type
-
-          attr_accessor phone_number: String?
-
-          def initialize: (
-            method_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::method_type,
-            ?phone_number: String?
-          ) -> void
-
-          def to_hash: -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::challenge_metadata
-
-          type method_type = :SMS_OTP | :OUT_OF_BAND
-
-          module MethodType
-            extend Lithic::Enum
-
-            SMS_OTP: :SMS_OTP
-            OUT_OF_BAND: :OUT_OF_BAND
-
-            def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::method_type]
-          end
-        end
-
         type challenge_orchestrated_by = :LITHIC | :CUSTOMER | :NO_CHALLENGE
 
         module ChallengeOrchestratedBy
@@ -598,25 +583,6 @@ module Lithic
           NO_CHALLENGE: :NO_CHALLENGE
 
           def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::challenge_orchestrated_by]
-        end
-
-        type decision_made_by =
-          :CUSTOMER_ENDPOINT
-          | :LITHIC_DEFAULT
-          | :LITHIC_RULES
-          | :NETWORK
-          | :UNKNOWN
-
-        module DecisionMadeBy
-          extend Lithic::Enum
-
-          CUSTOMER_ENDPOINT: :CUSTOMER_ENDPOINT
-          LITHIC_DEFAULT: :LITHIC_DEFAULT
-          LITHIC_RULES: :LITHIC_RULES
-          NETWORK: :NETWORK
-          UNKNOWN: :UNKNOWN
-
-          def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::decision_made_by]
         end
 
         type three_ri_request_type =

@@ -71,24 +71,6 @@ module Lithic
         )
       end
 
-      # Expire authorization
-      #
-      # @param transaction_token [String] The token of the transaction to expire.
-      #
-      # @param params [Lithic::Models::TransactionExpireAuthorizationParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
-      #
-      # @return [nil]
-      def expire_authorization(transaction_token, params = {})
-        @client.request(
-          method: :post,
-          path: ["v1/transactions/%0s/expire_authorization", transaction_token],
-          model: NilClass,
-          options: params[:request_options]
-        )
-      end
-
       # Simulates an authorization request from the card network as if it came from a
       #   merchant acquirer. If you are configured for ASA, simulating authorizations
       #   requires your ASA client to be set up properly, i.e. be able to respond to the
@@ -119,7 +101,7 @@ module Lithic
       #   @option params [Integer] :merchant_amount Amount of the transaction to be simulated in currency specified in
       #     merchant_currency, including any acquirer fees.
       #
-      #   @option params [String] :merchant_currency 3-character alphabetic ISO 4217 currency code. Note: Simulator only accepts USD,
+      #   @option params [String] :merchant_currency 3-digit alphabetic ISO 4217 currency code. Note: Simulator only accepts USD,
       #     GBP, EUR and defaults to GBP if another ISO 4217 code is provided
       #
       #   @option params [Boolean] :partial_approval_capable Set to true if the terminal is capable of partial approval otherwise false.

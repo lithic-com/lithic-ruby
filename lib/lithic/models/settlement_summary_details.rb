@@ -4,7 +4,7 @@ module Lithic
   module Models
     class SettlementSummaryDetails < Lithic::BaseModel
       # @!attribute [r] currency
-      #   3-character alphabetic ISO 4217 code.
+      #   ISO 4217 alpha 3 code.
       #
       #   @return [String, nil]
       optional :currency, String

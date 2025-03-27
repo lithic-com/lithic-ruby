@@ -8,12 +8,10 @@ module Lithic
         credit_configuration: Lithic::Models::FinancialAccount::CreditConfiguration?,
         is_for_benefit_of: bool,
         nickname: String?,
-        status: Lithic::Models::FinancialAccount::status,
         type: Lithic::Models::FinancialAccount::type_,
         updated: Time,
         account_number: String?,
-        routing_number: String?,
-        status_change_reason: Lithic::Models::FinancialAccount::status_change_reason?
+        routing_number: String?
       }
 
     class FinancialAccount < Lithic::BaseModel
@@ -29,8 +27,6 @@ module Lithic
 
       attr_accessor nickname: String?
 
-      attr_accessor status: Lithic::Models::FinancialAccount::status
-
       attr_accessor type: Lithic::Models::FinancialAccount::type_
 
       attr_accessor updated: Time
@@ -39,8 +35,6 @@ module Lithic
 
       attr_accessor routing_number: String?
 
-      attr_accessor status_change_reason: Lithic::Models::FinancialAccount::status_change_reason?
-
       def initialize: (
         token: String,
         account_token: String?,
@@ -48,12 +42,10 @@ module Lithic
         credit_configuration: Lithic::Models::FinancialAccount::CreditConfiguration?,
         is_for_benefit_of: bool,
         nickname: String?,
-        status: Lithic::Models::FinancialAccount::status,
         type: Lithic::Models::FinancialAccount::type_,
         updated: Time,
         ?account_number: String?,
-        ?routing_number: String?,
-        ?status_change_reason: Lithic::Models::FinancialAccount::status_change_reason?
+        ?routing_number: String?
       ) -> void
 
       def to_hash: -> Lithic::Models::financial_account
@@ -122,26 +114,7 @@ module Lithic
         end
       end
 
-      type status = :OPEN | :CLOSED | :SUSPENDED | :PENDING
-
-      module Status
-        extend Lithic::Enum
-
-        OPEN: :OPEN
-        CLOSED: :CLOSED
-        SUSPENDED: :SUSPENDED
-        PENDING: :PENDING
-
-        def self?.values: -> ::Array[Lithic::Models::FinancialAccount::status]
-      end
-
-      type type_ =
-        :ISSUING
-        | :RESERVE
-        | :OPERATING
-        | :CHARGED_OFF_FEES
-        | :CHARGED_OFF_INTEREST
-        | :CHARGED_OFF_PRINCIPAL
+      type type_ = :ISSUING | :RESERVE | :OPERATING
 
       module Type
         extend Lithic::Enum
@@ -149,30 +122,8 @@ module Lithic
         ISSUING: :ISSUING
         RESERVE: :RESERVE
         OPERATING: :OPERATING
-        CHARGED_OFF_FEES: :CHARGED_OFF_FEES
-        CHARGED_OFF_INTEREST: :CHARGED_OFF_INTEREST
-        CHARGED_OFF_PRINCIPAL: :CHARGED_OFF_PRINCIPAL
 
         def self?.values: -> ::Array[Lithic::Models::FinancialAccount::type_]
-      end
-
-      type status_change_reason =
-        :CHARGED_OFF_DELINQUENT
-        | :CHARGED_OFF_FRAUD
-        | :END_USER_REQUEST
-        | :BANK_REQUEST
-        | :DELINQUENT
-
-      module StatusChangeReason
-        extend Lithic::Enum
-
-        CHARGED_OFF_DELINQUENT: :CHARGED_OFF_DELINQUENT
-        CHARGED_OFF_FRAUD: :CHARGED_OFF_FRAUD
-        END_USER_REQUEST: :END_USER_REQUEST
-        BANK_REQUEST: :BANK_REQUEST
-        DELINQUENT: :DELINQUENT
-
-        def self?.values: -> ::Array[Lithic::Models::FinancialAccount::status_change_reason]
       end
     end
   end

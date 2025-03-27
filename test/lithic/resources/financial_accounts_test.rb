@@ -18,12 +18,10 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         credit_configuration: Lithic::Models::FinancialAccount::CreditConfiguration | nil,
         is_for_benefit_of: Lithic::BooleanModel,
         nickname: String | nil,
-        status: Lithic::Models::FinancialAccount::Status,
         type: Lithic::Models::FinancialAccount::Type,
         updated: Time,
         account_number: String | nil,
-        routing_number: String | nil,
-        status_change_reason: Lithic::Models::FinancialAccount::StatusChangeReason | nil
+        routing_number: String | nil
       }
     end
   end
@@ -43,12 +41,10 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         credit_configuration: Lithic::Models::FinancialAccount::CreditConfiguration | nil,
         is_for_benefit_of: Lithic::BooleanModel,
         nickname: String | nil,
-        status: Lithic::Models::FinancialAccount::Status,
         type: Lithic::Models::FinancialAccount::Type,
         updated: Time,
         account_number: String | nil,
-        routing_number: String | nil,
-        status_change_reason: Lithic::Models::FinancialAccount::StatusChangeReason | nil
+        routing_number: String | nil
       }
     end
   end
@@ -68,12 +64,10 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         credit_configuration: Lithic::Models::FinancialAccount::CreditConfiguration | nil,
         is_for_benefit_of: Lithic::BooleanModel,
         nickname: String | nil,
-        status: Lithic::Models::FinancialAccount::Status,
         type: Lithic::Models::FinancialAccount::Type,
         updated: Time,
         account_number: String | nil,
-        routing_number: String | nil,
-        status_change_reason: Lithic::Models::FinancialAccount::StatusChangeReason | nil
+        routing_number: String | nil
       }
     end
   end
@@ -100,42 +94,32 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         credit_configuration: Lithic::Models::FinancialAccount::CreditConfiguration | nil,
         is_for_benefit_of: Lithic::BooleanModel,
         nickname: String | nil,
-        status: Lithic::Models::FinancialAccount::Status,
         type: Lithic::Models::FinancialAccount::Type,
         updated: Time,
         account_number: String | nil,
-        routing_number: String | nil,
-        status_change_reason: Lithic::Models::FinancialAccount::StatusChangeReason | nil
+        routing_number: String | nil
       }
     end
   end
 
-  def test_update_status_required_params
+  def test_charge_off_required_params
     response =
-      @lithic.financial_accounts.update_status(
-        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        status: :OPEN,
-        status_change_reason: :CHARGED_OFF_FRAUD
-      )
+      @lithic.financial_accounts.charge_off("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", reason: :DELINQUENT)
 
     assert_pattern do
-      response => Lithic::Models::FinancialAccount
+      response => Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig
     end
 
     assert_pattern do
       response => {
-        token: String,
-        account_token: String | nil,
-        created: Time,
-        credit_configuration: Lithic::Models::FinancialAccount::CreditConfiguration | nil,
-        is_for_benefit_of: Lithic::BooleanModel,
-        nickname: String | nil,
-        status: Lithic::Models::FinancialAccount::Status,
-        type: Lithic::Models::FinancialAccount::Type,
-        updated: Time,
-        account_number: String | nil,
-        routing_number: String | nil,
-        status_change_reason: Lithic::Models::FinancialAccount::StatusChangeReason | nil
+        account_token: String,
+        charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason | nil,
+        credit_limit: Integer | nil,
+        credit_product_token: String | nil,
+        external_bank_account_token: String | nil,
+        financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState,
+        is_spend_blocked: Lithic::BooleanModel,
+        tier: String | nil
       }
     end
   end

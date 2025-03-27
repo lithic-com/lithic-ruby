@@ -14,7 +14,6 @@ module Lithic
       #
       #     - `CARD` - Issuing card transaction.
       #     - `ACH` - Transaction over ACH.
-      #     - `INTERNAL` - Transaction for internal adjustment.
       #     - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #       program.
       #
@@ -28,8 +27,7 @@ module Lithic
       required :created, Time
 
       # @!attribute currency
-      #   3-character alphabetic ISO 4217 code for the settling currency of the
-      #     transaction.
+      #   3-digit alphabetic ISO 4217 code for the settling currency of the transaction.
       #
       #   @return [String]
       required :currency, String
@@ -125,7 +123,6 @@ module Lithic
       #
       #   - `CARD` - Issuing card transaction.
       #   - `ACH` - Transaction over ACH.
-      #   - `INTERNAL` - Transaction for internal adjustment.
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #     program.
       module Category
@@ -133,7 +130,6 @@ module Lithic
 
         ACH = :ACH
         CARD = :CARD
-        INTERNAL = :INTERNAL
         TRANSFER = :TRANSFER
 
         finalize!
@@ -277,7 +273,6 @@ module Lithic
           FINANCIAL_CREDIT_AUTHORIZATION = :FINANCIAL_CREDIT_AUTHORIZATION
           INTEREST = :INTEREST
           INTEREST_REVERSAL = :INTEREST_REVERSAL
-          INTERNAL_ADJUSTMENT = :INTERNAL_ADJUSTMENT
           LATE_PAYMENT = :LATE_PAYMENT
           LATE_PAYMENT_REVERSAL = :LATE_PAYMENT_REVERSAL
           PROVISIONAL_CREDIT = :PROVISIONAL_CREDIT

@@ -27,8 +27,7 @@ module Lithic
       sig { params(created: Time).void }
       attr_writer :created
 
-      # 3-character alphabetic ISO 4217 code for the settling currency of the
-      #   transaction.
+      # 3-digit alphabetic ISO 4217 code for the settling currency of the transaction.
       sig { returns(T.nilable(String)) }
       attr_reader :currency
 
@@ -356,7 +355,6 @@ module Lithic
             T.let(:FINANCIAL_CREDIT_AUTHORIZATION, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
           INTEREST = T.let(:INTEREST, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
           INTEREST_REVERSAL = T.let(:INTEREST_REVERSAL, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
-          INTERNAL_ADJUSTMENT = T.let(:INTERNAL_ADJUSTMENT, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
           LATE_PAYMENT = T.let(:LATE_PAYMENT, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
           LATE_PAYMENT_REVERSAL =
             T.let(:LATE_PAYMENT_REVERSAL, Lithic::Models::Transfer::Event::Type::TaggedSymbol)

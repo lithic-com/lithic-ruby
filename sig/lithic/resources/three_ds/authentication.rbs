@@ -15,12 +15,6 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> Lithic::Models::ThreeDS::AuthenticationSimulateResponse
 
-        def simulate_otp_entry: (
-          token: String,
-          otp: String,
-          ?request_options: Lithic::request_opts
-        ) -> nil
-
         def initialize: (client: Lithic::Client) -> void
       end
     end

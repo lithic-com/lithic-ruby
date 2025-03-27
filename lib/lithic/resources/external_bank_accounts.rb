@@ -15,7 +15,7 @@ module Lithic
       #   @option params [String] :country The country that the bank account is located in using ISO 3166-1. We will only
       #     accept USA bank accounts e.g., USA
       #
-      #   @option params [String] :currency currency of the external account 3-character alphabetic ISO 4217 code
+      #   @option params [String] :currency currency of the external account 3-digit alphabetic ISO 4217 code
       #
       #   @option params [String] :financial_account_token The financial account token of the operating account to fund the micro deposits
       #
@@ -102,8 +102,6 @@ module Lithic
       #     will appear in statements
       #
       #   @option params [Symbol, Lithic::Models::OwnerType] :owner_type Owner Type
-      #
-      #   @option params [Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type] :type
       #
       #   @option params [String] :user_defined_id User Defined ID
       #

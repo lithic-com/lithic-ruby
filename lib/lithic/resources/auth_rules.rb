@@ -3,13 +3,9 @@
 module Lithic
   module Resources
     class AuthRules
-      # @return [Lithic::Resources::AuthRules::V2]
-      attr_reader :v2
-
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client
-        @v2 = Lithic::Resources::AuthRules::V2.new(client: client)
       end
     end
   end

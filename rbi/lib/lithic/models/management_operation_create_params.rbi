@@ -153,8 +153,6 @@ module Lithic
           T.let(:BILLING_ERROR, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
         PROVISIONAL_CREDIT =
           T.let(:PROVISIONAL_CREDIT, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
-        LOSS_WRITE_OFF =
-          T.let(:LOSS_WRITE_OFF, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
         CASH_BACK_REVERSAL =
           T.let(:CASH_BACK_REVERSAL, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
         CURRENCY_CONVERSION_REVERSAL =

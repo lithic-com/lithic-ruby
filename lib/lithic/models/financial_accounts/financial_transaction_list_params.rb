@@ -115,7 +115,6 @@ module Lithic
 
           ACH = :ACH
           CARD = :CARD
-          INTERNAL = :INTERNAL
           TRANSFER = :TRANSFER
 
           finalize!

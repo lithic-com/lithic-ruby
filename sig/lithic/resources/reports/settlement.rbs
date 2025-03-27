@@ -2,8 +2,6 @@ module Lithic
   module Resources
     class Reports
       class Settlement
-        attr_reader network_totals: Lithic::Resources::Reports::Settlement::NetworkTotals
-
         def list_details: (
           Date report_date,
           ?ending_before: String,

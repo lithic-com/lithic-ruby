@@ -20,6 +20,7 @@ class Lithic::Test::Resources::ThreeDS::AuthenticationTest < Lithic::Test::Resou
         cardholder: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder,
         channel: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel,
         created: Time,
+        decision_made_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy | nil,
         merchant: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant,
         message_category: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory,
         three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator,
@@ -27,9 +28,7 @@ class Lithic::Test::Resources::ThreeDS::AuthenticationTest < Lithic::Test::Resou
         app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App | nil,
         authentication_request_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType | nil,
         browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser | nil,
-        challenge_metadata: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata | nil,
         challenge_orchestrated_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy | nil,
-        decision_made_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy | nil,
         three_ri_request_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType | nil,
         transaction: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction | nil
       }
@@ -52,18 +51,6 @@ class Lithic::Test::Resources::ThreeDS::AuthenticationTest < Lithic::Test::Resou
       response => {
         token: String | nil
       }
-    end
-  end
-
-  def test_simulate_otp_entry_required_params
-    response =
-      @lithic.three_ds.authentication.simulate_otp_entry(
-        token: "fabd829d-7f7b-4432-a8f2-07ea4889aaac",
-        otp: "123456"
-      )
-
-    assert_pattern do
-      response => nil
     end
   end
 end

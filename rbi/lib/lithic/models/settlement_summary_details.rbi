@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class SettlementSummaryDetails < Lithic::BaseModel
-      # 3-character alphabetic ISO 4217 code.
+      # ISO 4217 alpha 3 code.
       sig { returns(T.nilable(String)) }
       attr_reader :currency
 

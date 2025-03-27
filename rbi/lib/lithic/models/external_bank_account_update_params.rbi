@@ -56,12 +56,6 @@ module Lithic
       sig { params(owner_type: Lithic::Models::OwnerType::OrSymbol).void }
       attr_writer :owner_type
 
-      sig { returns(T.nilable(Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol)) }
-      attr_reader :type
-
-      sig { params(type: Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol).void }
-      attr_writer :type
-
       # User Defined ID
       sig { returns(T.nilable(String)) }
       attr_reader :user_defined_id
@@ -78,7 +72,6 @@ module Lithic
           name: String,
           owner: String,
           owner_type: Lithic::Models::OwnerType::OrSymbol,
-          type: Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol,
           user_defined_id: String,
           request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
         )
@@ -92,7 +85,6 @@ module Lithic
         name: nil,
         owner: nil,
         owner_type: nil,
-        type: nil,
         user_defined_id: nil,
         request_options: {}
       )
@@ -109,28 +101,12 @@ module Lithic
               name: String,
               owner: String,
               owner_type: Lithic::Models::OwnerType::OrSymbol,
-              type: Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol,
               user_defined_id: String,
               request_options: Lithic::RequestOptions
             }
           )
       end
       def to_hash
-      end
-
-      module Type
-        extend Lithic::Enum
-
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol) }
-
-        CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol)
-        SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol)
-
-        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol]) }
-        def self.values
-        end
       end
     end
   end

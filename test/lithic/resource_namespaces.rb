@@ -3,11 +3,6 @@
 module Lithic
   module Test
     module Resources
-      module AuthRules
-        module V2
-        end
-      end
-
       module Cards
       end
 
@@ -26,11 +21,6 @@ module Lithic
       end
 
       module Reports
-        module Settlement
-        end
-      end
-
-      module Settlement
       end
 
       module Statements
@@ -42,9 +32,6 @@ module Lithic
       module Transactions
         module Events
         end
-      end
-
-      module V2
       end
     end
   end

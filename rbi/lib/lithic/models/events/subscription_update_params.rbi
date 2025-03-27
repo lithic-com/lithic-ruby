@@ -197,16 +197,6 @@ module Lithic
               :"payment_transaction.updated",
               Lithic::Models::Events::SubscriptionUpdateParams::EventType::TaggedSymbol
             )
-          INTERNAL_TRANSACTION_CREATED =
-            T.let(
-              :"internal_transaction.created",
-              Lithic::Models::Events::SubscriptionUpdateParams::EventType::TaggedSymbol
-            )
-          INTERNAL_TRANSACTION_UPDATED =
-            T.let(
-              :"internal_transaction.updated",
-              Lithic::Models::Events::SubscriptionUpdateParams::EventType::TaggedSymbol
-            )
           SETTLEMENT_REPORT_UPDATED =
             T.let(
               :"settlement_report.updated",
@@ -217,11 +207,6 @@ module Lithic
           THREE_DS_AUTHENTICATION_CREATED =
             T.let(
               :"three_ds_authentication.created",
-              Lithic::Models::Events::SubscriptionUpdateParams::EventType::TaggedSymbol
-            )
-          THREE_DS_AUTHENTICATION_UPDATED =
-            T.let(
-              :"three_ds_authentication.updated",
               Lithic::Models::Events::SubscriptionUpdateParams::EventType::TaggedSymbol
             )
           TOKENIZATION_APPROVAL_REQUEST =

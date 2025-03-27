@@ -22,7 +22,7 @@ module Lithic
       required :created, Time
 
       # @!attribute currency
-      #   3-character alphabetic ISO 4217 code for the settling currency of the payment.
+      #   3-digit alphabetic ISO 4217 code for the settling currency of the payment.
       #
       #   @return [String]
       required :currency, String

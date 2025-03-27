@@ -1,0 +1,17 @@
+module Lithic
+  module Models
+    module ThreeDS
+      type decisioning_simulate_challenge_response = { token: String }
+
+      class DecisioningSimulateChallengeResponse < Lithic::BaseModel
+        attr_reader token: String?
+
+        def token=: (String) -> String
+
+        def initialize: (?token: String) -> void
+
+        def to_hash: -> Lithic::Models::ThreeDS::decisioning_simulate_challenge_response
+      end
+    end
+  end
+end

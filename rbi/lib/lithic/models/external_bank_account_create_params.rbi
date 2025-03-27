@@ -15,7 +15,7 @@ module Lithic
       sig { returns(String) }
       attr_accessor :country
 
-      # currency of the external account 3-character alphabetic ISO 4217 code
+      # currency of the external account 3-digit alphabetic ISO 4217 code
       sig { returns(String) }
       attr_accessor :currency
 

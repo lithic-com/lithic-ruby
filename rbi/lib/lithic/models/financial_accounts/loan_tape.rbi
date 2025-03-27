@@ -255,21 +255,6 @@ module Lithic
           sig { returns(Integer) }
           attr_accessor :days_past_due
 
-          # Information about the financial account state
-          sig { returns(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState) }
-          attr_reader :financial_account_state
-
-          sig do
-            params(
-              financial_account_state: T.any(
-                Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState,
-                Lithic::Util::AnyHash
-              )
-            )
-              .void
-          end
-          attr_writer :financial_account_state
-
           # Whether the account currently has grace or not
           sig { returns(T::Boolean) }
           attr_accessor :has_grace
@@ -287,10 +272,6 @@ module Lithic
               consecutive_minimum_payments_made: Integer,
               consecutive_minimum_payments_missed: Integer,
               days_past_due: Integer,
-              financial_account_state: T.any(
-                Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState,
-                Lithic::Util::AnyHash
-              ),
               has_grace: T::Boolean,
               period_number: Integer,
               period_state: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::OrSymbol
@@ -302,7 +283,6 @@ module Lithic
             consecutive_minimum_payments_made:,
             consecutive_minimum_payments_missed:,
             days_past_due:,
-            financial_account_state:,
             has_grace:,
             period_number:,
             period_state:
@@ -317,7 +297,6 @@ module Lithic
                   consecutive_minimum_payments_made: Integer,
                   consecutive_minimum_payments_missed: Integer,
                   days_past_due: Integer,
-                  financial_account_state: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState,
                   has_grace: T::Boolean,
                   period_number: Integer,
                   period_state: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol
@@ -325,152 +304,6 @@ module Lithic
               )
           end
           def to_hash
-          end
-
-          class FinancialAccountState < Lithic::BaseModel
-            # Status of the financial account
-            sig do
-              returns(
-                Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
-              )
-            end
-            attr_accessor :status
-
-            # Reason for the financial account status change
-            sig do
-              returns(
-                T.nilable(
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
-                )
-              )
-            end
-            attr_accessor :status_change_reason
-
-            # Information about the financial account state
-            sig do
-              params(
-                status: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::OrSymbol,
-                status_change_reason: T.nilable(
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::OrSymbol
-                )
-              )
-                .returns(T.attached_class)
-            end
-            def self.new(status:, status_change_reason: nil)
-            end
-
-            sig do
-              override
-                .returns(
-                  {
-                    status: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol,
-                    status_change_reason: T.nilable(
-                      Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
-                    )
-                  }
-                )
-            end
-            def to_hash
-            end
-
-            # Status of the financial account
-            module Status
-              extend Lithic::Enum
-
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
-                  )
-                end
-
-              OPEN =
-                T.let(
-                  :OPEN,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
-                )
-              CLOSED =
-                T.let(
-                  :CLOSED,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
-                )
-              SUSPENDED =
-                T.let(
-                  :SUSPENDED,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
-                )
-              PENDING =
-                T.let(
-                  :PENDING,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
-                )
-
-              sig do
-                override
-                  .returns(
-                    T::Array[Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol]
-                  )
-              end
-              def self.values
-              end
-            end
-
-            # Reason for the financial account status change
-            module StatusChangeReason
-              extend Lithic::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason)
-                end
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
-                  )
-                end
-
-              CHARGED_OFF_DELINQUENT =
-                T.let(
-                  :CHARGED_OFF_DELINQUENT,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
-                )
-              CHARGED_OFF_FRAUD =
-                T.let(
-                  :CHARGED_OFF_FRAUD,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
-                )
-              END_USER_REQUEST =
-                T.let(
-                  :END_USER_REQUEST,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
-                )
-              BANK_REQUEST =
-                T.let(
-                  :BANK_REQUEST,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
-                )
-              DELINQUENT =
-                T.let(
-                  :DELINQUENT,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
-                )
-
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
-                    ]
-                  )
-              end
-              def self.values
-              end
-            end
           end
 
           module PeriodState

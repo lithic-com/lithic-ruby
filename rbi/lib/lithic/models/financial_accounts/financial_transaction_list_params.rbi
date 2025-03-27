@@ -119,11 +119,6 @@ module Lithic
             T.let(:ACH, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol)
           CARD =
             T.let(:CARD, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol)
-          INTERNAL =
-            T.let(
-              :INTERNAL,
-              Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol
-            )
           TRANSFER =
             T.let(
               :TRANSFER,

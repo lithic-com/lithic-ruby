@@ -17,7 +17,7 @@ module Lithic
         required :created, Time
 
         # @!attribute currency
-        #   3-character alphabetic ISO 4217 code for the local currency of the balance.
+        #   3-digit alphabetic ISO 4217 code for the local currency of the balance.
         #
         #   @return [String]
         required :currency, String

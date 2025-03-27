@@ -36,4 +36,30 @@ class Lithic::Test::Resources::ThreeDS::DecisioningTest < Lithic::Test::Resource
       response => nil
     end
   end
+
+  def test_simulate_challenge
+    response = @lithic.three_ds.decisioning.simulate_challenge
+
+    assert_pattern do
+      response => Lithic::Models::ThreeDS::DecisioningSimulateChallengeResponse
+    end
+
+    assert_pattern do
+      response => {
+        token: String | nil
+      }
+    end
+  end
+
+  def test_simulate_challenge_response_required_params
+    response =
+      @lithic.three_ds.decisioning.simulate_challenge_response(
+        token: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        challenge_response: :APPROVE
+      )
+
+    assert_pattern do
+      response => nil
+    end
+  end
 end

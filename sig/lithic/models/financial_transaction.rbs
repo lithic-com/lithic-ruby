@@ -54,14 +54,13 @@ module Lithic
 
       def to_hash: -> Lithic::Models::financial_transaction
 
-      type category = :ACH | :CARD | :INTERNAL | :TRANSFER
+      type category = :ACH | :CARD | :TRANSFER
 
       module Category
         extend Lithic::Enum
 
         ACH: :ACH
         CARD: :CARD
-        INTERNAL: :INTERNAL
         TRANSFER: :TRANSFER
 
         def self?.values: -> ::Array[Lithic::Models::FinancialTransaction::category]
@@ -176,7 +175,6 @@ module Lithic
           | :FINANCIAL_CREDIT_AUTHORIZATION
           | :INTEREST
           | :INTEREST_REVERSAL
-          | :INTERNAL_ADJUSTMENT
           | :LATE_PAYMENT
           | :LATE_PAYMENT_REVERSAL
           | :PROVISIONAL_CREDIT
@@ -244,7 +242,6 @@ module Lithic
           FINANCIAL_CREDIT_AUTHORIZATION: :FINANCIAL_CREDIT_AUTHORIZATION
           INTEREST: :INTEREST
           INTEREST_REVERSAL: :INTEREST_REVERSAL
-          INTERNAL_ADJUSTMENT: :INTERNAL_ADJUSTMENT
           LATE_PAYMENT: :LATE_PAYMENT
           LATE_PAYMENT_REVERSAL: :LATE_PAYMENT_REVERSAL
           PROVISIONAL_CREDIT: :PROVISIONAL_CREDIT

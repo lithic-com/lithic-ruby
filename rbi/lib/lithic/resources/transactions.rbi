@@ -70,21 +70,6 @@ module Lithic
       )
       end
 
-      # Expire authorization
-      sig do
-        params(
-          transaction_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
-        )
-          .void
-      end
-      def expire_authorization(
-        # The token of the transaction to expire.
-        transaction_token,
-        request_options: {}
-      )
-      end
-
       # Simulates an authorization request from the card network as if it came from a
       #   merchant acquirer. If you are configured for ASA, simulating authorizations
       #   requires your ASA client to be set up properly, i.e. be able to respond to the
@@ -129,7 +114,7 @@ module Lithic
         # Amount of the transaction to be simulated in currency specified in
         #   merchant_currency, including any acquirer fees.
         merchant_amount: nil,
-        # 3-character alphabetic ISO 4217 currency code. Note: Simulator only accepts USD,
+        # 3-digit alphabetic ISO 4217 currency code. Note: Simulator only accepts USD,
         #   GBP, EUR and defaults to GBP if another ISO 4217 code is provided
         merchant_currency: nil,
         # Set to true if the terminal is capable of partial approval otherwise false.

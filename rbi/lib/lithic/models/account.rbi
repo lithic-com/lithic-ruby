@@ -55,7 +55,7 @@ module Lithic
       sig { params(auth_rule_tokens: T::Array[String]).void }
       attr_writer :auth_rule_tokens
 
-      # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
+      # 3-digit alphabetic ISO 4217 code for the currency of the cardholder.
       sig { returns(T.nilable(String)) }
       attr_reader :cardholder_currency
 

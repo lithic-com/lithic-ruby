@@ -39,7 +39,6 @@ module Lithic
         ?name: String,
         ?owner: String,
         ?owner_type: Lithic::Models::owner_type,
-        ?type: Lithic::Models::ExternalBankAccountUpdateParams::type_,
         ?user_defined_id: String,
         ?request_options: Lithic::request_opts
       ) -> Lithic::Models::ExternalBankAccountUpdateResponse

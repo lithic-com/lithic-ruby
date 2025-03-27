@@ -47,6 +47,10 @@ module Lithic
         sig { returns(Time) }
         attr_accessor :created
 
+        # Entity that made the authentication decision.
+        sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol)) }
+        attr_accessor :decision_made_by
+
         # Object containing data about the merchant involved in the e-commerce
         #   transaction.
         sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant) }
@@ -135,20 +139,6 @@ module Lithic
         end
         attr_writer :browser
 
-        # Metadata about the challenge method and delivery.
-        sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata)) }
-        attr_reader :challenge_metadata
-
-        sig do
-          params(
-            challenge_metadata: T.nilable(
-              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata, Lithic::Util::AnyHash)
-            )
-          )
-            .void
-        end
-        attr_writer :challenge_metadata
-
         # Entity that orchestrates the challenge.
         sig do
           returns(
@@ -156,10 +146,6 @@ module Lithic
           )
         end
         attr_accessor :challenge_orchestrated_by
-
-        # Entity that made the authentication decision.
-        sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol)) }
-        attr_accessor :decision_made_by
 
         # Type of 3DS Requestor Initiated (3RI) request i.e., a 3DS authentication that
         #   takes place at the initiation of the merchant rather than the cardholder. The
@@ -198,6 +184,7 @@ module Lithic
             cardholder: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder, Lithic::Util::AnyHash),
             channel: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::OrSymbol,
             created: Time,
+            decision_made_by: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::OrSymbol),
             merchant: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant, Lithic::Util::AnyHash),
             message_category: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::OrSymbol,
             three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::OrSymbol,
@@ -207,11 +194,7 @@ module Lithic
             app: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, Lithic::Util::AnyHash),
             authentication_request_type: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::OrSymbol),
             browser: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, Lithic::Util::AnyHash),
-            challenge_metadata: T.nilable(
-              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata, Lithic::Util::AnyHash)
-            ),
             challenge_orchestrated_by: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::OrSymbol),
-            decision_made_by: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::OrSymbol),
             three_ri_request_type: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::OrSymbol),
             transaction: T.nilable(
               T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction, Lithic::Util::AnyHash)
@@ -228,6 +211,7 @@ module Lithic
           cardholder:,
           channel:,
           created:,
+          decision_made_by:,
           merchant:,
           message_category:,
           three_ds_requestor_challenge_indicator:,
@@ -235,9 +219,7 @@ module Lithic
           app: nil,
           authentication_request_type: nil,
           browser: nil,
-          challenge_metadata: nil,
           challenge_orchestrated_by: nil,
-          decision_made_by: nil,
           three_ri_request_type: nil,
           transaction: nil
         )
@@ -255,6 +237,7 @@ module Lithic
                 cardholder: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder,
                 channel: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol,
                 created: Time,
+                decision_made_by: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol),
                 merchant: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant,
                 message_category: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol,
                 three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::TaggedSymbol,
@@ -264,9 +247,7 @@ module Lithic
                   Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::TaggedSymbol
                 ),
                 browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser,
-                challenge_metadata: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata),
                 challenge_orchestrated_by: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol),
-                decision_made_by: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol),
                 three_ri_request_type: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol),
                 transaction: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction)
               }
@@ -615,6 +596,43 @@ module Lithic
             )
 
           sig { override.returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol]) }
+          def self.values
+          end
+        end
+
+        # Entity that made the authentication decision.
+        module DecisionMadeBy
+          extend Lithic::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol) }
+
+          CUSTOMER_ENDPOINT =
+            T.let(
+              :CUSTOMER_ENDPOINT,
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol
+            )
+          LITHIC_DEFAULT =
+            T.let(
+              :LITHIC_DEFAULT,
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol
+            )
+          LITHIC_RULES =
+            T.let(
+              :LITHIC_RULES,
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol
+            )
+          NETWORK =
+            T.let(:NETWORK, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol)
+          UNKNOWN =
+            T.let(:UNKNOWN, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol)
+
+          sig do
+            override
+              .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol])
+          end
           def self.values
           end
         end
@@ -1382,78 +1400,6 @@ module Lithic
           end
         end
 
-        class ChallengeMetadata < Lithic::BaseModel
-          # The type of challenge method used for authentication.
-          sig do
-            returns(
-              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol
-            )
-          end
-          attr_accessor :method_type
-
-          # The phone number used for delivering the OTP. Relevant only for SMS_OTP method.
-          sig { returns(T.nilable(String)) }
-          attr_accessor :phone_number
-
-          # Metadata about the challenge method and delivery.
-          sig do
-            params(
-              method_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::OrSymbol,
-              phone_number: T.nilable(String)
-            )
-              .returns(T.attached_class)
-          end
-          def self.new(method_type:, phone_number: nil)
-          end
-
-          sig do
-            override
-              .returns(
-                {
-                  method_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol,
-                  phone_number: T.nilable(String)
-                }
-              )
-          end
-          def to_hash
-          end
-
-          # The type of challenge method used for authentication.
-          module MethodType
-            extend Lithic::Enum
-
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol
-                )
-              end
-
-            SMS_OTP =
-              T.let(
-                :SMS_OTP,
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol
-              )
-            OUT_OF_BAND =
-              T.let(
-                :OUT_OF_BAND,
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol
-              )
-
-            sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol]
-                )
-            end
-            def self.values
-            end
-          end
-        end
-
         # Entity that orchestrates the challenge.
         module ChallengeOrchestratedBy
           extend Lithic::Enum
@@ -1489,43 +1435,6 @@ module Lithic
               .returns(
                 T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol]
               )
-          end
-          def self.values
-          end
-        end
-
-        # Entity that made the authentication decision.
-        module DecisionMadeBy
-          extend Lithic::Enum
-
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol) }
-
-          CUSTOMER_ENDPOINT =
-            T.let(
-              :CUSTOMER_ENDPOINT,
-              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol
-            )
-          LITHIC_DEFAULT =
-            T.let(
-              :LITHIC_DEFAULT,
-              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol
-            )
-          LITHIC_RULES =
-            T.let(
-              :LITHIC_RULES,
-              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol
-            )
-          NETWORK =
-            T.let(:NETWORK, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol)
-          UNKNOWN =
-            T.let(:UNKNOWN, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol)
-
-          sig do
-            override
-              .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol])
           end
           def self.values
           end

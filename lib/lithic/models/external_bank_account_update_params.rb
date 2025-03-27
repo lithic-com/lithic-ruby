@@ -78,15 +78,6 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::OwnerType]
       #   attr_writer :owner_type
 
-      # @!attribute [r] type
-      #
-      #   @return [Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type, nil]
-      optional :type, enum: -> { Lithic::Models::ExternalBankAccountUpdateParams::Type }
-
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type]
-      #   attr_writer :type
-
       # @!attribute [r] user_defined_id
       #   User Defined ID
       #
@@ -105,7 +96,6 @@ module Lithic
       #   # @param name [String]
       #   # @param owner [String]
       #   # @param owner_type [Symbol, Lithic::Models::OwnerType]
-      #   # @param type [Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type]
       #   # @param user_defined_id [String]
       #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       #   #
@@ -117,7 +107,6 @@ module Lithic
       #     name: nil,
       #     owner: nil,
       #     owner_type: nil,
-      #     type: nil,
       #     user_defined_id: nil,
       #     request_options: {},
       #     **
@@ -126,19 +115,6 @@ module Lithic
       #   end
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
-
-      module Type
-        extend Lithic::Enum
-
-        CHECKING = :CHECKING
-        SAVINGS = :SAVINGS
-
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
-      end
     end
   end
 end

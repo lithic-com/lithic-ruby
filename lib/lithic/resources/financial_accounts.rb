@@ -114,26 +114,24 @@ module Lithic
         )
       end
 
-      # Update financial account status
+      # Update issuing account state to charged off
       #
       # @param financial_account_token [String] Globally unique identifier for financial account.
       #
-      # @param params [Lithic::Models::FinancialAccountUpdateStatusParams, Hash{Symbol=>Object}] .
+      # @param params [Lithic::Models::FinancialAccountChargeOffParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status] :status Status of the financial account
-      #
-      #   @option params [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason, nil] :status_change_reason Reason for the financial account status change
+      #   @option params [Symbol, Lithic::Models::FinancialAccountChargeOffParams::Reason] :reason Reason for the financial account being marked as Charged Off
       #
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
-      # @return [Lithic::Models::FinancialAccount]
-      def update_status(financial_account_token, params)
-        parsed, options = Lithic::Models::FinancialAccountUpdateStatusParams.dump_request(params)
+      # @return [Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig]
+      def charge_off(financial_account_token, params)
+        parsed, options = Lithic::Models::FinancialAccountChargeOffParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/financial_accounts/%0s/update_status", financial_account_token],
+          path: ["v1/financial_accounts/%0s/charge_off", financial_account_token],
           body: parsed,
-          model: Lithic::Models::FinancialAccount,
+          model: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig,
           options: options
         )
       end

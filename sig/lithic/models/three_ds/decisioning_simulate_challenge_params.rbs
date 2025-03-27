@@ -1,0 +1,24 @@
+module Lithic
+  module Models
+    module ThreeDS
+      type decisioning_simulate_challenge_params =
+        { token: String } & Lithic::request_parameters
+
+      class DecisioningSimulateChallengeParams < Lithic::BaseModel
+        extend Lithic::RequestParameters::Converter
+        include Lithic::RequestParameters
+
+        attr_reader token: String?
+
+        def token=: (String) -> String
+
+        def initialize: (
+          ?token: String,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> Lithic::Models::ThreeDS::decisioning_simulate_challenge_params
+      end
+    end
+  end
+end

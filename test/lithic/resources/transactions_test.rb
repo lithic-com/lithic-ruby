@@ -86,14 +86,6 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
     end
   end
 
-  def test_expire_authorization
-    response = @lithic.transactions.expire_authorization("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-
-    assert_pattern do
-      response => nil
-    end
-  end
-
   def test_simulate_authorization_required_params
     response =
       @lithic.transactions.simulate_authorization(

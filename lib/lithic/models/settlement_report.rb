@@ -10,7 +10,7 @@ module Lithic
       required :created, Time
 
       # @!attribute currency
-      #   3-character alphabetic ISO 4217 code. (This field is deprecated and will be
+      #   Three-digit alphabetic ISO 4217 code. (This field is deprecated and will be
       #     removed in a future version of the API.)
       #
       #   @return [String]

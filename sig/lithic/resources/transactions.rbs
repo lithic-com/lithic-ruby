@@ -23,11 +23,6 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> Lithic::CursorPage[Lithic::Models::Transaction]
 
-      def expire_authorization: (
-        String transaction_token,
-        ?request_options: Lithic::request_opts
-      ) -> nil
-
       def simulate_authorization: (
         amount: Integer,
         descriptor: String,

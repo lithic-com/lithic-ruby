@@ -4,9 +4,6 @@ module Lithic
   module Resources
     class Reports
       class Settlement
-        sig { returns(Lithic::Resources::Reports::Settlement::NetworkTotals) }
-        attr_reader :network_totals
-
         # List details.
         sig do
           params(

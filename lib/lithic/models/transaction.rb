@@ -99,7 +99,7 @@ module Lithic
       required :merchant_authorization_amount, Integer, nil?: true
 
       # @!attribute merchant_currency
-      #   3-character alphabetic ISO 4217 code for the local currency of the transaction.
+      #   3-digit alphabetic ISO 4217 code for the local currency of the transaction.
       #
       #   @return [String]
       required :merchant_currency, String
@@ -271,15 +271,17 @@ module Lithic
           required :conversion_rate, String
 
           # @!attribute currency
-          #   3-character alphabetic ISO 4217 currency
+          #   ISO 4217 currency. Its enumerants are ISO 4217 currencies except for some
+          #     special currencies like `XXX`. Enumerants names are lowercase currency code e.g.
+          #     `EUR`, `USD`.
           #
-          #   @return [String]
-          required :currency, String
+          #   @return [Symbol, Lithic::Models::Currency]
+          required :currency, enum: -> { Lithic::Models::Currency }
 
           # @!parse
           #   # @param amount [Integer]
           #   # @param conversion_rate [String]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Lithic::Models::Currency]
           #   #
           #   def initialize(amount:, conversion_rate:, currency:, **) = super
 
@@ -294,14 +296,16 @@ module Lithic
           required :amount, Integer
 
           # @!attribute currency
-          #   3-character alphabetic ISO 4217 currency
+          #   ISO 4217 currency. Its enumerants are ISO 4217 currencies except for some
+          #     special currencies like `XXX`. Enumerants names are lowercase currency code e.g.
+          #     `EUR`, `USD`.
           #
-          #   @return [String]
-          required :currency, String
+          #   @return [Symbol, Lithic::Models::Currency]
+          required :currency, enum: -> { Lithic::Models::Currency }
 
           # @!parse
           #   # @param amount [Integer]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Lithic::Models::Currency]
           #   #
           #   def initialize(amount:, currency:, **) = super
 
@@ -316,14 +320,16 @@ module Lithic
           required :amount, Integer
 
           # @!attribute currency
-          #   3-character alphabetic ISO 4217 currency
+          #   ISO 4217 currency. Its enumerants are ISO 4217 currencies except for some
+          #     special currencies like `XXX`. Enumerants names are lowercase currency code e.g.
+          #     `EUR`, `USD`.
           #
-          #   @return [String]
-          required :currency, String
+          #   @return [Symbol, Lithic::Models::Currency]
+          required :currency, enum: -> { Lithic::Models::Currency }
 
           # @!parse
           #   # @param amount [Integer]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Lithic::Models::Currency]
           #   #
           #   def initialize(amount:, currency:, **) = super
 
@@ -338,14 +344,16 @@ module Lithic
           required :amount, Integer
 
           # @!attribute currency
-          #   3-character alphabetic ISO 4217 currency
+          #   ISO 4217 currency. Its enumerants are ISO 4217 currencies except for some
+          #     special currencies like `XXX`. Enumerants names are lowercase currency code e.g.
+          #     `EUR`, `USD`.
           #
-          #   @return [String]
-          required :currency, String
+          #   @return [Symbol, Lithic::Models::Currency]
+          required :currency, enum: -> { Lithic::Models::Currency }
 
           # @!parse
           #   # @param amount [Integer]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Lithic::Models::Currency]
           #   #
           #   def initialize(amount:, currency:, **) = super
 
@@ -1153,15 +1161,17 @@ module Lithic
             required :conversion_rate, String
 
             # @!attribute currency
-            #   3-character alphabetic ISO 4217 currency
+            #   ISO 4217 currency. Its enumerants are ISO 4217 currencies except for some
+            #     special currencies like `XXX`. Enumerants names are lowercase currency code e.g.
+            #     `EUR`, `USD`.
             #
-            #   @return [String]
-            required :currency, String
+            #   @return [Symbol, Lithic::Models::Currency]
+            required :currency, enum: -> { Lithic::Models::Currency }
 
             # @!parse
             #   # @param amount [Integer]
             #   # @param conversion_rate [String]
-            #   # @param currency [String]
+            #   # @param currency [Symbol, Lithic::Models::Currency]
             #   #
             #   def initialize(amount:, conversion_rate:, currency:, **) = super
 
@@ -1176,14 +1186,16 @@ module Lithic
             required :amount, Integer
 
             # @!attribute currency
-            #   3-character alphabetic ISO 4217 currency
+            #   ISO 4217 currency. Its enumerants are ISO 4217 currencies except for some
+            #     special currencies like `XXX`. Enumerants names are lowercase currency code e.g.
+            #     `EUR`, `USD`.
             #
-            #   @return [String]
-            required :currency, String
+            #   @return [Symbol, Lithic::Models::Currency]
+            required :currency, enum: -> { Lithic::Models::Currency }
 
             # @!parse
             #   # @param amount [Integer]
-            #   # @param currency [String]
+            #   # @param currency [Symbol, Lithic::Models::Currency]
             #   #
             #   def initialize(amount:, currency:, **) = super
 
@@ -1205,15 +1217,17 @@ module Lithic
             required :conversion_rate, String
 
             # @!attribute currency
-            #   3-character alphabetic ISO 4217 currency
+            #   ISO 4217 currency. Its enumerants are ISO 4217 currencies except for some
+            #     special currencies like `XXX`. Enumerants names are lowercase currency code e.g.
+            #     `EUR`, `USD`.
             #
-            #   @return [String]
-            required :currency, String
+            #   @return [Symbol, Lithic::Models::Currency]
+            required :currency, enum: -> { Lithic::Models::Currency }
 
             # @!parse
             #   # @param amount [Integer]
             #   # @param conversion_rate [String]
-            #   # @param currency [String]
+            #   # @param currency [Symbol, Lithic::Models::Currency]
             #   #
             #   def initialize(amount:, conversion_rate:, currency:, **) = super
 

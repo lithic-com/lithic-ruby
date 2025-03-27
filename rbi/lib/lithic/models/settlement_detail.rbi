@@ -26,7 +26,7 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :created
 
-      # Three-character alphabetic ISO 4217 code.
+      # Three-digit alphabetic ISO 4217 code.
       sig { returns(String) }
       attr_accessor :currency
 

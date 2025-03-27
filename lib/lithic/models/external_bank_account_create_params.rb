@@ -21,7 +21,7 @@ module Lithic
       required :country, String
 
       # @!attribute currency
-      #   currency of the external account 3-character alphabetic ISO 4217 code
+      #   currency of the external account 3-digit alphabetic ISO 4217 code
       #
       #   @return [String]
       required :currency, String

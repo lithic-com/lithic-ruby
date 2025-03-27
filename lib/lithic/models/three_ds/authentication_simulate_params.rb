@@ -71,8 +71,7 @@ module Lithic
           required :mcc, String
 
           # @!attribute name
-          #   Merchant descriptor, corresponds to `descriptor` in authorization. If CHALLENGE
-          #     keyword is included, Lithic will trigger a challenge.
+          #   Merchant descriptor, corresponds to `descriptor` in authorization.
           #
           #   @return [String]
           required :name, String
@@ -96,7 +95,7 @@ module Lithic
           required :amount, Integer
 
           # @!attribute currency
-          #   3-character alphabetic ISO 4217 currency code.
+          #   3-digit alphabetic ISO 4217 currency code.
           #
           #   @return [String]
           required :currency, String

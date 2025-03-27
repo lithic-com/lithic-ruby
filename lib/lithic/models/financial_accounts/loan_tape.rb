@@ -218,13 +218,6 @@ module Lithic
           #   @return [Integer]
           required :days_past_due, Integer
 
-          # @!attribute financial_account_state
-          #   Information about the financial account state
-          #
-          #   @return [Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState]
-          required :financial_account_state,
-                   -> { Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState }
-
           # @!attribute has_grace
           #   Whether the account currently has grace or not
           #
@@ -248,7 +241,6 @@ module Lithic
           #   # @param consecutive_minimum_payments_made [Integer]
           #   # @param consecutive_minimum_payments_missed [Integer]
           #   # @param days_past_due [Integer]
-          #   # @param financial_account_state [Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState]
           #   # @param has_grace [Boolean]
           #   # @param period_number [Integer]
           #   # @param period_state [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState]
@@ -258,7 +250,6 @@ module Lithic
           #     consecutive_minimum_payments_made:,
           #     consecutive_minimum_payments_missed:,
           #     days_past_due:,
-          #     financial_account_state:,
           #     has_grace:,
           #     period_number:,
           #     period_state:,
@@ -268,66 +259,6 @@ module Lithic
           #   end
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
-
-          class FinancialAccountState < Lithic::BaseModel
-            # @!attribute status
-            #   Status of the financial account
-            #
-            #   @return [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status]
-            required :status,
-                     enum: -> { Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status }
-
-            # @!attribute status_change_reason
-            #   Reason for the financial account status change
-            #
-            #   @return [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason, nil]
-            optional :status_change_reason,
-                     enum: -> { Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason },
-                     nil?: true
-
-            # @!parse
-            #   # Information about the financial account state
-            #   #
-            #   # @param status [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status]
-            #   # @param status_change_reason [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason, nil]
-            #   #
-            #   def initialize(status:, status_change_reason: nil, **) = super
-
-            # def initialize: (Hash | Lithic::BaseModel) -> void
-
-            # Status of the financial account
-            module Status
-              extend Lithic::Enum
-
-              OPEN = :OPEN
-              CLOSED = :CLOSED
-              SUSPENDED = :SUSPENDED
-              PENDING = :PENDING
-
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
-            end
-
-            # Reason for the financial account status change
-            module StatusChangeReason
-              extend Lithic::Enum
-
-              CHARGED_OFF_DELINQUENT = :CHARGED_OFF_DELINQUENT
-              CHARGED_OFF_FRAUD = :CHARGED_OFF_FRAUD
-              END_USER_REQUEST = :END_USER_REQUEST
-              BANK_REQUEST = :BANK_REQUEST
-              DELINQUENT = :DELINQUENT
-
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
-            end
-          end
 
           module PeriodState
             extend Lithic::Enum

@@ -16,8 +16,7 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :created
 
-      # 3-character alphabetic ISO 4217 code for the settling currency of the
-      #   transaction.
+      # 3-digit alphabetic ISO 4217 code for the settling currency of the transaction.
       sig { returns(String) }
       attr_accessor :currency
 

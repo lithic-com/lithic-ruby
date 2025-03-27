@@ -4,10 +4,10 @@ module Lithic
       {
         token: String,
         account_token: String,
-        beneficial_owner_entities: ::Array[Lithic::Models::KYBBusinessEntity],
+        beneficial_owner_entities: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity],
         beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual],
         business_account_token: String,
-        business_entity: Lithic::Models::KYBBusinessEntity,
+        business_entity: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity,
         control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
         created: Time,
         email: String,
@@ -33,11 +33,11 @@ module Lithic
 
       def account_token=: (String) -> String
 
-      attr_reader beneficial_owner_entities: ::Array[Lithic::Models::KYBBusinessEntity]?
+      attr_reader beneficial_owner_entities: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity]?
 
       def beneficial_owner_entities=: (
-        ::Array[Lithic::Models::KYBBusinessEntity]
-      ) -> ::Array[Lithic::Models::KYBBusinessEntity]
+        ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity]
+      ) -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity]
 
       attr_reader beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual]?
 
@@ -49,11 +49,11 @@ module Lithic
 
       def business_account_token=: (String) -> String
 
-      attr_reader business_entity: Lithic::Models::KYBBusinessEntity?
+      attr_reader business_entity: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity?
 
       def business_entity=: (
-        Lithic::Models::KYBBusinessEntity
-      ) -> Lithic::Models::KYBBusinessEntity
+        Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity
+      ) -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity
 
       attr_reader control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson?
 
@@ -130,10 +130,10 @@ module Lithic
       def initialize: (
         ?token: String,
         ?account_token: String,
-        ?beneficial_owner_entities: ::Array[Lithic::Models::KYBBusinessEntity],
+        ?beneficial_owner_entities: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity],
         ?beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual],
         ?business_account_token: String,
-        ?business_entity: Lithic::Models::KYBBusinessEntity,
+        ?business_entity: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity,
         ?control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
         ?created: Time,
         ?email: String,
@@ -151,6 +151,82 @@ module Lithic
       ) -> void
 
       def to_hash: -> Lithic::Models::account_holder_simulate_enrollment_review_response
+
+      type beneficial_owner_entity =
+        {
+          address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity::Address,
+          government_id: String,
+          legal_business_name: String,
+          phone_numbers: ::Array[String],
+          dba_business_name: String,
+          parent_company: String
+        }
+
+      class BeneficialOwnerEntity < Lithic::BaseModel
+        attr_accessor address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity::Address
+
+        attr_accessor government_id: String
+
+        attr_accessor legal_business_name: String
+
+        attr_accessor phone_numbers: ::Array[String]
+
+        attr_reader dba_business_name: String?
+
+        def dba_business_name=: (String) -> String
+
+        attr_reader parent_company: String?
+
+        def parent_company=: (String) -> String
+
+        def initialize: (
+          address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity::Address,
+          government_id: String,
+          legal_business_name: String,
+          phone_numbers: ::Array[String],
+          ?dba_business_name: String,
+          ?parent_company: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::beneficial_owner_entity
+
+        type address =
+          {
+            :address1 => String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String,
+            :address2 => String
+          }
+
+        class Address < Lithic::BaseModel
+          attr_accessor address1: String
+
+          attr_accessor city: String
+
+          attr_accessor country: String
+
+          attr_accessor postal_code: String
+
+          attr_accessor state: String
+
+          attr_reader address2: String?
+
+          def address2=: (String) -> String
+
+          def initialize: (
+            address1: String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String,
+            ?address2: String
+          ) -> void
+
+          def to_hash: -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity::address
+        end
+      end
 
       type beneficial_owner_individual =
         {
@@ -236,6 +312,82 @@ module Lithic
           ) -> void
 
           def to_hash: -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::address
+        end
+      end
+
+      type business_entity =
+        {
+          address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity::Address,
+          government_id: String,
+          legal_business_name: String,
+          phone_numbers: ::Array[String],
+          dba_business_name: String,
+          parent_company: String
+        }
+
+      class BusinessEntity < Lithic::BaseModel
+        attr_accessor address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity::Address
+
+        attr_accessor government_id: String
+
+        attr_accessor legal_business_name: String
+
+        attr_accessor phone_numbers: ::Array[String]
+
+        attr_reader dba_business_name: String?
+
+        def dba_business_name=: (String) -> String
+
+        attr_reader parent_company: String?
+
+        def parent_company=: (String) -> String
+
+        def initialize: (
+          address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity::Address,
+          government_id: String,
+          legal_business_name: String,
+          phone_numbers: ::Array[String],
+          ?dba_business_name: String,
+          ?parent_company: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::business_entity
+
+        type address =
+          {
+            :address1 => String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String,
+            :address2 => String
+          }
+
+        class Address < Lithic::BaseModel
+          attr_accessor address1: String
+
+          attr_accessor city: String
+
+          attr_accessor country: String
+
+          attr_accessor postal_code: String
+
+          attr_accessor state: String
+
+          attr_reader address2: String?
+
+          def address2=: (String) -> String
+
+          def initialize: (
+            address1: String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String,
+            ?address2: String
+          ) -> void
+
+          def to_hash: -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity::address
         end
       end
 

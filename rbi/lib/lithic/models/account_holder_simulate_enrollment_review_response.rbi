@@ -19,12 +19,21 @@ module Lithic
 
       # Only present when user_type == "BUSINESS". List of all entities with >25%
       #   ownership in the company.
-      sig { returns(T.nilable(T::Array[Lithic::Models::KYBBusinessEntity])) }
+      sig do
+        returns(
+          T.nilable(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity])
+        )
+      end
       attr_reader :beneficial_owner_entities
 
       sig do
         params(
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)]
+          beneficial_owner_entities: T::Array[
+          T.any(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity,
+            Lithic::Util::AnyHash
+          )
+          ]
         )
           .void
       end
@@ -65,10 +74,18 @@ module Lithic
 
       # Only present when user_type == "BUSINESS". Information about the business for
       #   which the account is being opened and KYB is being run.
-      sig { returns(T.nilable(Lithic::Models::KYBBusinessEntity)) }
+      sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity)) }
       attr_reader :business_entity
 
-      sig { params(business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)).void }
+      sig do
+        params(
+          business_entity: T.any(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity,
+            Lithic::Util::AnyHash
+          )
+        )
+          .void
+      end
       attr_writer :business_entity
 
       # Only present when user_type == "BUSINESS".
@@ -244,7 +261,12 @@ module Lithic
         params(
           token: String,
           account_token: String,
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)],
+          beneficial_owner_entities: T::Array[
+          T.any(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity,
+            Lithic::Util::AnyHash
+          )
+          ],
           beneficial_owner_individuals: T::Array[
           T.any(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
@@ -252,7 +274,10 @@ module Lithic
           )
           ],
           business_account_token: String,
-          business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash),
+          business_entity: T.any(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity,
+            Lithic::Util::AnyHash
+          ),
           control_person: T.any(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson, Lithic::Util::AnyHash),
           created: Time,
           email: String,
@@ -303,10 +328,10 @@ module Lithic
             {
               token: String,
               account_token: String,
-              beneficial_owner_entities: T::Array[Lithic::Models::KYBBusinessEntity],
+              beneficial_owner_entities: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity],
               beneficial_owner_individuals: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual],
               business_account_token: String,
-              business_entity: Lithic::Models::KYBBusinessEntity,
+              business_entity: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity,
               control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
               created: Time,
               email: String,
@@ -325,6 +350,158 @@ module Lithic
           )
       end
       def to_hash
+      end
+
+      class BeneficialOwnerEntity < Lithic::BaseModel
+        # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
+        #   acceptable; APO/FPO are acceptable.
+        sig { returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity::Address) }
+        attr_reader :address
+
+        sig do
+          params(
+            address: T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity::Address,
+              Lithic::Util::AnyHash
+            )
+          )
+            .void
+        end
+        attr_writer :address
+
+        # Government-issued identification number. US Federal Employer Identification
+        #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
+        #   without hyphens.
+        sig { returns(String) }
+        attr_accessor :government_id
+
+        # Legal (formal) business name.
+        sig { returns(String) }
+        attr_accessor :legal_business_name
+
+        # One or more of the business's phone number(s), entered as a list in E.164
+        #   format.
+        sig { returns(T::Array[String]) }
+        attr_accessor :phone_numbers
+
+        # Any name that the business operates under that is not its legal business name
+        #   (if applicable).
+        sig { returns(T.nilable(String)) }
+        attr_reader :dba_business_name
+
+        sig { params(dba_business_name: String).void }
+        attr_writer :dba_business_name
+
+        # Parent company name (if applicable).
+        sig { returns(T.nilable(String)) }
+        attr_reader :parent_company
+
+        sig { params(parent_company: String).void }
+        attr_writer :parent_company
+
+        sig do
+          params(
+            address: T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity::Address,
+              Lithic::Util::AnyHash
+            ),
+            government_id: String,
+            legal_business_name: String,
+            phone_numbers: T::Array[String],
+            dba_business_name: String,
+            parent_company: String
+          )
+            .returns(T.attached_class)
+        end
+        def self.new(
+          address:,
+          government_id:,
+          legal_business_name:,
+          phone_numbers:,
+          dba_business_name: nil,
+          parent_company: nil
+        )
+        end
+
+        sig do
+          override
+            .returns(
+              {
+                address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity::Address,
+                government_id: String,
+                legal_business_name: String,
+                phone_numbers: T::Array[String],
+                dba_business_name: String,
+                parent_company: String
+              }
+            )
+        end
+        def to_hash
+        end
+
+        class Address < Lithic::BaseModel
+          # Valid deliverable address (no PO boxes).
+          sig { returns(String) }
+          attr_accessor :address1
+
+          # Name of city.
+          sig { returns(String) }
+          attr_accessor :city
+
+          # Valid country code. Only USA is currently supported, entered in uppercase ISO
+          #   3166-1 alpha-3 three-character format.
+          sig { returns(String) }
+          attr_accessor :country
+
+          # Valid postal code. Only USA ZIP codes are currently supported, entered as a
+          #   five-digit ZIP or nine-digit ZIP+4.
+          sig { returns(String) }
+          attr_accessor :postal_code
+
+          # Valid state code. Only USA state codes are currently supported, entered in
+          #   uppercase ISO 3166-2 two-character format.
+          sig { returns(String) }
+          attr_accessor :state
+
+          # Unit or apartment number (if applicable).
+          sig { returns(T.nilable(String)) }
+          attr_reader :address2
+
+          sig { params(address2: String).void }
+          attr_writer :address2
+
+          # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
+          #   acceptable; APO/FPO are acceptable.
+          sig do
+            params(
+              address1: String,
+              city: String,
+              country: String,
+              postal_code: String,
+              state: String,
+              address2: String
+            )
+              .returns(T.attached_class)
+          end
+          def self.new(address1:, city:, country:, postal_code:, state:, address2: nil)
+          end
+
+          sig do
+            override
+              .returns(
+                {
+                  address1: String,
+                  city: String,
+                  country: String,
+                  postal_code: String,
+                  state: String,
+                  address2: String
+                }
+              )
+          end
+          def to_hash
+          end
+        end
       end
 
       class BeneficialOwnerIndividual < Lithic::BaseModel
@@ -453,6 +630,160 @@ module Lithic
 
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
           #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          sig do
+            params(
+              address1: String,
+              city: String,
+              country: String,
+              postal_code: String,
+              state: String,
+              address2: String
+            )
+              .returns(T.attached_class)
+          end
+          def self.new(address1:, city:, country:, postal_code:, state:, address2: nil)
+          end
+
+          sig do
+            override
+              .returns(
+                {
+                  address1: String,
+                  city: String,
+                  country: String,
+                  postal_code: String,
+                  state: String,
+                  address2: String
+                }
+              )
+          end
+          def to_hash
+          end
+        end
+      end
+
+      class BusinessEntity < Lithic::BaseModel
+        # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
+        #   acceptable; APO/FPO are acceptable.
+        sig { returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity::Address) }
+        attr_reader :address
+
+        sig do
+          params(
+            address: T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity::Address,
+              Lithic::Util::AnyHash
+            )
+          )
+            .void
+        end
+        attr_writer :address
+
+        # Government-issued identification number. US Federal Employer Identification
+        #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
+        #   without hyphens.
+        sig { returns(String) }
+        attr_accessor :government_id
+
+        # Legal (formal) business name.
+        sig { returns(String) }
+        attr_accessor :legal_business_name
+
+        # One or more of the business's phone number(s), entered as a list in E.164
+        #   format.
+        sig { returns(T::Array[String]) }
+        attr_accessor :phone_numbers
+
+        # Any name that the business operates under that is not its legal business name
+        #   (if applicable).
+        sig { returns(T.nilable(String)) }
+        attr_reader :dba_business_name
+
+        sig { params(dba_business_name: String).void }
+        attr_writer :dba_business_name
+
+        # Parent company name (if applicable).
+        sig { returns(T.nilable(String)) }
+        attr_reader :parent_company
+
+        sig { params(parent_company: String).void }
+        attr_writer :parent_company
+
+        # Only present when user_type == "BUSINESS". Information about the business for
+        #   which the account is being opened and KYB is being run.
+        sig do
+          params(
+            address: T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity::Address,
+              Lithic::Util::AnyHash
+            ),
+            government_id: String,
+            legal_business_name: String,
+            phone_numbers: T::Array[String],
+            dba_business_name: String,
+            parent_company: String
+          )
+            .returns(T.attached_class)
+        end
+        def self.new(
+          address:,
+          government_id:,
+          legal_business_name:,
+          phone_numbers:,
+          dba_business_name: nil,
+          parent_company: nil
+        )
+        end
+
+        sig do
+          override
+            .returns(
+              {
+                address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity::Address,
+                government_id: String,
+                legal_business_name: String,
+                phone_numbers: T::Array[String],
+                dba_business_name: String,
+                parent_company: String
+              }
+            )
+        end
+        def to_hash
+        end
+
+        class Address < Lithic::BaseModel
+          # Valid deliverable address (no PO boxes).
+          sig { returns(String) }
+          attr_accessor :address1
+
+          # Name of city.
+          sig { returns(String) }
+          attr_accessor :city
+
+          # Valid country code. Only USA is currently supported, entered in uppercase ISO
+          #   3166-1 alpha-3 three-character format.
+          sig { returns(String) }
+          attr_accessor :country
+
+          # Valid postal code. Only USA ZIP codes are currently supported, entered as a
+          #   five-digit ZIP or nine-digit ZIP+4.
+          sig { returns(String) }
+          attr_accessor :postal_code
+
+          # Valid state code. Only USA state codes are currently supported, entered in
+          #   uppercase ISO 3166-2 two-character format.
+          sig { returns(String) }
+          attr_accessor :state
+
+          # Unit or apartment number (if applicable).
+          sig { returns(T.nilable(String)) }
+          attr_reader :address2
+
+          sig { params(address2: String).void }
+          attr_writer :address2
+
+          # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
+          #   acceptable; APO/FPO are acceptable.
           sig do
             params(
               address1: String,

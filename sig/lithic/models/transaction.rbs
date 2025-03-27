@@ -141,56 +141,70 @@ module Lithic
         def to_hash: -> Lithic::Models::Transaction::amounts
 
         type cardholder =
-          { amount: Integer, conversion_rate: String, currency: String }
+          {
+            amount: Integer,
+            conversion_rate: String,
+            currency: Lithic::Models::currency
+          }
 
         class Cardholder < Lithic::BaseModel
           attr_accessor amount: Integer
 
           attr_accessor conversion_rate: String
 
-          attr_accessor currency: String
+          attr_accessor currency: Lithic::Models::currency
 
           def initialize: (
             amount: Integer,
             conversion_rate: String,
-            currency: String
+            currency: Lithic::Models::currency
           ) -> void
 
           def to_hash: -> Lithic::Models::Transaction::Amounts::cardholder
         end
 
-        type hold = { amount: Integer, currency: String }
+        type hold = { amount: Integer, currency: Lithic::Models::currency }
 
         class Hold < Lithic::BaseModel
           attr_accessor amount: Integer
 
-          attr_accessor currency: String
+          attr_accessor currency: Lithic::Models::currency
 
-          def initialize: (amount: Integer, currency: String) -> void
+          def initialize: (
+            amount: Integer,
+            currency: Lithic::Models::currency
+          ) -> void
 
           def to_hash: -> Lithic::Models::Transaction::Amounts::hold
         end
 
-        type merchant = { amount: Integer, currency: String }
+        type merchant = { amount: Integer, currency: Lithic::Models::currency }
 
         class Merchant < Lithic::BaseModel
           attr_accessor amount: Integer
 
-          attr_accessor currency: String
+          attr_accessor currency: Lithic::Models::currency
 
-          def initialize: (amount: Integer, currency: String) -> void
+          def initialize: (
+            amount: Integer,
+            currency: Lithic::Models::currency
+          ) -> void
 
           def to_hash: -> Lithic::Models::Transaction::Amounts::merchant
         end
 
-        type settlement = { amount: Integer, currency: String }
+        type settlement =
+          { amount: Integer, currency: Lithic::Models::currency }
 
         class Settlement < Lithic::BaseModel
           attr_accessor amount: Integer
 
-          attr_accessor currency: String
+          attr_accessor currency: Lithic::Models::currency
 
-          def initialize: (amount: Integer, currency: String) -> void
+          def initialize: (
+            amount: Integer,
+            currency: Lithic::Models::currency
+          ) -> void
 
           def to_hash: -> Lithic::Models::Transaction::Amounts::settlement
         end
@@ -837,50 +851,62 @@ module Lithic
           def to_hash: -> Lithic::Models::Transaction::Event::amounts
 
           type cardholder =
-            { amount: Integer, conversion_rate: String, currency: String }
+            {
+              amount: Integer,
+              conversion_rate: String,
+              currency: Lithic::Models::currency
+            }
 
           class Cardholder < Lithic::BaseModel
             attr_accessor amount: Integer
 
             attr_accessor conversion_rate: String
 
-            attr_accessor currency: String
+            attr_accessor currency: Lithic::Models::currency
 
             def initialize: (
               amount: Integer,
               conversion_rate: String,
-              currency: String
+              currency: Lithic::Models::currency
             ) -> void
 
             def to_hash: -> Lithic::Models::Transaction::Event::Amounts::cardholder
           end
 
-          type merchant = { amount: Integer, currency: String }
+          type merchant =
+            { amount: Integer, currency: Lithic::Models::currency }
 
           class Merchant < Lithic::BaseModel
             attr_accessor amount: Integer
 
-            attr_accessor currency: String
+            attr_accessor currency: Lithic::Models::currency
 
-            def initialize: (amount: Integer, currency: String) -> void
+            def initialize: (
+              amount: Integer,
+              currency: Lithic::Models::currency
+            ) -> void
 
             def to_hash: -> Lithic::Models::Transaction::Event::Amounts::merchant
           end
 
           type settlement =
-            { amount: Integer, conversion_rate: String, currency: String }
+            {
+              amount: Integer,
+              conversion_rate: String,
+              currency: Lithic::Models::currency
+            }
 
           class Settlement < Lithic::BaseModel
             attr_accessor amount: Integer
 
             attr_accessor conversion_rate: String
 
-            attr_accessor currency: String
+            attr_accessor currency: Lithic::Models::currency
 
             def initialize: (
               amount: Integer,
               conversion_rate: String,
-              currency: String
+              currency: Lithic::Models::currency
             ) -> void
 
             def to_hash: -> Lithic::Models::Transaction::Event::Amounts::settlement

@@ -125,10 +125,12 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
     end
 
     assert_pattern do
-      case response
-      in Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse
-      in Lithic::Models::AccountHolderUpdateResponse::PatchResponse
-      end
+      response => {
+        token: String | nil,
+        business_account_token: String | nil,
+        email: String | nil,
+        phone_number: String | nil
+      }
     end
   end
 
@@ -241,10 +243,10 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
       response => {
         token: String | nil,
         account_token: String | nil,
-        beneficial_owner_entities: ^(Lithic::ArrayOf[Lithic::Models::KYBBusinessEntity]) | nil,
+        beneficial_owner_entities: ^(Lithic::ArrayOf[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerEntity]) | nil,
         beneficial_owner_individuals: ^(Lithic::ArrayOf[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual]) | nil,
         business_account_token: String | nil,
-        business_entity: Lithic::Models::KYBBusinessEntity | nil,
+        business_entity: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BusinessEntity | nil,
         control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson | nil,
         created: Time | nil,
         email: String | nil,

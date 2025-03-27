@@ -67,7 +67,7 @@ module Lithic
       #   attr_writer :auth_rule_tokens
 
       # @!attribute [r] cardholder_currency
-      #   3-character alphabetic ISO 4217 code for the currency of the cardholder.
+      #   3-digit alphabetic ISO 4217 code for the currency of the cardholder.
       #
       #   @return [String, nil]
       optional :cardholder_currency, String

@@ -9,7 +9,6 @@ module Lithic
         name: String,
         owner: String,
         owner_type: Lithic::Models::owner_type,
-        type: Lithic::Models::ExternalBankAccountUpdateParams::type_,
         user_defined_id: String
       }
       & Lithic::request_parameters
@@ -50,12 +49,6 @@ module Lithic
         Lithic::Models::owner_type
       ) -> Lithic::Models::owner_type
 
-      attr_reader type: Lithic::Models::ExternalBankAccountUpdateParams::type_?
-
-      def type=: (
-        Lithic::Models::ExternalBankAccountUpdateParams::type_
-      ) -> Lithic::Models::ExternalBankAccountUpdateParams::type_
-
       attr_reader user_defined_id: String?
 
       def user_defined_id=: (String) -> String
@@ -68,23 +61,11 @@ module Lithic
         ?name: String,
         ?owner: String,
         ?owner_type: Lithic::Models::owner_type,
-        ?type: Lithic::Models::ExternalBankAccountUpdateParams::type_,
         ?user_defined_id: String,
         ?request_options: Lithic::request_opts
       ) -> void
 
       def to_hash: -> Lithic::Models::external_bank_account_update_params
-
-      type type_ = :CHECKING | :SAVINGS
-
-      module Type
-        extend Lithic::Enum
-
-        CHECKING: :CHECKING
-        SAVINGS: :SAVINGS
-
-        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountUpdateParams::type_]
-      end
     end
   end
 end

@@ -37,7 +37,7 @@ module Lithic
       required :created, Time
 
       # @!attribute currency
-      #   Three-character alphabetic ISO 4217 code.
+      #   Three-digit alphabetic ISO 4217 code.
       #
       #   @return [String]
       required :currency, String

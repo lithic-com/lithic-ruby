@@ -11,7 +11,6 @@ module Lithic
       #
       #   - `CARD` - Issuing card transaction.
       #   - `ACH` - Transaction over ACH.
-      #   - `INTERNAL` - Transaction for internal adjustment.
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #     program.
       sig { returns(Lithic::Models::FinancialTransaction::Category::TaggedSymbol) }
@@ -21,8 +20,7 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :created
 
-      # 3-character alphabetic ISO 4217 code for the settling currency of the
-      #   transaction.
+      # 3-digit alphabetic ISO 4217 code for the settling currency of the transaction.
       sig { returns(String) }
       attr_accessor :currency
 
@@ -123,7 +121,6 @@ module Lithic
       #
       #   - `CARD` - Issuing card transaction.
       #   - `ACH` - Transaction over ACH.
-      #   - `INTERNAL` - Transaction for internal adjustment.
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #     program.
       module Category
@@ -134,7 +131,6 @@ module Lithic
 
         ACH = T.let(:ACH, Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
         CARD = T.let(:CARD, Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
-        INTERNAL = T.let(:INTERNAL, Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
         TRANSFER = T.let(:TRANSFER, Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::FinancialTransaction::Category::TaggedSymbol]) }
@@ -330,8 +326,6 @@ module Lithic
           INTEREST = T.let(:INTEREST, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
           INTEREST_REVERSAL =
             T.let(:INTEREST_REVERSAL, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
-          INTERNAL_ADJUSTMENT =
-            T.let(:INTERNAL_ADJUSTMENT, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
           LATE_PAYMENT = T.let(:LATE_PAYMENT, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
           LATE_PAYMENT_REVERSAL =
             T.let(:LATE_PAYMENT_REVERSAL, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)

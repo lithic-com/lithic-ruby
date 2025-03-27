@@ -90,23 +90,20 @@ module Lithic
       )
       end
 
-      # Update financial account status
+      # Update issuing account state to charged off
       sig do
         params(
           financial_account_token: String,
-          status: Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol,
-          status_change_reason: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol),
+          reason: Lithic::Models::FinancialAccountChargeOffParams::Reason::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
-          .returns(Lithic::Models::FinancialAccount)
+          .returns(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig)
       end
-      def update_status(
+      def charge_off(
         # Globally unique identifier for financial account.
         financial_account_token,
-        # Status of the financial account
-        status:,
-        # Reason for the financial account status change
-        status_change_reason:,
+        # Reason for the financial account being marked as Charged Off
+        reason:,
         request_options: {}
       )
       end

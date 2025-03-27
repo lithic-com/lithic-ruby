@@ -377,17 +377,6 @@ module Lithic
   end
 
   # @api private
-  #
-  # @example
-  #   # `account_holder_update_response` is a `Lithic::Models::AccountHolderUpdateResponse`
-  #   case account_holder_update_response
-  #   when Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse
-  #     puts(account_holder_update_response.token)
-  #   when Lithic::Models::AccountHolderUpdateResponse::PatchResponse
-  #     puts(account_holder_update_response.address)
-  #   else
-  #     puts(account_holder_update_response)
-  #   end
   module Union
     include Lithic::Converter
 

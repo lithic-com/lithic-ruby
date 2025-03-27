@@ -63,7 +63,7 @@ module Lithic
       #   attr_writer :merchant_amount
 
       # @!attribute [r] merchant_currency
-      #   3-character alphabetic ISO 4217 currency code. Note: Simulator only accepts USD,
+      #   3-digit alphabetic ISO 4217 currency code. Note: Simulator only accepts USD,
       #     GBP, EUR and defaults to GBP if another ISO 4217 code is provided
       #
       #   @return [String, nil]

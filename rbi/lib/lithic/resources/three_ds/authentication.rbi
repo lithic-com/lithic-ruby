@@ -45,28 +45,6 @@ module Lithic
         )
         end
 
-        # Endpoint for simulating entering OTP into 3DS Challenge UI. A call to
-        #   /v1/three_ds_authentication/simulate that resulted in triggered SMS-OTP
-        #   challenge must precede. Only a single attempt is supported; upon entering OTP,
-        #   the challenge is either approved or declined.
-        sig do
-          params(
-            token: String,
-            otp: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
-          )
-            .void
-        end
-        def simulate_otp_entry(
-          # A unique token returned as part of a /v1/three_ds_authentication/simulate call
-          #   that resulted in PENDING_CHALLENGE authentication result.
-          token:,
-          # The OTP entered by the cardholder
-          otp:,
-          request_options: {}
-        )
-        end
-
         sig { params(client: Lithic::Client).returns(T.attached_class) }
         def self.new(client:)
         end

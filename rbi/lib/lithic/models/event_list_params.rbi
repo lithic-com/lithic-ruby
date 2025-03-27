@@ -170,18 +170,12 @@ module Lithic
           T.let(:"payment_transaction.created", Lithic::Models::EventListParams::EventType::TaggedSymbol)
         PAYMENT_TRANSACTION_UPDATED =
           T.let(:"payment_transaction.updated", Lithic::Models::EventListParams::EventType::TaggedSymbol)
-        INTERNAL_TRANSACTION_CREATED =
-          T.let(:"internal_transaction.created", Lithic::Models::EventListParams::EventType::TaggedSymbol)
-        INTERNAL_TRANSACTION_UPDATED =
-          T.let(:"internal_transaction.updated", Lithic::Models::EventListParams::EventType::TaggedSymbol)
         SETTLEMENT_REPORT_UPDATED =
           T.let(:"settlement_report.updated", Lithic::Models::EventListParams::EventType::TaggedSymbol)
         STATEMENTS_CREATED =
           T.let(:"statements.created", Lithic::Models::EventListParams::EventType::TaggedSymbol)
         THREE_DS_AUTHENTICATION_CREATED =
           T.let(:"three_ds_authentication.created", Lithic::Models::EventListParams::EventType::TaggedSymbol)
-        THREE_DS_AUTHENTICATION_UPDATED =
-          T.let(:"three_ds_authentication.updated", Lithic::Models::EventListParams::EventType::TaggedSymbol)
         TOKENIZATION_APPROVAL_REQUEST =
           T.let(:"tokenization.approval_request", Lithic::Models::EventListParams::EventType::TaggedSymbol)
         TOKENIZATION_RESULT =

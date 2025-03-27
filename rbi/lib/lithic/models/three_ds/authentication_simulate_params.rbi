@@ -91,8 +91,7 @@ module Lithic
           sig { returns(String) }
           attr_accessor :mcc
 
-          # Merchant descriptor, corresponds to `descriptor` in authorization. If CHALLENGE
-          #   keyword is included, Lithic will trigger a challenge.
+          # Merchant descriptor, corresponds to `descriptor` in authorization.
           sig { returns(String) }
           attr_accessor :name
 
@@ -110,7 +109,7 @@ module Lithic
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # 3-character alphabetic ISO 4217 currency code.
+          # 3-digit alphabetic ISO 4217 currency code.
           sig { returns(String) }
           attr_accessor :currency
 

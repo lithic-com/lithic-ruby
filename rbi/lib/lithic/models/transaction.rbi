@@ -83,7 +83,7 @@ module Lithic
       sig { returns(T.nilable(Integer)) }
       attr_accessor :merchant_authorization_amount
 
-      # 3-character alphabetic ISO 4217 code for the local currency of the transaction.
+      # 3-digit alphabetic ISO 4217 code for the local currency of the transaction.
       sig { returns(String) }
       attr_accessor :merchant_currency
 
@@ -290,15 +290,23 @@ module Lithic
           sig { returns(String) }
           attr_accessor :conversion_rate
 
-          # 3-character alphabetic ISO 4217 currency
-          sig { returns(String) }
+          # ISO 4217 currency. Its enumerants are ISO 4217 currencies except for some
+          #   special currencies like `XXX`. Enumerants names are lowercase currency code e.g.
+          #   `EUR`, `USD`.
+          sig { returns(Lithic::Models::Currency::TaggedSymbol) }
           attr_accessor :currency
 
-          sig { params(amount: Integer, conversion_rate: String, currency: String).returns(T.attached_class) }
+          sig do
+            params(amount: Integer, conversion_rate: String, currency: Lithic::Models::Currency::OrSymbol)
+              .returns(T.attached_class)
+          end
           def self.new(amount:, conversion_rate:, currency:)
           end
 
-          sig { override.returns({amount: Integer, conversion_rate: String, currency: String}) }
+          sig do
+            override
+              .returns({amount: Integer, conversion_rate: String, currency: Lithic::Models::Currency::TaggedSymbol})
+          end
           def to_hash
           end
         end
@@ -308,15 +316,17 @@ module Lithic
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # 3-character alphabetic ISO 4217 currency
-          sig { returns(String) }
+          # ISO 4217 currency. Its enumerants are ISO 4217 currencies except for some
+          #   special currencies like `XXX`. Enumerants names are lowercase currency code e.g.
+          #   `EUR`, `USD`.
+          sig { returns(Lithic::Models::Currency::TaggedSymbol) }
           attr_accessor :currency
 
-          sig { params(amount: Integer, currency: String).returns(T.attached_class) }
+          sig { params(amount: Integer, currency: Lithic::Models::Currency::OrSymbol).returns(T.attached_class) }
           def self.new(amount:, currency:)
           end
 
-          sig { override.returns({amount: Integer, currency: String}) }
+          sig { override.returns({amount: Integer, currency: Lithic::Models::Currency::TaggedSymbol}) }
           def to_hash
           end
         end
@@ -326,15 +336,17 @@ module Lithic
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # 3-character alphabetic ISO 4217 currency
-          sig { returns(String) }
+          # ISO 4217 currency. Its enumerants are ISO 4217 currencies except for some
+          #   special currencies like `XXX`. Enumerants names are lowercase currency code e.g.
+          #   `EUR`, `USD`.
+          sig { returns(Lithic::Models::Currency::TaggedSymbol) }
           attr_accessor :currency
 
-          sig { params(amount: Integer, currency: String).returns(T.attached_class) }
+          sig { params(amount: Integer, currency: Lithic::Models::Currency::OrSymbol).returns(T.attached_class) }
           def self.new(amount:, currency:)
           end
 
-          sig { override.returns({amount: Integer, currency: String}) }
+          sig { override.returns({amount: Integer, currency: Lithic::Models::Currency::TaggedSymbol}) }
           def to_hash
           end
         end
@@ -344,15 +356,17 @@ module Lithic
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # 3-character alphabetic ISO 4217 currency
-          sig { returns(String) }
+          # ISO 4217 currency. Its enumerants are ISO 4217 currencies except for some
+          #   special currencies like `XXX`. Enumerants names are lowercase currency code e.g.
+          #   `EUR`, `USD`.
+          sig { returns(Lithic::Models::Currency::TaggedSymbol) }
           attr_accessor :currency
 
-          sig { params(amount: Integer, currency: String).returns(T.attached_class) }
+          sig { params(amount: Integer, currency: Lithic::Models::Currency::OrSymbol).returns(T.attached_class) }
           def self.new(amount:, currency:)
           end
 
-          sig { override.returns({amount: Integer, currency: String}) }
+          sig { override.returns({amount: Integer, currency: Lithic::Models::Currency::TaggedSymbol}) }
           def to_hash
           end
         end
@@ -1351,17 +1365,23 @@ module Lithic
             sig { returns(String) }
             attr_accessor :conversion_rate
 
-            # 3-character alphabetic ISO 4217 currency
-            sig { returns(String) }
+            # ISO 4217 currency. Its enumerants are ISO 4217 currencies except for some
+            #   special currencies like `XXX`. Enumerants names are lowercase currency code e.g.
+            #   `EUR`, `USD`.
+            sig { returns(Lithic::Models::Currency::TaggedSymbol) }
             attr_accessor :currency
 
             sig do
-              params(amount: Integer, conversion_rate: String, currency: String).returns(T.attached_class)
+              params(amount: Integer, conversion_rate: String, currency: Lithic::Models::Currency::OrSymbol)
+                .returns(T.attached_class)
             end
             def self.new(amount:, conversion_rate:, currency:)
             end
 
-            sig { override.returns({amount: Integer, conversion_rate: String, currency: String}) }
+            sig do
+              override
+                .returns({amount: Integer, conversion_rate: String, currency: Lithic::Models::Currency::TaggedSymbol})
+            end
             def to_hash
             end
           end
@@ -1371,15 +1391,17 @@ module Lithic
             sig { returns(Integer) }
             attr_accessor :amount
 
-            # 3-character alphabetic ISO 4217 currency
-            sig { returns(String) }
+            # ISO 4217 currency. Its enumerants are ISO 4217 currencies except for some
+            #   special currencies like `XXX`. Enumerants names are lowercase currency code e.g.
+            #   `EUR`, `USD`.
+            sig { returns(Lithic::Models::Currency::TaggedSymbol) }
             attr_accessor :currency
 
-            sig { params(amount: Integer, currency: String).returns(T.attached_class) }
+            sig { params(amount: Integer, currency: Lithic::Models::Currency::OrSymbol).returns(T.attached_class) }
             def self.new(amount:, currency:)
             end
 
-            sig { override.returns({amount: Integer, currency: String}) }
+            sig { override.returns({amount: Integer, currency: Lithic::Models::Currency::TaggedSymbol}) }
             def to_hash
             end
           end
@@ -1394,17 +1416,23 @@ module Lithic
             sig { returns(String) }
             attr_accessor :conversion_rate
 
-            # 3-character alphabetic ISO 4217 currency
-            sig { returns(String) }
+            # ISO 4217 currency. Its enumerants are ISO 4217 currencies except for some
+            #   special currencies like `XXX`. Enumerants names are lowercase currency code e.g.
+            #   `EUR`, `USD`.
+            sig { returns(Lithic::Models::Currency::TaggedSymbol) }
             attr_accessor :currency
 
             sig do
-              params(amount: Integer, conversion_rate: String, currency: String).returns(T.attached_class)
+              params(amount: Integer, conversion_rate: String, currency: Lithic::Models::Currency::OrSymbol)
+                .returns(T.attached_class)
             end
             def self.new(amount:, conversion_rate:, currency:)
             end
 
-            sig { override.returns({amount: Integer, conversion_rate: String, currency: String}) }
+            sig do
+              override
+                .returns({amount: Integer, conversion_rate: String, currency: Lithic::Models::Currency::TaggedSymbol})
+            end
             def to_hash
             end
           end

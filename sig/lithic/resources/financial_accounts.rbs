@@ -38,12 +38,11 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> Lithic::SinglePage[Lithic::Models::FinancialAccount]
 
-      def update_status: (
+      def charge_off: (
         String financial_account_token,
-        status: Lithic::Models::FinancialAccountUpdateStatusParams::status,
-        status_change_reason: Lithic::Models::FinancialAccountUpdateStatusParams::status_change_reason?,
+        reason: Lithic::Models::FinancialAccountChargeOffParams::reason,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::FinancialAccount
+      ) -> Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig
 
       def initialize: (client: Lithic::Client) -> void
     end

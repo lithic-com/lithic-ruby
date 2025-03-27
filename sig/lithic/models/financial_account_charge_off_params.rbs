@@ -1,0 +1,32 @@
+module Lithic
+  module Models
+    type financial_account_charge_off_params =
+      { reason: Lithic::Models::FinancialAccountChargeOffParams::reason }
+      & Lithic::request_parameters
+
+    class FinancialAccountChargeOffParams < Lithic::BaseModel
+      extend Lithic::RequestParameters::Converter
+      include Lithic::RequestParameters
+
+      attr_accessor reason: Lithic::Models::FinancialAccountChargeOffParams::reason
+
+      def initialize: (
+        reason: Lithic::Models::FinancialAccountChargeOffParams::reason,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> Lithic::Models::financial_account_charge_off_params
+
+      type reason = :DELINQUENT | :FRAUD
+
+      module Reason
+        extend Lithic::Enum
+
+        DELINQUENT: :DELINQUENT
+        FRAUD: :FRAUD
+
+        def self?.values: -> ::Array[Lithic::Models::FinancialAccountChargeOffParams::reason]
+      end
+    end
+  end
+end

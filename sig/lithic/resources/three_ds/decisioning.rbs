@@ -14,6 +14,17 @@ module Lithic
 
         def rotate_secret: (?request_options: Lithic::request_opts) -> nil
 
+        def simulate_challenge: (
+          ?token: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::ThreeDS::DecisioningSimulateChallengeResponse
+
+        def simulate_challenge_response: (
+          token: String,
+          challenge_response: Lithic::Models::ThreeDS::challenge_result,
+          ?request_options: Lithic::request_opts
+        ) -> nil
+
         def initialize: (client: Lithic::Client) -> void
       end
     end

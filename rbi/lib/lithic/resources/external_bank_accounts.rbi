@@ -37,7 +37,7 @@ module Lithic
         # The country that the bank account is located in using ISO 3166-1. We will only
         #   accept USA bank accounts e.g., USA
         country:,
-        # currency of the external account 3-character alphabetic ISO 4217 code
+        # currency of the external account 3-digit alphabetic ISO 4217 code
         currency:,
         # The financial account token of the operating account to fund the micro deposits
         financial_account_token:,
@@ -96,7 +96,6 @@ module Lithic
           name: String,
           owner: String,
           owner_type: Lithic::Models::OwnerType::OrSymbol,
-          type: Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol,
           user_defined_id: String,
           request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
         )
@@ -119,7 +118,6 @@ module Lithic
         owner: nil,
         # Owner Type
         owner_type: nil,
-        type: nil,
         # User Defined ID
         user_defined_id: nil,
         request_options: {}

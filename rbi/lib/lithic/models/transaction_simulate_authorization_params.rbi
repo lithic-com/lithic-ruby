@@ -46,7 +46,7 @@ module Lithic
       sig { params(merchant_amount: Integer).void }
       attr_writer :merchant_amount
 
-      # 3-character alphabetic ISO 4217 currency code. Note: Simulator only accepts USD,
+      # 3-digit alphabetic ISO 4217 currency code. Note: Simulator only accepts USD,
       #   GBP, EUR and defaults to GBP if another ISO 4217 code is provided
       sig { returns(T.nilable(String)) }
       attr_reader :merchant_currency

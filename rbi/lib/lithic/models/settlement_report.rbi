@@ -7,7 +7,7 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :created
 
-      # 3-character alphabetic ISO 4217 code. (This field is deprecated and will be
+      # Three-digit alphabetic ISO 4217 code. (This field is deprecated and will be
       #   removed in a future version of the API.)
       sig { returns(String) }
       attr_accessor :currency

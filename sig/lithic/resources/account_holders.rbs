@@ -31,23 +31,11 @@ module Lithic
 
       def update: (
         String account_holder_token,
-        ?beneficial_owner_entities: ::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity],
-        ?beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual],
-        ?business_entity: Lithic::Models::AccountHolderUpdateParams::BusinessEntity,
-        ?control_person: Lithic::Models::AccountHolderUpdateParams::ControlPerson,
-        ?external_id: String,
-        ?nature_of_business: String,
-        ?website_url: String,
-        ?individual: Lithic::Models::AccountHolderUpdateParams::Individual,
-        ?address: Lithic::Models::AddressUpdate,
         ?business_account_token: String,
         ?email: String,
-        ?first_name: String,
-        ?last_name: String,
-        ?legal_business_name: String,
         ?phone_number: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::account_holder_update_response
+      ) -> Lithic::Models::AccountHolderUpdateResponse
 
       def list: (
         ?begin_: Time,

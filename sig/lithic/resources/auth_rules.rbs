@@ -1,8 +1,6 @@
 module Lithic
   module Resources
     class AuthRules
-      attr_reader v2: Lithic::Resources::AuthRules::V2
-
       def initialize: (client: Lithic::Client) -> void
     end
   end

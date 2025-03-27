@@ -4,9 +4,6 @@ module Lithic
   module Resources
     class Reports
       class Settlement
-        # @return [Lithic::Resources::Reports::Settlement::NetworkTotals]
-        attr_reader :network_totals
-
         # List details.
         #
         # @param report_date [Date] Date of the settlement report to retrieve. Not available in sandbox.
@@ -57,7 +54,6 @@ module Lithic
         # @param client [Lithic::Client]
         def initialize(client:)
           @client = client
-          @network_totals = Lithic::Resources::Reports::Settlement::NetworkTotals.new(client: client)
         end
       end
     end

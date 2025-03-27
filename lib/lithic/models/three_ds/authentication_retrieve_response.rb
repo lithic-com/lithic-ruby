@@ -59,6 +59,14 @@ module Lithic
         #   @return [Time]
         required :created, Time
 
+        # @!attribute decision_made_by
+        #   Entity that made the authentication decision.
+        #
+        #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy, nil]
+        required :decision_made_by,
+                 enum: -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy },
+                 nil?: true
+
         # @!attribute merchant
         #   Object containing data about the merchant involved in the e-commerce
         #     transaction.
@@ -133,28 +141,12 @@ module Lithic
         #   # @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser]
         #   attr_writer :browser
 
-        # @!attribute challenge_metadata
-        #   Metadata about the challenge method and delivery.
-        #
-        #   @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata, nil]
-        optional :challenge_metadata,
-                 -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata },
-                 nil?: true
-
         # @!attribute challenge_orchestrated_by
         #   Entity that orchestrates the challenge.
         #
         #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy, nil]
         optional :challenge_orchestrated_by,
                  enum: -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy },
-                 nil?: true
-
-        # @!attribute decision_made_by
-        #   Entity that made the authentication decision.
-        #
-        #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy, nil]
-        optional :decision_made_by,
-                 enum: -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy },
                  nil?: true
 
         # @!attribute three_ri_request_type
@@ -187,6 +179,7 @@ module Lithic
         #   # @param cardholder [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder]
         #   # @param channel [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel]
         #   # @param created [Time]
+        #   # @param decision_made_by [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy, nil]
         #   # @param merchant [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant]
         #   # @param message_category [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory]
         #   # @param three_ds_requestor_challenge_indicator [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator]
@@ -194,9 +187,7 @@ module Lithic
         #   # @param app [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App]
         #   # @param authentication_request_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType, nil]
         #   # @param browser [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser]
-        #   # @param challenge_metadata [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata, nil]
         #   # @param challenge_orchestrated_by [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy, nil]
-        #   # @param decision_made_by [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy, nil]
         #   # @param three_ri_request_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType, nil]
         #   # @param transaction [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction, nil]
         #   #
@@ -209,6 +200,7 @@ module Lithic
         #     cardholder:,
         #     channel:,
         #     created:,
+        #     decision_made_by:,
         #     merchant:,
         #     message_category:,
         #     three_ds_requestor_challenge_indicator:,
@@ -216,9 +208,7 @@ module Lithic
         #     app: nil,
         #     authentication_request_type: nil,
         #     browser: nil,
-        #     challenge_metadata: nil,
         #     challenge_orchestrated_by: nil,
-        #     decision_made_by: nil,
         #     three_ri_request_type: nil,
         #     transaction: nil,
         #     **
@@ -484,6 +474,23 @@ module Lithic
           APP_BASED = :APP_BASED
           BROWSER = :BROWSER
           THREE_DS_REQUESTOR_INITIATED = :THREE_DS_REQUESTOR_INITIATED
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
+        end
+
+        # Entity that made the authentication decision.
+        module DecisionMadeBy
+          extend Lithic::Enum
+
+          CUSTOMER_ENDPOINT = :CUSTOMER_ENDPOINT
+          LITHIC_DEFAULT = :LITHIC_DEFAULT
+          LITHIC_RULES = :LITHIC_RULES
+          NETWORK = :NETWORK
+          UNKNOWN = :UNKNOWN
 
           finalize!
 
@@ -924,45 +931,6 @@ module Lithic
           # def initialize: (Hash | Lithic::BaseModel) -> void
         end
 
-        class ChallengeMetadata < Lithic::BaseModel
-          # @!attribute method_type
-          #   The type of challenge method used for authentication.
-          #
-          #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType]
-          required :method_type,
-                   enum: -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType }
-
-          # @!attribute phone_number
-          #   The phone number used for delivering the OTP. Relevant only for SMS_OTP method.
-          #
-          #   @return [String, nil]
-          optional :phone_number, String, nil?: true
-
-          # @!parse
-          #   # Metadata about the challenge method and delivery.
-          #   #
-          #   # @param method_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType]
-          #   # @param phone_number [String, nil]
-          #   #
-          #   def initialize(method_type:, phone_number: nil, **) = super
-
-          # def initialize: (Hash | Lithic::BaseModel) -> void
-
-          # The type of challenge method used for authentication.
-          module MethodType
-            extend Lithic::Enum
-
-            SMS_OTP = :SMS_OTP
-            OUT_OF_BAND = :OUT_OF_BAND
-
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
-          end
-        end
-
         # Entity that orchestrates the challenge.
         module ChallengeOrchestratedBy
           extend Lithic::Enum
@@ -970,23 +938,6 @@ module Lithic
           LITHIC = :LITHIC
           CUSTOMER = :CUSTOMER
           NO_CHALLENGE = :NO_CHALLENGE
-
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
-        end
-
-        # Entity that made the authentication decision.
-        module DecisionMadeBy
-          extend Lithic::Enum
-
-          CUSTOMER_ENDPOINT = :CUSTOMER_ENDPOINT
-          LITHIC_DEFAULT = :LITHIC_DEFAULT
-          LITHIC_RULES = :LITHIC_RULES
-          NETWORK = :NETWORK
-          UNKNOWN = :UNKNOWN
 
           finalize!
 
