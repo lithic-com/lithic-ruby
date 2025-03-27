@@ -111,8 +111,6 @@ module Lithic
         module Value
           extend Lithic::Union
 
-          StringArray = Lithic::ArrayOf[String]
-
           # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
           variant String
 
@@ -120,11 +118,13 @@ module Lithic
           variant Integer
 
           # An array of strings, to be used with `IS_ONE_OF` or `IS_NOT_ONE_OF`
-          variant Lithic::Models::AuthRules::AuthRuleCondition::Value::StringArray
+          variant -> { Lithic::Models::AuthRules::AuthRuleCondition::Value::StringArray }
 
           # @!parse
           #   # @return [Array(String, Integer, Array<String>)]
           #   def self.variants; end
+
+          StringArray = Lithic::ArrayOf[String]
         end
       end
     end
