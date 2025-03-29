@@ -84,7 +84,7 @@ module Lithic
     end
 
     # @api private
-    sig { returns(T.anything) }
+    sig { returns(Lithic::PooledNetRequester) }
     attr_accessor :requester
 
     # @api private
