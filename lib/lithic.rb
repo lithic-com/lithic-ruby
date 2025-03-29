@@ -2,7 +2,7 @@
 
 # We already ship the preferred sorbet manifests in the package itself.
 # `tapioca` currently does not offer us a way to opt out of unnecessary compilation.
-if Object.const_defined?(:Tapioca) && caller_locations.any? { _1.path.end_with?("tapioca/cli.rb") }
+if Object.const_defined?(:Tapioca) && caller.chain([$0]).chain(ARGV).grep(/tapioca/)
   Warning.warn(
     <<~WARN
       \n
@@ -36,7 +36,6 @@ require "connection_pool"
 # Package files.
 require_relative "lithic/version"
 require_relative "lithic/util"
-require_relative "lithic/extern"
 require_relative "lithic/base_model"
 require_relative "lithic/base_page"
 require_relative "lithic/request_options"

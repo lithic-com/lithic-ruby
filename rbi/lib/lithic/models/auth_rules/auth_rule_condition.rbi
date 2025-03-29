@@ -123,11 +123,11 @@ module Lithic
         module Value
           extend Lithic::Union
 
-          StringArray = T.let(Lithic::ArrayOf[String], Lithic::Converter)
-
           sig { override.returns([String, Integer, T::Array[String]]) }
           def self.variants
           end
+
+          StringArray = T.let(Lithic::ArrayOf[String], Lithic::Converter)
         end
       end
     end
