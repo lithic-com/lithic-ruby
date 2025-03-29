@@ -36,7 +36,6 @@ require "connection_pool"
 # Package files.
 require_relative "lithic/version"
 require_relative "lithic/util"
-require_relative "lithic/extern"
 require_relative "lithic/base_model"
 require_relative "lithic/base_page"
 require_relative "lithic/request_options"
