@@ -4,7 +4,7 @@ module Lithic
   module Models
     module AuthRules
       class V2DraftParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # Parameters for the Auth Rule

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class TransactionSimulateCreditAuthorizationParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # Amount (in cents). Any value entered will be converted into a negative amount in

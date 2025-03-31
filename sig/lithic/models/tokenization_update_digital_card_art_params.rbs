@@ -4,7 +4,7 @@ module Lithic
       { digital_card_art_token: String } & Lithic::request_parameters
 
     class TokenizationUpdateDigitalCardArtParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_reader digital_card_art_token: String?

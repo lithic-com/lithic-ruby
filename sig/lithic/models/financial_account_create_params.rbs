@@ -11,7 +11,7 @@ module Lithic
       & Lithic::request_parameters
 
     class FinancialAccountCreateParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_accessor nickname: String

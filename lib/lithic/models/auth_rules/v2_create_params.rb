@@ -5,7 +5,7 @@ module Lithic
     module AuthRules
       class V2CreateParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::RequestParameters::Converter
+        #   extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # @!attribute account_tokens

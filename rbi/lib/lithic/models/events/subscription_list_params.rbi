@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Events
       class SubscriptionListParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # A cursor representing an item's token before which a page of results should end.

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class TransactionSimulateReturnReversalParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # The transaction token returned from the /v1/simulate/authorize response.

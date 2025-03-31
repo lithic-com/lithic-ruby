@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class TransferCreateParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).

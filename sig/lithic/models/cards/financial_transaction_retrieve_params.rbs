@@ -5,7 +5,7 @@ module Lithic
         { card_token: String } & Lithic::request_parameters
 
       class FinancialTransactionRetrieveParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         attr_accessor card_token: String

@@ -4,7 +4,7 @@ module Lithic
   module Models
     module FinancialAccounts
       class LoanTapeListParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # Date string in RFC 3339 format. Only entries created after the specified date

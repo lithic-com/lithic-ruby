@@ -5,7 +5,7 @@ module Lithic
     module Cards
       class FinancialTransactionListParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::RequestParameters::Converter
+        #   extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # @!attribute [r] begin_

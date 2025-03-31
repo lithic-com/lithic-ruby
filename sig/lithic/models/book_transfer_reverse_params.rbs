@@ -4,7 +4,7 @@ module Lithic
       { memo: String } & Lithic::request_parameters
 
     class BookTransferReverseParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_reader memo: String?

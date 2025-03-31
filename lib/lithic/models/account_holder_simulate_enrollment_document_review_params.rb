@@ -4,7 +4,7 @@ module Lithic
   module Models
     class AccountHolderSimulateEnrollmentDocumentReviewParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::RequestParameters::Converter
+      #   extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # @!attribute document_upload_token

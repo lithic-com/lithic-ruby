@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class ResponderEndpointCreateParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # The type of the endpoint.

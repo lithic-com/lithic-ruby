@@ -4,7 +4,7 @@ module Lithic
       { financial_account_token: String } & Lithic::request_parameters
 
     class ExternalBankAccountRetryMicroDepositsParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_reader financial_account_token: String?

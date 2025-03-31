@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class BalanceListParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # List balances for all financial accounts of a given account_token.

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class TokenizationListParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # Filters for tokenizations associated with a specific account.

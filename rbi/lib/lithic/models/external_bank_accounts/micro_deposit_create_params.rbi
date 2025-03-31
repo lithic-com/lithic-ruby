@@ -4,7 +4,7 @@ module Lithic
   module Models
     module ExternalBankAccounts
       class MicroDepositCreateParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         sig { returns(T::Array[Integer]) }

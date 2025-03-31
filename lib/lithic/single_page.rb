@@ -23,7 +23,7 @@ module Lithic
   #
   #   account_holders => Array
   class SinglePage
-    include Lithic::BasePage
+    include Lithic::Type::BasePage
 
     # @return [Array<Object>, nil]
     attr_accessor :data
@@ -33,7 +33,7 @@ module Lithic
 
     # @api private
     #
-    # @param client [Lithic::BaseClient]
+    # @param client [Lithic::Transport::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
     # @param page_data [Array<Object>]
@@ -43,7 +43,7 @@ module Lithic
 
       case page_data
       in {data: Array | nil => data}
-        @data = data&.map { Lithic::Converter.coerce(model, _1) }
+        @data = data&.map { Lithic::Type::Converter.coerce(model, _1) }
       else
       end
 

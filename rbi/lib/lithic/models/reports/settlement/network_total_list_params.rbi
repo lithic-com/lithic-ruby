@@ -5,7 +5,7 @@ module Lithic
     module Reports
       module Settlement
         class NetworkTotalListParams < Lithic::BaseModel
-          extend Lithic::RequestParameters::Converter
+          extend Lithic::Type::RequestParameters::Converter
           include Lithic::RequestParameters
 
           # Datetime in RFC 3339 format. Only entries created after the specified time will

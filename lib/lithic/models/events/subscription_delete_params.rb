@@ -5,7 +5,7 @@ module Lithic
     module Events
       class SubscriptionDeleteParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::RequestParameters::Converter
+        #   extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # @!parse

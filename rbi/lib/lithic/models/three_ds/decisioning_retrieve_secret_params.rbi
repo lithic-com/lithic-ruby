@@ -4,7 +4,7 @@ module Lithic
   module Models
     module ThreeDS
       class DecisioningRetrieveSecretParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         sig do

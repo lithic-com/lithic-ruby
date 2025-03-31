@@ -4,7 +4,7 @@ module Lithic
   module Models
     module CreditProducts
       class PrimeRateRetrieveParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # The effective date that the prime rates ends before

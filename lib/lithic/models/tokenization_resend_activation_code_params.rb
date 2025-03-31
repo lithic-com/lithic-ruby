@@ -4,7 +4,7 @@ module Lithic
   module Models
     class TokenizationResendActivationCodeParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::RequestParameters::Converter
+      #   extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # @!attribute [r] activation_method_type

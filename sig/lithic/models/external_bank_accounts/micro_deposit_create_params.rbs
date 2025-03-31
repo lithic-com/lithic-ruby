@@ -5,7 +5,7 @@ module Lithic
         { micro_deposits: ::Array[Integer] } & Lithic::request_parameters
 
       class MicroDepositCreateParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         attr_accessor micro_deposits: ::Array[Integer]

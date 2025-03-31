@@ -4,7 +4,7 @@ module Lithic
   module Models
     class EventListAttemptsParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::RequestParameters::Converter
+      #   extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # @!attribute [r] begin_

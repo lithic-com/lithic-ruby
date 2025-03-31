@@ -25,7 +25,7 @@ module Lithic
       & Lithic::request_parameters
 
     class AccountHolderCreateParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_accessor beneficial_owner_entities: ::Array[Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity]

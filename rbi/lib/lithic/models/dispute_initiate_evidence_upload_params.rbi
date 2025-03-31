@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class DisputeInitiateEvidenceUploadParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # Filename of the evidence.

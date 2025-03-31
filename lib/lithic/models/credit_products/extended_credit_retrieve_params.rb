@@ -5,7 +5,7 @@ module Lithic
     module CreditProducts
       class ExtendedCreditRetrieveParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::RequestParameters::Converter
+        #   extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # @!parse

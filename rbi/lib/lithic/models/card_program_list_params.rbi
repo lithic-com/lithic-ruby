@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class CardProgramListParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # A cursor representing an item's token before which a page of results should end.
