@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Cards
       class BalanceListParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # UTC date of the balance to retrieve. Defaults to latest available balance

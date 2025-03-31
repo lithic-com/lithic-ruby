@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class CardListParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # Returns cards associated with the specified account.

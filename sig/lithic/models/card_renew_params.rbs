@@ -12,7 +12,7 @@ module Lithic
       & Lithic::request_parameters
 
     class CardRenewParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_accessor shipping_address: Lithic::Models::ShippingAddress

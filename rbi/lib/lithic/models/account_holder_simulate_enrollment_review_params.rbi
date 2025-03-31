@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class AccountHolderSimulateEnrollmentReviewParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # The account holder which to perform the simulation upon.

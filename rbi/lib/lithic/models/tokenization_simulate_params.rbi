@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class TokenizationSimulateParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # The three digit cvv for the card.

@@ -5,7 +5,7 @@ module Lithic
     module Reports
       class SettlementListDetailsParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::RequestParameters::Converter
+        #   extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # @!attribute [r] ending_before

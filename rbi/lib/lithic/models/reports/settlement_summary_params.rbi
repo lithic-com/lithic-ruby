@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Reports
       class SettlementSummaryParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         sig do

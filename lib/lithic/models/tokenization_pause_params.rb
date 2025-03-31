@@ -4,7 +4,7 @@ module Lithic
   module Models
     class TokenizationPauseParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::RequestParameters::Converter
+      #   extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # @!parse

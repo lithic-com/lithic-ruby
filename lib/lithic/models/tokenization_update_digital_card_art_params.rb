@@ -4,7 +4,7 @@ module Lithic
   module Models
     class TokenizationUpdateDigitalCardArtParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::RequestParameters::Converter
+      #   extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # @!attribute [r] digital_card_art_token

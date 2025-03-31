@@ -4,7 +4,7 @@ module Lithic
   module Models
     class BookTransferCreateParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::RequestParameters::Converter
+      #   extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # @!attribute amount

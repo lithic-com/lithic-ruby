@@ -1,0 +1,22 @@
+module Lithic
+  module Type
+    module Enum
+      include Lithic::Type::Converter
+
+      def self.values: -> ::Array[(nil | bool | Integer | Float | Symbol)]
+
+      private def self.finalize!: -> void
+
+      def ===: (top other) -> bool
+
+      def ==: (top other) -> bool
+
+      def coerce: (
+        String | Symbol | top value,
+        state: Lithic::Type::Converter::state
+      ) -> (Symbol | top)
+
+      def dump: (Symbol | top value) -> (Symbol | top)
+    end
+  end
+end

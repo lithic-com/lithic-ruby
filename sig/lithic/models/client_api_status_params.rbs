@@ -3,7 +3,7 @@ module Lithic
     type client_api_status_params = {  } & Lithic::request_parameters
 
     class ClientAPIStatusParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       def initialize: (?request_options: Lithic::request_opts) -> void

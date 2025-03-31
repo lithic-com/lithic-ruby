@@ -4,7 +4,7 @@ module Lithic
       { nickname: String } & Lithic::request_parameters
 
     class FinancialAccountUpdateParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_reader nickname: String?

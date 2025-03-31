@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class CardReissueParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # If omitted, the previous carrier will be used.

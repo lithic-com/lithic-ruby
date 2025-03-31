@@ -12,7 +12,7 @@ module Lithic
       & Lithic::request_parameters
 
     class CardProvisionParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_reader certificate: String?

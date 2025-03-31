@@ -5,7 +5,7 @@ module Lithic
         { effective_date: Date, rate: String } & Lithic::request_parameters
 
       class PrimeRateCreateParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         attr_accessor effective_date: Date

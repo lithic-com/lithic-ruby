@@ -5,7 +5,7 @@ module Lithic
     module Cards
       class FinancialTransactionRetrieveParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::RequestParameters::Converter
+        #   extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # @!attribute card_token

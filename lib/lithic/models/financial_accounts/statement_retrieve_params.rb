@@ -5,7 +5,7 @@ module Lithic
     module FinancialAccounts
       class StatementRetrieveParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::RequestParameters::Converter
+        #   extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # @!attribute financial_account_token

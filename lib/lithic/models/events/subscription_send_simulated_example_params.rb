@@ -5,7 +5,7 @@ module Lithic
     module Events
       class SubscriptionSendSimulatedExampleParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::RequestParameters::Converter
+        #   extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # @!attribute [r] event_type

@@ -23,7 +23,7 @@ module Lithic
       & Lithic::request_parameters
 
     class CardCreateParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_accessor type: Lithic::Models::CardCreateParams::type_

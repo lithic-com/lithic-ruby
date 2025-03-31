@@ -13,7 +13,7 @@ module Lithic
         & Lithic::request_parameters
 
       class V2UpdateParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         attr_reader account_tokens: ::Array[String]?

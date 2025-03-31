@@ -6,7 +6,7 @@ module Lithic
           { end_: Time, start: Time } & Lithic::request_parameters
 
         class BacktestCreateParams < Lithic::BaseModel
-          extend Lithic::RequestParameters::Converter
+          extend Lithic::Type::RequestParameters::Converter
           include Lithic::RequestParameters
 
           attr_reader end_: Time?

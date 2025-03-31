@@ -5,7 +5,7 @@ module Lithic
     module FinancialAccounts
       module Statements
         class LineItemListParams < Lithic::BaseModel
-          extend Lithic::RequestParameters::Converter
+          extend Lithic::Type::RequestParameters::Converter
           include Lithic::RequestParameters
 
           # Globally unique identifier for financial account.

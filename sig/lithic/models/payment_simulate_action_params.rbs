@@ -9,7 +9,7 @@ module Lithic
       & Lithic::request_parameters
 
     class PaymentSimulateActionParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_accessor event_type: Lithic::Models::PaymentSimulateActionParams::event_type

@@ -4,7 +4,7 @@ module Lithic
       type v2_retrieve_params = {  } & Lithic::request_parameters
 
       class V2RetrieveParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         def initialize: (?request_options: Lithic::request_opts) -> void

@@ -6,7 +6,7 @@ module Lithic
           { auth_rule_token: String } & Lithic::request_parameters
 
         class BacktestRetrieveParams < Lithic::BaseModel
-          extend Lithic::RequestParameters::Converter
+          extend Lithic::Type::RequestParameters::Converter
           include Lithic::RequestParameters
 
           attr_accessor auth_rule_token: String

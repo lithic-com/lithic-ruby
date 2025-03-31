@@ -8,7 +8,7 @@ module Lithic
       & Lithic::request_parameters
 
     class ResponderEndpointCreateParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_reader type: Lithic::Models::ResponderEndpointCreateParams::type_?

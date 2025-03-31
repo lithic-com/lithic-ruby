@@ -4,7 +4,7 @@ module Lithic
   module Models
     class ResponderEndpointCreateParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::RequestParameters::Converter
+      #   extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # @!attribute [r] type
