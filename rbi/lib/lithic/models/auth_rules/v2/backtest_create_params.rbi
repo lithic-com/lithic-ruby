@@ -5,7 +5,7 @@ module Lithic
     module AuthRules
       module V2
         class BacktestCreateParams < Lithic::BaseModel
-          extend Lithic::RequestParameters::Converter
+          extend Lithic::Type::RequestParameters::Converter
           include Lithic::RequestParameters
 
           # The end time of the backtest.

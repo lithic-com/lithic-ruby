@@ -6,7 +6,7 @@ module Lithic
         & Lithic::request_parameters
 
       class SubscriptionListParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         attr_reader ending_before: String?

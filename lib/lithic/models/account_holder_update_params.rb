@@ -4,7 +4,7 @@ module Lithic
   module Models
     class AccountHolderUpdateParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::RequestParameters::Converter
+      #   extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # @!attribute [r] beneficial_owner_entities

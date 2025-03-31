@@ -5,7 +5,7 @@ module Lithic
     module CreditProducts
       class PrimeRateCreateParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::RequestParameters::Converter
+        #   extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # @!attribute effective_date

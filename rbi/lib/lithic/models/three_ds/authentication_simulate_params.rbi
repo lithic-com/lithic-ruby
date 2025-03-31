@@ -4,7 +4,7 @@ module Lithic
   module Models
     module ThreeDS
       class AuthenticationSimulateParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         sig { returns(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant) }

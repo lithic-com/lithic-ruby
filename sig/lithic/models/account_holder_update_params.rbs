@@ -21,7 +21,7 @@ module Lithic
       & Lithic::request_parameters
 
     class AccountHolderUpdateParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_reader beneficial_owner_entities: ::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity]?

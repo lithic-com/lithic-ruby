@@ -5,7 +5,7 @@ module Lithic
         { begin_: Time, end_: Time } & Lithic::request_parameters
 
       class SubscriptionReplayMissingParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         attr_reader begin_: Time?

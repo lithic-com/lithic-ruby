@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class BookTransferReverseParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # Optional descriptor for the reversal.

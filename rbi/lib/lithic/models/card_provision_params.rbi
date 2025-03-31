@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class CardProvisionParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only

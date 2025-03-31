@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Cards
       class AggregateBalanceListParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # Cardholder to retrieve aggregate balances for.

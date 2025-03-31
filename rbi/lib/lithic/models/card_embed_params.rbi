@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class CardEmbedParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # A base64 encoded JSON string of an EmbedRequest to specify which card to load.

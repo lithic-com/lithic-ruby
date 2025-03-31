@@ -4,7 +4,7 @@ module Lithic
   module Models
     module CreditProducts
       class PrimeRateCreateParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # Date the rate goes into effect

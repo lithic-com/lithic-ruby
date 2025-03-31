@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class AccountUpdateParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a

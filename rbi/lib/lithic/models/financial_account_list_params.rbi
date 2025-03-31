@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class FinancialAccountListParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # List financial accounts for a given account_token or business_account_token

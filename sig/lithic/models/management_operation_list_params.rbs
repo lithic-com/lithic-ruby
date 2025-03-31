@@ -15,7 +15,7 @@ module Lithic
       & Lithic::request_parameters
 
     class ManagementOperationListParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_reader begin_: Time?

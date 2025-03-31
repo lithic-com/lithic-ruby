@@ -4,7 +4,7 @@ module Lithic
   module Models
     class CardProgramListParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::RequestParameters::Converter
+      #   extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # @!attribute [r] ending_before

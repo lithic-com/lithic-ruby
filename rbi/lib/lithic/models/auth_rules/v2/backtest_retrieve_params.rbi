@@ -5,7 +5,7 @@ module Lithic
     module AuthRules
       module V2
         class BacktestRetrieveParams < Lithic::BaseModel
-          extend Lithic::RequestParameters::Converter
+          extend Lithic::Type::RequestParameters::Converter
           include Lithic::RequestParameters
 
           sig { returns(String) }

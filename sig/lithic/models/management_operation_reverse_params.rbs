@@ -4,7 +4,7 @@ module Lithic
       { effective_date: Date, memo: String } & Lithic::request_parameters
 
     class ManagementOperationReverseParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_accessor effective_date: Date

@@ -4,7 +4,7 @@ module Lithic
   module Models
     class AccountHolderSimulateEnrollmentReviewParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::RequestParameters::Converter
+      #   extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # @!attribute [r] account_holder_token

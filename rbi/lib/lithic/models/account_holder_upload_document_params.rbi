@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class AccountHolderUploadDocumentParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # The type of document to upload
