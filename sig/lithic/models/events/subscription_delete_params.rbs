@@ -4,7 +4,7 @@ module Lithic
       type subscription_delete_params = {  } & Lithic::request_parameters
 
       class SubscriptionDeleteParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         def initialize: (?request_options: Lithic::request_opts) -> void

@@ -7,7 +7,7 @@ module Lithic
       & Lithic::request_parameters
 
     class TokenizationResendActivationCodeParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_reader activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::activation_method_type?

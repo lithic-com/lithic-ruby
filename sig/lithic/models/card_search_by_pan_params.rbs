@@ -4,7 +4,7 @@ module Lithic
       { pan: String } & Lithic::request_parameters
 
     class CardSearchByPanParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_accessor pan: String

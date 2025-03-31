@@ -9,7 +9,7 @@ module Lithic
       & Lithic::request_parameters
 
     class ExternalPaymentSettleParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_accessor effective_date: Date

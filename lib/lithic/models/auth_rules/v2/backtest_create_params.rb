@@ -6,7 +6,7 @@ module Lithic
       module V2
         class BacktestCreateParams < Lithic::BaseModel
           # @!parse
-          #   extend Lithic::RequestParameters::Converter
+          #   extend Lithic::Type::RequestParameters::Converter
           include Lithic::RequestParameters
 
           # @!attribute [r] end_

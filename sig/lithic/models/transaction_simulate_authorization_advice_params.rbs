@@ -4,7 +4,7 @@ module Lithic
       { token: String, amount: Integer } & Lithic::request_parameters
 
     class TransactionSimulateAuthorizationAdviceParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_accessor token: String

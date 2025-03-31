@@ -4,7 +4,7 @@ module Lithic
       { payment_token: String } & Lithic::request_parameters
 
     class PaymentSimulateReleaseParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_accessor payment_token: String

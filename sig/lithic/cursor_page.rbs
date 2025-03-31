@@ -1,6 +1,6 @@
 module Lithic
   class CursorPage[Elem]
-    include Lithic::BasePage[Elem]
+    include Lithic::Type::BasePage[Elem]
 
     attr_accessor data: ::Array[Elem]?
 

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class FinancialAccountUpdateStatusParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # Status of the financial account

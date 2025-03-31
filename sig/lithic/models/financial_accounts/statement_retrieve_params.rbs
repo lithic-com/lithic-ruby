@@ -5,7 +5,7 @@ module Lithic
         { financial_account_token: String } & Lithic::request_parameters
 
       class StatementRetrieveParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         attr_accessor financial_account_token: String

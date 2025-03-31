@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class TransactionSimulateAuthorizationParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # Amount (in cents) to authorize. For credit authorizations and financial credit

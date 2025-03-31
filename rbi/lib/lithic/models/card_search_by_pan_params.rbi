@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class CardSearchByPanParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # The PAN for the card being retrieved.

@@ -4,7 +4,7 @@ module Lithic
       { dispute_token: String } & Lithic::request_parameters
 
     class DisputeDeleteEvidenceParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_accessor dispute_token: String

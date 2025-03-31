@@ -4,7 +4,7 @@ module Lithic
   module Models
     module AuthRules
       class V2ListParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # Only return Authorization Rules that are bound to the provided account token.

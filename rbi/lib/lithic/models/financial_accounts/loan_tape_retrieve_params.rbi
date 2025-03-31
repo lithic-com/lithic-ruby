@@ -4,7 +4,7 @@ module Lithic
   module Models
     module FinancialAccounts
       class LoanTapeRetrieveParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # Globally unique identifier for financial account.

@@ -4,7 +4,7 @@ module Lithic
   module Models
     module ThreeDS
       class AuthenticationSimulateOtpEntryParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         # A unique token returned as part of a /v1/three_ds_authentication/simulate call

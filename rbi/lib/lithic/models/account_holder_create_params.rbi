@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class AccountHolderCreateParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # List of all entities with >25% ownership in the company. If no entity or

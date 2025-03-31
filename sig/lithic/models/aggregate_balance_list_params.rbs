@@ -7,7 +7,7 @@ module Lithic
       & Lithic::request_parameters
 
     class AggregateBalanceListParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       attr_reader financial_account_type: Lithic::Models::AggregateBalanceListParams::financial_account_type?

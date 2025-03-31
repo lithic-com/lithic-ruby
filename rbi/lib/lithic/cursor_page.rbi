@@ -2,7 +2,7 @@
 
 module Lithic
   class CursorPage
-    include Lithic::BasePage
+    include Lithic::Type::BasePage
 
     Elem = type_member
 

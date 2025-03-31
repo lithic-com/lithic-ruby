@@ -4,7 +4,7 @@ module Lithic
       type settlement_summary_params = {  } & Lithic::request_parameters
 
       class SettlementSummaryParams < Lithic::BaseModel
-        extend Lithic::RequestParameters::Converter
+        extend Lithic::Type::RequestParameters::Converter
         include Lithic::RequestParameters
 
         def initialize: (?request_options: Lithic::request_opts) -> void

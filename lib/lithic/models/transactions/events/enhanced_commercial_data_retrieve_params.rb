@@ -6,7 +6,7 @@ module Lithic
       module Events
         class EnhancedCommercialDataRetrieveParams < Lithic::BaseModel
           # @!parse
-          #   extend Lithic::RequestParameters::Converter
+          #   extend Lithic::Type::RequestParameters::Converter
           include Lithic::RequestParameters
 
           # @!parse

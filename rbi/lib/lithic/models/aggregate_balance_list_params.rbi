@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class AggregateBalanceListParams < Lithic::BaseModel
-      extend Lithic::RequestParameters::Converter
+      extend Lithic::Type::RequestParameters::Converter
       include Lithic::RequestParameters
 
       # Get the aggregate balance for a given Financial Account type.
