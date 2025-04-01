@@ -9,6 +9,8 @@ module Lithic
       # @return [Lithic::Resources::CreditProducts::PrimeRates]
       attr_reader :prime_rates
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

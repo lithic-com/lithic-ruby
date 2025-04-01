@@ -139,6 +139,7 @@ module Lithic
 
             # def initialize: (Hash | Lithic::BaseModel) -> void
 
+            # @see Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data#category
             module Category
               extend Lithic::Enum
 
@@ -161,6 +162,7 @@ module Lithic
               #   def self.values; end
             end
 
+            # @see Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data#event_type
             module EventType
               extend Lithic::Enum
 

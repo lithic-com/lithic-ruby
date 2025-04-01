@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Cards#update
     class CardUpdateParams < Lithic::BaseModel
       # @!parse
       #   extend Lithic::Type::RequestParameters::Converter

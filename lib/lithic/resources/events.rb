@@ -15,6 +15,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Event]
+      #
+      # @see Lithic::Models::EventRetrieveParams
       def retrieve(event_token, params = {})
         @client.request(
           method: :get,
@@ -49,6 +51,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::CursorPage<Lithic::Models::Event>]
+      #
+      # @see Lithic::Models::EventListParams
       def list(params = {})
         parsed, options = Lithic::Models::EventListParams.dump_request(params)
         @client.request(
@@ -86,6 +90,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::CursorPage<Lithic::Models::MessageAttempt>]
+      #
+      # @see Lithic::Models::EventListAttemptsParams
       def list_attempts(event_token, params = {})
         parsed, options = Lithic::Models::EventListAttemptsParams.dump_request(params)
         @client.request(
@@ -98,6 +104,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

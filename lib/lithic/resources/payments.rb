@@ -29,6 +29,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::PaymentCreateResponse]
+      #
+      # @see Lithic::Models::PaymentCreateParams
       def create(params)
         parsed, options = Lithic::Models::PaymentCreateParams.dump_request(params)
         @client.request(
@@ -49,6 +51,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Payment]
+      #
+      # @see Lithic::Models::PaymentRetrieveParams
       def retrieve(payment_token, params = {})
         @client.request(
           method: :get,
@@ -91,6 +95,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::CursorPage<Lithic::Models::Payment>]
+      #
+      # @see Lithic::Models::PaymentListParams
       def list(params = {})
         parsed, options = Lithic::Models::PaymentListParams.dump_request(params)
         @client.request(
@@ -112,6 +118,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::PaymentRetryResponse]
+      #
+      # @see Lithic::Models::PaymentRetryParams
       def retry_(payment_token, params = {})
         @client.request(
           method: :post,
@@ -136,6 +144,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::PaymentSimulateActionResponse]
+      #
+      # @see Lithic::Models::PaymentSimulateActionParams
       def simulate_action(payment_token, params)
         parsed, options = Lithic::Models::PaymentSimulateActionParams.dump_request(params)
         @client.request(
@@ -164,6 +174,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::PaymentSimulateReceiptResponse]
+      #
+      # @see Lithic::Models::PaymentSimulateReceiptParams
       def simulate_receipt(params)
         parsed, options = Lithic::Models::PaymentSimulateReceiptParams.dump_request(params)
         @client.request(
@@ -184,6 +196,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::PaymentSimulateReleaseResponse]
+      #
+      # @see Lithic::Models::PaymentSimulateReleaseParams
       def simulate_release(params)
         parsed, options = Lithic::Models::PaymentSimulateReleaseParams.dump_request(params)
         @client.request(
@@ -206,6 +220,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::PaymentSimulateReturnResponse]
+      #
+      # @see Lithic::Models::PaymentSimulateReturnParams
       def simulate_return(params)
         parsed, options = Lithic::Models::PaymentSimulateReturnParams.dump_request(params)
         @client.request(
@@ -217,6 +233,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

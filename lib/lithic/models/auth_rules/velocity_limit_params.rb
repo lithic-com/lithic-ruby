@@ -50,6 +50,7 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
+        # @see Lithic::Models::AuthRules::VelocityLimitParams#filters
         class Filters < Lithic::BaseModel
           # @!attribute exclude_countries
           #   ISO-3166-1 alpha-3 Country Codes to exclude from the velocity calculation.
@@ -94,6 +95,8 @@ module Lithic
 
         # The size of the trailing window to calculate Spend Velocity over in seconds. The
         #   minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
+        #
+        # @see Lithic::Models::AuthRules::VelocityLimitParams#period
         module Period
           extend Lithic::Union
 
@@ -112,6 +115,7 @@ module Lithic
           #   def self.variants; end
         end
 
+        # @see Lithic::Models::AuthRules::VelocityLimitParams#scope
         module Scope
           extend Lithic::Enum
 

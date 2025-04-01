@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::ResponderEndpoints#delete
     class ResponderEndpointDeleteParams < Lithic::BaseModel
       # @!parse
       #   extend Lithic::Type::RequestParameters::Converter

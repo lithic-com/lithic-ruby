@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Transactions#list
     class TransactionListParams < Lithic::BaseModel
       # @!parse
       #   extend Lithic::Type::RequestParameters::Converter

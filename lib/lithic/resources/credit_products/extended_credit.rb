@@ -13,6 +13,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::CreditProducts::CreditProductsExtendedCredit]
+        #
+        # @see Lithic::Models::CreditProducts::ExtendedCreditRetrieveParams
         def retrieve(credit_product_token, params = {})
           @client.request(
             method: :get,
@@ -22,6 +24,8 @@ module Lithic
           )
         end
 
+        # @api private
+        #
         # @param client [Lithic::Client]
         def initialize(client:)
           @client = client

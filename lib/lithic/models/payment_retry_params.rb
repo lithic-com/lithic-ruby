@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Payments#retry_
     class PaymentRetryParams < Lithic::BaseModel
       # @!parse
       #   extend Lithic::Type::RequestParameters::Converter

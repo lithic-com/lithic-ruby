@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::FinancialAccounts#retrieve
     class FinancialAccountRetrieveParams < Lithic::BaseModel
       # @!parse
       #   extend Lithic::Type::RequestParameters::Converter

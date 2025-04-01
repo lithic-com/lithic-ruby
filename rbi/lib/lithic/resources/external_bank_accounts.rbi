@@ -185,6 +185,7 @@ module Lithic
       def retry_prenote(external_bank_account_token, financial_account_token: nil, request_options: {})
       end
 
+      # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
       def self.new(client:)
       end

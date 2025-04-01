@@ -96,6 +96,7 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
+        # @see Lithic::Models::AuthRules::V2ListResponse#current_version
         class CurrentVersion < Lithic::BaseModel
           # @!attribute parameters
           #   Parameters for the Auth Rule
@@ -121,6 +122,8 @@ module Lithic
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
           # Parameters for the Auth Rule
+          #
+          # @see Lithic::Models::AuthRules::V2ListResponse::CurrentVersion#parameters
           module Parameters
             extend Lithic::Union
 
@@ -134,6 +137,7 @@ module Lithic
           end
         end
 
+        # @see Lithic::Models::AuthRules::V2ListResponse#draft_version
         class DraftVersion < Lithic::BaseModel
           # @!attribute parameters
           #   Parameters for the Auth Rule
@@ -159,6 +163,8 @@ module Lithic
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
           # Parameters for the Auth Rule
+          #
+          # @see Lithic::Models::AuthRules::V2ListResponse::DraftVersion#parameters
           module Parameters
             extend Lithic::Union
 
@@ -173,6 +179,8 @@ module Lithic
         end
 
         # The state of the Auth Rule
+        #
+        # @see Lithic::Models::AuthRules::V2ListResponse#state
         module State
           extend Lithic::Enum
 
@@ -187,6 +195,8 @@ module Lithic
         end
 
         # The type of Auth Rule
+        #
+        # @see Lithic::Models::AuthRules::V2ListResponse#type
         module Type
           extend Lithic::Enum
 

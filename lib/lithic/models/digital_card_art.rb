@@ -74,6 +74,8 @@ module Lithic
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
       # Card network.
+      #
+      # @see Lithic::Models::DigitalCardArtAPI#network
       module Network
         extend Lithic::Enum
 

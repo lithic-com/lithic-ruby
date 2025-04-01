@@ -18,6 +18,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [nil]
+        #
+        # @see Lithic::Models::ThreeDS::DecisioningChallengeResponseParams
         def challenge_response(params)
           parsed, options = Lithic::Models::ThreeDS::DecisioningChallengeResponseParams.dump_request(params)
           @client.request(
@@ -41,6 +43,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::ThreeDS::DecisioningRetrieveSecretResponse]
+        #
+        # @see Lithic::Models::ThreeDS::DecisioningRetrieveSecretParams
         def retrieve_secret(params = {})
           @client.request(
             method: :get,
@@ -60,6 +64,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [nil]
+        #
+        # @see Lithic::Models::ThreeDS::DecisioningRotateSecretParams
         def rotate_secret(params = {})
           @client.request(
             method: :post,
@@ -69,6 +75,8 @@ module Lithic
           )
         end
 
+        # @api private
+        #
         # @param client [Lithic::Client]
         def initialize(client:)
           @client = client

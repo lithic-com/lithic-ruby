@@ -25,6 +25,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Transfer]
+      #
+      # @see Lithic::Models::TransferCreateParams
       def create(params)
         parsed, options = Lithic::Models::TransferCreateParams.dump_request(params)
         @client.request(
@@ -36,6 +38,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

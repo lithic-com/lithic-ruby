@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module CreditProducts
+      # @see Lithic::Resources::CreditProducts::PrimeRates#retrieve
       class PrimeRateRetrieveParams < Lithic::BaseModel
         # @!parse
         #   extend Lithic::Type::RequestParameters::Converter

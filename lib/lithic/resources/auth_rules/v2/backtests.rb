@@ -42,6 +42,8 @@ module Lithic
           #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Lithic::Models::AuthRules::V2::BacktestCreateResponse]
+          #
+          # @see Lithic::Models::AuthRules::V2::BacktestCreateParams
           def create(auth_rule_token, params = {})
             parsed, options = Lithic::Models::AuthRules::V2::BacktestCreateParams.dump_request(params)
             @client.request(
@@ -81,6 +83,8 @@ module Lithic
           #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Lithic::Models::AuthRules::V2::BacktestResults]
+          #
+          # @see Lithic::Models::AuthRules::V2::BacktestRetrieveParams
           def retrieve(auth_rule_backtest_token, params)
             parsed, options = Lithic::Models::AuthRules::V2::BacktestRetrieveParams.dump_request(params)
             auth_rule_token =
@@ -95,6 +99,8 @@ module Lithic
             )
           end
 
+          # @api private
+          #
           # @param client [Lithic::Client]
           def initialize(client:)
             @client = client

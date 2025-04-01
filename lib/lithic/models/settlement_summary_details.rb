@@ -113,6 +113,8 @@ module Lithic
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
       # Card network where the transaction took place
+      #
+      # @see Lithic::Models::SettlementSummaryDetails#network
       module Network
         extend Lithic::Enum
 

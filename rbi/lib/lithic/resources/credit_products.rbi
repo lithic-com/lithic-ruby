@@ -9,6 +9,7 @@ module Lithic
       sig { returns(Lithic::Resources::CreditProducts::PrimeRates) }
       attr_reader :prime_rates
 
+      # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
       def self.new(client:)
       end

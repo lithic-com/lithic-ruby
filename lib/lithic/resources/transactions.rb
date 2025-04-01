@@ -19,6 +19,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Transaction]
+      #
+      # @see Lithic::Models::TransactionRetrieveParams
       def retrieve(transaction_token, params = {})
         @client.request(
           method: :get,
@@ -59,6 +61,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::CursorPage<Lithic::Models::Transaction>]
+      #
+      # @see Lithic::Models::TransactionListParams
       def list(params = {})
         parsed, options = Lithic::Models::TransactionListParams.dump_request(params)
         @client.request(
@@ -80,6 +84,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
+      #
+      # @see Lithic::Models::TransactionExpireAuthorizationParams
       def expire_authorization(transaction_token, params = {})
         @client.request(
           method: :post,
@@ -148,6 +154,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::TransactionSimulateAuthorizationResponse]
+      #
+      # @see Lithic::Models::TransactionSimulateAuthorizationParams
       def simulate_authorization(params)
         parsed, options = Lithic::Models::TransactionSimulateAuthorizationParams.dump_request(params)
         @client.request(
@@ -173,6 +181,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::TransactionSimulateAuthorizationAdviceResponse]
+      #
+      # @see Lithic::Models::TransactionSimulateAuthorizationAdviceParams
       def simulate_authorization_advice(params)
         parsed, options = Lithic::Models::TransactionSimulateAuthorizationAdviceParams.dump_request(params)
         @client.request(
@@ -208,6 +218,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::TransactionSimulateClearingResponse]
+      #
+      # @see Lithic::Models::TransactionSimulateClearingParams
       def simulate_clearing(params)
         parsed, options = Lithic::Models::TransactionSimulateClearingParams.dump_request(params)
         @client.request(
@@ -241,6 +253,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::TransactionSimulateCreditAuthorizationResponse]
+      #
+      # @see Lithic::Models::TransactionSimulateCreditAuthorizationParams
       def simulate_credit_authorization(params)
         parsed, options = Lithic::Models::TransactionSimulateCreditAuthorizationParams.dump_request(params)
         @client.request(
@@ -267,6 +281,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::TransactionSimulateReturnResponse]
+      #
+      # @see Lithic::Models::TransactionSimulateReturnParams
       def simulate_return(params)
         parsed, options = Lithic::Models::TransactionSimulateReturnParams.dump_request(params)
         @client.request(
@@ -289,6 +305,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::TransactionSimulateReturnReversalResponse]
+      #
+      # @see Lithic::Models::TransactionSimulateReturnReversalParams
       def simulate_return_reversal(params)
         parsed, options = Lithic::Models::TransactionSimulateReturnReversalParams.dump_request(params)
         @client.request(
@@ -321,6 +339,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::TransactionSimulateVoidResponse]
+      #
+      # @see Lithic::Models::TransactionSimulateVoidParams
       def simulate_void(params)
         parsed, options = Lithic::Models::TransactionSimulateVoidParams.dump_request(params)
         @client.request(
@@ -332,6 +352,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

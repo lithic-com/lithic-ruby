@@ -28,6 +28,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ExternalPayment]
+      #
+      # @see Lithic::Models::ExternalPaymentCreateParams
       def create(params)
         parsed, options = Lithic::Models::ExternalPaymentCreateParams.dump_request(params)
         @client.request(
@@ -48,6 +50,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ExternalPayment]
+      #
+      # @see Lithic::Models::ExternalPaymentRetrieveParams
       def retrieve(external_payment_token, params = {})
         @client.request(
           method: :get,
@@ -89,6 +93,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::CursorPage<Lithic::Models::ExternalPayment>]
+      #
+      # @see Lithic::Models::ExternalPaymentListParams
       def list(params = {})
         parsed, options = Lithic::Models::ExternalPaymentListParams.dump_request(params)
         @client.request(
@@ -114,6 +120,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ExternalPayment]
+      #
+      # @see Lithic::Models::ExternalPaymentCancelParams
       def cancel(external_payment_token, params)
         parsed, options = Lithic::Models::ExternalPaymentCancelParams.dump_request(params)
         @client.request(
@@ -138,6 +146,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ExternalPayment]
+      #
+      # @see Lithic::Models::ExternalPaymentReleaseParams
       def release(external_payment_token, params)
         parsed, options = Lithic::Models::ExternalPaymentReleaseParams.dump_request(params)
         @client.request(
@@ -162,6 +172,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ExternalPayment]
+      #
+      # @see Lithic::Models::ExternalPaymentReverseParams
       def reverse(external_payment_token, params)
         parsed, options = Lithic::Models::ExternalPaymentReverseParams.dump_request(params)
         @client.request(
@@ -188,6 +200,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ExternalPayment]
+      #
+      # @see Lithic::Models::ExternalPaymentSettleParams
       def settle(external_payment_token, params)
         parsed, options = Lithic::Models::ExternalPaymentSettleParams.dump_request(params)
         @client.request(
@@ -199,6 +213,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

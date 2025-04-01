@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module AuthRules
+      # @see Lithic::Resources::AuthRules::V2#report
       class V2ReportParams < Lithic::BaseModel
         # @!parse
         #   extend Lithic::Type::RequestParameters::Converter

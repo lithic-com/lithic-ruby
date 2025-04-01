@@ -59,6 +59,7 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
+      # @see Lithic::Models::KYC#individual
       class Individual < Lithic::BaseModel
         # @!attribute address
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -125,6 +126,8 @@ module Lithic
       end
 
       # Specifies the type of KYC workflow to run.
+      #
+      # @see Lithic::Models::KYC#workflow
       module Workflow
         extend Lithic::Enum
 

@@ -380,6 +380,7 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
+          # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual#address
           class Address < Lithic::BaseModel
             # @!attribute address1
             #   Valid deliverable address (no PO boxes).
@@ -441,6 +442,7 @@ module Lithic
           end
         end
 
+        # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse#control_person
         class ControlPerson < Lithic::BaseModel
           # @!attribute [r] address
           #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -529,6 +531,7 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
+          # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson#address
           class Address < Lithic::BaseModel
             # @!attribute address1
             #   Valid deliverable address (no PO boxes).
@@ -592,6 +595,8 @@ module Lithic
 
         # The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
         #   holder is not KYC-Exempt.
+        #
+        # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse#exemption_type
         module ExemptionType
           extend Lithic::Enum
 
@@ -605,6 +610,7 @@ module Lithic
           #   def self.values; end
         end
 
+        # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse#individual
         class Individual < Lithic::BaseModel
           # @!attribute [r] address
           #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -684,6 +690,7 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
+          # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual#address
           class Address < Lithic::BaseModel
             # @!attribute address1
             #   Valid deliverable address (no PO boxes).
@@ -751,6 +758,8 @@ module Lithic
         #
         #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
         #   `ADVANCED` workflow.
+        #
+        # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse#status
         module Status
           extend Lithic::Enum
 
@@ -811,6 +820,8 @@ module Lithic
         #   "beneficial_owner_individuals", "beneficial_owner_entities",
         #
         #   "nature_of_business", and "website_url" attributes will be present.
+        #
+        # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse#user_type
         module UserType
           extend Lithic::Enum
 
@@ -824,6 +835,7 @@ module Lithic
           #   def self.values; end
         end
 
+        # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse#verification_application
         class VerificationApplication < Lithic::BaseModel
           # @!attribute created
           #   Timestamp of when the application was created.
@@ -874,6 +886,8 @@ module Lithic
           #
           #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
           #   `ADVANCED` workflow.
+          #
+          # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication#status
           module Status
             extend Lithic::Enum
 
@@ -1036,6 +1050,7 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
+        # @see Lithic::Models::AccountHolderUpdateResponse::PatchResponse#address
         class Address < Lithic::BaseModel
           # @!attribute address1
           #   Valid deliverable address (no PO boxes).

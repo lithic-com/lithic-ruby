@@ -26,6 +26,7 @@ module Lithic
       def rotate_secret(request_options: {})
       end
 
+      # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
       def self.new(client:)
       end

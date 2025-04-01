@@ -35,6 +35,7 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
+      # @see Lithic::Models::CardSpendLimits#available_spend_limit
       class AvailableSpendLimit < Lithic::BaseModel
         # @!attribute [r] annually
         #   The available spend limit (in cents) relative to the annual limit configured on
@@ -79,6 +80,7 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
+      # @see Lithic::Models::CardSpendLimits#spend_limit
       class SpendLimit < Lithic::BaseModel
         # @!attribute [r] annually
         #   The configured annual spend limit (in cents) on the Card.
@@ -120,6 +122,7 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
+      # @see Lithic::Models::CardSpendLimits#spend_velocity
       class SpendVelocity < Lithic::BaseModel
         # @!attribute [r] annually
         #   Current annual spend velocity (in cents) on the Card. Present if annual spend

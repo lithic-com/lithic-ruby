@@ -234,6 +234,8 @@ module Lithic
       #   - `REFUND_NOT_PROCESSED`: The refund was not processed.
       #   - `RECURRING_TRANSACTION_NOT_CANCELLED`: The recurring transaction was not
       #     cancelled.
+      #
+      # @see Lithic::Models::Dispute#reason
       module Reason
         extend Lithic::Enum
 
@@ -278,6 +280,8 @@ module Lithic
       #   - `WON_ARBITRATION`: Won arbitration.
       #   - `WON_FIRST_CHARGEBACK`: Won first chargeback.
       #   - `WON_PREARBITRATION`: Won prearbitration.
+      #
+      # @see Lithic::Models::Dispute#resolution_reason
       module ResolutionReason
         extend Lithic::Enum
 
@@ -317,6 +321,8 @@ module Lithic
       #   - `ARBITRATION` - Case has entered arbitration.
       #   - `CASE_WON` - Case was won and credit will be issued.
       #   - `CASE_CLOSED` - Case was lost or withdrawn.
+      #
+      # @see Lithic::Models::Dispute#status
       module Status
         extend Lithic::Enum
 

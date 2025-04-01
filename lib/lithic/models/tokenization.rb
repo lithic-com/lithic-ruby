@@ -130,6 +130,8 @@ module Lithic
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
       # The status of the tokenization request
+      #
+      # @see Lithic::Models::Tokenization#status
       module Status
         extend Lithic::Enum
 
@@ -150,6 +152,8 @@ module Lithic
 
       # The entity that requested the tokenization. Represents a Digital Wallet or
       #   merchant.
+      #
+      # @see Lithic::Models::Tokenization#token_requestor_name
       module TokenRequestorName
         extend Lithic::Enum
 
@@ -173,6 +177,8 @@ module Lithic
       end
 
       # The channel through which the tokenization was made.
+      #
+      # @see Lithic::Models::Tokenization#tokenization_channel
       module TokenizationChannel
         extend Lithic::Enum
 
@@ -238,6 +244,8 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
         # Enum representing the result of the tokenization event
+        #
+        # @see Lithic::Models::Tokenization::Event#result
         module Result
           extend Lithic::Enum
 
@@ -261,6 +269,8 @@ module Lithic
         end
 
         # Enum representing the type of tokenization event that occurred
+        #
+        # @see Lithic::Models::Tokenization::Event#type
         module Type
           extend Lithic::Enum
 

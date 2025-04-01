@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::AuthStreamEnrollment#retrieve_secret
     class AuthStreamEnrollmentRetrieveSecretParams < Lithic::BaseModel
       # @!parse
       #   extend Lithic::Type::RequestParameters::Converter

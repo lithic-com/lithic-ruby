@@ -49,6 +49,8 @@ module Lithic
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
       # Type of documentation to be submitted for verification of an account holder
+      #
+      # @see Lithic::Models::Document#document_type
       module DocumentType
         extend Lithic::Enum
 
@@ -172,6 +174,8 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
         # Type of image to upload.
+        #
+        # @see Lithic::Models::Document::RequiredDocumentUpload#image_type
         module ImageType
           extend Lithic::Enum
 
@@ -186,6 +190,8 @@ module Lithic
         end
 
         # Status of an account holder's document upload.
+        #
+        # @see Lithic::Models::Document::RequiredDocumentUpload#status
         module Status
           extend Lithic::Enum
 

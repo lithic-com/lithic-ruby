@@ -4,6 +4,7 @@ module Lithic
   module Models
     module AuthRules
       module V2
+        # @see Lithic::Resources::AuthRules::V2::Backtests#create
         class BacktestCreateParams < Lithic::BaseModel
           # @!parse
           #   extend Lithic::Type::RequestParameters::Converter

@@ -230,6 +230,8 @@ module Lithic
 
         # Type of account/card that is being used for the transaction. Maps to EMV 3DS
         #   field `acctType`.
+        #
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#account_type
         module AccountType
           extend Lithic::Enum
 
@@ -245,6 +247,8 @@ module Lithic
         end
 
         # Indicates the outcome of the 3DS authentication process.
+        #
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#authentication_result
         module AuthenticationResult
           extend Lithic::Enum
 
@@ -262,6 +266,8 @@ module Lithic
 
         # Indicates whether the expiration date provided by the cardholder during checkout
         #   matches Lithic's record of the card's expiration date.
+        #
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#card_expiry_check
         module CardExpiryCheck
           extend Lithic::Enum
 
@@ -276,6 +282,7 @@ module Lithic
           #   def self.values; end
         end
 
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#cardholder
         class Cardholder < Lithic::BaseModel
           # @!attribute address_match
           #   Indicates whether the shipping address and billing address provided by the
@@ -370,6 +377,7 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
+          # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder#billing_address
           class BillingAddress < Lithic::BaseModel
             # @!attribute address1
             #   First line of the street address provided by the cardholder.
@@ -423,6 +431,7 @@ module Lithic
             # def initialize: (Hash | Lithic::BaseModel) -> void
           end
 
+          # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder#shipping_address
           class ShippingAddress < Lithic::BaseModel
             # @!attribute address1
             #   First line of the street address provided by the cardholder.
@@ -478,6 +487,8 @@ module Lithic
         end
 
         # Channel in which the authentication occurs. Maps to EMV 3DS field deviceChannel.
+        #
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#channel
         module Channel
           extend Lithic::Enum
 
@@ -492,6 +503,7 @@ module Lithic
           #   def self.values; end
         end
 
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#merchant
         class Merchant < Lithic::BaseModel
           # @!attribute id
           #   Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field
@@ -542,6 +554,7 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
+          # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant#risk_indicator
           class RiskIndicator < Lithic::BaseModel
             # @!attribute delivery_email_address
             #   In transactions with electronic delivery, email address to which merchandise is
@@ -650,6 +663,8 @@ module Lithic
 
             # The delivery time frame for the merchandise. Maps to EMV 3DS field
             #   deliveryTimeframe.
+            #
+            # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator#delivery_time_frame
             module DeliveryTimeFrame
               extend Lithic::Enum
 
@@ -667,6 +682,8 @@ module Lithic
 
             # Indicates whether the purchase is for merchandise that is available now or at a
             #   future date. Maps to EMV 3DS field preOrderPurchaseInd.
+            #
+            # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator#order_availability
             module OrderAvailability
               extend Lithic::Enum
 
@@ -682,6 +699,8 @@ module Lithic
 
             # Indicates whether the cardholder is reordering previously purchased merchandise.
             #   Maps to EMV 3DS field reorderItemsInd.
+            #
+            # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator#reorder_items
             module ReorderItems
               extend Lithic::Enum
 
@@ -699,6 +718,8 @@ module Lithic
             #   includes one or more item, this indicator is used for the physical goods; if the
             #   purchase only includes digital goods, this indicator is used to describe the
             #   most expensive item purchased. Maps to EMV 3DS field shipIndicator.
+            #
+            # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator#shipping_method
             module ShippingMethod
               extend Lithic::Enum
 
@@ -724,6 +745,8 @@ module Lithic
         # Either PAYMENT_AUTHENTICATION or NON_PAYMENT_AUTHENTICATION. For
         #   NON_PAYMENT_AUTHENTICATION, additional_data and transaction fields are not
         #   populated.
+        #
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#message_category
         module MessageCategory
           extend Lithic::Enum
 
@@ -747,6 +770,8 @@ module Lithic
         #     risk analysis is already performed)
         #   - `DATA_SHARE_ONLY` - No Challenge requested (Data Share Only)
         #   - `OTHER` - Other indicators not captured by above. These are rarely used
+        #
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#three_ds_requestor_challenge_indicator
         module ThreeDSRequestorChallengeIndicator
           extend Lithic::Enum
 
@@ -765,6 +790,7 @@ module Lithic
           #   def self.values; end
         end
 
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#additional_data
         class AdditionalData < Lithic::BaseModel
           # @!attribute network_decision
           #   Mastercard only: Indicates whether the network would have considered the
@@ -796,6 +822,8 @@ module Lithic
 
           # Mastercard only: Indicates whether the network would have considered the
           #   authentication request to be low risk or not.
+          #
+          # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData#network_decision
           module NetworkDecision
             extend Lithic::Enum
 
@@ -810,6 +838,7 @@ module Lithic
           end
         end
 
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#app
         class App < Lithic::BaseModel
           # @!attribute device_info
           #   Device information gathered from the cardholder's device - JSON name/value pairs
@@ -844,6 +873,8 @@ module Lithic
         # Type of authentication request - i.e., the type of transaction or interaction is
         #   causing the merchant to request an authentication. Maps to EMV 3DS field
         #   threeDSRequestorAuthenticationInd.
+        #
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#authentication_request_type
         module AuthenticationRequestType
           extend Lithic::Enum
 
@@ -865,6 +896,7 @@ module Lithic
           #   def self.values; end
         end
 
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#browser
         class Browser < Lithic::BaseModel
           # @!attribute ip
           #   IP address of the browser as returned by the HTTP headers to the 3DS requestor
@@ -924,6 +956,7 @@ module Lithic
           # def initialize: (Hash | Lithic::BaseModel) -> void
         end
 
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#challenge_metadata
         class ChallengeMetadata < Lithic::BaseModel
           # @!attribute method_type
           #   The type of challenge method used for authentication.
@@ -949,6 +982,8 @@ module Lithic
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
           # The type of challenge method used for authentication.
+          #
+          # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata#method_type
           module MethodType
             extend Lithic::Enum
 
@@ -964,6 +999,8 @@ module Lithic
         end
 
         # Entity that orchestrates the challenge.
+        #
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#challenge_orchestrated_by
         module ChallengeOrchestratedBy
           extend Lithic::Enum
 
@@ -979,6 +1016,8 @@ module Lithic
         end
 
         # Entity that made the authentication decision.
+        #
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#decision_made_by
         module DecisionMadeBy
           extend Lithic::Enum
 
@@ -1000,6 +1039,8 @@ module Lithic
         #   most common example of this is where a merchant is authenticating before billing
         #   for a recurring transaction such as a pay TV subscription or a utility bill.
         #   Maps to EMV 3DS field threeRIInd.
+        #
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#three_ri_request_type
         module ThreeRiRequestType
           extend Lithic::Enum
 
@@ -1027,6 +1068,7 @@ module Lithic
           #   def self.values; end
         end
 
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#transaction
         class Transaction < Lithic::BaseModel
           # @!attribute amount
           #   Amount of the purchase in minor units of currency with all punctuation removed.
@@ -1080,6 +1122,8 @@ module Lithic
 
           # Type of the transaction for which a 3DS authentication request is occurring.
           #   Maps to EMV 3DS field transType.
+          #
+          # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction#type
           module Type
             extend Lithic::Enum
 

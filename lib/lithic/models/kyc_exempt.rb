@@ -98,6 +98,8 @@ module Lithic
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
       # Specifies the type of KYC Exempt user
+      #
+      # @see Lithic::Models::KYCExempt#kyc_exemption_type
       module KYCExemptionType
         extend Lithic::Enum
 
@@ -112,6 +114,8 @@ module Lithic
       end
 
       # Specifies the workflow type. This must be 'KYC_EXEMPT'
+      #
+      # @see Lithic::Models::KYCExempt#workflow
       module Workflow
         extend Lithic::Enum
 

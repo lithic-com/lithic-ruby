@@ -9,6 +9,8 @@ module Lithic
       # @return [Lithic::Resources::ThreeDS::Decisioning]
       attr_reader :decisioning
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

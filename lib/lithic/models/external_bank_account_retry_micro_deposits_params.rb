@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::ExternalBankAccounts#retry_micro_deposits
     class ExternalBankAccountRetryMicroDepositsParams < Lithic::BaseModel
       # @!parse
       #   extend Lithic::Type::RequestParameters::Converter
