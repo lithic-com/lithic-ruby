@@ -125,7 +125,7 @@ module Lithic
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol) }
 
           CARD = T.let(:CARD, Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol)
           ACCOUNT = T.let(:ACCOUNT, Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol)

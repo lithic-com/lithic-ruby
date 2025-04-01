@@ -56,7 +56,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentSimulateActionParams::EventType) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol) }
 
         ACH_ORIGINATION_REVIEWED =
           T.let(:ACH_ORIGINATION_REVIEWED, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol)
@@ -86,7 +86,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::PaymentSimulateActionParams::DeclineReason::TaggedSymbol) }
 
         PROGRAM_TRANSACTION_LIMIT_EXCEEDED =
           T.let(

@@ -123,7 +123,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol) }
 
         CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol)
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol)

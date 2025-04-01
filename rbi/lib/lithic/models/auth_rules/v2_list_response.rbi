@@ -237,7 +237,8 @@ module Lithic
           extend Lithic::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::V2ListResponse::State) }
-          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::V2ListResponse::State::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Lithic::Models::AuthRules::V2ListResponse::State::TaggedSymbol) }
 
           ACTIVE = T.let(:ACTIVE, Lithic::Models::AuthRules::V2ListResponse::State::TaggedSymbol)
           INACTIVE = T.let(:INACTIVE, Lithic::Models::AuthRules::V2ListResponse::State::TaggedSymbol)
@@ -252,7 +253,8 @@ module Lithic
           extend Lithic::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::V2ListResponse::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::V2ListResponse::Type::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Lithic::Models::AuthRules::V2ListResponse::Type::TaggedSymbol) }
 
           CONDITIONAL_BLOCK =
             T.let(:CONDITIONAL_BLOCK, Lithic::Models::AuthRules::V2ListResponse::Type::TaggedSymbol)

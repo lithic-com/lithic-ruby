@@ -105,7 +105,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentCreateParams::Method) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::PaymentCreateParams::Method::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::PaymentCreateParams::Method::TaggedSymbol) }
 
         ACH_NEXT_DAY = T.let(:ACH_NEXT_DAY, Lithic::Models::PaymentCreateParams::Method::TaggedSymbol)
         ACH_SAME_DAY = T.let(:ACH_SAME_DAY, Lithic::Models::PaymentCreateParams::Method::TaggedSymbol)
@@ -136,7 +137,7 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol) }
 
           CCD = T.let(:CCD, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol)
           PPD = T.let(:PPD, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol)
@@ -152,7 +153,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentCreateParams::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::PaymentCreateParams::Type::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::PaymentCreateParams::Type::TaggedSymbol) }
 
         COLLECTION = T.let(:COLLECTION, Lithic::Models::PaymentCreateParams::Type::TaggedSymbol)
         PAYMENT = T.let(:PAYMENT, Lithic::Models::PaymentCreateParams::Type::TaggedSymbol)

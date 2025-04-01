@@ -107,7 +107,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DisputeListParams::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::DisputeListParams::Status::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::DisputeListParams::Status::TaggedSymbol) }
 
         ARBITRATION = T.let(:ARBITRATION, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
         CASE_CLOSED = T.let(:CASE_CLOSED, Lithic::Models::DisputeListParams::Status::TaggedSymbol)

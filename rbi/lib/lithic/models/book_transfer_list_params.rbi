@@ -146,7 +146,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferListParams::Category) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferListParams::Category::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::BookTransferListParams::Category::TaggedSymbol) }
 
         BALANCE_OR_FUNDING =
           T.let(:BALANCE_OR_FUNDING, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
@@ -167,7 +168,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferListParams::Result) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferListParams::Result::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::BookTransferListParams::Result::TaggedSymbol) }
 
         APPROVED = T.let(:APPROVED, Lithic::Models::BookTransferListParams::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferListParams::Result::TaggedSymbol)
@@ -182,7 +184,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferListParams::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferListParams::Status::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::BookTransferListParams::Status::TaggedSymbol) }
 
         DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferListParams::Status::TaggedSymbol)
         SETTLED = T.let(:SETTLED, Lithic::Models::BookTransferListParams::Status::TaggedSymbol)

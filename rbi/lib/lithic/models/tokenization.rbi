@@ -128,7 +128,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Tokenization::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Tokenization::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Tokenization::Status::TaggedSymbol) }
 
         ACTIVE = T.let(:ACTIVE, Lithic::Models::Tokenization::Status::TaggedSymbol)
         DEACTIVATED = T.let(:DEACTIVATED, Lithic::Models::Tokenization::Status::TaggedSymbol)
@@ -149,7 +149,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Tokenization::TokenRequestorName) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol) }
 
         AMAZON_ONE = T.let(:AMAZON_ONE, Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol)
         ANDROID_PAY = T.let(:ANDROID_PAY, Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol)
@@ -174,7 +175,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Tokenization::TokenizationChannel) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol) }
 
         DIGITAL_WALLET = T.let(:DIGITAL_WALLET, Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol)
         MERCHANT = T.let(:MERCHANT, Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol)
@@ -244,7 +245,8 @@ module Lithic
           extend Lithic::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Tokenization::Event::Result) }
-          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Tokenization::Event::Result::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Lithic::Models::Tokenization::Event::Result::TaggedSymbol) }
 
           APPROVED = T.let(:APPROVED, Lithic::Models::Tokenization::Event::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::Tokenization::Event::Result::TaggedSymbol)
@@ -271,7 +273,8 @@ module Lithic
           extend Lithic::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Tokenization::Event::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Tokenization::Event::Type::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Lithic::Models::Tokenization::Event::Type::TaggedSymbol) }
 
           TOKENIZATION_2_FA = T.let(:TOKENIZATION_2FA, Lithic::Models::Tokenization::Event::Type::TaggedSymbol)
           TOKENIZATION_AUTHORIZATION =

@@ -108,7 +108,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Category) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol) }
 
         MANAGEMENT_FEE =
           T.let(:MANAGEMENT_FEE, Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol)
@@ -129,7 +129,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Direction) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol) }
 
         CREDIT = T.let(:CREDIT, Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol)
         DEBIT = T.let(:DEBIT, Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol)
@@ -222,7 +222,7 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol) }
 
           APPROVED =
             T.let(:APPROVED, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol)
@@ -241,7 +241,7 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Event::Result) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol) }
 
           APPROVED = T.let(:APPROVED, Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol)
@@ -257,7 +257,7 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Event::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol) }
 
           CASH_BACK = T.let(:CASH_BACK, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
           CURRENCY_CONVERSION =
@@ -308,7 +308,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Result) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol) }
 
         APPROVED = T.let(:APPROVED, Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol)
@@ -323,7 +323,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Status) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol) }
 
         PENDING = T.let(:PENDING, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
         SETTLED = T.let(:SETTLED, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)

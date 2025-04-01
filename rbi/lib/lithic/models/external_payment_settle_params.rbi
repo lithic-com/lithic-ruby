@@ -52,7 +52,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentSettleParams::ProgressTo) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentSettleParams::ProgressTo::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPaymentSettleParams::ProgressTo::TaggedSymbol) }
 
         SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPaymentSettleParams::ProgressTo::TaggedSymbol)
         RELEASED = T.let(:RELEASED, Lithic::Models::ExternalPaymentSettleParams::ProgressTo::TaggedSymbol)

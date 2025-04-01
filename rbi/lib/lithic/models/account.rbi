@@ -156,7 +156,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Account::State) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Account::State::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Account::State::TaggedSymbol) }
 
         ACTIVE = T.let(:ACTIVE, Lithic::Models::Account::State::TaggedSymbol)
         PAUSED = T.let(:PAUSED, Lithic::Models::Account::State::TaggedSymbol)

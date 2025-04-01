@@ -120,7 +120,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Category) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferResponse::Category::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::BookTransferResponse::Category::TaggedSymbol) }
 
         ADJUSTMENT = T.let(:ADJUSTMENT, Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
         BALANCE_OR_FUNDING =
@@ -211,7 +212,7 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResult) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol) }
 
           APPROVED = T.let(:APPROVED, Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol)
           FUNDS_INSUFFICIENT =
@@ -229,7 +230,7 @@ module Lithic
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Event::Result) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol) }
 
           APPROVED = T.let(:APPROVED, Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol)
@@ -246,7 +247,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Result) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferResponse::Result::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::BookTransferResponse::Result::TaggedSymbol) }
 
         APPROVED = T.let(:APPROVED, Lithic::Models::BookTransferResponse::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferResponse::Result::TaggedSymbol)
@@ -262,7 +264,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::BookTransferResponse::Status::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::BookTransferResponse::Status::TaggedSymbol) }
 
         DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferResponse::Status::TaggedSymbol)
         REVERSED = T.let(:REVERSED, Lithic::Models::BookTransferResponse::Status::TaggedSymbol)

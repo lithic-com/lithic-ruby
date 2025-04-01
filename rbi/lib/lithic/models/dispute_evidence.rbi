@@ -99,7 +99,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DisputeEvidence::UploadStatus) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol) }
 
         DELETED = T.let(:DELETED, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
         ERROR = T.let(:ERROR, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)

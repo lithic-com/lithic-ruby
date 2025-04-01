@@ -131,7 +131,8 @@ module Lithic
           extend Lithic::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::V2CreateParams::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol) }
 
           CONDITIONAL_BLOCK =
             T.let(:CONDITIONAL_BLOCK, Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol)

@@ -72,7 +72,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccountCreateParams::Type) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccountCreateParams::Type::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialAccountCreateParams::Type::TaggedSymbol) }
 
         OPERATING = T.let(:OPERATING, Lithic::Models::FinancialAccountCreateParams::Type::TaggedSymbol)
 

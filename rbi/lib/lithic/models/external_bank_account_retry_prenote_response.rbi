@@ -221,7 +221,7 @@ module Lithic
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol) }
 
         ENABLED = T.let(:ENABLED, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol)
         CLOSED = T.let(:CLOSED, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol)
@@ -239,7 +239,7 @@ module Lithic
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol) }
 
         CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol)
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol)
@@ -256,7 +256,13 @@ module Lithic
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol) }
+          T.type_alias do
+            T.any(
+              Symbol,
+              String,
+              Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol
+            )
+          end
 
         PENDING =
           T.let(:PENDING, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol)

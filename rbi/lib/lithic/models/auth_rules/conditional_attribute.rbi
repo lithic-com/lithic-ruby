@@ -54,7 +54,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::ConditionalAttribute) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol) }
 
         MCC = T.let(:MCC, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
         COUNTRY = T.let(:COUNTRY, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
