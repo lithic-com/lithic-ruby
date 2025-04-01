@@ -23,7 +23,7 @@ module Lithic
           parsed, options = Lithic::Models::Cards::BalanceListParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["v1/cards/%0s/balances", card_token],
+            path: ["v1/cards/%1$s/balances", card_token],
             query: parsed,
             page: Lithic::SinglePage,
             model: Lithic::Models::Cards::BalanceListResponse,

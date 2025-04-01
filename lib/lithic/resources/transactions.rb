@@ -22,7 +22,7 @@ module Lithic
       def retrieve(transaction_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/transactions/%0s", transaction_token],
+          path: ["v1/transactions/%1$s", transaction_token],
           model: Lithic::Models::Transaction,
           options: params[:request_options]
         )
@@ -83,7 +83,7 @@ module Lithic
       def expire_authorization(transaction_token, params = {})
         @client.request(
           method: :post,
-          path: ["v1/transactions/%0s/expire_authorization", transaction_token],
+          path: ["v1/transactions/%1$s/expire_authorization", transaction_token],
           model: NilClass,
           options: params[:request_options]
         )

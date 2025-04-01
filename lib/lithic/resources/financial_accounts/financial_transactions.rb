@@ -25,7 +25,7 @@ module Lithic
           @client.request(
             method: :get,
             path: [
-              "v1/financial_accounts/%0s/financial_transactions/%1s",
+              "v1/financial_accounts/%1$s/financial_transactions/%2$s",
               financial_account_token,
               financial_transaction_token
             ],
@@ -65,7 +65,7 @@ module Lithic
           parsed, options = Lithic::Models::FinancialAccounts::FinancialTransactionListParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["v1/financial_accounts/%0s/financial_transactions", financial_account_token],
+            path: ["v1/financial_accounts/%1$s/financial_transactions", financial_account_token],
             query: parsed,
             page: Lithic::SinglePage,
             model: Lithic::Models::FinancialTransaction,

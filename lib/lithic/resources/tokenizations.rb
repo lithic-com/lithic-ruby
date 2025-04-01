@@ -15,7 +15,7 @@ module Lithic
       def retrieve(tokenization_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/tokenizations/%0s", tokenization_token],
+          path: ["v1/tokenizations/%1$s", tokenization_token],
           model: Lithic::Models::TokenizationRetrieveResponse,
           options: params[:request_options]
         )
@@ -78,7 +78,7 @@ module Lithic
       def activate(tokenization_token, params = {})
         @client.request(
           method: :post,
-          path: ["v1/tokenizations/%0s/activate", tokenization_token],
+          path: ["v1/tokenizations/%1$s/activate", tokenization_token],
           model: NilClass,
           options: params[:request_options]
         )
@@ -104,7 +104,7 @@ module Lithic
       def deactivate(tokenization_token, params = {})
         @client.request(
           method: :post,
-          path: ["v1/tokenizations/%0s/deactivate", tokenization_token],
+          path: ["v1/tokenizations/%1$s/deactivate", tokenization_token],
           model: NilClass,
           options: params[:request_options]
         )
@@ -129,7 +129,7 @@ module Lithic
       def pause(tokenization_token, params = {})
         @client.request(
           method: :post,
-          path: ["v1/tokenizations/%0s/pause", tokenization_token],
+          path: ["v1/tokenizations/%1$s/pause", tokenization_token],
           model: NilClass,
           options: params[:request_options]
         )
@@ -161,7 +161,7 @@ module Lithic
         parsed, options = Lithic::Models::TokenizationResendActivationCodeParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/tokenizations/%0s/resend_activation_code", tokenization_token],
+          path: ["v1/tokenizations/%1$s/resend_activation_code", tokenization_token],
           body: parsed,
           model: NilClass,
           options: options
@@ -224,7 +224,7 @@ module Lithic
       def unpause(tokenization_token, params = {})
         @client.request(
           method: :post,
-          path: ["v1/tokenizations/%0s/unpause", tokenization_token],
+          path: ["v1/tokenizations/%1$s/unpause", tokenization_token],
           model: NilClass,
           options: params[:request_options]
         )
@@ -255,7 +255,7 @@ module Lithic
         parsed, options = Lithic::Models::TokenizationUpdateDigitalCardArtParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/tokenizations/%0s/update_digital_card_art", tokenization_token],
+          path: ["v1/tokenizations/%1$s/update_digital_card_art", tokenization_token],
           body: parsed,
           model: Lithic::Models::TokenizationUpdateDigitalCardArtResponse,
           options: options

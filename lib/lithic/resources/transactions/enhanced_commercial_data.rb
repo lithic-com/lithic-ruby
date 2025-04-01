@@ -17,7 +17,7 @@ module Lithic
         def retrieve(transaction_token, params = {})
           @client.request(
             method: :get,
-            path: ["v1/transactions/%0s/enhanced_commercial_data", transaction_token],
+            path: ["v1/transactions/%1$s/enhanced_commercial_data", transaction_token],
             model: Lithic::Models::Transactions::EnhancedCommercialDataRetrieveResponse,
             options: params[:request_options]
           )

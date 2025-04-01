@@ -52,7 +52,7 @@ module Lithic
       def retrieve(payment_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/payments/%0s", payment_token],
+          path: ["v1/payments/%1$s", payment_token],
           model: Lithic::Models::Payment,
           options: params[:request_options]
         )
@@ -115,7 +115,7 @@ module Lithic
       def retry_(payment_token, params = {})
         @client.request(
           method: :post,
-          path: ["v1/payments/%0s/retry", payment_token],
+          path: ["v1/payments/%1$s/retry", payment_token],
           model: Lithic::Models::PaymentRetryResponse,
           options: params[:request_options]
         )
@@ -140,7 +140,7 @@ module Lithic
         parsed, options = Lithic::Models::PaymentSimulateActionParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/simulate/payments/%0s/action", payment_token],
+          path: ["v1/simulate/payments/%1$s/action", payment_token],
           body: parsed,
           model: Lithic::Models::PaymentSimulateActionResponse,
           options: options

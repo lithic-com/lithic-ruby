@@ -46,7 +46,7 @@ module Lithic
             parsed, options = Lithic::Models::AuthRules::V2::BacktestCreateParams.dump_request(params)
             @client.request(
               method: :post,
-              path: ["v2/auth_rules/%0s/backtests", auth_rule_token],
+              path: ["v2/auth_rules/%1$s/backtests", auth_rule_token],
               body: parsed,
               model: Lithic::Models::AuthRules::V2::BacktestCreateResponse,
               options: options
@@ -89,7 +89,7 @@ module Lithic
               end
             @client.request(
               method: :get,
-              path: ["v2/auth_rules/%0s/backtests/%1s", auth_rule_token, auth_rule_backtest_token],
+              path: ["v2/auth_rules/%1$s/backtests/%2$s", auth_rule_token, auth_rule_backtest_token],
               model: Lithic::Models::AuthRules::V2::BacktestResults,
               options: options
             )

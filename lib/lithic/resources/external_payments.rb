@@ -51,7 +51,7 @@ module Lithic
       def retrieve(external_payment_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/external_payments/%0s", external_payment_token],
+          path: ["v1/external_payments/%1$s", external_payment_token],
           model: Lithic::Models::ExternalPayment,
           options: params[:request_options]
         )
@@ -118,7 +118,7 @@ module Lithic
         parsed, options = Lithic::Models::ExternalPaymentCancelParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/external_payments/%0s/cancel", external_payment_token],
+          path: ["v1/external_payments/%1$s/cancel", external_payment_token],
           body: parsed,
           model: Lithic::Models::ExternalPayment,
           options: options
@@ -142,7 +142,7 @@ module Lithic
         parsed, options = Lithic::Models::ExternalPaymentReleaseParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/external_payments/%0s/release", external_payment_token],
+          path: ["v1/external_payments/%1$s/release", external_payment_token],
           body: parsed,
           model: Lithic::Models::ExternalPayment,
           options: options
@@ -166,7 +166,7 @@ module Lithic
         parsed, options = Lithic::Models::ExternalPaymentReverseParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/external_payments/%0s/reverse", external_payment_token],
+          path: ["v1/external_payments/%1$s/reverse", external_payment_token],
           body: parsed,
           model: Lithic::Models::ExternalPayment,
           options: options
@@ -192,7 +192,7 @@ module Lithic
         parsed, options = Lithic::Models::ExternalPaymentSettleParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/external_payments/%0s/settle", external_payment_token],
+          path: ["v1/external_payments/%1$s/settle", external_payment_token],
           body: parsed,
           model: Lithic::Models::ExternalPayment,
           options: options

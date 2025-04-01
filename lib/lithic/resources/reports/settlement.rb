@@ -28,7 +28,7 @@ module Lithic
           parsed, options = Lithic::Models::Reports::SettlementListDetailsParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["v1/reports/settlement/details/%0s", report_date],
+            path: ["v1/reports/settlement/details/%1$s", report_date],
             query: parsed,
             page: Lithic::CursorPage,
             model: Lithic::Models::SettlementDetail,
@@ -48,7 +48,7 @@ module Lithic
         def summary(report_date, params = {})
           @client.request(
             method: :get,
-            path: ["v1/reports/settlement/summary/%0s", report_date],
+            path: ["v1/reports/settlement/summary/%1$s", report_date],
             model: Lithic::Models::SettlementReport,
             options: params[:request_options]
           )

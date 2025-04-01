@@ -16,7 +16,7 @@ module Lithic
         def retrieve(three_ds_authentication_token, params = {})
           @client.request(
             method: :get,
-            path: ["v1/three_ds_authentication/%0s", three_ds_authentication_token],
+            path: ["v1/three_ds_authentication/%1$s", three_ds_authentication_token],
             model: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse,
             options: params[:request_options]
           )
