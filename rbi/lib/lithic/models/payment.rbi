@@ -393,7 +393,14 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(company_id:, receipt_routing_number:, retries:, return_reason_code:, sec_code:, trace_numbers:)
+        def self.new(
+          company_id:,
+          receipt_routing_number:,
+          retries:,
+          return_reason_code:,
+          sec_code:,
+          trace_numbers:
+        )
         end
 
         sig do

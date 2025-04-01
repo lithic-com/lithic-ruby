@@ -50,7 +50,16 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(token:, created:, event_subscription_token:, event_token:, response:, response_status_code:, status:, url:)
+      def self.new(
+        token:,
+        created:,
+        event_subscription_token:,
+        event_token:,
+        response:,
+        response_status_code:,
+        status:,
+        url:
+      )
       end
 
       sig do

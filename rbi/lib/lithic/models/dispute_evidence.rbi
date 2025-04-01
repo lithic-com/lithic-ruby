@@ -60,7 +60,15 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(token:, created:, dispute_token:, upload_status:, download_url: nil, filename: nil, upload_url: nil)
+      def self.new(
+        token:,
+        created:,
+        dispute_token:,
+        upload_status:,
+        download_url: nil,
+        filename: nil,
+        upload_url: nil
+      )
       end
 
       sig do

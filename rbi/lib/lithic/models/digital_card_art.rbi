@@ -46,7 +46,15 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(token:, card_program_token:, created:, description:, is_enabled:, network:, is_card_program_default: nil)
+      def self.new(
+        token:,
+        card_program_token:,
+        created:,
+        description:,
+        is_enabled:,
+        network:,
+        is_card_program_default: nil
+      )
       end
 
       sig do

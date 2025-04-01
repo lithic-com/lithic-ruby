@@ -57,7 +57,13 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(shipping_address:, carrier: nil, product_id: nil, shipping_method: nil, request_options: {})
+      def self.new(
+        shipping_address:,
+        carrier: nil,
+        product_id: nil,
+        shipping_method: nil,
+        request_options: {}
+      )
       end
 
       sig do

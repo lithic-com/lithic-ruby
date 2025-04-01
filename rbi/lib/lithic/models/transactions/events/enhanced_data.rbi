@@ -101,7 +101,13 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(line_items:, tax:, customer_reference_number: nil, merchant_reference_number: nil, order_date: nil)
+            def self.new(
+              line_items:,
+              tax:,
+              customer_reference_number: nil,
+              merchant_reference_number: nil,
+              order_date: nil
+            )
             end
 
             sig do
@@ -312,7 +318,14 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount_totals:, fuel:, driver_number: nil, odometer: nil, service_type: nil, vehicle_number: nil)
+            def self.new(
+              amount_totals:,
+              fuel:,
+              driver_number: nil,
+              odometer: nil,
+              service_type: nil,
+              vehicle_number: nil
+            )
             end
 
             sig do
