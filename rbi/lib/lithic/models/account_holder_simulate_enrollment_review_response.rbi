@@ -656,7 +656,13 @@ module Lithic
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol) }
+          T.type_alias do
+            T.any(
+              Symbol,
+              String,
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol
+            )
+          end
 
         AUTHORIZED_USER =
           T.let(
@@ -845,7 +851,7 @@ module Lithic
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol) }
 
         ACCEPTED =
           T.let(:ACCEPTED, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol)
@@ -877,7 +883,13 @@ module Lithic
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol) }
+          T.type_alias do
+            T.any(
+              Symbol,
+              String,
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol
+            )
+          end
 
         ADDRESS_VERIFICATION_FAILURE =
           T.let(
@@ -1023,7 +1035,13 @@ module Lithic
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol) }
+          T.type_alias do
+            T.any(
+              Symbol,
+              String,
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol
+            )
+          end
 
         BUSINESS =
           T.let(:BUSINESS, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol)
@@ -1114,6 +1132,7 @@ module Lithic
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::TaggedSymbol
               )
             end
@@ -1163,6 +1182,7 @@ module Lithic
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
               )
             end

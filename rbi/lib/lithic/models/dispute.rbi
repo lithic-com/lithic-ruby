@@ -227,7 +227,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Dispute::Reason) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Dispute::Reason::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Dispute::Reason::TaggedSymbol) }
 
         ATM_CASH_MISDISPENSE = T.let(:ATM_CASH_MISDISPENSE, Lithic::Models::Dispute::Reason::TaggedSymbol)
         CANCELLED = T.let(:CANCELLED, Lithic::Models::Dispute::Reason::TaggedSymbol)
@@ -275,7 +275,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Dispute::ResolutionReason) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol) }
 
         CASE_LOST = T.let(:CASE_LOST, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
         NETWORK_REJECTED = T.let(:NETWORK_REJECTED, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
@@ -325,7 +326,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Dispute::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Dispute::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Dispute::Status::TaggedSymbol) }
 
         ARBITRATION = T.let(:ARBITRATION, Lithic::Models::Dispute::Status::TaggedSymbol)
         CASE_CLOSED = T.let(:CASE_CLOSED, Lithic::Models::Dispute::Status::TaggedSymbol)

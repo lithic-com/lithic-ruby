@@ -101,7 +101,7 @@ module Lithic
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol) }
 
           IS_ONE_OF = T.let(:IS_ONE_OF, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
           IS_NOT_ONE_OF =

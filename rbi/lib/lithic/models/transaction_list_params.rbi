@@ -129,7 +129,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::TransactionListParams::Result) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::TransactionListParams::Result::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::TransactionListParams::Result::TaggedSymbol) }
 
         APPROVED = T.let(:APPROVED, Lithic::Models::TransactionListParams::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::TransactionListParams::Result::TaggedSymbol)
@@ -144,7 +145,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::TransactionListParams::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::TransactionListParams::Status::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::TransactionListParams::Status::TaggedSymbol) }
 
         PENDING = T.let(:PENDING, Lithic::Models::TransactionListParams::Status::TaggedSymbol)
         VOIDED = T.let(:VOIDED, Lithic::Models::TransactionListParams::Status::TaggedSymbol)

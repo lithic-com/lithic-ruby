@@ -450,7 +450,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::KYB::Workflow) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::KYB::Workflow::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::KYB::Workflow::TaggedSymbol) }
 
         KYB_BASIC = T.let(:KYB_BASIC, Lithic::Models::KYB::Workflow::TaggedSymbol)
         KYB_BYO = T.let(:KYB_BYO, Lithic::Models::KYB::Workflow::TaggedSymbol)

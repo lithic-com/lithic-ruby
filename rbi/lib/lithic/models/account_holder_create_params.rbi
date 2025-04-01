@@ -552,7 +552,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderCreateParams::Workflow) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderCreateParams::Workflow::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolderCreateParams::Workflow::TaggedSymbol) }
 
         KYC_EXEMPT = T.let(:KYC_EXEMPT, Lithic::Models::AccountHolderCreateParams::Workflow::TaggedSymbol)
 
@@ -640,7 +640,7 @@ module Lithic
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderCreateParams::KYCExemptionType) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol) }
 
         AUTHORIZED_USER =
           T.let(:AUTHORIZED_USER, Lithic::Models::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol)

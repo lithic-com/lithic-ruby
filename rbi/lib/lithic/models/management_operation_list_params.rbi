@@ -128,7 +128,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationListParams::Category) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol) }
 
         MANAGEMENT_FEE =
           T.let(:MANAGEMENT_FEE, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
@@ -150,7 +150,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationListParams::Status) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol) }
 
         PENDING = T.let(:PENDING, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
         SETTLED = T.let(:SETTLED, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)

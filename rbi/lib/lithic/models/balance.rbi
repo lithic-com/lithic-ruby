@@ -102,7 +102,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Balance::FinancialAccountType) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Balance::FinancialAccountType::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::Balance::FinancialAccountType::TaggedSymbol) }
 
         ISSUING = T.let(:ISSUING, Lithic::Models::Balance::FinancialAccountType::TaggedSymbol)
         OPERATING = T.let(:OPERATING, Lithic::Models::Balance::FinancialAccountType::TaggedSymbol)

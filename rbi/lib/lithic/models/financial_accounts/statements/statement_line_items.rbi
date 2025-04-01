@@ -150,6 +150,7 @@ module Lithic
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
                   )
                 end
@@ -229,6 +230,7 @@ module Lithic
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                   )
                 end

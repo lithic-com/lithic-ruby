@@ -44,7 +44,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol) }
 
         OPEN = T.let(:OPEN, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol)
         CLOSED = T.let(:CLOSED, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol)
@@ -63,7 +63,13 @@ module Lithic
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol) }
+          T.type_alias do
+            T.any(
+              Symbol,
+              String,
+              Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol
+            )
+          end
 
         CHARGED_OFF_FRAUD =
           T.let(

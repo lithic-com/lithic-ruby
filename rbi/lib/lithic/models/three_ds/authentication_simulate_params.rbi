@@ -131,7 +131,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol
+              )
+            end
 
           MATCH =
             T.let(:MATCH, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol)

@@ -79,7 +79,13 @@ module Lithic
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::TaggedSymbol) }
+          T.type_alias do
+            T.any(
+              Symbol,
+              String,
+              Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::TaggedSymbol
+            )
+          end
 
         UPLOADED =
           T.let(
@@ -123,6 +129,7 @@ module Lithic
           T.type_alias do
             T.any(
               Symbol,
+              String,
               Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::TaggedSymbol
             )
           end

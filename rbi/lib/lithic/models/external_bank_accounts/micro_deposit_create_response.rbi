@@ -226,7 +226,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType::TaggedSymbol
+              )
+            end
 
           BUSINESS =
             T.let(
@@ -256,7 +262,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol
+              )
+            end
 
           ENABLED =
             T.let(:ENABLED, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State::TaggedSymbol)
@@ -280,7 +292,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol
+              )
+            end
 
           CHECKING =
             T.let(:CHECKING, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type::TaggedSymbol)
@@ -305,6 +323,7 @@ module Lithic
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol
               )
             end
@@ -350,6 +369,7 @@ module Lithic
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol
               )
             end

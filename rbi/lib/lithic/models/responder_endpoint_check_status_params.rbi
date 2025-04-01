@@ -38,7 +38,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ResponderEndpointCheckStatusParams::Type) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ResponderEndpointCheckStatusParams::Type::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ResponderEndpointCheckStatusParams::Type::TaggedSymbol) }
 
         AUTH_STREAM_ACCESS =
           T.let(:AUTH_STREAM_ACCESS, Lithic::Models::ResponderEndpointCheckStatusParams::Type::TaggedSymbol)

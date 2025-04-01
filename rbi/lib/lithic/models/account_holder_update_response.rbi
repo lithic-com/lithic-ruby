@@ -683,6 +683,7 @@ module Lithic
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol
               )
             end
@@ -874,7 +875,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol
+              )
+            end
 
           ACCEPTED =
             T.let(:ACCEPTED, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol)
@@ -909,6 +916,7 @@ module Lithic
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol
               )
             end
@@ -1057,7 +1065,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol
+              )
+            end
 
           BUSINESS =
             T.let(:BUSINESS, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol)
@@ -1153,6 +1167,7 @@ module Lithic
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
                 )
               end
@@ -1202,6 +1217,7 @@ module Lithic
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
                 )
               end

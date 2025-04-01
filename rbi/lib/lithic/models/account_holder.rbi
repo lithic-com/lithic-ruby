@@ -569,7 +569,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolder::ExemptionType) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol) }
 
         AUTHORIZED_USER = T.let(:AUTHORIZED_USER, Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol)
         PREPAID_CARD_USER = T.let(:PREPAID_CARD_USER, Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol)
@@ -657,7 +658,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolder::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AccountHolder::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolder::Status::TaggedSymbol) }
 
         ACCEPTED = T.let(:ACCEPTED, Lithic::Models::AccountHolder::Status::TaggedSymbol)
         PENDING_REVIEW = T.let(:PENDING_REVIEW, Lithic::Models::AccountHolder::Status::TaggedSymbol)
@@ -674,7 +675,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolder::StatusReason) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol) }
 
         ADDRESS_VERIFICATION_FAILURE =
           T.let(:ADDRESS_VERIFICATION_FAILURE, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol)
@@ -712,7 +714,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolder::UserType) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AccountHolder::UserType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolder::UserType::TaggedSymbol) }
 
         BUSINESS = T.let(:BUSINESS, Lithic::Models::AccountHolder::UserType::TaggedSymbol)
         INDIVIDUAL = T.let(:INDIVIDUAL, Lithic::Models::AccountHolder::UserType::TaggedSymbol)
@@ -802,7 +804,7 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::AccountHolder::VerificationApplication::Status) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol) }
 
           ACCEPTED = T.let(:ACCEPTED, Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)
           PENDING_REVIEW =
@@ -824,7 +826,7 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::AccountHolder::VerificationApplication::StatusReason) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol) }
 
           ADDRESS_VERIFICATION_FAILURE =
             T.let(

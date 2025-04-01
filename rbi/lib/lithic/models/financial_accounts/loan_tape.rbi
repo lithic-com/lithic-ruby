@@ -383,6 +383,7 @@ module Lithic
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
                   )
                 end
@@ -430,6 +431,7 @@ module Lithic
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
                   )
                 end
@@ -479,7 +481,13 @@ module Lithic
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol
+                )
+              end
 
             STANDARD =
               T.let(:STANDARD, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol)
@@ -878,6 +886,7 @@ module Lithic
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
                 )
               end

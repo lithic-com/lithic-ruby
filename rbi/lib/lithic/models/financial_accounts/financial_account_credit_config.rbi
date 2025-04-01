@@ -94,6 +94,7 @@ module Lithic
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol
               )
             end
@@ -129,6 +130,7 @@ module Lithic
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
               )
             end
