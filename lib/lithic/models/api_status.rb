@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Client#api_status
     class APIStatus < Lithic::BaseModel
       # @!attribute [r] message
       #

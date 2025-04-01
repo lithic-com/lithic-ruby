@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::FinancialAccounts#create
     class FinancialAccount < Lithic::BaseModel
       # @!attribute token
       #   Globally unique identifier for the account

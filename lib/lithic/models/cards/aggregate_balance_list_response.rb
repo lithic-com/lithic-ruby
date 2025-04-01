@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module Cards
+      # @see Lithic::Resources::Cards::AggregateBalances#list
       class AggregateBalanceListResponse < Lithic::BaseModel
         # @!attribute available_amount
         #   Funds available for spend in the currency's smallest unit (e.g., cents for USD)

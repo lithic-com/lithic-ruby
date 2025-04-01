@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::AccountHolders#simulate_enrollment_review
     class AccountHolderSimulateEnrollmentReviewResponse < Lithic::BaseModel
       # @!attribute [r] token
       #   Globally unique identifier for the account holder.

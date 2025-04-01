@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Payments#retry_
     class PaymentRetryResponse < Lithic::Models::Payment
       # @!attribute [r] balance
       #   Balance

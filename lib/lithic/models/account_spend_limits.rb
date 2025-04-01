@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Accounts#retrieve_spend_limits
     class AccountSpendLimits < Lithic::BaseModel
       # @!attribute available_spend_limit
       #

@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module Cards
+      # @see Lithic::Resources::Cards::Balances#list
       class BalanceListResponse < Lithic::BaseModel
         # @!attribute token
         #   Globally unique identifier for the financial account that holds this balance.

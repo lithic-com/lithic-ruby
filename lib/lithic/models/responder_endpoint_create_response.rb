@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::ResponderEndpoints#create
     class ResponderEndpointCreateResponse < Lithic::BaseModel
       # @!attribute [r] enrolled
       #   True if the endpoint was enrolled successfully.

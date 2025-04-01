@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::AuthStreamEnrollment#retrieve_secret
     class AuthStreamSecret < Lithic::BaseModel
       # @!attribute [r] secret
       #   The shared HMAC ASA secret

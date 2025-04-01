@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::AccountHolders#update
     module AccountHolderUpdateResponse
       extend Lithic::Union
 

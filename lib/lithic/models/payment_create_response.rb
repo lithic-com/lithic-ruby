@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Payments#create
     class PaymentCreateResponse < Lithic::Models::Payment
       # @!attribute [r] balance
       #   Balance

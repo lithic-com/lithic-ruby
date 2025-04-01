@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module AuthRules
+      # @see Lithic::Resources::AuthRules::V2#update
       class V2UpdateResponse < Lithic::BaseModel
         # @!attribute token
         #   Auth Rule Token

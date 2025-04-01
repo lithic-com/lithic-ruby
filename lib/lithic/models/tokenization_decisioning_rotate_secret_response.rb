@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::TokenizationDecisioning#rotate_secret
     class TokenizationDecisioningRotateSecretResponse < Lithic::BaseModel
       # @!attribute [r] secret
       #   The new Tokenization Decisioning HMAC secret

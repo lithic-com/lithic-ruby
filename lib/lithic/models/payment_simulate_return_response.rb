@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Payments#simulate_return
     class PaymentSimulateReturnResponse < Lithic::BaseModel
       # @!attribute debugging_request_id
       #   Debugging Request Id

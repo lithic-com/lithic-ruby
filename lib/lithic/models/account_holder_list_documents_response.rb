@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::AccountHolders#list_documents
     class AccountHolderListDocumentsResponse < Lithic::BaseModel
       # @!attribute [r] data
       #
