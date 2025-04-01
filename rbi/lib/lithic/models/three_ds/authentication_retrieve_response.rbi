@@ -283,7 +283,7 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol) }
 
           CREDIT =
             T.let(:CREDIT, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol)
@@ -306,7 +306,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol
+              )
+            end
 
           DECLINE =
             T.let(
@@ -347,7 +353,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol
+              )
+            end
 
           MATCH =
             T.let(:MATCH, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol)
@@ -617,7 +629,7 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol) }
 
           APP_BASED =
             T.let(:APP_BASED, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol)
@@ -852,6 +864,7 @@ module Lithic
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame::TaggedSymbol
                   )
                 end
@@ -902,6 +915,7 @@ module Lithic
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability::TaggedSymbol
                   )
                 end
@@ -942,6 +956,7 @@ module Lithic
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems::TaggedSymbol
                   )
                 end
@@ -984,6 +999,7 @@ module Lithic
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod::TaggedSymbol
                   )
                 end
@@ -1057,7 +1073,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol
+              )
+            end
 
           NON_PAYMENT_AUTHENTICATION =
             T.let(
@@ -1097,6 +1119,7 @@ module Lithic
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::TaggedSymbol
               )
             end
@@ -1204,6 +1227,7 @@ module Lithic
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision::TaggedSymbol
                 )
               end
@@ -1267,6 +1291,7 @@ module Lithic
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::TaggedSymbol
               )
             end
@@ -1449,6 +1474,7 @@ module Lithic
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol
                 )
               end
@@ -1485,6 +1511,7 @@ module Lithic
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol
               )
             end
@@ -1522,7 +1549,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol
+              )
+            end
 
           CUSTOMER_ENDPOINT =
             T.let(
@@ -1563,7 +1596,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol
+              )
+            end
 
           ACCOUNT_VERIFICATION =
             T.let(
@@ -1720,7 +1759,13 @@ module Lithic
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::TaggedSymbol
+                )
+              end
 
             ACCOUNT_FUNDING =
               T.let(

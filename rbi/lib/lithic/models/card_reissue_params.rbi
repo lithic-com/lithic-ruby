@@ -98,7 +98,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardReissueParams::ShippingMethod) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol) }
 
         NUMBER_2_DAY = T.let(:"2-DAY", Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol)
         EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol)

@@ -35,7 +35,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ResponderEndpointDeleteParams::Type) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ResponderEndpointDeleteParams::Type::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ResponderEndpointDeleteParams::Type::TaggedSymbol) }
 
         AUTH_STREAM_ACCESS =
           T.let(:AUTH_STREAM_ACCESS, Lithic::Models::ResponderEndpointDeleteParams::Type::TaggedSymbol)

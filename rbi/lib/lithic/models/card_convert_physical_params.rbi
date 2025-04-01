@@ -98,7 +98,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardConvertPhysicalParams::ShippingMethod) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol) }
 
         NUMBER_2_DAY = T.let(:"2-DAY", Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)
         EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)

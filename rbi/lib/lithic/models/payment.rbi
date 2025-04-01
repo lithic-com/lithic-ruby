@@ -159,7 +159,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Category) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Category::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Category::TaggedSymbol) }
 
         ACH = T.let(:ACH, Lithic::Models::Payment::Category::TaggedSymbol)
 
@@ -172,7 +172,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Direction) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Direction::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Direction::TaggedSymbol) }
 
         CREDIT = T.let(:CREDIT, Lithic::Models::Payment::Direction::TaggedSymbol)
         DEBIT = T.let(:DEBIT, Lithic::Models::Payment::Direction::TaggedSymbol)
@@ -267,7 +267,7 @@ module Lithic
           extend Lithic::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Event::Result) }
-          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Event::Result::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Event::Result::TaggedSymbol) }
 
           APPROVED = T.let(:APPROVED, Lithic::Models::Payment::Event::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::Payment::Event::Result::TaggedSymbol)
@@ -301,7 +301,7 @@ module Lithic
           extend Lithic::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Event::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Event::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Event::Type::TaggedSymbol) }
 
           ACH_ORIGINATION_CANCELLED =
             T.let(:ACH_ORIGINATION_CANCELLED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
@@ -330,7 +330,8 @@ module Lithic
           extend Lithic::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Event::DetailedResult) }
-          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol) }
 
           APPROVED = T.let(:APPROVED, Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol)
           FUNDS_INSUFFICIENT =
@@ -353,7 +354,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Method) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Method::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Method::TaggedSymbol) }
 
         ACH_NEXT_DAY = T.let(:ACH_NEXT_DAY, Lithic::Models::Payment::Method::TaggedSymbol)
         ACH_SAME_DAY = T.let(:ACH_SAME_DAY, Lithic::Models::Payment::Method::TaggedSymbol)
@@ -424,7 +425,7 @@ module Lithic
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::MethodAttributes::SecCode) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol) }
 
           CCD = T.let(:CCD, Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol)
           PPD = T.let(:PPD, Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol)
@@ -442,7 +443,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Result) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Result::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Result::TaggedSymbol) }
 
         APPROVED = T.let(:APPROVED, Lithic::Models::Payment::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::Payment::Result::TaggedSymbol)
@@ -456,7 +457,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Source) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Source::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Source::TaggedSymbol) }
 
         CUSTOMER = T.let(:CUSTOMER, Lithic::Models::Payment::Source::TaggedSymbol)
         LITHIC = T.let(:LITHIC, Lithic::Models::Payment::Source::TaggedSymbol)
@@ -477,7 +478,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Payment::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Status::TaggedSymbol) }
 
         DECLINED = T.let(:DECLINED, Lithic::Models::Payment::Status::TaggedSymbol)
         PENDING = T.let(:PENDING, Lithic::Models::Payment::Status::TaggedSymbol)

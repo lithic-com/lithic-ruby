@@ -221,7 +221,7 @@ module Lithic
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetrieveResponse::OwnerType) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountRetrieveResponse::OwnerType::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalBankAccountRetrieveResponse::OwnerType::TaggedSymbol) }
 
         BUSINESS = T.let(:BUSINESS, Lithic::Models::ExternalBankAccountRetrieveResponse::OwnerType::TaggedSymbol)
         INDIVIDUAL =
@@ -238,7 +238,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetrieveResponse::State) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountRetrieveResponse::State::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalBankAccountRetrieveResponse::State::TaggedSymbol) }
 
         ENABLED = T.let(:ENABLED, Lithic::Models::ExternalBankAccountRetrieveResponse::State::TaggedSymbol)
         CLOSED = T.let(:CLOSED, Lithic::Models::ExternalBankAccountRetrieveResponse::State::TaggedSymbol)
@@ -255,7 +255,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetrieveResponse::Type) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountRetrieveResponse::Type::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalBankAccountRetrieveResponse::Type::TaggedSymbol) }
 
         CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountRetrieveResponse::Type::TaggedSymbol)
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountRetrieveResponse::Type::TaggedSymbol)
@@ -272,7 +272,13 @@ module Lithic
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationMethod) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationMethod::TaggedSymbol) }
+          T.type_alias do
+            T.any(
+              Symbol,
+              String,
+              Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationMethod::TaggedSymbol
+            )
+          end
 
         MANUAL =
           T.let(:MANUAL, Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationMethod::TaggedSymbol)
@@ -301,7 +307,13 @@ module Lithic
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationState) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationState::TaggedSymbol) }
+          T.type_alias do
+            T.any(
+              Symbol,
+              String,
+              Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationState::TaggedSymbol
+            )
+          end
 
         PENDING =
           T.let(:PENDING, Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationState::TaggedSymbol)

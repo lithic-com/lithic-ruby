@@ -6,7 +6,7 @@ module Lithic
       extend Lithic::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::VerificationMethod) }
-      OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::VerificationMethod::TaggedSymbol) }
+      OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::VerificationMethod::TaggedSymbol) }
 
       MANUAL = T.let(:MANUAL, Lithic::Models::VerificationMethod::TaggedSymbol)
       MICRO_DEPOSIT = T.let(:MICRO_DEPOSIT, Lithic::Models::VerificationMethod::TaggedSymbol)

@@ -85,7 +85,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::MessageAttempt::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::MessageAttempt::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::MessageAttempt::Status::TaggedSymbol) }
 
         FAILED = T.let(:FAILED, Lithic::Models::MessageAttempt::Status::TaggedSymbol)
         PENDING = T.let(:PENDING, Lithic::Models::MessageAttempt::Status::TaggedSymbol)

@@ -65,7 +65,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::TaggedSymbol) }
 
         RECEIPT_CREDIT =
           T.let(:RECEIPT_CREDIT, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::TaggedSymbol)

@@ -475,7 +475,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
+              )
+            end
 
           AUTHENTICATION_OUTAGE_EXCEPTION =
             T.let(
@@ -527,7 +533,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol
+              )
+            end
 
           ATTEMPTS =
             T.let(
@@ -558,7 +570,7 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol) }
 
           CUSTOMER_ENDPOINT =
             T.let(
@@ -603,7 +615,7 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol) }
 
           NUMBER_3DS_AUTHENTICATED =
             T.let(
@@ -638,7 +650,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol
+              )
+            end
 
           NONE =
             T.let(:NONE, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol)
@@ -663,7 +681,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
+              )
+            end
 
           CANCELLED =
             T.let(:CANCELLED, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol)
@@ -765,7 +789,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Network) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Network::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::Network::TaggedSymbol) }
 
         INTERLINK = T.let(:INTERLINK, Lithic::Models::Transaction::Network::TaggedSymbol)
         MAESTRO = T.let(:MAESTRO, Lithic::Models::Transaction::Network::TaggedSymbol)
@@ -862,7 +886,7 @@ module Lithic
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Pos::EntryMode::Card) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol) }
 
             NOT_PRESENT = T.let(:NOT_PRESENT, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
             PREAUTHORIZED = T.let(:PREAUTHORIZED, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
@@ -880,7 +904,7 @@ module Lithic
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Pos::EntryMode::Cardholder) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol) }
 
             DEFERRED_BILLING =
               T.let(:DEFERRED_BILLING, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
@@ -907,7 +931,8 @@ module Lithic
             extend Lithic::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Pos::EntryMode::Pan) }
-            OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol) }
 
             AUTO_ENTRY = T.let(:AUTO_ENTRY, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
             BAR_CODE = T.let(:BAR_CODE, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
@@ -1012,7 +1037,7 @@ module Lithic
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Pos::Terminal::Operator) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol) }
 
             ADMINISTRATIVE =
               T.let(:ADMINISTRATIVE, Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
@@ -1031,7 +1056,7 @@ module Lithic
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Pos::Terminal::PinCapability) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol) }
 
             CAPABLE = T.let(:CAPABLE, Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol)
             INOPERATIVE =
@@ -1051,7 +1076,8 @@ module Lithic
             extend Lithic::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Pos::Terminal::Type) }
-            OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol) }
 
             ADMINISTRATIVE = T.let(:ADMINISTRATIVE, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
             ATM = T.let(:ATM, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
@@ -1090,7 +1116,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Result) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Result::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::Result::TaggedSymbol) }
 
         ACCOUNT_STATE_TRANSACTION_FAIL =
           T.let(:ACCOUNT_STATE_TRANSACTION_FAIL, Lithic::Models::Transaction::Result::TaggedSymbol)
@@ -1130,7 +1156,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::Status::TaggedSymbol) }
 
         DECLINED = T.let(:DECLINED, Lithic::Models::Transaction::Status::TaggedSymbol)
         EXPIRED = T.let(:EXPIRED, Lithic::Models::Transaction::Status::TaggedSymbol)
@@ -1170,7 +1196,7 @@ module Lithic
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::TokenInfo::WalletType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol) }
 
           APPLE_PAY = T.let(:APPLE_PAY, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
           GOOGLE_PAY = T.let(:GOOGLE_PAY, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
@@ -1415,7 +1441,7 @@ module Lithic
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Event::DetailedResult) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol) }
 
           ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED =
             T.let(
@@ -1551,7 +1577,7 @@ module Lithic
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Event::EffectivePolarity) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol) }
 
           CREDIT = T.let(:CREDIT, Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol)
           DEBIT = T.let(:DEBIT, Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol)
@@ -1763,7 +1789,8 @@ module Lithic
           extend Lithic::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Event::Result) }
-          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Event::Result::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::Event::Result::TaggedSymbol) }
 
           ACCOUNT_STATE_TRANSACTION_FAIL =
             T.let(:ACCOUNT_STATE_TRANSACTION_FAIL, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
@@ -1857,7 +1884,7 @@ module Lithic
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Event::RuleResult::Result) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol) }
 
             ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED =
               T.let(
@@ -1996,7 +2023,7 @@ module Lithic
           extend Lithic::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transaction::Event::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::Transaction::Event::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::Event::Type::TaggedSymbol) }
 
           AUTHORIZATION = T.let(:AUTHORIZATION, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
           AUTHORIZATION_ADVICE =
