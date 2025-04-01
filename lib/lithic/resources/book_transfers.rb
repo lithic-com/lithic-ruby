@@ -6,29 +6,17 @@ module Lithic
       # Book transfer funds between two financial accounts or between a financial
       #   account and card
       #
-      # @param params [Lithic::Models::BookTransferCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(amount:, category:, from_financial_account_token:, subtype:, to_financial_account_token:, type:, token: nil, memo: nil, request_options: {})
       #
-      #   @option params [Integer] :amount Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
-      #     This should always be a positive value.
-      #
-      #   @option params [Symbol, Lithic::Models::BookTransferCreateParams::Category] :category Category of the book transfer
-      #
-      #   @option params [String] :from_financial_account_token Globally unique identifier for the financial account or card that will send the
-      #     funds. Accepted type dependent on the program's use case.
-      #
-      #   @option params [String] :subtype The program specific subtype code for the specified category/type.
-      #
-      #   @option params [String] :to_financial_account_token Globally unique identifier for the financial account or card that will receive
-      #     the funds. Accepted type dependent on the program's use case.
-      #
-      #   @option params [Symbol, Lithic::Models::BookTransferCreateParams::Type] :type Type of book_transfer
-      #
-      #   @option params [String] :token Customer-provided token that will serve as an idempotency token. This token will
-      #     become the transaction token.
-      #
-      #   @option params [String] :memo Optional descriptor for the transfer.
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param amount [Integer]
+      # @param category [Symbol, Lithic::Models::BookTransferCreateParams::Category]
+      # @param from_financial_account_token [String]
+      # @param subtype [String]
+      # @param to_financial_account_token [String]
+      # @param type [Symbol, Lithic::Models::BookTransferCreateParams::Type]
+      # @param token [String]
+      # @param memo [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::BookTransferResponse]
       #
@@ -46,11 +34,10 @@ module Lithic
 
       # Get book transfer by token
       #
-      # @param book_transfer_token [String] Id of the book transfer to retrieve
+      # @overload retrieve(book_transfer_token, request_options: {})
       #
-      # @param params [Lithic::Models::BookTransferRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param book_transfer_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::BookTransferResponse]
       #
@@ -66,36 +53,20 @@ module Lithic
 
       # List book transfers
       #
-      # @param params [Lithic::Models::BookTransferListParams, Hash{Symbol=>Object}] .
+      # @overload list(account_token: nil, begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
       #
-      #   @option params [String] :account_token
-      #
-      #   @option params [Time] :begin_ Date string in RFC 3339 format. Only entries created after the specified time
-      #     will be included. UTC time zone.
-      #
-      #   @option params [String] :business_account_token
-      #
-      #   @option params [Symbol, Lithic::Models::BookTransferListParams::Category] :category Book Transfer category to be returned.
-      #
-      #   @option params [Time] :end_ Date string in RFC 3339 format. Only entries created before the specified time
-      #     will be included. UTC time zone.
-      #
-      #   @option params [String] :ending_before A cursor representing an item's token before which a page of results should end.
-      #     Used to retrieve the previous page of results before this item.
-      #
-      #   @option params [String] :financial_account_token Globally unique identifier for the financial account or card that will send the
-      #     funds. Accepted type dependent on the program's use case.
-      #
-      #   @option params [Integer] :page_size Page size (for pagination).
-      #
-      #   @option params [Symbol, Lithic::Models::BookTransferListParams::Result] :result Book transfer result to be returned.
-      #
-      #   @option params [String] :starting_after A cursor representing an item's token after which a page of results should
-      #     begin. Used to retrieve the next page of results after this item.
-      #
-      #   @option params [Symbol, Lithic::Models::BookTransferListParams::Status] :status Book transfer status to be returned.
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_token [String]
+      # @param begin_ [Time]
+      # @param business_account_token [String]
+      # @param category [Symbol, Lithic::Models::BookTransferListParams::Category]
+      # @param end_ [Time]
+      # @param ending_before [String]
+      # @param financial_account_token [String]
+      # @param page_size [Integer]
+      # @param result [Symbol, Lithic::Models::BookTransferListParams::Result]
+      # @param starting_after [String]
+      # @param status [Symbol, Lithic::Models::BookTransferListParams::Status]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::CursorPage<Lithic::Models::BookTransferResponse>]
       #
@@ -114,13 +85,11 @@ module Lithic
 
       # Reverse a book transfer
       #
-      # @param book_transfer_token [String] Id of the book transfer to retrieve
+      # @overload reverse(book_transfer_token, memo: nil, request_options: {})
       #
-      # @param params [Lithic::Models::BookTransferReverseParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :memo Optional descriptor for the reversal.
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param book_transfer_token [String]
+      # @param memo [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::BookTransferResponse]
       #

@@ -7,22 +7,14 @@ module Lithic
         class LineItems
           # List the line items for a given statement within a given financial account.
           #
-          # @param statement_token [String] Path param: Globally unique identifier for statements.
+          # @overload list(statement_token, financial_account_token:, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
           #
-          # @param params [Lithic::Models::FinancialAccounts::Statements::LineItemListParams, Hash{Symbol=>Object}] .
-          #
-          #   @option params [String] :financial_account_token Path param: Globally unique identifier for financial account.
-          #
-          #   @option params [String] :ending_before Query param: A cursor representing an item's token before which a page of
-          #     results should end. Used to retrieve the previous page of results before this
-          #     item.
-          #
-          #   @option params [Integer] :page_size Query param: Page size (for pagination).
-          #
-          #   @option params [String] :starting_after Query param: A cursor representing an item's token after which a page of results
-          #     should begin. Used to retrieve the next page of results after this item.
-          #
-          #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param statement_token [String]
+          # @param financial_account_token [String]
+          # @param ending_before [String]
+          # @param page_size [Integer]
+          # @param starting_after [String]
+          # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Lithic::CursorPage<Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data>]
           #

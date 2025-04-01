@@ -5,11 +5,10 @@ module Lithic
     class Tokenizations
       # Get tokenization
       #
-      # @param tokenization_token [String] Tokenization token
+      # @overload retrieve(tokenization_token, request_options: {})
       #
-      # @param params [Lithic::Models::TokenizationRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param tokenization_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::TokenizationRetrieveResponse]
       #
@@ -25,28 +24,17 @@ module Lithic
 
       # List card tokenizations
       #
-      # @param params [Lithic::Models::TokenizationListParams, Hash{Symbol=>Object}] .
+      # @overload list(account_token: nil, begin_: nil, card_token: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, tokenization_channel: nil, request_options: {})
       #
-      #   @option params [String] :account_token Filters for tokenizations associated with a specific account.
-      #
-      #   @option params [Date] :begin_ Filter for tokenizations created after this date.
-      #
-      #   @option params [String] :card_token Filters for tokenizations associated with a specific card.
-      #
-      #   @option params [Date] :end_ Filter for tokenizations created before this date.
-      #
-      #   @option params [String] :ending_before A cursor representing an item's token before which a page of results should end.
-      #     Used to retrieve the previous page of results before this item.
-      #
-      #   @option params [Integer] :page_size Page size (for pagination).
-      #
-      #   @option params [String] :starting_after A cursor representing an item's token after which a page of results should
-      #     begin. Used to retrieve the next page of results after this item.
-      #
-      #   @option params [Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel] :tokenization_channel Filter for tokenizations by tokenization channel. If this is not specified, only
-      #     DIGITAL_WALLET tokenizations will be returned.
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_token [String]
+      # @param begin_ [Date]
+      # @param card_token [String]
+      # @param end_ [Date]
+      # @param ending_before [String]
+      # @param page_size [Integer]
+      # @param starting_after [String]
+      # @param tokenization_channel [Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::CursorPage<Lithic::Models::Tokenization>]
       #
@@ -72,11 +60,10 @@ module Lithic
       #   active state, and transactions will be allowed. Reach out at
       #   [lithic.com/contact](https://lithic.com/contact) for more information.
       #
-      # @param tokenization_token [String] Tokenization token
+      # @overload activate(tokenization_token, request_options: {})
       #
-      # @param params [Lithic::Models::TokenizationActivateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param tokenization_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [nil]
       #
@@ -100,11 +87,10 @@ module Lithic
       #   from its device. Reach out at [lithic.com/contact](https://lithic.com/contact)
       #   for more information.
       #
-      # @param tokenization_token [String] Tokenization token
+      # @overload deactivate(tokenization_token, request_options: {})
       #
-      # @param params [Lithic::Models::TokenizationDeactivateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param tokenization_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [nil]
       #
@@ -127,11 +113,10 @@ module Lithic
       #   changed. Reach out at [lithic.com/contact](https://lithic.com/contact) for more
       #   information.
       #
-      # @param tokenization_token [String] Tokenization token
+      # @overload pause(tokenization_token, request_options: {})
       #
-      # @param params [Lithic::Models::TokenizationPauseParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param tokenization_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [nil]
       #
@@ -156,15 +141,11 @@ module Lithic
       #   cardholder must restart the provision process. Reach out at
       #   [lithic.com/contact](https://lithic.com/contact) for more information.
       #
-      # @param tokenization_token [String] Tokenization token
+      # @overload resend_activation_code(tokenization_token, activation_method_type: nil, request_options: {})
       #
-      # @param params [Lithic::Models::TokenizationResendActivationCodeParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Symbol, Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType] :activation_method_type The communication method that the user has selected to use to receive the
-      #     authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
-      #     = "EMAIL_TO_CARDHOLDER_ADDRESS"
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param tokenization_token [String]
+      # @param activation_method_type [Symbol, Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [nil]
       #
@@ -183,28 +164,17 @@ module Lithic
       # This endpoint is used to simulate a card's tokenization in the Digital Wallet
       #   and merchant tokenization ecosystem.
       #
-      # @param params [Lithic::Models::TokenizationSimulateParams, Hash{Symbol=>Object}] .
+      # @overload simulate(cvv:, expiration_date:, pan:, tokenization_source:, account_score: nil, device_score: nil, entity: nil, wallet_recommended_decision: nil, request_options: {})
       #
-      #   @option params [String] :cvv The three digit cvv for the card.
-      #
-      #   @option params [String] :expiration_date The expiration date of the card in 'MM/YY' format.
-      #
-      #   @option params [String] :pan The sixteen digit card number.
-      #
-      #   @option params [Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource] :tokenization_source The source of the tokenization request.
-      #
-      #   @option params [Integer] :account_score The account score (1-5) that represents how the Digital Wallet's view on how
-      #     reputable an end user's account is.
-      #
-      #   @option params [Integer] :device_score The device score (1-5) that represents how the Digital Wallet's view on how
-      #     reputable an end user's device is.
-      #
-      #   @option params [String] :entity Optional field to specify the token requestor name for a merchant token
-      #     simulation. Ignored when tokenization_source is not MERCHANT.
-      #
-      #   @option params [Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision] :wallet_recommended_decision The decision that the Digital Wallet's recommend
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param cvv [String]
+      # @param expiration_date [String]
+      # @param pan [String]
+      # @param tokenization_source [Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource]
+      # @param account_score [Integer]
+      # @param device_score [Integer]
+      # @param entity [String]
+      # @param wallet_recommended_decision [Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::TokenizationSimulateResponse]
       #
@@ -228,11 +198,10 @@ module Lithic
       #   active state, and transactions may resume. Reach out at
       #   [lithic.com/contact](https://lithic.com/contact) for more information.
       #
-      # @param tokenization_token [String] Tokenization token
+      # @overload unpause(tokenization_token, request_options: {})
       #
-      # @param params [Lithic::Models::TokenizationUnpauseParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param tokenization_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [nil]
       #
@@ -255,16 +224,11 @@ module Lithic
       #   the art referenced in the card object's `digital_card_art_token` field. Reach
       #   out at [lithic.com/contact](https://lithic.com/contact) for more information.
       #
-      # @param tokenization_token [String] Tokenization token
+      # @overload update_digital_card_art(tokenization_token, digital_card_art_token: nil, request_options: {})
       #
-      # @param params [Lithic::Models::TokenizationUpdateDigitalCardArtParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :digital_card_art_token Specifies the digital card art to be displayed in the user’s digital wallet for
-      #     a tokenization. This artwork must be approved by the network and configured by
-      #     Lithic to use. See
-      #     [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param tokenization_token [String]
+      # @param digital_card_art_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::TokenizationUpdateDigitalCardArtResponse]
       #

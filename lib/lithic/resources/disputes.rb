@@ -5,19 +5,14 @@ module Lithic
     class Disputes
       # Initiate a dispute.
       #
-      # @param params [Lithic::Models::DisputeCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(amount:, reason:, transaction_token:, customer_filed_date: nil, customer_note: nil, request_options: {})
       #
-      #   @option params [Integer] :amount Amount to dispute
-      #
-      #   @option params [Symbol, Lithic::Models::DisputeCreateParams::Reason] :reason Reason for dispute
-      #
-      #   @option params [String] :transaction_token Transaction to dispute
-      #
-      #   @option params [Time] :customer_filed_date Date the customer filed the dispute
-      #
-      #   @option params [String] :customer_note Customer description of dispute
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param amount [Integer]
+      # @param reason [Symbol, Lithic::Models::DisputeCreateParams::Reason]
+      # @param transaction_token [String]
+      # @param customer_filed_date [Time]
+      # @param customer_note [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Dispute]
       #
@@ -35,11 +30,10 @@ module Lithic
 
       # Get dispute.
       #
+      # @overload retrieve(dispute_token, request_options: {})
+      #
       # @param dispute_token [String]
-      #
-      # @param params [Lithic::Models::DisputeRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Dispute]
       #
@@ -55,19 +49,14 @@ module Lithic
 
       # Update dispute. Can only be modified if status is `NEW`.
       #
+      # @overload update(dispute_token, amount: nil, customer_filed_date: nil, customer_note: nil, reason: nil, request_options: {})
+      #
       # @param dispute_token [String]
-      #
-      # @param params [Lithic::Models::DisputeUpdateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Integer] :amount Amount to dispute
-      #
-      #   @option params [Time] :customer_filed_date Date the customer filed the dispute
-      #
-      #   @option params [String] :customer_note Customer description of dispute
-      #
-      #   @option params [Symbol, Lithic::Models::DisputeUpdateParams::Reason] :reason Reason for dispute
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param amount [Integer]
+      # @param customer_filed_date [Time]
+      # @param customer_note [String]
+      # @param reason [Symbol, Lithic::Models::DisputeUpdateParams::Reason]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Dispute]
       #
@@ -85,27 +74,16 @@ module Lithic
 
       # List disputes.
       #
-      # @param params [Lithic::Models::DisputeListParams, Hash{Symbol=>Object}] .
+      # @overload list(begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, status: nil, transaction_tokens: nil, request_options: {})
       #
-      #   @option params [Time] :begin_ Date string in RFC 3339 format. Only entries created after the specified time
-      #     will be included. UTC time zone.
-      #
-      #   @option params [Time] :end_ Date string in RFC 3339 format. Only entries created before the specified time
-      #     will be included. UTC time zone.
-      #
-      #   @option params [String] :ending_before A cursor representing an item's token before which a page of results should end.
-      #     Used to retrieve the previous page of results before this item.
-      #
-      #   @option params [Integer] :page_size Page size (for pagination).
-      #
-      #   @option params [String] :starting_after A cursor representing an item's token after which a page of results should
-      #     begin. Used to retrieve the next page of results after this item.
-      #
-      #   @option params [Symbol, Lithic::Models::DisputeListParams::Status] :status List disputes of a specific status.
-      #
-      #   @option params [Array<String>] :transaction_tokens Transaction tokens to filter by.
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param begin_ [Time]
+      # @param end_ [Time]
+      # @param ending_before [String]
+      # @param page_size [Integer]
+      # @param starting_after [String]
+      # @param status [Symbol, Lithic::Models::DisputeListParams::Status]
+      # @param transaction_tokens [Array<String>]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::CursorPage<Lithic::Models::Dispute>]
       #
@@ -124,11 +102,10 @@ module Lithic
 
       # Withdraw dispute.
       #
+      # @overload delete(dispute_token, request_options: {})
+      #
       # @param dispute_token [String]
-      #
-      # @param params [Lithic::Models::DisputeDeleteParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Dispute]
       #
@@ -145,13 +122,11 @@ module Lithic
       # Soft delete evidence for a dispute. Evidence will not be reviewed or submitted
       #   by Lithic after it is withdrawn.
       #
+      # @overload delete_evidence(evidence_token, dispute_token:, request_options: {})
+      #
       # @param evidence_token [String]
-      #
-      # @param params [Lithic::Models::DisputeDeleteEvidenceParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :dispute_token
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param dispute_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::DisputeEvidence]
       #
@@ -176,13 +151,11 @@ module Lithic
       #   Uploaded documents must either be a `jpg`, `png` or `pdf` file, and each must be
       #   less than 5 GiB.
       #
+      # @overload initiate_evidence_upload(dispute_token, filename: nil, request_options: {})
+      #
       # @param dispute_token [String]
-      #
-      # @param params [Lithic::Models::DisputeInitiateEvidenceUploadParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :filename Filename of the evidence.
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param filename [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::DisputeEvidence]
       #
@@ -200,25 +173,15 @@ module Lithic
 
       # List evidence metadata for a dispute.
       #
+      # @overload list_evidences(dispute_token, begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
+      #
       # @param dispute_token [String]
-      #
-      # @param params [Lithic::Models::DisputeListEvidencesParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Time] :begin_ Date string in RFC 3339 format. Only entries created after the specified time
-      #     will be included. UTC time zone.
-      #
-      #   @option params [Time] :end_ Date string in RFC 3339 format. Only entries created before the specified time
-      #     will be included. UTC time zone.
-      #
-      #   @option params [String] :ending_before A cursor representing an item's token before which a page of results should end.
-      #     Used to retrieve the previous page of results before this item.
-      #
-      #   @option params [Integer] :page_size Page size (for pagination).
-      #
-      #   @option params [String] :starting_after A cursor representing an item's token after which a page of results should
-      #     begin. Used to retrieve the next page of results after this item.
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param begin_ [Time]
+      # @param end_ [Time]
+      # @param ending_before [String]
+      # @param page_size [Integer]
+      # @param starting_after [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::CursorPage<Lithic::Models::DisputeEvidence>]
       #
@@ -237,13 +200,11 @@ module Lithic
 
       # Get a dispute's evidence metadata.
       #
+      # @overload retrieve_evidence(evidence_token, dispute_token:, request_options: {})
+      #
       # @param evidence_token [String]
-      #
-      # @param params [Lithic::Models::DisputeRetrieveEvidenceParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :dispute_token
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param dispute_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::DisputeEvidence]
       #

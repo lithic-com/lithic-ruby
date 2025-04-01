@@ -6,13 +6,11 @@ module Lithic
       class MicroDeposits
         # Verify the external bank account by providing the micro deposit amounts.
         #
+        # @overload create(external_bank_account_token, micro_deposits:, request_options: {})
+        #
         # @param external_bank_account_token [String]
-        #
-        # @param params [Lithic::Models::ExternalBankAccounts::MicroDepositCreateParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Array<Integer>] :micro_deposits
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param micro_deposits [Array<Integer>]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse]
         #
