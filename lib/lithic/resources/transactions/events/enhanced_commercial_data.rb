@@ -18,7 +18,7 @@ module Lithic
           def retrieve(event_token, params = {})
             @client.request(
               method: :get,
-              path: ["v1/transactions/events/%0s/enhanced_commercial_data", event_token],
+              path: ["v1/transactions/events/%1$s/enhanced_commercial_data", event_token],
               model: Lithic::Models::Transactions::Events::EnhancedData,
               options: params[:request_options]
             )

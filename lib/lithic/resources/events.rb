@@ -18,7 +18,7 @@ module Lithic
       def retrieve(event_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/events/%0s", event_token],
+          path: ["v1/events/%1$s", event_token],
           model: Lithic::Models::Event,
           options: params[:request_options]
         )
@@ -90,7 +90,7 @@ module Lithic
         parsed, options = Lithic::Models::EventListAttemptsParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["v1/events/%0s/attempts", event_token],
+          path: ["v1/events/%1$s/attempts", event_token],
           query: parsed,
           page: Lithic::CursorPage,
           model: Lithic::Models::MessageAttempt,

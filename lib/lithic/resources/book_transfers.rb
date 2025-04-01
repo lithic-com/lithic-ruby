@@ -54,7 +54,7 @@ module Lithic
       def retrieve(book_transfer_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/book_transfers/%0s", book_transfer_token],
+          path: ["v1/book_transfers/%1$s", book_transfer_token],
           model: Lithic::Models::BookTransferResponse,
           options: params[:request_options]
         )
@@ -121,7 +121,7 @@ module Lithic
         parsed, options = Lithic::Models::BookTransferReverseParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/book_transfers/%0s/reverse", book_transfer_token],
+          path: ["v1/book_transfers/%1$s/reverse", book_transfer_token],
           body: parsed,
           model: Lithic::Models::BookTransferResponse,
           options: options

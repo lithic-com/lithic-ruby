@@ -34,7 +34,7 @@ module Lithic
             @client.request(
               method: :get,
               path: [
-                "v1/financial_accounts/%0s/statements/%1s/line_items",
+                "v1/financial_accounts/%1$s/statements/%2$s/line_items",
                 financial_account_token,
                 statement_token
               ],

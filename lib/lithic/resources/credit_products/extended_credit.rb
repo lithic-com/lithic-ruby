@@ -16,7 +16,7 @@ module Lithic
         def retrieve(credit_product_token, params = {})
           @client.request(
             method: :get,
-            path: ["v1/credit_products/%0s/extended_credit", credit_product_token],
+            path: ["v1/credit_products/%1$s/extended_credit", credit_product_token],
             model: Lithic::Models::CreditProducts::CreditProductsExtendedCredit,
             options: params[:request_options]
           )

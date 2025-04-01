@@ -17,7 +17,7 @@ module Lithic
           def retrieve(token, params = {})
             @client.request(
               method: :get,
-              path: ["v1/reports/settlement/network_totals/%0s", token],
+              path: ["v1/reports/settlement/network_totals/%1$s", token],
               model: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse,
               options: params[:request_options]
             )
