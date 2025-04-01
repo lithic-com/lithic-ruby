@@ -20,6 +20,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::EventSubscription]
+        #
+        # @see Lithic::Models::Events::SubscriptionCreateParams
         def create(params)
           parsed, options = Lithic::Models::Events::SubscriptionCreateParams.dump_request(params)
           @client.request(
@@ -40,6 +42,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::EventSubscription]
+        #
+        # @see Lithic::Models::Events::SubscriptionRetrieveParams
         def retrieve(event_subscription_token, params = {})
           @client.request(
             method: :get,
@@ -67,6 +71,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::EventSubscription]
+        #
+        # @see Lithic::Models::Events::SubscriptionUpdateParams
         def update(event_subscription_token, params)
           parsed, options = Lithic::Models::Events::SubscriptionUpdateParams.dump_request(params)
           @client.request(
@@ -93,6 +99,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::CursorPage<Lithic::Models::EventSubscription>]
+        #
+        # @see Lithic::Models::Events::SubscriptionListParams
         def list(params = {})
           parsed, options = Lithic::Models::Events::SubscriptionListParams.dump_request(params)
           @client.request(
@@ -114,6 +122,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [nil]
+        #
+        # @see Lithic::Models::Events::SubscriptionDeleteParams
         def delete(event_subscription_token, params = {})
           @client.request(
             method: :delete,
@@ -148,6 +158,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::CursorPage<Lithic::Models::MessageAttempt>]
+        #
+        # @see Lithic::Models::Events::SubscriptionListAttemptsParams
         def list_attempts(event_subscription_token, params = {})
           parsed, options = Lithic::Models::Events::SubscriptionListAttemptsParams.dump_request(params)
           @client.request(
@@ -175,6 +187,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [nil]
+        #
+        # @see Lithic::Models::Events::SubscriptionRecoverParams
         def recover(event_subscription_token, params = {})
           parsed, options = Lithic::Models::Events::SubscriptionRecoverParams.dump_request(params)
           @client.request(
@@ -205,6 +219,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [nil]
+        #
+        # @see Lithic::Models::Events::SubscriptionReplayMissingParams
         def replay_missing(event_subscription_token, params = {})
           parsed, options = Lithic::Models::Events::SubscriptionReplayMissingParams.dump_request(params)
           @client.request(
@@ -225,6 +241,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::Events::SubscriptionRetrieveSecretResponse]
+        #
+        # @see Lithic::Models::Events::SubscriptionRetrieveSecretParams
         def retrieve_secret(event_subscription_token, params = {})
           @client.request(
             method: :get,
@@ -244,6 +262,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [nil]
+        #
+        # @see Lithic::Models::Events::SubscriptionRotateSecretParams
         def rotate_secret(event_subscription_token, params = {})
           @client.request(
             method: :post,
@@ -264,6 +284,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [nil]
+        #
+        # @see Lithic::Models::Events::SubscriptionSendSimulatedExampleParams
         def send_simulated_example(event_subscription_token, params = {})
           parsed, options = Lithic::Models::Events::SubscriptionSendSimulatedExampleParams.dump_request(params)
           @client.request(
@@ -275,6 +297,8 @@ module Lithic
           )
         end
 
+        # @api private
+        #
         # @param client [Lithic::Client]
         def initialize(client:)
           @client = client

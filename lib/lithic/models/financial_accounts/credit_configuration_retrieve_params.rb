@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module FinancialAccounts
+      # @see Lithic::Resources::FinancialAccounts::CreditConfiguration#retrieve
       class CreditConfigurationRetrieveParams < Lithic::BaseModel
         # @!parse
         #   extend Lithic::Type::RequestParameters::Converter

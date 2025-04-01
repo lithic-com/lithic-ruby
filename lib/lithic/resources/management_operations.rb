@@ -30,6 +30,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ManagementOperationTransaction]
+      #
+      # @see Lithic::Models::ManagementOperationCreateParams
       def create(params)
         parsed, options = Lithic::Models::ManagementOperationCreateParams.dump_request(params)
         @client.request(
@@ -50,6 +52,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ManagementOperationTransaction]
+      #
+      # @see Lithic::Models::ManagementOperationRetrieveParams
       def retrieve(management_operation_token, params = {})
         @client.request(
           method: :get,
@@ -89,6 +93,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::CursorPage<Lithic::Models::ManagementOperationTransaction>]
+      #
+      # @see Lithic::Models::ManagementOperationListParams
       def list(params = {})
         parsed, options = Lithic::Models::ManagementOperationListParams.dump_request(params)
         @client.request(
@@ -114,6 +120,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ManagementOperationTransaction]
+      #
+      # @see Lithic::Models::ManagementOperationReverseParams
       def reverse(management_operation_token, params)
         parsed, options = Lithic::Models::ManagementOperationReverseParams.dump_request(params)
         @client.request(
@@ -125,6 +133,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

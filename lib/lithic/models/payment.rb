@@ -161,6 +161,8 @@ module Lithic
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
       # Payment category
+      #
+      # @see Lithic::Models::Payment#category
       module Category
         extend Lithic::Enum
 
@@ -173,6 +175,7 @@ module Lithic
         #   def self.values; end
       end
 
+      # @see Lithic::Models::Payment#direction
       module Direction
         extend Lithic::Enum
 
@@ -262,6 +265,8 @@ module Lithic
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
+        #
+        # @see Lithic::Models::Payment::Event#result
         module Result
           extend Lithic::Enum
 
@@ -295,6 +300,8 @@ module Lithic
         #     balance.
         #   - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
         #     Financial Institution.
+        #
+        # @see Lithic::Models::Payment::Event#type
         module Type
           extend Lithic::Enum
 
@@ -335,6 +342,7 @@ module Lithic
         end
       end
 
+      # @see Lithic::Models::Payment#method_
       module Method
         extend Lithic::Enum
 
@@ -348,6 +356,7 @@ module Lithic
         #   def self.values; end
       end
 
+      # @see Lithic::Models::Payment#method_attributes
       class MethodAttributes < Lithic::BaseModel
         # @!attribute company_id
         #
@@ -391,6 +400,7 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
+        # @see Lithic::Models::Payment::MethodAttributes#sec_code
         module SecCode
           extend Lithic::Enum
 
@@ -408,6 +418,8 @@ module Lithic
 
       # APPROVED payments were successful while DECLINED payments were declined by
       #   Lithic or returned.
+      #
+      # @see Lithic::Models::Payment#result
       module Result
         extend Lithic::Enum
 
@@ -421,6 +433,7 @@ module Lithic
         #   def self.values; end
       end
 
+      # @see Lithic::Models::Payment#source
       module Source
         extend Lithic::Enum
 
@@ -441,6 +454,8 @@ module Lithic
       #     (origination debit).
       #   - `RETURNED` - The payment has been returned.
       #   - `SETTLED` - The payment is completed.
+      #
+      # @see Lithic::Models::Payment#status
       module Status
         extend Lithic::Enum
 

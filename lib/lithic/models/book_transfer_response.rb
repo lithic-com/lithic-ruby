@@ -119,6 +119,8 @@ module Lithic
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
       # Category of the book transfer
+      #
+      # @see Lithic::Models::BookTransferResponse#category
       module Category
         extend Lithic::Enum
 
@@ -218,6 +220,8 @@ module Lithic
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
+        #
+        # @see Lithic::Models::BookTransferResponse::Event#result
         module Result
           extend Lithic::Enum
 
@@ -234,6 +238,8 @@ module Lithic
 
       # APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
+      #
+      # @see Lithic::Models::BookTransferResponse#result
       module Result
         extend Lithic::Enum
 
@@ -249,6 +255,8 @@ module Lithic
 
       # Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
       #   transfer was reversed \* `SETTLED` - The transfer is completed.
+      #
+      # @see Lithic::Models::BookTransferResponse#status
       module Status
         extend Lithic::Enum
 

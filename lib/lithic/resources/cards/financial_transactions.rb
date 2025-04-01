@@ -15,6 +15,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::FinancialTransaction]
+        #
+        # @see Lithic::Models::Cards::FinancialTransactionRetrieveParams
         def retrieve(financial_transaction_token, params)
           parsed, options = Lithic::Models::Cards::FinancialTransactionRetrieveParams.dump_request(params)
           card_token =
@@ -56,6 +58,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::SinglePage<Lithic::Models::FinancialTransaction>]
+        #
+        # @see Lithic::Models::Cards::FinancialTransactionListParams
         def list(card_token, params = {})
           parsed, options = Lithic::Models::Cards::FinancialTransactionListParams.dump_request(params)
           @client.request(
@@ -68,6 +72,8 @@ module Lithic
           )
         end
 
+        # @api private
+        #
         # @param client [Lithic::Client]
         def initialize(client:)
           @client = client

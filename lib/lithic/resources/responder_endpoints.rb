@@ -14,6 +14,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ResponderEndpointCreateResponse]
+      #
+      # @see Lithic::Models::ResponderEndpointCreateParams
       def create(params = {})
         parsed, options = Lithic::Models::ResponderEndpointCreateParams.dump_request(params)
         @client.request(
@@ -34,6 +36,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
+      #
+      # @see Lithic::Models::ResponderEndpointDeleteParams
       def delete(params)
         parsed, options = Lithic::Models::ResponderEndpointDeleteParams.dump_request(params)
         @client.request(
@@ -54,6 +58,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ResponderEndpointStatus]
+      #
+      # @see Lithic::Models::ResponderEndpointCheckStatusParams
       def check_status(params)
         parsed, options = Lithic::Models::ResponderEndpointCheckStatusParams.dump_request(params)
         @client.request(
@@ -65,6 +71,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

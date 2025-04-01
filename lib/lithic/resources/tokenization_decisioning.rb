@@ -15,6 +15,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::TokenizationSecret]
+      #
+      # @see Lithic::Models::TokenizationDecisioningRetrieveSecretParams
       def retrieve_secret(params = {})
         @client.request(
           method: :get,
@@ -33,6 +35,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::TokenizationDecisioningRotateSecretResponse]
+      #
+      # @see Lithic::Models::TokenizationDecisioningRotateSecretParams
       def rotate_secret(params = {})
         @client.request(
           method: :post,
@@ -42,6 +46,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

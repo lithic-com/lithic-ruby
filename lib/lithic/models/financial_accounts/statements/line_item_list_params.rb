@@ -4,6 +4,7 @@ module Lithic
   module Models
     module FinancialAccounts
       module Statements
+        # @see Lithic::Resources::FinancialAccounts::Statements::LineItems#list
         class LineItemListParams < Lithic::BaseModel
           # @!parse
           #   extend Lithic::Type::RequestParameters::Converter

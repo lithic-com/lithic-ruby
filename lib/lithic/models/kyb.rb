@@ -274,6 +274,7 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
+      # @see Lithic::Models::KYB#business_entity
       class BusinessEntity < Lithic::BaseModel
         # @!attribute address
         #   Business's physical address - PO boxes, UPS drops, and FedEx drops are not
@@ -350,6 +351,7 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
+      # @see Lithic::Models::KYB#control_person
       class ControlPerson < Lithic::BaseModel
         # @!attribute address
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -426,6 +428,8 @@ module Lithic
       end
 
       # Specifies the type of KYB workflow to run.
+      #
+      # @see Lithic::Models::KYB#workflow
       module Workflow
         extend Lithic::Enum
 

@@ -90,6 +90,8 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
         # The operation to apply to the attribute
+        #
+        # @see Lithic::Models::AuthRules::AuthRuleCondition#operation
         module Operation
           extend Lithic::Enum
 
@@ -108,6 +110,8 @@ module Lithic
         end
 
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
+        #
+        # @see Lithic::Models::AuthRules::AuthRuleCondition#value
         module Value
           extend Lithic::Union
 

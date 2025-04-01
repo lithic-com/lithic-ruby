@@ -15,6 +15,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::FinancialAccounts::LoanTape]
+        #
+        # @see Lithic::Models::FinancialAccounts::LoanTapeRetrieveParams
         def retrieve(loan_tape_token, params)
           parsed, options = Lithic::Models::FinancialAccounts::LoanTapeRetrieveParams.dump_request(params)
           financial_account_token =
@@ -52,6 +54,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::CursorPage<Lithic::Models::FinancialAccounts::LoanTape>]
+        #
+        # @see Lithic::Models::FinancialAccounts::LoanTapeListParams
         def list(financial_account_token, params = {})
           parsed, options = Lithic::Models::FinancialAccounts::LoanTapeListParams.dump_request(params)
           @client.request(
@@ -64,6 +68,8 @@ module Lithic
           )
         end
 
+        # @api private
+        #
         # @param client [Lithic::Client]
         def initialize(client:)
           @client = client

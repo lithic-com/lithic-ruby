@@ -7,6 +7,7 @@ module Lithic
         sig { returns(Lithic::Resources::Transactions::Events::EnhancedCommercialData) }
         attr_reader :enhanced_commercial_data
 
+        # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
         def self.new(client:)
         end

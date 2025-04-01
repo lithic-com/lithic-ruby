@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module ThreeDS
+      # @see Lithic::Resources::ThreeDS::Authentication#simulate_otp_entry
       class AuthenticationSimulateOtpEntryParams < Lithic::BaseModel
         # @!parse
         #   extend Lithic::Type::RequestParameters::Converter

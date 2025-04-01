@@ -44,6 +44,7 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
+          # @see Lithic::Models::Transactions::Events::EnhancedData#common
           class Common < Lithic::BaseModel
             # @!attribute line_items
             #
@@ -151,6 +152,7 @@ module Lithic
               # def initialize: (Hash | Lithic::BaseModel) -> void
             end
 
+            # @see Lithic::Models::Transactions::Events::EnhancedData::Common#tax
             class Tax < Lithic::BaseModel
               # @!attribute [r] amount
               #   The amount of tax collected.
@@ -192,6 +194,8 @@ module Lithic
               # def initialize: (Hash | Lithic::BaseModel) -> void
 
               # A flag indicating whether the transaction is tax exempt or not.
+              #
+              # @see Lithic::Models::Transactions::Events::EnhancedData::Common::Tax#exempt
               module Exempt
                 extend Lithic::Enum
 
@@ -274,6 +278,7 @@ module Lithic
 
             # def initialize: (Hash | Lithic::BaseModel) -> void
 
+            # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet#amount_totals
             class AmountTotals < Lithic::BaseModel
               # @!attribute [r] discount
               #   The discount applied to the gross sale amount.
@@ -315,6 +320,7 @@ module Lithic
               # def initialize: (Hash | Lithic::BaseModel) -> void
             end
 
+            # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet#fuel
             class Fuel < Lithic::BaseModel
               # @!attribute [r] quantity
               #   The quantity of fuel purchased.
@@ -368,6 +374,8 @@ module Lithic
               # def initialize: (Hash | Lithic::BaseModel) -> void
 
               # The type of fuel purchased.
+              #
+              # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel#type
               module Type
                 extend Lithic::Enum
 
@@ -500,6 +508,8 @@ module Lithic
               end
 
               # Unit of measure for fuel disbursement.
+              #
+              # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel#unit_of_measure
               module UnitOfMeasure
                 extend Lithic::Enum
 
@@ -520,6 +530,8 @@ module Lithic
             end
 
             # The type of fuel service.
+            #
+            # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet#service_type
             module ServiceType
               extend Lithic::Enum
 

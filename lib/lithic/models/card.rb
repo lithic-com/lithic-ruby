@@ -302,6 +302,7 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
+      # @see Lithic::Models::Card#funding
       class Funding < Lithic::BaseModel
         # @!attribute token
         #   A globally unique identifier for this FundingAccount.
@@ -390,6 +391,8 @@ module Lithic
         #   - `PENDING` - The funding account is still being verified e.g. bank
         #     micro-deposits verification.
         #   - `DELETED` - The founding account has been deleted.
+        #
+        # @see Lithic::Models::Card::Funding#state
         module State
           extend Lithic::Enum
 
@@ -408,6 +411,8 @@ module Lithic
         #
         #   - `DEPOSITORY_CHECKING` - Bank checking account.
         #   - `DEPOSITORY_SAVINGS` - Bank savings account.
+        #
+        # @see Lithic::Models::Card::Funding#type
         module Type
           extend Lithic::Enum
 
@@ -424,6 +429,8 @@ module Lithic
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       #   attempts).
+      #
+      # @see Lithic::Models::Card#pin_status
       module PinStatus
         extend Lithic::Enum
 
@@ -459,6 +466,8 @@ module Lithic
       #
       #   In sandbox, the same daily batch fulfillment occurs, but no cards are actually
       #   manufactured.
+      #
+      # @see Lithic::Models::Card#state
       module State
         extend Lithic::Enum
 
@@ -491,6 +500,8 @@ module Lithic
       #     VIRTUAL instead.
       #   - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
       #     use VIRTUAL instead.
+      #
+      # @see Lithic::Models::Card#type
       module Type
         extend Lithic::Enum
 

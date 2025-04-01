@@ -16,6 +16,7 @@ module Lithic
         def create(external_bank_account_token, micro_deposits:, request_options: {})
         end
 
+        # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
         def self.new(client:)
         end

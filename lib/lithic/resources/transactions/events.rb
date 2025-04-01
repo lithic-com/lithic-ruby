@@ -7,6 +7,8 @@ module Lithic
         # @return [Lithic::Resources::Transactions::Events::EnhancedCommercialData]
         attr_reader :enhanced_commercial_data
 
+        # @api private
+        #
         # @param client [Lithic::Client]
         def initialize(client:)
           @client = client

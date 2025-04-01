@@ -100,6 +100,8 @@ module Lithic
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
       # Type of financial account
+      #
+      # @see Lithic::Models::AggregateBalance#financial_account_type
       module FinancialAccountType
         extend Lithic::Enum
 

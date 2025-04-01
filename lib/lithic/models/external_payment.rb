@@ -108,6 +108,7 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
+      # @see Lithic::Models::ExternalPayment#category
       module Category
         extend Lithic::Enum
 
@@ -191,6 +192,7 @@ module Lithic
           #   def self.values; end
         end
 
+        # @see Lithic::Models::ExternalPayment::Event#result
         module Result
           extend Lithic::Enum
 
@@ -204,6 +206,7 @@ module Lithic
           #   def self.values; end
         end
 
+        # @see Lithic::Models::ExternalPayment::Event#type
         module Type
           extend Lithic::Enum
 
@@ -236,6 +239,7 @@ module Lithic
         end
       end
 
+      # @see Lithic::Models::ExternalPayment#payment_type
       module PaymentType
         extend Lithic::Enum
 
@@ -249,6 +253,7 @@ module Lithic
         #   def self.values; end
       end
 
+      # @see Lithic::Models::ExternalPayment#result
       module Result
         extend Lithic::Enum
 
@@ -262,6 +267,7 @@ module Lithic
         #   def self.values; end
       end
 
+      # @see Lithic::Models::ExternalPayment#status
       module Status
         extend Lithic::Enum
 

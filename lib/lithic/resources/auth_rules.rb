@@ -6,6 +6,8 @@ module Lithic
       # @return [Lithic::Resources::AuthRules::V2]
       attr_reader :v2
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module Events
+      # @see Lithic::Resources::Events::Subscriptions#update
       class SubscriptionUpdateParams < Lithic::BaseModel
         # @!parse
         #   extend Lithic::Type::RequestParameters::Converter

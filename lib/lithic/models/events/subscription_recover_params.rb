@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module Events
+      # @see Lithic::Resources::Events::Subscriptions#recover
       class SubscriptionRecoverParams < Lithic::BaseModel
         # @!parse
         #   extend Lithic::Type::RequestParameters::Converter

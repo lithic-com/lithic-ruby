@@ -187,6 +187,7 @@ module Lithic
 
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
+        # @see Lithic::Models::FinancialAccounts::Statement#account_standing
         class AccountStanding < Lithic::BaseModel
           # @!attribute consecutive_full_payments_made
           #   Number of consecutive full payments made
@@ -263,6 +264,7 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
+          # @see Lithic::Models::FinancialAccounts::Statement::AccountStanding#financial_account_state
           class FinancialAccountState < Lithic::BaseModel
             # @!attribute status
             #   Status of the financial account
@@ -290,6 +292,8 @@ module Lithic
             # def initialize: (Hash | Lithic::BaseModel) -> void
 
             # Status of the financial account
+            #
+            # @see Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState#status
             module Status
               extend Lithic::Enum
 
@@ -306,6 +310,8 @@ module Lithic
             end
 
             # Reason for the financial account status change
+            #
+            # @see Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState#status_change_reason
             module StatusChangeReason
               extend Lithic::Enum
 
@@ -323,6 +329,7 @@ module Lithic
             end
           end
 
+          # @see Lithic::Models::FinancialAccounts::Statement::AccountStanding#period_state
           module PeriodState
             extend Lithic::Enum
 
@@ -338,6 +345,7 @@ module Lithic
           end
         end
 
+        # @see Lithic::Models::FinancialAccounts::Statement#amount_due
         class AmountDue < Lithic::BaseModel
           # @!attribute amount
           #   Payment due at the end of the billing period in cents. Negative amount indicates
@@ -363,6 +371,7 @@ module Lithic
           # def initialize: (Hash | Lithic::BaseModel) -> void
         end
 
+        # @see Lithic::Models::FinancialAccounts::Statement#period_totals
         class PeriodTotals < Lithic::BaseModel
           # @!attribute balance_transfers
           #   Opening balance transferred from previous account in cents
@@ -421,6 +430,7 @@ module Lithic
           # def initialize: (Hash | Lithic::BaseModel) -> void
         end
 
+        # @see Lithic::Models::FinancialAccounts::Statement#statement_type
         module StatementType
           extend Lithic::Enum
 
@@ -435,6 +445,7 @@ module Lithic
           #   def self.values; end
         end
 
+        # @see Lithic::Models::FinancialAccounts::Statement#ytd_totals
         class YtdTotals < Lithic::BaseModel
           # @!attribute balance_transfers
           #   Opening balance transferred from previous account in cents
@@ -493,6 +504,7 @@ module Lithic
           # def initialize: (Hash | Lithic::BaseModel) -> void
         end
 
+        # @see Lithic::Models::FinancialAccounts::Statement#interest_details
         class InterestDetails < Lithic::BaseModel
           # @!attribute actual_interest_charged
           #
@@ -557,6 +569,7 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
+          # @see Lithic::Models::FinancialAccounts::Statement::InterestDetails#daily_balance_amounts
           class DailyBalanceAmounts < Lithic::BaseModel
             # @!attribute balance_transfers
             #
@@ -583,6 +596,7 @@ module Lithic
             # def initialize: (Hash | Lithic::BaseModel) -> void
           end
 
+          # @see Lithic::Models::FinancialAccounts::Statement::InterestDetails#effective_apr
           class EffectiveApr < Lithic::BaseModel
             # @!attribute balance_transfers
             #
@@ -609,6 +623,7 @@ module Lithic
             # def initialize: (Hash | Lithic::BaseModel) -> void
           end
 
+          # @see Lithic::Models::FinancialAccounts::Statement::InterestDetails#interest_calculation_method
           module InterestCalculationMethod
             extend Lithic::Enum
 
@@ -622,6 +637,7 @@ module Lithic
             #   def self.values; end
           end
 
+          # @see Lithic::Models::FinancialAccounts::Statement::InterestDetails#interest_for_period
           class InterestForPeriod < Lithic::BaseModel
             # @!attribute balance_transfers
             #

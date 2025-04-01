@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module CreditProducts
+      # @see Lithic::Resources::CreditProducts::ExtendedCredit#retrieve
       class ExtendedCreditRetrieveParams < Lithic::BaseModel
         # @!parse
         #   extend Lithic::Type::RequestParameters::Converter

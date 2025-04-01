@@ -88,6 +88,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::AccountHolderCreateResponse]
+      #
+      # @see Lithic::Models::AccountHolderCreateParams
       def create(params)
         parsed, options = Lithic::Models::AccountHolderCreateParams.dump_request(params)
         @client.request(
@@ -109,6 +111,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::AccountHolder]
+      #
+      # @see Lithic::Models::AccountHolderRetrieveParams
       def retrieve(account_holder_token, params = {})
         @client.request(
           method: :get,
@@ -193,6 +197,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse, Lithic::Models::AccountHolderUpdateResponse::PatchResponse]
+      #
+      # @see Lithic::Models::AccountHolderUpdateParams
       def update(account_holder_token, params = {})
         parsed, options = Lithic::Models::AccountHolderUpdateParams.dump_request(params)
         @client.request(
@@ -242,6 +248,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::SinglePage<Lithic::Models::AccountHolder>]
+      #
+      # @see Lithic::Models::AccountHolderListParams
       def list(params = {})
         parsed, options = Lithic::Models::AccountHolderListParams.dump_request(params)
         @client.request(
@@ -277,6 +285,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::AccountHolderListDocumentsResponse]
+      #
+      # @see Lithic::Models::AccountHolderListDocumentsParams
       def list_documents(account_holder_token, params = {})
         @client.request(
           method: :get,
@@ -310,6 +320,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Document]
+      #
+      # @see Lithic::Models::AccountHolderRetrieveDocumentParams
       def retrieve_document(document_token, params)
         parsed, options = Lithic::Models::AccountHolderRetrieveDocumentParams.dump_request(params)
         account_holder_token =
@@ -340,6 +352,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Document]
+      #
+      # @see Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams
       def simulate_enrollment_document_review(params)
         parsed, options =
           Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams.dump_request(params)
@@ -367,6 +381,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse]
+      #
+      # @see Lithic::Models::AccountHolderSimulateEnrollmentReviewParams
       def simulate_enrollment_review(params = {})
         parsed, options = Lithic::Models::AccountHolderSimulateEnrollmentReviewParams.dump_request(params)
         @client.request(
@@ -408,6 +424,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Document]
+      #
+      # @see Lithic::Models::AccountHolderUploadDocumentParams
       def upload_document(account_holder_token, params)
         parsed, options = Lithic::Models::AccountHolderUploadDocumentParams.dump_request(params)
         @client.request(
@@ -419,6 +437,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client
