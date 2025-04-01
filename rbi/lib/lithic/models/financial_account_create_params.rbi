@@ -41,7 +41,14 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(nickname:, type:, account_token: nil, is_for_benefit_of: nil, idempotency_key: nil, request_options: {})
+      def self.new(
+        nickname:,
+        type:,
+        account_token: nil,
+        is_for_benefit_of: nil,
+        idempotency_key: nil,
+        request_options: {}
+      )
       end
 
       sig do

@@ -58,7 +58,15 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(token:, account_token:, status:, status_reasons:, created: nil, external_id: nil, required_documents: nil)
+      def self.new(
+        token:,
+        account_token:,
+        status:,
+        status_reasons:,
+        created: nil,
+        external_id: nil,
+        required_documents: nil
+      )
       end
 
       sig do

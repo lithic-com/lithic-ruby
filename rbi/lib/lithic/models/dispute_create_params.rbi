@@ -43,7 +43,14 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(amount:, reason:, transaction_token:, customer_filed_date: nil, customer_note: nil, request_options: {})
+      def self.new(
+        amount:,
+        reason:,
+        transaction_token:,
+        customer_filed_date: nil,
+        customer_note: nil,
+        request_options: {}
+      )
       end
 
       sig do
