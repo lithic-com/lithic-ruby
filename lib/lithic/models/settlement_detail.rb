@@ -191,6 +191,8 @@ module Lithic
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
       # Card network where the transaction took place.
+      #
+      # @see Lithic::Models::SettlementDetail#network
       module Network
         extend Lithic::Enum
 
@@ -207,6 +209,7 @@ module Lithic
         #   def self.values; end
       end
 
+      # @see Lithic::Models::SettlementDetail#other_fees_details
       class OtherFeesDetails < Lithic::BaseModel
         # @!attribute [r] isa
         #
@@ -228,6 +231,8 @@ module Lithic
       end
 
       # The type of settlement record.
+      #
+      # @see Lithic::Models::SettlementDetail#type
       module Type
         extend Lithic::Enum
 

@@ -79,6 +79,8 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
         # Reason for the financial account being marked as Charged Off
+        #
+        # @see Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig#charged_off_reason
         module ChargedOffReason
           extend Lithic::Enum
 
@@ -93,6 +95,8 @@ module Lithic
         end
 
         # State of the financial account
+        #
+        # @see Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig#financial_account_state
         module FinancialAccountState
           extend Lithic::Enum
 

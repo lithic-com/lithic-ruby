@@ -31,6 +31,8 @@ module Lithic
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
       # Request Result
+      #
+      # @see Lithic::Models::PaymentSimulateReturnResponse#result
       module Result
         extend Lithic::Enum
 

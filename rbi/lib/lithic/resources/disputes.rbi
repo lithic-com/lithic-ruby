@@ -194,6 +194,7 @@ module Lithic
       def retrieve_evidence(evidence_token, dispute_token:, request_options: {})
       end
 
+      # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
       def self.new(client:)
       end

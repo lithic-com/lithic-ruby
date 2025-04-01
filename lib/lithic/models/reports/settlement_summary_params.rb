@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module Reports
+      # @see Lithic::Resources::Reports::Settlement#summary
       class SettlementSummaryParams < Lithic::BaseModel
         # @!parse
         #   extend Lithic::Type::RequestParameters::Converter

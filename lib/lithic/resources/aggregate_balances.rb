@@ -13,6 +13,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::SinglePage<Lithic::Models::AggregateBalance>]
+      #
+      # @see Lithic::Models::AggregateBalanceListParams
       def list(params = {})
         parsed, options = Lithic::Models::AggregateBalanceListParams.dump_request(params)
         @client.request(
@@ -25,6 +27,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

@@ -240,6 +240,8 @@ module Lithic
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
       # Owner Type
+      #
+      # @see Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse#owner_type
       module OwnerType
         extend Lithic::Enum
 
@@ -254,6 +256,8 @@ module Lithic
       end
 
       # Account State
+      #
+      # @see Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse#state
       module State
         extend Lithic::Enum
 
@@ -269,6 +273,8 @@ module Lithic
       end
 
       # Account Type
+      #
+      # @see Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse#type
       module Type
         extend Lithic::Enum
 
@@ -283,6 +289,8 @@ module Lithic
       end
 
       # Verification Method
+      #
+      # @see Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse#verification_method
       module VerificationMethod
         extend Lithic::Enum
 
@@ -299,6 +307,8 @@ module Lithic
       end
 
       # Verification State
+      #
+      # @see Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse#verification_state
       module VerificationState
         extend Lithic::Enum
 

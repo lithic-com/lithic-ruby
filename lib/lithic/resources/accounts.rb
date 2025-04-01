@@ -12,6 +12,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Account]
+      #
+      # @see Lithic::Models::AccountRetrieveParams
       def retrieve(account_token, params = {})
         @client.request(
           method: :get,
@@ -53,6 +55,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Account]
+      #
+      # @see Lithic::Models::AccountUpdateParams
       def update(account_token, params = {})
         parsed, options = Lithic::Models::AccountUpdateParams.dump_request(params)
         @client.request(
@@ -85,6 +89,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::CursorPage<Lithic::Models::Account>]
+      #
+      # @see Lithic::Models::AccountListParams
       def list(params = {})
         parsed, options = Lithic::Models::AccountListParams.dump_request(params)
         @client.request(
@@ -110,6 +116,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::AccountSpendLimits]
+      #
+      # @see Lithic::Models::AccountRetrieveSpendLimitsParams
       def retrieve_spend_limits(account_token, params = {})
         @client.request(
           method: :get,
@@ -119,6 +127,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

@@ -74,6 +74,7 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
+      # @see Lithic::Models::KYBBusinessEntity#address
       class Address < Lithic::BaseModel
         # @!attribute address1
         #   Valid deliverable address (no PO boxes).

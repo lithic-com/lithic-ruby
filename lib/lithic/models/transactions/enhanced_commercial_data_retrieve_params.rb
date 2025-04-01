@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module Transactions
+      # @see Lithic::Resources::Transactions::EnhancedCommercialData#retrieve
       class EnhancedCommercialDataRetrieveParams < Lithic::BaseModel
         # @!parse
         #   extend Lithic::Type::RequestParameters::Converter

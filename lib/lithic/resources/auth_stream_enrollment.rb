@@ -15,6 +15,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::AuthStreamSecret]
+      #
+      # @see Lithic::Models::AuthStreamEnrollmentRetrieveSecretParams
       def retrieve_secret(params = {})
         @client.request(
           method: :get,
@@ -34,6 +36,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
+      #
+      # @see Lithic::Models::AuthStreamEnrollmentRotateSecretParams
       def rotate_secret(params = {})
         @client.request(
           method: :post,
@@ -43,6 +47,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

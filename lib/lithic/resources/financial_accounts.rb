@@ -35,6 +35,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::FinancialAccount]
+      #
+      # @see Lithic::Models::FinancialAccountCreateParams
       def create(params)
         parsed, options = Lithic::Models::FinancialAccountCreateParams.dump_request(params)
         header_params = [:"Idempotency-Key"]
@@ -57,6 +59,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::FinancialAccount]
+      #
+      # @see Lithic::Models::FinancialAccountRetrieveParams
       def retrieve(financial_account_token, params = {})
         @client.request(
           method: :get,
@@ -77,6 +81,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::FinancialAccount]
+      #
+      # @see Lithic::Models::FinancialAccountUpdateParams
       def update(financial_account_token, params = {})
         parsed, options = Lithic::Models::FinancialAccountUpdateParams.dump_request(params)
         @client.request(
@@ -102,6 +108,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::SinglePage<Lithic::Models::FinancialAccount>]
+      #
+      # @see Lithic::Models::FinancialAccountListParams
       def list(params = {})
         parsed, options = Lithic::Models::FinancialAccountListParams.dump_request(params)
         @client.request(
@@ -127,6 +135,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::FinancialAccount]
+      #
+      # @see Lithic::Models::FinancialAccountUpdateStatusParams
       def update_status(financial_account_token, params)
         parsed, options = Lithic::Models::FinancialAccountUpdateStatusParams.dump_request(params)
         @client.request(
@@ -138,6 +148,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

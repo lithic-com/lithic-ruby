@@ -6,6 +6,8 @@ module Lithic
       # @return [Lithic::Resources::Reports::Settlement]
       attr_reader :settlement
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

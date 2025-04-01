@@ -6,6 +6,7 @@ module Lithic
       sig { returns(Lithic::Resources::AuthRules::V2) }
       attr_reader :v2
 
+      # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
       def self.new(client:)
       end

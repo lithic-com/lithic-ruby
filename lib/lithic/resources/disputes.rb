@@ -20,6 +20,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Dispute]
+      #
+      # @see Lithic::Models::DisputeCreateParams
       def create(params)
         parsed, options = Lithic::Models::DisputeCreateParams.dump_request(params)
         @client.request(
@@ -40,6 +42,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Dispute]
+      #
+      # @see Lithic::Models::DisputeRetrieveParams
       def retrieve(dispute_token, params = {})
         @client.request(
           method: :get,
@@ -66,6 +70,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Dispute]
+      #
+      # @see Lithic::Models::DisputeUpdateParams
       def update(dispute_token, params = {})
         parsed, options = Lithic::Models::DisputeUpdateParams.dump_request(params)
         @client.request(
@@ -102,6 +108,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::CursorPage<Lithic::Models::Dispute>]
+      #
+      # @see Lithic::Models::DisputeListParams
       def list(params = {})
         parsed, options = Lithic::Models::DisputeListParams.dump_request(params)
         @client.request(
@@ -123,6 +131,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Dispute]
+      #
+      # @see Lithic::Models::DisputeDeleteParams
       def delete(dispute_token, params = {})
         @client.request(
           method: :delete,
@@ -144,6 +154,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::DisputeEvidence]
+      #
+      # @see Lithic::Models::DisputeDeleteEvidenceParams
       def delete_evidence(evidence_token, params)
         parsed, options = Lithic::Models::DisputeDeleteEvidenceParams.dump_request(params)
         dispute_token =
@@ -173,6 +185,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::DisputeEvidence]
+      #
+      # @see Lithic::Models::DisputeInitiateEvidenceUploadParams
       def initiate_evidence_upload(dispute_token, params = {})
         parsed, options = Lithic::Models::DisputeInitiateEvidenceUploadParams.dump_request(params)
         @client.request(
@@ -207,6 +221,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::CursorPage<Lithic::Models::DisputeEvidence>]
+      #
+      # @see Lithic::Models::DisputeListEvidencesParams
       def list_evidences(dispute_token, params = {})
         parsed, options = Lithic::Models::DisputeListEvidencesParams.dump_request(params)
         @client.request(
@@ -230,6 +246,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::DisputeEvidence]
+      #
+      # @see Lithic::Models::DisputeRetrieveEvidenceParams
       def retrieve_evidence(evidence_token, params)
         parsed, options = Lithic::Models::DisputeRetrieveEvidenceParams.dump_request(params)
         dispute_token =
@@ -244,6 +262,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

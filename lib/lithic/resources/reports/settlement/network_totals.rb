@@ -14,6 +14,8 @@ module Lithic
           #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse]
+          #
+          # @see Lithic::Models::Reports::Settlement::NetworkTotalRetrieveParams
           def retrieve(token, params = {})
             @client.request(
               method: :get,
@@ -57,6 +59,8 @@ module Lithic
           #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Lithic::CursorPage<Lithic::Models::Reports::Settlement::NetworkTotalListResponse>]
+          #
+          # @see Lithic::Models::Reports::Settlement::NetworkTotalListParams
           def list(params = {})
             parsed, options = Lithic::Models::Reports::Settlement::NetworkTotalListParams.dump_request(params)
             @client.request(
@@ -69,6 +73,8 @@ module Lithic
             )
           end
 
+          # @api private
+          #
           # @param client [Lithic::Client]
           def initialize(client:)
             @client = client

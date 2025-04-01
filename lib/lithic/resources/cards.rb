@@ -123,6 +123,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Card]
+      #
+      # @see Lithic::Models::CardCreateParams
       def create(params)
         parsed, options = Lithic::Models::CardCreateParams.dump_request(params)
         @client.request(
@@ -143,6 +145,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Card]
+      #
+      # @see Lithic::Models::CardRetrieveParams
       def retrieve(card_token, params = {})
         @client.request(
           method: :get,
@@ -207,6 +211,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Card]
+      #
+      # @see Lithic::Models::CardUpdateParams
       def update(card_token, params = {})
         parsed, options = Lithic::Models::CardUpdateParams.dump_request(params)
         @client.request(
@@ -243,6 +249,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::CursorPage<Lithic::Models::Card>]
+      #
+      # @see Lithic::Models::CardListParams
       def list(params = {})
         parsed, options = Lithic::Models::CardListParams.dump_request(params)
         @client.request(
@@ -294,6 +302,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Card]
+      #
+      # @see Lithic::Models::CardConvertPhysicalParams
       def convert_physical(card_token, params)
         parsed, options = Lithic::Models::CardConvertPhysicalParams.dump_request(params)
         @client.request(
@@ -342,6 +352,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [String]
+      #
+      # @see Lithic::Models::CardEmbedParams
       def embed(params)
         parsed, options = Lithic::Models::CardEmbedParams.dump_request(params)
         @client.request(
@@ -391,6 +403,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::CardProvisionResponse]
+      #
+      # @see Lithic::Models::CardProvisionParams
       def provision(card_token, params = {})
         parsed, options = Lithic::Models::CardProvisionParams.dump_request(params)
         @client.request(
@@ -436,6 +450,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Card]
+      #
+      # @see Lithic::Models::CardReissueParams
       def reissue(card_token, params = {})
         parsed, options = Lithic::Models::CardReissueParams.dump_request(params)
         @client.request(
@@ -488,6 +504,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Card]
+      #
+      # @see Lithic::Models::CardRenewParams
       def renew(card_token, params)
         parsed, options = Lithic::Models::CardRenewParams.dump_request(params)
         @client.request(
@@ -511,6 +529,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::CardSpendLimits]
+      #
+      # @see Lithic::Models::CardRetrieveSpendLimitsParams
       def retrieve_spend_limits(card_token, params = {})
         @client.request(
           method: :get,
@@ -533,6 +553,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::Card]
+      #
+      # @see Lithic::Models::CardSearchByPanParams
       def search_by_pan(params)
         parsed, options = Lithic::Models::CardSearchByPanParams.dump_request(params)
         @client.request(
@@ -544,6 +566,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

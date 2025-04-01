@@ -31,6 +31,7 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
+          # @see Lithic::Models::AuthRules::V2::BacktestResults#results
           class Results < Lithic::BaseModel
             # @!attribute current_version
             #
@@ -54,6 +55,7 @@ module Lithic
 
             # def initialize: (Hash | Lithic::BaseModel) -> void
 
+            # @see Lithic::Models::AuthRules::V2::BacktestResults::Results#current_version
             class CurrentVersion < Lithic::BaseModel
               # @!attribute [r] approved
               #   The total number of historical transactions approved by this rule during the
@@ -155,6 +157,7 @@ module Lithic
               end
             end
 
+            # @see Lithic::Models::AuthRules::V2::BacktestResults::Results#draft_version
             class DraftVersion < Lithic::BaseModel
               # @!attribute [r] approved
               #   The total number of historical transactions approved by this rule during the
@@ -257,6 +260,7 @@ module Lithic
             end
           end
 
+          # @see Lithic::Models::AuthRules::V2::BacktestResults#simulation_parameters
           class SimulationParameters < Lithic::BaseModel
             # @!attribute [r] auth_rule_token
             #   Auth Rule Token

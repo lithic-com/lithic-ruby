@@ -188,6 +188,8 @@ module Lithic
       #
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #     program.
+      #
+      # @see Lithic::Models::Transfer#category
       module Category
         extend Lithic::Enum
 
@@ -265,6 +267,8 @@ module Lithic
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
+        #
+        # @see Lithic::Models::Transfer::Event#result
         module Result
           extend Lithic::Enum
 
@@ -278,6 +282,7 @@ module Lithic
           #   def self.values; end
         end
 
+        # @see Lithic::Models::Transfer::Event#type
         module Type
           extend Lithic::Enum
 
@@ -356,6 +361,8 @@ module Lithic
 
       # APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
+      #
+      # @see Lithic::Models::Transfer#result
       module Result
         extend Lithic::Enum
 
@@ -376,6 +383,8 @@ module Lithic
       #   - `PENDING` - The transfer is pending release from a hold.
       #   - `SETTLED` - The transfer is completed.
       #   - `VOIDED` - The transfer was reversed before it settled.
+      #
+      # @see Lithic::Models::Transfer#status
       module Status
         extend Lithic::Enum
 
