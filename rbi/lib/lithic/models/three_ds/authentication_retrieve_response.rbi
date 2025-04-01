@@ -517,7 +517,14 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(address1: nil, address2: nil, address3: nil, city: nil, country: nil, postal_code: nil)
+            def self.new(
+              address1: nil,
+              address2: nil,
+              address3: nil,
+              city: nil,
+              country: nil,
+              postal_code: nil
+            )
             end
 
             sig do
@@ -575,7 +582,14 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(address1: nil, address2: nil, address3: nil, city: nil, country: nil, postal_code: nil)
+            def self.new(
+              address1: nil,
+              address2: nil,
+              address3: nil,
+              city: nil,
+              country: nil,
+              postal_code: nil
+            )
             end
 
             sig do
@@ -1362,7 +1376,14 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(ip: nil, java_enabled: nil, javascript_enabled: nil, language: nil, time_zone: nil, user_agent: nil)
+          def self.new(
+            ip: nil,
+            java_enabled: nil,
+            javascript_enabled: nil,
+            language: nil,
+            time_zone: nil,
+            user_agent: nil
+          )
           end
 
           sig do

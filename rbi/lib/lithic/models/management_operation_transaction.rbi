@@ -184,7 +184,17 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(token:, amount:, created:, detailed_results:, effective_date:, memo:, result:, type:, subtype: nil)
+        def self.new(
+          token:,
+          amount:,
+          created:,
+          detailed_results:,
+          effective_date:,
+          memo:,
+          result:,
+          type:,
+          subtype: nil
+        )
         end
 
         sig do
