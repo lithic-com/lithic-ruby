@@ -57,7 +57,14 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
+        def self.new(
+          begin_: nil,
+          end_: nil,
+          ending_before: nil,
+          page_size: nil,
+          starting_after: nil,
+          request_options: {}
+        )
         end
 
         sig do

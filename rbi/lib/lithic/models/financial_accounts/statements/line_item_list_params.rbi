@@ -45,7 +45,13 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(financial_account_token:, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
+          def self.new(
+            financial_account_token:,
+            ending_before: nil,
+            page_size: nil,
+            starting_after: nil,
+            request_options: {}
+          )
           end
 
           sig do
