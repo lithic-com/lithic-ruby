@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Tokenizations#simulate
     class TokenizationSimulateResponse < Lithic::BaseModel
       # @!attribute [r] data
       #

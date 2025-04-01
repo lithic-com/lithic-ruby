@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Disputes#delete_evidence
     class DisputeEvidence < Lithic::BaseModel
       # @!attribute token
       #   Globally unique identifier.

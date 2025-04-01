@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module FinancialAccounts
+      # @see Lithic::Resources::FinancialAccounts::CreditConfiguration#retrieve
       class FinancialAccountCreditConfig < Lithic::BaseModel
         # @!attribute account_token
         #   Globally unique identifier for the account

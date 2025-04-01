@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module ThreeDS
+      # @see Lithic::Resources::ThreeDS::Authentication#retrieve
       class AuthenticationRetrieveResponse < Lithic::BaseModel
         # @!attribute token
         #   Globally unique identifier for the 3DS authentication.

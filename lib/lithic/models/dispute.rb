@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Disputes#create
     class Dispute < Lithic::BaseModel
       # @!attribute token
       #   Globally unique identifier.

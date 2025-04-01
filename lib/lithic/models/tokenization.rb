@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Tokenizations#list
     class Tokenization < Lithic::BaseModel
       # @!attribute token
       #   Globally unique identifier for a Tokenization

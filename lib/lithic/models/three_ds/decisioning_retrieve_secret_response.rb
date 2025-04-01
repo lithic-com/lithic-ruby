@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module ThreeDS
+      # @see Lithic::Resources::ThreeDS::Decisioning#retrieve_secret
       class DecisioningRetrieveSecretResponse < Lithic::BaseModel
         # @!attribute [r] secret
         #   The 3DS Decisioning HMAC secret

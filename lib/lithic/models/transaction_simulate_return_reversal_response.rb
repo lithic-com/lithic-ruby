@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Transactions#simulate_return_reversal
     class TransactionSimulateReturnReversalResponse < Lithic::BaseModel
       # @!attribute [r] debugging_request_id
       #   Debugging request ID to share with Lithic Support team.

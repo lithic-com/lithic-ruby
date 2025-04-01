@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module AuthRules
+      # @see Lithic::Resources::AuthRules::V2#report
       class V2ReportResponse < Lithic::BaseModel
         # @!attribute [r] report_token
         #

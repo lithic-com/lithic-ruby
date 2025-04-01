@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module Events
+      # @see Lithic::Resources::Events::Subscriptions#retrieve_secret
       class SubscriptionRetrieveSecretResponse < Lithic::BaseModel
         # @!attribute [r] secret
         #   The secret for the event subscription.

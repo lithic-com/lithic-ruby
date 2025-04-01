@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Tokenizations#retrieve
     class TokenizationRetrieveResponse < Lithic::BaseModel
       # @!attribute [r] data
       #

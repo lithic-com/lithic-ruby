@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::ExternalPayments#create
     class ExternalPayment < Lithic::BaseModel
       # @!attribute token
       #

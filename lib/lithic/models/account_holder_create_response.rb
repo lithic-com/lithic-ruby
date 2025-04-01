@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::AccountHolders#create
     class AccountHolderCreateResponse < Lithic::BaseModel
       # @!attribute token
       #   Globally unique identifier for the account holder.

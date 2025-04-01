@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::BookTransfers#create
     class BookTransferResponse < Lithic::BaseModel
       # @!attribute token
       #   Customer-provided token that will serve as an idempotency token. This token will

@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Transactions#retrieve
     class Transaction < Lithic::BaseModel
       # @!attribute token
       #   Globally unique identifier.

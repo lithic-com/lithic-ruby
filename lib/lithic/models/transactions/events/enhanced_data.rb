@@ -4,6 +4,7 @@ module Lithic
   module Models
     module Transactions
       module Events
+        # @see Lithic::Resources::Transactions::Events::EnhancedCommercialData#retrieve
         class EnhancedData < Lithic::BaseModel
           # @!attribute token
           #   A unique identifier for the enhanced commercial data.
