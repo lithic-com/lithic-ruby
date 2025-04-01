@@ -112,7 +112,7 @@ module Lithic
       def retrieve(account_holder_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/account_holders/%0s", account_holder_token],
+          path: ["v1/account_holders/%1$s", account_holder_token],
           model: Lithic::Models::AccountHolder,
           options: params[:request_options]
         )
@@ -197,7 +197,7 @@ module Lithic
         parsed, options = Lithic::Models::AccountHolderUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/account_holders/%0s", account_holder_token],
+          path: ["v1/account_holders/%1$s", account_holder_token],
           body: parsed,
           model: Lithic::Models::AccountHolderUpdateResponse,
           options: options
@@ -280,7 +280,7 @@ module Lithic
       def list_documents(account_holder_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/account_holders/%0s/documents", account_holder_token],
+          path: ["v1/account_holders/%1$s/documents", account_holder_token],
           model: Lithic::Models::AccountHolderListDocumentsResponse,
           options: params[:request_options]
         )
@@ -318,7 +318,7 @@ module Lithic
           end
         @client.request(
           method: :get,
-          path: ["v1/account_holders/%0s/documents/%1s", account_holder_token, document_token],
+          path: ["v1/account_holders/%1$s/documents/%2$s", account_holder_token, document_token],
           model: Lithic::Models::Document,
           options: options
         )
@@ -412,7 +412,7 @@ module Lithic
         parsed, options = Lithic::Models::AccountHolderUploadDocumentParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/account_holders/%0s/documents", account_holder_token],
+          path: ["v1/account_holders/%1$s/documents", account_holder_token],
           body: parsed,
           model: Lithic::Models::Document,
           options: options

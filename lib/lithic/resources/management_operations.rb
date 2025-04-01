@@ -53,7 +53,7 @@ module Lithic
       def retrieve(management_operation_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/management_operations/%0s", management_operation_token],
+          path: ["v1/management_operations/%1$s", management_operation_token],
           model: Lithic::Models::ManagementOperationTransaction,
           options: params[:request_options]
         )
@@ -118,7 +118,7 @@ module Lithic
         parsed, options = Lithic::Models::ManagementOperationReverseParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/management_operations/%0s/reverse", management_operation_token],
+          path: ["v1/management_operations/%1$s/reverse", management_operation_token],
           body: parsed,
           model: Lithic::Models::ManagementOperationTransaction,
           options: options

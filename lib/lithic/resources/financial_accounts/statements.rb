@@ -26,7 +26,7 @@ module Lithic
             end
           @client.request(
             method: :get,
-            path: ["v1/financial_accounts/%0s/statements/%1s", financial_account_token, statement_token],
+            path: ["v1/financial_accounts/%1$s/statements/%2$s", financial_account_token, statement_token],
             model: Lithic::Models::FinancialAccounts::Statement,
             options: options
           )
@@ -61,7 +61,7 @@ module Lithic
           parsed, options = Lithic::Models::FinancialAccounts::StatementListParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["v1/financial_accounts/%0s/statements", financial_account_token],
+            path: ["v1/financial_accounts/%1$s/statements", financial_account_token],
             query: parsed,
             page: Lithic::CursorPage,
             model: Lithic::Models::FinancialAccounts::Statement,

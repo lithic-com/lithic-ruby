@@ -19,7 +19,7 @@ module Lithic
           parsed, options = Lithic::Models::ExternalBankAccounts::MicroDepositCreateParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["v1/external_bank_accounts/%0s/micro_deposits", external_bank_account_token],
+            path: ["v1/external_bank_accounts/%1$s/micro_deposits", external_bank_account_token],
             body: parsed,
             model: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse,
             options: options

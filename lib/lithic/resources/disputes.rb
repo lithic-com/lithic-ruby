@@ -43,7 +43,7 @@ module Lithic
       def retrieve(dispute_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/disputes/%0s", dispute_token],
+          path: ["v1/disputes/%1$s", dispute_token],
           model: Lithic::Models::Dispute,
           options: params[:request_options]
         )
@@ -70,7 +70,7 @@ module Lithic
         parsed, options = Lithic::Models::DisputeUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/disputes/%0s", dispute_token],
+          path: ["v1/disputes/%1$s", dispute_token],
           body: parsed,
           model: Lithic::Models::Dispute,
           options: options
@@ -126,7 +126,7 @@ module Lithic
       def delete(dispute_token, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/disputes/%0s", dispute_token],
+          path: ["v1/disputes/%1$s", dispute_token],
           model: Lithic::Models::Dispute,
           options: params[:request_options]
         )
@@ -152,7 +152,7 @@ module Lithic
           end
         @client.request(
           method: :delete,
-          path: ["v1/disputes/%0s/evidences/%1s", dispute_token, evidence_token],
+          path: ["v1/disputes/%1$s/evidences/%2$s", dispute_token, evidence_token],
           model: Lithic::Models::DisputeEvidence,
           options: options
         )
@@ -177,7 +177,7 @@ module Lithic
         parsed, options = Lithic::Models::DisputeInitiateEvidenceUploadParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/disputes/%0s/evidences", dispute_token],
+          path: ["v1/disputes/%1$s/evidences", dispute_token],
           body: parsed,
           model: Lithic::Models::DisputeEvidence,
           options: options
@@ -211,7 +211,7 @@ module Lithic
         parsed, options = Lithic::Models::DisputeListEvidencesParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["v1/disputes/%0s/evidences", dispute_token],
+          path: ["v1/disputes/%1$s/evidences", dispute_token],
           query: parsed,
           page: Lithic::CursorPage,
           model: Lithic::Models::DisputeEvidence,
@@ -238,7 +238,7 @@ module Lithic
           end
         @client.request(
           method: :get,
-          path: ["v1/disputes/%0s/evidences/%1s", dispute_token, evidence_token],
+          path: ["v1/disputes/%1$s/evidences/%2$s", dispute_token, evidence_token],
           model: Lithic::Models::DisputeEvidence,
           options: options
         )

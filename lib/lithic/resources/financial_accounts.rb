@@ -60,7 +60,7 @@ module Lithic
       def retrieve(financial_account_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/financial_accounts/%0s", financial_account_token],
+          path: ["v1/financial_accounts/%1$s", financial_account_token],
           model: Lithic::Models::FinancialAccount,
           options: params[:request_options]
         )
@@ -81,7 +81,7 @@ module Lithic
         parsed, options = Lithic::Models::FinancialAccountUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/financial_accounts/%0s", financial_account_token],
+          path: ["v1/financial_accounts/%1$s", financial_account_token],
           body: parsed,
           model: Lithic::Models::FinancialAccount,
           options: options
@@ -131,7 +131,7 @@ module Lithic
         parsed, options = Lithic::Models::FinancialAccountUpdateStatusParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/financial_accounts/%0s/update_status", financial_account_token],
+          path: ["v1/financial_accounts/%1$s/update_status", financial_account_token],
           body: parsed,
           model: Lithic::Models::FinancialAccount,
           options: options

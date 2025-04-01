@@ -23,7 +23,7 @@ module Lithic
             end
           @client.request(
             method: :get,
-            path: ["v1/financial_accounts/%0s/loan_tapes/%1s", financial_account_token, loan_tape_token],
+            path: ["v1/financial_accounts/%1$s/loan_tapes/%2$s", financial_account_token, loan_tape_token],
             model: Lithic::Models::FinancialAccounts::LoanTape,
             options: options
           )
@@ -56,7 +56,7 @@ module Lithic
           parsed, options = Lithic::Models::FinancialAccounts::LoanTapeListParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["v1/financial_accounts/%0s/loan_tapes", financial_account_token],
+            path: ["v1/financial_accounts/%1$s/loan_tapes", financial_account_token],
             query: parsed,
             page: Lithic::CursorPage,
             model: Lithic::Models::FinancialAccounts::LoanTape,

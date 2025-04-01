@@ -15,7 +15,7 @@ module Lithic
       def retrieve(account_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/accounts/%0s", account_token],
+          path: ["v1/accounts/%1$s", account_token],
           model: Lithic::Models::Account,
           options: params[:request_options]
         )
@@ -57,7 +57,7 @@ module Lithic
         parsed, options = Lithic::Models::AccountUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/accounts/%0s", account_token],
+          path: ["v1/accounts/%1$s", account_token],
           body: parsed,
           model: Lithic::Models::Account,
           options: options
@@ -113,7 +113,7 @@ module Lithic
       def retrieve_spend_limits(account_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/accounts/%0s/spend_limits", account_token],
+          path: ["v1/accounts/%1$s/spend_limits", account_token],
           model: Lithic::Models::AccountSpendLimits,
           options: params[:request_options]
         )
