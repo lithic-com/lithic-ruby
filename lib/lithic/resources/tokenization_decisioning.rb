@@ -10,9 +10,9 @@ module Lithic
       #   [this page](https://docs.lithic.com/docs/events-api#verifying-webhooks) for more
       #   detail about verifying Tokenization Decisioning requests.
       #
-      # @param params [Lithic::Models::TokenizationDecisioningRetrieveSecretParams, Hash{Symbol=>Object}] .
+      # @overload retrieve_secret(request_options: {})
       #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::TokenizationSecret]
       #
@@ -30,9 +30,9 @@ module Lithic
       #   Decisioning secret key will be deactivated 24 hours after a successful request
       #   to this endpoint.
       #
-      # @param params [Lithic::Models::TokenizationDecisioningRotateSecretParams, Hash{Symbol=>Object}] .
+      # @overload rotate_secret(request_options: {})
       #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::TokenizationDecisioningRotateSecretResponse]
       #

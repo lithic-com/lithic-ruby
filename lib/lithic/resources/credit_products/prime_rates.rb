@@ -6,15 +6,12 @@ module Lithic
       class PrimeRates
         # Post Credit Product Prime Rate
         #
-        # @param credit_product_token [String] Globally unique identifier for credit products.
+        # @overload create(credit_product_token, effective_date:, rate:, request_options: {})
         #
-        # @param params [Lithic::Models::CreditProducts::PrimeRateCreateParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Date] :effective_date Date the rate goes into effect
-        #
-        #   @option params [String] :rate The rate in decimal format
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param credit_product_token [String]
+        # @param effective_date [Date]
+        # @param rate [String]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
         #
@@ -32,15 +29,12 @@ module Lithic
 
         # Get Credit Product Prime Rates
         #
-        # @param credit_product_token [String] Globally unique identifier for credit products.
+        # @overload retrieve(credit_product_token, ending_before: nil, starting_after: nil, request_options: {})
         #
-        # @param params [Lithic::Models::CreditProducts::PrimeRateRetrieveParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Date] :ending_before The effective date that the prime rates ends before
-        #
-        #   @option params [Date] :starting_after The effective date that the prime rate starts after
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param credit_product_token [String]
+        # @param ending_before [Date]
+        # @param starting_after [Date]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::CreditProducts::PrimeRateRetrieveResponse]
         #

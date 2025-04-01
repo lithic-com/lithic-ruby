@@ -7,11 +7,10 @@ module Lithic
         # Get all L2/L3 enhanced commercial data associated with a transaction. Not
         #   available in sandbox.
         #
-        # @param transaction_token [String] The token of the transaction that the enhanced data is associated with.
+        # @overload retrieve(transaction_token, request_options: {})
         #
-        # @param params [Lithic::Models::Transactions::EnhancedCommercialDataRetrieveParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param transaction_token [String]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::Transactions::EnhancedCommercialDataRetrieveResponse]
         #

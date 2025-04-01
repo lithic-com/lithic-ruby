@@ -6,11 +6,10 @@ module Lithic
       class CreditConfiguration
         # Get an Account's credit configuration
         #
-        # @param financial_account_token [String] Globally unique identifier for financial account.
+        # @overload retrieve(financial_account_token, request_options: {})
         #
-        # @param params [Lithic::Models::FinancialAccounts::CreditConfigurationRetrieveParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param financial_account_token [String]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig]
         #
@@ -26,19 +25,14 @@ module Lithic
 
         # Update an account's credit configuration
         #
-        # @param financial_account_token [String] Globally unique identifier for financial account.
+        # @overload update(financial_account_token, credit_limit: nil, credit_product_token: nil, external_bank_account_token: nil, tier: nil, request_options: {})
         #
-        # @param params [Lithic::Models::FinancialAccounts::CreditConfigurationUpdateParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Integer] :credit_limit
-        #
-        #   @option params [String] :credit_product_token Globally unique identifier for the credit product
-        #
-        #   @option params [String] :external_bank_account_token
-        #
-        #   @option params [String] :tier Tier to assign to a financial account
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param financial_account_token [String]
+        # @param credit_limit [Integer]
+        # @param credit_product_token [String]
+        # @param external_bank_account_token [String]
+        # @param tier [String]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig]
         #

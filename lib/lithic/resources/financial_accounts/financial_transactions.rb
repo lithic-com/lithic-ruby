@@ -6,13 +6,11 @@ module Lithic
       class FinancialTransactions
         # Get the financial transaction for the provided token.
         #
-        # @param financial_transaction_token [String] Globally unique identifier for financial transaction token.
+        # @overload retrieve(financial_transaction_token, financial_account_token:, request_options: {})
         #
-        # @param params [Lithic::Models::FinancialAccounts::FinancialTransactionRetrieveParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [String] :financial_account_token Globally unique identifier for financial account.
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param financial_transaction_token [String]
+        # @param financial_account_token [String]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::FinancialTransaction]
         #
@@ -38,29 +36,17 @@ module Lithic
 
         # List the financial transactions for a given financial account.
         #
-        # @param financial_account_token [String] Globally unique identifier for financial account.
+        # @overload list(financial_account_token, begin_: nil, category: nil, end_: nil, ending_before: nil, result: nil, starting_after: nil, status: nil, request_options: {})
         #
-        # @param params [Lithic::Models::FinancialAccounts::FinancialTransactionListParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Time] :begin_ Date string in RFC 3339 format. Only entries created after the specified time
-        #     will be included. UTC time zone.
-        #
-        #   @option params [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category] :category Financial Transaction category to be returned.
-        #
-        #   @option params [Time] :end_ Date string in RFC 3339 format. Only entries created before the specified time
-        #     will be included. UTC time zone.
-        #
-        #   @option params [String] :ending_before A cursor representing an item's token before which a page of results should end.
-        #     Used to retrieve the previous page of results before this item.
-        #
-        #   @option params [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result] :result Financial Transaction result to be returned.
-        #
-        #   @option params [String] :starting_after A cursor representing an item's token after which a page of results should
-        #     begin. Used to retrieve the next page of results after this item.
-        #
-        #   @option params [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status] :status Financial Transaction status to be returned.
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param financial_account_token [String]
+        # @param begin_ [Time]
+        # @param category [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category]
+        # @param end_ [Time]
+        # @param ending_before [String]
+        # @param result [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result]
+        # @param starting_after [String]
+        # @param status [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::SinglePage<Lithic::Models::FinancialTransaction>]
         #

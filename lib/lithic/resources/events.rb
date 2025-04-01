@@ -8,11 +8,10 @@ module Lithic
 
       # Get an event.
       #
+      # @overload retrieve(event_token, request_options: {})
+      #
       # @param event_token [String]
-      #
-      # @param params [Lithic::Models::EventRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Event]
       #
@@ -28,27 +27,16 @@ module Lithic
 
       # List all events.
       #
-      # @param params [Lithic::Models::EventListParams, Hash{Symbol=>Object}] .
+      # @overload list(begin_: nil, end_: nil, ending_before: nil, event_types: nil, page_size: nil, starting_after: nil, with_content: nil, request_options: {})
       #
-      #   @option params [Time] :begin_ Date string in RFC 3339 format. Only entries created after the specified time
-      #     will be included. UTC time zone.
-      #
-      #   @option params [Time] :end_ Date string in RFC 3339 format. Only entries created before the specified time
-      #     will be included. UTC time zone.
-      #
-      #   @option params [String] :ending_before A cursor representing an item's token before which a page of results should end.
-      #     Used to retrieve the previous page of results before this item.
-      #
-      #   @option params [Array<Symbol, Lithic::Models::EventListParams::EventType>] :event_types Event types to filter events by.
-      #
-      #   @option params [Integer] :page_size Page size (for pagination).
-      #
-      #   @option params [String] :starting_after A cursor representing an item's token after which a page of results should
-      #     begin. Used to retrieve the next page of results after this item.
-      #
-      #   @option params [Boolean] :with_content Whether to include the event payload content in the response.
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param begin_ [Time]
+      # @param end_ [Time]
+      # @param ending_before [String]
+      # @param event_types [Array<Symbol, Lithic::Models::EventListParams::EventType>]
+      # @param page_size [Integer]
+      # @param starting_after [String]
+      # @param with_content [Boolean]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::CursorPage<Lithic::Models::Event>]
       #
@@ -67,27 +55,16 @@ module Lithic
 
       # List all the message attempts for a given event.
       #
+      # @overload list_attempts(event_token, begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, status: nil, request_options: {})
+      #
       # @param event_token [String]
-      #
-      # @param params [Lithic::Models::EventListAttemptsParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Time] :begin_ Date string in RFC 3339 format. Only entries created after the specified time
-      #     will be included. UTC time zone.
-      #
-      #   @option params [Time] :end_ Date string in RFC 3339 format. Only entries created before the specified time
-      #     will be included. UTC time zone.
-      #
-      #   @option params [String] :ending_before A cursor representing an item's token before which a page of results should end.
-      #     Used to retrieve the previous page of results before this item.
-      #
-      #   @option params [Integer] :page_size Page size (for pagination).
-      #
-      #   @option params [String] :starting_after A cursor representing an item's token after which a page of results should
-      #     begin. Used to retrieve the next page of results after this item.
-      #
-      #   @option params [Symbol, Lithic::Models::EventListAttemptsParams::Status] :status
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param begin_ [Time]
+      # @param end_ [Time]
+      # @param ending_before [String]
+      # @param page_size [Integer]
+      # @param starting_after [String]
+      # @param status [Symbol, Lithic::Models::EventListAttemptsParams::Status]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::CursorPage<Lithic::Models::MessageAttempt>]
       #

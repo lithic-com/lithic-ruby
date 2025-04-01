@@ -5,18 +5,13 @@ module Lithic
     class Balances
       # Get the balances for a program, business, or a given end-user account
       #
-      # @param params [Lithic::Models::BalanceListParams, Hash{Symbol=>Object}] .
+      # @overload list(account_token: nil, balance_date: nil, business_account_token: nil, financial_account_type: nil, request_options: {})
       #
-      #   @option params [String] :account_token List balances for all financial accounts of a given account_token.
-      #
-      #   @option params [Time] :balance_date UTC date and time of the balances to retrieve. Defaults to latest available
-      #     balances
-      #
-      #   @option params [String] :business_account_token List balances for all financial accounts of a given business_account_token.
-      #
-      #   @option params [Symbol, Lithic::Models::BalanceListParams::FinancialAccountType] :financial_account_type List balances for a given Financial Account type.
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_token [String]
+      # @param balance_date [Time]
+      # @param business_account_token [String]
+      # @param financial_account_type [Symbol, Lithic::Models::BalanceListParams::FinancialAccountType]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::SinglePage<Lithic::Models::Balance>]
       #

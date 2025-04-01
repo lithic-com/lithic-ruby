@@ -20,19 +20,14 @@ module Lithic
 
       # Create a new financial account
       #
-      # @param params [Lithic::Models::FinancialAccountCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(nickname:, type:, account_token: nil, is_for_benefit_of: nil, idempotency_key: nil, request_options: {})
       #
-      #   @option params [String] :nickname Body param:
-      #
-      #   @option params [Symbol, Lithic::Models::FinancialAccountCreateParams::Type] :type Body param:
-      #
-      #   @option params [String] :account_token Body param:
-      #
-      #   @option params [Boolean] :is_for_benefit_of Body param:
-      #
-      #   @option params [String] :idempotency_key Header param:
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param nickname [String]
+      # @param type [Symbol, Lithic::Models::FinancialAccountCreateParams::Type]
+      # @param account_token [String]
+      # @param is_for_benefit_of [Boolean]
+      # @param idempotency_key [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::FinancialAccount]
       #
@@ -52,11 +47,10 @@ module Lithic
 
       # Get a financial account
       #
+      # @overload retrieve(financial_account_token, request_options: {})
+      #
       # @param financial_account_token [String]
-      #
-      # @param params [Lithic::Models::FinancialAccountRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::FinancialAccount]
       #
@@ -72,13 +66,11 @@ module Lithic
 
       # Update a financial account
       #
+      # @overload update(financial_account_token, nickname: nil, request_options: {})
+      #
       # @param financial_account_token [String]
-      #
-      # @param params [Lithic::Models::FinancialAccountUpdateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :nickname
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param nickname [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::FinancialAccount]
       #
@@ -97,15 +89,12 @@ module Lithic
       # Retrieve information on your financial accounts including routing and account
       #   number.
       #
-      # @param params [Lithic::Models::FinancialAccountListParams, Hash{Symbol=>Object}] .
+      # @overload list(account_token: nil, business_account_token: nil, type: nil, request_options: {})
       #
-      #   @option params [String] :account_token List financial accounts for a given account_token or business_account_token
-      #
-      #   @option params [String] :business_account_token List financial accounts for a given business_account_token
-      #
-      #   @option params [Symbol, Lithic::Models::FinancialAccountListParams::Type] :type List financial accounts of a given type
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_token [String]
+      # @param business_account_token [String]
+      # @param type [Symbol, Lithic::Models::FinancialAccountListParams::Type]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::SinglePage<Lithic::Models::FinancialAccount>]
       #
@@ -124,15 +113,12 @@ module Lithic
 
       # Update financial account status
       #
-      # @param financial_account_token [String] Globally unique identifier for financial account.
+      # @overload update_status(financial_account_token, status:, status_change_reason:, request_options: {})
       #
-      # @param params [Lithic::Models::FinancialAccountUpdateStatusParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status] :status Status of the financial account
-      #
-      #   @option params [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason, nil] :status_change_reason Reason for the financial account status change
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param financial_account_token [String]
+      # @param status [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status]
+      # @param status_change_reason [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason, nil]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::FinancialAccount]
       #
