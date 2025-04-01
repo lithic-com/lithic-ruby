@@ -4,6 +4,7 @@ module Lithic
   module Models
     module Transactions
       module Events
+        # @see Lithic::Resources::Transactions::Events::EnhancedCommercialData#retrieve
         class EnhancedCommercialDataRetrieveParams < Lithic::BaseModel
           # @!parse
           #   extend Lithic::Type::RequestParameters::Converter

@@ -14,6 +14,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::Transactions::EnhancedCommercialDataRetrieveResponse]
+        #
+        # @see Lithic::Models::Transactions::EnhancedCommercialDataRetrieveParams
         def retrieve(transaction_token, params = {})
           @client.request(
             method: :get,
@@ -23,6 +25,8 @@ module Lithic
           )
         end
 
+        # @api private
+        #
         # @param client [Lithic::Client]
         def initialize(client:)
           @client = client

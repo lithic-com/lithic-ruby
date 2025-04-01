@@ -111,6 +111,7 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
+      # @see Lithic::Models::Account#spend_limit
       class SpendLimit < Lithic::BaseModel
         # @!attribute daily
         #   Daily spend limit (in cents).
@@ -157,6 +158,8 @@ module Lithic
       #     risk/compliance reasons. Please contact
       #     [support@lithic.com](mailto:support@lithic.com) if you believe this was in
       #     error.
+      #
+      # @see Lithic::Models::Account#state
       module State
         extend Lithic::Enum
 
@@ -171,6 +174,7 @@ module Lithic
         #   def self.values; end
       end
 
+      # @see Lithic::Models::Account#account_holder
       class AccountHolder < Lithic::BaseModel
         # @!attribute token
         #   Globally unique identifier for the account holder.
@@ -210,6 +214,8 @@ module Lithic
       end
 
       # @deprecated
+      #
+      # @see Lithic::Models::Account#verification_address
       class VerificationAddress < Lithic::BaseModel
         # @!attribute address1
         #   Valid deliverable address (no PO boxes).

@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module FinancialAccounts
+      # @see Lithic::Resources::FinancialAccounts::Balances#list
       class BalanceListParams < Lithic::BaseModel
         # @!parse
         #   extend Lithic::Type::RequestParameters::Converter

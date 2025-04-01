@@ -81,6 +81,8 @@ module Lithic
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
       # The status of the event attempt.
+      #
+      # @see Lithic::Models::MessageAttempt#status
       module Status
         extend Lithic::Enum
 

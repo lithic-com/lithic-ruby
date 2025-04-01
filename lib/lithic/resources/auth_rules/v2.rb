@@ -28,6 +28,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::AuthRules::V2CreateResponse]
+        #
+        # @see Lithic::Models::AuthRules::V2CreateParams
         def create(params)
           parsed, options = Lithic::Models::AuthRules::V2CreateParams.dump_request(params)
           @client.request(
@@ -48,6 +50,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::AuthRules::V2RetrieveResponse]
+        #
+        # @see Lithic::Models::AuthRules::V2RetrieveParams
         def retrieve(auth_rule_token, params = {})
           @client.request(
             method: :get,
@@ -86,6 +90,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::AuthRules::V2UpdateResponse]
+        #
+        # @see Lithic::Models::AuthRules::V2UpdateParams
         def update(auth_rule_token, params = {})
           parsed, options = Lithic::Models::AuthRules::V2UpdateParams.dump_request(params)
           @client.request(
@@ -116,6 +122,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::CursorPage<Lithic::Models::AuthRules::V2ListResponse>]
+        #
+        # @see Lithic::Models::AuthRules::V2ListParams
         def list(params = {})
           parsed, options = Lithic::Models::AuthRules::V2ListParams.dump_request(params)
           @client.request(
@@ -137,6 +145,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [nil]
+        #
+        # @see Lithic::Models::AuthRules::V2DeleteParams
         def delete(auth_rule_token, params = {})
           @client.request(
             method: :delete,
@@ -166,6 +176,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::AuthRules::V2ApplyResponse]
+        #
+        # @see Lithic::Models::AuthRules::V2ApplyParams
         def apply(auth_rule_token, params)
           parsed, options = Lithic::Models::AuthRules::V2ApplyParams.dump_request(params)
           @client.request(
@@ -191,6 +203,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::AuthRules::V2DraftResponse]
+        #
+        # @see Lithic::Models::AuthRules::V2DraftParams
         def draft(auth_rule_token, params = {})
           parsed, options = Lithic::Models::AuthRules::V2DraftParams.dump_request(params)
           @client.request(
@@ -212,6 +226,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::AuthRules::V2PromoteResponse]
+        #
+        # @see Lithic::Models::AuthRules::V2PromoteParams
         def promote(auth_rule_token, params = {})
           @client.request(
             method: :post,
@@ -280,6 +296,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::AuthRules::V2ReportResponse]
+        #
+        # @see Lithic::Models::AuthRules::V2ReportParams
         def report(auth_rule_token, params = {})
           @client.request(
             method: :post,
@@ -289,6 +307,8 @@ module Lithic
           )
         end
 
+        # @api private
+        #
         # @param client [Lithic::Client]
         def initialize(client:)
           @client = client

@@ -238,6 +238,8 @@ module Lithic
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
       # Account State
+      #
+      # @see Lithic::Models::ExternalBankAccountRetryPrenoteResponse#state
       module State
         extend Lithic::Enum
 
@@ -253,6 +255,8 @@ module Lithic
       end
 
       # Account Type
+      #
+      # @see Lithic::Models::ExternalBankAccountRetryPrenoteResponse#type
       module Type
         extend Lithic::Enum
 
@@ -267,6 +271,8 @@ module Lithic
       end
 
       # Verification State
+      #
+      # @see Lithic::Models::ExternalBankAccountRetryPrenoteResponse#verification_state
       module VerificationState
         extend Lithic::Enum
 

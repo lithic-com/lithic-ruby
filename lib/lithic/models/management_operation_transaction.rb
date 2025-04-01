@@ -108,6 +108,7 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
+      # @see Lithic::Models::ManagementOperationTransaction#category
       module Category
         extend Lithic::Enum
 
@@ -123,6 +124,7 @@ module Lithic
         #   def self.values; end
       end
 
+      # @see Lithic::Models::ManagementOperationTransaction#direction
       module Direction
         extend Lithic::Enum
 
@@ -214,6 +216,7 @@ module Lithic
           #   def self.values; end
         end
 
+        # @see Lithic::Models::ManagementOperationTransaction::Event#result
         module Result
           extend Lithic::Enum
 
@@ -227,6 +230,7 @@ module Lithic
           #   def self.values; end
         end
 
+        # @see Lithic::Models::ManagementOperationTransaction::Event#type
         module Type
           extend Lithic::Enum
 
@@ -254,6 +258,7 @@ module Lithic
         end
       end
 
+      # @see Lithic::Models::ManagementOperationTransaction#result
       module Result
         extend Lithic::Enum
 
@@ -267,6 +272,7 @@ module Lithic
         #   def self.values; end
       end
 
+      # @see Lithic::Models::ManagementOperationTransaction#status
       module Status
         extend Lithic::Enum
 

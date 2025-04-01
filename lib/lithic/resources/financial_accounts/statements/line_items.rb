@@ -25,6 +25,8 @@ module Lithic
           #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Lithic::CursorPage<Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data>]
+          #
+          # @see Lithic::Models::FinancialAccounts::Statements::LineItemListParams
           def list(statement_token, params)
             parsed, options = Lithic::Models::FinancialAccounts::Statements::LineItemListParams.dump_request(params)
             financial_account_token =
@@ -45,6 +47,8 @@ module Lithic
             )
           end
 
+          # @api private
+          #
           # @param client [Lithic::Client]
           def initialize(client:)
             @client = client

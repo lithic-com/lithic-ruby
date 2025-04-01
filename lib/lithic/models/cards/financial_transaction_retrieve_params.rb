@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module Cards
+      # @see Lithic::Resources::Cards::FinancialTransactions#retrieve
       class FinancialTransactionRetrieveParams < Lithic::BaseModel
         # @!parse
         #   extend Lithic::Type::RequestParameters::Converter

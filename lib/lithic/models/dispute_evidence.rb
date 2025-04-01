@@ -86,6 +86,8 @@ module Lithic
       #   - `PENDING` - Evidence is pending upload.
       #   - `REJECTED` - Evidence was rejected.
       #   - `UPLOADED` - Evidence was uploaded.
+      #
+      # @see Lithic::Models::DisputeEvidence#upload_status
       module UploadStatus
         extend Lithic::Enum
 

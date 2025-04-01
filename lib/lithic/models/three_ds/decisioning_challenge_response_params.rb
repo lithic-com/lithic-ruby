@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module ThreeDS
+      # @see Lithic::Resources::ThreeDS::Decisioning#challenge_response
       class DecisioningChallengeResponseParams < Lithic::Models::ThreeDS::ChallengeResponse
         # @!parse
         #   extend Lithic::Type::RequestParameters::Converter

@@ -103,6 +103,7 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
+      # @see Lithic::Models::FinancialAccount#credit_configuration
       class CreditConfiguration < Lithic::BaseModel
         # @!attribute charged_off_reason
         #   Reason for the financial account being marked as Charged Off
@@ -172,6 +173,8 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
 
         # Reason for the financial account being marked as Charged Off
+        #
+        # @see Lithic::Models::FinancialAccount::CreditConfiguration#charged_off_reason
         module ChargedOffReason
           extend Lithic::Enum
 
@@ -186,6 +189,8 @@ module Lithic
         end
 
         # State of the financial account
+        #
+        # @see Lithic::Models::FinancialAccount::CreditConfiguration#financial_account_state
         module FinancialAccountState
           extend Lithic::Enum
 
@@ -203,6 +208,8 @@ module Lithic
       end
 
       # Status of the financial account
+      #
+      # @see Lithic::Models::FinancialAccount#status
       module Status
         extend Lithic::Enum
 
@@ -218,6 +225,7 @@ module Lithic
         #   def self.values; end
       end
 
+      # @see Lithic::Models::FinancialAccount#type
       module Type
         extend Lithic::Enum
 
@@ -236,6 +244,8 @@ module Lithic
       end
 
       # Reason for the financial account status change
+      #
+      # @see Lithic::Models::FinancialAccount#status_change_reason
       module StatusChangeReason
         extend Lithic::Enum
 

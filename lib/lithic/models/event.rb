@@ -97,6 +97,8 @@ module Lithic
       #     wallet has been sent to the end user.
       #   - `digital_wallet.tokenization_updated` - Notification that a digital wallet
       #     tokenization's status has changed.
+      #
+      # @see Lithic::Models::Event#event_type
       module EventType
         extend Lithic::Enum
 

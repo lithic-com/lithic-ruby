@@ -128,6 +128,8 @@ module Lithic
       #   - `INTERNAL` - Transaction for internal adjustment.
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #     program.
+      #
+      # @see Lithic::Models::FinancialTransaction#category
       module Category
         extend Lithic::Enum
 
@@ -208,6 +210,8 @@ module Lithic
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
+        #
+        # @see Lithic::Models::FinancialTransaction::Event#result
         module Result
           extend Lithic::Enum
 
@@ -221,6 +225,7 @@ module Lithic
           #   def self.values; end
         end
 
+        # @see Lithic::Models::FinancialTransaction::Event#type
         module Type
           extend Lithic::Enum
 
@@ -299,6 +304,8 @@ module Lithic
 
       # APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
+      #
+      # @see Lithic::Models::FinancialTransaction#result
       module Result
         extend Lithic::Enum
 
@@ -321,6 +328,8 @@ module Lithic
       #   - `RETURNED` - The transaction has been returned.
       #   - `SETTLED` - The transaction is completed.
       #   - `VOIDED` - The transaction was voided. Card transaction only.
+      #
+      # @see Lithic::Models::FinancialTransaction#status
       module Status
         extend Lithic::Enum
 

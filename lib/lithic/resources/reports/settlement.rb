@@ -24,6 +24,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::CursorPage<Lithic::Models::SettlementDetail>]
+        #
+        # @see Lithic::Models::Reports::SettlementListDetailsParams
         def list_details(report_date, params = {})
           parsed, options = Lithic::Models::Reports::SettlementListDetailsParams.dump_request(params)
           @client.request(
@@ -45,6 +47,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::SettlementReport]
+        #
+        # @see Lithic::Models::Reports::SettlementSummaryParams
         def summary(report_date, params = {})
           @client.request(
             method: :get,
@@ -54,6 +58,8 @@ module Lithic
           )
         end
 
+        # @api private
+        #
         # @param client [Lithic::Client]
         def initialize(client:)
           @client = client

@@ -35,6 +35,7 @@ module Lithic
 
       # def initialize: (Hash | Lithic::BaseModel) -> void
 
+      # @see Lithic::Models::AccountSpendLimits#available_spend_limit
       class AvailableSpendLimit < Lithic::BaseModel
         # @!attribute [r] daily
         #   The available spend limit (in cents) relative to the daily limit configured on
@@ -79,6 +80,7 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
+      # @see Lithic::Models::AccountSpendLimits#spend_limit
       class SpendLimit < Lithic::BaseModel
         # @!attribute [r] daily
         #   The configured daily spend limit (in cents) on the Account.
@@ -120,6 +122,7 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
+      # @see Lithic::Models::AccountSpendLimits#spend_velocity
       class SpendVelocity < Lithic::BaseModel
         # @!attribute [r] daily
         #   Current daily spend velocity (in cents) on the Account. Present if daily spend

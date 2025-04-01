@@ -53,6 +53,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ExternalBankAccountCreateResponse]
+      #
+      # @see Lithic::Models::ExternalBankAccountCreateParams
       def create(params)
         parsed, options = Lithic::Models::ExternalBankAccountCreateParams.dump_request(params)
         @client.request(
@@ -73,6 +75,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ExternalBankAccountRetrieveResponse]
+      #
+      # @see Lithic::Models::ExternalBankAccountRetrieveParams
       def retrieve(external_bank_account_token, params = {})
         @client.request(
           method: :get,
@@ -110,6 +114,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ExternalBankAccountUpdateResponse]
+      #
+      # @see Lithic::Models::ExternalBankAccountUpdateParams
       def update(external_bank_account_token, params = {})
         parsed, options = Lithic::Models::ExternalBankAccountUpdateParams.dump_request(params)
         @client.request(
@@ -148,6 +154,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::CursorPage<Lithic::Models::ExternalBankAccountListResponse>]
+      #
+      # @see Lithic::Models::ExternalBankAccountListParams
       def list(params = {})
         parsed, options = Lithic::Models::ExternalBankAccountListParams.dump_request(params)
         @client.request(
@@ -171,6 +179,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse]
+      #
+      # @see Lithic::Models::ExternalBankAccountRetryMicroDepositsParams
       def retry_micro_deposits(external_bank_account_token, params = {})
         parsed, options = Lithic::Models::ExternalBankAccountRetryMicroDepositsParams.dump_request(params)
         @client.request(
@@ -193,6 +203,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::ExternalBankAccountRetryPrenoteResponse]
+      #
+      # @see Lithic::Models::ExternalBankAccountRetryPrenoteParams
       def retry_prenote(external_bank_account_token, params = {})
         parsed, options = Lithic::Models::ExternalBankAccountRetryPrenoteParams.dump_request(params)
         @client.request(
@@ -204,6 +216,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client

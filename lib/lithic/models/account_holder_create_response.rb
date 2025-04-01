@@ -93,6 +93,8 @@ module Lithic
       #   Note:
       #
       #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
+      #
+      # @see Lithic::Models::AccountHolderCreateResponse#status
       module Status
         extend Lithic::Enum
 

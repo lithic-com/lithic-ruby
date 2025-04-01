@@ -9,6 +9,7 @@ module Lithic
       sig { returns(Lithic::Resources::ThreeDS::Decisioning) }
       attr_reader :decisioning
 
+      # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
       def self.new(client:)
       end

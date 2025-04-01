@@ -13,6 +13,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse]
+        #
+        # @see Lithic::Models::ThreeDS::AuthenticationRetrieveParams
         def retrieve(three_ds_authentication_token, params = {})
           @client.request(
             method: :get,
@@ -41,6 +43,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::ThreeDS::AuthenticationSimulateResponse]
+        #
+        # @see Lithic::Models::ThreeDS::AuthenticationSimulateParams
         def simulate(params)
           parsed, options = Lithic::Models::ThreeDS::AuthenticationSimulateParams.dump_request(params)
           @client.request(
@@ -67,6 +71,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [nil]
+        #
+        # @see Lithic::Models::ThreeDS::AuthenticationSimulateOtpEntryParams
         def simulate_otp_entry(params)
           parsed, options = Lithic::Models::ThreeDS::AuthenticationSimulateOtpEntryParams.dump_request(params)
           @client.request(
@@ -78,6 +84,8 @@ module Lithic
           )
         end
 
+        # @api private
+        #
         # @param client [Lithic::Client]
         def initialize(client:)
           @client = client

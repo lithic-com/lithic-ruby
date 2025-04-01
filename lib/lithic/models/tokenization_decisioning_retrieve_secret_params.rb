@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::TokenizationDecisioning#retrieve_secret
     class TokenizationDecisioningRetrieveSecretParams < Lithic::BaseModel
       # @!parse
       #   extend Lithic::Type::RequestParameters::Converter

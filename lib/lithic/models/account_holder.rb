@@ -415,6 +415,7 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
+      # @see Lithic::Models::AccountHolder#business_entity
       class BusinessEntity < Lithic::BaseModel
         # @!attribute address
         #   Business's physical address - PO boxes, UPS drops, and FedEx drops are not
@@ -495,6 +496,7 @@ module Lithic
         # def initialize: (Hash | Lithic::BaseModel) -> void
       end
 
+      # @see Lithic::Models::AccountHolder#control_person
       class ControlPerson < Lithic::BaseModel
         # @!attribute address
         #   Individual's current address
@@ -560,6 +562,8 @@ module Lithic
       end
 
       # The type of KYC exemption for a KYC-Exempt Account Holder.
+      #
+      # @see Lithic::Models::AccountHolder#exemption_type
       module ExemptionType
         extend Lithic::Enum
 
@@ -573,6 +577,7 @@ module Lithic
         #   def self.values; end
       end
 
+      # @see Lithic::Models::AccountHolder#individual
       class Individual < Lithic::BaseModel
         # @!attribute address
         #   Individual's current address
@@ -640,6 +645,8 @@ module Lithic
       #   Note:
       #
       #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
+      #
+      # @see Lithic::Models::AccountHolder#status
       module Status
         extend Lithic::Enum
 
@@ -682,6 +689,8 @@ module Lithic
       #   attribute will be present. If the type is "BUSINESS" then the "business_entity",
       #   "control_person", "beneficial_owner_individuals", "beneficial_owner_entities",
       #   "nature_of_business", and "website_url" attributes will be present.
+      #
+      # @see Lithic::Models::AccountHolder#user_type
       module UserType
         extend Lithic::Enum
 
@@ -695,6 +704,7 @@ module Lithic
         #   def self.values; end
       end
 
+      # @see Lithic::Models::AccountHolder#verification_application
       class VerificationApplication < Lithic::BaseModel
         # @!attribute [r] created
         #   Timestamp of when the application was created.
@@ -758,6 +768,8 @@ module Lithic
         #   Note:
         #
         #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
+        #
+        # @see Lithic::Models::AccountHolder::VerificationApplication#status
         module Status
           extend Lithic::Enum
 

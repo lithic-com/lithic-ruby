@@ -17,6 +17,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [nil]
+        #
+        # @see Lithic::Models::CreditProducts::PrimeRateCreateParams
         def create(credit_product_token, params)
           parsed, options = Lithic::Models::CreditProducts::PrimeRateCreateParams.dump_request(params)
           @client.request(
@@ -41,6 +43,8 @@ module Lithic
         #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Lithic::Models::CreditProducts::PrimeRateRetrieveResponse]
+        #
+        # @see Lithic::Models::CreditProducts::PrimeRateRetrieveParams
         def retrieve(credit_product_token, params = {})
           parsed, options = Lithic::Models::CreditProducts::PrimeRateRetrieveParams.dump_request(params)
           @client.request(
@@ -52,6 +56,8 @@ module Lithic
           )
         end
 
+        # @api private
+        #
         # @param client [Lithic::Client]
         def initialize(client:)
           @client = client

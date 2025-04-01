@@ -111,6 +111,7 @@ module Lithic
 
           # def initialize: (Hash | Lithic::BaseModel) -> void
 
+          # @see Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse#amounts
           class Amounts < Lithic::BaseModel
             # @!attribute gross_settlement
             #   Total settlement amount excluding interchange, in currency's smallest unit.
@@ -154,6 +155,8 @@ module Lithic
 
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
           #   INTERLINK.
+          #
+          # @see Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse#network
           module Network
             extend Lithic::Enum
 

@@ -31,6 +31,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::BookTransferResponse]
+      #
+      # @see Lithic::Models::BookTransferCreateParams
       def create(params)
         parsed, options = Lithic::Models::BookTransferCreateParams.dump_request(params)
         @client.request(
@@ -51,6 +53,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::BookTransferResponse]
+      #
+      # @see Lithic::Models::BookTransferRetrieveParams
       def retrieve(book_transfer_token, params = {})
         @client.request(
           method: :get,
@@ -94,6 +98,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::CursorPage<Lithic::Models::BookTransferResponse>]
+      #
+      # @see Lithic::Models::BookTransferListParams
       def list(params = {})
         parsed, options = Lithic::Models::BookTransferListParams.dump_request(params)
         @client.request(
@@ -117,6 +123,8 @@ module Lithic
       #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Lithic::Models::BookTransferResponse]
+      #
+      # @see Lithic::Models::BookTransferReverseParams
       def reverse(book_transfer_token, params = {})
         parsed, options = Lithic::Models::BookTransferReverseParams.dump_request(params)
         @client.request(
@@ -128,6 +136,8 @@ module Lithic
         )
       end
 
+      # @api private
+      #
       # @param client [Lithic::Client]
       def initialize(client:)
         @client = client
