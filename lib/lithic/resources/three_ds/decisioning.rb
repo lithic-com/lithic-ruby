@@ -6,16 +6,11 @@ module Lithic
       class Decisioning
         # Card program's response to a 3DS Challenge Request (CReq)
         #
-        # @param params [Lithic::Models::ThreeDS::DecisioningChallengeResponseParams, Hash{Symbol=>Object}] .
+        # @overload challenge_response(token:, challenge_response:, request_options: {})
         #
-        #   @option params [String] :token Globally unique identifier for the 3DS authentication. This token is sent as
-        #     part of the initial 3DS Decisioning Request and as part of the 3DS Challenge
-        #     Event in the [ThreeDSAuthentication](#/components/schemas/ThreeDSAuthentication)
-        #     object
-        #
-        #   @option params [Symbol, Lithic::Models::ThreeDS::ChallengeResult] :challenge_response Whether the Cardholder has Approved or Declined the issued Challenge
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param token [String]
+        # @param challenge_response [Symbol, Lithic::Models::ThreeDS::ChallengeResult]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
         #
@@ -38,9 +33,9 @@ module Lithic
         #   [this page](https://docs.lithic.com/docs/3ds-decisioning#3ds-decisioning-hmac-secrets)
         #   for more detail about verifying 3DS Decisioning requests.
         #
-        # @param params [Lithic::Models::ThreeDS::DecisioningRetrieveSecretParams, Hash{Symbol=>Object}] .
+        # @overload retrieve_secret(request_options: {})
         #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::ThreeDS::DecisioningRetrieveSecretResponse]
         #
@@ -59,9 +54,9 @@ module Lithic
         #   [`GET /three_ds_decisioning/secret`](https://docs.lithic.com/reference/getthreedsdecisioningsecret)
         #   request to retrieve the new secret key.
         #
-        # @param params [Lithic::Models::ThreeDS::DecisioningRotateSecretParams, Hash{Symbol=>Object}] .
+        # @overload rotate_secret(request_options: {})
         #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
         #

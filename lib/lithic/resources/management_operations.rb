@@ -5,29 +5,19 @@ module Lithic
     class ManagementOperations
       # Create management operation
       #
-      # @param params [Lithic::Models::ManagementOperationCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(amount:, category:, direction:, effective_date:, event_type:, financial_account_token:, token: nil, memo: nil, subtype: nil, user_defined_id: nil, request_options: {})
       #
-      #   @option params [Integer] :amount
-      #
-      #   @option params [Symbol, Lithic::Models::ManagementOperationCreateParams::Category] :category
-      #
-      #   @option params [Symbol, Lithic::Models::ManagementOperationCreateParams::Direction] :direction
-      #
-      #   @option params [Date] :effective_date
-      #
-      #   @option params [Symbol, Lithic::Models::ManagementOperationCreateParams::EventType] :event_type
-      #
-      #   @option params [String] :financial_account_token
-      #
-      #   @option params [String] :token
-      #
-      #   @option params [String] :memo
-      #
-      #   @option params [String] :subtype
-      #
-      #   @option params [String] :user_defined_id
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param amount [Integer]
+      # @param category [Symbol, Lithic::Models::ManagementOperationCreateParams::Category]
+      # @param direction [Symbol, Lithic::Models::ManagementOperationCreateParams::Direction]
+      # @param effective_date [Date]
+      # @param event_type [Symbol, Lithic::Models::ManagementOperationCreateParams::EventType]
+      # @param financial_account_token [String]
+      # @param token [String]
+      # @param memo [String]
+      # @param subtype [String]
+      # @param user_defined_id [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ManagementOperationTransaction]
       #
@@ -45,11 +35,10 @@ module Lithic
 
       # Get management operation
       #
-      # @param management_operation_token [String] Globally unique identifier for the management operation
+      # @overload retrieve(management_operation_token, request_options: {})
       #
-      # @param params [Lithic::Models::ManagementOperationRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param management_operation_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ManagementOperationTransaction]
       #
@@ -65,32 +54,18 @@ module Lithic
 
       # List management operations
       #
-      # @param params [Lithic::Models::ManagementOperationListParams, Hash{Symbol=>Object}] .
+      # @overload list(begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, starting_after: nil, status: nil, request_options: {})
       #
-      #   @option params [Time] :begin_ Date string in RFC 3339 format. Only entries created after the specified time
-      #     will be included. UTC time zone.
-      #
-      #   @option params [String] :business_account_token
-      #
-      #   @option params [Symbol, Lithic::Models::ManagementOperationListParams::Category] :category Management operation category to be returned.
-      #
-      #   @option params [Time] :end_ Date string in RFC 3339 format. Only entries created before the specified time
-      #     will be included. UTC time zone.
-      #
-      #   @option params [String] :ending_before A cursor representing an item's token before which a page of results should end.
-      #     Used to retrieve the previous page of results before this item.
-      #
-      #   @option params [String] :financial_account_token Globally unique identifier for the financial account. Accepted type dependent on
-      #     the program's use case.
-      #
-      #   @option params [Integer] :page_size Page size (for pagination).
-      #
-      #   @option params [String] :starting_after A cursor representing an item's token after which a page of results should
-      #     begin. Used to retrieve the next page of results after this item.
-      #
-      #   @option params [Symbol, Lithic::Models::ManagementOperationListParams::Status] :status Management operation status to be returned.
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param begin_ [Time]
+      # @param business_account_token [String]
+      # @param category [Symbol, Lithic::Models::ManagementOperationListParams::Category]
+      # @param end_ [Time]
+      # @param ending_before [String]
+      # @param financial_account_token [String]
+      # @param page_size [Integer]
+      # @param starting_after [String]
+      # @param status [Symbol, Lithic::Models::ManagementOperationListParams::Status]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::CursorPage<Lithic::Models::ManagementOperationTransaction>]
       #
@@ -109,15 +84,12 @@ module Lithic
 
       # Reverse a management operation
       #
-      # @param management_operation_token [String] Globally unique identifier for the management operation
+      # @overload reverse(management_operation_token, effective_date:, memo: nil, request_options: {})
       #
-      # @param params [Lithic::Models::ManagementOperationReverseParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Date] :effective_date
-      #
-      #   @option params [String] :memo
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param management_operation_token [String]
+      # @param effective_date [Date]
+      # @param memo [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ManagementOperationTransaction]
       #

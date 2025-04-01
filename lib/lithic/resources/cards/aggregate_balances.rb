@@ -6,13 +6,11 @@ module Lithic
       class AggregateBalances
         # Get the aggregated card balance across all end-user accounts.
         #
-        # @param params [Lithic::Models::Cards::AggregateBalanceListParams, Hash{Symbol=>Object}] .
+        # @overload list(account_token: nil, business_account_token: nil, request_options: {})
         #
-        #   @option params [String] :account_token Cardholder to retrieve aggregate balances for.
-        #
-        #   @option params [String] :business_account_token Business to retrieve aggregate balances for.
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param account_token [String]
+        # @param business_account_token [String]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::SinglePage<Lithic::Models::Cards::AggregateBalanceListResponse>]
         #

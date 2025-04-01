@@ -6,11 +6,10 @@ module Lithic
       class Authentication
         # Get 3DS Authentication by token
         #
-        # @param three_ds_authentication_token [String] 3DS Authentication Token
+        # @overload retrieve(three_ds_authentication_token, request_options: {})
         #
-        # @param params [Lithic::Models::ThreeDS::AuthenticationRetrieveParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param three_ds_authentication_token [String]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse]
         #
@@ -29,18 +28,13 @@ module Lithic
         #   authentications requires your customer decisioning endpoint to be set up
         #   properly (respond with a valid JSON).
         #
-        # @param params [Lithic::Models::ThreeDS::AuthenticationSimulateParams, Hash{Symbol=>Object}] .
+        # @overload simulate(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {})
         #
-        #   @option params [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant] :merchant
-        #
-        #   @option params [String] :pan Sixteen digit card number.
-        #
-        #   @option params [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction] :transaction
-        #
-        #   @option params [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck] :card_expiry_check When set will use the following values as part of the Simulated Authentication.
-        #     When not set defaults to MATCH
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param merchant [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant]
+        # @param pan [String]
+        # @param transaction [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction]
+        # @param card_expiry_check [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::ThreeDS::AuthenticationSimulateResponse]
         #
@@ -61,14 +55,11 @@ module Lithic
         #   challenge must precede. Only a single attempt is supported; upon entering OTP,
         #   the challenge is either approved or declined.
         #
-        # @param params [Lithic::Models::ThreeDS::AuthenticationSimulateOtpEntryParams, Hash{Symbol=>Object}] .
+        # @overload simulate_otp_entry(token:, otp:, request_options: {})
         #
-        #   @option params [String] :token A unique token returned as part of a /v1/three_ds_authentication/simulate call
-        #     that resulted in PENDING_CHALLENGE authentication result.
-        #
-        #   @option params [String] :otp The OTP entered by the cardholder
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param token [String]
+        # @param otp [String]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
         #

@@ -6,13 +6,11 @@ module Lithic
       class LoanTapes
         # Get a specific loan tape for a given financial account.
         #
-        # @param loan_tape_token [String] Globally unique identifier for loan tape.
+        # @overload retrieve(loan_tape_token, financial_account_token:, request_options: {})
         #
-        # @param params [Lithic::Models::FinancialAccounts::LoanTapeRetrieveParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [String] :financial_account_token Globally unique identifier for financial account.
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param loan_tape_token [String]
+        # @param financial_account_token [String]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::FinancialAccounts::LoanTape]
         #
@@ -33,25 +31,15 @@ module Lithic
 
         # List the loan tapes for a given financial account.
         #
-        # @param financial_account_token [String] Globally unique identifier for financial account.
+        # @overload list(financial_account_token, begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
         #
-        # @param params [Lithic::Models::FinancialAccounts::LoanTapeListParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Date] :begin_ Date string in RFC 3339 format. Only entries created after the specified date
-        #     will be included.
-        #
-        #   @option params [Date] :end_ Date string in RFC 3339 format. Only entries created before the specified date
-        #     will be included.
-        #
-        #   @option params [String] :ending_before A cursor representing an item's token before which a page of results should end.
-        #     Used to retrieve the previous page of results before this item.
-        #
-        #   @option params [Integer] :page_size Page size (for pagination).
-        #
-        #   @option params [String] :starting_after A cursor representing an item's token after which a page of results should
-        #     begin. Used to retrieve the next page of results after this item.
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param financial_account_token [String]
+        # @param begin_ [Date]
+        # @param end_ [Date]
+        # @param ending_before [String]
+        # @param page_size [Integer]
+        # @param starting_after [String]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::CursorPage<Lithic::Models::FinancialAccounts::LoanTape>]
         #

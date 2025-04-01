@@ -6,18 +6,13 @@ module Lithic
       class Subscriptions
         # Create a new event subscription.
         #
-        # @param params [Lithic::Models::Events::SubscriptionCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(url:, description: nil, disabled: nil, event_types: nil, request_options: {})
         #
-        #   @option params [String] :url URL to which event webhooks will be sent. URL must be a valid HTTPS address.
-        #
-        #   @option params [String] :description Event subscription description.
-        #
-        #   @option params [Boolean] :disabled Whether the event subscription is active (false) or inactive (true).
-        #
-        #   @option params [Array<Symbol, Lithic::Models::Events::SubscriptionCreateParams::EventType>] :event_types Indicates types of events that will be sent to this subscription. If left blank,
-        #     all types will be sent.
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param url [String]
+        # @param description [String]
+        # @param disabled [Boolean]
+        # @param event_types [Array<Symbol, Lithic::Models::Events::SubscriptionCreateParams::EventType>]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::EventSubscription]
         #
@@ -35,11 +30,10 @@ module Lithic
 
         # Get an event subscription.
         #
+        # @overload retrieve(event_subscription_token, request_options: {})
+        #
         # @param event_subscription_token [String]
-        #
-        # @param params [Lithic::Models::Events::SubscriptionRetrieveParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::EventSubscription]
         #
@@ -55,20 +49,14 @@ module Lithic
 
         # Update an event subscription.
         #
+        # @overload update(event_subscription_token, url:, description: nil, disabled: nil, event_types: nil, request_options: {})
+        #
         # @param event_subscription_token [String]
-        #
-        # @param params [Lithic::Models::Events::SubscriptionUpdateParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [String] :url URL to which event webhooks will be sent. URL must be a valid HTTPS address.
-        #
-        #   @option params [String] :description Event subscription description.
-        #
-        #   @option params [Boolean] :disabled Whether the event subscription is active (false) or inactive (true).
-        #
-        #   @option params [Array<Symbol, Lithic::Models::Events::SubscriptionUpdateParams::EventType>] :event_types Indicates types of events that will be sent to this subscription. If left blank,
-        #     all types will be sent.
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param url [String]
+        # @param description [String]
+        # @param disabled [Boolean]
+        # @param event_types [Array<Symbol, Lithic::Models::Events::SubscriptionUpdateParams::EventType>]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::EventSubscription]
         #
@@ -86,17 +74,12 @@ module Lithic
 
         # List all the event subscriptions.
         #
-        # @param params [Lithic::Models::Events::SubscriptionListParams, Hash{Symbol=>Object}] .
+        # @overload list(ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
         #
-        #   @option params [String] :ending_before A cursor representing an item's token before which a page of results should end.
-        #     Used to retrieve the previous page of results before this item.
-        #
-        #   @option params [Integer] :page_size Page size (for pagination).
-        #
-        #   @option params [String] :starting_after A cursor representing an item's token after which a page of results should
-        #     begin. Used to retrieve the next page of results after this item.
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param ending_before [String]
+        # @param page_size [Integer]
+        # @param starting_after [String]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::CursorPage<Lithic::Models::EventSubscription>]
         #
@@ -115,11 +98,10 @@ module Lithic
 
         # Delete an event subscription.
         #
+        # @overload delete(event_subscription_token, request_options: {})
+        #
         # @param event_subscription_token [String]
-        #
-        # @param params [Lithic::Models::Events::SubscriptionDeleteParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
         #
@@ -135,27 +117,16 @@ module Lithic
 
         # List all the message attempts for a given event subscription.
         #
+        # @overload list_attempts(event_subscription_token, begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, status: nil, request_options: {})
+        #
         # @param event_subscription_token [String]
-        #
-        # @param params [Lithic::Models::Events::SubscriptionListAttemptsParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Time] :begin_ Date string in RFC 3339 format. Only entries created after the specified time
-        #     will be included. UTC time zone.
-        #
-        #   @option params [Time] :end_ Date string in RFC 3339 format. Only entries created before the specified time
-        #     will be included. UTC time zone.
-        #
-        #   @option params [String] :ending_before A cursor representing an item's token before which a page of results should end.
-        #     Used to retrieve the previous page of results before this item.
-        #
-        #   @option params [Integer] :page_size Page size (for pagination).
-        #
-        #   @option params [String] :starting_after A cursor representing an item's token after which a page of results should
-        #     begin. Used to retrieve the next page of results after this item.
-        #
-        #   @option params [Symbol, Lithic::Models::Events::SubscriptionListAttemptsParams::Status] :status
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param begin_ [Time]
+        # @param end_ [Time]
+        # @param ending_before [String]
+        # @param page_size [Integer]
+        # @param starting_after [String]
+        # @param status [Symbol, Lithic::Models::Events::SubscriptionListAttemptsParams::Status]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::CursorPage<Lithic::Models::MessageAttempt>]
         #
@@ -174,17 +145,12 @@ module Lithic
 
         # Resend all failed messages since a given time.
         #
+        # @overload recover(event_subscription_token, begin_: nil, end_: nil, request_options: {})
+        #
         # @param event_subscription_token [String]
-        #
-        # @param params [Lithic::Models::Events::SubscriptionRecoverParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Time] :begin_ Date string in RFC 3339 format. Only entries created after the specified time
-        #     will be included. UTC time zone.
-        #
-        #   @option params [Time] :end_ Date string in RFC 3339 format. Only entries created before the specified time
-        #     will be included. UTC time zone.
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param begin_ [Time]
+        # @param end_ [Time]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
         #
@@ -206,17 +172,12 @@ module Lithic
         #   [Retry Schedule](https://docs.lithic.com/docs/events-api#retry-schedule) for
         #   details.
         #
+        # @overload replay_missing(event_subscription_token, begin_: nil, end_: nil, request_options: {})
+        #
         # @param event_subscription_token [String]
-        #
-        # @param params [Lithic::Models::Events::SubscriptionReplayMissingParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Time] :begin_ Date string in RFC 3339 format. Only entries created after the specified time
-        #     will be included. UTC time zone.
-        #
-        #   @option params [Time] :end_ Date string in RFC 3339 format. Only entries created before the specified time
-        #     will be included. UTC time zone.
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param begin_ [Time]
+        # @param end_ [Time]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
         #
@@ -234,11 +195,10 @@ module Lithic
 
         # Get the secret for an event subscription.
         #
+        # @overload retrieve_secret(event_subscription_token, request_options: {})
+        #
         # @param event_subscription_token [String]
-        #
-        # @param params [Lithic::Models::Events::SubscriptionRetrieveSecretParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::Events::SubscriptionRetrieveSecretResponse]
         #
@@ -255,11 +215,10 @@ module Lithic
         # Rotate the secret for an event subscription. The previous secret will be valid
         #   for the next 24 hours.
         #
+        # @overload rotate_secret(event_subscription_token, request_options: {})
+        #
         # @param event_subscription_token [String]
-        #
-        # @param params [Lithic::Models::Events::SubscriptionRotateSecretParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
         #
@@ -275,13 +234,11 @@ module Lithic
 
         # Send an example message for event.
         #
+        # @overload send_simulated_example(event_subscription_token, event_type: nil, request_options: {})
+        #
         # @param event_subscription_token [String]
-        #
-        # @param params [Lithic::Models::Events::SubscriptionSendSimulatedExampleParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType] :event_type Event type to send example message for.
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param event_type [Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
         #

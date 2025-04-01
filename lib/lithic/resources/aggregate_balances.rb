@@ -6,11 +6,10 @@ module Lithic
       # Get the aggregated balance across all end-user accounts by financial account
       #   type
       #
-      # @param params [Lithic::Models::AggregateBalanceListParams, Hash{Symbol=>Object}] .
+      # @overload list(financial_account_type: nil, request_options: {})
       #
-      #   @option params [Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType] :financial_account_type Get the aggregate balance for a given Financial Account type.
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param financial_account_type [Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::SinglePage<Lithic::Models::AggregateBalance>]
       #

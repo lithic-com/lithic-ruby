@@ -10,9 +10,9 @@ module Lithic
       #   [this page](https://docs.lithic.com/docs/auth-stream-access-asa#asa-webhook-verification)
       #   for more detail about verifying ASA webhooks.
       #
-      # @param params [Lithic::Models::AuthStreamEnrollmentRetrieveSecretParams, Hash{Symbol=>Object}] .
+      # @overload retrieve_secret(request_options: {})
       #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::AuthStreamSecret]
       #
@@ -31,9 +31,9 @@ module Lithic
       #   [`GET /auth_stream/secret`](https://docs.lithic.com/reference/getauthstreamsecret)
       #   request to retrieve the new secret key.
       #
-      # @param params [Lithic::Models::AuthStreamEnrollmentRotateSecretParams, Hash{Symbol=>Object}] .
+      # @overload rotate_secret(request_options: {})
       #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [nil]
       #

@@ -8,49 +8,27 @@ module Lithic
 
       # Creates an external bank account within a program or Lithic account.
       #
-      # @param params [Lithic::Models::ExternalBankAccountCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(account_number:, country:, currency:, financial_account_token:, owner:, owner_type:, routing_number:, type:, verification_method:, processor_token:, account_token: nil, address: nil, company_id: nil, dob: nil, doing_business_as: nil, name: nil, user_defined_id: nil, verification_enforcement: nil, request_options: {})
       #
-      #   @option params [String] :account_number Account Number
-      #
-      #   @option params [String] :country The country that the bank account is located in using ISO 3166-1. We will only
-      #     accept USA bank accounts e.g., USA
-      #
-      #   @option params [String] :currency currency of the external account 3-character alphabetic ISO 4217 code
-      #
-      #   @option params [String] :financial_account_token The financial account token of the operating account to fund the micro deposits
-      #
-      #   @option params [String] :owner Legal Name of the business or individual who owns the external account. This
-      #     will appear in statements
-      #
-      #   @option params [Symbol, Lithic::Models::OwnerType] :owner_type Owner Type
-      #
-      #   @option params [String] :routing_number Routing Number
-      #
-      #   @option params [Symbol, Lithic::Models::ExternalBankAccountCreateParams::Type] :type Account Type
-      #
-      #   @option params [Symbol, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod] :verification_method Verification Method
-      #
-      #   @option params [String] :processor_token
-      #
-      #   @option params [String] :account_token Indicates which Lithic account the external account is associated with. For
-      #     external accounts that are associated with the program, account_token field
-      #     returned will be null
-      #
-      #   @option params [Lithic::Models::ExternalBankAccountAddress] :address Address
-      #
-      #   @option params [String] :company_id Optional field that helps identify bank accounts in receipts
-      #
-      #   @option params [Date] :dob Date of Birth of the Individual that owns the external bank account
-      #
-      #   @option params [String] :doing_business_as Doing Business As
-      #
-      #   @option params [String] :name The nickname for this External Bank Account
-      #
-      #   @option params [String] :user_defined_id User Defined ID
-      #
-      #   @option params [Boolean] :verification_enforcement
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_number [String]
+      # @param country [String]
+      # @param currency [String]
+      # @param financial_account_token [String]
+      # @param owner [String]
+      # @param owner_type [Symbol, Lithic::Models::OwnerType]
+      # @param routing_number [String]
+      # @param type [Symbol, Lithic::Models::ExternalBankAccountCreateParams::Type]
+      # @param verification_method [Symbol, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod]
+      # @param processor_token [String]
+      # @param account_token [String]
+      # @param address [Lithic::Models::ExternalBankAccountAddress]
+      # @param company_id [String]
+      # @param dob [Date]
+      # @param doing_business_as [String]
+      # @param name [String]
+      # @param user_defined_id [String]
+      # @param verification_enforcement [Boolean]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ExternalBankAccountCreateResponse]
       #
@@ -68,11 +46,10 @@ module Lithic
 
       # Get the external bank account by token.
       #
+      # @overload retrieve(external_bank_account_token, request_options: {})
+      #
       # @param external_bank_account_token [String]
-      #
-      # @param params [Lithic::Models::ExternalBankAccountRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ExternalBankAccountRetrieveResponse]
       #
@@ -88,30 +65,19 @@ module Lithic
 
       # Update the external bank account by token.
       #
+      # @overload update(external_bank_account_token, address: nil, company_id: nil, dob: nil, doing_business_as: nil, name: nil, owner: nil, owner_type: nil, type: nil, user_defined_id: nil, request_options: {})
+      #
       # @param external_bank_account_token [String]
-      #
-      # @param params [Lithic::Models::ExternalBankAccountUpdateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::Models::ExternalBankAccountAddress] :address Address
-      #
-      #   @option params [String] :company_id Optional field that helps identify bank accounts in receipts
-      #
-      #   @option params [Date] :dob Date of Birth of the Individual that owns the external bank account
-      #
-      #   @option params [String] :doing_business_as Doing Business As
-      #
-      #   @option params [String] :name The nickname for this External Bank Account
-      #
-      #   @option params [String] :owner Legal Name of the business or individual who owns the external account. This
-      #     will appear in statements
-      #
-      #   @option params [Symbol, Lithic::Models::OwnerType] :owner_type Owner Type
-      #
-      #   @option params [Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type] :type
-      #
-      #   @option params [String] :user_defined_id User Defined ID
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param address [Lithic::Models::ExternalBankAccountAddress]
+      # @param company_id [String]
+      # @param dob [Date]
+      # @param doing_business_as [String]
+      # @param name [String]
+      # @param owner [String]
+      # @param owner_type [Symbol, Lithic::Models::OwnerType]
+      # @param type [Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type]
+      # @param user_defined_id [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ExternalBankAccountUpdateResponse]
       #
@@ -129,29 +95,18 @@ module Lithic
 
       # List all the external bank accounts for the provided search criteria.
       #
-      # @param params [Lithic::Models::ExternalBankAccountListParams, Hash{Symbol=>Object}] .
+      # @overload list(account_token: nil, account_types: nil, countries: nil, ending_before: nil, owner_types: nil, page_size: nil, starting_after: nil, states: nil, verification_states: nil, request_options: {})
       #
-      #   @option params [String] :account_token
-      #
-      #   @option params [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType>] :account_types
-      #
-      #   @option params [Array<String>] :countries
-      #
-      #   @option params [String] :ending_before A cursor representing an item's token before which a page of results should end.
-      #     Used to retrieve the previous page of results before this item.
-      #
-      #   @option params [Array<Symbol, Lithic::Models::OwnerType>] :owner_types
-      #
-      #   @option params [Integer] :page_size Page size (for pagination).
-      #
-      #   @option params [String] :starting_after A cursor representing an item's token after which a page of results should
-      #     begin. Used to retrieve the next page of results after this item.
-      #
-      #   @option params [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::State>] :states
-      #
-      #   @option params [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState>] :verification_states
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_token [String]
+      # @param account_types [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType>]
+      # @param countries [Array<String>]
+      # @param ending_before [String]
+      # @param owner_types [Array<Symbol, Lithic::Models::OwnerType>]
+      # @param page_size [Integer]
+      # @param starting_after [String]
+      # @param states [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::State>]
+      # @param verification_states [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState>]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::CursorPage<Lithic::Models::ExternalBankAccountListResponse>]
       #
@@ -170,13 +125,11 @@ module Lithic
 
       # Retry external bank account micro deposit verification.
       #
+      # @overload retry_micro_deposits(external_bank_account_token, financial_account_token: nil, request_options: {})
+      #
       # @param external_bank_account_token [String]
-      #
-      # @param params [Lithic::Models::ExternalBankAccountRetryMicroDepositsParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :financial_account_token
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param financial_account_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse]
       #
@@ -194,13 +147,11 @@ module Lithic
 
       # Retry external bank account prenote verification.
       #
+      # @overload retry_prenote(external_bank_account_token, financial_account_token: nil, request_options: {})
+      #
       # @param external_bank_account_token [String]
-      #
-      # @param params [Lithic::Models::ExternalBankAccountRetryPrenoteParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :financial_account_token
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param financial_account_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ExternalBankAccountRetryPrenoteResponse]
       #

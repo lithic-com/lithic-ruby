@@ -100,9 +100,9 @@ module Lithic
 
     # Status of api
     #
-    # @param params [Lithic::Models::ClientAPIStatusParams, Hash{Symbol=>Object}] .
+    # @overload api_status(request_options: {})
     #
-    #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+    # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
     #
     # @return [Lithic::Models::APIStatus]
     #
