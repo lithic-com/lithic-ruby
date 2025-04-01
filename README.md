@@ -13,7 +13,7 @@ The underlying REST API documentation can be found on [docs.lithic.com](https://
 To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "lithic", "~> 0.1.0.pre.alpha.2"
+gem "lithic", "~> 0.1.0.pre.alpha.3"
 ```
 
 To fetch an initial copy of the gem:
