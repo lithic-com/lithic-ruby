@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-04-01)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Bug Fixes
+
+* path interpolation template strings ([#34](https://github.com/lithic-com/lithic-ruby/issues/34)) ([b5a88e9](https://github.com/lithic-com/lithic-ruby/commit/b5a88e924ab324bf8cd12788715f7811ab23d6a0))
+
+
+### Chores
+
+* **internal:** version bump ([#31](https://github.com/lithic-com/lithic-ruby/issues/31)) ([3cf8b58](https://github.com/lithic-com/lithic-ruby/commit/3cf8b5839cbf0bdb1ed4311c8f62e87ce61c1de3))
+* use fully qualified name in sorbet README example ([#33](https://github.com/lithic-com/lithic-ruby/issues/33)) ([c2400cf](https://github.com/lithic-com/lithic-ruby/commit/c2400cf3d3660df01708ef0dcb111475c16b6d23))
+
 ## 0.1.0-alpha.2 (2025-04-01)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
