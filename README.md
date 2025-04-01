@@ -134,7 +134,7 @@ Due to limitations with the Sorbet type system, where a method otherwise can tak
 Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
 
 ```ruby
-model = CardCreateParams.new(type: "SINGLE_USE")
+model = Lithic::Models::CardCreateParams.new(type: "SINGLE_USE")
 
 lithic.cards.create(**model)
 ```
