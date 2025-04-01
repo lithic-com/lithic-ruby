@@ -45,7 +45,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentSimulateReceiptResponse::Result) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::PaymentSimulateReceiptResponse::Result::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::PaymentSimulateReceiptResponse::Result::TaggedSymbol) }
 
         APPROVED = T.let(:APPROVED, Lithic::Models::PaymentSimulateReceiptResponse::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::PaymentSimulateReceiptResponse::Result::TaggedSymbol)

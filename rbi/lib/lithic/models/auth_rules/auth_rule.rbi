@@ -118,7 +118,8 @@ module Lithic
           extend Lithic::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::AuthRule::State) }
-          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol) }
 
           ACTIVE = T.let(:ACTIVE, Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol)
           INACTIVE = T.let(:INACTIVE, Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol)

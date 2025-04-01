@@ -54,7 +54,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::EventSubscription::EventType) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::EventSubscription::EventType::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::EventSubscription::EventType::TaggedSymbol) }
 
         ACCOUNT_HOLDER_CREATED =
           T.let(:"account_holder.created", Lithic::Models::EventSubscription::EventType::TaggedSymbol)

@@ -113,7 +113,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol
+              )
+            end
 
           ACH =
             T.let(:ACH, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol)
@@ -147,7 +153,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::TaggedSymbol
+              )
+            end
 
           APPROVED =
             T.let(:APPROVED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::TaggedSymbol)
@@ -169,7 +181,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol
+              )
+            end
 
           DECLINED =
             T.let(:DECLINED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol)

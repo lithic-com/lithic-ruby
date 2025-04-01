@@ -354,6 +354,7 @@ module Lithic
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Status::TaggedSymbol
                   )
                 end
@@ -401,6 +402,7 @@ module Lithic
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
                   )
                 end
@@ -450,7 +452,13 @@ module Lithic
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState::TaggedSymbol
+                )
+              end
 
             STANDARD =
               T.let(:STANDARD, Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState::TaggedSymbol)
@@ -560,7 +568,7 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::Statement::StatementType) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccounts::Statement::StatementType::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialAccounts::Statement::StatementType::TaggedSymbol) }
 
           INITIAL = T.let(:INITIAL, Lithic::Models::FinancialAccounts::Statement::StatementType::TaggedSymbol)
           PERIOD_END =
@@ -796,6 +804,7 @@ module Lithic
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod::TaggedSymbol
                 )
               end

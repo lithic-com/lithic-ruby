@@ -65,7 +65,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::TransactionSimulateVoidParams::Type) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol) }
 
         AUTHORIZATION_EXPIRY =
           T.let(:AUTHORIZATION_EXPIRY, Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol)

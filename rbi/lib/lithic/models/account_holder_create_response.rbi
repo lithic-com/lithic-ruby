@@ -96,7 +96,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderCreateResponse::Status) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol) }
 
         ACCEPTED = T.let(:ACCEPTED, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
         PENDING_REVIEW =
@@ -118,7 +118,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderCreateResponse::StatusReason) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol) }
 
         ADDRESS_VERIFICATION_FAILURE =
           T.let(

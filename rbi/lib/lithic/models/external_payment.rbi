@@ -107,7 +107,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Category) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::ExternalPayment::Category::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPayment::Category::TaggedSymbol) }
 
         EXTERNAL_WIRE = T.let(:EXTERNAL_WIRE, Lithic::Models::ExternalPayment::Category::TaggedSymbol)
         EXTERNAL_ACH = T.let(:EXTERNAL_ACH, Lithic::Models::ExternalPayment::Category::TaggedSymbol)
@@ -183,7 +184,7 @@ module Lithic
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Event::DetailedResult) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::ExternalPayment::Event::DetailedResult::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPayment::Event::DetailedResult::TaggedSymbol) }
 
           APPROVED = T.let(:APPROVED, Lithic::Models::ExternalPayment::Event::DetailedResult::TaggedSymbol)
 
@@ -196,7 +197,8 @@ module Lithic
           extend Lithic::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Event::Result) }
-          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::ExternalPayment::Event::Result::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPayment::Event::Result::TaggedSymbol) }
 
           APPROVED = T.let(:APPROVED, Lithic::Models::ExternalPayment::Event::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPayment::Event::Result::TaggedSymbol)
@@ -210,7 +212,8 @@ module Lithic
           extend Lithic::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Event::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol) }
 
           EXTERNAL_WIRE_INITIATED =
             T.let(:EXTERNAL_WIRE_INITIATED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
@@ -263,7 +266,8 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::PaymentType) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::ExternalPayment::PaymentType::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPayment::PaymentType::TaggedSymbol) }
 
         DEPOSIT = T.let(:DEPOSIT, Lithic::Models::ExternalPayment::PaymentType::TaggedSymbol)
         WITHDRAWAL = T.let(:WITHDRAWAL, Lithic::Models::ExternalPayment::PaymentType::TaggedSymbol)
@@ -277,7 +281,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Result) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::ExternalPayment::Result::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPayment::Result::TaggedSymbol) }
 
         APPROVED = T.let(:APPROVED, Lithic::Models::ExternalPayment::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPayment::Result::TaggedSymbol)
@@ -291,7 +295,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::ExternalPayment::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPayment::Status::TaggedSymbol) }
 
         PENDING = T.let(:PENDING, Lithic::Models::ExternalPayment::Status::TaggedSymbol)
         SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPayment::Status::TaggedSymbol)

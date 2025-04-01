@@ -99,7 +99,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::Category) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol) }
 
         EXTERNAL_WIRE =
           T.let(:EXTERNAL_WIRE, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol)
@@ -119,7 +119,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol) }
 
         DEPOSIT = T.let(:DEPOSIT, Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol)
         WITHDRAWAL = T.let(:WITHDRAWAL, Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol)
@@ -134,7 +134,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol) }
 
         SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol)
         RELEASED = T.let(:RELEASED, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol)

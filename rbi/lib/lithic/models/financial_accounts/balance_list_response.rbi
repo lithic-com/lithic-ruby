@@ -105,7 +105,7 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::BalanceListResponse::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccounts::BalanceListResponse::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialAccounts::BalanceListResponse::Type::TaggedSymbol) }
 
           ISSUING = T.let(:ISSUING, Lithic::Models::FinancialAccounts::BalanceListResponse::Type::TaggedSymbol)
           OPERATING = T.let(:OPERATING, Lithic::Models::FinancialAccounts::BalanceListResponse::Type::TaggedSymbol)

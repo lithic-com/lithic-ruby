@@ -98,7 +98,7 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Events::SubscriptionListAttemptsParams::Status) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol) }
 
           FAILED = T.let(:FAILED, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol)
           PENDING = T.let(:PENDING, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol)

@@ -6,7 +6,7 @@ module Lithic
       extend Lithic::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::OwnerType) }
-      OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::OwnerType::TaggedSymbol) }
+      OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::OwnerType::TaggedSymbol) }
 
       INDIVIDUAL = T.let(:INDIVIDUAL, Lithic::Models::OwnerType::TaggedSymbol)
       BUSINESS = T.let(:BUSINESS, Lithic::Models::OwnerType::TaggedSymbol)

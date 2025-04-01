@@ -183,7 +183,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason::TaggedSymbol
+              )
+            end
 
           DELINQUENT =
             T.let(:DELINQUENT, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason::TaggedSymbol)
@@ -205,7 +211,13 @@ module Lithic
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState::TaggedSymbol
+              )
+            end
 
           PENDING =
             T.let(
@@ -244,7 +256,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccount::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccount::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialAccount::Status::TaggedSymbol) }
 
         OPEN = T.let(:OPEN, Lithic::Models::FinancialAccount::Status::TaggedSymbol)
         CLOSED = T.let(:CLOSED, Lithic::Models::FinancialAccount::Status::TaggedSymbol)
@@ -260,7 +272,7 @@ module Lithic
         extend Lithic::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccount::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccount::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialAccount::Type::TaggedSymbol) }
 
         ISSUING = T.let(:ISSUING, Lithic::Models::FinancialAccount::Type::TaggedSymbol)
         RESERVE = T.let(:RESERVE, Lithic::Models::FinancialAccount::Type::TaggedSymbol)
@@ -281,7 +293,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccount::StatusChangeReason) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::FinancialAccount::StatusChangeReason::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialAccount::StatusChangeReason::TaggedSymbol) }
 
         CHARGED_OFF_DELINQUENT =
           T.let(:CHARGED_OFF_DELINQUENT, Lithic::Models::FinancialAccount::StatusChangeReason::TaggedSymbol)

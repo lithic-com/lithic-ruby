@@ -15,7 +15,7 @@ module Lithic
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol) }
 
         DAY = T.let(:DAY, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol)
         WEEK = T.let(:WEEK, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol)
