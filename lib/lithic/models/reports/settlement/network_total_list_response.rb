@@ -4,6 +4,7 @@ module Lithic
   module Models
     module Reports
       module Settlement
+        # @see Lithic::Resources::Reports::Settlement::NetworkTotals#list
         class NetworkTotalListResponse < Lithic::BaseModel
           # @!attribute token
           #   Globally unique identifier.

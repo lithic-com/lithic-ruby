@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::ManagementOperations#create
     class ManagementOperationTransaction < Lithic::BaseModel
       # @!attribute token
       #

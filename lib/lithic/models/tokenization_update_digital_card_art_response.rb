@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Tokenizations#update_digital_card_art
     class TokenizationUpdateDigitalCardArtResponse < Lithic::BaseModel
       # @!attribute [r] data
       #

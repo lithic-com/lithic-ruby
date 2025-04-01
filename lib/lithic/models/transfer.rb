@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Transfers#create
     class Transfer < Lithic::BaseModel
       # @!attribute [r] token
       #   Globally unique identifier for the transfer event.

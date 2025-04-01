@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Events#list_attempts
     class MessageAttempt < Lithic::BaseModel
       # @!attribute token
       #   Globally unique identifier.

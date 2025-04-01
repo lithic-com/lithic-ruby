@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::TokenizationDecisioning#retrieve_secret
     class TokenizationSecret < Lithic::BaseModel
       # @!attribute [r] secret
       #   The Tokenization Decisioning HMAC secret

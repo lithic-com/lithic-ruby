@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::CardPrograms#retrieve
     class CardProgram < Lithic::BaseModel
       # @!attribute token
       #   Globally unique identifier.

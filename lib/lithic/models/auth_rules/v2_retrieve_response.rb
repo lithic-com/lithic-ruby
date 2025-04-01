@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module AuthRules
+      # @see Lithic::Resources::AuthRules::V2#retrieve
       class V2RetrieveResponse < Lithic::BaseModel
         # @!attribute token
         #   Auth Rule Token

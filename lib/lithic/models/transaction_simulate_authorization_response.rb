@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Transactions#simulate_authorization
     class TransactionSimulateAuthorizationResponse < Lithic::BaseModel
       # @!attribute [r] token
       #   A unique token to reference this transaction with later calls to void or clear

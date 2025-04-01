@@ -4,6 +4,7 @@ module Lithic
   module Models
     module AuthRules
       module V2
+        # @see Lithic::Resources::AuthRules::V2::Backtests#retrieve
         class BacktestResults < Lithic::BaseModel
           # @!attribute backtest_token
           #   Auth Rule Backtest Token

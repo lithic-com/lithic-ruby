@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module FinancialAccounts
+      # @see Lithic::Resources::FinancialAccounts::Statements#retrieve
       class Statement < Lithic::BaseModel
         # @!attribute token
         #   Globally unique identifier for a statement
