@@ -76,7 +76,7 @@ module Lithic
       def retrieve(external_bank_account_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/external_bank_accounts/%0s", external_bank_account_token],
+          path: ["v1/external_bank_accounts/%1$s", external_bank_account_token],
           model: Lithic::Models::ExternalBankAccountRetrieveResponse,
           options: params[:request_options]
         )
@@ -114,7 +114,7 @@ module Lithic
         parsed, options = Lithic::Models::ExternalBankAccountUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/external_bank_accounts/%0s", external_bank_account_token],
+          path: ["v1/external_bank_accounts/%1$s", external_bank_account_token],
           body: parsed,
           model: Lithic::Models::ExternalBankAccountUpdateResponse,
           options: options
@@ -175,7 +175,7 @@ module Lithic
         parsed, options = Lithic::Models::ExternalBankAccountRetryMicroDepositsParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/external_bank_accounts/%0s/retry_micro_deposits", external_bank_account_token],
+          path: ["v1/external_bank_accounts/%1$s/retry_micro_deposits", external_bank_account_token],
           body: parsed,
           model: Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse,
           options: options
@@ -197,7 +197,7 @@ module Lithic
         parsed, options = Lithic::Models::ExternalBankAccountRetryPrenoteParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/external_bank_accounts/%0s/retry_prenote", external_bank_account_token],
+          path: ["v1/external_bank_accounts/%1$s/retry_prenote", external_bank_account_token],
           body: parsed,
           model: Lithic::Models::ExternalBankAccountRetryPrenoteResponse,
           options: options

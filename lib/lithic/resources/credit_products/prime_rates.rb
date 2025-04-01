@@ -21,7 +21,7 @@ module Lithic
           parsed, options = Lithic::Models::CreditProducts::PrimeRateCreateParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["v1/credit_products/%0s/prime_rates", credit_product_token],
+            path: ["v1/credit_products/%1$s/prime_rates", credit_product_token],
             body: parsed,
             model: NilClass,
             options: options
@@ -45,7 +45,7 @@ module Lithic
           parsed, options = Lithic::Models::CreditProducts::PrimeRateRetrieveParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["v1/credit_products/%0s/prime_rates", credit_product_token],
+            path: ["v1/credit_products/%1$s/prime_rates", credit_product_token],
             query: parsed,
             model: Lithic::Models::CreditProducts::PrimeRateRetrieveResponse,
             options: options

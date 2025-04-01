@@ -18,7 +18,7 @@ module Lithic
       def retrieve(digital_card_art_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/digital_card_art/%0s", digital_card_art_token],
+          path: ["v1/digital_card_art/%1$s", digital_card_art_token],
           model: Lithic::Models::DigitalCardArtAPI,
           options: params[:request_options]
         )

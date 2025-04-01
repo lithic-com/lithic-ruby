@@ -51,7 +51,7 @@ module Lithic
         def retrieve(auth_rule_token, params = {})
           @client.request(
             method: :get,
-            path: ["v2/auth_rules/%0s", auth_rule_token],
+            path: ["v2/auth_rules/%1$s", auth_rule_token],
             model: Lithic::Models::AuthRules::V2RetrieveResponse,
             options: params[:request_options]
           )
@@ -90,7 +90,7 @@ module Lithic
           parsed, options = Lithic::Models::AuthRules::V2UpdateParams.dump_request(params)
           @client.request(
             method: :patch,
-            path: ["v2/auth_rules/%0s", auth_rule_token],
+            path: ["v2/auth_rules/%1$s", auth_rule_token],
             body: parsed,
             model: Lithic::Models::AuthRules::V2UpdateResponse,
             options: options
@@ -140,7 +140,7 @@ module Lithic
         def delete(auth_rule_token, params = {})
           @client.request(
             method: :delete,
-            path: ["v2/auth_rules/%0s", auth_rule_token],
+            path: ["v2/auth_rules/%1$s", auth_rule_token],
             model: NilClass,
             options: params[:request_options]
           )
@@ -170,7 +170,7 @@ module Lithic
           parsed, options = Lithic::Models::AuthRules::V2ApplyParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["v2/auth_rules/%0s/apply", auth_rule_token],
+            path: ["v2/auth_rules/%1$s/apply", auth_rule_token],
             body: parsed,
             model: Lithic::Models::AuthRules::V2ApplyResponse,
             options: options
@@ -195,7 +195,7 @@ module Lithic
           parsed, options = Lithic::Models::AuthRules::V2DraftParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["v2/auth_rules/%0s/draft", auth_rule_token],
+            path: ["v2/auth_rules/%1$s/draft", auth_rule_token],
             body: parsed,
             model: Lithic::Models::AuthRules::V2DraftResponse,
             options: options
@@ -215,7 +215,7 @@ module Lithic
         def promote(auth_rule_token, params = {})
           @client.request(
             method: :post,
-            path: ["v2/auth_rules/%0s/promote", auth_rule_token],
+            path: ["v2/auth_rules/%1$s/promote", auth_rule_token],
             model: Lithic::Models::AuthRules::V2PromoteResponse,
             options: params[:request_options]
           )
@@ -283,7 +283,7 @@ module Lithic
         def report(auth_rule_token, params = {})
           @client.request(
             method: :post,
-            path: ["v2/auth_rules/%0s/report", auth_rule_token],
+            path: ["v2/auth_rules/%1$s/report", auth_rule_token],
             model: Lithic::Models::AuthRules::V2ReportResponse,
             options: params[:request_options]
           )

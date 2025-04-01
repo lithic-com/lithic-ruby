@@ -146,7 +146,7 @@ module Lithic
       def retrieve(card_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/cards/%0s", card_token],
+          path: ["v1/cards/%1$s", card_token],
           model: Lithic::Models::Card,
           options: params[:request_options]
         )
@@ -211,7 +211,7 @@ module Lithic
         parsed, options = Lithic::Models::CardUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/cards/%0s", card_token],
+          path: ["v1/cards/%1$s", card_token],
           body: parsed,
           model: Lithic::Models::Card,
           options: options
@@ -298,7 +298,7 @@ module Lithic
         parsed, options = Lithic::Models::CardConvertPhysicalParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/cards/%0s/convert_physical", card_token],
+          path: ["v1/cards/%1$s/convert_physical", card_token],
           body: parsed,
           model: Lithic::Models::Card,
           options: options
@@ -395,7 +395,7 @@ module Lithic
         parsed, options = Lithic::Models::CardProvisionParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/cards/%0s/provision", card_token],
+          path: ["v1/cards/%1$s/provision", card_token],
           body: parsed,
           model: Lithic::Models::CardProvisionResponse,
           options: options
@@ -440,7 +440,7 @@ module Lithic
         parsed, options = Lithic::Models::CardReissueParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/cards/%0s/reissue", card_token],
+          path: ["v1/cards/%1$s/reissue", card_token],
           body: parsed,
           model: Lithic::Models::Card,
           options: options
@@ -492,7 +492,7 @@ module Lithic
         parsed, options = Lithic::Models::CardRenewParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/cards/%0s/renew", card_token],
+          path: ["v1/cards/%1$s/renew", card_token],
           body: parsed,
           model: Lithic::Models::Card,
           options: options
@@ -514,7 +514,7 @@ module Lithic
       def retrieve_spend_limits(card_token, params = {})
         @client.request(
           method: :get,
-          path: ["v1/cards/%0s/spend_limits", card_token],
+          path: ["v1/cards/%1$s/spend_limits", card_token],
           model: Lithic::Models::CardSpendLimits,
           options: params[:request_options]
         )

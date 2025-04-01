@@ -43,7 +43,7 @@ module Lithic
         def retrieve(event_subscription_token, params = {})
           @client.request(
             method: :get,
-            path: ["v1/event_subscriptions/%0s", event_subscription_token],
+            path: ["v1/event_subscriptions/%1$s", event_subscription_token],
             model: Lithic::Models::EventSubscription,
             options: params[:request_options]
           )
@@ -71,7 +71,7 @@ module Lithic
           parsed, options = Lithic::Models::Events::SubscriptionUpdateParams.dump_request(params)
           @client.request(
             method: :patch,
-            path: ["v1/event_subscriptions/%0s", event_subscription_token],
+            path: ["v1/event_subscriptions/%1$s", event_subscription_token],
             body: parsed,
             model: Lithic::Models::EventSubscription,
             options: options
@@ -117,7 +117,7 @@ module Lithic
         def delete(event_subscription_token, params = {})
           @client.request(
             method: :delete,
-            path: ["v1/event_subscriptions/%0s", event_subscription_token],
+            path: ["v1/event_subscriptions/%1$s", event_subscription_token],
             model: NilClass,
             options: params[:request_options]
           )
@@ -152,7 +152,7 @@ module Lithic
           parsed, options = Lithic::Models::Events::SubscriptionListAttemptsParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["v1/event_subscriptions/%0s/attempts", event_subscription_token],
+            path: ["v1/event_subscriptions/%1$s/attempts", event_subscription_token],
             query: parsed,
             page: Lithic::CursorPage,
             model: Lithic::Models::MessageAttempt,
@@ -179,7 +179,7 @@ module Lithic
           parsed, options = Lithic::Models::Events::SubscriptionRecoverParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["v1/event_subscriptions/%0s/recover", event_subscription_token],
+            path: ["v1/event_subscriptions/%1$s/recover", event_subscription_token],
             query: parsed,
             model: NilClass,
             options: options
@@ -209,7 +209,7 @@ module Lithic
           parsed, options = Lithic::Models::Events::SubscriptionReplayMissingParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["v1/event_subscriptions/%0s/replay_missing", event_subscription_token],
+            path: ["v1/event_subscriptions/%1$s/replay_missing", event_subscription_token],
             query: parsed,
             model: NilClass,
             options: options
@@ -228,7 +228,7 @@ module Lithic
         def retrieve_secret(event_subscription_token, params = {})
           @client.request(
             method: :get,
-            path: ["v1/event_subscriptions/%0s/secret", event_subscription_token],
+            path: ["v1/event_subscriptions/%1$s/secret", event_subscription_token],
             model: Lithic::Models::Events::SubscriptionRetrieveSecretResponse,
             options: params[:request_options]
           )
@@ -247,7 +247,7 @@ module Lithic
         def rotate_secret(event_subscription_token, params = {})
           @client.request(
             method: :post,
-            path: ["v1/event_subscriptions/%0s/secret/rotate", event_subscription_token],
+            path: ["v1/event_subscriptions/%1$s/secret/rotate", event_subscription_token],
             model: NilClass,
             options: params[:request_options]
           )
@@ -268,7 +268,7 @@ module Lithic
           parsed, options = Lithic::Models::Events::SubscriptionSendSimulatedExampleParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["v1/simulate/event_subscriptions/%0s/send_example", event_subscription_token],
+            path: ["v1/simulate/event_subscriptions/%1$s/send_example", event_subscription_token],
             body: parsed,
             model: NilClass,
             options: options
