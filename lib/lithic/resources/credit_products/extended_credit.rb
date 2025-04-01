@@ -6,11 +6,10 @@ module Lithic
       class ExtendedCredit
         # Get the extended credit for a given credit product under a program
         #
-        # @param credit_product_token [String] Credit Product Token
+        # @overload retrieve(credit_product_token, request_options: {})
         #
-        # @param params [Lithic::Models::CreditProducts::ExtendedCreditRetrieveParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param credit_product_token [String]
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::CreditProducts::CreditProductsExtendedCredit]
         #

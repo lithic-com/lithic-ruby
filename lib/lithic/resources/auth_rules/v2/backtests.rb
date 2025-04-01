@@ -31,15 +31,12 @@ module Lithic
           #   configurations. If a historical transaction does not feature the required inputs
           #   to evaluate the rule, then it will not be included in the final backtest report.
           #
-          # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
+          # @overload create(auth_rule_token, end_: nil, start: nil, request_options: {})
           #
-          # @param params [Lithic::Models::AuthRules::V2::BacktestCreateParams, Hash{Symbol=>Object}] .
-          #
-          #   @option params [Time] :end_ The end time of the backtest.
-          #
-          #   @option params [Time] :start The start time of the backtest.
-          #
-          #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param auth_rule_token [String]
+          # @param end_ [Time]
+          # @param start [Time]
+          # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Lithic::Models::AuthRules::V2::BacktestCreateResponse]
           #
@@ -74,13 +71,11 @@ module Lithic
           #   currently activated in the Auth Stream, regardless of which version of the rule
           #   was active in the Auth Stream at the time a backtest is requested.
           #
-          # @param auth_rule_backtest_token [String] Globally unique identifier for an Auth Rule backtest.
+          # @overload retrieve(auth_rule_backtest_token, auth_rule_token:, request_options: {})
           #
-          # @param params [Lithic::Models::AuthRules::V2::BacktestRetrieveParams, Hash{Symbol=>Object}] .
-          #
-          #   @option params [String] :auth_rule_token Globally unique identifier for the Auth Rule.
-          #
-          #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+          # @param auth_rule_backtest_token [String]
+          # @param auth_rule_token [String]
+          # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Lithic::Models::AuthRules::V2::BacktestResults]
           #

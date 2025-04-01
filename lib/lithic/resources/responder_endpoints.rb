@@ -5,13 +5,11 @@ module Lithic
     class ResponderEndpoints
       # Enroll a responder endpoint
       #
-      # @param params [Lithic::Models::ResponderEndpointCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(type: nil, url: nil, request_options: {})
       #
-      #   @option params [Symbol, Lithic::Models::ResponderEndpointCreateParams::Type] :type The type of the endpoint.
-      #
-      #   @option params [String] :url The URL for the responder endpoint (must be http(s)).
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param type [Symbol, Lithic::Models::ResponderEndpointCreateParams::Type]
+      # @param url [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ResponderEndpointCreateResponse]
       #
@@ -29,11 +27,10 @@ module Lithic
 
       # Disenroll a responder endpoint
       #
-      # @param params [Lithic::Models::ResponderEndpointDeleteParams, Hash{Symbol=>Object}] .
+      # @overload delete(type:, request_options: {})
       #
-      #   @option params [Symbol, Lithic::Models::ResponderEndpointDeleteParams::Type] :type The type of the endpoint.
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param type [Symbol, Lithic::Models::ResponderEndpointDeleteParams::Type]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [nil]
       #
@@ -51,11 +48,10 @@ module Lithic
 
       # Check the status of a responder endpoint
       #
-      # @param params [Lithic::Models::ResponderEndpointCheckStatusParams, Hash{Symbol=>Object}] .
+      # @overload check_status(type:, request_options: {})
       #
-      #   @option params [Symbol, Lithic::Models::ResponderEndpointCheckStatusParams::Type] :type The type of the endpoint.
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param type [Symbol, Lithic::Models::ResponderEndpointCheckStatusParams::Type]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ResponderEndpointStatus]
       #

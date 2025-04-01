@@ -5,11 +5,10 @@ module Lithic
     class CardPrograms
       # Get card program.
       #
-      # @param card_program_token [String] Globally unique identifier for the card program.
+      # @overload retrieve(card_program_token, request_options: {})
       #
-      # @param params [Lithic::Models::CardProgramRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param card_program_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::CardProgram]
       #
@@ -25,17 +24,12 @@ module Lithic
 
       # List card programs.
       #
-      # @param params [Lithic::Models::CardProgramListParams, Hash{Symbol=>Object}] .
+      # @overload list(ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
       #
-      #   @option params [String] :ending_before A cursor representing an item's token before which a page of results should end.
-      #     Used to retrieve the previous page of results before this item.
-      #
-      #   @option params [Integer] :page_size Page size (for pagination).
-      #
-      #   @option params [String] :starting_after A cursor representing an item's token after which a page of results should
-      #     begin. Used to retrieve the next page of results after this item.
-      #
-      #   @option params [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param ending_before [String]
+      # @param page_size [Integer]
+      # @param starting_after [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::CursorPage<Lithic::Models::CardProgram>]
       #
