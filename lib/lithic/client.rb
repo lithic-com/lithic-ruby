@@ -125,6 +125,8 @@ module Lithic
 
     # Creates and returns a new client for interacting with the API.
     #
+    # @param api_key [String, nil] Defaults to `ENV["LITHIC_API_KEY"]`
+    #
     # @param environment [:production, :sandbox, nil] Specifies the environment to use for the API.
     #
     #   Each environment maps to a different base URL:
@@ -134,8 +136,6 @@ module Lithic
     #
     # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
     #
-    # @param api_key [String, nil] Defaults to `ENV["LITHIC_API_KEY"]`
-    #
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
     #
     # @param timeout [Float]
@@ -144,9 +144,9 @@ module Lithic
     #
     # @param max_retry_delay [Float]
     def initialize(
+      api_key: ENV["LITHIC_API_KEY"],
       environment: nil,
       base_url: nil,
-      api_key: ENV["LITHIC_API_KEY"],
       max_retries: DEFAULT_MAX_RETRIES,
       timeout: DEFAULT_TIMEOUT_IN_SECONDS,
       initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,
@@ -164,7 +164,7 @@ module Lithic
       end
 
       if api_key.nil?
-        raise ArgumentError.new("api_key is required")
+        raise ArgumentError.new("api_key is required, and can be set via environ: \"LITHIC_API_KEY\"")
       end
 
       headers = {
