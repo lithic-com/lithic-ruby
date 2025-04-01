@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Balances#list
     class Balance < Lithic::BaseModel
       # @!attribute available_amount
       #   Funds available for spend in the currency's smallest unit (e.g., cents for USD)

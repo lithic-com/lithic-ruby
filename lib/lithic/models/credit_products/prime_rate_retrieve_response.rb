@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module CreditProducts
+      # @see Lithic::Resources::CreditProducts::PrimeRates#retrieve
       class PrimeRateRetrieveResponse < Lithic::BaseModel
         # @!attribute data
         #   List of prime rates

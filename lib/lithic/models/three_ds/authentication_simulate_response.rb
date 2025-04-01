@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module ThreeDS
+      # @see Lithic::Resources::ThreeDS::Authentication#simulate
       class AuthenticationSimulateResponse < Lithic::BaseModel
         # @!attribute [r] token
         #   A unique token to reference this transaction with later calls to void or clear

@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::ResponderEndpoints#check_status
     class ResponderEndpointStatus < Lithic::BaseModel
       # @!attribute [r] enrolled
       #   True if the instance has an endpoint enrolled.

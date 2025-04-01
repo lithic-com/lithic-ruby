@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module CreditProducts
+      # @see Lithic::Resources::CreditProducts::ExtendedCredit#retrieve
       class CreditProductsExtendedCredit < Lithic::BaseModel
         # @!attribute credit_extended
         #

@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Transactions#simulate_clearing
     class TransactionSimulateClearingResponse < Lithic::BaseModel
       # @!attribute [r] debugging_request_id
       #   Debugging request ID to share with Lithic Support team.

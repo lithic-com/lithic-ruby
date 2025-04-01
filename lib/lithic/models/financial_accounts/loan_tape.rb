@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module FinancialAccounts
+      # @see Lithic::Resources::FinancialAccounts::LoanTapes#retrieve
       class LoanTape < Lithic::BaseModel
         # @!attribute token
         #   Globally unique identifier for a loan tape

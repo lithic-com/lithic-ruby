@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Payments#retrieve
     class Payment < Lithic::BaseModel
       # @!attribute token
       #   Globally unique identifier.

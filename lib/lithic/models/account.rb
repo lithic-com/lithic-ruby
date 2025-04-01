@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Accounts#retrieve
     class Account < Lithic::BaseModel
       # @!attribute token
       #   Globally unique identifier for the account. This is the same as the

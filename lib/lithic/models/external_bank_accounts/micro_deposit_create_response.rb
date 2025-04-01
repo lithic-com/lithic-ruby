@@ -3,6 +3,7 @@
 module Lithic
   module Models
     module ExternalBankAccounts
+      # @see Lithic::Resources::ExternalBankAccounts::MicroDeposits#create
       class MicroDepositCreateResponse < Lithic::BaseModel
         # @!attribute token
         #   A globally unique identifier for this record of an external bank account

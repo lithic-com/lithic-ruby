@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Cards#retrieve_spend_limits
     class CardSpendLimits < Lithic::BaseModel
       # @!attribute available_spend_limit
       #

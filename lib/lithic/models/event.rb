@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Events#retrieve
     class Event < Lithic::BaseModel
       # @!attribute token
       #   Globally unique identifier.

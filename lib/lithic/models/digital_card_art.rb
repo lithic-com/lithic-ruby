@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::DigitalCardArt#retrieve
     class DigitalCardArtAPI < Lithic::BaseModel
       # @!attribute token
       #   Globally unique identifier for the card art.

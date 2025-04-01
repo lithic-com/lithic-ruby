@@ -2,6 +2,7 @@
 
 module Lithic
   module Models
+    # @see Lithic::Resources::Cards#provision
     class CardProvisionResponse < Lithic::BaseModel
       # @!attribute [r] provisioning_payload
       #
