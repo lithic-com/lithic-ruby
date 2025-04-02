@@ -100,7 +100,7 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, String, Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol) }
 
-        NUMBER_2_DAY = T.let(:"2-DAY", Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol)
+        SHIPPING_METHOD_2_DAY = T.let(:"2-DAY", Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol)
         EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol)
         EXPRESS = T.let(:EXPRESS, Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol)
         PRIORITY = T.let(:PRIORITY, Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol)
