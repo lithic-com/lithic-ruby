@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-04-02)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### ⚠ BREAKING CHANGES
+
+* use descriptive prefixes for enum names that start with otherwise illegal identifiers ([#44](https://github.com/lithic-com/lithic-ruby/issues/44))
+
+### Features
+
+* add reference links in yard ([#37](https://github.com/lithic-com/lithic-ruby/issues/37)) ([75a7096](https://github.com/lithic-com/lithic-ruby/commit/75a70968f724c4551f8138d6e69ba38eddcd6c7a))
+* implement `to_json` for base model ([#42](https://github.com/lithic-com/lithic-ruby/issues/42)) ([f83789b](https://github.com/lithic-com/lithic-ruby/commit/f83789b31150bb73f943e313f2126c8523a7920c))
+* link response models to their methods in yard doc ([#39](https://github.com/lithic-com/lithic-ruby/issues/39)) ([29aca97](https://github.com/lithic-com/lithic-ruby/commit/29aca97f8d7754f182bb8843212623110a799969))
+
+
+### Bug Fixes
+
+* use descriptive prefixes for enum names that start with otherwise illegal identifiers ([#44](https://github.com/lithic-com/lithic-ruby/issues/44)) ([6c0fc8d](https://github.com/lithic-com/lithic-ruby/commit/6c0fc8dbdef637f03c4f80171c8f7d38590672b2))
+
+
+### Chores
+
+* extract error classes into own module ([#43](https://github.com/lithic-com/lithic-ruby/issues/43)) ([60bf116](https://github.com/lithic-com/lithic-ruby/commit/60bf1165c8c5939a884097a2892aa1c968d8d8fc))
+* improve yard docs readability ([#38](https://github.com/lithic-com/lithic-ruby/issues/38)) ([c806392](https://github.com/lithic-com/lithic-ruby/commit/c806392316f3be153eda5386f4a886e1b0cfb1bd))
+* **internal:** version bump ([#35](https://github.com/lithic-com/lithic-ruby/issues/35)) ([2e19979](https://github.com/lithic-com/lithic-ruby/commit/2e1997954c72bed364c674f019402257348be920))
+* order client variables by "importance" ([#41](https://github.com/lithic-com/lithic-ruby/issues/41)) ([7005a9c](https://github.com/lithic-com/lithic-ruby/commit/7005a9c71ef4bab65384b81ea3805029699acbe0))
+* relax sorbet enum parameters to allow `String` in addition to `Symbol` ([#40](https://github.com/lithic-com/lithic-ruby/issues/40)) ([f6eaf95](https://github.com/lithic-com/lithic-ruby/commit/f6eaf9570f36f80d72fbbf10a2b5ff6c364d448d))
+
 ## 0.1.0-alpha.3 (2025-04-01)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
