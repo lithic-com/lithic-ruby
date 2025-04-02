@@ -390,7 +390,7 @@ class Lithic::Test::BaseModelTest < Minitest::Test
           tap do
             target.public_send(accessor)
             flunk
-          rescue Lithic::ConversionError => e
+          rescue Lithic::Errors::ConversionError => e
             assert_kind_of(expect, e.cause)
           end
         else
