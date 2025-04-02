@@ -617,7 +617,7 @@ module Lithic
           OrSymbol =
             T.type_alias { T.any(Symbol, String, Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol) }
 
-          NUMBER_3DS_AUTHENTICATED =
+          LIABILITY_SHIFT_3DS_AUTHENTICATED =
             T.let(
               :"3DS_AUTHENTICATED",
               Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol

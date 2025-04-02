@@ -335,7 +335,7 @@ module Lithic
       module ShippingMethod
         extend Lithic::Enum
 
-        NUMBER_2_DAY = :"2_DAY"
+        SHIPPING_METHOD_2_DAY = :"2_DAY"
         EXPEDITED = :EXPEDITED
         EXPRESS = :EXPRESS
         PRIORITY = :PRIORITY
