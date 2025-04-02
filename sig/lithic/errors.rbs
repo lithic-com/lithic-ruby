@@ -1,99 +1,129 @@
 module Lithic
-  class Error < StandardError
-    attr_accessor cause: StandardError?
+  module Errors
+    class Error < StandardError
+      attr_accessor cause: StandardError?
+    end
+
+    class ConversionError < Lithic::Errors::Error
+    end
+
+    class APIError < Lithic::Errors::Error
+      attr_accessor url: URI::Generic
+
+      attr_accessor status: Integer?
+
+      attr_accessor body: top?
+
+      def initialize: (
+        url: URI::Generic,
+        ?status: Integer?,
+        ?body: Object?,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APIConnectionError < Lithic::Errors::APIError
+      def initialize: (
+        url: URI::Generic,
+        ?status: nil,
+        ?body: nil,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APITimeoutError < Lithic::Errors::APIConnectionError
+      def initialize: (
+        url: URI::Generic,
+        ?status: nil,
+        ?body: nil,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APIStatusError < Lithic::Errors::APIError
+      def self.for: (
+        url: URI::Generic,
+        status: Integer,
+        body: Object?,
+        request: nil,
+        response: nil,
+        ?message: String?
+      ) -> instance
+
+      def initialize: (
+        url: URI::Generic,
+        status: Integer,
+        body: Object?,
+        request: nil,
+        response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class BadRequestError < Lithic::Errors::APIStatusError
+      HTTP_STATUS: 400
+    end
+
+    class AuthenticationError < Lithic::Errors::APIStatusError
+      HTTP_STATUS: 401
+    end
+
+    class PermissionDeniedError < Lithic::Errors::APIStatusError
+      HTTP_STATUS: 403
+    end
+
+    class NotFoundError < Lithic::Errors::APIStatusError
+      HTTP_STATUS: 404
+    end
+
+    class ConflictError < Lithic::Errors::APIStatusError
+      HTTP_STATUS: 409
+    end
+
+    class UnprocessableEntityError < Lithic::Errors::APIStatusError
+      HTTP_STATUS: 422
+    end
+
+    class RateLimitError < Lithic::Errors::APIStatusError
+      HTTP_STATUS: 429
+    end
+
+    class InternalServerError < Lithic::Errors::APIStatusError
+      HTTP_STATUS: Range[Integer]
+    end
   end
 
-  class ConversionError < Lithic::Error
-  end
+  class Error = Lithic::Errors::Error
 
-  class APIError < Lithic::Error
-    attr_accessor url: URI::Generic
+  class ConversionError = Lithic::Errors::ConversionError
 
-    attr_accessor status: Integer?
+  class APIError = Lithic::Errors::APIError
 
-    attr_accessor body: top?
+  class APIStatusError = Lithic::Errors::APIStatusError
 
-    def initialize: (
-      url: URI::Generic,
-      ?status: Integer?,
-      ?body: Object?,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class APIConnectionError = Lithic::Errors::APIConnectionError
 
-  class APIConnectionError < Lithic::APIError
-    def initialize: (
-      url: URI::Generic,
-      ?status: nil,
-      ?body: nil,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class APITimeoutError = Lithic::Errors::APITimeoutError
 
-  class APITimeoutError < Lithic::APIConnectionError
-    def initialize: (
-      url: URI::Generic,
-      ?status: nil,
-      ?body: nil,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class BadRequestError = Lithic::Errors::BadRequestError
 
-  class APIStatusError < Lithic::APIError
-    def self.for: (
-      url: URI::Generic,
-      status: Integer,
-      body: Object?,
-      request: nil,
-      response: nil,
-      ?message: String?
-    ) -> instance
+  class AuthenticationError = Lithic::Errors::AuthenticationError
 
-    def initialize: (
-      url: URI::Generic,
-      status: Integer,
-      body: Object?,
-      request: nil,
-      response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class PermissionDeniedError = Lithic::Errors::PermissionDeniedError
 
-  class BadRequestError < Lithic::APIStatusError
-    HTTP_STATUS: 400
-  end
+  class NotFoundError = Lithic::Errors::NotFoundError
 
-  class AuthenticationError < Lithic::APIStatusError
-    HTTP_STATUS: 401
-  end
+  class ConflictError = Lithic::Errors::ConflictError
 
-  class PermissionDeniedError < Lithic::APIStatusError
-    HTTP_STATUS: 403
-  end
+  class UnprocessableEntityError = Lithic::Errors::UnprocessableEntityError
 
-  class NotFoundError < Lithic::APIStatusError
-    HTTP_STATUS: 404
-  end
+  class RateLimitError = Lithic::Errors::RateLimitError
 
-  class ConflictError < Lithic::APIStatusError
-    HTTP_STATUS: 409
-  end
-
-  class UnprocessableEntityError < Lithic::APIStatusError
-    HTTP_STATUS: 422
-  end
-
-  class RateLimitError < Lithic::APIStatusError
-    HTTP_STATUS: 429
-  end
-
-  class InternalServerError < Lithic::APIStatusError
-    HTTP_STATUS: Range[Integer]
-  end
+  class InternalServerError = Lithic::Errors::InternalServerError
 end

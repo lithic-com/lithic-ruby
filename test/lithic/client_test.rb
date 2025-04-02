@@ -211,7 +211,7 @@ class LithicTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "/redirected"}, {})
     lithic.requester = requester
 
-    assert_raises(Lithic::APIConnectionError) do
+    assert_raises(Lithic::Errors::APIConnectionError) do
       lithic.cards.create(type: :MERCHANT_LOCKED, request_options: {extra_headers: {}})
     end
 
@@ -229,7 +229,7 @@ class LithicTest < Minitest::Test
     requester = MockRequester.new(303, {"location" => "/redirected"}, {})
     lithic.requester = requester
 
-    assert_raises(Lithic::APIConnectionError) do
+    assert_raises(Lithic::Errors::APIConnectionError) do
       lithic.cards.create(type: :MERCHANT_LOCKED, request_options: {extra_headers: {}})
     end
 
@@ -244,7 +244,7 @@ class LithicTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "/redirected"}, {})
     lithic.requester = requester
 
-    assert_raises(Lithic::APIConnectionError) do
+    assert_raises(Lithic::Errors::APIConnectionError) do
       lithic.cards.create(
         type: :MERCHANT_LOCKED,
         request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
@@ -262,7 +262,7 @@ class LithicTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "https://example.com/redirected"}, {})
     lithic.requester = requester
 
-    assert_raises(Lithic::APIConnectionError) do
+    assert_raises(Lithic::Errors::APIConnectionError) do
       lithic.cards.create(
         type: :MERCHANT_LOCKED,
         request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}

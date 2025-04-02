@@ -47,7 +47,7 @@ module Lithic
       ) -> Lithic::Transport::BaseClient::request_input
 
       def self.reap_connection!: (
-        Integer | Lithic::APIConnectionError status,
+        Integer | Lithic::Errors::APIConnectionError status,
         stream: Enumerable[String]?
       ) -> void
 

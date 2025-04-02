@@ -92,7 +92,7 @@ module Lithic
               URI.join(url, response_headers["location"])
             rescue ArgumentError
               message = "Server responded with status #{status} but no valid location header."
-              raise Lithic::APIConnectionError.new(url: url, message: message)
+              raise Lithic::Errors::APIConnectionError.new(url: url, message: message)
             end
 
           request = {**request, url: location}
@@ -100,7 +100,7 @@ module Lithic
           case [url.scheme, location.scheme]
           in ["https", "http"]
             message = "Tried to redirect to a insecure URL"
-            raise Lithic::APIConnectionError.new(url: url, message: message)
+            raise Lithic::Errors::APIConnectionError.new(url: url, message: message)
           else
             nil
           end
@@ -129,13 +129,13 @@ module Lithic
 
         # @api private
         #
-        # @param status [Integer, Lithic::APIConnectionError]
+        # @param status [Integer, Lithic::Errors::APIConnectionError]
         # @param stream [Enumerable, nil]
         def reap_connection!(status, stream:)
           case status
           in (..199) | (300..499)
             stream&.each { next }
-          in Lithic::APIConnectionError | (500..)
+          in Lithic::Errors::APIConnectionError | (500..)
             Lithic::Util.close_fused!(stream)
           else
           end
@@ -326,7 +326,7 @@ module Lithic
       #
       # @param send_retry_header [Boolean]
       #
-      # @raise [Lithic::APIError]
+      # @raise [Lithic::Errors::APIError]
       # @return [Array(Integer, Net::HTTPResponse, Enumerable)]
       private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
         url, headers, max_retries, timeout = request.fetch_values(:url, :headers, :max_retries, :timeout)
@@ -349,7 +349,7 @@ module Lithic
           self.class.reap_connection!(status, stream: stream)
 
           message = "Failed to complete the request within #{self.class::MAX_REDIRECTS} redirects."
-          raise Lithic::APIConnectionError.new(url: url, message: message)
+          raise Lithic::Errors::APIConnectionError.new(url: url, message: message)
         in 300..399
           self.class.reap_connection!(status, stream: stream)
 
@@ -369,14 +369,14 @@ module Lithic
             self.class.reap_connection!(status, stream: stream)
           end
 
-          raise Lithic::APIStatusError.for(
+          raise Lithic::Errors::APIStatusError.for(
             url: url,
             status: status,
             body: decoded,
             request: nil,
             response: response
           )
-        in (400..) | Lithic::APIConnectionError
+        in (400..) | Lithic::Errors::APIConnectionError
           self.class.reap_connection!(status, stream: stream)
 
           delay = retry_delay(response, retry_count: retry_count)
@@ -416,7 +416,7 @@ module Lithic
       #
       #   @option req [Lithic::RequestOptions, Hash{Symbol=>Object}, nil] :options
       #
-      # @raise [Lithic::APIError]
+      # @raise [Lithic::Errors::APIError]
       # @return [Object]
       def request(req)
         self.class.validate!(req)
