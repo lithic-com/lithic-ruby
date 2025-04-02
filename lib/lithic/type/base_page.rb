@@ -29,7 +29,7 @@ module Lithic
       # @return [Boolean]
       def next_page? = (raise NotImplementedError)
 
-      # @raise [Lithic::APIError]
+      # @raise [Lithic::Errors::APIError]
       # @return [Lithic::Type::BasePage]
       def next_page = (raise NotImplementedError)
 

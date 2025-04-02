@@ -153,7 +153,7 @@ module Lithic
             end
           end
         rescue Timeout::Error
-          raise Lithic::APITimeoutError
+          raise Lithic::Errors::APITimeoutError
         end
 
         conn, _, response = enum.next
