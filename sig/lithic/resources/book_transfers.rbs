@@ -31,7 +31,7 @@ module Lithic
         ?starting_after: String,
         ?status: Lithic::Models::BookTransferListParams::status,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::CursorPage[Lithic::Models::BookTransferResponse]
+      ) -> Lithic::Internal::CursorPage[Lithic::Models::BookTransferResponse]
 
       def reverse: (
         String book_transfer_token,

@@ -5,8 +5,8 @@ module Lithic
     module AuthRules
       module V2
         class BacktestCreateParams < Lithic::BaseModel
-          extend Lithic::Type::RequestParameters::Converter
-          include Lithic::RequestParameters
+          extend Lithic::Internal::Type::RequestParameters::Converter
+          include Lithic::Internal::Type::RequestParameters
 
           # The end time of the backtest.
           sig { returns(T.nilable(Time)) }
@@ -26,7 +26,7 @@ module Lithic
             params(
               end_: Time,
               start: Time,
-              request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+              request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
             )
               .returns(T.attached_class)
           end

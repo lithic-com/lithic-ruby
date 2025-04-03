@@ -27,7 +27,7 @@ class Lithic::Test::Resources::DigitalCardArtTest < Lithic::Test::ResourceTest
     response = @lithic.digital_card_art.list
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

@@ -8,7 +8,9 @@ module Lithic
         attr_accessor :data
 
         sig do
-          params(data: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData, Lithic::Util::AnyHash)])
+          params(
+            data: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData, Lithic::Internal::Util::AnyHash)]
+          )
             .returns(T.attached_class)
         end
         def self.new(data:)

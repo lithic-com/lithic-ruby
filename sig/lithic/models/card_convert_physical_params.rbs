@@ -7,11 +7,11 @@ module Lithic
         product_id: String,
         shipping_method: Lithic::Models::CardConvertPhysicalParams::shipping_method
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class CardConvertPhysicalParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor shipping_address: Lithic::Models::ShippingAddress
 

@@ -3,14 +3,14 @@
 module Lithic
   module Models
     class ExternalBankAccountUpdateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Address
       sig { returns(T.nilable(Lithic::Models::ExternalBankAccountAddress)) }
       attr_reader :address
 
-      sig { params(address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash)).void }
+      sig { params(address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :address
 
       # Optional field that helps identify bank accounts in receipts
@@ -71,7 +71,7 @@ module Lithic
 
       sig do
         params(
-          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash),
+          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::Util::AnyHash),
           company_id: String,
           dob: Date,
           doing_business_as: String,
@@ -80,7 +80,7 @@ module Lithic
           owner_type: Lithic::Models::OwnerType::OrSymbol,
           type: Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol,
           user_defined_id: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class AccountHolderUploadDocumentParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # The type of document to upload
       sig { returns(Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol) }
@@ -18,7 +18,7 @@ module Lithic
         params(
           document_type: Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
           entity_token: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -8,11 +8,11 @@ module Lithic
         state: Lithic::Models::AccountUpdateParams::state,
         verification_address: Lithic::Models::AccountUpdateParams::VerificationAddress
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class AccountUpdateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader daily_spend_limit: Integer?
 

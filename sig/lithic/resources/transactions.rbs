@@ -21,7 +21,7 @@ module Lithic
         ?starting_after: String,
         ?status: Lithic::Models::TransactionListParams::status,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::CursorPage[Lithic::Models::Transaction]
+      ) -> Lithic::Internal::CursorPage[Lithic::Models::Transaction]
 
       def expire_authorization: (
         String transaction_token,

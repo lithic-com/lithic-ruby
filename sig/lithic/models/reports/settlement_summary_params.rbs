@@ -1,11 +1,12 @@
 module Lithic
   module Models
     module Reports
-      type settlement_summary_params = {  } & Lithic::request_parameters
+      type settlement_summary_params =
+        {  } & Lithic::Internal::Type::request_parameters
 
       class SettlementSummaryParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         def initialize: (?request_options: Lithic::request_opts) -> void
 

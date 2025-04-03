@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::FinancialAccounts::Statements#list
       class StatementListParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!attribute [r] begin_
         #   Date string in RFC 3339 format. Only entries created after the specified date

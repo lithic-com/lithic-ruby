@@ -2,11 +2,11 @@ module Lithic
   module Models
     type transfer_create_params =
       { amount: Integer, from: String, to: String, token: String, memo: String }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class TransferCreateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor amount: Integer
 

@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::ThreeDS::Decisioning#challenge_response
       class DecisioningChallengeResponseParams < Lithic::Models::ThreeDS::ChallengeResponse
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!parse
         #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]

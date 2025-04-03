@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::AccountHolders#simulate_enrollment_review
     class AccountHolderSimulateEnrollmentReviewParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute [r] account_holder_token
       #   The account holder which to perform the simulation upon.

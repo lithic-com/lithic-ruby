@@ -21,7 +21,7 @@ module Lithic
             ?settlement_institution_id: String,
             ?starting_after: String,
             ?request_options: Lithic::request_opts
-          ) -> Lithic::CursorPage[Lithic::Models::Reports::Settlement::NetworkTotalListResponse]
+          ) -> Lithic::Internal::CursorPage[Lithic::Models::Reports::Settlement::NetworkTotalListResponse]
 
           def initialize: (client: Lithic::Client) -> void
         end

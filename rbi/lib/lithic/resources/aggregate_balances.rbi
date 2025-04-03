@@ -8,9 +8,9 @@ module Lithic
       sig do
         params(
           financial_account_type: Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
-          .returns(Lithic::SinglePage[Lithic::Models::AggregateBalance])
+          .returns(Lithic::Internal::SinglePage[Lithic::Models::AggregateBalance])
       end
       def list(
         # Get the aggregate balance for a given Financial Account type.

@@ -1,11 +1,11 @@
 module Lithic
   module Models
     type transaction_simulate_return_reversal_params =
-      { token: String } & Lithic::request_parameters
+      { token: String } & Lithic::Internal::Type::request_parameters
 
     class TransactionSimulateReturnReversalParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor token: String
 

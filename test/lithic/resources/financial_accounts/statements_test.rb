@@ -45,7 +45,7 @@ class Lithic::Test::Resources::FinancialAccounts::StatementsTest < Lithic::Test:
     response = @lithic.financial_accounts.statements.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

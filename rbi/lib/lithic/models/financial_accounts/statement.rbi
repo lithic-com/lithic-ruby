@@ -13,7 +13,7 @@ module Lithic
 
         sig do
           params(
-            account_standing: T.any(Lithic::Models::FinancialAccounts::Statement::AccountStanding, Lithic::Util::AnyHash)
+            account_standing: T.any(Lithic::Models::FinancialAccounts::Statement::AccountStanding, Lithic::Internal::Util::AnyHash)
           )
             .void
         end
@@ -23,7 +23,9 @@ module Lithic
         attr_reader :amount_due
 
         sig do
-          params(amount_due: T.any(Lithic::Models::FinancialAccounts::Statement::AmountDue, Lithic::Util::AnyHash))
+          params(
+            amount_due: T.any(Lithic::Models::FinancialAccounts::Statement::AmountDue, Lithic::Internal::Util::AnyHash)
+          )
             .void
         end
         attr_writer :amount_due
@@ -66,7 +68,7 @@ module Lithic
 
         sig do
           params(
-            period_totals: T.any(Lithic::Models::FinancialAccounts::Statement::PeriodTotals, Lithic::Util::AnyHash)
+            period_totals: T.any(Lithic::Models::FinancialAccounts::Statement::PeriodTotals, Lithic::Internal::Util::AnyHash)
           )
             .void
         end
@@ -95,7 +97,9 @@ module Lithic
         attr_reader :ytd_totals
 
         sig do
-          params(ytd_totals: T.any(Lithic::Models::FinancialAccounts::Statement::YtdTotals, Lithic::Util::AnyHash))
+          params(
+            ytd_totals: T.any(Lithic::Models::FinancialAccounts::Statement::YtdTotals, Lithic::Internal::Util::AnyHash)
+          )
             .void
         end
         attr_writer :ytd_totals
@@ -105,7 +109,9 @@ module Lithic
 
         sig do
           params(
-            interest_details: T.nilable(T.any(Lithic::Models::FinancialAccounts::Statement::InterestDetails, Lithic::Util::AnyHash))
+            interest_details: T.nilable(
+              T.any(Lithic::Models::FinancialAccounts::Statement::InterestDetails, Lithic::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -128,8 +134,8 @@ module Lithic
         sig do
           params(
             token: String,
-            account_standing: T.any(Lithic::Models::FinancialAccounts::Statement::AccountStanding, Lithic::Util::AnyHash),
-            amount_due: T.any(Lithic::Models::FinancialAccounts::Statement::AmountDue, Lithic::Util::AnyHash),
+            account_standing: T.any(Lithic::Models::FinancialAccounts::Statement::AccountStanding, Lithic::Internal::Util::AnyHash),
+            amount_due: T.any(Lithic::Models::FinancialAccounts::Statement::AmountDue, Lithic::Internal::Util::AnyHash),
             available_credit: Integer,
             created: Time,
             credit_limit: Integer,
@@ -138,14 +144,16 @@ module Lithic
             ending_balance: Integer,
             financial_account_token: String,
             payment_due_date: T.nilable(Date),
-            period_totals: T.any(Lithic::Models::FinancialAccounts::Statement::PeriodTotals, Lithic::Util::AnyHash),
+            period_totals: T.any(Lithic::Models::FinancialAccounts::Statement::PeriodTotals, Lithic::Internal::Util::AnyHash),
             starting_balance: Integer,
             statement_end_date: Date,
             statement_start_date: Date,
             statement_type: Lithic::Models::FinancialAccounts::Statement::StatementType::OrSymbol,
             updated: Time,
-            ytd_totals: T.any(Lithic::Models::FinancialAccounts::Statement::YtdTotals, Lithic::Util::AnyHash),
-            interest_details: T.nilable(T.any(Lithic::Models::FinancialAccounts::Statement::InterestDetails, Lithic::Util::AnyHash)),
+            ytd_totals: T.any(Lithic::Models::FinancialAccounts::Statement::YtdTotals, Lithic::Internal::Util::AnyHash),
+            interest_details: T.nilable(
+              T.any(Lithic::Models::FinancialAccounts::Statement::InterestDetails, Lithic::Internal::Util::AnyHash)
+            ),
             next_payment_due_date: Date,
             next_statement_end_date: Date
           )
@@ -232,7 +240,7 @@ module Lithic
             params(
               financial_account_state: T.any(
                 Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState,
-                Lithic::Util::AnyHash
+                Lithic::Internal::Util::AnyHash
               )
             )
               .void
@@ -258,7 +266,7 @@ module Lithic
               days_past_due: Integer,
               financial_account_state: T.any(
                 Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState,
-                Lithic::Util::AnyHash
+                Lithic::Internal::Util::AnyHash
               ),
               has_grace: T::Boolean,
               period_number: Integer,
@@ -654,7 +662,7 @@ module Lithic
             params(
               daily_balance_amounts: T.any(
                 Lithic::Models::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts,
-                Lithic::Util::AnyHash
+                Lithic::Internal::Util::AnyHash
               )
             )
               .void
@@ -666,7 +674,10 @@ module Lithic
 
           sig do
             params(
-              effective_apr: T.any(Lithic::Models::FinancialAccounts::Statement::InterestDetails::EffectiveApr, Lithic::Util::AnyHash)
+              effective_apr: T.any(
+                Lithic::Models::FinancialAccounts::Statement::InterestDetails::EffectiveApr,
+                Lithic::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -686,7 +697,7 @@ module Lithic
             params(
               interest_for_period: T.any(
                 Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestForPeriod,
-                Lithic::Util::AnyHash
+                Lithic::Internal::Util::AnyHash
               )
             )
               .void
@@ -704,13 +715,16 @@ module Lithic
               actual_interest_charged: T.nilable(Integer),
               daily_balance_amounts: T.any(
                 Lithic::Models::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts,
-                Lithic::Util::AnyHash
+                Lithic::Internal::Util::AnyHash
               ),
-              effective_apr: T.any(Lithic::Models::FinancialAccounts::Statement::InterestDetails::EffectiveApr, Lithic::Util::AnyHash),
+              effective_apr: T.any(
+                Lithic::Models::FinancialAccounts::Statement::InterestDetails::EffectiveApr,
+                Lithic::Internal::Util::AnyHash
+              ),
               interest_calculation_method: Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod::OrSymbol,
               interest_for_period: T.any(
                 Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestForPeriod,
-                Lithic::Util::AnyHash
+                Lithic::Internal::Util::AnyHash
               ),
               prime_rate: T.nilable(String),
               minimum_interest_charged: T.nilable(Integer)

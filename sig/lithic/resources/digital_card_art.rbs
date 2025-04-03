@@ -11,7 +11,7 @@ module Lithic
         ?page_size: Integer,
         ?starting_after: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::CursorPage[Lithic::Models::DigitalCardArtAPI]
+      ) -> Lithic::Internal::CursorPage[Lithic::Models::DigitalCardArtAPI]
 
       def initialize: (client: Lithic::Client) -> void
     end

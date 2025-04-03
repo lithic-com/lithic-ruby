@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::FinancialAccounts#list
     class FinancialAccountListParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute [r] account_token
       #   List financial accounts for a given account_token or business_account_token

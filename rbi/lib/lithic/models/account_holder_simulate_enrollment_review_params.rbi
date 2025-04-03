@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class AccountHolderSimulateEnrollmentReviewParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # The account holder which to perform the simulation upon.
       sig { returns(T.nilable(String)) }
@@ -42,7 +42,7 @@ module Lithic
           account_holder_token: String,
           status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::OrSymbol,
           status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol],
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

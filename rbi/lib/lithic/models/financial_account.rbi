@@ -18,7 +18,7 @@ module Lithic
 
       sig do
         params(
-          credit_configuration: T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Util::AnyHash))
+          credit_configuration: T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Internal::Util::AnyHash))
         )
           .void
       end
@@ -56,7 +56,7 @@ module Lithic
           token: String,
           account_token: T.nilable(String),
           created: Time,
-          credit_configuration: T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Util::AnyHash)),
+          credit_configuration: T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Internal::Util::AnyHash)),
           is_for_benefit_of: T::Boolean,
           nickname: T.nilable(String),
           status: Lithic::Models::FinancialAccount::Status::OrSymbol,

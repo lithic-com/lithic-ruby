@@ -108,7 +108,7 @@ module Lithic
       # @param verification_states [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState>]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::CursorPage<Lithic::Models::ExternalBankAccountListResponse>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::ExternalBankAccountListResponse>]
       #
       # @see Lithic::Models::ExternalBankAccountListParams
       def list(params = {})
@@ -117,7 +117,7 @@ module Lithic
           method: :get,
           path: "v1/external_bank_accounts",
           query: parsed,
-          page: Lithic::CursorPage,
+          page: Lithic::Internal::CursorPage,
           model: Lithic::Models::ExternalBankAccountListResponse,
           options: options
         )

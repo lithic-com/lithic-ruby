@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class ManagementOperationCreateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       sig { returns(Integer) }
       attr_accessor :amount
@@ -60,7 +60,7 @@ module Lithic
           memo: String,
           subtype: String,
           user_defined_id: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

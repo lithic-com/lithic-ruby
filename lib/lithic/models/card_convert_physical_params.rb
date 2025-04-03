@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Cards#convert_physical
     class CardConvertPhysicalParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute shipping_address
       #   The shipping address this card will be sent to.

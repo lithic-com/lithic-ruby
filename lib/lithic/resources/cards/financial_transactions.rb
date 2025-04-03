@@ -43,7 +43,7 @@ module Lithic
         # @param status [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Status]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::SinglePage<Lithic::Models::FinancialTransaction>]
+        # @return [Lithic::Internal::SinglePage<Lithic::Models::FinancialTransaction>]
         #
         # @see Lithic::Models::Cards::FinancialTransactionListParams
         def list(card_token, params = {})
@@ -52,7 +52,7 @@ module Lithic
             method: :get,
             path: ["v1/cards/%1$s/financial_transactions", card_token],
             query: parsed,
-            page: Lithic::SinglePage,
+            page: Lithic::Internal::SinglePage,
             model: Lithic::Models::FinancialTransaction,
             options: options
           )

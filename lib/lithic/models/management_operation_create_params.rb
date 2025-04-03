@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::ManagementOperations#create
     class ManagementOperationCreateParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute amount
       #

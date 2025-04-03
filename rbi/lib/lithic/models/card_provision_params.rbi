@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class CardProvisionParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
       #   `activationData` in the response. Apple's public leaf certificate. Base64
@@ -67,7 +67,7 @@ module Lithic
           digital_wallet: Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol,
           nonce: String,
           nonce_signature: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

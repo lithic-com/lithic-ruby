@@ -14,7 +14,10 @@ module Lithic
 
           sig do
             params(
-              amounts: T.any(Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts, Lithic::Util::AnyHash)
+              amounts: T.any(
+                Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts,
+                Lithic::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -67,7 +70,10 @@ module Lithic
           sig do
             params(
               token: String,
-              amounts: T.any(Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts, Lithic::Util::AnyHash),
+              amounts: T.any(
+                Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts,
+                Lithic::Internal::Util::AnyHash
+              ),
               created: Time,
               currency: String,
               institution_id: String,

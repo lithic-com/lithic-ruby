@@ -21,7 +21,7 @@ class Lithic::Test::Resources::TokenizationsTest < Lithic::Test::ResourceTest
     response = @lithic.tokenizations.list
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

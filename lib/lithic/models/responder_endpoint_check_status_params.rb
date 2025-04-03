@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::ResponderEndpoints#check_status
     class ResponderEndpointCheckStatusParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute type
       #   The type of the endpoint.

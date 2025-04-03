@@ -3,16 +3,12 @@
 module Lithic
   module Models
     class ManagementOperationRetrieveParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       sig do
-        params(
-          request_options: T.any(
-            Lithic::RequestOptions,
-            Lithic::Util::AnyHash
-          )
-        ).returns(T.attached_class)
+        params(request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+          .returns(T.attached_class)
       end
       def self.new(request_options: {})
       end

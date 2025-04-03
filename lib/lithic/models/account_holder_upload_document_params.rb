@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::AccountHolders#upload_document
     class AccountHolderUploadDocumentParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute document_type
       #   The type of document to upload

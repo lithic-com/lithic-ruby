@@ -31,7 +31,7 @@ module Lithic
         ?starting_after: String,
         ?status: Lithic::Models::ExternalPaymentListParams::status,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::CursorPage[Lithic::Models::ExternalPayment]
+      ) -> Lithic::Internal::CursorPage[Lithic::Models::ExternalPayment]
 
       def cancel: (
         String external_payment_token,

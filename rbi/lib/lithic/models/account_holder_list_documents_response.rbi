@@ -6,10 +6,13 @@ module Lithic
       sig { returns(T.nilable(T::Array[Lithic::Models::Document])) }
       attr_reader :data
 
-      sig { params(data: T::Array[T.any(Lithic::Models::Document, Lithic::Util::AnyHash)]).void }
+      sig { params(data: T::Array[T.any(Lithic::Models::Document, Lithic::Internal::Util::AnyHash)]).void }
       attr_writer :data
 
-      sig { params(data: T::Array[T.any(Lithic::Models::Document, Lithic::Util::AnyHash)]).returns(T.attached_class) }
+      sig do
+        params(data: T::Array[T.any(Lithic::Models::Document, Lithic::Internal::Util::AnyHash)])
+          .returns(T.attached_class)
+      end
       def self.new(data: nil)
       end
 

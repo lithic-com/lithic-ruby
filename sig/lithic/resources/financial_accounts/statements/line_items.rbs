@@ -10,7 +10,7 @@ module Lithic
             ?page_size: Integer,
             ?starting_after: String,
             ?request_options: Lithic::request_opts
-          ) -> Lithic::CursorPage[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data]
+          ) -> Lithic::Internal::CursorPage[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data]
 
           def initialize: (client: Lithic::Client) -> void
         end

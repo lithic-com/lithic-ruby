@@ -123,7 +123,7 @@ class Lithic::Test::Resources::ExternalBankAccountsTest < Lithic::Test::Resource
     response = @lithic.external_bank_accounts.list
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

@@ -4,8 +4,8 @@ module Lithic
   module Models
     module Cards
       class AggregateBalanceListParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # Cardholder to retrieve aggregate balances for.
         sig { returns(T.nilable(String)) }
@@ -25,7 +25,7 @@ module Lithic
           params(
             account_token: String,
             business_account_token: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

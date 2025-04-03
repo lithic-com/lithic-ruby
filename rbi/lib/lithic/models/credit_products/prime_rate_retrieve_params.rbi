@@ -4,8 +4,8 @@ module Lithic
   module Models
     module CreditProducts
       class PrimeRateRetrieveParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # The effective date that the prime rates ends before
         sig { returns(T.nilable(Date)) }
@@ -25,7 +25,7 @@ module Lithic
           params(
             ending_before: Date,
             starting_after: Date,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -16,11 +16,11 @@ module Lithic
             settlement_institution_id: String,
             starting_after: String
           }
-          & Lithic::request_parameters
+          & Lithic::Internal::Type::request_parameters
 
         class NetworkTotalListParams < Lithic::BaseModel
-          extend Lithic::Type::RequestParameters::Converter
-          include Lithic::RequestParameters
+          extend Lithic::Internal::Type::RequestParameters::Converter
+          include Lithic::Internal::Type::RequestParameters
 
           attr_reader begin_: Time?
 

@@ -45,7 +45,7 @@ module Lithic
         # @param starting_after [String]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::CursorPage<Lithic::Models::FinancialAccounts::Statement>]
+        # @return [Lithic::Internal::CursorPage<Lithic::Models::FinancialAccounts::Statement>]
         #
         # @see Lithic::Models::FinancialAccounts::StatementListParams
         def list(financial_account_token, params = {})
@@ -54,7 +54,7 @@ module Lithic
             method: :get,
             path: ["v1/financial_accounts/%1$s/statements", financial_account_token],
             query: parsed,
-            page: Lithic::CursorPage,
+            page: Lithic::Internal::CursorPage,
             model: Lithic::Models::FinancialAccounts::Statement,
             options: options
           )

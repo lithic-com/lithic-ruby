@@ -61,7 +61,7 @@ module Lithic
 
       sig do
         params(
-          other_fees_details: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Util::AnyHash)
+          other_fees_details: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Internal::Util::AnyHash)
         )
           .void
       end
@@ -117,7 +117,7 @@ module Lithic
           interchange_fee_extended_precision: Integer,
           interchange_gross_amount: Integer,
           network: Lithic::Models::SettlementDetail::Network::OrSymbol,
-          other_fees_details: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Util::AnyHash),
+          other_fees_details: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Internal::Util::AnyHash),
           other_fees_gross_amount: Integer,
           report_date: String,
           settlement_date: String,

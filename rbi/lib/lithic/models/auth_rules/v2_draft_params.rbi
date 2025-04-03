@@ -4,8 +4,8 @@ module Lithic
   module Models
     module AuthRules
       class V2DraftParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # Parameters for the Auth Rule
         sig do
@@ -25,11 +25,11 @@ module Lithic
             parameters: T.nilable(
               T.any(
                 Lithic::Models::AuthRules::ConditionalBlockParameters,
-                Lithic::Util::AnyHash,
+                Lithic::Internal::Util::AnyHash,
                 Lithic::Models::AuthRules::VelocityLimitParams
               )
             ),
-            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

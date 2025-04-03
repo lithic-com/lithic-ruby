@@ -7,10 +7,10 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::Balance)) }
       attr_reader :balance
 
-      sig { params(balance: T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)).void }
+      sig { params(balance: T.any(Lithic::Models::Balance, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :balance
 
-      sig { params(balance: T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)).returns(T.attached_class) }
+      sig { params(balance: T.any(Lithic::Models::Balance, Lithic::Internal::Util::AnyHash)).returns(T.attached_class) }
       def self.new(balance: nil)
       end
 

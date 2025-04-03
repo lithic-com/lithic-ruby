@@ -5,11 +5,11 @@ module Lithic
         status: Lithic::Models::FinancialAccountUpdateStatusParams::status,
         status_change_reason: Lithic::Models::FinancialAccountUpdateStatusParams::status_change_reason?
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class FinancialAccountUpdateStatusParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor status: Lithic::Models::FinancialAccountUpdateStatusParams::status
 

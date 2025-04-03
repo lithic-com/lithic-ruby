@@ -21,7 +21,9 @@ module Lithic
 
         sig do
           params(
-            current_version: T.nilable(T.any(Lithic::Models::AuthRules::V2ListResponse::CurrentVersion, Lithic::Util::AnyHash))
+            current_version: T.nilable(
+              T.any(Lithic::Models::AuthRules::V2ListResponse::CurrentVersion, Lithic::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -32,7 +34,7 @@ module Lithic
 
         sig do
           params(
-            draft_version: T.nilable(T.any(Lithic::Models::AuthRules::V2ListResponse::DraftVersion, Lithic::Util::AnyHash))
+            draft_version: T.nilable(T.any(Lithic::Models::AuthRules::V2ListResponse::DraftVersion, Lithic::Internal::Util::AnyHash))
           )
             .void
         end
@@ -66,8 +68,10 @@ module Lithic
             token: String,
             account_tokens: T::Array[String],
             card_tokens: T::Array[String],
-            current_version: T.nilable(T.any(Lithic::Models::AuthRules::V2ListResponse::CurrentVersion, Lithic::Util::AnyHash)),
-            draft_version: T.nilable(T.any(Lithic::Models::AuthRules::V2ListResponse::DraftVersion, Lithic::Util::AnyHash)),
+            current_version: T.nilable(
+              T.any(Lithic::Models::AuthRules::V2ListResponse::CurrentVersion, Lithic::Internal::Util::AnyHash)
+            ),
+            draft_version: T.nilable(T.any(Lithic::Models::AuthRules::V2ListResponse::DraftVersion, Lithic::Internal::Util::AnyHash)),
             name: T.nilable(String),
             program_level: T::Boolean,
             state: Lithic::Models::AuthRules::V2ListResponse::State::OrSymbol,
@@ -131,7 +135,7 @@ module Lithic
             params(
               parameters: T.any(
                 Lithic::Models::AuthRules::ConditionalBlockParameters,
-                Lithic::Util::AnyHash,
+                Lithic::Internal::Util::AnyHash,
                 Lithic::Models::AuthRules::VelocityLimitParams
               ),
               version: Integer
@@ -192,7 +196,7 @@ module Lithic
             params(
               parameters: T.any(
                 Lithic::Models::AuthRules::ConditionalBlockParameters,
-                Lithic::Util::AnyHash,
+                Lithic::Internal::Util::AnyHash,
                 Lithic::Models::AuthRules::VelocityLimitParams
               ),
               version: Integer

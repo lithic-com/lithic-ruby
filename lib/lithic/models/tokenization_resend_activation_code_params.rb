@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Tokenizations#resend_activation_code
     class TokenizationResendActivationCodeParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute [r] activation_method_type
       #   The communication method that the user has selected to use to receive the

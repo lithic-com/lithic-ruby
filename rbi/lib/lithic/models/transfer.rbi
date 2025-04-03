@@ -47,14 +47,14 @@ module Lithic
       sig { returns(T.nilable(T::Array[Lithic::Models::Transfer::Event])) }
       attr_reader :events
 
-      sig { params(events: T::Array[T.any(Lithic::Models::Transfer::Event, Lithic::Util::AnyHash)]).void }
+      sig { params(events: T::Array[T.any(Lithic::Models::Transfer::Event, Lithic::Internal::Util::AnyHash)]).void }
       attr_writer :events
 
       # The updated balance of the sending financial account.
       sig { returns(T.nilable(T::Array[Lithic::Models::Balance])) }
       attr_reader :from_balance
 
-      sig { params(from_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)]).void }
+      sig { params(from_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Internal::Util::AnyHash)]).void }
       attr_writer :from_balance
 
       # Pending amount of the transaction in the currency's smallest unit (e.g., cents),
@@ -99,7 +99,7 @@ module Lithic
       sig { returns(T.nilable(T::Array[Lithic::Models::Balance])) }
       attr_reader :to_balance
 
-      sig { params(to_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)]).void }
+      sig { params(to_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Internal::Util::AnyHash)]).void }
       attr_writer :to_balance
 
       # Date and time when the financial transaction was last updated. UTC time zone.
@@ -116,13 +116,13 @@ module Lithic
           created: Time,
           currency: String,
           descriptor: String,
-          events: T::Array[T.any(Lithic::Models::Transfer::Event, Lithic::Util::AnyHash)],
-          from_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)],
+          events: T::Array[T.any(Lithic::Models::Transfer::Event, Lithic::Internal::Util::AnyHash)],
+          from_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Internal::Util::AnyHash)],
           pending_amount: Integer,
           result: Lithic::Models::Transfer::Result::OrSymbol,
           settled_amount: Integer,
           status: Lithic::Models::Transfer::Status::OrSymbol,
-          to_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Util::AnyHash)],
+          to_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Internal::Util::AnyHash)],
           updated: Time
         )
           .returns(T.attached_class)

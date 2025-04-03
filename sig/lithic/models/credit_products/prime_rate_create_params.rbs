@@ -2,11 +2,12 @@ module Lithic
   module Models
     module CreditProducts
       type prime_rate_create_params =
-        { effective_date: Date, rate: String } & Lithic::request_parameters
+        { effective_date: Date, rate: String }
+        & Lithic::Internal::Type::request_parameters
 
       class PrimeRateCreateParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_accessor effective_date: Date
 

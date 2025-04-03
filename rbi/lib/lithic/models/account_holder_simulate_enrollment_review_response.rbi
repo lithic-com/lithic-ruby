@@ -24,7 +24,7 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)]
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::Util::AnyHash)]
         )
           .void
       end
@@ -46,7 +46,7 @@ module Lithic
           beneficial_owner_individuals: T::Array[
           T.any(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
-            Lithic::Util::AnyHash
+            Lithic::Internal::Util::AnyHash
           )
           ]
         )
@@ -68,7 +68,7 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::KYBBusinessEntity)) }
       attr_reader :business_entity
 
-      sig { params(business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)).void }
+      sig { params(business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :business_entity
 
       # Only present when user_type == "BUSINESS".
@@ -87,7 +87,10 @@ module Lithic
 
       sig do
         params(
-          control_person: T.any(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson, Lithic::Util::AnyHash)
+          control_person: T.any(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
+            Lithic::Internal::Util::AnyHash
+          )
         )
           .void
       end
@@ -142,7 +145,10 @@ module Lithic
 
       sig do
         params(
-          individual: T.any(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual, Lithic::Util::AnyHash)
+          individual: T.any(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
+            Lithic::Internal::Util::AnyHash
+          )
         )
           .void
       end
@@ -171,7 +177,12 @@ module Lithic
       sig { returns(T.nilable(T::Array[Lithic::Models::RequiredDocument])) }
       attr_reader :required_documents
 
-      sig { params(required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)]).void }
+      sig do
+        params(
+          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::Util::AnyHash)]
+        )
+          .void
+      end
       attr_writer :required_documents
 
       # <Deprecated. Use verification_application.status instead>
@@ -226,7 +237,7 @@ module Lithic
         params(
           verification_application: T.any(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
-            Lithic::Util::AnyHash
+            Lithic::Internal::Util::AnyHash
           )
         )
           .void
@@ -244,30 +255,36 @@ module Lithic
         params(
           token: String,
           account_token: String,
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash)],
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::Util::AnyHash)],
           beneficial_owner_individuals: T::Array[
           T.any(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
-            Lithic::Util::AnyHash
+            Lithic::Internal::Util::AnyHash
           )
           ],
           business_account_token: String,
-          business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Util::AnyHash),
-          control_person: T.any(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson, Lithic::Util::AnyHash),
+          business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::Util::AnyHash),
+          control_person: T.any(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
+            Lithic::Internal::Util::AnyHash
+          ),
           created: Time,
           email: String,
           exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::OrSymbol,
           external_id: String,
-          individual: T.any(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual, Lithic::Util::AnyHash),
+          individual: T.any(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
+            Lithic::Internal::Util::AnyHash
+          ),
           nature_of_business: String,
           phone_number: String,
-          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)],
+          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::Util::AnyHash)],
           status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::OrSymbol,
           status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::OrSymbol],
           user_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::OrSymbol,
           verification_application: T.any(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
-            Lithic::Util::AnyHash
+            Lithic::Internal::Util::AnyHash
           ),
           website_url: String
         )
@@ -343,7 +360,7 @@ module Lithic
           params(
             address: T.any(
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
-              Lithic::Util::AnyHash
+              Lithic::Internal::Util::AnyHash
             )
           )
             .void
@@ -390,7 +407,7 @@ module Lithic
           params(
             address: T.any(
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
-              Lithic::Util::AnyHash
+              Lithic::Internal::Util::AnyHash
             ),
             dob: String,
             email: String,
@@ -495,7 +512,7 @@ module Lithic
           params(
             address: T.any(
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address,
-              Lithic::Util::AnyHash
+              Lithic::Internal::Util::AnyHash
             )
           )
             .void
@@ -553,7 +570,7 @@ module Lithic
           params(
             address: T.any(
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address,
-              Lithic::Util::AnyHash
+              Lithic::Internal::Util::AnyHash
             ),
             dob: String,
             email: String,
@@ -695,7 +712,7 @@ module Lithic
           params(
             address: T.any(
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address,
-              Lithic::Util::AnyHash
+              Lithic::Internal::Util::AnyHash
             )
           )
             .void
@@ -744,7 +761,7 @@ module Lithic
           params(
             address: T.any(
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address,
-              Lithic::Util::AnyHash
+              Lithic::Internal::Util::AnyHash
             ),
             dob: String,
             email: String,

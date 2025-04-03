@@ -7,7 +7,7 @@ class Lithic::Test::Resources::BalancesTest < Lithic::Test::ResourceTest
     response = @lithic.balances.list
 
     assert_pattern do
-      response => Lithic::SinglePage
+      response => Lithic::Internal::SinglePage
     end
 
     row = response.to_enum.first

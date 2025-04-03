@@ -7,7 +7,7 @@ module Lithic
       sig do
         params(
           account_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::Account)
       end
@@ -28,8 +28,8 @@ module Lithic
           lifetime_spend_limit: Integer,
           monthly_spend_limit: Integer,
           state: Lithic::Models::AccountUpdateParams::State::OrSymbol,
-          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Util::AnyHash),
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Internal::Util::AnyHash),
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::Account)
       end
@@ -69,9 +69,9 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
-          .returns(Lithic::CursorPage[Lithic::Models::Account])
+          .returns(Lithic::Internal::CursorPage[Lithic::Models::Account])
       end
       def list(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -100,7 +100,7 @@ module Lithic
       sig do
         params(
           account_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::AccountSpendLimits)
       end

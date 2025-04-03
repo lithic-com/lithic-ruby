@@ -10,11 +10,11 @@ module Lithic
           excluded_card_tokens: ::Array[String],
           program_level: bool
         }
-        & Lithic::request_parameters
+        & Lithic::Internal::Type::request_parameters
 
       class V2UpdateParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_reader account_tokens: ::Array[String]?
 

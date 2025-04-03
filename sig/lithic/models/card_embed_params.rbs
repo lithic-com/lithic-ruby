@@ -1,11 +1,12 @@
 module Lithic
   module Models
     type card_embed_params =
-      { embed_request: String, hmac: String } & Lithic::request_parameters
+      { embed_request: String, hmac: String }
+      & Lithic::Internal::Type::request_parameters
 
     class CardEmbedParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor embed_request: String
 

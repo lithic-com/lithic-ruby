@@ -23,7 +23,7 @@ module Lithic
       sig { returns(Lithic::Models::Card::Funding) }
       attr_reader :funding
 
-      sig { params(funding: T.any(Lithic::Models::Card::Funding, Lithic::Util::AnyHash)).void }
+      sig { params(funding: T.any(Lithic::Models::Card::Funding, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :funding
 
       # Last four digits of the card number.
@@ -198,7 +198,7 @@ module Lithic
           account_token: String,
           card_program_token: String,
           created: Time,
-          funding: T.any(Lithic::Models::Card::Funding, Lithic::Util::AnyHash),
+          funding: T.any(Lithic::Models::Card::Funding, Lithic::Internal::Util::AnyHash),
           last_four: String,
           pin_status: Lithic::Models::Card::PinStatus::OrSymbol,
           spend_limit: Integer,

@@ -7,7 +7,7 @@ module Lithic
           ?balance_date: Time,
           ?last_transaction_event_token: String,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::SinglePage[Lithic::Models::FinancialAccounts::BalanceListResponse]
+        ) -> Lithic::Internal::SinglePage[Lithic::Models::FinancialAccounts::BalanceListResponse]
 
         def initialize: (client: Lithic::Client) -> void
       end

@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class PaymentCreateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       sig { returns(Integer) }
       attr_accessor :amount
@@ -23,7 +23,7 @@ module Lithic
 
       sig do
         params(
-          method_attributes: T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Util::AnyHash)
+          method_attributes: T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Internal::Util::AnyHash)
         )
           .void
       end
@@ -58,12 +58,12 @@ module Lithic
           external_bank_account_token: String,
           financial_account_token: String,
           method_: Lithic::Models::PaymentCreateParams::Method::OrSymbol,
-          method_attributes: T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Util::AnyHash),
+          method_attributes: T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Internal::Util::AnyHash),
           type: Lithic::Models::PaymentCreateParams::Type::OrSymbol,
           token: String,
           memo: String,
           user_defined_id: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

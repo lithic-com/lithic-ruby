@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class TransactionSimulateReturnParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Amount (in cents) to authorize.
       sig { returns(Integer) }
@@ -23,7 +23,7 @@ module Lithic
           amount: Integer,
           descriptor: String,
           pan: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -6,11 +6,11 @@ module Lithic
         memo: String,
         progress_to: Lithic::Models::ExternalPaymentSettleParams::progress_to
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class ExternalPaymentSettleParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor effective_date: Date
 

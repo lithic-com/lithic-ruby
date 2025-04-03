@@ -23,7 +23,7 @@ module Lithic
         ?page_size: Integer,
         ?starting_after: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::CursorPage[Lithic::Models::Account]
+      ) -> Lithic::Internal::CursorPage[Lithic::Models::Account]
 
       def retrieve_spend_limits: (
         String account_token,

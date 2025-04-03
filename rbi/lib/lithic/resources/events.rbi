@@ -10,7 +10,7 @@ module Lithic
       sig do
         params(
           event_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::Event)
       end
@@ -27,9 +27,9 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           with_content: T::Boolean,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
-          .returns(Lithic::CursorPage[Lithic::Models::Event])
+          .returns(Lithic::Internal::CursorPage[Lithic::Models::Event])
       end
       def list(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -64,9 +64,9 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           status: Lithic::Models::EventListAttemptsParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
-          .returns(Lithic::CursorPage[Lithic::Models::MessageAttempt])
+          .returns(Lithic::Internal::CursorPage[Lithic::Models::MessageAttempt])
       end
       def list_attempts(
         event_token,

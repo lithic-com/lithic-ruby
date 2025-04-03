@@ -2,11 +2,12 @@ module Lithic
   module Models
     module FinancialAccounts
       type loan_tape_retrieve_params =
-        { financial_account_token: String } & Lithic::request_parameters
+        { financial_account_token: String }
+        & Lithic::Internal::Type::request_parameters
 
       class LoanTapeRetrieveParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_accessor financial_account_token: String
 

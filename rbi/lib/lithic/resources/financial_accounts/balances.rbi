@@ -10,9 +10,9 @@ module Lithic
             financial_account_token: String,
             balance_date: Time,
             last_transaction_event_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
           )
-            .returns(Lithic::SinglePage[Lithic::Models::FinancialAccounts::BalanceListResponse])
+            .returns(Lithic::Internal::SinglePage[Lithic::Models::FinancialAccounts::BalanceListResponse])
         end
         def list(
           # Globally unique identifier for financial account.

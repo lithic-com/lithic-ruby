@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class DisputeInitiateEvidenceUploadParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Filename of the evidence.
       sig { returns(T.nilable(String)) }
@@ -14,7 +14,10 @@ module Lithic
       attr_writer :filename
 
       sig do
-        params(filename: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+        params(
+          filename: String,
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+        )
           .returns(T.attached_class)
       end
       def self.new(filename: nil, request_options: {})

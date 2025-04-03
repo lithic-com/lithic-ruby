@@ -13,9 +13,11 @@ module Lithic
               ending_before: String,
               page_size: Integer,
               starting_after: String,
-              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
             )
-              .returns(Lithic::CursorPage[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data])
+              .returns(
+                Lithic::Internal::CursorPage[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data]
+              )
           end
           def list(
             # Path param: Globally unique identifier for statements.

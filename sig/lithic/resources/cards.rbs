@@ -54,7 +54,7 @@ module Lithic
         ?starting_after: String,
         ?state: Lithic::Models::CardListParams::state,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::CursorPage[Lithic::Models::Card]
+      ) -> Lithic::Internal::CursorPage[Lithic::Models::Card]
 
       def convert_physical: (
         String card_token,

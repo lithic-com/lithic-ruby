@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Disputes#retrieve_evidence
     class DisputeRetrieveEvidenceParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute dispute_token
       #

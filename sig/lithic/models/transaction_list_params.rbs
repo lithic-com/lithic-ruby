@@ -12,11 +12,11 @@ module Lithic
         starting_after: String,
         status: Lithic::Models::TransactionListParams::status
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class TransactionListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader account_token: String?
 

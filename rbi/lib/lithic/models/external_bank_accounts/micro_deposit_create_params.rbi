@@ -4,8 +4,8 @@ module Lithic
   module Models
     module ExternalBankAccounts
       class MicroDepositCreateParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         sig { returns(T::Array[Integer]) }
         attr_accessor :micro_deposits
@@ -13,7 +13,7 @@ module Lithic
         sig do
           params(
             micro_deposits: T::Array[Integer],
-            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

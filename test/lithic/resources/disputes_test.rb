@@ -108,7 +108,7 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
     response = @lithic.disputes.list
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first
@@ -223,7 +223,7 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
     response = @lithic.disputes.list_evidences("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

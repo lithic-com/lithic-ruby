@@ -61,7 +61,7 @@ module Lithic
       # @param starting_after [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::CursorPage<Lithic::Models::Account>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::Account>]
       #
       # @see Lithic::Models::AccountListParams
       def list(params = {})
@@ -70,7 +70,7 @@ module Lithic
           method: :get,
           path: "v1/accounts",
           query: parsed,
-          page: Lithic::CursorPage,
+          page: Lithic::Internal::CursorPage,
           model: Lithic::Models::Account,
           options: options
         )

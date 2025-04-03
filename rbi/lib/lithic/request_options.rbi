@@ -41,7 +41,7 @@ module Lithic
     attr_accessor :timeout
 
     # Returns a new instance of RequestOptions.
-    sig { params(values: Lithic::Util::AnyHash).returns(T.attached_class) }
+    sig { params(values: Lithic::Internal::Util::AnyHash).returns(T.attached_class) }
     def self.new(values = {})
     end
   end
