@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::AuthStreamEnrollment#retrieve_secret
-    class AuthStreamSecret < Lithic::BaseModel
+    class AuthStreamSecret < Lithic::Internal::Type::BaseModel
       # @!attribute [r] secret
       #   The shared HMAC ASA secret
       #
@@ -19,7 +19,7 @@ module Lithic
       #   #
       #   def initialize(secret: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

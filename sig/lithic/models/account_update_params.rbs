@@ -10,7 +10,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class AccountUpdateParams < Lithic::BaseModel
+    class AccountUpdateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -52,7 +52,7 @@ module Lithic
       type state = :ACTIVE | :PAUSED
 
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACTIVE: :ACTIVE
         PAUSED: :PAUSED
@@ -70,7 +70,7 @@ module Lithic
           state: String
         }
 
-      class VerificationAddress < Lithic::BaseModel
+      class VerificationAddress < Lithic::Internal::Type::BaseModel
         attr_reader address1: String?
 
         def address1=: (String) -> String

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module FinancialAccounts
-      class FinancialAccountCreditConfig < Lithic::BaseModel
+      class FinancialAccountCreditConfig < Lithic::Internal::Type::BaseModel
         # Globally unique identifier for the account
         sig { returns(String) }
         attr_accessor :account_token
@@ -86,7 +86,7 @@ module Lithic
 
         # Reason for the financial account being marked as Charged Off
         module ChargedOffReason
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason) }
@@ -122,7 +122,7 @@ module Lithic
 
         # State of the financial account
         module FinancialAccountState
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState) }

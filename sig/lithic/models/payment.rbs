@@ -22,7 +22,7 @@ module Lithic
         user_defined_id: String?
       }
 
-    class Payment < Lithic::BaseModel
+    class Payment < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor category: Lithic::Models::Payment::category
@@ -85,7 +85,7 @@ module Lithic
       type category = :ACH
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACH: :ACH
 
@@ -95,7 +95,7 @@ module Lithic
       type direction = :CREDIT | :DEBIT
 
       module Direction
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CREDIT: :CREDIT
         DEBIT: :DEBIT
@@ -113,7 +113,7 @@ module Lithic
           detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result]
         }
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
 
         attr_accessor amount: Integer
@@ -144,7 +144,7 @@ module Lithic
         type result = :APPROVED | :DECLINED
 
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED: :APPROVED
           DECLINED: :DECLINED
@@ -166,7 +166,7 @@ module Lithic
           | :ACH_RETURN_SETTLED
 
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACH_ORIGINATION_CANCELLED: :ACH_ORIGINATION_CANCELLED
           ACH_ORIGINATION_INITIATED: :ACH_ORIGINATION_INITIATED
@@ -192,7 +192,7 @@ module Lithic
           | :PROGRAM_MONTHLY_LIMIT_EXCEEDED
 
         module DetailedResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED: :APPROVED
           FUNDS_INSUFFICIENT: :FUNDS_INSUFFICIENT
@@ -208,7 +208,7 @@ module Lithic
       type method_ = :ACH_NEXT_DAY | :ACH_SAME_DAY
 
       module Method
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACH_NEXT_DAY: :ACH_NEXT_DAY
         ACH_SAME_DAY: :ACH_SAME_DAY
@@ -226,7 +226,7 @@ module Lithic
           trace_numbers: ::Array[String?]
         }
 
-      class MethodAttributes < Lithic::BaseModel
+      class MethodAttributes < Lithic::Internal::Type::BaseModel
         attr_accessor company_id: String?
 
         attr_accessor receipt_routing_number: String?
@@ -253,7 +253,7 @@ module Lithic
         type sec_code = :CCD | :PPD | :WEB
 
         module SecCode
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CCD: :CCD
           PPD: :PPD
@@ -266,7 +266,7 @@ module Lithic
       type result = :APPROVED | :DECLINED
 
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED: :APPROVED
         DECLINED: :DECLINED
@@ -277,7 +277,7 @@ module Lithic
       type source = :CUSTOMER | :LITHIC
 
       module Source
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CUSTOMER: :CUSTOMER
         LITHIC: :LITHIC
@@ -288,7 +288,7 @@ module Lithic
       type status = :DECLINED | :PENDING | :RETURNED | :SETTLED
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DECLINED: :DECLINED
         PENDING: :PENDING

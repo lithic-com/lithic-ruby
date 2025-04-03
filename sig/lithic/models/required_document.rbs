@@ -7,7 +7,7 @@ module Lithic
         valid_documents: ::Array[String]
       }
 
-    class RequiredDocument < Lithic::BaseModel
+    class RequiredDocument < Lithic::Internal::Type::BaseModel
       attr_accessor entity_token: String
 
       attr_accessor status_reasons: ::Array[String]

@@ -5,7 +5,7 @@ module Lithic
         type enhanced_commercial_data_retrieve_params =
           {  } & Lithic::Internal::Type::request_parameters
 
-        class EnhancedCommercialDataRetrieveParams < Lithic::BaseModel
+        class EnhancedCommercialDataRetrieveParams < Lithic::Internal::Type::BaseModel
           extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
 

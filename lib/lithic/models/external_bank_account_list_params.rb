@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::ExternalBankAccounts#list
-    class ExternalBankAccountListParams < Lithic::BaseModel
+    class ExternalBankAccountListParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -21,7 +21,7 @@ module Lithic
       #
       #   @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType>, nil]
       optional :account_types,
-               -> { Lithic::ArrayOf[enum: Lithic::Models::ExternalBankAccountListParams::AccountType] }
+               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::ExternalBankAccountListParams::AccountType] }
 
       # @!parse
       #   # @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType>]
@@ -30,7 +30,7 @@ module Lithic
       # @!attribute [r] countries
       #
       #   @return [Array<String>, nil]
-      optional :countries, Lithic::ArrayOf[String]
+      optional :countries, Lithic::Internal::Type::ArrayOf[String]
 
       # @!parse
       #   # @return [Array<String>]
@@ -50,7 +50,7 @@ module Lithic
       # @!attribute [r] owner_types
       #
       #   @return [Array<Symbol, Lithic::Models::OwnerType>, nil]
-      optional :owner_types, -> { Lithic::ArrayOf[enum: Lithic::Models::OwnerType] }
+      optional :owner_types, -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::OwnerType] }
 
       # @!parse
       #   # @return [Array<Symbol, Lithic::Models::OwnerType>]
@@ -80,7 +80,8 @@ module Lithic
       # @!attribute [r] states
       #
       #   @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::State>, nil]
-      optional :states, -> { Lithic::ArrayOf[enum: Lithic::Models::ExternalBankAccountListParams::State] }
+      optional :states,
+               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::ExternalBankAccountListParams::State] }
 
       # @!parse
       #   # @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::State>]
@@ -90,7 +91,7 @@ module Lithic
       #
       #   @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState>, nil]
       optional :verification_states,
-               -> { Lithic::ArrayOf[enum: Lithic::Models::ExternalBankAccountListParams::VerificationState] }
+               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::ExternalBankAccountListParams::VerificationState] }
 
       # @!parse
       #   # @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState>]
@@ -124,10 +125,10 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       module AccountType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CHECKING = :CHECKING
         SAVINGS = :SAVINGS
@@ -140,7 +141,7 @@ module Lithic
       end
 
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ENABLED = :ENABLED
         CLOSED = :CLOSED
@@ -154,7 +155,7 @@ module Lithic
       end
 
       module VerificationState
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         PENDING = :PENDING
         ENABLED = :ENABLED

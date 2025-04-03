@@ -2,13 +2,13 @@
 
 module Lithic
   module Models
-    class KYC < Lithic::BaseModel
+    class KYC < Lithic::Internal::Type::BaseModel
       # Information on individual for whom the account is being opened and KYC is being
       #   run.
       sig { returns(Lithic::Models::KYC::Individual) }
       attr_reader :individual
 
-      sig { params(individual: T.any(Lithic::Models::KYC::Individual, Lithic::Internal::Util::AnyHash)).void }
+      sig { params(individual: T.any(Lithic::Models::KYC::Individual, Lithic::Internal::AnyHash)).void }
       attr_writer :individual
 
       # An RFC 3339 timestamp indicating when the account holder accepted the applicable
@@ -41,7 +41,7 @@ module Lithic
 
       sig do
         params(
-          individual: T.any(Lithic::Models::KYC::Individual, Lithic::Internal::Util::AnyHash),
+          individual: T.any(Lithic::Models::KYC::Individual, Lithic::Internal::AnyHash),
           tos_timestamp: String,
           workflow: Lithic::Models::KYC::Workflow::OrSymbol,
           external_id: String,
@@ -67,13 +67,13 @@ module Lithic
       def to_hash
       end
 
-      class Individual < Lithic::BaseModel
+      class Individual < Lithic::Internal::Type::BaseModel
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig { returns(Lithic::Models::Address) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::AnyHash)).void }
         attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
@@ -108,7 +108,7 @@ module Lithic
         #   run.
         sig do
           params(
-            address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash),
+            address: T.any(Lithic::Models::Address, Lithic::Internal::AnyHash),
             dob: String,
             email: String,
             first_name: String,
@@ -141,7 +141,7 @@ module Lithic
 
       # Specifies the type of KYC workflow to run.
       module Workflow
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::KYC::Workflow) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::KYC::Workflow::TaggedSymbol) }

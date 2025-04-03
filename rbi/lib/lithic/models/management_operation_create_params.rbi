@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class ManagementOperationCreateParams < Lithic::BaseModel
+    class ManagementOperationCreateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -60,7 +60,7 @@ module Lithic
           memo: String,
           subtype: String,
           user_defined_id: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -101,7 +101,7 @@ module Lithic
       end
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationCreateParams::Category) }
         OrSymbol =
@@ -122,7 +122,7 @@ module Lithic
       end
 
       module Direction
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationCreateParams::Direction) }
         OrSymbol =
@@ -137,7 +137,7 @@ module Lithic
       end
 
       module EventType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationCreateParams::EventType) }
         OrSymbol =

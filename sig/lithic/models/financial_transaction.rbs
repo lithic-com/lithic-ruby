@@ -15,7 +15,7 @@ module Lithic
         updated: Time
       }
 
-    class FinancialTransaction < Lithic::BaseModel
+    class FinancialTransaction < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor category: Lithic::Models::FinancialTransaction::category
@@ -57,7 +57,7 @@ module Lithic
       type category = :ACH | :CARD | :INTERNAL | :TRANSFER
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACH: :ACH
         CARD: :CARD
@@ -76,7 +76,7 @@ module Lithic
           type: Lithic::Models::FinancialTransaction::Event::type_
         }
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         attr_reader token: String?
 
         def token=: (String) -> String
@@ -114,7 +114,7 @@ module Lithic
         type result = :APPROVED | :DECLINED
 
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED: :APPROVED
           DECLINED: :DECLINED
@@ -189,7 +189,7 @@ module Lithic
           | :RETURNED_PAYMENT_REVERSAL
 
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACH_ORIGINATION_CANCELLED: :ACH_ORIGINATION_CANCELLED
           ACH_ORIGINATION_INITIATED: :ACH_ORIGINATION_INITIATED
@@ -263,7 +263,7 @@ module Lithic
       type result = :APPROVED | :DECLINED
 
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED: :APPROVED
         DECLINED: :DECLINED
@@ -275,7 +275,7 @@ module Lithic
         :DECLINED | :EXPIRED | :PENDING | :RETURNED | :SETTLED | :VOIDED
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DECLINED: :DECLINED
         EXPIRED: :EXPIRED

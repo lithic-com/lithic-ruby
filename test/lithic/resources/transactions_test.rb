@@ -36,7 +36,7 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
         status: Lithic::Models::Transaction::Status,
         token_info: Lithic::Models::Transaction::TokenInfo | nil,
         updated: Time,
-        events: ^(Lithic::ArrayOf[Lithic::Models::Transaction::Event]) | nil
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Transaction::Event]) | nil
       }
     end
   end
@@ -81,7 +81,7 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
         status: Lithic::Models::Transaction::Status,
         token_info: Lithic::Models::Transaction::TokenInfo | nil,
         updated: Time,
-        events: ^(Lithic::ArrayOf[Lithic::Models::Transaction::Event]) | nil
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Transaction::Event]) | nil
       }
     end
   end

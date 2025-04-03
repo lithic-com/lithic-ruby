@@ -4,13 +4,13 @@ module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#update
     module AccountHolderUpdateResponse
-      extend Lithic::Union
+      extend Lithic::Internal::Type::Union
 
       variant -> { Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse }
 
       variant -> { Lithic::Models::AccountHolderUpdateResponse::PatchResponse }
 
-      class KYBKYCPatchResponse < Lithic::BaseModel
+      class KYBKYCPatchResponse < Lithic::Internal::Type::BaseModel
         # @!attribute [r] token
         #   Globally unique identifier for the account holder.
         #
@@ -36,7 +36,8 @@ module Lithic
         #     ownership in the company.
         #
         #   @return [Array<Lithic::Models::KYBBusinessEntity>, nil]
-        optional :beneficial_owner_entities, -> { Lithic::ArrayOf[Lithic::Models::KYBBusinessEntity] }
+        optional :beneficial_owner_entities,
+                 -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::KYBBusinessEntity] }
 
         # @!parse
         #   # @return [Array<Lithic::Models::KYBBusinessEntity>]
@@ -48,7 +49,7 @@ module Lithic
         #
         #   @return [Array<Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual>, nil]
         optional :beneficial_owner_individuals,
-                 -> { Lithic::ArrayOf[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual] }
+                 -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual] }
 
         # @!parse
         #   # @return [Array<Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual>]
@@ -184,7 +185,7 @@ module Lithic
         #     required for the account holder to be approved.
         #
         #   @return [Array<Lithic::Models::RequiredDocument>, nil]
-        optional :required_documents, -> { Lithic::ArrayOf[Lithic::Models::RequiredDocument] }
+        optional :required_documents, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument] }
 
         # @!parse
         #   # @return [Array<Lithic::Models::RequiredDocument>]
@@ -211,7 +212,7 @@ module Lithic
         #
         #   @return [Array<Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason>, nil]
         optional :status_reasons,
-                 -> { Lithic::ArrayOf[enum: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason] }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason] }
 
         # @!parse
         #   # @return [Array<Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason>]
@@ -303,9 +304,9 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
-        class BeneficialOwnerIndividual < Lithic::BaseModel
+        class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
           # @!attribute [r] address
           #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
           #     acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -379,10 +380,10 @@ module Lithic
           #   #
           #   def initialize(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual#address
-          class Address < Lithic::BaseModel
+          class Address < Lithic::Internal::Type::BaseModel
             # @!attribute address1
             #   Valid deliverable address (no PO boxes).
             #
@@ -439,12 +440,12 @@ module Lithic
             #   #
             #   def initialize(address1:, city:, country:, postal_code:, state:, address2: nil, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
         end
 
         # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse#control_person
-        class ControlPerson < Lithic::BaseModel
+        class ControlPerson < Lithic::Internal::Type::BaseModel
           # @!attribute [r] address
           #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
           #     acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -530,10 +531,10 @@ module Lithic
           #   #
           #   def initialize(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson#address
-          class Address < Lithic::BaseModel
+          class Address < Lithic::Internal::Type::BaseModel
             # @!attribute address1
             #   Valid deliverable address (no PO boxes).
             #
@@ -590,7 +591,7 @@ module Lithic
             #   #
             #   def initialize(address1:, city:, country:, postal_code:, state:, address2: nil, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
         end
 
@@ -599,7 +600,7 @@ module Lithic
         #
         # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse#exemption_type
         module ExemptionType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           AUTHORIZED_USER = :AUTHORIZED_USER
           PREPAID_CARD_USER = :PREPAID_CARD_USER
@@ -612,7 +613,7 @@ module Lithic
         end
 
         # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse#individual
-        class Individual < Lithic::BaseModel
+        class Individual < Lithic::Internal::Type::BaseModel
           # @!attribute [r] address
           #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
           #     acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -689,10 +690,10 @@ module Lithic
           #   #
           #   def initialize(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual#address
-          class Address < Lithic::BaseModel
+          class Address < Lithic::Internal::Type::BaseModel
             # @!attribute address1
             #   Valid deliverable address (no PO boxes).
             #
@@ -749,7 +750,7 @@ module Lithic
             #   #
             #   def initialize(address1:, city:, country:, postal_code:, state:, address2: nil, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
         end
 
@@ -762,7 +763,7 @@ module Lithic
         #
         # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse#status
         module Status
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACCEPTED = :ACCEPTED
           PENDING_DOCUMENT = :PENDING_DOCUMENT
@@ -778,7 +779,7 @@ module Lithic
 
         # Status Reasons for KYC/KYB enrollment states
         module StatusReason
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ADDRESS_VERIFICATION_FAILURE = :ADDRESS_VERIFICATION_FAILURE
           AGE_THRESHOLD_FAILURE = :AGE_THRESHOLD_FAILURE
@@ -824,7 +825,7 @@ module Lithic
         #
         # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse#user_type
         module UserType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           BUSINESS = :BUSINESS
           INDIVIDUAL = :INDIVIDUAL
@@ -837,7 +838,7 @@ module Lithic
         end
 
         # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse#verification_application
-        class VerificationApplication < Lithic::BaseModel
+        class VerificationApplication < Lithic::Internal::Type::BaseModel
           # @!attribute created
           #   Timestamp of when the application was created.
           #
@@ -860,7 +861,7 @@ module Lithic
           #   @return [Array<Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason>]
           required :status_reasons,
                    -> do
-                     Lithic::ArrayOf[
+                     Lithic::Internal::Type::ArrayOf[
                      enum: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason
                      ]
                    end
@@ -881,7 +882,7 @@ module Lithic
           #   #
           #   def initialize(created:, status:, status_reasons:, updated:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # KYC and KYB evaluation states.
           #
@@ -890,7 +891,7 @@ module Lithic
           #
           # @see Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication#status
           module Status
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             ACCEPTED = :ACCEPTED
             PENDING_DOCUMENT = :PENDING_DOCUMENT
@@ -906,7 +907,7 @@ module Lithic
 
           # Status Reasons for KYC/KYB enrollment states
           module StatusReason
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             ADDRESS_VERIFICATION_FAILURE = :ADDRESS_VERIFICATION_FAILURE
             AGE_THRESHOLD_FAILURE = :AGE_THRESHOLD_FAILURE
@@ -944,7 +945,7 @@ module Lithic
         end
       end
 
-      class PatchResponse < Lithic::BaseModel
+      class PatchResponse < Lithic::Internal::Type::BaseModel
         # @!attribute [r] token
         #   The token for the account holder that was updated
         #
@@ -1049,10 +1050,10 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # @see Lithic::Models::AccountHolderUpdateResponse::PatchResponse#address
-        class Address < Lithic::BaseModel
+        class Address < Lithic::Internal::Type::BaseModel
           # @!attribute address1
           #   Valid deliverable address (no PO boxes).
           #
@@ -1108,7 +1109,7 @@ module Lithic
           #   #
           #   def initialize(address1:, city:, country:, postal_code:, state:, address2: nil, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
       end
 

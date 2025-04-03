@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class KYBBusinessEntity < Lithic::BaseModel
+    class KYBBusinessEntity < Lithic::Internal::Type::BaseModel
       # @!attribute address
       #   Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
       #     acceptable; APO/FPO are acceptable.
@@ -29,7 +29,7 @@ module Lithic
       #     format.
       #
       #   @return [Array<String>]
-      required :phone_numbers, Lithic::ArrayOf[String]
+      required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
       # @!attribute [r] dba_business_name
       #   Any name that the business operates under that is not its legal business name
@@ -72,10 +72,10 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # @see Lithic::Models::KYBBusinessEntity#address
-      class Address < Lithic::BaseModel
+      class Address < Lithic::Internal::Type::BaseModel
         # @!attribute address1
         #   Valid deliverable address (no PO boxes).
         #
@@ -132,7 +132,7 @@ module Lithic
         #   #
         #   def initialize(address1:, city:, country:, postal_code:, state:, address2: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

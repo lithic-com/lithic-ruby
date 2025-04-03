@@ -5,7 +5,7 @@ module Lithic
     module AuthRules
       module V2
         # @see Lithic::Resources::AuthRules::V2::Backtests#retrieve
-        class BacktestResults < Lithic::BaseModel
+        class BacktestResults < Lithic::Internal::Type::BaseModel
           # @!attribute backtest_token
           #   Auth Rule Backtest Token
           #
@@ -30,10 +30,10 @@ module Lithic
           #   #
           #   def initialize(backtest_token:, results:, simulation_parameters:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # @see Lithic::Models::AuthRules::V2::BacktestResults#results
-          class Results < Lithic::BaseModel
+          class Results < Lithic::Internal::Type::BaseModel
             # @!attribute current_version
             #
             #   @return [Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion, nil]
@@ -54,10 +54,10 @@ module Lithic
             #   #
             #   def initialize(current_version: nil, draft_version: nil, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
             # @see Lithic::Models::AuthRules::V2::BacktestResults::Results#current_version
-            class CurrentVersion < Lithic::BaseModel
+            class CurrentVersion < Lithic::Internal::Type::BaseModel
               # @!attribute [r] approved
               #   The total number of historical transactions approved by this rule during the
               #     backtest period, or the number of transactions that would have been approved if
@@ -87,7 +87,7 @@ module Lithic
               #
               #   @return [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example>, nil]
               optional :examples,
-                       -> { Lithic::ArrayOf[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example] }
+                       -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example] }
 
               # @!parse
               #   # @return [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example>]
@@ -114,14 +114,14 @@ module Lithic
               #   #
               #   def initialize(approved: nil, declined: nil, examples: nil, version: nil, **) = super
 
-              # def initialize: (Hash | Lithic::BaseModel) -> void
+              # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
-              class Example < Lithic::BaseModel
+              class Example < Lithic::Internal::Type::BaseModel
                 # @!attribute [r] approved
                 #   Whether the rule would have approved the authorization request.
                 #
                 #   @return [Boolean, nil]
-                optional :approved, Lithic::BooleanModel
+                optional :approved, Lithic::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -154,12 +154,12 @@ module Lithic
                 #   #
                 #   def initialize(approved: nil, event_token: nil, timestamp: nil, **) = super
 
-                # def initialize: (Hash | Lithic::BaseModel) -> void
+                # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
               end
             end
 
             # @see Lithic::Models::AuthRules::V2::BacktestResults::Results#draft_version
-            class DraftVersion < Lithic::BaseModel
+            class DraftVersion < Lithic::Internal::Type::BaseModel
               # @!attribute [r] approved
               #   The total number of historical transactions approved by this rule during the
               #     backtest period, or the number of transactions that would have been approved if
@@ -189,7 +189,7 @@ module Lithic
               #
               #   @return [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example>, nil]
               optional :examples,
-                       -> { Lithic::ArrayOf[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example] }
+                       -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example] }
 
               # @!parse
               #   # @return [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example>]
@@ -216,14 +216,14 @@ module Lithic
               #   #
               #   def initialize(approved: nil, declined: nil, examples: nil, version: nil, **) = super
 
-              # def initialize: (Hash | Lithic::BaseModel) -> void
+              # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
-              class Example < Lithic::BaseModel
+              class Example < Lithic::Internal::Type::BaseModel
                 # @!attribute [r] approved
                 #   Whether the rule would have approved the authorization request.
                 #
                 #   @return [Boolean, nil]
-                optional :approved, Lithic::BooleanModel
+                optional :approved, Lithic::Internal::Type::BooleanModel
 
                 # @!parse
                 #   # @return [Boolean]
@@ -256,13 +256,13 @@ module Lithic
                 #   #
                 #   def initialize(approved: nil, event_token: nil, timestamp: nil, **) = super
 
-                # def initialize: (Hash | Lithic::BaseModel) -> void
+                # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
               end
             end
           end
 
           # @see Lithic::Models::AuthRules::V2::BacktestResults#simulation_parameters
-          class SimulationParameters < Lithic::BaseModel
+          class SimulationParameters < Lithic::Internal::Type::BaseModel
             # @!attribute [r] auth_rule_token
             #   Auth Rule Token
             #
@@ -300,7 +300,7 @@ module Lithic
             #   #
             #   def initialize(auth_rule_token: nil, end_: nil, start: nil, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
         end
       end

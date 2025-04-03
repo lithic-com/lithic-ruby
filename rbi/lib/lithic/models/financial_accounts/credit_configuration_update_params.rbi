@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module FinancialAccounts
-      class CreditConfigurationUpdateParams < Lithic::BaseModel
+      class CreditConfigurationUpdateParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
@@ -39,7 +39,7 @@ module Lithic
             credit_product_token: String,
             external_bank_account_token: String,
             tier: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end

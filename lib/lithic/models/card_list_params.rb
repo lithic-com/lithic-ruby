@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Cards#list
-    class CardListParams < Lithic::BaseModel
+    class CardListParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -106,11 +106,11 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Returns cards with the specified state.
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CLOSED = :CLOSED
         OPEN = :OPEN

@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class DisputeListParams < Lithic::BaseModel
+    class DisputeListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -68,7 +68,7 @@ module Lithic
           starting_after: String,
           status: Lithic::Models::DisputeListParams::Status::OrSymbol,
           transaction_tokens: T::Array[String],
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -104,7 +104,7 @@ module Lithic
 
       # List disputes of a specific status.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DisputeListParams::Status) }
         OrSymbol =

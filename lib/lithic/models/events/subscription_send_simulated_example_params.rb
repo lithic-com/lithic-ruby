@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Events
       # @see Lithic::Resources::Events::Subscriptions#send_simulated_example
-      class SubscriptionSendSimulatedExampleParams < Lithic::BaseModel
+      class SubscriptionSendSimulatedExampleParams < Lithic::Internal::Type::BaseModel
         # @!parse
         #   extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
@@ -26,11 +26,11 @@ module Lithic
         #   #
         #   def initialize(event_type: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # Event type to send example message for.
         module EventType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACCOUNT_HOLDER_CREATED = :"account_holder.created"
           ACCOUNT_HOLDER_UPDATED = :"account_holder.updated"

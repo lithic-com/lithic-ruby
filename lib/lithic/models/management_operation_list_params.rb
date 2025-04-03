@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::ManagementOperations#list
-    class ManagementOperationListParams < Lithic::BaseModel
+    class ManagementOperationListParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -130,11 +130,11 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Management operation category to be returned.
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         MANAGEMENT_FEE = :MANAGEMENT_FEE
         MANAGEMENT_DISPUTE = :MANAGEMENT_DISPUTE
@@ -150,7 +150,7 @@ module Lithic
 
       # Management operation status to be returned.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         PENDING = :PENDING
         SETTLED = :SETTLED

@@ -14,7 +14,7 @@ module Lithic
           updated: Time
         }
 
-      class AggregateBalanceListResponse < Lithic::BaseModel
+      class AggregateBalanceListResponse < Lithic::Internal::Type::BaseModel
         attr_accessor available_amount: Integer
 
         attr_accessor created: Time

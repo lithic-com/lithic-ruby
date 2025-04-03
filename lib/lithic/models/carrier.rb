@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class Carrier < Lithic::BaseModel
+    class Carrier < Lithic::Internal::Type::BaseModel
       # @!attribute [r] qr_code_url
       #   QR code url to display on the card carrier
       #
@@ -18,7 +18,7 @@ module Lithic
       #   #
       #   def initialize(qr_code_url: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

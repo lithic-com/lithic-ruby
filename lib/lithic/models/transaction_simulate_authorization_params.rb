@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Transactions#simulate_authorization
-    class TransactionSimulateAuthorizationParams < Lithic::BaseModel
+    class TransactionSimulateAuthorizationParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -80,7 +80,7 @@ module Lithic
       #     must be used for the remainder.
       #
       #   @return [Boolean, nil]
-      optional :partial_approval_capable, Lithic::BooleanModel
+      optional :partial_approval_capable, Lithic::Internal::Type::BooleanModel
 
       # @!parse
       #   # @return [Boolean]
@@ -151,7 +151,7 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Type of event to simulate.
       #
@@ -170,7 +170,7 @@ module Lithic
       #     to credit funds immediately, and no subsequent clearing is required to settle
       #     the transaction.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         AUTHORIZATION = :AUTHORIZATION
         BALANCE_INQUIRY = :BALANCE_INQUIRY

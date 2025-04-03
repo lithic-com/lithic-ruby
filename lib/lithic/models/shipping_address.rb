@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class ShippingAddress < Lithic::BaseModel
+    class ShippingAddress < Lithic::Internal::Type::BaseModel
       # @!attribute address1
       #   Valid USPS routable address.
       #
@@ -124,7 +124,7 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

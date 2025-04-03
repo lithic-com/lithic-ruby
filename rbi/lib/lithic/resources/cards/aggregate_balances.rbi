@@ -9,7 +9,7 @@ module Lithic
           params(
             account_token: String,
             business_account_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
           )
             .returns(Lithic::Internal::SinglePage[Lithic::Models::Cards::AggregateBalanceListResponse])
         end

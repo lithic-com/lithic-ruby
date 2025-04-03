@@ -4,7 +4,7 @@ module Lithic
   module Models
     module AuthRules
       # @see Lithic::Resources::AuthRules::V2#update
-      class V2UpdateParams < Lithic::BaseModel
+      class V2UpdateParams < Lithic::Internal::Type::BaseModel
         # @!parse
         #   extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
@@ -13,7 +13,7 @@ module Lithic
         #   Account tokens to which the Auth Rule applies.
         #
         #   @return [Array<String>, nil]
-        optional :account_tokens, Lithic::ArrayOf[String]
+        optional :account_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -43,7 +43,7 @@ module Lithic
         #   Card tokens to which the Auth Rule applies.
         #
         #   @return [Array<String>, nil]
-        optional :card_tokens, Lithic::ArrayOf[String]
+        optional :card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -53,7 +53,7 @@ module Lithic
         #   Card tokens to which the Auth Rule does not apply.
         #
         #   @return [Array<String>, nil]
-        optional :excluded_card_tokens, Lithic::ArrayOf[String]
+        optional :excluded_card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -63,7 +63,7 @@ module Lithic
         #   Whether the Auth Rule applies to all authorizations on the card program.
         #
         #   @return [Boolean, nil]
-        optional :program_level, Lithic::BooleanModel
+        optional :program_level, Lithic::Internal::Type::BooleanModel
 
         # @!parse
         #   # @return [Boolean]
@@ -91,7 +91,7 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # The desired state of the Auth Rule.
         #
@@ -99,7 +99,7 @@ module Lithic
         #   this time. If you need to (re-)activate an Auth Rule the /promote endpoint
         #   should be used to promote a draft to the currently active version.
         module State
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           INACTIVE = :INACTIVE
 

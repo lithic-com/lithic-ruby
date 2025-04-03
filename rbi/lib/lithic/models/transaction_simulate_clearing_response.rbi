@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class TransactionSimulateClearingResponse < Lithic::BaseModel
+    class TransactionSimulateClearingResponse < Lithic::Internal::Type::BaseModel
       # Debugging request ID to share with Lithic Support team.
       sig { returns(T.nilable(String)) }
       attr_reader :debugging_request_id

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Cards#search_by_pan
-    class CardSearchByPanParams < Lithic::BaseModel
+    class CardSearchByPanParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -20,7 +20,7 @@ module Lithic
       #   #
       #   def initialize(pan:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

@@ -7,7 +7,7 @@ module Lithic
         spend_velocity: Lithic::Models::CardSpendLimits::SpendVelocity
       }
 
-    class CardSpendLimits < Lithic::BaseModel
+    class CardSpendLimits < Lithic::Internal::Type::BaseModel
       attr_accessor available_spend_limit: Lithic::Models::CardSpendLimits::AvailableSpendLimit
 
       attr_reader spend_limit: Lithic::Models::CardSpendLimits::SpendLimit?
@@ -33,7 +33,7 @@ module Lithic
       type available_spend_limit =
         { annually: Integer, forever: Integer, monthly: Integer }
 
-      class AvailableSpendLimit < Lithic::BaseModel
+      class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
         attr_reader annually: Integer?
 
         def annually=: (Integer) -> Integer
@@ -58,7 +58,7 @@ module Lithic
       type spend_limit =
         { annually: Integer, forever: Integer, monthly: Integer }
 
-      class SpendLimit < Lithic::BaseModel
+      class SpendLimit < Lithic::Internal::Type::BaseModel
         attr_reader annually: Integer?
 
         def annually=: (Integer) -> Integer
@@ -83,7 +83,7 @@ module Lithic
       type spend_velocity =
         { annually: Integer, forever: Integer, monthly: Integer }
 
-      class SpendVelocity < Lithic::BaseModel
+      class SpendVelocity < Lithic::Internal::Type::BaseModel
         attr_reader annually: Integer?
 
         def annually=: (Integer) -> Integer

@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class CardProvisionParams < Lithic::BaseModel
+    class CardProvisionParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -67,7 +67,7 @@ module Lithic
           digital_wallet: Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol,
           nonce: String,
           nonce_signature: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -101,7 +101,7 @@ module Lithic
 
       # Name of digital wallet provider.
       module DigitalWallet
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardProvisionParams::DigitalWallet) }
         OrSymbol =

@@ -15,7 +15,7 @@ module Lithic
           updated: Time
         }
 
-      class BalanceListResponse < Lithic::BaseModel
+      class BalanceListResponse < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
 
         attr_accessor available_amount: Integer
@@ -54,7 +54,7 @@ module Lithic
         type type_ = :ISSUING | :OPERATING | :RESERVE
 
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ISSUING: :ISSUING
           OPERATING: :OPERATING

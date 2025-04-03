@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Events#retrieve
-    class Event < Lithic::BaseModel
+    class Event < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier.
       #
@@ -55,7 +55,7 @@ module Lithic
       # @!attribute payload
       #
       #   @return [Hash{Symbol=>Object}]
-      required :payload, Lithic::HashOf[Lithic::Unknown]
+      required :payload, Lithic::Internal::Type::HashOf[Lithic::Internal::Type::Unknown]
 
       # @!parse
       #   # A single event that affects the transaction state and lifecycle.
@@ -67,7 +67,7 @@ module Lithic
       #   #
       #   def initialize(token:, created:, event_type:, payload:, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Event types:
       #
@@ -101,7 +101,7 @@ module Lithic
       #
       # @see Lithic::Models::Event#event_type
       module EventType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACCOUNT_HOLDER_CREATED = :"account_holder.created"
         ACCOUNT_HOLDER_UPDATED = :"account_holder.updated"

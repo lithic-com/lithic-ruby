@@ -3,7 +3,7 @@ module Lithic
     type tokenization_simulate_response =
       { data: ::Array[Lithic::Models::Tokenization] }
 
-    class TokenizationSimulateResponse < Lithic::BaseModel
+    class TokenizationSimulateResponse < Lithic::Internal::Type::BaseModel
       attr_reader data: ::Array[Lithic::Models::Tokenization]?
 
       def data=: (

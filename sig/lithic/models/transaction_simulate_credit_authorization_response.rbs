@@ -3,7 +3,7 @@ module Lithic
     type transaction_simulate_credit_authorization_response =
       { token: String, debugging_request_id: String }
 
-    class TransactionSimulateCreditAuthorizationResponse < Lithic::BaseModel
+    class TransactionSimulateCreditAuthorizationResponse < Lithic::Internal::Type::BaseModel
       attr_reader token: String?
 
       def token=: (String) -> String

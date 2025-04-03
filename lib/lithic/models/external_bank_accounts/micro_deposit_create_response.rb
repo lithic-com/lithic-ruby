@@ -4,7 +4,7 @@ module Lithic
   module Models
     module ExternalBankAccounts
       # @see Lithic::Resources::ExternalBankAccounts::MicroDeposits#create
-      class MicroDepositCreateResponse < Lithic::BaseModel
+      class MicroDepositCreateResponse < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   A globally unique identifier for this record of an external bank account
         #     association. If a program links an external bank account to more than one
@@ -239,13 +239,13 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # Owner Type
         #
         # @see Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse#owner_type
         module OwnerType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           BUSINESS = :BUSINESS
           INDIVIDUAL = :INDIVIDUAL
@@ -261,7 +261,7 @@ module Lithic
         #
         # @see Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse#state
         module State
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ENABLED = :ENABLED
           CLOSED = :CLOSED
@@ -278,7 +278,7 @@ module Lithic
         #
         # @see Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse#type
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CHECKING = :CHECKING
           SAVINGS = :SAVINGS
@@ -294,7 +294,7 @@ module Lithic
         #
         # @see Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse#verification_method
         module VerificationMethod
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           MANUAL = :MANUAL
           MICRO_DEPOSIT = :MICRO_DEPOSIT
@@ -312,7 +312,7 @@ module Lithic
         #
         # @see Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse#verification_state
         module VerificationState
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           PENDING = :PENDING
           ENABLED = :ENABLED

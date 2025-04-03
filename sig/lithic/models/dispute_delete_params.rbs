@@ -3,7 +3,7 @@ module Lithic
     type dispute_delete_params =
       {  } & Lithic::Internal::Type::request_parameters
 
-    class DisputeDeleteParams < Lithic::BaseModel
+    class DisputeDeleteParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

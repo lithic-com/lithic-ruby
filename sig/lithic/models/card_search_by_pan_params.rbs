@@ -3,7 +3,7 @@ module Lithic
     type card_search_by_pan_params =
       { pan: String } & Lithic::Internal::Type::request_parameters
 
-    class CardSearchByPanParams < Lithic::BaseModel
+    class CardSearchByPanParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

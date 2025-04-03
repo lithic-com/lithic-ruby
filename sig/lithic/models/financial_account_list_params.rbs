@@ -8,7 +8,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class FinancialAccountListParams < Lithic::BaseModel
+    class FinancialAccountListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -38,7 +38,7 @@ module Lithic
       type type_ = :ISSUING | :OPERATING | :RESERVE
 
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ISSUING: :ISSUING
         OPERATING: :OPERATING

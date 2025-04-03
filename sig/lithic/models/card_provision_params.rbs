@@ -11,7 +11,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class CardProvisionParams < Lithic::BaseModel
+    class CardProvisionParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -56,7 +56,7 @@ module Lithic
       type digital_wallet = :APPLE_PAY | :GOOGLE_PAY | :SAMSUNG_PAY
 
       module DigitalWallet
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPLE_PAY: :APPLE_PAY
         GOOGLE_PAY: :GOOGLE_PAY

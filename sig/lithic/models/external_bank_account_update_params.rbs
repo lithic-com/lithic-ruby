@@ -14,7 +14,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class ExternalBankAccountUpdateParams < Lithic::BaseModel
+    class ExternalBankAccountUpdateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -78,7 +78,7 @@ module Lithic
       type type_ = :CHECKING | :SAVINGS
 
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CHECKING: :CHECKING
         SAVINGS: :SAVINGS

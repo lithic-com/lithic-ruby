@@ -11,7 +11,7 @@ module Lithic
         required_documents: ::Array[Lithic::Models::RequiredDocument]
       }
 
-    class AccountHolderCreateResponse < Lithic::BaseModel
+    class AccountHolderCreateResponse < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor account_token: String
@@ -54,7 +54,7 @@ module Lithic
         | :REJECTED
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACCEPTED: :ACCEPTED
         PENDING_REVIEW: :PENDING_REVIEW
@@ -92,7 +92,7 @@ module Lithic
         | :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
 
       module StatusReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ADDRESS_VERIFICATION_FAILURE: :ADDRESS_VERIFICATION_FAILURE
         AGE_THRESHOLD_FAILURE: :AGE_THRESHOLD_FAILURE

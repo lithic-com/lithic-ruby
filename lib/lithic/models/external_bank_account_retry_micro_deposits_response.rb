@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::ExternalBankAccounts#retry_micro_deposits
-    class ExternalBankAccountRetryMicroDepositsResponse < Lithic::BaseModel
+    class ExternalBankAccountRetryMicroDepositsResponse < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   A globally unique identifier for this record of an external bank account
       #     association. If a program links an external bank account to more than one
@@ -238,13 +238,13 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Owner Type
       #
       # @see Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse#owner_type
       module OwnerType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         BUSINESS = :BUSINESS
         INDIVIDUAL = :INDIVIDUAL
@@ -260,7 +260,7 @@ module Lithic
       #
       # @see Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse#state
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ENABLED = :ENABLED
         CLOSED = :CLOSED
@@ -277,7 +277,7 @@ module Lithic
       #
       # @see Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse#type
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CHECKING = :CHECKING
         SAVINGS = :SAVINGS
@@ -293,7 +293,7 @@ module Lithic
       #
       # @see Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse#verification_method
       module VerificationMethod
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         MANUAL = :MANUAL
         MICRO_DEPOSIT = :MICRO_DEPOSIT
@@ -311,7 +311,7 @@ module Lithic
       #
       # @see Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse#verification_state
       module VerificationState
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         PENDING = :PENDING
         ENABLED = :ENABLED

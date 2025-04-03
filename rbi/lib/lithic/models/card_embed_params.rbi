@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class CardEmbedParams < Lithic::BaseModel
+    class CardEmbedParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -18,7 +18,7 @@ module Lithic
         params(
           embed_request: String,
           hmac: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

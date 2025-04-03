@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#retrieve
-    class AccountHolder < Lithic::BaseModel
+    class AccountHolder < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier for the account holder.
       #
@@ -32,7 +32,7 @@ module Lithic
       #
       #   @return [Array<Lithic::Models::AccountHolder::BeneficialOwnerEntity>, nil]
       optional :beneficial_owner_entities,
-               -> { Lithic::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerEntity] }
+               -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerEntity] }
 
       # @!parse
       #   # @return [Array<Lithic::Models::AccountHolder::BeneficialOwnerEntity>]
@@ -44,7 +44,7 @@ module Lithic
       #
       #   @return [Array<Lithic::Models::AccountHolder::BeneficialOwnerIndividual>, nil]
       optional :beneficial_owner_individuals,
-               -> { Lithic::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerIndividual] }
+               -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerIndividual] }
 
       # @!parse
       #   # @return [Array<Lithic::Models::AccountHolder::BeneficialOwnerIndividual>]
@@ -162,7 +162,7 @@ module Lithic
       #     account holder to be approved.
       #
       #   @return [Array<Lithic::Models::RequiredDocument>, nil]
-      optional :required_documents, -> { Lithic::ArrayOf[Lithic::Models::RequiredDocument] }
+      optional :required_documents, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument] }
 
       # @!parse
       #   # @return [Array<Lithic::Models::RequiredDocument>]
@@ -189,7 +189,8 @@ module Lithic
       #     evaluation status.
       #
       #   @return [Array<Symbol, Lithic::Models::AccountHolder::StatusReason>, nil]
-      optional :status_reasons, -> { Lithic::ArrayOf[enum: Lithic::Models::AccountHolder::StatusReason] }
+      optional :status_reasons,
+               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolder::StatusReason] }
 
       # @!parse
       #   # @return [Array<Symbol, Lithic::Models::AccountHolder::StatusReason>]
@@ -276,9 +277,9 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
-      class BeneficialOwnerEntity < Lithic::BaseModel
+      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Business's physical address - PO boxes, UPS drops, and FedEx drops are not
         #     acceptable; APO/FPO are acceptable.
@@ -318,7 +319,7 @@ module Lithic
         #     format.
         #
         #   @return [Array<String>]
-        required :phone_numbers, Lithic::ArrayOf[String]
+        required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute [r] parent_company
         #   Parent company name (if applicable).
@@ -352,10 +353,10 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
-      class BeneficialOwnerIndividual < Lithic::BaseModel
+      class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Individual's current address
         #
@@ -413,11 +414,11 @@ module Lithic
         #   #
         #   def initialize(address:, dob:, email:, entity_token:, first_name:, last_name:, phone_number:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # @see Lithic::Models::AccountHolder#business_entity
-      class BusinessEntity < Lithic::BaseModel
+      class BusinessEntity < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Business's physical address - PO boxes, UPS drops, and FedEx drops are not
         #     acceptable; APO/FPO are acceptable.
@@ -457,7 +458,7 @@ module Lithic
         #     format.
         #
         #   @return [Array<String>]
-        required :phone_numbers, Lithic::ArrayOf[String]
+        required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute [r] parent_company
         #   Parent company name (if applicable).
@@ -494,11 +495,11 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # @see Lithic::Models::AccountHolder#control_person
-      class ControlPerson < Lithic::BaseModel
+      class ControlPerson < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Individual's current address
         #
@@ -559,14 +560,14 @@ module Lithic
         #   #
         #   def initialize(address:, dob:, email:, entity_token:, first_name:, last_name:, phone_number:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # The type of KYC exemption for a KYC-Exempt Account Holder.
       #
       # @see Lithic::Models::AccountHolder#exemption_type
       module ExemptionType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         AUTHORIZED_USER = :AUTHORIZED_USER
         PREPAID_CARD_USER = :PREPAID_CARD_USER
@@ -579,7 +580,7 @@ module Lithic
       end
 
       # @see Lithic::Models::AccountHolder#individual
-      class Individual < Lithic::BaseModel
+      class Individual < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Individual's current address
         #
@@ -636,7 +637,7 @@ module Lithic
         #   #
         #   def initialize(address:, dob:, email:, entity_token:, first_name:, last_name:, phone_number:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # <Deprecated. Use verification_application.status instead>
@@ -649,7 +650,7 @@ module Lithic
       #
       # @see Lithic::Models::AccountHolder#status
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACCEPTED = :ACCEPTED
         PENDING_REVIEW = :PENDING_REVIEW
@@ -665,7 +666,7 @@ module Lithic
       end
 
       module StatusReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ADDRESS_VERIFICATION_FAILURE = :ADDRESS_VERIFICATION_FAILURE
         AGE_THRESHOLD_FAILURE = :AGE_THRESHOLD_FAILURE
@@ -693,7 +694,7 @@ module Lithic
       #
       # @see Lithic::Models::AccountHolder#user_type
       module UserType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         BUSINESS = :BUSINESS
         INDIVIDUAL = :INDIVIDUAL
@@ -706,7 +707,7 @@ module Lithic
       end
 
       # @see Lithic::Models::AccountHolder#verification_application
-      class VerificationApplication < Lithic::BaseModel
+      class VerificationApplication < Lithic::Internal::Type::BaseModel
         # @!attribute [r] created
         #   Timestamp of when the application was created.
         #
@@ -736,7 +737,7 @@ module Lithic
         #
         #   @return [Array<Symbol, Lithic::Models::AccountHolder::VerificationApplication::StatusReason>, nil]
         optional :status_reasons,
-                 -> { Lithic::ArrayOf[enum: Lithic::Models::AccountHolder::VerificationApplication::StatusReason] }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolder::VerificationApplication::StatusReason] }
 
         # @!parse
         #   # @return [Array<Symbol, Lithic::Models::AccountHolder::VerificationApplication::StatusReason>]
@@ -762,7 +763,7 @@ module Lithic
         #   #
         #   def initialize(created: nil, status: nil, status_reasons: nil, updated: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # KYC and KYB evaluation states.
         #
@@ -772,7 +773,7 @@ module Lithic
         #
         # @see Lithic::Models::AccountHolder::VerificationApplication#status
         module Status
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACCEPTED = :ACCEPTED
           PENDING_REVIEW = :PENDING_REVIEW
@@ -788,7 +789,7 @@ module Lithic
         end
 
         module StatusReason
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ADDRESS_VERIFICATION_FAILURE = :ADDRESS_VERIFICATION_FAILURE
           AGE_THRESHOLD_FAILURE = :AGE_THRESHOLD_FAILURE

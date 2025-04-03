@@ -2,13 +2,13 @@
 
 module Lithic
   module Models
-    class AccountSpendLimits < Lithic::BaseModel
+    class AccountSpendLimits < Lithic::Internal::Type::BaseModel
       sig { returns(Lithic::Models::AccountSpendLimits::AvailableSpendLimit) }
       attr_reader :available_spend_limit
 
       sig do
         params(
-          available_spend_limit: T.any(Lithic::Models::AccountSpendLimits::AvailableSpendLimit, Lithic::Internal::Util::AnyHash)
+          available_spend_limit: T.any(Lithic::Models::AccountSpendLimits::AvailableSpendLimit, Lithic::Internal::AnyHash)
         )
           .void
       end
@@ -17,12 +17,7 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::AccountSpendLimits::SpendLimit)) }
       attr_reader :spend_limit
 
-      sig do
-        params(
-          spend_limit: T.any(Lithic::Models::AccountSpendLimits::SpendLimit, Lithic::Internal::Util::AnyHash)
-        )
-          .void
-      end
+      sig { params(spend_limit: T.any(Lithic::Models::AccountSpendLimits::SpendLimit, Lithic::Internal::AnyHash)).void }
       attr_writer :spend_limit
 
       sig { returns(T.nilable(Lithic::Models::AccountSpendLimits::SpendVelocity)) }
@@ -30,7 +25,7 @@ module Lithic
 
       sig do
         params(
-          spend_velocity: T.any(Lithic::Models::AccountSpendLimits::SpendVelocity, Lithic::Internal::Util::AnyHash)
+          spend_velocity: T.any(Lithic::Models::AccountSpendLimits::SpendVelocity, Lithic::Internal::AnyHash)
         )
           .void
       end
@@ -38,9 +33,9 @@ module Lithic
 
       sig do
         params(
-          available_spend_limit: T.any(Lithic::Models::AccountSpendLimits::AvailableSpendLimit, Lithic::Internal::Util::AnyHash),
-          spend_limit: T.any(Lithic::Models::AccountSpendLimits::SpendLimit, Lithic::Internal::Util::AnyHash),
-          spend_velocity: T.any(Lithic::Models::AccountSpendLimits::SpendVelocity, Lithic::Internal::Util::AnyHash)
+          available_spend_limit: T.any(Lithic::Models::AccountSpendLimits::AvailableSpendLimit, Lithic::Internal::AnyHash),
+          spend_limit: T.any(Lithic::Models::AccountSpendLimits::SpendLimit, Lithic::Internal::AnyHash),
+          spend_velocity: T.any(Lithic::Models::AccountSpendLimits::SpendVelocity, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -60,7 +55,7 @@ module Lithic
       def to_hash
       end
 
-      class AvailableSpendLimit < Lithic::BaseModel
+      class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
         # The available spend limit (in cents) relative to the daily limit configured on
         #   the Account (e.g. 100000 would be a $1,000 limit).
         sig { returns(T.nilable(Integer)) }
@@ -94,7 +89,7 @@ module Lithic
         end
       end
 
-      class SpendLimit < Lithic::BaseModel
+      class SpendLimit < Lithic::Internal::Type::BaseModel
         # The configured daily spend limit (in cents) on the Account.
         sig { returns(T.nilable(Integer)) }
         attr_reader :daily
@@ -125,7 +120,7 @@ module Lithic
         end
       end
 
-      class SpendVelocity < Lithic::BaseModel
+      class SpendVelocity < Lithic::Internal::Type::BaseModel
         # Current daily spend velocity (in cents) on the Account. Present if daily spend
         #   limit is set.
         sig { returns(T.nilable(Integer)) }

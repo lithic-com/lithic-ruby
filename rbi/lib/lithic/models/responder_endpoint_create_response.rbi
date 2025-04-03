@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class ResponderEndpointCreateResponse < Lithic::BaseModel
+    class ResponderEndpointCreateResponse < Lithic::Internal::Type::BaseModel
       # True if the endpoint was enrolled successfully.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :enrolled

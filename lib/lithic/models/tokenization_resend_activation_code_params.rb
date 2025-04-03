@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Tokenizations#resend_activation_code
-    class TokenizationResendActivationCodeParams < Lithic::BaseModel
+    class TokenizationResendActivationCodeParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -27,13 +27,13 @@ module Lithic
       #   #
       #   def initialize(activation_method_type: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # The communication method that the user has selected to use to receive the
       #   authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
       #   = "EMAIL_TO_CARDHOLDER_ADDRESS"
       module ActivationMethodType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         EMAIL_TO_CARDHOLDER_ADDRESS = :EMAIL_TO_CARDHOLDER_ADDRESS
         TEXT_TO_CARDHOLDER_NUMBER = :TEXT_TO_CARDHOLDER_NUMBER

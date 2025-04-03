@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::BookTransfers#create
-    class BookTransferResponse < Lithic::BaseModel
+    class BookTransferResponse < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Customer-provided token that will serve as an idempotency token. This token will
       #     become the transaction token.
@@ -34,7 +34,7 @@ module Lithic
       #   A list of all financial events that have modified this transfer.
       #
       #   @return [Array<Lithic::Models::BookTransferResponse::Event>]
-      required :events, -> { Lithic::ArrayOf[Lithic::Models::BookTransferResponse::Event] }
+      required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::BookTransferResponse::Event] }
 
       # @!attribute from_financial_account_token
       #   Globally unique identifier for the financial account or card that will send the
@@ -77,7 +77,7 @@ module Lithic
       #     the funds. Accepted type dependent on the program's use case.
       #
       #   @return [Object]
-      required :to_financial_account_token, Lithic::Unknown
+      required :to_financial_account_token, Lithic::Internal::Type::Unknown
 
       # @!attribute updated
       #   Date and time when the financial transaction was last updated. UTC time zone.
@@ -117,13 +117,13 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Category of the book transfer
       #
       # @see Lithic::Models::BookTransferResponse#category
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ADJUSTMENT = :ADJUSTMENT
         BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
@@ -140,7 +140,7 @@ module Lithic
         #   def self.values; end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   Globally unique identifier.
         #
@@ -165,7 +165,7 @@ module Lithic
         #
         #   @return [Array<Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResult>]
         required :detailed_results,
-                 -> { Lithic::ArrayOf[enum: Lithic::Models::BookTransferResponse::Event::DetailedResult] }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::BookTransferResponse::Event::DetailedResult] }
 
         # @!attribute memo
         #   Memo for the transfer.
@@ -204,10 +204,10 @@ module Lithic
         #   #
         #   def initialize(token:, amount:, created:, detailed_results:, memo:, result:, subtype:, type:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         module DetailedResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
           FUNDS_INSUFFICIENT = :FUNDS_INSUFFICIENT
@@ -224,7 +224,7 @@ module Lithic
         #
         # @see Lithic::Models::BookTransferResponse::Event#result
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
           DECLINED = :DECLINED
@@ -242,7 +242,7 @@ module Lithic
       #
       # @see Lithic::Models::BookTransferResponse#result
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED = :APPROVED
         DECLINED = :DECLINED
@@ -259,7 +259,7 @@ module Lithic
       #
       # @see Lithic::Models::BookTransferResponse#status
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DECLINED = :DECLINED
         REVERSED = :REVERSED

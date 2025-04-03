@@ -4,7 +4,7 @@ module Lithic
   module Models
     module AuthRules
       module V2
-        class BacktestRetrieveParams < Lithic::BaseModel
+        class BacktestRetrieveParams < Lithic::Internal::Type::BaseModel
           extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
 
@@ -14,7 +14,10 @@ module Lithic
           sig do
             params(
               auth_rule_token: String,
-              request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+              request_options: T.any(
+                Lithic::RequestOptions,
+                Lithic::Internal::AnyHash
+              )
             )
               .returns(T.attached_class)
           end

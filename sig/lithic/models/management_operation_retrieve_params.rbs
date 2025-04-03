@@ -3,7 +3,7 @@ module Lithic
     type management_operation_retrieve_params =
       {  } & Lithic::Internal::Type::request_parameters
 
-    class ManagementOperationRetrieveParams < Lithic::BaseModel
+    class ManagementOperationRetrieveParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

@@ -20,7 +20,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class AccountHolderUpdateParams < Lithic::BaseModel
+    class AccountHolderUpdateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -128,7 +128,7 @@ module Lithic
           phone_numbers: ::Array[String]
         }
 
-      class BeneficialOwnerEntity < Lithic::BaseModel
+      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
         attr_accessor entity_token: String
 
         attr_reader address: Lithic::Models::AddressUpdate?
@@ -182,7 +182,7 @@ module Lithic
           phone_number: String
         }
 
-      class BeneficialOwnerIndividual < Lithic::BaseModel
+      class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         attr_accessor entity_token: String
 
         attr_reader address: Lithic::Models::AddressUpdate?
@@ -240,7 +240,7 @@ module Lithic
           phone_numbers: ::Array[String]
         }
 
-      class BusinessEntity < Lithic::BaseModel
+      class BusinessEntity < Lithic::Internal::Type::BaseModel
         attr_accessor entity_token: String
 
         attr_reader address: Lithic::Models::AddressUpdate?
@@ -294,7 +294,7 @@ module Lithic
           phone_number: String
         }
 
-      class ControlPerson < Lithic::BaseModel
+      class ControlPerson < Lithic::Internal::Type::BaseModel
         attr_accessor entity_token: String
 
         attr_reader address: Lithic::Models::AddressUpdate?
@@ -353,7 +353,7 @@ module Lithic
           phone_number: String
         }
 
-      class Individual < Lithic::BaseModel
+      class Individual < Lithic::Internal::Type::BaseModel
         attr_accessor entity_token: String
 
         attr_reader address: Lithic::Models::AddressUpdate?

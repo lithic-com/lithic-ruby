@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module FinancialAccounts
-      class BalanceListResponse < Lithic::BaseModel
+      class BalanceListResponse < Lithic::Internal::Type::BaseModel
         # Globally unique identifier for the financial account that holds this balance.
         sig { returns(String) }
         attr_accessor :token
@@ -100,7 +100,7 @@ module Lithic
 
         # Type of financial account.
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::BalanceListResponse::Type) }

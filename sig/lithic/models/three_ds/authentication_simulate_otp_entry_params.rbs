@@ -5,7 +5,7 @@ module Lithic
         { token: String, otp: String }
         & Lithic::Internal::Type::request_parameters
 
-      class AuthenticationSimulateOtpEntryParams < Lithic::BaseModel
+      class AuthenticationSimulateOtpEntryParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 

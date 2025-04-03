@@ -14,7 +14,7 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
           )
             .returns(Lithic::Internal::CursorPage[Lithic::Models::SettlementDetail])
         end
@@ -37,7 +37,7 @@ module Lithic
         sig do
           params(
             report_date: Date,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
           )
             .returns(Lithic::Models::SettlementReport)
         end

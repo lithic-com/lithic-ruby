@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class DisputeEvidence < Lithic::BaseModel
+    class DisputeEvidence < Lithic::Internal::Type::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
       attr_accessor :token
@@ -96,7 +96,7 @@ module Lithic
       #   - `REJECTED` - Evidence was rejected.
       #   - `UPLOADED` - Evidence was uploaded.
       module UploadStatus
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DisputeEvidence::UploadStatus) }
         OrSymbol =

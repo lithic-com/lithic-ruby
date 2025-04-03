@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Disputes#initiate_evidence_upload
-    class DisputeInitiateEvidenceUploadParams < Lithic::BaseModel
+    class DisputeInitiateEvidenceUploadParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -24,7 +24,7 @@ module Lithic
       #   #
       #   def initialize(filename: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::ExternalPayments#create
-    class ExternalPaymentCreateParams < Lithic::BaseModel
+    class ExternalPaymentCreateParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -97,10 +97,10 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         EXTERNAL_WIRE = :EXTERNAL_WIRE
         EXTERNAL_ACH = :EXTERNAL_ACH
@@ -115,7 +115,7 @@ module Lithic
       end
 
       module PaymentType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DEPOSIT = :DEPOSIT
         WITHDRAWAL = :WITHDRAWAL
@@ -128,7 +128,7 @@ module Lithic
       end
 
       module ProgressTo
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         SETTLED = :SETTLED
         RELEASED = :RELEASED

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::TokenizationDecisioning#rotate_secret
-    class TokenizationDecisioningRotateSecretResponse < Lithic::BaseModel
+    class TokenizationDecisioningRotateSecretResponse < Lithic::Internal::Type::BaseModel
       # @!attribute [r] secret
       #   The new Tokenization Decisioning HMAC secret
       #
@@ -19,7 +19,7 @@ module Lithic
       #   #
       #   def initialize(secret: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

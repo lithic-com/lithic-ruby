@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class FinancialAccount < Lithic::BaseModel
+    class FinancialAccount < Lithic::Internal::Type::BaseModel
       # Globally unique identifier for the account
       sig { returns(String) }
       attr_accessor :token
@@ -18,7 +18,7 @@ module Lithic
 
       sig do
         params(
-          credit_configuration: T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Internal::Util::AnyHash))
+          credit_configuration: T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Internal::AnyHash))
         )
           .void
       end
@@ -56,7 +56,7 @@ module Lithic
           token: String,
           account_token: T.nilable(String),
           created: Time,
-          credit_configuration: T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Internal::Util::AnyHash)),
+          credit_configuration: T.nilable(T.any(Lithic::Models::FinancialAccount::CreditConfiguration, Lithic::Internal::AnyHash)),
           is_for_benefit_of: T::Boolean,
           nickname: T.nilable(String),
           status: Lithic::Models::FinancialAccount::Status::OrSymbol,
@@ -106,7 +106,7 @@ module Lithic
       def to_hash
       end
 
-      class CreditConfiguration < Lithic::BaseModel
+      class CreditConfiguration < Lithic::Internal::Type::BaseModel
         # Reason for the financial account being marked as Charged Off
         sig { returns(T.nilable(Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason::TaggedSymbol)) }
         attr_accessor :charged_off_reason
@@ -178,7 +178,7 @@ module Lithic
 
         # Reason for the financial account being marked as Charged Off
         module ChargedOffReason
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason) }
@@ -206,7 +206,7 @@ module Lithic
 
         # State of the financial account
         module FinancialAccountState
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState) }
@@ -253,7 +253,7 @@ module Lithic
 
       # Status of the financial account
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccount::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialAccount::Status::TaggedSymbol) }
@@ -269,7 +269,7 @@ module Lithic
       end
 
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccount::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialAccount::Type::TaggedSymbol) }
@@ -289,7 +289,7 @@ module Lithic
 
       # Reason for the financial account status change
       module StatusChangeReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccount::StatusChangeReason) }
         OrSymbol =

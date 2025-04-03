@@ -20,7 +20,7 @@ module Lithic
         | :WALLET_TYPE
 
       module ConditionalAttribute
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         MCC: :MCC
         COUNTRY: :COUNTRY

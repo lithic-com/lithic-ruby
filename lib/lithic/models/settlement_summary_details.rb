@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class SettlementSummaryDetails < Lithic::BaseModel
+    class SettlementSummaryDetails < Lithic::Internal::Type::BaseModel
       # @!attribute [r] currency
       #   3-character alphabetic ISO 4217 code.
       #
@@ -110,13 +110,13 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Card network where the transaction took place
       #
       # @see Lithic::Models::SettlementSummaryDetails#network
       module Network
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         INTERLINK = :INTERLINK
         MAESTRO = :MAESTRO

@@ -3,26 +3,26 @@
 require_relative "../../test_helper"
 
 class Lithic::Test::PrimitiveModelTest < Minitest::Test
-  A = Lithic::ArrayOf[-> { Integer }]
-  H = Lithic::HashOf[-> { Integer }, nil?: true]
+  A = Lithic::Internal::Type::ArrayOf[-> { Integer }]
+  H = Lithic::Internal::Type::HashOf[-> { Integer }, nil?: true]
 
   module E
-    extend Lithic::Enum
+    extend Lithic::Internal::Type::Enum
   end
 
   module U
-    extend Lithic::Union
+    extend Lithic::Internal::Type::Union
   end
 
-  class B < Lithic::BaseModel
+  class B < Lithic::Internal::Type::BaseModel
     optional :a, Integer
     optional :b, B
   end
 
   def test_typing
     converters = [
-      Lithic::Unknown,
-      Lithic::BooleanModel,
+      Lithic::Internal::Type::Unknown,
+      Lithic::Internal::Type::BooleanModel,
       A,
       H,
       E,
@@ -39,11 +39,11 @@ class Lithic::Test::PrimitiveModelTest < Minitest::Test
 
   def test_coerce
     cases = {
-      [Lithic::Unknown, :a] => [{yes: 1}, :a],
+      [Lithic::Internal::Type::Unknown, :a] => [{yes: 1}, :a],
       [NilClass, :a] => [{maybe: 1}, nil],
       [NilClass, nil] => [{yes: 1}, nil],
-      [Lithic::BooleanModel, true] => [{yes: 1}, true],
-      [Lithic::BooleanModel, "true"] => [{no: 1}, "true"],
+      [Lithic::Internal::Type::BooleanModel, true] => [{yes: 1}, true],
+      [Lithic::Internal::Type::BooleanModel, "true"] => [{no: 1}, "true"],
       [Integer, 1] => [{yes: 1}, 1],
       [Integer, 1.0] => [{maybe: 1}, 1],
       [Integer, "1"] => [{maybe: 1}, 1],
@@ -76,7 +76,7 @@ class Lithic::Test::PrimitiveModelTest < Minitest::Test
 
   def test_dump
     cases = {
-      [Lithic::Unknown, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
+      [Lithic::Internal::Type::Unknown, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [A, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [H, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [E, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
@@ -85,8 +85,8 @@ class Lithic::Test::PrimitiveModelTest < Minitest::Test
       [String, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [:b, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [nil, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
-      [Lithic::BooleanModel, true] => true,
-      [Lithic::BooleanModel, "true"] => "true",
+      [Lithic::Internal::Type::BooleanModel, true] => true,
+      [Lithic::Internal::Type::BooleanModel, "true"] => "true",
       [Integer, "1"] => "1",
       [Float, 1] => 1,
       [String, "one"] => "one",
@@ -126,27 +126,27 @@ end
 
 class Lithic::Test::EnumModelTest < Minitest::Test
   module E1
-    extend Lithic::Enum
+    extend Lithic::Internal::Type::Enum
 
     TRUE = true
   end
 
   module E2
-    extend Lithic::Enum
+    extend Lithic::Internal::Type::Enum
 
     ONE = 1
     TWO = 2
   end
 
   module E3
-    extend Lithic::Enum
+    extend Lithic::Internal::Type::Enum
 
     ONE = 1.0
     TWO = 2.0
   end
 
   module E4
-    extend Lithic::Enum
+    extend Lithic::Internal::Type::Enum
 
     ONE = :one
     TWO = :two
@@ -216,14 +216,14 @@ class Lithic::Test::EnumModelTest < Minitest::Test
 end
 
 class Lithic::Test::CollectionModelTest < Minitest::Test
-  A1 = Lithic::ArrayOf[-> { Integer }]
-  H1 = Lithic::HashOf[Integer]
+  A1 = Lithic::Internal::Type::ArrayOf[-> { Integer }]
+  H1 = Lithic::Internal::Type::HashOf[Integer]
 
-  A2 = Lithic::ArrayOf[H1]
-  H2 = Lithic::HashOf[-> { A1 }]
+  A2 = Lithic::Internal::Type::ArrayOf[H1]
+  H2 = Lithic::Internal::Type::HashOf[-> { A1 }]
 
-  A3 = Lithic::ArrayOf[Integer, nil?: true]
-  H3 = Lithic::HashOf[Integer, nil?: true]
+  A3 = Lithic::Internal::Type::ArrayOf[Integer, nil?: true]
+  H3 = Lithic::Internal::Type::HashOf[Integer, nil?: true]
 
   def test_coerce
     cases = {
@@ -263,7 +263,7 @@ class Lithic::Test::CollectionModelTest < Minitest::Test
 end
 
 class Lithic::Test::BaseModelTest < Minitest::Test
-  class M1 < Lithic::BaseModel
+  class M1 < Lithic::Internal::Type::BaseModel
     required :a, Integer
   end
 
@@ -273,7 +273,7 @@ class Lithic::Test::BaseModelTest < Minitest::Test
     optional :c, String
   end
 
-  class M3 < Lithic::BaseModel
+  class M3 < Lithic::Internal::Type::BaseModel
     optional :c, const: :c
     required :d, const: :d
   end
@@ -290,7 +290,7 @@ class Lithic::Test::BaseModelTest < Minitest::Test
     end
   end
 
-  class M5 < Lithic::BaseModel
+  class M5 < Lithic::Internal::Type::BaseModel
     request_only do
       required :c, const: :c
     end
@@ -301,7 +301,7 @@ class Lithic::Test::BaseModelTest < Minitest::Test
   end
 
   class M6 < M1
-    required :a, Lithic::ArrayOf[M6]
+    required :a, Lithic::Internal::Type::ArrayOf[M6]
   end
 
   def test_coerce
@@ -337,7 +337,7 @@ class Lithic::Test::BaseModelTest < Minitest::Test
       assert_pattern do
         coerced = Lithic::Internal::Type::Converter.coerce(target, input, state: state)
         assert_equal(coerced, coerced)
-        if coerced.is_a?(Lithic::BaseModel)
+        if coerced.is_a?(Lithic::Internal::Type::BaseModel)
           coerced.to_h => ^expect
         else
           coerced => ^expect
@@ -403,27 +403,27 @@ end
 
 class Lithic::Test::UnionTest < Minitest::Test
   module U0
-    extend Lithic::Union
+    extend Lithic::Internal::Type::Union
   end
 
   module U1
-    extend Lithic::Union
+    extend Lithic::Internal::Type::Union
     variant const: :a
     variant const: 2
   end
 
-  class M1 < Lithic::BaseModel
+  class M1 < Lithic::Internal::Type::BaseModel
     required :t, const: :a, api_name: :type
     optional :c, String
   end
 
-  class M2 < Lithic::BaseModel
+  class M2 < Lithic::Internal::Type::BaseModel
     required :type, const: :b
     optional :c, String
   end
 
   module U2
-    extend Lithic::Union
+    extend Lithic::Internal::Type::Union
     discriminator :type
 
     variant :a, M1
@@ -431,7 +431,7 @@ class Lithic::Test::UnionTest < Minitest::Test
   end
 
   module U3
-    extend Lithic::Union
+    extend Lithic::Internal::Type::Union
     discriminator :type
 
     variant :a, M1
@@ -439,37 +439,37 @@ class Lithic::Test::UnionTest < Minitest::Test
   end
 
   module U4
-    extend Lithic::Union
+    extend Lithic::Internal::Type::Union
     discriminator :type
 
     variant String
     variant :a, M1
   end
 
-  class M3 < Lithic::BaseModel
+  class M3 < Lithic::Internal::Type::BaseModel
     optional :recur, -> { U5 }
     required :a, Integer
   end
 
-  class M4 < Lithic::BaseModel
+  class M4 < Lithic::Internal::Type::BaseModel
     optional :recur, -> { U5 }
-    required :a, Lithic::ArrayOf[-> { U5 }]
+    required :a, Lithic::Internal::Type::ArrayOf[-> { U5 }]
   end
 
-  class M5 < Lithic::BaseModel
+  class M5 < Lithic::Internal::Type::BaseModel
     optional :recur, -> { U5 }
-    required :b, Lithic::ArrayOf[-> { U5 }]
+    required :b, Lithic::Internal::Type::ArrayOf[-> { U5 }]
   end
 
   module U5
-    extend Lithic::Union
+    extend Lithic::Internal::Type::Union
 
     variant -> { M3 }
     variant -> { M4 }
   end
 
   module U6
-    extend Lithic::Union
+    extend Lithic::Internal::Type::Union
 
     variant -> { M3 }
     variant -> { M5 }
@@ -480,7 +480,7 @@ class Lithic::Test::UnionTest < Minitest::Test
     tap do
       model.recur
       flunk
-    rescue Lithic::ConversionError => e
+    rescue Lithic::Errors::ConversionError => e
       assert_kind_of(ArgumentError, e.cause)
     end
   end
@@ -513,7 +513,7 @@ class Lithic::Test::UnionTest < Minitest::Test
       assert_pattern do
         coerced = Lithic::Internal::Type::Converter.coerce(target, input, state: state)
         assert_equal(coerced, coerced)
-        if coerced.is_a?(Lithic::BaseModel)
+        if coerced.is_a?(Lithic::Internal::Type::BaseModel)
           coerced.to_h => ^expect
         else
           coerced => ^expect
@@ -527,29 +527,29 @@ end
 
 class Lithic::Test::BaseModelQoLTest < Minitest::Test
   module E1
-    extend Lithic::Enum
+    extend Lithic::Internal::Type::Enum
 
     A = 1
   end
 
   module E2
-    extend Lithic::Enum
+    extend Lithic::Internal::Type::Enum
 
     A = 1
   end
 
   module E3
-    extend Lithic::Enum
+    extend Lithic::Internal::Type::Enum
 
     A = 2
     B = 3
   end
 
-  class M1 < Lithic::BaseModel
+  class M1 < Lithic::Internal::Type::BaseModel
     required :a, Integer
   end
 
-  class M2 < Lithic::BaseModel
+  class M2 < Lithic::Internal::Type::BaseModel
     required :a, Integer, nil?: true
   end
 
@@ -559,9 +559,9 @@ class Lithic::Test::BaseModelQoLTest < Minitest::Test
 
   def test_equality
     cases = {
-      [Lithic::Unknown, Lithic::Unknown] => true,
-      [Lithic::BooleanModel, Lithic::BooleanModel] => true,
-      [Lithic::Unknown, Lithic::BooleanModel] => false,
+      [Lithic::Internal::Type::Unknown, Lithic::Internal::Type::Unknown] => true,
+      [Lithic::Internal::Type::BooleanModel, Lithic::Internal::Type::BooleanModel] => true,
+      [Lithic::Internal::Type::Unknown, Lithic::Internal::Type::BooleanModel] => false,
       [E1, E2] => true,
       [E1, E3] => false,
       [M1, M2] => false,

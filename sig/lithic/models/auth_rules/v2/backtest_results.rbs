@@ -9,7 +9,7 @@ module Lithic
             simulation_parameters: Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters
           }
 
-        class BacktestResults < Lithic::BaseModel
+        class BacktestResults < Lithic::Internal::Type::BaseModel
           attr_accessor backtest_token: String
 
           attr_accessor results: Lithic::Models::AuthRules::V2::BacktestResults::Results
@@ -30,7 +30,7 @@ module Lithic
               draft_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion?
             }
 
-          class Results < Lithic::BaseModel
+          class Results < Lithic::Internal::Type::BaseModel
             attr_accessor current_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion?
 
             attr_accessor draft_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion?
@@ -50,7 +50,7 @@ module Lithic
                 version: Integer
               }
 
-            class CurrentVersion < Lithic::BaseModel
+            class CurrentVersion < Lithic::Internal::Type::BaseModel
               attr_reader approved: Integer?
 
               def approved=: (Integer) -> Integer
@@ -81,7 +81,7 @@ module Lithic
               type example =
                 { approved: bool, event_token: String, timestamp: Time }
 
-              class Example < Lithic::BaseModel
+              class Example < Lithic::Internal::Type::BaseModel
                 attr_reader approved: bool?
 
                 def approved=: (bool) -> bool
@@ -112,7 +112,7 @@ module Lithic
                 version: Integer
               }
 
-            class DraftVersion < Lithic::BaseModel
+            class DraftVersion < Lithic::Internal::Type::BaseModel
               attr_reader approved: Integer?
 
               def approved=: (Integer) -> Integer
@@ -143,7 +143,7 @@ module Lithic
               type example =
                 { approved: bool, event_token: String, timestamp: Time }
 
-              class Example < Lithic::BaseModel
+              class Example < Lithic::Internal::Type::BaseModel
                 attr_reader approved: bool?
 
                 def approved=: (bool) -> bool
@@ -170,7 +170,7 @@ module Lithic
           type simulation_parameters =
             { auth_rule_token: String, end_: Time, start: Time }
 
-          class SimulationParameters < Lithic::BaseModel
+          class SimulationParameters < Lithic::Internal::Type::BaseModel
             attr_reader auth_rule_token: String?
 
             def auth_rule_token=: (String) -> String

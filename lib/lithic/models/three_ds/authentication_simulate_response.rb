@@ -4,7 +4,7 @@ module Lithic
   module Models
     module ThreeDS
       # @see Lithic::Resources::ThreeDS::Authentication#simulate
-      class AuthenticationSimulateResponse < Lithic::BaseModel
+      class AuthenticationSimulateResponse < Lithic::Internal::Type::BaseModel
         # @!attribute [r] token
         #   A unique token to reference this transaction with later calls to void or clear
         #     the authorization.
@@ -21,7 +21,7 @@ module Lithic
         #   #
         #   def initialize(token: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

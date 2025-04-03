@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class EventSubscription < Lithic::BaseModel
+    class EventSubscription < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier.
       #
@@ -19,7 +19,7 @@ module Lithic
       #   Whether the subscription is disabled.
       #
       #   @return [Boolean]
-      required :disabled, Lithic::BooleanModel
+      required :disabled, Lithic::Internal::Type::BooleanModel
 
       # @!attribute url
       #
@@ -30,7 +30,7 @@ module Lithic
       #
       #   @return [Array<Symbol, Lithic::Models::EventSubscription::EventType>, nil]
       optional :event_types,
-               -> { Lithic::ArrayOf[enum: Lithic::Models::EventSubscription::EventType] },
+               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType] },
                nil?: true
 
       # @!parse
@@ -44,10 +44,10 @@ module Lithic
       #   #
       #   def initialize(token:, description:, disabled:, url:, event_types: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       module EventType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACCOUNT_HOLDER_CREATED = :"account_holder.created"
         ACCOUNT_HOLDER_UPDATED = :"account_holder.updated"

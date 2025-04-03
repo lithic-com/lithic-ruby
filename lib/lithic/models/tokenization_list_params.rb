@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Tokenizations#list
-    class TokenizationListParams < Lithic::BaseModel
+    class TokenizationListParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -117,12 +117,12 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Filter for tokenizations by tokenization channel. If this is not specified, only
       #   DIGITAL_WALLET tokenizations will be returned.
       module TokenizationChannel
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DIGITAL_WALLET = :DIGITAL_WALLET
         MERCHANT = :MERCHANT

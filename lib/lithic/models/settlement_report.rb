@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class SettlementReport < Lithic::BaseModel
+    class SettlementReport < Lithic::Internal::Type::BaseModel
       # @!attribute created
       #   Date and time when the transaction first occurred. UTC time zone.
       #
@@ -19,7 +19,7 @@ module Lithic
       # @!attribute details
       #
       #   @return [Array<Lithic::Models::SettlementSummaryDetails>]
-      required :details, -> { Lithic::ArrayOf[Lithic::Models::SettlementSummaryDetails] }
+      required :details, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::SettlementSummaryDetails] }
 
       # @!attribute disputes_gross_amount
       #   The total gross amount of disputes settlements. (This field is deprecated and
@@ -42,7 +42,7 @@ module Lithic
       #   Indicates that all data expected on the given report date is available.
       #
       #   @return [Boolean]
-      required :is_complete, Lithic::BooleanModel
+      required :is_complete, Lithic::Internal::Type::BooleanModel
 
       # @!attribute other_fees_gross_amount
       #   Total amount of gross other fees outside of interchange. (This field is
@@ -113,7 +113,7 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

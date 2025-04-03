@@ -5,7 +5,7 @@ module Lithic
         { begin_: Time, end_: Time }
         & Lithic::Internal::Type::request_parameters
 
-      class SubscriptionRecoverParams < Lithic::BaseModel
+      class SubscriptionRecoverParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 

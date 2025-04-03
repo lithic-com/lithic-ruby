@@ -18,7 +18,7 @@ class Lithic::Test::Resources::CardProgramsTest < Lithic::Test::ResourceTest
         pan_range_end: String,
         pan_range_start: String,
         cardholder_currency: String | nil,
-        settlement_currencies: ^(Lithic::ArrayOf[String]) | nil
+        settlement_currencies: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -45,7 +45,7 @@ class Lithic::Test::Resources::CardProgramsTest < Lithic::Test::ResourceTest
         pan_range_end: String,
         pan_range_start: String,
         cardholder_currency: String | nil,
-        settlement_currencies: ^(Lithic::ArrayOf[String]) | nil
+        settlement_currencies: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end

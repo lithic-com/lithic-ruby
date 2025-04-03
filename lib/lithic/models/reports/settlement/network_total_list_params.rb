@@ -5,7 +5,7 @@ module Lithic
     module Reports
       module Settlement
         # @see Lithic::Resources::Reports::Settlement::NetworkTotals#list
-        class NetworkTotalListParams < Lithic::BaseModel
+        class NetworkTotalListParams < Lithic::Internal::Type::BaseModel
           # @!parse
           #   extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
@@ -157,11 +157,11 @@ module Lithic
           #     super
           #   end
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # Network to filter on.
           module Network
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             VISA = :VISA
             MASTERCARD = :MASTERCARD

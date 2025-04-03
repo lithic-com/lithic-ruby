@@ -4,7 +4,7 @@ module Lithic
       type v2_retrieve_params =
         {  } & Lithic::Internal::Type::request_parameters
 
-      class V2RetrieveParams < Lithic::BaseModel
+      class V2RetrieveParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 

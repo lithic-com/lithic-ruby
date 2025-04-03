@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Cards
       # @see Lithic::Resources::Cards::Balances#list
-      class BalanceListParams < Lithic::BaseModel
+      class BalanceListParams < Lithic::Internal::Type::BaseModel
         # @!parse
         #   extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
@@ -38,7 +38,7 @@ module Lithic
         #   #
         #   def initialize(balance_date: nil, last_transaction_event_token: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

@@ -13,7 +13,7 @@ module Lithic
         external_id: String
       }
 
-    class KYCExempt < Lithic::BaseModel
+    class KYCExempt < Lithic::Internal::Type::BaseModel
       attr_accessor address: Lithic::Models::Address
 
       attr_accessor email: String
@@ -53,7 +53,7 @@ module Lithic
       type kyc_exemption_type = :AUTHORIZED_USER | :PREPAID_CARD_USER
 
       module KYCExemptionType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         AUTHORIZED_USER: :AUTHORIZED_USER
         PREPAID_CARD_USER: :PREPAID_CARD_USER
@@ -64,7 +64,7 @@ module Lithic
       type workflow = :KYC_EXEMPT
 
       module Workflow
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         KYC_EXEMPT: :KYC_EXEMPT
 

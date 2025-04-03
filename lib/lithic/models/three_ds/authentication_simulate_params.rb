@@ -4,7 +4,7 @@ module Lithic
   module Models
     module ThreeDS
       # @see Lithic::Resources::ThreeDS::Authentication#simulate
-      class AuthenticationSimulateParams < Lithic::BaseModel
+      class AuthenticationSimulateParams < Lithic::Internal::Type::BaseModel
         # @!parse
         #   extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
@@ -46,9 +46,9 @@ module Lithic
         #   #
         #   def initialize(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
-        class Merchant < Lithic::BaseModel
+        class Merchant < Lithic::Internal::Type::BaseModel
           # @!attribute id
           #   Unique identifier to identify the payment card acceptor. Corresponds to
           #     `merchant_acceptor_id` in authorization.
@@ -86,10 +86,10 @@ module Lithic
           #   #
           #   def initialize(id:, country:, mcc:, name:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
 
-        class Transaction < Lithic::BaseModel
+        class Transaction < Lithic::Internal::Type::BaseModel
           # @!attribute amount
           #   Amount (in cents) to authenticate.
           #
@@ -108,13 +108,13 @@ module Lithic
           #   #
           #   def initialize(amount:, currency:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
 
         # When set will use the following values as part of the Simulated Authentication.
         #   When not set defaults to MATCH
         module CardExpiryCheck
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           MATCH = :MATCH
           MISMATCH = :MISMATCH

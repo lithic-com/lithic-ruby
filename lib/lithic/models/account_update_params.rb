@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Accounts#update
-    class AccountUpdateParams < Lithic::BaseModel
+    class AccountUpdateParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -89,11 +89,11 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Account states.
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACTIVE = :ACTIVE
         PAUSED = :PAUSED
@@ -106,7 +106,7 @@ module Lithic
       end
 
       # @deprecated
-      class VerificationAddress < Lithic::BaseModel
+      class VerificationAddress < Lithic::Internal::Type::BaseModel
         # @!attribute [r] address1
         #
         #   @return [String, nil]
@@ -176,7 +176,7 @@ module Lithic
         #   #
         #   def initialize(address1: nil, address2: nil, city: nil, country: nil, postal_code: nil, state: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

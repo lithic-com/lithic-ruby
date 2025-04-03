@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class CardProvisionResponse < Lithic::BaseModel
+    class CardProvisionResponse < Lithic::Internal::Type::BaseModel
       sig { returns(T.nilable(String)) }
       attr_reader :provisioning_payload
 

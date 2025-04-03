@@ -13,7 +13,7 @@ module Lithic
         }
         & Lithic::Internal::Type::request_parameters
 
-      class FinancialTransactionListParams < Lithic::BaseModel
+      class FinancialTransactionListParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
@@ -67,7 +67,7 @@ module Lithic
         type category = :CARD | :TRANSFER
 
         module Category
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CARD: :CARD
           TRANSFER: :TRANSFER
@@ -78,7 +78,7 @@ module Lithic
         type result = :APPROVED | :DECLINED
 
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED: :APPROVED
           DECLINED: :DECLINED
@@ -90,7 +90,7 @@ module Lithic
           :DECLINED | :EXPIRED | :PENDING | :RETURNED | :SETTLED | :VOIDED
 
         module Status
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           DECLINED: :DECLINED
           EXPIRED: :EXPIRED

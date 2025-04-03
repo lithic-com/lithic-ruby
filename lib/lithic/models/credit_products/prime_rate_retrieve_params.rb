@@ -4,7 +4,7 @@ module Lithic
   module Models
     module CreditProducts
       # @see Lithic::Resources::CreditProducts::PrimeRates#retrieve
-      class PrimeRateRetrieveParams < Lithic::BaseModel
+      class PrimeRateRetrieveParams < Lithic::Internal::Type::BaseModel
         # @!parse
         #   extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
@@ -36,7 +36,7 @@ module Lithic
         #   #
         #   def initialize(ending_before: nil, starting_after: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

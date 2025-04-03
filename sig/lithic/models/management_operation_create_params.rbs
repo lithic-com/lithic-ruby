@@ -15,7 +15,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class ManagementOperationCreateParams < Lithic::BaseModel
+    class ManagementOperationCreateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -70,7 +70,7 @@ module Lithic
         | :MANAGEMENT_ADJUSTMENT
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         MANAGEMENT_FEE: :MANAGEMENT_FEE
         MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
@@ -83,7 +83,7 @@ module Lithic
       type direction = :CREDIT | :DEBIT
 
       module Direction
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CREDIT: :CREDIT
         DEBIT: :DEBIT
@@ -109,7 +109,7 @@ module Lithic
         | :RETURNED_PAYMENT_REVERSAL
 
       module EventType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CASH_BACK: :CASH_BACK
         CURRENCY_CONVERSION: :CURRENCY_CONVERSION

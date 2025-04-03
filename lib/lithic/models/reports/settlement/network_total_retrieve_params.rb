@@ -5,7 +5,7 @@ module Lithic
     module Reports
       module Settlement
         # @see Lithic::Resources::Reports::Settlement::NetworkTotals#retrieve
-        class NetworkTotalRetrieveParams < Lithic::BaseModel
+        class NetworkTotalRetrieveParams < Lithic::Internal::Type::BaseModel
           # @!parse
           #   extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
@@ -15,7 +15,7 @@ module Lithic
           #   #
           #   def initialize(request_options: {}, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
       end
     end

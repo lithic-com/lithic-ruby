@@ -14,7 +14,7 @@ module Lithic
         updated: Time
       }
 
-    class Balance < Lithic::BaseModel
+    class Balance < Lithic::Internal::Type::BaseModel
       attr_accessor available_amount: Integer
 
       attr_accessor created: Time
@@ -53,7 +53,7 @@ module Lithic
       type financial_account_type = :ISSUING | :OPERATING | :RESERVE
 
       module FinancialAccountType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ISSUING: :ISSUING
         OPERATING: :OPERATING

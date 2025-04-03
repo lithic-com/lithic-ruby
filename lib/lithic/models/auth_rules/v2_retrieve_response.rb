@@ -4,7 +4,7 @@ module Lithic
   module Models
     module AuthRules
       # @see Lithic::Resources::AuthRules::V2#retrieve
-      class V2RetrieveResponse < Lithic::BaseModel
+      class V2RetrieveResponse < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   Auth Rule Token
         #
@@ -15,13 +15,13 @@ module Lithic
         #   Account tokens to which the Auth Rule applies.
         #
         #   @return [Array<String>]
-        required :account_tokens, Lithic::ArrayOf[String]
+        required :account_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute card_tokens
         #   Card tokens to which the Auth Rule applies.
         #
         #   @return [Array<String>]
-        required :card_tokens, Lithic::ArrayOf[String]
+        required :card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute current_version
         #
@@ -45,7 +45,7 @@ module Lithic
         #   Whether the Auth Rule applies to all authorizations on the card program.
         #
         #   @return [Boolean]
-        required :program_level, Lithic::BooleanModel
+        required :program_level, Lithic::Internal::Type::BooleanModel
 
         # @!attribute state
         #   The state of the Auth Rule
@@ -63,7 +63,7 @@ module Lithic
         #   Card tokens to which the Auth Rule does not apply.
         #
         #   @return [Array<String>, nil]
-        optional :excluded_card_tokens, Lithic::ArrayOf[String]
+        optional :excluded_card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -97,10 +97,10 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # @see Lithic::Models::AuthRules::V2RetrieveResponse#current_version
-        class CurrentVersion < Lithic::BaseModel
+        class CurrentVersion < Lithic::Internal::Type::BaseModel
           # @!attribute parameters
           #   Parameters for the Auth Rule
           #
@@ -123,13 +123,13 @@ module Lithic
           #   #
           #   def initialize(parameters:, version:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # Parameters for the Auth Rule
           #
           # @see Lithic::Models::AuthRules::V2RetrieveResponse::CurrentVersion#parameters
           module Parameters
-            extend Lithic::Union
+            extend Lithic::Internal::Type::Union
 
             variant -> { Lithic::Models::AuthRules::ConditionalBlockParameters }
 
@@ -142,7 +142,7 @@ module Lithic
         end
 
         # @see Lithic::Models::AuthRules::V2RetrieveResponse#draft_version
-        class DraftVersion < Lithic::BaseModel
+        class DraftVersion < Lithic::Internal::Type::BaseModel
           # @!attribute parameters
           #   Parameters for the Auth Rule
           #
@@ -165,13 +165,13 @@ module Lithic
           #   #
           #   def initialize(parameters:, version:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # Parameters for the Auth Rule
           #
           # @see Lithic::Models::AuthRules::V2RetrieveResponse::DraftVersion#parameters
           module Parameters
-            extend Lithic::Union
+            extend Lithic::Internal::Type::Union
 
             variant -> { Lithic::Models::AuthRules::ConditionalBlockParameters }
 
@@ -187,7 +187,7 @@ module Lithic
         #
         # @see Lithic::Models::AuthRules::V2RetrieveResponse#state
         module State
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACTIVE = :ACTIVE
           INACTIVE = :INACTIVE
@@ -203,7 +203,7 @@ module Lithic
         #
         # @see Lithic::Models::AuthRules::V2RetrieveResponse#type
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CONDITIONAL_BLOCK = :CONDITIONAL_BLOCK
           VELOCITY_LIMIT = :VELOCITY_LIMIT

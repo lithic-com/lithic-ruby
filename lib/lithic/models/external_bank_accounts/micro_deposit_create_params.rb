@@ -4,7 +4,7 @@ module Lithic
   module Models
     module ExternalBankAccounts
       # @see Lithic::Resources::ExternalBankAccounts::MicroDeposits#create
-      class MicroDepositCreateParams < Lithic::BaseModel
+      class MicroDepositCreateParams < Lithic::Internal::Type::BaseModel
         # @!parse
         #   extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
@@ -12,7 +12,7 @@ module Lithic
         # @!attribute micro_deposits
         #
         #   @return [Array<Integer>]
-        required :micro_deposits, Lithic::ArrayOf[Integer]
+        required :micro_deposits, Lithic::Internal::Type::ArrayOf[Integer]
 
         # @!parse
         #   # @param micro_deposits [Array<Integer>]
@@ -20,7 +20,7 @@ module Lithic
         #   #
         #   def initialize(micro_deposits:, request_options: {}, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

@@ -5,7 +5,7 @@ module Lithic
         { ending_before: String, page_size: Integer, starting_after: String }
         & Lithic::Internal::Type::request_parameters
 
-      class SubscriptionListParams < Lithic::BaseModel
+      class SubscriptionListParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 

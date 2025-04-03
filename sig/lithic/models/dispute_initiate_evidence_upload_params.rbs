@@ -3,7 +3,7 @@ module Lithic
     type dispute_initiate_evidence_upload_params =
       { filename: String } & Lithic::Internal::Type::request_parameters
 
-    class DisputeInitiateEvidenceUploadParams < Lithic::BaseModel
+    class DisputeInitiateEvidenceUploadParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

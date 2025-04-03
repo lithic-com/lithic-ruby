@@ -14,7 +14,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class TransactionListParams < Lithic::BaseModel
+    class TransactionListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -76,7 +76,7 @@ module Lithic
       type result = :APPROVED | :DECLINED
 
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED: :APPROVED
         DECLINED: :DECLINED
@@ -87,7 +87,7 @@ module Lithic
       type status = :PENDING | :VOIDED | :SETTLED | :DECLINED | :EXPIRED
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         PENDING: :PENDING
         VOIDED: :VOIDED

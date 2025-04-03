@@ -7,7 +7,7 @@ module Lithic
           challenge_response: Lithic::Models::ThreeDS::challenge_result
         }
 
-      class ChallengeResponse < Lithic::BaseModel
+      class ChallengeResponse < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
 
         attr_accessor challenge_response: Lithic::Models::ThreeDS::challenge_result

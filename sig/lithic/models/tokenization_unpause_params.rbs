@@ -3,7 +3,7 @@ module Lithic
     type tokenization_unpause_params =
       {  } & Lithic::Internal::Type::request_parameters
 
-    class TokenizationUnpauseParams < Lithic::BaseModel
+    class TokenizationUnpauseParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

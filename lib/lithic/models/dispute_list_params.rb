@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Disputes#list
-    class DisputeListParams < Lithic::BaseModel
+    class DisputeListParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -76,7 +76,7 @@ module Lithic
       #   Transaction tokens to filter by.
       #
       #   @return [Array<String>, nil]
-      optional :transaction_tokens, Lithic::ArrayOf[String]
+      optional :transaction_tokens, Lithic::Internal::Type::ArrayOf[String]
 
       # @!parse
       #   # @return [Array<String>]
@@ -106,11 +106,11 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # List disputes of a specific status.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ARBITRATION = :ARBITRATION
         CASE_CLOSED = :CASE_CLOSED

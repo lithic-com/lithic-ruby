@@ -4,7 +4,7 @@ module Lithic
   module Models
     module AuthRules
       module V2
-        class BacktestResults < Lithic::BaseModel
+        class BacktestResults < Lithic::Internal::Type::BaseModel
           # Auth Rule Backtest Token
           sig { returns(String) }
           attr_accessor :backtest_token
@@ -13,9 +13,7 @@ module Lithic
           attr_reader :results
 
           sig do
-            params(
-              results: T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results, Lithic::Internal::Util::AnyHash)
-            )
+            params(results: T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results, Lithic::Internal::AnyHash))
               .void
           end
           attr_writer :results
@@ -25,10 +23,7 @@ module Lithic
 
           sig do
             params(
-              simulation_parameters: T.any(
-                Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters,
-                Lithic::Internal::Util::AnyHash
-              )
+              simulation_parameters: T.any(Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters, Lithic::Internal::AnyHash)
             )
               .void
           end
@@ -37,11 +32,8 @@ module Lithic
           sig do
             params(
               backtest_token: String,
-              results: T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results, Lithic::Internal::Util::AnyHash),
-              simulation_parameters: T.any(
-                Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters,
-                Lithic::Internal::Util::AnyHash
-              )
+              results: T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results, Lithic::Internal::AnyHash),
+              simulation_parameters: T.any(Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters, Lithic::Internal::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -61,17 +53,14 @@ module Lithic
           def to_hash
           end
 
-          class Results < Lithic::BaseModel
+          class Results < Lithic::Internal::Type::BaseModel
             sig { returns(T.nilable(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion)) }
             attr_reader :current_version
 
             sig do
               params(
                 current_version: T.nilable(
-                  T.any(
-                    Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion,
-                    Lithic::Internal::Util::AnyHash
-                  )
+                  T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion, Lithic::Internal::AnyHash)
                 )
               )
                 .void
@@ -84,10 +73,7 @@ module Lithic
             sig do
               params(
                 draft_version: T.nilable(
-                  T.any(
-                    Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion,
-                    Lithic::Internal::Util::AnyHash
-                  )
+                  T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion, Lithic::Internal::AnyHash)
                 )
               )
                 .void
@@ -97,16 +83,10 @@ module Lithic
             sig do
               params(
                 current_version: T.nilable(
-                  T.any(
-                    Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion,
-                    Lithic::Internal::Util::AnyHash
-                  )
+                  T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion, Lithic::Internal::AnyHash)
                 ),
                 draft_version: T.nilable(
-                  T.any(
-                    Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion,
-                    Lithic::Internal::Util::AnyHash
-                  )
+                  T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion, Lithic::Internal::AnyHash)
                 )
               )
                 .returns(T.attached_class)
@@ -126,7 +106,7 @@ module Lithic
             def to_hash
             end
 
-            class CurrentVersion < Lithic::BaseModel
+            class CurrentVersion < Lithic::Internal::Type::BaseModel
               # The total number of historical transactions approved by this rule during the
               #   backtest period, or the number of transactions that would have been approved if
               #   the rule was evaluated in shadow mode.
@@ -158,7 +138,7 @@ module Lithic
                   examples: T::Array[
                   T.any(
                     Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example,
-                    Lithic::Internal::Util::AnyHash
+                    Lithic::Internal::AnyHash
                   )
                   ]
                 )
@@ -181,7 +161,7 @@ module Lithic
                   examples: T::Array[
                   T.any(
                     Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example,
-                    Lithic::Internal::Util::AnyHash
+                    Lithic::Internal::AnyHash
                   )
                   ],
                   version: Integer
@@ -205,7 +185,7 @@ module Lithic
               def to_hash
               end
 
-              class Example < Lithic::BaseModel
+              class Example < Lithic::Internal::Type::BaseModel
                 # Whether the rule would have approved the authorization request.
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :approved
@@ -239,7 +219,7 @@ module Lithic
               end
             end
 
-            class DraftVersion < Lithic::BaseModel
+            class DraftVersion < Lithic::Internal::Type::BaseModel
               # The total number of historical transactions approved by this rule during the
               #   backtest period, or the number of transactions that would have been approved if
               #   the rule was evaluated in shadow mode.
@@ -271,7 +251,7 @@ module Lithic
                   examples: T::Array[
                   T.any(
                     Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example,
-                    Lithic::Internal::Util::AnyHash
+                    Lithic::Internal::AnyHash
                   )
                   ]
                 )
@@ -294,7 +274,7 @@ module Lithic
                   examples: T::Array[
                   T.any(
                     Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example,
-                    Lithic::Internal::Util::AnyHash
+                    Lithic::Internal::AnyHash
                   )
                   ],
                   version: Integer
@@ -318,7 +298,7 @@ module Lithic
               def to_hash
               end
 
-              class Example < Lithic::BaseModel
+              class Example < Lithic::Internal::Type::BaseModel
                 # Whether the rule would have approved the authorization request.
                 sig { returns(T.nilable(T::Boolean)) }
                 attr_reader :approved
@@ -353,7 +333,7 @@ module Lithic
             end
           end
 
-          class SimulationParameters < Lithic::BaseModel
+          class SimulationParameters < Lithic::Internal::Type::BaseModel
             # Auth Rule Token
             sig { returns(T.nilable(String)) }
             attr_reader :auth_rule_token

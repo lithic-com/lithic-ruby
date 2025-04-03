@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Transfers#create
-    class Transfer < Lithic::BaseModel
+    class Transfer < Lithic::Internal::Type::BaseModel
       # @!attribute [r] token
       #   Globally unique identifier for the transfer event.
       #
@@ -63,7 +63,7 @@ module Lithic
       #   A list of all financial events that have modified this trasnfer.
       #
       #   @return [Array<Lithic::Models::Transfer::Event>, nil]
-      optional :events, -> { Lithic::ArrayOf[Lithic::Models::Transfer::Event] }
+      optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Transfer::Event] }
 
       # @!parse
       #   # @return [Array<Lithic::Models::Transfer::Event>]
@@ -73,7 +73,7 @@ module Lithic
       #   The updated balance of the sending financial account.
       #
       #   @return [Array<Lithic::Models::Balance>, nil]
-      optional :from_balance, -> { Lithic::ArrayOf[Lithic::Models::Balance] }
+      optional :from_balance, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Balance] }
 
       # @!parse
       #   # @return [Array<Lithic::Models::Balance>]
@@ -133,7 +133,7 @@ module Lithic
       #   The updated balance of the receiving financial account.
       #
       #   @return [Array<Lithic::Models::Balance>, nil]
-      optional :to_balance, -> { Lithic::ArrayOf[Lithic::Models::Balance] }
+      optional :to_balance, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Balance] }
 
       # @!parse
       #   # @return [Array<Lithic::Models::Balance>]
@@ -183,7 +183,7 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Status types:
       #
@@ -192,7 +192,7 @@ module Lithic
       #
       # @see Lithic::Models::Transfer#category
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TRANSFER = :TRANSFER
 
@@ -203,7 +203,7 @@ module Lithic
         #   def self.values; end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         # @!attribute [r] token
         #   Globally unique identifier.
         #
@@ -264,14 +264,14 @@ module Lithic
         #   #
         #   def initialize(token: nil, amount: nil, created: nil, result: nil, type: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         #
         # @see Lithic::Models::Transfer::Event#result
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
           DECLINED = :DECLINED
@@ -285,7 +285,7 @@ module Lithic
 
         # @see Lithic::Models::Transfer::Event#type
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACH_ORIGINATION_CANCELLED = :ACH_ORIGINATION_CANCELLED
           ACH_ORIGINATION_INITIATED = :ACH_ORIGINATION_INITIATED
@@ -365,7 +365,7 @@ module Lithic
       #
       # @see Lithic::Models::Transfer#result
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED = :APPROVED
         DECLINED = :DECLINED
@@ -387,7 +387,7 @@ module Lithic
       #
       # @see Lithic::Models::Transfer#status
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DECLINED = :DECLINED
         EXPIRED = :EXPIRED

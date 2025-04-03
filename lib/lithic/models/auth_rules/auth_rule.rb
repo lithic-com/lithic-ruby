@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module AuthRules
-      class AuthRule < Lithic::BaseModel
+      class AuthRule < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   Globally unique identifier.
         #
@@ -22,7 +22,7 @@ module Lithic
         #     Rule.
         #
         #   @return [Array<String>, nil]
-        optional :account_tokens, Lithic::ArrayOf[String]
+        optional :account_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -34,7 +34,7 @@ module Lithic
         #     those countries in an Auth Rule does not override the Lithic-wide restrictions.
         #
         #   @return [Array<String>, nil]
-        optional :allowed_countries, Lithic::ArrayOf[String]
+        optional :allowed_countries, Lithic::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -44,7 +44,7 @@ module Lithic
         #   Merchant category codes for which the Auth Rule permits transactions.
         #
         #   @return [Array<String>, nil]
-        optional :allowed_mcc, Lithic::ArrayOf[String]
+        optional :allowed_mcc, Lithic::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -54,7 +54,7 @@ module Lithic
         #   Countries in which the Auth Rule automatically declines transactions.
         #
         #   @return [Array<String>, nil]
-        optional :blocked_countries, Lithic::ArrayOf[String]
+        optional :blocked_countries, Lithic::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -65,7 +65,7 @@ module Lithic
         #     transactions.
         #
         #   @return [Array<String>, nil]
-        optional :blocked_mcc, Lithic::ArrayOf[String]
+        optional :blocked_mcc, Lithic::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -76,7 +76,7 @@ module Lithic
         #     that only this field or `account_tokens` can be provided for a given Auth Rule.
         #
         #   @return [Array<String>, nil]
-        optional :card_tokens, Lithic::ArrayOf[String]
+        optional :card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -86,7 +86,7 @@ module Lithic
         #   Boolean indicating whether the Auth Rule is applied at the program level.
         #
         #   @return [Boolean, nil]
-        optional :program_level, Lithic::BooleanModel
+        optional :program_level, Lithic::Internal::Type::BooleanModel
 
         # @!parse
         #   # @return [Boolean]
@@ -118,13 +118,13 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # Indicates whether the Auth Rule is ACTIVE or INACTIVE
         #
         # @see Lithic::Models::AuthRules::AuthRule#state
         module State
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACTIVE = :ACTIVE
           INACTIVE = :INACTIVE

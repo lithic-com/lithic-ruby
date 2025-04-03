@@ -12,7 +12,7 @@ class Lithic::Test::Resources::Transactions::EnhancedCommercialDataTest < Lithic
 
     assert_pattern do
       response => {
-        data: ^(Lithic::ArrayOf[Lithic::Models::Transactions::Events::EnhancedData])
+        data: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Transactions::Events::EnhancedData])
       }
     end
   end

@@ -8,7 +8,7 @@ module Lithic
         payload: ::Hash[Symbol, top]
       }
 
-    class Event < Lithic::BaseModel
+    class Event < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor created: Time
@@ -71,7 +71,7 @@ module Lithic
         | :"tokenization.updated"
 
       module EventType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACCOUNT_HOLDER_CREATED: :"account_holder.created"
         ACCOUNT_HOLDER_UPDATED: :"account_holder.updated"

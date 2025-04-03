@@ -4,7 +4,7 @@ module Lithic
   module Models
     module AuthRules
       # @see Lithic::Resources::AuthRules::V2#draft
-      class V2DraftParams < Lithic::BaseModel
+      class V2DraftParams < Lithic::Internal::Type::BaseModel
         # @!parse
         #   extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
@@ -21,11 +21,11 @@ module Lithic
         #   #
         #   def initialize(parameters: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # Parameters for the Auth Rule
         module Parameters
-          extend Lithic::Union
+          extend Lithic::Internal::Type::Union
 
           variant -> { Lithic::Models::AuthRules::ConditionalBlockParameters }
 

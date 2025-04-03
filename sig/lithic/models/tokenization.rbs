@@ -17,7 +17,7 @@ module Lithic
         payment_account_reference_id: String?
       }
 
-    class Tokenization < Lithic::BaseModel
+    class Tokenization < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor account_token: String
@@ -78,7 +78,7 @@ module Lithic
         | :UNKNOWN
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACTIVE: :ACTIVE
         DEACTIVATED: :DEACTIVATED
@@ -105,7 +105,7 @@ module Lithic
         | :VISA_CHECKOUT
 
       module TokenRequestorName
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         AMAZON_ONE: :AMAZON_ONE
         ANDROID_PAY: :ANDROID_PAY
@@ -125,7 +125,7 @@ module Lithic
       type tokenization_channel = :DIGITAL_WALLET | :MERCHANT
 
       module TokenizationChannel
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DIGITAL_WALLET: :DIGITAL_WALLET
         MERCHANT: :MERCHANT
@@ -141,7 +141,7 @@ module Lithic
           type: Lithic::Models::Tokenization::Event::type_
         }
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         attr_reader token: String?
 
         def token=: (String) -> String
@@ -185,7 +185,7 @@ module Lithic
           | :TOKEN_UPDATED
 
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED: :APPROVED
           DECLINED: :DECLINED
@@ -210,7 +210,7 @@ module Lithic
           | :TOKENIZATION_UPDATED
 
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TOKENIZATION_2_FA: :TOKENIZATION_2FA
           TOKENIZATION_AUTHORIZATION: :TOKENIZATION_AUTHORIZATION

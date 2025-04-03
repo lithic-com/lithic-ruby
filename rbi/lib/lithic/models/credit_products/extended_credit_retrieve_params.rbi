@@ -3,13 +3,17 @@
 module Lithic
   module Models
     module CreditProducts
-      class ExtendedCreditRetrieveParams < Lithic::BaseModel
+      class ExtendedCreditRetrieveParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
         sig do
-          params(request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
-            .returns(T.attached_class)
+          params(
+            request_options: T.any(
+              Lithic::RequestOptions,
+              Lithic::Internal::AnyHash
+            )
+          ).returns(T.attached_class)
         end
         def self.new(request_options: {})
         end

@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class TransferCreateParams < Lithic::BaseModel
+    class TransferCreateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -43,7 +43,7 @@ module Lithic
           to: String,
           token: String,
           memo: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

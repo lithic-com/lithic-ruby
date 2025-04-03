@@ -14,9 +14,9 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
       response => {
         token: String,
         description: String,
-        disabled: Lithic::BooleanModel,
+        disabled: Lithic::Internal::Type::BooleanModel,
         url: String,
-        event_types: ^(Lithic::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
+        event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
       }
     end
   end
@@ -32,9 +32,9 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
       response => {
         token: String,
         description: String,
-        disabled: Lithic::BooleanModel,
+        disabled: Lithic::Internal::Type::BooleanModel,
         url: String,
-        event_types: ^(Lithic::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
+        event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
       }
     end
   end
@@ -50,9 +50,9 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
       response => {
         token: String,
         description: String,
-        disabled: Lithic::BooleanModel,
+        disabled: Lithic::Internal::Type::BooleanModel,
         url: String,
-        event_types: ^(Lithic::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
+        event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
       }
     end
   end
@@ -75,9 +75,9 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
       row => {
         token: String,
         description: String,
-        disabled: Lithic::BooleanModel,
+        disabled: Lithic::Internal::Type::BooleanModel,
         url: String,
-        event_types: ^(Lithic::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
+        event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
       }
     end
   end

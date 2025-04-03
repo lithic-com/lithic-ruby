@@ -34,8 +34,8 @@ module Lithic
         # @api private
         sig do
           params(
-            key: T.any(Symbol, Lithic::Internal::Util::AnyHash, T.proc.returns(T.anything), T.anything),
-            spec: T.any(Lithic::Internal::Util::AnyHash, T.proc.returns(T.anything), T.anything)
+            key: T.any(Symbol, Lithic::Internal::AnyHash, T.proc.returns(T.anything), T.anything),
+            spec: T.any(Lithic::Internal::AnyHash, T.proc.returns(T.anything), T.anything)
           )
             .void
         end

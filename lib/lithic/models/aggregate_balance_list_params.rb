@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::AggregateBalances#list
-    class AggregateBalanceListParams < Lithic::BaseModel
+    class AggregateBalanceListParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -25,11 +25,11 @@ module Lithic
       #   #
       #   def initialize(financial_account_type: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Get the aggregate balance for a given Financial Account type.
       module FinancialAccountType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ISSUING = :ISSUING
         OPERATING = :OPERATING

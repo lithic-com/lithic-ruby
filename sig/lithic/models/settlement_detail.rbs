@@ -25,7 +25,7 @@ module Lithic
         fee_description: String
       }
 
-    class SettlementDetail < Lithic::BaseModel
+    class SettlementDetail < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor account_token: String
@@ -99,7 +99,7 @@ module Lithic
       type network = :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
 
       module Network
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         INTERLINK: :INTERLINK
         MAESTRO: :MAESTRO
@@ -112,7 +112,7 @@ module Lithic
 
       type other_fees_details = { isa: Integer }
 
-      class OtherFeesDetails < Lithic::BaseModel
+      class OtherFeesDetails < Lithic::Internal::Type::BaseModel
         attr_reader isa: Integer?
 
         def isa=: (Integer) -> Integer
@@ -134,7 +134,7 @@ module Lithic
         | :REPRESENTMENT
 
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ADJUSTMENT: :ADJUSTMENT
         ARBITRATION: :ARBITRATION

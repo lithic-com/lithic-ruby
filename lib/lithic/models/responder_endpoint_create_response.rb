@@ -3,12 +3,12 @@
 module Lithic
   module Models
     # @see Lithic::Resources::ResponderEndpoints#create
-    class ResponderEndpointCreateResponse < Lithic::BaseModel
+    class ResponderEndpointCreateResponse < Lithic::Internal::Type::BaseModel
       # @!attribute [r] enrolled
       #   True if the endpoint was enrolled successfully.
       #
       #   @return [Boolean, nil]
-      optional :enrolled, Lithic::BooleanModel
+      optional :enrolled, Lithic::Internal::Type::BooleanModel
 
       # @!parse
       #   # @return [Boolean]
@@ -19,7 +19,7 @@ module Lithic
       #   #
       #   def initialize(enrolled: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module Events
-      class SubscriptionRetrieveSecretResponse < Lithic::BaseModel
+      class SubscriptionRetrieveSecretResponse < Lithic::Internal::Type::BaseModel
         # The secret for the event subscription.
         sig { returns(T.nilable(String)) }
         attr_reader :secret

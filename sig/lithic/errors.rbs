@@ -98,32 +98,4 @@ module Lithic
       HTTP_STATUS: Range[Integer]
     end
   end
-
-  class Error = Lithic::Errors::Error
-
-  class ConversionError = Lithic::Errors::ConversionError
-
-  class APIError = Lithic::Errors::APIError
-
-  class APIStatusError = Lithic::Errors::APIStatusError
-
-  class APIConnectionError = Lithic::Errors::APIConnectionError
-
-  class APITimeoutError = Lithic::Errors::APITimeoutError
-
-  class BadRequestError = Lithic::Errors::BadRequestError
-
-  class AuthenticationError = Lithic::Errors::AuthenticationError
-
-  class PermissionDeniedError = Lithic::Errors::PermissionDeniedError
-
-  class NotFoundError = Lithic::Errors::NotFoundError
-
-  class ConflictError = Lithic::Errors::ConflictError
-
-  class UnprocessableEntityError = Lithic::Errors::UnprocessableEntityError
-
-  class RateLimitError = Lithic::Errors::RateLimitError
-
-  class InternalServerError = Lithic::Errors::InternalServerError
 end
