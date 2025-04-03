@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2025-04-03)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### ⚠ BREAKING CHANGES
+
+* bump min supported ruby version to 3.1 (oldest non-EOL) ([#49](https://github.com/lithic-com/lithic-ruby/issues/49))
+* remove top level type aliases to relocated classes ([#48](https://github.com/lithic-com/lithic-ruby/issues/48))
+
+### Features
+
+* bump min supported ruby version to 3.1 (oldest non-EOL) ([#49](https://github.com/lithic-com/lithic-ruby/issues/49)) ([4d44818](https://github.com/lithic-com/lithic-ruby/commit/4d44818a8195fb8ec30e829cb513b07a09c9196f))
+* remove top level type aliases to relocated classes ([#48](https://github.com/lithic-com/lithic-ruby/issues/48)) ([3ebfaa5](https://github.com/lithic-com/lithic-ruby/commit/3ebfaa59516d8f8b810df5441fed33778a5ee24c))
+
+
+### Bug Fixes
+
+* pre-release version string should match ruby, not semver conventions ([#51](https://github.com/lithic-com/lithic-ruby/issues/51)) ([cb04839](https://github.com/lithic-com/lithic-ruby/commit/cb048393543b826b166c590f63dbfec8019806dd))
+
+
+### Chores
+
+* demonstrate how to make undocumented requests in README ([#50](https://github.com/lithic-com/lithic-ruby/issues/50)) ([1b44d90](https://github.com/lithic-com/lithic-ruby/commit/1b44d9086244f14706dc69515b43b7278ae081bb))
+* **internal:** version bump ([#45](https://github.com/lithic-com/lithic-ruby/issues/45)) ([fe7c581](https://github.com/lithic-com/lithic-ruby/commit/fe7c5819142eb7574afe8a5450d6b368b63564a3))
+* move private classes into internal module ([#47](https://github.com/lithic-com/lithic-ruby/issues/47)) ([7b3792a](https://github.com/lithic-com/lithic-ruby/commit/7b3792a4f2f2eec24c83c0e5daca9bd96ba940d8))
+
 ## 0.1.0-alpha.4 (2025-04-02)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
