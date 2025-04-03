@@ -11,18 +11,6 @@ module Lithic
     #   cursor_page.auto_paging_each do |account|
     #     puts(account)
     #   end
-    #
-    # @example
-    #   accounts =
-    #     cursor_page
-    #     .to_enum
-    #     .lazy
-    #     .select { _1.object_id.even? }
-    #     .map(&:itself)
-    #     .take(2)
-    #     .to_a
-    #
-    #   accounts => Array
     class CursorPage
       include Lithic::Internal::Type::BasePage
 
