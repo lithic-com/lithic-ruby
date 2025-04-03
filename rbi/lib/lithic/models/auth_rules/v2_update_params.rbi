@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module AuthRules
-      class V2UpdateParams < Lithic::BaseModel
+      class V2UpdateParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
@@ -58,7 +58,7 @@ module Lithic
             card_tokens: T::Array[String],
             excluded_card_tokens: T::Array[String],
             program_level: T::Boolean,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -96,7 +96,7 @@ module Lithic
         #   this time. If you need to (re-)activate an Auth Rule the /promote endpoint
         #   should be used to promote a draft to the currently active version.
         module State
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::V2UpdateParams::State) }
           OrSymbol =

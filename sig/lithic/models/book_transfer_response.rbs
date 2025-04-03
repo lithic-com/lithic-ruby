@@ -16,7 +16,7 @@ module Lithic
         updated: Time
       }
 
-    class BookTransferResponse < Lithic::BaseModel
+    class BookTransferResponse < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor category: Lithic::Models::BookTransferResponse::category
@@ -68,7 +68,7 @@ module Lithic
         | :TRANSFER
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ADJUSTMENT: :ADJUSTMENT
         BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
@@ -93,7 +93,7 @@ module Lithic
           type: String
         }
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
 
         attr_accessor amount: Integer
@@ -126,7 +126,7 @@ module Lithic
         type detailed_result = :APPROVED | :FUNDS_INSUFFICIENT
 
         module DetailedResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED: :APPROVED
           FUNDS_INSUFFICIENT: :FUNDS_INSUFFICIENT
@@ -137,7 +137,7 @@ module Lithic
         type result = :APPROVED | :DECLINED
 
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED: :APPROVED
           DECLINED: :DECLINED
@@ -149,7 +149,7 @@ module Lithic
       type result = :APPROVED | :DECLINED
 
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED: :APPROVED
         DECLINED: :DECLINED
@@ -160,7 +160,7 @@ module Lithic
       type status = :DECLINED | :REVERSED | :SETTLED
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DECLINED: :DECLINED
         REVERSED: :REVERSED

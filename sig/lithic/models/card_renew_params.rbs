@@ -11,7 +11,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class CardRenewParams < Lithic::BaseModel
+    class CardRenewParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -60,7 +60,7 @@ module Lithic
         | :STANDARD_WITH_TRACKING
 
       module ShippingMethod
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         SHIPPING_METHOD_2_DAY: :"2-DAY"
         EXPEDITED: :EXPEDITED

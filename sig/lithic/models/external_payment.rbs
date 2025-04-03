@@ -17,7 +17,7 @@ module Lithic
         user_defined_id: String
       }
 
-    class ExternalPayment < Lithic::BaseModel
+    class ExternalPayment < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor category: Lithic::Models::ExternalPayment::category
@@ -68,7 +68,7 @@ module Lithic
         :EXTERNAL_WIRE | :EXTERNAL_ACH | :EXTERNAL_CHECK | :EXTERNAL_TRANSFER
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         EXTERNAL_WIRE: :EXTERNAL_WIRE
         EXTERNAL_ACH: :EXTERNAL_ACH
@@ -90,7 +90,7 @@ module Lithic
           type: Lithic::Models::ExternalPayment::Event::type_
         }
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
 
         attr_accessor amount: Integer
@@ -123,7 +123,7 @@ module Lithic
         type detailed_result = :APPROVED
 
         module DetailedResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED: :APPROVED
 
@@ -133,7 +133,7 @@ module Lithic
         type result = :APPROVED | :DECLINED
 
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED: :APPROVED
           DECLINED: :DECLINED
@@ -164,7 +164,7 @@ module Lithic
           | :EXTERNAL_CHECK_RELEASED
 
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           EXTERNAL_WIRE_INITIATED: :EXTERNAL_WIRE_INITIATED
           EXTERNAL_WIRE_CANCELED: :EXTERNAL_WIRE_CANCELED
@@ -194,7 +194,7 @@ module Lithic
       type payment_type = :DEPOSIT | :WITHDRAWAL
 
       module PaymentType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DEPOSIT: :DEPOSIT
         WITHDRAWAL: :WITHDRAWAL
@@ -205,7 +205,7 @@ module Lithic
       type result = :APPROVED | :DECLINED
 
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED: :APPROVED
         DECLINED: :DECLINED
@@ -216,7 +216,7 @@ module Lithic
       type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         PENDING: :PENDING
         SETTLED: :SETTLED

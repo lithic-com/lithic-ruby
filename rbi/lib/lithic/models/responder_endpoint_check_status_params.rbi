@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class ResponderEndpointCheckStatusParams < Lithic::BaseModel
+    class ResponderEndpointCheckStatusParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -13,7 +13,7 @@ module Lithic
       sig do
         params(
           type: Lithic::Models::ResponderEndpointCheckStatusParams::Type::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -34,7 +34,7 @@ module Lithic
 
       # The type of the endpoint.
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ResponderEndpointCheckStatusParams::Type) }
         OrSymbol =

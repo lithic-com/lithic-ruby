@@ -27,7 +27,7 @@ module Lithic
         replacement_for: String?
       }
 
-    class Card < Lithic::BaseModel
+    class Card < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor account_token: String
@@ -135,7 +135,7 @@ module Lithic
           nickname: String
         }
 
-      class Funding < Lithic::BaseModel
+      class Funding < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
 
         attr_accessor created: Time
@@ -169,7 +169,7 @@ module Lithic
         type state = :DELETED | :ENABLED | :PENDING
 
         module State
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           DELETED: :DELETED
           ENABLED: :ENABLED
@@ -181,7 +181,7 @@ module Lithic
         type type_ = :DEPOSITORY_CHECKING | :DEPOSITORY_SAVINGS
 
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           DEPOSITORY_CHECKING: :DEPOSITORY_CHECKING
           DEPOSITORY_SAVINGS: :DEPOSITORY_SAVINGS
@@ -193,7 +193,7 @@ module Lithic
       type pin_status = :OK | :BLOCKED | :NOT_SET
 
       module PinStatus
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         OK: :OK
         BLOCKED: :BLOCKED
@@ -206,7 +206,7 @@ module Lithic
         :CLOSED | :OPEN | :PAUSED | :PENDING_ACTIVATION | :PENDING_FULFILLMENT
 
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CLOSED: :CLOSED
         OPEN: :OPEN
@@ -226,7 +226,7 @@ module Lithic
         | :DIGITAL_WALLET
 
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         MERCHANT_LOCKED: :MERCHANT_LOCKED
         PHYSICAL: :PHYSICAL

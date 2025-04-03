@@ -11,7 +11,7 @@ module Lithic
       #   - `MONTH`: Velocity over the current month since 00:00 / 12 AM on the first of
       #     the month in Eastern Time.
       module VelocityLimitParamsPeriodWindow
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DAY = :DAY
         WEEK = :WEEK

@@ -3,7 +3,7 @@ module Lithic
     type tokenization_activate_params =
       {  } & Lithic::Internal::Type::request_parameters
 
-    class TokenizationActivateParams < Lithic::BaseModel
+    class TokenizationActivateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

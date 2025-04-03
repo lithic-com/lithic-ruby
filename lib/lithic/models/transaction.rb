@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Transactions#retrieve
-    class Transaction < Lithic::BaseModel
+    class Transaction < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier.
       #
@@ -159,7 +159,7 @@ module Lithic
       # @!attribute [r] events
       #
       #   @return [Array<Lithic::Models::Transaction::Event>, nil]
-      optional :events, -> { Lithic::ArrayOf[Lithic::Models::Transaction::Event] }
+      optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Transaction::Event] }
 
       # @!parse
       #   # @return [Array<Lithic::Models::Transaction::Event>]
@@ -223,10 +223,10 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # @see Lithic::Models::Transaction#amounts
-      class Amounts < Lithic::BaseModel
+      class Amounts < Lithic::Internal::Type::BaseModel
         # @!attribute cardholder
         #
         #   @return [Lithic::Models::Transaction::Amounts::Cardholder]
@@ -255,10 +255,10 @@ module Lithic
         #   #
         #   def initialize(cardholder:, hold:, merchant:, settlement:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # @see Lithic::Models::Transaction::Amounts#cardholder
-        class Cardholder < Lithic::BaseModel
+        class Cardholder < Lithic::Internal::Type::BaseModel
           # @!attribute amount
           #   The estimated settled amount of the transaction in the cardholder billing
           #     currency.
@@ -286,11 +286,11 @@ module Lithic
           #   #
           #   def initialize(amount:, conversion_rate:, currency:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
 
         # @see Lithic::Models::Transaction::Amounts#hold
-        class Hold < Lithic::BaseModel
+        class Hold < Lithic::Internal::Type::BaseModel
           # @!attribute amount
           #   The pending amount of the transaction in the anticipated settlement currency.
           #
@@ -309,11 +309,11 @@ module Lithic
           #   #
           #   def initialize(amount:, currency:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
 
         # @see Lithic::Models::Transaction::Amounts#merchant
-        class Merchant < Lithic::BaseModel
+        class Merchant < Lithic::Internal::Type::BaseModel
           # @!attribute amount
           #   The settled amount of the transaction in the merchant currency.
           #
@@ -332,11 +332,11 @@ module Lithic
           #   #
           #   def initialize(amount:, currency:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
 
         # @see Lithic::Models::Transaction::Amounts#settlement
-        class Settlement < Lithic::BaseModel
+        class Settlement < Lithic::Internal::Type::BaseModel
           # @!attribute amount
           #   The settled amount of the transaction in the settlement currency.
           #
@@ -355,12 +355,12 @@ module Lithic
           #   #
           #   def initialize(amount:, currency:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
       end
 
       # @see Lithic::Models::Transaction#avs
-      class Avs < Lithic::BaseModel
+      class Avs < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Cardholder address
         #
@@ -379,11 +379,11 @@ module Lithic
         #   #
         #   def initialize(address:, zipcode:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # @see Lithic::Models::Transaction#cardholder_authentication
-      class CardholderAuthentication < Lithic::BaseModel
+      class CardholderAuthentication < Lithic::Internal::Type::BaseModel
         # @!attribute three_ds_version
         #   The 3DS version used for the authentication
         #
@@ -478,13 +478,13 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # Whether an acquirer exemption applied to the transaction.
         #
         # @see Lithic::Models::Transaction::CardholderAuthentication#acquirer_exemption
         module AcquirerExemption
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           AUTHENTICATION_OUTAGE_EXCEPTION = :AUTHENTICATION_OUTAGE_EXCEPTION
           LOW_VALUE = :LOW_VALUE
@@ -506,7 +506,7 @@ module Lithic
         #
         # @see Lithic::Models::Transaction::CardholderAuthentication#authentication_result
         module AuthenticationResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ATTEMPTS = :ATTEMPTS
           DECLINE = :DECLINE
@@ -524,7 +524,7 @@ module Lithic
         #
         # @see Lithic::Models::Transaction::CardholderAuthentication#decision_made_by
         module DecisionMadeBy
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CUSTOMER_ENDPOINT = :CUSTOMER_ENDPOINT
           LITHIC_DEFAULT = :LITHIC_DEFAULT
@@ -554,7 +554,7 @@ module Lithic
         #
         # @see Lithic::Models::Transaction::CardholderAuthentication#liability_shift
         module LiabilityShift
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           LIABILITY_SHIFT_3DS_AUTHENTICATED = :"3DS_AUTHENTICATED"
           ACQUIRER_EXEMPTION = :ACQUIRER_EXEMPTION
@@ -573,7 +573,7 @@ module Lithic
         #
         # @see Lithic::Models::Transaction::CardholderAuthentication#verification_attempted
         module VerificationAttempted
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           NONE = :NONE
           OTHER = :OTHER
@@ -590,7 +590,7 @@ module Lithic
         #
         # @see Lithic::Models::Transaction::CardholderAuthentication#verification_result
         module VerificationResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CANCELLED = :CANCELLED
           FAILED = :FAILED
@@ -608,7 +608,7 @@ module Lithic
       end
 
       # @see Lithic::Models::Transaction#merchant
-      class Merchant < Lithic::BaseModel
+      class Merchant < Lithic::Internal::Type::BaseModel
         # @!attribute acceptor_id
         #   Unique alphanumeric identifier for the payment card acceptor (merchant).
         #
@@ -665,7 +665,7 @@ module Lithic
         #   #
         #   def initialize(acceptor_id:, acquiring_institution_id:, city:, country:, descriptor:, mcc:, state:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
@@ -674,7 +674,7 @@ module Lithic
       #
       # @see Lithic::Models::Transaction#network
       module Network
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         INTERLINK = :INTERLINK
         MAESTRO = :MAESTRO
@@ -690,7 +690,7 @@ module Lithic
       end
 
       # @see Lithic::Models::Transaction#pos
-      class Pos < Lithic::BaseModel
+      class Pos < Lithic::Internal::Type::BaseModel
         # @!attribute entry_mode
         #
         #   @return [Lithic::Models::Transaction::Pos::EntryMode]
@@ -707,10 +707,10 @@ module Lithic
         #   #
         #   def initialize(entry_mode:, terminal:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # @see Lithic::Models::Transaction::Pos#entry_mode
-        class EntryMode < Lithic::BaseModel
+        class EntryMode < Lithic::Internal::Type::BaseModel
           # @!attribute card
           #   Card presence indicator
           #
@@ -733,7 +733,7 @@ module Lithic
           #   Indicates whether the cardholder entered the PIN. True if the PIN was entered.
           #
           #   @return [Boolean]
-          required :pin_entered, Lithic::BooleanModel
+          required :pin_entered, Lithic::Internal::Type::BooleanModel
 
           # @!parse
           #   # @param card [Symbol, Lithic::Models::Transaction::Pos::EntryMode::Card]
@@ -743,13 +743,13 @@ module Lithic
           #   #
           #   def initialize(card:, cardholder:, pan:, pin_entered:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # Card presence indicator
           #
           # @see Lithic::Models::Transaction::Pos::EntryMode#card
           module Card
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             NOT_PRESENT = :NOT_PRESENT
             PREAUTHORIZED = :PREAUTHORIZED
@@ -767,7 +767,7 @@ module Lithic
           #
           # @see Lithic::Models::Transaction::Pos::EntryMode#cardholder
           module Cardholder
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             DEFERRED_BILLING = :DEFERRED_BILLING
             ELECTRONIC_ORDER = :ELECTRONIC_ORDER
@@ -791,7 +791,7 @@ module Lithic
           #
           # @see Lithic::Models::Transaction::Pos::EntryMode#pan
           module Pan
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             AUTO_ENTRY = :AUTO_ENTRY
             BAR_CODE = :BAR_CODE
@@ -818,24 +818,24 @@ module Lithic
         end
 
         # @see Lithic::Models::Transaction::Pos#terminal
-        class Terminal < Lithic::BaseModel
+        class Terminal < Lithic::Internal::Type::BaseModel
           # @!attribute attended
           #   True if a clerk is present at the sale.
           #
           #   @return [Boolean]
-          required :attended, Lithic::BooleanModel
+          required :attended, Lithic::Internal::Type::BooleanModel
 
           # @!attribute card_retention_capable
           #   True if the terminal is capable of retaining the card.
           #
           #   @return [Boolean]
-          required :card_retention_capable, Lithic::BooleanModel
+          required :card_retention_capable, Lithic::Internal::Type::BooleanModel
 
           # @!attribute on_premise
           #   True if the sale was made at the place of business (vs. mobile).
           #
           #   @return [Boolean]
-          required :on_premise, Lithic::BooleanModel
+          required :on_premise, Lithic::Internal::Type::BooleanModel
 
           # @!attribute operator
           #   The person that is designated to swipe the card
@@ -851,7 +851,7 @@ module Lithic
           #     which point the POS will prompt the user for an additional payment of $15.
           #
           #   @return [Boolean]
-          required :partial_approval_capable, Lithic::BooleanModel
+          required :partial_approval_capable, Lithic::Internal::Type::BooleanModel
 
           # @!attribute pin_capability
           #   Status of whether the POS is able to accept PINs
@@ -887,13 +887,13 @@ module Lithic
           #     super
           #   end
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # The person that is designated to swipe the card
           #
           # @see Lithic::Models::Transaction::Pos::Terminal#operator
           module Operator
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             ADMINISTRATIVE = :ADMINISTRATIVE
             CARDHOLDER = :CARDHOLDER
@@ -911,7 +911,7 @@ module Lithic
           #
           # @see Lithic::Models::Transaction::Pos::Terminal#pin_capability
           module PinCapability
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             CAPABLE = :CAPABLE
             INOPERATIVE = :INOPERATIVE
@@ -929,7 +929,7 @@ module Lithic
           #
           # @see Lithic::Models::Transaction::Pos::Terminal#type
           module Type
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             ADMINISTRATIVE = :ADMINISTRATIVE
             ATM = :ATM
@@ -967,7 +967,7 @@ module Lithic
 
       # @see Lithic::Models::Transaction#result
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACCOUNT_STATE_TRANSACTION_FAIL = :ACCOUNT_STATE_TRANSACTION_FAIL
         APPROVED = :APPROVED
@@ -1004,7 +1004,7 @@ module Lithic
       #
       # @see Lithic::Models::Transaction#status
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DECLINED = :DECLINED
         EXPIRED = :EXPIRED
@@ -1020,7 +1020,7 @@ module Lithic
       end
 
       # @see Lithic::Models::Transaction#token_info
-      class TokenInfo < Lithic::BaseModel
+      class TokenInfo < Lithic::Internal::Type::BaseModel
         # @!attribute wallet_type
         #   The wallet_type field will indicate the source of the token. Possible token
         #     sources include digital wallets (Apple, Google, or Samsung Pay), merchant
@@ -1035,7 +1035,7 @@ module Lithic
         #   #
         #   def initialize(wallet_type:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # The wallet_type field will indicate the source of the token. Possible token
         #   sources include digital wallets (Apple, Google, or Samsung Pay), merchant
@@ -1044,7 +1044,7 @@ module Lithic
         #
         # @see Lithic::Models::Transaction::TokenInfo#wallet_type
         module WalletType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPLE_PAY = :APPLE_PAY
           GOOGLE_PAY = :GOOGLE_PAY
@@ -1061,7 +1061,7 @@ module Lithic
         end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   Transaction event identifier.
         #
@@ -1089,7 +1089,7 @@ module Lithic
         #
         #   @return [Array<Symbol, Lithic::Models::Transaction::Event::DetailedResult>]
         required :detailed_results,
-                 -> { Lithic::ArrayOf[enum: Lithic::Models::Transaction::Event::DetailedResult] }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::Transaction::Event::DetailedResult] }
 
         # @!attribute effective_polarity
         #   Indicates whether the transaction event is a credit or debit to the account.
@@ -1119,7 +1119,8 @@ module Lithic
         # @!attribute rule_results
         #
         #   @return [Array<Lithic::Models::Transaction::Event::RuleResult>]
-        required :rule_results, -> { Lithic::ArrayOf[Lithic::Models::Transaction::Event::RuleResult] }
+        required :rule_results,
+                 -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Transaction::Event::RuleResult] }
 
         # @!attribute type
         #   Type of transaction event
@@ -1155,10 +1156,10 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # @see Lithic::Models::Transaction::Event#amounts
-        class Amounts < Lithic::BaseModel
+        class Amounts < Lithic::Internal::Type::BaseModel
           # @!attribute cardholder
           #
           #   @return [Lithic::Models::Transaction::Event::Amounts::Cardholder]
@@ -1181,10 +1182,10 @@ module Lithic
           #   #
           #   def initialize(cardholder:, merchant:, settlement:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # @see Lithic::Models::Transaction::Event::Amounts#cardholder
-          class Cardholder < Lithic::BaseModel
+          class Cardholder < Lithic::Internal::Type::BaseModel
             # @!attribute amount
             #   Amount of the event in the cardholder billing currency.
             #
@@ -1211,11 +1212,11 @@ module Lithic
             #   #
             #   def initialize(amount:, conversion_rate:, currency:, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
 
           # @see Lithic::Models::Transaction::Event::Amounts#merchant
-          class Merchant < Lithic::BaseModel
+          class Merchant < Lithic::Internal::Type::BaseModel
             # @!attribute amount
             #   Amount of the event in the merchant currency.
             #
@@ -1234,11 +1235,11 @@ module Lithic
             #   #
             #   def initialize(amount:, currency:, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
 
           # @see Lithic::Models::Transaction::Event::Amounts#settlement
-          class Settlement < Lithic::BaseModel
+          class Settlement < Lithic::Internal::Type::BaseModel
             # @!attribute amount
             #   Amount of the event, if it is financial, in the settlement currency.
             #     Non-financial events do not contain this amount because they do not move funds.
@@ -1265,12 +1266,12 @@ module Lithic
             #   #
             #   def initialize(amount:, conversion_rate:, currency:, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
         end
 
         module DetailedResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED = :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
           ACCOUNT_DELINQUENT = :ACCOUNT_DELINQUENT
@@ -1336,7 +1337,7 @@ module Lithic
         #
         # @see Lithic::Models::Transaction::Event#effective_polarity
         module EffectivePolarity
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CREDIT = :CREDIT
           DEBIT = :DEBIT
@@ -1349,7 +1350,7 @@ module Lithic
         end
 
         # @see Lithic::Models::Transaction::Event#network_info
-        class NetworkInfo < Lithic::BaseModel
+        class NetworkInfo < Lithic::Internal::Type::BaseModel
           # @!attribute acquirer
           #
           #   @return [Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, nil]
@@ -1382,10 +1383,10 @@ module Lithic
           #   #
           #   def initialize(acquirer:, mastercard:, visa:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # @see Lithic::Models::Transaction::Event::NetworkInfo#acquirer
-          class Acquirer < Lithic::BaseModel
+          class Acquirer < Lithic::Internal::Type::BaseModel
             # @!attribute acquirer_reference_number
             #   Identifier assigned by the acquirer, applicable to dual-message transactions
             #     only. The acquirer reference number (ARN) is only populated once a transaction
@@ -1408,11 +1409,11 @@ module Lithic
             #   #
             #   def initialize(acquirer_reference_number:, retrieval_reference_number:, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
 
           # @see Lithic::Models::Transaction::Event::NetworkInfo#mastercard
-          class Mastercard < Lithic::BaseModel
+          class Mastercard < Lithic::Internal::Type::BaseModel
             # @!attribute banknet_reference_number
             #   Identifier assigned by Mastercard. Guaranteed by Mastercard to be unique for any
             #     transaction within a specific financial network on any processing day.
@@ -1467,11 +1468,11 @@ module Lithic
             #     super
             #   end
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
 
           # @see Lithic::Models::Transaction::Event::NetworkInfo#visa
-          class Visa < Lithic::BaseModel
+          class Visa < Lithic::Internal::Type::BaseModel
             # @!attribute original_transaction_id
             #   Identifier assigned by Visa. Matches the `transaction_id` of a prior related
             #     event. May be populated in incremental authorizations (authorization requests
@@ -1495,13 +1496,13 @@ module Lithic
             #   #
             #   def initialize(original_transaction_id:, transaction_id:, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
         end
 
         # @see Lithic::Models::Transaction::Event#result
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACCOUNT_STATE_TRANSACTION_FAIL = :ACCOUNT_STATE_TRANSACTION_FAIL
           APPROVED = :APPROVED
@@ -1534,7 +1535,7 @@ module Lithic
           #   def self.values; end
         end
 
-        class RuleResult < Lithic::BaseModel
+        class RuleResult < Lithic::Internal::Type::BaseModel
           # @!attribute auth_rule_token
           #   The Auth Rule Token associated with the rule from which the decline originated.
           #     If this is set to null, then the decline was not associated with a
@@ -1570,13 +1571,13 @@ module Lithic
           #   #
           #   def initialize(auth_rule_token:, explanation:, name:, result:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # The detailed_result associated with this rule's decline.
           #
           # @see Lithic::Models::Transaction::Event::RuleResult#result
           module Result
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED = :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
             ACCOUNT_DELINQUENT = :ACCOUNT_DELINQUENT
@@ -1643,7 +1644,7 @@ module Lithic
         #
         # @see Lithic::Models::Transaction::Event#type
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           AUTHORIZATION = :AUTHORIZATION
           AUTHORIZATION_ADVICE = :AUTHORIZATION_ADVICE

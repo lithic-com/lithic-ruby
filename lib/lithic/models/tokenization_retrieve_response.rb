@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Tokenizations#retrieve
-    class TokenizationRetrieveResponse < Lithic::BaseModel
+    class TokenizationRetrieveResponse < Lithic::Internal::Type::BaseModel
       # @!attribute [r] data
       #
       #   @return [Lithic::Models::Tokenization, nil]
@@ -18,7 +18,7 @@ module Lithic
       #   #
       #   def initialize(data: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

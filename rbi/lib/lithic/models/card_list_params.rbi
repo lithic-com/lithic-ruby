@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class CardListParams < Lithic::BaseModel
+    class CardListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -68,7 +68,7 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           state: Lithic::Models::CardListParams::State::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -104,7 +104,7 @@ module Lithic
 
       # Returns cards with the specified state.
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardListParams::State) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::CardListParams::State::TaggedSymbol) }

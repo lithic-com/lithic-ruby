@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class RequiredDocument < Lithic::BaseModel
+    class RequiredDocument < Lithic::Internal::Type::BaseModel
       # @!attribute entity_token
       #   Globally unique identifier for an entity.
       #
@@ -14,14 +14,14 @@ module Lithic
       #     documents.
       #
       #   @return [Array<String>]
-      required :status_reasons, Lithic::ArrayOf[String]
+      required :status_reasons, Lithic::Internal::Type::ArrayOf[String]
 
       # @!attribute valid_documents
       #   A list of valid documents that will satisfy the KYC requirements for the
       #     specified entity.
       #
       #   @return [Array<String>]
-      required :valid_documents, Lithic::ArrayOf[String]
+      required :valid_documents, Lithic::Internal::Type::ArrayOf[String]
 
       # @!parse
       #   # @param entity_token [String]
@@ -30,7 +30,7 @@ module Lithic
       #   #
       #   def initialize(entity_token:, status_reasons:, valid_documents:, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

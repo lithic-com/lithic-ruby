@@ -25,10 +25,10 @@ module Lithic
               ),
               body: T.nilable(T.anything),
               unwrap: T.nilable(Symbol),
-              page: T.nilable(T::Class[Lithic::Internal::Type::BasePage[Lithic::BaseModel]]),
+              page: T.nilable(T::Class[Lithic::Internal::Type::BasePage[Lithic::Internal::Type::BaseModel]]),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(Lithic::Internal::Type::Converter::Input),
-              options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+              options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
             }
           end
 
@@ -136,7 +136,7 @@ module Lithic
           overridable
             .params(
               req: Lithic::Internal::Transport::BaseClient::RequestComponentsShape,
-              opts: Lithic::Internal::Util::AnyHash
+              opts: Lithic::Internal::AnyHash
             )
             .returns(Lithic::Internal::Transport::BaseClient::RequestInputShape)
         end
@@ -180,10 +180,10 @@ module Lithic
             ),
             body: T.nilable(T.anything),
             unwrap: T.nilable(Symbol),
-            page: T.nilable(T::Class[Lithic::Internal::Type::BasePage[Lithic::BaseModel]]),
+            page: T.nilable(T::Class[Lithic::Internal::Type::BasePage[Lithic::Internal::Type::BaseModel]]),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(Lithic::Internal::Type::Converter::Input),
-            options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+            options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
           )
             .returns(T.anything)
         end
@@ -196,7 +196,7 @@ module Lithic
           unwrap: nil,
           page: nil,
           stream: nil,
-          model: Lithic::Unknown,
+          model: Lithic::Internal::Type::Unknown,
           options: {}
         )
         end

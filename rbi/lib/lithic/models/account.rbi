@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class Account < Lithic::BaseModel
+    class Account < Lithic::Internal::Type::BaseModel
       # Globally unique identifier for the account. This is the same as the
       #   account_token returned by the enroll endpoint. If using this parameter, do not
       #   include pagination.
@@ -22,7 +22,7 @@ module Lithic
       sig { returns(Lithic::Models::Account::SpendLimit) }
       attr_reader :spend_limit
 
-      sig { params(spend_limit: T.any(Lithic::Models::Account::SpendLimit, Lithic::Internal::Util::AnyHash)).void }
+      sig { params(spend_limit: T.any(Lithic::Models::Account::SpendLimit, Lithic::Internal::AnyHash)).void }
       attr_writer :spend_limit
 
       # Account state:
@@ -42,7 +42,7 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::Account::AccountHolder)) }
       attr_reader :account_holder
 
-      sig { params(account_holder: T.any(Lithic::Models::Account::AccountHolder, Lithic::Internal::Util::AnyHash)).void }
+      sig { params(account_holder: T.any(Lithic::Models::Account::AccountHolder, Lithic::Internal::AnyHash)).void }
       attr_writer :account_holder
 
       # List of identifiers for the Auth Rule(s) that are applied on the account. This
@@ -67,7 +67,7 @@ module Lithic
 
       sig do
         params(
-          verification_address: T.any(Lithic::Models::Account::VerificationAddress, Lithic::Internal::Util::AnyHash)
+          verification_address: T.any(Lithic::Models::Account::VerificationAddress, Lithic::Internal::AnyHash)
         )
           .void
       end
@@ -77,12 +77,12 @@ module Lithic
         params(
           token: String,
           created: T.nilable(Time),
-          spend_limit: T.any(Lithic::Models::Account::SpendLimit, Lithic::Internal::Util::AnyHash),
+          spend_limit: T.any(Lithic::Models::Account::SpendLimit, Lithic::Internal::AnyHash),
           state: Lithic::Models::Account::State::OrSymbol,
-          account_holder: T.any(Lithic::Models::Account::AccountHolder, Lithic::Internal::Util::AnyHash),
+          account_holder: T.any(Lithic::Models::Account::AccountHolder, Lithic::Internal::AnyHash),
           auth_rule_tokens: T::Array[String],
           cardholder_currency: String,
-          verification_address: T.any(Lithic::Models::Account::VerificationAddress, Lithic::Internal::Util::AnyHash)
+          verification_address: T.any(Lithic::Models::Account::VerificationAddress, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -116,7 +116,7 @@ module Lithic
       def to_hash
       end
 
-      class SpendLimit < Lithic::BaseModel
+      class SpendLimit < Lithic::Internal::Type::BaseModel
         # Daily spend limit (in cents).
         sig { returns(Integer) }
         attr_accessor :daily
@@ -155,7 +155,7 @@ module Lithic
       #     [support@lithic.com](mailto:support@lithic.com) if you believe this was in
       #     error.
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Account::State) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Account::State::TaggedSymbol) }
@@ -169,7 +169,7 @@ module Lithic
         end
       end
 
-      class AccountHolder < Lithic::BaseModel
+      class AccountHolder < Lithic::Internal::Type::BaseModel
         # Globally unique identifier for the account holder.
         sig { returns(String) }
         attr_accessor :token
@@ -209,7 +209,7 @@ module Lithic
         end
       end
 
-      class VerificationAddress < Lithic::BaseModel
+      class VerificationAddress < Lithic::Internal::Type::BaseModel
         # Valid deliverable address (no PO boxes).
         sig { returns(String) }
         attr_accessor :address1

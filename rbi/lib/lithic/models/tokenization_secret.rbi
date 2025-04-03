@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class TokenizationSecret < Lithic::BaseModel
+    class TokenizationSecret < Lithic::Internal::Type::BaseModel
       # The Tokenization Decisioning HMAC secret
       sig { returns(T.nilable(String)) }
       attr_reader :secret

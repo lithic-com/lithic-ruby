@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class RequiredDocument < Lithic::BaseModel
+    class RequiredDocument < Lithic::Internal::Type::BaseModel
       # Globally unique identifier for an entity.
       sig { returns(String) }
       attr_accessor :entity_token

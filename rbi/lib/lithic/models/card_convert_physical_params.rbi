@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class CardConvertPhysicalParams < Lithic::BaseModel
+    class CardConvertPhysicalParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -10,14 +10,14 @@ module Lithic
       sig { returns(Lithic::Models::ShippingAddress) }
       attr_reader :shipping_address
 
-      sig { params(shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Internal::Util::AnyHash)).void }
+      sig { params(shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Internal::AnyHash)).void }
       attr_writer :shipping_address
 
       # If omitted, the previous carrier will be used.
       sig { returns(T.nilable(Lithic::Models::Carrier)) }
       attr_reader :carrier
 
-      sig { params(carrier: T.any(Lithic::Models::Carrier, Lithic::Internal::Util::AnyHash)).void }
+      sig { params(carrier: T.any(Lithic::Models::Carrier, Lithic::Internal::AnyHash)).void }
       attr_writer :carrier
 
       # Specifies the configuration (e.g. physical card art) that the card should be
@@ -49,11 +49,11 @@ module Lithic
 
       sig do
         params(
-          shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Internal::Util::AnyHash),
-          carrier: T.any(Lithic::Models::Carrier, Lithic::Internal::Util::AnyHash),
+          shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Internal::AnyHash),
+          carrier: T.any(Lithic::Models::Carrier, Lithic::Internal::AnyHash),
           product_id: String,
           shipping_method: Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -94,7 +94,7 @@ module Lithic
       #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #     tracking
       module ShippingMethod
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardConvertPhysicalParams::ShippingMethod) }
         OrSymbol =

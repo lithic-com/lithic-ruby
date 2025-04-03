@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class BookTransferListParams < Lithic::BaseModel
+    class BookTransferListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -99,7 +99,7 @@ module Lithic
           result: Lithic::Models::BookTransferListParams::Result::OrSymbol,
           starting_after: String,
           status: Lithic::Models::BookTransferListParams::Status::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -143,7 +143,7 @@ module Lithic
 
       # Book Transfer category to be returned.
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferListParams::Category) }
         OrSymbol =
@@ -165,7 +165,7 @@ module Lithic
 
       # Book transfer result to be returned.
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferListParams::Result) }
         OrSymbol =
@@ -181,7 +181,7 @@ module Lithic
 
       # Book transfer status to be returned.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferListParams::Status) }
         OrSymbol =

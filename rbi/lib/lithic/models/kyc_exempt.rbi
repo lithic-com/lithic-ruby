@@ -2,13 +2,13 @@
 
 module Lithic
   module Models
-    class KYCExempt < Lithic::BaseModel
+    class KYCExempt < Lithic::Internal::Type::BaseModel
       # KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
       #   acceptable; APO/FPO are acceptable.
       sig { returns(Lithic::Models::Address) }
       attr_reader :address
 
-      sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash)).void }
+      sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::AnyHash)).void }
       attr_writer :address
 
       # The KYC Exempt user's email
@@ -54,7 +54,7 @@ module Lithic
 
       sig do
         params(
-          address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash),
+          address: T.any(Lithic::Models::Address, Lithic::Internal::AnyHash),
           email: String,
           first_name: String,
           kyc_exemption_type: Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol,
@@ -100,7 +100,7 @@ module Lithic
 
       # Specifies the type of KYC Exempt user
       module KYCExemptionType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::KYCExempt::KYCExemptionType) }
         OrSymbol =
@@ -116,7 +116,7 @@ module Lithic
 
       # Specifies the workflow type. This must be 'KYC_EXEMPT'
       module Workflow
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::KYCExempt::Workflow) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::KYCExempt::Workflow::TaggedSymbol) }

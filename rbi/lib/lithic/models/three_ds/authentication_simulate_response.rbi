@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module ThreeDS
-      class AuthenticationSimulateResponse < Lithic::BaseModel
+      class AuthenticationSimulateResponse < Lithic::Internal::Type::BaseModel
         # A unique token to reference this transaction with later calls to void or clear
         #   the authorization.
         sig { returns(T.nilable(String)) }

@@ -10,7 +10,7 @@ module Lithic
       #   [this page](https://docs.lithic.com/docs/auth-stream-access-asa#asa-webhook-verification)
       #   for more detail about verifying ASA webhooks.
       sig do
-        params(request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)))
+        params(request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)))
           .returns(Lithic::Models::AuthStreamSecret)
       end
       def retrieve_secret(request_options: {})
@@ -21,14 +21,7 @@ module Lithic
       #   [`GET /auth_stream/secret`](https://docs.lithic.com/reference/getauthstreamsecret)
       #   request to retrieve the new secret key.
       sig do
-        params(
-          request_options: T.nilable(
-            T.any(
-              Lithic::RequestOptions,
-              Lithic::Internal::Util::AnyHash
-            )
-          )
-        ).void
+        params(request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))).void
       end
       def rotate_secret(request_options: {})
       end

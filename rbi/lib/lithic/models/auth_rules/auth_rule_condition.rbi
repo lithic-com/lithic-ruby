@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module AuthRules
-      class AuthRuleCondition < Lithic::BaseModel
+      class AuthRuleCondition < Lithic::Internal::Type::BaseModel
         # The attribute to target.
         #
         #   The following attributes may be targeted:
@@ -97,7 +97,7 @@ module Lithic
 
         # The operation to apply to the attribute
         module Operation
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation) }
           OrSymbol =
@@ -121,13 +121,13 @@ module Lithic
 
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
         module Value
-          extend Lithic::Union
+          extend Lithic::Internal::Type::Union
 
           sig { override.returns([String, Integer, T::Array[String]]) }
           def self.variants
           end
 
-          StringArray = T.let(Lithic::ArrayOf[String], Lithic::Internal::Type::Converter)
+          StringArray = T.let(Lithic::Internal::Type::ArrayOf[String], Lithic::Internal::Type::Converter)
         end
       end
     end

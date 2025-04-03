@@ -1,0 +1,4 @@
+module Lithic
+  module Internal
+  end
+end

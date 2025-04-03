@@ -4,7 +4,7 @@ module Lithic
       { embed_request: String, hmac: String }
       & Lithic::Internal::Type::request_parameters
 
-    class CardEmbedParams < Lithic::BaseModel
+    class CardEmbedParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

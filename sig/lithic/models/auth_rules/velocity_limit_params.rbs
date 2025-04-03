@@ -10,7 +10,7 @@ module Lithic
           limit_count: Integer?
         }
 
-      class VelocityLimitParams < Lithic::BaseModel
+      class VelocityLimitParams < Lithic::Internal::Type::BaseModel
         attr_accessor filters: Lithic::Models::AuthRules::VelocityLimitParams::Filters
 
         attr_accessor period: Lithic::Models::AuthRules::VelocityLimitParams::period
@@ -39,7 +39,7 @@ module Lithic
             include_mccs: ::Array[String]?
           }
 
-        class Filters < Lithic::BaseModel
+        class Filters < Lithic::Internal::Type::BaseModel
           attr_accessor exclude_countries: ::Array[String]?
 
           attr_accessor exclude_mccs: ::Array[String]?
@@ -63,7 +63,7 @@ module Lithic
           | Lithic::Models::AuthRules::velocity_limit_params_period_window
 
         module Period
-          extend Lithic::Union
+          extend Lithic::Internal::Type::Union
 
           def self?.variants: -> [Integer, Lithic::Models::AuthRules::velocity_limit_params_period_window]
         end
@@ -71,7 +71,7 @@ module Lithic
         type scope = :CARD | :ACCOUNT
 
         module Scope
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CARD: :CARD
           ACCOUNT: :ACCOUNT

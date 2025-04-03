@@ -3,7 +3,7 @@ module Lithic
     type external_bank_account_retrieve_params =
       {  } & Lithic::Internal::Type::request_parameters
 
-    class ExternalBankAccountRetrieveParams < Lithic::BaseModel
+    class ExternalBankAccountRetrieveParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

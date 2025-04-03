@@ -15,7 +15,7 @@ module Lithic
           type: Lithic::Models::BookTransferCreateParams::Type::OrSymbol,
           token: String,
           memo: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
           .returns(Lithic::Models::BookTransferResponse)
       end
@@ -48,7 +48,7 @@ module Lithic
       sig do
         params(
           book_transfer_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
           .returns(Lithic::Models::BookTransferResponse)
       end
@@ -73,7 +73,7 @@ module Lithic
           result: Lithic::Models::BookTransferListParams::Result::OrSymbol,
           starting_after: String,
           status: Lithic::Models::BookTransferListParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::BookTransferResponse])
       end
@@ -112,7 +112,7 @@ module Lithic
         params(
           book_transfer_token: String,
           memo: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
           .returns(Lithic::Models::BookTransferResponse)
       end

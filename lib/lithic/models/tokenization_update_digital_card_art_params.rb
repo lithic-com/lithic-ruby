@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Tokenizations#update_digital_card_art
-    class TokenizationUpdateDigitalCardArtParams < Lithic::BaseModel
+    class TokenizationUpdateDigitalCardArtParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -27,7 +27,7 @@ module Lithic
       #   #
       #   def initialize(digital_card_art_token: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

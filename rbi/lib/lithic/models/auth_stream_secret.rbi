@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class AuthStreamSecret < Lithic::BaseModel
+    class AuthStreamSecret < Lithic::Internal::Type::BaseModel
       # The shared HMAC ASA secret
       sig { returns(T.nilable(String)) }
       attr_reader :secret

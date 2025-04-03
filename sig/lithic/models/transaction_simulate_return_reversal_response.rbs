@@ -3,7 +3,7 @@ module Lithic
     type transaction_simulate_return_reversal_response =
       { debugging_request_id: String }
 
-    class TransactionSimulateReturnReversalResponse < Lithic::BaseModel
+    class TransactionSimulateReturnReversalResponse < Lithic::Internal::Type::BaseModel
       attr_reader debugging_request_id: String?
 
       def debugging_request_id=: (String) -> String

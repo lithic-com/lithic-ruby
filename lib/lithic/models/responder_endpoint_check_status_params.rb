@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::ResponderEndpoints#check_status
-    class ResponderEndpointCheckStatusParams < Lithic::BaseModel
+    class ResponderEndpointCheckStatusParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -20,11 +20,11 @@ module Lithic
       #   #
       #   def initialize(type:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # The type of the endpoint.
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         AUTH_STREAM_ACCESS = :AUTH_STREAM_ACCESS
         THREE_DS_DECISIONING = :THREE_DS_DECISIONING

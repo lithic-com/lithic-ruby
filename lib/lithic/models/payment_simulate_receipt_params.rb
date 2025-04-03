@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Payments#simulate_receipt
-    class PaymentSimulateReceiptParams < Lithic::BaseModel
+    class PaymentSimulateReceiptParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -52,11 +52,11 @@ module Lithic
       #   #
       #   def initialize(token:, amount:, financial_account_token:, receipt_type:, memo: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Receipt Type
       module ReceiptType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         RECEIPT_CREDIT = :RECEIPT_CREDIT
         RECEIPT_DEBIT = :RECEIPT_DEBIT

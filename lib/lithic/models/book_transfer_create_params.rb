@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::BookTransfers#create
-    class BookTransferCreateParams < Lithic::BaseModel
+    class BookTransferCreateParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -94,11 +94,11 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Category of the book transfer
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ADJUSTMENT = :ADJUSTMENT
         BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
@@ -117,7 +117,7 @@ module Lithic
 
       # Type of book_transfer
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ATM_WITHDRAWAL = :ATM_WITHDRAWAL
         ATM_DECLINE = :ATM_DECLINE

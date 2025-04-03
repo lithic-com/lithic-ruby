@@ -5,7 +5,7 @@ module Lithic
         { parameters: Lithic::Models::AuthRules::V2DraftParams::parameters? }
         & Lithic::Internal::Type::request_parameters
 
-      class V2DraftParams < Lithic::BaseModel
+      class V2DraftParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
@@ -23,7 +23,7 @@ module Lithic
           | Lithic::Models::AuthRules::VelocityLimitParams
 
         module Parameters
-          extend Lithic::Union
+          extend Lithic::Internal::Type::Union
 
           def self?.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
         end

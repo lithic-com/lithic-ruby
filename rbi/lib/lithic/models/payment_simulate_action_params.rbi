@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class PaymentSimulateActionParams < Lithic::BaseModel
+    class PaymentSimulateActionParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -29,7 +29,7 @@ module Lithic
           event_type: Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol,
           decline_reason: Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol,
           return_reason_code: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -52,7 +52,7 @@ module Lithic
 
       # Event Type
       module EventType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentSimulateActionParams::EventType) }
         OrSymbol =
@@ -82,7 +82,7 @@ module Lithic
 
       # Decline reason
       module DeclineReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason) }
         OrSymbol =

@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class ExternalBankAccountAddress < Lithic::BaseModel
+    class ExternalBankAccountAddress < Lithic::Internal::Type::BaseModel
       sig { returns(String) }
       attr_accessor :address1
 

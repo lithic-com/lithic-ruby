@@ -6,7 +6,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class TokenizationResendActivationCodeParams < Lithic::BaseModel
+    class TokenizationResendActivationCodeParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -27,7 +27,7 @@ module Lithic
         :EMAIL_TO_CARDHOLDER_ADDRESS | :TEXT_TO_CARDHOLDER_NUMBER
 
       module ActivationMethodType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         EMAIL_TO_CARDHOLDER_ADDRESS: :EMAIL_TO_CARDHOLDER_ADDRESS
         TEXT_TO_CARDHOLDER_NUMBER: :TEXT_TO_CARDHOLDER_NUMBER

@@ -3,7 +3,7 @@ module Lithic
     type payment_retrieve_params =
       {  } & Lithic::Internal::Type::request_parameters
 
-    class PaymentRetrieveParams < Lithic::BaseModel
+    class PaymentRetrieveParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module AuthRules
-      class AuthRule < Lithic::BaseModel
+      class AuthRule < Lithic::Internal::Type::BaseModel
         # Globally unique identifier.
         sig { returns(String) }
         attr_accessor :token
@@ -115,7 +115,7 @@ module Lithic
 
         # Indicates whether the Auth Rule is ACTIVE or INACTIVE
         module State
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::AuthRule::State) }
           OrSymbol =

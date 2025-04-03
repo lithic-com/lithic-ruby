@@ -4,7 +4,7 @@ module Lithic
       { effective_date: Date, memo: String }
       & Lithic::Internal::Type::request_parameters
 
-    class ExternalPaymentReleaseParams < Lithic::BaseModel
+    class ExternalPaymentReleaseParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

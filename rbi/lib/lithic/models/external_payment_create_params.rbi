@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class ExternalPaymentCreateParams < Lithic::BaseModel
+    class ExternalPaymentCreateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -56,7 +56,7 @@ module Lithic
           memo: String,
           progress_to: Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol,
           user_defined_id: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -95,7 +95,7 @@ module Lithic
       end
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::Category) }
         OrSymbol =
@@ -115,7 +115,7 @@ module Lithic
       end
 
       module PaymentType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType) }
         OrSymbol =
@@ -130,7 +130,7 @@ module Lithic
       end
 
       module ProgressTo
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo) }
         OrSymbol =

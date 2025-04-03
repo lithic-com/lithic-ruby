@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class Payment < Lithic::BaseModel
+    class Payment < Lithic::Internal::Type::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
       attr_accessor :token
@@ -43,12 +43,7 @@ module Lithic
       sig { returns(Lithic::Models::Payment::MethodAttributes) }
       attr_reader :method_attributes
 
-      sig do
-        params(
-          method_attributes: T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Internal::Util::AnyHash)
-        )
-          .void
-      end
+      sig { params(method_attributes: T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Internal::AnyHash)).void }
       attr_writer :method_attributes
 
       # Pending amount of the payment in the currency's smallest unit (e.g., cents). The
@@ -94,11 +89,11 @@ module Lithic
           currency: String,
           descriptor: String,
           direction: Lithic::Models::Payment::Direction::OrSymbol,
-          events: T::Array[T.any(Lithic::Models::Payment::Event, Lithic::Internal::Util::AnyHash)],
+          events: T::Array[T.any(Lithic::Models::Payment::Event, Lithic::Internal::AnyHash)],
           external_bank_account_token: T.nilable(String),
           financial_account_token: String,
           method_: Lithic::Models::Payment::Method::OrSymbol,
-          method_attributes: T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Internal::Util::AnyHash),
+          method_attributes: T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Internal::AnyHash),
           pending_amount: Integer,
           result: Lithic::Models::Payment::Result::OrSymbol,
           settled_amount: Integer,
@@ -161,7 +156,7 @@ module Lithic
 
       # Payment category
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Category) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Category::TaggedSymbol) }
@@ -174,7 +169,7 @@ module Lithic
       end
 
       module Direction
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Direction) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Direction::TaggedSymbol) }
@@ -187,7 +182,7 @@ module Lithic
         end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         # Globally unique identifier.
         sig { returns(String) }
         attr_accessor :token
@@ -269,7 +264,7 @@ module Lithic
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Event::Result) }
           OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Event::Result::TaggedSymbol) }
@@ -303,7 +298,7 @@ module Lithic
         #   - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
         #     Financial Institution.
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Event::Type) }
           OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Event::Type::TaggedSymbol) }
@@ -332,7 +327,7 @@ module Lithic
         end
 
         module DetailedResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Event::DetailedResult) }
           OrSymbol =
@@ -356,7 +351,7 @@ module Lithic
       end
 
       module Method
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Method) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Method::TaggedSymbol) }
@@ -369,7 +364,7 @@ module Lithic
         end
       end
 
-      class MethodAttributes < Lithic::BaseModel
+      class MethodAttributes < Lithic::Internal::Type::BaseModel
         sig { returns(T.nilable(String)) }
         attr_accessor :company_id
 
@@ -426,7 +421,7 @@ module Lithic
         end
 
         module SecCode
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::MethodAttributes::SecCode) }
           OrSymbol =
@@ -445,7 +440,7 @@ module Lithic
       # APPROVED payments were successful while DECLINED payments were declined by
       #   Lithic or returned.
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Result) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Result::TaggedSymbol) }
@@ -459,7 +454,7 @@ module Lithic
       end
 
       module Source
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Source) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Source::TaggedSymbol) }
@@ -480,7 +475,7 @@ module Lithic
       #   - `RETURNED` - The payment has been returned.
       #   - `SETTLED` - The payment is completed.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Payment::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Payment::Status::TaggedSymbol) }

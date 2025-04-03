@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Accounts#retrieve_spend_limits
-    class AccountSpendLimits < Lithic::BaseModel
+    class AccountSpendLimits < Lithic::Internal::Type::BaseModel
       # @!attribute available_spend_limit
       #
       #   @return [Lithic::Models::AccountSpendLimits::AvailableSpendLimit]
@@ -34,10 +34,10 @@ module Lithic
       #   #
       #   def initialize(available_spend_limit:, spend_limit: nil, spend_velocity: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # @see Lithic::Models::AccountSpendLimits#available_spend_limit
-      class AvailableSpendLimit < Lithic::BaseModel
+      class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
         # @!attribute [r] daily
         #   The available spend limit (in cents) relative to the daily limit configured on
         #     the Account (e.g. 100000 would be a $1,000 limit).
@@ -78,11 +78,11 @@ module Lithic
         #   #
         #   def initialize(daily: nil, lifetime: nil, monthly: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # @see Lithic::Models::AccountSpendLimits#spend_limit
-      class SpendLimit < Lithic::BaseModel
+      class SpendLimit < Lithic::Internal::Type::BaseModel
         # @!attribute [r] daily
         #   The configured daily spend limit (in cents) on the Account.
         #
@@ -120,11 +120,11 @@ module Lithic
         #   #
         #   def initialize(daily: nil, lifetime: nil, monthly: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # @see Lithic::Models::AccountSpendLimits#spend_velocity
-      class SpendVelocity < Lithic::BaseModel
+      class SpendVelocity < Lithic::Internal::Type::BaseModel
         # @!attribute [r] daily
         #   Current daily spend velocity (in cents) on the Account. Present if daily spend
         #     limit is set.
@@ -165,7 +165,7 @@ module Lithic
         #   #
         #   def initialize(daily: nil, lifetime: nil, monthly: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

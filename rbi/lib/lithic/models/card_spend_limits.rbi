@@ -2,13 +2,13 @@
 
 module Lithic
   module Models
-    class CardSpendLimits < Lithic::BaseModel
+    class CardSpendLimits < Lithic::Internal::Type::BaseModel
       sig { returns(Lithic::Models::CardSpendLimits::AvailableSpendLimit) }
       attr_reader :available_spend_limit
 
       sig do
         params(
-          available_spend_limit: T.any(Lithic::Models::CardSpendLimits::AvailableSpendLimit, Lithic::Internal::Util::AnyHash)
+          available_spend_limit: T.any(Lithic::Models::CardSpendLimits::AvailableSpendLimit, Lithic::Internal::AnyHash)
         )
           .void
       end
@@ -17,28 +17,23 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::CardSpendLimits::SpendLimit)) }
       attr_reader :spend_limit
 
-      sig do
-        params(spend_limit: T.any(Lithic::Models::CardSpendLimits::SpendLimit, Lithic::Internal::Util::AnyHash))
-          .void
-      end
+      sig { params(spend_limit: T.any(Lithic::Models::CardSpendLimits::SpendLimit, Lithic::Internal::AnyHash)).void }
       attr_writer :spend_limit
 
       sig { returns(T.nilable(Lithic::Models::CardSpendLimits::SpendVelocity)) }
       attr_reader :spend_velocity
 
       sig do
-        params(
-          spend_velocity: T.any(Lithic::Models::CardSpendLimits::SpendVelocity, Lithic::Internal::Util::AnyHash)
-        )
+        params(spend_velocity: T.any(Lithic::Models::CardSpendLimits::SpendVelocity, Lithic::Internal::AnyHash))
           .void
       end
       attr_writer :spend_velocity
 
       sig do
         params(
-          available_spend_limit: T.any(Lithic::Models::CardSpendLimits::AvailableSpendLimit, Lithic::Internal::Util::AnyHash),
-          spend_limit: T.any(Lithic::Models::CardSpendLimits::SpendLimit, Lithic::Internal::Util::AnyHash),
-          spend_velocity: T.any(Lithic::Models::CardSpendLimits::SpendVelocity, Lithic::Internal::Util::AnyHash)
+          available_spend_limit: T.any(Lithic::Models::CardSpendLimits::AvailableSpendLimit, Lithic::Internal::AnyHash),
+          spend_limit: T.any(Lithic::Models::CardSpendLimits::SpendLimit, Lithic::Internal::AnyHash),
+          spend_velocity: T.any(Lithic::Models::CardSpendLimits::SpendVelocity, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -58,7 +53,7 @@ module Lithic
       def to_hash
       end
 
-      class AvailableSpendLimit < Lithic::BaseModel
+      class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
         # The available spend limit (in cents) relative to the annual limit configured on
         #   the Card (e.g. 100000 would be a $1,000 limit).
         sig { returns(T.nilable(Integer)) }
@@ -92,7 +87,7 @@ module Lithic
         end
       end
 
-      class SpendLimit < Lithic::BaseModel
+      class SpendLimit < Lithic::Internal::Type::BaseModel
         # The configured annual spend limit (in cents) on the Card.
         sig { returns(T.nilable(Integer)) }
         attr_reader :annually
@@ -123,7 +118,7 @@ module Lithic
         end
       end
 
-      class SpendVelocity < Lithic::BaseModel
+      class SpendVelocity < Lithic::Internal::Type::BaseModel
         # Current annual spend velocity (in cents) on the Card. Present if annual spend
         #   limit is set.
         sig { returns(T.nilable(Integer)) }

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module VerificationMethod
-      extend Lithic::Enum
+      extend Lithic::Internal::Type::Enum
 
       MANUAL = :MANUAL
       MICRO_DEPOSIT = :MICRO_DEPOSIT

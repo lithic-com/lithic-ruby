@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Payments#create
-    class PaymentCreateParams < Lithic::BaseModel
+    class PaymentCreateParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -95,10 +95,10 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       module Method
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACH_NEXT_DAY = :ACH_NEXT_DAY
         ACH_SAME_DAY = :ACH_SAME_DAY
@@ -110,7 +110,7 @@ module Lithic
         #   def self.values; end
       end
 
-      class MethodAttributes < Lithic::BaseModel
+      class MethodAttributes < Lithic::Internal::Type::BaseModel
         # @!attribute sec_code
         #
         #   @return [Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode]
@@ -121,11 +121,11 @@ module Lithic
         #   #
         #   def initialize(sec_code:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # @see Lithic::Models::PaymentCreateParams::MethodAttributes#sec_code
         module SecCode
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CCD = :CCD
           PPD = :PPD
@@ -140,7 +140,7 @@ module Lithic
       end
 
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         COLLECTION = :COLLECTION
         PAYMENT = :PAYMENT

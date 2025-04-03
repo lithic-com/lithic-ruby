@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Events#list_attempts
-    class MessageAttempt < Lithic::BaseModel
+    class MessageAttempt < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier.
       #
@@ -79,13 +79,13 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # The status of the event attempt.
       #
       # @see Lithic::Models::MessageAttempt#status
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         FAILED = :FAILED
         PENDING = :PENDING

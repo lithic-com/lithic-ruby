@@ -7,7 +7,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class FinancialAccountUpdateStatusParams < Lithic::BaseModel
+    class FinancialAccountUpdateStatusParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -26,7 +26,7 @@ module Lithic
       type status = :OPEN | :CLOSED | :SUSPENDED | :PENDING
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         OPEN: :OPEN
         CLOSED: :CLOSED
@@ -43,7 +43,7 @@ module Lithic
         | :CHARGED_OFF_DELINQUENT
 
       module StatusChangeReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CHARGED_OFF_FRAUD: :CHARGED_OFF_FRAUD
         END_USER_REQUEST: :END_USER_REQUEST

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Payments#simulate_release
-    class PaymentSimulateReleaseResponse < Lithic::BaseModel
+    class PaymentSimulateReleaseResponse < Lithic::Internal::Type::BaseModel
       # @!attribute debugging_request_id
       #   Debugging Request Id
       #
@@ -29,13 +29,13 @@ module Lithic
       #   #
       #   def initialize(debugging_request_id:, result:, transaction_event_token:, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Request Result
       #
       # @see Lithic::Models::PaymentSimulateReleaseResponse#result
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED = :APPROVED
         DECLINED = :DECLINED

@@ -29,7 +29,7 @@ module Lithic
         events: ::Array[Lithic::Models::Transaction::Event]
       }
 
-    class Transaction < Lithic::BaseModel
+    class Transaction < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor account_token: String
@@ -122,7 +122,7 @@ module Lithic
           settlement: Lithic::Models::Transaction::Amounts::Settlement
         }
 
-      class Amounts < Lithic::BaseModel
+      class Amounts < Lithic::Internal::Type::BaseModel
         attr_accessor cardholder: Lithic::Models::Transaction::Amounts::Cardholder
 
         attr_accessor hold: Lithic::Models::Transaction::Amounts::Hold
@@ -143,7 +143,7 @@ module Lithic
         type cardholder =
           { amount: Integer, conversion_rate: String, currency: String }
 
-        class Cardholder < Lithic::BaseModel
+        class Cardholder < Lithic::Internal::Type::BaseModel
           attr_accessor amount: Integer
 
           attr_accessor conversion_rate: String
@@ -161,7 +161,7 @@ module Lithic
 
         type hold = { amount: Integer, currency: String }
 
-        class Hold < Lithic::BaseModel
+        class Hold < Lithic::Internal::Type::BaseModel
           attr_accessor amount: Integer
 
           attr_accessor currency: String
@@ -173,7 +173,7 @@ module Lithic
 
         type merchant = { amount: Integer, currency: String }
 
-        class Merchant < Lithic::BaseModel
+        class Merchant < Lithic::Internal::Type::BaseModel
           attr_accessor amount: Integer
 
           attr_accessor currency: String
@@ -185,7 +185,7 @@ module Lithic
 
         type settlement = { amount: Integer, currency: String }
 
-        class Settlement < Lithic::BaseModel
+        class Settlement < Lithic::Internal::Type::BaseModel
           attr_accessor amount: Integer
 
           attr_accessor currency: String
@@ -198,7 +198,7 @@ module Lithic
 
       type avs = { address: String, zipcode: String }
 
-      class Avs < Lithic::BaseModel
+      class Avs < Lithic::Internal::Type::BaseModel
         attr_accessor address: String
 
         attr_accessor zipcode: String
@@ -220,7 +220,7 @@ module Lithic
           verification_result: Lithic::Models::Transaction::CardholderAuthentication::verification_result
         }
 
-      class CardholderAuthentication < Lithic::BaseModel
+      class CardholderAuthentication < Lithic::Internal::Type::BaseModel
         attr_accessor three_ds_version: String?
 
         attr_accessor acquirer_exemption: Lithic::Models::Transaction::CardholderAuthentication::acquirer_exemption
@@ -261,7 +261,7 @@ module Lithic
           | :TRANSACTION_RISK_ANALYSIS
 
         module AcquirerExemption
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           AUTHENTICATION_OUTAGE_EXCEPTION: :AUTHENTICATION_OUTAGE_EXCEPTION
           LOW_VALUE: :LOW_VALUE
@@ -278,7 +278,7 @@ module Lithic
         type authentication_result = :ATTEMPTS | :DECLINE | :NONE | :SUCCESS
 
         module AuthenticationResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ATTEMPTS: :ATTEMPTS
           DECLINE: :DECLINE
@@ -296,7 +296,7 @@ module Lithic
           | :UNKNOWN
 
         module DecisionMadeBy
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CUSTOMER_ENDPOINT: :CUSTOMER_ENDPOINT
           LITHIC_DEFAULT: :LITHIC_DEFAULT
@@ -314,7 +314,7 @@ module Lithic
           | :TOKEN_AUTHENTICATED
 
         module LiabilityShift
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           LIABILITY_SHIFT_3DS_AUTHENTICATED: :"3DS_AUTHENTICATED"
           ACQUIRER_EXEMPTION: :ACQUIRER_EXEMPTION
@@ -327,7 +327,7 @@ module Lithic
         type verification_attempted = :NONE | :OTHER
 
         module VerificationAttempted
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           NONE: :NONE
           OTHER: :OTHER
@@ -344,7 +344,7 @@ module Lithic
           | :SUCCESS
 
         module VerificationResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CANCELLED: :CANCELLED
           FAILED: :FAILED
@@ -368,7 +368,7 @@ module Lithic
           state: String
         }
 
-      class Merchant < Lithic::BaseModel
+      class Merchant < Lithic::Internal::Type::BaseModel
         attr_accessor acceptor_id: String
 
         attr_accessor acquiring_institution_id: String
@@ -399,7 +399,7 @@ module Lithic
       type network = :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
 
       module Network
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         INTERLINK: :INTERLINK
         MAESTRO: :MAESTRO
@@ -416,7 +416,7 @@ module Lithic
           terminal: Lithic::Models::Transaction::Pos::Terminal
         }
 
-      class Pos < Lithic::BaseModel
+      class Pos < Lithic::Internal::Type::BaseModel
         attr_accessor entry_mode: Lithic::Models::Transaction::Pos::EntryMode
 
         attr_accessor terminal: Lithic::Models::Transaction::Pos::Terminal
@@ -436,7 +436,7 @@ module Lithic
             pin_entered: bool
           }
 
-        class EntryMode < Lithic::BaseModel
+        class EntryMode < Lithic::Internal::Type::BaseModel
           attr_accessor card: Lithic::Models::Transaction::Pos::EntryMode::card
 
           attr_accessor cardholder: Lithic::Models::Transaction::Pos::EntryMode::cardholder
@@ -457,7 +457,7 @@ module Lithic
           type card = :NOT_PRESENT | :PREAUTHORIZED | :PRESENT | :UNKNOWN
 
           module Card
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             NOT_PRESENT: :NOT_PRESENT
             PREAUTHORIZED: :PREAUTHORIZED
@@ -480,7 +480,7 @@ module Lithic
             | :UNKNOWN
 
           module Cardholder
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             DEFERRED_BILLING: :DEFERRED_BILLING
             ELECTRONIC_ORDER: :ELECTRONIC_ORDER
@@ -514,7 +514,7 @@ module Lithic
             | :UNSPECIFIED
 
           module Pan
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             AUTO_ENTRY: :AUTO_ENTRY
             BAR_CODE: :BAR_CODE
@@ -547,7 +547,7 @@ module Lithic
             type: Lithic::Models::Transaction::Pos::Terminal::type_
           }
 
-        class Terminal < Lithic::BaseModel
+        class Terminal < Lithic::Internal::Type::BaseModel
           attr_accessor attended: bool
 
           attr_accessor card_retention_capable: bool
@@ -578,7 +578,7 @@ module Lithic
             :ADMINISTRATIVE | :CARDHOLDER | :CARD_ACCEPTOR | :UNKNOWN
 
           module Operator
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             ADMINISTRATIVE: :ADMINISTRATIVE
             CARDHOLDER: :CARDHOLDER
@@ -592,7 +592,7 @@ module Lithic
             :CAPABLE | :INOPERATIVE | :NOT_CAPABLE | :UNSPECIFIED
 
           module PinCapability
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             CAPABLE: :CAPABLE
             INOPERATIVE: :INOPERATIVE
@@ -629,7 +629,7 @@ module Lithic
             | :UNKNOWN
 
           module Type
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             ADMINISTRATIVE: :ADMINISTRATIVE
             ATM: :ATM
@@ -687,7 +687,7 @@ module Lithic
         | :USER_TRANSACTION_LIMIT
 
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACCOUNT_STATE_TRANSACTION_FAIL: :ACCOUNT_STATE_TRANSACTION_FAIL
         APPROVED: :APPROVED
@@ -719,7 +719,7 @@ module Lithic
       type status = :DECLINED | :EXPIRED | :PENDING | :SETTLED | :VOIDED
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DECLINED: :DECLINED
         EXPIRED: :EXPIRED
@@ -733,7 +733,7 @@ module Lithic
       type token_info =
         { wallet_type: Lithic::Models::Transaction::TokenInfo::wallet_type }
 
-      class TokenInfo < Lithic::BaseModel
+      class TokenInfo < Lithic::Internal::Type::BaseModel
         attr_accessor wallet_type: Lithic::Models::Transaction::TokenInfo::wallet_type
 
         def initialize: (
@@ -751,7 +751,7 @@ module Lithic
           | :SAMSUNG_PAY
 
         module WalletType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPLE_PAY: :APPLE_PAY
           GOOGLE_PAY: :GOOGLE_PAY
@@ -778,7 +778,7 @@ module Lithic
           type: Lithic::Models::Transaction::Event::type_
         }
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
 
         attr_accessor amount: Integer
@@ -821,7 +821,7 @@ module Lithic
             settlement: Lithic::Models::Transaction::Event::Amounts::Settlement?
           }
 
-        class Amounts < Lithic::BaseModel
+        class Amounts < Lithic::Internal::Type::BaseModel
           attr_accessor cardholder: Lithic::Models::Transaction::Event::Amounts::Cardholder
 
           attr_accessor merchant: Lithic::Models::Transaction::Event::Amounts::Merchant
@@ -839,7 +839,7 @@ module Lithic
           type cardholder =
             { amount: Integer, conversion_rate: String, currency: String }
 
-          class Cardholder < Lithic::BaseModel
+          class Cardholder < Lithic::Internal::Type::BaseModel
             attr_accessor amount: Integer
 
             attr_accessor conversion_rate: String
@@ -857,7 +857,7 @@ module Lithic
 
           type merchant = { amount: Integer, currency: String }
 
-          class Merchant < Lithic::BaseModel
+          class Merchant < Lithic::Internal::Type::BaseModel
             attr_accessor amount: Integer
 
             attr_accessor currency: String
@@ -870,7 +870,7 @@ module Lithic
           type settlement =
             { amount: Integer, conversion_rate: String, currency: String }
 
-          class Settlement < Lithic::BaseModel
+          class Settlement < Lithic::Internal::Type::BaseModel
             attr_accessor amount: Integer
 
             attr_accessor conversion_rate: String
@@ -942,7 +942,7 @@ module Lithic
           | :VEHICLE_NUMBER_INVALID
 
         module DetailedResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED: :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
           ACCOUNT_DELINQUENT: :ACCOUNT_DELINQUENT
@@ -1003,7 +1003,7 @@ module Lithic
         type effective_polarity = :CREDIT | :DEBIT
 
         module EffectivePolarity
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CREDIT: :CREDIT
           DEBIT: :DEBIT
@@ -1018,7 +1018,7 @@ module Lithic
             visa: Lithic::Models::Transaction::Event::NetworkInfo::Visa?
           }
 
-        class NetworkInfo < Lithic::BaseModel
+        class NetworkInfo < Lithic::Internal::Type::BaseModel
           attr_accessor acquirer: Lithic::Models::Transaction::Event::NetworkInfo::Acquirer?
 
           attr_accessor mastercard: Lithic::Models::Transaction::Event::NetworkInfo::Mastercard?
@@ -1039,7 +1039,7 @@ module Lithic
               retrieval_reference_number: String?
             }
 
-          class Acquirer < Lithic::BaseModel
+          class Acquirer < Lithic::Internal::Type::BaseModel
             attr_accessor acquirer_reference_number: String?
 
             attr_accessor retrieval_reference_number: String?
@@ -1060,7 +1060,7 @@ module Lithic
               switch_serial_number: String?
             }
 
-          class Mastercard < Lithic::BaseModel
+          class Mastercard < Lithic::Internal::Type::BaseModel
             attr_accessor banknet_reference_number: String?
 
             attr_accessor original_banknet_reference_number: String?
@@ -1082,7 +1082,7 @@ module Lithic
           type visa =
             { original_transaction_id: String?, transaction_id: String? }
 
-          class Visa < Lithic::BaseModel
+          class Visa < Lithic::Internal::Type::BaseModel
             attr_accessor original_transaction_id: String?
 
             attr_accessor transaction_id: String?
@@ -1122,7 +1122,7 @@ module Lithic
           | :USER_TRANSACTION_LIMIT
 
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACCOUNT_STATE_TRANSACTION_FAIL: :ACCOUNT_STATE_TRANSACTION_FAIL
           APPROVED: :APPROVED
@@ -1159,7 +1159,7 @@ module Lithic
             result: Lithic::Models::Transaction::Event::RuleResult::result
           }
 
-        class RuleResult < Lithic::BaseModel
+        class RuleResult < Lithic::Internal::Type::BaseModel
           attr_accessor auth_rule_token: String?
 
           attr_accessor explanation: String?
@@ -1232,7 +1232,7 @@ module Lithic
             | :VEHICLE_NUMBER_INVALID
 
           module Result
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED: :ACCOUNT_DAILY_SPEND_LIMIT_EXCEEDED
             ACCOUNT_DELINQUENT: :ACCOUNT_DELINQUENT
@@ -1308,7 +1308,7 @@ module Lithic
           | :RETURN_REVERSAL
 
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           AUTHORIZATION: :AUTHORIZATION
           AUTHORIZATION_ADVICE: :AUTHORIZATION_ADVICE

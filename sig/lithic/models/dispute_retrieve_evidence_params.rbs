@@ -3,7 +3,7 @@ module Lithic
     type dispute_retrieve_evidence_params =
       { dispute_token: String } & Lithic::Internal::Type::request_parameters
 
-    class DisputeRetrieveEvidenceParams < Lithic::BaseModel
+    class DisputeRetrieveEvidenceParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

@@ -4,7 +4,7 @@ module Lithic
       type enhanced_commercial_data_retrieve_response =
         { data: ::Array[Lithic::Models::Transactions::Events::EnhancedData] }
 
-      class EnhancedCommercialDataRetrieveResponse < Lithic::BaseModel
+      class EnhancedCommercialDataRetrieveResponse < Lithic::Internal::Type::BaseModel
         attr_accessor data: ::Array[Lithic::Models::Transactions::Events::EnhancedData]
 
         def initialize: (

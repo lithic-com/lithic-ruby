@@ -10,7 +10,7 @@ module Lithic
         }
         & Lithic::Internal::Type::request_parameters
 
-      class AuthenticationSimulateParams < Lithic::BaseModel
+      class AuthenticationSimulateParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
@@ -39,7 +39,7 @@ module Lithic
         type merchant =
           { id: String, country: String, mcc: String, name: String }
 
-        class Merchant < Lithic::BaseModel
+        class Merchant < Lithic::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor country: String
@@ -60,7 +60,7 @@ module Lithic
 
         type transaction = { amount: Integer, currency: String }
 
-        class Transaction < Lithic::BaseModel
+        class Transaction < Lithic::Internal::Type::BaseModel
           attr_accessor amount: Integer
 
           attr_accessor currency: String
@@ -73,7 +73,7 @@ module Lithic
         type card_expiry_check = :MATCH | :MISMATCH | :NOT_PRESENT
 
         module CardExpiryCheck
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           MATCH: :MATCH
           MISMATCH: :MISMATCH

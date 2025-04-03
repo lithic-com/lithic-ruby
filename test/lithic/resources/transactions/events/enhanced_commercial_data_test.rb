@@ -16,7 +16,7 @@ class Lithic::Test::Resources::Transactions::Events::EnhancedCommercialDataTest 
         token: String,
         common: Lithic::Models::Transactions::Events::EnhancedData::Common,
         event_token: String,
-        fleet: ^(Lithic::ArrayOf[Lithic::Models::Transactions::Events::EnhancedData::Fleet]),
+        fleet: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Transactions::Events::EnhancedData::Fleet]),
         transaction_token: String
       }
     end

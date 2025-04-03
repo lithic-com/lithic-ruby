@@ -14,7 +14,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class PaymentCreateParams < Lithic::BaseModel
+    class PaymentCreateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -60,7 +60,7 @@ module Lithic
       type method_ = :ACH_NEXT_DAY | :ACH_SAME_DAY
 
       module Method
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACH_NEXT_DAY: :ACH_NEXT_DAY
         ACH_SAME_DAY: :ACH_SAME_DAY
@@ -73,7 +73,7 @@ module Lithic
           sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code
         }
 
-      class MethodAttributes < Lithic::BaseModel
+      class MethodAttributes < Lithic::Internal::Type::BaseModel
         attr_accessor sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code
 
         def initialize: (
@@ -85,7 +85,7 @@ module Lithic
         type sec_code = :CCD | :PPD | :WEB
 
         module SecCode
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CCD: :CCD
           PPD: :PPD
@@ -98,7 +98,7 @@ module Lithic
       type type_ = :COLLECTION | :PAYMENT
 
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         COLLECTION: :COLLECTION
         PAYMENT: :PAYMENT

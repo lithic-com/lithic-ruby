@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::ExternalPayments#create
-    class ExternalPayment < Lithic::BaseModel
+    class ExternalPayment < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #
       #   @return [String]
@@ -27,7 +27,7 @@ module Lithic
       # @!attribute events
       #
       #   @return [Array<Lithic::Models::ExternalPayment::Event>]
-      required :events, -> { Lithic::ArrayOf[Lithic::Models::ExternalPayment::Event] }
+      required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::ExternalPayment::Event] }
 
       # @!attribute financial_account_token
       #
@@ -107,11 +107,11 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # @see Lithic::Models::ExternalPayment#category
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         EXTERNAL_WIRE = :EXTERNAL_WIRE
         EXTERNAL_ACH = :EXTERNAL_ACH
@@ -125,7 +125,7 @@ module Lithic
         #   def self.values; end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #
         #   @return [String]
@@ -145,7 +145,7 @@ module Lithic
         #
         #   @return [Array<Symbol, Lithic::Models::ExternalPayment::Event::DetailedResult>]
         required :detailed_results,
-                 -> { Lithic::ArrayOf[enum: Lithic::Models::ExternalPayment::Event::DetailedResult] }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::ExternalPayment::Event::DetailedResult] }
 
         # @!attribute effective_date
         #
@@ -179,10 +179,10 @@ module Lithic
         #   #
         #   def initialize(token:, amount:, created:, detailed_results:, effective_date:, memo:, result:, type:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         module DetailedResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
 
@@ -195,7 +195,7 @@ module Lithic
 
         # @see Lithic::Models::ExternalPayment::Event#result
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
           DECLINED = :DECLINED
@@ -209,7 +209,7 @@ module Lithic
 
         # @see Lithic::Models::ExternalPayment::Event#type
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           EXTERNAL_WIRE_INITIATED = :EXTERNAL_WIRE_INITIATED
           EXTERNAL_WIRE_CANCELED = :EXTERNAL_WIRE_CANCELED
@@ -242,7 +242,7 @@ module Lithic
 
       # @see Lithic::Models::ExternalPayment#payment_type
       module PaymentType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DEPOSIT = :DEPOSIT
         WITHDRAWAL = :WITHDRAWAL
@@ -256,7 +256,7 @@ module Lithic
 
       # @see Lithic::Models::ExternalPayment#result
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED = :APPROVED
         DECLINED = :DECLINED
@@ -270,7 +270,7 @@ module Lithic
 
       # @see Lithic::Models::ExternalPayment#status
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         PENDING = :PENDING
         SETTLED = :SETTLED

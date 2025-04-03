@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class MessageAttempt < Lithic::BaseModel
+    class MessageAttempt < Lithic::Internal::Type::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
       attr_accessor :token
@@ -82,7 +82,7 @@ module Lithic
 
       # The status of the event attempt.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::MessageAttempt::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::MessageAttempt::Status::TaggedSymbol) }

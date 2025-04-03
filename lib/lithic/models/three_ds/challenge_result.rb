@@ -5,7 +5,7 @@ module Lithic
     module ThreeDS
       # Whether the Cardholder has Approved or Declined the issued Challenge
       module ChallengeResult
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVE = :APPROVE
         DECLINE_BY_CUSTOMER = :DECLINE_BY_CUSTOMER

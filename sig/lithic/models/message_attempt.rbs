@@ -12,7 +12,7 @@ module Lithic
         url: String
       }
 
-    class MessageAttempt < Lithic::BaseModel
+    class MessageAttempt < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor created: Time
@@ -45,7 +45,7 @@ module Lithic
       type status = :FAILED | :PENDING | :SENDING | :SUCCESS
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         FAILED: :FAILED
         PENDING: :PENDING

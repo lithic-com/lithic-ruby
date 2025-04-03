@@ -4,7 +4,7 @@ module Lithic
   module Models
     module FinancialAccounts
       module Statements
-        class StatementLineItems < Lithic::BaseModel
+        class StatementLineItems < Lithic::Internal::Type::BaseModel
           sig { returns(T::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data]) }
           attr_accessor :data
 
@@ -13,12 +13,7 @@ module Lithic
 
           sig do
             params(
-              data: T::Array[
-              T.any(
-                Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data,
-                Lithic::Internal::Util::AnyHash
-              )
-              ],
+              data: T::Array[T.any(Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data, Lithic::Internal::AnyHash)],
               has_more: T::Boolean
             )
               .returns(T.attached_class)
@@ -38,7 +33,7 @@ module Lithic
           def to_hash
           end
 
-          class Data < Lithic::BaseModel
+          class Data < Lithic::Internal::Type::BaseModel
             # Globally unique identifier for a Statement Line Item
             sig { returns(String) }
             attr_accessor :token
@@ -147,7 +142,7 @@ module Lithic
             end
 
             module Category
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category) }
@@ -227,7 +222,7 @@ module Lithic
             end
 
             module EventType
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType) }

@@ -17,11 +17,11 @@ module Lithic
         sig(:final) do
           params(
             type_info: T.any(
-              Lithic::Internal::Util::AnyHash,
+              Lithic::Internal::AnyHash,
               T.proc.returns(Lithic::Internal::Type::Converter::Input),
               Lithic::Internal::Type::Converter::Input
             ),
-            spec: Lithic::Internal::Util::AnyHash
+            spec: Lithic::Internal::AnyHash
           )
             .returns(T.attached_class)
         end
@@ -43,7 +43,7 @@ module Lithic
               value: T.any(T::Hash[T.anything, T.anything], T.anything),
               state: Lithic::Internal::Type::Converter::State
             )
-            .returns(T.any(Lithic::Internal::Util::AnyHash, T.anything))
+            .returns(T.any(Lithic::Internal::AnyHash, T.anything))
         end
         def coerce(value, state:)
         end
@@ -52,7 +52,7 @@ module Lithic
         sig(:final) do
           override
             .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
-            .returns(T.any(Lithic::Internal::Util::AnyHash, T.anything))
+            .returns(T.any(Lithic::Internal::AnyHash, T.anything))
         end
         def dump(value)
         end
@@ -71,11 +71,11 @@ module Lithic
         sig(:final) do
           params(
             type_info: T.any(
-              Lithic::Internal::Util::AnyHash,
+              Lithic::Internal::AnyHash,
               T.proc.returns(Lithic::Internal::Type::Converter::Input),
               Lithic::Internal::Type::Converter::Input
             ),
-            spec: Lithic::Internal::Util::AnyHash
+            spec: Lithic::Internal::AnyHash
           )
             .void
         end

@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class AddressUpdate < Lithic::BaseModel
+    class AddressUpdate < Lithic::Internal::Type::BaseModel
       # Valid deliverable address (no PO boxes).
       sig { returns(T.nilable(String)) }
       attr_reader :address1

@@ -10,7 +10,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class TransactionSimulateCreditAuthorizationParams < Lithic::BaseModel
+    class TransactionSimulateCreditAuthorizationParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

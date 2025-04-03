@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class TransactionSimulateReturnReversalParams < Lithic::BaseModel
+    class TransactionSimulateReturnReversalParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -11,7 +11,7 @@ module Lithic
       attr_accessor :token
 
       sig do
-        params(token: String, request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+        params(token: String, request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(token:, request_options: {})

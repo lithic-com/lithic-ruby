@@ -11,7 +11,7 @@ module Lithic
         upload_url: String
       }
 
-    class DisputeEvidence < Lithic::BaseModel
+    class DisputeEvidence < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor created: Time
@@ -47,7 +47,7 @@ module Lithic
       type upload_status = :DELETED | :ERROR | :PENDING | :REJECTED | :UPLOADED
 
       module UploadStatus
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DELETED: :DELETED
         ERROR: :ERROR

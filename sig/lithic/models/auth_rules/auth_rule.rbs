@@ -16,7 +16,7 @@ module Lithic
           program_level: bool
         }
 
-      class AuthRule < Lithic::BaseModel
+      class AuthRule < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
 
         attr_accessor state: Lithic::Models::AuthRules::AuthRule::state
@@ -66,7 +66,7 @@ module Lithic
         type state = :ACTIVE | :INACTIVE
 
         module State
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACTIVE: :ACTIVE
           INACTIVE: :INACTIVE

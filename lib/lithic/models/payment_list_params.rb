@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Payments#list
-    class PaymentListParams < Lithic::BaseModel
+    class PaymentListParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -148,10 +148,10 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACH = :ACH
 
@@ -163,7 +163,7 @@ module Lithic
       end
 
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED = :APPROVED
         DECLINED = :DECLINED
@@ -176,7 +176,7 @@ module Lithic
       end
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DECLINED = :DECLINED
         PENDING = :PENDING

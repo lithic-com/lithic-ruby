@@ -3,7 +3,7 @@ module Lithic
     type event_retrieve_params =
       {  } & Lithic::Internal::Type::request_parameters
 
-    class EventRetrieveParams < Lithic::BaseModel
+    class EventRetrieveParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

@@ -2,7 +2,7 @@ module Lithic
   module Models
     type carrier = { qr_code_url: String }
 
-    class Carrier < Lithic::BaseModel
+    class Carrier < Lithic::Internal::Type::BaseModel
       attr_reader qr_code_url: String?
 
       def qr_code_url=: (String) -> String

@@ -31,10 +31,10 @@ module Lithic
         def dump(value)
           case value
           in Array
-            value.map { Lithic::Unknown.dump(_1) }
+            value.map { Lithic::Internal::Type::Unknown.dump(_1) }
           in Hash
-            value.transform_values { Lithic::Unknown.dump(_1) }
-          in Lithic::BaseModel
+            value.transform_values { Lithic::Internal::Type::Unknown.dump(_1) }
+          in Lithic::Internal::Type::BaseModel
             value.class.dump(value)
           else
             value
@@ -64,7 +64,7 @@ module Lithic
             in Hash
               type_info(spec.slice(:const, :enum, :union).first&.last)
             in true | false
-              -> { Lithic::BooleanModel }
+              -> { Lithic::Internal::Type::BooleanModel }
             in Lithic::Internal::Type::Converter | Class | Symbol
               -> { spec }
             in NilClass | Integer | Float
@@ -209,7 +209,7 @@ module Lithic
           #
           # @return [Object]
           def dump(target, value)
-            target.is_a?(Lithic::Internal::Type::Converter) ? target.dump(value) : Lithic::Unknown.dump(value)
+            target.is_a?(Lithic::Internal::Type::Converter) ? target.dump(value) : Lithic::Internal::Type::Unknown.dump(value)
           end
         end
       end

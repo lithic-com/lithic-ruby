@@ -12,7 +12,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class CardListParams < Lithic::BaseModel
+    class CardListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -63,7 +63,7 @@ module Lithic
         :CLOSED | :OPEN | :PAUSED | :PENDING_ACTIVATION | :PENDING_FULFILLMENT
 
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CLOSED: :CLOSED
         OPEN: :OPEN

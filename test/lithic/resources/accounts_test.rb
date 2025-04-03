@@ -17,7 +17,7 @@ class Lithic::Test::Resources::AccountsTest < Lithic::Test::ResourceTest
         spend_limit: Lithic::Models::Account::SpendLimit,
         state: Lithic::Models::Account::State,
         account_holder: Lithic::Models::Account::AccountHolder | nil,
-        auth_rule_tokens: ^(Lithic::ArrayOf[String]) | nil,
+        auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         verification_address: Lithic::Models::Account::VerificationAddress | nil
       }
@@ -40,7 +40,7 @@ class Lithic::Test::Resources::AccountsTest < Lithic::Test::ResourceTest
         spend_limit: Lithic::Models::Account::SpendLimit,
         state: Lithic::Models::Account::State,
         account_holder: Lithic::Models::Account::AccountHolder | nil,
-        auth_rule_tokens: ^(Lithic::ArrayOf[String]) | nil,
+        auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         verification_address: Lithic::Models::Account::VerificationAddress | nil
       }
@@ -68,7 +68,7 @@ class Lithic::Test::Resources::AccountsTest < Lithic::Test::ResourceTest
         spend_limit: Lithic::Models::Account::SpendLimit,
         state: Lithic::Models::Account::State,
         account_holder: Lithic::Models::Account::AccountHolder | nil,
-        auth_rule_tokens: ^(Lithic::ArrayOf[String]) | nil,
+        auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         verification_address: Lithic::Models::Account::VerificationAddress | nil
       }

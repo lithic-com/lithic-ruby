@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::FinancialAccounts#update_status
-    class FinancialAccountUpdateStatusParams < Lithic::BaseModel
+    class FinancialAccountUpdateStatusParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -29,11 +29,11 @@ module Lithic
       #   #
       #   def initialize(status:, status_change_reason:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Status of the financial account
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         OPEN = :OPEN
         CLOSED = :CLOSED
@@ -49,7 +49,7 @@ module Lithic
 
       # Reason for the financial account status change
       module StatusChangeReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CHARGED_OFF_FRAUD = :CHARGED_OFF_FRAUD
         END_USER_REQUEST = :END_USER_REQUEST

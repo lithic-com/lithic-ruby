@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module OwnerType
-      extend Lithic::Enum
+      extend Lithic::Internal::Type::Enum
 
       INDIVIDUAL = :INDIVIDUAL
       BUSINESS = :BUSINESS

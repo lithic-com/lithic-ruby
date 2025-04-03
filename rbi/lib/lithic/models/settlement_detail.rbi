@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class SettlementDetail < Lithic::BaseModel
+    class SettlementDetail < Lithic::Internal::Type::BaseModel
       # Globally unique identifier denoting the Settlement Detail.
       sig { returns(String) }
       attr_accessor :token
@@ -61,7 +61,7 @@ module Lithic
 
       sig do
         params(
-          other_fees_details: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Internal::Util::AnyHash)
+          other_fees_details: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Internal::AnyHash)
         )
           .void
       end
@@ -117,7 +117,7 @@ module Lithic
           interchange_fee_extended_precision: Integer,
           interchange_gross_amount: Integer,
           network: Lithic::Models::SettlementDetail::Network::OrSymbol,
-          other_fees_details: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Internal::Util::AnyHash),
+          other_fees_details: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Internal::AnyHash),
           other_fees_gross_amount: Integer,
           report_date: String,
           settlement_date: String,
@@ -187,7 +187,7 @@ module Lithic
 
       # Card network where the transaction took place.
       module Network
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::SettlementDetail::Network) }
         OrSymbol =
@@ -204,7 +204,7 @@ module Lithic
         end
       end
 
-      class OtherFeesDetails < Lithic::BaseModel
+      class OtherFeesDetails < Lithic::Internal::Type::BaseModel
         sig { returns(T.nilable(Integer)) }
         attr_reader :isa
 
@@ -223,7 +223,7 @@ module Lithic
 
       # The type of settlement record.
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::SettlementDetail::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::SettlementDetail::Type::TaggedSymbol) }

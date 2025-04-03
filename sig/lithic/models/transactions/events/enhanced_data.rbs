@@ -11,7 +11,7 @@ module Lithic
             transaction_token: String
           }
 
-        class EnhancedData < Lithic::BaseModel
+        class EnhancedData < Lithic::Internal::Type::BaseModel
           attr_accessor token: String
 
           attr_accessor common: Lithic::Models::Transactions::Events::EnhancedData::Common
@@ -41,7 +41,7 @@ module Lithic
               order_date: Date
             }
 
-          class Common < Lithic::BaseModel
+          class Common < Lithic::Internal::Type::BaseModel
             attr_accessor line_items: ::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem]
 
             attr_accessor tax: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax
@@ -76,7 +76,7 @@ module Lithic
                 quantity: Float
               }
 
-            class LineItem < Lithic::BaseModel
+            class LineItem < Lithic::Internal::Type::BaseModel
               attr_reader amount: Float?
 
               def amount=: (Float) -> Float
@@ -110,7 +110,7 @@ module Lithic
                 merchant_tax_id: String
               }
 
-            class Tax < Lithic::BaseModel
+            class Tax < Lithic::Internal::Type::BaseModel
               attr_reader amount: Integer?
 
               def amount=: (Integer) -> Integer
@@ -136,7 +136,7 @@ module Lithic
               type exempt = :TAX_INCLUDED | :TAX_NOT_INCLUDED | :NOT_SUPPORTED
 
               module Exempt
-                extend Lithic::Enum
+                extend Lithic::Internal::Type::Enum
 
                 TAX_INCLUDED: :TAX_INCLUDED
                 TAX_NOT_INCLUDED: :TAX_NOT_INCLUDED
@@ -157,7 +157,7 @@ module Lithic
               vehicle_number: String
             }
 
-          class Fleet < Lithic::BaseModel
+          class Fleet < Lithic::Internal::Type::BaseModel
             attr_accessor amount_totals: Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals
 
             attr_accessor fuel: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel
@@ -194,7 +194,7 @@ module Lithic
             type amount_totals =
               { discount: Integer, gross_sale: Integer, net_sale: Integer }
 
-            class AmountTotals < Lithic::BaseModel
+            class AmountTotals < Lithic::Internal::Type::BaseModel
               attr_reader discount: Integer?
 
               def discount=: (Integer) -> Integer
@@ -224,7 +224,7 @@ module Lithic
                 unit_price: Integer
               }
 
-            class Fuel < Lithic::BaseModel
+            class Fuel < Lithic::Internal::Type::BaseModel
               attr_reader quantity: Float?
 
               def quantity=: (Float) -> Float
@@ -374,7 +374,7 @@ module Lithic
                 | :MISCELLANEOUS_OTHER_FUEL
 
               module Type
-                extend Lithic::Enum
+                extend Lithic::Internal::Type::Enum
 
                 UNKNOWN: :UNKNOWN
                 REGULAR: :REGULAR
@@ -507,7 +507,7 @@ module Lithic
                 | :UNKNOWN
 
               module UnitOfMeasure
-                extend Lithic::Enum
+                extend Lithic::Internal::Type::Enum
 
                 GALLONS: :GALLONS
                 LITERS: :LITERS
@@ -529,7 +529,7 @@ module Lithic
               | :NON_FUEL_ONLY
 
             module ServiceType
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               UNKNOWN: :UNKNOWN
               UNDEFINED: :UNDEFINED

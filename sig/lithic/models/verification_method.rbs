@@ -4,7 +4,7 @@ module Lithic
       :MANUAL | :MICRO_DEPOSIT | :PLAID | :PRENOTE | :EXTERNALLY_VERIFIED
 
     module VerificationMethod
-      extend Lithic::Enum
+      extend Lithic::Internal::Type::Enum
 
       MANUAL: :MANUAL
       MICRO_DEPOSIT: :MICRO_DEPOSIT

@@ -7,7 +7,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class AccountHolderUploadDocumentParams < Lithic::BaseModel
+    class AccountHolderUploadDocumentParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -45,7 +45,7 @@ module Lithic
         | :FINCEN_BOI_REPORT
 
       module DocumentType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         EIN_LETTER: :EIN_LETTER
         TAX_RETURN: :TAX_RETURN

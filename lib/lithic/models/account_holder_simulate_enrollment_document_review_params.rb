@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#simulate_enrollment_document_review
-    class AccountHolderSimulateEnrollmentDocumentReviewParams < Lithic::BaseModel
+    class AccountHolderSimulateEnrollmentDocumentReviewParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -24,7 +24,7 @@ module Lithic
       #   A list of status reasons associated with a KYB account holder in PENDING_REVIEW
       #
       #   @return [Array<String>, nil]
-      optional :accepted_entity_status_reasons, Lithic::ArrayOf[String]
+      optional :accepted_entity_status_reasons, Lithic::Internal::Type::ArrayOf[String]
 
       # @!parse
       #   # @return [Array<String>]
@@ -60,11 +60,11 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # An account holder document's upload status for use within the simulation.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         UPLOADED = :UPLOADED
         ACCEPTED = :ACCEPTED
@@ -81,7 +81,7 @@ module Lithic
       # Status reason that will be associated with the simulated account holder status.
       #   Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
       module StatusReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DOCUMENT_MISSING_REQUIRED_DATA = :DOCUMENT_MISSING_REQUIRED_DATA
         DOCUMENT_UPLOAD_TOO_BLURRY = :DOCUMENT_UPLOAD_TOO_BLURRY

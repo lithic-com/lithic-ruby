@@ -9,7 +9,7 @@ module Lithic
         required_document_uploads: ::Array[Lithic::Models::Document::RequiredDocumentUpload]
       }
 
-    class Document < Lithic::BaseModel
+    class Document < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor account_holder_token: String
@@ -52,7 +52,7 @@ module Lithic
         | :FINCEN_BOI_REPORT
 
       module DocumentType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DRIVERS_LICENSE: :DRIVERS_LICENSE
         PASSPORT: :PASSPORT
@@ -90,7 +90,7 @@ module Lithic
           upload_url: String
         }
 
-      class RequiredDocumentUpload < Lithic::BaseModel
+      class RequiredDocumentUpload < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
 
         attr_accessor accepted_entity_status_reasons: ::Array[String]
@@ -126,7 +126,7 @@ module Lithic
         type image_type = :FRONT | :BACK
 
         module ImageType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           FRONT: :FRONT
           BACK: :BACK
@@ -142,7 +142,7 @@ module Lithic
           | :PARTIAL_APPROVAL
 
         module Status
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACCEPTED: :ACCEPTED
           REJECTED: :REJECTED
@@ -167,7 +167,7 @@ module Lithic
           | :UNKNOWN_ERROR
 
         module StatusReason
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           DOCUMENT_MISSING_REQUIRED_DATA: :DOCUMENT_MISSING_REQUIRED_DATA
           DOCUMENT_UPLOAD_TOO_BLURRY: :DOCUMENT_UPLOAD_TOO_BLURRY

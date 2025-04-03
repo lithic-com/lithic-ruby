@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module Cards
-      class BalanceListParams < Lithic::BaseModel
+      class BalanceListParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
@@ -27,7 +27,7 @@ module Lithic
           params(
             balance_date: Time,
             last_transaction_event_token: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::ExternalPayments#settle
-    class ExternalPaymentSettleParams < Lithic::BaseModel
+    class ExternalPaymentSettleParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -39,10 +39,10 @@ module Lithic
       #   #
       #   def initialize(effective_date:, memo: nil, progress_to: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       module ProgressTo
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         SETTLED = :SETTLED
         RELEASED = :RELEASED

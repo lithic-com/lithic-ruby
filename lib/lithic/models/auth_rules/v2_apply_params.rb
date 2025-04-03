@@ -4,7 +4,7 @@ module Lithic
   module Models
     module AuthRules
       # @see Lithic::Resources::AuthRules::V2#apply
-      class V2ApplyParams < Lithic::BaseModel
+      class V2ApplyParams < Lithic::Internal::Type::BaseModel
         # @!parse
         #   extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
@@ -13,25 +13,25 @@ module Lithic
         #   Account tokens to which the Auth Rule applies.
         #
         #   @return [Array<String>]
-        required :account_tokens, Lithic::ArrayOf[String]
+        required :account_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute card_tokens
         #   Card tokens to which the Auth Rule applies.
         #
         #   @return [Array<String>]
-        required :card_tokens, Lithic::ArrayOf[String]
+        required :card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute program_level
         #   Whether the Auth Rule applies to all authorizations on the card program.
         #
         #   @return [Boolean]
-        required :program_level, Lithic::BooleanModel
+        required :program_level, Lithic::Internal::Type::BooleanModel
 
         # @!attribute [r] excluded_card_tokens
         #   Card tokens to which the Auth Rule does not apply.
         #
         #   @return [Array<String>, nil]
-        optional :excluded_card_tokens, Lithic::ArrayOf[String]
+        optional :excluded_card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -46,7 +46,7 @@ module Lithic
         #   #
         #   def initialize(account_tokens:, card_tokens:, program_level:, excluded_card_tokens: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

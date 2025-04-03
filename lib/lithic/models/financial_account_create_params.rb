@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::FinancialAccounts#create
-    class FinancialAccountCreateParams < Lithic::BaseModel
+    class FinancialAccountCreateParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -30,7 +30,7 @@ module Lithic
       # @!attribute [r] is_for_benefit_of
       #
       #   @return [Boolean, nil]
-      optional :is_for_benefit_of, Lithic::BooleanModel
+      optional :is_for_benefit_of, Lithic::Internal::Type::BooleanModel
 
       # @!parse
       #   # @return [Boolean]
@@ -65,10 +65,10 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         OPERATING = :OPERATING
 

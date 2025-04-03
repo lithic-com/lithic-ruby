@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#create
-    class AccountHolderCreateResponse < Lithic::BaseModel
+    class AccountHolderCreateResponse < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier for the account holder.
       #
@@ -31,7 +31,7 @@ module Lithic
       #
       #   @return [Array<Symbol, Lithic::Models::AccountHolderCreateResponse::StatusReason>]
       required :status_reasons,
-               -> { Lithic::ArrayOf[enum: Lithic::Models::AccountHolderCreateResponse::StatusReason] }
+               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolderCreateResponse::StatusReason] }
 
       # @!attribute [r] created
       #   Timestamp of when the account holder was created.
@@ -59,7 +59,7 @@ module Lithic
       #     account holder to be approved.
       #
       #   @return [Array<Lithic::Models::RequiredDocument>, nil]
-      optional :required_documents, -> { Lithic::ArrayOf[Lithic::Models::RequiredDocument] }
+      optional :required_documents, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument] }
 
       # @!parse
       #   # @return [Array<Lithic::Models::RequiredDocument>]
@@ -87,7 +87,7 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # KYC and KYB evaluation states.
       #
@@ -97,7 +97,7 @@ module Lithic
       #
       # @see Lithic::Models::AccountHolderCreateResponse#status
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACCEPTED = :ACCEPTED
         PENDING_REVIEW = :PENDING_REVIEW
@@ -114,7 +114,7 @@ module Lithic
 
       # Status Reasons for KYC/KYB enrollment states
       module StatusReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ADDRESS_VERIFICATION_FAILURE = :ADDRESS_VERIFICATION_FAILURE
         AGE_THRESHOLD_FAILURE = :AGE_THRESHOLD_FAILURE

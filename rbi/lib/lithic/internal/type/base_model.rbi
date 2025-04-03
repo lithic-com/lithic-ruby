@@ -22,7 +22,7 @@ module Lithic
               T::Hash[
               Symbol,
               T.all(
-                Lithic::BaseModel::KnownFieldShape,
+                Lithic::Internal::Type::BaseModel::KnownFieldShape,
                 {type_fn: T.proc.returns(Lithic::Internal::Type::Converter::Input)}
               )
               ]
@@ -34,11 +34,13 @@ module Lithic
           # @api private
           sig do
             returns(
-              T::Hash[Symbol,
-                      T.all(
-                        Lithic::BaseModel::KnownFieldShape,
-                        {type: Lithic::Internal::Type::Converter::Input}
-                      )]
+              T::Hash[
+              Symbol,
+              T.all(
+                Lithic::Internal::Type::BaseModel::KnownFieldShape,
+                {type: Lithic::Internal::Type::Converter::Input}
+              )
+              ]
             )
           end
           def fields
@@ -60,7 +62,7 @@ module Lithic
                 T.proc.returns(Lithic::Internal::Type::Converter::Input),
                 Lithic::Internal::Type::Converter::Input
               ),
-              spec: Lithic::Internal::Util::AnyHash
+              spec: Lithic::Internal::AnyHash
             )
               .void
           end
@@ -72,11 +74,11 @@ module Lithic
             params(
               name_sym: Symbol,
               type_info: T.any(
-                Lithic::Internal::Util::AnyHash,
+                Lithic::Internal::AnyHash,
                 T.proc.returns(Lithic::Internal::Type::Converter::Input),
                 Lithic::Internal::Type::Converter::Input
               ),
-              spec: Lithic::Internal::Util::AnyHash
+              spec: Lithic::Internal::AnyHash
             )
               .void
           end
@@ -88,11 +90,11 @@ module Lithic
             params(
               name_sym: Symbol,
               type_info: T.any(
-                Lithic::Internal::Util::AnyHash,
+                Lithic::Internal::AnyHash,
                 T.proc.returns(Lithic::Internal::Type::Converter::Input),
                 Lithic::Internal::Type::Converter::Input
               ),
-              spec: Lithic::Internal::Util::AnyHash
+              spec: Lithic::Internal::AnyHash
             )
               .void
           end
@@ -128,7 +130,7 @@ module Lithic
           sig do
             override
               .params(
-                value: T.any(Lithic::BaseModel, T::Hash[T.anything, T.anything], T.anything),
+                value: T.any(Lithic::Internal::Type::BaseModel, T::Hash[T.anything, T.anything], T.anything),
                 state: Lithic::Internal::Type::Converter::State
               )
               .returns(T.any(T.attached_class, T.anything))
@@ -164,7 +166,7 @@ module Lithic
         #
         #   This method is not recursive. The returned value is shared by the object, so it
         #   should not be mutated.
-        sig { overridable.returns(Lithic::Internal::Util::AnyHash) }
+        sig { overridable.returns(Lithic::Internal::AnyHash) }
         def to_h
         end
 
@@ -176,11 +178,11 @@ module Lithic
         #
         #   This method is not recursive. The returned value is shared by the object, so it
         #   should not be mutated.
-        sig { overridable.returns(Lithic::Internal::Util::AnyHash) }
+        sig { overridable.returns(Lithic::Internal::AnyHash) }
         def to_hash
         end
 
-        sig { params(keys: T.nilable(T::Array[Symbol])).returns(Lithic::Internal::Util::AnyHash) }
+        sig { params(keys: T.nilable(T::Array[Symbol])).returns(Lithic::Internal::AnyHash) }
         def deconstruct_keys(keys)
         end
 

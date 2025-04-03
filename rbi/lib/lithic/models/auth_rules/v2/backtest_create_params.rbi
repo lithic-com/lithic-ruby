@@ -4,7 +4,7 @@ module Lithic
   module Models
     module AuthRules
       module V2
-        class BacktestCreateParams < Lithic::BaseModel
+        class BacktestCreateParams < Lithic::Internal::Type::BaseModel
           extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
 
@@ -26,7 +26,10 @@ module Lithic
             params(
               end_: Time,
               start: Time,
-              request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+              request_options: T.any(
+                Lithic::RequestOptions,
+                Lithic::Internal::AnyHash
+              )
             )
               .returns(T.attached_class)
           end

@@ -5,7 +5,7 @@ module Lithic
     module Reports
       module Settlement
         # @see Lithic::Resources::Reports::Settlement::NetworkTotals#retrieve
-        class NetworkTotalRetrieveResponse < Lithic::BaseModel
+        class NetworkTotalRetrieveResponse < Lithic::Internal::Type::BaseModel
           # @!attribute token
           #   Globally unique identifier.
           #
@@ -110,10 +110,10 @@ module Lithic
           #     super
           #   end
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # @see Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse#amounts
-          class Amounts < Lithic::BaseModel
+          class Amounts < Lithic::Internal::Type::BaseModel
             # @!attribute gross_settlement
             #   Total settlement amount excluding interchange, in currency's smallest unit.
             #
@@ -151,7 +151,7 @@ module Lithic
             #   #
             #   def initialize(gross_settlement:, interchange_fees:, net_settlement:, visa_charges: nil, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
 
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
@@ -159,7 +159,7 @@ module Lithic
           #
           # @see Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse#network
           module Network
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             VISA = :VISA
             MASTERCARD = :MASTERCARD

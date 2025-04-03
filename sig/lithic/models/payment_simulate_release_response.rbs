@@ -7,7 +7,7 @@ module Lithic
         transaction_event_token: String
       }
 
-    class PaymentSimulateReleaseResponse < Lithic::BaseModel
+    class PaymentSimulateReleaseResponse < Lithic::Internal::Type::BaseModel
       attr_accessor debugging_request_id: String
 
       attr_accessor result: Lithic::Models::PaymentSimulateReleaseResponse::result
@@ -25,7 +25,7 @@ module Lithic
       type result = :APPROVED | :DECLINED
 
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED: :APPROVED
         DECLINED: :DECLINED

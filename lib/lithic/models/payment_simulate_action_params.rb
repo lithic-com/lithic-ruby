@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Payments#simulate_action
-    class PaymentSimulateActionParams < Lithic::BaseModel
+    class PaymentSimulateActionParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -42,11 +42,11 @@ module Lithic
       #   #
       #   def initialize(event_type:, decline_reason: nil, return_reason_code: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Event Type
       module EventType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACH_ORIGINATION_REVIEWED = :ACH_ORIGINATION_REVIEWED
         ACH_ORIGINATION_RELEASED = :ACH_ORIGINATION_RELEASED
@@ -66,7 +66,7 @@ module Lithic
 
       # Decline reason
       module DeclineReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         PROGRAM_TRANSACTION_LIMIT_EXCEEDED = :PROGRAM_TRANSACTION_LIMIT_EXCEEDED
         PROGRAM_DAILY_LIMIT_EXCEEDED = :PROGRAM_DAILY_LIMIT_EXCEEDED

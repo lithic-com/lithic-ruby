@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class AggregateBalance < Lithic::BaseModel
+    class AggregateBalance < Lithic::Internal::Type::BaseModel
       # Funds available for spend in the currency's smallest unit (e.g., cents for USD)
       sig { returns(Integer) }
       attr_accessor :available_amount
@@ -99,7 +99,7 @@ module Lithic
 
       # Type of financial account
       module FinancialAccountType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AggregateBalance::FinancialAccountType) }
         OrSymbol =

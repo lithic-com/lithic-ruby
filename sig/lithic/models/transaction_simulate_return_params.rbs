@@ -4,7 +4,7 @@ module Lithic
       { amount: Integer, descriptor: String, pan: String }
       & Lithic::Internal::Type::request_parameters
 
-    class TransactionSimulateReturnParams < Lithic::BaseModel
+    class TransactionSimulateReturnParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

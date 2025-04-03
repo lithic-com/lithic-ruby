@@ -3,14 +3,12 @@
 module Lithic
   module Models
     module AuthRules
-      class VelocityLimitParams < Lithic::BaseModel
+      class VelocityLimitParams < Lithic::Internal::Type::BaseModel
         sig { returns(Lithic::Models::AuthRules::VelocityLimitParams::Filters) }
         attr_reader :filters
 
         sig do
-          params(
-            filters: T.any(Lithic::Models::AuthRules::VelocityLimitParams::Filters, Lithic::Internal::Util::AnyHash)
-          )
+          params(filters: T.any(Lithic::Models::AuthRules::VelocityLimitParams::Filters, Lithic::Internal::AnyHash))
             .void
         end
         attr_writer :filters
@@ -39,7 +37,7 @@ module Lithic
 
         sig do
           params(
-            filters: T.any(Lithic::Models::AuthRules::VelocityLimitParams::Filters, Lithic::Internal::Util::AnyHash),
+            filters: T.any(Lithic::Models::AuthRules::VelocityLimitParams::Filters, Lithic::Internal::AnyHash),
             period: T.any(Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol),
             scope: Lithic::Models::AuthRules::VelocityLimitParams::Scope::OrSymbol,
             limit_amount: T.nilable(Integer),
@@ -65,7 +63,7 @@ module Lithic
         def to_hash
         end
 
-        class Filters < Lithic::BaseModel
+        class Filters < Lithic::Internal::Type::BaseModel
           # ISO-3166-1 alpha-3 Country Codes to exclude from the velocity calculation.
           #   Transactions matching any of the provided will be excluded from the calculated
           #   velocity.
@@ -118,7 +116,7 @@ module Lithic
         # The size of the trailing window to calculate Spend Velocity over in seconds. The
         #   minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
         module Period
-          extend Lithic::Union
+          extend Lithic::Internal::Type::Union
 
           sig { override.returns([Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol]) }
           def self.variants
@@ -126,7 +124,7 @@ module Lithic
         end
 
         module Scope
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope) }
           OrSymbol =

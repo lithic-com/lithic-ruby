@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#simulate_enrollment_review
-    class AccountHolderSimulateEnrollmentReviewParams < Lithic::BaseModel
+    class AccountHolderSimulateEnrollmentReviewParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -34,7 +34,7 @@ module Lithic
       #
       #   @return [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason>, nil]
       optional :status_reasons,
-               -> { Lithic::ArrayOf[enum: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason] }
+               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason] }
 
       # @!parse
       #   # @return [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason>]
@@ -48,11 +48,11 @@ module Lithic
       #   #
       #   def initialize(account_holder_token: nil, status: nil, status_reasons: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # An account holder's status for use within the simulation.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACCEPTED = :ACCEPTED
         REJECTED = :REJECTED
@@ -65,7 +65,7 @@ module Lithic
       end
 
       module StatusReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE = :PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE
         PRIMARY_BUSINESS_ENTITY_ADDRESS_VERIFICATION_FAILURE =

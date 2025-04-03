@@ -10,7 +10,7 @@ module Lithic
           value: Lithic::Models::AuthRules::AuthRuleCondition::value
         }
 
-      class AuthRuleCondition < Lithic::BaseModel
+      class AuthRuleCondition < Lithic::Internal::Type::BaseModel
         attr_reader attribute: Lithic::Models::AuthRules::conditional_attribute?
 
         def attribute=: (
@@ -46,7 +46,7 @@ module Lithic
           | :IS_LESS_THAN
 
         module Operation
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           IS_ONE_OF: :IS_ONE_OF
           IS_NOT_ONE_OF: :IS_NOT_ONE_OF
@@ -61,7 +61,7 @@ module Lithic
         type value = String | Integer | ::Array[String]
 
         module Value
-          extend Lithic::Union
+          extend Lithic::Internal::Type::Union
 
           def self?.variants: -> [String, Integer, ::Array[String]]
 

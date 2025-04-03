@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class SettlementSummaryDetails < Lithic::BaseModel
+    class SettlementSummaryDetails < Lithic::Internal::Type::BaseModel
       # 3-character alphabetic ISO 4217 code.
       sig { returns(T.nilable(String)) }
       attr_reader :currency
@@ -107,7 +107,7 @@ module Lithic
 
       # Card network where the transaction took place
       module Network
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::SettlementSummaryDetails::Network) }
         OrSymbol =
