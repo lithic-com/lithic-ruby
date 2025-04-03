@@ -10,7 +10,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class DisputeListEvidencesParams < Lithic::BaseModel
+    class DisputeListEvidencesParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

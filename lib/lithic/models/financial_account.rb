@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::FinancialAccounts#create
-    class FinancialAccount < Lithic::BaseModel
+    class FinancialAccount < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier for the account
       #
@@ -29,7 +29,7 @@ module Lithic
       #   Whether financial account is for the benefit of another entity
       #
       #   @return [Boolean]
-      required :is_for_benefit_of, Lithic::BooleanModel
+      required :is_for_benefit_of, Lithic::Internal::Type::BooleanModel
 
       # @!attribute nickname
       #
@@ -102,10 +102,10 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # @see Lithic::Models::FinancialAccount#credit_configuration
-      class CreditConfiguration < Lithic::BaseModel
+      class CreditConfiguration < Lithic::Internal::Type::BaseModel
         # @!attribute charged_off_reason
         #   Reason for the financial account being marked as Charged Off
         #
@@ -141,7 +141,7 @@ module Lithic
         # @!attribute is_spend_blocked
         #
         #   @return [Boolean]
-        required :is_spend_blocked, Lithic::BooleanModel
+        required :is_spend_blocked, Lithic::Internal::Type::BooleanModel
 
         # @!attribute tier
         #   Tier assigned to the financial account
@@ -171,13 +171,13 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # Reason for the financial account being marked as Charged Off
         #
         # @see Lithic::Models::FinancialAccount::CreditConfiguration#charged_off_reason
         module ChargedOffReason
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           DELINQUENT = :DELINQUENT
           FRAUD = :FRAUD
@@ -193,7 +193,7 @@ module Lithic
         #
         # @see Lithic::Models::FinancialAccount::CreditConfiguration#financial_account_state
         module FinancialAccountState
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           PENDING = :PENDING
           CURRENT = :CURRENT
@@ -212,7 +212,7 @@ module Lithic
       #
       # @see Lithic::Models::FinancialAccount#status
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         OPEN = :OPEN
         CLOSED = :CLOSED
@@ -228,7 +228,7 @@ module Lithic
 
       # @see Lithic::Models::FinancialAccount#type
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ISSUING = :ISSUING
         RESERVE = :RESERVE
@@ -248,7 +248,7 @@ module Lithic
       #
       # @see Lithic::Models::FinancialAccount#status_change_reason
       module StatusChangeReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CHARGED_OFF_DELINQUENT = :CHARGED_OFF_DELINQUENT
         CHARGED_OFF_FRAUD = :CHARGED_OFF_FRAUD

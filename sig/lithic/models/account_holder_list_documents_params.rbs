@@ -3,7 +3,7 @@ module Lithic
     type account_holder_list_documents_params =
       {  } & Lithic::Internal::Type::request_parameters
 
-    class AccountHolderListDocumentsParams < Lithic::BaseModel
+    class AccountHolderListDocumentsParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

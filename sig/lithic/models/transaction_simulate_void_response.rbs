@@ -2,7 +2,7 @@ module Lithic
   module Models
     type transaction_simulate_void_response = { debugging_request_id: String }
 
-    class TransactionSimulateVoidResponse < Lithic::BaseModel
+    class TransactionSimulateVoidResponse < Lithic::Internal::Type::BaseModel
       attr_reader debugging_request_id: String?
 
       def debugging_request_id=: (String) -> String

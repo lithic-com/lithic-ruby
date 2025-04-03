@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::ManagementOperations#create
-    class ManagementOperationTransaction < Lithic::BaseModel
+    class ManagementOperationTransaction < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #
       #   @return [String]
@@ -32,7 +32,8 @@ module Lithic
       # @!attribute events
       #
       #   @return [Array<Lithic::Models::ManagementOperationTransaction::Event>]
-      required :events, -> { Lithic::ArrayOf[Lithic::Models::ManagementOperationTransaction::Event] }
+      required :events,
+               -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::ManagementOperationTransaction::Event] }
 
       # @!attribute financial_account_token
       #
@@ -107,11 +108,11 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # @see Lithic::Models::ManagementOperationTransaction#category
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         MANAGEMENT_FEE = :MANAGEMENT_FEE
         MANAGEMENT_DISPUTE = :MANAGEMENT_DISPUTE
@@ -127,7 +128,7 @@ module Lithic
 
       # @see Lithic::Models::ManagementOperationTransaction#direction
       module Direction
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CREDIT = :CREDIT
         DEBIT = :DEBIT
@@ -139,7 +140,7 @@ module Lithic
         #   def self.values; end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #
         #   @return [String]
@@ -159,7 +160,7 @@ module Lithic
         #
         #   @return [Array<Symbol, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult>]
         required :detailed_results,
-                 -> { Lithic::ArrayOf[enum: Lithic::Models::ManagementOperationTransaction::Event::DetailedResult] }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::ManagementOperationTransaction::Event::DetailedResult] }
 
         # @!attribute effective_date
         #
@@ -203,10 +204,10 @@ module Lithic
         #   #
         #   def initialize(token:, amount:, created:, detailed_results:, effective_date:, memo:, result:, type:, subtype: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         module DetailedResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
 
@@ -219,7 +220,7 @@ module Lithic
 
         # @see Lithic::Models::ManagementOperationTransaction::Event#result
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
           DECLINED = :DECLINED
@@ -233,7 +234,7 @@ module Lithic
 
         # @see Lithic::Models::ManagementOperationTransaction::Event#type
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CASH_BACK = :CASH_BACK
           CURRENCY_CONVERSION = :CURRENCY_CONVERSION
@@ -261,7 +262,7 @@ module Lithic
 
       # @see Lithic::Models::ManagementOperationTransaction#result
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED = :APPROVED
         DECLINED = :DECLINED
@@ -275,7 +276,7 @@ module Lithic
 
       # @see Lithic::Models::ManagementOperationTransaction#status
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         PENDING = :PENDING
         SETTLED = :SETTLED

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module VerificationMethod
-      extend Lithic::Enum
+      extend Lithic::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::VerificationMethod) }
       OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::VerificationMethod::TaggedSymbol) }

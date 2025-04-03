@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class DisputeUpdateParams < Lithic::BaseModel
+    class DisputeUpdateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -40,7 +40,7 @@ module Lithic
           customer_filed_date: Time,
           customer_note: String,
           reason: Lithic::Models::DisputeUpdateParams::Reason::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -70,7 +70,7 @@ module Lithic
 
       # Reason for dispute
       module Reason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DisputeUpdateParams::Reason) }
         OrSymbol =

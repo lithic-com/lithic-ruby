@@ -13,15 +13,15 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     assert_pattern do
       response => {
         token: String,
-        account_tokens: ^(Lithic::ArrayOf[String]),
-        card_tokens: ^(Lithic::ArrayOf[String]),
+        account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2CreateResponse::DraftVersion | nil,
         name: String | nil,
-        program_level: Lithic::BooleanModel,
+        program_level: Lithic::Internal::Type::BooleanModel,
         state: Lithic::Models::AuthRules::V2CreateResponse::State,
         type: Lithic::Models::AuthRules::V2CreateResponse::Type,
-        excluded_card_tokens: ^(Lithic::ArrayOf[String]) | nil
+        excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -36,15 +36,15 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     assert_pattern do
       response => {
         token: String,
-        account_tokens: ^(Lithic::ArrayOf[String]),
-        card_tokens: ^(Lithic::ArrayOf[String]),
+        account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::Models::AuthRules::V2RetrieveResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2RetrieveResponse::DraftVersion | nil,
         name: String | nil,
-        program_level: Lithic::BooleanModel,
+        program_level: Lithic::Internal::Type::BooleanModel,
         state: Lithic::Models::AuthRules::V2RetrieveResponse::State,
         type: Lithic::Models::AuthRules::V2RetrieveResponse::Type,
-        excluded_card_tokens: ^(Lithic::ArrayOf[String]) | nil
+        excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -59,15 +59,15 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     assert_pattern do
       response => {
         token: String,
-        account_tokens: ^(Lithic::ArrayOf[String]),
-        card_tokens: ^(Lithic::ArrayOf[String]),
+        account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::Models::AuthRules::V2UpdateResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2UpdateResponse::DraftVersion | nil,
         name: String | nil,
-        program_level: Lithic::BooleanModel,
+        program_level: Lithic::Internal::Type::BooleanModel,
         state: Lithic::Models::AuthRules::V2UpdateResponse::State,
         type: Lithic::Models::AuthRules::V2UpdateResponse::Type,
-        excluded_card_tokens: ^(Lithic::ArrayOf[String]) | nil
+        excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -89,15 +89,15 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     assert_pattern do
       row => {
         token: String,
-        account_tokens: ^(Lithic::ArrayOf[String]),
-        card_tokens: ^(Lithic::ArrayOf[String]),
+        account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::Models::AuthRules::V2ListResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2ListResponse::DraftVersion | nil,
         name: String | nil,
-        program_level: Lithic::BooleanModel,
+        program_level: Lithic::Internal::Type::BooleanModel,
         state: Lithic::Models::AuthRules::V2ListResponse::State,
         type: Lithic::Models::AuthRules::V2ListResponse::Type,
-        excluded_card_tokens: ^(Lithic::ArrayOf[String]) | nil
+        excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -124,15 +124,15 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     assert_pattern do
       response => {
         token: String,
-        account_tokens: ^(Lithic::ArrayOf[String]),
-        card_tokens: ^(Lithic::ArrayOf[String]),
+        account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::Models::AuthRules::V2ApplyResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2ApplyResponse::DraftVersion | nil,
         name: String | nil,
-        program_level: Lithic::BooleanModel,
+        program_level: Lithic::Internal::Type::BooleanModel,
         state: Lithic::Models::AuthRules::V2ApplyResponse::State,
         type: Lithic::Models::AuthRules::V2ApplyResponse::Type,
-        excluded_card_tokens: ^(Lithic::ArrayOf[String]) | nil
+        excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -147,15 +147,15 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     assert_pattern do
       response => {
         token: String,
-        account_tokens: ^(Lithic::ArrayOf[String]),
-        card_tokens: ^(Lithic::ArrayOf[String]),
+        account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion | nil,
         name: String | nil,
-        program_level: Lithic::BooleanModel,
+        program_level: Lithic::Internal::Type::BooleanModel,
         state: Lithic::Models::AuthRules::V2DraftResponse::State,
         type: Lithic::Models::AuthRules::V2DraftResponse::Type,
-        excluded_card_tokens: ^(Lithic::ArrayOf[String]) | nil
+        excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -170,15 +170,15 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     assert_pattern do
       response => {
         token: String,
-        account_tokens: ^(Lithic::ArrayOf[String]),
-        card_tokens: ^(Lithic::ArrayOf[String]),
+        account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::Models::AuthRules::V2PromoteResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2PromoteResponse::DraftVersion | nil,
         name: String | nil,
-        program_level: Lithic::BooleanModel,
+        program_level: Lithic::Internal::Type::BooleanModel,
         state: Lithic::Models::AuthRules::V2PromoteResponse::State,
         type: Lithic::Models::AuthRules::V2PromoteResponse::Type,
-        excluded_card_tokens: ^(Lithic::ArrayOf[String]) | nil
+        excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::BookTransfers#list
-    class BookTransferListParams < Lithic::BaseModel
+    class BookTransferListParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -153,11 +153,11 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Book Transfer category to be returned.
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
         FEE = :FEE
@@ -176,7 +176,7 @@ module Lithic
 
       # Book transfer result to be returned.
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED = :APPROVED
         DECLINED = :DECLINED
@@ -190,7 +190,7 @@ module Lithic
 
       # Book transfer status to be returned.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DECLINED = :DECLINED
         SETTLED = :SETTLED

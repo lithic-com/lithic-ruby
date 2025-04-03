@@ -12,7 +12,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class EventListParams < Lithic::BaseModel
+    class EventListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -104,7 +104,7 @@ module Lithic
         | :"tokenization.updated"
 
       module EventType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACCOUNT_HOLDER_CREATED: :"account_holder.created"
         ACCOUNT_HOLDER_UPDATED: :"account_holder.updated"

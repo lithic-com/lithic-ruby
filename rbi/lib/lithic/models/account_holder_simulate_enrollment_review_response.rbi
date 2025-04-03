@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class AccountHolderSimulateEnrollmentReviewResponse < Lithic::BaseModel
+    class AccountHolderSimulateEnrollmentReviewResponse < Lithic::Internal::Type::BaseModel
       # Globally unique identifier for the account holder.
       sig { returns(T.nilable(String)) }
       attr_reader :token
@@ -24,7 +24,7 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::Util::AnyHash)]
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::AnyHash)]
         )
           .void
       end
@@ -46,7 +46,7 @@ module Lithic
           beneficial_owner_individuals: T::Array[
           T.any(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
-            Lithic::Internal::Util::AnyHash
+            Lithic::Internal::AnyHash
           )
           ]
         )
@@ -68,7 +68,7 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::KYBBusinessEntity)) }
       attr_reader :business_entity
 
-      sig { params(business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::Util::AnyHash)).void }
+      sig { params(business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::AnyHash)).void }
       attr_writer :business_entity
 
       # Only present when user_type == "BUSINESS".
@@ -89,7 +89,7 @@ module Lithic
         params(
           control_person: T.any(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
-            Lithic::Internal::Util::AnyHash
+            Lithic::Internal::AnyHash
           )
         )
           .void
@@ -147,7 +147,7 @@ module Lithic
         params(
           individual: T.any(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
-            Lithic::Internal::Util::AnyHash
+            Lithic::Internal::AnyHash
           )
         )
           .void
@@ -178,9 +178,7 @@ module Lithic
       attr_reader :required_documents
 
       sig do
-        params(
-          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::Util::AnyHash)]
-        )
+        params(required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::AnyHash)])
           .void
       end
       attr_writer :required_documents
@@ -237,7 +235,7 @@ module Lithic
         params(
           verification_application: T.any(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
-            Lithic::Internal::Util::AnyHash
+            Lithic::Internal::AnyHash
           )
         )
           .void
@@ -255,18 +253,18 @@ module Lithic
         params(
           token: String,
           account_token: String,
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::Util::AnyHash)],
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::AnyHash)],
           beneficial_owner_individuals: T::Array[
           T.any(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
-            Lithic::Internal::Util::AnyHash
+            Lithic::Internal::AnyHash
           )
           ],
           business_account_token: String,
-          business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::Util::AnyHash),
+          business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::AnyHash),
           control_person: T.any(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
-            Lithic::Internal::Util::AnyHash
+            Lithic::Internal::AnyHash
           ),
           created: Time,
           email: String,
@@ -274,17 +272,17 @@ module Lithic
           external_id: String,
           individual: T.any(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
-            Lithic::Internal::Util::AnyHash
+            Lithic::Internal::AnyHash
           ),
           nature_of_business: String,
           phone_number: String,
-          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::Util::AnyHash)],
+          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::AnyHash)],
           status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::OrSymbol,
           status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::OrSymbol],
           user_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::OrSymbol,
           verification_application: T.any(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
-            Lithic::Internal::Util::AnyHash
+            Lithic::Internal::AnyHash
           ),
           website_url: String
         )
@@ -344,7 +342,7 @@ module Lithic
       def to_hash
       end
 
-      class BeneficialOwnerIndividual < Lithic::BaseModel
+      class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig do
@@ -360,7 +358,7 @@ module Lithic
           params(
             address: T.any(
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
-              Lithic::Internal::Util::AnyHash
+              Lithic::Internal::AnyHash
             )
           )
             .void
@@ -407,7 +405,7 @@ module Lithic
           params(
             address: T.any(
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
-              Lithic::Internal::Util::AnyHash
+              Lithic::Internal::AnyHash
             ),
             dob: String,
             email: String,
@@ -437,7 +435,7 @@ module Lithic
         def to_hash
         end
 
-        class Address < Lithic::BaseModel
+        class Address < Lithic::Internal::Type::BaseModel
           # Valid deliverable address (no PO boxes).
           sig { returns(String) }
           attr_accessor :address1
@@ -502,7 +500,7 @@ module Lithic
         end
       end
 
-      class ControlPerson < Lithic::BaseModel
+      class ControlPerson < Lithic::Internal::Type::BaseModel
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address)) }
@@ -512,7 +510,7 @@ module Lithic
           params(
             address: T.any(
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address,
-              Lithic::Internal::Util::AnyHash
+              Lithic::Internal::AnyHash
             )
           )
             .void
@@ -570,7 +568,7 @@ module Lithic
           params(
             address: T.any(
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address,
-              Lithic::Internal::Util::AnyHash
+              Lithic::Internal::AnyHash
             ),
             dob: String,
             email: String,
@@ -600,7 +598,7 @@ module Lithic
         def to_hash
         end
 
-        class Address < Lithic::BaseModel
+        class Address < Lithic::Internal::Type::BaseModel
           # Valid deliverable address (no PO boxes).
           sig { returns(String) }
           attr_accessor :address1
@@ -668,7 +666,7 @@ module Lithic
       # The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
       #   holder is not KYC-Exempt.
       module ExemptionType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType) }
@@ -702,7 +700,7 @@ module Lithic
         end
       end
 
-      class Individual < Lithic::BaseModel
+      class Individual < Lithic::Internal::Type::BaseModel
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address)) }
@@ -712,7 +710,7 @@ module Lithic
           params(
             address: T.any(
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address,
-              Lithic::Internal::Util::AnyHash
+              Lithic::Internal::AnyHash
             )
           )
             .void
@@ -761,7 +759,7 @@ module Lithic
           params(
             address: T.any(
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address,
-              Lithic::Internal::Util::AnyHash
+              Lithic::Internal::AnyHash
             ),
             dob: String,
             email: String,
@@ -791,7 +789,7 @@ module Lithic
         def to_hash
         end
 
-        class Address < Lithic::BaseModel
+        class Address < Lithic::Internal::Type::BaseModel
           # Valid deliverable address (no PO boxes).
           sig { returns(String) }
           attr_accessor :address1
@@ -863,7 +861,7 @@ module Lithic
       #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
       #   `ADVANCED` workflow.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status) }
@@ -895,7 +893,7 @@ module Lithic
 
       # Status Reasons for KYC/KYB enrollment states
       module StatusReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason) }
@@ -1047,7 +1045,7 @@ module Lithic
       #
       #   "nature_of_business", and "website_url" attributes will be present.
       module UserType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType) }
@@ -1073,7 +1071,7 @@ module Lithic
         end
       end
 
-      class VerificationApplication < Lithic::BaseModel
+      class VerificationApplication < Lithic::Internal::Type::BaseModel
         # Timestamp of when the application was created.
         sig { returns(Time) }
         attr_accessor :created
@@ -1139,7 +1137,7 @@ module Lithic
         #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
         #   `ADVANCED` workflow.
         module Status
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias do
@@ -1189,7 +1187,7 @@ module Lithic
 
         # Status Reasons for KYC/KYB enrollment states
         module StatusReason
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias do

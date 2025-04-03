@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Accounts#list
-    class AccountListParams < Lithic::BaseModel
+    class AccountListParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -72,7 +72,7 @@ module Lithic
       #   #
       #   def initialize(begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

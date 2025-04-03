@@ -3,7 +3,7 @@ module Lithic
     type tokenization_update_digital_card_art_response =
       { data: Lithic::Models::Tokenization }
 
-    class TokenizationUpdateDigitalCardArtResponse < Lithic::BaseModel
+    class TokenizationUpdateDigitalCardArtResponse < Lithic::Internal::Type::BaseModel
       attr_reader data: Lithic::Models::Tokenization?
 
       def data=: (Lithic::Models::Tokenization) -> Lithic::Models::Tokenization

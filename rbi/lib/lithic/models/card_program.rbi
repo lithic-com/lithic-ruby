@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class CardProgram < Lithic::BaseModel
+    class CardProgram < Lithic::Internal::Type::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
       attr_accessor :token

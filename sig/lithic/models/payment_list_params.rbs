@@ -16,7 +16,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class PaymentListParams < Lithic::BaseModel
+    class PaymentListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -90,7 +90,7 @@ module Lithic
       type category = :ACH
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACH: :ACH
 
@@ -100,7 +100,7 @@ module Lithic
       type result = :APPROVED | :DECLINED
 
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED: :APPROVED
         DECLINED: :DECLINED
@@ -111,7 +111,7 @@ module Lithic
       type status = :DECLINED | :PENDING | :RETURNED | :SETTLED
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DECLINED: :DECLINED
         PENDING: :PENDING

@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Events
       # @see Lithic::Resources::Events::Subscriptions#recover
-      class SubscriptionRecoverParams < Lithic::BaseModel
+      class SubscriptionRecoverParams < Lithic::Internal::Type::BaseModel
         # @!parse
         #   extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
@@ -38,7 +38,7 @@ module Lithic
         #   #
         #   def initialize(begin_: nil, end_: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

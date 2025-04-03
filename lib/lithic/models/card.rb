@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Cards#create
-    class Card < Lithic::BaseModel
+    class Card < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier.
       #
@@ -125,7 +125,7 @@ module Lithic
       #     endpoints to fetch Auth Rule information instead.
       #
       #   @return [Array<String>, nil]
-      optional :auth_rule_tokens, Lithic::ArrayOf[String]
+      optional :auth_rule_tokens, Lithic::Internal::Type::ArrayOf[String]
 
       # @!parse
       #   # @return [Array<String>]
@@ -222,7 +222,7 @@ module Lithic
       #     only to cards issued in markets supporting offline PINs.
       #
       #   @return [Array<String>, nil]
-      optional :pending_commands, Lithic::ArrayOf[String]
+      optional :pending_commands, Lithic::Internal::Type::ArrayOf[String]
 
       # @!parse
       #   # @return [Array<String>]
@@ -301,10 +301,10 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # @see Lithic::Models::Card#funding
-      class Funding < Lithic::BaseModel
+      class Funding < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   A globally unique identifier for this FundingAccount.
         #
@@ -381,7 +381,7 @@ module Lithic
         #   #
         #   def initialize(token:, created:, last_four:, state:, type:, account_name: nil, nickname: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # State of funding source.
         #
@@ -395,7 +395,7 @@ module Lithic
         #
         # @see Lithic::Models::Card::Funding#state
         module State
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           DELETED = :DELETED
           ENABLED = :ENABLED
@@ -415,7 +415,7 @@ module Lithic
         #
         # @see Lithic::Models::Card::Funding#type
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           DEPOSITORY_CHECKING = :DEPOSITORY_CHECKING
           DEPOSITORY_SAVINGS = :DEPOSITORY_SAVINGS
@@ -433,7 +433,7 @@ module Lithic
       #
       # @see Lithic::Models::Card#pin_status
       module PinStatus
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         OK = :OK
         BLOCKED = :BLOCKED
@@ -470,7 +470,7 @@ module Lithic
       #
       # @see Lithic::Models::Card#state
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CLOSED = :CLOSED
         OPEN = :OPEN
@@ -504,7 +504,7 @@ module Lithic
       #
       # @see Lithic::Models::Card#type
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         MERCHANT_LOCKED = :MERCHANT_LOCKED
         PHYSICAL = :PHYSICAL

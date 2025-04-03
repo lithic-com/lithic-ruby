@@ -3,7 +3,7 @@ module Lithic
     type transaction_expire_authorization_params =
       {  } & Lithic::Internal::Type::request_parameters
 
-    class TransactionExpireAuthorizationParams < Lithic::BaseModel
+    class TransactionExpireAuthorizationParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

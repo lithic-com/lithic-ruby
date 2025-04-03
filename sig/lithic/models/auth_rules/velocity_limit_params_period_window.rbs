@@ -4,7 +4,7 @@ module Lithic
       type velocity_limit_params_period_window = :DAY | :WEEK | :MONTH
 
       module VelocityLimitParamsPeriodWindow
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DAY: :DAY
         WEEK: :WEEK

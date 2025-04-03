@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module AuthRules
-      class V2ApplyParams < Lithic::BaseModel
+      class V2ApplyParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
@@ -32,7 +32,7 @@ module Lithic
             card_tokens: T::Array[String],
             program_level: T::Boolean,
             excluded_card_tokens: T::Array[String],
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end

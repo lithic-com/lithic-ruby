@@ -3,7 +3,7 @@ module Lithic
     type book_transfer_reverse_params =
       { memo: String } & Lithic::Internal::Type::request_parameters
 
-    class BookTransferReverseParams < Lithic::BaseModel
+    class BookTransferReverseParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class Card < Lithic::BaseModel
+    class Card < Lithic::Internal::Type::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
       attr_accessor :token
@@ -23,7 +23,7 @@ module Lithic
       sig { returns(Lithic::Models::Card::Funding) }
       attr_reader :funding
 
-      sig { params(funding: T.any(Lithic::Models::Card::Funding, Lithic::Internal::Util::AnyHash)).void }
+      sig { params(funding: T.any(Lithic::Models::Card::Funding, Lithic::Internal::AnyHash)).void }
       attr_writer :funding
 
       # Last four digits of the card number.
@@ -198,7 +198,7 @@ module Lithic
           account_token: String,
           card_program_token: String,
           created: Time,
-          funding: T.any(Lithic::Models::Card::Funding, Lithic::Internal::Util::AnyHash),
+          funding: T.any(Lithic::Models::Card::Funding, Lithic::Internal::AnyHash),
           last_four: String,
           pin_status: Lithic::Models::Card::PinStatus::OrSymbol,
           spend_limit: Integer,
@@ -280,7 +280,7 @@ module Lithic
       def to_hash
       end
 
-      class Funding < Lithic::BaseModel
+      class Funding < Lithic::Internal::Type::BaseModel
         # A globally unique identifier for this FundingAccount.
         sig { returns(String) }
         attr_accessor :token
@@ -371,7 +371,7 @@ module Lithic
         #     micro-deposits verification.
         #   - `DELETED` - The founding account has been deleted.
         module State
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::Funding::State) }
           OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Card::Funding::State::TaggedSymbol) }
@@ -390,7 +390,7 @@ module Lithic
         #   - `DEPOSITORY_CHECKING` - Bank checking account.
         #   - `DEPOSITORY_SAVINGS` - Bank savings account.
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::Funding::Type) }
           OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Card::Funding::Type::TaggedSymbol) }
@@ -407,7 +407,7 @@ module Lithic
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       #   attempts).
       module PinStatus
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::PinStatus) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Card::PinStatus::TaggedSymbol) }
@@ -443,7 +443,7 @@ module Lithic
       #   In sandbox, the same daily batch fulfillment occurs, but no cards are actually
       #   manufactured.
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::State) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Card::State::TaggedSymbol) }
@@ -476,7 +476,7 @@ module Lithic
       #   - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
       #     use VIRTUAL instead.
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Card::Type::TaggedSymbol) }

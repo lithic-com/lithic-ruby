@@ -5,7 +5,7 @@ module Lithic
         { balance_date: Time, last_transaction_event_token: String }
         & Lithic::Internal::Type::request_parameters
 
-      class BalanceListParams < Lithic::BaseModel
+      class BalanceListParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 

@@ -12,7 +12,7 @@ module Lithic
         }
         & Lithic::Internal::Type::request_parameters
 
-      class V2UpdateParams < Lithic::BaseModel
+      class V2UpdateParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
@@ -55,7 +55,7 @@ module Lithic
         type state = :INACTIVE
 
         module State
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           INACTIVE: :INACTIVE
 

@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class Carrier < Lithic::BaseModel
+    class Carrier < Lithic::Internal::Type::BaseModel
       # QR code url to display on the card carrier
       sig { returns(T.nilable(String)) }
       attr_reader :qr_code_url

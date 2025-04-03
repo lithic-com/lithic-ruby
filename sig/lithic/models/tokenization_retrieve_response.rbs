@@ -2,7 +2,7 @@ module Lithic
   module Models
     type tokenization_retrieve_response = { data: Lithic::Models::Tokenization }
 
-    class TokenizationRetrieveResponse < Lithic::BaseModel
+    class TokenizationRetrieveResponse < Lithic::Internal::Type::BaseModel
       attr_reader data: Lithic::Models::Tokenization?
 
       def data=: (Lithic::Models::Tokenization) -> Lithic::Models::Tokenization

@@ -4,7 +4,7 @@ module Lithic
       type financial_transaction_retrieve_params =
         { card_token: String } & Lithic::Internal::Type::request_parameters
 
-      class FinancialTransactionRetrieveParams < Lithic::BaseModel
+      class FinancialTransactionRetrieveParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 

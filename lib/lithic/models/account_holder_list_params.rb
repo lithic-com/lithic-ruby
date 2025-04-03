@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#list
-    class AccountHolderListParams < Lithic::BaseModel
+    class AccountHolderListParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -158,7 +158,7 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

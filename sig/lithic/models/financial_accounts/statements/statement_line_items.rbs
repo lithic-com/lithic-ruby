@@ -10,7 +10,7 @@ module Lithic
             has_more: bool
           }
 
-        class StatementLineItems < Lithic::BaseModel
+        class StatementLineItems < Lithic::Internal::Type::BaseModel
           attr_accessor data: ::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data]
 
           attr_accessor has_more: bool
@@ -38,7 +38,7 @@ module Lithic
               descriptor: String
             }
 
-          class Data < Lithic::BaseModel
+          class Data < Lithic::Internal::Type::BaseModel
             attr_accessor token: String
 
             attr_accessor amount: Integer
@@ -98,7 +98,7 @@ module Lithic
               | :MANAGEMENT_REWARD
 
             module Category
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               ACH: :ACH
               BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
@@ -182,7 +182,7 @@ module Lithic
               | :RETURNED_PAYMENT_REVERSAL
 
             module EventType
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               ACH_ORIGINATION_CANCELLED: :ACH_ORIGINATION_CANCELLED
               ACH_ORIGINATION_INITIATED: :ACH_ORIGINATION_INITIATED

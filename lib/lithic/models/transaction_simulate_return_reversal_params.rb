@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Transactions#simulate_return_reversal
-    class TransactionSimulateReturnReversalParams < Lithic::BaseModel
+    class TransactionSimulateReturnReversalParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -20,7 +20,7 @@ module Lithic
       #   #
       #   def initialize(token:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

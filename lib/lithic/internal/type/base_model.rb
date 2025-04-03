@@ -23,7 +23,7 @@ module Lithic
           #
           # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
           def known_fields
-            @known_fields ||= (self < Lithic::BaseModel ? superclass.known_fields.dup : {})
+            @known_fields ||= (self < Lithic::Internal::Type::BaseModel ? superclass.known_fields.dup : {})
           end
 
           # @api private
@@ -64,14 +64,7 @@ module Lithic
             setter = "#{name_sym}="
             api_name = info.fetch(:api_name, name_sym)
             nilable = info[:nil?]
-            const = if required && !nilable
-              info.fetch(
-                :const,
-                Lithic::Internal::Util::OMIT
-              )
-            else
-              Lithic::Internal::Util::OMIT
-            end
+            const = required && !nilable ? info.fetch(:const, Lithic::Internal::OMIT) : Lithic::Internal::OMIT
 
             [name_sym, setter].each { undef_method(_1) } if known_fields.key?(name_sym)
 
@@ -89,7 +82,7 @@ module Lithic
 
             define_method(name_sym) do
               target = type_fn.call
-              value = @data.fetch(name_sym) { const == Lithic::Internal::Util::OMIT ? nil : const }
+              value = @data.fetch(name_sym) { const == Lithic::Internal::OMIT ? nil : const }
               state = {strictness: :strong, exactness: {yes: 0, no: 0, maybe: 0}, branched: 0}
               if (nilable || !required) && value.nil?
                 nil
@@ -105,7 +98,7 @@ module Lithic
               # rubocop:disable Layout/LineLength
               message = "Failed to parse #{cls}.#{__method__} from #{value.class} to #{target.inspect}. To get the unparsed API response, use #{cls}[:#{__method__}]."
               # rubocop:enable Layout/LineLength
-              raise Lithic::ConversionError.new(message)
+              raise Lithic::Errors::ConversionError.new(message)
             end
           end
 
@@ -175,7 +168,7 @@ module Lithic
           # @param other [Object]
           #
           # @return [Boolean]
-          def ==(other) = other.is_a?(Class) && other <= Lithic::BaseModel && other.fields == fields
+          def ==(other) = other.is_a?(Class) && other <= Lithic::Internal::Type::BaseModel && other.fields == fields
         end
 
         # @param other [Object]
@@ -186,7 +179,7 @@ module Lithic
         class << self
           # @api private
           #
-          # @param value [Lithic::BaseModel, Hash{Object=>Object}, Object]
+          # @param value [Lithic::Internal::Type::BaseModel, Hash{Object=>Object}, Object]
           #
           # @param state [Hash{Symbol=>Object}] .
           #
@@ -196,7 +189,7 @@ module Lithic
           #
           #   @option state [Integer] :branched
           #
-          # @return [Lithic::BaseModel, Object]
+          # @return [Lithic::Internal::Type::BaseModel, Object]
           def coerce(value, state:)
             exactness = state.fetch(:exactness)
 
@@ -221,7 +214,7 @@ module Lithic
               api_name, nilable, const = field.fetch_values(:api_name, :nilable, :const)
 
               unless val.key?(api_name)
-                if required && mode != :dump && const == Lithic::Internal::Util::OMIT
+                if required && mode != :dump && const == Lithic::Internal::OMIT
                   exactness[nilable ? :maybe : :no] += 1
                 else
                   exactness[:yes] += 1
@@ -255,7 +248,7 @@ module Lithic
 
           # @api private
           #
-          # @param value [Lithic::BaseModel, Object]
+          # @param value [Lithic::Internal::Type::BaseModel, Object]
           #
           # @return [Hash{Object=>Object}, Object]
           def dump(value)
@@ -284,7 +277,7 @@ module Lithic
 
             known_fields.each_value do |field|
               mode, api_name, const = field.fetch_values(:mode, :api_name, :const)
-              next if mode == :coerce || acc.key?(api_name) || const == Lithic::Internal::Util::OMIT
+              next if mode == :coerce || acc.key?(api_name) || const == Lithic::Internal::OMIT
               acc.store(api_name, const)
             end
 
@@ -351,13 +344,13 @@ module Lithic
 
         # Create a new instance of a model.
         #
-        # @param data [Hash{Symbol=>Object}, Lithic::BaseModel]
+        # @param data [Hash{Symbol=>Object}, Lithic::Internal::Type::BaseModel]
         def initialize(data = {})
           case Lithic::Internal::Util.coerce_hash(data)
           in Hash => coerced
             @data = coerced
           else
-            raise ArgumentError.new("Expected a #{Hash} or #{Lithic::BaseModel}, got #{data.inspect}")
+            raise ArgumentError.new("Expected a #{Hash} or #{Lithic::Internal::Type::BaseModel}, got #{data.inspect}")
           end
         end
 

@@ -10,7 +10,7 @@ module Lithic
         :address2 => String
       }
 
-    class ExternalBankAccountAddress < Lithic::BaseModel
+    class ExternalBankAccountAddress < Lithic::Internal::Type::BaseModel
       attr_accessor address1: String
 
       attr_accessor city: String

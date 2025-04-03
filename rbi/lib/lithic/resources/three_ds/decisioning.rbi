@@ -9,7 +9,7 @@ module Lithic
           params(
             token: String,
             challenge_response: Lithic::Models::ThreeDS::ChallengeResult::OrSymbol,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
           )
             .void
         end
@@ -32,7 +32,7 @@ module Lithic
         #   [this page](https://docs.lithic.com/docs/3ds-decisioning#3ds-decisioning-hmac-secrets)
         #   for more detail about verifying 3DS Decisioning requests.
         sig do
-          params(request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)))
+          params(request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)))
             .returns(Lithic::Models::ThreeDS::DecisioningRetrieveSecretResponse)
         end
         def retrieve_secret(request_options: {})
@@ -43,14 +43,7 @@ module Lithic
         #   [`GET /three_ds_decisioning/secret`](https://docs.lithic.com/reference/getthreedsdecisioningsecret)
         #   request to retrieve the new secret key.
         sig do
-          params(
-            request_options: T.nilable(
-              T.any(
-                Lithic::RequestOptions,
-                Lithic::Internal::Util::AnyHash
-              )
-            )
-          ).void
+          params(request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))).void
         end
         def rotate_secret(request_options: {})
         end

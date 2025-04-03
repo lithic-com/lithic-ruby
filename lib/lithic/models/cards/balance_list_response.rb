@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Cards
       # @see Lithic::Resources::Cards::Balances#list
-      class BalanceListResponse < Lithic::BaseModel
+      class BalanceListResponse < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   Globally unique identifier for the financial account that holds this balance.
         #
@@ -99,13 +99,13 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # Type of financial account.
         #
         # @see Lithic::Models::Cards::BalanceListResponse#type
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ISSUING = :ISSUING
           OPERATING = :OPERATING

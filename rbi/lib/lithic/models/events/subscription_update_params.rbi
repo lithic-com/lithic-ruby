@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module Events
-      class SubscriptionUpdateParams < Lithic::BaseModel
+      class SubscriptionUpdateParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
@@ -39,7 +39,7 @@ module Lithic
             description: String,
             disabled: T::Boolean,
             event_types: T::Array[Lithic::Models::Events::SubscriptionUpdateParams::EventType::OrSymbol],
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -62,7 +62,7 @@ module Lithic
         end
 
         module EventType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Events::SubscriptionUpdateParams::EventType) }

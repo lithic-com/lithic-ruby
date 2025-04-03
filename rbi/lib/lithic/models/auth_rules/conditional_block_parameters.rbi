@@ -3,13 +3,13 @@
 module Lithic
   module Models
     module AuthRules
-      class ConditionalBlockParameters < Lithic::BaseModel
+      class ConditionalBlockParameters < Lithic::Internal::Type::BaseModel
         sig { returns(T::Array[Lithic::Models::AuthRules::AuthRuleCondition]) }
         attr_accessor :conditions
 
         sig do
           params(
-            conditions: T::Array[T.any(Lithic::Models::AuthRules::AuthRuleCondition, Lithic::Internal::Util::AnyHash)]
+            conditions: T::Array[T.any(Lithic::Models::AuthRules::AuthRuleCondition, Lithic::Internal::AnyHash)]
           )
             .returns(T.attached_class)
         end

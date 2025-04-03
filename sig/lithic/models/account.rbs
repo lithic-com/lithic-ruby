@@ -12,7 +12,7 @@ module Lithic
         verification_address: Lithic::Models::Account::VerificationAddress
       }
 
-    class Account < Lithic::BaseModel
+    class Account < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor created: Time?
@@ -56,7 +56,7 @@ module Lithic
 
       type spend_limit = { daily: Integer, lifetime: Integer, monthly: Integer }
 
-      class SpendLimit < Lithic::BaseModel
+      class SpendLimit < Lithic::Internal::Type::BaseModel
         attr_accessor daily: Integer
 
         attr_accessor lifetime: Integer
@@ -75,7 +75,7 @@ module Lithic
       type state = :ACTIVE | :PAUSED | :CLOSED
 
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACTIVE: :ACTIVE
         PAUSED: :PAUSED
@@ -92,7 +92,7 @@ module Lithic
           phone_number: String
         }
 
-      class AccountHolder < Lithic::BaseModel
+      class AccountHolder < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
 
         attr_accessor business_account_token: String
@@ -121,7 +121,7 @@ module Lithic
           :address2 => String
         }
 
-      class VerificationAddress < Lithic::BaseModel
+      class VerificationAddress < Lithic::Internal::Type::BaseModel
         attr_accessor address1: String
 
         attr_accessor city: String

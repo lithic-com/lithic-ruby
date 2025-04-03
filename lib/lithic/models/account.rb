@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Accounts#retrieve
-    class Account < Lithic::BaseModel
+    class Account < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier for the account. This is the same as the
       #     account_token returned by the enroll endpoint. If using this parameter, do not
@@ -61,7 +61,7 @@ module Lithic
       #     `/auth_rules` endpoints to fetch Auth Rule information instead.
       #
       #   @return [Array<String>, nil]
-      optional :auth_rule_tokens, Lithic::ArrayOf[String]
+      optional :auth_rule_tokens, Lithic::Internal::Type::ArrayOf[String]
 
       # @!parse
       #   # @return [Array<String>]
@@ -110,10 +110,10 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # @see Lithic::Models::Account#spend_limit
-      class SpendLimit < Lithic::BaseModel
+      class SpendLimit < Lithic::Internal::Type::BaseModel
         # @!attribute daily
         #   Daily spend limit (in cents).
         #
@@ -145,7 +145,7 @@ module Lithic
         #   #
         #   def initialize(daily:, lifetime:, monthly:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # Account state:
@@ -162,7 +162,7 @@ module Lithic
       #
       # @see Lithic::Models::Account#state
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACTIVE = :ACTIVE
         PAUSED = :PAUSED
@@ -176,7 +176,7 @@ module Lithic
       end
 
       # @see Lithic::Models::Account#account_holder
-      class AccountHolder < Lithic::BaseModel
+      class AccountHolder < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   Globally unique identifier for the account holder.
         #
@@ -211,13 +211,13 @@ module Lithic
         #   #
         #   def initialize(token:, business_account_token:, email:, phone_number:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # @deprecated
       #
       # @see Lithic::Models::Account#verification_address
-      class VerificationAddress < Lithic::BaseModel
+      class VerificationAddress < Lithic::Internal::Type::BaseModel
         # @!attribute address1
         #   Valid deliverable address (no PO boxes).
         #
@@ -271,7 +271,7 @@ module Lithic
         #   #
         #   def initialize(address1:, city:, country:, postal_code:, state:, address2: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

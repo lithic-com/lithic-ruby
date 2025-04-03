@@ -12,7 +12,7 @@ module Lithic
         transactions_gross_amount: Integer
       }
 
-    class SettlementSummaryDetails < Lithic::BaseModel
+    class SettlementSummaryDetails < Lithic::Internal::Type::BaseModel
       attr_reader currency: String?
 
       def currency=: (String) -> String
@@ -63,7 +63,7 @@ module Lithic
       type network = :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
 
       module Network
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         INTERLINK: :INTERLINK
         MAESTRO: :MAESTRO

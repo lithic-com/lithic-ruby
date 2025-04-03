@@ -4,7 +4,7 @@ module Lithic
   module Models
     module FinancialAccounts
       # @see Lithic::Resources::FinancialAccounts::LoanTapes#retrieve
-      class LoanTape < Lithic::BaseModel
+      class LoanTape < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   Globally unique identifier for a loan tape
         #
@@ -192,10 +192,10 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#account_standing
-        class AccountStanding < Lithic::BaseModel
+        class AccountStanding < Lithic::Internal::Type::BaseModel
           # @!attribute consecutive_full_payments_made
           #   Number of consecutive full payments made
           #
@@ -231,7 +231,7 @@ module Lithic
           #   Whether the account currently has grace or not
           #
           #   @return [Boolean]
-          required :has_grace, Lithic::BooleanModel
+          required :has_grace, Lithic::Internal::Type::BooleanModel
 
           # @!attribute period_number
           #   Current overall period number
@@ -269,10 +269,10 @@ module Lithic
           #     super
           #   end
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::AccountStanding#financial_account_state
-          class FinancialAccountState < Lithic::BaseModel
+          class FinancialAccountState < Lithic::Internal::Type::BaseModel
             # @!attribute status
             #   Status of the financial account
             #
@@ -296,13 +296,13 @@ module Lithic
             #   #
             #   def initialize(status:, status_change_reason: nil, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
             # Status of the financial account
             #
             # @see Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState#status
             module Status
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               OPEN = :OPEN
               CLOSED = :CLOSED
@@ -320,7 +320,7 @@ module Lithic
             #
             # @see Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState#status_change_reason
             module StatusChangeReason
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               CHARGED_OFF_DELINQUENT = :CHARGED_OFF_DELINQUENT
               CHARGED_OFF_FRAUD = :CHARGED_OFF_FRAUD
@@ -338,7 +338,7 @@ module Lithic
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::AccountStanding#period_state
           module PeriodState
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             STANDARD = :STANDARD
             PROMO = :PROMO
@@ -353,7 +353,7 @@ module Lithic
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#balances
-        class Balances < Lithic::BaseModel
+        class Balances < Lithic::Internal::Type::BaseModel
           # @!attribute due
           #   Amount due for the prior billing cycle. Any amounts not fully paid off on this
           #     due date will be considered past due the next day
@@ -391,10 +391,10 @@ module Lithic
           #   #
           #   def initialize(due:, next_statement_due:, past_due:, past_statements_due:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::Balances#due
-          class Due < Lithic::BaseModel
+          class Due < Lithic::Internal::Type::BaseModel
             # @!attribute fees
             #
             #   @return [Integer]
@@ -420,11 +420,11 @@ module Lithic
             #   #
             #   def initialize(fees:, interest:, principal:, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::Balances#next_statement_due
-          class NextStatementDue < Lithic::BaseModel
+          class NextStatementDue < Lithic::Internal::Type::BaseModel
             # @!attribute fees
             #
             #   @return [Integer]
@@ -451,11 +451,11 @@ module Lithic
             #   #
             #   def initialize(fees:, interest:, principal:, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::Balances#past_due
-          class PastDue < Lithic::BaseModel
+          class PastDue < Lithic::Internal::Type::BaseModel
             # @!attribute fees
             #
             #   @return [Integer]
@@ -480,11 +480,11 @@ module Lithic
             #   #
             #   def initialize(fees:, interest:, principal:, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::Balances#past_statements_due
-          class PastStatementsDue < Lithic::BaseModel
+          class PastStatementsDue < Lithic::Internal::Type::BaseModel
             # @!attribute fees
             #
             #   @return [Integer]
@@ -509,12 +509,12 @@ module Lithic
             #   #
             #   def initialize(fees:, interest:, principal:, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#day_totals
-        class DayTotals < Lithic::BaseModel
+        class DayTotals < Lithic::Internal::Type::BaseModel
           # @!attribute balance_transfers
           #   Opening balance transferred from previous account in cents
           #
@@ -569,11 +569,11 @@ module Lithic
           #   #
           #   def initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#interest_details
-        class InterestDetails < Lithic::BaseModel
+        class InterestDetails < Lithic::Internal::Type::BaseModel
           # @!attribute actual_interest_charged
           #
           #   @return [Integer, nil]
@@ -634,10 +634,10 @@ module Lithic
           #     super
           #   end
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::InterestDetails#daily_balance_amounts
-          class DailyBalanceAmounts < Lithic::BaseModel
+          class DailyBalanceAmounts < Lithic::Internal::Type::BaseModel
             # @!attribute balance_transfers
             #
             #   @return [String]
@@ -660,11 +660,11 @@ module Lithic
             #   #
             #   def initialize(balance_transfers:, cash_advances:, purchases:, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::InterestDetails#effective_apr
-          class EffectiveApr < Lithic::BaseModel
+          class EffectiveApr < Lithic::Internal::Type::BaseModel
             # @!attribute balance_transfers
             #
             #   @return [String]
@@ -687,12 +687,12 @@ module Lithic
             #   #
             #   def initialize(balance_transfers:, cash_advances:, purchases:, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::InterestDetails#interest_calculation_method
           module InterestCalculationMethod
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             DAILY = :DAILY
             AVERAGE_DAILY = :AVERAGE_DAILY
@@ -705,7 +705,7 @@ module Lithic
           end
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::InterestDetails#interest_for_period
-          class InterestForPeriod < Lithic::BaseModel
+          class InterestForPeriod < Lithic::Internal::Type::BaseModel
             # @!attribute balance_transfers
             #
             #   @return [String]
@@ -728,12 +728,12 @@ module Lithic
             #   #
             #   def initialize(balance_transfers:, cash_advances:, purchases:, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
           end
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#minimum_payment_balance
-        class MinimumPaymentBalance < Lithic::BaseModel
+        class MinimumPaymentBalance < Lithic::Internal::Type::BaseModel
           # @!attribute amount
           #
           #   @return [Integer]
@@ -750,11 +750,11 @@ module Lithic
           #   #
           #   def initialize(amount:, remaining:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#payment_allocation
-        class PaymentAllocation < Lithic::BaseModel
+        class PaymentAllocation < Lithic::Internal::Type::BaseModel
           # @!attribute fees
           #
           #   @return [Integer]
@@ -777,11 +777,11 @@ module Lithic
           #   #
           #   def initialize(fees:, interest:, principal:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#period_totals
-        class PeriodTotals < Lithic::BaseModel
+        class PeriodTotals < Lithic::Internal::Type::BaseModel
           # @!attribute balance_transfers
           #   Opening balance transferred from previous account in cents
           #
@@ -836,11 +836,11 @@ module Lithic
           #   #
           #   def initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#previous_statement_balance
-        class PreviousStatementBalance < Lithic::BaseModel
+        class PreviousStatementBalance < Lithic::Internal::Type::BaseModel
           # @!attribute amount
           #
           #   @return [Integer]
@@ -857,11 +857,11 @@ module Lithic
           #   #
           #   def initialize(amount:, remaining:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#ytd_totals
-        class YtdTotals < Lithic::BaseModel
+        class YtdTotals < Lithic::Internal::Type::BaseModel
           # @!attribute balance_transfers
           #   Opening balance transferred from previous account in cents
           #
@@ -916,7 +916,7 @@ module Lithic
           #   #
           #   def initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
       end
     end

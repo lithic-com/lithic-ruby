@@ -11,7 +11,7 @@ module Lithic
         is_card_program_default: bool
       }
 
-    class DigitalCardArtAPI < Lithic::BaseModel
+    class DigitalCardArtAPI < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor card_program_token: String
@@ -43,7 +43,7 @@ module Lithic
       type network = :MASTERCARD | :VISA
 
       module Network
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         MASTERCARD: :MASTERCARD
         VISA: :VISA

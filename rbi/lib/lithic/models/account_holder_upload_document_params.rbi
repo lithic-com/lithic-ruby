@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class AccountHolderUploadDocumentParams < Lithic::BaseModel
+    class AccountHolderUploadDocumentParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -18,7 +18,7 @@ module Lithic
         params(
           document_type: Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
           entity_token: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -40,7 +40,7 @@ module Lithic
 
       # The type of document to upload
       module DocumentType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType) }

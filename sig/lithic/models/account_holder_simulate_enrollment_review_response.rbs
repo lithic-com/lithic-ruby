@@ -24,7 +24,7 @@ module Lithic
         website_url: String
       }
 
-    class AccountHolderSimulateEnrollmentReviewResponse < Lithic::BaseModel
+    class AccountHolderSimulateEnrollmentReviewResponse < Lithic::Internal::Type::BaseModel
       attr_reader token: String?
 
       def token=: (String) -> String
@@ -163,7 +163,7 @@ module Lithic
           phone_number: String
         }
 
-      class BeneficialOwnerIndividual < Lithic::BaseModel
+      class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         attr_reader address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address?
 
         def address=: (
@@ -211,7 +211,7 @@ module Lithic
             :address2 => String
           }
 
-        class Address < Lithic::BaseModel
+        class Address < Lithic::Internal::Type::BaseModel
           attr_accessor address1: String
 
           attr_accessor city: String
@@ -250,7 +250,7 @@ module Lithic
           phone_number: String
         }
 
-      class ControlPerson < Lithic::BaseModel
+      class ControlPerson < Lithic::Internal::Type::BaseModel
         attr_reader address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address?
 
         def address=: (
@@ -298,7 +298,7 @@ module Lithic
             :address2 => String
           }
 
-        class Address < Lithic::BaseModel
+        class Address < Lithic::Internal::Type::BaseModel
           attr_accessor address1: String
 
           attr_accessor city: String
@@ -329,7 +329,7 @@ module Lithic
       type exemption_type = :AUTHORIZED_USER | :PREPAID_CARD_USER
 
       module ExemptionType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         AUTHORIZED_USER: :AUTHORIZED_USER
         PREPAID_CARD_USER: :PREPAID_CARD_USER
@@ -348,7 +348,7 @@ module Lithic
           phone_number: String
         }
 
-      class Individual < Lithic::BaseModel
+      class Individual < Lithic::Internal::Type::BaseModel
         attr_reader address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address?
 
         def address=: (
@@ -396,7 +396,7 @@ module Lithic
             :address2 => String
           }
 
-        class Address < Lithic::BaseModel
+        class Address < Lithic::Internal::Type::BaseModel
           attr_accessor address1: String
 
           attr_accessor city: String
@@ -428,7 +428,7 @@ module Lithic
         :ACCEPTED | :PENDING_DOCUMENT | :PENDING_RESUBMIT | :REJECTED
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACCEPTED: :ACCEPTED
         PENDING_DOCUMENT: :PENDING_DOCUMENT
@@ -465,7 +465,7 @@ module Lithic
         | :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
 
       module StatusReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ADDRESS_VERIFICATION_FAILURE: :ADDRESS_VERIFICATION_FAILURE
         AGE_THRESHOLD_FAILURE: :AGE_THRESHOLD_FAILURE
@@ -498,7 +498,7 @@ module Lithic
       type user_type = :BUSINESS | :INDIVIDUAL
 
       module UserType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         BUSINESS: :BUSINESS
         INDIVIDUAL: :INDIVIDUAL
@@ -514,7 +514,7 @@ module Lithic
           updated: Time
         }
 
-      class VerificationApplication < Lithic::BaseModel
+      class VerificationApplication < Lithic::Internal::Type::BaseModel
         attr_accessor created: Time
 
         attr_accessor status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::status
@@ -536,7 +536,7 @@ module Lithic
           :ACCEPTED | :PENDING_DOCUMENT | :PENDING_RESUBMIT | :REJECTED
 
         module Status
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACCEPTED: :ACCEPTED
           PENDING_DOCUMENT: :PENDING_DOCUMENT
@@ -573,7 +573,7 @@ module Lithic
           | :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
 
         module StatusReason
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ADDRESS_VERIFICATION_FAILURE: :ADDRESS_VERIFICATION_FAILURE
           AGE_THRESHOLD_FAILURE: :AGE_THRESHOLD_FAILURE

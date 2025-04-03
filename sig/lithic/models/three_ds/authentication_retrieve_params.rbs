@@ -4,7 +4,7 @@ module Lithic
       type authentication_retrieve_params =
         {  } & Lithic::Internal::Type::request_parameters
 
-      class AuthenticationRetrieveParams < Lithic::BaseModel
+      class AuthenticationRetrieveParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 

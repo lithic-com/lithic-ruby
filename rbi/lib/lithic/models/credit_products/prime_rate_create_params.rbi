@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module CreditProducts
-      class PrimeRateCreateParams < Lithic::BaseModel
+      class PrimeRateCreateParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
@@ -19,7 +19,7 @@ module Lithic
           params(
             effective_date: Date,
             rate: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Reports
       module Settlement
-        class NetworkTotalListResponse < Lithic::BaseModel
+        class NetworkTotalListResponse < Lithic::Internal::Type::BaseModel
           # Globally unique identifier.
           sig { returns(String) }
           attr_accessor :token
@@ -14,10 +14,7 @@ module Lithic
 
           sig do
             params(
-              amounts: T.any(
-                Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Amounts,
-                Lithic::Internal::Util::AnyHash
-              )
+              amounts: T.any(Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Amounts, Lithic::Internal::AnyHash)
             )
               .void
           end
@@ -70,10 +67,7 @@ module Lithic
           sig do
             params(
               token: String,
-              amounts: T.any(
-                Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Amounts,
-                Lithic::Internal::Util::AnyHash
-              ),
+              amounts: T.any(Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Amounts, Lithic::Internal::AnyHash),
               created: Time,
               currency: String,
               institution_id: String,
@@ -122,7 +116,7 @@ module Lithic
           def to_hash
           end
 
-          class Amounts < Lithic::BaseModel
+          class Amounts < Lithic::Internal::Type::BaseModel
             # Total settlement amount excluding interchange, in currency's smallest unit.
             sig { returns(Integer) }
             attr_accessor :gross_settlement
@@ -173,7 +167,7 @@ module Lithic
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
           #   INTERLINK.
           module Network
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Network) }

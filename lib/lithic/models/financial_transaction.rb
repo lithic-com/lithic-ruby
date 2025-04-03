@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class FinancialTransaction < Lithic::BaseModel
+    class FinancialTransaction < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier.
       #
@@ -45,7 +45,7 @@ module Lithic
       #   A list of all financial events that have modified this financial transaction.
       #
       #   @return [Array<Lithic::Models::FinancialTransaction::Event>]
-      required :events, -> { Lithic::ArrayOf[Lithic::Models::FinancialTransaction::Event] }
+      required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::FinancialTransaction::Event] }
 
       # @!attribute pending_amount
       #   Pending amount of the transaction in the currency's smallest unit (e.g., cents),
@@ -119,7 +119,7 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Status types:
       #
@@ -131,7 +131,7 @@ module Lithic
       #
       # @see Lithic::Models::FinancialTransaction#category
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACH = :ACH
         CARD = :CARD
@@ -145,7 +145,7 @@ module Lithic
         #   def self.values; end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         # @!attribute [r] token
         #   Globally unique identifier.
         #
@@ -206,14 +206,14 @@ module Lithic
         #   #
         #   def initialize(token: nil, amount: nil, created: nil, result: nil, type: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         #
         # @see Lithic::Models::FinancialTransaction::Event#result
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
           DECLINED = :DECLINED
@@ -227,7 +227,7 @@ module Lithic
 
         # @see Lithic::Models::FinancialTransaction::Event#type
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACH_ORIGINATION_CANCELLED = :ACH_ORIGINATION_CANCELLED
           ACH_ORIGINATION_INITIATED = :ACH_ORIGINATION_INITIATED
@@ -307,7 +307,7 @@ module Lithic
       #
       # @see Lithic::Models::FinancialTransaction#result
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED = :APPROVED
         DECLINED = :DECLINED
@@ -331,7 +331,7 @@ module Lithic
       #
       # @see Lithic::Models::FinancialTransaction#status
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DECLINED = :DECLINED
         EXPIRED = :EXPIRED

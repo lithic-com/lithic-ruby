@@ -4,7 +4,7 @@ module Lithic
       module V2
         type backtest_create_response = { backtest_token: String }
 
-        class BacktestCreateResponse < Lithic::BaseModel
+        class BacktestCreateResponse < Lithic::Internal::Type::BaseModel
           attr_reader backtest_token: String?
 
           def backtest_token=: (String) -> String

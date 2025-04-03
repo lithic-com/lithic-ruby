@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class Transfer < Lithic::BaseModel
+    class Transfer < Lithic::Internal::Type::BaseModel
       # Globally unique identifier for the transfer event.
       sig { returns(T.nilable(String)) }
       attr_reader :token
@@ -47,14 +47,14 @@ module Lithic
       sig { returns(T.nilable(T::Array[Lithic::Models::Transfer::Event])) }
       attr_reader :events
 
-      sig { params(events: T::Array[T.any(Lithic::Models::Transfer::Event, Lithic::Internal::Util::AnyHash)]).void }
+      sig { params(events: T::Array[T.any(Lithic::Models::Transfer::Event, Lithic::Internal::AnyHash)]).void }
       attr_writer :events
 
       # The updated balance of the sending financial account.
       sig { returns(T.nilable(T::Array[Lithic::Models::Balance])) }
       attr_reader :from_balance
 
-      sig { params(from_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Internal::Util::AnyHash)]).void }
+      sig { params(from_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Internal::AnyHash)]).void }
       attr_writer :from_balance
 
       # Pending amount of the transaction in the currency's smallest unit (e.g., cents),
@@ -99,7 +99,7 @@ module Lithic
       sig { returns(T.nilable(T::Array[Lithic::Models::Balance])) }
       attr_reader :to_balance
 
-      sig { params(to_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Internal::Util::AnyHash)]).void }
+      sig { params(to_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Internal::AnyHash)]).void }
       attr_writer :to_balance
 
       # Date and time when the financial transaction was last updated. UTC time zone.
@@ -116,13 +116,13 @@ module Lithic
           created: Time,
           currency: String,
           descriptor: String,
-          events: T::Array[T.any(Lithic::Models::Transfer::Event, Lithic::Internal::Util::AnyHash)],
-          from_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Internal::Util::AnyHash)],
+          events: T::Array[T.any(Lithic::Models::Transfer::Event, Lithic::Internal::AnyHash)],
+          from_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Internal::AnyHash)],
           pending_amount: Integer,
           result: Lithic::Models::Transfer::Result::OrSymbol,
           settled_amount: Integer,
           status: Lithic::Models::Transfer::Status::OrSymbol,
-          to_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Internal::Util::AnyHash)],
+          to_balance: T::Array[T.any(Lithic::Models::Balance, Lithic::Internal::AnyHash)],
           updated: Time
         )
           .returns(T.attached_class)
@@ -172,7 +172,7 @@ module Lithic
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #     program.
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transfer::Category) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Transfer::Category::TaggedSymbol) }
@@ -184,7 +184,7 @@ module Lithic
         end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         # Globally unique identifier.
         sig { returns(T.nilable(String)) }
         attr_reader :token
@@ -252,7 +252,7 @@ module Lithic
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transfer::Event::Result) }
           OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Transfer::Event::Result::TaggedSymbol) }
@@ -266,7 +266,7 @@ module Lithic
         end
 
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transfer::Event::Type) }
           OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Transfer::Event::Type::TaggedSymbol) }
@@ -381,7 +381,7 @@ module Lithic
       # APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transfer::Result) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Transfer::Result::TaggedSymbol) }
@@ -402,7 +402,7 @@ module Lithic
       #   - `SETTLED` - The transfer is completed.
       #   - `VOIDED` - The transfer was reversed before it settled.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transfer::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Transfer::Status::TaggedSymbol) }

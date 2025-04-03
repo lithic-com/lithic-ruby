@@ -96,7 +96,7 @@ module Lithic
 
     # Status of api
     sig do
-      params(request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)))
+      params(request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)))
         .returns(Lithic::Models::APIStatus)
     end
     def api_status(request_options: {})

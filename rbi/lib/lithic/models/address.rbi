@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class Address < Lithic::BaseModel
+    class Address < Lithic::Internal::Type::BaseModel
       # Valid deliverable address (no PO boxes).
       sig { returns(String) }
       attr_accessor :address1

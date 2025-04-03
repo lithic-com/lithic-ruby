@@ -23,7 +23,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         spend_limit_duration: Lithic::Models::SpendLimitDuration,
         state: Lithic::Models::Card::State,
         type: Lithic::Models::Card::Type,
-        auth_rule_tokens: ^(Lithic::ArrayOf[String]) | nil,
+        auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
         digital_card_art_token: String | nil,
@@ -32,7 +32,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         hostname: String | nil,
         memo: String | nil,
         pan: String | nil,
-        pending_commands: ^(Lithic::ArrayOf[String]) | nil,
+        pending_commands: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         product_id: String | nil,
         replacement_for: String | nil
       }
@@ -59,7 +59,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         spend_limit_duration: Lithic::Models::SpendLimitDuration,
         state: Lithic::Models::Card::State,
         type: Lithic::Models::Card::Type,
-        auth_rule_tokens: ^(Lithic::ArrayOf[String]) | nil,
+        auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
         digital_card_art_token: String | nil,
@@ -68,7 +68,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         hostname: String | nil,
         memo: String | nil,
         pan: String | nil,
-        pending_commands: ^(Lithic::ArrayOf[String]) | nil,
+        pending_commands: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         product_id: String | nil,
         replacement_for: String | nil
       }
@@ -95,7 +95,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         spend_limit_duration: Lithic::Models::SpendLimitDuration,
         state: Lithic::Models::Card::State,
         type: Lithic::Models::Card::Type,
-        auth_rule_tokens: ^(Lithic::ArrayOf[String]) | nil,
+        auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
         digital_card_art_token: String | nil,
@@ -104,7 +104,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         hostname: String | nil,
         memo: String | nil,
         pan: String | nil,
-        pending_commands: ^(Lithic::ArrayOf[String]) | nil,
+        pending_commands: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         product_id: String | nil,
         replacement_for: String | nil
       }
@@ -138,7 +138,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         spend_limit_duration: Lithic::Models::SpendLimitDuration,
         state: Lithic::Models::Card::State,
         type: Lithic::Models::Card::Type,
-        auth_rule_tokens: ^(Lithic::ArrayOf[String]) | nil,
+        auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
         digital_card_art_token: String | nil,
@@ -147,7 +147,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         hostname: String | nil,
         memo: String | nil,
         pan: String | nil,
-        pending_commands: ^(Lithic::ArrayOf[String]) | nil,
+        pending_commands: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         product_id: String | nil,
         replacement_for: String | nil
       }
@@ -186,7 +186,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         spend_limit_duration: Lithic::Models::SpendLimitDuration,
         state: Lithic::Models::Card::State,
         type: Lithic::Models::Card::Type,
-        auth_rule_tokens: ^(Lithic::ArrayOf[String]) | nil,
+        auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
         digital_card_art_token: String | nil,
@@ -195,7 +195,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         hostname: String | nil,
         memo: String | nil,
         pan: String | nil,
-        pending_commands: ^(Lithic::ArrayOf[String]) | nil,
+        pending_commands: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         product_id: String | nil,
         replacement_for: String | nil
       }
@@ -244,7 +244,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         spend_limit_duration: Lithic::Models::SpendLimitDuration,
         state: Lithic::Models::Card::State,
         type: Lithic::Models::Card::Type,
-        auth_rule_tokens: ^(Lithic::ArrayOf[String]) | nil,
+        auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
         digital_card_art_token: String | nil,
@@ -253,7 +253,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         hostname: String | nil,
         memo: String | nil,
         pan: String | nil,
-        pending_commands: ^(Lithic::ArrayOf[String]) | nil,
+        pending_commands: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         product_id: String | nil,
         replacement_for: String | nil
       }
@@ -292,7 +292,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         spend_limit_duration: Lithic::Models::SpendLimitDuration,
         state: Lithic::Models::Card::State,
         type: Lithic::Models::Card::Type,
-        auth_rule_tokens: ^(Lithic::ArrayOf[String]) | nil,
+        auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
         digital_card_art_token: String | nil,
@@ -301,7 +301,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         hostname: String | nil,
         memo: String | nil,
         pan: String | nil,
-        pending_commands: ^(Lithic::ArrayOf[String]) | nil,
+        pending_commands: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         product_id: String | nil,
         replacement_for: String | nil
       }
@@ -344,7 +344,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         spend_limit_duration: Lithic::Models::SpendLimitDuration,
         state: Lithic::Models::Card::State,
         type: Lithic::Models::Card::Type,
-        auth_rule_tokens: ^(Lithic::ArrayOf[String]) | nil,
+        auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
         digital_card_art_token: String | nil,
@@ -353,7 +353,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         hostname: String | nil,
         memo: String | nil,
         pan: String | nil,
-        pending_commands: ^(Lithic::ArrayOf[String]) | nil,
+        pending_commands: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         product_id: String | nil,
         replacement_for: String | nil
       }

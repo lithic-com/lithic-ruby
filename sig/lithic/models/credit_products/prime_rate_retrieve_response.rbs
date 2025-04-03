@@ -7,7 +7,7 @@ module Lithic
           has_more: bool
         }
 
-      class PrimeRateRetrieveResponse < Lithic::BaseModel
+      class PrimeRateRetrieveResponse < Lithic::Internal::Type::BaseModel
         attr_accessor data: ::Array[Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data]
 
         attr_accessor has_more: bool
@@ -21,7 +21,7 @@ module Lithic
 
         type data = { effective_date: Date, rate: String }
 
-        class Data < Lithic::BaseModel
+        class Data < Lithic::Internal::Type::BaseModel
           attr_accessor effective_date: Date
 
           attr_accessor rate: String

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module AuthRules
-      class VelocityLimitParams < Lithic::BaseModel
+      class VelocityLimitParams < Lithic::Internal::Type::BaseModel
         # @!attribute filters
         #
         #   @return [Lithic::Models::AuthRules::VelocityLimitParams::Filters]
@@ -48,24 +48,24 @@ module Lithic
         #   #
         #   def initialize(filters:, period:, scope:, limit_amount: nil, limit_count: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # @see Lithic::Models::AuthRules::VelocityLimitParams#filters
-        class Filters < Lithic::BaseModel
+        class Filters < Lithic::Internal::Type::BaseModel
           # @!attribute exclude_countries
           #   ISO-3166-1 alpha-3 Country Codes to exclude from the velocity calculation.
           #     Transactions matching any of the provided will be excluded from the calculated
           #     velocity.
           #
           #   @return [Array<String>, nil]
-          optional :exclude_countries, Lithic::ArrayOf[String], nil?: true
+          optional :exclude_countries, Lithic::Internal::Type::ArrayOf[String], nil?: true
 
           # @!attribute exclude_mccs
           #   Merchant Category Codes to exclude from the velocity calculation. Transactions
           #     matching this MCC will be excluded from the calculated velocity.
           #
           #   @return [Array<String>, nil]
-          optional :exclude_mccs, Lithic::ArrayOf[String], nil?: true
+          optional :exclude_mccs, Lithic::Internal::Type::ArrayOf[String], nil?: true
 
           # @!attribute include_countries
           #   ISO-3166-1 alpha-3 Country Codes to include in the velocity calculation.
@@ -73,14 +73,14 @@ module Lithic
           #     calculated velocity.
           #
           #   @return [Array<String>, nil]
-          optional :include_countries, Lithic::ArrayOf[String], nil?: true
+          optional :include_countries, Lithic::Internal::Type::ArrayOf[String], nil?: true
 
           # @!attribute include_mccs
           #   Merchant Category Codes to include in the velocity calculation. Transactions not
           #     matching this MCC will not be included in the calculated velocity.
           #
           #   @return [Array<String>, nil]
-          optional :include_mccs, Lithic::ArrayOf[String], nil?: true
+          optional :include_mccs, Lithic::Internal::Type::ArrayOf[String], nil?: true
 
           # @!parse
           #   # @param exclude_countries [Array<String>, nil]
@@ -90,7 +90,7 @@ module Lithic
           #   #
           #   def initialize(exclude_countries: nil, exclude_mccs: nil, include_countries: nil, include_mccs: nil, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
 
         # The size of the trailing window to calculate Spend Velocity over in seconds. The
@@ -98,7 +98,7 @@ module Lithic
         #
         # @see Lithic::Models::AuthRules::VelocityLimitParams#period
         module Period
-          extend Lithic::Union
+          extend Lithic::Internal::Type::Union
 
           # The size of the trailing window to calculate Spend Velocity over in seconds. The minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
           variant Integer
@@ -117,7 +117,7 @@ module Lithic
 
         # @see Lithic::Models::AuthRules::VelocityLimitParams#scope
         module Scope
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CARD = :CARD
           ACCOUNT = :ACCOUNT

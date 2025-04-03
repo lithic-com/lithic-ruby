@@ -5,7 +5,7 @@ module Lithic
         type network_total_retrieve_params =
           {  } & Lithic::Internal::Type::request_parameters
 
-        class NetworkTotalRetrieveParams < Lithic::BaseModel
+        class NetworkTotalRetrieveParams < Lithic::Internal::Type::BaseModel
           extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
 

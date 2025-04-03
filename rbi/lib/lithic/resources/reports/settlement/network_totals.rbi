@@ -9,7 +9,7 @@ module Lithic
           sig do
             params(
               token: String,
-              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
             )
               .returns(Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse)
           end
@@ -34,7 +34,7 @@ module Lithic
               report_date_end: Date,
               settlement_institution_id: String,
               starting_after: String,
-              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
             )
               .returns(Lithic::Internal::CursorPage[Lithic::Models::Reports::Settlement::NetworkTotalListResponse])
           end

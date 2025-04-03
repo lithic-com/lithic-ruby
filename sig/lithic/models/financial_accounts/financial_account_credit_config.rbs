@@ -15,7 +15,7 @@ module Lithic
           tier: String?
         }
 
-      class FinancialAccountCreditConfig < Lithic::BaseModel
+      class FinancialAccountCreditConfig < Lithic::Internal::Type::BaseModel
         attr_accessor account_token: String
 
         attr_accessor charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?
@@ -48,7 +48,7 @@ module Lithic
         type charged_off_reason = :DELINQUENT | :FRAUD
 
         module ChargedOffReason
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           DELINQUENT: :DELINQUENT
           FRAUD: :FRAUD
@@ -60,7 +60,7 @@ module Lithic
           :PENDING | :CURRENT | :DELINQUENT | :CHARGED_OFF
 
         module FinancialAccountState
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           PENDING: :PENDING
           CURRENT: :CURRENT

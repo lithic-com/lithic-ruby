@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class Address < Lithic::BaseModel
+    class Address < Lithic::Internal::Type::BaseModel
       # @!attribute address1
       #   Valid deliverable address (no PO boxes).
       #
@@ -58,7 +58,7 @@ module Lithic
       #   #
       #   def initialize(address1:, city:, country:, postal_code:, state:, address2: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

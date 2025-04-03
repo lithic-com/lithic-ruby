@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class APIStatus < Lithic::BaseModel
+    class APIStatus < Lithic::Internal::Type::BaseModel
       sig { returns(T.nilable(String)) }
       attr_reader :message
 

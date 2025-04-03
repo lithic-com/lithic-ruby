@@ -11,7 +11,7 @@ module Lithic
           }
           & Lithic::Internal::Type::request_parameters
 
-        class LineItemListParams < Lithic::BaseModel
+        class LineItemListParams < Lithic::Internal::Type::BaseModel
           extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
 

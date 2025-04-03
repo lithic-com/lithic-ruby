@@ -7,7 +7,7 @@ module Lithic
           has_more: bool
         }
 
-      class FinancialAccountsStatements < Lithic::BaseModel
+      class FinancialAccountsStatements < Lithic::Internal::Type::BaseModel
         attr_accessor data: ::Array[Lithic::Models::FinancialAccounts::Statement]
 
         attr_accessor has_more: bool

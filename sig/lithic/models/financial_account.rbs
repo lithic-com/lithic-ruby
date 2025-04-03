@@ -16,7 +16,7 @@ module Lithic
         status_change_reason: Lithic::Models::FinancialAccount::status_change_reason?
       }
 
-    class FinancialAccount < Lithic::BaseModel
+    class FinancialAccount < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor account_token: String?
@@ -69,7 +69,7 @@ module Lithic
           tier: String?
         }
 
-      class CreditConfiguration < Lithic::BaseModel
+      class CreditConfiguration < Lithic::Internal::Type::BaseModel
         attr_accessor charged_off_reason: Lithic::Models::FinancialAccount::CreditConfiguration::charged_off_reason?
 
         attr_accessor credit_limit: Integer?
@@ -99,7 +99,7 @@ module Lithic
         type charged_off_reason = :DELINQUENT | :FRAUD
 
         module ChargedOffReason
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           DELINQUENT: :DELINQUENT
           FRAUD: :FRAUD
@@ -111,7 +111,7 @@ module Lithic
           :PENDING | :CURRENT | :DELINQUENT | :CHARGED_OFF
 
         module FinancialAccountState
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           PENDING: :PENDING
           CURRENT: :CURRENT
@@ -125,7 +125,7 @@ module Lithic
       type status = :OPEN | :CLOSED | :SUSPENDED | :PENDING
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         OPEN: :OPEN
         CLOSED: :CLOSED
@@ -144,7 +144,7 @@ module Lithic
         | :CHARGED_OFF_PRINCIPAL
 
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ISSUING: :ISSUING
         RESERVE: :RESERVE
@@ -164,7 +164,7 @@ module Lithic
         | :DELINQUENT
 
       module StatusChangeReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CHARGED_OFF_DELINQUENT: :CHARGED_OFF_DELINQUENT
         CHARGED_OFF_FRAUD: :CHARGED_OFF_FRAUD

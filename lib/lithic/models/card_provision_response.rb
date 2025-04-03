@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Cards#provision
-    class CardProvisionResponse < Lithic::BaseModel
+    class CardProvisionResponse < Lithic::Internal::Type::BaseModel
       # @!attribute [r] provisioning_payload
       #
       #   @return [String, nil]
@@ -18,7 +18,7 @@ module Lithic
       #   #
       #   def initialize(provisioning_payload: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

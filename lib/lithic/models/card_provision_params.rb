@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Cards#provision
-    class CardProvisionParams < Lithic::BaseModel
+    class CardProvisionParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -101,11 +101,11 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Name of digital wallet provider.
       module DigitalWallet
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPLE_PAY = :APPLE_PAY
         GOOGLE_PAY = :GOOGLE_PAY

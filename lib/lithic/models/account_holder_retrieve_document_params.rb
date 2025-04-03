@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#retrieve_document
-    class AccountHolderRetrieveDocumentParams < Lithic::BaseModel
+    class AccountHolderRetrieveDocumentParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -19,7 +19,7 @@ module Lithic
       #   #
       #   def initialize(account_holder_token:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

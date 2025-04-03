@@ -4,17 +4,17 @@ module Lithic
   module Models
     module FinancialAccounts
       module Statements
-        class StatementLineItems < Lithic::BaseModel
+        class StatementLineItems < Lithic::Internal::Type::BaseModel
           # @!attribute data
           #
           #   @return [Array<Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data>]
           required :data,
-                   -> { Lithic::ArrayOf[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data] }
+                   -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data] }
 
           # @!attribute has_more
           #
           #   @return [Boolean]
-          required :has_more, Lithic::BooleanModel
+          required :has_more, Lithic::Internal::Type::BooleanModel
 
           # @!parse
           #   # @param data [Array<Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data>]
@@ -22,9 +22,9 @@ module Lithic
           #   #
           #   def initialize(data:, has_more:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
-          class Data < Lithic::BaseModel
+          class Data < Lithic::Internal::Type::BaseModel
             # @!attribute token
             #   Globally unique identifier for a Statement Line Item
             #
@@ -137,11 +137,11 @@ module Lithic
             #     super
             #   end
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
             # @see Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data#category
             module Category
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               ACH = :ACH
               BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
@@ -164,7 +164,7 @@ module Lithic
 
             # @see Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data#event_type
             module EventType
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               ACH_ORIGINATION_CANCELLED = :ACH_ORIGINATION_CANCELLED
               ACH_ORIGINATION_INITIATED = :ACH_ORIGINATION_INITIATED

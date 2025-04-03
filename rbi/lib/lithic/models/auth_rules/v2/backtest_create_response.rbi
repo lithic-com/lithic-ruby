@@ -4,7 +4,7 @@ module Lithic
   module Models
     module AuthRules
       module V2
-        class BacktestCreateResponse < Lithic::BaseModel
+        class BacktestCreateResponse < Lithic::Internal::Type::BaseModel
           # Auth Rule Backtest Token
           sig { returns(T.nilable(String)) }
           attr_reader :backtest_token

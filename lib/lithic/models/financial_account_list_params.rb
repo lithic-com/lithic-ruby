@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::FinancialAccounts#list
-    class FinancialAccountListParams < Lithic::BaseModel
+    class FinancialAccountListParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -46,11 +46,11 @@ module Lithic
       #   #
       #   def initialize(account_token: nil, business_account_token: nil, type: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # List financial accounts of a given type
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ISSUING = :ISSUING
         OPERATING = :OPERATING

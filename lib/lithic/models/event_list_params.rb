@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Events#list
-    class EventListParams < Lithic::BaseModel
+    class EventListParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -45,7 +45,8 @@ module Lithic
       #   Event types to filter events by.
       #
       #   @return [Array<Symbol, Lithic::Models::EventListParams::EventType>, nil]
-      optional :event_types, -> { Lithic::ArrayOf[enum: Lithic::Models::EventListParams::EventType] }
+      optional :event_types,
+               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventListParams::EventType] }
 
       # @!parse
       #   # @return [Array<Symbol, Lithic::Models::EventListParams::EventType>]
@@ -76,7 +77,7 @@ module Lithic
       #   Whether to include the event payload content in the response.
       #
       #   @return [Boolean, nil]
-      optional :with_content, Lithic::BooleanModel
+      optional :with_content, Lithic::Internal::Type::BooleanModel
 
       # @!parse
       #   # @return [Boolean]
@@ -106,10 +107,10 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       module EventType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACCOUNT_HOLDER_CREATED = :"account_holder.created"
         ACCOUNT_HOLDER_UPDATED = :"account_holder.updated"

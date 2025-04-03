@@ -23,7 +23,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class ExternalBankAccountCreateParams < Lithic::BaseModel
+    class ExternalBankAccountCreateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -108,7 +108,7 @@ module Lithic
       type type_ = :CHECKING | :SAVINGS
 
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CHECKING: :CHECKING
         SAVINGS: :SAVINGS
@@ -119,7 +119,7 @@ module Lithic
       type verification_method = :EXTERNALLY_VERIFIED
 
       module VerificationMethod
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         EXTERNALLY_VERIFIED: :EXTERNALLY_VERIFIED
 

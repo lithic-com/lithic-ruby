@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class ShippingAddress < Lithic::BaseModel
+    class ShippingAddress < Lithic::Internal::Type::BaseModel
       # Valid USPS routable address.
       sig { returns(String) }
       attr_accessor :address1

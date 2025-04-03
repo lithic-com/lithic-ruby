@@ -76,10 +76,10 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         token: String,
         account_token: String,
         status: Lithic::Models::AccountHolderCreateResponse::Status,
-        status_reasons: ^(Lithic::ArrayOf[enum: Lithic::Models::AccountHolderCreateResponse::StatusReason]),
+        status_reasons: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolderCreateResponse::StatusReason]),
         created: Time | nil,
         external_id: String | nil,
-        required_documents: ^(Lithic::ArrayOf[Lithic::Models::RequiredDocument]) | nil
+        required_documents: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument]) | nil
       }
     end
   end
@@ -96,8 +96,8 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         token: String,
         created: Time,
         account_token: String | nil,
-        beneficial_owner_entities: ^(Lithic::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerEntity]) | nil,
-        beneficial_owner_individuals: ^(Lithic::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerIndividual]) | nil,
+        beneficial_owner_entities: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerEntity]) | nil,
+        beneficial_owner_individuals: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerIndividual]) | nil,
         business_account_token: String | nil,
         business_entity: Lithic::Models::AccountHolder::BusinessEntity | nil,
         control_person: Lithic::Models::AccountHolder::ControlPerson | nil,
@@ -107,9 +107,9 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         individual: Lithic::Models::AccountHolder::Individual | nil,
         nature_of_business: String | nil,
         phone_number: String | nil,
-        required_documents: ^(Lithic::ArrayOf[Lithic::Models::RequiredDocument]) | nil,
+        required_documents: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument]) | nil,
         status: Lithic::Models::AccountHolder::Status | nil,
-        status_reasons: ^(Lithic::ArrayOf[enum: Lithic::Models::AccountHolder::StatusReason]) | nil,
+        status_reasons: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolder::StatusReason]) | nil,
         user_type: Lithic::Models::AccountHolder::UserType | nil,
         verification_application: Lithic::Models::AccountHolder::VerificationApplication | nil,
         website_url: String | nil
@@ -151,8 +151,8 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         token: String,
         created: Time,
         account_token: String | nil,
-        beneficial_owner_entities: ^(Lithic::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerEntity]) | nil,
-        beneficial_owner_individuals: ^(Lithic::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerIndividual]) | nil,
+        beneficial_owner_entities: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerEntity]) | nil,
+        beneficial_owner_individuals: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerIndividual]) | nil,
         business_account_token: String | nil,
         business_entity: Lithic::Models::AccountHolder::BusinessEntity | nil,
         control_person: Lithic::Models::AccountHolder::ControlPerson | nil,
@@ -162,9 +162,9 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         individual: Lithic::Models::AccountHolder::Individual | nil,
         nature_of_business: String | nil,
         phone_number: String | nil,
-        required_documents: ^(Lithic::ArrayOf[Lithic::Models::RequiredDocument]) | nil,
+        required_documents: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument]) | nil,
         status: Lithic::Models::AccountHolder::Status | nil,
-        status_reasons: ^(Lithic::ArrayOf[enum: Lithic::Models::AccountHolder::StatusReason]) | nil,
+        status_reasons: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolder::StatusReason]) | nil,
         user_type: Lithic::Models::AccountHolder::UserType | nil,
         verification_application: Lithic::Models::AccountHolder::VerificationApplication | nil,
         website_url: String | nil
@@ -181,7 +181,7 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Lithic::ArrayOf[Lithic::Models::Document]) | nil
+        data: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Document]) | nil
       }
     end
   end
@@ -203,7 +203,7 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         account_holder_token: String,
         document_type: Lithic::Models::Document::DocumentType,
         entity_token: String,
-        required_document_uploads: ^(Lithic::ArrayOf[Lithic::Models::Document::RequiredDocumentUpload])
+        required_document_uploads: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Document::RequiredDocumentUpload])
       }
     end
   end
@@ -225,7 +225,7 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         account_holder_token: String,
         document_type: Lithic::Models::Document::DocumentType,
         entity_token: String,
-        required_document_uploads: ^(Lithic::ArrayOf[Lithic::Models::Document::RequiredDocumentUpload])
+        required_document_uploads: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Document::RequiredDocumentUpload])
       }
     end
   end
@@ -241,8 +241,8 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
       response => {
         token: String | nil,
         account_token: String | nil,
-        beneficial_owner_entities: ^(Lithic::ArrayOf[Lithic::Models::KYBBusinessEntity]) | nil,
-        beneficial_owner_individuals: ^(Lithic::ArrayOf[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual]) | nil,
+        beneficial_owner_entities: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::KYBBusinessEntity]) | nil,
+        beneficial_owner_individuals: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual]) | nil,
         business_account_token: String | nil,
         business_entity: Lithic::Models::KYBBusinessEntity | nil,
         control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson | nil,
@@ -253,9 +253,9 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         individual: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual | nil,
         nature_of_business: String | nil,
         phone_number: String | nil,
-        required_documents: ^(Lithic::ArrayOf[Lithic::Models::RequiredDocument]) | nil,
+        required_documents: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument]) | nil,
         status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status | nil,
-        status_reasons: ^(Lithic::ArrayOf[enum: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason]) | nil,
+        status_reasons: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason]) | nil,
         user_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType | nil,
         verification_application: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication | nil,
         website_url: String | nil
@@ -281,7 +281,7 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         account_holder_token: String,
         document_type: Lithic::Models::Document::DocumentType,
         entity_token: String,
-        required_document_uploads: ^(Lithic::ArrayOf[Lithic::Models::Document::RequiredDocumentUpload])
+        required_document_uploads: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Document::RequiredDocumentUpload])
       }
     end
   end

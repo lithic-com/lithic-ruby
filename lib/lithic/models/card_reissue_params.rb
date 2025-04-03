@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Cards#reissue
-    class CardReissueParams < Lithic::BaseModel
+    class CardReissueParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -70,7 +70,7 @@ module Lithic
       #   #
       #   def initialize(carrier: nil, product_id: nil, shipping_address: nil, shipping_method: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Shipping method for the card. Use of options besides `STANDARD` require
       #   additional permissions.
@@ -85,7 +85,7 @@ module Lithic
       #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #     tracking
       module ShippingMethod
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         SHIPPING_METHOD_2_DAY = :"2-DAY"
         EXPEDITED = :EXPEDITED

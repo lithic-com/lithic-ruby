@@ -3,7 +3,7 @@ module Lithic
     module AuthRules
       type v2_promote_params = {  } & Lithic::Internal::Type::request_parameters
 
-      class V2PromoteParams < Lithic::BaseModel
+      class V2PromoteParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 

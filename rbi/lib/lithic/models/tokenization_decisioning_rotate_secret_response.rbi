@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class TokenizationDecisioningRotateSecretResponse < Lithic::BaseModel
+    class TokenizationDecisioningRotateSecretResponse < Lithic::Internal::Type::BaseModel
       # The new Tokenization Decisioning HMAC secret
       sig { returns(T.nilable(String)) }
       attr_reader :secret

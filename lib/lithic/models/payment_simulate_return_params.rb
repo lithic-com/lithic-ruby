@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Payments#simulate_return
-    class PaymentSimulateReturnParams < Lithic::BaseModel
+    class PaymentSimulateReturnParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -31,7 +31,7 @@ module Lithic
       #   #
       #   def initialize(payment_token:, return_reason_code: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

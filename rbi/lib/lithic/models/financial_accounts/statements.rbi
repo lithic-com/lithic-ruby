@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module FinancialAccounts
-      class FinancialAccountsStatements < Lithic::BaseModel
+      class FinancialAccountsStatements < Lithic::Internal::Type::BaseModel
         sig { returns(T::Array[Lithic::Models::FinancialAccounts::Statement]) }
         attr_accessor :data
 
@@ -12,7 +12,7 @@ module Lithic
 
         sig do
           params(
-            data: T::Array[T.any(Lithic::Models::FinancialAccounts::Statement, Lithic::Internal::Util::AnyHash)],
+            data: T::Array[T.any(Lithic::Models::FinancialAccounts::Statement, Lithic::Internal::AnyHash)],
             has_more: T::Boolean
           )
             .returns(T.attached_class)

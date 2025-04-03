@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Events
       # @see Lithic::Resources::Events::Subscriptions#retrieve_secret
-      class SubscriptionRetrieveSecretResponse < Lithic::BaseModel
+      class SubscriptionRetrieveSecretResponse < Lithic::Internal::Type::BaseModel
         # @!attribute [r] secret
         #   The secret for the event subscription.
         #
@@ -20,7 +20,7 @@ module Lithic
         #   #
         #   def initialize(secret: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

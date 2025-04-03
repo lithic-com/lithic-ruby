@@ -4,7 +4,7 @@ module Lithic
       type credit_configuration_retrieve_params =
         {  } & Lithic::Internal::Type::request_parameters
 
-      class CreditConfigurationRetrieveParams < Lithic::BaseModel
+      class CreditConfigurationRetrieveParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 

@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class ManagementOperationTransaction < Lithic::BaseModel
+    class ManagementOperationTransaction < Lithic::Internal::Type::BaseModel
       sig { returns(String) }
       attr_accessor :token
 
@@ -52,7 +52,7 @@ module Lithic
           created: Time,
           currency: String,
           direction: Lithic::Models::ManagementOperationTransaction::Direction::OrSymbol,
-          events: T::Array[T.any(Lithic::Models::ManagementOperationTransaction::Event, Lithic::Internal::Util::AnyHash)],
+          events: T::Array[T.any(Lithic::Models::ManagementOperationTransaction::Event, Lithic::Internal::AnyHash)],
           financial_account_token: String,
           pending_amount: Integer,
           result: Lithic::Models::ManagementOperationTransaction::Result::OrSymbol,
@@ -104,7 +104,7 @@ module Lithic
       end
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Category) }
         OrSymbol =
@@ -125,7 +125,7 @@ module Lithic
       end
 
       module Direction
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Direction) }
         OrSymbol =
@@ -139,7 +139,7 @@ module Lithic
         end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :token
 
@@ -217,7 +217,7 @@ module Lithic
         end
 
         module DetailedResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult) }
@@ -236,7 +236,7 @@ module Lithic
         end
 
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Event::Result) }
@@ -252,7 +252,7 @@ module Lithic
         end
 
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Event::Type) }
@@ -304,7 +304,7 @@ module Lithic
       end
 
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Result) }
         OrSymbol =
@@ -319,7 +319,7 @@ module Lithic
       end
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Status) }
         OrSymbol =

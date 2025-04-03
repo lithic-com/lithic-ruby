@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module CreditProducts
-      class PrimeRateRetrieveResponse < Lithic::BaseModel
+      class PrimeRateRetrieveResponse < Lithic::Internal::Type::BaseModel
         # List of prime rates
         sig { returns(T::Array[Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data]) }
         attr_accessor :data
@@ -14,7 +14,7 @@ module Lithic
 
         sig do
           params(
-            data: T::Array[T.any(Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data, Lithic::Internal::Util::AnyHash)],
+            data: T::Array[T.any(Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data, Lithic::Internal::AnyHash)],
             has_more: T::Boolean
           )
             .returns(T.attached_class)
@@ -31,7 +31,7 @@ module Lithic
         def to_hash
         end
 
-        class Data < Lithic::BaseModel
+        class Data < Lithic::Internal::Type::BaseModel
           # Date the rate goes into effect
           sig { returns(Date) }
           attr_accessor :effective_date

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Disputes#delete_evidence
-    class DisputeEvidence < Lithic::BaseModel
+    class DisputeEvidence < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier.
       #
@@ -78,7 +78,7 @@ module Lithic
       #   #
       #   def initialize(token:, created:, dispute_token:, upload_status:, download_url: nil, filename: nil, upload_url: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Upload status types:
       #
@@ -90,7 +90,7 @@ module Lithic
       #
       # @see Lithic::Models::DisputeEvidence#upload_status
       module UploadStatus
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DELETED = :DELETED
         ERROR = :ERROR

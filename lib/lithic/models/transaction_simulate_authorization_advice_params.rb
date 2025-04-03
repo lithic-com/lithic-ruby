@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Transactions#simulate_authorization_advice
-    class TransactionSimulateAuthorizationAdviceParams < Lithic::BaseModel
+    class TransactionSimulateAuthorizationAdviceParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -28,7 +28,7 @@ module Lithic
       #   #
       #   def initialize(token:, amount:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

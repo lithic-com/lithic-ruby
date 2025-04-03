@@ -3,11 +3,11 @@
 module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#list_documents
-    class AccountHolderListDocumentsResponse < Lithic::BaseModel
+    class AccountHolderListDocumentsResponse < Lithic::Internal::Type::BaseModel
       # @!attribute [r] data
       #
       #   @return [Array<Lithic::Models::Document>, nil]
-      optional :data, -> { Lithic::ArrayOf[Lithic::Models::Document] }
+      optional :data, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Document] }
 
       # @!parse
       #   # @return [Array<Lithic::Models::Document>]
@@ -18,7 +18,7 @@ module Lithic
       #   #
       #   def initialize(data: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

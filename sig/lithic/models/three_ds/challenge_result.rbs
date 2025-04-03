@@ -4,7 +4,7 @@ module Lithic
       type challenge_result = :APPROVE | :DECLINE_BY_CUSTOMER
 
       module ChallengeResult
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVE: :APPROVE
         DECLINE_BY_CUSTOMER: :DECLINE_BY_CUSTOMER

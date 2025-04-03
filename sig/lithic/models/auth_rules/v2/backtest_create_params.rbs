@@ -6,7 +6,7 @@ module Lithic
           { end_: Time, start: Time }
           & Lithic::Internal::Type::request_parameters
 
-        class BacktestCreateParams < Lithic::BaseModel
+        class BacktestCreateParams < Lithic::Internal::Type::BaseModel
           extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
 

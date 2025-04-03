@@ -4,18 +4,19 @@ module Lithic
   module Models
     module CreditProducts
       # @see Lithic::Resources::CreditProducts::PrimeRates#retrieve
-      class PrimeRateRetrieveResponse < Lithic::BaseModel
+      class PrimeRateRetrieveResponse < Lithic::Internal::Type::BaseModel
         # @!attribute data
         #   List of prime rates
         #
         #   @return [Array<Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data>]
-        required :data, -> { Lithic::ArrayOf[Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data] }
+        required :data,
+                 -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data] }
 
         # @!attribute has_more
         #   Whether there are more prime rates
         #
         #   @return [Boolean]
-        required :has_more, Lithic::BooleanModel
+        required :has_more, Lithic::Internal::Type::BooleanModel
 
         # @!parse
         #   # @param data [Array<Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data>]
@@ -23,9 +24,9 @@ module Lithic
         #   #
         #   def initialize(data:, has_more:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
-        class Data < Lithic::BaseModel
+        class Data < Lithic::Internal::Type::BaseModel
           # @!attribute effective_date
           #   Date the rate goes into effect
           #
@@ -44,7 +45,7 @@ module Lithic
           #   #
           #   def initialize(effective_date:, rate:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
       end
     end

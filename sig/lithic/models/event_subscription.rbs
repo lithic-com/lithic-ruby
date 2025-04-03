@@ -9,7 +9,7 @@ module Lithic
         event_types: ::Array[Lithic::Models::EventSubscription::event_type]?
       }
 
-    class EventSubscription < Lithic::BaseModel
+    class EventSubscription < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor description: String
@@ -75,7 +75,7 @@ module Lithic
         | :"tokenization.updated"
 
       module EventType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACCOUNT_HOLDER_CREATED: :"account_holder.created"
         ACCOUNT_HOLDER_UPDATED: :"account_holder.updated"

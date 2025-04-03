@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Cards#update
-    class CardUpdateParams < Lithic::BaseModel
+    class CardUpdateParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -130,12 +130,12 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       #   attempts). Can only be set to `OK` to unblock a card.
       module PinStatus
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         OK = :OK
 
@@ -155,7 +155,7 @@ module Lithic
       #   - `PAUSED` - Card will decline authorizations, but can be resumed at a later
       #     time.
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CLOSED = :CLOSED
         OPEN = :OPEN

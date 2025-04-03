@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class TransactionSimulateCreditAuthorizationResponse < Lithic::BaseModel
+    class TransactionSimulateCreditAuthorizationResponse < Lithic::Internal::Type::BaseModel
       # A unique token to reference this transaction.
       sig { returns(T.nilable(String)) }
       attr_reader :token

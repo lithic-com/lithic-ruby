@@ -3,7 +3,7 @@ module Lithic
     type transaction_simulate_clearing_response =
       { debugging_request_id: String }
 
-    class TransactionSimulateClearingResponse < Lithic::BaseModel
+    class TransactionSimulateClearingResponse < Lithic::Internal::Type::BaseModel
       attr_reader debugging_request_id: String?
 
       def debugging_request_id=: (String) -> String

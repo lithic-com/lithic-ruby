@@ -16,7 +16,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class BookTransferListParams < Lithic::BaseModel
+    class BookTransferListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -97,7 +97,7 @@ module Lithic
         | :INTERNAL
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
         FEE: :FEE
@@ -113,7 +113,7 @@ module Lithic
       type result = :APPROVED | :DECLINED
 
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED: :APPROVED
         DECLINED: :DECLINED
@@ -124,7 +124,7 @@ module Lithic
       type status = :DECLINED | :SETTLED
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DECLINED: :DECLINED
         SETTLED: :SETTLED

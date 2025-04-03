@@ -3,7 +3,7 @@ module Lithic
     type dispute_retrieve_params =
       {  } & Lithic::Internal::Type::request_parameters
 
-    class DisputeRetrieveParams < Lithic::BaseModel
+    class DisputeRetrieveParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

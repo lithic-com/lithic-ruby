@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::ExternalPayments#list
-    class ExternalPaymentListParams < Lithic::BaseModel
+    class ExternalPaymentListParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -142,11 +142,11 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # External Payment category to be returned.
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         EXTERNAL_WIRE = :EXTERNAL_WIRE
         EXTERNAL_ACH = :EXTERNAL_ACH
@@ -162,7 +162,7 @@ module Lithic
 
       # External Payment result to be returned.
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED = :APPROVED
         DECLINED = :DECLINED
@@ -176,7 +176,7 @@ module Lithic
 
       # Book transfer status to be returned.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         PENDING = :PENDING
         SETTLED = :SETTLED

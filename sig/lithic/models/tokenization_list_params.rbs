@@ -13,7 +13,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class TokenizationListParams < Lithic::BaseModel
+    class TokenizationListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -68,7 +68,7 @@ module Lithic
       type tokenization_channel = :DIGITAL_WALLET | :MERCHANT | :ALL
 
       module TokenizationChannel
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DIGITAL_WALLET: :DIGITAL_WALLET
         MERCHANT: :MERCHANT

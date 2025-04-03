@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Disputes#create
-    class DisputeCreateParams < Lithic::BaseModel
+    class DisputeCreateParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -66,11 +66,11 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Reason for dispute
       module Reason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ATM_CASH_MISDISPENSE = :ATM_CASH_MISDISPENSE
         CANCELLED = :CANCELLED

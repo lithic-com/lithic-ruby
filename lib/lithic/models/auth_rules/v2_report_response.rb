@@ -4,7 +4,7 @@ module Lithic
   module Models
     module AuthRules
       # @see Lithic::Resources::AuthRules::V2#report
-      class V2ReportResponse < Lithic::BaseModel
+      class V2ReportResponse < Lithic::Internal::Type::BaseModel
         # @!attribute [r] report_token
         #
         #   @return [String, nil]
@@ -19,7 +19,7 @@ module Lithic
         #   #
         #   def initialize(report_token: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

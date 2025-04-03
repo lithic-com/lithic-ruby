@@ -15,7 +15,7 @@ module Lithic
           excluded_card_tokens: ::Array[String]
         }
 
-      class V2ApplyResponse < Lithic::BaseModel
+      class V2ApplyResponse < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
 
         attr_accessor account_tokens: ::Array[String]
@@ -59,7 +59,7 @@ module Lithic
             version: Integer
           }
 
-        class CurrentVersion < Lithic::BaseModel
+        class CurrentVersion < Lithic::Internal::Type::BaseModel
           attr_accessor parameters: Lithic::Models::AuthRules::V2ApplyResponse::CurrentVersion::parameters
 
           attr_accessor version: Integer
@@ -76,7 +76,7 @@ module Lithic
             | Lithic::Models::AuthRules::VelocityLimitParams
 
           module Parameters
-            extend Lithic::Union
+            extend Lithic::Internal::Type::Union
 
             def self?.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
           end
@@ -88,7 +88,7 @@ module Lithic
             version: Integer
           }
 
-        class DraftVersion < Lithic::BaseModel
+        class DraftVersion < Lithic::Internal::Type::BaseModel
           attr_accessor parameters: Lithic::Models::AuthRules::V2ApplyResponse::DraftVersion::parameters
 
           attr_accessor version: Integer
@@ -105,7 +105,7 @@ module Lithic
             | Lithic::Models::AuthRules::VelocityLimitParams
 
           module Parameters
-            extend Lithic::Union
+            extend Lithic::Internal::Type::Union
 
             def self?.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
           end
@@ -114,7 +114,7 @@ module Lithic
         type state = :ACTIVE | :INACTIVE
 
         module State
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACTIVE: :ACTIVE
           INACTIVE: :INACTIVE
@@ -125,7 +125,7 @@ module Lithic
         type type_ = :CONDITIONAL_BLOCK | :VELOCITY_LIMIT
 
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
           VELOCITY_LIMIT: :VELOCITY_LIMIT

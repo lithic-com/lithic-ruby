@@ -27,7 +27,7 @@ module Lithic
           tier: String
         }
 
-      class LoanTape < Lithic::BaseModel
+      class LoanTape < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
 
         attr_accessor account_standing: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding
@@ -113,7 +113,7 @@ module Lithic
             period_state: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::period_state
           }
 
-        class AccountStanding < Lithic::BaseModel
+        class AccountStanding < Lithic::Internal::Type::BaseModel
           attr_accessor consecutive_full_payments_made: Integer
 
           attr_accessor consecutive_minimum_payments_made: Integer
@@ -149,7 +149,7 @@ module Lithic
               status_change_reason: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::status_change_reason?
             }
 
-          class FinancialAccountState < Lithic::BaseModel
+          class FinancialAccountState < Lithic::Internal::Type::BaseModel
             attr_accessor status: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::status
 
             attr_accessor status_change_reason: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::status_change_reason?
@@ -164,7 +164,7 @@ module Lithic
             type status = :OPEN | :CLOSED | :SUSPENDED | :PENDING
 
             module Status
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               OPEN: :OPEN
               CLOSED: :CLOSED
@@ -182,7 +182,7 @@ module Lithic
               | :DELINQUENT
 
             module StatusChangeReason
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               CHARGED_OFF_DELINQUENT: :CHARGED_OFF_DELINQUENT
               CHARGED_OFF_FRAUD: :CHARGED_OFF_FRAUD
@@ -197,7 +197,7 @@ module Lithic
           type period_state = :STANDARD | :PROMO | :PENALTY
 
           module PeriodState
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             STANDARD: :STANDARD
             PROMO: :PROMO
@@ -215,7 +215,7 @@ module Lithic
             past_statements_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue
           }
 
-        class Balances < Lithic::BaseModel
+        class Balances < Lithic::Internal::Type::BaseModel
           attr_accessor due: Lithic::Models::FinancialAccounts::LoanTape::Balances::Due
 
           attr_accessor next_statement_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue
@@ -235,7 +235,7 @@ module Lithic
 
           type due = { fees: Integer, interest: Integer, principal: Integer }
 
-          class Due < Lithic::BaseModel
+          class Due < Lithic::Internal::Type::BaseModel
             attr_accessor fees: Integer
 
             attr_accessor interest: Integer
@@ -254,7 +254,7 @@ module Lithic
           type next_statement_due =
             { fees: Integer, interest: Integer, principal: Integer }
 
-          class NextStatementDue < Lithic::BaseModel
+          class NextStatementDue < Lithic::Internal::Type::BaseModel
             attr_accessor fees: Integer
 
             attr_accessor interest: Integer
@@ -273,7 +273,7 @@ module Lithic
           type past_due =
             { fees: Integer, interest: Integer, principal: Integer }
 
-          class PastDue < Lithic::BaseModel
+          class PastDue < Lithic::Internal::Type::BaseModel
             attr_accessor fees: Integer
 
             attr_accessor interest: Integer
@@ -292,7 +292,7 @@ module Lithic
           type past_statements_due =
             { fees: Integer, interest: Integer, principal: Integer }
 
-          class PastStatementsDue < Lithic::BaseModel
+          class PastStatementsDue < Lithic::Internal::Type::BaseModel
             attr_accessor fees: Integer
 
             attr_accessor interest: Integer
@@ -320,7 +320,7 @@ module Lithic
             purchases: Integer
           }
 
-        class DayTotals < Lithic::BaseModel
+        class DayTotals < Lithic::Internal::Type::BaseModel
           attr_accessor balance_transfers: Integer
 
           attr_accessor cash_advances: Integer
@@ -359,7 +359,7 @@ module Lithic
             minimum_interest_charged: Integer?
           }
 
-        class InterestDetails < Lithic::BaseModel
+        class InterestDetails < Lithic::Internal::Type::BaseModel
           attr_accessor actual_interest_charged: Integer?
 
           attr_accessor daily_balance_amounts: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts
@@ -393,7 +393,7 @@ module Lithic
               purchases: String
             }
 
-          class DailyBalanceAmounts < Lithic::BaseModel
+          class DailyBalanceAmounts < Lithic::Internal::Type::BaseModel
             attr_accessor balance_transfers: String
 
             attr_accessor cash_advances: String
@@ -416,7 +416,7 @@ module Lithic
               purchases: String
             }
 
-          class EffectiveApr < Lithic::BaseModel
+          class EffectiveApr < Lithic::Internal::Type::BaseModel
             attr_accessor balance_transfers: String
 
             attr_accessor cash_advances: String
@@ -435,7 +435,7 @@ module Lithic
           type interest_calculation_method = :DAILY | :AVERAGE_DAILY
 
           module InterestCalculationMethod
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             DAILY: :DAILY
             AVERAGE_DAILY: :AVERAGE_DAILY
@@ -450,7 +450,7 @@ module Lithic
               purchases: String
             }
 
-          class InterestForPeriod < Lithic::BaseModel
+          class InterestForPeriod < Lithic::Internal::Type::BaseModel
             attr_accessor balance_transfers: String
 
             attr_accessor cash_advances: String
@@ -469,7 +469,7 @@ module Lithic
 
         type minimum_payment_balance = { amount: Integer, remaining: Integer }
 
-        class MinimumPaymentBalance < Lithic::BaseModel
+        class MinimumPaymentBalance < Lithic::Internal::Type::BaseModel
           attr_accessor amount: Integer
 
           attr_accessor remaining: Integer
@@ -482,7 +482,7 @@ module Lithic
         type payment_allocation =
           { fees: Integer, interest: Integer, principal: Integer }
 
-        class PaymentAllocation < Lithic::BaseModel
+        class PaymentAllocation < Lithic::Internal::Type::BaseModel
           attr_accessor fees: Integer
 
           attr_accessor interest: Integer
@@ -509,7 +509,7 @@ module Lithic
             purchases: Integer
           }
 
-        class PeriodTotals < Lithic::BaseModel
+        class PeriodTotals < Lithic::Internal::Type::BaseModel
           attr_accessor balance_transfers: Integer
 
           attr_accessor cash_advances: Integer
@@ -540,7 +540,7 @@ module Lithic
         type previous_statement_balance =
           { amount: Integer, remaining: Integer }
 
-        class PreviousStatementBalance < Lithic::BaseModel
+        class PreviousStatementBalance < Lithic::Internal::Type::BaseModel
           attr_accessor amount: Integer
 
           attr_accessor remaining: Integer
@@ -561,7 +561,7 @@ module Lithic
             purchases: Integer
           }
 
-        class YtdTotals < Lithic::BaseModel
+        class YtdTotals < Lithic::Internal::Type::BaseModel
           attr_accessor balance_transfers: Integer
 
           attr_accessor cash_advances: Integer

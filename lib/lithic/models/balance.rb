@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Balances#list
-    class Balance < Lithic::BaseModel
+    class Balance < Lithic::Internal::Type::BaseModel
       # @!attribute available_amount
       #   Funds available for spend in the currency's smallest unit (e.g., cents for USD)
       #
@@ -98,13 +98,13 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Type of financial account.
       #
       # @see Lithic::Models::Balance#financial_account_type
       module FinancialAccountType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ISSUING = :ISSUING
         OPERATING = :OPERATING

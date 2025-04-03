@@ -4,7 +4,7 @@ module Lithic
       type settlement_summary_params =
         {  } & Lithic::Internal::Type::request_parameters
 
-      class SettlementSummaryParams < Lithic::BaseModel
+      class SettlementSummaryParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 

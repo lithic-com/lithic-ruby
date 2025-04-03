@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module Cards
-      class FinancialTransactionRetrieveParams < Lithic::BaseModel
+      class FinancialTransactionRetrieveParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
@@ -13,7 +13,7 @@ module Lithic
         sig do
           params(
             card_token: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end

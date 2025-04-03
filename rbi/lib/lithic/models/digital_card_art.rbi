@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class DigitalCardArtAPI < Lithic::BaseModel
+    class DigitalCardArtAPI < Lithic::Internal::Type::BaseModel
       # Globally unique identifier for the card art.
       sig { returns(String) }
       attr_accessor :token
@@ -76,7 +76,7 @@ module Lithic
 
       # Card network.
       module Network
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DigitalCardArtAPI::Network) }
         OrSymbol =

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::ManagementOperations#create
-    class ManagementOperationCreateParams < Lithic::BaseModel
+    class ManagementOperationCreateParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -104,10 +104,10 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         MANAGEMENT_FEE = :MANAGEMENT_FEE
         MANAGEMENT_DISPUTE = :MANAGEMENT_DISPUTE
@@ -122,7 +122,7 @@ module Lithic
       end
 
       module Direction
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CREDIT = :CREDIT
         DEBIT = :DEBIT
@@ -135,7 +135,7 @@ module Lithic
       end
 
       module EventType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CASH_BACK = :CASH_BACK
         CURRENCY_CONVERSION = :CURRENCY_CONVERSION

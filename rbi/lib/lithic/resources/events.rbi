@@ -10,7 +10,7 @@ module Lithic
       sig do
         params(
           event_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
           .returns(Lithic::Models::Event)
       end
@@ -27,7 +27,7 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           with_content: T::Boolean,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::Event])
       end
@@ -64,7 +64,7 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           status: Lithic::Models::EventListAttemptsParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::MessageAttempt])
       end

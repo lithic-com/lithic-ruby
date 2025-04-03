@@ -4,7 +4,7 @@ module Lithic
       type conditional_block_parameters =
         { conditions: ::Array[Lithic::Models::AuthRules::AuthRuleCondition] }
 
-      class ConditionalBlockParameters < Lithic::BaseModel
+      class ConditionalBlockParameters < Lithic::Internal::Type::BaseModel
         attr_accessor conditions: ::Array[Lithic::Models::AuthRules::AuthRuleCondition]
 
         def initialize: (

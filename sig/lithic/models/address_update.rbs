@@ -10,7 +10,7 @@ module Lithic
         state: String
       }
 
-    class AddressUpdate < Lithic::BaseModel
+    class AddressUpdate < Lithic::Internal::Type::BaseModel
       attr_reader address1: String?
 
       def address1=: (String) -> String

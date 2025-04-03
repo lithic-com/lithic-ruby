@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class PaymentSimulateReleaseResponse < Lithic::BaseModel
+    class PaymentSimulateReleaseResponse < Lithic::Internal::Type::BaseModel
       # Debugging Request Id
       sig { returns(String) }
       attr_accessor :debugging_request_id
@@ -41,7 +41,7 @@ module Lithic
 
       # Request Result
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentSimulateReleaseResponse::Result) }
         OrSymbol =

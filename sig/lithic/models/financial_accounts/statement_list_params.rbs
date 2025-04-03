@@ -12,7 +12,7 @@ module Lithic
         }
         & Lithic::Internal::Type::request_parameters
 
-      class StatementListParams < Lithic::BaseModel
+      class StatementListParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 

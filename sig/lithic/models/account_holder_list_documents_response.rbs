@@ -3,7 +3,7 @@ module Lithic
     type account_holder_list_documents_response =
       { data: ::Array[Lithic::Models::Document] }
 
-    class AccountHolderListDocumentsResponse < Lithic::BaseModel
+    class AccountHolderListDocumentsResponse < Lithic::Internal::Type::BaseModel
       attr_reader data: ::Array[Lithic::Models::Document]?
 
       def data=: (

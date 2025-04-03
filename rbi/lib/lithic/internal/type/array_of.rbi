@@ -17,11 +17,11 @@ module Lithic
         sig(:final) do
           params(
             type_info: T.any(
-              Lithic::Internal::Util::AnyHash,
+              Lithic::Internal::AnyHash,
               T.proc.returns(Lithic::Internal::Type::Converter::Input),
               Lithic::Internal::Type::Converter::Input
             ),
-            spec: Lithic::Internal::Util::AnyHash
+            spec: Lithic::Internal::AnyHash
           )
             .returns(T.attached_class)
         end
@@ -72,11 +72,11 @@ module Lithic
         sig(:final) do
           params(
             type_info: T.any(
-              Lithic::Internal::Util::AnyHash,
+              Lithic::Internal::AnyHash,
               T.proc.returns(Lithic::Internal::Type::Converter::Input),
               Lithic::Internal::Type::Converter::Input
             ),
-            spec: Lithic::Internal::Util::AnyHash
+            spec: Lithic::Internal::AnyHash
           )
             .void
         end

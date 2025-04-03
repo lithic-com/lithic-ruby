@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Tokenizations#list
-    class Tokenization < Lithic::BaseModel
+    class Tokenization < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier for a Tokenization
       #
@@ -82,7 +82,7 @@ module Lithic
       #   A list of events related to the tokenization.
       #
       #   @return [Array<Lithic::Models::Tokenization::Event>, nil]
-      optional :events, -> { Lithic::ArrayOf[Lithic::Models::Tokenization::Event] }
+      optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Tokenization::Event] }
 
       # @!parse
       #   # @return [Array<Lithic::Models::Tokenization::Event>]
@@ -128,13 +128,13 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # The status of the tokenization request
       #
       # @see Lithic::Models::Tokenization#status
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACTIVE = :ACTIVE
         DEACTIVATED = :DEACTIVATED
@@ -156,7 +156,7 @@ module Lithic
       #
       # @see Lithic::Models::Tokenization#token_requestor_name
       module TokenRequestorName
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         AMAZON_ONE = :AMAZON_ONE
         ANDROID_PAY = :ANDROID_PAY
@@ -181,7 +181,7 @@ module Lithic
       #
       # @see Lithic::Models::Tokenization#tokenization_channel
       module TokenizationChannel
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DIGITAL_WALLET = :DIGITAL_WALLET
         MERCHANT = :MERCHANT
@@ -193,7 +193,7 @@ module Lithic
         #   def self.values; end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         # @!attribute [r] token
         #   Globally unique identifier for a Tokenization Event
         #
@@ -242,13 +242,13 @@ module Lithic
         #   #
         #   def initialize(token: nil, created_at: nil, result: nil, type: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # Enum representing the result of the tokenization event
         #
         # @see Lithic::Models::Tokenization::Event#result
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
           DECLINED = :DECLINED
@@ -273,7 +273,7 @@ module Lithic
         #
         # @see Lithic::Models::Tokenization::Event#type
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TOKENIZATION_2_FA = :TOKENIZATION_2FA
           TOKENIZATION_AUTHORIZATION = :TOKENIZATION_AUTHORIZATION

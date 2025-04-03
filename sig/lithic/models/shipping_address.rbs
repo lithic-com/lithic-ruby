@@ -15,7 +15,7 @@ module Lithic
         phone_number: String
       }
 
-    class ShippingAddress < Lithic::BaseModel
+    class ShippingAddress < Lithic::Internal::Type::BaseModel
       attr_accessor address1: String
 
       attr_accessor city: String

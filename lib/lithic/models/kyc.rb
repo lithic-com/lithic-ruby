@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class KYC < Lithic::BaseModel
+    class KYC < Lithic::Internal::Type::BaseModel
       # @!attribute individual
       #   Information on individual for whom the account is being opened and KYC is being
       #     run.
@@ -57,10 +57,10 @@ module Lithic
       #   #
       #   def initialize(individual:, tos_timestamp:, workflow:, external_id: nil, kyc_passed_timestamp: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # @see Lithic::Models::KYC#individual
-      class Individual < Lithic::BaseModel
+      class Individual < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #     acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -122,14 +122,14 @@ module Lithic
         #   #
         #   def initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # Specifies the type of KYC workflow to run.
       #
       # @see Lithic::Models::KYC#workflow
       module Workflow
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         KYC_BASIC = :KYC_BASIC
         KYC_BYO = :KYC_BYO

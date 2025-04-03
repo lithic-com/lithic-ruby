@@ -51,7 +51,7 @@ module Lithic
       #     source of the token. Valid values are `APPLE_PAY`, `GOOGLE_PAY`,
       #     `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
       module ConditionalAttribute
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         MCC = :MCC
         COUNTRY = :COUNTRY
