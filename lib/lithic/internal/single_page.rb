@@ -11,18 +11,6 @@ module Lithic
     #   single_page.auto_paging_each do |account_holder|
     #     puts(account_holder)
     #   end
-    #
-    # @example
-    #   account_holders =
-    #     single_page
-    #     .to_enum
-    #     .lazy
-    #     .select { _1.object_id.even? }
-    #     .map(&:itself)
-    #     .take(2)
-    #     .to_a
-    #
-    #   account_holders => Array
     class SinglePage
       include Lithic::Internal::Type::BasePage
 

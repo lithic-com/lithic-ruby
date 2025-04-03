@@ -1,4 +1,5 @@
 module Lithic
   module Internal
+    OMIT: top
   end
 end
