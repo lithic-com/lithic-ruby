@@ -28,7 +28,7 @@ module Lithic
       sig { returns(Lithic::Models::KYB::BusinessEntity) }
       attr_reader :business_entity
 
-      sig { params(business_entity: T.any(Lithic::Models::KYB::BusinessEntity, Lithic::Util::AnyHash)).void }
+      sig { params(business_entity: T.any(Lithic::Models::KYB::BusinessEntity, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :business_entity
 
       # An individual with significant responsibility for managing the legal entity
@@ -42,7 +42,7 @@ module Lithic
       sig { returns(Lithic::Models::KYB::ControlPerson) }
       attr_reader :control_person
 
-      sig { params(control_person: T.any(Lithic::Models::KYB::ControlPerson, Lithic::Util::AnyHash)).void }
+      sig { params(control_person: T.any(Lithic::Models::KYB::ControlPerson, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :control_person
 
       # Short description of the company's line of business (i.e., what does the company
@@ -87,10 +87,10 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYB::BeneficialOwnerEntity, Lithic::Util::AnyHash)],
-          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::KYB::BeneficialOwnerIndividual, Lithic::Util::AnyHash)],
-          business_entity: T.any(Lithic::Models::KYB::BusinessEntity, Lithic::Util::AnyHash),
-          control_person: T.any(Lithic::Models::KYB::ControlPerson, Lithic::Util::AnyHash),
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYB::BeneficialOwnerEntity, Lithic::Internal::Util::AnyHash)],
+          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::KYB::BeneficialOwnerIndividual, Lithic::Internal::Util::AnyHash)],
+          business_entity: T.any(Lithic::Models::KYB::BusinessEntity, Lithic::Internal::Util::AnyHash),
+          control_person: T.any(Lithic::Models::KYB::ControlPerson, Lithic::Internal::Util::AnyHash),
           nature_of_business: String,
           tos_timestamp: String,
           workflow: Lithic::Models::KYB::Workflow::OrSymbol,
@@ -140,7 +140,7 @@ module Lithic
         sig { returns(Lithic::Models::Address) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash)).void }
         attr_writer :address
 
         # Government-issued identification number. US Federal Employer Identification
@@ -175,7 +175,7 @@ module Lithic
 
         sig do
           params(
-            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
+            address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash),
             government_id: String,
             legal_business_name: String,
             phone_numbers: T::Array[String],
@@ -217,7 +217,7 @@ module Lithic
         sig { returns(Lithic::Models::Address) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash)).void }
         attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
@@ -254,7 +254,7 @@ module Lithic
         # Individuals associated with a KYB application. Phone number is optional.
         sig do
           params(
-            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
+            address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash),
             dob: String,
             email: String,
             first_name: String,
@@ -291,7 +291,7 @@ module Lithic
         sig { returns(Lithic::Models::Address) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash)).void }
         attr_writer :address
 
         # Government-issued identification number. US Federal Employer Identification
@@ -328,7 +328,7 @@ module Lithic
         #   run.
         sig do
           params(
-            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
+            address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash),
             government_id: String,
             legal_business_name: String,
             phone_numbers: T::Array[String],
@@ -370,7 +370,7 @@ module Lithic
         sig { returns(Lithic::Models::Address) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash)).void }
         attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
@@ -414,7 +414,7 @@ module Lithic
         #   (Section II) for more background.
         sig do
           params(
-            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
+            address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash),
             dob: String,
             email: String,
             first_name: String,

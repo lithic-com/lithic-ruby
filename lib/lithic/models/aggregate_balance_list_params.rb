@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::AggregateBalances#list
     class AggregateBalanceListParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute [r] financial_account_type
       #   Get the aggregate balance for a given Financial Account type.

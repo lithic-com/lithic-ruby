@@ -12,15 +12,20 @@ module Lithic
       #   accounts that are part of the program that the calling API key manages.
       sig do
         params(
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity, Lithic::Util::AnyHash)],
-          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual, Lithic::Util::AnyHash)],
-          business_entity: T.any(Lithic::Models::AccountHolderCreateParams::BusinessEntity, Lithic::Util::AnyHash),
-          control_person: T.any(Lithic::Models::AccountHolderCreateParams::ControlPerson, Lithic::Util::AnyHash),
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity, Lithic::Internal::Util::AnyHash)],
+          beneficial_owner_individuals: T::Array[
+          T.any(
+            Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual,
+            Lithic::Internal::Util::AnyHash
+          )
+          ],
+          business_entity: T.any(Lithic::Models::AccountHolderCreateParams::BusinessEntity, Lithic::Internal::Util::AnyHash),
+          control_person: T.any(Lithic::Models::AccountHolderCreateParams::ControlPerson, Lithic::Internal::Util::AnyHash),
           nature_of_business: String,
           tos_timestamp: String,
           workflow: Lithic::Models::AccountHolderCreateParams::Workflow::OrSymbol,
-          individual: T.any(Lithic::Models::AccountHolderCreateParams::Individual, Lithic::Util::AnyHash),
-          address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
+          individual: T.any(Lithic::Models::AccountHolderCreateParams::Individual, Lithic::Internal::Util::AnyHash),
+          address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash),
           email: String,
           first_name: String,
           kyc_exemption_type: Lithic::Models::AccountHolderCreateParams::KYCExemptionType::OrSymbol,
@@ -31,7 +36,7 @@ module Lithic
           website_url: String,
           kyc_passed_timestamp: String,
           business_account_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::AccountHolderCreateResponse)
       end
@@ -117,7 +122,7 @@ module Lithic
       sig do
         params(
           account_holder_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::AccountHolder)
       end
@@ -140,22 +145,27 @@ module Lithic
       sig do
         params(
           account_holder_token: String,
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity, Lithic::Util::AnyHash)],
-          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual, Lithic::Util::AnyHash)],
-          business_entity: T.any(Lithic::Models::AccountHolderUpdateParams::BusinessEntity, Lithic::Util::AnyHash),
-          control_person: T.any(Lithic::Models::AccountHolderUpdateParams::ControlPerson, Lithic::Util::AnyHash),
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity, Lithic::Internal::Util::AnyHash)],
+          beneficial_owner_individuals: T::Array[
+          T.any(
+            Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual,
+            Lithic::Internal::Util::AnyHash
+          )
+          ],
+          business_entity: T.any(Lithic::Models::AccountHolderUpdateParams::BusinessEntity, Lithic::Internal::Util::AnyHash),
+          control_person: T.any(Lithic::Models::AccountHolderUpdateParams::ControlPerson, Lithic::Internal::Util::AnyHash),
           external_id: String,
           nature_of_business: String,
           website_url: String,
-          individual: T.any(Lithic::Models::AccountHolderUpdateParams::Individual, Lithic::Util::AnyHash),
-          address: T.any(Lithic::Models::AddressUpdate, Lithic::Util::AnyHash),
+          individual: T.any(Lithic::Models::AccountHolderUpdateParams::Individual, Lithic::Internal::Util::AnyHash),
+          address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::Util::AnyHash),
           business_account_token: String,
           email: String,
           first_name: String,
           last_name: String,
           legal_business_name: String,
           phone_number: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(
             T.any(
@@ -244,9 +254,9 @@ module Lithic
           limit: Integer,
           phone_number: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
-          .returns(Lithic::SinglePage[Lithic::Models::AccountHolder])
+          .returns(Lithic::Internal::SinglePage[Lithic::Models::AccountHolder])
       end
       def list(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -301,7 +311,7 @@ module Lithic
       sig do
         params(
           account_holder_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::AccountHolderListDocumentsResponse)
       end
@@ -330,7 +340,7 @@ module Lithic
         params(
           document_token: String,
           account_holder_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::Document)
       end
@@ -350,7 +360,7 @@ module Lithic
           status: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol,
           accepted_entity_status_reasons: T::Array[String],
           status_reason: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::Document)
       end
@@ -375,7 +385,7 @@ module Lithic
           account_holder_token: String,
           status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::OrSymbol,
           status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol],
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse)
       end
@@ -414,7 +424,7 @@ module Lithic
           account_holder_token: String,
           document_type: Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
           entity_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::Document)
       end

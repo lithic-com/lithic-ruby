@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::ThreeDS::Authentication#retrieve
       class AuthenticationRetrieveParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!parse
         #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]

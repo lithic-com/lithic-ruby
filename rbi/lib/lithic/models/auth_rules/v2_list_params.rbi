@@ -4,8 +4,8 @@ module Lithic
   module Models
     module AuthRules
       class V2ListParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # Only return Authorization Rules that are bound to the provided account token.
         sig { returns(T.nilable(String)) }
@@ -51,7 +51,7 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

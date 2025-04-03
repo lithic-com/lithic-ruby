@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class AccountUpdateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a
       #   $1,000 limit). By default the daily spend limit is set to $1,250.
@@ -51,7 +51,7 @@ module Lithic
 
       sig do
         params(
-          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Util::AnyHash)
+          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Internal::Util::AnyHash)
         )
           .void
       end
@@ -63,8 +63,8 @@ module Lithic
           lifetime_spend_limit: Integer,
           monthly_spend_limit: Integer,
           state: Lithic::Models::AccountUpdateParams::State::OrSymbol,
-          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Util::AnyHash),
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Internal::Util::AnyHash),
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

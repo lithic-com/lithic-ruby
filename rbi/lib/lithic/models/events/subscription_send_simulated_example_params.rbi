@@ -4,8 +4,8 @@ module Lithic
   module Models
     module Events
       class SubscriptionSendSimulatedExampleParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # Event type to send example message for.
         sig { returns(T.nilable(Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::OrSymbol)) }
@@ -20,7 +20,7 @@ module Lithic
         sig do
           params(
             event_type: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::OrSymbol,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

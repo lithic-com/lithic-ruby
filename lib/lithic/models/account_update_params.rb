@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Accounts#update
     class AccountUpdateParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute [r] daily_spend_limit
       #   Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a

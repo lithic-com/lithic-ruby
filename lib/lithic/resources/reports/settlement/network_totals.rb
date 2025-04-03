@@ -41,7 +41,7 @@ module Lithic
           # @param starting_after [String]
           # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Lithic::CursorPage<Lithic::Models::Reports::Settlement::NetworkTotalListResponse>]
+          # @return [Lithic::Internal::CursorPage<Lithic::Models::Reports::Settlement::NetworkTotalListResponse>]
           #
           # @see Lithic::Models::Reports::Settlement::NetworkTotalListParams
           def list(params = {})
@@ -50,7 +50,7 @@ module Lithic
               method: :get,
               path: "v1/reports/settlement/network_totals",
               query: parsed,
-              page: Lithic::CursorPage,
+              page: Lithic::Internal::CursorPage,
               model: Lithic::Models::Reports::Settlement::NetworkTotalListResponse,
               options: options
             )

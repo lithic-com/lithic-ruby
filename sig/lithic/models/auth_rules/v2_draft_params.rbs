@@ -3,11 +3,11 @@ module Lithic
     module AuthRules
       type v2_draft_params =
         { parameters: Lithic::Models::AuthRules::V2DraftParams::parameters? }
-        & Lithic::request_parameters
+        & Lithic::Internal::Type::request_parameters
 
       class V2DraftParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_accessor parameters: Lithic::Models::AuthRules::V2DraftParams::parameters?
 

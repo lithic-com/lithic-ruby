@@ -13,7 +13,9 @@ module Lithic
           attr_reader :common
 
           sig do
-            params(common: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Util::AnyHash))
+            params(
+              common: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Internal::Util::AnyHash)
+            )
               .void
           end
           attr_writer :common
@@ -32,9 +34,9 @@ module Lithic
           sig do
             params(
               token: String,
-              common: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Util::AnyHash),
+              common: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Internal::Util::AnyHash),
               event_token: String,
-              fleet: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet, Lithic::Util::AnyHash)],
+              fleet: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet, Lithic::Internal::Util::AnyHash)],
               transaction_token: String
             )
               .returns(T.attached_class)
@@ -65,7 +67,9 @@ module Lithic
             attr_reader :tax
 
             sig do
-              params(tax: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Util::AnyHash))
+              params(
+                tax: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Internal::Util::AnyHash)
+              )
                 .void
             end
             attr_writer :tax
@@ -93,8 +97,13 @@ module Lithic
 
             sig do
               params(
-                line_items: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem, Lithic::Util::AnyHash)],
-                tax: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Util::AnyHash),
+                line_items: T::Array[
+                T.any(
+                  Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem,
+                  Lithic::Internal::Util::AnyHash
+                )
+                ],
+                tax: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Internal::Util::AnyHash),
                 customer_reference_number: String,
                 merchant_reference_number: String,
                 order_date: Date
@@ -266,7 +275,10 @@ module Lithic
 
             sig do
               params(
-                amount_totals: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals, Lithic::Util::AnyHash)
+                amount_totals: T.any(
+                  Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals,
+                  Lithic::Internal::Util::AnyHash
+                )
               )
                 .void
             end
@@ -277,7 +289,7 @@ module Lithic
 
             sig do
               params(
-                fuel: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Util::AnyHash)
+                fuel: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Internal::Util::AnyHash)
               )
                 .void
             end
@@ -315,8 +327,11 @@ module Lithic
 
             sig do
               params(
-                amount_totals: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals, Lithic::Util::AnyHash),
-                fuel: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Util::AnyHash),
+                amount_totals: T.any(
+                  Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals,
+                  Lithic::Internal::Util::AnyHash
+                ),
+                fuel: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Internal::Util::AnyHash),
                 driver_number: String,
                 odometer: Integer,
                 service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol,

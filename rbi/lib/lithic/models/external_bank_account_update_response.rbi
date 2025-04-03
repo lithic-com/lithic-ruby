@@ -75,7 +75,7 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::ExternalBankAccountAddress)) }
       attr_reader :address
 
-      sig { params(address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash)).void }
+      sig { params(address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :address
 
       # Optional field that helps identify bank accounts in receipts
@@ -145,7 +145,7 @@ module Lithic
           verification_method: Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::OrSymbol,
           verification_state: Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::OrSymbol,
           account_token: String,
-          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash),
+          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::Util::AnyHash),
           company_id: String,
           dob: Date,
           doing_business_as: String,

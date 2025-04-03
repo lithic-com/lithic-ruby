@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::Events::Subscriptions#create
       class SubscriptionCreateParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!attribute url
         #   URL to which event webhooks will be sent. URL must be a valid HTTPS address.

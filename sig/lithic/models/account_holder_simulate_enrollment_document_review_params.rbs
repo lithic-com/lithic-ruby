@@ -7,11 +7,11 @@ module Lithic
         accepted_entity_status_reasons: ::Array[String],
         status_reason: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status_reason
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class AccountHolderSimulateEnrollmentDocumentReviewParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor document_upload_token: String
 

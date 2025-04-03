@@ -55,7 +55,7 @@ module Lithic
         ?states: ::Array[Lithic::Models::ExternalBankAccountListParams::state],
         ?verification_states: ::Array[Lithic::Models::ExternalBankAccountListParams::verification_state],
         ?request_options: Lithic::request_opts
-      ) -> Lithic::CursorPage[Lithic::Models::ExternalBankAccountListResponse]
+      ) -> Lithic::Internal::CursorPage[Lithic::Models::ExternalBankAccountListResponse]
 
       def retry_micro_deposits: (
         String external_bank_account_token,

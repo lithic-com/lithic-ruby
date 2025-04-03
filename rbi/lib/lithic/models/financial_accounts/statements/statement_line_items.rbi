@@ -13,7 +13,12 @@ module Lithic
 
           sig do
             params(
-              data: T::Array[T.any(Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data, Lithic::Util::AnyHash)],
+              data: T::Array[
+              T.any(
+                Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data,
+                Lithic::Internal::Util::AnyHash
+              )
+              ],
               has_more: T::Boolean
             )
               .returns(T.attached_class)

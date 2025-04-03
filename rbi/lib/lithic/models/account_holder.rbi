@@ -25,7 +25,7 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolder::BeneficialOwnerEntity, Lithic::Util::AnyHash)]
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolder::BeneficialOwnerEntity, Lithic::Internal::Util::AnyHash)]
         )
           .void
       end
@@ -38,7 +38,7 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolder::BeneficialOwnerIndividual, Lithic::Util::AnyHash)]
+          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolder::BeneficialOwnerIndividual, Lithic::Internal::Util::AnyHash)]
         )
           .void
       end
@@ -58,7 +58,12 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::AccountHolder::BusinessEntity)) }
       attr_reader :business_entity
 
-      sig { params(business_entity: T.any(Lithic::Models::AccountHolder::BusinessEntity, Lithic::Util::AnyHash)).void }
+      sig do
+        params(
+          business_entity: T.any(Lithic::Models::AccountHolder::BusinessEntity, Lithic::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :business_entity
 
       # Only present when user_type == "BUSINESS". An individual with significant
@@ -70,7 +75,12 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::AccountHolder::ControlPerson)) }
       attr_reader :control_person
 
-      sig { params(control_person: T.any(Lithic::Models::AccountHolder::ControlPerson, Lithic::Util::AnyHash)).void }
+      sig do
+        params(
+          control_person: T.any(Lithic::Models::AccountHolder::ControlPerson, Lithic::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :control_person
 
       # < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
@@ -103,7 +113,7 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::AccountHolder::Individual)) }
       attr_reader :individual
 
-      sig { params(individual: T.any(Lithic::Models::AccountHolder::Individual, Lithic::Util::AnyHash)).void }
+      sig { params(individual: T.any(Lithic::Models::AccountHolder::Individual, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :individual
 
       # Only present when user_type == "BUSINESS". User-submitted description of the
@@ -129,7 +139,12 @@ module Lithic
       sig { returns(T.nilable(T::Array[Lithic::Models::RequiredDocument])) }
       attr_reader :required_documents
 
-      sig { params(required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)]).void }
+      sig do
+        params(
+          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::Util::AnyHash)]
+        )
+          .void
+      end
       attr_writer :required_documents
 
       # <Deprecated. Use verification_application.status instead>
@@ -169,7 +184,7 @@ module Lithic
 
       sig do
         params(
-          verification_application: T.any(Lithic::Models::AccountHolder::VerificationApplication, Lithic::Util::AnyHash)
+          verification_application: T.any(Lithic::Models::AccountHolder::VerificationApplication, Lithic::Internal::Util::AnyHash)
         )
           .void
       end
@@ -187,22 +202,22 @@ module Lithic
           token: String,
           created: Time,
           account_token: String,
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolder::BeneficialOwnerEntity, Lithic::Util::AnyHash)],
-          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolder::BeneficialOwnerIndividual, Lithic::Util::AnyHash)],
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolder::BeneficialOwnerEntity, Lithic::Internal::Util::AnyHash)],
+          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolder::BeneficialOwnerIndividual, Lithic::Internal::Util::AnyHash)],
           business_account_token: String,
-          business_entity: T.any(Lithic::Models::AccountHolder::BusinessEntity, Lithic::Util::AnyHash),
-          control_person: T.any(Lithic::Models::AccountHolder::ControlPerson, Lithic::Util::AnyHash),
+          business_entity: T.any(Lithic::Models::AccountHolder::BusinessEntity, Lithic::Internal::Util::AnyHash),
+          control_person: T.any(Lithic::Models::AccountHolder::ControlPerson, Lithic::Internal::Util::AnyHash),
           email: String,
           exemption_type: Lithic::Models::AccountHolder::ExemptionType::OrSymbol,
           external_id: String,
-          individual: T.any(Lithic::Models::AccountHolder::Individual, Lithic::Util::AnyHash),
+          individual: T.any(Lithic::Models::AccountHolder::Individual, Lithic::Internal::Util::AnyHash),
           nature_of_business: String,
           phone_number: String,
-          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)],
+          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::Util::AnyHash)],
           status: Lithic::Models::AccountHolder::Status::OrSymbol,
           status_reasons: T::Array[Lithic::Models::AccountHolder::StatusReason::OrSymbol],
           user_type: Lithic::Models::AccountHolder::UserType::OrSymbol,
-          verification_application: T.any(Lithic::Models::AccountHolder::VerificationApplication, Lithic::Util::AnyHash),
+          verification_application: T.any(Lithic::Models::AccountHolder::VerificationApplication, Lithic::Internal::Util::AnyHash),
           website_url: String
         )
           .returns(T.attached_class)
@@ -267,7 +282,7 @@ module Lithic
         sig { returns(Lithic::Models::Address) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash)).void }
         attr_writer :address
 
         # Any name that the business operates under that is not its legal business name
@@ -303,7 +318,7 @@ module Lithic
 
         sig do
           params(
-            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
+            address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash),
             dba_business_name: String,
             entity_token: String,
             government_id: String,
@@ -347,7 +362,7 @@ module Lithic
         sig { returns(Lithic::Models::Address) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash)).void }
         attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
@@ -379,7 +394,7 @@ module Lithic
         #   id.
         sig do
           params(
-            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
+            address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash),
             dob: String,
             email: String,
             entity_token: String,
@@ -416,7 +431,7 @@ module Lithic
         sig { returns(Lithic::Models::Address) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash)).void }
         attr_writer :address
 
         # Any name that the business operates under that is not its legal business name
@@ -454,7 +469,7 @@ module Lithic
         #   which the account is being opened and KYB is being run.
         sig do
           params(
-            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
+            address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash),
             dba_business_name: String,
             entity_token: String,
             government_id: String,
@@ -498,7 +513,7 @@ module Lithic
         sig { returns(Lithic::Models::Address) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash)).void }
         attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
@@ -533,7 +548,7 @@ module Lithic
         #   In some cases, this individual could also be a beneficial owner listed above.
         sig do
           params(
-            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
+            address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash),
             dob: String,
             email: String,
             entity_token: String,
@@ -585,7 +600,7 @@ module Lithic
         sig { returns(Lithic::Models::Address) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash)).void }
         attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
@@ -616,7 +631,7 @@ module Lithic
         #   for which the account is being opened and KYC is being run.
         sig do
           params(
-            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
+            address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash),
             dob: String,
             email: String,
             entity_token: String,

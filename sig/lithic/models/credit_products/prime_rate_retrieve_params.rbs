@@ -3,11 +3,11 @@ module Lithic
     module CreditProducts
       type prime_rate_retrieve_params =
         { ending_before: Date, starting_after: Date }
-        & Lithic::request_parameters
+        & Lithic::Internal::Type::request_parameters
 
       class PrimeRateRetrieveParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_reader ending_before: Date?
 

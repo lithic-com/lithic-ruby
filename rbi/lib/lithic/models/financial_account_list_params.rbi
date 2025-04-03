@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class FinancialAccountListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # List financial accounts for a given account_token or business_account_token
       sig { returns(T.nilable(String)) }
@@ -32,7 +32,7 @@ module Lithic
           account_token: String,
           business_account_token: String,
           type: Lithic::Models::FinancialAccountListParams::Type::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

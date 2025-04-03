@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class FinancialAccountUpdateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       sig { returns(T.nilable(String)) }
       attr_reader :nickname
@@ -13,7 +13,10 @@ module Lithic
       attr_writer :nickname
 
       sig do
-        params(nickname: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+        params(
+          nickname: String,
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+        )
           .returns(T.attached_class)
       end
       def self.new(nickname: nil, request_options: {})

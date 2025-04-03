@@ -27,7 +27,7 @@ class Lithic::Test::Resources::CardProgramsTest < Lithic::Test::ResourceTest
     response = @lithic.card_programs.list
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

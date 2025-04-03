@@ -61,7 +61,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
     response = @lithic.events.subscriptions.list
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first
@@ -96,7 +96,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
     response = @lithic.events.subscriptions.list_attempts("event_subscription_token")
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

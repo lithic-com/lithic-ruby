@@ -22,7 +22,7 @@ module Lithic
       sig { returns(Lithic::Models::Account::SpendLimit) }
       attr_reader :spend_limit
 
-      sig { params(spend_limit: T.any(Lithic::Models::Account::SpendLimit, Lithic::Util::AnyHash)).void }
+      sig { params(spend_limit: T.any(Lithic::Models::Account::SpendLimit, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :spend_limit
 
       # Account state:
@@ -42,7 +42,7 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::Account::AccountHolder)) }
       attr_reader :account_holder
 
-      sig { params(account_holder: T.any(Lithic::Models::Account::AccountHolder, Lithic::Util::AnyHash)).void }
+      sig { params(account_holder: T.any(Lithic::Models::Account::AccountHolder, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :account_holder
 
       # List of identifiers for the Auth Rule(s) that are applied on the account. This
@@ -66,7 +66,9 @@ module Lithic
       attr_reader :verification_address
 
       sig do
-        params(verification_address: T.any(Lithic::Models::Account::VerificationAddress, Lithic::Util::AnyHash))
+        params(
+          verification_address: T.any(Lithic::Models::Account::VerificationAddress, Lithic::Internal::Util::AnyHash)
+        )
           .void
       end
       attr_writer :verification_address
@@ -75,12 +77,12 @@ module Lithic
         params(
           token: String,
           created: T.nilable(Time),
-          spend_limit: T.any(Lithic::Models::Account::SpendLimit, Lithic::Util::AnyHash),
+          spend_limit: T.any(Lithic::Models::Account::SpendLimit, Lithic::Internal::Util::AnyHash),
           state: Lithic::Models::Account::State::OrSymbol,
-          account_holder: T.any(Lithic::Models::Account::AccountHolder, Lithic::Util::AnyHash),
+          account_holder: T.any(Lithic::Models::Account::AccountHolder, Lithic::Internal::Util::AnyHash),
           auth_rule_tokens: T::Array[String],
           cardholder_currency: String,
-          verification_address: T.any(Lithic::Models::Account::VerificationAddress, Lithic::Util::AnyHash)
+          verification_address: T.any(Lithic::Models::Account::VerificationAddress, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

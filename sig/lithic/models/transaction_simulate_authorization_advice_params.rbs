@@ -1,11 +1,12 @@
 module Lithic
   module Models
     type transaction_simulate_authorization_advice_params =
-      { token: String, amount: Integer } & Lithic::request_parameters
+      { token: String, amount: Integer }
+      & Lithic::Internal::Type::request_parameters
 
     class TransactionSimulateAuthorizationAdviceParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor token: String
 

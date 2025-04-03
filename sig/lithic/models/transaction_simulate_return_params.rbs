@@ -2,11 +2,11 @@ module Lithic
   module Models
     type transaction_simulate_return_params =
       { amount: Integer, descriptor: String, pan: String }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class TransactionSimulateReturnParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor amount: Integer
 

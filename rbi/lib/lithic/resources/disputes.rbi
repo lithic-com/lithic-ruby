@@ -11,7 +11,7 @@ module Lithic
           transaction_token: String,
           customer_filed_date: Time,
           customer_note: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::Dispute)
       end
@@ -34,7 +34,7 @@ module Lithic
       sig do
         params(
           dispute_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::Dispute)
       end
@@ -49,7 +49,7 @@ module Lithic
           customer_filed_date: Time,
           customer_note: String,
           reason: Lithic::Models::DisputeUpdateParams::Reason::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::Dispute)
       end
@@ -77,9 +77,9 @@ module Lithic
           starting_after: String,
           status: Lithic::Models::DisputeListParams::Status::OrSymbol,
           transaction_tokens: T::Array[String],
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
-          .returns(Lithic::CursorPage[Lithic::Models::Dispute])
+          .returns(Lithic::Internal::CursorPage[Lithic::Models::Dispute])
       end
       def list(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -108,7 +108,7 @@ module Lithic
       sig do
         params(
           dispute_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::Dispute)
       end
@@ -121,7 +121,7 @@ module Lithic
         params(
           evidence_token: String,
           dispute_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::DisputeEvidence)
       end
@@ -137,7 +137,7 @@ module Lithic
         params(
           dispute_token: String,
           filename: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::DisputeEvidence)
       end
@@ -158,9 +158,9 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
-          .returns(Lithic::CursorPage[Lithic::Models::DisputeEvidence])
+          .returns(Lithic::Internal::CursorPage[Lithic::Models::DisputeEvidence])
       end
       def list_evidences(
         dispute_token,
@@ -187,7 +187,7 @@ module Lithic
         params(
           evidence_token: String,
           dispute_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::DisputeEvidence)
       end

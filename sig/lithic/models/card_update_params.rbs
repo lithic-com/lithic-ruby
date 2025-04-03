@@ -10,11 +10,11 @@ module Lithic
         spend_limit_duration: Lithic::Models::spend_limit_duration,
         state: Lithic::Models::CardUpdateParams::state
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class CardUpdateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader digital_card_art_token: String?
 

@@ -6,7 +6,7 @@ module Lithic
           ?account_token: String,
           ?business_account_token: String,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::SinglePage[Lithic::Models::Cards::AggregateBalanceListResponse]
+        ) -> Lithic::Internal::SinglePage[Lithic::Models::Cards::AggregateBalanceListResponse]
 
         def initialize: (client: Lithic::Client) -> void
       end

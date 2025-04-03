@@ -12,11 +12,11 @@ module Lithic
         memo: String,
         user_defined_id: String
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class PaymentCreateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor amount: Integer
 

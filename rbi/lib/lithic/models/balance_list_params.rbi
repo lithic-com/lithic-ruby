@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class BalanceListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # List balances for all financial accounts of a given account_token.
       sig { returns(T.nilable(String)) }
@@ -41,7 +41,7 @@ module Lithic
           balance_date: Time,
           business_account_token: String,
           financial_account_type: Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

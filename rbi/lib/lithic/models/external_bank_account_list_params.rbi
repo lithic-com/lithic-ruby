@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class ExternalBankAccountListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       sig { returns(T.nilable(String)) }
       attr_reader :account_token
@@ -81,7 +81,7 @@ module Lithic
           starting_after: String,
           states: T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol],
           verification_states: T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol],
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -6,11 +6,11 @@ module Lithic
         business_account_token: String,
         type: Lithic::Models::FinancialAccountListParams::type_
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class FinancialAccountListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader account_token: String?
 

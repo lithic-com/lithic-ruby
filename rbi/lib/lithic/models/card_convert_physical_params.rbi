@@ -3,21 +3,21 @@
 module Lithic
   module Models
     class CardConvertPhysicalParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # The shipping address this card will be sent to.
       sig { returns(Lithic::Models::ShippingAddress) }
       attr_reader :shipping_address
 
-      sig { params(shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash)).void }
+      sig { params(shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :shipping_address
 
       # If omitted, the previous carrier will be used.
       sig { returns(T.nilable(Lithic::Models::Carrier)) }
       attr_reader :carrier
 
-      sig { params(carrier: T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash)).void }
+      sig { params(carrier: T.any(Lithic::Models::Carrier, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :carrier
 
       # Specifies the configuration (e.g. physical card art) that the card should be
@@ -49,11 +49,11 @@ module Lithic
 
       sig do
         params(
-          shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Util::AnyHash),
-          carrier: T.any(Lithic::Models::Carrier, Lithic::Util::AnyHash),
+          shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Internal::Util::AnyHash),
+          carrier: T.any(Lithic::Models::Carrier, Lithic::Internal::Util::AnyHash),
           product_id: String,
           shipping_method: Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

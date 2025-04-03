@@ -36,7 +36,7 @@ module Lithic
       # @param tokenization_channel [Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::CursorPage<Lithic::Models::Tokenization>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::Tokenization>]
       #
       # @see Lithic::Models::TokenizationListParams
       def list(params = {})
@@ -45,7 +45,7 @@ module Lithic
           method: :get,
           path: "v1/tokenizations",
           query: parsed,
-          page: Lithic::CursorPage,
+          page: Lithic::Internal::CursorPage,
           model: Lithic::Models::Tokenization,
           options: options
         )

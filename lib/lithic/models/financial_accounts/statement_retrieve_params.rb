@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::FinancialAccounts::Statements#retrieve
       class StatementRetrieveParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!attribute financial_account_token
         #   Globally unique identifier for financial account.

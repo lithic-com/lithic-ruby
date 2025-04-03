@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::FinancialAccounts::CreditConfiguration#update
       class CreditConfigurationUpdateParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!attribute [r] credit_limit
         #

@@ -1,10 +1,11 @@
 module Lithic
   module Models
-    type financial_account_retrieve_params = {  } & Lithic::request_parameters
+    type financial_account_retrieve_params =
+      {  } & Lithic::Internal::Type::request_parameters
 
     class FinancialAccountRetrieveParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       def initialize: (?request_options: Lithic::request_opts) -> void
 

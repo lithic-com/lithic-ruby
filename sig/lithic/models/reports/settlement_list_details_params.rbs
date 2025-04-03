@@ -3,11 +3,11 @@ module Lithic
     module Reports
       type settlement_list_details_params =
         { ending_before: String, page_size: Integer, starting_after: String }
-        & Lithic::request_parameters
+        & Lithic::Internal::Type::request_parameters
 
       class SettlementListDetailsParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_reader ending_before: String?
 

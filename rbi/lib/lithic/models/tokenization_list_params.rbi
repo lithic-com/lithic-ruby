@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class TokenizationListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Filters for tokenizations associated with a specific account.
       sig { returns(T.nilable(String)) }
@@ -75,7 +75,7 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           tokenization_channel: Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

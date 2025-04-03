@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class BookTransferReverseParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Optional descriptor for the reversal.
       sig { returns(T.nilable(String)) }
@@ -14,7 +14,7 @@ module Lithic
       attr_writer :memo
 
       sig do
-        params(memo: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+        params(memo: String, request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(memo: nil, request_options: {})

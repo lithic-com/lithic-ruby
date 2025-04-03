@@ -65,7 +65,7 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
     response = @lithic.book_transfers.list
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

@@ -6,11 +6,11 @@ module Lithic
         status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status,
         status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason]
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class AccountHolderSimulateEnrollmentReviewParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader account_holder_token: String?
 

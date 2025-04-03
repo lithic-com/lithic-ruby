@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Cards#search_by_pan
     class CardSearchByPanParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute pan
       #   The PAN for the card being retrieved.

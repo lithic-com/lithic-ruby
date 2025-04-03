@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::ResponderEndpoints#create
     class ResponderEndpointCreateParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute [r] type
       #   The type of the endpoint.

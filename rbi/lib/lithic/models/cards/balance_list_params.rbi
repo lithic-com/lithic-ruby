@@ -4,8 +4,8 @@ module Lithic
   module Models
     module Cards
       class BalanceListParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # UTC date of the balance to retrieve. Defaults to latest available balance
         sig { returns(T.nilable(Time)) }
@@ -27,7 +27,7 @@ module Lithic
           params(
             balance_date: Time,
             last_transaction_event_token: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

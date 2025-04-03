@@ -3,15 +3,15 @@
 module Lithic
   module Models
     class CardSearchByPanParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # The PAN for the card being retrieved.
       sig { returns(String) }
       attr_accessor :pan
 
       sig do
-        params(pan: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+        params(pan: String, request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(pan:, request_options: {})

@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::CreditProducts::PrimeRates#retrieve
       class PrimeRateRetrieveParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!attribute [r] ending_before
         #   The effective date that the prime rates ends before

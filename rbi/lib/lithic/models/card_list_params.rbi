@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class CardListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Returns cards associated with the specified account.
       sig { returns(T.nilable(String)) }
@@ -68,7 +68,7 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           state: Lithic::Models::CardListParams::State::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

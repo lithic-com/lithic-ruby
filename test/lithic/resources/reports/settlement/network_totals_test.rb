@@ -31,7 +31,7 @@ class Lithic::Test::Resources::Reports::Settlement::NetworkTotalsTest < Lithic::
     response = @lithic.reports.settlement.network_totals.list
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

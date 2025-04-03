@@ -7,7 +7,7 @@ module Lithic
       sig do
         params(
           digital_card_art_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
           .returns(Lithic::Models::DigitalCardArtAPI)
       end
@@ -27,9 +27,9 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
         )
-          .returns(Lithic::CursorPage[Lithic::Models::DigitalCardArtAPI])
+          .returns(Lithic::Internal::CursorPage[Lithic::Models::DigitalCardArtAPI])
       end
       def list(
         # A cursor representing an item's token before which a page of results should end.

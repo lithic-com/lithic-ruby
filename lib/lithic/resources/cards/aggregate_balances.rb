@@ -12,7 +12,7 @@ module Lithic
         # @param business_account_token [String]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::SinglePage<Lithic::Models::Cards::AggregateBalanceListResponse>]
+        # @return [Lithic::Internal::SinglePage<Lithic::Models::Cards::AggregateBalanceListResponse>]
         #
         # @see Lithic::Models::Cards::AggregateBalanceListParams
         def list(params = {})
@@ -21,7 +21,7 @@ module Lithic
             method: :get,
             path: "v1/cards/aggregate_balances",
             query: parsed,
-            page: Lithic::SinglePage,
+            page: Lithic::Internal::SinglePage,
             model: Lithic::Models::Cards::AggregateBalanceListResponse,
             options: options
           )

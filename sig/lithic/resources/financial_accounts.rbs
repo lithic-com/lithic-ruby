@@ -36,7 +36,7 @@ module Lithic
         ?business_account_token: String,
         ?type: Lithic::Models::FinancialAccountListParams::type_,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::SinglePage[Lithic::Models::FinancialAccount]
+      ) -> Lithic::Internal::SinglePage[Lithic::Models::FinancialAccount]
 
       def update_status: (
         String financial_account_token,

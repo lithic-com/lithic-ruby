@@ -14,11 +14,11 @@ module Lithic
         phone_number: String,
         starting_after: String
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class AccountHolderListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader begin_: Time?
 

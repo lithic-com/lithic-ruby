@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class TransactionSimulateAuthorizationParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Amount (in cents) to authorize. For credit authorizations and financial credit
       #   authorizations, any value entered will be converted into a negative amount in
@@ -104,7 +104,7 @@ module Lithic
           partial_approval_capable: T::Boolean,
           pin: String,
           status: Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

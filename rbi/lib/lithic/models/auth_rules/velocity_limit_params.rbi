@@ -7,7 +7,12 @@ module Lithic
         sig { returns(Lithic::Models::AuthRules::VelocityLimitParams::Filters) }
         attr_reader :filters
 
-        sig { params(filters: T.any(Lithic::Models::AuthRules::VelocityLimitParams::Filters, Lithic::Util::AnyHash)).void }
+        sig do
+          params(
+            filters: T.any(Lithic::Models::AuthRules::VelocityLimitParams::Filters, Lithic::Internal::Util::AnyHash)
+          )
+            .void
+        end
         attr_writer :filters
 
         # The size of the trailing window to calculate Spend Velocity over in seconds. The
@@ -34,7 +39,7 @@ module Lithic
 
         sig do
           params(
-            filters: T.any(Lithic::Models::AuthRules::VelocityLimitParams::Filters, Lithic::Util::AnyHash),
+            filters: T.any(Lithic::Models::AuthRules::VelocityLimitParams::Filters, Lithic::Internal::Util::AnyHash),
             period: T.any(Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol),
             scope: Lithic::Models::AuthRules::VelocityLimitParams::Scope::OrSymbol,
             limit_amount: T.nilable(Integer),

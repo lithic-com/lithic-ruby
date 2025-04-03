@@ -76,7 +76,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     response = @lithic.auth_rules.v2.list
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

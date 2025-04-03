@@ -11,7 +11,7 @@ module Lithic
       # @param financial_account_type [Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::SinglePage<Lithic::Models::AggregateBalance>]
+      # @return [Lithic::Internal::SinglePage<Lithic::Models::AggregateBalance>]
       #
       # @see Lithic::Models::AggregateBalanceListParams
       def list(params = {})
@@ -20,7 +20,7 @@ module Lithic
           method: :get,
           path: "v1/aggregate_balances",
           query: parsed,
-          page: Lithic::SinglePage,
+          page: Lithic::Internal::SinglePage,
           model: Lithic::Models::AggregateBalance,
           options: options
         )

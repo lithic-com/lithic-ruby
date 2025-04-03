@@ -35,7 +35,7 @@ class Lithic::Test::Resources::Cards::FinancialTransactionsTest < Lithic::Test::
     response = @lithic.cards.financial_transactions.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::SinglePage
+      response => Lithic::Internal::SinglePage
     end
 
     row = response.to_enum.first

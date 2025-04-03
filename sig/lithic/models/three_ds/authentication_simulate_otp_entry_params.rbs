@@ -2,11 +2,12 @@ module Lithic
   module Models
     module ThreeDS
       type authentication_simulate_otp_entry_params =
-        { token: String, otp: String } & Lithic::request_parameters
+        { token: String, otp: String }
+        & Lithic::Internal::Type::request_parameters
 
       class AuthenticationSimulateOtpEntryParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_accessor token: String
 
