@@ -8,7 +8,7 @@ module Lithic
       sig { returns(Lithic::Models::KYBBusinessEntity::Address) }
       attr_reader :address
 
-      sig { params(address: T.any(Lithic::Models::KYBBusinessEntity::Address, Lithic::Util::AnyHash)).void }
+      sig { params(address: T.any(Lithic::Models::KYBBusinessEntity::Address, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :address
 
       # Government-issued identification number. US Federal Employer Identification
@@ -43,7 +43,7 @@ module Lithic
 
       sig do
         params(
-          address: T.any(Lithic::Models::KYBBusinessEntity::Address, Lithic::Util::AnyHash),
+          address: T.any(Lithic::Models::KYBBusinessEntity::Address, Lithic::Internal::Util::AnyHash),
           government_id: String,
           legal_business_name: String,
           phone_numbers: T::Array[String],

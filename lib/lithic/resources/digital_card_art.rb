@@ -31,7 +31,7 @@ module Lithic
       # @param starting_after [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::CursorPage<Lithic::Models::DigitalCardArtAPI>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::DigitalCardArtAPI>]
       #
       # @see Lithic::Models::DigitalCardArtListParams
       def list(params = {})
@@ -40,7 +40,7 @@ module Lithic
           method: :get,
           path: "v1/digital_card_art",
           query: parsed,
-          page: Lithic::CursorPage,
+          page: Lithic::Internal::CursorPage,
           model: Lithic::Models::DigitalCardArtAPI,
           options: options
         )

@@ -8,11 +8,11 @@ module Lithic
         receipt_type: Lithic::Models::PaymentSimulateReceiptParams::receipt_type,
         memo: String
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class PaymentSimulateReceiptParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor token: String
 

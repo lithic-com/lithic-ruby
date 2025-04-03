@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::AuthRules::V2#create
       class V2CreateParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!attribute account_tokens
         #   Account tokens to which the Auth Rule applies.

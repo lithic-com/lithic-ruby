@@ -45,7 +45,7 @@ module Lithic
       # @param status [Symbol, Lithic::Models::TransactionListParams::Status]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::CursorPage<Lithic::Models::Transaction>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::Transaction>]
       #
       # @see Lithic::Models::TransactionListParams
       def list(params = {})
@@ -54,7 +54,7 @@ module Lithic
           method: :get,
           path: "v1/transactions",
           query: parsed,
-          page: Lithic::CursorPage,
+          page: Lithic::Internal::CursorPage,
           model: Lithic::Models::Transaction,
           options: options
         )

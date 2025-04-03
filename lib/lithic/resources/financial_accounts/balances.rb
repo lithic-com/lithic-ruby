@@ -13,7 +13,7 @@ module Lithic
         # @param last_transaction_event_token [String]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::SinglePage<Lithic::Models::FinancialAccounts::BalanceListResponse>]
+        # @return [Lithic::Internal::SinglePage<Lithic::Models::FinancialAccounts::BalanceListResponse>]
         #
         # @see Lithic::Models::FinancialAccounts::BalanceListParams
         def list(financial_account_token, params = {})
@@ -22,7 +22,7 @@ module Lithic
             method: :get,
             path: ["v1/financial_accounts/%1$s/balances", financial_account_token],
             query: parsed,
-            page: Lithic::SinglePage,
+            page: Lithic::Internal::SinglePage,
             model: Lithic::Models::FinancialAccounts::BalanceListResponse,
             options: options
           )

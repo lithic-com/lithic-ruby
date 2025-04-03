@@ -7,11 +7,11 @@ module Lithic
         shipping_address: Lithic::Models::ShippingAddress,
         shipping_method: Lithic::Models::CardReissueParams::shipping_method
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class CardReissueParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader carrier: Lithic::Models::Carrier?
 

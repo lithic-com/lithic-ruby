@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class ResponderEndpointCreateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # The type of the endpoint.
       sig { returns(T.nilable(Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol)) }
@@ -24,7 +24,7 @@ module Lithic
         params(
           type: Lithic::Models::ResponderEndpointCreateParams::Type::OrSymbol,
           url: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Payments#list
     class PaymentListParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute [r] account_token
       #

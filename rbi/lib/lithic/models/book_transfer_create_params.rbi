@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class BookTransferCreateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
       #   This should always be a positive value.
@@ -58,7 +58,7 @@ module Lithic
           type: Lithic::Models::BookTransferCreateParams::Type::OrSymbol,
           token: String,
           memo: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

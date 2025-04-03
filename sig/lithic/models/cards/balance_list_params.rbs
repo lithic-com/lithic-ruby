@@ -3,11 +3,11 @@ module Lithic
     module Cards
       type balance_list_params =
         { balance_date: Time, last_transaction_event_token: String }
-        & Lithic::request_parameters
+        & Lithic::Internal::Type::request_parameters
 
       class BalanceListParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_reader balance_date: Time?
 

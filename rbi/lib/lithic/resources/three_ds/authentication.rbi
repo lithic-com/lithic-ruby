@@ -8,7 +8,7 @@ module Lithic
         sig do
           params(
             three_ds_authentication_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
           )
             .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse)
         end
@@ -25,11 +25,11 @@ module Lithic
         #   properly (respond with a valid JSON).
         sig do
           params(
-            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Util::AnyHash),
+            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Internal::Util::AnyHash),
             pan: String,
-            transaction: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Util::AnyHash),
+            transaction: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Internal::Util::AnyHash),
             card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
           )
             .returns(Lithic::Models::ThreeDS::AuthenticationSimulateResponse)
         end
@@ -53,7 +53,7 @@ module Lithic
           params(
             token: String,
             otp: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
           )
             .void
         end

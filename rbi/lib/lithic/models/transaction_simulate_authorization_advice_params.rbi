@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class TransactionSimulateAuthorizationAdviceParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # The transaction token returned from the /v1/simulate/authorize. response.
       sig { returns(String) }
@@ -19,7 +19,7 @@ module Lithic
         params(
           token: String,
           amount: Integer,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

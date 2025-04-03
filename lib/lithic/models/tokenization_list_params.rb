@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Tokenizations#list
     class TokenizationListParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute [r] account_token
       #   Filters for tokenizations associated with a specific account.

@@ -74,7 +74,7 @@ module Lithic
           created: Time,
           currency: String,
           descriptor: String,
-          events: T::Array[T.any(Lithic::Models::FinancialTransaction::Event, Lithic::Util::AnyHash)],
+          events: T::Array[T.any(Lithic::Models::FinancialTransaction::Event, Lithic::Internal::Util::AnyHash)],
           pending_amount: Integer,
           result: Lithic::Models::FinancialTransaction::Result::OrSymbol,
           settled_amount: Integer,

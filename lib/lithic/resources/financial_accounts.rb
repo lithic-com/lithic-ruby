@@ -96,7 +96,7 @@ module Lithic
       # @param type [Symbol, Lithic::Models::FinancialAccountListParams::Type]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::SinglePage<Lithic::Models::FinancialAccount>]
+      # @return [Lithic::Internal::SinglePage<Lithic::Models::FinancialAccount>]
       #
       # @see Lithic::Models::FinancialAccountListParams
       def list(params = {})
@@ -105,7 +105,7 @@ module Lithic
           method: :get,
           path: "v1/financial_accounts",
           query: parsed,
-          page: Lithic::SinglePage,
+          page: Lithic::Internal::SinglePage,
           model: Lithic::Models::FinancialAccount,
           options: options
         )

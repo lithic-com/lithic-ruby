@@ -85,7 +85,7 @@ module Lithic
       # @param transaction_tokens [Array<String>]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::CursorPage<Lithic::Models::Dispute>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::Dispute>]
       #
       # @see Lithic::Models::DisputeListParams
       def list(params = {})
@@ -94,7 +94,7 @@ module Lithic
           method: :get,
           path: "v1/disputes",
           query: parsed,
-          page: Lithic::CursorPage,
+          page: Lithic::Internal::CursorPage,
           model: Lithic::Models::Dispute,
           options: options
         )
@@ -183,7 +183,7 @@ module Lithic
       # @param starting_after [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::CursorPage<Lithic::Models::DisputeEvidence>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::DisputeEvidence>]
       #
       # @see Lithic::Models::DisputeListEvidencesParams
       def list_evidences(dispute_token, params = {})
@@ -192,7 +192,7 @@ module Lithic
           method: :get,
           path: ["v1/disputes/%1$s/evidences", dispute_token],
           query: parsed,
-          page: Lithic::CursorPage,
+          page: Lithic::Internal::CursorPage,
           model: Lithic::Models::DisputeEvidence,
           options: options
         )

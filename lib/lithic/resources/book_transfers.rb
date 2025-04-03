@@ -68,7 +68,7 @@ module Lithic
       # @param status [Symbol, Lithic::Models::BookTransferListParams::Status]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::CursorPage<Lithic::Models::BookTransferResponse>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::BookTransferResponse>]
       #
       # @see Lithic::Models::BookTransferListParams
       def list(params = {})
@@ -77,7 +77,7 @@ module Lithic
           method: :get,
           path: "v1/book_transfers",
           query: parsed,
-          page: Lithic::CursorPage,
+          page: Lithic::Internal::CursorPage,
           model: Lithic::Models::BookTransferResponse,
           options: options
         )

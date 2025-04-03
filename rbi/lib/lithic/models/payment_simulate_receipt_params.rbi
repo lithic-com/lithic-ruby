@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class PaymentSimulateReceiptParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Payment token
       sig { returns(String) }
@@ -36,7 +36,7 @@ module Lithic
           financial_account_token: String,
           receipt_type: Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol,
           memo: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::AuthRules::V2#draft
       class V2DraftParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!attribute parameters
         #   Parameters for the Auth Rule

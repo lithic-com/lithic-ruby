@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Payments#simulate_action
     class PaymentSimulateActionParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute event_type
       #   Event Type

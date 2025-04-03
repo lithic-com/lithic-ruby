@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Cards#reissue
     class CardReissueParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute [r] carrier
       #   If omitted, the previous carrier will be used.

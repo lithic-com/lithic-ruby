@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Balances#list
     class BalanceListParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute [r] account_token
       #   List balances for all financial accounts of a given account_token.

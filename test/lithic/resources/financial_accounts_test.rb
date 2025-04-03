@@ -82,7 +82,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
     response = @lithic.financial_accounts.list
 
     assert_pattern do
-      response => Lithic::SinglePage
+      response => Lithic::Internal::SinglePage
     end
 
     row = response.to_enum.first

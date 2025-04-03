@@ -12,7 +12,12 @@ module Lithic
           sig { returns(Lithic::Models::AuthRules::V2::BacktestResults::Results) }
           attr_reader :results
 
-          sig { params(results: T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results, Lithic::Util::AnyHash)).void }
+          sig do
+            params(
+              results: T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results, Lithic::Internal::Util::AnyHash)
+            )
+              .void
+          end
           attr_writer :results
 
           sig { returns(Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters) }
@@ -20,7 +25,10 @@ module Lithic
 
           sig do
             params(
-              simulation_parameters: T.any(Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters, Lithic::Util::AnyHash)
+              simulation_parameters: T.any(
+                Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters,
+                Lithic::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -29,8 +37,11 @@ module Lithic
           sig do
             params(
               backtest_token: String,
-              results: T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results, Lithic::Util::AnyHash),
-              simulation_parameters: T.any(Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters, Lithic::Util::AnyHash)
+              results: T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results, Lithic::Internal::Util::AnyHash),
+              simulation_parameters: T.any(
+                Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters,
+                Lithic::Internal::Util::AnyHash
+              )
             )
               .returns(T.attached_class)
           end
@@ -57,7 +68,10 @@ module Lithic
             sig do
               params(
                 current_version: T.nilable(
-                  T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion, Lithic::Util::AnyHash)
+                  T.any(
+                    Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion,
+                    Lithic::Internal::Util::AnyHash
+                  )
                 )
               )
                 .void
@@ -70,7 +84,10 @@ module Lithic
             sig do
               params(
                 draft_version: T.nilable(
-                  T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion, Lithic::Util::AnyHash)
+                  T.any(
+                    Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion,
+                    Lithic::Internal::Util::AnyHash
+                  )
                 )
               )
                 .void
@@ -80,10 +97,16 @@ module Lithic
             sig do
               params(
                 current_version: T.nilable(
-                  T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion, Lithic::Util::AnyHash)
+                  T.any(
+                    Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion,
+                    Lithic::Internal::Util::AnyHash
+                  )
                 ),
                 draft_version: T.nilable(
-                  T.any(Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion, Lithic::Util::AnyHash)
+                  T.any(
+                    Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion,
+                    Lithic::Internal::Util::AnyHash
+                  )
                 )
               )
                 .returns(T.attached_class)
@@ -135,7 +158,7 @@ module Lithic
                   examples: T::Array[
                   T.any(
                     Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example,
-                    Lithic::Util::AnyHash
+                    Lithic::Internal::Util::AnyHash
                   )
                   ]
                 )
@@ -158,7 +181,7 @@ module Lithic
                   examples: T::Array[
                   T.any(
                     Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example,
-                    Lithic::Util::AnyHash
+                    Lithic::Internal::Util::AnyHash
                   )
                   ],
                   version: Integer
@@ -248,7 +271,7 @@ module Lithic
                   examples: T::Array[
                   T.any(
                     Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example,
-                    Lithic::Util::AnyHash
+                    Lithic::Internal::Util::AnyHash
                   )
                   ]
                 )
@@ -271,7 +294,7 @@ module Lithic
                   examples: T::Array[
                   T.any(
                     Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example,
-                    Lithic::Util::AnyHash
+                    Lithic::Internal::Util::AnyHash
                   )
                   ],
                   version: Integer

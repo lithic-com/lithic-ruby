@@ -4,8 +4,8 @@ module Lithic
   module Models
     module ThreeDS
       class AuthenticationSimulateOtpEntryParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # A unique token returned as part of a /v1/three_ds_authentication/simulate call
         #   that resulted in PENDING_CHALLENGE authentication result.
@@ -20,7 +20,7 @@ module Lithic
           params(
             token: String,
             otp: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

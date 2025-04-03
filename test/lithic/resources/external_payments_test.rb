@@ -66,7 +66,7 @@ class Lithic::Test::Resources::ExternalPaymentsTest < Lithic::Test::ResourceTest
     response = @lithic.external_payments.list
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

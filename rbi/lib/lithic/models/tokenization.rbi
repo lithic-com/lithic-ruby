@@ -58,7 +58,7 @@ module Lithic
       sig { returns(T.nilable(T::Array[Lithic::Models::Tokenization::Event])) }
       attr_reader :events
 
-      sig { params(events: T::Array[T.any(Lithic::Models::Tokenization::Event, Lithic::Util::AnyHash)]).void }
+      sig { params(events: T::Array[T.any(Lithic::Models::Tokenization::Event, Lithic::Internal::Util::AnyHash)]).void }
       attr_writer :events
 
       # The network's unique reference for the card that is tokenized.
@@ -78,7 +78,7 @@ module Lithic
           tokenization_channel: Lithic::Models::Tokenization::TokenizationChannel::OrSymbol,
           updated_at: Time,
           digital_card_art_token: String,
-          events: T::Array[T.any(Lithic::Models::Tokenization::Event, Lithic::Util::AnyHash)],
+          events: T::Array[T.any(Lithic::Models::Tokenization::Event, Lithic::Internal::Util::AnyHash)],
           payment_account_reference_id: T.nilable(String)
         )
           .returns(T.attached_class)

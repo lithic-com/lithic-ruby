@@ -17,7 +17,7 @@ module Lithic
         ?starting_after: String,
         ?with_content: bool,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::CursorPage[Lithic::Models::Event]
+      ) -> Lithic::Internal::CursorPage[Lithic::Models::Event]
 
       def list_attempts: (
         String event_token,
@@ -28,7 +28,7 @@ module Lithic
         ?starting_after: String,
         ?status: Lithic::Models::EventListAttemptsParams::status,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::CursorPage[Lithic::Models::MessageAttempt]
+      ) -> Lithic::Internal::CursorPage[Lithic::Models::MessageAttempt]
 
       def initialize: (client: Lithic::Client) -> void
     end

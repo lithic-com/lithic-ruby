@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::AuthRules::V2#list
       class V2ListParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!attribute [r] account_token
         #   Only return Authorization Rules that are bound to the provided account token.

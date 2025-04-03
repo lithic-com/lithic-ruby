@@ -9,12 +9,7 @@ module Lithic
           sig do
             params(
               token: String,
-              request_options: T.nilable(
-                T.any(
-                  Lithic::RequestOptions,
-                  Lithic::Util::AnyHash
-                )
-              )
+              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
             )
               .returns(Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse)
           end
@@ -39,9 +34,9 @@ module Lithic
               report_date_end: Date,
               settlement_institution_id: String,
               starting_after: String,
-              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
             )
-              .returns(Lithic::CursorPage[Lithic::Models::Reports::Settlement::NetworkTotalListResponse])
+              .returns(Lithic::Internal::CursorPage[Lithic::Models::Reports::Settlement::NetworkTotalListResponse])
           end
           def list(
             # Datetime in RFC 3339 format. Only entries created after the specified time will

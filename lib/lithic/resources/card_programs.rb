@@ -31,7 +31,7 @@ module Lithic
       # @param starting_after [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::CursorPage<Lithic::Models::CardProgram>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::CardProgram>]
       #
       # @see Lithic::Models::CardProgramListParams
       def list(params = {})
@@ -40,7 +40,7 @@ module Lithic
           method: :get,
           path: "v1/card_programs",
           query: parsed,
-          page: Lithic::CursorPage,
+          page: Lithic::Internal::CursorPage,
           model: Lithic::Models::CardProgram,
           options: options
         )

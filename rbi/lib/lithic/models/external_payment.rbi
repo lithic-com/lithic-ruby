@@ -51,7 +51,7 @@ module Lithic
           category: Lithic::Models::ExternalPayment::Category::OrSymbol,
           created: Time,
           currency: String,
-          events: T::Array[T.any(Lithic::Models::ExternalPayment::Event, Lithic::Util::AnyHash)],
+          events: T::Array[T.any(Lithic::Models::ExternalPayment::Event, Lithic::Internal::Util::AnyHash)],
           financial_account_token: String,
           payment_type: Lithic::Models::ExternalPayment::PaymentType::OrSymbol,
           pending_amount: Integer,

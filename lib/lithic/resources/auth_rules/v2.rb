@@ -95,7 +95,7 @@ module Lithic
         # @param starting_after [String]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::CursorPage<Lithic::Models::AuthRules::V2ListResponse>]
+        # @return [Lithic::Internal::CursorPage<Lithic::Models::AuthRules::V2ListResponse>]
         #
         # @see Lithic::Models::AuthRules::V2ListParams
         def list(params = {})
@@ -104,7 +104,7 @@ module Lithic
             method: :get,
             path: "v2/auth_rules",
             query: parsed,
-            page: Lithic::CursorPage,
+            page: Lithic::Internal::CursorPage,
             model: Lithic::Models::AuthRules::V2ListResponse,
             options: options
           )

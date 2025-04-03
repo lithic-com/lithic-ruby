@@ -4,8 +4,8 @@ module Lithic
   module Models
     module Events
       class SubscriptionUpdateParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # URL to which event webhooks will be sent. URL must be a valid HTTPS address.
         sig { returns(String) }
@@ -39,7 +39,7 @@ module Lithic
             description: String,
             disabled: T::Boolean,
             event_types: T::Array[Lithic::Models::Events::SubscriptionUpdateParams::EventType::OrSymbol],
-            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

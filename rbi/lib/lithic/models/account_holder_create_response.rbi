@@ -43,7 +43,12 @@ module Lithic
       sig { returns(T.nilable(T::Array[Lithic::Models::RequiredDocument])) }
       attr_reader :required_documents
 
-      sig { params(required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)]).void }
+      sig do
+        params(
+          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::Util::AnyHash)]
+        )
+          .void
+      end
       attr_writer :required_documents
 
       sig do
@@ -54,7 +59,7 @@ module Lithic
           status_reasons: T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::OrSymbol],
           created: Time,
           external_id: String,
-          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Util::AnyHash)]
+          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::Util::AnyHash)]
         )
           .returns(T.attached_class)
       end

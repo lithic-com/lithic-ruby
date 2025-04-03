@@ -8,11 +8,11 @@ module Lithic
           transaction: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction,
           card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::card_expiry_check
         }
-        & Lithic::request_parameters
+        & Lithic::Internal::Type::request_parameters
 
       class AuthenticationSimulateParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_accessor merchant: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant
 

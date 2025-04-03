@@ -8,7 +8,7 @@ module Lithic
         sig do
           params(
             financial_account_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
           )
             .returns(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig)
         end
@@ -27,7 +27,7 @@ module Lithic
             credit_product_token: String,
             external_bank_account_token: String,
             tier: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
           )
             .returns(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig)
         end

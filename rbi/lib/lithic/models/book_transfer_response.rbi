@@ -66,7 +66,7 @@ module Lithic
           category: Lithic::Models::BookTransferResponse::Category::OrSymbol,
           created: Time,
           currency: String,
-          events: T::Array[T.any(Lithic::Models::BookTransferResponse::Event, Lithic::Util::AnyHash)],
+          events: T::Array[T.any(Lithic::Models::BookTransferResponse::Event, Lithic::Internal::Util::AnyHash)],
           from_financial_account_token: String,
           pending_amount: Integer,
           result: Lithic::Models::BookTransferResponse::Result::OrSymbol,

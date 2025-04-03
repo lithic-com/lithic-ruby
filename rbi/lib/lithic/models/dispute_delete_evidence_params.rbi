@@ -3,14 +3,17 @@
 module Lithic
   module Models
     class DisputeDeleteEvidenceParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       sig { returns(String) }
       attr_accessor :dispute_token
 
       sig do
-        params(dispute_token: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+        params(
+          dispute_token: String,
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+        )
           .returns(T.attached_class)
       end
       def self.new(dispute_token:, request_options: {})

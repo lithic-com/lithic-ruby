@@ -6,11 +6,11 @@ module Lithic
         decline_reason: Lithic::Models::PaymentSimulateActionParams::decline_reason,
         return_reason_code: String
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class PaymentSimulateActionParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor event_type: Lithic::Models::PaymentSimulateActionParams::event_type
 

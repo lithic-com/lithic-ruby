@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Transactions#simulate_authorization_advice
     class TransactionSimulateAuthorizationAdviceParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute token
       #   The transaction token returned from the /v1/simulate/authorize. response.

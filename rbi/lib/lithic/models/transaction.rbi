@@ -31,7 +31,7 @@ module Lithic
       sig { returns(Lithic::Models::Transaction::Amounts) }
       attr_reader :amounts
 
-      sig { params(amounts: T.any(Lithic::Models::Transaction::Amounts, Lithic::Util::AnyHash)).void }
+      sig { params(amounts: T.any(Lithic::Models::Transaction::Amounts, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :amounts
 
       # The authorization amount of the transaction in the anticipated settlement
@@ -47,7 +47,7 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::Transaction::Avs)) }
       attr_reader :avs
 
-      sig { params(avs: T.nilable(T.any(Lithic::Models::Transaction::Avs, Lithic::Util::AnyHash))).void }
+      sig { params(avs: T.nilable(T.any(Lithic::Models::Transaction::Avs, Lithic::Internal::Util::AnyHash))).void }
       attr_writer :avs
 
       # Token for the card used in this transaction.
@@ -59,7 +59,7 @@ module Lithic
 
       sig do
         params(
-          cardholder_authentication: T.nilable(T.any(Lithic::Models::Transaction::CardholderAuthentication, Lithic::Util::AnyHash))
+          cardholder_authentication: T.nilable(T.any(Lithic::Models::Transaction::CardholderAuthentication, Lithic::Internal::Util::AnyHash))
         )
           .void
       end
@@ -72,7 +72,7 @@ module Lithic
       sig { returns(Lithic::Models::Transaction::Merchant) }
       attr_reader :merchant
 
-      sig { params(merchant: T.any(Lithic::Models::Transaction::Merchant, Lithic::Util::AnyHash)).void }
+      sig { params(merchant: T.any(Lithic::Models::Transaction::Merchant, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :merchant
 
       # Analogous to the 'amount', but in the merchant currency.
@@ -104,7 +104,7 @@ module Lithic
       sig { returns(Lithic::Models::Transaction::Pos) }
       attr_reader :pos
 
-      sig { params(pos: T.any(Lithic::Models::Transaction::Pos, Lithic::Util::AnyHash)).void }
+      sig { params(pos: T.any(Lithic::Models::Transaction::Pos, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :pos
 
       sig { returns(Lithic::Models::Transaction::Result::TaggedSymbol) }
@@ -121,7 +121,12 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::Transaction::TokenInfo)) }
       attr_reader :token_info
 
-      sig { params(token_info: T.nilable(T.any(Lithic::Models::Transaction::TokenInfo, Lithic::Util::AnyHash))).void }
+      sig do
+        params(
+          token_info: T.nilable(T.any(Lithic::Models::Transaction::TokenInfo, Lithic::Internal::Util::AnyHash))
+        )
+          .void
+      end
       attr_writer :token_info
 
       # Date and time when the transaction last updated. UTC time zone.
@@ -131,7 +136,7 @@ module Lithic
       sig { returns(T.nilable(T::Array[Lithic::Models::Transaction::Event])) }
       attr_reader :events
 
-      sig { params(events: T::Array[T.any(Lithic::Models::Transaction::Event, Lithic::Util::AnyHash)]).void }
+      sig { params(events: T::Array[T.any(Lithic::Models::Transaction::Event, Lithic::Internal::Util::AnyHash)]).void }
       attr_writer :events
 
       sig do
@@ -141,26 +146,26 @@ module Lithic
           acquirer_fee: T.nilable(Integer),
           acquirer_reference_number: T.nilable(String),
           amount: Integer,
-          amounts: T.any(Lithic::Models::Transaction::Amounts, Lithic::Util::AnyHash),
+          amounts: T.any(Lithic::Models::Transaction::Amounts, Lithic::Internal::Util::AnyHash),
           authorization_amount: T.nilable(Integer),
           authorization_code: T.nilable(String),
-          avs: T.nilable(T.any(Lithic::Models::Transaction::Avs, Lithic::Util::AnyHash)),
+          avs: T.nilable(T.any(Lithic::Models::Transaction::Avs, Lithic::Internal::Util::AnyHash)),
           card_token: String,
-          cardholder_authentication: T.nilable(T.any(Lithic::Models::Transaction::CardholderAuthentication, Lithic::Util::AnyHash)),
+          cardholder_authentication: T.nilable(T.any(Lithic::Models::Transaction::CardholderAuthentication, Lithic::Internal::Util::AnyHash)),
           created: Time,
-          merchant: T.any(Lithic::Models::Transaction::Merchant, Lithic::Util::AnyHash),
+          merchant: T.any(Lithic::Models::Transaction::Merchant, Lithic::Internal::Util::AnyHash),
           merchant_amount: T.nilable(Integer),
           merchant_authorization_amount: T.nilable(Integer),
           merchant_currency: String,
           network: T.nilable(Lithic::Models::Transaction::Network::OrSymbol),
           network_risk_score: T.nilable(Integer),
-          pos: T.any(Lithic::Models::Transaction::Pos, Lithic::Util::AnyHash),
+          pos: T.any(Lithic::Models::Transaction::Pos, Lithic::Internal::Util::AnyHash),
           result: Lithic::Models::Transaction::Result::OrSymbol,
           settled_amount: Integer,
           status: Lithic::Models::Transaction::Status::OrSymbol,
-          token_info: T.nilable(T.any(Lithic::Models::Transaction::TokenInfo, Lithic::Util::AnyHash)),
+          token_info: T.nilable(T.any(Lithic::Models::Transaction::TokenInfo, Lithic::Internal::Util::AnyHash)),
           updated: Time,
-          events: T::Array[T.any(Lithic::Models::Transaction::Event, Lithic::Util::AnyHash)]
+          events: T::Array[T.any(Lithic::Models::Transaction::Event, Lithic::Internal::Util::AnyHash)]
         )
           .returns(T.attached_class)
       end
@@ -232,33 +237,46 @@ module Lithic
         sig { returns(Lithic::Models::Transaction::Amounts::Cardholder) }
         attr_reader :cardholder
 
-        sig { params(cardholder: T.any(Lithic::Models::Transaction::Amounts::Cardholder, Lithic::Util::AnyHash)).void }
+        sig do
+          params(
+            cardholder: T.any(Lithic::Models::Transaction::Amounts::Cardholder, Lithic::Internal::Util::AnyHash)
+          )
+            .void
+        end
         attr_writer :cardholder
 
         sig { returns(Lithic::Models::Transaction::Amounts::Hold) }
         attr_reader :hold
 
-        sig { params(hold: T.any(Lithic::Models::Transaction::Amounts::Hold, Lithic::Util::AnyHash)).void }
+        sig { params(hold: T.any(Lithic::Models::Transaction::Amounts::Hold, Lithic::Internal::Util::AnyHash)).void }
         attr_writer :hold
 
         sig { returns(Lithic::Models::Transaction::Amounts::Merchant) }
         attr_reader :merchant
 
-        sig { params(merchant: T.any(Lithic::Models::Transaction::Amounts::Merchant, Lithic::Util::AnyHash)).void }
+        sig do
+          params(merchant: T.any(Lithic::Models::Transaction::Amounts::Merchant, Lithic::Internal::Util::AnyHash))
+            .void
+        end
         attr_writer :merchant
 
         sig { returns(Lithic::Models::Transaction::Amounts::Settlement) }
         attr_reader :settlement
 
-        sig { params(settlement: T.any(Lithic::Models::Transaction::Amounts::Settlement, Lithic::Util::AnyHash)).void }
+        sig do
+          params(
+            settlement: T.any(Lithic::Models::Transaction::Amounts::Settlement, Lithic::Internal::Util::AnyHash)
+          )
+            .void
+        end
         attr_writer :settlement
 
         sig do
           params(
-            cardholder: T.any(Lithic::Models::Transaction::Amounts::Cardholder, Lithic::Util::AnyHash),
-            hold: T.any(Lithic::Models::Transaction::Amounts::Hold, Lithic::Util::AnyHash),
-            merchant: T.any(Lithic::Models::Transaction::Amounts::Merchant, Lithic::Util::AnyHash),
-            settlement: T.any(Lithic::Models::Transaction::Amounts::Settlement, Lithic::Util::AnyHash)
+            cardholder: T.any(Lithic::Models::Transaction::Amounts::Cardholder, Lithic::Internal::Util::AnyHash),
+            hold: T.any(Lithic::Models::Transaction::Amounts::Hold, Lithic::Internal::Util::AnyHash),
+            merchant: T.any(Lithic::Models::Transaction::Amounts::Merchant, Lithic::Internal::Util::AnyHash),
+            settlement: T.any(Lithic::Models::Transaction::Amounts::Settlement, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -806,19 +824,22 @@ module Lithic
         sig { returns(Lithic::Models::Transaction::Pos::EntryMode) }
         attr_reader :entry_mode
 
-        sig { params(entry_mode: T.any(Lithic::Models::Transaction::Pos::EntryMode, Lithic::Util::AnyHash)).void }
+        sig do
+          params(entry_mode: T.any(Lithic::Models::Transaction::Pos::EntryMode, Lithic::Internal::Util::AnyHash))
+            .void
+        end
         attr_writer :entry_mode
 
         sig { returns(Lithic::Models::Transaction::Pos::Terminal) }
         attr_reader :terminal
 
-        sig { params(terminal: T.any(Lithic::Models::Transaction::Pos::Terminal, Lithic::Util::AnyHash)).void }
+        sig { params(terminal: T.any(Lithic::Models::Transaction::Pos::Terminal, Lithic::Internal::Util::AnyHash)).void }
         attr_writer :terminal
 
         sig do
           params(
-            entry_mode: T.any(Lithic::Models::Transaction::Pos::EntryMode, Lithic::Util::AnyHash),
-            terminal: T.any(Lithic::Models::Transaction::Pos::Terminal, Lithic::Util::AnyHash)
+            entry_mode: T.any(Lithic::Models::Transaction::Pos::EntryMode, Lithic::Internal::Util::AnyHash),
+            terminal: T.any(Lithic::Models::Transaction::Pos::Terminal, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -1223,7 +1244,7 @@ module Lithic
         sig { returns(Lithic::Models::Transaction::Event::Amounts) }
         attr_reader :amounts
 
-        sig { params(amounts: T.any(Lithic::Models::Transaction::Event::Amounts, Lithic::Util::AnyHash)).void }
+        sig { params(amounts: T.any(Lithic::Models::Transaction::Event::Amounts, Lithic::Internal::Util::AnyHash)).void }
         attr_writer :amounts
 
         # RFC 3339 date and time this event entered the system. UTC time zone.
@@ -1251,7 +1272,7 @@ module Lithic
 
         sig do
           params(
-            network_info: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo, Lithic::Util::AnyHash))
+            network_info: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo, Lithic::Internal::Util::AnyHash))
           )
             .void
         end
@@ -1271,13 +1292,13 @@ module Lithic
           params(
             token: String,
             amount: Integer,
-            amounts: T.any(Lithic::Models::Transaction::Event::Amounts, Lithic::Util::AnyHash),
+            amounts: T.any(Lithic::Models::Transaction::Event::Amounts, Lithic::Internal::Util::AnyHash),
             created: Time,
             detailed_results: T::Array[Lithic::Models::Transaction::Event::DetailedResult::OrSymbol],
             effective_polarity: Lithic::Models::Transaction::Event::EffectivePolarity::OrSymbol,
-            network_info: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo, Lithic::Util::AnyHash)),
+            network_info: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo, Lithic::Internal::Util::AnyHash)),
             result: Lithic::Models::Transaction::Event::Result::OrSymbol,
-            rule_results: T::Array[T.any(Lithic::Models::Transaction::Event::RuleResult, Lithic::Util::AnyHash)],
+            rule_results: T::Array[T.any(Lithic::Models::Transaction::Event::RuleResult, Lithic::Internal::Util::AnyHash)],
             type: Lithic::Models::Transaction::Event::Type::OrSymbol
           )
             .returns(T.attached_class)
@@ -1321,7 +1342,9 @@ module Lithic
           attr_reader :cardholder
 
           sig do
-            params(cardholder: T.any(Lithic::Models::Transaction::Event::Amounts::Cardholder, Lithic::Util::AnyHash))
+            params(
+              cardholder: T.any(Lithic::Models::Transaction::Event::Amounts::Cardholder, Lithic::Internal::Util::AnyHash)
+            )
               .void
           end
           attr_writer :cardholder
@@ -1329,7 +1352,12 @@ module Lithic
           sig { returns(Lithic::Models::Transaction::Event::Amounts::Merchant) }
           attr_reader :merchant
 
-          sig { params(merchant: T.any(Lithic::Models::Transaction::Event::Amounts::Merchant, Lithic::Util::AnyHash)).void }
+          sig do
+            params(
+              merchant: T.any(Lithic::Models::Transaction::Event::Amounts::Merchant, Lithic::Internal::Util::AnyHash)
+            )
+              .void
+          end
           attr_writer :merchant
 
           sig { returns(T.nilable(Lithic::Models::Transaction::Event::Amounts::Settlement)) }
@@ -1337,7 +1365,7 @@ module Lithic
 
           sig do
             params(
-              settlement: T.nilable(T.any(Lithic::Models::Transaction::Event::Amounts::Settlement, Lithic::Util::AnyHash))
+              settlement: T.nilable(T.any(Lithic::Models::Transaction::Event::Amounts::Settlement, Lithic::Internal::Util::AnyHash))
             )
               .void
           end
@@ -1345,9 +1373,9 @@ module Lithic
 
           sig do
             params(
-              cardholder: T.any(Lithic::Models::Transaction::Event::Amounts::Cardholder, Lithic::Util::AnyHash),
-              merchant: T.any(Lithic::Models::Transaction::Event::Amounts::Merchant, Lithic::Util::AnyHash),
-              settlement: T.nilable(T.any(Lithic::Models::Transaction::Event::Amounts::Settlement, Lithic::Util::AnyHash))
+              cardholder: T.any(Lithic::Models::Transaction::Event::Amounts::Cardholder, Lithic::Internal::Util::AnyHash),
+              merchant: T.any(Lithic::Models::Transaction::Event::Amounts::Merchant, Lithic::Internal::Util::AnyHash),
+              settlement: T.nilable(T.any(Lithic::Models::Transaction::Event::Amounts::Settlement, Lithic::Internal::Util::AnyHash))
             )
               .returns(T.attached_class)
           end
@@ -1593,7 +1621,9 @@ module Lithic
 
           sig do
             params(
-              acquirer: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, Lithic::Util::AnyHash))
+              acquirer: T.nilable(
+                T.any(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, Lithic::Internal::Util::AnyHash)
+              )
             )
               .void
           end
@@ -1604,7 +1634,9 @@ module Lithic
 
           sig do
             params(
-              mastercard: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Mastercard, Lithic::Util::AnyHash))
+              mastercard: T.nilable(
+                T.any(Lithic::Models::Transaction::Event::NetworkInfo::Mastercard, Lithic::Internal::Util::AnyHash)
+              )
             )
               .void
           end
@@ -1615,7 +1647,7 @@ module Lithic
 
           sig do
             params(
-              visa: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Visa, Lithic::Util::AnyHash))
+              visa: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Visa, Lithic::Internal::Util::AnyHash))
             )
               .void
           end
@@ -1632,9 +1664,13 @@ module Lithic
           #   for more details about these fields and how to use them.
           sig do
             params(
-              acquirer: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, Lithic::Util::AnyHash)),
-              mastercard: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Mastercard, Lithic::Util::AnyHash)),
-              visa: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Visa, Lithic::Util::AnyHash))
+              acquirer: T.nilable(
+                T.any(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, Lithic::Internal::Util::AnyHash)
+              ),
+              mastercard: T.nilable(
+                T.any(Lithic::Models::Transaction::Event::NetworkInfo::Mastercard, Lithic::Internal::Util::AnyHash)
+              ),
+              visa: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Visa, Lithic::Internal::Util::AnyHash))
             )
               .returns(T.attached_class)
           end

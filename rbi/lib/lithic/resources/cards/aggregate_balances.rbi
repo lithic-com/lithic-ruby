@@ -9,9 +9,9 @@ module Lithic
           params(
             account_token: String,
             business_account_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
           )
-            .returns(Lithic::SinglePage[Lithic::Models::Cards::AggregateBalanceListResponse])
+            .returns(Lithic::Internal::SinglePage[Lithic::Models::Cards::AggregateBalanceListResponse])
         end
         def list(
           # Cardholder to retrieve aggregate balances for.

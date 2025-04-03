@@ -2,11 +2,12 @@ module Lithic
   module Models
     module Events
       type subscription_recover_params =
-        { begin_: Time, end_: Time } & Lithic::request_parameters
+        { begin_: Time, end_: Time }
+        & Lithic::Internal::Type::request_parameters
 
       class SubscriptionRecoverParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_reader begin_: Time?
 

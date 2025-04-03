@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::Events::Subscriptions#list
       class SubscriptionListParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!attribute [r] ending_before
         #   A cursor representing an item's token before which a page of results should end.

@@ -1,11 +1,12 @@
 module Lithic
   module Models
     type tokenization_update_digital_card_art_params =
-      { digital_card_art_token: String } & Lithic::request_parameters
+      { digital_card_art_token: String }
+      & Lithic::Internal::Type::request_parameters
 
     class TokenizationUpdateDigitalCardArtParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader digital_card_art_token: String?
 

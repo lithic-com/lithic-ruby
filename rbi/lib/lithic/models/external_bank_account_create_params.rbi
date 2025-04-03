@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class ExternalBankAccountCreateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Account Number
       sig { returns(String) }
@@ -57,7 +57,7 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::ExternalBankAccountAddress)) }
       attr_reader :address
 
-      sig { params(address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash)).void }
+      sig { params(address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :address
 
       # Optional field that helps identify bank accounts in receipts
@@ -117,14 +117,14 @@ module Lithic
           verification_method: Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol,
           processor_token: String,
           account_token: String,
-          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Util::AnyHash),
+          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::Util::AnyHash),
           company_id: String,
           dob: Date,
           doing_business_as: String,
           name: String,
           user_defined_id: String,
           verification_enforcement: T::Boolean,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

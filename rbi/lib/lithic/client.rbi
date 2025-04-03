@@ -1,7 +1,7 @@
 # typed: strong
 
 module Lithic
-  class Client < Lithic::Transport::BaseClient
+  class Client < Lithic::Internal::Transport::BaseClient
     DEFAULT_MAX_RETRIES = 2
 
     DEFAULT_TIMEOUT_IN_SECONDS = T.let(60.0, Float)
@@ -96,7 +96,7 @@ module Lithic
 
     # Status of api
     sig do
-      params(request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)))
+      params(request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)))
         .returns(Lithic::Models::APIStatus)
     end
     def api_status(request_options: {})

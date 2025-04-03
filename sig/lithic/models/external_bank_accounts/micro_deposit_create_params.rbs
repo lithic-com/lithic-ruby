@@ -2,11 +2,12 @@ module Lithic
   module Models
     module ExternalBankAccounts
       type micro_deposit_create_params =
-        { micro_deposits: ::Array[Integer] } & Lithic::request_parameters
+        { micro_deposits: ::Array[Integer] }
+        & Lithic::Internal::Type::request_parameters
 
       class MicroDepositCreateParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_accessor micro_deposits: ::Array[Integer]
 

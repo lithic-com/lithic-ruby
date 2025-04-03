@@ -38,7 +38,7 @@ module Lithic
       # @param with_content [Boolean]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::CursorPage<Lithic::Models::Event>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::Event>]
       #
       # @see Lithic::Models::EventListParams
       def list(params = {})
@@ -47,7 +47,7 @@ module Lithic
           method: :get,
           path: "v1/events",
           query: parsed,
-          page: Lithic::CursorPage,
+          page: Lithic::Internal::CursorPage,
           model: Lithic::Models::Event,
           options: options
         )
@@ -66,7 +66,7 @@ module Lithic
       # @param status [Symbol, Lithic::Models::EventListAttemptsParams::Status]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::CursorPage<Lithic::Models::MessageAttempt>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::MessageAttempt>]
       #
       # @see Lithic::Models::EventListAttemptsParams
       def list_attempts(event_token, params = {})
@@ -75,7 +75,7 @@ module Lithic
           method: :get,
           path: ["v1/events/%1$s/attempts", event_token],
           query: parsed,
-          page: Lithic::CursorPage,
+          page: Lithic::Internal::CursorPage,
           model: Lithic::Models::MessageAttempt,
           options: options
         )
