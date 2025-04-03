@@ -6,7 +6,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class AggregateBalanceListParams < Lithic::BaseModel
+    class AggregateBalanceListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -26,7 +26,7 @@ module Lithic
       type financial_account_type = :ISSUING | :OPERATING | :RESERVE
 
       module FinancialAccountType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ISSUING: :ISSUING
         OPERATING: :OPERATING

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#upload_document
-    class AccountHolderUploadDocumentParams < Lithic::BaseModel
+    class AccountHolderUploadDocumentParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -27,11 +27,11 @@ module Lithic
       #   #
       #   def initialize(document_type:, entity_token:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # The type of document to upload
       module DocumentType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         EIN_LETTER = :EIN_LETTER
         TAX_RETURN = :TAX_RETURN

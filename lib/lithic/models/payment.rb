@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Payments#retrieve
-    class Payment < Lithic::BaseModel
+    class Payment < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier.
       #
@@ -44,7 +44,7 @@ module Lithic
       #   A list of all payment events that have modified this payment.
       #
       #   @return [Array<Lithic::Models::Payment::Event>]
-      required :events, -> { Lithic::ArrayOf[Lithic::Models::Payment::Event] }
+      required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Payment::Event] }
 
       # @!attribute external_bank_account_token
       #
@@ -159,13 +159,13 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Payment category
       #
       # @see Lithic::Models::Payment#category
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACH = :ACH
 
@@ -178,7 +178,7 @@ module Lithic
 
       # @see Lithic::Models::Payment#direction
       module Direction
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CREDIT = :CREDIT
         DEBIT = :DEBIT
@@ -190,7 +190,7 @@ module Lithic
         #   def self.values; end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   Globally unique identifier.
         #
@@ -246,7 +246,8 @@ module Lithic
         #   More detailed reasons for the event
         #
         #   @return [Array<Symbol, Lithic::Models::Payment::Event::DetailedResult>, nil]
-        optional :detailed_results, -> { Lithic::ArrayOf[enum: Lithic::Models::Payment::Event::DetailedResult] }
+        optional :detailed_results,
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::Payment::Event::DetailedResult] }
 
         # @!parse
         #   # @return [Array<Symbol, Lithic::Models::Payment::Event::DetailedResult>]
@@ -262,14 +263,14 @@ module Lithic
         #   #
         #   def initialize(token:, amount:, created:, result:, type:, detailed_results: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         #
         # @see Lithic::Models::Payment::Event#result
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
           DECLINED = :DECLINED
@@ -304,7 +305,7 @@ module Lithic
         #
         # @see Lithic::Models::Payment::Event#type
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACH_ORIGINATION_CANCELLED = :ACH_ORIGINATION_CANCELLED
           ACH_ORIGINATION_INITIATED = :ACH_ORIGINATION_INITIATED
@@ -326,7 +327,7 @@ module Lithic
         end
 
         module DetailedResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
           FUNDS_INSUFFICIENT = :FUNDS_INSUFFICIENT
@@ -345,7 +346,7 @@ module Lithic
 
       # @see Lithic::Models::Payment#method_
       module Method
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACH_NEXT_DAY = :ACH_NEXT_DAY
         ACH_SAME_DAY = :ACH_SAME_DAY
@@ -358,7 +359,7 @@ module Lithic
       end
 
       # @see Lithic::Models::Payment#method_attributes
-      class MethodAttributes < Lithic::BaseModel
+      class MethodAttributes < Lithic::Internal::Type::BaseModel
         # @!attribute company_id
         #
         #   @return [String, nil]
@@ -387,7 +388,7 @@ module Lithic
         # @!attribute trace_numbers
         #
         #   @return [Array<String, nil>]
-        required :trace_numbers, Lithic::ArrayOf[String, nil?: true]
+        required :trace_numbers, Lithic::Internal::Type::ArrayOf[String, nil?: true]
 
         # @!parse
         #   # @param company_id [String, nil]
@@ -399,11 +400,11 @@ module Lithic
         #   #
         #   def initialize(company_id:, receipt_routing_number:, retries:, return_reason_code:, sec_code:, trace_numbers:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # @see Lithic::Models::Payment::MethodAttributes#sec_code
         module SecCode
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CCD = :CCD
           PPD = :PPD
@@ -422,7 +423,7 @@ module Lithic
       #
       # @see Lithic::Models::Payment#result
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED = :APPROVED
         DECLINED = :DECLINED
@@ -436,7 +437,7 @@ module Lithic
 
       # @see Lithic::Models::Payment#source
       module Source
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CUSTOMER = :CUSTOMER
         LITHIC = :LITHIC
@@ -458,7 +459,7 @@ module Lithic
       #
       # @see Lithic::Models::Payment#status
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DECLINED = :DECLINED
         PENDING = :PENDING

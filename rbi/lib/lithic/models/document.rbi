@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class Document < Lithic::BaseModel
+    class Document < Lithic::Internal::Type::BaseModel
       # Globally unique identifier for the document.
       sig { returns(String) }
       attr_accessor :token
@@ -31,7 +31,7 @@ module Lithic
           account_holder_token: String,
           document_type: Lithic::Models::Document::DocumentType::OrSymbol,
           entity_token: String,
-          required_document_uploads: T::Array[T.any(Lithic::Models::Document::RequiredDocumentUpload, Lithic::Internal::Util::AnyHash)]
+          required_document_uploads: T::Array[T.any(Lithic::Models::Document::RequiredDocumentUpload, Lithic::Internal::AnyHash)]
         )
           .returns(T.attached_class)
       end
@@ -55,7 +55,7 @@ module Lithic
 
       # Type of documentation to be submitted for verification of an account holder
       module DocumentType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Document::DocumentType) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Document::DocumentType::TaggedSymbol) }
@@ -92,7 +92,7 @@ module Lithic
         end
       end
 
-      class RequiredDocumentUpload < Lithic::BaseModel
+      class RequiredDocumentUpload < Lithic::Internal::Type::BaseModel
         # Globally unique identifier for the document upload.
         sig { returns(String) }
         attr_accessor :token
@@ -184,7 +184,7 @@ module Lithic
 
         # Type of image to upload.
         module ImageType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Document::RequiredDocumentUpload::ImageType) }
@@ -201,7 +201,7 @@ module Lithic
 
         # Status of an account holder's document upload.
         module Status
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Document::RequiredDocumentUpload::Status) }
           OrSymbol =
@@ -222,7 +222,7 @@ module Lithic
 
         # The status reasons for an account holder document upload that is not ACCEPTED
         module StatusReason
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Document::RequiredDocumentUpload::StatusReason) }

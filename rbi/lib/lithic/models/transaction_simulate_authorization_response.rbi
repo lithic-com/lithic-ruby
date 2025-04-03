@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class TransactionSimulateAuthorizationResponse < Lithic::BaseModel
+    class TransactionSimulateAuthorizationResponse < Lithic::Internal::Type::BaseModel
       # A unique token to reference this transaction with later calls to void or clear
       #   the authorization.
       sig { returns(T.nilable(String)) }

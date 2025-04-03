@@ -3,7 +3,7 @@ module Lithic
     type card_retrieve_spend_limits_params =
       {  } & Lithic::Internal::Type::request_parameters
 
-    class CardRetrieveSpendLimitsParams < Lithic::BaseModel
+    class CardRetrieveSpendLimitsParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

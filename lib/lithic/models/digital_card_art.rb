@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::DigitalCardArt#retrieve
-    class DigitalCardArtAPI < Lithic::BaseModel
+    class DigitalCardArtAPI < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier for the card art.
       #
@@ -32,7 +32,7 @@ module Lithic
       #   Whether the card art is enabled.
       #
       #   @return [Boolean]
-      required :is_enabled, Lithic::BooleanModel
+      required :is_enabled, Lithic::Internal::Type::BooleanModel
 
       # @!attribute network
       #   Card network.
@@ -44,7 +44,7 @@ module Lithic
       #   Whether the card art is the default card art to be added upon tokenization.
       #
       #   @return [Boolean, nil]
-      optional :is_card_program_default, Lithic::BooleanModel
+      optional :is_card_program_default, Lithic::Internal::Type::BooleanModel
 
       # @!parse
       #   # @return [Boolean]
@@ -72,13 +72,13 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Card network.
       #
       # @see Lithic::Models::DigitalCardArtAPI#network
       module Network
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         MASTERCARD = :MASTERCARD
         VISA = :VISA

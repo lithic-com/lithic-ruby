@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module ThreeDS
-      class AuthenticationRetrieveResponse < Lithic::BaseModel
+      class AuthenticationRetrieveResponse < Lithic::Internal::Type::BaseModel
         # Globally unique identifier for the 3DS authentication.
         sig { returns(String) }
         attr_accessor :token
@@ -33,10 +33,7 @@ module Lithic
 
         sig do
           params(
-            cardholder: T.any(
-              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder,
-              Lithic::Internal::Util::AnyHash
-            )
+            cardholder: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder, Lithic::Internal::AnyHash)
           )
             .void
         end
@@ -57,7 +54,7 @@ module Lithic
 
         sig do
           params(
-            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant, Lithic::Internal::Util::AnyHash)
+            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant, Lithic::Internal::AnyHash)
           )
             .void
         end
@@ -95,10 +92,7 @@ module Lithic
         sig do
           params(
             additional_data: T.nilable(
-              T.any(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData,
-                Lithic::Internal::Util::AnyHash
-              )
+              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData, Lithic::Internal::AnyHash)
             )
           )
             .void
@@ -112,7 +106,7 @@ module Lithic
 
         sig do
           params(
-            app: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, Lithic::Internal::Util::AnyHash)
+            app: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, Lithic::Internal::AnyHash)
           )
             .void
         end
@@ -137,7 +131,7 @@ module Lithic
 
         sig do
           params(
-            browser: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, Lithic::Internal::Util::AnyHash)
+            browser: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, Lithic::Internal::AnyHash)
           )
             .void
         end
@@ -152,7 +146,7 @@ module Lithic
             challenge_metadata: T.nilable(
               T.any(
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata,
-                Lithic::Internal::Util::AnyHash
+                Lithic::Internal::AnyHash
               )
             )
           )
@@ -192,10 +186,7 @@ module Lithic
         sig do
           params(
             transaction: T.nilable(
-              T.any(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction,
-                Lithic::Internal::Util::AnyHash
-              )
+              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction, Lithic::Internal::AnyHash)
             )
           )
             .void
@@ -209,38 +200,29 @@ module Lithic
             authentication_result: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::OrSymbol,
             card_expiry_check: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::OrSymbol,
             card_token: String,
-            cardholder: T.any(
-              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder,
-              Lithic::Internal::Util::AnyHash
-            ),
+            cardholder: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder, Lithic::Internal::AnyHash),
             channel: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::OrSymbol,
             created: Time,
-            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant, Lithic::Internal::Util::AnyHash),
+            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant, Lithic::Internal::AnyHash),
             message_category: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::OrSymbol,
             three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::OrSymbol,
             additional_data: T.nilable(
-              T.any(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData,
-                Lithic::Internal::Util::AnyHash
-              )
+              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData, Lithic::Internal::AnyHash)
             ),
-            app: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, Lithic::Internal::Util::AnyHash),
+            app: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, Lithic::Internal::AnyHash),
             authentication_request_type: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::OrSymbol),
-            browser: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, Lithic::Internal::Util::AnyHash),
+            browser: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, Lithic::Internal::AnyHash),
             challenge_metadata: T.nilable(
               T.any(
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata,
-                Lithic::Internal::Util::AnyHash
+                Lithic::Internal::AnyHash
               )
             ),
             challenge_orchestrated_by: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::OrSymbol),
             decision_made_by: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::OrSymbol),
             three_ri_request_type: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::OrSymbol),
             transaction: T.nilable(
-              T.any(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction,
-                Lithic::Internal::Util::AnyHash
-              )
+              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction, Lithic::Internal::AnyHash)
             )
           )
             .returns(T.attached_class)
@@ -304,7 +286,7 @@ module Lithic
         # Type of account/card that is being used for the transaction. Maps to EMV 3DS
         #   field `acctType`.
         module AccountType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType) }
@@ -327,7 +309,7 @@ module Lithic
 
         # Indicates the outcome of the 3DS authentication process.
         module AuthenticationResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult) }
@@ -374,7 +356,7 @@ module Lithic
         # Indicates whether the expiration date provided by the cardholder during checkout
         #   matches Lithic's record of the card's expiration date.
         module CardExpiryCheck
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck) }
@@ -405,7 +387,7 @@ module Lithic
           end
         end
 
-        class Cardholder < Lithic::BaseModel
+        class Cardholder < Lithic::Internal::Type::BaseModel
           # Indicates whether the shipping address and billing address provided by the
           #   cardholder are the same. This value - and assessment of whether the addresses
           #   match - is provided directly in the 3DS request and is not determined by Lithic.
@@ -421,7 +403,7 @@ module Lithic
             params(
               billing_address: T.any(
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
-                Lithic::Internal::Util::AnyHash
+                Lithic::Internal::AnyHash
               )
             )
               .void
@@ -460,7 +442,7 @@ module Lithic
             params(
               shipping_address: T.any(
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress,
-                Lithic::Internal::Util::AnyHash
+                Lithic::Internal::AnyHash
               )
             )
               .void
@@ -473,7 +455,7 @@ module Lithic
               address_match: T.nilable(T::Boolean),
               billing_address: T.any(
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
-                Lithic::Internal::Util::AnyHash
+                Lithic::Internal::AnyHash
               ),
               email: T.nilable(String),
               name: T.nilable(String),
@@ -482,7 +464,7 @@ module Lithic
               phone_number_work: T.nilable(String),
               shipping_address: T.any(
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress,
-                Lithic::Internal::Util::AnyHash
+                Lithic::Internal::AnyHash
               )
             )
               .returns(T.attached_class)
@@ -517,7 +499,7 @@ module Lithic
           def to_hash
           end
 
-          class BillingAddress < Lithic::BaseModel
+          class BillingAddress < Lithic::Internal::Type::BaseModel
             # First line of the street address provided by the cardholder.
             sig { returns(T.nilable(String)) }
             attr_accessor :address1
@@ -582,7 +564,7 @@ module Lithic
             end
           end
 
-          class ShippingAddress < Lithic::BaseModel
+          class ShippingAddress < Lithic::Internal::Type::BaseModel
             # First line of the street address provided by the cardholder.
             sig { returns(T.nilable(String)) }
             attr_accessor :address1
@@ -650,7 +632,7 @@ module Lithic
 
         # Channel in which the authentication occurs. Maps to EMV 3DS field deviceChannel.
         module Channel
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel) }
@@ -671,7 +653,7 @@ module Lithic
           end
         end
 
-        class Merchant < Lithic::BaseModel
+        class Merchant < Lithic::Internal::Type::BaseModel
           # Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field
           #   acquirerMerchantId.
           sig { returns(String) }
@@ -700,7 +682,7 @@ module Lithic
             params(
               risk_indicator: T.any(
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator,
-                Lithic::Internal::Util::AnyHash
+                Lithic::Internal::AnyHash
               )
             )
               .void
@@ -717,7 +699,7 @@ module Lithic
               name: String,
               risk_indicator: T.any(
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator,
-                Lithic::Internal::Util::AnyHash
+                Lithic::Internal::AnyHash
               )
             )
               .returns(T.attached_class)
@@ -740,7 +722,7 @@ module Lithic
           def to_hash
           end
 
-          class RiskIndicator < Lithic::BaseModel
+          class RiskIndicator < Lithic::Internal::Type::BaseModel
             # In transactions with electronic delivery, email address to which merchandise is
             #   delivered. Maps to EMV 3DS field deliveryEmailAddress.
             sig { returns(T.nilable(String)) }
@@ -880,7 +862,7 @@ module Lithic
             # The delivery time frame for the merchandise. Maps to EMV 3DS field
             #   deliveryTimeframe.
             module DeliveryTimeFrame
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -931,7 +913,7 @@ module Lithic
             # Indicates whether the purchase is for merchandise that is available now or at a
             #   future date. Maps to EMV 3DS field preOrderPurchaseInd.
             module OrderAvailability
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -972,7 +954,7 @@ module Lithic
             # Indicates whether the cardholder is reordering previously purchased merchandise.
             #   Maps to EMV 3DS field reorderItemsInd.
             module ReorderItems
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -1015,7 +997,7 @@ module Lithic
             #   purchase only includes digital goods, this indicator is used to describe the
             #   most expensive item purchased. Maps to EMV 3DS field shipIndicator.
             module ShippingMethod
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -1094,7 +1076,7 @@ module Lithic
         #   NON_PAYMENT_AUTHENTICATION, additional_data and transaction fields are not
         #   populated.
         module MessageCategory
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory) }
@@ -1137,7 +1119,7 @@ module Lithic
         #   - `DATA_SHARE_ONLY` - No Challenge requested (Data Share Only)
         #   - `OTHER` - Other indicators not captured by above. These are rarely used
         module ThreeDSRequestorChallengeIndicator
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator) }
@@ -1196,7 +1178,7 @@ module Lithic
           end
         end
 
-        class AdditionalData < Lithic::BaseModel
+        class AdditionalData < Lithic::Internal::Type::BaseModel
           # Mastercard only: Indicates whether the network would have considered the
           #   authentication request to be low risk or not.
           sig do
@@ -1245,7 +1227,7 @@ module Lithic
           # Mastercard only: Indicates whether the network would have considered the
           #   authentication request to be low risk or not.
           module NetworkDecision
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision) }
@@ -1280,7 +1262,7 @@ module Lithic
           end
         end
 
-        class App < Lithic::BaseModel
+        class App < Lithic::Internal::Type::BaseModel
           # Device information gathered from the cardholder's device - JSON name/value pairs
           #   that is Base64url encoded. Maps to EMV 3DS field deviceInfo.
           sig { returns(T.nilable(String)) }
@@ -1309,7 +1291,7 @@ module Lithic
         #   causing the merchant to request an authentication. Maps to EMV 3DS field
         #   threeDSRequestorAuthenticationInd.
         module AuthenticationRequestType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType) }
@@ -1383,7 +1365,7 @@ module Lithic
           end
         end
 
-        class Browser < Lithic::BaseModel
+        class Browser < Lithic::Internal::Type::BaseModel
           # IP address of the browser as returned by the HTTP headers to the 3DS requestor
           #   (e.g., merchant or digital wallet). Maps to EMV 3DS field browserIP.
           sig { returns(T.nilable(String)) }
@@ -1454,7 +1436,7 @@ module Lithic
           end
         end
 
-        class ChallengeMetadata < Lithic::BaseModel
+        class ChallengeMetadata < Lithic::Internal::Type::BaseModel
           # The type of challenge method used for authentication.
           sig do
             returns(
@@ -1492,7 +1474,7 @@ module Lithic
 
           # The type of challenge method used for authentication.
           module MethodType
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType) }
@@ -1529,7 +1511,7 @@ module Lithic
 
         # Entity that orchestrates the challenge.
         module ChallengeOrchestratedBy
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy) }
@@ -1570,7 +1552,7 @@ module Lithic
 
         # Entity that made the authentication decision.
         module DecisionMadeBy
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy) }
@@ -1617,7 +1599,7 @@ module Lithic
         #   for a recurring transaction such as a pay TV subscription or a utility bill.
         #   Maps to EMV 3DS field threeRIInd.
         module ThreeRiRequestType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType) }
@@ -1718,7 +1700,7 @@ module Lithic
           end
         end
 
-        class Transaction < Lithic::BaseModel
+        class Transaction < Lithic::Internal::Type::BaseModel
           # Amount of the purchase in minor units of currency with all punctuation removed.
           #   Maps to EMV 3DS field purchaseAmount.
           sig { returns(Float) }
@@ -1780,7 +1762,7 @@ module Lithic
           # Type of the transaction for which a 3DS authentication request is occurring.
           #   Maps to EMV 3DS field transType.
           module Type
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type) }

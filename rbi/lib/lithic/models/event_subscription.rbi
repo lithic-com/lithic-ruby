@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class EventSubscription < Lithic::BaseModel
+    class EventSubscription < Lithic::Internal::Type::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
       attr_accessor :token
@@ -51,7 +51,7 @@ module Lithic
       end
 
       module EventType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::EventSubscription::EventType) }
         OrSymbol =

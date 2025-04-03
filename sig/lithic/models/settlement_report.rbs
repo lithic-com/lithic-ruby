@@ -15,7 +15,7 @@ module Lithic
         updated: Time
       }
 
-    class SettlementReport < Lithic::BaseModel
+    class SettlementReport < Lithic::Internal::Type::BaseModel
       attr_accessor created: Time
 
       attr_accessor currency: String

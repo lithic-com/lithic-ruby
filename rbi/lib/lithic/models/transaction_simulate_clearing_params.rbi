@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class TransactionSimulateClearingParams < Lithic::BaseModel
+    class TransactionSimulateClearingParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -29,7 +29,7 @@ module Lithic
         params(
           token: String,
           amount: Integer,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

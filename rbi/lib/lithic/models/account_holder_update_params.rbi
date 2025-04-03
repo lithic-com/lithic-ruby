@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class AccountHolderUpdateParams < Lithic::BaseModel
+    class AccountHolderUpdateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -18,7 +18,7 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity, Lithic::Internal::Util::AnyHash)]
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity, Lithic::Internal::AnyHash)]
         )
           .void
       end
@@ -36,12 +36,7 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_individuals: T::Array[
-          T.any(
-            Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual,
-            Lithic::Internal::Util::AnyHash
-          )
-          ]
+          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual, Lithic::Internal::AnyHash)]
         )
           .void
       end
@@ -54,7 +49,7 @@ module Lithic
 
       sig do
         params(
-          business_entity: T.any(Lithic::Models::AccountHolderUpdateParams::BusinessEntity, Lithic::Internal::Util::AnyHash)
+          business_entity: T.any(Lithic::Models::AccountHolderUpdateParams::BusinessEntity, Lithic::Internal::AnyHash)
         )
           .void
       end
@@ -73,7 +68,7 @@ module Lithic
 
       sig do
         params(
-          control_person: T.any(Lithic::Models::AccountHolderUpdateParams::ControlPerson, Lithic::Internal::Util::AnyHash)
+          control_person: T.any(Lithic::Models::AccountHolderUpdateParams::ControlPerson, Lithic::Internal::AnyHash)
         )
           .void
       end
@@ -109,7 +104,7 @@ module Lithic
 
       sig do
         params(
-          individual: T.any(Lithic::Models::AccountHolderUpdateParams::Individual, Lithic::Internal::Util::AnyHash)
+          individual: T.any(Lithic::Models::AccountHolderUpdateParams::Individual, Lithic::Internal::AnyHash)
         )
           .void
       end
@@ -119,7 +114,7 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
       attr_reader :address
 
-      sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::Util::AnyHash)).void }
+      sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash)).void }
       attr_writer :address
 
       # Allowed for: KYC-Exempt, BYO-KYC. The token of the business account to which the
@@ -171,27 +166,22 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity, Lithic::Internal::Util::AnyHash)],
-          beneficial_owner_individuals: T::Array[
-          T.any(
-            Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual,
-            Lithic::Internal::Util::AnyHash
-          )
-          ],
-          business_entity: T.any(Lithic::Models::AccountHolderUpdateParams::BusinessEntity, Lithic::Internal::Util::AnyHash),
-          control_person: T.any(Lithic::Models::AccountHolderUpdateParams::ControlPerson, Lithic::Internal::Util::AnyHash),
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity, Lithic::Internal::AnyHash)],
+          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual, Lithic::Internal::AnyHash)],
+          business_entity: T.any(Lithic::Models::AccountHolderUpdateParams::BusinessEntity, Lithic::Internal::AnyHash),
+          control_person: T.any(Lithic::Models::AccountHolderUpdateParams::ControlPerson, Lithic::Internal::AnyHash),
           external_id: String,
           nature_of_business: String,
           website_url: String,
-          individual: T.any(Lithic::Models::AccountHolderUpdateParams::Individual, Lithic::Internal::Util::AnyHash),
-          address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::Util::AnyHash),
+          individual: T.any(Lithic::Models::AccountHolderUpdateParams::Individual, Lithic::Internal::AnyHash),
+          address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash),
           business_account_token: String,
           email: String,
           first_name: String,
           last_name: String,
           legal_business_name: String,
           phone_number: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -241,7 +231,7 @@ module Lithic
       def to_hash
       end
 
-      class BeneficialOwnerEntity < Lithic::BaseModel
+      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
         # Globally unique identifier for an entity.
         sig { returns(String) }
         attr_accessor :entity_token
@@ -251,7 +241,7 @@ module Lithic
         sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash)).void }
         attr_writer :address
 
         # Any name that the business operates under that is not its legal business name
@@ -296,7 +286,7 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::Util::AnyHash),
+            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash),
             dba_business_name: String,
             government_id: String,
             legal_business_name: String,
@@ -334,7 +324,7 @@ module Lithic
         end
       end
 
-      class BeneficialOwnerIndividual < Lithic::BaseModel
+      class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         # Globally unique identifier for an entity.
         sig { returns(String) }
         attr_accessor :entity_token
@@ -344,7 +334,7 @@ module Lithic
         sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash)).void }
         attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
@@ -397,7 +387,7 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::Util::AnyHash),
+            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash),
             dob: String,
             email: String,
             first_name: String,
@@ -438,7 +428,7 @@ module Lithic
         end
       end
 
-      class BusinessEntity < Lithic::BaseModel
+      class BusinessEntity < Lithic::Internal::Type::BaseModel
         # Globally unique identifier for an entity.
         sig { returns(String) }
         attr_accessor :entity_token
@@ -448,7 +438,7 @@ module Lithic
         sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash)).void }
         attr_writer :address
 
         # Any name that the business operates under that is not its legal business name
@@ -495,7 +485,7 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::Util::AnyHash),
+            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash),
             dba_business_name: String,
             government_id: String,
             legal_business_name: String,
@@ -533,7 +523,7 @@ module Lithic
         end
       end
 
-      class ControlPerson < Lithic::BaseModel
+      class ControlPerson < Lithic::Internal::Type::BaseModel
         # Globally unique identifier for an entity.
         sig { returns(String) }
         attr_accessor :entity_token
@@ -543,7 +533,7 @@ module Lithic
         sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash)).void }
         attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
@@ -603,7 +593,7 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::Util::AnyHash),
+            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash),
             dob: String,
             email: String,
             first_name: String,
@@ -644,7 +634,7 @@ module Lithic
         end
       end
 
-      class Individual < Lithic::BaseModel
+      class Individual < Lithic::Internal::Type::BaseModel
         # Globally unique identifier for an entity.
         sig { returns(String) }
         attr_accessor :entity_token
@@ -654,7 +644,7 @@ module Lithic
         sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash)).void }
         attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
@@ -708,7 +698,7 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::Util::AnyHash),
+            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash),
             dob: String,
             email: String,
             first_name: String,

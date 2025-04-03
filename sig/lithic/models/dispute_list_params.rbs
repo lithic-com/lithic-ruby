@@ -12,7 +12,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class DisputeListParams < Lithic::BaseModel
+    class DisputeListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -70,7 +70,7 @@ module Lithic
         | :SUBMITTED
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ARBITRATION: :ARBITRATION
         CASE_CLOSED: :CASE_CLOSED

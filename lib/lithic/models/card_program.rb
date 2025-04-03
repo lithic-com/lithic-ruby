@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::CardPrograms#retrieve
-    class CardProgram < Lithic::BaseModel
+    class CardProgram < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier.
       #
@@ -49,7 +49,7 @@ module Lithic
       #     program supports for settlement.
       #
       #   @return [Array<String>, nil]
-      optional :settlement_currencies, Lithic::ArrayOf[String]
+      optional :settlement_currencies, Lithic::Internal::Type::ArrayOf[String]
 
       # @!parse
       #   # @return [Array<String>]
@@ -77,7 +77,7 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

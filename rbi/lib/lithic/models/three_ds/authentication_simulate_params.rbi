@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module ThreeDS
-      class AuthenticationSimulateParams < Lithic::BaseModel
+      class AuthenticationSimulateParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
@@ -12,7 +12,7 @@ module Lithic
 
         sig do
           params(
-            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Internal::Util::AnyHash)
+            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Internal::AnyHash)
           )
             .void
         end
@@ -27,7 +27,7 @@ module Lithic
 
         sig do
           params(
-            transaction: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Internal::Util::AnyHash)
+            transaction: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Internal::AnyHash)
           )
             .void
         end
@@ -48,11 +48,11 @@ module Lithic
 
         sig do
           params(
-            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Internal::Util::AnyHash),
+            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Internal::AnyHash),
             pan: String,
-            transaction: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Internal::Util::AnyHash),
+            transaction: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Internal::AnyHash),
             card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -74,7 +74,7 @@ module Lithic
         def to_hash
         end
 
-        class Merchant < Lithic::BaseModel
+        class Merchant < Lithic::Internal::Type::BaseModel
           # Unique identifier to identify the payment card acceptor. Corresponds to
           #   `merchant_acceptor_id` in authorization.
           sig { returns(String) }
@@ -105,7 +105,7 @@ module Lithic
           end
         end
 
-        class Transaction < Lithic::BaseModel
+        class Transaction < Lithic::Internal::Type::BaseModel
           # Amount (in cents) to authenticate.
           sig { returns(Integer) }
           attr_accessor :amount
@@ -126,7 +126,7 @@ module Lithic
         # When set will use the following values as part of the Simulated Authentication.
         #   When not set defaults to MATCH
         module CardExpiryCheck
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck) }

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module ThreeDS
-      class ChallengeResponse < Lithic::BaseModel
+      class ChallengeResponse < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   Globally unique identifier for the 3DS authentication. This token is sent as
         #     part of the initial 3DS Decisioning Request and as part of the 3DS Challenge
@@ -25,7 +25,7 @@ module Lithic
         #   #
         #   def initialize(token:, challenge_response:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

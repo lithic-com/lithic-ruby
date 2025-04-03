@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Cards#retrieve_spend_limits
-    class CardSpendLimits < Lithic::BaseModel
+    class CardSpendLimits < Lithic::Internal::Type::BaseModel
       # @!attribute available_spend_limit
       #
       #   @return [Lithic::Models::CardSpendLimits::AvailableSpendLimit]
@@ -34,10 +34,10 @@ module Lithic
       #   #
       #   def initialize(available_spend_limit:, spend_limit: nil, spend_velocity: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # @see Lithic::Models::CardSpendLimits#available_spend_limit
-      class AvailableSpendLimit < Lithic::BaseModel
+      class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
         # @!attribute [r] annually
         #   The available spend limit (in cents) relative to the annual limit configured on
         #     the Card (e.g. 100000 would be a $1,000 limit).
@@ -78,11 +78,11 @@ module Lithic
         #   #
         #   def initialize(annually: nil, forever: nil, monthly: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # @see Lithic::Models::CardSpendLimits#spend_limit
-      class SpendLimit < Lithic::BaseModel
+      class SpendLimit < Lithic::Internal::Type::BaseModel
         # @!attribute [r] annually
         #   The configured annual spend limit (in cents) on the Card.
         #
@@ -120,11 +120,11 @@ module Lithic
         #   #
         #   def initialize(annually: nil, forever: nil, monthly: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # @see Lithic::Models::CardSpendLimits#spend_velocity
-      class SpendVelocity < Lithic::BaseModel
+      class SpendVelocity < Lithic::Internal::Type::BaseModel
         # @!attribute [r] annually
         #   Current annual spend velocity (in cents) on the Card. Present if annual spend
         #     limit is set.
@@ -165,7 +165,7 @@ module Lithic
         #   #
         #   def initialize(annually: nil, forever: nil, monthly: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

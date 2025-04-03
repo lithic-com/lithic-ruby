@@ -15,7 +15,7 @@ class Lithic::Test::Resources::EventsTest < Lithic::Test::ResourceTest
         token: String,
         created: Time,
         event_type: Lithic::Models::Event::EventType,
-        payload: ^(Lithic::HashOf[Lithic::Unknown])
+        payload: ^(Lithic::Internal::Type::HashOf[Lithic::Internal::Type::Unknown])
       }
     end
   end
@@ -39,7 +39,7 @@ class Lithic::Test::Resources::EventsTest < Lithic::Test::ResourceTest
         token: String,
         created: Time,
         event_type: Lithic::Models::Event::EventType,
-        payload: ^(Lithic::HashOf[Lithic::Unknown])
+        payload: ^(Lithic::Internal::Type::HashOf[Lithic::Internal::Type::Unknown])
       }
     end
   end

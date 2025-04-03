@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class AccountUpdateParams < Lithic::BaseModel
+    class AccountUpdateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -51,7 +51,7 @@ module Lithic
 
       sig do
         params(
-          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Internal::Util::AnyHash)
+          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Internal::AnyHash)
         )
           .void
       end
@@ -63,8 +63,8 @@ module Lithic
           lifetime_spend_limit: Integer,
           monthly_spend_limit: Integer,
           state: Lithic::Models::AccountUpdateParams::State::OrSymbol,
-          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Internal::Util::AnyHash),
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Internal::AnyHash),
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -96,7 +96,7 @@ module Lithic
 
       # Account states.
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountUpdateParams::State) }
         OrSymbol =
@@ -110,7 +110,7 @@ module Lithic
         end
       end
 
-      class VerificationAddress < Lithic::BaseModel
+      class VerificationAddress < Lithic::Internal::Type::BaseModel
         sig { returns(T.nilable(String)) }
         attr_reader :address1
 

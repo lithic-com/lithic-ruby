@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Transactions#simulate_authorization
-    class TransactionSimulateAuthorizationResponse < Lithic::BaseModel
+    class TransactionSimulateAuthorizationResponse < Lithic::Internal::Type::BaseModel
       # @!attribute [r] token
       #   A unique token to reference this transaction with later calls to void or clear
       #     the authorization.
@@ -31,7 +31,7 @@ module Lithic
       #   #
       #   def initialize(token: nil, debugging_request_id: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

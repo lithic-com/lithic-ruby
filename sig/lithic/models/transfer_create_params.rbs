@@ -4,7 +4,7 @@ module Lithic
       { amount: Integer, from: String, to: String, token: String, memo: String }
       & Lithic::Internal::Type::request_parameters
 
-    class TransferCreateParams < Lithic::BaseModel
+    class TransferCreateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

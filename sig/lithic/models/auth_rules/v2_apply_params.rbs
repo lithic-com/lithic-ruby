@@ -10,7 +10,7 @@ module Lithic
         }
         & Lithic::Internal::Type::request_parameters
 
-      class V2ApplyParams < Lithic::BaseModel
+      class V2ApplyParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 

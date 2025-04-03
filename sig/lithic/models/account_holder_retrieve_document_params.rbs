@@ -4,7 +4,7 @@ module Lithic
       { account_holder_token: String }
       & Lithic::Internal::Type::request_parameters
 
-    class AccountHolderRetrieveDocumentParams < Lithic::BaseModel
+    class AccountHolderRetrieveDocumentParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

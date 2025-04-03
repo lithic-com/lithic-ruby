@@ -16,9 +16,9 @@ class Lithic::Test::Resources::DigitalCardArtTest < Lithic::Test::ResourceTest
         card_program_token: String,
         created: Time,
         description: String,
-        is_enabled: Lithic::BooleanModel,
+        is_enabled: Lithic::Internal::Type::BooleanModel,
         network: Lithic::Models::DigitalCardArtAPI::Network,
-        is_card_program_default: Lithic::BooleanModel | nil
+        is_card_program_default: Lithic::Internal::Type::BooleanModel | nil
       }
     end
   end
@@ -43,9 +43,9 @@ class Lithic::Test::Resources::DigitalCardArtTest < Lithic::Test::ResourceTest
         card_program_token: String,
         created: Time,
         description: String,
-        is_enabled: Lithic::BooleanModel,
+        is_enabled: Lithic::Internal::Type::BooleanModel,
         network: Lithic::Models::DigitalCardArtAPI::Network,
-        is_card_program_default: Lithic::BooleanModel | nil
+        is_card_program_default: Lithic::Internal::Type::BooleanModel | nil
       }
     end
   end

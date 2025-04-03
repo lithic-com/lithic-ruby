@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class AggregateBalanceListParams < Lithic::BaseModel
+    class AggregateBalanceListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -19,7 +19,7 @@ module Lithic
       sig do
         params(
           financial_account_type: Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -40,7 +40,7 @@ module Lithic
 
       # Get the aggregate balance for a given Financial Account type.
       module FinancialAccountType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType) }

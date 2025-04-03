@@ -9,7 +9,7 @@ module Lithic
           params(
             financial_transaction_token: String,
             card_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
           )
             .returns(Lithic::Models::FinancialTransaction)
         end
@@ -32,7 +32,7 @@ module Lithic
             result: Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol,
             starting_after: String,
             status: Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
           )
             .returns(Lithic::Internal::SinglePage[Lithic::Models::FinancialTransaction])
         end

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::ExternalBankAccounts#create
-    class ExternalBankAccountCreateParams < Lithic::BaseModel
+    class ExternalBankAccountCreateParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -140,7 +140,7 @@ module Lithic
       # @!attribute [r] verification_enforcement
       #
       #   @return [Boolean, nil]
-      optional :verification_enforcement, Lithic::BooleanModel
+      optional :verification_enforcement, Lithic::Internal::Type::BooleanModel
 
       # @!parse
       #   # @return [Boolean]
@@ -197,11 +197,11 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Account Type
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CHECKING = :CHECKING
         SAVINGS = :SAVINGS
@@ -215,7 +215,7 @@ module Lithic
 
       # Verification Method
       module VerificationMethod
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         EXTERNALLY_VERIFIED = :EXTERNALLY_VERIFIED
 

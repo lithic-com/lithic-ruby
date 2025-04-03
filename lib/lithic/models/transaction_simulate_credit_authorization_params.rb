@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Transactions#simulate_credit_authorization
-    class TransactionSimulateCreditAuthorizationParams < Lithic::BaseModel
+    class TransactionSimulateCreditAuthorizationParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -60,7 +60,7 @@ module Lithic
       #   #
       #   def initialize(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

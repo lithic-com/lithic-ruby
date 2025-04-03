@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class PaymentCreateParams < Lithic::BaseModel
+    class PaymentCreateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -23,7 +23,7 @@ module Lithic
 
       sig do
         params(
-          method_attributes: T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Internal::Util::AnyHash)
+          method_attributes: T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Internal::AnyHash)
         )
           .void
       end
@@ -58,12 +58,12 @@ module Lithic
           external_bank_account_token: String,
           financial_account_token: String,
           method_: Lithic::Models::PaymentCreateParams::Method::OrSymbol,
-          method_attributes: T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Internal::Util::AnyHash),
+          method_attributes: T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Internal::AnyHash),
           type: Lithic::Models::PaymentCreateParams::Type::OrSymbol,
           token: String,
           memo: String,
           user_defined_id: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -102,7 +102,7 @@ module Lithic
       end
 
       module Method
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentCreateParams::Method) }
         OrSymbol =
@@ -116,7 +116,7 @@ module Lithic
         end
       end
 
-      class MethodAttributes < Lithic::BaseModel
+      class MethodAttributes < Lithic::Internal::Type::BaseModel
         sig { returns(Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol) }
         attr_accessor :sec_code
 
@@ -132,7 +132,7 @@ module Lithic
         end
 
         module SecCode
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode) }
@@ -150,7 +150,7 @@ module Lithic
       end
 
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentCreateParams::Type) }
         OrSymbol =

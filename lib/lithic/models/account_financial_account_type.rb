@@ -4,7 +4,7 @@ module Lithic
   module Models
     # Type of account financial account
     module AccountFinancialAccountType
-      extend Lithic::Enum
+      extend Lithic::Internal::Type::Enum
 
       ISSUING = :ISSUING
       OPERATING = :OPERATING

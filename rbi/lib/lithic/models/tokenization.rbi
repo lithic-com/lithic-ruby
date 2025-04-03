@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class Tokenization < Lithic::BaseModel
+    class Tokenization < Lithic::Internal::Type::BaseModel
       # Globally unique identifier for a Tokenization
       sig { returns(String) }
       attr_accessor :token
@@ -58,7 +58,7 @@ module Lithic
       sig { returns(T.nilable(T::Array[Lithic::Models::Tokenization::Event])) }
       attr_reader :events
 
-      sig { params(events: T::Array[T.any(Lithic::Models::Tokenization::Event, Lithic::Internal::Util::AnyHash)]).void }
+      sig { params(events: T::Array[T.any(Lithic::Models::Tokenization::Event, Lithic::Internal::AnyHash)]).void }
       attr_writer :events
 
       # The network's unique reference for the card that is tokenized.
@@ -78,7 +78,7 @@ module Lithic
           tokenization_channel: Lithic::Models::Tokenization::TokenizationChannel::OrSymbol,
           updated_at: Time,
           digital_card_art_token: String,
-          events: T::Array[T.any(Lithic::Models::Tokenization::Event, Lithic::Internal::Util::AnyHash)],
+          events: T::Array[T.any(Lithic::Models::Tokenization::Event, Lithic::Internal::AnyHash)],
           payment_account_reference_id: T.nilable(String)
         )
           .returns(T.attached_class)
@@ -125,7 +125,7 @@ module Lithic
 
       # The status of the tokenization request
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Tokenization::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Tokenization::Status::TaggedSymbol) }
@@ -146,7 +146,7 @@ module Lithic
       # The entity that requested the tokenization. Represents a Digital Wallet or
       #   merchant.
       module TokenRequestorName
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Tokenization::TokenRequestorName) }
         OrSymbol =
@@ -171,7 +171,7 @@ module Lithic
 
       # The channel through which the tokenization was made.
       module TokenizationChannel
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Tokenization::TokenizationChannel) }
         OrSymbol =
@@ -185,7 +185,7 @@ module Lithic
         end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         # Globally unique identifier for a Tokenization Event
         sig { returns(T.nilable(String)) }
         attr_reader :token
@@ -242,7 +242,7 @@ module Lithic
 
         # Enum representing the result of the tokenization event
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Tokenization::Event::Result) }
           OrSymbol =
@@ -270,7 +270,7 @@ module Lithic
 
         # Enum representing the type of tokenization event that occurred
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Tokenization::Event::Type) }
           OrSymbol =

@@ -42,7 +42,7 @@ class Lithic::Test::UtilDataHandlingTest < Minitest::Test
   def test_omission
     merged = Lithic::Internal::Util.deep_merge(
       {b: {b2: 1, b3: {c: 4, d: 5}}},
-      {b: {b2: 1, b3: {c: Lithic::Internal::Util::OMIT, d: 5}}}
+      {b: {b2: 1, b3: {c: Lithic::Internal::OMIT, d: 5}}}
     )
 
     assert_pattern do

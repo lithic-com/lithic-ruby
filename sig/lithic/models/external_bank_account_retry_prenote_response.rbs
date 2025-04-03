@@ -26,7 +26,7 @@ module Lithic
         verification_failed_reason: String
       }
 
-    class ExternalBankAccountRetryPrenoteResponse < Lithic::BaseModel
+    class ExternalBankAccountRetryPrenoteResponse < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor country: String
@@ -121,7 +121,7 @@ module Lithic
       type state = :ENABLED | :CLOSED | :PAUSED
 
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ENABLED: :ENABLED
         CLOSED: :CLOSED
@@ -133,7 +133,7 @@ module Lithic
       type type_ = :CHECKING | :SAVINGS
 
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CHECKING: :CHECKING
         SAVINGS: :SAVINGS
@@ -145,7 +145,7 @@ module Lithic
         :PENDING | :ENABLED | :FAILED_VERIFICATION | :INSUFFICIENT_FUNDS
 
       module VerificationState
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         PENDING: :PENDING
         ENABLED: :ENABLED

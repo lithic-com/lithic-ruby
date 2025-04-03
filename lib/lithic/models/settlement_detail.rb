@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class SettlementDetail < Lithic::BaseModel
+    class SettlementDetail < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier denoting the Settlement Detail.
       #
@@ -52,7 +52,7 @@ module Lithic
       #   Globally unique identifiers denoting the Events associated with this settlement.
       #
       #   @return [Array<String>]
-      required :event_tokens, Lithic::ArrayOf[String]
+      required :event_tokens, Lithic::Internal::Type::ArrayOf[String]
 
       # @!attribute institution
       #   The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
@@ -188,13 +188,13 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Card network where the transaction took place.
       #
       # @see Lithic::Models::SettlementDetail#network
       module Network
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         INTERLINK = :INTERLINK
         MAESTRO = :MAESTRO
@@ -210,7 +210,7 @@ module Lithic
       end
 
       # @see Lithic::Models::SettlementDetail#other_fees_details
-      class OtherFeesDetails < Lithic::BaseModel
+      class OtherFeesDetails < Lithic::Internal::Type::BaseModel
         # @!attribute [r] isa
         #
         #   @return [Integer, nil]
@@ -227,14 +227,14 @@ module Lithic
         #   #
         #   def initialize(isa: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # The type of settlement record.
       #
       # @see Lithic::Models::SettlementDetail#type
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ADJUSTMENT = :ADJUSTMENT
         ARBITRATION = :ARBITRATION

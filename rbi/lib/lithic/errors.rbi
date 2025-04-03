@@ -143,32 +143,4 @@ module Lithic
       HTTP_STATUS = T.let((500..), T::Range[Integer])
     end
   end
-
-  Error = Lithic::Errors::Error
-
-  ConversionError = Lithic::Errors::ConversionError
-
-  APIError = Lithic::Errors::APIError
-
-  APIStatusError = Lithic::Errors::APIStatusError
-
-  APIConnectionError = Lithic::Errors::APIConnectionError
-
-  APITimeoutError = Lithic::Errors::APITimeoutError
-
-  BadRequestError = Lithic::Errors::BadRequestError
-
-  AuthenticationError = Lithic::Errors::AuthenticationError
-
-  PermissionDeniedError = Lithic::Errors::PermissionDeniedError
-
-  NotFoundError = Lithic::Errors::NotFoundError
-
-  ConflictError = Lithic::Errors::ConflictError
-
-  UnprocessableEntityError = Lithic::Errors::UnprocessableEntityError
-
-  RateLimitError = Lithic::Errors::RateLimitError
-
-  InternalServerError = Lithic::Errors::InternalServerError
 end

@@ -16,7 +16,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class AccountHolderListParams < Lithic::BaseModel
+    class AccountHolderListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Reports
       module Settlement
-        class NetworkTotalListParams < Lithic::BaseModel
+        class NetworkTotalListParams < Lithic::Internal::Type::BaseModel
           extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
 
@@ -103,7 +103,7 @@ module Lithic
               report_date_end: Date,
               settlement_institution_id: String,
               starting_after: String,
-              request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+              request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -147,7 +147,7 @@ module Lithic
 
           # Network to filter on.
           module Network
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network) }

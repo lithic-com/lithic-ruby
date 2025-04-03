@@ -24,13 +24,13 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
         category: Lithic::Models::BookTransferResponse::Category,
         created: Time,
         currency: String,
-        events: ^(Lithic::ArrayOf[Lithic::Models::BookTransferResponse::Event]),
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::BookTransferResponse::Event]),
         from_financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::BookTransferResponse::Result,
         settled_amount: Integer,
         status: Lithic::Models::BookTransferResponse::Status,
-        to_financial_account_token: Lithic::Unknown,
+        to_financial_account_token: Lithic::Internal::Type::Unknown,
         updated: Time
       }
     end
@@ -49,13 +49,13 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
         category: Lithic::Models::BookTransferResponse::Category,
         created: Time,
         currency: String,
-        events: ^(Lithic::ArrayOf[Lithic::Models::BookTransferResponse::Event]),
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::BookTransferResponse::Event]),
         from_financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::BookTransferResponse::Result,
         settled_amount: Integer,
         status: Lithic::Models::BookTransferResponse::Status,
-        to_financial_account_token: Lithic::Unknown,
+        to_financial_account_token: Lithic::Internal::Type::Unknown,
         updated: Time
       }
     end
@@ -81,13 +81,13 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
         category: Lithic::Models::BookTransferResponse::Category,
         created: Time,
         currency: String,
-        events: ^(Lithic::ArrayOf[Lithic::Models::BookTransferResponse::Event]),
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::BookTransferResponse::Event]),
         from_financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::BookTransferResponse::Result,
         settled_amount: Integer,
         status: Lithic::Models::BookTransferResponse::Status,
-        to_financial_account_token: Lithic::Unknown,
+        to_financial_account_token: Lithic::Internal::Type::Unknown,
         updated: Time
       }
     end
@@ -106,13 +106,13 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
         category: Lithic::Models::BookTransferResponse::Category,
         created: Time,
         currency: String,
-        events: ^(Lithic::ArrayOf[Lithic::Models::BookTransferResponse::Event]),
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::BookTransferResponse::Event]),
         from_financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::BookTransferResponse::Result,
         settled_amount: Integer,
         status: Lithic::Models::BookTransferResponse::Status,
-        to_financial_account_token: Lithic::Unknown,
+        to_financial_account_token: Lithic::Internal::Type::Unknown,
         updated: Time
       }
     end

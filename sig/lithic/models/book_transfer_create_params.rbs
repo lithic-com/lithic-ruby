@@ -13,7 +13,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class BookTransferCreateParams < Lithic::BaseModel
+    class BookTransferCreateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -61,7 +61,7 @@ module Lithic
         | :TRANSFER
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ADJUSTMENT: :ADJUSTMENT
         BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
@@ -109,7 +109,7 @@ module Lithic
         | :TRANSFER
 
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ATM_WITHDRAWAL: :ATM_WITHDRAWAL
         ATM_DECLINE: :ATM_DECLINE

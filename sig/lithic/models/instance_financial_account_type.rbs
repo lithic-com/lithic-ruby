@@ -9,7 +9,7 @@ module Lithic
       | :CHARGED_OFF_PRINCIPAL
 
     module InstanceFinancialAccountType
-      extend Lithic::Enum
+      extend Lithic::Internal::Type::Enum
 
       ISSUING: :ISSUING
       RESERVE: :RESERVE

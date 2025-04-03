@@ -24,7 +24,7 @@ module Lithic
         website_url: String
       }
 
-    class AccountHolder < Lithic::BaseModel
+    class AccountHolder < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor created: Time
@@ -159,7 +159,7 @@ module Lithic
           parent_company: String
         }
 
-      class BeneficialOwnerEntity < Lithic::BaseModel
+      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
         attr_accessor address: Lithic::Models::Address
 
         attr_accessor dba_business_name: String
@@ -200,7 +200,7 @@ module Lithic
           phone_number: String
         }
 
-      class BeneficialOwnerIndividual < Lithic::BaseModel
+      class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         attr_accessor address: Lithic::Models::Address
 
         attr_accessor dob: String
@@ -239,7 +239,7 @@ module Lithic
           parent_company: String
         }
 
-      class BusinessEntity < Lithic::BaseModel
+      class BusinessEntity < Lithic::Internal::Type::BaseModel
         attr_accessor address: Lithic::Models::Address
 
         attr_accessor dba_business_name: String
@@ -280,7 +280,7 @@ module Lithic
           phone_number: String
         }
 
-      class ControlPerson < Lithic::BaseModel
+      class ControlPerson < Lithic::Internal::Type::BaseModel
         attr_accessor address: Lithic::Models::Address
 
         attr_accessor dob: String
@@ -311,7 +311,7 @@ module Lithic
       type exemption_type = :AUTHORIZED_USER | :PREPAID_CARD_USER
 
       module ExemptionType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         AUTHORIZED_USER: :AUTHORIZED_USER
         PREPAID_CARD_USER: :PREPAID_CARD_USER
@@ -330,7 +330,7 @@ module Lithic
           phone_number: String
         }
 
-      class Individual < Lithic::BaseModel
+      class Individual < Lithic::Internal::Type::BaseModel
         attr_accessor address: Lithic::Models::Address
 
         attr_accessor dob: String
@@ -366,7 +366,7 @@ module Lithic
         | :REJECTED
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ACCEPTED: :ACCEPTED
         PENDING_REVIEW: :PENDING_REVIEW
@@ -391,7 +391,7 @@ module Lithic
         | :WATCHLIST_ALERT_FAILURE
 
       module StatusReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ADDRESS_VERIFICATION_FAILURE: :ADDRESS_VERIFICATION_FAILURE
         AGE_THRESHOLD_FAILURE: :AGE_THRESHOLD_FAILURE
@@ -411,7 +411,7 @@ module Lithic
       type user_type = :BUSINESS | :INDIVIDUAL
 
       module UserType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         BUSINESS: :BUSINESS
         INDIVIDUAL: :INDIVIDUAL
@@ -427,7 +427,7 @@ module Lithic
           updated: Time
         }
 
-      class VerificationApplication < Lithic::BaseModel
+      class VerificationApplication < Lithic::Internal::Type::BaseModel
         attr_reader created: Time?
 
         def created=: (Time) -> Time
@@ -465,7 +465,7 @@ module Lithic
           | :REJECTED
 
         module Status
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACCEPTED: :ACCEPTED
           PENDING_REVIEW: :PENDING_REVIEW
@@ -490,7 +490,7 @@ module Lithic
           | :WATCHLIST_ALERT_FAILURE
 
         module StatusReason
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ADDRESS_VERIFICATION_FAILURE: :ADDRESS_VERIFICATION_FAILURE
           AGE_THRESHOLD_FAILURE: :AGE_THRESHOLD_FAILURE

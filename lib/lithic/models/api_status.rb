@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Client#api_status
-    class APIStatus < Lithic::BaseModel
+    class APIStatus < Lithic::Internal::Type::BaseModel
       # @!attribute [r] message
       #
       #   @return [String, nil]
@@ -18,7 +18,7 @@ module Lithic
       #   #
       #   def initialize(message: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

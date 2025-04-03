@@ -5,7 +5,7 @@ module Lithic
     module Transactions
       module Events
         # @see Lithic::Resources::Transactions::Events::EnhancedCommercialData#retrieve
-        class EnhancedData < Lithic::BaseModel
+        class EnhancedData < Lithic::Internal::Type::BaseModel
           # @!attribute token
           #   A unique identifier for the enhanced commercial data.
           #
@@ -26,7 +26,8 @@ module Lithic
           # @!attribute fleet
           #
           #   @return [Array<Lithic::Models::Transactions::Events::EnhancedData::Fleet>]
-          required :fleet, -> { Lithic::ArrayOf[Lithic::Models::Transactions::Events::EnhancedData::Fleet] }
+          required :fleet,
+                   -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Transactions::Events::EnhancedData::Fleet] }
 
           # @!attribute transaction_token
           #   The token of the transaction that the enhanced data is associated with.
@@ -43,15 +44,15 @@ module Lithic
           #   #
           #   def initialize(token:, common:, event_token:, fleet:, transaction_token:, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
           # @see Lithic::Models::Transactions::Events::EnhancedData#common
-          class Common < Lithic::BaseModel
+          class Common < Lithic::Internal::Type::BaseModel
             # @!attribute line_items
             #
             #   @return [Array<Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem>]
             required :line_items,
-                     -> { Lithic::ArrayOf[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem] }
+                     -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem] }
 
             # @!attribute tax
             #
@@ -97,9 +98,9 @@ module Lithic
             #   #
             #   def initialize(line_items:, tax:, customer_reference_number: nil, merchant_reference_number: nil, order_date: nil, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
-            class LineItem < Lithic::BaseModel
+            class LineItem < Lithic::Internal::Type::BaseModel
               # @!attribute [r] amount
               #   The price of the item purchased in merchant currency.
               #
@@ -150,11 +151,11 @@ module Lithic
               #   #
               #   def initialize(amount: nil, description: nil, product_code: nil, quantity: nil, **) = super
 
-              # def initialize: (Hash | Lithic::BaseModel) -> void
+              # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
             end
 
             # @see Lithic::Models::Transactions::Events::EnhancedData::Common#tax
-            class Tax < Lithic::BaseModel
+            class Tax < Lithic::Internal::Type::BaseModel
               # @!attribute [r] amount
               #   The amount of tax collected.
               #
@@ -192,13 +193,13 @@ module Lithic
               #   #
               #   def initialize(amount: nil, exempt: nil, merchant_tax_id: nil, **) = super
 
-              # def initialize: (Hash | Lithic::BaseModel) -> void
+              # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
               # A flag indicating whether the transaction is tax exempt or not.
               #
               # @see Lithic::Models::Transactions::Events::EnhancedData::Common::Tax#exempt
               module Exempt
-                extend Lithic::Enum
+                extend Lithic::Internal::Type::Enum
 
                 TAX_INCLUDED = :TAX_INCLUDED
                 TAX_NOT_INCLUDED = :TAX_NOT_INCLUDED
@@ -213,7 +214,7 @@ module Lithic
             end
           end
 
-          class Fleet < Lithic::BaseModel
+          class Fleet < Lithic::Internal::Type::BaseModel
             # @!attribute amount_totals
             #
             #   @return [Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals]
@@ -277,10 +278,10 @@ module Lithic
             #   #
             #   def initialize(amount_totals:, fuel:, driver_number: nil, odometer: nil, service_type: nil, vehicle_number: nil, **) = super
 
-            # def initialize: (Hash | Lithic::BaseModel) -> void
+            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
             # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet#amount_totals
-            class AmountTotals < Lithic::BaseModel
+            class AmountTotals < Lithic::Internal::Type::BaseModel
               # @!attribute [r] discount
               #   The discount applied to the gross sale amount.
               #
@@ -318,11 +319,11 @@ module Lithic
               #   #
               #   def initialize(discount: nil, gross_sale: nil, net_sale: nil, **) = super
 
-              # def initialize: (Hash | Lithic::BaseModel) -> void
+              # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
             end
 
             # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet#fuel
-            class Fuel < Lithic::BaseModel
+            class Fuel < Lithic::Internal::Type::BaseModel
               # @!attribute [r] quantity
               #   The quantity of fuel purchased.
               #
@@ -372,13 +373,13 @@ module Lithic
               #   #
               #   def initialize(quantity: nil, type: nil, unit_of_measure: nil, unit_price: nil, **) = super
 
-              # def initialize: (Hash | Lithic::BaseModel) -> void
+              # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
               # The type of fuel purchased.
               #
               # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel#type
               module Type
-                extend Lithic::Enum
+                extend Lithic::Internal::Type::Enum
 
                 UNKNOWN = :UNKNOWN
                 REGULAR = :REGULAR
@@ -512,7 +513,7 @@ module Lithic
               #
               # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel#unit_of_measure
               module UnitOfMeasure
-                extend Lithic::Enum
+                extend Lithic::Internal::Type::Enum
 
                 GALLONS = :GALLONS
                 LITERS = :LITERS
@@ -534,7 +535,7 @@ module Lithic
             #
             # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet#service_type
             module ServiceType
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               UNKNOWN = :UNKNOWN
               UNDEFINED = :UNDEFINED

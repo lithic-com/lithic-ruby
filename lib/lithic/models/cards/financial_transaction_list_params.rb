@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Cards
       # @see Lithic::Resources::Cards::FinancialTransactions#list
-      class FinancialTransactionListParams < Lithic::BaseModel
+      class FinancialTransactionListParams < Lithic::Internal::Type::BaseModel
         # @!parse
         #   extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
@@ -107,11 +107,11 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # Financial Transaction category to be returned.
         module Category
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CARD = :CARD
           TRANSFER = :TRANSFER
@@ -125,7 +125,7 @@ module Lithic
 
         # Financial Transaction result to be returned.
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
           DECLINED = :DECLINED
@@ -139,7 +139,7 @@ module Lithic
 
         # Financial Transaction status to be returned.
         module Status
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           DECLINED = :DECLINED
           EXPIRED = :EXPIRED

@@ -4,7 +4,7 @@ module Lithic
   module Models
     module FinancialAccounts
       # @see Lithic::Resources::FinancialAccounts::CreditConfiguration#retrieve
-      class FinancialAccountCreditConfig < Lithic::BaseModel
+      class FinancialAccountCreditConfig < Lithic::Internal::Type::BaseModel
         # @!attribute account_token
         #   Globally unique identifier for the account
         #
@@ -45,7 +45,7 @@ module Lithic
         # @!attribute is_spend_blocked
         #
         #   @return [Boolean]
-        required :is_spend_blocked, Lithic::BooleanModel
+        required :is_spend_blocked, Lithic::Internal::Type::BooleanModel
 
         # @!attribute tier
         #   Tier assigned to the financial account
@@ -77,13 +77,13 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # Reason for the financial account being marked as Charged Off
         #
         # @see Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig#charged_off_reason
         module ChargedOffReason
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           DELINQUENT = :DELINQUENT
           FRAUD = :FRAUD
@@ -99,7 +99,7 @@ module Lithic
         #
         # @see Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig#financial_account_state
         module FinancialAccountState
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           PENDING = :PENDING
           CURRENT = :CURRENT

@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Reports
       module Settlement
-        class NetworkTotalRetrieveResponse < Lithic::BaseModel
+        class NetworkTotalRetrieveResponse < Lithic::Internal::Type::BaseModel
           # Globally unique identifier.
           sig { returns(String) }
           attr_accessor :token
@@ -16,7 +16,7 @@ module Lithic
             params(
               amounts: T.any(
                 Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts,
-                Lithic::Internal::Util::AnyHash
+                Lithic::Internal::AnyHash
               )
             )
               .void
@@ -72,7 +72,7 @@ module Lithic
               token: String,
               amounts: T.any(
                 Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts,
-                Lithic::Internal::Util::AnyHash
+                Lithic::Internal::AnyHash
               ),
               created: Time,
               currency: String,
@@ -122,7 +122,7 @@ module Lithic
           def to_hash
           end
 
-          class Amounts < Lithic::BaseModel
+          class Amounts < Lithic::Internal::Type::BaseModel
             # Total settlement amount excluding interchange, in currency's smallest unit.
             sig { returns(Integer) }
             attr_accessor :gross_settlement
@@ -173,7 +173,7 @@ module Lithic
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
           #   INTERLINK.
           module Network
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network) }

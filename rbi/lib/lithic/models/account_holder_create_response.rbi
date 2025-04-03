@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class AccountHolderCreateResponse < Lithic::BaseModel
+    class AccountHolderCreateResponse < Lithic::Internal::Type::BaseModel
       # Globally unique identifier for the account holder.
       sig { returns(String) }
       attr_accessor :token
@@ -44,9 +44,7 @@ module Lithic
       attr_reader :required_documents
 
       sig do
-        params(
-          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::Util::AnyHash)]
-        )
+        params(required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::AnyHash)])
           .void
       end
       attr_writer :required_documents
@@ -59,7 +57,7 @@ module Lithic
           status_reasons: T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::OrSymbol],
           created: Time,
           external_id: String,
-          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::Util::AnyHash)]
+          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::AnyHash)]
         )
           .returns(T.attached_class)
       end
@@ -97,7 +95,7 @@ module Lithic
       #
       #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderCreateResponse::Status) }
         OrSymbol =
@@ -119,7 +117,7 @@ module Lithic
 
       # Status Reasons for KYC/KYB enrollment states
       module StatusReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderCreateResponse::StatusReason) }
         OrSymbol =

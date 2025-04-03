@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class AccountHolderSimulateEnrollmentDocumentReviewParams < Lithic::BaseModel
+    class AccountHolderSimulateEnrollmentDocumentReviewParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -44,7 +44,7 @@ module Lithic
           status: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol,
           accepted_entity_status_reasons: T::Array[String],
           status_reason: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -74,7 +74,7 @@ module Lithic
 
       # An account holder document's upload status for use within the simulation.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status) }
@@ -121,7 +121,7 @@ module Lithic
       # Status reason that will be associated with the simulated account holder status.
       #   Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
       module StatusReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason) }

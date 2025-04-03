@@ -44,7 +44,7 @@ class Lithic::Test::Resources::TokenizationsTest < Lithic::Test::ResourceTest
         tokenization_channel: Lithic::Models::Tokenization::TokenizationChannel,
         updated_at: Time,
         digital_card_art_token: String | nil,
-        events: ^(Lithic::ArrayOf[Lithic::Models::Tokenization::Event]) | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Tokenization::Event]) | nil,
         payment_account_reference_id: String | nil
       }
     end
@@ -97,7 +97,7 @@ class Lithic::Test::Resources::TokenizationsTest < Lithic::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Lithic::ArrayOf[Lithic::Models::Tokenization]) | nil
+        data: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Tokenization]) | nil
       }
     end
   end

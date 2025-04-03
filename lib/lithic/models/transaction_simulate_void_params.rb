@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Transactions#simulate_void
-    class TransactionSimulateVoidParams < Lithic::BaseModel
+    class TransactionSimulateVoidParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -47,7 +47,7 @@ module Lithic
       #   #
       #   def initialize(token:, amount: nil, type: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`.
       #
@@ -55,7 +55,7 @@ module Lithic
       #     by Lithic.
       #   - `AUTHORIZATION_REVERSAL` indicates authorization was reversed by the merchant.
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         AUTHORIZATION_EXPIRY = :AUTHORIZATION_EXPIRY
         AUTHORIZATION_REVERSAL = :AUTHORIZATION_REVERSAL

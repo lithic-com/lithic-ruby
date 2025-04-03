@@ -3,7 +3,7 @@ module Lithic
     type card_program_retrieve_params =
       {  } & Lithic::Internal::Type::request_parameters
 
-    class CardProgramRetrieveParams < Lithic::BaseModel
+    class CardProgramRetrieveParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

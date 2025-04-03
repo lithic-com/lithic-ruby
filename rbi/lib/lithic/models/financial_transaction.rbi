@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class FinancialTransaction < Lithic::BaseModel
+    class FinancialTransaction < Lithic::Internal::Type::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
       attr_accessor :token
@@ -74,7 +74,7 @@ module Lithic
           created: Time,
           currency: String,
           descriptor: String,
-          events: T::Array[T.any(Lithic::Models::FinancialTransaction::Event, Lithic::Internal::Util::AnyHash)],
+          events: T::Array[T.any(Lithic::Models::FinancialTransaction::Event, Lithic::Internal::AnyHash)],
           pending_amount: Integer,
           result: Lithic::Models::FinancialTransaction::Result::OrSymbol,
           settled_amount: Integer,
@@ -127,7 +127,7 @@ module Lithic
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #     program.
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Category) }
         OrSymbol =
@@ -143,7 +143,7 @@ module Lithic
         end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         # Globally unique identifier.
         sig { returns(T.nilable(String)) }
         attr_reader :token
@@ -211,7 +211,7 @@ module Lithic
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Event::Result) }
           OrSymbol =
@@ -226,7 +226,7 @@ module Lithic
         end
 
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Event::Type) }
           OrSymbol =
@@ -360,7 +360,7 @@ module Lithic
       # APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Result) }
         OrSymbol =
@@ -384,7 +384,7 @@ module Lithic
       #   - `SETTLED` - The transaction is completed.
       #   - `VOIDED` - The transaction was voided. Card transaction only.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Status) }
         OrSymbol =

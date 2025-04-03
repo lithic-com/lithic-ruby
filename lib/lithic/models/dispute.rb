@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Disputes#create
-    class Dispute < Lithic::BaseModel
+    class Dispute < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier.
       #
@@ -44,7 +44,7 @@ module Lithic
       #   Unique identifiers for the dispute from the network.
       #
       #   @return [Array<String>, nil]
-      required :network_claim_ids, Lithic::ArrayOf[String], nil?: true
+      required :network_claim_ids, Lithic::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute network_filed_date
       #   Date that the dispute was submitted to the network.
@@ -214,7 +214,7 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Dispute reason:
       #
@@ -238,7 +238,7 @@ module Lithic
       #
       # @see Lithic::Models::Dispute#reason
       module Reason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ATM_CASH_MISDISPENSE = :ATM_CASH_MISDISPENSE
         CANCELLED = :CANCELLED
@@ -284,7 +284,7 @@ module Lithic
       #
       # @see Lithic::Models::Dispute#resolution_reason
       module ResolutionReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CASE_LOST = :CASE_LOST
         NETWORK_REJECTED = :NETWORK_REJECTED
@@ -325,7 +325,7 @@ module Lithic
       #
       # @see Lithic::Models::Dispute#status
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ARBITRATION = :ARBITRATION
         CASE_CLOSED = :CASE_CLOSED

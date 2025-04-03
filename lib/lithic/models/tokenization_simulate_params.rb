@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Tokenizations#simulate
-    class TokenizationSimulateParams < Lithic::BaseModel
+    class TokenizationSimulateParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -102,11 +102,11 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # The source of the tokenization request.
       module TokenizationSource
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPLE_PAY = :APPLE_PAY
         GOOGLE = :GOOGLE
@@ -122,7 +122,7 @@ module Lithic
 
       # The decision that the Digital Wallet's recommend
       module WalletRecommendedDecision
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         APPROVED = :APPROVED
         DECLINED = :DECLINED

@@ -2,13 +2,13 @@
 
 module Lithic
   module Models
-    class KYBBusinessEntity < Lithic::BaseModel
+    class KYBBusinessEntity < Lithic::Internal::Type::BaseModel
       # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
       #   acceptable; APO/FPO are acceptable.
       sig { returns(Lithic::Models::KYBBusinessEntity::Address) }
       attr_reader :address
 
-      sig { params(address: T.any(Lithic::Models::KYBBusinessEntity::Address, Lithic::Internal::Util::AnyHash)).void }
+      sig { params(address: T.any(Lithic::Models::KYBBusinessEntity::Address, Lithic::Internal::AnyHash)).void }
       attr_writer :address
 
       # Government-issued identification number. US Federal Employer Identification
@@ -43,7 +43,7 @@ module Lithic
 
       sig do
         params(
-          address: T.any(Lithic::Models::KYBBusinessEntity::Address, Lithic::Internal::Util::AnyHash),
+          address: T.any(Lithic::Models::KYBBusinessEntity::Address, Lithic::Internal::AnyHash),
           government_id: String,
           legal_business_name: String,
           phone_numbers: T::Array[String],
@@ -78,7 +78,7 @@ module Lithic
       def to_hash
       end
 
-      class Address < Lithic::BaseModel
+      class Address < Lithic::Internal::Type::BaseModel
         # Valid deliverable address (no PO boxes).
         sig { returns(String) }
         attr_accessor :address1

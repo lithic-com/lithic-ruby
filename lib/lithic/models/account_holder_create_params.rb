@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#create
-    class AccountHolderCreateParams < Lithic::BaseModel
+    class AccountHolderCreateParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -19,7 +19,7 @@ module Lithic
       #
       #   @return [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity>]
       required :beneficial_owner_entities,
-               -> { Lithic::ArrayOf[Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity] }
+               -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity] }
 
       # @!attribute beneficial_owner_individuals
       #   List of all direct and indirect individuals with >25% ownership in the company.
@@ -32,7 +32,7 @@ module Lithic
       #
       #   @return [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>]
       required :beneficial_owner_individuals,
-               -> { Lithic::ArrayOf[Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual] }
+               -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual] }
 
       # @!attribute business_entity
       #   Information for business for which the account is being opened and KYB is being
@@ -226,9 +226,9 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
-      class BeneficialOwnerEntity < Lithic::BaseModel
+      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Business's physical address - PO boxes, UPS drops, and FedEx drops are not
         #     acceptable; APO/FPO are acceptable.
@@ -255,7 +255,7 @@ module Lithic
         #     format.
         #
         #   @return [Array<String>]
-        required :phone_numbers, Lithic::ArrayOf[String]
+        required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute [r] dba_business_name
         #   Any name that the business operates under that is not its legal business name
@@ -298,10 +298,10 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
-      class BeneficialOwnerIndividual < Lithic::BaseModel
+      class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #     acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -366,10 +366,10 @@ module Lithic
         #   #
         #   def initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
-      class BusinessEntity < Lithic::BaseModel
+      class BusinessEntity < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Business's physical address - PO boxes, UPS drops, and FedEx drops are not
         #     acceptable; APO/FPO are acceptable.
@@ -396,7 +396,7 @@ module Lithic
         #     format.
         #
         #   @return [Array<String>]
-        required :phone_numbers, Lithic::ArrayOf[String]
+        required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute [r] dba_business_name
         #   Any name that the business operates under that is not its legal business name
@@ -442,10 +442,10 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
-      class ControlPerson < Lithic::BaseModel
+      class ControlPerson < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #     acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -517,12 +517,12 @@ module Lithic
         #   #
         #   def initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # Specifies the workflow type. This must be 'KYC_EXEMPT'
       module Workflow
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         KYC_EXEMPT = :KYC_EXEMPT
 
@@ -533,7 +533,7 @@ module Lithic
         #   def self.values; end
       end
 
-      class Individual < Lithic::BaseModel
+      class Individual < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #     acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -595,12 +595,12 @@ module Lithic
         #   #
         #   def initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
       # Specifies the type of KYC Exempt user
       module KYCExemptionType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         AUTHORIZED_USER = :AUTHORIZED_USER
         PREPAID_CARD_USER = :PREPAID_CARD_USER

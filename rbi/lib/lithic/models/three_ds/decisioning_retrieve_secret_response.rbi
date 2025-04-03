@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module ThreeDS
-      class DecisioningRetrieveSecretResponse < Lithic::BaseModel
+      class DecisioningRetrieveSecretResponse < Lithic::Internal::Type::BaseModel
         # The 3DS Decisioning HMAC secret
         sig { returns(T.nilable(String)) }
         attr_reader :secret

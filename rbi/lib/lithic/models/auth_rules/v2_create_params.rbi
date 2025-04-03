@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module AuthRules
-      class V2CreateParams < Lithic::BaseModel
+      class V2CreateParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
@@ -32,7 +32,7 @@ module Lithic
           params(
             parameters: T.any(
               Lithic::Models::AuthRules::ConditionalBlockParameters,
-              Lithic::Internal::Util::AnyHash,
+              Lithic::Internal::AnyHash,
               Lithic::Models::AuthRules::VelocityLimitParams
             )
           )
@@ -70,12 +70,12 @@ module Lithic
             name: T.nilable(String),
             parameters: T.any(
               Lithic::Models::AuthRules::ConditionalBlockParameters,
-              Lithic::Internal::Util::AnyHash,
+              Lithic::Internal::AnyHash,
               Lithic::Models::AuthRules::VelocityLimitParams
             ),
             type: Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol,
             excluded_card_tokens: T::Array[String],
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -114,7 +114,7 @@ module Lithic
 
         # Parameters for the Auth Rule
         module Parameters
-          extend Lithic::Union
+          extend Lithic::Internal::Type::Union
 
           sig do
             override
@@ -128,7 +128,7 @@ module Lithic
 
         # The type of Auth Rule
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::V2CreateParams::Type) }
           OrSymbol =

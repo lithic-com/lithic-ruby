@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Events
       # @see Lithic::Resources::Events::Subscriptions#create
-      class SubscriptionCreateParams < Lithic::BaseModel
+      class SubscriptionCreateParams < Lithic::Internal::Type::BaseModel
         # @!parse
         #   extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
@@ -29,7 +29,7 @@ module Lithic
         #   Whether the event subscription is active (false) or inactive (true).
         #
         #   @return [Boolean, nil]
-        optional :disabled, Lithic::BooleanModel
+        optional :disabled, Lithic::Internal::Type::BooleanModel
 
         # @!parse
         #   # @return [Boolean]
@@ -41,7 +41,7 @@ module Lithic
         #
         #   @return [Array<Symbol, Lithic::Models::Events::SubscriptionCreateParams::EventType>, nil]
         optional :event_types,
-                 -> { Lithic::ArrayOf[enum: Lithic::Models::Events::SubscriptionCreateParams::EventType] }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::Events::SubscriptionCreateParams::EventType] }
 
         # @!parse
         #   # @return [Array<Symbol, Lithic::Models::Events::SubscriptionCreateParams::EventType>]
@@ -56,10 +56,10 @@ module Lithic
         #   #
         #   def initialize(url:, description: nil, disabled: nil, event_types: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         module EventType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACCOUNT_HOLDER_CREATED = :"account_holder.created"
           ACCOUNT_HOLDER_UPDATED = :"account_holder.updated"

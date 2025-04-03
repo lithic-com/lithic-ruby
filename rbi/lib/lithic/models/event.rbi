@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class Event < Lithic::BaseModel
+    class Event < Lithic::Internal::Type::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
       attr_accessor :token
@@ -105,7 +105,7 @@ module Lithic
       #   - `digital_wallet.tokenization_updated` - Notification that a digital wallet
       #     tokenization's status has changed.
       module EventType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Event::EventType) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Event::EventType::TaggedSymbol) }

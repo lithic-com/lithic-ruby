@@ -15,7 +15,7 @@ module Lithic
     #   - `TRANSACTION` - Card will authorize multiple transactions if each individual
     #     transaction is under the spend limit.
     module SpendLimitDuration
-      extend Lithic::Enum
+      extend Lithic::Internal::Type::Enum
 
       ANNUALLY = :ANNUALLY
       FOREVER = :FOREVER

@@ -12,7 +12,7 @@ module Lithic
 
         # @param mod [Module]
         def self.included(mod)
-          return unless mod <= Lithic::BaseModel
+          return unless mod <= Lithic::Internal::Type::BaseModel
 
           mod.extend(Lithic::Internal::Type::RequestParameters::Converter)
           mod.optional(:request_options, Lithic::RequestOptions)

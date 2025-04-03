@@ -8,7 +8,7 @@ module Lithic
         sig do
           params(
             credit_product_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
           )
             .returns(Lithic::Models::CreditProducts::CreditProductsExtendedCredit)
         end

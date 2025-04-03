@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class ExternalBankAccountRetryMicroDepositsResponse < Lithic::BaseModel
+    class ExternalBankAccountRetryMicroDepositsResponse < Lithic::Internal::Type::BaseModel
       # A globally unique identifier for this record of an external bank account
       #   association. If a program links an external bank account to more than one
       #   end-user or to both the program and the end-user, then Lithic will return each
@@ -75,7 +75,7 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::ExternalBankAccountAddress)) }
       attr_reader :address
 
-      sig { params(address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::Util::AnyHash)).void }
+      sig { params(address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::AnyHash)).void }
       attr_writer :address
 
       # Optional field that helps identify bank accounts in receipts
@@ -145,7 +145,7 @@ module Lithic
           verification_method: Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::VerificationMethod::OrSymbol,
           verification_state: Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::VerificationState::OrSymbol,
           account_token: String,
-          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::Util::AnyHash),
+          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::AnyHash),
           company_id: String,
           dob: Date,
           doing_business_as: String,
@@ -216,7 +216,7 @@ module Lithic
 
       # Owner Type
       module OwnerType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::OwnerType) }
@@ -244,7 +244,7 @@ module Lithic
 
       # Account State
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::State) }
@@ -268,7 +268,7 @@ module Lithic
 
       # Account Type
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::Type) }
@@ -290,7 +290,7 @@ module Lithic
 
       # Verification Method
       module VerificationMethod
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::VerificationMethod) }
@@ -336,7 +336,7 @@ module Lithic
 
       # Verification State
       module VerificationState
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::VerificationState) }

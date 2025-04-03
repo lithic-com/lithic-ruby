@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class Document < Lithic::BaseModel
+    class Document < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier for the document.
       #
@@ -32,7 +32,7 @@ module Lithic
       #
       #   @return [Array<Lithic::Models::Document::RequiredDocumentUpload>]
       required :required_document_uploads,
-               -> { Lithic::ArrayOf[Lithic::Models::Document::RequiredDocumentUpload] }
+               -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Document::RequiredDocumentUpload] }
 
       # @!parse
       #   # Describes the document and the required document image uploads required to
@@ -46,13 +46,13 @@ module Lithic
       #   #
       #   def initialize(token:, account_holder_token:, document_type:, entity_token:, required_document_uploads:, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Type of documentation to be submitted for verification of an account holder
       #
       # @see Lithic::Models::Document#document_type
       module DocumentType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DRIVERS_LICENSE = :DRIVERS_LICENSE
         PASSPORT = :PASSPORT
@@ -81,7 +81,7 @@ module Lithic
         #   def self.values; end
       end
 
-      class RequiredDocumentUpload < Lithic::BaseModel
+      class RequiredDocumentUpload < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   Globally unique identifier for the document upload.
         #
@@ -93,7 +93,7 @@ module Lithic
         #     satisfied by the document upload
         #
         #   @return [Array<String>]
-        required :accepted_entity_status_reasons, Lithic::ArrayOf[String]
+        required :accepted_entity_status_reasons, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute created
         #   When the document upload was created
@@ -112,7 +112,7 @@ module Lithic
         #     satisfied by the document upload
         #
         #   @return [Array<String>]
-        required :rejected_entity_status_reasons, Lithic::ArrayOf[String]
+        required :rejected_entity_status_reasons, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute status
         #   Status of an account holder's document upload.
@@ -125,7 +125,7 @@ module Lithic
         #
         #   @return [Array<Symbol, Lithic::Models::Document::RequiredDocumentUpload::StatusReason>]
         required :status_reasons,
-                 -> { Lithic::ArrayOf[enum: Lithic::Models::Document::RequiredDocumentUpload::StatusReason] }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::Document::RequiredDocumentUpload::StatusReason] }
 
         # @!attribute updated
         #   When the document upload was last updated
@@ -171,13 +171,13 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # Type of image to upload.
         #
         # @see Lithic::Models::Document::RequiredDocumentUpload#image_type
         module ImageType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           FRONT = :FRONT
           BACK = :BACK
@@ -193,7 +193,7 @@ module Lithic
         #
         # @see Lithic::Models::Document::RequiredDocumentUpload#status
         module Status
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACCEPTED = :ACCEPTED
           REJECTED = :REJECTED
@@ -210,7 +210,7 @@ module Lithic
 
         # The status reasons for an account holder document upload that is not ACCEPTED
         module StatusReason
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           DOCUMENT_MISSING_REQUIRED_DATA = :DOCUMENT_MISSING_REQUIRED_DATA
           DOCUMENT_UPLOAD_TOO_BLURRY = :DOCUMENT_UPLOAD_TOO_BLURRY

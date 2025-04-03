@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class Dispute < Lithic::BaseModel
+    class Dispute < Lithic::Internal::Type::BaseModel
       # Globally unique identifier.
       sig { returns(String) }
       attr_accessor :token
@@ -224,7 +224,7 @@ module Lithic
       #   - `RECURRING_TRANSACTION_NOT_CANCELLED`: The recurring transaction was not
       #     cancelled.
       module Reason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Dispute::Reason) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Dispute::Reason::TaggedSymbol) }
@@ -272,7 +272,7 @@ module Lithic
       #   - `WON_FIRST_CHARGEBACK`: Won first chargeback.
       #   - `WON_PREARBITRATION`: Won prearbitration.
       module ResolutionReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Dispute::ResolutionReason) }
         OrSymbol =
@@ -323,7 +323,7 @@ module Lithic
       #   - `CASE_WON` - Case was won and credit will be issued.
       #   - `CASE_CLOSED` - Case was lost or withdrawn.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Dispute::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Dispute::Status::TaggedSymbol) }

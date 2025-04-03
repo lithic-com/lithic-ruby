@@ -3,7 +3,7 @@ module Lithic
     module ThreeDS
       type authentication_simulate_response = { token: String }
 
-      class AuthenticationSimulateResponse < Lithic::BaseModel
+      class AuthenticationSimulateResponse < Lithic::Internal::Type::BaseModel
         attr_reader token: String?
 
         def token=: (String) -> String

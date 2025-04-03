@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class ExternalPayment < Lithic::BaseModel
+    class ExternalPayment < Lithic::Internal::Type::BaseModel
       sig { returns(String) }
       attr_accessor :token
 
@@ -51,7 +51,7 @@ module Lithic
           category: Lithic::Models::ExternalPayment::Category::OrSymbol,
           created: Time,
           currency: String,
-          events: T::Array[T.any(Lithic::Models::ExternalPayment::Event, Lithic::Internal::Util::AnyHash)],
+          events: T::Array[T.any(Lithic::Models::ExternalPayment::Event, Lithic::Internal::AnyHash)],
           financial_account_token: String,
           payment_type: Lithic::Models::ExternalPayment::PaymentType::OrSymbol,
           pending_amount: Integer,
@@ -104,7 +104,7 @@ module Lithic
       end
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Category) }
         OrSymbol =
@@ -120,7 +120,7 @@ module Lithic
         end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :token
 
@@ -180,7 +180,7 @@ module Lithic
         end
 
         module DetailedResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Event::DetailedResult) }
           OrSymbol =
@@ -194,7 +194,7 @@ module Lithic
         end
 
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Event::Result) }
           OrSymbol =
@@ -209,7 +209,7 @@ module Lithic
         end
 
         module Type
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Event::Type) }
           OrSymbol =
@@ -263,7 +263,7 @@ module Lithic
       end
 
       module PaymentType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::PaymentType) }
         OrSymbol =
@@ -278,7 +278,7 @@ module Lithic
       end
 
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Result) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPayment::Result::TaggedSymbol) }
@@ -292,7 +292,7 @@ module Lithic
       end
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPayment::Status::TaggedSymbol) }

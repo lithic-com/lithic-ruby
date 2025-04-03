@@ -72,7 +72,7 @@ class LithicTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     lithic.requester = requester
 
-    assert_raises(Lithic::InternalServerError) do
+    assert_raises(Lithic::Errors::InternalServerError) do
       lithic.cards.create(type: :MERCHANT_LOCKED)
     end
 
@@ -85,7 +85,7 @@ class LithicTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     lithic.requester = requester
 
-    assert_raises(Lithic::InternalServerError) do
+    assert_raises(Lithic::Errors::InternalServerError) do
       lithic.cards.create(type: :MERCHANT_LOCKED)
     end
 
@@ -97,7 +97,7 @@ class LithicTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     lithic.requester = requester
 
-    assert_raises(Lithic::InternalServerError) do
+    assert_raises(Lithic::Errors::InternalServerError) do
       lithic.cards.create(type: :MERCHANT_LOCKED, request_options: {max_retries: 3})
     end
 
@@ -110,7 +110,7 @@ class LithicTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     lithic.requester = requester
 
-    assert_raises(Lithic::InternalServerError) do
+    assert_raises(Lithic::Errors::InternalServerError) do
       lithic.cards.create(type: :MERCHANT_LOCKED, request_options: {max_retries: 4})
     end
 
@@ -123,7 +123,7 @@ class LithicTest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after" => "1.3"}, {})
     lithic.requester = requester
 
-    assert_raises(Lithic::InternalServerError) do
+    assert_raises(Lithic::Errors::InternalServerError) do
       lithic.cards.create(type: :MERCHANT_LOCKED)
     end
 
@@ -137,7 +137,7 @@ class LithicTest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after" => (Time.now + 10).httpdate}, {})
     lithic.requester = requester
 
-    assert_raises(Lithic::InternalServerError) do
+    assert_raises(Lithic::Errors::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
       lithic.cards.create(type: :MERCHANT_LOCKED)
       Thread.current.thread_variable_set(:time_now, nil)
@@ -153,7 +153,7 @@ class LithicTest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after-ms" => "1300"}, {})
     lithic.requester = requester
 
-    assert_raises(Lithic::InternalServerError) do
+    assert_raises(Lithic::Errors::InternalServerError) do
       lithic.cards.create(type: :MERCHANT_LOCKED)
     end
 
@@ -166,7 +166,7 @@ class LithicTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     lithic.requester = requester
 
-    assert_raises(Lithic::InternalServerError) do
+    assert_raises(Lithic::Errors::InternalServerError) do
       lithic.cards.create(type: :MERCHANT_LOCKED)
     end
 
@@ -179,7 +179,7 @@ class LithicTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     lithic.requester = requester
 
-    assert_raises(Lithic::InternalServerError) do
+    assert_raises(Lithic::Errors::InternalServerError) do
       lithic.cards.create(
         type: :MERCHANT_LOCKED,
         request_options: {extra_headers: {"x-stainless-retry-count" => nil}}
@@ -195,7 +195,7 @@ class LithicTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     lithic.requester = requester
 
-    assert_raises(Lithic::InternalServerError) do
+    assert_raises(Lithic::Errors::InternalServerError) do
       lithic.cards.create(
         type: :MERCHANT_LOCKED,
         request_options: {extra_headers: {"x-stainless-retry-count" => "42"}}

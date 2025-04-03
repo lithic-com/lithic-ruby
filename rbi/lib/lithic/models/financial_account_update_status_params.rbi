@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class FinancialAccountUpdateStatusParams < Lithic::BaseModel
+    class FinancialAccountUpdateStatusParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -18,7 +18,7 @@ module Lithic
         params(
           status: Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol,
           status_change_reason: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol),
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -40,7 +40,7 @@ module Lithic
 
       # Status of the financial account
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status) }
         OrSymbol =
@@ -58,7 +58,7 @@ module Lithic
 
       # Reason for the financial account status change
       module StatusChangeReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason) }

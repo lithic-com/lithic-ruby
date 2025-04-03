@@ -2,17 +2,14 @@
 
 module Lithic
   module Models
-    class TokenizationRetrieveResponse < Lithic::BaseModel
+    class TokenizationRetrieveResponse < Lithic::Internal::Type::BaseModel
       sig { returns(T.nilable(Lithic::Models::Tokenization)) }
       attr_reader :data
 
-      sig { params(data: T.any(Lithic::Models::Tokenization, Lithic::Internal::Util::AnyHash)).void }
+      sig { params(data: T.any(Lithic::Models::Tokenization, Lithic::Internal::AnyHash)).void }
       attr_writer :data
 
-      sig do
-        params(data: T.any(Lithic::Models::Tokenization, Lithic::Internal::Util::AnyHash))
-          .returns(T.attached_class)
-      end
+      sig { params(data: T.any(Lithic::Models::Tokenization, Lithic::Internal::AnyHash)).returns(T.attached_class) }
       def self.new(data: nil)
       end
 

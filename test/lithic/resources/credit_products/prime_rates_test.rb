@@ -25,8 +25,8 @@ class Lithic::Test::Resources::CreditProducts::PrimeRatesTest < Lithic::Test::Re
 
     assert_pattern do
       response => {
-        data: ^(Lithic::ArrayOf[Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data]),
-        has_more: Lithic::BooleanModel
+        data: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data]),
+        has_more: Lithic::Internal::Type::BooleanModel
       }
     end
   end

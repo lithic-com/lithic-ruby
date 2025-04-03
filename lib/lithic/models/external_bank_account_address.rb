@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class ExternalBankAccountAddress < Lithic::BaseModel
+    class ExternalBankAccountAddress < Lithic::Internal::Type::BaseModel
       # @!attribute address1
       #
       #   @return [String]
@@ -47,7 +47,7 @@ module Lithic
       #   #
       #   def initialize(address1:, city:, country:, postal_code:, state:, address2: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

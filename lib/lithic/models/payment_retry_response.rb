@@ -19,7 +19,7 @@ module Lithic
       #   #
       #   def initialize(balance: nil, **) = super
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
     end
   end
 end

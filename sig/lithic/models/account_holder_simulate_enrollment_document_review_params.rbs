@@ -9,7 +9,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class AccountHolderSimulateEnrollmentDocumentReviewParams < Lithic::BaseModel
+    class AccountHolderSimulateEnrollmentDocumentReviewParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -40,7 +40,7 @@ module Lithic
       type status = :UPLOADED | :ACCEPTED | :REJECTED | :PARTIAL_APPROVAL
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         UPLOADED: :UPLOADED
         ACCEPTED: :ACCEPTED
@@ -64,7 +64,7 @@ module Lithic
         | :UNKNOWN_ERROR
 
       module StatusReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DOCUMENT_MISSING_REQUIRED_DATA: :DOCUMENT_MISSING_REQUIRED_DATA
         DOCUMENT_UPLOAD_TOO_BLURRY: :DOCUMENT_UPLOAD_TOO_BLURRY

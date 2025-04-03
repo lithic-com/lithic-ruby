@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Transactions
       # @see Lithic::Resources::Transactions::EnhancedCommercialData#retrieve
-      class EnhancedCommercialDataRetrieveParams < Lithic::BaseModel
+      class EnhancedCommercialDataRetrieveParams < Lithic::Internal::Type::BaseModel
         # @!parse
         #   extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
@@ -14,7 +14,7 @@ module Lithic
         #   #
         #   def initialize(request_options: {}, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

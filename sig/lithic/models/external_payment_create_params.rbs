@@ -14,7 +14,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class ExternalPaymentCreateParams < Lithic::BaseModel
+    class ExternalPaymentCreateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -65,7 +65,7 @@ module Lithic
         :EXTERNAL_WIRE | :EXTERNAL_ACH | :EXTERNAL_CHECK | :EXTERNAL_TRANSFER
 
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         EXTERNAL_WIRE: :EXTERNAL_WIRE
         EXTERNAL_ACH: :EXTERNAL_ACH
@@ -78,7 +78,7 @@ module Lithic
       type payment_type = :DEPOSIT | :WITHDRAWAL
 
       module PaymentType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         DEPOSIT: :DEPOSIT
         WITHDRAWAL: :WITHDRAWAL
@@ -89,7 +89,7 @@ module Lithic
       type progress_to = :SETTLED | :RELEASED
 
       module ProgressTo
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         SETTLED: :SETTLED
         RELEASED: :RELEASED

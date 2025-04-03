@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#update
-    class AccountHolderUpdateParams < Lithic::BaseModel
+    class AccountHolderUpdateParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -19,7 +19,7 @@ module Lithic
       #
       #   @return [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity>, nil]
       optional :beneficial_owner_entities,
-               -> { Lithic::ArrayOf[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity] }
+               -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity] }
 
       # @!parse
       #   # @return [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity>]
@@ -36,7 +36,7 @@ module Lithic
       #
       #   @return [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual>, nil]
       optional :beneficial_owner_individuals,
-               -> { Lithic::ArrayOf[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual] }
+               -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual] }
 
       # @!parse
       #   # @return [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual>]
@@ -228,9 +228,9 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
-      class BeneficialOwnerEntity < Lithic::BaseModel
+      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
         # @!attribute entity_token
         #   Globally unique identifier for an entity.
         #
@@ -296,7 +296,7 @@ module Lithic
         #     format.
         #
         #   @return [Array<String>, nil]
-        optional :phone_numbers, Lithic::ArrayOf[String]
+        optional :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -324,10 +324,10 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
-      class BeneficialOwnerIndividual < Lithic::BaseModel
+      class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         # @!attribute entity_token
         #   Globally unique identifier for an entity.
         #
@@ -437,10 +437,10 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
-      class BusinessEntity < Lithic::BaseModel
+      class BusinessEntity < Lithic::Internal::Type::BaseModel
         # @!attribute entity_token
         #   Globally unique identifier for an entity.
         #
@@ -506,7 +506,7 @@ module Lithic
         #     format.
         #
         #   @return [Array<String>, nil]
-        optional :phone_numbers, Lithic::ArrayOf[String]
+        optional :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
         # @!parse
         #   # @return [Array<String>]
@@ -537,10 +537,10 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
-      class ControlPerson < Lithic::BaseModel
+      class ControlPerson < Lithic::Internal::Type::BaseModel
         # @!attribute entity_token
         #   Globally unique identifier for an entity.
         #
@@ -657,10 +657,10 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
 
-      class Individual < Lithic::BaseModel
+      class Individual < Lithic::Internal::Type::BaseModel
         # @!attribute entity_token
         #   Globally unique identifier for an entity.
         #
@@ -771,7 +771,7 @@ module Lithic
         #     super
         #   end
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

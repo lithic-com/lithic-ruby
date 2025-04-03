@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class PaymentSimulateReturnParams < Lithic::BaseModel
+    class PaymentSimulateReturnParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -21,7 +21,7 @@ module Lithic
         params(
           payment_token: String,
           return_reason_code: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

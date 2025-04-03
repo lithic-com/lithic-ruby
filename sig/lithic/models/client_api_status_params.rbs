@@ -3,7 +3,7 @@ module Lithic
     type client_api_status_params =
       {  } & Lithic::Internal::Type::request_parameters
 
-    class ClientAPIStatusParams < Lithic::BaseModel
+    class ClientAPIStatusParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 

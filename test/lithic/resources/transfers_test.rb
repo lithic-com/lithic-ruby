@@ -22,13 +22,13 @@ class Lithic::Test::Resources::TransfersTest < Lithic::Test::ResourceTest
         created: Time | nil,
         currency: String | nil,
         descriptor: String | nil,
-        events: ^(Lithic::ArrayOf[Lithic::Models::Transfer::Event]) | nil,
-        from_balance: ^(Lithic::ArrayOf[Lithic::Models::Balance]) | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Transfer::Event]) | nil,
+        from_balance: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Balance]) | nil,
         pending_amount: Integer | nil,
         result: Lithic::Models::Transfer::Result | nil,
         settled_amount: Integer | nil,
         status: Lithic::Models::Transfer::Status | nil,
-        to_balance: ^(Lithic::ArrayOf[Lithic::Models::Balance]) | nil,
+        to_balance: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Balance]) | nil,
         updated: Time | nil
       }
     end

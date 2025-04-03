@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class ResponderEndpointStatus < Lithic::BaseModel
+    class ResponderEndpointStatus < Lithic::Internal::Type::BaseModel
       # True if the instance has an endpoint enrolled.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :enrolled

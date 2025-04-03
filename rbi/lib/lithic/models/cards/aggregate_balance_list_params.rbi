@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module Cards
-      class AggregateBalanceListParams < Lithic::BaseModel
+      class AggregateBalanceListParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
@@ -25,7 +25,7 @@ module Lithic
           params(
             account_token: String,
             business_account_token: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end

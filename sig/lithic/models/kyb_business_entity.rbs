@@ -10,7 +10,7 @@ module Lithic
         parent_company: String
       }
 
-    class KYBBusinessEntity < Lithic::BaseModel
+    class KYBBusinessEntity < Lithic::Internal::Type::BaseModel
       attr_accessor address: Lithic::Models::KYBBusinessEntity::Address
 
       attr_accessor government_id: String
@@ -48,7 +48,7 @@ module Lithic
           :address2 => String
         }
 
-      class Address < Lithic::BaseModel
+      class Address < Lithic::Internal::Type::BaseModel
         attr_accessor address1: String
 
         attr_accessor city: String

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     # @see Lithic::Resources::Cards#create
-    class CardCreateParams < Lithic::BaseModel
+    class CardCreateParams < Lithic::Internal::Type::BaseModel
       # @!parse
       #   extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
@@ -285,7 +285,7 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Card types:
       #
@@ -304,7 +304,7 @@ module Lithic
       #   - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
       #     use VIRTUAL instead.
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         MERCHANT_LOCKED = :MERCHANT_LOCKED
         PHYSICAL = :PHYSICAL
@@ -333,7 +333,7 @@ module Lithic
       #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #     tracking
       module ShippingMethod
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         SHIPPING_METHOD_2_DAY = :"2_DAY"
         EXPEDITED = :EXPEDITED
@@ -356,7 +356,7 @@ module Lithic
       #   - `PAUSED` - Card will decline authorizations, but can be resumed at a later
       #     time.
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         OPEN = :OPEN
         PAUSED = :PAUSED

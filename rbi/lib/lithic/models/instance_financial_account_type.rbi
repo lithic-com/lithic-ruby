@@ -4,7 +4,7 @@ module Lithic
   module Models
     # Type of instance financial account
     module InstanceFinancialAccountType
-      extend Lithic::Enum
+      extend Lithic::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::InstanceFinancialAccountType) }
       OrSymbol =

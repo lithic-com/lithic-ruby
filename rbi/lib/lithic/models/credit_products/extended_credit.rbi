@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module CreditProducts
-      class CreditProductsExtendedCredit < Lithic::BaseModel
+      class CreditProductsExtendedCredit < Lithic::Internal::Type::BaseModel
         sig { returns(Integer) }
         attr_accessor :credit_extended
 

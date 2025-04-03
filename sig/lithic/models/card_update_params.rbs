@@ -12,7 +12,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class CardUpdateParams < Lithic::BaseModel
+    class CardUpdateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -66,7 +66,7 @@ module Lithic
       type pin_status = :OK
 
       module PinStatus
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         OK: :OK
 
@@ -76,7 +76,7 @@ module Lithic
       type state = :CLOSED | :OPEN | :PAUSED
 
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CLOSED: :CLOSED
         OPEN: :OPEN

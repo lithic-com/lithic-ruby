@@ -4,7 +4,7 @@ module Lithic
       type extended_credit_retrieve_params =
         {  } & Lithic::Internal::Type::request_parameters
 
-      class ExtendedCreditRetrieveParams < Lithic::BaseModel
+      class ExtendedCreditRetrieveParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 

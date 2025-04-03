@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module AuthRules
-      class AuthRuleCondition < Lithic::BaseModel
+      class AuthRuleCondition < Lithic::Internal::Type::BaseModel
         # @!attribute [r] attribute
         #   The attribute to target.
         #
@@ -87,13 +87,13 @@ module Lithic
         #   #
         #   def initialize(attribute: nil, operation: nil, value: nil, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # The operation to apply to the attribute
         #
         # @see Lithic::Models::AuthRules::AuthRuleCondition#operation
         module Operation
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           IS_ONE_OF = :IS_ONE_OF
           IS_NOT_ONE_OF = :IS_NOT_ONE_OF
@@ -113,7 +113,7 @@ module Lithic
         #
         # @see Lithic::Models::AuthRules::AuthRuleCondition#value
         module Value
-          extend Lithic::Union
+          extend Lithic::Internal::Type::Union
 
           # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
           variant String
@@ -128,7 +128,7 @@ module Lithic
           #   # @return [Array(String, Integer, Array<String>)]
           #   def self.variants; end
 
-          StringArray = Lithic::ArrayOf[String]
+          StringArray = Lithic::Internal::Type::ArrayOf[String]
         end
       end
     end

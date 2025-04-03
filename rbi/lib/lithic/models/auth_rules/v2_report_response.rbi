@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module AuthRules
-      class V2ReportResponse < Lithic::BaseModel
+      class V2ReportResponse < Lithic::Internal::Type::BaseModel
         sig { returns(T.nilable(String)) }
         attr_reader :report_token
 

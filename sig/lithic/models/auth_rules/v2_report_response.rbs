@@ -3,7 +3,7 @@ module Lithic
     module AuthRules
       type v2_report_response = { report_token: String }
 
-      class V2ReportResponse < Lithic::BaseModel
+      class V2ReportResponse < Lithic::Internal::Type::BaseModel
         attr_reader report_token: String?
 
         def report_token=: (String) -> String

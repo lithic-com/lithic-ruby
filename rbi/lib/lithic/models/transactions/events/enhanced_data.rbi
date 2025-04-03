@@ -4,7 +4,7 @@ module Lithic
   module Models
     module Transactions
       module Events
-        class EnhancedData < Lithic::BaseModel
+        class EnhancedData < Lithic::Internal::Type::BaseModel
           # A unique identifier for the enhanced commercial data.
           sig { returns(String) }
           attr_accessor :token
@@ -14,7 +14,7 @@ module Lithic
 
           sig do
             params(
-              common: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Internal::Util::AnyHash)
+              common: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Internal::AnyHash)
             )
               .void
           end
@@ -34,9 +34,9 @@ module Lithic
           sig do
             params(
               token: String,
-              common: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Internal::Util::AnyHash),
+              common: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Internal::AnyHash),
               event_token: String,
-              fleet: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet, Lithic::Internal::Util::AnyHash)],
+              fleet: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet, Lithic::Internal::AnyHash)],
               transaction_token: String
             )
               .returns(T.attached_class)
@@ -59,7 +59,7 @@ module Lithic
           def to_hash
           end
 
-          class Common < Lithic::BaseModel
+          class Common < Lithic::Internal::Type::BaseModel
             sig { returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem]) }
             attr_accessor :line_items
 
@@ -68,7 +68,7 @@ module Lithic
 
             sig do
               params(
-                tax: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Internal::Util::AnyHash)
+                tax: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Internal::AnyHash)
               )
                 .void
             end
@@ -97,13 +97,8 @@ module Lithic
 
             sig do
               params(
-                line_items: T::Array[
-                T.any(
-                  Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem,
-                  Lithic::Internal::Util::AnyHash
-                )
-                ],
-                tax: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Internal::Util::AnyHash),
+                line_items: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem, Lithic::Internal::AnyHash)],
+                tax: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Internal::AnyHash),
                 customer_reference_number: String,
                 merchant_reference_number: String,
                 order_date: Date
@@ -134,7 +129,7 @@ module Lithic
             def to_hash
             end
 
-            class LineItem < Lithic::BaseModel
+            class LineItem < Lithic::Internal::Type::BaseModel
               # The price of the item purchased in merchant currency.
               sig { returns(T.nilable(Float)) }
               attr_reader :amount
@@ -182,7 +177,7 @@ module Lithic
               end
             end
 
-            class Tax < Lithic::BaseModel
+            class Tax < Lithic::Internal::Type::BaseModel
               # The amount of tax collected.
               sig { returns(T.nilable(Integer)) }
               attr_reader :amount
@@ -230,7 +225,7 @@ module Lithic
 
               # A flag indicating whether the transaction is tax exempt or not.
               module Exempt
-                extend Lithic::Enum
+                extend Lithic::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt) }
@@ -269,16 +264,13 @@ module Lithic
             end
           end
 
-          class Fleet < Lithic::BaseModel
+          class Fleet < Lithic::Internal::Type::BaseModel
             sig { returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals) }
             attr_reader :amount_totals
 
             sig do
               params(
-                amount_totals: T.any(
-                  Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals,
-                  Lithic::Internal::Util::AnyHash
-                )
+                amount_totals: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals, Lithic::Internal::AnyHash)
               )
                 .void
             end
@@ -289,7 +281,7 @@ module Lithic
 
             sig do
               params(
-                fuel: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Internal::Util::AnyHash)
+                fuel: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Internal::AnyHash)
               )
                 .void
             end
@@ -327,11 +319,8 @@ module Lithic
 
             sig do
               params(
-                amount_totals: T.any(
-                  Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals,
-                  Lithic::Internal::Util::AnyHash
-                ),
-                fuel: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Internal::Util::AnyHash),
+                amount_totals: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals, Lithic::Internal::AnyHash),
+                fuel: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Internal::AnyHash),
                 driver_number: String,
                 odometer: Integer,
                 service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol,
@@ -365,7 +354,7 @@ module Lithic
             def to_hash
             end
 
-            class AmountTotals < Lithic::BaseModel
+            class AmountTotals < Lithic::Internal::Type::BaseModel
               # The discount applied to the gross sale amount.
               sig { returns(T.nilable(Integer)) }
               attr_reader :discount
@@ -398,7 +387,7 @@ module Lithic
               end
             end
 
-            class Fuel < Lithic::BaseModel
+            class Fuel < Lithic::Internal::Type::BaseModel
               # The quantity of fuel purchased.
               sig { returns(T.nilable(Float)) }
               attr_reader :quantity
@@ -464,7 +453,7 @@ module Lithic
 
               # The type of fuel purchased.
               module Type
-                extend Lithic::Enum
+                extend Lithic::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type) }
@@ -1006,7 +995,7 @@ module Lithic
 
               # Unit of measure for fuel disbursement.
               module UnitOfMeasure
-                extend Lithic::Enum
+                extend Lithic::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure) }
@@ -1068,7 +1057,7 @@ module Lithic
 
             # The type of fuel service.
             module ServiceType
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType) }

@@ -4,7 +4,7 @@ module Lithic
       { type: Lithic::Models::ResponderEndpointDeleteParams::type_ }
       & Lithic::Internal::Type::request_parameters
 
-    class ResponderEndpointDeleteParams < Lithic::BaseModel
+    class ResponderEndpointDeleteParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -21,7 +21,7 @@ module Lithic
         :AUTH_STREAM_ACCESS | :THREE_DS_DECISIONING | :TOKENIZATION_DECISIONING
 
       module Type
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         AUTH_STREAM_ACCESS: :AUTH_STREAM_ACCESS
         THREE_DS_DECISIONING: :THREE_DS_DECISIONING

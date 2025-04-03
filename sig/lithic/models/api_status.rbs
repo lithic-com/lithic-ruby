@@ -2,7 +2,7 @@ module Lithic
   module Models
     type api_status = { message: String }
 
-    class APIStatus < Lithic::BaseModel
+    class APIStatus < Lithic::Internal::Type::BaseModel
       attr_reader message: String?
 
       def message=: (String) -> String

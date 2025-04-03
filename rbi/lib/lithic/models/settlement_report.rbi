@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class SettlementReport < Lithic::BaseModel
+    class SettlementReport < Lithic::Internal::Type::BaseModel
       # Date and time when the transaction first occurred. UTC time zone.
       sig { returns(Time) }
       attr_accessor :created
@@ -65,7 +65,7 @@ module Lithic
         params(
           created: Time,
           currency: String,
-          details: T::Array[T.any(Lithic::Models::SettlementSummaryDetails, Lithic::Internal::Util::AnyHash)],
+          details: T::Array[T.any(Lithic::Models::SettlementSummaryDetails, Lithic::Internal::AnyHash)],
           disputes_gross_amount: Integer,
           interchange_gross_amount: Integer,
           is_complete: T::Boolean,

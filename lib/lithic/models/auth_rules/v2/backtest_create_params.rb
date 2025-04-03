@@ -5,7 +5,7 @@ module Lithic
     module AuthRules
       module V2
         # @see Lithic::Resources::AuthRules::V2::Backtests#create
-        class BacktestCreateParams < Lithic::BaseModel
+        class BacktestCreateParams < Lithic::Internal::Type::BaseModel
           # @!parse
           #   extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
@@ -37,7 +37,7 @@ module Lithic
           #   #
           #   def initialize(end_: nil, start: nil, request_options: {}, **) = super
 
-          # def initialize: (Hash | Lithic::BaseModel) -> void
+          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
         end
       end
     end

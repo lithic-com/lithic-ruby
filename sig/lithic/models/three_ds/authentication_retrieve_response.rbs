@@ -25,7 +25,7 @@ module Lithic
           transaction: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction?
         }
 
-      class AuthenticationRetrieveResponse < Lithic::BaseModel
+      class AuthenticationRetrieveResponse < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
 
         attr_accessor account_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::account_type?
@@ -102,7 +102,7 @@ module Lithic
         type account_type = :CREDIT | :DEBIT | :NOT_APPLICABLE
 
         module AccountType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CREDIT: :CREDIT
           DEBIT: :DEBIT
@@ -115,7 +115,7 @@ module Lithic
           :DECLINE | :SUCCESS | :PENDING_CHALLENGE | :PENDING_DECISION
 
         module AuthenticationResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           DECLINE: :DECLINE
           SUCCESS: :SUCCESS
@@ -128,7 +128,7 @@ module Lithic
         type card_expiry_check = :MATCH | :MISMATCH | :NOT_PRESENT
 
         module CardExpiryCheck
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           MATCH: :MATCH
           MISMATCH: :MISMATCH
@@ -149,7 +149,7 @@ module Lithic
             shipping_address: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress
           }
 
-        class Cardholder < Lithic::BaseModel
+        class Cardholder < Lithic::Internal::Type::BaseModel
           attr_accessor address_match: bool?
 
           attr_reader billing_address: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress?
@@ -197,7 +197,7 @@ module Lithic
               postal_code: String?
             }
 
-          class BillingAddress < Lithic::BaseModel
+          class BillingAddress < Lithic::Internal::Type::BaseModel
             attr_accessor address1: String?
 
             attr_accessor address2: String?
@@ -232,7 +232,7 @@ module Lithic
               postal_code: String?
             }
 
-          class ShippingAddress < Lithic::BaseModel
+          class ShippingAddress < Lithic::Internal::Type::BaseModel
             attr_accessor address1: String?
 
             attr_accessor address2: String?
@@ -261,7 +261,7 @@ module Lithic
         type channel = :APP_BASED | :BROWSER | :THREE_DS_REQUESTOR_INITIATED
 
         module Channel
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           APP_BASED: :APP_BASED
           BROWSER: :BROWSER
@@ -279,7 +279,7 @@ module Lithic
             risk_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator
           }
 
-        class Merchant < Lithic::BaseModel
+        class Merchant < Lithic::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor country: String
@@ -313,7 +313,7 @@ module Lithic
               shipping_method: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::shipping_method?
             }
 
-          class RiskIndicator < Lithic::BaseModel
+          class RiskIndicator < Lithic::Internal::Type::BaseModel
             attr_accessor delivery_email_address: String?
 
             attr_accessor delivery_time_frame: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::delivery_time_frame?
@@ -353,7 +353,7 @@ module Lithic
               | :TWO_DAY_OR_MORE_SHIPPING
 
             module DeliveryTimeFrame
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               ELECTRONIC_DELIVERY: :ELECTRONIC_DELIVERY
               OVERNIGHT_SHIPPING: :OVERNIGHT_SHIPPING
@@ -367,7 +367,7 @@ module Lithic
               :FUTURE_AVAILABILITY | :MERCHANDISE_AVAILABLE
 
             module OrderAvailability
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               FUTURE_AVAILABILITY: :FUTURE_AVAILABILITY
               MERCHANDISE_AVAILABLE: :MERCHANDISE_AVAILABLE
@@ -378,7 +378,7 @@ module Lithic
             type reorder_items = :FIRST_TIME_ORDERED | :REORDERED
 
             module ReorderItems
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               FIRST_TIME_ORDERED: :FIRST_TIME_ORDERED
               REORDERED: :REORDERED
@@ -398,7 +398,7 @@ module Lithic
               | :TRAVEL_AND_EVENT_TICKETS
 
             module ShippingMethod
-              extend Lithic::Enum
+              extend Lithic::Internal::Type::Enum
 
               DIGITAL_GOODS: :DIGITAL_GOODS
               LOCKER_DELIVERY: :LOCKER_DELIVERY
@@ -419,7 +419,7 @@ module Lithic
           :NON_PAYMENT_AUTHENTICATION | :PAYMENT_AUTHENTICATION
 
         module MessageCategory
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           NON_PAYMENT_AUTHENTICATION: :NON_PAYMENT_AUTHENTICATION
           PAYMENT_AUTHENTICATION: :PAYMENT_AUTHENTICATION
@@ -437,7 +437,7 @@ module Lithic
           | :OTHER
 
         module ThreeDSRequestorChallengeIndicator
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           NO_PREFERENCE: :NO_PREFERENCE
           NO_CHALLENGE_REQUESTED: :NO_CHALLENGE_REQUESTED
@@ -456,7 +456,7 @@ module Lithic
             network_risk_score: Integer?
           }
 
-        class AdditionalData < Lithic::BaseModel
+        class AdditionalData < Lithic::Internal::Type::BaseModel
           attr_accessor network_decision: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::network_decision?
 
           attr_accessor network_risk_score: Integer?
@@ -471,7 +471,7 @@ module Lithic
           type network_decision = :LOW_RISK | :NOT_LOW_RISK
 
           module NetworkDecision
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             LOW_RISK: :LOW_RISK
             NOT_LOW_RISK: :NOT_LOW_RISK
@@ -482,7 +482,7 @@ module Lithic
 
         type app = { device_info: String?, ip: String }
 
-        class App < Lithic::BaseModel
+        class App < Lithic::Internal::Type::BaseModel
           attr_accessor device_info: String?
 
           attr_reader ip: String?
@@ -507,7 +507,7 @@ module Lithic
           | :SPLIT_SHIPMENT
 
         module AuthenticationRequestType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ADD_CARD: :ADD_CARD
           BILLING_AGREEMENT: :BILLING_AGREEMENT
@@ -533,7 +533,7 @@ module Lithic
             user_agent: String?
           }
 
-        class Browser < Lithic::BaseModel
+        class Browser < Lithic::Internal::Type::BaseModel
           attr_accessor ip: String?
 
           attr_accessor java_enabled: bool?
@@ -564,7 +564,7 @@ module Lithic
             phone_number: String?
           }
 
-        class ChallengeMetadata < Lithic::BaseModel
+        class ChallengeMetadata < Lithic::Internal::Type::BaseModel
           attr_accessor method_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::method_type
 
           attr_accessor phone_number: String?
@@ -579,7 +579,7 @@ module Lithic
           type method_type = :SMS_OTP | :OUT_OF_BAND
 
           module MethodType
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             SMS_OTP: :SMS_OTP
             OUT_OF_BAND: :OUT_OF_BAND
@@ -591,7 +591,7 @@ module Lithic
         type challenge_orchestrated_by = :LITHIC | :CUSTOMER | :NO_CHALLENGE
 
         module ChallengeOrchestratedBy
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           LITHIC: :LITHIC
           CUSTOMER: :CUSTOMER
@@ -608,7 +608,7 @@ module Lithic
           | :UNKNOWN
 
         module DecisionMadeBy
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           CUSTOMER_ENDPOINT: :CUSTOMER_ENDPOINT
           LITHIC_DEFAULT: :LITHIC_DEFAULT
@@ -638,7 +638,7 @@ module Lithic
           | :TRUST_LIST_STATUS_CHECK
 
         module ThreeRiRequestType
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           ACCOUNT_VERIFICATION: :ACCOUNT_VERIFICATION
           ADD_CARD: :ADD_CARD
@@ -669,7 +669,7 @@ module Lithic
             type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::type_?
           }
 
-        class Transaction < Lithic::BaseModel
+        class Transaction < Lithic::Internal::Type::BaseModel
           attr_accessor amount: Float
 
           attr_accessor currency: String
@@ -698,7 +698,7 @@ module Lithic
             | :QUASI_CASH_TRANSACTION
 
           module Type
-            extend Lithic::Enum
+            extend Lithic::Internal::Type::Enum
 
             ACCOUNT_FUNDING: :ACCOUNT_FUNDING
             CHECK_ACCEPTANCE: :CHECK_ACCEPTANCE

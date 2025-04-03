@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class KYCExempt < Lithic::BaseModel
+    class KYCExempt < Lithic::Internal::Type::BaseModel
       # @!attribute address
       #   KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
       #     acceptable; APO/FPO are acceptable.
@@ -95,13 +95,13 @@ module Lithic
       #     super
       #   end
 
-      # def initialize: (Hash | Lithic::BaseModel) -> void
+      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Specifies the type of KYC Exempt user
       #
       # @see Lithic::Models::KYCExempt#kyc_exemption_type
       module KYCExemptionType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         AUTHORIZED_USER = :AUTHORIZED_USER
         PREPAID_CARD_USER = :PREPAID_CARD_USER
@@ -117,7 +117,7 @@ module Lithic
       #
       # @see Lithic::Models::KYCExempt#workflow
       module Workflow
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         KYC_EXEMPT = :KYC_EXEMPT
 

@@ -8,7 +8,7 @@ module Lithic
       }
       & Lithic::Internal::Type::request_parameters
 
-    class ExternalPaymentSettleParams < Lithic::BaseModel
+    class ExternalPaymentSettleParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -36,7 +36,7 @@ module Lithic
       type progress_to = :SETTLED | :RELEASED
 
       module ProgressTo
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         SETTLED: :SETTLED
         RELEASED: :RELEASED

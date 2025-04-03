@@ -23,7 +23,7 @@ module Lithic
         transaction_token: String
       }
 
-    class Dispute < Lithic::BaseModel
+    class Dispute < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor amount: Integer
@@ -103,7 +103,7 @@ module Lithic
         | :REFUND_NOT_PROCESSED
 
       module Reason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ATM_CASH_MISDISPENSE: :ATM_CASH_MISDISPENSE
         CANCELLED: :CANCELLED
@@ -143,7 +143,7 @@ module Lithic
         | :WON_PREARBITRATION
 
       module ResolutionReason
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         CASE_LOST: :CASE_LOST
         NETWORK_REJECTED: :NETWORK_REJECTED
@@ -177,7 +177,7 @@ module Lithic
         | :SUBMITTED
 
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         ARBITRATION: :ARBITRATION
         CASE_CLOSED: :CASE_CLOSED

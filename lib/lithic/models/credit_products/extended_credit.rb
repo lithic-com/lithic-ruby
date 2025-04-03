@@ -4,7 +4,7 @@ module Lithic
   module Models
     module CreditProducts
       # @see Lithic::Resources::CreditProducts::ExtendedCredit#retrieve
-      class CreditProductsExtendedCredit < Lithic::BaseModel
+      class CreditProductsExtendedCredit < Lithic::Internal::Type::BaseModel
         # @!attribute credit_extended
         #
         #   @return [Integer]
@@ -15,7 +15,7 @@ module Lithic
         #   #
         #   def initialize(credit_extended:, **) = super
 
-        # def initialize: (Hash | Lithic::BaseModel) -> void
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

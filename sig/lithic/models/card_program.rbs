@@ -11,7 +11,7 @@ module Lithic
         settlement_currencies: ::Array[String]
       }
 
-    class CardProgram < Lithic::BaseModel
+    class CardProgram < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
       attr_accessor created: Time

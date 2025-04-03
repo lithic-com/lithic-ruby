@@ -3,7 +3,7 @@ module Lithic
     module CreditProducts
       type credit_products_extended_credit = { credit_extended: Integer }
 
-      class CreditProductsExtendedCredit < Lithic::BaseModel
+      class CreditProductsExtendedCredit < Lithic::Internal::Type::BaseModel
         attr_accessor credit_extended: Integer
 
         def initialize: (credit_extended: Integer) -> void

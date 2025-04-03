@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class ExternalBankAccountListParams < Lithic::BaseModel
+    class ExternalBankAccountListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
@@ -81,7 +81,7 @@ module Lithic
           starting_after: String,
           states: T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol],
           verification_states: T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol],
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -120,7 +120,7 @@ module Lithic
       end
 
       module AccountType
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType) }
         OrSymbol =
@@ -135,7 +135,7 @@ module Lithic
       end
 
       module State
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountListParams::State) }
         OrSymbol =
@@ -151,7 +151,7 @@ module Lithic
       end
 
       module VerificationState
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState) }

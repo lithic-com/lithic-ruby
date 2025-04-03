@@ -21,7 +21,7 @@ module Lithic
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= Lithic::Unknown
+        def self.==(other) = other.is_a?(Class) && other <= Lithic::Internal::Type::Unknown
 
         class << self
           # @api private

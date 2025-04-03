@@ -2,7 +2,7 @@
 
 module Lithic
   module Models
-    class BookTransferResponse < Lithic::BaseModel
+    class BookTransferResponse < Lithic::Internal::Type::BaseModel
       # Customer-provided token that will serve as an idempotency token. This token will
       #   become the transaction token.
       sig { returns(String) }
@@ -66,7 +66,7 @@ module Lithic
           category: Lithic::Models::BookTransferResponse::Category::OrSymbol,
           created: Time,
           currency: String,
-          events: T::Array[T.any(Lithic::Models::BookTransferResponse::Event, Lithic::Internal::Util::AnyHash)],
+          events: T::Array[T.any(Lithic::Models::BookTransferResponse::Event, Lithic::Internal::AnyHash)],
           from_financial_account_token: String,
           pending_amount: Integer,
           result: Lithic::Models::BookTransferResponse::Result::OrSymbol,
@@ -117,7 +117,7 @@ module Lithic
 
       # Category of the book transfer
       module Category
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Category) }
         OrSymbol =
@@ -137,7 +137,7 @@ module Lithic
         end
       end
 
-      class Event < Lithic::BaseModel
+      class Event < Lithic::Internal::Type::BaseModel
         # Globally unique identifier.
         sig { returns(String) }
         attr_accessor :token
@@ -207,7 +207,7 @@ module Lithic
         end
 
         module DetailedResult
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResult) }
@@ -226,7 +226,7 @@ module Lithic
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         module Result
-          extend Lithic::Enum
+          extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Event::Result) }
           OrSymbol =
@@ -244,7 +244,7 @@ module Lithic
       # APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
       module Result
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Result) }
         OrSymbol =
@@ -261,7 +261,7 @@ module Lithic
       # Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
       #   transfer was reversed \* `SETTLED` - The transfer is completed.
       module Status
-        extend Lithic::Enum
+        extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferResponse::Status) }
         OrSymbol =
