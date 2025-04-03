@@ -7,6 +7,8 @@ module Lithic
       #
       # @abstract
       #
+      # @generic Elem
+      #
       # Array of items of a given type.
       class ArrayOf
         include Lithic::Internal::Type::Converter
@@ -40,7 +42,7 @@ module Lithic
 
         # @api private
         #
-        # @param value [Enumerable, Object]
+        # @param value [Array<Object>, Object]
         #
         # @param state [Hash{Symbol=>Object}] .
         #
@@ -75,7 +77,7 @@ module Lithic
 
         # @api private
         #
-        # @param value [Enumerable, Object]
+        # @param value [Array<Object>, Object]
         #
         # @return [Array<Object>, Object]
         def dump(value)
@@ -85,7 +87,7 @@ module Lithic
 
         # @api private
         #
-        # @return [Lithic::Internal::Type::Converter, Class]
+        # @return [generic<Elem>]
         protected def item_type = @item_type_fn.call
 
         # @api private

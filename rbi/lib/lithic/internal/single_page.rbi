@@ -3,9 +3,9 @@
 module Lithic
   module Internal
     class SinglePage
-      include Lithic::Internal::Type::BasePage
-
       Elem = type_member
+
+      include Lithic::Internal::Type::BasePage
 
       sig { returns(T.nilable(T::Array[Elem])) }
       attr_accessor :data

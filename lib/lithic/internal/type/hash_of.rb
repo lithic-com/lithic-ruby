@@ -7,6 +7,8 @@ module Lithic
       #
       # @abstract
       #
+      # @generic Elem
+      #
       # Hash of items of a given type.
       class HashOf
         include Lithic::Internal::Type::Converter
@@ -111,7 +113,7 @@ module Lithic
 
         # @api private
         #
-        # @return [Lithic::Internal::Type::Converter, Class]
+        # @return [generic<Elem>]
         protected def item_type = @item_type_fn.call
 
         # @api private

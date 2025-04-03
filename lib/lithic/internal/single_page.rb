@@ -2,6 +2,8 @@
 
 module Lithic
   module Internal
+    # @generic Elem
+    #
     # @example
     #   if single_page.has_next?
     #     single_page = single_page.next_page
@@ -14,7 +16,7 @@ module Lithic
     class SinglePage
       include Lithic::Internal::Type::BasePage
 
-      # @return [Array<Object>, nil]
+      # @return [Array<generic<Elem>>, nil]
       attr_accessor :data
 
       # @return [Boolean]
@@ -55,6 +57,8 @@ module Lithic
       end
 
       # @param blk [Proc]
+      #
+      # @yieldparam [generic<Elem>]
       def auto_paging_each(&blk)
         unless block_given?
           raise ArgumentError.new("A block must be given to ##{__method__}")
