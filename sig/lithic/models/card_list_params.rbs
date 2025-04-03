@@ -10,11 +10,11 @@ module Lithic
         starting_after: String,
         state: Lithic::Models::CardListParams::state
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class CardListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader account_token: String?
 

@@ -12,7 +12,7 @@ module Lithic
           params(
             statement_token: String,
             financial_account_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
           )
             .returns(Lithic::Models::FinancialAccounts::Statement)
         end
@@ -35,9 +35,9 @@ module Lithic
             include_initial_statements: T::Boolean,
             page_size: Integer,
             starting_after: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
           )
-            .returns(Lithic::CursorPage[Lithic::Models::FinancialAccounts::Statement])
+            .returns(Lithic::Internal::CursorPage[Lithic::Models::FinancialAccounts::Statement])
         end
         def list(
           # Globally unique identifier for financial account.

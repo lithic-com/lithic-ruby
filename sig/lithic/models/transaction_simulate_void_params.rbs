@@ -6,11 +6,11 @@ module Lithic
         amount: Integer,
         type: Lithic::Models::TransactionSimulateVoidParams::type_
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class TransactionSimulateVoidParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor token: String
 

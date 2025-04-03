@@ -1,11 +1,12 @@
 module Lithic
   module Models
     type external_payment_release_params =
-      { effective_date: Date, memo: String } & Lithic::request_parameters
+      { effective_date: Date, memo: String }
+      & Lithic::Internal::Type::request_parameters
 
     class ExternalPaymentReleaseParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor effective_date: Date
 

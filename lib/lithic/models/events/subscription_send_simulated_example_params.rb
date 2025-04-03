@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::Events::Subscriptions#send_simulated_example
       class SubscriptionSendSimulatedExampleParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!attribute [r] event_type
         #   Event type to send example message for.

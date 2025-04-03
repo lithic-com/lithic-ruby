@@ -4,7 +4,7 @@ module Lithic
       def list: (
         ?financial_account_type: Lithic::Models::AggregateBalanceListParams::financial_account_type,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::SinglePage[Lithic::Models::AggregateBalance]
+      ) -> Lithic::Internal::SinglePage[Lithic::Models::AggregateBalance]
 
       def initialize: (client: Lithic::Client) -> void
     end

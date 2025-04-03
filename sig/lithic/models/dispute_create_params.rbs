@@ -8,11 +8,11 @@ module Lithic
         customer_filed_date: Time,
         customer_note: String
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class DisputeCreateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor amount: Integer
 

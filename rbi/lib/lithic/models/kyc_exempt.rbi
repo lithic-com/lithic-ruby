@@ -8,7 +8,7 @@ module Lithic
       sig { returns(Lithic::Models::Address) }
       attr_reader :address
 
-      sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+      sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :address
 
       # The KYC Exempt user's email
@@ -54,7 +54,7 @@ module Lithic
 
       sig do
         params(
-          address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
+          address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash),
           email: String,
           first_name: String,
           kyc_exemption_type: Lithic::Models::KYCExempt::KYCExemptionType::OrSymbol,

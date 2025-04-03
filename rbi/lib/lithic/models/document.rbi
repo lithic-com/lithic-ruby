@@ -31,7 +31,7 @@ module Lithic
           account_holder_token: String,
           document_type: Lithic::Models::Document::DocumentType::OrSymbol,
           entity_token: String,
-          required_document_uploads: T::Array[T.any(Lithic::Models::Document::RequiredDocumentUpload, Lithic::Util::AnyHash)]
+          required_document_uploads: T::Array[T.any(Lithic::Models::Document::RequiredDocumentUpload, Lithic::Internal::Util::AnyHash)]
         )
           .returns(T.attached_class)
       end

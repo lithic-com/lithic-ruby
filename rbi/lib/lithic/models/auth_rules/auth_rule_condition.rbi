@@ -127,7 +127,7 @@ module Lithic
           def self.variants
           end
 
-          StringArray = T.let(Lithic::ArrayOf[String], Lithic::Type::Converter)
+          StringArray = T.let(Lithic::ArrayOf[String], Lithic::Internal::Type::Converter)
         end
       end
     end

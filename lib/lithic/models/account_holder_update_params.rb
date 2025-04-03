@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::AccountHolders#update
     class AccountHolderUpdateParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute [r] beneficial_owner_entities
       #   List of all entities with >25% ownership in the company. If no entity or

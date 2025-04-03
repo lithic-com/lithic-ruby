@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class TokenizationUpdateDigitalCardArtParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Specifies the digital card art to be displayed in the user’s digital wallet for
       #   a tokenization. This artwork must be approved by the network and configured by
@@ -19,7 +19,7 @@ module Lithic
       sig do
         params(
           digital_card_art_token: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -4,8 +4,8 @@ module Lithic
   module Models
     module FinancialAccounts
       class StatementListParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # Date string in RFC 3339 format. Only entries created after the specified date
         #   will be included.
@@ -61,7 +61,7 @@ module Lithic
             include_initial_statements: T::Boolean,
             page_size: Integer,
             starting_after: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

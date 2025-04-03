@@ -33,7 +33,7 @@ module Lithic
         ?status: Lithic::Models::DisputeListParams::status,
         ?transaction_tokens: ::Array[String],
         ?request_options: Lithic::request_opts
-      ) -> Lithic::CursorPage[Lithic::Models::Dispute]
+      ) -> Lithic::Internal::CursorPage[Lithic::Models::Dispute]
 
       def delete: (
         String dispute_token,
@@ -60,7 +60,7 @@ module Lithic
         ?page_size: Integer,
         ?starting_after: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::CursorPage[Lithic::Models::DisputeEvidence]
+      ) -> Lithic::Internal::CursorPage[Lithic::Models::DisputeEvidence]
 
       def retrieve_evidence: (
         String evidence_token,

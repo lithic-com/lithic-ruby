@@ -8,11 +8,11 @@ module Lithic
           disabled: bool,
           event_types: ::Array[Lithic::Models::Events::SubscriptionCreateParams::event_type]
         }
-        & Lithic::request_parameters
+        & Lithic::Internal::Type::request_parameters
 
       class SubscriptionCreateParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_accessor url: String
 

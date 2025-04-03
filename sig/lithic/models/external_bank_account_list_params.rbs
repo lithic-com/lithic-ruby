@@ -12,11 +12,11 @@ module Lithic
         states: ::Array[Lithic::Models::ExternalBankAccountListParams::state],
         verification_states: ::Array[Lithic::Models::ExternalBankAccountListParams::verification_state]
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class ExternalBankAccountListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader account_token: String?
 

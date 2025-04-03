@@ -21,11 +21,11 @@ module Lithic
         verification_enforcement: bool,
         processor_token: String
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class ExternalBankAccountCreateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor account_number: String
 

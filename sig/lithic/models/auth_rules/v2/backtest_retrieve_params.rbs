@@ -3,11 +3,12 @@ module Lithic
     module AuthRules
       module V2
         type backtest_retrieve_params =
-          { auth_rule_token: String } & Lithic::request_parameters
+          { auth_rule_token: String }
+          & Lithic::Internal::Type::request_parameters
 
         class BacktestRetrieveParams < Lithic::BaseModel
-          extend Lithic::Type::RequestParameters::Converter
-          include Lithic::RequestParameters
+          extend Lithic::Internal::Type::RequestParameters::Converter
+          include Lithic::Internal::Type::RequestParameters
 
           attr_accessor auth_rule_token: String
 

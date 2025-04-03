@@ -14,11 +14,11 @@ module Lithic
         starting_after: String,
         status: Lithic::Models::BookTransferListParams::status
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class BookTransferListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader account_token: String?
 

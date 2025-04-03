@@ -8,7 +8,7 @@ module Lithic
 
       sig do
         params(
-          available_spend_limit: T.any(Lithic::Models::CardSpendLimits::AvailableSpendLimit, Lithic::Util::AnyHash)
+          available_spend_limit: T.any(Lithic::Models::CardSpendLimits::AvailableSpendLimit, Lithic::Internal::Util::AnyHash)
         )
           .void
       end
@@ -17,20 +17,28 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::CardSpendLimits::SpendLimit)) }
       attr_reader :spend_limit
 
-      sig { params(spend_limit: T.any(Lithic::Models::CardSpendLimits::SpendLimit, Lithic::Util::AnyHash)).void }
+      sig do
+        params(spend_limit: T.any(Lithic::Models::CardSpendLimits::SpendLimit, Lithic::Internal::Util::AnyHash))
+          .void
+      end
       attr_writer :spend_limit
 
       sig { returns(T.nilable(Lithic::Models::CardSpendLimits::SpendVelocity)) }
       attr_reader :spend_velocity
 
-      sig { params(spend_velocity: T.any(Lithic::Models::CardSpendLimits::SpendVelocity, Lithic::Util::AnyHash)).void }
+      sig do
+        params(
+          spend_velocity: T.any(Lithic::Models::CardSpendLimits::SpendVelocity, Lithic::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :spend_velocity
 
       sig do
         params(
-          available_spend_limit: T.any(Lithic::Models::CardSpendLimits::AvailableSpendLimit, Lithic::Util::AnyHash),
-          spend_limit: T.any(Lithic::Models::CardSpendLimits::SpendLimit, Lithic::Util::AnyHash),
-          spend_velocity: T.any(Lithic::Models::CardSpendLimits::SpendVelocity, Lithic::Util::AnyHash)
+          available_spend_limit: T.any(Lithic::Models::CardSpendLimits::AvailableSpendLimit, Lithic::Internal::Util::AnyHash),
+          spend_limit: T.any(Lithic::Models::CardSpendLimits::SpendLimit, Lithic::Internal::Util::AnyHash),
+          spend_velocity: T.any(Lithic::Models::CardSpendLimits::SpendVelocity, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

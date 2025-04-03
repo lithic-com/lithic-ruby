@@ -52,7 +52,7 @@ module Lithic
           created: Time,
           currency: String,
           direction: Lithic::Models::ManagementOperationTransaction::Direction::OrSymbol,
-          events: T::Array[T.any(Lithic::Models::ManagementOperationTransaction::Event, Lithic::Util::AnyHash)],
+          events: T::Array[T.any(Lithic::Models::ManagementOperationTransaction::Event, Lithic::Internal::Util::AnyHash)],
           financial_account_token: String,
           pending_amount: Integer,
           result: Lithic::Models::ManagementOperationTransaction::Result::OrSymbol,

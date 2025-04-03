@@ -5,8 +5,8 @@ module Lithic
     module FinancialAccounts
       module Statements
         class LineItemListParams < Lithic::BaseModel
-          extend Lithic::Type::RequestParameters::Converter
-          include Lithic::RequestParameters
+          extend Lithic::Internal::Type::RequestParameters::Converter
+          include Lithic::Internal::Type::RequestParameters
 
           # Globally unique identifier for financial account.
           sig { returns(String) }
@@ -41,7 +41,7 @@ module Lithic
               ending_before: String,
               page_size: Integer,
               starting_after: String,
-              request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+              request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
             )
               .returns(T.attached_class)
           end

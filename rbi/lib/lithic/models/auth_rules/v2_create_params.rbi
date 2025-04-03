@@ -4,8 +4,8 @@ module Lithic
   module Models
     module AuthRules
       class V2CreateParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # Account tokens to which the Auth Rule applies.
         sig { returns(T::Array[String]) }
@@ -32,7 +32,7 @@ module Lithic
           params(
             parameters: T.any(
               Lithic::Models::AuthRules::ConditionalBlockParameters,
-              Lithic::Util::AnyHash,
+              Lithic::Internal::Util::AnyHash,
               Lithic::Models::AuthRules::VelocityLimitParams
             )
           )
@@ -70,12 +70,12 @@ module Lithic
             name: T.nilable(String),
             parameters: T.any(
               Lithic::Models::AuthRules::ConditionalBlockParameters,
-              Lithic::Util::AnyHash,
+              Lithic::Internal::Util::AnyHash,
               Lithic::Models::AuthRules::VelocityLimitParams
             ),
             type: Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol,
             excluded_card_tokens: T::Array[String],
-            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

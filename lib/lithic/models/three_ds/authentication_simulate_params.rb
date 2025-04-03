@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::ThreeDS::Authentication#simulate
       class AuthenticationSimulateParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!attribute merchant
         #

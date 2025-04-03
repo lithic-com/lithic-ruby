@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::CreditProducts::PrimeRates#create
       class PrimeRateCreateParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!attribute effective_date
         #   Date the rate goes into effect

@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::BookTransfers#create
     class BookTransferCreateParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute amount
       #   Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).

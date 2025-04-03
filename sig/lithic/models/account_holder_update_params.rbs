@@ -18,11 +18,11 @@ module Lithic
         legal_business_name: String,
         phone_number: String
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class AccountHolderUpdateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader beneficial_owner_entities: ::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity]?
 

@@ -11,7 +11,7 @@ class Lithic::Test::Resources::FinancialAccounts::Statements::LineItemsTest < Li
       )
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

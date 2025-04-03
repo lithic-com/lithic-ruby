@@ -8,7 +8,7 @@ module Lithic
       sig { returns(Lithic::Models::KYC::Individual) }
       attr_reader :individual
 
-      sig { params(individual: T.any(Lithic::Models::KYC::Individual, Lithic::Util::AnyHash)).void }
+      sig { params(individual: T.any(Lithic::Models::KYC::Individual, Lithic::Internal::Util::AnyHash)).void }
       attr_writer :individual
 
       # An RFC 3339 timestamp indicating when the account holder accepted the applicable
@@ -41,7 +41,7 @@ module Lithic
 
       sig do
         params(
-          individual: T.any(Lithic::Models::KYC::Individual, Lithic::Util::AnyHash),
+          individual: T.any(Lithic::Models::KYC::Individual, Lithic::Internal::Util::AnyHash),
           tos_timestamp: String,
           workflow: Lithic::Models::KYC::Workflow::OrSymbol,
           external_id: String,
@@ -73,7 +73,7 @@ module Lithic
         sig { returns(Lithic::Models::Address) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash)).void }
+        sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash)).void }
         attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
@@ -108,7 +108,7 @@ module Lithic
         #   run.
         sig do
           params(
-            address: T.any(Lithic::Models::Address, Lithic::Util::AnyHash),
+            address: T.any(Lithic::Models::Address, Lithic::Internal::Util::AnyHash),
             dob: String,
             email: String,
             first_name: String,

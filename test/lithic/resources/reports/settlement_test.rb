@@ -7,7 +7,7 @@ class Lithic::Test::Resources::Reports::SettlementTest < Lithic::Test::ResourceT
     response = @lithic.reports.settlement.list_details("2019-12-27")
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

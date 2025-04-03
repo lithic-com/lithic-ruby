@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::Cards::AggregateBalances#list
       class AggregateBalanceListParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!attribute [r] account_token
         #   Cardholder to retrieve aggregate balances for.

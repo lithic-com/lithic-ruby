@@ -3,11 +3,11 @@ module Lithic
     module Cards
       type aggregate_balance_list_params =
         { account_token: String, business_account_token: String }
-        & Lithic::request_parameters
+        & Lithic::Internal::Type::request_parameters
 
       class AggregateBalanceListParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_reader account_token: String?
 

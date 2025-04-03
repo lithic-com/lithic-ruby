@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class AccountHolderRetrieveDocumentParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       sig { returns(String) }
       attr_accessor :account_holder_token
@@ -12,7 +12,7 @@ module Lithic
       sig do
         params(
           account_holder_token: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

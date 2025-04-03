@@ -5,11 +5,11 @@ module Lithic
         type: Lithic::Models::ResponderEndpointCreateParams::type_,
         url: String
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class ResponderEndpointCreateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader type: Lithic::Models::ResponderEndpointCreateParams::type_?
 

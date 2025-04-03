@@ -10,9 +10,9 @@ module Lithic
             card_token: String,
             balance_date: Time,
             last_transaction_event_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash))
           )
-            .returns(Lithic::SinglePage[Lithic::Models::Cards::BalanceListResponse])
+            .returns(Lithic::Internal::SinglePage[Lithic::Models::Cards::BalanceListResponse])
         end
         def list(
           card_token,

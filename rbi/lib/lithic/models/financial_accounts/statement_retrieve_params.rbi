@@ -4,8 +4,8 @@ module Lithic
   module Models
     module FinancialAccounts
       class StatementRetrieveParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # Globally unique identifier for financial account.
         sig { returns(String) }
@@ -14,7 +14,7 @@ module Lithic
         sig do
           params(
             financial_account_token: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

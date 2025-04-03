@@ -10,11 +10,11 @@ module Lithic
         status: Lithic::Models::DisputeListParams::status,
         transaction_tokens: ::Array[String]
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class DisputeListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader begin_: Time?
 

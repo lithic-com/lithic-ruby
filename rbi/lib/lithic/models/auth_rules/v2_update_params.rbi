@@ -4,8 +4,8 @@ module Lithic
   module Models
     module AuthRules
       class V2UpdateParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # Account tokens to which the Auth Rule applies.
         sig { returns(T.nilable(T::Array[String])) }
@@ -58,7 +58,7 @@ module Lithic
             card_tokens: T::Array[String],
             excluded_card_tokens: T::Array[String],
             program_level: T::Boolean,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

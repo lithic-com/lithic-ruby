@@ -1,11 +1,12 @@
 module Lithic
   module Models
     type account_holder_retrieve_document_params =
-      { account_holder_token: String } & Lithic::request_parameters
+      { account_holder_token: String }
+      & Lithic::Internal::Type::request_parameters
 
     class AccountHolderRetrieveDocumentParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor account_holder_token: String
 

@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class ExternalPaymentSettleParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       sig { returns(Date) }
       attr_accessor :effective_date
@@ -26,7 +26,7 @@ module Lithic
           effective_date: Date,
           memo: String,
           progress_to: Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

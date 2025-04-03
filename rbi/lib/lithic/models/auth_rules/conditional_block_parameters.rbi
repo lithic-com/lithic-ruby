@@ -8,7 +8,9 @@ module Lithic
         attr_accessor :conditions
 
         sig do
-          params(conditions: T::Array[T.any(Lithic::Models::AuthRules::AuthRuleCondition, Lithic::Util::AnyHash)])
+          params(
+            conditions: T::Array[T.any(Lithic::Models::AuthRules::AuthRuleCondition, Lithic::Internal::Util::AnyHash)]
+          )
             .returns(T.attached_class)
         end
         def self.new(conditions:)

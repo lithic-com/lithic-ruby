@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class DisputeUpdateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Amount to dispute
       sig { returns(T.nilable(Integer)) }
@@ -40,7 +40,7 @@ module Lithic
           customer_filed_date: Time,
           customer_note: String,
           reason: Lithic::Models::DisputeUpdateParams::Reason::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -4,8 +4,8 @@ module Lithic
   module Models
     module FinancialAccounts
       class CreditConfigurationUpdateParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         sig { returns(T.nilable(Integer)) }
         attr_reader :credit_limit
@@ -39,7 +39,7 @@ module Lithic
             credit_product_token: String,
             external_bank_account_token: String,
             tier: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -22,11 +22,11 @@ module Lithic
         phone_number: String,
         business_account_token: String
       }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class AccountHolderCreateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_accessor beneficial_owner_entities: ::Array[Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity]
 

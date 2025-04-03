@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class FinancialAccountUpdateStatusParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Status of the financial account
       sig { returns(Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol) }
@@ -18,7 +18,7 @@ module Lithic
         params(
           status: Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol,
           status_change_reason: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol),
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

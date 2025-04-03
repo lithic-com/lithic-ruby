@@ -81,7 +81,7 @@ module Lithic
         # @param starting_after [String]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::CursorPage<Lithic::Models::EventSubscription>]
+        # @return [Lithic::Internal::CursorPage<Lithic::Models::EventSubscription>]
         #
         # @see Lithic::Models::Events::SubscriptionListParams
         def list(params = {})
@@ -90,7 +90,7 @@ module Lithic
             method: :get,
             path: "v1/event_subscriptions",
             query: parsed,
-            page: Lithic::CursorPage,
+            page: Lithic::Internal::CursorPage,
             model: Lithic::Models::EventSubscription,
             options: options
           )
@@ -128,7 +128,7 @@ module Lithic
         # @param status [Symbol, Lithic::Models::Events::SubscriptionListAttemptsParams::Status]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::CursorPage<Lithic::Models::MessageAttempt>]
+        # @return [Lithic::Internal::CursorPage<Lithic::Models::MessageAttempt>]
         #
         # @see Lithic::Models::Events::SubscriptionListAttemptsParams
         def list_attempts(event_subscription_token, params = {})
@@ -137,7 +137,7 @@ module Lithic
             method: :get,
             path: ["v1/event_subscriptions/%1$s/attempts", event_subscription_token],
             query: parsed,
-            page: Lithic::CursorPage,
+            page: Lithic::Internal::CursorPage,
             model: Lithic::Models::MessageAttempt,
             options: options
           )

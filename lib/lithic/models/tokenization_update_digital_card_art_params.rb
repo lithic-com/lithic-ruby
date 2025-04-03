@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Tokenizations#update_digital_card_art
     class TokenizationUpdateDigitalCardArtParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute [r] digital_card_art_token
       #   Specifies the digital card art to be displayed in the user’s digital wallet for

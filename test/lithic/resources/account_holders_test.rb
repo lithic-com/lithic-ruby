@@ -136,7 +136,7 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
     response = @lithic.account_holders.list
 
     assert_pattern do
-      response => Lithic::SinglePage
+      response => Lithic::Internal::SinglePage
     end
 
     row = response.to_enum.first

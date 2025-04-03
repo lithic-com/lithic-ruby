@@ -62,7 +62,7 @@ module Lithic
         ?phone_number: String,
         ?starting_after: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::SinglePage[Lithic::Models::AccountHolder]
+      ) -> Lithic::Internal::SinglePage[Lithic::Models::AccountHolder]
 
       def list_documents: (
         String account_holder_token,

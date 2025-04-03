@@ -24,7 +24,7 @@ class Lithic::Test::Resources::EventsTest < Lithic::Test::ResourceTest
     response = @lithic.events.list
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first
@@ -48,7 +48,7 @@ class Lithic::Test::Resources::EventsTest < Lithic::Test::ResourceTest
     response = @lithic.events.list_attempts("event_token")
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

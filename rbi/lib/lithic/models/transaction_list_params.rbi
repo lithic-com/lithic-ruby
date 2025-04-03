@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class TransactionListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Filters for transactions associated with a specific account.
       sig { returns(T.nilable(String)) }
@@ -85,7 +85,7 @@ module Lithic
           result: Lithic::Models::TransactionListParams::Result::OrSymbol,
           starting_after: String,
           status: Lithic::Models::TransactionListParams::Status::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

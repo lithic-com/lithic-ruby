@@ -51,7 +51,7 @@ class Lithic::Test::Resources::AccountsTest < Lithic::Test::ResourceTest
     response = @lithic.accounts.list
 
     assert_pattern do
-      response => Lithic::CursorPage
+      response => Lithic::Internal::CursorPage
     end
 
     row = response.to_enum.first

@@ -7,8 +7,8 @@ module Lithic
         # @see Lithic::Resources::Reports::Settlement::NetworkTotals#list
         class NetworkTotalListParams < Lithic::BaseModel
           # @!parse
-          #   extend Lithic::Type::RequestParameters::Converter
-          include Lithic::RequestParameters
+          #   extend Lithic::Internal::Type::RequestParameters::Converter
+          include Lithic::Internal::Type::RequestParameters
 
           # @!attribute [r] begin_
           #   Datetime in RFC 3339 format. Only entries created after the specified time will

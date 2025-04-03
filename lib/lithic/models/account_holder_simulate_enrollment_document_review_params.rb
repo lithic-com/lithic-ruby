@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::AccountHolders#simulate_enrollment_document_review
     class AccountHolderSimulateEnrollmentDocumentReviewParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute document_upload_token
       #   The account holder document upload which to perform the simulation upon.

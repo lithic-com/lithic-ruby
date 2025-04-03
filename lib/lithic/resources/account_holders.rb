@@ -130,7 +130,7 @@ module Lithic
       # @param starting_after [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::SinglePage<Lithic::Models::AccountHolder>]
+      # @return [Lithic::Internal::SinglePage<Lithic::Models::AccountHolder>]
       #
       # @see Lithic::Models::AccountHolderListParams
       def list(params = {})
@@ -139,7 +139,7 @@ module Lithic
           method: :get,
           path: "v1/account_holders",
           query: parsed,
-          page: Lithic::SinglePage,
+          page: Lithic::Internal::SinglePage,
           model: Lithic::Models::AccountHolder,
           options: options
         )

@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Tokenizations#simulate
     class TokenizationSimulateParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute cvv
       #   The three digit cvv for the card.

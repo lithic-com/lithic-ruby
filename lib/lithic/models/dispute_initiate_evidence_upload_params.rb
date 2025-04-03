@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Disputes#initiate_evidence_upload
     class DisputeInitiateEvidenceUploadParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute [r] filename
       #   Filename of the evidence.

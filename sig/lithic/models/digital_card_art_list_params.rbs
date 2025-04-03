@@ -2,11 +2,11 @@ module Lithic
   module Models
     type digital_card_art_list_params =
       { ending_before: String, page_size: Integer, starting_after: String }
-      & Lithic::request_parameters
+      & Lithic::Internal::Type::request_parameters
 
     class DigitalCardArtListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       attr_reader ending_before: String?
 

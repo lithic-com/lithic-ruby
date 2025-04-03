@@ -6,8 +6,8 @@ module Lithic
       # @see Lithic::Resources::ThreeDS::Authentication#simulate_otp_entry
       class AuthenticationSimulateOtpEntryParams < Lithic::BaseModel
         # @!parse
-        #   extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         # @!attribute token
         #   A unique token returned as part of a /v1/three_ds_authentication/simulate call

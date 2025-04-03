@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class CardUpdateParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Specifies the digital card art to be displayed in the user’s digital wallet
       #   after tokenization. This artwork must be approved by Mastercard and configured
@@ -92,7 +92,7 @@ module Lithic
           spend_limit: Integer,
           spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
           state: Lithic::Models::CardUpdateParams::State::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -11,11 +11,11 @@ module Lithic
           starting_after: String,
           status: Lithic::Models::Cards::FinancialTransactionListParams::status
         }
-        & Lithic::request_parameters
+        & Lithic::Internal::Type::request_parameters
 
       class FinancialTransactionListParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_reader begin_: Time?
 

@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class EventListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Date string in RFC 3339 format. Only entries created after the specified time
       #   will be included. UTC time zone.
@@ -68,7 +68,7 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           with_content: T::Boolean,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

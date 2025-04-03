@@ -5,8 +5,8 @@ module Lithic
     # @see Lithic::Resources::Payments#simulate_release
     class PaymentSimulateReleaseParams < Lithic::BaseModel
       # @!parse
-      #   extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # @!attribute payment_token
       #   Payment Token

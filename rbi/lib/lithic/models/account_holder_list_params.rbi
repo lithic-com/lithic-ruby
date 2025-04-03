@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class AccountHolderListParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Date string in RFC 3339 format. Only entries created after the specified time
       #   will be included. UTC time zone.
@@ -104,7 +104,7 @@ module Lithic
           limit: Integer,
           phone_number: String,
           starting_after: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

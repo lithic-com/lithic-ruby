@@ -3,15 +3,18 @@
 module Lithic
   module Models
     class PaymentSimulateReleaseParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Payment Token
       sig { returns(String) }
       attr_accessor :payment_token
 
       sig do
-        params(payment_token: String, request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash))
+        params(
+          payment_token: String,
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
+        )
           .returns(T.attached_class)
       end
       def self.new(payment_token:, request_options: {})

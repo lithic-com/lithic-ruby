@@ -43,7 +43,12 @@ module Lithic
       sig { returns(Lithic::Models::Payment::MethodAttributes) }
       attr_reader :method_attributes
 
-      sig { params(method_attributes: T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Util::AnyHash)).void }
+      sig do
+        params(
+          method_attributes: T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :method_attributes
 
       # Pending amount of the payment in the currency's smallest unit (e.g., cents). The
@@ -89,11 +94,11 @@ module Lithic
           currency: String,
           descriptor: String,
           direction: Lithic::Models::Payment::Direction::OrSymbol,
-          events: T::Array[T.any(Lithic::Models::Payment::Event, Lithic::Util::AnyHash)],
+          events: T::Array[T.any(Lithic::Models::Payment::Event, Lithic::Internal::Util::AnyHash)],
           external_bank_account_token: T.nilable(String),
           financial_account_token: String,
           method_: Lithic::Models::Payment::Method::OrSymbol,
-          method_attributes: T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Util::AnyHash),
+          method_attributes: T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Internal::Util::AnyHash),
           pending_amount: Integer,
           result: Lithic::Models::Payment::Result::OrSymbol,
           settled_amount: Integer,

@@ -3,8 +3,8 @@
 module Lithic
   module Models
     class TransactionSimulateCreditAuthorizationParams < Lithic::BaseModel
-      extend Lithic::Type::RequestParameters::Converter
-      include Lithic::RequestParameters
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
 
       # Amount (in cents). Any value entered will be converted into a negative amount in
       #   the simulated transaction. For example, entering 100 in this field will appear
@@ -43,7 +43,7 @@ module Lithic
           pan: String,
           mcc: String,
           merchant_acceptor_id: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Util::AnyHash)
+          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

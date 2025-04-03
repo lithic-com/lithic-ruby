@@ -1,0 +1,19 @@
+module Lithic
+  class Unknown = Lithic::Internal::Type::Unknown
+
+  class BooleanModel = Lithic::Internal::Type::BooleanModel
+
+  module Enum = Lithic::Internal::Type::Enum
+
+  module Union = Lithic::Internal::Type::Union
+
+  class ArrayOf = Lithic::Internal::Type::ArrayOf
+
+  class HashOf = Lithic::Internal::Type::HashOf
+
+  class BaseModel = Lithic::Internal::Type::BaseModel
+
+  type request_parameters = Lithic::Internal::Type::request_parameters
+
+  module RequestParameters = Lithic::Internal::Type::RequestParameters
+end

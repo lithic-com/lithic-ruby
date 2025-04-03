@@ -5,11 +5,11 @@ module Lithic
         {
           event_type: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::event_type
         }
-        & Lithic::request_parameters
+        & Lithic::Internal::Type::request_parameters
 
       class SubscriptionSendSimulatedExampleParams < Lithic::BaseModel
-        extend Lithic::Type::RequestParameters::Converter
-        include Lithic::RequestParameters
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
 
         attr_reader event_type: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::event_type?
 

@@ -114,7 +114,7 @@ module Lithic
       # @param state [Symbol, Lithic::Models::CardListParams::State]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::CursorPage<Lithic::Models::Card>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::Card>]
       #
       # @see Lithic::Models::CardListParams
       def list(params = {})
@@ -123,7 +123,7 @@ module Lithic
           method: :get,
           path: "v1/cards",
           query: parsed,
-          page: Lithic::CursorPage,
+          page: Lithic::Internal::CursorPage,
           model: Lithic::Models::Card,
           options: options
         )
