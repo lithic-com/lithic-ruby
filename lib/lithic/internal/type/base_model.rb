@@ -168,7 +168,9 @@ module Lithic
           # @param other [Object]
           #
           # @return [Boolean]
-          def ==(other) = other.is_a?(Class) && other <= Lithic::Internal::Type::BaseModel && other.fields == fields
+          def ==(other)
+            other.is_a?(Class) && other <= Lithic::Internal::Type::BaseModel && other.fields == fields
+          end
         end
 
         # @param other [Object]
@@ -350,7 +352,8 @@ module Lithic
           in Hash => coerced
             @data = coerced
           else
-            raise ArgumentError.new("Expected a #{Hash} or #{Lithic::Internal::Type::BaseModel}, got #{data.inspect}")
+            message = "Expected a #{Hash} or #{Lithic::Internal::Type::BaseModel}, got #{data.inspect}"
+            raise ArgumentError.new(message)
           end
         end
 
@@ -358,7 +361,7 @@ module Lithic
         def inspect
           rows = self.class.known_fields.keys.map do
             "#{_1}=#{@data.key?(_1) ? public_send(_1) : ''}"
-          rescue Lithic::ConversionError
+          rescue Lithic::Errors::ConversionError
             "#{_1}=#{@data.fetch(_1)}"
           end
           "#<#{self.class.name}:0x#{object_id.to_s(16)} #{rows.join(' ')}>"
