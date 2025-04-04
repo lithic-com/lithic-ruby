@@ -209,7 +209,9 @@ module Lithic
           #
           # @return [Object]
           def dump(target, value)
+            # rubocop:disable Layout/LineLength
             target.is_a?(Lithic::Internal::Type::Converter) ? target.dump(value) : Lithic::Internal::Type::Unknown.dump(value)
+            # rubocop:enable Layout/LineLength
           end
         end
       end
