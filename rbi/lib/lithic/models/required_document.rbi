@@ -21,8 +21,7 @@ module Lithic
         params(entity_token: String, status_reasons: T::Array[String], valid_documents: T::Array[String])
           .returns(T.attached_class)
       end
-      def self.new(entity_token:, status_reasons:, valid_documents:)
-      end
+      def self.new(entity_token:, status_reasons:, valid_documents:); end
 
       sig do
         override
@@ -32,8 +31,7 @@ module Lithic
                      valid_documents: T::Array[String]
                    })
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

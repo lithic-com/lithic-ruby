@@ -72,7 +72,9 @@ module Lithic
       sig { returns(T.nilable(Lithic::Models::AccountHolder::ControlPerson)) }
       attr_reader :control_person
 
-      sig { params(control_person: T.any(Lithic::Models::AccountHolder::ControlPerson, Lithic::Internal::AnyHash)).void }
+      sig do
+        params(control_person: T.any(Lithic::Models::AccountHolder::ControlPerson, Lithic::Internal::AnyHash)).void
+      end
       attr_writer :control_person
 
       # < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
@@ -233,9 +235,7 @@ module Lithic
         user_type: nil,
         verification_application: nil,
         website_url: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -263,8 +263,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
         # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
@@ -326,9 +325,7 @@ module Lithic
           legal_business_name:,
           phone_numbers:,
           parent_company: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -343,8 +340,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
@@ -394,8 +390,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, dob:, email:, entity_token:, first_name:, last_name:, phone_number:)
-        end
+        def self.new(address:, dob:, email:, entity_token:, first_name:, last_name:, phone_number:); end
 
         sig do
           override
@@ -411,8 +406,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class BusinessEntity < Lithic::Internal::Type::BaseModel
@@ -477,9 +471,7 @@ module Lithic
           legal_business_name:,
           phone_numbers:,
           parent_company: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -494,8 +486,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class ControlPerson < Lithic::Internal::Type::BaseModel
@@ -548,8 +539,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, dob:, email:, entity_token:, first_name:, last_name:, phone_number:)
-        end
+        def self.new(address:, dob:, email:, entity_token:, first_name:, last_name:, phone_number:); end
 
         sig do
           override
@@ -565,8 +555,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # The type of KYC exemption for a KYC-Exempt Account Holder.
@@ -581,8 +570,7 @@ module Lithic
         PREPAID_CARD_USER = T.let(:PREPAID_CARD_USER, Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::AccountHolder::ExemptionType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Individual < Lithic::Internal::Type::BaseModel
@@ -631,8 +619,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, dob:, email:, entity_token:, first_name:, last_name:, phone_number:)
-        end
+        def self.new(address:, dob:, email:, entity_token:, first_name:, last_name:, phone_number:); end
 
         sig do
           override
@@ -648,8 +635,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # <Deprecated. Use verification_application.status instead>
@@ -672,8 +658,7 @@ module Lithic
         REJECTED = T.let(:REJECTED, Lithic::Models::AccountHolder::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::AccountHolder::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module StatusReason
@@ -707,8 +692,7 @@ module Lithic
           T.let(:WATCHLIST_ALERT_FAILURE, Lithic::Models::AccountHolder::StatusReason::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::AccountHolder::StatusReason::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
@@ -725,8 +709,7 @@ module Lithic
         INDIVIDUAL = T.let(:INDIVIDUAL, Lithic::Models::AccountHolder::UserType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::AccountHolder::UserType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class VerificationApplication < Lithic::Internal::Type::BaseModel
@@ -781,8 +764,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(created: nil, status: nil, status_reasons: nil, updated: nil)
-        end
+        def self.new(created: nil, status: nil, status_reasons: nil, updated: nil); end
 
         sig do
           override
@@ -795,8 +777,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # KYC and KYB evaluation states.
         #
@@ -821,8 +802,7 @@ module Lithic
           REJECTED = T.let(:REJECTED, Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         module StatusReason
@@ -893,8 +873,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::AccountHolder::VerificationApplication::StatusReason::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

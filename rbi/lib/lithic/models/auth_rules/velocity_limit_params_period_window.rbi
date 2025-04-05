@@ -22,8 +22,7 @@ module Lithic
         MONTH = T.let(:MONTH, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

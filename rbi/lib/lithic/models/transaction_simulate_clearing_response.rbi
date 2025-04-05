@@ -11,12 +11,10 @@ module Lithic
       attr_writer :debugging_request_id
 
       sig { params(debugging_request_id: String).returns(T.attached_class) }
-      def self.new(debugging_request_id: nil)
-      end
+      def self.new(debugging_request_id: nil); end
 
       sig { override.returns({debugging_request_id: String}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

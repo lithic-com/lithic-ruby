@@ -46,8 +46,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(account_holder_token: nil, status: nil, status_reasons: nil, request_options: {})
-      end
+      def self.new(account_holder_token: nil, status: nil, status_reasons: nil, request_options: {}); end
 
       sig do
         override
@@ -60,8 +59,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # An account holder's status for use within the simulation.
       module Status
@@ -81,8 +79,7 @@ module Lithic
           override
             .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::TaggedSymbol])
         end
-        def self.values
-        end
+        def self.values; end
       end
 
       module StatusReason
@@ -189,8 +186,7 @@ module Lithic
           override
             .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol])
         end
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

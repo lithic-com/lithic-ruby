@@ -177,9 +177,7 @@ module Lithic
           interest_details: nil,
           next_payment_due_date: nil,
           next_statement_end_date: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -208,8 +206,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class AccountStanding < Lithic::Internal::Type::BaseModel
           # Number of consecutive full payments made
@@ -279,9 +276,7 @@ module Lithic
             has_grace:,
             period_number:,
             period_state:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -297,8 +292,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class FinancialAccountState < Lithic::Internal::Type::BaseModel
             # Status of the financial account
@@ -329,8 +323,7 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(status:, substatus: nil)
-            end
+            def self.new(status:, substatus: nil); end
 
             sig do
               override
@@ -343,8 +336,7 @@ module Lithic
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # Status of the financial account
             module Status
@@ -390,8 +382,7 @@ module Lithic
                     T::Array[Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Status::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             # Substatus for the financial account
@@ -441,12 +432,11 @@ module Lithic
                 override
                   .returns(
                     T::Array[
-                    Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
+                      Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
 
@@ -477,8 +467,7 @@ module Lithic
                   T::Array[Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -495,12 +484,10 @@ module Lithic
           attr_accessor :past_due
 
           sig { params(amount: Integer, past_due: Integer).returns(T.attached_class) }
-          def self.new(amount:, past_due:)
-          end
+          def self.new(amount:, past_due:); end
 
           sig { override.returns({amount: Integer, past_due: Integer}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class PeriodTotals < Lithic::Internal::Type::BaseModel
@@ -562,8 +549,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         module StatementType
@@ -580,8 +566,7 @@ module Lithic
           FINAL = T.let(:FINAL, Lithic::Models::FinancialAccounts::Statement::StatementType::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::FinancialAccounts::Statement::StatementType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class YtdTotals < Lithic::Internal::Type::BaseModel
@@ -643,8 +628,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InterestDetails < Lithic::Internal::Type::BaseModel
@@ -735,9 +719,7 @@ module Lithic
             interest_for_period:,
             prime_rate:,
             minimum_interest_charged: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -752,8 +734,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class DailyBalanceAmounts < Lithic::Internal::Type::BaseModel
             sig { returns(String) }
@@ -772,12 +753,10 @@ module Lithic
                 purchases: String
               ).returns(T.attached_class)
             end
-            def self.new(balance_transfers:, cash_advances:, purchases:)
-            end
+            def self.new(balance_transfers:, cash_advances:, purchases:); end
 
             sig { override.returns({balance_transfers: String, cash_advances: String, purchases: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class EffectiveApr < Lithic::Internal::Type::BaseModel
@@ -797,12 +776,10 @@ module Lithic
                 purchases: String
               ).returns(T.attached_class)
             end
-            def self.new(balance_transfers:, cash_advances:, purchases:)
-            end
+            def self.new(balance_transfers:, cash_advances:, purchases:); end
 
             sig { override.returns({balance_transfers: String, cash_advances: String, purchases: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           module InterestCalculationMethod
@@ -836,8 +813,7 @@ module Lithic
                   T::Array[Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class InterestForPeriod < Lithic::Internal::Type::BaseModel
@@ -857,12 +833,10 @@ module Lithic
                 purchases: String
               ).returns(T.attached_class)
             end
-            def self.new(balance_transfers:, cash_advances:, purchases:)
-            end
+            def self.new(balance_transfers:, cash_advances:, purchases:); end
 
             sig { override.returns({balance_transfers: String, cash_advances: String, purchases: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
       end

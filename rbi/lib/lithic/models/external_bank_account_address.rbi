@@ -35,8 +35,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(address1:, city:, country:, postal_code:, state:, address2: nil)
-      end
+      def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
 
       sig do
         override
@@ -51,8 +50,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

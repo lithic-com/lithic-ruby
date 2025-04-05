@@ -71,9 +71,7 @@ module Lithic
         user_defined_id: nil,
         verification_enforcement: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get the external bank account by token.
       sig do
         params(
@@ -82,8 +80,7 @@ module Lithic
         )
           .returns(Lithic::Models::ExternalBankAccountRetrieveResponse)
       end
-      def retrieve(external_bank_account_token, request_options: {})
-      end
+      def retrieve(external_bank_account_token, request_options: {}); end
 
       # Update the external bank account by token.
       sig do
@@ -123,9 +120,7 @@ module Lithic
         # User Defined ID
         user_defined_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List all the external bank accounts for the provided search criteria.
       sig do
         params(
@@ -158,9 +153,7 @@ module Lithic
         states: nil,
         verification_states: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retry external bank account micro deposit verification.
       sig do
         params(
@@ -170,7 +163,11 @@ module Lithic
         )
           .returns(Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse)
       end
-      def retry_micro_deposits(external_bank_account_token, financial_account_token: nil, request_options: {})
+      def retry_micro_deposits(
+        external_bank_account_token,
+        financial_account_token: nil,
+        request_options: {}
+      )
       end
 
       # Retry external bank account prenote verification.
@@ -182,13 +179,11 @@ module Lithic
         )
           .returns(Lithic::Models::ExternalBankAccountRetryPrenoteResponse)
       end
-      def retry_prenote(external_bank_account_token, financial_account_token: nil, request_options: {})
-      end
+      def retry_prenote(external_bank_account_token, financial_account_token: nil, request_options: {}); end
 
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

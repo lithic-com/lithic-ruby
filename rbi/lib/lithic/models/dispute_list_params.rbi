@@ -81,9 +81,7 @@ module Lithic
         status: nil,
         transaction_tokens: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -99,8 +97,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # List disputes of a specific status.
       module Status
@@ -120,8 +117,7 @@ module Lithic
         SUBMITTED = T.let(:SUBMITTED, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::DisputeListParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

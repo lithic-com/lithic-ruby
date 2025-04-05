@@ -179,9 +179,7 @@ module Lithic
         name: nil,
         user_defined_id: nil,
         verification_failed_reason: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -211,8 +209,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Account State
       module State
@@ -228,8 +225,7 @@ module Lithic
         PAUSED = T.let(:PAUSED, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Account Type
@@ -245,8 +241,7 @@ module Lithic
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Verification State
@@ -285,8 +280,7 @@ module Lithic
               T::Array[Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState::TaggedSymbol]
             )
         end
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

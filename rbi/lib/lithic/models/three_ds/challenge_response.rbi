@@ -19,12 +19,10 @@ module Lithic
           params(token: String, challenge_response: Lithic::Models::ThreeDS::ChallengeResult::OrSymbol)
             .returns(T.attached_class)
         end
-        def self.new(token:, challenge_response:)
-        end
+        def self.new(token:, challenge_response:); end
 
         sig { override.returns({token: String, challenge_response: Lithic::Models::ThreeDS::ChallengeResult::OrSymbol}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

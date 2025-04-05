@@ -140,9 +140,7 @@ module Lithic
         #     time.
         state: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get card configuration such as spend limit and state.
       sig do
         params(
@@ -151,8 +149,7 @@ module Lithic
         )
           .returns(Lithic::Models::Card)
       end
-      def retrieve(card_token, request_options: {})
-      end
+      def retrieve(card_token, request_options: {}); end
 
       # Update the specified properties of the card. Unsupplied properties will remain
       #   unchanged.
@@ -218,9 +215,7 @@ module Lithic
         #     time.
         state: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List cards.
       sig do
         params(
@@ -255,9 +250,7 @@ module Lithic
         # Returns cards with the specified state.
         state: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Convert a virtual card into a physical card and manufacture it. Customer must
       #   supply relevant fields for physical card creation including `product_id`,
       #   `carrier`, `shipping_method`, and `shipping_address`. The card token will be
@@ -303,9 +296,7 @@ module Lithic
         #     tracking
         shipping_method: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Handling full card PANs and CVV codes requires that you comply with the Payment
       #   Card Industry Data Security Standards (PCI DSS). Some clients choose to reduce
       #   their compliance obligations by leveraging our embedded card UI solution
@@ -347,9 +338,7 @@ module Lithic
         # SHA256 HMAC of the embed_request JSON string with base64 digest.
         hmac:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Allow your cardholders to directly add payment cards to the device's digital
       #   wallet (e.g. Apple Pay) with one touch from your app.
       #
@@ -396,9 +385,7 @@ module Lithic
         #   device's wallet.
         nonce_signature: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Initiate print and shipment of a duplicate physical card (e.g. card is
       #   physically damaged). The PAN, expiry, and CVC2 will remain the same and the
       #   original card can continue to be used until the new card is activated. Only
@@ -439,9 +426,7 @@ module Lithic
         #     tracking
         shipping_method: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Applies to card types `PHYSICAL` and `VIRTUAL`. For `PHYSICAL`, creates a new
       #   card with the same card token and PAN, but updated expiry and CVC2 code. The
       #   original card will keep working for card-present transactions until the new card
@@ -494,9 +479,7 @@ module Lithic
         #     tracking
         shipping_method: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get a Card's available spend limit, which is based on the spend limit configured
       #   on the Card and the amount already spent over the spend limit's duration. For
       #   example, if the Card has a monthly spend limit of $1000 configured, and has
@@ -508,8 +491,7 @@ module Lithic
         )
           .returns(Lithic::Models::CardSpendLimits)
       end
-      def retrieve_spend_limits(card_token, request_options: {})
-      end
+      def retrieve_spend_limits(card_token, request_options: {}); end
 
       # Get card configuration such as spend limit and state. Customers must be PCI
       #   compliant to use this endpoint. Please contact
@@ -532,13 +514,10 @@ module Lithic
         # The PAN for the card being retrieved.
         pan:,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

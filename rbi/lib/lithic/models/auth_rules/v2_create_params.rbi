@@ -88,9 +88,7 @@ module Lithic
           type: nil,
           excluded_card_tokens: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -109,8 +107,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Parameters for the Auth Rule
         module Parameters
@@ -122,8 +119,7 @@ module Lithic
                 [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
               )
           end
-          def self.variants
-          end
+          def self.variants; end
         end
 
         # The type of Auth Rule
@@ -139,8 +135,7 @@ module Lithic
           VELOCITY_LIMIT = T.let(:VELOCITY_LIMIT, Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

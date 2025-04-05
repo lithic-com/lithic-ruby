@@ -79,9 +79,7 @@ module Lithic
         nonce: nil,
         nonce_signature: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -96,8 +94,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Name of digital wallet provider.
       module DigitalWallet
@@ -112,8 +109,7 @@ module Lithic
         SAMSUNG_PAY = T.let(:SAMSUNG_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

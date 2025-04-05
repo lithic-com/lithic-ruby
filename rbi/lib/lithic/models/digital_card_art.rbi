@@ -71,8 +71,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Card network.
       module Network
@@ -86,8 +85,7 @@ module Lithic
         VISA = T.let(:VISA, Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

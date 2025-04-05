@@ -22,8 +22,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(document_type:, entity_token:, request_options: {})
-      end
+      def self.new(document_type:, entity_token:, request_options: {}); end
 
       sig do
         override
@@ -35,8 +34,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The type of document to upload
       module DocumentType
@@ -107,8 +105,7 @@ module Lithic
           T.let(:FINCEN_BOI_REPORT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

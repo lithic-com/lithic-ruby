@@ -202,9 +202,7 @@ module Lithic
         legal_business_name: nil,
         phone_number: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -228,8 +226,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
         # Globally unique identifier for an entity.
@@ -303,9 +300,7 @@ module Lithic
           legal_business_name: nil,
           parent_company: nil,
           phone_numbers: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -320,8 +315,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
@@ -406,9 +400,7 @@ module Lithic
           government_id: nil,
           last_name: nil,
           phone_number: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -424,8 +416,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class BusinessEntity < Lithic::Internal::Type::BaseModel
@@ -502,9 +493,7 @@ module Lithic
           legal_business_name: nil,
           parent_company: nil,
           phone_numbers: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -519,8 +508,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class ControlPerson < Lithic::Internal::Type::BaseModel
@@ -612,9 +600,7 @@ module Lithic
           government_id: nil,
           last_name: nil,
           phone_number: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -630,8 +616,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Individual < Lithic::Internal::Type::BaseModel
@@ -717,9 +702,7 @@ module Lithic
           government_id: nil,
           last_name: nil,
           phone_number: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -735,8 +718,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

@@ -43,8 +43,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(url:, description: nil, disabled: nil, event_types: nil, request_options: {})
-        end
+        def self.new(url:, description: nil, disabled: nil, event_types: nil, request_options: {}); end
 
         sig do
           override
@@ -58,8 +57,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module EventType
           extend Lithic::Internal::Type::Enum
@@ -245,8 +243,7 @@ module Lithic
             T.let(:"tokenization.updated", Lithic::Models::Events::SubscriptionUpdateParams::EventType::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Events::SubscriptionUpdateParams::EventType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

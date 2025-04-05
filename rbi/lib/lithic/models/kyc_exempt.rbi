@@ -76,9 +76,7 @@ module Lithic
         workflow:,
         business_account_token: nil,
         external_id: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -95,8 +93,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Specifies the type of KYC Exempt user
       module KYCExemptionType
@@ -110,8 +107,7 @@ module Lithic
         PREPAID_CARD_USER = T.let(:PREPAID_CARD_USER, Lithic::Models::KYCExempt::KYCExemptionType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::KYCExempt::KYCExemptionType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Specifies the workflow type. This must be 'KYC_EXEMPT'
@@ -124,8 +120,7 @@ module Lithic
         KYC_EXEMPT = T.let(:KYC_EXEMPT, Lithic::Models::KYCExempt::Workflow::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::KYCExempt::Workflow::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

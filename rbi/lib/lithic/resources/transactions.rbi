@@ -22,9 +22,7 @@ module Lithic
         # Globally unique identifier for the transaction.
         transaction_token,
         request_options: {}
-      )
-      end
-
+      ); end
       # List card transactions. All amounts are in the smallest unit of their respective
       #   currency (e.g., cents for USD) and inclusive of any acquirer fees.
       sig do
@@ -67,9 +65,7 @@ module Lithic
         # Filters for transactions using transaction status field.
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Expire authorization
       sig do
         params(
@@ -82,9 +78,7 @@ module Lithic
         # The token of the transaction to expire.
         transaction_token,
         request_options: {}
-      )
-      end
-
+      ); end
       # Simulates an authorization request from the card network as if it came from a
       #   merchant acquirer. If you are configured for ASA, simulating authorizations
       #   requires your ASA client to be set up properly, i.e. be able to respond to the
@@ -156,9 +150,7 @@ module Lithic
         #     the transaction.
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Simulates an authorization advice from the card network as if it came from a
       #   merchant acquirer. An authorization advice changes the pending amount of the
       #   transaction.
@@ -177,9 +169,7 @@ module Lithic
         #   amount that was originally set by /v1/simulate/authorize.
         amount:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Clears an existing authorization, either debit or credit. After this event, the
       #   transaction transitions from `PENDING` to `SETTLED` status.
       #
@@ -208,9 +198,7 @@ module Lithic
         #   cleared again using this endpoint.
         amount: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Simulates a credit authorization advice from the card network. This message
       #   indicates that the network approved a credit authorization on your behalf.
       sig do
@@ -240,9 +228,7 @@ module Lithic
         # Unique identifier to identify the payment card acceptor.
         merchant_acceptor_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Returns, or refunds, an amount back to a card. Returns simulated via this
       #   endpoint clear immediately, without prior authorization, and result in a
       #   `SETTLED` transaction status.
@@ -263,9 +249,7 @@ module Lithic
         # Sixteen digit card number.
         pan:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Reverses a return, i.e. a credit transaction with a `SETTLED` status. Returns
       #   can be financial credit authorizations, or credit authorizations that have
       #   cleared.
@@ -280,9 +264,7 @@ module Lithic
         # The transaction token returned from the /v1/simulate/authorize response.
         token:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Voids a pending authorization. If `amount` is not set, the full amount will be
       #   voided. Can be used on partially voided transactions but not partially cleared
       #   transactions. _Simulating an authorization expiry on credit authorizations or
@@ -309,13 +291,10 @@ module Lithic
         #   - `AUTHORIZATION_REVERSAL` indicates authorization was reversed by the merchant.
         type: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

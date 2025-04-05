@@ -111,9 +111,7 @@ module Lithic
         external_id: nil,
         kyb_passed_timestamp: nil,
         website_url: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -131,8 +129,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -187,8 +184,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
-        end
+        def self.new(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil); end
 
         sig do
           override
@@ -204,8 +200,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class BusinessEntity < Lithic::Internal::Type::BaseModel
@@ -267,9 +262,7 @@ module Lithic
           phone_numbers:,
           dba_business_name: nil,
           parent_company: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -283,8 +276,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class ControlPerson < Lithic::Internal::Type::BaseModel
@@ -347,8 +339,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
-        end
+        def self.new(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil); end
 
         sig do
           override
@@ -364,8 +355,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # Specifies the type of KYB workflow to run.
@@ -379,8 +369,7 @@ module Lithic
         KYB_BYO = T.let(:KYB_BYO, Lithic::Models::KYB::Workflow::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::KYB::Workflow::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
@@ -440,9 +429,7 @@ module Lithic
           phone_numbers:,
           dba_business_name: nil,
           parent_company: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -456,8 +443,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

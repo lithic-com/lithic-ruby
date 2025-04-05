@@ -13,8 +13,7 @@ module Lithic
         params(request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)))
           .returns(Lithic::Models::TokenizationSecret)
       end
-      def retrieve_secret(request_options: {})
-      end
+      def retrieve_secret(request_options: {}); end
 
       # Generate a new Tokenization Decisioning secret key. The old Tokenization
       #   Decisioning secret key will be deactivated 24 hours after a successful request
@@ -23,13 +22,11 @@ module Lithic
         params(request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)))
           .returns(Lithic::Models::TokenizationDecisioningRotateSecretResponse)
       end
-      def rotate_secret(request_options: {})
-      end
+      def rotate_secret(request_options: {}); end
 
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

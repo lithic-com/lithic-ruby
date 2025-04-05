@@ -43,7 +43,9 @@ module Lithic
       sig { returns(Lithic::Models::Payment::MethodAttributes) }
       attr_reader :method_attributes
 
-      sig { params(method_attributes: T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Internal::AnyHash)).void }
+      sig do
+        params(method_attributes: T.any(Lithic::Models::Payment::MethodAttributes, Lithic::Internal::AnyHash)).void
+      end
       attr_writer :method_attributes
 
       # Pending amount of the payment in the currency's smallest unit (e.g., cents). The
@@ -123,9 +125,7 @@ module Lithic
         status:,
         updated:,
         user_defined_id:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -151,8 +151,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Payment category
       module Category
@@ -164,8 +163,7 @@ module Lithic
         ACH = T.let(:ACH, Lithic::Models::Payment::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Payment::Category::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module Direction
@@ -178,8 +176,7 @@ module Lithic
         DEBIT = T.let(:DEBIT, Lithic::Models::Payment::Direction::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Payment::Direction::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -242,8 +239,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(token:, amount:, created:, result:, type:, detailed_results: nil)
-        end
+        def self.new(token:, amount:, created:, result:, type:, detailed_results: nil); end
 
         sig do
           override
@@ -258,8 +254,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
@@ -273,8 +268,7 @@ module Lithic
           DECLINED = T.let(:DECLINED, Lithic::Models::Payment::Event::Result::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Payment::Event::Result::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # Event types:
@@ -322,8 +316,7 @@ module Lithic
           ACH_RETURN_SETTLED = T.let(:ACH_RETURN_SETTLED, Lithic::Models::Payment::Event::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Payment::Event::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         module DetailedResult
@@ -345,8 +338,7 @@ module Lithic
             T.let(:PROGRAM_MONTHLY_LIMIT_EXCEEDED, Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Payment::Event::DetailedResult::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -360,8 +352,7 @@ module Lithic
         ACH_SAME_DAY = T.let(:ACH_SAME_DAY, Lithic::Models::Payment::Method::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Payment::Method::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class MethodAttributes < Lithic::Internal::Type::BaseModel
@@ -417,8 +408,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module SecCode
           extend Lithic::Internal::Type::Enum
@@ -432,8 +422,7 @@ module Lithic
           WEB = T.let(:WEB, Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Payment::MethodAttributes::SecCode::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -449,8 +438,7 @@ module Lithic
         DECLINED = T.let(:DECLINED, Lithic::Models::Payment::Result::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Payment::Result::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module Source
@@ -463,8 +451,7 @@ module Lithic
         LITHIC = T.let(:LITHIC, Lithic::Models::Payment::Source::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Payment::Source::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Status types:
@@ -486,8 +473,7 @@ module Lithic
         SETTLED = T.let(:SETTLED, Lithic::Models::Payment::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Payment::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

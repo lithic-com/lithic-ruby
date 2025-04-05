@@ -84,9 +84,7 @@ module Lithic
         other_fees_gross_amount: nil,
         settled_net_amount: nil,
         transactions_gross_amount: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -102,8 +100,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Card network where the transaction took place
       module Network
@@ -120,8 +117,7 @@ module Lithic
         VISA = T.let(:VISA, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

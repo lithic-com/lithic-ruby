@@ -71,9 +71,7 @@ module Lithic
         progress_to: nil,
         user_defined_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -91,8 +89,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Category
         extend Lithic::Internal::Type::Enum
@@ -110,8 +107,7 @@ module Lithic
           T.let(:EXTERNAL_TRANSFER, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module PaymentType
@@ -125,8 +121,7 @@ module Lithic
         WITHDRAWAL = T.let(:WITHDRAWAL, Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module ProgressTo
@@ -140,8 +135,7 @@ module Lithic
         RELEASED = T.let(:RELEASED, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

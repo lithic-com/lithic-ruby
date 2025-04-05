@@ -49,8 +49,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(individual:, tos_timestamp:, workflow:, external_id: nil, kyc_passed_timestamp: nil)
-      end
+      def self.new(individual:, tos_timestamp:, workflow:, external_id: nil, kyc_passed_timestamp: nil); end
 
       sig do
         override
@@ -64,8 +63,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Individual < Lithic::Internal::Type::BaseModel
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -118,8 +116,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:)
-        end
+        def self.new(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:); end
 
         sig do
           override
@@ -135,8 +132,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # Specifies the type of KYC workflow to run.
@@ -150,8 +146,7 @@ module Lithic
         KYC_BYO = T.let(:KYC_BYO, Lithic::Models::KYC::Workflow::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::KYC::Workflow::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

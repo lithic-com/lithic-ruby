@@ -108,9 +108,7 @@ module Lithic
         starting_after: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -129,8 +127,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # External Payment category to be returned.
       module Category
@@ -148,8 +145,7 @@ module Lithic
           T.let(:EXTERNAL_TRANSFER, Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # External Payment result to be returned.
@@ -164,8 +160,7 @@ module Lithic
         DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPaymentListParams::Result::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Result::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Book transfer status to be returned.
@@ -183,8 +178,7 @@ module Lithic
         CANCELED = T.let(:CANCELED, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

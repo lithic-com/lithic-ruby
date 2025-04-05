@@ -24,13 +24,10 @@ module Lithic
           #   decreased by $5
           last_transaction_event_token: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

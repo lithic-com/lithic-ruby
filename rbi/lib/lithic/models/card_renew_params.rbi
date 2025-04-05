@@ -83,9 +83,7 @@ module Lithic
         product_id: nil,
         shipping_method: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -100,8 +98,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
       #   options besides `STANDARD` require additional permissions.
@@ -131,8 +128,7 @@ module Lithic
           T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

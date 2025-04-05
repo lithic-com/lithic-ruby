@@ -172,9 +172,7 @@ module Lithic
         resolution_reason:,
         status:,
         transaction_token:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -201,8 +199,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Dispute reason:
       #
@@ -248,8 +245,7 @@ module Lithic
         REFUND_NOT_PROCESSED = T.let(:REFUND_NOT_PROCESSED, Lithic::Models::Dispute::Reason::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Dispute::Reason::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Reason for the dispute resolution:
@@ -307,8 +303,7 @@ module Lithic
         WON_PREARBITRATION = T.let(:WON_PREARBITRATION, Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Dispute::ResolutionReason::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Status types:
@@ -338,8 +333,7 @@ module Lithic
         SUBMITTED = T.let(:SUBMITTED, Lithic::Models::Dispute::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Dispute::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

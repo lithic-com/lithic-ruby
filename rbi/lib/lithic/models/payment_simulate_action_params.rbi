@@ -33,8 +33,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(event_type:, decline_reason: nil, return_reason_code: nil, request_options: {})
-      end
+      def self.new(event_type:, decline_reason: nil, return_reason_code: nil, request_options: {}); end
 
       sig do
         override
@@ -47,8 +46,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Event Type
       module EventType
@@ -76,8 +74,7 @@ module Lithic
           T.let(:ACH_RETURN_SETTLED, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Decline reason
@@ -105,8 +102,7 @@ module Lithic
           )
 
         sig { override.returns(T::Array[Lithic::Models::PaymentSimulateActionParams::DeclineReason::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

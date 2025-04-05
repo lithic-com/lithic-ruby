@@ -65,8 +65,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Reason for dispute
       module Reason
@@ -99,8 +98,7 @@ module Lithic
           T.let(:REFUND_NOT_PROCESSED, Lithic::Models::DisputeUpdateParams::Reason::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::DisputeUpdateParams::Reason::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

@@ -89,9 +89,7 @@ module Lithic
         starting_after: nil,
         tokenization_channel: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -108,8 +106,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Filter for tokenizations by tokenization channel. If this is not specified, only
       #   DIGITAL_WALLET tokenizations will be returned.
@@ -127,8 +124,7 @@ module Lithic
         ALL = T.let(:ALL, Lithic::Models::TokenizationListParams::TokenizationChannel::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::TokenizationListParams::TokenizationChannel::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

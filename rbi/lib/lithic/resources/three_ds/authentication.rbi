@@ -16,9 +16,7 @@ module Lithic
           # 3DS Authentication Token
           three_ds_authentication_token,
           request_options: {}
-        )
-        end
-
+        ); end
         # Simulates a 3DS authentication request from the payment network as if it came
         #   from an ACS. If you're configured for 3DS Customer Decisioning, simulating
         #   authentications requires your customer decisioning endpoint to be set up
@@ -42,9 +40,7 @@ module Lithic
           #   When not set defaults to MATCH
           card_expiry_check: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Endpoint for simulating entering OTP into 3DS Challenge UI. A call to
         #   /v1/three_ds_authentication/simulate that resulted in triggered SMS-OTP
         #   challenge must precede. Only a single attempt is supported; upon entering OTP,
@@ -64,13 +60,10 @@ module Lithic
           # The OTP entered by the cardholder
           otp:,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

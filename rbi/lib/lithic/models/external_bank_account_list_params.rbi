@@ -96,9 +96,7 @@ module Lithic
         states: nil,
         verification_states: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -116,8 +114,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module AccountType
         extend Lithic::Internal::Type::Enum
@@ -130,8 +127,7 @@ module Lithic
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountListParams::AccountType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module State
@@ -146,8 +142,7 @@ module Lithic
         PAUSED = T.let(:PAUSED, Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module VerificationState
@@ -169,8 +164,7 @@ module Lithic
           T.let(:INSUFFICIENT_FUNDS, Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

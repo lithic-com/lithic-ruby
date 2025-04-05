@@ -41,9 +41,7 @@ module Lithic
         # Optional descriptor for the transfer.
         memo: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get book transfer by token
       sig do
         params(
@@ -56,9 +54,7 @@ module Lithic
         # Id of the book transfer to retrieve
         book_transfer_token,
         request_options: {}
-      )
-      end
-
+      ); end
       # List book transfers
       sig do
         params(
@@ -104,9 +100,7 @@ module Lithic
         # Book transfer status to be returned.
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Reverse a book transfer
       sig do
         params(
@@ -122,13 +116,10 @@ module Lithic
         # Optional descriptor for the reversal.
         memo: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

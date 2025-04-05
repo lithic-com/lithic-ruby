@@ -18,9 +18,7 @@ module Lithic
           financial_transaction_token,
           card_token:,
           request_options: {}
-        )
-        end
-
+        ); end
         # List the financial transactions for a given card.
         sig do
           params(
@@ -57,13 +55,10 @@ module Lithic
           # Financial Transaction status to be returned.
           status: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

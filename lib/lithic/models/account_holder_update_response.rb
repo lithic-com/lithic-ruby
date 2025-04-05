@@ -862,7 +862,7 @@ module Lithic
           required :status_reasons,
                    -> do
                      Lithic::Internal::Type::ArrayOf[
-                     enum: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason
+                       enum: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason
                      ]
                    end
 

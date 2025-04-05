@@ -14,8 +14,7 @@ module Lithic
         DECLINE_BY_CUSTOMER = T.let(:DECLINE_BY_CUSTOMER, Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

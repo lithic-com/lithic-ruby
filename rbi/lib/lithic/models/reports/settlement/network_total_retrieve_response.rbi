@@ -98,9 +98,7 @@ module Lithic
             settlement_service:,
             updated:,
             cycle: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -119,8 +117,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Amounts < Lithic::Internal::Type::BaseModel
             # Total settlement amount excluding interchange, in currency's smallest unit.
@@ -152,8 +149,7 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(gross_settlement:, interchange_fees:, net_settlement:, visa_charges: nil)
-            end
+            def self.new(gross_settlement:, interchange_fees:, net_settlement:, visa_charges: nil); end
 
             sig do
               override
@@ -166,8 +162,7 @@ module Lithic
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
@@ -207,8 +202,7 @@ module Lithic
                   T::Array[Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end
