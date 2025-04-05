@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2025-04-05)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Chores
+
+* **internal:** misc small improvements ([#65](https://github.com/lithic-com/lithic-ruby/issues/65)) ([be44033](https://github.com/lithic-com/lithic-ruby/commit/be44033edc9c1c846713f586aa5d527a01a355aa))
+* **internal:** rubocop rules ([#67](https://github.com/lithic-com/lithic-ruby/issues/67)) ([b78e352](https://github.com/lithic-com/lithic-ruby/commit/b78e35233fa2cc7b94522dba21e479f359536e91))
+* **internal:** run rubocop linter in parallel ([#66](https://github.com/lithic-com/lithic-ruby/issues/66)) ([28b8538](https://github.com/lithic-com/lithic-ruby/commit/28b85382d1f447c542cfd4b0b871b7e66180abf0))
+* **internal:** version bump ([#63](https://github.com/lithic-com/lithic-ruby/issues/63)) ([60e1ca9](https://github.com/lithic-com/lithic-ruby/commit/60e1ca9a19b209531e7069d17fb6ecac0ad7c6ce))
+
 ## 0.1.0-alpha.6 (2025-04-05)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
