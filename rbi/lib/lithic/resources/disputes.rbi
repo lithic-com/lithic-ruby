@@ -78,18 +78,18 @@ module Lithic
       end
       def list(
         # Date string in RFC 3339 format. Only entries created after the specified time
-        #   will be included. UTC time zone.
+        # will be included. UTC time zone.
         begin_: nil,
         # Date string in RFC 3339 format. Only entries created before the specified time
-        #   will be included. UTC time zone.
+        # will be included. UTC time zone.
         end_: nil,
         # A cursor representing an item's token before which a page of results should end.
-        #   Used to retrieve the previous page of results before this item.
+        # Used to retrieve the previous page of results before this item.
         ending_before: nil,
         # Page size (for pagination).
         page_size: nil,
         # A cursor representing an item's token after which a page of results should
-        #   begin. Used to retrieve the next page of results after this item.
+        # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
         # List disputes of a specific status.
         status: nil,
@@ -108,7 +108,7 @@ module Lithic
       def delete(dispute_token, request_options: {}); end
 
       # Soft delete evidence for a dispute. Evidence will not be reviewed or submitted
-      #   by Lithic after it is withdrawn.
+      # by Lithic after it is withdrawn.
       sig do
         params(
           evidence_token: String,
@@ -120,10 +120,10 @@ module Lithic
       def delete_evidence(evidence_token, dispute_token:, request_options: {}); end
 
       # Use this endpoint to upload evidences for the dispute. It will return a URL to
-      #   upload your documents to. The URL will expire in 30 minutes.
+      # upload your documents to. The URL will expire in 30 minutes.
       #
-      #   Uploaded documents must either be a `jpg`, `png` or `pdf` file, and each must be
-      #   less than 5 GiB.
+      # Uploaded documents must either be a `jpg`, `png` or `pdf` file, and each must be
+      # less than 5 GiB.
       sig do
         params(
           dispute_token: String,
@@ -154,18 +154,18 @@ module Lithic
       def list_evidences(
         dispute_token,
         # Date string in RFC 3339 format. Only entries created after the specified time
-        #   will be included. UTC time zone.
+        # will be included. UTC time zone.
         begin_: nil,
         # Date string in RFC 3339 format. Only entries created before the specified time
-        #   will be included. UTC time zone.
+        # will be included. UTC time zone.
         end_: nil,
         # A cursor representing an item's token before which a page of results should end.
-        #   Used to retrieve the previous page of results before this item.
+        # Used to retrieve the previous page of results before this item.
         ending_before: nil,
         # Page size (for pagination).
         page_size: nil,
         # A cursor representing an item's token after which a page of results should
-        #   begin. Used to retrieve the next page of results after this item.
+        # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
         request_options: {}
       ); end

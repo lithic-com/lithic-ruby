@@ -11,7 +11,7 @@ module Lithic
 
         # @!attribute [r] begin_
         #   Date string in RFC 3339 format. Only entries created after the specified date
-        #     will be included.
+        #   will be included.
         #
         #   @return [Date, nil]
         optional :begin_, Date, api_name: :begin
@@ -22,7 +22,7 @@ module Lithic
 
         # @!attribute [r] end_
         #   Date string in RFC 3339 format. Only entries created before the specified date
-        #     will be included.
+        #   will be included.
         #
         #   @return [Date, nil]
         optional :end_, Date, api_name: :end
@@ -33,7 +33,7 @@ module Lithic
 
         # @!attribute [r] ending_before
         #   A cursor representing an item's token before which a page of results should end.
-        #     Used to retrieve the previous page of results before this item.
+        #   Used to retrieve the previous page of results before this item.
         #
         #   @return [String, nil]
         optional :ending_before, String
@@ -64,7 +64,7 @@ module Lithic
 
         # @!attribute [r] starting_after
         #   A cursor representing an item's token after which a page of results should
-        #     begin. Used to retrieve the next page of results after this item.
+        #   begin. Used to retrieve the next page of results after this item.
         #
         #   @return [String, nil]
         optional :starting_after, String

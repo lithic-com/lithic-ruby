@@ -17,11 +17,11 @@ module Lithic
 
       # Upload status types:
       #
-      #   - `DELETED` - Evidence was deleted.
-      #   - `ERROR` - Evidence upload failed.
-      #   - `PENDING` - Evidence is pending upload.
-      #   - `REJECTED` - Evidence was rejected.
-      #   - `UPLOADED` - Evidence was uploaded.
+      # - `DELETED` - Evidence was deleted.
+      # - `ERROR` - Evidence upload failed.
+      # - `PENDING` - Evidence is pending upload.
+      # - `REJECTED` - Evidence was rejected.
+      # - `UPLOADED` - Evidence was uploaded.
       sig { returns(Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol) }
       attr_accessor :upload_status
 
@@ -33,7 +33,7 @@ module Lithic
       attr_writer :download_url
 
       # File name of evidence. Recommended to give the dispute evidence a human-readable
-      #   identifier.
+      # identifier.
       sig { returns(T.nilable(String)) }
       attr_reader :filename
 
@@ -89,11 +89,11 @@ module Lithic
 
       # Upload status types:
       #
-      #   - `DELETED` - Evidence was deleted.
-      #   - `ERROR` - Evidence upload failed.
-      #   - `PENDING` - Evidence is pending upload.
-      #   - `REJECTED` - Evidence was rejected.
-      #   - `UPLOADED` - Evidence was uploaded.
+      # - `DELETED` - Evidence was deleted.
+      # - `ERROR` - Evidence upload failed.
+      # - `PENDING` - Evidence is pending upload.
+      # - `REJECTED` - Evidence was rejected.
+      # - `UPLOADED` - Evidence was uploaded.
       module UploadStatus
         extend Lithic::Internal::Type::Enum
 

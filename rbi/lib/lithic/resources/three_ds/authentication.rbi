@@ -18,9 +18,9 @@ module Lithic
           request_options: {}
         ); end
         # Simulates a 3DS authentication request from the payment network as if it came
-        #   from an ACS. If you're configured for 3DS Customer Decisioning, simulating
-        #   authentications requires your customer decisioning endpoint to be set up
-        #   properly (respond with a valid JSON).
+        # from an ACS. If you're configured for 3DS Customer Decisioning, simulating
+        # authentications requires your customer decisioning endpoint to be set up
+        # properly (respond with a valid JSON).
         sig do
           params(
             merchant: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Internal::AnyHash),
@@ -37,14 +37,14 @@ module Lithic
           pan:,
           transaction:,
           # When set will use the following values as part of the Simulated Authentication.
-          #   When not set defaults to MATCH
+          # When not set defaults to MATCH
           card_expiry_check: nil,
           request_options: {}
         ); end
         # Endpoint for simulating entering OTP into 3DS Challenge UI. A call to
-        #   /v1/three_ds_authentication/simulate that resulted in triggered SMS-OTP
-        #   challenge must precede. Only a single attempt is supported; upon entering OTP,
-        #   the challenge is either approved or declined.
+        # /v1/three_ds_authentication/simulate that resulted in triggered SMS-OTP
+        # challenge must precede. Only a single attempt is supported; upon entering OTP,
+        # the challenge is either approved or declined.
         sig do
           params(
             token: String,
@@ -55,7 +55,7 @@ module Lithic
         end
         def simulate_otp_entry(
           # A unique token returned as part of a /v1/three_ds_authentication/simulate call
-          #   that resulted in PENDING_CHALLENGE authentication result.
+          # that resulted in PENDING_CHALLENGE authentication result.
           token:,
           # The OTP entered by the cardholder
           otp:,

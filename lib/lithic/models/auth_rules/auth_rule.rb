@@ -18,8 +18,8 @@ module Lithic
 
         # @!attribute [r] account_tokens
         #   Array of account_token(s) identifying the accounts that the Auth Rule applies
-        #     to. Note that only this field or `card_tokens` can be provided for a given Auth
-        #     Rule.
+        #   to. Note that only this field or `card_tokens` can be provided for a given Auth
+        #   Rule.
         #
         #   @return [Array<String>, nil]
         optional :account_tokens, Lithic::Internal::Type::ArrayOf[String]
@@ -30,8 +30,8 @@ module Lithic
 
         # @!attribute [r] allowed_countries
         #   Countries in which the Auth Rule permits transactions. Note that Lithic
-        #     maintains a list of countries in which all transactions are blocked; "allowing"
-        #     those countries in an Auth Rule does not override the Lithic-wide restrictions.
+        #   maintains a list of countries in which all transactions are blocked; "allowing"
+        #   those countries in an Auth Rule does not override the Lithic-wide restrictions.
         #
         #   @return [Array<String>, nil]
         optional :allowed_countries, Lithic::Internal::Type::ArrayOf[String]
@@ -62,7 +62,7 @@ module Lithic
 
         # @!attribute [r] blocked_mcc
         #   Merchant category codes for which the Auth Rule automatically declines
-        #     transactions.
+        #   transactions.
         #
         #   @return [Array<String>, nil]
         optional :blocked_mcc, Lithic::Internal::Type::ArrayOf[String]
@@ -73,7 +73,7 @@ module Lithic
 
         # @!attribute [r] card_tokens
         #   Array of card_token(s) identifying the cards that the Auth Rule applies to. Note
-        #     that only this field or `account_tokens` can be provided for a given Auth Rule.
+        #   that only this field or `account_tokens` can be provided for a given Auth Rule.
         #
         #   @return [Array<String>, nil]
         optional :card_tokens, Lithic::Internal::Type::ArrayOf[String]

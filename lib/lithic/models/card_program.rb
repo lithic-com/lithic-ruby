@@ -46,7 +46,7 @@ module Lithic
 
       # @!attribute [r] settlement_currencies
       #   List of 3-character alphabetic ISO 4217 codes for the currencies that the card
-      #     program supports for settlement.
+      #   program supports for settlement.
       #
       #   @return [Array<String>, nil]
       optional :settlement_currencies, Lithic::Internal::Type::ArrayOf[String]

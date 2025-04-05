@@ -27,7 +27,7 @@ module Lithic
 
         # @!attribute [r] card_expiry_check
         #   When set will use the following values as part of the Simulated Authentication.
-        #     When not set defaults to MATCH
+        #   When not set defaults to MATCH
         #
         #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck, nil]
         optional :card_expiry_check,
@@ -51,29 +51,29 @@ module Lithic
         class Merchant < Lithic::Internal::Type::BaseModel
           # @!attribute id
           #   Unique identifier to identify the payment card acceptor. Corresponds to
-          #     `merchant_acceptor_id` in authorization.
+          #   `merchant_acceptor_id` in authorization.
           #
           #   @return [String]
           required :id, String
 
           # @!attribute country
           #   Country of the address provided by the cardholder in ISO 3166-1 alpha-3 format
-          #     (e.g. USA)
+          #   (e.g. USA)
           #
           #   @return [String]
           required :country, String
 
           # @!attribute mcc
           #   Merchant category code for the transaction to be simulated. A four-digit number
-          #     listed in ISO 18245. Supported merchant category codes can be found
-          #     [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
+          #   listed in ISO 18245. Supported merchant category codes can be found
+          #   [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
           #
           #   @return [String]
           required :mcc, String
 
           # @!attribute name
           #   Merchant descriptor, corresponds to `descriptor` in authorization. If CHALLENGE
-          #     keyword is included, Lithic will trigger a challenge.
+          #   keyword is included, Lithic will trigger a challenge.
           #
           #   @return [String]
           required :name, String
@@ -112,7 +112,7 @@ module Lithic
         end
 
         # When set will use the following values as part of the Simulated Authentication.
-        #   When not set defaults to MATCH
+        # When not set defaults to MATCH
         module CardExpiryCheck
           extend Lithic::Internal::Type::Enum
 

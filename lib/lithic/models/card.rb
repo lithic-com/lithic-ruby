@@ -42,14 +42,14 @@ module Lithic
 
       # @!attribute pin_status
       #   Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
-      #     attempts).
+      #   attempts).
       #
       #   @return [Symbol, Lithic::Models::Card::PinStatus]
       required :pin_status, enum: -> { Lithic::Models::Card::PinStatus }
 
       # @!attribute spend_limit
       #   Amount (in cents) to limit approved authorizations (e.g. 100000 would be a
-      #     $1,000 limit). Transaction requests above the spend limit will be declined.
+      #   $1,000 limit). Transaction requests above the spend limit will be declined.
       #
       #   @return [Integer]
       required :spend_limit, Integer
@@ -57,16 +57,16 @@ module Lithic
       # @!attribute spend_limit_duration
       #   Spend limit duration values:
       #
-      #     - `ANNUALLY` - Card will authorize transactions up to spend limit for the
-      #       trailing year.
-      #     - `FOREVER` - Card will authorize only up to spend limit for the entire lifetime
-      #       of the card.
-      #     - `MONTHLY` - Card will authorize transactions up to spend limit for the
-      #       trailing month. To support recurring monthly payments, which can occur on
-      #       different day every month, the time window we consider for monthly velocity
-      #       starts 6 days after the current calendar date one month prior.
-      #     - `TRANSACTION` - Card will authorize multiple transactions if each individual
-      #       transaction is under the spend limit.
+      #   - `ANNUALLY` - Card will authorize transactions up to spend limit for the
+      #     trailing year.
+      #   - `FOREVER` - Card will authorize only up to spend limit for the entire lifetime
+      #     of the card.
+      #   - `MONTHLY` - Card will authorize transactions up to spend limit for the
+      #     trailing month. To support recurring monthly payments, which can occur on
+      #     different day every month, the time window we consider for monthly velocity
+      #     starts 6 days after the current calendar date one month prior.
+      #   - `TRANSACTION` - Card will authorize multiple transactions if each individual
+      #     transaction is under the spend limit.
       #
       #   @return [Symbol, Lithic::Models::SpendLimitDuration]
       required :spend_limit_duration, enum: -> { Lithic::Models::SpendLimitDuration }
@@ -74,25 +74,25 @@ module Lithic
       # @!attribute state
       #   Card state values:
       #
-      #     - `CLOSED` - Card will no longer approve authorizations. Closing a card cannot
-      #       be undone.
-      #     - `OPEN` - Card will approve authorizations (if they match card and account
-      #       parameters).
-      #     - `PAUSED` - Card will decline authorizations, but can be resumed at a later
-      #       time.
-      #     - `PENDING_FULFILLMENT` - The initial state for cards of type `PHYSICAL`. The
-      #       card is provisioned pending manufacturing and fulfillment. Cards in this state
-      #       can accept authorizations for e-commerce purchases, but not for "Card Present"
-      #       purchases where the physical card itself is present.
-      #     - `PENDING_ACTIVATION` - At regular intervals, cards of type `PHYSICAL` in state
-      #       `PENDING_FULFILLMENT` are sent to the card production warehouse and updated to
-      #       state `PENDING_ACTIVATION` . Similar to `PENDING_FULFILLMENT`, cards in this
-      #       state can be used for e-commerce transactions or can be added to mobile
-      #       wallets. API clients should update the card's state to `OPEN` only after the
-      #       cardholder confirms receipt of the card.
+      #   - `CLOSED` - Card will no longer approve authorizations. Closing a card cannot
+      #     be undone.
+      #   - `OPEN` - Card will approve authorizations (if they match card and account
+      #     parameters).
+      #   - `PAUSED` - Card will decline authorizations, but can be resumed at a later
+      #     time.
+      #   - `PENDING_FULFILLMENT` - The initial state for cards of type `PHYSICAL`. The
+      #     card is provisioned pending manufacturing and fulfillment. Cards in this state
+      #     can accept authorizations for e-commerce purchases, but not for "Card Present"
+      #     purchases where the physical card itself is present.
+      #   - `PENDING_ACTIVATION` - At regular intervals, cards of type `PHYSICAL` in state
+      #     `PENDING_FULFILLMENT` are sent to the card production warehouse and updated to
+      #     state `PENDING_ACTIVATION` . Similar to `PENDING_FULFILLMENT`, cards in this
+      #     state can be used for e-commerce transactions or can be added to mobile
+      #     wallets. API clients should update the card's state to `OPEN` only after the
+      #     cardholder confirms receipt of the card.
       #
-      #     In sandbox, the same daily batch fulfillment occurs, but no cards are actually
-      #     manufactured.
+      #   In sandbox, the same daily batch fulfillment occurs, but no cards are actually
+      #   manufactured.
       #
       #   @return [Symbol, Lithic::Models::Card::State]
       required :state, enum: -> { Lithic::Models::Card::State }
@@ -100,29 +100,29 @@ module Lithic
       # @!attribute type
       #   Card types:
       #
-      #     - `VIRTUAL` - Card will authorize at any merchant and can be added to a digital
-      #       wallet like Apple Pay or Google Pay (if the card program is digital
-      #       wallet-enabled).
-      #     - `PHYSICAL` - Manufactured and sent to the cardholder. We offer white label
-      #       branding, credit, ATM, PIN debit, chip/EMV, NFC and magstripe functionality.
-      #       Reach out at [lithic.com/contact](https://lithic.com/contact) for more
-      #       information.
-      #     - `SINGLE_USE` - Card is closed upon first successful authorization.
-      #     - `MERCHANT_LOCKED` - _[Deprecated]_ Card is locked to the first merchant that
-      #       successfully authorizes the card.
-      #     - `UNLOCKED` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please use
-      #       VIRTUAL instead.
-      #     - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
-      #       use VIRTUAL instead.
+      #   - `VIRTUAL` - Card will authorize at any merchant and can be added to a digital
+      #     wallet like Apple Pay or Google Pay (if the card program is digital
+      #     wallet-enabled).
+      #   - `PHYSICAL` - Manufactured and sent to the cardholder. We offer white label
+      #     branding, credit, ATM, PIN debit, chip/EMV, NFC and magstripe functionality.
+      #     Reach out at [lithic.com/contact](https://lithic.com/contact) for more
+      #     information.
+      #   - `SINGLE_USE` - Card is closed upon first successful authorization.
+      #   - `MERCHANT_LOCKED` - _[Deprecated]_ Card is locked to the first merchant that
+      #     successfully authorizes the card.
+      #   - `UNLOCKED` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please use
+      #     VIRTUAL instead.
+      #   - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
+      #     use VIRTUAL instead.
       #
       #   @return [Symbol, Lithic::Models::Card::Type]
       required :type, enum: -> { Lithic::Models::Card::Type }
 
       # @!attribute [r] auth_rule_tokens
       #   List of identifiers for the Auth Rule(s) that are applied on the card. This
-      #     field is deprecated and will no longer be populated in the `Card` object. The
-      #     key will be removed from the schema in a future release. Use the `/auth_rules`
-      #     endpoints to fetch Auth Rule information instead.
+      #   field is deprecated and will no longer be populated in the `Card` object. The
+      #   key will be removed from the schema in a future release. Use the `/auth_rules`
+      #   endpoints to fetch Auth Rule information instead.
       #
       #   @return [Array<String>, nil]
       optional :auth_rule_tokens, Lithic::Internal::Type::ArrayOf[String]
@@ -153,9 +153,9 @@ module Lithic
 
       # @!attribute [r] digital_card_art_token
       #   Specifies the digital card art to be displayed in the user’s digital wallet
-      #     after tokenization. This artwork must be approved by Mastercard and configured
-      #     by Lithic to use. See
-      #     [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
+      #   after tokenization. This artwork must be approved by Mastercard and configured
+      #   by Lithic to use. See
+      #   [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
       #
       #   @return [String, nil]
       optional :digital_card_art_token, String
@@ -206,8 +206,8 @@ module Lithic
 
       # @!attribute [r] pan
       #   Primary Account Number (PAN) (i.e. the card number). Customers must be PCI
-      #     compliant to have PAN returned as a field in production. Please contact
-      #     [support@lithic.com](mailto:support@lithic.com) for questions.
+      #   compliant to have PAN returned as a field in production. Please contact
+      #   [support@lithic.com](mailto:support@lithic.com) for questions.
       #
       #   @return [String, nil]
       optional :pan, String
@@ -218,8 +218,8 @@ module Lithic
 
       # @!attribute [r] pending_commands
       #   Indicates if there are offline PIN changes pending card interaction with an
-      #     offline PIN terminal. Possible commands are: CHANGE_PIN, UNBLOCK_PIN. Applicable
-      #     only to cards issued in markets supporting offline PINs.
+      #   offline PIN terminal. Possible commands are: CHANGE_PIN, UNBLOCK_PIN. Applicable
+      #   only to cards issued in markets supporting offline PINs.
       #
       #   @return [Array<String>, nil]
       optional :pending_commands, Lithic::Internal::Type::ArrayOf[String]
@@ -230,8 +230,8 @@ module Lithic
 
       # @!attribute [r] product_id
       #   Only applicable to cards of type `PHYSICAL`. This must be configured with Lithic
-      #     before use. Specifies the configuration (i.e., physical card art) that the card
-      #     should be manufactured with.
+      #   before use. Specifies the configuration (i.e., physical card art) that the card
+      #   should be manufactured with.
       #
       #   @return [String, nil]
       optional :product_id, String
@@ -242,7 +242,7 @@ module Lithic
 
       # @!attribute replacement_for
       #   If the card is a replacement for another card, the globally unique identifier
-      #     for the card that was replaced.
+      #   for the card that was replaced.
       #
       #   @return [String, nil]
       optional :replacement_for, String, nil?: true
@@ -313,14 +313,14 @@ module Lithic
 
         # @!attribute created
         #   An RFC 3339 string representing when this funding source was added to the Lithic
-        #     account. This may be `null`. UTC time zone.
+        #   account. This may be `null`. UTC time zone.
         #
         #   @return [Time]
         required :created, Time
 
         # @!attribute last_four
         #   The last 4 digits of the account (e.g. bank account, debit card) associated with
-        #     this FundingAccount. This may be null.
+        #   this FundingAccount. This may be null.
         #
         #   @return [String]
         required :last_four, String
@@ -328,13 +328,13 @@ module Lithic
         # @!attribute state
         #   State of funding source.
         #
-        #     Funding source states:
+        #   Funding source states:
         #
-        #     - `ENABLED` - The funding account is available to use for card creation and
-        #       transactions.
-        #     - `PENDING` - The funding account is still being verified e.g. bank
-        #       micro-deposits verification.
-        #     - `DELETED` - The founding account has been deleted.
+        #   - `ENABLED` - The funding account is available to use for card creation and
+        #     transactions.
+        #   - `PENDING` - The funding account is still being verified e.g. bank
+        #     micro-deposits verification.
+        #   - `DELETED` - The founding account has been deleted.
         #
         #   @return [Symbol, Lithic::Models::Card::Funding::State]
         required :state, enum: -> { Lithic::Models::Card::Funding::State }
@@ -342,8 +342,8 @@ module Lithic
         # @!attribute type
         #   Types of funding source:
         #
-        #     - `DEPOSITORY_CHECKING` - Bank checking account.
-        #     - `DEPOSITORY_SAVINGS` - Bank savings account.
+        #   - `DEPOSITORY_CHECKING` - Bank checking account.
+        #   - `DEPOSITORY_SAVINGS` - Bank savings account.
         #
         #   @return [Symbol, Lithic::Models::Card::Funding::Type]
         required :type, enum: -> { Lithic::Models::Card::Funding::Type }
@@ -385,13 +385,13 @@ module Lithic
 
         # State of funding source.
         #
-        #   Funding source states:
+        # Funding source states:
         #
-        #   - `ENABLED` - The funding account is available to use for card creation and
-        #     transactions.
-        #   - `PENDING` - The funding account is still being verified e.g. bank
-        #     micro-deposits verification.
-        #   - `DELETED` - The founding account has been deleted.
+        # - `ENABLED` - The funding account is available to use for card creation and
+        #   transactions.
+        # - `PENDING` - The funding account is still being verified e.g. bank
+        #   micro-deposits verification.
+        # - `DELETED` - The founding account has been deleted.
         #
         # @see Lithic::Models::Card::Funding#state
         module State
@@ -410,8 +410,8 @@ module Lithic
 
         # Types of funding source:
         #
-        #   - `DEPOSITORY_CHECKING` - Bank checking account.
-        #   - `DEPOSITORY_SAVINGS` - Bank savings account.
+        # - `DEPOSITORY_CHECKING` - Bank checking account.
+        # - `DEPOSITORY_SAVINGS` - Bank savings account.
         #
         # @see Lithic::Models::Card::Funding#type
         module Type
@@ -429,7 +429,7 @@ module Lithic
       end
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
-      #   attempts).
+      # attempts).
       #
       # @see Lithic::Models::Card#pin_status
       module PinStatus
@@ -448,25 +448,25 @@ module Lithic
 
       # Card state values:
       #
-      #   - `CLOSED` - Card will no longer approve authorizations. Closing a card cannot
-      #     be undone.
-      #   - `OPEN` - Card will approve authorizations (if they match card and account
-      #     parameters).
-      #   - `PAUSED` - Card will decline authorizations, but can be resumed at a later
-      #     time.
-      #   - `PENDING_FULFILLMENT` - The initial state for cards of type `PHYSICAL`. The
-      #     card is provisioned pending manufacturing and fulfillment. Cards in this state
-      #     can accept authorizations for e-commerce purchases, but not for "Card Present"
-      #     purchases where the physical card itself is present.
-      #   - `PENDING_ACTIVATION` - At regular intervals, cards of type `PHYSICAL` in state
-      #     `PENDING_FULFILLMENT` are sent to the card production warehouse and updated to
-      #     state `PENDING_ACTIVATION` . Similar to `PENDING_FULFILLMENT`, cards in this
-      #     state can be used for e-commerce transactions or can be added to mobile
-      #     wallets. API clients should update the card's state to `OPEN` only after the
-      #     cardholder confirms receipt of the card.
+      # - `CLOSED` - Card will no longer approve authorizations. Closing a card cannot
+      #   be undone.
+      # - `OPEN` - Card will approve authorizations (if they match card and account
+      #   parameters).
+      # - `PAUSED` - Card will decline authorizations, but can be resumed at a later
+      #   time.
+      # - `PENDING_FULFILLMENT` - The initial state for cards of type `PHYSICAL`. The
+      #   card is provisioned pending manufacturing and fulfillment. Cards in this state
+      #   can accept authorizations for e-commerce purchases, but not for "Card Present"
+      #   purchases where the physical card itself is present.
+      # - `PENDING_ACTIVATION` - At regular intervals, cards of type `PHYSICAL` in state
+      #   `PENDING_FULFILLMENT` are sent to the card production warehouse and updated to
+      #   state `PENDING_ACTIVATION` . Similar to `PENDING_FULFILLMENT`, cards in this
+      #   state can be used for e-commerce transactions or can be added to mobile
+      #   wallets. API clients should update the card's state to `OPEN` only after the
+      #   cardholder confirms receipt of the card.
       #
-      #   In sandbox, the same daily batch fulfillment occurs, but no cards are actually
-      #   manufactured.
+      # In sandbox, the same daily batch fulfillment occurs, but no cards are actually
+      # manufactured.
       #
       # @see Lithic::Models::Card#state
       module State
@@ -487,20 +487,20 @@ module Lithic
 
       # Card types:
       #
-      #   - `VIRTUAL` - Card will authorize at any merchant and can be added to a digital
-      #     wallet like Apple Pay or Google Pay (if the card program is digital
-      #     wallet-enabled).
-      #   - `PHYSICAL` - Manufactured and sent to the cardholder. We offer white label
-      #     branding, credit, ATM, PIN debit, chip/EMV, NFC and magstripe functionality.
-      #     Reach out at [lithic.com/contact](https://lithic.com/contact) for more
-      #     information.
-      #   - `SINGLE_USE` - Card is closed upon first successful authorization.
-      #   - `MERCHANT_LOCKED` - _[Deprecated]_ Card is locked to the first merchant that
-      #     successfully authorizes the card.
-      #   - `UNLOCKED` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please use
-      #     VIRTUAL instead.
-      #   - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
-      #     use VIRTUAL instead.
+      # - `VIRTUAL` - Card will authorize at any merchant and can be added to a digital
+      #   wallet like Apple Pay or Google Pay (if the card program is digital
+      #   wallet-enabled).
+      # - `PHYSICAL` - Manufactured and sent to the cardholder. We offer white label
+      #   branding, credit, ATM, PIN debit, chip/EMV, NFC and magstripe functionality.
+      #   Reach out at [lithic.com/contact](https://lithic.com/contact) for more
+      #   information.
+      # - `SINGLE_USE` - Card is closed upon first successful authorization.
+      # - `MERCHANT_LOCKED` - _[Deprecated]_ Card is locked to the first merchant that
+      #   successfully authorizes the card.
+      # - `UNLOCKED` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please use
+      #   VIRTUAL instead.
+      # - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
+      #   use VIRTUAL instead.
       #
       # @see Lithic::Models::Card#type
       module Type

@@ -4,7 +4,7 @@ module Lithic
   module Models
     class KYBBusinessEntity < Lithic::Internal::Type::BaseModel
       # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
-      #   acceptable; APO/FPO are acceptable.
+      # acceptable; APO/FPO are acceptable.
       sig { returns(Lithic::Models::KYBBusinessEntity::Address) }
       attr_reader :address
 
@@ -12,8 +12,8 @@ module Lithic
       attr_writer :address
 
       # Government-issued identification number. US Federal Employer Identification
-      #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
-      #   without hyphens.
+      # Numbers (EIN) are currently supported, entered as full nine-digits, with or
+      # without hyphens.
       sig { returns(String) }
       attr_accessor :government_id
 
@@ -22,12 +22,12 @@ module Lithic
       attr_accessor :legal_business_name
 
       # One or more of the business's phone number(s), entered as a list in E.164
-      #   format.
+      # format.
       sig { returns(T::Array[String]) }
       attr_accessor :phone_numbers
 
       # Any name that the business operates under that is not its legal business name
-      #   (if applicable).
+      # (if applicable).
       sig { returns(T.nilable(String)) }
       attr_reader :dba_business_name
 
@@ -85,17 +85,17 @@ module Lithic
         attr_accessor :city
 
         # Valid country code. Only USA is currently supported, entered in uppercase ISO
-        #   3166-1 alpha-3 three-character format.
+        # 3166-1 alpha-3 three-character format.
         sig { returns(String) }
         attr_accessor :country
 
         # Valid postal code. Only USA ZIP codes are currently supported, entered as a
-        #   five-digit ZIP or nine-digit ZIP+4.
+        # five-digit ZIP or nine-digit ZIP+4.
         sig { returns(String) }
         attr_accessor :postal_code
 
         # Valid state code. Only USA state codes are currently supported, entered in
-        #   uppercase ISO 3166-2 two-character format.
+        # uppercase ISO 3166-2 two-character format.
         sig { returns(String) }
         attr_accessor :state
 
@@ -107,7 +107,7 @@ module Lithic
         attr_writer :address2
 
         # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable.
+        # acceptable; APO/FPO are acceptable.
         sig do
           params(
             address1: String,

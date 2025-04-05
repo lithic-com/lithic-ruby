@@ -14,7 +14,7 @@ module Lithic
       attr_writer :account_token
 
       # UTC date and time of the balances to retrieve. Defaults to latest available
-      #   balances
+      # balances
       sig { returns(T.nilable(Time)) }
       attr_reader :balance_date
 

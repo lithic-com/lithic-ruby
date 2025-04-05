@@ -65,7 +65,7 @@ module Lithic
       def update(financial_account_token, nickname: nil, request_options: {}); end
 
       # Retrieve information on your financial accounts including routing and account
-      #   number.
+      # number.
       sig do
         params(
           account_token: String,

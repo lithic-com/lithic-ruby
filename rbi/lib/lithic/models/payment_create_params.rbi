@@ -33,7 +33,7 @@ module Lithic
       attr_accessor :type
 
       # Customer-provided token that will serve as an idempotency token. This token will
-      #   become the transaction token.
+      # become the transaction token.
       sig { returns(T.nilable(String)) }
       attr_reader :token
 

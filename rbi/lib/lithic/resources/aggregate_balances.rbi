@@ -4,7 +4,7 @@ module Lithic
   module Resources
     class AggregateBalances
       # Get the aggregated balance across all end-user accounts by financial account
-      #   type
+      # type
       sig do
         params(
           financial_account_type: Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol,

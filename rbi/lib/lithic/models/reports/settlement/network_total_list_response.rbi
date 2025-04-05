@@ -29,13 +29,13 @@ module Lithic
           attr_accessor :currency
 
           # The institution that activity occurred on. For Mastercard: ICA (Interbank Card
-          #   Association). For Maestro: institution ID. For Visa: lowest level SRE
-          #   (Settlement Reporting Entity).
+          # Association). For Maestro: institution ID. For Visa: lowest level SRE
+          # (Settlement Reporting Entity).
           sig { returns(String) }
           attr_accessor :institution_id
 
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
-          #   INTERLINK.
+          # INTERLINK.
           sig { returns(Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Network::TaggedSymbol) }
           attr_accessor :network
 
@@ -44,8 +44,8 @@ module Lithic
           attr_accessor :report_date
 
           # The institution responsible for settlement. For Mastercard: same as
-          #   `institution_id`. For Maestro: billing ICA. For Visa: Funds Transfer SRE
-          #   (FTSRE).
+          # `institution_id`. For Maestro: billing ICA. For Visa: Funds Transfer SRE
+          # (FTSRE).
           sig { returns(String) }
           attr_accessor :settlement_institution_id
 
@@ -123,7 +123,7 @@ module Lithic
             attr_accessor :interchange_fees
 
             # `gross_settlement` net of `interchange_fees` and `visa_charges` (if applicable),
-            #   in currency's smallest unit.
+            # in currency's smallest unit.
             sig { returns(Integer) }
             attr_accessor :net_settlement
 
@@ -160,7 +160,7 @@ module Lithic
           end
 
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
-          #   INTERLINK.
+          # INTERLINK.
           module Network
             extend Lithic::Internal::Type::Enum
 

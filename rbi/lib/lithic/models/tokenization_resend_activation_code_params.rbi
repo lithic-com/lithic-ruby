@@ -7,8 +7,8 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       # The communication method that the user has selected to use to receive the
-      #   authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
-      #   = "EMAIL_TO_CARDHOLDER_ADDRESS"
+      # authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
+      # = "EMAIL_TO_CARDHOLDER_ADDRESS"
       sig { returns(T.nilable(Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol)) }
       attr_reader :activation_method_type
 
@@ -41,8 +41,8 @@ module Lithic
       def to_hash; end
 
       # The communication method that the user has selected to use to receive the
-      #   authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
-      #   = "EMAIL_TO_CARDHOLDER_ADDRESS"
+      # authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
+      # = "EMAIL_TO_CARDHOLDER_ADDRESS"
       module ActivationMethodType
         extend Lithic::Internal::Type::Enum
 

@@ -4,7 +4,7 @@ module Lithic
   module Resources
     class AggregateBalances
       # Get the aggregated balance across all end-user accounts by financial account
-      #   type
+      # type
       #
       # @overload list(financial_account_type: nil, request_options: {})
       #

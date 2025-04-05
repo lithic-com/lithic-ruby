@@ -51,7 +51,7 @@ module Lithic
 
             # @!attribute currency
             #   3-character alphabetic ISO 4217 code for the settling currency of the
-            #     transaction
+            #   transaction
             #
             #   @return [String]
             required :currency, String

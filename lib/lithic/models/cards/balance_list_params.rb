@@ -21,8 +21,8 @@ module Lithic
 
         # @!attribute [r] last_transaction_event_token
         #   Balance after a given financial event occured. For example, passing the
-        #     event_token of a $5 CARD_CLEARING financial event will return a balance
-        #     decreased by $5
+        #   event_token of a $5 CARD_CLEARING financial event will return a balance
+        #   decreased by $5
         #
         #   @return [String, nil]
         optional :last_transaction_event_token, String

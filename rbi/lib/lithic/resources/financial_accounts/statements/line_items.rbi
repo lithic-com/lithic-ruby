@@ -25,13 +25,13 @@ module Lithic
             # Path param: Globally unique identifier for financial account.
             financial_account_token:,
             # Query param: A cursor representing an item's token before which a page of
-            #   results should end. Used to retrieve the previous page of results before this
-            #   item.
+            # results should end. Used to retrieve the previous page of results before this
+            # item.
             ending_before: nil,
             # Query param: Page size (for pagination).
             page_size: nil,
             # Query param: A cursor representing an item's token after which a page of results
-            #   should begin. Used to retrieve the next page of results after this item.
+            # should begin. Used to retrieve the next page of results after this item.
             starting_after: nil,
             request_options: {}
           ); end

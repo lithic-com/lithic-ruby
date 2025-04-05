@@ -7,7 +7,7 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       # Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a
-      #   $1,000 limit). By default the daily spend limit is set to $1,250.
+      # $1,000 limit). By default the daily spend limit is set to $1,250.
       sig { returns(T.nilable(Integer)) }
       attr_reader :daily_spend_limit
 
@@ -15,12 +15,12 @@ module Lithic
       attr_writer :daily_spend_limit
 
       # Amount (in cents) for the account's lifetime spend limit (e.g. 100000 would be a
-      #   $1,000 limit). Once this limit is reached, no transactions will be accepted on
-      #   any card created for this account until the limit is updated. Note that a spend
-      #   limit of 0 is effectively no limit, and should only be used to reset or remove a
-      #   prior limit. Only a limit of 1 or above will result in declined transactions due
-      #   to checks against the account limit. This behavior differs from the daily spend
-      #   limit and the monthly spend limit.
+      # $1,000 limit). Once this limit is reached, no transactions will be accepted on
+      # any card created for this account until the limit is updated. Note that a spend
+      # limit of 0 is effectively no limit, and should only be used to reset or remove a
+      # prior limit. Only a limit of 1 or above will result in declined transactions due
+      # to checks against the account limit. This behavior differs from the daily spend
+      # limit and the monthly spend limit.
       sig { returns(T.nilable(Integer)) }
       attr_reader :lifetime_spend_limit
 
@@ -28,7 +28,7 @@ module Lithic
       attr_writer :lifetime_spend_limit
 
       # Amount (in cents) for the account's monthly spend limit (e.g. 100000 would be a
-      #   $1,000 limit). By default the monthly spend limit is set to $5,000.
+      # $1,000 limit). By default the monthly spend limit is set to $5,000.
       sig { returns(T.nilable(Integer)) }
       attr_reader :monthly_spend_limit
 
@@ -43,9 +43,9 @@ module Lithic
       attr_writer :state
 
       # Address used during Address Verification Service (AVS) checks during
-      #   transactions if enabled via Auth Rules. This field is deprecated as AVS checks
-      #   are no longer supported by Authorization Rules. The field will be removed from
-      #   the schema in a future release.
+      # transactions if enabled via Auth Rules. This field is deprecated as AVS checks
+      # are no longer supported by Authorization Rules. The field will be removed from
+      # the schema in a future release.
       sig { returns(T.nilable(Lithic::Models::AccountUpdateParams::VerificationAddress)) }
       attr_reader :verification_address
 
@@ -144,9 +144,9 @@ module Lithic
         attr_writer :state
 
         # Address used during Address Verification Service (AVS) checks during
-        #   transactions if enabled via Auth Rules. This field is deprecated as AVS checks
-        #   are no longer supported by Authorization Rules. The field will be removed from
-        #   the schema in a future release.
+        # transactions if enabled via Auth Rules. This field is deprecated as AVS checks
+        # are no longer supported by Authorization Rules. The field will be removed from
+        # the schema in a future release.
         sig do
           params(
             address1: String,

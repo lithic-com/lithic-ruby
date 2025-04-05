@@ -24,9 +24,9 @@ module Lithic
         end
 
         # Simulates a 3DS authentication request from the payment network as if it came
-        #   from an ACS. If you're configured for 3DS Customer Decisioning, simulating
-        #   authentications requires your customer decisioning endpoint to be set up
-        #   properly (respond with a valid JSON).
+        # from an ACS. If you're configured for 3DS Customer Decisioning, simulating
+        # authentications requires your customer decisioning endpoint to be set up
+        # properly (respond with a valid JSON).
         #
         # @overload simulate(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {})
         #
@@ -51,9 +51,9 @@ module Lithic
         end
 
         # Endpoint for simulating entering OTP into 3DS Challenge UI. A call to
-        #   /v1/three_ds_authentication/simulate that resulted in triggered SMS-OTP
-        #   challenge must precede. Only a single attempt is supported; upon entering OTP,
-        #   the challenge is either approved or declined.
+        # /v1/three_ds_authentication/simulate that resulted in triggered SMS-OTP
+        # challenge must precede. Only a single attempt is supported; upon entering OTP,
+        # the challenge is either approved or declined.
         #
         # @overload simulate_otp_entry(token:, otp:, request_options: {})
         #

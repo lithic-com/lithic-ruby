@@ -8,7 +8,7 @@ module Lithic
         include Lithic::Internal::Type::RequestParameters
 
         # Date string in RFC 3339 format. Only entries created after the specified date
-        #   will be included.
+        # will be included.
         sig { returns(T.nilable(Date)) }
         attr_reader :begin_
 
@@ -16,7 +16,7 @@ module Lithic
         attr_writer :begin_
 
         # Date string in RFC 3339 format. Only entries created before the specified date
-        #   will be included.
+        # will be included.
         sig { returns(T.nilable(Date)) }
         attr_reader :end_
 
@@ -24,7 +24,7 @@ module Lithic
         attr_writer :end_
 
         # A cursor representing an item's token before which a page of results should end.
-        #   Used to retrieve the previous page of results before this item.
+        # Used to retrieve the previous page of results before this item.
         sig { returns(T.nilable(String)) }
         attr_reader :ending_before
 
@@ -46,7 +46,7 @@ module Lithic
         attr_writer :page_size
 
         # A cursor representing an item's token after which a page of results should
-        #   begin. Used to retrieve the next page of results after this item.
+        # begin. Used to retrieve the next page of results after this item.
         sig { returns(T.nilable(String)) }
         attr_reader :starting_after
 

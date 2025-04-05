@@ -11,7 +11,7 @@ module Lithic
 
         # @!attribute [r] begin_
         #   Date string in RFC 3339 format. Only entries created after the specified time
-        #     will be included. UTC time zone.
+        #   will be included. UTC time zone.
         #
         #   @return [Time, nil]
         optional :begin_, Time, api_name: :begin
@@ -22,7 +22,7 @@ module Lithic
 
         # @!attribute [r] end_
         #   Date string in RFC 3339 format. Only entries created before the specified time
-        #     will be included. UTC time zone.
+        #   will be included. UTC time zone.
         #
         #   @return [Time, nil]
         optional :end_, Time, api_name: :end

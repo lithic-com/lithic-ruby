@@ -42,7 +42,7 @@ module Lithic
       attr_writer :name
 
       # Legal Name of the business or individual who owns the external account. This
-      #   will appear in statements
+      # will appear in statements
       sig { returns(T.nilable(String)) }
       attr_reader :owner
 

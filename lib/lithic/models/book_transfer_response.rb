@@ -6,7 +6,7 @@ module Lithic
     class BookTransferResponse < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Customer-provided token that will serve as an idempotency token. This token will
-      #     become the transaction token.
+      #   become the transaction token.
       #
       #   @return [String]
       required :token, String
@@ -25,7 +25,7 @@ module Lithic
 
       # @!attribute currency
       #   3-character alphabetic ISO 4217 code for the settling currency of the
-      #     transaction.
+      #   transaction.
       #
       #   @return [String]
       required :currency, String
@@ -38,43 +38,43 @@ module Lithic
 
       # @!attribute from_financial_account_token
       #   Globally unique identifier for the financial account or card that will send the
-      #     funds. Accepted type dependent on the program's use case.
+      #   funds. Accepted type dependent on the program's use case.
       #
       #   @return [String]
       required :from_financial_account_token, String
 
       # @!attribute pending_amount
       #   Pending amount of the transaction in the currency's smallest unit (e.g., cents),
-      #     including any acquirer fees. The value of this field will go to zero over time
-      #     once the financial transaction is settled.
+      #   including any acquirer fees. The value of this field will go to zero over time
+      #   once the financial transaction is settled.
       #
       #   @return [Integer]
       required :pending_amount, Integer
 
       # @!attribute result
       #   APPROVED transactions were successful while DECLINED transactions were declined
-      #     by user, Lithic, or the network.
+      #   by user, Lithic, or the network.
       #
       #   @return [Symbol, Lithic::Models::BookTransferResponse::Result]
       required :result, enum: -> { Lithic::Models::BookTransferResponse::Result }
 
       # @!attribute settled_amount
       #   Amount of the transaction that has been settled in the currency's smallest unit
-      #     (e.g., cents).
+      #   (e.g., cents).
       #
       #   @return [Integer]
       required :settled_amount, Integer
 
       # @!attribute status
       #   Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
-      #     transfer was reversed \* `SETTLED` - The transfer is completed.
+      #   transfer was reversed \* `SETTLED` - The transfer is completed.
       #
       #   @return [Symbol, Lithic::Models::BookTransferResponse::Status]
       required :status, enum: -> { Lithic::Models::BookTransferResponse::Status }
 
       # @!attribute to_financial_account_token
       #   Globally unique identifier for the financial account or card that will receive
-      #     the funds. Accepted type dependent on the program's use case.
+      #   the funds. Accepted type dependent on the program's use case.
       #
       #   @return [Object]
       required :to_financial_account_token, Lithic::Internal::Type::Unknown
@@ -149,7 +149,7 @@ module Lithic
 
         # @!attribute amount
         #   Amount of the financial event that has been settled in the currency's smallest
-        #     unit (e.g., cents).
+        #   unit (e.g., cents).
         #
         #   @return [Integer]
         required :amount, Integer
@@ -175,7 +175,7 @@ module Lithic
 
         # @!attribute result
         #   APPROVED financial events were successful while DECLINED financial events were
-        #     declined by user, Lithic, or the network.
+        #   declined by user, Lithic, or the network.
         #
         #   @return [Symbol, Lithic::Models::BookTransferResponse::Event::Result]
         required :result, enum: -> { Lithic::Models::BookTransferResponse::Event::Result }
@@ -220,7 +220,7 @@ module Lithic
         end
 
         # APPROVED financial events were successful while DECLINED financial events were
-        #   declined by user, Lithic, or the network.
+        # declined by user, Lithic, or the network.
         #
         # @see Lithic::Models::BookTransferResponse::Event#result
         module Result
@@ -238,7 +238,7 @@ module Lithic
       end
 
       # APPROVED transactions were successful while DECLINED transactions were declined
-      #   by user, Lithic, or the network.
+      # by user, Lithic, or the network.
       #
       # @see Lithic::Models::BookTransferResponse#result
       module Result
@@ -255,7 +255,7 @@ module Lithic
       end
 
       # Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
-      #   transfer was reversed \* `SETTLED` - The transfer is completed.
+      # transfer was reversed \* `SETTLED` - The transfer is completed.
       #
       # @see Lithic::Models::BookTransferResponse#status
       module Status

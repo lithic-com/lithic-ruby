@@ -18,7 +18,7 @@ module Lithic
       attr_writer :disputes_gross_amount
 
       # The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
-      #   for Visa).
+      # for Visa).
       sig { returns(T.nilable(String)) }
       attr_reader :institution
 
@@ -47,7 +47,7 @@ module Lithic
       attr_writer :other_fees_gross_amount
 
       # The total net amount of cash moved. (net value of settled_gross_amount,
-      #   interchange, fees).
+      # interchange, fees).
       sig { returns(T.nilable(Integer)) }
       attr_reader :settled_net_amount
 
@@ -55,7 +55,7 @@ module Lithic
       attr_writer :settled_net_amount
 
       # The total amount of settlement impacting transactions (excluding interchange,
-      #   fees, and disputes).
+      # fees, and disputes).
       sig { returns(T.nilable(Integer)) }
       attr_reader :transactions_gross_amount
 

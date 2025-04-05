@@ -4,11 +4,11 @@ module Lithic
   module Resources
     class AuthStreamEnrollment
       # Retrieve the ASA HMAC secret key. If one does not exist for your program yet,
-      #   calling this endpoint will create one for you. The headers (which you can use to
-      #   verify webhooks) will begin appearing shortly after calling this endpoint for
-      #   the first time. See
-      #   [this page](https://docs.lithic.com/docs/auth-stream-access-asa#asa-webhook-verification)
-      #   for more detail about verifying ASA webhooks.
+      # calling this endpoint will create one for you. The headers (which you can use to
+      # verify webhooks) will begin appearing shortly after calling this endpoint for
+      # the first time. See
+      # [this page](https://docs.lithic.com/docs/auth-stream-access-asa#asa-webhook-verification)
+      # for more detail about verifying ASA webhooks.
       #
       # @overload retrieve_secret(request_options: {})
       #
@@ -27,9 +27,9 @@ module Lithic
       end
 
       # Generate a new ASA HMAC secret key. The old ASA HMAC secret key will be
-      #   deactivated 24 hours after a successful request to this endpoint. Make a
-      #   [`GET /auth_stream/secret`](https://docs.lithic.com/reference/getauthstreamsecret)
-      #   request to retrieve the new secret key.
+      # deactivated 24 hours after a successful request to this endpoint. Make a
+      # [`GET /auth_stream/secret`](https://docs.lithic.com/reference/getauthstreamsecret)
+      # request to retrieve the new secret key.
       #
       # @overload rotate_secret(request_options: {})
       #

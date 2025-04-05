@@ -34,7 +34,7 @@ module Lithic
 
       # @!attribute [r] account_score
       #   The account score (1-5) that represents how the Digital Wallet's view on how
-      #     reputable an end user's account is.
+      #   reputable an end user's account is.
       #
       #   @return [Integer, nil]
       optional :account_score, Integer
@@ -45,7 +45,7 @@ module Lithic
 
       # @!attribute [r] device_score
       #   The device score (1-5) that represents how the Digital Wallet's view on how
-      #     reputable an end user's device is.
+      #   reputable an end user's device is.
       #
       #   @return [Integer, nil]
       optional :device_score, Integer
@@ -56,7 +56,7 @@ module Lithic
 
       # @!attribute [r] entity
       #   Optional field to specify the token requestor name for a merchant token
-      #     simulation. Ignored when tokenization_source is not MERCHANT.
+      #   simulation. Ignored when tokenization_source is not MERCHANT.
       #
       #   @return [String, nil]
       optional :entity, String

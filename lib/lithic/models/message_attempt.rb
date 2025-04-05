@@ -13,7 +13,7 @@ module Lithic
       # @!attribute created
       #   An RFC 3339 timestamp for when the event was created. UTC time zone.
       #
-      #     If no timezone is specified, UTC will be used.
+      #   If no timezone is specified, UTC will be used.
       #
       #   @return [Time]
       required :created, Time

@@ -37,18 +37,18 @@ module Lithic
           # Globally unique identifier for financial account.
           financial_account_token,
           # Date string in RFC 3339 format. Only entries created after the specified date
-          #   will be included.
+          # will be included.
           begin_: nil,
           # Date string in RFC 3339 format. Only entries created before the specified date
-          #   will be included.
+          # will be included.
           end_: nil,
           # A cursor representing an item's token before which a page of results should end.
-          #   Used to retrieve the previous page of results before this item.
+          # Used to retrieve the previous page of results before this item.
           ending_before: nil,
           # Page size (for pagination).
           page_size: nil,
           # A cursor representing an item's token after which a page of results should
-          #   begin. Used to retrieve the next page of results after this item.
+          # begin. Used to retrieve the next page of results after this item.
           starting_after: nil,
           request_options: {}
         ); end

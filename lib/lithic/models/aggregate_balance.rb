@@ -30,14 +30,14 @@ module Lithic
 
       # @!attribute last_financial_account_token
       #   Globally unique identifier for the financial account that had its balance
-      #     updated most recently
+      #   updated most recently
       #
       #   @return [String]
       required :last_financial_account_token, String
 
       # @!attribute last_transaction_event_token
       #   Globally unique identifier for the last transaction event that impacted this
-      #     balance
+      #   balance
       #
       #   @return [String]
       required :last_transaction_event_token, String
@@ -50,14 +50,14 @@ module Lithic
 
       # @!attribute pending_amount
       #   Funds not available for spend due to card authorizations or pending ACH release.
-      #     Shown in the currency's smallest unit (e.g., cents for USD)
+      #   Shown in the currency's smallest unit (e.g., cents for USD)
       #
       #   @return [Integer]
       required :pending_amount, Integer
 
       # @!attribute total_amount
       #   The sum of available and pending balance in the currency's smallest unit (e.g.,
-      #     cents for USD)
+      #   cents for USD)
       #
       #   @return [Integer]
       required :total_amount, Integer

@@ -8,7 +8,7 @@ module Lithic
         include Lithic::Internal::Type::RequestParameters
 
         # Date string in RFC 3339 format. Only entries created after the specified time
-        #   will be included. UTC time zone.
+        # will be included. UTC time zone.
         sig { returns(T.nilable(Time)) }
         attr_reader :begin_
 
@@ -16,7 +16,7 @@ module Lithic
         attr_writer :begin_
 
         # Date string in RFC 3339 format. Only entries created before the specified time
-        #   will be included. UTC time zone.
+        # will be included. UTC time zone.
         sig { returns(T.nilable(Time)) }
         attr_reader :end_
 

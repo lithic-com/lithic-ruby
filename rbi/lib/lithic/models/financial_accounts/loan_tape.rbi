@@ -37,8 +37,8 @@ module Lithic
         attr_accessor :created
 
         # For prepay accounts, this is the minimum prepay balance that must be maintained.
-        #   For charge card accounts, this is the maximum credit balance extended by a
-        #   lender
+        # For charge card accounts, this is the maximum credit balance extended by a
+        # lender
         sig { returns(Integer) }
         attr_accessor :credit_limit
 
@@ -66,8 +66,8 @@ module Lithic
         attr_accessor :ending_balance
 
         # Excess credits in the form of provisional credits, payments, or purchase
-        #   refunds. If positive, the account is in net credit state with no outstanding
-        #   balances. An overpayment could land an account in this state
+        # refunds. If positive, the account is in net credit state with no outstanding
+        # balances. An overpayment could land an account in this state
         sig { returns(Integer) }
         attr_accessor :excess_credits
 
@@ -503,7 +503,7 @@ module Lithic
 
         class Balances < Lithic::Internal::Type::BaseModel
           # Amount due for the prior billing cycle. Any amounts not fully paid off on this
-          #   due date will be considered past due the next day
+          # due date will be considered past due the next day
           sig { returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::Due) }
           attr_reader :due
 
@@ -514,8 +514,8 @@ module Lithic
           attr_writer :due
 
           # Amount due for the current billing cycle. Any amounts not paid off by early
-          #   payments or credits will be considered due at the end of the current billing
-          #   period
+          # payments or credits will be considered due at the end of the current billing
+          # period
           sig { returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue) }
           attr_reader :next_statement_due
 
@@ -586,7 +586,7 @@ module Lithic
             attr_accessor :principal
 
             # Amount due for the prior billing cycle. Any amounts not fully paid off on this
-            #   due date will be considered past due the next day
+            # due date will be considered past due the next day
             sig { params(fees: Integer, interest: Integer, principal: Integer).returns(T.attached_class) }
             def self.new(fees:, interest:, principal:); end
 
@@ -605,8 +605,8 @@ module Lithic
             attr_accessor :principal
 
             # Amount due for the current billing cycle. Any amounts not paid off by early
-            #   payments or credits will be considered due at the end of the current billing
-            #   period
+            # payments or credits will be considered due at the end of the current billing
+            # period
             sig { params(fees: Integer, interest: Integer, principal: Integer).returns(T.attached_class) }
             def self.new(fees:, interest:, principal:); end
 
@@ -661,7 +661,7 @@ module Lithic
           attr_accessor :cash_advances
 
           # Volume of credit management operation transactions less any balance transfers in
-          #   cents
+          # cents
           sig { returns(Integer) }
           attr_accessor :credits
 
@@ -963,7 +963,7 @@ module Lithic
           attr_accessor :cash_advances
 
           # Volume of credit management operation transactions less any balance transfers in
-          #   cents
+          # cents
           sig { returns(Integer) }
           attr_accessor :credits
 
@@ -1039,7 +1039,7 @@ module Lithic
           attr_accessor :cash_advances
 
           # Volume of credit management operation transactions less any balance transfers in
-          #   cents
+          # cents
           sig { returns(Integer) }
           attr_accessor :credits
 

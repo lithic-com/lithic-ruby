@@ -23,7 +23,7 @@ module Lithic
           # Whether the event subscription is active (false) or inactive (true).
           disabled: nil,
           # Indicates types of events that will be sent to this subscription. If left blank,
-          #   all types will be sent.
+          # all types will be sent.
           event_types: nil,
           request_options: {}
         ); end
@@ -58,7 +58,7 @@ module Lithic
           # Whether the event subscription is active (false) or inactive (true).
           disabled: nil,
           # Indicates types of events that will be sent to this subscription. If left blank,
-          #   all types will be sent.
+          # all types will be sent.
           event_types: nil,
           request_options: {}
         ); end
@@ -74,12 +74,12 @@ module Lithic
         end
         def list(
           # A cursor representing an item's token before which a page of results should end.
-          #   Used to retrieve the previous page of results before this item.
+          # Used to retrieve the previous page of results before this item.
           ending_before: nil,
           # Page size (for pagination).
           page_size: nil,
           # A cursor representing an item's token after which a page of results should
-          #   begin. Used to retrieve the next page of results after this item.
+          # begin. Used to retrieve the next page of results after this item.
           starting_after: nil,
           request_options: {}
         ); end
@@ -110,18 +110,18 @@ module Lithic
         def list_attempts(
           event_subscription_token,
           # Date string in RFC 3339 format. Only entries created after the specified time
-          #   will be included. UTC time zone.
+          # will be included. UTC time zone.
           begin_: nil,
           # Date string in RFC 3339 format. Only entries created before the specified time
-          #   will be included. UTC time zone.
+          # will be included. UTC time zone.
           end_: nil,
           # A cursor representing an item's token before which a page of results should end.
-          #   Used to retrieve the previous page of results before this item.
+          # Used to retrieve the previous page of results before this item.
           ending_before: nil,
           # Page size (for pagination).
           page_size: nil,
           # A cursor representing an item's token after which a page of results should
-          #   begin. Used to retrieve the next page of results after this item.
+          # begin. Used to retrieve the next page of results after this item.
           starting_after: nil,
           status: nil,
           request_options: {}
@@ -139,18 +139,18 @@ module Lithic
         def recover(
           event_subscription_token,
           # Date string in RFC 3339 format. Only entries created after the specified time
-          #   will be included. UTC time zone.
+          # will be included. UTC time zone.
           begin_: nil,
           # Date string in RFC 3339 format. Only entries created before the specified time
-          #   will be included. UTC time zone.
+          # will be included. UTC time zone.
           end_: nil,
           request_options: {}
         ); end
         # Replays messages to the endpoint. Only messages that were created after `begin`
-        #   will be sent. Messages that were previously sent to the endpoint are not resent.
-        #   Message will be retried if endpoint responds with a non-2xx status code. See
-        #   [Retry Schedule](https://docs.lithic.com/docs/events-api#retry-schedule) for
-        #   details.
+        # will be sent. Messages that were previously sent to the endpoint are not resent.
+        # Message will be retried if endpoint responds with a non-2xx status code. See
+        # [Retry Schedule](https://docs.lithic.com/docs/events-api#retry-schedule) for
+        # details.
         sig do
           params(
             event_subscription_token: String,
@@ -163,10 +163,10 @@ module Lithic
         def replay_missing(
           event_subscription_token,
           # Date string in RFC 3339 format. Only entries created after the specified time
-          #   will be included. UTC time zone.
+          # will be included. UTC time zone.
           begin_: nil,
           # Date string in RFC 3339 format. Only entries created before the specified time
-          #   will be included. UTC time zone.
+          # will be included. UTC time zone.
           end_: nil,
           request_options: {}
         ); end
@@ -181,7 +181,7 @@ module Lithic
         def retrieve_secret(event_subscription_token, request_options: {}); end
 
         # Rotate the secret for an event subscription. The previous secret will be valid
-        #   for the next 24 hours.
+        # for the next 24 hours.
         sig do
           params(
             event_subscription_token: String,

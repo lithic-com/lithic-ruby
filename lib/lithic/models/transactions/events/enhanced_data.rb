@@ -227,7 +227,7 @@ module Lithic
 
             # @!attribute [r] driver_number
             #   The driver number entered into the terminal at the time of sale, with leading
-            #     zeros stripped.
+            #   zeros stripped.
             #
             #   @return [String, nil]
             optional :driver_number, String
@@ -259,7 +259,7 @@ module Lithic
 
             # @!attribute [r] vehicle_number
             #   The vehicle number entered into the terminal at the time of sale, with leading
-            #     zeros stripped.
+            #   zeros stripped.
             #
             #   @return [String, nil]
             optional :vehicle_number, String

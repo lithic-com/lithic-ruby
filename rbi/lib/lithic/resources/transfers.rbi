@@ -4,7 +4,7 @@ module Lithic
   module Resources
     class Transfers
       # Transfer funds between two financial accounts or between a financial account and
-      #   card
+      # card
       sig do
         params(
           amount: Integer,
@@ -18,16 +18,16 @@ module Lithic
       end
       def create(
         # Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
-        #   This should always be a positive value.
+        # This should always be a positive value.
         amount:,
         # Globally unique identifier for the financial account or card that will send the
-        #   funds. Accepted type dependent on the program's use case.
+        # funds. Accepted type dependent on the program's use case.
         from:,
         # Globally unique identifier for the financial account or card that will receive
-        #   the funds. Accepted type dependent on the program's use case.
+        # the funds. Accepted type dependent on the program's use case.
         to:,
         # Customer-provided token that will serve as an idempotency token. This token will
-        #   become the transaction token.
+        # become the transaction token.
         token: nil,
         # Optional descriptor for the transfer.
         memo: nil,

@@ -35,14 +35,14 @@ module Lithic
         # Account Number
         account_number:,
         # The country that the bank account is located in using ISO 3166-1. We will only
-        #   accept USA bank accounts e.g., USA
+        # accept USA bank accounts e.g., USA
         country:,
         # currency of the external account 3-character alphabetic ISO 4217 code
         currency:,
         # The financial account token of the operating account to fund the micro deposits
         financial_account_token:,
         # Legal Name of the business or individual who owns the external account. This
-        #   will appear in statements
+        # will appear in statements
         owner:,
         # Owner Type
         owner_type:,
@@ -54,8 +54,8 @@ module Lithic
         verification_method:,
         processor_token:,
         # Indicates which Lithic account the external account is associated with. For
-        #   external accounts that are associated with the program, account_token field
-        #   returned will be null
+        # external accounts that are associated with the program, account_token field
+        # returned will be null
         account_token: nil,
         # Address
         address: nil,
@@ -112,7 +112,7 @@ module Lithic
         # The nickname for this External Bank Account
         name: nil,
         # Legal Name of the business or individual who owns the external account. This
-        #   will appear in statements
+        # will appear in statements
         owner: nil,
         # Owner Type
         owner_type: nil,
@@ -142,13 +142,13 @@ module Lithic
         account_types: nil,
         countries: nil,
         # A cursor representing an item's token before which a page of results should end.
-        #   Used to retrieve the previous page of results before this item.
+        # Used to retrieve the previous page of results before this item.
         ending_before: nil,
         owner_types: nil,
         # Page size (for pagination).
         page_size: nil,
         # A cursor representing an item's token after which a page of results should
-        #   begin. Used to retrieve the next page of results after this item.
+        # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
         states: nil,
         verification_states: nil,
