@@ -81,9 +81,7 @@ module Lithic
         starting_after: nil,
         with_content: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -99,8 +97,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module EventType
         extend Lithic::Internal::Type::Enum
@@ -201,8 +198,7 @@ module Lithic
           T.let(:"tokenization.updated", Lithic::Models::EventListParams::EventType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::EventListParams::EventType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

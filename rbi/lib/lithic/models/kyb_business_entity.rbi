@@ -59,9 +59,7 @@ module Lithic
         phone_numbers:,
         dba_business_name: nil,
         parent_company: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -75,8 +73,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Address < Lithic::Internal::Type::BaseModel
         # Valid deliverable address (no PO boxes).
@@ -122,8 +119,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address1:, city:, country:, postal_code:, state:, address2: nil)
-        end
+        def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
 
         sig do
           override
@@ -138,8 +134,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

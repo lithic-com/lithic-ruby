@@ -29,8 +29,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(account_token: nil, business_account_token: nil, request_options: {})
-        end
+        def self.new(account_token: nil, business_account_token: nil, request_options: {}); end
 
         sig do
           override
@@ -40,8 +39,7 @@ module Lithic
                        request_options: Lithic::RequestOptions
                      })
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

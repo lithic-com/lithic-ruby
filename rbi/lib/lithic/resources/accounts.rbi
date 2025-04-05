@@ -15,9 +15,7 @@ module Lithic
         # Globally unique identifier for account.
         account_token,
         request_options: {}
-      )
-      end
-
+      ); end
       # Update account configuration such as state or spend limits. Can only be run on
       #   accounts that are part of the program managed by this API key. Accounts that are
       #   in the `PAUSED` state will not be able to transact or create new cards.
@@ -58,9 +56,7 @@ module Lithic
         #   the schema in a future release.
         verification_address: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List account configurations.
       sig do
         params(
@@ -89,9 +85,7 @@ module Lithic
         #   begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get an Account's available spend limits, which is based on the spend limit
       #   configured on the Account and the amount already spent over the spend limit's
       #   duration. For example, if the Account has a daily spend limit of $1000
@@ -108,13 +102,10 @@ module Lithic
         # Globally unique identifier for account.
         account_token,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

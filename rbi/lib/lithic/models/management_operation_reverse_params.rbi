@@ -23,12 +23,10 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(effective_date:, memo: nil, request_options: {})
-      end
+      def self.new(effective_date:, memo: nil, request_options: {}); end
 
       sig { override.returns({effective_date: Date, memo: String, request_options: Lithic::RequestOptions}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

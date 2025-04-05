@@ -95,9 +95,7 @@ module Lithic
         settled_amount:,
         status:,
         updated:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -116,8 +114,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Status types:
       #
@@ -139,8 +136,7 @@ module Lithic
         TRANSFER = T.let(:TRANSFER, Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::FinancialTransaction::Category::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -190,8 +186,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(token: nil, amount: nil, created: nil, result: nil, type: nil)
-        end
+        def self.new(token: nil, amount: nil, created: nil, result: nil, type: nil); end
 
         sig do
           override
@@ -205,8 +200,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
@@ -221,8 +215,7 @@ module Lithic
           DECLINED = T.let(:DECLINED, Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         module Type
@@ -352,8 +345,7 @@ module Lithic
             T.let(:RETURNED_PAYMENT_REVERSAL, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -370,8 +362,7 @@ module Lithic
         DECLINED = T.let(:DECLINED, Lithic::Models::FinancialTransaction::Result::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::FinancialTransaction::Result::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Status types:
@@ -398,8 +389,7 @@ module Lithic
         VOIDED = T.let(:VOIDED, Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::FinancialTransaction::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

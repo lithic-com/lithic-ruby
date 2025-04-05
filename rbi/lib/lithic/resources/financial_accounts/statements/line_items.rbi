@@ -34,13 +34,10 @@ module Lithic
             #   should begin. Used to retrieve the next page of results after this item.
             starting_after: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           # @api private
           sig { params(client: Lithic::Client).returns(T.attached_class) }
-          def self.new(client:)
-          end
+          def self.new(client:); end
         end
       end
     end

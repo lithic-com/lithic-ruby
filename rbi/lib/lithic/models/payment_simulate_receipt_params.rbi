@@ -56,8 +56,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Receipt Type
       module ReceiptType
@@ -73,8 +72,7 @@ module Lithic
           T.let(:RECEIPT_DEBIT, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

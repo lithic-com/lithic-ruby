@@ -37,8 +37,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(available_spend_limit:, spend_limit: nil, spend_velocity: nil)
-      end
+      def self.new(available_spend_limit:, spend_limit: nil, spend_velocity: nil); end
 
       sig do
         override
@@ -50,8 +49,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
         # The available spend limit (in cents) relative to the annual limit configured on
@@ -79,12 +77,10 @@ module Lithic
         attr_writer :monthly
 
         sig { params(annually: Integer, forever: Integer, monthly: Integer).returns(T.attached_class) }
-        def self.new(annually: nil, forever: nil, monthly: nil)
-        end
+        def self.new(annually: nil, forever: nil, monthly: nil); end
 
         sig { override.returns({annually: Integer, forever: Integer, monthly: Integer}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class SpendLimit < Lithic::Internal::Type::BaseModel
@@ -110,12 +106,10 @@ module Lithic
         attr_writer :monthly
 
         sig { params(annually: Integer, forever: Integer, monthly: Integer).returns(T.attached_class) }
-        def self.new(annually: nil, forever: nil, monthly: nil)
-        end
+        def self.new(annually: nil, forever: nil, monthly: nil); end
 
         sig { override.returns({annually: Integer, forever: Integer, monthly: Integer}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class SpendVelocity < Lithic::Internal::Type::BaseModel
@@ -144,12 +138,10 @@ module Lithic
         attr_writer :monthly
 
         sig { params(annually: Integer, forever: Integer, monthly: Integer).returns(T.attached_class) }
-        def self.new(annually: nil, forever: nil, monthly: nil)
-        end
+        def self.new(annually: nil, forever: nil, monthly: nil); end
 
         sig { override.returns({annually: Integer, forever: Integer, monthly: Integer}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

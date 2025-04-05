@@ -204,9 +204,7 @@ module Lithic
         kyc_passed_timestamp: nil,
         business_account_token: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -234,8 +232,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -290,8 +287,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
-        end
+        def self.new(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil); end
 
         sig do
           override
@@ -307,8 +303,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class BusinessEntity < Lithic::Internal::Type::BaseModel
@@ -370,9 +365,7 @@ module Lithic
           phone_numbers:,
           dba_business_name: nil,
           parent_company: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -386,8 +379,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class ControlPerson < Lithic::Internal::Type::BaseModel
@@ -450,8 +442,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
-        end
+        def self.new(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil); end
 
         sig do
           override
@@ -467,8 +458,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # Specifies the workflow type. This must be 'KYC_EXEMPT'
@@ -482,8 +472,7 @@ module Lithic
         KYC_EXEMPT = T.let(:KYC_EXEMPT, Lithic::Models::AccountHolderCreateParams::Workflow::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateParams::Workflow::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
@@ -543,9 +532,7 @@ module Lithic
           phone_numbers:,
           dba_business_name: nil,
           parent_company: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -559,8 +546,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Individual < Lithic::Internal::Type::BaseModel
@@ -614,8 +600,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:)
-        end
+        def self.new(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:); end
 
         sig do
           override
@@ -631,8 +616,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # Specifies the type of KYC Exempt user
@@ -650,8 +634,7 @@ module Lithic
           T.let(:PREPAID_CARD_USER, Lithic::Models::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

@@ -17,8 +17,7 @@ module Lithic
         )
           .returns(Lithic::Models::Event)
       end
-      def retrieve(event_token, request_options: {})
-      end
+      def retrieve(event_token, request_options: {}); end
 
       # List all events.
       sig do
@@ -54,9 +53,7 @@ module Lithic
         # Whether to include the event payload content in the response.
         with_content: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List all the message attempts for a given event.
       sig do
         params(
@@ -89,13 +86,10 @@ module Lithic
         starting_after: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

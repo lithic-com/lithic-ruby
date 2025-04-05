@@ -95,9 +95,7 @@ module Lithic
         type: nil,
         user_defined_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -115,8 +113,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Type
         extend Lithic::Internal::Type::Enum
@@ -129,8 +126,7 @@ module Lithic
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

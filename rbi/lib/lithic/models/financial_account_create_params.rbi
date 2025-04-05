@@ -64,8 +64,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Type
         extend Lithic::Internal::Type::Enum
@@ -77,8 +76,7 @@ module Lithic
         OPERATING = T.let(:OPERATING, Lithic::Models::FinancialAccountCreateParams::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::FinancialAccountCreateParams::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

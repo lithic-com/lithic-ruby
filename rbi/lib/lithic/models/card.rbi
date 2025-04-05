@@ -244,9 +244,7 @@ module Lithic
         pending_commands: nil,
         product_id: nil,
         replacement_for: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -277,8 +275,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Funding < Lithic::Internal::Type::BaseModel
         # A globally unique identifier for this FundingAccount.
@@ -341,8 +338,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(token:, created:, last_four:, state:, type:, account_name: nil, nickname: nil)
-        end
+        def self.new(token:, created:, last_four:, state:, type:, account_name: nil, nickname: nil); end
 
         sig do
           override
@@ -358,8 +354,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # State of funding source.
         #
@@ -381,8 +376,7 @@ module Lithic
           PENDING = T.let(:PENDING, Lithic::Models::Card::Funding::State::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Card::Funding::State::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # Types of funding source:
@@ -399,8 +393,7 @@ module Lithic
           DEPOSITORY_SAVINGS = T.let(:DEPOSITORY_SAVINGS, Lithic::Models::Card::Funding::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Card::Funding::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -417,8 +410,7 @@ module Lithic
         NOT_SET = T.let(:NOT_SET, Lithic::Models::Card::PinStatus::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Card::PinStatus::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Card state values:
@@ -455,8 +447,7 @@ module Lithic
         PENDING_FULFILLMENT = T.let(:PENDING_FULFILLMENT, Lithic::Models::Card::State::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Card::State::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Card types:
@@ -489,8 +480,7 @@ module Lithic
         DIGITAL_WALLET = T.let(:DIGITAL_WALLET, Lithic::Models::Card::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Card::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

@@ -248,9 +248,7 @@ module Lithic
           decision_made_by: nil,
           three_ri_request_type: nil,
           transaction: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -280,8 +278,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Type of account/card that is being used for the transaction. Maps to EMV 3DS
         #   field `acctType`.
@@ -303,8 +300,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Indicates the outcome of the 3DS authentication process.
@@ -349,8 +345,7 @@ module Lithic
                 T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Indicates whether the expiration date provided by the cardholder during checkout
@@ -383,8 +378,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         class Cardholder < Lithic::Internal::Type::BaseModel
@@ -478,9 +472,7 @@ module Lithic
             phone_number_mobile: nil,
             phone_number_work: nil,
             shipping_address: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -496,8 +488,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class BillingAddress < Lithic::Internal::Type::BaseModel
             # First line of the street address provided by the cardholder.
@@ -560,8 +551,7 @@ module Lithic
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class ShippingAddress < Lithic::Internal::Type::BaseModel
@@ -625,8 +615,7 @@ module Lithic
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -649,8 +638,7 @@ module Lithic
             )
 
           sig { override.returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class Merchant < Lithic::Internal::Type::BaseModel
@@ -704,8 +692,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(id:, country:, mcc:, name:, risk_indicator:)
-          end
+          def self.new(id:, country:, mcc:, name:, risk_indicator:); end
 
           sig do
             override
@@ -719,8 +706,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class RiskIndicator < Lithic::Internal::Type::BaseModel
             # In transactions with electronic delivery, email address to which merchandise is
@@ -829,9 +815,7 @@ module Lithic
               pre_order_available_date: nil,
               reorder_items: nil,
               shipping_method: nil
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -856,8 +840,7 @@ module Lithic
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The delivery time frame for the merchandise. Maps to EMV 3DS field
             #   deliveryTimeframe.
@@ -902,12 +885,11 @@ module Lithic
                 override
                   .returns(
                     T::Array[
-                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame::TaggedSymbol
+                      Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             # Indicates whether the purchase is for merchandise that is available now or at a
@@ -943,12 +925,11 @@ module Lithic
                 override
                   .returns(
                     T::Array[
-                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability::TaggedSymbol
+                      Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             # Indicates whether the cardholder is reordering previously purchased merchandise.
@@ -984,12 +965,11 @@ module Lithic
                 override
                   .returns(
                     T::Array[
-                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems::TaggedSymbol
+                      Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             # Shipping method that the cardholder chose for the transaction. If purchase
@@ -1062,12 +1042,11 @@ module Lithic
                 override
                   .returns(
                     T::Array[
-                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod::TaggedSymbol
+                      Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
         end
@@ -1104,8 +1083,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Indicates whether a challenge is requested for this transaction
@@ -1174,8 +1152,7 @@ module Lithic
                 T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         class AdditionalData < Lithic::Internal::Type::BaseModel
@@ -1207,8 +1184,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(network_decision: nil, network_risk_score: nil)
-          end
+          def self.new(network_decision: nil, network_risk_score: nil); end
 
           sig do
             override
@@ -1221,8 +1197,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Mastercard only: Indicates whether the network would have considered the
           #   authentication request to be low risk or not.
@@ -1257,8 +1232,7 @@ module Lithic
                   T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -1279,12 +1253,10 @@ module Lithic
           # Object containing data about the app used in the e-commerce transaction. Present
           #   if the channel is 'APP_BASED'.
           sig { params(device_info: T.nilable(String), ip: String).returns(T.attached_class) }
-          def self.new(device_info: nil, ip: nil)
-          end
+          def self.new(device_info: nil, ip: nil); end
 
           sig { override.returns({device_info: T.nilable(String), ip: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         # Type of authentication request - i.e., the type of transaction or interaction is
@@ -1361,8 +1333,7 @@ module Lithic
                 T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         class Browser < Lithic::Internal::Type::BaseModel
@@ -1432,8 +1403,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ChallengeMetadata < Lithic::Internal::Type::BaseModel
@@ -1457,8 +1427,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(method_type:, phone_number: nil)
-          end
+          def self.new(method_type:, phone_number: nil); end
 
           sig do
             override
@@ -1469,8 +1438,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The type of challenge method used for authentication.
           module MethodType
@@ -1504,8 +1472,7 @@ module Lithic
                   T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -1546,8 +1513,7 @@ module Lithic
                 T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Entity that made the authentication decision.
@@ -1589,8 +1555,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Type of 3DS Requestor Initiated (3RI) request i.e., a 3DS authentication that
@@ -1696,8 +1661,7 @@ module Lithic
                 T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         class Transaction < Lithic::Internal::Type::BaseModel
@@ -1741,8 +1705,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, currency:, currency_exponent:, date_time:, type:)
-          end
+          def self.new(amount:, currency:, currency_exponent:, date_time:, type:); end
 
           sig do
             override
@@ -1756,8 +1719,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Type of the transaction for which a 3DS authentication request is occurring.
           #   Maps to EMV 3DS field transType.
@@ -1807,8 +1769,7 @@ module Lithic
                   T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end

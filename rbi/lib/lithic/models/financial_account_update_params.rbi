@@ -16,12 +16,10 @@ module Lithic
         params(nickname: String, request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
           .returns(T.attached_class)
       end
-      def self.new(nickname: nil, request_options: {})
-      end
+      def self.new(nickname: nil, request_options: {}); end
 
       sig { override.returns({nickname: String, request_options: Lithic::RequestOptions}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

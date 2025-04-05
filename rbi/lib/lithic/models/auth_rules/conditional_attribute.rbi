@@ -79,8 +79,7 @@ module Lithic
         WALLET_TYPE = T.let(:WALLET_TYPE, Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::AuthRules::ConditionalAttribute::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

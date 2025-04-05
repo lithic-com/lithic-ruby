@@ -193,9 +193,7 @@ module Lithic
         token_info:,
         updated:,
         events: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -228,14 +226,15 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Amounts < Lithic::Internal::Type::BaseModel
         sig { returns(Lithic::Models::Transaction::Amounts::Cardholder) }
         attr_reader :cardholder
 
-        sig { params(cardholder: T.any(Lithic::Models::Transaction::Amounts::Cardholder, Lithic::Internal::AnyHash)).void }
+        sig do
+          params(cardholder: T.any(Lithic::Models::Transaction::Amounts::Cardholder, Lithic::Internal::AnyHash)).void
+        end
         attr_writer :cardholder
 
         sig { returns(Lithic::Models::Transaction::Amounts::Hold) }
@@ -253,7 +252,9 @@ module Lithic
         sig { returns(Lithic::Models::Transaction::Amounts::Settlement) }
         attr_reader :settlement
 
-        sig { params(settlement: T.any(Lithic::Models::Transaction::Amounts::Settlement, Lithic::Internal::AnyHash)).void }
+        sig do
+          params(settlement: T.any(Lithic::Models::Transaction::Amounts::Settlement, Lithic::Internal::AnyHash)).void
+        end
         attr_writer :settlement
 
         sig do
@@ -265,8 +266,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(cardholder:, hold:, merchant:, settlement:)
-        end
+        def self.new(cardholder:, hold:, merchant:, settlement:); end
 
         sig do
           override
@@ -279,8 +279,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Cardholder < Lithic::Internal::Type::BaseModel
           # The estimated settled amount of the transaction in the cardholder billing
@@ -298,12 +297,10 @@ module Lithic
           attr_accessor :currency
 
           sig { params(amount: Integer, conversion_rate: String, currency: String).returns(T.attached_class) }
-          def self.new(amount:, conversion_rate:, currency:)
-          end
+          def self.new(amount:, conversion_rate:, currency:); end
 
           sig { override.returns({amount: Integer, conversion_rate: String, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Hold < Lithic::Internal::Type::BaseModel
@@ -316,12 +313,10 @@ module Lithic
           attr_accessor :currency
 
           sig { params(amount: Integer, currency: String).returns(T.attached_class) }
-          def self.new(amount:, currency:)
-          end
+          def self.new(amount:, currency:); end
 
           sig { override.returns({amount: Integer, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Merchant < Lithic::Internal::Type::BaseModel
@@ -334,12 +329,10 @@ module Lithic
           attr_accessor :currency
 
           sig { params(amount: Integer, currency: String).returns(T.attached_class) }
-          def self.new(amount:, currency:)
-          end
+          def self.new(amount:, currency:); end
 
           sig { override.returns({amount: Integer, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Settlement < Lithic::Internal::Type::BaseModel
@@ -352,12 +345,10 @@ module Lithic
           attr_accessor :currency
 
           sig { params(amount: Integer, currency: String).returns(T.attached_class) }
-          def self.new(amount:, currency:)
-          end
+          def self.new(amount:, currency:); end
 
           sig { override.returns({amount: Integer, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -371,12 +362,10 @@ module Lithic
         attr_accessor :zipcode
 
         sig { params(address: String, zipcode: String).returns(T.attached_class) }
-        def self.new(address:, zipcode:)
-        end
+        def self.new(address:, zipcode:); end
 
         sig { override.returns({address: String, zipcode: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class CardholderAuthentication < Lithic::Internal::Type::BaseModel
@@ -450,9 +439,7 @@ module Lithic
           three_ds_authentication_token:,
           verification_attempted:,
           verification_result:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -468,8 +455,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Whether an acquirer exemption applied to the transaction.
         module AcquirerExemption
@@ -525,8 +511,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Indicates what the outcome of the 3DS authentication process is.
@@ -562,8 +547,7 @@ module Lithic
                 T::Array[Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Indicates which party made the 3DS authentication decision.
@@ -596,8 +580,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Indicates whether chargeback liability shift applies to the transaction.
@@ -641,8 +624,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Indicates whether a 3DS challenge flow was used, and if so, what the
@@ -672,8 +654,7 @@ module Lithic
                 T::Array[Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
@@ -715,8 +696,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -764,8 +744,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(acceptor_id:, acquiring_institution_id:, city:, country:, descriptor:, mcc:, state:)
-        end
+        def self.new(acceptor_id:, acquiring_institution_id:, city:, country:, descriptor:, mcc:, state:); end
 
         sig do
           override
@@ -781,8 +760,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
@@ -801,8 +779,7 @@ module Lithic
         VISA = T.let(:VISA, Lithic::Models::Transaction::Network::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Transaction::Network::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Pos < Lithic::Internal::Type::BaseModel
@@ -825,8 +802,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(entry_mode:, terminal:)
-        end
+        def self.new(entry_mode:, terminal:); end
 
         sig do
           override
@@ -837,8 +813,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class EntryMode < Lithic::Internal::Type::BaseModel
           # Card presence indicator
@@ -866,8 +841,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(card:, cardholder:, pan:, pin_entered:)
-          end
+          def self.new(card:, cardholder:, pan:, pin_entered:); end
 
           sig do
             override
@@ -880,8 +854,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Card presence indicator
           module Card
@@ -897,8 +870,7 @@ module Lithic
             UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol)
 
             sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::EntryMode::Card::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           # Cardholder presence indicator
@@ -925,8 +897,7 @@ module Lithic
             UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol)
 
             sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::EntryMode::Cardholder::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           # Method of entry for the PAN
@@ -956,8 +927,7 @@ module Lithic
             UNSPECIFIED = T.let(:UNSPECIFIED, Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol)
 
             sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::EntryMode::Pan::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -1014,9 +984,7 @@ module Lithic
             partial_approval_capable:,
             pin_capability:,
             type:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -1031,8 +999,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The person that is designated to swipe the card
           module Operator
@@ -1049,8 +1016,7 @@ module Lithic
             UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol)
 
             sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           # Status of whether the POS is able to accept PINs
@@ -1070,8 +1036,7 @@ module Lithic
               T.let(:UNSPECIFIED, Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol)
 
             sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           # POS Type
@@ -1109,8 +1074,7 @@ module Lithic
             UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
       end
@@ -1150,8 +1114,7 @@ module Lithic
           T.let(:USER_TRANSACTION_LIMIT, Lithic::Models::Transaction::Result::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Transaction::Result::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Status of the transaction.
@@ -1168,8 +1131,7 @@ module Lithic
         VOIDED = T.let(:VOIDED, Lithic::Models::Transaction::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Transaction::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class TokenInfo < Lithic::Internal::Type::BaseModel
@@ -1183,12 +1145,10 @@ module Lithic
         sig do
           params(wallet_type: Lithic::Models::Transaction::TokenInfo::WalletType::OrSymbol).returns(T.attached_class)
         end
-        def self.new(wallet_type:)
-        end
+        def self.new(wallet_type:); end
 
         sig { override.returns({wallet_type: Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol}) }
-        def to_hash
-        end
+        def to_hash; end
 
         # The wallet_type field will indicate the source of the token. Possible token
         #   sources include digital wallets (Apple, Google, or Samsung Pay), merchant
@@ -1209,8 +1169,7 @@ module Lithic
           SAMSUNG_PAY = T.let(:SAMSUNG_PAY, Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -1296,9 +1255,7 @@ module Lithic
           result:,
           rule_results:,
           type:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -1316,8 +1273,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Amounts < Lithic::Internal::Type::BaseModel
           sig { returns(Lithic::Models::Transaction::Event::Amounts::Cardholder) }
@@ -1359,8 +1315,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(cardholder:, merchant:, settlement:)
-          end
+          def self.new(cardholder:, merchant:, settlement:); end
 
           sig do
             override
@@ -1372,8 +1327,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Cardholder < Lithic::Internal::Type::BaseModel
             # Amount of the event in the cardholder billing currency.
@@ -1392,12 +1346,10 @@ module Lithic
             sig do
               params(amount: Integer, conversion_rate: String, currency: String).returns(T.attached_class)
             end
-            def self.new(amount:, conversion_rate:, currency:)
-            end
+            def self.new(amount:, conversion_rate:, currency:); end
 
             sig { override.returns({amount: Integer, conversion_rate: String, currency: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class Merchant < Lithic::Internal::Type::BaseModel
@@ -1410,12 +1362,10 @@ module Lithic
             attr_accessor :currency
 
             sig { params(amount: Integer, currency: String).returns(T.attached_class) }
-            def self.new(amount:, currency:)
-            end
+            def self.new(amount:, currency:); end
 
             sig { override.returns({amount: Integer, currency: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class Settlement < Lithic::Internal::Type::BaseModel
@@ -1435,12 +1385,10 @@ module Lithic
             sig do
               params(amount: Integer, conversion_rate: String, currency: String).returns(T.attached_class)
             end
-            def self.new(amount:, conversion_rate:, currency:)
-            end
+            def self.new(amount:, conversion_rate:, currency:); end
 
             sig { override.returns({amount: Integer, conversion_rate: String, currency: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -1575,8 +1523,7 @@ module Lithic
             T.let(:VEHICLE_NUMBER_INVALID, Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Transaction::Event::DetailedResult::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # Indicates whether the transaction event is a credit or debit to the account.
@@ -1591,8 +1538,7 @@ module Lithic
           DEBIT = T.let(:DEBIT, Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Transaction::Event::EffectivePolarity::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class NetworkInfo < Lithic::Internal::Type::BaseModel
@@ -1646,8 +1592,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(acquirer:, mastercard:, visa:)
-          end
+          def self.new(acquirer:, mastercard:, visa:); end
 
           sig do
             override
@@ -1659,8 +1604,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Acquirer < Lithic::Internal::Type::BaseModel
             # Identifier assigned by the acquirer, applicable to dual-message transactions
@@ -1682,8 +1626,7 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(acquirer_reference_number:, retrieval_reference_number:)
-            end
+            def self.new(acquirer_reference_number:, retrieval_reference_number:); end
 
             sig do
               override
@@ -1692,8 +1635,7 @@ module Lithic
                            retrieval_reference_number: T.nilable(String)
                          })
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class Mastercard < Lithic::Internal::Type::BaseModel
@@ -1741,9 +1683,7 @@ module Lithic
               original_banknet_reference_number:,
               original_switch_serial_number:,
               switch_serial_number:
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -1755,8 +1695,7 @@ module Lithic
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class Visa < Lithic::Internal::Type::BaseModel
@@ -1777,8 +1716,7 @@ module Lithic
               params(original_transaction_id: T.nilable(String), transaction_id: T.nilable(String))
                 .returns(T.attached_class)
             end
-            def self.new(original_transaction_id:, transaction_id:)
-            end
+            def self.new(original_transaction_id:, transaction_id:); end
 
             sig do
               override.returns(
@@ -1788,8 +1726,7 @@ module Lithic
                 }
               )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -1836,8 +1773,7 @@ module Lithic
             T.let(:USER_TRANSACTION_LIMIT, Lithic::Models::Transaction::Event::Result::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Transaction::Event::Result::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class RuleResult < Lithic::Internal::Type::BaseModel
@@ -1869,8 +1805,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(auth_rule_token:, explanation:, name:, result:)
-          end
+          def self.new(auth_rule_token:, explanation:, name:, result:); end
 
           sig do
             override
@@ -1883,8 +1818,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The detailed_result associated with this rule's decline.
           module Result
@@ -2021,8 +1955,7 @@ module Lithic
               T.let(:VEHICLE_NUMBER_INVALID, Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol)
 
             sig { override.returns(T::Array[Lithic::Models::Transaction::Event::RuleResult::Result::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -2056,8 +1989,7 @@ module Lithic
           RETURN_REVERSAL = T.let(:RETURN_REVERSAL, Lithic::Models::Transaction::Event::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Transaction::Event::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

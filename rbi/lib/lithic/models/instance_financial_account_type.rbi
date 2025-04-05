@@ -20,8 +20,7 @@ module Lithic
         T.let(:CHARGED_OFF_PRINCIPAL, Lithic::Models::InstanceFinancialAccountType::TaggedSymbol)
 
       sig { override.returns(T::Array[Lithic::Models::InstanceFinancialAccountType::TaggedSymbol]) }
-      def self.values
-      end
+      def self.values; end
     end
   end
 end

@@ -100,9 +100,7 @@ module Lithic
         starting_after: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -120,8 +118,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Filters for transactions using transaction result field. Can filter by
       #   `APPROVED`, and `DECLINED`.
@@ -136,8 +133,7 @@ module Lithic
         DECLINED = T.let(:DECLINED, Lithic::Models::TransactionListParams::Result::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::TransactionListParams::Result::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Filters for transactions using transaction status field.
@@ -155,8 +151,7 @@ module Lithic
         EXPIRED = T.let(:EXPIRED, Lithic::Models::TransactionListParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::TransactionListParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

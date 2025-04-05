@@ -74,9 +74,7 @@ module Lithic
         pending_amount:,
         total_amount:,
         updated:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -94,8 +92,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Type of financial account
       module FinancialAccountType
@@ -110,8 +107,7 @@ module Lithic
         RESERVE = T.let(:RESERVE, Lithic::Models::AggregateBalance::FinancialAccountType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::AggregateBalance::FinancialAccountType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

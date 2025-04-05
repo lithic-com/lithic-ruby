@@ -179,9 +179,7 @@ module Lithic
         name: nil,
         user_defined_id: nil,
         verification_failed_reason: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -211,8 +209,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Owner Type
       module OwnerType
@@ -228,8 +225,7 @@ module Lithic
           T.let(:INDIVIDUAL, Lithic::Models::ExternalBankAccountRetrieveResponse::OwnerType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountRetrieveResponse::OwnerType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Account State
@@ -245,8 +241,7 @@ module Lithic
         PAUSED = T.let(:PAUSED, Lithic::Models::ExternalBankAccountRetrieveResponse::State::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountRetrieveResponse::State::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Account Type
@@ -261,8 +256,7 @@ module Lithic
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountRetrieveResponse::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountRetrieveResponse::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Verification Method
@@ -296,8 +290,7 @@ module Lithic
           override
             .returns(T::Array[Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationMethod::TaggedSymbol])
         end
-        def self.values
-        end
+        def self.values; end
       end
 
       # Verification State
@@ -334,8 +327,7 @@ module Lithic
           override
             .returns(T::Array[Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationState::TaggedSymbol])
         end
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

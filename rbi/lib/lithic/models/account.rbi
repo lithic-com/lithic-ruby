@@ -95,9 +95,7 @@ module Lithic
         auth_rule_tokens: nil,
         cardholder_currency: nil,
         verification_address: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -113,8 +111,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class SpendLimit < Lithic::Internal::Type::BaseModel
         # Daily spend limit (in cents).
@@ -135,12 +132,10 @@ module Lithic
         #   time limit (rolling). A lifetime limit of 0 indicates that the lifetime limit
         #   feature is disabled.
         sig { params(daily: Integer, lifetime: Integer, monthly: Integer).returns(T.attached_class) }
-        def self.new(daily:, lifetime:, monthly:)
-        end
+        def self.new(daily:, lifetime:, monthly:); end
 
         sig { override.returns({daily: Integer, lifetime: Integer, monthly: Integer}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # Account state:
@@ -165,8 +160,7 @@ module Lithic
         CLOSED = T.let(:CLOSED, Lithic::Models::Account::State::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Account::State::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class AccountHolder < Lithic::Internal::Type::BaseModel
@@ -192,8 +186,7 @@ module Lithic
           params(token: String, business_account_token: String, email: String, phone_number: String)
             .returns(T.attached_class)
         end
-        def self.new(token:, business_account_token:, email:, phone_number:)
-        end
+        def self.new(token:, business_account_token:, email:, phone_number:); end
 
         sig do
           override.returns(
@@ -205,8 +198,7 @@ module Lithic
             }
           )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class VerificationAddress < Lithic::Internal::Type::BaseModel
@@ -251,8 +243,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address1:, city:, country:, postal_code:, state:, address2: nil)
-        end
+        def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
 
         sig do
           override
@@ -267,8 +258,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

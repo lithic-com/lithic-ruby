@@ -13,12 +13,10 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(data:)
-        end
+        def self.new(data:); end
 
         sig { override.returns({data: T::Array[Lithic::Models::Transactions::Events::EnhancedData]}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

@@ -38,8 +38,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(token:, amount: nil, type: nil, request_options: {})
-      end
+      def self.new(token:, amount: nil, type: nil, request_options: {}); end
 
       sig do
         override
@@ -52,8 +51,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`.
       #
@@ -73,8 +71,7 @@ module Lithic
           T.let(:AUTHORIZATION_REVERSAL, Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

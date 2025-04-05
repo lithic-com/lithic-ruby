@@ -8,12 +8,10 @@ module Lithic
         attr_accessor :credit_extended
 
         sig { params(credit_extended: Integer).returns(T.attached_class) }
-        def self.new(credit_extended:)
-        end
+        def self.new(credit_extended:); end
 
         sig { override.returns({credit_extended: Integer}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

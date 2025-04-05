@@ -116,9 +116,7 @@ module Lithic
         starting_after: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -138,8 +136,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Book Transfer category to be returned.
       module Category
@@ -159,8 +156,7 @@ module Lithic
         INTERNAL = T.let(:INTERNAL, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Category::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Book transfer result to be returned.
@@ -175,8 +171,7 @@ module Lithic
         DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferListParams::Result::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Result::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Book transfer status to be returned.
@@ -191,8 +186,7 @@ module Lithic
         SETTLED = T.let(:SETTLED, Lithic::Models::BookTransferListParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

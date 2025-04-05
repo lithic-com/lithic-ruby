@@ -89,9 +89,7 @@ module Lithic
         settled_net_amount:,
         transactions_gross_amount:,
         updated:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -110,8 +108,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end
