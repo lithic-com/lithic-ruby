@@ -63,7 +63,7 @@ module Lithic
         #   Whether the Auth Rule applies to all authorizations on the card program.
         #
         #   @return [Boolean, nil]
-        optional :program_level, Lithic::Internal::Type::BooleanModel
+        optional :program_level, Lithic::Internal::Type::Boolean
 
         # @!parse
         #   # @return [Boolean]

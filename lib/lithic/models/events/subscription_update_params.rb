@@ -29,7 +29,7 @@ module Lithic
         #   Whether the event subscription is active (false) or inactive (true).
         #
         #   @return [Boolean, nil]
-        optional :disabled, Lithic::Internal::Type::BooleanModel
+        optional :disabled, Lithic::Internal::Type::Boolean
 
         # @!parse
         #   # @return [Boolean]

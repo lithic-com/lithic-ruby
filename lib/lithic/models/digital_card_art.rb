@@ -32,7 +32,7 @@ module Lithic
       #   Whether the card art is enabled.
       #
       #   @return [Boolean]
-      required :is_enabled, Lithic::Internal::Type::BooleanModel
+      required :is_enabled, Lithic::Internal::Type::Boolean
 
       # @!attribute network
       #   Card network.
@@ -44,7 +44,7 @@ module Lithic
       #   Whether the card art is the default card art to be added upon tokenization.
       #
       #   @return [Boolean, nil]
-      optional :is_card_program_default, Lithic::Internal::Type::BooleanModel
+      optional :is_card_program_default, Lithic::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]

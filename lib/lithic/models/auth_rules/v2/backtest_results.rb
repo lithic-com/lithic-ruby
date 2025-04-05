@@ -121,7 +121,7 @@ module Lithic
                 #   Whether the rule would have approved the authorization request.
                 #
                 #   @return [Boolean, nil]
-                optional :approved, Lithic::Internal::Type::BooleanModel
+                optional :approved, Lithic::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]
@@ -223,7 +223,7 @@ module Lithic
                 #   Whether the rule would have approved the authorization request.
                 #
                 #   @return [Boolean, nil]
-                optional :approved, Lithic::Internal::Type::BooleanModel
+                optional :approved, Lithic::Internal::Type::Boolean
 
                 # @!parse
                 #   # @return [Boolean]

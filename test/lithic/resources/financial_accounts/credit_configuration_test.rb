@@ -19,7 +19,7 @@ class Lithic::Test::Resources::FinancialAccounts::CreditConfigurationTest < Lith
         credit_product_token: String | nil,
         external_bank_account_token: String | nil,
         financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState,
-        is_spend_blocked: Lithic::Internal::Type::BooleanModel,
+        is_spend_blocked: Lithic::Internal::Type::Boolean,
         tier: String | nil
       }
     end
@@ -40,7 +40,7 @@ class Lithic::Test::Resources::FinancialAccounts::CreditConfigurationTest < Lith
         credit_product_token: String | nil,
         external_bank_account_token: String | nil,
         financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState,
-        is_spend_blocked: Lithic::Internal::Type::BooleanModel,
+        is_spend_blocked: Lithic::Internal::Type::Boolean,
         tier: String | nil
       }
     end

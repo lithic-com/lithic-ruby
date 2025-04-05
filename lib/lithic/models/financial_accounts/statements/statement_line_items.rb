@@ -14,7 +14,7 @@ module Lithic
           # @!attribute has_more
           #
           #   @return [Boolean]
-          required :has_more, Lithic::Internal::Type::BooleanModel
+          required :has_more, Lithic::Internal::Type::Boolean
 
           # @!parse
           #   # @param data [Array<Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data>]

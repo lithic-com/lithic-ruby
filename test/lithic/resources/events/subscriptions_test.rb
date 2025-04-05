@@ -14,7 +14,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
       response => {
         token: String,
         description: String,
-        disabled: Lithic::Internal::Type::BooleanModel,
+        disabled: Lithic::Internal::Type::Boolean,
         url: String,
         event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
       }
@@ -32,7 +32,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
       response => {
         token: String,
         description: String,
-        disabled: Lithic::Internal::Type::BooleanModel,
+        disabled: Lithic::Internal::Type::Boolean,
         url: String,
         event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
       }
@@ -50,7 +50,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
       response => {
         token: String,
         description: String,
-        disabled: Lithic::Internal::Type::BooleanModel,
+        disabled: Lithic::Internal::Type::Boolean,
         url: String,
         event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
       }
@@ -75,7 +75,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
       row => {
         token: String,
         description: String,
-        disabled: Lithic::Internal::Type::BooleanModel,
+        disabled: Lithic::Internal::Type::Boolean,
         url: String,
         event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
       }

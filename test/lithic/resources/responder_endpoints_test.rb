@@ -12,7 +12,7 @@ class Lithic::Test::Resources::ResponderEndpointsTest < Lithic::Test::ResourceTe
 
     assert_pattern do
       response => {
-        enrolled: Lithic::Internal::Type::BooleanModel | nil
+        enrolled: Lithic::Internal::Type::Boolean | nil
       }
     end
   end
@@ -36,7 +36,7 @@ class Lithic::Test::Resources::ResponderEndpointsTest < Lithic::Test::ResourceTe
 
     assert_pattern do
       response => {
-        enrolled: Lithic::Internal::Type::BooleanModel | nil,
+        enrolled: Lithic::Internal::Type::Boolean | nil,
         url: String | nil
       }
     end
