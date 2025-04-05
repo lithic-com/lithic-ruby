@@ -50,8 +50,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Type of documentation to be submitted for verification of an account holder
       module DocumentType
@@ -88,8 +87,7 @@ module Lithic
         FINCEN_BOI_REPORT = T.let(:FINCEN_BOI_REPORT, Lithic::Models::Document::DocumentType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Document::DocumentType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class RequiredDocumentUpload < Lithic::Internal::Type::BaseModel
@@ -160,9 +158,7 @@ module Lithic
           status_reasons:,
           updated:,
           upload_url:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -179,8 +175,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Type of image to upload.
         module ImageType
@@ -195,8 +190,7 @@ module Lithic
           BACK = T.let(:BACK, Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # Status of an account holder's document upload.
@@ -216,8 +210,7 @@ module Lithic
             T.let(:PARTIAL_APPROVAL, Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # The status reasons for an account holder document upload that is not ACCEPTED
@@ -274,8 +267,7 @@ module Lithic
             T.let(:UNKNOWN_ERROR, Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

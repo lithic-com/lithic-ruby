@@ -72,9 +72,7 @@ module Lithic
         token: nil,
         memo: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -91,8 +89,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Category of the book transfer
       module Category
@@ -112,8 +109,7 @@ module Lithic
         TRANSFER = T.let(:TRANSFER, Lithic::Models::BookTransferCreateParams::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::BookTransferCreateParams::Category::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Type of book_transfer
@@ -166,8 +162,7 @@ module Lithic
         TRANSFER = T.let(:TRANSFER, Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

@@ -120,9 +120,7 @@ module Lithic
         pin: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -141,8 +139,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Type of event to simulate.
       #
@@ -186,8 +183,7 @@ module Lithic
           )
 
         sig { override.returns(T::Array[Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

@@ -78,9 +78,7 @@ module Lithic
         memo: nil,
         user_defined_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -98,8 +96,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Method
         extend Lithic::Internal::Type::Enum
@@ -112,8 +109,7 @@ module Lithic
         ACH_SAME_DAY = T.let(:ACH_SAME_DAY, Lithic::Models::PaymentCreateParams::Method::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::PaymentCreateParams::Method::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class MethodAttributes < Lithic::Internal::Type::BaseModel
@@ -124,12 +120,10 @@ module Lithic
           params(sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol)
             .returns(T.attached_class)
         end
-        def self.new(sec_code:)
-        end
+        def self.new(sec_code:); end
 
         sig { override.returns({sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol}) }
-        def to_hash
-        end
+        def to_hash; end
 
         module SecCode
           extend Lithic::Internal::Type::Enum
@@ -144,8 +138,7 @@ module Lithic
           WEB = T.let(:WEB, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -160,8 +153,7 @@ module Lithic
         PAYMENT = T.let(:PAYMENT, Lithic::Models::PaymentCreateParams::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::PaymentCreateParams::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

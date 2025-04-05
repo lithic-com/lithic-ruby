@@ -47,8 +47,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(amount:, from:, to:, token: nil, memo: nil, request_options: {})
-      end
+      def self.new(amount:, from:, to:, token: nil, memo: nil, request_options: {}); end
 
       sig do
         override
@@ -63,8 +62,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

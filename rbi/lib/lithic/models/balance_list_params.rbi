@@ -51,9 +51,7 @@ module Lithic
         business_account_token: nil,
         financial_account_type: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -66,8 +64,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # List balances for a given Financial Account type.
       module FinancialAccountType
@@ -82,8 +79,7 @@ module Lithic
         RESERVE = T.let(:RESERVE, Lithic::Models::BalanceListParams::FinancialAccountType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::BalanceListParams::FinancialAccountType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

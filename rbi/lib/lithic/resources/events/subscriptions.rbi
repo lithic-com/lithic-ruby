@@ -26,9 +26,7 @@ module Lithic
           #   all types will be sent.
           event_types: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Get an event subscription.
         sig do
           params(
@@ -37,8 +35,7 @@ module Lithic
           )
             .returns(Lithic::Models::EventSubscription)
         end
-        def retrieve(event_subscription_token, request_options: {})
-        end
+        def retrieve(event_subscription_token, request_options: {}); end
 
         # Update an event subscription.
         sig do
@@ -64,9 +61,7 @@ module Lithic
           #   all types will be sent.
           event_types: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # List all the event subscriptions.
         sig do
           params(
@@ -87,9 +82,7 @@ module Lithic
           #   begin. Used to retrieve the next page of results after this item.
           starting_after: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Delete an event subscription.
         sig do
           params(
@@ -98,8 +91,7 @@ module Lithic
           )
             .void
         end
-        def delete(event_subscription_token, request_options: {})
-        end
+        def delete(event_subscription_token, request_options: {}); end
 
         # List all the message attempts for a given event subscription.
         sig do
@@ -133,9 +125,7 @@ module Lithic
           starting_after: nil,
           status: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Resend all failed messages since a given time.
         sig do
           params(
@@ -155,9 +145,7 @@ module Lithic
           #   will be included. UTC time zone.
           end_: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Replays messages to the endpoint. Only messages that were created after `begin`
         #   will be sent. Messages that were previously sent to the endpoint are not resent.
         #   Message will be retried if endpoint responds with a non-2xx status code. See
@@ -181,9 +169,7 @@ module Lithic
           #   will be included. UTC time zone.
           end_: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Get the secret for an event subscription.
         sig do
           params(
@@ -192,8 +178,7 @@ module Lithic
           )
             .returns(Lithic::Models::Events::SubscriptionRetrieveSecretResponse)
         end
-        def retrieve_secret(event_subscription_token, request_options: {})
-        end
+        def retrieve_secret(event_subscription_token, request_options: {}); end
 
         # Rotate the secret for an event subscription. The previous secret will be valid
         #   for the next 24 hours.
@@ -204,8 +189,7 @@ module Lithic
           )
             .void
         end
-        def rotate_secret(event_subscription_token, request_options: {})
-        end
+        def rotate_secret(event_subscription_token, request_options: {}); end
 
         # Send an example message for event.
         sig do
@@ -221,13 +205,10 @@ module Lithic
           # Event type to send example message for.
           event_type: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

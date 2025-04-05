@@ -37,8 +37,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(backtest_token:, results:, simulation_parameters:)
-          end
+          def self.new(backtest_token:, results:, simulation_parameters:); end
 
           sig do
             override
@@ -50,8 +49,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Results < Lithic::Internal::Type::BaseModel
             sig { returns(T.nilable(Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion)) }
@@ -91,8 +89,7 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(current_version: nil, draft_version: nil)
-            end
+            def self.new(current_version: nil, draft_version: nil); end
 
             sig do
               override
@@ -103,8 +100,7 @@ module Lithic
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class CurrentVersion < Lithic::Internal::Type::BaseModel
               # The total number of historical transactions approved by this rule during the
@@ -136,10 +132,10 @@ module Lithic
               sig do
                 params(
                   examples: T::Array[
-                  T.any(
-                    Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example,
-                    Lithic::Internal::AnyHash
-                  )
+                    T.any(
+                      Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example,
+                      Lithic::Internal::AnyHash
+                    )
                   ]
                 )
                   .void
@@ -159,17 +155,16 @@ module Lithic
                   approved: Integer,
                   declined: Integer,
                   examples: T::Array[
-                  T.any(
-                    Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example,
-                    Lithic::Internal::AnyHash
-                  )
+                    T.any(
+                      Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example,
+                      Lithic::Internal::AnyHash
+                    )
                   ],
                   version: Integer
                 )
                   .returns(T.attached_class)
               end
-              def self.new(approved: nil, declined: nil, examples: nil, version: nil)
-              end
+              def self.new(approved: nil, declined: nil, examples: nil, version: nil); end
 
               sig do
                 override
@@ -182,8 +177,7 @@ module Lithic
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Example < Lithic::Internal::Type::BaseModel
                 # Whether the rule would have approved the authorization request.
@@ -210,12 +204,10 @@ module Lithic
                 sig do
                   params(approved: T::Boolean, event_token: String, timestamp: Time).returns(T.attached_class)
                 end
-                def self.new(approved: nil, event_token: nil, timestamp: nil)
-                end
+                def self.new(approved: nil, event_token: nil, timestamp: nil); end
 
                 sig { override.returns({approved: T::Boolean, event_token: String, timestamp: Time}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
 
@@ -249,10 +241,10 @@ module Lithic
               sig do
                 params(
                   examples: T::Array[
-                  T.any(
-                    Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example,
-                    Lithic::Internal::AnyHash
-                  )
+                    T.any(
+                      Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example,
+                      Lithic::Internal::AnyHash
+                    )
                   ]
                 )
                   .void
@@ -272,17 +264,16 @@ module Lithic
                   approved: Integer,
                   declined: Integer,
                   examples: T::Array[
-                  T.any(
-                    Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example,
-                    Lithic::Internal::AnyHash
-                  )
+                    T.any(
+                      Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example,
+                      Lithic::Internal::AnyHash
+                    )
                   ],
                   version: Integer
                 )
                   .returns(T.attached_class)
               end
-              def self.new(approved: nil, declined: nil, examples: nil, version: nil)
-              end
+              def self.new(approved: nil, declined: nil, examples: nil, version: nil); end
 
               sig do
                 override
@@ -295,8 +286,7 @@ module Lithic
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Example < Lithic::Internal::Type::BaseModel
                 # Whether the rule would have approved the authorization request.
@@ -323,12 +313,10 @@ module Lithic
                 sig do
                   params(approved: T::Boolean, event_token: String, timestamp: Time).returns(T.attached_class)
                 end
-                def self.new(approved: nil, event_token: nil, timestamp: nil)
-                end
+                def self.new(approved: nil, event_token: nil, timestamp: nil); end
 
                 sig { override.returns({approved: T::Boolean, event_token: String, timestamp: Time}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
           end
@@ -356,12 +344,10 @@ module Lithic
             attr_writer :start
 
             sig { params(auth_rule_token: String, end_: Time, start: Time).returns(T.attached_class) }
-            def self.new(auth_rule_token: nil, end_: nil, start: nil)
-            end
+            def self.new(auth_rule_token: nil, end_: nil, start: nil); end
 
             sig { override.returns({auth_rule_token: String, end_: Time, start: Time}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
       end

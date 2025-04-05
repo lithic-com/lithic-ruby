@@ -62,9 +62,7 @@ module Lithic
           page_size: nil,
           starting_after: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -78,8 +76,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

@@ -17,12 +17,10 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(event_token:, request_options: {})
-        end
+        def self.new(event_token:, request_options: {}); end
 
         sig { override.returns({event_token: String, request_options: Lithic::RequestOptions}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

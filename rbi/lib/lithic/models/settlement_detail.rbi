@@ -151,9 +151,7 @@ module Lithic
         type:,
         updated:,
         fee_description: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -182,8 +180,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Card network where the transaction took place.
       module Network
@@ -200,8 +197,7 @@ module Lithic
         VISA = T.let(:VISA, Lithic::Models::SettlementDetail::Network::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::SettlementDetail::Network::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class OtherFeesDetails < Lithic::Internal::Type::BaseModel
@@ -213,12 +209,10 @@ module Lithic
 
         # The total gross amount of other fees by type.
         sig { params(isa: Integer).returns(T.attached_class) }
-        def self.new(isa: nil)
-        end
+        def self.new(isa: nil); end
 
         sig { override.returns({isa: Integer}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # The type of settlement record.
@@ -239,8 +233,7 @@ module Lithic
         REPRESENTMENT = T.let(:REPRESENTMENT, Lithic::Models::SettlementDetail::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::SettlementDetail::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

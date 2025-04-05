@@ -63,9 +63,7 @@ module Lithic
           financial_account_state:,
           is_spend_blocked:,
           tier:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -81,8 +79,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Reason for the financial account being marked as Charged Off
         module ChargedOffReason
@@ -116,8 +113,7 @@ module Lithic
                 T::Array[Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # State of the financial account
@@ -162,8 +158,7 @@ module Lithic
                 T::Array[Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

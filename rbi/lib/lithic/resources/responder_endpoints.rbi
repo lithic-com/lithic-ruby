@@ -18,9 +18,7 @@ module Lithic
         # The URL for the responder endpoint (must be http(s)).
         url: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Disenroll a responder endpoint
       sig do
         params(
@@ -33,9 +31,7 @@ module Lithic
         # The type of the endpoint.
         type:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Check the status of a responder endpoint
       sig do
         params(
@@ -48,13 +44,10 @@ module Lithic
         # The type of the endpoint.
         type:,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

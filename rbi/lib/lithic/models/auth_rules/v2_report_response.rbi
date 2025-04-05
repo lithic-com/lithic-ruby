@@ -11,12 +11,10 @@ module Lithic
         attr_writer :report_token
 
         sig { params(report_token: String).returns(T.attached_class) }
-        def self.new(report_token: nil)
-        end
+        def self.new(report_token: nil); end
 
         sig { override.returns({report_token: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

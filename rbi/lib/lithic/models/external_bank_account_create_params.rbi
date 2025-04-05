@@ -148,9 +148,7 @@ module Lithic
         user_defined_id: nil,
         verification_enforcement: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -177,8 +175,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Account Type
       module Type
@@ -192,8 +189,7 @@ module Lithic
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountCreateParams::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountCreateParams::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Verification Method
@@ -215,8 +211,7 @@ module Lithic
           override
             .returns(T::Array[Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::TaggedSymbol])
         end
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

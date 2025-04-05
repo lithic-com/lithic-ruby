@@ -97,9 +97,7 @@ module Lithic
         digital_card_art_token: nil,
         events: nil,
         payment_account_reference_id: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -120,8 +118,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The status of the tokenization request
       module Status
@@ -139,8 +136,7 @@ module Lithic
         UNKNOWN = T.let(:UNKNOWN, Lithic::Models::Tokenization::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Tokenization::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The entity that requested the tokenization. Represents a Digital Wallet or
@@ -165,8 +161,7 @@ module Lithic
         VISA_CHECKOUT = T.let(:VISA_CHECKOUT, Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The channel through which the tokenization was made.
@@ -181,8 +176,7 @@ module Lithic
         MERCHANT = T.let(:MERCHANT, Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Tokenization::TokenizationChannel::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -223,8 +217,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(token: nil, created_at: nil, result: nil, type: nil)
-        end
+        def self.new(token: nil, created_at: nil, result: nil, type: nil); end
 
         sig do
           override
@@ -237,8 +230,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Enum representing the result of the tokenization event
         module Result
@@ -264,8 +256,7 @@ module Lithic
           TOKEN_UPDATED = T.let(:TOKEN_UPDATED, Lithic::Models::Tokenization::Event::Result::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Tokenization::Event::Result::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # Enum representing the type of tokenization event that occurred
@@ -287,8 +278,7 @@ module Lithic
             T.let(:TOKENIZATION_UPDATED, Lithic::Models::Tokenization::Event::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Tokenization::Event::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

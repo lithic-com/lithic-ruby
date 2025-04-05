@@ -231,9 +231,7 @@ module Lithic
         spend_limit_duration: nil,
         state: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -259,8 +257,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Card types:
       #
@@ -292,8 +289,7 @@ module Lithic
         DIGITAL_WALLET = T.let(:DIGITAL_WALLET, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::CardCreateParams::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
@@ -324,8 +320,7 @@ module Lithic
           T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Card state values:
@@ -344,8 +339,7 @@ module Lithic
         PAUSED = T.let(:PAUSED, Lithic::Models::CardCreateParams::State::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::CardCreateParams::State::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

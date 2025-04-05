@@ -86,8 +86,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # KYC and KYB evaluation states.
       #
@@ -111,8 +110,7 @@ module Lithic
         REJECTED = T.let(:REJECTED, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Status Reasons for KYC/KYB enrollment states
@@ -221,8 +219,7 @@ module Lithic
           )
 
         sig { override.returns(T::Array[Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

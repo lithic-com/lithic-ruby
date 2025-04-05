@@ -58,8 +58,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(token:, created:, event_type:, payload:)
-      end
+      def self.new(token:, created:, event_type:, payload:); end
 
       sig do
         override
@@ -72,8 +71,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Event types:
       #
@@ -188,8 +186,7 @@ module Lithic
         TOKENIZATION_UPDATED = T.let(:"tokenization.updated", Lithic::Models::Event::EventType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::Event::EventType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

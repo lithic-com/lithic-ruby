@@ -120,9 +120,7 @@ module Lithic
             settlement_institution_id: nil,
             starting_after: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -142,8 +140,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Network to filter on.
           module Network
@@ -166,8 +163,7 @@ module Lithic
               override
                 .returns(T::Array[Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end

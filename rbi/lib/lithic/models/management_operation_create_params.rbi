@@ -76,9 +76,7 @@ module Lithic
         subtype: nil,
         user_defined_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -97,8 +95,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Category
         extend Lithic::Internal::Type::Enum
@@ -117,8 +114,7 @@ module Lithic
           T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module Direction
@@ -132,8 +128,7 @@ module Lithic
         DEBIT = T.let(:DEBIT, Lithic::Models::ManagementOperationCreateParams::Direction::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ManagementOperationCreateParams::Direction::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module EventType
@@ -182,8 +177,7 @@ module Lithic
           )
 
         sig { override.returns(T::Array[Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

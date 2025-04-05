@@ -111,9 +111,7 @@ module Lithic
         starting_after: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -133,8 +131,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Category
         extend Lithic::Internal::Type::Enum
@@ -146,8 +143,7 @@ module Lithic
         ACH = T.let(:ACH, Lithic::Models::PaymentListParams::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::PaymentListParams::Category::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module Result
@@ -161,8 +157,7 @@ module Lithic
         DECLINED = T.let(:DECLINED, Lithic::Models::PaymentListParams::Result::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::PaymentListParams::Result::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module Status
@@ -178,8 +173,7 @@ module Lithic
         SETTLED = T.let(:SETTLED, Lithic::Models::PaymentListParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::PaymentListParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

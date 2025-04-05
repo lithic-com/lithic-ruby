@@ -75,9 +75,7 @@ module Lithic
         state: nil,
         verification_address: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -91,8 +89,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Account states.
       module State
@@ -106,8 +103,7 @@ module Lithic
         PAUSED = T.let(:PAUSED, Lithic::Models::AccountUpdateParams::State::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::AccountUpdateParams::State::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class VerificationAddress < Lithic::Internal::Type::BaseModel
@@ -162,8 +158,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address1: nil, address2: nil, city: nil, country: nil, postal_code: nil, state: nil)
-        end
+        def self.new(address1: nil, address2: nil, city: nil, country: nil, postal_code: nil, state: nil); end
 
         sig do
           override
@@ -178,8 +173,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

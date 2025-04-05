@@ -56,8 +56,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {})
-        end
+        def self.new(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {}); end
 
         sig do
           override
@@ -71,8 +70,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Merchant < Lithic::Internal::Type::BaseModel
           # Unique identifier to identify the payment card acceptor. Corresponds to
@@ -97,12 +95,10 @@ module Lithic
           attr_accessor :name
 
           sig { params(id: String, country: String, mcc: String, name: String).returns(T.attached_class) }
-          def self.new(id:, country:, mcc:, name:)
-          end
+          def self.new(id:, country:, mcc:, name:); end
 
           sig { override.returns({id: String, country: String, mcc: String, name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Transaction < Lithic::Internal::Type::BaseModel
@@ -115,12 +111,10 @@ module Lithic
           attr_accessor :currency
 
           sig { params(amount: Integer, currency: String).returns(T.attached_class) }
-          def self.new(amount:, currency:)
-          end
+          def self.new(amount:, currency:); end
 
           sig { override.returns({amount: Integer, currency: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         # When set will use the following values as part of the Simulated Authentication.
@@ -150,8 +144,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

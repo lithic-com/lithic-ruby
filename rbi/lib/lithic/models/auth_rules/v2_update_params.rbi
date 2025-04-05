@@ -70,9 +70,7 @@ module Lithic
           excluded_card_tokens: nil,
           program_level: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -87,8 +85,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The desired state of the Auth Rule.
         #
@@ -105,8 +102,7 @@ module Lithic
           INACTIVE = T.let(:INACTIVE, Lithic::Models::AuthRules::V2UpdateParams::State::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::AuthRules::V2UpdateParams::State::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

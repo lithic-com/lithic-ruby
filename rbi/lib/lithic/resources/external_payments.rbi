@@ -30,9 +30,7 @@ module Lithic
         progress_to: nil,
         user_defined_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get external payment
       sig do
         params(
@@ -45,9 +43,7 @@ module Lithic
         # Globally unique identifier for the external payment
         external_payment_token,
         request_options: {}
-      )
-      end
-
+      ); end
       # List external payments
       sig do
         params(
@@ -91,9 +87,7 @@ module Lithic
         # Book transfer status to be returned.
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Cancel external payment
       sig do
         params(
@@ -110,9 +104,7 @@ module Lithic
         effective_date:,
         memo: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Release external payment
       sig do
         params(
@@ -129,9 +121,7 @@ module Lithic
         effective_date:,
         memo: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Reverse external payment
       sig do
         params(
@@ -148,9 +138,7 @@ module Lithic
         effective_date:,
         memo: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Settle external payment
       sig do
         params(
@@ -169,13 +157,10 @@ module Lithic
         memo: nil,
         progress_to: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

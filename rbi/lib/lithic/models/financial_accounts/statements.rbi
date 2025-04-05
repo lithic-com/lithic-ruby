@@ -17,12 +17,10 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(data:, has_more:)
-        end
+        def self.new(data:, has_more:); end
 
         sig { override.returns({data: T::Array[Lithic::Models::FinancialAccounts::Statement], has_more: T::Boolean}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

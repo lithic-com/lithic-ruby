@@ -13,12 +13,10 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(conditions:)
-        end
+        def self.new(conditions:); end
 
         sig { override.returns({conditions: T::Array[Lithic::Models::AuthRules::AuthRuleCondition]}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

@@ -42,9 +42,7 @@ module Lithic
         # Header param:
         idempotency_key: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get a financial account
       sig do
         params(
@@ -53,8 +51,7 @@ module Lithic
         )
           .returns(Lithic::Models::FinancialAccount)
       end
-      def retrieve(financial_account_token, request_options: {})
-      end
+      def retrieve(financial_account_token, request_options: {}); end
 
       # Update a financial account
       sig do
@@ -65,8 +62,7 @@ module Lithic
         )
           .returns(Lithic::Models::FinancialAccount)
       end
-      def update(financial_account_token, nickname: nil, request_options: {})
-      end
+      def update(financial_account_token, nickname: nil, request_options: {}); end
 
       # Retrieve information on your financial accounts including routing and account
       #   number.
@@ -87,9 +83,7 @@ module Lithic
         # List financial accounts of a given type
         type: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Update financial account status
       sig do
         params(
@@ -108,13 +102,10 @@ module Lithic
         # Substatus for the financial account
         substatus:,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

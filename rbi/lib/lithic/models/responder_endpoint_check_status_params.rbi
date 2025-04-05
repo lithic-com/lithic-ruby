@@ -17,8 +17,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(type:, request_options: {})
-      end
+      def self.new(type:, request_options: {}); end
 
       sig do
         override
@@ -29,8 +28,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The type of the endpoint.
       module Type
@@ -48,8 +46,7 @@ module Lithic
           T.let(:TOKENIZATION_DECISIONING, Lithic::Models::ResponderEndpointCheckStatusParams::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ResponderEndpointCheckStatusParams::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

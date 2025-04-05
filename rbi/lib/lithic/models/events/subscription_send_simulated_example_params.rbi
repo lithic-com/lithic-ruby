@@ -24,8 +24,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(event_type: nil, request_options: {})
-        end
+        def self.new(event_type: nil, request_options: {}); end
 
         sig do
           override
@@ -36,8 +35,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Event type to send example message for.
         module EventType
@@ -269,8 +267,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

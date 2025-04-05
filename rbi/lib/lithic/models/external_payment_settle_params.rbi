@@ -30,8 +30,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(effective_date:, memo: nil, progress_to: nil, request_options: {})
-      end
+      def self.new(effective_date:, memo: nil, progress_to: nil, request_options: {}); end
 
       sig do
         override
@@ -44,8 +43,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module ProgressTo
         extend Lithic::Internal::Type::Enum
@@ -58,8 +56,7 @@ module Lithic
         RELEASED = T.let(:RELEASED, Lithic::Models::ExternalPaymentSettleParams::ProgressTo::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ExternalPaymentSettleParams::ProgressTo::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

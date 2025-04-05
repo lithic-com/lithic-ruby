@@ -45,8 +45,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(filters:, period:, scope:, limit_amount: nil, limit_count: nil)
-        end
+        def self.new(filters:, period:, scope:, limit_amount: nil, limit_count: nil); end
 
         sig do
           override
@@ -60,8 +59,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Filters < Lithic::Internal::Type::BaseModel
           # ISO-3166-1 alpha-3 Country Codes to exclude from the velocity calculation.
@@ -109,8 +107,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         # The size of the trailing window to calculate Spend Velocity over in seconds. The
@@ -119,8 +116,7 @@ module Lithic
           extend Lithic::Internal::Type::Union
 
           sig { override.returns([Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol]) }
-          def self.variants
-          end
+          def self.variants; end
         end
 
         module Scope
@@ -134,8 +130,7 @@ module Lithic
           ACCOUNT = T.let(:ACCOUNT, Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

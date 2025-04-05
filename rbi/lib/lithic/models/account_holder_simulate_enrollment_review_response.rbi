@@ -44,10 +44,10 @@ module Lithic
       sig do
         params(
           beneficial_owner_individuals: T::Array[
-          T.any(
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
-            Lithic::Internal::AnyHash
-          )
+            T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
+              Lithic::Internal::AnyHash
+            )
           ]
         )
           .void
@@ -255,10 +255,10 @@ module Lithic
           account_token: String,
           beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::AnyHash)],
           beneficial_owner_individuals: T::Array[
-          T.any(
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
-            Lithic::Internal::AnyHash
-          )
+            T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
+              Lithic::Internal::AnyHash
+            )
           ],
           business_account_token: String,
           business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::AnyHash),
@@ -309,9 +309,7 @@ module Lithic
         user_type: nil,
         verification_application: nil,
         website_url: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -339,8 +337,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -432,8 +429,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Address < Lithic::Internal::Type::BaseModel
           # Valid deliverable address (no PO boxes).
@@ -479,8 +475,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(address1:, city:, country:, postal_code:, state:, address2: nil)
-          end
+          def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
 
           sig do
             override
@@ -495,8 +490,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -595,8 +589,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Address < Lithic::Internal::Type::BaseModel
           # Valid deliverable address (no PO boxes).
@@ -642,8 +635,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(address1:, city:, country:, postal_code:, state:, address2: nil)
-          end
+          def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
 
           sig do
             override
@@ -658,8 +650,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -696,8 +687,7 @@ module Lithic
               T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol]
             )
         end
-        def self.values
-        end
+        def self.values; end
       end
 
       class Individual < Lithic::Internal::Type::BaseModel
@@ -786,8 +776,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Address < Lithic::Internal::Type::BaseModel
           # Valid deliverable address (no PO boxes).
@@ -833,8 +822,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(address1:, city:, country:, postal_code:, state:, address2: nil)
-          end
+          def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
 
           sig do
             override
@@ -849,8 +837,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -887,8 +874,7 @@ module Lithic
           override
             .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol])
         end
-        def self.values
-        end
+        def self.values; end
       end
 
       # Status Reasons for KYC/KYB enrollment states
@@ -1033,8 +1019,7 @@ module Lithic
               T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol]
             )
         end
-        def self.values
-        end
+        def self.values; end
       end
 
       # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
@@ -1067,8 +1052,7 @@ module Lithic
           override
             .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol])
         end
-        def self.values
-        end
+        def self.values; end
       end
 
       class VerificationApplication < Lithic::Internal::Type::BaseModel
@@ -1091,7 +1075,7 @@ module Lithic
         sig do
           returns(
             T::Array[
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
             ]
           )
         end
@@ -1107,14 +1091,13 @@ module Lithic
             created: Time,
             status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::OrSymbol,
             status_reasons: T::Array[
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::OrSymbol
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::OrSymbol
             ],
             updated: Time
           )
             .returns(T.attached_class)
         end
-        def self.new(created:, status:, status_reasons:, updated:)
-        end
+        def self.new(created:, status:, status_reasons:, updated:); end
 
         sig do
           override
@@ -1123,14 +1106,13 @@ module Lithic
                 created: Time,
                 status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::TaggedSymbol,
                 status_reasons: T::Array[
-                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
+                  Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
                 ],
                 updated: Time
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # KYC and KYB evaluation states.
         #
@@ -1177,12 +1159,11 @@ module Lithic
             override
               .returns(
                 T::Array[
-                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::TaggedSymbol
+                  Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::TaggedSymbol
                 ]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Status Reasons for KYC/KYB enrollment states
@@ -1327,12 +1308,11 @@ module Lithic
             override
               .returns(
                 T::Array[
-                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
+                  Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
                 ]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

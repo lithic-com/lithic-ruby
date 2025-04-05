@@ -96,9 +96,7 @@ module Lithic
         email: nil,
         line2_text: nil,
         phone_number: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -117,8 +115,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

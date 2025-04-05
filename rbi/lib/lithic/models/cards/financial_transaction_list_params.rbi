@@ -82,9 +82,7 @@ module Lithic
           starting_after: nil,
           status: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -100,8 +98,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Financial Transaction category to be returned.
         module Category
@@ -117,8 +114,7 @@ module Lithic
             T.let(:TRANSFER, Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # Financial Transaction result to be returned.
@@ -134,8 +130,7 @@ module Lithic
           DECLINED = T.let(:DECLINED, Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # Financial Transaction status to be returned.
@@ -155,8 +150,7 @@ module Lithic
           VOIDED = T.let(:VOIDED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

@@ -105,9 +105,7 @@ module Lithic
         spend_limit_duration: nil,
         state: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -123,8 +121,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       #   attempts). Can only be set to `OK` to unblock a card.
@@ -138,8 +135,7 @@ module Lithic
         OK = T.let(:OK, Lithic::Models::CardUpdateParams::PinStatus::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::CardUpdateParams::PinStatus::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Card state values:
@@ -161,8 +157,7 @@ module Lithic
         PAUSED = T.let(:PAUSED, Lithic::Models::CardUpdateParams::State::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::CardUpdateParams::State::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

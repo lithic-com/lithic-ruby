@@ -81,9 +81,7 @@ module Lithic
         account_number: nil,
         routing_number: nil,
         substatus: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -103,8 +101,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class CreditConfiguration < Lithic::Internal::Type::BaseModel
         # Reason for the financial account being marked as Charged Off
@@ -156,9 +153,7 @@ module Lithic
           financial_account_state:,
           is_spend_blocked:,
           tier:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -173,8 +168,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Reason for the financial account being marked as Charged Off
         module ChargedOffReason
@@ -200,8 +194,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # State of the financial account
@@ -246,8 +239,7 @@ module Lithic
                 T::Array[Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -264,8 +256,7 @@ module Lithic
         PENDING = T.let(:PENDING, Lithic::Models::FinancialAccount::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::FinancialAccount::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module Type
@@ -283,8 +274,7 @@ module Lithic
           T.let(:CHARGED_OFF_PRINCIPAL, Lithic::Models::FinancialAccount::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::FinancialAccount::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Substatus for the financial account
@@ -303,8 +293,7 @@ module Lithic
         DELINQUENT = T.let(:DELINQUENT, Lithic::Models::FinancialAccount::Substatus::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::FinancialAccount::Substatus::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

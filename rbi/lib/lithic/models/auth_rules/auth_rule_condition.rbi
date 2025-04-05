@@ -79,8 +79,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(attribute: nil, operation: nil, value: nil)
-        end
+        def self.new(attribute: nil, operation: nil, value: nil); end
 
         sig do
           override
@@ -92,8 +91,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The operation to apply to the attribute
         module Operation
@@ -115,8 +113,7 @@ module Lithic
             T.let(:IS_LESS_THAN, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
@@ -124,8 +121,7 @@ module Lithic
           extend Lithic::Internal::Type::Union
 
           sig { override.returns([String, Integer, T::Array[String]]) }
-          def self.variants
-          end
+          def self.variants; end
 
           StringArray = T.let(Lithic::Internal::Type::ArrayOf[String], Lithic::Internal::Type::Converter)
         end
