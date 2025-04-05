@@ -64,7 +64,7 @@ module Lithic
             in Hash
               type_info(spec.slice(:const, :enum, :union).first&.last)
             in true | false
-              -> { Lithic::Internal::Type::BooleanModel }
+              -> { Lithic::Internal::Type::Boolean }
             in Lithic::Internal::Type::Converter | Class | Symbol
               -> { spec }
             in NilClass | Integer | Float

@@ -140,7 +140,7 @@ module Lithic
       # @!attribute [r] verification_enforcement
       #
       #   @return [Boolean, nil]
-      optional :verification_enforcement, Lithic::Internal::Type::BooleanModel
+      optional :verification_enforcement, Lithic::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]

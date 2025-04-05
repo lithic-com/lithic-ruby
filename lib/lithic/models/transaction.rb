@@ -733,7 +733,7 @@ module Lithic
           #   Indicates whether the cardholder entered the PIN. True if the PIN was entered.
           #
           #   @return [Boolean]
-          required :pin_entered, Lithic::Internal::Type::BooleanModel
+          required :pin_entered, Lithic::Internal::Type::Boolean
 
           # @!parse
           #   # @param card [Symbol, Lithic::Models::Transaction::Pos::EntryMode::Card]
@@ -823,19 +823,19 @@ module Lithic
           #   True if a clerk is present at the sale.
           #
           #   @return [Boolean]
-          required :attended, Lithic::Internal::Type::BooleanModel
+          required :attended, Lithic::Internal::Type::Boolean
 
           # @!attribute card_retention_capable
           #   True if the terminal is capable of retaining the card.
           #
           #   @return [Boolean]
-          required :card_retention_capable, Lithic::Internal::Type::BooleanModel
+          required :card_retention_capable, Lithic::Internal::Type::Boolean
 
           # @!attribute on_premise
           #   True if the sale was made at the place of business (vs. mobile).
           #
           #   @return [Boolean]
-          required :on_premise, Lithic::Internal::Type::BooleanModel
+          required :on_premise, Lithic::Internal::Type::Boolean
 
           # @!attribute operator
           #   The person that is designated to swipe the card
@@ -851,7 +851,7 @@ module Lithic
           #     which point the POS will prompt the user for an additional payment of $15.
           #
           #   @return [Boolean]
-          required :partial_approval_capable, Lithic::Internal::Type::BooleanModel
+          required :partial_approval_capable, Lithic::Internal::Type::Boolean
 
           # @!attribute pin_capability
           #   Status of whether the POS is able to accept PINs

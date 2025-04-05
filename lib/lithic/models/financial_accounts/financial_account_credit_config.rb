@@ -45,7 +45,7 @@ module Lithic
         # @!attribute is_spend_blocked
         #
         #   @return [Boolean]
-        required :is_spend_blocked, Lithic::Internal::Type::BooleanModel
+        required :is_spend_blocked, Lithic::Internal::Type::Boolean
 
         # @!attribute tier
         #   Tier assigned to the financial account

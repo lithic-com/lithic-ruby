@@ -8,7 +8,7 @@ module Lithic
       #   True if the instance has an endpoint enrolled.
       #
       #   @return [Boolean, nil]
-      optional :enrolled, Lithic::Internal::Type::BooleanModel
+      optional :enrolled, Lithic::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]
