@@ -16,7 +16,7 @@ module Lithic
         #   Whether there are more prime rates
         #
         #   @return [Boolean]
-        required :has_more, Lithic::Internal::Type::BooleanModel
+        required :has_more, Lithic::Internal::Type::Boolean
 
         # @!parse
         #   # @param data [Array<Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data>]

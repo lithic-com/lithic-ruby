@@ -30,7 +30,7 @@ module Lithic
       # @!attribute [r] is_for_benefit_of
       #
       #   @return [Boolean, nil]
-      optional :is_for_benefit_of, Lithic::Internal::Type::BooleanModel
+      optional :is_for_benefit_of, Lithic::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]

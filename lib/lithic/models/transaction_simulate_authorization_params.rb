@@ -80,7 +80,7 @@ module Lithic
       #     must be used for the remainder.
       #
       #   @return [Boolean, nil]
-      optional :partial_approval_capable, Lithic::Internal::Type::BooleanModel
+      optional :partial_approval_capable, Lithic::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]

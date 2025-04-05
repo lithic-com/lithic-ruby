@@ -19,7 +19,7 @@ module Lithic
       #   Whether the subscription is disabled.
       #
       #   @return [Boolean]
-      required :disabled, Lithic::Internal::Type::BooleanModel
+      required :disabled, Lithic::Internal::Type::Boolean
 
       # @!attribute url
       #
