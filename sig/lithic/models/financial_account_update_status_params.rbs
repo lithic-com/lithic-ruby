@@ -3,7 +3,7 @@ module Lithic
     type financial_account_update_status_params =
       {
         status: Lithic::Models::FinancialAccountUpdateStatusParams::status,
-        status_change_reason: Lithic::Models::FinancialAccountUpdateStatusParams::status_change_reason?
+        substatus: Lithic::Models::FinancialAccountUpdateStatusParams::substatus?
       }
       & Lithic::Internal::Type::request_parameters
 
@@ -13,11 +13,11 @@ module Lithic
 
       attr_accessor status: Lithic::Models::FinancialAccountUpdateStatusParams::status
 
-      attr_accessor status_change_reason: Lithic::Models::FinancialAccountUpdateStatusParams::status_change_reason?
+      attr_accessor substatus: Lithic::Models::FinancialAccountUpdateStatusParams::substatus?
 
       def initialize: (
         status: Lithic::Models::FinancialAccountUpdateStatusParams::status,
-        status_change_reason: Lithic::Models::FinancialAccountUpdateStatusParams::status_change_reason?,
+        substatus: Lithic::Models::FinancialAccountUpdateStatusParams::substatus?,
         ?request_options: Lithic::request_opts
       ) -> void
 
@@ -36,13 +36,13 @@ module Lithic
         def self?.values: -> ::Array[Lithic::Models::FinancialAccountUpdateStatusParams::status]
       end
 
-      type status_change_reason =
+      type substatus =
         :CHARGED_OFF_FRAUD
         | :END_USER_REQUEST
         | :BANK_REQUEST
         | :CHARGED_OFF_DELINQUENT
 
-      module StatusChangeReason
+      module Substatus
         extend Lithic::Internal::Type::Enum
 
         CHARGED_OFF_FRAUD: :CHARGED_OFF_FRAUD
@@ -50,7 +50,7 @@ module Lithic
         BANK_REQUEST: :BANK_REQUEST
         CHARGED_OFF_DELINQUENT: :CHARGED_OFF_DELINQUENT
 
-        def self?.values: -> ::Array[Lithic::Models::FinancialAccountUpdateStatusParams::status_change_reason]
+        def self?.values: -> ::Array[Lithic::Models::FinancialAccountUpdateStatusParams::substatus]
       end
     end
   end

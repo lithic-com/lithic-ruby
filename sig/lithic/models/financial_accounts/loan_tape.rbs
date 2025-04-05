@@ -146,17 +146,17 @@ module Lithic
           type financial_account_state =
             {
               status: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::status,
-              status_change_reason: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::status_change_reason?
+              substatus: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::substatus?
             }
 
           class FinancialAccountState < Lithic::Internal::Type::BaseModel
             attr_accessor status: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::status
 
-            attr_accessor status_change_reason: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::status_change_reason?
+            attr_accessor substatus: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::substatus?
 
             def initialize: (
               status: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::status,
-              ?status_change_reason: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::status_change_reason?
+              ?substatus: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::substatus?
             ) -> void
 
             def to_hash: -> Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::financial_account_state
@@ -174,14 +174,14 @@ module Lithic
               def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::status]
             end
 
-            type status_change_reason =
+            type substatus =
               :CHARGED_OFF_DELINQUENT
               | :CHARGED_OFF_FRAUD
               | :END_USER_REQUEST
               | :BANK_REQUEST
               | :DELINQUENT
 
-            module StatusChangeReason
+            module Substatus
               extend Lithic::Internal::Type::Enum
 
               CHARGED_OFF_DELINQUENT: :CHARGED_OFF_DELINQUENT
@@ -190,7 +190,7 @@ module Lithic
               BANK_REQUEST: :BANK_REQUEST
               DELINQUENT: :DELINQUENT
 
-              def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::status_change_reason]
+              def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::substatus]
             end
           end
 

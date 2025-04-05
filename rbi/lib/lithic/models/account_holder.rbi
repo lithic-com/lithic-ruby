@@ -18,8 +18,7 @@ module Lithic
       sig { params(account_token: String).void }
       attr_writer :account_token
 
-      # Only present when user_type == "BUSINESS". List of all entities with >25%
-      #   ownership in the company.
+      # Deprecated. Only present when user_type == "BUSINESS".
       sig { returns(T.nilable(T::Array[Lithic::Models::AccountHolder::BeneficialOwnerEntity])) }
       attr_reader :beneficial_owner_entities
 

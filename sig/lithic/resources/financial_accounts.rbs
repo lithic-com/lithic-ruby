@@ -41,7 +41,7 @@ module Lithic
       def update_status: (
         String financial_account_token,
         status: Lithic::Models::FinancialAccountUpdateStatusParams::status,
-        status_change_reason: Lithic::Models::FinancialAccountUpdateStatusParams::status_change_reason?,
+        substatus: Lithic::Models::FinancialAccountUpdateStatusParams::substatus?,
         ?request_options: Lithic::request_opts
       ) -> Lithic::Models::FinancialAccount
 

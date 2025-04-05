@@ -41,8 +41,8 @@ module Lithic
       #   attr_writer :shipping_address
 
       # @!attribute [r] shipping_method
-      #   Shipping method for the card. Use of options besides `STANDARD` require
-      #     additional permissions.
+      #   Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
+      #     options besides `STANDARD` require additional permissions.
       #
       #     - `STANDARD` - USPS regular mail or similar international option, with no
       #       tracking
@@ -72,8 +72,8 @@ module Lithic
 
       # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
-      # Shipping method for the card. Use of options besides `STANDARD` require
-      #   additional permissions.
+      # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
+      #   options besides `STANDARD` require additional permissions.
       #
       #   - `STANDARD` - USPS regular mail or similar international option, with no
       #     tracking
@@ -87,7 +87,7 @@ module Lithic
       module ShippingMethod
         extend Lithic::Internal::Type::Enum
 
-        SHIPPING_METHOD_2_DAY = :"2-DAY"
+        SHIPPING_METHOD_2_DAY = :"2_DAY"
         EXPEDITED = :EXPEDITED
         EXPRESS = :EXPRESS
         PRIORITY = :PRIORITY
