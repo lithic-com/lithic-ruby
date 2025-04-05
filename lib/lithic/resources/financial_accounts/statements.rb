@@ -53,7 +53,7 @@ module Lithic
           @client.request(
             method: :get,
             path: ["v1/financial_accounts/%1$s/statements", financial_account_token],
-            query: parsed,
+            query: parsed.transform_keys(begin_: :begin, end_: :end),
             page: Lithic::Internal::CursorPage,
             model: Lithic::Models::FinancialAccounts::Statement,
             options: options

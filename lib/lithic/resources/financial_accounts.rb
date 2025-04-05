@@ -34,12 +34,12 @@ module Lithic
       # @see Lithic::Models::FinancialAccountCreateParams
       def create(params)
         parsed, options = Lithic::Models::FinancialAccountCreateParams.dump_request(params)
-        header_params = [:"Idempotency-Key"]
+        header_params = {idempotency_key: "idempotency-key"}
         @client.request(
           method: :post,
           path: "v1/financial_accounts",
-          headers: parsed.slice(*header_params),
-          body: parsed.except(*header_params),
+          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+          body: parsed.except(*header_params.keys),
           model: Lithic::Models::FinancialAccount,
           options: options
         )

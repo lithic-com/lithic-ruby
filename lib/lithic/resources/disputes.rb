@@ -93,7 +93,7 @@ module Lithic
         @client.request(
           method: :get,
           path: "v1/disputes",
-          query: parsed,
+          query: parsed.transform_keys(begin_: :begin, end_: :end),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Models::Dispute,
           options: options
@@ -191,7 +191,7 @@ module Lithic
         @client.request(
           method: :get,
           path: ["v1/disputes/%1$s/evidences", dispute_token],
-          query: parsed,
+          query: parsed.transform_keys(begin_: :begin, end_: :end),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Models::DisputeEvidence,
           options: options
