@@ -51,7 +51,7 @@ module Lithic
           @client.request(
             method: :get,
             path: ["v1/cards/%1$s/financial_transactions", card_token],
-            query: parsed,
+            query: parsed.transform_keys(begin_: :begin, end_: :end),
             page: Lithic::Internal::SinglePage,
             model: Lithic::Models::FinancialTransaction,
             options: options

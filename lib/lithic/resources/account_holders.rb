@@ -138,7 +138,7 @@ module Lithic
         @client.request(
           method: :get,
           path: "v1/account_holders",
-          query: parsed,
+          query: parsed.transform_keys(begin_: :begin, end_: :end),
           page: Lithic::Internal::SinglePage,
           model: Lithic::Models::AccountHolder,
           options: options
