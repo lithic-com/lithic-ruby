@@ -16,7 +16,7 @@ module Lithic
 
       # @!attribute amount
       #   Amount (in cents) to authorize. This amount will override the transaction's
-      #     amount that was originally set by /v1/simulate/authorize.
+      #   amount that was originally set by /v1/simulate/authorize.
       #
       #   @return [Integer]
       required :amount, Integer

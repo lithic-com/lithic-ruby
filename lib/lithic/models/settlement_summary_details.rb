@@ -25,7 +25,7 @@ module Lithic
 
       # @!attribute [r] institution
       #   The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
-      #     for Visa).
+      #   for Visa).
       #
       #   @return [String, nil]
       optional :institution, String
@@ -66,7 +66,7 @@ module Lithic
 
       # @!attribute [r] settled_net_amount
       #   The total net amount of cash moved. (net value of settled_gross_amount,
-      #     interchange, fees).
+      #   interchange, fees).
       #
       #   @return [Integer, nil]
       optional :settled_net_amount, Integer
@@ -77,7 +77,7 @@ module Lithic
 
       # @!attribute [r] transactions_gross_amount
       #   The total amount of settlement impacting transactions (excluding interchange,
-      #     fees, and disputes).
+      #   fees, and disputes).
       #
       #   @return [Integer, nil]
       optional :transactions_gross_amount, Integer

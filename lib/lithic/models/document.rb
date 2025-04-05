@@ -36,7 +36,7 @@ module Lithic
 
       # @!parse
       #   # Describes the document and the required document image uploads required to
-      #   #   re-run KYC
+      #   # re-run KYC
       #   #
       #   # @param token [String]
       #   # @param account_holder_token [String]
@@ -90,7 +90,7 @@ module Lithic
 
         # @!attribute accepted_entity_status_reasons
         #   A list of status reasons associated with a KYB account holder that have been
-        #     satisfied by the document upload
+        #   satisfied by the document upload
         #
         #   @return [Array<String>]
         required :accepted_entity_status_reasons, Lithic::Internal::Type::ArrayOf[String]
@@ -109,7 +109,7 @@ module Lithic
 
         # @!attribute rejected_entity_status_reasons
         #   A list of status reasons associated with a KYB account holder that have not been
-        #     satisfied by the document upload
+        #   satisfied by the document upload
         #
         #   @return [Array<String>]
         required :rejected_entity_status_reasons, Lithic::Internal::Type::ArrayOf[String]
@@ -136,9 +136,9 @@ module Lithic
         # @!attribute upload_url
         #   URL to upload document image to.
         #
-        #     Note that the upload URLs expire after 7 days. If an upload URL expires, you can
-        #     refresh the URLs by retrieving the document upload from
-        #     `GET /account_holders/{account_holder_token}/documents`.
+        #   Note that the upload URLs expire after 7 days. If an upload URL expires, you can
+        #   refresh the URLs by retrieving the document upload from
+        #   `GET /account_holders/{account_holder_token}/documents`.
         #
         #   @return [String]
         required :upload_url, String

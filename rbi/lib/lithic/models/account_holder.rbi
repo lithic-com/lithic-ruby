@@ -31,7 +31,7 @@ module Lithic
       attr_writer :beneficial_owner_entities
 
       # Only present when user_type == "BUSINESS". List of all individuals with >25%
-      #   ownership in the company.
+      # ownership in the company.
       sig { returns(T.nilable(T::Array[Lithic::Models::AccountHolder::BeneficialOwnerIndividual])) }
       attr_reader :beneficial_owner_individuals
 
@@ -44,8 +44,8 @@ module Lithic
       attr_writer :beneficial_owner_individuals
 
       # Only applicable for customers using the KYC-Exempt workflow to enroll authorized
-      #   users of businesses. Pass the account_token of the enrolled business associated
-      #   with the AUTHORIZED_USER in this field.
+      # users of businesses. Pass the account_token of the enrolled business associated
+      # with the AUTHORIZED_USER in this field.
       sig { returns(T.nilable(String)) }
       attr_reader :business_account_token
 
@@ -53,7 +53,7 @@ module Lithic
       attr_writer :business_account_token
 
       # Only present when user_type == "BUSINESS". Information about the business for
-      #   which the account is being opened and KYB is being run.
+      # which the account is being opened and KYB is being run.
       sig { returns(T.nilable(Lithic::Models::AccountHolder::BusinessEntity)) }
       attr_reader :business_entity
 
@@ -64,11 +64,11 @@ module Lithic
       attr_writer :business_entity
 
       # Only present when user_type == "BUSINESS". An individual with significant
-      #   responsibility for managing the legal entity (e.g., a Chief Executive Officer,
-      #   Chief Financial Officer, Chief Operating Officer, Managing Member, General
-      #   Partner, President, Vice President, or Treasurer). This can be an executive, or
-      #   someone who will have program-wide access to the cards that Lithic will provide.
-      #   In some cases, this individual could also be a beneficial owner listed above.
+      # responsibility for managing the legal entity (e.g., a Chief Executive Officer,
+      # Chief Financial Officer, Chief Operating Officer, Managing Member, General
+      # Partner, President, Vice President, or Treasurer). This can be an executive, or
+      # someone who will have program-wide access to the cards that Lithic will provide.
+      # In some cases, this individual could also be a beneficial owner listed above.
       sig { returns(T.nilable(Lithic::Models::AccountHolder::ControlPerson)) }
       attr_reader :control_person
 
@@ -78,9 +78,9 @@ module Lithic
       attr_writer :control_person
 
       # < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
-      #   individual.phone_number when user_type == "INDIVIDUAL".
+      # individual.phone_number when user_type == "INDIVIDUAL".
       #
-      #   > Primary email of Account Holder.
+      # > Primary email of Account Holder.
       sig { returns(T.nilable(String)) }
       attr_reader :email
 
@@ -95,7 +95,7 @@ module Lithic
       attr_writer :exemption_type
 
       # Customer-provided token that indicates a relationship with an object outside of
-      #   the Lithic ecosystem.
+      # the Lithic ecosystem.
       sig { returns(T.nilable(String)) }
       attr_reader :external_id
 
@@ -103,7 +103,7 @@ module Lithic
       attr_writer :external_id
 
       # Only present when user_type == "INDIVIDUAL". Information about the individual
-      #   for which the account is being opened and KYC is being run.
+      # for which the account is being opened and KYC is being run.
       sig { returns(T.nilable(Lithic::Models::AccountHolder::Individual)) }
       attr_reader :individual
 
@@ -111,7 +111,7 @@ module Lithic
       attr_writer :individual
 
       # Only present when user_type == "BUSINESS". User-submitted description of the
-      #   business.
+      # business.
       sig { returns(T.nilable(String)) }
       attr_reader :nature_of_business
 
@@ -119,9 +119,9 @@ module Lithic
       attr_writer :nature_of_business
 
       # < Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
-      #   individual.phone_number when user_type == "INDIVIDUAL".
+      # individual.phone_number when user_type == "INDIVIDUAL".
       #
-      #   > Primary phone of Account Holder, entered in E.164 format.
+      # > Primary phone of Account Holder, entered in E.164 format.
       sig { returns(T.nilable(String)) }
       attr_reader :phone_number
 
@@ -129,7 +129,7 @@ module Lithic
       attr_writer :phone_number
 
       # Only present for "KYB_BASIC" workflow. A list of documents required for the
-      #   account holder to be approved.
+      # account holder to be approved.
       sig { returns(T.nilable(T::Array[Lithic::Models::RequiredDocument])) }
       attr_reader :required_documents
 
@@ -141,11 +141,11 @@ module Lithic
 
       # <Deprecated. Use verification_application.status instead>
       #
-      #   KYC and KYB evaluation states.
+      # KYC and KYB evaluation states.
       #
-      #   Note:
+      # Note:
       #
-      #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
+      # - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
       sig { returns(T.nilable(Lithic::Models::AccountHolder::Status::TaggedSymbol)) }
       attr_reader :status
 
@@ -153,7 +153,7 @@ module Lithic
       attr_writer :status
 
       # <Deprecated. Use verification_application.status_reasons> Reason for the
-      #   evaluation status.
+      # evaluation status.
       sig { returns(T.nilable(T::Array[Lithic::Models::AccountHolder::StatusReason::TaggedSymbol])) }
       attr_reader :status_reasons
 
@@ -161,9 +161,9 @@ module Lithic
       attr_writer :status_reasons
 
       # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
-      #   attribute will be present. If the type is "BUSINESS" then the "business_entity",
-      #   "control_person", "beneficial_owner_individuals", "beneficial_owner_entities",
-      #   "nature_of_business", and "website_url" attributes will be present.
+      # attribute will be present. If the type is "BUSINESS" then the "business_entity",
+      # "control_person", "beneficial_owner_individuals", "beneficial_owner_entities",
+      # "nature_of_business", and "website_url" attributes will be present.
       sig { returns(T.nilable(Lithic::Models::AccountHolder::UserType::TaggedSymbol)) }
       attr_reader :user_type
 
@@ -267,7 +267,7 @@ module Lithic
 
       class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
         # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable.
+        # acceptable; APO/FPO are acceptable.
         sig { returns(Lithic::Models::Address) }
         attr_reader :address
 
@@ -275,7 +275,7 @@ module Lithic
         attr_writer :address
 
         # Any name that the business operates under that is not its legal business name
-        #   (if applicable).
+        # (if applicable).
         sig { returns(String) }
         attr_accessor :dba_business_name
 
@@ -284,8 +284,8 @@ module Lithic
         attr_accessor :entity_token
 
         # Government-issued identification number. US Federal Employer Identification
-        #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
-        #   without hyphens.
+        # Numbers (EIN) are currently supported, entered as full nine-digits, with or
+        # without hyphens.
         sig { returns(String) }
         attr_accessor :government_id
 
@@ -294,7 +294,7 @@ module Lithic
         attr_accessor :legal_business_name
 
         # One or more of the business's phone number(s), entered as a list in E.164
-        #   format.
+        # format.
         sig { returns(T::Array[String]) }
         attr_accessor :phone_numbers
 
@@ -376,8 +376,8 @@ module Lithic
         attr_accessor :phone_number
 
         # Information about an individual associated with an account holder. A subset of
-        #   the information provided via KYC. For example, we do not return the government
-        #   id.
+        # the information provided via KYC. For example, we do not return the government
+        # id.
         sig do
           params(
             address: T.any(Lithic::Models::Address, Lithic::Internal::AnyHash),
@@ -411,7 +411,7 @@ module Lithic
 
       class BusinessEntity < Lithic::Internal::Type::BaseModel
         # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable.
+        # acceptable; APO/FPO are acceptable.
         sig { returns(Lithic::Models::Address) }
         attr_reader :address
 
@@ -419,7 +419,7 @@ module Lithic
         attr_writer :address
 
         # Any name that the business operates under that is not its legal business name
-        #   (if applicable).
+        # (if applicable).
         sig { returns(String) }
         attr_accessor :dba_business_name
 
@@ -428,8 +428,8 @@ module Lithic
         attr_accessor :entity_token
 
         # Government-issued identification number. US Federal Employer Identification
-        #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
-        #   without hyphens.
+        # Numbers (EIN) are currently supported, entered as full nine-digits, with or
+        # without hyphens.
         sig { returns(String) }
         attr_accessor :government_id
 
@@ -438,7 +438,7 @@ module Lithic
         attr_accessor :legal_business_name
 
         # One or more of the business's phone number(s), entered as a list in E.164
-        #   format.
+        # format.
         sig { returns(T::Array[String]) }
         attr_accessor :phone_numbers
 
@@ -450,7 +450,7 @@ module Lithic
         attr_writer :parent_company
 
         # Only present when user_type == "BUSINESS". Information about the business for
-        #   which the account is being opened and KYB is being run.
+        # which the account is being opened and KYB is being run.
         sig do
           params(
             address: T.any(Lithic::Models::Address, Lithic::Internal::AnyHash),
@@ -522,11 +522,11 @@ module Lithic
         attr_accessor :phone_number
 
         # Only present when user_type == "BUSINESS". An individual with significant
-        #   responsibility for managing the legal entity (e.g., a Chief Executive Officer,
-        #   Chief Financial Officer, Chief Operating Officer, Managing Member, General
-        #   Partner, President, Vice President, or Treasurer). This can be an executive, or
-        #   someone who will have program-wide access to the cards that Lithic will provide.
-        #   In some cases, this individual could also be a beneficial owner listed above.
+        # responsibility for managing the legal entity (e.g., a Chief Executive Officer,
+        # Chief Financial Officer, Chief Operating Officer, Managing Member, General
+        # Partner, President, Vice President, or Treasurer). This can be an executive, or
+        # someone who will have program-wide access to the cards that Lithic will provide.
+        # In some cases, this individual could also be a beneficial owner listed above.
         sig do
           params(
             address: T.any(Lithic::Models::Address, Lithic::Internal::AnyHash),
@@ -606,7 +606,7 @@ module Lithic
         attr_accessor :phone_number
 
         # Only present when user_type == "INDIVIDUAL". Information about the individual
-        #   for which the account is being opened and KYC is being run.
+        # for which the account is being opened and KYC is being run.
         sig do
           params(
             address: T.any(Lithic::Models::Address, Lithic::Internal::AnyHash),
@@ -640,11 +640,11 @@ module Lithic
 
       # <Deprecated. Use verification_application.status instead>
       #
-      #   KYC and KYB evaluation states.
+      # KYC and KYB evaluation states.
       #
-      #   Note:
+      # Note:
       #
-      #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
+      # - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
       module Status
         extend Lithic::Internal::Type::Enum
 
@@ -696,9 +696,9 @@ module Lithic
       end
 
       # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
-      #   attribute will be present. If the type is "BUSINESS" then the "business_entity",
-      #   "control_person", "beneficial_owner_individuals", "beneficial_owner_entities",
-      #   "nature_of_business", and "website_url" attributes will be present.
+      # attribute will be present. If the type is "BUSINESS" then the "business_entity",
+      # "control_person", "beneficial_owner_individuals", "beneficial_owner_entities",
+      # "nature_of_business", and "website_url" attributes will be present.
       module UserType
         extend Lithic::Internal::Type::Enum
 
@@ -722,9 +722,9 @@ module Lithic
 
         # KYC and KYB evaluation states.
         #
-        #   Note:
+        # Note:
         #
-        #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
+        # - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
         sig { returns(T.nilable(Lithic::Models::AccountHolder::VerificationApplication::Status::TaggedSymbol)) }
         attr_reader :status
 
@@ -781,9 +781,9 @@ module Lithic
 
         # KYC and KYB evaluation states.
         #
-        #   Note:
+        # Note:
         #
-        #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
+        # - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
         module Status
           extend Lithic::Internal::Type::Enum
 

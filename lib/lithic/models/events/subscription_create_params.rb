@@ -37,7 +37,7 @@ module Lithic
 
         # @!attribute [r] event_types
         #   Indicates types of events that will be sent to this subscription. If left blank,
-        #     all types will be sent.
+        #   all types will be sent.
         #
         #   @return [Array<Symbol, Lithic::Models::Events::SubscriptionCreateParams::EventType>, nil]
         optional :event_types,

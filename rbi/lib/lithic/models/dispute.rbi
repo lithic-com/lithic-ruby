@@ -44,29 +44,29 @@ module Lithic
       attr_accessor :prearbitration_date
 
       # Unique identifier for the dispute from the network. If there are multiple, this
-      #   will be the first claim id set by the network
+      # will be the first claim id set by the network
       sig { returns(T.nilable(String)) }
       attr_accessor :primary_claim_id
 
       # Dispute reason:
       #
-      #   - `ATM_CASH_MISDISPENSE`: ATM cash misdispense.
-      #   - `CANCELLED`: Transaction was cancelled by the customer.
-      #   - `DUPLICATED`: The transaction was a duplicate.
-      #   - `FRAUD_CARD_NOT_PRESENT`: Fraudulent transaction, card not present.
-      #   - `FRAUD_CARD_PRESENT`: Fraudulent transaction, card present.
-      #   - `FRAUD_OTHER`: Fraudulent transaction, other types such as questionable
-      #     merchant activity.
-      #   - `GOODS_SERVICES_NOT_AS_DESCRIBED`: The goods or services were not as
-      #     described.
-      #   - `GOODS_SERVICES_NOT_RECEIVED`: The goods or services were not received.
-      #   - `INCORRECT_AMOUNT`: The transaction amount was incorrect.
-      #   - `MISSING_AUTH`: The transaction was missing authorization.
-      #   - `OTHER`: Other reason.
-      #   - `PROCESSING_ERROR`: Processing error.
-      #   - `REFUND_NOT_PROCESSED`: The refund was not processed.
-      #   - `RECURRING_TRANSACTION_NOT_CANCELLED`: The recurring transaction was not
-      #     cancelled.
+      # - `ATM_CASH_MISDISPENSE`: ATM cash misdispense.
+      # - `CANCELLED`: Transaction was cancelled by the customer.
+      # - `DUPLICATED`: The transaction was a duplicate.
+      # - `FRAUD_CARD_NOT_PRESENT`: Fraudulent transaction, card not present.
+      # - `FRAUD_CARD_PRESENT`: Fraudulent transaction, card present.
+      # - `FRAUD_OTHER`: Fraudulent transaction, other types such as questionable
+      #   merchant activity.
+      # - `GOODS_SERVICES_NOT_AS_DESCRIBED`: The goods or services were not as
+      #   described.
+      # - `GOODS_SERVICES_NOT_RECEIVED`: The goods or services were not received.
+      # - `INCORRECT_AMOUNT`: The transaction amount was incorrect.
+      # - `MISSING_AUTH`: The transaction was missing authorization.
+      # - `OTHER`: Other reason.
+      # - `PROCESSING_ERROR`: Processing error.
+      # - `REFUND_NOT_PROCESSED`: The refund was not processed.
+      # - `RECURRING_TRANSACTION_NOT_CANCELLED`: The recurring transaction was not
+      #   cancelled.
       sig { returns(Lithic::Models::Dispute::Reason::TaggedSymbol) }
       attr_accessor :reason
 
@@ -88,42 +88,42 @@ module Lithic
 
       # Reason for the dispute resolution:
       #
-      #   - `CASE_LOST`: This case was lost at final arbitration.
-      #   - `NETWORK_REJECTED`: Network rejected.
-      #   - `NO_DISPUTE_RIGHTS_3DS`: No dispute rights, 3DS.
-      #   - `NO_DISPUTE_RIGHTS_BELOW_THRESHOLD`: No dispute rights, below threshold.
-      #   - `NO_DISPUTE_RIGHTS_CONTACTLESS`: No dispute rights, contactless.
-      #   - `NO_DISPUTE_RIGHTS_HYBRID`: No dispute rights, hybrid.
-      #   - `NO_DISPUTE_RIGHTS_MAX_CHARGEBACKS`: No dispute rights, max chargebacks.
-      #   - `NO_DISPUTE_RIGHTS_OTHER`: No dispute rights, other.
-      #   - `PAST_FILING_DATE`: Past filing date.
-      #   - `PREARBITRATION_REJECTED`: Prearbitration rejected.
-      #   - `PROCESSOR_REJECTED_OTHER`: Processor rejected, other.
-      #   - `REFUNDED`: Refunded.
-      #   - `REFUNDED_AFTER_CHARGEBACK`: Refunded after chargeback.
-      #   - `WITHDRAWN`: Withdrawn.
-      #   - `WON_ARBITRATION`: Won arbitration.
-      #   - `WON_FIRST_CHARGEBACK`: Won first chargeback.
-      #   - `WON_PREARBITRATION`: Won prearbitration.
+      # - `CASE_LOST`: This case was lost at final arbitration.
+      # - `NETWORK_REJECTED`: Network rejected.
+      # - `NO_DISPUTE_RIGHTS_3DS`: No dispute rights, 3DS.
+      # - `NO_DISPUTE_RIGHTS_BELOW_THRESHOLD`: No dispute rights, below threshold.
+      # - `NO_DISPUTE_RIGHTS_CONTACTLESS`: No dispute rights, contactless.
+      # - `NO_DISPUTE_RIGHTS_HYBRID`: No dispute rights, hybrid.
+      # - `NO_DISPUTE_RIGHTS_MAX_CHARGEBACKS`: No dispute rights, max chargebacks.
+      # - `NO_DISPUTE_RIGHTS_OTHER`: No dispute rights, other.
+      # - `PAST_FILING_DATE`: Past filing date.
+      # - `PREARBITRATION_REJECTED`: Prearbitration rejected.
+      # - `PROCESSOR_REJECTED_OTHER`: Processor rejected, other.
+      # - `REFUNDED`: Refunded.
+      # - `REFUNDED_AFTER_CHARGEBACK`: Refunded after chargeback.
+      # - `WITHDRAWN`: Withdrawn.
+      # - `WON_ARBITRATION`: Won arbitration.
+      # - `WON_FIRST_CHARGEBACK`: Won first chargeback.
+      # - `WON_PREARBITRATION`: Won prearbitration.
       sig { returns(T.nilable(Lithic::Models::Dispute::ResolutionReason::TaggedSymbol)) }
       attr_accessor :resolution_reason
 
       # Status types:
       #
-      #   - `NEW` - New dispute case is opened.
-      #   - `PENDING_CUSTOMER` - Lithic is waiting for customer to provide more
-      #     information.
-      #   - `SUBMITTED` - Dispute is submitted to the card network.
-      #   - `REPRESENTMENT` - Case has entered second presentment.
-      #   - `PREARBITRATION` - Case has entered prearbitration.
-      #   - `ARBITRATION` - Case has entered arbitration.
-      #   - `CASE_WON` - Case was won and credit will be issued.
-      #   - `CASE_CLOSED` - Case was lost or withdrawn.
+      # - `NEW` - New dispute case is opened.
+      # - `PENDING_CUSTOMER` - Lithic is waiting for customer to provide more
+      #   information.
+      # - `SUBMITTED` - Dispute is submitted to the card network.
+      # - `REPRESENTMENT` - Case has entered second presentment.
+      # - `PREARBITRATION` - Case has entered prearbitration.
+      # - `ARBITRATION` - Case has entered arbitration.
+      # - `CASE_WON` - Case was won and credit will be issued.
+      # - `CASE_CLOSED` - Case was lost or withdrawn.
       sig { returns(Lithic::Models::Dispute::Status::TaggedSymbol) }
       attr_accessor :status
 
       # The transaction that is being disputed. A transaction can only be disputed once
-      #   but may have multiple dispute cases.
+      # but may have multiple dispute cases.
       sig { returns(String) }
       attr_accessor :transaction_token
 
@@ -203,23 +203,23 @@ module Lithic
 
       # Dispute reason:
       #
-      #   - `ATM_CASH_MISDISPENSE`: ATM cash misdispense.
-      #   - `CANCELLED`: Transaction was cancelled by the customer.
-      #   - `DUPLICATED`: The transaction was a duplicate.
-      #   - `FRAUD_CARD_NOT_PRESENT`: Fraudulent transaction, card not present.
-      #   - `FRAUD_CARD_PRESENT`: Fraudulent transaction, card present.
-      #   - `FRAUD_OTHER`: Fraudulent transaction, other types such as questionable
-      #     merchant activity.
-      #   - `GOODS_SERVICES_NOT_AS_DESCRIBED`: The goods or services were not as
-      #     described.
-      #   - `GOODS_SERVICES_NOT_RECEIVED`: The goods or services were not received.
-      #   - `INCORRECT_AMOUNT`: The transaction amount was incorrect.
-      #   - `MISSING_AUTH`: The transaction was missing authorization.
-      #   - `OTHER`: Other reason.
-      #   - `PROCESSING_ERROR`: Processing error.
-      #   - `REFUND_NOT_PROCESSED`: The refund was not processed.
-      #   - `RECURRING_TRANSACTION_NOT_CANCELLED`: The recurring transaction was not
-      #     cancelled.
+      # - `ATM_CASH_MISDISPENSE`: ATM cash misdispense.
+      # - `CANCELLED`: Transaction was cancelled by the customer.
+      # - `DUPLICATED`: The transaction was a duplicate.
+      # - `FRAUD_CARD_NOT_PRESENT`: Fraudulent transaction, card not present.
+      # - `FRAUD_CARD_PRESENT`: Fraudulent transaction, card present.
+      # - `FRAUD_OTHER`: Fraudulent transaction, other types such as questionable
+      #   merchant activity.
+      # - `GOODS_SERVICES_NOT_AS_DESCRIBED`: The goods or services were not as
+      #   described.
+      # - `GOODS_SERVICES_NOT_RECEIVED`: The goods or services were not received.
+      # - `INCORRECT_AMOUNT`: The transaction amount was incorrect.
+      # - `MISSING_AUTH`: The transaction was missing authorization.
+      # - `OTHER`: Other reason.
+      # - `PROCESSING_ERROR`: Processing error.
+      # - `REFUND_NOT_PROCESSED`: The refund was not processed.
+      # - `RECURRING_TRANSACTION_NOT_CANCELLED`: The recurring transaction was not
+      #   cancelled.
       module Reason
         extend Lithic::Internal::Type::Enum
 
@@ -250,23 +250,23 @@ module Lithic
 
       # Reason for the dispute resolution:
       #
-      #   - `CASE_LOST`: This case was lost at final arbitration.
-      #   - `NETWORK_REJECTED`: Network rejected.
-      #   - `NO_DISPUTE_RIGHTS_3DS`: No dispute rights, 3DS.
-      #   - `NO_DISPUTE_RIGHTS_BELOW_THRESHOLD`: No dispute rights, below threshold.
-      #   - `NO_DISPUTE_RIGHTS_CONTACTLESS`: No dispute rights, contactless.
-      #   - `NO_DISPUTE_RIGHTS_HYBRID`: No dispute rights, hybrid.
-      #   - `NO_DISPUTE_RIGHTS_MAX_CHARGEBACKS`: No dispute rights, max chargebacks.
-      #   - `NO_DISPUTE_RIGHTS_OTHER`: No dispute rights, other.
-      #   - `PAST_FILING_DATE`: Past filing date.
-      #   - `PREARBITRATION_REJECTED`: Prearbitration rejected.
-      #   - `PROCESSOR_REJECTED_OTHER`: Processor rejected, other.
-      #   - `REFUNDED`: Refunded.
-      #   - `REFUNDED_AFTER_CHARGEBACK`: Refunded after chargeback.
-      #   - `WITHDRAWN`: Withdrawn.
-      #   - `WON_ARBITRATION`: Won arbitration.
-      #   - `WON_FIRST_CHARGEBACK`: Won first chargeback.
-      #   - `WON_PREARBITRATION`: Won prearbitration.
+      # - `CASE_LOST`: This case was lost at final arbitration.
+      # - `NETWORK_REJECTED`: Network rejected.
+      # - `NO_DISPUTE_RIGHTS_3DS`: No dispute rights, 3DS.
+      # - `NO_DISPUTE_RIGHTS_BELOW_THRESHOLD`: No dispute rights, below threshold.
+      # - `NO_DISPUTE_RIGHTS_CONTACTLESS`: No dispute rights, contactless.
+      # - `NO_DISPUTE_RIGHTS_HYBRID`: No dispute rights, hybrid.
+      # - `NO_DISPUTE_RIGHTS_MAX_CHARGEBACKS`: No dispute rights, max chargebacks.
+      # - `NO_DISPUTE_RIGHTS_OTHER`: No dispute rights, other.
+      # - `PAST_FILING_DATE`: Past filing date.
+      # - `PREARBITRATION_REJECTED`: Prearbitration rejected.
+      # - `PROCESSOR_REJECTED_OTHER`: Processor rejected, other.
+      # - `REFUNDED`: Refunded.
+      # - `REFUNDED_AFTER_CHARGEBACK`: Refunded after chargeback.
+      # - `WITHDRAWN`: Withdrawn.
+      # - `WON_ARBITRATION`: Won arbitration.
+      # - `WON_FIRST_CHARGEBACK`: Won first chargeback.
+      # - `WON_PREARBITRATION`: Won prearbitration.
       module ResolutionReason
         extend Lithic::Internal::Type::Enum
 
@@ -308,15 +308,15 @@ module Lithic
 
       # Status types:
       #
-      #   - `NEW` - New dispute case is opened.
-      #   - `PENDING_CUSTOMER` - Lithic is waiting for customer to provide more
-      #     information.
-      #   - `SUBMITTED` - Dispute is submitted to the card network.
-      #   - `REPRESENTMENT` - Case has entered second presentment.
-      #   - `PREARBITRATION` - Case has entered prearbitration.
-      #   - `ARBITRATION` - Case has entered arbitration.
-      #   - `CASE_WON` - Case was won and credit will be issued.
-      #   - `CASE_CLOSED` - Case was lost or withdrawn.
+      # - `NEW` - New dispute case is opened.
+      # - `PENDING_CUSTOMER` - Lithic is waiting for customer to provide more
+      #   information.
+      # - `SUBMITTED` - Dispute is submitted to the card network.
+      # - `REPRESENTMENT` - Case has entered second presentment.
+      # - `PREARBITRATION` - Case has entered prearbitration.
+      # - `ARBITRATION` - Case has entered arbitration.
+      # - `CASE_WON` - Case was won and credit will be issued.
+      # - `CASE_CLOSED` - Case was lost or withdrawn.
       module Status
         extend Lithic::Internal::Type::Enum
 

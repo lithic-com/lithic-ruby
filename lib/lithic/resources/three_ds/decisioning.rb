@@ -27,11 +27,11 @@ module Lithic
         end
 
         # Retrieve the 3DS Decisioning HMAC secret key. If one does not exist for your
-        #   program yet, calling this endpoint will create one for you. The headers (which
-        #   you can use to verify 3DS Decisioning requests) will begin appearing shortly
-        #   after calling this endpoint for the first time. See
-        #   [this page](https://docs.lithic.com/docs/3ds-decisioning#3ds-decisioning-hmac-secrets)
-        #   for more detail about verifying 3DS Decisioning requests.
+        # program yet, calling this endpoint will create one for you. The headers (which
+        # you can use to verify 3DS Decisioning requests) will begin appearing shortly
+        # after calling this endpoint for the first time. See
+        # [this page](https://docs.lithic.com/docs/3ds-decisioning#3ds-decisioning-hmac-secrets)
+        # for more detail about verifying 3DS Decisioning requests.
         #
         # @overload retrieve_secret(request_options: {})
         #
@@ -50,9 +50,9 @@ module Lithic
         end
 
         # Generate a new 3DS Decisioning HMAC secret key. The old secret key will be
-        #   deactivated 24 hours after a successful request to this endpoint. Make a
-        #   [`GET /three_ds_decisioning/secret`](https://docs.lithic.com/reference/getthreedsdecisioningsecret)
-        #   request to retrieve the new secret key.
+        # deactivated 24 hours after a successful request to this endpoint. Make a
+        # [`GET /three_ds_decisioning/secret`](https://docs.lithic.com/reference/getthreedsdecisioningsecret)
+        # request to retrieve the new secret key.
         #
         # @overload rotate_secret(request_options: {})
         #

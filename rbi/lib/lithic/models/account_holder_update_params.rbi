@@ -7,12 +7,12 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       # List of all entities with >25% ownership in the company. If no entity or
-      #   individual owns >25% of the company, and the largest shareholder is an entity,
-      #   please identify them in this field. See
-      #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)(Section
-      #   I) for more background. If no business owner is an entity, pass in an empty
-      #   list. However, either this parameter or `beneficial_owner_individuals` must be
-      #   populated. on entities that should be included.
+      # individual owns >25% of the company, and the largest shareholder is an entity,
+      # please identify them in this field. See
+      # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)(Section
+      # I) for more background. If no business owner is an entity, pass in an empty
+      # list. However, either this parameter or `beneficial_owner_individuals` must be
+      # populated. on entities that should be included.
       sig { returns(T.nilable(T::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity])) }
       attr_reader :beneficial_owner_entities
 
@@ -25,12 +25,12 @@ module Lithic
       attr_writer :beneficial_owner_entities
 
       # List of all individuals with >25% ownership in the company. If no entity or
-      #   individual owns >25% of the company, and the largest shareholder is an
-      #   individual, please identify them in this field. See
-      #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)(Section
-      #   I) for more background on individuals that should be included. If no individual
-      #   is an entity, pass in an empty list. However, either this parameter or
-      #   `beneficial_owner_entities` must be populated.
+      # individual owns >25% of the company, and the largest shareholder is an
+      # individual, please identify them in this field. See
+      # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)(Section
+      # I) for more background on individuals that should be included. If no individual
+      # is an entity, pass in an empty list. However, either this parameter or
+      # `beneficial_owner_entities` must be populated.
       sig { returns(T.nilable(T::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual])) }
       attr_reader :beneficial_owner_individuals
 
@@ -43,7 +43,7 @@ module Lithic
       attr_writer :beneficial_owner_individuals
 
       # Information for business for which the account is being opened and KYB is being
-      #   run.
+      # run.
       sig { returns(T.nilable(Lithic::Models::AccountHolderUpdateParams::BusinessEntity)) }
       attr_reader :business_entity
 
@@ -56,13 +56,13 @@ module Lithic
       attr_writer :business_entity
 
       # An individual with significant responsibility for managing the legal entity
-      #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-      #   Officer, Managing Member, General Partner, President, Vice President, or
-      #   Treasurer). This can be an executive, or someone who will have program-wide
-      #   access to the cards that Lithic will provide. In some cases, this individual
-      #   could also be a beneficial owner listed above. See
-      #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-      #   (Section II) for more background.
+      # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+      # Officer, Managing Member, General Partner, President, Vice President, or
+      # Treasurer). This can be an executive, or someone who will have program-wide
+      # access to the cards that Lithic will provide. In some cases, this individual
+      # could also be a beneficial owner listed above. See
+      # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+      # (Section II) for more background.
       sig { returns(T.nilable(Lithic::Models::AccountHolderUpdateParams::ControlPerson)) }
       attr_reader :control_person
 
@@ -75,7 +75,7 @@ module Lithic
       attr_writer :control_person
 
       # A user provided id that can be used to link an account holder with an external
-      #   system
+      # system
       sig { returns(T.nilable(String)) }
       attr_reader :external_id
 
@@ -83,7 +83,7 @@ module Lithic
       attr_writer :external_id
 
       # Short description of the company's line of business (i.e., what does the company
-      #   do?).
+      # do?).
       sig { returns(T.nilable(String)) }
       attr_reader :nature_of_business
 
@@ -98,7 +98,7 @@ module Lithic
       attr_writer :website_url
 
       # Information on the individual for whom the account is being opened and KYC is
-      #   being run.
+      # being run.
       sig { returns(T.nilable(Lithic::Models::AccountHolderUpdateParams::Individual)) }
       attr_reader :individual
 
@@ -118,7 +118,7 @@ module Lithic
       attr_writer :address
 
       # Allowed for: KYC-Exempt, BYO-KYC. The token of the business account to which the
-      #   account holder is associated.
+      # account holder is associated.
       sig { returns(T.nilable(String)) }
       attr_reader :business_account_token
 
@@ -126,8 +126,8 @@ module Lithic
       attr_writer :business_account_token
 
       # Allowed for all Account Holders. Account holder's email address. The primary
-      #   purpose of this field is for cardholder identification and verification during
-      #   the digital wallet tokenization process.
+      # purpose of this field is for cardholder identification and verification during
+      # the digital wallet tokenization process.
       sig { returns(T.nilable(String)) }
       attr_reader :email
 
@@ -156,8 +156,8 @@ module Lithic
       attr_writer :legal_business_name
 
       # Allowed for all Account Holders. Account holder's phone number, entered in E.164
-      #   format. The primary purpose of this field is for cardholder identification and
-      #   verification during the digital wallet tokenization process.
+      # format. The primary purpose of this field is for cardholder identification and
+      # verification during the digital wallet tokenization process.
       sig { returns(T.nilable(String)) }
       attr_reader :phone_number
 
@@ -234,7 +234,7 @@ module Lithic
         attr_accessor :entity_token
 
         # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable.
+        # acceptable; APO/FPO are acceptable.
         sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
         attr_reader :address
 
@@ -242,7 +242,7 @@ module Lithic
         attr_writer :address
 
         # Any name that the business operates under that is not its legal business name
-        #   (if applicable).
+        # (if applicable).
         sig { returns(T.nilable(String)) }
         attr_reader :dba_business_name
 
@@ -250,8 +250,8 @@ module Lithic
         attr_writer :dba_business_name
 
         # Government-issued identification number. US Federal Employer Identification
-        #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
-        #   without hyphens.
+        # Numbers (EIN) are currently supported, entered as full nine-digits, with or
+        # without hyphens.
         sig { returns(T.nilable(String)) }
         attr_reader :government_id
 
@@ -273,7 +273,7 @@ module Lithic
         attr_writer :parent_company
 
         # One or more of the business's phone number(s), entered as a list in E.164
-        #   format.
+        # format.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :phone_numbers
 
@@ -324,7 +324,7 @@ module Lithic
         attr_accessor :entity_token
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
         attr_reader :address
 
@@ -339,7 +339,7 @@ module Lithic
         attr_writer :dob
 
         # Individual's email address. If utilizing Lithic for chargeback processing, this
-        #   customer email address may be used to communicate dispute status and resolution.
+        # customer email address may be used to communicate dispute status and resolution.
         sig { returns(T.nilable(String)) }
         attr_reader :email
 
@@ -368,9 +368,9 @@ module Lithic
         attr_writer :phone_number
 
         # Government-issued identification number (required for identity verification and
-        #   compliance with banking regulations). Social Security Numbers (SSN) and
-        #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-        #   entered as full nine-digits, with or without hyphens
+        # compliance with banking regulations). Social Security Numbers (SSN) and
+        # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+        # entered as full nine-digits, with or without hyphens
         sig { returns(T.nilable(String)) }
         attr_reader :government_id
 
@@ -425,7 +425,7 @@ module Lithic
         attr_accessor :entity_token
 
         # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable.
+        # acceptable; APO/FPO are acceptable.
         sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
         attr_reader :address
 
@@ -433,7 +433,7 @@ module Lithic
         attr_writer :address
 
         # Any name that the business operates under that is not its legal business name
-        #   (if applicable).
+        # (if applicable).
         sig { returns(T.nilable(String)) }
         attr_reader :dba_business_name
 
@@ -441,8 +441,8 @@ module Lithic
         attr_writer :dba_business_name
 
         # Government-issued identification number. US Federal Employer Identification
-        #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
-        #   without hyphens.
+        # Numbers (EIN) are currently supported, entered as full nine-digits, with or
+        # without hyphens.
         sig { returns(T.nilable(String)) }
         attr_reader :government_id
 
@@ -464,7 +464,7 @@ module Lithic
         attr_writer :parent_company
 
         # One or more of the business's phone number(s), entered as a list in E.164
-        #   format.
+        # format.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :phone_numbers
 
@@ -472,7 +472,7 @@ module Lithic
         attr_writer :phone_numbers
 
         # Information for business for which the account is being opened and KYB is being
-        #   run.
+        # run.
         sig do
           params(
             entity_token: String,
@@ -517,7 +517,7 @@ module Lithic
         attr_accessor :entity_token
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
         attr_reader :address
 
@@ -532,7 +532,7 @@ module Lithic
         attr_writer :dob
 
         # Individual's email address. If utilizing Lithic for chargeback processing, this
-        #   customer email address may be used to communicate dispute status and resolution.
+        # customer email address may be used to communicate dispute status and resolution.
         sig { returns(T.nilable(String)) }
         attr_reader :email
 
@@ -561,9 +561,9 @@ module Lithic
         attr_writer :phone_number
 
         # Government-issued identification number (required for identity verification and
-        #   compliance with banking regulations). Social Security Numbers (SSN) and
-        #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-        #   entered as full nine-digits, with or without hyphens
+        # compliance with banking regulations). Social Security Numbers (SSN) and
+        # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+        # entered as full nine-digits, with or without hyphens
         sig { returns(T.nilable(String)) }
         attr_reader :government_id
 
@@ -571,13 +571,13 @@ module Lithic
         attr_writer :government_id
 
         # An individual with significant responsibility for managing the legal entity
-        #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-        #   Officer, Managing Member, General Partner, President, Vice President, or
-        #   Treasurer). This can be an executive, or someone who will have program-wide
-        #   access to the cards that Lithic will provide. In some cases, this individual
-        #   could also be a beneficial owner listed above. See
-        #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        #   (Section II) for more background.
+        # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+        # Officer, Managing Member, General Partner, President, Vice President, or
+        # Treasurer). This can be an executive, or someone who will have program-wide
+        # access to the cards that Lithic will provide. In some cases, this individual
+        # could also be a beneficial owner listed above. See
+        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+        # (Section II) for more background.
         sig do
           params(
             entity_token: String,
@@ -625,7 +625,7 @@ module Lithic
         attr_accessor :entity_token
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
         attr_reader :address
 
@@ -640,7 +640,7 @@ module Lithic
         attr_writer :dob
 
         # Individual's email address. If utilizing Lithic for chargeback processing, this
-        #   customer email address may be used to communicate dispute status and resolution.
+        # customer email address may be used to communicate dispute status and resolution.
         sig { returns(T.nilable(String)) }
         attr_reader :email
 
@@ -669,9 +669,9 @@ module Lithic
         attr_writer :phone_number
 
         # Government-issued identification number (required for identity verification and
-        #   compliance with banking regulations). Social Security Numbers (SSN) and
-        #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-        #   entered as full nine-digits, with or without hyphens
+        # compliance with banking regulations). Social Security Numbers (SSN) and
+        # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+        # entered as full nine-digits, with or without hyphens
         sig { returns(T.nilable(String)) }
         attr_reader :government_id
 
@@ -679,7 +679,7 @@ module Lithic
         attr_writer :government_id
 
         # Information on the individual for whom the account is being opened and KYC is
-        #   being run.
+        # being run.
         sig do
           params(
             entity_token: String,

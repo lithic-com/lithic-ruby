@@ -120,7 +120,7 @@ module Lithic
           attr_accessor :parameters
 
           # The version of the rule, this is incremented whenever the rule's parameters
-          #   change.
+          # change.
           sig { returns(Integer) }
           attr_accessor :version
 
@@ -178,7 +178,7 @@ module Lithic
           attr_accessor :parameters
 
           # The version of the rule, this is incremented whenever the rule's parameters
-          #   change.
+          # change.
           sig { returns(Integer) }
           attr_accessor :version
 

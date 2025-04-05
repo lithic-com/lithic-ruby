@@ -14,7 +14,7 @@ module Lithic
         attr_writer :filters
 
         # The size of the trailing window to calculate Spend Velocity over in seconds. The
-        #   minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
+        # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
         sig { returns(T.any(Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol)) }
         attr_accessor :period
 
@@ -22,16 +22,16 @@ module Lithic
         attr_accessor :scope
 
         # The maximum amount of spend velocity allowed in the period in minor units (the
-        #   smallest unit of a currency, e.g. cents for USD). Transactions exceeding this
-        #   limit will be declined.
+        # smallest unit of a currency, e.g. cents for USD). Transactions exceeding this
+        # limit will be declined.
         sig { returns(T.nilable(Integer)) }
         attr_accessor :limit_amount
 
         # The number of spend velocity impacting transactions may not exceed this limit in
-        #   the period. Transactions exceeding this limit will be declined. A spend velocity
-        #   impacting transaction is a transaction that has been authorized, and optionally
-        #   settled, or a force post (a transaction that settled without prior
-        #   authorization).
+        # the period. Transactions exceeding this limit will be declined. A spend velocity
+        # impacting transaction is a transaction that has been authorized, and optionally
+        # settled, or a force post (a transaction that settled without prior
+        # authorization).
         sig { returns(T.nilable(Integer)) }
         attr_accessor :limit_count
 
@@ -63,24 +63,24 @@ module Lithic
 
         class Filters < Lithic::Internal::Type::BaseModel
           # ISO-3166-1 alpha-3 Country Codes to exclude from the velocity calculation.
-          #   Transactions matching any of the provided will be excluded from the calculated
-          #   velocity.
+          # Transactions matching any of the provided will be excluded from the calculated
+          # velocity.
           sig { returns(T.nilable(T::Array[String])) }
           attr_accessor :exclude_countries
 
           # Merchant Category Codes to exclude from the velocity calculation. Transactions
-          #   matching this MCC will be excluded from the calculated velocity.
+          # matching this MCC will be excluded from the calculated velocity.
           sig { returns(T.nilable(T::Array[String])) }
           attr_accessor :exclude_mccs
 
           # ISO-3166-1 alpha-3 Country Codes to include in the velocity calculation.
-          #   Transactions not matching any of the provided will not be included in the
-          #   calculated velocity.
+          # Transactions not matching any of the provided will not be included in the
+          # calculated velocity.
           sig { returns(T.nilable(T::Array[String])) }
           attr_accessor :include_countries
 
           # Merchant Category Codes to include in the velocity calculation. Transactions not
-          #   matching this MCC will not be included in the calculated velocity.
+          # matching this MCC will not be included in the calculated velocity.
           sig { returns(T.nilable(T::Array[String])) }
           attr_accessor :include_mccs
 
@@ -111,7 +111,7 @@ module Lithic
         end
 
         # The size of the trailing window to calculate Spend Velocity over in seconds. The
-        #   minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
+        # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
         module Period
           extend Lithic::Internal::Type::Union
 

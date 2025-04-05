@@ -9,11 +9,11 @@ module Lithic
 
       # Status types:
       #
-      #   - `CARD` - Issuing card transaction.
-      #   - `ACH` - Transaction over ACH.
-      #   - `INTERNAL` - Transaction for internal adjustment.
-      #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
-      #     program.
+      # - `CARD` - Issuing card transaction.
+      # - `ACH` - Transaction over ACH.
+      # - `INTERNAL` - Transaction for internal adjustment.
+      # - `TRANSFER` - Internal transfer of funds between financial accounts in your
+      #   program.
       sig { returns(Lithic::Models::FinancialTransaction::Category::TaggedSymbol) }
       attr_accessor :category
 
@@ -22,12 +22,12 @@ module Lithic
       attr_accessor :created
 
       # 3-character alphabetic ISO 4217 code for the settling currency of the
-      #   transaction.
+      # transaction.
       sig { returns(String) }
       attr_accessor :currency
 
       # A string that provides a description of the financial transaction; may be useful
-      #   to display to users.
+      # to display to users.
       sig { returns(String) }
       attr_accessor :descriptor
 
@@ -36,30 +36,30 @@ module Lithic
       attr_accessor :events
 
       # Pending amount of the transaction in the currency's smallest unit (e.g., cents),
-      #   including any acquirer fees. The value of this field will go to zero over time
-      #   once the financial transaction is settled.
+      # including any acquirer fees. The value of this field will go to zero over time
+      # once the financial transaction is settled.
       sig { returns(Integer) }
       attr_accessor :pending_amount
 
       # APPROVED transactions were successful while DECLINED transactions were declined
-      #   by user, Lithic, or the network.
+      # by user, Lithic, or the network.
       sig { returns(Lithic::Models::FinancialTransaction::Result::TaggedSymbol) }
       attr_accessor :result
 
       # Amount of the transaction that has been settled in the currency's smallest unit
-      #   (e.g., cents), including any acquirer fees. This may change over time.
+      # (e.g., cents), including any acquirer fees. This may change over time.
       sig { returns(Integer) }
       attr_accessor :settled_amount
 
       # Status types:
       #
-      #   - `DECLINED` - The transaction was declined.
-      #   - `EXPIRED` - The authorization as it has passed its expiration time. Card
-      #     transaction only.
-      #   - `PENDING` - The transaction is expected to settle.
-      #   - `RETURNED` - The transaction has been returned.
-      #   - `SETTLED` - The transaction is completed.
-      #   - `VOIDED` - The transaction was voided. Card transaction only.
+      # - `DECLINED` - The transaction was declined.
+      # - `EXPIRED` - The authorization as it has passed its expiration time. Card
+      #   transaction only.
+      # - `PENDING` - The transaction is expected to settle.
+      # - `RETURNED` - The transaction has been returned.
+      # - `SETTLED` - The transaction is completed.
+      # - `VOIDED` - The transaction was voided. Card transaction only.
       sig { returns(Lithic::Models::FinancialTransaction::Status::TaggedSymbol) }
       attr_accessor :status
 
@@ -118,11 +118,11 @@ module Lithic
 
       # Status types:
       #
-      #   - `CARD` - Issuing card transaction.
-      #   - `ACH` - Transaction over ACH.
-      #   - `INTERNAL` - Transaction for internal adjustment.
-      #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
-      #     program.
+      # - `CARD` - Issuing card transaction.
+      # - `ACH` - Transaction over ACH.
+      # - `INTERNAL` - Transaction for internal adjustment.
+      # - `TRANSFER` - Internal transfer of funds between financial accounts in your
+      #   program.
       module Category
         extend Lithic::Internal::Type::Enum
 
@@ -148,7 +148,7 @@ module Lithic
         attr_writer :token
 
         # Amount of the financial event that has been settled in the currency's smallest
-        #   unit (e.g., cents).
+        # unit (e.g., cents).
         sig { returns(T.nilable(Integer)) }
         attr_reader :amount
 
@@ -163,7 +163,7 @@ module Lithic
         attr_writer :created
 
         # APPROVED financial events were successful while DECLINED financial events were
-        #   declined by user, Lithic, or the network.
+        # declined by user, Lithic, or the network.
         sig { returns(T.nilable(Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol)) }
         attr_reader :result
 
@@ -203,7 +203,7 @@ module Lithic
         def to_hash; end
 
         # APPROVED financial events were successful while DECLINED financial events were
-        #   declined by user, Lithic, or the network.
+        # declined by user, Lithic, or the network.
         module Result
           extend Lithic::Internal::Type::Enum
 
@@ -350,7 +350,7 @@ module Lithic
       end
 
       # APPROVED transactions were successful while DECLINED transactions were declined
-      #   by user, Lithic, or the network.
+      # by user, Lithic, or the network.
       module Result
         extend Lithic::Internal::Type::Enum
 
@@ -367,13 +367,13 @@ module Lithic
 
       # Status types:
       #
-      #   - `DECLINED` - The transaction was declined.
-      #   - `EXPIRED` - The authorization as it has passed its expiration time. Card
-      #     transaction only.
-      #   - `PENDING` - The transaction is expected to settle.
-      #   - `RETURNED` - The transaction has been returned.
-      #   - `SETTLED` - The transaction is completed.
-      #   - `VOIDED` - The transaction was voided. Card transaction only.
+      # - `DECLINED` - The transaction was declined.
+      # - `EXPIRED` - The authorization as it has passed its expiration time. Card
+      #   transaction only.
+      # - `PENDING` - The transaction is expected to settle.
+      # - `RETURNED` - The transaction has been returned.
+      # - `SETTLED` - The transaction is completed.
+      # - `VOIDED` - The transaction was voided. Card transaction only.
       module Status
         extend Lithic::Internal::Type::Enum
 

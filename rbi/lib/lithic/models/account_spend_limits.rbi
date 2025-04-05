@@ -55,7 +55,7 @@ module Lithic
 
       class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
         # The available spend limit (in cents) relative to the daily limit configured on
-        #   the Account (e.g. 100000 would be a $1,000 limit).
+        # the Account (e.g. 100000 would be a $1,000 limit).
         sig { returns(T.nilable(Integer)) }
         attr_reader :daily
 
@@ -63,7 +63,7 @@ module Lithic
         attr_writer :daily
 
         # The available spend limit (in cents) relative to the lifetime limit configured
-        #   on the Account.
+        # on the Account.
         sig { returns(T.nilable(Integer)) }
         attr_reader :lifetime
 
@@ -71,7 +71,7 @@ module Lithic
         attr_writer :lifetime
 
         # The available spend limit (in cents) relative to the monthly limit configured on
-        #   the Account.
+        # the Account.
         sig { returns(T.nilable(Integer)) }
         attr_reader :monthly
 
@@ -116,7 +116,7 @@ module Lithic
 
       class SpendVelocity < Lithic::Internal::Type::BaseModel
         # Current daily spend velocity (in cents) on the Account. Present if daily spend
-        #   limit is set.
+        # limit is set.
         sig { returns(T.nilable(Integer)) }
         attr_reader :daily
 
@@ -124,7 +124,7 @@ module Lithic
         attr_writer :daily
 
         # Current lifetime spend velocity (in cents) on the Account. Present if lifetime
-        #   spend limit is set.
+        # spend limit is set.
         sig { returns(T.nilable(Integer)) }
         attr_reader :lifetime
 
@@ -132,7 +132,7 @@ module Lithic
         attr_writer :lifetime
 
         # Current monthly spend velocity (in cents) on the Account. Present if monthly
-        #   spend limit is set.
+        # spend limit is set.
         sig { returns(T.nilable(Integer)) }
         attr_reader :monthly
 

@@ -17,8 +17,8 @@ module Lithic
       # @!attribute [r] category
       #   Status types:
       #
-      #     - `TRANSFER` - Internal transfer of funds between financial accounts in your
-      #       program.
+      #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
+      #     program.
       #
       #   @return [Symbol, Lithic::Models::Transfer::Category, nil]
       optional :category, enum: -> { Lithic::Models::Transfer::Category }
@@ -39,7 +39,7 @@ module Lithic
 
       # @!attribute [r] currency
       #   3-character alphabetic ISO 4217 code for the settling currency of the
-      #     transaction.
+      #   transaction.
       #
       #   @return [String, nil]
       optional :currency, String
@@ -50,7 +50,7 @@ module Lithic
 
       # @!attribute [r] descriptor
       #   A string that provides a description of the transfer; may be useful to display
-      #     to users.
+      #   to users.
       #
       #   @return [String, nil]
       optional :descriptor, String
@@ -81,8 +81,8 @@ module Lithic
 
       # @!attribute [r] pending_amount
       #   Pending amount of the transaction in the currency's smallest unit (e.g., cents),
-      #     including any acquirer fees. The value of this field will go to zero over time
-      #     once the financial transaction is settled.
+      #   including any acquirer fees. The value of this field will go to zero over time
+      #   once the financial transaction is settled.
       #
       #   @return [Integer, nil]
       optional :pending_amount, Integer
@@ -93,7 +93,7 @@ module Lithic
 
       # @!attribute [r] result
       #   APPROVED transactions were successful while DECLINED transactions were declined
-      #     by user, Lithic, or the network.
+      #   by user, Lithic, or the network.
       #
       #   @return [Symbol, Lithic::Models::Transfer::Result, nil]
       optional :result, enum: -> { Lithic::Models::Transfer::Result }
@@ -104,7 +104,7 @@ module Lithic
 
       # @!attribute [r] settled_amount
       #   Amount of the transaction that has been settled in the currency's smallest unit
-      #     (e.g., cents).
+      #   (e.g., cents).
       #
       #   @return [Integer, nil]
       optional :settled_amount, Integer
@@ -116,11 +116,11 @@ module Lithic
       # @!attribute [r] status
       #   Status types:
       #
-      #     - `DECLINED` - The transfer was declined.
-      #     - `EXPIRED` - The transfer was held in pending for too long and expired.
-      #     - `PENDING` - The transfer is pending release from a hold.
-      #     - `SETTLED` - The transfer is completed.
-      #     - `VOIDED` - The transfer was reversed before it settled.
+      #   - `DECLINED` - The transfer was declined.
+      #   - `EXPIRED` - The transfer was held in pending for too long and expired.
+      #   - `PENDING` - The transfer is pending release from a hold.
+      #   - `SETTLED` - The transfer is completed.
+      #   - `VOIDED` - The transfer was reversed before it settled.
       #
       #   @return [Symbol, Lithic::Models::Transfer::Status, nil]
       optional :status, enum: -> { Lithic::Models::Transfer::Status }
@@ -187,8 +187,8 @@ module Lithic
 
       # Status types:
       #
-      #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
-      #     program.
+      # - `TRANSFER` - Internal transfer of funds between financial accounts in your
+      #   program.
       #
       # @see Lithic::Models::Transfer#category
       module Category
@@ -216,7 +216,7 @@ module Lithic
 
         # @!attribute [r] amount
         #   Amount of the financial event that has been settled in the currency's smallest
-        #     unit (e.g., cents).
+        #   unit (e.g., cents).
         #
         #   @return [Integer, nil]
         optional :amount, Integer
@@ -237,7 +237,7 @@ module Lithic
 
         # @!attribute [r] result
         #   APPROVED financial events were successful while DECLINED financial events were
-        #     declined by user, Lithic, or the network.
+        #   declined by user, Lithic, or the network.
         #
         #   @return [Symbol, Lithic::Models::Transfer::Event::Result, nil]
         optional :result, enum: -> { Lithic::Models::Transfer::Event::Result }
@@ -267,7 +267,7 @@ module Lithic
         # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
         # APPROVED financial events were successful while DECLINED financial events were
-        #   declined by user, Lithic, or the network.
+        # declined by user, Lithic, or the network.
         #
         # @see Lithic::Models::Transfer::Event#result
         module Result
@@ -361,7 +361,7 @@ module Lithic
       end
 
       # APPROVED transactions were successful while DECLINED transactions were declined
-      #   by user, Lithic, or the network.
+      # by user, Lithic, or the network.
       #
       # @see Lithic::Models::Transfer#result
       module Result
@@ -379,11 +379,11 @@ module Lithic
 
       # Status types:
       #
-      #   - `DECLINED` - The transfer was declined.
-      #   - `EXPIRED` - The transfer was held in pending for too long and expired.
-      #   - `PENDING` - The transfer is pending release from a hold.
-      #   - `SETTLED` - The transfer is completed.
-      #   - `VOIDED` - The transfer was reversed before it settled.
+      # - `DECLINED` - The transfer was declined.
+      # - `EXPIRED` - The transfer was held in pending for too long and expired.
+      # - `PENDING` - The transfer is pending release from a hold.
+      # - `SETTLED` - The transfer is completed.
+      # - `VOIDED` - The transfer was reversed before it settled.
       #
       # @see Lithic::Models::Transfer#status
       module Status

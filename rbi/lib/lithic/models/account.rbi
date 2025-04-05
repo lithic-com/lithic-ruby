@@ -4,21 +4,21 @@ module Lithic
   module Models
     class Account < Lithic::Internal::Type::BaseModel
       # Globally unique identifier for the account. This is the same as the
-      #   account_token returned by the enroll endpoint. If using this parameter, do not
-      #   include pagination.
+      # account_token returned by the enroll endpoint. If using this parameter, do not
+      # include pagination.
       sig { returns(String) }
       attr_accessor :token
 
       # Timestamp of when the account was created. For accounts created before
-      #   2023-05-11, this field will be null.
+      # 2023-05-11, this field will be null.
       sig { returns(T.nilable(Time)) }
       attr_accessor :created
 
       # Spend limit information for the user containing the daily, monthly, and lifetime
-      #   spend limit of the account. Any charges to a card owned by this account will be
-      #   declined once their transaction volume has surpassed the value in the applicable
-      #   time limit (rolling). A lifetime limit of 0 indicates that the lifetime limit
-      #   feature is disabled.
+      # spend limit of the account. Any charges to a card owned by this account will be
+      # declined once their transaction volume has surpassed the value in the applicable
+      # time limit (rolling). A lifetime limit of 0 indicates that the lifetime limit
+      # feature is disabled.
       sig { returns(Lithic::Models::Account::SpendLimit) }
       attr_reader :spend_limit
 
@@ -27,15 +27,15 @@ module Lithic
 
       # Account state:
       #
-      #   - `ACTIVE` - Account is able to transact and create new cards.
-      #   - `PAUSED` - Account will not be able to transact or create new cards. It can be
-      #     set back to `ACTIVE`.
-      #   - `CLOSED` - Account will not be able to transact or create new cards. `CLOSED`
-      #     accounts are also unable to be transitioned to `ACTIVE` or `PAUSED` states.
-      #     `CLOSED` accounts result from failing to pass KYB/KYC or Lithic closing for
-      #     risk/compliance reasons. Please contact
-      #     [support@lithic.com](mailto:support@lithic.com) if you believe this was in
-      #     error.
+      # - `ACTIVE` - Account is able to transact and create new cards.
+      # - `PAUSED` - Account will not be able to transact or create new cards. It can be
+      #   set back to `ACTIVE`.
+      # - `CLOSED` - Account will not be able to transact or create new cards. `CLOSED`
+      #   accounts are also unable to be transitioned to `ACTIVE` or `PAUSED` states.
+      #   `CLOSED` accounts result from failing to pass KYB/KYC or Lithic closing for
+      #   risk/compliance reasons. Please contact
+      #   [support@lithic.com](mailto:support@lithic.com) if you believe this was in
+      #   error.
       sig { returns(Lithic::Models::Account::State::TaggedSymbol) }
       attr_accessor :state
 
@@ -46,9 +46,9 @@ module Lithic
       attr_writer :account_holder
 
       # List of identifiers for the Auth Rule(s) that are applied on the account. This
-      #   field is deprecated and will no longer be populated in the `account_holder`
-      #   object. The key will be removed from the schema in a future release. Use the
-      #   `/auth_rules` endpoints to fetch Auth Rule information instead.
+      # field is deprecated and will no longer be populated in the `account_holder`
+      # object. The key will be removed from the schema in a future release. Use the
+      # `/auth_rules` endpoints to fetch Auth Rule information instead.
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :auth_rule_tokens
 
@@ -127,10 +127,10 @@ module Lithic
         attr_accessor :monthly
 
         # Spend limit information for the user containing the daily, monthly, and lifetime
-        #   spend limit of the account. Any charges to a card owned by this account will be
-        #   declined once their transaction volume has surpassed the value in the applicable
-        #   time limit (rolling). A lifetime limit of 0 indicates that the lifetime limit
-        #   feature is disabled.
+        # spend limit of the account. Any charges to a card owned by this account will be
+        # declined once their transaction volume has surpassed the value in the applicable
+        # time limit (rolling). A lifetime limit of 0 indicates that the lifetime limit
+        # feature is disabled.
         sig { params(daily: Integer, lifetime: Integer, monthly: Integer).returns(T.attached_class) }
         def self.new(daily:, lifetime:, monthly:); end
 
@@ -140,15 +140,15 @@ module Lithic
 
       # Account state:
       #
-      #   - `ACTIVE` - Account is able to transact and create new cards.
-      #   - `PAUSED` - Account will not be able to transact or create new cards. It can be
-      #     set back to `ACTIVE`.
-      #   - `CLOSED` - Account will not be able to transact or create new cards. `CLOSED`
-      #     accounts are also unable to be transitioned to `ACTIVE` or `PAUSED` states.
-      #     `CLOSED` accounts result from failing to pass KYB/KYC or Lithic closing for
-      #     risk/compliance reasons. Please contact
-      #     [support@lithic.com](mailto:support@lithic.com) if you believe this was in
-      #     error.
+      # - `ACTIVE` - Account is able to transact and create new cards.
+      # - `PAUSED` - Account will not be able to transact or create new cards. It can be
+      #   set back to `ACTIVE`.
+      # - `CLOSED` - Account will not be able to transact or create new cards. `CLOSED`
+      #   accounts are also unable to be transitioned to `ACTIVE` or `PAUSED` states.
+      #   `CLOSED` accounts result from failing to pass KYB/KYC or Lithic closing for
+      #   risk/compliance reasons. Please contact
+      #   [support@lithic.com](mailto:support@lithic.com) if you believe this was in
+      #   error.
       module State
         extend Lithic::Internal::Type::Enum
 
@@ -169,8 +169,8 @@ module Lithic
         attr_accessor :token
 
         # Only applicable for customers using the KYC-Exempt workflow to enroll authorized
-        #   users of businesses. Account_token of the enrolled business associated with an
-        #   enrolled AUTHORIZED_USER individual.
+        # users of businesses. Account_token of the enrolled business associated with an
+        # enrolled AUTHORIZED_USER individual.
         sig { returns(String) }
         attr_accessor :business_account_token
 
@@ -215,13 +215,13 @@ module Lithic
         attr_accessor :country
 
         # Valid postal code. Only USA postal codes (ZIP codes) are currently supported,
-        #   entered as a five-digit postal code or nine-digit postal code (ZIP+4) using the
-        #   format 12345-1234.
+        # entered as a five-digit postal code or nine-digit postal code (ZIP+4) using the
+        # format 12345-1234.
         sig { returns(String) }
         attr_accessor :postal_code
 
         # Valid state code. Only USA state codes are currently supported, entered in
-        #   uppercase ISO 3166-2 two-character format.
+        # uppercase ISO 3166-2 two-character format.
         sig { returns(String) }
         attr_accessor :state
 

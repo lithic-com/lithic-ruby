@@ -6,7 +6,7 @@ module Lithic
       class Events
         class EnhancedCommercialData
           # Get L2/L3 enhanced commercial data associated with a transaction event. Not
-          #   available in sandbox.
+          # available in sandbox.
           sig do
             params(
               event_token: String,

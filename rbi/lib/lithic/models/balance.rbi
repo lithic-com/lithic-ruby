@@ -24,22 +24,22 @@ module Lithic
       attr_accessor :financial_account_type
 
       # Globally unique identifier for the last financial transaction event that
-      #   impacted this balance.
+      # impacted this balance.
       sig { returns(String) }
       attr_accessor :last_transaction_event_token
 
       # Globally unique identifier for the last financial transaction that impacted this
-      #   balance.
+      # balance.
       sig { returns(String) }
       attr_accessor :last_transaction_token
 
       # Funds not available for spend due to card authorizations or pending ACH release.
-      #   Shown in the currency's smallest unit (e.g., cents for USD).
+      # Shown in the currency's smallest unit (e.g., cents for USD).
       sig { returns(Integer) }
       attr_accessor :pending_amount
 
       # The sum of available and pending balance in the currency's smallest unit (e.g.,
-      #   cents for USD).
+      # cents for USD).
       sig { returns(Integer) }
       attr_accessor :total_amount
 

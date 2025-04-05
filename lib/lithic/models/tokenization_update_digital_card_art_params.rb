@@ -10,9 +10,9 @@ module Lithic
 
       # @!attribute [r] digital_card_art_token
       #   Specifies the digital card art to be displayed in the user’s digital wallet for
-      #     a tokenization. This artwork must be approved by the network and configured by
-      #     Lithic to use. See
-      #     [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
+      #   a tokenization. This artwork must be approved by the network and configured by
+      #   Lithic to use. See
+      #   [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
       #
       #   @return [String, nil]
       optional :digital_card_art_token, String

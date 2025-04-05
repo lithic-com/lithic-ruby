@@ -35,7 +35,7 @@ module Lithic
       attr_writer :end_
 
       # A cursor representing an item's token before which a page of results should end.
-      #   Used to retrieve the previous page of results before this item.
+      # Used to retrieve the previous page of results before this item.
       sig { returns(T.nilable(String)) }
       attr_reader :ending_before
 
@@ -50,7 +50,7 @@ module Lithic
       attr_writer :page_size
 
       # A cursor representing an item's token after which a page of results should
-      #   begin. Used to retrieve the next page of results after this item.
+      # begin. Used to retrieve the next page of results after this item.
       sig { returns(T.nilable(String)) }
       attr_reader :starting_after
 
@@ -58,7 +58,7 @@ module Lithic
       attr_writer :starting_after
 
       # Filter for tokenizations by tokenization channel. If this is not specified, only
-      #   DIGITAL_WALLET tokenizations will be returned.
+      # DIGITAL_WALLET tokenizations will be returned.
       sig { returns(T.nilable(Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol)) }
       attr_reader :tokenization_channel
 
@@ -109,7 +109,7 @@ module Lithic
       def to_hash; end
 
       # Filter for tokenizations by tokenization channel. If this is not specified, only
-      #   DIGITAL_WALLET tokenizations will be returned.
+      # DIGITAL_WALLET tokenizations will be returned.
       module TokenizationChannel
         extend Lithic::Internal::Type::Enum
 

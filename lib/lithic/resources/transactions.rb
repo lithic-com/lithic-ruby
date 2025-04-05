@@ -10,7 +10,7 @@ module Lithic
       attr_reader :events
 
       # Get a specific card transaction. All amounts are in the smallest unit of their
-      #   respective currency (e.g., cents for USD).
+      # respective currency (e.g., cents for USD).
       #
       # @overload retrieve(transaction_token, request_options: {})
       #
@@ -30,7 +30,7 @@ module Lithic
       end
 
       # List card transactions. All amounts are in the smallest unit of their respective
-      #   currency (e.g., cents for USD) and inclusive of any acquirer fees.
+      # currency (e.g., cents for USD) and inclusive of any acquirer fees.
       #
       # @overload list(account_token: nil, begin_: nil, card_token: nil, end_: nil, ending_before: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
       #
@@ -80,13 +80,13 @@ module Lithic
       end
 
       # Simulates an authorization request from the card network as if it came from a
-      #   merchant acquirer. If you are configured for ASA, simulating authorizations
-      #   requires your ASA client to be set up properly, i.e. be able to respond to the
-      #   ASA request with a valid JSON. For users that are not configured for ASA, a
-      #   daily transaction limit of $5000 USD is applied by default. You can update this
-      #   limit via the
-      #   [update account](https://docs.lithic.com/reference/patchaccountbytoken)
-      #   endpoint.
+      # merchant acquirer. If you are configured for ASA, simulating authorizations
+      # requires your ASA client to be set up properly, i.e. be able to respond to the
+      # ASA request with a valid JSON. For users that are not configured for ASA, a
+      # daily transaction limit of $5000 USD is applied by default. You can update this
+      # limit via the
+      # [update account](https://docs.lithic.com/reference/patchaccountbytoken)
+      # endpoint.
       #
       # @overload simulate_authorization(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, merchant_amount: nil, merchant_currency: nil, partial_approval_capable: nil, pin: nil, status: nil, request_options: {})
       #
@@ -117,8 +117,8 @@ module Lithic
       end
 
       # Simulates an authorization advice from the card network as if it came from a
-      #   merchant acquirer. An authorization advice changes the pending amount of the
-      #   transaction.
+      # merchant acquirer. An authorization advice changes the pending amount of the
+      # transaction.
       #
       # @overload simulate_authorization_advice(token:, amount:, request_options: {})
       #
@@ -141,11 +141,11 @@ module Lithic
       end
 
       # Clears an existing authorization, either debit or credit. After this event, the
-      #   transaction transitions from `PENDING` to `SETTLED` status.
+      # transaction transitions from `PENDING` to `SETTLED` status.
       #
-      #   If `amount` is not set, the full amount of the transaction will be cleared.
-      #   Transactions that have already cleared, either partially or fully, cannot be
-      #   cleared again using this endpoint.
+      # If `amount` is not set, the full amount of the transaction will be cleared.
+      # Transactions that have already cleared, either partially or fully, cannot be
+      # cleared again using this endpoint.
       #
       # @overload simulate_clearing(token:, amount: nil, request_options: {})
       #
@@ -168,7 +168,7 @@ module Lithic
       end
 
       # Simulates a credit authorization advice from the card network. This message
-      #   indicates that the network approved a credit authorization on your behalf.
+      # indicates that the network approved a credit authorization on your behalf.
       #
       # @overload simulate_credit_authorization(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, request_options: {})
       #
@@ -194,8 +194,8 @@ module Lithic
       end
 
       # Returns, or refunds, an amount back to a card. Returns simulated via this
-      #   endpoint clear immediately, without prior authorization, and result in a
-      #   `SETTLED` transaction status.
+      # endpoint clear immediately, without prior authorization, and result in a
+      # `SETTLED` transaction status.
       #
       # @overload simulate_return(amount:, descriptor:, pan:, request_options: {})
       #
@@ -219,8 +219,8 @@ module Lithic
       end
 
       # Reverses a return, i.e. a credit transaction with a `SETTLED` status. Returns
-      #   can be financial credit authorizations, or credit authorizations that have
-      #   cleared.
+      # can be financial credit authorizations, or credit authorizations that have
+      # cleared.
       #
       # @overload simulate_return_reversal(token:, request_options: {})
       #
@@ -242,9 +242,9 @@ module Lithic
       end
 
       # Voids a pending authorization. If `amount` is not set, the full amount will be
-      #   voided. Can be used on partially voided transactions but not partially cleared
-      #   transactions. _Simulating an authorization expiry on credit authorizations or
-      #   credit authorization advice is not currently supported but will be added soon._
+      # voided. Can be used on partially voided transactions but not partially cleared
+      # transactions. _Simulating an authorization expiry on credit authorizations or
+      # credit authorization advice is not currently supported but will be added soon._
       #
       # @overload simulate_void(token:, amount: nil, type: nil, request_options: {})
       #

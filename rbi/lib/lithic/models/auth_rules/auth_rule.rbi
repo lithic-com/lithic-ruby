@@ -13,8 +13,8 @@ module Lithic
         attr_accessor :state
 
         # Array of account_token(s) identifying the accounts that the Auth Rule applies
-        #   to. Note that only this field or `card_tokens` can be provided for a given Auth
-        #   Rule.
+        # to. Note that only this field or `card_tokens` can be provided for a given Auth
+        # Rule.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :account_tokens
 
@@ -22,8 +22,8 @@ module Lithic
         attr_writer :account_tokens
 
         # Countries in which the Auth Rule permits transactions. Note that Lithic
-        #   maintains a list of countries in which all transactions are blocked; "allowing"
-        #   those countries in an Auth Rule does not override the Lithic-wide restrictions.
+        # maintains a list of countries in which all transactions are blocked; "allowing"
+        # those countries in an Auth Rule does not override the Lithic-wide restrictions.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :allowed_countries
 
@@ -45,7 +45,7 @@ module Lithic
         attr_writer :blocked_countries
 
         # Merchant category codes for which the Auth Rule automatically declines
-        #   transactions.
+        # transactions.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :blocked_mcc
 
@@ -53,7 +53,7 @@ module Lithic
         attr_writer :blocked_mcc
 
         # Array of card_token(s) identifying the cards that the Auth Rule applies to. Note
-        #   that only this field or `account_tokens` can be provided for a given Auth Rule.
+        # that only this field or `account_tokens` can be provided for a given Auth Rule.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :card_tokens
 

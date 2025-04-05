@@ -26,7 +26,7 @@ module Lithic
         attr_writer :disabled
 
         # Indicates types of events that will be sent to this subscription. If left blank,
-        #   all types will be sent.
+        # all types will be sent.
         sig { returns(T.nilable(T::Array[Lithic::Models::Events::SubscriptionUpdateParams::EventType::OrSymbol])) }
         attr_reader :event_types
 

@@ -40,7 +40,7 @@ module Lithic
       class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
         # @!attribute [r] annually
         #   The available spend limit (in cents) relative to the annual limit configured on
-        #     the Card (e.g. 100000 would be a $1,000 limit).
+        #   the Card (e.g. 100000 would be a $1,000 limit).
         #
         #   @return [Integer, nil]
         optional :annually, Integer
@@ -51,7 +51,7 @@ module Lithic
 
         # @!attribute [r] forever
         #   The available spend limit (in cents) relative to the forever limit configured on
-        #     the Card.
+        #   the Card.
         #
         #   @return [Integer, nil]
         optional :forever, Integer
@@ -62,7 +62,7 @@ module Lithic
 
         # @!attribute [r] monthly
         #   The available spend limit (in cents) relative to the monthly limit configured on
-        #     the Card.
+        #   the Card.
         #
         #   @return [Integer, nil]
         optional :monthly, Integer
@@ -127,7 +127,7 @@ module Lithic
       class SpendVelocity < Lithic::Internal::Type::BaseModel
         # @!attribute [r] annually
         #   Current annual spend velocity (in cents) on the Card. Present if annual spend
-        #     limit is set.
+        #   limit is set.
         #
         #   @return [Integer, nil]
         optional :annually, Integer
@@ -138,7 +138,7 @@ module Lithic
 
         # @!attribute [r] forever
         #   Current forever spend velocity (in cents) on the Card. Present if forever spend
-        #     limit is set.
+        #   limit is set.
         #
         #   @return [Integer, nil]
         optional :forever, Integer
@@ -149,7 +149,7 @@ module Lithic
 
         # @!attribute [r] monthly
         #   Current monthly spend velocity (in cents) on the Card. Present if monthly spend
-        #     limit is set.
+        #   limit is set.
         #
         #   @return [Integer, nil]
         optional :monthly, Integer

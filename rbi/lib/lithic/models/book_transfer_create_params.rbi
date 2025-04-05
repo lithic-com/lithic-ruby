@@ -7,7 +7,7 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       # Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
-      #   This should always be a positive value.
+      # This should always be a positive value.
       sig { returns(Integer) }
       attr_accessor :amount
 
@@ -16,7 +16,7 @@ module Lithic
       attr_accessor :category
 
       # Globally unique identifier for the financial account or card that will send the
-      #   funds. Accepted type dependent on the program's use case.
+      # funds. Accepted type dependent on the program's use case.
       sig { returns(String) }
       attr_accessor :from_financial_account_token
 
@@ -25,7 +25,7 @@ module Lithic
       attr_accessor :subtype
 
       # Globally unique identifier for the financial account or card that will receive
-      #   the funds. Accepted type dependent on the program's use case.
+      # the funds. Accepted type dependent on the program's use case.
       sig { returns(String) }
       attr_accessor :to_financial_account_token
 
@@ -34,7 +34,7 @@ module Lithic
       attr_accessor :type
 
       # Customer-provided token that will serve as an idempotency token. This token will
-      #   become the transaction token.
+      # become the transaction token.
       sig { returns(T.nilable(String)) }
       attr_reader :token
 

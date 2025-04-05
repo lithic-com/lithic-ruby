@@ -23,8 +23,8 @@ module Lithic
       end
 
       # Update account configuration such as state or spend limits. Can only be run on
-      #   accounts that are part of the program managed by this API key. Accounts that are
-      #   in the `PAUSED` state will not be able to transact or create new cards.
+      # accounts that are part of the program managed by this API key. Accounts that are
+      # in the `PAUSED` state will not be able to transact or create new cards.
       #
       # @overload update(account_token, daily_spend_limit: nil, lifetime_spend_limit: nil, monthly_spend_limit: nil, state: nil, verification_address: nil, request_options: {})
       #
@@ -77,10 +77,10 @@ module Lithic
       end
 
       # Get an Account's available spend limits, which is based on the spend limit
-      #   configured on the Account and the amount already spent over the spend limit's
-      #   duration. For example, if the Account has a daily spend limit of $1000
-      #   configured, and has spent $600 in the last 24 hours, the available spend limit
-      #   returned would be $400.
+      # configured on the Account and the amount already spent over the spend limit's
+      # duration. For example, if the Account has a daily spend limit of $1000
+      # configured, and has spent $600 in the last 24 hours, the available spend limit
+      # returned would be $400.
       #
       # @overload retrieve_spend_limits(account_token, request_options: {})
       #

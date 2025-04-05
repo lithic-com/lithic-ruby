@@ -30,7 +30,7 @@ module Lithic
 
       # @!attribute [r] status_reasons
       #   Status reason that will be associated with the simulated account holder status.
-      #     Only required for a `REJECTED` status.
+      #   Only required for a `REJECTED` status.
       #
       #   @return [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason>, nil]
       optional :status_reasons,

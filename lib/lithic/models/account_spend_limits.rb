@@ -40,7 +40,7 @@ module Lithic
       class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
         # @!attribute [r] daily
         #   The available spend limit (in cents) relative to the daily limit configured on
-        #     the Account (e.g. 100000 would be a $1,000 limit).
+        #   the Account (e.g. 100000 would be a $1,000 limit).
         #
         #   @return [Integer, nil]
         optional :daily, Integer
@@ -51,7 +51,7 @@ module Lithic
 
         # @!attribute [r] lifetime
         #   The available spend limit (in cents) relative to the lifetime limit configured
-        #     on the Account.
+        #   on the Account.
         #
         #   @return [Integer, nil]
         optional :lifetime, Integer
@@ -62,7 +62,7 @@ module Lithic
 
         # @!attribute [r] monthly
         #   The available spend limit (in cents) relative to the monthly limit configured on
-        #     the Account.
+        #   the Account.
         #
         #   @return [Integer, nil]
         optional :monthly, Integer
@@ -127,7 +127,7 @@ module Lithic
       class SpendVelocity < Lithic::Internal::Type::BaseModel
         # @!attribute [r] daily
         #   Current daily spend velocity (in cents) on the Account. Present if daily spend
-        #     limit is set.
+        #   limit is set.
         #
         #   @return [Integer, nil]
         optional :daily, Integer
@@ -138,7 +138,7 @@ module Lithic
 
         # @!attribute [r] lifetime
         #   Current lifetime spend velocity (in cents) on the Account. Present if lifetime
-        #     spend limit is set.
+        #   spend limit is set.
         #
         #   @return [Integer, nil]
         optional :lifetime, Integer
@@ -149,7 +149,7 @@ module Lithic
 
         # @!attribute [r] monthly
         #   Current monthly spend velocity (in cents) on the Account. Present if monthly
-        #     spend limit is set.
+        #   spend limit is set.
         #
         #   @return [Integer, nil]
         optional :monthly, Integer

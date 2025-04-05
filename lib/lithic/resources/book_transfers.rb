@@ -4,7 +4,7 @@ module Lithic
   module Resources
     class BookTransfers
       # Book transfer funds between two financial accounts or between a financial
-      #   account and card
+      # account and card
       #
       # @overload create(amount:, category:, from_financial_account_token:, subtype:, to_financial_account_token:, type:, token: nil, memo: nil, request_options: {})
       #

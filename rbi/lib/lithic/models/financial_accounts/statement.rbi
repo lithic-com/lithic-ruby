@@ -51,7 +51,7 @@ module Lithic
         attr_accessor :days_in_billing_cycle
 
         # Balance at the end of the billing period. For charge cards, this should be the
-        #   same at the statement amount due in cents
+        # same at the statement amount due in cents
         sig { returns(Integer) }
         attr_accessor :ending_balance
 
@@ -473,9 +473,9 @@ module Lithic
 
         class AmountDue < Lithic::Internal::Type::BaseModel
           # Payment due at the end of the billing period in cents. Negative amount indicates
-          #   something is owed. If the amount owed is positive there was a net credit. If
-          #   auto-collections are enabled this is the amount that will be requested on the
-          #   payment due date
+          # something is owed. If the amount owed is positive there was a net credit. If
+          # auto-collections are enabled this is the amount that will be requested on the
+          # payment due date
           sig { returns(Integer) }
           attr_accessor :amount
 
@@ -500,7 +500,7 @@ module Lithic
           attr_accessor :cash_advances
 
           # Volume of credit management operation transactions less any balance transfers in
-          #   cents
+          # cents
           sig { returns(Integer) }
           attr_accessor :credits
 
@@ -579,7 +579,7 @@ module Lithic
           attr_accessor :cash_advances
 
           # Volume of credit management operation transactions less any balance transfers in
-          #   cents
+          # cents
           sig { returns(Integer) }
           attr_accessor :credits
 

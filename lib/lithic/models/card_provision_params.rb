@@ -10,9 +10,9 @@ module Lithic
 
       # @!attribute [r] certificate
       #   Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
-      #     `activationData` in the response. Apple's public leaf certificate. Base64
-      #     encoded in PEM format with headers `(-----BEGIN CERTIFICATE-----)` and trailers
-      #     omitted. Provided by the device's wallet.
+      #   `activationData` in the response. Apple's public leaf certificate. Base64
+      #   encoded in PEM format with headers `(-----BEGIN CERTIFICATE-----)` and trailers
+      #   omitted. Provided by the device's wallet.
       #
       #   @return [String, nil]
       optional :certificate, String
@@ -23,8 +23,8 @@ module Lithic
 
       # @!attribute [r] client_device_id
       #   Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the
-      #     card is on the Visa network. Stable device identification set by the wallet
-      #     provider.
+      #   card is on the Visa network. Stable device identification set by the wallet
+      #   provider.
       #
       #   @return [String, nil]
       optional :client_device_id, String
@@ -35,8 +35,8 @@ module Lithic
 
       # @!attribute [r] client_wallet_account_id
       #   Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the
-      #     card is on the Visa network. Consumer ID that identifies the wallet account
-      #     holder entity.
+      #   card is on the Visa network. Consumer ID that identifies the wallet account
+      #   holder entity.
       #
       #   @return [String, nil]
       optional :client_wallet_account_id, String
@@ -57,8 +57,8 @@ module Lithic
 
       # @!attribute [r] nonce
       #   Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
-      #     `activationData` in the response. Base64 cryptographic nonce provided by the
-      #     device's wallet.
+      #   `activationData` in the response. Base64 cryptographic nonce provided by the
+      #   device's wallet.
       #
       #   @return [String, nil]
       optional :nonce, String
@@ -69,8 +69,8 @@ module Lithic
 
       # @!attribute [r] nonce_signature
       #   Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
-      #     `activationData` in the response. Base64 cryptographic nonce provided by the
-      #     device's wallet.
+      #   `activationData` in the response. Base64 cryptographic nonce provided by the
+      #   device's wallet.
       #
       #   @return [String, nil]
       optional :nonce_signature, String
