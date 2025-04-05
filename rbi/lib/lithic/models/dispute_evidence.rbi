@@ -85,8 +85,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Upload status types:
       #
@@ -109,8 +108,7 @@ module Lithic
         UPLOADED = T.let(:UPLOADED, Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::DisputeEvidence::UploadStatus::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

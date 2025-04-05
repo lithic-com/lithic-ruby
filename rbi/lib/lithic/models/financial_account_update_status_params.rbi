@@ -22,8 +22,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(status:, substatus:, request_options: {})
-      end
+      def self.new(status:, substatus:, request_options: {}); end
 
       sig do
         override
@@ -35,8 +34,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Status of the financial account
       module Status
@@ -52,8 +50,7 @@ module Lithic
         PENDING = T.let(:PENDING, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Substatus for the financial account
@@ -78,8 +75,7 @@ module Lithic
           )
 
         sig { override.returns(T::Array[Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

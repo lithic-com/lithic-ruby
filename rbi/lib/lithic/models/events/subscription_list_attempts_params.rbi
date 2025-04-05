@@ -72,9 +72,7 @@ module Lithic
           starting_after: nil,
           status: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -89,8 +87,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module Status
           extend Lithic::Internal::Type::Enum
@@ -106,8 +103,7 @@ module Lithic
           SUCCESS = T.let(:SUCCESS, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

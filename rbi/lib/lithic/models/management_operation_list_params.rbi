@@ -99,9 +99,7 @@ module Lithic
         starting_after: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -119,8 +117,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Management operation category to be returned.
       module Category
@@ -140,8 +137,7 @@ module Lithic
           T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Management operation status to be returned.
@@ -159,8 +155,7 @@ module Lithic
         CANCELED = T.let(:CANCELED, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

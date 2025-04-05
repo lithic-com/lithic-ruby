@@ -81,9 +81,7 @@ module Lithic
         starting_after: nil,
         state: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -99,8 +97,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Returns cards with the specified state.
       module State
@@ -116,8 +113,7 @@ module Lithic
         PENDING_FULFILLMENT = T.let(:PENDING_FULFILLMENT, Lithic::Models::CardListParams::State::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::CardListParams::State::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

@@ -54,9 +54,7 @@ module Lithic
         accepted_entity_status_reasons: nil,
         status_reason: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -69,8 +67,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # An account holder document's upload status for use within the simulation.
       module Status
@@ -114,8 +111,7 @@ module Lithic
               T::Array[Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::TaggedSymbol]
             )
         end
-        def self.values
-        end
+        def self.values; end
       end
 
       # Status reason that will be associated with the simulated account holder status.
@@ -196,8 +192,7 @@ module Lithic
               T::Array[Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::TaggedSymbol]
             )
         end
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

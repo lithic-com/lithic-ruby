@@ -30,9 +30,7 @@ module Lithic
           #   begin. Used to retrieve the next page of results after this item.
           starting_after: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Get the settlement report for a specified report date. Not available in sandbox.
         sig do
           params(
@@ -45,13 +43,10 @@ module Lithic
           # Date of the settlement report to retrieve.
           report_date,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

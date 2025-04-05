@@ -69,9 +69,7 @@ module Lithic
           pending_amount:,
           total_amount:,
           updated:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -88,8 +86,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

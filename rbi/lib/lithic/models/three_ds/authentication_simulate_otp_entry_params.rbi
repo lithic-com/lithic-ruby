@@ -24,12 +24,10 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(token:, otp:, request_options: {})
-        end
+        def self.new(token:, otp:, request_options: {}); end
 
         sig { override.returns({token: String, otp: String, request_options: Lithic::RequestOptions}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

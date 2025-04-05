@@ -12,8 +12,7 @@ module Lithic
       BUSINESS = T.let(:BUSINESS, Lithic::Models::OwnerType::TaggedSymbol)
 
       sig { override.returns(T::Array[Lithic::Models::OwnerType::TaggedSymbol]) }
-      def self.values
-      end
+      def self.values; end
     end
   end
 end

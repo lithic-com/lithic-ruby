@@ -25,13 +25,10 @@ module Lithic
         # List balances for a given Financial Account type.
         financial_account_type: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

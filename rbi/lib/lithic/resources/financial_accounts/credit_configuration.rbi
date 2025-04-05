@@ -16,9 +16,7 @@ module Lithic
           # Globally unique identifier for financial account.
           financial_account_token,
           request_options: {}
-        )
-        end
-
+        ); end
         # Update an account's credit configuration
         sig do
           params(
@@ -41,13 +39,10 @@ module Lithic
           # Tier to assign to a financial account
           tier: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

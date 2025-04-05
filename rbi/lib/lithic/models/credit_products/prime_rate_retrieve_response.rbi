@@ -19,8 +19,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(data:, has_more:)
-        end
+        def self.new(data:, has_more:); end
 
         sig do
           override
@@ -28,8 +27,7 @@ module Lithic
               {data: T::Array[Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data], has_more: T::Boolean}
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Data < Lithic::Internal::Type::BaseModel
           # Date the rate goes into effect
@@ -41,12 +39,10 @@ module Lithic
           attr_accessor :rate
 
           sig { params(effective_date: Date, rate: String).returns(T.attached_class) }
-          def self.new(effective_date:, rate:)
-          end
+          def self.new(effective_date:, rate:); end
 
           sig { override.returns({effective_date: Date, rate: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

@@ -23,8 +23,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(financial_account_type: nil, request_options: {})
-      end
+      def self.new(financial_account_type: nil, request_options: {}); end
 
       sig do
         override
@@ -35,8 +34,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Get the aggregate balance for a given Financial Account type.
       module FinancialAccountType
@@ -53,8 +51,7 @@ module Lithic
         RESERVE = T.let(:RESERVE, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

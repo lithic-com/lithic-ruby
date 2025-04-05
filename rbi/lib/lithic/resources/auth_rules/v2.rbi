@@ -41,9 +41,7 @@ module Lithic
           # Card tokens to which the Auth Rule does not apply.
           excluded_card_tokens: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Fetches a V2 authorization rule by its token
         sig do
           params(
@@ -56,9 +54,7 @@ module Lithic
           # Globally unique identifier for the Auth Rule.
           auth_rule_token,
           request_options: {}
-        )
-        end
-
+        ); end
         # Updates a V2 authorization rule's properties
         #
         #   If `account_tokens`, `card_tokens`, `program_level`, or `excluded_card_tokens`
@@ -97,9 +93,7 @@ module Lithic
           # Whether the Auth Rule applies to all authorizations on the card program.
           program_level: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Lists V2 authorization rules
         sig do
           params(
@@ -126,9 +120,7 @@ module Lithic
           #   begin. Used to retrieve the next page of results after this item.
           starting_after: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Deletes a V2 authorization rule
         sig do
           params(
@@ -141,9 +133,7 @@ module Lithic
           # Globally unique identifier for the Auth Rule.
           auth_rule_token,
           request_options: {}
-        )
-        end
-
+        ); end
         # Associates a V2 authorization rule with a card program, the provided account(s)
         #   or card(s).
         #
@@ -171,9 +161,7 @@ module Lithic
           # Card tokens to which the Auth Rule does not apply.
           excluded_card_tokens: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Creates a new draft version of a rule that will be ran in shadow mode.
         #
         #   This can also be utilized to reset the draft parameters, causing a draft version
@@ -198,9 +186,7 @@ module Lithic
           # Parameters for the Auth Rule
           parameters: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Promotes the draft version of an authorization rule to the currently active
         #   version such that it is enforced in the authorization stream.
         sig do
@@ -214,9 +200,7 @@ module Lithic
           # Globally unique identifier for the Auth Rule.
           auth_rule_token,
           request_options: {}
-        )
-        end
-
+        ); end
         # Requests a performance report of an authorization rule to be asynchronously
         #   generated. Reports can only be run on rules in draft or active mode and will
         #   included approved and declined statistics as well as examples. The generated
@@ -279,13 +263,10 @@ module Lithic
           # Globally unique identifier for the Auth Rule.
           auth_rule_token,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

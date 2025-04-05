@@ -26,8 +26,7 @@ module Lithic
       TRANSACTION = T.let(:TRANSACTION, Lithic::Models::SpendLimitDuration::TaggedSymbol)
 
       sig { override.returns(T::Array[Lithic::Models::SpendLimitDuration::TaggedSymbol]) }
-      def self.values
-      end
+      def self.values; end
     end
   end
 end

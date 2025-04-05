@@ -90,9 +90,7 @@ module Lithic
         status:,
         to_financial_account_token:,
         updated:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -112,8 +110,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Category of the book transfer
       module Category
@@ -133,8 +130,7 @@ module Lithic
         TRANSFER = T.let(:TRANSFER, Lithic::Models::BookTransferResponse::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Category::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -185,8 +181,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(token:, amount:, created:, detailed_results:, memo:, result:, subtype:, type:)
-        end
+        def self.new(token:, amount:, created:, detailed_results:, memo:, result:, subtype:, type:); end
 
         sig do
           override
@@ -203,8 +198,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module DetailedResult
           extend Lithic::Internal::Type::Enum
@@ -219,8 +213,7 @@ module Lithic
             T.let(:FUNDS_INSUFFICIENT, Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Event::DetailedResult::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # APPROVED financial events were successful while DECLINED financial events were
@@ -236,8 +229,7 @@ module Lithic
           DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -254,8 +246,7 @@ module Lithic
         DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferResponse::Result::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Result::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
@@ -272,8 +263,7 @@ module Lithic
         SETTLED = T.let(:SETTLED, Lithic::Models::BookTransferResponse::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::BookTransferResponse::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

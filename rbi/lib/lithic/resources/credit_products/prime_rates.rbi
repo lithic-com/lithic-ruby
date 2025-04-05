@@ -22,9 +22,7 @@ module Lithic
           # The rate in decimal format
           rate:,
           request_options: {}
-        )
-        end
-
+        ); end
         # Get Credit Product Prime Rates
         sig do
           params(
@@ -43,13 +41,10 @@ module Lithic
           # The effective date that the prime rate starts after
           starting_after: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

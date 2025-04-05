@@ -36,8 +36,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(account_token: nil, business_account_token: nil, type: nil, request_options: {})
-      end
+      def self.new(account_token: nil, business_account_token: nil, type: nil, request_options: {}); end
 
       sig do
         override
@@ -50,8 +49,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # List financial accounts of a given type
       module Type
@@ -66,8 +64,7 @@ module Lithic
         RESERVE = T.let(:RESERVE, Lithic::Models::FinancialAccountListParams::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::FinancialAccountListParams::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

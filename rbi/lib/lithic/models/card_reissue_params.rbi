@@ -78,8 +78,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
       #   options besides `STANDARD` require additional permissions.
@@ -109,8 +108,7 @@ module Lithic
           T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

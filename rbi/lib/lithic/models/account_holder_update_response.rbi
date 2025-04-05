@@ -47,10 +47,10 @@ module Lithic
         sig do
           params(
             beneficial_owner_individuals: T::Array[
-            T.any(
-              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual,
-              Lithic::Internal::AnyHash
-            )
+              T.any(
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual,
+                Lithic::Internal::AnyHash
+              )
             ]
           )
             .void
@@ -269,10 +269,10 @@ module Lithic
             account_token: String,
             beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::AnyHash)],
             beneficial_owner_individuals: T::Array[
-            T.any(
-              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual,
-              Lithic::Internal::AnyHash
-            )
+              T.any(
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual,
+                Lithic::Internal::AnyHash
+              )
             ],
             business_account_token: String,
             business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::AnyHash),
@@ -323,9 +323,7 @@ module Lithic
           user_type: nil,
           verification_application: nil,
           website_url: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -353,8 +351,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -429,7 +426,14 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil)
+          def self.new(
+            address: nil,
+            dob: nil,
+            email: nil,
+            first_name: nil,
+            last_name: nil,
+            phone_number: nil
+          )
           end
 
           sig do
@@ -446,8 +450,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Address < Lithic::Internal::Type::BaseModel
             # Valid deliverable address (no PO boxes).
@@ -493,8 +496,7 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(address1:, city:, country:, postal_code:, state:, address2: nil)
-            end
+            def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
 
             sig do
               override
@@ -509,8 +511,7 @@ module Lithic
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -596,7 +597,14 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil)
+          def self.new(
+            address: nil,
+            dob: nil,
+            email: nil,
+            first_name: nil,
+            last_name: nil,
+            phone_number: nil
+          )
           end
 
           sig do
@@ -613,8 +621,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Address < Lithic::Internal::Type::BaseModel
             # Valid deliverable address (no PO boxes).
@@ -660,8 +667,7 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(address1:, city:, country:, postal_code:, state:, address2: nil)
-            end
+            def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
 
             sig do
               override
@@ -676,8 +682,7 @@ module Lithic
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -714,8 +719,7 @@ module Lithic
                 T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         class Individual < Lithic::Internal::Type::BaseModel
@@ -787,7 +791,14 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil)
+          def self.new(
+            address: nil,
+            dob: nil,
+            email: nil,
+            first_name: nil,
+            last_name: nil,
+            phone_number: nil
+          )
           end
 
           sig do
@@ -804,8 +815,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Address < Lithic::Internal::Type::BaseModel
             # Valid deliverable address (no PO boxes).
@@ -851,8 +861,7 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(address1:, city:, country:, postal_code:, state:, address2: nil)
-            end
+            def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
 
             sig do
               override
@@ -867,8 +876,7 @@ module Lithic
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -911,8 +919,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Status Reasons for KYC/KYB enrollment states
@@ -1057,8 +1064,7 @@ module Lithic
                 T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
@@ -1096,8 +1102,7 @@ module Lithic
                 T::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         class VerificationApplication < Lithic::Internal::Type::BaseModel
@@ -1120,7 +1125,7 @@ module Lithic
           sig do
             returns(
               T::Array[
-              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
               ]
             )
           end
@@ -1136,14 +1141,13 @@ module Lithic
               created: Time,
               status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::OrSymbol,
               status_reasons: T::Array[
-              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::OrSymbol
+                Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::OrSymbol
               ],
               updated: Time
             )
               .returns(T.attached_class)
           end
-          def self.new(created:, status:, status_reasons:, updated:)
-          end
+          def self.new(created:, status:, status_reasons:, updated:); end
 
           sig do
             override
@@ -1152,14 +1156,13 @@ module Lithic
                   created: Time,
                   status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol,
                   status_reasons: T::Array[
-                  Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+                    Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
                   ],
                   updated: Time
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # KYC and KYB evaluation states.
           #
@@ -1206,12 +1209,11 @@ module Lithic
               override
                 .returns(
                   T::Array[
-                  Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
+                    Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status::TaggedSymbol
                   ]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # Status Reasons for KYC/KYB enrollment states
@@ -1356,12 +1358,11 @@ module Lithic
               override
                 .returns(
                   T::Array[
-                  Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
+                    Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason::TaggedSymbol
                   ]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end
@@ -1450,9 +1451,7 @@ module Lithic
           last_name: nil,
           legal_business_name: nil,
           phone_number: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -1468,8 +1467,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Address < Lithic::Internal::Type::BaseModel
           # Valid deliverable address (no PO boxes).
@@ -1514,8 +1512,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(address1:, city:, country:, postal_code:, state:, address2: nil)
-          end
+          def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
 
           sig do
             override
@@ -1530,8 +1527,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -1541,8 +1537,7 @@ module Lithic
             [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse, Lithic::Models::AccountHolderUpdateResponse::PatchResponse]
           )
       end
-      def self.variants
-      end
+      def self.variants; end
     end
   end
 end

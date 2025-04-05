@@ -29,8 +29,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(ending_before: nil, starting_after: nil, request_options: {})
-        end
+        def self.new(ending_before: nil, starting_after: nil, request_options: {}); end
 
         sig do
           override.returns(
@@ -41,8 +40,7 @@ module Lithic
             }
           )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

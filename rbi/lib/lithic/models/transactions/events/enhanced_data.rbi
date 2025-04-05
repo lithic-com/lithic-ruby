@@ -41,8 +41,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(token:, common:, event_token:, fleet:, transaction_token:)
-          end
+          def self.new(token:, common:, event_token:, fleet:, transaction_token:); end
 
           sig do
             override
@@ -56,8 +55,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Common < Lithic::Internal::Type::BaseModel
             sig { returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem]) }
@@ -126,8 +124,7 @@ module Lithic
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class LineItem < Lithic::Internal::Type::BaseModel
               # The price of the item purchased in merchant currency.
@@ -167,14 +164,12 @@ module Lithic
                   quantity: Float
                 ).returns(T.attached_class)
               end
-              def self.new(amount: nil, description: nil, product_code: nil, quantity: nil)
-              end
+              def self.new(amount: nil, description: nil, product_code: nil, quantity: nil); end
 
               sig do
                 override.returns({amount: Float, description: String, product_code: String, quantity: Float})
               end
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class Tax < Lithic::Internal::Type::BaseModel
@@ -207,8 +202,7 @@ module Lithic
                 )
                   .returns(T.attached_class)
               end
-              def self.new(amount: nil, exempt: nil, merchant_tax_id: nil)
-              end
+              def self.new(amount: nil, exempt: nil, merchant_tax_id: nil); end
 
               sig do
                 override
@@ -220,8 +214,7 @@ module Lithic
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # A flag indicating whether the transaction is tax exempt or not.
               module Exempt
@@ -258,8 +251,7 @@ module Lithic
                   override
                     .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol])
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -306,7 +298,9 @@ module Lithic
             sig { returns(T.nilable(Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)) }
             attr_reader :service_type
 
-            sig { params(service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol).void }
+            sig do
+              params(service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol).void
+            end
             attr_writer :service_type
 
             # The vehicle number entered into the terminal at the time of sale, with leading
@@ -351,8 +345,7 @@ module Lithic
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class AmountTotals < Lithic::Internal::Type::BaseModel
               # The discount applied to the gross sale amount.
@@ -379,12 +372,10 @@ module Lithic
               sig do
                 params(discount: Integer, gross_sale: Integer, net_sale: Integer).returns(T.attached_class)
               end
-              def self.new(discount: nil, gross_sale: nil, net_sale: nil)
-              end
+              def self.new(discount: nil, gross_sale: nil, net_sale: nil); end
 
               sig { override.returns({discount: Integer, gross_sale: Integer, net_sale: Integer}) }
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class Fuel < Lithic::Internal::Type::BaseModel
@@ -434,8 +425,7 @@ module Lithic
                 )
                   .returns(T.attached_class)
               end
-              def self.new(quantity: nil, type: nil, unit_of_measure: nil, unit_price: nil)
-              end
+              def self.new(quantity: nil, type: nil, unit_of_measure: nil, unit_price: nil); end
 
               sig do
                 override
@@ -448,8 +438,7 @@ module Lithic
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The type of fuel purchased.
               module Type
@@ -989,8 +978,7 @@ module Lithic
                   override
                     .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol])
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Unit of measure for fuel disbursement.
@@ -1050,8 +1038,7 @@ module Lithic
                       T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -1088,8 +1075,7 @@ module Lithic
                 override
                   .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol])
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
         end

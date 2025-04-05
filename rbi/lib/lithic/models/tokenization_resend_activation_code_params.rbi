@@ -27,8 +27,7 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(activation_method_type: nil, request_options: {})
-      end
+      def self.new(activation_method_type: nil, request_options: {}); end
 
       sig do
         override
@@ -39,8 +38,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The communication method that the user has selected to use to receive the
       #   authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
@@ -76,8 +74,7 @@ module Lithic
               T::Array[Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::TaggedSymbol]
             )
         end
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

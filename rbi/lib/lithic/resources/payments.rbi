@@ -32,9 +32,7 @@ module Lithic
         memo: nil,
         user_defined_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get the payment by token.
       sig do
         params(
@@ -43,8 +41,7 @@ module Lithic
         )
           .returns(Lithic::Models::Payment)
       end
-      def retrieve(payment_token, request_options: {})
-      end
+      def retrieve(payment_token, request_options: {}); end
 
       # List all the payments for the provided search criteria.
       sig do
@@ -86,9 +83,7 @@ module Lithic
         starting_after: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retry an origination which has been returned.
       sig do
         params(
@@ -97,8 +92,7 @@ module Lithic
         )
           .returns(Lithic::Models::PaymentRetryResponse)
       end
-      def retry_(payment_token, request_options: {})
-      end
+      def retry_(payment_token, request_options: {}); end
 
       # Simulate payment lifecycle event
       sig do
@@ -120,9 +114,7 @@ module Lithic
         # Return Reason Code
         return_reason_code: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Simulates a receipt of a Payment.
       sig do
         params(
@@ -147,9 +139,7 @@ module Lithic
         # Memo
         memo: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Simulates a release of a Payment.
       sig do
         params(
@@ -162,9 +152,7 @@ module Lithic
         # Payment Token
         payment_token:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Simulates a return of a Payment.
       sig do
         params(
@@ -180,13 +168,10 @@ module Lithic
         # Return Reason Code
         return_reason_code: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

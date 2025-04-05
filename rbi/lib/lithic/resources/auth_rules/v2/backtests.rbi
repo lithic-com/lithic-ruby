@@ -47,9 +47,7 @@ module Lithic
             # The start time of the backtest.
             start: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           # Returns the backtest results of an authorization rule (if available).
           #
           #   Backtesting is an asynchronous process that requires time to complete. If a
@@ -82,13 +80,10 @@ module Lithic
             # Globally unique identifier for the Auth Rule.
             auth_rule_token:,
             request_options: {}
-          )
-          end
-
+          ); end
           # @api private
           sig { params(client: Lithic::Client).returns(T.attached_class) }
-          def self.new(client:)
-          end
+          def self.new(client:); end
         end
       end
     end

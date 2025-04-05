@@ -15,8 +15,7 @@ module Lithic
       EXTERNALLY_VERIFIED = T.let(:EXTERNALLY_VERIFIED, Lithic::Models::VerificationMethod::TaggedSymbol)
 
       sig { override.returns(T::Array[Lithic::Models::VerificationMethod::TaggedSymbol]) }
-      def self.values
-      end
+      def self.values; end
     end
   end
 end

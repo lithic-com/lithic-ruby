@@ -77,8 +77,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The status of the event attempt.
       module Status
@@ -93,8 +92,7 @@ module Lithic
         SUCCESS = T.let(:SUCCESS, Lithic::Models::MessageAttempt::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::MessageAttempt::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

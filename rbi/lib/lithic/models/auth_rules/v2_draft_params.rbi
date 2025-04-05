@@ -33,8 +33,7 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(parameters: nil, request_options: {})
-        end
+        def self.new(parameters: nil, request_options: {}); end
 
         sig do
           override
@@ -50,8 +49,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Parameters for the Auth Rule
         module Parameters
@@ -63,8 +61,7 @@ module Lithic
                 [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
               )
           end
-          def self.variants
-          end
+          def self.variants; end
         end
       end
     end

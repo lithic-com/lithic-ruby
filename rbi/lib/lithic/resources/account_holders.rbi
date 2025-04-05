@@ -101,9 +101,7 @@ module Lithic
         #   with the AUTHORIZED_USER in this field.
         business_account_token: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get an Individual or Business Account Holder and/or their KYC or KYB evaluation
       #   status.
       sig do
@@ -117,9 +115,7 @@ module Lithic
         # Globally unique identifier for the account holder.
         account_holder_token,
         request_options: {}
-      )
-      end
-
+      ); end
       # Update the information associated with a particular account holder (including
       #   business owners and control persons associated to a business account). If Lithic
       #   is performing KYB or KYC and additional verification is required we will run the
@@ -218,9 +214,7 @@ module Lithic
         #   verification during the digital wallet tokenization process.
         phone_number: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get a list of individual or business account holders and their KYC or KYB
       #   evaluation status.
       sig do
@@ -272,9 +266,7 @@ module Lithic
         #   begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve the status of account holder document uploads, or retrieve the upload
       #   URLs to process your image uploads.
       #
@@ -301,9 +293,7 @@ module Lithic
         # Globally unique identifier for the account holder.
         account_holder_token,
         request_options: {}
-      )
-      end
-
+      ); end
       # Check the status of an account holder document upload, or retrieve the upload
       #   URLs to process your image uploads.
       #
@@ -332,9 +322,7 @@ module Lithic
         # Globally unique identifier for the account holder.
         account_holder_token:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Simulates a review for an account holder document upload.
       sig do
         params(
@@ -357,9 +345,7 @@ module Lithic
         #   Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
         status_reason: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Simulates an enrollment review for an account holder. This endpoint is only
       #   applicable for workflows that may required intervention such as `KYB_BASIC`.
       sig do
@@ -380,9 +366,7 @@ module Lithic
         #   Only required for a `REJECTED` status.
         status_reasons: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Use this endpoint to identify which type of supported government-issued
       #   documentation you will upload for further verification. It will return two URLs
       #   to upload your document images to - one for the front image and one for the back
@@ -418,13 +402,10 @@ module Lithic
         # Globally unique identifier for the entity.
         entity_token:,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

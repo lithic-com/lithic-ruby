@@ -85,9 +85,7 @@ module Lithic
           starting_after: nil,
           status: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -103,8 +101,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Financial Transaction category to be returned.
         module Category
@@ -142,8 +139,7 @@ module Lithic
                 T::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Financial Transaction result to be returned.
@@ -170,8 +166,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Financial Transaction status to be returned.
@@ -206,8 +201,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

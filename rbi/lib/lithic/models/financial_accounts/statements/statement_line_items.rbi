@@ -18,8 +18,7 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(data:, has_more:)
-          end
+          def self.new(data:, has_more:); end
 
           sig do
             override
@@ -30,8 +29,7 @@ module Lithic
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Data < Lithic::Internal::Type::BaseModel
             # Globally unique identifier for a Statement Line Item
@@ -116,9 +114,7 @@ module Lithic
               financial_transaction_token:,
               card_token: nil,
               descriptor: nil
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -138,8 +134,7 @@ module Lithic
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             module Category
               extend Lithic::Internal::Type::Enum
@@ -217,8 +212,7 @@ module Lithic
                     T::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             module EventType
@@ -562,8 +556,7 @@ module Lithic
                     T::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
         end

@@ -77,9 +77,7 @@ module Lithic
         status:,
         updated:,
         user_defined_id: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -100,8 +98,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Category
         extend Lithic::Internal::Type::Enum
@@ -120,8 +117,7 @@ module Lithic
           T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module Direction
@@ -135,8 +131,7 @@ module Lithic
         DEBIT = T.let(:DEBIT, Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -213,8 +208,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module DetailedResult
           extend Lithic::Internal::Type::Enum
@@ -231,8 +225,7 @@ module Lithic
             override
               .returns(T::Array[Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         module Result
@@ -247,8 +240,7 @@ module Lithic
           DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         module Type
@@ -298,8 +290,7 @@ module Lithic
             )
 
           sig { override.returns(T::Array[Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -314,8 +305,7 @@ module Lithic
         DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module Status
@@ -332,8 +322,7 @@ module Lithic
         CANCELED = T.let(:CANCELED, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

@@ -27,9 +27,7 @@ module Lithic
         # Customer description of dispute
         customer_note: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get dispute.
       sig do
         params(
@@ -38,8 +36,7 @@ module Lithic
         )
           .returns(Lithic::Models::Dispute)
       end
-      def retrieve(dispute_token, request_options: {})
-      end
+      def retrieve(dispute_token, request_options: {}); end
 
       # Update dispute. Can only be modified if status is `NEW`.
       sig do
@@ -64,9 +61,7 @@ module Lithic
         # Reason for dispute
         reason: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List disputes.
       sig do
         params(
@@ -101,9 +96,7 @@ module Lithic
         # Transaction tokens to filter by.
         transaction_tokens: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Withdraw dispute.
       sig do
         params(
@@ -112,8 +105,7 @@ module Lithic
         )
           .returns(Lithic::Models::Dispute)
       end
-      def delete(dispute_token, request_options: {})
-      end
+      def delete(dispute_token, request_options: {}); end
 
       # Soft delete evidence for a dispute. Evidence will not be reviewed or submitted
       #   by Lithic after it is withdrawn.
@@ -125,8 +117,7 @@ module Lithic
         )
           .returns(Lithic::Models::DisputeEvidence)
       end
-      def delete_evidence(evidence_token, dispute_token:, request_options: {})
-      end
+      def delete_evidence(evidence_token, dispute_token:, request_options: {}); end
 
       # Use this endpoint to upload evidences for the dispute. It will return a URL to
       #   upload your documents to. The URL will expire in 30 minutes.
@@ -146,9 +137,7 @@ module Lithic
         # Filename of the evidence.
         filename: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List evidence metadata for a dispute.
       sig do
         params(
@@ -179,9 +168,7 @@ module Lithic
         #   begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get a dispute's evidence metadata.
       sig do
         params(
@@ -191,13 +178,11 @@ module Lithic
         )
           .returns(Lithic::Models::DisputeEvidence)
       end
-      def retrieve_evidence(evidence_token, dispute_token:, request_options: {})
-      end
+      def retrieve_evidence(evidence_token, dispute_token:, request_options: {}); end
 
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

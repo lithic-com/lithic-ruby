@@ -58,9 +58,7 @@ module Lithic
         pan_range_start:,
         cardholder_currency: nil,
         settlement_currencies: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -75,8 +73,7 @@ module Lithic
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

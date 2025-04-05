@@ -91,9 +91,7 @@ module Lithic
           blocked_mcc: nil,
           card_tokens: nil,
           program_level: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -110,8 +108,7 @@ module Lithic
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Indicates whether the Auth Rule is ACTIVE or INACTIVE
         module State
@@ -125,8 +122,7 @@ module Lithic
           INACTIVE = T.let(:INACTIVE, Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end
