@@ -274,21 +274,21 @@ module Lithic
             required :status,
                      enum: -> { Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Status }
 
-            # @!attribute status_change_reason
-            #   Reason for the financial account status change
+            # @!attribute substatus
+            #   Substatus for the financial account
             #
-            #   @return [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::StatusChangeReason, nil]
-            optional :status_change_reason,
-                     enum: -> { Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::StatusChangeReason },
+            #   @return [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Substatus, nil]
+            optional :substatus,
+                     enum: -> { Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Substatus },
                      nil?: true
 
             # @!parse
             #   # Information about the financial account state
             #   #
             #   # @param status [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Status]
-            #   # @param status_change_reason [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::StatusChangeReason, nil]
+            #   # @param substatus [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Substatus, nil]
             #   #
-            #   def initialize(status:, status_change_reason: nil, **) = super
+            #   def initialize(status:, substatus: nil, **) = super
 
             # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
@@ -310,10 +310,10 @@ module Lithic
               #   def self.values; end
             end
 
-            # Reason for the financial account status change
+            # Substatus for the financial account
             #
-            # @see Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState#status_change_reason
-            module StatusChangeReason
+            # @see Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState#substatus
+            module Substatus
               extend Lithic::Internal::Type::Enum
 
               CHARGED_OFF_DELINQUENT = :CHARGED_OFF_DELINQUENT

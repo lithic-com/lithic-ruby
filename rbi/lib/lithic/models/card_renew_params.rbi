@@ -45,8 +45,8 @@ module Lithic
       sig { params(product_id: String).void }
       attr_writer :product_id
 
-      # Shipping method for the card. Use of options besides `STANDARD` require
-      #   additional permissions.
+      # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
+      #   options besides `STANDARD` require additional permissions.
       #
       #   - `STANDARD` - USPS regular mail or similar international option, with no
       #     tracking
@@ -103,8 +103,8 @@ module Lithic
       def to_hash
       end
 
-      # Shipping method for the card. Use of options besides `STANDARD` require
-      #   additional permissions.
+      # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
+      #   options besides `STANDARD` require additional permissions.
       #
       #   - `STANDARD` - USPS regular mail or similar international option, with no
       #     tracking
@@ -122,7 +122,7 @@ module Lithic
         OrSymbol =
           T.type_alias { T.any(Symbol, String, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol) }
 
-        SHIPPING_METHOD_2_DAY = T.let(:"2-DAY", Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
+        SHIPPING_METHOD_2_DAY = T.let(:"2_DAY", Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
         EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
         EXPRESS = T.let(:EXPRESS, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
         PRIORITY = T.let(:PRIORITY, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)

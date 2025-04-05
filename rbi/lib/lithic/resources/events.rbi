@@ -6,6 +6,9 @@ module Lithic
       sig { returns(Lithic::Resources::Events::Subscriptions) }
       attr_reader :subscriptions
 
+      sig { returns(Lithic::Resources::Events::EventSubscriptions) }
+      attr_reader :event_subscriptions
+
       # Get an event.
       sig do
         params(

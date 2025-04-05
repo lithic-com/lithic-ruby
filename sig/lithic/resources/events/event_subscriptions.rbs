@@ -1,0 +1,15 @@
+module Lithic
+  module Resources
+    class Events
+      class EventSubscriptions
+        def resend: (
+          String event_subscription_token,
+          event_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> nil
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

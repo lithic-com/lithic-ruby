@@ -11,9 +11,8 @@ module Lithic
       #   complete the account enrollment process. This endpoint can only be used on
       #   accounts that are part of the program that the calling API key manages.
       #
-      # @overload create(beneficial_owner_entities:, beneficial_owner_individuals:, business_entity:, control_person:, nature_of_business:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, external_id: nil, kyb_passed_timestamp: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
+      # @overload create(beneficial_owner_individuals:, business_entity:, control_person:, nature_of_business:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
       #
-      # @param beneficial_owner_entities [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity>]
       # @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>]
       # @param business_entity [Lithic::Models::AccountHolderCreateParams::BusinessEntity]
       # @param control_person [Lithic::Models::AccountHolderCreateParams::ControlPerson]
@@ -27,6 +26,7 @@ module Lithic
       # @param kyc_exemption_type [Symbol, Lithic::Models::AccountHolderCreateParams::KYCExemptionType]
       # @param last_name [String]
       # @param phone_number [String]
+      # @param beneficial_owner_entities [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity>]
       # @param external_id [String]
       # @param kyb_passed_timestamp [String]
       # @param website_url [String]

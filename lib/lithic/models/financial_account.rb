@@ -62,13 +62,11 @@ module Lithic
       #   @return [String, nil]
       optional :routing_number, String, nil?: true
 
-      # @!attribute status_change_reason
-      #   Reason for the financial account status change
+      # @!attribute substatus
+      #   Substatus for the financial account
       #
-      #   @return [Symbol, Lithic::Models::FinancialAccount::StatusChangeReason, nil]
-      optional :status_change_reason,
-               enum: -> { Lithic::Models::FinancialAccount::StatusChangeReason },
-               nil?: true
+      #   @return [Symbol, Lithic::Models::FinancialAccount::Substatus, nil]
+      optional :substatus, enum: -> { Lithic::Models::FinancialAccount::Substatus }, nil?: true
 
       # @!parse
       #   # @param token [String]
@@ -82,7 +80,7 @@ module Lithic
       #   # @param updated [Time]
       #   # @param account_number [String, nil]
       #   # @param routing_number [String, nil]
-      #   # @param status_change_reason [Symbol, Lithic::Models::FinancialAccount::StatusChangeReason, nil]
+      #   # @param substatus [Symbol, Lithic::Models::FinancialAccount::Substatus, nil]
       #   #
       #   def initialize(
       #     token:,
@@ -96,7 +94,7 @@ module Lithic
       #     updated:,
       #     account_number: nil,
       #     routing_number: nil,
-      #     status_change_reason: nil,
+      #     substatus: nil,
       #     **
       #   )
       #     super
@@ -244,10 +242,10 @@ module Lithic
         #   def self.values; end
       end
 
-      # Reason for the financial account status change
+      # Substatus for the financial account
       #
-      # @see Lithic::Models::FinancialAccount#status_change_reason
-      module StatusChangeReason
+      # @see Lithic::Models::FinancialAccount#substatus
+      module Substatus
         extend Lithic::Internal::Type::Enum
 
         CHARGED_OFF_DELINQUENT = :CHARGED_OFF_DELINQUENT

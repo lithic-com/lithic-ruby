@@ -113,11 +113,11 @@ module Lithic
 
       # Update financial account status
       #
-      # @overload update_status(financial_account_token, status:, status_change_reason:, request_options: {})
+      # @overload update_status(financial_account_token, status:, substatus:, request_options: {})
       #
       # @param financial_account_token [String]
       # @param status [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status]
-      # @param status_change_reason [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason, nil]
+      # @param substatus [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::FinancialAccount]

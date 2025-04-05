@@ -343,27 +343,27 @@ module Lithic
             end
             attr_accessor :status
 
-            # Reason for the financial account status change
+            # Substatus for the financial account
             sig do
               returns(
                 T.nilable(
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
+                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                 )
               )
             end
-            attr_accessor :status_change_reason
+            attr_accessor :substatus
 
             # Information about the financial account state
             sig do
               params(
                 status: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::OrSymbol,
-                status_change_reason: T.nilable(
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::OrSymbol
+                substatus: T.nilable(
+                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::OrSymbol
                 )
               )
                 .returns(T.attached_class)
             end
-            def self.new(status:, status_change_reason: nil)
+            def self.new(status:, substatus: nil)
             end
 
             sig do
@@ -371,8 +371,8 @@ module Lithic
                 .returns(
                   {
                     status: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol,
-                    status_change_reason: T.nilable(
-                      Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
+                    substatus: T.nilable(
+                      Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                     )
                   }
                 )
@@ -426,54 +426,54 @@ module Lithic
               end
             end
 
-            # Reason for the financial account status change
-            module StatusChangeReason
+            # Substatus for the financial account
+            module Substatus
               extend Lithic::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason)
+                  T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus)
                 end
               OrSymbol =
                 T.type_alias do
                   T.any(
                     Symbol,
                     String,
-                    Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
+                    Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                   )
                 end
 
               CHARGED_OFF_DELINQUENT =
                 T.let(
                   :CHARGED_OFF_DELINQUENT,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
+                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                 )
               CHARGED_OFF_FRAUD =
                 T.let(
                   :CHARGED_OFF_FRAUD,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
+                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                 )
               END_USER_REQUEST =
                 T.let(
                   :END_USER_REQUEST,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
+                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                 )
               BANK_REQUEST =
                 T.let(
                   :BANK_REQUEST,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
+                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                 )
               DELINQUENT =
                 T.let(
                   :DELINQUENT,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
+                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                    Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::StatusChangeReason::TaggedSymbol
+                    Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                     ]
                   )
               end

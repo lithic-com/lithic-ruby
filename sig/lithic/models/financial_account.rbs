@@ -13,7 +13,7 @@ module Lithic
         updated: Time,
         account_number: String?,
         routing_number: String?,
-        status_change_reason: Lithic::Models::FinancialAccount::status_change_reason?
+        substatus: Lithic::Models::FinancialAccount::substatus?
       }
 
     class FinancialAccount < Lithic::Internal::Type::BaseModel
@@ -39,7 +39,7 @@ module Lithic
 
       attr_accessor routing_number: String?
 
-      attr_accessor status_change_reason: Lithic::Models::FinancialAccount::status_change_reason?
+      attr_accessor substatus: Lithic::Models::FinancialAccount::substatus?
 
       def initialize: (
         token: String,
@@ -53,7 +53,7 @@ module Lithic
         updated: Time,
         ?account_number: String?,
         ?routing_number: String?,
-        ?status_change_reason: Lithic::Models::FinancialAccount::status_change_reason?
+        ?substatus: Lithic::Models::FinancialAccount::substatus?
       ) -> void
 
       def to_hash: -> Lithic::Models::financial_account
@@ -156,14 +156,14 @@ module Lithic
         def self?.values: -> ::Array[Lithic::Models::FinancialAccount::type_]
       end
 
-      type status_change_reason =
+      type substatus =
         :CHARGED_OFF_DELINQUENT
         | :CHARGED_OFF_FRAUD
         | :END_USER_REQUEST
         | :BANK_REQUEST
         | :DELINQUENT
 
-      module StatusChangeReason
+      module Substatus
         extend Lithic::Internal::Type::Enum
 
         CHARGED_OFF_DELINQUENT: :CHARGED_OFF_DELINQUENT
@@ -172,7 +172,7 @@ module Lithic
         BANK_REQUEST: :BANK_REQUEST
         DELINQUENT: :DELINQUENT
 
-        def self?.values: -> ::Array[Lithic::Models::FinancialAccount::status_change_reason]
+        def self?.values: -> ::Array[Lithic::Models::FinancialAccount::substatus]
       end
     end
   end

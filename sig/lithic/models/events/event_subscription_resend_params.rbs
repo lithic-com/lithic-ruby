@@ -1,0 +1,22 @@
+module Lithic
+  module Models
+    module Events
+      type event_subscription_resend_params =
+        { event_token: String } & Lithic::Internal::Type::request_parameters
+
+      class EventSubscriptionResendParams < Lithic::Internal::Type::BaseModel
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor event_token: String
+
+        def initialize: (
+          event_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> Lithic::Models::Events::event_subscription_resend_params
+      end
+    end
+  end
+end

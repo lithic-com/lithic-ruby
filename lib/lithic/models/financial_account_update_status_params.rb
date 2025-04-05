@@ -14,20 +14,20 @@ module Lithic
       #   @return [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status]
       required :status, enum: -> { Lithic::Models::FinancialAccountUpdateStatusParams::Status }
 
-      # @!attribute status_change_reason
-      #   Reason for the financial account status change
+      # @!attribute substatus
+      #   Substatus for the financial account
       #
-      #   @return [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason, nil]
-      required :status_change_reason,
-               enum: -> { Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason },
+      #   @return [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil]
+      required :substatus,
+               enum: -> { Lithic::Models::FinancialAccountUpdateStatusParams::Substatus },
                nil?: true
 
       # @!parse
       #   # @param status [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status]
-      #   # @param status_change_reason [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason, nil]
+      #   # @param substatus [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil]
       #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(status:, status_change_reason:, request_options: {}, **) = super
+      #   def initialize(status:, substatus:, request_options: {}, **) = super
 
       # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
@@ -47,8 +47,8 @@ module Lithic
         #   def self.values; end
       end
 
-      # Reason for the financial account status change
-      module StatusChangeReason
+      # Substatus for the financial account
+      module Substatus
         extend Lithic::Internal::Type::Enum
 
         CHARGED_OFF_FRAUD = :CHARGED_OFF_FRAUD
