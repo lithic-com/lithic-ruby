@@ -292,7 +292,7 @@ module Lithic
           #     Maps to EMV 3DS field addrMatch.
           #
           #   @return [Boolean, nil]
-          optional :address_match, Lithic::Internal::Type::BooleanModel, nil?: true
+          optional :address_match, Lithic::Internal::Type::Boolean, nil?: true
 
           # @!attribute [r] billing_address
           #   Object containing data on the billing address provided during the transaction.
@@ -911,14 +911,14 @@ module Lithic
           #     to EMV 3DS field browserJavaEnabled.
           #
           #   @return [Boolean, nil]
-          optional :java_enabled, Lithic::Internal::Type::BooleanModel, nil?: true
+          optional :java_enabled, Lithic::Internal::Type::Boolean, nil?: true
 
           # @!attribute javascript_enabled
           #   Indicates whether the cardholder's browser has the ability to execute
           #     JavaScript. Maps to EMV 3DS field browserJavascriptEnabled.
           #
           #   @return [Boolean, nil]
-          optional :javascript_enabled, Lithic::Internal::Type::BooleanModel, nil?: true
+          optional :javascript_enabled, Lithic::Internal::Type::Boolean, nil?: true
 
           # @!attribute language
           #   Language of the cardholder's browser as defined in IETF BCP47. Maps to EMV 3DS

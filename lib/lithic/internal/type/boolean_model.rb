@@ -8,7 +8,7 @@ module Lithic
       # @abstract
       #
       # Ruby has no Boolean class; this is something for models to refer to.
-      class BooleanModel
+      class Boolean
         extend Lithic::Internal::Type::Converter
 
         # @param other [Object]
@@ -19,7 +19,7 @@ module Lithic
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= Lithic::Internal::Type::BooleanModel
+        def self.==(other) = other.is_a?(Class) && other <= Lithic::Internal::Type::Boolean
 
         class << self
           # @api private

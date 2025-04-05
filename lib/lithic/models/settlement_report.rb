@@ -42,7 +42,7 @@ module Lithic
       #   Indicates that all data expected on the given report date is available.
       #
       #   @return [Boolean]
-      required :is_complete, Lithic::Internal::Type::BooleanModel
+      required :is_complete, Lithic::Internal::Type::Boolean
 
       # @!attribute other_fees_gross_amount
       #   Total amount of gross other fees outside of interchange. (This field is

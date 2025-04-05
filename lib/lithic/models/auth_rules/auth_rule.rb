@@ -86,7 +86,7 @@ module Lithic
         #   Boolean indicating whether the Auth Rule is applied at the program level.
         #
         #   @return [Boolean, nil]
-        optional :program_level, Lithic::Internal::Type::BooleanModel
+        optional :program_level, Lithic::Internal::Type::Boolean
 
         # @!parse
         #   # @return [Boolean]

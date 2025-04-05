@@ -29,7 +29,7 @@ module Lithic
       #   Whether financial account is for the benefit of another entity
       #
       #   @return [Boolean]
-      required :is_for_benefit_of, Lithic::Internal::Type::BooleanModel
+      required :is_for_benefit_of, Lithic::Internal::Type::Boolean
 
       # @!attribute nickname
       #
@@ -139,7 +139,7 @@ module Lithic
         # @!attribute is_spend_blocked
         #
         #   @return [Boolean]
-        required :is_spend_blocked, Lithic::Internal::Type::BooleanModel
+        required :is_spend_blocked, Lithic::Internal::Type::Boolean
 
         # @!attribute tier
         #   Tier assigned to the financial account

@@ -46,7 +46,7 @@ module Lithic
         #   Whether to include the initial statement. It is not included by default.
         #
         #   @return [Boolean, nil]
-        optional :include_initial_statements, Lithic::Internal::Type::BooleanModel
+        optional :include_initial_statements, Lithic::Internal::Type::Boolean
 
         # @!parse
         #   # @return [Boolean]

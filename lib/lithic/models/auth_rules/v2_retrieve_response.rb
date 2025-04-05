@@ -45,7 +45,7 @@ module Lithic
         #   Whether the Auth Rule applies to all authorizations on the card program.
         #
         #   @return [Boolean]
-        required :program_level, Lithic::Internal::Type::BooleanModel
+        required :program_level, Lithic::Internal::Type::Boolean
 
         # @!attribute state
         #   The state of the Auth Rule

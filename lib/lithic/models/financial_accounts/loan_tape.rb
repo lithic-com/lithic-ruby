@@ -231,7 +231,7 @@ module Lithic
           #   Whether the account currently has grace or not
           #
           #   @return [Boolean]
-          required :has_grace, Lithic::Internal::Type::BooleanModel
+          required :has_grace, Lithic::Internal::Type::Boolean
 
           # @!attribute period_number
           #   Current overall period number

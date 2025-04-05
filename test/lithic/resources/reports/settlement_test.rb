@@ -58,7 +58,7 @@ class Lithic::Test::Resources::Reports::SettlementTest < Lithic::Test::ResourceT
         details: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::SettlementSummaryDetails]),
         disputes_gross_amount: Integer,
         interchange_gross_amount: Integer,
-        is_complete: Lithic::Internal::Type::BooleanModel,
+        is_complete: Lithic::Internal::Type::Boolean,
         other_fees_gross_amount: Integer,
         report_date: String,
         settled_net_amount: Integer,

@@ -77,7 +77,7 @@ module Lithic
       #   Whether to include the event payload content in the response.
       #
       #   @return [Boolean, nil]
-      optional :with_content, Lithic::Internal::Type::BooleanModel
+      optional :with_content, Lithic::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]

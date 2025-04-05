@@ -1,7 +1,7 @@
 module Lithic
   module Internal
     module Type
-      class BooleanModel
+      class Boolean
         extend Lithic::Internal::Type::Converter
 
         def self.===: (top other) -> bool
