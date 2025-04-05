@@ -5,15 +5,15 @@ module Lithic
     class KYC < Lithic::Internal::Type::BaseModel
       # @!attribute individual
       #   Information on individual for whom the account is being opened and KYC is being
-      #     run.
+      #   run.
       #
       #   @return [Lithic::Models::KYC::Individual]
       required :individual, -> { Lithic::Models::KYC::Individual }
 
       # @!attribute tos_timestamp
       #   An RFC 3339 timestamp indicating when the account holder accepted the applicable
-      #     legal agreements (e.g., cardholder terms) as agreed upon during API customer's
-      #     implementation with Lithic.
+      #   legal agreements (e.g., cardholder terms) as agreed upon during API customer's
+      #   implementation with Lithic.
       #
       #   @return [String]
       required :tos_timestamp, String
@@ -26,7 +26,7 @@ module Lithic
 
       # @!attribute [r] external_id
       #   A user provided id that can be used to link an account holder with an external
-      #     system
+      #   system
       #
       #   @return [String, nil]
       optional :external_id, String
@@ -37,9 +37,9 @@ module Lithic
 
       # @!attribute [r] kyc_passed_timestamp
       #   An RFC 3339 timestamp indicating when precomputed KYC was completed on the
-      #     individual with a pass result.
+      #   individual with a pass result.
       #
-      #     This field is required only if workflow type is `KYC_BYO`.
+      #   This field is required only if workflow type is `KYC_BYO`.
       #
       #   @return [String, nil]
       optional :kyc_passed_timestamp, String
@@ -63,7 +63,7 @@ module Lithic
       class Individual < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        #     acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+        #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         #
         #   @return [Lithic::Models::Address]
         required :address, -> { Lithic::Models::Address }
@@ -76,7 +76,7 @@ module Lithic
 
         # @!attribute email
         #   Individual's email address. If utilizing Lithic for chargeback processing, this
-        #     customer email address may be used to communicate dispute status and resolution.
+        #   customer email address may be used to communicate dispute status and resolution.
         #
         #   @return [String]
         required :email, String
@@ -89,9 +89,9 @@ module Lithic
 
         # @!attribute government_id
         #   Government-issued identification number (required for identity verification and
-        #     compliance with banking regulations). Social Security Numbers (SSN) and
-        #     Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-        #     entered as full nine-digits, with or without hyphens
+        #   compliance with banking regulations). Social Security Numbers (SSN) and
+        #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+        #   entered as full nine-digits, with or without hyphens
         #
         #   @return [String]
         required :government_id, String
@@ -110,7 +110,7 @@ module Lithic
 
         # @!parse
         #   # Information on individual for whom the account is being opened and KYC is being
-        #   #   run.
+        #   # run.
         #   #
         #   # @param address [Lithic::Models::Address]
         #   # @param dob [String]

@@ -27,7 +27,7 @@ module Lithic
         method_attributes:,
         type:,
         # Customer-provided token that will serve as an idempotency token. This token will
-        #   become the transaction token.
+        # become the transaction token.
         token: nil,
         memo: nil,
         user_defined_id: nil,
@@ -64,22 +64,22 @@ module Lithic
       def list(
         account_token: nil,
         # Date string in RFC 3339 format. Only entries created after the specified time
-        #   will be included. UTC time zone.
+        # will be included. UTC time zone.
         begin_: nil,
         business_account_token: nil,
         category: nil,
         # Date string in RFC 3339 format. Only entries created before the specified time
-        #   will be included. UTC time zone.
+        # will be included. UTC time zone.
         end_: nil,
         # A cursor representing an item's token before which a page of results should end.
-        #   Used to retrieve the previous page of results before this item.
+        # Used to retrieve the previous page of results before this item.
         ending_before: nil,
         financial_account_token: nil,
         # Page size (for pagination).
         page_size: nil,
         result: nil,
         # A cursor representing an item's token after which a page of results should
-        #   begin. Used to retrieve the next page of results after this item.
+        # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
         status: nil,
         request_options: {}

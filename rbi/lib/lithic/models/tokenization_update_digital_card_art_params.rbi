@@ -7,9 +7,9 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       # Specifies the digital card art to be displayed in the user’s digital wallet for
-      #   a tokenization. This artwork must be approved by the network and configured by
-      #   Lithic to use. See
-      #   [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
+      # a tokenization. This artwork must be approved by the network and configured by
+      # Lithic to use. See
+      # [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
       sig { returns(T.nilable(String)) }
       attr_reader :digital_card_art_token
 

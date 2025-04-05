@@ -53,7 +53,7 @@ module Lithic
 
       class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
         # The available spend limit (in cents) relative to the annual limit configured on
-        #   the Card (e.g. 100000 would be a $1,000 limit).
+        # the Card (e.g. 100000 would be a $1,000 limit).
         sig { returns(T.nilable(Integer)) }
         attr_reader :annually
 
@@ -61,7 +61,7 @@ module Lithic
         attr_writer :annually
 
         # The available spend limit (in cents) relative to the forever limit configured on
-        #   the Card.
+        # the Card.
         sig { returns(T.nilable(Integer)) }
         attr_reader :forever
 
@@ -69,7 +69,7 @@ module Lithic
         attr_writer :forever
 
         # The available spend limit (in cents) relative to the monthly limit configured on
-        #   the Card.
+        # the Card.
         sig { returns(T.nilable(Integer)) }
         attr_reader :monthly
 
@@ -114,7 +114,7 @@ module Lithic
 
       class SpendVelocity < Lithic::Internal::Type::BaseModel
         # Current annual spend velocity (in cents) on the Card. Present if annual spend
-        #   limit is set.
+        # limit is set.
         sig { returns(T.nilable(Integer)) }
         attr_reader :annually
 
@@ -122,7 +122,7 @@ module Lithic
         attr_writer :annually
 
         # Current forever spend velocity (in cents) on the Card. Present if forever spend
-        #   limit is set.
+        # limit is set.
         sig { returns(T.nilable(Integer)) }
         attr_reader :forever
 
@@ -130,7 +130,7 @@ module Lithic
         attr_writer :forever
 
         # Current monthly spend velocity (in cents) on the Card. Present if monthly spend
-        #   limit is set.
+        # limit is set.
         sig { returns(T.nilable(Integer)) }
         attr_reader :monthly
 

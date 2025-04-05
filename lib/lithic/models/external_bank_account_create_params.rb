@@ -16,7 +16,7 @@ module Lithic
 
       # @!attribute country
       #   The country that the bank account is located in using ISO 3166-1. We will only
-      #     accept USA bank accounts e.g., USA
+      #   accept USA bank accounts e.g., USA
       #
       #   @return [String]
       required :country, String
@@ -35,7 +35,7 @@ module Lithic
 
       # @!attribute owner
       #   Legal Name of the business or individual who owns the external account. This
-      #     will appear in statements
+      #   will appear in statements
       #
       #   @return [String]
       required :owner, String
@@ -67,8 +67,8 @@ module Lithic
 
       # @!attribute [r] account_token
       #   Indicates which Lithic account the external account is associated with. For
-      #     external accounts that are associated with the program, account_token field
-      #     returned will be null
+      #   external accounts that are associated with the program, account_token field
+      #   returned will be null
       #
       #   @return [String, nil]
       optional :account_token, String

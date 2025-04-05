@@ -4,19 +4,19 @@ module Lithic
   module Models
     class ExternalBankAccountRetrieveResponse < Lithic::Internal::Type::BaseModel
       # A globally unique identifier for this record of an external bank account
-      #   association. If a program links an external bank account to more than one
-      #   end-user or to both the program and the end-user, then Lithic will return each
-      #   record of the association
+      # association. If a program links an external bank account to more than one
+      # end-user or to both the program and the end-user, then Lithic will return each
+      # record of the association
       sig { returns(String) }
       attr_accessor :token
 
       # The country that the bank account is located in using ISO 3166-1. We will only
-      #   accept USA bank accounts e.g., USA
+      # accept USA bank accounts e.g., USA
       sig { returns(String) }
       attr_accessor :country
 
       # An ISO 8601 string representing when this funding source was added to the Lithic
-      #   account.
+      # account.
       sig { returns(Time) }
       attr_accessor :created
 
@@ -25,12 +25,12 @@ module Lithic
       attr_accessor :currency
 
       # The last 4 digits of the bank account. Derived by Lithic from the account number
-      #   passed
+      # passed
       sig { returns(String) }
       attr_accessor :last_four
 
       # Legal Name of the business or individual who owns the external account. This
-      #   will appear in statements
+      # will appear in statements
       sig { returns(String) }
       attr_accessor :owner
 
@@ -63,8 +63,8 @@ module Lithic
       attr_accessor :verification_state
 
       # Indicates which Lithic account the external account is associated with. For
-      #   external accounts that are associated with the program, account_token field
-      #   returned will be null
+      # external accounts that are associated with the program, account_token field
+      # returned will be null
       sig { returns(T.nilable(String)) }
       attr_reader :account_token
 
@@ -121,8 +121,8 @@ module Lithic
       attr_writer :user_defined_id
 
       # Optional free text description of the reason for the failed verification. For
-      #   ACH micro-deposits returned, this field will display the reason return code sent
-      #   by the ACH network
+      # ACH micro-deposits returned, this field will display the reason return code sent
+      # by the ACH network
       sig { returns(T.nilable(String)) }
       attr_reader :verification_failed_reason
 

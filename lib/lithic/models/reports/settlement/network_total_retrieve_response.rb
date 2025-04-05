@@ -31,15 +31,15 @@ module Lithic
 
           # @!attribute institution_id
           #   The institution that activity occurred on. For Mastercard: ICA (Interbank Card
-          #     Association). For Maestro: institution ID. For Visa: lowest level SRE
-          #     (Settlement Reporting Entity).
+          #   Association). For Maestro: institution ID. For Visa: lowest level SRE
+          #   (Settlement Reporting Entity).
           #
           #   @return [String]
           required :institution_id, String
 
           # @!attribute network
           #   Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
-          #     INTERLINK.
+          #   INTERLINK.
           #
           #   @return [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network]
           required :network, enum: -> { Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network }
@@ -52,8 +52,8 @@ module Lithic
 
           # @!attribute settlement_institution_id
           #   The institution responsible for settlement. For Mastercard: same as
-          #     `institution_id`. For Maestro: billing ICA. For Visa: Funds Transfer SRE
-          #     (FTSRE).
+          #   `institution_id`. For Maestro: billing ICA. For Visa: Funds Transfer SRE
+          #   (FTSRE).
           #
           #   @return [String]
           required :settlement_institution_id, String
@@ -128,7 +128,7 @@ module Lithic
 
             # @!attribute net_settlement
             #   `gross_settlement` net of `interchange_fees` and `visa_charges` (if applicable),
-            #     in currency's smallest unit.
+            #   in currency's smallest unit.
             #
             #   @return [Integer]
             required :net_settlement, Integer
@@ -155,7 +155,7 @@ module Lithic
           end
 
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
-          #   INTERLINK.
+          # INTERLINK.
           #
           # @see Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse#network
           module Network

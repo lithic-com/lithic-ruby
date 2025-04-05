@@ -10,7 +10,7 @@ module Lithic
 
       # @!attribute [r] begin_
       #   Date string in RFC 3339 format. Only entries created after the specified time
-      #     will be included. UTC time zone.
+      #   will be included. UTC time zone.
       #
       #   @return [Time, nil]
       optional :begin_, Time, api_name: :begin
@@ -40,7 +40,7 @@ module Lithic
 
       # @!attribute [r] end_
       #   Date string in RFC 3339 format. Only entries created before the specified time
-      #     will be included. UTC time zone.
+      #   will be included. UTC time zone.
       #
       #   @return [Time, nil]
       optional :end_, Time, api_name: :end
@@ -51,7 +51,7 @@ module Lithic
 
       # @!attribute [r] ending_before
       #   A cursor representing an item's token before which a page of results should end.
-      #     Used to retrieve the previous page of results before this item.
+      #   Used to retrieve the previous page of results before this item.
       #
       #   @return [String, nil]
       optional :ending_before, String
@@ -62,7 +62,7 @@ module Lithic
 
       # @!attribute [r] financial_account_token
       #   Globally unique identifier for the financial account or card that will send the
-      #     funds. Accepted type dependent on the program's use case.
+      #   funds. Accepted type dependent on the program's use case.
       #
       #   @return [String, nil]
       optional :financial_account_token, String
@@ -93,7 +93,7 @@ module Lithic
 
       # @!attribute [r] starting_after
       #   A cursor representing an item's token after which a page of results should
-      #     begin. Used to retrieve the next page of results after this item.
+      #   begin. Used to retrieve the next page of results after this item.
       #
       #   @return [String, nil]
       optional :starting_after, String

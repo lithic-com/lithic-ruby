@@ -20,9 +20,9 @@ module Lithic
 
         # The desired state of the Auth Rule.
         #
-        #   Note that only deactivating an Auth Rule through this endpoint is supported at
-        #   this time. If you need to (re-)activate an Auth Rule the /promote endpoint
-        #   should be used to promote a draft to the currently active version.
+        # Note that only deactivating an Auth Rule through this endpoint is supported at
+        # this time. If you need to (re-)activate an Auth Rule the /promote endpoint
+        # should be used to promote a draft to the currently active version.
         sig { returns(T.nilable(Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol)) }
         attr_reader :state
 
@@ -89,9 +89,9 @@ module Lithic
 
         # The desired state of the Auth Rule.
         #
-        #   Note that only deactivating an Auth Rule through this endpoint is supported at
-        #   this time. If you need to (re-)activate an Auth Rule the /promote endpoint
-        #   should be used to promote a draft to the currently active version.
+        # Note that only deactivating an Auth Rule through this endpoint is supported at
+        # this time. If you need to (re-)activate an Auth Rule the /promote endpoint
+        # should be used to promote a draft to the currently active version.
         module State
           extend Lithic::Internal::Type::Enum
 

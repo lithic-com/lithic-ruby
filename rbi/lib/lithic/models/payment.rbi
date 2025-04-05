@@ -20,7 +20,7 @@ module Lithic
       attr_accessor :currency
 
       # A string that provides a description of the payment; may be useful to display to
-      #   users.
+      # users.
       sig { returns(String) }
       attr_accessor :descriptor
 
@@ -49,17 +49,17 @@ module Lithic
       attr_writer :method_attributes
 
       # Pending amount of the payment in the currency's smallest unit (e.g., cents). The
-      #   value of this field will go to zero over time once the payment is settled.
+      # value of this field will go to zero over time once the payment is settled.
       sig { returns(Integer) }
       attr_accessor :pending_amount
 
       # APPROVED payments were successful while DECLINED payments were declined by
-      #   Lithic or returned.
+      # Lithic or returned.
       sig { returns(Lithic::Models::Payment::Result::TaggedSymbol) }
       attr_accessor :result
 
       # Amount of the payment that has been settled in the currency's smallest unit
-      #   (e.g., cents).
+      # (e.g., cents).
       sig { returns(Integer) }
       attr_accessor :settled_amount
 
@@ -68,11 +68,11 @@ module Lithic
 
       # Status types:
       #
-      #   - `DECLINED` - The payment was declined.
-      #   - `PENDING` - The payment is being processed and has yet to settle or release
-      #     (origination debit).
-      #   - `RETURNED` - The payment has been returned.
-      #   - `SETTLED` - The payment is completed.
+      # - `DECLINED` - The payment was declined.
+      # - `PENDING` - The payment is being processed and has yet to settle or release
+      #   (origination debit).
+      # - `RETURNED` - The payment has been returned.
+      # - `SETTLED` - The payment is completed.
       sig { returns(Lithic::Models::Payment::Status::TaggedSymbol) }
       attr_accessor :status
 
@@ -185,7 +185,7 @@ module Lithic
         attr_accessor :token
 
         # Amount of the financial event that has been settled in the currency's smallest
-        #   unit (e.g., cents).
+        # unit (e.g., cents).
         sig { returns(Integer) }
         attr_accessor :amount
 
@@ -194,30 +194,30 @@ module Lithic
         attr_accessor :created
 
         # APPROVED financial events were successful while DECLINED financial events were
-        #   declined by user, Lithic, or the network.
+        # declined by user, Lithic, or the network.
         sig { returns(Lithic::Models::Payment::Event::Result::TaggedSymbol) }
         attr_accessor :result
 
         # Event types:
         #
-        #   - `ACH_ORIGINATION_INITIATED` - ACH origination received and pending
-        #     approval/release from an ACH hold.
-        #   - `ACH_ORIGINATION_REVIEWED` - ACH origination has completed the review process.
-        #   - `ACH_ORIGINATION_CANCELLED` - ACH origination has been cancelled.
-        #   - `ACH_ORIGINATION_PROCESSED` - ACH origination has been processed and sent to
-        #     the fed.
-        #   - `ACH_ORIGINATION_SETTLED` - ACH origination has settled.
-        #   - `ACH_ORIGINATION_RELEASED` - ACH origination released from pending to
-        #     available balance.
-        #   - `ACH_RETURN_PROCESSED` - ACH origination returned by the Receiving Depository
-        #     Financial Institution.
-        #   - `ACH_RECEIPT_PROCESSED` - ACH receipt pending release from an ACH holder.
-        #   - `ACH_RETURN_INITIATED` - ACH initiated return for a ACH receipt.
-        #   - `ACH_RECEIPT_SETTLED` - ACH receipt funds have settled.
-        #   - `ACH_RECEIPT_RELEASED` - ACH receipt released from pending to available
-        #     balance.
-        #   - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
-        #     Financial Institution.
+        # - `ACH_ORIGINATION_INITIATED` - ACH origination received and pending
+        #   approval/release from an ACH hold.
+        # - `ACH_ORIGINATION_REVIEWED` - ACH origination has completed the review process.
+        # - `ACH_ORIGINATION_CANCELLED` - ACH origination has been cancelled.
+        # - `ACH_ORIGINATION_PROCESSED` - ACH origination has been processed and sent to
+        #   the fed.
+        # - `ACH_ORIGINATION_SETTLED` - ACH origination has settled.
+        # - `ACH_ORIGINATION_RELEASED` - ACH origination released from pending to
+        #   available balance.
+        # - `ACH_RETURN_PROCESSED` - ACH origination returned by the Receiving Depository
+        #   Financial Institution.
+        # - `ACH_RECEIPT_PROCESSED` - ACH receipt pending release from an ACH holder.
+        # - `ACH_RETURN_INITIATED` - ACH initiated return for a ACH receipt.
+        # - `ACH_RECEIPT_SETTLED` - ACH receipt funds have settled.
+        # - `ACH_RECEIPT_RELEASED` - ACH receipt released from pending to available
+        #   balance.
+        # - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
+        #   Financial Institution.
         sig { returns(Lithic::Models::Payment::Event::Type::TaggedSymbol) }
         attr_accessor :type
 
@@ -257,7 +257,7 @@ module Lithic
         def to_hash; end
 
         # APPROVED financial events were successful while DECLINED financial events were
-        #   declined by user, Lithic, or the network.
+        # declined by user, Lithic, or the network.
         module Result
           extend Lithic::Internal::Type::Enum
 
@@ -273,24 +273,24 @@ module Lithic
 
         # Event types:
         #
-        #   - `ACH_ORIGINATION_INITIATED` - ACH origination received and pending
-        #     approval/release from an ACH hold.
-        #   - `ACH_ORIGINATION_REVIEWED` - ACH origination has completed the review process.
-        #   - `ACH_ORIGINATION_CANCELLED` - ACH origination has been cancelled.
-        #   - `ACH_ORIGINATION_PROCESSED` - ACH origination has been processed and sent to
-        #     the fed.
-        #   - `ACH_ORIGINATION_SETTLED` - ACH origination has settled.
-        #   - `ACH_ORIGINATION_RELEASED` - ACH origination released from pending to
-        #     available balance.
-        #   - `ACH_RETURN_PROCESSED` - ACH origination returned by the Receiving Depository
-        #     Financial Institution.
-        #   - `ACH_RECEIPT_PROCESSED` - ACH receipt pending release from an ACH holder.
-        #   - `ACH_RETURN_INITIATED` - ACH initiated return for a ACH receipt.
-        #   - `ACH_RECEIPT_SETTLED` - ACH receipt funds have settled.
-        #   - `ACH_RECEIPT_RELEASED` - ACH receipt released from pending to available
-        #     balance.
-        #   - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
-        #     Financial Institution.
+        # - `ACH_ORIGINATION_INITIATED` - ACH origination received and pending
+        #   approval/release from an ACH hold.
+        # - `ACH_ORIGINATION_REVIEWED` - ACH origination has completed the review process.
+        # - `ACH_ORIGINATION_CANCELLED` - ACH origination has been cancelled.
+        # - `ACH_ORIGINATION_PROCESSED` - ACH origination has been processed and sent to
+        #   the fed.
+        # - `ACH_ORIGINATION_SETTLED` - ACH origination has settled.
+        # - `ACH_ORIGINATION_RELEASED` - ACH origination released from pending to
+        #   available balance.
+        # - `ACH_RETURN_PROCESSED` - ACH origination returned by the Receiving Depository
+        #   Financial Institution.
+        # - `ACH_RECEIPT_PROCESSED` - ACH receipt pending release from an ACH holder.
+        # - `ACH_RETURN_INITIATED` - ACH initiated return for a ACH receipt.
+        # - `ACH_RECEIPT_SETTLED` - ACH receipt funds have settled.
+        # - `ACH_RECEIPT_RELEASED` - ACH receipt released from pending to available
+        #   balance.
+        # - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
+        #   Financial Institution.
         module Type
           extend Lithic::Internal::Type::Enum
 
@@ -427,7 +427,7 @@ module Lithic
       end
 
       # APPROVED payments were successful while DECLINED payments were declined by
-      #   Lithic or returned.
+      # Lithic or returned.
       module Result
         extend Lithic::Internal::Type::Enum
 
@@ -456,11 +456,11 @@ module Lithic
 
       # Status types:
       #
-      #   - `DECLINED` - The payment was declined.
-      #   - `PENDING` - The payment is being processed and has yet to settle or release
-      #     (origination debit).
-      #   - `RETURNED` - The payment has been returned.
-      #   - `SETTLED` - The payment is completed.
+      # - `DECLINED` - The payment was declined.
+      # - `PENDING` - The payment is being processed and has yet to settle or release
+      #   (origination debit).
+      # - `RETURNED` - The payment has been returned.
+      # - `SETTLED` - The payment is completed.
       module Status
         extend Lithic::Internal::Type::Enum
 

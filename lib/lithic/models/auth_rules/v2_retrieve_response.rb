@@ -111,7 +111,7 @@ module Lithic
           response_only do
             # @!attribute version
             #   The version of the rule, this is incremented whenever the rule's parameters
-            #     change.
+            #   change.
             #
             #   @return [Integer]
             required :version, Integer
@@ -153,7 +153,7 @@ module Lithic
           response_only do
             # @!attribute version
             #   The version of the rule, this is incremented whenever the rule's parameters
-            #     change.
+            #   change.
             #
             #   @return [Integer]
             required :version, Integer

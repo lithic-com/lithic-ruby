@@ -21,7 +21,7 @@ module Lithic
       attr_writer :status
 
       # Status reason that will be associated with the simulated account holder status.
-      #   Only required for a `REJECTED` status.
+      # Only required for a `REJECTED` status.
       sig do
         returns(
           T.nilable(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol])

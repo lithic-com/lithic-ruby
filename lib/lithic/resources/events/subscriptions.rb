@@ -167,10 +167,10 @@ module Lithic
         end
 
         # Replays messages to the endpoint. Only messages that were created after `begin`
-        #   will be sent. Messages that were previously sent to the endpoint are not resent.
-        #   Message will be retried if endpoint responds with a non-2xx status code. See
-        #   [Retry Schedule](https://docs.lithic.com/docs/events-api#retry-schedule) for
-        #   details.
+        # will be sent. Messages that were previously sent to the endpoint are not resent.
+        # Message will be retried if endpoint responds with a non-2xx status code. See
+        # [Retry Schedule](https://docs.lithic.com/docs/events-api#retry-schedule) for
+        # details.
         #
         # @overload replay_missing(event_subscription_token, begin_: nil, end_: nil, request_options: {})
         #
@@ -213,7 +213,7 @@ module Lithic
         end
 
         # Rotate the secret for an event subscription. The previous secret will be valid
-        #   for the next 24 hours.
+        # for the next 24 hours.
         #
         # @overload rotate_secret(event_subscription_token, request_options: {})
         #

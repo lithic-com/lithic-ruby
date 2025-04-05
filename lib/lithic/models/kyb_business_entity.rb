@@ -5,15 +5,15 @@ module Lithic
     class KYBBusinessEntity < Lithic::Internal::Type::BaseModel
       # @!attribute address
       #   Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
-      #     acceptable; APO/FPO are acceptable.
+      #   acceptable; APO/FPO are acceptable.
       #
       #   @return [Lithic::Models::KYBBusinessEntity::Address]
       required :address, -> { Lithic::Models::KYBBusinessEntity::Address }
 
       # @!attribute government_id
       #   Government-issued identification number. US Federal Employer Identification
-      #     Numbers (EIN) are currently supported, entered as full nine-digits, with or
-      #     without hyphens.
+      #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
+      #   without hyphens.
       #
       #   @return [String]
       required :government_id, String
@@ -26,14 +26,14 @@ module Lithic
 
       # @!attribute phone_numbers
       #   One or more of the business's phone number(s), entered as a list in E.164
-      #     format.
+      #   format.
       #
       #   @return [Array<String>]
       required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
       # @!attribute [r] dba_business_name
       #   Any name that the business operates under that is not its legal business name
-      #     (if applicable).
+      #   (if applicable).
       #
       #   @return [String, nil]
       optional :dba_business_name, String
@@ -90,21 +90,21 @@ module Lithic
 
         # @!attribute country
         #   Valid country code. Only USA is currently supported, entered in uppercase ISO
-        #     3166-1 alpha-3 three-character format.
+        #   3166-1 alpha-3 three-character format.
         #
         #   @return [String]
         required :country, String
 
         # @!attribute postal_code
         #   Valid postal code. Only USA ZIP codes are currently supported, entered as a
-        #     five-digit ZIP or nine-digit ZIP+4.
+        #   five-digit ZIP or nine-digit ZIP+4.
         #
         #   @return [String]
         required :postal_code, String
 
         # @!attribute state
         #   Valid state code. Only USA state codes are currently supported, entered in
-        #     uppercase ISO 3166-2 two-character format.
+        #   uppercase ISO 3166-2 two-character format.
         #
         #   @return [String]
         required :state, String
@@ -121,7 +121,7 @@ module Lithic
 
         # @!parse
         #   # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
-        #   #   acceptable; APO/FPO are acceptable.
+        #   # acceptable; APO/FPO are acceptable.
         #   #
         #   # @param address1 [String]
         #   # @param city [String]

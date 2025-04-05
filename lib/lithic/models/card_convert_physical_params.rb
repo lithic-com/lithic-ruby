@@ -26,8 +26,8 @@ module Lithic
 
       # @!attribute [r] product_id
       #   Specifies the configuration (e.g. physical card art) that the card should be
-      #     manufactured with, and only applies to cards of type `PHYSICAL`. This must be
-      #     configured with Lithic before use.
+      #   manufactured with, and only applies to cards of type `PHYSICAL`. This must be
+      #   configured with Lithic before use.
       #
       #   @return [String, nil]
       optional :product_id, String
@@ -38,17 +38,17 @@ module Lithic
 
       # @!attribute [r] shipping_method
       #   Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
-      #     options besides `STANDARD` require additional permissions.
+      #   options besides `STANDARD` require additional permissions.
       #
-      #     - `STANDARD` - USPS regular mail or similar international option, with no
-      #       tracking
-      #     - `STANDARD_WITH_TRACKING` - USPS regular mail or similar international option,
-      #       with tracking
-      #     - `PRIORITY` - USPS Priority, 1-3 day shipping, with tracking
-      #     - `EXPRESS` - FedEx Express, 3-day shipping, with tracking
-      #     - `2_DAY` - FedEx 2-day shipping, with tracking
-      #     - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
-      #       tracking
+      #   - `STANDARD` - USPS regular mail or similar international option, with no
+      #     tracking
+      #   - `STANDARD_WITH_TRACKING` - USPS regular mail or similar international option,
+      #     with tracking
+      #   - `PRIORITY` - USPS Priority, 1-3 day shipping, with tracking
+      #   - `EXPRESS` - FedEx Express, 3-day shipping, with tracking
+      #   - `2_DAY` - FedEx 2-day shipping, with tracking
+      #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
+      #     tracking
       #
       #   @return [Symbol, Lithic::Models::CardConvertPhysicalParams::ShippingMethod, nil]
       optional :shipping_method, enum: -> { Lithic::Models::CardConvertPhysicalParams::ShippingMethod }
@@ -69,17 +69,17 @@ module Lithic
       # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
-      #   options besides `STANDARD` require additional permissions.
+      # options besides `STANDARD` require additional permissions.
       #
-      #   - `STANDARD` - USPS regular mail or similar international option, with no
-      #     tracking
-      #   - `STANDARD_WITH_TRACKING` - USPS regular mail or similar international option,
-      #     with tracking
-      #   - `PRIORITY` - USPS Priority, 1-3 day shipping, with tracking
-      #   - `EXPRESS` - FedEx Express, 3-day shipping, with tracking
-      #   - `2_DAY` - FedEx 2-day shipping, with tracking
-      #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
-      #     tracking
+      # - `STANDARD` - USPS regular mail or similar international option, with no
+      #   tracking
+      # - `STANDARD_WITH_TRACKING` - USPS regular mail or similar international option,
+      #   with tracking
+      # - `PRIORITY` - USPS Priority, 1-3 day shipping, with tracking
+      # - `EXPRESS` - FedEx Express, 3-day shipping, with tracking
+      # - `2_DAY` - FedEx 2-day shipping, with tracking
+      # - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
+      #   tracking
       module ShippingMethod
         extend Lithic::Internal::Type::Enum
 

@@ -11,7 +11,7 @@ module Lithic
       attr_accessor :account_number
 
       # The country that the bank account is located in using ISO 3166-1. We will only
-      #   accept USA bank accounts e.g., USA
+      # accept USA bank accounts e.g., USA
       sig { returns(String) }
       attr_accessor :country
 
@@ -24,7 +24,7 @@ module Lithic
       attr_accessor :financial_account_token
 
       # Legal Name of the business or individual who owns the external account. This
-      #   will appear in statements
+      # will appear in statements
       sig { returns(String) }
       attr_accessor :owner
 
@@ -45,8 +45,8 @@ module Lithic
       attr_accessor :verification_method
 
       # Indicates which Lithic account the external account is associated with. For
-      #   external accounts that are associated with the program, account_token field
-      #   returned will be null
+      # external accounts that are associated with the program, account_token field
+      # returned will be null
       sig { returns(T.nilable(String)) }
       attr_reader :account_token
 

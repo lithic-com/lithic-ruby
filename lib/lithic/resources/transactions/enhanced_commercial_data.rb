@@ -5,7 +5,7 @@ module Lithic
     class Transactions
       class EnhancedCommercialData
         # Get all L2/L3 enhanced commercial data associated with a transaction. Not
-        #   available in sandbox.
+        # available in sandbox.
         #
         # @overload retrieve(transaction_token, request_options: {})
         #

@@ -6,23 +6,23 @@ module Lithic
     class ExternalBankAccountCreateResponse < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   A globally unique identifier for this record of an external bank account
-      #     association. If a program links an external bank account to more than one
-      #     end-user or to both the program and the end-user, then Lithic will return each
-      #     record of the association
+      #   association. If a program links an external bank account to more than one
+      #   end-user or to both the program and the end-user, then Lithic will return each
+      #   record of the association
       #
       #   @return [String]
       required :token, String
 
       # @!attribute country
       #   The country that the bank account is located in using ISO 3166-1. We will only
-      #     accept USA bank accounts e.g., USA
+      #   accept USA bank accounts e.g., USA
       #
       #   @return [String]
       required :country, String
 
       # @!attribute created
       #   An ISO 8601 string representing when this funding source was added to the Lithic
-      #     account.
+      #   account.
       #
       #   @return [Time]
       required :created, Time
@@ -35,14 +35,14 @@ module Lithic
 
       # @!attribute last_four
       #   The last 4 digits of the bank account. Derived by Lithic from the account number
-      #     passed
+      #   passed
       #
       #   @return [String]
       required :last_four, String
 
       # @!attribute owner
       #   Legal Name of the business or individual who owns the external account. This
-      #     will appear in statements
+      #   will appear in statements
       #
       #   @return [String]
       required :owner, String
@@ -93,8 +93,8 @@ module Lithic
 
       # @!attribute [r] account_token
       #   Indicates which Lithic account the external account is associated with. For
-      #     external accounts that are associated with the program, account_token field
-      #     returned will be null
+      #   external accounts that are associated with the program, account_token field
+      #   returned will be null
       #
       #   @return [String, nil]
       optional :account_token, String
@@ -175,8 +175,8 @@ module Lithic
 
       # @!attribute [r] verification_failed_reason
       #   Optional free text description of the reason for the failed verification. For
-      #     ACH micro-deposits returned, this field will display the reason return code sent
-      #     by the ACH network
+      #   ACH micro-deposits returned, this field will display the reason return code sent
+      #   by the ACH network
       #
       #   @return [String, nil]
       optional :verification_failed_reason, String

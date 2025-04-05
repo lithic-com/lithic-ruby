@@ -8,12 +8,12 @@ module Lithic
       attr_accessor :entity_token
 
       # rovides the status reasons that will be satisfied by providing one of the valid
-      #   documents.
+      # documents.
       sig { returns(T::Array[String]) }
       attr_accessor :status_reasons
 
       # A list of valid documents that will satisfy the KYC requirements for the
-      #   specified entity.
+      # specified entity.
       sig { returns(T::Array[String]) }
       attr_accessor :valid_documents
 

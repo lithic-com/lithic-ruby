@@ -60,7 +60,7 @@ module Lithic
 
       # @!attribute [r] owner
       #   Legal Name of the business or individual who owns the external account. This
-      #     will appear in statements
+      #   will appear in statements
       #
       #   @return [String, nil]
       optional :owner, String

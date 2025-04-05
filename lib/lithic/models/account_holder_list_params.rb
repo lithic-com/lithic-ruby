@@ -10,7 +10,7 @@ module Lithic
 
       # @!attribute [r] begin_
       #   Date string in RFC 3339 format. Only entries created after the specified time
-      #     will be included. UTC time zone.
+      #   will be included. UTC time zone.
       #
       #   @return [Time, nil]
       optional :begin_, Time, api_name: :begin
@@ -21,7 +21,7 @@ module Lithic
 
       # @!attribute [r] email
       #   Email address of the account holder. The query must be an exact match, case
-      #     insensitive.
+      #   insensitive.
       #
       #   @return [String, nil]
       optional :email, String
@@ -32,7 +32,7 @@ module Lithic
 
       # @!attribute [r] end_
       #   Date string in RFC 3339 format. Only entries created before the specified time
-      #     will be included. UTC time zone.
+      #   will be included. UTC time zone.
       #
       #   @return [Time, nil]
       optional :end_, Time, api_name: :end
@@ -43,7 +43,7 @@ module Lithic
 
       # @!attribute [r] ending_before
       #   A cursor representing an item's token before which a page of results should end.
-      #     Used to retrieve the previous page of results before this item.
+      #   Used to retrieve the previous page of results before this item.
       #
       #   @return [String, nil]
       optional :ending_before, String
@@ -64,7 +64,7 @@ module Lithic
 
       # @!attribute [r] first_name
       #   (Individual Account Holders only) The first name of the account holder. The
-      #     query is case insensitive and supports partial matches.
+      #   query is case insensitive and supports partial matches.
       #
       #   @return [String, nil]
       optional :first_name, String
@@ -75,7 +75,7 @@ module Lithic
 
       # @!attribute [r] last_name
       #   (Individual Account Holders only) The last name of the account holder. The query
-      #     is case insensitive and supports partial matches.
+      #   is case insensitive and supports partial matches.
       #
       #   @return [String, nil]
       optional :last_name, String
@@ -86,7 +86,7 @@ module Lithic
 
       # @!attribute [r] legal_business_name
       #   (Business Account Holders only) The legal business name of the account holder.
-      #     The query is case insensitive and supports partial matches.
+      #   The query is case insensitive and supports partial matches.
       #
       #   @return [String, nil]
       optional :legal_business_name, String
@@ -117,7 +117,7 @@ module Lithic
 
       # @!attribute [r] starting_after
       #   A cursor representing an item's token after which a page of results should
-      #     begin. Used to retrieve the next page of results after this item.
+      #   begin. Used to retrieve the next page of results after this item.
       #
       #   @return [String, nil]
       optional :starting_after, String

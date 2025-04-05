@@ -25,11 +25,11 @@ module Lithic
       # @!attribute upload_status
       #   Upload status types:
       #
-      #     - `DELETED` - Evidence was deleted.
-      #     - `ERROR` - Evidence upload failed.
-      #     - `PENDING` - Evidence is pending upload.
-      #     - `REJECTED` - Evidence was rejected.
-      #     - `UPLOADED` - Evidence was uploaded.
+      #   - `DELETED` - Evidence was deleted.
+      #   - `ERROR` - Evidence upload failed.
+      #   - `PENDING` - Evidence is pending upload.
+      #   - `REJECTED` - Evidence was rejected.
+      #   - `UPLOADED` - Evidence was uploaded.
       #
       #   @return [Symbol, Lithic::Models::DisputeEvidence::UploadStatus]
       required :upload_status, enum: -> { Lithic::Models::DisputeEvidence::UploadStatus }
@@ -46,7 +46,7 @@ module Lithic
 
       # @!attribute [r] filename
       #   File name of evidence. Recommended to give the dispute evidence a human-readable
-      #     identifier.
+      #   identifier.
       #
       #   @return [String, nil]
       optional :filename, String
@@ -82,11 +82,11 @@ module Lithic
 
       # Upload status types:
       #
-      #   - `DELETED` - Evidence was deleted.
-      #   - `ERROR` - Evidence upload failed.
-      #   - `PENDING` - Evidence is pending upload.
-      #   - `REJECTED` - Evidence was rejected.
-      #   - `UPLOADED` - Evidence was uploaded.
+      # - `DELETED` - Evidence was deleted.
+      # - `ERROR` - Evidence upload failed.
+      # - `PENDING` - Evidence is pending upload.
+      # - `REJECTED` - Evidence was rejected.
+      # - `UPLOADED` - Evidence was uploaded.
       #
       # @see Lithic::Models::DisputeEvidence#upload_status
       module UploadStatus

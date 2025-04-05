@@ -5,7 +5,7 @@ module Lithic
     class KYCExempt < Lithic::Internal::Type::BaseModel
       # @!attribute address
       #   KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
-      #     acceptable; APO/FPO are acceptable.
+      #   acceptable; APO/FPO are acceptable.
       #
       #   @return [Lithic::Models::Address]
       required :address, -> { Lithic::Models::Address }
@@ -48,8 +48,8 @@ module Lithic
 
       # @!attribute [r] business_account_token
       #   Only applicable for customers using the KYC-Exempt workflow to enroll authorized
-      #     users of businesses. Pass the account_token of the enrolled business associated
-      #     with the AUTHORIZED_USER in this field.
+      #   users of businesses. Pass the account_token of the enrolled business associated
+      #   with the AUTHORIZED_USER in this field.
       #
       #   @return [String, nil]
       optional :business_account_token, String
@@ -60,7 +60,7 @@ module Lithic
 
       # @!attribute [r] external_id
       #   A user provided id that can be used to link an account holder with an external
-      #     system
+      #   system
       #
       #   @return [String, nil]
       optional :external_id, String

@@ -4,7 +4,7 @@ module Lithic
   module Models
     class KYC < Lithic::Internal::Type::BaseModel
       # Information on individual for whom the account is being opened and KYC is being
-      #   run.
+      # run.
       sig { returns(Lithic::Models::KYC::Individual) }
       attr_reader :individual
 
@@ -12,8 +12,8 @@ module Lithic
       attr_writer :individual
 
       # An RFC 3339 timestamp indicating when the account holder accepted the applicable
-      #   legal agreements (e.g., cardholder terms) as agreed upon during API customer's
-      #   implementation with Lithic.
+      # legal agreements (e.g., cardholder terms) as agreed upon during API customer's
+      # implementation with Lithic.
       sig { returns(String) }
       attr_accessor :tos_timestamp
 
@@ -22,7 +22,7 @@ module Lithic
       attr_accessor :workflow
 
       # A user provided id that can be used to link an account holder with an external
-      #   system
+      # system
       sig { returns(T.nilable(String)) }
       attr_reader :external_id
 
@@ -30,9 +30,9 @@ module Lithic
       attr_writer :external_id
 
       # An RFC 3339 timestamp indicating when precomputed KYC was completed on the
-      #   individual with a pass result.
+      # individual with a pass result.
       #
-      #   This field is required only if workflow type is `KYC_BYO`.
+      # This field is required only if workflow type is `KYC_BYO`.
       sig { returns(T.nilable(String)) }
       attr_reader :kyc_passed_timestamp
 
@@ -67,7 +67,7 @@ module Lithic
 
       class Individual < Lithic::Internal::Type::BaseModel
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig { returns(Lithic::Models::Address) }
         attr_reader :address
 
@@ -79,7 +79,7 @@ module Lithic
         attr_accessor :dob
 
         # Individual's email address. If utilizing Lithic for chargeback processing, this
-        #   customer email address may be used to communicate dispute status and resolution.
+        # customer email address may be used to communicate dispute status and resolution.
         sig { returns(String) }
         attr_accessor :email
 
@@ -88,9 +88,9 @@ module Lithic
         attr_accessor :first_name
 
         # Government-issued identification number (required for identity verification and
-        #   compliance with banking regulations). Social Security Numbers (SSN) and
-        #   Individual Taxpayer Identification Numbers (ITIN) are currently supported,
-        #   entered as full nine-digits, with or without hyphens
+        # compliance with banking regulations). Social Security Numbers (SSN) and
+        # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+        # entered as full nine-digits, with or without hyphens
         sig { returns(String) }
         attr_accessor :government_id
 
@@ -103,7 +103,7 @@ module Lithic
         attr_accessor :phone_number
 
         # Information on individual for whom the account is being opened and KYC is being
-        #   run.
+        # run.
         sig do
           params(
             address: T.any(Lithic::Models::Address, Lithic::Internal::AnyHash),

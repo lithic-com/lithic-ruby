@@ -87,7 +87,7 @@ module Lithic
       end
 
       # Retrieve information on your financial accounts including routing and account
-      #   number.
+      # number.
       #
       # @overload list(account_token: nil, business_account_token: nil, type: nil, request_options: {})
       #

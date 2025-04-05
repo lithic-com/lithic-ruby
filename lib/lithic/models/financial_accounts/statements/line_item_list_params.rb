@@ -18,7 +18,7 @@ module Lithic
 
           # @!attribute [r] ending_before
           #   A cursor representing an item's token before which a page of results should end.
-          #     Used to retrieve the previous page of results before this item.
+          #   Used to retrieve the previous page of results before this item.
           #
           #   @return [String, nil]
           optional :ending_before, String
@@ -39,7 +39,7 @@ module Lithic
 
           # @!attribute [r] starting_after
           #   A cursor representing an item's token after which a page of results should
-          #     begin. Used to retrieve the next page of results after this item.
+          #   begin. Used to retrieve the next page of results after this item.
           #
           #   @return [String, nil]
           optional :starting_after, String
