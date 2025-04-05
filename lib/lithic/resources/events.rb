@@ -6,6 +6,9 @@ module Lithic
       # @return [Lithic::Resources::Events::Subscriptions]
       attr_reader :subscriptions
 
+      # @return [Lithic::Resources::Events::EventSubscriptions]
+      attr_reader :event_subscriptions
+
       # Get an event.
       #
       # @overload retrieve(event_token, request_options: {})
@@ -87,6 +90,7 @@ module Lithic
       def initialize(client:)
         @client = client
         @subscriptions = Lithic::Resources::Events::Subscriptions.new(client: client)
+        @event_subscriptions = Lithic::Resources::Events::EventSubscriptions.new(client: client)
       end
     end
   end

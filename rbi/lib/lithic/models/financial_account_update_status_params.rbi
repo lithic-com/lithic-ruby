@@ -10,19 +10,19 @@ module Lithic
       sig { returns(Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol) }
       attr_accessor :status
 
-      # Reason for the financial account status change
-      sig { returns(T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol)) }
-      attr_accessor :status_change_reason
+      # Substatus for the financial account
+      sig { returns(T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::OrSymbol)) }
+      attr_accessor :substatus
 
       sig do
         params(
           status: Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol,
-          status_change_reason: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol),
+          substatus: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::OrSymbol),
           request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(status:, status_change_reason:, request_options: {})
+      def self.new(status:, substatus:, request_options: {})
       end
 
       sig do
@@ -30,7 +30,7 @@ module Lithic
           .returns(
             {
               status: Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol,
-              status_change_reason: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol),
+              substatus: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::OrSymbol),
               request_options: Lithic::RequestOptions
             }
           )
@@ -56,43 +56,28 @@ module Lithic
         end
       end
 
-      # Reason for the financial account status change
-      module StatusChangeReason
+      # Substatus for the financial account
+      module Substatus
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason) }
+          T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus) }
         OrSymbol =
-          T.type_alias do
-            T.any(
-              Symbol,
-              String,
-              Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol
-            )
-          end
+          T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::TaggedSymbol) }
 
         CHARGED_OFF_FRAUD =
-          T.let(
-            :CHARGED_OFF_FRAUD,
-            Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol
-          )
+          T.let(:CHARGED_OFF_FRAUD, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::TaggedSymbol)
         END_USER_REQUEST =
-          T.let(
-            :END_USER_REQUEST,
-            Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol
-          )
+          T.let(:END_USER_REQUEST, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::TaggedSymbol)
         BANK_REQUEST =
-          T.let(:BANK_REQUEST, Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol)
+          T.let(:BANK_REQUEST, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::TaggedSymbol)
         CHARGED_OFF_DELINQUENT =
           T.let(
             :CHARGED_OFF_DELINQUENT,
-            Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol
+            Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::TaggedSymbol
           )
 
-        sig do
-          override
-            .returns(T::Array[Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::TaggedSymbol])
-        end
+        sig { override.returns(T::Array[Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::TaggedSymbol]) }
         def self.values
         end
       end

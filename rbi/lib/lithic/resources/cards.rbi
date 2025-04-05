@@ -289,8 +289,8 @@ module Lithic
         #   manufactured with, and only applies to cards of type `PHYSICAL`. This must be
         #   configured with Lithic before use.
         product_id: nil,
-        # Shipping method for the card. Use of options besides `STANDARD` require
-        #   additional permissions.
+        # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
+        #   options besides `STANDARD` require additional permissions.
         #
         #   - `STANDARD` - USPS regular mail or similar international option, with no
         #     tracking
@@ -425,8 +425,8 @@ module Lithic
         product_id: nil,
         # If omitted, the previous shipping address will be used.
         shipping_address: nil,
-        # Shipping method for the card. Use of options besides `STANDARD` require
-        #   additional permissions.
+        # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
+        #   options besides `STANDARD` require additional permissions.
         #
         #   - `STANDARD` - USPS regular mail or similar international option, with no
         #     tracking
@@ -442,12 +442,15 @@ module Lithic
       )
       end
 
-      # Creates a new card with the same card token and PAN, but updated expiry and CVC2
-      #   code. The original card will keep working for card-present transactions until
-      #   the new card is activated. For card-not-present transactions, the original card
-      #   details (expiry, CVC2) will also keep working until the new card is activated.
-      #   Applies to card types `PHYSICAL` and `VIRTUAL`. A card can be replaced or
-      #   renewed a total of 8 times.
+      # Applies to card types `PHYSICAL` and `VIRTUAL`. For `PHYSICAL`, creates a new
+      #   card with the same card token and PAN, but updated expiry and CVC2 code. The
+      #   original card will keep working for card-present transactions until the new card
+      #   is activated. For card-not-present transactions, the original card details
+      #   (expiry, CVC2) will also keep working until the new card is activated. A
+      #   `PHYSICAL` card can be replaced or renewed a total of 8 times. For `VIRTUAL`,
+      #   the card will retain the same card token and PAN and receive an updated expiry
+      #   and CVC2 code. `product_id`, `shipping_method`, `shipping_address`, `carrier`
+      #   are only relevant for renewing `PHYSICAL` cards.
       sig do
         params(
           card_token: String,
@@ -477,8 +480,8 @@ module Lithic
         #   manufactured with, and only applies to cards of type `PHYSICAL`. This must be
         #   configured with Lithic before use.
         product_id: nil,
-        # Shipping method for the card. Use of options besides `STANDARD` require
-        #   additional permissions.
+        # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
+        #   options besides `STANDARD` require additional permissions.
         #
         #   - `STANDARD` - USPS regular mail or similar international option, with no
         #     tracking

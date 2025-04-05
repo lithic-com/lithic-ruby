@@ -3,27 +3,12 @@
 module Lithic
   module Models
     class KYB < Lithic::Internal::Type::BaseModel
-      # @!attribute beneficial_owner_entities
-      #   List of all entities with >25% ownership in the company. If no entity or
-      #     individual owns >25% of the company, and the largest shareholder is an entity,
-      #     please identify them in this field. See
-      #     [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-      #     (Section I) for more background. If no business owner is an entity, pass in an
-      #     empty list. However, either this parameter or `beneficial_owner_individuals`
-      #     must be populated. on entities that should be included.
-      #
-      #   @return [Array<Lithic::Models::KYB::BeneficialOwnerEntity>]
-      required :beneficial_owner_entities,
-               -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::KYB::BeneficialOwnerEntity] }
-
       # @!attribute beneficial_owner_individuals
       #   List of all direct and indirect individuals with >25% ownership in the company.
-      #     If no entity or individual owns >25% of the company, and the largest shareholder
-      #     is an individual, please identify them in this field. See
+      #     If no individual owns >25% of the company, please identify the largest
+      #     shareholder in this field. See
       #     [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-      #     (Section I) for more background on individuals that should be included. If no
-      #     individual is an entity, pass in an empty list. However, either this parameter
-      #     or `beneficial_owner_entities` must be populated.
+      #     (Section I) for more background on individuals that should be included.
       #
       #   @return [Array<Lithic::Models::KYB::BeneficialOwnerIndividual>]
       required :beneficial_owner_individuals,
@@ -70,6 +55,17 @@ module Lithic
       #   @return [Symbol, Lithic::Models::KYB::Workflow]
       required :workflow, enum: -> { Lithic::Models::KYB::Workflow }
 
+      # @!attribute [r] beneficial_owner_entities
+      #   Deprecated.
+      #
+      #   @return [Array<Lithic::Models::KYB::BeneficialOwnerEntity>, nil]
+      optional :beneficial_owner_entities,
+               -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::KYB::BeneficialOwnerEntity] }
+
+      # @!parse
+      #   # @return [Array<Lithic::Models::KYB::BeneficialOwnerEntity>]
+      #   attr_writer :beneficial_owner_entities
+
       # @!attribute [r] external_id
       #   A user provided id that can be used to link an account holder with an external
       #     system
@@ -105,25 +101,25 @@ module Lithic
       #   attr_writer :website_url
 
       # @!parse
-      #   # @param beneficial_owner_entities [Array<Lithic::Models::KYB::BeneficialOwnerEntity>]
       #   # @param beneficial_owner_individuals [Array<Lithic::Models::KYB::BeneficialOwnerIndividual>]
       #   # @param business_entity [Lithic::Models::KYB::BusinessEntity]
       #   # @param control_person [Lithic::Models::KYB::ControlPerson]
       #   # @param nature_of_business [String]
       #   # @param tos_timestamp [String]
       #   # @param workflow [Symbol, Lithic::Models::KYB::Workflow]
+      #   # @param beneficial_owner_entities [Array<Lithic::Models::KYB::BeneficialOwnerEntity>]
       #   # @param external_id [String]
       #   # @param kyb_passed_timestamp [String]
       #   # @param website_url [String]
       #   #
       #   def initialize(
-      #     beneficial_owner_entities:,
       #     beneficial_owner_individuals:,
       #     business_entity:,
       #     control_person:,
       #     nature_of_business:,
       #     tos_timestamp:,
       #     workflow:,
+      #     beneficial_owner_entities: nil,
       #     external_id: nil,
       #     kyb_passed_timestamp: nil,
       #     website_url: nil,
@@ -133,79 +129,6 @@ module Lithic
       #   end
 
       # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
-
-      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
-        # @!attribute address
-        #   Business's physical address - PO boxes, UPS drops, and FedEx drops are not
-        #     acceptable; APO/FPO are acceptable.
-        #
-        #   @return [Lithic::Models::Address]
-        required :address, -> { Lithic::Models::Address }
-
-        # @!attribute government_id
-        #   Government-issued identification number. US Federal Employer Identification
-        #     Numbers (EIN) are currently supported, entered as full nine-digits, with or
-        #     without hyphens.
-        #
-        #   @return [String]
-        required :government_id, String
-
-        # @!attribute legal_business_name
-        #   Legal (formal) business name.
-        #
-        #   @return [String]
-        required :legal_business_name, String
-
-        # @!attribute phone_numbers
-        #   One or more of the business's phone number(s), entered as a list in E.164
-        #     format.
-        #
-        #   @return [Array<String>]
-        required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
-
-        # @!attribute [r] dba_business_name
-        #   Any name that the business operates under that is not its legal business name
-        #     (if applicable).
-        #
-        #   @return [String, nil]
-        optional :dba_business_name, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :dba_business_name
-
-        # @!attribute [r] parent_company
-        #   Parent company name (if applicable).
-        #
-        #   @return [String, nil]
-        optional :parent_company, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :parent_company
-
-        # @!parse
-        #   # @param address [Lithic::Models::Address]
-        #   # @param government_id [String]
-        #   # @param legal_business_name [String]
-        #   # @param phone_numbers [Array<String>]
-        #   # @param dba_business_name [String]
-        #   # @param parent_company [String]
-        #   #
-        #   def initialize(
-        #     address:,
-        #     government_id:,
-        #     legal_business_name:,
-        #     phone_numbers:,
-        #     dba_business_name: nil,
-        #     parent_company: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
-      end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         # @!attribute address
@@ -442,6 +365,79 @@ module Lithic
         # @!parse
         #   # @return [Array<Symbol>]
         #   def self.values; end
+      end
+
+      class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
+        # @!attribute address
+        #   Business's physical address - PO boxes, UPS drops, and FedEx drops are not
+        #     acceptable; APO/FPO are acceptable.
+        #
+        #   @return [Lithic::Models::Address]
+        required :address, -> { Lithic::Models::Address }
+
+        # @!attribute government_id
+        #   Government-issued identification number. US Federal Employer Identification
+        #     Numbers (EIN) are currently supported, entered as full nine-digits, with or
+        #     without hyphens.
+        #
+        #   @return [String]
+        required :government_id, String
+
+        # @!attribute legal_business_name
+        #   Legal (formal) business name.
+        #
+        #   @return [String]
+        required :legal_business_name, String
+
+        # @!attribute phone_numbers
+        #   One or more of the business's phone number(s), entered as a list in E.164
+        #     format.
+        #
+        #   @return [Array<String>]
+        required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
+
+        # @!attribute [r] dba_business_name
+        #   Any name that the business operates under that is not its legal business name
+        #     (if applicable).
+        #
+        #   @return [String, nil]
+        optional :dba_business_name, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :dba_business_name
+
+        # @!attribute [r] parent_company
+        #   Parent company name (if applicable).
+        #
+        #   @return [String, nil]
+        optional :parent_company, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :parent_company
+
+        # @!parse
+        #   # @param address [Lithic::Models::Address]
+        #   # @param government_id [String]
+        #   # @param legal_business_name [String]
+        #   # @param phone_numbers [Array<String>]
+        #   # @param dba_business_name [String]
+        #   # @param parent_company [String]
+        #   #
+        #   def initialize(
+        #     address:,
+        #     government_id:,
+        #     legal_business_name:,
+        #     phone_numbers:,
+        #     dba_business_name: nil,
+        #     parent_company: nil,
+        #     **
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

@@ -27,8 +27,7 @@ module Lithic
       #   attr_writer :account_token
 
       # @!attribute [r] beneficial_owner_entities
-      #   Only present when user_type == "BUSINESS". List of all entities with >25%
-      #     ownership in the company.
+      #   Deprecated. Only present when user_type == "BUSINESS".
       #
       #   @return [Array<Lithic::Models::AccountHolder::BeneficialOwnerEntity>, nil]
       optional :beneficial_owner_entities,

@@ -6,65 +6,19 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
   def test_create_required_params
     response =
       @lithic.account_holders.create(
-        beneficial_owner_entities: [
-          {
-            address: {
-              address1: "123 Old Forest Way",
-              city: "Omaha",
-              country: "USA",
-              postal_code: "68022",
-              state: "NE"
-            },
-            government_id: "114-123-1513",
-            legal_business_name: "Acme, Inc.",
-            phone_numbers: ["+15555555555"]
-          }
-        ],
-        beneficial_owner_individuals: [
-          {
-            address: {
-              address1: "123 Old Forest Way",
-              city: "Omaha",
-              country: "USA",
-              postal_code: "68022",
-              state: "NE"
-            },
-            dob: "1991-03-08 08:00:00",
-            email: "tom@middle-earth.com",
-            first_name: "Tom",
-            government_id: "111-23-1412",
-            last_name: "Bombadil"
-          }
-        ],
-        business_entity: {
-          address: {
-            address1: "123 Old Forest Way",
-            city: "Omaha",
-            country: "USA",
-            postal_code: "68022",
-            state: "NE"
-          },
-          government_id: "114-123-1513",
-          legal_business_name: "Acme, Inc.",
-          phone_numbers: ["+15555555555"]
+        address: {
+          address1: "123 Old Forest Way",
+          city: "Omaha",
+          country: "USA",
+          postal_code: "68022",
+          state: "NE"
         },
-        control_person: {
-          address: {
-            address1: "123 Old Forest Way",
-            city: "Omaha",
-            country: "USA",
-            postal_code: "68022",
-            state: "NE"
-          },
-          dob: "1991-03-08 08:00:00",
-          email: "tom@middle-earth.com",
-          first_name: "Tom",
-          government_id: "111-23-1412",
-          last_name: "Bombadil"
-        },
-        nature_of_business: "Software company selling solutions to the restaurant industry",
-        tos_timestamp: "2018-05-29T21:16:05Z",
-        workflow: :KYB_BASIC
+        email: "email",
+        first_name: "first_name",
+        kyc_exemption_type: :AUTHORIZED_USER,
+        last_name: "last_name",
+        phone_number: "phone_number",
+        workflow: :KYC_EXEMPT
       )
 
     assert_pattern do
