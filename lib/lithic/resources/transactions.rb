@@ -53,7 +53,7 @@ module Lithic
         @client.request(
           method: :get,
           path: "v1/transactions",
-          query: parsed,
+          query: parsed.transform_keys(begin_: :begin, end_: :end),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Models::Transaction,
           options: options

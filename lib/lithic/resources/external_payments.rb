@@ -75,7 +75,7 @@ module Lithic
         @client.request(
           method: :get,
           path: "v1/external_payments",
-          query: parsed,
+          query: parsed.transform_keys(begin_: :begin, end_: :end),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Models::ExternalPayment,
           options: options
