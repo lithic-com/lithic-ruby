@@ -16,24 +16,24 @@ module Lithic
       attr_accessor :country
 
       # Customer's first name. This will be the first name printed on the physical card.
-      #   The combined length of `first_name` and `last_name` may not exceed 25
-      #   characters.
+      # The combined length of `first_name` and `last_name` may not exceed 25
+      # characters.
       sig { returns(String) }
       attr_accessor :first_name
 
       # Customer's surname (family name). This will be the last name printed on the
-      #   physical card. The combined length of `first_name` and `last_name` may not
-      #   exceed 25 characters.
+      # physical card. The combined length of `first_name` and `last_name` may not
+      # exceed 25 characters.
       sig { returns(String) }
       attr_accessor :last_name
 
       # Postal code (formerly zipcode). For US addresses, either five-digit postal code
-      #   or nine-digit postal code (ZIP+4) using the format 12345-1234.
+      # or nine-digit postal code (ZIP+4) using the format 12345-1234.
       sig { returns(String) }
       attr_accessor :postal_code
 
       # Uppercase ISO 3166-2 two character abbreviation for US and CA. Optional with a
-      #   limit of 24 characters for other countries.
+      # limit of 24 characters for other countries.
       sig { returns(String) }
       attr_accessor :state
 
@@ -45,7 +45,7 @@ module Lithic
       attr_writer :address2
 
       # Email address to be contacted for expedited shipping process purposes. Required
-      #   if `shipping_method` is `EXPEDITED`.
+      # if `shipping_method` is `EXPEDITED`.
       sig { returns(T.nilable(String)) }
       attr_reader :email
 
@@ -53,7 +53,7 @@ module Lithic
       attr_writer :email
 
       # Text to be printed on line two of the physical card. Use of this field requires
-      #   additional permissions.
+      # additional permissions.
       sig { returns(T.nilable(String)) }
       attr_reader :line2_text
 
@@ -61,7 +61,7 @@ module Lithic
       attr_writer :line2_text
 
       # Cardholder's phone number in E.164 format to be contacted for expedited shipping
-      #   process purposes. Required if `shipping_method` is `EXPEDITED`.
+      # process purposes. Required if `shipping_method` is `EXPEDITED`.
       sig { returns(T.nilable(String)) }
       attr_reader :phone_number
 

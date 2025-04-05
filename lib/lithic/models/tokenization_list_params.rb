@@ -50,7 +50,7 @@ module Lithic
 
       # @!attribute [r] ending_before
       #   A cursor representing an item's token before which a page of results should end.
-      #     Used to retrieve the previous page of results before this item.
+      #   Used to retrieve the previous page of results before this item.
       #
       #   @return [String, nil]
       optional :ending_before, String
@@ -71,7 +71,7 @@ module Lithic
 
       # @!attribute [r] starting_after
       #   A cursor representing an item's token after which a page of results should
-      #     begin. Used to retrieve the next page of results after this item.
+      #   begin. Used to retrieve the next page of results after this item.
       #
       #   @return [String, nil]
       optional :starting_after, String
@@ -82,7 +82,7 @@ module Lithic
 
       # @!attribute [r] tokenization_channel
       #   Filter for tokenizations by tokenization channel. If this is not specified, only
-      #     DIGITAL_WALLET tokenizations will be returned.
+      #   DIGITAL_WALLET tokenizations will be returned.
       #
       #   @return [Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel, nil]
       optional :tokenization_channel, enum: -> { Lithic::Models::TokenizationListParams::TokenizationChannel }
@@ -120,7 +120,7 @@ module Lithic
       # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Filter for tokenizations by tokenization channel. If this is not specified, only
-      #   DIGITAL_WALLET tokenizations will be returned.
+      # DIGITAL_WALLET tokenizations will be returned.
       module TokenizationChannel
         extend Lithic::Internal::Type::Enum
 

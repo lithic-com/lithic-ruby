@@ -14,7 +14,7 @@ module Lithic
       attr_writer :account_token
 
       # Date string in RFC 3339 format. Only entries created after the specified time
-      #   will be included. UTC time zone.
+      # will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
       attr_reader :begin_
 
@@ -29,7 +29,7 @@ module Lithic
       attr_writer :card_token
 
       # Date string in RFC 3339 format. Only entries created before the specified time
-      #   will be included. UTC time zone.
+      # will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
       attr_reader :end_
 
@@ -37,7 +37,7 @@ module Lithic
       attr_writer :end_
 
       # A cursor representing an item's token before which a page of results should end.
-      #   Used to retrieve the previous page of results before this item.
+      # Used to retrieve the previous page of results before this item.
       sig { returns(T.nilable(String)) }
       attr_reader :ending_before
 
@@ -52,7 +52,7 @@ module Lithic
       attr_writer :page_size
 
       # Filters for transactions using transaction result field. Can filter by
-      #   `APPROVED`, and `DECLINED`.
+      # `APPROVED`, and `DECLINED`.
       sig { returns(T.nilable(Lithic::Models::TransactionListParams::Result::OrSymbol)) }
       attr_reader :result
 
@@ -60,7 +60,7 @@ module Lithic
       attr_writer :result
 
       # A cursor representing an item's token after which a page of results should
-      #   begin. Used to retrieve the next page of results after this item.
+      # begin. Used to retrieve the next page of results after this item.
       sig { returns(T.nilable(String)) }
       attr_reader :starting_after
 
@@ -121,7 +121,7 @@ module Lithic
       def to_hash; end
 
       # Filters for transactions using transaction result field. Can filter by
-      #   `APPROVED`, and `DECLINED`.
+      # `APPROVED`, and `DECLINED`.
       module Result
         extend Lithic::Internal::Type::Enum
 

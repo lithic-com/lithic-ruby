@@ -9,7 +9,7 @@ module Lithic
           include Lithic::Internal::Type::RequestParameters
 
           # Datetime in RFC 3339 format. Only entries created after the specified time will
-          #   be included. UTC time zone.
+          # be included. UTC time zone.
           sig { returns(T.nilable(Time)) }
           attr_reader :begin_
 
@@ -17,7 +17,7 @@ module Lithic
           attr_writer :begin_
 
           # Datetime in RFC 3339 format. Only entries created before the specified time will
-          #   be included. UTC time zone.
+          # be included. UTC time zone.
           sig { returns(T.nilable(Time)) }
           attr_reader :end_
 
@@ -25,7 +25,7 @@ module Lithic
           attr_writer :end_
 
           # A cursor representing an item's token before which a page of results should end.
-          #   Used to retrieve the previous page of results before this item.
+          # Used to retrieve the previous page of results before this item.
           sig { returns(T.nilable(String)) }
           attr_reader :ending_before
 
@@ -54,7 +54,7 @@ module Lithic
           attr_writer :page_size
 
           # Singular report date to filter on (YYYY-MM-DD). Cannot be populated in
-          #   conjunction with report_date_begin or report_date_end.
+          # conjunction with report_date_begin or report_date_end.
           sig { returns(T.nilable(Date)) }
           attr_reader :report_date
 
@@ -83,7 +83,7 @@ module Lithic
           attr_writer :settlement_institution_id
 
           # A cursor representing an item's token after which a page of results should
-          #   begin. Used to retrieve the next page of results after this item.
+          # begin. Used to retrieve the next page of results after this item.
           sig { returns(T.nilable(String)) }
           attr_reader :starting_after
 

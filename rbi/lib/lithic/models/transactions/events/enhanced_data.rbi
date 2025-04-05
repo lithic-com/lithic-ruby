@@ -280,7 +280,7 @@ module Lithic
             attr_writer :fuel
 
             # The driver number entered into the terminal at the time of sale, with leading
-            #   zeros stripped.
+            # zeros stripped.
             sig { returns(T.nilable(String)) }
             attr_reader :driver_number
 
@@ -304,7 +304,7 @@ module Lithic
             attr_writer :service_type
 
             # The vehicle number entered into the terminal at the time of sale, with leading
-            #   zeros stripped.
+            # zeros stripped.
             sig { returns(T.nilable(String)) }
             attr_reader :vehicle_number
 

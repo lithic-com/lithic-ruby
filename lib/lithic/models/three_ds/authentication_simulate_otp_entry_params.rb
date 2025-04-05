@@ -11,7 +11,7 @@ module Lithic
 
         # @!attribute token
         #   A unique token returned as part of a /v1/three_ds_authentication/simulate call
-        #     that resulted in PENDING_CHALLENGE authentication result.
+        #   that resulted in PENDING_CHALLENGE authentication result.
         #
         #   @return [String]
         required :token, String

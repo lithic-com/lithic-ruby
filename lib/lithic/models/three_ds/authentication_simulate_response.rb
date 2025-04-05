@@ -7,7 +7,7 @@ module Lithic
       class AuthenticationSimulateResponse < Lithic::Internal::Type::BaseModel
         # @!attribute [r] token
         #   A unique token to reference this transaction with later calls to void or clear
-        #     the authorization.
+        #   the authorization.
         #
         #   @return [String, nil]
         optional :token, String

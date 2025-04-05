@@ -7,10 +7,10 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       # Amount (in cents) to authorize. For credit authorizations and financial credit
-      #   authorizations, any value entered will be converted into a negative amount in
-      #   the simulated transaction. For example, entering 100 in this field will result
-      #   in a -100 amount in the transaction. For balance inquiries, this field must be
-      #   set to 0.
+      # authorizations, any value entered will be converted into a negative amount in
+      # the simulated transaction. For example, entering 100 in this field will result
+      # in a -100 amount in the transaction. For balance inquiries, this field must be
+      # set to 0.
       sig { returns(Integer) }
       attr_accessor :amount
 
@@ -23,8 +23,8 @@ module Lithic
       attr_accessor :pan
 
       # Merchant category code for the transaction to be simulated. A four-digit number
-      #   listed in ISO 18245. Supported merchant category codes can be found
-      #   [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
+      # listed in ISO 18245. Supported merchant category codes can be found
+      # [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
       sig { returns(T.nilable(String)) }
       attr_reader :mcc
 
@@ -39,7 +39,7 @@ module Lithic
       attr_writer :merchant_acceptor_id
 
       # Amount of the transaction to be simulated in currency specified in
-      #   merchant_currency, including any acquirer fees.
+      # merchant_currency, including any acquirer fees.
       sig { returns(T.nilable(Integer)) }
       attr_reader :merchant_amount
 
@@ -47,7 +47,7 @@ module Lithic
       attr_writer :merchant_amount
 
       # 3-character alphabetic ISO 4217 currency code. Note: Simulator only accepts USD,
-      #   GBP, EUR and defaults to GBP if another ISO 4217 code is provided
+      # GBP, EUR and defaults to GBP if another ISO 4217 code is provided
       sig { returns(T.nilable(String)) }
       attr_reader :merchant_currency
 
@@ -55,8 +55,8 @@ module Lithic
       attr_writer :merchant_currency
 
       # Set to true if the terminal is capable of partial approval otherwise false.
-      #   Partial approval is when part of a transaction is approved and another payment
-      #   must be used for the remainder.
+      # Partial approval is when part of a transaction is approved and another payment
+      # must be used for the remainder.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :partial_approval_capable
 
@@ -72,20 +72,20 @@ module Lithic
 
       # Type of event to simulate.
       #
-      #   - `AUTHORIZATION` is a dual message purchase authorization, meaning a subsequent
-      #     clearing step is required to settle the transaction.
-      #   - `BALANCE_INQUIRY` is a $0 authorization requesting the balance held on the
-      #     card, and is most often observed when a cardholder requests to view a card's
-      #     balance at an ATM.
-      #   - `CREDIT_AUTHORIZATION` is a dual message request from a merchant to authorize
-      #     a refund, meaning a subsequent clearing step is required to settle the
-      #     transaction.
-      #   - `FINANCIAL_AUTHORIZATION` is a single message request from a merchant to debit
-      #     funds immediately (such as an ATM withdrawal), and no subsequent clearing is
-      #     required to settle the transaction.
-      #   - `FINANCIAL_CREDIT_AUTHORIZATION` is a single message request from a merchant
-      #     to credit funds immediately, and no subsequent clearing is required to settle
-      #     the transaction.
+      # - `AUTHORIZATION` is a dual message purchase authorization, meaning a subsequent
+      #   clearing step is required to settle the transaction.
+      # - `BALANCE_INQUIRY` is a $0 authorization requesting the balance held on the
+      #   card, and is most often observed when a cardholder requests to view a card's
+      #   balance at an ATM.
+      # - `CREDIT_AUTHORIZATION` is a dual message request from a merchant to authorize
+      #   a refund, meaning a subsequent clearing step is required to settle the
+      #   transaction.
+      # - `FINANCIAL_AUTHORIZATION` is a single message request from a merchant to debit
+      #   funds immediately (such as an ATM withdrawal), and no subsequent clearing is
+      #   required to settle the transaction.
+      # - `FINANCIAL_CREDIT_AUTHORIZATION` is a single message request from a merchant
+      #   to credit funds immediately, and no subsequent clearing is required to settle
+      #   the transaction.
       sig { returns(T.nilable(Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)) }
       attr_reader :status
 
@@ -143,20 +143,20 @@ module Lithic
 
       # Type of event to simulate.
       #
-      #   - `AUTHORIZATION` is a dual message purchase authorization, meaning a subsequent
-      #     clearing step is required to settle the transaction.
-      #   - `BALANCE_INQUIRY` is a $0 authorization requesting the balance held on the
-      #     card, and is most often observed when a cardholder requests to view a card's
-      #     balance at an ATM.
-      #   - `CREDIT_AUTHORIZATION` is a dual message request from a merchant to authorize
-      #     a refund, meaning a subsequent clearing step is required to settle the
-      #     transaction.
-      #   - `FINANCIAL_AUTHORIZATION` is a single message request from a merchant to debit
-      #     funds immediately (such as an ATM withdrawal), and no subsequent clearing is
-      #     required to settle the transaction.
-      #   - `FINANCIAL_CREDIT_AUTHORIZATION` is a single message request from a merchant
-      #     to credit funds immediately, and no subsequent clearing is required to settle
-      #     the transaction.
+      # - `AUTHORIZATION` is a dual message purchase authorization, meaning a subsequent
+      #   clearing step is required to settle the transaction.
+      # - `BALANCE_INQUIRY` is a $0 authorization requesting the balance held on the
+      #   card, and is most often observed when a cardholder requests to view a card's
+      #   balance at an ATM.
+      # - `CREDIT_AUTHORIZATION` is a dual message request from a merchant to authorize
+      #   a refund, meaning a subsequent clearing step is required to settle the
+      #   transaction.
+      # - `FINANCIAL_AUTHORIZATION` is a single message request from a merchant to debit
+      #   funds immediately (such as an ATM withdrawal), and no subsequent clearing is
+      #   required to settle the transaction.
+      # - `FINANCIAL_CREDIT_AUTHORIZATION` is a single message request from a merchant
+      #   to credit funds immediately, and no subsequent clearing is required to settle
+      #   the transaction.
       module Status
         extend Lithic::Internal::Type::Enum
 

@@ -22,7 +22,7 @@ module Lithic
       attr_writer :accepted_entity_status_reasons
 
       # Status reason that will be associated with the simulated account holder status.
-      #   Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
+      # Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
       sig do
         returns(
           T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol)
@@ -115,7 +115,7 @@ module Lithic
       end
 
       # Status reason that will be associated with the simulated account holder status.
-      #   Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
+      # Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
       module StatusReason
         extend Lithic::Internal::Type::Enum
 

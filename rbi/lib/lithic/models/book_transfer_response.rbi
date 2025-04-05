@@ -4,7 +4,7 @@ module Lithic
   module Models
     class BookTransferResponse < Lithic::Internal::Type::BaseModel
       # Customer-provided token that will serve as an idempotency token. This token will
-      #   become the transaction token.
+      # become the transaction token.
       sig { returns(String) }
       attr_accessor :token
 
@@ -17,7 +17,7 @@ module Lithic
       attr_accessor :created
 
       # 3-character alphabetic ISO 4217 code for the settling currency of the
-      #   transaction.
+      # transaction.
       sig { returns(String) }
       attr_accessor :currency
 
@@ -26,33 +26,33 @@ module Lithic
       attr_accessor :events
 
       # Globally unique identifier for the financial account or card that will send the
-      #   funds. Accepted type dependent on the program's use case.
+      # funds. Accepted type dependent on the program's use case.
       sig { returns(String) }
       attr_accessor :from_financial_account_token
 
       # Pending amount of the transaction in the currency's smallest unit (e.g., cents),
-      #   including any acquirer fees. The value of this field will go to zero over time
-      #   once the financial transaction is settled.
+      # including any acquirer fees. The value of this field will go to zero over time
+      # once the financial transaction is settled.
       sig { returns(Integer) }
       attr_accessor :pending_amount
 
       # APPROVED transactions were successful while DECLINED transactions were declined
-      #   by user, Lithic, or the network.
+      # by user, Lithic, or the network.
       sig { returns(Lithic::Models::BookTransferResponse::Result::TaggedSymbol) }
       attr_accessor :result
 
       # Amount of the transaction that has been settled in the currency's smallest unit
-      #   (e.g., cents).
+      # (e.g., cents).
       sig { returns(Integer) }
       attr_accessor :settled_amount
 
       # Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
-      #   transfer was reversed \* `SETTLED` - The transfer is completed.
+      # transfer was reversed \* `SETTLED` - The transfer is completed.
       sig { returns(Lithic::Models::BookTransferResponse::Status::TaggedSymbol) }
       attr_accessor :status
 
       # Globally unique identifier for the financial account or card that will receive
-      #   the funds. Accepted type dependent on the program's use case.
+      # the funds. Accepted type dependent on the program's use case.
       sig { returns(T.anything) }
       attr_accessor :to_financial_account_token
 
@@ -139,7 +139,7 @@ module Lithic
         attr_accessor :token
 
         # Amount of the financial event that has been settled in the currency's smallest
-        #   unit (e.g., cents).
+        # unit (e.g., cents).
         sig { returns(Integer) }
         attr_accessor :amount
 
@@ -156,7 +156,7 @@ module Lithic
         attr_accessor :memo
 
         # APPROVED financial events were successful while DECLINED financial events were
-        #   declined by user, Lithic, or the network.
+        # declined by user, Lithic, or the network.
         sig { returns(Lithic::Models::BookTransferResponse::Event::Result::TaggedSymbol) }
         attr_accessor :result
 
@@ -217,7 +217,7 @@ module Lithic
         end
 
         # APPROVED financial events were successful while DECLINED financial events were
-        #   declined by user, Lithic, or the network.
+        # declined by user, Lithic, or the network.
         module Result
           extend Lithic::Internal::Type::Enum
 
@@ -234,7 +234,7 @@ module Lithic
       end
 
       # APPROVED transactions were successful while DECLINED transactions were declined
-      #   by user, Lithic, or the network.
+      # by user, Lithic, or the network.
       module Result
         extend Lithic::Internal::Type::Enum
 
@@ -250,7 +250,7 @@ module Lithic
       end
 
       # Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
-      #   transfer was reversed \* `SETTLED` - The transfer is completed.
+      # transfer was reversed \* `SETTLED` - The transfer is completed.
       module Status
         extend Lithic::Internal::Type::Enum
 

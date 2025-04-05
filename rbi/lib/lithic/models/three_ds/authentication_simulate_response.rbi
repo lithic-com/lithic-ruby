@@ -5,7 +5,7 @@ module Lithic
     module ThreeDS
       class AuthenticationSimulateResponse < Lithic::Internal::Type::BaseModel
         # A unique token to reference this transaction with later calls to void or clear
-        #   the authorization.
+        # the authorization.
         sig { returns(T.nilable(String)) }
         attr_reader :token
 

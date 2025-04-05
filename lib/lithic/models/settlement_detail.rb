@@ -11,21 +11,21 @@ module Lithic
 
       # @!attribute account_token
       #   The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
-      #     for Visa).
+      #   for Visa).
       #
       #   @return [String]
       required :account_token, String
 
       # @!attribute card_program_token
       #   Globally unique identifier denoting the card program that the associated
-      #     Transaction occurred on.
+      #   Transaction occurred on.
       #
       #   @return [String]
       required :card_program_token, String
 
       # @!attribute card_token
       #   Globally unique identifier denoting the card that the associated Transaction
-      #     occurred on.
+      #   occurred on.
       #
       #   @return [String]
       required :card_token, String
@@ -56,7 +56,7 @@ module Lithic
 
       # @!attribute institution
       #   The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
-      #     for Visa).
+      #   for Visa).
       #
       #   @return [String]
       required :institution, String
@@ -111,7 +111,7 @@ module Lithic
 
       # @!attribute transactions_gross_amount
       #   The total amount of settlement impacting transactions (excluding interchange,
-      #     fees, and disputes).
+      #   fees, and disputes).
       #
       #   @return [Integer]
       required :transactions_gross_amount, Integer

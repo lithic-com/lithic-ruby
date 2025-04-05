@@ -24,7 +24,7 @@ module Lithic
       attr_accessor :required_document_uploads
 
       # Describes the document and the required document image uploads required to
-      #   re-run KYC
+      # re-run KYC
       sig do
         params(
           token: String,
@@ -96,7 +96,7 @@ module Lithic
         attr_accessor :token
 
         # A list of status reasons associated with a KYB account holder that have been
-        #   satisfied by the document upload
+        # satisfied by the document upload
         sig { returns(T::Array[String]) }
         attr_accessor :accepted_entity_status_reasons
 
@@ -109,7 +109,7 @@ module Lithic
         attr_accessor :image_type
 
         # A list of status reasons associated with a KYB account holder that have not been
-        #   satisfied by the document upload
+        # satisfied by the document upload
         sig { returns(T::Array[String]) }
         attr_accessor :rejected_entity_status_reasons
 
@@ -127,9 +127,9 @@ module Lithic
 
         # URL to upload document image to.
         #
-        #   Note that the upload URLs expire after 7 days. If an upload URL expires, you can
-        #   refresh the URLs by retrieving the document upload from
-        #   `GET /account_holders/{account_holder_token}/documents`.
+        # Note that the upload URLs expire after 7 days. If an upload URL expires, you can
+        # refresh the URLs by retrieving the document upload from
+        # `GET /account_holders/{account_holder_token}/documents`.
         sig { returns(String) }
         attr_accessor :upload_url
 

@@ -8,17 +8,17 @@ module Lithic
       attr_accessor :token
 
       # The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
-      #   for Visa).
+      # for Visa).
       sig { returns(String) }
       attr_accessor :account_token
 
       # Globally unique identifier denoting the card program that the associated
-      #   Transaction occurred on.
+      # Transaction occurred on.
       sig { returns(String) }
       attr_accessor :card_program_token
 
       # Globally unique identifier denoting the card that the associated Transaction
-      #   occurred on.
+      # occurred on.
       sig { returns(String) }
       attr_accessor :card_token
 
@@ -39,7 +39,7 @@ module Lithic
       attr_accessor :event_tokens
 
       # The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
-      #   for Visa).
+      # for Visa).
       sig { returns(String) }
       attr_accessor :institution
 
@@ -84,7 +84,7 @@ module Lithic
       attr_accessor :transaction_token
 
       # The total amount of settlement impacting transactions (excluding interchange,
-      #   fees, and disputes).
+      # fees, and disputes).
       sig { returns(Integer) }
       attr_accessor :transactions_gross_amount
 

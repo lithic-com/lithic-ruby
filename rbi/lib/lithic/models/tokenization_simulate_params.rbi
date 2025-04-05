@@ -23,7 +23,7 @@ module Lithic
       attr_accessor :tokenization_source
 
       # The account score (1-5) that represents how the Digital Wallet's view on how
-      #   reputable an end user's account is.
+      # reputable an end user's account is.
       sig { returns(T.nilable(Integer)) }
       attr_reader :account_score
 
@@ -31,7 +31,7 @@ module Lithic
       attr_writer :account_score
 
       # The device score (1-5) that represents how the Digital Wallet's view on how
-      #   reputable an end user's device is.
+      # reputable an end user's device is.
       sig { returns(T.nilable(Integer)) }
       attr_reader :device_score
 
@@ -39,7 +39,7 @@ module Lithic
       attr_writer :device_score
 
       # Optional field to specify the token requestor name for a merchant token
-      #   simulation. Ignored when tokenization_source is not MERCHANT.
+      # simulation. Ignored when tokenization_source is not MERCHANT.
       sig { returns(T.nilable(String)) }
       attr_reader :entity
 

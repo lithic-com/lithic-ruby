@@ -4,7 +4,7 @@ module Lithic
   module Resources
     class Transfers
       # Transfer funds between two financial accounts or between a financial account and
-      #   card
+      # card
       #
       # @overload create(amount:, from:, to:, token: nil, memo: nil, request_options: {})
       #

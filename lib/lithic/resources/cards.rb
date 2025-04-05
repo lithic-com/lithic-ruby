@@ -13,7 +13,7 @@ module Lithic
       attr_reader :financial_transactions
 
       # Create a new virtual or physical card. Parameters `shipping_address` and
-      #   `product_id` only apply to physical cards.
+      # `product_id` only apply to physical cards.
       #
       # @overload create(type:, account_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_for: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
       #
@@ -70,10 +70,10 @@ module Lithic
       end
 
       # Update the specified properties of the card. Unsupplied properties will remain
-      #   unchanged.
+      # unchanged.
       #
-      #   _Note: setting a card to a `CLOSED` state is a final action that cannot be
-      #   undone._
+      # _Note: setting a card to a `CLOSED` state is a final action that cannot be
+      # undone._
       #
       # @overload update(card_token, digital_card_art_token: nil, memo: nil, pin: nil, pin_status: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
       #
@@ -130,15 +130,15 @@ module Lithic
       end
 
       # Convert a virtual card into a physical card and manufacture it. Customer must
-      #   supply relevant fields for physical card creation including `product_id`,
-      #   `carrier`, `shipping_method`, and `shipping_address`. The card token will be
-      #   unchanged. The card's type will be altered to `PHYSICAL`. The card will be set
-      #   to state `PENDING_FULFILLMENT` and fulfilled at next fulfillment cycle. Virtual
-      #   cards created on card programs which do not support physical cards cannot be
-      #   converted. The card program cannot be changed as part of the conversion. Cards
-      #   must be in an `OPEN` state to be converted. Only applies to cards of type
-      #   `VIRTUAL` (or existing cards with deprecated types of `DIGITAL_WALLET` and
-      #   `UNLOCKED`).
+      # supply relevant fields for physical card creation including `product_id`,
+      # `carrier`, `shipping_method`, and `shipping_address`. The card token will be
+      # unchanged. The card's type will be altered to `PHYSICAL`. The card will be set
+      # to state `PENDING_FULFILLMENT` and fulfilled at next fulfillment cycle. Virtual
+      # cards created on card programs which do not support physical cards cannot be
+      # converted. The card program cannot be changed as part of the conversion. Cards
+      # must be in an `OPEN` state to be converted. Only applies to cards of type
+      # `VIRTUAL` (or existing cards with deprecated types of `DIGITAL_WALLET` and
+      # `UNLOCKED`).
       #
       # @overload convert_physical(card_token, shipping_address:, carrier: nil, product_id: nil, shipping_method: nil, request_options: {})
       #
@@ -164,32 +164,32 @@ module Lithic
       end
 
       # Handling full card PANs and CVV codes requires that you comply with the Payment
-      #   Card Industry Data Security Standards (PCI DSS). Some clients choose to reduce
-      #   their compliance obligations by leveraging our embedded card UI solution
-      #   documented below.
+      # Card Industry Data Security Standards (PCI DSS). Some clients choose to reduce
+      # their compliance obligations by leveraging our embedded card UI solution
+      # documented below.
       #
-      #   In this setup, PANs and CVV codes are presented to the end-user via a card UI
-      #   that we provide, optionally styled in the customer's branding using a specified
-      #   css stylesheet. A user's browser makes the request directly to api.lithic.com,
-      #   so card PANs and CVVs never touch the API customer's servers while full card
-      #   data is displayed to their end-users. The response contains an HTML document
-      #   (see Embedded Card UI or Changelog for upcoming changes in January). This means
-      #   that the url for the request can be inserted straight into the `src` attribute
-      #   of an iframe.
+      # In this setup, PANs and CVV codes are presented to the end-user via a card UI
+      # that we provide, optionally styled in the customer's branding using a specified
+      # css stylesheet. A user's browser makes the request directly to api.lithic.com,
+      # so card PANs and CVVs never touch the API customer's servers while full card
+      # data is displayed to their end-users. The response contains an HTML document
+      # (see Embedded Card UI or Changelog for upcoming changes in January). This means
+      # that the url for the request can be inserted straight into the `src` attribute
+      # of an iframe.
       #
-      #   ```html
-      #   <iframe
-      #     id="card-iframe"
-      #     src="https://sandbox.lithic.com/v1/embed/card?embed_request=eyJjc3MiO...;hmac=r8tx1..."
-      #     allow="clipboard-write"
-      #     class="content"
-      #   ></iframe>
-      #   ```
+      # ```html
+      # <iframe
+      #   id="card-iframe"
+      #   src="https://sandbox.lithic.com/v1/embed/card?embed_request=eyJjc3MiO...;hmac=r8tx1..."
+      #   allow="clipboard-write"
+      #   class="content"
+      # ></iframe>
+      # ```
       #
-      #   You should compute the request payload on the server side. You can render it (or
-      #   the whole iframe) on the server or make an ajax call from your front end code,
-      #   but **do not ever embed your API key into front end code, as doing so introduces
-      #   a serious security vulnerability**.
+      # You should compute the request payload on the server side. You can render it (or
+      # the whole iframe) on the server or make an ajax call from your front end code,
+      # but **do not ever embed your API key into front end code, as doing so introduces
+      # a serious security vulnerability**.
       #
       # @overload embed(embed_request:, hmac:, request_options: {})
       #
@@ -213,11 +213,11 @@ module Lithic
       end
 
       # Allow your cardholders to directly add payment cards to the device's digital
-      #   wallet (e.g. Apple Pay) with one touch from your app.
+      # wallet (e.g. Apple Pay) with one touch from your app.
       #
-      #   This requires some additional setup and configuration. Please
-      #   [Contact Us](https://lithic.com/contact) or your Customer Success representative
-      #   for more information.
+      # This requires some additional setup and configuration. Please
+      # [Contact Us](https://lithic.com/contact) or your Customer Success representative
+      # for more information.
       #
       # @overload provision(card_token, certificate: nil, client_device_id: nil, client_wallet_account_id: nil, digital_wallet: nil, nonce: nil, nonce_signature: nil, request_options: {})
       #
@@ -245,10 +245,10 @@ module Lithic
       end
 
       # Initiate print and shipment of a duplicate physical card (e.g. card is
-      #   physically damaged). The PAN, expiry, and CVC2 will remain the same and the
-      #   original card can continue to be used until the new card is activated. Only
-      #   applies to cards of type `PHYSICAL`. A card can be replaced or renewed a total
-      #   of 8 times.
+      # physically damaged). The PAN, expiry, and CVC2 will remain the same and the
+      # original card can continue to be used until the new card is activated. Only
+      # applies to cards of type `PHYSICAL`. A card can be replaced or renewed a total
+      # of 8 times.
       #
       # @overload reissue(card_token, carrier: nil, product_id: nil, shipping_address: nil, shipping_method: nil, request_options: {})
       #
@@ -274,14 +274,14 @@ module Lithic
       end
 
       # Applies to card types `PHYSICAL` and `VIRTUAL`. For `PHYSICAL`, creates a new
-      #   card with the same card token and PAN, but updated expiry and CVC2 code. The
-      #   original card will keep working for card-present transactions until the new card
-      #   is activated. For card-not-present transactions, the original card details
-      #   (expiry, CVC2) will also keep working until the new card is activated. A
-      #   `PHYSICAL` card can be replaced or renewed a total of 8 times. For `VIRTUAL`,
-      #   the card will retain the same card token and PAN and receive an updated expiry
-      #   and CVC2 code. `product_id`, `shipping_method`, `shipping_address`, `carrier`
-      #   are only relevant for renewing `PHYSICAL` cards.
+      # card with the same card token and PAN, but updated expiry and CVC2 code. The
+      # original card will keep working for card-present transactions until the new card
+      # is activated. For card-not-present transactions, the original card details
+      # (expiry, CVC2) will also keep working until the new card is activated. A
+      # `PHYSICAL` card can be replaced or renewed a total of 8 times. For `VIRTUAL`,
+      # the card will retain the same card token and PAN and receive an updated expiry
+      # and CVC2 code. `product_id`, `shipping_method`, `shipping_address`, `carrier`
+      # are only relevant for renewing `PHYSICAL` cards.
       #
       # @overload renew(card_token, shipping_address:, carrier: nil, exp_month: nil, exp_year: nil, product_id: nil, shipping_method: nil, request_options: {})
       #
@@ -309,9 +309,9 @@ module Lithic
       end
 
       # Get a Card's available spend limit, which is based on the spend limit configured
-      #   on the Card and the amount already spent over the spend limit's duration. For
-      #   example, if the Card has a monthly spend limit of $1000 configured, and has
-      #   spent $600 in the last month, the available spend limit returned would be $400.
+      # on the Card and the amount already spent over the spend limit's duration. For
+      # example, if the Card has a monthly spend limit of $1000 configured, and has
+      # spent $600 in the last month, the available spend limit returned would be $400.
       #
       # @overload retrieve_spend_limits(card_token, request_options: {})
       #
@@ -331,10 +331,10 @@ module Lithic
       end
 
       # Get card configuration such as spend limit and state. Customers must be PCI
-      #   compliant to use this endpoint. Please contact
-      #   [support@lithic.com](mailto:support@lithic.com) for questions. _Note: this is a
-      #   `POST` endpoint because it is more secure to send sensitive data in a request
-      #   body than in a URL._
+      # compliant to use this endpoint. Please contact
+      # [support@lithic.com](mailto:support@lithic.com) for questions. _Note: this is a
+      # `POST` endpoint because it is more secure to send sensitive data in a request
+      # body than in a URL._
       #
       # @overload search_by_pan(pan:, request_options: {})
       #

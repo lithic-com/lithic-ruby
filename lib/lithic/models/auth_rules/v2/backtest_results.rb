@@ -60,8 +60,8 @@ module Lithic
             class CurrentVersion < Lithic::Internal::Type::BaseModel
               # @!attribute [r] approved
               #   The total number of historical transactions approved by this rule during the
-              #     backtest period, or the number of transactions that would have been approved if
-              #     the rule was evaluated in shadow mode.
+              #   backtest period, or the number of transactions that would have been approved if
+              #   the rule was evaluated in shadow mode.
               #
               #   @return [Integer, nil]
               optional :approved, Integer
@@ -72,8 +72,8 @@ module Lithic
 
               # @!attribute [r] declined
               #   The total number of historical transactions declined by this rule during the
-              #     backtest period, or the number of transactions that would have been declined if
-              #     the rule was evaluated in shadow mode.
+              #   backtest period, or the number of transactions that would have been declined if
+              #   the rule was evaluated in shadow mode.
               #
               #   @return [Integer, nil]
               optional :declined, Integer
@@ -96,7 +96,7 @@ module Lithic
               response_only do
                 # @!attribute [r] version
                 #   The version of the rule, this is incremented whenever the rule's parameters
-                #     change.
+                #   change.
                 #
                 #   @return [Integer, nil]
                 optional :version, Integer
@@ -162,8 +162,8 @@ module Lithic
             class DraftVersion < Lithic::Internal::Type::BaseModel
               # @!attribute [r] approved
               #   The total number of historical transactions approved by this rule during the
-              #     backtest period, or the number of transactions that would have been approved if
-              #     the rule was evaluated in shadow mode.
+              #   backtest period, or the number of transactions that would have been approved if
+              #   the rule was evaluated in shadow mode.
               #
               #   @return [Integer, nil]
               optional :approved, Integer
@@ -174,8 +174,8 @@ module Lithic
 
               # @!attribute [r] declined
               #   The total number of historical transactions declined by this rule during the
-              #     backtest period, or the number of transactions that would have been declined if
-              #     the rule was evaluated in shadow mode.
+              #   backtest period, or the number of transactions that would have been declined if
+              #   the rule was evaluated in shadow mode.
               #
               #   @return [Integer, nil]
               optional :declined, Integer
@@ -198,7 +198,7 @@ module Lithic
               response_only do
                 # @!attribute [r] version
                 #   The version of the rule, this is incremented whenever the rule's parameters
-                #     change.
+                #   change.
                 #
                 #   @return [Integer, nil]
                 optional :version, Integer

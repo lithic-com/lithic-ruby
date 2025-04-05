@@ -20,7 +20,7 @@ module Lithic
 
       # @!attribute [r] begin_
       #   Date string in RFC 3339 format. Only entries created after the specified time
-      #     will be included. UTC time zone.
+      #   will be included. UTC time zone.
       #
       #   @return [Time, nil]
       optional :begin_, Time, api_name: :begin
@@ -41,7 +41,7 @@ module Lithic
 
       # @!attribute [r] end_
       #   Date string in RFC 3339 format. Only entries created before the specified time
-      #     will be included. UTC time zone.
+      #   will be included. UTC time zone.
       #
       #   @return [Time, nil]
       optional :end_, Time, api_name: :end
@@ -52,7 +52,7 @@ module Lithic
 
       # @!attribute [r] ending_before
       #   A cursor representing an item's token before which a page of results should end.
-      #     Used to retrieve the previous page of results before this item.
+      #   Used to retrieve the previous page of results before this item.
       #
       #   @return [String, nil]
       optional :ending_before, String
@@ -73,7 +73,7 @@ module Lithic
 
       # @!attribute [r] result
       #   Filters for transactions using transaction result field. Can filter by
-      #     `APPROVED`, and `DECLINED`.
+      #   `APPROVED`, and `DECLINED`.
       #
       #   @return [Symbol, Lithic::Models::TransactionListParams::Result, nil]
       optional :result, enum: -> { Lithic::Models::TransactionListParams::Result }
@@ -84,7 +84,7 @@ module Lithic
 
       # @!attribute [r] starting_after
       #   A cursor representing an item's token after which a page of results should
-      #     begin. Used to retrieve the next page of results after this item.
+      #   begin. Used to retrieve the next page of results after this item.
       #
       #   @return [String, nil]
       optional :starting_after, String
@@ -134,7 +134,7 @@ module Lithic
       # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
 
       # Filters for transactions using transaction result field. Can filter by
-      #   `APPROVED`, and `DECLINED`.
+      # `APPROVED`, and `DECLINED`.
       module Result
         extend Lithic::Internal::Type::Enum
 

@@ -11,7 +11,7 @@ module Lithic
 
       # @!attribute currency
       #   3-character alphabetic ISO 4217 code. (This field is deprecated and will be
-      #     removed in a future version of the API.)
+      #   removed in a future version of the API.)
       #
       #   @return [String]
       required :currency, String
@@ -23,17 +23,17 @@ module Lithic
 
       # @!attribute disputes_gross_amount
       #   The total gross amount of disputes settlements. (This field is deprecated and
-      #     will be removed in a future version of the API. To compute total amounts, Lithic
-      #     recommends that customers sum the relevant settlement amounts found within
-      #     `details`.)
+      #   will be removed in a future version of the API. To compute total amounts, Lithic
+      #   recommends that customers sum the relevant settlement amounts found within
+      #   `details`.)
       #
       #   @return [Integer]
       required :disputes_gross_amount, Integer
 
       # @!attribute interchange_gross_amount
       #   The total amount of interchange. (This field is deprecated and will be removed
-      #     in a future version of the API. To compute total amounts, Lithic recommends that
-      #     customers sum the relevant settlement amounts found within `details`.)
+      #   in a future version of the API. To compute total amounts, Lithic recommends that
+      #   customers sum the relevant settlement amounts found within `details`.)
       #
       #   @return [Integer]
       required :interchange_gross_amount, Integer
@@ -46,9 +46,9 @@ module Lithic
 
       # @!attribute other_fees_gross_amount
       #   Total amount of gross other fees outside of interchange. (This field is
-      #     deprecated and will be removed in a future version of the API. To compute total
-      #     amounts, Lithic recommends that customers sum the relevant settlement amounts
-      #     found within `details`.)
+      #   deprecated and will be removed in a future version of the API. To compute total
+      #   amounts, Lithic recommends that customers sum the relevant settlement amounts
+      #   found within `details`.)
       #
       #   @return [Integer]
       required :other_fees_gross_amount, Integer
@@ -61,18 +61,18 @@ module Lithic
 
       # @!attribute settled_net_amount
       #   The total net amount of cash moved. (net value of settled_gross_amount,
-      #     interchange, fees). (This field is deprecated and will be removed in a future
-      #     version of the API. To compute total amounts, Lithic recommends that customers
-      #     sum the relevant settlement amounts found within `details`.)
+      #   interchange, fees). (This field is deprecated and will be removed in a future
+      #   version of the API. To compute total amounts, Lithic recommends that customers
+      #   sum the relevant settlement amounts found within `details`.)
       #
       #   @return [Integer]
       required :settled_net_amount, Integer
 
       # @!attribute transactions_gross_amount
       #   The total amount of settlement impacting transactions (excluding interchange,
-      #     fees, and disputes). (This field is deprecated and will be removed in a future
-      #     version of the API. To compute total amounts, Lithic recommends that customers
-      #     sum the relevant settlement amounts found within `details`.)
+      #   fees, and disputes). (This field is deprecated and will be removed in a future
+      #   version of the API. To compute total amounts, Lithic recommends that customers
+      #   sum the relevant settlement amounts found within `details`.)
       #
       #   @return [Integer]
       required :transactions_gross_amount, Integer

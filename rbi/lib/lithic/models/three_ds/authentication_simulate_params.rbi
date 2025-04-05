@@ -34,7 +34,7 @@ module Lithic
         attr_writer :transaction
 
         # When set will use the following values as part of the Simulated Authentication.
-        #   When not set defaults to MATCH
+        # When not set defaults to MATCH
         sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol)) }
         attr_reader :card_expiry_check
 
@@ -74,23 +74,23 @@ module Lithic
 
         class Merchant < Lithic::Internal::Type::BaseModel
           # Unique identifier to identify the payment card acceptor. Corresponds to
-          #   `merchant_acceptor_id` in authorization.
+          # `merchant_acceptor_id` in authorization.
           sig { returns(String) }
           attr_accessor :id
 
           # Country of the address provided by the cardholder in ISO 3166-1 alpha-3 format
-          #   (e.g. USA)
+          # (e.g. USA)
           sig { returns(String) }
           attr_accessor :country
 
           # Merchant category code for the transaction to be simulated. A four-digit number
-          #   listed in ISO 18245. Supported merchant category codes can be found
-          #   [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
+          # listed in ISO 18245. Supported merchant category codes can be found
+          # [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
           sig { returns(String) }
           attr_accessor :mcc
 
           # Merchant descriptor, corresponds to `descriptor` in authorization. If CHALLENGE
-          #   keyword is included, Lithic will trigger a challenge.
+          # keyword is included, Lithic will trigger a challenge.
           sig { returns(String) }
           attr_accessor :name
 
@@ -118,7 +118,7 @@ module Lithic
         end
 
         # When set will use the following values as part of the Simulated Authentication.
-        #   When not set defaults to MATCH
+        # When not set defaults to MATCH
         module CardExpiryCheck
           extend Lithic::Internal::Type::Enum
 

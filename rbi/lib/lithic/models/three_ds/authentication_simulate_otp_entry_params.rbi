@@ -8,7 +8,7 @@ module Lithic
         include Lithic::Internal::Type::RequestParameters
 
         # A unique token returned as part of a /v1/three_ds_authentication/simulate call
-        #   that resulted in PENDING_CHALLENGE authentication result.
+        # that resulted in PENDING_CHALLENGE authentication result.
         sig { returns(String) }
         attr_accessor :token
 

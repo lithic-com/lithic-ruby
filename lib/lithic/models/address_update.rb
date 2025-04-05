@@ -35,7 +35,7 @@ module Lithic
 
       # @!attribute [r] country
       #   Valid country code. Only USA is currently supported, entered in uppercase ISO
-      #     3166-1 alpha-3 three-character format.
+      #   3166-1 alpha-3 three-character format.
       #
       #   @return [String, nil]
       optional :country, String
@@ -46,7 +46,7 @@ module Lithic
 
       # @!attribute [r] postal_code
       #   Valid postal code. Only USA ZIP codes are currently supported, entered as a
-      #     five-digit ZIP or nine-digit ZIP+4.
+      #   five-digit ZIP or nine-digit ZIP+4.
       #
       #   @return [String, nil]
       optional :postal_code, String
@@ -57,7 +57,7 @@ module Lithic
 
       # @!attribute [r] state
       #   Valid state code. Only USA state codes are currently supported, entered in
-      #     uppercase ISO 3166-2 two-character format.
+      #   uppercase ISO 3166-2 two-character format.
       #
       #   @return [String, nil]
       optional :state, String

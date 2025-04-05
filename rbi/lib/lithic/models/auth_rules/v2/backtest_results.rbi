@@ -104,8 +104,8 @@ module Lithic
 
             class CurrentVersion < Lithic::Internal::Type::BaseModel
               # The total number of historical transactions approved by this rule during the
-              #   backtest period, or the number of transactions that would have been approved if
-              #   the rule was evaluated in shadow mode.
+              # backtest period, or the number of transactions that would have been approved if
+              # the rule was evaluated in shadow mode.
               sig { returns(T.nilable(Integer)) }
               attr_reader :approved
 
@@ -113,8 +113,8 @@ module Lithic
               attr_writer :approved
 
               # The total number of historical transactions declined by this rule during the
-              #   backtest period, or the number of transactions that would have been declined if
-              #   the rule was evaluated in shadow mode.
+              # backtest period, or the number of transactions that would have been declined if
+              # the rule was evaluated in shadow mode.
               sig { returns(T.nilable(Integer)) }
               attr_reader :declined
 
@@ -143,7 +143,7 @@ module Lithic
               attr_writer :examples
 
               # The version of the rule, this is incremented whenever the rule's parameters
-              #   change.
+              # change.
               sig { returns(T.nilable(Integer)) }
               attr_reader :version
 
@@ -213,8 +213,8 @@ module Lithic
 
             class DraftVersion < Lithic::Internal::Type::BaseModel
               # The total number of historical transactions approved by this rule during the
-              #   backtest period, or the number of transactions that would have been approved if
-              #   the rule was evaluated in shadow mode.
+              # backtest period, or the number of transactions that would have been approved if
+              # the rule was evaluated in shadow mode.
               sig { returns(T.nilable(Integer)) }
               attr_reader :approved
 
@@ -222,8 +222,8 @@ module Lithic
               attr_writer :approved
 
               # The total number of historical transactions declined by this rule during the
-              #   backtest period, or the number of transactions that would have been declined if
-              #   the rule was evaluated in shadow mode.
+              # backtest period, or the number of transactions that would have been declined if
+              # the rule was evaluated in shadow mode.
               sig { returns(T.nilable(Integer)) }
               attr_reader :declined
 
@@ -252,7 +252,7 @@ module Lithic
               attr_writer :examples
 
               # The version of the rule, this is incremented whenever the rule's parameters
-              #   change.
+              # change.
               sig { returns(T.nilable(Integer)) }
               attr_reader :version
 

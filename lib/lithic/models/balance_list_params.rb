@@ -20,7 +20,7 @@ module Lithic
 
       # @!attribute [r] balance_date
       #   UTC date and time of the balances to retrieve. Defaults to latest available
-      #     balances
+      #   balances
       #
       #   @return [Time, nil]
       optional :balance_date, Time

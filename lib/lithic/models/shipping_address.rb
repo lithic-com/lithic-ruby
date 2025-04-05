@@ -23,30 +23,30 @@ module Lithic
 
       # @!attribute first_name
       #   Customer's first name. This will be the first name printed on the physical card.
-      #     The combined length of `first_name` and `last_name` may not exceed 25
-      #     characters.
+      #   The combined length of `first_name` and `last_name` may not exceed 25
+      #   characters.
       #
       #   @return [String]
       required :first_name, String
 
       # @!attribute last_name
       #   Customer's surname (family name). This will be the last name printed on the
-      #     physical card. The combined length of `first_name` and `last_name` may not
-      #     exceed 25 characters.
+      #   physical card. The combined length of `first_name` and `last_name` may not
+      #   exceed 25 characters.
       #
       #   @return [String]
       required :last_name, String
 
       # @!attribute postal_code
       #   Postal code (formerly zipcode). For US addresses, either five-digit postal code
-      #     or nine-digit postal code (ZIP+4) using the format 12345-1234.
+      #   or nine-digit postal code (ZIP+4) using the format 12345-1234.
       #
       #   @return [String]
       required :postal_code, String
 
       # @!attribute state
       #   Uppercase ISO 3166-2 two character abbreviation for US and CA. Optional with a
-      #     limit of 24 characters for other countries.
+      #   limit of 24 characters for other countries.
       #
       #   @return [String]
       required :state, String
@@ -63,7 +63,7 @@ module Lithic
 
       # @!attribute [r] email
       #   Email address to be contacted for expedited shipping process purposes. Required
-      #     if `shipping_method` is `EXPEDITED`.
+      #   if `shipping_method` is `EXPEDITED`.
       #
       #   @return [String, nil]
       optional :email, String
@@ -74,7 +74,7 @@ module Lithic
 
       # @!attribute [r] line2_text
       #   Text to be printed on line two of the physical card. Use of this field requires
-      #     additional permissions.
+      #   additional permissions.
       #
       #   @return [String, nil]
       optional :line2_text, String
@@ -85,7 +85,7 @@ module Lithic
 
       # @!attribute [r] phone_number
       #   Cardholder's phone number in E.164 format to be contacted for expedited shipping
-      #     process purposes. Required if `shipping_method` is `EXPEDITED`.
+      #   process purposes. Required if `shipping_method` is `EXPEDITED`.
       #
       #   @return [String, nil]
       optional :phone_number, String

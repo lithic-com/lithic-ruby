@@ -13,9 +13,9 @@ module Lithic
 
       # KYC and KYB evaluation states.
       #
-      #   Note:
+      # Note:
       #
-      #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
+      # - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
       sig { returns(Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol) }
       attr_accessor :status
 
@@ -31,7 +31,7 @@ module Lithic
       attr_writer :created
 
       # Customer-provided token that indicates a relationship with an object outside of
-      #   the Lithic ecosystem.
+      # the Lithic ecosystem.
       sig { returns(T.nilable(String)) }
       attr_reader :external_id
 
@@ -39,7 +39,7 @@ module Lithic
       attr_writer :external_id
 
       # Only present for "KYB_BASIC" workflow. A list of documents required for the
-      #   account holder to be approved.
+      # account holder to be approved.
       sig { returns(T.nilable(T::Array[Lithic::Models::RequiredDocument])) }
       attr_reader :required_documents
 
@@ -90,9 +90,9 @@ module Lithic
 
       # KYC and KYB evaluation states.
       #
-      #   Note:
+      # Note:
       #
-      #   - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
+      # - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
       module Status
         extend Lithic::Internal::Type::Enum
 

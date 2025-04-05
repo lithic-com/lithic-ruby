@@ -4,7 +4,7 @@ module Lithic
   module Resources
     class BookTransfers
       # Book transfer funds between two financial accounts or between a financial
-      #   account and card
+      # account and card
       sig do
         params(
           amount: Integer,
@@ -21,22 +21,22 @@ module Lithic
       end
       def create(
         # Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
-        #   This should always be a positive value.
+        # This should always be a positive value.
         amount:,
         # Category of the book transfer
         category:,
         # Globally unique identifier for the financial account or card that will send the
-        #   funds. Accepted type dependent on the program's use case.
+        # funds. Accepted type dependent on the program's use case.
         from_financial_account_token:,
         # The program specific subtype code for the specified category/type.
         subtype:,
         # Globally unique identifier for the financial account or card that will receive
-        #   the funds. Accepted type dependent on the program's use case.
+        # the funds. Accepted type dependent on the program's use case.
         to_financial_account_token:,
         # Type of book_transfer
         type:,
         # Customer-provided token that will serve as an idempotency token. This token will
-        #   become the transaction token.
+        # become the transaction token.
         token: nil,
         # Optional descriptor for the transfer.
         memo: nil,
@@ -76,26 +76,26 @@ module Lithic
       def list(
         account_token: nil,
         # Date string in RFC 3339 format. Only entries created after the specified time
-        #   will be included. UTC time zone.
+        # will be included. UTC time zone.
         begin_: nil,
         business_account_token: nil,
         # Book Transfer category to be returned.
         category: nil,
         # Date string in RFC 3339 format. Only entries created before the specified time
-        #   will be included. UTC time zone.
+        # will be included. UTC time zone.
         end_: nil,
         # A cursor representing an item's token before which a page of results should end.
-        #   Used to retrieve the previous page of results before this item.
+        # Used to retrieve the previous page of results before this item.
         ending_before: nil,
         # Globally unique identifier for the financial account or card that will send the
-        #   funds. Accepted type dependent on the program's use case.
+        # funds. Accepted type dependent on the program's use case.
         financial_account_token: nil,
         # Page size (for pagination).
         page_size: nil,
         # Book transfer result to be returned.
         result: nil,
         # A cursor representing an item's token after which a page of results should
-        #   begin. Used to retrieve the next page of results after this item.
+        # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
         # Book transfer status to be returned.
         status: nil,

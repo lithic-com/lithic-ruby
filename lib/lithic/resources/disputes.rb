@@ -120,7 +120,7 @@ module Lithic
       end
 
       # Soft delete evidence for a dispute. Evidence will not be reviewed or submitted
-      #   by Lithic after it is withdrawn.
+      # by Lithic after it is withdrawn.
       #
       # @overload delete_evidence(evidence_token, dispute_token:, request_options: {})
       #
@@ -146,10 +146,10 @@ module Lithic
       end
 
       # Use this endpoint to upload evidences for the dispute. It will return a URL to
-      #   upload your documents to. The URL will expire in 30 minutes.
+      # upload your documents to. The URL will expire in 30 minutes.
       #
-      #   Uploaded documents must either be a `jpg`, `png` or `pdf` file, and each must be
-      #   less than 5 GiB.
+      # Uploaded documents must either be a `jpg`, `png` or `pdf` file, and each must be
+      # less than 5 GiB.
       #
       # @overload initiate_evidence_upload(dispute_token, filename: nil, request_options: {})
       #

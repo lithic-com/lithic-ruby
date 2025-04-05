@@ -18,7 +18,7 @@ module Lithic
       attr_writer :account_token
 
       # Only present when user_type == "BUSINESS". List of all entities with >25%
-      #   ownership in the company.
+      # ownership in the company.
       sig { returns(T.nilable(T::Array[Lithic::Models::KYBBusinessEntity])) }
       attr_reader :beneficial_owner_entities
 
@@ -31,7 +31,7 @@ module Lithic
       attr_writer :beneficial_owner_entities
 
       # Only present when user_type == "BUSINESS". List of all individuals with >25%
-      #   ownership in the company.
+      # ownership in the company.
       sig do
         returns(
           T.nilable(
@@ -55,8 +55,8 @@ module Lithic
       attr_writer :beneficial_owner_individuals
 
       # Only applicable for customers using the KYC-Exempt workflow to enroll authorized
-      #   users of businesses. Pass the account_token of the enrolled business associated
-      #   with the AUTHORIZED_USER in this field.
+      # users of businesses. Pass the account_token of the enrolled business associated
+      # with the AUTHORIZED_USER in this field.
       sig { returns(T.nilable(String)) }
       attr_reader :business_account_token
 
@@ -64,7 +64,7 @@ module Lithic
       attr_writer :business_account_token
 
       # Only present when user_type == "BUSINESS". Information about the business for
-      #   which the account is being opened and KYB is being run.
+      # which the account is being opened and KYB is being run.
       sig { returns(T.nilable(Lithic::Models::KYBBusinessEntity)) }
       attr_reader :business_entity
 
@@ -73,15 +73,15 @@ module Lithic
 
       # Only present when user_type == "BUSINESS".
       #
-      #   An individual with significant responsibility for managing the legal entity
-      #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-      #   Officer,
+      # An individual with significant responsibility for managing the legal entity
+      # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+      # Officer,
       #
-      #   Managing Member, General Partner, President, Vice President, or Treasurer). This
-      #   can be an executive, or someone who will have program-wide access
+      # Managing Member, General Partner, President, Vice President, or Treasurer). This
+      # can be an executive, or someone who will have program-wide access
       #
-      #   to the cards that Lithic will provide. In some cases, this individual could also
-      #   be a beneficial owner listed above.
+      # to the cards that Lithic will provide. In some cases, this individual could also
+      # be a beneficial owner listed above.
       sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson)) }
       attr_reader :control_person
 
@@ -104,9 +104,9 @@ module Lithic
       attr_writer :created
 
       # < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
-      #   individual.phone_number when user_type == "INDIVIDUAL".
+      # individual.phone_number when user_type == "INDIVIDUAL".
       #
-      #   > Primary email of Account Holder.
+      # > Primary email of Account Holder.
       sig { returns(T.nilable(String)) }
       attr_reader :email
 
@@ -114,7 +114,7 @@ module Lithic
       attr_writer :email
 
       # The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
-      #   holder is not KYC-Exempt.
+      # holder is not KYC-Exempt.
       sig do
         returns(
           T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol)
@@ -131,7 +131,7 @@ module Lithic
       attr_writer :exemption_type
 
       # Customer-provided token that indicates a relationship with an object outside of
-      #   the Lithic ecosystem.
+      # the Lithic ecosystem.
       sig { returns(T.nilable(String)) }
       attr_reader :external_id
 
@@ -139,7 +139,7 @@ module Lithic
       attr_writer :external_id
 
       # Only present when user_type == "INDIVIDUAL". Information about the individual
-      #   for which the account is being opened and KYC is being run.
+      # for which the account is being opened and KYC is being run.
       sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual)) }
       attr_reader :individual
 
@@ -155,7 +155,7 @@ module Lithic
       attr_writer :individual
 
       # Only present when user_type == "BUSINESS". User-submitted description of the
-      #   business.
+      # business.
       sig { returns(T.nilable(String)) }
       attr_reader :nature_of_business
 
@@ -163,9 +163,9 @@ module Lithic
       attr_writer :nature_of_business
 
       # < Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
-      #   individual.phone_number when user_type == "INDIVIDUAL".
+      # individual.phone_number when user_type == "INDIVIDUAL".
       #
-      #   > Primary phone of Account Holder, entered in E.164 format.
+      # > Primary phone of Account Holder, entered in E.164 format.
       sig { returns(T.nilable(String)) }
       attr_reader :phone_number
 
@@ -173,7 +173,7 @@ module Lithic
       attr_writer :phone_number
 
       # Only present for "KYB_BASIC" and "KYC_ADVANCED" workflows. A list of documents
-      #   required for the account holder to be approved.
+      # required for the account holder to be approved.
       sig { returns(T.nilable(T::Array[Lithic::Models::RequiredDocument])) }
       attr_reader :required_documents
 
@@ -185,10 +185,10 @@ module Lithic
 
       # <Deprecated. Use verification_application.status instead>
       #
-      #   KYC and KYB evaluation states.
+      # KYC and KYB evaluation states.
       #
-      #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
-      #   `ADVANCED` workflow.
+      # Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
+      # `ADVANCED` workflow.
       sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol)) }
       attr_reader :status
 
@@ -196,7 +196,7 @@ module Lithic
       attr_writer :status
 
       # <Deprecated. Use verification_application.status_reasons> Reason for the
-      #   evaluation status.
+      # evaluation status.
       sig do
         returns(
           T.nilable(
@@ -215,12 +215,12 @@ module Lithic
       attr_writer :status_reasons
 
       # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
-      #   attribute will be present.
+      # attribute will be present.
       #
-      #   If the type is "BUSINESS" then the "business_entity", "control_person",
-      #   "beneficial_owner_individuals", "beneficial_owner_entities",
+      # If the type is "BUSINESS" then the "business_entity", "control_person",
+      # "beneficial_owner_individuals", "beneficial_owner_entities",
       #
-      #   "nature_of_business", and "website_url" attributes will be present.
+      # "nature_of_business", and "website_url" attributes will be present.
       sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol)) }
       attr_reader :user_type
 
@@ -341,7 +341,7 @@ module Lithic
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig do
           returns(
             T.nilable(
@@ -370,7 +370,7 @@ module Lithic
         attr_writer :dob
 
         # Individual's email address. If utilizing Lithic for chargeback processing, this
-        #   customer email address may be used to communicate dispute status and resolution.
+        # customer email address may be used to communicate dispute status and resolution.
         sig { returns(T.nilable(String)) }
         attr_reader :email
 
@@ -441,17 +441,17 @@ module Lithic
           attr_accessor :city
 
           # Valid country code. Only USA is currently supported, entered in uppercase ISO
-          #   3166-1 alpha-3 three-character format.
+          # 3166-1 alpha-3 three-character format.
           sig { returns(String) }
           attr_accessor :country
 
           # Valid postal code. Only USA ZIP codes are currently supported, entered as a
-          #   five-digit ZIP or nine-digit ZIP+4.
+          # five-digit ZIP or nine-digit ZIP+4.
           sig { returns(String) }
           attr_accessor :postal_code
 
           # Valid state code. Only USA state codes are currently supported, entered in
-          #   uppercase ISO 3166-2 two-character format.
+          # uppercase ISO 3166-2 two-character format.
           sig { returns(String) }
           attr_accessor :state
 
@@ -463,7 +463,7 @@ module Lithic
           attr_writer :address2
 
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
           sig do
             params(
               address1: String,
@@ -496,7 +496,7 @@ module Lithic
 
       class ControlPerson < Lithic::Internal::Type::BaseModel
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address)) }
         attr_reader :address
 
@@ -519,7 +519,7 @@ module Lithic
         attr_writer :dob
 
         # Individual's email address. If utilizing Lithic for chargeback processing, this
-        #   customer email address may be used to communicate dispute status and resolution.
+        # customer email address may be used to communicate dispute status and resolution.
         sig { returns(T.nilable(String)) }
         attr_reader :email
 
@@ -549,15 +549,15 @@ module Lithic
 
         # Only present when user_type == "BUSINESS".
         #
-        #   An individual with significant responsibility for managing the legal entity
-        #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-        #   Officer,
+        # An individual with significant responsibility for managing the legal entity
+        # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+        # Officer,
         #
-        #   Managing Member, General Partner, President, Vice President, or Treasurer). This
-        #   can be an executive, or someone who will have program-wide access
+        # Managing Member, General Partner, President, Vice President, or Treasurer). This
+        # can be an executive, or someone who will have program-wide access
         #
-        #   to the cards that Lithic will provide. In some cases, this individual could also
-        #   be a beneficial owner listed above.
+        # to the cards that Lithic will provide. In some cases, this individual could also
+        # be a beneficial owner listed above.
         sig do
           params(
             address: T.any(
@@ -601,17 +601,17 @@ module Lithic
           attr_accessor :city
 
           # Valid country code. Only USA is currently supported, entered in uppercase ISO
-          #   3166-1 alpha-3 three-character format.
+          # 3166-1 alpha-3 three-character format.
           sig { returns(String) }
           attr_accessor :country
 
           # Valid postal code. Only USA ZIP codes are currently supported, entered as a
-          #   five-digit ZIP or nine-digit ZIP+4.
+          # five-digit ZIP or nine-digit ZIP+4.
           sig { returns(String) }
           attr_accessor :postal_code
 
           # Valid state code. Only USA state codes are currently supported, entered in
-          #   uppercase ISO 3166-2 two-character format.
+          # uppercase ISO 3166-2 two-character format.
           sig { returns(String) }
           attr_accessor :state
 
@@ -623,7 +623,7 @@ module Lithic
           attr_writer :address2
 
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
           sig do
             params(
               address1: String,
@@ -655,7 +655,7 @@ module Lithic
       end
 
       # The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
-      #   holder is not KYC-Exempt.
+      # holder is not KYC-Exempt.
       module ExemptionType
         extend Lithic::Internal::Type::Enum
 
@@ -692,7 +692,7 @@ module Lithic
 
       class Individual < Lithic::Internal::Type::BaseModel
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-        #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+        # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address)) }
         attr_reader :address
 
@@ -715,7 +715,7 @@ module Lithic
         attr_writer :dob
 
         # Individual's email address. If utilizing Lithic for chargeback processing, this
-        #   customer email address may be used to communicate dispute status and resolution.
+        # customer email address may be used to communicate dispute status and resolution.
         sig { returns(T.nilable(String)) }
         attr_reader :email
 
@@ -744,7 +744,7 @@ module Lithic
         attr_writer :phone_number
 
         # Only present when user_type == "INDIVIDUAL". Information about the individual
-        #   for which the account is being opened and KYC is being run.
+        # for which the account is being opened and KYC is being run.
         sig do
           params(
             address: T.any(
@@ -788,17 +788,17 @@ module Lithic
           attr_accessor :city
 
           # Valid country code. Only USA is currently supported, entered in uppercase ISO
-          #   3166-1 alpha-3 three-character format.
+          # 3166-1 alpha-3 three-character format.
           sig { returns(String) }
           attr_accessor :country
 
           # Valid postal code. Only USA ZIP codes are currently supported, entered as a
-          #   five-digit ZIP or nine-digit ZIP+4.
+          # five-digit ZIP or nine-digit ZIP+4.
           sig { returns(String) }
           attr_accessor :postal_code
 
           # Valid state code. Only USA state codes are currently supported, entered in
-          #   uppercase ISO 3166-2 two-character format.
+          # uppercase ISO 3166-2 two-character format.
           sig { returns(String) }
           attr_accessor :state
 
@@ -810,7 +810,7 @@ module Lithic
           attr_writer :address2
 
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
           sig do
             params(
               address1: String,
@@ -843,10 +843,10 @@ module Lithic
 
       # <Deprecated. Use verification_application.status instead>
       #
-      #   KYC and KYB evaluation states.
+      # KYC and KYB evaluation states.
       #
-      #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
-      #   `ADVANCED` workflow.
+      # Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
+      # `ADVANCED` workflow.
       module Status
         extend Lithic::Internal::Type::Enum
 
@@ -1023,12 +1023,12 @@ module Lithic
       end
 
       # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
-      #   attribute will be present.
+      # attribute will be present.
       #
-      #   If the type is "BUSINESS" then the "business_entity", "control_person",
-      #   "beneficial_owner_individuals", "beneficial_owner_entities",
+      # If the type is "BUSINESS" then the "business_entity", "control_person",
+      # "beneficial_owner_individuals", "beneficial_owner_entities",
       #
-      #   "nature_of_business", and "website_url" attributes will be present.
+      # "nature_of_business", and "website_url" attributes will be present.
       module UserType
         extend Lithic::Internal::Type::Enum
 
@@ -1062,8 +1062,8 @@ module Lithic
 
         # KYC and KYB evaluation states.
         #
-        #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
-        #   `ADVANCED` workflow.
+        # Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
+        # `ADVANCED` workflow.
         sig do
           returns(
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::TaggedSymbol
@@ -1116,8 +1116,8 @@ module Lithic
 
         # KYC and KYB evaluation states.
         #
-        #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
-        #   `ADVANCED` workflow.
+        # Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
+        # `ADVANCED` workflow.
         module Status
           extend Lithic::Internal::Type::Enum
 

@@ -28,7 +28,7 @@ module Lithic
       attr_accessor :status
 
       # The entity that requested the tokenization. Represents a Digital Wallet or
-      #   merchant.
+      # merchant.
       sig { returns(Lithic::Models::Tokenization::TokenRequestorName::TaggedSymbol) }
       attr_accessor :token_requestor_name
 
@@ -45,9 +45,9 @@ module Lithic
       attr_accessor :updated_at
 
       # Specifies the digital card art displayed in the user’s digital wallet after
-      #   tokenization. This will be null if the tokenization was created without an
-      #   associated digital card art. See
-      #   [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
+      # tokenization. This will be null if the tokenization was created without an
+      # associated digital card art. See
+      # [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
       sig { returns(T.nilable(String)) }
       attr_reader :digital_card_art_token
 
@@ -140,7 +140,7 @@ module Lithic
       end
 
       # The entity that requested the tokenization. Represents a Digital Wallet or
-      #   merchant.
+      # merchant.
       module TokenRequestorName
         extend Lithic::Internal::Type::Enum
 

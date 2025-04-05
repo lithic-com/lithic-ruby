@@ -31,7 +31,7 @@ module Lithic
       attr_writer :cardholder_currency
 
       # List of 3-character alphabetic ISO 4217 codes for the currencies that the card
-      #   program supports for settlement.
+      # program supports for settlement.
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :settlement_currencies
 

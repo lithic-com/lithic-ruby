@@ -12,19 +12,19 @@ module Lithic
       attr_accessor :account_token
 
       # Fee assessed by the merchant and paid for by the cardholder in the smallest unit
-      #   of the currency. Will be zero if no fee is assessed. Rebates may be transmitted
-      #   as a negative value to indicate credited fees.
+      # of the currency. Will be zero if no fee is assessed. Rebates may be transmitted
+      # as a negative value to indicate credited fees.
       sig { returns(T.nilable(Integer)) }
       attr_accessor :acquirer_fee
 
       # Unique identifier assigned to a transaction by the acquirer that can be used in
-      #   dispute and chargeback filing.
+      # dispute and chargeback filing.
       sig { returns(T.nilable(String)) }
       attr_accessor :acquirer_reference_number
 
       # When the transaction is pending, this represents the authorization amount of the
-      #   transaction in the anticipated settlement currency. Once the transaction has
-      #   settled, this field represents the settled amount in the settlement currency.
+      # transaction in the anticipated settlement currency. Once the transaction has
+      # settled, this field represents the settled amount in the settlement currency.
       sig { returns(Integer) }
       attr_accessor :amount
 
@@ -35,12 +35,12 @@ module Lithic
       attr_writer :amounts
 
       # The authorization amount of the transaction in the anticipated settlement
-      #   currency.
+      # currency.
       sig { returns(T.nilable(Integer)) }
       attr_accessor :authorization_amount
 
       # A fixed-width 6-digit numeric identifier that can be used to identify a
-      #   transaction with networks.
+      # transaction with networks.
       sig { returns(T.nilable(String)) }
       attr_accessor :authorization_code
 
@@ -88,16 +88,16 @@ module Lithic
       attr_accessor :merchant_currency
 
       # Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
-      #   `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
-      #   network code from the upstream provider.
+      # `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
+      # network code from the upstream provider.
       sig { returns(T.nilable(Lithic::Models::Transaction::Network::TaggedSymbol)) }
       attr_accessor :network
 
       # Network-provided score assessing risk level associated with a given
-      #   authorization. Scores are on a range of 0-999, with 0 representing the lowest
-      #   risk and 999 representing the highest risk. For Visa transactions, where the raw
-      #   score has a range of 0-99, Lithic will normalize the score by multiplying the
-      #   raw score by 10x.
+      # authorization. Scores are on a range of 0-999, with 0 representing the lowest
+      # risk and 999 representing the highest risk. For Visa transactions, where the raw
+      # score has a range of 0-99, Lithic will normalize the score by multiplying the
+      # raw score by 10x.
       sig { returns(T.nilable(Integer)) }
       attr_accessor :network_risk_score
 
@@ -283,12 +283,12 @@ module Lithic
 
         class Cardholder < Lithic::Internal::Type::BaseModel
           # The estimated settled amount of the transaction in the cardholder billing
-          #   currency.
+          # currency.
           sig { returns(Integer) }
           attr_accessor :amount
 
           # The exchange rate used to convert the merchant amount to the cardholder billing
-          #   amount.
+          # amount.
           sig { returns(String) }
           attr_accessor :conversion_rate
 
@@ -386,34 +386,34 @@ module Lithic
         attr_accessor :decision_made_by
 
         # Indicates whether chargeback liability shift applies to the transaction.
-        #   Possible enum values:
+        # Possible enum values:
         #
-        #       * `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D Secure flow, chargeback liability shift applies.
+        #     * `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D Secure flow, chargeback liability shift applies.
         #
-        #       * `ACQUIRER_EXEMPTION`: The acquirer utilised an exemption to bypass Strong Customer Authentication (`transStatus = N`, or `transStatus = I`). Liability remains with the acquirer and in this case the `acquirer_exemption` field is expected to be not `NONE`.
+        #     * `ACQUIRER_EXEMPTION`: The acquirer utilised an exemption to bypass Strong Customer Authentication (`transStatus = N`, or `transStatus = I`). Liability remains with the acquirer and in this case the `acquirer_exemption` field is expected to be not `NONE`.
         #
-        #       * `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the merchant is liable.
+        #     * `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the merchant is liable.
         #
-        #   - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
-        #     cryptography, possibly recurring. Chargeback liability shift to the issuer
-        #     applies.
+        # - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
+        #   cryptography, possibly recurring. Chargeback liability shift to the issuer
+        #   applies.
         sig { returns(Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol) }
         attr_accessor :liability_shift
 
         # Unique identifier you can use to match a given 3DS authentication (available via
-        #   the three_ds_authentication.created event webhook) and the transaction. Note
-        #   that in cases where liability shift does not occur, this token is matched to the
-        #   transaction on a best-effort basis.
+        # the three_ds_authentication.created event webhook) and the transaction. Note
+        # that in cases where liability shift does not occur, this token is matched to the
+        # transaction on a best-effort basis.
         sig { returns(T.nilable(String)) }
         attr_accessor :three_ds_authentication_token
 
         # Indicates whether a 3DS challenge flow was used, and if so, what the
-        #   verification method was. (deprecated, use `authentication_result`)
+        # verification method was. (deprecated, use `authentication_result`)
         sig { returns(Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol) }
         attr_accessor :verification_attempted
 
         # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
-        #   use `authentication_result`)
+        # use `authentication_result`)
         sig { returns(Lithic::Models::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol) }
         attr_accessor :verification_result
 
@@ -584,17 +584,17 @@ module Lithic
         end
 
         # Indicates whether chargeback liability shift applies to the transaction.
-        #   Possible enum values:
+        # Possible enum values:
         #
-        #       * `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D Secure flow, chargeback liability shift applies.
+        #     * `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D Secure flow, chargeback liability shift applies.
         #
-        #       * `ACQUIRER_EXEMPTION`: The acquirer utilised an exemption to bypass Strong Customer Authentication (`transStatus = N`, or `transStatus = I`). Liability remains with the acquirer and in this case the `acquirer_exemption` field is expected to be not `NONE`.
+        #     * `ACQUIRER_EXEMPTION`: The acquirer utilised an exemption to bypass Strong Customer Authentication (`transStatus = N`, or `transStatus = I`). Liability remains with the acquirer and in this case the `acquirer_exemption` field is expected to be not `NONE`.
         #
-        #       * `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the merchant is liable.
+        #     * `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the merchant is liable.
         #
-        #   - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
-        #     cryptography, possibly recurring. Chargeback liability shift to the issuer
-        #     applies.
+        # - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
+        #   cryptography, possibly recurring. Chargeback liability shift to the issuer
+        #   applies.
         module LiabilityShift
           extend Lithic::Internal::Type::Enum
 
@@ -628,7 +628,7 @@ module Lithic
         end
 
         # Indicates whether a 3DS challenge flow was used, and if so, what the
-        #   verification method was. (deprecated, use `authentication_result`)
+        # verification method was. (deprecated, use `authentication_result`)
         module VerificationAttempted
           extend Lithic::Internal::Type::Enum
 
@@ -658,7 +658,7 @@ module Lithic
         end
 
         # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
-        #   use `authentication_result`)
+        # use `authentication_result`)
         module VerificationResult
           extend Lithic::Internal::Type::Enum
 
@@ -710,12 +710,12 @@ module Lithic
         attr_accessor :acquiring_institution_id
 
         # City of card acceptor. Note that in many cases, particularly in card-not-present
-        #   transactions, merchants may send through a phone number or URL in this field.
+        # transactions, merchants may send through a phone number or URL in this field.
         sig { returns(String) }
         attr_accessor :city
 
         # Country or entity of card acceptor. Possible values are: (1) all ISO 3166-1
-        #   alpha-3 country codes, (2) QZZ for Kosovo, and (3) ANT for Netherlands Antilles.
+        # alpha-3 country codes, (2) QZZ for Kosovo, and (3) ANT for Netherlands Antilles.
         sig { returns(String) }
         attr_accessor :country
 
@@ -724,7 +724,7 @@ module Lithic
         attr_accessor :descriptor
 
         # Merchant category code (MCC). A four-digit number listed in ISO 18245. An MCC is
-        #   used to classify a business by the types of goods or services it provides.
+        # used to classify a business by the types of goods or services it provides.
         sig { returns(String) }
         attr_accessor :mcc
 
@@ -764,8 +764,8 @@ module Lithic
       end
 
       # Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
-      #   `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
-      #   network code from the upstream provider.
+      # `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
+      # network code from the upstream provider.
       module Network
         extend Lithic::Internal::Type::Enum
 
@@ -949,10 +949,10 @@ module Lithic
           attr_accessor :operator
 
           # True if the terminal is capable of partial approval. Partial approval is when
-          #   part of a transaction is approved and another payment must be used for the
-          #   remainder. Example scenario: A $40 transaction is attempted on a prepaid card
-          #   with a $25 balance. If partial approval is enabled, $25 can be authorized, at
-          #   which point the POS will prompt the user for an additional payment of $15.
+          # part of a transaction is approved and another payment must be used for the
+          # remainder. Example scenario: A $40 transaction is attempted on a prepaid card
+          # with a $25 balance. If partial approval is enabled, $25 can be authorized, at
+          # which point the POS will prompt the user for an additional payment of $15.
           sig { returns(T::Boolean) }
           attr_accessor :partial_approval_capable
 
@@ -1136,9 +1136,9 @@ module Lithic
 
       class TokenInfo < Lithic::Internal::Type::BaseModel
         # The wallet_type field will indicate the source of the token. Possible token
-        #   sources include digital wallets (Apple, Google, or Samsung Pay), merchant
-        #   tokenization, and “other” sources like in-flight commerce. Masterpass is not
-        #   currently supported and is included for future use.
+        # sources include digital wallets (Apple, Google, or Samsung Pay), merchant
+        # tokenization, and “other” sources like in-flight commerce. Masterpass is not
+        # currently supported and is included for future use.
         sig { returns(Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol) }
         attr_accessor :wallet_type
 
@@ -1151,9 +1151,9 @@ module Lithic
         def to_hash; end
 
         # The wallet_type field will indicate the source of the token. Possible token
-        #   sources include digital wallets (Apple, Google, or Samsung Pay), merchant
-        #   tokenization, and “other” sources like in-flight commerce. Masterpass is not
-        #   currently supported and is included for future use.
+        # sources include digital wallets (Apple, Google, or Samsung Pay), merchant
+        # tokenization, and “other” sources like in-flight commerce. Masterpass is not
+        # currently supported and is included for future use.
         module WalletType
           extend Lithic::Internal::Type::Enum
 
@@ -1200,14 +1200,14 @@ module Lithic
         attr_accessor :effective_polarity
 
         # Information provided by the card network in each event. This includes common
-        #   identifiers shared between you, Lithic, the card network and in some cases the
-        #   acquirer. These identifiers often link together events within the same
-        #   transaction lifecycle and can be used to locate a particular transaction, such
-        #   as during processing of disputes. Not all fields are available in all events,
-        #   and the presence of these fields is dependent on the card network and the event
-        #   type. If the field is populated by the network, we will pass it through as is
-        #   unless otherwise specified. Please consult the official network documentation
-        #   for more details about these fields and how to use them.
+        # identifiers shared between you, Lithic, the card network and in some cases the
+        # acquirer. These identifiers often link together events within the same
+        # transaction lifecycle and can be used to locate a particular transaction, such
+        # as during processing of disputes. Not all fields are available in all events,
+        # and the presence of these fields is dependent on the card network and the event
+        # type. If the field is populated by the network, we will pass it through as is
+        # unless otherwise specified. Please consult the official network documentation
+        # for more details about these fields and how to use them.
         sig { returns(T.nilable(Lithic::Models::Transaction::Event::NetworkInfo)) }
         attr_reader :network_info
 
@@ -1335,7 +1335,7 @@ module Lithic
             attr_accessor :amount
 
             # Exchange rate used to convert the merchant amount to the cardholder billing
-            #   amount.
+            # amount.
             sig { returns(String) }
             attr_accessor :conversion_rate
 
@@ -1370,7 +1370,7 @@ module Lithic
 
           class Settlement < Lithic::Internal::Type::BaseModel
             # Amount of the event, if it is financial, in the settlement currency.
-            #   Non-financial events do not contain this amount because they do not move funds.
+            # Non-financial events do not contain this amount because they do not move funds.
             sig { returns(Integer) }
             attr_accessor :amount
 
@@ -1576,14 +1576,14 @@ module Lithic
           attr_writer :visa
 
           # Information provided by the card network in each event. This includes common
-          #   identifiers shared between you, Lithic, the card network and in some cases the
-          #   acquirer. These identifiers often link together events within the same
-          #   transaction lifecycle and can be used to locate a particular transaction, such
-          #   as during processing of disputes. Not all fields are available in all events,
-          #   and the presence of these fields is dependent on the card network and the event
-          #   type. If the field is populated by the network, we will pass it through as is
-          #   unless otherwise specified. Please consult the official network documentation
-          #   for more details about these fields and how to use them.
+          # identifiers shared between you, Lithic, the card network and in some cases the
+          # acquirer. These identifiers often link together events within the same
+          # transaction lifecycle and can be used to locate a particular transaction, such
+          # as during processing of disputes. Not all fields are available in all events,
+          # and the presence of these fields is dependent on the card network and the event
+          # type. If the field is populated by the network, we will pass it through as is
+          # unless otherwise specified. Please consult the official network documentation
+          # for more details about these fields and how to use them.
           sig do
             params(
               acquirer: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, Lithic::Internal::AnyHash)),
@@ -1608,10 +1608,10 @@ module Lithic
 
           class Acquirer < Lithic::Internal::Type::BaseModel
             # Identifier assigned by the acquirer, applicable to dual-message transactions
-            #   only. The acquirer reference number (ARN) is only populated once a transaction
-            #   has been cleared, and it is not available in all transactions (such as automated
-            #   fuel dispenser transactions). A single transaction can contain multiple ARNs if
-            #   the merchant sends multiple clearings.
+            # only. The acquirer reference number (ARN) is only populated once a transaction
+            # has been cleared, and it is not available in all transactions (such as automated
+            # fuel dispenser transactions). A single transaction can contain multiple ARNs if
+            # the merchant sends multiple clearings.
             sig { returns(T.nilable(String)) }
             attr_accessor :acquirer_reference_number
 
@@ -1640,32 +1640,32 @@ module Lithic
 
           class Mastercard < Lithic::Internal::Type::BaseModel
             # Identifier assigned by Mastercard. Guaranteed by Mastercard to be unique for any
-            #   transaction within a specific financial network on any processing day.
+            # transaction within a specific financial network on any processing day.
             sig { returns(T.nilable(String)) }
             attr_accessor :banknet_reference_number
 
             # Identifier assigned by Mastercard. Matches the `banknet_reference_number` of a
-            #   prior related event. May be populated in authorization reversals, incremental
-            #   authorizations (authorization requests that augment a previously authorized
-            #   amount), automated fuel dispenser authorization advices and clearings, and
-            #   financial authorizations. If the original banknet reference number contains all
-            #   zeroes, then no actual reference number could be found by the network or
-            #   acquirer. If Mastercard converts a transaction from dual-message to
-            #   single-message, such as for certain ATM transactions, it will populate the
-            #   original banknet reference number in the resulting financial authorization with
-            #   the banknet reference number of the initial authorization, which Lithic does not
-            #   receive.
+            # prior related event. May be populated in authorization reversals, incremental
+            # authorizations (authorization requests that augment a previously authorized
+            # amount), automated fuel dispenser authorization advices and clearings, and
+            # financial authorizations. If the original banknet reference number contains all
+            # zeroes, then no actual reference number could be found by the network or
+            # acquirer. If Mastercard converts a transaction from dual-message to
+            # single-message, such as for certain ATM transactions, it will populate the
+            # original banknet reference number in the resulting financial authorization with
+            # the banknet reference number of the initial authorization, which Lithic does not
+            # receive.
             sig { returns(T.nilable(String)) }
             attr_accessor :original_banknet_reference_number
 
             # Identifier assigned by Mastercard. Matches the `switch_serial_number` of a prior
-            #   related event. May be populated in returns and return reversals. Applicable to
-            #   single-message transactions only.
+            # related event. May be populated in returns and return reversals. Applicable to
+            # single-message transactions only.
             sig { returns(T.nilable(String)) }
             attr_accessor :original_switch_serial_number
 
             # Identifier assigned by Mastercard, applicable to single-message transactions
-            #   only.
+            # only.
             sig { returns(T.nilable(String)) }
             attr_accessor :switch_serial_number
 
@@ -1700,15 +1700,15 @@ module Lithic
 
           class Visa < Lithic::Internal::Type::BaseModel
             # Identifier assigned by Visa. Matches the `transaction_id` of a prior related
-            #   event. May be populated in incremental authorizations (authorization requests
-            #   that augment a previously authorized amount), authorization advices, financial
-            #   authorizations, and clearings.
+            # event. May be populated in incremental authorizations (authorization requests
+            # that augment a previously authorized amount), authorization advices, financial
+            # authorizations, and clearings.
             sig { returns(T.nilable(String)) }
             attr_accessor :original_transaction_id
 
             # Identifier assigned by Visa to link original messages to subsequent messages.
-            #   Guaranteed by Visa to be unique for each original authorization and financial
-            #   authorization.
+            # Guaranteed by Visa to be unique for each original authorization and financial
+            # authorization.
             sig { returns(T.nilable(String)) }
             attr_accessor :transaction_id
 
@@ -1778,9 +1778,9 @@ module Lithic
 
         class RuleResult < Lithic::Internal::Type::BaseModel
           # The Auth Rule Token associated with the rule from which the decline originated.
-          #   If this is set to null, then the decline was not associated with a
-          #   customer-configured Auth Rule. This may happen in cases where a transaction is
-          #   declined due to a Lithic-configured security or compliance rule, for example.
+          # If this is set to null, then the decline was not associated with a
+          # customer-configured Auth Rule. This may happen in cases where a transaction is
+          # declined due to a Lithic-configured security or compliance rule, for example.
           sig { returns(T.nilable(String)) }
           attr_accessor :auth_rule_token
 

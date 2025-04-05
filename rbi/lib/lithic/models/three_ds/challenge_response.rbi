@@ -5,9 +5,9 @@ module Lithic
     module ThreeDS
       class ChallengeResponse < Lithic::Internal::Type::BaseModel
         # Globally unique identifier for the 3DS authentication. This token is sent as
-        #   part of the initial 3DS Decisioning Request and as part of the 3DS Challenge
-        #   Event in the [ThreeDSAuthentication](#/components/schemas/ThreeDSAuthentication)
-        #   object
+        # part of the initial 3DS Decisioning Request and as part of the 3DS Challenge
+        # Event in the [ThreeDSAuthentication](#/components/schemas/ThreeDSAuthentication)
+        # object
         sig { returns(String) }
         attr_accessor :token
 

@@ -25,7 +25,7 @@ module Lithic
       attr_writer :city
 
       # Valid country code. Only USA is currently supported, entered in uppercase ISO
-      #   3166-1 alpha-3 three-character format.
+      # 3166-1 alpha-3 three-character format.
       sig { returns(T.nilable(String)) }
       attr_reader :country
 
@@ -33,7 +33,7 @@ module Lithic
       attr_writer :country
 
       # Valid postal code. Only USA ZIP codes are currently supported, entered as a
-      #   five-digit ZIP or nine-digit ZIP+4.
+      # five-digit ZIP or nine-digit ZIP+4.
       sig { returns(T.nilable(String)) }
       attr_reader :postal_code
 
@@ -41,7 +41,7 @@ module Lithic
       attr_writer :postal_code
 
       # Valid state code. Only USA state codes are currently supported, entered in
-      #   uppercase ISO 3166-2 two-character format.
+      # uppercase ISO 3166-2 two-character format.
       sig { returns(T.nilable(String)) }
       attr_reader :state
 
