@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-04-05)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* allow all valid `JSON` types to be encoded ([#60](https://github.com/lithic-com/lithic-ruby/issues/60)) ([38374fd](https://github.com/lithic-com/lithic-ruby/commit/38374fda2d025ac1b6625174619f83262b00c7ac))
+* support query, header, and body params that have identical names ([#58](https://github.com/lithic-com/lithic-ruby/issues/58)) ([ac5c767](https://github.com/lithic-com/lithic-ruby/commit/ac5c7672360f3a91fbf1722340faa887df856b31))
+* support solargraph generics ([#53](https://github.com/lithic-com/lithic-ruby/issues/53)) ([850275b](https://github.com/lithic-com/lithic-ruby/commit/850275bcbc2d23deda110645faea0e7fa5decae5))
+
+
+### Bug Fixes
+
+* converter should transform stringio into string where applicable ([#62](https://github.com/lithic-com/lithic-ruby/issues/62)) ([17f61ed](https://github.com/lithic-com/lithic-ruby/commit/17f61ed9dde1a981c145f24ba4d60f46d4f1db9c))
+
+
+### Chores
+
+* do not use literals for version in type definitions ([#54](https://github.com/lithic-com/lithic-ruby/issues/54)) ([eb2fb32](https://github.com/lithic-com/lithic-ruby/commit/eb2fb32424f211bdeb512139784b34615b5b639c))
+* document LSP support in read me ([#57](https://github.com/lithic-com/lithic-ruby/issues/57)) ([ee03c93](https://github.com/lithic-com/lithic-ruby/commit/ee03c93a4e613bfc1a45fdd81bb67d0cca121661))
+* **internal:** version bump ([#52](https://github.com/lithic-com/lithic-ruby/issues/52)) ([4209a43](https://github.com/lithic-com/lithic-ruby/commit/4209a435a3515bfa4d84bf2d39c8bc46dd580051))
+* misc sdk polish ([#56](https://github.com/lithic-com/lithic-ruby/issues/56)) ([ff2a257](https://github.com/lithic-com/lithic-ruby/commit/ff2a257bf3329e9553dd641b4ecf2f73cdcf7f8e))
+* rename confusing `Type::BooleanModel` to `Type::Boolean` ([#61](https://github.com/lithic-com/lithic-ruby/issues/61)) ([83ac959](https://github.com/lithic-com/lithic-ruby/commit/83ac959d8057b053d05e2e063cbc91cb8acdde66))
+* simplify internal utils ([#55](https://github.com/lithic-com/lithic-ruby/issues/55)) ([ba30a09](https://github.com/lithic-com/lithic-ruby/commit/ba30a09612a6b36d164b8feea2924e8444413ba5))
+
 ## 0.1.0-alpha.5 (2025-04-03)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
