@@ -3,6 +3,8 @@ module Lithic
     class Events
       attr_reader subscriptions: Lithic::Resources::Events::Subscriptions
 
+      attr_reader event_subscriptions: Lithic::Resources::Events::EventSubscriptions
+
       def retrieve: (
         String event_token,
         ?request_options: Lithic::request_opts

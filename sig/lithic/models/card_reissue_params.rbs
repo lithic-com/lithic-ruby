@@ -44,7 +44,7 @@ module Lithic
       def to_hash: -> Lithic::Models::card_reissue_params
 
       type shipping_method =
-        :"2-DAY"
+        :"2_DAY"
         | :EXPEDITED
         | :EXPRESS
         | :PRIORITY
@@ -54,7 +54,7 @@ module Lithic
       module ShippingMethod
         extend Lithic::Internal::Type::Enum
 
-        SHIPPING_METHOD_2_DAY: :"2-DAY"
+        SHIPPING_METHOD_2_DAY: :"2_DAY"
         EXPEDITED: :EXPEDITED
         EXPRESS: :EXPRESS
         PRIORITY: :PRIORITY

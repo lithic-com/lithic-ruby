@@ -23,7 +23,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         updated: Time,
         account_number: String | nil,
         routing_number: String | nil,
-        status_change_reason: Lithic::Models::FinancialAccount::StatusChangeReason | nil
+        substatus: Lithic::Models::FinancialAccount::Substatus | nil
       }
     end
   end
@@ -48,7 +48,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         updated: Time,
         account_number: String | nil,
         routing_number: String | nil,
-        status_change_reason: Lithic::Models::FinancialAccount::StatusChangeReason | nil
+        substatus: Lithic::Models::FinancialAccount::Substatus | nil
       }
     end
   end
@@ -73,7 +73,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         updated: Time,
         account_number: String | nil,
         routing_number: String | nil,
-        status_change_reason: Lithic::Models::FinancialAccount::StatusChangeReason | nil
+        substatus: Lithic::Models::FinancialAccount::Substatus | nil
       }
     end
   end
@@ -105,7 +105,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         updated: Time,
         account_number: String | nil,
         routing_number: String | nil,
-        status_change_reason: Lithic::Models::FinancialAccount::StatusChangeReason | nil
+        substatus: Lithic::Models::FinancialAccount::Substatus | nil
       }
     end
   end
@@ -115,7 +115,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
       @lithic.financial_accounts.update_status(
         "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         status: :OPEN,
-        status_change_reason: :CHARGED_OFF_FRAUD
+        substatus: :CHARGED_OFF_FRAUD
       )
 
     assert_pattern do
@@ -135,7 +135,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         updated: Time,
         account_number: String | nil,
         routing_number: String | nil,
-        status_change_reason: Lithic::Models::FinancialAccount::StatusChangeReason | nil
+        substatus: Lithic::Models::FinancialAccount::Substatus | nil
       }
     end
   end

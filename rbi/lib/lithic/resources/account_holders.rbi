@@ -12,7 +12,6 @@ module Lithic
       #   accounts that are part of the program that the calling API key manages.
       sig do
         params(
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity, Lithic::Internal::AnyHash)],
           beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual, Lithic::Internal::AnyHash)],
           business_entity: T.any(Lithic::Models::AccountHolderCreateParams::BusinessEntity, Lithic::Internal::AnyHash),
           control_person: T.any(Lithic::Models::AccountHolderCreateParams::ControlPerson, Lithic::Internal::AnyHash),
@@ -26,6 +25,7 @@ module Lithic
           kyc_exemption_type: Lithic::Models::AccountHolderCreateParams::KYCExemptionType::OrSymbol,
           last_name: String,
           phone_number: String,
+          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity, Lithic::Internal::AnyHash)],
           external_id: String,
           kyb_passed_timestamp: String,
           website_url: String,
@@ -36,21 +36,11 @@ module Lithic
           .returns(Lithic::Models::AccountHolderCreateResponse)
       end
       def create(
-        # List of all entities with >25% ownership in the company. If no entity or
-        #   individual owns >25% of the company, and the largest shareholder is an entity,
-        #   please identify them in this field. See
-        #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        #   (Section I) for more background. If no business owner is an entity, pass in an
-        #   empty list. However, either this parameter or `beneficial_owner_individuals`
-        #   must be populated. on entities that should be included.
-        beneficial_owner_entities:,
         # List of all direct and indirect individuals with >25% ownership in the company.
-        #   If no entity or individual owns >25% of the company, and the largest shareholder
-        #   is an individual, please identify them in this field. See
+        #   If no individual owns >25% of the company, please identify the largest
+        #   shareholder in this field. See
         #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        #   (Section I) for more background on individuals that should be included. If no
-        #   individual is an entity, pass in an empty list. However, either this parameter
-        #   or `beneficial_owner_entities` must be populated.
+        #   (Section I) for more background on individuals that should be included.
         beneficial_owner_individuals:,
         # Information for business for which the account is being opened and KYB is being
         #   run.
@@ -89,6 +79,8 @@ module Lithic
         last_name:,
         # The KYC Exempt user's phone number, entered in E.164 format.
         phone_number:,
+        # Deprecated.
+        beneficial_owner_entities: nil,
         # A user provided id that can be used to link an account holder with an external
         #   system
         external_id: nil,

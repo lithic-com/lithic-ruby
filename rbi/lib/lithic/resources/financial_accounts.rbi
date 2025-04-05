@@ -95,7 +95,7 @@ module Lithic
         params(
           financial_account_token: String,
           status: Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol,
-          status_change_reason: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::StatusChangeReason::OrSymbol),
+          substatus: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::OrSymbol),
           request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
           .returns(Lithic::Models::FinancialAccount)
@@ -105,8 +105,8 @@ module Lithic
         financial_account_token,
         # Status of the financial account
         status:,
-        # Reason for the financial account status change
-        status_change_reason:,
+        # Substatus for the financial account
+        substatus:,
         request_options: {}
       )
       end
