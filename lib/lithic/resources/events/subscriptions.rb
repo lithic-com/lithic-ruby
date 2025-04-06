@@ -136,7 +136,7 @@ module Lithic
           @client.request(
             method: :get,
             path: ["v1/event_subscriptions/%1$s/attempts", event_subscription_token],
-            query: parsed.transform_keys(begin_: :begin, end_: :end),
+            query: parsed.transform_keys(begin_: "begin", end_: "end"),
             page: Lithic::Internal::CursorPage,
             model: Lithic::Models::MessageAttempt,
             options: options
@@ -160,7 +160,7 @@ module Lithic
           @client.request(
             method: :post,
             path: ["v1/event_subscriptions/%1$s/recover", event_subscription_token],
-            query: parsed.transform_keys(begin_: :begin, end_: :end),
+            query: parsed.transform_keys(begin_: "begin", end_: "end"),
             model: NilClass,
             options: options
           )
@@ -187,7 +187,7 @@ module Lithic
           @client.request(
             method: :post,
             path: ["v1/event_subscriptions/%1$s/replay_missing", event_subscription_token],
-            query: parsed.transform_keys(begin_: :begin, end_: :end),
+            query: parsed.transform_keys(begin_: "begin", end_: "end"),
             model: NilClass,
             options: options
           )

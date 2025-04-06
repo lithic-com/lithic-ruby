@@ -46,7 +46,7 @@ module Lithic
             @client.request(
               method: :post,
               path: ["v2/auth_rules/%1$s/backtests", auth_rule_token],
-              body: parsed.transform_keys(end_: :end),
+              body: parsed,
               model: Lithic::Models::AuthRules::V2::BacktestCreateResponse,
               options: options
             )

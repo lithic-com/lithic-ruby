@@ -122,7 +122,7 @@ module Lithic
         @client.request(
           method: :get,
           path: "v1/cards",
-          query: parsed.transform_keys(begin_: :begin, end_: :end),
+          query: parsed.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Models::Card,
           options: options

@@ -69,7 +69,7 @@ module Lithic
         @client.request(
           method: :get,
           path: "v1/accounts",
-          query: parsed.transform_keys(begin_: :begin, end_: :end),
+          query: parsed.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Models::Account,
           options: options

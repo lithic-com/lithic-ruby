@@ -258,7 +258,6 @@ module Lithic
               return super
             end
 
-            is_param = singleton_class <= Lithic::Internal::Type::RequestParameters::Converter
             acc = {}
 
             coerced.each do |key, val|
@@ -267,21 +266,19 @@ module Lithic
               in nil
                 acc.store(name, super(val))
               else
-                mode, type_fn = field.fetch_values(:mode, :type_fn)
+                api_name, mode, type_fn = field.fetch_values(:api_name, :mode, :type_fn)
                 case mode
                 in :coerce
                   next
                 else
                   target = type_fn.call
-                  api_name = is_param ? name : field.fetch(:api_name)
                   acc.store(api_name, Lithic::Internal::Type::Converter.dump(target, val))
                 end
               end
             end
 
-            known_fields.each do |name, field|
-              mode, const = field.fetch_values(:mode, :const)
-              api_name = is_param ? name : field.fetch(:api_name)
+            known_fields.each_value do |field|
+              api_name, mode, const = field.fetch_values(:api_name, :mode, :const)
               next if mode == :coerce || acc.key?(api_name) || const == Lithic::Internal::OMIT
               acc.store(api_name, const)
             end
