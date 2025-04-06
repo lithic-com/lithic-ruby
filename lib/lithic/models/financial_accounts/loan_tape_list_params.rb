@@ -14,7 +14,7 @@ module Lithic
         #   will be included.
         #
         #   @return [Date, nil]
-        optional :begin_, Date, api_name: :begin
+        optional :begin_, Date
 
         # @!parse
         #   # @return [Date]
@@ -25,7 +25,7 @@ module Lithic
         #   will be included.
         #
         #   @return [Date, nil]
-        optional :end_, Date, api_name: :end
+        optional :end_, Date
 
         # @!parse
         #   # @return [Date]

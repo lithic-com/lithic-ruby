@@ -13,7 +13,7 @@ module Lithic
       #   will be included. UTC time zone.
       #
       #   @return [Time, nil]
-      optional :begin_, Time, api_name: :begin
+      optional :begin_, Time
 
       # @!parse
       #   # @return [Time]
@@ -35,7 +35,7 @@ module Lithic
       #   will be included. UTC time zone.
       #
       #   @return [Time, nil]
-      optional :end_, Time, api_name: :end
+      optional :end_, Time
 
       # @!parse
       #   # @return [Time]
