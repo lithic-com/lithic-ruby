@@ -49,7 +49,7 @@ module Lithic
         @client.request(
           method: :get,
           path: "v1/events",
-          query: parsed.transform_keys(begin_: :begin, end_: :end),
+          query: parsed.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Models::Event,
           options: options
@@ -77,7 +77,7 @@ module Lithic
         @client.request(
           method: :get,
           path: ["v1/events/%1$s/attempts", event_token],
-          query: parsed.transform_keys(begin_: :begin, end_: :end),
+          query: parsed.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Models::MessageAttempt,
           options: options
