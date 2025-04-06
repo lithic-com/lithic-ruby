@@ -49,7 +49,7 @@ module Lithic
             @client.request(
               method: :get,
               path: "v1/reports/settlement/network_totals",
-              query: parsed.transform_keys(begin_: :begin, end_: :end),
+              query: parsed.transform_keys(begin_: "begin", end_: "end"),
               page: Lithic::Internal::CursorPage,
               model: Lithic::Models::Reports::Settlement::NetworkTotalListResponse,
               options: options

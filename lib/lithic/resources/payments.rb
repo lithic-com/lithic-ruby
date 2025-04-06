@@ -26,7 +26,7 @@ module Lithic
         @client.request(
           method: :post,
           path: "v1/payments",
-          body: parsed.transform_keys(method_: :method),
+          body: parsed,
           model: Lithic::Models::PaymentCreateResponse,
           options: options
         )
@@ -76,7 +76,7 @@ module Lithic
         @client.request(
           method: :get,
           path: "v1/payments",
-          query: parsed.transform_keys(begin_: :begin, end_: :end),
+          query: parsed.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
           model: Lithic::Models::Payment,
           options: options

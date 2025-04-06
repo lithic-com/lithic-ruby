@@ -22,7 +22,7 @@ module Lithic
       #   Filter for tokenizations created after this date.
       #
       #   @return [Date, nil]
-      optional :begin_, Date, api_name: :begin
+      optional :begin_, Date
 
       # @!parse
       #   # @return [Date]
@@ -42,7 +42,7 @@ module Lithic
       #   Filter for tokenizations created before this date.
       #
       #   @return [Date, nil]
-      optional :end_, Date, api_name: :end
+      optional :end_, Date
 
       # @!parse
       #   # @return [Date]

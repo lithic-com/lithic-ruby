@@ -39,7 +39,7 @@ module Lithic
       # @!attribute [r] idempotency_key
       #
       #   @return [String, nil]
-      optional :idempotency_key, String, api_name: :"Idempotency-Key"
+      optional :idempotency_key, String
 
       # @!parse
       #   # @return [String]
