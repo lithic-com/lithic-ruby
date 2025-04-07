@@ -1,6 +1,7 @@
 module Lithic
   module Models
-    class AuthRule = AuthRules::AuthRule
+    # class c506c8cf-e517-4919-b2de-a26729ddc9ae
+    AuthRule: AuthRules::AuthRule
 
     module AuthRules
       type auth_rule =
