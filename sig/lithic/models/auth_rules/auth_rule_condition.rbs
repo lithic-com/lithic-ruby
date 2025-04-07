@@ -1,6 +1,7 @@
 module Lithic
   module Models
-    class AuthRuleCondition = AuthRules::AuthRuleCondition
+    # class c506c8cf-e517-4919-b2de-a26729ddc9ae
+    AuthRuleCondition: AuthRules::AuthRuleCondition
 
     module AuthRules
       type auth_rule_condition =

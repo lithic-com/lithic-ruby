@@ -1,6 +1,7 @@
 module Lithic
   module Models
-    class FinancialAccountCreditConfig = FinancialAccounts::FinancialAccountCreditConfig
+    # class c506c8cf-e517-4919-b2de-a26729ddc9ae
+    FinancialAccountCreditConfig: FinancialAccounts::FinancialAccountCreditConfig
 
     module FinancialAccounts
       type financial_account_credit_config =
