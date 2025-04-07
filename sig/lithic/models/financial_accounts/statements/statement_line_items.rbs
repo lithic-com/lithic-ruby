@@ -1,8 +1,7 @@
 module Lithic
   module Models
     module FinancialAccounts
-      # class c506c8cf-e517-4919-b2de-a26729ddc9ae
-      StatementLineItems: Statements::StatementLineItems
+      class StatementLineItems = Statements::StatementLineItems
 
       module Statements
         type statement_line_items =
