@@ -83,6 +83,13 @@ module Lithic
       sig { returns(T.nilable(String)) }
       attr_accessor :user_defined_id
 
+      # Date when the financial transaction expected to be released after settlement
+      sig { returns(T.nilable(Date)) }
+      attr_reader :expected_release_date
+
+      sig { params(expected_release_date: Date).void }
+      attr_writer :expected_release_date
+
       sig do
         params(
           token: String,
@@ -102,7 +109,8 @@ module Lithic
           source: Lithic::Models::Payment::Source::OrSymbol,
           status: Lithic::Models::Payment::Status::OrSymbol,
           updated: Time,
-          user_defined_id: T.nilable(String)
+          user_defined_id: T.nilable(String),
+          expected_release_date: Date
         )
           .returns(T.attached_class)
       end
@@ -124,7 +132,8 @@ module Lithic
         source:,
         status:,
         updated:,
-        user_defined_id:
+        user_defined_id:,
+        expected_release_date: nil
       ); end
       sig do
         override
@@ -147,7 +156,8 @@ module Lithic
               source: Lithic::Models::Payment::Source::TaggedSymbol,
               status: Lithic::Models::Payment::Status::TaggedSymbol,
               updated: Time,
-              user_defined_id: T.nilable(String)
+              user_defined_id: T.nilable(String),
+              expected_release_date: Date
             }
           )
       end
