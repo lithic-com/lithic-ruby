@@ -7,7 +7,7 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
     response =
       @lithic.disputes.create(
         amount: 10_000,
-        reason: :ATM_CASH_MISDISPENSE,
+        reason: :FRAUD_CARD_PRESENT,
         transaction_token: "12345624-aa69-4cbc-a946-30d90181b621"
       )
 
