@@ -115,6 +115,16 @@ module Lithic
       #   @return [String, nil]
       required :user_defined_id, String, nil?: true
 
+      # @!attribute [r] expected_release_date
+      #   Date when the financial transaction expected to be released after settlement
+      #
+      #   @return [Date, nil]
+      optional :expected_release_date, Date
+
+      # @!parse
+      #   # @return [Date]
+      #   attr_writer :expected_release_date
+
       # @!parse
       #   # @param token [String]
       #   # @param category [Symbol, Lithic::Models::Payment::Category]
@@ -134,6 +144,7 @@ module Lithic
       #   # @param status [Symbol, Lithic::Models::Payment::Status]
       #   # @param updated [Time]
       #   # @param user_defined_id [String, nil]
+      #   # @param expected_release_date [Date]
       #   #
       #   def initialize(
       #     token:,
@@ -154,6 +165,7 @@ module Lithic
       #     status:,
       #     updated:,
       #     user_defined_id:,
+      #     expected_release_date: nil,
       #     **
       #   )
       #     super
