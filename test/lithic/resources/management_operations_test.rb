@@ -31,6 +31,7 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
         result: Lithic::Models::ManagementOperationTransaction::Result,
         settled_amount: Integer,
         status: Lithic::Models::ManagementOperationTransaction::Status,
+        transaction_series: Lithic::Models::ManagementOperationTransaction::TransactionSeries | nil,
         updated: Time,
         user_defined_id: String | nil
       }
@@ -57,6 +58,7 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
         result: Lithic::Models::ManagementOperationTransaction::Result,
         settled_amount: Integer,
         status: Lithic::Models::ManagementOperationTransaction::Status,
+        transaction_series: Lithic::Models::ManagementOperationTransaction::TransactionSeries | nil,
         updated: Time,
         user_defined_id: String | nil
       }
@@ -90,6 +92,7 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
         result: Lithic::Models::ManagementOperationTransaction::Result,
         settled_amount: Integer,
         status: Lithic::Models::ManagementOperationTransaction::Status,
+        transaction_series: Lithic::Models::ManagementOperationTransaction::TransactionSeries | nil,
         updated: Time,
         user_defined_id: String | nil
       }
@@ -120,6 +123,7 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
         result: Lithic::Models::ManagementOperationTransaction::Result,
         settled_amount: Integer,
         status: Lithic::Models::ManagementOperationTransaction::Status,
+        transaction_series: Lithic::Models::ManagementOperationTransaction::TransactionSeries | nil,
         updated: Time,
         user_defined_id: String | nil
       }

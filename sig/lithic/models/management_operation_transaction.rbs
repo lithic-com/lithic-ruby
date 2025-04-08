@@ -13,6 +13,7 @@ module Lithic
         result: Lithic::Models::ManagementOperationTransaction::result,
         settled_amount: Integer,
         status: Lithic::Models::ManagementOperationTransaction::status,
+        transaction_series: Lithic::Models::ManagementOperationTransaction::TransactionSeries?,
         updated: Time,
         user_defined_id: String
       }
@@ -40,6 +41,8 @@ module Lithic
 
       attr_accessor status: Lithic::Models::ManagementOperationTransaction::status
 
+      attr_accessor transaction_series: Lithic::Models::ManagementOperationTransaction::TransactionSeries?
+
       attr_accessor updated: Time
 
       attr_reader user_defined_id: String?
@@ -58,6 +61,7 @@ module Lithic
         result: Lithic::Models::ManagementOperationTransaction::result,
         settled_amount: Integer,
         status: Lithic::Models::ManagementOperationTransaction::status,
+        transaction_series: Lithic::Models::ManagementOperationTransaction::TransactionSeries?,
         updated: Time,
         ?user_defined_id: String
       ) -> void
@@ -224,6 +228,29 @@ module Lithic
         CANCELED: :CANCELED
 
         def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::status]
+      end
+
+      type transaction_series =
+        {
+          related_transaction_event_token: String?,
+          related_transaction_token: String?,
+          type: String
+        }
+
+      class TransactionSeries < Lithic::Internal::Type::BaseModel
+        attr_accessor related_transaction_event_token: String?
+
+        attr_accessor related_transaction_token: String?
+
+        attr_accessor type: String
+
+        def initialize: (
+          related_transaction_event_token: String?,
+          related_transaction_token: String?,
+          type: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::ManagementOperationTransaction::transaction_series
       end
     end
   end

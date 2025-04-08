@@ -36,6 +36,19 @@ module Lithic
       sig { returns(Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol) }
       attr_accessor :status
 
+      sig { returns(T.nilable(Lithic::Models::ManagementOperationTransaction::TransactionSeries)) }
+      attr_reader :transaction_series
+
+      sig do
+        params(
+          transaction_series: T.nilable(
+            T.any(Lithic::Models::ManagementOperationTransaction::TransactionSeries, Lithic::Internal::AnyHash)
+          )
+        )
+          .void
+      end
+      attr_writer :transaction_series
+
       sig { returns(Time) }
       attr_accessor :updated
 
@@ -58,6 +71,9 @@ module Lithic
           result: Lithic::Models::ManagementOperationTransaction::Result::OrSymbol,
           settled_amount: Integer,
           status: Lithic::Models::ManagementOperationTransaction::Status::OrSymbol,
+          transaction_series: T.nilable(
+            T.any(Lithic::Models::ManagementOperationTransaction::TransactionSeries, Lithic::Internal::AnyHash)
+          ),
           updated: Time,
           user_defined_id: String
         )
@@ -75,6 +91,7 @@ module Lithic
         result:,
         settled_amount:,
         status:,
+        transaction_series:,
         updated:,
         user_defined_id: nil
       ); end
@@ -93,6 +110,7 @@ module Lithic
               result: Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol,
               settled_amount: Integer,
               status: Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol,
+              transaction_series: T.nilable(Lithic::Models::ManagementOperationTransaction::TransactionSeries),
               updated: Time,
               user_defined_id: String
             }
@@ -323,6 +341,39 @@ module Lithic
 
         sig { override.returns(T::Array[Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol]) }
         def self.values; end
+      end
+
+      class TransactionSeries < Lithic::Internal::Type::BaseModel
+        sig { returns(T.nilable(String)) }
+        attr_accessor :related_transaction_event_token
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :related_transaction_token
+
+        sig { returns(String) }
+        attr_accessor :type
+
+        sig do
+          params(
+            related_transaction_event_token: T.nilable(String),
+            related_transaction_token: T.nilable(String),
+            type: String
+          )
+            .returns(T.attached_class)
+        end
+        def self.new(related_transaction_event_token:, related_transaction_token:, type:); end
+
+        sig do
+          override
+            .returns(
+              {
+                related_transaction_event_token: T.nilable(String),
+                related_transaction_token: T.nilable(String),
+                type: String
+              }
+            )
+        end
+        def to_hash; end
       end
     end
   end
