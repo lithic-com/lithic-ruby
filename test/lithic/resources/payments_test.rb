@@ -45,7 +45,8 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
         source: Lithic::Models::Payment::Source,
         status: Lithic::Models::Payment::Status,
         updated: Time,
-        user_defined_id: String | nil
+        user_defined_id: String | nil,
+        expected_release_date: Date | nil
       }
     end
   end
@@ -83,7 +84,8 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
         source: Lithic::Models::Payment::Source,
         status: Lithic::Models::Payment::Status,
         updated: Time,
-        user_defined_id: String | nil
+        user_defined_id: String | nil,
+        expected_release_date: Date | nil
       }
     end
   end

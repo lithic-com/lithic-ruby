@@ -25,8 +25,7 @@ module Lithic
       #   attr_writer :account_token
 
       # @!attribute [r] beneficial_owner_entities
-      #   Only present when user_type == "BUSINESS". List of all entities with >25%
-      #   ownership in the company.
+      #   Deprecated.
       #
       #   @return [Array<Lithic::Models::KYBBusinessEntity>, nil]
       optional :beneficial_owner_entities,
@@ -37,8 +36,11 @@ module Lithic
       #   attr_writer :beneficial_owner_entities
 
       # @!attribute [r] beneficial_owner_individuals
-      #   Only present when user_type == "BUSINESS". List of all individuals with >25%
-      #   ownership in the company.
+      #   Only present when user_type == "BUSINESS". List of all direct and indirect
+      #   individuals with 25% or more ownership in the company. If no individual owns 25%
+      #   of the company, please identify the largest shareholder in this field. See
+      #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+      #   (Section I) for more background on individuals that should be included.
       #
       #   @return [Array<Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual>, nil]
       optional :beneficial_owner_individuals,
@@ -216,9 +218,8 @@ module Lithic
       #   attribute will be present.
       #
       #   If the type is "BUSINESS" then the "business_entity", "control_person",
-      #   "beneficial_owner_individuals", "beneficial_owner_entities",
-      #
-      #   "nature_of_business", and "website_url" attributes will be present.
+      #   "beneficial_owner_individuals", "nature_of_business", and "website_url"
+      #   attributes will be present.
       #
       #   @return [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType, nil]
       optional :user_type, enum: -> { Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType }
@@ -811,9 +812,8 @@ module Lithic
       # attribute will be present.
       #
       # If the type is "BUSINESS" then the "business_entity", "control_person",
-      # "beneficial_owner_individuals", "beneficial_owner_entities",
-      #
-      # "nature_of_business", and "website_url" attributes will be present.
+      # "beneficial_owner_individuals", "nature_of_business", and "website_url"
+      # attributes will be present.
       #
       # @see Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse#user_type
       module UserType

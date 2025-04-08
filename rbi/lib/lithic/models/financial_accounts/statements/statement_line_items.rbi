@@ -509,6 +509,11 @@ module Lithic
                   :LATE_PAYMENT_REVERSAL,
                   Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
+              LOSS_WRITE_OFF =
+                T.let(
+                  :LOSS_WRITE_OFF,
+                  Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
               PROVISIONAL_CREDIT =
                 T.let(
                   :PROVISIONAL_CREDIT,

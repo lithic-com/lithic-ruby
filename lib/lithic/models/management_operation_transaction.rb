@@ -60,6 +60,13 @@ module Lithic
       #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Status]
       required :status, enum: -> { Lithic::Models::ManagementOperationTransaction::Status }
 
+      # @!attribute transaction_series
+      #
+      #   @return [Lithic::Models::ManagementOperationTransaction::TransactionSeries, nil]
+      required :transaction_series,
+               -> { Lithic::Models::ManagementOperationTransaction::TransactionSeries },
+               nil?: true
+
       # @!attribute updated
       #
       #   @return [Time]
@@ -86,6 +93,7 @@ module Lithic
       #   # @param result [Symbol, Lithic::Models::ManagementOperationTransaction::Result]
       #   # @param settled_amount [Integer]
       #   # @param status [Symbol, Lithic::Models::ManagementOperationTransaction::Status]
+      #   # @param transaction_series [Lithic::Models::ManagementOperationTransaction::TransactionSeries, nil]
       #   # @param updated [Time]
       #   # @param user_defined_id [String]
       #   #
@@ -101,6 +109,7 @@ module Lithic
       #     result:,
       #     settled_amount:,
       #     status:,
+      #     transaction_series:,
       #     updated:,
       #     user_defined_id: nil,
       #     **
@@ -289,6 +298,33 @@ module Lithic
         # @!parse
         #   # @return [Array<Symbol>]
         #   def self.values; end
+      end
+
+      # @see Lithic::Models::ManagementOperationTransaction#transaction_series
+      class TransactionSeries < Lithic::Internal::Type::BaseModel
+        # @!attribute related_transaction_event_token
+        #
+        #   @return [String, nil]
+        required :related_transaction_event_token, String, nil?: true
+
+        # @!attribute related_transaction_token
+        #
+        #   @return [String, nil]
+        required :related_transaction_token, String, nil?: true
+
+        # @!attribute type
+        #
+        #   @return [String]
+        required :type, String
+
+        # @!parse
+        #   # @param related_transaction_event_token [String, nil]
+        #   # @param related_transaction_token [String, nil]
+        #   # @param type [String]
+        #   #
+        #   def initialize(related_transaction_event_token:, related_transaction_token:, type:, **) = super
+
+        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
       end
     end
   end

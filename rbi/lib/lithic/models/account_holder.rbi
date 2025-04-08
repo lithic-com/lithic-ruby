@@ -18,7 +18,7 @@ module Lithic
       sig { params(account_token: String).void }
       attr_writer :account_token
 
-      # Deprecated. Only present when user_type == "BUSINESS".
+      # Deprecated.
       sig { returns(T.nilable(T::Array[Lithic::Models::AccountHolder::BeneficialOwnerEntity])) }
       attr_reader :beneficial_owner_entities
 
@@ -30,8 +30,11 @@ module Lithic
       end
       attr_writer :beneficial_owner_entities
 
-      # Only present when user_type == "BUSINESS". List of all individuals with >25%
-      # ownership in the company.
+      # Only present when user_type == "BUSINESS". List of all direct and indirect
+      # individuals with 25% or more ownership in the company. If no individual owns 25%
+      # of the company, please identify the largest shareholder in this field. See
+      # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+      # (Section I) for more background on individuals that should be included.
       sig { returns(T.nilable(T::Array[Lithic::Models::AccountHolder::BeneficialOwnerIndividual])) }
       attr_reader :beneficial_owner_individuals
 
@@ -162,8 +165,8 @@ module Lithic
 
       # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
       # attribute will be present. If the type is "BUSINESS" then the "business_entity",
-      # "control_person", "beneficial_owner_individuals", "beneficial_owner_entities",
-      # "nature_of_business", and "website_url" attributes will be present.
+      # "control_person", "beneficial_owner_individuals", "nature_of_business", and
+      # "website_url" attributes will be present.
       sig { returns(T.nilable(Lithic::Models::AccountHolder::UserType::TaggedSymbol)) }
       attr_reader :user_type
 
@@ -697,8 +700,8 @@ module Lithic
 
       # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
       # attribute will be present. If the type is "BUSINESS" then the "business_entity",
-      # "control_person", "beneficial_owner_individuals", "beneficial_owner_entities",
-      # "nature_of_business", and "website_url" attributes will be present.
+      # "control_person", "beneficial_owner_individuals", "nature_of_business", and
+      # "website_url" attributes will be present.
       module UserType
         extend Lithic::Internal::Type::Enum
 
