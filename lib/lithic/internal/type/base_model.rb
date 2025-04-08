@@ -252,8 +252,12 @@ module Lithic
           #
           # @param value [Lithic::Internal::Type::BaseModel, Object]
           #
+          # @param state [Hash{Symbol=>Object}] .
+          #
+          #   @option state [Boolean] :can_retry
+          #
           # @return [Hash{Object=>Object}, Object]
-          def dump(value)
+          def dump(value, state:)
             unless (coerced = Lithic::Internal::Util.coerce_hash(value)).is_a?(Hash)
               return super
             end
@@ -264,7 +268,7 @@ module Lithic
               name = key.is_a?(String) ? key.to_sym : key
               case (field = known_fields[name])
               in nil
-                acc.store(name, super(val))
+                acc.store(name, super(val, state: state))
               else
                 api_name, mode, type_fn = field.fetch_values(:api_name, :mode, :type_fn)
                 case mode
@@ -272,7 +276,7 @@ module Lithic
                   next
                 else
                   target = type_fn.call
-                  acc.store(api_name, Lithic::Internal::Type::Converter.dump(target, val))
+                  acc.store(api_name, Lithic::Internal::Type::Converter.dump(target, val, state: state))
                 end
               end
             end
@@ -337,12 +341,12 @@ module Lithic
         # @param a [Object]
         #
         # @return [String]
-        def to_json(*a) = self.class.dump(self).to_json(*a)
+        def to_json(*a) = Lithic::Internal::Type::Converter.dump(self.class, self).to_json(*a)
 
         # @param a [Object]
         #
         # @return [String]
-        def to_yaml(*a) = self.class.dump(self).to_yaml(*a)
+        def to_yaml(*a) = Lithic::Internal::Type::Converter.dump(self.class, self).to_yaml(*a)
 
         # Create a new instance of a model.
         #

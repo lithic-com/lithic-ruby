@@ -26,15 +26,24 @@ module Lithic
         #
         # @param value [Object]
         #
+        # @param state [Hash{Symbol=>Object}] .
+        #
+        #   @option state [Boolean] :can_retry
+        #
         # @return [Object]
-        def dump(value)
+        def dump(value, state:)
           case value
           in Array
-            value.map { Lithic::Internal::Type::Unknown.dump(_1) }
+            value.map { Lithic::Internal::Type::Unknown.dump(_1, state: state) }
           in Hash
-            value.transform_values { Lithic::Internal::Type::Unknown.dump(_1) }
+            value.transform_values { Lithic::Internal::Type::Unknown.dump(_1, state: state) }
           in Lithic::Internal::Type::BaseModel
-            value.class.dump(value)
+            value.class.dump(value, state: state)
+          in StringIO
+            value.string
+          in Pathname | IO
+            state[:can_retry] = false if value.is_a?(IO)
+            Lithic::Internal::Util::SerializationAdapter.new(value)
           else
             value
           end
@@ -182,7 +191,7 @@ module Lithic
                 rescue ArgumentError, TypeError => e
                   raise e if strictness == :strong
                 end
-              in -> { _1 <= IO } if value.is_a?(String)
+              in -> { _1 <= StringIO } if value.is_a?(String)
                 exactness[:yes] += 1
                 return StringIO.new(value.b)
               else
@@ -207,13 +216,21 @@ module Lithic
           # @api private
           #
           # @param target [Lithic::Internal::Type::Converter, Class]
+          #
           # @param value [Object]
           #
+          # @param state [Hash{Symbol=>Object}] .
+          #
+          #   @option state [Boolean] :can_retry
+          #
           # @return [Object]
-          def dump(target, value)
-            # rubocop:disable Layout/LineLength
-            target.is_a?(Lithic::Internal::Type::Converter) ? target.dump(value) : Lithic::Internal::Type::Unknown.dump(value)
-            # rubocop:enable Layout/LineLength
+          def dump(target, value, state: {can_retry: true})
+            case target
+            in Lithic::Internal::Type::Converter
+              target.dump(value, state: state)
+            else
+              Lithic::Internal::Type::Unknown.dump(value, state: state)
+            end
           end
         end
       end
