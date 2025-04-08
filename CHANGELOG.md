@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2025-04-08)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Features
+
+* use Pathname alongside raw IO handles for file uploads ([#78](https://github.com/lithic-com/lithic-ruby/issues/78)) ([84571f8](https://github.com/lithic-com/lithic-ruby/commit/84571f8430878b7a0d65c038eb2593eb08e9eed2))
+
+
+### Bug Fixes
+
+* raise connection error for errors that result from HTTP transports ([#79](https://github.com/lithic-com/lithic-ruby/issues/79)) ([332efd2](https://github.com/lithic-com/lithic-ruby/commit/332efd2bc1d75a84212b6eda176b9841de113a96))
+
+
+### Chores
+
+* add README docs for using solargraph when installing gem from git ([#77](https://github.com/lithic-com/lithic-ruby/issues/77)) ([fda330a](https://github.com/lithic-com/lithic-ruby/commit/fda330adc0571aff714c5bc09065687689c3f95b))
+* **internal:** version bump ([99ef2b9](https://github.com/lithic-com/lithic-ruby/commit/99ef2b996fc7909bb161e03a67340620f2bfbcdc))
+* loosen const and integer coercion rules ([#80](https://github.com/lithic-com/lithic-ruby/issues/80)) ([5e9fcd4](https://github.com/lithic-com/lithic-ruby/commit/5e9fcd4f98224819930048224b2eb9c66f538f19))
+* make client tests look prettier ([#76](https://github.com/lithic-com/lithic-ruby/issues/76)) ([aa7a696](https://github.com/lithic-com/lithic-ruby/commit/aa7a696cc89108e9a86bb4525ef3baa28e71a947))
+* **tests:** improve enum examples ([#75](https://github.com/lithic-com/lithic-ruby/issues/75)) ([03c8cfb](https://github.com/lithic-com/lithic-ruby/commit/03c8cfbffc9da1edcd2c4ef0d9a7b18017ebcf65))
+
 ## 0.1.0-alpha.7 (2025-04-08)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
