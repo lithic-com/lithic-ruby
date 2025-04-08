@@ -73,7 +73,7 @@ class LithicTest < Minitest::Test
     lithic.requester = requester
 
     assert_raises(Lithic::Errors::InternalServerError) do
-      lithic.cards.create(type: :MERCHANT_LOCKED)
+      lithic.cards.create(type: :VIRTUAL)
     end
 
     assert_equal(3, requester.attempts.length)
@@ -86,7 +86,7 @@ class LithicTest < Minitest::Test
     lithic.requester = requester
 
     assert_raises(Lithic::Errors::InternalServerError) do
-      lithic.cards.create(type: :MERCHANT_LOCKED)
+      lithic.cards.create(type: :VIRTUAL)
     end
 
     assert_equal(4, requester.attempts.length)
@@ -98,7 +98,7 @@ class LithicTest < Minitest::Test
     lithic.requester = requester
 
     assert_raises(Lithic::Errors::InternalServerError) do
-      lithic.cards.create(type: :MERCHANT_LOCKED, request_options: {max_retries: 3})
+      lithic.cards.create(type: :VIRTUAL, request_options: {max_retries: 3})
     end
 
     assert_equal(4, requester.attempts.length)
@@ -111,7 +111,7 @@ class LithicTest < Minitest::Test
     lithic.requester = requester
 
     assert_raises(Lithic::Errors::InternalServerError) do
-      lithic.cards.create(type: :MERCHANT_LOCKED, request_options: {max_retries: 4})
+      lithic.cards.create(type: :VIRTUAL, request_options: {max_retries: 4})
     end
 
     assert_equal(5, requester.attempts.length)
@@ -124,7 +124,7 @@ class LithicTest < Minitest::Test
     lithic.requester = requester
 
     assert_raises(Lithic::Errors::InternalServerError) do
-      lithic.cards.create(type: :MERCHANT_LOCKED)
+      lithic.cards.create(type: :VIRTUAL)
     end
 
     assert_equal(2, requester.attempts.length)
@@ -139,7 +139,7 @@ class LithicTest < Minitest::Test
 
     assert_raises(Lithic::Errors::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
-      lithic.cards.create(type: :MERCHANT_LOCKED)
+      lithic.cards.create(type: :VIRTUAL)
       Thread.current.thread_variable_set(:time_now, nil)
     end
 
@@ -154,7 +154,7 @@ class LithicTest < Minitest::Test
     lithic.requester = requester
 
     assert_raises(Lithic::Errors::InternalServerError) do
-      lithic.cards.create(type: :MERCHANT_LOCKED)
+      lithic.cards.create(type: :VIRTUAL)
     end
 
     assert_equal(2, requester.attempts.length)
@@ -167,7 +167,7 @@ class LithicTest < Minitest::Test
     lithic.requester = requester
 
     assert_raises(Lithic::Errors::InternalServerError) do
-      lithic.cards.create(type: :MERCHANT_LOCKED)
+      lithic.cards.create(type: :VIRTUAL)
     end
 
     retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
@@ -181,7 +181,7 @@ class LithicTest < Minitest::Test
 
     assert_raises(Lithic::Errors::InternalServerError) do
       lithic.cards.create(
-        type: :MERCHANT_LOCKED,
+        type: :VIRTUAL,
         request_options: {extra_headers: {"x-stainless-retry-count" => nil}}
       )
     end
@@ -197,7 +197,7 @@ class LithicTest < Minitest::Test
 
     assert_raises(Lithic::Errors::InternalServerError) do
       lithic.cards.create(
-        type: :MERCHANT_LOCKED,
+        type: :VIRTUAL,
         request_options: {extra_headers: {"x-stainless-retry-count" => "42"}}
       )
     end
@@ -212,7 +212,7 @@ class LithicTest < Minitest::Test
     lithic.requester = requester
 
     assert_raises(Lithic::Errors::APIConnectionError) do
-      lithic.cards.create(type: :MERCHANT_LOCKED, request_options: {extra_headers: {}})
+      lithic.cards.create(type: :VIRTUAL, request_options: {extra_headers: {}})
     end
 
     assert_equal("/redirected", requester.attempts.last[:url].path)
@@ -230,7 +230,7 @@ class LithicTest < Minitest::Test
     lithic.requester = requester
 
     assert_raises(Lithic::Errors::APIConnectionError) do
-      lithic.cards.create(type: :MERCHANT_LOCKED, request_options: {extra_headers: {}})
+      lithic.cards.create(type: :VIRTUAL, request_options: {extra_headers: {}})
     end
 
     assert_equal("/redirected", requester.attempts.last[:url].path)
@@ -245,10 +245,7 @@ class LithicTest < Minitest::Test
     lithic.requester = requester
 
     assert_raises(Lithic::Errors::APIConnectionError) do
-      lithic.cards.create(
-        type: :MERCHANT_LOCKED,
-        request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
-      )
+      lithic.cards.create(type: :VIRTUAL, request_options: {extra_headers: {"Authorization" => "Bearer xyz"}})
     end
 
     assert_equal(
@@ -263,10 +260,7 @@ class LithicTest < Minitest::Test
     lithic.requester = requester
 
     assert_raises(Lithic::Errors::APIConnectionError) do
-      lithic.cards.create(
-        type: :MERCHANT_LOCKED,
-        request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
-      )
+      lithic.cards.create(type: :VIRTUAL, request_options: {extra_headers: {"Authorization" => "Bearer xyz"}})
     end
 
     assert_nil(requester.attempts.last[:headers]["Authorization"])
@@ -276,7 +270,7 @@ class LithicTest < Minitest::Test
     lithic = Lithic::Client.new(base_url: "http://localhost:4010", api_key: "My Lithic API Key")
     requester = MockRequester.new(200, {}, {})
     lithic.requester = requester
-    lithic.cards.create(type: :MERCHANT_LOCKED)
+    lithic.cards.create(type: :VIRTUAL)
     headers = requester.attempts.first[:headers]
 
     refute_empty(headers["accept"])

@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
   def test_create_required_params
-    response = @lithic.cards.create(type: :MERCHANT_LOCKED)
+    response = @lithic.cards.create(type: :VIRTUAL)
 
     assert_pattern do
       response => Lithic::Models::Card
