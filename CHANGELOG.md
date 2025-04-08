@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2025-04-08)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Features
+
+* **api:** introduce TransactionSeries and update ShippingMethod fields ([#73](https://github.com/lithic-com/lithic-ruby/issues/73)) ([8c6e64e](https://github.com/lithic-com/lithic-ruby/commit/8c6e64e56b2019e391f85507eafecb7843c1c55d))
+
+
+### Chores
+
+* always fold up method bodies in sorbet type definitions ([#68](https://github.com/lithic-com/lithic-ruby/issues/68)) ([9fead9c](https://github.com/lithic-com/lithic-ruby/commit/9fead9caea79f55334725581a26263c93d7cd965))
+* **internal:** codegen related update ([#71](https://github.com/lithic-com/lithic-ruby/issues/71)) ([0d0b308](https://github.com/lithic-com/lithic-ruby/commit/0d0b3082948af8910830955cef786d3d8ab5a3a4))
+* **internal:** codegen related update ([#72](https://github.com/lithic-com/lithic-ruby/issues/72)) ([08e8290](https://github.com/lithic-com/lithic-ruby/commit/08e8290d145dc353c4574cd915cd6264c2e4b55f))
+* **internal:** misc small improvements ([#65](https://github.com/lithic-com/lithic-ruby/issues/65)) ([be44033](https://github.com/lithic-com/lithic-ruby/commit/be44033edc9c1c846713f586aa5d527a01a355aa))
+* **internal:** more concise handling of parameter naming conflicts ([#70](https://github.com/lithic-com/lithic-ruby/issues/70)) ([bc0cb73](https://github.com/lithic-com/lithic-ruby/commit/bc0cb7328d11dd3efb283443072de6838552eef7))
+* **internal:** rubocop rules ([#67](https://github.com/lithic-com/lithic-ruby/issues/67)) ([b78e352](https://github.com/lithic-com/lithic-ruby/commit/b78e35233fa2cc7b94522dba21e479f359536e91))
+* **internal:** run rubocop linter in parallel ([#66](https://github.com/lithic-com/lithic-ruby/issues/66)) ([28b8538](https://github.com/lithic-com/lithic-ruby/commit/28b85382d1f447c542cfd4b0b871b7e66180abf0))
+* **internal:** version bump ([#63](https://github.com/lithic-com/lithic-ruby/issues/63)) ([60e1ca9](https://github.com/lithic-com/lithic-ruby/commit/60e1ca9a19b209531e7069d17fb6ecac0ad7c6ce))
+* update yard comment formatting ([#69](https://github.com/lithic-com/lithic-ruby/issues/69)) ([a66a715](https://github.com/lithic-com/lithic-ruby/commit/a66a7155e5a8f88235ea8a23a471946164e3425f))
+
 ## 0.1.0-alpha.6 (2025-04-05)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
