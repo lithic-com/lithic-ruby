@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.10 (2025-04-09)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
+
+### Features
+
+* **api:** manual updates ([1cacebf](https://github.com/lithic-com/lithic-ruby/commit/1cacebf87c011d14633c09bc7cabfe3adaa92881))
+
+
+### Chores
+
+* **internal:** reduce CI branch coverage ([23e51cc](https://github.com/lithic-com/lithic-ruby/commit/23e51cc9fb3b621407223b67bdebab4548ac5815))
+
 ## 0.1.0-alpha.9 (2025-04-09)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
