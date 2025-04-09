@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.9 (2025-04-09)
+
+Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
+
+### Bug Fixes
+
+* **internal:** update release-please to use ruby strategy for README.md ([#83](https://github.com/lithic-com/lithic-ruby/issues/83)) ([dbea289](https://github.com/lithic-com/lithic-ruby/commit/dbea289d9e77902a14f3394a2657de5f59ec2147))
+
+
+### Chores
+
+* configure new SDK language ([510319f](https://github.com/lithic-com/lithic-ruby/commit/510319f4ea674725c4a1eb8c177b0a765c260545))
+* ensure readme.md is bumped when release please updates versions ([#82](https://github.com/lithic-com/lithic-ruby/issues/82)) ([a1c3675](https://github.com/lithic-com/lithic-ruby/commit/a1c36757b893b169eec1ca51102ffa75181e3daa))
+* **internal:** expand CI branch coverage ([#84](https://github.com/lithic-com/lithic-ruby/issues/84)) ([b2707e7](https://github.com/lithic-com/lithic-ruby/commit/b2707e7690ba6bf15f80fe1a0efe2d593ce1bc85))
+* **internal:** version bump ([355bac7](https://github.com/lithic-com/lithic-ruby/commit/355bac7ac68d215af2432a193c29e22f184f6e77))
+
 ## 0.1.0-alpha.8 (2025-04-08)
 
 Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
