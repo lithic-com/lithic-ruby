@@ -60,5 +60,8 @@
     }
   ],
   "release-type": "ruby",
-  "version-file": "lib/lithic/version.rb"
+  "version-file": "lib/lithic/version.rb",
+  "extra-files": [
+    "README.md"
+  ]
 }
