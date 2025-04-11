@@ -20,12 +20,6 @@ gem "lithic", "~> 0.1.0.pre.alpha.10"
 
 <!-- x-release-please-end -->
 
-To fetch an initial copy of the gem:
-
-```sh
-bundle install
-```
-
 ## Usage
 
 ```ruby
@@ -63,7 +57,7 @@ end
 
 ### Errors
 
-When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Lithic::Error` will be thrown:
+When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Lithic::Errors::APIError` will be thrown:
 
 ```ruby
 begin
@@ -189,8 +183,7 @@ If you want to explicitly send an extra param, you can do so with the `extra_que
 To make requests to undocumented endpoints, you can make requests using `client.request`. Options on the client will be respected (such as retries) when making this request.
 
 ```ruby
-response =
-  client.request(
+response = client.request(
     method: :post,
     path: '/undocumented/endpoint',
     query: {"dog": "woof"},
