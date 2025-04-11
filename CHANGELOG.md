@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.11 (2025-04-11)
+
+Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
+
+### Bug Fixes
+
+* inaccuracies in the README.md ([32837de](https://github.com/lithic-com/lithic-ruby/commit/32837de7e1a29ced61aa4459cd37def264246000))
+
 ## 0.1.0-alpha.10 (2025-04-09)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
