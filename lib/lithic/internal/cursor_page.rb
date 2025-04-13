@@ -22,28 +22,6 @@ module Lithic
       # @return [Boolean]
       attr_accessor :has_more
 
-      # @api private
-      #
-      # @param client [Lithic::Internal::Transport::BaseClient]
-      # @param req [Hash{Symbol=>Object}]
-      # @param headers [Hash{String=>String}, Net::HTTPHeader]
-      # @param page_data [Hash{Symbol=>Object}]
-      def initialize(client:, req:, headers:, page_data:)
-        super
-
-        case page_data
-        in {data: Array | nil => data}
-          @data = data&.map { Lithic::Internal::Type::Converter.coerce(@model, _1) }
-        else
-        end
-
-        case page_data
-        in {has_more: true | false => has_more}
-          @has_more = has_more
-        else
-        end
-      end
-
       # @return [Boolean]
       def next_page?
         has_more
@@ -76,6 +54,23 @@ module Lithic
           break unless page.next_page?
           page = page.next_page
         end
+      end
+
+      # @api private
+      #
+      # @param client [Lithic::Internal::Transport::BaseClient]
+      # @param req [Hash{Symbol=>Object}]
+      # @param headers [Hash{String=>String}, Net::HTTPHeader]
+      # @param page_data [Hash{Symbol=>Object}]
+      def initialize(client:, req:, headers:, page_data:)
+        super
+
+        case page_data
+        in {data: Array | nil => data}
+          @data = data&.map { Lithic::Internal::Type::Converter.coerce(@model, _1) }
+        else
+        end
+        @has_more = page_data[:has_more]
       end
 
       # @api private
