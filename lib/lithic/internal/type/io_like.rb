@@ -11,6 +11,8 @@ module Lithic
       class IOLike
         extend Lithic::Internal::Type::Converter
 
+        private_class_method :new
+
         # @param other [Object]
         #
         # @return [Boolean]
