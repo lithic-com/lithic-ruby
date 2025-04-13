@@ -39,6 +39,8 @@ module Lithic
           top value,
           state: Lithic::Internal::Type::Converter::dump_state
         ) -> top
+
+        def inspect: (?depth: Integer) -> String
       end
     end
   end
