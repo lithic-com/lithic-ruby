@@ -6,7 +6,7 @@ The Lithic Ruby library provides convenient access to the Lithic REST API from a
 
 Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/lithic).
 
-The underlying REST API documentation can be found on [docs.lithic.com](https://docs.lithic.com).
+The REST API documentation can be found on [docs.lithic.com](https://docs.lithic.com).
 
 ## Installation
 
