@@ -13,8 +13,7 @@ class LithicTest < Minitest::Test
 
   def test_raises_on_unknown_environment
     e = assert_raises(ArgumentError) do
-      v = Lithic::Client.new(environment: "wrong")
-      puts(v.base_url)
+      Lithic::Client.new(environment: "wrong")
     end
     assert_match(/environment must be one of/, e.message)
   end
