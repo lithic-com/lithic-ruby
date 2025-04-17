@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.1.0-alpha.12 (2025-04-17)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
+
+### Features
+
+* **client:** enable setting base URL from environment variable ([4f4585e](https://github.com/lithic-com/lithic-ruby/commit/4f4585e1557f60480629b83e6e2850f6b4a5dc98))
+
+
+### Bug Fixes
+
+* **client:** send correct HTTP path ([743cdc2](https://github.com/lithic-com/lithic-ruby/commit/743cdc28a16b5cfd724bf5b66cd699c840af8bad))
+
+
+### Chores
+
+* **internal:** always run post-processing when formatting when syntax_tree ([cfb9196](https://github.com/lithic-com/lithic-ruby/commit/cfb9196cccd8dea098fc52678e0eb2c777b0f900))
+* **internal:** codegen related update ([c743e5d](https://github.com/lithic-com/lithic-ruby/commit/c743e5dd161480e7d3bf5305fb1135137b55d7de))
+* **internal:** loosen internal type restrictions ([be1ae99](https://github.com/lithic-com/lithic-ruby/commit/be1ae999e5f9c36ed16367dfd9a9d0be4115b108))
+* **internal:** minor touch ups on sdk internals ([a9ff4a6](https://github.com/lithic-com/lithic-ruby/commit/a9ff4a6e7da32387c68195b1bdbfe683f63435ff))
+* **internal:** mostly README touch ups ([95ec3f1](https://github.com/lithic-com/lithic-ruby/commit/95ec3f10b027ca3be7dce6ffa2c45b9f8ba0b258))
+* **internal:** protect SSE parsing pipeline from broken UTF-8 characters ([810686a](https://github.com/lithic-com/lithic-ruby/commit/810686a28f0a1d4710c632be010912b2ae41316f))
+* make internal types pretty print ([eb5f0d9](https://github.com/lithic-com/lithic-ruby/commit/eb5f0d9f11b86370cfdca97b4a4716565a20c140))
+
+
+### Documentation
+
+* update documentation links to be more uniform ([6d246be](https://github.com/lithic-com/lithic-ruby/commit/6d246be6b7a3d16f4e8fb88980d2f53b45d85346))
+
 ## 0.1.0-alpha.11 (2025-04-11)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
