@@ -338,6 +338,27 @@ module Lithic
             .to_h
         end
 
+        class << self
+          # @param model [Lithic::Internal::Type::BaseModel]
+          #
+          # @return [Hash{Symbol=>Object}]
+          def walk(model)
+            walk = ->(x) do
+              case x
+              in Lithic::Internal::Type::BaseModel
+                walk.call(x.to_h)
+              in Hash
+                x.transform_values(&walk)
+              in Array
+                x.map(&walk)
+              else
+                x
+              end
+            end
+            walk.call(model)
+          end
+        end
+
         # @param a [Object]
         #
         # @return [String]
@@ -373,13 +394,11 @@ module Lithic
             depth = depth.succ
             deferred = fields.transform_values do |field|
               type, required, nilable = field.fetch_values(:type, :required, :nilable)
-              -> do
-                [
-                  Lithic::Internal::Type::Converter.inspect(type, depth: depth),
-                  !required || nilable ? "nil" : nil
-                ].compact.join(" | ")
-              end
-                .tap { _1.define_singleton_method(:inspect) { call } }
+              inspected = [
+                Lithic::Internal::Type::Converter.inspect(type, depth: depth),
+                !required || nilable ? "nil" : nil
+              ].compact.join(" | ")
+              -> { inspected }.tap { _1.define_singleton_method(:inspect) { call } }
             end
 
             "#{name}[#{deferred.inspect}]"
@@ -389,15 +408,12 @@ module Lithic
         # @api private
         #
         # @return [String]
-        def inspect
-          rows = @data.map do
-            "#{_1}=#{self.class.known_fields.key?(_1) ? public_send(_1).inspect : ''}"
-          rescue Lithic::Errors::ConversionError
-            "#{_1}=#{_2.inspect}"
-          end
+        def to_s = self.class.walk(@data).to_s
 
-          "#<#{self.class}:0x#{object_id.to_s(16)} #{rows.join(' ')}>"
-        end
+        # @api private
+        #
+        # @return [String]
+        def inspect = "#<#{self.class}:0x#{object_id.to_s(16)} #{self}>"
       end
     end
   end
