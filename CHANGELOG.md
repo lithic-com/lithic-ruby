@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.14 (2025-04-17)
+
+Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
+
+### Bug Fixes
+
+* always send idempotency header when specified as a request option ([919646f](https://github.com/lithic-com/lithic-ruby/commit/919646f1dea9c03ec4d752c7e62ee6d875d73651))
+
+
+### Chores
+
+* **internal:** contribute.md and contributor QoL improvements ([f7ff754](https://github.com/lithic-com/lithic-ruby/commit/f7ff754e6db71852203445c04ad17b0e64204864))
+
 ## 0.1.0-alpha.13 (2025-04-17)
 
 Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
