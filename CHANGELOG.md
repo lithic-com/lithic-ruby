@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.13 (2025-04-17)
+
+Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
+
+### Bug Fixes
+
+* restore ability to configure server environment as string during client construction ([aec1e1f](https://github.com/lithic-com/lithic-ruby/commit/aec1e1fe50b86dfeac96adb6e2f7afd56c1e44e9))
+
 ## 0.1.0-alpha.12 (2025-04-17)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
