@@ -17,6 +17,9 @@ module Lithic
         T.let(:CHARGED_OFF_INTEREST, Lithic::Models::InstanceFinancialAccountType::TaggedSymbol)
       CHARGED_OFF_PRINCIPAL =
         T.let(:CHARGED_OFF_PRINCIPAL, Lithic::Models::InstanceFinancialAccountType::TaggedSymbol)
+      SECURITY = T.let(:SECURITY, Lithic::Models::InstanceFinancialAccountType::TaggedSymbol)
+      PROGRAM_RECEIVABLES =
+        T.let(:PROGRAM_RECEIVABLES, Lithic::Models::InstanceFinancialAccountType::TaggedSymbol)
 
       sig { override.returns(T::Array[Lithic::Models::InstanceFinancialAccountType::TaggedSymbol]) }
       def self.values; end

@@ -198,6 +198,11 @@ module Lithic
                   :MANAGEMENT_REWARD,
                   Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
                 )
+              MANAGEMENT_DISBURSEMENT =
+                T.let(
+                  :MANAGEMENT_DISBURSEMENT,
+                  Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
+                )
 
               sig do
                 override
@@ -538,6 +543,11 @@ module Lithic
               RETURNED_PAYMENT_REVERSAL =
                 T.let(
                   :RETURNED_PAYMENT_REVERSAL,
+                  Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              LITHIC_NETWORK_PAYMENT =
+                T.let(
+                  :LITHIC_NETWORK_PAYMENT,
                   Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
 

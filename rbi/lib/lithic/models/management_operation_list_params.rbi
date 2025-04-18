@@ -134,6 +134,8 @@ module Lithic
           T.let(:MANAGEMENT_REWARD, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
         MANAGEMENT_ADJUSTMENT =
           T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
+        MANAGEMENT_DISBURSEMENT =
+          T.let(:MANAGEMENT_DISBURSEMENT, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol]) }
         def self.values; end

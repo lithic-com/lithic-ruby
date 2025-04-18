@@ -746,7 +746,14 @@ module Lithic
           #   @return [Symbol, Lithic::Models::Transaction::Pos::Terminal::Type]
           required :type, enum: -> { Lithic::Models::Transaction::Pos::Terminal::Type }
 
-          # @!method initialize(attended:, card_retention_capable:, on_premise:, operator:, partial_approval_capable:, pin_capability:, type:)
+          # @!attribute acceptor_terminal_id
+          #   Uniquely identifies a terminal at the card acceptor location of acquiring
+          #   institutions or merchant POS Systems
+          #
+          #   @return [String, nil]
+          optional :acceptor_terminal_id, String, nil?: true
+
+          # @!method initialize(attended:, card_retention_capable:, on_premise:, operator:, partial_approval_capable:, pin_capability:, type:, acceptor_terminal_id: nil)
           #   @param attended [Boolean]
           #   @param card_retention_capable [Boolean]
           #   @param on_premise [Boolean]
@@ -754,6 +761,7 @@ module Lithic
           #   @param partial_approval_capable [Boolean]
           #   @param pin_capability [Symbol, Lithic::Models::Transaction::Pos::Terminal::PinCapability]
           #   @param type [Symbol, Lithic::Models::Transaction::Pos::Terminal::Type]
+          #   @param acceptor_terminal_id [String, nil]
 
           # The person that is designated to swipe the card
           #
@@ -972,7 +980,12 @@ module Lithic
         #   @return [Symbol, Lithic::Models::Transaction::Event::Type]
         required :type, enum: -> { Lithic::Models::Transaction::Event::Type }
 
-        # @!method initialize(token:, amount:, amounts:, created:, detailed_results:, effective_polarity:, network_info:, result:, rule_results:, type:)
+        # @!attribute network_specific_data
+        #
+        #   @return [Lithic::Models::Transaction::Event::NetworkSpecificData, nil]
+        optional :network_specific_data, -> { Lithic::Models::Transaction::Event::NetworkSpecificData }
+
+        # @!method initialize(token:, amount:, amounts:, created:, detailed_results:, effective_polarity:, network_info:, result:, rule_results:, type:, network_specific_data: nil)
         #   @param token [String]
         #   @param amount [Integer]
         #   @param amounts [Lithic::Models::Transaction::Event::Amounts]
@@ -983,6 +996,7 @@ module Lithic
         #   @param result [Symbol, Lithic::Models::Transaction::Event::Result]
         #   @param rule_results [Array<Lithic::Models::Transaction::Event::RuleResult>]
         #   @param type [Symbol, Lithic::Models::Transaction::Event::Type]
+        #   @param network_specific_data [Lithic::Models::Transaction::Event::NetworkSpecificData]
 
         # @see Lithic::Models::Transaction::Event#amounts
         class Amounts < Lithic::Internal::Type::BaseModel
@@ -1433,6 +1447,91 @@ module Lithic
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Lithic::Models::Transaction::Event#network_specific_data
+        class NetworkSpecificData < Lithic::Internal::Type::BaseModel
+          # @!attribute mastercard
+          #
+          #   @return [Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard]
+          required :mastercard, -> { Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard }
+
+          # @!attribute visa
+          #
+          #   @return [Lithic::Models::Transaction::Event::NetworkSpecificData::Visa]
+          required :visa, -> { Lithic::Models::Transaction::Event::NetworkSpecificData::Visa }
+
+          # @!method initialize(mastercard:, visa:)
+          #   @param mastercard [Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard]
+          #   @param visa [Lithic::Models::Transaction::Event::NetworkSpecificData::Visa]
+
+          # @see Lithic::Models::Transaction::Event::NetworkSpecificData#mastercard
+          class Mastercard < Lithic::Internal::Type::BaseModel
+            # @!attribute ecommerce_security_level_indicator
+            #   Indicates the electronic commerce security level and UCAF collection.
+            #
+            #   @return [String, nil]
+            required :ecommerce_security_level_indicator, String, nil?: true
+
+            # @!attribute on_behalf_service_result
+            #   The On-behalf Service performed on the transaction and the results. Contains all
+            #   applicable, on-behalf service results that were performed on a given
+            #   transaction.
+            #
+            #   @return [Array<Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult>, nil]
+            required :on_behalf_service_result,
+                     -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult] },
+                     nil?: true
+
+            # @!attribute transaction_type_identifier
+            #   Indicates the type of additional transaction purpose.
+            #
+            #   @return [String, nil]
+            required :transaction_type_identifier, String, nil?: true
+
+            # @!method initialize(ecommerce_security_level_indicator:, on_behalf_service_result:, transaction_type_identifier:)
+            #   @param ecommerce_security_level_indicator [String, nil]
+            #   @param on_behalf_service_result [Array<Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult>, nil]
+            #   @param transaction_type_identifier [String, nil]
+
+            class OnBehalfServiceResult < Lithic::Internal::Type::BaseModel
+              # @!attribute result_1
+              #   Indicates the results of the service processing.
+              #
+              #   @return [String]
+              required :result_1, String
+
+              # @!attribute result_2
+              #   Identifies the results of the service processing.
+              #
+              #   @return [String]
+              required :result_2, String
+
+              # @!attribute service
+              #   Indicates the service performed on the transaction.
+              #
+              #   @return [String]
+              required :service, String
+
+              # @!method initialize(result_1:, result_2:, service:)
+              #   @param result_1 [String]
+              #   @param result_2 [String]
+              #   @param service [String]
+            end
+          end
+
+          # @see Lithic::Models::Transaction::Event::NetworkSpecificData#visa
+          class Visa < Lithic::Internal::Type::BaseModel
+            # @!attribute business_application_identifier
+            #   Identifies the purpose or category of a transaction, used to classify and
+            #   process transactions according to Visa’s rules.
+            #
+            #   @return [String, nil]
+            required :business_application_identifier, String, nil?: true
+
+            # @!method initialize(business_application_identifier:)
+            #   @param business_application_identifier [String, nil]
+          end
         end
       end
     end

@@ -188,6 +188,7 @@ module Lithic
           | :TRANSFER_INSUFFICIENT_FUNDS
           | :RETURNED_PAYMENT
           | :RETURNED_PAYMENT_REVERSAL
+          | :LITHIC_NETWORK_PAYMENT
 
         module Type
           extend Lithic::Internal::Type::Enum
@@ -257,6 +258,7 @@ module Lithic
           TRANSFER_INSUFFICIENT_FUNDS: :TRANSFER_INSUFFICIENT_FUNDS
           RETURNED_PAYMENT: :RETURNED_PAYMENT
           RETURNED_PAYMENT_REVERSAL: :RETURNED_PAYMENT_REVERSAL
+          LITHIC_NETWORK_PAYMENT: :LITHIC_NETWORK_PAYMENT
 
           def self?.values: -> ::Array[Lithic::Models::FinancialTransaction::Event::type_]
         end

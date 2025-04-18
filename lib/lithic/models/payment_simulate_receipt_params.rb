@@ -8,7 +8,7 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute token
-      #   Payment token
+      #   Customer-generated payment token used to uniquely identify the simulated payment
       #
       #   @return [String]
       required :token, String

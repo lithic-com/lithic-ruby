@@ -365,6 +365,8 @@ module Lithic
           RETURNED_PAYMENT = T.let(:RETURNED_PAYMENT, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
           RETURNED_PAYMENT_REVERSAL =
             T.let(:RETURNED_PAYMENT_REVERSAL, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
+          LITHIC_NETWORK_PAYMENT =
+            T.let(:LITHIC_NETWORK_PAYMENT, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[Lithic::Models::Transfer::Event::Type::TaggedSymbol]) }
           def self.values; end

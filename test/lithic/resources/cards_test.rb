@@ -7,7 +7,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     response = @lithic.cards.create(type: :VIRTUAL)
 
     assert_pattern do
-      response => Lithic::Models::Card
+      response => Lithic::Models::CardCreateResponse
     end
 
     assert_pattern do
@@ -16,13 +16,13 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         account_token: String,
         card_program_token: String,
         created: Time,
-        funding: Lithic::Models::Card::Funding,
+        funding: Lithic::Models::CardCreateResponse::Funding,
         last_four: String,
-        pin_status: Lithic::Models::Card::PinStatus,
+        pin_status: Lithic::Models::CardCreateResponse::PinStatus,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::Models::SpendLimitDuration,
-        state: Lithic::Models::Card::State,
-        type: Lithic::Models::Card::Type,
+        spend_limit_duration: Lithic::Models::CardCreateResponse::SpendLimitDuration,
+        state: Lithic::Models::CardCreateResponse::State,
+        type: Lithic::Models::CardCreateResponse::Type,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
@@ -43,7 +43,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     response = @lithic.cards.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::Card
+      response => Lithic::Models::CardRetrieveResponse
     end
 
     assert_pattern do
@@ -52,13 +52,13 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         account_token: String,
         card_program_token: String,
         created: Time,
-        funding: Lithic::Models::Card::Funding,
+        funding: Lithic::Models::CardRetrieveResponse::Funding,
         last_four: String,
-        pin_status: Lithic::Models::Card::PinStatus,
+        pin_status: Lithic::Models::CardRetrieveResponse::PinStatus,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::Models::SpendLimitDuration,
-        state: Lithic::Models::Card::State,
-        type: Lithic::Models::Card::Type,
+        spend_limit_duration: Lithic::Models::CardRetrieveResponse::SpendLimitDuration,
+        state: Lithic::Models::CardRetrieveResponse::State,
+        type: Lithic::Models::CardRetrieveResponse::Type,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
@@ -79,7 +79,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     response = @lithic.cards.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::Card
+      response => Lithic::Models::CardUpdateResponse
     end
 
     assert_pattern do
@@ -88,13 +88,13 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         account_token: String,
         card_program_token: String,
         created: Time,
-        funding: Lithic::Models::Card::Funding,
+        funding: Lithic::Models::CardUpdateResponse::Funding,
         last_four: String,
-        pin_status: Lithic::Models::Card::PinStatus,
+        pin_status: Lithic::Models::CardUpdateResponse::PinStatus,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::Models::SpendLimitDuration,
-        state: Lithic::Models::Card::State,
-        type: Lithic::Models::Card::Type,
+        spend_limit_duration: Lithic::Models::CardUpdateResponse::SpendLimitDuration,
+        state: Lithic::Models::CardUpdateResponse::State,
+        type: Lithic::Models::CardUpdateResponse::Type,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
@@ -122,7 +122,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::Card
+      row => Lithic::Models::CardListResponse
     end
 
     assert_pattern do
@@ -131,22 +131,20 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         account_token: String,
         card_program_token: String,
         created: Time,
-        funding: Lithic::Models::Card::Funding,
+        funding: Lithic::Models::CardListResponse::Funding,
         last_four: String,
-        pin_status: Lithic::Models::Card::PinStatus,
+        pin_status: Lithic::Models::CardListResponse::PinStatus,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::Models::SpendLimitDuration,
-        state: Lithic::Models::Card::State,
-        type: Lithic::Models::Card::Type,
+        spend_limit_duration: Lithic::Models::CardListResponse::SpendLimitDuration,
+        state: Lithic::Models::CardListResponse::State,
+        type: Lithic::Models::CardListResponse::Type,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
-        cvv: String | nil,
         digital_card_art_token: String | nil,
         exp_month: String | nil,
         exp_year: String | nil,
         hostname: String | nil,
         memo: String | nil,
-        pan: String | nil,
         pending_commands: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         product_id: String | nil,
         replacement_for: String | nil
@@ -170,7 +168,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Lithic::Models::Card
+      response => Lithic::Models::CardConvertPhysicalResponse
     end
 
     assert_pattern do
@@ -179,13 +177,13 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         account_token: String,
         card_program_token: String,
         created: Time,
-        funding: Lithic::Models::Card::Funding,
+        funding: Lithic::Models::CardConvertPhysicalResponse::Funding,
         last_four: String,
-        pin_status: Lithic::Models::Card::PinStatus,
+        pin_status: Lithic::Models::CardConvertPhysicalResponse::PinStatus,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::Models::SpendLimitDuration,
-        state: Lithic::Models::Card::State,
-        type: Lithic::Models::Card::Type,
+        spend_limit_duration: Lithic::Models::CardConvertPhysicalResponse::SpendLimitDuration,
+        state: Lithic::Models::CardConvertPhysicalResponse::State,
+        type: Lithic::Models::CardConvertPhysicalResponse::Type,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
@@ -228,7 +226,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     response = @lithic.cards.reissue("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::Card
+      response => Lithic::Models::CardReissueResponse
     end
 
     assert_pattern do
@@ -237,13 +235,13 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         account_token: String,
         card_program_token: String,
         created: Time,
-        funding: Lithic::Models::Card::Funding,
+        funding: Lithic::Models::CardReissueResponse::Funding,
         last_four: String,
-        pin_status: Lithic::Models::Card::PinStatus,
+        pin_status: Lithic::Models::CardReissueResponse::PinStatus,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::Models::SpendLimitDuration,
-        state: Lithic::Models::Card::State,
-        type: Lithic::Models::Card::Type,
+        spend_limit_duration: Lithic::Models::CardReissueResponse::SpendLimitDuration,
+        state: Lithic::Models::CardReissueResponse::State,
+        type: Lithic::Models::CardReissueResponse::Type,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
@@ -276,7 +274,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Lithic::Models::Card
+      response => Lithic::Models::CardRenewResponse
     end
 
     assert_pattern do
@@ -285,13 +283,13 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         account_token: String,
         card_program_token: String,
         created: Time,
-        funding: Lithic::Models::Card::Funding,
+        funding: Lithic::Models::CardRenewResponse::Funding,
         last_four: String,
-        pin_status: Lithic::Models::Card::PinStatus,
+        pin_status: Lithic::Models::CardRenewResponse::PinStatus,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::Models::SpendLimitDuration,
-        state: Lithic::Models::Card::State,
-        type: Lithic::Models::Card::Type,
+        spend_limit_duration: Lithic::Models::CardRenewResponse::SpendLimitDuration,
+        state: Lithic::Models::CardRenewResponse::State,
+        type: Lithic::Models::CardRenewResponse::Type,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
@@ -328,7 +326,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     response = @lithic.cards.search_by_pan(pan: "4111111289144142")
 
     assert_pattern do
-      response => Lithic::Models::Card
+      response => Lithic::Models::CardSearchByPanResponse
     end
 
     assert_pattern do
@@ -337,13 +335,13 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         account_token: String,
         card_program_token: String,
         created: Time,
-        funding: Lithic::Models::Card::Funding,
+        funding: Lithic::Models::CardSearchByPanResponse::Funding,
         last_four: String,
-        pin_status: Lithic::Models::Card::PinStatus,
+        pin_status: Lithic::Models::CardSearchByPanResponse::PinStatus,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::Models::SpendLimitDuration,
-        state: Lithic::Models::Card::State,
-        type: Lithic::Models::Card::Type,
+        spend_limit_duration: Lithic::Models::CardSearchByPanResponse::SpendLimitDuration,
+        state: Lithic::Models::CardSearchByPanResponse::State,
+        type: Lithic::Models::CardSearchByPanResponse::Type,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         cvv: String | nil,
