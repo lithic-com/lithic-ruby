@@ -48,14 +48,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType) }
-        OrSymbol =
-          T.type_alias do
-            T.any(
-              Symbol,
-              String,
-              Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::TaggedSymbol
-            )
-          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         EMAIL_TO_CARDHOLDER_ADDRESS =
           T.let(

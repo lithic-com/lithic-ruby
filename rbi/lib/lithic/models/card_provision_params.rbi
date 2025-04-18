@@ -101,8 +101,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardProvisionParams::DigitalWallet) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         APPLE_PAY = T.let(:APPLE_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol)
         GOOGLE_PAY = T.let(:GOOGLE_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol)

@@ -73,8 +73,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DisputeCreateParams::Reason) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ATM_CASH_MISDISPENSE =
           T.let(:ATM_CASH_MISDISPENSE, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)

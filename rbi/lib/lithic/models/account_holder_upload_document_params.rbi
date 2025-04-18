@@ -42,8 +42,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         EIN_LETTER =
           T.let(:EIN_LETTER, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)

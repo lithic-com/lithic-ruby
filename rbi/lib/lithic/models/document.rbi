@@ -57,7 +57,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Document::DocumentType) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Document::DocumentType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         DRIVERS_LICENSE = T.let(:DRIVERS_LICENSE, Lithic::Models::Document::DocumentType::TaggedSymbol)
         PASSPORT = T.let(:PASSPORT, Lithic::Models::Document::DocumentType::TaggedSymbol)
@@ -183,8 +183,7 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Document::RequiredDocumentUpload::ImageType) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           FRONT = T.let(:FRONT, Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol)
           BACK = T.let(:BACK, Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol)
@@ -198,8 +197,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Document::RequiredDocumentUpload::Status) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ACCEPTED = T.let(:ACCEPTED, Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol)
           REJECTED = T.let(:REJECTED, Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol)
@@ -219,8 +217,7 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Document::RequiredDocumentUpload::StatusReason) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           DOCUMENT_MISSING_REQUIRED_DATA =
             T.let(

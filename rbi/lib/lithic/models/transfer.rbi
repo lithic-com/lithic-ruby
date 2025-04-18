@@ -172,7 +172,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transfer::Category) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Transfer::Category::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         TRANSFER = T.let(:TRANSFER, Lithic::Models::Transfer::Category::TaggedSymbol)
 
@@ -249,7 +249,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transfer::Event::Result) }
-          OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Transfer::Event::Result::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           APPROVED = T.let(:APPROVED, Lithic::Models::Transfer::Event::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::Transfer::Event::Result::TaggedSymbol)
@@ -262,7 +262,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transfer::Event::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Transfer::Event::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ACH_ORIGINATION_CANCELLED =
             T.let(:ACH_ORIGINATION_CANCELLED, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
@@ -377,7 +377,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transfer::Result) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Transfer::Result::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         APPROVED = T.let(:APPROVED, Lithic::Models::Transfer::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::Transfer::Result::TaggedSymbol)
@@ -397,7 +397,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Transfer::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Transfer::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         DECLINED = T.let(:DECLINED, Lithic::Models::Transfer::Status::TaggedSymbol)
         EXPIRED = T.let(:EXPIRED, Lithic::Models::Transfer::Status::TaggedSymbol)

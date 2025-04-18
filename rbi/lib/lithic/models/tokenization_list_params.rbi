@@ -115,8 +115,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::TokenizationListParams::TokenizationChannel::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         DIGITAL_WALLET =
           T.let(:DIGITAL_WALLET, Lithic::Models::TokenizationListParams::TokenizationChannel::TaggedSymbol)

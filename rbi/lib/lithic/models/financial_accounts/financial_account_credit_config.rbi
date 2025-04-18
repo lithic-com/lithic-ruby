@@ -87,14 +87,7 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol
-              )
-            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           DELINQUENT =
             T.let(
@@ -122,14 +115,7 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
-              )
-            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           PENDING =
             T.let(

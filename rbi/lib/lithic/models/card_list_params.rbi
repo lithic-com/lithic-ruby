@@ -104,7 +104,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardListParams::State) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::CardListParams::State::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CLOSED = T.let(:CLOSED, Lithic::Models::CardListParams::State::TaggedSymbol)
         OPEN = T.let(:OPEN, Lithic::Models::CardListParams::State::TaggedSymbol)

@@ -42,8 +42,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentSimulateActionResponse::Result) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::PaymentSimulateActionResponse::Result::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         APPROVED = T.let(:APPROVED, Lithic::Models::PaymentSimulateActionResponse::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::PaymentSimulateActionResponse::Result::TaggedSymbol)

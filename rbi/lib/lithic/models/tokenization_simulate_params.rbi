@@ -107,8 +107,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::TokenizationSimulateParams::TokenizationSource::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         APPLE_PAY =
           T.let(:APPLE_PAY, Lithic::Models::TokenizationSimulateParams::TokenizationSource::TaggedSymbol)
@@ -127,8 +126,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         APPROVED =
           T.let(:APPROVED, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::TaggedSymbol)

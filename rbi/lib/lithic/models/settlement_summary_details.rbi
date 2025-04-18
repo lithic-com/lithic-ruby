@@ -107,8 +107,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::SettlementSummaryDetails::Network) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         INTERLINK = T.let(:INTERLINK, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
         MAESTRO = T.let(:MAESTRO, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)

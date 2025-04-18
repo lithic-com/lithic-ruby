@@ -100,8 +100,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Cards::BalanceListResponse::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ISSUING = T.let(:ISSUING, Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol)
           OPERATING = T.let(:OPERATING, Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol)

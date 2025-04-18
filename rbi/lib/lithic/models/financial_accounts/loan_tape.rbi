@@ -378,14 +378,7 @@ module Lithic
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    String,
-                    Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
-                  )
-                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               OPEN =
                 T.let(
@@ -425,14 +418,7 @@ module Lithic
                 T.type_alias do
                   T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus)
                 end
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    String,
-                    Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
-                  )
-                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               CHARGED_OFF_DELINQUENT =
                 T.let(
@@ -477,14 +463,7 @@ module Lithic
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             STANDARD =
               T.let(:STANDARD, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol)
@@ -869,14 +848,7 @@ module Lithic
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAILY =
               T.let(

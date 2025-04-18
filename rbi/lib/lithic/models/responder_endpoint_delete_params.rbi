@@ -32,8 +32,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ResponderEndpointDeleteParams::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ResponderEndpointDeleteParams::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AUTH_STREAM_ACCESS =
           T.let(:AUTH_STREAM_ACCESS, Lithic::Models::ResponderEndpointDeleteParams::Type::TaggedSymbol)

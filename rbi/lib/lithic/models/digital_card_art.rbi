@@ -78,8 +78,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DigitalCardArtAPI::Network) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         MASTERCARD = T.let(:MASTERCARD, Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol)
         VISA = T.let(:VISA, Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol)

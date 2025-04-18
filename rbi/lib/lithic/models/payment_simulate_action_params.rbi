@@ -53,8 +53,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentSimulateActionParams::EventType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACH_ORIGINATION_REVIEWED =
           T.let(:ACH_ORIGINATION_REVIEWED, Lithic::Models::PaymentSimulateActionParams::EventType::TaggedSymbol)
@@ -82,8 +81,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::PaymentSimulateActionParams::DeclineReason::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PROGRAM_TRANSACTION_LIMIT_EXCEEDED =
           T.let(

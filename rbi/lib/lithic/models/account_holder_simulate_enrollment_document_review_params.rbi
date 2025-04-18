@@ -75,14 +75,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status) }
-        OrSymbol =
-          T.type_alias do
-            T.any(
-              Symbol,
-              String,
-              Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::TaggedSymbol
-            )
-          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         UPLOADED =
           T.let(
@@ -121,14 +114,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason) }
-        OrSymbol =
-          T.type_alias do
-            T.any(
-              Symbol,
-              String,
-              Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::TaggedSymbol
-            )
-          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         DOCUMENT_MISSING_REQUIRED_DATA =
           T.let(
