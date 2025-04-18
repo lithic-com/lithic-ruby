@@ -6,10 +6,11 @@ module Lithic
       # Create an account holder and initiate the appropriate onboarding workflow.
       # Account holders and accounts have a 1:1 relationship. When an account holder is
       # successfully created an associated account is also created. All calls to this
-      # endpoint will return an immediate response - though in some cases, the response
-      # may indicate the enrollment is under review or further action will be needed to
-      # complete the account enrollment process. This endpoint can only be used on
-      # accounts that are part of the program that the calling API key manages.
+      # endpoint will return a synchronous response. The response time will depend on
+      # the workflow. In some cases, the response may indicate the workflow is under
+      # review or further action will be needed to complete the account creation
+      # process. This endpoint can only be used on accounts that are part of the program
+      # that the calling API key manages.
       #
       # @overload create(beneficial_owner_individuals:, business_entity:, control_person:, nature_of_business:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
       #
@@ -73,10 +74,11 @@ module Lithic
       # is performing KYB or KYC and additional verification is required we will run the
       # individual's or business's updated information again and return whether the
       # status is accepted or pending (i.e., further action required). All calls to this
-      # endpoint will return an immediate response - though in some cases, the response
-      # may indicate the workflow is under review or further action will be needed to
-      # complete the evaluation process. This endpoint can only be used on existing
-      # accounts that are part of the program that the calling API key manages.
+      # endpoint will return a synchronous response. The response time will depend on
+      # the workflow. In some cases, the response may indicate the workflow is under
+      # review or further action will be needed to complete the account creation
+      # process. This endpoint can only be used on existing accounts that are part of
+      # the program that the calling API key manages.
       #
       # @overload update(account_holder_token, beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_entity: nil, control_person: nil, external_id: nil, nature_of_business: nil, website_url: nil, individual: nil, address: nil, business_account_token: nil, email: nil, first_name: nil, last_name: nil, legal_business_name: nil, phone_number: nil, request_options: {})
       #

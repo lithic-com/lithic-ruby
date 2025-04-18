@@ -122,6 +122,7 @@ module Lithic
               MANAGEMENT_DISPUTE = :MANAGEMENT_DISPUTE
               MANAGEMENT_FEE = :MANAGEMENT_FEE
               MANAGEMENT_REWARD = :MANAGEMENT_REWARD
+              MANAGEMENT_DISBURSEMENT = :MANAGEMENT_DISBURSEMENT
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -196,6 +197,7 @@ module Lithic
               TRANSFER_INSUFFICIENT_FUNDS = :TRANSFER_INSUFFICIENT_FUNDS
               RETURNED_PAYMENT = :RETURNED_PAYMENT
               RETURNED_PAYMENT_REVERSAL = :RETURNED_PAYMENT_REVERSAL
+              LITHIC_NETWORK_PAYMENT = :LITHIC_NETWORK_PAYMENT
 
               # @!method self.values
               #   @return [Array<Symbol>]

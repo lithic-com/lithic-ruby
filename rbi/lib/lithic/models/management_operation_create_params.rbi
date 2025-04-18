@@ -111,6 +111,8 @@ module Lithic
           T.let(:MANAGEMENT_REWARD, Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol)
         MANAGEMENT_ADJUSTMENT =
           T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol)
+        MANAGEMENT_DISBURSEMENT =
+          T.let(:MANAGEMENT_DISBURSEMENT, Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol]) }
         def self.values; end
@@ -135,31 +137,31 @@ module Lithic
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationCreateParams::EventType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        CASH_BACK = T.let(:CASH_BACK, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
-        CURRENCY_CONVERSION =
-          T.let(:CURRENCY_CONVERSION, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
-        INTEREST = T.let(:INTEREST, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
-        LATE_PAYMENT =
-          T.let(:LATE_PAYMENT, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
-        BILLING_ERROR =
-          T.let(:BILLING_ERROR, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
-        PROVISIONAL_CREDIT =
-          T.let(:PROVISIONAL_CREDIT, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
         LOSS_WRITE_OFF =
           T.let(:LOSS_WRITE_OFF, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+        CASH_BACK = T.let(:CASH_BACK, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
         CASH_BACK_REVERSAL =
           T.let(:CASH_BACK_REVERSAL, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+        CURRENCY_CONVERSION =
+          T.let(:CURRENCY_CONVERSION, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
         CURRENCY_CONVERSION_REVERSAL =
           T.let(
             :CURRENCY_CONVERSION_REVERSAL,
             Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
+        INTEREST = T.let(:INTEREST, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
         INTEREST_REVERSAL =
           T.let(:INTEREST_REVERSAL, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+        LATE_PAYMENT =
+          T.let(:LATE_PAYMENT, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
         LATE_PAYMENT_REVERSAL =
           T.let(:LATE_PAYMENT_REVERSAL, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+        BILLING_ERROR =
+          T.let(:BILLING_ERROR, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
         BILLING_ERROR_REVERSAL =
           T.let(:BILLING_ERROR_REVERSAL, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+        PROVISIONAL_CREDIT =
+          T.let(:PROVISIONAL_CREDIT, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
         PROVISIONAL_CREDIT_REVERSAL =
           T.let(
             :PROVISIONAL_CREDIT_REVERSAL,
@@ -172,6 +174,13 @@ module Lithic
             :RETURNED_PAYMENT_REVERSAL,
             Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
+        DISPUTE_WON =
+          T.let(:DISPUTE_WON, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+        DISPUTE_WON_REVERSAL =
+          T.let(:DISPUTE_WON_REVERSAL, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+        DISBURSE = T.let(:DISBURSE, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+        DISBURSE_REVERSAL =
+          T.let(:DISBURSE_REVERSAL, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol]) }
         def self.values; end

@@ -128,7 +128,7 @@ module Lithic
           .returns(Lithic::Models::PaymentSimulateReceiptResponse)
       end
       def simulate_receipt(
-        # Payment token
+        # Customer-generated payment token used to uniquely identify the simulated payment
         token:,
         # Amount
         amount:,

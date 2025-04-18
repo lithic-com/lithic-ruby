@@ -101,12 +101,6 @@ module Lithic
       #   @return [Time, nil]
       required :representment_date, Time, nil?: true
 
-      # @!attribute resolution_amount
-      #   Resolution amount net of network fees.
-      #
-      #   @return [Integer, nil]
-      required :resolution_amount, Integer, nil?: true
-
       # @!attribute resolution_date
       #   Date that the dispute was resolved.
       #
@@ -166,7 +160,7 @@ module Lithic
       #   @return [String]
       required :transaction_token, String
 
-      # @!method initialize(token:, amount:, arbitration_date:, created:, customer_filed_date:, customer_note:, network_claim_ids:, network_filed_date:, network_reason_code:, prearbitration_date:, primary_claim_id:, reason:, representment_date:, resolution_amount:, resolution_date:, resolution_note:, resolution_reason:, status:, transaction_token:)
+      # @!method initialize(token:, amount:, arbitration_date:, created:, customer_filed_date:, customer_note:, network_claim_ids:, network_filed_date:, network_reason_code:, prearbitration_date:, primary_claim_id:, reason:, representment_date:, resolution_date:, resolution_note:, resolution_reason:, status:, transaction_token:)
       #   Dispute.
       #
       #   @param token [String]
@@ -182,7 +176,6 @@ module Lithic
       #   @param primary_claim_id [String, nil]
       #   @param reason [Symbol, Lithic::Models::Dispute::Reason]
       #   @param representment_date [Time, nil]
-      #   @param resolution_amount [Integer, nil]
       #   @param resolution_date [Time, nil]
       #   @param resolution_note [String, nil]
       #   @param resolution_reason [Symbol, Lithic::Models::Dispute::ResolutionReason, nil]

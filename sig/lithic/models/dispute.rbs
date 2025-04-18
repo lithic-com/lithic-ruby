@@ -15,7 +15,6 @@ module Lithic
         primary_claim_id: String?,
         reason: Lithic::Models::Dispute::reason,
         representment_date: Time?,
-        resolution_amount: Integer?,
         resolution_date: Time?,
         resolution_note: String?,
         resolution_reason: Lithic::Models::Dispute::resolution_reason?,
@@ -50,8 +49,6 @@ module Lithic
 
       attr_accessor representment_date: Time?
 
-      attr_accessor resolution_amount: Integer?
-
       attr_accessor resolution_date: Time?
 
       attr_accessor resolution_note: String?
@@ -76,7 +73,6 @@ module Lithic
         primary_claim_id: String?,
         reason: Lithic::Models::Dispute::reason,
         representment_date: Time?,
-        resolution_amount: Integer?,
         resolution_date: Time?,
         resolution_note: String?,
         resolution_reason: Lithic::Models::Dispute::resolution_reason?,

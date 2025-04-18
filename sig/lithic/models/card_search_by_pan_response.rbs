@@ -1,0 +1,257 @@
+module Lithic
+  module Models
+    type card_search_by_pan_response =
+      {
+        token: String,
+        account_token: String,
+        card_program_token: String,
+        created: Time,
+        funding: Lithic::Models::CardSearchByPanResponse::Funding,
+        last_four: String,
+        pin_status: Lithic::Models::CardSearchByPanResponse::pin_status,
+        spend_limit: Integer,
+        spend_limit_duration: Lithic::Models::CardSearchByPanResponse::spend_limit_duration,
+        state: Lithic::Models::CardSearchByPanResponse::state,
+        type: Lithic::Models::CardSearchByPanResponse::type_,
+        auth_rule_tokens: ::Array[String],
+        cardholder_currency: String,
+        cvv: String,
+        digital_card_art_token: String,
+        exp_month: String,
+        exp_year: String,
+        hostname: String,
+        memo: String,
+        pan: String,
+        pending_commands: ::Array[String],
+        product_id: String,
+        replacement_for: String?
+      }
+
+    class CardSearchByPanResponse < Lithic::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      attr_accessor account_token: String
+
+      attr_accessor card_program_token: String
+
+      attr_accessor created: Time
+
+      attr_accessor funding: Lithic::Models::CardSearchByPanResponse::Funding
+
+      attr_accessor last_four: String
+
+      attr_accessor pin_status: Lithic::Models::CardSearchByPanResponse::pin_status
+
+      attr_accessor spend_limit: Integer
+
+      attr_accessor spend_limit_duration: Lithic::Models::CardSearchByPanResponse::spend_limit_duration
+
+      attr_accessor state: Lithic::Models::CardSearchByPanResponse::state
+
+      attr_accessor type: Lithic::Models::CardSearchByPanResponse::type_
+
+      attr_reader auth_rule_tokens: ::Array[String]?
+
+      def auth_rule_tokens=: (::Array[String]) -> ::Array[String]
+
+      attr_reader cardholder_currency: String?
+
+      def cardholder_currency=: (String) -> String
+
+      attr_reader cvv: String?
+
+      def cvv=: (String) -> String
+
+      attr_reader digital_card_art_token: String?
+
+      def digital_card_art_token=: (String) -> String
+
+      attr_reader exp_month: String?
+
+      def exp_month=: (String) -> String
+
+      attr_reader exp_year: String?
+
+      def exp_year=: (String) -> String
+
+      attr_reader hostname: String?
+
+      def hostname=: (String) -> String
+
+      attr_reader memo: String?
+
+      def memo=: (String) -> String
+
+      attr_reader pan: String?
+
+      def pan=: (String) -> String
+
+      attr_reader pending_commands: ::Array[String]?
+
+      def pending_commands=: (::Array[String]) -> ::Array[String]
+
+      attr_reader product_id: String?
+
+      def product_id=: (String) -> String
+
+      attr_accessor replacement_for: String?
+
+      def initialize: (
+        token: String,
+        account_token: String,
+        card_program_token: String,
+        created: Time,
+        funding: Lithic::Models::CardSearchByPanResponse::Funding,
+        last_four: String,
+        pin_status: Lithic::Models::CardSearchByPanResponse::pin_status,
+        spend_limit: Integer,
+        spend_limit_duration: Lithic::Models::CardSearchByPanResponse::spend_limit_duration,
+        state: Lithic::Models::CardSearchByPanResponse::state,
+        type: Lithic::Models::CardSearchByPanResponse::type_,
+        ?auth_rule_tokens: ::Array[String],
+        ?cardholder_currency: String,
+        ?cvv: String,
+        ?digital_card_art_token: String,
+        ?exp_month: String,
+        ?exp_year: String,
+        ?hostname: String,
+        ?memo: String,
+        ?pan: String,
+        ?pending_commands: ::Array[String],
+        ?product_id: String,
+        ?replacement_for: String?
+      ) -> void
+
+      def to_hash: -> Lithic::Models::card_search_by_pan_response
+
+      type funding =
+        {
+          token: String,
+          created: Time,
+          last_four: String,
+          state: Lithic::Models::CardSearchByPanResponse::Funding::state,
+          type: Lithic::Models::CardSearchByPanResponse::Funding::type_,
+          account_name: String,
+          nickname: String
+        }
+
+      class Funding < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor created: Time
+
+        attr_accessor last_four: String
+
+        attr_accessor state: Lithic::Models::CardSearchByPanResponse::Funding::state
+
+        attr_accessor type: Lithic::Models::CardSearchByPanResponse::Funding::type_
+
+        attr_reader account_name: String?
+
+        def account_name=: (String) -> String
+
+        attr_reader nickname: String?
+
+        def nickname=: (String) -> String
+
+        def initialize: (
+          token: String,
+          created: Time,
+          last_four: String,
+          state: Lithic::Models::CardSearchByPanResponse::Funding::state,
+          type: Lithic::Models::CardSearchByPanResponse::Funding::type_,
+          ?account_name: String,
+          ?nickname: String
+        ) -> void
+
+        def to_hash: -> Lithic::Models::CardSearchByPanResponse::funding
+
+        type state = :DELETED | :ENABLED | :PENDING
+
+        module State
+          extend Lithic::Internal::Type::Enum
+
+          DELETED: :DELETED
+          ENABLED: :ENABLED
+          PENDING: :PENDING
+
+          def self?.values: -> ::Array[Lithic::Models::CardSearchByPanResponse::Funding::state]
+        end
+
+        type type_ = :DEPOSITORY_CHECKING | :DEPOSITORY_SAVINGS
+
+        module Type
+          extend Lithic::Internal::Type::Enum
+
+          DEPOSITORY_CHECKING: :DEPOSITORY_CHECKING
+          DEPOSITORY_SAVINGS: :DEPOSITORY_SAVINGS
+
+          def self?.values: -> ::Array[Lithic::Models::CardSearchByPanResponse::Funding::type_]
+        end
+      end
+
+      type pin_status = :OK | :BLOCKED | :NOT_SET
+
+      module PinStatus
+        extend Lithic::Internal::Type::Enum
+
+        OK: :OK
+        BLOCKED: :BLOCKED
+        NOT_SET: :NOT_SET
+
+        def self?.values: -> ::Array[Lithic::Models::CardSearchByPanResponse::pin_status]
+      end
+
+      type spend_limit_duration =
+        :ANNUALLY | :FOREVER | :MONTHLY | :TRANSACTION | :DAILY
+
+      module SpendLimitDuration
+        extend Lithic::Internal::Type::Enum
+
+        ANNUALLY: :ANNUALLY
+        FOREVER: :FOREVER
+        MONTHLY: :MONTHLY
+        TRANSACTION: :TRANSACTION
+        DAILY: :DAILY
+
+        def self?.values: -> ::Array[Lithic::Models::CardSearchByPanResponse::spend_limit_duration]
+      end
+
+      type state =
+        :CLOSED | :OPEN | :PAUSED | :PENDING_ACTIVATION | :PENDING_FULFILLMENT
+
+      module State
+        extend Lithic::Internal::Type::Enum
+
+        CLOSED: :CLOSED
+        OPEN: :OPEN
+        PAUSED: :PAUSED
+        PENDING_ACTIVATION: :PENDING_ACTIVATION
+        PENDING_FULFILLMENT: :PENDING_FULFILLMENT
+
+        def self?.values: -> ::Array[Lithic::Models::CardSearchByPanResponse::state]
+      end
+
+      type type_ =
+        :MERCHANT_LOCKED
+        | :PHYSICAL
+        | :SINGLE_USE
+        | :VIRTUAL
+        | :UNLOCKED
+        | :DIGITAL_WALLET
+
+      module Type
+        extend Lithic::Internal::Type::Enum
+
+        MERCHANT_LOCKED: :MERCHANT_LOCKED
+        PHYSICAL: :PHYSICAL
+        SINGLE_USE: :SINGLE_USE
+        VIRTUAL: :VIRTUAL
+        UNLOCKED: :UNLOCKED
+        DIGITAL_WALLET: :DIGITAL_WALLET
+
+        def self?.values: -> ::Array[Lithic::Models::CardSearchByPanResponse::type_]
+      end
+    end
+  end
+end

@@ -13,8 +13,7 @@ module Lithic
       required :token, String
 
       # @!attribute created
-      #   Timestamp of when the account was created. For accounts created before
-      #   2023-05-11, this field will be null.
+      #   Timestamp of when the account was created.
       #
       #   @return [Time, nil]
       required :created, Time, nil?: true

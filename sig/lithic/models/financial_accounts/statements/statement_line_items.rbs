@@ -96,6 +96,7 @@ module Lithic
               | :MANAGEMENT_DISPUTE
               | :MANAGEMENT_FEE
               | :MANAGEMENT_REWARD
+              | :MANAGEMENT_DISBURSEMENT
 
             module Category
               extend Lithic::Internal::Type::Enum
@@ -111,6 +112,7 @@ module Lithic
               MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
               MANAGEMENT_FEE: :MANAGEMENT_FEE
               MANAGEMENT_REWARD: :MANAGEMENT_REWARD
+              MANAGEMENT_DISBURSEMENT: :MANAGEMENT_DISBURSEMENT
 
               def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::category]
             end
@@ -181,6 +183,7 @@ module Lithic
               | :TRANSFER_INSUFFICIENT_FUNDS
               | :RETURNED_PAYMENT
               | :RETURNED_PAYMENT_REVERSAL
+              | :LITHIC_NETWORK_PAYMENT
 
             module EventType
               extend Lithic::Internal::Type::Enum
@@ -250,6 +253,7 @@ module Lithic
               TRANSFER_INSUFFICIENT_FUNDS: :TRANSFER_INSUFFICIENT_FUNDS
               RETURNED_PAYMENT: :RETURNED_PAYMENT
               RETURNED_PAYMENT_REVERSAL: :RETURNED_PAYMENT_REVERSAL
+              LITHIC_NETWORK_PAYMENT: :LITHIC_NETWORK_PAYMENT
 
               def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::event_type]
             end

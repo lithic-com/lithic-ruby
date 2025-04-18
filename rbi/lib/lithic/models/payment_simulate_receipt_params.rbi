@@ -6,7 +6,7 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      # Payment token
+      # Customer-generated payment token used to uniquely identify the simulated payment
       sig { returns(String) }
       attr_accessor :token
 

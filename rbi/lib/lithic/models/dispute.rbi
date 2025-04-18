@@ -74,10 +74,6 @@ module Lithic
       sig { returns(T.nilable(Time)) }
       attr_accessor :representment_date
 
-      # Resolution amount net of network fees.
-      sig { returns(T.nilable(Integer)) }
-      attr_accessor :resolution_amount
-
       # Date that the dispute was resolved.
       sig { returns(T.nilable(Time)) }
       attr_accessor :resolution_date
@@ -143,7 +139,6 @@ module Lithic
           primary_claim_id: T.nilable(String),
           reason: Lithic::Models::Dispute::Reason::OrSymbol,
           representment_date: T.nilable(Time),
-          resolution_amount: T.nilable(Integer),
           resolution_date: T.nilable(Time),
           resolution_note: T.nilable(String),
           resolution_reason: T.nilable(Lithic::Models::Dispute::ResolutionReason::OrSymbol),
@@ -166,7 +161,6 @@ module Lithic
         primary_claim_id:,
         reason:,
         representment_date:,
-        resolution_amount:,
         resolution_date:,
         resolution_note:,
         resolution_reason:,
@@ -190,7 +184,6 @@ module Lithic
               primary_claim_id: T.nilable(String),
               reason: Lithic::Models::Dispute::Reason::TaggedSymbol,
               representment_date: T.nilable(Time),
-              resolution_amount: T.nilable(Integer),
               resolution_date: T.nilable(Time),
               resolution_note: T.nilable(String),
               resolution_reason: T.nilable(Lithic::Models::Dispute::ResolutionReason::TaggedSymbol),

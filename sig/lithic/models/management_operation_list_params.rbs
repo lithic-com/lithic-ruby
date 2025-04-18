@@ -78,6 +78,7 @@ module Lithic
         | :MANAGEMENT_DISPUTE
         | :MANAGEMENT_REWARD
         | :MANAGEMENT_ADJUSTMENT
+        | :MANAGEMENT_DISBURSEMENT
 
       module Category
         extend Lithic::Internal::Type::Enum
@@ -86,6 +87,7 @@ module Lithic
         MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
         MANAGEMENT_REWARD: :MANAGEMENT_REWARD
         MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
+        MANAGEMENT_DISBURSEMENT: :MANAGEMENT_DISBURSEMENT
 
         def self?.values: -> ::Array[Lithic::Models::ManagementOperationListParams::category]
       end
