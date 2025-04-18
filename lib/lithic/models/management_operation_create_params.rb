@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::ManagementOperations#create
     class ManagementOperationCreateParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute amount
@@ -38,41 +37,25 @@ module Lithic
       #   @return [String]
       required :financial_account_token, String
 
-      # @!attribute [r] token
+      # @!attribute token
       #
       #   @return [String, nil]
       optional :token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :token
-
-      # @!attribute [r] memo
+      # @!attribute memo
       #
       #   @return [String, nil]
       optional :memo, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :memo
-
-      # @!attribute [r] subtype
+      # @!attribute subtype
       #
       #   @return [String, nil]
       optional :subtype, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :subtype
-
-      # @!attribute [r] user_defined_id
+      # @!attribute user_defined_id
       #
       #   @return [String, nil]
       optional :user_defined_id, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :user_defined_id
 
       # @!method initialize(amount:, category:, direction:, effective_date:, event_type:, financial_account_token:, token: nil, memo: nil, subtype: nil, user_defined_id: nil, request_options: {})
       #   @param amount [Integer]

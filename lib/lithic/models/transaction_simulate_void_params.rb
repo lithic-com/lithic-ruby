@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Transactions#simulate_void
     class TransactionSimulateVoidParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute token
@@ -14,18 +13,14 @@ module Lithic
       #   @return [String]
       required :token, String
 
-      # @!attribute [r] amount
+      # @!attribute amount
       #   Amount (in cents) to void. Typically this will match the amount in the original
       #   authorization, but can be less.
       #
       #   @return [Integer, nil]
       optional :amount, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :amount
-
-      # @!attribute [r] type
+      # @!attribute type
       #   Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`.
       #
       #   - `AUTHORIZATION_EXPIRY` indicates authorization has expired and been reversed
@@ -34,10 +29,6 @@ module Lithic
       #
       #   @return [Symbol, Lithic::Models::TransactionSimulateVoidParams::Type, nil]
       optional :type, enum: -> { Lithic::Models::TransactionSimulateVoidParams::Type }
-
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::TransactionSimulateVoidParams::Type]
-      #   attr_writer :type
 
       # @!method initialize(token:, amount: nil, type: nil, request_options: {})
       #   @param token [String]

@@ -130,15 +130,11 @@ module Lithic
         #   @return [Lithic::Models::FinancialAccounts::LoanTape::YtdTotals]
         required :ytd_totals, -> { Lithic::Models::FinancialAccounts::LoanTape::YtdTotals }
 
-        # @!attribute [r] tier
+        # @!attribute tier
         #   Interest tier to which this account belongs to
         #
         #   @return [String, nil]
         optional :tier, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :tier
 
         # @!method initialize(token:, account_standing:, available_credit:, balances:, created:, credit_limit:, credit_product_token:, date:, day_totals:, ending_balance:, excess_credits:, financial_account_token:, interest_details:, minimum_payment_balance:, payment_allocation:, period_totals:, previous_statement_balance:, starting_balance:, updated:, version:, ytd_totals:, tier: nil)
         #   @param token [String]

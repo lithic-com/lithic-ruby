@@ -70,15 +70,11 @@ module Lithic
           #   @return [Time]
           required :updated, Time
 
-          # @!attribute [r] cycle
+          # @!attribute cycle
           #   The clearing cycle that the network total record applies to. Mastercard only.
           #
           #   @return [Integer, nil]
           optional :cycle, Integer
-
-          # @!parse
-          #   # @return [Integer]
-          #   attr_writer :cycle
 
           # @!method initialize(token:, amounts:, created:, currency:, institution_id:, network:, report_date:, settlement_institution_id:, settlement_service:, updated:, cycle: nil)
           #   @param token [String]
@@ -114,15 +110,11 @@ module Lithic
             #   @return [Integer]
             required :net_settlement, Integer
 
-            # @!attribute [r] visa_charges
+            # @!attribute visa_charges
             #   Charges specific to Visa/Interlink, in currency's smallest unit.
             #
             #   @return [Integer, nil]
             optional :visa_charges, Integer
-
-            # @!parse
-            #   # @return [Integer]
-            #   attr_writer :visa_charges
 
             # @!method initialize(gross_settlement:, interchange_fees:, net_settlement:, visa_charges: nil)
             #   @param gross_settlement [Integer]

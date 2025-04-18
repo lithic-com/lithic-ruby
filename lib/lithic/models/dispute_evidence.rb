@@ -34,36 +34,24 @@ module Lithic
       #   @return [Symbol, Lithic::Models::DisputeEvidence::UploadStatus]
       required :upload_status, enum: -> { Lithic::Models::DisputeEvidence::UploadStatus }
 
-      # @!attribute [r] download_url
+      # @!attribute download_url
       #   URL to download evidence. Only shown when `upload_status` is `UPLOADED`.
       #
       #   @return [String, nil]
       optional :download_url, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :download_url
-
-      # @!attribute [r] filename
+      # @!attribute filename
       #   File name of evidence. Recommended to give the dispute evidence a human-readable
       #   identifier.
       #
       #   @return [String, nil]
       optional :filename, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :filename
-
-      # @!attribute [r] upload_url
+      # @!attribute upload_url
       #   URL to upload evidence. Only shown when `upload_status` is `PENDING`.
       #
       #   @return [String, nil]
       optional :upload_url, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :upload_url
 
       # @!method initialize(token:, created:, dispute_token:, upload_status:, download_url: nil, filename: nil, upload_url: nil)
       #   Dispute evidence.

@@ -4,29 +4,20 @@ module Lithic
   module Models
     # @see Lithic::Resources::ResponderEndpoints#create
     class ResponderEndpointCreateParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      # @!attribute [r] type
+      # @!attribute type
       #   The type of the endpoint.
       #
       #   @return [Symbol, Lithic::Models::ResponderEndpointCreateParams::Type, nil]
       optional :type, enum: -> { Lithic::Models::ResponderEndpointCreateParams::Type }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::ResponderEndpointCreateParams::Type]
-      #   attr_writer :type
-
-      # @!attribute [r] url
+      # @!attribute url
       #   The URL for the responder endpoint (must be http(s)).
       #
       #   @return [String, nil]
       optional :url, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :url
 
       # @!method initialize(type: nil, url: nil, request_options: {})
       #   @param type [Symbol, Lithic::Models::ResponderEndpointCreateParams::Type]

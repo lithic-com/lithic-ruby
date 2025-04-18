@@ -4,20 +4,15 @@ module Lithic
   module Models
     # @see Lithic::Resources::AggregateBalances#list
     class AggregateBalanceListParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      # @!attribute [r] financial_account_type
+      # @!attribute financial_account_type
       #   Get the aggregate balance for a given Financial Account type.
       #
       #   @return [Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType, nil]
       optional :financial_account_type,
                enum: -> { Lithic::Models::AggregateBalanceListParams::FinancialAccountType }
-
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType]
-      #   attr_writer :financial_account_type
 
       # @!method initialize(financial_account_type: nil, request_options: {})
       #   @param financial_account_type [Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType]

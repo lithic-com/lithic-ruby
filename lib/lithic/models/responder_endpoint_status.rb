@@ -4,15 +4,11 @@ module Lithic
   module Models
     # @see Lithic::Resources::ResponderEndpoints#check_status
     class ResponderEndpointStatus < Lithic::Internal::Type::BaseModel
-      # @!attribute [r] enrolled
+      # @!attribute enrolled
       #   True if the instance has an endpoint enrolled.
       #
       #   @return [Boolean, nil]
       optional :enrolled, Lithic::Internal::Type::Boolean
-
-      # @!parse
-      #   # @return [Boolean]
-      #   attr_writer :enrolled
 
       # @!attribute url
       #   The URL of the currently enrolled endpoint or null.

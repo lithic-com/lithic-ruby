@@ -16,28 +16,20 @@ module Lithic
       #   @return [Time]
       required :created, Time
 
-      # @!attribute [r] account_token
+      # @!attribute account_token
       #   Globally unique identifier for the account.
       #
       #   @return [String, nil]
       optional :account_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :account_token
-
-      # @!attribute [r] beneficial_owner_entities
+      # @!attribute beneficial_owner_entities
       #   Deprecated.
       #
       #   @return [Array<Lithic::Models::AccountHolder::BeneficialOwnerEntity>, nil]
       optional :beneficial_owner_entities,
                -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerEntity] }
 
-      # @!parse
-      #   # @return [Array<Lithic::Models::AccountHolder::BeneficialOwnerEntity>]
-      #   attr_writer :beneficial_owner_entities
-
-      # @!attribute [r] beneficial_owner_individuals
+      # @!attribute beneficial_owner_individuals
       #   Only present when user_type == "BUSINESS". List of all direct and indirect
       #   individuals with 25% or more ownership in the company. If no individual owns 25%
       #   of the company, please identify the largest shareholder in this field. See
@@ -48,11 +40,7 @@ module Lithic
       optional :beneficial_owner_individuals,
                -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerIndividual] }
 
-      # @!parse
-      #   # @return [Array<Lithic::Models::AccountHolder::BeneficialOwnerIndividual>]
-      #   attr_writer :beneficial_owner_individuals
-
-      # @!attribute [r] business_account_token
+      # @!attribute business_account_token
       #   Only applicable for customers using the KYC-Exempt workflow to enroll authorized
       #   users of businesses. Pass the account_token of the enrolled business associated
       #   with the AUTHORIZED_USER in this field.
@@ -60,22 +48,14 @@ module Lithic
       #   @return [String, nil]
       optional :business_account_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :business_account_token
-
-      # @!attribute [r] business_entity
+      # @!attribute business_entity
       #   Only present when user_type == "BUSINESS". Information about the business for
       #   which the account is being opened and KYB is being run.
       #
       #   @return [Lithic::Models::AccountHolder::BusinessEntity, nil]
       optional :business_entity, -> { Lithic::Models::AccountHolder::BusinessEntity }
 
-      # @!parse
-      #   # @return [Lithic::Models::AccountHolder::BusinessEntity]
-      #   attr_writer :business_entity
-
-      # @!attribute [r] control_person
+      # @!attribute control_person
       #   Only present when user_type == "BUSINESS". An individual with significant
       #   responsibility for managing the legal entity (e.g., a Chief Executive Officer,
       #   Chief Financial Officer, Chief Operating Officer, Managing Member, General
@@ -86,11 +66,7 @@ module Lithic
       #   @return [Lithic::Models::AccountHolder::ControlPerson, nil]
       optional :control_person, -> { Lithic::Models::AccountHolder::ControlPerson }
 
-      # @!parse
-      #   # @return [Lithic::Models::AccountHolder::ControlPerson]
-      #   attr_writer :control_person
-
-      # @!attribute [r] email
+      # @!attribute email
       #   < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
       #   individual.phone_number when user_type == "INDIVIDUAL".
       #
@@ -99,54 +75,34 @@ module Lithic
       #   @return [String, nil]
       optional :email, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :email
-
-      # @!attribute [r] exemption_type
+      # @!attribute exemption_type
       #   The type of KYC exemption for a KYC-Exempt Account Holder.
       #
       #   @return [Symbol, Lithic::Models::AccountHolder::ExemptionType, nil]
       optional :exemption_type, enum: -> { Lithic::Models::AccountHolder::ExemptionType }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::AccountHolder::ExemptionType]
-      #   attr_writer :exemption_type
-
-      # @!attribute [r] external_id
+      # @!attribute external_id
       #   Customer-provided token that indicates a relationship with an object outside of
       #   the Lithic ecosystem.
       #
       #   @return [String, nil]
       optional :external_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :external_id
-
-      # @!attribute [r] individual
+      # @!attribute individual
       #   Only present when user_type == "INDIVIDUAL". Information about the individual
       #   for which the account is being opened and KYC is being run.
       #
       #   @return [Lithic::Models::AccountHolder::Individual, nil]
       optional :individual, -> { Lithic::Models::AccountHolder::Individual }
 
-      # @!parse
-      #   # @return [Lithic::Models::AccountHolder::Individual]
-      #   attr_writer :individual
-
-      # @!attribute [r] nature_of_business
+      # @!attribute nature_of_business
       #   Only present when user_type == "BUSINESS". User-submitted description of the
       #   business.
       #
       #   @return [String, nil]
       optional :nature_of_business, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :nature_of_business
-
-      # @!attribute [r] phone_number
+      # @!attribute phone_number
       #   < Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
       #   individual.phone_number when user_type == "INDIVIDUAL".
       #
@@ -155,22 +111,14 @@ module Lithic
       #   @return [String, nil]
       optional :phone_number, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :phone_number
-
-      # @!attribute [r] required_documents
+      # @!attribute required_documents
       #   Only present for "KYB_BASIC" workflow. A list of documents required for the
       #   account holder to be approved.
       #
       #   @return [Array<Lithic::Models::RequiredDocument>, nil]
       optional :required_documents, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument] }
 
-      # @!parse
-      #   # @return [Array<Lithic::Models::RequiredDocument>]
-      #   attr_writer :required_documents
-
-      # @!attribute [r] status
+      # @!attribute status
       #   <Deprecated. Use verification_application.status instead>
       #
       #   KYC and KYB evaluation states.
@@ -182,11 +130,7 @@ module Lithic
       #   @return [Symbol, Lithic::Models::AccountHolder::Status, nil]
       optional :status, enum: -> { Lithic::Models::AccountHolder::Status }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::AccountHolder::Status]
-      #   attr_writer :status
-
-      # @!attribute [r] status_reasons
+      # @!attribute status_reasons
       #   <Deprecated. Use verification_application.status_reasons> Reason for the
       #   evaluation status.
       #
@@ -194,11 +138,7 @@ module Lithic
       optional :status_reasons,
                -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolder::StatusReason] }
 
-      # @!parse
-      #   # @return [Array<Symbol, Lithic::Models::AccountHolder::StatusReason>]
-      #   attr_writer :status_reasons
-
-      # @!attribute [r] user_type
+      # @!attribute user_type
       #   The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
       #   attribute will be present. If the type is "BUSINESS" then the "business_entity",
       #   "control_person", "beneficial_owner_individuals", "nature_of_business", and
@@ -207,29 +147,17 @@ module Lithic
       #   @return [Symbol, Lithic::Models::AccountHolder::UserType, nil]
       optional :user_type, enum: -> { Lithic::Models::AccountHolder::UserType }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::AccountHolder::UserType]
-      #   attr_writer :user_type
-
-      # @!attribute [r] verification_application
+      # @!attribute verification_application
       #   Information about the most recent identity verification attempt
       #
       #   @return [Lithic::Models::AccountHolder::VerificationApplication, nil]
       optional :verification_application, -> { Lithic::Models::AccountHolder::VerificationApplication }
 
-      # @!parse
-      #   # @return [Lithic::Models::AccountHolder::VerificationApplication]
-      #   attr_writer :verification_application
-
-      # @!attribute [r] website_url
+      # @!attribute website_url
       #   Only present when user_type == "BUSINESS". Business's primary website.
       #
       #   @return [String, nil]
       optional :website_url, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :website_url
 
       # @!method initialize(token:, created:, account_token: nil, beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_account_token: nil, business_entity: nil, control_person: nil, email: nil, exemption_type: nil, external_id: nil, individual: nil, nature_of_business: nil, phone_number: nil, required_documents: nil, status: nil, status_reasons: nil, user_type: nil, verification_application: nil, website_url: nil)
       #   @param token [String]
@@ -295,15 +223,11 @@ module Lithic
         #   @return [Array<String>]
         required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
-        # @!attribute [r] parent_company
+        # @!attribute parent_company
         #   Parent company name (if applicable).
         #
         #   @return [String, nil]
         optional :parent_company, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :parent_company
 
         # @!method initialize(address:, dba_business_name:, entity_token:, government_id:, legal_business_name:, phone_numbers:, parent_company: nil)
         #   @param address [Lithic::Models::Address]
@@ -415,15 +339,11 @@ module Lithic
         #   @return [Array<String>]
         required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
-        # @!attribute [r] parent_company
+        # @!attribute parent_company
         #   Parent company name (if applicable).
         #
         #   @return [String, nil]
         optional :parent_company, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :parent_company
 
         # @!method initialize(address:, dba_business_name:, entity_token:, government_id:, legal_business_name:, phone_numbers:, parent_company: nil)
         #   Only present when user_type == "BUSINESS". Information about the business for
@@ -628,17 +548,13 @@ module Lithic
 
       # @see Lithic::Models::AccountHolder#verification_application
       class VerificationApplication < Lithic::Internal::Type::BaseModel
-        # @!attribute [r] created
+        # @!attribute created
         #   Timestamp of when the application was created.
         #
         #   @return [Time, nil]
         optional :created, Time
 
-        # @!parse
-        #   # @return [Time]
-        #   attr_writer :created
-
-        # @!attribute [r] status
+        # @!attribute status
         #   KYC and KYB evaluation states.
         #
         #   Note:
@@ -648,30 +564,18 @@ module Lithic
         #   @return [Symbol, Lithic::Models::AccountHolder::VerificationApplication::Status, nil]
         optional :status, enum: -> { Lithic::Models::AccountHolder::VerificationApplication::Status }
 
-        # @!parse
-        #   # @return [Symbol, Lithic::Models::AccountHolder::VerificationApplication::Status]
-        #   attr_writer :status
-
-        # @!attribute [r] status_reasons
+        # @!attribute status_reasons
         #   Reason for the evaluation status.
         #
         #   @return [Array<Symbol, Lithic::Models::AccountHolder::VerificationApplication::StatusReason>, nil]
         optional :status_reasons,
                  -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolder::VerificationApplication::StatusReason] }
 
-        # @!parse
-        #   # @return [Array<Symbol, Lithic::Models::AccountHolder::VerificationApplication::StatusReason>]
-        #   attr_writer :status_reasons
-
-        # @!attribute [r] updated
+        # @!attribute updated
         #   Timestamp of when the application was last updated.
         #
         #   @return [Time, nil]
         optional :updated, Time
-
-        # @!parse
-        #   # @return [Time]
-        #   attr_writer :updated
 
         # @!method initialize(created: nil, status: nil, status_reasons: nil, updated: nil)
         #   Information about the most recent identity verification attempt

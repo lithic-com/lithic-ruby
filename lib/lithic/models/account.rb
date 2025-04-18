@@ -45,16 +45,12 @@ module Lithic
       #   @return [Symbol, Lithic::Models::Account::State]
       required :state, enum: -> { Lithic::Models::Account::State }
 
-      # @!attribute [r] account_holder
+      # @!attribute account_holder
       #
       #   @return [Lithic::Models::Account::AccountHolder, nil]
       optional :account_holder, -> { Lithic::Models::Account::AccountHolder }
 
-      # @!parse
-      #   # @return [Lithic::Models::Account::AccountHolder]
-      #   attr_writer :account_holder
-
-      # @!attribute [r] auth_rule_tokens
+      # @!attribute auth_rule_tokens
       #   List of identifiers for the Auth Rule(s) that are applied on the account. This
       #   field is deprecated and will no longer be populated in the `account_holder`
       #   object. The key will be removed from the schema in a future release. Use the
@@ -63,28 +59,16 @@ module Lithic
       #   @return [Array<String>, nil]
       optional :auth_rule_tokens, Lithic::Internal::Type::ArrayOf[String]
 
-      # @!parse
-      #   # @return [Array<String>]
-      #   attr_writer :auth_rule_tokens
-
-      # @!attribute [r] cardholder_currency
+      # @!attribute cardholder_currency
       #   3-character alphabetic ISO 4217 code for the currency of the cardholder.
       #
       #   @return [String, nil]
       optional :cardholder_currency, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :cardholder_currency
-
-      # @!attribute [r] verification_address
+      # @!attribute verification_address
       #
       #   @return [Lithic::Models::Account::VerificationAddress, nil]
       optional :verification_address, -> { Lithic::Models::Account::VerificationAddress }
-
-      # @!parse
-      #   # @return [Lithic::Models::Account::VerificationAddress]
-      #   attr_writer :verification_address
 
       # @!method initialize(token:, created:, spend_limit:, state:, account_holder: nil, auth_rule_tokens: nil, cardholder_currency: nil, verification_address: nil)
       #   @param token [String]
@@ -224,15 +208,11 @@ module Lithic
         #   @return [String]
         required :state, String
 
-        # @!attribute [r] address2
+        # @!attribute address2
         #   Unit or apartment number (if applicable).
         #
         #   @return [String, nil]
         optional :address2, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :address2
 
         # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
         #   @param address1 [String]

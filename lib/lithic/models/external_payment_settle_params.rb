@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::ExternalPayments#settle
     class ExternalPaymentSettleParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute effective_date
@@ -13,23 +12,15 @@ module Lithic
       #   @return [Date]
       required :effective_date, Date
 
-      # @!attribute [r] memo
+      # @!attribute memo
       #
       #   @return [String, nil]
       optional :memo, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :memo
-
-      # @!attribute [r] progress_to
+      # @!attribute progress_to
       #
       #   @return [Symbol, Lithic::Models::ExternalPaymentSettleParams::ProgressTo, nil]
       optional :progress_to, enum: -> { Lithic::Models::ExternalPaymentSettleParams::ProgressTo }
-
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::ExternalPaymentSettleParams::ProgressTo]
-      #   attr_writer :progress_to
 
       # @!method initialize(effective_date:, memo: nil, progress_to: nil, request_options: {})
       #   @param effective_date [Date]

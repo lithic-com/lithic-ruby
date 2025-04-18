@@ -5,29 +5,20 @@ module Lithic
     module CreditProducts
       # @see Lithic::Resources::CreditProducts::PrimeRates#retrieve
       class PrimeRateRetrieveParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        # @!attribute [r] ending_before
+        # @!attribute ending_before
         #   The effective date that the prime rates ends before
         #
         #   @return [Date, nil]
         optional :ending_before, Date
 
-        # @!parse
-        #   # @return [Date]
-        #   attr_writer :ending_before
-
-        # @!attribute [r] starting_after
+        # @!attribute starting_after
         #   The effective date that the prime rate starts after
         #
         #   @return [Date, nil]
         optional :starting_after, Date
-
-        # @!parse
-        #   # @return [Date]
-        #   attr_writer :starting_after
 
         # @!method initialize(ending_before: nil, starting_after: nil, request_options: {})
         #   @param ending_before [Date]

@@ -4,21 +4,16 @@ module Lithic
   module Models
     # @see Lithic::Resources::Cards#reissue
     class CardReissueParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      # @!attribute [r] carrier
+      # @!attribute carrier
       #   If omitted, the previous carrier will be used.
       #
       #   @return [Lithic::Models::Carrier, nil]
       optional :carrier, -> { Lithic::Models::Carrier }
 
-      # @!parse
-      #   # @return [Lithic::Models::Carrier]
-      #   attr_writer :carrier
-
-      # @!attribute [r] product_id
+      # @!attribute product_id
       #   Specifies the configuration (e.g. physical card art) that the card should be
       #   manufactured with, and only applies to cards of type `PHYSICAL`. This must be
       #   configured with Lithic before use.
@@ -26,21 +21,13 @@ module Lithic
       #   @return [String, nil]
       optional :product_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :product_id
-
-      # @!attribute [r] shipping_address
+      # @!attribute shipping_address
       #   If omitted, the previous shipping address will be used.
       #
       #   @return [Lithic::Models::ShippingAddress, nil]
       optional :shipping_address, -> { Lithic::Models::ShippingAddress }
 
-      # @!parse
-      #   # @return [Lithic::Models::ShippingAddress]
-      #   attr_writer :shipping_address
-
-      # @!attribute [r] shipping_method
+      # @!attribute shipping_method
       #   Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
       #   options besides `STANDARD` require additional permissions.
       #
@@ -56,10 +43,6 @@ module Lithic
       #
       #   @return [Symbol, Lithic::Models::CardReissueParams::ShippingMethod, nil]
       optional :shipping_method, enum: -> { Lithic::Models::CardReissueParams::ShippingMethod }
-
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::CardReissueParams::ShippingMethod]
-      #   attr_writer :shipping_method
 
       # @!method initialize(carrier: nil, product_id: nil, shipping_address: nil, shipping_method: nil, request_options: {})
       #   @param carrier [Lithic::Models::Carrier]

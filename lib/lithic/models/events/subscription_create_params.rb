@@ -5,8 +5,7 @@ module Lithic
     module Events
       # @see Lithic::Resources::Events::Subscriptions#create
       class SubscriptionCreateParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
         # @!attribute url
@@ -15,37 +14,25 @@ module Lithic
         #   @return [String]
         required :url, String
 
-        # @!attribute [r] description
+        # @!attribute description
         #   Event subscription description.
         #
         #   @return [String, nil]
         optional :description, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :description
-
-        # @!attribute [r] disabled
+        # @!attribute disabled
         #   Whether the event subscription is active (false) or inactive (true).
         #
         #   @return [Boolean, nil]
         optional :disabled, Lithic::Internal::Type::Boolean
 
-        # @!parse
-        #   # @return [Boolean]
-        #   attr_writer :disabled
-
-        # @!attribute [r] event_types
+        # @!attribute event_types
         #   Indicates types of events that will be sent to this subscription. If left blank,
         #   all types will be sent.
         #
         #   @return [Array<Symbol, Lithic::Models::Events::SubscriptionCreateParams::EventType>, nil]
         optional :event_types,
                  -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::Events::SubscriptionCreateParams::EventType] }
-
-        # @!parse
-        #   # @return [Array<Symbol, Lithic::Models::Events::SubscriptionCreateParams::EventType>]
-        #   attr_writer :event_types
 
         # @!method initialize(url:, description: nil, disabled: nil, event_types: nil, request_options: {})
         #   @param url [String]

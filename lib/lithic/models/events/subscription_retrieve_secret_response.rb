@@ -5,15 +5,11 @@ module Lithic
     module Events
       # @see Lithic::Resources::Events::Subscriptions#retrieve_secret
       class SubscriptionRetrieveSecretResponse < Lithic::Internal::Type::BaseModel
-        # @!attribute [r] secret
+        # @!attribute secret
         #   The secret for the event subscription.
         #
         #   @return [String, nil]
         optional :secret, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :secret
 
         # @!method initialize(secret: nil)
         #   @param secret [String]

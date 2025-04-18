@@ -118,7 +118,7 @@ module Lithic
       #   @return [Symbol, Lithic::Models::Card::Type]
       required :type, enum: -> { Lithic::Models::Card::Type }
 
-      # @!attribute [r] auth_rule_tokens
+      # @!attribute auth_rule_tokens
       #   List of identifiers for the Auth Rule(s) that are applied on the card. This
       #   field is deprecated and will no longer be populated in the `Card` object. The
       #   key will be removed from the schema in a future release. Use the `/auth_rules`
@@ -127,31 +127,19 @@ module Lithic
       #   @return [Array<String>, nil]
       optional :auth_rule_tokens, Lithic::Internal::Type::ArrayOf[String]
 
-      # @!parse
-      #   # @return [Array<String>]
-      #   attr_writer :auth_rule_tokens
-
-      # @!attribute [r] cardholder_currency
+      # @!attribute cardholder_currency
       #   3-character alphabetic ISO 4217 code for the currency of the cardholder.
       #
       #   @return [String, nil]
       optional :cardholder_currency, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :cardholder_currency
-
-      # @!attribute [r] cvv
+      # @!attribute cvv
       #   Three digit cvv printed on the back of the card.
       #
       #   @return [String, nil]
       optional :cvv, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :cvv
-
-      # @!attribute [r] digital_card_art_token
+      # @!attribute digital_card_art_token
       #   Specifies the digital card art to be displayed in the user’s digital wallet
       #   after tokenization. This artwork must be approved by Mastercard and configured
       #   by Lithic to use. See
@@ -160,51 +148,31 @@ module Lithic
       #   @return [String, nil]
       optional :digital_card_art_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :digital_card_art_token
-
-      # @!attribute [r] exp_month
+      # @!attribute exp_month
       #   Two digit (MM) expiry month.
       #
       #   @return [String, nil]
       optional :exp_month, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :exp_month
-
-      # @!attribute [r] exp_year
+      # @!attribute exp_year
       #   Four digit (yyyy) expiry year.
       #
       #   @return [String, nil]
       optional :exp_year, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :exp_year
-
-      # @!attribute [r] hostname
+      # @!attribute hostname
       #   Hostname of card’s locked merchant (will be empty if not applicable).
       #
       #   @return [String, nil]
       optional :hostname, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :hostname
-
-      # @!attribute [r] memo
+      # @!attribute memo
       #   Friendly name to identify the card.
       #
       #   @return [String, nil]
       optional :memo, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :memo
-
-      # @!attribute [r] pan
+      # @!attribute pan
       #   Primary Account Number (PAN) (i.e. the card number). Customers must be PCI
       #   compliant to have PAN returned as a field in production. Please contact
       #   [support@lithic.com](mailto:support@lithic.com) for questions.
@@ -212,11 +180,7 @@ module Lithic
       #   @return [String, nil]
       optional :pan, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :pan
-
-      # @!attribute [r] pending_commands
+      # @!attribute pending_commands
       #   Indicates if there are offline PIN changes pending card interaction with an
       #   offline PIN terminal. Possible commands are: CHANGE_PIN, UNBLOCK_PIN. Applicable
       #   only to cards issued in markets supporting offline PINs.
@@ -224,21 +188,13 @@ module Lithic
       #   @return [Array<String>, nil]
       optional :pending_commands, Lithic::Internal::Type::ArrayOf[String]
 
-      # @!parse
-      #   # @return [Array<String>]
-      #   attr_writer :pending_commands
-
-      # @!attribute [r] product_id
+      # @!attribute product_id
       #   Only applicable to cards of type `PHYSICAL`. This must be configured with Lithic
       #   before use. Specifies the configuration (i.e., physical card art) that the card
       #   should be manufactured with.
       #
       #   @return [String, nil]
       optional :product_id, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :product_id
 
       # @!attribute replacement_for
       #   If the card is a replacement for another card, the globally unique identifier
@@ -317,25 +273,17 @@ module Lithic
         #   @return [Symbol, Lithic::Models::Card::Funding::Type]
         required :type, enum: -> { Lithic::Models::Card::Funding::Type }
 
-        # @!attribute [r] account_name
+        # @!attribute account_name
         #   Account name identifying the funding source. This may be `null`.
         #
         #   @return [String, nil]
         optional :account_name, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :account_name
-
-        # @!attribute [r] nickname
+        # @!attribute nickname
         #   The nickname given to the `FundingAccount` or `null` if it has no nickname.
         #
         #   @return [String, nil]
         optional :nickname, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :nickname
 
         # @!method initialize(token:, created:, last_four:, state:, type:, account_name: nil, nickname: nil)
         #   Deprecated: Funding account for the card.

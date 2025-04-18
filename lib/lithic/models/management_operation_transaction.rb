@@ -72,14 +72,10 @@ module Lithic
       #   @return [Time]
       required :updated, Time
 
-      # @!attribute [r] user_defined_id
+      # @!attribute user_defined_id
       #
       #   @return [String, nil]
       optional :user_defined_id, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :user_defined_id
 
       # @!method initialize(token:, category:, created:, currency:, direction:, events:, financial_account_token:, pending_amount:, result:, settled_amount:, status:, transaction_series:, updated:, user_defined_id: nil)
       #   @param token [String]
@@ -163,14 +159,10 @@ module Lithic
         #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Event::Type]
         required :type, enum: -> { Lithic::Models::ManagementOperationTransaction::Event::Type }
 
-        # @!attribute [r] subtype
+        # @!attribute subtype
         #
         #   @return [String, nil]
         optional :subtype, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :subtype
 
         # @!method initialize(token:, amount:, created:, detailed_results:, effective_date:, memo:, result:, type:, subtype: nil)
         #   @param token [String]

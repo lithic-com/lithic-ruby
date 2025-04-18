@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Disputes#create
     class DisputeCreateParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute amount
@@ -26,25 +25,17 @@ module Lithic
       #   @return [String]
       required :transaction_token, String
 
-      # @!attribute [r] customer_filed_date
+      # @!attribute customer_filed_date
       #   Date the customer filed the dispute
       #
       #   @return [Time, nil]
       optional :customer_filed_date, Time
 
-      # @!parse
-      #   # @return [Time]
-      #   attr_writer :customer_filed_date
-
-      # @!attribute [r] customer_note
+      # @!attribute customer_note
       #   Customer description of dispute
       #
       #   @return [String, nil]
       optional :customer_note, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :customer_note
 
       # @!method initialize(amount:, reason:, transaction_token:, customer_filed_date: nil, customer_note: nil, request_options: {})
       #   @param amount [Integer]

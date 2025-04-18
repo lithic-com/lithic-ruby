@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Payments#create
     class PaymentCreateParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute amount
@@ -38,34 +37,22 @@ module Lithic
       #   @return [Symbol, Lithic::Models::PaymentCreateParams::Type]
       required :type, enum: -> { Lithic::Models::PaymentCreateParams::Type }
 
-      # @!attribute [r] token
+      # @!attribute token
       #   Customer-provided token that will serve as an idempotency token. This token will
       #   become the transaction token.
       #
       #   @return [String, nil]
       optional :token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :token
-
-      # @!attribute [r] memo
+      # @!attribute memo
       #
       #   @return [String, nil]
       optional :memo, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :memo
-
-      # @!attribute [r] user_defined_id
+      # @!attribute user_defined_id
       #
       #   @return [String, nil]
       optional :user_defined_id, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :user_defined_id
 
       # @!method initialize(amount:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, type:, token: nil, memo: nil, user_defined_id: nil, request_options: {})
       #   @param amount [Integer]

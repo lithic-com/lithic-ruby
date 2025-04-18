@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Disputes#delete_evidence
     class DisputeDeleteEvidenceParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute dispute_token

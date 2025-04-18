@@ -24,18 +24,14 @@ module Lithic
       #   @return [Symbol, Lithic::Models::KYC::Workflow]
       required :workflow, enum: -> { Lithic::Models::KYC::Workflow }
 
-      # @!attribute [r] external_id
+      # @!attribute external_id
       #   A user provided id that can be used to link an account holder with an external
       #   system
       #
       #   @return [String, nil]
       optional :external_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :external_id
-
-      # @!attribute [r] kyc_passed_timestamp
+      # @!attribute kyc_passed_timestamp
       #   An RFC 3339 timestamp indicating when precomputed KYC was completed on the
       #   individual with a pass result.
       #
@@ -43,10 +39,6 @@ module Lithic
       #
       #   @return [String, nil]
       optional :kyc_passed_timestamp, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :kyc_passed_timestamp
 
       # @!method initialize(individual:, tos_timestamp:, workflow:, external_id: nil, kyc_passed_timestamp: nil)
       #   @param individual [Lithic::Models::KYC::Individual]

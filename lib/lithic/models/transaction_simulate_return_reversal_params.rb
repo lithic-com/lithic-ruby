@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Transactions#simulate_return_reversal
     class TransactionSimulateReturnReversalParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute token

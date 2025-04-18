@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Transactions#simulate_authorization
     class TransactionSimulateAuthorizationParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute amount
@@ -30,7 +29,7 @@ module Lithic
       #   @return [String]
       required :pan, String
 
-      # @!attribute [r] mcc
+      # @!attribute mcc
       #   Merchant category code for the transaction to be simulated. A four-digit number
       #   listed in ISO 18245. Supported merchant category codes can be found
       #   [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
@@ -38,43 +37,27 @@ module Lithic
       #   @return [String, nil]
       optional :mcc, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :mcc
-
-      # @!attribute [r] merchant_acceptor_id
+      # @!attribute merchant_acceptor_id
       #   Unique identifier to identify the payment card acceptor.
       #
       #   @return [String, nil]
       optional :merchant_acceptor_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :merchant_acceptor_id
-
-      # @!attribute [r] merchant_amount
+      # @!attribute merchant_amount
       #   Amount of the transaction to be simulated in currency specified in
       #   merchant_currency, including any acquirer fees.
       #
       #   @return [Integer, nil]
       optional :merchant_amount, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :merchant_amount
-
-      # @!attribute [r] merchant_currency
+      # @!attribute merchant_currency
       #   3-character alphabetic ISO 4217 currency code. Note: Simulator only accepts USD,
       #   GBP, EUR and defaults to GBP if another ISO 4217 code is provided
       #
       #   @return [String, nil]
       optional :merchant_currency, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :merchant_currency
-
-      # @!attribute [r] partial_approval_capable
+      # @!attribute partial_approval_capable
       #   Set to true if the terminal is capable of partial approval otherwise false.
       #   Partial approval is when part of a transaction is approved and another payment
       #   must be used for the remainder.
@@ -82,21 +65,13 @@ module Lithic
       #   @return [Boolean, nil]
       optional :partial_approval_capable, Lithic::Internal::Type::Boolean
 
-      # @!parse
-      #   # @return [Boolean]
-      #   attr_writer :partial_approval_capable
-
-      # @!attribute [r] pin
+      # @!attribute pin
       #   Simulate entering a PIN. If omitted, PIN check will not be performed.
       #
       #   @return [String, nil]
       optional :pin, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :pin
-
-      # @!attribute [r] status
+      # @!attribute status
       #   Type of event to simulate.
       #
       #   - `AUTHORIZATION` is a dual message purchase authorization, meaning a subsequent
@@ -116,10 +91,6 @@ module Lithic
       #
       #   @return [Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status, nil]
       optional :status, enum: -> { Lithic::Models::TransactionSimulateAuthorizationParams::Status }
-
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status]
-      #   attr_writer :status
 
       # @!method initialize(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, merchant_amount: nil, merchant_currency: nil, partial_approval_capable: nil, pin: nil, status: nil, request_options: {})
       #   @param amount [Integer]

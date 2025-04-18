@@ -40,15 +40,11 @@ module Lithic
       #   @return [Symbol, Lithic::Models::DigitalCardArtAPI::Network]
       required :network, enum: -> { Lithic::Models::DigitalCardArtAPI::Network }
 
-      # @!attribute [r] is_card_program_default
+      # @!attribute is_card_program_default
       #   Whether the card art is the default card art to be added upon tokenization.
       #
       #   @return [Boolean, nil]
       optional :is_card_program_default, Lithic::Internal::Type::Boolean
-
-      # @!parse
-      #   # @return [Boolean]
-      #   attr_writer :is_card_program_default
 
       # @!method initialize(token:, card_program_token:, created:, description:, is_enabled:, network:, is_card_program_default: nil)
       #   @param token [String]

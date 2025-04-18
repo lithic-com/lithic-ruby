@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Events#retrieve
     class EventRetrieveParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!method initialize(request_options: {})

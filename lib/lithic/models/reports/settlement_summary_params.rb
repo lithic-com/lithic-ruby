@@ -5,8 +5,7 @@ module Lithic
     module Reports
       # @see Lithic::Resources::Reports::Settlement#summary
       class SettlementSummaryParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
         # @!method initialize(request_options: {})

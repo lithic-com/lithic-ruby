@@ -33,37 +33,25 @@ module Lithic
       required :status_reasons,
                -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolderCreateResponse::StatusReason] }
 
-      # @!attribute [r] created
+      # @!attribute created
       #   Timestamp of when the account holder was created.
       #
       #   @return [Time, nil]
       optional :created, Time
 
-      # @!parse
-      #   # @return [Time]
-      #   attr_writer :created
-
-      # @!attribute [r] external_id
+      # @!attribute external_id
       #   Customer-provided token that indicates a relationship with an object outside of
       #   the Lithic ecosystem.
       #
       #   @return [String, nil]
       optional :external_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :external_id
-
-      # @!attribute [r] required_documents
+      # @!attribute required_documents
       #   Only present for "KYB_BASIC" workflow. A list of documents required for the
       #   account holder to be approved.
       #
       #   @return [Array<Lithic::Models::RequiredDocument>, nil]
       optional :required_documents, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument] }
-
-      # @!parse
-      #   # @return [Array<Lithic::Models::RequiredDocument>]
-      #   attr_writer :required_documents
 
       # @!method initialize(token:, account_token:, status:, status_reasons:, created: nil, external_id: nil, required_documents: nil)
       #   @param token [String]

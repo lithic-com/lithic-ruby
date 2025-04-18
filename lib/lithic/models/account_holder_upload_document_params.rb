@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#upload_document
     class AccountHolderUploadDocumentParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute document_type

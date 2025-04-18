@@ -128,15 +128,11 @@ module Lithic
       #   @return [Time]
       required :updated, Time
 
-      # @!attribute [r] fee_description
+      # @!attribute fee_description
       #   Network's description of a fee, only present on records with type `FEE`.
       #
       #   @return [String, nil]
       optional :fee_description, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :fee_description
 
       # @!method initialize(token:, account_token:, card_program_token:, card_token:, created:, currency:, disputes_gross_amount:, event_tokens:, institution:, interchange_fee_extended_precision:, interchange_gross_amount:, network:, other_fees_details:, other_fees_gross_amount:, report_date:, settlement_date:, transaction_token:, transactions_gross_amount:, type:, updated:, fee_description: nil)
       #   @param token [String]
@@ -179,14 +175,10 @@ module Lithic
 
       # @see Lithic::Models::SettlementDetail#other_fees_details
       class OtherFeesDetails < Lithic::Internal::Type::BaseModel
-        # @!attribute [r] isa
+        # @!attribute isa
         #
         #   @return [Integer, nil]
         optional :isa, Integer, api_name: :ISA
-
-        # @!parse
-        #   # @return [Integer]
-        #   attr_writer :isa
 
         # @!method initialize(isa: nil)
         #   The total gross amount of other fees by type.
