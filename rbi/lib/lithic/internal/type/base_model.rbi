@@ -176,6 +176,7 @@ module Lithic
         def deconstruct_keys(keys); end
 
         class << self
+          # @api private
           sig { params(model: Lithic::Internal::Type::BaseModel).returns(Lithic::Internal::AnyHash) }
           def walk(model); end
         end

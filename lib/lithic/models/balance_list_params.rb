@@ -49,25 +49,12 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::BalanceListParams::FinancialAccountType]
       #   attr_writer :financial_account_type
 
-      # @!parse
-      #   # @param account_token [String]
-      #   # @param balance_date [Time]
-      #   # @param business_account_token [String]
-      #   # @param financial_account_type [Symbol, Lithic::Models::BalanceListParams::FinancialAccountType]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     account_token: nil,
-      #     balance_date: nil,
-      #     business_account_token: nil,
-      #     financial_account_type: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_token: nil, balance_date: nil, business_account_token: nil, financial_account_type: nil, request_options: {})
+      #   @param account_token [String]
+      #   @param balance_date [Time]
+      #   @param business_account_token [String]
+      #   @param financial_account_type [Symbol, Lithic::Models::BalanceListParams::FinancialAccountType]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # List balances for a given Financial Account type.
       module FinancialAccountType
@@ -77,11 +64,8 @@ module Lithic
         OPERATING = :OPERATING
         RESERVE = :RESERVE
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

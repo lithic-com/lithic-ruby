@@ -92,33 +92,16 @@ module Lithic
         #   # @return [Boolean]
         #   attr_writer :program_level
 
-        # @!parse
-        #   # @param token [String]
-        #   # @param state [Symbol, Lithic::Models::AuthRules::AuthRule::State]
-        #   # @param account_tokens [Array<String>]
-        #   # @param allowed_countries [Array<String>]
-        #   # @param allowed_mcc [Array<String>]
-        #   # @param blocked_countries [Array<String>]
-        #   # @param blocked_mcc [Array<String>]
-        #   # @param card_tokens [Array<String>]
-        #   # @param program_level [Boolean]
-        #   #
-        #   def initialize(
-        #     token:,
-        #     state:,
-        #     account_tokens: nil,
-        #     allowed_countries: nil,
-        #     allowed_mcc: nil,
-        #     blocked_countries: nil,
-        #     blocked_mcc: nil,
-        #     card_tokens: nil,
-        #     program_level: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, state:, account_tokens: nil, allowed_countries: nil, allowed_mcc: nil, blocked_countries: nil, blocked_mcc: nil, card_tokens: nil, program_level: nil)
+        #   @param token [String]
+        #   @param state [Symbol, Lithic::Models::AuthRules::AuthRule::State]
+        #   @param account_tokens [Array<String>]
+        #   @param allowed_countries [Array<String>]
+        #   @param allowed_mcc [Array<String>]
+        #   @param blocked_countries [Array<String>]
+        #   @param blocked_mcc [Array<String>]
+        #   @param card_tokens [Array<String>]
+        #   @param program_level [Boolean]
 
         # Indicates whether the Auth Rule is ACTIVE or INACTIVE
         #
@@ -129,11 +112,8 @@ module Lithic
           ACTIVE = :ACTIVE
           INACTIVE = :INACTIVE
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

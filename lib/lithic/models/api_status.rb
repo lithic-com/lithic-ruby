@@ -13,12 +13,8 @@ module Lithic
       #   # @return [String]
       #   attr_writer :message
 
-      # @!parse
-      #   # @param message [String]
-      #   #
-      #   def initialize(message: nil, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(message: nil)
+      #   @param message [String]
     end
   end
 end

@@ -83,37 +83,18 @@ module Lithic
       #   @return [Time]
       required :updated, Time
 
-      # @!parse
-      #   # @param created [Time]
-      #   # @param currency [String]
-      #   # @param details [Array<Lithic::Models::SettlementSummaryDetails>]
-      #   # @param disputes_gross_amount [Integer]
-      #   # @param interchange_gross_amount [Integer]
-      #   # @param is_complete [Boolean]
-      #   # @param other_fees_gross_amount [Integer]
-      #   # @param report_date [String]
-      #   # @param settled_net_amount [Integer]
-      #   # @param transactions_gross_amount [Integer]
-      #   # @param updated [Time]
-      #   #
-      #   def initialize(
-      #     created:,
-      #     currency:,
-      #     details:,
-      #     disputes_gross_amount:,
-      #     interchange_gross_amount:,
-      #     is_complete:,
-      #     other_fees_gross_amount:,
-      #     report_date:,
-      #     settled_net_amount:,
-      #     transactions_gross_amount:,
-      #     updated:,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(created:, currency:, details:, disputes_gross_amount:, interchange_gross_amount:, is_complete:, other_fees_gross_amount:, report_date:, settled_net_amount:, transactions_gross_amount:, updated:)
+      #   @param created [Time]
+      #   @param currency [String]
+      #   @param details [Array<Lithic::Models::SettlementSummaryDetails>]
+      #   @param disputes_gross_amount [Integer]
+      #   @param interchange_gross_amount [Integer]
+      #   @param is_complete [Boolean]
+      #   @param other_fees_gross_amount [Integer]
+      #   @param report_date [String]
+      #   @param settled_net_amount [Integer]
+      #   @param transactions_gross_amount [Integer]
+      #   @param updated [Time]
     end
   end
 end

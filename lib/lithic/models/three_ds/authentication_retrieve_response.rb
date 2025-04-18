@@ -179,55 +179,27 @@ module Lithic
                  -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction },
                  nil?: true
 
-        # @!parse
-        #   # @param token [String]
-        #   # @param account_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType, nil]
-        #   # @param authentication_result [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult]
-        #   # @param card_expiry_check [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck]
-        #   # @param card_token [String]
-        #   # @param cardholder [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder]
-        #   # @param channel [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel]
-        #   # @param created [Time]
-        #   # @param merchant [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant]
-        #   # @param message_category [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory]
-        #   # @param three_ds_requestor_challenge_indicator [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator]
-        #   # @param additional_data [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData, nil]
-        #   # @param app [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App]
-        #   # @param authentication_request_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType, nil]
-        #   # @param browser [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser]
-        #   # @param challenge_metadata [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata, nil]
-        #   # @param challenge_orchestrated_by [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy, nil]
-        #   # @param decision_made_by [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy, nil]
-        #   # @param three_ri_request_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType, nil]
-        #   # @param transaction [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction, nil]
-        #   #
-        #   def initialize(
-        #     token:,
-        #     account_type:,
-        #     authentication_result:,
-        #     card_expiry_check:,
-        #     card_token:,
-        #     cardholder:,
-        #     channel:,
-        #     created:,
-        #     merchant:,
-        #     message_category:,
-        #     three_ds_requestor_challenge_indicator:,
-        #     additional_data: nil,
-        #     app: nil,
-        #     authentication_request_type: nil,
-        #     browser: nil,
-        #     challenge_metadata: nil,
-        #     challenge_orchestrated_by: nil,
-        #     decision_made_by: nil,
-        #     three_ri_request_type: nil,
-        #     transaction: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, account_type:, authentication_result:, card_expiry_check:, card_token:, cardholder:, channel:, created:, merchant:, message_category:, three_ds_requestor_challenge_indicator:, additional_data: nil, app: nil, authentication_request_type: nil, browser: nil, challenge_metadata: nil, challenge_orchestrated_by: nil, decision_made_by: nil, three_ri_request_type: nil, transaction: nil)
+        #   @param token [String]
+        #   @param account_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType, nil]
+        #   @param authentication_result [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult]
+        #   @param card_expiry_check [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck]
+        #   @param card_token [String]
+        #   @param cardholder [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder]
+        #   @param channel [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel]
+        #   @param created [Time]
+        #   @param merchant [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant]
+        #   @param message_category [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory]
+        #   @param three_ds_requestor_challenge_indicator [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator]
+        #   @param additional_data [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData, nil]
+        #   @param app [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App]
+        #   @param authentication_request_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType, nil]
+        #   @param browser [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser]
+        #   @param challenge_metadata [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata, nil]
+        #   @param challenge_orchestrated_by [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy, nil]
+        #   @param decision_made_by [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy, nil]
+        #   @param three_ri_request_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType, nil]
+        #   @param transaction [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction, nil]
 
         # Type of account/card that is being used for the transaction. Maps to EMV 3DS
         # field `acctType`.
@@ -240,11 +212,8 @@ module Lithic
           DEBIT = :DEBIT
           NOT_APPLICABLE = :NOT_APPLICABLE
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Indicates the outcome of the 3DS authentication process.
@@ -258,11 +227,8 @@ module Lithic
           PENDING_CHALLENGE = :PENDING_CHALLENGE
           PENDING_DECISION = :PENDING_DECISION
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Indicates whether the expiration date provided by the cardholder during checkout
@@ -276,11 +242,8 @@ module Lithic
           MISMATCH = :MISMATCH
           NOT_PRESENT = :NOT_PRESENT
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#cardholder
@@ -350,33 +313,17 @@ module Lithic
           #   # @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress]
           #   attr_writer :shipping_address
 
-          # @!parse
-          #   # Object containing data about the cardholder provided during the transaction.
-          #   #
-          #   # @param address_match [Boolean, nil]
-          #   # @param billing_address [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress]
-          #   # @param email [String, nil]
-          #   # @param name [String, nil]
-          #   # @param phone_number_home [String, nil]
-          #   # @param phone_number_mobile [String, nil]
-          #   # @param phone_number_work [String, nil]
-          #   # @param shipping_address [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress]
-          #   #
-          #   def initialize(
-          #     address_match: nil,
-          #     billing_address: nil,
-          #     email: nil,
-          #     name: nil,
-          #     phone_number_home: nil,
-          #     phone_number_mobile: nil,
-          #     phone_number_work: nil,
-          #     shipping_address: nil,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(address_match: nil, billing_address: nil, email: nil, name: nil, phone_number_home: nil, phone_number_mobile: nil, phone_number_work: nil, shipping_address: nil)
+          #   Object containing data about the cardholder provided during the transaction.
+          #
+          #   @param address_match [Boolean, nil]
+          #   @param billing_address [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress]
+          #   @param email [String, nil]
+          #   @param name [String, nil]
+          #   @param phone_number_home [String, nil]
+          #   @param phone_number_mobile [String, nil]
+          #   @param phone_number_work [String, nil]
+          #   @param shipping_address [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress]
 
           # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder#billing_address
           class BillingAddress < Lithic::Internal::Type::BaseModel
@@ -417,19 +364,15 @@ module Lithic
             #   @return [String, nil]
             optional :postal_code, String, nil?: true
 
-            # @!parse
-            #   # Object containing data on the billing address provided during the transaction.
-            #   #
-            #   # @param address1 [String, nil]
-            #   # @param address2 [String, nil]
-            #   # @param address3 [String, nil]
-            #   # @param city [String, nil]
-            #   # @param country [String, nil]
-            #   # @param postal_code [String, nil]
-            #   #
-            #   def initialize(address1: nil, address2: nil, address3: nil, city: nil, country: nil, postal_code: nil, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(address1: nil, address2: nil, address3: nil, city: nil, country: nil, postal_code: nil)
+            #   Object containing data on the billing address provided during the transaction.
+            #
+            #   @param address1 [String, nil]
+            #   @param address2 [String, nil]
+            #   @param address3 [String, nil]
+            #   @param city [String, nil]
+            #   @param country [String, nil]
+            #   @param postal_code [String, nil]
           end
 
           # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder#shipping_address
@@ -471,19 +414,15 @@ module Lithic
             #   @return [String, nil]
             optional :postal_code, String, nil?: true
 
-            # @!parse
-            #   # Object containing data on the shipping address provided during the transaction.
-            #   #
-            #   # @param address1 [String, nil]
-            #   # @param address2 [String, nil]
-            #   # @param address3 [String, nil]
-            #   # @param city [String, nil]
-            #   # @param country [String, nil]
-            #   # @param postal_code [String, nil]
-            #   #
-            #   def initialize(address1: nil, address2: nil, address3: nil, city: nil, country: nil, postal_code: nil, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(address1: nil, address2: nil, address3: nil, city: nil, country: nil, postal_code: nil)
+            #   Object containing data on the shipping address provided during the transaction.
+            #
+            #   @param address1 [String, nil]
+            #   @param address2 [String, nil]
+            #   @param address3 [String, nil]
+            #   @param city [String, nil]
+            #   @param country [String, nil]
+            #   @param postal_code [String, nil]
           end
         end
 
@@ -497,11 +436,8 @@ module Lithic
           BROWSER = :BROWSER
           THREE_DS_REQUESTOR_INITIATED = :THREE_DS_REQUESTOR_INITIATED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#merchant
@@ -541,19 +477,15 @@ module Lithic
           required :risk_indicator,
                    -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator }
 
-          # @!parse
-          #   # Object containing data about the merchant involved in the e-commerce
-          #   # transaction.
-          #   #
-          #   # @param id [String]
-          #   # @param country [String]
-          #   # @param mcc [String]
-          #   # @param name [String]
-          #   # @param risk_indicator [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator]
-          #   #
-          #   def initialize(id:, country:, mcc:, name:, risk_indicator:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, country:, mcc:, name:, risk_indicator:)
+          #   Object containing data about the merchant involved in the e-commerce
+          #   transaction.
+          #
+          #   @param id [String]
+          #   @param country [String]
+          #   @param mcc [String]
+          #   @param name [String]
+          #   @param risk_indicator [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator]
 
           # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant#risk_indicator
           class RiskIndicator < Lithic::Internal::Type::BaseModel
@@ -631,36 +563,19 @@ module Lithic
                      enum: -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod },
                      nil?: true
 
-            # @!parse
-            #   # Object containing additional data indicating additional risk factors related to
-            #   # the e-commerce transaction.
-            #   #
-            #   # @param delivery_email_address [String, nil]
-            #   # @param delivery_time_frame [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame, nil]
-            #   # @param gift_card_amount [Integer, nil]
-            #   # @param gift_card_count [Integer, nil]
-            #   # @param gift_card_currency [String, nil]
-            #   # @param order_availability [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability, nil]
-            #   # @param pre_order_available_date [Time, nil]
-            #   # @param reorder_items [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems, nil]
-            #   # @param shipping_method [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod, nil]
-            #   #
-            #   def initialize(
-            #     delivery_email_address: nil,
-            #     delivery_time_frame: nil,
-            #     gift_card_amount: nil,
-            #     gift_card_count: nil,
-            #     gift_card_currency: nil,
-            #     order_availability: nil,
-            #     pre_order_available_date: nil,
-            #     reorder_items: nil,
-            #     shipping_method: nil,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(delivery_email_address: nil, delivery_time_frame: nil, gift_card_amount: nil, gift_card_count: nil, gift_card_currency: nil, order_availability: nil, pre_order_available_date: nil, reorder_items: nil, shipping_method: nil)
+            #   Object containing additional data indicating additional risk factors related to
+            #   the e-commerce transaction.
+            #
+            #   @param delivery_email_address [String, nil]
+            #   @param delivery_time_frame [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame, nil]
+            #   @param gift_card_amount [Integer, nil]
+            #   @param gift_card_count [Integer, nil]
+            #   @param gift_card_currency [String, nil]
+            #   @param order_availability [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability, nil]
+            #   @param pre_order_available_date [Time, nil]
+            #   @param reorder_items [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems, nil]
+            #   @param shipping_method [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod, nil]
 
             # The delivery time frame for the merchandise. Maps to EMV 3DS field
             # deliveryTimeframe.
@@ -674,11 +589,8 @@ module Lithic
               SAME_DAY_SHIPPING = :SAME_DAY_SHIPPING
               TWO_DAY_OR_MORE_SHIPPING = :TWO_DAY_OR_MORE_SHIPPING
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # Indicates whether the purchase is for merchandise that is available now or at a
@@ -691,11 +603,8 @@ module Lithic
               FUTURE_AVAILABILITY = :FUTURE_AVAILABILITY
               MERCHANDISE_AVAILABLE = :MERCHANDISE_AVAILABLE
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # Indicates whether the cardholder is reordering previously purchased merchandise.
@@ -708,11 +617,8 @@ module Lithic
               FIRST_TIME_ORDERED = :FIRST_TIME_ORDERED
               REORDERED = :REORDERED
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # Shipping method that the cardholder chose for the transaction. If purchase
@@ -734,11 +640,8 @@ module Lithic
               SHIP_TO_STORE = :SHIP_TO_STORE
               TRAVEL_AND_EVENT_TICKETS = :TRAVEL_AND_EVENT_TICKETS
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
         end
@@ -754,11 +657,8 @@ module Lithic
           NON_PAYMENT_AUTHENTICATION = :NON_PAYMENT_AUTHENTICATION
           PAYMENT_AUTHENTICATION = :PAYMENT_AUTHENTICATION
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Indicates whether a challenge is requested for this transaction
@@ -784,11 +684,8 @@ module Lithic
           DATA_SHARE_ONLY = :DATA_SHARE_ONLY
           OTHER = :OTHER
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#additional_data
@@ -809,17 +706,13 @@ module Lithic
           #   @return [Integer, nil]
           optional :network_risk_score, Integer, nil?: true
 
-          # @!parse
-          #   # Object containing additional data about the 3DS request that is beyond the EMV
-          #   # 3DS standard spec (e.g., specific fields that only certain card networks send
-          #   # but are not required across all 3DS requests).
-          #   #
-          #   # @param network_decision [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision, nil]
-          #   # @param network_risk_score [Integer, nil]
-          #   #
-          #   def initialize(network_decision: nil, network_risk_score: nil, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(network_decision: nil, network_risk_score: nil)
+          #   Object containing additional data about the 3DS request that is beyond the EMV
+          #   3DS standard spec (e.g., specific fields that only certain card networks send
+          #   but are not required across all 3DS requests).
+          #
+          #   @param network_decision [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision, nil]
+          #   @param network_risk_score [Integer, nil]
 
           # Mastercard only: Indicates whether the network would have considered the
           # authentication request to be low risk or not.
@@ -831,11 +724,8 @@ module Lithic
             LOW_RISK = :LOW_RISK
             NOT_LOW_RISK = :NOT_LOW_RISK
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -859,16 +749,12 @@ module Lithic
           #   # @return [String]
           #   attr_writer :ip
 
-          # @!parse
-          #   # Object containing data about the app used in the e-commerce transaction. Present
-          #   # if the channel is 'APP_BASED'.
-          #   #
-          #   # @param device_info [String, nil]
-          #   # @param ip [String]
-          #   #
-          #   def initialize(device_info: nil, ip: nil, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(device_info: nil, ip: nil)
+          #   Object containing data about the app used in the e-commerce transaction. Present
+          #   if the channel is 'APP_BASED'.
+          #
+          #   @param device_info [String, nil]
+          #   @param ip [String]
         end
 
         # Type of authentication request - i.e., the type of transaction or interaction is
@@ -890,11 +776,8 @@ module Lithic
           SPLIT_PAYMENT = :SPLIT_PAYMENT
           SPLIT_SHIPMENT = :SPLIT_SHIPMENT
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#browser
@@ -941,20 +824,16 @@ module Lithic
           #   @return [String, nil]
           optional :user_agent, String, nil?: true
 
-          # @!parse
-          #   # Object containing data about the browser used in the e-commerce transaction.
-          #   # Present if the channel is 'BROWSER'.
-          #   #
-          #   # @param ip [String, nil]
-          #   # @param java_enabled [Boolean, nil]
-          #   # @param javascript_enabled [Boolean, nil]
-          #   # @param language [String, nil]
-          #   # @param time_zone [String, nil]
-          #   # @param user_agent [String, nil]
-          #   #
-          #   def initialize(ip: nil, java_enabled: nil, javascript_enabled: nil, language: nil, time_zone: nil, user_agent: nil, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(ip: nil, java_enabled: nil, javascript_enabled: nil, language: nil, time_zone: nil, user_agent: nil)
+          #   Object containing data about the browser used in the e-commerce transaction.
+          #   Present if the channel is 'BROWSER'.
+          #
+          #   @param ip [String, nil]
+          #   @param java_enabled [Boolean, nil]
+          #   @param javascript_enabled [Boolean, nil]
+          #   @param language [String, nil]
+          #   @param time_zone [String, nil]
+          #   @param user_agent [String, nil]
         end
 
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#challenge_metadata
@@ -972,15 +851,11 @@ module Lithic
           #   @return [String, nil]
           optional :phone_number, String, nil?: true
 
-          # @!parse
-          #   # Metadata about the challenge method and delivery.
-          #   #
-          #   # @param method_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType]
-          #   # @param phone_number [String, nil]
-          #   #
-          #   def initialize(method_type:, phone_number: nil, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(method_type:, phone_number: nil)
+          #   Metadata about the challenge method and delivery.
+          #
+          #   @param method_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType]
+          #   @param phone_number [String, nil]
 
           # The type of challenge method used for authentication.
           #
@@ -991,11 +866,8 @@ module Lithic
             SMS_OTP = :SMS_OTP
             OUT_OF_BAND = :OUT_OF_BAND
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -1009,11 +881,8 @@ module Lithic
           CUSTOMER = :CUSTOMER
           NO_CHALLENGE = :NO_CHALLENGE
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Entity that made the authentication decision.
@@ -1028,11 +897,8 @@ module Lithic
           NETWORK = :NETWORK
           UNKNOWN = :UNKNOWN
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Type of 3DS Requestor Initiated (3RI) request i.e., a 3DS authentication that
@@ -1062,11 +928,8 @@ module Lithic
           TOP_UP = :TOP_UP
           TRUST_LIST_STATUS_CHECK = :TRUST_LIST_STATUS_CHECK
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#transaction
@@ -1107,19 +970,15 @@ module Lithic
                    enum: -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type },
                    nil?: true
 
-          # @!parse
-          #   # Object containing data about the e-commerce transaction for which the merchant
-          #   # is requesting authentication.
-          #   #
-          #   # @param amount [Float]
-          #   # @param currency [String]
-          #   # @param currency_exponent [Float]
-          #   # @param date_time [Time]
-          #   # @param type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type, nil]
-          #   #
-          #   def initialize(amount:, currency:, currency_exponent:, date_time:, type:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount:, currency:, currency_exponent:, date_time:, type:)
+          #   Object containing data about the e-commerce transaction for which the merchant
+          #   is requesting authentication.
+          #
+          #   @param amount [Float]
+          #   @param currency [String]
+          #   @param currency_exponent [Float]
+          #   @param date_time [Time]
+          #   @param type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type, nil]
 
           # Type of the transaction for which a 3DS authentication request is occurring.
           # Maps to EMV 3DS field transType.
@@ -1134,11 +993,8 @@ module Lithic
             PREPAID_ACTIVATION_AND_LOAD = :PREPAID_ACTIVATION_AND_LOAD
             QUASI_CASH_TRANSACTION = :QUASI_CASH_TRANSACTION
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
       end

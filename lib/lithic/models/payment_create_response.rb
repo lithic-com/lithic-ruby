@@ -14,12 +14,8 @@ module Lithic
       #   # @return [Lithic::Models::Balance]
       #   attr_writer :balance
 
-      # @!parse
-      #   # @param balance [Lithic::Models::Balance]
-      #   #
-      #   def initialize(balance: nil, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(balance: nil)
+      #   @param balance [Lithic::Models::Balance]
     end
   end
 end

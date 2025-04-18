@@ -23,14 +23,10 @@ module Lithic
           required :simulation_parameters,
                    -> { Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters }
 
-          # @!parse
-          #   # @param backtest_token [String]
-          #   # @param results [Lithic::Models::AuthRules::V2::BacktestResults::Results]
-          #   # @param simulation_parameters [Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters]
-          #   #
-          #   def initialize(backtest_token:, results:, simulation_parameters:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(backtest_token:, results:, simulation_parameters:)
+          #   @param backtest_token [String]
+          #   @param results [Lithic::Models::AuthRules::V2::BacktestResults::Results]
+          #   @param simulation_parameters [Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters]
 
           # @see Lithic::Models::AuthRules::V2::BacktestResults#results
           class Results < Lithic::Internal::Type::BaseModel
@@ -48,13 +44,9 @@ module Lithic
                      -> { Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion },
                      nil?: true
 
-            # @!parse
-            #   # @param current_version [Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion, nil]
-            #   # @param draft_version [Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion, nil]
-            #   #
-            #   def initialize(current_version: nil, draft_version: nil, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(current_version: nil, draft_version: nil)
+            #   @param current_version [Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion, nil]
+            #   @param draft_version [Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion, nil]
 
             # @see Lithic::Models::AuthRules::V2::BacktestResults::Results#current_version
             class CurrentVersion < Lithic::Internal::Type::BaseModel
@@ -106,15 +98,11 @@ module Lithic
                 #   attr_writer :version
               end
 
-              # @!parse
-              #   # @param approved [Integer]
-              #   # @param declined [Integer]
-              #   # @param examples [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example>]
-              #   # @param version [Integer]
-              #   #
-              #   def initialize(approved: nil, declined: nil, examples: nil, version: nil, **) = super
-
-              # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+              # @!method initialize(approved: nil, declined: nil, examples: nil, version: nil)
+              #   @param approved [Integer]
+              #   @param declined [Integer]
+              #   @param examples [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example>]
+              #   @param version [Integer]
 
               class Example < Lithic::Internal::Type::BaseModel
                 # @!attribute [r] approved
@@ -147,14 +135,10 @@ module Lithic
                 #   # @return [Time]
                 #   attr_writer :timestamp
 
-                # @!parse
-                #   # @param approved [Boolean]
-                #   # @param event_token [String]
-                #   # @param timestamp [Time]
-                #   #
-                #   def initialize(approved: nil, event_token: nil, timestamp: nil, **) = super
-
-                # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+                # @!method initialize(approved: nil, event_token: nil, timestamp: nil)
+                #   @param approved [Boolean]
+                #   @param event_token [String]
+                #   @param timestamp [Time]
               end
             end
 
@@ -208,15 +192,11 @@ module Lithic
                 #   attr_writer :version
               end
 
-              # @!parse
-              #   # @param approved [Integer]
-              #   # @param declined [Integer]
-              #   # @param examples [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example>]
-              #   # @param version [Integer]
-              #   #
-              #   def initialize(approved: nil, declined: nil, examples: nil, version: nil, **) = super
-
-              # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+              # @!method initialize(approved: nil, declined: nil, examples: nil, version: nil)
+              #   @param approved [Integer]
+              #   @param declined [Integer]
+              #   @param examples [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example>]
+              #   @param version [Integer]
 
               class Example < Lithic::Internal::Type::BaseModel
                 # @!attribute [r] approved
@@ -249,14 +229,10 @@ module Lithic
                 #   # @return [Time]
                 #   attr_writer :timestamp
 
-                # @!parse
-                #   # @param approved [Boolean]
-                #   # @param event_token [String]
-                #   # @param timestamp [Time]
-                #   #
-                #   def initialize(approved: nil, event_token: nil, timestamp: nil, **) = super
-
-                # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+                # @!method initialize(approved: nil, event_token: nil, timestamp: nil)
+                #   @param approved [Boolean]
+                #   @param event_token [String]
+                #   @param timestamp [Time]
               end
             end
           end
@@ -293,14 +269,10 @@ module Lithic
             #   # @return [Time]
             #   attr_writer :start
 
-            # @!parse
-            #   # @param auth_rule_token [String]
-            #   # @param end_ [Time]
-            #   # @param start [Time]
-            #   #
-            #   def initialize(auth_rule_token: nil, end_: nil, start: nil, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(auth_rule_token: nil, end_: nil, start: nil)
+            #   @param auth_rule_token [String]
+            #   @param end_ [Time]
+            #   @param start [Time]
           end
         end
       end

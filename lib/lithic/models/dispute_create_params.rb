@@ -46,27 +46,13 @@ module Lithic
       #   # @return [String]
       #   attr_writer :customer_note
 
-      # @!parse
-      #   # @param amount [Integer]
-      #   # @param reason [Symbol, Lithic::Models::DisputeCreateParams::Reason]
-      #   # @param transaction_token [String]
-      #   # @param customer_filed_date [Time]
-      #   # @param customer_note [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     amount:,
-      #     reason:,
-      #     transaction_token:,
-      #     customer_filed_date: nil,
-      #     customer_note: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount:, reason:, transaction_token:, customer_filed_date: nil, customer_note: nil, request_options: {})
+      #   @param amount [Integer]
+      #   @param reason [Symbol, Lithic::Models::DisputeCreateParams::Reason]
+      #   @param transaction_token [String]
+      #   @param customer_filed_date [Time]
+      #   @param customer_note [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Reason for dispute
       module Reason
@@ -87,11 +73,8 @@ module Lithic
         RECURRING_TRANSACTION_NOT_CANCELLED = :RECURRING_TRANSACTION_NOT_CANCELLED
         REFUND_NOT_PROCESSED = :REFUND_NOT_PROCESSED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

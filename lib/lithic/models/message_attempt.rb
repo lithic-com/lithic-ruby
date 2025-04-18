@@ -53,33 +53,17 @@ module Lithic
       #   @return [String]
       required :url, String
 
-      # @!parse
-      #   # A subscription to specific event types.
-      #   #
-      #   # @param token [String]
-      #   # @param created [Time]
-      #   # @param event_subscription_token [String]
-      #   # @param event_token [String]
-      #   # @param response [String]
-      #   # @param response_status_code [Integer]
-      #   # @param status [Symbol, Lithic::Models::MessageAttempt::Status]
-      #   # @param url [String]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     created:,
-      #     event_subscription_token:,
-      #     event_token:,
-      #     response:,
-      #     response_status_code:,
-      #     status:,
-      #     url:,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, created:, event_subscription_token:, event_token:, response:, response_status_code:, status:, url:)
+      #   A subscription to specific event types.
+      #
+      #   @param token [String]
+      #   @param created [Time]
+      #   @param event_subscription_token [String]
+      #   @param event_token [String]
+      #   @param response [String]
+      #   @param response_status_code [Integer]
+      #   @param status [Symbol, Lithic::Models::MessageAttempt::Status]
+      #   @param url [String]
 
       # The status of the event attempt.
       #
@@ -92,11 +76,8 @@ module Lithic
         SENDING = :SENDING
         SUCCESS = :SUCCESS
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

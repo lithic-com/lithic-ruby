@@ -31,14 +31,10 @@ module Lithic
         #   # @return [String]
         #   attr_writer :last_transaction_event_token
 
-        # @!parse
-        #   # @param balance_date [Time]
-        #   # @param last_transaction_event_token [String]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(balance_date: nil, last_transaction_event_token: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(balance_date: nil, last_transaction_event_token: nil, request_options: {})
+        #   @param balance_date [Time]
+        #   @param last_transaction_event_token [String]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

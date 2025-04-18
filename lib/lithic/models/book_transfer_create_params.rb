@@ -68,33 +68,16 @@ module Lithic
       #   # @return [String]
       #   attr_writer :memo
 
-      # @!parse
-      #   # @param amount [Integer]
-      #   # @param category [Symbol, Lithic::Models::BookTransferCreateParams::Category]
-      #   # @param from_financial_account_token [String]
-      #   # @param subtype [String]
-      #   # @param to_financial_account_token [String]
-      #   # @param type [Symbol, Lithic::Models::BookTransferCreateParams::Type]
-      #   # @param token [String]
-      #   # @param memo [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     amount:,
-      #     category:,
-      #     from_financial_account_token:,
-      #     subtype:,
-      #     to_financial_account_token:,
-      #     type:,
-      #     token: nil,
-      #     memo: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount:, category:, from_financial_account_token:, subtype:, to_financial_account_token:, type:, token: nil, memo: nil, request_options: {})
+      #   @param amount [Integer]
+      #   @param category [Symbol, Lithic::Models::BookTransferCreateParams::Category]
+      #   @param from_financial_account_token [String]
+      #   @param subtype [String]
+      #   @param to_financial_account_token [String]
+      #   @param type [Symbol, Lithic::Models::BookTransferCreateParams::Type]
+      #   @param token [String]
+      #   @param memo [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Category of the book transfer
       module Category
@@ -108,11 +91,8 @@ module Lithic
         REWARD = :REWARD
         TRANSFER = :TRANSFER
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Type of book_transfer
@@ -152,11 +132,8 @@ module Lithic
         DISPUTE_WON = :DISPUTE_WON
         TRANSFER = :TRANSFER
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

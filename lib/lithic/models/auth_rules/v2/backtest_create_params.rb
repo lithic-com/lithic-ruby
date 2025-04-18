@@ -30,14 +30,10 @@ module Lithic
           #   # @return [Time]
           #   attr_writer :start
 
-          # @!parse
-          #   # @param end_ [Time]
-          #   # @param start [Time]
-          #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-          #   #
-          #   def initialize(end_: nil, start: nil, request_options: {}, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(end_: nil, start: nil, request_options: {})
+          #   @param end_ [Time]
+          #   @param start [Time]
+          #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
         end
       end
     end

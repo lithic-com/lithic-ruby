@@ -57,17 +57,13 @@ module Lithic
       #   @return [Hash{Symbol=>Object}]
       required :payload, Lithic::Internal::Type::HashOf[Lithic::Internal::Type::Unknown]
 
-      # @!parse
-      #   # A single event that affects the transaction state and lifecycle.
-      #   #
-      #   # @param token [String]
-      #   # @param created [Time]
-      #   # @param event_type [Symbol, Lithic::Models::Event::EventType]
-      #   # @param payload [Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(token:, created:, event_type:, payload:, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, created:, event_type:, payload:)
+      #   A single event that affects the transaction state and lifecycle.
+      #
+      #   @param token [String]
+      #   @param created [Time]
+      #   @param event_type [Symbol, Lithic::Models::Event::EventType]
+      #   @param payload [Hash{Symbol=>Object}]
 
       # Event types:
       #
@@ -148,11 +144,8 @@ module Lithic
         TOKENIZATION_TWO_FACTOR_AUTHENTICATION_CODE_SENT = :"tokenization.two_factor_authentication_code_sent"
         TOKENIZATION_UPDATED = :"tokenization.updated"
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

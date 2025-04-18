@@ -140,59 +140,29 @@ module Lithic
         #   # @return [String]
         #   attr_writer :tier
 
-        # @!parse
-        #   # @param token [String]
-        #   # @param account_standing [Lithic::Models::FinancialAccounts::LoanTape::AccountStanding]
-        #   # @param available_credit [Integer]
-        #   # @param balances [Lithic::Models::FinancialAccounts::LoanTape::Balances]
-        #   # @param created [Time]
-        #   # @param credit_limit [Integer]
-        #   # @param credit_product_token [String]
-        #   # @param date [Date]
-        #   # @param day_totals [Lithic::Models::FinancialAccounts::LoanTape::DayTotals]
-        #   # @param ending_balance [Integer]
-        #   # @param excess_credits [Integer]
-        #   # @param financial_account_token [String]
-        #   # @param interest_details [Lithic::Models::FinancialAccounts::LoanTape::InterestDetails, nil]
-        #   # @param minimum_payment_balance [Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance]
-        #   # @param payment_allocation [Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation]
-        #   # @param period_totals [Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals]
-        #   # @param previous_statement_balance [Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance]
-        #   # @param starting_balance [Integer]
-        #   # @param updated [Time]
-        #   # @param version [Integer]
-        #   # @param ytd_totals [Lithic::Models::FinancialAccounts::LoanTape::YtdTotals]
-        #   # @param tier [String]
-        #   #
-        #   def initialize(
-        #     token:,
-        #     account_standing:,
-        #     available_credit:,
-        #     balances:,
-        #     created:,
-        #     credit_limit:,
-        #     credit_product_token:,
-        #     date:,
-        #     day_totals:,
-        #     ending_balance:,
-        #     excess_credits:,
-        #     financial_account_token:,
-        #     interest_details:,
-        #     minimum_payment_balance:,
-        #     payment_allocation:,
-        #     period_totals:,
-        #     previous_statement_balance:,
-        #     starting_balance:,
-        #     updated:,
-        #     version:,
-        #     ytd_totals:,
-        #     tier: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, account_standing:, available_credit:, balances:, created:, credit_limit:, credit_product_token:, date:, day_totals:, ending_balance:, excess_credits:, financial_account_token:, interest_details:, minimum_payment_balance:, payment_allocation:, period_totals:, previous_statement_balance:, starting_balance:, updated:, version:, ytd_totals:, tier: nil)
+        #   @param token [String]
+        #   @param account_standing [Lithic::Models::FinancialAccounts::LoanTape::AccountStanding]
+        #   @param available_credit [Integer]
+        #   @param balances [Lithic::Models::FinancialAccounts::LoanTape::Balances]
+        #   @param created [Time]
+        #   @param credit_limit [Integer]
+        #   @param credit_product_token [String]
+        #   @param date [Date]
+        #   @param day_totals [Lithic::Models::FinancialAccounts::LoanTape::DayTotals]
+        #   @param ending_balance [Integer]
+        #   @param excess_credits [Integer]
+        #   @param financial_account_token [String]
+        #   @param interest_details [Lithic::Models::FinancialAccounts::LoanTape::InterestDetails, nil]
+        #   @param minimum_payment_balance [Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance]
+        #   @param payment_allocation [Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation]
+        #   @param period_totals [Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals]
+        #   @param previous_statement_balance [Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance]
+        #   @param starting_balance [Integer]
+        #   @param updated [Time]
+        #   @param version [Integer]
+        #   @param ytd_totals [Lithic::Models::FinancialAccounts::LoanTape::YtdTotals]
+        #   @param tier [String]
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#account_standing
         class AccountStanding < Lithic::Internal::Type::BaseModel
@@ -245,31 +215,15 @@ module Lithic
           required :period_state,
                    enum: -> { Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState }
 
-          # @!parse
-          #   # @param consecutive_full_payments_made [Integer]
-          #   # @param consecutive_minimum_payments_made [Integer]
-          #   # @param consecutive_minimum_payments_missed [Integer]
-          #   # @param days_past_due [Integer]
-          #   # @param financial_account_state [Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState]
-          #   # @param has_grace [Boolean]
-          #   # @param period_number [Integer]
-          #   # @param period_state [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState]
-          #   #
-          #   def initialize(
-          #     consecutive_full_payments_made:,
-          #     consecutive_minimum_payments_made:,
-          #     consecutive_minimum_payments_missed:,
-          #     days_past_due:,
-          #     financial_account_state:,
-          #     has_grace:,
-          #     period_number:,
-          #     period_state:,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(consecutive_full_payments_made:, consecutive_minimum_payments_made:, consecutive_minimum_payments_missed:, days_past_due:, financial_account_state:, has_grace:, period_number:, period_state:)
+          #   @param consecutive_full_payments_made [Integer]
+          #   @param consecutive_minimum_payments_made [Integer]
+          #   @param consecutive_minimum_payments_missed [Integer]
+          #   @param days_past_due [Integer]
+          #   @param financial_account_state [Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState]
+          #   @param has_grace [Boolean]
+          #   @param period_number [Integer]
+          #   @param period_state [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState]
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::AccountStanding#financial_account_state
           class FinancialAccountState < Lithic::Internal::Type::BaseModel
@@ -288,15 +242,11 @@ module Lithic
                      enum: -> { Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus },
                      nil?: true
 
-            # @!parse
-            #   # Information about the financial account state
-            #   #
-            #   # @param status [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status]
-            #   # @param substatus [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus, nil]
-            #   #
-            #   def initialize(status:, substatus: nil, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(status:, substatus: nil)
+            #   Information about the financial account state
+            #
+            #   @param status [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status]
+            #   @param substatus [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus, nil]
 
             # Status of the financial account
             #
@@ -309,11 +259,8 @@ module Lithic
               SUSPENDED = :SUSPENDED
               PENDING = :PENDING
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # Substatus for the financial account
@@ -328,11 +275,8 @@ module Lithic
               BANK_REQUEST = :BANK_REQUEST
               DELINQUENT = :DELINQUENT
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
 
@@ -344,11 +288,8 @@ module Lithic
             PROMO = :PROMO
             PENALTY = :PENALTY
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -383,15 +324,11 @@ module Lithic
           required :past_statements_due,
                    -> { Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue }
 
-          # @!parse
-          #   # @param due [Lithic::Models::FinancialAccounts::LoanTape::Balances::Due]
-          #   # @param next_statement_due [Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue]
-          #   # @param past_due [Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue]
-          #   # @param past_statements_due [Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue]
-          #   #
-          #   def initialize(due:, next_statement_due:, past_due:, past_statements_due:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(due:, next_statement_due:, past_due:, past_statements_due:)
+          #   @param due [Lithic::Models::FinancialAccounts::LoanTape::Balances::Due]
+          #   @param next_statement_due [Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue]
+          #   @param past_due [Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue]
+          #   @param past_statements_due [Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue]
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::Balances#due
           class Due < Lithic::Internal::Type::BaseModel
@@ -410,17 +347,13 @@ module Lithic
             #   @return [Integer]
             required :principal, Integer
 
-            # @!parse
-            #   # Amount due for the prior billing cycle. Any amounts not fully paid off on this
-            #   # due date will be considered past due the next day
-            #   #
-            #   # @param fees [Integer]
-            #   # @param interest [Integer]
-            #   # @param principal [Integer]
-            #   #
-            #   def initialize(fees:, interest:, principal:, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(fees:, interest:, principal:)
+            #   Amount due for the prior billing cycle. Any amounts not fully paid off on this
+            #   due date will be considered past due the next day
+            #
+            #   @param fees [Integer]
+            #   @param interest [Integer]
+            #   @param principal [Integer]
           end
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::Balances#next_statement_due
@@ -440,18 +373,14 @@ module Lithic
             #   @return [Integer]
             required :principal, Integer
 
-            # @!parse
-            #   # Amount due for the current billing cycle. Any amounts not paid off by early
-            #   # payments or credits will be considered due at the end of the current billing
-            #   # period
-            #   #
-            #   # @param fees [Integer]
-            #   # @param interest [Integer]
-            #   # @param principal [Integer]
-            #   #
-            #   def initialize(fees:, interest:, principal:, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(fees:, interest:, principal:)
+            #   Amount due for the current billing cycle. Any amounts not paid off by early
+            #   payments or credits will be considered due at the end of the current billing
+            #   period
+            #
+            #   @param fees [Integer]
+            #   @param interest [Integer]
+            #   @param principal [Integer]
           end
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::Balances#past_due
@@ -471,16 +400,12 @@ module Lithic
             #   @return [Integer]
             required :principal, Integer
 
-            # @!parse
-            #   # Amount not paid off on previous due dates
-            #   #
-            #   # @param fees [Integer]
-            #   # @param interest [Integer]
-            #   # @param principal [Integer]
-            #   #
-            #   def initialize(fees:, interest:, principal:, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(fees:, interest:, principal:)
+            #   Amount not paid off on previous due dates
+            #
+            #   @param fees [Integer]
+            #   @param interest [Integer]
+            #   @param principal [Integer]
           end
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::Balances#past_statements_due
@@ -500,16 +425,12 @@ module Lithic
             #   @return [Integer]
             required :principal, Integer
 
-            # @!parse
-            #   # Amount due for the past billing cycles.
-            #   #
-            #   # @param fees [Integer]
-            #   # @param interest [Integer]
-            #   # @param principal [Integer]
-            #   #
-            #   def initialize(fees:, interest:, principal:, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(fees:, interest:, principal:)
+            #   Amount due for the past billing cycles.
+            #
+            #   @param fees [Integer]
+            #   @param interest [Integer]
+            #   @param principal [Integer]
           end
         end
 
@@ -558,18 +479,14 @@ module Lithic
           #   @return [Integer]
           required :purchases, Integer
 
-          # @!parse
-          #   # @param balance_transfers [Integer]
-          #   # @param cash_advances [Integer]
-          #   # @param credits [Integer]
-          #   # @param fees [Integer]
-          #   # @param interest [Integer]
-          #   # @param payments [Integer]
-          #   # @param purchases [Integer]
-          #   #
-          #   def initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
+          #   @param balance_transfers [Integer]
+          #   @param cash_advances [Integer]
+          #   @param credits [Integer]
+          #   @param fees [Integer]
+          #   @param interest [Integer]
+          #   @param payments [Integer]
+          #   @param purchases [Integer]
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#interest_details
@@ -612,29 +529,14 @@ module Lithic
           #   @return [Integer, nil]
           optional :minimum_interest_charged, Integer, nil?: true
 
-          # @!parse
-          #   # @param actual_interest_charged [Integer, nil]
-          #   # @param daily_balance_amounts [Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts]
-          #   # @param effective_apr [Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr]
-          #   # @param interest_calculation_method [Symbol, Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod]
-          #   # @param interest_for_period [Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod]
-          #   # @param prime_rate [String, nil]
-          #   # @param minimum_interest_charged [Integer, nil]
-          #   #
-          #   def initialize(
-          #     actual_interest_charged:,
-          #     daily_balance_amounts:,
-          #     effective_apr:,
-          #     interest_calculation_method:,
-          #     interest_for_period:,
-          #     prime_rate:,
-          #     minimum_interest_charged: nil,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(actual_interest_charged:, daily_balance_amounts:, effective_apr:, interest_calculation_method:, interest_for_period:, prime_rate:, minimum_interest_charged: nil)
+          #   @param actual_interest_charged [Integer, nil]
+          #   @param daily_balance_amounts [Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts]
+          #   @param effective_apr [Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr]
+          #   @param interest_calculation_method [Symbol, Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod]
+          #   @param interest_for_period [Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod]
+          #   @param prime_rate [String, nil]
+          #   @param minimum_interest_charged [Integer, nil]
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::InterestDetails#daily_balance_amounts
           class DailyBalanceAmounts < Lithic::Internal::Type::BaseModel
@@ -653,14 +555,10 @@ module Lithic
             #   @return [String]
             required :purchases, String
 
-            # @!parse
-            #   # @param balance_transfers [String]
-            #   # @param cash_advances [String]
-            #   # @param purchases [String]
-            #   #
-            #   def initialize(balance_transfers:, cash_advances:, purchases:, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(balance_transfers:, cash_advances:, purchases:)
+            #   @param balance_transfers [String]
+            #   @param cash_advances [String]
+            #   @param purchases [String]
           end
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::InterestDetails#effective_apr
@@ -680,14 +578,10 @@ module Lithic
             #   @return [String]
             required :purchases, String
 
-            # @!parse
-            #   # @param balance_transfers [String]
-            #   # @param cash_advances [String]
-            #   # @param purchases [String]
-            #   #
-            #   def initialize(balance_transfers:, cash_advances:, purchases:, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(balance_transfers:, cash_advances:, purchases:)
+            #   @param balance_transfers [String]
+            #   @param cash_advances [String]
+            #   @param purchases [String]
           end
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::InterestDetails#interest_calculation_method
@@ -697,11 +591,8 @@ module Lithic
             DAILY = :DAILY
             AVERAGE_DAILY = :AVERAGE_DAILY
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::InterestDetails#interest_for_period
@@ -721,14 +612,10 @@ module Lithic
             #   @return [String]
             required :purchases, String
 
-            # @!parse
-            #   # @param balance_transfers [String]
-            #   # @param cash_advances [String]
-            #   # @param purchases [String]
-            #   #
-            #   def initialize(balance_transfers:, cash_advances:, purchases:, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(balance_transfers:, cash_advances:, purchases:)
+            #   @param balance_transfers [String]
+            #   @param cash_advances [String]
+            #   @param purchases [String]
           end
         end
 
@@ -744,13 +631,9 @@ module Lithic
           #   @return [Integer]
           required :remaining, Integer
 
-          # @!parse
-          #   # @param amount [Integer]
-          #   # @param remaining [Integer]
-          #   #
-          #   def initialize(amount:, remaining:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount:, remaining:)
+          #   @param amount [Integer]
+          #   @param remaining [Integer]
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#payment_allocation
@@ -770,14 +653,10 @@ module Lithic
           #   @return [Integer]
           required :principal, Integer
 
-          # @!parse
-          #   # @param fees [Integer]
-          #   # @param interest [Integer]
-          #   # @param principal [Integer]
-          #   #
-          #   def initialize(fees:, interest:, principal:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(fees:, interest:, principal:)
+          #   @param fees [Integer]
+          #   @param interest [Integer]
+          #   @param principal [Integer]
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#period_totals
@@ -825,18 +704,14 @@ module Lithic
           #   @return [Integer]
           required :purchases, Integer
 
-          # @!parse
-          #   # @param balance_transfers [Integer]
-          #   # @param cash_advances [Integer]
-          #   # @param credits [Integer]
-          #   # @param fees [Integer]
-          #   # @param interest [Integer]
-          #   # @param payments [Integer]
-          #   # @param purchases [Integer]
-          #   #
-          #   def initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
+          #   @param balance_transfers [Integer]
+          #   @param cash_advances [Integer]
+          #   @param credits [Integer]
+          #   @param fees [Integer]
+          #   @param interest [Integer]
+          #   @param payments [Integer]
+          #   @param purchases [Integer]
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#previous_statement_balance
@@ -851,13 +726,9 @@ module Lithic
           #   @return [Integer]
           required :remaining, Integer
 
-          # @!parse
-          #   # @param amount [Integer]
-          #   # @param remaining [Integer]
-          #   #
-          #   def initialize(amount:, remaining:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount:, remaining:)
+          #   @param amount [Integer]
+          #   @param remaining [Integer]
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#ytd_totals
@@ -905,18 +776,14 @@ module Lithic
           #   @return [Integer]
           required :purchases, Integer
 
-          # @!parse
-          #   # @param balance_transfers [Integer]
-          #   # @param cash_advances [Integer]
-          #   # @param credits [Integer]
-          #   # @param fees [Integer]
-          #   # @param interest [Integer]
-          #   # @param payments [Integer]
-          #   # @param purchases [Integer]
-          #   #
-          #   def initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
+          #   @param balance_transfers [Integer]
+          #   @param cash_advances [Integer]
+          #   @param credits [Integer]
+          #   @param fees [Integer]
+          #   @param interest [Integer]
+          #   @param payments [Integer]
+          #   @param purchases [Integer]
         end
       end
     end

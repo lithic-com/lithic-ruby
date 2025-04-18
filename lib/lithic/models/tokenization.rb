@@ -94,41 +94,20 @@ module Lithic
       #   @return [String, nil]
       optional :payment_account_reference_id, String, nil?: true
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param account_token [String]
-      #   # @param card_token [String]
-      #   # @param created_at [Time]
-      #   # @param dpan [String, nil]
-      #   # @param status [Symbol, Lithic::Models::Tokenization::Status]
-      #   # @param token_requestor_name [Symbol, Lithic::Models::Tokenization::TokenRequestorName]
-      #   # @param token_unique_reference [String]
-      #   # @param tokenization_channel [Symbol, Lithic::Models::Tokenization::TokenizationChannel]
-      #   # @param updated_at [Time]
-      #   # @param digital_card_art_token [String]
-      #   # @param events [Array<Lithic::Models::Tokenization::Event>]
-      #   # @param payment_account_reference_id [String, nil]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     account_token:,
-      #     card_token:,
-      #     created_at:,
-      #     dpan:,
-      #     status:,
-      #     token_requestor_name:,
-      #     token_unique_reference:,
-      #     tokenization_channel:,
-      #     updated_at:,
-      #     digital_card_art_token: nil,
-      #     events: nil,
-      #     payment_account_reference_id: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, account_token:, card_token:, created_at:, dpan:, status:, token_requestor_name:, token_unique_reference:, tokenization_channel:, updated_at:, digital_card_art_token: nil, events: nil, payment_account_reference_id: nil)
+      #   @param token [String]
+      #   @param account_token [String]
+      #   @param card_token [String]
+      #   @param created_at [Time]
+      #   @param dpan [String, nil]
+      #   @param status [Symbol, Lithic::Models::Tokenization::Status]
+      #   @param token_requestor_name [Symbol, Lithic::Models::Tokenization::TokenRequestorName]
+      #   @param token_unique_reference [String]
+      #   @param tokenization_channel [Symbol, Lithic::Models::Tokenization::TokenizationChannel]
+      #   @param updated_at [Time]
+      #   @param digital_card_art_token [String]
+      #   @param events [Array<Lithic::Models::Tokenization::Event>]
+      #   @param payment_account_reference_id [String, nil]
 
       # The status of the tokenization request
       #
@@ -144,11 +123,8 @@ module Lithic
         PENDING_ACTIVATION = :PENDING_ACTIVATION
         UNKNOWN = :UNKNOWN
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # The entity that requested the tokenization. Represents a Digital Wallet or
@@ -170,11 +146,8 @@ module Lithic
         UNKNOWN = :UNKNOWN
         VISA_CHECKOUT = :VISA_CHECKOUT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # The channel through which the tokenization was made.
@@ -186,11 +159,8 @@ module Lithic
         DIGITAL_WALLET = :DIGITAL_WALLET
         MERCHANT = :MERCHANT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -234,15 +204,11 @@ module Lithic
         #   # @return [Symbol, Lithic::Models::Tokenization::Event::Type]
         #   attr_writer :type
 
-        # @!parse
-        #   # @param token [String]
-        #   # @param created_at [Time]
-        #   # @param result [Symbol, Lithic::Models::Tokenization::Event::Result]
-        #   # @param type [Symbol, Lithic::Models::Tokenization::Event::Type]
-        #   #
-        #   def initialize(token: nil, created_at: nil, result: nil, type: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token: nil, created_at: nil, result: nil, type: nil)
+        #   @param token [String]
+        #   @param created_at [Time]
+        #   @param result [Symbol, Lithic::Models::Tokenization::Event::Result]
+        #   @param type [Symbol, Lithic::Models::Tokenization::Event::Type]
 
         # Enum representing the result of the tokenization event
         #
@@ -262,11 +228,8 @@ module Lithic
           TOKEN_SUSPENDED = :TOKEN_SUSPENDED
           TOKEN_UPDATED = :TOKEN_UPDATED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Enum representing the type of tokenization event that occurred
@@ -281,11 +244,8 @@ module Lithic
           TOKENIZATION_ELIGIBILITY_CHECK = :TOKENIZATION_ELIGIBILITY_CHECK
           TOKENIZATION_UPDATED = :TOKENIZATION_UPDATED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

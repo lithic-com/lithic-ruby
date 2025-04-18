@@ -47,25 +47,12 @@ module Lithic
         #   # @return [String]
         #   attr_writer :tier
 
-        # @!parse
-        #   # @param credit_limit [Integer]
-        #   # @param credit_product_token [String]
-        #   # @param external_bank_account_token [String]
-        #   # @param tier [String]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(
-        #     credit_limit: nil,
-        #     credit_product_token: nil,
-        #     external_bank_account_token: nil,
-        #     tier: nil,
-        #     request_options: {},
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(credit_limit: nil, credit_product_token: nil, external_bank_account_token: nil, tier: nil, request_options: {})
+        #   @param credit_limit [Integer]
+        #   @param credit_product_token [String]
+        #   @param external_bank_account_token [String]
+        #   @param tier [String]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

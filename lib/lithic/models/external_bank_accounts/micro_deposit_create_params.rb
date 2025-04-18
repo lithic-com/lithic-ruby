@@ -14,13 +14,9 @@ module Lithic
         #   @return [Array<Integer>]
         required :micro_deposits, Lithic::Internal::Type::ArrayOf[Integer]
 
-        # @!parse
-        #   # @param micro_deposits [Array<Integer>]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(micro_deposits:, request_options: {}, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(micro_deposits:, request_options: {})
+        #   @param micro_deposits [Array<Integer>]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

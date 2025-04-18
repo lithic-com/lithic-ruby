@@ -18,13 +18,9 @@ module Lithic
       #   # @return [String]
       #   attr_writer :memo
 
-      # @!parse
-      #   # @param memo [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(memo: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(memo: nil, request_options: {})
+      #   @param memo [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

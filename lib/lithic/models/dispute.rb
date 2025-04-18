@@ -166,55 +166,28 @@ module Lithic
       #   @return [String]
       required :transaction_token, String
 
-      # @!parse
-      #   # Dispute.
-      #   #
-      #   # @param token [String]
-      #   # @param amount [Integer]
-      #   # @param arbitration_date [Time, nil]
-      #   # @param created [Time]
-      #   # @param customer_filed_date [Time, nil]
-      #   # @param customer_note [String, nil]
-      #   # @param network_claim_ids [Array<String>, nil]
-      #   # @param network_filed_date [Time, nil]
-      #   # @param network_reason_code [String, nil]
-      #   # @param prearbitration_date [Time, nil]
-      #   # @param primary_claim_id [String, nil]
-      #   # @param reason [Symbol, Lithic::Models::Dispute::Reason]
-      #   # @param representment_date [Time, nil]
-      #   # @param resolution_amount [Integer, nil]
-      #   # @param resolution_date [Time, nil]
-      #   # @param resolution_note [String, nil]
-      #   # @param resolution_reason [Symbol, Lithic::Models::Dispute::ResolutionReason, nil]
-      #   # @param status [Symbol, Lithic::Models::Dispute::Status]
-      #   # @param transaction_token [String]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     amount:,
-      #     arbitration_date:,
-      #     created:,
-      #     customer_filed_date:,
-      #     customer_note:,
-      #     network_claim_ids:,
-      #     network_filed_date:,
-      #     network_reason_code:,
-      #     prearbitration_date:,
-      #     primary_claim_id:,
-      #     reason:,
-      #     representment_date:,
-      #     resolution_amount:,
-      #     resolution_date:,
-      #     resolution_note:,
-      #     resolution_reason:,
-      #     status:,
-      #     transaction_token:,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, amount:, arbitration_date:, created:, customer_filed_date:, customer_note:, network_claim_ids:, network_filed_date:, network_reason_code:, prearbitration_date:, primary_claim_id:, reason:, representment_date:, resolution_amount:, resolution_date:, resolution_note:, resolution_reason:, status:, transaction_token:)
+      #   Dispute.
+      #
+      #   @param token [String]
+      #   @param amount [Integer]
+      #   @param arbitration_date [Time, nil]
+      #   @param created [Time]
+      #   @param customer_filed_date [Time, nil]
+      #   @param customer_note [String, nil]
+      #   @param network_claim_ids [Array<String>, nil]
+      #   @param network_filed_date [Time, nil]
+      #   @param network_reason_code [String, nil]
+      #   @param prearbitration_date [Time, nil]
+      #   @param primary_claim_id [String, nil]
+      #   @param reason [Symbol, Lithic::Models::Dispute::Reason]
+      #   @param representment_date [Time, nil]
+      #   @param resolution_amount [Integer, nil]
+      #   @param resolution_date [Time, nil]
+      #   @param resolution_note [String, nil]
+      #   @param resolution_reason [Symbol, Lithic::Models::Dispute::ResolutionReason, nil]
+      #   @param status [Symbol, Lithic::Models::Dispute::Status]
+      #   @param transaction_token [String]
 
       # Dispute reason:
       #
@@ -255,11 +228,8 @@ module Lithic
         RECURRING_TRANSACTION_NOT_CANCELLED = :RECURRING_TRANSACTION_NOT_CANCELLED
         REFUND_NOT_PROCESSED = :REFUND_NOT_PROCESSED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Reason for the dispute resolution:
@@ -304,11 +274,8 @@ module Lithic
         WON_FIRST_CHARGEBACK = :WON_FIRST_CHARGEBACK
         WON_PREARBITRATION = :WON_PREARBITRATION
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Status types:
@@ -336,11 +303,8 @@ module Lithic
         REPRESENTMENT = :REPRESENTMENT
         SUBMITTED = :SUBMITTED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

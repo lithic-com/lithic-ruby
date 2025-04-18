@@ -52,27 +52,13 @@ module Lithic
       #   # @return [String]
       #   attr_writer :parent_company
 
-      # @!parse
-      #   # @param address [Lithic::Models::KYBBusinessEntity::Address]
-      #   # @param government_id [String]
-      #   # @param legal_business_name [String]
-      #   # @param phone_numbers [Array<String>]
-      #   # @param dba_business_name [String]
-      #   # @param parent_company [String]
-      #   #
-      #   def initialize(
-      #     address:,
-      #     government_id:,
-      #     legal_business_name:,
-      #     phone_numbers:,
-      #     dba_business_name: nil,
-      #     parent_company: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
+      #   @param address [Lithic::Models::KYBBusinessEntity::Address]
+      #   @param government_id [String]
+      #   @param legal_business_name [String]
+      #   @param phone_numbers [Array<String>]
+      #   @param dba_business_name [String]
+      #   @param parent_company [String]
 
       # @see Lithic::Models::KYBBusinessEntity#address
       class Address < Lithic::Internal::Type::BaseModel
@@ -119,20 +105,16 @@ module Lithic
         #   # @return [String]
         #   attr_writer :address2
 
-        # @!parse
-        #   # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
-        #   # acceptable; APO/FPO are acceptable.
-        #   #
-        #   # @param address1 [String]
-        #   # @param city [String]
-        #   # @param country [String]
-        #   # @param postal_code [String]
-        #   # @param state [String]
-        #   # @param address2 [String]
-        #   #
-        #   def initialize(address1:, city:, country:, postal_code:, state:, address2: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
+        #   Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
+        #   acceptable; APO/FPO are acceptable.
+        #
+        #   @param address1 [String]
+        #   @param city [String]
+        #   @param country [String]
+        #   @param postal_code [String]
+        #   @param state [String]
+        #   @param address2 [String]
       end
     end
   end

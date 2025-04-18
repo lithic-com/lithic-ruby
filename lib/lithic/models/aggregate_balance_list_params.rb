@@ -19,13 +19,9 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType]
       #   attr_writer :financial_account_type
 
-      # @!parse
-      #   # @param financial_account_type [Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(financial_account_type: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(financial_account_type: nil, request_options: {})
+      #   @param financial_account_type [Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Get the aggregate balance for a given Financial Account type.
       module FinancialAccountType
@@ -35,11 +31,8 @@ module Lithic
         OPERATING = :OPERATING
         RESERVE = :RESERVE
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

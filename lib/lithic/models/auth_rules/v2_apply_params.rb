@@ -37,16 +37,12 @@ module Lithic
         #   # @return [Array<String>]
         #   attr_writer :excluded_card_tokens
 
-        # @!parse
-        #   # @param account_tokens [Array<String>]
-        #   # @param card_tokens [Array<String>]
-        #   # @param program_level [Boolean]
-        #   # @param excluded_card_tokens [Array<String>]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(account_tokens:, card_tokens:, program_level:, excluded_card_tokens: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(account_tokens:, card_tokens:, program_level:, excluded_card_tokens: nil, request_options: {})
+        #   @param account_tokens [Array<String>]
+        #   @param card_tokens [Array<String>]
+        #   @param program_level [Boolean]
+        #   @param excluded_card_tokens [Array<String>]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

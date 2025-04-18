@@ -14,13 +14,9 @@ module Lithic
         #   @return [Boolean]
         required :has_more, Lithic::Internal::Type::Boolean
 
-        # @!parse
-        #   # @param data [Array<Lithic::Models::FinancialAccounts::Statement>]
-        #   # @param has_more [Boolean]
-        #   #
-        #   def initialize(data:, has_more:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(data:, has_more:)
+        #   @param data [Array<Lithic::Models::FinancialAccounts::Statement>]
+        #   @param has_more [Boolean]
       end
     end
   end

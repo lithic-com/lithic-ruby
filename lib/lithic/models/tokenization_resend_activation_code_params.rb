@@ -21,13 +21,9 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType]
       #   attr_writer :activation_method_type
 
-      # @!parse
-      #   # @param activation_method_type [Symbol, Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(activation_method_type: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(activation_method_type: nil, request_options: {})
+      #   @param activation_method_type [Symbol, Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # The communication method that the user has selected to use to receive the
       # authentication code. Supported Values: Sms = "TEXT_TO_CARDHOLDER_NUMBER". Email
@@ -38,11 +34,8 @@ module Lithic
         EMAIL_TO_CARDHOLDER_ADDRESS = :EMAIL_TO_CARDHOLDER_ADDRESS
         TEXT_TO_CARDHOLDER_NUMBER = :TEXT_TO_CARDHOLDER_NUMBER
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

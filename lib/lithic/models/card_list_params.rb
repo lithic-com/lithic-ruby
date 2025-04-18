@@ -82,31 +82,15 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::CardListParams::State]
       #   attr_writer :state
 
-      # @!parse
-      #   # @param account_token [String]
-      #   # @param begin_ [Time]
-      #   # @param end_ [Time]
-      #   # @param ending_before [String]
-      #   # @param page_size [Integer]
-      #   # @param starting_after [String]
-      #   # @param state [Symbol, Lithic::Models::CardListParams::State]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     account_token: nil,
-      #     begin_: nil,
-      #     end_: nil,
-      #     ending_before: nil,
-      #     page_size: nil,
-      #     starting_after: nil,
-      #     state: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_token: nil, begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, state: nil, request_options: {})
+      #   @param account_token [String]
+      #   @param begin_ [Time]
+      #   @param end_ [Time]
+      #   @param ending_before [String]
+      #   @param page_size [Integer]
+      #   @param starting_after [String]
+      #   @param state [Symbol, Lithic::Models::CardListParams::State]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Returns cards with the specified state.
       module State
@@ -118,11 +102,8 @@ module Lithic
         PENDING_ACTIVATION = :PENDING_ACTIVATION
         PENDING_FULFILLMENT = :PENDING_FULFILLMENT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

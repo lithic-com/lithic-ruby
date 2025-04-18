@@ -45,38 +45,21 @@ module Lithic
       #   # @return [String]
       #   attr_writer :idempotency_key
 
-      # @!parse
-      #   # @param nickname [String]
-      #   # @param type [Symbol, Lithic::Models::FinancialAccountCreateParams::Type]
-      #   # @param account_token [String]
-      #   # @param is_for_benefit_of [Boolean]
-      #   # @param idempotency_key [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     nickname:,
-      #     type:,
-      #     account_token: nil,
-      #     is_for_benefit_of: nil,
-      #     idempotency_key: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(nickname:, type:, account_token: nil, is_for_benefit_of: nil, idempotency_key: nil, request_options: {})
+      #   @param nickname [String]
+      #   @param type [Symbol, Lithic::Models::FinancialAccountCreateParams::Type]
+      #   @param account_token [String]
+      #   @param is_for_benefit_of [Boolean]
+      #   @param idempotency_key [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       module Type
         extend Lithic::Internal::Type::Enum
 
         OPERATING = :OPERATING
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

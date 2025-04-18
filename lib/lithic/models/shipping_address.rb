@@ -94,37 +94,18 @@ module Lithic
       #   # @return [String]
       #   attr_writer :phone_number
 
-      # @!parse
-      #   # @param address1 [String]
-      #   # @param city [String]
-      #   # @param country [String]
-      #   # @param first_name [String]
-      #   # @param last_name [String]
-      #   # @param postal_code [String]
-      #   # @param state [String]
-      #   # @param address2 [String]
-      #   # @param email [String]
-      #   # @param line2_text [String]
-      #   # @param phone_number [String]
-      #   #
-      #   def initialize(
-      #     address1:,
-      #     city:,
-      #     country:,
-      #     first_name:,
-      #     last_name:,
-      #     postal_code:,
-      #     state:,
-      #     address2: nil,
-      #     email: nil,
-      #     line2_text: nil,
-      #     phone_number: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(address1:, city:, country:, first_name:, last_name:, postal_code:, state:, address2: nil, email: nil, line2_text: nil, phone_number: nil)
+      #   @param address1 [String]
+      #   @param city [String]
+      #   @param country [String]
+      #   @param first_name [String]
+      #   @param last_name [String]
+      #   @param postal_code [String]
+      #   @param state [String]
+      #   @param address2 [String]
+      #   @param email [String]
+      #   @param line2_text [String]
+      #   @param phone_number [String]
     end
   end
 end

@@ -151,53 +151,26 @@ module Lithic
       #   @return [String]
       required :processor_token, String
 
-      # @!parse
-      #   # @param account_number [String]
-      #   # @param country [String]
-      #   # @param currency [String]
-      #   # @param financial_account_token [String]
-      #   # @param owner [String]
-      #   # @param owner_type [Symbol, Lithic::Models::OwnerType]
-      #   # @param routing_number [String]
-      #   # @param type [Symbol, Lithic::Models::ExternalBankAccountCreateParams::Type]
-      #   # @param verification_method [Symbol, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod]
-      #   # @param processor_token [String]
-      #   # @param account_token [String]
-      #   # @param address [Lithic::Models::ExternalBankAccountAddress]
-      #   # @param company_id [String]
-      #   # @param dob [Date]
-      #   # @param doing_business_as [String]
-      #   # @param name [String]
-      #   # @param user_defined_id [String]
-      #   # @param verification_enforcement [Boolean]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     account_number:,
-      #     country:,
-      #     currency:,
-      #     financial_account_token:,
-      #     owner:,
-      #     owner_type:,
-      #     routing_number:,
-      #     type:,
-      #     verification_method:,
-      #     processor_token:,
-      #     account_token: nil,
-      #     address: nil,
-      #     company_id: nil,
-      #     dob: nil,
-      #     doing_business_as: nil,
-      #     name: nil,
-      #     user_defined_id: nil,
-      #     verification_enforcement: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_number:, country:, currency:, financial_account_token:, owner:, owner_type:, routing_number:, type:, verification_method:, processor_token:, account_token: nil, address: nil, company_id: nil, dob: nil, doing_business_as: nil, name: nil, user_defined_id: nil, verification_enforcement: nil, request_options: {})
+      #   @param account_number [String]
+      #   @param country [String]
+      #   @param currency [String]
+      #   @param financial_account_token [String]
+      #   @param owner [String]
+      #   @param owner_type [Symbol, Lithic::Models::OwnerType]
+      #   @param routing_number [String]
+      #   @param type [Symbol, Lithic::Models::ExternalBankAccountCreateParams::Type]
+      #   @param verification_method [Symbol, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod]
+      #   @param processor_token [String]
+      #   @param account_token [String]
+      #   @param address [Lithic::Models::ExternalBankAccountAddress]
+      #   @param company_id [String]
+      #   @param dob [Date]
+      #   @param doing_business_as [String]
+      #   @param name [String]
+      #   @param user_defined_id [String]
+      #   @param verification_enforcement [Boolean]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Account Type
       module Type
@@ -206,11 +179,8 @@ module Lithic
         CHECKING = :CHECKING
         SAVINGS = :SAVINGS
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Verification Method
@@ -219,11 +189,8 @@ module Lithic
 
         EXTERNALLY_VERIFIED = :EXTERNALLY_VERIFIED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

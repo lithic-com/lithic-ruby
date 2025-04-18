@@ -81,43 +81,21 @@ module Lithic
       #   # @return [String]
       #   attr_writer :user_defined_id
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param category [Symbol, Lithic::Models::ManagementOperationTransaction::Category]
-      #   # @param created [Time]
-      #   # @param currency [String]
-      #   # @param direction [Symbol, Lithic::Models::ManagementOperationTransaction::Direction]
-      #   # @param events [Array<Lithic::Models::ManagementOperationTransaction::Event>]
-      #   # @param financial_account_token [String]
-      #   # @param pending_amount [Integer]
-      #   # @param result [Symbol, Lithic::Models::ManagementOperationTransaction::Result]
-      #   # @param settled_amount [Integer]
-      #   # @param status [Symbol, Lithic::Models::ManagementOperationTransaction::Status]
-      #   # @param transaction_series [Lithic::Models::ManagementOperationTransaction::TransactionSeries, nil]
-      #   # @param updated [Time]
-      #   # @param user_defined_id [String]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     category:,
-      #     created:,
-      #     currency:,
-      #     direction:,
-      #     events:,
-      #     financial_account_token:,
-      #     pending_amount:,
-      #     result:,
-      #     settled_amount:,
-      #     status:,
-      #     transaction_series:,
-      #     updated:,
-      #     user_defined_id: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, category:, created:, currency:, direction:, events:, financial_account_token:, pending_amount:, result:, settled_amount:, status:, transaction_series:, updated:, user_defined_id: nil)
+      #   @param token [String]
+      #   @param category [Symbol, Lithic::Models::ManagementOperationTransaction::Category]
+      #   @param created [Time]
+      #   @param currency [String]
+      #   @param direction [Symbol, Lithic::Models::ManagementOperationTransaction::Direction]
+      #   @param events [Array<Lithic::Models::ManagementOperationTransaction::Event>]
+      #   @param financial_account_token [String]
+      #   @param pending_amount [Integer]
+      #   @param result [Symbol, Lithic::Models::ManagementOperationTransaction::Result]
+      #   @param settled_amount [Integer]
+      #   @param status [Symbol, Lithic::Models::ManagementOperationTransaction::Status]
+      #   @param transaction_series [Lithic::Models::ManagementOperationTransaction::TransactionSeries, nil]
+      #   @param updated [Time]
+      #   @param user_defined_id [String]
 
       # @see Lithic::Models::ManagementOperationTransaction#category
       module Category
@@ -128,11 +106,8 @@ module Lithic
         MANAGEMENT_REWARD = :MANAGEMENT_REWARD
         MANAGEMENT_ADJUSTMENT = :MANAGEMENT_ADJUSTMENT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::ManagementOperationTransaction#direction
@@ -142,11 +117,8 @@ module Lithic
         CREDIT = :CREDIT
         DEBIT = :DEBIT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -200,31 +172,24 @@ module Lithic
         #   # @return [String]
         #   attr_writer :subtype
 
-        # @!parse
-        #   # @param token [String]
-        #   # @param amount [Integer]
-        #   # @param created [Time]
-        #   # @param detailed_results [Array<Symbol, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult>]
-        #   # @param effective_date [Date]
-        #   # @param memo [String]
-        #   # @param result [Symbol, Lithic::Models::ManagementOperationTransaction::Event::Result]
-        #   # @param type [Symbol, Lithic::Models::ManagementOperationTransaction::Event::Type]
-        #   # @param subtype [String]
-        #   #
-        #   def initialize(token:, amount:, created:, detailed_results:, effective_date:, memo:, result:, type:, subtype: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, amount:, created:, detailed_results:, effective_date:, memo:, result:, type:, subtype: nil)
+        #   @param token [String]
+        #   @param amount [Integer]
+        #   @param created [Time]
+        #   @param detailed_results [Array<Symbol, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult>]
+        #   @param effective_date [Date]
+        #   @param memo [String]
+        #   @param result [Symbol, Lithic::Models::ManagementOperationTransaction::Event::Result]
+        #   @param type [Symbol, Lithic::Models::ManagementOperationTransaction::Event::Type]
+        #   @param subtype [String]
 
         module DetailedResult
           extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Lithic::Models::ManagementOperationTransaction::Event#result
@@ -234,11 +199,8 @@ module Lithic
           APPROVED = :APPROVED
           DECLINED = :DECLINED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Lithic::Models::ManagementOperationTransaction::Event#type
@@ -261,11 +223,8 @@ module Lithic
           RETURNED_PAYMENT = :RETURNED_PAYMENT
           RETURNED_PAYMENT_REVERSAL = :RETURNED_PAYMENT_REVERSAL
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -276,11 +235,8 @@ module Lithic
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::ManagementOperationTransaction#status
@@ -293,11 +249,8 @@ module Lithic
         REVERSED = :REVERSED
         CANCELED = :CANCELED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::ManagementOperationTransaction#transaction_series
@@ -317,14 +270,10 @@ module Lithic
         #   @return [String]
         required :type, String
 
-        # @!parse
-        #   # @param related_transaction_event_token [String, nil]
-        #   # @param related_transaction_token [String, nil]
-        #   # @param type [String]
-        #   #
-        #   def initialize(related_transaction_event_token:, related_transaction_token:, type:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(related_transaction_event_token:, related_transaction_token:, type:)
+        #   @param related_transaction_event_token [String, nil]
+        #   @param related_transaction_token [String, nil]
+        #   @param type [String]
       end
     end
   end

@@ -15,13 +15,9 @@ module Lithic
           #   @return [String]
           required :auth_rule_token, String
 
-          # @!parse
-          #   # @param auth_rule_token [String]
-          #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-          #   #
-          #   def initialize(auth_rule_token:, request_options: {}, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(auth_rule_token:, request_options: {})
+          #   @param auth_rule_token [String]
+          #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
         end
       end
     end

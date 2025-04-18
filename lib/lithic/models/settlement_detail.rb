@@ -138,57 +138,28 @@ module Lithic
       #   # @return [String]
       #   attr_writer :fee_description
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param account_token [String]
-      #   # @param card_program_token [String]
-      #   # @param card_token [String]
-      #   # @param created [Time]
-      #   # @param currency [String]
-      #   # @param disputes_gross_amount [Integer]
-      #   # @param event_tokens [Array<String>]
-      #   # @param institution [String]
-      #   # @param interchange_fee_extended_precision [Integer]
-      #   # @param interchange_gross_amount [Integer]
-      #   # @param network [Symbol, Lithic::Models::SettlementDetail::Network]
-      #   # @param other_fees_details [Lithic::Models::SettlementDetail::OtherFeesDetails]
-      #   # @param other_fees_gross_amount [Integer]
-      #   # @param report_date [String]
-      #   # @param settlement_date [String]
-      #   # @param transaction_token [String]
-      #   # @param transactions_gross_amount [Integer]
-      #   # @param type [Symbol, Lithic::Models::SettlementDetail::Type]
-      #   # @param updated [Time]
-      #   # @param fee_description [String]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     account_token:,
-      #     card_program_token:,
-      #     card_token:,
-      #     created:,
-      #     currency:,
-      #     disputes_gross_amount:,
-      #     event_tokens:,
-      #     institution:,
-      #     interchange_fee_extended_precision:,
-      #     interchange_gross_amount:,
-      #     network:,
-      #     other_fees_details:,
-      #     other_fees_gross_amount:,
-      #     report_date:,
-      #     settlement_date:,
-      #     transaction_token:,
-      #     transactions_gross_amount:,
-      #     type:,
-      #     updated:,
-      #     fee_description: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, account_token:, card_program_token:, card_token:, created:, currency:, disputes_gross_amount:, event_tokens:, institution:, interchange_fee_extended_precision:, interchange_gross_amount:, network:, other_fees_details:, other_fees_gross_amount:, report_date:, settlement_date:, transaction_token:, transactions_gross_amount:, type:, updated:, fee_description: nil)
+      #   @param token [String]
+      #   @param account_token [String]
+      #   @param card_program_token [String]
+      #   @param card_token [String]
+      #   @param created [Time]
+      #   @param currency [String]
+      #   @param disputes_gross_amount [Integer]
+      #   @param event_tokens [Array<String>]
+      #   @param institution [String]
+      #   @param interchange_fee_extended_precision [Integer]
+      #   @param interchange_gross_amount [Integer]
+      #   @param network [Symbol, Lithic::Models::SettlementDetail::Network]
+      #   @param other_fees_details [Lithic::Models::SettlementDetail::OtherFeesDetails]
+      #   @param other_fees_gross_amount [Integer]
+      #   @param report_date [String]
+      #   @param settlement_date [String]
+      #   @param transaction_token [String]
+      #   @param transactions_gross_amount [Integer]
+      #   @param type [Symbol, Lithic::Models::SettlementDetail::Type]
+      #   @param updated [Time]
+      #   @param fee_description [String]
 
       # Card network where the transaction took place.
       #
@@ -202,11 +173,8 @@ module Lithic
         UNKNOWN = :UNKNOWN
         VISA = :VISA
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::SettlementDetail#other_fees_details
@@ -220,14 +188,10 @@ module Lithic
         #   # @return [Integer]
         #   attr_writer :isa
 
-        # @!parse
-        #   # The total gross amount of other fees by type.
-        #   #
-        #   # @param isa [Integer]
-        #   #
-        #   def initialize(isa: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(isa: nil)
+        #   The total gross amount of other fees by type.
+        #
+        #   @param isa [Integer]
       end
 
       # The type of settlement record.
@@ -246,11 +210,8 @@ module Lithic
         PREARBITRATION = :PREARBITRATION
         REPRESENTMENT = :REPRESENTMENT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

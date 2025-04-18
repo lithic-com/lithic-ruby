@@ -103,35 +103,17 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::TransactionListParams::Status]
       #   attr_writer :status
 
-      # @!parse
-      #   # @param account_token [String]
-      #   # @param begin_ [Time]
-      #   # @param card_token [String]
-      #   # @param end_ [Time]
-      #   # @param ending_before [String]
-      #   # @param page_size [Integer]
-      #   # @param result [Symbol, Lithic::Models::TransactionListParams::Result]
-      #   # @param starting_after [String]
-      #   # @param status [Symbol, Lithic::Models::TransactionListParams::Status]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     account_token: nil,
-      #     begin_: nil,
-      #     card_token: nil,
-      #     end_: nil,
-      #     ending_before: nil,
-      #     page_size: nil,
-      #     result: nil,
-      #     starting_after: nil,
-      #     status: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_token: nil, begin_: nil, card_token: nil, end_: nil, ending_before: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
+      #   @param account_token [String]
+      #   @param begin_ [Time]
+      #   @param card_token [String]
+      #   @param end_ [Time]
+      #   @param ending_before [String]
+      #   @param page_size [Integer]
+      #   @param result [Symbol, Lithic::Models::TransactionListParams::Result]
+      #   @param starting_after [String]
+      #   @param status [Symbol, Lithic::Models::TransactionListParams::Status]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Filters for transactions using transaction result field. Can filter by
       # `APPROVED`, and `DECLINED`.
@@ -141,11 +123,8 @@ module Lithic
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Filters for transactions using transaction status field.
@@ -158,11 +137,8 @@ module Lithic
         DECLINED = :DECLINED
         EXPIRED = :EXPIRED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

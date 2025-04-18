@@ -14,12 +14,8 @@ module Lithic
       #   # @return [Boolean]
       #   attr_writer :enrolled
 
-      # @!parse
-      #   # @param enrolled [Boolean]
-      #   #
-      #   def initialize(enrolled: nil, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(enrolled: nil)
+      #   @param enrolled [Boolean]
     end
   end
 end

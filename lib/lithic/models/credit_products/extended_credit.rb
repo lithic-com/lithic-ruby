@@ -10,12 +10,8 @@ module Lithic
         #   @return [Integer]
         required :credit_extended, Integer
 
-        # @!parse
-        #   # @param credit_extended [Integer]
-        #   #
-        #   def initialize(credit_extended:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(credit_extended:)
+        #   @param credit_extended [Integer]
       end
     end
   end

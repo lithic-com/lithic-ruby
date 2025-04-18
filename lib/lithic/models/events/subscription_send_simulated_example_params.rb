@@ -20,13 +20,9 @@ module Lithic
         #   # @return [Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType]
         #   attr_writer :event_type
 
-        # @!parse
-        #   # @param event_type [Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(event_type: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(event_type: nil, request_options: {})
+        #   @param event_type [Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
         # Event type to send example message for.
         module EventType
@@ -77,11 +73,8 @@ module Lithic
           TOKENIZATION_TWO_FACTOR_AUTHENTICATION_CODE_SENT = :"tokenization.two_factor_authentication_code_sent"
           TOKENIZATION_UPDATED = :"tokenization.updated"
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

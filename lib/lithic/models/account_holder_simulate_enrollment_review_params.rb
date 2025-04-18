@@ -40,15 +40,11 @@ module Lithic
       #   # @return [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason>]
       #   attr_writer :status_reasons
 
-      # @!parse
-      #   # @param account_holder_token [String]
-      #   # @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status]
-      #   # @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason>]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(account_holder_token: nil, status: nil, status_reasons: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_holder_token: nil, status: nil, status_reasons: nil, request_options: {})
+      #   @param account_holder_token [String]
+      #   @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status]
+      #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason>]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # An account holder's status for use within the simulation.
       module Status
@@ -57,11 +53,8 @@ module Lithic
         ACCEPTED = :ACCEPTED
         REJECTED = :REJECTED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       module StatusReason
@@ -91,11 +84,8 @@ module Lithic
         BENEFICIAL_OWNER_INDIVIDUAL_NAME_VERIFICATION_FAILURE =
           :BENEFICIAL_OWNER_INDIVIDUAL_NAME_VERIFICATION_FAILURE
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

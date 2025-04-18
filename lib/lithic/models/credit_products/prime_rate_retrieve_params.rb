@@ -29,14 +29,10 @@ module Lithic
         #   # @return [Date]
         #   attr_writer :starting_after
 
-        # @!parse
-        #   # @param ending_before [Date]
-        #   # @param starting_after [Date]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(ending_before: nil, starting_after: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(ending_before: nil, starting_after: nil, request_options: {})
+        #   @param ending_before [Date]
+        #   @param starting_after [Date]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

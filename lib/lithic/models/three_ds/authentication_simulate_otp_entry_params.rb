@@ -22,14 +22,10 @@ module Lithic
         #   @return [String]
         required :otp, String
 
-        # @!parse
-        #   # @param token [String]
-        #   # @param otp [String]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(token:, otp:, request_options: {}, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, otp:, request_options: {})
+        #   @param token [String]
+        #   @param otp [String]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

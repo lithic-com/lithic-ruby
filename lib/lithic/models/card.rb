@@ -247,61 +247,30 @@ module Lithic
       #   @return [String, nil]
       optional :replacement_for, String, nil?: true
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param account_token [String]
-      #   # @param card_program_token [String]
-      #   # @param created [Time]
-      #   # @param funding [Lithic::Models::Card::Funding]
-      #   # @param last_four [String]
-      #   # @param pin_status [Symbol, Lithic::Models::Card::PinStatus]
-      #   # @param spend_limit [Integer]
-      #   # @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration]
-      #   # @param state [Symbol, Lithic::Models::Card::State]
-      #   # @param type [Symbol, Lithic::Models::Card::Type]
-      #   # @param auth_rule_tokens [Array<String>]
-      #   # @param cardholder_currency [String]
-      #   # @param cvv [String]
-      #   # @param digital_card_art_token [String]
-      #   # @param exp_month [String]
-      #   # @param exp_year [String]
-      #   # @param hostname [String]
-      #   # @param memo [String]
-      #   # @param pan [String]
-      #   # @param pending_commands [Array<String>]
-      #   # @param product_id [String]
-      #   # @param replacement_for [String, nil]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     account_token:,
-      #     card_program_token:,
-      #     created:,
-      #     funding:,
-      #     last_four:,
-      #     pin_status:,
-      #     spend_limit:,
-      #     spend_limit_duration:,
-      #     state:,
-      #     type:,
-      #     auth_rule_tokens: nil,
-      #     cardholder_currency: nil,
-      #     cvv: nil,
-      #     digital_card_art_token: nil,
-      #     exp_month: nil,
-      #     exp_year: nil,
-      #     hostname: nil,
-      #     memo: nil,
-      #     pan: nil,
-      #     pending_commands: nil,
-      #     product_id: nil,
-      #     replacement_for: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, account_token:, card_program_token:, created:, funding:, last_four:, pin_status:, spend_limit:, spend_limit_duration:, state:, type:, auth_rule_tokens: nil, cardholder_currency: nil, cvv: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, hostname: nil, memo: nil, pan: nil, pending_commands: nil, product_id: nil, replacement_for: nil)
+      #   @param token [String]
+      #   @param account_token [String]
+      #   @param card_program_token [String]
+      #   @param created [Time]
+      #   @param funding [Lithic::Models::Card::Funding]
+      #   @param last_four [String]
+      #   @param pin_status [Symbol, Lithic::Models::Card::PinStatus]
+      #   @param spend_limit [Integer]
+      #   @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration]
+      #   @param state [Symbol, Lithic::Models::Card::State]
+      #   @param type [Symbol, Lithic::Models::Card::Type]
+      #   @param auth_rule_tokens [Array<String>]
+      #   @param cardholder_currency [String]
+      #   @param cvv [String]
+      #   @param digital_card_art_token [String]
+      #   @param exp_month [String]
+      #   @param exp_year [String]
+      #   @param hostname [String]
+      #   @param memo [String]
+      #   @param pan [String]
+      #   @param pending_commands [Array<String>]
+      #   @param product_id [String]
+      #   @param replacement_for [String, nil]
 
       # @see Lithic::Models::Card#funding
       class Funding < Lithic::Internal::Type::BaseModel
@@ -368,20 +337,16 @@ module Lithic
         #   # @return [String]
         #   attr_writer :nickname
 
-        # @!parse
-        #   # Deprecated: Funding account for the card.
-        #   #
-        #   # @param token [String]
-        #   # @param created [Time]
-        #   # @param last_four [String]
-        #   # @param state [Symbol, Lithic::Models::Card::Funding::State]
-        #   # @param type [Symbol, Lithic::Models::Card::Funding::Type]
-        #   # @param account_name [String]
-        #   # @param nickname [String]
-        #   #
-        #   def initialize(token:, created:, last_four:, state:, type:, account_name: nil, nickname: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, created:, last_four:, state:, type:, account_name: nil, nickname: nil)
+        #   Deprecated: Funding account for the card.
+        #
+        #   @param token [String]
+        #   @param created [Time]
+        #   @param last_four [String]
+        #   @param state [Symbol, Lithic::Models::Card::Funding::State]
+        #   @param type [Symbol, Lithic::Models::Card::Funding::Type]
+        #   @param account_name [String]
+        #   @param nickname [String]
 
         # State of funding source.
         #
@@ -401,11 +366,8 @@ module Lithic
           ENABLED = :ENABLED
           PENDING = :PENDING
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Types of funding source:
@@ -420,11 +382,8 @@ module Lithic
           DEPOSITORY_CHECKING = :DEPOSITORY_CHECKING
           DEPOSITORY_SAVINGS = :DEPOSITORY_SAVINGS
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -439,11 +398,8 @@ module Lithic
         BLOCKED = :BLOCKED
         NOT_SET = :NOT_SET
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Card state values:
@@ -478,11 +434,8 @@ module Lithic
         PENDING_ACTIVATION = :PENDING_ACTIVATION
         PENDING_FULFILLMENT = :PENDING_FULFILLMENT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Card types:
@@ -513,11 +466,8 @@ module Lithic
         UNLOCKED = :UNLOCKED
         DIGITAL_WALLET = :DIGITAL_WALLET
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

@@ -76,33 +76,16 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision]
       #   attr_writer :wallet_recommended_decision
 
-      # @!parse
-      #   # @param cvv [String]
-      #   # @param expiration_date [String]
-      #   # @param pan [String]
-      #   # @param tokenization_source [Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource]
-      #   # @param account_score [Integer]
-      #   # @param device_score [Integer]
-      #   # @param entity [String]
-      #   # @param wallet_recommended_decision [Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     cvv:,
-      #     expiration_date:,
-      #     pan:,
-      #     tokenization_source:,
-      #     account_score: nil,
-      #     device_score: nil,
-      #     entity: nil,
-      #     wallet_recommended_decision: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(cvv:, expiration_date:, pan:, tokenization_source:, account_score: nil, device_score: nil, entity: nil, wallet_recommended_decision: nil, request_options: {})
+      #   @param cvv [String]
+      #   @param expiration_date [String]
+      #   @param pan [String]
+      #   @param tokenization_source [Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource]
+      #   @param account_score [Integer]
+      #   @param device_score [Integer]
+      #   @param entity [String]
+      #   @param wallet_recommended_decision [Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # The source of the tokenization request.
       module TokenizationSource
@@ -113,11 +96,8 @@ module Lithic
         SAMSUNG_PAY = :SAMSUNG_PAY
         MERCHANT = :MERCHANT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # The decision that the Digital Wallet's recommend
@@ -128,11 +108,8 @@ module Lithic
         DECLINED = :DECLINED
         REQUIRE_ADDITIONAL_AUTHENTICATION = :REQUIRE_ADDITIONAL_AUTHENTICATION
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

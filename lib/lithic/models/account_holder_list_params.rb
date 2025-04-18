@@ -126,39 +126,19 @@ module Lithic
       #   # @return [String]
       #   attr_writer :starting_after
 
-      # @!parse
-      #   # @param begin_ [Time]
-      #   # @param email [String]
-      #   # @param end_ [Time]
-      #   # @param ending_before [String]
-      #   # @param external_id [String]
-      #   # @param first_name [String]
-      #   # @param last_name [String]
-      #   # @param legal_business_name [String]
-      #   # @param limit [Integer]
-      #   # @param phone_number [String]
-      #   # @param starting_after [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     begin_: nil,
-      #     email: nil,
-      #     end_: nil,
-      #     ending_before: nil,
-      #     external_id: nil,
-      #     first_name: nil,
-      #     last_name: nil,
-      #     legal_business_name: nil,
-      #     limit: nil,
-      #     phone_number: nil,
-      #     starting_after: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(begin_: nil, email: nil, end_: nil, ending_before: nil, external_id: nil, first_name: nil, last_name: nil, legal_business_name: nil, limit: nil, phone_number: nil, starting_after: nil, request_options: {})
+      #   @param begin_ [Time]
+      #   @param email [String]
+      #   @param end_ [Time]
+      #   @param ending_before [String]
+      #   @param external_id [String]
+      #   @param first_name [String]
+      #   @param last_name [String]
+      #   @param legal_business_name [String]
+      #   @param limit [Integer]
+      #   @param phone_number [String]
+      #   @param starting_after [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

@@ -21,13 +21,9 @@ module Lithic
       #   # @return [String]
       #   attr_writer :digital_card_art_token
 
-      # @!parse
-      #   # @param digital_card_art_token [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(digital_card_art_token: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(digital_card_art_token: nil, request_options: {})
+      #   @param digital_card_art_token [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

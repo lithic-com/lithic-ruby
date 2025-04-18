@@ -16,12 +16,8 @@ module Lithic
           #   # @return [String]
           #   attr_writer :backtest_token
 
-          # @!parse
-          #   # @param backtest_token [String]
-          #   #
-          #   def initialize(backtest_token: nil, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(backtest_token: nil)
+          #   @param backtest_token [String]
         end
       end
     end

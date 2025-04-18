@@ -22,14 +22,10 @@ module Lithic
                enum: -> { Lithic::Models::FinancialAccountUpdateStatusParams::Substatus },
                nil?: true
 
-      # @!parse
-      #   # @param status [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status]
-      #   # @param substatus [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(status:, substatus:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(status:, substatus:, request_options: {})
+      #   @param status [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status]
+      #   @param substatus [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Status of the financial account
       module Status
@@ -40,11 +36,8 @@ module Lithic
         SUSPENDED = :SUSPENDED
         PENDING = :PENDING
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Substatus for the financial account
@@ -56,11 +49,8 @@ module Lithic
         BANK_REQUEST = :BANK_REQUEST
         CHARGED_OFF_DELINQUENT = :CHARGED_OFF_DELINQUENT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

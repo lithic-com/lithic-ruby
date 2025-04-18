@@ -14,12 +14,8 @@ module Lithic
         #   # @return [String]
         #   attr_writer :report_token
 
-        # @!parse
-        #   # @param report_token [String]
-        #   #
-        #   def initialize(report_token: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(report_token: nil)
+        #   @param report_token [String]
       end
     end
   end
