@@ -4,98 +4,61 @@ module Lithic
   module Models
     # @see Lithic::Resources::ExternalBankAccounts#list
     class ExternalBankAccountListParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      # @!attribute [r] account_token
+      # @!attribute account_token
       #
       #   @return [String, nil]
       optional :account_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :account_token
-
-      # @!attribute [r] account_types
+      # @!attribute account_types
       #
       #   @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType>, nil]
       optional :account_types,
                -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::ExternalBankAccountListParams::AccountType] }
 
-      # @!parse
-      #   # @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType>]
-      #   attr_writer :account_types
-
-      # @!attribute [r] countries
+      # @!attribute countries
       #
       #   @return [Array<String>, nil]
       optional :countries, Lithic::Internal::Type::ArrayOf[String]
 
-      # @!parse
-      #   # @return [Array<String>]
-      #   attr_writer :countries
-
-      # @!attribute [r] ending_before
+      # @!attribute ending_before
       #   A cursor representing an item's token before which a page of results should end.
       #   Used to retrieve the previous page of results before this item.
       #
       #   @return [String, nil]
       optional :ending_before, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :ending_before
-
-      # @!attribute [r] owner_types
+      # @!attribute owner_types
       #
       #   @return [Array<Symbol, Lithic::Models::OwnerType>, nil]
       optional :owner_types, -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::OwnerType] }
 
-      # @!parse
-      #   # @return [Array<Symbol, Lithic::Models::OwnerType>]
-      #   attr_writer :owner_types
-
-      # @!attribute [r] page_size
+      # @!attribute page_size
       #   Page size (for pagination).
       #
       #   @return [Integer, nil]
       optional :page_size, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :page_size
-
-      # @!attribute [r] starting_after
+      # @!attribute starting_after
       #   A cursor representing an item's token after which a page of results should
       #   begin. Used to retrieve the next page of results after this item.
       #
       #   @return [String, nil]
       optional :starting_after, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :starting_after
-
-      # @!attribute [r] states
+      # @!attribute states
       #
       #   @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::State>, nil]
       optional :states,
                -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::ExternalBankAccountListParams::State] }
 
-      # @!parse
-      #   # @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::State>]
-      #   attr_writer :states
-
-      # @!attribute [r] verification_states
+      # @!attribute verification_states
       #
       #   @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState>, nil]
       optional :verification_states,
                -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::ExternalBankAccountListParams::VerificationState] }
-
-      # @!parse
-      #   # @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState>]
-      #   attr_writer :verification_states
 
       # @!method initialize(account_token: nil, account_types: nil, countries: nil, ending_before: nil, owner_types: nil, page_size: nil, starting_after: nil, states: nil, verification_states: nil, request_options: {})
       #   @param account_token [String]

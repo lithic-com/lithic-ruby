@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Transactions#simulate_clearing
     class TransactionSimulateClearingParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute token
@@ -14,7 +13,7 @@ module Lithic
       #   @return [String]
       required :token, String
 
-      # @!attribute [r] amount
+      # @!attribute amount
       #   Amount (in cents) to clear. Typically this will match the amount in the original
       #   authorization, but can be higher or lower. The sign of this amount will
       #   automatically match the sign of the original authorization's amount. For
@@ -27,10 +26,6 @@ module Lithic
       #
       #   @return [Integer, nil]
       optional :amount, Integer
-
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :amount
 
       # @!method initialize(token:, amount: nil, request_options: {})
       #   @param token [String]

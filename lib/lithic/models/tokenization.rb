@@ -65,7 +65,7 @@ module Lithic
       #   @return [Time]
       required :updated_at, Time
 
-      # @!attribute [r] digital_card_art_token
+      # @!attribute digital_card_art_token
       #   Specifies the digital card art displayed in the user’s digital wallet after
       #   tokenization. This will be null if the tokenization was created without an
       #   associated digital card art. See
@@ -74,19 +74,11 @@ module Lithic
       #   @return [String, nil]
       optional :digital_card_art_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :digital_card_art_token
-
-      # @!attribute [r] events
+      # @!attribute events
       #   A list of events related to the tokenization.
       #
       #   @return [Array<Lithic::Models::Tokenization::Event>, nil]
       optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Tokenization::Event] }
-
-      # @!parse
-      #   # @return [Array<Lithic::Models::Tokenization::Event>]
-      #   attr_writer :events
 
       # @!attribute payment_account_reference_id
       #   The network's unique reference for the card that is tokenized.
@@ -164,45 +156,29 @@ module Lithic
       end
 
       class Event < Lithic::Internal::Type::BaseModel
-        # @!attribute [r] token
+        # @!attribute token
         #   Globally unique identifier for a Tokenization Event
         #
         #   @return [String, nil]
         optional :token, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :token
-
-        # @!attribute [r] created_at
+        # @!attribute created_at
         #   Date and time when the tokenization event first occurred. UTC time zone.
         #
         #   @return [Time, nil]
         optional :created_at, Time
 
-        # @!parse
-        #   # @return [Time]
-        #   attr_writer :created_at
-
-        # @!attribute [r] result
+        # @!attribute result
         #   Enum representing the result of the tokenization event
         #
         #   @return [Symbol, Lithic::Models::Tokenization::Event::Result, nil]
         optional :result, enum: -> { Lithic::Models::Tokenization::Event::Result }
 
-        # @!parse
-        #   # @return [Symbol, Lithic::Models::Tokenization::Event::Result]
-        #   attr_writer :result
-
-        # @!attribute [r] type
+        # @!attribute type
         #   Enum representing the type of tokenization event that occurred
         #
         #   @return [Symbol, Lithic::Models::Tokenization::Event::Type, nil]
         optional :type, enum: -> { Lithic::Models::Tokenization::Event::Type }
-
-        # @!parse
-        #   # @return [Symbol, Lithic::Models::Tokenization::Event::Type]
-        #   attr_writer :type
 
         # @!method initialize(token: nil, created_at: nil, result: nil, type: nil)
         #   @param token [String]

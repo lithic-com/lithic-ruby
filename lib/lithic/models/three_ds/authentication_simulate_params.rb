@@ -5,8 +5,7 @@ module Lithic
     module ThreeDS
       # @see Lithic::Resources::ThreeDS::Authentication#simulate
       class AuthenticationSimulateParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
         # @!attribute merchant
@@ -25,17 +24,13 @@ module Lithic
         #   @return [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction]
         required :transaction, -> { Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction }
 
-        # @!attribute [r] card_expiry_check
+        # @!attribute card_expiry_check
         #   When set will use the following values as part of the Simulated Authentication.
         #   When not set defaults to MATCH
         #
         #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck, nil]
         optional :card_expiry_check,
                  enum: -> { Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck }
-
-        # @!parse
-        #   # @return [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck]
-        #   attr_writer :card_expiry_check
 
         # @!method initialize(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {})
         #   @param merchant [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant]

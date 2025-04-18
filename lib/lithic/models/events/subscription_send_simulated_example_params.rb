@@ -5,20 +5,15 @@ module Lithic
     module Events
       # @see Lithic::Resources::Events::Subscriptions#send_simulated_example
       class SubscriptionSendSimulatedExampleParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        # @!attribute [r] event_type
+        # @!attribute event_type
         #   Event type to send example message for.
         #
         #   @return [Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType, nil]
         optional :event_type,
                  enum: -> { Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType }
-
-        # @!parse
-        #   # @return [Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType]
-        #   attr_writer :event_type
 
         # @!method initialize(event_type: nil, request_options: {})
         #   @param event_type [Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType]

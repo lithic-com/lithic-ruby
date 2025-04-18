@@ -5,8 +5,7 @@ module Lithic
     module AuthRules
       # @see Lithic::Resources::AuthRules::V2#promote
       class V2PromoteParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
         # @!method initialize(request_options: {})

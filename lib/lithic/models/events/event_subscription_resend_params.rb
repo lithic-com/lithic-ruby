@@ -5,8 +5,7 @@ module Lithic
     module Events
       # @see Lithic::Resources::Events::EventSubscriptions#resend
       class EventSubscriptionResendParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
         # @!attribute event_token

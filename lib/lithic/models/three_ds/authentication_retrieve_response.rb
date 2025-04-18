@@ -102,16 +102,12 @@ module Lithic
                  -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData },
                  nil?: true
 
-        # @!attribute [r] app
+        # @!attribute app
         #   Object containing data about the app used in the e-commerce transaction. Present
         #   if the channel is 'APP_BASED'.
         #
         #   @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, nil]
         optional :app, -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App }
-
-        # @!parse
-        #   # @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App]
-        #   attr_writer :app
 
         # @!attribute authentication_request_type
         #   Type of authentication request - i.e., the type of transaction or interaction is
@@ -123,16 +119,12 @@ module Lithic
                  enum: -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType },
                  nil?: true
 
-        # @!attribute [r] browser
+        # @!attribute browser
         #   Object containing data about the browser used in the e-commerce transaction.
         #   Present if the channel is 'BROWSER'.
         #
         #   @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, nil]
         optional :browser, -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser }
-
-        # @!parse
-        #   # @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser]
-        #   attr_writer :browser
 
         # @!attribute challenge_metadata
         #   Metadata about the challenge method and delivery.
@@ -257,16 +249,12 @@ module Lithic
           #   @return [Boolean, nil]
           optional :address_match, Lithic::Internal::Type::Boolean, nil?: true
 
-          # @!attribute [r] billing_address
+          # @!attribute billing_address
           #   Object containing data on the billing address provided during the transaction.
           #
           #   @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress, nil]
           optional :billing_address,
                    -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress }
-
-          # @!parse
-          #   # @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress]
-          #   attr_writer :billing_address
 
           # @!attribute email
           #   Email address that is either provided by the cardholder or is on file with the
@@ -302,16 +290,12 @@ module Lithic
           #   @return [String, nil]
           optional :phone_number_work, String, nil?: true
 
-          # @!attribute [r] shipping_address
+          # @!attribute shipping_address
           #   Object containing data on the shipping address provided during the transaction.
           #
           #   @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress, nil]
           optional :shipping_address,
                    -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress }
-
-          # @!parse
-          #   # @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress]
-          #   attr_writer :shipping_address
 
           # @!method initialize(address_match: nil, billing_address: nil, email: nil, name: nil, phone_number_home: nil, phone_number_mobile: nil, phone_number_work: nil, shipping_address: nil)
           #   Object containing data about the cardholder provided during the transaction.
@@ -738,16 +722,12 @@ module Lithic
           #   @return [String, nil]
           optional :device_info, String, nil?: true
 
-          # @!attribute [r] ip
+          # @!attribute ip
           #   External IP address used by the app generating the 3DS authentication request.
           #   Maps to EMV 3DS field appIp.
           #
           #   @return [String, nil]
           optional :ip, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :ip
 
           # @!method initialize(device_info: nil, ip: nil)
           #   Object containing data about the app used in the e-commerce transaction. Present

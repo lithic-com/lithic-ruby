@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Accounts#retrieve_spend_limits
     class AccountRetrieveSpendLimitsParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!method initialize(request_options: {})

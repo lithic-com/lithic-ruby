@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::BookTransfers#create
     class BookTransferCreateParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute amount
@@ -47,26 +46,18 @@ module Lithic
       #   @return [Symbol, Lithic::Models::BookTransferCreateParams::Type]
       required :type, enum: -> { Lithic::Models::BookTransferCreateParams::Type }
 
-      # @!attribute [r] token
+      # @!attribute token
       #   Customer-provided token that will serve as an idempotency token. This token will
       #   become the transaction token.
       #
       #   @return [String, nil]
       optional :token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :token
-
-      # @!attribute [r] memo
+      # @!attribute memo
       #   Optional descriptor for the transfer.
       #
       #   @return [String, nil]
       optional :memo, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :memo
 
       # @!method initialize(amount:, category:, from_financial_account_token:, subtype:, to_financial_account_token:, type:, token: nil, memo: nil, request_options: {})
       #   @param amount [Integer]

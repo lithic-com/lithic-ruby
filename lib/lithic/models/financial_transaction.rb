@@ -124,56 +124,36 @@ module Lithic
       end
 
       class Event < Lithic::Internal::Type::BaseModel
-        # @!attribute [r] token
+        # @!attribute token
         #   Globally unique identifier.
         #
         #   @return [String, nil]
         optional :token, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :token
-
-        # @!attribute [r] amount
+        # @!attribute amount
         #   Amount of the financial event that has been settled in the currency's smallest
         #   unit (e.g., cents).
         #
         #   @return [Integer, nil]
         optional :amount, Integer
 
-        # @!parse
-        #   # @return [Integer]
-        #   attr_writer :amount
-
-        # @!attribute [r] created
+        # @!attribute created
         #   Date and time when the financial event occurred. UTC time zone.
         #
         #   @return [Time, nil]
         optional :created, Time
 
-        # @!parse
-        #   # @return [Time]
-        #   attr_writer :created
-
-        # @!attribute [r] result
+        # @!attribute result
         #   APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         #
         #   @return [Symbol, Lithic::Models::FinancialTransaction::Event::Result, nil]
         optional :result, enum: -> { Lithic::Models::FinancialTransaction::Event::Result }
 
-        # @!parse
-        #   # @return [Symbol, Lithic::Models::FinancialTransaction::Event::Result]
-        #   attr_writer :result
-
-        # @!attribute [r] type
+        # @!attribute type
         #
         #   @return [Symbol, Lithic::Models::FinancialTransaction::Event::Type, nil]
         optional :type, enum: -> { Lithic::Models::FinancialTransaction::Event::Type }
-
-        # @!parse
-        #   # @return [Symbol, Lithic::Models::FinancialTransaction::Event::Type]
-        #   attr_writer :type
 
         # @!method initialize(token: nil, amount: nil, created: nil, result: nil, type: nil)
         #   @param token [String]

@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#simulate_enrollment_document_review
     class AccountHolderSimulateEnrollmentDocumentReviewParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute document_upload_token
@@ -20,27 +19,19 @@ module Lithic
       #   @return [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status]
       required :status, enum: -> { Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status }
 
-      # @!attribute [r] accepted_entity_status_reasons
+      # @!attribute accepted_entity_status_reasons
       #   A list of status reasons associated with a KYB account holder in PENDING_REVIEW
       #
       #   @return [Array<String>, nil]
       optional :accepted_entity_status_reasons, Lithic::Internal::Type::ArrayOf[String]
 
-      # @!parse
-      #   # @return [Array<String>]
-      #   attr_writer :accepted_entity_status_reasons
-
-      # @!attribute [r] status_reason
+      # @!attribute status_reason
       #   Status reason that will be associated with the simulated account holder status.
       #   Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
       #
       #   @return [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason, nil]
       optional :status_reason,
                enum: -> { Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason }
-
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason]
-      #   attr_writer :status_reason
 
       # @!method initialize(document_upload_token:, status:, accepted_entity_status_reasons: nil, status_reason: nil, request_options: {})
       #   @param document_upload_token [String]

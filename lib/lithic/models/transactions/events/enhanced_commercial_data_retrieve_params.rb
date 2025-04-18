@@ -6,8 +6,7 @@ module Lithic
       module Events
         # @see Lithic::Resources::Transactions::Events::EnhancedCommercialData#retrieve
         class EnhancedCommercialDataRetrieveParams < Lithic::Internal::Type::BaseModel
-          # @!parse
-          #   extend Lithic::Internal::Type::RequestParameters::Converter
+          extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
 
           # @!method initialize(request_options: {})

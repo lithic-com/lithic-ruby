@@ -55,29 +55,21 @@ module Lithic
       #   @return [Symbol, Lithic::Models::KYB::Workflow]
       required :workflow, enum: -> { Lithic::Models::KYB::Workflow }
 
-      # @!attribute [r] beneficial_owner_entities
+      # @!attribute beneficial_owner_entities
       #   Deprecated.
       #
       #   @return [Array<Lithic::Models::KYB::BeneficialOwnerEntity>, nil]
       optional :beneficial_owner_entities,
                -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::KYB::BeneficialOwnerEntity] }
 
-      # @!parse
-      #   # @return [Array<Lithic::Models::KYB::BeneficialOwnerEntity>]
-      #   attr_writer :beneficial_owner_entities
-
-      # @!attribute [r] external_id
+      # @!attribute external_id
       #   A user provided id that can be used to link an account holder with an external
       #   system
       #
       #   @return [String, nil]
       optional :external_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :external_id
-
-      # @!attribute [r] kyb_passed_timestamp
+      # @!attribute kyb_passed_timestamp
       #   An RFC 3339 timestamp indicating when precomputed KYC was completed on the
       #   business with a pass result.
       #
@@ -86,19 +78,11 @@ module Lithic
       #   @return [String, nil]
       optional :kyb_passed_timestamp, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :kyb_passed_timestamp
-
-      # @!attribute [r] website_url
+      # @!attribute website_url
       #   Company website URL.
       #
       #   @return [String, nil]
       optional :website_url, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :website_url
 
       # @!method initialize(beneficial_owner_individuals:, business_entity:, control_person:, nature_of_business:, tos_timestamp:, workflow:, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, website_url: nil)
       #   @param beneficial_owner_individuals [Array<Lithic::Models::KYB::BeneficialOwnerIndividual>]
@@ -154,15 +138,11 @@ module Lithic
         #   @return [String]
         required :last_name, String
 
-        # @!attribute [r] phone_number
+        # @!attribute phone_number
         #   Individual's phone number, entered in E.164 format.
         #
         #   @return [String, nil]
         optional :phone_number, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :phone_number
 
         # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
         #   Individuals associated with a KYB application. Phone number is optional.
@@ -206,26 +186,18 @@ module Lithic
         #   @return [Array<String>]
         required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
-        # @!attribute [r] dba_business_name
+        # @!attribute dba_business_name
         #   Any name that the business operates under that is not its legal business name
         #   (if applicable).
         #
         #   @return [String, nil]
         optional :dba_business_name, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :dba_business_name
-
-        # @!attribute [r] parent_company
+        # @!attribute parent_company
         #   Parent company name (if applicable).
         #
         #   @return [String, nil]
         optional :parent_company, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :parent_company
 
         # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
         #   Information for business for which the account is being opened and KYB is being
@@ -282,15 +254,11 @@ module Lithic
         #   @return [String]
         required :last_name, String
 
-        # @!attribute [r] phone_number
+        # @!attribute phone_number
         #   Individual's phone number, entered in E.164 format.
         #
         #   @return [String, nil]
         optional :phone_number, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :phone_number
 
         # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
         #   An individual with significant responsibility for managing the legal entity
@@ -353,26 +321,18 @@ module Lithic
         #   @return [Array<String>]
         required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
-        # @!attribute [r] dba_business_name
+        # @!attribute dba_business_name
         #   Any name that the business operates under that is not its legal business name
         #   (if applicable).
         #
         #   @return [String, nil]
         optional :dba_business_name, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :dba_business_name
-
-        # @!attribute [r] parent_company
+        # @!attribute parent_company
         #   Parent company name (if applicable).
         #
         #   @return [String, nil]
         optional :parent_company, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :parent_company
 
         # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
         #   @param address [Lithic::Models::Address]

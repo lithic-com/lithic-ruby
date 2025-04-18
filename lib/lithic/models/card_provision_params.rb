@@ -4,11 +4,10 @@ module Lithic
   module Models
     # @see Lithic::Resources::Cards#provision
     class CardProvisionParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      # @!attribute [r] certificate
+      # @!attribute certificate
       #   Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
       #   `activationData` in the response. Apple's public leaf certificate. Base64
       #   encoded in PEM format with headers `(-----BEGIN CERTIFICATE-----)` and trailers
@@ -17,11 +16,7 @@ module Lithic
       #   @return [String, nil]
       optional :certificate, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :certificate
-
-      # @!attribute [r] client_device_id
+      # @!attribute client_device_id
       #   Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the
       #   card is on the Visa network. Stable device identification set by the wallet
       #   provider.
@@ -29,11 +24,7 @@ module Lithic
       #   @return [String, nil]
       optional :client_device_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :client_device_id
-
-      # @!attribute [r] client_wallet_account_id
+      # @!attribute client_wallet_account_id
       #   Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the
       #   card is on the Visa network. Consumer ID that identifies the wallet account
       #   holder entity.
@@ -41,21 +32,13 @@ module Lithic
       #   @return [String, nil]
       optional :client_wallet_account_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :client_wallet_account_id
-
-      # @!attribute [r] digital_wallet
+      # @!attribute digital_wallet
       #   Name of digital wallet provider.
       #
       #   @return [Symbol, Lithic::Models::CardProvisionParams::DigitalWallet, nil]
       optional :digital_wallet, enum: -> { Lithic::Models::CardProvisionParams::DigitalWallet }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::CardProvisionParams::DigitalWallet]
-      #   attr_writer :digital_wallet
-
-      # @!attribute [r] nonce
+      # @!attribute nonce
       #   Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
       #   `activationData` in the response. Base64 cryptographic nonce provided by the
       #   device's wallet.
@@ -63,21 +46,13 @@ module Lithic
       #   @return [String, nil]
       optional :nonce, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :nonce
-
-      # @!attribute [r] nonce_signature
+      # @!attribute nonce_signature
       #   Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
       #   `activationData` in the response. Base64 cryptographic nonce provided by the
       #   device's wallet.
       #
       #   @return [String, nil]
       optional :nonce_signature, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :nonce_signature
 
       # @!method initialize(certificate: nil, client_device_id: nil, client_wallet_account_id: nil, digital_wallet: nil, nonce: nil, nonce_signature: nil, request_options: {})
       #   @param certificate [String]

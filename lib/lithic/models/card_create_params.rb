@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Cards#create
     class CardCreateParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute type
@@ -29,7 +28,7 @@ module Lithic
       #   @return [Symbol, Lithic::Models::CardCreateParams::Type]
       required :type, enum: -> { Lithic::Models::CardCreateParams::Type }
 
-      # @!attribute [r] account_token
+      # @!attribute account_token
       #   Globally unique identifier for the account that the card will be associated
       #   with. Required for programs enrolling users using the
       #   [/account_holders endpoint](https://docs.lithic.com/docs/account-holders-kyc).
@@ -38,11 +37,7 @@ module Lithic
       #   @return [String, nil]
       optional :account_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :account_token
-
-      # @!attribute [r] card_program_token
+      # @!attribute card_program_token
       #   For card programs with more than one BIN range. This must be configured with
       #   Lithic before use. Identifies the card program/BIN range under which to create
       #   the card. If omitted, will utilize the program's default `card_program_token`.
@@ -53,20 +48,12 @@ module Lithic
       #   @return [String, nil]
       optional :card_program_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :card_program_token
-
-      # @!attribute [r] carrier
+      # @!attribute carrier
       #
       #   @return [Lithic::Models::Carrier, nil]
       optional :carrier, -> { Lithic::Models::Carrier }
 
-      # @!parse
-      #   # @return [Lithic::Models::Carrier]
-      #   attr_writer :carrier
-
-      # @!attribute [r] digital_card_art_token
+      # @!attribute digital_card_art_token
       #   Specifies the digital card art to be displayed in the user’s digital wallet
       #   after tokenization. This artwork must be approved by Mastercard and configured
       #   by Lithic to use. See
@@ -75,43 +62,27 @@ module Lithic
       #   @return [String, nil]
       optional :digital_card_art_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :digital_card_art_token
-
-      # @!attribute [r] exp_month
+      # @!attribute exp_month
       #   Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` is provided,
       #   an expiration date will be generated.
       #
       #   @return [String, nil]
       optional :exp_month, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :exp_month
-
-      # @!attribute [r] exp_year
+      # @!attribute exp_year
       #   Four digit (yyyy) expiry year. If neither `exp_month` nor `exp_year` is
       #   provided, an expiration date will be generated.
       #
       #   @return [String, nil]
       optional :exp_year, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :exp_year
-
-      # @!attribute [r] memo
+      # @!attribute memo
       #   Friendly name to identify the card.
       #
       #   @return [String, nil]
       optional :memo, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :memo
-
-      # @!attribute [r] pin
+      # @!attribute pin
       #   Encrypted PIN block (in base64). Applies to cards of type `PHYSICAL` and
       #   `VIRTUAL`. See
       #   [Encrypted PIN Block](https://docs.lithic.com/docs/cards#encrypted-pin-block).
@@ -119,11 +90,7 @@ module Lithic
       #   @return [String, nil]
       optional :pin, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :pin
-
-      # @!attribute [r] product_id
+      # @!attribute product_id
       #   Only applicable to cards of type `PHYSICAL`. This must be configured with Lithic
       #   before use. Specifies the configuration (i.e., physical card art) that the card
       #   should be manufactured with.
@@ -131,11 +98,7 @@ module Lithic
       #   @return [String, nil]
       optional :product_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :product_id
-
-      # @!attribute [r] replacement_account_token
+      # @!attribute replacement_account_token
       #   Restricted field limited to select use cases. Lithic will reach out directly if
       #   this field should be used. Globally unique identifier for the replacement card's
       #   account. If this field is specified, `replacement_for` must also be specified.
@@ -145,11 +108,7 @@ module Lithic
       #   @return [String, nil]
       optional :replacement_account_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :replacement_account_token
-
-      # @!attribute [r] replacement_for
+      # @!attribute replacement_for
       #   Globally unique identifier for the card that this card will replace. If the card
       #   type is `PHYSICAL` it will be replaced by a `PHYSICAL` card. If the card type is
       #   `VIRTUAL` it will be replaced by a `VIRTUAL` card.
@@ -157,20 +116,12 @@ module Lithic
       #   @return [String, nil]
       optional :replacement_for, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :replacement_for
-
-      # @!attribute [r] shipping_address
+      # @!attribute shipping_address
       #
       #   @return [Lithic::Models::ShippingAddress, nil]
       optional :shipping_address, -> { Lithic::Models::ShippingAddress }
 
-      # @!parse
-      #   # @return [Lithic::Models::ShippingAddress]
-      #   attr_writer :shipping_address
-
-      # @!attribute [r] shipping_method
+      # @!attribute shipping_method
       #   Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
       #   options besides `STANDARD` require additional permissions.
       #
@@ -187,11 +138,7 @@ module Lithic
       #   @return [Symbol, Lithic::Models::CardCreateParams::ShippingMethod, nil]
       optional :shipping_method, enum: -> { Lithic::Models::CardCreateParams::ShippingMethod }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::CardCreateParams::ShippingMethod]
-      #   attr_writer :shipping_method
-
-      # @!attribute [r] spend_limit
+      # @!attribute spend_limit
       #   Amount (in cents) to limit approved authorizations (e.g. 100000 would be a
       #   $1,000 limit). Transaction requests above the spend limit will be declined. Note
       #   that a spend limit of 0 is effectively no limit, and should only be used to
@@ -201,11 +148,7 @@ module Lithic
       #   @return [Integer, nil]
       optional :spend_limit, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :spend_limit
-
-      # @!attribute [r] spend_limit_duration
+      # @!attribute spend_limit_duration
       #   Spend limit duration values:
       #
       #   - `ANNUALLY` - Card will authorize transactions up to spend limit for the
@@ -222,11 +165,7 @@ module Lithic
       #   @return [Symbol, Lithic::Models::SpendLimitDuration, nil]
       optional :spend_limit_duration, enum: -> { Lithic::Models::SpendLimitDuration }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::SpendLimitDuration]
-      #   attr_writer :spend_limit_duration
-
-      # @!attribute [r] state
+      # @!attribute state
       #   Card state values:
       #
       #   - `OPEN` - Card will approve authorizations (if they match card and account
@@ -236,10 +175,6 @@ module Lithic
       #
       #   @return [Symbol, Lithic::Models::CardCreateParams::State, nil]
       optional :state, enum: -> { Lithic::Models::CardCreateParams::State }
-
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::CardCreateParams::State]
-      #   attr_writer :state
 
       # @!method initialize(type:, account_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_for: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
       #   @param type [Symbol, Lithic::Models::CardCreateParams::Type]

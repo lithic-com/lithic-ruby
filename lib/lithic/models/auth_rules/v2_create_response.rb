@@ -57,15 +57,11 @@ module Lithic
         #   @return [Symbol, Lithic::Models::AuthRules::V2CreateResponse::Type]
         required :type, enum: -> { Lithic::Models::AuthRules::V2CreateResponse::Type }
 
-        # @!attribute [r] excluded_card_tokens
+        # @!attribute excluded_card_tokens
         #   Card tokens to which the Auth Rule does not apply.
         #
         #   @return [Array<String>, nil]
         optional :excluded_card_tokens, Lithic::Internal::Type::ArrayOf[String]
-
-        # @!parse
-        #   # @return [Array<String>]
-        #   attr_writer :excluded_card_tokens
 
         # @!method initialize(token:, account_tokens:, card_tokens:, current_version:, draft_version:, name:, program_level:, state:, type:, excluded_card_tokens: nil)
         #   @param token [String]

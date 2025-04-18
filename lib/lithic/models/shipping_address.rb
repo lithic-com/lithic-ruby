@@ -51,48 +51,32 @@ module Lithic
       #   @return [String]
       required :state, String
 
-      # @!attribute [r] address2
+      # @!attribute address2
       #   Unit number (if applicable).
       #
       #   @return [String, nil]
       optional :address2, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :address2
-
-      # @!attribute [r] email
+      # @!attribute email
       #   Email address to be contacted for expedited shipping process purposes. Required
       #   if `shipping_method` is `EXPEDITED`.
       #
       #   @return [String, nil]
       optional :email, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :email
-
-      # @!attribute [r] line2_text
+      # @!attribute line2_text
       #   Text to be printed on line two of the physical card. Use of this field requires
       #   additional permissions.
       #
       #   @return [String, nil]
       optional :line2_text, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :line2_text
-
-      # @!attribute [r] phone_number
+      # @!attribute phone_number
       #   Cardholder's phone number in E.164 format to be contacted for expedited shipping
       #   process purposes. Required if `shipping_method` is `EXPEDITED`.
       #
       #   @return [String, nil]
       optional :phone_number, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :phone_number
 
       # @!method initialize(address1:, city:, country:, first_name:, last_name:, postal_code:, state:, address2: nil, email: nil, line2_text: nil, phone_number: nil)
       #   @param address1 [String]

@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Tokenizations#simulate
     class TokenizationSimulateParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute cvv
@@ -32,49 +31,33 @@ module Lithic
       #   @return [Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource]
       required :tokenization_source, enum: -> { Lithic::Models::TokenizationSimulateParams::TokenizationSource }
 
-      # @!attribute [r] account_score
+      # @!attribute account_score
       #   The account score (1-5) that represents how the Digital Wallet's view on how
       #   reputable an end user's account is.
       #
       #   @return [Integer, nil]
       optional :account_score, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :account_score
-
-      # @!attribute [r] device_score
+      # @!attribute device_score
       #   The device score (1-5) that represents how the Digital Wallet's view on how
       #   reputable an end user's device is.
       #
       #   @return [Integer, nil]
       optional :device_score, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :device_score
-
-      # @!attribute [r] entity
+      # @!attribute entity
       #   Optional field to specify the token requestor name for a merchant token
       #   simulation. Ignored when tokenization_source is not MERCHANT.
       #
       #   @return [String, nil]
       optional :entity, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :entity
-
-      # @!attribute [r] wallet_recommended_decision
+      # @!attribute wallet_recommended_decision
       #   The decision that the Digital Wallet's recommend
       #
       #   @return [Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision, nil]
       optional :wallet_recommended_decision,
                enum: -> { Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision }
-
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision]
-      #   attr_writer :wallet_recommended_decision
 
       # @!method initialize(cvv:, expiration_date:, pan:, tokenization_source:, account_score: nil, device_score: nil, entity: nil, wallet_recommended_decision: nil, request_options: {})
       #   @param cvv [String]

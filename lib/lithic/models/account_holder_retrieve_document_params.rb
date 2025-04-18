@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#retrieve_document
     class AccountHolderRetrieveDocumentParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute account_holder_token

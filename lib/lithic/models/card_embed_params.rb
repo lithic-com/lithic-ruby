@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Cards#embed
     class CardEmbedParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute embed_request

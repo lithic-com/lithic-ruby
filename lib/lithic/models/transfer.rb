@@ -4,17 +4,13 @@ module Lithic
   module Models
     # @see Lithic::Resources::Transfers#create
     class Transfer < Lithic::Internal::Type::BaseModel
-      # @!attribute [r] token
+      # @!attribute token
       #   Globally unique identifier for the transfer event.
       #
       #   @return [String, nil]
       optional :token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :token
-
-      # @!attribute [r] category
+      # @!attribute category
       #   Status types:
       #
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
@@ -23,63 +19,39 @@ module Lithic
       #   @return [Symbol, Lithic::Models::Transfer::Category, nil]
       optional :category, enum: -> { Lithic::Models::Transfer::Category }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::Transfer::Category]
-      #   attr_writer :category
-
-      # @!attribute [r] created
+      # @!attribute created
       #   Date and time when the transfer occurred. UTC time zone.
       #
       #   @return [Time, nil]
       optional :created, Time
 
-      # @!parse
-      #   # @return [Time]
-      #   attr_writer :created
-
-      # @!attribute [r] currency
+      # @!attribute currency
       #   3-character alphabetic ISO 4217 code for the settling currency of the
       #   transaction.
       #
       #   @return [String, nil]
       optional :currency, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :currency
-
-      # @!attribute [r] descriptor
+      # @!attribute descriptor
       #   A string that provides a description of the transfer; may be useful to display
       #   to users.
       #
       #   @return [String, nil]
       optional :descriptor, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :descriptor
-
-      # @!attribute [r] events
+      # @!attribute events
       #   A list of all financial events that have modified this trasnfer.
       #
       #   @return [Array<Lithic::Models::Transfer::Event>, nil]
       optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Transfer::Event] }
 
-      # @!parse
-      #   # @return [Array<Lithic::Models::Transfer::Event>]
-      #   attr_writer :events
-
-      # @!attribute [r] from_balance
+      # @!attribute from_balance
       #   The updated balance of the sending financial account.
       #
       #   @return [Array<Lithic::Models::Balance>, nil]
       optional :from_balance, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Balance] }
 
-      # @!parse
-      #   # @return [Array<Lithic::Models::Balance>]
-      #   attr_writer :from_balance
-
-      # @!attribute [r] pending_amount
+      # @!attribute pending_amount
       #   Pending amount of the transaction in the currency's smallest unit (e.g., cents),
       #   including any acquirer fees. The value of this field will go to zero over time
       #   once the financial transaction is settled.
@@ -87,33 +59,21 @@ module Lithic
       #   @return [Integer, nil]
       optional :pending_amount, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :pending_amount
-
-      # @!attribute [r] result
+      # @!attribute result
       #   APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
       #
       #   @return [Symbol, Lithic::Models::Transfer::Result, nil]
       optional :result, enum: -> { Lithic::Models::Transfer::Result }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::Transfer::Result]
-      #   attr_writer :result
-
-      # @!attribute [r] settled_amount
+      # @!attribute settled_amount
       #   Amount of the transaction that has been settled in the currency's smallest unit
       #   (e.g., cents).
       #
       #   @return [Integer, nil]
       optional :settled_amount, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :settled_amount
-
-      # @!attribute [r] status
+      # @!attribute status
       #   Status types:
       #
       #   - `DECLINED` - The transfer was declined.
@@ -125,29 +85,17 @@ module Lithic
       #   @return [Symbol, Lithic::Models::Transfer::Status, nil]
       optional :status, enum: -> { Lithic::Models::Transfer::Status }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::Transfer::Status]
-      #   attr_writer :status
-
-      # @!attribute [r] to_balance
+      # @!attribute to_balance
       #   The updated balance of the receiving financial account.
       #
       #   @return [Array<Lithic::Models::Balance>, nil]
       optional :to_balance, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Balance] }
 
-      # @!parse
-      #   # @return [Array<Lithic::Models::Balance>]
-      #   attr_writer :to_balance
-
-      # @!attribute [r] updated
+      # @!attribute updated
       #   Date and time when the financial transaction was last updated. UTC time zone.
       #
       #   @return [Time, nil]
       optional :updated, Time
-
-      # @!parse
-      #   # @return [Time]
-      #   attr_writer :updated
 
       # @!method initialize(token: nil, category: nil, created: nil, currency: nil, descriptor: nil, events: nil, from_balance: nil, pending_amount: nil, result: nil, settled_amount: nil, status: nil, to_balance: nil, updated: nil)
       #   @param token [String]
@@ -180,56 +128,36 @@ module Lithic
       end
 
       class Event < Lithic::Internal::Type::BaseModel
-        # @!attribute [r] token
+        # @!attribute token
         #   Globally unique identifier.
         #
         #   @return [String, nil]
         optional :token, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :token
-
-        # @!attribute [r] amount
+        # @!attribute amount
         #   Amount of the financial event that has been settled in the currency's smallest
         #   unit (e.g., cents).
         #
         #   @return [Integer, nil]
         optional :amount, Integer
 
-        # @!parse
-        #   # @return [Integer]
-        #   attr_writer :amount
-
-        # @!attribute [r] created
+        # @!attribute created
         #   Date and time when the financial event occurred. UTC time zone.
         #
         #   @return [Time, nil]
         optional :created, Time
 
-        # @!parse
-        #   # @return [Time]
-        #   attr_writer :created
-
-        # @!attribute [r] result
+        # @!attribute result
         #   APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         #
         #   @return [Symbol, Lithic::Models::Transfer::Event::Result, nil]
         optional :result, enum: -> { Lithic::Models::Transfer::Event::Result }
 
-        # @!parse
-        #   # @return [Symbol, Lithic::Models::Transfer::Event::Result]
-        #   attr_writer :result
-
-        # @!attribute [r] type
+        # @!attribute type
         #
         #   @return [Symbol, Lithic::Models::Transfer::Event::Type, nil]
         optional :type, enum: -> { Lithic::Models::Transfer::Event::Type }
-
-        # @!parse
-        #   # @return [Symbol, Lithic::Models::Transfer::Event::Type]
-        #   attr_writer :type
 
         # @!method initialize(token: nil, amount: nil, created: nil, result: nil, type: nil)
         #   @param token [String]

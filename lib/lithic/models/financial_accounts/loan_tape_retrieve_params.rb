@@ -5,8 +5,7 @@ module Lithic
     module FinancialAccounts
       # @see Lithic::Resources::FinancialAccounts::LoanTapes#retrieve
       class LoanTapeRetrieveParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
         # @!attribute financial_account_token

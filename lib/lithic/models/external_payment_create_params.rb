@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::ExternalPayments#create
     class ExternalPaymentCreateParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute amount
@@ -33,41 +32,25 @@ module Lithic
       #   @return [Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType]
       required :payment_type, enum: -> { Lithic::Models::ExternalPaymentCreateParams::PaymentType }
 
-      # @!attribute [r] token
+      # @!attribute token
       #
       #   @return [String, nil]
       optional :token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :token
-
-      # @!attribute [r] memo
+      # @!attribute memo
       #
       #   @return [String, nil]
       optional :memo, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :memo
-
-      # @!attribute [r] progress_to
+      # @!attribute progress_to
       #
       #   @return [Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo, nil]
       optional :progress_to, enum: -> { Lithic::Models::ExternalPaymentCreateParams::ProgressTo }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo]
-      #   attr_writer :progress_to
-
-      # @!attribute [r] user_defined_id
+      # @!attribute user_defined_id
       #
       #   @return [String, nil]
       optional :user_defined_id, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :user_defined_id
 
       # @!method initialize(amount:, category:, effective_date:, financial_account_token:, payment_type:, token: nil, memo: nil, progress_to: nil, user_defined_id: nil, request_options: {})
       #   @param amount [Integer]

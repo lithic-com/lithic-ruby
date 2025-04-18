@@ -4,15 +4,11 @@ module Lithic
   module Models
     # @see Lithic::Resources::AuthStreamEnrollment#retrieve_secret
     class AuthStreamSecret < Lithic::Internal::Type::BaseModel
-      # @!attribute [r] secret
+      # @!attribute secret
       #   The shared HMAC ASA secret
       #
       #   @return [String, nil]
       optional :secret, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :secret
 
       # @!method initialize(secret: nil)
       #   @param secret [String]

@@ -116,25 +116,17 @@ module Lithic
                  -> { Lithic::Models::FinancialAccounts::Statement::InterestDetails },
                  nil?: true
 
-        # @!attribute [r] next_payment_due_date
+        # @!attribute next_payment_due_date
         #   Date when the next payment is due
         #
         #   @return [Date, nil]
         optional :next_payment_due_date, Date
 
-        # @!parse
-        #   # @return [Date]
-        #   attr_writer :next_payment_due_date
-
-        # @!attribute [r] next_statement_end_date
+        # @!attribute next_statement_end_date
         #   Date when the next billing period will end
         #
         #   @return [Date, nil]
         optional :next_statement_end_date, Date
-
-        # @!parse
-        #   # @return [Date]
-        #   attr_writer :next_statement_end_date
 
         # @!method initialize(token:, account_standing:, amount_due:, available_credit:, created:, credit_limit:, credit_product_token:, days_in_billing_cycle:, ending_balance:, financial_account_token:, payment_due_date:, period_totals:, starting_balance:, statement_end_date:, statement_start_date:, statement_type:, updated:, ytd_totals:, interest_details: nil, next_payment_due_date: nil, next_statement_end_date: nil)
         #   @param token [String]

@@ -5,8 +5,7 @@ module Lithic
     module ExternalBankAccounts
       # @see Lithic::Resources::ExternalBankAccounts::MicroDeposits#create
       class MicroDepositCreateParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
         # @!attribute micro_deposits

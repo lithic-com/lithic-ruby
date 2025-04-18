@@ -31,26 +31,18 @@ module Lithic
       #   @return [Array<String>]
       required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
-      # @!attribute [r] dba_business_name
+      # @!attribute dba_business_name
       #   Any name that the business operates under that is not its legal business name
       #   (if applicable).
       #
       #   @return [String, nil]
       optional :dba_business_name, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :dba_business_name
-
-      # @!attribute [r] parent_company
+      # @!attribute parent_company
       #   Parent company name (if applicable).
       #
       #   @return [String, nil]
       optional :parent_company, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :parent_company
 
       # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
       #   @param address [Lithic::Models::KYBBusinessEntity::Address]
@@ -95,15 +87,11 @@ module Lithic
         #   @return [String]
         required :state, String
 
-        # @!attribute [r] address2
+        # @!attribute address2
         #   Unit or apartment number (if applicable).
         #
         #   @return [String, nil]
         optional :address2, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :address2
 
         # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
         #   Business''s physical address - PO boxes, UPS drops, and FedEx drops are not

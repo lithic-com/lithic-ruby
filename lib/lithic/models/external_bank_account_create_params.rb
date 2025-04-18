@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::ExternalBankAccounts#create
     class ExternalBankAccountCreateParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute account_number
@@ -65,7 +64,7 @@ module Lithic
       required :verification_method,
                enum: -> { Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod }
 
-      # @!attribute [r] account_token
+      # @!attribute account_token
       #   Indicates which Lithic account the external account is associated with. For
       #   external accounts that are associated with the program, account_token field
       #   returned will be null
@@ -73,78 +72,46 @@ module Lithic
       #   @return [String, nil]
       optional :account_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :account_token
-
-      # @!attribute [r] address
+      # @!attribute address
       #   Address
       #
       #   @return [Lithic::Models::ExternalBankAccountAddress, nil]
       optional :address, -> { Lithic::Models::ExternalBankAccountAddress }
 
-      # @!parse
-      #   # @return [Lithic::Models::ExternalBankAccountAddress]
-      #   attr_writer :address
-
-      # @!attribute [r] company_id
+      # @!attribute company_id
       #   Optional field that helps identify bank accounts in receipts
       #
       #   @return [String, nil]
       optional :company_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :company_id
-
-      # @!attribute [r] dob
+      # @!attribute dob
       #   Date of Birth of the Individual that owns the external bank account
       #
       #   @return [Date, nil]
       optional :dob, Date
 
-      # @!parse
-      #   # @return [Date]
-      #   attr_writer :dob
-
-      # @!attribute [r] doing_business_as
+      # @!attribute doing_business_as
       #   Doing Business As
       #
       #   @return [String, nil]
       optional :doing_business_as, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :doing_business_as
-
-      # @!attribute [r] name
+      # @!attribute name
       #   The nickname for this External Bank Account
       #
       #   @return [String, nil]
       optional :name, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :name
-
-      # @!attribute [r] user_defined_id
+      # @!attribute user_defined_id
       #   User Defined ID
       #
       #   @return [String, nil]
       optional :user_defined_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :user_defined_id
-
-      # @!attribute [r] verification_enforcement
+      # @!attribute verification_enforcement
       #
       #   @return [Boolean, nil]
       optional :verification_enforcement, Lithic::Internal::Type::Boolean
-
-      # @!parse
-      #   # @return [Boolean]
-      #   attr_writer :verification_enforcement
 
       # @!attribute processor_token
       #

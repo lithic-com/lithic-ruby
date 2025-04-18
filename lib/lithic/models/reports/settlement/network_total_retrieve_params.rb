@@ -6,8 +6,7 @@ module Lithic
       module Settlement
         # @see Lithic::Resources::Reports::Settlement::NetworkTotals#retrieve
         class NetworkTotalRetrieveParams < Lithic::Internal::Type::BaseModel
-          # @!parse
-          #   extend Lithic::Internal::Type::RequestParameters::Converter
+          extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
 
           # @!method initialize(request_options: {})

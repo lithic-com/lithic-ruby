@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Payments#simulate_action
     class PaymentSimulateActionParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute event_type
@@ -14,25 +13,17 @@ module Lithic
       #   @return [Symbol, Lithic::Models::PaymentSimulateActionParams::EventType]
       required :event_type, enum: -> { Lithic::Models::PaymentSimulateActionParams::EventType }
 
-      # @!attribute [r] decline_reason
+      # @!attribute decline_reason
       #   Decline reason
       #
       #   @return [Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason, nil]
       optional :decline_reason, enum: -> { Lithic::Models::PaymentSimulateActionParams::DeclineReason }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason]
-      #   attr_writer :decline_reason
-
-      # @!attribute [r] return_reason_code
+      # @!attribute return_reason_code
       #   Return Reason Code
       #
       #   @return [String, nil]
       optional :return_reason_code, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :return_reason_code
 
       # @!method initialize(event_type:, decline_reason: nil, return_reason_code: nil, request_options: {})
       #   @param event_type [Symbol, Lithic::Models::PaymentSimulateActionParams::EventType]

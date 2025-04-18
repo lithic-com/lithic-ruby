@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Cards#renew
     class CardRenewParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute shipping_address
@@ -14,39 +13,27 @@ module Lithic
       #   @return [Lithic::Models::ShippingAddress]
       required :shipping_address, -> { Lithic::Models::ShippingAddress }
 
-      # @!attribute [r] carrier
+      # @!attribute carrier
       #   If omitted, the previous carrier will be used.
       #
       #   @return [Lithic::Models::Carrier, nil]
       optional :carrier, -> { Lithic::Models::Carrier }
 
-      # @!parse
-      #   # @return [Lithic::Models::Carrier]
-      #   attr_writer :carrier
-
-      # @!attribute [r] exp_month
+      # @!attribute exp_month
       #   Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` is provided,
       #   an expiration date six years in the future will be generated.
       #
       #   @return [String, nil]
       optional :exp_month, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :exp_month
-
-      # @!attribute [r] exp_year
+      # @!attribute exp_year
       #   Four digit (yyyy) expiry year. If neither `exp_month` nor `exp_year` is
       #   provided, an expiration date six years in the future will be generated.
       #
       #   @return [String, nil]
       optional :exp_year, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :exp_year
-
-      # @!attribute [r] product_id
+      # @!attribute product_id
       #   Specifies the configuration (e.g. physical card art) that the card should be
       #   manufactured with, and only applies to cards of type `PHYSICAL`. This must be
       #   configured with Lithic before use.
@@ -54,11 +41,7 @@ module Lithic
       #   @return [String, nil]
       optional :product_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :product_id
-
-      # @!attribute [r] shipping_method
+      # @!attribute shipping_method
       #   Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
       #   options besides `STANDARD` require additional permissions.
       #
@@ -74,10 +57,6 @@ module Lithic
       #
       #   @return [Symbol, Lithic::Models::CardRenewParams::ShippingMethod, nil]
       optional :shipping_method, enum: -> { Lithic::Models::CardRenewParams::ShippingMethod }
-
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::CardRenewParams::ShippingMethod]
-      #   attr_writer :shipping_method
 
       # @!method initialize(shipping_address:, carrier: nil, exp_month: nil, exp_year: nil, product_id: nil, shipping_method: nil, request_options: {})
       #   @param shipping_address [Lithic::Models::ShippingAddress]
