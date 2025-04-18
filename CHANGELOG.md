@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.15 (2025-04-18)
+
+Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
+
+### Features
+
+* **api:** updates to Card definition for PCI clarity ([bb157ab](https://github.com/lithic-com/lithic-ruby/commit/bb157abbede60505c67651947fa8c583d17ac84a))
+
+
+### Chores
+
+* make sorbet enums easier to read ([77f23c5](https://github.com/lithic-com/lithic-ruby/commit/77f23c58d44b4c33b6a897ff988da2cb97965653))
+* refine `#inspect` and `#to_s` for model classes ([7435187](https://github.com/lithic-com/lithic-ruby/commit/74351870d4768cd923ce9d88841ba8c84b6681d6))
+* simplify yard annotations by removing most `@!parse` directives ([12c6882](https://github.com/lithic-com/lithic-ruby/commit/12c6882a7db0b45f91d8e4df7b0d41016567ad7a))
+* use `@!method` instead of `@!parse` for virtual method type definitions ([a73c89a](https://github.com/lithic-com/lithic-ruby/commit/a73c89aa794ebfc771a7410603c10be08d1609d3))
+
 ## 0.1.0-alpha.14 (2025-04-17)
 
 Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
