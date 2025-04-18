@@ -14,13 +14,9 @@ module Lithic
         #   @return [String]
         required :event_token, String
 
-        # @!parse
-        #   # @param event_token [String]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(event_token:, request_options: {}, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(event_token:, request_options: {})
+        #   @param event_token [String]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

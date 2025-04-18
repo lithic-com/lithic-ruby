@@ -14,13 +14,9 @@ module Lithic
       #   @return [String]
       required :pan, String
 
-      # @!parse
-      #   # @param pan [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(pan:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(pan:, request_options: {})
+      #   @param pan [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

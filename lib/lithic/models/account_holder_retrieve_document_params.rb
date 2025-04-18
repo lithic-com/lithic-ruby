@@ -13,13 +13,9 @@ module Lithic
       #   @return [String]
       required :account_holder_token, String
 
-      # @!parse
-      #   # @param account_holder_token [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(account_holder_token:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_holder_token:, request_options: {})
+      #   @param account_holder_token [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

@@ -35,16 +35,12 @@ module Lithic
           #   @return [String]
           required :transaction_token, String
 
-          # @!parse
-          #   # @param token [String]
-          #   # @param common [Lithic::Models::Transactions::Events::EnhancedData::Common]
-          #   # @param event_token [String]
-          #   # @param fleet [Array<Lithic::Models::Transactions::Events::EnhancedData::Fleet>]
-          #   # @param transaction_token [String]
-          #   #
-          #   def initialize(token:, common:, event_token:, fleet:, transaction_token:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(token:, common:, event_token:, fleet:, transaction_token:)
+          #   @param token [String]
+          #   @param common [Lithic::Models::Transactions::Events::EnhancedData::Common]
+          #   @param event_token [String]
+          #   @param fleet [Array<Lithic::Models::Transactions::Events::EnhancedData::Fleet>]
+          #   @param transaction_token [String]
 
           # @see Lithic::Models::Transactions::Events::EnhancedData#common
           class Common < Lithic::Internal::Type::BaseModel
@@ -89,16 +85,12 @@ module Lithic
             #   # @return [Date]
             #   attr_writer :order_date
 
-            # @!parse
-            #   # @param line_items [Array<Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem>]
-            #   # @param tax [Lithic::Models::Transactions::Events::EnhancedData::Common::Tax]
-            #   # @param customer_reference_number [String]
-            #   # @param merchant_reference_number [String]
-            #   # @param order_date [Date]
-            #   #
-            #   def initialize(line_items:, tax:, customer_reference_number: nil, merchant_reference_number: nil, order_date: nil, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(line_items:, tax:, customer_reference_number: nil, merchant_reference_number: nil, order_date: nil)
+            #   @param line_items [Array<Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem>]
+            #   @param tax [Lithic::Models::Transactions::Events::EnhancedData::Common::Tax]
+            #   @param customer_reference_number [String]
+            #   @param merchant_reference_number [String]
+            #   @param order_date [Date]
 
             class LineItem < Lithic::Internal::Type::BaseModel
               # @!attribute [r] amount
@@ -141,17 +133,13 @@ module Lithic
               #   # @return [Float]
               #   attr_writer :quantity
 
-              # @!parse
-              #   # An L2/L3 enhanced commercial data line item.
-              #   #
-              #   # @param amount [Float]
-              #   # @param description [String]
-              #   # @param product_code [String]
-              #   # @param quantity [Float]
-              #   #
-              #   def initialize(amount: nil, description: nil, product_code: nil, quantity: nil, **) = super
-
-              # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+              # @!method initialize(amount: nil, description: nil, product_code: nil, quantity: nil)
+              #   An L2/L3 enhanced commercial data line item.
+              #
+              #   @param amount [Float]
+              #   @param description [String]
+              #   @param product_code [String]
+              #   @param quantity [Float]
             end
 
             # @see Lithic::Models::Transactions::Events::EnhancedData::Common#tax
@@ -186,14 +174,10 @@ module Lithic
               #   # @return [String]
               #   attr_writer :merchant_tax_id
 
-              # @!parse
-              #   # @param amount [Integer]
-              #   # @param exempt [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt]
-              #   # @param merchant_tax_id [String]
-              #   #
-              #   def initialize(amount: nil, exempt: nil, merchant_tax_id: nil, **) = super
-
-              # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+              # @!method initialize(amount: nil, exempt: nil, merchant_tax_id: nil)
+              #   @param amount [Integer]
+              #   @param exempt [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt]
+              #   @param merchant_tax_id [String]
 
               # A flag indicating whether the transaction is tax exempt or not.
               #
@@ -205,11 +189,8 @@ module Lithic
                 TAX_NOT_INCLUDED = :TAX_NOT_INCLUDED
                 NOT_SUPPORTED = :NOT_SUPPORTED
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -268,17 +249,13 @@ module Lithic
             #   # @return [String]
             #   attr_writer :vehicle_number
 
-            # @!parse
-            #   # @param amount_totals [Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals]
-            #   # @param fuel [Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel]
-            #   # @param driver_number [String]
-            #   # @param odometer [Integer]
-            #   # @param service_type [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType]
-            #   # @param vehicle_number [String]
-            #   #
-            #   def initialize(amount_totals:, fuel:, driver_number: nil, odometer: nil, service_type: nil, vehicle_number: nil, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(amount_totals:, fuel:, driver_number: nil, odometer: nil, service_type: nil, vehicle_number: nil)
+            #   @param amount_totals [Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals]
+            #   @param fuel [Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel]
+            #   @param driver_number [String]
+            #   @param odometer [Integer]
+            #   @param service_type [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType]
+            #   @param vehicle_number [String]
 
             # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet#amount_totals
             class AmountTotals < Lithic::Internal::Type::BaseModel
@@ -312,14 +289,10 @@ module Lithic
               #   # @return [Integer]
               #   attr_writer :net_sale
 
-              # @!parse
-              #   # @param discount [Integer]
-              #   # @param gross_sale [Integer]
-              #   # @param net_sale [Integer]
-              #   #
-              #   def initialize(discount: nil, gross_sale: nil, net_sale: nil, **) = super
-
-              # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+              # @!method initialize(discount: nil, gross_sale: nil, net_sale: nil)
+              #   @param discount [Integer]
+              #   @param gross_sale [Integer]
+              #   @param net_sale [Integer]
             end
 
             # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet#fuel
@@ -365,15 +338,11 @@ module Lithic
               #   # @return [Integer]
               #   attr_writer :unit_price
 
-              # @!parse
-              #   # @param quantity [Float]
-              #   # @param type [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type]
-              #   # @param unit_of_measure [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure]
-              #   # @param unit_price [Integer]
-              #   #
-              #   def initialize(quantity: nil, type: nil, unit_of_measure: nil, unit_price: nil, **) = super
-
-              # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+              # @!method initialize(quantity: nil, type: nil, unit_of_measure: nil, unit_price: nil)
+              #   @param quantity [Float]
+              #   @param type [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type]
+              #   @param unit_of_measure [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure]
+              #   @param unit_price [Integer]
 
               # The type of fuel purchased.
               #
@@ -502,11 +471,8 @@ module Lithic
                   :RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT_OFF_ROAD_NON_TAXABLE
                 MISCELLANEOUS_OTHER_FUEL = :MISCELLANEOUS_OTHER_FUEL
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
 
               # Unit of measure for fuel disbursement.
@@ -523,11 +489,8 @@ module Lithic
                 NOT_APPLICABLE = :NOT_APPLICABLE
                 UNKNOWN = :UNKNOWN
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -543,11 +506,8 @@ module Lithic
               FULL_SERVICE = :FULL_SERVICE
               NON_FUEL_ONLY = :NON_FUEL_ONLY
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
         end

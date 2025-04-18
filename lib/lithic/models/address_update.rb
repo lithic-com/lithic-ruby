@@ -66,17 +66,13 @@ module Lithic
       #   # @return [String]
       #   attr_writer :state
 
-      # @!parse
-      #   # @param address1 [String]
-      #   # @param address2 [String]
-      #   # @param city [String]
-      #   # @param country [String]
-      #   # @param postal_code [String]
-      #   # @param state [String]
-      #   #
-      #   def initialize(address1: nil, address2: nil, city: nil, country: nil, postal_code: nil, state: nil, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(address1: nil, address2: nil, city: nil, country: nil, postal_code: nil, state: nil)
+      #   @param address1 [String]
+      #   @param address2 [String]
+      #   @param city [String]
+      #   @param country [String]
+      #   @param postal_code [String]
+      #   @param state [String]
     end
   end
 end

@@ -84,31 +84,15 @@ module Lithic
         #   # @return [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status]
         #   attr_writer :status
 
-        # @!parse
-        #   # @param begin_ [Time]
-        #   # @param category [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category]
-        #   # @param end_ [Time]
-        #   # @param ending_before [String]
-        #   # @param result [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result]
-        #   # @param starting_after [String]
-        #   # @param status [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(
-        #     begin_: nil,
-        #     category: nil,
-        #     end_: nil,
-        #     ending_before: nil,
-        #     result: nil,
-        #     starting_after: nil,
-        #     status: nil,
-        #     request_options: {},
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(begin_: nil, category: nil, end_: nil, ending_before: nil, result: nil, starting_after: nil, status: nil, request_options: {})
+        #   @param begin_ [Time]
+        #   @param category [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category]
+        #   @param end_ [Time]
+        #   @param ending_before [String]
+        #   @param result [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result]
+        #   @param starting_after [String]
+        #   @param status [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
         # Financial Transaction category to be returned.
         module Category
@@ -119,11 +103,8 @@ module Lithic
           INTERNAL = :INTERNAL
           TRANSFER = :TRANSFER
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Financial Transaction result to be returned.
@@ -133,11 +114,8 @@ module Lithic
           APPROVED = :APPROVED
           DECLINED = :DECLINED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Financial Transaction status to be returned.
@@ -151,11 +129,8 @@ module Lithic
           SETTLED = :SETTLED
           VOIDED = :VOIDED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

@@ -14,12 +14,8 @@ module Lithic
       #   # @return [String]
       #   attr_writer :debugging_request_id
 
-      # @!parse
-      #   # @param debugging_request_id [String]
-      #   #
-      #   def initialize(debugging_request_id: nil, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(debugging_request_id: nil)
+      #   @param debugging_request_id [String]
     end
   end
 end

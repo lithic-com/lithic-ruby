@@ -13,12 +13,8 @@ module Lithic
       #   # @return [String]
       #   attr_writer :qr_code_url
 
-      # @!parse
-      #   # @param qr_code_url [String]
-      #   #
-      #   def initialize(qr_code_url: nil, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(qr_code_url: nil)
+      #   @param qr_code_url [String]
     end
   end
 end

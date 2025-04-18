@@ -13,12 +13,8 @@ module Lithic
       #   # @return [Array<Lithic::Models::Tokenization>]
       #   attr_writer :data
 
-      # @!parse
-      #   # @param data [Array<Lithic::Models::Tokenization>]
-      #   #
-      #   def initialize(data: nil, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(data: nil)
+      #   @param data [Array<Lithic::Models::Tokenization>]
     end
   end
 end

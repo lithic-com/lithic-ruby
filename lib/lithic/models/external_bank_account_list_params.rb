@@ -97,35 +97,17 @@ module Lithic
       #   # @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState>]
       #   attr_writer :verification_states
 
-      # @!parse
-      #   # @param account_token [String]
-      #   # @param account_types [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType>]
-      #   # @param countries [Array<String>]
-      #   # @param ending_before [String]
-      #   # @param owner_types [Array<Symbol, Lithic::Models::OwnerType>]
-      #   # @param page_size [Integer]
-      #   # @param starting_after [String]
-      #   # @param states [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::State>]
-      #   # @param verification_states [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState>]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     account_token: nil,
-      #     account_types: nil,
-      #     countries: nil,
-      #     ending_before: nil,
-      #     owner_types: nil,
-      #     page_size: nil,
-      #     starting_after: nil,
-      #     states: nil,
-      #     verification_states: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_token: nil, account_types: nil, countries: nil, ending_before: nil, owner_types: nil, page_size: nil, starting_after: nil, states: nil, verification_states: nil, request_options: {})
+      #   @param account_token [String]
+      #   @param account_types [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType>]
+      #   @param countries [Array<String>]
+      #   @param ending_before [String]
+      #   @param owner_types [Array<Symbol, Lithic::Models::OwnerType>]
+      #   @param page_size [Integer]
+      #   @param starting_after [String]
+      #   @param states [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::State>]
+      #   @param verification_states [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState>]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       module AccountType
         extend Lithic::Internal::Type::Enum
@@ -133,11 +115,8 @@ module Lithic
         CHECKING = :CHECKING
         SAVINGS = :SAVINGS
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       module State
@@ -147,11 +126,8 @@ module Lithic
         CLOSED = :CLOSED
         PAUSED = :PAUSED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       module VerificationState
@@ -162,11 +138,8 @@ module Lithic
         FAILED_VERIFICATION = :FAILED_VERIFICATION
         INSUFFICIENT_FUNDS = :INSUFFICIENT_FUNDS
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

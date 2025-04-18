@@ -91,33 +91,16 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel]
       #   attr_writer :tokenization_channel
 
-      # @!parse
-      #   # @param account_token [String]
-      #   # @param begin_ [Date]
-      #   # @param card_token [String]
-      #   # @param end_ [Date]
-      #   # @param ending_before [String]
-      #   # @param page_size [Integer]
-      #   # @param starting_after [String]
-      #   # @param tokenization_channel [Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     account_token: nil,
-      #     begin_: nil,
-      #     card_token: nil,
-      #     end_: nil,
-      #     ending_before: nil,
-      #     page_size: nil,
-      #     starting_after: nil,
-      #     tokenization_channel: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_token: nil, begin_: nil, card_token: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, tokenization_channel: nil, request_options: {})
+      #   @param account_token [String]
+      #   @param begin_ [Date]
+      #   @param card_token [String]
+      #   @param end_ [Date]
+      #   @param ending_before [String]
+      #   @param page_size [Integer]
+      #   @param starting_after [String]
+      #   @param tokenization_channel [Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Filter for tokenizations by tokenization channel. If this is not specified, only
       # DIGITAL_WALLET tokenizations will be returned.
@@ -128,11 +111,8 @@ module Lithic
         MERCHANT = :MERCHANT
         ALL = :ALL
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

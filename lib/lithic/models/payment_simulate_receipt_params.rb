@@ -42,17 +42,13 @@ module Lithic
       #   # @return [String]
       #   attr_writer :memo
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param amount [Integer]
-      #   # @param financial_account_token [String]
-      #   # @param receipt_type [Symbol, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType]
-      #   # @param memo [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(token:, amount:, financial_account_token:, receipt_type:, memo: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, amount:, financial_account_token:, receipt_type:, memo: nil, request_options: {})
+      #   @param token [String]
+      #   @param amount [Integer]
+      #   @param financial_account_token [String]
+      #   @param receipt_type [Symbol, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType]
+      #   @param memo [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Receipt Type
       module ReceiptType
@@ -61,11 +57,8 @@ module Lithic
         RECEIPT_CREDIT = :RECEIPT_CREDIT
         RECEIPT_DEBIT = :RECEIPT_DEBIT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

@@ -67,35 +67,17 @@ module Lithic
       #   # @return [String]
       #   attr_writer :user_defined_id
 
-      # @!parse
-      #   # @param amount [Integer]
-      #   # @param external_bank_account_token [String]
-      #   # @param financial_account_token [String]
-      #   # @param method_ [Symbol, Lithic::Models::PaymentCreateParams::Method]
-      #   # @param method_attributes [Lithic::Models::PaymentCreateParams::MethodAttributes]
-      #   # @param type [Symbol, Lithic::Models::PaymentCreateParams::Type]
-      #   # @param token [String]
-      #   # @param memo [String]
-      #   # @param user_defined_id [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     amount:,
-      #     external_bank_account_token:,
-      #     financial_account_token:,
-      #     method_:,
-      #     method_attributes:,
-      #     type:,
-      #     token: nil,
-      #     memo: nil,
-      #     user_defined_id: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, type:, token: nil, memo: nil, user_defined_id: nil, request_options: {})
+      #   @param amount [Integer]
+      #   @param external_bank_account_token [String]
+      #   @param financial_account_token [String]
+      #   @param method_ [Symbol, Lithic::Models::PaymentCreateParams::Method]
+      #   @param method_attributes [Lithic::Models::PaymentCreateParams::MethodAttributes]
+      #   @param type [Symbol, Lithic::Models::PaymentCreateParams::Type]
+      #   @param token [String]
+      #   @param memo [String]
+      #   @param user_defined_id [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       module Method
         extend Lithic::Internal::Type::Enum
@@ -103,11 +85,8 @@ module Lithic
         ACH_NEXT_DAY = :ACH_NEXT_DAY
         ACH_SAME_DAY = :ACH_SAME_DAY
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       class MethodAttributes < Lithic::Internal::Type::BaseModel
@@ -116,12 +95,8 @@ module Lithic
         #   @return [Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode]
         required :sec_code, enum: -> { Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode }
 
-        # @!parse
-        #   # @param sec_code [Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode]
-        #   #
-        #   def initialize(sec_code:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(sec_code:)
+        #   @param sec_code [Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode]
 
         # @see Lithic::Models::PaymentCreateParams::MethodAttributes#sec_code
         module SecCode
@@ -131,11 +106,8 @@ module Lithic
           PPD = :PPD
           WEB = :WEB
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -145,11 +117,8 @@ module Lithic
         COLLECTION = :COLLECTION
         PAYMENT = :PAYMENT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

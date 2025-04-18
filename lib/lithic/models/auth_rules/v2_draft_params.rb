@@ -15,13 +15,9 @@ module Lithic
         #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, nil]
         optional :parameters, union: -> { Lithic::Models::AuthRules::V2DraftParams::Parameters }, nil?: true
 
-        # @!parse
-        #   # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, nil]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(parameters: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(parameters: nil, request_options: {})
+        #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, nil]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
         # Parameters for the Auth Rule
         module Parameters
@@ -31,9 +27,8 @@ module Lithic
 
           variant -> { Lithic::Models::AuthRules::VelocityLimitParams }
 
-          # @!parse
-          #   # @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams)]
         end
       end
     end

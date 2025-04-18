@@ -11,11 +11,8 @@ module Lithic
       PRENOTE = :PRENOTE
       EXTERNALLY_VERIFIED = :EXTERNALLY_VERIFIED
 
-      finalize!
-
-      # @!parse
-      #   # @return [Array<Symbol>]
-      #   def self.values; end
+      # @!method self.values
+      #   @return [Array<Symbol>]
     end
   end
 end

@@ -9,12 +9,8 @@ module Lithic
         #   extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        # @!parse
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(request_options: {}, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(request_options: {})
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

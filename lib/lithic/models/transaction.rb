@@ -165,65 +165,32 @@ module Lithic
       #   # @return [Array<Lithic::Models::Transaction::Event>]
       #   attr_writer :events
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param account_token [String]
-      #   # @param acquirer_fee [Integer, nil]
-      #   # @param acquirer_reference_number [String, nil]
-      #   # @param amount [Integer]
-      #   # @param amounts [Lithic::Models::Transaction::Amounts]
-      #   # @param authorization_amount [Integer, nil]
-      #   # @param authorization_code [String, nil]
-      #   # @param avs [Lithic::Models::Transaction::Avs, nil]
-      #   # @param card_token [String]
-      #   # @param cardholder_authentication [Lithic::Models::Transaction::CardholderAuthentication, nil]
-      #   # @param created [Time]
-      #   # @param merchant [Lithic::Models::Transaction::Merchant]
-      #   # @param merchant_amount [Integer, nil]
-      #   # @param merchant_authorization_amount [Integer, nil]
-      #   # @param merchant_currency [String]
-      #   # @param network [Symbol, Lithic::Models::Transaction::Network, nil]
-      #   # @param network_risk_score [Integer, nil]
-      #   # @param pos [Lithic::Models::Transaction::Pos]
-      #   # @param result [Symbol, Lithic::Models::Transaction::Result]
-      #   # @param settled_amount [Integer]
-      #   # @param status [Symbol, Lithic::Models::Transaction::Status]
-      #   # @param token_info [Lithic::Models::Transaction::TokenInfo, nil]
-      #   # @param updated [Time]
-      #   # @param events [Array<Lithic::Models::Transaction::Event>]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     account_token:,
-      #     acquirer_fee:,
-      #     acquirer_reference_number:,
-      #     amount:,
-      #     amounts:,
-      #     authorization_amount:,
-      #     authorization_code:,
-      #     avs:,
-      #     card_token:,
-      #     cardholder_authentication:,
-      #     created:,
-      #     merchant:,
-      #     merchant_amount:,
-      #     merchant_authorization_amount:,
-      #     merchant_currency:,
-      #     network:,
-      #     network_risk_score:,
-      #     pos:,
-      #     result:,
-      #     settled_amount:,
-      #     status:,
-      #     token_info:,
-      #     updated:,
-      #     events: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, account_token:, acquirer_fee:, acquirer_reference_number:, amount:, amounts:, authorization_amount:, authorization_code:, avs:, card_token:, cardholder_authentication:, created:, merchant:, merchant_amount:, merchant_authorization_amount:, merchant_currency:, network:, network_risk_score:, pos:, result:, settled_amount:, status:, token_info:, updated:, events: nil)
+      #   @param token [String]
+      #   @param account_token [String]
+      #   @param acquirer_fee [Integer, nil]
+      #   @param acquirer_reference_number [String, nil]
+      #   @param amount [Integer]
+      #   @param amounts [Lithic::Models::Transaction::Amounts]
+      #   @param authorization_amount [Integer, nil]
+      #   @param authorization_code [String, nil]
+      #   @param avs [Lithic::Models::Transaction::Avs, nil]
+      #   @param card_token [String]
+      #   @param cardholder_authentication [Lithic::Models::Transaction::CardholderAuthentication, nil]
+      #   @param created [Time]
+      #   @param merchant [Lithic::Models::Transaction::Merchant]
+      #   @param merchant_amount [Integer, nil]
+      #   @param merchant_authorization_amount [Integer, nil]
+      #   @param merchant_currency [String]
+      #   @param network [Symbol, Lithic::Models::Transaction::Network, nil]
+      #   @param network_risk_score [Integer, nil]
+      #   @param pos [Lithic::Models::Transaction::Pos]
+      #   @param result [Symbol, Lithic::Models::Transaction::Result]
+      #   @param settled_amount [Integer]
+      #   @param status [Symbol, Lithic::Models::Transaction::Status]
+      #   @param token_info [Lithic::Models::Transaction::TokenInfo, nil]
+      #   @param updated [Time]
+      #   @param events [Array<Lithic::Models::Transaction::Event>]
 
       # @see Lithic::Models::Transaction#amounts
       class Amounts < Lithic::Internal::Type::BaseModel
@@ -247,15 +214,11 @@ module Lithic
         #   @return [Lithic::Models::Transaction::Amounts::Settlement]
         required :settlement, -> { Lithic::Models::Transaction::Amounts::Settlement }
 
-        # @!parse
-        #   # @param cardholder [Lithic::Models::Transaction::Amounts::Cardholder]
-        #   # @param hold [Lithic::Models::Transaction::Amounts::Hold]
-        #   # @param merchant [Lithic::Models::Transaction::Amounts::Merchant]
-        #   # @param settlement [Lithic::Models::Transaction::Amounts::Settlement]
-        #   #
-        #   def initialize(cardholder:, hold:, merchant:, settlement:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(cardholder:, hold:, merchant:, settlement:)
+        #   @param cardholder [Lithic::Models::Transaction::Amounts::Cardholder]
+        #   @param hold [Lithic::Models::Transaction::Amounts::Hold]
+        #   @param merchant [Lithic::Models::Transaction::Amounts::Merchant]
+        #   @param settlement [Lithic::Models::Transaction::Amounts::Settlement]
 
         # @see Lithic::Models::Transaction::Amounts#cardholder
         class Cardholder < Lithic::Internal::Type::BaseModel
@@ -279,14 +242,10 @@ module Lithic
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param amount [Integer]
-          #   # @param conversion_rate [String]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(amount:, conversion_rate:, currency:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount:, conversion_rate:, currency:)
+          #   @param amount [Integer]
+          #   @param conversion_rate [String]
+          #   @param currency [String]
         end
 
         # @see Lithic::Models::Transaction::Amounts#hold
@@ -303,13 +262,9 @@ module Lithic
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param amount [Integer]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(amount:, currency:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount:, currency:)
+          #   @param amount [Integer]
+          #   @param currency [String]
         end
 
         # @see Lithic::Models::Transaction::Amounts#merchant
@@ -326,13 +281,9 @@ module Lithic
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param amount [Integer]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(amount:, currency:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount:, currency:)
+          #   @param amount [Integer]
+          #   @param currency [String]
         end
 
         # @see Lithic::Models::Transaction::Amounts#settlement
@@ -349,13 +300,9 @@ module Lithic
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param amount [Integer]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(amount:, currency:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount:, currency:)
+          #   @param amount [Integer]
+          #   @param currency [String]
         end
       end
 
@@ -373,13 +320,9 @@ module Lithic
         #   @return [String]
         required :zipcode, String
 
-        # @!parse
-        #   # @param address [String]
-        #   # @param zipcode [String]
-        #   #
-        #   def initialize(address:, zipcode:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(address:, zipcode:)
+        #   @param address [String]
+        #   @param zipcode [String]
       end
 
       # @see Lithic::Models::Transaction#cardholder_authentication
@@ -454,31 +397,15 @@ module Lithic
         required :verification_result,
                  enum: -> { Lithic::Models::Transaction::CardholderAuthentication::VerificationResult }
 
-        # @!parse
-        #   # @param three_ds_version [String, nil]
-        #   # @param acquirer_exemption [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption]
-        #   # @param authentication_result [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult]
-        #   # @param decision_made_by [Symbol, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy]
-        #   # @param liability_shift [Symbol, Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift]
-        #   # @param three_ds_authentication_token [String, nil]
-        #   # @param verification_attempted [Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted]
-        #   # @param verification_result [Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult]
-        #   #
-        #   def initialize(
-        #     three_ds_version:,
-        #     acquirer_exemption:,
-        #     authentication_result:,
-        #     decision_made_by:,
-        #     liability_shift:,
-        #     three_ds_authentication_token:,
-        #     verification_attempted:,
-        #     verification_result:,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(three_ds_version:, acquirer_exemption:, authentication_result:, decision_made_by:, liability_shift:, three_ds_authentication_token:, verification_attempted:, verification_result:)
+        #   @param three_ds_version [String, nil]
+        #   @param acquirer_exemption [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption]
+        #   @param authentication_result [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult]
+        #   @param decision_made_by [Symbol, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy]
+        #   @param liability_shift [Symbol, Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift]
+        #   @param three_ds_authentication_token [String, nil]
+        #   @param verification_attempted [Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted]
+        #   @param verification_result [Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult]
 
         # Whether an acquirer exemption applied to the transaction.
         #
@@ -495,11 +422,8 @@ module Lithic
           STRONG_CUSTOMER_AUTHENTICATION_DELEGATION = :STRONG_CUSTOMER_AUTHENTICATION_DELEGATION
           TRANSACTION_RISK_ANALYSIS = :TRANSACTION_RISK_ANALYSIS
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Indicates what the outcome of the 3DS authentication process is.
@@ -513,11 +437,8 @@ module Lithic
           NONE = :NONE
           SUCCESS = :SUCCESS
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Indicates which party made the 3DS authentication decision.
@@ -532,11 +453,8 @@ module Lithic
           NETWORK = :NETWORK
           UNKNOWN = :UNKNOWN
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Indicates whether chargeback liability shift applies to the transaction.
@@ -561,11 +479,8 @@ module Lithic
           NONE = :NONE
           TOKEN_AUTHENTICATED = :TOKEN_AUTHENTICATED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Indicates whether a 3DS challenge flow was used, and if so, what the
@@ -578,11 +493,8 @@ module Lithic
           NONE = :NONE
           OTHER = :OTHER
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
@@ -599,11 +511,8 @@ module Lithic
           REJECTED = :REJECTED
           SUCCESS = :SUCCESS
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -654,18 +563,14 @@ module Lithic
         #   @return [String]
         required :state, String
 
-        # @!parse
-        #   # @param acceptor_id [String]
-        #   # @param acquiring_institution_id [String]
-        #   # @param city [String]
-        #   # @param country [String]
-        #   # @param descriptor [String]
-        #   # @param mcc [String]
-        #   # @param state [String]
-        #   #
-        #   def initialize(acceptor_id:, acquiring_institution_id:, city:, country:, descriptor:, mcc:, state:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(acceptor_id:, acquiring_institution_id:, city:, country:, descriptor:, mcc:, state:)
+        #   @param acceptor_id [String]
+        #   @param acquiring_institution_id [String]
+        #   @param city [String]
+        #   @param country [String]
+        #   @param descriptor [String]
+        #   @param mcc [String]
+        #   @param state [String]
       end
 
       # Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
@@ -682,11 +587,8 @@ module Lithic
         UNKNOWN = :UNKNOWN
         VISA = :VISA
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::Transaction#pos
@@ -701,13 +603,9 @@ module Lithic
         #   @return [Lithic::Models::Transaction::Pos::Terminal]
         required :terminal, -> { Lithic::Models::Transaction::Pos::Terminal }
 
-        # @!parse
-        #   # @param entry_mode [Lithic::Models::Transaction::Pos::EntryMode]
-        #   # @param terminal [Lithic::Models::Transaction::Pos::Terminal]
-        #   #
-        #   def initialize(entry_mode:, terminal:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(entry_mode:, terminal:)
+        #   @param entry_mode [Lithic::Models::Transaction::Pos::EntryMode]
+        #   @param terminal [Lithic::Models::Transaction::Pos::Terminal]
 
         # @see Lithic::Models::Transaction::Pos#entry_mode
         class EntryMode < Lithic::Internal::Type::BaseModel
@@ -735,15 +633,11 @@ module Lithic
           #   @return [Boolean]
           required :pin_entered, Lithic::Internal::Type::Boolean
 
-          # @!parse
-          #   # @param card [Symbol, Lithic::Models::Transaction::Pos::EntryMode::Card]
-          #   # @param cardholder [Symbol, Lithic::Models::Transaction::Pos::EntryMode::Cardholder]
-          #   # @param pan [Symbol, Lithic::Models::Transaction::Pos::EntryMode::Pan]
-          #   # @param pin_entered [Boolean]
-          #   #
-          #   def initialize(card:, cardholder:, pan:, pin_entered:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(card:, cardholder:, pan:, pin_entered:)
+          #   @param card [Symbol, Lithic::Models::Transaction::Pos::EntryMode::Card]
+          #   @param cardholder [Symbol, Lithic::Models::Transaction::Pos::EntryMode::Cardholder]
+          #   @param pan [Symbol, Lithic::Models::Transaction::Pos::EntryMode::Pan]
+          #   @param pin_entered [Boolean]
 
           # Card presence indicator
           #
@@ -756,11 +650,8 @@ module Lithic
             PRESENT = :PRESENT
             UNKNOWN = :UNKNOWN
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # Cardholder presence indicator
@@ -780,11 +671,8 @@ module Lithic
             TELEPHONE_ORDER = :TELEPHONE_ORDER
             UNKNOWN = :UNKNOWN
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # Method of entry for the PAN
@@ -809,11 +697,8 @@ module Lithic
             UNKNOWN = :UNKNOWN
             UNSPECIFIED = :UNSPECIFIED
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -865,29 +750,14 @@ module Lithic
           #   @return [Symbol, Lithic::Models::Transaction::Pos::Terminal::Type]
           required :type, enum: -> { Lithic::Models::Transaction::Pos::Terminal::Type }
 
-          # @!parse
-          #   # @param attended [Boolean]
-          #   # @param card_retention_capable [Boolean]
-          #   # @param on_premise [Boolean]
-          #   # @param operator [Symbol, Lithic::Models::Transaction::Pos::Terminal::Operator]
-          #   # @param partial_approval_capable [Boolean]
-          #   # @param pin_capability [Symbol, Lithic::Models::Transaction::Pos::Terminal::PinCapability]
-          #   # @param type [Symbol, Lithic::Models::Transaction::Pos::Terminal::Type]
-          #   #
-          #   def initialize(
-          #     attended:,
-          #     card_retention_capable:,
-          #     on_premise:,
-          #     operator:,
-          #     partial_approval_capable:,
-          #     pin_capability:,
-          #     type:,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(attended:, card_retention_capable:, on_premise:, operator:, partial_approval_capable:, pin_capability:, type:)
+          #   @param attended [Boolean]
+          #   @param card_retention_capable [Boolean]
+          #   @param on_premise [Boolean]
+          #   @param operator [Symbol, Lithic::Models::Transaction::Pos::Terminal::Operator]
+          #   @param partial_approval_capable [Boolean]
+          #   @param pin_capability [Symbol, Lithic::Models::Transaction::Pos::Terminal::PinCapability]
+          #   @param type [Symbol, Lithic::Models::Transaction::Pos::Terminal::Type]
 
           # The person that is designated to swipe the card
           #
@@ -900,11 +770,8 @@ module Lithic
             CARD_ACCEPTOR = :CARD_ACCEPTOR
             UNKNOWN = :UNKNOWN
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # Status of whether the POS is able to accept PINs
@@ -918,11 +785,8 @@ module Lithic
             NOT_CAPABLE = :NOT_CAPABLE
             UNSPECIFIED = :UNSPECIFIED
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # POS Type
@@ -956,11 +820,8 @@ module Lithic
             VOICE = :VOICE
             UNKNOWN = :UNKNOWN
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
       end
@@ -993,11 +854,8 @@ module Lithic
         UNKNOWN_HOST_TIMEOUT = :UNKNOWN_HOST_TIMEOUT
         USER_TRANSACTION_LIMIT = :USER_TRANSACTION_LIMIT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Status of the transaction.
@@ -1012,11 +870,8 @@ module Lithic
         SETTLED = :SETTLED
         VOIDED = :VOIDED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::Transaction#token_info
@@ -1030,12 +885,8 @@ module Lithic
         #   @return [Symbol, Lithic::Models::Transaction::TokenInfo::WalletType]
         required :wallet_type, enum: -> { Lithic::Models::Transaction::TokenInfo::WalletType }
 
-        # @!parse
-        #   # @param wallet_type [Symbol, Lithic::Models::Transaction::TokenInfo::WalletType]
-        #   #
-        #   def initialize(wallet_type:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(wallet_type:)
+        #   @param wallet_type [Symbol, Lithic::Models::Transaction::TokenInfo::WalletType]
 
         # The wallet_type field will indicate the source of the token. Possible token
         # sources include digital wallets (Apple, Google, or Samsung Pay), merchant
@@ -1053,11 +904,8 @@ module Lithic
           OTHER = :OTHER
           SAMSUNG_PAY = :SAMSUNG_PAY
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -1128,35 +976,17 @@ module Lithic
         #   @return [Symbol, Lithic::Models::Transaction::Event::Type]
         required :type, enum: -> { Lithic::Models::Transaction::Event::Type }
 
-        # @!parse
-        #   # @param token [String]
-        #   # @param amount [Integer]
-        #   # @param amounts [Lithic::Models::Transaction::Event::Amounts]
-        #   # @param created [Time]
-        #   # @param detailed_results [Array<Symbol, Lithic::Models::Transaction::Event::DetailedResult>]
-        #   # @param effective_polarity [Symbol, Lithic::Models::Transaction::Event::EffectivePolarity]
-        #   # @param network_info [Lithic::Models::Transaction::Event::NetworkInfo, nil]
-        #   # @param result [Symbol, Lithic::Models::Transaction::Event::Result]
-        #   # @param rule_results [Array<Lithic::Models::Transaction::Event::RuleResult>]
-        #   # @param type [Symbol, Lithic::Models::Transaction::Event::Type]
-        #   #
-        #   def initialize(
-        #     token:,
-        #     amount:,
-        #     amounts:,
-        #     created:,
-        #     detailed_results:,
-        #     effective_polarity:,
-        #     network_info:,
-        #     result:,
-        #     rule_results:,
-        #     type:,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, amount:, amounts:, created:, detailed_results:, effective_polarity:, network_info:, result:, rule_results:, type:)
+        #   @param token [String]
+        #   @param amount [Integer]
+        #   @param amounts [Lithic::Models::Transaction::Event::Amounts]
+        #   @param created [Time]
+        #   @param detailed_results [Array<Symbol, Lithic::Models::Transaction::Event::DetailedResult>]
+        #   @param effective_polarity [Symbol, Lithic::Models::Transaction::Event::EffectivePolarity]
+        #   @param network_info [Lithic::Models::Transaction::Event::NetworkInfo, nil]
+        #   @param result [Symbol, Lithic::Models::Transaction::Event::Result]
+        #   @param rule_results [Array<Lithic::Models::Transaction::Event::RuleResult>]
+        #   @param type [Symbol, Lithic::Models::Transaction::Event::Type]
 
         # @see Lithic::Models::Transaction::Event#amounts
         class Amounts < Lithic::Internal::Type::BaseModel
@@ -1175,14 +1005,10 @@ module Lithic
           #   @return [Lithic::Models::Transaction::Event::Amounts::Settlement, nil]
           required :settlement, -> { Lithic::Models::Transaction::Event::Amounts::Settlement }, nil?: true
 
-          # @!parse
-          #   # @param cardholder [Lithic::Models::Transaction::Event::Amounts::Cardholder]
-          #   # @param merchant [Lithic::Models::Transaction::Event::Amounts::Merchant]
-          #   # @param settlement [Lithic::Models::Transaction::Event::Amounts::Settlement, nil]
-          #   #
-          #   def initialize(cardholder:, merchant:, settlement:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(cardholder:, merchant:, settlement:)
+          #   @param cardholder [Lithic::Models::Transaction::Event::Amounts::Cardholder]
+          #   @param merchant [Lithic::Models::Transaction::Event::Amounts::Merchant]
+          #   @param settlement [Lithic::Models::Transaction::Event::Amounts::Settlement, nil]
 
           # @see Lithic::Models::Transaction::Event::Amounts#cardholder
           class Cardholder < Lithic::Internal::Type::BaseModel
@@ -1205,14 +1031,10 @@ module Lithic
             #   @return [String]
             required :currency, String
 
-            # @!parse
-            #   # @param amount [Integer]
-            #   # @param conversion_rate [String]
-            #   # @param currency [String]
-            #   #
-            #   def initialize(amount:, conversion_rate:, currency:, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(amount:, conversion_rate:, currency:)
+            #   @param amount [Integer]
+            #   @param conversion_rate [String]
+            #   @param currency [String]
           end
 
           # @see Lithic::Models::Transaction::Event::Amounts#merchant
@@ -1229,13 +1051,9 @@ module Lithic
             #   @return [String]
             required :currency, String
 
-            # @!parse
-            #   # @param amount [Integer]
-            #   # @param currency [String]
-            #   #
-            #   def initialize(amount:, currency:, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(amount:, currency:)
+            #   @param amount [Integer]
+            #   @param currency [String]
           end
 
           # @see Lithic::Models::Transaction::Event::Amounts#settlement
@@ -1259,14 +1077,10 @@ module Lithic
             #   @return [String]
             required :currency, String
 
-            # @!parse
-            #   # @param amount [Integer]
-            #   # @param conversion_rate [String]
-            #   # @param currency [String]
-            #   #
-            #   def initialize(amount:, conversion_rate:, currency:, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(amount:, conversion_rate:, currency:)
+            #   @param amount [Integer]
+            #   @param conversion_rate [String]
+            #   @param currency [String]
           end
         end
 
@@ -1326,11 +1140,8 @@ module Lithic
           UNAUTHORIZED_MERCHANT = :UNAUTHORIZED_MERCHANT
           VEHICLE_NUMBER_INVALID = :VEHICLE_NUMBER_INVALID
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Indicates whether the transaction event is a credit or debit to the account.
@@ -1342,11 +1153,8 @@ module Lithic
           CREDIT = :CREDIT
           DEBIT = :DEBIT
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Lithic::Models::Transaction::Event#network_info
@@ -1366,24 +1174,20 @@ module Lithic
           #   @return [Lithic::Models::Transaction::Event::NetworkInfo::Visa, nil]
           required :visa, -> { Lithic::Models::Transaction::Event::NetworkInfo::Visa }, nil?: true
 
-          # @!parse
-          #   # Information provided by the card network in each event. This includes common
-          #   # identifiers shared between you, Lithic, the card network and in some cases the
-          #   # acquirer. These identifiers often link together events within the same
-          #   # transaction lifecycle and can be used to locate a particular transaction, such
-          #   # as during processing of disputes. Not all fields are available in all events,
-          #   # and the presence of these fields is dependent on the card network and the event
-          #   # type. If the field is populated by the network, we will pass it through as is
-          #   # unless otherwise specified. Please consult the official network documentation
-          #   # for more details about these fields and how to use them.
-          #   #
-          #   # @param acquirer [Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, nil]
-          #   # @param mastercard [Lithic::Models::Transaction::Event::NetworkInfo::Mastercard, nil]
-          #   # @param visa [Lithic::Models::Transaction::Event::NetworkInfo::Visa, nil]
-          #   #
-          #   def initialize(acquirer:, mastercard:, visa:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(acquirer:, mastercard:, visa:)
+          #   Information provided by the card network in each event. This includes common
+          #   identifiers shared between you, Lithic, the card network and in some cases the
+          #   acquirer. These identifiers often link together events within the same
+          #   transaction lifecycle and can be used to locate a particular transaction, such
+          #   as during processing of disputes. Not all fields are available in all events,
+          #   and the presence of these fields is dependent on the card network and the event
+          #   type. If the field is populated by the network, we will pass it through as is
+          #   unless otherwise specified. Please consult the official network documentation
+          #   for more details about these fields and how to use them.
+          #
+          #   @param acquirer [Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, nil]
+          #   @param mastercard [Lithic::Models::Transaction::Event::NetworkInfo::Mastercard, nil]
+          #   @param visa [Lithic::Models::Transaction::Event::NetworkInfo::Visa, nil]
 
           # @see Lithic::Models::Transaction::Event::NetworkInfo#acquirer
           class Acquirer < Lithic::Internal::Type::BaseModel
@@ -1403,13 +1207,9 @@ module Lithic
             #   @return [String, nil]
             required :retrieval_reference_number, String, nil?: true
 
-            # @!parse
-            #   # @param acquirer_reference_number [String, nil]
-            #   # @param retrieval_reference_number [String, nil]
-            #   #
-            #   def initialize(acquirer_reference_number:, retrieval_reference_number:, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(acquirer_reference_number:, retrieval_reference_number:)
+            #   @param acquirer_reference_number [String, nil]
+            #   @param retrieval_reference_number [String, nil]
           end
 
           # @see Lithic::Models::Transaction::Event::NetworkInfo#mastercard
@@ -1452,23 +1252,11 @@ module Lithic
             #   @return [String, nil]
             required :switch_serial_number, String, nil?: true
 
-            # @!parse
-            #   # @param banknet_reference_number [String, nil]
-            #   # @param original_banknet_reference_number [String, nil]
-            #   # @param original_switch_serial_number [String, nil]
-            #   # @param switch_serial_number [String, nil]
-            #   #
-            #   def initialize(
-            #     banknet_reference_number:,
-            #     original_banknet_reference_number:,
-            #     original_switch_serial_number:,
-            #     switch_serial_number:,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(banknet_reference_number:, original_banknet_reference_number:, original_switch_serial_number:, switch_serial_number:)
+            #   @param banknet_reference_number [String, nil]
+            #   @param original_banknet_reference_number [String, nil]
+            #   @param original_switch_serial_number [String, nil]
+            #   @param switch_serial_number [String, nil]
           end
 
           # @see Lithic::Models::Transaction::Event::NetworkInfo#visa
@@ -1490,13 +1278,9 @@ module Lithic
             #   @return [String, nil]
             required :transaction_id, String, nil?: true
 
-            # @!parse
-            #   # @param original_transaction_id [String, nil]
-            #   # @param transaction_id [String, nil]
-            #   #
-            #   def initialize(original_transaction_id:, transaction_id:, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(original_transaction_id:, transaction_id:)
+            #   @param original_transaction_id [String, nil]
+            #   @param transaction_id [String, nil]
           end
         end
 
@@ -1528,11 +1312,8 @@ module Lithic
           UNKNOWN_HOST_TIMEOUT = :UNKNOWN_HOST_TIMEOUT
           USER_TRANSACTION_LIMIT = :USER_TRANSACTION_LIMIT
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         class RuleResult < Lithic::Internal::Type::BaseModel
@@ -1563,15 +1344,11 @@ module Lithic
           #   @return [Symbol, Lithic::Models::Transaction::Event::RuleResult::Result]
           required :result, enum: -> { Lithic::Models::Transaction::Event::RuleResult::Result }
 
-          # @!parse
-          #   # @param auth_rule_token [String, nil]
-          #   # @param explanation [String, nil]
-          #   # @param name [String, nil]
-          #   # @param result [Symbol, Lithic::Models::Transaction::Event::RuleResult::Result]
-          #   #
-          #   def initialize(auth_rule_token:, explanation:, name:, result:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(auth_rule_token:, explanation:, name:, result:)
+          #   @param auth_rule_token [String, nil]
+          #   @param explanation [String, nil]
+          #   @param name [String, nil]
+          #   @param result [Symbol, Lithic::Models::Transaction::Event::RuleResult::Result]
 
           # The detailed_result associated with this rule's decline.
           #
@@ -1632,11 +1409,8 @@ module Lithic
             UNAUTHORIZED_MERCHANT = :UNAUTHORIZED_MERCHANT
             VEHICLE_NUMBER_INVALID = :VEHICLE_NUMBER_INVALID
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -1661,11 +1435,8 @@ module Lithic
           RETURN = :RETURN
           RETURN_REVERSAL = :RETURN_REVERSAL
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

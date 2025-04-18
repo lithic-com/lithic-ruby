@@ -33,18 +33,14 @@ module Lithic
                -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType] },
                nil?: true
 
-      # @!parse
-      #   # A subscription to specific event types.
-      #   #
-      #   # @param token [String]
-      #   # @param description [String]
-      #   # @param disabled [Boolean]
-      #   # @param url [String]
-      #   # @param event_types [Array<Symbol, Lithic::Models::EventSubscription::EventType>, nil]
-      #   #
-      #   def initialize(token:, description:, disabled:, url:, event_types: nil, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, description:, disabled:, url:, event_types: nil)
+      #   A subscription to specific event types.
+      #
+      #   @param token [String]
+      #   @param description [String]
+      #   @param disabled [Boolean]
+      #   @param url [String]
+      #   @param event_types [Array<Symbol, Lithic::Models::EventSubscription::EventType>, nil]
 
       module EventType
         extend Lithic::Internal::Type::Enum
@@ -94,11 +90,8 @@ module Lithic
         TOKENIZATION_TWO_FACTOR_AUTHENTICATION_CODE_SENT = :"tokenization.two_factor_authentication_code_sent"
         TOKENIZATION_UPDATED = :"tokenization.updated"
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

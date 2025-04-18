@@ -20,14 +20,10 @@ module Lithic
       #   @return [String]
       required :entity_token, String
 
-      # @!parse
-      #   # @param document_type [Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType]
-      #   # @param entity_token [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(document_type:, entity_token:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(document_type:, entity_token:, request_options: {})
+      #   @param document_type [Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType]
+      #   @param entity_token [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # The type of document to upload
       module DocumentType
@@ -53,11 +49,8 @@ module Lithic
         ITIN_LETTER = :ITIN_LETTER
         FINCEN_BOI_REPORT = :FINCEN_BOI_REPORT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

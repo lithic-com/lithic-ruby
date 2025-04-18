@@ -83,31 +83,15 @@ module Lithic
       #   # @return [Boolean]
       #   attr_writer :with_content
 
-      # @!parse
-      #   # @param begin_ [Time]
-      #   # @param end_ [Time]
-      #   # @param ending_before [String]
-      #   # @param event_types [Array<Symbol, Lithic::Models::EventListParams::EventType>]
-      #   # @param page_size [Integer]
-      #   # @param starting_after [String]
-      #   # @param with_content [Boolean]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     begin_: nil,
-      #     end_: nil,
-      #     ending_before: nil,
-      #     event_types: nil,
-      #     page_size: nil,
-      #     starting_after: nil,
-      #     with_content: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(begin_: nil, end_: nil, ending_before: nil, event_types: nil, page_size: nil, starting_after: nil, with_content: nil, request_options: {})
+      #   @param begin_ [Time]
+      #   @param end_ [Time]
+      #   @param ending_before [String]
+      #   @param event_types [Array<Symbol, Lithic::Models::EventListParams::EventType>]
+      #   @param page_size [Integer]
+      #   @param starting_after [String]
+      #   @param with_content [Boolean]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       module EventType
         extend Lithic::Internal::Type::Enum
@@ -157,11 +141,8 @@ module Lithic
         TOKENIZATION_TWO_FACTOR_AUTHENTICATION_CODE_SENT = :"tokenization.two_factor_authentication_code_sent"
         TOKENIZATION_UPDATED = :"tokenization.updated"
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

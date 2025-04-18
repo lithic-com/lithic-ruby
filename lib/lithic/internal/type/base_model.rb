@@ -339,6 +339,8 @@ module Lithic
         end
 
         class << self
+          # @api private
+          #
           # @param model [Lithic::Internal::Type::BaseModel]
           #
           # @return [Hash{Symbol=>Object}]

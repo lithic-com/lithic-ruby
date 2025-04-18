@@ -50,17 +50,13 @@ module Lithic
       #   # @return [String]
       #   attr_writer :memo
 
-      # @!parse
-      #   # @param amount [Integer]
-      #   # @param from [String]
-      #   # @param to [String]
-      #   # @param token [String]
-      #   # @param memo [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(amount:, from:, to:, token: nil, memo: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount:, from:, to:, token: nil, memo: nil, request_options: {})
+      #   @param amount [Integer]
+      #   @param from [String]
+      #   @param to [String]
+      #   @param token [String]
+      #   @param memo [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

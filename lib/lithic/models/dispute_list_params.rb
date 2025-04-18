@@ -82,31 +82,15 @@ module Lithic
       #   # @return [Array<String>]
       #   attr_writer :transaction_tokens
 
-      # @!parse
-      #   # @param begin_ [Time]
-      #   # @param end_ [Time]
-      #   # @param ending_before [String]
-      #   # @param page_size [Integer]
-      #   # @param starting_after [String]
-      #   # @param status [Symbol, Lithic::Models::DisputeListParams::Status]
-      #   # @param transaction_tokens [Array<String>]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     begin_: nil,
-      #     end_: nil,
-      #     ending_before: nil,
-      #     page_size: nil,
-      #     starting_after: nil,
-      #     status: nil,
-      #     transaction_tokens: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, status: nil, transaction_tokens: nil, request_options: {})
+      #   @param begin_ [Time]
+      #   @param end_ [Time]
+      #   @param ending_before [String]
+      #   @param page_size [Integer]
+      #   @param starting_after [String]
+      #   @param status [Symbol, Lithic::Models::DisputeListParams::Status]
+      #   @param transaction_tokens [Array<String>]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # List disputes of a specific status.
       module Status
@@ -121,11 +105,8 @@ module Lithic
         REPRESENTMENT = :REPRESENTMENT
         SUBMITTED = :SUBMITTED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

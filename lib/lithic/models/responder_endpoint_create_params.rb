@@ -28,14 +28,10 @@ module Lithic
       #   # @return [String]
       #   attr_writer :url
 
-      # @!parse
-      #   # @param type [Symbol, Lithic::Models::ResponderEndpointCreateParams::Type]
-      #   # @param url [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(type: nil, url: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(type: nil, url: nil, request_options: {})
+      #   @param type [Symbol, Lithic::Models::ResponderEndpointCreateParams::Type]
+      #   @param url [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # The type of the endpoint.
       module Type
@@ -45,11 +41,8 @@ module Lithic
         THREE_DS_DECISIONING = :THREE_DS_DECISIONING
         TOKENIZATION_DECISIONING = :TOKENIZATION_DECISIONING
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

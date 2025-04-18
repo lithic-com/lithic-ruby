@@ -50,29 +50,14 @@ module Lithic
       #   # @return [Boolean]
       #   attr_writer :is_card_program_default
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param card_program_token [String]
-      #   # @param created [Time]
-      #   # @param description [String]
-      #   # @param is_enabled [Boolean]
-      #   # @param network [Symbol, Lithic::Models::DigitalCardArtAPI::Network]
-      #   # @param is_card_program_default [Boolean]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     card_program_token:,
-      #     created:,
-      #     description:,
-      #     is_enabled:,
-      #     network:,
-      #     is_card_program_default: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, card_program_token:, created:, description:, is_enabled:, network:, is_card_program_default: nil)
+      #   @param token [String]
+      #   @param card_program_token [String]
+      #   @param created [Time]
+      #   @param description [String]
+      #   @param is_enabled [Boolean]
+      #   @param network [Symbol, Lithic::Models::DigitalCardArtAPI::Network]
+      #   @param is_card_program_default [Boolean]
 
       # Card network.
       #
@@ -83,11 +68,8 @@ module Lithic
         MASTERCARD = :MASTERCARD
         VISA = :VISA
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

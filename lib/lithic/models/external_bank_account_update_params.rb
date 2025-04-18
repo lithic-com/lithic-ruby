@@ -98,35 +98,17 @@ module Lithic
       #   # @return [String]
       #   attr_writer :user_defined_id
 
-      # @!parse
-      #   # @param address [Lithic::Models::ExternalBankAccountAddress]
-      #   # @param company_id [String]
-      #   # @param dob [Date]
-      #   # @param doing_business_as [String]
-      #   # @param name [String]
-      #   # @param owner [String]
-      #   # @param owner_type [Symbol, Lithic::Models::OwnerType]
-      #   # @param type [Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type]
-      #   # @param user_defined_id [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     address: nil,
-      #     company_id: nil,
-      #     dob: nil,
-      #     doing_business_as: nil,
-      #     name: nil,
-      #     owner: nil,
-      #     owner_type: nil,
-      #     type: nil,
-      #     user_defined_id: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(address: nil, company_id: nil, dob: nil, doing_business_as: nil, name: nil, owner: nil, owner_type: nil, type: nil, user_defined_id: nil, request_options: {})
+      #   @param address [Lithic::Models::ExternalBankAccountAddress]
+      #   @param company_id [String]
+      #   @param dob [Date]
+      #   @param doing_business_as [String]
+      #   @param name [String]
+      #   @param owner [String]
+      #   @param owner_type [Symbol, Lithic::Models::OwnerType]
+      #   @param type [Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type]
+      #   @param user_defined_id [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       module Type
         extend Lithic::Internal::Type::Enum
@@ -134,11 +116,8 @@ module Lithic
         CHECKING = :CHECKING
         SAVINGS = :SAVINGS
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

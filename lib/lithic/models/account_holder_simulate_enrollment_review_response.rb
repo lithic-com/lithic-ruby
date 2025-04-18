@@ -249,55 +249,27 @@ module Lithic
       #   # @return [String]
       #   attr_writer :website_url
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param account_token [String]
-      #   # @param beneficial_owner_entities [Array<Lithic::Models::KYBBusinessEntity>]
-      #   # @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual>]
-      #   # @param business_account_token [String]
-      #   # @param business_entity [Lithic::Models::KYBBusinessEntity]
-      #   # @param control_person [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson]
-      #   # @param created [Time]
-      #   # @param email [String]
-      #   # @param exemption_type [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType]
-      #   # @param external_id [String]
-      #   # @param individual [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual]
-      #   # @param nature_of_business [String]
-      #   # @param phone_number [String]
-      #   # @param required_documents [Array<Lithic::Models::RequiredDocument>]
-      #   # @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status]
-      #   # @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason>]
-      #   # @param user_type [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType]
-      #   # @param verification_application [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication]
-      #   # @param website_url [String]
-      #   #
-      #   def initialize(
-      #     token: nil,
-      #     account_token: nil,
-      #     beneficial_owner_entities: nil,
-      #     beneficial_owner_individuals: nil,
-      #     business_account_token: nil,
-      #     business_entity: nil,
-      #     control_person: nil,
-      #     created: nil,
-      #     email: nil,
-      #     exemption_type: nil,
-      #     external_id: nil,
-      #     individual: nil,
-      #     nature_of_business: nil,
-      #     phone_number: nil,
-      #     required_documents: nil,
-      #     status: nil,
-      #     status_reasons: nil,
-      #     user_type: nil,
-      #     verification_application: nil,
-      #     website_url: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token: nil, account_token: nil, beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_account_token: nil, business_entity: nil, control_person: nil, created: nil, email: nil, exemption_type: nil, external_id: nil, individual: nil, nature_of_business: nil, phone_number: nil, required_documents: nil, status: nil, status_reasons: nil, user_type: nil, verification_application: nil, website_url: nil)
+      #   @param token [String]
+      #   @param account_token [String]
+      #   @param beneficial_owner_entities [Array<Lithic::Models::KYBBusinessEntity>]
+      #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual>]
+      #   @param business_account_token [String]
+      #   @param business_entity [Lithic::Models::KYBBusinessEntity]
+      #   @param control_person [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson]
+      #   @param created [Time]
+      #   @param email [String]
+      #   @param exemption_type [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType]
+      #   @param external_id [String]
+      #   @param individual [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual]
+      #   @param nature_of_business [String]
+      #   @param phone_number [String]
+      #   @param required_documents [Array<Lithic::Models::RequiredDocument>]
+      #   @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status]
+      #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason>]
+      #   @param user_type [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType]
+      #   @param verification_application [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication]
+      #   @param website_url [String]
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         # @!attribute [r] address
@@ -363,17 +335,13 @@ module Lithic
         #   # @return [String]
         #   attr_writer :phone_number
 
-        # @!parse
-        #   # @param address [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address]
-        #   # @param dob [String]
-        #   # @param email [String]
-        #   # @param first_name [String]
-        #   # @param last_name [String]
-        #   # @param phone_number [String]
-        #   #
-        #   def initialize(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil)
+        #   @param address [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address]
+        #   @param dob [String]
+        #   @param email [String]
+        #   @param first_name [String]
+        #   @param last_name [String]
+        #   @param phone_number [String]
 
         # @see Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual#address
         class Address < Lithic::Internal::Type::BaseModel
@@ -420,20 +388,16 @@ module Lithic
           #   # @return [String]
           #   attr_writer :address2
 
-          # @!parse
-          #   # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          #   # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-          #   #
-          #   # @param address1 [String]
-          #   # @param city [String]
-          #   # @param country [String]
-          #   # @param postal_code [String]
-          #   # @param state [String]
-          #   # @param address2 [String]
-          #   #
-          #   def initialize(address1:, city:, country:, postal_code:, state:, address2: nil, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
+          #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+          #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          #
+          #   @param address1 [String]
+          #   @param city [String]
+          #   @param country [String]
+          #   @param postal_code [String]
+          #   @param state [String]
+          #   @param address2 [String]
         end
       end
 
@@ -502,29 +466,25 @@ module Lithic
         #   # @return [String]
         #   attr_writer :phone_number
 
-        # @!parse
-        #   # Only present when user_type == "BUSINESS".
-        #   #
-        #   # An individual with significant responsibility for managing the legal entity
-        #   # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-        #   # Officer,
-        #   #
-        #   # Managing Member, General Partner, President, Vice President, or Treasurer). This
-        #   # can be an executive, or someone who will have program-wide access
-        #   #
-        #   # to the cards that Lithic will provide. In some cases, this individual could also
-        #   # be a beneficial owner listed above.
-        #   #
-        #   # @param address [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address]
-        #   # @param dob [String]
-        #   # @param email [String]
-        #   # @param first_name [String]
-        #   # @param last_name [String]
-        #   # @param phone_number [String]
-        #   #
-        #   def initialize(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil)
+        #   Only present when user_type == "BUSINESS".
+        #
+        #   An individual with significant responsibility for managing the legal entity
+        #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+        #   Officer,
+        #
+        #   Managing Member, General Partner, President, Vice President, or Treasurer). This
+        #   can be an executive, or someone who will have program-wide access
+        #
+        #   to the cards that Lithic will provide. In some cases, this individual could also
+        #   be a beneficial owner listed above.
+        #
+        #   @param address [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address]
+        #   @param dob [String]
+        #   @param email [String]
+        #   @param first_name [String]
+        #   @param last_name [String]
+        #   @param phone_number [String]
 
         # @see Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson#address
         class Address < Lithic::Internal::Type::BaseModel
@@ -571,20 +531,16 @@ module Lithic
           #   # @return [String]
           #   attr_writer :address2
 
-          # @!parse
-          #   # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          #   # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-          #   #
-          #   # @param address1 [String]
-          #   # @param city [String]
-          #   # @param country [String]
-          #   # @param postal_code [String]
-          #   # @param state [String]
-          #   # @param address2 [String]
-          #   #
-          #   def initialize(address1:, city:, country:, postal_code:, state:, address2: nil, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
+          #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+          #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          #
+          #   @param address1 [String]
+          #   @param city [String]
+          #   @param country [String]
+          #   @param postal_code [String]
+          #   @param state [String]
+          #   @param address2 [String]
         end
       end
 
@@ -598,11 +554,8 @@ module Lithic
         AUTHORIZED_USER = :AUTHORIZED_USER
         PREPAID_CARD_USER = :PREPAID_CARD_USER
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse#individual
@@ -670,20 +623,16 @@ module Lithic
         #   # @return [String]
         #   attr_writer :phone_number
 
-        # @!parse
-        #   # Only present when user_type == "INDIVIDUAL". Information about the individual
-        #   # for which the account is being opened and KYC is being run.
-        #   #
-        #   # @param address [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address]
-        #   # @param dob [String]
-        #   # @param email [String]
-        #   # @param first_name [String]
-        #   # @param last_name [String]
-        #   # @param phone_number [String]
-        #   #
-        #   def initialize(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil)
+        #   Only present when user_type == "INDIVIDUAL". Information about the individual
+        #   for which the account is being opened and KYC is being run.
+        #
+        #   @param address [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address]
+        #   @param dob [String]
+        #   @param email [String]
+        #   @param first_name [String]
+        #   @param last_name [String]
+        #   @param phone_number [String]
 
         # @see Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual#address
         class Address < Lithic::Internal::Type::BaseModel
@@ -730,20 +679,16 @@ module Lithic
           #   # @return [String]
           #   attr_writer :address2
 
-          # @!parse
-          #   # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
-          #   # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-          #   #
-          #   # @param address1 [String]
-          #   # @param city [String]
-          #   # @param country [String]
-          #   # @param postal_code [String]
-          #   # @param state [String]
-          #   # @param address2 [String]
-          #   #
-          #   def initialize(address1:, city:, country:, postal_code:, state:, address2: nil, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
+          #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+          #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          #
+          #   @param address1 [String]
+          #   @param city [String]
+          #   @param country [String]
+          #   @param postal_code [String]
+          #   @param state [String]
+          #   @param address2 [String]
         end
       end
 
@@ -763,11 +708,8 @@ module Lithic
         PENDING_RESUBMIT = :PENDING_RESUBMIT
         REJECTED = :REJECTED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Status Reasons for KYC/KYB enrollment states
@@ -801,11 +743,8 @@ module Lithic
         CONTROL_PERSON_DOB_VERIFICATION_FAILURE = :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
         CONTROL_PERSON_NAME_VERIFICATION_FAILURE = :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
@@ -822,11 +761,8 @@ module Lithic
         BUSINESS = :BUSINESS
         INDIVIDUAL = :INDIVIDUAL
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse#verification_application
@@ -860,17 +796,13 @@ module Lithic
         #   @return [Time]
         required :updated, Time
 
-        # @!parse
-        #   # Information about the most recent identity verification attempt
-        #   #
-        #   # @param created [Time]
-        #   # @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status]
-        #   # @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason>]
-        #   # @param updated [Time]
-        #   #
-        #   def initialize(created:, status:, status_reasons:, updated:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(created:, status:, status_reasons:, updated:)
+        #   Information about the most recent identity verification attempt
+        #
+        #   @param created [Time]
+        #   @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status]
+        #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason>]
+        #   @param updated [Time]
 
         # KYC and KYB evaluation states.
         #
@@ -886,11 +818,8 @@ module Lithic
           PENDING_RESUBMIT = :PENDING_RESUBMIT
           REJECTED = :REJECTED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Status Reasons for KYC/KYB enrollment states
@@ -924,11 +853,8 @@ module Lithic
           CONTROL_PERSON_DOB_VERIFICATION_FAILURE = :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
           CONTROL_PERSON_NAME_VERIFICATION_FAILURE = :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

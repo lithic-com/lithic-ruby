@@ -85,39 +85,19 @@ module Lithic
       #   @return [Time]
       required :updated, Time
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param category [Symbol, Lithic::Models::BookTransferResponse::Category]
-      #   # @param created [Time]
-      #   # @param currency [String]
-      #   # @param events [Array<Lithic::Models::BookTransferResponse::Event>]
-      #   # @param from_financial_account_token [String]
-      #   # @param pending_amount [Integer]
-      #   # @param result [Symbol, Lithic::Models::BookTransferResponse::Result]
-      #   # @param settled_amount [Integer]
-      #   # @param status [Symbol, Lithic::Models::BookTransferResponse::Status]
-      #   # @param to_financial_account_token [Object]
-      #   # @param updated [Time]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     category:,
-      #     created:,
-      #     currency:,
-      #     events:,
-      #     from_financial_account_token:,
-      #     pending_amount:,
-      #     result:,
-      #     settled_amount:,
-      #     status:,
-      #     to_financial_account_token:,
-      #     updated:,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, category:, created:, currency:, events:, from_financial_account_token:, pending_amount:, result:, settled_amount:, status:, to_financial_account_token:, updated:)
+      #   @param token [String]
+      #   @param category [Symbol, Lithic::Models::BookTransferResponse::Category]
+      #   @param created [Time]
+      #   @param currency [String]
+      #   @param events [Array<Lithic::Models::BookTransferResponse::Event>]
+      #   @param from_financial_account_token [String]
+      #   @param pending_amount [Integer]
+      #   @param result [Symbol, Lithic::Models::BookTransferResponse::Result]
+      #   @param settled_amount [Integer]
+      #   @param status [Symbol, Lithic::Models::BookTransferResponse::Status]
+      #   @param to_financial_account_token [Object]
+      #   @param updated [Time]
 
       # Category of the book transfer
       #
@@ -133,11 +113,8 @@ module Lithic
         REWARD = :REWARD
         TRANSFER = :TRANSFER
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -192,19 +169,15 @@ module Lithic
         #   @return [String]
         required :type, String
 
-        # @!parse
-        #   # @param token [String]
-        #   # @param amount [Integer]
-        #   # @param created [Time]
-        #   # @param detailed_results [Array<Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResult>]
-        #   # @param memo [String]
-        #   # @param result [Symbol, Lithic::Models::BookTransferResponse::Event::Result]
-        #   # @param subtype [String]
-        #   # @param type [String]
-        #   #
-        #   def initialize(token:, amount:, created:, detailed_results:, memo:, result:, subtype:, type:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, amount:, created:, detailed_results:, memo:, result:, subtype:, type:)
+        #   @param token [String]
+        #   @param amount [Integer]
+        #   @param created [Time]
+        #   @param detailed_results [Array<Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResult>]
+        #   @param memo [String]
+        #   @param result [Symbol, Lithic::Models::BookTransferResponse::Event::Result]
+        #   @param subtype [String]
+        #   @param type [String]
 
         module DetailedResult
           extend Lithic::Internal::Type::Enum
@@ -212,11 +185,8 @@ module Lithic
           APPROVED = :APPROVED
           FUNDS_INSUFFICIENT = :FUNDS_INSUFFICIENT
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # APPROVED financial events were successful while DECLINED financial events were
@@ -229,11 +199,8 @@ module Lithic
           APPROVED = :APPROVED
           DECLINED = :DECLINED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -247,11 +214,8 @@ module Lithic
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
@@ -265,11 +229,8 @@ module Lithic
         REVERSED = :REVERSED
         SETTLED = :SETTLED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

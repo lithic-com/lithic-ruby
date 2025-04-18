@@ -241,51 +241,25 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::CardCreateParams::State]
       #   attr_writer :state
 
-      # @!parse
-      #   # @param type [Symbol, Lithic::Models::CardCreateParams::Type]
-      #   # @param account_token [String]
-      #   # @param card_program_token [String]
-      #   # @param carrier [Lithic::Models::Carrier]
-      #   # @param digital_card_art_token [String]
-      #   # @param exp_month [String]
-      #   # @param exp_year [String]
-      #   # @param memo [String]
-      #   # @param pin [String]
-      #   # @param product_id [String]
-      #   # @param replacement_account_token [String]
-      #   # @param replacement_for [String]
-      #   # @param shipping_address [Lithic::Models::ShippingAddress]
-      #   # @param shipping_method [Symbol, Lithic::Models::CardCreateParams::ShippingMethod]
-      #   # @param spend_limit [Integer]
-      #   # @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration]
-      #   # @param state [Symbol, Lithic::Models::CardCreateParams::State]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     type:,
-      #     account_token: nil,
-      #     card_program_token: nil,
-      #     carrier: nil,
-      #     digital_card_art_token: nil,
-      #     exp_month: nil,
-      #     exp_year: nil,
-      #     memo: nil,
-      #     pin: nil,
-      #     product_id: nil,
-      #     replacement_account_token: nil,
-      #     replacement_for: nil,
-      #     shipping_address: nil,
-      #     shipping_method: nil,
-      #     spend_limit: nil,
-      #     spend_limit_duration: nil,
-      #     state: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(type:, account_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_for: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
+      #   @param type [Symbol, Lithic::Models::CardCreateParams::Type]
+      #   @param account_token [String]
+      #   @param card_program_token [String]
+      #   @param carrier [Lithic::Models::Carrier]
+      #   @param digital_card_art_token [String]
+      #   @param exp_month [String]
+      #   @param exp_year [String]
+      #   @param memo [String]
+      #   @param pin [String]
+      #   @param product_id [String]
+      #   @param replacement_account_token [String]
+      #   @param replacement_for [String]
+      #   @param shipping_address [Lithic::Models::ShippingAddress]
+      #   @param shipping_method [Symbol, Lithic::Models::CardCreateParams::ShippingMethod]
+      #   @param spend_limit [Integer]
+      #   @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration]
+      #   @param state [Symbol, Lithic::Models::CardCreateParams::State]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Card types:
       #
@@ -313,11 +287,8 @@ module Lithic
         UNLOCKED = :UNLOCKED
         DIGITAL_WALLET = :DIGITAL_WALLET
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
@@ -342,11 +313,8 @@ module Lithic
         STANDARD = :STANDARD
         STANDARD_WITH_TRACKING = :STANDARD_WITH_TRACKING
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Card state values:
@@ -361,11 +329,8 @@ module Lithic
         OPEN = :OPEN
         PAUSED = :PAUSED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

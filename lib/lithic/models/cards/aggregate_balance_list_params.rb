@@ -29,14 +29,10 @@ module Lithic
         #   # @return [String]
         #   attr_writer :business_account_token
 
-        # @!parse
-        #   # @param account_token [String]
-        #   # @param business_account_token [String]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(account_token: nil, business_account_token: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(account_token: nil, business_account_token: nil, request_options: {})
+        #   @param account_token [String]
+        #   @param business_account_token [String]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

@@ -9,12 +9,8 @@ module Lithic
         #   @return [Array<Lithic::Models::AuthRules::AuthRuleCondition>]
         required :conditions, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AuthRules::AuthRuleCondition] }
 
-        # @!parse
-        #   # @param conditions [Array<Lithic::Models::AuthRules::AuthRuleCondition>]
-        #   #
-        #   def initialize(conditions:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(conditions:)
+        #   @param conditions [Array<Lithic::Models::AuthRules::AuthRuleCondition>]
       end
     end
   end

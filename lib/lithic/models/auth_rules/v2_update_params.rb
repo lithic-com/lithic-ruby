@@ -69,29 +69,14 @@ module Lithic
         #   # @return [Boolean]
         #   attr_writer :program_level
 
-        # @!parse
-        #   # @param account_tokens [Array<String>]
-        #   # @param name [String, nil]
-        #   # @param state [Symbol, Lithic::Models::AuthRules::V2UpdateParams::State]
-        #   # @param card_tokens [Array<String>]
-        #   # @param excluded_card_tokens [Array<String>]
-        #   # @param program_level [Boolean]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(
-        #     account_tokens: nil,
-        #     name: nil,
-        #     state: nil,
-        #     card_tokens: nil,
-        #     excluded_card_tokens: nil,
-        #     program_level: nil,
-        #     request_options: {},
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(account_tokens: nil, name: nil, state: nil, card_tokens: nil, excluded_card_tokens: nil, program_level: nil, request_options: {})
+        #   @param account_tokens [Array<String>]
+        #   @param name [String, nil]
+        #   @param state [Symbol, Lithic::Models::AuthRules::V2UpdateParams::State]
+        #   @param card_tokens [Array<String>]
+        #   @param excluded_card_tokens [Array<String>]
+        #   @param program_level [Boolean]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
         # The desired state of the Auth Rule.
         #
@@ -103,11 +88,8 @@ module Lithic
 
           INACTIVE = :INACTIVE
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

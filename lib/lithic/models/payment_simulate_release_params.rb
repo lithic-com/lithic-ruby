@@ -14,13 +14,9 @@ module Lithic
       #   @return [String]
       required :payment_token, String
 
-      # @!parse
-      #   # @param payment_token [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(payment_token:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(payment_token:, request_options: {})
+      #   @param payment_token [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

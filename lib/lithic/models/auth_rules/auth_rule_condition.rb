@@ -80,14 +80,10 @@ module Lithic
         #   # @return [String, Integer, Array<String>]
         #   attr_writer :value
 
-        # @!parse
-        #   # @param attribute [Symbol, Lithic::Models::AuthRules::ConditionalAttribute]
-        #   # @param operation [Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation]
-        #   # @param value [String, Integer, Array<String>]
-        #   #
-        #   def initialize(attribute: nil, operation: nil, value: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(attribute: nil, operation: nil, value: nil)
+        #   @param attribute [Symbol, Lithic::Models::AuthRules::ConditionalAttribute]
+        #   @param operation [Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation]
+        #   @param value [String, Integer, Array<String>]
 
         # The operation to apply to the attribute
         #
@@ -102,11 +98,8 @@ module Lithic
           IS_GREATER_THAN = :IS_GREATER_THAN
           IS_LESS_THAN = :IS_LESS_THAN
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
@@ -124,9 +117,8 @@ module Lithic
           # An array of strings, to be used with `IS_ONE_OF` or `IS_NOT_ONE_OF`
           variant -> { Lithic::Models::AuthRules::AuthRuleCondition::Value::StringArray }
 
-          # @!parse
-          #   # @return [Array(String, Integer, Array<String>)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(String, Integer, Array<String>)]
 
           StringArray = Lithic::Internal::Type::ArrayOf[String]
         end

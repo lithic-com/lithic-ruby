@@ -20,13 +20,9 @@ module Lithic
       #   @return [String, nil]
       optional :url, String, nil?: true
 
-      # @!parse
-      #   # @param enrolled [Boolean]
-      #   # @param url [String, nil]
-      #   #
-      #   def initialize(enrolled: nil, url: nil, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(enrolled: nil, url: nil)
+      #   @param enrolled [Boolean]
+      #   @param url [String, nil]
     end
   end
 end

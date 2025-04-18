@@ -38,15 +38,11 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::FinancialAccountListParams::Type]
       #   attr_writer :type
 
-      # @!parse
-      #   # @param account_token [String]
-      #   # @param business_account_token [String]
-      #   # @param type [Symbol, Lithic::Models::FinancialAccountListParams::Type]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(account_token: nil, business_account_token: nil, type: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_token: nil, business_account_token: nil, type: nil, request_options: {})
+      #   @param account_token [String]
+      #   @param business_account_token [String]
+      #   @param type [Symbol, Lithic::Models::FinancialAccountListParams::Type]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # List financial accounts of a given type
       module Type
@@ -56,11 +52,8 @@ module Lithic
         OPERATING = :OPERATING
         RESERVE = :RESERVE
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

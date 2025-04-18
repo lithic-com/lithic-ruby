@@ -61,27 +61,13 @@ module Lithic
         #   # @return [String]
         #   attr_writer :starting_after
 
-        # @!parse
-        #   # @param account_token [String]
-        #   # @param card_token [String]
-        #   # @param ending_before [String]
-        #   # @param page_size [Integer]
-        #   # @param starting_after [String]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(
-        #     account_token: nil,
-        #     card_token: nil,
-        #     ending_before: nil,
-        #     page_size: nil,
-        #     starting_after: nil,
-        #     request_options: {},
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(account_token: nil, card_token: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
+        #   @param account_token [String]
+        #   @param card_token [String]
+        #   @param ending_before [String]
+        #   @param page_size [Integer]
+        #   @param starting_after [String]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

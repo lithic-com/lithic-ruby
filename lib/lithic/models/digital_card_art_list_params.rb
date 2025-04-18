@@ -40,15 +40,11 @@ module Lithic
       #   # @return [String]
       #   attr_writer :starting_after
 
-      # @!parse
-      #   # @param ending_before [String]
-      #   # @param page_size [Integer]
-      #   # @param starting_after [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(ending_before: nil, page_size: nil, starting_after: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
+      #   @param ending_before [String]
+      #   @param page_size [Integer]
+      #   @param starting_after [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

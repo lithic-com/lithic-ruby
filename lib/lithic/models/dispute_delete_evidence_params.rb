@@ -13,13 +13,9 @@ module Lithic
       #   @return [String]
       required :dispute_token, String
 
-      # @!parse
-      #   # @param dispute_token [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(dispute_token:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(dispute_token:, request_options: {})
+      #   @param dispute_token [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

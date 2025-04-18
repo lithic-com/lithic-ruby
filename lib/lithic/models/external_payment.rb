@@ -73,41 +73,20 @@ module Lithic
       #   # @return [String]
       #   attr_writer :user_defined_id
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param category [Symbol, Lithic::Models::ExternalPayment::Category]
-      #   # @param created [Time]
-      #   # @param currency [String]
-      #   # @param events [Array<Lithic::Models::ExternalPayment::Event>]
-      #   # @param financial_account_token [String]
-      #   # @param payment_type [Symbol, Lithic::Models::ExternalPayment::PaymentType]
-      #   # @param pending_amount [Integer]
-      #   # @param result [Symbol, Lithic::Models::ExternalPayment::Result]
-      #   # @param settled_amount [Integer]
-      #   # @param status [Symbol, Lithic::Models::ExternalPayment::Status]
-      #   # @param updated [Time]
-      #   # @param user_defined_id [String]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     category:,
-      #     created:,
-      #     currency:,
-      #     events:,
-      #     financial_account_token:,
-      #     payment_type:,
-      #     pending_amount:,
-      #     result:,
-      #     settled_amount:,
-      #     status:,
-      #     updated:,
-      #     user_defined_id: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, category:, created:, currency:, events:, financial_account_token:, payment_type:, pending_amount:, result:, settled_amount:, status:, updated:, user_defined_id: nil)
+      #   @param token [String]
+      #   @param category [Symbol, Lithic::Models::ExternalPayment::Category]
+      #   @param created [Time]
+      #   @param currency [String]
+      #   @param events [Array<Lithic::Models::ExternalPayment::Event>]
+      #   @param financial_account_token [String]
+      #   @param payment_type [Symbol, Lithic::Models::ExternalPayment::PaymentType]
+      #   @param pending_amount [Integer]
+      #   @param result [Symbol, Lithic::Models::ExternalPayment::Result]
+      #   @param settled_amount [Integer]
+      #   @param status [Symbol, Lithic::Models::ExternalPayment::Status]
+      #   @param updated [Time]
+      #   @param user_defined_id [String]
 
       # @see Lithic::Models::ExternalPayment#category
       module Category
@@ -118,11 +97,8 @@ module Lithic
         EXTERNAL_CHECK = :EXTERNAL_CHECK
         EXTERNAL_TRANSFER = :EXTERNAL_TRANSFER
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -167,30 +143,23 @@ module Lithic
         #   @return [Symbol, Lithic::Models::ExternalPayment::Event::Type]
         required :type, enum: -> { Lithic::Models::ExternalPayment::Event::Type }
 
-        # @!parse
-        #   # @param token [String]
-        #   # @param amount [Integer]
-        #   # @param created [Time]
-        #   # @param detailed_results [Array<Symbol, Lithic::Models::ExternalPayment::Event::DetailedResult>]
-        #   # @param effective_date [Date]
-        #   # @param memo [String]
-        #   # @param result [Symbol, Lithic::Models::ExternalPayment::Event::Result]
-        #   # @param type [Symbol, Lithic::Models::ExternalPayment::Event::Type]
-        #   #
-        #   def initialize(token:, amount:, created:, detailed_results:, effective_date:, memo:, result:, type:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, amount:, created:, detailed_results:, effective_date:, memo:, result:, type:)
+        #   @param token [String]
+        #   @param amount [Integer]
+        #   @param created [Time]
+        #   @param detailed_results [Array<Symbol, Lithic::Models::ExternalPayment::Event::DetailedResult>]
+        #   @param effective_date [Date]
+        #   @param memo [String]
+        #   @param result [Symbol, Lithic::Models::ExternalPayment::Event::Result]
+        #   @param type [Symbol, Lithic::Models::ExternalPayment::Event::Type]
 
         module DetailedResult
           extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Lithic::Models::ExternalPayment::Event#result
@@ -200,11 +169,8 @@ module Lithic
           APPROVED = :APPROVED
           DECLINED = :DECLINED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Lithic::Models::ExternalPayment::Event#type
@@ -232,11 +198,8 @@ module Lithic
           EXTERNAL_CHECK_REVERSED = :EXTERNAL_CHECK_REVERSED
           EXTERNAL_CHECK_RELEASED = :EXTERNAL_CHECK_RELEASED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -247,11 +210,8 @@ module Lithic
         DEPOSIT = :DEPOSIT
         WITHDRAWAL = :WITHDRAWAL
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::ExternalPayment#result
@@ -261,11 +221,8 @@ module Lithic
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::ExternalPayment#status
@@ -278,11 +235,8 @@ module Lithic
         REVERSED = :REVERSED
         CANCELED = :CANCELED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

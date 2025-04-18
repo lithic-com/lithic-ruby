@@ -68,39 +68,19 @@ module Lithic
       #   @return [Symbol, Lithic::Models::FinancialAccount::Substatus, nil]
       optional :substatus, enum: -> { Lithic::Models::FinancialAccount::Substatus }, nil?: true
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param account_token [String, nil]
-      #   # @param created [Time]
-      #   # @param credit_configuration [Lithic::Models::FinancialAccount::CreditConfiguration, nil]
-      #   # @param is_for_benefit_of [Boolean]
-      #   # @param nickname [String, nil]
-      #   # @param status [Symbol, Lithic::Models::FinancialAccount::Status]
-      #   # @param type [Symbol, Lithic::Models::FinancialAccount::Type]
-      #   # @param updated [Time]
-      #   # @param account_number [String, nil]
-      #   # @param routing_number [String, nil]
-      #   # @param substatus [Symbol, Lithic::Models::FinancialAccount::Substatus, nil]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     account_token:,
-      #     created:,
-      #     credit_configuration:,
-      #     is_for_benefit_of:,
-      #     nickname:,
-      #     status:,
-      #     type:,
-      #     updated:,
-      #     account_number: nil,
-      #     routing_number: nil,
-      #     substatus: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, account_token:, created:, credit_configuration:, is_for_benefit_of:, nickname:, status:, type:, updated:, account_number: nil, routing_number: nil, substatus: nil)
+      #   @param token [String]
+      #   @param account_token [String, nil]
+      #   @param created [Time]
+      #   @param credit_configuration [Lithic::Models::FinancialAccount::CreditConfiguration, nil]
+      #   @param is_for_benefit_of [Boolean]
+      #   @param nickname [String, nil]
+      #   @param status [Symbol, Lithic::Models::FinancialAccount::Status]
+      #   @param type [Symbol, Lithic::Models::FinancialAccount::Type]
+      #   @param updated [Time]
+      #   @param account_number [String, nil]
+      #   @param routing_number [String, nil]
+      #   @param substatus [Symbol, Lithic::Models::FinancialAccount::Substatus, nil]
 
       # @see Lithic::Models::FinancialAccount#credit_configuration
       class CreditConfiguration < Lithic::Internal::Type::BaseModel
@@ -147,29 +127,14 @@ module Lithic
         #   @return [String, nil]
         required :tier, String, nil?: true
 
-        # @!parse
-        #   # @param charged_off_reason [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason, nil]
-        #   # @param credit_limit [Integer, nil]
-        #   # @param credit_product_token [String, nil]
-        #   # @param external_bank_account_token [String, nil]
-        #   # @param financial_account_state [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState, nil]
-        #   # @param is_spend_blocked [Boolean]
-        #   # @param tier [String, nil]
-        #   #
-        #   def initialize(
-        #     charged_off_reason:,
-        #     credit_limit:,
-        #     credit_product_token:,
-        #     external_bank_account_token:,
-        #     financial_account_state:,
-        #     is_spend_blocked:,
-        #     tier:,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(charged_off_reason:, credit_limit:, credit_product_token:, external_bank_account_token:, financial_account_state:, is_spend_blocked:, tier:)
+        #   @param charged_off_reason [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason, nil]
+        #   @param credit_limit [Integer, nil]
+        #   @param credit_product_token [String, nil]
+        #   @param external_bank_account_token [String, nil]
+        #   @param financial_account_state [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState, nil]
+        #   @param is_spend_blocked [Boolean]
+        #   @param tier [String, nil]
 
         # Reason for the financial account being marked as Charged Off
         #
@@ -180,11 +145,8 @@ module Lithic
           DELINQUENT = :DELINQUENT
           FRAUD = :FRAUD
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # State of the financial account
@@ -198,11 +160,8 @@ module Lithic
           DELINQUENT = :DELINQUENT
           CHARGED_OFF = :CHARGED_OFF
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -217,11 +176,8 @@ module Lithic
         SUSPENDED = :SUSPENDED
         PENDING = :PENDING
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::FinancialAccount#type
@@ -235,11 +191,8 @@ module Lithic
         CHARGED_OFF_INTEREST = :CHARGED_OFF_INTEREST
         CHARGED_OFF_PRINCIPAL = :CHARGED_OFF_PRINCIPAL
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Substatus for the financial account
@@ -254,11 +207,8 @@ module Lithic
         BANK_REQUEST = :BANK_REQUEST
         DELINQUENT = :DELINQUENT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

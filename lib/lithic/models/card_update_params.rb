@@ -106,31 +106,15 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::CardUpdateParams::State]
       #   attr_writer :state
 
-      # @!parse
-      #   # @param digital_card_art_token [String]
-      #   # @param memo [String]
-      #   # @param pin [String]
-      #   # @param pin_status [Symbol, Lithic::Models::CardUpdateParams::PinStatus]
-      #   # @param spend_limit [Integer]
-      #   # @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration]
-      #   # @param state [Symbol, Lithic::Models::CardUpdateParams::State]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     digital_card_art_token: nil,
-      #     memo: nil,
-      #     pin: nil,
-      #     pin_status: nil,
-      #     spend_limit: nil,
-      #     spend_limit_duration: nil,
-      #     state: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(digital_card_art_token: nil, memo: nil, pin: nil, pin_status: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
+      #   @param digital_card_art_token [String]
+      #   @param memo [String]
+      #   @param pin [String]
+      #   @param pin_status [Symbol, Lithic::Models::CardUpdateParams::PinStatus]
+      #   @param spend_limit [Integer]
+      #   @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration]
+      #   @param state [Symbol, Lithic::Models::CardUpdateParams::State]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       # attempts). Can only be set to `OK` to unblock a card.
@@ -139,11 +123,8 @@ module Lithic
 
         OK = :OK
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Card state values:
@@ -161,11 +142,8 @@ module Lithic
         OPEN = :OPEN
         PAUSED = :PAUSED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

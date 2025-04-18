@@ -27,14 +27,10 @@ module Lithic
       #   # @return [Lithic::Models::AccountSpendLimits::SpendVelocity]
       #   attr_writer :spend_velocity
 
-      # @!parse
-      #   # @param available_spend_limit [Lithic::Models::AccountSpendLimits::AvailableSpendLimit]
-      #   # @param spend_limit [Lithic::Models::AccountSpendLimits::SpendLimit]
-      #   # @param spend_velocity [Lithic::Models::AccountSpendLimits::SpendVelocity]
-      #   #
-      #   def initialize(available_spend_limit:, spend_limit: nil, spend_velocity: nil, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(available_spend_limit:, spend_limit: nil, spend_velocity: nil)
+      #   @param available_spend_limit [Lithic::Models::AccountSpendLimits::AvailableSpendLimit]
+      #   @param spend_limit [Lithic::Models::AccountSpendLimits::SpendLimit]
+      #   @param spend_velocity [Lithic::Models::AccountSpendLimits::SpendVelocity]
 
       # @see Lithic::Models::AccountSpendLimits#available_spend_limit
       class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
@@ -71,14 +67,10 @@ module Lithic
         #   # @return [Integer]
         #   attr_writer :monthly
 
-        # @!parse
-        #   # @param daily [Integer]
-        #   # @param lifetime [Integer]
-        #   # @param monthly [Integer]
-        #   #
-        #   def initialize(daily: nil, lifetime: nil, monthly: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(daily: nil, lifetime: nil, monthly: nil)
+        #   @param daily [Integer]
+        #   @param lifetime [Integer]
+        #   @param monthly [Integer]
       end
 
       # @see Lithic::Models::AccountSpendLimits#spend_limit
@@ -113,14 +105,10 @@ module Lithic
         #   # @return [Integer]
         #   attr_writer :monthly
 
-        # @!parse
-        #   # @param daily [Integer]
-        #   # @param lifetime [Integer]
-        #   # @param monthly [Integer]
-        #   #
-        #   def initialize(daily: nil, lifetime: nil, monthly: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(daily: nil, lifetime: nil, monthly: nil)
+        #   @param daily [Integer]
+        #   @param lifetime [Integer]
+        #   @param monthly [Integer]
       end
 
       # @see Lithic::Models::AccountSpendLimits#spend_velocity
@@ -158,14 +146,10 @@ module Lithic
         #   # @return [Integer]
         #   attr_writer :monthly
 
-        # @!parse
-        #   # @param daily [Integer]
-        #   # @param lifetime [Integer]
-        #   # @param monthly [Integer]
-        #   #
-        #   def initialize(daily: nil, lifetime: nil, monthly: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(daily: nil, lifetime: nil, monthly: nil)
+        #   @param daily [Integer]
+        #   @param lifetime [Integer]
+        #   @param monthly [Integer]
       end
     end
   end

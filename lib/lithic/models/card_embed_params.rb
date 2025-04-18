@@ -20,14 +20,10 @@ module Lithic
       #   @return [String]
       required :hmac, String
 
-      # @!parse
-      #   # @param embed_request [String]
-      #   # @param hmac [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(embed_request:, hmac:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(embed_request:, hmac:, request_options: {})
+      #   @param embed_request [String]
+      #   @param hmac [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

@@ -125,53 +125,26 @@ module Lithic
       #   # @return [Date]
       #   attr_writer :expected_release_date
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param category [Symbol, Lithic::Models::Payment::Category]
-      #   # @param created [Time]
-      #   # @param currency [String]
-      #   # @param descriptor [String]
-      #   # @param direction [Symbol, Lithic::Models::Payment::Direction]
-      #   # @param events [Array<Lithic::Models::Payment::Event>]
-      #   # @param external_bank_account_token [String, nil]
-      #   # @param financial_account_token [String]
-      #   # @param method_ [Symbol, Lithic::Models::Payment::Method]
-      #   # @param method_attributes [Lithic::Models::Payment::MethodAttributes]
-      #   # @param pending_amount [Integer]
-      #   # @param result [Symbol, Lithic::Models::Payment::Result]
-      #   # @param settled_amount [Integer]
-      #   # @param source [Symbol, Lithic::Models::Payment::Source]
-      #   # @param status [Symbol, Lithic::Models::Payment::Status]
-      #   # @param updated [Time]
-      #   # @param user_defined_id [String, nil]
-      #   # @param expected_release_date [Date]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     category:,
-      #     created:,
-      #     currency:,
-      #     descriptor:,
-      #     direction:,
-      #     events:,
-      #     external_bank_account_token:,
-      #     financial_account_token:,
-      #     method_:,
-      #     method_attributes:,
-      #     pending_amount:,
-      #     result:,
-      #     settled_amount:,
-      #     source:,
-      #     status:,
-      #     updated:,
-      #     user_defined_id:,
-      #     expected_release_date: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, category:, created:, currency:, descriptor:, direction:, events:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, pending_amount:, result:, settled_amount:, source:, status:, updated:, user_defined_id:, expected_release_date: nil)
+      #   @param token [String]
+      #   @param category [Symbol, Lithic::Models::Payment::Category]
+      #   @param created [Time]
+      #   @param currency [String]
+      #   @param descriptor [String]
+      #   @param direction [Symbol, Lithic::Models::Payment::Direction]
+      #   @param events [Array<Lithic::Models::Payment::Event>]
+      #   @param external_bank_account_token [String, nil]
+      #   @param financial_account_token [String]
+      #   @param method_ [Symbol, Lithic::Models::Payment::Method]
+      #   @param method_attributes [Lithic::Models::Payment::MethodAttributes]
+      #   @param pending_amount [Integer]
+      #   @param result [Symbol, Lithic::Models::Payment::Result]
+      #   @param settled_amount [Integer]
+      #   @param source [Symbol, Lithic::Models::Payment::Source]
+      #   @param status [Symbol, Lithic::Models::Payment::Status]
+      #   @param updated [Time]
+      #   @param user_defined_id [String, nil]
+      #   @param expected_release_date [Date]
 
       # Payment category
       #
@@ -181,11 +154,8 @@ module Lithic
 
         ACH = :ACH
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::Payment#direction
@@ -195,11 +165,8 @@ module Lithic
         CREDIT = :CREDIT
         DEBIT = :DEBIT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -265,17 +232,13 @@ module Lithic
         #   # @return [Array<Symbol, Lithic::Models::Payment::Event::DetailedResult>]
         #   attr_writer :detailed_results
 
-        # @!parse
-        #   # @param token [String]
-        #   # @param amount [Integer]
-        #   # @param created [Time]
-        #   # @param result [Symbol, Lithic::Models::Payment::Event::Result]
-        #   # @param type [Symbol, Lithic::Models::Payment::Event::Type]
-        #   # @param detailed_results [Array<Symbol, Lithic::Models::Payment::Event::DetailedResult>]
-        #   #
-        #   def initialize(token:, amount:, created:, result:, type:, detailed_results: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, amount:, created:, result:, type:, detailed_results: nil)
+        #   @param token [String]
+        #   @param amount [Integer]
+        #   @param created [Time]
+        #   @param result [Symbol, Lithic::Models::Payment::Event::Result]
+        #   @param type [Symbol, Lithic::Models::Payment::Event::Type]
+        #   @param detailed_results [Array<Symbol, Lithic::Models::Payment::Event::DetailedResult>]
 
         # APPROVED financial events were successful while DECLINED financial events were
         # declined by user, Lithic, or the network.
@@ -287,11 +250,8 @@ module Lithic
           APPROVED = :APPROVED
           DECLINED = :DECLINED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Event types:
@@ -331,11 +291,8 @@ module Lithic
           ACH_RETURN_PROCESSED = :ACH_RETURN_PROCESSED
           ACH_RETURN_SETTLED = :ACH_RETURN_SETTLED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         module DetailedResult
@@ -348,11 +305,8 @@ module Lithic
           PROGRAM_DAILY_LIMIT_EXCEEDED = :PROGRAM_DAILY_LIMIT_EXCEEDED
           PROGRAM_MONTHLY_LIMIT_EXCEEDED = :PROGRAM_MONTHLY_LIMIT_EXCEEDED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -363,11 +317,8 @@ module Lithic
         ACH_NEXT_DAY = :ACH_NEXT_DAY
         ACH_SAME_DAY = :ACH_SAME_DAY
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::Payment#method_attributes
@@ -402,17 +353,13 @@ module Lithic
         #   @return [Array<String, nil>]
         required :trace_numbers, Lithic::Internal::Type::ArrayOf[String, nil?: true]
 
-        # @!parse
-        #   # @param company_id [String, nil]
-        #   # @param receipt_routing_number [String, nil]
-        #   # @param retries [Integer, nil]
-        #   # @param return_reason_code [String, nil]
-        #   # @param sec_code [Symbol, Lithic::Models::Payment::MethodAttributes::SecCode]
-        #   # @param trace_numbers [Array<String, nil>]
-        #   #
-        #   def initialize(company_id:, receipt_routing_number:, retries:, return_reason_code:, sec_code:, trace_numbers:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(company_id:, receipt_routing_number:, retries:, return_reason_code:, sec_code:, trace_numbers:)
+        #   @param company_id [String, nil]
+        #   @param receipt_routing_number [String, nil]
+        #   @param retries [Integer, nil]
+        #   @param return_reason_code [String, nil]
+        #   @param sec_code [Symbol, Lithic::Models::Payment::MethodAttributes::SecCode]
+        #   @param trace_numbers [Array<String, nil>]
 
         # @see Lithic::Models::Payment::MethodAttributes#sec_code
         module SecCode
@@ -422,11 +369,8 @@ module Lithic
           PPD = :PPD
           WEB = :WEB
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -440,11 +384,8 @@ module Lithic
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::Payment#source
@@ -454,11 +395,8 @@ module Lithic
         CUSTOMER = :CUSTOMER
         LITHIC = :LITHIC
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Status types:
@@ -478,11 +416,8 @@ module Lithic
         RETURNED = :RETURNED
         SETTLED = :SETTLED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

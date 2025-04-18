@@ -16,13 +16,9 @@ module Lithic
           #   @return [Boolean]
           required :has_more, Lithic::Internal::Type::Boolean
 
-          # @!parse
-          #   # @param data [Array<Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data>]
-          #   # @param has_more [Boolean]
-          #   #
-          #   def initialize(data:, has_more:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(data:, has_more:)
+          #   @param data [Array<Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data>]
+          #   @param has_more [Boolean]
 
           class Data < Lithic::Internal::Type::BaseModel
             # @!attribute token
@@ -105,39 +101,19 @@ module Lithic
             #   # @return [String]
             #   attr_writer :descriptor
 
-            # @!parse
-            #   # @param token [String]
-            #   # @param amount [Integer]
-            #   # @param category [Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category]
-            #   # @param created [Time]
-            #   # @param currency [String]
-            #   # @param effective_date [Date]
-            #   # @param event_type [Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType]
-            #   # @param financial_account_token [String]
-            #   # @param financial_transaction_event_token [String]
-            #   # @param financial_transaction_token [String]
-            #   # @param card_token [String]
-            #   # @param descriptor [String]
-            #   #
-            #   def initialize(
-            #     token:,
-            #     amount:,
-            #     category:,
-            #     created:,
-            #     currency:,
-            #     effective_date:,
-            #     event_type:,
-            #     financial_account_token:,
-            #     financial_transaction_event_token:,
-            #     financial_transaction_token:,
-            #     card_token: nil,
-            #     descriptor: nil,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(token:, amount:, category:, created:, currency:, effective_date:, event_type:, financial_account_token:, financial_transaction_event_token:, financial_transaction_token:, card_token: nil, descriptor: nil)
+            #   @param token [String]
+            #   @param amount [Integer]
+            #   @param category [Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category]
+            #   @param created [Time]
+            #   @param currency [String]
+            #   @param effective_date [Date]
+            #   @param event_type [Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType]
+            #   @param financial_account_token [String]
+            #   @param financial_transaction_event_token [String]
+            #   @param financial_transaction_token [String]
+            #   @param card_token [String]
+            #   @param descriptor [String]
 
             # @see Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data#category
             module Category
@@ -155,11 +131,8 @@ module Lithic
               MANAGEMENT_FEE = :MANAGEMENT_FEE
               MANAGEMENT_REWARD = :MANAGEMENT_REWARD
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data#event_type
@@ -232,11 +205,8 @@ module Lithic
               RETURNED_PAYMENT = :RETURNED_PAYMENT
               RETURNED_PAYMENT_REVERSAL = :RETURNED_PAYMENT_REVERSAL
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
         end

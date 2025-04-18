@@ -73,29 +73,14 @@ module Lithic
         #   # @return [String]
         #   attr_writer :starting_after
 
-        # @!parse
-        #   # @param begin_ [Date]
-        #   # @param end_ [Date]
-        #   # @param ending_before [String]
-        #   # @param include_initial_statements [Boolean]
-        #   # @param page_size [Integer]
-        #   # @param starting_after [String]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(
-        #     begin_: nil,
-        #     end_: nil,
-        #     ending_before: nil,
-        #     include_initial_statements: nil,
-        #     page_size: nil,
-        #     starting_after: nil,
-        #     request_options: {},
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(begin_: nil, end_: nil, ending_before: nil, include_initial_statements: nil, page_size: nil, starting_after: nil, request_options: {})
+        #   @param begin_ [Date]
+        #   @param end_ [Date]
+        #   @param ending_before [String]
+        #   @param include_initial_statements [Boolean]
+        #   @param page_size [Integer]
+        #   @param starting_after [String]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end
