@@ -26,12 +26,12 @@ module Lithic
         ?spend_limit_duration: Lithic::Models::spend_limit_duration,
         ?state: Lithic::Models::CardCreateParams::state,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::Card
+      ) -> Lithic::Models::CardCreateResponse
 
       def retrieve: (
         String card_token,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::Card
+      ) -> Lithic::Models::CardRetrieveResponse
 
       def update: (
         String card_token,
@@ -43,7 +43,7 @@ module Lithic
         ?spend_limit_duration: Lithic::Models::spend_limit_duration,
         ?state: Lithic::Models::CardUpdateParams::state,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::Card
+      ) -> Lithic::Models::CardUpdateResponse
 
       def list: (
         ?account_token: String,
@@ -54,7 +54,7 @@ module Lithic
         ?starting_after: String,
         ?state: Lithic::Models::CardListParams::state,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Internal::CursorPage[Lithic::Models::Card]
+      ) -> Lithic::Internal::CursorPage[Lithic::Models::CardListResponse]
 
       def convert_physical: (
         String card_token,
@@ -63,7 +63,7 @@ module Lithic
         ?product_id: String,
         ?shipping_method: Lithic::Models::CardConvertPhysicalParams::shipping_method,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::Card
+      ) -> Lithic::Models::CardConvertPhysicalResponse
 
       def embed: (
         embed_request: String,
@@ -89,7 +89,7 @@ module Lithic
         ?shipping_address: Lithic::Models::ShippingAddress,
         ?shipping_method: Lithic::Models::CardReissueParams::shipping_method,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::Card
+      ) -> Lithic::Models::CardReissueResponse
 
       def renew: (
         String card_token,
@@ -100,7 +100,7 @@ module Lithic
         ?product_id: String,
         ?shipping_method: Lithic::Models::CardRenewParams::shipping_method,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::Card
+      ) -> Lithic::Models::CardRenewResponse
 
       def retrieve_spend_limits: (
         String card_token,
@@ -110,7 +110,7 @@ module Lithic
       def search_by_pan: (
         pan: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::Card
+      ) -> Lithic::Models::CardSearchByPanResponse
 
       def initialize: (client: Lithic::Client) -> void
     end

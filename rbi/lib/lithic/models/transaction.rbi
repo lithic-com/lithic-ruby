@@ -931,6 +931,11 @@ module Lithic
           sig { returns(Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol) }
           attr_accessor :type
 
+          # Uniquely identifies a terminal at the card acceptor location of acquiring
+          # institutions or merchant POS Systems
+          sig { returns(T.nilable(String)) }
+          attr_accessor :acceptor_terminal_id
+
           sig do
             params(
               attended: T::Boolean,
@@ -939,7 +944,8 @@ module Lithic
               operator: Lithic::Models::Transaction::Pos::Terminal::Operator::OrSymbol,
               partial_approval_capable: T::Boolean,
               pin_capability: Lithic::Models::Transaction::Pos::Terminal::PinCapability::OrSymbol,
-              type: Lithic::Models::Transaction::Pos::Terminal::Type::OrSymbol
+              type: Lithic::Models::Transaction::Pos::Terminal::Type::OrSymbol,
+              acceptor_terminal_id: T.nilable(String)
             )
               .returns(T.attached_class)
           end
@@ -950,7 +956,8 @@ module Lithic
             operator:,
             partial_approval_capable:,
             pin_capability:,
-            type:
+            type:,
+            acceptor_terminal_id: nil
           ); end
           sig do
             override
@@ -962,7 +969,8 @@ module Lithic
                   operator: Lithic::Models::Transaction::Pos::Terminal::Operator::TaggedSymbol,
                   partial_approval_capable: T::Boolean,
                   pin_capability: Lithic::Models::Transaction::Pos::Terminal::PinCapability::TaggedSymbol,
-                  type: Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol
+                  type: Lithic::Models::Transaction::Pos::Terminal::Type::TaggedSymbol,
+                  acceptor_terminal_id: T.nilable(String)
                 }
               )
           end
@@ -1192,6 +1200,17 @@ module Lithic
         sig { returns(Lithic::Models::Transaction::Event::Type::TaggedSymbol) }
         attr_accessor :type
 
+        sig { returns(T.nilable(Lithic::Models::Transaction::Event::NetworkSpecificData)) }
+        attr_reader :network_specific_data
+
+        sig do
+          params(
+            network_specific_data: T.any(Lithic::Models::Transaction::Event::NetworkSpecificData, Lithic::Internal::AnyHash)
+          )
+            .void
+        end
+        attr_writer :network_specific_data
+
         sig do
           params(
             token: String,
@@ -1203,7 +1222,8 @@ module Lithic
             network_info: T.nilable(T.any(Lithic::Models::Transaction::Event::NetworkInfo, Lithic::Internal::AnyHash)),
             result: Lithic::Models::Transaction::Event::Result::OrSymbol,
             rule_results: T::Array[T.any(Lithic::Models::Transaction::Event::RuleResult, Lithic::Internal::AnyHash)],
-            type: Lithic::Models::Transaction::Event::Type::OrSymbol
+            type: Lithic::Models::Transaction::Event::Type::OrSymbol,
+            network_specific_data: T.any(Lithic::Models::Transaction::Event::NetworkSpecificData, Lithic::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -1217,7 +1237,8 @@ module Lithic
           network_info:,
           result:,
           rule_results:,
-          type:
+          type:,
+          network_specific_data: nil
         ); end
         sig do
           override
@@ -1232,7 +1253,8 @@ module Lithic
                 network_info: T.nilable(Lithic::Models::Transaction::Event::NetworkInfo),
                 result: Lithic::Models::Transaction::Event::Result::TaggedSymbol,
                 rule_results: T::Array[Lithic::Models::Transaction::Event::RuleResult],
-                type: Lithic::Models::Transaction::Event::Type::TaggedSymbol
+                type: Lithic::Models::Transaction::Event::Type::TaggedSymbol,
+                network_specific_data: Lithic::Models::Transaction::Event::NetworkSpecificData
               }
             )
         end
@@ -1949,6 +1971,141 @@ module Lithic
 
           sig { override.returns(T::Array[Lithic::Models::Transaction::Event::Type::TaggedSymbol]) }
           def self.values; end
+        end
+
+        class NetworkSpecificData < Lithic::Internal::Type::BaseModel
+          sig { returns(Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard) }
+          attr_reader :mastercard
+
+          sig do
+            params(
+              mastercard: T.any(Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard, Lithic::Internal::AnyHash)
+            )
+              .void
+          end
+          attr_writer :mastercard
+
+          sig { returns(Lithic::Models::Transaction::Event::NetworkSpecificData::Visa) }
+          attr_reader :visa
+
+          sig do
+            params(
+              visa: T.any(Lithic::Models::Transaction::Event::NetworkSpecificData::Visa, Lithic::Internal::AnyHash)
+            )
+              .void
+          end
+          attr_writer :visa
+
+          sig do
+            params(
+              mastercard: T.any(Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard, Lithic::Internal::AnyHash),
+              visa: T.any(Lithic::Models::Transaction::Event::NetworkSpecificData::Visa, Lithic::Internal::AnyHash)
+            )
+              .returns(T.attached_class)
+          end
+          def self.new(mastercard:, visa:); end
+
+          sig do
+            override
+              .returns(
+                {
+                  mastercard: Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard,
+                  visa: Lithic::Models::Transaction::Event::NetworkSpecificData::Visa
+                }
+              )
+          end
+          def to_hash; end
+
+          class Mastercard < Lithic::Internal::Type::BaseModel
+            # Indicates the electronic commerce security level and UCAF collection.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :ecommerce_security_level_indicator
+
+            # The On-behalf Service performed on the transaction and the results. Contains all
+            # applicable, on-behalf service results that were performed on a given
+            # transaction.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult]
+                )
+              )
+            end
+            attr_accessor :on_behalf_service_result
+
+            # Indicates the type of additional transaction purpose.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :transaction_type_identifier
+
+            sig do
+              params(
+                ecommerce_security_level_indicator: T.nilable(String),
+                on_behalf_service_result: T.nilable(
+                  T::Array[
+                    T.any(
+                      Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult,
+                      Lithic::Internal::AnyHash
+                    )
+                  ]
+                ),
+                transaction_type_identifier: T.nilable(String)
+              )
+                .returns(T.attached_class)
+            end
+            def self.new(
+              ecommerce_security_level_indicator:,
+              on_behalf_service_result:,
+              transaction_type_identifier:
+            )
+            end
+
+            sig do
+              override
+                .returns(
+                  {
+                    ecommerce_security_level_indicator: T.nilable(String),
+                    on_behalf_service_result: T.nilable(
+                      T::Array[Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult]
+                    ),
+                    transaction_type_identifier: T.nilable(String)
+                  }
+                )
+            end
+            def to_hash; end
+
+            class OnBehalfServiceResult < Lithic::Internal::Type::BaseModel
+              # Indicates the results of the service processing.
+              sig { returns(String) }
+              attr_accessor :result_1
+
+              # Identifies the results of the service processing.
+              sig { returns(String) }
+              attr_accessor :result_2
+
+              # Indicates the service performed on the transaction.
+              sig { returns(String) }
+              attr_accessor :service
+
+              sig { params(result_1: String, result_2: String, service: String).returns(T.attached_class) }
+              def self.new(result_1:, result_2:, service:); end
+
+              sig { override.returns({result_1: String, result_2: String, service: String}) }
+              def to_hash; end
+            end
+          end
+
+          class Visa < Lithic::Internal::Type::BaseModel
+            # Identifies the purpose or category of a transaction, used to classify and
+            # process transactions according to Visa’s rules.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :business_application_identifier
+
+            sig { params(business_application_identifier: T.nilable(String)).returns(T.attached_class) }
+            def self.new(business_application_identifier:); end
+
+            sig { override.returns({business_application_identifier: T.nilable(String)}) }
+            def to_hash; end
+          end
         end
       end
     end

@@ -10,7 +10,7 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
         category: :MANAGEMENT_FEE,
         direction: :CREDIT,
         effective_date: "2019-12-27",
-        event_type: :CASH_BACK,
+        event_type: :LOSS_WRITE_OFF,
         financial_account_token: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
       )
 

@@ -35,7 +35,7 @@ module Lithic
           state: Lithic::Models::CardCreateParams::State::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
-          .returns(Lithic::Models::Card)
+          .returns(Lithic::Models::CardCreateResponse)
       end
       def create(
         # Card types:
@@ -147,7 +147,7 @@ module Lithic
           card_token: String,
           request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
-          .returns(Lithic::Models::Card)
+          .returns(Lithic::Models::CardRetrieveResponse)
       end
       def retrieve(card_token, request_options: {}); end
 
@@ -168,7 +168,7 @@ module Lithic
           state: Lithic::Models::CardUpdateParams::State::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
-          .returns(Lithic::Models::Card)
+          .returns(Lithic::Models::CardUpdateResponse)
       end
       def update(
         card_token,
@@ -228,7 +228,7 @@ module Lithic
           state: Lithic::Models::CardListParams::State::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
-          .returns(Lithic::Internal::CursorPage[Lithic::Models::Card])
+          .returns(Lithic::Internal::CursorPage[Lithic::Models::CardListResponse])
       end
       def list(
         # Returns cards associated with the specified account.
@@ -270,7 +270,7 @@ module Lithic
           shipping_method: Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
-          .returns(Lithic::Models::Card)
+          .returns(Lithic::Models::CardConvertPhysicalResponse)
       end
       def convert_physical(
         card_token,
@@ -400,7 +400,7 @@ module Lithic
           shipping_method: Lithic::Models::CardReissueParams::ShippingMethod::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
-          .returns(Lithic::Models::Card)
+          .returns(Lithic::Models::CardReissueResponse)
       end
       def reissue(
         card_token,
@@ -447,7 +447,7 @@ module Lithic
           shipping_method: Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol,
           request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
         )
-          .returns(Lithic::Models::Card)
+          .returns(Lithic::Models::CardRenewResponse)
       end
       def renew(
         card_token,
@@ -508,7 +508,7 @@ module Lithic
             )
           )
         )
-          .returns(Lithic::Models::Card)
+          .returns(Lithic::Models::CardSearchByPanResponse)
       end
       def search_by_pan(
         # The PAN for the card being retrieved.

@@ -9,8 +9,7 @@ module Lithic
       sig { returns(String) }
       attr_accessor :token
 
-      # Timestamp of when the account was created. For accounts created before
-      # 2023-05-11, this field will be null.
+      # Timestamp of when the account was created.
       sig { returns(T.nilable(Time)) }
       attr_accessor :created
 

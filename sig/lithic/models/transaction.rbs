@@ -544,7 +544,8 @@ module Lithic
             operator: Lithic::Models::Transaction::Pos::Terminal::operator,
             partial_approval_capable: bool,
             pin_capability: Lithic::Models::Transaction::Pos::Terminal::pin_capability,
-            type: Lithic::Models::Transaction::Pos::Terminal::type_
+            type: Lithic::Models::Transaction::Pos::Terminal::type_,
+            acceptor_terminal_id: String?
           }
 
         class Terminal < Lithic::Internal::Type::BaseModel
@@ -562,6 +563,8 @@ module Lithic
 
           attr_accessor type: Lithic::Models::Transaction::Pos::Terminal::type_
 
+          attr_accessor acceptor_terminal_id: String?
+
           def initialize: (
             attended: bool,
             card_retention_capable: bool,
@@ -569,7 +572,8 @@ module Lithic
             operator: Lithic::Models::Transaction::Pos::Terminal::operator,
             partial_approval_capable: bool,
             pin_capability: Lithic::Models::Transaction::Pos::Terminal::pin_capability,
-            type: Lithic::Models::Transaction::Pos::Terminal::type_
+            type: Lithic::Models::Transaction::Pos::Terminal::type_,
+            ?acceptor_terminal_id: String?
           ) -> void
 
           def to_hash: -> Lithic::Models::Transaction::Pos::terminal
@@ -775,7 +779,8 @@ module Lithic
           network_info: Lithic::Models::Transaction::Event::NetworkInfo?,
           result: Lithic::Models::Transaction::Event::result,
           rule_results: ::Array[Lithic::Models::Transaction::Event::RuleResult],
-          type: Lithic::Models::Transaction::Event::type_
+          type: Lithic::Models::Transaction::Event::type_,
+          network_specific_data: Lithic::Models::Transaction::Event::NetworkSpecificData
         }
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -799,6 +804,12 @@ module Lithic
 
         attr_accessor type: Lithic::Models::Transaction::Event::type_
 
+        attr_reader network_specific_data: Lithic::Models::Transaction::Event::NetworkSpecificData?
+
+        def network_specific_data=: (
+          Lithic::Models::Transaction::Event::NetworkSpecificData
+        ) -> Lithic::Models::Transaction::Event::NetworkSpecificData
+
         def initialize: (
           token: String,
           amount: Integer,
@@ -809,7 +820,8 @@ module Lithic
           network_info: Lithic::Models::Transaction::Event::NetworkInfo?,
           result: Lithic::Models::Transaction::Event::result,
           rule_results: ::Array[Lithic::Models::Transaction::Event::RuleResult],
-          type: Lithic::Models::Transaction::Event::type_
+          type: Lithic::Models::Transaction::Event::type_,
+          ?network_specific_data: Lithic::Models::Transaction::Event::NetworkSpecificData
         ) -> void
 
         def to_hash: -> Lithic::Models::Transaction::event
@@ -1326,6 +1338,77 @@ module Lithic
           RETURN_REVERSAL: :RETURN_REVERSAL
 
           def self?.values: -> ::Array[Lithic::Models::Transaction::Event::type_]
+        end
+
+        type network_specific_data =
+          {
+            mastercard: Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard,
+            visa: Lithic::Models::Transaction::Event::NetworkSpecificData::Visa
+          }
+
+        class NetworkSpecificData < Lithic::Internal::Type::BaseModel
+          attr_accessor mastercard: Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard
+
+          attr_accessor visa: Lithic::Models::Transaction::Event::NetworkSpecificData::Visa
+
+          def initialize: (
+            mastercard: Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard,
+            visa: Lithic::Models::Transaction::Event::NetworkSpecificData::Visa
+          ) -> void
+
+          def to_hash: -> Lithic::Models::Transaction::Event::network_specific_data
+
+          type mastercard =
+            {
+              ecommerce_security_level_indicator: String?,
+              on_behalf_service_result: ::Array[Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult]?,
+              transaction_type_identifier: String?
+            }
+
+          class Mastercard < Lithic::Internal::Type::BaseModel
+            attr_accessor ecommerce_security_level_indicator: String?
+
+            attr_accessor on_behalf_service_result: ::Array[Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult]?
+
+            attr_accessor transaction_type_identifier: String?
+
+            def initialize: (
+              ecommerce_security_level_indicator: String?,
+              on_behalf_service_result: ::Array[Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult]?,
+              transaction_type_identifier: String?
+            ) -> void
+
+            def to_hash: -> Lithic::Models::Transaction::Event::NetworkSpecificData::mastercard
+
+            type on_behalf_service_result =
+              { :result_1 => String, :result_2 => String, service: String }
+
+            class OnBehalfServiceResult < Lithic::Internal::Type::BaseModel
+              attr_accessor result_1: String
+
+              attr_accessor result_2: String
+
+              attr_accessor service: String
+
+              def initialize: (
+                result_1: String,
+                result_2: String,
+                service: String
+              ) -> void
+
+              def to_hash: -> Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard::on_behalf_service_result
+            end
+          end
+
+          type visa = { business_application_identifier: String? }
+
+          class Visa < Lithic::Internal::Type::BaseModel
+            attr_accessor business_application_identifier: String?
+
+            def initialize: (business_application_identifier: String?) -> void
+
+            def to_hash: -> Lithic::Models::Transaction::Event::NetworkSpecificData::visa
+          end
         end
       end
     end
