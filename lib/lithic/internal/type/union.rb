@@ -29,7 +29,7 @@ module Lithic
         #
         # @return [Array<Array(Symbol, Object)>]
         protected def derefed_variants
-          @known_variants.map { |key, variant_fn| [key, variant_fn.call] }
+          known_variants.map { |key, variant_fn| [key, variant_fn.call] }
         end
 
         # All of the specified variants for this union.
@@ -113,6 +113,9 @@ module Lithic
         def ==(other)
           Lithic::Internal::Type::Union === other && other.derefed_variants == derefed_variants
         end
+
+        # @return [Integer]
+        def hash = variants.hash
 
         # @api private
         #

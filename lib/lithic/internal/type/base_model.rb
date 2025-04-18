@@ -4,14 +4,6 @@ module Lithic
   module Internal
     module Type
       # @abstract
-      #
-      # @example
-      #   # `address` is a `Lithic::Models::Address`
-      #   address => {
-      #     address1: address1,
-      #     city: city,
-      #     country: country
-      #   }
       class BaseModel
         extend Lithic::Internal::Type::Converter
 
@@ -93,11 +85,13 @@ module Lithic
                   state: state
                 )
               end
-            rescue StandardError
+            rescue StandardError => e
               cls = self.class.name.split("::").last
-              # rubocop:disable Layout/LineLength
-              message = "Failed to parse #{cls}.#{__method__} from #{value.class} to #{target.inspect}. To get the unparsed API response, use #{cls}[:#{__method__}]."
-              # rubocop:enable Layout/LineLength
+              message = [
+                "Failed to parse #{cls}.#{__method__} from #{value.class} to #{target.inspect}.",
+                "To get the unparsed API response, use #{cls}[#{__method__.inspect}].",
+                "Cause: #{e.message}"
+              ].join(" ")
               raise Lithic::Errors::ConversionError.new(message)
             end
           end
@@ -171,12 +165,18 @@ module Lithic
           def ==(other)
             other.is_a?(Class) && other <= Lithic::Internal::Type::BaseModel && other.fields == fields
           end
+
+          # @return [Integer]
+          def hash = fields.hash
         end
 
         # @param other [Object]
         #
         # @return [Boolean]
         def ==(other) = self.class == other.class && @data == other.to_h
+
+        # @return [Integer]
+        def hash = [self.class, @data].hash
 
         class << self
           # @api private
