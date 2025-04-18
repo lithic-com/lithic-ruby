@@ -5,8 +5,7 @@ module Lithic
     module ThreeDS
       # @see Lithic::Resources::ThreeDS::Decisioning#rotate_secret
       class DecisioningRotateSecretParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
         # @!method initialize(request_options: {})

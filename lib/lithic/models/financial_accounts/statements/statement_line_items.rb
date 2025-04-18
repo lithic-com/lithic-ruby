@@ -82,24 +82,16 @@ module Lithic
             #   @return [String]
             required :financial_transaction_token, String
 
-            # @!attribute [r] card_token
+            # @!attribute card_token
             #   Globally unique identifier for a card
             #
             #   @return [String, nil]
             optional :card_token, String
 
-            # @!parse
-            #   # @return [String]
-            #   attr_writer :card_token
-
-            # @!attribute [r] descriptor
+            # @!attribute descriptor
             #
             #   @return [String, nil]
             optional :descriptor, String
-
-            # @!parse
-            #   # @return [String]
-            #   attr_writer :descriptor
 
             # @!method initialize(token:, amount:, category:, created:, currency:, effective_date:, event_type:, financial_account_token:, financial_transaction_event_token:, financial_transaction_token:, card_token: nil, descriptor: nil)
             #   @param token [String]

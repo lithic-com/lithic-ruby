@@ -46,7 +46,7 @@ module Lithic
       #   @return [Symbol, Lithic::Models::KYCExempt::Workflow]
       required :workflow, enum: -> { Lithic::Models::KYCExempt::Workflow }
 
-      # @!attribute [r] business_account_token
+      # @!attribute business_account_token
       #   Only applicable for customers using the KYC-Exempt workflow to enroll authorized
       #   users of businesses. Pass the account_token of the enrolled business associated
       #   with the AUTHORIZED_USER in this field.
@@ -54,20 +54,12 @@ module Lithic
       #   @return [String, nil]
       optional :business_account_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :business_account_token
-
-      # @!attribute [r] external_id
+      # @!attribute external_id
       #   A user provided id that can be used to link an account holder with an external
       #   system
       #
       #   @return [String, nil]
       optional :external_id, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :external_id
 
       # @!method initialize(address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, workflow:, business_account_token: nil, external_id: nil)
       #   @param address [Lithic::Models::Address]

@@ -5,8 +5,7 @@ module Lithic
     module AuthRules
       # @see Lithic::Resources::AuthRules::V2#create
       class V2CreateParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
         # @!attribute account_tokens
@@ -21,25 +20,17 @@ module Lithic
         #   @return [String, nil]
         optional :name, String, nil?: true
 
-        # @!attribute [r] parameters
+        # @!attribute parameters
         #   Parameters for the Auth Rule
         #
         #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, nil]
         optional :parameters, union: -> { Lithic::Models::AuthRules::V2CreateParams::Parameters }
 
-        # @!parse
-        #   # @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
-        #   attr_writer :parameters
-
-        # @!attribute [r] type
+        # @!attribute type
         #   The type of Auth Rule
         #
         #   @return [Symbol, Lithic::Models::AuthRules::V2CreateParams::Type, nil]
         optional :type, enum: -> { Lithic::Models::AuthRules::V2CreateParams::Type }
-
-        # @!parse
-        #   # @return [Symbol, Lithic::Models::AuthRules::V2CreateParams::Type]
-        #   attr_writer :type
 
         # @!attribute card_tokens
         #   Card tokens to which the Auth Rule applies.
@@ -53,15 +44,11 @@ module Lithic
         #   @return [Boolean]
         required :program_level, Lithic::Internal::Type::Boolean
 
-        # @!attribute [r] excluded_card_tokens
+        # @!attribute excluded_card_tokens
         #   Card tokens to which the Auth Rule does not apply.
         #
         #   @return [Array<String>, nil]
         optional :excluded_card_tokens, Lithic::Internal::Type::ArrayOf[String]
-
-        # @!parse
-        #   # @return [Array<String>]
-        #   attr_writer :excluded_card_tokens
 
         # @!method initialize(account_tokens:, card_tokens:, program_level:, name: nil, parameters: nil, type: nil, excluded_card_tokens: nil, request_options: {})
         #   @param account_tokens [Array<String>]

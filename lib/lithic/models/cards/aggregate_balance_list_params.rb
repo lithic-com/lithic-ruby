@@ -5,29 +5,20 @@ module Lithic
     module Cards
       # @see Lithic::Resources::Cards::AggregateBalances#list
       class AggregateBalanceListParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        # @!attribute [r] account_token
+        # @!attribute account_token
         #   Cardholder to retrieve aggregate balances for.
         #
         #   @return [String, nil]
         optional :account_token, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :account_token
-
-        # @!attribute [r] business_account_token
+        # @!attribute business_account_token
         #   Business to retrieve aggregate balances for.
         #
         #   @return [String, nil]
         optional :business_account_token, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :business_account_token
 
         # @!method initialize(account_token: nil, business_account_token: nil, request_options: {})
         #   @param account_token [String]

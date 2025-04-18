@@ -5,19 +5,14 @@ module Lithic
     module AuthRules
       # @see Lithic::Resources::AuthRules::V2#update
       class V2UpdateParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        # @!attribute [r] account_tokens
+        # @!attribute account_tokens
         #   Account tokens to which the Auth Rule applies.
         #
         #   @return [Array<String>, nil]
         optional :account_tokens, Lithic::Internal::Type::ArrayOf[String]
-
-        # @!parse
-        #   # @return [Array<String>]
-        #   attr_writer :account_tokens
 
         # @!attribute name
         #   Auth Rule Name
@@ -25,7 +20,7 @@ module Lithic
         #   @return [String, nil]
         optional :name, String, nil?: true
 
-        # @!attribute [r] state
+        # @!attribute state
         #   The desired state of the Auth Rule.
         #
         #   Note that only deactivating an Auth Rule through this endpoint is supported at
@@ -35,39 +30,23 @@ module Lithic
         #   @return [Symbol, Lithic::Models::AuthRules::V2UpdateParams::State, nil]
         optional :state, enum: -> { Lithic::Models::AuthRules::V2UpdateParams::State }
 
-        # @!parse
-        #   # @return [Symbol, Lithic::Models::AuthRules::V2UpdateParams::State]
-        #   attr_writer :state
-
-        # @!attribute [r] card_tokens
+        # @!attribute card_tokens
         #   Card tokens to which the Auth Rule applies.
         #
         #   @return [Array<String>, nil]
         optional :card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
-        # @!parse
-        #   # @return [Array<String>]
-        #   attr_writer :card_tokens
-
-        # @!attribute [r] excluded_card_tokens
+        # @!attribute excluded_card_tokens
         #   Card tokens to which the Auth Rule does not apply.
         #
         #   @return [Array<String>, nil]
         optional :excluded_card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
-        # @!parse
-        #   # @return [Array<String>]
-        #   attr_writer :excluded_card_tokens
-
-        # @!attribute [r] program_level
+        # @!attribute program_level
         #   Whether the Auth Rule applies to all authorizations on the card program.
         #
         #   @return [Boolean, nil]
         optional :program_level, Lithic::Internal::Type::Boolean
-
-        # @!parse
-        #   # @return [Boolean]
-        #   attr_writer :program_level
 
         # @!method initialize(account_tokens: nil, name: nil, state: nil, card_tokens: nil, excluded_card_tokens: nil, program_level: nil, request_options: {})
         #   @param account_tokens [Array<String>]

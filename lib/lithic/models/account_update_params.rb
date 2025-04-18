@@ -4,22 +4,17 @@ module Lithic
   module Models
     # @see Lithic::Resources::Accounts#update
     class AccountUpdateParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      # @!attribute [r] daily_spend_limit
+      # @!attribute daily_spend_limit
       #   Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a
       #   $1,000 limit). By default the daily spend limit is set to $1,250.
       #
       #   @return [Integer, nil]
       optional :daily_spend_limit, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :daily_spend_limit
-
-      # @!attribute [r] lifetime_spend_limit
+      # @!attribute lifetime_spend_limit
       #   Amount (in cents) for the account's lifetime spend limit (e.g. 100000 would be a
       #   $1,000 limit). Once this limit is reached, no transactions will be accepted on
       #   any card created for this account until the limit is updated. Note that a spend
@@ -31,32 +26,20 @@ module Lithic
       #   @return [Integer, nil]
       optional :lifetime_spend_limit, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :lifetime_spend_limit
-
-      # @!attribute [r] monthly_spend_limit
+      # @!attribute monthly_spend_limit
       #   Amount (in cents) for the account's monthly spend limit (e.g. 100000 would be a
       #   $1,000 limit). By default the monthly spend limit is set to $5,000.
       #
       #   @return [Integer, nil]
       optional :monthly_spend_limit, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :monthly_spend_limit
-
-      # @!attribute [r] state
+      # @!attribute state
       #   Account states.
       #
       #   @return [Symbol, Lithic::Models::AccountUpdateParams::State, nil]
       optional :state, enum: -> { Lithic::Models::AccountUpdateParams::State }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::AccountUpdateParams::State]
-      #   attr_writer :state
-
-      # @!attribute [r] verification_address
+      # @!attribute verification_address
       #   Address used during Address Verification Service (AVS) checks during
       #   transactions if enabled via Auth Rules. This field is deprecated as AVS checks
       #   are no longer supported by Authorization Rules. The field will be removed from
@@ -64,10 +47,6 @@ module Lithic
       #
       #   @return [Lithic::Models::AccountUpdateParams::VerificationAddress, nil]
       optional :verification_address, -> { Lithic::Models::AccountUpdateParams::VerificationAddress }
-
-      # @!parse
-      #   # @return [Lithic::Models::AccountUpdateParams::VerificationAddress]
-      #   attr_writer :verification_address
 
       # @!method initialize(daily_spend_limit: nil, lifetime_spend_limit: nil, monthly_spend_limit: nil, state: nil, verification_address: nil, request_options: {})
       #   @param daily_spend_limit [Integer]
@@ -90,59 +69,35 @@ module Lithic
 
       # @deprecated
       class VerificationAddress < Lithic::Internal::Type::BaseModel
-        # @!attribute [r] address1
+        # @!attribute address1
         #
         #   @return [String, nil]
         optional :address1, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :address1
-
-        # @!attribute [r] address2
+        # @!attribute address2
         #
         #   @return [String, nil]
         optional :address2, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :address2
-
-        # @!attribute [r] city
+        # @!attribute city
         #
         #   @return [String, nil]
         optional :city, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :city
-
-        # @!attribute [r] country
+        # @!attribute country
         #
         #   @return [String, nil]
         optional :country, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :country
-
-        # @!attribute [r] postal_code
+        # @!attribute postal_code
         #
         #   @return [String, nil]
         optional :postal_code, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :postal_code
-
-        # @!attribute [r] state
+        # @!attribute state
         #
         #   @return [String, nil]
         optional :state, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :state
 
         # @!method initialize(address1: nil, address2: nil, city: nil, country: nil, postal_code: nil, state: nil)
         #   Address used during Address Verification Service (AVS) checks during

@@ -4,38 +4,26 @@ module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#simulate_enrollment_review
     class AccountHolderSimulateEnrollmentReviewResponse < Lithic::Internal::Type::BaseModel
-      # @!attribute [r] token
+      # @!attribute token
       #   Globally unique identifier for the account holder.
       #
       #   @return [String, nil]
       optional :token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :token
-
-      # @!attribute [r] account_token
+      # @!attribute account_token
       #   Globally unique identifier for the account.
       #
       #   @return [String, nil]
       optional :account_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :account_token
-
-      # @!attribute [r] beneficial_owner_entities
+      # @!attribute beneficial_owner_entities
       #   Deprecated.
       #
       #   @return [Array<Lithic::Models::KYBBusinessEntity>, nil]
       optional :beneficial_owner_entities,
                -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::KYBBusinessEntity] }
 
-      # @!parse
-      #   # @return [Array<Lithic::Models::KYBBusinessEntity>]
-      #   attr_writer :beneficial_owner_entities
-
-      # @!attribute [r] beneficial_owner_individuals
+      # @!attribute beneficial_owner_individuals
       #   Only present when user_type == "BUSINESS". List of all direct and indirect
       #   individuals with 25% or more ownership in the company. If no individual owns 25%
       #   of the company, please identify the largest shareholder in this field. See
@@ -46,11 +34,7 @@ module Lithic
       optional :beneficial_owner_individuals,
                -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual] }
 
-      # @!parse
-      #   # @return [Array<Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual>]
-      #   attr_writer :beneficial_owner_individuals
-
-      # @!attribute [r] business_account_token
+      # @!attribute business_account_token
       #   Only applicable for customers using the KYC-Exempt workflow to enroll authorized
       #   users of businesses. Pass the account_token of the enrolled business associated
       #   with the AUTHORIZED_USER in this field.
@@ -58,22 +42,14 @@ module Lithic
       #   @return [String, nil]
       optional :business_account_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :business_account_token
-
-      # @!attribute [r] business_entity
+      # @!attribute business_entity
       #   Only present when user_type == "BUSINESS". Information about the business for
       #   which the account is being opened and KYB is being run.
       #
       #   @return [Lithic::Models::KYBBusinessEntity, nil]
       optional :business_entity, -> { Lithic::Models::KYBBusinessEntity }
 
-      # @!parse
-      #   # @return [Lithic::Models::KYBBusinessEntity]
-      #   attr_writer :business_entity
-
-      # @!attribute [r] control_person
+      # @!attribute control_person
       #   Only present when user_type == "BUSINESS".
       #
       #   An individual with significant responsibility for managing the legal entity
@@ -90,21 +66,13 @@ module Lithic
       optional :control_person,
                -> { Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson }
 
-      # @!parse
-      #   # @return [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson]
-      #   attr_writer :control_person
-
-      # @!attribute [r] created
+      # @!attribute created
       #   Timestamp of when the account holder was created.
       #
       #   @return [Time, nil]
       optional :created, Time
 
-      # @!parse
-      #   # @return [Time]
-      #   attr_writer :created
-
-      # @!attribute [r] email
+      # @!attribute email
       #   < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
       #   individual.phone_number when user_type == "INDIVIDUAL".
       #
@@ -113,11 +81,7 @@ module Lithic
       #   @return [String, nil]
       optional :email, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :email
-
-      # @!attribute [r] exemption_type
+      # @!attribute exemption_type
       #   The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
       #   holder is not KYC-Exempt.
       #
@@ -125,44 +89,28 @@ module Lithic
       optional :exemption_type,
                enum: -> { Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType]
-      #   attr_writer :exemption_type
-
-      # @!attribute [r] external_id
+      # @!attribute external_id
       #   Customer-provided token that indicates a relationship with an object outside of
       #   the Lithic ecosystem.
       #
       #   @return [String, nil]
       optional :external_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :external_id
-
-      # @!attribute [r] individual
+      # @!attribute individual
       #   Only present when user_type == "INDIVIDUAL". Information about the individual
       #   for which the account is being opened and KYC is being run.
       #
       #   @return [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual, nil]
       optional :individual, -> { Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual }
 
-      # @!parse
-      #   # @return [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual]
-      #   attr_writer :individual
-
-      # @!attribute [r] nature_of_business
+      # @!attribute nature_of_business
       #   Only present when user_type == "BUSINESS". User-submitted description of the
       #   business.
       #
       #   @return [String, nil]
       optional :nature_of_business, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :nature_of_business
-
-      # @!attribute [r] phone_number
+      # @!attribute phone_number
       #   < Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
       #   individual.phone_number when user_type == "INDIVIDUAL".
       #
@@ -171,22 +119,14 @@ module Lithic
       #   @return [String, nil]
       optional :phone_number, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :phone_number
-
-      # @!attribute [r] required_documents
+      # @!attribute required_documents
       #   Only present for "KYB_BASIC" and "KYC_ADVANCED" workflows. A list of documents
       #   required for the account holder to be approved.
       #
       #   @return [Array<Lithic::Models::RequiredDocument>, nil]
       optional :required_documents, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument] }
 
-      # @!parse
-      #   # @return [Array<Lithic::Models::RequiredDocument>]
-      #   attr_writer :required_documents
-
-      # @!attribute [r] status
+      # @!attribute status
       #   <Deprecated. Use verification_application.status instead>
       #
       #   KYC and KYB evaluation states.
@@ -197,11 +137,7 @@ module Lithic
       #   @return [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status, nil]
       optional :status, enum: -> { Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status]
-      #   attr_writer :status
-
-      # @!attribute [r] status_reasons
+      # @!attribute status_reasons
       #   <Deprecated. Use verification_application.status_reasons> Reason for the
       #   evaluation status.
       #
@@ -209,11 +145,7 @@ module Lithic
       optional :status_reasons,
                -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason] }
 
-      # @!parse
-      #   # @return [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason>]
-      #   attr_writer :status_reasons
-
-      # @!attribute [r] user_type
+      # @!attribute user_type
       #   The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
       #   attribute will be present.
       #
@@ -224,30 +156,18 @@ module Lithic
       #   @return [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType, nil]
       optional :user_type, enum: -> { Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType]
-      #   attr_writer :user_type
-
-      # @!attribute [r] verification_application
+      # @!attribute verification_application
       #   Information about the most recent identity verification attempt
       #
       #   @return [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication, nil]
       optional :verification_application,
                -> { Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication }
 
-      # @!parse
-      #   # @return [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication]
-      #   attr_writer :verification_application
-
-      # @!attribute [r] website_url
+      # @!attribute website_url
       #   Only present when user_type == "BUSINESS". Business's primary website.
       #
       #   @return [String, nil]
       optional :website_url, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :website_url
 
       # @!method initialize(token: nil, account_token: nil, beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_account_token: nil, business_entity: nil, control_person: nil, created: nil, email: nil, exemption_type: nil, external_id: nil, individual: nil, nature_of_business: nil, phone_number: nil, required_documents: nil, status: nil, status_reasons: nil, user_type: nil, verification_application: nil, website_url: nil)
       #   @param token [String]
@@ -272,7 +192,7 @@ module Lithic
       #   @param website_url [String]
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
-        # @!attribute [r] address
+        # @!attribute address
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         #
@@ -280,60 +200,36 @@ module Lithic
         optional :address,
                  -> { Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address }
 
-        # @!parse
-        #   # @return [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address]
-        #   attr_writer :address
-
-        # @!attribute [r] dob
+        # @!attribute dob
         #   Individual's date of birth, as an RFC 3339 date.
         #
         #   @return [String, nil]
         optional :dob, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :dob
-
-        # @!attribute [r] email
+        # @!attribute email
         #   Individual's email address. If utilizing Lithic for chargeback processing, this
         #   customer email address may be used to communicate dispute status and resolution.
         #
         #   @return [String, nil]
         optional :email, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :email
-
-        # @!attribute [r] first_name
+        # @!attribute first_name
         #   Individual's first name, as it appears on government-issued identity documents.
         #
         #   @return [String, nil]
         optional :first_name, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :first_name
-
-        # @!attribute [r] last_name
+        # @!attribute last_name
         #   Individual's last name, as it appears on government-issued identity documents.
         #
         #   @return [String, nil]
         optional :last_name, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :last_name
-
-        # @!attribute [r] phone_number
+        # @!attribute phone_number
         #   Individual's phone number, entered in E.164 format.
         #
         #   @return [String, nil]
         optional :phone_number, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :phone_number
 
         # @!method initialize(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil)
         #   @param address [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address]
@@ -378,15 +274,11 @@ module Lithic
           #   @return [String]
           required :state, String
 
-          # @!attribute [r] address2
+          # @!attribute address2
           #   Unit or apartment number (if applicable).
           #
           #   @return [String, nil]
           optional :address2, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :address2
 
           # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
           #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -403,7 +295,7 @@ module Lithic
 
       # @see Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse#control_person
       class ControlPerson < Lithic::Internal::Type::BaseModel
-        # @!attribute [r] address
+        # @!attribute address
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         #
@@ -411,60 +303,36 @@ module Lithic
         optional :address,
                  -> { Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address }
 
-        # @!parse
-        #   # @return [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address]
-        #   attr_writer :address
-
-        # @!attribute [r] dob
+        # @!attribute dob
         #   Individual's date of birth, as an RFC 3339 date.
         #
         #   @return [String, nil]
         optional :dob, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :dob
-
-        # @!attribute [r] email
+        # @!attribute email
         #   Individual's email address. If utilizing Lithic for chargeback processing, this
         #   customer email address may be used to communicate dispute status and resolution.
         #
         #   @return [String, nil]
         optional :email, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :email
-
-        # @!attribute [r] first_name
+        # @!attribute first_name
         #   Individual's first name, as it appears on government-issued identity documents.
         #
         #   @return [String, nil]
         optional :first_name, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :first_name
-
-        # @!attribute [r] last_name
+        # @!attribute last_name
         #   Individual's last name, as it appears on government-issued identity documents.
         #
         #   @return [String, nil]
         optional :last_name, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :last_name
-
-        # @!attribute [r] phone_number
+        # @!attribute phone_number
         #   Individual's phone number, entered in E.164 format.
         #
         #   @return [String, nil]
         optional :phone_number, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :phone_number
 
         # @!method initialize(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil)
         #   Only present when user_type == "BUSINESS".
@@ -521,15 +389,11 @@ module Lithic
           #   @return [String]
           required :state, String
 
-          # @!attribute [r] address2
+          # @!attribute address2
           #   Unit or apartment number (if applicable).
           #
           #   @return [String, nil]
           optional :address2, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :address2
 
           # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
           #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -560,7 +424,7 @@ module Lithic
 
       # @see Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse#individual
       class Individual < Lithic::Internal::Type::BaseModel
-        # @!attribute [r] address
+        # @!attribute address
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         #
@@ -568,60 +432,36 @@ module Lithic
         optional :address,
                  -> { Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address }
 
-        # @!parse
-        #   # @return [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address]
-        #   attr_writer :address
-
-        # @!attribute [r] dob
+        # @!attribute dob
         #   Individual's date of birth, as an RFC 3339 date.
         #
         #   @return [String, nil]
         optional :dob, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :dob
-
-        # @!attribute [r] email
+        # @!attribute email
         #   Individual's email address. If utilizing Lithic for chargeback processing, this
         #   customer email address may be used to communicate dispute status and resolution.
         #
         #   @return [String, nil]
         optional :email, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :email
-
-        # @!attribute [r] first_name
+        # @!attribute first_name
         #   Individual's first name, as it appears on government-issued identity documents.
         #
         #   @return [String, nil]
         optional :first_name, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :first_name
-
-        # @!attribute [r] last_name
+        # @!attribute last_name
         #   Individual's last name, as it appears on government-issued identity documents.
         #
         #   @return [String, nil]
         optional :last_name, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :last_name
-
-        # @!attribute [r] phone_number
+        # @!attribute phone_number
         #   Individual's phone number, entered in E.164 format.
         #
         #   @return [String, nil]
         optional :phone_number, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :phone_number
 
         # @!method initialize(address: nil, dob: nil, email: nil, first_name: nil, last_name: nil, phone_number: nil)
         #   Only present when user_type == "INDIVIDUAL". Information about the individual
@@ -669,15 +509,11 @@ module Lithic
           #   @return [String]
           required :state, String
 
-          # @!attribute [r] address2
+          # @!attribute address2
           #   Unit or apartment number (if applicable).
           #
           #   @return [String, nil]
           optional :address2, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :address2
 
           # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
           #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not

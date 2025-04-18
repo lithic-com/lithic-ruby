@@ -4,14 +4,10 @@ module Lithic
   module Models
     # @see Lithic::Resources::Client#api_status
     class APIStatus < Lithic::Internal::Type::BaseModel
-      # @!attribute [r] message
+      # @!attribute message
       #
       #   @return [String, nil]
       optional :message, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :message
 
       # @!method initialize(message: nil)
       #   @param message [String]

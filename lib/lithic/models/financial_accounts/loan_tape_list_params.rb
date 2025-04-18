@@ -5,63 +5,42 @@ module Lithic
     module FinancialAccounts
       # @see Lithic::Resources::FinancialAccounts::LoanTapes#list
       class LoanTapeListParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        # @!attribute [r] begin_
+        # @!attribute begin_
         #   Date string in RFC 3339 format. Only entries created after the specified date
         #   will be included.
         #
         #   @return [Date, nil]
         optional :begin_, Date
 
-        # @!parse
-        #   # @return [Date]
-        #   attr_writer :begin_
-
-        # @!attribute [r] end_
+        # @!attribute end_
         #   Date string in RFC 3339 format. Only entries created before the specified date
         #   will be included.
         #
         #   @return [Date, nil]
         optional :end_, Date
 
-        # @!parse
-        #   # @return [Date]
-        #   attr_writer :end_
-
-        # @!attribute [r] ending_before
+        # @!attribute ending_before
         #   A cursor representing an item's token before which a page of results should end.
         #   Used to retrieve the previous page of results before this item.
         #
         #   @return [String, nil]
         optional :ending_before, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :ending_before
-
-        # @!attribute [r] page_size
+        # @!attribute page_size
         #   Page size (for pagination).
         #
         #   @return [Integer, nil]
         optional :page_size, Integer
 
-        # @!parse
-        #   # @return [Integer]
-        #   attr_writer :page_size
-
-        # @!attribute [r] starting_after
+        # @!attribute starting_after
         #   A cursor representing an item's token after which a page of results should
         #   begin. Used to retrieve the next page of results after this item.
         #
         #   @return [String, nil]
         optional :starting_after, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :starting_after
 
         # @!method initialize(begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
         #   @param begin_ [Date]

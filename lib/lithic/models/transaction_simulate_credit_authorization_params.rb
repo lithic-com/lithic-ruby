@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Transactions#simulate_credit_authorization
     class TransactionSimulateCreditAuthorizationParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute amount
@@ -28,7 +27,7 @@ module Lithic
       #   @return [String]
       required :pan, String
 
-      # @!attribute [r] mcc
+      # @!attribute mcc
       #   Merchant category code for the transaction to be simulated. A four-digit number
       #   listed in ISO 18245. Supported merchant category codes can be found
       #   [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
@@ -36,19 +35,11 @@ module Lithic
       #   @return [String, nil]
       optional :mcc, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :mcc
-
-      # @!attribute [r] merchant_acceptor_id
+      # @!attribute merchant_acceptor_id
       #   Unique identifier to identify the payment card acceptor.
       #
       #   @return [String, nil]
       optional :merchant_acceptor_id, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :merchant_acceptor_id
 
       # @!method initialize(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, request_options: {})
       #   @param amount [Integer]

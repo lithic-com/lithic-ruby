@@ -4,7 +4,7 @@ module Lithic
   module Models
     module AuthRules
       class AuthRuleCondition < Lithic::Internal::Type::BaseModel
-        # @!attribute [r] attribute
+        # @!attribute attribute
         #   The attribute to target.
         #
         #   The following attributes may be targeted:
@@ -56,29 +56,17 @@ module Lithic
         #   @return [Symbol, Lithic::Models::AuthRules::ConditionalAttribute, nil]
         optional :attribute, enum: -> { Lithic::Models::AuthRules::ConditionalAttribute }
 
-        # @!parse
-        #   # @return [Symbol, Lithic::Models::AuthRules::ConditionalAttribute]
-        #   attr_writer :attribute
-
-        # @!attribute [r] operation
+        # @!attribute operation
         #   The operation to apply to the attribute
         #
         #   @return [Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation, nil]
         optional :operation, enum: -> { Lithic::Models::AuthRules::AuthRuleCondition::Operation }
 
-        # @!parse
-        #   # @return [Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation]
-        #   attr_writer :operation
-
-        # @!attribute [r] value
+        # @!attribute value
         #   A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
         #
         #   @return [String, Integer, Array<String>, nil]
         optional :value, union: -> { Lithic::Models::AuthRules::AuthRuleCondition::Value }
-
-        # @!parse
-        #   # @return [String, Integer, Array<String>]
-        #   attr_writer :value
 
         # @!method initialize(attribute: nil, operation: nil, value: nil)
         #   @param attribute [Symbol, Lithic::Models::AuthRules::ConditionalAttribute]

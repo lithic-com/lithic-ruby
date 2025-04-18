@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::FinancialAccounts#create
     class FinancialAccountCreateParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute nickname
@@ -18,32 +17,20 @@ module Lithic
       #   @return [Symbol, Lithic::Models::FinancialAccountCreateParams::Type]
       required :type, enum: -> { Lithic::Models::FinancialAccountCreateParams::Type }
 
-      # @!attribute [r] account_token
+      # @!attribute account_token
       #
       #   @return [String, nil]
       optional :account_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :account_token
-
-      # @!attribute [r] is_for_benefit_of
+      # @!attribute is_for_benefit_of
       #
       #   @return [Boolean, nil]
       optional :is_for_benefit_of, Lithic::Internal::Type::Boolean
 
-      # @!parse
-      #   # @return [Boolean]
-      #   attr_writer :is_for_benefit_of
-
-      # @!attribute [r] idempotency_key
+      # @!attribute idempotency_key
       #
       #   @return [String, nil]
       optional :idempotency_key, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :idempotency_key
 
       # @!method initialize(nickname:, type:, account_token: nil, is_for_benefit_of: nil, idempotency_key: nil, request_options: {})
       #   @param nickname [String]

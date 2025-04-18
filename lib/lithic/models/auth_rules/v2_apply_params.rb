@@ -5,8 +5,7 @@ module Lithic
     module AuthRules
       # @see Lithic::Resources::AuthRules::V2#apply
       class V2ApplyParams < Lithic::Internal::Type::BaseModel
-        # @!parse
-        #   extend Lithic::Internal::Type::RequestParameters::Converter
+        extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
         # @!attribute account_tokens
@@ -27,15 +26,11 @@ module Lithic
         #   @return [Boolean]
         required :program_level, Lithic::Internal::Type::Boolean
 
-        # @!attribute [r] excluded_card_tokens
+        # @!attribute excluded_card_tokens
         #   Card tokens to which the Auth Rule does not apply.
         #
         #   @return [Array<String>, nil]
         optional :excluded_card_tokens, Lithic::Internal::Type::ArrayOf[String]
-
-        # @!parse
-        #   # @return [Array<String>]
-        #   attr_writer :excluded_card_tokens
 
         # @!method initialize(account_tokens:, card_tokens:, program_level:, excluded_card_tokens: nil, request_options: {})
         #   @param account_tokens [Array<String>]

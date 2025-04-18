@@ -4,15 +4,11 @@ module Lithic
   module Models
     # @see Lithic::Resources::ResponderEndpoints#create
     class ResponderEndpointCreateResponse < Lithic::Internal::Type::BaseModel
-      # @!attribute [r] enrolled
+      # @!attribute enrolled
       #   True if the endpoint was enrolled successfully.
       #
       #   @return [Boolean, nil]
       optional :enrolled, Lithic::Internal::Type::Boolean
-
-      # @!parse
-      #   # @return [Boolean]
-      #   attr_writer :enrolled
 
       # @!method initialize(enrolled: nil)
       #   @param enrolled [Boolean]

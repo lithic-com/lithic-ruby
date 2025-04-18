@@ -4,41 +4,28 @@ module Lithic
   module Models
     # @see Lithic::Resources::AccountHolders#simulate_enrollment_review
     class AccountHolderSimulateEnrollmentReviewParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      # @!attribute [r] account_holder_token
+      # @!attribute account_holder_token
       #   The account holder which to perform the simulation upon.
       #
       #   @return [String, nil]
       optional :account_holder_token, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :account_holder_token
-
-      # @!attribute [r] status
+      # @!attribute status
       #   An account holder's status for use within the simulation.
       #
       #   @return [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status, nil]
       optional :status, enum: -> { Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status }
 
-      # @!parse
-      #   # @return [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status]
-      #   attr_writer :status
-
-      # @!attribute [r] status_reasons
+      # @!attribute status_reasons
       #   Status reason that will be associated with the simulated account holder status.
       #   Only required for a `REJECTED` status.
       #
       #   @return [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason>, nil]
       optional :status_reasons,
                -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason] }
-
-      # @!parse
-      #   # @return [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason>]
-      #   attr_writer :status_reasons
 
       # @!method initialize(account_holder_token: nil, status: nil, status_reasons: nil, request_options: {})
       #   @param account_holder_token [String]

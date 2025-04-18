@@ -115,15 +115,11 @@ module Lithic
       #   @return [String, nil]
       required :user_defined_id, String, nil?: true
 
-      # @!attribute [r] expected_release_date
+      # @!attribute expected_release_date
       #   Date when the financial transaction expected to be released after settlement
       #
       #   @return [Date, nil]
       optional :expected_release_date, Date
-
-      # @!parse
-      #   # @return [Date]
-      #   attr_writer :expected_release_date
 
       # @!method initialize(token:, category:, created:, currency:, descriptor:, direction:, events:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, pending_amount:, result:, settled_amount:, source:, status:, updated:, user_defined_id:, expected_release_date: nil)
       #   @param token [String]
@@ -221,16 +217,12 @@ module Lithic
         #   @return [Symbol, Lithic::Models::Payment::Event::Type]
         required :type, enum: -> { Lithic::Models::Payment::Event::Type }
 
-        # @!attribute [r] detailed_results
+        # @!attribute detailed_results
         #   More detailed reasons for the event
         #
         #   @return [Array<Symbol, Lithic::Models::Payment::Event::DetailedResult>, nil]
         optional :detailed_results,
                  -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::Payment::Event::DetailedResult] }
-
-        # @!parse
-        #   # @return [Array<Symbol, Lithic::Models::Payment::Event::DetailedResult>]
-        #   attr_writer :detailed_results
 
         # @!method initialize(token:, amount:, created:, result:, type:, detailed_results: nil)
         #   @param token [String]

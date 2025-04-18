@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Payments#simulate_receipt
     class PaymentSimulateReceiptParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute token
@@ -32,15 +31,11 @@ module Lithic
       #   @return [Symbol, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType]
       required :receipt_type, enum: -> { Lithic::Models::PaymentSimulateReceiptParams::ReceiptType }
 
-      # @!attribute [r] memo
+      # @!attribute memo
       #   Memo
       #
       #   @return [String, nil]
       optional :memo, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :memo
 
       # @!method initialize(token:, amount:, financial_account_token:, receipt_type:, memo: nil, request_options: {})
       #   @param token [String]

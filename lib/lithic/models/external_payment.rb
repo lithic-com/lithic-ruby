@@ -64,14 +64,10 @@ module Lithic
       #   @return [Time]
       required :updated, Time
 
-      # @!attribute [r] user_defined_id
+      # @!attribute user_defined_id
       #
       #   @return [String, nil]
       optional :user_defined_id, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :user_defined_id
 
       # @!method initialize(token:, category:, created:, currency:, events:, financial_account_token:, payment_type:, pending_amount:, result:, settled_amount:, status:, updated:, user_defined_id: nil)
       #   @param token [String]

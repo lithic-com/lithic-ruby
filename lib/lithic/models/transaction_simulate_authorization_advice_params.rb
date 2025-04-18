@@ -4,8 +4,7 @@ module Lithic
   module Models
     # @see Lithic::Resources::Transactions#simulate_authorization_advice
     class TransactionSimulateAuthorizationAdviceParams < Lithic::Internal::Type::BaseModel
-      # @!parse
-      #   extend Lithic::Internal::Type::RequestParameters::Converter
+      extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute token

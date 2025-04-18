@@ -38,15 +38,11 @@ module Lithic
       #   @return [String]
       required :state, String
 
-      # @!attribute [r] address2
+      # @!attribute address2
       #   Unit or apartment number (if applicable).
       #
       #   @return [String, nil]
       optional :address2, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :address2
 
       # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
       #   @param address1 [String]

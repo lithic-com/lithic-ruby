@@ -156,14 +156,10 @@ module Lithic
       #   @return [Time]
       required :updated, Time
 
-      # @!attribute [r] events
+      # @!attribute events
       #
       #   @return [Array<Lithic::Models::Transaction::Event>, nil]
       optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Transaction::Event] }
-
-      # @!parse
-      #   # @return [Array<Lithic::Models::Transaction::Event>]
-      #   attr_writer :events
 
       # @!method initialize(token:, account_token:, acquirer_fee:, acquirer_reference_number:, amount:, amounts:, authorization_amount:, authorization_code:, avs:, card_token:, cardholder_authentication:, created:, merchant:, merchant_amount:, merchant_authorization_amount:, merchant_currency:, network:, network_risk_score:, pos:, result:, settled_amount:, status:, token_info:, updated:, events: nil)
       #   @param token [String]
