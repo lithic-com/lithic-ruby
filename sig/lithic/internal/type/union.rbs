@@ -30,6 +30,8 @@ module Lithic
 
         def ==: (top other) -> bool
 
+        def hash: -> Integer
+
         def coerce: (
           top value,
           state: Lithic::Internal::Type::Converter::coerce_state
