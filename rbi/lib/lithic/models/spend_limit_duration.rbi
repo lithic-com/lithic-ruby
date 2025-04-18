@@ -18,7 +18,7 @@ module Lithic
       extend Lithic::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::SpendLimitDuration) }
-      OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::SpendLimitDuration::TaggedSymbol) }
+      OrSymbol = T.type_alias { T.any(Symbol, String) }
 
       ANNUALLY = T.let(:ANNUALLY, Lithic::Models::SpendLimitDuration::TaggedSymbol)
       FOREVER = T.let(:FOREVER, Lithic::Models::SpendLimitDuration::TaggedSymbol)

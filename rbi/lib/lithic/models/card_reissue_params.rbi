@@ -96,8 +96,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardReissueParams::ShippingMethod) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         SHIPPING_METHOD_2_DAY = T.let(:"2_DAY", Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol)
         EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardReissueParams::ShippingMethod::TaggedSymbol)

@@ -106,8 +106,7 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Category) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           CARD = T.let(:CARD, Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol)
           TRANSFER =
@@ -123,8 +122,7 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Result) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           APPROVED = T.let(:APPROVED, Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol)
@@ -139,8 +137,7 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Status) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           DECLINED = T.let(:DECLINED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
           EXPIRED = T.let(:EXPIRED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)

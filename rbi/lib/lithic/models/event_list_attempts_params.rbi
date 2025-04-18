@@ -92,8 +92,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::EventListAttemptsParams::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::EventListAttemptsParams::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         FAILED = T.let(:FAILED, Lithic::Models::EventListAttemptsParams::Status::TaggedSymbol)
         PENDING = T.let(:PENDING, Lithic::Models::EventListAttemptsParams::Status::TaggedSymbol)

@@ -124,8 +124,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationListParams::Category) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         MANAGEMENT_FEE =
           T.let(:MANAGEMENT_FEE, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
@@ -145,8 +144,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationListParams::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PENDING = T.let(:PENDING, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
         SETTLED = T.let(:SETTLED, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)

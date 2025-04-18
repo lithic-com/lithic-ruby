@@ -466,8 +466,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderCreateParams::Workflow) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolderCreateParams::Workflow::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         KYC_EXEMPT = T.let(:KYC_EXEMPT, Lithic::Models::AccountHolderCreateParams::Workflow::TaggedSymbol)
 
@@ -625,8 +624,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderCreateParams::KYCExemptionType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AUTHORIZED_USER =
           T.let(:AUTHORIZED_USER, Lithic::Models::AccountHolderCreateParams::KYCExemptionType::TaggedSymbol)

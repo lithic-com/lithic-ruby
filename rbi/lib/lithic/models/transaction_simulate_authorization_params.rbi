@@ -162,8 +162,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AUTHORIZATION =
           T.let(:AUTHORIZATION, Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol)

@@ -279,7 +279,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardCreateParams::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::CardCreateParams::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         MERCHANT_LOCKED = T.let(:MERCHANT_LOCKED, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
         PHYSICAL = T.let(:PHYSICAL, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
@@ -308,8 +308,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardCreateParams::ShippingMethod) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         SHIPPING_METHOD_2_DAY = T.let(:"2_DAY", Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
         EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
@@ -333,7 +332,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardCreateParams::State) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::CardCreateParams::State::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         OPEN = T.let(:OPEN, Lithic::Models::CardCreateParams::State::TaggedSymbol)
         PAUSED = T.let(:PAUSED, Lithic::Models::CardCreateParams::State::TaggedSymbol)

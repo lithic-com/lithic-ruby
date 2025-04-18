@@ -41,8 +41,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         OPEN = T.let(:OPEN, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol)
         CLOSED = T.let(:CLOSED, Lithic::Models::FinancialAccountUpdateStatusParams::Status::TaggedSymbol)
@@ -59,8 +58,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CHARGED_OFF_FRAUD =
           T.let(:CHARGED_OFF_FRAUD, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::TaggedSymbol)

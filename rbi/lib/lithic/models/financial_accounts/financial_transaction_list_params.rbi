@@ -109,14 +109,7 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol
-              )
-            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ACH =
             T.let(:ACH, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category::TaggedSymbol)
@@ -148,14 +141,7 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::TaggedSymbol
-              )
-            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           APPROVED =
             T.let(:APPROVED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result::TaggedSymbol)
@@ -175,14 +161,7 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol
-              )
-            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           DECLINED =
             T.let(:DECLINED, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status::TaggedSymbol)
