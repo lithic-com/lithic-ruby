@@ -8,7 +8,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::ChallengeResult) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         APPROVE = T.let(:APPROVE, Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol)
         DECLINE_BY_CUSTOMER = T.let(:DECLINE_BY_CUSTOMER, Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol)

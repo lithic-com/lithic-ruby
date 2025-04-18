@@ -43,14 +43,7 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
-              )
-            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ACCOUNT_HOLDER_CREATED =
             T.let(

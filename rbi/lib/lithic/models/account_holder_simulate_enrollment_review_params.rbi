@@ -67,8 +67,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACCEPTED =
           T.let(:ACCEPTED, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::TaggedSymbol)
@@ -87,14 +86,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason) }
-        OrSymbol =
-          T.type_alias do
-            T.any(
-              Symbol,
-              String,
-              Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::TaggedSymbol
-            )
-          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PRIMARY_BUSINESS_ENTITY_ID_VERIFICATION_FAILURE =
           T.let(

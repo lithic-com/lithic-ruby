@@ -217,8 +217,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountCreateResponse::OwnerType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalBankAccountCreateResponse::OwnerType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         BUSINESS = T.let(:BUSINESS, Lithic::Models::ExternalBankAccountCreateResponse::OwnerType::TaggedSymbol)
         INDIVIDUAL =
@@ -233,8 +232,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountCreateResponse::State) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalBankAccountCreateResponse::State::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ENABLED = T.let(:ENABLED, Lithic::Models::ExternalBankAccountCreateResponse::State::TaggedSymbol)
         CLOSED = T.let(:CLOSED, Lithic::Models::ExternalBankAccountCreateResponse::State::TaggedSymbol)
@@ -249,8 +247,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountCreateResponse::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalBankAccountCreateResponse::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountCreateResponse::Type::TaggedSymbol)
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountCreateResponse::Type::TaggedSymbol)
@@ -265,8 +262,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountCreateResponse::VerificationMethod) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalBankAccountCreateResponse::VerificationMethod::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         MANUAL =
           T.let(:MANUAL, Lithic::Models::ExternalBankAccountCreateResponse::VerificationMethod::TaggedSymbol)
@@ -290,8 +286,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountCreateResponse::VerificationState) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalBankAccountCreateResponse::VerificationState::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PENDING =
           T.let(:PENDING, Lithic::Models::ExternalBankAccountCreateResponse::VerificationState::TaggedSymbol)

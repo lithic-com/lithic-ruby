@@ -127,8 +127,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Category) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialTransaction::Category::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACH = T.let(:ACH, Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
         CARD = T.let(:CARD, Lithic::Models::FinancialTransaction::Category::TaggedSymbol)
@@ -208,8 +207,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Event::Result) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           APPROVED = T.let(:APPROVED, Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::FinancialTransaction::Event::Result::TaggedSymbol)
@@ -222,8 +220,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Event::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ACH_ORIGINATION_CANCELLED =
             T.let(:ACH_ORIGINATION_CANCELLED, Lithic::Models::FinancialTransaction::Event::Type::TaggedSymbol)
@@ -356,8 +353,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Result) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialTransaction::Result::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         APPROVED = T.let(:APPROVED, Lithic::Models::FinancialTransaction::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::FinancialTransaction::Result::TaggedSymbol)
@@ -379,8 +375,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialTransaction::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::FinancialTransaction::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         DECLINED = T.let(:DECLINED, Lithic::Models::FinancialTransaction::Status::TaggedSymbol)
         EXPIRED = T.let(:EXPIRED, Lithic::Models::FinancialTransaction::Status::TaggedSymbol)

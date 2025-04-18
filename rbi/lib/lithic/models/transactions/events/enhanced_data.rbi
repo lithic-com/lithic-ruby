@@ -222,14 +222,7 @@ module Lithic
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      String,
-                      Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
-                    )
-                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 TAX_INCLUDED =
                   T.let(
@@ -446,8 +439,7 @@ module Lithic
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type) }
-                OrSymbol =
-                  T.type_alias { T.any(Symbol, String, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol) }
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 UNKNOWN =
                   T.let(:UNKNOWN, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
@@ -987,14 +979,7 @@ module Lithic
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      String,
-                      Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
-                    )
-                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 GALLONS =
                   T.let(
@@ -1048,14 +1033,7 @@ module Lithic
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    String,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol
-                  )
-                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               UNKNOWN =
                 T.let(:UNKNOWN, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)

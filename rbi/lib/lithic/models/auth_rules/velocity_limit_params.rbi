@@ -115,7 +115,7 @@ module Lithic
         module Period
           extend Lithic::Internal::Type::Union
 
-          sig { override.returns([Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol]) }
+          sig { override.returns([Integer, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol]) }
           def self.variants; end
         end
 
@@ -123,8 +123,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           CARD = T.let(:CARD, Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol)
           ACCOUNT = T.let(:ACCOUNT, Lithic::Models::AuthRules::VelocityLimitParams::Scope::TaggedSymbol)

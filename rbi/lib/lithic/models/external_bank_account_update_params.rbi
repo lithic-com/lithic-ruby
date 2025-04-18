@@ -119,8 +119,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol)
         SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol)

@@ -217,14 +217,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::OwnerType) }
-        OrSymbol =
-          T.type_alias do
-            T.any(
-              Symbol,
-              String,
-              Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::OwnerType::TaggedSymbol
-            )
-          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         BUSINESS =
           T.let(:BUSINESS, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::OwnerType::TaggedSymbol)
@@ -244,8 +237,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::State) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::State::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ENABLED =
           T.let(:ENABLED, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::State::TaggedSymbol)
@@ -267,8 +259,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CHECKING =
           T.let(:CHECKING, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::Type::TaggedSymbol)
@@ -288,14 +279,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::VerificationMethod) }
-        OrSymbol =
-          T.type_alias do
-            T.any(
-              Symbol,
-              String,
-              Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::VerificationMethod::TaggedSymbol
-            )
-          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         MANUAL =
           T.let(
@@ -333,14 +317,7 @@ module Lithic
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::VerificationState) }
-        OrSymbol =
-          T.type_alias do
-            T.any(
-              Symbol,
-              String,
-              Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::VerificationState::TaggedSymbol
-            )
-          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PENDING =
           T.let(

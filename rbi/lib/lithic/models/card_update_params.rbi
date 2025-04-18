@@ -129,8 +129,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardUpdateParams::PinStatus) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::CardUpdateParams::PinStatus::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         OK = T.let(:OK, Lithic::Models::CardUpdateParams::PinStatus::TaggedSymbol)
 
@@ -150,7 +149,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardUpdateParams::State) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::CardUpdateParams::State::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CLOSED = T.let(:CLOSED, Lithic::Models::CardUpdateParams::State::TaggedSymbol)
         OPEN = T.let(:OPEN, Lithic::Models::CardUpdateParams::State::TaggedSymbol)

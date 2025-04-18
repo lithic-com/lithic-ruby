@@ -97,8 +97,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderCreateResponse::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACCEPTED = T.let(:ACCEPTED, Lithic::Models::AccountHolderCreateResponse::Status::TaggedSymbol)
         PENDING_REVIEW =
@@ -118,8 +117,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderCreateResponse::StatusReason) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::AccountHolderCreateResponse::StatusReason::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ADDRESS_VERIFICATION_FAILURE =
           T.let(

@@ -187,8 +187,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::SettlementDetail::Network) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::SettlementDetail::Network::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         INTERLINK = T.let(:INTERLINK, Lithic::Models::SettlementDetail::Network::TaggedSymbol)
         MAESTRO = T.let(:MAESTRO, Lithic::Models::SettlementDetail::Network::TaggedSymbol)
@@ -220,7 +219,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::SettlementDetail::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::SettlementDetail::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ADJUSTMENT = T.let(:ADJUSTMENT, Lithic::Models::SettlementDetail::Type::TaggedSymbol)
         ARBITRATION = T.let(:ARBITRATION, Lithic::Models::SettlementDetail::Type::TaggedSymbol)

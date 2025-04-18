@@ -141,14 +141,7 @@ module Lithic
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    String,
-                    Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
-                  )
-                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ACH =
                 T.let(
@@ -220,14 +213,7 @@ module Lithic
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    String,
-                    Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
-                  )
-                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ACH_ORIGINATION_CANCELLED =
                 T.let(

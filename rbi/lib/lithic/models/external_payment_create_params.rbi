@@ -95,8 +95,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::Category) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         EXTERNAL_WIRE =
           T.let(:EXTERNAL_WIRE, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol)
@@ -114,8 +113,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         DEPOSIT = T.let(:DEPOSIT, Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol)
         WITHDRAWAL = T.let(:WITHDRAWAL, Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol)
@@ -128,8 +126,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol)
         RELEASED = T.let(:RELEASED, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol)

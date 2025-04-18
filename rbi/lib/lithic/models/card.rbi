@@ -369,7 +369,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::Funding::State) }
-          OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Card::Funding::State::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           DELETED = T.let(:DELETED, Lithic::Models::Card::Funding::State::TaggedSymbol)
           ENABLED = T.let(:ENABLED, Lithic::Models::Card::Funding::State::TaggedSymbol)
@@ -387,7 +387,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::Funding::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Card::Funding::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           DEPOSITORY_CHECKING = T.let(:DEPOSITORY_CHECKING, Lithic::Models::Card::Funding::Type::TaggedSymbol)
           DEPOSITORY_SAVINGS = T.let(:DEPOSITORY_SAVINGS, Lithic::Models::Card::Funding::Type::TaggedSymbol)
@@ -403,7 +403,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::PinStatus) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Card::PinStatus::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         OK = T.let(:OK, Lithic::Models::Card::PinStatus::TaggedSymbol)
         BLOCKED = T.let(:BLOCKED, Lithic::Models::Card::PinStatus::TaggedSymbol)
@@ -438,7 +438,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::State) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Card::State::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CLOSED = T.let(:CLOSED, Lithic::Models::Card::State::TaggedSymbol)
         OPEN = T.let(:OPEN, Lithic::Models::Card::State::TaggedSymbol)
@@ -470,7 +470,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Card::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::Card::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         MERCHANT_LOCKED = T.let(:MERCHANT_LOCKED, Lithic::Models::Card::Type::TaggedSymbol)
         PHYSICAL = T.let(:PHYSICAL, Lithic::Models::Card::Type::TaggedSymbol)

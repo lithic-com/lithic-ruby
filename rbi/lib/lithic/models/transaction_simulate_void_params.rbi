@@ -62,8 +62,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::TransactionSimulateVoidParams::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AUTHORIZATION_EXPIRY =
           T.let(:AUTHORIZATION_EXPIRY, Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol)

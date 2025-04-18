@@ -166,14 +166,7 @@ module Lithic
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Network) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Network::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             VISA = T.let(:VISA, Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Network::TaggedSymbol)
             MASTERCARD =

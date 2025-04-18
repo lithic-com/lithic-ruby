@@ -100,8 +100,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::KYCExempt::KYCExemptionType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::KYCExempt::KYCExemptionType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AUTHORIZED_USER = T.let(:AUTHORIZED_USER, Lithic::Models::KYCExempt::KYCExemptionType::TaggedSymbol)
         PREPAID_CARD_USER = T.let(:PREPAID_CARD_USER, Lithic::Models::KYCExempt::KYCExemptionType::TaggedSymbol)
@@ -115,7 +114,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::KYCExempt::Workflow) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Lithic::Models::KYCExempt::Workflow::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         KYC_EXEMPT = T.let(:KYC_EXEMPT, Lithic::Models::KYCExempt::Workflow::TaggedSymbol)
 

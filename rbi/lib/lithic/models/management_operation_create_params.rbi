@@ -101,8 +101,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationCreateParams::Category) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         MANAGEMENT_FEE =
           T.let(:MANAGEMENT_FEE, Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol)
@@ -121,8 +120,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationCreateParams::Direction) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationCreateParams::Direction::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CREDIT = T.let(:CREDIT, Lithic::Models::ManagementOperationCreateParams::Direction::TaggedSymbol)
         DEBIT = T.let(:DEBIT, Lithic::Models::ManagementOperationCreateParams::Direction::TaggedSymbol)
@@ -135,8 +133,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationCreateParams::EventType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CASH_BACK = T.let(:CASH_BACK, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
         CURRENCY_CONVERSION =

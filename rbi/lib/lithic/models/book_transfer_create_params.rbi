@@ -96,8 +96,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferCreateParams::Category) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::BookTransferCreateParams::Category::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ADJUSTMENT = T.let(:ADJUSTMENT, Lithic::Models::BookTransferCreateParams::Category::TaggedSymbol)
         BALANCE_OR_FUNDING =
@@ -117,8 +116,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferCreateParams::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ATM_WITHDRAWAL = T.let(:ATM_WITHDRAWAL, Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol)
         ATM_DECLINE = T.let(:ATM_DECLINE, Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol)

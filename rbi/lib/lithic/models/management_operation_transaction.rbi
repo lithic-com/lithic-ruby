@@ -122,8 +122,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Category) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         MANAGEMENT_FEE =
           T.let(:MANAGEMENT_FEE, Lithic::Models::ManagementOperationTransaction::Category::TaggedSymbol)
@@ -142,8 +141,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Direction) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CREDIT = T.let(:CREDIT, Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol)
         DEBIT = T.let(:DEBIT, Lithic::Models::ManagementOperationTransaction::Direction::TaggedSymbol)
@@ -233,8 +231,7 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           APPROVED =
             T.let(:APPROVED, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol)
@@ -251,8 +248,7 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Event::Result) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           APPROVED = T.let(:APPROVED, Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol)
           DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationTransaction::Event::Result::TaggedSymbol)
@@ -266,8 +262,7 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Event::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           CASH_BACK = T.let(:CASH_BACK, Lithic::Models::ManagementOperationTransaction::Event::Type::TaggedSymbol)
           CURRENCY_CONVERSION =
@@ -316,8 +311,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Result) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         APPROVED = T.let(:APPROVED, Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol)
         DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationTransaction::Result::TaggedSymbol)
@@ -330,8 +324,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationTransaction::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PENDING = T.let(:PENDING, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
         SETTLED = T.let(:SETTLED, Lithic::Models::ManagementOperationTransaction::Status::TaggedSymbol)
