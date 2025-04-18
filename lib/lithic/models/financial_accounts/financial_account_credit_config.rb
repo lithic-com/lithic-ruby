@@ -53,31 +53,15 @@ module Lithic
         #   @return [String, nil]
         required :tier, String, nil?: true
 
-        # @!parse
-        #   # @param account_token [String]
-        #   # @param charged_off_reason [Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason, nil]
-        #   # @param credit_limit [Integer, nil]
-        #   # @param credit_product_token [String, nil]
-        #   # @param external_bank_account_token [String, nil]
-        #   # @param financial_account_state [Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState]
-        #   # @param is_spend_blocked [Boolean]
-        #   # @param tier [String, nil]
-        #   #
-        #   def initialize(
-        #     account_token:,
-        #     charged_off_reason:,
-        #     credit_limit:,
-        #     credit_product_token:,
-        #     external_bank_account_token:,
-        #     financial_account_state:,
-        #     is_spend_blocked:,
-        #     tier:,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(account_token:, charged_off_reason:, credit_limit:, credit_product_token:, external_bank_account_token:, financial_account_state:, is_spend_blocked:, tier:)
+        #   @param account_token [String]
+        #   @param charged_off_reason [Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason, nil]
+        #   @param credit_limit [Integer, nil]
+        #   @param credit_product_token [String, nil]
+        #   @param external_bank_account_token [String, nil]
+        #   @param financial_account_state [Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState]
+        #   @param is_spend_blocked [Boolean]
+        #   @param tier [String, nil]
 
         # Reason for the financial account being marked as Charged Off
         #
@@ -88,11 +72,8 @@ module Lithic
           DELINQUENT = :DELINQUENT
           FRAUD = :FRAUD
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # State of the financial account
@@ -106,11 +87,8 @@ module Lithic
           DELINQUENT = :DELINQUENT
           CHARGED_OFF = :CHARGED_OFF
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

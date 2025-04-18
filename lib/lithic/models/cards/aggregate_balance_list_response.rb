@@ -63,35 +63,18 @@ module Lithic
         #   @return [Time]
         required :updated, Time
 
-        # @!parse
-        #   # Card Aggregate Balance across all end-user accounts
-        #   #
-        #   # @param available_amount [Integer]
-        #   # @param created [Time]
-        #   # @param currency [String]
-        #   # @param last_card_token [String]
-        #   # @param last_transaction_event_token [String]
-        #   # @param last_transaction_token [String]
-        #   # @param pending_amount [Integer]
-        #   # @param total_amount [Integer]
-        #   # @param updated [Time]
-        #   #
-        #   def initialize(
-        #     available_amount:,
-        #     created:,
-        #     currency:,
-        #     last_card_token:,
-        #     last_transaction_event_token:,
-        #     last_transaction_token:,
-        #     pending_amount:,
-        #     total_amount:,
-        #     updated:,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(available_amount:, created:, currency:, last_card_token:, last_transaction_event_token:, last_transaction_token:, pending_amount:, total_amount:, updated:)
+        #   Card Aggregate Balance across all end-user accounts
+        #
+        #   @param available_amount [Integer]
+        #   @param created [Time]
+        #   @param currency [String]
+        #   @param last_card_token [String]
+        #   @param last_transaction_event_token [String]
+        #   @param last_transaction_token [String]
+        #   @param pending_amount [Integer]
+        #   @param total_amount [Integer]
+        #   @param updated [Time]
       end
     end
   end

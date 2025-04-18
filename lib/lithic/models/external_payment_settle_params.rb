@@ -31,15 +31,11 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::ExternalPaymentSettleParams::ProgressTo]
       #   attr_writer :progress_to
 
-      # @!parse
-      #   # @param effective_date [Date]
-      #   # @param memo [String]
-      #   # @param progress_to [Symbol, Lithic::Models::ExternalPaymentSettleParams::ProgressTo]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(effective_date:, memo: nil, progress_to: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(effective_date:, memo: nil, progress_to: nil, request_options: {})
+      #   @param effective_date [Date]
+      #   @param memo [String]
+      #   @param progress_to [Symbol, Lithic::Models::ExternalPaymentSettleParams::ProgressTo]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       module ProgressTo
         extend Lithic::Internal::Type::Enum
@@ -47,11 +43,8 @@ module Lithic
         SETTLED = :SETTLED
         RELEASED = :RELEASED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

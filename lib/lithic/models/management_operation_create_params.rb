@@ -74,37 +74,18 @@ module Lithic
       #   # @return [String]
       #   attr_writer :user_defined_id
 
-      # @!parse
-      #   # @param amount [Integer]
-      #   # @param category [Symbol, Lithic::Models::ManagementOperationCreateParams::Category]
-      #   # @param direction [Symbol, Lithic::Models::ManagementOperationCreateParams::Direction]
-      #   # @param effective_date [Date]
-      #   # @param event_type [Symbol, Lithic::Models::ManagementOperationCreateParams::EventType]
-      #   # @param financial_account_token [String]
-      #   # @param token [String]
-      #   # @param memo [String]
-      #   # @param subtype [String]
-      #   # @param user_defined_id [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     amount:,
-      #     category:,
-      #     direction:,
-      #     effective_date:,
-      #     event_type:,
-      #     financial_account_token:,
-      #     token: nil,
-      #     memo: nil,
-      #     subtype: nil,
-      #     user_defined_id: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount:, category:, direction:, effective_date:, event_type:, financial_account_token:, token: nil, memo: nil, subtype: nil, user_defined_id: nil, request_options: {})
+      #   @param amount [Integer]
+      #   @param category [Symbol, Lithic::Models::ManagementOperationCreateParams::Category]
+      #   @param direction [Symbol, Lithic::Models::ManagementOperationCreateParams::Direction]
+      #   @param effective_date [Date]
+      #   @param event_type [Symbol, Lithic::Models::ManagementOperationCreateParams::EventType]
+      #   @param financial_account_token [String]
+      #   @param token [String]
+      #   @param memo [String]
+      #   @param subtype [String]
+      #   @param user_defined_id [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       module Category
         extend Lithic::Internal::Type::Enum
@@ -114,11 +95,8 @@ module Lithic
         MANAGEMENT_REWARD = :MANAGEMENT_REWARD
         MANAGEMENT_ADJUSTMENT = :MANAGEMENT_ADJUSTMENT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       module Direction
@@ -127,11 +105,8 @@ module Lithic
         CREDIT = :CREDIT
         DEBIT = :DEBIT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       module EventType
@@ -153,11 +128,8 @@ module Lithic
         RETURNED_PAYMENT = :RETURNED_PAYMENT
         RETURNED_PAYMENT_REVERSAL = :RETURNED_PAYMENT_REVERSAL
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

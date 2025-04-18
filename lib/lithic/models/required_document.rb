@@ -23,14 +23,10 @@ module Lithic
       #   @return [Array<String>]
       required :valid_documents, Lithic::Internal::Type::ArrayOf[String]
 
-      # @!parse
-      #   # @param entity_token [String]
-      #   # @param status_reasons [Array<String>]
-      #   # @param valid_documents [Array<String>]
-      #   #
-      #   def initialize(entity_token:, status_reasons:, valid_documents:, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(entity_token:, status_reasons:, valid_documents:)
+      #   @param entity_token [String]
+      #   @param status_reasons [Array<String>]
+      #   @param valid_documents [Array<String>]
     end
   end
 end

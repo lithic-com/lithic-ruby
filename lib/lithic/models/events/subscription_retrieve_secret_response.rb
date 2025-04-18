@@ -15,12 +15,8 @@ module Lithic
         #   # @return [String]
         #   attr_writer :secret
 
-        # @!parse
-        #   # @param secret [String]
-        #   #
-        #   def initialize(secret: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(secret: nil)
+        #   @param secret [String]
       end
     end
   end

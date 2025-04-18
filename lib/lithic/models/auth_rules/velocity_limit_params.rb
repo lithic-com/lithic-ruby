@@ -39,16 +39,12 @@ module Lithic
         #   @return [Integer, nil]
         optional :limit_count, Integer, nil?: true
 
-        # @!parse
-        #   # @param filters [Lithic::Models::AuthRules::VelocityLimitParams::Filters]
-        #   # @param period [Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow]
-        #   # @param scope [Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope]
-        #   # @param limit_amount [Integer, nil]
-        #   # @param limit_count [Integer, nil]
-        #   #
-        #   def initialize(filters:, period:, scope:, limit_amount: nil, limit_count: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(filters:, period:, scope:, limit_amount: nil, limit_count: nil)
+        #   @param filters [Lithic::Models::AuthRules::VelocityLimitParams::Filters]
+        #   @param period [Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow]
+        #   @param scope [Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope]
+        #   @param limit_amount [Integer, nil]
+        #   @param limit_count [Integer, nil]
 
         # @see Lithic::Models::AuthRules::VelocityLimitParams#filters
         class Filters < Lithic::Internal::Type::BaseModel
@@ -82,15 +78,11 @@ module Lithic
           #   @return [Array<String>, nil]
           optional :include_mccs, Lithic::Internal::Type::ArrayOf[String], nil?: true
 
-          # @!parse
-          #   # @param exclude_countries [Array<String>, nil]
-          #   # @param exclude_mccs [Array<String>, nil]
-          #   # @param include_countries [Array<String>, nil]
-          #   # @param include_mccs [Array<String>, nil]
-          #   #
-          #   def initialize(exclude_countries: nil, exclude_mccs: nil, include_countries: nil, include_mccs: nil, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(exclude_countries: nil, exclude_mccs: nil, include_countries: nil, include_mccs: nil)
+          #   @param exclude_countries [Array<String>, nil]
+          #   @param exclude_mccs [Array<String>, nil]
+          #   @param include_countries [Array<String>, nil]
+          #   @param include_mccs [Array<String>, nil]
         end
 
         # The size of the trailing window to calculate Spend Velocity over in seconds. The
@@ -110,9 +102,8 @@ module Lithic
           # * `MONTH`: Velocity over the current month since 00:00 / 12 AM on the first of the month in Eastern Time.
           variant enum: -> { Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow }
 
-          # @!parse
-          #   # @return [Array(Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow)]
         end
 
         # @see Lithic::Models::AuthRules::VelocityLimitParams#scope
@@ -122,11 +113,8 @@ module Lithic
           CARD = :CARD
           ACCOUNT = :ACCOUNT
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

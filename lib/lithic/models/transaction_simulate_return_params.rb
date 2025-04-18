@@ -26,15 +26,11 @@ module Lithic
       #   @return [String]
       required :pan, String
 
-      # @!parse
-      #   # @param amount [Integer]
-      #   # @param descriptor [String]
-      #   # @param pan [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(amount:, descriptor:, pan:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount:, descriptor:, pan:, request_options: {})
+      #   @param amount [Integer]
+      #   @param descriptor [String]
+      #   @param pan [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

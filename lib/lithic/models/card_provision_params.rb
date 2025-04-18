@@ -79,29 +79,14 @@ module Lithic
       #   # @return [String]
       #   attr_writer :nonce_signature
 
-      # @!parse
-      #   # @param certificate [String]
-      #   # @param client_device_id [String]
-      #   # @param client_wallet_account_id [String]
-      #   # @param digital_wallet [Symbol, Lithic::Models::CardProvisionParams::DigitalWallet]
-      #   # @param nonce [String]
-      #   # @param nonce_signature [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     certificate: nil,
-      #     client_device_id: nil,
-      #     client_wallet_account_id: nil,
-      #     digital_wallet: nil,
-      #     nonce: nil,
-      #     nonce_signature: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(certificate: nil, client_device_id: nil, client_wallet_account_id: nil, digital_wallet: nil, nonce: nil, nonce_signature: nil, request_options: {})
+      #   @param certificate [String]
+      #   @param client_device_id [String]
+      #   @param client_wallet_account_id [String]
+      #   @param digital_wallet [Symbol, Lithic::Models::CardProvisionParams::DigitalWallet]
+      #   @param nonce [String]
+      #   @param nonce_signature [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Name of digital wallet provider.
       module DigitalWallet
@@ -111,11 +96,8 @@ module Lithic
         GOOGLE_PAY = :GOOGLE_PAY
         SAMSUNG_PAY = :SAMSUNG_PAY
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

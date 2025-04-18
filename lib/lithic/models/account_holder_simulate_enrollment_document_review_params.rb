@@ -42,25 +42,12 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason]
       #   attr_writer :status_reason
 
-      # @!parse
-      #   # @param document_upload_token [String]
-      #   # @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status]
-      #   # @param accepted_entity_status_reasons [Array<String>]
-      #   # @param status_reason [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     document_upload_token:,
-      #     status:,
-      #     accepted_entity_status_reasons: nil,
-      #     status_reason: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(document_upload_token:, status:, accepted_entity_status_reasons: nil, status_reason: nil, request_options: {})
+      #   @param document_upload_token [String]
+      #   @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status]
+      #   @param accepted_entity_status_reasons [Array<String>]
+      #   @param status_reason [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # An account holder document's upload status for use within the simulation.
       module Status
@@ -71,11 +58,8 @@ module Lithic
         REJECTED = :REJECTED
         PARTIAL_APPROVAL = :PARTIAL_APPROVAL
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Status reason that will be associated with the simulated account holder status.
@@ -95,11 +79,8 @@ module Lithic
         UNKNOWN_FAILURE_REASON = :UNKNOWN_FAILURE_REASON
         UNKNOWN_ERROR = :UNKNOWN_ERROR
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

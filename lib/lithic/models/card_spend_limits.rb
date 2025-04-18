@@ -27,14 +27,10 @@ module Lithic
       #   # @return [Lithic::Models::CardSpendLimits::SpendVelocity]
       #   attr_writer :spend_velocity
 
-      # @!parse
-      #   # @param available_spend_limit [Lithic::Models::CardSpendLimits::AvailableSpendLimit]
-      #   # @param spend_limit [Lithic::Models::CardSpendLimits::SpendLimit]
-      #   # @param spend_velocity [Lithic::Models::CardSpendLimits::SpendVelocity]
-      #   #
-      #   def initialize(available_spend_limit:, spend_limit: nil, spend_velocity: nil, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(available_spend_limit:, spend_limit: nil, spend_velocity: nil)
+      #   @param available_spend_limit [Lithic::Models::CardSpendLimits::AvailableSpendLimit]
+      #   @param spend_limit [Lithic::Models::CardSpendLimits::SpendLimit]
+      #   @param spend_velocity [Lithic::Models::CardSpendLimits::SpendVelocity]
 
       # @see Lithic::Models::CardSpendLimits#available_spend_limit
       class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
@@ -71,14 +67,10 @@ module Lithic
         #   # @return [Integer]
         #   attr_writer :monthly
 
-        # @!parse
-        #   # @param annually [Integer]
-        #   # @param forever [Integer]
-        #   # @param monthly [Integer]
-        #   #
-        #   def initialize(annually: nil, forever: nil, monthly: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(annually: nil, forever: nil, monthly: nil)
+        #   @param annually [Integer]
+        #   @param forever [Integer]
+        #   @param monthly [Integer]
       end
 
       # @see Lithic::Models::CardSpendLimits#spend_limit
@@ -113,14 +105,10 @@ module Lithic
         #   # @return [Integer]
         #   attr_writer :monthly
 
-        # @!parse
-        #   # @param annually [Integer]
-        #   # @param forever [Integer]
-        #   # @param monthly [Integer]
-        #   #
-        #   def initialize(annually: nil, forever: nil, monthly: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(annually: nil, forever: nil, monthly: nil)
+        #   @param annually [Integer]
+        #   @param forever [Integer]
+        #   @param monthly [Integer]
       end
 
       # @see Lithic::Models::CardSpendLimits#spend_velocity
@@ -158,14 +146,10 @@ module Lithic
         #   # @return [Integer]
         #   attr_writer :monthly
 
-        # @!parse
-        #   # @param annually [Integer]
-        #   # @param forever [Integer]
-        #   # @param monthly [Integer]
-        #   #
-        #   def initialize(annually: nil, forever: nil, monthly: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(annually: nil, forever: nil, monthly: nil)
+        #   @param annually [Integer]
+        #   @param forever [Integer]
+        #   @param monthly [Integer]
       end
     end
   end

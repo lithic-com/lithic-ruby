@@ -10,11 +10,8 @@ module Lithic
         APPROVE = :APPROVE
         DECLINE_BY_CUSTOMER = :DECLINE_BY_CUSTOMER
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

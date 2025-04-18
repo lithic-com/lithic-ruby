@@ -10,12 +10,8 @@ module Lithic
         #   @return [Array<Lithic::Models::Transactions::Events::EnhancedData>]
         required :data, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Transactions::Events::EnhancedData] }
 
-        # @!parse
-        #   # @param data [Array<Lithic::Models::Transactions::Events::EnhancedData>]
-        #   #
-        #   def initialize(data:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(data:)
+        #   @param data [Array<Lithic::Models::Transactions::Events::EnhancedData>]
       end
     end
   end

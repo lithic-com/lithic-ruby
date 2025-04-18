@@ -48,16 +48,12 @@ module Lithic
       #   # @return [String]
       #   attr_writer :kyc_passed_timestamp
 
-      # @!parse
-      #   # @param individual [Lithic::Models::KYC::Individual]
-      #   # @param tos_timestamp [String]
-      #   # @param workflow [Symbol, Lithic::Models::KYC::Workflow]
-      #   # @param external_id [String]
-      #   # @param kyc_passed_timestamp [String]
-      #   #
-      #   def initialize(individual:, tos_timestamp:, workflow:, external_id: nil, kyc_passed_timestamp: nil, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(individual:, tos_timestamp:, workflow:, external_id: nil, kyc_passed_timestamp: nil)
+      #   @param individual [Lithic::Models::KYC::Individual]
+      #   @param tos_timestamp [String]
+      #   @param workflow [Symbol, Lithic::Models::KYC::Workflow]
+      #   @param external_id [String]
+      #   @param kyc_passed_timestamp [String]
 
       # @see Lithic::Models::KYC#individual
       class Individual < Lithic::Internal::Type::BaseModel
@@ -108,21 +104,17 @@ module Lithic
         #   @return [String]
         required :phone_number, String
 
-        # @!parse
-        #   # Information on individual for whom the account is being opened and KYC is being
-        #   # run.
-        #   #
-        #   # @param address [Lithic::Models::Address]
-        #   # @param dob [String]
-        #   # @param email [String]
-        #   # @param first_name [String]
-        #   # @param government_id [String]
-        #   # @param last_name [String]
-        #   # @param phone_number [String]
-        #   #
-        #   def initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:)
+        #   Information on individual for whom the account is being opened and KYC is being
+        #   run.
+        #
+        #   @param address [Lithic::Models::Address]
+        #   @param dob [String]
+        #   @param email [String]
+        #   @param first_name [String]
+        #   @param government_id [String]
+        #   @param last_name [String]
+        #   @param phone_number [String]
       end
 
       # Specifies the type of KYC workflow to run.
@@ -134,11 +126,8 @@ module Lithic
         KYC_BASIC = :KYC_BASIC
         KYC_BYO = :KYC_BYO
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

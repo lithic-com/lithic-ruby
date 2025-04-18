@@ -102,35 +102,17 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::ManagementOperationListParams::Status]
       #   attr_writer :status
 
-      # @!parse
-      #   # @param begin_ [Time]
-      #   # @param business_account_token [String]
-      #   # @param category [Symbol, Lithic::Models::ManagementOperationListParams::Category]
-      #   # @param end_ [Time]
-      #   # @param ending_before [String]
-      #   # @param financial_account_token [String]
-      #   # @param page_size [Integer]
-      #   # @param starting_after [String]
-      #   # @param status [Symbol, Lithic::Models::ManagementOperationListParams::Status]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     begin_: nil,
-      #     business_account_token: nil,
-      #     category: nil,
-      #     end_: nil,
-      #     ending_before: nil,
-      #     financial_account_token: nil,
-      #     page_size: nil,
-      #     starting_after: nil,
-      #     status: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, starting_after: nil, status: nil, request_options: {})
+      #   @param begin_ [Time]
+      #   @param business_account_token [String]
+      #   @param category [Symbol, Lithic::Models::ManagementOperationListParams::Category]
+      #   @param end_ [Time]
+      #   @param ending_before [String]
+      #   @param financial_account_token [String]
+      #   @param page_size [Integer]
+      #   @param starting_after [String]
+      #   @param status [Symbol, Lithic::Models::ManagementOperationListParams::Status]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Management operation category to be returned.
       module Category
@@ -141,11 +123,8 @@ module Lithic
         MANAGEMENT_REWARD = :MANAGEMENT_REWARD
         MANAGEMENT_ADJUSTMENT = :MANAGEMENT_ADJUSTMENT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Management operation status to be returned.
@@ -158,11 +137,8 @@ module Lithic
         REVERSED = :REVERSED
         CANCELED = :CANCELED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

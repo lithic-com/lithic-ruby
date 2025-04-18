@@ -121,37 +121,18 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status]
       #   attr_writer :status
 
-      # @!parse
-      #   # @param amount [Integer]
-      #   # @param descriptor [String]
-      #   # @param pan [String]
-      #   # @param mcc [String]
-      #   # @param merchant_acceptor_id [String]
-      #   # @param merchant_amount [Integer]
-      #   # @param merchant_currency [String]
-      #   # @param partial_approval_capable [Boolean]
-      #   # @param pin [String]
-      #   # @param status [Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     amount:,
-      #     descriptor:,
-      #     pan:,
-      #     mcc: nil,
-      #     merchant_acceptor_id: nil,
-      #     merchant_amount: nil,
-      #     merchant_currency: nil,
-      #     partial_approval_capable: nil,
-      #     pin: nil,
-      #     status: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, merchant_amount: nil, merchant_currency: nil, partial_approval_capable: nil, pin: nil, status: nil, request_options: {})
+      #   @param amount [Integer]
+      #   @param descriptor [String]
+      #   @param pan [String]
+      #   @param mcc [String]
+      #   @param merchant_acceptor_id [String]
+      #   @param merchant_amount [Integer]
+      #   @param merchant_currency [String]
+      #   @param partial_approval_capable [Boolean]
+      #   @param pin [String]
+      #   @param status [Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Type of event to simulate.
       #
@@ -178,11 +159,8 @@ module Lithic
         FINANCIAL_AUTHORIZATION = :FINANCIAL_AUTHORIZATION
         FINANCIAL_CREDIT_AUTHORIZATION = :FINANCIAL_CREDIT_AUTHORIZATION
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

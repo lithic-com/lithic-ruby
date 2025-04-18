@@ -79,29 +79,14 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::CardRenewParams::ShippingMethod]
       #   attr_writer :shipping_method
 
-      # @!parse
-      #   # @param shipping_address [Lithic::Models::ShippingAddress]
-      #   # @param carrier [Lithic::Models::Carrier]
-      #   # @param exp_month [String]
-      #   # @param exp_year [String]
-      #   # @param product_id [String]
-      #   # @param shipping_method [Symbol, Lithic::Models::CardRenewParams::ShippingMethod]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     shipping_address:,
-      #     carrier: nil,
-      #     exp_month: nil,
-      #     exp_year: nil,
-      #     product_id: nil,
-      #     shipping_method: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(shipping_address:, carrier: nil, exp_month: nil, exp_year: nil, product_id: nil, shipping_method: nil, request_options: {})
+      #   @param shipping_address [Lithic::Models::ShippingAddress]
+      #   @param carrier [Lithic::Models::Carrier]
+      #   @param exp_month [String]
+      #   @param exp_year [String]
+      #   @param product_id [String]
+      #   @param shipping_method [Symbol, Lithic::Models::CardRenewParams::ShippingMethod]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
       # options besides `STANDARD` require additional permissions.
@@ -125,11 +110,8 @@ module Lithic
         STANDARD = :STANDARD
         STANDARD_WITH_TRACKING = :STANDARD_WITH_TRACKING
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

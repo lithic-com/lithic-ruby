@@ -24,14 +24,10 @@ module Lithic
       #   # @return [String]
       #   attr_writer :return_reason_code
 
-      # @!parse
-      #   # @param payment_token [String]
-      #   # @param return_reason_code [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(payment_token:, return_reason_code: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(payment_token:, return_reason_code: nil, request_options: {})
+      #   @param payment_token [String]
+      #   @param return_reason_code [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

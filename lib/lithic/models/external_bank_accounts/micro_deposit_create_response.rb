@@ -187,59 +187,29 @@ module Lithic
         #   # @return [String]
         #   attr_writer :verification_failed_reason
 
-        # @!parse
-        #   # @param token [String]
-        #   # @param country [String]
-        #   # @param created [Time]
-        #   # @param currency [String]
-        #   # @param last_four [String]
-        #   # @param owner [String]
-        #   # @param owner_type [Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType]
-        #   # @param routing_number [String]
-        #   # @param state [Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State]
-        #   # @param type [Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type]
-        #   # @param verification_attempts [Integer]
-        #   # @param verification_method [Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod]
-        #   # @param verification_state [Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState]
-        #   # @param account_token [String]
-        #   # @param address [Lithic::Models::ExternalBankAccountAddress]
-        #   # @param company_id [String]
-        #   # @param dob [Date]
-        #   # @param doing_business_as [String]
-        #   # @param financial_account_token [String]
-        #   # @param name [String]
-        #   # @param user_defined_id [String]
-        #   # @param verification_failed_reason [String]
-        #   #
-        #   def initialize(
-        #     token:,
-        #     country:,
-        #     created:,
-        #     currency:,
-        #     last_four:,
-        #     owner:,
-        #     owner_type:,
-        #     routing_number:,
-        #     state:,
-        #     type:,
-        #     verification_attempts:,
-        #     verification_method:,
-        #     verification_state:,
-        #     account_token: nil,
-        #     address: nil,
-        #     company_id: nil,
-        #     dob: nil,
-        #     doing_business_as: nil,
-        #     financial_account_token: nil,
-        #     name: nil,
-        #     user_defined_id: nil,
-        #     verification_failed_reason: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, country:, created:, currency:, last_four:, owner:, owner_type:, routing_number:, state:, type:, verification_attempts:, verification_method:, verification_state:, account_token: nil, address: nil, company_id: nil, dob: nil, doing_business_as: nil, financial_account_token: nil, name: nil, user_defined_id: nil, verification_failed_reason: nil)
+        #   @param token [String]
+        #   @param country [String]
+        #   @param created [Time]
+        #   @param currency [String]
+        #   @param last_four [String]
+        #   @param owner [String]
+        #   @param owner_type [Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::OwnerType]
+        #   @param routing_number [String]
+        #   @param state [Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::State]
+        #   @param type [Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::Type]
+        #   @param verification_attempts [Integer]
+        #   @param verification_method [Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod]
+        #   @param verification_state [Symbol, Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState]
+        #   @param account_token [String]
+        #   @param address [Lithic::Models::ExternalBankAccountAddress]
+        #   @param company_id [String]
+        #   @param dob [Date]
+        #   @param doing_business_as [String]
+        #   @param financial_account_token [String]
+        #   @param name [String]
+        #   @param user_defined_id [String]
+        #   @param verification_failed_reason [String]
 
         # Owner Type
         #
@@ -250,11 +220,8 @@ module Lithic
           BUSINESS = :BUSINESS
           INDIVIDUAL = :INDIVIDUAL
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Account State
@@ -267,11 +234,8 @@ module Lithic
           CLOSED = :CLOSED
           PAUSED = :PAUSED
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Account Type
@@ -283,11 +247,8 @@ module Lithic
           CHECKING = :CHECKING
           SAVINGS = :SAVINGS
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Verification Method
@@ -301,11 +262,8 @@ module Lithic
           PLAID = :PLAID
           PRENOTE = :PRENOTE
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Verification State
@@ -319,11 +277,8 @@ module Lithic
           FAILED_VERIFICATION = :FAILED_VERIFICATION
           INSUFFICIENT_FUNDS = :INSUFFICIENT_FUNDS
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

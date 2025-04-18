@@ -65,29 +65,14 @@ module Lithic
       #   # @return [Array<Lithic::Models::RequiredDocument>]
       #   attr_writer :required_documents
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param account_token [String]
-      #   # @param status [Symbol, Lithic::Models::AccountHolderCreateResponse::Status]
-      #   # @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderCreateResponse::StatusReason>]
-      #   # @param created [Time]
-      #   # @param external_id [String]
-      #   # @param required_documents [Array<Lithic::Models::RequiredDocument>]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     account_token:,
-      #     status:,
-      #     status_reasons:,
-      #     created: nil,
-      #     external_id: nil,
-      #     required_documents: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, account_token:, status:, status_reasons:, created: nil, external_id: nil, required_documents: nil)
+      #   @param token [String]
+      #   @param account_token [String]
+      #   @param status [Symbol, Lithic::Models::AccountHolderCreateResponse::Status]
+      #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderCreateResponse::StatusReason>]
+      #   @param created [Time]
+      #   @param external_id [String]
+      #   @param required_documents [Array<Lithic::Models::RequiredDocument>]
 
       # KYC and KYB evaluation states.
       #
@@ -105,11 +90,8 @@ module Lithic
         PENDING_RESUBMIT = :PENDING_RESUBMIT
         REJECTED = :REJECTED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Status Reasons for KYC/KYB enrollment states
@@ -143,11 +125,8 @@ module Lithic
         CONTROL_PERSON_DOB_VERIFICATION_FAILURE = :CONTROL_PERSON_DOB_VERIFICATION_FAILURE
         CONTROL_PERSON_NAME_VERIFICATION_FAILURE = :CONTROL_PERSON_NAME_VERIFICATION_FAILURE
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

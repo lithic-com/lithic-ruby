@@ -19,13 +19,9 @@ module Lithic
         #   @return [Symbol, Lithic::Models::ThreeDS::ChallengeResult]
         required :challenge_response, enum: -> { Lithic::Models::ThreeDS::ChallengeResult }
 
-        # @!parse
-        #   # @param token [String]
-        #   # @param challenge_response [Symbol, Lithic::Models::ThreeDS::ChallengeResult]
-        #   #
-        #   def initialize(token:, challenge_response:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, challenge_response:)
+        #   @param token [String]
+        #   @param challenge_response [Symbol, Lithic::Models::ThreeDS::ChallengeResult]
       end
     end
   end

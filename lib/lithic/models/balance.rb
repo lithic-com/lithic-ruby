@@ -68,37 +68,19 @@ module Lithic
       #   @return [Time]
       required :updated, Time
 
-      # @!parse
-      #   # Balance
-      #   #
-      #   # @param available_amount [Integer]
-      #   # @param created [Time]
-      #   # @param currency [String]
-      #   # @param financial_account_token [String]
-      #   # @param financial_account_type [Symbol, Lithic::Models::Balance::FinancialAccountType]
-      #   # @param last_transaction_event_token [String]
-      #   # @param last_transaction_token [String]
-      #   # @param pending_amount [Integer]
-      #   # @param total_amount [Integer]
-      #   # @param updated [Time]
-      #   #
-      #   def initialize(
-      #     available_amount:,
-      #     created:,
-      #     currency:,
-      #     financial_account_token:,
-      #     financial_account_type:,
-      #     last_transaction_event_token:,
-      #     last_transaction_token:,
-      #     pending_amount:,
-      #     total_amount:,
-      #     updated:,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(available_amount:, created:, currency:, financial_account_token:, financial_account_type:, last_transaction_event_token:, last_transaction_token:, pending_amount:, total_amount:, updated:)
+      #   Balance
+      #
+      #   @param available_amount [Integer]
+      #   @param created [Time]
+      #   @param currency [String]
+      #   @param financial_account_token [String]
+      #   @param financial_account_type [Symbol, Lithic::Models::Balance::FinancialAccountType]
+      #   @param last_transaction_event_token [String]
+      #   @param last_transaction_token [String]
+      #   @param pending_amount [Integer]
+      #   @param total_amount [Integer]
+      #   @param updated [Time]
 
       # Type of financial account.
       #
@@ -110,11 +92,8 @@ module Lithic
         OPERATING = :OPERATING
         RESERVE = :RESERVE
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

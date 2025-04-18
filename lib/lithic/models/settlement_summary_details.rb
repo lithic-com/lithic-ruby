@@ -86,31 +86,15 @@ module Lithic
       #   # @return [Integer]
       #   attr_writer :transactions_gross_amount
 
-      # @!parse
-      #   # @param currency [String]
-      #   # @param disputes_gross_amount [Integer]
-      #   # @param institution [String]
-      #   # @param interchange_gross_amount [Integer]
-      #   # @param network [Symbol, Lithic::Models::SettlementSummaryDetails::Network]
-      #   # @param other_fees_gross_amount [Integer]
-      #   # @param settled_net_amount [Integer]
-      #   # @param transactions_gross_amount [Integer]
-      #   #
-      #   def initialize(
-      #     currency: nil,
-      #     disputes_gross_amount: nil,
-      #     institution: nil,
-      #     interchange_gross_amount: nil,
-      #     network: nil,
-      #     other_fees_gross_amount: nil,
-      #     settled_net_amount: nil,
-      #     transactions_gross_amount: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(currency: nil, disputes_gross_amount: nil, institution: nil, interchange_gross_amount: nil, network: nil, other_fees_gross_amount: nil, settled_net_amount: nil, transactions_gross_amount: nil)
+      #   @param currency [String]
+      #   @param disputes_gross_amount [Integer]
+      #   @param institution [String]
+      #   @param interchange_gross_amount [Integer]
+      #   @param network [Symbol, Lithic::Models::SettlementSummaryDetails::Network]
+      #   @param other_fees_gross_amount [Integer]
+      #   @param settled_net_amount [Integer]
+      #   @param transactions_gross_amount [Integer]
 
       # Card network where the transaction took place
       #
@@ -124,11 +108,8 @@ module Lithic
         UNKNOWN = :UNKNOWN
         VISA = :VISA
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

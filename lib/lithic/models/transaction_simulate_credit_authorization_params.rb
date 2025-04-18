@@ -50,17 +50,13 @@ module Lithic
       #   # @return [String]
       #   attr_writer :merchant_acceptor_id
 
-      # @!parse
-      #   # @param amount [Integer]
-      #   # @param descriptor [String]
-      #   # @param pan [String]
-      #   # @param mcc [String]
-      #   # @param merchant_acceptor_id [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, request_options: {})
+      #   @param amount [Integer]
+      #   @param descriptor [String]
+      #   @param pan [String]
+      #   @param mcc [String]
+      #   @param merchant_acceptor_id [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

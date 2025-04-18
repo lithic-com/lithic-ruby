@@ -69,35 +69,17 @@ module Lithic
       #   # @return [String]
       #   attr_writer :user_defined_id
 
-      # @!parse
-      #   # @param amount [Integer]
-      #   # @param category [Symbol, Lithic::Models::ExternalPaymentCreateParams::Category]
-      #   # @param effective_date [Date]
-      #   # @param financial_account_token [String]
-      #   # @param payment_type [Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType]
-      #   # @param token [String]
-      #   # @param memo [String]
-      #   # @param progress_to [Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo]
-      #   # @param user_defined_id [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     amount:,
-      #     category:,
-      #     effective_date:,
-      #     financial_account_token:,
-      #     payment_type:,
-      #     token: nil,
-      #     memo: nil,
-      #     progress_to: nil,
-      #     user_defined_id: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount:, category:, effective_date:, financial_account_token:, payment_type:, token: nil, memo: nil, progress_to: nil, user_defined_id: nil, request_options: {})
+      #   @param amount [Integer]
+      #   @param category [Symbol, Lithic::Models::ExternalPaymentCreateParams::Category]
+      #   @param effective_date [Date]
+      #   @param financial_account_token [String]
+      #   @param payment_type [Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType]
+      #   @param token [String]
+      #   @param memo [String]
+      #   @param progress_to [Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo]
+      #   @param user_defined_id [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       module Category
         extend Lithic::Internal::Type::Enum
@@ -107,11 +89,8 @@ module Lithic
         EXTERNAL_CHECK = :EXTERNAL_CHECK
         EXTERNAL_TRANSFER = :EXTERNAL_TRANSFER
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       module PaymentType
@@ -120,11 +99,8 @@ module Lithic
         DEPOSIT = :DEPOSIT
         WITHDRAWAL = :WITHDRAWAL
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       module ProgressTo
@@ -133,11 +109,8 @@ module Lithic
         SETTLED = :SETTLED
         RELEASED = :RELEASED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

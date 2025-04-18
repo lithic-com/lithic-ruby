@@ -37,16 +37,12 @@ module Lithic
         #   # @return [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck]
         #   attr_writer :card_expiry_check
 
-        # @!parse
-        #   # @param merchant [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant]
-        #   # @param pan [String]
-        #   # @param transaction [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction]
-        #   # @param card_expiry_check [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck]
-        #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {})
+        #   @param merchant [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant]
+        #   @param pan [String]
+        #   @param transaction [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction]
+        #   @param card_expiry_check [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck]
+        #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
         class Merchant < Lithic::Internal::Type::BaseModel
           # @!attribute id
@@ -78,15 +74,11 @@ module Lithic
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param country [String]
-          #   # @param mcc [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, country:, mcc:, name:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, country:, mcc:, name:)
+          #   @param id [String]
+          #   @param country [String]
+          #   @param mcc [String]
+          #   @param name [String]
         end
 
         class Transaction < Lithic::Internal::Type::BaseModel
@@ -102,13 +94,9 @@ module Lithic
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param amount [Integer]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(amount:, currency:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount:, currency:)
+          #   @param amount [Integer]
+          #   @param currency [String]
         end
 
         # When set will use the following values as part of the Simulated Authentication.
@@ -120,11 +108,8 @@ module Lithic
           MISMATCH = :MISMATCH
           NOT_PRESENT = :NOT_PRESENT
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

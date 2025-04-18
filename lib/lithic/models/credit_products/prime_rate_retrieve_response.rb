@@ -18,13 +18,9 @@ module Lithic
         #   @return [Boolean]
         required :has_more, Lithic::Internal::Type::Boolean
 
-        # @!parse
-        #   # @param data [Array<Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data>]
-        #   # @param has_more [Boolean]
-        #   #
-        #   def initialize(data:, has_more:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(data:, has_more:)
+        #   @param data [Array<Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data>]
+        #   @param has_more [Boolean]
 
         class Data < Lithic::Internal::Type::BaseModel
           # @!attribute effective_date
@@ -39,13 +35,9 @@ module Lithic
           #   @return [String]
           required :rate, String
 
-          # @!parse
-          #   # @param effective_date [Date]
-          #   # @param rate [String]
-          #   #
-          #   def initialize(effective_date:, rate:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(effective_date:, rate:)
+          #   @param effective_date [Date]
+          #   @param rate [String]
         end
       end
     end

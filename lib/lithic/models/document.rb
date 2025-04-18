@@ -34,19 +34,15 @@ module Lithic
       required :required_document_uploads,
                -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Document::RequiredDocumentUpload] }
 
-      # @!parse
-      #   # Describes the document and the required document image uploads required to
-      #   # re-run KYC
-      #   #
-      #   # @param token [String]
-      #   # @param account_holder_token [String]
-      #   # @param document_type [Symbol, Lithic::Models::Document::DocumentType]
-      #   # @param entity_token [String]
-      #   # @param required_document_uploads [Array<Lithic::Models::Document::RequiredDocumentUpload>]
-      #   #
-      #   def initialize(token:, account_holder_token:, document_type:, entity_token:, required_document_uploads:, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, account_holder_token:, document_type:, entity_token:, required_document_uploads:)
+      #   Describes the document and the required document image uploads required to
+      #   re-run KYC
+      #
+      #   @param token [String]
+      #   @param account_holder_token [String]
+      #   @param document_type [Symbol, Lithic::Models::Document::DocumentType]
+      #   @param entity_token [String]
+      #   @param required_document_uploads [Array<Lithic::Models::Document::RequiredDocumentUpload>]
 
       # Type of documentation to be submitted for verification of an account holder
       #
@@ -74,11 +70,8 @@ module Lithic
         ITIN_LETTER = :ITIN_LETTER
         FINCEN_BOI_REPORT = :FINCEN_BOI_REPORT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       class RequiredDocumentUpload < Lithic::Internal::Type::BaseModel
@@ -143,35 +136,18 @@ module Lithic
         #   @return [String]
         required :upload_url, String
 
-        # @!parse
-        #   # Represents a single image of the document to upload.
-        #   #
-        #   # @param token [String]
-        #   # @param accepted_entity_status_reasons [Array<String>]
-        #   # @param created [Time]
-        #   # @param image_type [Symbol, Lithic::Models::Document::RequiredDocumentUpload::ImageType]
-        #   # @param rejected_entity_status_reasons [Array<String>]
-        #   # @param status [Symbol, Lithic::Models::Document::RequiredDocumentUpload::Status]
-        #   # @param status_reasons [Array<Symbol, Lithic::Models::Document::RequiredDocumentUpload::StatusReason>]
-        #   # @param updated [Time]
-        #   # @param upload_url [String]
-        #   #
-        #   def initialize(
-        #     token:,
-        #     accepted_entity_status_reasons:,
-        #     created:,
-        #     image_type:,
-        #     rejected_entity_status_reasons:,
-        #     status:,
-        #     status_reasons:,
-        #     updated:,
-        #     upload_url:,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, accepted_entity_status_reasons:, created:, image_type:, rejected_entity_status_reasons:, status:, status_reasons:, updated:, upload_url:)
+        #   Represents a single image of the document to upload.
+        #
+        #   @param token [String]
+        #   @param accepted_entity_status_reasons [Array<String>]
+        #   @param created [Time]
+        #   @param image_type [Symbol, Lithic::Models::Document::RequiredDocumentUpload::ImageType]
+        #   @param rejected_entity_status_reasons [Array<String>]
+        #   @param status [Symbol, Lithic::Models::Document::RequiredDocumentUpload::Status]
+        #   @param status_reasons [Array<Symbol, Lithic::Models::Document::RequiredDocumentUpload::StatusReason>]
+        #   @param updated [Time]
+        #   @param upload_url [String]
 
         # Type of image to upload.
         #
@@ -182,11 +158,8 @@ module Lithic
           FRONT = :FRONT
           BACK = :BACK
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # Status of an account holder's document upload.
@@ -201,11 +174,8 @@ module Lithic
           UPLOADED = :UPLOADED
           PARTIAL_APPROVAL = :PARTIAL_APPROVAL
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # The status reasons for an account holder document upload that is not ACCEPTED
@@ -224,11 +194,8 @@ module Lithic
           UNKNOWN_FAILURE_REASON = :UNKNOWN_FAILURE_REASON
           UNKNOWN_ERROR = :UNKNOWN_ERROR
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

@@ -14,13 +14,9 @@ module Lithic
       #   @return [Symbol, Lithic::Models::ResponderEndpointCheckStatusParams::Type]
       required :type, enum: -> { Lithic::Models::ResponderEndpointCheckStatusParams::Type }
 
-      # @!parse
-      #   # @param type [Symbol, Lithic::Models::ResponderEndpointCheckStatusParams::Type]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(type:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(type:, request_options: {})
+      #   @param type [Symbol, Lithic::Models::ResponderEndpointCheckStatusParams::Type]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # The type of the endpoint.
       module Type
@@ -30,11 +26,8 @@ module Lithic
         THREE_DS_DECISIONING = :THREE_DS_DECISIONING
         TOKENIZATION_DECISIONING = :TOKENIZATION_DECISIONING
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

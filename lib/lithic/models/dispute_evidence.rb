@@ -65,20 +65,16 @@ module Lithic
       #   # @return [String]
       #   attr_writer :upload_url
 
-      # @!parse
-      #   # Dispute evidence.
-      #   #
-      #   # @param token [String]
-      #   # @param created [Time]
-      #   # @param dispute_token [String]
-      #   # @param upload_status [Symbol, Lithic::Models::DisputeEvidence::UploadStatus]
-      #   # @param download_url [String]
-      #   # @param filename [String]
-      #   # @param upload_url [String]
-      #   #
-      #   def initialize(token:, created:, dispute_token:, upload_status:, download_url: nil, filename: nil, upload_url: nil, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, created:, dispute_token:, upload_status:, download_url: nil, filename: nil, upload_url: nil)
+      #   Dispute evidence.
+      #
+      #   @param token [String]
+      #   @param created [Time]
+      #   @param dispute_token [String]
+      #   @param upload_status [Symbol, Lithic::Models::DisputeEvidence::UploadStatus]
+      #   @param download_url [String]
+      #   @param filename [String]
+      #   @param upload_url [String]
 
       # Upload status types:
       #
@@ -98,11 +94,8 @@ module Lithic
         REJECTED = :REJECTED
         UPLOADED = :UPLOADED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

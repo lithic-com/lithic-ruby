@@ -17,13 +17,9 @@ module Lithic
       #   # @return [String]
       #   attr_writer :nickname
 
-      # @!parse
-      #   # @param nickname [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(nickname: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(nickname: nil, request_options: {})
+      #   @param nickname [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

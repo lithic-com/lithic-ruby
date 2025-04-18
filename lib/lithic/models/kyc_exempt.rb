@@ -69,33 +69,16 @@ module Lithic
       #   # @return [String]
       #   attr_writer :external_id
 
-      # @!parse
-      #   # @param address [Lithic::Models::Address]
-      #   # @param email [String]
-      #   # @param first_name [String]
-      #   # @param kyc_exemption_type [Symbol, Lithic::Models::KYCExempt::KYCExemptionType]
-      #   # @param last_name [String]
-      #   # @param phone_number [String]
-      #   # @param workflow [Symbol, Lithic::Models::KYCExempt::Workflow]
-      #   # @param business_account_token [String]
-      #   # @param external_id [String]
-      #   #
-      #   def initialize(
-      #     address:,
-      #     email:,
-      #     first_name:,
-      #     kyc_exemption_type:,
-      #     last_name:,
-      #     phone_number:,
-      #     workflow:,
-      #     business_account_token: nil,
-      #     external_id: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, workflow:, business_account_token: nil, external_id: nil)
+      #   @param address [Lithic::Models::Address]
+      #   @param email [String]
+      #   @param first_name [String]
+      #   @param kyc_exemption_type [Symbol, Lithic::Models::KYCExempt::KYCExemptionType]
+      #   @param last_name [String]
+      #   @param phone_number [String]
+      #   @param workflow [Symbol, Lithic::Models::KYCExempt::Workflow]
+      #   @param business_account_token [String]
+      #   @param external_id [String]
 
       # Specifies the type of KYC Exempt user
       #
@@ -106,11 +89,8 @@ module Lithic
         AUTHORIZED_USER = :AUTHORIZED_USER
         PREPAID_CARD_USER = :PREPAID_CARD_USER
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Specifies the workflow type. This must be 'KYC_EXEMPT'
@@ -121,11 +101,8 @@ module Lithic
 
         KYC_EXEMPT = :KYC_EXEMPT
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

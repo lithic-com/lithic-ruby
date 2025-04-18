@@ -67,35 +67,17 @@ module Lithic
         #   # @return [Array<String>]
         #   attr_writer :excluded_card_tokens
 
-        # @!parse
-        #   # @param token [String]
-        #   # @param account_tokens [Array<String>]
-        #   # @param card_tokens [Array<String>]
-        #   # @param current_version [Lithic::Models::AuthRules::V2PromoteResponse::CurrentVersion, nil]
-        #   # @param draft_version [Lithic::Models::AuthRules::V2PromoteResponse::DraftVersion, nil]
-        #   # @param name [String, nil]
-        #   # @param program_level [Boolean]
-        #   # @param state [Symbol, Lithic::Models::AuthRules::V2PromoteResponse::State]
-        #   # @param type [Symbol, Lithic::Models::AuthRules::V2PromoteResponse::Type]
-        #   # @param excluded_card_tokens [Array<String>]
-        #   #
-        #   def initialize(
-        #     token:,
-        #     account_tokens:,
-        #     card_tokens:,
-        #     current_version:,
-        #     draft_version:,
-        #     name:,
-        #     program_level:,
-        #     state:,
-        #     type:,
-        #     excluded_card_tokens: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, account_tokens:, card_tokens:, current_version:, draft_version:, name:, program_level:, state:, type:, excluded_card_tokens: nil)
+        #   @param token [String]
+        #   @param account_tokens [Array<String>]
+        #   @param card_tokens [Array<String>]
+        #   @param current_version [Lithic::Models::AuthRules::V2PromoteResponse::CurrentVersion, nil]
+        #   @param draft_version [Lithic::Models::AuthRules::V2PromoteResponse::DraftVersion, nil]
+        #   @param name [String, nil]
+        #   @param program_level [Boolean]
+        #   @param state [Symbol, Lithic::Models::AuthRules::V2PromoteResponse::State]
+        #   @param type [Symbol, Lithic::Models::AuthRules::V2PromoteResponse::Type]
+        #   @param excluded_card_tokens [Array<String>]
 
         # @see Lithic::Models::AuthRules::V2PromoteResponse#current_version
         class CurrentVersion < Lithic::Internal::Type::BaseModel
@@ -115,13 +97,9 @@ module Lithic
             required :version, Integer
           end
 
-          # @!parse
-          #   # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
-          #   # @param version [Integer]
-          #   #
-          #   def initialize(parameters:, version:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(parameters:, version:)
+          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+          #   @param version [Integer]
 
           # Parameters for the Auth Rule
           #
@@ -133,9 +111,8 @@ module Lithic
 
             variant -> { Lithic::Models::AuthRules::VelocityLimitParams }
 
-            # @!parse
-            #   # @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams)]
-            #   def self.variants; end
+            # @!method self.variants
+            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams)]
           end
         end
 
@@ -156,13 +133,9 @@ module Lithic
             required :version, Integer
           end
 
-          # @!parse
-          #   # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
-          #   # @param version [Integer]
-          #   #
-          #   def initialize(parameters:, version:, **) = super
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(parameters:, version:)
+          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+          #   @param version [Integer]
 
           # Parameters for the Auth Rule
           #
@@ -174,9 +147,8 @@ module Lithic
 
             variant -> { Lithic::Models::AuthRules::VelocityLimitParams }
 
-            # @!parse
-            #   # @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams)]
-            #   def self.variants; end
+            # @!method self.variants
+            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams)]
           end
         end
 
@@ -189,11 +161,8 @@ module Lithic
           ACTIVE = :ACTIVE
           INACTIVE = :INACTIVE
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # The type of Auth Rule
@@ -205,11 +174,8 @@ module Lithic
           CONDITIONAL_BLOCK = :CONDITIONAL_BLOCK
           VELOCITY_LIMIT = :VELOCITY_LIMIT
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

@@ -22,14 +22,10 @@ module Lithic
       #   @return [String]
       required :transaction_event_token, String
 
-      # @!parse
-      #   # @param debugging_request_id [String]
-      #   # @param result [Symbol, Lithic::Models::PaymentSimulateReceiptResponse::Result]
-      #   # @param transaction_event_token [String]
-      #   #
-      #   def initialize(debugging_request_id:, result:, transaction_event_token:, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(debugging_request_id:, result:, transaction_event_token:)
+      #   @param debugging_request_id [String]
+      #   @param result [Symbol, Lithic::Models::PaymentSimulateReceiptResponse::Result]
+      #   @param transaction_event_token [String]
 
       # Request Result
       #
@@ -40,11 +36,8 @@ module Lithic
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

@@ -125,39 +125,19 @@ module Lithic
           #   # @return [String]
           #   attr_writer :starting_after
 
-          # @!parse
-          #   # @param begin_ [Time]
-          #   # @param end_ [Time]
-          #   # @param ending_before [String]
-          #   # @param institution_id [String]
-          #   # @param network [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network]
-          #   # @param page_size [Integer]
-          #   # @param report_date [Date]
-          #   # @param report_date_begin [Date]
-          #   # @param report_date_end [Date]
-          #   # @param settlement_institution_id [String]
-          #   # @param starting_after [String]
-          #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-          #   #
-          #   def initialize(
-          #     begin_: nil,
-          #     end_: nil,
-          #     ending_before: nil,
-          #     institution_id: nil,
-          #     network: nil,
-          #     page_size: nil,
-          #     report_date: nil,
-          #     report_date_begin: nil,
-          #     report_date_end: nil,
-          #     settlement_institution_id: nil,
-          #     starting_after: nil,
-          #     request_options: {},
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(begin_: nil, end_: nil, ending_before: nil, institution_id: nil, network: nil, page_size: nil, report_date: nil, report_date_begin: nil, report_date_end: nil, settlement_institution_id: nil, starting_after: nil, request_options: {})
+          #   @param begin_ [Time]
+          #   @param end_ [Time]
+          #   @param ending_before [String]
+          #   @param institution_id [String]
+          #   @param network [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network]
+          #   @param page_size [Integer]
+          #   @param report_date [Date]
+          #   @param report_date_begin [Date]
+          #   @param report_date_end [Date]
+          #   @param settlement_institution_id [String]
+          #   @param starting_after [String]
+          #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
           # Network to filter on.
           module Network
@@ -168,11 +148,8 @@ module Lithic
             MAESTRO = :MAESTRO
             INTERLINK = :INTERLINK
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
       end

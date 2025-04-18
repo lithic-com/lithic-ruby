@@ -39,15 +39,11 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::TransactionSimulateVoidParams::Type]
       #   attr_writer :type
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param amount [Integer]
-      #   # @param type [Symbol, Lithic::Models::TransactionSimulateVoidParams::Type]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(token:, amount: nil, type: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, amount: nil, type: nil, request_options: {})
+      #   @param token [String]
+      #   @param amount [Integer]
+      #   @param type [Symbol, Lithic::Models::TransactionSimulateVoidParams::Type]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`.
       #
@@ -60,11 +56,8 @@ module Lithic
         AUTHORIZATION_EXPIRY = :AUTHORIZATION_EXPIRY
         AUTHORIZATION_REVERSAL = :AUTHORIZATION_REVERSAL
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

@@ -55,29 +55,14 @@ module Lithic
       #   # @return [Array<String>]
       #   attr_writer :settlement_currencies
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param created [Time]
-      #   # @param name [String]
-      #   # @param pan_range_end [String]
-      #   # @param pan_range_start [String]
-      #   # @param cardholder_currency [String]
-      #   # @param settlement_currencies [Array<String>]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     created:,
-      #     name:,
-      #     pan_range_end:,
-      #     pan_range_start:,
-      #     cardholder_currency: nil,
-      #     settlement_currencies: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, created:, name:, pan_range_end:, pan_range_start:, cardholder_currency: nil, settlement_currencies: nil)
+      #   @param token [String]
+      #   @param created [Time]
+      #   @param name [String]
+      #   @param pan_range_end [String]
+      #   @param pan_range_start [String]
+      #   @param cardholder_currency [String]
+      #   @param settlement_currencies [Array<String>]
     end
   end
 end

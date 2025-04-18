@@ -17,13 +17,9 @@ module Lithic
       #   # @return [String]
       #   attr_writer :financial_account_token
 
-      # @!parse
-      #   # @param financial_account_token [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(financial_account_token: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(financial_account_token: nil, request_options: {})
+      #   @param financial_account_token [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

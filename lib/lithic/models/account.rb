@@ -86,31 +86,15 @@ module Lithic
       #   # @return [Lithic::Models::Account::VerificationAddress]
       #   attr_writer :verification_address
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param created [Time, nil]
-      #   # @param spend_limit [Lithic::Models::Account::SpendLimit]
-      #   # @param state [Symbol, Lithic::Models::Account::State]
-      #   # @param account_holder [Lithic::Models::Account::AccountHolder]
-      #   # @param auth_rule_tokens [Array<String>]
-      #   # @param cardholder_currency [String]
-      #   # @param verification_address [Lithic::Models::Account::VerificationAddress]
-      #   #
-      #   def initialize(
-      #     token:,
-      #     created:,
-      #     spend_limit:,
-      #     state:,
-      #     account_holder: nil,
-      #     auth_rule_tokens: nil,
-      #     cardholder_currency: nil,
-      #     verification_address: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, created:, spend_limit:, state:, account_holder: nil, auth_rule_tokens: nil, cardholder_currency: nil, verification_address: nil)
+      #   @param token [String]
+      #   @param created [Time, nil]
+      #   @param spend_limit [Lithic::Models::Account::SpendLimit]
+      #   @param state [Symbol, Lithic::Models::Account::State]
+      #   @param account_holder [Lithic::Models::Account::AccountHolder]
+      #   @param auth_rule_tokens [Array<String>]
+      #   @param cardholder_currency [String]
+      #   @param verification_address [Lithic::Models::Account::VerificationAddress]
 
       # @see Lithic::Models::Account#spend_limit
       class SpendLimit < Lithic::Internal::Type::BaseModel
@@ -132,20 +116,16 @@ module Lithic
         #   @return [Integer]
         required :monthly, Integer
 
-        # @!parse
-        #   # Spend limit information for the user containing the daily, monthly, and lifetime
-        #   # spend limit of the account. Any charges to a card owned by this account will be
-        #   # declined once their transaction volume has surpassed the value in the applicable
-        #   # time limit (rolling). A lifetime limit of 0 indicates that the lifetime limit
-        #   # feature is disabled.
-        #   #
-        #   # @param daily [Integer]
-        #   # @param lifetime [Integer]
-        #   # @param monthly [Integer]
-        #   #
-        #   def initialize(daily:, lifetime:, monthly:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(daily:, lifetime:, monthly:)
+        #   Spend limit information for the user containing the daily, monthly, and lifetime
+        #   spend limit of the account. Any charges to a card owned by this account will be
+        #   declined once their transaction volume has surpassed the value in the applicable
+        #   time limit (rolling). A lifetime limit of 0 indicates that the lifetime limit
+        #   feature is disabled.
+        #
+        #   @param daily [Integer]
+        #   @param lifetime [Integer]
+        #   @param monthly [Integer]
       end
 
       # Account state:
@@ -168,11 +148,8 @@ module Lithic
         PAUSED = :PAUSED
         CLOSED = :CLOSED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::Account#account_holder
@@ -203,15 +180,11 @@ module Lithic
         #   @return [String]
         required :phone_number, String
 
-        # @!parse
-        #   # @param token [String]
-        #   # @param business_account_token [String]
-        #   # @param email [String]
-        #   # @param phone_number [String]
-        #   #
-        #   def initialize(token:, business_account_token:, email:, phone_number:, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(token:, business_account_token:, email:, phone_number:)
+        #   @param token [String]
+        #   @param business_account_token [String]
+        #   @param email [String]
+        #   @param phone_number [String]
       end
 
       # @deprecated
@@ -261,17 +234,13 @@ module Lithic
         #   # @return [String]
         #   attr_writer :address2
 
-        # @!parse
-        #   # @param address1 [String]
-        #   # @param city [String]
-        #   # @param country [String]
-        #   # @param postal_code [String]
-        #   # @param state [String]
-        #   # @param address2 [String]
-        #   #
-        #   def initialize(address1:, city:, country:, postal_code:, state:, address2: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
+        #   @param address1 [String]
+        #   @param city [String]
+        #   @param country [String]
+        #   @param postal_code [String]
+        #   @param state [String]
+        #   @param address2 [String]
       end
     end
   end

@@ -22,14 +22,10 @@ module Lithic
       #   # @return [String]
       #   attr_writer :memo
 
-      # @!parse
-      #   # @param effective_date [Date]
-      #   # @param memo [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(effective_date:, memo: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(effective_date:, memo: nil, request_options: {})
+      #   @param effective_date [Date]
+      #   @param memo [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

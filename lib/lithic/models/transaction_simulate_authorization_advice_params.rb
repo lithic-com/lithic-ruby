@@ -21,14 +21,10 @@ module Lithic
       #   @return [Integer]
       required :amount, Integer
 
-      # @!parse
-      #   # @param token [String]
-      #   # @param amount [Integer]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(token:, amount:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(token:, amount:, request_options: {})
+      #   @param token [String]
+      #   @param amount [Integer]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

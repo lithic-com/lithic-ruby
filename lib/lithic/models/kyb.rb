@@ -100,35 +100,17 @@ module Lithic
       #   # @return [String]
       #   attr_writer :website_url
 
-      # @!parse
-      #   # @param beneficial_owner_individuals [Array<Lithic::Models::KYB::BeneficialOwnerIndividual>]
-      #   # @param business_entity [Lithic::Models::KYB::BusinessEntity]
-      #   # @param control_person [Lithic::Models::KYB::ControlPerson]
-      #   # @param nature_of_business [String]
-      #   # @param tos_timestamp [String]
-      #   # @param workflow [Symbol, Lithic::Models::KYB::Workflow]
-      #   # @param beneficial_owner_entities [Array<Lithic::Models::KYB::BeneficialOwnerEntity>]
-      #   # @param external_id [String]
-      #   # @param kyb_passed_timestamp [String]
-      #   # @param website_url [String]
-      #   #
-      #   def initialize(
-      #     beneficial_owner_individuals:,
-      #     business_entity:,
-      #     control_person:,
-      #     nature_of_business:,
-      #     tos_timestamp:,
-      #     workflow:,
-      #     beneficial_owner_entities: nil,
-      #     external_id: nil,
-      #     kyb_passed_timestamp: nil,
-      #     website_url: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(beneficial_owner_individuals:, business_entity:, control_person:, nature_of_business:, tos_timestamp:, workflow:, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, website_url: nil)
+      #   @param beneficial_owner_individuals [Array<Lithic::Models::KYB::BeneficialOwnerIndividual>]
+      #   @param business_entity [Lithic::Models::KYB::BusinessEntity]
+      #   @param control_person [Lithic::Models::KYB::ControlPerson]
+      #   @param nature_of_business [String]
+      #   @param tos_timestamp [String]
+      #   @param workflow [Symbol, Lithic::Models::KYB::Workflow]
+      #   @param beneficial_owner_entities [Array<Lithic::Models::KYB::BeneficialOwnerEntity>]
+      #   @param external_id [String]
+      #   @param kyb_passed_timestamp [String]
+      #   @param website_url [String]
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         # @!attribute address
@@ -182,20 +164,16 @@ module Lithic
         #   # @return [String]
         #   attr_writer :phone_number
 
-        # @!parse
-        #   # Individuals associated with a KYB application. Phone number is optional.
-        #   #
-        #   # @param address [Lithic::Models::Address]
-        #   # @param dob [String]
-        #   # @param email [String]
-        #   # @param first_name [String]
-        #   # @param government_id [String]
-        #   # @param last_name [String]
-        #   # @param phone_number [String]
-        #   #
-        #   def initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
+        #   Individuals associated with a KYB application. Phone number is optional.
+        #
+        #   @param address [Lithic::Models::Address]
+        #   @param dob [String]
+        #   @param email [String]
+        #   @param first_name [String]
+        #   @param government_id [String]
+        #   @param last_name [String]
+        #   @param phone_number [String]
       end
 
       # @see Lithic::Models::KYB#business_entity
@@ -249,30 +227,16 @@ module Lithic
         #   # @return [String]
         #   attr_writer :parent_company
 
-        # @!parse
-        #   # Information for business for which the account is being opened and KYB is being
-        #   # run.
-        #   #
-        #   # @param address [Lithic::Models::Address]
-        #   # @param government_id [String]
-        #   # @param legal_business_name [String]
-        #   # @param phone_numbers [Array<String>]
-        #   # @param dba_business_name [String]
-        #   # @param parent_company [String]
-        #   #
-        #   def initialize(
-        #     address:,
-        #     government_id:,
-        #     legal_business_name:,
-        #     phone_numbers:,
-        #     dba_business_name: nil,
-        #     parent_company: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
+        #   Information for business for which the account is being opened and KYB is being
+        #   run.
+        #
+        #   @param address [Lithic::Models::Address]
+        #   @param government_id [String]
+        #   @param legal_business_name [String]
+        #   @param phone_numbers [Array<String>]
+        #   @param dba_business_name [String]
+        #   @param parent_company [String]
       end
 
       # @see Lithic::Models::KYB#control_person
@@ -328,27 +292,23 @@ module Lithic
         #   # @return [String]
         #   attr_writer :phone_number
 
-        # @!parse
-        #   # An individual with significant responsibility for managing the legal entity
-        #   # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-        #   # Officer, Managing Member, General Partner, President, Vice President, or
-        #   # Treasurer). This can be an executive, or someone who will have program-wide
-        #   # access to the cards that Lithic will provide. In some cases, this individual
-        #   # could also be a beneficial owner listed above. See
-        #   # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        #   # (Section II) for more background.
-        #   #
-        #   # @param address [Lithic::Models::Address]
-        #   # @param dob [String]
-        #   # @param email [String]
-        #   # @param first_name [String]
-        #   # @param government_id [String]
-        #   # @param last_name [String]
-        #   # @param phone_number [String]
-        #   #
-        #   def initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
+        #   An individual with significant responsibility for managing the legal entity
+        #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+        #   Officer, Managing Member, General Partner, President, Vice President, or
+        #   Treasurer). This can be an executive, or someone who will have program-wide
+        #   access to the cards that Lithic will provide. In some cases, this individual
+        #   could also be a beneficial owner listed above. See
+        #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+        #   (Section II) for more background.
+        #
+        #   @param address [Lithic::Models::Address]
+        #   @param dob [String]
+        #   @param email [String]
+        #   @param first_name [String]
+        #   @param government_id [String]
+        #   @param last_name [String]
+        #   @param phone_number [String]
       end
 
       # Specifies the type of KYB workflow to run.
@@ -360,11 +320,8 @@ module Lithic
         KYB_BASIC = :KYB_BASIC
         KYB_BYO = :KYB_BYO
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
@@ -417,27 +374,13 @@ module Lithic
         #   # @return [String]
         #   attr_writer :parent_company
 
-        # @!parse
-        #   # @param address [Lithic::Models::Address]
-        #   # @param government_id [String]
-        #   # @param legal_business_name [String]
-        #   # @param phone_numbers [Array<String>]
-        #   # @param dba_business_name [String]
-        #   # @param parent_company [String]
-        #   #
-        #   def initialize(
-        #     address:,
-        #     government_id:,
-        #     legal_business_name:,
-        #     phone_numbers:,
-        #     dba_business_name: nil,
-        #     parent_company: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
+        #   @param address [Lithic::Models::Address]
+        #   @param government_id [String]
+        #   @param legal_business_name [String]
+        #   @param phone_numbers [Array<String>]
+        #   @param dba_business_name [String]
+        #   @param parent_company [String]
       end
     end
   end

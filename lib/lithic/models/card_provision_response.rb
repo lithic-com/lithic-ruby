@@ -13,12 +13,8 @@ module Lithic
       #   # @return [String]
       #   attr_writer :provisioning_payload
 
-      # @!parse
-      #   # @param provisioning_payload [String]
-      #   #
-      #   def initialize(provisioning_payload: nil, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(provisioning_payload: nil)
+      #   @param provisioning_payload [String]
     end
   end
 end

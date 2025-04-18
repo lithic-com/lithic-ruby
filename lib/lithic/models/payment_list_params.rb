@@ -116,50 +116,27 @@ module Lithic
       #   # @return [Symbol, Lithic::Models::PaymentListParams::Status]
       #   attr_writer :status
 
-      # @!parse
-      #   # @param account_token [String]
-      #   # @param begin_ [Time]
-      #   # @param business_account_token [String]
-      #   # @param category [Symbol, Lithic::Models::PaymentListParams::Category]
-      #   # @param end_ [Time]
-      #   # @param ending_before [String]
-      #   # @param financial_account_token [String]
-      #   # @param page_size [Integer]
-      #   # @param result [Symbol, Lithic::Models::PaymentListParams::Result]
-      #   # @param starting_after [String]
-      #   # @param status [Symbol, Lithic::Models::PaymentListParams::Status]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     account_token: nil,
-      #     begin_: nil,
-      #     business_account_token: nil,
-      #     category: nil,
-      #     end_: nil,
-      #     ending_before: nil,
-      #     financial_account_token: nil,
-      #     page_size: nil,
-      #     result: nil,
-      #     starting_after: nil,
-      #     status: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_token: nil, begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
+      #   @param account_token [String]
+      #   @param begin_ [Time]
+      #   @param business_account_token [String]
+      #   @param category [Symbol, Lithic::Models::PaymentListParams::Category]
+      #   @param end_ [Time]
+      #   @param ending_before [String]
+      #   @param financial_account_token [String]
+      #   @param page_size [Integer]
+      #   @param result [Symbol, Lithic::Models::PaymentListParams::Result]
+      #   @param starting_after [String]
+      #   @param status [Symbol, Lithic::Models::PaymentListParams::Status]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       module Category
         extend Lithic::Internal::Type::Enum
 
         ACH = :ACH
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       module Result
@@ -168,11 +145,8 @@ module Lithic
         APPROVED = :APPROVED
         DECLINED = :DECLINED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       module Status
@@ -183,11 +157,8 @@ module Lithic
         RETURNED = :RETURNED
         SETTLED = :SETTLED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

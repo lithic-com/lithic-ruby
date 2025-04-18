@@ -80,37 +80,18 @@ module Lithic
           #   # @return [Integer]
           #   attr_writer :cycle
 
-          # @!parse
-          #   # @param token [String]
-          #   # @param amounts [Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts]
-          #   # @param created [Time]
-          #   # @param currency [String]
-          #   # @param institution_id [String]
-          #   # @param network [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network]
-          #   # @param report_date [Date]
-          #   # @param settlement_institution_id [String]
-          #   # @param settlement_service [String]
-          #   # @param updated [Time]
-          #   # @param cycle [Integer]
-          #   #
-          #   def initialize(
-          #     token:,
-          #     amounts:,
-          #     created:,
-          #     currency:,
-          #     institution_id:,
-          #     network:,
-          #     report_date:,
-          #     settlement_institution_id:,
-          #     settlement_service:,
-          #     updated:,
-          #     cycle: nil,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+          # @!method initialize(token:, amounts:, created:, currency:, institution_id:, network:, report_date:, settlement_institution_id:, settlement_service:, updated:, cycle: nil)
+          #   @param token [String]
+          #   @param amounts [Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts]
+          #   @param created [Time]
+          #   @param currency [String]
+          #   @param institution_id [String]
+          #   @param network [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network]
+          #   @param report_date [Date]
+          #   @param settlement_institution_id [String]
+          #   @param settlement_service [String]
+          #   @param updated [Time]
+          #   @param cycle [Integer]
 
           # @see Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse#amounts
           class Amounts < Lithic::Internal::Type::BaseModel
@@ -143,15 +124,11 @@ module Lithic
             #   # @return [Integer]
             #   attr_writer :visa_charges
 
-            # @!parse
-            #   # @param gross_settlement [Integer]
-            #   # @param interchange_fees [Integer]
-            #   # @param net_settlement [Integer]
-            #   # @param visa_charges [Integer]
-            #   #
-            #   def initialize(gross_settlement:, interchange_fees:, net_settlement:, visa_charges: nil, **) = super
-
-            # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+            # @!method initialize(gross_settlement:, interchange_fees:, net_settlement:, visa_charges: nil)
+            #   @param gross_settlement [Integer]
+            #   @param interchange_fees [Integer]
+            #   @param net_settlement [Integer]
+            #   @param visa_charges [Integer]
           end
 
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
@@ -166,11 +143,8 @@ module Lithic
             MAESTRO = :MAESTRO
             INTERLINK = :INTERLINK
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
       end

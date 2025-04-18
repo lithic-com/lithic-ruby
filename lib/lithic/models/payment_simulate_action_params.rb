@@ -34,15 +34,11 @@ module Lithic
       #   # @return [String]
       #   attr_writer :return_reason_code
 
-      # @!parse
-      #   # @param event_type [Symbol, Lithic::Models::PaymentSimulateActionParams::EventType]
-      #   # @param decline_reason [Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason]
-      #   # @param return_reason_code [String]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(event_type:, decline_reason: nil, return_reason_code: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(event_type:, decline_reason: nil, return_reason_code: nil, request_options: {})
+      #   @param event_type [Symbol, Lithic::Models::PaymentSimulateActionParams::EventType]
+      #   @param decline_reason [Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason]
+      #   @param return_reason_code [String]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Event Type
       module EventType
@@ -57,11 +53,8 @@ module Lithic
         ACH_RETURN_PROCESSED = :ACH_RETURN_PROCESSED
         ACH_RETURN_SETTLED = :ACH_RETURN_SETTLED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Decline reason
@@ -72,11 +65,8 @@ module Lithic
         PROGRAM_DAILY_LIMIT_EXCEEDED = :PROGRAM_DAILY_LIMIT_EXCEEDED
         PROGRAM_MONTHLY_LIMIT_EXCEEDED = :PROGRAM_MONTHLY_LIMIT_EXCEEDED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

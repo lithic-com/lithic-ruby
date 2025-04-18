@@ -69,27 +69,13 @@ module Lithic
       #   # @return [Lithic::Models::AccountUpdateParams::VerificationAddress]
       #   attr_writer :verification_address
 
-      # @!parse
-      #   # @param daily_spend_limit [Integer]
-      #   # @param lifetime_spend_limit [Integer]
-      #   # @param monthly_spend_limit [Integer]
-      #   # @param state [Symbol, Lithic::Models::AccountUpdateParams::State]
-      #   # @param verification_address [Lithic::Models::AccountUpdateParams::VerificationAddress]
-      #   # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     daily_spend_limit: nil,
-      #     lifetime_spend_limit: nil,
-      #     monthly_spend_limit: nil,
-      #     state: nil,
-      #     verification_address: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+      # @!method initialize(daily_spend_limit: nil, lifetime_spend_limit: nil, monthly_spend_limit: nil, state: nil, verification_address: nil, request_options: {})
+      #   @param daily_spend_limit [Integer]
+      #   @param lifetime_spend_limit [Integer]
+      #   @param monthly_spend_limit [Integer]
+      #   @param state [Symbol, Lithic::Models::AccountUpdateParams::State]
+      #   @param verification_address [Lithic::Models::AccountUpdateParams::VerificationAddress]
+      #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Account states.
       module State
@@ -98,11 +84,8 @@ module Lithic
         ACTIVE = :ACTIVE
         PAUSED = :PAUSED
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @deprecated
@@ -161,22 +144,18 @@ module Lithic
         #   # @return [String]
         #   attr_writer :state
 
-        # @!parse
-        #   # Address used during Address Verification Service (AVS) checks during
-        #   # transactions if enabled via Auth Rules. This field is deprecated as AVS checks
-        #   # are no longer supported by Authorization Rules. The field will be removed from
-        #   # the schema in a future release.
-        #   #
-        #   # @param address1 [String]
-        #   # @param address2 [String]
-        #   # @param city [String]
-        #   # @param country [String]
-        #   # @param postal_code [String]
-        #   # @param state [String]
-        #   #
-        #   def initialize(address1: nil, address2: nil, city: nil, country: nil, postal_code: nil, state: nil, **) = super
-
-        # def initialize: (Hash | Lithic::Internal::Type::BaseModel) -> void
+        # @!method initialize(address1: nil, address2: nil, city: nil, country: nil, postal_code: nil, state: nil)
+        #   Address used during Address Verification Service (AVS) checks during
+        #   transactions if enabled via Auth Rules. This field is deprecated as AVS checks
+        #   are no longer supported by Authorization Rules. The field will be removed from
+        #   the schema in a future release.
+        #
+        #   @param address1 [String]
+        #   @param address2 [String]
+        #   @param city [String]
+        #   @param country [String]
+        #   @param postal_code [String]
+        #   @param state [String]
       end
     end
   end
