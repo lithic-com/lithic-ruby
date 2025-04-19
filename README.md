@@ -15,7 +15,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "lithic", "~> 0.1.0.pre.alpha.15"
+gem "lithic", "~> 0.1.0.pre.alpha.16"
 ```
 
 <!-- x-release-please-end -->
