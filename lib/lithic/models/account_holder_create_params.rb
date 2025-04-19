@@ -61,6 +61,8 @@ module Lithic
       required :workflow, enum: -> { Lithic::Models::AccountHolderCreateParams::Workflow }
 
       # @!attribute beneficial_owner_entities
+      #   @deprecated
+      #
       #   Deprecated.
       #
       #   @return [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity>, nil]

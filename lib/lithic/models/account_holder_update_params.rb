@@ -8,6 +8,8 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute beneficial_owner_entities
+      #   @deprecated
+      #
       #   Deprecated.
       #
       #   @return [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity>, nil]
