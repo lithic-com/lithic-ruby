@@ -57,6 +57,8 @@ module Lithic
       required :workflow, enum: -> { Lithic::Models::KYB::Workflow }
 
       # @!attribute beneficial_owner_entities
+      #   @deprecated
+      #
       #   Deprecated.
       #
       #   @return [Array<Lithic::Models::KYB::BeneficialOwnerEntity>, nil]

@@ -10,6 +10,8 @@ module Lithic
       required :created, Time
 
       # @!attribute currency
+      #   @deprecated
+      #
       #   3-character alphabetic ISO 4217 code. (This field is deprecated and will be
       #   removed in a future version of the API.)
       #
@@ -22,6 +24,8 @@ module Lithic
       required :details, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::SettlementSummaryDetails] }
 
       # @!attribute disputes_gross_amount
+      #   @deprecated
+      #
       #   The total gross amount of disputes settlements. (This field is deprecated and
       #   will be removed in a future version of the API. To compute total amounts, Lithic
       #   recommends that customers sum the relevant settlement amounts found within
@@ -31,6 +35,8 @@ module Lithic
       required :disputes_gross_amount, Integer
 
       # @!attribute interchange_gross_amount
+      #   @deprecated
+      #
       #   The total amount of interchange. (This field is deprecated and will be removed
       #   in a future version of the API. To compute total amounts, Lithic recommends that
       #   customers sum the relevant settlement amounts found within `details`.)
@@ -45,6 +51,8 @@ module Lithic
       required :is_complete, Lithic::Internal::Type::Boolean
 
       # @!attribute other_fees_gross_amount
+      #   @deprecated
+      #
       #   Total amount of gross other fees outside of interchange. (This field is
       #   deprecated and will be removed in a future version of the API. To compute total
       #   amounts, Lithic recommends that customers sum the relevant settlement amounts
@@ -60,6 +68,8 @@ module Lithic
       required :report_date, String
 
       # @!attribute settled_net_amount
+      #   @deprecated
+      #
       #   The total net amount of cash moved. (net value of settled_gross_amount,
       #   interchange, fees). (This field is deprecated and will be removed in a future
       #   version of the API. To compute total amounts, Lithic recommends that customers
@@ -69,6 +79,8 @@ module Lithic
       required :settled_net_amount, Integer
 
       # @!attribute transactions_gross_amount
+      #   @deprecated
+      #
       #   The total amount of settlement impacting transactions (excluding interchange,
       #   fees, and disputes). (This field is deprecated and will be removed in a future
       #   version of the API. To compute total amounts, Lithic recommends that customers
