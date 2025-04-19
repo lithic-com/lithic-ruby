@@ -96,6 +96,8 @@ module Lithic
       required :type, enum: -> { Lithic::Models::CardRetrieveResponse::Type }
 
       # @!attribute auth_rule_tokens
+      #   @deprecated
+      #
       #   List of identifiers for the Auth Rule(s) that are applied on the card. This
       #   field is deprecated and will no longer be populated in the `Card` object. The
       #   key will be removed from the schema in a future release. Use the `/auth_rules`
