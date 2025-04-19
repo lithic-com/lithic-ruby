@@ -50,6 +50,8 @@ module Lithic
       optional :account_holder, -> { Lithic::Models::Account::AccountHolder }
 
       # @!attribute auth_rule_tokens
+      #   @deprecated
+      #
       #   List of identifiers for the Auth Rule(s) that are applied on the account. This
       #   field is deprecated and will no longer be populated in the `account_holder`
       #   object. The key will be removed from the schema in a future release. Use the
@@ -65,6 +67,7 @@ module Lithic
       optional :cardholder_currency, String
 
       # @!attribute verification_address
+      #   @deprecated
       #
       #   @return [Lithic::Models::Account::VerificationAddress, nil]
       optional :verification_address, -> { Lithic::Models::Account::VerificationAddress }

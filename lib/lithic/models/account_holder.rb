@@ -23,6 +23,8 @@ module Lithic
       optional :account_token, String
 
       # @!attribute beneficial_owner_entities
+      #   @deprecated
+      #
       #   Deprecated.
       #
       #   @return [Array<Lithic::Models::AccountHolder::BeneficialOwnerEntity>, nil]

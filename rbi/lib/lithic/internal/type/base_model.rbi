@@ -111,10 +111,16 @@ module Lithic
 
           sig { params(other: T.anything).returns(T::Boolean) }
           def ==(other); end
+
+          sig { returns(Integer) }
+          def hash; end
         end
 
         sig { params(other: T.anything).returns(T::Boolean) }
         def ==(other); end
+
+        sig { returns(Integer) }
+        def hash; end
 
         class << self
           # @api private
@@ -197,7 +203,6 @@ module Lithic
           def inspect(depth: 0); end
         end
 
-        # @api private
         sig { returns(String) }
         def to_s; end
 

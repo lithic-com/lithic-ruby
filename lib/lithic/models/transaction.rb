@@ -25,6 +25,8 @@ module Lithic
       required :acquirer_fee, Integer, nil?: true
 
       # @!attribute acquirer_reference_number
+      #   @deprecated
+      #
       #   Unique identifier assigned to a transaction by the acquirer that can be used in
       #   dispute and chargeback filing.
       #
@@ -32,6 +34,8 @@ module Lithic
       required :acquirer_reference_number, String, nil?: true
 
       # @!attribute amount
+      #   @deprecated
+      #
       #   When the transaction is pending, this represents the authorization amount of the
       #   transaction in the anticipated settlement currency. Once the transaction has
       #   settled, this field represents the settled amount in the settlement currency.
@@ -45,6 +49,8 @@ module Lithic
       required :amounts, -> { Lithic::Models::Transaction::Amounts }
 
       # @!attribute authorization_amount
+      #   @deprecated
+      #
       #   The authorization amount of the transaction in the anticipated settlement
       #   currency.
       #
@@ -88,18 +94,24 @@ module Lithic
       required :merchant, -> { Lithic::Models::Transaction::Merchant }
 
       # @!attribute merchant_amount
+      #   @deprecated
+      #
       #   Analogous to the 'amount', but in the merchant currency.
       #
       #   @return [Integer, nil]
       required :merchant_amount, Integer, nil?: true
 
       # @!attribute merchant_authorization_amount
+      #   @deprecated
+      #
       #   Analogous to the 'authorization_amount', but in the merchant currency.
       #
       #   @return [Integer, nil]
       required :merchant_authorization_amount, Integer, nil?: true
 
       # @!attribute merchant_currency
+      #   @deprecated
+      #
       #   3-character alphabetic ISO 4217 code for the local currency of the transaction.
       #
       #   @return [String]
@@ -134,6 +146,8 @@ module Lithic
       required :result, enum: -> { Lithic::Models::Transaction::Result }
 
       # @!attribute settled_amount
+      #   @deprecated
+      #
       #   The settled amount of the transaction in the settlement currency.
       #
       #   @return [Integer]
@@ -921,6 +935,8 @@ module Lithic
         required :token, String
 
         # @!attribute amount
+        #   @deprecated
+        #
         #   Amount of the event in the settlement currency.
         #
         #   @return [Integer]
