@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-alpha.16 (2025-04-21)
+
+Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
+
+### Features
+
+* implement `#hash` for data containers ([7e1420b](https://github.com/lithic-com/lithic-ruby/commit/7e1420bfec9d254eacd77be001cefbad637c7f63))
+
+
+### Bug Fixes
+
+* **internal:** refresh schemas ([cb47b40](https://github.com/lithic-com/lithic-ruby/commit/cb47b40b1aa544d6e6f8fb3f27153ec03cfd6904))
+
+
+### Chores
+
+* documentation improvements ([6700ace](https://github.com/lithic-com/lithic-ruby/commit/6700aced32a478a1c301a3b7e3efee908c5d224e))
+* explicitly mark apis public under `Internal` module ([b81d240](https://github.com/lithic-com/lithic-ruby/commit/b81d240b2048754f45ffe14c446490bce83bfce5))
+* update README with recommended editor plugins ([80d5967](https://github.com/lithic-com/lithic-ruby/commit/80d5967d1e747cbd42e66a570f6520e241a64ba8))
+
 ## 0.1.0-alpha.15 (2025-04-18)
 
 Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
