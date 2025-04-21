@@ -19,7 +19,7 @@ module Lithic
         # @api public
         #
         # @raise [Lithic::Errors::APIError]
-        # @return [Lithic::Internal::Type::BasePage]
+        # @return [self]
         def next_page = (raise NotImplementedError)
 
         # @api public
