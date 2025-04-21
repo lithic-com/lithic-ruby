@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.17 (2025-04-21)
+
+Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
+
+### Bug Fixes
+
+* **internals:** fix Card schema definition ([1a3d18b](https://github.com/lithic-com/lithic-ruby/commit/1a3d18be7e1817fad98013b032defbaa5663b354))
+
 ## 0.1.0-alpha.16 (2025-04-21)
 
 Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
