@@ -389,7 +389,7 @@ module Lithic
 
         # Create a new instance of a model.
         #
-        # @param data [Hash{Symbol=>Object}, Lithic::Internal::Type::BaseModel]
+        # @param data [Hash{Symbol=>Object}, self]
         def initialize(data = {})
           case Lithic::Internal::Util.coerce_hash(data)
           in Hash => coerced

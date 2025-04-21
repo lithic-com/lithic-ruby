@@ -216,9 +216,9 @@ module Lithic
         #
         #   @option req [Symbol, nil] :unwrap
         #
-        #   @option req [Class, nil] :page
+        #   @option req [Class<Lithic::Internal::Type::BasePage>, nil] :page
         #
-        #   @option req [Class, nil] :stream
+        #   @option req [Class<Lithic::Internal::Type::BaseStream>, nil] :stream
         #
         #   @option req [Lithic::Internal::Type::Converter, Class, nil] :model
         #
@@ -417,9 +417,9 @@ module Lithic
         #
         # @param unwrap [Symbol, nil]
         #
-        # @param page [Class, nil]
+        # @param page [Class<Lithic::Internal::Type::BasePage>, nil]
         #
-        # @param stream [Class, nil]
+        # @param stream [Class<Lithic::Internal::Type::BaseStream>, nil]
         #
         # @param model [Lithic::Internal::Type::Converter, Class, nil]
         #

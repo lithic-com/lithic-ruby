@@ -28,7 +28,7 @@ module Lithic
       end
 
       # @raise [Lithic::HTTP::Error]
-      # @return [Lithic::Internal::SinglePage]
+      # @return [self]
       def next_page
         RuntimeError.new("No more pages available.")
       end
