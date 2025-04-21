@@ -28,6 +28,8 @@ module Lithic
         #   @option spec [Proc] :union
         #
         #   @option spec [Boolean] :"nil?"
+        #
+        # @return [Lithic::Internal::Type::ArrayOf]
         def self.[](...) = new(...)
 
         # @api public
