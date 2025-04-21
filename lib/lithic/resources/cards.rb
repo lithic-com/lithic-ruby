@@ -36,7 +36,7 @@ module Lithic
       # @param state [Symbol, Lithic::Models::CardCreateParams::State]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::CardCreateResponse]
+      # @return [Lithic::Models::Card]
       #
       # @see Lithic::Models::CardCreateParams
       def create(params)
@@ -45,7 +45,7 @@ module Lithic
           method: :post,
           path: "v1/cards",
           body: parsed,
-          model: Lithic::Models::CardCreateResponse,
+          model: Lithic::Models::Card,
           options: options
         )
       end
@@ -57,14 +57,14 @@ module Lithic
       # @param card_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::CardRetrieveResponse]
+      # @return [Lithic::Models::Card]
       #
       # @see Lithic::Models::CardRetrieveParams
       def retrieve(card_token, params = {})
         @client.request(
           method: :get,
           path: ["v1/cards/%1$s", card_token],
-          model: Lithic::Models::CardRetrieveResponse,
+          model: Lithic::Models::Card,
           options: params[:request_options]
         )
       end
@@ -87,7 +87,7 @@ module Lithic
       # @param state [Symbol, Lithic::Models::CardUpdateParams::State]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::CardUpdateResponse]
+      # @return [Lithic::Models::Card]
       #
       # @see Lithic::Models::CardUpdateParams
       def update(card_token, params = {})
@@ -96,7 +96,7 @@ module Lithic
           method: :patch,
           path: ["v1/cards/%1$s", card_token],
           body: parsed,
-          model: Lithic::Models::CardUpdateResponse,
+          model: Lithic::Models::Card,
           options: options
         )
       end
@@ -114,7 +114,7 @@ module Lithic
       # @param state [Symbol, Lithic::Models::CardListParams::State]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::Models::CardListResponse>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::NonPCICard>]
       #
       # @see Lithic::Models::CardListParams
       def list(params = {})
@@ -124,7 +124,7 @@ module Lithic
           path: "v1/cards",
           query: parsed.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
-          model: Lithic::Models::CardListResponse,
+          model: Lithic::Models::NonPCICard,
           options: options
         )
       end
@@ -149,7 +149,7 @@ module Lithic
       # @param shipping_method [Symbol, Lithic::Models::CardConvertPhysicalParams::ShippingMethod]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::CardConvertPhysicalResponse]
+      # @return [Lithic::Models::Card]
       #
       # @see Lithic::Models::CardConvertPhysicalParams
       def convert_physical(card_token, params)
@@ -158,7 +158,7 @@ module Lithic
           method: :post,
           path: ["v1/cards/%1$s/convert_physical", card_token],
           body: parsed,
-          model: Lithic::Models::CardConvertPhysicalResponse,
+          model: Lithic::Models::Card,
           options: options
         )
       end
@@ -259,7 +259,7 @@ module Lithic
       # @param shipping_method [Symbol, Lithic::Models::CardReissueParams::ShippingMethod]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::CardReissueResponse]
+      # @return [Lithic::Models::Card]
       #
       # @see Lithic::Models::CardReissueParams
       def reissue(card_token, params = {})
@@ -268,7 +268,7 @@ module Lithic
           method: :post,
           path: ["v1/cards/%1$s/reissue", card_token],
           body: parsed,
-          model: Lithic::Models::CardReissueResponse,
+          model: Lithic::Models::Card,
           options: options
         )
       end
@@ -294,7 +294,7 @@ module Lithic
       # @param shipping_method [Symbol, Lithic::Models::CardRenewParams::ShippingMethod]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::CardRenewResponse]
+      # @return [Lithic::Models::Card]
       #
       # @see Lithic::Models::CardRenewParams
       def renew(card_token, params)
@@ -303,7 +303,7 @@ module Lithic
           method: :post,
           path: ["v1/cards/%1$s/renew", card_token],
           body: parsed,
-          model: Lithic::Models::CardRenewResponse,
+          model: Lithic::Models::Card,
           options: options
         )
       end
@@ -341,7 +341,7 @@ module Lithic
       # @param pan [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::CardSearchByPanResponse]
+      # @return [Lithic::Models::Card]
       #
       # @see Lithic::Models::CardSearchByPanParams
       def search_by_pan(params)
@@ -350,7 +350,7 @@ module Lithic
           method: :post,
           path: "v1/cards/search_by_pan",
           body: parsed,
-          model: Lithic::Models::CardSearchByPanResponse,
+          model: Lithic::Models::Card,
           options: options
         )
       end
