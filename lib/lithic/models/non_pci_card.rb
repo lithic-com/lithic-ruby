@@ -2,8 +2,8 @@
 
 module Lithic
   module Models
-    # @see Lithic::Resources::Cards#convert_physical
-    class CardConvertPhysicalResponse < Lithic::Internal::Type::BaseModel
+    # @see Lithic::Resources::Cards#list
+    class NonPCICard < Lithic::Internal::Type::BaseModel
       # @!attribute token
       #   Globally unique identifier.
       #
@@ -31,8 +31,8 @@ module Lithic
       # @!attribute funding
       #   Deprecated: Funding account for the card.
       #
-      #   @return [Lithic::Models::CardConvertPhysicalResponse::Funding]
-      required :funding, -> { Lithic::Models::CardConvertPhysicalResponse::Funding }
+      #   @return [Lithic::Models::NonPCICard::Funding]
+      required :funding, -> { Lithic::Models::NonPCICard::Funding }
 
       # @!attribute last_four
       #   Last four digits of the card number.
@@ -44,8 +44,8 @@ module Lithic
       #   Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       #   attempts).
       #
-      #   @return [Symbol, Lithic::Models::CardConvertPhysicalResponse::PinStatus]
-      required :pin_status, enum: -> { Lithic::Models::CardConvertPhysicalResponse::PinStatus }
+      #   @return [Symbol, Lithic::Models::NonPCICard::PinStatus]
+      required :pin_status, enum: -> { Lithic::Models::NonPCICard::PinStatus }
 
       # @!attribute spend_limit
       #   Amount (in cents) to limit approved authorizations (e.g. 100000 would be a
@@ -57,9 +57,8 @@ module Lithic
       # @!attribute spend_limit_duration
       #   Spend limit duration
       #
-      #   @return [Symbol, Lithic::Models::CardConvertPhysicalResponse::SpendLimitDuration]
-      required :spend_limit_duration,
-               enum: -> { Lithic::Models::CardConvertPhysicalResponse::SpendLimitDuration }
+      #   @return [Symbol, Lithic::Models::NonPCICard::SpendLimitDuration]
+      required :spend_limit_duration, enum: -> { Lithic::Models::NonPCICard::SpendLimitDuration }
 
       # @!attribute state
       #   Card state values: _ `CLOSED` - Card will no longer approve authorizations.
@@ -78,8 +77,8 @@ module Lithic
       #   In sandbox, the same daily batch fulfillment occurs, but no cards are actually
       #   manufactured.
       #
-      #   @return [Symbol, Lithic::Models::CardConvertPhysicalResponse::State]
-      required :state, enum: -> { Lithic::Models::CardConvertPhysicalResponse::State }
+      #   @return [Symbol, Lithic::Models::NonPCICard::State]
+      required :state, enum: -> { Lithic::Models::NonPCICard::State }
 
       # @!attribute type
       #   Card types: _ `VIRTUAL` - Card will authorize at any merchant and can be added
@@ -93,8 +92,8 @@ module Lithic
       #   `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please use
       #   VIRTUAL instead.
       #
-      #   @return [Symbol, Lithic::Models::CardConvertPhysicalResponse::Type]
-      required :type, enum: -> { Lithic::Models::CardConvertPhysicalResponse::Type }
+      #   @return [Symbol, Lithic::Models::NonPCICard::Type]
+      required :type, enum: -> { Lithic::Models::NonPCICard::Type }
 
       # @!attribute auth_rule_tokens
       #   @deprecated
@@ -112,12 +111,6 @@ module Lithic
       #
       #   @return [String, nil]
       optional :cardholder_currency, String
-
-      # @!attribute cvv
-      #   Three digit cvv printed on the back of the card.
-      #
-      #   @return [String, nil]
-      optional :cvv, String
 
       # @!attribute digital_card_art_token
       #   Specifies the digital card art to be displayed in the user's digital wallet
@@ -151,14 +144,6 @@ module Lithic
       #   @return [String, nil]
       optional :memo, String
 
-      # @!attribute pan
-      #   Primary Account Number (PAN) (i.e. the card number). Customers must be PCI
-      #   compliant to have PAN returned as a field in production. Please contact
-      #   support@lithic.com for questions.
-      #
-      #   @return [String, nil]
-      optional :pan, String
-
       # @!attribute pending_commands
       #   Indicates if there are offline PIN changes pending card interaction with an
       #   offline PIN terminal. Possible commands are: CHANGE_PIN, UNBLOCK_PIN. Applicable
@@ -182,34 +167,32 @@ module Lithic
       #   @return [String, nil]
       optional :replacement_for, String, nil?: true
 
-      # @!method initialize(token:, account_token:, card_program_token:, created:, funding:, last_four:, pin_status:, spend_limit:, spend_limit_duration:, state:, type:, auth_rule_tokens: nil, cardholder_currency: nil, cvv: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, hostname: nil, memo: nil, pan: nil, pending_commands: nil, product_id: nil, replacement_for: nil)
-      #   Card details with potentially PCI sensitive information for Enterprise customers
+      # @!method initialize(token:, account_token:, card_program_token:, created:, funding:, last_four:, pin_status:, spend_limit:, spend_limit_duration:, state:, type:, auth_rule_tokens: nil, cardholder_currency: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, hostname: nil, memo: nil, pending_commands: nil, product_id: nil, replacement_for: nil)
+      #   Card details without PCI information
       #
       #   @param token [String]
       #   @param account_token [String]
       #   @param card_program_token [String]
       #   @param created [Time]
-      #   @param funding [Lithic::Models::CardConvertPhysicalResponse::Funding]
+      #   @param funding [Lithic::Models::NonPCICard::Funding]
       #   @param last_four [String]
-      #   @param pin_status [Symbol, Lithic::Models::CardConvertPhysicalResponse::PinStatus]
+      #   @param pin_status [Symbol, Lithic::Models::NonPCICard::PinStatus]
       #   @param spend_limit [Integer]
-      #   @param spend_limit_duration [Symbol, Lithic::Models::CardConvertPhysicalResponse::SpendLimitDuration]
-      #   @param state [Symbol, Lithic::Models::CardConvertPhysicalResponse::State]
-      #   @param type [Symbol, Lithic::Models::CardConvertPhysicalResponse::Type]
+      #   @param spend_limit_duration [Symbol, Lithic::Models::NonPCICard::SpendLimitDuration]
+      #   @param state [Symbol, Lithic::Models::NonPCICard::State]
+      #   @param type [Symbol, Lithic::Models::NonPCICard::Type]
       #   @param auth_rule_tokens [Array<String>]
       #   @param cardholder_currency [String]
-      #   @param cvv [String]
       #   @param digital_card_art_token [String]
       #   @param exp_month [String]
       #   @param exp_year [String]
       #   @param hostname [String]
       #   @param memo [String]
-      #   @param pan [String]
       #   @param pending_commands [Array<String>]
       #   @param product_id [String]
       #   @param replacement_for [String, nil]
 
-      # @see Lithic::Models::CardConvertPhysicalResponse#funding
+      # @see Lithic::Models::NonPCICard#funding
       class Funding < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   A globally unique identifier for this FundingAccount.
@@ -237,15 +220,15 @@ module Lithic
         #   The funding account is still being verified e.g. bank micro-deposits
         #   verification. \* `DELETED` - The founding account has been deleted.
         #
-        #   @return [Symbol, Lithic::Models::CardConvertPhysicalResponse::Funding::State]
-        required :state, enum: -> { Lithic::Models::CardConvertPhysicalResponse::Funding::State }
+        #   @return [Symbol, Lithic::Models::NonPCICard::Funding::State]
+        required :state, enum: -> { Lithic::Models::NonPCICard::Funding::State }
 
         # @!attribute type
         #   Types of funding source: _ `DEPOSITORY_CHECKING` - Bank checking account. _
         #   `DEPOSITORY_SAVINGS` - Bank savings account.
         #
-        #   @return [Symbol, Lithic::Models::CardConvertPhysicalResponse::Funding::Type]
-        required :type, enum: -> { Lithic::Models::CardConvertPhysicalResponse::Funding::Type }
+        #   @return [Symbol, Lithic::Models::NonPCICard::Funding::Type]
+        required :type, enum: -> { Lithic::Models::NonPCICard::Funding::Type }
 
         # @!attribute account_name
         #   Account name identifying the funding source. This may be `null`.
@@ -265,8 +248,8 @@ module Lithic
         #   @param token [String]
         #   @param created [Time]
         #   @param last_four [String]
-        #   @param state [Symbol, Lithic::Models::CardConvertPhysicalResponse::Funding::State]
-        #   @param type [Symbol, Lithic::Models::CardConvertPhysicalResponse::Funding::Type]
+        #   @param state [Symbol, Lithic::Models::NonPCICard::Funding::State]
+        #   @param type [Symbol, Lithic::Models::NonPCICard::Funding::Type]
         #   @param account_name [String]
         #   @param nickname [String]
 
@@ -275,7 +258,7 @@ module Lithic
         # The funding account is still being verified e.g. bank micro-deposits
         # verification. \* `DELETED` - The founding account has been deleted.
         #
-        # @see Lithic::Models::CardConvertPhysicalResponse::Funding#state
+        # @see Lithic::Models::NonPCICard::Funding#state
         module State
           extend Lithic::Internal::Type::Enum
 
@@ -290,7 +273,7 @@ module Lithic
         # Types of funding source: _ `DEPOSITORY_CHECKING` - Bank checking account. _
         # `DEPOSITORY_SAVINGS` - Bank savings account.
         #
-        # @see Lithic::Models::CardConvertPhysicalResponse::Funding#type
+        # @see Lithic::Models::NonPCICard::Funding#type
         module Type
           extend Lithic::Internal::Type::Enum
 
@@ -305,7 +288,7 @@ module Lithic
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       # attempts).
       #
-      # @see Lithic::Models::CardConvertPhysicalResponse#pin_status
+      # @see Lithic::Models::NonPCICard#pin_status
       module PinStatus
         extend Lithic::Internal::Type::Enum
 
@@ -319,7 +302,7 @@ module Lithic
 
       # Spend limit duration
       #
-      # @see Lithic::Models::CardConvertPhysicalResponse#spend_limit_duration
+      # @see Lithic::Models::NonPCICard#spend_limit_duration
       module SpendLimitDuration
         extend Lithic::Internal::Type::Enum
 
@@ -349,7 +332,7 @@ module Lithic
       # In sandbox, the same daily batch fulfillment occurs, but no cards are actually
       # manufactured.
       #
-      # @see Lithic::Models::CardConvertPhysicalResponse#state
+      # @see Lithic::Models::NonPCICard#state
       module State
         extend Lithic::Internal::Type::Enum
 
@@ -374,7 +357,7 @@ module Lithic
       # `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please use
       # VIRTUAL instead.
       #
-      # @see Lithic::Models::CardConvertPhysicalResponse#type
+      # @see Lithic::Models::NonPCICard#type
       module Type
         extend Lithic::Internal::Type::Enum
 

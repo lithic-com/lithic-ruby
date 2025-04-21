@@ -1,0 +1,19 @@
+module Lithic
+  module Models
+    type card = { cvv: String, pan: String }
+
+    class Card < Lithic::Models::NonPCICard
+      def cvv: -> String?
+
+      def cvv=: (String _) -> String
+
+      def pan: -> String?
+
+      def pan=: (String _) -> String
+
+      def initialize: (?cvv: String, ?pan: String) -> void
+
+      def to_hash: -> Lithic::Models::card
+    end
+  end
+end
