@@ -23,8 +23,15 @@ module Lithic
         optional :end_, Time
 
         # @!method initialize(begin_: nil, end_: nil, request_options: {})
-        #   @param begin_ [Time]
-        #   @param end_ [Time]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::Events::SubscriptionReplayMissingParams} for more details.
+        #
+        #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+        #   ...
+        #
+        #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
+        #   ...
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

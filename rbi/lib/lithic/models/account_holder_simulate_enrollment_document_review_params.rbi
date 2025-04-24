@@ -49,9 +49,14 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # The account holder document upload which to perform the simulation upon.
         document_upload_token:,
+        # An account holder document's upload status for use within the simulation.
         status:,
+        # A list of status reasons associated with a KYB account holder in PENDING_REVIEW
         accepted_entity_status_reasons: nil,
+        # Status reason that will be associated with the simulated account holder status.
+        # Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
         status_reason: nil,
         request_options: {}
       ); end

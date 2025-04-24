@@ -14,7 +14,8 @@ module Lithic
       #
       # @overload retrieve(transaction_token, request_options: {})
       #
-      # @param transaction_token [String]
+      # @param transaction_token [String] Globally unique identifier for the transaction.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Transaction]
@@ -29,20 +30,37 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::TransactionListParams} for more details.
+      #
       # List card transactions. All amounts are in the smallest unit of their respective
       # currency (e.g., cents for USD) and inclusive of any acquirer fees.
       #
       # @overload list(account_token: nil, begin_: nil, card_token: nil, end_: nil, ending_before: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
       #
-      # @param account_token [String]
-      # @param begin_ [Time]
-      # @param card_token [String]
-      # @param end_ [Time]
-      # @param ending_before [String]
-      # @param page_size [Integer]
-      # @param result [Symbol, Lithic::Models::TransactionListParams::Result]
-      # @param starting_after [String]
-      # @param status [Symbol, Lithic::Models::TransactionListParams::Status]
+      # @param account_token [String] Filters for transactions associated with a specific account. ...
+      #
+      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      # ...
+      #
+      # @param card_token [String] Filters for transactions associated with a specific card.
+      #
+      # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
+      # ...
+      #
+      # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+      # ...
+      #
+      # @param page_size [Integer] Page size (for pagination).
+      #
+      # @param result [Symbol, Lithic::Models::TransactionListParams::Result] Filters for transactions using transaction result field. Can filter by `APPROVED
+      # ...
+      #
+      # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+      # ...
+      #
+      # @param status [Symbol, Lithic::Models::TransactionListParams::Status] Filters for transactions using transaction status field.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Internal::CursorPage<Lithic::Models::Transaction>]
@@ -64,7 +82,8 @@ module Lithic
       #
       # @overload expire_authorization(transaction_token, request_options: {})
       #
-      # @param transaction_token [String]
+      # @param transaction_token [String] The token of the transaction to expire.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [nil]
@@ -79,6 +98,9 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::TransactionSimulateAuthorizationParams} for more details.
+      #
       # Simulates an authorization request from the card network as if it came from a
       # merchant acquirer. If you are configured for ASA, simulating authorizations
       # requires your ASA client to be set up properly, i.e. be able to respond to the
@@ -90,16 +112,30 @@ module Lithic
       #
       # @overload simulate_authorization(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, merchant_amount: nil, merchant_currency: nil, partial_approval_capable: nil, pin: nil, status: nil, request_options: {})
       #
-      # @param amount [Integer]
-      # @param descriptor [String]
-      # @param pan [String]
-      # @param mcc [String]
-      # @param merchant_acceptor_id [String]
-      # @param merchant_amount [Integer]
-      # @param merchant_currency [String]
-      # @param partial_approval_capable [Boolean]
-      # @param pin [String]
-      # @param status [Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status]
+      # @param amount [Integer] Amount (in cents) to authorize. For credit authorizations and financial credit a
+      # ...
+      #
+      # @param descriptor [String] Merchant descriptor.
+      #
+      # @param pan [String] Sixteen digit card number.
+      #
+      # @param mcc [String] Merchant category code for the transaction to be simulated. A four-digit number
+      # ...
+      #
+      # @param merchant_acceptor_id [String] Unique identifier to identify the payment card acceptor.
+      #
+      # @param merchant_amount [Integer] Amount of the transaction to be simulated in currency specified in merchant_curr
+      # ...
+      #
+      # @param merchant_currency [String] 3-character alphabetic ISO 4217 currency code. Note: Simulator only accepts USD,
+      # ...
+      #
+      # @param partial_approval_capable [Boolean] Set to true if the terminal is capable of partial approval otherwise false. ...
+      #
+      # @param pin [String] Simulate entering a PIN. If omitted, PIN check will not be performed.
+      #
+      # @param status [Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status] Type of event to simulate. ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::TransactionSimulateAuthorizationResponse]
@@ -116,14 +152,20 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::TransactionSimulateAuthorizationAdviceParams} for more details.
+      #
       # Simulates an authorization advice from the card network as if it came from a
       # merchant acquirer. An authorization advice changes the pending amount of the
       # transaction.
       #
       # @overload simulate_authorization_advice(token:, amount:, request_options: {})
       #
-      # @param token [String]
-      # @param amount [Integer]
+      # @param token [String] The transaction token returned from the /v1/simulate/authorize. response.
+      #
+      # @param amount [Integer] Amount (in cents) to authorize. This amount will override the transaction's amou
+      # ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::TransactionSimulateAuthorizationAdviceResponse]
@@ -140,6 +182,9 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::TransactionSimulateClearingParams} for more details.
+      #
       # Clears an existing authorization, either debit or credit. After this event, the
       # transaction transitions from `PENDING` to `SETTLED` status.
       #
@@ -149,8 +194,11 @@ module Lithic
       #
       # @overload simulate_clearing(token:, amount: nil, request_options: {})
       #
-      # @param token [String]
-      # @param amount [Integer]
+      # @param token [String] The transaction token returned from the /v1/simulate/authorize response.
+      #
+      # @param amount [Integer] Amount (in cents) to clear. Typically this will match the amount in the original
+      # ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::TransactionSimulateClearingResponse]
@@ -167,16 +215,26 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::TransactionSimulateCreditAuthorizationParams} for more details.
+      #
       # Simulates a credit authorization advice from the card network. This message
       # indicates that the network approved a credit authorization on your behalf.
       #
       # @overload simulate_credit_authorization(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, request_options: {})
       #
-      # @param amount [Integer]
-      # @param descriptor [String]
-      # @param pan [String]
-      # @param mcc [String]
-      # @param merchant_acceptor_id [String]
+      # @param amount [Integer] Amount (in cents). Any value entered will be converted into a negative amount in
+      # ...
+      #
+      # @param descriptor [String] Merchant descriptor.
+      #
+      # @param pan [String] Sixteen digit card number.
+      #
+      # @param mcc [String] Merchant category code for the transaction to be simulated. A four-digit number
+      # ...
+      #
+      # @param merchant_acceptor_id [String] Unique identifier to identify the payment card acceptor.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::TransactionSimulateCreditAuthorizationResponse]
@@ -199,9 +257,12 @@ module Lithic
       #
       # @overload simulate_return(amount:, descriptor:, pan:, request_options: {})
       #
-      # @param amount [Integer]
-      # @param descriptor [String]
-      # @param pan [String]
+      # @param amount [Integer] Amount (in cents) to authorize.
+      #
+      # @param descriptor [String] Merchant descriptor.
+      #
+      # @param pan [String] Sixteen digit card number.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::TransactionSimulateReturnResponse]
@@ -224,7 +285,8 @@ module Lithic
       #
       # @overload simulate_return_reversal(token:, request_options: {})
       #
-      # @param token [String]
+      # @param token [String] The transaction token returned from the /v1/simulate/authorize response.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::TransactionSimulateReturnReversalResponse]
@@ -241,6 +303,9 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::TransactionSimulateVoidParams} for more details.
+      #
       # Voids a pending authorization. If `amount` is not set, the full amount will be
       # voided. Can be used on partially voided transactions but not partially cleared
       # transactions. _Simulating an authorization expiry on credit authorizations or
@@ -248,9 +313,13 @@ module Lithic
       #
       # @overload simulate_void(token:, amount: nil, type: nil, request_options: {})
       #
-      # @param token [String]
-      # @param amount [Integer]
-      # @param type [Symbol, Lithic::Models::TransactionSimulateVoidParams::Type]
+      # @param token [String] The transaction token returned from the /v1/simulate/authorize response.
+      #
+      # @param amount [Integer] Amount (in cents) to void. Typically this will match the amount in the original
+      # ...
+      #
+      # @param type [Symbol, Lithic::Models::TransactionSimulateVoidParams::Type] Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`. ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::TransactionSimulateVoidResponse]

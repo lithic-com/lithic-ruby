@@ -49,12 +49,21 @@ module Lithic
         optional :program_level, Lithic::Internal::Type::Boolean
 
         # @!method initialize(account_tokens: nil, name: nil, state: nil, card_tokens: nil, excluded_card_tokens: nil, program_level: nil, request_options: {})
-        #   @param account_tokens [Array<String>]
-        #   @param name [String, nil]
-        #   @param state [Symbol, Lithic::Models::AuthRules::V2UpdateParams::State]
-        #   @param card_tokens [Array<String>]
-        #   @param excluded_card_tokens [Array<String>]
-        #   @param program_level [Boolean]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::AuthRules::V2UpdateParams} for more details.
+        #
+        #   @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
+        #
+        #   @param name [String, nil] Auth Rule Name
+        #
+        #   @param state [Symbol, Lithic::Models::AuthRules::V2UpdateParams::State] The desired state of the Auth Rule. ...
+        #
+        #   @param card_tokens [Array<String>] Card tokens to which the Auth Rule applies.
+        #
+        #   @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
+        #
+        #   @param program_level [Boolean] Whether the Auth Rule applies to all authorizations on the card program.
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
         # The desired state of the Auth Rule.

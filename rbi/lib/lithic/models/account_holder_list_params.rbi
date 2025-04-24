@@ -109,16 +109,35 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Date string in RFC 3339 format. Only entries created after the specified time
+        # will be included. UTC time zone.
         begin_: nil,
+        # Email address of the account holder. The query must be an exact match, case
+        # insensitive.
         email: nil,
+        # Date string in RFC 3339 format. Only entries created before the specified time
+        # will be included. UTC time zone.
         end_: nil,
+        # A cursor representing an item's token before which a page of results should end.
+        # Used to retrieve the previous page of results before this item.
         ending_before: nil,
+        # If applicable, represents the external_id associated with the account_holder.
         external_id: nil,
+        # (Individual Account Holders only) The first name of the account holder. The
+        # query is case insensitive and supports partial matches.
         first_name: nil,
+        # (Individual Account Holders only) The last name of the account holder. The query
+        # is case insensitive and supports partial matches.
         last_name: nil,
+        # (Business Account Holders only) The legal business name of the account holder.
+        # The query is case insensitive and supports partial matches.
         legal_business_name: nil,
+        # The number of account_holders to limit the response to.
         limit: nil,
+        # Phone number of the account holder. The query must be an exact match.
         phone_number: nil,
+        # A cursor representing an item's token after which a page of results should
+        # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
         request_options: {}
       ); end

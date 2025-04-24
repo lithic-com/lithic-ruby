@@ -23,8 +23,13 @@ module Lithic
         optional :last_transaction_event_token, String
 
         # @!method initialize(balance_date: nil, last_transaction_event_token: nil, request_options: {})
-        #   @param balance_date [Time]
-        #   @param last_transaction_event_token [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::Cards::BalanceListParams} for more details.
+        #
+        #   @param balance_date [Time] UTC date of the balance to retrieve. Defaults to latest available balance
+        #
+        #   @param last_transaction_event_token [String] Balance after a given financial event occured. ...
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

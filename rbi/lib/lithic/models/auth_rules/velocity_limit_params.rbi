@@ -45,8 +45,23 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(filters:, period:, scope:, limit_amount: nil, limit_count: nil); end
-
+        def self.new(
+          filters:,
+          # The size of the trailing window to calculate Spend Velocity over in seconds. The
+          # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
+          period:,
+          scope:,
+          # The maximum amount of spend velocity allowed in the period in minor units (the
+          # smallest unit of a currency, e.g. cents for USD). Transactions exceeding this
+          # limit will be declined.
+          limit_amount: nil,
+          # The number of spend velocity impacting transactions may not exceed this limit in
+          # the period. Transactions exceeding this limit will be declined. A spend velocity
+          # impacting transaction is a transaction that has been authorized, and optionally
+          # settled, or a force post (a transaction that settled without prior
+          # authorization).
+          limit_count: nil
+        ); end
         sig do
           override
             .returns(
@@ -93,9 +108,22 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(exclude_countries: nil, exclude_mccs: nil, include_countries: nil, include_mccs: nil)
-          end
-
+          def self.new(
+            # ISO-3166-1 alpha-3 Country Codes to exclude from the velocity calculation.
+            # Transactions matching any of the provided will be excluded from the calculated
+            # velocity.
+            exclude_countries: nil,
+            # Merchant Category Codes to exclude from the velocity calculation. Transactions
+            # matching this MCC will be excluded from the calculated velocity.
+            exclude_mccs: nil,
+            # ISO-3166-1 alpha-3 Country Codes to include in the velocity calculation.
+            # Transactions not matching any of the provided will not be included in the
+            # calculated velocity.
+            include_countries: nil,
+            # Merchant Category Codes to include in the velocity calculation. Transactions not
+            # matching this MCC will not be included in the calculated velocity.
+            include_mccs: nil
+          ); end
           sig do
             override
               .returns(

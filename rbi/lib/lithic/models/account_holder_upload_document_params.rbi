@@ -22,8 +22,13 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(document_type:, entity_token:, request_options: {}); end
-
+      def self.new(
+        # The type of document to upload
+        document_type:,
+        # Globally unique identifier for the entity.
+        entity_token:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

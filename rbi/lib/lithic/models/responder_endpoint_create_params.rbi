@@ -28,8 +28,13 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(type: nil, url: nil, request_options: {}); end
-
+      def self.new(
+        # The type of the endpoint.
+        type: nil,
+        # The URL for the responder endpoint (must be http(s)).
+        url: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

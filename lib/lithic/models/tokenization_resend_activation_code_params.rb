@@ -17,7 +17,12 @@ module Lithic
                enum: -> { Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType }
 
       # @!method initialize(activation_method_type: nil, request_options: {})
-      #   @param activation_method_type [Symbol, Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::TokenizationResendActivationCodeParams} for more details.
+      #
+      #   @param activation_method_type [Symbol, Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType] The communication method that the user has selected to use to receive the authen
+      #   ...
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # The communication method that the user has selected to use to receive the

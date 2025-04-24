@@ -36,10 +36,14 @@ module Lithic
       # @!method initialize(token:, description:, disabled:, url:, event_types: nil)
       #   A subscription to specific event types.
       #
-      #   @param token [String]
-      #   @param description [String]
-      #   @param disabled [Boolean]
+      #   @param token [String] Globally unique identifier.
+      #
+      #   @param description [String] A description of the subscription.
+      #
+      #   @param disabled [Boolean] Whether the subscription is disabled.
+      #
       #   @param url [String]
+      #
       #   @param event_types [Array<Symbol, Lithic::Models::EventSubscription::EventType>, nil]
 
       module EventType

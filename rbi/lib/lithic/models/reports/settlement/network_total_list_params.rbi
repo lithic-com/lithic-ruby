@@ -108,16 +108,32 @@ module Lithic
               .returns(T.attached_class)
           end
           def self.new(
+            # Datetime in RFC 3339 format. Only entries created after the specified time will
+            # be included. UTC time zone.
             begin_: nil,
+            # Datetime in RFC 3339 format. Only entries created before the specified time will
+            # be included. UTC time zone.
             end_: nil,
+            # A cursor representing an item's token before which a page of results should end.
+            # Used to retrieve the previous page of results before this item.
             ending_before: nil,
+            # Institution ID to filter on.
             institution_id: nil,
+            # Network to filter on.
             network: nil,
+            # Number of records per page.
             page_size: nil,
+            # Singular report date to filter on (YYYY-MM-DD). Cannot be populated in
+            # conjunction with report_date_begin or report_date_end.
             report_date: nil,
+            # Earliest report date to filter on, inclusive (YYYY-MM-DD).
             report_date_begin: nil,
+            # Latest report date to filter on, inclusive (YYYY-MM-DD).
             report_date_end: nil,
+            # Settlement institution ID to filter on.
             settlement_institution_id: nil,
+            # A cursor representing an item's token after which a page of results should
+            # begin. Used to retrieve the next page of results after this item.
             starting_after: nil,
             request_options: {}
           ); end

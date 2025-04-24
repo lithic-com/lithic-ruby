@@ -34,10 +34,19 @@ module Lithic
                enum: -> { Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason }
 
       # @!method initialize(document_upload_token:, status:, accepted_entity_status_reasons: nil, status_reason: nil, request_options: {})
-      #   @param document_upload_token [String]
-      #   @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status]
-      #   @param accepted_entity_status_reasons [Array<String>]
-      #   @param status_reason [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams} for more
+      #   details.
+      #
+      #   @param document_upload_token [String] The account holder document upload which to perform the simulation upon.
+      #
+      #   @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status] An account holder document's upload status for use within the simulation.
+      #
+      #   @param accepted_entity_status_reasons [Array<String>] A list of status reasons associated with a KYB account holder in PENDING_REVIEW
+      #
+      #   @param status_reason [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason] Status reason that will be associated with the simulated account holder status.
+      #   ...
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # An account holder document's upload status for use within the simulation.

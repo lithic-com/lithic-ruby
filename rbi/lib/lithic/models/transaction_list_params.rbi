@@ -90,14 +90,28 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Filters for transactions associated with a specific account.
         account_token: nil,
+        # Date string in RFC 3339 format. Only entries created after the specified time
+        # will be included. UTC time zone.
         begin_: nil,
+        # Filters for transactions associated with a specific card.
         card_token: nil,
+        # Date string in RFC 3339 format. Only entries created before the specified time
+        # will be included. UTC time zone.
         end_: nil,
+        # A cursor representing an item's token before which a page of results should end.
+        # Used to retrieve the previous page of results before this item.
         ending_before: nil,
+        # Page size (for pagination).
         page_size: nil,
+        # Filters for transactions using transaction result field. Can filter by
+        # `APPROVED`, and `DECLINED`.
         result: nil,
+        # A cursor representing an item's token after which a page of results should
+        # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
+        # Filters for transactions using transaction status field.
         status: nil,
         request_options: {}
       ); end

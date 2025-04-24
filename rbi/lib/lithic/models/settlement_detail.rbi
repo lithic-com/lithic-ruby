@@ -130,26 +130,52 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Globally unique identifier denoting the Settlement Detail.
         token:,
+        # The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
+        # for Visa).
         account_token:,
+        # Globally unique identifier denoting the card program that the associated
+        # Transaction occurred on.
         card_program_token:,
+        # Globally unique identifier denoting the card that the associated Transaction
+        # occurred on.
         card_token:,
+        # Date and time when the transaction first occurred. UTC time zone.
         created:,
+        # Three-character alphabetic ISO 4217 code.
         currency:,
+        # The total gross amount of disputes settlements.
         disputes_gross_amount:,
+        # Globally unique identifiers denoting the Events associated with this settlement.
         event_tokens:,
+        # The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
+        # for Visa).
         institution:,
+        # The total amount of interchange in six-digit extended precision.
         interchange_fee_extended_precision:,
+        # The total amount of interchange.
         interchange_gross_amount:,
+        # Card network where the transaction took place.
         network:,
+        # The total gross amount of other fees by type.
         other_fees_details:,
+        # Total amount of gross other fees outside of interchange.
         other_fees_gross_amount:,
+        # Date of when the report was first generated.
         report_date:,
+        # Date of when money movement is triggered for the transaction.
         settlement_date:,
+        # Globally unique identifier denoting the associated Transaction object.
         transaction_token:,
+        # The total amount of settlement impacting transactions (excluding interchange,
+        # fees, and disputes).
         transactions_gross_amount:,
+        # The type of settlement record.
         type:,
+        # Date and time when the transaction first occurred. UTC time zone.
         updated:,
+        # Network's description of a fee, only present on records with type `FEE`.
         fee_description: nil
       ); end
       sig do

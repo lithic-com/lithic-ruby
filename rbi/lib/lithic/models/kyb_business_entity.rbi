@@ -53,11 +53,22 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
+        # acceptable; APO/FPO are acceptable.
         address:,
+        # Government-issued identification number. US Federal Employer Identification
+        # Numbers (EIN) are currently supported, entered as full nine-digits, with or
+        # without hyphens.
         government_id:,
+        # Legal (formal) business name.
         legal_business_name:,
+        # One or more of the business's phone number(s), entered as a list in E.164
+        # format.
         phone_numbers:,
+        # Any name that the business operates under that is not its legal business name
+        # (if applicable).
         dba_business_name: nil,
+        # Parent company name (if applicable).
         parent_company: nil
       ); end
       sig do
@@ -119,8 +130,23 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
-
+        def self.new(
+          # Valid deliverable address (no PO boxes).
+          address1:,
+          # Name of city.
+          city:,
+          # Valid country code. Only USA is currently supported, entered in uppercase ISO
+          # 3166-1 alpha-3 three-character format.
+          country:,
+          # Valid postal code. Only USA ZIP codes are currently supported, entered as a
+          # five-digit ZIP or nine-digit ZIP+4.
+          postal_code:,
+          # Valid state code. Only USA state codes are currently supported, entered in
+          # uppercase ISO 3166-2 two-character format.
+          state:,
+          # Unit or apartment number (if applicable).
+          address2: nil
+        ); end
         sig do
           override
             .returns(

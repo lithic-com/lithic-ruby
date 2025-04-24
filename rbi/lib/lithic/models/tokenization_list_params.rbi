@@ -80,13 +80,24 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Filters for tokenizations associated with a specific account.
         account_token: nil,
+        # Filter for tokenizations created after this date.
         begin_: nil,
+        # Filters for tokenizations associated with a specific card.
         card_token: nil,
+        # Filter for tokenizations created before this date.
         end_: nil,
+        # A cursor representing an item's token before which a page of results should end.
+        # Used to retrieve the previous page of results before this item.
         ending_before: nil,
+        # Page size (for pagination).
         page_size: nil,
+        # A cursor representing an item's token after which a page of results should
+        # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
+        # Filter for tokenizations by tokenization channel. If this is not specified, only
+        # DIGITAL_WALLET tokenizations will be returned.
         tokenization_channel: nil,
         request_options: {}
       ); end

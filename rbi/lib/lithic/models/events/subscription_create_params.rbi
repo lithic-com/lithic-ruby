@@ -43,8 +43,18 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(url:, description: nil, disabled: nil, event_types: nil, request_options: {}); end
-
+        def self.new(
+          # URL to which event webhooks will be sent. URL must be a valid HTTPS address.
+          url:,
+          # Event subscription description.
+          description: nil,
+          # Whether the event subscription is active (false) or inactive (true).
+          disabled: nil,
+          # Indicates types of events that will be sent to this subscription. If left blank,
+          # all types will be sent.
+          event_types: nil,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(

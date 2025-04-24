@@ -15,7 +15,8 @@ module Lithic
         optional :parameters, union: -> { Lithic::Models::AuthRules::V2DraftParams::Parameters }, nil?: true
 
         # @!method initialize(parameters: nil, request_options: {})
-        #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, nil]
+        #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, nil] Parameters for the Auth Rule
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
         # Parameters for the Auth Rule

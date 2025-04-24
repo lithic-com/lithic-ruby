@@ -21,8 +21,14 @@ module Lithic
 
       # Card details with potentially PCI sensitive information for Enterprise customers
       sig { params(cvv: String, pan: String).returns(T.attached_class) }
-      def self.new(cvv: nil, pan: nil); end
-
+      def self.new(
+        # Three digit cvv printed on the back of the card.
+        cvv: nil,
+        # Primary Account Number (PAN) (i.e. the card number). Customers must be PCI
+        # compliant to have PAN returned as a field in production. Please contact
+        # support@lithic.com for questions.
+        pan: nil
+      ); end
       sig { override.returns({cvv: String, pan: String}) }
       def to_hash; end
     end

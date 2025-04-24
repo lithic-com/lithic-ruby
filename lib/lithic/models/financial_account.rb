@@ -69,18 +69,29 @@ module Lithic
       optional :substatus, enum: -> { Lithic::Models::FinancialAccount::Substatus }, nil?: true
 
       # @!method initialize(token:, account_token:, created:, credit_configuration:, is_for_benefit_of:, nickname:, status:, type:, updated:, account_number: nil, routing_number: nil, substatus: nil)
-      #   @param token [String]
+      #   @param token [String] Globally unique identifier for the account
+      #
       #   @param account_token [String, nil]
+      #
       #   @param created [Time]
+      #
       #   @param credit_configuration [Lithic::Models::FinancialAccount::CreditConfiguration, nil]
-      #   @param is_for_benefit_of [Boolean]
+      #
+      #   @param is_for_benefit_of [Boolean] Whether financial account is for the benefit of another entity
+      #
       #   @param nickname [String, nil]
-      #   @param status [Symbol, Lithic::Models::FinancialAccount::Status]
+      #
+      #   @param status [Symbol, Lithic::Models::FinancialAccount::Status] Status of the financial account
+      #
       #   @param type [Symbol, Lithic::Models::FinancialAccount::Type]
+      #
       #   @param updated [Time]
+      #
       #   @param account_number [String, nil]
+      #
       #   @param routing_number [String, nil]
-      #   @param substatus [Symbol, Lithic::Models::FinancialAccount::Substatus, nil]
+      #
+      #   @param substatus [Symbol, Lithic::Models::FinancialAccount::Substatus, nil] Substatus for the financial account
 
       # @see Lithic::Models::FinancialAccount#credit_configuration
       class CreditConfiguration < Lithic::Internal::Type::BaseModel
@@ -128,13 +139,19 @@ module Lithic
         required :tier, String, nil?: true
 
         # @!method initialize(charged_off_reason:, credit_limit:, credit_product_token:, external_bank_account_token:, financial_account_state:, is_spend_blocked:, tier:)
-        #   @param charged_off_reason [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason, nil]
+        #   @param charged_off_reason [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason, nil] Reason for the financial account being marked as Charged Off
+        #
         #   @param credit_limit [Integer, nil]
-        #   @param credit_product_token [String, nil]
+        #
+        #   @param credit_product_token [String, nil] Globally unique identifier for the credit product
+        #
         #   @param external_bank_account_token [String, nil]
-        #   @param financial_account_state [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState, nil]
+        #
+        #   @param financial_account_state [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState, nil] State of the financial account
+        #
         #   @param is_spend_blocked [Boolean]
-        #   @param tier [String, nil]
+        #
+        #   @param tier [String, nil] Tier assigned to the financial account
 
         # Reason for the financial account being marked as Charged Off
         #

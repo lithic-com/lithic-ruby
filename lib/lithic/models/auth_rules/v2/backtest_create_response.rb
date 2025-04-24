@@ -13,7 +13,7 @@ module Lithic
           optional :backtest_token, String
 
           # @!method initialize(backtest_token: nil)
-          #   @param backtest_token [String]
+          #   @param backtest_token [String] Auth Rule Backtest Token
         end
       end
     end

@@ -47,13 +47,19 @@ module Lithic
       optional :is_card_program_default, Lithic::Internal::Type::Boolean
 
       # @!method initialize(token:, card_program_token:, created:, description:, is_enabled:, network:, is_card_program_default: nil)
-      #   @param token [String]
-      #   @param card_program_token [String]
-      #   @param created [Time]
-      #   @param description [String]
-      #   @param is_enabled [Boolean]
-      #   @param network [Symbol, Lithic::Models::DigitalCardArtAPI::Network]
-      #   @param is_card_program_default [Boolean]
+      #   @param token [String] Globally unique identifier for the card art.
+      #
+      #   @param card_program_token [String] Globally unique identifier for the card program.
+      #
+      #   @param created [Time] Timestamp of when card art was created.
+      #
+      #   @param description [String] Description of the card art.
+      #
+      #   @param is_enabled [Boolean] Whether the card art is enabled.
+      #
+      #   @param network [Symbol, Lithic::Models::DigitalCardArtAPI::Network] Card network.
+      #
+      #   @param is_card_program_default [Boolean] Whether the card art is the default card art to be added upon tokenization.
 
       # Card network.
       #

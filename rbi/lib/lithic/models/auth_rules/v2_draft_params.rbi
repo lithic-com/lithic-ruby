@@ -33,8 +33,11 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(parameters: nil, request_options: {}); end
-
+        def self.new(
+          # Parameters for the Auth Rule
+          parameters: nil,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(

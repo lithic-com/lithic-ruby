@@ -26,9 +26,12 @@ module Lithic
       required :pan, String
 
       # @!method initialize(amount:, descriptor:, pan:, request_options: {})
-      #   @param amount [Integer]
-      #   @param descriptor [String]
-      #   @param pan [String]
+      #   @param amount [Integer] Amount (in cents) to authorize.
+      #
+      #   @param descriptor [String] Merchant descriptor.
+      #
+      #   @param pan [String] Sixteen digit card number.
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

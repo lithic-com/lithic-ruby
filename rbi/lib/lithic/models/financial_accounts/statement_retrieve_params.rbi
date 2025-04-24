@@ -18,8 +18,11 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(financial_account_token:, request_options: {}); end
-
+        def self.new(
+          # Globally unique identifier for financial account.
+          financial_account_token:,
+          request_options: {}
+        ); end
         sig { override.returns({financial_account_token: String, request_options: Lithic::RequestOptions}) }
         def to_hash; end
       end

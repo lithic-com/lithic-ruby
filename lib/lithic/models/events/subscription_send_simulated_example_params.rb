@@ -16,7 +16,8 @@ module Lithic
                  enum: -> { Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType }
 
         # @!method initialize(event_type: nil, request_options: {})
-        #   @param event_type [Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType]
+        #   @param event_type [Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType] Event type to send example message for.
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
         # Event type to send example message for.

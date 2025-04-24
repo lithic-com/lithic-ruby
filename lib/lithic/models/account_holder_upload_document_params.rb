@@ -20,8 +20,10 @@ module Lithic
       required :entity_token, String
 
       # @!method initialize(document_type:, entity_token:, request_options: {})
-      #   @param document_type [Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType]
-      #   @param entity_token [String]
+      #   @param document_type [Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType] The type of document to upload
+      #
+      #   @param entity_token [String] Globally unique identifier for the entity.
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # The type of document to upload

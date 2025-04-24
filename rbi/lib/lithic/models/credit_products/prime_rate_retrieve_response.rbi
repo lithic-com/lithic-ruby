@@ -19,8 +19,12 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(data:, has_more:); end
-
+        def self.new(
+          # List of prime rates
+          data:,
+          # Whether there are more prime rates
+          has_more:
+        ); end
         sig do
           override
             .returns(
@@ -39,8 +43,12 @@ module Lithic
           attr_accessor :rate
 
           sig { params(effective_date: Date, rate: String).returns(T.attached_class) }
-          def self.new(effective_date:, rate:); end
-
+          def self.new(
+            # Date the rate goes into effect
+            effective_date:,
+            # The rate in decimal format
+            rate:
+          ); end
           sig { override.returns({effective_date: Date, rate: String}) }
           def to_hash; end
         end

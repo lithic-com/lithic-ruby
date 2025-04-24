@@ -153,25 +153,58 @@ module Lithic
       optional :business_account_token, String
 
       # @!method initialize(beneficial_owner_individuals:, business_entity:, control_person:, nature_of_business:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
-      #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>]
-      #   @param business_entity [Lithic::Models::AccountHolderCreateParams::BusinessEntity]
-      #   @param control_person [Lithic::Models::AccountHolderCreateParams::ControlPerson]
-      #   @param nature_of_business [String]
-      #   @param tos_timestamp [String]
-      #   @param workflow [Symbol, Lithic::Models::AccountHolderCreateParams::Workflow]
-      #   @param individual [Lithic::Models::AccountHolderCreateParams::Individual]
-      #   @param address [Lithic::Models::Address]
-      #   @param email [String]
-      #   @param first_name [String]
-      #   @param kyc_exemption_type [Symbol, Lithic::Models::AccountHolderCreateParams::KYCExemptionType]
-      #   @param last_name [String]
-      #   @param phone_number [String]
-      #   @param beneficial_owner_entities [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity>]
-      #   @param external_id [String]
-      #   @param kyb_passed_timestamp [String]
-      #   @param website_url [String]
-      #   @param kyc_passed_timestamp [String]
-      #   @param business_account_token [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::AccountHolderCreateParams} for more details.
+      #
+      #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>] You must submit a list of all direct and indirect individuals with 25% or more o
+      #   ...
+      #
+      #   @param business_entity [Lithic::Models::AccountHolderCreateParams::BusinessEntity] Information for business for which the account is being opened and KYB is being
+      #   ...
+      #
+      #   @param control_person [Lithic::Models::AccountHolderCreateParams::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
+      #   ...
+      #
+      #   @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
+      #   ...
+      #
+      #   @param tos_timestamp [String] An RFC 3339 timestamp indicating when the account holder accepted the applicable
+      #   ...
+      #
+      #   @param workflow [Symbol, Lithic::Models::AccountHolderCreateParams::Workflow] Specifies the workflow type. This must be 'KYC_EXEMPT'
+      #
+      #   @param individual [Lithic::Models::AccountHolderCreateParams::Individual] Information on individual for whom the account is being opened and KYC is being
+      #   ...
+      #
+      #   @param address [Lithic::Models::Address] KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
+      #   ...
+      #
+      #   @param email [String] The KYC Exempt user's email
+      #
+      #   @param first_name [String] The KYC Exempt user's first name
+      #
+      #   @param kyc_exemption_type [Symbol, Lithic::Models::AccountHolderCreateParams::KYCExemptionType] Specifies the type of KYC Exempt user
+      #
+      #   @param last_name [String] The KYC Exempt user's last name
+      #
+      #   @param phone_number [String] The KYC Exempt user's phone number, entered in E.164 format.
+      #
+      #   @param beneficial_owner_entities [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity>] Deprecated.
+      #
+      #   @param external_id [String] A user provided id that can be used to link an account holder with an external s
+      #   ...
+      #
+      #   @param kyb_passed_timestamp [String] An RFC 3339 timestamp indicating when precomputed KYC was completed on the busin
+      #   ...
+      #
+      #   @param website_url [String] Company website URL.
+      #
+      #   @param kyc_passed_timestamp [String] An RFC 3339 timestamp indicating when precomputed KYC was completed on the indiv
+      #   ...
+      #
+      #   @param business_account_token [String] Only applicable for customers using the KYC-Exempt workflow to enroll authorized
+      #   ...
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
@@ -223,15 +256,27 @@ module Lithic
         optional :phone_number, String
 
         # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual} for more
+        #   details.
+        #
         #   Individuals associated with a KYB application. Phone number is optional.
         #
-        #   @param address [Lithic::Models::Address]
-        #   @param dob [String]
-        #   @param email [String]
-        #   @param first_name [String]
-        #   @param government_id [String]
-        #   @param last_name [String]
-        #   @param phone_number [String]
+        #   @param address [Lithic::Models::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
+        #   ...
+        #
+        #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
+        #
+        #   @param email [String] Individual's email address. ...
+        #
+        #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
+        #
+        #   @param government_id [String] Government-issued identification number (required for identity verification and
+        #   ...
+        #
+        #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
+        #
+        #   @param phone_number [String] Individual's phone number, entered in E.164 format. ...
       end
 
       class BusinessEntity < Lithic::Internal::Type::BaseModel
@@ -277,15 +322,27 @@ module Lithic
         optional :parent_company, String
 
         # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::AccountHolderCreateParams::BusinessEntity} for more details.
+        #
         #   Information for business for which the account is being opened and KYB is being
         #   run.
         #
-        #   @param address [Lithic::Models::Address]
-        #   @param government_id [String]
-        #   @param legal_business_name [String]
-        #   @param phone_numbers [Array<String>]
-        #   @param dba_business_name [String]
-        #   @param parent_company [String]
+        #   @param address [Lithic::Models::Address] Business's physical address - PO boxes, UPS drops, and FedEx drops are not accep
+        #   ...
+        #
+        #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
+        #   ...
+        #
+        #   @param legal_business_name [String] Legal (formal) business name.
+        #
+        #   @param phone_numbers [Array<String>] One or more of the business's phone number(s), entered as a list in E.164 format
+        #   ...
+        #
+        #   @param dba_business_name [String] Any name that the business operates under that is not its legal business name (i
+        #   ...
+        #
+        #   @param parent_company [String] Parent company name (if applicable).
       end
 
       class ControlPerson < Lithic::Internal::Type::BaseModel
@@ -337,6 +394,9 @@ module Lithic
         optional :phone_number, String
 
         # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::AccountHolderCreateParams::ControlPerson} for more details.
+        #
         #   An individual with significant responsibility for managing the legal entity
         #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
         #   Officer, Managing Member, General Partner, President, Vice President, or
@@ -346,13 +406,21 @@ module Lithic
         #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
         #   (Section II) for more background.
         #
-        #   @param address [Lithic::Models::Address]
-        #   @param dob [String]
-        #   @param email [String]
-        #   @param first_name [String]
-        #   @param government_id [String]
-        #   @param last_name [String]
-        #   @param phone_number [String]
+        #   @param address [Lithic::Models::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
+        #   ...
+        #
+        #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
+        #
+        #   @param email [String] Individual's email address. ...
+        #
+        #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
+        #
+        #   @param government_id [String] Government-issued identification number (required for identity verification and
+        #   ...
+        #
+        #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
+        #
+        #   @param phone_number [String] Individual's phone number, entered in E.164 format. ...
       end
 
       # Specifies the workflow type. This must be 'KYC_EXEMPT'
@@ -408,12 +476,25 @@ module Lithic
         optional :parent_company, String
 
         # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
-        #   @param address [Lithic::Models::Address]
-        #   @param government_id [String]
-        #   @param legal_business_name [String]
-        #   @param phone_numbers [Array<String>]
-        #   @param dba_business_name [String]
-        #   @param parent_company [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity} for more
+        #   details.
+        #
+        #   @param address [Lithic::Models::Address] Business's physical address - PO boxes, UPS drops, and FedEx drops are not accep
+        #   ...
+        #
+        #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
+        #   ...
+        #
+        #   @param legal_business_name [String] Legal (formal) business name.
+        #
+        #   @param phone_numbers [Array<String>] One or more of the business's phone number(s), entered as a list in E.164 format
+        #   ...
+        #
+        #   @param dba_business_name [String] Any name that the business operates under that is not its legal business name (i
+        #   ...
+        #
+        #   @param parent_company [String] Parent company name (if applicable).
       end
 
       class Individual < Lithic::Internal::Type::BaseModel
@@ -465,16 +546,27 @@ module Lithic
         required :phone_number, String
 
         # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:)
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::AccountHolderCreateParams::Individual} for more details.
+        #
         #   Information on individual for whom the account is being opened and KYC is being
         #   run.
         #
-        #   @param address [Lithic::Models::Address]
-        #   @param dob [String]
-        #   @param email [String]
-        #   @param first_name [String]
-        #   @param government_id [String]
-        #   @param last_name [String]
-        #   @param phone_number [String]
+        #   @param address [Lithic::Models::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
+        #   ...
+        #
+        #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
+        #
+        #   @param email [String] Individual's email address. ...
+        #
+        #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
+        #
+        #   @param government_id [String] Government-issued identification number (required for identity verification and
+        #   ...
+        #
+        #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
+        #
+        #   @param phone_number [String] Individual's phone number, entered in E.164 format. ...
       end
 
       # Specifies the type of KYC Exempt user

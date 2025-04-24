@@ -28,8 +28,14 @@ module Lithic
       optional :amount, Integer
 
       # @!method initialize(token:, amount: nil, request_options: {})
-      #   @param token [String]
-      #   @param amount [Integer]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::TransactionSimulateClearingParams} for more details.
+      #
+      #   @param token [String] The transaction token returned from the /v1/simulate/authorize response.
+      #
+      #   @param amount [Integer] Amount (in cents) to clear. Typically this will match the amount in the original
+      #   ...
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

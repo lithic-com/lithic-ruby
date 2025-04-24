@@ -62,15 +62,28 @@ module Lithic
       optional :user_defined_id, String
 
       # @!method initialize(address: nil, company_id: nil, dob: nil, doing_business_as: nil, name: nil, owner: nil, owner_type: nil, type: nil, user_defined_id: nil, request_options: {})
-      #   @param address [Lithic::Models::ExternalBankAccountAddress]
-      #   @param company_id [String]
-      #   @param dob [Date]
-      #   @param doing_business_as [String]
-      #   @param name [String]
-      #   @param owner [String]
-      #   @param owner_type [Symbol, Lithic::Models::OwnerType]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::ExternalBankAccountUpdateParams} for more details.
+      #
+      #   @param address [Lithic::Models::ExternalBankAccountAddress] Address
+      #
+      #   @param company_id [String] Optional field that helps identify bank accounts in receipts
+      #
+      #   @param dob [Date] Date of Birth of the Individual that owns the external bank account
+      #
+      #   @param doing_business_as [String] Doing Business As
+      #
+      #   @param name [String] The nickname for this External Bank Account
+      #
+      #   @param owner [String] Legal Name of the business or individual who owns the external account. This wil
+      #   ...
+      #
+      #   @param owner_type [Symbol, Lithic::Models::OwnerType] Owner Type
+      #
       #   @param type [Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type]
-      #   @param user_defined_id [String]
+      #
+      #   @param user_defined_id [String] User Defined ID
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       module Type

@@ -84,18 +84,35 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Globally unique identifier for a Tokenization
         token:,
+        # The account token associated with the card being tokenized.
         account_token:,
+        # The card token associated with the card being tokenized.
         card_token:,
+        # Date and time when the tokenization first occurred. UTC time zone.
         created_at:,
+        # The dynamic pan assigned to the token by the network.
         dpan:,
+        # The status of the tokenization request
         status:,
+        # The entity that requested the tokenization. Represents a Digital Wallet or
+        # merchant.
         token_requestor_name:,
+        # The network's unique reference for the tokenization.
         token_unique_reference:,
+        # The channel through which the tokenization was made.
         tokenization_channel:,
+        # Latest date and time when the tokenization was updated. UTC time zone.
         updated_at:,
+        # Specifies the digital card art displayed in the user’s digital wallet after
+        # tokenization. This will be null if the tokenization was created without an
+        # associated digital card art. See
+        # [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
         digital_card_art_token: nil,
+        # A list of events related to the tokenization.
         events: nil,
+        # The network's unique reference for the card that is tokenized.
         payment_account_reference_id: nil
       ); end
       sig do
@@ -215,8 +232,16 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(token: nil, created_at: nil, result: nil, type: nil); end
-
+        def self.new(
+          # Globally unique identifier for a Tokenization Event
+          token: nil,
+          # Date and time when the tokenization event first occurred. UTC time zone.
+          created_at: nil,
+          # Enum representing the result of the tokenization event
+          result: nil,
+          # Enum representing the type of tokenization event that occurred
+          type: nil
+        ); end
         sig do
           override
             .returns(

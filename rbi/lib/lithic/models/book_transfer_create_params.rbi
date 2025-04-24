@@ -63,13 +63,25 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
+        # This should always be a positive value.
         amount:,
+        # Category of the book transfer
         category:,
+        # Globally unique identifier for the financial account or card that will send the
+        # funds. Accepted type dependent on the program's use case.
         from_financial_account_token:,
+        # The program specific subtype code for the specified category/type.
         subtype:,
+        # Globally unique identifier for the financial account or card that will receive
+        # the funds. Accepted type dependent on the program's use case.
         to_financial_account_token:,
+        # Type of book_transfer
         type:,
+        # Customer-provided token that will serve as an idempotency token. This token will
+        # become the transaction token.
         token: nil,
+        # Optional descriptor for the transfer.
         memo: nil,
         request_options: {}
       ); end

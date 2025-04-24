@@ -54,14 +54,21 @@ module Lithic
         required :tier, String, nil?: true
 
         # @!method initialize(account_token:, charged_off_reason:, credit_limit:, credit_product_token:, external_bank_account_token:, financial_account_state:, is_spend_blocked:, tier:)
-        #   @param account_token [String]
-        #   @param charged_off_reason [Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason, nil]
+        #   @param account_token [String] Globally unique identifier for the account
+        #
+        #   @param charged_off_reason [Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason, nil] Reason for the financial account being marked as Charged Off
+        #
         #   @param credit_limit [Integer, nil]
-        #   @param credit_product_token [String, nil]
+        #
+        #   @param credit_product_token [String, nil] Globally unique identifier for the credit product
+        #
         #   @param external_bank_account_token [String, nil]
-        #   @param financial_account_state [Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState]
+        #
+        #   @param financial_account_state [Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState] State of the financial account
+        #
         #   @param is_spend_blocked [Boolean]
-        #   @param tier [String, nil]
+        #
+        #   @param tier [String, nil] Tier assigned to the financial account
 
         # Reason for the financial account being marked as Charged Off
         #

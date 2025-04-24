@@ -20,8 +20,10 @@ module Lithic
       optional :url, String
 
       # @!method initialize(type: nil, url: nil, request_options: {})
-      #   @param type [Symbol, Lithic::Models::ResponderEndpointCreateParams::Type]
-      #   @param url [String]
+      #   @param type [Symbol, Lithic::Models::ResponderEndpointCreateParams::Type] The type of the endpoint.
+      #
+      #   @param url [String] The URL for the responder endpoint (must be http(s)).
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # The type of the endpoint.

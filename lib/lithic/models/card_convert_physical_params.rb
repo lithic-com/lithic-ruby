@@ -45,10 +45,18 @@ module Lithic
       optional :shipping_method, enum: -> { Lithic::Models::CardConvertPhysicalParams::ShippingMethod }
 
       # @!method initialize(shipping_address:, carrier: nil, product_id: nil, shipping_method: nil, request_options: {})
-      #   @param shipping_address [Lithic::Models::ShippingAddress]
-      #   @param carrier [Lithic::Models::Carrier]
-      #   @param product_id [String]
-      #   @param shipping_method [Symbol, Lithic::Models::CardConvertPhysicalParams::ShippingMethod]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::CardConvertPhysicalParams} for more details.
+      #
+      #   @param shipping_address [Lithic::Models::ShippingAddress] The shipping address this card will be sent to.
+      #
+      #   @param carrier [Lithic::Models::Carrier] If omitted, the previous carrier will be used.
+      #
+      #   @param product_id [String] Specifies the configuration (e.g. physical card art) that the card should be man
+      #   ...
+      #
+      #   @param shipping_method [Symbol, Lithic::Models::CardConvertPhysicalParams::ShippingMethod] Shipping method for the card. Only applies to cards of type PHYSICAL. ...
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of

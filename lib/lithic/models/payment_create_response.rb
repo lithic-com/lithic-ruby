@@ -11,7 +11,7 @@ module Lithic
       optional :balance, -> { Lithic::Models::Balance }
 
       # @!method initialize(balance: nil)
-      #   @param balance [Lithic::Models::Balance]
+      #   @param balance [Lithic::Models::Balance] Balance
     end
   end
 end

@@ -161,26 +161,48 @@ module Lithic
       required :transaction_token, String
 
       # @!method initialize(token:, amount:, arbitration_date:, created:, customer_filed_date:, customer_note:, network_claim_ids:, network_filed_date:, network_reason_code:, prearbitration_date:, primary_claim_id:, reason:, representment_date:, resolution_date:, resolution_note:, resolution_reason:, status:, transaction_token:)
+      #   Some parameter documentations has been truncated, see {Lithic::Models::Dispute}
+      #   for more details.
+      #
       #   Dispute.
       #
-      #   @param token [String]
-      #   @param amount [Integer]
-      #   @param arbitration_date [Time, nil]
-      #   @param created [Time]
-      #   @param customer_filed_date [Time, nil]
-      #   @param customer_note [String, nil]
-      #   @param network_claim_ids [Array<String>, nil]
-      #   @param network_filed_date [Time, nil]
-      #   @param network_reason_code [String, nil]
-      #   @param prearbitration_date [Time, nil]
-      #   @param primary_claim_id [String, nil]
-      #   @param reason [Symbol, Lithic::Models::Dispute::Reason]
-      #   @param representment_date [Time, nil]
-      #   @param resolution_date [Time, nil]
-      #   @param resolution_note [String, nil]
-      #   @param resolution_reason [Symbol, Lithic::Models::Dispute::ResolutionReason, nil]
-      #   @param status [Symbol, Lithic::Models::Dispute::Status]
-      #   @param transaction_token [String]
+      #   @param token [String] Globally unique identifier.
+      #
+      #   @param amount [Integer] Amount under dispute. May be different from the original transaction amount.
+      #
+      #   @param arbitration_date [Time, nil] Date dispute entered arbitration.
+      #
+      #   @param created [Time] Timestamp of when first Dispute was reported.
+      #
+      #   @param customer_filed_date [Time, nil] Date that the dispute was filed by the customer making the dispute.
+      #
+      #   @param customer_note [String, nil] End customer description of the reason for the dispute.
+      #
+      #   @param network_claim_ids [Array<String>, nil] Unique identifiers for the dispute from the network.
+      #
+      #   @param network_filed_date [Time, nil] Date that the dispute was submitted to the network.
+      #
+      #   @param network_reason_code [String, nil] Network reason code used to file the dispute.
+      #
+      #   @param prearbitration_date [Time, nil] Date dispute entered pre-arbitration.
+      #
+      #   @param primary_claim_id [String, nil] Unique identifier for the dispute from the network. If there are multiple, this
+      #   ...
+      #
+      #   @param reason [Symbol, Lithic::Models::Dispute::Reason] Dispute reason: ...
+      #
+      #   @param representment_date [Time, nil] Date the representment was received.
+      #
+      #   @param resolution_date [Time, nil] Date that the dispute was resolved.
+      #
+      #   @param resolution_note [String, nil] Note by Dispute team on the case resolution.
+      #
+      #   @param resolution_reason [Symbol, Lithic::Models::Dispute::ResolutionReason, nil] Reason for the dispute resolution: ...
+      #
+      #   @param status [Symbol, Lithic::Models::Dispute::Status] Status types: ...
+      #
+      #   @param transaction_token [String] The transaction that is being disputed. A transaction can only be disputed once
+      #   ...
 
       # Dispute reason:
       #

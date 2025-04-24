@@ -23,8 +23,11 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(financial_account_type: nil, request_options: {}); end
-
+      def self.new(
+        # Get the aggregate balance for a given Financial Account type.
+        financial_account_type: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

@@ -41,11 +41,22 @@ module Lithic
       optional :kyc_passed_timestamp, String
 
       # @!method initialize(individual:, tos_timestamp:, workflow:, external_id: nil, kyc_passed_timestamp: nil)
-      #   @param individual [Lithic::Models::KYC::Individual]
-      #   @param tos_timestamp [String]
-      #   @param workflow [Symbol, Lithic::Models::KYC::Workflow]
-      #   @param external_id [String]
-      #   @param kyc_passed_timestamp [String]
+      #   Some parameter documentations has been truncated, see {Lithic::Models::KYC} for
+      #   more details.
+      #
+      #   @param individual [Lithic::Models::KYC::Individual] Information on individual for whom the account is being opened and KYC is being
+      #   ...
+      #
+      #   @param tos_timestamp [String] An RFC 3339 timestamp indicating when the account holder accepted the applicable
+      #   ...
+      #
+      #   @param workflow [Symbol, Lithic::Models::KYC::Workflow] Specifies the type of KYC workflow to run.
+      #
+      #   @param external_id [String] A user provided id that can be used to link an account holder with an external s
+      #   ...
+      #
+      #   @param kyc_passed_timestamp [String] An RFC 3339 timestamp indicating when precomputed KYC was completed on the indiv
+      #   ...
 
       # @see Lithic::Models::KYC#individual
       class Individual < Lithic::Internal::Type::BaseModel
@@ -97,16 +108,27 @@ module Lithic
         required :phone_number, String
 
         # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:)
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::KYC::Individual} for more details.
+        #
         #   Information on individual for whom the account is being opened and KYC is being
         #   run.
         #
-        #   @param address [Lithic::Models::Address]
-        #   @param dob [String]
-        #   @param email [String]
-        #   @param first_name [String]
-        #   @param government_id [String]
-        #   @param last_name [String]
-        #   @param phone_number [String]
+        #   @param address [Lithic::Models::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
+        #   ...
+        #
+        #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
+        #
+        #   @param email [String] Individual's email address. ...
+        #
+        #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
+        #
+        #   @param government_id [String] Government-issued identification number (required for identity verification and
+        #   ...
+        #
+        #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
+        #
+        #   @param phone_number [String] Individual's phone number, entered in E.164 format. ...
       end
 
       # Specifies the type of KYC workflow to run.

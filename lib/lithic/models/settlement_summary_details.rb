@@ -55,14 +55,27 @@ module Lithic
       optional :transactions_gross_amount, Integer
 
       # @!method initialize(currency: nil, disputes_gross_amount: nil, institution: nil, interchange_gross_amount: nil, network: nil, other_fees_gross_amount: nil, settled_net_amount: nil, transactions_gross_amount: nil)
-      #   @param currency [String]
-      #   @param disputes_gross_amount [Integer]
-      #   @param institution [String]
-      #   @param interchange_gross_amount [Integer]
-      #   @param network [Symbol, Lithic::Models::SettlementSummaryDetails::Network]
-      #   @param other_fees_gross_amount [Integer]
-      #   @param settled_net_amount [Integer]
-      #   @param transactions_gross_amount [Integer]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::SettlementSummaryDetails} for more details.
+      #
+      #   @param currency [String] 3-character alphabetic ISO 4217 code.
+      #
+      #   @param disputes_gross_amount [Integer] The total gross amount of disputes settlements.
+      #
+      #   @param institution [String] The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE f
+      #   ...
+      #
+      #   @param interchange_gross_amount [Integer] The total amount of interchange.
+      #
+      #   @param network [Symbol, Lithic::Models::SettlementSummaryDetails::Network] Card network where the transaction took place
+      #
+      #   @param other_fees_gross_amount [Integer] Total amount of gross other fees outside of interchange.
+      #
+      #   @param settled_net_amount [Integer] The total net amount of cash moved. (net value of settled_gross_amount, intercha
+      #   ...
+      #
+      #   @param transactions_gross_amount [Integer] The total amount of settlement impacting transactions (excluding interchange, fe
+      #   ...
 
       # Card network where the transaction took place
       #

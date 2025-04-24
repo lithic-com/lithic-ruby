@@ -69,9 +69,14 @@ module Lithic
         optional :value, union: -> { Lithic::Models::AuthRules::AuthRuleCondition::Value }
 
         # @!method initialize(attribute: nil, operation: nil, value: nil)
-        #   @param attribute [Symbol, Lithic::Models::AuthRules::ConditionalAttribute]
-        #   @param operation [Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation]
-        #   @param value [String, Integer, Array<String>]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::AuthRules::AuthRuleCondition} for more details.
+        #
+        #   @param attribute [Symbol, Lithic::Models::AuthRules::ConditionalAttribute] The attribute to target. ...
+        #
+        #   @param operation [Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation] The operation to apply to the attribute
+        #
+        #   @param value [String, Integer, Array<String>] A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
 
         # The operation to apply to the attribute
         #

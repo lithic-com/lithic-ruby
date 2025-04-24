@@ -15,8 +15,12 @@ module Lithic
       attr_accessor :url
 
       sig { params(enrolled: T::Boolean, url: T.nilable(String)).returns(T.attached_class) }
-      def self.new(enrolled: nil, url: nil); end
-
+      def self.new(
+        # True if the instance has an endpoint enrolled.
+        enrolled: nil,
+        # The URL of the currently enrolled endpoint or null.
+        url: nil
+      ); end
       sig { override.returns({enrolled: T::Boolean, url: T.nilable(String)}) }
       def to_hash; end
     end

@@ -80,12 +80,19 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # Account tokens to which the Auth Rule applies.
           account_tokens:,
+          # Card tokens to which the Auth Rule applies.
           card_tokens:,
+          # Whether the Auth Rule applies to all authorizations on the card program.
           program_level:,
+          # Auth Rule Name
           name: nil,
+          # Parameters for the Auth Rule
           parameters: nil,
+          # The type of Auth Rule
           type: nil,
+          # Card tokens to which the Auth Rule does not apply.
           excluded_card_tokens: nil,
           request_options: {}
         ); end

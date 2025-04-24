@@ -168,29 +168,61 @@ module Lithic
       optional :replacement_for, String, nil?: true
 
       # @!method initialize(token:, account_token:, card_program_token:, created:, funding:, last_four:, pin_status:, spend_limit:, spend_limit_duration:, state:, type:, auth_rule_tokens: nil, cardholder_currency: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, hostname: nil, memo: nil, pending_commands: nil, product_id: nil, replacement_for: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::NonPCICard} for more details.
+      #
       #   Card details without PCI information
       #
-      #   @param token [String]
-      #   @param account_token [String]
-      #   @param card_program_token [String]
-      #   @param created [Time]
-      #   @param funding [Lithic::Models::NonPCICard::Funding]
-      #   @param last_four [String]
-      #   @param pin_status [Symbol, Lithic::Models::NonPCICard::PinStatus]
-      #   @param spend_limit [Integer]
-      #   @param spend_limit_duration [Symbol, Lithic::Models::NonPCICard::SpendLimitDuration]
-      #   @param state [Symbol, Lithic::Models::NonPCICard::State]
-      #   @param type [Symbol, Lithic::Models::NonPCICard::Type]
-      #   @param auth_rule_tokens [Array<String>]
-      #   @param cardholder_currency [String]
-      #   @param digital_card_art_token [String]
-      #   @param exp_month [String]
-      #   @param exp_year [String]
-      #   @param hostname [String]
-      #   @param memo [String]
-      #   @param pending_commands [Array<String>]
-      #   @param product_id [String]
-      #   @param replacement_for [String, nil]
+      #   @param token [String] Globally unique identifier.
+      #
+      #   @param account_token [String] Globally unique identifier for the account to which the card belongs.
+      #
+      #   @param card_program_token [String] Globally unique identifier for the card program on which the card exists.
+      #
+      #   @param created [Time] An RFC 3339 timestamp for when the card was created. UTC time zone.
+      #
+      #   @param funding [Lithic::Models::NonPCICard::Funding] Deprecated: Funding account for the card.
+      #
+      #   @param last_four [String] Last four digits of the card number.
+      #
+      #   @param pin_status [Symbol, Lithic::Models::NonPCICard::PinStatus] Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
+      #   ...
+      #
+      #   @param spend_limit [Integer] Amount (in cents) to limit approved authorizations (e.g. 100000 would be a $1,00
+      #   ...
+      #
+      #   @param spend_limit_duration [Symbol, Lithic::Models::NonPCICard::SpendLimitDuration] Spend limit duration
+      #
+      #   @param state [Symbol, Lithic::Models::NonPCICard::State] Card state values: \* `CLOSED` - Card will no longer approve authorizations.
+      #   Clos ...
+      #
+      #   @param type [Symbol, Lithic::Models::NonPCICard::Type] Card types: \* `VIRTUAL` - Card will authorize at any merchant and can be added
+      #   t ...
+      #
+      #   @param auth_rule_tokens [Array<String>] List of identifiers for the Auth Rule(s) that are applied on the card. This fiel
+      #   ...
+      #
+      #   @param cardholder_currency [String] 3-character alphabetic ISO 4217 code for the currency of the cardholder.
+      #
+      #   @param digital_card_art_token [String] Specifies the digital card art to be displayed in the user's digital wallet afte
+      #   ...
+      #
+      #   @param exp_month [String] Two digit (MM) expiry month.
+      #
+      #   @param exp_year [String] Four digit (yyyy) expiry year.
+      #
+      #   @param hostname [String] Hostname of card's locked merchant (will be empty if not applicable).
+      #
+      #   @param memo [String] Friendly name to identify the card.
+      #
+      #   @param pending_commands [Array<String>] Indicates if there are offline PIN changes pending card interaction with an offl
+      #   ...
+      #
+      #   @param product_id [String] Only applicable to cards of type `PHYSICAL`. This must be configured with Lithic
+      #   ...
+      #
+      #   @param replacement_for [String, nil] If the card is a replacement for another card, the globally unique identifier fo
+      #   ...
 
       # @see Lithic::Models::NonPCICard#funding
       class Funding < Lithic::Internal::Type::BaseModel
@@ -243,15 +275,28 @@ module Lithic
         optional :nickname, String
 
         # @!method initialize(token:, created:, last_four:, state:, type:, account_name: nil, nickname: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::NonPCICard::Funding} for more details.
+        #
         #   Deprecated: Funding account for the card.
         #
-        #   @param token [String]
-        #   @param created [Time]
-        #   @param last_four [String]
-        #   @param state [Symbol, Lithic::Models::NonPCICard::Funding::State]
-        #   @param type [Symbol, Lithic::Models::NonPCICard::Funding::Type]
-        #   @param account_name [String]
-        #   @param nickname [String]
+        #   @param token [String] A globally unique identifier for this FundingAccount.
+        #
+        #   @param created [Time] An RFC 3339 string representing when this funding source was added to the Lithic
+        #   ...
+        #
+        #   @param last_four [String] The last 4 digits of the account (e.g. bank account, debit card) associated with
+        #   ...
+        #
+        #   @param state [Symbol, Lithic::Models::NonPCICard::Funding::State] State of funding source. Funding source states: \* `ENABLED` - The funding
+        #   accoun ...
+        #
+        #   @param type [Symbol, Lithic::Models::NonPCICard::Funding::Type] Types of funding source: _ `DEPOSITORY_CHECKING` - Bank checking account. _ `DEP
+        #   ...
+        #
+        #   @param account_name [String] Account name identifying the funding source. This may be `null`.
+        #
+        #   @param nickname [String] The nickname given to the `FundingAccount` or `null` if it has no nickname.
 
         # State of funding source. Funding source states: _ `ENABLED` - The funding
         # account is available to use for card creation and transactions. _ `PENDING` -

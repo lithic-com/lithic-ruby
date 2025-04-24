@@ -51,13 +51,20 @@ module Lithic
         optional :excluded_card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!method initialize(account_tokens:, card_tokens:, program_level:, name: nil, parameters: nil, type: nil, excluded_card_tokens: nil, request_options: {})
-        #   @param account_tokens [Array<String>]
-        #   @param card_tokens [Array<String>]
-        #   @param program_level [Boolean]
-        #   @param name [String, nil]
-        #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
-        #   @param type [Symbol, Lithic::Models::AuthRules::V2CreateParams::Type]
-        #   @param excluded_card_tokens [Array<String>]
+        #   @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
+        #
+        #   @param card_tokens [Array<String>] Card tokens to which the Auth Rule applies.
+        #
+        #   @param program_level [Boolean] Whether the Auth Rule applies to all authorizations on the card program.
+        #
+        #   @param name [String, nil] Auth Rule Name
+        #
+        #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams] Parameters for the Auth Rule
+        #
+        #   @param type [Symbol, Lithic::Models::AuthRules::V2CreateParams::Type] The type of Auth Rule
+        #
+        #   @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
         # Parameters for the Auth Rule

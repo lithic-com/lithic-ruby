@@ -13,7 +13,11 @@ module Lithic
         optional :token, String
 
         # @!method initialize(token: nil)
-        #   @param token [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::ThreeDS::AuthenticationSimulateResponse} for more details.
+        #
+        #   @param token [String] A unique token to reference this transaction with later calls to void or clear t
+        #   ...
       end
     end
   end

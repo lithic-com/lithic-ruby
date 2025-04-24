@@ -70,18 +70,34 @@ module Lithic
         required :updated, Time
 
         # @!method initialize(token:, available_amount:, created:, currency:, last_transaction_event_token:, last_transaction_token:, pending_amount:, total_amount:, type:, updated:)
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::Cards::BalanceListResponse} for more details.
+        #
         #   Balance of a Financial Account
         #
-        #   @param token [String]
-        #   @param available_amount [Integer]
-        #   @param created [Time]
-        #   @param currency [String]
-        #   @param last_transaction_event_token [String]
-        #   @param last_transaction_token [String]
-        #   @param pending_amount [Integer]
-        #   @param total_amount [Integer]
-        #   @param type [Symbol, Lithic::Models::Cards::BalanceListResponse::Type]
-        #   @param updated [Time]
+        #   @param token [String] Globally unique identifier for the financial account that holds this balance.
+        #
+        #   @param available_amount [Integer] Funds available for spend in the currency's smallest unit (e.g., cents for USD)
+        #
+        #   @param created [Time] Date and time for when the balance was first created.
+        #
+        #   @param currency [String] 3-character alphabetic ISO 4217 code for the local currency of the balance.
+        #
+        #   @param last_transaction_event_token [String] Globally unique identifier for the last financial transaction event that impacte
+        #   ...
+        #
+        #   @param last_transaction_token [String] Globally unique identifier for the last financial transaction that impacted this
+        #   ...
+        #
+        #   @param pending_amount [Integer] Funds not available for spend due to card authorizations or pending ACH release.
+        #   ...
+        #
+        #   @param total_amount [Integer] The sum of available and pending balance in the currency's smallest unit (e.g.,
+        #   ...
+        #
+        #   @param type [Symbol, Lithic::Models::Cards::BalanceListResponse::Type] Type of financial account.
+        #
+        #   @param updated [Time] Date and time for when the balance was last updated.
 
         # Type of financial account.
         #

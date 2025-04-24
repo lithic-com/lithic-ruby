@@ -67,15 +67,32 @@ module Lithic
       optional :status, enum: -> { Lithic::Models::TransactionListParams::Status }
 
       # @!method initialize(account_token: nil, begin_: nil, card_token: nil, end_: nil, ending_before: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
-      #   @param account_token [String]
-      #   @param begin_ [Time]
-      #   @param card_token [String]
-      #   @param end_ [Time]
-      #   @param ending_before [String]
-      #   @param page_size [Integer]
-      #   @param result [Symbol, Lithic::Models::TransactionListParams::Result]
-      #   @param starting_after [String]
-      #   @param status [Symbol, Lithic::Models::TransactionListParams::Status]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::TransactionListParams} for more details.
+      #
+      #   @param account_token [String] Filters for transactions associated with a specific account. ...
+      #
+      #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      #   ...
+      #
+      #   @param card_token [String] Filters for transactions associated with a specific card.
+      #
+      #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
+      #   ...
+      #
+      #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+      #   ...
+      #
+      #   @param page_size [Integer] Page size (for pagination).
+      #
+      #   @param result [Symbol, Lithic::Models::TransactionListParams::Result] Filters for transactions using transaction result field. Can filter by `APPROVED
+      #   ...
+      #
+      #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+      #   ...
+      #
+      #   @param status [Symbol, Lithic::Models::TransactionListParams::Status] Filters for transactions using transaction status field.
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Filters for transactions using transaction result field. Can filter by

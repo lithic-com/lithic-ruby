@@ -45,12 +45,24 @@ module Lithic
       optional :parent_company, String
 
       # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
-      #   @param address [Lithic::Models::KYBBusinessEntity::Address]
-      #   @param government_id [String]
-      #   @param legal_business_name [String]
-      #   @param phone_numbers [Array<String>]
-      #   @param dba_business_name [String]
-      #   @param parent_company [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::KYBBusinessEntity} for more details.
+      #
+      #   @param address [Lithic::Models::KYBBusinessEntity::Address] Business''s physical address - PO boxes, UPS drops, and FedEx drops are not acce
+      #   ...
+      #
+      #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
+      #   ...
+      #
+      #   @param legal_business_name [String] Legal (formal) business name.
+      #
+      #   @param phone_numbers [Array<String>] One or more of the business's phone number(s), entered as a list in E.164 format
+      #   ...
+      #
+      #   @param dba_business_name [String] Any name that the business operates under that is not its legal business name (i
+      #   ...
+      #
+      #   @param parent_company [String] Parent company name (if applicable).
 
       # @see Lithic::Models::KYBBusinessEntity#address
       class Address < Lithic::Internal::Type::BaseModel
@@ -94,15 +106,26 @@ module Lithic
         optional :address2, String
 
         # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::KYBBusinessEntity::Address} for more details.
+        #
         #   Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable.
         #
-        #   @param address1 [String]
-        #   @param city [String]
-        #   @param country [String]
-        #   @param postal_code [String]
-        #   @param state [String]
-        #   @param address2 [String]
+        #   @param address1 [String] Valid deliverable address (no PO boxes).
+        #
+        #   @param city [String] Name of city.
+        #
+        #   @param country [String] Valid country code. Only USA is currently supported, entered in uppercase ISO 31
+        #   ...
+        #
+        #   @param postal_code [String] Valid postal code. Only USA ZIP codes are currently supported, entered as a five
+        #   ...
+        #
+        #   @param state [String] Valid state code. Only USA state codes are currently supported, entered in upper
+        #   ...
+        #
+        #   @param address2 [String] Unit or apartment number (if applicable).
       end
     end
   end

@@ -14,7 +14,8 @@ module Lithic
       optional :filename, String
 
       # @!method initialize(filename: nil, request_options: {})
-      #   @param filename [String]
+      #   @param filename [String] Filename of the evidence.
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

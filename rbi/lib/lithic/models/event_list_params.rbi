@@ -73,12 +73,23 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Date string in RFC 3339 format. Only entries created after the specified time
+        # will be included. UTC time zone.
         begin_: nil,
+        # Date string in RFC 3339 format. Only entries created before the specified time
+        # will be included. UTC time zone.
         end_: nil,
+        # A cursor representing an item's token before which a page of results should end.
+        # Used to retrieve the previous page of results before this item.
         ending_before: nil,
+        # Event types to filter events by.
         event_types: nil,
+        # Page size (for pagination).
         page_size: nil,
+        # A cursor representing an item's token after which a page of results should
+        # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
+        # Whether to include the event payload content in the response.
         with_content: nil,
         request_options: {}
       ); end

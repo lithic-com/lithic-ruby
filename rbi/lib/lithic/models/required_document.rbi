@@ -21,8 +21,16 @@ module Lithic
         params(entity_token: String, status_reasons: T::Array[String], valid_documents: T::Array[String])
           .returns(T.attached_class)
       end
-      def self.new(entity_token:, status_reasons:, valid_documents:); end
-
+      def self.new(
+        # Globally unique identifier for an entity.
+        entity_token:,
+        # rovides the status reasons that will be satisfied by providing one of the valid
+        # documents.
+        status_reasons:,
+        # A list of valid documents that will satisfy the KYC requirements for the
+        # specified entity.
+        valid_documents:
+      ); end
       sig do
         override
           .returns({

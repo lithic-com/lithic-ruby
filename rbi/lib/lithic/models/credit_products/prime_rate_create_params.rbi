@@ -23,8 +23,13 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(effective_date:, rate:, request_options: {}); end
-
+        def self.new(
+          # Date the rate goes into effect
+          effective_date:,
+          # The rate in decimal format
+          rate:,
+          request_options: {}
+        ); end
         sig do
           override.returns({effective_date: Date, rate: String, request_options: Lithic::RequestOptions})
         end

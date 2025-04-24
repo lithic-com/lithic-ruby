@@ -17,7 +17,12 @@ module Lithic
       optional :digital_card_art_token, String
 
       # @!method initialize(digital_card_art_token: nil, request_options: {})
-      #   @param digital_card_art_token [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::TokenizationUpdateDigitalCardArtParams} for more details.
+      #
+      #   @param digital_card_art_token [String] Specifies the digital card art to be displayed in the user’s digital wallet for
+      #   ...
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

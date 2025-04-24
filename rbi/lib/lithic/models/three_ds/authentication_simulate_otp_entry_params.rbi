@@ -24,8 +24,14 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(token:, otp:, request_options: {}); end
-
+        def self.new(
+          # A unique token returned as part of a /v1/three_ds_authentication/simulate call
+          # that resulted in PENDING_CHALLENGE authentication result.
+          token:,
+          # The OTP entered by the cardholder
+          otp:,
+          request_options: {}
+        ); end
         sig { override.returns({token: String, otp: String, request_options: Lithic::RequestOptions}) }
         def to_hash; end
       end

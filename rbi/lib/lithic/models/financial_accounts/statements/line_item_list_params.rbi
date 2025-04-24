@@ -46,14 +46,18 @@ module Lithic
               .returns(T.attached_class)
           end
           def self.new(
+            # Globally unique identifier for financial account.
             financial_account_token:,
+            # A cursor representing an item's token before which a page of results should end.
+            # Used to retrieve the previous page of results before this item.
             ending_before: nil,
+            # Page size (for pagination).
             page_size: nil,
+            # A cursor representing an item's token after which a page of results should
+            # begin. Used to retrieve the next page of results after this item.
             starting_after: nil,
             request_options: {}
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(

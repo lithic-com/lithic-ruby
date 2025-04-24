@@ -31,8 +31,15 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(begin_: nil, end_: nil, request_options: {}); end
-
+        def self.new(
+          # Date string in RFC 3339 format. Only entries created after the specified time
+          # will be included. UTC time zone.
+          begin_: nil,
+          # Date string in RFC 3339 format. Only entries created before the specified time
+          # will be included. UTC time zone.
+          end_: nil,
+          request_options: {}
+        ); end
         sig { override.returns({begin_: Time, end_: Time, request_options: Lithic::RequestOptions}) }
         def to_hash; end
       end

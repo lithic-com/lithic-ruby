@@ -305,25 +305,85 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # Globally unique identifier for the account holder.
           token: nil,
+          # Globally unique identifier for the account.
           account_token: nil,
+          # Deprecated.
           beneficial_owner_entities: nil,
+          # Only present when user_type == "BUSINESS". You must submit a list of all direct
+          # and indirect individuals with 25% or more ownership in the company. A maximum of
+          # 4 beneficial owners can be submitted. If no individual owns 25% of the company
+          # you do not need to send beneficial owner information. See
+          # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+          # (Section I) for more background on individuals that should be included.
           beneficial_owner_individuals: nil,
+          # Only applicable for customers using the KYC-Exempt workflow to enroll authorized
+          # users of businesses. Pass the account_token of the enrolled business associated
+          # with the AUTHORIZED_USER in this field.
           business_account_token: nil,
+          # Only present when user_type == "BUSINESS". Information about the business for
+          # which the account is being opened and KYB is being run.
           business_entity: nil,
+          # Only present when user_type == "BUSINESS".
+          #
+          # An individual with significant responsibility for managing the legal entity
+          # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+          # Officer,
+          #
+          # Managing Member, General Partner, President, Vice President, or Treasurer). This
+          # can be an executive, or someone who will have program-wide access
+          #
+          # to the cards that Lithic will provide. In some cases, this individual could also
+          # be a beneficial owner listed above.
           control_person: nil,
+          # Timestamp of when the account holder was created.
           created: nil,
+          # < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
+          # individual.phone_number when user_type == "INDIVIDUAL".
+          #
+          # > Primary email of Account Holder.
           email: nil,
+          # The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
+          # holder is not KYC-Exempt.
           exemption_type: nil,
+          # Customer-provided token that indicates a relationship with an object outside of
+          # the Lithic ecosystem.
           external_id: nil,
+          # Only present when user_type == "INDIVIDUAL". Information about the individual
+          # for which the account is being opened and KYC is being run.
           individual: nil,
+          # Only present when user_type == "BUSINESS". User-submitted description of the
+          # business.
           nature_of_business: nil,
+          # < Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
+          # individual.phone_number when user_type == "INDIVIDUAL".
+          #
+          # > Primary phone of Account Holder, entered in E.164 format.
           phone_number: nil,
+          # Only present for "KYB_BASIC" and "KYC_ADVANCED" workflows. A list of documents
+          # required for the account holder to be approved.
           required_documents: nil,
+          # <Deprecated. Use verification_application.status instead>
+          #
+          # KYC and KYB evaluation states.
+          #
+          # Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
+          # `ADVANCED` workflow.
           status: nil,
+          # <Deprecated. Use verification_application.status_reasons> Reason for the
+          # evaluation status.
           status_reasons: nil,
+          # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
+          # attribute will be present.
+          #
+          # If the type is "BUSINESS" then the "business_entity", "control_person",
+          # "beneficial_owner_individuals", "nature_of_business", and "website_url"
+          # attributes will be present.
           user_type: nil,
+          # Information about the most recent identity verification attempt
           verification_application: nil,
+          # Only present when user_type == "BUSINESS". Business's primary website.
           website_url: nil
         ); end
         sig do
@@ -429,15 +489,21 @@ module Lithic
               .returns(T.attached_class)
           end
           def self.new(
+            # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+            # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
             address: nil,
+            # Individual's date of birth, as an RFC 3339 date.
             dob: nil,
+            # Individual's email address. If utilizing Lithic for chargeback processing, this
+            # customer email address may be used to communicate dispute status and resolution.
             email: nil,
+            # Individual's first name, as it appears on government-issued identity documents.
             first_name: nil,
+            # Individual's last name, as it appears on government-issued identity documents.
             last_name: nil,
+            # Individual's phone number, entered in E.164 format.
             phone_number: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -498,8 +564,23 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
-
+            def self.new(
+              # Valid deliverable address (no PO boxes).
+              address1:,
+              # Name of city.
+              city:,
+              # Valid country code. Only USA is currently supported, entered in uppercase ISO
+              # 3166-1 alpha-3 three-character format.
+              country:,
+              # Valid postal code. Only USA ZIP codes are currently supported, entered as a
+              # five-digit ZIP or nine-digit ZIP+4.
+              postal_code:,
+              # Valid state code. Only USA state codes are currently supported, entered in
+              # uppercase ISO 3166-2 two-character format.
+              state:,
+              # Unit or apartment number (if applicable).
+              address2: nil
+            ); end
             sig do
               override
                 .returns(
@@ -600,15 +681,21 @@ module Lithic
               .returns(T.attached_class)
           end
           def self.new(
+            # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+            # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
             address: nil,
+            # Individual's date of birth, as an RFC 3339 date.
             dob: nil,
+            # Individual's email address. If utilizing Lithic for chargeback processing, this
+            # customer email address may be used to communicate dispute status and resolution.
             email: nil,
+            # Individual's first name, as it appears on government-issued identity documents.
             first_name: nil,
+            # Individual's last name, as it appears on government-issued identity documents.
             last_name: nil,
+            # Individual's phone number, entered in E.164 format.
             phone_number: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -669,8 +756,23 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
-
+            def self.new(
+              # Valid deliverable address (no PO boxes).
+              address1:,
+              # Name of city.
+              city:,
+              # Valid country code. Only USA is currently supported, entered in uppercase ISO
+              # 3166-1 alpha-3 three-character format.
+              country:,
+              # Valid postal code. Only USA ZIP codes are currently supported, entered as a
+              # five-digit ZIP or nine-digit ZIP+4.
+              postal_code:,
+              # Valid state code. Only USA state codes are currently supported, entered in
+              # uppercase ISO 3166-2 two-character format.
+              state:,
+              # Unit or apartment number (if applicable).
+              address2: nil
+            ); end
             sig do
               override
                 .returns(
@@ -787,15 +889,21 @@ module Lithic
               .returns(T.attached_class)
           end
           def self.new(
+            # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+            # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
             address: nil,
+            # Individual's date of birth, as an RFC 3339 date.
             dob: nil,
+            # Individual's email address. If utilizing Lithic for chargeback processing, this
+            # customer email address may be used to communicate dispute status and resolution.
             email: nil,
+            # Individual's first name, as it appears on government-issued identity documents.
             first_name: nil,
+            # Individual's last name, as it appears on government-issued identity documents.
             last_name: nil,
+            # Individual's phone number, entered in E.164 format.
             phone_number: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -856,8 +964,23 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
-
+            def self.new(
+              # Valid deliverable address (no PO boxes).
+              address1:,
+              # Name of city.
+              city:,
+              # Valid country code. Only USA is currently supported, entered in uppercase ISO
+              # 3166-1 alpha-3 three-character format.
+              country:,
+              # Valid postal code. Only USA ZIP codes are currently supported, entered as a
+              # five-digit ZIP or nine-digit ZIP+4.
+              postal_code:,
+              # Valid state code. Only USA state codes are currently supported, entered in
+              # uppercase ISO 3166-2 two-character format.
+              state:,
+              # Unit or apartment number (if applicable).
+              address2: nil
+            ); end
             sig do
               override
                 .returns(
@@ -1120,8 +1243,19 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(created:, status:, status_reasons:, updated:); end
-
+          def self.new(
+            # Timestamp of when the application was created.
+            created:,
+            # KYC and KYB evaluation states.
+            #
+            # Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
+            # `ADVANCED` workflow.
+            status:,
+            # Reason for the evaluation status.
+            status_reasons:,
+            # Timestamp of when the application was last updated.
+            updated:
+          ); end
           sig do
             override
               .returns(
@@ -1402,13 +1536,21 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # The token for the account holder that was updated
           token: nil,
+          # The address for the account holder
           address: nil,
+          # The token for the business account that the account holder is associated with
           business_account_token: nil,
+          # The email for the account holder
           email: nil,
+          # The first name for the account holder
           first_name: nil,
+          # The last name for the account holder
           last_name: nil,
+          # The legal business name for the account holder
           legal_business_name: nil,
+          # The phone_number for the account holder
           phone_number: nil
         ); end
         sig do
@@ -1471,8 +1613,23 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
-
+          def self.new(
+            # Valid deliverable address (no PO boxes).
+            address1:,
+            # Name of city.
+            city:,
+            # Valid country code. Only USA is currently supported, entered in uppercase ISO
+            # 3166-1 alpha-3 three-character format.
+            country:,
+            # Valid postal code. Only USA ZIP codes are currently supported, entered as a
+            # five-digit ZIP or nine-digit ZIP+4.
+            postal_code:,
+            # Valid state code. Only USA state codes are currently supported, entered in
+            # uppercase ISO 3166-2 two-character format.
+            state:,
+            # Unit or apartment number (if applicable).
+            address2: nil
+          ); end
           sig do
             override
               .returns(

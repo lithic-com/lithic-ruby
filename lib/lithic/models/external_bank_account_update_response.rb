@@ -150,28 +150,59 @@ module Lithic
       optional :verification_failed_reason, String
 
       # @!method initialize(token:, country:, created:, currency:, last_four:, owner:, owner_type:, routing_number:, state:, type:, verification_attempts:, verification_method:, verification_state:, account_token: nil, address: nil, company_id: nil, dob: nil, doing_business_as: nil, financial_account_token: nil, name: nil, user_defined_id: nil, verification_failed_reason: nil)
-      #   @param token [String]
-      #   @param country [String]
-      #   @param created [Time]
-      #   @param currency [String]
-      #   @param last_four [String]
-      #   @param owner [String]
-      #   @param owner_type [Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType]
-      #   @param routing_number [String]
-      #   @param state [Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::State]
-      #   @param type [Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::Type]
-      #   @param verification_attempts [Integer]
-      #   @param verification_method [Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod]
-      #   @param verification_state [Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState]
-      #   @param account_token [String]
-      #   @param address [Lithic::Models::ExternalBankAccountAddress]
-      #   @param company_id [String]
-      #   @param dob [Date]
-      #   @param doing_business_as [String]
-      #   @param financial_account_token [String]
-      #   @param name [String]
-      #   @param user_defined_id [String]
-      #   @param verification_failed_reason [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::ExternalBankAccountUpdateResponse} for more details.
+      #
+      #   @param token [String] A globally unique identifier for this record of an external bank account associa
+      #   ...
+      #
+      #   @param country [String] The country that the bank account is located in using ISO 3166-1. We will only a
+      #   ...
+      #
+      #   @param created [Time] An ISO 8601 string representing when this funding source was added to the Lithic
+      #   ...
+      #
+      #   @param currency [String] currency of the external account 3-character alphabetic ISO 4217 code
+      #
+      #   @param last_four [String] The last 4 digits of the bank account. Derived by Lithic from the account number
+      #   ...
+      #
+      #   @param owner [String] Legal Name of the business or individual who owns the external account. This wil
+      #   ...
+      #
+      #   @param owner_type [Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType] Owner Type
+      #
+      #   @param routing_number [String] Routing Number
+      #
+      #   @param state [Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::State] Account State
+      #
+      #   @param type [Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::Type] Account Type
+      #
+      #   @param verification_attempts [Integer] The number of attempts at verification
+      #
+      #   @param verification_method [Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod] Verification Method
+      #
+      #   @param verification_state [Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState] Verification State
+      #
+      #   @param account_token [String] Indicates which Lithic account the external account is associated with. For exte
+      #   ...
+      #
+      #   @param address [Lithic::Models::ExternalBankAccountAddress] Address
+      #
+      #   @param company_id [String] Optional field that helps identify bank accounts in receipts
+      #
+      #   @param dob [Date] Date of Birth of the Individual that owns the external bank account
+      #
+      #   @param doing_business_as [String] Doing Business As
+      #
+      #   @param financial_account_token [String] The financial account token of the operating account to fund the micro deposits
+      #
+      #   @param name [String] The nickname for this External Bank Account
+      #
+      #   @param user_defined_id [String] User Defined ID
+      #
+      #   @param verification_failed_reason [String] Optional free text description of the reason for the failed verification. For AC
+      #   ...
 
       # Owner Type
       #

@@ -76,13 +76,24 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # 3-character alphabetic ISO 4217 code.
         currency: nil,
+        # The total gross amount of disputes settlements.
         disputes_gross_amount: nil,
+        # The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
+        # for Visa).
         institution: nil,
+        # The total amount of interchange.
         interchange_gross_amount: nil,
+        # Card network where the transaction took place
         network: nil,
+        # Total amount of gross other fees outside of interchange.
         other_fees_gross_amount: nil,
+        # The total net amount of cash moved. (net value of settled_gross_amount,
+        # interchange, fees).
         settled_net_amount: nil,
+        # The total amount of settlement impacting transactions (excluding interchange,
+        # fees, and disputes).
         transactions_gross_amount: nil
       ); end
       sig do

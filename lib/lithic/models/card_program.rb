@@ -48,13 +48,23 @@ module Lithic
       optional :settlement_currencies, Lithic::Internal::Type::ArrayOf[String]
 
       # @!method initialize(token:, created:, name:, pan_range_end:, pan_range_start:, cardholder_currency: nil, settlement_currencies: nil)
-      #   @param token [String]
-      #   @param created [Time]
-      #   @param name [String]
-      #   @param pan_range_end [String]
-      #   @param pan_range_start [String]
-      #   @param cardholder_currency [String]
-      #   @param settlement_currencies [Array<String>]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::CardProgram} for more details.
+      #
+      #   @param token [String] Globally unique identifier.
+      #
+      #   @param created [Time] Timestamp of when the card program was created.
+      #
+      #   @param name [String] The name of the card program.
+      #
+      #   @param pan_range_end [String] The first digits of the card number that this card program ends with.
+      #
+      #   @param pan_range_start [String] The first digits of the card number that this card program starts with.
+      #
+      #   @param cardholder_currency [String] 3-character alphabetic ISO 4217 code for the currency of the cardholder.
+      #
+      #   @param settlement_currencies [Array<String>] List of 3-character alphabetic ISO 4217 codes for the currencies that the card p
+      #   ...
     end
   end
 end

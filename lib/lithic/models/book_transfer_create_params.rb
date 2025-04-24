@@ -60,14 +60,29 @@ module Lithic
       optional :memo, String
 
       # @!method initialize(amount:, category:, from_financial_account_token:, subtype:, to_financial_account_token:, type:, token: nil, memo: nil, request_options: {})
-      #   @param amount [Integer]
-      #   @param category [Symbol, Lithic::Models::BookTransferCreateParams::Category]
-      #   @param from_financial_account_token [String]
-      #   @param subtype [String]
-      #   @param to_financial_account_token [String]
-      #   @param type [Symbol, Lithic::Models::BookTransferCreateParams::Type]
-      #   @param token [String]
-      #   @param memo [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::BookTransferCreateParams} for more details.
+      #
+      #   @param amount [Integer] Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
+      #   ...
+      #
+      #   @param category [Symbol, Lithic::Models::BookTransferCreateParams::Category] Category of the book transfer
+      #
+      #   @param from_financial_account_token [String] Globally unique identifier for the financial account or card that will send the
+      #   ...
+      #
+      #   @param subtype [String] The program specific subtype code for the specified category/type.
+      #
+      #   @param to_financial_account_token [String] Globally unique identifier for the financial account or card that will receive t
+      #   ...
+      #
+      #   @param type [Symbol, Lithic::Models::BookTransferCreateParams::Type] Type of book_transfer
+      #
+      #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
+      #   ...
+      #
+      #   @param memo [String] Optional descriptor for the transfer.
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Category of the book transfer

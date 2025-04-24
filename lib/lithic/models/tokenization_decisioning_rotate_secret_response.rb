@@ -11,7 +11,7 @@ module Lithic
       optional :secret, String
 
       # @!method initialize(secret: nil)
-      #   @param secret [String]
+      #   @param secret [String] The new Tokenization Decisioning HMAC secret
     end
   end
 end

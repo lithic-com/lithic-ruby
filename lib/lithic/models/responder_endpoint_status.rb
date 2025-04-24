@@ -17,8 +17,9 @@ module Lithic
       optional :url, String, nil?: true
 
       # @!method initialize(enrolled: nil, url: nil)
-      #   @param enrolled [Boolean]
-      #   @param url [String, nil]
+      #   @param enrolled [Boolean] True if the instance has an endpoint enrolled.
+      #
+      #   @param url [String, nil] The URL of the currently enrolled endpoint or null.
     end
   end
 end

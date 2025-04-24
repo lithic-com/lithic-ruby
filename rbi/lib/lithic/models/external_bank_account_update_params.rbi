@@ -85,14 +85,23 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Address
         address: nil,
+        # Optional field that helps identify bank accounts in receipts
         company_id: nil,
+        # Date of Birth of the Individual that owns the external bank account
         dob: nil,
+        # Doing Business As
         doing_business_as: nil,
+        # The nickname for this External Bank Account
         name: nil,
+        # Legal Name of the business or individual who owns the external account. This
+        # will appear in statements
         owner: nil,
+        # Owner Type
         owner_type: nil,
         type: nil,
+        # User Defined ID
         user_defined_id: nil,
         request_options: {}
       ); end

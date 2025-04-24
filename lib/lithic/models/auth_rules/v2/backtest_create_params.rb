@@ -22,8 +22,10 @@ module Lithic
           optional :start, Time
 
           # @!method initialize(end_: nil, start: nil, request_options: {})
-          #   @param end_ [Time]
-          #   @param start [Time]
+          #   @param end_ [Time] The end time of the backtest.
+          #
+          #   @param start [Time] The start time of the backtest.
+          #
           #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
         end
       end

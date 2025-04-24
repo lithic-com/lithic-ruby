@@ -55,13 +55,27 @@ module Lithic
         optional :status, enum: -> { Lithic::Models::Cards::FinancialTransactionListParams::Status }
 
         # @!method initialize(begin_: nil, category: nil, end_: nil, ending_before: nil, result: nil, starting_after: nil, status: nil, request_options: {})
-        #   @param begin_ [Time]
-        #   @param category [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Category]
-        #   @param end_ [Time]
-        #   @param ending_before [String]
-        #   @param result [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Result]
-        #   @param starting_after [String]
-        #   @param status [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Status]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::Cards::FinancialTransactionListParams} for more details.
+        #
+        #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+        #   ...
+        #
+        #   @param category [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Category] Financial Transaction category to be returned.
+        #
+        #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
+        #   ...
+        #
+        #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+        #   ...
+        #
+        #   @param result [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Result] Financial Transaction result to be returned.
+        #
+        #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+        #   ...
+        #
+        #   @param status [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Status] Financial Transaction status to be returned.
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
         # Financial Transaction category to be returned.

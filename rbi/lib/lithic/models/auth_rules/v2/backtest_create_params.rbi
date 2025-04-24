@@ -33,8 +33,13 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(end_: nil, start: nil, request_options: {}); end
-
+          def self.new(
+            # The end time of the backtest.
+            end_: nil,
+            # The start time of the backtest.
+            start: nil,
+            request_options: {}
+          ); end
           sig { override.returns({end_: Time, start: Time, request_options: Lithic::RequestOptions}) }
           def to_hash; end
         end

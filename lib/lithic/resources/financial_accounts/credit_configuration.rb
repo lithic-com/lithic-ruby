@@ -8,7 +8,8 @@ module Lithic
         #
         # @overload retrieve(financial_account_token, request_options: {})
         #
-        # @param financial_account_token [String]
+        # @param financial_account_token [String] Globally unique identifier for financial account.
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig]
@@ -27,11 +28,16 @@ module Lithic
         #
         # @overload update(financial_account_token, credit_limit: nil, credit_product_token: nil, external_bank_account_token: nil, tier: nil, request_options: {})
         #
-        # @param financial_account_token [String]
+        # @param financial_account_token [String] Globally unique identifier for financial account.
+        #
         # @param credit_limit [Integer]
-        # @param credit_product_token [String]
+        #
+        # @param credit_product_token [String] Globally unique identifier for the credit product
+        #
         # @param external_bank_account_token [String]
-        # @param tier [String]
+        #
+        # @param tier [String] Tier to assign to a financial account
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig]

@@ -9,7 +9,8 @@ module Lithic
           #
           # @overload retrieve(token, request_options: {})
           #
-          # @param token [String]
+          # @param token [String] Token of the network total record to retrieve
+          #
           # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse]
@@ -24,21 +25,40 @@ module Lithic
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {Lithic::Models::Reports::Settlement::NetworkTotalListParams} for more details.
+          #
           # List network total records with optional filters. Not available in sandbox.
           #
           # @overload list(begin_: nil, end_: nil, ending_before: nil, institution_id: nil, network: nil, page_size: nil, report_date: nil, report_date_begin: nil, report_date_end: nil, settlement_institution_id: nil, starting_after: nil, request_options: {})
           #
-          # @param begin_ [Time]
-          # @param end_ [Time]
-          # @param ending_before [String]
-          # @param institution_id [String]
-          # @param network [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network]
-          # @param page_size [Integer]
-          # @param report_date [Date]
-          # @param report_date_begin [Date]
-          # @param report_date_end [Date]
-          # @param settlement_institution_id [String]
-          # @param starting_after [String]
+          # @param begin_ [Time] Datetime in RFC 3339 format. Only entries created after the specified time will
+          # ...
+          #
+          # @param end_ [Time] Datetime in RFC 3339 format. Only entries created before the specified time will
+          # ...
+          #
+          # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+          # ...
+          #
+          # @param institution_id [String] Institution ID to filter on.
+          #
+          # @param network [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network] Network to filter on.
+          #
+          # @param page_size [Integer] Number of records per page.
+          #
+          # @param report_date [Date] Singular report date to filter on (YYYY-MM-DD). Cannot be populated in conjuncti
+          # ...
+          #
+          # @param report_date_begin [Date] Earliest report date to filter on, inclusive (YYYY-MM-DD).
+          #
+          # @param report_date_end [Date] Latest report date to filter on, inclusive (YYYY-MM-DD).
+          #
+          # @param settlement_institution_id [String] Settlement institution ID to filter on.
+          #
+          # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+          # ...
+          #
           # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Lithic::Internal::CursorPage<Lithic::Models::Reports::Settlement::NetworkTotalListResponse>]

@@ -12,7 +12,7 @@ module Lithic
         optional :secret, String
 
         # @!method initialize(secret: nil)
-        #   @param secret [String]
+        #   @param secret [String] The secret for the event subscription.
       end
     end
   end

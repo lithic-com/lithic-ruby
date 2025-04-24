@@ -72,11 +72,28 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
+        # `activationData` in the response. Apple's public leaf certificate. Base64
+        # encoded in PEM format with headers `(-----BEGIN CERTIFICATE-----)` and trailers
+        # omitted. Provided by the device's wallet.
         certificate: nil,
+        # Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the
+        # card is on the Visa network. Stable device identification set by the wallet
+        # provider.
         client_device_id: nil,
+        # Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the
+        # card is on the Visa network. Consumer ID that identifies the wallet account
+        # holder entity.
         client_wallet_account_id: nil,
+        # Name of digital wallet provider.
         digital_wallet: nil,
+        # Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
+        # `activationData` in the response. Base64 cryptographic nonce provided by the
+        # device's wallet.
         nonce: nil,
+        # Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
+        # `activationData` in the response. Base64 cryptographic nonce provided by the
+        # device's wallet.
         nonce_signature: nil,
         request_options: {}
       ); end

@@ -219,25 +219,78 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Globally unique identifier for the account holder.
         token:,
+        # Timestamp of when the account holder was created.
         created:,
+        # Globally unique identifier for the account.
         account_token: nil,
+        # Deprecated.
         beneficial_owner_entities: nil,
+        # Only present when user_type == "BUSINESS". You must submit a list of all direct
+        # and indirect individuals with 25% or more ownership in the company. A maximum of
+        # 4 beneficial owners can be submitted. If no individual owns 25% of the company
+        # you do not need to send beneficial owner information. See
+        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+        # (Section I) for more background on individuals that should be included.
         beneficial_owner_individuals: nil,
+        # Only applicable for customers using the KYC-Exempt workflow to enroll authorized
+        # users of businesses. Pass the account_token of the enrolled business associated
+        # with the AUTHORIZED_USER in this field.
         business_account_token: nil,
+        # Only present when user_type == "BUSINESS". Information about the business for
+        # which the account is being opened and KYB is being run.
         business_entity: nil,
+        # Only present when user_type == "BUSINESS". An individual with significant
+        # responsibility for managing the legal entity (e.g., a Chief Executive Officer,
+        # Chief Financial Officer, Chief Operating Officer, Managing Member, General
+        # Partner, President, Vice President, or Treasurer). This can be an executive, or
+        # someone who will have program-wide access to the cards that Lithic will provide.
+        # In some cases, this individual could also be a beneficial owner listed above.
         control_person: nil,
+        # < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
+        # individual.phone_number when user_type == "INDIVIDUAL".
+        #
+        # > Primary email of Account Holder.
         email: nil,
+        # The type of KYC exemption for a KYC-Exempt Account Holder.
         exemption_type: nil,
+        # Customer-provided token that indicates a relationship with an object outside of
+        # the Lithic ecosystem.
         external_id: nil,
+        # Only present when user_type == "INDIVIDUAL". Information about the individual
+        # for which the account is being opened and KYC is being run.
         individual: nil,
+        # Only present when user_type == "BUSINESS". User-submitted description of the
+        # business.
         nature_of_business: nil,
+        # < Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
+        # individual.phone_number when user_type == "INDIVIDUAL".
+        #
+        # > Primary phone of Account Holder, entered in E.164 format.
         phone_number: nil,
+        # Only present for "KYB_BASIC" workflow. A list of documents required for the
+        # account holder to be approved.
         required_documents: nil,
+        # <Deprecated. Use verification_application.status instead>
+        #
+        # KYC and KYB evaluation states.
+        #
+        # Note:
+        #
+        # - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
         status: nil,
+        # <Deprecated. Use verification_application.status_reasons> Reason for the
+        # evaluation status.
         status_reasons: nil,
+        # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
+        # attribute will be present. If the type is "BUSINESS" then the "business_entity",
+        # "control_person", "beneficial_owner_individuals", "nature_of_business", and
+        # "website_url" attributes will be present.
         user_type: nil,
+        # Information about the most recent identity verification attempt
         verification_application: nil,
+        # Only present when user_type == "BUSINESS". Business's primary website.
         website_url: nil
       ); end
       sig do
@@ -322,12 +375,24 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
+          # acceptable; APO/FPO are acceptable.
           address:,
+          # Any name that the business operates under that is not its legal business name
+          # (if applicable).
           dba_business_name:,
+          # Globally unique identifier for the entity.
           entity_token:,
+          # Government-issued identification number. US Federal Employer Identification
+          # Numbers (EIN) are currently supported, entered as full nine-digits, with or
+          # without hyphens.
           government_id:,
+          # Legal (formal) business name.
           legal_business_name:,
+          # One or more of the business's phone number(s), entered as a list in E.164
+          # format.
           phone_numbers:,
+          # Parent company name (if applicable).
           parent_company: nil
         ); end
         sig do
@@ -394,8 +459,22 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, dob:, email:, entity_token:, first_name:, last_name:, phone_number:); end
-
+        def self.new(
+          # Individual's current address
+          address:,
+          # Individual's date of birth, as an RFC 3339 date.
+          dob:,
+          # Individual's email address.
+          email:,
+          # Globally unique identifier for the entity.
+          entity_token:,
+          # Individual's first name, as it appears on government-issued identity documents.
+          first_name:,
+          # Individual's last name, as it appears on government-issued identity documents.
+          last_name:,
+          # Individual's phone number, entered in E.164 format.
+          phone_number:
+        ); end
         sig do
           override
             .returns(
@@ -468,12 +547,24 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
+          # acceptable; APO/FPO are acceptable.
           address:,
+          # Any name that the business operates under that is not its legal business name
+          # (if applicable).
           dba_business_name:,
+          # Globally unique identifier for the entity.
           entity_token:,
+          # Government-issued identification number. US Federal Employer Identification
+          # Numbers (EIN) are currently supported, entered as full nine-digits, with or
+          # without hyphens.
           government_id:,
+          # Legal (formal) business name.
           legal_business_name:,
+          # One or more of the business's phone number(s), entered as a list in E.164
+          # format.
           phone_numbers:,
+          # Parent company name (if applicable).
           parent_company: nil
         ); end
         sig do
@@ -543,8 +634,22 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, dob:, email:, entity_token:, first_name:, last_name:, phone_number:); end
-
+        def self.new(
+          # Individual's current address
+          address:,
+          # Individual's date of birth, as an RFC 3339 date.
+          dob:,
+          # Individual's email address.
+          email:,
+          # Globally unique identifier for the entity.
+          entity_token:,
+          # Individual's first name, as it appears on government-issued identity documents.
+          first_name:,
+          # Individual's last name, as it appears on government-issued identity documents.
+          last_name:,
+          # Individual's phone number, entered in E.164 format.
+          phone_number:
+        ); end
         sig do
           override
             .returns(
@@ -622,8 +727,22 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, dob:, email:, entity_token:, first_name:, last_name:, phone_number:); end
-
+        def self.new(
+          # Individual's current address
+          address:,
+          # Individual's date of birth, as an RFC 3339 date.
+          dob:,
+          # Individual's email address.
+          email:,
+          # Globally unique identifier for the entity.
+          entity_token:,
+          # Individual's first name, as it appears on government-issued identity documents.
+          first_name:,
+          # Individual's last name, as it appears on government-issued identity documents.
+          last_name:,
+          # Individual's phone number, entered in E.164 format.
+          phone_number:
+        ); end
         sig do
           override
             .returns(
@@ -766,8 +885,20 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(created: nil, status: nil, status_reasons: nil, updated: nil); end
-
+        def self.new(
+          # Timestamp of when the application was created.
+          created: nil,
+          # KYC and KYB evaluation states.
+          #
+          # Note:
+          #
+          # - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
+          status: nil,
+          # Reason for the evaluation status.
+          status_reasons: nil,
+          # Timestamp of when the application was last updated.
+          updated: nil
+        ); end
         sig do
           override
             .returns(
