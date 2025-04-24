@@ -214,7 +214,7 @@ module Lithic
         #
         #   @option req [Object, nil] :body
         #
-        #   @option req [Symbol, nil] :unwrap
+        #   @option req [Symbol, Integer, Array<Symbol, Integer>, Proc, nil] :unwrap
         #
         #   @option req [Class<Lithic::Internal::Type::BasePage>, nil] :page
         #
@@ -415,7 +415,7 @@ module Lithic
         #
         # @param body [Object, nil]
         #
-        # @param unwrap [Symbol, nil]
+        # @param unwrap [Symbol, Integer, Array<Symbol, Integer>, Proc, nil]
         #
         # @param page [Class<Lithic::Internal::Type::BasePage>, nil]
         #
