@@ -69,17 +69,21 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Globally unique identifier for the account
         token:,
         account_token:,
         created:,
         credit_configuration:,
+        # Whether financial account is for the benefit of another entity
         is_for_benefit_of:,
         nickname:,
+        # Status of the financial account
         status:,
         type:,
         updated:,
         account_number: nil,
         routing_number: nil,
+        # Substatus for the financial account
         substatus: nil
       ); end
       sig do
@@ -146,12 +150,16 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # Reason for the financial account being marked as Charged Off
           charged_off_reason:,
           credit_limit:,
+          # Globally unique identifier for the credit product
           credit_product_token:,
           external_bank_account_token:,
+          # State of the financial account
           financial_account_state:,
           is_spend_blocked:,
+          # Tier assigned to the financial account
           tier:
         ); end
         sig do

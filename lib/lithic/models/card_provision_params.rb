@@ -55,12 +55,26 @@ module Lithic
       optional :nonce_signature, String
 
       # @!method initialize(certificate: nil, client_device_id: nil, client_wallet_account_id: nil, digital_wallet: nil, nonce: nil, nonce_signature: nil, request_options: {})
-      #   @param certificate [String]
-      #   @param client_device_id [String]
-      #   @param client_wallet_account_id [String]
-      #   @param digital_wallet [Symbol, Lithic::Models::CardProvisionParams::DigitalWallet]
-      #   @param nonce [String]
-      #   @param nonce_signature [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::CardProvisionParams} for more details.
+      #
+      #   @param certificate [String] Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only `activa
+      #   ...
+      #
+      #   @param client_device_id [String] Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the car
+      #   ...
+      #
+      #   @param client_wallet_account_id [String] Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the car
+      #   ...
+      #
+      #   @param digital_wallet [Symbol, Lithic::Models::CardProvisionParams::DigitalWallet] Name of digital wallet provider.
+      #
+      #   @param nonce [String] Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only `activa
+      #   ...
+      #
+      #   @param nonce_signature [String] Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only `activa
+      #   ...
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Name of digital wallet provider.

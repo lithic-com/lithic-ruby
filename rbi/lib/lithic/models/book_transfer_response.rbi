@@ -78,17 +78,38 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Customer-provided token that will serve as an idempotency token. This token will
+        # become the transaction token.
         token:,
+        # Category of the book transfer
         category:,
+        # Date and time when the transfer occurred. UTC time zone.
         created:,
+        # 3-character alphabetic ISO 4217 code for the settling currency of the
+        # transaction.
         currency:,
+        # A list of all financial events that have modified this transfer.
         events:,
+        # Globally unique identifier for the financial account or card that will send the
+        # funds. Accepted type dependent on the program's use case.
         from_financial_account_token:,
+        # Pending amount of the transaction in the currency's smallest unit (e.g., cents),
+        # including any acquirer fees. The value of this field will go to zero over time
+        # once the financial transaction is settled.
         pending_amount:,
+        # APPROVED transactions were successful while DECLINED transactions were declined
+        # by user, Lithic, or the network.
         result:,
+        # Amount of the transaction that has been settled in the currency's smallest unit
+        # (e.g., cents).
         settled_amount:,
+        # Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
+        # transfer was reversed \* `SETTLED` - The transfer is completed.
         status:,
+        # Globally unique identifier for the financial account or card that will receive
+        # the funds. Accepted type dependent on the program's use case.
         to_financial_account_token:,
+        # Date and time when the financial transaction was last updated. UTC time zone.
         updated:
       ); end
       sig do
@@ -180,8 +201,26 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(token:, amount:, created:, detailed_results:, memo:, result:, subtype:, type:); end
-
+        def self.new(
+          # Globally unique identifier.
+          token:,
+          # Amount of the financial event that has been settled in the currency's smallest
+          # unit (e.g., cents).
+          amount:,
+          # Date and time when the financial event occurred. UTC time zone.
+          created:,
+          # Detailed Results
+          detailed_results:,
+          # Memo for the transfer.
+          memo:,
+          # APPROVED financial events were successful while DECLINED financial events were
+          # declined by user, Lithic, or the network.
+          result:,
+          # The program specific subtype code for the specified category/type.
+          subtype:,
+          # Type of the book transfer
+          type:
+        ); end
         sig do
           override
             .returns(

@@ -32,9 +32,13 @@ module Lithic
 
         # @!method initialize(credit_limit: nil, credit_product_token: nil, external_bank_account_token: nil, tier: nil, request_options: {})
         #   @param credit_limit [Integer]
-        #   @param credit_product_token [String]
+        #
+        #   @param credit_product_token [String] Globally unique identifier for the credit product
+        #
         #   @param external_bank_account_token [String]
-        #   @param tier [String]
+        #
+        #   @param tier [String] Tier to assign to a financial account
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

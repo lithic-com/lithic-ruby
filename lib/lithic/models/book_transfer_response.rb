@@ -86,18 +86,40 @@ module Lithic
       required :updated, Time
 
       # @!method initialize(token:, category:, created:, currency:, events:, from_financial_account_token:, pending_amount:, result:, settled_amount:, status:, to_financial_account_token:, updated:)
-      #   @param token [String]
-      #   @param category [Symbol, Lithic::Models::BookTransferResponse::Category]
-      #   @param created [Time]
-      #   @param currency [String]
-      #   @param events [Array<Lithic::Models::BookTransferResponse::Event>]
-      #   @param from_financial_account_token [String]
-      #   @param pending_amount [Integer]
-      #   @param result [Symbol, Lithic::Models::BookTransferResponse::Result]
-      #   @param settled_amount [Integer]
-      #   @param status [Symbol, Lithic::Models::BookTransferResponse::Status]
-      #   @param to_financial_account_token [Object]
-      #   @param updated [Time]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::BookTransferResponse} for more details.
+      #
+      #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
+      #   ...
+      #
+      #   @param category [Symbol, Lithic::Models::BookTransferResponse::Category] Category of the book transfer
+      #
+      #   @param created [Time] Date and time when the transfer occurred. UTC time zone.
+      #
+      #   @param currency [String] 3-character alphabetic ISO 4217 code for the settling currency of the transactio
+      #   ...
+      #
+      #   @param events [Array<Lithic::Models::BookTransferResponse::Event>] A list of all financial events that have modified this transfer.
+      #
+      #   @param from_financial_account_token [String] Globally unique identifier for the financial account or card that will send the
+      #   ...
+      #
+      #   @param pending_amount [Integer] Pending amount of the transaction in the currency's smallest unit (e.g., cents),
+      #   ...
+      #
+      #   @param result [Symbol, Lithic::Models::BookTransferResponse::Result] APPROVED transactions were successful while DECLINED transactions were declined
+      #   ...
+      #
+      #   @param settled_amount [Integer] Amount of the transaction that has been settled in the currency's smallest unit
+      #   ...
+      #
+      #   @param status [Symbol, Lithic::Models::BookTransferResponse::Status] Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The trans
+      #   ...
+      #
+      #   @param to_financial_account_token [Object] Globally unique identifier for the financial account or card that will receive t
+      #   ...
+      #
+      #   @param updated [Time] Date and time when the financial transaction was last updated. UTC time zone.
 
       # Category of the book transfer
       #
@@ -170,14 +192,26 @@ module Lithic
         required :type, String
 
         # @!method initialize(token:, amount:, created:, detailed_results:, memo:, result:, subtype:, type:)
-        #   @param token [String]
-        #   @param amount [Integer]
-        #   @param created [Time]
-        #   @param detailed_results [Array<Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResult>]
-        #   @param memo [String]
-        #   @param result [Symbol, Lithic::Models::BookTransferResponse::Event::Result]
-        #   @param subtype [String]
-        #   @param type [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::BookTransferResponse::Event} for more details.
+        #
+        #   @param token [String] Globally unique identifier.
+        #
+        #   @param amount [Integer] Amount of the financial event that has been settled in the currency's smallest u
+        #   ...
+        #
+        #   @param created [Time] Date and time when the financial event occurred. UTC time zone.
+        #
+        #   @param detailed_results [Array<Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResult>] Detailed Results
+        #
+        #   @param memo [String] Memo for the transfer.
+        #
+        #   @param result [Symbol, Lithic::Models::BookTransferResponse::Event::Result] APPROVED financial events were successful while DECLINED financial events were d
+        #   ...
+        #
+        #   @param subtype [String] The program specific subtype code for the specified category/type.
+        #
+        #   @param type [String] Type of the book transfer
 
         module DetailedResult
           extend Lithic::Internal::Type::Enum

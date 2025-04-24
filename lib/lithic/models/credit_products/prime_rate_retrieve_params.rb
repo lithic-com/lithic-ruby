@@ -21,8 +21,10 @@ module Lithic
         optional :starting_after, Date
 
         # @!method initialize(ending_before: nil, starting_after: nil, request_options: {})
-        #   @param ending_before [Date]
-        #   @param starting_after [Date]
+        #   @param ending_before [Date] The effective date that the prime rates ends before
+        #
+        #   @param starting_after [Date] The effective date that the prime rate starts after
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

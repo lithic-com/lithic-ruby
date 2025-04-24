@@ -51,11 +51,23 @@ module Lithic
       optional :verification_address, -> { Lithic::Models::AccountUpdateParams::VerificationAddress }
 
       # @!method initialize(daily_spend_limit: nil, lifetime_spend_limit: nil, monthly_spend_limit: nil, state: nil, verification_address: nil, request_options: {})
-      #   @param daily_spend_limit [Integer]
-      #   @param lifetime_spend_limit [Integer]
-      #   @param monthly_spend_limit [Integer]
-      #   @param state [Symbol, Lithic::Models::AccountUpdateParams::State]
-      #   @param verification_address [Lithic::Models::AccountUpdateParams::VerificationAddress]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::AccountUpdateParams} for more details.
+      #
+      #   @param daily_spend_limit [Integer] Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a $1
+      #   ...
+      #
+      #   @param lifetime_spend_limit [Integer] Amount (in cents) for the account's lifetime spend limit (e.g. 100000 would be a
+      #   ...
+      #
+      #   @param monthly_spend_limit [Integer] Amount (in cents) for the account's monthly spend limit (e.g. 100000 would be a
+      #   ...
+      #
+      #   @param state [Symbol, Lithic::Models::AccountUpdateParams::State] Account states.
+      #
+      #   @param verification_address [Lithic::Models::AccountUpdateParams::VerificationAddress] Address used during Address Verification Service (AVS) checks during transaction
+      #   ...
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Account states.

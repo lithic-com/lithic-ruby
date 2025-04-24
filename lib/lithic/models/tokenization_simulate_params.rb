@@ -60,14 +60,28 @@ module Lithic
                enum: -> { Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision }
 
       # @!method initialize(cvv:, expiration_date:, pan:, tokenization_source:, account_score: nil, device_score: nil, entity: nil, wallet_recommended_decision: nil, request_options: {})
-      #   @param cvv [String]
-      #   @param expiration_date [String]
-      #   @param pan [String]
-      #   @param tokenization_source [Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource]
-      #   @param account_score [Integer]
-      #   @param device_score [Integer]
-      #   @param entity [String]
-      #   @param wallet_recommended_decision [Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::TokenizationSimulateParams} for more details.
+      #
+      #   @param cvv [String] The three digit cvv for the card.
+      #
+      #   @param expiration_date [String] The expiration date of the card in 'MM/YY' format.
+      #
+      #   @param pan [String] The sixteen digit card number.
+      #
+      #   @param tokenization_source [Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource] The source of the tokenization request.
+      #
+      #   @param account_score [Integer] The account score (1-5) that represents how the Digital Wallet's view on how rep
+      #   ...
+      #
+      #   @param device_score [Integer] The device score (1-5) that represents how the Digital Wallet's view on how repu
+      #   ...
+      #
+      #   @param entity [String] Optional field to specify the token requestor name for a merchant token simulati
+      #   ...
+      #
+      #   @param wallet_recommended_decision [Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision] The decision that the Digital Wallet's recommend
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # The source of the tokenization request.

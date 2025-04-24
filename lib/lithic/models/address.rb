@@ -45,12 +45,23 @@ module Lithic
       optional :address2, String
 
       # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
-      #   @param address1 [String]
-      #   @param city [String]
-      #   @param country [String]
-      #   @param postal_code [String]
-      #   @param state [String]
-      #   @param address2 [String]
+      #   Some parameter documentations has been truncated, see {Lithic::Models::Address}
+      #   for more details.
+      #
+      #   @param address1 [String] Valid deliverable address (no PO boxes).
+      #
+      #   @param city [String] Name of city.
+      #
+      #   @param country [String] Valid country code, entered in uppercase ISO 3166-1 alpha-3 three-character form
+      #   ...
+      #
+      #   @param postal_code [String] Valid postal code. USA postal codes (ZIP codes) are supported, entered as a five
+      #   ...
+      #
+      #   @param state [String] Valid state code. USA state codes are supported, entered in uppercase ISO 3166-2
+      #   ...
+      #
+      #   @param address2 [String] Unit or apartment number (if applicable).
     end
   end
 end

@@ -8,9 +8,12 @@ module Lithic
         #
         # @overload create(credit_product_token, effective_date:, rate:, request_options: {})
         #
-        # @param credit_product_token [String]
-        # @param effective_date [Date]
-        # @param rate [String]
+        # @param credit_product_token [String] Globally unique identifier for credit products.
+        #
+        # @param effective_date [Date] Date the rate goes into effect
+        #
+        # @param rate [String] The rate in decimal format
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
@@ -31,9 +34,12 @@ module Lithic
         #
         # @overload retrieve(credit_product_token, ending_before: nil, starting_after: nil, request_options: {})
         #
-        # @param credit_product_token [String]
-        # @param ending_before [Date]
-        # @param starting_after [Date]
+        # @param credit_product_token [String] Globally unique identifier for credit products.
+        #
+        # @param ending_before [Date] The effective date that the prime rates ends before
+        #
+        # @param starting_after [Date] The effective date that the prime rate starts after
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::CreditProducts::PrimeRateRetrieveResponse]

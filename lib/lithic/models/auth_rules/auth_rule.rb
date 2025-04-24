@@ -65,15 +65,30 @@ module Lithic
         optional :program_level, Lithic::Internal::Type::Boolean
 
         # @!method initialize(token:, state:, account_tokens: nil, allowed_countries: nil, allowed_mcc: nil, blocked_countries: nil, blocked_mcc: nil, card_tokens: nil, program_level: nil)
-        #   @param token [String]
-        #   @param state [Symbol, Lithic::Models::AuthRules::AuthRule::State]
-        #   @param account_tokens [Array<String>]
-        #   @param allowed_countries [Array<String>]
-        #   @param allowed_mcc [Array<String>]
-        #   @param blocked_countries [Array<String>]
-        #   @param blocked_mcc [Array<String>]
-        #   @param card_tokens [Array<String>]
-        #   @param program_level [Boolean]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::AuthRules::AuthRule} for more details.
+        #
+        #   @param token [String] Globally unique identifier.
+        #
+        #   @param state [Symbol, Lithic::Models::AuthRules::AuthRule::State] Indicates whether the Auth Rule is ACTIVE or INACTIVE
+        #
+        #   @param account_tokens [Array<String>] Array of account_token(s) identifying the accounts that the Auth Rule applies to
+        #   ...
+        #
+        #   @param allowed_countries [Array<String>] Countries in which the Auth Rule permits transactions. Note that Lithic maintain
+        #   ...
+        #
+        #   @param allowed_mcc [Array<String>] Merchant category codes for which the Auth Rule permits transactions.
+        #
+        #   @param blocked_countries [Array<String>] Countries in which the Auth Rule automatically declines transactions.
+        #
+        #   @param blocked_mcc [Array<String>] Merchant category codes for which the Auth Rule automatically declines transacti
+        #   ...
+        #
+        #   @param card_tokens [Array<String>] Array of card_token(s) identifying the cards that the Auth Rule applies to. Note
+        #   ...
+        #
+        #   @param program_level [Boolean] Boolean indicating whether the Auth Rule is applied at the program level.
 
         # Indicates whether the Auth Rule is ACTIVE or INACTIVE
         #

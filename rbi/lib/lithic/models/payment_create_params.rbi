@@ -74,6 +74,8 @@ module Lithic
         method_:,
         method_attributes:,
         type:,
+        # Customer-provided token that will serve as an idempotency token. This token will
+        # become the transaction token.
         token: nil,
         memo: nil,
         user_defined_id: nil,

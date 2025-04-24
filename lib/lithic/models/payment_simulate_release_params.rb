@@ -14,7 +14,8 @@ module Lithic
       required :payment_token, String
 
       # @!method initialize(payment_token:, request_options: {})
-      #   @param payment_token [String]
+      #   @param payment_token [String] Payment Token
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

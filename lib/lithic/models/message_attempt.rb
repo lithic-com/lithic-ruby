@@ -54,15 +54,25 @@ module Lithic
       required :url, String
 
       # @!method initialize(token:, created:, event_subscription_token:, event_token:, response:, response_status_code:, status:, url:)
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::MessageAttempt} for more details.
+      #
       #   A subscription to specific event types.
       #
-      #   @param token [String]
-      #   @param created [Time]
-      #   @param event_subscription_token [String]
-      #   @param event_token [String]
-      #   @param response [String]
-      #   @param response_status_code [Integer]
-      #   @param status [Symbol, Lithic::Models::MessageAttempt::Status]
+      #   @param token [String] Globally unique identifier.
+      #
+      #   @param created [Time] An RFC 3339 timestamp for when the event was created. UTC time zone. ...
+      #
+      #   @param event_subscription_token [String] Globally unique identifier.
+      #
+      #   @param event_token [String] Globally unique identifier.
+      #
+      #   @param response [String] The response body from the event subscription's URL.
+      #
+      #   @param response_status_code [Integer] The response status code from the event subscription's URL.
+      #
+      #   @param status [Symbol, Lithic::Models::MessageAttempt::Status] The status of the event attempt.
+      #
       #   @param url [String]
 
       # The status of the event attempt.

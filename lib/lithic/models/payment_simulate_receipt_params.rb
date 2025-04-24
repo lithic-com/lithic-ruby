@@ -38,11 +38,20 @@ module Lithic
       optional :memo, String
 
       # @!method initialize(token:, amount:, financial_account_token:, receipt_type:, memo: nil, request_options: {})
-      #   @param token [String]
-      #   @param amount [Integer]
-      #   @param financial_account_token [String]
-      #   @param receipt_type [Symbol, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType]
-      #   @param memo [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::PaymentSimulateReceiptParams} for more details.
+      #
+      #   @param token [String] Customer-generated payment token used to uniquely identify the simulated payment
+      #   ...
+      #
+      #   @param amount [Integer] Amount
+      #
+      #   @param financial_account_token [String] Financial Account Token
+      #
+      #   @param receipt_type [Symbol, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType] Receipt Type
+      #
+      #   @param memo [String] Memo
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Receipt Type

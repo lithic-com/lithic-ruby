@@ -82,14 +82,29 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # Globally unique identifier.
           token:,
+          # Indicates whether the Auth Rule is ACTIVE or INACTIVE
           state:,
+          # Array of account_token(s) identifying the accounts that the Auth Rule applies
+          # to. Note that only this field or `card_tokens` can be provided for a given Auth
+          # Rule.
           account_tokens: nil,
+          # Countries in which the Auth Rule permits transactions. Note that Lithic
+          # maintains a list of countries in which all transactions are blocked; "allowing"
+          # those countries in an Auth Rule does not override the Lithic-wide restrictions.
           allowed_countries: nil,
+          # Merchant category codes for which the Auth Rule permits transactions.
           allowed_mcc: nil,
+          # Countries in which the Auth Rule automatically declines transactions.
           blocked_countries: nil,
+          # Merchant category codes for which the Auth Rule automatically declines
+          # transactions.
           blocked_mcc: nil,
+          # Array of card_token(s) identifying the cards that the Auth Rule applies to. Note
+          # that only this field or `account_tokens` can be provided for a given Auth Rule.
           card_tokens: nil,
+          # Boolean indicating whether the Auth Rule is applied at the program level.
           program_level: nil
         ); end
         sig do

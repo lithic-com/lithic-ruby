@@ -56,8 +56,16 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {}); end
-
+        def self.new(
+          merchant:,
+          # Sixteen digit card number.
+          pan:,
+          transaction:,
+          # When set will use the following values as part of the Simulated Authentication.
+          # When not set defaults to MATCH
+          card_expiry_check: nil,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(
@@ -95,8 +103,21 @@ module Lithic
           attr_accessor :name
 
           sig { params(id: String, country: String, mcc: String, name: String).returns(T.attached_class) }
-          def self.new(id:, country:, mcc:, name:); end
-
+          def self.new(
+            # Unique identifier to identify the payment card acceptor. Corresponds to
+            # `merchant_acceptor_id` in authorization.
+            id:,
+            # Country of the address provided by the cardholder in ISO 3166-1 alpha-3 format
+            # (e.g. USA)
+            country:,
+            # Merchant category code for the transaction to be simulated. A four-digit number
+            # listed in ISO 18245. Supported merchant category codes can be found
+            # [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
+            mcc:,
+            # Merchant descriptor, corresponds to `descriptor` in authorization. If CHALLENGE
+            # keyword is included, Lithic will trigger a challenge.
+            name:
+          ); end
           sig { override.returns({id: String, country: String, mcc: String, name: String}) }
           def to_hash; end
         end
@@ -111,8 +132,12 @@ module Lithic
           attr_accessor :currency
 
           sig { params(amount: Integer, currency: String).returns(T.attached_class) }
-          def self.new(amount:, currency:); end
-
+          def self.new(
+            # Amount (in cents) to authenticate.
+            amount:,
+            # 3-character alphabetic ISO 4217 currency code.
+            currency:
+          ); end
           sig { override.returns({amount: Integer, currency: String}) }
           def to_hash; end
         end

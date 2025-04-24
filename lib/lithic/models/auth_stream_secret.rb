@@ -11,7 +11,7 @@ module Lithic
       optional :secret, String
 
       # @!method initialize(secret: nil)
-      #   @param secret [String]
+      #   @param secret [String] The shared HMAC ASA secret
     end
   end
 end

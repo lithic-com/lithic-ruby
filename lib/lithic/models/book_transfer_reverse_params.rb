@@ -14,7 +14,8 @@ module Lithic
       optional :memo, String
 
       # @!method initialize(memo: nil, request_options: {})
-      #   @param memo [String]
+      #   @param memo [String] Optional descriptor for the reversal.
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

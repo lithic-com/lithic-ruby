@@ -12,28 +12,58 @@ module Lithic
       # @return [Lithic::Resources::Cards::FinancialTransactions]
       attr_reader :financial_transactions
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::CardCreateParams} for more details.
+      #
       # Create a new virtual or physical card. Parameters `shipping_address` and
       # `product_id` only apply to physical cards.
       #
       # @overload create(type:, account_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_for: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
       #
-      # @param type [Symbol, Lithic::Models::CardCreateParams::Type]
-      # @param account_token [String]
-      # @param card_program_token [String]
+      # @param type [Symbol, Lithic::Models::CardCreateParams::Type] Card types: ...
+      #
+      # @param account_token [String] Globally unique identifier for the account that the card will be associated with
+      # ...
+      #
+      # @param card_program_token [String] For card programs with more than one BIN range. This must be configured with Lit
+      # ...
+      #
       # @param carrier [Lithic::Models::Carrier]
-      # @param digital_card_art_token [String]
-      # @param exp_month [String]
-      # @param exp_year [String]
-      # @param memo [String]
-      # @param pin [String]
-      # @param product_id [String]
-      # @param replacement_account_token [String]
-      # @param replacement_for [String]
+      #
+      # @param digital_card_art_token [String] Specifies the digital card art to be displayed in the user’s digital wallet afte
+      # ...
+      #
+      # @param exp_month [String] Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` is provided,
+      # ...
+      #
+      # @param exp_year [String] Four digit (yyyy) expiry year. If neither `exp_month` nor `exp_year` is provided
+      # ...
+      #
+      # @param memo [String] Friendly name to identify the card.
+      #
+      # @param pin [String] Encrypted PIN block (in base64). Applies to cards of type `PHYSICAL` and `VIRTUA
+      # ...
+      #
+      # @param product_id [String] Only applicable to cards of type `PHYSICAL`. This must be configured with Lithic
+      # ...
+      #
+      # @param replacement_account_token [String] Restricted field limited to select use cases. Lithic will reach out directly if
+      # ...
+      #
+      # @param replacement_for [String] Globally unique identifier for the card that this card will replace. If the card
+      # ...
+      #
       # @param shipping_address [Lithic::Models::ShippingAddress]
-      # @param shipping_method [Symbol, Lithic::Models::CardCreateParams::ShippingMethod]
-      # @param spend_limit [Integer]
-      # @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration]
-      # @param state [Symbol, Lithic::Models::CardCreateParams::State]
+      #
+      # @param shipping_method [Symbol, Lithic::Models::CardCreateParams::ShippingMethod] Shipping method for the card. Only applies to cards of type PHYSICAL. ...
+      #
+      # @param spend_limit [Integer] Amount (in cents) to limit approved authorizations (e.g. 100000 would be a $1,00
+      # ...
+      #
+      # @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration] Spend limit duration values: ...
+      #
+      # @param state [Symbol, Lithic::Models::CardCreateParams::State] Card state values: ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Card]
@@ -69,6 +99,9 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::CardUpdateParams} for more details.
+      #
       # Update the specified properties of the card. Unsupplied properties will remain
       # unchanged.
       #
@@ -78,13 +111,25 @@ module Lithic
       # @overload update(card_token, digital_card_art_token: nil, memo: nil, pin: nil, pin_status: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
       #
       # @param card_token [String]
-      # @param digital_card_art_token [String]
-      # @param memo [String]
-      # @param pin [String]
-      # @param pin_status [Symbol, Lithic::Models::CardUpdateParams::PinStatus]
-      # @param spend_limit [Integer]
-      # @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration]
-      # @param state [Symbol, Lithic::Models::CardUpdateParams::State]
+      #
+      # @param digital_card_art_token [String] Specifies the digital card art to be displayed in the user’s digital wallet afte
+      # ...
+      #
+      # @param memo [String] Friendly name to identify the card.
+      #
+      # @param pin [String] Encrypted PIN block (in base64). Only applies to cards of type `PHYSICAL` and `V
+      # ...
+      #
+      # @param pin_status [Symbol, Lithic::Models::CardUpdateParams::PinStatus] Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
+      # ...
+      #
+      # @param spend_limit [Integer] Amount (in cents) to limit approved authorizations (e.g. 100000 would be a $1,00
+      # ...
+      #
+      # @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration] Spend limit duration values: ...
+      #
+      # @param state [Symbol, Lithic::Models::CardUpdateParams::State] Card state values: ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Card]
@@ -101,17 +146,31 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::CardListParams} for more details.
+      #
       # List cards.
       #
       # @overload list(account_token: nil, begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, state: nil, request_options: {})
       #
-      # @param account_token [String]
-      # @param begin_ [Time]
-      # @param end_ [Time]
-      # @param ending_before [String]
-      # @param page_size [Integer]
-      # @param starting_after [String]
-      # @param state [Symbol, Lithic::Models::CardListParams::State]
+      # @param account_token [String] Returns cards associated with the specified account. ...
+      #
+      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      # ...
+      #
+      # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
+      # ...
+      #
+      # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+      # ...
+      #
+      # @param page_size [Integer] Page size (for pagination).
+      #
+      # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+      # ...
+      #
+      # @param state [Symbol, Lithic::Models::CardListParams::State] Returns cards with the specified state. ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Internal::CursorPage<Lithic::Models::NonPCICard>]
@@ -129,6 +188,9 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::CardConvertPhysicalParams} for more details.
+      #
       # Convert a virtual card into a physical card and manufacture it. Customer must
       # supply relevant fields for physical card creation including `product_id`,
       # `carrier`, `shipping_method`, and `shipping_address`. The card token will be
@@ -143,10 +205,16 @@ module Lithic
       # @overload convert_physical(card_token, shipping_address:, carrier: nil, product_id: nil, shipping_method: nil, request_options: {})
       #
       # @param card_token [String]
-      # @param shipping_address [Lithic::Models::ShippingAddress]
-      # @param carrier [Lithic::Models::Carrier]
-      # @param product_id [String]
-      # @param shipping_method [Symbol, Lithic::Models::CardConvertPhysicalParams::ShippingMethod]
+      #
+      # @param shipping_address [Lithic::Models::ShippingAddress] The shipping address this card will be sent to.
+      #
+      # @param carrier [Lithic::Models::Carrier] If omitted, the previous carrier will be used.
+      #
+      # @param product_id [String] Specifies the configuration (e.g. physical card art) that the card should be man
+      # ...
+      #
+      # @param shipping_method [Symbol, Lithic::Models::CardConvertPhysicalParams::ShippingMethod] Shipping method for the card. Only applies to cards of type PHYSICAL. ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Card]
@@ -193,8 +261,10 @@ module Lithic
       #
       # @overload embed(embed_request:, hmac:, request_options: {})
       #
-      # @param embed_request [String]
-      # @param hmac [String]
+      # @param embed_request [String] A base64 encoded JSON string of an EmbedRequest to specify which card to load.
+      #
+      # @param hmac [String] SHA256 HMAC of the embed_request JSON string with base64 digest.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [String]
@@ -212,6 +282,9 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::CardProvisionParams} for more details.
+      #
       # Allow your cardholders to directly add payment cards to the device's digital
       # wallet (e.g. Apple Pay) with one touch from your app.
       #
@@ -221,13 +294,25 @@ module Lithic
       #
       # @overload provision(card_token, certificate: nil, client_device_id: nil, client_wallet_account_id: nil, digital_wallet: nil, nonce: nil, nonce_signature: nil, request_options: {})
       #
-      # @param card_token [String]
-      # @param certificate [String]
-      # @param client_device_id [String]
-      # @param client_wallet_account_id [String]
-      # @param digital_wallet [Symbol, Lithic::Models::CardProvisionParams::DigitalWallet]
-      # @param nonce [String]
-      # @param nonce_signature [String]
+      # @param card_token [String] The unique token of the card to add to the device's digital wallet.
+      #
+      # @param certificate [String] Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only `activa
+      # ...
+      #
+      # @param client_device_id [String] Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the car
+      # ...
+      #
+      # @param client_wallet_account_id [String] Only applicable if `digital_wallet` is `GOOGLE_PAY` or `SAMSUNG_PAY` and the car
+      # ...
+      #
+      # @param digital_wallet [Symbol, Lithic::Models::CardProvisionParams::DigitalWallet] Name of digital wallet provider.
+      #
+      # @param nonce [String] Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only `activa
+      # ...
+      #
+      # @param nonce_signature [String] Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only `activa
+      # ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::CardProvisionResponse]
@@ -244,6 +329,9 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::CardReissueParams} for more details.
+      #
       # Initiate print and shipment of a duplicate physical card (e.g. card is
       # physically damaged). The PAN, expiry, and CVC2 will remain the same and the
       # original card can continue to be used until the new card is activated. Only
@@ -253,10 +341,16 @@ module Lithic
       # @overload reissue(card_token, carrier: nil, product_id: nil, shipping_address: nil, shipping_method: nil, request_options: {})
       #
       # @param card_token [String]
-      # @param carrier [Lithic::Models::Carrier]
-      # @param product_id [String]
-      # @param shipping_address [Lithic::Models::ShippingAddress]
-      # @param shipping_method [Symbol, Lithic::Models::CardReissueParams::ShippingMethod]
+      #
+      # @param carrier [Lithic::Models::Carrier] If omitted, the previous carrier will be used.
+      #
+      # @param product_id [String] Specifies the configuration (e.g. physical card art) that the card should be man
+      # ...
+      #
+      # @param shipping_address [Lithic::Models::ShippingAddress] If omitted, the previous shipping address will be used.
+      #
+      # @param shipping_method [Symbol, Lithic::Models::CardReissueParams::ShippingMethod] Shipping method for the card. Only applies to cards of type PHYSICAL. ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Card]
@@ -273,6 +367,9 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::CardRenewParams} for more details.
+      #
       # Applies to card types `PHYSICAL` and `VIRTUAL`. For `PHYSICAL`, creates a new
       # card with the same card token and PAN, but updated expiry and CVC2 code. The
       # original card will keep working for card-present transactions until the new card
@@ -286,12 +383,22 @@ module Lithic
       # @overload renew(card_token, shipping_address:, carrier: nil, exp_month: nil, exp_year: nil, product_id: nil, shipping_method: nil, request_options: {})
       #
       # @param card_token [String]
-      # @param shipping_address [Lithic::Models::ShippingAddress]
-      # @param carrier [Lithic::Models::Carrier]
-      # @param exp_month [String]
-      # @param exp_year [String]
-      # @param product_id [String]
-      # @param shipping_method [Symbol, Lithic::Models::CardRenewParams::ShippingMethod]
+      #
+      # @param shipping_address [Lithic::Models::ShippingAddress] The shipping address this card will be sent to.
+      #
+      # @param carrier [Lithic::Models::Carrier] If omitted, the previous carrier will be used.
+      #
+      # @param exp_month [String] Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` is provided,
+      # ...
+      #
+      # @param exp_year [String] Four digit (yyyy) expiry year. If neither `exp_month` nor `exp_year` is provided
+      # ...
+      #
+      # @param product_id [String] Specifies the configuration (e.g. physical card art) that the card should be man
+      # ...
+      #
+      # @param shipping_method [Symbol, Lithic::Models::CardRenewParams::ShippingMethod] Shipping method for the card. Only applies to cards of type PHYSICAL. ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Card]
@@ -338,7 +445,8 @@ module Lithic
       #
       # @overload search_by_pan(pan:, request_options: {})
       #
-      # @param pan [String]
+      # @param pan [String] The PAN for the card being retrieved.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Card]

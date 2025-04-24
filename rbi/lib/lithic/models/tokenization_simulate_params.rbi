@@ -73,13 +73,24 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # The three digit cvv for the card.
         cvv:,
+        # The expiration date of the card in 'MM/YY' format.
         expiration_date:,
+        # The sixteen digit card number.
         pan:,
+        # The source of the tokenization request.
         tokenization_source:,
+        # The account score (1-5) that represents how the Digital Wallet's view on how
+        # reputable an end user's account is.
         account_score: nil,
+        # The device score (1-5) that represents how the Digital Wallet's view on how
+        # reputable an end user's device is.
         device_score: nil,
+        # Optional field to specify the token requestor name for a merchant token
+        # simulation. Ignored when tokenization_source is not MERCHANT.
         entity: nil,
+        # The decision that the Digital Wallet's recommend
         wallet_recommended_decision: nil,
         request_options: {}
       ); end

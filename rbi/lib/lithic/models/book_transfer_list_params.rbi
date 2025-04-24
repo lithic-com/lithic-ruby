@@ -105,15 +105,29 @@ module Lithic
       end
       def self.new(
         account_token: nil,
+        # Date string in RFC 3339 format. Only entries created after the specified time
+        # will be included. UTC time zone.
         begin_: nil,
         business_account_token: nil,
+        # Book Transfer category to be returned.
         category: nil,
+        # Date string in RFC 3339 format. Only entries created before the specified time
+        # will be included. UTC time zone.
         end_: nil,
+        # A cursor representing an item's token before which a page of results should end.
+        # Used to retrieve the previous page of results before this item.
         ending_before: nil,
+        # Globally unique identifier for the financial account or card that will send the
+        # funds. Accepted type dependent on the program's use case.
         financial_account_token: nil,
+        # Page size (for pagination).
         page_size: nil,
+        # Book transfer result to be returned.
         result: nil,
+        # A cursor representing an item's token after which a page of results should
+        # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
+        # Book transfer status to be returned.
         status: nil,
         request_options: {}
       ); end

@@ -22,8 +22,15 @@ module Lithic
         required :otp, String
 
         # @!method initialize(token:, otp:, request_options: {})
-        #   @param token [String]
-        #   @param otp [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::ThreeDS::AuthenticationSimulateOtpEntryParams} for more
+        #   details.
+        #
+        #   @param token [String] A unique token returned as part of a /v1/three_ds_authentication/simulate call t
+        #   ...
+        #
+        #   @param otp [String] The OTP entered by the cardholder
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

@@ -67,14 +67,27 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
+        # acceptable; APO/FPO are acceptable.
         address:,
+        # The KYC Exempt user's email
         email:,
+        # The KYC Exempt user's first name
         first_name:,
+        # Specifies the type of KYC Exempt user
         kyc_exemption_type:,
+        # The KYC Exempt user's last name
         last_name:,
+        # The KYC Exempt user's phone number, entered in E.164 format.
         phone_number:,
+        # Specifies the workflow type. This must be 'KYC_EXEMPT'
         workflow:,
+        # Only applicable for customers using the KYC-Exempt workflow to enroll authorized
+        # users of businesses. Pass the account_token of the enrolled business associated
+        # with the AUTHORIZED_USER in this field.
         business_account_token: nil,
+        # A user provided id that can be used to link an account holder with an external
+        # system
         external_id: nil
       ); end
       sig do

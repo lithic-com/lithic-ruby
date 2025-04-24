@@ -38,11 +38,15 @@ module Lithic
       #   Describes the document and the required document image uploads required to
       #   re-run KYC
       #
-      #   @param token [String]
-      #   @param account_holder_token [String]
-      #   @param document_type [Symbol, Lithic::Models::Document::DocumentType]
-      #   @param entity_token [String]
-      #   @param required_document_uploads [Array<Lithic::Models::Document::RequiredDocumentUpload>]
+      #   @param token [String] Globally unique identifier for the document.
+      #
+      #   @param account_holder_token [String] Globally unique identifier for the account holder.
+      #
+      #   @param document_type [Symbol, Lithic::Models::Document::DocumentType] Type of documentation to be submitted for verification of an account holder
+      #
+      #   @param entity_token [String] Globally unique identifier for an entity.
+      #
+      #   @param required_document_uploads [Array<Lithic::Models::Document::RequiredDocumentUpload>] Represents a single image of the document to upload.
 
       # Type of documentation to be submitted for verification of an account holder
       #
@@ -137,17 +141,30 @@ module Lithic
         required :upload_url, String
 
         # @!method initialize(token:, accepted_entity_status_reasons:, created:, image_type:, rejected_entity_status_reasons:, status:, status_reasons:, updated:, upload_url:)
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::Document::RequiredDocumentUpload} for more details.
+        #
         #   Represents a single image of the document to upload.
         #
-        #   @param token [String]
-        #   @param accepted_entity_status_reasons [Array<String>]
-        #   @param created [Time]
-        #   @param image_type [Symbol, Lithic::Models::Document::RequiredDocumentUpload::ImageType]
-        #   @param rejected_entity_status_reasons [Array<String>]
-        #   @param status [Symbol, Lithic::Models::Document::RequiredDocumentUpload::Status]
-        #   @param status_reasons [Array<Symbol, Lithic::Models::Document::RequiredDocumentUpload::StatusReason>]
-        #   @param updated [Time]
-        #   @param upload_url [String]
+        #   @param token [String] Globally unique identifier for the document upload.
+        #
+        #   @param accepted_entity_status_reasons [Array<String>] A list of status reasons associated with a KYB account holder that have been sat
+        #   ...
+        #
+        #   @param created [Time] When the document upload was created
+        #
+        #   @param image_type [Symbol, Lithic::Models::Document::RequiredDocumentUpload::ImageType] Type of image to upload.
+        #
+        #   @param rejected_entity_status_reasons [Array<String>] A list of status reasons associated with a KYB account holder that have not been
+        #   ...
+        #
+        #   @param status [Symbol, Lithic::Models::Document::RequiredDocumentUpload::Status] Status of an account holder's document upload.
+        #
+        #   @param status_reasons [Array<Symbol, Lithic::Models::Document::RequiredDocumentUpload::StatusReason>] Reasons for document image upload status.
+        #
+        #   @param updated [Time] When the document upload was last updated
+        #
+        #   @param upload_url [String] URL to upload document image to. ...
 
         # Type of image to upload.
         #

@@ -46,9 +46,14 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # List balances for all financial accounts of a given account_token.
         account_token: nil,
+        # UTC date and time of the balances to retrieve. Defaults to latest available
+        # balances
         balance_date: nil,
+        # List balances for all financial accounts of a given business_account_token.
         business_account_token: nil,
+        # List balances for a given Financial Account type.
         financial_account_type: nil,
         request_options: {}
       ); end

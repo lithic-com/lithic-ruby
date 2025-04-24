@@ -135,27 +135,56 @@ module Lithic
       optional :fee_description, String
 
       # @!method initialize(token:, account_token:, card_program_token:, card_token:, created:, currency:, disputes_gross_amount:, event_tokens:, institution:, interchange_fee_extended_precision:, interchange_gross_amount:, network:, other_fees_details:, other_fees_gross_amount:, report_date:, settlement_date:, transaction_token:, transactions_gross_amount:, type:, updated:, fee_description: nil)
-      #   @param token [String]
-      #   @param account_token [String]
-      #   @param card_program_token [String]
-      #   @param card_token [String]
-      #   @param created [Time]
-      #   @param currency [String]
-      #   @param disputes_gross_amount [Integer]
-      #   @param event_tokens [Array<String>]
-      #   @param institution [String]
-      #   @param interchange_fee_extended_precision [Integer]
-      #   @param interchange_gross_amount [Integer]
-      #   @param network [Symbol, Lithic::Models::SettlementDetail::Network]
-      #   @param other_fees_details [Lithic::Models::SettlementDetail::OtherFeesDetails]
-      #   @param other_fees_gross_amount [Integer]
-      #   @param report_date [String]
-      #   @param settlement_date [String]
-      #   @param transaction_token [String]
-      #   @param transactions_gross_amount [Integer]
-      #   @param type [Symbol, Lithic::Models::SettlementDetail::Type]
-      #   @param updated [Time]
-      #   @param fee_description [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::SettlementDetail} for more details.
+      #
+      #   @param token [String] Globally unique identifier denoting the Settlement Detail.
+      #
+      #   @param account_token [String] The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE f
+      #   ...
+      #
+      #   @param card_program_token [String] Globally unique identifier denoting the card program that the associated Transac
+      #   ...
+      #
+      #   @param card_token [String] Globally unique identifier denoting the card that the associated Transaction occ
+      #   ...
+      #
+      #   @param created [Time] Date and time when the transaction first occurred. UTC time zone.
+      #
+      #   @param currency [String] Three-character alphabetic ISO 4217 code.
+      #
+      #   @param disputes_gross_amount [Integer] The total gross amount of disputes settlements.
+      #
+      #   @param event_tokens [Array<String>] Globally unique identifiers denoting the Events associated with this settlement.
+      #   ...
+      #
+      #   @param institution [String] The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE f
+      #   ...
+      #
+      #   @param interchange_fee_extended_precision [Integer] The total amount of interchange in six-digit extended precision.
+      #
+      #   @param interchange_gross_amount [Integer] The total amount of interchange.
+      #
+      #   @param network [Symbol, Lithic::Models::SettlementDetail::Network] Card network where the transaction took place.
+      #
+      #   @param other_fees_details [Lithic::Models::SettlementDetail::OtherFeesDetails] The total gross amount of other fees by type.
+      #
+      #   @param other_fees_gross_amount [Integer] Total amount of gross other fees outside of interchange.
+      #
+      #   @param report_date [String] Date of when the report was first generated.
+      #
+      #   @param settlement_date [String] Date of when money movement is triggered for the transaction.
+      #
+      #   @param transaction_token [String] Globally unique identifier denoting the associated Transaction object.
+      #
+      #   @param transactions_gross_amount [Integer] The total amount of settlement impacting transactions (excluding interchange, fe
+      #   ...
+      #
+      #   @param type [Symbol, Lithic::Models::SettlementDetail::Type] The type of settlement record.
+      #
+      #   @param updated [Time] Date and time when the transaction first occurred. UTC time zone.
+      #
+      #   @param fee_description [String] Network's description of a fee, only present on records with type `FEE`.
 
       # Card network where the transaction took place.
       #

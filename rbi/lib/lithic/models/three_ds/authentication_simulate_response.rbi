@@ -13,8 +13,11 @@ module Lithic
         attr_writer :token
 
         sig { params(token: String).returns(T.attached_class) }
-        def self.new(token: nil); end
-
+        def self.new(
+          # A unique token to reference this transaction with later calls to void or clear
+          # the authorization.
+          token: nil
+        ); end
         sig { override.returns({token: String}) }
         def to_hash; end
       end

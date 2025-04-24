@@ -168,29 +168,59 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Globally unique identifier.
         token:,
+        # The token for the account associated with this transaction.
         account_token:,
+        # Fee assessed by the merchant and paid for by the cardholder in the smallest unit
+        # of the currency. Will be zero if no fee is assessed. Rebates may be transmitted
+        # as a negative value to indicate credited fees.
         acquirer_fee:,
+        # Unique identifier assigned to a transaction by the acquirer that can be used in
+        # dispute and chargeback filing.
         acquirer_reference_number:,
+        # When the transaction is pending, this represents the authorization amount of the
+        # transaction in the anticipated settlement currency. Once the transaction has
+        # settled, this field represents the settled amount in the settlement currency.
         amount:,
         amounts:,
+        # The authorization amount of the transaction in the anticipated settlement
+        # currency.
         authorization_amount:,
+        # A fixed-width 6-digit numeric identifier that can be used to identify a
+        # transaction with networks.
         authorization_code:,
         avs:,
+        # Token for the card used in this transaction.
         card_token:,
         cardholder_authentication:,
+        # Date and time when the transaction first occurred. UTC time zone.
         created:,
         merchant:,
+        # Analogous to the 'amount', but in the merchant currency.
         merchant_amount:,
+        # Analogous to the 'authorization_amount', but in the merchant currency.
         merchant_authorization_amount:,
+        # 3-character alphabetic ISO 4217 code for the local currency of the transaction.
         merchant_currency:,
+        # Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
+        # `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
+        # network code from the upstream provider.
         network:,
+        # Network-provided score assessing risk level associated with a given
+        # authorization. Scores are on a range of 0-999, with 0 representing the lowest
+        # risk and 999 representing the highest risk. For Visa transactions, where the raw
+        # score has a range of 0-99, Lithic will normalize the score by multiplying the
+        # raw score by 10x.
         network_risk_score:,
         pos:,
         result:,
+        # The settled amount of the transaction in the settlement currency.
         settled_amount:,
+        # Status of the transaction.
         status:,
         token_info:,
+        # Date and time when the transaction last updated. UTC time zone.
         updated:,
         events: nil
       ); end
@@ -297,8 +327,16 @@ module Lithic
           attr_accessor :currency
 
           sig { params(amount: Integer, conversion_rate: String, currency: String).returns(T.attached_class) }
-          def self.new(amount:, conversion_rate:, currency:); end
-
+          def self.new(
+            # The estimated settled amount of the transaction in the cardholder billing
+            # currency.
+            amount:,
+            # The exchange rate used to convert the merchant amount to the cardholder billing
+            # amount.
+            conversion_rate:,
+            # 3-character alphabetic ISO 4217 currency
+            currency:
+          ); end
           sig { override.returns({amount: Integer, conversion_rate: String, currency: String}) }
           def to_hash; end
         end
@@ -313,8 +351,12 @@ module Lithic
           attr_accessor :currency
 
           sig { params(amount: Integer, currency: String).returns(T.attached_class) }
-          def self.new(amount:, currency:); end
-
+          def self.new(
+            # The pending amount of the transaction in the anticipated settlement currency.
+            amount:,
+            # 3-character alphabetic ISO 4217 currency
+            currency:
+          ); end
           sig { override.returns({amount: Integer, currency: String}) }
           def to_hash; end
         end
@@ -329,8 +371,12 @@ module Lithic
           attr_accessor :currency
 
           sig { params(amount: Integer, currency: String).returns(T.attached_class) }
-          def self.new(amount:, currency:); end
-
+          def self.new(
+            # The settled amount of the transaction in the merchant currency.
+            amount:,
+            # 3-character alphabetic ISO 4217 currency
+            currency:
+          ); end
           sig { override.returns({amount: Integer, currency: String}) }
           def to_hash; end
         end
@@ -345,8 +391,12 @@ module Lithic
           attr_accessor :currency
 
           sig { params(amount: Integer, currency: String).returns(T.attached_class) }
-          def self.new(amount:, currency:); end
-
+          def self.new(
+            # The settled amount of the transaction in the settlement currency.
+            amount:,
+            # 3-character alphabetic ISO 4217 currency
+            currency:
+          ); end
           sig { override.returns({amount: Integer, currency: String}) }
           def to_hash; end
         end
@@ -362,8 +412,12 @@ module Lithic
         attr_accessor :zipcode
 
         sig { params(address: String, zipcode: String).returns(T.attached_class) }
-        def self.new(address:, zipcode:); end
-
+        def self.new(
+          # Cardholder address
+          address:,
+          # Cardholder ZIP code
+          zipcode:
+        ); end
         sig { override.returns({address: String, zipcode: String}) }
         def to_hash; end
       end
@@ -431,13 +485,37 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # The 3DS version used for the authentication
           three_ds_version:,
+          # Whether an acquirer exemption applied to the transaction.
           acquirer_exemption:,
+          # Indicates what the outcome of the 3DS authentication process is.
           authentication_result:,
+          # Indicates which party made the 3DS authentication decision.
           decision_made_by:,
+          # Indicates whether chargeback liability shift applies to the transaction.
+          # Possible enum values:
+          #
+          #     * `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D Secure flow, chargeback liability shift applies.
+          #
+          #     * `ACQUIRER_EXEMPTION`: The acquirer utilised an exemption to bypass Strong Customer Authentication (`transStatus = N`, or `transStatus = I`). Liability remains with the acquirer and in this case the `acquirer_exemption` field is expected to be not `NONE`.
+          #
+          #     * `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the merchant is liable.
+          #
+          # - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
+          #   cryptography, possibly recurring. Chargeback liability shift to the issuer
+          #   applies.
           liability_shift:,
+          # Unique identifier you can use to match a given 3DS authentication (available via
+          # the three_ds_authentication.created event webhook) and the transaction. Note
+          # that in cases where liability shift does not occur, this token is matched to the
+          # transaction on a best-effort basis.
           three_ds_authentication_token:,
+          # Indicates whether a 3DS challenge flow was used, and if so, what the
+          # verification method was. (deprecated, use `authentication_result`)
           verification_attempted:,
+          # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
+          # use `authentication_result`)
           verification_result:
         ); end
         sig do
@@ -714,8 +792,25 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(acceptor_id:, acquiring_institution_id:, city:, country:, descriptor:, mcc:, state:); end
-
+        def self.new(
+          # Unique alphanumeric identifier for the payment card acceptor (merchant).
+          acceptor_id:,
+          # Unique numeric identifier of the acquiring institution.
+          acquiring_institution_id:,
+          # City of card acceptor. Note that in many cases, particularly in card-not-present
+          # transactions, merchants may send through a phone number or URL in this field.
+          city:,
+          # Country or entity of card acceptor. Possible values are: (1) all ISO 3166-1
+          # alpha-3 country codes, (2) QZZ for Kosovo, and (3) ANT for Netherlands Antilles.
+          country:,
+          # Short description of card acceptor.
+          descriptor:,
+          # Merchant category code (MCC). A four-digit number listed in ISO 18245. An MCC is
+          # used to classify a business by the types of goods or services it provides.
+          mcc:,
+          # Geographic state of card acceptor.
+          state:
+        ); end
         sig do
           override
             .returns(
@@ -811,8 +906,16 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(card:, cardholder:, pan:, pin_entered:); end
-
+          def self.new(
+            # Card presence indicator
+            card:,
+            # Cardholder presence indicator
+            cardholder:,
+            # Method of entry for the PAN
+            pan:,
+            # Indicates whether the cardholder entered the PIN. True if the PIN was entered.
+            pin_entered:
+          ); end
           sig do
             override
               .returns(
@@ -950,13 +1053,26 @@ module Lithic
               .returns(T.attached_class)
           end
           def self.new(
+            # True if a clerk is present at the sale.
             attended:,
+            # True if the terminal is capable of retaining the card.
             card_retention_capable:,
+            # True if the sale was made at the place of business (vs. mobile).
             on_premise:,
+            # The person that is designated to swipe the card
             operator:,
+            # True if the terminal is capable of partial approval. Partial approval is when
+            # part of a transaction is approved and another payment must be used for the
+            # remainder. Example scenario: A $40 transaction is attempted on a prepaid card
+            # with a $25 balance. If partial approval is enabled, $25 can be authorized, at
+            # which point the POS will prompt the user for an additional payment of $15.
             partial_approval_capable:,
+            # Status of whether the POS is able to accept PINs
             pin_capability:,
+            # POS Type
             type:,
+            # Uniquely identifies a terminal at the card acceptor location of acquiring
+            # institutions or merchant POS Systems
             acceptor_terminal_id: nil
           ); end
           sig do
@@ -1117,8 +1233,13 @@ module Lithic
         sig do
           params(wallet_type: Lithic::Models::Transaction::TokenInfo::WalletType::OrSymbol).returns(T.attached_class)
         end
-        def self.new(wallet_type:); end
-
+        def self.new(
+          # The wallet_type field will indicate the source of the token. Possible token
+          # sources include digital wallets (Apple, Google, or Samsung Pay), merchant
+          # tokenization, and “other” sources like in-flight commerce. Masterpass is not
+          # currently supported and is included for future use.
+          wallet_type:
+        ); end
         sig { override.returns({wallet_type: Lithic::Models::Transaction::TokenInfo::WalletType::TaggedSymbol}) }
         def to_hash; end
 
@@ -1228,15 +1349,29 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # Transaction event identifier.
           token:,
+          # Amount of the event in the settlement currency.
           amount:,
           amounts:,
+          # RFC 3339 date and time this event entered the system. UTC time zone.
           created:,
           detailed_results:,
+          # Indicates whether the transaction event is a credit or debit to the account.
           effective_polarity:,
+          # Information provided by the card network in each event. This includes common
+          # identifiers shared between you, Lithic, the card network and in some cases the
+          # acquirer. These identifiers often link together events within the same
+          # transaction lifecycle and can be used to locate a particular transaction, such
+          # as during processing of disputes. Not all fields are available in all events,
+          # and the presence of these fields is dependent on the card network and the event
+          # type. If the field is populated by the network, we will pass it through as is
+          # unless otherwise specified. Please consult the official network documentation
+          # for more details about these fields and how to use them.
           network_info:,
           result:,
           rule_results:,
+          # Type of transaction event
           type:,
           network_specific_data: nil
         ); end
@@ -1331,8 +1466,15 @@ module Lithic
             sig do
               params(amount: Integer, conversion_rate: String, currency: String).returns(T.attached_class)
             end
-            def self.new(amount:, conversion_rate:, currency:); end
-
+            def self.new(
+              # Amount of the event in the cardholder billing currency.
+              amount:,
+              # Exchange rate used to convert the merchant amount to the cardholder billing
+              # amount.
+              conversion_rate:,
+              # 3-character alphabetic ISO 4217 currency
+              currency:
+            ); end
             sig { override.returns({amount: Integer, conversion_rate: String, currency: String}) }
             def to_hash; end
           end
@@ -1347,8 +1489,12 @@ module Lithic
             attr_accessor :currency
 
             sig { params(amount: Integer, currency: String).returns(T.attached_class) }
-            def self.new(amount:, currency:); end
-
+            def self.new(
+              # Amount of the event in the merchant currency.
+              amount:,
+              # 3-character alphabetic ISO 4217 currency
+              currency:
+            ); end
             sig { override.returns({amount: Integer, currency: String}) }
             def to_hash; end
           end
@@ -1370,8 +1516,15 @@ module Lithic
             sig do
               params(amount: Integer, conversion_rate: String, currency: String).returns(T.attached_class)
             end
-            def self.new(amount:, conversion_rate:, currency:); end
-
+            def self.new(
+              # Amount of the event, if it is financial, in the settlement currency.
+              # Non-financial events do not contain this amount because they do not move funds.
+              amount:,
+              # Exchange rate used to convert the merchant amount to the settlement amount.
+              conversion_rate:,
+              # 3-character alphabetic ISO 4217 currency
+              currency:
+            ); end
             sig { override.returns({amount: Integer, conversion_rate: String, currency: String}) }
             def to_hash; end
           end
@@ -1609,8 +1762,16 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(acquirer_reference_number:, retrieval_reference_number:); end
-
+            def self.new(
+              # Identifier assigned by the acquirer, applicable to dual-message transactions
+              # only. The acquirer reference number (ARN) is only populated once a transaction
+              # has been cleared, and it is not available in all transactions (such as automated
+              # fuel dispenser transactions). A single transaction can contain multiple ARNs if
+              # the merchant sends multiple clearings.
+              acquirer_reference_number:,
+              # Identifier assigned by the acquirer.
+              retrieval_reference_number:
+            ); end
             sig do
               override
                 .returns({
@@ -1662,9 +1823,27 @@ module Lithic
                 .returns(T.attached_class)
             end
             def self.new(
+              # Identifier assigned by Mastercard. Guaranteed by Mastercard to be unique for any
+              # transaction within a specific financial network on any processing day.
               banknet_reference_number:,
+              # Identifier assigned by Mastercard. Matches the `banknet_reference_number` of a
+              # prior related event. May be populated in authorization reversals, incremental
+              # authorizations (authorization requests that augment a previously authorized
+              # amount), automated fuel dispenser authorization advices and clearings, and
+              # financial authorizations. If the original banknet reference number contains all
+              # zeroes, then no actual reference number could be found by the network or
+              # acquirer. If Mastercard converts a transaction from dual-message to
+              # single-message, such as for certain ATM transactions, it will populate the
+              # original banknet reference number in the resulting financial authorization with
+              # the banknet reference number of the initial authorization, which Lithic does not
+              # receive.
               original_banknet_reference_number:,
+              # Identifier assigned by Mastercard. Matches the `switch_serial_number` of a prior
+              # related event. May be populated in returns and return reversals. Applicable to
+              # single-message transactions only.
               original_switch_serial_number:,
+              # Identifier assigned by Mastercard, applicable to single-message transactions
+              # only.
               switch_serial_number:
             ); end
             sig do
@@ -1699,8 +1878,17 @@ module Lithic
               params(original_transaction_id: T.nilable(String), transaction_id: T.nilable(String))
                 .returns(T.attached_class)
             end
-            def self.new(original_transaction_id:, transaction_id:); end
-
+            def self.new(
+              # Identifier assigned by Visa. Matches the `transaction_id` of a prior related
+              # event. May be populated in incremental authorizations (authorization requests
+              # that augment a previously authorized amount), authorization advices, financial
+              # authorizations, and clearings.
+              original_transaction_id:,
+              # Identifier assigned by Visa to link original messages to subsequent messages.
+              # Guaranteed by Visa to be unique for each original authorization and financial
+              # authorization.
+              transaction_id:
+            ); end
             sig do
               override.returns(
                 {
@@ -1787,8 +1975,19 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(auth_rule_token:, explanation:, name:, result:); end
-
+          def self.new(
+            # The Auth Rule Token associated with the rule from which the decline originated.
+            # If this is set to null, then the decline was not associated with a
+            # customer-configured Auth Rule. This may happen in cases where a transaction is
+            # declined due to a Lithic-configured security or compliance rule, for example.
+            auth_rule_token:,
+            # A human-readable explanation outlining the motivation for the rule's decline.
+            explanation:,
+            # The name for the rule, if any was configured.
+            name:,
+            # The detailed_result associated with this rule's decline.
+            result:
+          ); end
           sig do
             override
               .returns(
@@ -2053,12 +2252,15 @@ module Lithic
                 .returns(T.attached_class)
             end
             def self.new(
+              # Indicates the electronic commerce security level and UCAF collection.
               ecommerce_security_level_indicator:,
+              # The On-behalf Service performed on the transaction and the results. Contains all
+              # applicable, on-behalf service results that were performed on a given
+              # transaction.
               on_behalf_service_result:,
+              # Indicates the type of additional transaction purpose.
               transaction_type_identifier:
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -2087,8 +2289,14 @@ module Lithic
               attr_accessor :service
 
               sig { params(result_1: String, result_2: String, service: String).returns(T.attached_class) }
-              def self.new(result_1:, result_2:, service:); end
-
+              def self.new(
+                # Indicates the results of the service processing.
+                result_1:,
+                # Identifies the results of the service processing.
+                result_2:,
+                # Indicates the service performed on the transaction.
+                service:
+              ); end
               sig { override.returns({result_1: String, result_2: String, service: String}) }
               def to_hash; end
             end
@@ -2101,8 +2309,11 @@ module Lithic
             attr_accessor :business_application_identifier
 
             sig { params(business_application_identifier: T.nilable(String)).returns(T.attached_class) }
-            def self.new(business_application_identifier:); end
-
+            def self.new(
+              # Identifies the purpose or category of a transaction, used to classify and
+              # process transactions according to Visa’s rules.
+              business_application_identifier:
+            ); end
             sig { override.returns({business_application_identifier: T.nilable(String)}) }
             def to_hash; end
           end

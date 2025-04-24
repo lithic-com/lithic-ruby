@@ -64,16 +64,25 @@ module Lithic
         optional :excluded_card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
         # @!method initialize(token:, account_tokens:, card_tokens:, current_version:, draft_version:, name:, program_level:, state:, type:, excluded_card_tokens: nil)
-        #   @param token [String]
-        #   @param account_tokens [Array<String>]
-        #   @param card_tokens [Array<String>]
+        #   @param token [String] Auth Rule Token
+        #
+        #   @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
+        #
+        #   @param card_tokens [Array<String>] Card tokens to which the Auth Rule applies.
+        #
         #   @param current_version [Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion, nil]
+        #
         #   @param draft_version [Lithic::Models::AuthRules::V2CreateResponse::DraftVersion, nil]
-        #   @param name [String, nil]
-        #   @param program_level [Boolean]
-        #   @param state [Symbol, Lithic::Models::AuthRules::V2CreateResponse::State]
-        #   @param type [Symbol, Lithic::Models::AuthRules::V2CreateResponse::Type]
-        #   @param excluded_card_tokens [Array<String>]
+        #
+        #   @param name [String, nil] Auth Rule Name
+        #
+        #   @param program_level [Boolean] Whether the Auth Rule applies to all authorizations on the card program.
+        #
+        #   @param state [Symbol, Lithic::Models::AuthRules::V2CreateResponse::State] The state of the Auth Rule
+        #
+        #   @param type [Symbol, Lithic::Models::AuthRules::V2CreateResponse::Type] The type of Auth Rule
+        #
+        #   @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
 
         # @see Lithic::Models::AuthRules::V2CreateResponse#current_version
         class CurrentVersion < Lithic::Internal::Type::BaseModel
@@ -94,8 +103,13 @@ module Lithic
           end
 
           # @!method initialize(parameters:, version:)
-          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
-          #   @param version [Integer]
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion} for more details.
+          #
+          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams] Parameters for the Auth Rule
+          #
+          #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
+          #   ...
 
           # Parameters for the Auth Rule
           #
@@ -130,8 +144,13 @@ module Lithic
           end
 
           # @!method initialize(parameters:, version:)
-          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
-          #   @param version [Integer]
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::AuthRules::V2CreateResponse::DraftVersion} for more details.
+          #
+          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams] Parameters for the Auth Rule
+          #
+          #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
+          #   ...
 
           # Parameters for the Auth Rule
           #

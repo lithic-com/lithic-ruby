@@ -78,13 +78,27 @@ module Lithic
       optional :state, enum: -> { Lithic::Models::CardUpdateParams::State }
 
       # @!method initialize(digital_card_art_token: nil, memo: nil, pin: nil, pin_status: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
-      #   @param digital_card_art_token [String]
-      #   @param memo [String]
-      #   @param pin [String]
-      #   @param pin_status [Symbol, Lithic::Models::CardUpdateParams::PinStatus]
-      #   @param spend_limit [Integer]
-      #   @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration]
-      #   @param state [Symbol, Lithic::Models::CardUpdateParams::State]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::CardUpdateParams} for more details.
+      #
+      #   @param digital_card_art_token [String] Specifies the digital card art to be displayed in the user’s digital wallet afte
+      #   ...
+      #
+      #   @param memo [String] Friendly name to identify the card.
+      #
+      #   @param pin [String] Encrypted PIN block (in base64). Only applies to cards of type `PHYSICAL` and `V
+      #   ...
+      #
+      #   @param pin_status [Symbol, Lithic::Models::CardUpdateParams::PinStatus] Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
+      #   ...
+      #
+      #   @param spend_limit [Integer] Amount (in cents) to limit approved authorizations (e.g. 100000 would be a $1,00
+      #   ...
+      #
+      #   @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration] Spend limit duration values: ...
+      #
+      #   @param state [Symbol, Lithic::Models::CardUpdateParams::State] Card state values: ...
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect

@@ -77,17 +77,34 @@ module Lithic
           optional :cycle, Integer
 
           # @!method initialize(token:, amounts:, created:, currency:, institution_id:, network:, report_date:, settlement_institution_id:, settlement_service:, updated:, cycle: nil)
-          #   @param token [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse} for more
+          #   details.
+          #
+          #   @param token [String] Globally unique identifier.
+          #
           #   @param amounts [Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts]
-          #   @param created [Time]
-          #   @param currency [String]
-          #   @param institution_id [String]
-          #   @param network [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network]
-          #   @param report_date [Date]
-          #   @param settlement_institution_id [String]
-          #   @param settlement_service [String]
-          #   @param updated [Time]
-          #   @param cycle [Integer]
+          #
+          #   @param created [Time] RFC 3339 timestamp for when the record was created. UTC time zone.
+          #
+          #   @param currency [String] 3-character alphabetic ISO 4217 code.
+          #
+          #   @param institution_id [String] The institution that activity occurred on. For Mastercard: ICA (Interbank Card A
+          #   ...
+          #
+          #   @param network [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network] Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or INT
+          #   ...
+          #
+          #   @param report_date [Date] Date that the network total record applies to. YYYY-MM-DD format.
+          #
+          #   @param settlement_institution_id [String] The institution responsible for settlement. For Mastercard: same as `institution
+          #   ...
+          #
+          #   @param settlement_service [String] Settlement service.
+          #
+          #   @param updated [Time] RFC 3339 timestamp for when the record was last updated. UTC time zone.
+          #
+          #   @param cycle [Integer] The clearing cycle that the network total record applies to. Mastercard only.
 
           # @see Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse#amounts
           class Amounts < Lithic::Internal::Type::BaseModel
@@ -117,10 +134,18 @@ module Lithic
             optional :visa_charges, Integer
 
             # @!method initialize(gross_settlement:, interchange_fees:, net_settlement:, visa_charges: nil)
-            #   @param gross_settlement [Integer]
-            #   @param interchange_fees [Integer]
-            #   @param net_settlement [Integer]
-            #   @param visa_charges [Integer]
+            #   Some parameter documentations has been truncated, see
+            #   {Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts} for
+            #   more details.
+            #
+            #   @param gross_settlement [Integer] Total settlement amount excluding interchange, in currency's smallest unit.
+            #
+            #   @param interchange_fees [Integer] Interchange amount, in currency's smallest unit.
+            #
+            #   @param net_settlement [Integer] `gross_settlement` net of `interchange_fees` and `visa_charges` (if applicable),
+            #   ...
+            #
+            #   @param visa_charges [Integer] Charges specific to Visa/Interlink, in currency's smallest unit.
           end
 
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or

@@ -31,9 +31,16 @@ module Lithic
       optional :type, enum: -> { Lithic::Models::TransactionSimulateVoidParams::Type }
 
       # @!method initialize(token:, amount: nil, type: nil, request_options: {})
-      #   @param token [String]
-      #   @param amount [Integer]
-      #   @param type [Symbol, Lithic::Models::TransactionSimulateVoidParams::Type]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::TransactionSimulateVoidParams} for more details.
+      #
+      #   @param token [String] The transaction token returned from the /v1/simulate/authorize response.
+      #
+      #   @param amount [Integer] Amount (in cents) to void. Typically this will match the amount in the original
+      #   ...
+      #
+      #   @param type [Symbol, Lithic::Models::TransactionSimulateVoidParams::Type] Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`. ...
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`.

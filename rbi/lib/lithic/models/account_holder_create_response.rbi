@@ -62,16 +62,27 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Globally unique identifier for the account holder.
         token:,
+        # Globally unique identifier for the account.
         account_token:,
+        # KYC and KYB evaluation states.
+        #
+        # Note:
+        #
+        # - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
         status:,
+        # Reason for the evaluation status.
         status_reasons:,
+        # Timestamp of when the account holder was created.
         created: nil,
+        # Customer-provided token that indicates a relationship with an object outside of
+        # the Lithic ecosystem.
         external_id: nil,
+        # Only present for "KYB_BASIC" workflow. A list of documents required for the
+        # account holder to be approved.
         required_documents: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

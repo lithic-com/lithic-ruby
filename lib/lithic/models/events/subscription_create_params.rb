@@ -35,10 +35,18 @@ module Lithic
                  -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::Events::SubscriptionCreateParams::EventType] }
 
         # @!method initialize(url:, description: nil, disabled: nil, event_types: nil, request_options: {})
-        #   @param url [String]
-        #   @param description [String]
-        #   @param disabled [Boolean]
-        #   @param event_types [Array<Symbol, Lithic::Models::Events::SubscriptionCreateParams::EventType>]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::Events::SubscriptionCreateParams} for more details.
+        #
+        #   @param url [String] URL to which event webhooks will be sent. URL must be a valid HTTPS address.
+        #
+        #   @param description [String] Event subscription description.
+        #
+        #   @param disabled [Boolean] Whether the event subscription is active (false) or inactive (true).
+        #
+        #   @param event_types [Array<Symbol, Lithic::Models::Events::SubscriptionCreateParams::EventType>] Indicates types of events that will be sent to this subscription. If left blank,
+        #   ...
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
         module EventType

@@ -17,8 +17,11 @@ module Lithic
         params(filename: String, request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
           .returns(T.attached_class)
       end
-      def self.new(filename: nil, request_options: {}); end
-
+      def self.new(
+        # Filename of the evidence.
+        filename: nil,
+        request_options: {}
+      ); end
       sig { override.returns({filename: String, request_options: Lithic::RequestOptions}) }
       def to_hash; end
     end

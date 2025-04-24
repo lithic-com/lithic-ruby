@@ -7,14 +7,23 @@ module Lithic
         # @return [Lithic::Resources::Reports::Settlement::NetworkTotals]
         attr_reader :network_totals
 
+        # Some parameter documentations has been truncated, see
+        # {Lithic::Models::Reports::SettlementListDetailsParams} for more details.
+        #
         # List details.
         #
         # @overload list_details(report_date, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
         #
-        # @param report_date [Date]
-        # @param ending_before [String]
-        # @param page_size [Integer]
-        # @param starting_after [String]
+        # @param report_date [Date] Date of the settlement report to retrieve. Not available in sandbox.
+        #
+        # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+        # ...
+        #
+        # @param page_size [Integer] Page size (for pagination).
+        #
+        # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+        # ...
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Internal::CursorPage<Lithic::Models::SettlementDetail>]
@@ -36,7 +45,8 @@ module Lithic
         #
         # @overload summary(report_date, request_options: {})
         #
-        # @param report_date [Date]
+        # @param report_date [Date] Date of the settlement report to retrieve.
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::SettlementReport]

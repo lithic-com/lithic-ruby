@@ -90,17 +90,35 @@ module Lithic
       required :updated, Time
 
       # @!method initialize(token:, category:, created:, currency:, descriptor:, events:, pending_amount:, result:, settled_amount:, status:, updated:)
-      #   @param token [String]
-      #   @param category [Symbol, Lithic::Models::FinancialTransaction::Category]
-      #   @param created [Time]
-      #   @param currency [String]
-      #   @param descriptor [String]
-      #   @param events [Array<Lithic::Models::FinancialTransaction::Event>]
-      #   @param pending_amount [Integer]
-      #   @param result [Symbol, Lithic::Models::FinancialTransaction::Result]
-      #   @param settled_amount [Integer]
-      #   @param status [Symbol, Lithic::Models::FinancialTransaction::Status]
-      #   @param updated [Time]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::FinancialTransaction} for more details.
+      #
+      #   @param token [String] Globally unique identifier.
+      #
+      #   @param category [Symbol, Lithic::Models::FinancialTransaction::Category] Status types: ...
+      #
+      #   @param created [Time] Date and time when the financial transaction first occurred. UTC time zone.
+      #
+      #   @param currency [String] 3-character alphabetic ISO 4217 code for the settling currency of the transactio
+      #   ...
+      #
+      #   @param descriptor [String] A string that provides a description of the financial transaction; may be useful
+      #   ...
+      #
+      #   @param events [Array<Lithic::Models::FinancialTransaction::Event>] A list of all financial events that have modified this financial transaction.
+      #
+      #   @param pending_amount [Integer] Pending amount of the transaction in the currency's smallest unit (e.g., cents),
+      #   ...
+      #
+      #   @param result [Symbol, Lithic::Models::FinancialTransaction::Result] APPROVED transactions were successful while DECLINED transactions were declined
+      #   ...
+      #
+      #   @param settled_amount [Integer] Amount of the transaction that has been settled in the currency's smallest unit
+      #   ...
+      #
+      #   @param status [Symbol, Lithic::Models::FinancialTransaction::Status] Status types: ...
+      #
+      #   @param updated [Time] Date and time when the financial transaction was last updated. UTC time zone.
 
       # Status types:
       #
@@ -156,10 +174,19 @@ module Lithic
         optional :type, enum: -> { Lithic::Models::FinancialTransaction::Event::Type }
 
         # @!method initialize(token: nil, amount: nil, created: nil, result: nil, type: nil)
-        #   @param token [String]
-        #   @param amount [Integer]
-        #   @param created [Time]
-        #   @param result [Symbol, Lithic::Models::FinancialTransaction::Event::Result]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::FinancialTransaction::Event} for more details.
+        #
+        #   @param token [String] Globally unique identifier.
+        #
+        #   @param amount [Integer] Amount of the financial event that has been settled in the currency's smallest u
+        #   ...
+        #
+        #   @param created [Time] Date and time when the financial event occurred. UTC time zone.
+        #
+        #   @param result [Symbol, Lithic::Models::FinancialTransaction::Event::Result] APPROVED financial events were successful while DECLINED financial events were d
+        #   ...
+        #
         #   @param type [Symbol, Lithic::Models::FinancialTransaction::Event::Type]
 
         # APPROVED financial events were successful while DECLINED financial events were

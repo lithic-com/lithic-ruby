@@ -73,13 +73,25 @@ module Lithic
       optional :verification_address, -> { Lithic::Models::Account::VerificationAddress }
 
       # @!method initialize(token:, created:, spend_limit:, state:, account_holder: nil, auth_rule_tokens: nil, cardholder_currency: nil, verification_address: nil)
-      #   @param token [String]
-      #   @param created [Time, nil]
-      #   @param spend_limit [Lithic::Models::Account::SpendLimit]
-      #   @param state [Symbol, Lithic::Models::Account::State]
+      #   Some parameter documentations has been truncated, see {Lithic::Models::Account}
+      #   for more details.
+      #
+      #   @param token [String] Globally unique identifier for the account. This is the same as the account_toke
+      #   ...
+      #
+      #   @param created [Time, nil] Timestamp of when the account was created.
+      #
+      #   @param spend_limit [Lithic::Models::Account::SpendLimit] Spend limit information for the user containing the daily, monthly, and lifetime
+      #   ...
+      #
+      #   @param state [Symbol, Lithic::Models::Account::State] Account state: ...
+      #
       #   @param account_holder [Lithic::Models::Account::AccountHolder]
-      #   @param auth_rule_tokens [Array<String>]
-      #   @param cardholder_currency [String]
+      #
+      #   @param auth_rule_tokens [Array<String>] List of identifiers for the Auth Rule(s) that are applied on the account. ...
+      #
+      #   @param cardholder_currency [String] 3-character alphabetic ISO 4217 code for the currency of the cardholder.
+      #
       #   @param verification_address [Lithic::Models::Account::VerificationAddress]
 
       # @see Lithic::Models::Account#spend_limit
@@ -109,9 +121,11 @@ module Lithic
         #   time limit (rolling). A lifetime limit of 0 indicates that the lifetime limit
         #   feature is disabled.
         #
-        #   @param daily [Integer]
-        #   @param lifetime [Integer]
-        #   @param monthly [Integer]
+        #   @param daily [Integer] Daily spend limit (in cents).
+        #
+        #   @param lifetime [Integer] Total spend limit over account lifetime (in cents).
+        #
+        #   @param monthly [Integer] Monthly spend limit (in cents).
       end
 
       # Account state:
@@ -167,10 +181,17 @@ module Lithic
         required :phone_number, String
 
         # @!method initialize(token:, business_account_token:, email:, phone_number:)
-        #   @param token [String]
-        #   @param business_account_token [String]
-        #   @param email [String]
-        #   @param phone_number [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::Account::AccountHolder} for more details.
+        #
+        #   @param token [String] Globally unique identifier for the account holder.
+        #
+        #   @param business_account_token [String] Only applicable for customers using the KYC-Exempt workflow to enroll authorized
+        #   ...
+        #
+        #   @param email [String] Email address.
+        #
+        #   @param phone_number [String] Phone number of the individual.
       end
 
       # @deprecated
@@ -217,12 +238,22 @@ module Lithic
         optional :address2, String
 
         # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
-        #   @param address1 [String]
-        #   @param city [String]
-        #   @param country [String]
-        #   @param postal_code [String]
-        #   @param state [String]
-        #   @param address2 [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::Account::VerificationAddress} for more details.
+        #
+        #   @param address1 [String] Valid deliverable address (no PO boxes).
+        #
+        #   @param city [String] City name.
+        #
+        #   @param country [String] Country name. Only USA is currently supported.
+        #
+        #   @param postal_code [String] Valid postal code. Only USA postal codes (ZIP codes) are currently supported, en
+        #   ...
+        #
+        #   @param state [String] Valid state code. Only USA state codes are currently supported, entered in upper
+        #   ...
+        #
+        #   @param address2 [String] Unit or apartment number (if applicable).
       end
     end
   end

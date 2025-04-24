@@ -37,8 +37,12 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(backtest_token:, results:, simulation_parameters:); end
-
+          def self.new(
+            # Auth Rule Backtest Token
+            backtest_token:,
+            results:,
+            simulation_parameters:
+          ); end
           sig do
             override
               .returns(
@@ -164,8 +168,21 @@ module Lithic
                 )
                   .returns(T.attached_class)
               end
-              def self.new(approved: nil, declined: nil, examples: nil, version: nil); end
-
+              def self.new(
+                # The total number of historical transactions approved by this rule during the
+                # backtest period, or the number of transactions that would have been approved if
+                # the rule was evaluated in shadow mode.
+                approved: nil,
+                # The total number of historical transactions declined by this rule during the
+                # backtest period, or the number of transactions that would have been declined if
+                # the rule was evaluated in shadow mode.
+                declined: nil,
+                # Example authorization request events that would have been approved or declined.
+                examples: nil,
+                # The version of the rule, this is incremented whenever the rule's parameters
+                # change.
+                version: nil
+              ); end
               sig do
                 override
                   .returns(
@@ -204,8 +221,14 @@ module Lithic
                 sig do
                   params(approved: T::Boolean, event_token: String, timestamp: Time).returns(T.attached_class)
                 end
-                def self.new(approved: nil, event_token: nil, timestamp: nil); end
-
+                def self.new(
+                  # Whether the rule would have approved the authorization request.
+                  approved: nil,
+                  # The authorization request event token.
+                  event_token: nil,
+                  # The timestamp of the authorization request event.
+                  timestamp: nil
+                ); end
                 sig { override.returns({approved: T::Boolean, event_token: String, timestamp: Time}) }
                 def to_hash; end
               end
@@ -273,8 +296,21 @@ module Lithic
                 )
                   .returns(T.attached_class)
               end
-              def self.new(approved: nil, declined: nil, examples: nil, version: nil); end
-
+              def self.new(
+                # The total number of historical transactions approved by this rule during the
+                # backtest period, or the number of transactions that would have been approved if
+                # the rule was evaluated in shadow mode.
+                approved: nil,
+                # The total number of historical transactions declined by this rule during the
+                # backtest period, or the number of transactions that would have been declined if
+                # the rule was evaluated in shadow mode.
+                declined: nil,
+                # Example authorization request events that would have been approved or declined.
+                examples: nil,
+                # The version of the rule, this is incremented whenever the rule's parameters
+                # change.
+                version: nil
+              ); end
               sig do
                 override
                   .returns(
@@ -313,8 +349,14 @@ module Lithic
                 sig do
                   params(approved: T::Boolean, event_token: String, timestamp: Time).returns(T.attached_class)
                 end
-                def self.new(approved: nil, event_token: nil, timestamp: nil); end
-
+                def self.new(
+                  # Whether the rule would have approved the authorization request.
+                  approved: nil,
+                  # The authorization request event token.
+                  event_token: nil,
+                  # The timestamp of the authorization request event.
+                  timestamp: nil
+                ); end
                 sig { override.returns({approved: T::Boolean, event_token: String, timestamp: Time}) }
                 def to_hash; end
               end
@@ -344,8 +386,14 @@ module Lithic
             attr_writer :start
 
             sig { params(auth_rule_token: String, end_: Time, start: Time).returns(T.attached_class) }
-            def self.new(auth_rule_token: nil, end_: nil, start: nil); end
-
+            def self.new(
+              # Auth Rule Token
+              auth_rule_token: nil,
+              # The end time of the simulation.
+              end_: nil,
+              # The start time of the simulation.
+              start: nil
+            ); end
             sig { override.returns({auth_rule_token: String, end_: Time, start: Time}) }
             def to_hash; end
           end

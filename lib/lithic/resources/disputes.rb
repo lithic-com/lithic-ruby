@@ -7,11 +7,16 @@ module Lithic
       #
       # @overload create(amount:, reason:, transaction_token:, customer_filed_date: nil, customer_note: nil, request_options: {})
       #
-      # @param amount [Integer]
-      # @param reason [Symbol, Lithic::Models::DisputeCreateParams::Reason]
-      # @param transaction_token [String]
-      # @param customer_filed_date [Time]
-      # @param customer_note [String]
+      # @param amount [Integer] Amount to dispute
+      #
+      # @param reason [Symbol, Lithic::Models::DisputeCreateParams::Reason] Reason for dispute
+      #
+      # @param transaction_token [String] Transaction to dispute
+      #
+      # @param customer_filed_date [Time] Date the customer filed the dispute
+      #
+      # @param customer_note [String] Customer description of dispute
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Dispute]
@@ -52,10 +57,15 @@ module Lithic
       # @overload update(dispute_token, amount: nil, customer_filed_date: nil, customer_note: nil, reason: nil, request_options: {})
       #
       # @param dispute_token [String]
-      # @param amount [Integer]
-      # @param customer_filed_date [Time]
-      # @param customer_note [String]
-      # @param reason [Symbol, Lithic::Models::DisputeUpdateParams::Reason]
+      #
+      # @param amount [Integer] Amount to dispute
+      #
+      # @param customer_filed_date [Time] Date the customer filed the dispute
+      #
+      # @param customer_note [String] Customer description of dispute
+      #
+      # @param reason [Symbol, Lithic::Models::DisputeUpdateParams::Reason] Reason for dispute
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Dispute]
@@ -72,17 +82,31 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::DisputeListParams} for more details.
+      #
       # List disputes.
       #
       # @overload list(begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, status: nil, transaction_tokens: nil, request_options: {})
       #
-      # @param begin_ [Time]
-      # @param end_ [Time]
-      # @param ending_before [String]
-      # @param page_size [Integer]
-      # @param starting_after [String]
-      # @param status [Symbol, Lithic::Models::DisputeListParams::Status]
-      # @param transaction_tokens [Array<String>]
+      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      # ...
+      #
+      # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
+      # ...
+      #
+      # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+      # ...
+      #
+      # @param page_size [Integer] Page size (for pagination).
+      #
+      # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+      # ...
+      #
+      # @param status [Symbol, Lithic::Models::DisputeListParams::Status] List disputes of a specific status.
+      #
+      # @param transaction_tokens [Array<String>] Transaction tokens to filter by.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Internal::CursorPage<Lithic::Models::Dispute>]
@@ -154,7 +178,9 @@ module Lithic
       # @overload initiate_evidence_upload(dispute_token, filename: nil, request_options: {})
       #
       # @param dispute_token [String]
-      # @param filename [String]
+      #
+      # @param filename [String] Filename of the evidence.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::DisputeEvidence]
@@ -171,16 +197,29 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::DisputeListEvidencesParams} for more details.
+      #
       # List evidence metadata for a dispute.
       #
       # @overload list_evidences(dispute_token, begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
       #
       # @param dispute_token [String]
-      # @param begin_ [Time]
-      # @param end_ [Time]
-      # @param ending_before [String]
-      # @param page_size [Integer]
-      # @param starting_after [String]
+      #
+      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      # ...
+      #
+      # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
+      # ...
+      #
+      # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+      # ...
+      #
+      # @param page_size [Integer] Page size (for pagination).
+      #
+      # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+      # ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Internal::CursorPage<Lithic::Models::DisputeEvidence>]

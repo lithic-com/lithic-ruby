@@ -21,8 +21,10 @@ module Lithic
         optional :business_account_token, String
 
         # @!method initialize(account_token: nil, business_account_token: nil, request_options: {})
-        #   @param account_token [String]
-        #   @param business_account_token [String]
+        #   @param account_token [String] Cardholder to retrieve aggregate balances for.
+        #
+        #   @param business_account_token [String] Business to retrieve aggregate balances for.
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

@@ -9,7 +9,8 @@ module Lithic
         #
         # @overload retrieve(transaction_token, request_options: {})
         #
-        # @param transaction_token [String]
+        # @param transaction_token [String] The token of the transaction that the enhanced data is associated with.
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::Transactions::EnhancedCommercialDataRetrieveResponse]

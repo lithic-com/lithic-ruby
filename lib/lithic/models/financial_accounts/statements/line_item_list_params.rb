@@ -36,10 +36,20 @@ module Lithic
           optional :starting_after, String
 
           # @!method initialize(financial_account_token:, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
-          #   @param financial_account_token [String]
-          #   @param ending_before [String]
-          #   @param page_size [Integer]
-          #   @param starting_after [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::FinancialAccounts::Statements::LineItemListParams} for more
+          #   details.
+          #
+          #   @param financial_account_token [String] Globally unique identifier for financial account.
+          #
+          #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+          #   ...
+          #
+          #   @param page_size [Integer] Page size (for pagination).
+          #
+          #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+          #   ...
+          #
           #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
         end
       end

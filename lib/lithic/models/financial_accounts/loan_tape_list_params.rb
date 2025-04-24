@@ -43,11 +43,23 @@ module Lithic
         optional :starting_after, String
 
         # @!method initialize(begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
-        #   @param begin_ [Date]
-        #   @param end_ [Date]
-        #   @param ending_before [String]
-        #   @param page_size [Integer]
-        #   @param starting_after [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::FinancialAccounts::LoanTapeListParams} for more details.
+        #
+        #   @param begin_ [Date] Date string in RFC 3339 format. Only entries created after the specified date wi
+        #   ...
+        #
+        #   @param end_ [Date] Date string in RFC 3339 format. Only entries created before the specified date w
+        #   ...
+        #
+        #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+        #   ...
+        #
+        #   @param page_size [Integer] Page size (for pagination).
+        #
+        #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+        #   ...
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

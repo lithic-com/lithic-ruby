@@ -23,9 +23,11 @@ module Lithic
       required :transaction_event_token, String
 
       # @!method initialize(debugging_request_id:, result:, transaction_event_token:)
-      #   @param debugging_request_id [String]
-      #   @param result [Symbol, Lithic::Models::PaymentSimulateActionResponse::Result]
-      #   @param transaction_event_token [String]
+      #   @param debugging_request_id [String] Debugging Request Id
+      #
+      #   @param result [Symbol, Lithic::Models::PaymentSimulateActionResponse::Result] Request Result
+      #
+      #   @param transaction_event_token [String] Transaction Event Token
 
       # Request Result
       #

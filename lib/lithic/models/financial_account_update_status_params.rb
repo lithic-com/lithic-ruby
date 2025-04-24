@@ -22,8 +22,10 @@ module Lithic
                nil?: true
 
       # @!method initialize(status:, substatus:, request_options: {})
-      #   @param status [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status]
-      #   @param substatus [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil]
+      #   @param status [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status] Status of the financial account
+      #
+      #   @param substatus [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil] Substatus for the financial account
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Status of the financial account

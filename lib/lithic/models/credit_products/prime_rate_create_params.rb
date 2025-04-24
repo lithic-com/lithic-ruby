@@ -21,8 +21,10 @@ module Lithic
         required :rate, String
 
         # @!method initialize(effective_date:, rate:, request_options: {})
-        #   @param effective_date [Date]
-        #   @param rate [String]
+        #   @param effective_date [Date] Date the rate goes into effect
+        #
+        #   @param rate [String] The rate in decimal format
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end
     end

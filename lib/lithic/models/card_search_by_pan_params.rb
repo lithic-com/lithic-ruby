@@ -14,7 +14,8 @@ module Lithic
       required :pan, String
 
       # @!method initialize(pan:, request_options: {})
-      #   @param pan [String]
+      #   @param pan [String] The PAN for the card being retrieved.
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

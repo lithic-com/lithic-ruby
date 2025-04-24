@@ -119,24 +119,48 @@ module Lithic
       required :processor_token, String
 
       # @!method initialize(account_number:, country:, currency:, financial_account_token:, owner:, owner_type:, routing_number:, type:, verification_method:, processor_token:, account_token: nil, address: nil, company_id: nil, dob: nil, doing_business_as: nil, name: nil, user_defined_id: nil, verification_enforcement: nil, request_options: {})
-      #   @param account_number [String]
-      #   @param country [String]
-      #   @param currency [String]
-      #   @param financial_account_token [String]
-      #   @param owner [String]
-      #   @param owner_type [Symbol, Lithic::Models::OwnerType]
-      #   @param routing_number [String]
-      #   @param type [Symbol, Lithic::Models::ExternalBankAccountCreateParams::Type]
-      #   @param verification_method [Symbol, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::ExternalBankAccountCreateParams} for more details.
+      #
+      #   @param account_number [String] Account Number
+      #
+      #   @param country [String] The country that the bank account is located in using ISO 3166-1. We will only a
+      #   ...
+      #
+      #   @param currency [String] currency of the external account 3-character alphabetic ISO 4217 code
+      #
+      #   @param financial_account_token [String] The financial account token of the operating account to fund the micro deposits
+      #
+      #   @param owner [String] Legal Name of the business or individual who owns the external account. This wil
+      #   ...
+      #
+      #   @param owner_type [Symbol, Lithic::Models::OwnerType] Owner Type
+      #
+      #   @param routing_number [String] Routing Number
+      #
+      #   @param type [Symbol, Lithic::Models::ExternalBankAccountCreateParams::Type] Account Type
+      #
+      #   @param verification_method [Symbol, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod] Verification Method
+      #
       #   @param processor_token [String]
-      #   @param account_token [String]
-      #   @param address [Lithic::Models::ExternalBankAccountAddress]
-      #   @param company_id [String]
-      #   @param dob [Date]
-      #   @param doing_business_as [String]
-      #   @param name [String]
-      #   @param user_defined_id [String]
+      #
+      #   @param account_token [String] Indicates which Lithic account the external account is associated with. For exte
+      #   ...
+      #
+      #   @param address [Lithic::Models::ExternalBankAccountAddress] Address
+      #
+      #   @param company_id [String] Optional field that helps identify bank accounts in receipts
+      #
+      #   @param dob [Date] Date of Birth of the Individual that owns the external bank account
+      #
+      #   @param doing_business_as [String] Doing Business As
+      #
+      #   @param name [String] The nickname for this External Bank Account
+      #
+      #   @param user_defined_id [String] User Defined ID
+      #
       #   @param verification_enforcement [Boolean]
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Account Type

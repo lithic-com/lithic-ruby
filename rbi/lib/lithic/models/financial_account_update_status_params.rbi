@@ -22,8 +22,13 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(status:, substatus:, request_options: {}); end
-
+      def self.new(
+        # Status of the financial account
+        status:,
+        # Substatus for the financial account
+        substatus:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

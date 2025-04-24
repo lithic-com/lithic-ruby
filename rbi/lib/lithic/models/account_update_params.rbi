@@ -69,10 +69,26 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a
+        # $1,000 limit). By default the daily spend limit is set to $1,250.
         daily_spend_limit: nil,
+        # Amount (in cents) for the account's lifetime spend limit (e.g. 100000 would be a
+        # $1,000 limit). Once this limit is reached, no transactions will be accepted on
+        # any card created for this account until the limit is updated. Note that a spend
+        # limit of 0 is effectively no limit, and should only be used to reset or remove a
+        # prior limit. Only a limit of 1 or above will result in declined transactions due
+        # to checks against the account limit. This behavior differs from the daily spend
+        # limit and the monthly spend limit.
         lifetime_spend_limit: nil,
+        # Amount (in cents) for the account's monthly spend limit (e.g. 100000 would be a
+        # $1,000 limit). By default the monthly spend limit is set to $5,000.
         monthly_spend_limit: nil,
+        # Account states.
         state: nil,
+        # Address used during Address Verification Service (AVS) checks during
+        # transactions if enabled via Auth Rules. This field is deprecated as AVS checks
+        # are no longer supported by Authorization Rules. The field will be removed from
+        # the schema in a future release.
         verification_address: nil,
         request_options: {}
       ); end

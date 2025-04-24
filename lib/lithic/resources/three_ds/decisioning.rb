@@ -4,12 +4,18 @@ module Lithic
   module Resources
     class ThreeDS
       class Decisioning
+        # Some parameter documentations has been truncated, see
+        # {Lithic::Models::ThreeDS::DecisioningChallengeResponseParams} for more details.
+        #
         # Card program's response to a 3DS Challenge Request (CReq)
         #
         # @overload challenge_response(token:, challenge_response:, request_options: {})
         #
-        # @param token [String]
-        # @param challenge_response [Symbol, Lithic::Models::ThreeDS::ChallengeResult]
+        # @param token [String] Globally unique identifier for the 3DS authentication. This token is sent as par
+        # ...
+        #
+        # @param challenge_response [Symbol, Lithic::Models::ThreeDS::ChallengeResult] Whether the Cardholder has Approved or Declined the issued Challenge
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]

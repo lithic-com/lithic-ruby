@@ -87,19 +87,36 @@ module Lithic
       optional :payment_account_reference_id, String, nil?: true
 
       # @!method initialize(token:, account_token:, card_token:, created_at:, dpan:, status:, token_requestor_name:, token_unique_reference:, tokenization_channel:, updated_at:, digital_card_art_token: nil, events: nil, payment_account_reference_id: nil)
-      #   @param token [String]
-      #   @param account_token [String]
-      #   @param card_token [String]
-      #   @param created_at [Time]
-      #   @param dpan [String, nil]
-      #   @param status [Symbol, Lithic::Models::Tokenization::Status]
-      #   @param token_requestor_name [Symbol, Lithic::Models::Tokenization::TokenRequestorName]
-      #   @param token_unique_reference [String]
-      #   @param tokenization_channel [Symbol, Lithic::Models::Tokenization::TokenizationChannel]
-      #   @param updated_at [Time]
-      #   @param digital_card_art_token [String]
-      #   @param events [Array<Lithic::Models::Tokenization::Event>]
-      #   @param payment_account_reference_id [String, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::Tokenization} for more details.
+      #
+      #   @param token [String] Globally unique identifier for a Tokenization
+      #
+      #   @param account_token [String] The account token associated with the card being tokenized.
+      #
+      #   @param card_token [String] The card token associated with the card being tokenized.
+      #
+      #   @param created_at [Time] Date and time when the tokenization first occurred. UTC time zone.
+      #
+      #   @param dpan [String, nil] The dynamic pan assigned to the token by the network.
+      #
+      #   @param status [Symbol, Lithic::Models::Tokenization::Status] The status of the tokenization request
+      #
+      #   @param token_requestor_name [Symbol, Lithic::Models::Tokenization::TokenRequestorName] The entity that requested the tokenization. Represents a Digital Wallet or merch
+      #   ...
+      #
+      #   @param token_unique_reference [String] The network's unique reference for the tokenization.
+      #
+      #   @param tokenization_channel [Symbol, Lithic::Models::Tokenization::TokenizationChannel] The channel through which the tokenization was made.
+      #
+      #   @param updated_at [Time] Latest date and time when the tokenization was updated. UTC time zone.
+      #
+      #   @param digital_card_art_token [String] Specifies the digital card art displayed in the user’s digital wallet after toke
+      #   ...
+      #
+      #   @param events [Array<Lithic::Models::Tokenization::Event>] A list of events related to the tokenization.
+      #
+      #   @param payment_account_reference_id [String, nil] The network's unique reference for the card that is tokenized.
 
       # The status of the tokenization request
       #
@@ -181,10 +198,13 @@ module Lithic
         optional :type, enum: -> { Lithic::Models::Tokenization::Event::Type }
 
         # @!method initialize(token: nil, created_at: nil, result: nil, type: nil)
-        #   @param token [String]
-        #   @param created_at [Time]
-        #   @param result [Symbol, Lithic::Models::Tokenization::Event::Result]
-        #   @param type [Symbol, Lithic::Models::Tokenization::Event::Type]
+        #   @param token [String] Globally unique identifier for a Tokenization Event
+        #
+        #   @param created_at [Time] Date and time when the tokenization event first occurred. UTC time zone.
+        #
+        #   @param result [Symbol, Lithic::Models::Tokenization::Event::Result] Enum representing the result of the tokenization event
+        #
+        #   @param type [Symbol, Lithic::Models::Tokenization::Event::Type] Enum representing the type of tokenization event that occurred
 
         # Enum representing the result of the tokenization event
         #

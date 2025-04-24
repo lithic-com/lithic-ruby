@@ -3,6 +3,9 @@
 module Lithic
   module Resources
     class AccountHolders
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::AccountHolderCreateParams} for more details.
+      #
       # Create an account holder and initiate the appropriate onboarding workflow.
       # Account holders and accounts have a 1:1 relationship. When an account holder is
       # successfully created an associated account is also created. All calls to this
@@ -14,25 +17,55 @@ module Lithic
       #
       # @overload create(beneficial_owner_individuals:, business_entity:, control_person:, nature_of_business:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
       #
-      # @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>]
-      # @param business_entity [Lithic::Models::AccountHolderCreateParams::BusinessEntity]
-      # @param control_person [Lithic::Models::AccountHolderCreateParams::ControlPerson]
-      # @param nature_of_business [String]
-      # @param tos_timestamp [String]
-      # @param workflow [Symbol, Lithic::Models::AccountHolderCreateParams::Workflow]
-      # @param individual [Lithic::Models::AccountHolderCreateParams::Individual]
-      # @param address [Lithic::Models::Address]
-      # @param email [String]
-      # @param first_name [String]
-      # @param kyc_exemption_type [Symbol, Lithic::Models::AccountHolderCreateParams::KYCExemptionType]
-      # @param last_name [String]
-      # @param phone_number [String]
-      # @param beneficial_owner_entities [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity>]
-      # @param external_id [String]
-      # @param kyb_passed_timestamp [String]
-      # @param website_url [String]
-      # @param kyc_passed_timestamp [String]
-      # @param business_account_token [String]
+      # @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>] You must submit a list of all direct and indirect individuals with 25% or more o
+      # ...
+      #
+      # @param business_entity [Lithic::Models::AccountHolderCreateParams::BusinessEntity] Information for business for which the account is being opened and KYB is being
+      # ...
+      #
+      # @param control_person [Lithic::Models::AccountHolderCreateParams::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
+      # ...
+      #
+      # @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
+      # ...
+      #
+      # @param tos_timestamp [String] An RFC 3339 timestamp indicating when the account holder accepted the applicable
+      # ...
+      #
+      # @param workflow [Symbol, Lithic::Models::AccountHolderCreateParams::Workflow] Specifies the workflow type. This must be 'KYC_EXEMPT'
+      #
+      # @param individual [Lithic::Models::AccountHolderCreateParams::Individual] Information on individual for whom the account is being opened and KYC is being
+      # ...
+      #
+      # @param address [Lithic::Models::Address] KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
+      # ...
+      #
+      # @param email [String] The KYC Exempt user's email
+      #
+      # @param first_name [String] The KYC Exempt user's first name
+      #
+      # @param kyc_exemption_type [Symbol, Lithic::Models::AccountHolderCreateParams::KYCExemptionType] Specifies the type of KYC Exempt user
+      #
+      # @param last_name [String] The KYC Exempt user's last name
+      #
+      # @param phone_number [String] The KYC Exempt user's phone number, entered in E.164 format.
+      #
+      # @param beneficial_owner_entities [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity>] Deprecated.
+      #
+      # @param external_id [String] A user provided id that can be used to link an account holder with an external s
+      # ...
+      #
+      # @param kyb_passed_timestamp [String] An RFC 3339 timestamp indicating when precomputed KYC was completed on the busin
+      # ...
+      #
+      # @param website_url [String] Company website URL.
+      #
+      # @param kyc_passed_timestamp [String] An RFC 3339 timestamp indicating when precomputed KYC was completed on the indiv
+      # ...
+      #
+      # @param business_account_token [String] Only applicable for customers using the KYC-Exempt workflow to enroll authorized
+      # ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::AccountHolderCreateResponse]
@@ -54,7 +87,8 @@ module Lithic
       #
       # @overload retrieve(account_holder_token, request_options: {})
       #
-      # @param account_holder_token [String]
+      # @param account_holder_token [String] Globally unique identifier for the account holder.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::AccountHolder]
@@ -69,6 +103,9 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::AccountHolderUpdateParams} for more details.
+      #
       # Update the information associated with a particular account holder (including
       # business owners and control persons associated to a business account). If Lithic
       # is performing KYB or KYC and additional verification is required we will run the
@@ -82,22 +119,47 @@ module Lithic
       #
       # @overload update(account_holder_token, beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_entity: nil, control_person: nil, external_id: nil, nature_of_business: nil, website_url: nil, individual: nil, address: nil, business_account_token: nil, email: nil, first_name: nil, last_name: nil, legal_business_name: nil, phone_number: nil, request_options: {})
       #
-      # @param account_holder_token [String]
-      # @param beneficial_owner_entities [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity>]
-      # @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual>]
-      # @param business_entity [Lithic::Models::AccountHolderUpdateParams::BusinessEntity]
-      # @param control_person [Lithic::Models::AccountHolderUpdateParams::ControlPerson]
-      # @param external_id [String]
-      # @param nature_of_business [String]
-      # @param website_url [String]
-      # @param individual [Lithic::Models::AccountHolderUpdateParams::Individual]
-      # @param address [Lithic::Models::AddressUpdate]
-      # @param business_account_token [String]
-      # @param email [String]
-      # @param first_name [String]
-      # @param last_name [String]
-      # @param legal_business_name [String]
-      # @param phone_number [String]
+      # @param account_holder_token [String] Globally unique identifier for the account holder.
+      #
+      # @param beneficial_owner_entities [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity>] Deprecated.
+      #
+      # @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual>] You must submit a list of all direct and indirect individuals with 25% or more o
+      # ...
+      #
+      # @param business_entity [Lithic::Models::AccountHolderUpdateParams::BusinessEntity] Information for business for which the account is being opened and KYB is being
+      # ...
+      #
+      # @param control_person [Lithic::Models::AccountHolderUpdateParams::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
+      # ...
+      #
+      # @param external_id [String] A user provided id that can be used to link an account holder with an external s
+      # ...
+      #
+      # @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
+      # ...
+      #
+      # @param website_url [String] Company website URL.
+      #
+      # @param individual [Lithic::Models::AccountHolderUpdateParams::Individual] Information on the individual for whom the account is being opened and KYC is be
+      # ...
+      #
+      # @param address [Lithic::Models::AddressUpdate] Allowed for: KYC-Exempt, BYO-KYC, BYO-KYB.
+      #
+      # @param business_account_token [String] Allowed for: KYC-Exempt, BYO-KYC. The token of the business account to which the
+      # ...
+      #
+      # @param email [String] Allowed for all Account Holders. Account holder's email address. The primary pur
+      # ...
+      #
+      # @param first_name [String] Allowed for KYC-Exempt, BYO-KYC. Account holder's first name.
+      #
+      # @param last_name [String] Allowed for KYC-Exempt, BYO-KYC. Account holder's last name.
+      #
+      # @param legal_business_name [String] Allowed for BYO-KYB. Legal business name of the account holder.
+      #
+      # @param phone_number [String] Allowed for all Account Holders. Account holder's phone number, entered in E.164
+      # ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse, Lithic::Models::AccountHolderUpdateResponse::PatchResponse]
@@ -114,22 +176,44 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::AccountHolderListParams} for more details.
+      #
       # Get a list of individual or business account holders and their KYC or KYB
       # evaluation status.
       #
       # @overload list(begin_: nil, email: nil, end_: nil, ending_before: nil, external_id: nil, first_name: nil, last_name: nil, legal_business_name: nil, limit: nil, phone_number: nil, starting_after: nil, request_options: {})
       #
-      # @param begin_ [Time]
-      # @param email [String]
-      # @param end_ [Time]
-      # @param ending_before [String]
-      # @param external_id [String]
-      # @param first_name [String]
-      # @param last_name [String]
-      # @param legal_business_name [String]
-      # @param limit [Integer]
-      # @param phone_number [String]
-      # @param starting_after [String]
+      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      # ...
+      #
+      # @param email [String] Email address of the account holder. The query must be an exact match, case inse
+      # ...
+      #
+      # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
+      # ...
+      #
+      # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+      # ...
+      #
+      # @param external_id [String] If applicable, represents the external_id associated with the account_holder.
+      #
+      # @param first_name [String] (Individual Account Holders only) The first name of the account holder. The quer
+      # ...
+      #
+      # @param last_name [String] (Individual Account Holders only) The last name of the account holder. The query
+      # ...
+      #
+      # @param legal_business_name [String] (Business Account Holders only) The legal business name of the account holder. T
+      # ...
+      #
+      # @param limit [Integer] The number of account_holders to limit the response to.
+      #
+      # @param phone_number [String] Phone number of the account holder. The query must be an exact match.
+      #
+      # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+      # ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Internal::SinglePage<Lithic::Models::AccountHolder>]
@@ -165,7 +249,8 @@ module Lithic
       #
       # @overload list_documents(account_holder_token, request_options: {})
       #
-      # @param account_holder_token [String]
+      # @param account_holder_token [String] Globally unique identifier for the account holder.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::AccountHolderListDocumentsResponse]
@@ -197,8 +282,10 @@ module Lithic
       #
       # @overload retrieve_document(document_token, account_holder_token:, request_options: {})
       #
-      # @param document_token [String]
-      # @param account_holder_token [String]
+      # @param document_token [String] Globally unique identifier for the document.
+      #
+      # @param account_holder_token [String] Globally unique identifier for the account holder.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Document]
@@ -218,14 +305,23 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams} for more
+      # details.
+      #
       # Simulates a review for an account holder document upload.
       #
       # @overload simulate_enrollment_document_review(document_upload_token:, status:, accepted_entity_status_reasons: nil, status_reason: nil, request_options: {})
       #
-      # @param document_upload_token [String]
-      # @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status]
-      # @param accepted_entity_status_reasons [Array<String>]
-      # @param status_reason [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason]
+      # @param document_upload_token [String] The account holder document upload which to perform the simulation upon.
+      #
+      # @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status] An account holder document's upload status for use within the simulation.
+      #
+      # @param accepted_entity_status_reasons [Array<String>] A list of status reasons associated with a KYB account holder in PENDING_REVIEW
+      #
+      # @param status_reason [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason] Status reason that will be associated with the simulated account holder status.
+      # ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Document]
@@ -243,14 +339,21 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::AccountHolderSimulateEnrollmentReviewParams} for more details.
+      #
       # Simulates an enrollment review for an account holder. This endpoint is only
       # applicable for workflows that may required intervention such as `KYB_BASIC`.
       #
       # @overload simulate_enrollment_review(account_holder_token: nil, status: nil, status_reasons: nil, request_options: {})
       #
-      # @param account_holder_token [String]
-      # @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status]
-      # @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason>]
+      # @param account_holder_token [String] The account holder which to perform the simulation upon.
+      #
+      # @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status] An account holder's status for use within the simulation.
+      #
+      # @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason>] Status reason that will be associated with the simulated account holder status.
+      # ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse]
@@ -288,9 +391,12 @@ module Lithic
       #
       # @overload upload_document(account_holder_token, document_type:, entity_token:, request_options: {})
       #
-      # @param account_holder_token [String]
-      # @param document_type [Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType]
-      # @param entity_token [String]
+      # @param account_holder_token [String] Globally unique identifier for the account holder.
+      #
+      # @param document_type [Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType] The type of document to upload
+      #
+      # @param entity_token [String] Globally unique identifier for the entity.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Document]

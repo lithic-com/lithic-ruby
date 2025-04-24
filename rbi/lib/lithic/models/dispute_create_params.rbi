@@ -44,15 +44,18 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Amount to dispute
         amount:,
+        # Reason for dispute
         reason:,
+        # Transaction to dispute
         transaction_token:,
+        # Date the customer filed the dispute
         customer_filed_date: nil,
+        # Customer description of dispute
         customer_note: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

@@ -122,25 +122,49 @@ module Lithic
       optional :expected_release_date, Date
 
       # @!method initialize(token:, category:, created:, currency:, descriptor:, direction:, events:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, pending_amount:, result:, settled_amount:, source:, status:, updated:, user_defined_id:, expected_release_date: nil)
-      #   @param token [String]
-      #   @param category [Symbol, Lithic::Models::Payment::Category]
-      #   @param created [Time]
-      #   @param currency [String]
-      #   @param descriptor [String]
+      #   Some parameter documentations has been truncated, see {Lithic::Models::Payment}
+      #   for more details.
+      #
+      #   @param token [String] Globally unique identifier.
+      #
+      #   @param category [Symbol, Lithic::Models::Payment::Category] Payment category
+      #
+      #   @param created [Time] Date and time when the payment first occurred. UTC time zone.
+      #
+      #   @param currency [String] 3-character alphabetic ISO 4217 code for the settling currency of the payment.
+      #
+      #   @param descriptor [String] A string that provides a description of the payment; may be useful to display to
+      #   ...
+      #
       #   @param direction [Symbol, Lithic::Models::Payment::Direction]
-      #   @param events [Array<Lithic::Models::Payment::Event>]
+      #
+      #   @param events [Array<Lithic::Models::Payment::Event>] A list of all payment events that have modified this payment.
+      #
       #   @param external_bank_account_token [String, nil]
+      #
       #   @param financial_account_token [String]
+      #
       #   @param method_ [Symbol, Lithic::Models::Payment::Method]
+      #
       #   @param method_attributes [Lithic::Models::Payment::MethodAttributes]
-      #   @param pending_amount [Integer]
-      #   @param result [Symbol, Lithic::Models::Payment::Result]
-      #   @param settled_amount [Integer]
+      #
+      #   @param pending_amount [Integer] Pending amount of the payment in the currency's smallest unit (e.g., cents). ...
+      #
+      #   @param result [Symbol, Lithic::Models::Payment::Result] APPROVED payments were successful while DECLINED payments were declined by Lithi
+      #   ...
+      #
+      #   @param settled_amount [Integer] Amount of the payment that has been settled in the currency's smallest unit (e.g
+      #   ...
+      #
       #   @param source [Symbol, Lithic::Models::Payment::Source]
-      #   @param status [Symbol, Lithic::Models::Payment::Status]
-      #   @param updated [Time]
+      #
+      #   @param status [Symbol, Lithic::Models::Payment::Status] Status types: ...
+      #
+      #   @param updated [Time] Date and time when the financial transaction was last updated. UTC time zone.
+      #
       #   @param user_defined_id [String, nil]
-      #   @param expected_release_date [Date]
+      #
+      #   @param expected_release_date [Date] Date when the financial transaction expected to be released after settlement
 
       # Payment category
       #
@@ -225,12 +249,22 @@ module Lithic
                  -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::Payment::Event::DetailedResult] }
 
         # @!method initialize(token:, amount:, created:, result:, type:, detailed_results: nil)
-        #   @param token [String]
-        #   @param amount [Integer]
-        #   @param created [Time]
-        #   @param result [Symbol, Lithic::Models::Payment::Event::Result]
-        #   @param type [Symbol, Lithic::Models::Payment::Event::Type]
-        #   @param detailed_results [Array<Symbol, Lithic::Models::Payment::Event::DetailedResult>]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::Payment::Event} for more details.
+        #
+        #   @param token [String] Globally unique identifier.
+        #
+        #   @param amount [Integer] Amount of the financial event that has been settled in the currency's smallest u
+        #   ...
+        #
+        #   @param created [Time] Date and time when the financial event occurred. UTC time zone.
+        #
+        #   @param result [Symbol, Lithic::Models::Payment::Event::Result] APPROVED financial events were successful while DECLINED financial events were d
+        #   ...
+        #
+        #   @param type [Symbol, Lithic::Models::Payment::Event::Type] Event types: ...
+        #
+        #   @param detailed_results [Array<Symbol, Lithic::Models::Payment::Event::DetailedResult>] More detailed reasons for the event
 
         # APPROVED financial events were successful while DECLINED financial events were
         # declined by user, Lithic, or the network.

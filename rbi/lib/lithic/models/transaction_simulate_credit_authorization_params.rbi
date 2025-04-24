@@ -47,8 +47,23 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, request_options: {}); end
-
+      def self.new(
+        # Amount (in cents). Any value entered will be converted into a negative amount in
+        # the simulated transaction. For example, entering 100 in this field will appear
+        # as a -100 amount in the transaction.
+        amount:,
+        # Merchant descriptor.
+        descriptor:,
+        # Sixteen digit card number.
+        pan:,
+        # Merchant category code for the transaction to be simulated. A four-digit number
+        # listed in ISO 18245. Supported merchant category codes can be found
+        # [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
+        mcc: nil,
+        # Unique identifier to identify the payment card acceptor.
+        merchant_acceptor_id: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

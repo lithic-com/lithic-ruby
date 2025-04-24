@@ -59,8 +59,23 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(address1: nil, address2: nil, city: nil, country: nil, postal_code: nil, state: nil); end
-
+      def self.new(
+        # Valid deliverable address (no PO boxes).
+        address1: nil,
+        # Unit or apartment number (if applicable).
+        address2: nil,
+        # Name of city.
+        city: nil,
+        # Valid country code. Only USA is currently supported, entered in uppercase ISO
+        # 3166-1 alpha-3 three-character format.
+        country: nil,
+        # Valid postal code. Only USA ZIP codes are currently supported, entered as a
+        # five-digit ZIP or nine-digit ZIP+4.
+        postal_code: nil,
+        # Valid state code. Only USA state codes are currently supported, entered in
+        # uppercase ISO 3166-2 two-character format.
+        state: nil
+      ); end
       sig do
         override
           .returns(

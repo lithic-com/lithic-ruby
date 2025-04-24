@@ -36,8 +36,15 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(account_token: nil, business_account_token: nil, type: nil, request_options: {}); end
-
+      def self.new(
+        # List financial accounts for a given account_token or business_account_token
+        account_token: nil,
+        # List financial accounts for a given business_account_token
+        business_account_token: nil,
+        # List financial accounts of a given type
+        type: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

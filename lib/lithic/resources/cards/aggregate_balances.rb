@@ -8,8 +8,10 @@ module Lithic
         #
         # @overload list(account_token: nil, business_account_token: nil, request_options: {})
         #
-        # @param account_token [String]
-        # @param business_account_token [String]
+        # @param account_token [String] Cardholder to retrieve aggregate balances for.
+        #
+        # @param business_account_token [String] Business to retrieve aggregate balances for.
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Internal::SinglePage<Lithic::Models::Cards::AggregateBalanceListResponse>]

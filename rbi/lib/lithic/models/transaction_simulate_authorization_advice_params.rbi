@@ -23,8 +23,14 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(token:, amount:, request_options: {}); end
-
+      def self.new(
+        # The transaction token returned from the /v1/simulate/authorize. response.
+        token:,
+        # Amount (in cents) to authorize. This amount will override the transaction's
+        # amount that was originally set by /v1/simulate/authorize.
+        amount:,
+        request_options: {}
+      ); end
       sig { override.returns({token: String, amount: Integer, request_options: Lithic::RequestOptions}) }
       def to_hash; end
     end
