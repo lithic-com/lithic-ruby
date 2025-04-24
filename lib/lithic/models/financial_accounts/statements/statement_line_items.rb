@@ -94,17 +94,33 @@ module Lithic
             optional :descriptor, String
 
             # @!method initialize(token:, amount:, category:, created:, currency:, effective_date:, event_type:, financial_account_token:, financial_transaction_event_token:, financial_transaction_token:, card_token: nil, descriptor: nil)
-            #   @param token [String]
-            #   @param amount [Integer]
+            #   Some parameter documentations has been truncated, see
+            #   {Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data} for
+            #   more details.
+            #
+            #   @param token [String] Globally unique identifier for a Statement Line Item
+            #
+            #   @param amount [Integer] Transaction amount in cents
+            #
             #   @param category [Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category]
-            #   @param created [Time]
-            #   @param currency [String]
-            #   @param effective_date [Date]
+            #
+            #   @param created [Time] Timestamp of when the line item was generated
+            #
+            #   @param currency [String] 3-character alphabetic ISO 4217 code for the settling currency of the transactio
+            #   ...
+            #
+            #   @param effective_date [Date] Date that the transaction effected the account balance
+            #
             #   @param event_type [Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType]
-            #   @param financial_account_token [String]
-            #   @param financial_transaction_event_token [String]
-            #   @param financial_transaction_token [String]
-            #   @param card_token [String]
+            #
+            #   @param financial_account_token [String] Globally unique identifier for a financial account
+            #
+            #   @param financial_transaction_event_token [String] Globally unique identifier for a financial transaction event
+            #
+            #   @param financial_transaction_token [String] Globally unique identifier for a financial transaction
+            #
+            #   @param card_token [String] Globally unique identifier for a card
+            #
             #   @param descriptor [String]
 
             # @see Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data#category

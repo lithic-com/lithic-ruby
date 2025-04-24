@@ -32,10 +32,14 @@ module Lithic
       optional :reason, enum: -> { Lithic::Models::DisputeUpdateParams::Reason }
 
       # @!method initialize(amount: nil, customer_filed_date: nil, customer_note: nil, reason: nil, request_options: {})
-      #   @param amount [Integer]
-      #   @param customer_filed_date [Time]
-      #   @param customer_note [String]
-      #   @param reason [Symbol, Lithic::Models::DisputeUpdateParams::Reason]
+      #   @param amount [Integer] Amount to dispute
+      #
+      #   @param customer_filed_date [Time] Date the customer filed the dispute
+      #
+      #   @param customer_note [String] Customer description of dispute
+      #
+      #   @param reason [Symbol, Lithic::Models::DisputeUpdateParams::Reason] Reason for dispute
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Reason for dispute

@@ -11,8 +11,10 @@ module Lithic
       attr_writer :enrolled
 
       sig { params(enrolled: T::Boolean).returns(T.attached_class) }
-      def self.new(enrolled: nil); end
-
+      def self.new(
+        # True if the endpoint was enrolled successfully.
+        enrolled: nil
+      ); end
       sig { override.returns({enrolled: T::Boolean}) }
       def to_hash; end
     end

@@ -61,16 +61,28 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Globally unique identifier.
         token:,
+        # Timestamp of when dispute evidence was created.
         created:,
+        # Dispute token evidence is attached to.
         dispute_token:,
+        # Upload status types:
+        #
+        # - `DELETED` - Evidence was deleted.
+        # - `ERROR` - Evidence upload failed.
+        # - `PENDING` - Evidence is pending upload.
+        # - `REJECTED` - Evidence was rejected.
+        # - `UPLOADED` - Evidence was uploaded.
         upload_status:,
+        # URL to download evidence. Only shown when `upload_status` is `UPLOADED`.
         download_url: nil,
+        # File name of evidence. Recommended to give the dispute evidence a human-readable
+        # identifier.
         filename: nil,
+        # URL to upload evidence. Only shown when `upload_status` is `PENDING`.
         upload_url: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

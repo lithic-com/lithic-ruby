@@ -20,8 +20,10 @@ module Lithic
       optional :return_reason_code, String
 
       # @!method initialize(payment_token:, return_reason_code: nil, request_options: {})
-      #   @param payment_token [String]
-      #   @param return_reason_code [String]
+      #   @param payment_token [String] Payment Token
+      #
+      #   @param return_reason_code [String] Return Reason Code
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

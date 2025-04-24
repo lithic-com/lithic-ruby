@@ -102,15 +102,45 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # You must submit a list of all direct and indirect individuals with 25% or more
+        # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
+        # no individual owns 25% of the company you do not need to send beneficial owner
+        # information. See
+        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+        # (Section I) for more background on individuals that should be included.
         beneficial_owner_individuals:,
+        # Information for business for which the account is being opened and KYB is being
+        # run.
         business_entity:,
+        # An individual with significant responsibility for managing the legal entity
+        # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+        # Officer, Managing Member, General Partner, President, Vice President, or
+        # Treasurer). This can be an executive, or someone who will have program-wide
+        # access to the cards that Lithic will provide. In some cases, this individual
+        # could also be a beneficial owner listed above. See
+        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+        # (Section II) for more background.
         control_person:,
+        # Short description of the company's line of business (i.e., what does the company
+        # do?).
         nature_of_business:,
+        # An RFC 3339 timestamp indicating when the account holder accepted the applicable
+        # legal agreements (e.g., cardholder terms) as agreed upon during API customer's
+        # implementation with Lithic.
         tos_timestamp:,
+        # Specifies the type of KYB workflow to run.
         workflow:,
+        # Deprecated.
         beneficial_owner_entities: nil,
+        # A user provided id that can be used to link an account holder with an external
+        # system
         external_id: nil,
+        # An RFC 3339 timestamp indicating when precomputed KYC was completed on the
+        # business with a pass result.
+        #
+        # This field is required only if workflow type is `KYB_BYO`.
         kyb_passed_timestamp: nil,
+        # Company website URL.
         website_url: nil
       ); end
       sig do
@@ -185,8 +215,27 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil); end
-
+        def self.new(
+          # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          address:,
+          # Individual's date of birth, as an RFC 3339 date.
+          dob:,
+          # Individual's email address. If utilizing Lithic for chargeback processing, this
+          # customer email address may be used to communicate dispute status and resolution.
+          email:,
+          # Individual's first name, as it appears on government-issued identity documents.
+          first_name:,
+          # Government-issued identification number (required for identity verification and
+          # compliance with banking regulations). Social Security Numbers (SSN) and
+          # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+          # entered as full nine-digits, with or without hyphens
+          government_id:,
+          # Individual's last name, as it appears on government-issued identity documents.
+          last_name:,
+          # Individual's phone number, entered in E.164 format.
+          phone_number: nil
+        ); end
         sig do
           override
             .returns(
@@ -257,11 +306,22 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
+          # acceptable; APO/FPO are acceptable.
           address:,
+          # Government-issued identification number. US Federal Employer Identification
+          # Numbers (EIN) are currently supported, entered as full nine-digits, with or
+          # without hyphens.
           government_id:,
+          # Legal (formal) business name.
           legal_business_name:,
+          # One or more of the business's phone number(s), entered as a list in E.164
+          # format.
           phone_numbers:,
+          # Any name that the business operates under that is not its legal business name
+          # (if applicable).
           dba_business_name: nil,
+          # Parent company name (if applicable).
           parent_company: nil
         ); end
         sig do
@@ -340,8 +400,27 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil); end
-
+        def self.new(
+          # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
+          # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
+          address:,
+          # Individual's date of birth, as an RFC 3339 date.
+          dob:,
+          # Individual's email address. If utilizing Lithic for chargeback processing, this
+          # customer email address may be used to communicate dispute status and resolution.
+          email:,
+          # Individual's first name, as it appears on government-issued identity documents.
+          first_name:,
+          # Government-issued identification number (required for identity verification and
+          # compliance with banking regulations). Social Security Numbers (SSN) and
+          # Individual Taxpayer Identification Numbers (ITIN) are currently supported,
+          # entered as full nine-digits, with or without hyphens
+          government_id:,
+          # Individual's last name, as it appears on government-issued identity documents.
+          last_name:,
+          # Individual's phone number, entered in E.164 format.
+          phone_number: nil
+        ); end
         sig do
           override
             .returns(
@@ -424,11 +503,22 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
+          # acceptable; APO/FPO are acceptable.
           address:,
+          # Government-issued identification number. US Federal Employer Identification
+          # Numbers (EIN) are currently supported, entered as full nine-digits, with or
+          # without hyphens.
           government_id:,
+          # Legal (formal) business name.
           legal_business_name:,
+          # One or more of the business's phone number(s), entered as a list in E.164
+          # format.
           phone_numbers:,
+          # Any name that the business operates under that is not its legal business name
+          # (if applicable).
           dba_business_name: nil,
+          # Parent company name (if applicable).
           parent_company: nil
         ); end
         sig do

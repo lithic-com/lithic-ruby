@@ -48,9 +48,17 @@ module Lithic
         optional :monthly, Integer
 
         # @!method initialize(daily: nil, lifetime: nil, monthly: nil)
-        #   @param daily [Integer]
-        #   @param lifetime [Integer]
-        #   @param monthly [Integer]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::AccountSpendLimits::AvailableSpendLimit} for more details.
+        #
+        #   @param daily [Integer] The available spend limit (in cents) relative to the daily limit configured on t
+        #   ...
+        #
+        #   @param lifetime [Integer] The available spend limit (in cents) relative to the lifetime limit configured o
+        #   ...
+        #
+        #   @param monthly [Integer] The available spend limit (in cents) relative to the monthly limit configured on
+        #   ...
       end
 
       # @see Lithic::Models::AccountSpendLimits#spend_limit
@@ -74,9 +82,11 @@ module Lithic
         optional :monthly, Integer
 
         # @!method initialize(daily: nil, lifetime: nil, monthly: nil)
-        #   @param daily [Integer]
-        #   @param lifetime [Integer]
-        #   @param monthly [Integer]
+        #   @param daily [Integer] The configured daily spend limit (in cents) on the Account.
+        #
+        #   @param lifetime [Integer] The configured lifetime spend limit (in cents) on the Account.
+        #
+        #   @param monthly [Integer] The configured monthly spend limit (in cents) on the Account.
       end
 
       # @see Lithic::Models::AccountSpendLimits#spend_velocity
@@ -103,9 +113,17 @@ module Lithic
         optional :monthly, Integer
 
         # @!method initialize(daily: nil, lifetime: nil, monthly: nil)
-        #   @param daily [Integer]
-        #   @param lifetime [Integer]
-        #   @param monthly [Integer]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::AccountSpendLimits::SpendVelocity} for more details.
+        #
+        #   @param daily [Integer] Current daily spend velocity (in cents) on the Account. Present if daily spend l
+        #   ...
+        #
+        #   @param lifetime [Integer] Current lifetime spend velocity (in cents) on the Account. Present if lifetime s
+        #   ...
+        #
+        #   @param monthly [Integer] Current monthly spend velocity (in cents) on the Account. Present if monthly spe
+        #   ...
       end
     end
   end

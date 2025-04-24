@@ -22,11 +22,16 @@ module Lithic
       #
       # @overload create(nickname:, type:, account_token: nil, is_for_benefit_of: nil, idempotency_key: nil, request_options: {})
       #
-      # @param nickname [String]
-      # @param type [Symbol, Lithic::Models::FinancialAccountCreateParams::Type]
-      # @param account_token [String]
-      # @param is_for_benefit_of [Boolean]
-      # @param idempotency_key [String]
+      # @param nickname [String] Body param:
+      #
+      # @param type [Symbol, Lithic::Models::FinancialAccountCreateParams::Type] Body param:
+      #
+      # @param account_token [String] Body param:
+      #
+      # @param is_for_benefit_of [Boolean] Body param:
+      #
+      # @param idempotency_key [String] Header param:
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::FinancialAccount]
@@ -91,9 +96,12 @@ module Lithic
       #
       # @overload list(account_token: nil, business_account_token: nil, type: nil, request_options: {})
       #
-      # @param account_token [String]
-      # @param business_account_token [String]
-      # @param type [Symbol, Lithic::Models::FinancialAccountListParams::Type]
+      # @param account_token [String] List financial accounts for a given account_token or business_account_token
+      #
+      # @param business_account_token [String] List financial accounts for a given business_account_token
+      #
+      # @param type [Symbol, Lithic::Models::FinancialAccountListParams::Type] List financial accounts of a given type
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Internal::SinglePage<Lithic::Models::FinancialAccount>]
@@ -115,9 +123,12 @@ module Lithic
       #
       # @overload update_status(financial_account_token, status:, substatus:, request_options: {})
       #
-      # @param financial_account_token [String]
-      # @param status [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status]
-      # @param substatus [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil]
+      # @param financial_account_token [String] Globally unique identifier for financial account.
+      #
+      # @param status [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status] Status of the financial account
+      #
+      # @param substatus [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil] Substatus for the financial account
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::FinancialAccount]

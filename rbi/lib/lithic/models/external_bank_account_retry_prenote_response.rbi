@@ -157,27 +157,60 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # A globally unique identifier for this record of an external bank account
+        # association. If a program links an external bank account to more than one
+        # end-user or to both the program and the end-user, then Lithic will return each
+        # record of the association
         token:,
+        # The country that the bank account is located in using ISO 3166-1. We will only
+        # accept USA bank accounts e.g., USA
         country:,
+        # An ISO 8601 string representing when this funding source was added to the Lithic
+        # account.
         created:,
+        # currency of the external account 3-character alphabetic ISO 4217 code
         currency:,
+        # The last 4 digits of the bank account. Derived by Lithic from the account number
+        # passed
         last_four:,
+        # Legal Name of the business or individual who owns the external account. This
+        # will appear in statements
         owner:,
+        # Owner Type
         owner_type:,
+        # Routing Number
         routing_number:,
+        # Account State
         state:,
+        # Account Type
         type:,
+        # The number of attempts at verification
         verification_attempts:,
+        # Verification Method
         verification_method:,
+        # Verification State
         verification_state:,
+        # Indicates which Lithic account the external account is associated with. For
+        # external accounts that are associated with the program, account_token field
+        # returned will be null
         account_token: nil,
+        # Address
         address: nil,
+        # Optional field that helps identify bank accounts in receipts
         company_id: nil,
+        # Date of Birth of the Individual that owns the external bank account
         dob: nil,
+        # Doing Business As
         doing_business_as: nil,
+        # The financial account token of the operating account to fund the micro deposits
         financial_account_token: nil,
+        # The nickname for this External Bank Account
         name: nil,
+        # User Defined ID
         user_defined_id: nil,
+        # Optional free text description of the reason for the failed verification. For
+        # ACH micro-deposits returned, this field will display the reason return code sent
+        # by the ACH network
         verification_failed_reason: nil
       ); end
       sig do

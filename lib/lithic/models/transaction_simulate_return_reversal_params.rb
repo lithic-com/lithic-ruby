@@ -14,7 +14,8 @@ module Lithic
       required :token, String
 
       # @!method initialize(token:, request_options: {})
-      #   @param token [String]
+      #   @param token [String] The transaction token returned from the /v1/simulate/authorize response.
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

@@ -29,8 +29,13 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(account_token: nil, business_account_token: nil, request_options: {}); end
-
+        def self.new(
+          # Cardholder to retrieve aggregate balances for.
+          account_token: nil,
+          # Business to retrieve aggregate balances for.
+          business_account_token: nil,
+          request_options: {}
+        ); end
         sig do
           override
             .returns({

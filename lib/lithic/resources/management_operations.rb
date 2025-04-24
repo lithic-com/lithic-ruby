@@ -37,7 +37,8 @@ module Lithic
       #
       # @overload retrieve(management_operation_token, request_options: {})
       #
-      # @param management_operation_token [String]
+      # @param management_operation_token [String] Globally unique identifier for the management operation
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ManagementOperationTransaction]
@@ -52,19 +53,36 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::ManagementOperationListParams} for more details.
+      #
       # List management operations
       #
       # @overload list(begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, starting_after: nil, status: nil, request_options: {})
       #
-      # @param begin_ [Time]
+      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      # ...
+      #
       # @param business_account_token [String]
-      # @param category [Symbol, Lithic::Models::ManagementOperationListParams::Category]
-      # @param end_ [Time]
-      # @param ending_before [String]
-      # @param financial_account_token [String]
-      # @param page_size [Integer]
-      # @param starting_after [String]
-      # @param status [Symbol, Lithic::Models::ManagementOperationListParams::Status]
+      #
+      # @param category [Symbol, Lithic::Models::ManagementOperationListParams::Category] Management operation category to be returned.
+      #
+      # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
+      # ...
+      #
+      # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+      # ...
+      #
+      # @param financial_account_token [String] Globally unique identifier for the financial account. Accepted type dependent on
+      # ...
+      #
+      # @param page_size [Integer] Page size (for pagination).
+      #
+      # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+      # ...
+      #
+      # @param status [Symbol, Lithic::Models::ManagementOperationListParams::Status] Management operation status to be returned.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Internal::CursorPage<Lithic::Models::ManagementOperationTransaction>]
@@ -86,9 +104,12 @@ module Lithic
       #
       # @overload reverse(management_operation_token, effective_date:, memo: nil, request_options: {})
       #
-      # @param management_operation_token [String]
+      # @param management_operation_token [String] Globally unique identifier for the management operation
+      #
       # @param effective_date [Date]
+      #
       # @param memo [String]
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ManagementOperationTransaction]

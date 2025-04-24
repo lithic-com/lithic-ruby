@@ -55,15 +55,28 @@ module Lithic
       optional :user_defined_id, String
 
       # @!method initialize(amount:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, type:, token: nil, memo: nil, user_defined_id: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::PaymentCreateParams} for more details.
+      #
       #   @param amount [Integer]
+      #
       #   @param external_bank_account_token [String]
+      #
       #   @param financial_account_token [String]
+      #
       #   @param method_ [Symbol, Lithic::Models::PaymentCreateParams::Method]
+      #
       #   @param method_attributes [Lithic::Models::PaymentCreateParams::MethodAttributes]
+      #
       #   @param type [Symbol, Lithic::Models::PaymentCreateParams::Type]
-      #   @param token [String]
+      #
+      #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
+      #   ...
+      #
       #   @param memo [String]
+      #
       #   @param user_defined_id [String]
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       module Method

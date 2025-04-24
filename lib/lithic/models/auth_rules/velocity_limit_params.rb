@@ -40,11 +40,21 @@ module Lithic
         optional :limit_count, Integer, nil?: true
 
         # @!method initialize(filters:, period:, scope:, limit_amount: nil, limit_count: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::AuthRules::VelocityLimitParams} for more details.
+        #
         #   @param filters [Lithic::Models::AuthRules::VelocityLimitParams::Filters]
-        #   @param period [Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow]
+        #
+        #   @param period [Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow] The size of the trailing window to calculate Spend Velocity over in seconds. The
+        #   ...
+        #
         #   @param scope [Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope]
-        #   @param limit_amount [Integer, nil]
-        #   @param limit_count [Integer, nil]
+        #
+        #   @param limit_amount [Integer, nil] The maximum amount of spend velocity allowed in the period in minor units (the s
+        #   ...
+        #
+        #   @param limit_count [Integer, nil] The number of spend velocity impacting transactions may not exceed this limit in
+        #   ...
 
         # @see Lithic::Models::AuthRules::VelocityLimitParams#filters
         class Filters < Lithic::Internal::Type::BaseModel
@@ -79,10 +89,20 @@ module Lithic
           optional :include_mccs, Lithic::Internal::Type::ArrayOf[String], nil?: true
 
           # @!method initialize(exclude_countries: nil, exclude_mccs: nil, include_countries: nil, include_mccs: nil)
-          #   @param exclude_countries [Array<String>, nil]
-          #   @param exclude_mccs [Array<String>, nil]
-          #   @param include_countries [Array<String>, nil]
-          #   @param include_mccs [Array<String>, nil]
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::AuthRules::VelocityLimitParams::Filters} for more details.
+          #
+          #   @param exclude_countries [Array<String>, nil] ISO-3166-1 alpha-3 Country Codes to exclude from the velocity calculation. Trans
+          #   ...
+          #
+          #   @param exclude_mccs [Array<String>, nil] Merchant Category Codes to exclude from the velocity calculation. Transactions m
+          #   ...
+          #
+          #   @param include_countries [Array<String>, nil] ISO-3166-1 alpha-3 Country Codes to include in the velocity calculation. Transac
+          #   ...
+          #
+          #   @param include_mccs [Array<String>, nil] Merchant Category Codes to include in the velocity calculation. Transactions not
+          #   ...
         end
 
         # The size of the trailing window to calculate Spend Velocity over in seconds. The

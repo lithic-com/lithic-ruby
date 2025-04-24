@@ -23,8 +23,14 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(debugging_request_id:, result:, transaction_event_token:); end
-
+      def self.new(
+        # Debugging Request Id
+        debugging_request_id:,
+        # Request Result
+        result:,
+        # Transaction Event Token
+        transaction_event_token:
+      ); end
       sig do
         override
           .returns(

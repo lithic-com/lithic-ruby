@@ -10,7 +10,8 @@ module Lithic
           #
           # @overload retrieve(event_token, request_options: {})
           #
-          # @param event_token [String]
+          # @param event_token [String] The token of the transaction event that the enhanced data is associated with.
+          #
           # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Lithic::Models::Transactions::Events::EnhancedData]

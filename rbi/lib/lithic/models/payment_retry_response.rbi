@@ -11,8 +11,10 @@ module Lithic
       attr_writer :balance
 
       sig { params(balance: T.any(Lithic::Models::Balance, Lithic::Internal::AnyHash)).returns(T.attached_class) }
-      def self.new(balance: nil); end
-
+      def self.new(
+        # Balance
+        balance: nil
+      ); end
       sig { override.returns({balance: Lithic::Models::Balance}) }
       def to_hash; end
     end

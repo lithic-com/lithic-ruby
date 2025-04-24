@@ -42,11 +42,21 @@ module Lithic
       optional :merchant_acceptor_id, String
 
       # @!method initialize(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, request_options: {})
-      #   @param amount [Integer]
-      #   @param descriptor [String]
-      #   @param pan [String]
-      #   @param mcc [String]
-      #   @param merchant_acceptor_id [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::TransactionSimulateCreditAuthorizationParams} for more details.
+      #
+      #   @param amount [Integer] Amount (in cents). Any value entered will be converted into a negative amount in
+      #   ...
+      #
+      #   @param descriptor [String] Merchant descriptor.
+      #
+      #   @param pan [String] Sixteen digit card number.
+      #
+      #   @param mcc [String] Merchant category code for the transaction to be simulated. A four-digit number
+      #   ...
+      #
+      #   @param merchant_acceptor_id [String] Unique identifier to identify the payment card acceptor.
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

@@ -25,8 +25,13 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(payment_token:, return_reason_code: nil, request_options: {}); end
-
+      def self.new(
+        # Payment Token
+        payment_token:,
+        # Return Reason Code
+        return_reason_code: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns({

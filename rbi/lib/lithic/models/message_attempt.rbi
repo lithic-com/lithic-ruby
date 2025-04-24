@@ -51,17 +51,24 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Globally unique identifier.
         token:,
+        # An RFC 3339 timestamp for when the event was created. UTC time zone.
+        #
+        # If no timezone is specified, UTC will be used.
         created:,
+        # Globally unique identifier.
         event_subscription_token:,
+        # Globally unique identifier.
         event_token:,
+        # The response body from the event subscription's URL.
         response:,
+        # The response status code from the event subscription's URL.
         response_status_code:,
+        # The status of the event attempt.
         status:,
         url:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

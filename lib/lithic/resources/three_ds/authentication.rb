@@ -8,7 +8,8 @@ module Lithic
         #
         # @overload retrieve(three_ds_authentication_token, request_options: {})
         #
-        # @param three_ds_authentication_token [String]
+        # @param three_ds_authentication_token [String] 3DS Authentication Token
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse]
@@ -23,6 +24,9 @@ module Lithic
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Lithic::Models::ThreeDS::AuthenticationSimulateParams} for more details.
+        #
         # Simulates a 3DS authentication request from the payment network as if it came
         # from an ACS. If you're configured for 3DS Customer Decisioning, simulating
         # authentications requires your customer decisioning endpoint to be set up
@@ -31,9 +35,14 @@ module Lithic
         # @overload simulate(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {})
         #
         # @param merchant [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant]
-        # @param pan [String]
+        #
+        # @param pan [String] Sixteen digit card number.
+        #
         # @param transaction [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction]
-        # @param card_expiry_check [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck]
+        #
+        # @param card_expiry_check [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck] When set will use the following values as part of the Simulated Authentication.
+        # ...
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::ThreeDS::AuthenticationSimulateResponse]
@@ -50,6 +59,10 @@ module Lithic
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Lithic::Models::ThreeDS::AuthenticationSimulateOtpEntryParams} for more
+        # details.
+        #
         # Endpoint for simulating entering OTP into 3DS Challenge UI. A call to
         # /v1/three_ds_authentication/simulate that resulted in triggered SMS-OTP
         # challenge must precede. Only a single attempt is supported; upon entering OTP,
@@ -57,8 +70,11 @@ module Lithic
         #
         # @overload simulate_otp_entry(token:, otp:, request_options: {})
         #
-        # @param token [String]
-        # @param otp [String]
+        # @param token [String] A unique token returned as part of a /v1/three_ds_authentication/simulate call t
+        # ...
+        #
+        # @param otp [String] The OTP entered by the cardholder
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]

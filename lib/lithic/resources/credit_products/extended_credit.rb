@@ -8,7 +8,8 @@ module Lithic
         #
         # @overload retrieve(credit_product_token, request_options: {})
         #
-        # @param credit_product_token [String]
+        # @param credit_product_token [String] Credit Product Token
+        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::CreditProducts::CreditProductsExtendedCredit]

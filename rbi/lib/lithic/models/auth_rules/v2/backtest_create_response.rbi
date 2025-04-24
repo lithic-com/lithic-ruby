@@ -13,8 +13,10 @@ module Lithic
           attr_writer :backtest_token
 
           sig { params(backtest_token: String).returns(T.attached_class) }
-          def self.new(backtest_token: nil); end
-
+          def self.new(
+            # Auth Rule Backtest Token
+            backtest_token: nil
+          ); end
           sig { override.returns({backtest_token: String}) }
           def to_hash; end
         end

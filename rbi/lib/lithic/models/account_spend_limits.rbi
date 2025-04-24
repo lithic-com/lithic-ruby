@@ -79,8 +79,17 @@ module Lithic
         attr_writer :monthly
 
         sig { params(daily: Integer, lifetime: Integer, monthly: Integer).returns(T.attached_class) }
-        def self.new(daily: nil, lifetime: nil, monthly: nil); end
-
+        def self.new(
+          # The available spend limit (in cents) relative to the daily limit configured on
+          # the Account (e.g. 100000 would be a $1,000 limit).
+          daily: nil,
+          # The available spend limit (in cents) relative to the lifetime limit configured
+          # on the Account.
+          lifetime: nil,
+          # The available spend limit (in cents) relative to the monthly limit configured on
+          # the Account.
+          monthly: nil
+        ); end
         sig { override.returns({daily: Integer, lifetime: Integer, monthly: Integer}) }
         def to_hash; end
       end
@@ -108,8 +117,14 @@ module Lithic
         attr_writer :monthly
 
         sig { params(daily: Integer, lifetime: Integer, monthly: Integer).returns(T.attached_class) }
-        def self.new(daily: nil, lifetime: nil, monthly: nil); end
-
+        def self.new(
+          # The configured daily spend limit (in cents) on the Account.
+          daily: nil,
+          # The configured lifetime spend limit (in cents) on the Account.
+          lifetime: nil,
+          # The configured monthly spend limit (in cents) on the Account.
+          monthly: nil
+        ); end
         sig { override.returns({daily: Integer, lifetime: Integer, monthly: Integer}) }
         def to_hash; end
       end
@@ -140,8 +155,17 @@ module Lithic
         attr_writer :monthly
 
         sig { params(daily: Integer, lifetime: Integer, monthly: Integer).returns(T.attached_class) }
-        def self.new(daily: nil, lifetime: nil, monthly: nil); end
-
+        def self.new(
+          # Current daily spend velocity (in cents) on the Account. Present if daily spend
+          # limit is set.
+          daily: nil,
+          # Current lifetime spend velocity (in cents) on the Account. Present if lifetime
+          # spend limit is set.
+          lifetime: nil,
+          # Current monthly spend velocity (in cents) on the Account. Present if monthly
+          # spend limit is set.
+          monthly: nil
+        ); end
         sig { override.returns({daily: Integer, lifetime: Integer, monthly: Integer}) }
         def to_hash; end
       end

@@ -59,14 +59,28 @@ module Lithic
       optional :tokenization_channel, enum: -> { Lithic::Models::TokenizationListParams::TokenizationChannel }
 
       # @!method initialize(account_token: nil, begin_: nil, card_token: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, tokenization_channel: nil, request_options: {})
-      #   @param account_token [String]
-      #   @param begin_ [Date]
-      #   @param card_token [String]
-      #   @param end_ [Date]
-      #   @param ending_before [String]
-      #   @param page_size [Integer]
-      #   @param starting_after [String]
-      #   @param tokenization_channel [Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::TokenizationListParams} for more details.
+      #
+      #   @param account_token [String] Filters for tokenizations associated with a specific account.
+      #
+      #   @param begin_ [Date] Filter for tokenizations created after this date.
+      #
+      #   @param card_token [String] Filters for tokenizations associated with a specific card.
+      #
+      #   @param end_ [Date] Filter for tokenizations created before this date.
+      #
+      #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+      #   ...
+      #
+      #   @param page_size [Integer] Page size (for pagination).
+      #
+      #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+      #   ...
+      #
+      #   @param tokenization_channel [Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel] Filter for tokenizations by tokenization channel. If this is not specified, only
+      #   ...
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Filter for tokenizations by tokenization channel. If this is not specified, only

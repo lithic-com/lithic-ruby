@@ -51,12 +51,20 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Globally unique identifier.
         token:,
+        # Timestamp of when the card program was created.
         created:,
+        # The name of the card program.
         name:,
+        # The first digits of the card number that this card program ends with.
         pan_range_end:,
+        # The first digits of the card number that this card program starts with.
         pan_range_start:,
+        # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
         cardholder_currency: nil,
+        # List of 3-character alphabetic ISO 4217 codes for the currencies that the card
+        # program supports for settlement.
         settlement_currencies: nil
       ); end
       sig do

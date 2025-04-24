@@ -28,9 +28,16 @@ module Lithic
                -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason] }
 
       # @!method initialize(account_holder_token: nil, status: nil, status_reasons: nil, request_options: {})
-      #   @param account_holder_token [String]
-      #   @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status]
-      #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason>]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::AccountHolderSimulateEnrollmentReviewParams} for more details.
+      #
+      #   @param account_holder_token [String] The account holder which to perform the simulation upon.
+      #
+      #   @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status] An account holder's status for use within the simulation.
+      #
+      #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason>] Status reason that will be associated with the simulated account holder status.
+      #   ...
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # An account holder's status for use within the simulation.

@@ -89,9 +89,14 @@ module Lithic
         account_token: nil,
         account_types: nil,
         countries: nil,
+        # A cursor representing an item's token before which a page of results should end.
+        # Used to retrieve the previous page of results before this item.
         ending_before: nil,
         owner_types: nil,
+        # Page size (for pagination).
         page_size: nil,
+        # A cursor representing an item's token after which a page of results should
+        # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
         states: nil,
         verification_states: nil,

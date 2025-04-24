@@ -23,8 +23,14 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(digital_card_art_token: nil, request_options: {}); end
-
+      def self.new(
+        # Specifies the digital card art to be displayed in the user’s digital wallet for
+        # a tokenization. This artwork must be approved by the network and configured by
+        # Lithic to use. See
+        # [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
+        digital_card_art_token: nil,
+        request_options: {}
+      ); end
       sig { override.returns({digital_card_art_token: String, request_options: Lithic::RequestOptions}) }
       def to_hash; end
     end

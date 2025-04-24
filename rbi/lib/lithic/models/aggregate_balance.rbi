@@ -64,15 +64,29 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Funds available for spend in the currency's smallest unit (e.g., cents for USD)
         available_amount:,
+        # Date and time for when the balance was first created.
         created:,
+        # 3-character alphabetic ISO 4217 code for the local currency of the balance.
         currency:,
+        # Type of financial account
         financial_account_type:,
+        # Globally unique identifier for the financial account that had its balance
+        # updated most recently
         last_financial_account_token:,
+        # Globally unique identifier for the last transaction event that impacted this
+        # balance
         last_transaction_event_token:,
+        # Globally unique identifier for the last transaction that impacted this balance
         last_transaction_token:,
+        # Funds not available for spend due to card authorizations or pending ACH release.
+        # Shown in the currency's smallest unit (e.g., cents for USD)
         pending_amount:,
+        # The sum of available and pending balance in the currency's smallest unit (e.g.,
+        # cents for USD)
         total_amount:,
+        # Date and time for when the balance was last updated.
         updated:
       ); end
       sig do

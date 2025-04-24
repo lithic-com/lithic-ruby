@@ -58,11 +58,17 @@ module Lithic
       required :payload, Lithic::Internal::Type::HashOf[Lithic::Internal::Type::Unknown]
 
       # @!method initialize(token:, created:, event_type:, payload:)
+      #   Some parameter documentations has been truncated, see {Lithic::Models::Event}
+      #   for more details.
+      #
       #   A single event that affects the transaction state and lifecycle.
       #
-      #   @param token [String]
-      #   @param created [Time]
-      #   @param event_type [Symbol, Lithic::Models::Event::EventType]
+      #   @param token [String] Globally unique identifier.
+      #
+      #   @param created [Time] An RFC 3339 timestamp for when the event was created. UTC time zone. ...
+      #
+      #   @param event_type [Symbol, Lithic::Models::Event::EventType] Event types: ...
+      #
       #   @param payload [Hash{Symbol=>Object}]
 
       # Event types:

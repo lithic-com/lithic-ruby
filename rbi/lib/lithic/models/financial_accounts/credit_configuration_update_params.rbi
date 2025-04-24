@@ -45,8 +45,10 @@ module Lithic
         end
         def self.new(
           credit_limit: nil,
+          # Globally unique identifier for the credit product
           credit_product_token: nil,
           external_bank_account_token: nil,
+          # Tier to assign to a financial account
           tier: nil,
           request_options: {}
         ); end

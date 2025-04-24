@@ -163,26 +163,56 @@ module Lithic
       optional :website_url, String
 
       # @!method initialize(token:, created:, account_token: nil, beneficial_owner_entities: nil, beneficial_owner_individuals: nil, business_account_token: nil, business_entity: nil, control_person: nil, email: nil, exemption_type: nil, external_id: nil, individual: nil, nature_of_business: nil, phone_number: nil, required_documents: nil, status: nil, status_reasons: nil, user_type: nil, verification_application: nil, website_url: nil)
-      #   @param token [String]
-      #   @param created [Time]
-      #   @param account_token [String]
-      #   @param beneficial_owner_entities [Array<Lithic::Models::AccountHolder::BeneficialOwnerEntity>]
-      #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolder::BeneficialOwnerIndividual>]
-      #   @param business_account_token [String]
-      #   @param business_entity [Lithic::Models::AccountHolder::BusinessEntity]
-      #   @param control_person [Lithic::Models::AccountHolder::ControlPerson]
-      #   @param email [String]
-      #   @param exemption_type [Symbol, Lithic::Models::AccountHolder::ExemptionType]
-      #   @param external_id [String]
-      #   @param individual [Lithic::Models::AccountHolder::Individual]
-      #   @param nature_of_business [String]
-      #   @param phone_number [String]
-      #   @param required_documents [Array<Lithic::Models::RequiredDocument>]
-      #   @param status [Symbol, Lithic::Models::AccountHolder::Status]
-      #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolder::StatusReason>]
-      #   @param user_type [Symbol, Lithic::Models::AccountHolder::UserType]
-      #   @param verification_application [Lithic::Models::AccountHolder::VerificationApplication]
-      #   @param website_url [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::AccountHolder} for more details.
+      #
+      #   @param token [String] Globally unique identifier for the account holder.
+      #
+      #   @param created [Time] Timestamp of when the account holder was created.
+      #
+      #   @param account_token [String] Globally unique identifier for the account.
+      #
+      #   @param beneficial_owner_entities [Array<Lithic::Models::AccountHolder::BeneficialOwnerEntity>] Deprecated.
+      #
+      #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolder::BeneficialOwnerIndividual>] Only present when user_type == "BUSINESS". ...
+      #
+      #   @param business_account_token [String] Only applicable for customers using the KYC-Exempt workflow to enroll authorized
+      #   ...
+      #
+      #   @param business_entity [Lithic::Models::AccountHolder::BusinessEntity] Only present when user_type == "BUSINESS". Information about the business for wh
+      #   ...
+      #
+      #   @param control_person [Lithic::Models::AccountHolder::ControlPerson] Only present when user_type == "BUSINESS". ...
+      #
+      #   @param email [String] < ...
+      #
+      #   @param exemption_type [Symbol, Lithic::Models::AccountHolder::ExemptionType] The type of KYC exemption for a KYC-Exempt Account Holder.
+      #
+      #   @param external_id [String] Customer-provided token that indicates a relationship with an object outside of
+      #   ...
+      #
+      #   @param individual [Lithic::Models::AccountHolder::Individual] Only present when user_type == "INDIVIDUAL". Information about the individual fo
+      #   ...
+      #
+      #   @param nature_of_business [String] Only present when user_type == "BUSINESS". User-submitted description of the bus
+      #   ...
+      #
+      #   @param phone_number [String] < ...
+      #
+      #   @param required_documents [Array<Lithic::Models::RequiredDocument>] Only present for "KYB_BASIC" workflow. A list of documents required for the acco
+      #   ...
+      #
+      #   @param status [Symbol, Lithic::Models::AccountHolder::Status] <Deprecated. Use verification_application.status instead> ...
+      #
+      #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolder::StatusReason>] <Deprecated. Use verification_application.status_reasons> Reason for the evaluat
+      #   ...
+      #
+      #   @param user_type [Symbol, Lithic::Models::AccountHolder::UserType] The type of Account Holder. If the type is "INDIVIDUAL", the "individual" attrib
+      #   ...
+      #
+      #   @param verification_application [Lithic::Models::AccountHolder::VerificationApplication] Information about the most recent identity verification attempt
+      #
+      #   @param website_url [String] Only present when user_type == "BUSINESS". Business's primary website.
 
       class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
         # @!attribute address
@@ -233,13 +263,26 @@ module Lithic
         optional :parent_company, String
 
         # @!method initialize(address:, dba_business_name:, entity_token:, government_id:, legal_business_name:, phone_numbers:, parent_company: nil)
-        #   @param address [Lithic::Models::Address]
-        #   @param dba_business_name [String]
-        #   @param entity_token [String]
-        #   @param government_id [String]
-        #   @param legal_business_name [String]
-        #   @param phone_numbers [Array<String>]
-        #   @param parent_company [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::AccountHolder::BeneficialOwnerEntity} for more details.
+        #
+        #   @param address [Lithic::Models::Address] Business's physical address - PO boxes, UPS drops, and FedEx drops are not accep
+        #   ...
+        #
+        #   @param dba_business_name [String] Any name that the business operates under that is not its legal business name (i
+        #   ...
+        #
+        #   @param entity_token [String] Globally unique identifier for the entity.
+        #
+        #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
+        #   ...
+        #
+        #   @param legal_business_name [String] Legal (formal) business name.
+        #
+        #   @param phone_numbers [Array<String>] One or more of the business's phone number(s), entered as a list in E.164 format
+        #   ...
+        #
+        #   @param parent_company [String] Parent company name (if applicable).
       end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
@@ -290,13 +333,19 @@ module Lithic
         #   the information provided via KYC. For example, we do not return the government
         #   id.
         #
-        #   @param address [Lithic::Models::Address]
-        #   @param dob [String]
-        #   @param email [String]
-        #   @param entity_token [String]
-        #   @param first_name [String]
-        #   @param last_name [String]
-        #   @param phone_number [String]
+        #   @param address [Lithic::Models::Address] Individual's current address
+        #
+        #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
+        #
+        #   @param email [String] Individual's email address.
+        #
+        #   @param entity_token [String] Globally unique identifier for the entity.
+        #
+        #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
+        #
+        #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
+        #
+        #   @param phone_number [String] Individual's phone number, entered in E.164 format.
       end
 
       # @see Lithic::Models::AccountHolder#business_entity
@@ -349,16 +398,29 @@ module Lithic
         optional :parent_company, String
 
         # @!method initialize(address:, dba_business_name:, entity_token:, government_id:, legal_business_name:, phone_numbers:, parent_company: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::AccountHolder::BusinessEntity} for more details.
+        #
         #   Only present when user_type == "BUSINESS". Information about the business for
         #   which the account is being opened and KYB is being run.
         #
-        #   @param address [Lithic::Models::Address]
-        #   @param dba_business_name [String]
-        #   @param entity_token [String]
-        #   @param government_id [String]
-        #   @param legal_business_name [String]
-        #   @param phone_numbers [Array<String>]
-        #   @param parent_company [String]
+        #   @param address [Lithic::Models::Address] Business's physical address - PO boxes, UPS drops, and FedEx drops are not accep
+        #   ...
+        #
+        #   @param dba_business_name [String] Any name that the business operates under that is not its legal business name (i
+        #   ...
+        #
+        #   @param entity_token [String] Globally unique identifier for the entity.
+        #
+        #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
+        #   ...
+        #
+        #   @param legal_business_name [String] Legal (formal) business name.
+        #
+        #   @param phone_numbers [Array<String>] One or more of the business's phone number(s), entered as a list in E.164 format
+        #   ...
+        #
+        #   @param parent_company [String] Parent company name (if applicable).
       end
 
       # @see Lithic::Models::AccountHolder#control_person
@@ -413,13 +475,19 @@ module Lithic
         #   someone who will have program-wide access to the cards that Lithic will provide.
         #   In some cases, this individual could also be a beneficial owner listed above.
         #
-        #   @param address [Lithic::Models::Address]
-        #   @param dob [String]
-        #   @param email [String]
-        #   @param entity_token [String]
-        #   @param first_name [String]
-        #   @param last_name [String]
-        #   @param phone_number [String]
+        #   @param address [Lithic::Models::Address] Individual's current address
+        #
+        #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
+        #
+        #   @param email [String] Individual's email address.
+        #
+        #   @param entity_token [String] Globally unique identifier for the entity.
+        #
+        #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
+        #
+        #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
+        #
+        #   @param phone_number [String] Individual's phone number, entered in E.164 format.
       end
 
       # The type of KYC exemption for a KYC-Exempt Account Holder.
@@ -483,13 +551,19 @@ module Lithic
         #   Only present when user_type == "INDIVIDUAL". Information about the individual
         #   for which the account is being opened and KYC is being run.
         #
-        #   @param address [Lithic::Models::Address]
-        #   @param dob [String]
-        #   @param email [String]
-        #   @param entity_token [String]
-        #   @param first_name [String]
-        #   @param last_name [String]
-        #   @param phone_number [String]
+        #   @param address [Lithic::Models::Address] Individual's current address
+        #
+        #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
+        #
+        #   @param email [String] Individual's email address.
+        #
+        #   @param entity_token [String] Globally unique identifier for the entity.
+        #
+        #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
+        #
+        #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
+        #
+        #   @param phone_number [String] Individual's phone number, entered in E.164 format.
       end
 
       # <Deprecated. Use verification_application.status instead>
@@ -581,12 +655,18 @@ module Lithic
         optional :updated, Time
 
         # @!method initialize(created: nil, status: nil, status_reasons: nil, updated: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::AccountHolder::VerificationApplication} for more details.
+        #
         #   Information about the most recent identity verification attempt
         #
-        #   @param created [Time]
-        #   @param status [Symbol, Lithic::Models::AccountHolder::VerificationApplication::Status]
-        #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolder::VerificationApplication::StatusReason>]
-        #   @param updated [Time]
+        #   @param created [Time] Timestamp of when the application was created.
+        #
+        #   @param status [Symbol, Lithic::Models::AccountHolder::VerificationApplication::Status] KYC and KYB evaluation states. ...
+        #
+        #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolder::VerificationApplication::StatusReason>] Reason for the evaluation status.
+        #
+        #   @param updated [Time] Timestamp of when the application was last updated.
 
         # KYC and KYB evaluation states.
         #

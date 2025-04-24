@@ -137,28 +137,54 @@ module Lithic
         optional :tier, String
 
         # @!method initialize(token:, account_standing:, available_credit:, balances:, created:, credit_limit:, credit_product_token:, date:, day_totals:, ending_balance:, excess_credits:, financial_account_token:, interest_details:, minimum_payment_balance:, payment_allocation:, period_totals:, previous_statement_balance:, starting_balance:, updated:, version:, ytd_totals:, tier: nil)
-        #   @param token [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::FinancialAccounts::LoanTape} for more details.
+        #
+        #   @param token [String] Globally unique identifier for a loan tape
+        #
         #   @param account_standing [Lithic::Models::FinancialAccounts::LoanTape::AccountStanding]
-        #   @param available_credit [Integer]
+        #
+        #   @param available_credit [Integer] Amount of credit available to spend in cents
+        #
         #   @param balances [Lithic::Models::FinancialAccounts::LoanTape::Balances]
-        #   @param created [Time]
-        #   @param credit_limit [Integer]
-        #   @param credit_product_token [String]
-        #   @param date [Date]
+        #
+        #   @param created [Time] Timestamp of when the loan tape was created
+        #
+        #   @param credit_limit [Integer] For prepay accounts, this is the minimum prepay balance that must be maintained.
+        #   ...
+        #
+        #   @param credit_product_token [String] Globally unique identifier for a credit product
+        #
+        #   @param date [Date] Date of transactions that this loan tape covers
+        #
         #   @param day_totals [Lithic::Models::FinancialAccounts::LoanTape::DayTotals]
-        #   @param ending_balance [Integer]
-        #   @param excess_credits [Integer]
-        #   @param financial_account_token [String]
+        #
+        #   @param ending_balance [Integer] Balance at the end of the day
+        #
+        #   @param excess_credits [Integer] Excess credits in the form of provisional credits, payments, or purchase refunds
+        #   ...
+        #
+        #   @param financial_account_token [String] Globally unique identifier for a financial account
+        #
         #   @param interest_details [Lithic::Models::FinancialAccounts::LoanTape::InterestDetails, nil]
+        #
         #   @param minimum_payment_balance [Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance]
+        #
         #   @param payment_allocation [Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation]
+        #
         #   @param period_totals [Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals]
+        #
         #   @param previous_statement_balance [Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance]
-        #   @param starting_balance [Integer]
-        #   @param updated [Time]
-        #   @param version [Integer]
+        #
+        #   @param starting_balance [Integer] Balance at the start of the day
+        #
+        #   @param updated [Time] Timestamp of when the loan tape was updated
+        #
+        #   @param version [Integer] Version number of the loan tape. This starts at 1
+        #
         #   @param ytd_totals [Lithic::Models::FinancialAccounts::LoanTape::YtdTotals]
-        #   @param tier [String]
+        #
+        #   @param tier [String] Interest tier to which this account belongs to
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#account_standing
         class AccountStanding < Lithic::Internal::Type::BaseModel
@@ -212,13 +238,20 @@ module Lithic
                    enum: -> { Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState }
 
           # @!method initialize(consecutive_full_payments_made:, consecutive_minimum_payments_made:, consecutive_minimum_payments_missed:, days_past_due:, financial_account_state:, has_grace:, period_number:, period_state:)
-          #   @param consecutive_full_payments_made [Integer]
-          #   @param consecutive_minimum_payments_made [Integer]
-          #   @param consecutive_minimum_payments_missed [Integer]
-          #   @param days_past_due [Integer]
-          #   @param financial_account_state [Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState]
-          #   @param has_grace [Boolean]
-          #   @param period_number [Integer]
+          #   @param consecutive_full_payments_made [Integer] Number of consecutive full payments made
+          #
+          #   @param consecutive_minimum_payments_made [Integer] Number of consecutive minimum payments made
+          #
+          #   @param consecutive_minimum_payments_missed [Integer] Number of consecutive minimum payments missed
+          #
+          #   @param days_past_due [Integer] Number of days past due
+          #
+          #   @param financial_account_state [Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState] Information about the financial account state
+          #
+          #   @param has_grace [Boolean] Whether the account currently has grace or not
+          #
+          #   @param period_number [Integer] Current overall period number
+          #
           #   @param period_state [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState]
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::AccountStanding#financial_account_state
@@ -241,8 +274,9 @@ module Lithic
             # @!method initialize(status:, substatus: nil)
             #   Information about the financial account state
             #
-            #   @param status [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status]
-            #   @param substatus [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus, nil]
+            #   @param status [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status] Status of the financial account
+            #
+            #   @param substatus [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus, nil] Substatus for the financial account
 
             # Status of the financial account
             #
@@ -321,10 +355,18 @@ module Lithic
                    -> { Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue }
 
           # @!method initialize(due:, next_statement_due:, past_due:, past_statements_due:)
-          #   @param due [Lithic::Models::FinancialAccounts::LoanTape::Balances::Due]
-          #   @param next_statement_due [Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue]
-          #   @param past_due [Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue]
-          #   @param past_statements_due [Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue]
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::FinancialAccounts::LoanTape::Balances} for more details.
+          #
+          #   @param due [Lithic::Models::FinancialAccounts::LoanTape::Balances::Due] Amount due for the prior billing cycle. Any amounts not fully paid off on this d
+          #   ...
+          #
+          #   @param next_statement_due [Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue] Amount due for the current billing cycle. Any amounts not paid off by early paym
+          #   ...
+          #
+          #   @param past_due [Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue] Amount not paid off on previous due dates
+          #
+          #   @param past_statements_due [Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue] Amount due for the past billing cycles.
 
           # @see Lithic::Models::FinancialAccounts::LoanTape::Balances#due
           class Due < Lithic::Internal::Type::BaseModel
@@ -476,13 +518,23 @@ module Lithic
           required :purchases, Integer
 
           # @!method initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
-          #   @param balance_transfers [Integer]
-          #   @param cash_advances [Integer]
-          #   @param credits [Integer]
-          #   @param fees [Integer]
-          #   @param interest [Integer]
-          #   @param payments [Integer]
-          #   @param purchases [Integer]
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::FinancialAccounts::LoanTape::DayTotals} for more details.
+          #
+          #   @param balance_transfers [Integer] Opening balance transferred from previous account in cents
+          #
+          #   @param cash_advances [Integer] ATM and cashback transactions in cents
+          #
+          #   @param credits [Integer] Volume of credit management operation transactions less any balance transfers in
+          #   ...
+          #
+          #   @param fees [Integer] Volume of debit management operation transactions less any interest in cents
+          #
+          #   @param interest [Integer] Interest accrued in cents
+          #
+          #   @param payments [Integer] Any funds transfers which affective the balance in cents
+          #
+          #   @param purchases [Integer] Net card transaction volume less any cash advances in cents
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#interest_details
@@ -701,13 +753,23 @@ module Lithic
           required :purchases, Integer
 
           # @!method initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
-          #   @param balance_transfers [Integer]
-          #   @param cash_advances [Integer]
-          #   @param credits [Integer]
-          #   @param fees [Integer]
-          #   @param interest [Integer]
-          #   @param payments [Integer]
-          #   @param purchases [Integer]
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals} for more details.
+          #
+          #   @param balance_transfers [Integer] Opening balance transferred from previous account in cents
+          #
+          #   @param cash_advances [Integer] ATM and cashback transactions in cents
+          #
+          #   @param credits [Integer] Volume of credit management operation transactions less any balance transfers in
+          #   ...
+          #
+          #   @param fees [Integer] Volume of debit management operation transactions less any interest in cents
+          #
+          #   @param interest [Integer] Interest accrued in cents
+          #
+          #   @param payments [Integer] Any funds transfers which affective the balance in cents
+          #
+          #   @param purchases [Integer] Net card transaction volume less any cash advances in cents
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#previous_statement_balance
@@ -773,13 +835,23 @@ module Lithic
           required :purchases, Integer
 
           # @!method initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
-          #   @param balance_transfers [Integer]
-          #   @param cash_advances [Integer]
-          #   @param credits [Integer]
-          #   @param fees [Integer]
-          #   @param interest [Integer]
-          #   @param payments [Integer]
-          #   @param purchases [Integer]
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::FinancialAccounts::LoanTape::YtdTotals} for more details.
+          #
+          #   @param balance_transfers [Integer] Opening balance transferred from previous account in cents
+          #
+          #   @param cash_advances [Integer] ATM and cashback transactions in cents
+          #
+          #   @param credits [Integer] Volume of credit management operation transactions less any balance transfers in
+          #   ...
+          #
+          #   @param fees [Integer] Volume of debit management operation transactions less any interest in cents
+          #
+          #   @param interest [Integer] Interest accrued in cents
+          #
+          #   @param payments [Integer] Any funds transfers which affective the balance in cents
+          #
+          #   @param purchases [Integer] Net card transaction volume less any cash advances in cents
         end
       end
     end

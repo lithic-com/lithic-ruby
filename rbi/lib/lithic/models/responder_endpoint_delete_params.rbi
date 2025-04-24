@@ -17,8 +17,11 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(type:, request_options: {}); end
-
+      def self.new(
+        # The type of the endpoint.
+        type:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

@@ -48,9 +48,17 @@ module Lithic
         optional :monthly, Integer
 
         # @!method initialize(annually: nil, forever: nil, monthly: nil)
-        #   @param annually [Integer]
-        #   @param forever [Integer]
-        #   @param monthly [Integer]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::CardSpendLimits::AvailableSpendLimit} for more details.
+        #
+        #   @param annually [Integer] The available spend limit (in cents) relative to the annual limit configured on
+        #   ...
+        #
+        #   @param forever [Integer] The available spend limit (in cents) relative to the forever limit configured on
+        #   ...
+        #
+        #   @param monthly [Integer] The available spend limit (in cents) relative to the monthly limit configured on
+        #   ...
       end
 
       # @see Lithic::Models::CardSpendLimits#spend_limit
@@ -74,9 +82,11 @@ module Lithic
         optional :monthly, Integer
 
         # @!method initialize(annually: nil, forever: nil, monthly: nil)
-        #   @param annually [Integer]
-        #   @param forever [Integer]
-        #   @param monthly [Integer]
+        #   @param annually [Integer] The configured annual spend limit (in cents) on the Card.
+        #
+        #   @param forever [Integer] The configured forever spend limit (in cents) on the Card.
+        #
+        #   @param monthly [Integer] The configured monthly spend limit (in cents) on the Card.
       end
 
       # @see Lithic::Models::CardSpendLimits#spend_velocity
@@ -103,9 +113,17 @@ module Lithic
         optional :monthly, Integer
 
         # @!method initialize(annually: nil, forever: nil, monthly: nil)
-        #   @param annually [Integer]
-        #   @param forever [Integer]
-        #   @param monthly [Integer]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::CardSpendLimits::SpendVelocity} for more details.
+        #
+        #   @param annually [Integer] Current annual spend velocity (in cents) on the Card. Present if annual spend li
+        #   ...
+        #
+        #   @param forever [Integer] Current forever spend velocity (in cents) on the Card. Present if forever spend
+        #   ...
+        #
+        #   @param monthly [Integer] Current monthly spend velocity (in cents) on the Card. Present if monthly spend
+        #   ...
       end
     end
   end

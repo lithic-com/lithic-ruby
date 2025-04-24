@@ -11,8 +11,10 @@ module Lithic
       attr_writer :secret
 
       sig { params(secret: String).returns(T.attached_class) }
-      def self.new(secret: nil); end
-
+      def self.new(
+        # The new Tokenization Decisioning HMAC secret
+        secret: nil
+      ); end
       sig { override.returns({secret: String}) }
       def to_hash; end
     end

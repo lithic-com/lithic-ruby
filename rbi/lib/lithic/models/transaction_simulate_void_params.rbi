@@ -38,8 +38,20 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(token:, amount: nil, type: nil, request_options: {}); end
-
+      def self.new(
+        # The transaction token returned from the /v1/simulate/authorize response.
+        token:,
+        # Amount (in cents) to void. Typically this will match the amount in the original
+        # authorization, but can be less.
+        amount: nil,
+        # Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`.
+        #
+        # - `AUTHORIZATION_EXPIRY` indicates authorization has expired and been reversed
+        #   by Lithic.
+        # - `AUTHORIZATION_REVERSAL` indicates authorization was reversed by the merchant.
+        type: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

@@ -32,8 +32,16 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(token:, description:, disabled:, url:, event_types: nil); end
-
+      def self.new(
+        # Globally unique identifier.
+        token:,
+        # A description of the subscription.
+        description:,
+        # Whether the subscription is disabled.
+        disabled:,
+        url:,
+        event_types: nil
+      ); end
       sig do
         override
           .returns(

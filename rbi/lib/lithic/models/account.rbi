@@ -86,12 +86,37 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Globally unique identifier for the account. This is the same as the
+        # account_token returned by the enroll endpoint. If using this parameter, do not
+        # include pagination.
         token:,
+        # Timestamp of when the account was created.
         created:,
+        # Spend limit information for the user containing the daily, monthly, and lifetime
+        # spend limit of the account. Any charges to a card owned by this account will be
+        # declined once their transaction volume has surpassed the value in the applicable
+        # time limit (rolling). A lifetime limit of 0 indicates that the lifetime limit
+        # feature is disabled.
         spend_limit:,
+        # Account state:
+        #
+        # - `ACTIVE` - Account is able to transact and create new cards.
+        # - `PAUSED` - Account will not be able to transact or create new cards. It can be
+        #   set back to `ACTIVE`.
+        # - `CLOSED` - Account will not be able to transact or create new cards. `CLOSED`
+        #   accounts are also unable to be transitioned to `ACTIVE` or `PAUSED` states.
+        #   `CLOSED` accounts result from failing to pass KYB/KYC or Lithic closing for
+        #   risk/compliance reasons. Please contact
+        #   [support@lithic.com](mailto:support@lithic.com) if you believe this was in
+        #   error.
         state:,
         account_holder: nil,
+        # List of identifiers for the Auth Rule(s) that are applied on the account. This
+        # field is deprecated and will no longer be populated in the `account_holder`
+        # object. The key will be removed from the schema in a future release. Use the
+        # `/auth_rules` endpoints to fetch Auth Rule information instead.
         auth_rule_tokens: nil,
+        # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
         cardholder_currency: nil,
         verification_address: nil
       ); end
@@ -131,8 +156,14 @@ module Lithic
         # time limit (rolling). A lifetime limit of 0 indicates that the lifetime limit
         # feature is disabled.
         sig { params(daily: Integer, lifetime: Integer, monthly: Integer).returns(T.attached_class) }
-        def self.new(daily:, lifetime:, monthly:); end
-
+        def self.new(
+          # Daily spend limit (in cents).
+          daily:,
+          # Total spend limit over account lifetime (in cents).
+          lifetime:,
+          # Monthly spend limit (in cents).
+          monthly:
+        ); end
         sig { override.returns({daily: Integer, lifetime: Integer, monthly: Integer}) }
         def to_hash; end
       end
@@ -185,8 +216,18 @@ module Lithic
           params(token: String, business_account_token: String, email: String, phone_number: String)
             .returns(T.attached_class)
         end
-        def self.new(token:, business_account_token:, email:, phone_number:); end
-
+        def self.new(
+          # Globally unique identifier for the account holder.
+          token:,
+          # Only applicable for customers using the KYC-Exempt workflow to enroll authorized
+          # users of businesses. Account_token of the enrolled business associated with an
+          # enrolled AUTHORIZED_USER individual.
+          business_account_token:,
+          # Email address.
+          email:,
+          # Phone number of the individual.
+          phone_number:
+        ); end
         sig do
           override.returns(
             {
@@ -242,8 +283,23 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
-
+        def self.new(
+          # Valid deliverable address (no PO boxes).
+          address1:,
+          # City name.
+          city:,
+          # Country name. Only USA is currently supported.
+          country:,
+          # Valid postal code. Only USA postal codes (ZIP codes) are currently supported,
+          # entered as a five-digit postal code or nine-digit postal code (ZIP+4) using the
+          # format 12345-1234.
+          postal_code:,
+          # Valid state code. Only USA state codes are currently supported, entered in
+          # uppercase ISO 3166-2 two-character format.
+          state:,
+          # Unit or apartment number (if applicable).
+          address2: nil
+        ); end
         sig do
           override
             .returns(

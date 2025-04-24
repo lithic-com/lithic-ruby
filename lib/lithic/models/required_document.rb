@@ -24,9 +24,16 @@ module Lithic
       required :valid_documents, Lithic::Internal::Type::ArrayOf[String]
 
       # @!method initialize(entity_token:, status_reasons:, valid_documents:)
-      #   @param entity_token [String]
-      #   @param status_reasons [Array<String>]
-      #   @param valid_documents [Array<String>]
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::RequiredDocument} for more details.
+      #
+      #   @param entity_token [String] Globally unique identifier for an entity.
+      #
+      #   @param status_reasons [Array<String>] rovides the status reasons that will be satisfied by providing one of the valid
+      #   ...
+      #
+      #   @param valid_documents [Array<String>] A list of valid documents that will satisfy the KYC requirements for the specifi
+      #   ...
     end
   end
 end

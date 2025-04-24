@@ -54,15 +54,25 @@ module Lithic
       optional :upload_url, String
 
       # @!method initialize(token:, created:, dispute_token:, upload_status:, download_url: nil, filename: nil, upload_url: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::DisputeEvidence} for more details.
+      #
       #   Dispute evidence.
       #
-      #   @param token [String]
-      #   @param created [Time]
-      #   @param dispute_token [String]
-      #   @param upload_status [Symbol, Lithic::Models::DisputeEvidence::UploadStatus]
-      #   @param download_url [String]
-      #   @param filename [String]
-      #   @param upload_url [String]
+      #   @param token [String] Globally unique identifier.
+      #
+      #   @param created [Time] Timestamp of when dispute evidence was created.
+      #
+      #   @param dispute_token [String] Dispute token evidence is attached to.
+      #
+      #   @param upload_status [Symbol, Lithic::Models::DisputeEvidence::UploadStatus] Upload status types: ...
+      #
+      #   @param download_url [String] URL to download evidence. Only shown when `upload_status` is `UPLOADED`.
+      #
+      #   @param filename [String] File name of evidence. Recommended to give the dispute evidence a human-readable
+      #   ...
+      #
+      #   @param upload_url [String] URL to upload evidence. Only shown when `upload_status` is `PENDING`.
 
       # Upload status types:
       #

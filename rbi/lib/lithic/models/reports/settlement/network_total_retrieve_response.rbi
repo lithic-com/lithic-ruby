@@ -87,16 +87,31 @@ module Lithic
               .returns(T.attached_class)
           end
           def self.new(
+            # Globally unique identifier.
             token:,
             amounts:,
+            # RFC 3339 timestamp for when the record was created. UTC time zone.
             created:,
+            # 3-character alphabetic ISO 4217 code.
             currency:,
+            # The institution that activity occurred on. For Mastercard: ICA (Interbank Card
+            # Association). For Maestro: institution ID. For Visa: lowest level SRE
+            # (Settlement Reporting Entity).
             institution_id:,
+            # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
+            # INTERLINK.
             network:,
+            # Date that the network total record applies to. YYYY-MM-DD format.
             report_date:,
+            # The institution responsible for settlement. For Mastercard: same as
+            # `institution_id`. For Maestro: billing ICA. For Visa: Funds Transfer SRE
+            # (FTSRE).
             settlement_institution_id:,
+            # Settlement service.
             settlement_service:,
+            # RFC 3339 timestamp for when the record was last updated. UTC time zone.
             updated:,
+            # The clearing cycle that the network total record applies to. Mastercard only.
             cycle: nil
           ); end
           sig do
@@ -149,8 +164,17 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(gross_settlement:, interchange_fees:, net_settlement:, visa_charges: nil); end
-
+            def self.new(
+              # Total settlement amount excluding interchange, in currency's smallest unit.
+              gross_settlement:,
+              # Interchange amount, in currency's smallest unit.
+              interchange_fees:,
+              # `gross_settlement` net of `interchange_fees` and `visa_charges` (if applicable),
+              # in currency's smallest unit.
+              net_settlement:,
+              # Charges specific to Visa/Interlink, in currency's smallest unit.
+              visa_charges: nil
+            ); end
             sig do
               override
                 .returns(

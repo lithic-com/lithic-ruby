@@ -35,9 +35,18 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(token:, account_holder_token:, document_type:, entity_token:, required_document_uploads:)
-      end
-
+      def self.new(
+        # Globally unique identifier for the document.
+        token:,
+        # Globally unique identifier for the account holder.
+        account_holder_token:,
+        # Type of documentation to be submitted for verification of an account holder
+        document_type:,
+        # Globally unique identifier for an entity.
+        entity_token:,
+        # Represents a single image of the document to upload.
+        required_document_uploads:
+      ); end
       sig do
         override
           .returns(
@@ -149,14 +158,29 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # Globally unique identifier for the document upload.
           token:,
+          # A list of status reasons associated with a KYB account holder that have been
+          # satisfied by the document upload
           accepted_entity_status_reasons:,
+          # When the document upload was created
           created:,
+          # Type of image to upload.
           image_type:,
+          # A list of status reasons associated with a KYB account holder that have not been
+          # satisfied by the document upload
           rejected_entity_status_reasons:,
+          # Status of an account holder's document upload.
           status:,
+          # Reasons for document image upload status.
           status_reasons:,
+          # When the document upload was last updated
           updated:,
+          # URL to upload document image to.
+          #
+          # Note that the upload URLs expire after 7 days. If an upload URL expires, you can
+          # refresh the URLs by retrieving the document upload from
+          # `GET /account_holders/{account_holder_token}/documents`.
           upload_url:
         ); end
         sig do

@@ -47,16 +47,21 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Globally unique identifier for the card art.
         token:,
+        # Globally unique identifier for the card program.
         card_program_token:,
+        # Timestamp of when card art was created.
         created:,
+        # Description of the card art.
         description:,
+        # Whether the card art is enabled.
         is_enabled:,
+        # Card network.
         network:,
+        # Whether the card art is the default card art to be added upon tokenization.
         is_card_program_default: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

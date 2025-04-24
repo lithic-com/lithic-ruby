@@ -102,16 +102,26 @@ module Lithic
                 .returns(T.attached_class)
             end
             def self.new(
+              # Globally unique identifier for a Statement Line Item
               token:,
+              # Transaction amount in cents
               amount:,
               category:,
+              # Timestamp of when the line item was generated
               created:,
+              # 3-character alphabetic ISO 4217 code for the settling currency of the
+              # transaction
               currency:,
+              # Date that the transaction effected the account balance
               effective_date:,
               event_type:,
+              # Globally unique identifier for a financial account
               financial_account_token:,
+              # Globally unique identifier for a financial transaction event
               financial_transaction_event_token:,
+              # Globally unique identifier for a financial transaction
               financial_transaction_token:,
+              # Globally unique identifier for a card
               card_token: nil,
               descriptor: nil
             ); end

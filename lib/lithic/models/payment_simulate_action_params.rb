@@ -26,9 +26,12 @@ module Lithic
       optional :return_reason_code, String
 
       # @!method initialize(event_type:, decline_reason: nil, return_reason_code: nil, request_options: {})
-      #   @param event_type [Symbol, Lithic::Models::PaymentSimulateActionParams::EventType]
-      #   @param decline_reason [Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason]
-      #   @param return_reason_code [String]
+      #   @param event_type [Symbol, Lithic::Models::PaymentSimulateActionParams::EventType] Event Type
+      #
+      #   @param decline_reason [Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason] Decline reason
+      #
+      #   @param return_reason_code [String] Return Reason Code
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # Event Type

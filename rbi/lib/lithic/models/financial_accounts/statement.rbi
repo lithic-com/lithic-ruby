@@ -156,26 +156,42 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # Globally unique identifier for a statement
           token:,
           account_standing:,
           amount_due:,
+          # Amount of credit available to spend in cents
           available_credit:,
+          # Timestamp of when the statement was created
           created:,
+          # This is the maximum credit balance extended by the lender in cents
           credit_limit:,
+          # Globally unique identifier for a credit product
           credit_product_token:,
+          # Number of days in the billing cycle
           days_in_billing_cycle:,
+          # Balance at the end of the billing period. For charge cards, this should be the
+          # same at the statement amount due in cents
           ending_balance:,
+          # Globally unique identifier for a financial account
           financial_account_token:,
+          # Date when the payment is due
           payment_due_date:,
           period_totals:,
+          # Balance at the start of the billing period
           starting_balance:,
+          # Date when the billing period ended
           statement_end_date:,
+          # Date when the billing period began
           statement_start_date:,
           statement_type:,
+          # Timestamp of when the statement was updated
           updated:,
           ytd_totals:,
           interest_details: nil,
+          # Date when the next payment is due
           next_payment_due_date: nil,
+          # Date when the next billing period will end
           next_statement_end_date: nil
         ); end
         sig do
@@ -268,12 +284,19 @@ module Lithic
               .returns(T.attached_class)
           end
           def self.new(
+            # Number of consecutive full payments made
             consecutive_full_payments_made:,
+            # Number of consecutive minimum payments made
             consecutive_minimum_payments_made:,
+            # Number of consecutive minimum payments missed
             consecutive_minimum_payments_missed:,
+            # Number of days past due
             days_past_due:,
+            # Information about the financial account state
             financial_account_state:,
+            # Whether the account currently has grace or not
             has_grace:,
+            # Current overall period number
             period_number:,
             period_state:
           ); end
@@ -323,8 +346,12 @@ module Lithic
               )
                 .returns(T.attached_class)
             end
-            def self.new(status:, substatus: nil); end
-
+            def self.new(
+              # Status of the financial account
+              status:,
+              # Substatus for the financial account
+              substatus: nil
+            ); end
             sig do
               override
                 .returns(
@@ -463,8 +490,15 @@ module Lithic
           attr_accessor :past_due
 
           sig { params(amount: Integer, past_due: Integer).returns(T.attached_class) }
-          def self.new(amount:, past_due:); end
-
+          def self.new(
+            # Payment due at the end of the billing period in cents. Negative amount indicates
+            # something is owed. If the amount owed is positive there was a net credit. If
+            # auto-collections are enabled this is the amount that will be requested on the
+            # payment due date
+            amount:,
+            # Amount past due for statement in cents
+            past_due:
+          ); end
           sig { override.returns({amount: Integer, past_due: Integer}) }
           def to_hash; end
         end
@@ -511,9 +545,23 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
-          end
-
+          def self.new(
+            # Opening balance transferred from previous account in cents
+            balance_transfers:,
+            # ATM and cashback transactions in cents
+            cash_advances:,
+            # Volume of credit management operation transactions less any balance transfers in
+            # cents
+            credits:,
+            # Volume of debit management operation transactions less any interest in cents
+            fees:,
+            # Interest accrued in cents
+            interest:,
+            # Any funds transfers which affective the balance in cents
+            payments:,
+            # Net card transaction volume less any cash advances in cents
+            purchases:
+          ); end
           sig do
             override
               .returns(
@@ -589,9 +637,23 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
-          end
-
+          def self.new(
+            # Opening balance transferred from previous account in cents
+            balance_transfers:,
+            # ATM and cashback transactions in cents
+            cash_advances:,
+            # Volume of credit management operation transactions less any balance transfers in
+            # cents
+            credits:,
+            # Volume of debit management operation transactions less any interest in cents
+            fees:,
+            # Interest accrued in cents
+            interest:,
+            # Any funds transfers which affective the balance in cents
+            payments:,
+            # Net card transaction volume less any cash advances in cents
+            purchases:
+          ); end
           sig do
             override
               .returns(

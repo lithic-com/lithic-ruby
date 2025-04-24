@@ -19,8 +19,9 @@ module Lithic
         required :has_more, Lithic::Internal::Type::Boolean
 
         # @!method initialize(data:, has_more:)
-        #   @param data [Array<Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data>]
-        #   @param has_more [Boolean]
+        #   @param data [Array<Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data>] List of prime rates
+        #
+        #   @param has_more [Boolean] Whether there are more prime rates
 
         class Data < Lithic::Internal::Type::BaseModel
           # @!attribute effective_date
@@ -36,8 +37,9 @@ module Lithic
           required :rate, String
 
           # @!method initialize(effective_date:, rate:)
-          #   @param effective_date [Date]
-          #   @param rate [String]
+          #   @param effective_date [Date] Date the rate goes into effect
+          #
+          #   @param rate [String] The rate in decimal format
         end
       end
     end

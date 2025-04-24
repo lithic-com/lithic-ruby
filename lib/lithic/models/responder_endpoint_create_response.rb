@@ -11,7 +11,7 @@ module Lithic
       optional :enrolled, Lithic::Internal::Type::Boolean
 
       # @!method initialize(enrolled: nil)
-      #   @param enrolled [Boolean]
+      #   @param enrolled [Boolean] True if the endpoint was enrolled successfully.
     end
   end
 end

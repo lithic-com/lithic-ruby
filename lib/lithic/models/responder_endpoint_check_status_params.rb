@@ -14,7 +14,8 @@ module Lithic
       required :type, enum: -> { Lithic::Models::ResponderEndpointCheckStatusParams::Type }
 
       # @!method initialize(type:, request_options: {})
-      #   @param type [Symbol, Lithic::Models::ResponderEndpointCheckStatusParams::Type]
+      #   @param type [Symbol, Lithic::Models::ResponderEndpointCheckStatusParams::Type] The type of the endpoint.
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       # The type of the endpoint.

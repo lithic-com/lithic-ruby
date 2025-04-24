@@ -7,7 +7,8 @@ module Lithic
       #
       # @overload retrieve(account_token, request_options: {})
       #
-      # @param account_token [String]
+      # @param account_token [String] Globally unique identifier for account.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Account]
@@ -22,18 +23,31 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::AccountUpdateParams} for more details.
+      #
       # Update account configuration such as state or spend limits. Can only be run on
       # accounts that are part of the program managed by this API key. Accounts that are
       # in the `PAUSED` state will not be able to transact or create new cards.
       #
       # @overload update(account_token, daily_spend_limit: nil, lifetime_spend_limit: nil, monthly_spend_limit: nil, state: nil, verification_address: nil, request_options: {})
       #
-      # @param account_token [String]
-      # @param daily_spend_limit [Integer]
-      # @param lifetime_spend_limit [Integer]
-      # @param monthly_spend_limit [Integer]
-      # @param state [Symbol, Lithic::Models::AccountUpdateParams::State]
-      # @param verification_address [Lithic::Models::AccountUpdateParams::VerificationAddress]
+      # @param account_token [String] Globally unique identifier for account.
+      #
+      # @param daily_spend_limit [Integer] Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a $1
+      # ...
+      #
+      # @param lifetime_spend_limit [Integer] Amount (in cents) for the account's lifetime spend limit (e.g. 100000 would be a
+      # ...
+      #
+      # @param monthly_spend_limit [Integer] Amount (in cents) for the account's monthly spend limit (e.g. 100000 would be a
+      # ...
+      #
+      # @param state [Symbol, Lithic::Models::AccountUpdateParams::State] Account states.
+      #
+      # @param verification_address [Lithic::Models::AccountUpdateParams::VerificationAddress] Address used during Address Verification Service (AVS) checks during transaction
+      # ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::Account]
@@ -50,15 +64,27 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::AccountListParams} for more details.
+      #
       # List account configurations.
       #
       # @overload list(begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
       #
-      # @param begin_ [Time]
-      # @param end_ [Time]
-      # @param ending_before [String]
-      # @param page_size [Integer]
-      # @param starting_after [String]
+      # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+      # ...
+      #
+      # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
+      # ...
+      #
+      # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+      # ...
+      #
+      # @param page_size [Integer] Page size (for pagination).
+      #
+      # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+      # ...
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Internal::CursorPage<Lithic::Models::Account>]
@@ -84,7 +110,8 @@ module Lithic
       #
       # @overload retrieve_spend_limits(account_token, request_options: {})
       #
-      # @param account_token [String]
+      # @param account_token [String] Globally unique identifier for account.
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::AccountSpendLimits]

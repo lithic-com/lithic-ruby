@@ -84,16 +84,47 @@ module Lithic
           .returns(T.attached_class)
       end
       def self.new(
+        # Globally unique identifier.
         token:,
+        # Status types:
+        #
+        # - `CARD` - Issuing card transaction.
+        # - `ACH` - Transaction over ACH.
+        # - `INTERNAL` - Transaction for internal adjustment.
+        # - `TRANSFER` - Internal transfer of funds between financial accounts in your
+        #   program.
         category:,
+        # Date and time when the financial transaction first occurred. UTC time zone.
         created:,
+        # 3-character alphabetic ISO 4217 code for the settling currency of the
+        # transaction.
         currency:,
+        # A string that provides a description of the financial transaction; may be useful
+        # to display to users.
         descriptor:,
+        # A list of all financial events that have modified this financial transaction.
         events:,
+        # Pending amount of the transaction in the currency's smallest unit (e.g., cents),
+        # including any acquirer fees. The value of this field will go to zero over time
+        # once the financial transaction is settled.
         pending_amount:,
+        # APPROVED transactions were successful while DECLINED transactions were declined
+        # by user, Lithic, or the network.
         result:,
+        # Amount of the transaction that has been settled in the currency's smallest unit
+        # (e.g., cents), including any acquirer fees. This may change over time.
         settled_amount:,
+        # Status types:
+        #
+        # - `DECLINED` - The transaction was declined.
+        # - `EXPIRED` - The authorization as it has passed its expiration time. Card
+        #   transaction only.
+        # - `PENDING` - The transaction is expected to settle.
+        # - `RETURNED` - The transaction has been returned.
+        # - `SETTLED` - The transaction is completed.
+        # - `VOIDED` - The transaction was voided. Card transaction only.
         status:,
+        # Date and time when the financial transaction was last updated. UTC time zone.
         updated:
       ); end
       sig do
@@ -185,8 +216,19 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(token: nil, amount: nil, created: nil, result: nil, type: nil); end
-
+        def self.new(
+          # Globally unique identifier.
+          token: nil,
+          # Amount of the financial event that has been settled in the currency's smallest
+          # unit (e.g., cents).
+          amount: nil,
+          # Date and time when the financial event occurred. UTC time zone.
+          created: nil,
+          # APPROVED financial events were successful while DECLINED financial events were
+          # declined by user, Lithic, or the network.
+          result: nil,
+          type: nil
+        ); end
         sig do
           override
             .returns(

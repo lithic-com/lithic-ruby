@@ -33,9 +33,12 @@ module Lithic
           #
           # @overload create(auth_rule_token, end_: nil, start: nil, request_options: {})
           #
-          # @param auth_rule_token [String]
-          # @param end_ [Time]
-          # @param start [Time]
+          # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
+          #
+          # @param end_ [Time] The end time of the backtest.
+          #
+          # @param start [Time] The start time of the backtest.
+          #
           # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Lithic::Models::AuthRules::V2::BacktestCreateResponse]
@@ -73,8 +76,10 @@ module Lithic
           #
           # @overload retrieve(auth_rule_backtest_token, auth_rule_token:, request_options: {})
           #
-          # @param auth_rule_backtest_token [String]
-          # @param auth_rule_token [String]
+          # @param auth_rule_backtest_token [String] Globally unique identifier for an Auth Rule backtest.
+          #
+          # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
+          #
           # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Lithic::Models::AuthRules::V2::BacktestResults]

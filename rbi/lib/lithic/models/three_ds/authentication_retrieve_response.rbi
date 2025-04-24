@@ -228,25 +228,71 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # Globally unique identifier for the 3DS authentication.
           token:,
+          # Type of account/card that is being used for the transaction. Maps to EMV 3DS
+          # field `acctType`.
           account_type:,
+          # Indicates the outcome of the 3DS authentication process.
           authentication_result:,
+          # Indicates whether the expiration date provided by the cardholder during checkout
+          # matches Lithic's record of the card's expiration date.
           card_expiry_check:,
+          # Globally unique identifier for the card on which the 3DS authentication has
+          # occurred.
           card_token:,
+          # Object containing data about the cardholder provided during the transaction.
           cardholder:,
+          # Channel in which the authentication occurs. Maps to EMV 3DS field deviceChannel.
           channel:,
+          # Date and time when the authentication was created in Lithic's system.
           created:,
+          # Object containing data about the merchant involved in the e-commerce
+          # transaction.
           merchant:,
+          # Either PAYMENT_AUTHENTICATION or NON_PAYMENT_AUTHENTICATION. For
+          # NON_PAYMENT_AUTHENTICATION, additional_data and transaction fields are not
+          # populated.
           message_category:,
+          # Indicates whether a challenge is requested for this transaction
+          #
+          # - `NO_PREFERENCE` - No Preference
+          # - `NO_CHALLENGE_REQUESTED` - No Challenge Requested
+          # - `CHALLENGE_PREFERENCE` - Challenge requested (3DS Requestor preference)
+          # - `CHALLENGE_MANDATE` - Challenge requested (Mandate)
+          # - `NO_CHALLENGE_RISK_ALREADY_ASSESSED` - No Challenge requested (Transactional
+          #   risk analysis is already performed)
+          # - `DATA_SHARE_ONLY` - No Challenge requested (Data Share Only)
+          # - `OTHER` - Other indicators not captured by above. These are rarely used
           three_ds_requestor_challenge_indicator:,
+          # Object containing additional data about the 3DS request that is beyond the EMV
+          # 3DS standard spec (e.g., specific fields that only certain card networks send
+          # but are not required across all 3DS requests).
           additional_data: nil,
+          # Object containing data about the app used in the e-commerce transaction. Present
+          # if the channel is 'APP_BASED'.
           app: nil,
+          # Type of authentication request - i.e., the type of transaction or interaction is
+          # causing the merchant to request an authentication. Maps to EMV 3DS field
+          # threeDSRequestorAuthenticationInd.
           authentication_request_type: nil,
+          # Object containing data about the browser used in the e-commerce transaction.
+          # Present if the channel is 'BROWSER'.
           browser: nil,
+          # Metadata about the challenge method and delivery.
           challenge_metadata: nil,
+          # Entity that orchestrates the challenge.
           challenge_orchestrated_by: nil,
+          # Entity that made the authentication decision.
           decision_made_by: nil,
+          # Type of 3DS Requestor Initiated (3RI) request i.e., a 3DS authentication that
+          # takes place at the initiation of the merchant rather than the cardholder. The
+          # most common example of this is where a merchant is authenticating before billing
+          # for a recurring transaction such as a pay TV subscription or a utility bill.
+          # Maps to EMV 3DS field threeRIInd.
           three_ri_request_type: nil,
+          # Object containing data about the e-commerce transaction for which the merchant
+          # is requesting authentication.
           transaction: nil
         ); end
         sig do
@@ -449,13 +495,28 @@ module Lithic
               .returns(T.attached_class)
           end
           def self.new(
+            # Indicates whether the shipping address and billing address provided by the
+            # cardholder are the same. This value - and assessment of whether the addresses
+            # match - is provided directly in the 3DS request and is not determined by Lithic.
+            # Maps to EMV 3DS field addrMatch.
             address_match: nil,
+            # Object containing data on the billing address provided during the transaction.
             billing_address: nil,
+            # Email address that is either provided by the cardholder or is on file with the
+            # merchant in a 3RI request. Maps to EMV 3DS field email.
             email: nil,
+            # Name of the cardholder. Maps to EMV 3DS field cardholderName.
             name: nil,
+            # Home phone number provided by the cardholder. Maps to EMV 3DS fields
+            # homePhone.cc and homePhone.subscriber.
             phone_number_home: nil,
+            # Mobile/cell phone number provided by the cardholder. Maps to EMV 3DS fields
+            # mobilePhone.cc and mobilePhone.subscriber.
             phone_number_mobile: nil,
+            # Work phone number provided by the cardholder. Maps to EMV 3DS fields
+            # workPhone.cc and workPhone.subscriber.
             phone_number_work: nil,
+            # Object containing data on the shipping address provided during the transaction.
             shipping_address: nil
           ); end
           sig do
@@ -514,15 +575,20 @@ module Lithic
                 .returns(T.attached_class)
             end
             def self.new(
+              # First line of the street address provided by the cardholder.
               address1: nil,
+              # Second line of the street address provided by the cardholder.
               address2: nil,
+              # Third line of the street address provided by the cardholder.
               address3: nil,
+              # City of the address provided by the cardholder.
               city: nil,
+              # Country of the address provided by the cardholder in ISO 3166-1 alpha-3 format
+              # (e.g. USA)
               country: nil,
+              # Postal code (e.g., ZIP code) of the address provided by the cardholder
               postal_code: nil
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -578,15 +644,20 @@ module Lithic
                 .returns(T.attached_class)
             end
             def self.new(
+              # First line of the street address provided by the cardholder.
               address1: nil,
+              # Second line of the street address provided by the cardholder.
               address2: nil,
+              # Third line of the street address provided by the cardholder.
               address3: nil,
+              # City of the address provided by the cardholder.
               city: nil,
+              # Country of the address provided by the cardholder in ISO 3166-1 alpha-3 format
+              # (e.g. USA)
               country: nil,
+              # Postal code (e.g., ZIP code) of the address provided by the cardholder
               postal_code: nil
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -676,8 +747,22 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(id:, country:, mcc:, name:, risk_indicator:); end
-
+          def self.new(
+            # Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field
+            # acquirerMerchantId.
+            id:,
+            # Country code of the merchant requesting 3DS authentication. Maps to EMV 3DS
+            # field merchantCountryCode.
+            country:,
+            # Merchant category code assigned to the merchant that describes its business
+            # activity type. Maps to EMV 3DS field mcc.
+            mcc:,
+            # Name of the merchant. Maps to EMV 3DS field merchantName.
+            name:,
+            # Object containing additional data indicating additional risk factors related to
+            # the e-commerce transaction.
+            risk_indicator:
+          ); end
           sig do
             override
               .returns(
@@ -790,14 +875,35 @@ module Lithic
                 .returns(T.attached_class)
             end
             def self.new(
+              # In transactions with electronic delivery, email address to which merchandise is
+              # delivered. Maps to EMV 3DS field deliveryEmailAddress.
               delivery_email_address: nil,
+              # The delivery time frame for the merchandise. Maps to EMV 3DS field
+              # deliveryTimeframe.
               delivery_time_frame: nil,
+              # In prepaid or gift card purchase transactions, purchase amount total in major
+              # units (e.g., a purchase of USD $205.10 would be 205). Maps to EMV 3DS field
+              # giftCardAmount.
               gift_card_amount: nil,
+              # In prepaid or gift card purchase transactions, count of individual prepaid or
+              # gift cards/codes purchased. Maps to EMV 3DS field giftCardCount.
               gift_card_count: nil,
+              # In prepaid or gift card purchase transactions, currency code of the gift card.
+              # Maps to EMV 3DS field giftCardCurr.
               gift_card_currency: nil,
+              # Indicates whether the purchase is for merchandise that is available now or at a
+              # future date. Maps to EMV 3DS field preOrderPurchaseInd.
               order_availability: nil,
+              # In pre-order purchase transactions, the expected date that the merchandise will
+              # be available. Maps to EMV 3DS field preOrderDate.
               pre_order_available_date: nil,
+              # Indicates whether the cardholder is reordering previously purchased merchandise.
+              # Maps to EMV 3DS field reorderItemsInd.
               reorder_items: nil,
+              # Shipping method that the cardholder chose for the transaction. If purchase
+              # includes one or more item, this indicator is used for the physical goods; if the
+              # purchase only includes digital goods, this indicator is used to describe the
+              # most expensive item purchased. Maps to EMV 3DS field shipIndicator.
               shipping_method: nil
             ); end
             sig do
@@ -1126,8 +1232,14 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(network_decision: nil, network_risk_score: nil); end
-
+          def self.new(
+            # Mastercard only: Indicates whether the network would have considered the
+            # authentication request to be low risk or not.
+            network_decision: nil,
+            # Mastercard only: Assessment by the network of the authentication risk level,
+            # with a higher value indicating a higher amount of risk.
+            network_risk_score: nil
+          ); end
           sig do
             override
               .returns(
@@ -1188,8 +1300,14 @@ module Lithic
           # Object containing data about the app used in the e-commerce transaction. Present
           # if the channel is 'APP_BASED'.
           sig { params(device_info: T.nilable(String), ip: String).returns(T.attached_class) }
-          def self.new(device_info: nil, ip: nil); end
-
+          def self.new(
+            # Device information gathered from the cardholder's device - JSON name/value pairs
+            # that is Base64url encoded. Maps to EMV 3DS field deviceInfo.
+            device_info: nil,
+            # External IP address used by the app generating the 3DS authentication request.
+            # Maps to EMV 3DS field appIp.
+            ip: nil
+          ); end
           sig { override.returns({device_info: T.nilable(String), ip: String}) }
           def to_hash; end
         end
@@ -1309,15 +1427,25 @@ module Lithic
               .returns(T.attached_class)
           end
           def self.new(
+            # IP address of the browser as returned by the HTTP headers to the 3DS requestor
+            # (e.g., merchant or digital wallet). Maps to EMV 3DS field browserIP.
             ip: nil,
+            # Indicates whether the cardholder's browser has the ability to execute Java. Maps
+            # to EMV 3DS field browserJavaEnabled.
             java_enabled: nil,
+            # Indicates whether the cardholder's browser has the ability to execute
+            # JavaScript. Maps to EMV 3DS field browserJavascriptEnabled.
             javascript_enabled: nil,
+            # Language of the cardholder's browser as defined in IETF BCP47. Maps to EMV 3DS
+            # field browserLanguage.
             language: nil,
+            # Time zone of the cardholder's browser offset in minutes between UTC and the
+            # cardholder browser's local time. The offset is positive if the local time is
+            # behind UTC and negative if it is ahead. Maps to EMV 3DS field browserTz.
             time_zone: nil,
+            # Content of the HTTP user-agent header. Maps to EMV 3DS field browserUserAgent.
             user_agent: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -1355,8 +1483,12 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(method_type:, phone_number: nil); end
-
+          def self.new(
+            # The type of challenge method used for authentication.
+            method_type:,
+            # The phone number used for delivering the OTP. Relevant only for SMS_OTP method.
+            phone_number: nil
+          ); end
           sig do
             override
               .returns(
@@ -1605,8 +1737,22 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, currency:, currency_exponent:, date_time:, type:); end
-
+          def self.new(
+            # Amount of the purchase in minor units of currency with all punctuation removed.
+            # Maps to EMV 3DS field purchaseAmount.
+            amount:,
+            # Currency of the purchase. Maps to EMV 3DS field purchaseCurrency.
+            currency:,
+            # Minor units of currency, as specified in ISO 4217 currency exponent. Maps to EMV
+            # 3DS field purchaseExponent.
+            currency_exponent:,
+            # Date and time when the authentication was generated by the merchant/acquirer's
+            # 3DS server. Maps to EMV 3DS field purchaseDate.
+            date_time:,
+            # Type of the transaction for which a 3DS authentication request is occurring.
+            # Maps to EMV 3DS field transType.
+            type:
+          ); end
           sig do
             override
               .returns(

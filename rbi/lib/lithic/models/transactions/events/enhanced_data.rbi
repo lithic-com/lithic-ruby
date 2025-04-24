@@ -41,8 +41,16 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(token:, common:, event_token:, fleet:, transaction_token:); end
-
+          def self.new(
+            # A unique identifier for the enhanced commercial data.
+            token:,
+            common:,
+            # The token of the event that the enhanced data is associated with.
+            event_token:,
+            fleet:,
+            # The token of the transaction that the enhanced data is associated with.
+            transaction_token:
+          ); end
           sig do
             override
               .returns(
@@ -106,12 +114,13 @@ module Lithic
             def self.new(
               line_items:,
               tax:,
+              # A customer identifier.
               customer_reference_number: nil,
+              # A merchant identifier.
               merchant_reference_number: nil,
+              # The date of the order.
               order_date: nil
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -164,8 +173,16 @@ module Lithic
                   quantity: Float
                 ).returns(T.attached_class)
               end
-              def self.new(amount: nil, description: nil, product_code: nil, quantity: nil); end
-
+              def self.new(
+                # The price of the item purchased in merchant currency.
+                amount: nil,
+                # A human-readable description of the item.
+                description: nil,
+                # An identifier for the item purchased.
+                product_code: nil,
+                # The quantity of the item purchased.
+                quantity: nil
+              ); end
               sig do
                 override.returns({amount: Float, description: String, product_code: String, quantity: Float})
               end
@@ -202,8 +219,14 @@ module Lithic
                 )
                   .returns(T.attached_class)
               end
-              def self.new(amount: nil, exempt: nil, merchant_tax_id: nil); end
-
+              def self.new(
+                # The amount of tax collected.
+                amount: nil,
+                # A flag indicating whether the transaction is tax exempt or not.
+                exempt: nil,
+                # The tax ID of the merchant.
+                merchant_tax_id: nil
+              ); end
               sig do
                 override
                   .returns(
@@ -318,13 +341,17 @@ module Lithic
             def self.new(
               amount_totals:,
               fuel:,
+              # The driver number entered into the terminal at the time of sale, with leading
+              # zeros stripped.
               driver_number: nil,
+              # The odometer reading entered into the terminal at the time of sale.
               odometer: nil,
+              # The type of fuel service.
               service_type: nil,
+              # The vehicle number entered into the terminal at the time of sale, with leading
+              # zeros stripped.
               vehicle_number: nil
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -365,8 +392,14 @@ module Lithic
               sig do
                 params(discount: Integer, gross_sale: Integer, net_sale: Integer).returns(T.attached_class)
               end
-              def self.new(discount: nil, gross_sale: nil, net_sale: nil); end
-
+              def self.new(
+                # The discount applied to the gross sale amount.
+                discount: nil,
+                # The gross sale amount.
+                gross_sale: nil,
+                # The amount after discount.
+                net_sale: nil
+              ); end
               sig { override.returns({discount: Integer, gross_sale: Integer, net_sale: Integer}) }
               def to_hash; end
             end
@@ -418,8 +451,16 @@ module Lithic
                 )
                   .returns(T.attached_class)
               end
-              def self.new(quantity: nil, type: nil, unit_of_measure: nil, unit_price: nil); end
-
+              def self.new(
+                # The quantity of fuel purchased.
+                quantity: nil,
+                # The type of fuel purchased.
+                type: nil,
+                # Unit of measure for fuel disbursement.
+                unit_of_measure: nil,
+                # The price per unit of fuel.
+                unit_price: nil
+              ); end
               sig do
                 override
                   .returns(

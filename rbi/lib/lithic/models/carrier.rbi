@@ -11,8 +11,10 @@ module Lithic
       attr_writer :qr_code_url
 
       sig { params(qr_code_url: String).returns(T.attached_class) }
-      def self.new(qr_code_url: nil); end
-
+      def self.new(
+        # QR code url to display on the card carrier
+        qr_code_url: nil
+      ); end
       sig { override.returns({qr_code_url: String}) }
       def to_hash; end
     end

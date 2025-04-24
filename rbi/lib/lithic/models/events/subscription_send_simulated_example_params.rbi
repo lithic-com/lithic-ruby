@@ -24,8 +24,11 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(event_type: nil, request_options: {}); end
-
+        def self.new(
+          # Event type to send example message for.
+          event_type: nil,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(

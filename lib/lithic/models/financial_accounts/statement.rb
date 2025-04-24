@@ -129,27 +129,51 @@ module Lithic
         optional :next_statement_end_date, Date
 
         # @!method initialize(token:, account_standing:, amount_due:, available_credit:, created:, credit_limit:, credit_product_token:, days_in_billing_cycle:, ending_balance:, financial_account_token:, payment_due_date:, period_totals:, starting_balance:, statement_end_date:, statement_start_date:, statement_type:, updated:, ytd_totals:, interest_details: nil, next_payment_due_date: nil, next_statement_end_date: nil)
-        #   @param token [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::FinancialAccounts::Statement} for more details.
+        #
+        #   @param token [String] Globally unique identifier for a statement
+        #
         #   @param account_standing [Lithic::Models::FinancialAccounts::Statement::AccountStanding]
+        #
         #   @param amount_due [Lithic::Models::FinancialAccounts::Statement::AmountDue]
-        #   @param available_credit [Integer]
-        #   @param created [Time]
-        #   @param credit_limit [Integer]
-        #   @param credit_product_token [String]
-        #   @param days_in_billing_cycle [Integer]
-        #   @param ending_balance [Integer]
-        #   @param financial_account_token [String]
-        #   @param payment_due_date [Date, nil]
+        #
+        #   @param available_credit [Integer] Amount of credit available to spend in cents
+        #
+        #   @param created [Time] Timestamp of when the statement was created
+        #
+        #   @param credit_limit [Integer] This is the maximum credit balance extended by the lender in cents
+        #
+        #   @param credit_product_token [String] Globally unique identifier for a credit product
+        #
+        #   @param days_in_billing_cycle [Integer] Number of days in the billing cycle
+        #
+        #   @param ending_balance [Integer] Balance at the end of the billing period. For charge cards, this should be the s
+        #   ...
+        #
+        #   @param financial_account_token [String] Globally unique identifier for a financial account
+        #
+        #   @param payment_due_date [Date, nil] Date when the payment is due
+        #
         #   @param period_totals [Lithic::Models::FinancialAccounts::Statement::PeriodTotals]
-        #   @param starting_balance [Integer]
-        #   @param statement_end_date [Date]
-        #   @param statement_start_date [Date]
+        #
+        #   @param starting_balance [Integer] Balance at the start of the billing period
+        #
+        #   @param statement_end_date [Date] Date when the billing period ended
+        #
+        #   @param statement_start_date [Date] Date when the billing period began
+        #
         #   @param statement_type [Symbol, Lithic::Models::FinancialAccounts::Statement::StatementType]
-        #   @param updated [Time]
+        #
+        #   @param updated [Time] Timestamp of when the statement was updated
+        #
         #   @param ytd_totals [Lithic::Models::FinancialAccounts::Statement::YtdTotals]
+        #
         #   @param interest_details [Lithic::Models::FinancialAccounts::Statement::InterestDetails, nil]
-        #   @param next_payment_due_date [Date]
-        #   @param next_statement_end_date [Date]
+        #
+        #   @param next_payment_due_date [Date] Date when the next payment is due
+        #
+        #   @param next_statement_end_date [Date] Date when the next billing period will end
 
         # @see Lithic::Models::FinancialAccounts::Statement#account_standing
         class AccountStanding < Lithic::Internal::Type::BaseModel
@@ -203,13 +227,20 @@ module Lithic
                    enum: -> { Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState }
 
           # @!method initialize(consecutive_full_payments_made:, consecutive_minimum_payments_made:, consecutive_minimum_payments_missed:, days_past_due:, financial_account_state:, has_grace:, period_number:, period_state:)
-          #   @param consecutive_full_payments_made [Integer]
-          #   @param consecutive_minimum_payments_made [Integer]
-          #   @param consecutive_minimum_payments_missed [Integer]
-          #   @param days_past_due [Integer]
-          #   @param financial_account_state [Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState]
-          #   @param has_grace [Boolean]
-          #   @param period_number [Integer]
+          #   @param consecutive_full_payments_made [Integer] Number of consecutive full payments made
+          #
+          #   @param consecutive_minimum_payments_made [Integer] Number of consecutive minimum payments made
+          #
+          #   @param consecutive_minimum_payments_missed [Integer] Number of consecutive minimum payments missed
+          #
+          #   @param days_past_due [Integer] Number of days past due
+          #
+          #   @param financial_account_state [Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState] Information about the financial account state
+          #
+          #   @param has_grace [Boolean] Whether the account currently has grace or not
+          #
+          #   @param period_number [Integer] Current overall period number
+          #
           #   @param period_state [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState]
 
           # @see Lithic::Models::FinancialAccounts::Statement::AccountStanding#financial_account_state
@@ -232,8 +263,9 @@ module Lithic
             # @!method initialize(status:, substatus: nil)
             #   Information about the financial account state
             #
-            #   @param status [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Status]
-            #   @param substatus [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Substatus, nil]
+            #   @param status [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Status] Status of the financial account
+            #
+            #   @param substatus [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Substatus, nil] Substatus for the financial account
 
             # Status of the financial account
             #
@@ -298,8 +330,13 @@ module Lithic
           required :past_due, Integer
 
           # @!method initialize(amount:, past_due:)
-          #   @param amount [Integer]
-          #   @param past_due [Integer]
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::FinancialAccounts::Statement::AmountDue} for more details.
+          #
+          #   @param amount [Integer] Payment due at the end of the billing period in cents. Negative amount indicates
+          #   ...
+          #
+          #   @param past_due [Integer] Amount past due for statement in cents
         end
 
         # @see Lithic::Models::FinancialAccounts::Statement#period_totals
@@ -348,13 +385,23 @@ module Lithic
           required :purchases, Integer
 
           # @!method initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
-          #   @param balance_transfers [Integer]
-          #   @param cash_advances [Integer]
-          #   @param credits [Integer]
-          #   @param fees [Integer]
-          #   @param interest [Integer]
-          #   @param payments [Integer]
-          #   @param purchases [Integer]
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::FinancialAccounts::Statement::PeriodTotals} for more details.
+          #
+          #   @param balance_transfers [Integer] Opening balance transferred from previous account in cents
+          #
+          #   @param cash_advances [Integer] ATM and cashback transactions in cents
+          #
+          #   @param credits [Integer] Volume of credit management operation transactions less any balance transfers in
+          #   ...
+          #
+          #   @param fees [Integer] Volume of debit management operation transactions less any interest in cents
+          #
+          #   @param interest [Integer] Interest accrued in cents
+          #
+          #   @param payments [Integer] Any funds transfers which affective the balance in cents
+          #
+          #   @param purchases [Integer] Net card transaction volume less any cash advances in cents
         end
 
         # @see Lithic::Models::FinancialAccounts::Statement#statement_type
@@ -415,13 +462,23 @@ module Lithic
           required :purchases, Integer
 
           # @!method initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
-          #   @param balance_transfers [Integer]
-          #   @param cash_advances [Integer]
-          #   @param credits [Integer]
-          #   @param fees [Integer]
-          #   @param interest [Integer]
-          #   @param payments [Integer]
-          #   @param purchases [Integer]
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::FinancialAccounts::Statement::YtdTotals} for more details.
+          #
+          #   @param balance_transfers [Integer] Opening balance transferred from previous account in cents
+          #
+          #   @param cash_advances [Integer] ATM and cashback transactions in cents
+          #
+          #   @param credits [Integer] Volume of credit management operation transactions less any balance transfers in
+          #   ...
+          #
+          #   @param fees [Integer] Volume of debit management operation transactions less any interest in cents
+          #
+          #   @param interest [Integer] Interest accrued in cents
+          #
+          #   @param payments [Integer] Any funds transfers which affective the balance in cents
+          #
+          #   @param purchases [Integer] Net card transaction volume less any cash advances in cents
         end
 
         # @see Lithic::Models::FinancialAccounts::Statement#interest_details

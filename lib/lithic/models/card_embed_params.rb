@@ -20,8 +20,10 @@ module Lithic
       required :hmac, String
 
       # @!method initialize(embed_request:, hmac:, request_options: {})
-      #   @param embed_request [String]
-      #   @param hmac [String]
+      #   @param embed_request [String] A base64 encoded JSON string of an EmbedRequest to specify which card to load.
+      #
+      #   @param hmac [String] SHA256 HMAC of the embed_request JSON string with base64 digest.
+      #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end
   end

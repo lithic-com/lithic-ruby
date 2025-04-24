@@ -77,15 +77,23 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # Auth Rule Token
           token:,
+          # Account tokens to which the Auth Rule applies.
           account_tokens:,
+          # Card tokens to which the Auth Rule applies.
           card_tokens:,
           current_version:,
           draft_version:,
+          # Auth Rule Name
           name:,
+          # Whether the Auth Rule applies to all authorizations on the card program.
           program_level:,
+          # The state of the Auth Rule
           state:,
+          # The type of Auth Rule
           type:,
+          # Card tokens to which the Auth Rule does not apply.
           excluded_card_tokens: nil
         ); end
         sig do
@@ -135,8 +143,13 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(parameters:, version:); end
-
+          def self.new(
+            # Parameters for the Auth Rule
+            parameters:,
+            # The version of the rule, this is incremented whenever the rule's parameters
+            # change.
+            version:
+          ); end
           sig do
             override
               .returns(
@@ -193,8 +206,13 @@ module Lithic
             )
               .returns(T.attached_class)
           end
-          def self.new(parameters:, version:); end
-
+          def self.new(
+            # Parameters for the Auth Rule
+            parameters:,
+            # The version of the rule, this is incremented whenever the rule's parameters
+            # change.
+            version:
+          ); end
           sig do
             override
               .returns(

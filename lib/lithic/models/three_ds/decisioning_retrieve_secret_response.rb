@@ -12,7 +12,7 @@ module Lithic
         optional :secret, String
 
         # @!method initialize(secret: nil)
-        #   @param secret [String]
+        #   @param secret [String] The 3DS Decisioning HMAC secret
       end
     end
   end

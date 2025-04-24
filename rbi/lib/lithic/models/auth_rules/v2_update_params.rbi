@@ -63,11 +63,21 @@ module Lithic
             .returns(T.attached_class)
         end
         def self.new(
+          # Account tokens to which the Auth Rule applies.
           account_tokens: nil,
+          # Auth Rule Name
           name: nil,
+          # The desired state of the Auth Rule.
+          #
+          # Note that only deactivating an Auth Rule through this endpoint is supported at
+          # this time. If you need to (re-)activate an Auth Rule the /promote endpoint
+          # should be used to promote a draft to the currently active version.
           state: nil,
+          # Card tokens to which the Auth Rule applies.
           card_tokens: nil,
+          # Card tokens to which the Auth Rule does not apply.
           excluded_card_tokens: nil,
+          # Whether the Auth Rule applies to all authorizations on the card program.
           program_level: nil,
           request_options: {}
         ); end

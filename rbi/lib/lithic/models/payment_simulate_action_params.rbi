@@ -33,8 +33,15 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(event_type:, decline_reason: nil, return_reason_code: nil, request_options: {}); end
-
+      def self.new(
+        # Event Type
+        event_type:,
+        # Decline reason
+        decline_reason: nil,
+        # Return Reason Code
+        return_reason_code: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

@@ -27,8 +27,15 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(amount:, descriptor:, pan:, request_options: {}); end
-
+      def self.new(
+        # Amount (in cents) to authorize.
+        amount:,
+        # Merchant descriptor.
+        descriptor:,
+        # Sixteen digit card number.
+        pan:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns({

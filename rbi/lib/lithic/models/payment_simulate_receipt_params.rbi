@@ -40,9 +40,19 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(token:, amount:, financial_account_token:, receipt_type:, memo: nil, request_options: {})
-      end
-
+      def self.new(
+        # Customer-generated payment token used to uniquely identify the simulated payment
+        token:,
+        # Amount
+        amount:,
+        # Financial Account Token
+        financial_account_token:,
+        # Receipt Type
+        receipt_type:,
+        # Memo
+        memo: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

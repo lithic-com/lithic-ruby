@@ -14,8 +14,11 @@ module Lithic
         params(pan: String, request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
           .returns(T.attached_class)
       end
-      def self.new(pan:, request_options: {}); end
-
+      def self.new(
+        # The PAN for the card being retrieved.
+        pan:,
+        request_options: {}
+      ); end
       sig { override.returns({pan: String, request_options: Lithic::RequestOptions}) }
       def to_hash; end
     end

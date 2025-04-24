@@ -48,12 +48,25 @@ module Lithic
         optional :status, enum: -> { Lithic::Models::Events::SubscriptionListAttemptsParams::Status }
 
         # @!method initialize(begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, status: nil, request_options: {})
-        #   @param begin_ [Time]
-        #   @param end_ [Time]
-        #   @param ending_before [String]
-        #   @param page_size [Integer]
-        #   @param starting_after [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::Events::SubscriptionListAttemptsParams} for more details.
+        #
+        #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
+        #   ...
+        #
+        #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
+        #   ...
+        #
+        #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+        #   ...
+        #
+        #   @param page_size [Integer] Page size (for pagination).
+        #
+        #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
+        #   ...
+        #
         #   @param status [Symbol, Lithic::Models::Events::SubscriptionListAttemptsParams::Status]
+        #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
         module Status

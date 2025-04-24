@@ -46,8 +46,16 @@ module Lithic
         )
           .returns(T.attached_class)
       end
-      def self.new(account_holder_token: nil, status: nil, status_reasons: nil, request_options: {}); end
-
+      def self.new(
+        # The account holder which to perform the simulation upon.
+        account_holder_token: nil,
+        # An account holder's status for use within the simulation.
+        status: nil,
+        # Status reason that will be associated with the simulated account holder status.
+        # Only required for a `REJECTED` status.
+        status_reasons: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

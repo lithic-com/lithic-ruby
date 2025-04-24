@@ -29,8 +29,13 @@ module Lithic
           )
             .returns(T.attached_class)
         end
-        def self.new(ending_before: nil, starting_after: nil, request_options: {}); end
-
+        def self.new(
+          # The effective date that the prime rates ends before
+          ending_before: nil,
+          # The effective date that the prime rate starts after
+          starting_after: nil,
+          request_options: {}
+        ); end
         sig do
           override.returns(
             {
