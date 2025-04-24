@@ -90,7 +90,7 @@ module Lithic
 
         # @api private
         sig { returns(Lithic::Internal::Transport::PooledNetRequester) }
-        attr_accessor :requester
+        attr_reader :requester
 
         # @api private
         sig do
