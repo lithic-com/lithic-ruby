@@ -31,7 +31,7 @@ lithic = Lithic::Client.new(
   environment: "sandbox" # defaults to "production"
 )
 
-card = lithic.cards.create(type: :SINGLE_USE)
+card = lithic.cards.create(type: "SINGLE_USE")
 
 puts(card.token)
 ```
@@ -43,7 +43,7 @@ This library is written with [Sorbet type definitions](https://sorbet.org/docs/r
 When using sorbet, it is recommended to use model classes as below. This provides stronger type checking and tooling integration.
 
 ```ruby
-lithic.cards.create(type: :SINGLE_USE)
+lithic.cards.create(type: "SINGLE_USE")
 ```
 
 ### Pagination
@@ -71,7 +71,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  card = lithic.cards.create(type: :an_incorrect_type)
+  card = lithic.cards.create(type: "an_incorrect_type")
 rescue Lithic::Errors::APIError => e
   puts(e.status) # 400
 end
@@ -139,11 +139,11 @@ In all places where a `BaseModel` type is specified, vanilla Ruby `Hash` can als
 
 ```ruby
 # This has tooling readability, for auto-completion, static analysis, and goto definition with supported language services
-params = Lithic::Models::CardCreateParams.new(type: :SINGLE_USE)
+params = Lithic::Models::CardCreateParams.new(type: "SINGLE_USE")
 
 # This also works
 params = {
-  type: :SINGLE_USE
+  type: "SINGLE_USE"
 }
 ```
 
@@ -203,7 +203,7 @@ end
 It is possible to pass a compatible model / parameter class to a method that expects keyword arguments by using the `**` splat operator.
 
 ```ruby
-params = Lithic::Models::CardCreateParams.new(type: :SINGLE_USE)
+params = Lithic::Models::CardCreateParams.new(type: "SINGLE_USE")
 lithic.cards.create(**params)
 ```
 
