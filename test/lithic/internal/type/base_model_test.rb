@@ -94,7 +94,7 @@ class Lithic::Test::PrimitiveModelTest < Minitest::Test
       [:a, :b] => :b,
       [:a, "a"] => "a",
       [String, StringIO.new("one")] => "one",
-      [String, Pathname(__FILE__)] => Lithic::Internal::Util::SerializationAdapter
+      [String, Pathname(__FILE__)] => Lithic::FilePart
     }
 
     cases.each do
