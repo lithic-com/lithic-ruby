@@ -53,7 +53,7 @@ module Lithic
         ) -> void
 
         # @api private
-        attr_accessor requester: Lithic::Internal::Transport::PooledNetRequester
+        attr_reader requester: Lithic::Internal::Transport::PooledNetRequester
 
         def initialize: (
           base_url: String,
