@@ -153,7 +153,7 @@ module Lithic
 
         # @api private
         # @return [Lithic::Internal::Transport::PooledNetRequester]
-        attr_accessor :requester
+        attr_reader :requester
 
         # @api private
         #
