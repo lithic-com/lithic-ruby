@@ -200,8 +200,12 @@ class Lithic::Test::UtilFormDataEncodingTest < Minitest::Test
     file = Pathname(__FILE__)
     headers = {"content-type" => "multipart/form-data"}
     cases = {
+      "abc" => "abc",
       StringIO.new("abc") => "abc",
-      file => /^class Lithic/
+      Lithic::FilePart.new("abc") => "abc",
+      Lithic::FilePart.new(StringIO.new("abc")) => "abc",
+      file => /^class Lithic/,
+      Lithic::FilePart.new(file) => /^class Lithic/
     }
     cases.each do |body, val|
       encoded = Lithic::Internal::Util.encode_content(headers, body)
@@ -219,7 +223,13 @@ class Lithic::Test::UtilFormDataEncodingTest < Minitest::Test
       {a: 2, b: nil} => {"a" => "2", "b" => "null"},
       {a: 2, b: [1, 2, 3]} => {"a" => "2", "b" => "1"},
       {strio: StringIO.new("a")} => {"strio" => "a"},
-      {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class Lithic/ }}
+      {strio: Lithic::FilePart.new("a")} => {"strio" => "a"},
+      {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class Lithic/ }},
+      {pathname: Lithic::FilePart.new(Pathname(__FILE__))} => {
+        "pathname" => -> {
+          _1.read in /^class Lithic/
+        }
+      }
     }
     cases.each do |body, testcase|
       encoded = Lithic::Internal::Util.encode_content(headers, body)
