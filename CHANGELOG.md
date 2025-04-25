@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.1.0-alpha.18 (2025-04-25)
+
+Full Changelog: [v0.1.0-alpha.17...v0.1.0-alpha.18](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.17...v0.1.0-alpha.18)
+
+### Features
+
+* support specifying content-type with FilePart class ([0cf245e](https://github.com/lithic-com/lithic-ruby/commit/0cf245eaa7321b8ae3ee08a9c585403cf654f9ca))
+* support webmock for testing ([56900e6](https://github.com/lithic-com/lithic-ruby/commit/56900e694ecd63ff000e880f2cd6add9e5548e86))
+
+
+### Bug Fixes
+
+* ensure gem release is unaffected by renaming ([84a2f71](https://github.com/lithic-com/lithic-ruby/commit/84a2f7191fa58067637c050575de5552aec2cf09))
+
+
+### Chores
+
+* broadly detect json family of content-type headers ([2b4f4bc](https://github.com/lithic-com/lithic-ruby/commit/2b4f4bca7f025906e369ed32f4cd71e357cd79a8))
+* **ci:** add timeout thresholds for CI jobs ([2f4319b](https://github.com/lithic-com/lithic-ruby/commit/2f4319b37459d2899350a1d05aec39a8134ac3e1))
+* **ci:** only use depot for staging repos ([99e9f7d](https://github.com/lithic-com/lithic-ruby/commit/99e9f7d78c04ab805321dabe41d5431717fc5eb4))
+* **ci:** run on more branches and use depot runners ([84743d4](https://github.com/lithic-com/lithic-ruby/commit/84743d4c86aeeadc23ef0cb025f77944e9822a4e))
+* consistently use string in examples, even for enums ([c35c6f4](https://github.com/lithic-com/lithic-ruby/commit/c35c6f45e00d6eed30d43f8b4335c6761f3fe2f5))
+* **internal:** improve response envelope unwrap functionality ([d2c37aa](https://github.com/lithic-com/lithic-ruby/commit/d2c37aa27246c9379a2400020047cd1c7761f03d))
+* **internal:** minor type annotation improvements ([964cec1](https://github.com/lithic-com/lithic-ruby/commit/964cec1b7eb9904a6f643dcbcaaff3ae64276032))
+* show truncated parameter docs in yard ([3d5f4b7](https://github.com/lithic-com/lithic-ruby/commit/3d5f4b7b7fc6d780cb19fe3cddac32306de1aaf2))
+
 ## 0.1.0-alpha.17 (2025-04-21)
 
 Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
