@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.19 (2025-04-25)
+
+Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)
+
+### Bug Fixes
+
+* make a typo for `FilePart.content` ([4eb5bee](https://github.com/lithic-com/lithic-ruby/commit/4eb5bee30c1bfbc394092b72b338908643010f5a))
+
 ## 0.1.0-alpha.18 (2025-04-25)
 
 Full Changelog: [v0.1.0-alpha.17...v0.1.0-alpha.18](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.17...v0.1.0-alpha.18)
