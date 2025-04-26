@@ -65,9 +65,7 @@ module Lithic
 
           def self?.variants: -> [String, Integer, ::Array[String]]
 
-          type string_array = ::Array[String]
-
-          StringArray: string_array
+          StringArray: Lithic::Internal::Type::Converter
         end
       end
     end
