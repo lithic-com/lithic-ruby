@@ -27,7 +27,7 @@ module Lithic
           name: String,
           user_defined_id: String,
           verification_enforcement: T::Boolean,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::ExternalBankAccountCreateResponse)
       end
@@ -74,10 +74,7 @@ module Lithic
       ); end
       # Get the external bank account by token.
       sig do
-        params(
-          external_bank_account_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(external_bank_account_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::ExternalBankAccountRetrieveResponse)
       end
       def retrieve(external_bank_account_token, request_options: {}); end
@@ -95,7 +92,7 @@ module Lithic
           owner_type: Lithic::Models::OwnerType::OrSymbol,
           type: Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol,
           user_defined_id: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::ExternalBankAccountUpdateResponse)
       end
@@ -133,7 +130,7 @@ module Lithic
           starting_after: String,
           states: T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol],
           verification_states: T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol],
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::ExternalBankAccountListResponse])
       end
@@ -159,7 +156,7 @@ module Lithic
         params(
           external_bank_account_token: String,
           financial_account_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse)
       end
@@ -175,7 +172,7 @@ module Lithic
         params(
           external_bank_account_token: String,
           financial_account_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::ExternalBankAccountRetryPrenoteResponse)
       end

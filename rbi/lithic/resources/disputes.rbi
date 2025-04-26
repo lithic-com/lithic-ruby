@@ -11,7 +11,7 @@ module Lithic
           transaction_token: String,
           customer_filed_date: Time,
           customer_note: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::Dispute)
       end
@@ -29,13 +29,7 @@ module Lithic
         request_options: {}
       ); end
       # Get dispute.
-      sig do
-        params(
-          dispute_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
-          .returns(Lithic::Models::Dispute)
-      end
+      sig { params(dispute_token: String, request_options: Lithic::RequestOpts).returns(Lithic::Models::Dispute) }
       def retrieve(dispute_token, request_options: {}); end
 
       # Update dispute. Can only be modified if status is `NEW`.
@@ -46,7 +40,7 @@ module Lithic
           customer_filed_date: Time,
           customer_note: String,
           reason: Lithic::Models::DisputeUpdateParams::Reason::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::Dispute)
       end
@@ -72,7 +66,7 @@ module Lithic
           starting_after: String,
           status: Lithic::Models::DisputeListParams::Status::OrSymbol,
           transaction_tokens: T::Array[String],
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::Dispute])
       end
@@ -98,23 +92,13 @@ module Lithic
         request_options: {}
       ); end
       # Withdraw dispute.
-      sig do
-        params(
-          dispute_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
-          .returns(Lithic::Models::Dispute)
-      end
+      sig { params(dispute_token: String, request_options: Lithic::RequestOpts).returns(Lithic::Models::Dispute) }
       def delete(dispute_token, request_options: {}); end
 
       # Soft delete evidence for a dispute. Evidence will not be reviewed or submitted
       # by Lithic after it is withdrawn.
       sig do
-        params(
-          evidence_token: String,
-          dispute_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(evidence_token: String, dispute_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::DisputeEvidence)
       end
       def delete_evidence(evidence_token, dispute_token:, request_options: {}); end
@@ -125,11 +109,7 @@ module Lithic
       # Uploaded documents must either be a `jpg`, `png` or `pdf` file, and each must be
       # less than 5 GiB.
       sig do
-        params(
-          dispute_token: String,
-          filename: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(dispute_token: String, filename: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::DisputeEvidence)
       end
       def initiate_evidence_upload(
@@ -147,7 +127,7 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::DisputeEvidence])
       end
@@ -171,11 +151,7 @@ module Lithic
       ); end
       # Get a dispute's evidence metadata.
       sig do
-        params(
-          evidence_token: String,
-          dispute_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(evidence_token: String, dispute_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::DisputeEvidence)
       end
       def retrieve_evidence(evidence_token, dispute_token:, request_options: {}); end

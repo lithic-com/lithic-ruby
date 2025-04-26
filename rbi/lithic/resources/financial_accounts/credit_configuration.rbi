@@ -6,10 +6,7 @@ module Lithic
       class CreditConfiguration
         # Get an Account's credit configuration
         sig do
-          params(
-            financial_account_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-          )
+          params(financial_account_token: String, request_options: Lithic::RequestOpts)
             .returns(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig)
         end
         def retrieve(
@@ -25,7 +22,7 @@ module Lithic
             credit_product_token: String,
             external_bank_account_token: String,
             tier: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig)
         end

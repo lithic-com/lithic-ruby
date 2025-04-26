@@ -9,7 +9,7 @@ module Lithic
           params(
             external_bank_account_token: String,
             micro_deposits: T::Array[Integer],
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse)
         end

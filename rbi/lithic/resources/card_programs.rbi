@@ -5,10 +5,7 @@ module Lithic
     class CardPrograms
       # Get card program.
       sig do
-        params(
-          card_program_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(card_program_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::CardProgram)
       end
       def retrieve(
@@ -22,7 +19,7 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::CardProgram])
       end

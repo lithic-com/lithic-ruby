@@ -11,7 +11,7 @@ module Lithic
             description: String,
             disabled: T::Boolean,
             event_types: T::Array[Lithic::Models::Events::SubscriptionCreateParams::EventType::OrSymbol],
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Models::EventSubscription)
         end
@@ -29,10 +29,7 @@ module Lithic
         ); end
         # Get an event subscription.
         sig do
-          params(
-            event_subscription_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-          )
+          params(event_subscription_token: String, request_options: Lithic::RequestOpts)
             .returns(Lithic::Models::EventSubscription)
         end
         def retrieve(event_subscription_token, request_options: {}); end
@@ -45,7 +42,7 @@ module Lithic
             description: String,
             disabled: T::Boolean,
             event_types: T::Array[Lithic::Models::Events::SubscriptionUpdateParams::EventType::OrSymbol],
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Models::EventSubscription)
         end
@@ -68,7 +65,7 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Internal::CursorPage[Lithic::Models::EventSubscription])
         end
@@ -84,13 +81,7 @@ module Lithic
           request_options: {}
         ); end
         # Delete an event subscription.
-        sig do
-          params(
-            event_subscription_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-          )
-            .void
-        end
+        sig { params(event_subscription_token: String, request_options: Lithic::RequestOpts).void }
         def delete(event_subscription_token, request_options: {}); end
 
         # List all the message attempts for a given event subscription.
@@ -103,7 +94,7 @@ module Lithic
             page_size: Integer,
             starting_after: String,
             status: Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Internal::CursorPage[Lithic::Models::MessageAttempt])
         end
@@ -132,7 +123,7 @@ module Lithic
             event_subscription_token: String,
             begin_: Time,
             end_: Time,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .void
         end
@@ -156,7 +147,7 @@ module Lithic
             event_subscription_token: String,
             begin_: Time,
             end_: Time,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .void
         end
@@ -172,23 +163,14 @@ module Lithic
         ); end
         # Get the secret for an event subscription.
         sig do
-          params(
-            event_subscription_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-          )
+          params(event_subscription_token: String, request_options: Lithic::RequestOpts)
             .returns(Lithic::Models::Events::SubscriptionRetrieveSecretResponse)
         end
         def retrieve_secret(event_subscription_token, request_options: {}); end
 
         # Rotate the secret for an event subscription. The previous secret will be valid
         # for the next 24 hours.
-        sig do
-          params(
-            event_subscription_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-          )
-            .void
-        end
+        sig { params(event_subscription_token: String, request_options: Lithic::RequestOpts).void }
         def rotate_secret(event_subscription_token, request_options: {}); end
 
         # Send an example message for event.
@@ -196,7 +178,7 @@ module Lithic
           params(
             event_subscription_token: String,
             event_type: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::OrSymbol,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .void
         end

@@ -15,7 +15,7 @@ module Lithic
           memo: String,
           progress_to: Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol,
           user_defined_id: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::ExternalPayment)
       end
@@ -33,10 +33,7 @@ module Lithic
       ); end
       # Get external payment
       sig do
-        params(
-          external_payment_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(external_payment_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::ExternalPayment)
       end
       def retrieve(
@@ -57,7 +54,7 @@ module Lithic
           result: Lithic::Models::ExternalPaymentListParams::Result::OrSymbol,
           starting_after: String,
           status: Lithic::Models::ExternalPaymentListParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::ExternalPayment])
       end
@@ -94,7 +91,7 @@ module Lithic
           external_payment_token: String,
           effective_date: Date,
           memo: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::ExternalPayment)
       end
@@ -111,7 +108,7 @@ module Lithic
           external_payment_token: String,
           effective_date: Date,
           memo: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::ExternalPayment)
       end
@@ -128,7 +125,7 @@ module Lithic
           external_payment_token: String,
           effective_date: Date,
           memo: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::ExternalPayment)
       end
@@ -146,7 +143,7 @@ module Lithic
           effective_date: Date,
           memo: String,
           progress_to: Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::ExternalPayment)
       end

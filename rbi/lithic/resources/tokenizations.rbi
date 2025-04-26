@@ -5,10 +5,7 @@ module Lithic
     class Tokenizations
       # Get tokenization
       sig do
-        params(
-          tokenization_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(tokenization_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::TokenizationRetrieveResponse)
       end
       def retrieve(
@@ -27,7 +24,7 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           tokenization_channel: Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::Tokenization])
       end
@@ -61,13 +58,7 @@ module Lithic
       # `PENDING_ACTIVATION`, or `PENDING_2FA`. This will put the tokenization in an
       # active state, and transactions will be allowed. Reach out at
       # [lithic.com/contact](https://lithic.com/contact) for more information.
-      sig do
-        params(
-          tokenization_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
-          .void
-      end
+      sig { params(tokenization_token: String, request_options: Lithic::RequestOpts).void }
       def activate(
         # Tokenization token
         tokenization_token,
@@ -82,13 +73,7 @@ module Lithic
       # operation. If the target is a digital wallet tokenization, it will be removed
       # from its device. Reach out at [lithic.com/contact](https://lithic.com/contact)
       # for more information.
-      sig do
-        params(
-          tokenization_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
-          .void
-      end
+      sig { params(tokenization_token: String, request_options: Lithic::RequestOpts).void }
       def deactivate(
         # Tokenization token
         tokenization_token,
@@ -102,13 +87,7 @@ module Lithic
       # merchants from sending authorizations, and is a temporary status that can be
       # changed. Reach out at [lithic.com/contact](https://lithic.com/contact) for more
       # information.
-      sig do
-        params(
-          tokenization_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
-          .void
-      end
+      sig { params(tokenization_token: String, request_options: Lithic::RequestOpts).void }
       def pause(
         # Tokenization token
         tokenization_token,
@@ -128,7 +107,7 @@ module Lithic
         params(
           tokenization_token: String,
           activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .void
       end
@@ -153,7 +132,7 @@ module Lithic
           device_score: Integer,
           entity: String,
           wallet_recommended_decision: Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::TokenizationSimulateResponse)
       end
@@ -186,13 +165,7 @@ module Lithic
       # used on tokenizations with status `PAUSED`. This will put the tokenization in an
       # active state, and transactions may resume. Reach out at
       # [lithic.com/contact](https://lithic.com/contact) for more information.
-      sig do
-        params(
-          tokenization_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
-          .void
-      end
+      sig { params(tokenization_token: String, request_options: Lithic::RequestOpts).void }
       def unpause(
         # Tokenization token
         tokenization_token,
@@ -210,7 +183,7 @@ module Lithic
         params(
           tokenization_token: String,
           digital_card_art_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::TokenizationUpdateDigitalCardArtResponse)
       end
