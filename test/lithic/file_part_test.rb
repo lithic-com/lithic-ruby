@@ -8,5 +8,6 @@ class Lithic::Test::FilePartTest < Minitest::Test
     filepart = Lithic::FilePart.new(StringIO.new(text))
 
     assert_equal(text.to_json, filepart.to_json)
+    assert_equal(text.to_yaml, filepart.to_yaml)
   end
 end
