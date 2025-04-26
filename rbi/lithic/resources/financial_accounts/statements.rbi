@@ -12,7 +12,7 @@ module Lithic
           params(
             statement_token: String,
             financial_account_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Models::FinancialAccounts::Statement)
         end
@@ -33,7 +33,7 @@ module Lithic
             include_initial_statements: T::Boolean,
             page_size: Integer,
             starting_after: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Internal::CursorPage[Lithic::Models::FinancialAccounts::Statement])
         end

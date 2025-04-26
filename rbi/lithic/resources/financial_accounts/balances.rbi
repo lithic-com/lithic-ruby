@@ -10,7 +10,7 @@ module Lithic
             financial_account_token: String,
             balance_date: Time,
             last_transaction_event_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Internal::SinglePage[Lithic::Models::FinancialAccounts::BalanceListResponse])
         end

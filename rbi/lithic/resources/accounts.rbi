@@ -4,13 +4,7 @@ module Lithic
   module Resources
     class Accounts
       # Get account configuration such as spend limits.
-      sig do
-        params(
-          account_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
-          .returns(Lithic::Models::Account)
-      end
+      sig { params(account_token: String, request_options: Lithic::RequestOpts).returns(Lithic::Models::Account) }
       def retrieve(
         # Globally unique identifier for account.
         account_token,
@@ -27,7 +21,7 @@ module Lithic
           monthly_spend_limit: Integer,
           state: Lithic::Models::AccountUpdateParams::State::OrSymbol,
           verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Internal::AnyHash),
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::Account)
       end
@@ -65,7 +59,7 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::Account])
       end
@@ -92,10 +86,7 @@ module Lithic
       # configured, and has spent $600 in the last 24 hours, the available spend limit
       # returned would be $400.
       sig do
-        params(
-          account_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(account_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::AccountSpendLimits)
       end
       def retrieve_spend_limits(

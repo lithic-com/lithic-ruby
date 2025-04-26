@@ -6,7 +6,7 @@ module Lithic
       # @api private
       module RequestParameters
         # Options to specify HTTP behaviour for this request.
-        sig { returns(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)) }
+        sig { returns(Lithic::RequestOpts) }
         attr_accessor :request_options
 
         # @api private

@@ -35,7 +35,7 @@ module Lithic
               page: T.nilable(T::Class[Lithic::Internal::Type::BasePage[Lithic::Internal::Type::BaseModel]]),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(Lithic::Internal::Type::Converter::Input),
-              options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+              options: T.nilable(Lithic::RequestOpts)
             }
           end
 
@@ -188,7 +188,7 @@ module Lithic
             page: T.nilable(T::Class[Lithic::Internal::Type::BasePage[Lithic::Internal::Type::BaseModel]]),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(Lithic::Internal::Type::Converter::Input),
-            options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            options: T.nilable(Lithic::RequestOpts)
           )
             .returns(T.anything)
         end

@@ -31,12 +31,7 @@ module Lithic
           # configurations. If a historical transaction does not feature the required inputs
           # to evaluate the rule, then it will not be included in the final backtest report.
           sig do
-            params(
-              auth_rule_token: String,
-              end_: Time,
-              start: Time,
-              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-            )
+            params(auth_rule_token: String, end_: Time, start: Time, request_options: Lithic::RequestOpts)
               .returns(Lithic::Models::AuthRules::V2::BacktestCreateResponse)
           end
           def create(
@@ -70,7 +65,7 @@ module Lithic
             params(
               auth_rule_backtest_token: String,
               auth_rule_token: String,
-              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+              request_options: Lithic::RequestOpts
             )
               .returns(Lithic::Models::AuthRules::V2::BacktestResults)
           end

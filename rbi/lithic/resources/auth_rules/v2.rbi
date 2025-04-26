@@ -21,7 +21,7 @@ module Lithic
             ),
             type: Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol,
             excluded_card_tokens: T::Array[String],
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Models::AuthRules::V2CreateResponse)
         end
@@ -44,10 +44,7 @@ module Lithic
         ); end
         # Fetches a V2 authorization rule by its token
         sig do
-          params(
-            auth_rule_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-          )
+          params(auth_rule_token: String, request_options: Lithic::RequestOpts)
             .returns(Lithic::Models::AuthRules::V2RetrieveResponse)
         end
         def retrieve(
@@ -69,7 +66,7 @@ module Lithic
             card_tokens: T::Array[String],
             excluded_card_tokens: T::Array[String],
             program_level: T::Boolean,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Models::AuthRules::V2UpdateResponse)
         end
@@ -102,7 +99,7 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Internal::CursorPage[Lithic::Models::AuthRules::V2ListResponse])
         end
@@ -122,13 +119,7 @@ module Lithic
           request_options: {}
         ); end
         # Deletes a V2 authorization rule
-        sig do
-          params(
-            auth_rule_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-          )
-            .void
-        end
+        sig { params(auth_rule_token: String, request_options: Lithic::RequestOpts).void }
         def delete(
           # Globally unique identifier for the Auth Rule.
           auth_rule_token,
@@ -145,7 +136,7 @@ module Lithic
             card_tokens: T::Array[String],
             program_level: T::Boolean,
             excluded_card_tokens: T::Array[String],
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Models::AuthRules::V2ApplyResponse)
         end
@@ -176,7 +167,7 @@ module Lithic
                 Lithic::Models::AuthRules::VelocityLimitParams
               )
             ),
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Models::AuthRules::V2DraftResponse)
         end
@@ -190,10 +181,7 @@ module Lithic
         # Promotes the draft version of an authorization rule to the currently active
         # version such that it is enforced in the authorization stream.
         sig do
-          params(
-            auth_rule_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-          )
+          params(auth_rule_token: String, request_options: Lithic::RequestOpts)
             .returns(Lithic::Models::AuthRules::V2PromoteResponse)
         end
         def promote(
@@ -253,10 +241,7 @@ module Lithic
         # between when Lithic's transaction processing systems have processed the
         # transaction, and when a transaction will be included in the report.
         sig do
-          params(
-            auth_rule_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-          )
+          params(auth_rule_token: String, request_options: Lithic::RequestOpts)
             .returns(Lithic::Models::AuthRules::V2ReportResponse)
         end
         def report(

@@ -33,7 +33,7 @@ module Lithic
           spend_limit: Integer,
           spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
           state: Lithic::Models::CardCreateParams::State::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::Card)
       end
@@ -142,13 +142,7 @@ module Lithic
         request_options: {}
       ); end
       # Get card configuration such as spend limit and state.
-      sig do
-        params(
-          card_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
-          .returns(Lithic::Models::Card)
-      end
+      sig { params(card_token: String, request_options: Lithic::RequestOpts).returns(Lithic::Models::Card) }
       def retrieve(card_token, request_options: {}); end
 
       # Update the specified properties of the card. Unsupplied properties will remain
@@ -166,7 +160,7 @@ module Lithic
           spend_limit: Integer,
           spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
           state: Lithic::Models::CardUpdateParams::State::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::Card)
       end
@@ -226,7 +220,7 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           state: Lithic::Models::CardListParams::State::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::NonPCICard])
       end
@@ -268,7 +262,7 @@ module Lithic
           carrier: T.any(Lithic::Models::Carrier, Lithic::Internal::AnyHash),
           product_id: String,
           shipping_method: Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::Card)
       end
@@ -325,12 +319,7 @@ module Lithic
       # but **do not ever embed your API key into front end code, as doing so introduces
       # a serious security vulnerability**.
       sig do
-        params(
-          embed_request: String,
-          hmac: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
-          .returns(String)
+        params(embed_request: String, hmac: String, request_options: Lithic::RequestOpts).returns(String)
       end
       def embed(
         # A base64 encoded JSON string of an EmbedRequest to specify which card to load.
@@ -354,7 +343,7 @@ module Lithic
           digital_wallet: Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol,
           nonce: String,
           nonce_signature: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::CardProvisionResponse)
       end
@@ -398,7 +387,7 @@ module Lithic
           product_id: String,
           shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Internal::AnyHash),
           shipping_method: Lithic::Models::CardReissueParams::ShippingMethod::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::Card)
       end
@@ -445,7 +434,7 @@ module Lithic
           exp_year: String,
           product_id: String,
           shipping_method: Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::Card)
       end
@@ -484,13 +473,7 @@ module Lithic
       # on the Card and the amount already spent over the spend limit's duration. For
       # example, if the Card has a monthly spend limit of $1000 configured, and has
       # spent $600 in the last month, the available spend limit returned would be $400.
-      sig do
-        params(
-          card_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
-          .returns(Lithic::Models::CardSpendLimits)
-      end
+      sig { params(card_token: String, request_options: Lithic::RequestOpts).returns(Lithic::Models::CardSpendLimits) }
       def retrieve_spend_limits(card_token, request_options: {}); end
 
       # Get card configuration such as spend limit and state. Customers must be PCI
@@ -498,18 +481,7 @@ module Lithic
       # [support@lithic.com](mailto:support@lithic.com) for questions. _Note: this is a
       # `POST` endpoint because it is more secure to send sensitive data in a request
       # body than in a URL._
-      sig do
-        params(
-          pan: String,
-          request_options: T.nilable(
-            T.any(
-              Lithic::RequestOptions,
-              Lithic::Internal::AnyHash
-            )
-          )
-        )
-          .returns(Lithic::Models::Card)
-      end
+      sig { params(pan: String, request_options: Lithic::RequestOpts).returns(Lithic::Models::Card) }
       def search_by_pan(
         # The PAN for the card being retrieved.
         pan:,

@@ -7,10 +7,7 @@ module Lithic
         class NetworkTotals
           # Retrieve a specific network total record by token. Not available in sandbox.
           sig do
-            params(
-              token: String,
-              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-            )
+            params(token: String, request_options: Lithic::RequestOpts)
               .returns(Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse)
           end
           def retrieve(
@@ -32,7 +29,7 @@ module Lithic
               report_date_end: Date,
               settlement_institution_id: String,
               starting_after: String,
-              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+              request_options: Lithic::RequestOpts
             )
               .returns(Lithic::Internal::CursorPage[Lithic::Models::Reports::Settlement::NetworkTotalListResponse])
           end

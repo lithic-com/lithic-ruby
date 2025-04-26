@@ -5,10 +5,7 @@ module Lithic
     class DigitalCardArt
       # Get digital card art by token.
       sig do
-        params(
-          digital_card_art_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(digital_card_art_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::DigitalCardArtAPI)
       end
       def retrieve(
@@ -25,7 +22,7 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::DigitalCardArtAPI])
       end

@@ -14,7 +14,7 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Internal::CursorPage[Lithic::Models::SettlementDetail])
         end
@@ -32,13 +32,7 @@ module Lithic
           request_options: {}
         ); end
         # Get the settlement report for a specified report date. Not available in sandbox.
-        sig do
-          params(
-            report_date: Date,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-          )
-            .returns(Lithic::Models::SettlementReport)
-        end
+        sig { params(report_date: Date, request_options: Lithic::RequestOpts).returns(Lithic::Models::SettlementReport) }
         def summary(
           # Date of the settlement report to retrieve.
           report_date,

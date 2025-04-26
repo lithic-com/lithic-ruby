@@ -26,7 +26,7 @@ module Lithic
           account_token: String,
           is_for_benefit_of: T::Boolean,
           idempotency_key: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::FinancialAccount)
       end
@@ -45,21 +45,14 @@ module Lithic
       ); end
       # Get a financial account
       sig do
-        params(
-          financial_account_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(financial_account_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::FinancialAccount)
       end
       def retrieve(financial_account_token, request_options: {}); end
 
       # Update a financial account
       sig do
-        params(
-          financial_account_token: String,
-          nickname: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(financial_account_token: String, nickname: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::FinancialAccount)
       end
       def update(financial_account_token, nickname: nil, request_options: {}); end
@@ -71,7 +64,7 @@ module Lithic
           account_token: String,
           business_account_token: String,
           type: Lithic::Models::FinancialAccountListParams::Type::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Internal::SinglePage[Lithic::Models::FinancialAccount])
       end
@@ -90,7 +83,7 @@ module Lithic
           financial_account_token: String,
           status: Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol,
           substatus: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::OrSymbol),
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::FinancialAccount)
       end

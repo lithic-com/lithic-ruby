@@ -32,7 +32,7 @@ module Lithic
           website_url: String,
           kyc_passed_timestamp: String,
           business_account_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::AccountHolderCreateResponse)
       end
@@ -107,10 +107,7 @@ module Lithic
       # Get an Individual or Business Account Holder and/or their KYC or KYB evaluation
       # status.
       sig do
-        params(
-          account_holder_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(account_holder_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::AccountHolder)
       end
       def retrieve(
@@ -146,7 +143,7 @@ module Lithic
           last_name: String,
           legal_business_name: String,
           phone_number: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(
             T.any(
@@ -226,7 +223,7 @@ module Lithic
           limit: Integer,
           phone_number: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Internal::SinglePage[Lithic::Models::AccountHolder])
       end
@@ -279,10 +276,7 @@ module Lithic
       # show an additional entry in the `required_document_uploads` list in a `PENDING`
       # state for the corresponding `image_type`.
       sig do
-        params(
-          account_holder_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(account_holder_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::AccountHolderListDocumentsResponse)
       end
       def list_documents(
@@ -305,11 +299,7 @@ module Lithic
       # response will show an additional entry in the `required_document_uploads` array
       # in a `PENDING` state for the corresponding `image_type`.
       sig do
-        params(
-          document_token: String,
-          account_holder_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(document_token: String, account_holder_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::Document)
       end
       def retrieve_document(
@@ -326,7 +316,7 @@ module Lithic
           status: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol,
           accepted_entity_status_reasons: T::Array[String],
           status_reason: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::Document)
       end
@@ -349,7 +339,7 @@ module Lithic
           account_holder_token: String,
           status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::OrSymbol,
           status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol],
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse)
       end
@@ -386,7 +376,7 @@ module Lithic
           account_holder_token: String,
           document_type: Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
           entity_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::Document)
       end
