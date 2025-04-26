@@ -15,7 +15,7 @@ module Lithic
           type: Lithic::Models::BookTransferCreateParams::Type::OrSymbol,
           token: String,
           memo: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::BookTransferResponse)
       end
@@ -44,10 +44,7 @@ module Lithic
       ); end
       # Get book transfer by token
       sig do
-        params(
-          book_transfer_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(book_transfer_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::BookTransferResponse)
       end
       def retrieve(
@@ -69,7 +66,7 @@ module Lithic
           result: Lithic::Models::BookTransferListParams::Result::OrSymbol,
           starting_after: String,
           status: Lithic::Models::BookTransferListParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::BookTransferResponse])
       end
@@ -103,11 +100,7 @@ module Lithic
       ); end
       # Reverse a book transfer
       sig do
-        params(
-          book_transfer_token: String,
-          memo: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(book_transfer_token: String, memo: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::BookTransferResponse)
       end
       def reverse(

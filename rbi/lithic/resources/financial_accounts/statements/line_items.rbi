@@ -13,7 +13,7 @@ module Lithic
               ending_before: String,
               page_size: Integer,
               starting_after: String,
-              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+              request_options: Lithic::RequestOpts
             )
               .returns(
                 Lithic::Internal::CursorPage[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data]

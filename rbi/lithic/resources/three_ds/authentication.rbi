@@ -6,10 +6,7 @@ module Lithic
       class Authentication
         # Get 3DS Authentication by token
         sig do
-          params(
-            three_ds_authentication_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-          )
+          params(three_ds_authentication_token: String, request_options: Lithic::RequestOpts)
             .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse)
         end
         def retrieve(
@@ -27,7 +24,7 @@ module Lithic
             pan: String,
             transaction: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Internal::AnyHash),
             card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Models::ThreeDS::AuthenticationSimulateResponse)
         end
@@ -45,14 +42,7 @@ module Lithic
         # /v1/three_ds_authentication/simulate that resulted in triggered SMS-OTP
         # challenge must precede. Only a single attempt is supported; upon entering OTP,
         # the challenge is either approved or declined.
-        sig do
-          params(
-            token: String,
-            otp: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-          )
-            .void
-        end
+        sig { params(token: String, otp: String, request_options: Lithic::RequestOpts).void }
         def simulate_otp_entry(
           # A unique token returned as part of a /v1/three_ds_authentication/simulate call
           # that resulted in PENDING_CHALLENGE authentication result.

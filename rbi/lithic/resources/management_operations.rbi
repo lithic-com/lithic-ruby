@@ -16,7 +16,7 @@ module Lithic
           memo: String,
           subtype: String,
           user_defined_id: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::ManagementOperationTransaction)
       end
@@ -35,10 +35,7 @@ module Lithic
       ); end
       # Get management operation
       sig do
-        params(
-          management_operation_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(management_operation_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::ManagementOperationTransaction)
       end
       def retrieve(
@@ -58,7 +55,7 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           status: Lithic::Models::ManagementOperationListParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::ManagementOperationTransaction])
       end
@@ -93,7 +90,7 @@ module Lithic
           management_operation_token: String,
           effective_date: Date,
           memo: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::ManagementOperationTransaction)
       end

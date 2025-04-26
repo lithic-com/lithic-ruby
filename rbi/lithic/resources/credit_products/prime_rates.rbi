@@ -10,7 +10,7 @@ module Lithic
             credit_product_token: String,
             effective_date: Date,
             rate: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .void
         end
@@ -29,7 +29,7 @@ module Lithic
             credit_product_token: String,
             ending_before: Date,
             starting_after: Date,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Models::CreditProducts::PrimeRateRetrieveResponse)
         end

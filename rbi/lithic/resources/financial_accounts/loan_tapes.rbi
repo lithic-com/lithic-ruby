@@ -9,7 +9,7 @@ module Lithic
           params(
             loan_tape_token: String,
             financial_account_token: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Models::FinancialAccounts::LoanTape)
         end
@@ -29,7 +29,7 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+            request_options: Lithic::RequestOpts
           )
             .returns(Lithic::Internal::CursorPage[Lithic::Models::FinancialAccounts::LoanTape])
         end

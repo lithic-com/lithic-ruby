@@ -12,10 +12,7 @@ module Lithic
       # Get a specific card transaction. All amounts are in the smallest unit of their
       # respective currency (e.g., cents for USD).
       sig do
-        params(
-          transaction_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(transaction_token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::Transaction)
       end
       def retrieve(
@@ -36,7 +33,7 @@ module Lithic
           result: Lithic::Models::TransactionListParams::Result::OrSymbol,
           starting_after: String,
           status: Lithic::Models::TransactionListParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Internal::CursorPage[Lithic::Models::Transaction])
       end
@@ -67,13 +64,7 @@ module Lithic
         request_options: {}
       ); end
       # Expire authorization
-      sig do
-        params(
-          transaction_token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
-          .void
-      end
+      sig { params(transaction_token: String, request_options: Lithic::RequestOpts).void }
       def expire_authorization(
         # The token of the transaction to expire.
         transaction_token,
@@ -99,7 +90,7 @@ module Lithic
           partial_approval_capable: T::Boolean,
           pin: String,
           status: Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::TransactionSimulateAuthorizationResponse)
       end
@@ -155,11 +146,7 @@ module Lithic
       # merchant acquirer. An authorization advice changes the pending amount of the
       # transaction.
       sig do
-        params(
-          token: String,
-          amount: Integer,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(token: String, amount: Integer, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::TransactionSimulateAuthorizationAdviceResponse)
       end
       def simulate_authorization_advice(
@@ -177,11 +164,7 @@ module Lithic
       # Transactions that have already cleared, either partially or fully, cannot be
       # cleared again using this endpoint.
       sig do
-        params(
-          token: String,
-          amount: Integer,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(token: String, amount: Integer, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::TransactionSimulateClearingResponse)
       end
       def simulate_clearing(
@@ -208,7 +191,7 @@ module Lithic
           pan: String,
           mcc: String,
           merchant_acceptor_id: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::TransactionSimulateCreditAuthorizationResponse)
       end
@@ -233,12 +216,7 @@ module Lithic
       # endpoint clear immediately, without prior authorization, and result in a
       # `SETTLED` transaction status.
       sig do
-        params(
-          amount: Integer,
-          descriptor: String,
-          pan: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(amount: Integer, descriptor: String, pan: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::TransactionSimulateReturnResponse)
       end
       def simulate_return(
@@ -254,10 +232,7 @@ module Lithic
       # can be financial credit authorizations, or credit authorizations that have
       # cleared.
       sig do
-        params(
-          token: String,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-        )
+        params(token: String, request_options: Lithic::RequestOpts)
           .returns(Lithic::Models::TransactionSimulateReturnReversalResponse)
       end
       def simulate_return_reversal(
@@ -274,7 +249,7 @@ module Lithic
           token: String,
           amount: Integer,
           type: Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol,
-          request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
+          request_options: Lithic::RequestOpts
         )
           .returns(Lithic::Models::TransactionSimulateVoidResponse)
       end

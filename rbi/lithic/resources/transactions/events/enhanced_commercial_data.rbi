@@ -8,10 +8,7 @@ module Lithic
           # Get L2/L3 enhanced commercial data associated with a transaction event. Not
           # available in sandbox.
           sig do
-            params(
-              event_token: String,
-              request_options: T.nilable(T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-            )
+            params(event_token: String, request_options: Lithic::RequestOpts)
               .returns(Lithic::Models::Transactions::Events::EnhancedData)
           end
           def retrieve(
