@@ -113,6 +113,7 @@ module Lithic
           # @!method self.variants
           #   @return [Array(String, Integer, Array<String>)]
 
+          # @type [Lithic::Internal::Type::Converter]
           StringArray = Lithic::Internal::Type::ArrayOf[String]
         end
       end
