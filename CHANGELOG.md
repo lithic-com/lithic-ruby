@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-alpha.20 (2025-04-29)
+
+Full Changelog: [v0.1.0-alpha.19...v0.1.0-alpha.20](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.19...v0.1.0-alpha.20)
+
+### Features
+
+* **api:** adds new merchant lock Auth Rule ([388d8cb](https://github.com/lithic-com/lithic-ruby/commit/388d8cb18b0b89d44d9b2d0c2301e723c17c6d33))
+
+
+### Chores
+
+* add generator safe directory ([0cda408](https://github.com/lithic-com/lithic-ruby/commit/0cda40840420a00c792302dd07aa681d31680717))
+* **internal:** annotate request options with type aliases in sorbet ([552a73d](https://github.com/lithic-com/lithic-ruby/commit/552a73db90724b38cbb9f0740d8bbbd6b8cbdc74))
+* **internal:** remove unnecessary `rbi/lib` folder ([233630e](https://github.com/lithic-com/lithic-ruby/commit/233630e9abfd2f3f29e59d212a1cf6d5e3ec8cc2))
+* loosen rubocop rules that don't always make sense ([e85bd6a](https://github.com/lithic-com/lithic-ruby/commit/e85bd6a6d208c2c05d76e101edc7627e23831ffc))
+* more accurate type annotations and aliases ([347bbf6](https://github.com/lithic-com/lithic-ruby/commit/347bbf62b4a86b3e457b4ac591f526ba42f34e9c))
+
 ## 0.1.0-alpha.19 (2025-04-25)
 
 Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)
