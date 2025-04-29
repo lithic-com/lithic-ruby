@@ -74,11 +74,52 @@ module Lithic
           type parameters =
             Lithic::Models::AuthRules::ConditionalBlockParameters
             | Lithic::Models::AuthRules::VelocityLimitParams
+            | Lithic::Models::AuthRules::V2ListResponse::CurrentVersion::Parameters::MerchantLockParameters
 
           module Parameters
             extend Lithic::Internal::Type::Union
 
-            def self?.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+            type merchant_lock_parameters =
+              {
+                merchants: ::Array[Lithic::Models::AuthRules::V2ListResponse::CurrentVersion::Parameters::MerchantLockParameters::Merchant]
+              }
+
+            class MerchantLockParameters < Lithic::Internal::Type::BaseModel
+              attr_accessor merchants: ::Array[Lithic::Models::AuthRules::V2ListResponse::CurrentVersion::Parameters::MerchantLockParameters::Merchant]
+
+              def initialize: (
+                merchants: ::Array[Lithic::Models::AuthRules::V2ListResponse::CurrentVersion::Parameters::MerchantLockParameters::Merchant]
+              ) -> void
+
+              def to_hash: -> Lithic::Models::AuthRules::V2ListResponse::CurrentVersion::Parameters::merchant_lock_parameters
+
+              type merchant =
+                { comment: String, descriptor: String, merchant_id: String }
+
+              class Merchant < Lithic::Internal::Type::BaseModel
+                attr_reader comment: String?
+
+                def comment=: (String) -> String
+
+                attr_reader descriptor: String?
+
+                def descriptor=: (String) -> String
+
+                attr_reader merchant_id: String?
+
+                def merchant_id=: (String) -> String
+
+                def initialize: (
+                  ?comment: String,
+                  ?descriptor: String,
+                  ?merchant_id: String
+                ) -> void
+
+                def to_hash: -> Lithic::Models::AuthRules::V2ListResponse::CurrentVersion::Parameters::MerchantLockParameters::merchant
+              end
+            end
+
+            def self?.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2ListResponse::CurrentVersion::Parameters::MerchantLockParameters]
           end
         end
 
@@ -103,11 +144,52 @@ module Lithic
           type parameters =
             Lithic::Models::AuthRules::ConditionalBlockParameters
             | Lithic::Models::AuthRules::VelocityLimitParams
+            | Lithic::Models::AuthRules::V2ListResponse::DraftVersion::Parameters::MerchantLockParameters
 
           module Parameters
             extend Lithic::Internal::Type::Union
 
-            def self?.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams]
+            type merchant_lock_parameters =
+              {
+                merchants: ::Array[Lithic::Models::AuthRules::V2ListResponse::DraftVersion::Parameters::MerchantLockParameters::Merchant]
+              }
+
+            class MerchantLockParameters < Lithic::Internal::Type::BaseModel
+              attr_accessor merchants: ::Array[Lithic::Models::AuthRules::V2ListResponse::DraftVersion::Parameters::MerchantLockParameters::Merchant]
+
+              def initialize: (
+                merchants: ::Array[Lithic::Models::AuthRules::V2ListResponse::DraftVersion::Parameters::MerchantLockParameters::Merchant]
+              ) -> void
+
+              def to_hash: -> Lithic::Models::AuthRules::V2ListResponse::DraftVersion::Parameters::merchant_lock_parameters
+
+              type merchant =
+                { comment: String, descriptor: String, merchant_id: String }
+
+              class Merchant < Lithic::Internal::Type::BaseModel
+                attr_reader comment: String?
+
+                def comment=: (String) -> String
+
+                attr_reader descriptor: String?
+
+                def descriptor=: (String) -> String
+
+                attr_reader merchant_id: String?
+
+                def merchant_id=: (String) -> String
+
+                def initialize: (
+                  ?comment: String,
+                  ?descriptor: String,
+                  ?merchant_id: String
+                ) -> void
+
+                def to_hash: -> Lithic::Models::AuthRules::V2ListResponse::DraftVersion::Parameters::MerchantLockParameters::merchant
+              end
+            end
+
+            def self?.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2ListResponse::DraftVersion::Parameters::MerchantLockParameters]
           end
         end
 
@@ -122,13 +204,14 @@ module Lithic
           def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResponse::state]
         end
 
-        type type_ = :CONDITIONAL_BLOCK | :VELOCITY_LIMIT
+        type type_ = :CONDITIONAL_BLOCK | :VELOCITY_LIMIT | :MERCHANT_LOCK
 
         module Type
           extend Lithic::Internal::Type::Enum
 
           CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
           VELOCITY_LIMIT: :VELOCITY_LIMIT
+          MERCHANT_LOCK: :MERCHANT_LOCK
 
           def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListResponse::type_]
         end

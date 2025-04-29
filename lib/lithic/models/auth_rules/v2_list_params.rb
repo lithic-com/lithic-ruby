@@ -33,6 +33,12 @@ module Lithic
         #   @return [Integer, nil]
         optional :page_size, Integer
 
+        # @!attribute scope
+        #   Only return Authorization Rules that are bound to the provided scope;
+        #
+        #   @return [Symbol, Lithic::Models::AuthRules::V2ListParams::Scope, nil]
+        optional :scope, enum: -> { Lithic::Models::AuthRules::V2ListParams::Scope }
+
         # @!attribute starting_after
         #   A cursor representing an item's token after which a page of results should
         #   begin. Used to retrieve the next page of results after this item.
@@ -40,7 +46,7 @@ module Lithic
         #   @return [String, nil]
         optional :starting_after, String
 
-        # @!method initialize(account_token: nil, card_token: nil, ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
+        # @!method initialize(account_token: nil, card_token: nil, ending_before: nil, page_size: nil, scope: nil, starting_after: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::V2ListParams} for more details.
         #
@@ -53,10 +59,24 @@ module Lithic
         #
         #   @param page_size [Integer] Page size (for pagination).
         #
+        #   @param scope [Symbol, Lithic::Models::AuthRules::V2ListParams::Scope] Only return Authorization Rules that are bound to the provided scope;
+        #
         #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
         #   ...
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
+
+        # Only return Authorization Rules that are bound to the provided scope;
+        module Scope
+          extend Lithic::Internal::Type::Enum
+
+          PROGRAM = :PROGRAM
+          ACCOUNT = :ACCOUNT
+          CARD = :CARD
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
     end
   end

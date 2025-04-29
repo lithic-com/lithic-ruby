@@ -7,6 +7,7 @@ module Lithic
           card_token: String,
           ending_before: String,
           page_size: Integer,
+          scope: Lithic::Models::AuthRules::V2ListParams::scope,
           starting_after: String
         }
         & Lithic::Internal::Type::request_parameters
@@ -31,6 +32,12 @@ module Lithic
 
         def page_size=: (Integer) -> Integer
 
+        attr_reader scope: Lithic::Models::AuthRules::V2ListParams::scope?
+
+        def scope=: (
+          Lithic::Models::AuthRules::V2ListParams::scope
+        ) -> Lithic::Models::AuthRules::V2ListParams::scope
+
         attr_reader starting_after: String?
 
         def starting_after=: (String) -> String
@@ -40,11 +47,24 @@ module Lithic
           ?card_token: String,
           ?ending_before: String,
           ?page_size: Integer,
+          ?scope: Lithic::Models::AuthRules::V2ListParams::scope,
           ?starting_after: String,
           ?request_options: Lithic::request_opts
         ) -> void
 
         def to_hash: -> Lithic::Models::AuthRules::v2_list_params
+
+        type scope = :PROGRAM | :ACCOUNT | :CARD
+
+        module Scope
+          extend Lithic::Internal::Type::Enum
+
+          PROGRAM: :PROGRAM
+          ACCOUNT: :ACCOUNT
+          CARD: :CARD
+
+          def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListParams::scope]
+        end
       end
     end
   end

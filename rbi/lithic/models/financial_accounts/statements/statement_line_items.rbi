@@ -525,6 +525,11 @@ module Lithic
                   :PROVISIONAL_CREDIT_REVERSAL,
                   Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
+              SERVICE =
+                T.let(
+                  :SERVICE,
+                  Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
               RETURN =
                 T.let(
                   :RETURN,

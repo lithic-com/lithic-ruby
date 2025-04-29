@@ -17,7 +17,8 @@ module Lithic
             parameters: T.any(
               Lithic::Models::AuthRules::ConditionalBlockParameters,
               Lithic::Internal::AnyHash,
-              Lithic::Models::AuthRules::VelocityLimitParams
+              Lithic::Models::AuthRules::VelocityLimitParams,
+              Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters
             ),
             type: Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol,
             excluded_card_tokens: T::Array[String],
@@ -98,6 +99,7 @@ module Lithic
             card_token: String,
             ending_before: String,
             page_size: Integer,
+            scope: Lithic::Models::AuthRules::V2ListParams::Scope::OrSymbol,
             starting_after: String,
             request_options: Lithic::RequestOpts
           )
@@ -113,6 +115,8 @@ module Lithic
           ending_before: nil,
           # Page size (for pagination).
           page_size: nil,
+          # Only return Authorization Rules that are bound to the provided scope;
+          scope: nil,
           # A cursor representing an item's token after which a page of results should
           # begin. Used to retrieve the next page of results after this item.
           starting_after: nil,
@@ -164,7 +168,8 @@ module Lithic
               T.any(
                 Lithic::Models::AuthRules::ConditionalBlockParameters,
                 Lithic::Internal::AnyHash,
-                Lithic::Models::AuthRules::VelocityLimitParams
+                Lithic::Models::AuthRules::VelocityLimitParams,
+                Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters
               )
             ),
             request_options: Lithic::RequestOpts
