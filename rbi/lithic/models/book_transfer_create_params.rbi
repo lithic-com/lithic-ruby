@@ -169,6 +169,7 @@ module Lithic
         PROVISIONAL_CREDIT =
           T.let(:PROVISIONAL_CREDIT, Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol)
         DISPUTE_WON = T.let(:DISPUTE_WON, Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol)
+        SERVICE = T.let(:SERVICE, Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol)
         TRANSFER = T.let(:TRANSFER, Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Models::BookTransferCreateParams::Type::TaggedSymbol]) }

@@ -396,6 +396,7 @@ module Lithic
           PROVISIONAL_CREDIT = T.let(:PROVISIONAL_CREDIT, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
           PROVISIONAL_CREDIT_REVERSAL =
             T.let(:PROVISIONAL_CREDIT_REVERSAL, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
+          SERVICE = T.let(:SERVICE, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
           RETURN = T.let(:RETURN, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
           RETURN_REVERSAL = T.let(:RETURN_REVERSAL, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
           TRANSFER = T.let(:TRANSFER, Lithic::Models::Transfer::Event::Type::TaggedSymbol)
