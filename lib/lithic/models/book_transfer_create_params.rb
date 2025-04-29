@@ -136,6 +136,7 @@ module Lithic
         INACTIVITY_FEE_DOWN = :INACTIVITY_FEE_DOWN
         PROVISIONAL_CREDIT = :PROVISIONAL_CREDIT
         DISPUTE_WON = :DISPUTE_WON
+        SERVICE = :SERVICE
         TRANSFER = :TRANSFER
 
         # @!method self.values

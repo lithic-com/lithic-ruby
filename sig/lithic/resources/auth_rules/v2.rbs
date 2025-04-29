@@ -36,6 +36,7 @@ module Lithic
           ?card_token: String,
           ?ending_before: String,
           ?page_size: Integer,
+          ?scope: Lithic::Models::AuthRules::V2ListParams::scope,
           ?starting_after: String,
           ?request_options: Lithic::request_opts
         ) -> Lithic::Internal::CursorPage[Lithic::Models::AuthRules::V2ListResponse]

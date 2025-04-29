@@ -36,6 +36,13 @@ module Lithic
         sig { params(page_size: Integer).void }
         attr_writer :page_size
 
+        # Only return Authorization Rules that are bound to the provided scope;
+        sig { returns(T.nilable(Lithic::Models::AuthRules::V2ListParams::Scope::OrSymbol)) }
+        attr_reader :scope
+
+        sig { params(scope: Lithic::Models::AuthRules::V2ListParams::Scope::OrSymbol).void }
+        attr_writer :scope
+
         # A cursor representing an item's token after which a page of results should
         # begin. Used to retrieve the next page of results after this item.
         sig { returns(T.nilable(String)) }
@@ -50,6 +57,7 @@ module Lithic
             card_token: String,
             ending_before: String,
             page_size: Integer,
+            scope: Lithic::Models::AuthRules::V2ListParams::Scope::OrSymbol,
             starting_after: String,
             request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
           )
@@ -65,6 +73,8 @@ module Lithic
           ending_before: nil,
           # Page size (for pagination).
           page_size: nil,
+          # Only return Authorization Rules that are bound to the provided scope;
+          scope: nil,
           # A cursor representing an item's token after which a page of results should
           # begin. Used to retrieve the next page of results after this item.
           starting_after: nil,
@@ -78,12 +88,28 @@ module Lithic
                 card_token: String,
                 ending_before: String,
                 page_size: Integer,
+                scope: Lithic::Models::AuthRules::V2ListParams::Scope::OrSymbol,
                 starting_after: String,
                 request_options: Lithic::RequestOptions
               }
             )
         end
         def to_hash; end
+
+        # Only return Authorization Rules that are bound to the provided scope;
+        module Scope
+          extend Lithic::Internal::Type::Enum
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::V2ListParams::Scope) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          PROGRAM = T.let(:PROGRAM, Lithic::Models::AuthRules::V2ListParams::Scope::TaggedSymbol)
+          ACCOUNT = T.let(:ACCOUNT, Lithic::Models::AuthRules::V2ListParams::Scope::TaggedSymbol)
+          CARD = T.let(:CARD, Lithic::Models::AuthRules::V2ListParams::Scope::TaggedSymbol)
+
+          sig { override.returns(T::Array[Lithic::Models::AuthRules::V2ListParams::Scope::TaggedSymbol]) }
+          def self.values; end
+        end
       end
     end
   end
