@@ -78,7 +78,7 @@ module Lithic
           path: "v1/account_holders",
           body: parsed,
           model: Lithic::Models::AccountHolderCreateResponse,
-          options: options
+          options: {timeout: 300, **options}
         )
       end
 
