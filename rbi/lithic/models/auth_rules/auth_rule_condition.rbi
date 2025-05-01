@@ -2,6 +2,8 @@
 
 module Lithic
   module Models
+    AuthRuleCondition = AuthRules::AuthRuleCondition
+
     module AuthRules
       class AuthRuleCondition < Lithic::Internal::Type::BaseModel
         # The attribute to target.
@@ -178,7 +180,5 @@ module Lithic
         end
       end
     end
-
-    AuthRuleCondition = AuthRules::AuthRuleCondition
   end
 end
