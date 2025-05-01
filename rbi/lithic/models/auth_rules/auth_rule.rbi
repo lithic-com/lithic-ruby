@@ -2,6 +2,8 @@
 
 module Lithic
   module Models
+    AuthRule = AuthRules::AuthRule
+
     module AuthRules
       class AuthRule < Lithic::Internal::Type::BaseModel
         # Globally unique identifier.
@@ -140,7 +142,5 @@ module Lithic
         end
       end
     end
-
-    AuthRule = AuthRules::AuthRule
   end
 end

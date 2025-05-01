@@ -3,6 +3,8 @@
 module Lithic
   module Models
     module FinancialAccounts
+      StatementLineItems = Statements::StatementLineItems
+
       module Statements
         class StatementLineItems < Lithic::Internal::Type::BaseModel
           sig { returns(T::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data]) }
@@ -577,8 +579,6 @@ module Lithic
           end
         end
       end
-
-      StatementLineItems = Statements::StatementLineItems
     end
   end
 end

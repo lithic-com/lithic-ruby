@@ -2,6 +2,8 @@
 
 module Lithic
   module Models
+    FinancialAccountCreditConfig = FinancialAccounts::FinancialAccountCreditConfig
+
     module FinancialAccounts
       class FinancialAccountCreditConfig < Lithic::Internal::Type::BaseModel
         # Globally unique identifier for the account
@@ -153,7 +155,5 @@ module Lithic
         end
       end
     end
-
-    FinancialAccountCreditConfig = FinancialAccounts::FinancialAccountCreditConfig
   end
 end

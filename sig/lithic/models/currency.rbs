@@ -1,0 +1,5 @@
+module Lithic
+  module Models
+    class Currency = String
+  end
+end
