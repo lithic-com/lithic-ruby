@@ -1,0 +1,323 @@
+module Lithic
+  class Account = Lithic::Models::Account
+
+  module AccountFinancialAccountType = Lithic::Models::AccountFinancialAccountType
+
+  class AccountHolder = Lithic::Models::AccountHolder
+
+  class AccountHolderCreateParams = Lithic::Models::AccountHolderCreateParams
+
+  class AccountHolderListDocumentsParams = Lithic::Models::AccountHolderListDocumentsParams
+
+  class AccountHolderListParams = Lithic::Models::AccountHolderListParams
+
+  class AccountHolderRetrieveDocumentParams = Lithic::Models::AccountHolderRetrieveDocumentParams
+
+  class AccountHolderRetrieveParams = Lithic::Models::AccountHolderRetrieveParams
+
+  class AccountHolderSimulateEnrollmentDocumentReviewParams = Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams
+
+  class AccountHolderSimulateEnrollmentReviewParams = Lithic::Models::AccountHolderSimulateEnrollmentReviewParams
+
+  class AccountHolderUpdateParams = Lithic::Models::AccountHolderUpdateParams
+
+  class AccountHolderUploadDocumentParams = Lithic::Models::AccountHolderUploadDocumentParams
+
+  class AccountListParams = Lithic::Models::AccountListParams
+
+  class AccountRetrieveParams = Lithic::Models::AccountRetrieveParams
+
+  class AccountRetrieveSpendLimitsParams = Lithic::Models::AccountRetrieveSpendLimitsParams
+
+  class AccountSpendLimits = Lithic::Models::AccountSpendLimits
+
+  class AccountUpdateParams = Lithic::Models::AccountUpdateParams
+
+  class Address = Lithic::Models::Address
+
+  class AddressUpdate = Lithic::Models::AddressUpdate
+
+  class AggregateBalance = Lithic::Models::AggregateBalance
+
+  class AggregateBalanceListParams = Lithic::Models::AggregateBalanceListParams
+
+  class APIStatus = Lithic::Models::APIStatus
+
+  module AuthRules = Lithic::Models::AuthRules
+
+  class AuthStreamEnrollmentRetrieveSecretParams = Lithic::Models::AuthStreamEnrollmentRetrieveSecretParams
+
+  class AuthStreamEnrollmentRotateSecretParams = Lithic::Models::AuthStreamEnrollmentRotateSecretParams
+
+  class AuthStreamSecret = Lithic::Models::AuthStreamSecret
+
+  class Balance = Lithic::Models::Balance
+
+  class BalanceListParams = Lithic::Models::BalanceListParams
+
+  class BookTransferCreateParams = Lithic::Models::BookTransferCreateParams
+
+  class BookTransferListParams = Lithic::Models::BookTransferListParams
+
+  class BookTransferResponse = Lithic::Models::BookTransferResponse
+
+  class BookTransferRetrieveParams = Lithic::Models::BookTransferRetrieveParams
+
+  class BookTransferReverseParams = Lithic::Models::BookTransferReverseParams
+
+  class Card = Lithic::Models::Card
+
+  class CardConvertPhysicalParams = Lithic::Models::CardConvertPhysicalParams
+
+  class CardCreateParams = Lithic::Models::CardCreateParams
+
+  class CardEmbedParams = Lithic::Models::CardEmbedParams
+
+  class CardListParams = Lithic::Models::CardListParams
+
+  class CardProgram = Lithic::Models::CardProgram
+
+  class CardProgramListParams = Lithic::Models::CardProgramListParams
+
+  class CardProgramRetrieveParams = Lithic::Models::CardProgramRetrieveParams
+
+  class CardProvisionParams = Lithic::Models::CardProvisionParams
+
+  class CardReissueParams = Lithic::Models::CardReissueParams
+
+  class CardRenewParams = Lithic::Models::CardRenewParams
+
+  class CardRetrieveParams = Lithic::Models::CardRetrieveParams
+
+  class CardRetrieveSpendLimitsParams = Lithic::Models::CardRetrieveSpendLimitsParams
+
+  module Cards = Lithic::Models::Cards
+
+  class CardSearchByPanParams = Lithic::Models::CardSearchByPanParams
+
+  class CardSpendLimits = Lithic::Models::CardSpendLimits
+
+  class CardUpdateParams = Lithic::Models::CardUpdateParams
+
+  class Carrier = Lithic::Models::Carrier
+
+  class ClientAPIStatusParams = Lithic::Models::ClientAPIStatusParams
+
+  module CreditProducts = Lithic::Models::CreditProducts
+
+  class Currency = Lithic::Models::Currency
+
+  class DigitalCardArtAPI = Lithic::Models::DigitalCardArtAPI
+
+  class DigitalCardArtListParams = Lithic::Models::DigitalCardArtListParams
+
+  class DigitalCardArtRetrieveParams = Lithic::Models::DigitalCardArtRetrieveParams
+
+  class Dispute = Lithic::Models::Dispute
+
+  class DisputeCreateParams = Lithic::Models::DisputeCreateParams
+
+  class DisputeDeleteEvidenceParams = Lithic::Models::DisputeDeleteEvidenceParams
+
+  class DisputeDeleteParams = Lithic::Models::DisputeDeleteParams
+
+  class DisputeEvidence = Lithic::Models::DisputeEvidence
+
+  class DisputeInitiateEvidenceUploadParams = Lithic::Models::DisputeInitiateEvidenceUploadParams
+
+  class DisputeListEvidencesParams = Lithic::Models::DisputeListEvidencesParams
+
+  class DisputeListParams = Lithic::Models::DisputeListParams
+
+  class DisputeRetrieveEvidenceParams = Lithic::Models::DisputeRetrieveEvidenceParams
+
+  class DisputeRetrieveParams = Lithic::Models::DisputeRetrieveParams
+
+  class DisputeUpdateParams = Lithic::Models::DisputeUpdateParams
+
+  class Document = Lithic::Models::Document
+
+  class Event = Lithic::Models::Event
+
+  class EventListAttemptsParams = Lithic::Models::EventListAttemptsParams
+
+  class EventListParams = Lithic::Models::EventListParams
+
+  class EventRetrieveParams = Lithic::Models::EventRetrieveParams
+
+  module Events = Lithic::Models::Events
+
+  class EventSubscription = Lithic::Models::EventSubscription
+
+  class ExternalBankAccountAddress = Lithic::Models::ExternalBankAccountAddress
+
+  class ExternalBankAccountCreateParams = Lithic::Models::ExternalBankAccountCreateParams
+
+  class ExternalBankAccountListParams = Lithic::Models::ExternalBankAccountListParams
+
+  class ExternalBankAccountRetrieveParams = Lithic::Models::ExternalBankAccountRetrieveParams
+
+  class ExternalBankAccountRetryMicroDepositsParams = Lithic::Models::ExternalBankAccountRetryMicroDepositsParams
+
+  class ExternalBankAccountRetryPrenoteParams = Lithic::Models::ExternalBankAccountRetryPrenoteParams
+
+  module ExternalBankAccounts = Lithic::Models::ExternalBankAccounts
+
+  class ExternalBankAccountUpdateParams = Lithic::Models::ExternalBankAccountUpdateParams
+
+  class ExternalPayment = Lithic::Models::ExternalPayment
+
+  class ExternalPaymentCancelParams = Lithic::Models::ExternalPaymentCancelParams
+
+  class ExternalPaymentCreateParams = Lithic::Models::ExternalPaymentCreateParams
+
+  class ExternalPaymentListParams = Lithic::Models::ExternalPaymentListParams
+
+  class ExternalPaymentReleaseParams = Lithic::Models::ExternalPaymentReleaseParams
+
+  class ExternalPaymentRetrieveParams = Lithic::Models::ExternalPaymentRetrieveParams
+
+  class ExternalPaymentReverseParams = Lithic::Models::ExternalPaymentReverseParams
+
+  class ExternalPaymentSettleParams = Lithic::Models::ExternalPaymentSettleParams
+
+  class FinancialAccount = Lithic::Models::FinancialAccount
+
+  class FinancialAccountCreateParams = Lithic::Models::FinancialAccountCreateParams
+
+  class FinancialAccountListParams = Lithic::Models::FinancialAccountListParams
+
+  class FinancialAccountRetrieveParams = Lithic::Models::FinancialAccountRetrieveParams
+
+  module FinancialAccounts = Lithic::Models::FinancialAccounts
+
+  class FinancialAccountUpdateParams = Lithic::Models::FinancialAccountUpdateParams
+
+  class FinancialAccountUpdateStatusParams = Lithic::Models::FinancialAccountUpdateStatusParams
+
+  class FinancialTransaction = Lithic::Models::FinancialTransaction
+
+  module InstanceFinancialAccountType = Lithic::Models::InstanceFinancialAccountType
+
+  class KYB = Lithic::Models::KYB
+
+  class KYBBusinessEntity = Lithic::Models::KYBBusinessEntity
+
+  class KYC = Lithic::Models::KYC
+
+  class KYCExempt = Lithic::Models::KYCExempt
+
+  class ManagementOperationCreateParams = Lithic::Models::ManagementOperationCreateParams
+
+  class ManagementOperationListParams = Lithic::Models::ManagementOperationListParams
+
+  class ManagementOperationRetrieveParams = Lithic::Models::ManagementOperationRetrieveParams
+
+  class ManagementOperationReverseParams = Lithic::Models::ManagementOperationReverseParams
+
+  class ManagementOperationTransaction = Lithic::Models::ManagementOperationTransaction
+
+  class MessageAttempt = Lithic::Models::MessageAttempt
+
+  class NonPCICard = Lithic::Models::NonPCICard
+
+  module OwnerType = Lithic::Models::OwnerType
+
+  class Payment = Lithic::Models::Payment
+
+  class PaymentCreateParams = Lithic::Models::PaymentCreateParams
+
+  class PaymentListParams = Lithic::Models::PaymentListParams
+
+  class PaymentRetrieveParams = Lithic::Models::PaymentRetrieveParams
+
+  class PaymentRetryParams = Lithic::Models::PaymentRetryParams
+
+  class PaymentSimulateActionParams = Lithic::Models::PaymentSimulateActionParams
+
+  class PaymentSimulateReceiptParams = Lithic::Models::PaymentSimulateReceiptParams
+
+  class PaymentSimulateReleaseParams = Lithic::Models::PaymentSimulateReleaseParams
+
+  class PaymentSimulateReturnParams = Lithic::Models::PaymentSimulateReturnParams
+
+  module Reports = Lithic::Models::Reports
+
+  class RequiredDocument = Lithic::Models::RequiredDocument
+
+  class ResponderEndpointCheckStatusParams = Lithic::Models::ResponderEndpointCheckStatusParams
+
+  class ResponderEndpointCreateParams = Lithic::Models::ResponderEndpointCreateParams
+
+  class ResponderEndpointDeleteParams = Lithic::Models::ResponderEndpointDeleteParams
+
+  class ResponderEndpointStatus = Lithic::Models::ResponderEndpointStatus
+
+  class SettlementDetail = Lithic::Models::SettlementDetail
+
+  class SettlementReport = Lithic::Models::SettlementReport
+
+  class SettlementSummaryDetails = Lithic::Models::SettlementSummaryDetails
+
+  class ShippingAddress = Lithic::Models::ShippingAddress
+
+  module SpendLimitDuration = Lithic::Models::SpendLimitDuration
+
+  module ThreeDS = Lithic::Models::ThreeDS
+
+  class Tokenization = Lithic::Models::Tokenization
+
+  class TokenizationActivateParams = Lithic::Models::TokenizationActivateParams
+
+  class TokenizationDeactivateParams = Lithic::Models::TokenizationDeactivateParams
+
+  class TokenizationDecisioningRetrieveSecretParams = Lithic::Models::TokenizationDecisioningRetrieveSecretParams
+
+  class TokenizationDecisioningRotateSecretParams = Lithic::Models::TokenizationDecisioningRotateSecretParams
+
+  class TokenizationListParams = Lithic::Models::TokenizationListParams
+
+  class TokenizationPauseParams = Lithic::Models::TokenizationPauseParams
+
+  class TokenizationResendActivationCodeParams = Lithic::Models::TokenizationResendActivationCodeParams
+
+  class TokenizationRetrieveParams = Lithic::Models::TokenizationRetrieveParams
+
+  class TokenizationSecret = Lithic::Models::TokenizationSecret
+
+  class TokenizationSimulateParams = Lithic::Models::TokenizationSimulateParams
+
+  class TokenizationUnpauseParams = Lithic::Models::TokenizationUnpauseParams
+
+  class TokenizationUpdateDigitalCardArtParams = Lithic::Models::TokenizationUpdateDigitalCardArtParams
+
+  class Transaction = Lithic::Models::Transaction
+
+  class TransactionExpireAuthorizationParams = Lithic::Models::TransactionExpireAuthorizationParams
+
+  class TransactionListParams = Lithic::Models::TransactionListParams
+
+  class TransactionRetrieveParams = Lithic::Models::TransactionRetrieveParams
+
+  module Transactions = Lithic::Models::Transactions
+
+  class TransactionSimulateAuthorizationAdviceParams = Lithic::Models::TransactionSimulateAuthorizationAdviceParams
+
+  class TransactionSimulateAuthorizationParams = Lithic::Models::TransactionSimulateAuthorizationParams
+
+  class TransactionSimulateClearingParams = Lithic::Models::TransactionSimulateClearingParams
+
+  class TransactionSimulateCreditAuthorizationParams = Lithic::Models::TransactionSimulateCreditAuthorizationParams
+
+  class TransactionSimulateReturnParams = Lithic::Models::TransactionSimulateReturnParams
+
+  class TransactionSimulateReturnReversalParams = Lithic::Models::TransactionSimulateReturnReversalParams
+
+  class TransactionSimulateVoidParams = Lithic::Models::TransactionSimulateVoidParams
+
+  class Transfer = Lithic::Models::Transfer
+
+  class TransferCreateParams = Lithic::Models::TransferCreateParams
+
+  module VerificationMethod = Lithic::Models::VerificationMethod
+end
