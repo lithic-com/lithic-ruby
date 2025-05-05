@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.1.0-alpha.21 (2025-05-05)
+
+Full Changelog: [v0.1.0-alpha.20...v0.1.0-alpha.21](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.20...v0.1.0-alpha.21)
+
+### Bug Fixes
+
+* **internals:** fix servers entry for /v2/auth_rules.get ([f044300](https://github.com/lithic-com/lithic-ruby/commit/f044300b2b4d74992dc130d3efaca6b008f68b91))
+
+
+### Chores
+
+* always check if current page is empty in `next_page?` ([2639138](https://github.com/lithic-com/lithic-ruby/commit/2639138c749229d1c0ac04d9fd1ca53975ae21ea))
+* **internal:** codegen related update ([b17b5ff](https://github.com/lithic-com/lithic-ruby/commit/b17b5fff97f1c0cfe663b9d0f6e6bc4b7a3a42dc))
+* **internal:** codegen related update ([2f1295d](https://github.com/lithic-com/lithic-ruby/commit/2f1295d95293693980db100f3ac3e1f8ebcdbcef))
+* **internal:** codegen related update ([71e2903](https://github.com/lithic-com/lithic-ruby/commit/71e290348c375df646b5652f7272a754c4be946a))
+* migrate away from deprecated `JSON#fast_generate` ([0467fc5](https://github.com/lithic-com/lithic-ruby/commit/0467fc56e3d96a22dc858d1d3e3319aee8d1b1d8))
+* re-export top level models under library namespace ([95e1342](https://github.com/lithic-com/lithic-ruby/commit/95e1342a272493fcc1e1dc4b9c068e8cc892ba5a))
+* remove Gemfile.lock during bootstrap ([f1aa36a](https://github.com/lithic-com/lithic-ruby/commit/f1aa36af83da55390a24ef01fa6a8e5bc3cb03f2))
+* reorganize type aliases ([8c03b06](https://github.com/lithic-com/lithic-ruby/commit/8c03b06bf9568b3ae492043f304e0e6e01a53254))
+
+
+### Documentation
+
+* illustrate environmental defaults for auth variables ([a4de1a0](https://github.com/lithic-com/lithic-ruby/commit/a4de1a066712902df5e5ea62be42058315ded22d))
+* **readme:** fix typo ([6fa42f9](https://github.com/lithic-com/lithic-ruby/commit/6fa42f9fdc086440416f2a4dc7eae9fcd9f0014f))
+
 ## 0.1.0-alpha.20 (2025-04-29)
 
 Full Changelog: [v0.1.0-alpha.19...v0.1.0-alpha.20](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.19...v0.1.0-alpha.20)
