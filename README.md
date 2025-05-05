@@ -27,7 +27,7 @@ require "bundler/setup"
 require "lithic"
 
 lithic = Lithic::Client.new(
-  api_key: "My Lithic API Key", # defaults to ENV["LITHIC_API_KEY"]
+  api_key: ENV["LITHIC_API_KEY"], # This is the default and can be omitted
   environment: "sandbox" # defaults to "production"
 )
 
