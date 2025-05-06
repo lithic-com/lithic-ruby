@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.22 (2025-05-06)
+
+Full Changelog: [v0.1.0-alpha.21...v0.1.0-alpha.22](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.21...v0.1.0-alpha.22)
+
+### Bug Fixes
+
+* **internal:** fix formatting script for macos ([3b3bd22](https://github.com/lithic-com/lithic-ruby/commit/3b3bd22c1ab59a11b6ebaccaced257c438c32236))
+
+
+### Chores
+
+* accept all nd-json mimetype variants ([7d129f3](https://github.com/lithic-com/lithic-ruby/commit/7d129f3059741d51af715fea9a65bd8709cb3fce))
+* **internal:** codegen related update ([f7985e1](https://github.com/lithic-com/lithic-ruby/commit/f7985e133e55800ac5359fe241589e2467cff35b))
+* revert ignoring Gemfile.lock ([6535e99](https://github.com/lithic-com/lithic-ruby/commit/6535e999c2c1f38e810a450fac5509ee25cad087))
+
 ## 0.1.0-alpha.21 (2025-05-05)
 
 Full Changelog: [v0.1.0-alpha.20...v0.1.0-alpha.21](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.20...v0.1.0-alpha.21)
