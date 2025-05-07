@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.23 (2025-05-07)
+
+Full Changelog: [v0.1.0-alpha.22...v0.1.0-alpha.23](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.22...v0.1.0-alpha.23)
+
+### Bug Fixes
+
+* **internal:** ensure formatting always uses c.utf-8 locale ([00adb12](https://github.com/lithic-com/lithic-ruby/commit/00adb12df89392abd69ff031938647b65f124442))
+
 ## 0.1.0-alpha.22 (2025-05-06)
 
 Full Changelog: [v0.1.0-alpha.21...v0.1.0-alpha.22](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.21...v0.1.0-alpha.22)
