@@ -27,7 +27,6 @@ module Lithic
       #   @param token [String] The transaction token returned from the /v1/simulate/authorize. response.
       #
       #   @param amount [Integer] Amount (in cents) to authorize. This amount will override the transaction's amou
-      #   ...
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end

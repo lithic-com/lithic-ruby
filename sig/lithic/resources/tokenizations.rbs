@@ -16,7 +16,7 @@ module Lithic
         ?starting_after: String,
         ?tokenization_channel: Lithic::Models::TokenizationListParams::tokenization_channel,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Internal::CursorPage[Lithic::Models::Tokenization]
+      ) -> Lithic::Internal::CursorPage[Lithic::Tokenization]
 
       def activate: (
         String tokenization_token,

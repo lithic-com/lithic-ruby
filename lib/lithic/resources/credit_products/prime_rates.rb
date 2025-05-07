@@ -20,7 +20,7 @@ module Lithic
         #
         # @see Lithic::Models::CreditProducts::PrimeRateCreateParams
         def create(credit_product_token, params)
-          parsed, options = Lithic::Models::CreditProducts::PrimeRateCreateParams.dump_request(params)
+          parsed, options = Lithic::CreditProducts::PrimeRateCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["v1/credit_products/%1$s/prime_rates", credit_product_token],
@@ -46,7 +46,7 @@ module Lithic
         #
         # @see Lithic::Models::CreditProducts::PrimeRateRetrieveParams
         def retrieve(credit_product_token, params = {})
-          parsed, options = Lithic::Models::CreditProducts::PrimeRateRetrieveParams.dump_request(params)
+          parsed, options = Lithic::CreditProducts::PrimeRateRetrieveParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["v1/credit_products/%1$s/prime_rates", credit_product_token],

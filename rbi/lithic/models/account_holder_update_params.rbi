@@ -6,15 +6,25 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Deprecated.
-      sig { returns(T.nilable(T::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity])) }
+      sig do
+        returns(
+          T.nilable(
+            T::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity]
+          )
+        )
+      end
       attr_reader :beneficial_owner_entities
 
       sig do
         params(
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity, Lithic::Internal::AnyHash)]
-        )
-          .void
+          beneficial_owner_entities:
+            T::Array[
+              Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity::OrHash
+            ]
+        ).void
       end
       attr_writer :beneficial_owner_entities
 
@@ -24,27 +34,39 @@ module Lithic
       # information. See
       # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
       # (Section I) for more background on individuals that should be included.
-      sig { returns(T.nilable(T::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual])) }
+      sig do
+        returns(
+          T.nilable(
+            T::Array[
+              Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual
+            ]
+          )
+        )
+      end
       attr_reader :beneficial_owner_individuals
 
       sig do
         params(
-          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual, Lithic::Internal::AnyHash)]
-        )
-          .void
+          beneficial_owner_individuals:
+            T::Array[
+              Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual::OrHash
+            ]
+        ).void
       end
       attr_writer :beneficial_owner_individuals
 
       # Information for business for which the account is being opened and KYB is being
       # run.
-      sig { returns(T.nilable(Lithic::Models::AccountHolderUpdateParams::BusinessEntity)) }
+      sig do
+        returns(T.nilable(Lithic::AccountHolderUpdateParams::BusinessEntity))
+      end
       attr_reader :business_entity
 
       sig do
         params(
-          business_entity: T.any(Lithic::Models::AccountHolderUpdateParams::BusinessEntity, Lithic::Internal::AnyHash)
-        )
-          .void
+          business_entity:
+            Lithic::AccountHolderUpdateParams::BusinessEntity::OrHash
+        ).void
       end
       attr_writer :business_entity
 
@@ -56,14 +78,16 @@ module Lithic
       # could also be a beneficial owner listed above. See
       # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
       # (Section II) for more background.
-      sig { returns(T.nilable(Lithic::Models::AccountHolderUpdateParams::ControlPerson)) }
+      sig do
+        returns(T.nilable(Lithic::AccountHolderUpdateParams::ControlPerson))
+      end
       attr_reader :control_person
 
       sig do
         params(
-          control_person: T.any(Lithic::Models::AccountHolderUpdateParams::ControlPerson, Lithic::Internal::AnyHash)
-        )
-          .void
+          control_person:
+            Lithic::AccountHolderUpdateParams::ControlPerson::OrHash
+        ).void
       end
       attr_writer :control_person
 
@@ -92,22 +116,21 @@ module Lithic
 
       # Information on the individual for whom the account is being opened and KYC is
       # being run.
-      sig { returns(T.nilable(Lithic::Models::AccountHolderUpdateParams::Individual)) }
+      sig { returns(T.nilable(Lithic::AccountHolderUpdateParams::Individual)) }
       attr_reader :individual
 
       sig do
         params(
-          individual: T.any(Lithic::Models::AccountHolderUpdateParams::Individual, Lithic::Internal::AnyHash)
-        )
-          .void
+          individual: Lithic::AccountHolderUpdateParams::Individual::OrHash
+        ).void
       end
       attr_writer :individual
 
       # Allowed for: KYC-Exempt, BYO-KYC, BYO-KYB.
-      sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
+      sig { returns(T.nilable(Lithic::AddressUpdate)) }
       attr_reader :address
 
-      sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash)).void }
+      sig { params(address: Lithic::AddressUpdate::OrHash).void }
       attr_writer :address
 
       # Allowed for: KYC-Exempt, BYO-KYC. The token of the business account to which the
@@ -159,24 +182,31 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity, Lithic::Internal::AnyHash)],
-          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual, Lithic::Internal::AnyHash)],
-          business_entity: T.any(Lithic::Models::AccountHolderUpdateParams::BusinessEntity, Lithic::Internal::AnyHash),
-          control_person: T.any(Lithic::Models::AccountHolderUpdateParams::ControlPerson, Lithic::Internal::AnyHash),
+          beneficial_owner_entities:
+            T::Array[
+              Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity::OrHash
+            ],
+          beneficial_owner_individuals:
+            T::Array[
+              Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual::OrHash
+            ],
+          business_entity:
+            Lithic::AccountHolderUpdateParams::BusinessEntity::OrHash,
+          control_person:
+            Lithic::AccountHolderUpdateParams::ControlPerson::OrHash,
           external_id: String,
           nature_of_business: String,
           website_url: String,
-          individual: T.any(Lithic::Models::AccountHolderUpdateParams::Individual, Lithic::Internal::AnyHash),
-          address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash),
+          individual: Lithic::AccountHolderUpdateParams::Individual::OrHash,
+          address: Lithic::AddressUpdate::OrHash,
           business_account_token: String,
           email: String,
           first_name: String,
           last_name: String,
           legal_business_name: String,
           phone_number: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Deprecated.
@@ -231,43 +261,53 @@ module Lithic
         # verification during the digital wallet tokenization process.
         phone_number: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              beneficial_owner_entities: T::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity],
-              beneficial_owner_individuals: T::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual],
-              business_entity: Lithic::Models::AccountHolderUpdateParams::BusinessEntity,
-              control_person: Lithic::Models::AccountHolderUpdateParams::ControlPerson,
-              external_id: String,
-              nature_of_business: String,
-              website_url: String,
-              individual: Lithic::Models::AccountHolderUpdateParams::Individual,
-              address: Lithic::Models::AddressUpdate,
-              business_account_token: String,
-              email: String,
-              first_name: String,
-              last_name: String,
-              legal_business_name: String,
-              phone_number: String,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            beneficial_owner_entities:
+              T::Array[
+                Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity
+              ],
+            beneficial_owner_individuals:
+              T::Array[
+                Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual
+              ],
+            business_entity: Lithic::AccountHolderUpdateParams::BusinessEntity,
+            control_person: Lithic::AccountHolderUpdateParams::ControlPerson,
+            external_id: String,
+            nature_of_business: String,
+            website_url: String,
+            individual: Lithic::AccountHolderUpdateParams::Individual,
+            address: Lithic::AddressUpdate,
+            business_account_token: String,
+            email: String,
+            first_name: String,
+            last_name: String,
+            legal_business_name: String,
+            phone_number: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Globally unique identifier for an entity.
         sig { returns(String) }
         attr_accessor :entity_token
 
         # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable.
-        sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
+        sig { returns(T.nilable(Lithic::AddressUpdate)) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash)).void }
+        sig { params(address: Lithic::AddressUpdate::OrHash).void }
         attr_writer :address
 
         # Any name that the business operates under that is not its legal business name
@@ -312,14 +352,13 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash),
+            address: Lithic::AddressUpdate::OrHash,
             dba_business_name: String,
             government_id: String,
             legal_business_name: String,
             parent_company: String,
             phone_numbers: T::Array[String]
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Globally unique identifier for an entity.
@@ -341,35 +380,39 @@ module Lithic
           # One or more of the business's phone number(s), entered as a list in E.164
           # format.
           phone_numbers: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                entity_token: String,
-                address: Lithic::Models::AddressUpdate,
-                dba_business_name: String,
-                government_id: String,
-                legal_business_name: String,
-                parent_company: String,
-                phone_numbers: T::Array[String]
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              entity_token: String,
+              address: Lithic::AddressUpdate,
+              dba_business_name: String,
+              government_id: String,
+              legal_business_name: String,
+              parent_company: String,
+              phone_numbers: T::Array[String]
+            }
+          )
+        end
+        def to_hash
+        end
       end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Globally unique identifier for an entity.
         sig { returns(String) }
         attr_accessor :entity_token
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-        sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
+        sig { returns(T.nilable(Lithic::AddressUpdate)) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash)).void }
+        sig { params(address: Lithic::AddressUpdate::OrHash).void }
         attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
@@ -422,15 +465,14 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash),
+            address: Lithic::AddressUpdate::OrHash,
             dob: String,
             email: String,
             first_name: String,
             government_id: String,
             last_name: String,
             phone_number: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Globally unique identifier for an entity.
@@ -454,36 +496,40 @@ module Lithic
           last_name: nil,
           # Individual's phone number, entered in E.164 format.
           phone_number: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                entity_token: String,
-                address: Lithic::Models::AddressUpdate,
-                dob: String,
-                email: String,
-                first_name: String,
-                government_id: String,
-                last_name: String,
-                phone_number: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              entity_token: String,
+              address: Lithic::AddressUpdate,
+              dob: String,
+              email: String,
+              first_name: String,
+              government_id: String,
+              last_name: String,
+              phone_number: String
+            }
+          )
+        end
+        def to_hash
+        end
       end
 
       class BusinessEntity < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Globally unique identifier for an entity.
         sig { returns(String) }
         attr_accessor :entity_token
 
         # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable.
-        sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
+        sig { returns(T.nilable(Lithic::AddressUpdate)) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash)).void }
+        sig { params(address: Lithic::AddressUpdate::OrHash).void }
         attr_writer :address
 
         # Any name that the business operates under that is not its legal business name
@@ -530,14 +576,13 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash),
+            address: Lithic::AddressUpdate::OrHash,
             dba_business_name: String,
             government_id: String,
             legal_business_name: String,
             parent_company: String,
             phone_numbers: T::Array[String]
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Globally unique identifier for an entity.
@@ -559,35 +604,39 @@ module Lithic
           # One or more of the business's phone number(s), entered as a list in E.164
           # format.
           phone_numbers: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                entity_token: String,
-                address: Lithic::Models::AddressUpdate,
-                dba_business_name: String,
-                government_id: String,
-                legal_business_name: String,
-                parent_company: String,
-                phone_numbers: T::Array[String]
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              entity_token: String,
+              address: Lithic::AddressUpdate,
+              dba_business_name: String,
+              government_id: String,
+              legal_business_name: String,
+              parent_company: String,
+              phone_numbers: T::Array[String]
+            }
+          )
+        end
+        def to_hash
+        end
       end
 
       class ControlPerson < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Globally unique identifier for an entity.
         sig { returns(String) }
         attr_accessor :entity_token
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-        sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
+        sig { returns(T.nilable(Lithic::AddressUpdate)) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash)).void }
+        sig { params(address: Lithic::AddressUpdate::OrHash).void }
         attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
@@ -647,15 +696,14 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash),
+            address: Lithic::AddressUpdate::OrHash,
             dob: String,
             email: String,
             first_name: String,
             government_id: String,
             last_name: String,
             phone_number: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Globally unique identifier for an entity.
@@ -679,36 +727,40 @@ module Lithic
           last_name: nil,
           # Individual's phone number, entered in E.164 format.
           phone_number: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                entity_token: String,
-                address: Lithic::Models::AddressUpdate,
-                dob: String,
-                email: String,
-                first_name: String,
-                government_id: String,
-                last_name: String,
-                phone_number: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              entity_token: String,
+              address: Lithic::AddressUpdate,
+              dob: String,
+              email: String,
+              first_name: String,
+              government_id: String,
+              last_name: String,
+              phone_number: String
+            }
+          )
+        end
+        def to_hash
+        end
       end
 
       class Individual < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Globally unique identifier for an entity.
         sig { returns(String) }
         attr_accessor :entity_token
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-        sig { returns(T.nilable(Lithic::Models::AddressUpdate)) }
+        sig { returns(T.nilable(Lithic::AddressUpdate)) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash)).void }
+        sig { params(address: Lithic::AddressUpdate::OrHash).void }
         attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
@@ -762,15 +814,14 @@ module Lithic
         sig do
           params(
             entity_token: String,
-            address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash),
+            address: Lithic::AddressUpdate::OrHash,
             dob: String,
             email: String,
             first_name: String,
             government_id: String,
             last_name: String,
             phone_number: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Globally unique identifier for an entity.
@@ -794,23 +845,25 @@ module Lithic
           last_name: nil,
           # Individual's phone number, entered in E.164 format.
           phone_number: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                entity_token: String,
-                address: Lithic::Models::AddressUpdate,
-                dob: String,
-                email: String,
-                first_name: String,
-                government_id: String,
-                last_name: String,
-                phone_number: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              entity_token: String,
+              address: Lithic::AddressUpdate,
+              dob: String,
+              email: String,
+              first_name: String,
+              government_id: String,
+              last_name: String,
+              phone_number: String
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

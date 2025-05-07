@@ -4,6 +4,8 @@ module Lithic
   module Models
     module Cards
       class BalanceListResponse < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Globally unique identifier for the financial account that holds this balance.
         sig { returns(String) }
         attr_accessor :token
@@ -41,7 +43,11 @@ module Lithic
         attr_accessor :total_amount
 
         # Type of financial account.
-        sig { returns(Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol) }
+        sig do
+          returns(
+            Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol
+          )
+        end
         attr_accessor :type
 
         # Date and time for when the balance was last updated.
@@ -61,8 +67,7 @@ module Lithic
             total_amount: Integer,
             type: Lithic::Models::Cards::BalanceListResponse::Type::OrSymbol,
             updated: Time
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Globally unique identifier for the financial account that holds this balance.
@@ -89,39 +94,64 @@ module Lithic
           type:,
           # Date and time for when the balance was last updated.
           updated:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                token: String,
-                available_amount: Integer,
-                created: Time,
-                currency: String,
-                last_transaction_event_token: String,
-                last_transaction_token: String,
-                pending_amount: Integer,
-                total_amount: Integer,
-                type: Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol,
-                updated: Time
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              token: String,
+              available_amount: Integer,
+              created: Time,
+              currency: String,
+              last_transaction_event_token: String,
+              last_transaction_token: String,
+              pending_amount: Integer,
+              total_amount: Integer,
+              type:
+                Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol,
+              updated: Time
+            }
+          )
+        end
+        def to_hash
+        end
 
         # Type of financial account.
         module Type
           extend Lithic::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Cards::BalanceListResponse::Type) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Lithic::Models::Cards::BalanceListResponse::Type)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ISSUING = T.let(:ISSUING, Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol)
-          OPERATING = T.let(:OPERATING, Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol)
-          RESERVE = T.let(:RESERVE, Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol)
+          ISSUING =
+            T.let(
+              :ISSUING,
+              Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol
+            )
+          OPERATING =
+            T.let(
+              :OPERATING,
+              Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol
+            )
+          RESERVE =
+            T.let(
+              :RESERVE,
+              Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::Models::Cards::BalanceListResponse::Type::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

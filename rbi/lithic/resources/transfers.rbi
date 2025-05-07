@@ -12,9 +12,8 @@ module Lithic
           to: String,
           token: String,
           memo: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::Transfer)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Transfer)
       end
       def create(
         # Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
@@ -32,10 +31,13 @@ module Lithic
         # Optional descriptor for the transfer.
         memo: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

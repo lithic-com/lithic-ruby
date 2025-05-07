@@ -6,11 +6,11 @@ module Lithic
     class TokenizationUpdateDigitalCardArtResponse < Lithic::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Lithic::Models::Tokenization, nil]
-      optional :data, -> { Lithic::Models::Tokenization }
+      #   @return [Lithic::Tokenization, nil]
+      optional :data, -> { Lithic::Tokenization }
 
       # @!method initialize(data: nil)
-      #   @param data [Lithic::Models::Tokenization]
+      #   @param data [Lithic::Tokenization]
     end
   end
 end

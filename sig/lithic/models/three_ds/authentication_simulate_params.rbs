@@ -3,9 +3,9 @@ module Lithic
     module ThreeDS
       type authentication_simulate_params =
         {
-          merchant: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant,
+          merchant: Lithic::ThreeDS::AuthenticationSimulateParams::Merchant,
           pan: String,
-          transaction: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction,
+          transaction: Lithic::ThreeDS::AuthenticationSimulateParams::Transaction,
           card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::card_expiry_check
         }
         & Lithic::Internal::Type::request_parameters
@@ -14,11 +14,11 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        attr_accessor merchant: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant
+        attr_accessor merchant: Lithic::ThreeDS::AuthenticationSimulateParams::Merchant
 
         attr_accessor pan: String
 
-        attr_accessor transaction: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction
+        attr_accessor transaction: Lithic::ThreeDS::AuthenticationSimulateParams::Transaction
 
         attr_reader card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::card_expiry_check?
 
@@ -27,14 +27,12 @@ module Lithic
         ) -> Lithic::Models::ThreeDS::AuthenticationSimulateParams::card_expiry_check
 
         def initialize: (
-          merchant: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant,
+          merchant: Lithic::ThreeDS::AuthenticationSimulateParams::Merchant,
           pan: String,
-          transaction: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction,
+          transaction: Lithic::ThreeDS::AuthenticationSimulateParams::Transaction,
           ?card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::card_expiry_check,
           ?request_options: Lithic::request_opts
         ) -> void
-
-        def to_hash: -> Lithic::Models::ThreeDS::authentication_simulate_params
 
         type merchant =
           { id: String, country: String, mcc: String, name: String }
@@ -54,8 +52,6 @@ module Lithic
             mcc: String,
             name: String
           ) -> void
-
-          def to_hash: -> Lithic::Models::ThreeDS::AuthenticationSimulateParams::merchant
         end
 
         type transaction = { amount: Integer, currency: String }
@@ -66,8 +62,6 @@ module Lithic
           attr_accessor currency: String
 
           def initialize: (amount: Integer, currency: String) -> void
-
-          def to_hash: -> Lithic::Models::ThreeDS::AuthenticationSimulateParams::transaction
         end
 
         type card_expiry_check = :MATCH | :MISMATCH | :NOT_PRESENT

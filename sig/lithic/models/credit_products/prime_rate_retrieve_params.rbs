@@ -22,8 +22,6 @@ module Lithic
           ?starting_after: Date,
           ?request_options: Lithic::request_opts
         ) -> void
-
-        def to_hash: -> Lithic::Models::CreditProducts::prime_rate_retrieve_params
       end
     end
   end

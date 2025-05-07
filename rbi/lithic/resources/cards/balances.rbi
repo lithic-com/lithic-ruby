@@ -10,9 +10,12 @@ module Lithic
             card_token: String,
             balance_date: Time,
             last_transaction_event_token: String,
-            request_options: Lithic::RequestOpts
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(
+            Lithic::Internal::SinglePage[
+              Lithic::Models::Cards::BalanceListResponse
+            ]
           )
-            .returns(Lithic::Internal::SinglePage[Lithic::Models::Cards::BalanceListResponse])
         end
         def list(
           card_token,
@@ -23,10 +26,13 @@ module Lithic
           # decreased by $5
           last_transaction_event_token: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

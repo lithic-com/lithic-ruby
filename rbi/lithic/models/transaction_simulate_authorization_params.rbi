@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Amount (in cents) to authorize. For credit authorizations and financial credit
       # authorizations, any value entered will be converted into a negative amount in
       # the simulated transaction. For example, entering 100 in this field will result
@@ -86,10 +88,21 @@ module Lithic
       # - `FINANCIAL_CREDIT_AUTHORIZATION` is a single message request from a merchant
       #   to credit funds immediately, and no subsequent clearing is required to settle
       #   the transaction.
-      sig { returns(T.nilable(Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(
+            Lithic::TransactionSimulateAuthorizationParams::Status::OrSymbol
+          )
+        )
+      end
       attr_reader :status
 
-      sig { params(status: Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol).void }
+      sig do
+        params(
+          status:
+            Lithic::TransactionSimulateAuthorizationParams::Status::OrSymbol
+        ).void
+      end
       attr_writer :status
 
       sig do
@@ -103,10 +116,10 @@ module Lithic
           merchant_currency: String,
           partial_approval_capable: T::Boolean,
           pin: String,
-          status: Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          status:
+            Lithic::TransactionSimulateAuthorizationParams::Status::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Amount (in cents) to authorize. For credit authorizations and financial credit
@@ -155,26 +168,29 @@ module Lithic
         #   the transaction.
         status: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              amount: Integer,
-              descriptor: String,
-              pan: String,
-              mcc: String,
-              merchant_acceptor_id: String,
-              merchant_amount: Integer,
-              merchant_currency: String,
-              partial_approval_capable: T::Boolean,
-              pin: String,
-              status: Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            amount: Integer,
+            descriptor: String,
+            pan: String,
+            mcc: String,
+            merchant_acceptor_id: String,
+            merchant_amount: Integer,
+            merchant_currency: String,
+            partial_approval_capable: T::Boolean,
+            pin: String,
+            status:
+              Lithic::TransactionSimulateAuthorizationParams::Status::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Type of event to simulate.
       #
@@ -196,28 +212,49 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::TransactionSimulateAuthorizationParams::Status
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AUTHORIZATION =
-          T.let(:AUTHORIZATION, Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol)
+          T.let(
+            :AUTHORIZATION,
+            Lithic::TransactionSimulateAuthorizationParams::Status::TaggedSymbol
+          )
         BALANCE_INQUIRY =
-          T.let(:BALANCE_INQUIRY, Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol)
+          T.let(
+            :BALANCE_INQUIRY,
+            Lithic::TransactionSimulateAuthorizationParams::Status::TaggedSymbol
+          )
         CREDIT_AUTHORIZATION =
-          T.let(:CREDIT_AUTHORIZATION, Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol)
+          T.let(
+            :CREDIT_AUTHORIZATION,
+            Lithic::TransactionSimulateAuthorizationParams::Status::TaggedSymbol
+          )
         FINANCIAL_AUTHORIZATION =
           T.let(
             :FINANCIAL_AUTHORIZATION,
-            Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol
+            Lithic::TransactionSimulateAuthorizationParams::Status::TaggedSymbol
           )
         FINANCIAL_CREDIT_AUTHORIZATION =
           T.let(
             :FINANCIAL_CREDIT_AUTHORIZATION,
-            Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol
+            Lithic::TransactionSimulateAuthorizationParams::Status::TaggedSymbol
           )
 
-        sig { override.returns(T::Array[Lithic::Models::TransactionSimulateAuthorizationParams::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::TransactionSimulateAuthorizationParams::Status::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

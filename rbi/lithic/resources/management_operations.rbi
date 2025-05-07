@@ -7,18 +7,19 @@ module Lithic
       sig do
         params(
           amount: Integer,
-          category: Lithic::Models::ManagementOperationCreateParams::Category::OrSymbol,
-          direction: Lithic::Models::ManagementOperationCreateParams::Direction::OrSymbol,
+          category: Lithic::ManagementOperationCreateParams::Category::OrSymbol,
+          direction:
+            Lithic::ManagementOperationCreateParams::Direction::OrSymbol,
           effective_date: Date,
-          event_type: Lithic::Models::ManagementOperationCreateParams::EventType::OrSymbol,
+          event_type:
+            Lithic::ManagementOperationCreateParams::EventType::OrSymbol,
           financial_account_token: String,
           token: String,
           memo: String,
           subtype: String,
           user_defined_id: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::ManagementOperationTransaction)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::ManagementOperationTransaction)
       end
       def create(
         amount:,
@@ -32,32 +33,39 @@ module Lithic
         subtype: nil,
         user_defined_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get management operation
       sig do
-        params(management_operation_token: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::ManagementOperationTransaction)
+        params(
+          management_operation_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::ManagementOperationTransaction)
       end
       def retrieve(
         # Globally unique identifier for the management operation
         management_operation_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # List management operations
       sig do
         params(
           begin_: Time,
           business_account_token: String,
-          category: Lithic::Models::ManagementOperationListParams::Category::OrSymbol,
+          category: Lithic::ManagementOperationListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
           starting_after: String,
-          status: Lithic::Models::ManagementOperationListParams::Status::OrSymbol,
-          request_options: Lithic::RequestOpts
+          status: Lithic::ManagementOperationListParams::Status::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(
+          Lithic::Internal::CursorPage[Lithic::ManagementOperationTransaction]
         )
-          .returns(Lithic::Internal::CursorPage[Lithic::Models::ManagementOperationTransaction])
       end
       def list(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -83,16 +91,17 @@ module Lithic
         # Management operation status to be returned.
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Reverse a management operation
       sig do
         params(
           management_operation_token: String,
           effective_date: Date,
           memo: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::ManagementOperationTransaction)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::ManagementOperationTransaction)
       end
       def reverse(
         # Globally unique identifier for the management operation
@@ -100,10 +109,13 @@ module Lithic
         effective_date:,
         memo: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

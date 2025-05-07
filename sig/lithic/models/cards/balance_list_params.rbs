@@ -22,8 +22,6 @@ module Lithic
           ?last_transaction_event_token: String,
           ?request_options: Lithic::request_opts
         ) -> void
-
-        def to_hash: -> Lithic::Models::Cards::balance_list_params
       end
     end
   end

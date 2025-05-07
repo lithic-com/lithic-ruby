@@ -45,8 +45,8 @@ module Lithic
 
       # @!attribute amounts
       #
-      #   @return [Lithic::Models::Transaction::Amounts]
-      required :amounts, -> { Lithic::Models::Transaction::Amounts }
+      #   @return [Lithic::Transaction::Amounts]
+      required :amounts, -> { Lithic::Transaction::Amounts }
 
       # @!attribute authorization_amount
       #   @deprecated
@@ -66,8 +66,8 @@ module Lithic
 
       # @!attribute avs
       #
-      #   @return [Lithic::Models::Transaction::Avs, nil]
-      required :avs, -> { Lithic::Models::Transaction::Avs }, nil?: true
+      #   @return [Lithic::Transaction::Avs, nil]
+      required :avs, -> { Lithic::Transaction::Avs }, nil?: true
 
       # @!attribute card_token
       #   Token for the card used in this transaction.
@@ -77,10 +77,8 @@ module Lithic
 
       # @!attribute cardholder_authentication
       #
-      #   @return [Lithic::Models::Transaction::CardholderAuthentication, nil]
-      required :cardholder_authentication,
-               -> { Lithic::Models::Transaction::CardholderAuthentication },
-               nil?: true
+      #   @return [Lithic::Transaction::CardholderAuthentication, nil]
+      required :cardholder_authentication, -> { Lithic::Transaction::CardholderAuthentication }, nil?: true
 
       # @!attribute created
       #   Date and time when the transaction first occurred. UTC time zone.
@@ -90,8 +88,8 @@ module Lithic
 
       # @!attribute merchant
       #
-      #   @return [Lithic::Models::Transaction::Merchant]
-      required :merchant, -> { Lithic::Models::Transaction::Merchant }
+      #   @return [Lithic::Transaction::Merchant]
+      required :merchant, -> { Lithic::Transaction::Merchant }
 
       # @!attribute merchant_amount
       #   @deprecated
@@ -122,8 +120,8 @@ module Lithic
       #   `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
       #   network code from the upstream provider.
       #
-      #   @return [Symbol, Lithic::Models::Transaction::Network, nil]
-      required :network, enum: -> { Lithic::Models::Transaction::Network }, nil?: true
+      #   @return [Symbol, Lithic::Transaction::Network, nil]
+      required :network, enum: -> { Lithic::Transaction::Network }, nil?: true
 
       # @!attribute network_risk_score
       #   Network-provided score assessing risk level associated with a given
@@ -137,13 +135,13 @@ module Lithic
 
       # @!attribute pos
       #
-      #   @return [Lithic::Models::Transaction::Pos]
-      required :pos, -> { Lithic::Models::Transaction::Pos }
+      #   @return [Lithic::Transaction::Pos]
+      required :pos, -> { Lithic::Transaction::Pos }
 
       # @!attribute result
       #
-      #   @return [Symbol, Lithic::Models::Transaction::Result]
-      required :result, enum: -> { Lithic::Models::Transaction::Result }
+      #   @return [Symbol, Lithic::Transaction::Result]
+      required :result, enum: -> { Lithic::Transaction::Result }
 
       # @!attribute settled_amount
       #   @deprecated
@@ -156,13 +154,13 @@ module Lithic
       # @!attribute status
       #   Status of the transaction.
       #
-      #   @return [Symbol, Lithic::Models::Transaction::Status]
-      required :status, enum: -> { Lithic::Models::Transaction::Status }
+      #   @return [Symbol, Lithic::Transaction::Status]
+      required :status, enum: -> { Lithic::Transaction::Status }
 
       # @!attribute token_info
       #
-      #   @return [Lithic::Models::Transaction::TokenInfo, nil]
-      required :token_info, -> { Lithic::Models::Transaction::TokenInfo }, nil?: true
+      #   @return [Lithic::Transaction::TokenInfo, nil]
+      required :token_info, -> { Lithic::Transaction::TokenInfo }, nil?: true
 
       # @!attribute updated
       #   Date and time when the transaction last updated. UTC time zone.
@@ -172,43 +170,38 @@ module Lithic
 
       # @!attribute events
       #
-      #   @return [Array<Lithic::Models::Transaction::Event>, nil]
-      optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Transaction::Event] }
+      #   @return [Array<Lithic::Transaction::Event>, nil]
+      optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Transaction::Event] }
 
       # @!method initialize(token:, account_token:, acquirer_fee:, acquirer_reference_number:, amount:, amounts:, authorization_amount:, authorization_code:, avs:, card_token:, cardholder_authentication:, created:, merchant:, merchant_amount:, merchant_authorization_amount:, merchant_currency:, network:, network_risk_score:, pos:, result:, settled_amount:, status:, token_info:, updated:, events: nil)
-      #   Some parameter documentations has been truncated, see
-      #   {Lithic::Models::Transaction} for more details.
+      #   Some parameter documentations has been truncated, see {Lithic::Transaction} for
+      #   more details.
       #
       #   @param token [String] Globally unique identifier.
       #
       #   @param account_token [String] The token for the account associated with this transaction.
       #
       #   @param acquirer_fee [Integer, nil] Fee assessed by the merchant and paid for by the cardholder in the smallest unit
-      #   ...
       #
       #   @param acquirer_reference_number [String, nil] Unique identifier assigned to a transaction by the acquirer that can be used in
-      #   ...
       #
       #   @param amount [Integer] When the transaction is pending, this represents the authorization amount of the
-      #   ...
       #
-      #   @param amounts [Lithic::Models::Transaction::Amounts]
+      #   @param amounts [Lithic::Transaction::Amounts]
       #
       #   @param authorization_amount [Integer, nil] The authorization amount of the transaction in the anticipated settlement curren
-      #   ...
       #
       #   @param authorization_code [String, nil] A fixed-width 6-digit numeric identifier that can be used to identify a transact
-      #   ...
       #
-      #   @param avs [Lithic::Models::Transaction::Avs, nil]
+      #   @param avs [Lithic::Transaction::Avs, nil]
       #
       #   @param card_token [String] Token for the card used in this transaction.
       #
-      #   @param cardholder_authentication [Lithic::Models::Transaction::CardholderAuthentication, nil]
+      #   @param cardholder_authentication [Lithic::Transaction::CardholderAuthentication, nil]
       #
       #   @param created [Time] Date and time when the transaction first occurred. UTC time zone.
       #
-      #   @param merchant [Lithic::Models::Transaction::Merchant]
+      #   @param merchant [Lithic::Transaction::Merchant]
       #
       #   @param merchant_amount [Integer, nil] Analogous to the 'amount', but in the merchant currency.
       #
@@ -216,55 +209,53 @@ module Lithic
       #
       #   @param merchant_currency [String] 3-character alphabetic ISO 4217 code for the local currency of the transaction.
       #
-      #   @param network [Symbol, Lithic::Models::Transaction::Network, nil] Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
-      #   ...
+      #   @param network [Symbol, Lithic::Transaction::Network, nil] Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
       #
       #   @param network_risk_score [Integer, nil] Network-provided score assessing risk level associated with a given authorizatio
-      #   ...
       #
-      #   @param pos [Lithic::Models::Transaction::Pos]
+      #   @param pos [Lithic::Transaction::Pos]
       #
-      #   @param result [Symbol, Lithic::Models::Transaction::Result]
+      #   @param result [Symbol, Lithic::Transaction::Result]
       #
       #   @param settled_amount [Integer] The settled amount of the transaction in the settlement currency.
       #
-      #   @param status [Symbol, Lithic::Models::Transaction::Status] Status of the transaction.
+      #   @param status [Symbol, Lithic::Transaction::Status] Status of the transaction.
       #
-      #   @param token_info [Lithic::Models::Transaction::TokenInfo, nil]
+      #   @param token_info [Lithic::Transaction::TokenInfo, nil]
       #
       #   @param updated [Time] Date and time when the transaction last updated. UTC time zone.
       #
-      #   @param events [Array<Lithic::Models::Transaction::Event>]
+      #   @param events [Array<Lithic::Transaction::Event>]
 
-      # @see Lithic::Models::Transaction#amounts
+      # @see Lithic::Transaction#amounts
       class Amounts < Lithic::Internal::Type::BaseModel
         # @!attribute cardholder
         #
-        #   @return [Lithic::Models::Transaction::Amounts::Cardholder]
-        required :cardholder, -> { Lithic::Models::Transaction::Amounts::Cardholder }
+        #   @return [Lithic::Transaction::Amounts::Cardholder]
+        required :cardholder, -> { Lithic::Transaction::Amounts::Cardholder }
 
         # @!attribute hold
         #
-        #   @return [Lithic::Models::Transaction::Amounts::Hold]
-        required :hold, -> { Lithic::Models::Transaction::Amounts::Hold }
+        #   @return [Lithic::Transaction::Amounts::Hold]
+        required :hold, -> { Lithic::Transaction::Amounts::Hold }
 
         # @!attribute merchant
         #
-        #   @return [Lithic::Models::Transaction::Amounts::Merchant]
-        required :merchant, -> { Lithic::Models::Transaction::Amounts::Merchant }
+        #   @return [Lithic::Transaction::Amounts::Merchant]
+        required :merchant, -> { Lithic::Transaction::Amounts::Merchant }
 
         # @!attribute settlement
         #
-        #   @return [Lithic::Models::Transaction::Amounts::Settlement]
-        required :settlement, -> { Lithic::Models::Transaction::Amounts::Settlement }
+        #   @return [Lithic::Transaction::Amounts::Settlement]
+        required :settlement, -> { Lithic::Transaction::Amounts::Settlement }
 
         # @!method initialize(cardholder:, hold:, merchant:, settlement:)
-        #   @param cardholder [Lithic::Models::Transaction::Amounts::Cardholder]
-        #   @param hold [Lithic::Models::Transaction::Amounts::Hold]
-        #   @param merchant [Lithic::Models::Transaction::Amounts::Merchant]
-        #   @param settlement [Lithic::Models::Transaction::Amounts::Settlement]
+        #   @param cardholder [Lithic::Transaction::Amounts::Cardholder]
+        #   @param hold [Lithic::Transaction::Amounts::Hold]
+        #   @param merchant [Lithic::Transaction::Amounts::Merchant]
+        #   @param settlement [Lithic::Transaction::Amounts::Settlement]
 
-        # @see Lithic::Models::Transaction::Amounts#cardholder
+        # @see Lithic::Transaction::Amounts#cardholder
         class Cardholder < Lithic::Internal::Type::BaseModel
           # @!attribute amount
           #   The estimated settled amount of the transaction in the cardholder billing
@@ -288,18 +279,16 @@ module Lithic
 
           # @!method initialize(amount:, conversion_rate:, currency:)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::Transaction::Amounts::Cardholder} for more details.
+          #   {Lithic::Transaction::Amounts::Cardholder} for more details.
           #
           #   @param amount [Integer] The estimated settled amount of the transaction in the cardholder billing curren
-          #   ...
           #
           #   @param conversion_rate [String] The exchange rate used to convert the merchant amount to the cardholder billing
-          #   ...
           #
           #   @param currency [String] 3-character alphabetic ISO 4217 currency
         end
 
-        # @see Lithic::Models::Transaction::Amounts#hold
+        # @see Lithic::Transaction::Amounts#hold
         class Hold < Lithic::Internal::Type::BaseModel
           # @!attribute amount
           #   The pending amount of the transaction in the anticipated settlement currency.
@@ -319,7 +308,7 @@ module Lithic
           #   @param currency [String] 3-character alphabetic ISO 4217 currency
         end
 
-        # @see Lithic::Models::Transaction::Amounts#merchant
+        # @see Lithic::Transaction::Amounts#merchant
         class Merchant < Lithic::Internal::Type::BaseModel
           # @!attribute amount
           #   The settled amount of the transaction in the merchant currency.
@@ -339,7 +328,7 @@ module Lithic
           #   @param currency [String] 3-character alphabetic ISO 4217 currency
         end
 
-        # @see Lithic::Models::Transaction::Amounts#settlement
+        # @see Lithic::Transaction::Amounts#settlement
         class Settlement < Lithic::Internal::Type::BaseModel
           # @!attribute amount
           #   The settled amount of the transaction in the settlement currency.
@@ -360,7 +349,7 @@ module Lithic
         end
       end
 
-      # @see Lithic::Models::Transaction#avs
+      # @see Lithic::Transaction#avs
       class Avs < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Cardholder address
@@ -380,7 +369,7 @@ module Lithic
         #   @param zipcode [String] Cardholder ZIP code
       end
 
-      # @see Lithic::Models::Transaction#cardholder_authentication
+      # @see Lithic::Transaction#cardholder_authentication
       class CardholderAuthentication < Lithic::Internal::Type::BaseModel
         # @!attribute three_ds_version
         #   The 3DS version used for the authentication
@@ -391,23 +380,22 @@ module Lithic
         # @!attribute acquirer_exemption
         #   Whether an acquirer exemption applied to the transaction.
         #
-        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption]
+        #   @return [Symbol, Lithic::Transaction::CardholderAuthentication::AcquirerExemption]
         required :acquirer_exemption,
-                 enum: -> { Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption }
+                 enum: -> { Lithic::Transaction::CardholderAuthentication::AcquirerExemption }
 
         # @!attribute authentication_result
         #   Indicates what the outcome of the 3DS authentication process is.
         #
-        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult]
+        #   @return [Symbol, Lithic::Transaction::CardholderAuthentication::AuthenticationResult]
         required :authentication_result,
-                 enum: -> { Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult }
+                 enum: -> { Lithic::Transaction::CardholderAuthentication::AuthenticationResult }
 
         # @!attribute decision_made_by
         #   Indicates which party made the 3DS authentication decision.
         #
-        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy]
-        required :decision_made_by,
-                 enum: -> { Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy }
+        #   @return [Symbol, Lithic::Transaction::CardholderAuthentication::DecisionMadeBy]
+        required :decision_made_by, enum: -> { Lithic::Transaction::CardholderAuthentication::DecisionMadeBy }
 
         # @!attribute liability_shift
         #   Indicates whether chargeback liability shift applies to the transaction.
@@ -423,9 +411,8 @@ module Lithic
         #     cryptography, possibly recurring. Chargeback liability shift to the issuer
         #     applies.
         #
-        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift]
-        required :liability_shift,
-                 enum: -> { Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift }
+        #   @return [Symbol, Lithic::Transaction::CardholderAuthentication::LiabilityShift]
+        required :liability_shift, enum: -> { Lithic::Transaction::CardholderAuthentication::LiabilityShift }
 
         # @!attribute three_ds_authentication_token
         #   Unique identifier you can use to match a given 3DS authentication (available via
@@ -440,45 +427,41 @@ module Lithic
         #   Indicates whether a 3DS challenge flow was used, and if so, what the
         #   verification method was. (deprecated, use `authentication_result`)
         #
-        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted]
+        #   @return [Symbol, Lithic::Transaction::CardholderAuthentication::VerificationAttempted]
         required :verification_attempted,
-                 enum: -> { Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted }
+                 enum: -> { Lithic::Transaction::CardholderAuthentication::VerificationAttempted }
 
         # @!attribute verification_result
         #   Indicates whether a transaction is considered 3DS authenticated. (deprecated,
         #   use `authentication_result`)
         #
-        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult]
+        #   @return [Symbol, Lithic::Transaction::CardholderAuthentication::VerificationResult]
         required :verification_result,
-                 enum: -> { Lithic::Models::Transaction::CardholderAuthentication::VerificationResult }
+                 enum: -> { Lithic::Transaction::CardholderAuthentication::VerificationResult }
 
         # @!method initialize(three_ds_version:, acquirer_exemption:, authentication_result:, decision_made_by:, liability_shift:, three_ds_authentication_token:, verification_attempted:, verification_result:)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::Transaction::CardholderAuthentication} for more details.
+        #   {Lithic::Transaction::CardholderAuthentication} for more details.
         #
         #   @param three_ds_version [String, nil] The 3DS version used for the authentication
         #
-        #   @param acquirer_exemption [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption] Whether an acquirer exemption applied to the transaction.
+        #   @param acquirer_exemption [Symbol, Lithic::Transaction::CardholderAuthentication::AcquirerExemption] Whether an acquirer exemption applied to the transaction.
         #
-        #   @param authentication_result [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult] Indicates what the outcome of the 3DS authentication process is.
+        #   @param authentication_result [Symbol, Lithic::Transaction::CardholderAuthentication::AuthenticationResult] Indicates what the outcome of the 3DS authentication process is.
         #
-        #   @param decision_made_by [Symbol, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy] Indicates which party made the 3DS authentication decision.
+        #   @param decision_made_by [Symbol, Lithic::Transaction::CardholderAuthentication::DecisionMadeBy] Indicates which party made the 3DS authentication decision.
         #
-        #   @param liability_shift [Symbol, Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift] Indicates whether chargeback liability shift applies to the transaction. Possibl
-        #   ...
+        #   @param liability_shift [Symbol, Lithic::Transaction::CardholderAuthentication::LiabilityShift] Indicates whether chargeback liability shift applies to the transaction. Possibl
         #
         #   @param three_ds_authentication_token [String, nil] Unique identifier you can use to match a given 3DS authentication (available via
-        #   ...
         #
-        #   @param verification_attempted [Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted] Indicates whether a 3DS challenge flow was used, and if so, what the verificatio
-        #   ...
+        #   @param verification_attempted [Symbol, Lithic::Transaction::CardholderAuthentication::VerificationAttempted] Indicates whether a 3DS challenge flow was used, and if so, what the verificatio
         #
-        #   @param verification_result [Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult] Indicates whether a transaction is considered 3DS authenticated. (deprecated, us
-        #   ...
+        #   @param verification_result [Symbol, Lithic::Transaction::CardholderAuthentication::VerificationResult] Indicates whether a transaction is considered 3DS authenticated. (deprecated, us
 
         # Whether an acquirer exemption applied to the transaction.
         #
-        # @see Lithic::Models::Transaction::CardholderAuthentication#acquirer_exemption
+        # @see Lithic::Transaction::CardholderAuthentication#acquirer_exemption
         module AcquirerExemption
           extend Lithic::Internal::Type::Enum
 
@@ -497,7 +480,7 @@ module Lithic
 
         # Indicates what the outcome of the 3DS authentication process is.
         #
-        # @see Lithic::Models::Transaction::CardholderAuthentication#authentication_result
+        # @see Lithic::Transaction::CardholderAuthentication#authentication_result
         module AuthenticationResult
           extend Lithic::Internal::Type::Enum
 
@@ -512,7 +495,7 @@ module Lithic
 
         # Indicates which party made the 3DS authentication decision.
         #
-        # @see Lithic::Models::Transaction::CardholderAuthentication#decision_made_by
+        # @see Lithic::Transaction::CardholderAuthentication#decision_made_by
         module DecisionMadeBy
           extend Lithic::Internal::Type::Enum
 
@@ -539,7 +522,7 @@ module Lithic
         #   cryptography, possibly recurring. Chargeback liability shift to the issuer
         #   applies.
         #
-        # @see Lithic::Models::Transaction::CardholderAuthentication#liability_shift
+        # @see Lithic::Transaction::CardholderAuthentication#liability_shift
         module LiabilityShift
           extend Lithic::Internal::Type::Enum
 
@@ -555,7 +538,7 @@ module Lithic
         # Indicates whether a 3DS challenge flow was used, and if so, what the
         # verification method was. (deprecated, use `authentication_result`)
         #
-        # @see Lithic::Models::Transaction::CardholderAuthentication#verification_attempted
+        # @see Lithic::Transaction::CardholderAuthentication#verification_attempted
         module VerificationAttempted
           extend Lithic::Internal::Type::Enum
 
@@ -569,7 +552,7 @@ module Lithic
         # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
         # use `authentication_result`)
         #
-        # @see Lithic::Models::Transaction::CardholderAuthentication#verification_result
+        # @see Lithic::Transaction::CardholderAuthentication#verification_result
         module VerificationResult
           extend Lithic::Internal::Type::Enum
 
@@ -585,7 +568,7 @@ module Lithic
         end
       end
 
-      # @see Lithic::Models::Transaction#merchant
+      # @see Lithic::Transaction#merchant
       class Merchant < Lithic::Internal::Type::BaseModel
         # @!attribute acceptor_id
         #   Unique alphanumeric identifier for the payment card acceptor (merchant).
@@ -634,22 +617,19 @@ module Lithic
 
         # @!method initialize(acceptor_id:, acquiring_institution_id:, city:, country:, descriptor:, mcc:, state:)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::Transaction::Merchant} for more details.
+        #   {Lithic::Transaction::Merchant} for more details.
         #
         #   @param acceptor_id [String] Unique alphanumeric identifier for the payment card acceptor (merchant).
         #
         #   @param acquiring_institution_id [String] Unique numeric identifier of the acquiring institution.
         #
         #   @param city [String] City of card acceptor. Note that in many cases, particularly in card-not-present
-        #   ...
         #
         #   @param country [String] Country or entity of card acceptor. Possible values are: (1) all ISO 3166-1 alph
-        #   ...
         #
         #   @param descriptor [String] Short description of card acceptor.
         #
         #   @param mcc [String] Merchant category code (MCC). A four-digit number listed in ISO 18245. An MCC is
-        #   ...
         #
         #   @param state [String] Geographic state of card acceptor.
       end
@@ -658,7 +638,7 @@ module Lithic
       # `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
       # network code from the upstream provider.
       #
-      # @see Lithic::Models::Transaction#network
+      # @see Lithic::Transaction#network
       module Network
         extend Lithic::Internal::Type::Enum
 
@@ -672,41 +652,41 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::Models::Transaction#pos
+      # @see Lithic::Transaction#pos
       class Pos < Lithic::Internal::Type::BaseModel
         # @!attribute entry_mode
         #
-        #   @return [Lithic::Models::Transaction::Pos::EntryMode]
-        required :entry_mode, -> { Lithic::Models::Transaction::Pos::EntryMode }
+        #   @return [Lithic::Transaction::Pos::EntryMode]
+        required :entry_mode, -> { Lithic::Transaction::Pos::EntryMode }
 
         # @!attribute terminal
         #
-        #   @return [Lithic::Models::Transaction::Pos::Terminal]
-        required :terminal, -> { Lithic::Models::Transaction::Pos::Terminal }
+        #   @return [Lithic::Transaction::Pos::Terminal]
+        required :terminal, -> { Lithic::Transaction::Pos::Terminal }
 
         # @!method initialize(entry_mode:, terminal:)
-        #   @param entry_mode [Lithic::Models::Transaction::Pos::EntryMode]
-        #   @param terminal [Lithic::Models::Transaction::Pos::Terminal]
+        #   @param entry_mode [Lithic::Transaction::Pos::EntryMode]
+        #   @param terminal [Lithic::Transaction::Pos::Terminal]
 
-        # @see Lithic::Models::Transaction::Pos#entry_mode
+        # @see Lithic::Transaction::Pos#entry_mode
         class EntryMode < Lithic::Internal::Type::BaseModel
           # @!attribute card
           #   Card presence indicator
           #
-          #   @return [Symbol, Lithic::Models::Transaction::Pos::EntryMode::Card]
-          required :card, enum: -> { Lithic::Models::Transaction::Pos::EntryMode::Card }
+          #   @return [Symbol, Lithic::Transaction::Pos::EntryMode::Card]
+          required :card, enum: -> { Lithic::Transaction::Pos::EntryMode::Card }
 
           # @!attribute cardholder
           #   Cardholder presence indicator
           #
-          #   @return [Symbol, Lithic::Models::Transaction::Pos::EntryMode::Cardholder]
-          required :cardholder, enum: -> { Lithic::Models::Transaction::Pos::EntryMode::Cardholder }
+          #   @return [Symbol, Lithic::Transaction::Pos::EntryMode::Cardholder]
+          required :cardholder, enum: -> { Lithic::Transaction::Pos::EntryMode::Cardholder }
 
           # @!attribute pan
           #   Method of entry for the PAN
           #
-          #   @return [Symbol, Lithic::Models::Transaction::Pos::EntryMode::Pan]
-          required :pan, enum: -> { Lithic::Models::Transaction::Pos::EntryMode::Pan }
+          #   @return [Symbol, Lithic::Transaction::Pos::EntryMode::Pan]
+          required :pan, enum: -> { Lithic::Transaction::Pos::EntryMode::Pan }
 
           # @!attribute pin_entered
           #   Indicates whether the cardholder entered the PIN. True if the PIN was entered.
@@ -715,17 +695,17 @@ module Lithic
           required :pin_entered, Lithic::Internal::Type::Boolean
 
           # @!method initialize(card:, cardholder:, pan:, pin_entered:)
-          #   @param card [Symbol, Lithic::Models::Transaction::Pos::EntryMode::Card] Card presence indicator
+          #   @param card [Symbol, Lithic::Transaction::Pos::EntryMode::Card] Card presence indicator
           #
-          #   @param cardholder [Symbol, Lithic::Models::Transaction::Pos::EntryMode::Cardholder] Cardholder presence indicator
+          #   @param cardholder [Symbol, Lithic::Transaction::Pos::EntryMode::Cardholder] Cardholder presence indicator
           #
-          #   @param pan [Symbol, Lithic::Models::Transaction::Pos::EntryMode::Pan] Method of entry for the PAN
+          #   @param pan [Symbol, Lithic::Transaction::Pos::EntryMode::Pan] Method of entry for the PAN
           #
           #   @param pin_entered [Boolean] Indicates whether the cardholder entered the PIN. True if the PIN was entered.
 
           # Card presence indicator
           #
-          # @see Lithic::Models::Transaction::Pos::EntryMode#card
+          # @see Lithic::Transaction::Pos::EntryMode#card
           module Card
             extend Lithic::Internal::Type::Enum
 
@@ -740,7 +720,7 @@ module Lithic
 
           # Cardholder presence indicator
           #
-          # @see Lithic::Models::Transaction::Pos::EntryMode#cardholder
+          # @see Lithic::Transaction::Pos::EntryMode#cardholder
           module Cardholder
             extend Lithic::Internal::Type::Enum
 
@@ -761,7 +741,7 @@ module Lithic
 
           # Method of entry for the PAN
           #
-          # @see Lithic::Models::Transaction::Pos::EntryMode#pan
+          # @see Lithic::Transaction::Pos::EntryMode#pan
           module Pan
             extend Lithic::Internal::Type::Enum
 
@@ -786,7 +766,7 @@ module Lithic
           end
         end
 
-        # @see Lithic::Models::Transaction::Pos#terminal
+        # @see Lithic::Transaction::Pos#terminal
         class Terminal < Lithic::Internal::Type::BaseModel
           # @!attribute attended
           #   True if a clerk is present at the sale.
@@ -809,8 +789,8 @@ module Lithic
           # @!attribute operator
           #   The person that is designated to swipe the card
           #
-          #   @return [Symbol, Lithic::Models::Transaction::Pos::Terminal::Operator]
-          required :operator, enum: -> { Lithic::Models::Transaction::Pos::Terminal::Operator }
+          #   @return [Symbol, Lithic::Transaction::Pos::Terminal::Operator]
+          required :operator, enum: -> { Lithic::Transaction::Pos::Terminal::Operator }
 
           # @!attribute partial_approval_capable
           #   True if the terminal is capable of partial approval. Partial approval is when
@@ -825,14 +805,14 @@ module Lithic
           # @!attribute pin_capability
           #   Status of whether the POS is able to accept PINs
           #
-          #   @return [Symbol, Lithic::Models::Transaction::Pos::Terminal::PinCapability]
-          required :pin_capability, enum: -> { Lithic::Models::Transaction::Pos::Terminal::PinCapability }
+          #   @return [Symbol, Lithic::Transaction::Pos::Terminal::PinCapability]
+          required :pin_capability, enum: -> { Lithic::Transaction::Pos::Terminal::PinCapability }
 
           # @!attribute type
           #   POS Type
           #
-          #   @return [Symbol, Lithic::Models::Transaction::Pos::Terminal::Type]
-          required :type, enum: -> { Lithic::Models::Transaction::Pos::Terminal::Type }
+          #   @return [Symbol, Lithic::Transaction::Pos::Terminal::Type]
+          required :type, enum: -> { Lithic::Transaction::Pos::Terminal::Type }
 
           # @!attribute acceptor_terminal_id
           #   Uniquely identifies a terminal at the card acceptor location of acquiring
@@ -843,7 +823,7 @@ module Lithic
 
           # @!method initialize(attended:, card_retention_capable:, on_premise:, operator:, partial_approval_capable:, pin_capability:, type:, acceptor_terminal_id: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::Transaction::Pos::Terminal} for more details.
+          #   {Lithic::Transaction::Pos::Terminal} for more details.
           #
           #   @param attended [Boolean] True if a clerk is present at the sale.
           #
@@ -851,21 +831,19 @@ module Lithic
           #
           #   @param on_premise [Boolean] True if the sale was made at the place of business (vs. mobile).
           #
-          #   @param operator [Symbol, Lithic::Models::Transaction::Pos::Terminal::Operator] The person that is designated to swipe the card
+          #   @param operator [Symbol, Lithic::Transaction::Pos::Terminal::Operator] The person that is designated to swipe the card
           #
           #   @param partial_approval_capable [Boolean] True if the terminal is capable of partial approval. Partial approval is when pa
-          #   ...
           #
-          #   @param pin_capability [Symbol, Lithic::Models::Transaction::Pos::Terminal::PinCapability] Status of whether the POS is able to accept PINs
+          #   @param pin_capability [Symbol, Lithic::Transaction::Pos::Terminal::PinCapability] Status of whether the POS is able to accept PINs
           #
-          #   @param type [Symbol, Lithic::Models::Transaction::Pos::Terminal::Type] POS Type
+          #   @param type [Symbol, Lithic::Transaction::Pos::Terminal::Type] POS Type
           #
           #   @param acceptor_terminal_id [String, nil] Uniquely identifies a terminal at the card acceptor location of acquiring instit
-          #   ...
 
           # The person that is designated to swipe the card
           #
-          # @see Lithic::Models::Transaction::Pos::Terminal#operator
+          # @see Lithic::Transaction::Pos::Terminal#operator
           module Operator
             extend Lithic::Internal::Type::Enum
 
@@ -880,7 +858,7 @@ module Lithic
 
           # Status of whether the POS is able to accept PINs
           #
-          # @see Lithic::Models::Transaction::Pos::Terminal#pin_capability
+          # @see Lithic::Transaction::Pos::Terminal#pin_capability
           module PinCapability
             extend Lithic::Internal::Type::Enum
 
@@ -895,7 +873,7 @@ module Lithic
 
           # POS Type
           #
-          # @see Lithic::Models::Transaction::Pos::Terminal#type
+          # @see Lithic::Transaction::Pos::Terminal#type
           module Type
             extend Lithic::Internal::Type::Enum
 
@@ -930,7 +908,7 @@ module Lithic
         end
       end
 
-      # @see Lithic::Models::Transaction#result
+      # @see Lithic::Transaction#result
       module Result
         extend Lithic::Internal::Type::Enum
 
@@ -964,7 +942,7 @@ module Lithic
 
       # Status of the transaction.
       #
-      # @see Lithic::Models::Transaction#status
+      # @see Lithic::Transaction#status
       module Status
         extend Lithic::Internal::Type::Enum
 
@@ -978,7 +956,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::Models::Transaction#token_info
+      # @see Lithic::Transaction#token_info
       class TokenInfo < Lithic::Internal::Type::BaseModel
         # @!attribute wallet_type
         #   The wallet_type field will indicate the source of the token. Possible token
@@ -986,22 +964,21 @@ module Lithic
         #   tokenization, and “other” sources like in-flight commerce. Masterpass is not
         #   currently supported and is included for future use.
         #
-        #   @return [Symbol, Lithic::Models::Transaction::TokenInfo::WalletType]
-        required :wallet_type, enum: -> { Lithic::Models::Transaction::TokenInfo::WalletType }
+        #   @return [Symbol, Lithic::Transaction::TokenInfo::WalletType]
+        required :wallet_type, enum: -> { Lithic::Transaction::TokenInfo::WalletType }
 
         # @!method initialize(wallet_type:)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::Transaction::TokenInfo} for more details.
+        #   {Lithic::Transaction::TokenInfo} for more details.
         #
-        #   @param wallet_type [Symbol, Lithic::Models::Transaction::TokenInfo::WalletType] The wallet_type field will indicate the source of the token. Possible token sour
-        #   ...
+        #   @param wallet_type [Symbol, Lithic::Transaction::TokenInfo::WalletType] The wallet_type field will indicate the source of the token. Possible token sour
 
         # The wallet_type field will indicate the source of the token. Possible token
         # sources include digital wallets (Apple, Google, or Samsung Pay), merchant
         # tokenization, and “other” sources like in-flight commerce. Masterpass is not
         # currently supported and is included for future use.
         #
-        # @see Lithic::Models::Transaction::TokenInfo#wallet_type
+        # @see Lithic::Transaction::TokenInfo#wallet_type
         module WalletType
           extend Lithic::Internal::Type::Enum
 
@@ -1034,8 +1011,8 @@ module Lithic
 
         # @!attribute amounts
         #
-        #   @return [Lithic::Models::Transaction::Event::Amounts]
-        required :amounts, -> { Lithic::Models::Transaction::Event::Amounts }
+        #   @return [Lithic::Transaction::Event::Amounts]
+        required :amounts, -> { Lithic::Transaction::Event::Amounts }
 
         # @!attribute created
         #   RFC 3339 date and time this event entered the system. UTC time zone.
@@ -1045,15 +1022,15 @@ module Lithic
 
         # @!attribute detailed_results
         #
-        #   @return [Array<Symbol, Lithic::Models::Transaction::Event::DetailedResult>]
+        #   @return [Array<Symbol, Lithic::Transaction::Event::DetailedResult>]
         required :detailed_results,
-                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::Transaction::Event::DetailedResult] }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Transaction::Event::DetailedResult] }
 
         # @!attribute effective_polarity
         #   Indicates whether the transaction event is a credit or debit to the account.
         #
-        #   @return [Symbol, Lithic::Models::Transaction::Event::EffectivePolarity]
-        required :effective_polarity, enum: -> { Lithic::Models::Transaction::Event::EffectivePolarity }
+        #   @return [Symbol, Lithic::Transaction::Event::EffectivePolarity]
+        required :effective_polarity, enum: -> { Lithic::Transaction::Event::EffectivePolarity }
 
         # @!attribute network_info
         #   Information provided by the card network in each event. This includes common
@@ -1066,81 +1043,79 @@ module Lithic
         #   unless otherwise specified. Please consult the official network documentation
         #   for more details about these fields and how to use them.
         #
-        #   @return [Lithic::Models::Transaction::Event::NetworkInfo, nil]
-        required :network_info, -> { Lithic::Models::Transaction::Event::NetworkInfo }, nil?: true
+        #   @return [Lithic::Transaction::Event::NetworkInfo, nil]
+        required :network_info, -> { Lithic::Transaction::Event::NetworkInfo }, nil?: true
 
         # @!attribute result
         #
-        #   @return [Symbol, Lithic::Models::Transaction::Event::Result]
-        required :result, enum: -> { Lithic::Models::Transaction::Event::Result }
+        #   @return [Symbol, Lithic::Transaction::Event::Result]
+        required :result, enum: -> { Lithic::Transaction::Event::Result }
 
         # @!attribute rule_results
         #
-        #   @return [Array<Lithic::Models::Transaction::Event::RuleResult>]
-        required :rule_results,
-                 -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Transaction::Event::RuleResult] }
+        #   @return [Array<Lithic::Transaction::Event::RuleResult>]
+        required :rule_results, -> { Lithic::Internal::Type::ArrayOf[Lithic::Transaction::Event::RuleResult] }
 
         # @!attribute type
         #   Type of transaction event
         #
-        #   @return [Symbol, Lithic::Models::Transaction::Event::Type]
-        required :type, enum: -> { Lithic::Models::Transaction::Event::Type }
+        #   @return [Symbol, Lithic::Transaction::Event::Type]
+        required :type, enum: -> { Lithic::Transaction::Event::Type }
 
         # @!attribute network_specific_data
         #
-        #   @return [Lithic::Models::Transaction::Event::NetworkSpecificData, nil]
-        optional :network_specific_data, -> { Lithic::Models::Transaction::Event::NetworkSpecificData }
+        #   @return [Lithic::Transaction::Event::NetworkSpecificData, nil]
+        optional :network_specific_data, -> { Lithic::Transaction::Event::NetworkSpecificData }
 
         # @!method initialize(token:, amount:, amounts:, created:, detailed_results:, effective_polarity:, network_info:, result:, rule_results:, type:, network_specific_data: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::Transaction::Event} for more details.
+        #   {Lithic::Transaction::Event} for more details.
         #
         #   @param token [String] Transaction event identifier.
         #
         #   @param amount [Integer] Amount of the event in the settlement currency.
         #
-        #   @param amounts [Lithic::Models::Transaction::Event::Amounts]
+        #   @param amounts [Lithic::Transaction::Event::Amounts]
         #
         #   @param created [Time] RFC 3339 date and time this event entered the system. UTC time zone.
         #
-        #   @param detailed_results [Array<Symbol, Lithic::Models::Transaction::Event::DetailedResult>]
+        #   @param detailed_results [Array<Symbol, Lithic::Transaction::Event::DetailedResult>]
         #
-        #   @param effective_polarity [Symbol, Lithic::Models::Transaction::Event::EffectivePolarity] Indicates whether the transaction event is a credit or debit to the account.
+        #   @param effective_polarity [Symbol, Lithic::Transaction::Event::EffectivePolarity] Indicates whether the transaction event is a credit or debit to the account.
         #
-        #   @param network_info [Lithic::Models::Transaction::Event::NetworkInfo, nil] Information provided by the card network in each event. This includes common ide
-        #   ...
+        #   @param network_info [Lithic::Transaction::Event::NetworkInfo, nil] Information provided by the card network in each event. This includes common ide
         #
-        #   @param result [Symbol, Lithic::Models::Transaction::Event::Result]
+        #   @param result [Symbol, Lithic::Transaction::Event::Result]
         #
-        #   @param rule_results [Array<Lithic::Models::Transaction::Event::RuleResult>]
+        #   @param rule_results [Array<Lithic::Transaction::Event::RuleResult>]
         #
-        #   @param type [Symbol, Lithic::Models::Transaction::Event::Type] Type of transaction event
+        #   @param type [Symbol, Lithic::Transaction::Event::Type] Type of transaction event
         #
-        #   @param network_specific_data [Lithic::Models::Transaction::Event::NetworkSpecificData]
+        #   @param network_specific_data [Lithic::Transaction::Event::NetworkSpecificData]
 
-        # @see Lithic::Models::Transaction::Event#amounts
+        # @see Lithic::Transaction::Event#amounts
         class Amounts < Lithic::Internal::Type::BaseModel
           # @!attribute cardholder
           #
-          #   @return [Lithic::Models::Transaction::Event::Amounts::Cardholder]
-          required :cardholder, -> { Lithic::Models::Transaction::Event::Amounts::Cardholder }
+          #   @return [Lithic::Transaction::Event::Amounts::Cardholder]
+          required :cardholder, -> { Lithic::Transaction::Event::Amounts::Cardholder }
 
           # @!attribute merchant
           #
-          #   @return [Lithic::Models::Transaction::Event::Amounts::Merchant]
-          required :merchant, -> { Lithic::Models::Transaction::Event::Amounts::Merchant }
+          #   @return [Lithic::Transaction::Event::Amounts::Merchant]
+          required :merchant, -> { Lithic::Transaction::Event::Amounts::Merchant }
 
           # @!attribute settlement
           #
-          #   @return [Lithic::Models::Transaction::Event::Amounts::Settlement, nil]
-          required :settlement, -> { Lithic::Models::Transaction::Event::Amounts::Settlement }, nil?: true
+          #   @return [Lithic::Transaction::Event::Amounts::Settlement, nil]
+          required :settlement, -> { Lithic::Transaction::Event::Amounts::Settlement }, nil?: true
 
           # @!method initialize(cardholder:, merchant:, settlement:)
-          #   @param cardholder [Lithic::Models::Transaction::Event::Amounts::Cardholder]
-          #   @param merchant [Lithic::Models::Transaction::Event::Amounts::Merchant]
-          #   @param settlement [Lithic::Models::Transaction::Event::Amounts::Settlement, nil]
+          #   @param cardholder [Lithic::Transaction::Event::Amounts::Cardholder]
+          #   @param merchant [Lithic::Transaction::Event::Amounts::Merchant]
+          #   @param settlement [Lithic::Transaction::Event::Amounts::Settlement, nil]
 
-          # @see Lithic::Models::Transaction::Event::Amounts#cardholder
+          # @see Lithic::Transaction::Event::Amounts#cardholder
           class Cardholder < Lithic::Internal::Type::BaseModel
             # @!attribute amount
             #   Amount of the event in the cardholder billing currency.
@@ -1163,17 +1138,16 @@ module Lithic
 
             # @!method initialize(amount:, conversion_rate:, currency:)
             #   Some parameter documentations has been truncated, see
-            #   {Lithic::Models::Transaction::Event::Amounts::Cardholder} for more details.
+            #   {Lithic::Transaction::Event::Amounts::Cardholder} for more details.
             #
             #   @param amount [Integer] Amount of the event in the cardholder billing currency.
             #
             #   @param conversion_rate [String] Exchange rate used to convert the merchant amount to the cardholder billing amou
-            #   ...
             #
             #   @param currency [String] 3-character alphabetic ISO 4217 currency
           end
 
-          # @see Lithic::Models::Transaction::Event::Amounts#merchant
+          # @see Lithic::Transaction::Event::Amounts#merchant
           class Merchant < Lithic::Internal::Type::BaseModel
             # @!attribute amount
             #   Amount of the event in the merchant currency.
@@ -1193,7 +1167,7 @@ module Lithic
             #   @param currency [String] 3-character alphabetic ISO 4217 currency
           end
 
-          # @see Lithic::Models::Transaction::Event::Amounts#settlement
+          # @see Lithic::Transaction::Event::Amounts#settlement
           class Settlement < Lithic::Internal::Type::BaseModel
             # @!attribute amount
             #   Amount of the event, if it is financial, in the settlement currency.
@@ -1216,10 +1190,9 @@ module Lithic
 
             # @!method initialize(amount:, conversion_rate:, currency:)
             #   Some parameter documentations has been truncated, see
-            #   {Lithic::Models::Transaction::Event::Amounts::Settlement} for more details.
+            #   {Lithic::Transaction::Event::Amounts::Settlement} for more details.
             #
             #   @param amount [Integer] Amount of the event, if it is financial, in the settlement currency. Non-financi
-            #   ...
             #
             #   @param conversion_rate [String] Exchange rate used to convert the merchant amount to the settlement amount.
             #
@@ -1289,7 +1262,7 @@ module Lithic
 
         # Indicates whether the transaction event is a credit or debit to the account.
         #
-        # @see Lithic::Models::Transaction::Event#effective_polarity
+        # @see Lithic::Transaction::Event#effective_polarity
         module EffectivePolarity
           extend Lithic::Internal::Type::Enum
 
@@ -1300,22 +1273,22 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # @see Lithic::Models::Transaction::Event#network_info
+        # @see Lithic::Transaction::Event#network_info
         class NetworkInfo < Lithic::Internal::Type::BaseModel
           # @!attribute acquirer
           #
-          #   @return [Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, nil]
-          required :acquirer, -> { Lithic::Models::Transaction::Event::NetworkInfo::Acquirer }, nil?: true
+          #   @return [Lithic::Transaction::Event::NetworkInfo::Acquirer, nil]
+          required :acquirer, -> { Lithic::Transaction::Event::NetworkInfo::Acquirer }, nil?: true
 
           # @!attribute mastercard
           #
-          #   @return [Lithic::Models::Transaction::Event::NetworkInfo::Mastercard, nil]
-          required :mastercard, -> { Lithic::Models::Transaction::Event::NetworkInfo::Mastercard }, nil?: true
+          #   @return [Lithic::Transaction::Event::NetworkInfo::Mastercard, nil]
+          required :mastercard, -> { Lithic::Transaction::Event::NetworkInfo::Mastercard }, nil?: true
 
           # @!attribute visa
           #
-          #   @return [Lithic::Models::Transaction::Event::NetworkInfo::Visa, nil]
-          required :visa, -> { Lithic::Models::Transaction::Event::NetworkInfo::Visa }, nil?: true
+          #   @return [Lithic::Transaction::Event::NetworkInfo::Visa, nil]
+          required :visa, -> { Lithic::Transaction::Event::NetworkInfo::Visa }, nil?: true
 
           # @!method initialize(acquirer:, mastercard:, visa:)
           #   Information provided by the card network in each event. This includes common
@@ -1328,11 +1301,11 @@ module Lithic
           #   unless otherwise specified. Please consult the official network documentation
           #   for more details about these fields and how to use them.
           #
-          #   @param acquirer [Lithic::Models::Transaction::Event::NetworkInfo::Acquirer, nil]
-          #   @param mastercard [Lithic::Models::Transaction::Event::NetworkInfo::Mastercard, nil]
-          #   @param visa [Lithic::Models::Transaction::Event::NetworkInfo::Visa, nil]
+          #   @param acquirer [Lithic::Transaction::Event::NetworkInfo::Acquirer, nil]
+          #   @param mastercard [Lithic::Transaction::Event::NetworkInfo::Mastercard, nil]
+          #   @param visa [Lithic::Transaction::Event::NetworkInfo::Visa, nil]
 
-          # @see Lithic::Models::Transaction::Event::NetworkInfo#acquirer
+          # @see Lithic::Transaction::Event::NetworkInfo#acquirer
           class Acquirer < Lithic::Internal::Type::BaseModel
             # @!attribute acquirer_reference_number
             #   Identifier assigned by the acquirer, applicable to dual-message transactions
@@ -1352,15 +1325,14 @@ module Lithic
 
             # @!method initialize(acquirer_reference_number:, retrieval_reference_number:)
             #   Some parameter documentations has been truncated, see
-            #   {Lithic::Models::Transaction::Event::NetworkInfo::Acquirer} for more details.
+            #   {Lithic::Transaction::Event::NetworkInfo::Acquirer} for more details.
             #
             #   @param acquirer_reference_number [String, nil] Identifier assigned by the acquirer, applicable to dual-message transactions onl
-            #   ...
             #
             #   @param retrieval_reference_number [String, nil] Identifier assigned by the acquirer.
           end
 
-          # @see Lithic::Models::Transaction::Event::NetworkInfo#mastercard
+          # @see Lithic::Transaction::Event::NetworkInfo#mastercard
           class Mastercard < Lithic::Internal::Type::BaseModel
             # @!attribute banknet_reference_number
             #   Identifier assigned by Mastercard. Guaranteed by Mastercard to be unique for any
@@ -1402,22 +1374,18 @@ module Lithic
 
             # @!method initialize(banknet_reference_number:, original_banknet_reference_number:, original_switch_serial_number:, switch_serial_number:)
             #   Some parameter documentations has been truncated, see
-            #   {Lithic::Models::Transaction::Event::NetworkInfo::Mastercard} for more details.
+            #   {Lithic::Transaction::Event::NetworkInfo::Mastercard} for more details.
             #
             #   @param banknet_reference_number [String, nil] Identifier assigned by Mastercard. Guaranteed by Mastercard to be unique for any
-            #   ...
             #
             #   @param original_banknet_reference_number [String, nil] Identifier assigned by Mastercard. Matches the `banknet_reference_number` of a p
-            #   ...
             #
             #   @param original_switch_serial_number [String, nil] Identifier assigned by Mastercard. Matches the `switch_serial_number` of a prior
-            #   ...
             #
             #   @param switch_serial_number [String, nil] Identifier assigned by Mastercard, applicable to single-message transactions onl
-            #   ...
           end
 
-          # @see Lithic::Models::Transaction::Event::NetworkInfo#visa
+          # @see Lithic::Transaction::Event::NetworkInfo#visa
           class Visa < Lithic::Internal::Type::BaseModel
             # @!attribute original_transaction_id
             #   Identifier assigned by Visa. Matches the `transaction_id` of a prior related
@@ -1438,17 +1406,15 @@ module Lithic
 
             # @!method initialize(original_transaction_id:, transaction_id:)
             #   Some parameter documentations has been truncated, see
-            #   {Lithic::Models::Transaction::Event::NetworkInfo::Visa} for more details.
+            #   {Lithic::Transaction::Event::NetworkInfo::Visa} for more details.
             #
             #   @param original_transaction_id [String, nil] Identifier assigned by Visa. Matches the `transaction_id` of a prior related eve
-            #   ...
             #
             #   @param transaction_id [String, nil] Identifier assigned by Visa to link original messages to subsequent messages. Gu
-            #   ...
           end
         end
 
-        # @see Lithic::Models::Transaction::Event#result
+        # @see Lithic::Transaction::Event#result
         module Result
           extend Lithic::Internal::Type::Enum
 
@@ -1505,25 +1471,24 @@ module Lithic
           # @!attribute result
           #   The detailed_result associated with this rule's decline.
           #
-          #   @return [Symbol, Lithic::Models::Transaction::Event::RuleResult::Result]
-          required :result, enum: -> { Lithic::Models::Transaction::Event::RuleResult::Result }
+          #   @return [Symbol, Lithic::Transaction::Event::RuleResult::Result]
+          required :result, enum: -> { Lithic::Transaction::Event::RuleResult::Result }
 
           # @!method initialize(auth_rule_token:, explanation:, name:, result:)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::Transaction::Event::RuleResult} for more details.
+          #   {Lithic::Transaction::Event::RuleResult} for more details.
           #
           #   @param auth_rule_token [String, nil] The Auth Rule Token associated with the rule from which the decline originated.
-          #   ...
           #
           #   @param explanation [String, nil] A human-readable explanation outlining the motivation for the rule's decline.
           #
           #   @param name [String, nil] The name for the rule, if any was configured.
           #
-          #   @param result [Symbol, Lithic::Models::Transaction::Event::RuleResult::Result] The detailed_result associated with this rule's decline.
+          #   @param result [Symbol, Lithic::Transaction::Event::RuleResult::Result] The detailed_result associated with this rule's decline.
 
           # The detailed_result associated with this rule's decline.
           #
-          # @see Lithic::Models::Transaction::Event::RuleResult#result
+          # @see Lithic::Transaction::Event::RuleResult#result
           module Result
             extend Lithic::Internal::Type::Enum
 
@@ -1587,7 +1552,7 @@ module Lithic
 
         # Type of transaction event
         #
-        # @see Lithic::Models::Transaction::Event#type
+        # @see Lithic::Transaction::Event#type
         module Type
           extend Lithic::Internal::Type::Enum
 
@@ -1610,23 +1575,23 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # @see Lithic::Models::Transaction::Event#network_specific_data
+        # @see Lithic::Transaction::Event#network_specific_data
         class NetworkSpecificData < Lithic::Internal::Type::BaseModel
           # @!attribute mastercard
           #
-          #   @return [Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard]
-          required :mastercard, -> { Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard }
+          #   @return [Lithic::Transaction::Event::NetworkSpecificData::Mastercard]
+          required :mastercard, -> { Lithic::Transaction::Event::NetworkSpecificData::Mastercard }
 
           # @!attribute visa
           #
-          #   @return [Lithic::Models::Transaction::Event::NetworkSpecificData::Visa]
-          required :visa, -> { Lithic::Models::Transaction::Event::NetworkSpecificData::Visa }
+          #   @return [Lithic::Transaction::Event::NetworkSpecificData::Visa]
+          required :visa, -> { Lithic::Transaction::Event::NetworkSpecificData::Visa }
 
           # @!method initialize(mastercard:, visa:)
-          #   @param mastercard [Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard]
-          #   @param visa [Lithic::Models::Transaction::Event::NetworkSpecificData::Visa]
+          #   @param mastercard [Lithic::Transaction::Event::NetworkSpecificData::Mastercard]
+          #   @param visa [Lithic::Transaction::Event::NetworkSpecificData::Visa]
 
-          # @see Lithic::Models::Transaction::Event::NetworkSpecificData#mastercard
+          # @see Lithic::Transaction::Event::NetworkSpecificData#mastercard
           class Mastercard < Lithic::Internal::Type::BaseModel
             # @!attribute ecommerce_security_level_indicator
             #   Indicates the electronic commerce security level and UCAF collection.
@@ -1639,9 +1604,11 @@ module Lithic
             #   applicable, on-behalf service results that were performed on a given
             #   transaction.
             #
-            #   @return [Array<Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult>, nil]
+            #   @return [Array<Lithic::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult>, nil]
             required :on_behalf_service_result,
-                     -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult] },
+                     -> {
+                       Lithic::Internal::Type::ArrayOf[Lithic::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult]
+                     },
                      nil?: true
 
             # @!attribute transaction_type_identifier
@@ -1652,13 +1619,11 @@ module Lithic
 
             # @!method initialize(ecommerce_security_level_indicator:, on_behalf_service_result:, transaction_type_identifier:)
             #   Some parameter documentations has been truncated, see
-            #   {Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard} for more
-            #   details.
+            #   {Lithic::Transaction::Event::NetworkSpecificData::Mastercard} for more details.
             #
             #   @param ecommerce_security_level_indicator [String, nil] Indicates the electronic commerce security level and UCAF collection.
             #
-            #   @param on_behalf_service_result [Array<Lithic::Models::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult>, nil] The On-behalf Service performed on the transaction and the results. Contains all
-            #   ...
+            #   @param on_behalf_service_result [Array<Lithic::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult>, nil] The On-behalf Service performed on the transaction and the results. Contains all
             #
             #   @param transaction_type_identifier [String, nil] Indicates the type of additional transaction purpose.
 
@@ -1690,7 +1655,7 @@ module Lithic
             end
           end
 
-          # @see Lithic::Models::Transaction::Event::NetworkSpecificData#visa
+          # @see Lithic::Transaction::Event::NetworkSpecificData#visa
           class Visa < Lithic::Internal::Type::BaseModel
             # @!attribute business_application_identifier
             #   Identifies the purpose or category of a transaction, used to classify and
@@ -1701,11 +1666,9 @@ module Lithic
 
             # @!method initialize(business_application_identifier:)
             #   Some parameter documentations has been truncated, see
-            #   {Lithic::Models::Transaction::Event::NetworkSpecificData::Visa} for more
-            #   details.
+            #   {Lithic::Transaction::Event::NetworkSpecificData::Visa} for more details.
             #
             #   @param business_application_identifier [String, nil] Identifies the purpose or category of a transaction, used to classify and proces
-            #   ...
           end
         end
       end

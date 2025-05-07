@@ -7,7 +7,7 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
     response = @lithic.transactions.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::Transaction
+      response => Lithic::Transaction
     end
 
     assert_pattern do
@@ -17,26 +17,26 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
         acquirer_fee: Integer | nil,
         acquirer_reference_number: String | nil,
         amount: Integer,
-        amounts: Lithic::Models::Transaction::Amounts,
+        amounts: Lithic::Transaction::Amounts,
         authorization_amount: Integer | nil,
         authorization_code: String | nil,
-        avs: Lithic::Models::Transaction::Avs | nil,
+        avs: Lithic::Transaction::Avs | nil,
         card_token: String,
-        cardholder_authentication: Lithic::Models::Transaction::CardholderAuthentication | nil,
+        cardholder_authentication: Lithic::Transaction::CardholderAuthentication | nil,
         created: Time,
-        merchant: Lithic::Models::Transaction::Merchant,
+        merchant: Lithic::Transaction::Merchant,
         merchant_amount: Integer | nil,
         merchant_authorization_amount: Integer | nil,
         merchant_currency: String,
-        network: Lithic::Models::Transaction::Network | nil,
+        network: Lithic::Transaction::Network | nil,
         network_risk_score: Integer | nil,
-        pos: Lithic::Models::Transaction::Pos,
-        result: Lithic::Models::Transaction::Result,
+        pos: Lithic::Transaction::Pos,
+        result: Lithic::Transaction::Result,
         settled_amount: Integer,
-        status: Lithic::Models::Transaction::Status,
-        token_info: Lithic::Models::Transaction::TokenInfo | nil,
+        status: Lithic::Transaction::Status,
+        token_info: Lithic::Transaction::TokenInfo | nil,
         updated: Time,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Transaction::Event]) | nil
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Transaction::Event]) | nil
       }
     end
   end
@@ -52,7 +52,7 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::Transaction
+      row => Lithic::Transaction
     end
 
     assert_pattern do
@@ -62,26 +62,26 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
         acquirer_fee: Integer | nil,
         acquirer_reference_number: String | nil,
         amount: Integer,
-        amounts: Lithic::Models::Transaction::Amounts,
+        amounts: Lithic::Transaction::Amounts,
         authorization_amount: Integer | nil,
         authorization_code: String | nil,
-        avs: Lithic::Models::Transaction::Avs | nil,
+        avs: Lithic::Transaction::Avs | nil,
         card_token: String,
-        cardholder_authentication: Lithic::Models::Transaction::CardholderAuthentication | nil,
+        cardholder_authentication: Lithic::Transaction::CardholderAuthentication | nil,
         created: Time,
-        merchant: Lithic::Models::Transaction::Merchant,
+        merchant: Lithic::Transaction::Merchant,
         merchant_amount: Integer | nil,
         merchant_authorization_amount: Integer | nil,
         merchant_currency: String,
-        network: Lithic::Models::Transaction::Network | nil,
+        network: Lithic::Transaction::Network | nil,
         network_risk_score: Integer | nil,
-        pos: Lithic::Models::Transaction::Pos,
-        result: Lithic::Models::Transaction::Result,
+        pos: Lithic::Transaction::Pos,
+        result: Lithic::Transaction::Result,
         settled_amount: Integer,
-        status: Lithic::Models::Transaction::Status,
-        token_info: Lithic::Models::Transaction::TokenInfo | nil,
+        status: Lithic::Transaction::Status,
+        token_info: Lithic::Transaction::TokenInfo | nil,
         updated: Time,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Transaction::Event]) | nil
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Transaction::Event]) | nil
       }
     end
   end

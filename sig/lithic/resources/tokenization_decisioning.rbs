@@ -3,7 +3,7 @@ module Lithic
     class TokenizationDecisioning
       def retrieve_secret: (
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::TokenizationSecret
+      ) -> Lithic::TokenizationSecret
 
       def rotate_secret: (
         ?request_options: Lithic::request_opts

@@ -12,8 +12,6 @@ module Lithic
       def pan=: (String _) -> String
 
       def initialize: (?cvv: String, ?pan: String) -> void
-
-      def to_hash: -> Lithic::Models::card
     end
   end
 end

@@ -50,8 +50,8 @@ module Lithic
       #   Filters for transactions using transaction result field. Can filter by
       #   `APPROVED`, and `DECLINED`.
       #
-      #   @return [Symbol, Lithic::Models::TransactionListParams::Result, nil]
-      optional :result, enum: -> { Lithic::Models::TransactionListParams::Result }
+      #   @return [Symbol, Lithic::TransactionListParams::Result, nil]
+      optional :result, enum: -> { Lithic::TransactionListParams::Result }
 
       # @!attribute starting_after
       #   A cursor representing an item's token after which a page of results should
@@ -63,35 +63,30 @@ module Lithic
       # @!attribute status
       #   Filters for transactions using transaction status field.
       #
-      #   @return [Symbol, Lithic::Models::TransactionListParams::Status, nil]
-      optional :status, enum: -> { Lithic::Models::TransactionListParams::Status }
+      #   @return [Symbol, Lithic::TransactionListParams::Status, nil]
+      optional :status, enum: -> { Lithic::TransactionListParams::Status }
 
       # @!method initialize(account_token: nil, begin_: nil, card_token: nil, end_: nil, ending_before: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::TransactionListParams} for more details.
       #
-      #   @param account_token [String] Filters for transactions associated with a specific account. ...
+      #   @param account_token [String] Filters for transactions associated with a specific account.
       #
       #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-      #   ...
       #
       #   @param card_token [String] Filters for transactions associated with a specific card.
       #
       #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-      #   ...
       #
       #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-      #   ...
       #
       #   @param page_size [Integer] Page size (for pagination).
       #
-      #   @param result [Symbol, Lithic::Models::TransactionListParams::Result] Filters for transactions using transaction result field. Can filter by `APPROVED
-      #   ...
+      #   @param result [Symbol, Lithic::TransactionListParams::Result] Filters for transactions using transaction result field. Can filter by `APPROVED
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-      #   ...
       #
-      #   @param status [Symbol, Lithic::Models::TransactionListParams::Status] Filters for transactions using transaction status field.
+      #   @param status [Symbol, Lithic::TransactionListParams::Status] Filters for transactions using transaction status field.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

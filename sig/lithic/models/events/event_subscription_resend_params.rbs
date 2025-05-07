@@ -14,8 +14,6 @@ module Lithic
           event_token: String,
           ?request_options: Lithic::request_opts
         ) -> void
-
-        def to_hash: -> Lithic::Models::Events::event_subscription_resend_params
       end
     end
   end

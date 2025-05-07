@@ -4,6 +4,8 @@ module Lithic
   module Models
     module Cards
       class AggregateBalanceListResponse < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Funds available for spend in the currency's smallest unit (e.g., cents for USD)
         sig { returns(Integer) }
         attr_accessor :available_amount
@@ -56,8 +58,7 @@ module Lithic
             pending_amount: Integer,
             total_amount: Integer,
             updated: Time
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Funds available for spend in the currency's smallest unit (e.g., cents for USD)
@@ -82,24 +83,26 @@ module Lithic
           total_amount:,
           # Date and time for when the balance was last updated.
           updated:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                available_amount: Integer,
-                created: Time,
-                currency: String,
-                last_card_token: String,
-                last_transaction_event_token: String,
-                last_transaction_token: String,
-                pending_amount: Integer,
-                total_amount: Integer,
-                updated: Time
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              available_amount: Integer,
+              created: Time,
+              currency: String,
+              last_card_token: String,
+              last_transaction_event_token: String,
+              last_transaction_token: String,
+              pending_amount: Integer,
+              total_amount: Integer,
+              updated: Time
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

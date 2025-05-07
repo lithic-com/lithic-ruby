@@ -10,8 +10,8 @@ module Lithic
       # @!attribute address
       #   Address
       #
-      #   @return [Lithic::Models::ExternalBankAccountAddress, nil]
-      optional :address, -> { Lithic::Models::ExternalBankAccountAddress }
+      #   @return [Lithic::ExternalBankAccountAddress, nil]
+      optional :address, -> { Lithic::ExternalBankAccountAddress }
 
       # @!attribute company_id
       #   Optional field that helps identify bank accounts in receipts
@@ -47,13 +47,13 @@ module Lithic
       # @!attribute owner_type
       #   Owner Type
       #
-      #   @return [Symbol, Lithic::Models::OwnerType, nil]
-      optional :owner_type, enum: -> { Lithic::Models::OwnerType }
+      #   @return [Symbol, Lithic::OwnerType, nil]
+      optional :owner_type, enum: -> { Lithic::OwnerType }
 
       # @!attribute type
       #
-      #   @return [Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type, nil]
-      optional :type, enum: -> { Lithic::Models::ExternalBankAccountUpdateParams::Type }
+      #   @return [Symbol, Lithic::ExternalBankAccountUpdateParams::Type, nil]
+      optional :type, enum: -> { Lithic::ExternalBankAccountUpdateParams::Type }
 
       # @!attribute user_defined_id
       #   User Defined ID
@@ -65,7 +65,7 @@ module Lithic
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::ExternalBankAccountUpdateParams} for more details.
       #
-      #   @param address [Lithic::Models::ExternalBankAccountAddress] Address
+      #   @param address [Lithic::ExternalBankAccountAddress] Address
       #
       #   @param company_id [String] Optional field that helps identify bank accounts in receipts
       #
@@ -76,11 +76,10 @@ module Lithic
       #   @param name [String] The nickname for this External Bank Account
       #
       #   @param owner [String] Legal Name of the business or individual who owns the external account. This wil
-      #   ...
       #
-      #   @param owner_type [Symbol, Lithic::Models::OwnerType] Owner Type
+      #   @param owner_type [Symbol, Lithic::OwnerType] Owner Type
       #
-      #   @param type [Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type]
+      #   @param type [Symbol, Lithic::ExternalBankAccountUpdateParams::Type]
       #
       #   @param user_defined_id [String] User Defined ID
       #

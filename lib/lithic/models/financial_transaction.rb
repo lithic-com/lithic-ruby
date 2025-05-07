@@ -18,8 +18,8 @@ module Lithic
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #     program.
       #
-      #   @return [Symbol, Lithic::Models::FinancialTransaction::Category]
-      required :category, enum: -> { Lithic::Models::FinancialTransaction::Category }
+      #   @return [Symbol, Lithic::FinancialTransaction::Category]
+      required :category, enum: -> { Lithic::FinancialTransaction::Category }
 
       # @!attribute created
       #   Date and time when the financial transaction first occurred. UTC time zone.
@@ -44,8 +44,8 @@ module Lithic
       # @!attribute events
       #   A list of all financial events that have modified this financial transaction.
       #
-      #   @return [Array<Lithic::Models::FinancialTransaction::Event>]
-      required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::FinancialTransaction::Event] }
+      #   @return [Array<Lithic::FinancialTransaction::Event>]
+      required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::FinancialTransaction::Event] }
 
       # @!attribute pending_amount
       #   Pending amount of the transaction in the currency's smallest unit (e.g., cents),
@@ -59,8 +59,8 @@ module Lithic
       #   APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
       #
-      #   @return [Symbol, Lithic::Models::FinancialTransaction::Result]
-      required :result, enum: -> { Lithic::Models::FinancialTransaction::Result }
+      #   @return [Symbol, Lithic::FinancialTransaction::Result]
+      required :result, enum: -> { Lithic::FinancialTransaction::Result }
 
       # @!attribute settled_amount
       #   Amount of the transaction that has been settled in the currency's smallest unit
@@ -80,8 +80,8 @@ module Lithic
       #   - `SETTLED` - The transaction is completed.
       #   - `VOIDED` - The transaction was voided. Card transaction only.
       #
-      #   @return [Symbol, Lithic::Models::FinancialTransaction::Status]
-      required :status, enum: -> { Lithic::Models::FinancialTransaction::Status }
+      #   @return [Symbol, Lithic::FinancialTransaction::Status]
+      required :status, enum: -> { Lithic::FinancialTransaction::Status }
 
       # @!attribute updated
       #   Date and time when the financial transaction was last updated. UTC time zone.
@@ -91,32 +91,27 @@ module Lithic
 
       # @!method initialize(token:, category:, created:, currency:, descriptor:, events:, pending_amount:, result:, settled_amount:, status:, updated:)
       #   Some parameter documentations has been truncated, see
-      #   {Lithic::Models::FinancialTransaction} for more details.
+      #   {Lithic::FinancialTransaction} for more details.
       #
       #   @param token [String] Globally unique identifier.
       #
-      #   @param category [Symbol, Lithic::Models::FinancialTransaction::Category] Status types: ...
+      #   @param category [Symbol, Lithic::FinancialTransaction::Category] Status types:
       #
       #   @param created [Time] Date and time when the financial transaction first occurred. UTC time zone.
       #
       #   @param currency [String] 3-character alphabetic ISO 4217 code for the settling currency of the transactio
-      #   ...
       #
       #   @param descriptor [String] A string that provides a description of the financial transaction; may be useful
-      #   ...
       #
-      #   @param events [Array<Lithic::Models::FinancialTransaction::Event>] A list of all financial events that have modified this financial transaction.
+      #   @param events [Array<Lithic::FinancialTransaction::Event>] A list of all financial events that have modified this financial transaction.
       #
       #   @param pending_amount [Integer] Pending amount of the transaction in the currency's smallest unit (e.g., cents),
-      #   ...
       #
-      #   @param result [Symbol, Lithic::Models::FinancialTransaction::Result] APPROVED transactions were successful while DECLINED transactions were declined
-      #   ...
+      #   @param result [Symbol, Lithic::FinancialTransaction::Result] APPROVED transactions were successful while DECLINED transactions were declined
       #
       #   @param settled_amount [Integer] Amount of the transaction that has been settled in the currency's smallest unit
-      #   ...
       #
-      #   @param status [Symbol, Lithic::Models::FinancialTransaction::Status] Status types: ...
+      #   @param status [Symbol, Lithic::FinancialTransaction::Status] Status types:
       #
       #   @param updated [Time] Date and time when the financial transaction was last updated. UTC time zone.
 
@@ -128,7 +123,7 @@ module Lithic
       # - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #   program.
       #
-      # @see Lithic::Models::FinancialTransaction#category
+      # @see Lithic::FinancialTransaction#category
       module Category
         extend Lithic::Internal::Type::Enum
 
@@ -165,34 +160,32 @@ module Lithic
         #   APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         #
-        #   @return [Symbol, Lithic::Models::FinancialTransaction::Event::Result, nil]
-        optional :result, enum: -> { Lithic::Models::FinancialTransaction::Event::Result }
+        #   @return [Symbol, Lithic::FinancialTransaction::Event::Result, nil]
+        optional :result, enum: -> { Lithic::FinancialTransaction::Event::Result }
 
         # @!attribute type
         #
-        #   @return [Symbol, Lithic::Models::FinancialTransaction::Event::Type, nil]
-        optional :type, enum: -> { Lithic::Models::FinancialTransaction::Event::Type }
+        #   @return [Symbol, Lithic::FinancialTransaction::Event::Type, nil]
+        optional :type, enum: -> { Lithic::FinancialTransaction::Event::Type }
 
         # @!method initialize(token: nil, amount: nil, created: nil, result: nil, type: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::FinancialTransaction::Event} for more details.
+        #   {Lithic::FinancialTransaction::Event} for more details.
         #
         #   @param token [String] Globally unique identifier.
         #
         #   @param amount [Integer] Amount of the financial event that has been settled in the currency's smallest u
-        #   ...
         #
         #   @param created [Time] Date and time when the financial event occurred. UTC time zone.
         #
-        #   @param result [Symbol, Lithic::Models::FinancialTransaction::Event::Result] APPROVED financial events were successful while DECLINED financial events were d
-        #   ...
+        #   @param result [Symbol, Lithic::FinancialTransaction::Event::Result] APPROVED financial events were successful while DECLINED financial events were d
         #
-        #   @param type [Symbol, Lithic::Models::FinancialTransaction::Event::Type]
+        #   @param type [Symbol, Lithic::FinancialTransaction::Event::Type]
 
         # APPROVED financial events were successful while DECLINED financial events were
         # declined by user, Lithic, or the network.
         #
-        # @see Lithic::Models::FinancialTransaction::Event#result
+        # @see Lithic::FinancialTransaction::Event#result
         module Result
           extend Lithic::Internal::Type::Enum
 
@@ -203,7 +196,7 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # @see Lithic::Models::FinancialTransaction::Event#type
+        # @see Lithic::FinancialTransaction::Event#type
         module Type
           extend Lithic::Internal::Type::Enum
 
@@ -283,7 +276,7 @@ module Lithic
       # APPROVED transactions were successful while DECLINED transactions were declined
       # by user, Lithic, or the network.
       #
-      # @see Lithic::Models::FinancialTransaction#result
+      # @see Lithic::FinancialTransaction#result
       module Result
         extend Lithic::Internal::Type::Enum
 
@@ -304,7 +297,7 @@ module Lithic
       # - `SETTLED` - The transaction is completed.
       # - `VOIDED` - The transaction was voided. Card transaction only.
       #
-      # @see Lithic::Models::FinancialTransaction#status
+      # @see Lithic::FinancialTransaction#status
       module Status
         extend Lithic::Internal::Type::Enum
 

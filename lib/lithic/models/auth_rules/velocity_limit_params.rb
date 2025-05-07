@@ -6,20 +6,20 @@ module Lithic
       class VelocityLimitParams < Lithic::Internal::Type::BaseModel
         # @!attribute filters
         #
-        #   @return [Lithic::Models::AuthRules::VelocityLimitParams::Filters]
-        required :filters, -> { Lithic::Models::AuthRules::VelocityLimitParams::Filters }
+        #   @return [Lithic::AuthRules::VelocityLimitParams::Filters]
+        required :filters, -> { Lithic::AuthRules::VelocityLimitParams::Filters }
 
         # @!attribute period
         #   The size of the trailing window to calculate Spend Velocity over in seconds. The
         #   minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
         #
-        #   @return [Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow]
-        required :period, union: -> { Lithic::Models::AuthRules::VelocityLimitParams::Period }
+        #   @return [Integer, Symbol, Lithic::AuthRules::VelocityLimitParamsPeriodWindow]
+        required :period, union: -> { Lithic::AuthRules::VelocityLimitParams::Period }
 
         # @!attribute scope
         #
-        #   @return [Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope]
-        required :scope, enum: -> { Lithic::Models::AuthRules::VelocityLimitParams::Scope }
+        #   @return [Symbol, Lithic::AuthRules::VelocityLimitParams::Scope]
+        required :scope, enum: -> { Lithic::AuthRules::VelocityLimitParams::Scope }
 
         # @!attribute limit_amount
         #   The maximum amount of spend velocity allowed in the period in minor units (the
@@ -41,22 +41,19 @@ module Lithic
 
         # @!method initialize(filters:, period:, scope:, limit_amount: nil, limit_count: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AuthRules::VelocityLimitParams} for more details.
+        #   {Lithic::AuthRules::VelocityLimitParams} for more details.
         #
-        #   @param filters [Lithic::Models::AuthRules::VelocityLimitParams::Filters]
+        #   @param filters [Lithic::AuthRules::VelocityLimitParams::Filters]
         #
-        #   @param period [Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow] The size of the trailing window to calculate Spend Velocity over in seconds. The
-        #   ...
+        #   @param period [Integer, Symbol, Lithic::AuthRules::VelocityLimitParamsPeriodWindow] The size of the trailing window to calculate Spend Velocity over in seconds. The
         #
-        #   @param scope [Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope]
+        #   @param scope [Symbol, Lithic::AuthRules::VelocityLimitParams::Scope]
         #
         #   @param limit_amount [Integer, nil] The maximum amount of spend velocity allowed in the period in minor units (the s
-        #   ...
         #
         #   @param limit_count [Integer, nil] The number of spend velocity impacting transactions may not exceed this limit in
-        #   ...
 
-        # @see Lithic::Models::AuthRules::VelocityLimitParams#filters
+        # @see Lithic::AuthRules::VelocityLimitParams#filters
         class Filters < Lithic::Internal::Type::BaseModel
           # @!attribute exclude_countries
           #   ISO-3166-1 alpha-3 Country Codes to exclude from the velocity calculation.
@@ -90,25 +87,21 @@ module Lithic
 
           # @!method initialize(exclude_countries: nil, exclude_mccs: nil, include_countries: nil, include_mccs: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::AuthRules::VelocityLimitParams::Filters} for more details.
+          #   {Lithic::AuthRules::VelocityLimitParams::Filters} for more details.
           #
           #   @param exclude_countries [Array<String>, nil] ISO-3166-1 alpha-3 Country Codes to exclude from the velocity calculation. Trans
-          #   ...
           #
           #   @param exclude_mccs [Array<String>, nil] Merchant Category Codes to exclude from the velocity calculation. Transactions m
-          #   ...
           #
           #   @param include_countries [Array<String>, nil] ISO-3166-1 alpha-3 Country Codes to include in the velocity calculation. Transac
-          #   ...
           #
           #   @param include_mccs [Array<String>, nil] Merchant Category Codes to include in the velocity calculation. Transactions not
-          #   ...
         end
 
         # The size of the trailing window to calculate Spend Velocity over in seconds. The
         # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
         #
-        # @see Lithic::Models::AuthRules::VelocityLimitParams#period
+        # @see Lithic::AuthRules::VelocityLimitParams#period
         module Period
           extend Lithic::Internal::Type::Union
 
@@ -120,13 +113,13 @@ module Lithic
           # * `DAY`: Velocity over the current day since midnight Eastern Time.
           # * `WEEK`: Velocity over the current week since 00:00 / 12 AM on Monday in Eastern Time.
           # * `MONTH`: Velocity over the current month since 00:00 / 12 AM on the first of the month in Eastern Time.
-          variant enum: -> { Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow }
+          variant enum: -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow }
 
           # @!method self.variants
-          #   @return [Array(Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow)]
+          #   @return [Array(Integer, Symbol, Lithic::AuthRules::VelocityLimitParamsPeriodWindow)]
         end
 
-        # @see Lithic::Models::AuthRules::VelocityLimitParams#scope
+        # @see Lithic::AuthRules::VelocityLimitParams#scope
         module Scope
           extend Lithic::Internal::Type::Enum
 

@@ -17,8 +17,6 @@ module Lithic
         amount: Integer,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::transaction_simulate_authorization_advice_params
     end
   end
 end

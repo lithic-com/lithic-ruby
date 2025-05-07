@@ -67,7 +67,7 @@ module Lithic
 
     def api_status: (
       ?request_options: Lithic::request_opts
-    ) -> Lithic::Models::APIStatus
+    ) -> Lithic::APIStatus
 
     private def auth_headers: -> ::Hash[String, String]
 

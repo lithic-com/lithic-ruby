@@ -57,8 +57,6 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> Lithic::Models::dispute_list_params
-
       type status =
         :ARBITRATION
         | :CASE_CLOSED

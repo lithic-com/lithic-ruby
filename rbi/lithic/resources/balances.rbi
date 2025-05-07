@@ -9,10 +9,10 @@ module Lithic
           account_token: String,
           balance_date: Time,
           business_account_token: String,
-          financial_account_type: Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Internal::SinglePage[Lithic::Models::Balance])
+          financial_account_type:
+            Lithic::BalanceListParams::FinancialAccountType::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Internal::SinglePage[Lithic::Balance])
       end
       def list(
         # List balances for all financial accounts of a given account_token.
@@ -25,10 +25,13 @@ module Lithic
         # List balances for a given Financial Account type.
         financial_account_type: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

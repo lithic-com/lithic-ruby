@@ -14,8 +14,8 @@ module Lithic
 
       # @!attribute type
       #
-      #   @return [Symbol, Lithic::Models::FinancialAccountCreateParams::Type]
-      required :type, enum: -> { Lithic::Models::FinancialAccountCreateParams::Type }
+      #   @return [Symbol, Lithic::FinancialAccountCreateParams::Type]
+      required :type, enum: -> { Lithic::FinancialAccountCreateParams::Type }
 
       # @!attribute account_token
       #
@@ -34,7 +34,7 @@ module Lithic
 
       # @!method initialize(nickname:, type:, account_token: nil, is_for_benefit_of: nil, idempotency_key: nil, request_options: {})
       #   @param nickname [String]
-      #   @param type [Symbol, Lithic::Models::FinancialAccountCreateParams::Type]
+      #   @param type [Symbol, Lithic::FinancialAccountCreateParams::Type]
       #   @param account_token [String]
       #   @param is_for_benefit_of [Boolean]
       #   @param idempotency_key [String]

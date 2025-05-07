@@ -2,7 +2,7 @@ module Lithic
   module Models
     type external_bank_account_update_params =
       {
-        address: Lithic::Models::ExternalBankAccountAddress,
+        address: Lithic::ExternalBankAccountAddress,
         company_id: String,
         dob: Date,
         doing_business_as: String,
@@ -18,11 +18,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      attr_reader address: Lithic::Models::ExternalBankAccountAddress?
+      attr_reader address: Lithic::ExternalBankAccountAddress?
 
       def address=: (
-        Lithic::Models::ExternalBankAccountAddress
-      ) -> Lithic::Models::ExternalBankAccountAddress
+        Lithic::ExternalBankAccountAddress
+      ) -> Lithic::ExternalBankAccountAddress
 
       attr_reader company_id: String?
 
@@ -61,7 +61,7 @@ module Lithic
       def user_defined_id=: (String) -> String
 
       def initialize: (
-        ?address: Lithic::Models::ExternalBankAccountAddress,
+        ?address: Lithic::ExternalBankAccountAddress,
         ?company_id: String,
         ?dob: Date,
         ?doing_business_as: String,
@@ -72,8 +72,6 @@ module Lithic
         ?user_defined_id: String,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::external_bank_account_update_params
 
       type type_ = :CHECKING | :SAVINGS
 

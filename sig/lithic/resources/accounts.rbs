@@ -4,7 +4,7 @@ module Lithic
       def retrieve: (
         String account_token,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::Account
+      ) -> Lithic::Account
 
       def update: (
         String account_token,
@@ -12,9 +12,9 @@ module Lithic
         ?lifetime_spend_limit: Integer,
         ?monthly_spend_limit: Integer,
         ?state: Lithic::Models::AccountUpdateParams::state,
-        ?verification_address: Lithic::Models::AccountUpdateParams::VerificationAddress,
+        ?verification_address: Lithic::AccountUpdateParams::VerificationAddress,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::Account
+      ) -> Lithic::Account
 
       def list: (
         ?begin_: Time,
@@ -23,12 +23,12 @@ module Lithic
         ?page_size: Integer,
         ?starting_after: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Internal::CursorPage[Lithic::Models::Account]
+      ) -> Lithic::Internal::CursorPage[Lithic::Account]
 
       def retrieve_spend_limits: (
         String account_token,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::AccountSpendLimits
+      ) -> Lithic::AccountSpendLimits
 
       def initialize: (client: Lithic::Client) -> void
     end

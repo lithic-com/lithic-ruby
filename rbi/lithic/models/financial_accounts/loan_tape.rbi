@@ -4,18 +4,20 @@ module Lithic
   module Models
     module FinancialAccounts
       class LoanTape < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Globally unique identifier for a loan tape
         sig { returns(String) }
         attr_accessor :token
 
-        sig { returns(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding) }
+        sig { returns(Lithic::FinancialAccounts::LoanTape::AccountStanding) }
         attr_reader :account_standing
 
         sig do
           params(
-            account_standing: T.any(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding, Lithic::Internal::AnyHash)
-          )
-            .void
+            account_standing:
+              Lithic::FinancialAccounts::LoanTape::AccountStanding::OrHash
+          ).void
         end
         attr_writer :account_standing
 
@@ -23,12 +25,13 @@ module Lithic
         sig { returns(Integer) }
         attr_accessor :available_credit
 
-        sig { returns(Lithic::Models::FinancialAccounts::LoanTape::Balances) }
+        sig { returns(Lithic::FinancialAccounts::LoanTape::Balances) }
         attr_reader :balances
 
         sig do
-          params(balances: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances, Lithic::Internal::AnyHash))
-            .void
+          params(
+            balances: Lithic::FinancialAccounts::LoanTape::Balances::OrHash
+          ).void
         end
         attr_writer :balances
 
@@ -50,14 +53,13 @@ module Lithic
         sig { returns(Date) }
         attr_accessor :date
 
-        sig { returns(Lithic::Models::FinancialAccounts::LoanTape::DayTotals) }
+        sig { returns(Lithic::FinancialAccounts::LoanTape::DayTotals) }
         attr_reader :day_totals
 
         sig do
           params(
-            day_totals: T.any(Lithic::Models::FinancialAccounts::LoanTape::DayTotals, Lithic::Internal::AnyHash)
-          )
-            .void
+            day_totals: Lithic::FinancialAccounts::LoanTape::DayTotals::OrHash
+          ).void
         end
         attr_writer :day_totals
 
@@ -75,58 +77,68 @@ module Lithic
         sig { returns(String) }
         attr_accessor :financial_account_token
 
-        sig { returns(T.nilable(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails)) }
+        sig do
+          returns(
+            T.nilable(Lithic::FinancialAccounts::LoanTape::InterestDetails)
+          )
+        end
         attr_reader :interest_details
 
         sig do
           params(
-            interest_details: T.nilable(T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails, Lithic::Internal::AnyHash))
-          )
-            .void
+            interest_details:
+              T.nilable(
+                Lithic::FinancialAccounts::LoanTape::InterestDetails::OrHash
+              )
+          ).void
         end
         attr_writer :interest_details
 
-        sig { returns(Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance) }
+        sig do
+          returns(Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance)
+        end
         attr_reader :minimum_payment_balance
 
         sig do
           params(
-            minimum_payment_balance: T.any(Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance, Lithic::Internal::AnyHash)
-          )
-            .void
+            minimum_payment_balance:
+              Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance::OrHash
+          ).void
         end
         attr_writer :minimum_payment_balance
 
-        sig { returns(Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation) }
+        sig { returns(Lithic::FinancialAccounts::LoanTape::PaymentAllocation) }
         attr_reader :payment_allocation
 
         sig do
           params(
-            payment_allocation: T.any(Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation, Lithic::Internal::AnyHash)
-          )
-            .void
+            payment_allocation:
+              Lithic::FinancialAccounts::LoanTape::PaymentAllocation::OrHash
+          ).void
         end
         attr_writer :payment_allocation
 
-        sig { returns(Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals) }
+        sig { returns(Lithic::FinancialAccounts::LoanTape::PeriodTotals) }
         attr_reader :period_totals
 
         sig do
           params(
-            period_totals: T.any(Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals, Lithic::Internal::AnyHash)
-          )
-            .void
+            period_totals:
+              Lithic::FinancialAccounts::LoanTape::PeriodTotals::OrHash
+          ).void
         end
         attr_writer :period_totals
 
-        sig { returns(Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance) }
+        sig do
+          returns(Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance)
+        end
         attr_reader :previous_statement_balance
 
         sig do
           params(
-            previous_statement_balance: T.any(Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance, Lithic::Internal::AnyHash)
-          )
-            .void
+            previous_statement_balance:
+              Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance::OrHash
+          ).void
         end
         attr_writer :previous_statement_balance
 
@@ -142,14 +154,13 @@ module Lithic
         sig { returns(Integer) }
         attr_accessor :version
 
-        sig { returns(Lithic::Models::FinancialAccounts::LoanTape::YtdTotals) }
+        sig { returns(Lithic::FinancialAccounts::LoanTape::YtdTotals) }
         attr_reader :ytd_totals
 
         sig do
           params(
-            ytd_totals: T.any(Lithic::Models::FinancialAccounts::LoanTape::YtdTotals, Lithic::Internal::AnyHash)
-          )
-            .void
+            ytd_totals: Lithic::FinancialAccounts::LoanTape::YtdTotals::OrHash
+          ).void
         end
         attr_writer :ytd_totals
 
@@ -163,29 +174,36 @@ module Lithic
         sig do
           params(
             token: String,
-            account_standing: T.any(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding, Lithic::Internal::AnyHash),
+            account_standing:
+              Lithic::FinancialAccounts::LoanTape::AccountStanding::OrHash,
             available_credit: Integer,
-            balances: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances, Lithic::Internal::AnyHash),
+            balances: Lithic::FinancialAccounts::LoanTape::Balances::OrHash,
             created: Time,
             credit_limit: Integer,
             credit_product_token: String,
             date: Date,
-            day_totals: T.any(Lithic::Models::FinancialAccounts::LoanTape::DayTotals, Lithic::Internal::AnyHash),
+            day_totals: Lithic::FinancialAccounts::LoanTape::DayTotals::OrHash,
             ending_balance: Integer,
             excess_credits: Integer,
             financial_account_token: String,
-            interest_details: T.nilable(T.any(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails, Lithic::Internal::AnyHash)),
-            minimum_payment_balance: T.any(Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance, Lithic::Internal::AnyHash),
-            payment_allocation: T.any(Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation, Lithic::Internal::AnyHash),
-            period_totals: T.any(Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals, Lithic::Internal::AnyHash),
-            previous_statement_balance: T.any(Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance, Lithic::Internal::AnyHash),
+            interest_details:
+              T.nilable(
+                Lithic::FinancialAccounts::LoanTape::InterestDetails::OrHash
+              ),
+            minimum_payment_balance:
+              Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance::OrHash,
+            payment_allocation:
+              Lithic::FinancialAccounts::LoanTape::PaymentAllocation::OrHash,
+            period_totals:
+              Lithic::FinancialAccounts::LoanTape::PeriodTotals::OrHash,
+            previous_statement_balance:
+              Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance::OrHash,
             starting_balance: Integer,
             updated: Time,
             version: Integer,
-            ytd_totals: T.any(Lithic::Models::FinancialAccounts::LoanTape::YtdTotals, Lithic::Internal::AnyHash),
+            ytd_totals: Lithic::FinancialAccounts::LoanTape::YtdTotals::OrHash,
             tier: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Globally unique identifier for a loan tape
@@ -227,39 +245,49 @@ module Lithic
           ytd_totals:,
           # Interest tier to which this account belongs to
           tier: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                token: String,
-                account_standing: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding,
-                available_credit: Integer,
-                balances: Lithic::Models::FinancialAccounts::LoanTape::Balances,
-                created: Time,
-                credit_limit: Integer,
-                credit_product_token: String,
-                date: Date,
-                day_totals: Lithic::Models::FinancialAccounts::LoanTape::DayTotals,
-                ending_balance: Integer,
-                excess_credits: Integer,
-                financial_account_token: String,
-                interest_details: T.nilable(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails),
-                minimum_payment_balance: Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance,
-                payment_allocation: Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation,
-                period_totals: Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals,
-                previous_statement_balance: Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance,
-                starting_balance: Integer,
-                updated: Time,
-                version: Integer,
-                ytd_totals: Lithic::Models::FinancialAccounts::LoanTape::YtdTotals,
-                tier: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              token: String,
+              account_standing:
+                Lithic::FinancialAccounts::LoanTape::AccountStanding,
+              available_credit: Integer,
+              balances: Lithic::FinancialAccounts::LoanTape::Balances,
+              created: Time,
+              credit_limit: Integer,
+              credit_product_token: String,
+              date: Date,
+              day_totals: Lithic::FinancialAccounts::LoanTape::DayTotals,
+              ending_balance: Integer,
+              excess_credits: Integer,
+              financial_account_token: String,
+              interest_details:
+                T.nilable(Lithic::FinancialAccounts::LoanTape::InterestDetails),
+              minimum_payment_balance:
+                Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance,
+              payment_allocation:
+                Lithic::FinancialAccounts::LoanTape::PaymentAllocation,
+              period_totals: Lithic::FinancialAccounts::LoanTape::PeriodTotals,
+              previous_statement_balance:
+                Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance,
+              starting_balance: Integer,
+              updated: Time,
+              version: Integer,
+              ytd_totals: Lithic::FinancialAccounts::LoanTape::YtdTotals,
+              tier: String
+            }
+          )
+        end
+        def to_hash
+        end
 
         class AccountStanding < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Number of consecutive full payments made
           sig { returns(Integer) }
           attr_accessor :consecutive_full_payments_made
@@ -277,17 +305,18 @@ module Lithic
           attr_accessor :days_past_due
 
           # Information about the financial account state
-          sig { returns(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState) }
+          sig do
+            returns(
+              Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState
+            )
+          end
           attr_reader :financial_account_state
 
           sig do
             params(
-              financial_account_state: T.any(
-                Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState,
-                Lithic::Internal::AnyHash
-              )
-            )
-              .void
+              financial_account_state:
+                Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::OrHash
+            ).void
           end
           attr_writer :financial_account_state
 
@@ -299,7 +328,11 @@ module Lithic
           sig { returns(Integer) }
           attr_accessor :period_number
 
-          sig { returns(Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol) }
+          sig do
+            returns(
+              Lithic::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol
+            )
+          end
           attr_accessor :period_state
 
           sig do
@@ -308,15 +341,13 @@ module Lithic
               consecutive_minimum_payments_made: Integer,
               consecutive_minimum_payments_missed: Integer,
               days_past_due: Integer,
-              financial_account_state: T.any(
-                Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState,
-                Lithic::Internal::AnyHash
-              ),
+              financial_account_state:
+                Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::OrHash,
               has_grace: T::Boolean,
               period_number: Integer,
-              period_state: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::OrSymbol
-            )
-              .returns(T.attached_class)
+              period_state:
+                Lithic::FinancialAccounts::LoanTape::AccountStanding::PeriodState::OrSymbol
+            ).returns(T.attached_class)
           end
           def self.new(
             # Number of consecutive full payments made
@@ -334,29 +365,36 @@ module Lithic
             # Current overall period number
             period_number:,
             period_state:
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  consecutive_full_payments_made: Integer,
-                  consecutive_minimum_payments_made: Integer,
-                  consecutive_minimum_payments_missed: Integer,
-                  days_past_due: Integer,
-                  financial_account_state: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState,
-                  has_grace: T::Boolean,
-                  period_number: Integer,
-                  period_state: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                consecutive_full_payments_made: Integer,
+                consecutive_minimum_payments_made: Integer,
+                consecutive_minimum_payments_missed: Integer,
+                days_past_due: Integer,
+                financial_account_state:
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState,
+                has_grace: T::Boolean,
+                period_number: Integer,
+                period_state:
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol
+              }
+            )
+          end
+          def to_hash
+          end
 
           class FinancialAccountState < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
             # Status of the financial account
             sig do
               returns(
-                Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
+                Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
               )
             end
             attr_accessor :status
@@ -365,7 +403,7 @@ module Lithic
             sig do
               returns(
                 T.nilable(
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                 )
               )
             end
@@ -374,68 +412,80 @@ module Lithic
             # Information about the financial account state
             sig do
               params(
-                status: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::OrSymbol,
-                substatus: T.nilable(
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::OrSymbol
-                )
-              )
-                .returns(T.attached_class)
+                status:
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::OrSymbol,
+                substatus:
+                  T.nilable(
+                    Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::OrSymbol
+                  )
+              ).returns(T.attached_class)
             end
             def self.new(
               # Status of the financial account
               status:,
               # Substatus for the financial account
               substatus: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    status: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol,
-                    substatus: T.nilable(
-                      Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
-                    )
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  status:
+                    Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol,
+                  substatus:
+                    T.nilable(
+                      Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
+                    )
+                }
+              )
+            end
+            def to_hash
+            end
 
             # Status of the financial account
             module Status
               extend Lithic::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               OPEN =
                 T.let(
                   :OPEN,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
                 )
               CLOSED =
                 T.let(
                   :CLOSED,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
                 )
               SUSPENDED =
                 T.let(
                   :SUSPENDED,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
                 )
               PENDING =
                 T.let(
                   :PENDING,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol]
-                  )
+                override.returns(
+                  T::Array[
+                    Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
 
             # Substatus for the financial account
@@ -444,45 +494,48 @@ module Lithic
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus)
+                  T.all(
+                    Symbol,
+                    Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus
+                  )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               CHARGED_OFF_DELINQUENT =
                 T.let(
                   :CHARGED_OFF_DELINQUENT,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                 )
               CHARGED_OFF_FRAUD =
                 T.let(
                   :CHARGED_OFF_FRAUD,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                 )
               END_USER_REQUEST =
                 T.let(
                   :END_USER_REQUEST,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                 )
               BANK_REQUEST =
                 T.let(
                   :BANK_REQUEST,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                 )
               DELINQUENT =
                 T.let(
                   :DELINQUENT,
-                  Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[
-                      Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
-                    ]
-                  )
+                override.returns(
+                  T::Array[
+                    Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Substatus::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
 
@@ -490,82 +543,116 @@ module Lithic
             extend Lithic::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::PeriodState
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             STANDARD =
-              T.let(:STANDARD, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol)
+              T.let(
+                :STANDARD,
+                Lithic::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol
+              )
             PROMO =
-              T.let(:PROMO, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol)
+              T.let(
+                :PROMO,
+                Lithic::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol
+              )
             PENALTY =
-              T.let(:PENALTY, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol)
+              T.let(
+                :PENALTY,
+                Lithic::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::PeriodState::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Balances < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Amount due for the prior billing cycle. Any amounts not fully paid off on this
           # due date will be considered past due the next day
-          sig { returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::Due) }
+          sig { returns(Lithic::FinancialAccounts::LoanTape::Balances::Due) }
           attr_reader :due
 
           sig do
-            params(due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::Due, Lithic::Internal::AnyHash))
-              .void
+            params(
+              due: Lithic::FinancialAccounts::LoanTape::Balances::Due::OrHash
+            ).void
           end
           attr_writer :due
 
           # Amount due for the current billing cycle. Any amounts not paid off by early
           # payments or credits will be considered due at the end of the current billing
           # period
-          sig { returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue) }
+          sig do
+            returns(
+              Lithic::FinancialAccounts::LoanTape::Balances::NextStatementDue
+            )
+          end
           attr_reader :next_statement_due
 
           sig do
             params(
-              next_statement_due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue, Lithic::Internal::AnyHash)
-            )
-              .void
+              next_statement_due:
+                Lithic::FinancialAccounts::LoanTape::Balances::NextStatementDue::OrHash
+            ).void
           end
           attr_writer :next_statement_due
 
           # Amount not paid off on previous due dates
-          sig { returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue) }
+          sig do
+            returns(Lithic::FinancialAccounts::LoanTape::Balances::PastDue)
+          end
           attr_reader :past_due
 
           sig do
             params(
-              past_due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue, Lithic::Internal::AnyHash)
-            )
-              .void
+              past_due:
+                Lithic::FinancialAccounts::LoanTape::Balances::PastDue::OrHash
+            ).void
           end
           attr_writer :past_due
 
           # Amount due for the past billing cycles.
-          sig { returns(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue) }
+          sig do
+            returns(
+              Lithic::FinancialAccounts::LoanTape::Balances::PastStatementsDue
+            )
+          end
           attr_reader :past_statements_due
 
           sig do
             params(
-              past_statements_due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue, Lithic::Internal::AnyHash)
-            )
-              .void
+              past_statements_due:
+                Lithic::FinancialAccounts::LoanTape::Balances::PastStatementsDue::OrHash
+            ).void
           end
           attr_writer :past_statements_due
 
           sig do
             params(
-              due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::Due, Lithic::Internal::AnyHash),
-              next_statement_due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue, Lithic::Internal::AnyHash),
-              past_due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue, Lithic::Internal::AnyHash),
-              past_statements_due: T.any(Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue, Lithic::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              due: Lithic::FinancialAccounts::LoanTape::Balances::Due::OrHash,
+              next_statement_due:
+                Lithic::FinancialAccounts::LoanTape::Balances::NextStatementDue::OrHash,
+              past_due:
+                Lithic::FinancialAccounts::LoanTape::Balances::PastDue::OrHash,
+              past_statements_due:
+                Lithic::FinancialAccounts::LoanTape::Balances::PastStatementsDue::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # Amount due for the prior billing cycle. Any amounts not fully paid off on this
@@ -579,21 +666,29 @@ module Lithic
             past_due:,
             # Amount due for the past billing cycles.
             past_statements_due:
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  due: Lithic::Models::FinancialAccounts::LoanTape::Balances::Due,
-                  next_statement_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::NextStatementDue,
-                  past_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::PastDue,
-                  past_statements_due: Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                due: Lithic::FinancialAccounts::LoanTape::Balances::Due,
+                next_statement_due:
+                  Lithic::FinancialAccounts::LoanTape::Balances::NextStatementDue,
+                past_due:
+                  Lithic::FinancialAccounts::LoanTape::Balances::PastDue,
+                past_statements_due:
+                  Lithic::FinancialAccounts::LoanTape::Balances::PastStatementsDue
+              }
+            )
+          end
+          def to_hash
+          end
 
           class Due < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
             sig { returns(Integer) }
             attr_accessor :fees
 
@@ -605,14 +700,29 @@ module Lithic
 
             # Amount due for the prior billing cycle. Any amounts not fully paid off on this
             # due date will be considered past due the next day
-            sig { params(fees: Integer, interest: Integer, principal: Integer).returns(T.attached_class) }
-            def self.new(fees:, interest:, principal:); end
+            sig do
+              params(
+                fees: Integer,
+                interest: Integer,
+                principal: Integer
+              ).returns(T.attached_class)
+            end
+            def self.new(fees:, interest:, principal:)
+            end
 
-            sig { override.returns({fees: Integer, interest: Integer, principal: Integer}) }
-            def to_hash; end
+            sig do
+              override.returns(
+                { fees: Integer, interest: Integer, principal: Integer }
+              )
+            end
+            def to_hash
+            end
           end
 
           class NextStatementDue < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
             sig { returns(Integer) }
             attr_accessor :fees
 
@@ -625,14 +735,29 @@ module Lithic
             # Amount due for the current billing cycle. Any amounts not paid off by early
             # payments or credits will be considered due at the end of the current billing
             # period
-            sig { params(fees: Integer, interest: Integer, principal: Integer).returns(T.attached_class) }
-            def self.new(fees:, interest:, principal:); end
+            sig do
+              params(
+                fees: Integer,
+                interest: Integer,
+                principal: Integer
+              ).returns(T.attached_class)
+            end
+            def self.new(fees:, interest:, principal:)
+            end
 
-            sig { override.returns({fees: Integer, interest: Integer, principal: Integer}) }
-            def to_hash; end
+            sig do
+              override.returns(
+                { fees: Integer, interest: Integer, principal: Integer }
+              )
+            end
+            def to_hash
+            end
           end
 
           class PastDue < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
             sig { returns(Integer) }
             attr_accessor :fees
 
@@ -643,14 +768,29 @@ module Lithic
             attr_accessor :principal
 
             # Amount not paid off on previous due dates
-            sig { params(fees: Integer, interest: Integer, principal: Integer).returns(T.attached_class) }
-            def self.new(fees:, interest:, principal:); end
+            sig do
+              params(
+                fees: Integer,
+                interest: Integer,
+                principal: Integer
+              ).returns(T.attached_class)
+            end
+            def self.new(fees:, interest:, principal:)
+            end
 
-            sig { override.returns({fees: Integer, interest: Integer, principal: Integer}) }
-            def to_hash; end
+            sig do
+              override.returns(
+                { fees: Integer, interest: Integer, principal: Integer }
+              )
+            end
+            def to_hash
+            end
           end
 
           class PastStatementsDue < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
             sig { returns(Integer) }
             attr_accessor :fees
 
@@ -661,15 +801,30 @@ module Lithic
             attr_accessor :principal
 
             # Amount due for the past billing cycles.
-            sig { params(fees: Integer, interest: Integer, principal: Integer).returns(T.attached_class) }
-            def self.new(fees:, interest:, principal:); end
+            sig do
+              params(
+                fees: Integer,
+                interest: Integer,
+                principal: Integer
+              ).returns(T.attached_class)
+            end
+            def self.new(fees:, interest:, principal:)
+            end
 
-            sig { override.returns({fees: Integer, interest: Integer, principal: Integer}) }
-            def to_hash; end
+            sig do
+              override.returns(
+                { fees: Integer, interest: Integer, principal: Integer }
+              )
+            end
+            def to_hash
+            end
           end
         end
 
         class DayTotals < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Opening balance transferred from previous account in cents
           sig { returns(Integer) }
           attr_accessor :balance_transfers
@@ -708,8 +863,7 @@ module Lithic
               interest: Integer,
               payments: Integer,
               purchases: Integer
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # Opening balance transferred from previous account in cents
@@ -727,74 +881,82 @@ module Lithic
             payments:,
             # Net card transaction volume less any cash advances in cents
             purchases:
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  balance_transfers: Integer,
-                  cash_advances: Integer,
-                  credits: Integer,
-                  fees: Integer,
-                  interest: Integer,
-                  payments: Integer,
-                  purchases: Integer
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                balance_transfers: Integer,
+                cash_advances: Integer,
+                credits: Integer,
+                fees: Integer,
+                interest: Integer,
+                payments: Integer,
+                purchases: Integer
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class InterestDetails < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           sig { returns(T.nilable(Integer)) }
           attr_accessor :actual_interest_charged
 
-          sig { returns(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts) }
+          sig do
+            returns(
+              Lithic::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts
+            )
+          end
           attr_reader :daily_balance_amounts
 
           sig do
             params(
-              daily_balance_amounts: T.any(
-                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
-                Lithic::Internal::AnyHash
-              )
-            )
-              .void
+              daily_balance_amounts:
+                Lithic::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts::OrHash
+            ).void
           end
           attr_writer :daily_balance_amounts
 
-          sig { returns(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr) }
+          sig do
+            returns(
+              Lithic::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr
+            )
+          end
           attr_reader :effective_apr
 
           sig do
             params(
-              effective_apr: T.any(
-                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr,
-                Lithic::Internal::AnyHash
-              )
-            )
-              .void
+              effective_apr:
+                Lithic::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr::OrHash
+            ).void
           end
           attr_writer :effective_apr
 
           sig do
             returns(
-              Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
+              Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
             )
           end
           attr_accessor :interest_calculation_method
 
-          sig { returns(Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod) }
+          sig do
+            returns(
+              Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod
+            )
+          end
           attr_reader :interest_for_period
 
           sig do
             params(
-              interest_for_period: T.any(
-                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
-                Lithic::Internal::AnyHash
-              )
-            )
-              .void
+              interest_for_period:
+                Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod::OrHash
+            ).void
           end
           attr_writer :interest_for_period
 
@@ -807,23 +969,17 @@ module Lithic
           sig do
             params(
               actual_interest_charged: T.nilable(Integer),
-              daily_balance_amounts: T.any(
-                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
-                Lithic::Internal::AnyHash
-              ),
-              effective_apr: T.any(
-                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr,
-                Lithic::Internal::AnyHash
-              ),
-              interest_calculation_method: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::OrSymbol,
-              interest_for_period: T.any(
-                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
-                Lithic::Internal::AnyHash
-              ),
+              daily_balance_amounts:
+                Lithic::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts::OrHash,
+              effective_apr:
+                Lithic::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr::OrHash,
+              interest_calculation_method:
+                Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::OrSymbol,
+              interest_for_period:
+                Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod::OrHash,
               prime_rate: T.nilable(String),
               minimum_interest_charged: T.nilable(Integer)
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             actual_interest_charged:,
@@ -833,24 +989,33 @@ module Lithic
             interest_for_period:,
             prime_rate:,
             minimum_interest_charged: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  actual_interest_charged: T.nilable(Integer),
-                  daily_balance_amounts: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
-                  effective_apr: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr,
-                  interest_calculation_method: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol,
-                  interest_for_period: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
-                  prime_rate: T.nilable(String),
-                  minimum_interest_charged: T.nilable(Integer)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                actual_interest_charged: T.nilable(Integer),
+                daily_balance_amounts:
+                  Lithic::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
+                effective_apr:
+                  Lithic::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr,
+                interest_calculation_method:
+                  Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol,
+                interest_for_period:
+                  Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
+                prime_rate: T.nilable(String),
+                minimum_interest_charged: T.nilable(Integer)
+              }
+            )
+          end
+          def to_hash
+          end
 
           class DailyBalanceAmounts < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
             sig { returns(String) }
             attr_accessor :balance_transfers
 
@@ -867,13 +1032,26 @@ module Lithic
                 purchases: String
               ).returns(T.attached_class)
             end
-            def self.new(balance_transfers:, cash_advances:, purchases:); end
+            def self.new(balance_transfers:, cash_advances:, purchases:)
+            end
 
-            sig { override.returns({balance_transfers: String, cash_advances: String, purchases: String}) }
-            def to_hash; end
+            sig do
+              override.returns(
+                {
+                  balance_transfers: String,
+                  cash_advances: String,
+                  purchases: String
+                }
+              )
+            end
+            def to_hash
+            end
           end
 
           class EffectiveApr < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
             sig { returns(String) }
             attr_accessor :balance_transfers
 
@@ -890,40 +1068,60 @@ module Lithic
                 purchases: String
               ).returns(T.attached_class)
             end
-            def self.new(balance_transfers:, cash_advances:, purchases:); end
+            def self.new(balance_transfers:, cash_advances:, purchases:)
+            end
 
-            sig { override.returns({balance_transfers: String, cash_advances: String, purchases: String}) }
-            def to_hash; end
+            sig do
+              override.returns(
+                {
+                  balance_transfers: String,
+                  cash_advances: String,
+                  purchases: String
+                }
+              )
+            end
+            def to_hash
+            end
           end
 
           module InterestCalculationMethod
             extend Lithic::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAILY =
               T.let(
                 :DAILY,
-                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
+                Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
               )
             AVERAGE_DAILY =
               T.let(
                 :AVERAGE_DAILY,
-                Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
+                Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           class InterestForPeriod < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
             sig { returns(String) }
             attr_accessor :balance_transfers
 
@@ -940,28 +1138,50 @@ module Lithic
                 purchases: String
               ).returns(T.attached_class)
             end
-            def self.new(balance_transfers:, cash_advances:, purchases:); end
+            def self.new(balance_transfers:, cash_advances:, purchases:)
+            end
 
-            sig { override.returns({balance_transfers: String, cash_advances: String, purchases: String}) }
-            def to_hash; end
+            sig do
+              override.returns(
+                {
+                  balance_transfers: String,
+                  cash_advances: String,
+                  purchases: String
+                }
+              )
+            end
+            def to_hash
+            end
           end
         end
 
         class MinimumPaymentBalance < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :amount
 
           sig { returns(Integer) }
           attr_accessor :remaining
 
-          sig { params(amount: Integer, remaining: Integer).returns(T.attached_class) }
-          def self.new(amount:, remaining:); end
+          sig do
+            params(amount: Integer, remaining: Integer).returns(
+              T.attached_class
+            )
+          end
+          def self.new(amount:, remaining:)
+          end
 
-          sig { override.returns({amount: Integer, remaining: Integer}) }
-          def to_hash; end
+          sig { override.returns({ amount: Integer, remaining: Integer }) }
+          def to_hash
+          end
         end
 
         class PaymentAllocation < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :fees
 
@@ -971,14 +1191,29 @@ module Lithic
           sig { returns(Integer) }
           attr_accessor :principal
 
-          sig { params(fees: Integer, interest: Integer, principal: Integer).returns(T.attached_class) }
-          def self.new(fees:, interest:, principal:); end
+          sig do
+            params(
+              fees: Integer,
+              interest: Integer,
+              principal: Integer
+            ).returns(T.attached_class)
+          end
+          def self.new(fees:, interest:, principal:)
+          end
 
-          sig { override.returns({fees: Integer, interest: Integer, principal: Integer}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              { fees: Integer, interest: Integer, principal: Integer }
+            )
+          end
+          def to_hash
+          end
         end
 
         class PeriodTotals < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Opening balance transferred from previous account in cents
           sig { returns(Integer) }
           attr_accessor :balance_transfers
@@ -1017,8 +1252,7 @@ module Lithic
               interest: Integer,
               payments: Integer,
               purchases: Integer
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # Opening balance transferred from previous account in cents
@@ -1036,39 +1270,53 @@ module Lithic
             payments:,
             # Net card transaction volume less any cash advances in cents
             purchases:
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  balance_transfers: Integer,
-                  cash_advances: Integer,
-                  credits: Integer,
-                  fees: Integer,
-                  interest: Integer,
-                  payments: Integer,
-                  purchases: Integer
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                balance_transfers: Integer,
+                cash_advances: Integer,
+                credits: Integer,
+                fees: Integer,
+                interest: Integer,
+                payments: Integer,
+                purchases: Integer
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class PreviousStatementBalance < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :amount
 
           sig { returns(Integer) }
           attr_accessor :remaining
 
-          sig { params(amount: Integer, remaining: Integer).returns(T.attached_class) }
-          def self.new(amount:, remaining:); end
+          sig do
+            params(amount: Integer, remaining: Integer).returns(
+              T.attached_class
+            )
+          end
+          def self.new(amount:, remaining:)
+          end
 
-          sig { override.returns({amount: Integer, remaining: Integer}) }
-          def to_hash; end
+          sig { override.returns({ amount: Integer, remaining: Integer }) }
+          def to_hash
+          end
         end
 
         class YtdTotals < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Opening balance transferred from previous account in cents
           sig { returns(Integer) }
           attr_accessor :balance_transfers
@@ -1107,8 +1355,7 @@ module Lithic
               interest: Integer,
               payments: Integer,
               purchases: Integer
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # Opening balance transferred from previous account in cents
@@ -1126,22 +1373,24 @@ module Lithic
             payments:,
             # Net card transaction volume less any cash advances in cents
             purchases:
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  balance_transfers: Integer,
-                  cash_advances: Integer,
-                  credits: Integer,
-                  fees: Integer,
-                  interest: Integer,
-                  payments: Integer,
-                  purchases: Integer
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                balance_transfers: Integer,
+                cash_advances: Integer,
+                credits: Integer,
+                fees: Integer,
+                interest: Integer,
+                payments: Integer,
+                purchases: Integer
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

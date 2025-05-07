@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Date string in RFC 3339 format. Only entries created after the specified time
       # will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
@@ -45,10 +47,14 @@ module Lithic
       sig { params(starting_after: String).void }
       attr_writer :starting_after
 
-      sig { returns(T.nilable(Lithic::Models::EventListAttemptsParams::Status::OrSymbol)) }
+      sig do
+        returns(T.nilable(Lithic::EventListAttemptsParams::Status::OrSymbol))
+      end
       attr_reader :status
 
-      sig { params(status: Lithic::Models::EventListAttemptsParams::Status::OrSymbol).void }
+      sig do
+        params(status: Lithic::EventListAttemptsParams::Status::OrSymbol).void
+      end
       attr_writer :status
 
       sig do
@@ -58,10 +64,9 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          status: Lithic::Models::EventListAttemptsParams::Status::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          status: Lithic::EventListAttemptsParams::Status::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -80,36 +85,50 @@ module Lithic
         starting_after: nil,
         status: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              begin_: Time,
-              end_: Time,
-              ending_before: String,
-              page_size: Integer,
-              starting_after: String,
-              status: Lithic::Models::EventListAttemptsParams::Status::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            begin_: Time,
+            end_: Time,
+            ending_before: String,
+            page_size: Integer,
+            starting_after: String,
+            status: Lithic::EventListAttemptsParams::Status::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       module Status
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::EventListAttemptsParams::Status) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::EventListAttemptsParams::Status)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        FAILED = T.let(:FAILED, Lithic::Models::EventListAttemptsParams::Status::TaggedSymbol)
-        PENDING = T.let(:PENDING, Lithic::Models::EventListAttemptsParams::Status::TaggedSymbol)
-        SENDING = T.let(:SENDING, Lithic::Models::EventListAttemptsParams::Status::TaggedSymbol)
-        SUCCESS = T.let(:SUCCESS, Lithic::Models::EventListAttemptsParams::Status::TaggedSymbol)
+        FAILED =
+          T.let(:FAILED, Lithic::EventListAttemptsParams::Status::TaggedSymbol)
+        PENDING =
+          T.let(:PENDING, Lithic::EventListAttemptsParams::Status::TaggedSymbol)
+        SENDING =
+          T.let(:SENDING, Lithic::EventListAttemptsParams::Status::TaggedSymbol)
+        SUCCESS =
+          T.let(:SUCCESS, Lithic::EventListAttemptsParams::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::EventListAttemptsParams::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::EventListAttemptsParams::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

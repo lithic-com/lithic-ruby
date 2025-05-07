@@ -5,14 +5,15 @@ module Lithic
     module OwnerType
       extend Lithic::Internal::Type::Enum
 
-      TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::OwnerType) }
+      TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::OwnerType) }
       OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-      INDIVIDUAL = T.let(:INDIVIDUAL, Lithic::Models::OwnerType::TaggedSymbol)
-      BUSINESS = T.let(:BUSINESS, Lithic::Models::OwnerType::TaggedSymbol)
+      INDIVIDUAL = T.let(:INDIVIDUAL, Lithic::OwnerType::TaggedSymbol)
+      BUSINESS = T.let(:BUSINESS, Lithic::OwnerType::TaggedSymbol)
 
-      sig { override.returns(T::Array[Lithic::Models::OwnerType::TaggedSymbol]) }
-      def self.values; end
+      sig { override.returns(T::Array[Lithic::OwnerType::TaggedSymbol]) }
+      def self.values
+      end
     end
   end
 end

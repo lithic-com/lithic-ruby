@@ -5,21 +5,25 @@ module Lithic
     module Reports
       module Settlement
         class NetworkTotalRetrieveResponse < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Globally unique identifier.
           sig { returns(String) }
           attr_accessor :token
 
-          sig { returns(Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts) }
+          sig do
+            returns(
+              Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts
+            )
+          end
           attr_reader :amounts
 
           sig do
             params(
-              amounts: T.any(
-                Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts,
-                Lithic::Internal::AnyHash
-              )
-            )
-              .void
+              amounts:
+                Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts::OrHash
+            ).void
           end
           attr_writer :amounts
 
@@ -39,7 +43,11 @@ module Lithic
 
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
           # INTERLINK.
-          sig { returns(Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol) }
+          sig do
+            returns(
+              Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol
+            )
+          end
           attr_accessor :network
 
           # Date that the network total record applies to. YYYY-MM-DD format.
@@ -70,21 +78,19 @@ module Lithic
           sig do
             params(
               token: String,
-              amounts: T.any(
-                Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts,
-                Lithic::Internal::AnyHash
-              ),
+              amounts:
+                Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts::OrHash,
               created: Time,
               currency: String,
               institution_id: String,
-              network: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::OrSymbol,
+              network:
+                Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::OrSymbol,
               report_date: Date,
               settlement_institution_id: String,
               settlement_service: String,
               updated: Time,
               cycle: Integer
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # Globally unique identifier.
@@ -113,28 +119,35 @@ module Lithic
             updated:,
             # The clearing cycle that the network total record applies to. Mastercard only.
             cycle: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  token: String,
-                  amounts: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts,
-                  created: Time,
-                  currency: String,
-                  institution_id: String,
-                  network: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol,
-                  report_date: Date,
-                  settlement_institution_id: String,
-                  settlement_service: String,
-                  updated: Time,
-                  cycle: Integer
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                token: String,
+                amounts:
+                  Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts,
+                created: Time,
+                currency: String,
+                institution_id: String,
+                network:
+                  Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol,
+                report_date: Date,
+                settlement_institution_id: String,
+                settlement_service: String,
+                updated: Time,
+                cycle: Integer
+              }
+            )
+          end
+          def to_hash
+          end
 
           class Amounts < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
             # Total settlement amount excluding interchange, in currency's smallest unit.
             sig { returns(Integer) }
             attr_accessor :gross_settlement
@@ -161,8 +174,7 @@ module Lithic
                 interchange_fees: Integer,
                 net_settlement: Integer,
                 visa_charges: Integer
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               # Total settlement amount excluding interchange, in currency's smallest unit.
@@ -174,19 +186,21 @@ module Lithic
               net_settlement:,
               # Charges specific to Visa/Interlink, in currency's smallest unit.
               visa_charges: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    gross_settlement: Integer,
-                    interchange_fees: Integer,
-                    net_settlement: Integer,
-                    visa_charges: Integer
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  gross_settlement: Integer,
+                  interchange_fees: Integer,
+                  net_settlement: Integer,
+                  visa_charges: Integer
+                }
+              )
+            end
+            def to_hash
+            end
           end
 
           # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
@@ -195,18 +209,29 @@ module Lithic
             extend Lithic::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             VISA =
-              T.let(:VISA, Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol)
+              T.let(
+                :VISA,
+                Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol
+              )
             MASTERCARD =
               T.let(
                 :MASTERCARD,
                 Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol
               )
             MAESTRO =
-              T.let(:MAESTRO, Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol)
+              T.let(
+                :MAESTRO,
+                Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol
+              )
             INTERLINK =
               T.let(
                 :INTERLINK,
@@ -214,12 +239,14 @@ module Lithic
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

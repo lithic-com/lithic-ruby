@@ -69,8 +69,6 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> Lithic::Models::transaction_simulate_authorization_params
-
       type status =
         :AUTHORIZATION
         | :BALANCE_INQUIRY

@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class Account < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Globally unique identifier for the account. This is the same as the
       # account_token returned by the enroll endpoint. If using this parameter, do not
       # include pagination.
@@ -18,10 +20,10 @@ module Lithic
       # declined once their transaction volume has surpassed the value in the applicable
       # time limit (rolling). A lifetime limit of 0 indicates that the lifetime limit
       # feature is disabled.
-      sig { returns(Lithic::Models::Account::SpendLimit) }
+      sig { returns(Lithic::Account::SpendLimit) }
       attr_reader :spend_limit
 
-      sig { params(spend_limit: T.any(Lithic::Models::Account::SpendLimit, Lithic::Internal::AnyHash)).void }
+      sig { params(spend_limit: Lithic::Account::SpendLimit::OrHash).void }
       attr_writer :spend_limit
 
       # Account state:
@@ -35,13 +37,15 @@ module Lithic
       #   risk/compliance reasons. Please contact
       #   [support@lithic.com](mailto:support@lithic.com) if you believe this was in
       #   error.
-      sig { returns(Lithic::Models::Account::State::TaggedSymbol) }
+      sig { returns(Lithic::Account::State::TaggedSymbol) }
       attr_accessor :state
 
-      sig { returns(T.nilable(Lithic::Models::Account::AccountHolder)) }
+      sig { returns(T.nilable(Lithic::Account::AccountHolder)) }
       attr_reader :account_holder
 
-      sig { params(account_holder: T.any(Lithic::Models::Account::AccountHolder, Lithic::Internal::AnyHash)).void }
+      sig do
+        params(account_holder: Lithic::Account::AccountHolder::OrHash).void
+      end
       attr_writer :account_holder
 
       # List of identifiers for the Auth Rule(s) that are applied on the account. This
@@ -61,14 +65,13 @@ module Lithic
       sig { params(cardholder_currency: String).void }
       attr_writer :cardholder_currency
 
-      sig { returns(T.nilable(Lithic::Models::Account::VerificationAddress)) }
+      sig { returns(T.nilable(Lithic::Account::VerificationAddress)) }
       attr_reader :verification_address
 
       sig do
         params(
-          verification_address: T.any(Lithic::Models::Account::VerificationAddress, Lithic::Internal::AnyHash)
-        )
-          .void
+          verification_address: Lithic::Account::VerificationAddress::OrHash
+        ).void
       end
       attr_writer :verification_address
 
@@ -76,14 +79,13 @@ module Lithic
         params(
           token: String,
           created: T.nilable(Time),
-          spend_limit: T.any(Lithic::Models::Account::SpendLimit, Lithic::Internal::AnyHash),
-          state: Lithic::Models::Account::State::OrSymbol,
-          account_holder: T.any(Lithic::Models::Account::AccountHolder, Lithic::Internal::AnyHash),
+          spend_limit: Lithic::Account::SpendLimit::OrHash,
+          state: Lithic::Account::State::OrSymbol,
+          account_holder: Lithic::Account::AccountHolder::OrHash,
           auth_rule_tokens: T::Array[String],
           cardholder_currency: String,
-          verification_address: T.any(Lithic::Models::Account::VerificationAddress, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          verification_address: Lithic::Account::VerificationAddress::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Globally unique identifier for the account. This is the same as the
@@ -119,25 +121,29 @@ module Lithic
         # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
         cardholder_currency: nil,
         verification_address: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              token: String,
-              created: T.nilable(Time),
-              spend_limit: Lithic::Models::Account::SpendLimit,
-              state: Lithic::Models::Account::State::TaggedSymbol,
-              account_holder: Lithic::Models::Account::AccountHolder,
-              auth_rule_tokens: T::Array[String],
-              cardholder_currency: String,
-              verification_address: Lithic::Models::Account::VerificationAddress
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            token: String,
+            created: T.nilable(Time),
+            spend_limit: Lithic::Account::SpendLimit,
+            state: Lithic::Account::State::TaggedSymbol,
+            account_holder: Lithic::Account::AccountHolder,
+            auth_rule_tokens: T::Array[String],
+            cardholder_currency: String,
+            verification_address: Lithic::Account::VerificationAddress
+          }
+        )
+      end
+      def to_hash
+      end
 
       class SpendLimit < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Daily spend limit (in cents).
         sig { returns(Integer) }
         attr_accessor :daily
@@ -155,7 +161,11 @@ module Lithic
         # declined once their transaction volume has surpassed the value in the applicable
         # time limit (rolling). A lifetime limit of 0 indicates that the lifetime limit
         # feature is disabled.
-        sig { params(daily: Integer, lifetime: Integer, monthly: Integer).returns(T.attached_class) }
+        sig do
+          params(daily: Integer, lifetime: Integer, monthly: Integer).returns(
+            T.attached_class
+          )
+        end
         def self.new(
           # Daily spend limit (in cents).
           daily:,
@@ -163,9 +173,16 @@ module Lithic
           lifetime:,
           # Monthly spend limit (in cents).
           monthly:
-        ); end
-        sig { override.returns({daily: Integer, lifetime: Integer, monthly: Integer}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { daily: Integer, lifetime: Integer, monthly: Integer }
+          )
+        end
+        def to_hash
+        end
       end
 
       # Account state:
@@ -182,18 +199,21 @@ module Lithic
       module State
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Account::State) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Account::State) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ACTIVE = T.let(:ACTIVE, Lithic::Models::Account::State::TaggedSymbol)
-        PAUSED = T.let(:PAUSED, Lithic::Models::Account::State::TaggedSymbol)
-        CLOSED = T.let(:CLOSED, Lithic::Models::Account::State::TaggedSymbol)
+        ACTIVE = T.let(:ACTIVE, Lithic::Account::State::TaggedSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::Account::State::TaggedSymbol)
+        CLOSED = T.let(:CLOSED, Lithic::Account::State::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::Account::State::TaggedSymbol]) }
-        def self.values; end
+        sig { override.returns(T::Array[Lithic::Account::State::TaggedSymbol]) }
+        def self.values
+        end
       end
 
       class AccountHolder < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Globally unique identifier for the account holder.
         sig { returns(String) }
         attr_accessor :token
@@ -213,8 +233,12 @@ module Lithic
         attr_accessor :phone_number
 
         sig do
-          params(token: String, business_account_token: String, email: String, phone_number: String)
-            .returns(T.attached_class)
+          params(
+            token: String,
+            business_account_token: String,
+            email: String,
+            phone_number: String
+          ).returns(T.attached_class)
         end
         def self.new(
           # Globally unique identifier for the account holder.
@@ -227,7 +251,9 @@ module Lithic
           email:,
           # Phone number of the individual.
           phone_number:
-        ); end
+        )
+        end
+
         sig do
           override.returns(
             {
@@ -238,10 +264,13 @@ module Lithic
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class VerificationAddress < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Valid deliverable address (no PO boxes).
         sig { returns(String) }
         attr_accessor :address1
@@ -280,8 +309,7 @@ module Lithic
             postal_code: String,
             state: String,
             address2: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Valid deliverable address (no PO boxes).
@@ -299,21 +327,23 @@ module Lithic
           state:,
           # Unit or apartment number (if applicable).
           address2: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                address1: String,
-                city: String,
-                country: String,
-                postal_code: String,
-                state: String,
-                address2: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              address1: String,
+              city: String,
+              country: String,
+              postal_code: String,
+              state: String,
+              address2: String
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

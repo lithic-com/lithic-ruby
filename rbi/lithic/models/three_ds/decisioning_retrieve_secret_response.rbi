@@ -4,6 +4,8 @@ module Lithic
   module Models
     module ThreeDS
       class DecisioningRetrieveSecretResponse < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # The 3DS Decisioning HMAC secret
         sig { returns(T.nilable(String)) }
         attr_reader :secret
@@ -15,9 +17,12 @@ module Lithic
         def self.new(
           # The 3DS Decisioning HMAC secret
           secret: nil
-        ); end
-        sig { override.returns({secret: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig { override.returns({ secret: String }) }
+        def to_hash
+        end
       end
     end
   end

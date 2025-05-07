@@ -12,7 +12,10 @@ module Lithic
 
     ENVIRONMENTS =
       T.let(
-        {production: "https://api.lithic.com", sandbox: "https://sandbox.lithic.com"},
+        {
+          production: "https://api.lithic.com",
+          sandbox: "https://sandbox.lithic.com"
+        },
         T::Hash[Symbol, String]
       )
 
@@ -95,12 +98,18 @@ module Lithic
     attr_reader :management_operations
 
     # Status of api
-    sig { params(request_options: Lithic::RequestOpts).returns(Lithic::Models::APIStatus) }
-    def api_status(request_options: {}); end
+    sig do
+      params(request_options: Lithic::RequestOptions::OrHash).returns(
+        Lithic::APIStatus
+      )
+    end
+    def api_status(request_options: {})
+    end
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }
-    private def auth_headers; end
+    private def auth_headers
+    end
 
     # Creates and returns a new client for interacting with the API.
     sig do
@@ -112,8 +121,7 @@ module Lithic
         timeout: Float,
         initial_retry_delay: Float,
         max_retry_delay: Float
-      )
-        .returns(T.attached_class)
+      ).returns(T.attached_class)
     end
     def self.new(
       # Defaults to `ENV["LITHIC_API_KEY"]`
@@ -133,6 +141,7 @@ module Lithic
       timeout: Lithic::Client::DEFAULT_TIMEOUT_IN_SECONDS,
       initial_retry_delay: Lithic::Client::DEFAULT_INITIAL_RETRY_DELAY,
       max_retry_delay: Lithic::Client::DEFAULT_MAX_RETRY_DELAY
-    ); end
+    )
+    end
   end
 end

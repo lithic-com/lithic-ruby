@@ -2,8 +2,8 @@ module Lithic
   module Models
     type card_convert_physical_params =
       {
-        shipping_address: Lithic::Models::ShippingAddress,
-        carrier: Lithic::Models::Carrier,
+        shipping_address: Lithic::ShippingAddress,
+        carrier: Lithic::Carrier,
         product_id: String,
         shipping_method: Lithic::Models::CardConvertPhysicalParams::shipping_method
       }
@@ -13,11 +13,11 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      attr_accessor shipping_address: Lithic::Models::ShippingAddress
+      attr_accessor shipping_address: Lithic::ShippingAddress
 
-      attr_reader carrier: Lithic::Models::Carrier?
+      attr_reader carrier: Lithic::Carrier?
 
-      def carrier=: (Lithic::Models::Carrier) -> Lithic::Models::Carrier
+      def carrier=: (Lithic::Carrier) -> Lithic::Carrier
 
       attr_reader product_id: String?
 
@@ -30,14 +30,12 @@ module Lithic
       ) -> Lithic::Models::CardConvertPhysicalParams::shipping_method
 
       def initialize: (
-        shipping_address: Lithic::Models::ShippingAddress,
-        ?carrier: Lithic::Models::Carrier,
+        shipping_address: Lithic::ShippingAddress,
+        ?carrier: Lithic::Carrier,
         ?product_id: String,
         ?shipping_method: Lithic::Models::CardConvertPhysicalParams::shipping_method,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::card_convert_physical_params
 
       type shipping_method =
         :"2_DAY"

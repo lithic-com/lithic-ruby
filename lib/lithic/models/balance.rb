@@ -31,8 +31,8 @@ module Lithic
       # @!attribute financial_account_type
       #   Type of financial account.
       #
-      #   @return [Symbol, Lithic::Models::Balance::FinancialAccountType]
-      required :financial_account_type, enum: -> { Lithic::Models::Balance::FinancialAccountType }
+      #   @return [Symbol, Lithic::Balance::FinancialAccountType]
+      required :financial_account_type, enum: -> { Lithic::Balance::FinancialAccountType }
 
       # @!attribute last_transaction_event_token
       #   Globally unique identifier for the last financial transaction event that
@@ -69,8 +69,8 @@ module Lithic
       required :updated, Time
 
       # @!method initialize(available_amount:, created:, currency:, financial_account_token:, financial_account_type:, last_transaction_event_token:, last_transaction_token:, pending_amount:, total_amount:, updated:)
-      #   Some parameter documentations has been truncated, see {Lithic::Models::Balance}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see {Lithic::Balance} for more
+      #   details.
       #
       #   Balance
       #
@@ -82,25 +82,21 @@ module Lithic
       #
       #   @param financial_account_token [String] Globally unique identifier for the financial account that holds this balance.
       #
-      #   @param financial_account_type [Symbol, Lithic::Models::Balance::FinancialAccountType] Type of financial account.
+      #   @param financial_account_type [Symbol, Lithic::Balance::FinancialAccountType] Type of financial account.
       #
       #   @param last_transaction_event_token [String] Globally unique identifier for the last financial transaction event that impacte
-      #   ...
       #
       #   @param last_transaction_token [String] Globally unique identifier for the last financial transaction that impacted this
-      #   ...
       #
       #   @param pending_amount [Integer] Funds not available for spend due to card authorizations or pending ACH release.
-      #   ...
       #
       #   @param total_amount [Integer] The sum of available and pending balance in the currency's smallest unit (e.g.,
-      #   ...
       #
       #   @param updated [Time] Date and time for when the balance was last updated.
 
       # Type of financial account.
       #
-      # @see Lithic::Models::Balance#financial_account_type
+      # @see Lithic::Balance#financial_account_type
       module FinancialAccountType
         extend Lithic::Internal::Type::Enum
 

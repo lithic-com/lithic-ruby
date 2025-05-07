@@ -18,7 +18,7 @@ module Lithic
         #
         # @see Lithic::Models::Cards::AggregateBalanceListParams
         def list(params = {})
-          parsed, options = Lithic::Models::Cards::AggregateBalanceListParams.dump_request(params)
+          parsed, options = Lithic::Cards::AggregateBalanceListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "v1/cards/aggregate_balances",

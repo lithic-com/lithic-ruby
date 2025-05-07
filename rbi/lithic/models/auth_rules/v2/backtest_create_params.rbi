@@ -8,6 +8,9 @@ module Lithic
           extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
 
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # The end time of the backtest.
           sig { returns(T.nilable(Time)) }
           attr_reader :end_
@@ -26,12 +29,8 @@ module Lithic
             params(
               end_: Time,
               start: Time,
-              request_options: T.any(
-                Lithic::RequestOptions,
-                Lithic::Internal::AnyHash
-              )
-            )
-              .returns(T.attached_class)
+              request_options: Lithic::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # The end time of the backtest.
@@ -39,9 +38,20 @@ module Lithic
             # The start time of the backtest.
             start: nil,
             request_options: {}
-          ); end
-          sig { override.returns({end_: Time, start: Time, request_options: Lithic::RequestOptions}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                end_: Time,
+                start: Time,
+                request_options: Lithic::RequestOptions
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

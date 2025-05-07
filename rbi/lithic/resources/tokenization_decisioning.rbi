@@ -9,21 +9,29 @@ module Lithic
       # to verify requests originate from Lithic. See
       # [this page](https://docs.lithic.com/docs/events-api#verifying-webhooks) for more
       # detail about verifying Tokenization Decisioning requests.
-      sig { params(request_options: Lithic::RequestOpts).returns(Lithic::Models::TokenizationSecret) }
-      def retrieve_secret(request_options: {}); end
+      sig do
+        params(request_options: Lithic::RequestOptions::OrHash).returns(
+          Lithic::TokenizationSecret
+        )
+      end
+      def retrieve_secret(request_options: {})
+      end
 
       # Generate a new Tokenization Decisioning secret key. The old Tokenization
       # Decisioning secret key will be deactivated 24 hours after a successful request
       # to this endpoint.
       sig do
-        params(request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::TokenizationDecisioningRotateSecretResponse)
+        params(request_options: Lithic::RequestOptions::OrHash).returns(
+          Lithic::Models::TokenizationDecisioningRotateSecretResponse
+        )
       end
-      def rotate_secret(request_options: {}); end
+      def rotate_secret(request_options: {})
+      end
 
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

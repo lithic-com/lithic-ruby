@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
       # `activationData` in the response. Apple's public leaf certificate. Base64
       # encoded in PEM format with headers `(-----BEGIN CERTIFICATE-----)` and trailers
@@ -35,10 +37,16 @@ module Lithic
       attr_writer :client_wallet_account_id
 
       # Name of digital wallet provider.
-      sig { returns(T.nilable(Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol)) }
+      sig do
+        returns(T.nilable(Lithic::CardProvisionParams::DigitalWallet::OrSymbol))
+      end
       attr_reader :digital_wallet
 
-      sig { params(digital_wallet: Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol).void }
+      sig do
+        params(
+          digital_wallet: Lithic::CardProvisionParams::DigitalWallet::OrSymbol
+        ).void
+      end
       attr_writer :digital_wallet
 
       # Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
@@ -64,12 +72,11 @@ module Lithic
           certificate: String,
           client_device_id: String,
           client_wallet_account_id: String,
-          digital_wallet: Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol,
+          digital_wallet: Lithic::CardProvisionParams::DigitalWallet::OrSymbol,
           nonce: String,
           nonce_signature: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
@@ -96,36 +103,59 @@ module Lithic
         # device's wallet.
         nonce_signature: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              certificate: String,
-              client_device_id: String,
-              client_wallet_account_id: String,
-              digital_wallet: Lithic::Models::CardProvisionParams::DigitalWallet::OrSymbol,
-              nonce: String,
-              nonce_signature: String,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            certificate: String,
+            client_device_id: String,
+            client_wallet_account_id: String,
+            digital_wallet:
+              Lithic::CardProvisionParams::DigitalWallet::OrSymbol,
+            nonce: String,
+            nonce_signature: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Name of digital wallet provider.
       module DigitalWallet
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardProvisionParams::DigitalWallet) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::CardProvisionParams::DigitalWallet)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        APPLE_PAY = T.let(:APPLE_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol)
-        GOOGLE_PAY = T.let(:GOOGLE_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol)
-        SAMSUNG_PAY = T.let(:SAMSUNG_PAY, Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol)
+        APPLE_PAY =
+          T.let(
+            :APPLE_PAY,
+            Lithic::CardProvisionParams::DigitalWallet::TaggedSymbol
+          )
+        GOOGLE_PAY =
+          T.let(
+            :GOOGLE_PAY,
+            Lithic::CardProvisionParams::DigitalWallet::TaggedSymbol
+          )
+        SAMSUNG_PAY =
+          T.let(
+            :SAMSUNG_PAY,
+            Lithic::CardProvisionParams::DigitalWallet::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::CardProvisionParams::DigitalWallet::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::CardProvisionParams::DigitalWallet::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

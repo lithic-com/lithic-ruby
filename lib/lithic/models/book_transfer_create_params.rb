@@ -17,8 +17,8 @@ module Lithic
       # @!attribute category
       #   Category of the book transfer
       #
-      #   @return [Symbol, Lithic::Models::BookTransferCreateParams::Category]
-      required :category, enum: -> { Lithic::Models::BookTransferCreateParams::Category }
+      #   @return [Symbol, Lithic::BookTransferCreateParams::Category]
+      required :category, enum: -> { Lithic::BookTransferCreateParams::Category }
 
       # @!attribute from_financial_account_token
       #   Globally unique identifier for the financial account or card that will send the
@@ -43,8 +43,8 @@ module Lithic
       # @!attribute type
       #   Type of book_transfer
       #
-      #   @return [Symbol, Lithic::Models::BookTransferCreateParams::Type]
-      required :type, enum: -> { Lithic::Models::BookTransferCreateParams::Type }
+      #   @return [Symbol, Lithic::BookTransferCreateParams::Type]
+      required :type, enum: -> { Lithic::BookTransferCreateParams::Type }
 
       # @!attribute token
       #   Customer-provided token that will serve as an idempotency token. This token will
@@ -64,22 +64,18 @@ module Lithic
       #   {Lithic::Models::BookTransferCreateParams} for more details.
       #
       #   @param amount [Integer] Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
-      #   ...
       #
-      #   @param category [Symbol, Lithic::Models::BookTransferCreateParams::Category] Category of the book transfer
+      #   @param category [Symbol, Lithic::BookTransferCreateParams::Category] Category of the book transfer
       #
       #   @param from_financial_account_token [String] Globally unique identifier for the financial account or card that will send the
-      #   ...
       #
       #   @param subtype [String] The program specific subtype code for the specified category/type.
       #
       #   @param to_financial_account_token [String] Globally unique identifier for the financial account or card that will receive t
-      #   ...
       #
-      #   @param type [Symbol, Lithic::Models::BookTransferCreateParams::Type] Type of book_transfer
+      #   @param type [Symbol, Lithic::BookTransferCreateParams::Type] Type of book_transfer
       #
       #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
-      #   ...
       #
       #   @param memo [String] Optional descriptor for the transfer.
       #

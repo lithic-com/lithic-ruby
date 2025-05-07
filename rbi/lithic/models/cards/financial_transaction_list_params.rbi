@@ -7,6 +7,8 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Date string in RFC 3339 format. Only entries created after the specified time
         # will be included. UTC time zone.
         sig { returns(T.nilable(Time)) }
@@ -16,10 +18,21 @@ module Lithic
         attr_writer :begin_
 
         # Financial Transaction category to be returned.
-        sig { returns(T.nilable(Lithic::Models::Cards::FinancialTransactionListParams::Category::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Cards::FinancialTransactionListParams::Category::OrSymbol
+            )
+          )
+        end
         attr_reader :category
 
-        sig { params(category: Lithic::Models::Cards::FinancialTransactionListParams::Category::OrSymbol).void }
+        sig do
+          params(
+            category:
+              Lithic::Cards::FinancialTransactionListParams::Category::OrSymbol
+          ).void
+        end
         attr_writer :category
 
         # Date string in RFC 3339 format. Only entries created before the specified time
@@ -39,10 +52,21 @@ module Lithic
         attr_writer :ending_before
 
         # Financial Transaction result to be returned.
-        sig { returns(T.nilable(Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Cards::FinancialTransactionListParams::Result::OrSymbol
+            )
+          )
+        end
         attr_reader :result
 
-        sig { params(result: Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol).void }
+        sig do
+          params(
+            result:
+              Lithic::Cards::FinancialTransactionListParams::Result::OrSymbol
+          ).void
+        end
         attr_writer :result
 
         # A cursor representing an item's token after which a page of results should
@@ -54,24 +78,37 @@ module Lithic
         attr_writer :starting_after
 
         # Financial Transaction status to be returned.
-        sig { returns(T.nilable(Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Cards::FinancialTransactionListParams::Status::OrSymbol
+            )
+          )
+        end
         attr_reader :status
 
-        sig { params(status: Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol).void }
+        sig do
+          params(
+            status:
+              Lithic::Cards::FinancialTransactionListParams::Status::OrSymbol
+          ).void
+        end
         attr_writer :status
 
         sig do
           params(
             begin_: Time,
-            category: Lithic::Models::Cards::FinancialTransactionListParams::Category::OrSymbol,
+            category:
+              Lithic::Cards::FinancialTransactionListParams::Category::OrSymbol,
             end_: Time,
             ending_before: String,
-            result: Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol,
+            result:
+              Lithic::Cards::FinancialTransactionListParams::Result::OrSymbol,
             starting_after: String,
-            status: Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            status:
+              Lithic::Cards::FinancialTransactionListParams::Status::OrSymbol,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Date string in RFC 3339 format. Only entries created after the specified time
@@ -93,38 +130,62 @@ module Lithic
           # Financial Transaction status to be returned.
           status: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                begin_: Time,
-                category: Lithic::Models::Cards::FinancialTransactionListParams::Category::OrSymbol,
-                end_: Time,
-                ending_before: String,
-                result: Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol,
-                starting_after: String,
-                status: Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol,
-                request_options: Lithic::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              begin_: Time,
+              category:
+                Lithic::Cards::FinancialTransactionListParams::Category::OrSymbol,
+              end_: Time,
+              ending_before: String,
+              result:
+                Lithic::Cards::FinancialTransactionListParams::Result::OrSymbol,
+              starting_after: String,
+              status:
+                Lithic::Cards::FinancialTransactionListParams::Status::OrSymbol,
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         # Financial Transaction category to be returned.
         module Category
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Category) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Cards::FinancialTransactionListParams::Category
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          CARD = T.let(:CARD, Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol)
+          CARD =
+            T.let(
+              :CARD,
+              Lithic::Cards::FinancialTransactionListParams::Category::TaggedSymbol
+            )
           TRANSFER =
-            T.let(:TRANSFER, Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol)
+            T.let(
+              :TRANSFER,
+              Lithic::Cards::FinancialTransactionListParams::Category::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Category::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::Cards::FinancialTransactionListParams::Category::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         # Financial Transaction result to be returned.
@@ -132,14 +193,34 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Result) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Cards::FinancialTransactionListParams::Result
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          APPROVED = T.let(:APPROVED, Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol)
-          DECLINED = T.let(:DECLINED, Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol)
+          APPROVED =
+            T.let(
+              :APPROVED,
+              Lithic::Cards::FinancialTransactionListParams::Result::TaggedSymbol
+            )
+          DECLINED =
+            T.let(
+              :DECLINED,
+              Lithic::Cards::FinancialTransactionListParams::Result::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Result::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::Cards::FinancialTransactionListParams::Result::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         # Financial Transaction status to be returned.
@@ -147,18 +228,54 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Status) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Cards::FinancialTransactionListParams::Status
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          DECLINED = T.let(:DECLINED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
-          EXPIRED = T.let(:EXPIRED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
-          PENDING = T.let(:PENDING, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
-          RETURNED = T.let(:RETURNED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
-          SETTLED = T.let(:SETTLED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
-          VOIDED = T.let(:VOIDED, Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol)
+          DECLINED =
+            T.let(
+              :DECLINED,
+              Lithic::Cards::FinancialTransactionListParams::Status::TaggedSymbol
+            )
+          EXPIRED =
+            T.let(
+              :EXPIRED,
+              Lithic::Cards::FinancialTransactionListParams::Status::TaggedSymbol
+            )
+          PENDING =
+            T.let(
+              :PENDING,
+              Lithic::Cards::FinancialTransactionListParams::Status::TaggedSymbol
+            )
+          RETURNED =
+            T.let(
+              :RETURNED,
+              Lithic::Cards::FinancialTransactionListParams::Status::TaggedSymbol
+            )
+          SETTLED =
+            T.let(
+              :SETTLED,
+              Lithic::Cards::FinancialTransactionListParams::Status::TaggedSymbol
+            )
+          VOIDED =
+            T.let(
+              :VOIDED,
+              Lithic::Cards::FinancialTransactionListParams::Status::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::Cards::FinancialTransactionListParams::Status::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::Cards::FinancialTransactionListParams::Status::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

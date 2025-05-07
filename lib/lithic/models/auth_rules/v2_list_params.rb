@@ -36,8 +36,8 @@ module Lithic
         # @!attribute scope
         #   Only return Authorization Rules that are bound to the provided scope;
         #
-        #   @return [Symbol, Lithic::Models::AuthRules::V2ListParams::Scope, nil]
-        optional :scope, enum: -> { Lithic::Models::AuthRules::V2ListParams::Scope }
+        #   @return [Symbol, Lithic::AuthRules::V2ListParams::Scope, nil]
+        optional :scope, enum: -> { Lithic::AuthRules::V2ListParams::Scope }
 
         # @!attribute starting_after
         #   A cursor representing an item's token after which a page of results should
@@ -55,14 +55,12 @@ module Lithic
         #   @param card_token [String] Only return Authorization Rules that are bound to the provided card token.
         #
         #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-        #   ...
         #
         #   @param page_size [Integer] Page size (for pagination).
         #
-        #   @param scope [Symbol, Lithic::Models::AuthRules::V2ListParams::Scope] Only return Authorization Rules that are bound to the provided scope;
+        #   @param scope [Symbol, Lithic::AuthRules::V2ListParams::Scope] Only return Authorization Rules that are bound to the provided scope;
         #
         #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-        #   ...
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

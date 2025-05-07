@@ -12,7 +12,7 @@ module Lithic
         type: Lithic::Models::ExternalBankAccountCreateParams::type_,
         verification_method: Lithic::Models::ExternalBankAccountCreateParams::verification_method,
         account_token: String,
-        address: Lithic::Models::ExternalBankAccountAddress,
+        address: Lithic::ExternalBankAccountAddress,
         company_id: String,
         dob: Date,
         doing_business_as: String,
@@ -49,11 +49,11 @@ module Lithic
 
       def account_token=: (String) -> String
 
-      attr_reader address: Lithic::Models::ExternalBankAccountAddress?
+      attr_reader address: Lithic::ExternalBankAccountAddress?
 
       def address=: (
-        Lithic::Models::ExternalBankAccountAddress
-      ) -> Lithic::Models::ExternalBankAccountAddress
+        Lithic::ExternalBankAccountAddress
+      ) -> Lithic::ExternalBankAccountAddress
 
       attr_reader company_id: String?
 
@@ -93,7 +93,7 @@ module Lithic
         verification_method: Lithic::Models::ExternalBankAccountCreateParams::verification_method,
         processor_token: String,
         ?account_token: String,
-        ?address: Lithic::Models::ExternalBankAccountAddress,
+        ?address: Lithic::ExternalBankAccountAddress,
         ?company_id: String,
         ?dob: Date,
         ?doing_business_as: String,
@@ -102,8 +102,6 @@ module Lithic
         ?verification_enforcement: bool,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::external_bank_account_create_params
 
       type type_ = :CHECKING | :SAVINGS
 

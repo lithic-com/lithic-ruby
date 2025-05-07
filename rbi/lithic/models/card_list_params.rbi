@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Returns cards associated with the specified account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_token
@@ -53,10 +55,10 @@ module Lithic
       attr_writer :starting_after
 
       # Returns cards with the specified state.
-      sig { returns(T.nilable(Lithic::Models::CardListParams::State::OrSymbol)) }
+      sig { returns(T.nilable(Lithic::CardListParams::State::OrSymbol)) }
       attr_reader :state
 
-      sig { params(state: Lithic::Models::CardListParams::State::OrSymbol).void }
+      sig { params(state: Lithic::CardListParams::State::OrSymbol).void }
       attr_writer :state
 
       sig do
@@ -67,10 +69,9 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          state: Lithic::Models::CardListParams::State::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          state: Lithic::CardListParams::State::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Returns cards associated with the specified account.
@@ -92,39 +93,55 @@ module Lithic
         # Returns cards with the specified state.
         state: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              account_token: String,
-              begin_: Time,
-              end_: Time,
-              ending_before: String,
-              page_size: Integer,
-              starting_after: String,
-              state: Lithic::Models::CardListParams::State::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            account_token: String,
+            begin_: Time,
+            end_: Time,
+            ending_before: String,
+            page_size: Integer,
+            starting_after: String,
+            state: Lithic::CardListParams::State::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Returns cards with the specified state.
       module State
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardListParams::State) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::CardListParams::State) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        CLOSED = T.let(:CLOSED, Lithic::Models::CardListParams::State::TaggedSymbol)
-        OPEN = T.let(:OPEN, Lithic::Models::CardListParams::State::TaggedSymbol)
-        PAUSED = T.let(:PAUSED, Lithic::Models::CardListParams::State::TaggedSymbol)
-        PENDING_ACTIVATION = T.let(:PENDING_ACTIVATION, Lithic::Models::CardListParams::State::TaggedSymbol)
-        PENDING_FULFILLMENT = T.let(:PENDING_FULFILLMENT, Lithic::Models::CardListParams::State::TaggedSymbol)
+        CLOSED = T.let(:CLOSED, Lithic::CardListParams::State::TaggedSymbol)
+        OPEN = T.let(:OPEN, Lithic::CardListParams::State::TaggedSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::CardListParams::State::TaggedSymbol)
+        PENDING_ACTIVATION =
+          T.let(
+            :PENDING_ACTIVATION,
+            Lithic::CardListParams::State::TaggedSymbol
+          )
+        PENDING_FULFILLMENT =
+          T.let(
+            :PENDING_FULFILLMENT,
+            Lithic::CardListParams::State::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::CardListParams::State::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::CardListParams::State::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

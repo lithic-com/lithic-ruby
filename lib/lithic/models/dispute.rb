@@ -92,8 +92,8 @@ module Lithic
       #   - `RECURRING_TRANSACTION_NOT_CANCELLED`: The recurring transaction was not
       #     cancelled.
       #
-      #   @return [Symbol, Lithic::Models::Dispute::Reason]
-      required :reason, enum: -> { Lithic::Models::Dispute::Reason }
+      #   @return [Symbol, Lithic::Dispute::Reason]
+      required :reason, enum: -> { Lithic::Dispute::Reason }
 
       # @!attribute representment_date
       #   Date the representment was received.
@@ -134,8 +134,8 @@ module Lithic
       #   - `WON_FIRST_CHARGEBACK`: Won first chargeback.
       #   - `WON_PREARBITRATION`: Won prearbitration.
       #
-      #   @return [Symbol, Lithic::Models::Dispute::ResolutionReason, nil]
-      required :resolution_reason, enum: -> { Lithic::Models::Dispute::ResolutionReason }, nil?: true
+      #   @return [Symbol, Lithic::Dispute::ResolutionReason, nil]
+      required :resolution_reason, enum: -> { Lithic::Dispute::ResolutionReason }, nil?: true
 
       # @!attribute status
       #   Status types:
@@ -150,8 +150,8 @@ module Lithic
       #   - `CASE_WON` - Case was won and credit will be issued.
       #   - `CASE_CLOSED` - Case was lost or withdrawn.
       #
-      #   @return [Symbol, Lithic::Models::Dispute::Status]
-      required :status, enum: -> { Lithic::Models::Dispute::Status }
+      #   @return [Symbol, Lithic::Dispute::Status]
+      required :status, enum: -> { Lithic::Dispute::Status }
 
       # @!attribute transaction_token
       #   The transaction that is being disputed. A transaction can only be disputed once
@@ -161,8 +161,8 @@ module Lithic
       required :transaction_token, String
 
       # @!method initialize(token:, amount:, arbitration_date:, created:, customer_filed_date:, customer_note:, network_claim_ids:, network_filed_date:, network_reason_code:, prearbitration_date:, primary_claim_id:, reason:, representment_date:, resolution_date:, resolution_note:, resolution_reason:, status:, transaction_token:)
-      #   Some parameter documentations has been truncated, see {Lithic::Models::Dispute}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see {Lithic::Dispute} for more
+      #   details.
       #
       #   Dispute.
       #
@@ -187,9 +187,8 @@ module Lithic
       #   @param prearbitration_date [Time, nil] Date dispute entered pre-arbitration.
       #
       #   @param primary_claim_id [String, nil] Unique identifier for the dispute from the network. If there are multiple, this
-      #   ...
       #
-      #   @param reason [Symbol, Lithic::Models::Dispute::Reason] Dispute reason: ...
+      #   @param reason [Symbol, Lithic::Dispute::Reason] Dispute reason:
       #
       #   @param representment_date [Time, nil] Date the representment was received.
       #
@@ -197,12 +196,11 @@ module Lithic
       #
       #   @param resolution_note [String, nil] Note by Dispute team on the case resolution.
       #
-      #   @param resolution_reason [Symbol, Lithic::Models::Dispute::ResolutionReason, nil] Reason for the dispute resolution: ...
+      #   @param resolution_reason [Symbol, Lithic::Dispute::ResolutionReason, nil] Reason for the dispute resolution:
       #
-      #   @param status [Symbol, Lithic::Models::Dispute::Status] Status types: ...
+      #   @param status [Symbol, Lithic::Dispute::Status] Status types:
       #
       #   @param transaction_token [String] The transaction that is being disputed. A transaction can only be disputed once
-      #   ...
 
       # Dispute reason:
       #
@@ -224,7 +222,7 @@ module Lithic
       # - `RECURRING_TRANSACTION_NOT_CANCELLED`: The recurring transaction was not
       #   cancelled.
       #
-      # @see Lithic::Models::Dispute#reason
+      # @see Lithic::Dispute#reason
       module Reason
         extend Lithic::Internal::Type::Enum
 
@@ -267,7 +265,7 @@ module Lithic
       # - `WON_FIRST_CHARGEBACK`: Won first chargeback.
       # - `WON_PREARBITRATION`: Won prearbitration.
       #
-      # @see Lithic::Models::Dispute#resolution_reason
+      # @see Lithic::Dispute#resolution_reason
       module ResolutionReason
         extend Lithic::Internal::Type::Enum
 
@@ -305,7 +303,7 @@ module Lithic
       # - `CASE_WON` - Case was won and credit will be issued.
       # - `CASE_CLOSED` - Case was lost or withdrawn.
       #
-      # @see Lithic::Models::Dispute#status
+      # @see Lithic::Dispute#status
       module Status
         extend Lithic::Internal::Type::Enum
 

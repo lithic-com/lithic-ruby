@@ -11,14 +11,14 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::CardProgram]
+      # @return [Lithic::CardProgram]
       #
       # @see Lithic::Models::CardProgramRetrieveParams
       def retrieve(card_program_token, params = {})
         @client.request(
           method: :get,
           path: ["v1/card_programs/%1$s", card_program_token],
-          model: Lithic::Models::CardProgram,
+          model: Lithic::CardProgram,
           options: params[:request_options]
         )
       end
@@ -31,26 +31,24 @@ module Lithic
       # @overload list(ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
       #
       # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-      # ...
       #
       # @param page_size [Integer] Page size (for pagination).
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-      # ...
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::Models::CardProgram>]
+      # @return [Lithic::Internal::CursorPage<Lithic::CardProgram>]
       #
       # @see Lithic::Models::CardProgramListParams
       def list(params = {})
-        parsed, options = Lithic::Models::CardProgramListParams.dump_request(params)
+        parsed, options = Lithic::CardProgramListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/card_programs",
           query: parsed,
           page: Lithic::Internal::CursorPage,
-          model: Lithic::Models::CardProgram,
+          model: Lithic::CardProgram,
           options: options
         )
       end

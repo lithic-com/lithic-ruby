@@ -16,8 +16,6 @@ module Lithic
           token: String,
           challenge_response: Lithic::Models::ThreeDS::challenge_result
         ) -> void
-
-        def to_hash: -> Lithic::Models::ThreeDS::challenge_response
       end
     end
   end

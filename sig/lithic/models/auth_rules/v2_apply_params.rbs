@@ -31,8 +31,6 @@ module Lithic
           ?excluded_card_tokens: ::Array[String],
           ?request_options: Lithic::request_opts
         ) -> void
-
-        def to_hash: -> Lithic::Models::AuthRules::v2_apply_params
       end
     end
   end

@@ -37,8 +37,6 @@ module Lithic
           ?tier: String,
           ?request_options: Lithic::request_opts
         ) -> void
-
-        def to_hash: -> Lithic::Models::FinancialAccounts::credit_configuration_update_params
       end
     end
   end

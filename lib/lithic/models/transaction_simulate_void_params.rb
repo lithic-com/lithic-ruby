@@ -27,8 +27,8 @@ module Lithic
       #     by Lithic.
       #   - `AUTHORIZATION_REVERSAL` indicates authorization was reversed by the merchant.
       #
-      #   @return [Symbol, Lithic::Models::TransactionSimulateVoidParams::Type, nil]
-      optional :type, enum: -> { Lithic::Models::TransactionSimulateVoidParams::Type }
+      #   @return [Symbol, Lithic::TransactionSimulateVoidParams::Type, nil]
+      optional :type, enum: -> { Lithic::TransactionSimulateVoidParams::Type }
 
       # @!method initialize(token:, amount: nil, type: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -37,9 +37,8 @@ module Lithic
       #   @param token [String] The transaction token returned from the /v1/simulate/authorize response.
       #
       #   @param amount [Integer] Amount (in cents) to void. Typically this will match the amount in the original
-      #   ...
       #
-      #   @param type [Symbol, Lithic::Models::TransactionSimulateVoidParams::Type] Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`. ...
+      #   @param type [Symbol, Lithic::TransactionSimulateVoidParams::Type] Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

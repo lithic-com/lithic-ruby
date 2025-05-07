@@ -8,9 +8,9 @@ module Lithic
         ) -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse
 
         def simulate: (
-          merchant: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant,
+          merchant: Lithic::ThreeDS::AuthenticationSimulateParams::Merchant,
           pan: String,
-          transaction: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction,
+          transaction: Lithic::ThreeDS::AuthenticationSimulateParams::Transaction,
           ?card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::card_expiry_check,
           ?request_options: Lithic::request_opts
         ) -> Lithic::Models::ThreeDS::AuthenticationSimulateResponse

@@ -6,7 +6,7 @@ module Lithic
           String financial_transaction_token,
           card_token: String,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::FinancialTransaction
+        ) -> Lithic::FinancialTransaction
 
         def list: (
           String card_token,
@@ -18,7 +18,7 @@ module Lithic
           ?starting_after: String,
           ?status: Lithic::Models::Cards::FinancialTransactionListParams::status,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Internal::SinglePage[Lithic::Models::FinancialTransaction]
+        ) -> Lithic::Internal::SinglePage[Lithic::FinancialTransaction]
 
         def initialize: (client: Lithic::Client) -> void
       end

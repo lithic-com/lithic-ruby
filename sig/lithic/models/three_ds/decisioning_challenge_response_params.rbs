@@ -9,8 +9,6 @@ module Lithic
         include Lithic::Internal::Type::RequestParameters
 
         def initialize: (?request_options: Lithic::request_opts) -> void
-
-        def to_hash: -> Lithic::Models::ThreeDS::decisioning_challenge_response_params
       end
     end
   end

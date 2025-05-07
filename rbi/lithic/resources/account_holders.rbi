@@ -13,28 +13,36 @@ module Lithic
       # that the calling API key manages.
       sig do
         params(
-          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual, Lithic::Internal::AnyHash)],
-          business_entity: T.any(Lithic::Models::AccountHolderCreateParams::BusinessEntity, Lithic::Internal::AnyHash),
-          control_person: T.any(Lithic::Models::AccountHolderCreateParams::ControlPerson, Lithic::Internal::AnyHash),
+          beneficial_owner_individuals:
+            T::Array[
+              Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual::OrHash
+            ],
+          business_entity:
+            Lithic::AccountHolderCreateParams::BusinessEntity::OrHash,
+          control_person:
+            Lithic::AccountHolderCreateParams::ControlPerson::OrHash,
           nature_of_business: String,
           tos_timestamp: String,
-          workflow: Lithic::Models::AccountHolderCreateParams::Workflow::OrSymbol,
-          individual: T.any(Lithic::Models::AccountHolderCreateParams::Individual, Lithic::Internal::AnyHash),
-          address: T.any(Lithic::Models::Address, Lithic::Internal::AnyHash),
+          workflow: Lithic::AccountHolderCreateParams::Workflow::OrSymbol,
+          individual: Lithic::AccountHolderCreateParams::Individual::OrHash,
+          address: Lithic::Address::OrHash,
           email: String,
           first_name: String,
-          kyc_exemption_type: Lithic::Models::AccountHolderCreateParams::KYCExemptionType::OrSymbol,
+          kyc_exemption_type:
+            Lithic::AccountHolderCreateParams::KYCExemptionType::OrSymbol,
           last_name: String,
           phone_number: String,
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity, Lithic::Internal::AnyHash)],
+          beneficial_owner_entities:
+            T::Array[
+              Lithic::AccountHolderCreateParams::BeneficialOwnerEntity::OrHash
+            ],
           external_id: String,
           kyb_passed_timestamp: String,
           website_url: String,
           kyc_passed_timestamp: String,
           business_account_token: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::AccountHolderCreateResponse)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::AccountHolderCreateResponse)
       end
       def create(
         # You must submit a list of all direct and indirect individuals with 25% or more
@@ -103,18 +111,24 @@ module Lithic
         # with the AUTHORIZED_USER in this field.
         business_account_token: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get an Individual or Business Account Holder and/or their KYC or KYB evaluation
       # status.
       sig do
-        params(account_holder_token: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::AccountHolder)
+        params(
+          account_holder_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::AccountHolder)
       end
       def retrieve(
         # Globally unique identifier for the account holder.
         account_holder_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # Update the information associated with a particular account holder (including
       # business owners and control persons associated to a business account). If Lithic
       # is performing KYB or KYC and additional verification is required we will run the
@@ -128,29 +142,36 @@ module Lithic
       sig do
         params(
           account_holder_token: String,
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity, Lithic::Internal::AnyHash)],
-          beneficial_owner_individuals: T::Array[T.any(Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual, Lithic::Internal::AnyHash)],
-          business_entity: T.any(Lithic::Models::AccountHolderUpdateParams::BusinessEntity, Lithic::Internal::AnyHash),
-          control_person: T.any(Lithic::Models::AccountHolderUpdateParams::ControlPerson, Lithic::Internal::AnyHash),
+          beneficial_owner_entities:
+            T::Array[
+              Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity::OrHash
+            ],
+          beneficial_owner_individuals:
+            T::Array[
+              Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual::OrHash
+            ],
+          business_entity:
+            Lithic::AccountHolderUpdateParams::BusinessEntity::OrHash,
+          control_person:
+            Lithic::AccountHolderUpdateParams::ControlPerson::OrHash,
           external_id: String,
           nature_of_business: String,
           website_url: String,
-          individual: T.any(Lithic::Models::AccountHolderUpdateParams::Individual, Lithic::Internal::AnyHash),
-          address: T.any(Lithic::Models::AddressUpdate, Lithic::Internal::AnyHash),
+          individual: Lithic::AccountHolderUpdateParams::Individual::OrHash,
+          address: Lithic::AddressUpdate::OrHash,
           business_account_token: String,
           email: String,
           first_name: String,
           last_name: String,
           legal_business_name: String,
           phone_number: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(
-            T.any(
-              Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse,
-              Lithic::Models::AccountHolderUpdateResponse::PatchResponse
-            )
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(
+          T.any(
+            Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse,
+            Lithic::Models::AccountHolderUpdateResponse::PatchResponse
           )
+        )
       end
       def update(
         # Globally unique identifier for the account holder.
@@ -207,7 +228,9 @@ module Lithic
         # verification during the digital wallet tokenization process.
         phone_number: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get a list of individual or business account holders and their KYC or KYB
       # evaluation status.
       sig do
@@ -223,9 +246,8 @@ module Lithic
           limit: Integer,
           phone_number: String,
           starting_after: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Internal::SinglePage[Lithic::Models::AccountHolder])
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Internal::SinglePage[Lithic::AccountHolder])
       end
       def list(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -259,7 +281,9 @@ module Lithic
         # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve the status of account holder document uploads, or retrieve the upload
       # URLs to process your image uploads.
       #
@@ -276,14 +300,18 @@ module Lithic
       # show an additional entry in the `required_document_uploads` list in a `PENDING`
       # state for the corresponding `image_type`.
       sig do
-        params(account_holder_token: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::AccountHolderListDocumentsResponse)
+        params(
+          account_holder_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::AccountHolderListDocumentsResponse)
       end
       def list_documents(
         # Globally unique identifier for the account holder.
         account_holder_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # Check the status of an account holder document upload, or retrieve the upload
       # URLs to process your image uploads.
       #
@@ -299,8 +327,11 @@ module Lithic
       # response will show an additional entry in the `required_document_uploads` array
       # in a `PENDING` state for the corresponding `image_type`.
       sig do
-        params(document_token: String, account_holder_token: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::Document)
+        params(
+          document_token: String,
+          account_holder_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Document)
       end
       def retrieve_document(
         # Globally unique identifier for the document.
@@ -308,17 +339,20 @@ module Lithic
         # Globally unique identifier for the account holder.
         account_holder_token:,
         request_options: {}
-      ); end
+      )
+      end
+
       # Simulates a review for an account holder document upload.
       sig do
         params(
           document_upload_token: String,
-          status: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol,
+          status:
+            Lithic::AccountHolderSimulateEnrollmentDocumentReviewParams::Status::OrSymbol,
           accepted_entity_status_reasons: T::Array[String],
-          status_reason: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::Document)
+          status_reason:
+            Lithic::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Document)
       end
       def simulate_enrollment_document_review(
         # The account holder document upload which to perform the simulation upon.
@@ -331,17 +365,22 @@ module Lithic
         # Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
         status_reason: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Simulates an enrollment review for an account holder. This endpoint is only
       # applicable for workflows that may required intervention such as `KYB_BASIC`.
       sig do
         params(
           account_holder_token: String,
-          status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::Status::OrSymbol,
-          status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol],
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse)
+          status:
+            Lithic::AccountHolderSimulateEnrollmentReviewParams::Status::OrSymbol,
+          status_reasons:
+            T::Array[
+              Lithic::AccountHolderSimulateEnrollmentReviewParams::StatusReason::OrSymbol
+            ],
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse)
       end
       def simulate_enrollment_review(
         # The account holder which to perform the simulation upon.
@@ -352,7 +391,9 @@ module Lithic
         # Only required for a `REJECTED` status.
         status_reasons: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Use this endpoint to identify which type of supported government-issued
       # documentation you will upload for further verification. It will return two URLs
       # to upload your document images to - one for the front image and one for the back
@@ -374,11 +415,11 @@ module Lithic
       sig do
         params(
           account_holder_token: String,
-          document_type: Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
+          document_type:
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
           entity_token: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::Document)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Document)
       end
       def upload_document(
         # Globally unique identifier for the account holder.
@@ -388,10 +429,13 @@ module Lithic
         # Globally unique identifier for the entity.
         entity_token:,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

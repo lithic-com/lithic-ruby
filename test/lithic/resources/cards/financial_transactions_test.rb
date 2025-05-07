@@ -11,21 +11,21 @@ class Lithic::Test::Resources::Cards::FinancialTransactionsTest < Lithic::Test::
       )
 
     assert_pattern do
-      response => Lithic::Models::FinancialTransaction
+      response => Lithic::FinancialTransaction
     end
 
     assert_pattern do
       response => {
         token: String,
-        category: Lithic::Models::FinancialTransaction::Category,
+        category: Lithic::FinancialTransaction::Category,
         created: Time,
         currency: String,
         descriptor: String,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::FinancialTransaction::Event]),
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::FinancialTransaction::Event]),
         pending_amount: Integer,
-        result: Lithic::Models::FinancialTransaction::Result,
+        result: Lithic::FinancialTransaction::Result,
         settled_amount: Integer,
-        status: Lithic::Models::FinancialTransaction::Status,
+        status: Lithic::FinancialTransaction::Status,
         updated: Time
       }
     end
@@ -42,21 +42,21 @@ class Lithic::Test::Resources::Cards::FinancialTransactionsTest < Lithic::Test::
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::FinancialTransaction
+      row => Lithic::FinancialTransaction
     end
 
     assert_pattern do
       row => {
         token: String,
-        category: Lithic::Models::FinancialTransaction::Category,
+        category: Lithic::FinancialTransaction::Category,
         created: Time,
         currency: String,
         descriptor: String,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::FinancialTransaction::Event]),
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::FinancialTransaction::Event]),
         pending_amount: Integer,
-        result: Lithic::Models::FinancialTransaction::Result,
+        result: Lithic::FinancialTransaction::Result,
         settled_amount: Integer,
-        status: Lithic::Models::FinancialTransaction::Status,
+        status: Lithic::FinancialTransaction::Status,
         updated: Time
       }
     end

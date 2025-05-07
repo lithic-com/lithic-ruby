@@ -3,14 +3,14 @@ module Lithic
     type external_bank_account_list_params =
       {
         account_token: String,
-        account_types: ::Array[Lithic::Models::ExternalBankAccountListParams::account_type],
+        account_types: ::Array[Lithic::ExternalBankAccountListParams::account_type],
         countries: ::Array[String],
         ending_before: String,
         owner_types: ::Array[Lithic::Models::owner_type],
         page_size: Integer,
         starting_after: String,
-        states: ::Array[Lithic::Models::ExternalBankAccountListParams::state],
-        verification_states: ::Array[Lithic::Models::ExternalBankAccountListParams::verification_state]
+        states: ::Array[Lithic::ExternalBankAccountListParams::state],
+        verification_states: ::Array[Lithic::ExternalBankAccountListParams::verification_state]
       }
       & Lithic::Internal::Type::request_parameters
 
@@ -22,11 +22,11 @@ module Lithic
 
       def account_token=: (String) -> String
 
-      attr_reader account_types: ::Array[Lithic::Models::ExternalBankAccountListParams::account_type]?
+      attr_reader account_types: ::Array[Lithic::ExternalBankAccountListParams::account_type]?
 
       def account_types=: (
-        ::Array[Lithic::Models::ExternalBankAccountListParams::account_type]
-      ) -> ::Array[Lithic::Models::ExternalBankAccountListParams::account_type]
+        ::Array[Lithic::ExternalBankAccountListParams::account_type]
+      ) -> ::Array[Lithic::ExternalBankAccountListParams::account_type]
 
       attr_reader countries: ::Array[String]?
 
@@ -50,32 +50,30 @@ module Lithic
 
       def starting_after=: (String) -> String
 
-      attr_reader states: ::Array[Lithic::Models::ExternalBankAccountListParams::state]?
+      attr_reader states: ::Array[Lithic::ExternalBankAccountListParams::state]?
 
       def states=: (
-        ::Array[Lithic::Models::ExternalBankAccountListParams::state]
-      ) -> ::Array[Lithic::Models::ExternalBankAccountListParams::state]
+        ::Array[Lithic::ExternalBankAccountListParams::state]
+      ) -> ::Array[Lithic::ExternalBankAccountListParams::state]
 
-      attr_reader verification_states: ::Array[Lithic::Models::ExternalBankAccountListParams::verification_state]?
+      attr_reader verification_states: ::Array[Lithic::ExternalBankAccountListParams::verification_state]?
 
       def verification_states=: (
-        ::Array[Lithic::Models::ExternalBankAccountListParams::verification_state]
-      ) -> ::Array[Lithic::Models::ExternalBankAccountListParams::verification_state]
+        ::Array[Lithic::ExternalBankAccountListParams::verification_state]
+      ) -> ::Array[Lithic::ExternalBankAccountListParams::verification_state]
 
       def initialize: (
         ?account_token: String,
-        ?account_types: ::Array[Lithic::Models::ExternalBankAccountListParams::account_type],
+        ?account_types: ::Array[Lithic::ExternalBankAccountListParams::account_type],
         ?countries: ::Array[String],
         ?ending_before: String,
         ?owner_types: ::Array[Lithic::Models::owner_type],
         ?page_size: Integer,
         ?starting_after: String,
-        ?states: ::Array[Lithic::Models::ExternalBankAccountListParams::state],
-        ?verification_states: ::Array[Lithic::Models::ExternalBankAccountListParams::verification_state],
+        ?states: ::Array[Lithic::ExternalBankAccountListParams::state],
+        ?verification_states: ::Array[Lithic::ExternalBankAccountListParams::verification_state],
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::external_bank_account_list_params
 
       type account_type = :CHECKING | :SAVINGS
 
@@ -85,7 +83,7 @@ module Lithic
         CHECKING: :CHECKING
         SAVINGS: :SAVINGS
 
-        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountListParams::account_type]
+        def self?.values: -> ::Array[Lithic::ExternalBankAccountListParams::account_type]
       end
 
       type state = :ENABLED | :CLOSED | :PAUSED
@@ -97,7 +95,7 @@ module Lithic
         CLOSED: :CLOSED
         PAUSED: :PAUSED
 
-        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountListParams::state]
+        def self?.values: -> ::Array[Lithic::ExternalBankAccountListParams::state]
       end
 
       type verification_state =
@@ -111,7 +109,7 @@ module Lithic
         FAILED_VERIFICATION: :FAILED_VERIFICATION
         INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
 
-        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountListParams::verification_state]
+        def self?.values: -> ::Array[Lithic::ExternalBankAccountListParams::verification_state]
       end
     end
   end

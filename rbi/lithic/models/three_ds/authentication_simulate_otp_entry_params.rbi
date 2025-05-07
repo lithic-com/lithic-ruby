@@ -7,6 +7,8 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # A unique token returned as part of a /v1/three_ds_authentication/simulate call
         # that resulted in PENDING_CHALLENGE authentication result.
         sig { returns(String) }
@@ -20,9 +22,8 @@ module Lithic
           params(
             token: String,
             otp: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # A unique token returned as part of a /v1/three_ds_authentication/simulate call
@@ -31,9 +32,20 @@ module Lithic
           # The OTP entered by the cardholder
           otp:,
           request_options: {}
-        ); end
-        sig { override.returns({token: String, otp: String, request_options: Lithic::RequestOptions}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              token: String,
+              otp: String,
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

@@ -13,12 +13,12 @@ module Lithic
         ?subtype: String,
         ?user_defined_id: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::ManagementOperationTransaction
+      ) -> Lithic::ManagementOperationTransaction
 
       def retrieve: (
         String management_operation_token,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::ManagementOperationTransaction
+      ) -> Lithic::ManagementOperationTransaction
 
       def list: (
         ?begin_: Time,
@@ -31,14 +31,14 @@ module Lithic
         ?starting_after: String,
         ?status: Lithic::Models::ManagementOperationListParams::status,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Internal::CursorPage[Lithic::Models::ManagementOperationTransaction]
+      ) -> Lithic::Internal::CursorPage[Lithic::ManagementOperationTransaction]
 
       def reverse: (
         String management_operation_token,
         effective_date: Date,
         ?memo: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::ManagementOperationTransaction
+      ) -> Lithic::ManagementOperationTransaction
 
       def initialize: (client: Lithic::Client) -> void
     end

@@ -52,8 +52,6 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> void
 
-        def to_hash: -> Lithic::Models::Events::subscription_list_attempts_params
-
         type status = :FAILED | :PENDING | :SENDING | :SUCCESS
 
         module Status

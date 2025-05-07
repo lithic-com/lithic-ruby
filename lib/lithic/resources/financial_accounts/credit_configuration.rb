@@ -12,14 +12,14 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig]
+        # @return [Lithic::FinancialAccounts::FinancialAccountCreditConfig]
         #
         # @see Lithic::Models::FinancialAccounts::CreditConfigurationRetrieveParams
         def retrieve(financial_account_token, params = {})
           @client.request(
             method: :get,
             path: ["v1/financial_accounts/%1$s/credit_configuration", financial_account_token],
-            model: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig,
+            model: Lithic::FinancialAccounts::FinancialAccountCreditConfig,
             options: params[:request_options]
           )
         end
@@ -40,16 +40,16 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig]
+        # @return [Lithic::FinancialAccounts::FinancialAccountCreditConfig]
         #
         # @see Lithic::Models::FinancialAccounts::CreditConfigurationUpdateParams
         def update(financial_account_token, params = {})
-          parsed, options = Lithic::Models::FinancialAccounts::CreditConfigurationUpdateParams.dump_request(params)
+          parsed, options = Lithic::FinancialAccounts::CreditConfigurationUpdateParams.dump_request(params)
           @client.request(
             method: :patch,
             path: ["v1/financial_accounts/%1$s/credit_configuration", financial_account_token],
             body: parsed,
-            model: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig,
+            model: Lithic::FinancialAccounts::FinancialAccountCreditConfig,
             options: options
           )
         end

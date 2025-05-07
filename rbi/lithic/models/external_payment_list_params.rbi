@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Date string in RFC 3339 format. Only entries created after the specified time
       # will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
@@ -21,10 +23,18 @@ module Lithic
       attr_writer :business_account_token
 
       # External Payment category to be returned.
-      sig { returns(T.nilable(Lithic::Models::ExternalPaymentListParams::Category::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(Lithic::ExternalPaymentListParams::Category::OrSymbol)
+        )
+      end
       attr_reader :category
 
-      sig { params(category: Lithic::Models::ExternalPaymentListParams::Category::OrSymbol).void }
+      sig do
+        params(
+          category: Lithic::ExternalPaymentListParams::Category::OrSymbol
+        ).void
+      end
       attr_writer :category
 
       # Date string in RFC 3339 format. Only entries created before the specified time
@@ -59,10 +69,14 @@ module Lithic
       attr_writer :page_size
 
       # External Payment result to be returned.
-      sig { returns(T.nilable(Lithic::Models::ExternalPaymentListParams::Result::OrSymbol)) }
+      sig do
+        returns(T.nilable(Lithic::ExternalPaymentListParams::Result::OrSymbol))
+      end
       attr_reader :result
 
-      sig { params(result: Lithic::Models::ExternalPaymentListParams::Result::OrSymbol).void }
+      sig do
+        params(result: Lithic::ExternalPaymentListParams::Result::OrSymbol).void
+      end
       attr_writer :result
 
       # A cursor representing an item's token after which a page of results should
@@ -74,27 +88,30 @@ module Lithic
       attr_writer :starting_after
 
       # Book transfer status to be returned.
-      sig { returns(T.nilable(Lithic::Models::ExternalPaymentListParams::Status::OrSymbol)) }
+      sig do
+        returns(T.nilable(Lithic::ExternalPaymentListParams::Status::OrSymbol))
+      end
       attr_reader :status
 
-      sig { params(status: Lithic::Models::ExternalPaymentListParams::Status::OrSymbol).void }
+      sig do
+        params(status: Lithic::ExternalPaymentListParams::Status::OrSymbol).void
+      end
       attr_writer :status
 
       sig do
         params(
           begin_: Time,
           business_account_token: String,
-          category: Lithic::Models::ExternalPaymentListParams::Category::OrSymbol,
+          category: Lithic::ExternalPaymentListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
-          result: Lithic::Models::ExternalPaymentListParams::Result::OrSymbol,
+          result: Lithic::ExternalPaymentListParams::Result::OrSymbol,
           starting_after: String,
-          status: Lithic::Models::ExternalPaymentListParams::Status::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          status: Lithic::ExternalPaymentListParams::Status::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -122,74 +139,142 @@ module Lithic
         # Book transfer status to be returned.
         status: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              begin_: Time,
-              business_account_token: String,
-              category: Lithic::Models::ExternalPaymentListParams::Category::OrSymbol,
-              end_: Time,
-              ending_before: String,
-              financial_account_token: String,
-              page_size: Integer,
-              result: Lithic::Models::ExternalPaymentListParams::Result::OrSymbol,
-              starting_after: String,
-              status: Lithic::Models::ExternalPaymentListParams::Status::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            begin_: Time,
+            business_account_token: String,
+            category: Lithic::ExternalPaymentListParams::Category::OrSymbol,
+            end_: Time,
+            ending_before: String,
+            financial_account_token: String,
+            page_size: Integer,
+            result: Lithic::ExternalPaymentListParams::Result::OrSymbol,
+            starting_after: String,
+            status: Lithic::ExternalPaymentListParams::Status::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # External Payment category to be returned.
       module Category
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentListParams::Category) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ExternalPaymentListParams::Category)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        EXTERNAL_WIRE = T.let(:EXTERNAL_WIRE, Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol)
-        EXTERNAL_ACH = T.let(:EXTERNAL_ACH, Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol)
+        EXTERNAL_WIRE =
+          T.let(
+            :EXTERNAL_WIRE,
+            Lithic::ExternalPaymentListParams::Category::TaggedSymbol
+          )
+        EXTERNAL_ACH =
+          T.let(
+            :EXTERNAL_ACH,
+            Lithic::ExternalPaymentListParams::Category::TaggedSymbol
+          )
         EXTERNAL_CHECK =
-          T.let(:EXTERNAL_CHECK, Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol)
+          T.let(
+            :EXTERNAL_CHECK,
+            Lithic::ExternalPaymentListParams::Category::TaggedSymbol
+          )
         EXTERNAL_TRANSFER =
-          T.let(:EXTERNAL_TRANSFER, Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol)
+          T.let(
+            :EXTERNAL_TRANSFER,
+            Lithic::ExternalPaymentListParams::Category::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Category::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::ExternalPaymentListParams::Category::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # External Payment result to be returned.
       module Result
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentListParams::Result) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ExternalPaymentListParams::Result)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        APPROVED = T.let(:APPROVED, Lithic::Models::ExternalPaymentListParams::Result::TaggedSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPaymentListParams::Result::TaggedSymbol)
+        APPROVED =
+          T.let(
+            :APPROVED,
+            Lithic::ExternalPaymentListParams::Result::TaggedSymbol
+          )
+        DECLINED =
+          T.let(
+            :DECLINED,
+            Lithic::ExternalPaymentListParams::Result::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Result::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::ExternalPaymentListParams::Result::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # Book transfer status to be returned.
       module Status
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentListParams::Status) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ExternalPaymentListParams::Status)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        PENDING = T.let(:PENDING, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol)
-        SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol)
-        REVERSED = T.let(:REVERSED, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol)
-        CANCELED = T.let(:CANCELED, Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol)
+        PENDING =
+          T.let(
+            :PENDING,
+            Lithic::ExternalPaymentListParams::Status::TaggedSymbol
+          )
+        SETTLED =
+          T.let(
+            :SETTLED,
+            Lithic::ExternalPaymentListParams::Status::TaggedSymbol
+          )
+        DECLINED =
+          T.let(
+            :DECLINED,
+            Lithic::ExternalPaymentListParams::Status::TaggedSymbol
+          )
+        REVERSED =
+          T.let(
+            :REVERSED,
+            Lithic::ExternalPaymentListParams::Status::TaggedSymbol
+          )
+        CANCELED =
+          T.let(
+            :CANCELED,
+            Lithic::ExternalPaymentListParams::Status::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalPaymentListParams::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::ExternalPaymentListParams::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

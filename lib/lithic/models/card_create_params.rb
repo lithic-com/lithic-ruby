@@ -25,8 +25,8 @@ module Lithic
       #   - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
       #     use VIRTUAL instead.
       #
-      #   @return [Symbol, Lithic::Models::CardCreateParams::Type]
-      required :type, enum: -> { Lithic::Models::CardCreateParams::Type }
+      #   @return [Symbol, Lithic::CardCreateParams::Type]
+      required :type, enum: -> { Lithic::CardCreateParams::Type }
 
       # @!attribute account_token
       #   Globally unique identifier for the account that the card will be associated
@@ -50,8 +50,8 @@ module Lithic
 
       # @!attribute carrier
       #
-      #   @return [Lithic::Models::Carrier, nil]
-      optional :carrier, -> { Lithic::Models::Carrier }
+      #   @return [Lithic::Carrier, nil]
+      optional :carrier, -> { Lithic::Carrier }
 
       # @!attribute digital_card_art_token
       #   Specifies the digital card art to be displayed in the user’s digital wallet
@@ -118,8 +118,8 @@ module Lithic
 
       # @!attribute shipping_address
       #
-      #   @return [Lithic::Models::ShippingAddress, nil]
-      optional :shipping_address, -> { Lithic::Models::ShippingAddress }
+      #   @return [Lithic::ShippingAddress, nil]
+      optional :shipping_address, -> { Lithic::ShippingAddress }
 
       # @!attribute shipping_method
       #   Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
@@ -135,8 +135,8 @@ module Lithic
       #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #     tracking
       #
-      #   @return [Symbol, Lithic::Models::CardCreateParams::ShippingMethod, nil]
-      optional :shipping_method, enum: -> { Lithic::Models::CardCreateParams::ShippingMethod }
+      #   @return [Symbol, Lithic::CardCreateParams::ShippingMethod, nil]
+      optional :shipping_method, enum: -> { Lithic::CardCreateParams::ShippingMethod }
 
       # @!attribute spend_limit
       #   Amount (in cents) to limit approved authorizations (e.g. 100000 would be a
@@ -162,8 +162,8 @@ module Lithic
       #   - `TRANSACTION` - Card will authorize multiple transactions if each individual
       #     transaction is under the spend limit.
       #
-      #   @return [Symbol, Lithic::Models::SpendLimitDuration, nil]
-      optional :spend_limit_duration, enum: -> { Lithic::Models::SpendLimitDuration }
+      #   @return [Symbol, Lithic::SpendLimitDuration, nil]
+      optional :spend_limit_duration, enum: -> { Lithic::SpendLimitDuration }
 
       # @!attribute state
       #   Card state values:
@@ -173,56 +173,46 @@ module Lithic
       #   - `PAUSED` - Card will decline authorizations, but can be resumed at a later
       #     time.
       #
-      #   @return [Symbol, Lithic::Models::CardCreateParams::State, nil]
-      optional :state, enum: -> { Lithic::Models::CardCreateParams::State }
+      #   @return [Symbol, Lithic::CardCreateParams::State, nil]
+      optional :state, enum: -> { Lithic::CardCreateParams::State }
 
       # @!method initialize(type:, account_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_for: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardCreateParams} for more details.
       #
-      #   @param type [Symbol, Lithic::Models::CardCreateParams::Type] Card types: ...
+      #   @param type [Symbol, Lithic::CardCreateParams::Type] Card types:
       #
       #   @param account_token [String] Globally unique identifier for the account that the card will be associated with
-      #   ...
       #
       #   @param card_program_token [String] For card programs with more than one BIN range. This must be configured with Lit
-      #   ...
       #
-      #   @param carrier [Lithic::Models::Carrier]
+      #   @param carrier [Lithic::Carrier]
       #
       #   @param digital_card_art_token [String] Specifies the digital card art to be displayed in the user’s digital wallet afte
-      #   ...
       #
       #   @param exp_month [String] Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` is provided,
-      #   ...
       #
       #   @param exp_year [String] Four digit (yyyy) expiry year. If neither `exp_month` nor `exp_year` is provided
-      #   ...
       #
       #   @param memo [String] Friendly name to identify the card.
       #
       #   @param pin [String] Encrypted PIN block (in base64). Applies to cards of type `PHYSICAL` and `VIRTUA
-      #   ...
       #
       #   @param product_id [String] Only applicable to cards of type `PHYSICAL`. This must be configured with Lithic
-      #   ...
       #
       #   @param replacement_account_token [String] Restricted field limited to select use cases. Lithic will reach out directly if
-      #   ...
       #
       #   @param replacement_for [String] Globally unique identifier for the card that this card will replace. If the card
-      #   ...
       #
-      #   @param shipping_address [Lithic::Models::ShippingAddress]
+      #   @param shipping_address [Lithic::ShippingAddress]
       #
-      #   @param shipping_method [Symbol, Lithic::Models::CardCreateParams::ShippingMethod] Shipping method for the card. Only applies to cards of type PHYSICAL. ...
+      #   @param shipping_method [Symbol, Lithic::CardCreateParams::ShippingMethod] Shipping method for the card. Only applies to cards of type PHYSICAL.
       #
       #   @param spend_limit [Integer] Amount (in cents) to limit approved authorizations (e.g. 100000 would be a $1,00
-      #   ...
       #
-      #   @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration] Spend limit duration values: ...
+      #   @param spend_limit_duration [Symbol, Lithic::SpendLimitDuration] Spend limit duration values:
       #
-      #   @param state [Symbol, Lithic::Models::CardCreateParams::State] Card state values: ...
+      #   @param state [Symbol, Lithic::CardCreateParams::State] Card state values:
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

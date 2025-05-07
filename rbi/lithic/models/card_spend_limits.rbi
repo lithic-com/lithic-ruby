@@ -3,55 +3,67 @@
 module Lithic
   module Models
     class CardSpendLimits < Lithic::Internal::Type::BaseModel
-      sig { returns(Lithic::Models::CardSpendLimits::AvailableSpendLimit) }
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
+      sig { returns(Lithic::CardSpendLimits::AvailableSpendLimit) }
       attr_reader :available_spend_limit
 
       sig do
         params(
-          available_spend_limit: T.any(Lithic::Models::CardSpendLimits::AvailableSpendLimit, Lithic::Internal::AnyHash)
-        )
-          .void
+          available_spend_limit:
+            Lithic::CardSpendLimits::AvailableSpendLimit::OrHash
+        ).void
       end
       attr_writer :available_spend_limit
 
-      sig { returns(T.nilable(Lithic::Models::CardSpendLimits::SpendLimit)) }
+      sig { returns(T.nilable(Lithic::CardSpendLimits::SpendLimit)) }
       attr_reader :spend_limit
 
-      sig { params(spend_limit: T.any(Lithic::Models::CardSpendLimits::SpendLimit, Lithic::Internal::AnyHash)).void }
+      sig do
+        params(spend_limit: Lithic::CardSpendLimits::SpendLimit::OrHash).void
+      end
       attr_writer :spend_limit
 
-      sig { returns(T.nilable(Lithic::Models::CardSpendLimits::SpendVelocity)) }
+      sig { returns(T.nilable(Lithic::CardSpendLimits::SpendVelocity)) }
       attr_reader :spend_velocity
 
       sig do
-        params(spend_velocity: T.any(Lithic::Models::CardSpendLimits::SpendVelocity, Lithic::Internal::AnyHash))
-          .void
+        params(
+          spend_velocity: Lithic::CardSpendLimits::SpendVelocity::OrHash
+        ).void
       end
       attr_writer :spend_velocity
 
       sig do
         params(
-          available_spend_limit: T.any(Lithic::Models::CardSpendLimits::AvailableSpendLimit, Lithic::Internal::AnyHash),
-          spend_limit: T.any(Lithic::Models::CardSpendLimits::SpendLimit, Lithic::Internal::AnyHash),
-          spend_velocity: T.any(Lithic::Models::CardSpendLimits::SpendVelocity, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          available_spend_limit:
+            Lithic::CardSpendLimits::AvailableSpendLimit::OrHash,
+          spend_limit: Lithic::CardSpendLimits::SpendLimit::OrHash,
+          spend_velocity: Lithic::CardSpendLimits::SpendVelocity::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(available_spend_limit:, spend_limit: nil, spend_velocity: nil); end
+      def self.new(
+        available_spend_limit:,
+        spend_limit: nil,
+        spend_velocity: nil
+      )
+      end
 
       sig do
-        override
-          .returns(
-            {
-              available_spend_limit: Lithic::Models::CardSpendLimits::AvailableSpendLimit,
-              spend_limit: Lithic::Models::CardSpendLimits::SpendLimit,
-              spend_velocity: Lithic::Models::CardSpendLimits::SpendVelocity
-            }
-          )
+        override.returns(
+          {
+            available_spend_limit: Lithic::CardSpendLimits::AvailableSpendLimit,
+            spend_limit: Lithic::CardSpendLimits::SpendLimit,
+            spend_velocity: Lithic::CardSpendLimits::SpendVelocity
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # The available spend limit (in cents) relative to the annual limit configured on
         # the Card (e.g. 100000 would be a $1,000 limit).
         sig { returns(T.nilable(Integer)) }
@@ -76,7 +88,11 @@ module Lithic
         sig { params(monthly: Integer).void }
         attr_writer :monthly
 
-        sig { params(annually: Integer, forever: Integer, monthly: Integer).returns(T.attached_class) }
+        sig do
+          params(annually: Integer, forever: Integer, monthly: Integer).returns(
+            T.attached_class
+          )
+        end
         def self.new(
           # The available spend limit (in cents) relative to the annual limit configured on
           # the Card (e.g. 100000 would be a $1,000 limit).
@@ -87,12 +103,21 @@ module Lithic
           # The available spend limit (in cents) relative to the monthly limit configured on
           # the Card.
           monthly: nil
-        ); end
-        sig { override.returns({annually: Integer, forever: Integer, monthly: Integer}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { annually: Integer, forever: Integer, monthly: Integer }
+          )
+        end
+        def to_hash
+        end
       end
 
       class SpendLimit < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # The configured annual spend limit (in cents) on the Card.
         sig { returns(T.nilable(Integer)) }
         attr_reader :annually
@@ -114,7 +139,11 @@ module Lithic
         sig { params(monthly: Integer).void }
         attr_writer :monthly
 
-        sig { params(annually: Integer, forever: Integer, monthly: Integer).returns(T.attached_class) }
+        sig do
+          params(annually: Integer, forever: Integer, monthly: Integer).returns(
+            T.attached_class
+          )
+        end
         def self.new(
           # The configured annual spend limit (in cents) on the Card.
           annually: nil,
@@ -122,12 +151,21 @@ module Lithic
           forever: nil,
           # The configured monthly spend limit (in cents) on the Card.
           monthly: nil
-        ); end
-        sig { override.returns({annually: Integer, forever: Integer, monthly: Integer}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { annually: Integer, forever: Integer, monthly: Integer }
+          )
+        end
+        def to_hash
+        end
       end
 
       class SpendVelocity < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Current annual spend velocity (in cents) on the Card. Present if annual spend
         # limit is set.
         sig { returns(T.nilable(Integer)) }
@@ -152,7 +190,11 @@ module Lithic
         sig { params(monthly: Integer).void }
         attr_writer :monthly
 
-        sig { params(annually: Integer, forever: Integer, monthly: Integer).returns(T.attached_class) }
+        sig do
+          params(annually: Integer, forever: Integer, monthly: Integer).returns(
+            T.attached_class
+          )
+        end
         def self.new(
           # Current annual spend velocity (in cents) on the Card. Present if annual spend
           # limit is set.
@@ -163,9 +205,16 @@ module Lithic
           # Current monthly spend velocity (in cents) on the Card. Present if monthly spend
           # limit is set.
           monthly: nil
-        ); end
-        sig { override.returns({annually: Integer, forever: Integer, monthly: Integer}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { annually: Integer, forever: Integer, monthly: Integer }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class DigitalCardArtAPI < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Globally unique identifier for the card art.
       sig { returns(String) }
       attr_accessor :token
@@ -24,7 +26,7 @@ module Lithic
       attr_accessor :is_enabled
 
       # Card network.
-      sig { returns(Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol) }
+      sig { returns(Lithic::DigitalCardArtAPI::Network::TaggedSymbol) }
       attr_accessor :network
 
       # Whether the card art is the default card art to be added upon tokenization.
@@ -41,10 +43,9 @@ module Lithic
           created: Time,
           description: String,
           is_enabled: T::Boolean,
-          network: Lithic::Models::DigitalCardArtAPI::Network::OrSymbol,
+          network: Lithic::DigitalCardArtAPI::Network::OrSymbol,
           is_card_program_default: T::Boolean
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Globally unique identifier for the card art.
@@ -61,35 +62,44 @@ module Lithic
         network:,
         # Whether the card art is the default card art to be added upon tokenization.
         is_card_program_default: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              token: String,
-              card_program_token: String,
-              created: Time,
-              description: String,
-              is_enabled: T::Boolean,
-              network: Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol,
-              is_card_program_default: T::Boolean
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            token: String,
+            card_program_token: String,
+            created: Time,
+            description: String,
+            is_enabled: T::Boolean,
+            network: Lithic::DigitalCardArtAPI::Network::TaggedSymbol,
+            is_card_program_default: T::Boolean
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Card network.
       module Network
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DigitalCardArtAPI::Network) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::DigitalCardArtAPI::Network) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        MASTERCARD = T.let(:MASTERCARD, Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol)
-        VISA = T.let(:VISA, Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol)
+        MASTERCARD =
+          T.let(:MASTERCARD, Lithic::DigitalCardArtAPI::Network::TaggedSymbol)
+        VISA = T.let(:VISA, Lithic::DigitalCardArtAPI::Network::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::DigitalCardArtAPI::Network::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::DigitalCardArtAPI::Network::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

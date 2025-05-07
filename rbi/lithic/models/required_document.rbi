@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class RequiredDocument < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Globally unique identifier for an entity.
       sig { returns(String) }
       attr_accessor :entity_token
@@ -18,8 +20,11 @@ module Lithic
       attr_accessor :valid_documents
 
       sig do
-        params(entity_token: String, status_reasons: T::Array[String], valid_documents: T::Array[String])
-          .returns(T.attached_class)
+        params(
+          entity_token: String,
+          status_reasons: T::Array[String],
+          valid_documents: T::Array[String]
+        ).returns(T.attached_class)
       end
       def self.new(
         # Globally unique identifier for an entity.
@@ -30,16 +35,20 @@ module Lithic
         # A list of valid documents that will satisfy the KYC requirements for the
         # specified entity.
         valid_documents:
-      ); end
-      sig do
-        override
-          .returns({
-                     entity_token: String,
-                     status_reasons: T::Array[String],
-                     valid_documents: T::Array[String]
-                   })
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            entity_token: String,
+            status_reasons: T::Array[String],
+            valid_documents: T::Array[String]
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

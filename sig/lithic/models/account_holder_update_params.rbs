@@ -2,15 +2,15 @@ module Lithic
   module Models
     type account_holder_update_params =
       {
-        beneficial_owner_entities: ::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity],
-        beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual],
-        business_entity: Lithic::Models::AccountHolderUpdateParams::BusinessEntity,
-        control_person: Lithic::Models::AccountHolderUpdateParams::ControlPerson,
+        beneficial_owner_entities: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity],
+        beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual],
+        business_entity: Lithic::AccountHolderUpdateParams::BusinessEntity,
+        control_person: Lithic::AccountHolderUpdateParams::ControlPerson,
         external_id: String,
         nature_of_business: String,
         website_url: String,
-        individual: Lithic::Models::AccountHolderUpdateParams::Individual,
-        address: Lithic::Models::AddressUpdate,
+        individual: Lithic::AccountHolderUpdateParams::Individual,
+        address: Lithic::AddressUpdate,
         business_account_token: String,
         email: String,
         first_name: String,
@@ -24,29 +24,29 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      attr_reader beneficial_owner_entities: ::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity]?
+      attr_reader beneficial_owner_entities: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity]?
 
       def beneficial_owner_entities=: (
-        ::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity]
-      ) -> ::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity]
+        ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity]
+      ) -> ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity]
 
-      attr_reader beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual]?
+      attr_reader beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual]?
 
       def beneficial_owner_individuals=: (
-        ::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual]
-      ) -> ::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual]
+        ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual]
+      ) -> ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual]
 
-      attr_reader business_entity: Lithic::Models::AccountHolderUpdateParams::BusinessEntity?
+      attr_reader business_entity: Lithic::AccountHolderUpdateParams::BusinessEntity?
 
       def business_entity=: (
-        Lithic::Models::AccountHolderUpdateParams::BusinessEntity
-      ) -> Lithic::Models::AccountHolderUpdateParams::BusinessEntity
+        Lithic::AccountHolderUpdateParams::BusinessEntity
+      ) -> Lithic::AccountHolderUpdateParams::BusinessEntity
 
-      attr_reader control_person: Lithic::Models::AccountHolderUpdateParams::ControlPerson?
+      attr_reader control_person: Lithic::AccountHolderUpdateParams::ControlPerson?
 
       def control_person=: (
-        Lithic::Models::AccountHolderUpdateParams::ControlPerson
-      ) -> Lithic::Models::AccountHolderUpdateParams::ControlPerson
+        Lithic::AccountHolderUpdateParams::ControlPerson
+      ) -> Lithic::AccountHolderUpdateParams::ControlPerson
 
       attr_reader external_id: String?
 
@@ -60,17 +60,15 @@ module Lithic
 
       def website_url=: (String) -> String
 
-      attr_reader individual: Lithic::Models::AccountHolderUpdateParams::Individual?
+      attr_reader individual: Lithic::AccountHolderUpdateParams::Individual?
 
       def individual=: (
-        Lithic::Models::AccountHolderUpdateParams::Individual
-      ) -> Lithic::Models::AccountHolderUpdateParams::Individual
+        Lithic::AccountHolderUpdateParams::Individual
+      ) -> Lithic::AccountHolderUpdateParams::Individual
 
-      attr_reader address: Lithic::Models::AddressUpdate?
+      attr_reader address: Lithic::AddressUpdate?
 
-      def address=: (
-        Lithic::Models::AddressUpdate
-      ) -> Lithic::Models::AddressUpdate
+      def address=: (Lithic::AddressUpdate) -> Lithic::AddressUpdate
 
       attr_reader business_account_token: String?
 
@@ -97,15 +95,15 @@ module Lithic
       def phone_number=: (String) -> String
 
       def initialize: (
-        ?beneficial_owner_entities: ::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity],
-        ?beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual],
-        ?business_entity: Lithic::Models::AccountHolderUpdateParams::BusinessEntity,
-        ?control_person: Lithic::Models::AccountHolderUpdateParams::ControlPerson,
+        ?beneficial_owner_entities: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity],
+        ?beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual],
+        ?business_entity: Lithic::AccountHolderUpdateParams::BusinessEntity,
+        ?control_person: Lithic::AccountHolderUpdateParams::ControlPerson,
         ?external_id: String,
         ?nature_of_business: String,
         ?website_url: String,
-        ?individual: Lithic::Models::AccountHolderUpdateParams::Individual,
-        ?address: Lithic::Models::AddressUpdate,
+        ?individual: Lithic::AccountHolderUpdateParams::Individual,
+        ?address: Lithic::AddressUpdate,
         ?business_account_token: String,
         ?email: String,
         ?first_name: String,
@@ -115,12 +113,10 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> Lithic::Models::account_holder_update_params
-
       type beneficial_owner_entity =
         {
           entity_token: String,
-          address: Lithic::Models::AddressUpdate,
+          address: Lithic::AddressUpdate,
           dba_business_name: String,
           government_id: String,
           legal_business_name: String,
@@ -131,11 +127,9 @@ module Lithic
       class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
         attr_accessor entity_token: String
 
-        attr_reader address: Lithic::Models::AddressUpdate?
+        attr_reader address: Lithic::AddressUpdate?
 
-        def address=: (
-          Lithic::Models::AddressUpdate
-        ) -> Lithic::Models::AddressUpdate
+        def address=: (Lithic::AddressUpdate) -> Lithic::AddressUpdate
 
         attr_reader dba_business_name: String?
 
@@ -159,21 +153,19 @@ module Lithic
 
         def initialize: (
           entity_token: String,
-          ?address: Lithic::Models::AddressUpdate,
+          ?address: Lithic::AddressUpdate,
           ?dba_business_name: String,
           ?government_id: String,
           ?legal_business_name: String,
           ?parent_company: String,
           ?phone_numbers: ::Array[String]
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountHolderUpdateParams::beneficial_owner_entity
       end
 
       type beneficial_owner_individual =
         {
           entity_token: String,
-          address: Lithic::Models::AddressUpdate,
+          address: Lithic::AddressUpdate,
           dob: String,
           email: String,
           first_name: String,
@@ -185,11 +177,9 @@ module Lithic
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
         attr_accessor entity_token: String
 
-        attr_reader address: Lithic::Models::AddressUpdate?
+        attr_reader address: Lithic::AddressUpdate?
 
-        def address=: (
-          Lithic::Models::AddressUpdate
-        ) -> Lithic::Models::AddressUpdate
+        def address=: (Lithic::AddressUpdate) -> Lithic::AddressUpdate
 
         attr_reader dob: String?
 
@@ -217,7 +207,7 @@ module Lithic
 
         def initialize: (
           entity_token: String,
-          ?address: Lithic::Models::AddressUpdate,
+          ?address: Lithic::AddressUpdate,
           ?dob: String,
           ?email: String,
           ?first_name: String,
@@ -225,14 +215,12 @@ module Lithic
           ?last_name: String,
           ?phone_number: String
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountHolderUpdateParams::beneficial_owner_individual
       end
 
       type business_entity =
         {
           entity_token: String,
-          address: Lithic::Models::AddressUpdate,
+          address: Lithic::AddressUpdate,
           dba_business_name: String,
           government_id: String,
           legal_business_name: String,
@@ -243,11 +231,9 @@ module Lithic
       class BusinessEntity < Lithic::Internal::Type::BaseModel
         attr_accessor entity_token: String
 
-        attr_reader address: Lithic::Models::AddressUpdate?
+        attr_reader address: Lithic::AddressUpdate?
 
-        def address=: (
-          Lithic::Models::AddressUpdate
-        ) -> Lithic::Models::AddressUpdate
+        def address=: (Lithic::AddressUpdate) -> Lithic::AddressUpdate
 
         attr_reader dba_business_name: String?
 
@@ -271,21 +257,19 @@ module Lithic
 
         def initialize: (
           entity_token: String,
-          ?address: Lithic::Models::AddressUpdate,
+          ?address: Lithic::AddressUpdate,
           ?dba_business_name: String,
           ?government_id: String,
           ?legal_business_name: String,
           ?parent_company: String,
           ?phone_numbers: ::Array[String]
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountHolderUpdateParams::business_entity
       end
 
       type control_person =
         {
           entity_token: String,
-          address: Lithic::Models::AddressUpdate,
+          address: Lithic::AddressUpdate,
           dob: String,
           email: String,
           first_name: String,
@@ -297,11 +281,9 @@ module Lithic
       class ControlPerson < Lithic::Internal::Type::BaseModel
         attr_accessor entity_token: String
 
-        attr_reader address: Lithic::Models::AddressUpdate?
+        attr_reader address: Lithic::AddressUpdate?
 
-        def address=: (
-          Lithic::Models::AddressUpdate
-        ) -> Lithic::Models::AddressUpdate
+        def address=: (Lithic::AddressUpdate) -> Lithic::AddressUpdate
 
         attr_reader dob: String?
 
@@ -329,7 +311,7 @@ module Lithic
 
         def initialize: (
           entity_token: String,
-          ?address: Lithic::Models::AddressUpdate,
+          ?address: Lithic::AddressUpdate,
           ?dob: String,
           ?email: String,
           ?first_name: String,
@@ -337,14 +319,12 @@ module Lithic
           ?last_name: String,
           ?phone_number: String
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountHolderUpdateParams::control_person
       end
 
       type individual =
         {
           entity_token: String,
-          address: Lithic::Models::AddressUpdate,
+          address: Lithic::AddressUpdate,
           dob: String,
           email: String,
           first_name: String,
@@ -356,11 +336,9 @@ module Lithic
       class Individual < Lithic::Internal::Type::BaseModel
         attr_accessor entity_token: String
 
-        attr_reader address: Lithic::Models::AddressUpdate?
+        attr_reader address: Lithic::AddressUpdate?
 
-        def address=: (
-          Lithic::Models::AddressUpdate
-        ) -> Lithic::Models::AddressUpdate
+        def address=: (Lithic::AddressUpdate) -> Lithic::AddressUpdate
 
         attr_reader dob: String?
 
@@ -388,7 +366,7 @@ module Lithic
 
         def initialize: (
           entity_token: String,
-          ?address: Lithic::Models::AddressUpdate,
+          ?address: Lithic::AddressUpdate,
           ?dob: String,
           ?email: String,
           ?first_name: String,
@@ -396,8 +374,6 @@ module Lithic
           ?last_name: String,
           ?phone_number: String
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountHolderUpdateParams::individual
       end
     end
   end

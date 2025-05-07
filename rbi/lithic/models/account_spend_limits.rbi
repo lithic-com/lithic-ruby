@@ -3,57 +3,68 @@
 module Lithic
   module Models
     class AccountSpendLimits < Lithic::Internal::Type::BaseModel
-      sig { returns(Lithic::Models::AccountSpendLimits::AvailableSpendLimit) }
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
+      sig { returns(Lithic::AccountSpendLimits::AvailableSpendLimit) }
       attr_reader :available_spend_limit
 
       sig do
         params(
-          available_spend_limit: T.any(Lithic::Models::AccountSpendLimits::AvailableSpendLimit, Lithic::Internal::AnyHash)
-        )
-          .void
+          available_spend_limit:
+            Lithic::AccountSpendLimits::AvailableSpendLimit::OrHash
+        ).void
       end
       attr_writer :available_spend_limit
 
-      sig { returns(T.nilable(Lithic::Models::AccountSpendLimits::SpendLimit)) }
+      sig { returns(T.nilable(Lithic::AccountSpendLimits::SpendLimit)) }
       attr_reader :spend_limit
 
-      sig { params(spend_limit: T.any(Lithic::Models::AccountSpendLimits::SpendLimit, Lithic::Internal::AnyHash)).void }
+      sig do
+        params(spend_limit: Lithic::AccountSpendLimits::SpendLimit::OrHash).void
+      end
       attr_writer :spend_limit
 
-      sig { returns(T.nilable(Lithic::Models::AccountSpendLimits::SpendVelocity)) }
+      sig { returns(T.nilable(Lithic::AccountSpendLimits::SpendVelocity)) }
       attr_reader :spend_velocity
 
       sig do
         params(
-          spend_velocity: T.any(Lithic::Models::AccountSpendLimits::SpendVelocity, Lithic::Internal::AnyHash)
-        )
-          .void
+          spend_velocity: Lithic::AccountSpendLimits::SpendVelocity::OrHash
+        ).void
       end
       attr_writer :spend_velocity
 
       sig do
         params(
-          available_spend_limit: T.any(Lithic::Models::AccountSpendLimits::AvailableSpendLimit, Lithic::Internal::AnyHash),
-          spend_limit: T.any(Lithic::Models::AccountSpendLimits::SpendLimit, Lithic::Internal::AnyHash),
-          spend_velocity: T.any(Lithic::Models::AccountSpendLimits::SpendVelocity, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          available_spend_limit:
+            Lithic::AccountSpendLimits::AvailableSpendLimit::OrHash,
+          spend_limit: Lithic::AccountSpendLimits::SpendLimit::OrHash,
+          spend_velocity: Lithic::AccountSpendLimits::SpendVelocity::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(available_spend_limit:, spend_limit: nil, spend_velocity: nil); end
+      def self.new(
+        available_spend_limit:,
+        spend_limit: nil,
+        spend_velocity: nil
+      )
+      end
 
       sig do
-        override
-          .returns(
-            {
-              available_spend_limit: Lithic::Models::AccountSpendLimits::AvailableSpendLimit,
-              spend_limit: Lithic::Models::AccountSpendLimits::SpendLimit,
-              spend_velocity: Lithic::Models::AccountSpendLimits::SpendVelocity
-            }
-          )
+        override.returns(
+          {
+            available_spend_limit:
+              Lithic::AccountSpendLimits::AvailableSpendLimit,
+            spend_limit: Lithic::AccountSpendLimits::SpendLimit,
+            spend_velocity: Lithic::AccountSpendLimits::SpendVelocity
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # The available spend limit (in cents) relative to the daily limit configured on
         # the Account (e.g. 100000 would be a $1,000 limit).
         sig { returns(T.nilable(Integer)) }
@@ -78,7 +89,11 @@ module Lithic
         sig { params(monthly: Integer).void }
         attr_writer :monthly
 
-        sig { params(daily: Integer, lifetime: Integer, monthly: Integer).returns(T.attached_class) }
+        sig do
+          params(daily: Integer, lifetime: Integer, monthly: Integer).returns(
+            T.attached_class
+          )
+        end
         def self.new(
           # The available spend limit (in cents) relative to the daily limit configured on
           # the Account (e.g. 100000 would be a $1,000 limit).
@@ -89,12 +104,21 @@ module Lithic
           # The available spend limit (in cents) relative to the monthly limit configured on
           # the Account.
           monthly: nil
-        ); end
-        sig { override.returns({daily: Integer, lifetime: Integer, monthly: Integer}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { daily: Integer, lifetime: Integer, monthly: Integer }
+          )
+        end
+        def to_hash
+        end
       end
 
       class SpendLimit < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # The configured daily spend limit (in cents) on the Account.
         sig { returns(T.nilable(Integer)) }
         attr_reader :daily
@@ -116,7 +140,11 @@ module Lithic
         sig { params(monthly: Integer).void }
         attr_writer :monthly
 
-        sig { params(daily: Integer, lifetime: Integer, monthly: Integer).returns(T.attached_class) }
+        sig do
+          params(daily: Integer, lifetime: Integer, monthly: Integer).returns(
+            T.attached_class
+          )
+        end
         def self.new(
           # The configured daily spend limit (in cents) on the Account.
           daily: nil,
@@ -124,12 +152,21 @@ module Lithic
           lifetime: nil,
           # The configured monthly spend limit (in cents) on the Account.
           monthly: nil
-        ); end
-        sig { override.returns({daily: Integer, lifetime: Integer, monthly: Integer}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { daily: Integer, lifetime: Integer, monthly: Integer }
+          )
+        end
+        def to_hash
+        end
       end
 
       class SpendVelocity < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Current daily spend velocity (in cents) on the Account. Present if daily spend
         # limit is set.
         sig { returns(T.nilable(Integer)) }
@@ -154,7 +191,11 @@ module Lithic
         sig { params(monthly: Integer).void }
         attr_writer :monthly
 
-        sig { params(daily: Integer, lifetime: Integer, monthly: Integer).returns(T.attached_class) }
+        sig do
+          params(daily: Integer, lifetime: Integer, monthly: Integer).returns(
+            T.attached_class
+          )
+        end
         def self.new(
           # Current daily spend velocity (in cents) on the Account. Present if daily spend
           # limit is set.
@@ -165,9 +206,16 @@ module Lithic
           # Current monthly spend velocity (in cents) on the Account. Present if monthly
           # spend limit is set.
           monthly: nil
-        ); end
-        sig { override.returns({daily: Integer, lifetime: Integer, monthly: Integer}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { daily: Integer, lifetime: Integer, monthly: Integer }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

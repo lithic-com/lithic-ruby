@@ -3,16 +3,16 @@ module Lithic
     type external_payment =
       {
         token: String,
-        category: Lithic::Models::ExternalPayment::category,
+        category: Lithic::ExternalPayment::category,
         created: Time,
         currency: String,
-        events: ::Array[Lithic::Models::ExternalPayment::Event],
+        events: ::Array[Lithic::ExternalPayment::Event],
         financial_account_token: String,
-        payment_type: Lithic::Models::ExternalPayment::payment_type,
+        payment_type: Lithic::ExternalPayment::payment_type,
         pending_amount: Integer,
-        result: Lithic::Models::ExternalPayment::result,
+        result: Lithic::ExternalPayment::result,
         settled_amount: Integer,
-        status: Lithic::Models::ExternalPayment::status,
+        status: Lithic::ExternalPayment::status,
         updated: Time,
         user_defined_id: String
       }
@@ -20,25 +20,25 @@ module Lithic
     class ExternalPayment < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
-      attr_accessor category: Lithic::Models::ExternalPayment::category
+      attr_accessor category: Lithic::ExternalPayment::category
 
       attr_accessor created: Time
 
       attr_accessor currency: String
 
-      attr_accessor events: ::Array[Lithic::Models::ExternalPayment::Event]
+      attr_accessor events: ::Array[Lithic::ExternalPayment::Event]
 
       attr_accessor financial_account_token: String
 
-      attr_accessor payment_type: Lithic::Models::ExternalPayment::payment_type
+      attr_accessor payment_type: Lithic::ExternalPayment::payment_type
 
       attr_accessor pending_amount: Integer
 
-      attr_accessor result: Lithic::Models::ExternalPayment::result
+      attr_accessor result: Lithic::ExternalPayment::result
 
       attr_accessor settled_amount: Integer
 
-      attr_accessor status: Lithic::Models::ExternalPayment::status
+      attr_accessor status: Lithic::ExternalPayment::status
 
       attr_accessor updated: Time
 
@@ -48,21 +48,19 @@ module Lithic
 
       def initialize: (
         token: String,
-        category: Lithic::Models::ExternalPayment::category,
+        category: Lithic::ExternalPayment::category,
         created: Time,
         currency: String,
-        events: ::Array[Lithic::Models::ExternalPayment::Event],
+        events: ::Array[Lithic::ExternalPayment::Event],
         financial_account_token: String,
-        payment_type: Lithic::Models::ExternalPayment::payment_type,
+        payment_type: Lithic::ExternalPayment::payment_type,
         pending_amount: Integer,
-        result: Lithic::Models::ExternalPayment::result,
+        result: Lithic::ExternalPayment::result,
         settled_amount: Integer,
-        status: Lithic::Models::ExternalPayment::status,
+        status: Lithic::ExternalPayment::status,
         updated: Time,
         ?user_defined_id: String
       ) -> void
-
-      def to_hash: -> Lithic::Models::external_payment
 
       type category =
         :EXTERNAL_WIRE | :EXTERNAL_ACH | :EXTERNAL_CHECK | :EXTERNAL_TRANSFER
@@ -75,7 +73,7 @@ module Lithic
         EXTERNAL_CHECK: :EXTERNAL_CHECK
         EXTERNAL_TRANSFER: :EXTERNAL_TRANSFER
 
-        def self?.values: -> ::Array[Lithic::Models::ExternalPayment::category]
+        def self?.values: -> ::Array[Lithic::ExternalPayment::category]
       end
 
       type event =
@@ -83,11 +81,11 @@ module Lithic
           token: String,
           amount: Integer,
           created: Time,
-          detailed_results: ::Array[Lithic::Models::ExternalPayment::Event::detailed_result],
+          detailed_results: ::Array[Lithic::ExternalPayment::Event::detailed_result],
           effective_date: Date,
           memo: String,
-          result: Lithic::Models::ExternalPayment::Event::result,
-          type: Lithic::Models::ExternalPayment::Event::type_
+          result: Lithic::ExternalPayment::Event::result,
+          type: Lithic::ExternalPayment::Event::type_
         }
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -97,28 +95,26 @@ module Lithic
 
         attr_accessor created: Time
 
-        attr_accessor detailed_results: ::Array[Lithic::Models::ExternalPayment::Event::detailed_result]
+        attr_accessor detailed_results: ::Array[Lithic::ExternalPayment::Event::detailed_result]
 
         attr_accessor effective_date: Date
 
         attr_accessor memo: String
 
-        attr_accessor result: Lithic::Models::ExternalPayment::Event::result
+        attr_accessor result: Lithic::ExternalPayment::Event::result
 
-        attr_accessor type: Lithic::Models::ExternalPayment::Event::type_
+        attr_accessor type: Lithic::ExternalPayment::Event::type_
 
         def initialize: (
           token: String,
           amount: Integer,
           created: Time,
-          detailed_results: ::Array[Lithic::Models::ExternalPayment::Event::detailed_result],
+          detailed_results: ::Array[Lithic::ExternalPayment::Event::detailed_result],
           effective_date: Date,
           memo: String,
-          result: Lithic::Models::ExternalPayment::Event::result,
-          type: Lithic::Models::ExternalPayment::Event::type_
+          result: Lithic::ExternalPayment::Event::result,
+          type: Lithic::ExternalPayment::Event::type_
         ) -> void
-
-        def to_hash: -> Lithic::Models::ExternalPayment::event
 
         type detailed_result = :APPROVED
 
@@ -127,7 +123,7 @@ module Lithic
 
           APPROVED: :APPROVED
 
-          def self?.values: -> ::Array[Lithic::Models::ExternalPayment::Event::detailed_result]
+          def self?.values: -> ::Array[Lithic::ExternalPayment::Event::detailed_result]
         end
 
         type result = :APPROVED | :DECLINED
@@ -138,7 +134,7 @@ module Lithic
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
-          def self?.values: -> ::Array[Lithic::Models::ExternalPayment::Event::result]
+          def self?.values: -> ::Array[Lithic::ExternalPayment::Event::result]
         end
 
         type type_ =
@@ -187,7 +183,7 @@ module Lithic
           EXTERNAL_CHECK_REVERSED: :EXTERNAL_CHECK_REVERSED
           EXTERNAL_CHECK_RELEASED: :EXTERNAL_CHECK_RELEASED
 
-          def self?.values: -> ::Array[Lithic::Models::ExternalPayment::Event::type_]
+          def self?.values: -> ::Array[Lithic::ExternalPayment::Event::type_]
         end
       end
 
@@ -199,7 +195,7 @@ module Lithic
         DEPOSIT: :DEPOSIT
         WITHDRAWAL: :WITHDRAWAL
 
-        def self?.values: -> ::Array[Lithic::Models::ExternalPayment::payment_type]
+        def self?.values: -> ::Array[Lithic::ExternalPayment::payment_type]
       end
 
       type result = :APPROVED | :DECLINED
@@ -210,7 +206,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self?.values: -> ::Array[Lithic::Models::ExternalPayment::result]
+        def self?.values: -> ::Array[Lithic::ExternalPayment::result]
       end
 
       type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
@@ -224,7 +220,7 @@ module Lithic
         REVERSED: :REVERSED
         CANCELED: :CANCELED
 
-        def self?.values: -> ::Array[Lithic::Models::ExternalPayment::status]
+        def self?.values: -> ::Array[Lithic::ExternalPayment::status]
       end
     end
   end

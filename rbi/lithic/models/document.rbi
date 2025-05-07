@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class Document < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Globally unique identifier for the document.
       sig { returns(String) }
       attr_accessor :token
@@ -12,7 +14,7 @@ module Lithic
       attr_accessor :account_holder_token
 
       # Type of documentation to be submitted for verification of an account holder
-      sig { returns(Lithic::Models::Document::DocumentType::TaggedSymbol) }
+      sig { returns(Lithic::Document::DocumentType::TaggedSymbol) }
       attr_accessor :document_type
 
       # Globally unique identifier for an entity.
@@ -20,7 +22,7 @@ module Lithic
       attr_accessor :entity_token
 
       # Represents a single image of the document to upload.
-      sig { returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload]) }
+      sig { returns(T::Array[Lithic::Document::RequiredDocumentUpload]) }
       attr_accessor :required_document_uploads
 
       # Describes the document and the required document image uploads required to
@@ -29,11 +31,11 @@ module Lithic
         params(
           token: String,
           account_holder_token: String,
-          document_type: Lithic::Models::Document::DocumentType::OrSymbol,
+          document_type: Lithic::Document::DocumentType::OrSymbol,
           entity_token: String,
-          required_document_uploads: T::Array[T.any(Lithic::Models::Document::RequiredDocumentUpload, Lithic::Internal::AnyHash)]
-        )
-          .returns(T.attached_class)
+          required_document_uploads:
+            T::Array[Lithic::Document::RequiredDocumentUpload::OrHash]
+        ).returns(T.attached_class)
       end
       def self.new(
         # Globally unique identifier for the document.
@@ -46,60 +48,109 @@ module Lithic
         entity_token:,
         # Represents a single image of the document to upload.
         required_document_uploads:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              token: String,
-              account_holder_token: String,
-              document_type: Lithic::Models::Document::DocumentType::TaggedSymbol,
-              entity_token: String,
-              required_document_uploads: T::Array[Lithic::Models::Document::RequiredDocumentUpload]
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            token: String,
+            account_holder_token: String,
+            document_type: Lithic::Document::DocumentType::TaggedSymbol,
+            entity_token: String,
+            required_document_uploads:
+              T::Array[Lithic::Document::RequiredDocumentUpload]
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Type of documentation to be submitted for verification of an account holder
       module DocumentType
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Document::DocumentType) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Document::DocumentType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        DRIVERS_LICENSE = T.let(:DRIVERS_LICENSE, Lithic::Models::Document::DocumentType::TaggedSymbol)
-        PASSPORT = T.let(:PASSPORT, Lithic::Models::Document::DocumentType::TaggedSymbol)
-        PASSPORT_CARD = T.let(:PASSPORT_CARD, Lithic::Models::Document::DocumentType::TaggedSymbol)
-        EIN_LETTER = T.let(:EIN_LETTER, Lithic::Models::Document::DocumentType::TaggedSymbol)
-        TAX_RETURN = T.let(:TAX_RETURN, Lithic::Models::Document::DocumentType::TaggedSymbol)
-        OPERATING_AGREEMENT = T.let(:OPERATING_AGREEMENT, Lithic::Models::Document::DocumentType::TaggedSymbol)
+        DRIVERS_LICENSE =
+          T.let(:DRIVERS_LICENSE, Lithic::Document::DocumentType::TaggedSymbol)
+        PASSPORT =
+          T.let(:PASSPORT, Lithic::Document::DocumentType::TaggedSymbol)
+        PASSPORT_CARD =
+          T.let(:PASSPORT_CARD, Lithic::Document::DocumentType::TaggedSymbol)
+        EIN_LETTER =
+          T.let(:EIN_LETTER, Lithic::Document::DocumentType::TaggedSymbol)
+        TAX_RETURN =
+          T.let(:TAX_RETURN, Lithic::Document::DocumentType::TaggedSymbol)
+        OPERATING_AGREEMENT =
+          T.let(
+            :OPERATING_AGREEMENT,
+            Lithic::Document::DocumentType::TaggedSymbol
+          )
         CERTIFICATE_OF_FORMATION =
-          T.let(:CERTIFICATE_OF_FORMATION, Lithic::Models::Document::DocumentType::TaggedSymbol)
+          T.let(
+            :CERTIFICATE_OF_FORMATION,
+            Lithic::Document::DocumentType::TaggedSymbol
+          )
         CERTIFICATE_OF_GOOD_STANDING =
-          T.let(:CERTIFICATE_OF_GOOD_STANDING, Lithic::Models::Document::DocumentType::TaggedSymbol)
+          T.let(
+            :CERTIFICATE_OF_GOOD_STANDING,
+            Lithic::Document::DocumentType::TaggedSymbol
+          )
         ARTICLES_OF_INCORPORATION =
-          T.let(:ARTICLES_OF_INCORPORATION, Lithic::Models::Document::DocumentType::TaggedSymbol)
+          T.let(
+            :ARTICLES_OF_INCORPORATION,
+            Lithic::Document::DocumentType::TaggedSymbol
+          )
         ARTICLES_OF_ORGANIZATION =
-          T.let(:ARTICLES_OF_ORGANIZATION, Lithic::Models::Document::DocumentType::TaggedSymbol)
-        BYLAWS = T.let(:BYLAWS, Lithic::Models::Document::DocumentType::TaggedSymbol)
+          T.let(
+            :ARTICLES_OF_ORGANIZATION,
+            Lithic::Document::DocumentType::TaggedSymbol
+          )
+        BYLAWS = T.let(:BYLAWS, Lithic::Document::DocumentType::TaggedSymbol)
         GOVERNMENT_BUSINESS_LICENSE =
-          T.let(:GOVERNMENT_BUSINESS_LICENSE, Lithic::Models::Document::DocumentType::TaggedSymbol)
+          T.let(
+            :GOVERNMENT_BUSINESS_LICENSE,
+            Lithic::Document::DocumentType::TaggedSymbol
+          )
         PARTNERSHIP_AGREEMENT =
-          T.let(:PARTNERSHIP_AGREEMENT, Lithic::Models::Document::DocumentType::TaggedSymbol)
-        SS4_FORM = T.let(:SS4_FORM, Lithic::Models::Document::DocumentType::TaggedSymbol)
-        BANK_STATEMENT = T.let(:BANK_STATEMENT, Lithic::Models::Document::DocumentType::TaggedSymbol)
+          T.let(
+            :PARTNERSHIP_AGREEMENT,
+            Lithic::Document::DocumentType::TaggedSymbol
+          )
+        SS4_FORM =
+          T.let(:SS4_FORM, Lithic::Document::DocumentType::TaggedSymbol)
+        BANK_STATEMENT =
+          T.let(:BANK_STATEMENT, Lithic::Document::DocumentType::TaggedSymbol)
         UTILITY_BILL_STATEMENT =
-          T.let(:UTILITY_BILL_STATEMENT, Lithic::Models::Document::DocumentType::TaggedSymbol)
-        SSN_CARD = T.let(:SSN_CARD, Lithic::Models::Document::DocumentType::TaggedSymbol)
-        ITIN_LETTER = T.let(:ITIN_LETTER, Lithic::Models::Document::DocumentType::TaggedSymbol)
-        FINCEN_BOI_REPORT = T.let(:FINCEN_BOI_REPORT, Lithic::Models::Document::DocumentType::TaggedSymbol)
+          T.let(
+            :UTILITY_BILL_STATEMENT,
+            Lithic::Document::DocumentType::TaggedSymbol
+          )
+        SSN_CARD =
+          T.let(:SSN_CARD, Lithic::Document::DocumentType::TaggedSymbol)
+        ITIN_LETTER =
+          T.let(:ITIN_LETTER, Lithic::Document::DocumentType::TaggedSymbol)
+        FINCEN_BOI_REPORT =
+          T.let(
+            :FINCEN_BOI_REPORT,
+            Lithic::Document::DocumentType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::Document::DocumentType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::Document::DocumentType::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       class RequiredDocumentUpload < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Globally unique identifier for the document upload.
         sig { returns(String) }
         attr_accessor :token
@@ -114,7 +165,11 @@ module Lithic
         attr_accessor :created
 
         # Type of image to upload.
-        sig { returns(Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol) }
+        sig do
+          returns(
+            Lithic::Document::RequiredDocumentUpload::ImageType::TaggedSymbol
+          )
+        end
         attr_accessor :image_type
 
         # A list of status reasons associated with a KYB account holder that have not been
@@ -123,11 +178,21 @@ module Lithic
         attr_accessor :rejected_entity_status_reasons
 
         # Status of an account holder's document upload.
-        sig { returns(Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol) }
+        sig do
+          returns(
+            Lithic::Document::RequiredDocumentUpload::Status::TaggedSymbol
+          )
+        end
         attr_accessor :status
 
         # Reasons for document image upload status.
-        sig { returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol]) }
+        sig do
+          returns(
+            T::Array[
+              Lithic::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
+            ]
+          )
+        end
         attr_accessor :status_reasons
 
         # When the document upload was last updated
@@ -148,14 +213,17 @@ module Lithic
             token: String,
             accepted_entity_status_reasons: T::Array[String],
             created: Time,
-            image_type: Lithic::Models::Document::RequiredDocumentUpload::ImageType::OrSymbol,
+            image_type:
+              Lithic::Document::RequiredDocumentUpload::ImageType::OrSymbol,
             rejected_entity_status_reasons: T::Array[String],
-            status: Lithic::Models::Document::RequiredDocumentUpload::Status::OrSymbol,
-            status_reasons: T::Array[Lithic::Models::Document::RequiredDocumentUpload::StatusReason::OrSymbol],
+            status: Lithic::Document::RequiredDocumentUpload::Status::OrSymbol,
+            status_reasons:
+              T::Array[
+                Lithic::Document::RequiredDocumentUpload::StatusReason::OrSymbol
+              ],
             updated: Time,
             upload_url: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Globally unique identifier for the document upload.
@@ -182,57 +250,109 @@ module Lithic
           # refresh the URLs by retrieving the document upload from
           # `GET /account_holders/{account_holder_token}/documents`.
           upload_url:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                token: String,
-                accepted_entity_status_reasons: T::Array[String],
-                created: Time,
-                image_type: Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol,
-                rejected_entity_status_reasons: T::Array[String],
-                status: Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol,
-                status_reasons: T::Array[Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol],
-                updated: Time,
-                upload_url: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              token: String,
+              accepted_entity_status_reasons: T::Array[String],
+              created: Time,
+              image_type:
+                Lithic::Document::RequiredDocumentUpload::ImageType::TaggedSymbol,
+              rejected_entity_status_reasons: T::Array[String],
+              status:
+                Lithic::Document::RequiredDocumentUpload::Status::TaggedSymbol,
+              status_reasons:
+                T::Array[
+                  Lithic::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
+                ],
+              updated: Time,
+              upload_url: String
+            }
+          )
+        end
+        def to_hash
+        end
 
         # Type of image to upload.
         module ImageType
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::Document::RequiredDocumentUpload::ImageType) }
+            T.type_alias do
+              T.all(Symbol, Lithic::Document::RequiredDocumentUpload::ImageType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          FRONT = T.let(:FRONT, Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol)
-          BACK = T.let(:BACK, Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol)
+          FRONT =
+            T.let(
+              :FRONT,
+              Lithic::Document::RequiredDocumentUpload::ImageType::TaggedSymbol
+            )
+          BACK =
+            T.let(
+              :BACK,
+              Lithic::Document::RequiredDocumentUpload::ImageType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::ImageType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::Document::RequiredDocumentUpload::ImageType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         # Status of an account holder's document upload.
         module Status
           extend Lithic::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Document::RequiredDocumentUpload::Status) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Lithic::Document::RequiredDocumentUpload::Status)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ACCEPTED = T.let(:ACCEPTED, Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol)
-          REJECTED = T.let(:REJECTED, Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol)
+          ACCEPTED =
+            T.let(
+              :ACCEPTED,
+              Lithic::Document::RequiredDocumentUpload::Status::TaggedSymbol
+            )
+          REJECTED =
+            T.let(
+              :REJECTED,
+              Lithic::Document::RequiredDocumentUpload::Status::TaggedSymbol
+            )
           PENDING_UPLOAD =
-            T.let(:PENDING_UPLOAD, Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol)
-          UPLOADED = T.let(:UPLOADED, Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol)
+            T.let(
+              :PENDING_UPLOAD,
+              Lithic::Document::RequiredDocumentUpload::Status::TaggedSymbol
+            )
+          UPLOADED =
+            T.let(
+              :UPLOADED,
+              Lithic::Document::RequiredDocumentUpload::Status::TaggedSymbol
+            )
           PARTIAL_APPROVAL =
-            T.let(:PARTIAL_APPROVAL, Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol)
+            T.let(
+              :PARTIAL_APPROVAL,
+              Lithic::Document::RequiredDocumentUpload::Status::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::Status::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::Document::RequiredDocumentUpload::Status::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         # The status reasons for an account holder document upload that is not ACCEPTED
@@ -240,55 +360,79 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::Document::RequiredDocumentUpload::StatusReason) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Document::RequiredDocumentUpload::StatusReason
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           DOCUMENT_MISSING_REQUIRED_DATA =
             T.let(
               :DOCUMENT_MISSING_REQUIRED_DATA,
-              Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
+              Lithic::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
             )
           DOCUMENT_UPLOAD_TOO_BLURRY =
             T.let(
               :DOCUMENT_UPLOAD_TOO_BLURRY,
-              Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
+              Lithic::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
             )
           FILE_SIZE_TOO_LARGE =
-            T.let(:FILE_SIZE_TOO_LARGE, Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol)
+            T.let(
+              :FILE_SIZE_TOO_LARGE,
+              Lithic::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
+            )
           INVALID_DOCUMENT_TYPE =
             T.let(
               :INVALID_DOCUMENT_TYPE,
-              Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
+              Lithic::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
             )
           INVALID_DOCUMENT_UPLOAD =
             T.let(
               :INVALID_DOCUMENT_UPLOAD,
-              Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
+              Lithic::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
             )
           INVALID_ENTITY =
-            T.let(:INVALID_ENTITY, Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol)
+            T.let(
+              :INVALID_ENTITY,
+              Lithic::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
+            )
           DOCUMENT_EXPIRED =
-            T.let(:DOCUMENT_EXPIRED, Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol)
+            T.let(
+              :DOCUMENT_EXPIRED,
+              Lithic::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
+            )
           DOCUMENT_ISSUED_GREATER_THAN_30_DAYS =
             T.let(
               :DOCUMENT_ISSUED_GREATER_THAN_30_DAYS,
-              Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
+              Lithic::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
             )
           DOCUMENT_TYPE_NOT_SUPPORTED =
             T.let(
               :DOCUMENT_TYPE_NOT_SUPPORTED,
-              Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
+              Lithic::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
             )
           UNKNOWN_FAILURE_REASON =
             T.let(
               :UNKNOWN_FAILURE_REASON,
-              Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
+              Lithic::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
             )
           UNKNOWN_ERROR =
-            T.let(:UNKNOWN_ERROR, Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol)
+            T.let(
+              :UNKNOWN_ERROR,
+              Lithic::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::Document::RequiredDocumentUpload::StatusReason::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

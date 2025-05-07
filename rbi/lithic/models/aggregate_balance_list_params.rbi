@@ -6,54 +6,90 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Get the aggregate balance for a given Financial Account type.
-      sig { returns(T.nilable(Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(
+            Lithic::AggregateBalanceListParams::FinancialAccountType::OrSymbol
+          )
+        )
+      end
       attr_reader :financial_account_type
 
       sig do
-        params(financial_account_type: Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol)
-          .void
+        params(
+          financial_account_type:
+            Lithic::AggregateBalanceListParams::FinancialAccountType::OrSymbol
+        ).void
       end
       attr_writer :financial_account_type
 
       sig do
         params(
-          financial_account_type: Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          financial_account_type:
+            Lithic::AggregateBalanceListParams::FinancialAccountType::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Get the aggregate balance for a given Financial Account type.
         financial_account_type: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              financial_account_type: Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            financial_account_type:
+              Lithic::AggregateBalanceListParams::FinancialAccountType::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Get the aggregate balance for a given Financial Account type.
       module FinancialAccountType
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::AggregateBalanceListParams::FinancialAccountType
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ISSUING = T.let(:ISSUING, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol)
+        ISSUING =
+          T.let(
+            :ISSUING,
+            Lithic::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol
+          )
         OPERATING =
-          T.let(:OPERATING, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol)
-        RESERVE = T.let(:RESERVE, Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol)
+          T.let(
+            :OPERATING,
+            Lithic::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol
+          )
+        RESERVE =
+          T.let(
+            :RESERVE,
+            Lithic::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::AggregateBalanceListParams::FinancialAccountType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

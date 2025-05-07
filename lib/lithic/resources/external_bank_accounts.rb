@@ -16,29 +16,26 @@ module Lithic
       # @param account_number [String] Account Number
       #
       # @param country [String] The country that the bank account is located in using ISO 3166-1. We will only a
-      # ...
       #
       # @param currency [String] currency of the external account 3-character alphabetic ISO 4217 code
       #
       # @param financial_account_token [String] The financial account token of the operating account to fund the micro deposits
       #
       # @param owner [String] Legal Name of the business or individual who owns the external account. This wil
-      # ...
       #
-      # @param owner_type [Symbol, Lithic::Models::OwnerType] Owner Type
+      # @param owner_type [Symbol, Lithic::OwnerType] Owner Type
       #
       # @param routing_number [String] Routing Number
       #
-      # @param type [Symbol, Lithic::Models::ExternalBankAccountCreateParams::Type] Account Type
+      # @param type [Symbol, Lithic::ExternalBankAccountCreateParams::Type] Account Type
       #
-      # @param verification_method [Symbol, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod] Verification Method
+      # @param verification_method [Symbol, Lithic::ExternalBankAccountCreateParams::VerificationMethod] Verification Method
       #
       # @param processor_token [String]
       #
       # @param account_token [String] Indicates which Lithic account the external account is associated with. For exte
-      # ...
       #
-      # @param address [Lithic::Models::ExternalBankAccountAddress] Address
+      # @param address [Lithic::ExternalBankAccountAddress] Address
       #
       # @param company_id [String] Optional field that helps identify bank accounts in receipts
       #
@@ -58,7 +55,7 @@ module Lithic
       #
       # @see Lithic::Models::ExternalBankAccountCreateParams
       def create(params)
-        parsed, options = Lithic::Models::ExternalBankAccountCreateParams.dump_request(params)
+        parsed, options = Lithic::ExternalBankAccountCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v1/external_bank_accounts",
@@ -96,7 +93,7 @@ module Lithic
       #
       # @param external_bank_account_token [String]
       #
-      # @param address [Lithic::Models::ExternalBankAccountAddress] Address
+      # @param address [Lithic::ExternalBankAccountAddress] Address
       #
       # @param company_id [String] Optional field that helps identify bank accounts in receipts
       #
@@ -107,11 +104,10 @@ module Lithic
       # @param name [String] The nickname for this External Bank Account
       #
       # @param owner [String] Legal Name of the business or individual who owns the external account. This wil
-      # ...
       #
-      # @param owner_type [Symbol, Lithic::Models::OwnerType] Owner Type
+      # @param owner_type [Symbol, Lithic::OwnerType] Owner Type
       #
-      # @param type [Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type]
+      # @param type [Symbol, Lithic::ExternalBankAccountUpdateParams::Type]
       #
       # @param user_defined_id [String] User Defined ID
       #
@@ -121,7 +117,7 @@ module Lithic
       #
       # @see Lithic::Models::ExternalBankAccountUpdateParams
       def update(external_bank_account_token, params = {})
-        parsed, options = Lithic::Models::ExternalBankAccountUpdateParams.dump_request(params)
+        parsed, options = Lithic::ExternalBankAccountUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["v1/external_bank_accounts/%1$s", external_bank_account_token],
@@ -140,23 +136,21 @@ module Lithic
       #
       # @param account_token [String]
       #
-      # @param account_types [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType>]
+      # @param account_types [Array<Symbol, Lithic::ExternalBankAccountListParams::AccountType>]
       #
       # @param countries [Array<String>]
       #
       # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-      # ...
       #
-      # @param owner_types [Array<Symbol, Lithic::Models::OwnerType>]
+      # @param owner_types [Array<Symbol, Lithic::OwnerType>]
       #
       # @param page_size [Integer] Page size (for pagination).
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-      # ...
       #
-      # @param states [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::State>]
+      # @param states [Array<Symbol, Lithic::ExternalBankAccountListParams::State>]
       #
-      # @param verification_states [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState>]
+      # @param verification_states [Array<Symbol, Lithic::ExternalBankAccountListParams::VerificationState>]
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -164,7 +158,7 @@ module Lithic
       #
       # @see Lithic::Models::ExternalBankAccountListParams
       def list(params = {})
-        parsed, options = Lithic::Models::ExternalBankAccountListParams.dump_request(params)
+        parsed, options = Lithic::ExternalBankAccountListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/external_bank_accounts",
@@ -187,7 +181,7 @@ module Lithic
       #
       # @see Lithic::Models::ExternalBankAccountRetryMicroDepositsParams
       def retry_micro_deposits(external_bank_account_token, params = {})
-        parsed, options = Lithic::Models::ExternalBankAccountRetryMicroDepositsParams.dump_request(params)
+        parsed, options = Lithic::ExternalBankAccountRetryMicroDepositsParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["v1/external_bank_accounts/%1$s/retry_micro_deposits", external_bank_account_token],
@@ -209,7 +203,7 @@ module Lithic
       #
       # @see Lithic::Models::ExternalBankAccountRetryPrenoteParams
       def retry_prenote(external_bank_account_token, params = {})
-        parsed, options = Lithic::Models::ExternalBankAccountRetryPrenoteParams.dump_request(params)
+        parsed, options = Lithic::ExternalBankAccountRetryPrenoteParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["v1/external_bank_accounts/%1$s/retry_prenote", external_bank_account_token],

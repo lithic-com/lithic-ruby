@@ -22,8 +22,6 @@ module Lithic
           ?end_: Time,
           ?request_options: Lithic::request_opts
         ) -> void
-
-        def to_hash: -> Lithic::Models::Events::subscription_recover_params
       end
     end
   end

@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Specifies the digital card art to be displayed in the user’s digital wallet for
       # a tokenization. This artwork must be approved by the network and configured by
       # Lithic to use. See
@@ -19,9 +21,8 @@ module Lithic
       sig do
         params(
           digital_card_art_token: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Specifies the digital card art to be displayed in the user’s digital wallet for
@@ -30,9 +31,19 @@ module Lithic
         # [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
         digital_card_art_token: nil,
         request_options: {}
-      ); end
-      sig { override.returns({digital_card_art_token: String, request_options: Lithic::RequestOptions}) }
-      def to_hash; end
+      )
+      end
+
+      sig do
+        override.returns(
+          {
+            digital_card_art_token: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

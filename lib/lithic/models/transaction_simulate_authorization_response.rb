@@ -22,7 +22,6 @@ module Lithic
       #   {Lithic::Models::TransactionSimulateAuthorizationResponse} for more details.
       #
       #   @param token [String] A unique token to reference this transaction with later calls to void or clear t
-      #   ...
       #
       #   @param debugging_request_id [String] Debugging request ID to share with Lithic Support team.
     end

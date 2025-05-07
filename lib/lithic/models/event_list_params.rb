@@ -31,9 +31,8 @@ module Lithic
       # @!attribute event_types
       #   Event types to filter events by.
       #
-      #   @return [Array<Symbol, Lithic::Models::EventListParams::EventType>, nil]
-      optional :event_types,
-               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventListParams::EventType] }
+      #   @return [Array<Symbol, Lithic::EventListParams::EventType>, nil]
+      optional :event_types, -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::EventListParams::EventType] }
 
       # @!attribute page_size
       #   Page size (for pagination).
@@ -59,20 +58,16 @@ module Lithic
       #   {Lithic::Models::EventListParams} for more details.
       #
       #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-      #   ...
       #
       #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-      #   ...
       #
       #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-      #   ...
       #
-      #   @param event_types [Array<Symbol, Lithic::Models::EventListParams::EventType>] Event types to filter events by.
+      #   @param event_types [Array<Symbol, Lithic::EventListParams::EventType>] Event types to filter events by.
       #
       #   @param page_size [Integer] Page size (for pagination).
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-      #   ...
       #
       #   @param with_content [Boolean] Whether to include the event payload content in the response.
       #

@@ -18,20 +18,18 @@ module Lithic
           # @param financial_account_token [String] Path param: Globally unique identifier for financial account.
           #
           # @param ending_before [String] Query param: A cursor representing an item's token before which a page of result
-          # ...
           #
           # @param page_size [Integer] Query param: Page size (for pagination).
           #
           # @param starting_after [String] Query param: A cursor representing an item's token after which a page of results
-          # ...
           #
           # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Lithic::Internal::CursorPage<Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data>]
+          # @return [Lithic::Internal::CursorPage<Lithic::FinancialAccounts::Statements::StatementLineItems::Data>]
           #
           # @see Lithic::Models::FinancialAccounts::Statements::LineItemListParams
           def list(statement_token, params)
-            parsed, options = Lithic::Models::FinancialAccounts::Statements::LineItemListParams.dump_request(params)
+            parsed, options = Lithic::FinancialAccounts::Statements::LineItemListParams.dump_request(params)
             financial_account_token =
               parsed.delete(:financial_account_token) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -45,7 +43,7 @@ module Lithic
               ],
               query: parsed,
               page: Lithic::Internal::CursorPage,
-              model: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data,
+              model: Lithic::FinancialAccounts::Statements::StatementLineItems::Data,
               options: options
             )
           end

@@ -6,14 +6,18 @@ module Lithic
       class CreditConfiguration
         # Get an Account's credit configuration
         sig do
-          params(financial_account_token: String, request_options: Lithic::RequestOpts)
-            .returns(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig)
+          params(
+            financial_account_token: String,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::FinancialAccounts::FinancialAccountCreditConfig)
         end
         def retrieve(
           # Globally unique identifier for financial account.
           financial_account_token,
           request_options: {}
-        ); end
+        )
+        end
+
         # Update an account's credit configuration
         sig do
           params(
@@ -22,9 +26,8 @@ module Lithic
             credit_product_token: String,
             external_bank_account_token: String,
             tier: String,
-            request_options: Lithic::RequestOpts
-          )
-            .returns(Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::FinancialAccounts::FinancialAccountCreditConfig)
         end
         def update(
           # Globally unique identifier for financial account.
@@ -36,10 +39,13 @@ module Lithic
           # Tier to assign to a financial account
           tier: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

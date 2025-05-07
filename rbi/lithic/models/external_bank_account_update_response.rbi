@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class ExternalBankAccountUpdateResponse < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # A globally unique identifier for this record of an external bank account
       # association. If a program links an external bank account to more than one
       # end-user or to both the program and the end-user, then Lithic will return each
@@ -35,7 +37,11 @@ module Lithic
       attr_accessor :owner
 
       # Owner Type
-      sig { returns(Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::TaggedSymbol) }
+      sig do
+        returns(
+          Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::TaggedSymbol
+        )
+      end
       attr_accessor :owner_type
 
       # Routing Number
@@ -43,11 +49,19 @@ module Lithic
       attr_accessor :routing_number
 
       # Account State
-      sig { returns(Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol) }
+      sig do
+        returns(
+          Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol
+        )
+      end
       attr_accessor :state
 
       # Account Type
-      sig { returns(Lithic::Models::ExternalBankAccountUpdateResponse::Type::TaggedSymbol) }
+      sig do
+        returns(
+          Lithic::Models::ExternalBankAccountUpdateResponse::Type::TaggedSymbol
+        )
+      end
       attr_accessor :type
 
       # The number of attempts at verification
@@ -55,11 +69,19 @@ module Lithic
       attr_accessor :verification_attempts
 
       # Verification Method
-      sig { returns(Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol) }
+      sig do
+        returns(
+          Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol
+        )
+      end
       attr_accessor :verification_method
 
       # Verification State
-      sig { returns(Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::TaggedSymbol) }
+      sig do
+        returns(
+          Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::TaggedSymbol
+        )
+      end
       attr_accessor :verification_state
 
       # Indicates which Lithic account the external account is associated with. For
@@ -72,10 +94,10 @@ module Lithic
       attr_writer :account_token
 
       # Address
-      sig { returns(T.nilable(Lithic::Models::ExternalBankAccountAddress)) }
+      sig { returns(T.nilable(Lithic::ExternalBankAccountAddress)) }
       attr_reader :address
 
-      sig { params(address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::AnyHash)).void }
+      sig { params(address: Lithic::ExternalBankAccountAddress::OrHash).void }
       attr_writer :address
 
       # Optional field that helps identify bank accounts in receipts
@@ -137,15 +159,20 @@ module Lithic
           currency: String,
           last_four: String,
           owner: String,
-          owner_type: Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::OrSymbol,
+          owner_type:
+            Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::OrSymbol,
           routing_number: String,
-          state: Lithic::Models::ExternalBankAccountUpdateResponse::State::OrSymbol,
-          type: Lithic::Models::ExternalBankAccountUpdateResponse::Type::OrSymbol,
+          state:
+            Lithic::Models::ExternalBankAccountUpdateResponse::State::OrSymbol,
+          type:
+            Lithic::Models::ExternalBankAccountUpdateResponse::Type::OrSymbol,
           verification_attempts: Integer,
-          verification_method: Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::OrSymbol,
-          verification_state: Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::OrSymbol,
+          verification_method:
+            Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::OrSymbol,
+          verification_state:
+            Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::OrSymbol,
           account_token: String,
-          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::AnyHash),
+          address: Lithic::ExternalBankAccountAddress::OrHash,
           company_id: String,
           dob: Date,
           doing_business_as: String,
@@ -153,8 +180,7 @@ module Lithic
           name: String,
           user_defined_id: String,
           verification_failed_reason: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # A globally unique identifier for this record of an external bank account
@@ -212,81 +238,153 @@ module Lithic
         # ACH micro-deposits returned, this field will display the reason return code sent
         # by the ACH network
         verification_failed_reason: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              token: String,
-              country: String,
-              created: Time,
-              currency: String,
-              last_four: String,
-              owner: String,
-              owner_type: Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::TaggedSymbol,
-              routing_number: String,
-              state: Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol,
-              type: Lithic::Models::ExternalBankAccountUpdateResponse::Type::TaggedSymbol,
-              verification_attempts: Integer,
-              verification_method: Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol,
-              verification_state: Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::TaggedSymbol,
-              account_token: String,
-              address: Lithic::Models::ExternalBankAccountAddress,
-              company_id: String,
-              dob: Date,
-              doing_business_as: String,
-              financial_account_token: String,
-              name: String,
-              user_defined_id: String,
-              verification_failed_reason: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            token: String,
+            country: String,
+            created: Time,
+            currency: String,
+            last_four: String,
+            owner: String,
+            owner_type:
+              Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::TaggedSymbol,
+            routing_number: String,
+            state:
+              Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol,
+            type:
+              Lithic::Models::ExternalBankAccountUpdateResponse::Type::TaggedSymbol,
+            verification_attempts: Integer,
+            verification_method:
+              Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol,
+            verification_state:
+              Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::TaggedSymbol,
+            account_token: String,
+            address: Lithic::ExternalBankAccountAddress,
+            company_id: String,
+            dob: Date,
+            doing_business_as: String,
+            financial_account_token: String,
+            name: String,
+            user_defined_id: String,
+            verification_failed_reason: String
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Owner Type
       module OwnerType
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        BUSINESS = T.let(:BUSINESS, Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::TaggedSymbol)
+        BUSINESS =
+          T.let(
+            :BUSINESS,
+            Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::TaggedSymbol
+          )
         INDIVIDUAL =
-          T.let(:INDIVIDUAL, Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::TaggedSymbol)
+          T.let(
+            :INDIVIDUAL,
+            Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::Models::ExternalBankAccountUpdateResponse::OwnerType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       # Account State
       module State
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::State) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::Models::ExternalBankAccountUpdateResponse::State
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ENABLED = T.let(:ENABLED, Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol)
-        CLOSED = T.let(:CLOSED, Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol)
-        PAUSED = T.let(:PAUSED, Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol)
+        ENABLED =
+          T.let(
+            :ENABLED,
+            Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol
+          )
+        CLOSED =
+          T.let(
+            :CLOSED,
+            Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol
+          )
+        PAUSED =
+          T.let(
+            :PAUSED,
+            Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::Models::ExternalBankAccountUpdateResponse::State::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       # Account Type
       module Type
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::Type) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::Models::ExternalBankAccountUpdateResponse::Type
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountUpdateResponse::Type::TaggedSymbol)
-        SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountUpdateResponse::Type::TaggedSymbol)
+        CHECKING =
+          T.let(
+            :CHECKING,
+            Lithic::Models::ExternalBankAccountUpdateResponse::Type::TaggedSymbol
+          )
+        SAVINGS =
+          T.let(
+            :SAVINGS,
+            Lithic::Models::ExternalBankAccountUpdateResponse::Type::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::Models::ExternalBankAccountUpdateResponse::Type::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       # Verification Method
@@ -294,23 +392,44 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         MANUAL =
-          T.let(:MANUAL, Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol)
+          T.let(
+            :MANUAL,
+            Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol
+          )
         MICRO_DEPOSIT =
-          T.let(:MICRO_DEPOSIT, Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol)
+          T.let(
+            :MICRO_DEPOSIT,
+            Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol
+          )
         PLAID =
-          T.let(:PLAID, Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol)
+          T.let(
+            :PLAID,
+            Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol
+          )
         PRENOTE =
-          T.let(:PRENOTE, Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol)
+          T.let(
+            :PRENOTE,
+            Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol
+          )
 
         sig do
-          override
-            .returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol])
+          override.returns(
+            T::Array[
+              Lithic::Models::ExternalBankAccountUpdateResponse::VerificationMethod::TaggedSymbol
+            ]
+          )
         end
-        def self.values; end
+        def self.values
+        end
       end
 
       # Verification State
@@ -318,13 +437,24 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PENDING =
-          T.let(:PENDING, Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::TaggedSymbol)
+          T.let(
+            :PENDING,
+            Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::TaggedSymbol
+          )
         ENABLED =
-          T.let(:ENABLED, Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::TaggedSymbol)
+          T.let(
+            :ENABLED,
+            Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::TaggedSymbol
+          )
         FAILED_VERIFICATION =
           T.let(
             :FAILED_VERIFICATION,
@@ -337,10 +467,14 @@ module Lithic
           )
 
         sig do
-          override
-            .returns(T::Array[Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::TaggedSymbol])
+          override.returns(
+            T::Array[
+              Lithic::Models::ExternalBankAccountUpdateResponse::VerificationState::TaggedSymbol
+            ]
+          )
         end
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

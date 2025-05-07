@@ -39,8 +39,6 @@ module Lithic
         ?cardholder_currency: String,
         ?settlement_currencies: ::Array[String]
       ) -> void
-
-      def to_hash: -> Lithic::Models::card_program
     end
   end
 end

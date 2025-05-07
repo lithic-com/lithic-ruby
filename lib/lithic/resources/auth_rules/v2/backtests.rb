@@ -45,7 +45,7 @@ module Lithic
           #
           # @see Lithic::Models::AuthRules::V2::BacktestCreateParams
           def create(auth_rule_token, params = {})
-            parsed, options = Lithic::Models::AuthRules::V2::BacktestCreateParams.dump_request(params)
+            parsed, options = Lithic::AuthRules::V2::BacktestCreateParams.dump_request(params)
             @client.request(
               method: :post,
               path: ["v2/auth_rules/%1$s/backtests", auth_rule_token],
@@ -82,11 +82,11 @@ module Lithic
           #
           # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Lithic::Models::AuthRules::V2::BacktestResults]
+          # @return [Lithic::AuthRules::V2::BacktestResults]
           #
           # @see Lithic::Models::AuthRules::V2::BacktestRetrieveParams
           def retrieve(auth_rule_backtest_token, params)
-            parsed, options = Lithic::Models::AuthRules::V2::BacktestRetrieveParams.dump_request(params)
+            parsed, options = Lithic::AuthRules::V2::BacktestRetrieveParams.dump_request(params)
             auth_rule_token =
               parsed.delete(:auth_rule_token) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -94,7 +94,7 @@ module Lithic
             @client.request(
               method: :get,
               path: ["v2/auth_rules/%1$s/backtests/%2$s", auth_rule_token, auth_rule_backtest_token],
-              model: Lithic::Models::AuthRules::V2::BacktestResults,
+              model: Lithic::AuthRules::V2::BacktestResults,
               options: options
             )
           end

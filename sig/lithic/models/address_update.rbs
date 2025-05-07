@@ -43,8 +43,6 @@ module Lithic
         ?postal_code: String,
         ?state: String
       ) -> void
-
-      def to_hash: -> Lithic::Models::address_update
     end
   end
 end

@@ -3,22 +3,22 @@ module Lithic
     type financial_transaction =
       {
         token: String,
-        category: Lithic::Models::FinancialTransaction::category,
+        category: Lithic::FinancialTransaction::category,
         created: Time,
         currency: String,
         descriptor: String,
-        events: ::Array[Lithic::Models::FinancialTransaction::Event],
+        events: ::Array[Lithic::FinancialTransaction::Event],
         pending_amount: Integer,
-        result: Lithic::Models::FinancialTransaction::result,
+        result: Lithic::FinancialTransaction::result,
         settled_amount: Integer,
-        status: Lithic::Models::FinancialTransaction::status,
+        status: Lithic::FinancialTransaction::status,
         updated: Time
       }
 
     class FinancialTransaction < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
-      attr_accessor category: Lithic::Models::FinancialTransaction::category
+      attr_accessor category: Lithic::FinancialTransaction::category
 
       attr_accessor created: Time
 
@@ -26,33 +26,31 @@ module Lithic
 
       attr_accessor descriptor: String
 
-      attr_accessor events: ::Array[Lithic::Models::FinancialTransaction::Event]
+      attr_accessor events: ::Array[Lithic::FinancialTransaction::Event]
 
       attr_accessor pending_amount: Integer
 
-      attr_accessor result: Lithic::Models::FinancialTransaction::result
+      attr_accessor result: Lithic::FinancialTransaction::result
 
       attr_accessor settled_amount: Integer
 
-      attr_accessor status: Lithic::Models::FinancialTransaction::status
+      attr_accessor status: Lithic::FinancialTransaction::status
 
       attr_accessor updated: Time
 
       def initialize: (
         token: String,
-        category: Lithic::Models::FinancialTransaction::category,
+        category: Lithic::FinancialTransaction::category,
         created: Time,
         currency: String,
         descriptor: String,
-        events: ::Array[Lithic::Models::FinancialTransaction::Event],
+        events: ::Array[Lithic::FinancialTransaction::Event],
         pending_amount: Integer,
-        result: Lithic::Models::FinancialTransaction::result,
+        result: Lithic::FinancialTransaction::result,
         settled_amount: Integer,
-        status: Lithic::Models::FinancialTransaction::status,
+        status: Lithic::FinancialTransaction::status,
         updated: Time
       ) -> void
-
-      def to_hash: -> Lithic::Models::financial_transaction
 
       type category = :ACH | :CARD | :INTERNAL | :TRANSFER
 
@@ -64,7 +62,7 @@ module Lithic
         INTERNAL: :INTERNAL
         TRANSFER: :TRANSFER
 
-        def self?.values: -> ::Array[Lithic::Models::FinancialTransaction::category]
+        def self?.values: -> ::Array[Lithic::FinancialTransaction::category]
       end
 
       type event =
@@ -72,8 +70,8 @@ module Lithic
           token: String,
           amount: Integer,
           created: Time,
-          result: Lithic::Models::FinancialTransaction::Event::result,
-          type: Lithic::Models::FinancialTransaction::Event::type_
+          result: Lithic::FinancialTransaction::Event::result,
+          type: Lithic::FinancialTransaction::Event::type_
         }
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -89,27 +87,25 @@ module Lithic
 
         def created=: (Time) -> Time
 
-        attr_reader result: Lithic::Models::FinancialTransaction::Event::result?
+        attr_reader result: Lithic::FinancialTransaction::Event::result?
 
         def result=: (
-          Lithic::Models::FinancialTransaction::Event::result
-        ) -> Lithic::Models::FinancialTransaction::Event::result
+          Lithic::FinancialTransaction::Event::result
+        ) -> Lithic::FinancialTransaction::Event::result
 
-        attr_reader type: Lithic::Models::FinancialTransaction::Event::type_?
+        attr_reader type: Lithic::FinancialTransaction::Event::type_?
 
         def type=: (
-          Lithic::Models::FinancialTransaction::Event::type_
-        ) -> Lithic::Models::FinancialTransaction::Event::type_
+          Lithic::FinancialTransaction::Event::type_
+        ) -> Lithic::FinancialTransaction::Event::type_
 
         def initialize: (
           ?token: String,
           ?amount: Integer,
           ?created: Time,
-          ?result: Lithic::Models::FinancialTransaction::Event::result,
-          ?type: Lithic::Models::FinancialTransaction::Event::type_
+          ?result: Lithic::FinancialTransaction::Event::result,
+          ?type: Lithic::FinancialTransaction::Event::type_
         ) -> void
-
-        def to_hash: -> Lithic::Models::FinancialTransaction::event
 
         type result = :APPROVED | :DECLINED
 
@@ -119,7 +115,7 @@ module Lithic
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
-          def self?.values: -> ::Array[Lithic::Models::FinancialTransaction::Event::result]
+          def self?.values: -> ::Array[Lithic::FinancialTransaction::Event::result]
         end
 
         type type_ =
@@ -262,7 +258,7 @@ module Lithic
           RETURNED_PAYMENT_REVERSAL: :RETURNED_PAYMENT_REVERSAL
           LITHIC_NETWORK_PAYMENT: :LITHIC_NETWORK_PAYMENT
 
-          def self?.values: -> ::Array[Lithic::Models::FinancialTransaction::Event::type_]
+          def self?.values: -> ::Array[Lithic::FinancialTransaction::Event::type_]
         end
       end
 
@@ -274,7 +270,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self?.values: -> ::Array[Lithic::Models::FinancialTransaction::result]
+        def self?.values: -> ::Array[Lithic::FinancialTransaction::result]
       end
 
       type status =
@@ -290,7 +286,7 @@ module Lithic
         SETTLED: :SETTLED
         VOIDED: :VOIDED
 
-        def self?.values: -> ::Array[Lithic::Models::FinancialTransaction::status]
+        def self?.values: -> ::Array[Lithic::FinancialTransaction::status]
       end
     end
   end

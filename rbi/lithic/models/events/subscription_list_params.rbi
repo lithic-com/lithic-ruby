@@ -7,6 +7,8 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # A cursor representing an item's token before which a page of results should end.
         # Used to retrieve the previous page of results before this item.
         sig { returns(T.nilable(String)) }
@@ -35,9 +37,8 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # A cursor representing an item's token before which a page of results should end.
@@ -49,19 +50,21 @@ module Lithic
           # begin. Used to retrieve the next page of results after this item.
           starting_after: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                ending_before: String,
-                page_size: Integer,
-                starting_after: String,
-                request_options: Lithic::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              ending_before: String,
+              page_size: Integer,
+              starting_after: String,
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

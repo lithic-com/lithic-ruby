@@ -15,23 +15,23 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
       )
 
     assert_pattern do
-      response => Lithic::Models::ManagementOperationTransaction
+      response => Lithic::ManagementOperationTransaction
     end
 
     assert_pattern do
       response => {
         token: String,
-        category: Lithic::Models::ManagementOperationTransaction::Category,
+        category: Lithic::ManagementOperationTransaction::Category,
         created: Time,
         currency: String,
-        direction: Lithic::Models::ManagementOperationTransaction::Direction,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::ManagementOperationTransaction::Event]),
+        direction: Lithic::ManagementOperationTransaction::Direction,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ManagementOperationTransaction::Event]),
         financial_account_token: String,
         pending_amount: Integer,
-        result: Lithic::Models::ManagementOperationTransaction::Result,
+        result: Lithic::ManagementOperationTransaction::Result,
         settled_amount: Integer,
-        status: Lithic::Models::ManagementOperationTransaction::Status,
-        transaction_series: Lithic::Models::ManagementOperationTransaction::TransactionSeries | nil,
+        status: Lithic::ManagementOperationTransaction::Status,
+        transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries | nil,
         updated: Time,
         user_defined_id: String | nil
       }
@@ -42,23 +42,23 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
     response = @lithic.management_operations.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::ManagementOperationTransaction
+      response => Lithic::ManagementOperationTransaction
     end
 
     assert_pattern do
       response => {
         token: String,
-        category: Lithic::Models::ManagementOperationTransaction::Category,
+        category: Lithic::ManagementOperationTransaction::Category,
         created: Time,
         currency: String,
-        direction: Lithic::Models::ManagementOperationTransaction::Direction,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::ManagementOperationTransaction::Event]),
+        direction: Lithic::ManagementOperationTransaction::Direction,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ManagementOperationTransaction::Event]),
         financial_account_token: String,
         pending_amount: Integer,
-        result: Lithic::Models::ManagementOperationTransaction::Result,
+        result: Lithic::ManagementOperationTransaction::Result,
         settled_amount: Integer,
-        status: Lithic::Models::ManagementOperationTransaction::Status,
-        transaction_series: Lithic::Models::ManagementOperationTransaction::TransactionSeries | nil,
+        status: Lithic::ManagementOperationTransaction::Status,
+        transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries | nil,
         updated: Time,
         user_defined_id: String | nil
       }
@@ -76,23 +76,23 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::ManagementOperationTransaction
+      row => Lithic::ManagementOperationTransaction
     end
 
     assert_pattern do
       row => {
         token: String,
-        category: Lithic::Models::ManagementOperationTransaction::Category,
+        category: Lithic::ManagementOperationTransaction::Category,
         created: Time,
         currency: String,
-        direction: Lithic::Models::ManagementOperationTransaction::Direction,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::ManagementOperationTransaction::Event]),
+        direction: Lithic::ManagementOperationTransaction::Direction,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ManagementOperationTransaction::Event]),
         financial_account_token: String,
         pending_amount: Integer,
-        result: Lithic::Models::ManagementOperationTransaction::Result,
+        result: Lithic::ManagementOperationTransaction::Result,
         settled_amount: Integer,
-        status: Lithic::Models::ManagementOperationTransaction::Status,
-        transaction_series: Lithic::Models::ManagementOperationTransaction::TransactionSeries | nil,
+        status: Lithic::ManagementOperationTransaction::Status,
+        transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries | nil,
         updated: Time,
         user_defined_id: String | nil
       }
@@ -107,23 +107,23 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
       )
 
     assert_pattern do
-      response => Lithic::Models::ManagementOperationTransaction
+      response => Lithic::ManagementOperationTransaction
     end
 
     assert_pattern do
       response => {
         token: String,
-        category: Lithic::Models::ManagementOperationTransaction::Category,
+        category: Lithic::ManagementOperationTransaction::Category,
         created: Time,
         currency: String,
-        direction: Lithic::Models::ManagementOperationTransaction::Direction,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::ManagementOperationTransaction::Event]),
+        direction: Lithic::ManagementOperationTransaction::Direction,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ManagementOperationTransaction::Event]),
         financial_account_token: String,
         pending_amount: Integer,
-        result: Lithic::Models::ManagementOperationTransaction::Result,
+        result: Lithic::ManagementOperationTransaction::Result,
         settled_amount: Integer,
-        status: Lithic::Models::ManagementOperationTransaction::Status,
-        transaction_series: Lithic::Models::ManagementOperationTransaction::TransactionSeries | nil,
+        status: Lithic::ManagementOperationTransaction::Status,
+        transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries | nil,
         updated: Time,
         user_defined_id: String | nil
       }

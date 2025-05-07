@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class TransactionSimulateVoidResponse < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Debugging request ID to share with Lithic Support team.
       sig { returns(T.nilable(String)) }
       attr_reader :debugging_request_id
@@ -14,9 +16,12 @@ module Lithic
       def self.new(
         # Debugging request ID to share with Lithic Support team.
         debugging_request_id: nil
-      ); end
-      sig { override.returns({debugging_request_id: String}) }
-      def to_hash; end
+      )
+      end
+
+      sig { override.returns({ debugging_request_id: String }) }
+      def to_hash
+      end
     end
   end
 end

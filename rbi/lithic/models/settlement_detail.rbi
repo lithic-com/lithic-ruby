@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class SettlementDetail < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Globally unique identifier denoting the Settlement Detail.
       sig { returns(String) }
       attr_accessor :token
@@ -52,18 +54,17 @@ module Lithic
       attr_accessor :interchange_gross_amount
 
       # Card network where the transaction took place.
-      sig { returns(Lithic::Models::SettlementDetail::Network::TaggedSymbol) }
+      sig { returns(Lithic::SettlementDetail::Network::TaggedSymbol) }
       attr_accessor :network
 
       # The total gross amount of other fees by type.
-      sig { returns(Lithic::Models::SettlementDetail::OtherFeesDetails) }
+      sig { returns(Lithic::SettlementDetail::OtherFeesDetails) }
       attr_reader :other_fees_details
 
       sig do
         params(
-          other_fees_details: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Internal::AnyHash)
-        )
-          .void
+          other_fees_details: Lithic::SettlementDetail::OtherFeesDetails::OrHash
+        ).void
       end
       attr_writer :other_fees_details
 
@@ -89,7 +90,7 @@ module Lithic
       attr_accessor :transactions_gross_amount
 
       # The type of settlement record.
-      sig { returns(Lithic::Models::SettlementDetail::Type::TaggedSymbol) }
+      sig { returns(Lithic::SettlementDetail::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Date and time when the transaction first occurred. UTC time zone.
@@ -116,18 +117,18 @@ module Lithic
           institution: String,
           interchange_fee_extended_precision: Integer,
           interchange_gross_amount: Integer,
-          network: Lithic::Models::SettlementDetail::Network::OrSymbol,
-          other_fees_details: T.any(Lithic::Models::SettlementDetail::OtherFeesDetails, Lithic::Internal::AnyHash),
+          network: Lithic::SettlementDetail::Network::OrSymbol,
+          other_fees_details:
+            Lithic::SettlementDetail::OtherFeesDetails::OrHash,
           other_fees_gross_amount: Integer,
           report_date: String,
           settlement_date: String,
           transaction_token: String,
           transactions_gross_amount: Integer,
-          type: Lithic::Models::SettlementDetail::Type::OrSymbol,
+          type: Lithic::SettlementDetail::Type::OrSymbol,
           updated: Time,
           fee_description: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Globally unique identifier denoting the Settlement Detail.
@@ -177,55 +178,69 @@ module Lithic
         updated:,
         # Network's description of a fee, only present on records with type `FEE`.
         fee_description: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              token: String,
-              account_token: String,
-              card_program_token: String,
-              card_token: String,
-              created: Time,
-              currency: String,
-              disputes_gross_amount: Integer,
-              event_tokens: T::Array[String],
-              institution: String,
-              interchange_fee_extended_precision: Integer,
-              interchange_gross_amount: Integer,
-              network: Lithic::Models::SettlementDetail::Network::TaggedSymbol,
-              other_fees_details: Lithic::Models::SettlementDetail::OtherFeesDetails,
-              other_fees_gross_amount: Integer,
-              report_date: String,
-              settlement_date: String,
-              transaction_token: String,
-              transactions_gross_amount: Integer,
-              type: Lithic::Models::SettlementDetail::Type::TaggedSymbol,
-              updated: Time,
-              fee_description: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            token: String,
+            account_token: String,
+            card_program_token: String,
+            card_token: String,
+            created: Time,
+            currency: String,
+            disputes_gross_amount: Integer,
+            event_tokens: T::Array[String],
+            institution: String,
+            interchange_fee_extended_precision: Integer,
+            interchange_gross_amount: Integer,
+            network: Lithic::SettlementDetail::Network::TaggedSymbol,
+            other_fees_details: Lithic::SettlementDetail::OtherFeesDetails,
+            other_fees_gross_amount: Integer,
+            report_date: String,
+            settlement_date: String,
+            transaction_token: String,
+            transactions_gross_amount: Integer,
+            type: Lithic::SettlementDetail::Type::TaggedSymbol,
+            updated: Time,
+            fee_description: String
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Card network where the transaction took place.
       module Network
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::SettlementDetail::Network) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::SettlementDetail::Network) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        INTERLINK = T.let(:INTERLINK, Lithic::Models::SettlementDetail::Network::TaggedSymbol)
-        MAESTRO = T.let(:MAESTRO, Lithic::Models::SettlementDetail::Network::TaggedSymbol)
-        MASTERCARD = T.let(:MASTERCARD, Lithic::Models::SettlementDetail::Network::TaggedSymbol)
-        UNKNOWN = T.let(:UNKNOWN, Lithic::Models::SettlementDetail::Network::TaggedSymbol)
-        VISA = T.let(:VISA, Lithic::Models::SettlementDetail::Network::TaggedSymbol)
+        INTERLINK =
+          T.let(:INTERLINK, Lithic::SettlementDetail::Network::TaggedSymbol)
+        MAESTRO =
+          T.let(:MAESTRO, Lithic::SettlementDetail::Network::TaggedSymbol)
+        MASTERCARD =
+          T.let(:MASTERCARD, Lithic::SettlementDetail::Network::TaggedSymbol)
+        UNKNOWN =
+          T.let(:UNKNOWN, Lithic::SettlementDetail::Network::TaggedSymbol)
+        VISA = T.let(:VISA, Lithic::SettlementDetail::Network::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::SettlementDetail::Network::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::SettlementDetail::Network::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       class OtherFeesDetails < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         sig { returns(T.nilable(Integer)) }
         attr_reader :isa
 
@@ -234,31 +249,47 @@ module Lithic
 
         # The total gross amount of other fees by type.
         sig { params(isa: Integer).returns(T.attached_class) }
-        def self.new(isa: nil); end
+        def self.new(isa: nil)
+        end
 
-        sig { override.returns({isa: Integer}) }
-        def to_hash; end
+        sig { override.returns({ isa: Integer }) }
+        def to_hash
+        end
       end
 
       # The type of settlement record.
       module Type
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::SettlementDetail::Type) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::SettlementDetail::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ADJUSTMENT = T.let(:ADJUSTMENT, Lithic::Models::SettlementDetail::Type::TaggedSymbol)
-        ARBITRATION = T.let(:ARBITRATION, Lithic::Models::SettlementDetail::Type::TaggedSymbol)
-        CHARGEBACK = T.let(:CHARGEBACK, Lithic::Models::SettlementDetail::Type::TaggedSymbol)
-        CLEARING = T.let(:CLEARING, Lithic::Models::SettlementDetail::Type::TaggedSymbol)
-        FEE = T.let(:FEE, Lithic::Models::SettlementDetail::Type::TaggedSymbol)
-        FINANCIAL = T.let(:FINANCIAL, Lithic::Models::SettlementDetail::Type::TaggedSymbol)
-        NON_FINANCIAL = T.let(:"NON-FINANCIAL", Lithic::Models::SettlementDetail::Type::TaggedSymbol)
-        PREARBITRATION = T.let(:PREARBITRATION, Lithic::Models::SettlementDetail::Type::TaggedSymbol)
-        REPRESENTMENT = T.let(:REPRESENTMENT, Lithic::Models::SettlementDetail::Type::TaggedSymbol)
+        ADJUSTMENT =
+          T.let(:ADJUSTMENT, Lithic::SettlementDetail::Type::TaggedSymbol)
+        ARBITRATION =
+          T.let(:ARBITRATION, Lithic::SettlementDetail::Type::TaggedSymbol)
+        CHARGEBACK =
+          T.let(:CHARGEBACK, Lithic::SettlementDetail::Type::TaggedSymbol)
+        CLEARING =
+          T.let(:CLEARING, Lithic::SettlementDetail::Type::TaggedSymbol)
+        FEE = T.let(:FEE, Lithic::SettlementDetail::Type::TaggedSymbol)
+        FINANCIAL =
+          T.let(:FINANCIAL, Lithic::SettlementDetail::Type::TaggedSymbol)
+        NON_FINANCIAL =
+          T.let(:"NON-FINANCIAL", Lithic::SettlementDetail::Type::TaggedSymbol)
+        PREARBITRATION =
+          T.let(:PREARBITRATION, Lithic::SettlementDetail::Type::TaggedSymbol)
+        REPRESENTMENT =
+          T.let(:REPRESENTMENT, Lithic::SettlementDetail::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::SettlementDetail::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::SettlementDetail::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

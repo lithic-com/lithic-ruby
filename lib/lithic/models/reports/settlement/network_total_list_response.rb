@@ -90,15 +90,12 @@ module Lithic
           #   @param currency [String] 3-character alphabetic ISO 4217 code.
           #
           #   @param institution_id [String] The institution that activity occurred on. For Mastercard: ICA (Interbank Card A
-          #   ...
           #
           #   @param network [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Network] Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or INT
-          #   ...
           #
           #   @param report_date [Date] Date that the network total record applies to. YYYY-MM-DD format.
           #
           #   @param settlement_institution_id [String] The institution responsible for settlement. For Mastercard: same as `institution
-          #   ...
           #
           #   @param settlement_service [String] Settlement service.
           #
@@ -143,7 +140,6 @@ module Lithic
             #   @param interchange_fees [Integer] Interchange amount, in currency's smallest unit.
             #
             #   @param net_settlement [Integer] `gross_settlement` net of `interchange_fees` and `visa_charges` (if applicable),
-            #   ...
             #
             #   @param visa_charges [Integer] Charges specific to Visa/Interlink, in currency's smallest unit.
           end

@@ -7,7 +7,7 @@ class Lithic::Test::Resources::DigitalCardArtTest < Lithic::Test::ResourceTest
     response = @lithic.digital_card_art.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::DigitalCardArtAPI
+      response => Lithic::DigitalCardArtAPI
     end
 
     assert_pattern do
@@ -17,7 +17,7 @@ class Lithic::Test::Resources::DigitalCardArtTest < Lithic::Test::ResourceTest
         created: Time,
         description: String,
         is_enabled: Lithic::Internal::Type::Boolean,
-        network: Lithic::Models::DigitalCardArtAPI::Network,
+        network: Lithic::DigitalCardArtAPI::Network,
         is_card_program_default: Lithic::Internal::Type::Boolean | nil
       }
     end
@@ -34,7 +34,7 @@ class Lithic::Test::Resources::DigitalCardArtTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::DigitalCardArtAPI
+      row => Lithic::DigitalCardArtAPI
     end
 
     assert_pattern do
@@ -44,7 +44,7 @@ class Lithic::Test::Resources::DigitalCardArtTest < Lithic::Test::ResourceTest
         created: Time,
         description: String,
         is_enabled: Lithic::Internal::Type::Boolean,
-        network: Lithic::Models::DigitalCardArtAPI::Network,
+        network: Lithic::DigitalCardArtAPI::Network,
         is_card_program_default: Lithic::Internal::Type::Boolean | nil
       }
     end

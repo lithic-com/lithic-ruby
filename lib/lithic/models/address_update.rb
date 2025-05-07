@@ -43,8 +43,8 @@ module Lithic
       optional :state, String
 
       # @!method initialize(address1: nil, address2: nil, city: nil, country: nil, postal_code: nil, state: nil)
-      #   Some parameter documentations has been truncated, see
-      #   {Lithic::Models::AddressUpdate} for more details.
+      #   Some parameter documentations has been truncated, see {Lithic::AddressUpdate}
+      #   for more details.
       #
       #   @param address1 [String] Valid deliverable address (no PO boxes).
       #
@@ -53,13 +53,10 @@ module Lithic
       #   @param city [String] Name of city.
       #
       #   @param country [String] Valid country code. Only USA is currently supported, entered in uppercase ISO 31
-      #   ...
       #
       #   @param postal_code [String] Valid postal code. Only USA ZIP codes are currently supported, entered as a five
-      #   ...
       #
       #   @param state [String] Valid state code. Only USA state codes are currently supported, entered in upper
-      #   ...
     end
   end
 end

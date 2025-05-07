@@ -7,19 +7,19 @@ class Lithic::Test::Resources::AccountsTest < Lithic::Test::ResourceTest
     response = @lithic.accounts.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::Account
+      response => Lithic::Account
     end
 
     assert_pattern do
       response => {
         token: String,
         created: Time | nil,
-        spend_limit: Lithic::Models::Account::SpendLimit,
-        state: Lithic::Models::Account::State,
-        account_holder: Lithic::Models::Account::AccountHolder | nil,
+        spend_limit: Lithic::Account::SpendLimit,
+        state: Lithic::Account::State,
+        account_holder: Lithic::Account::AccountHolder | nil,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
-        verification_address: Lithic::Models::Account::VerificationAddress | nil
+        verification_address: Lithic::Account::VerificationAddress | nil
       }
     end
   end
@@ -30,19 +30,19 @@ class Lithic::Test::Resources::AccountsTest < Lithic::Test::ResourceTest
     response = @lithic.accounts.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::Account
+      response => Lithic::Account
     end
 
     assert_pattern do
       response => {
         token: String,
         created: Time | nil,
-        spend_limit: Lithic::Models::Account::SpendLimit,
-        state: Lithic::Models::Account::State,
-        account_holder: Lithic::Models::Account::AccountHolder | nil,
+        spend_limit: Lithic::Account::SpendLimit,
+        state: Lithic::Account::State,
+        account_holder: Lithic::Account::AccountHolder | nil,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
-        verification_address: Lithic::Models::Account::VerificationAddress | nil
+        verification_address: Lithic::Account::VerificationAddress | nil
       }
     end
   end
@@ -58,19 +58,19 @@ class Lithic::Test::Resources::AccountsTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::Account
+      row => Lithic::Account
     end
 
     assert_pattern do
       row => {
         token: String,
         created: Time | nil,
-        spend_limit: Lithic::Models::Account::SpendLimit,
-        state: Lithic::Models::Account::State,
-        account_holder: Lithic::Models::Account::AccountHolder | nil,
+        spend_limit: Lithic::Account::SpendLimit,
+        state: Lithic::Account::State,
+        account_holder: Lithic::Account::AccountHolder | nil,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
-        verification_address: Lithic::Models::Account::VerificationAddress | nil
+        verification_address: Lithic::Account::VerificationAddress | nil
       }
     end
   end
@@ -79,14 +79,14 @@ class Lithic::Test::Resources::AccountsTest < Lithic::Test::ResourceTest
     response = @lithic.accounts.retrieve_spend_limits("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::AccountSpendLimits
+      response => Lithic::AccountSpendLimits
     end
 
     assert_pattern do
       response => {
-        available_spend_limit: Lithic::Models::AccountSpendLimits::AvailableSpendLimit,
-        spend_limit: Lithic::Models::AccountSpendLimits::SpendLimit | nil,
-        spend_velocity: Lithic::Models::AccountSpendLimits::SpendVelocity | nil
+        available_spend_limit: Lithic::AccountSpendLimits::AvailableSpendLimit,
+        spend_limit: Lithic::AccountSpendLimits::SpendLimit | nil,
+        spend_velocity: Lithic::AccountSpendLimits::SpendVelocity | nil
       }
     end
   end

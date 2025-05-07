@@ -7,7 +7,7 @@ class Lithic::Test::Resources::AuthStreamEnrollmentTest < Lithic::Test::Resource
     response = @lithic.auth_stream_enrollment.retrieve_secret
 
     assert_pattern do
-      response => Lithic::Models::AuthStreamSecret
+      response => Lithic::AuthStreamSecret
     end
 
     assert_pattern do

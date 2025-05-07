@@ -27,8 +27,6 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> Lithic::Models::responder_endpoint_create_params
-
       type type_ =
         :AUTH_STREAM_ACCESS | :THREE_DS_DECISIONING | :TOKENIZATION_DECISIONING
 

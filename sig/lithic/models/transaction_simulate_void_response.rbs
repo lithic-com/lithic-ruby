@@ -8,8 +8,6 @@ module Lithic
       def debugging_request_id=: (String) -> String
 
       def initialize: (?debugging_request_id: String) -> void
-
-      def to_hash: -> Lithic::Models::transaction_simulate_void_response
     end
   end
 end

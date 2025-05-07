@@ -6,17 +6,22 @@ module Lithic
       class ExtendedCredit
         # Get the extended credit for a given credit product under a program
         sig do
-          params(credit_product_token: String, request_options: Lithic::RequestOpts)
-            .returns(Lithic::Models::CreditProducts::CreditProductsExtendedCredit)
+          params(
+            credit_product_token: String,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::CreditProducts::CreditProductsExtendedCredit)
         end
         def retrieve(
           # Credit Product Token
           credit_product_token,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

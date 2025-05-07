@@ -15,8 +15,6 @@ module Lithic
           micro_deposits: ::Array[Integer],
           ?request_options: Lithic::request_opts
         ) -> void
-
-        def to_hash: -> Lithic::Models::ExternalBankAccounts::micro_deposit_create_params
       end
     end
   end

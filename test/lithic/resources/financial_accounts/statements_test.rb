@@ -11,14 +11,14 @@ class Lithic::Test::Resources::FinancialAccounts::StatementsTest < Lithic::Test:
       )
 
     assert_pattern do
-      response => Lithic::Models::FinancialAccounts::Statement
+      response => Lithic::FinancialAccounts::Statement
     end
 
     assert_pattern do
       response => {
         token: String,
-        account_standing: Lithic::Models::FinancialAccounts::Statement::AccountStanding,
-        amount_due: Lithic::Models::FinancialAccounts::Statement::AmountDue,
+        account_standing: Lithic::FinancialAccounts::Statement::AccountStanding,
+        amount_due: Lithic::FinancialAccounts::Statement::AmountDue,
         available_credit: Integer,
         created: Time,
         credit_limit: Integer,
@@ -27,14 +27,14 @@ class Lithic::Test::Resources::FinancialAccounts::StatementsTest < Lithic::Test:
         ending_balance: Integer,
         financial_account_token: String,
         payment_due_date: Date | nil,
-        period_totals: Lithic::Models::FinancialAccounts::Statement::PeriodTotals,
+        period_totals: Lithic::FinancialAccounts::Statement::PeriodTotals,
         starting_balance: Integer,
         statement_end_date: Date,
         statement_start_date: Date,
-        statement_type: Lithic::Models::FinancialAccounts::Statement::StatementType,
+        statement_type: Lithic::FinancialAccounts::Statement::StatementType,
         updated: Time,
-        ytd_totals: Lithic::Models::FinancialAccounts::Statement::YtdTotals,
-        interest_details: Lithic::Models::FinancialAccounts::Statement::InterestDetails | nil,
+        ytd_totals: Lithic::FinancialAccounts::Statement::YtdTotals,
+        interest_details: Lithic::FinancialAccounts::Statement::InterestDetails | nil,
         next_payment_due_date: Date | nil,
         next_statement_end_date: Date | nil
       }
@@ -52,14 +52,14 @@ class Lithic::Test::Resources::FinancialAccounts::StatementsTest < Lithic::Test:
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::FinancialAccounts::Statement
+      row => Lithic::FinancialAccounts::Statement
     end
 
     assert_pattern do
       row => {
         token: String,
-        account_standing: Lithic::Models::FinancialAccounts::Statement::AccountStanding,
-        amount_due: Lithic::Models::FinancialAccounts::Statement::AmountDue,
+        account_standing: Lithic::FinancialAccounts::Statement::AccountStanding,
+        amount_due: Lithic::FinancialAccounts::Statement::AmountDue,
         available_credit: Integer,
         created: Time,
         credit_limit: Integer,
@@ -68,14 +68,14 @@ class Lithic::Test::Resources::FinancialAccounts::StatementsTest < Lithic::Test:
         ending_balance: Integer,
         financial_account_token: String,
         payment_due_date: Date | nil,
-        period_totals: Lithic::Models::FinancialAccounts::Statement::PeriodTotals,
+        period_totals: Lithic::FinancialAccounts::Statement::PeriodTotals,
         starting_balance: Integer,
         statement_end_date: Date,
         statement_start_date: Date,
-        statement_type: Lithic::Models::FinancialAccounts::Statement::StatementType,
+        statement_type: Lithic::FinancialAccounts::Statement::StatementType,
         updated: Time,
-        ytd_totals: Lithic::Models::FinancialAccounts::Statement::YtdTotals,
-        interest_details: Lithic::Models::FinancialAccounts::Statement::InterestDetails | nil,
+        ytd_totals: Lithic::FinancialAccounts::Statement::YtdTotals,
+        interest_details: Lithic::FinancialAccounts::Statement::InterestDetails | nil,
         next_payment_due_date: Date | nil,
         next_statement_end_date: Date | nil
       }

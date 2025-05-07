@@ -4,7 +4,7 @@ module Lithic
       {
         account_holder_token: String,
         status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status,
-        status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason]
+        status_reasons: ::Array[Lithic::AccountHolderSimulateEnrollmentReviewParams::status_reason]
       }
       & Lithic::Internal::Type::request_parameters
 
@@ -22,20 +22,18 @@ module Lithic
         Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status
       ) -> Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status
 
-      attr_reader status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason]?
+      attr_reader status_reasons: ::Array[Lithic::AccountHolderSimulateEnrollmentReviewParams::status_reason]?
 
       def status_reasons=: (
-        ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason]
-      ) -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason]
+        ::Array[Lithic::AccountHolderSimulateEnrollmentReviewParams::status_reason]
+      ) -> ::Array[Lithic::AccountHolderSimulateEnrollmentReviewParams::status_reason]
 
       def initialize: (
         ?account_holder_token: String,
         ?status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status,
-        ?status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason],
+        ?status_reasons: ::Array[Lithic::AccountHolderSimulateEnrollmentReviewParams::status_reason],
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::account_holder_simulate_enrollment_review_params
 
       type status = :ACCEPTED | :REJECTED
 
@@ -88,7 +86,7 @@ module Lithic
         BENEFICIAL_OWNER_INDIVIDUAL_ID_VERIFICATION_FAILURE: :BENEFICIAL_OWNER_INDIVIDUAL_ID_VERIFICATION_FAILURE
         BENEFICIAL_OWNER_INDIVIDUAL_NAME_VERIFICATION_FAILURE: :BENEFICIAL_OWNER_INDIVIDUAL_NAME_VERIFICATION_FAILURE
 
-        def self?.values: -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason]
+        def self?.values: -> ::Array[Lithic::AccountHolderSimulateEnrollmentReviewParams::status_reason]
       end
     end
   end

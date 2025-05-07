@@ -14,14 +14,14 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::AuthStreamSecret]
+      # @return [Lithic::AuthStreamSecret]
       #
       # @see Lithic::Models::AuthStreamEnrollmentRetrieveSecretParams
       def retrieve_secret(params = {})
         @client.request(
           method: :get,
           path: "v1/auth_stream/secret",
-          model: Lithic::Models::AuthStreamSecret,
+          model: Lithic::AuthStreamSecret,
           options: params[:request_options]
         )
       end

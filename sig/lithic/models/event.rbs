@@ -4,7 +4,7 @@ module Lithic
       {
         token: String,
         created: Time,
-        event_type: Lithic::Models::Event::event_type,
+        event_type: Lithic::Event::event_type,
         payload: ::Hash[Symbol, top]
       }
 
@@ -13,18 +13,16 @@ module Lithic
 
       attr_accessor created: Time
 
-      attr_accessor event_type: Lithic::Models::Event::event_type
+      attr_accessor event_type: Lithic::Event::event_type
 
       attr_accessor payload: ::Hash[Symbol, top]
 
       def initialize: (
         token: String,
         created: Time,
-        event_type: Lithic::Models::Event::event_type,
+        event_type: Lithic::Event::event_type,
         payload: ::Hash[Symbol, top]
       ) -> void
-
-      def to_hash: -> Lithic::Models::event
 
       type event_type =
         :"account_holder.created"
@@ -116,7 +114,7 @@ module Lithic
         TOKENIZATION_TWO_FACTOR_AUTHENTICATION_CODE_SENT: :"tokenization.two_factor_authentication_code_sent"
         TOKENIZATION_UPDATED: :"tokenization.updated"
 
-        def self?.values: -> ::Array[Lithic::Models::Event::event_type]
+        def self?.values: -> ::Array[Lithic::Event::event_type]
       end
     end
   end

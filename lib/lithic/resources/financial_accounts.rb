@@ -24,7 +24,7 @@ module Lithic
       #
       # @param nickname [String] Body param:
       #
-      # @param type [Symbol, Lithic::Models::FinancialAccountCreateParams::Type] Body param:
+      # @param type [Symbol, Lithic::FinancialAccountCreateParams::Type] Body param:
       #
       # @param account_token [String] Body param:
       #
@@ -34,18 +34,18 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::FinancialAccount]
+      # @return [Lithic::FinancialAccount]
       #
       # @see Lithic::Models::FinancialAccountCreateParams
       def create(params)
-        parsed, options = Lithic::Models::FinancialAccountCreateParams.dump_request(params)
+        parsed, options = Lithic::FinancialAccountCreateParams.dump_request(params)
         header_params = {idempotency_key: "idempotency-key"}
         @client.request(
           method: :post,
           path: "v1/financial_accounts",
           headers: parsed.slice(*header_params.keys).transform_keys(header_params),
           body: parsed.except(*header_params.keys),
-          model: Lithic::Models::FinancialAccount,
+          model: Lithic::FinancialAccount,
           options: options
         )
       end
@@ -57,14 +57,14 @@ module Lithic
       # @param financial_account_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::FinancialAccount]
+      # @return [Lithic::FinancialAccount]
       #
       # @see Lithic::Models::FinancialAccountRetrieveParams
       def retrieve(financial_account_token, params = {})
         @client.request(
           method: :get,
           path: ["v1/financial_accounts/%1$s", financial_account_token],
-          model: Lithic::Models::FinancialAccount,
+          model: Lithic::FinancialAccount,
           options: params[:request_options]
         )
       end
@@ -77,16 +77,16 @@ module Lithic
       # @param nickname [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::FinancialAccount]
+      # @return [Lithic::FinancialAccount]
       #
       # @see Lithic::Models::FinancialAccountUpdateParams
       def update(financial_account_token, params = {})
-        parsed, options = Lithic::Models::FinancialAccountUpdateParams.dump_request(params)
+        parsed, options = Lithic::FinancialAccountUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["v1/financial_accounts/%1$s", financial_account_token],
           body: parsed,
-          model: Lithic::Models::FinancialAccount,
+          model: Lithic::FinancialAccount,
           options: options
         )
       end
@@ -100,21 +100,21 @@ module Lithic
       #
       # @param business_account_token [String] List financial accounts for a given business_account_token
       #
-      # @param type [Symbol, Lithic::Models::FinancialAccountListParams::Type] List financial accounts of a given type
+      # @param type [Symbol, Lithic::FinancialAccountListParams::Type] List financial accounts of a given type
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::SinglePage<Lithic::Models::FinancialAccount>]
+      # @return [Lithic::Internal::SinglePage<Lithic::FinancialAccount>]
       #
       # @see Lithic::Models::FinancialAccountListParams
       def list(params = {})
-        parsed, options = Lithic::Models::FinancialAccountListParams.dump_request(params)
+        parsed, options = Lithic::FinancialAccountListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/financial_accounts",
           query: parsed,
           page: Lithic::Internal::SinglePage,
-          model: Lithic::Models::FinancialAccount,
+          model: Lithic::FinancialAccount,
           options: options
         )
       end
@@ -125,22 +125,22 @@ module Lithic
       #
       # @param financial_account_token [String] Globally unique identifier for financial account.
       #
-      # @param status [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status] Status of the financial account
+      # @param status [Symbol, Lithic::FinancialAccountUpdateStatusParams::Status] Status of the financial account
       #
-      # @param substatus [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil] Substatus for the financial account
+      # @param substatus [Symbol, Lithic::FinancialAccountUpdateStatusParams::Substatus, nil] Substatus for the financial account
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::FinancialAccount]
+      # @return [Lithic::FinancialAccount]
       #
       # @see Lithic::Models::FinancialAccountUpdateStatusParams
       def update_status(financial_account_token, params)
-        parsed, options = Lithic::Models::FinancialAccountUpdateStatusParams.dump_request(params)
+        parsed, options = Lithic::FinancialAccountUpdateStatusParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["v1/financial_accounts/%1$s/update_status", financial_account_token],
           body: parsed,
-          model: Lithic::Models::FinancialAccount,
+          model: Lithic::FinancialAccount,
           options: options
         )
       end

@@ -3,12 +3,14 @@
 module Lithic
   module Models
     class KYC < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Information on individual for whom the account is being opened and KYC is being
       # run.
-      sig { returns(Lithic::Models::KYC::Individual) }
+      sig { returns(Lithic::KYC::Individual) }
       attr_reader :individual
 
-      sig { params(individual: T.any(Lithic::Models::KYC::Individual, Lithic::Internal::AnyHash)).void }
+      sig { params(individual: Lithic::KYC::Individual::OrHash).void }
       attr_writer :individual
 
       # An RFC 3339 timestamp indicating when the account holder accepted the applicable
@@ -18,7 +20,7 @@ module Lithic
       attr_accessor :tos_timestamp
 
       # Specifies the type of KYC workflow to run.
-      sig { returns(Lithic::Models::KYC::Workflow::OrSymbol) }
+      sig { returns(Lithic::KYC::Workflow::OrSymbol) }
       attr_accessor :workflow
 
       # A user provided id that can be used to link an account holder with an external
@@ -41,13 +43,12 @@ module Lithic
 
       sig do
         params(
-          individual: T.any(Lithic::Models::KYC::Individual, Lithic::Internal::AnyHash),
+          individual: Lithic::KYC::Individual::OrHash,
           tos_timestamp: String,
-          workflow: Lithic::Models::KYC::Workflow::OrSymbol,
+          workflow: Lithic::KYC::Workflow::OrSymbol,
           external_id: String,
           kyc_passed_timestamp: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Information on individual for whom the account is being opened and KYC is being
@@ -67,28 +68,32 @@ module Lithic
         #
         # This field is required only if workflow type is `KYC_BYO`.
         kyc_passed_timestamp: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              individual: Lithic::Models::KYC::Individual,
-              tos_timestamp: String,
-              workflow: Lithic::Models::KYC::Workflow::OrSymbol,
-              external_id: String,
-              kyc_passed_timestamp: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            individual: Lithic::KYC::Individual,
+            tos_timestamp: String,
+            workflow: Lithic::KYC::Workflow::OrSymbol,
+            external_id: String,
+            kyc_passed_timestamp: String
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Individual < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-        sig { returns(Lithic::Models::Address) }
+        sig { returns(Lithic::Address) }
         attr_reader :address
 
-        sig { params(address: T.any(Lithic::Models::Address, Lithic::Internal::AnyHash)).void }
+        sig { params(address: Lithic::Address::OrHash).void }
         attr_writer :address
 
         # Individual's date of birth, as an RFC 3339 date.
@@ -123,15 +128,14 @@ module Lithic
         # run.
         sig do
           params(
-            address: T.any(Lithic::Models::Address, Lithic::Internal::AnyHash),
+            address: Lithic::Address::OrHash,
             dob: String,
             email: String,
             first_name: String,
             government_id: String,
             last_name: String,
             phone_number: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -153,36 +157,39 @@ module Lithic
           last_name:,
           # Individual's phone number, entered in E.164 format.
           phone_number:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                address: Lithic::Models::Address,
-                dob: String,
-                email: String,
-                first_name: String,
-                government_id: String,
-                last_name: String,
-                phone_number: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              address: Lithic::Address,
+              dob: String,
+              email: String,
+              first_name: String,
+              government_id: String,
+              last_name: String,
+              phone_number: String
+            }
+          )
+        end
+        def to_hash
+        end
       end
 
       # Specifies the type of KYC workflow to run.
       module Workflow
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::KYC::Workflow) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::KYC::Workflow) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        KYC_BASIC = T.let(:KYC_BASIC, Lithic::Models::KYC::Workflow::TaggedSymbol)
-        KYC_BYO = T.let(:KYC_BYO, Lithic::Models::KYC::Workflow::TaggedSymbol)
+        KYC_BASIC = T.let(:KYC_BASIC, Lithic::KYC::Workflow::TaggedSymbol)
+        KYC_BYO = T.let(:KYC_BYO, Lithic::KYC::Workflow::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::KYC::Workflow::TaggedSymbol]) }
-        def self.values; end
+        sig { override.returns(T::Array[Lithic::KYC::Workflow::TaggedSymbol]) }
+        def self.values
+        end
       end
     end
   end

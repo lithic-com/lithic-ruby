@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class CardProgram < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Globally unique identifier.
       sig { returns(String) }
       attr_accessor :token
@@ -47,8 +49,7 @@ module Lithic
           pan_range_start: String,
           cardholder_currency: String,
           settlement_currencies: T::Array[String]
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Globally unique identifier.
@@ -66,22 +67,24 @@ module Lithic
         # List of 3-character alphabetic ISO 4217 codes for the currencies that the card
         # program supports for settlement.
         settlement_currencies: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              token: String,
-              created: Time,
-              name: String,
-              pan_range_end: String,
-              pan_range_start: String,
-              cardholder_currency: String,
-              settlement_currencies: T::Array[String]
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            token: String,
+            created: Time,
+            name: String,
+            pan_range_end: String,
+            pan_range_start: String,
+            cardholder_currency: String,
+            settlement_currencies: T::Array[String]
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

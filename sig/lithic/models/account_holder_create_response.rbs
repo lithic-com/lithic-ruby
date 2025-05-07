@@ -8,7 +8,7 @@ module Lithic
         status_reasons: ::Array[Lithic::Models::AccountHolderCreateResponse::status_reason],
         created: Time,
         external_id: String,
-        required_documents: ::Array[Lithic::Models::RequiredDocument]
+        required_documents: ::Array[Lithic::RequiredDocument]
       }
 
     class AccountHolderCreateResponse < Lithic::Internal::Type::BaseModel
@@ -28,11 +28,11 @@ module Lithic
 
       def external_id=: (String) -> String
 
-      attr_reader required_documents: ::Array[Lithic::Models::RequiredDocument]?
+      attr_reader required_documents: ::Array[Lithic::RequiredDocument]?
 
       def required_documents=: (
-        ::Array[Lithic::Models::RequiredDocument]
-      ) -> ::Array[Lithic::Models::RequiredDocument]
+        ::Array[Lithic::RequiredDocument]
+      ) -> ::Array[Lithic::RequiredDocument]
 
       def initialize: (
         token: String,
@@ -41,10 +41,8 @@ module Lithic
         status_reasons: ::Array[Lithic::Models::AccountHolderCreateResponse::status_reason],
         ?created: Time,
         ?external_id: String,
-        ?required_documents: ::Array[Lithic::Models::RequiredDocument]
+        ?required_documents: ::Array[Lithic::RequiredDocument]
       ) -> void
-
-      def to_hash: -> Lithic::Models::account_holder_create_response
 
       type status =
         :ACCEPTED

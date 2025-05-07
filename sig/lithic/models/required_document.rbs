@@ -19,8 +19,6 @@ module Lithic
         status_reasons: ::Array[String],
         valid_documents: ::Array[String]
       ) -> void
-
-      def to_hash: -> Lithic::Models::required_document
     end
   end
 end

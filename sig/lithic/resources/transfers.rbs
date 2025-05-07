@@ -8,7 +8,7 @@ module Lithic
         ?token: String,
         ?memo: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::Transfer
+      ) -> Lithic::Transfer
 
       def initialize: (client: Lithic::Client) -> void
     end

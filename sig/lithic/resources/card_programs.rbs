@@ -4,14 +4,14 @@ module Lithic
       def retrieve: (
         String card_program_token,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::CardProgram
+      ) -> Lithic::CardProgram
 
       def list: (
         ?ending_before: String,
         ?page_size: Integer,
         ?starting_after: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Internal::CursorPage[Lithic::Models::CardProgram]
+      ) -> Lithic::Internal::CursorPage[Lithic::CardProgram]
 
       def initialize: (client: Lithic::Client) -> void
     end

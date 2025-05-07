@@ -7,6 +7,8 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Account tokens to which the Auth Rule applies.
         sig { returns(T::Array[String]) }
         attr_accessor :account_tokens
@@ -32,9 +34,8 @@ module Lithic
             card_tokens: T::Array[String],
             program_level: T::Boolean,
             excluded_card_tokens: T::Array[String],
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Account tokens to which the Auth Rule applies.
@@ -46,20 +47,22 @@ module Lithic
           # Card tokens to which the Auth Rule does not apply.
           excluded_card_tokens: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                account_tokens: T::Array[String],
-                card_tokens: T::Array[String],
-                program_level: T::Boolean,
-                excluded_card_tokens: T::Array[String],
-                request_options: Lithic::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              account_tokens: T::Array[String],
+              card_tokens: T::Array[String],
+              program_level: T::Boolean,
+              excluded_card_tokens: T::Array[String],
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

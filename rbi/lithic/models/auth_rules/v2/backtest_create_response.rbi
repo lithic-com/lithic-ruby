@@ -5,6 +5,9 @@ module Lithic
     module AuthRules
       module V2
         class BacktestCreateResponse < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Auth Rule Backtest Token
           sig { returns(T.nilable(String)) }
           attr_reader :backtest_token
@@ -16,9 +19,12 @@ module Lithic
           def self.new(
             # Auth Rule Backtest Token
             backtest_token: nil
-          ); end
-          sig { override.returns({backtest_token: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig { override.returns({ backtest_token: String }) }
+          def to_hash
+          end
         end
       end
     end

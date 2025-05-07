@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class ShippingAddress < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Valid USPS routable address.
       sig { returns(String) }
       attr_accessor :address1
@@ -81,8 +83,7 @@ module Lithic
           email: String,
           line2_text: String,
           phone_number: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Valid USPS routable address.
@@ -116,26 +117,28 @@ module Lithic
         # Cardholder's phone number in E.164 format to be contacted for expedited shipping
         # process purposes. Required if `shipping_method` is `EXPEDITED`.
         phone_number: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              address1: String,
-              city: String,
-              country: String,
-              first_name: String,
-              last_name: String,
-              postal_code: String,
-              state: String,
-              address2: String,
-              email: String,
-              line2_text: String,
-              phone_number: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            address1: String,
+            city: String,
+            country: String,
+            first_name: String,
+            last_name: String,
+            postal_code: String,
+            state: String,
+            address2: String,
+            email: String,
+            line2_text: String,
+            phone_number: String
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

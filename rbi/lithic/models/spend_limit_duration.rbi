@@ -17,16 +17,20 @@ module Lithic
     module SpendLimitDuration
       extend Lithic::Internal::Type::Enum
 
-      TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::SpendLimitDuration) }
+      TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::SpendLimitDuration) }
       OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-      ANNUALLY = T.let(:ANNUALLY, Lithic::Models::SpendLimitDuration::TaggedSymbol)
-      FOREVER = T.let(:FOREVER, Lithic::Models::SpendLimitDuration::TaggedSymbol)
-      MONTHLY = T.let(:MONTHLY, Lithic::Models::SpendLimitDuration::TaggedSymbol)
-      TRANSACTION = T.let(:TRANSACTION, Lithic::Models::SpendLimitDuration::TaggedSymbol)
+      ANNUALLY = T.let(:ANNUALLY, Lithic::SpendLimitDuration::TaggedSymbol)
+      FOREVER = T.let(:FOREVER, Lithic::SpendLimitDuration::TaggedSymbol)
+      MONTHLY = T.let(:MONTHLY, Lithic::SpendLimitDuration::TaggedSymbol)
+      TRANSACTION =
+        T.let(:TRANSACTION, Lithic::SpendLimitDuration::TaggedSymbol)
 
-      sig { override.returns(T::Array[Lithic::Models::SpendLimitDuration::TaggedSymbol]) }
-      def self.values; end
+      sig do
+        override.returns(T::Array[Lithic::SpendLimitDuration::TaggedSymbol])
+      end
+      def self.values
+      end
     end
   end
 end

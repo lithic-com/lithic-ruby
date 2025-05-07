@@ -9,9 +9,8 @@ module Lithic
           params(
             loan_tape_token: String,
             financial_account_token: String,
-            request_options: Lithic::RequestOpts
-          )
-            .returns(Lithic::Models::FinancialAccounts::LoanTape)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::FinancialAccounts::LoanTape)
         end
         def retrieve(
           # Globally unique identifier for loan tape.
@@ -19,7 +18,9 @@ module Lithic
           # Globally unique identifier for financial account.
           financial_account_token:,
           request_options: {}
-        ); end
+        )
+        end
+
         # List the loan tapes for a given financial account.
         sig do
           params(
@@ -29,9 +30,10 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            request_options: Lithic::RequestOpts
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(
+            Lithic::Internal::CursorPage[Lithic::FinancialAccounts::LoanTape]
           )
-            .returns(Lithic::Internal::CursorPage[Lithic::Models::FinancialAccounts::LoanTape])
         end
         def list(
           # Globally unique identifier for financial account.
@@ -51,10 +53,13 @@ module Lithic
           # begin. Used to retrieve the next page of results after this item.
           starting_after: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

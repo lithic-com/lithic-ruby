@@ -7,7 +7,7 @@ module Lithic
         created: Time,
         description: String,
         is_enabled: bool,
-        network: Lithic::Models::DigitalCardArtAPI::network,
+        network: Lithic::DigitalCardArtAPI::network,
         is_card_program_default: bool
       }
 
@@ -22,7 +22,7 @@ module Lithic
 
       attr_accessor is_enabled: bool
 
-      attr_accessor network: Lithic::Models::DigitalCardArtAPI::network
+      attr_accessor network: Lithic::DigitalCardArtAPI::network
 
       attr_reader is_card_program_default: bool?
 
@@ -34,11 +34,9 @@ module Lithic
         created: Time,
         description: String,
         is_enabled: bool,
-        network: Lithic::Models::DigitalCardArtAPI::network,
+        network: Lithic::DigitalCardArtAPI::network,
         ?is_card_program_default: bool
       ) -> void
-
-      def to_hash: -> Lithic::Models::digital_card_art_api
 
       type network = :MASTERCARD | :VISA
 
@@ -48,7 +46,7 @@ module Lithic
         MASTERCARD: :MASTERCARD
         VISA: :VISA
 
-        def self?.values: -> ::Array[Lithic::Models::DigitalCardArtAPI::network]
+        def self?.values: -> ::Array[Lithic::DigitalCardArtAPI::network]
       end
     end
   end

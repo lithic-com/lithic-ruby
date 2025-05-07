@@ -7,7 +7,7 @@ module Lithic
         ?business_account_token: String,
         ?financial_account_type: Lithic::Models::BalanceListParams::financial_account_type,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Internal::SinglePage[Lithic::Models::Balance]
+      ) -> Lithic::Internal::SinglePage[Lithic::Balance]
 
       def initialize: (client: Lithic::Client) -> void
     end
