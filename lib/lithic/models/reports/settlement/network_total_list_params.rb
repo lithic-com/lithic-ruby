@@ -39,8 +39,8 @@ module Lithic
           # @!attribute network
           #   Network to filter on.
           #
-          #   @return [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network, nil]
-          optional :network, enum: -> { Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network }
+          #   @return [Symbol, Lithic::Reports::Settlement::NetworkTotalListParams::Network, nil]
+          optional :network, enum: -> { Lithic::Reports::Settlement::NetworkTotalListParams::Network }
 
           # @!attribute page_size
           #   Number of records per page.
@@ -85,22 +85,18 @@ module Lithic
           #   {Lithic::Models::Reports::Settlement::NetworkTotalListParams} for more details.
           #
           #   @param begin_ [Time] Datetime in RFC 3339 format. Only entries created after the specified time will
-          #   ...
           #
           #   @param end_ [Time] Datetime in RFC 3339 format. Only entries created before the specified time will
-          #   ...
           #
           #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-          #   ...
           #
           #   @param institution_id [String] Institution ID to filter on.
           #
-          #   @param network [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network] Network to filter on.
+          #   @param network [Symbol, Lithic::Reports::Settlement::NetworkTotalListParams::Network] Network to filter on.
           #
           #   @param page_size [Integer] Number of records per page.
           #
           #   @param report_date [Date] Singular report date to filter on (YYYY-MM-DD). Cannot be populated in conjuncti
-          #   ...
           #
           #   @param report_date_begin [Date] Earliest report date to filter on, inclusive (YYYY-MM-DD).
           #
@@ -109,7 +105,6 @@ module Lithic
           #   @param settlement_institution_id [String] Settlement institution ID to filter on.
           #
           #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-          #   ...
           #
           #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

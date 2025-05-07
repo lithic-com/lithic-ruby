@@ -6,18 +6,20 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # The shipping address this card will be sent to.
-      sig { returns(Lithic::Models::ShippingAddress) }
+      sig { returns(Lithic::ShippingAddress) }
       attr_reader :shipping_address
 
-      sig { params(shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Internal::AnyHash)).void }
+      sig { params(shipping_address: Lithic::ShippingAddress::OrHash).void }
       attr_writer :shipping_address
 
       # If omitted, the previous carrier will be used.
-      sig { returns(T.nilable(Lithic::Models::Carrier)) }
+      sig { returns(T.nilable(Lithic::Carrier)) }
       attr_reader :carrier
 
-      sig { params(carrier: T.any(Lithic::Models::Carrier, Lithic::Internal::AnyHash)).void }
+      sig { params(carrier: Lithic::Carrier::OrHash).void }
       attr_writer :carrier
 
       # Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` is provided,
@@ -57,23 +59,28 @@ module Lithic
       # - `2_DAY` - FedEx 2-day shipping, with tracking
       # - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #   tracking
-      sig { returns(T.nilable(Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol)) }
+      sig do
+        returns(T.nilable(Lithic::CardRenewParams::ShippingMethod::OrSymbol))
+      end
       attr_reader :shipping_method
 
-      sig { params(shipping_method: Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol).void }
+      sig do
+        params(
+          shipping_method: Lithic::CardRenewParams::ShippingMethod::OrSymbol
+        ).void
+      end
       attr_writer :shipping_method
 
       sig do
         params(
-          shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Internal::AnyHash),
-          carrier: T.any(Lithic::Models::Carrier, Lithic::Internal::AnyHash),
+          shipping_address: Lithic::ShippingAddress::OrHash,
+          carrier: Lithic::Carrier::OrHash,
           exp_month: String,
           exp_year: String,
           product_id: String,
-          shipping_method: Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          shipping_method: Lithic::CardRenewParams::ShippingMethod::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The shipping address this card will be sent to.
@@ -104,22 +111,24 @@ module Lithic
         #   tracking
         shipping_method: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              shipping_address: Lithic::Models::ShippingAddress,
-              carrier: Lithic::Models::Carrier,
-              exp_month: String,
-              exp_year: String,
-              product_id: String,
-              shipping_method: Lithic::Models::CardRenewParams::ShippingMethod::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            shipping_address: Lithic::ShippingAddress,
+            carrier: Lithic::Carrier,
+            exp_month: String,
+            exp_year: String,
+            product_id: String,
+            shipping_method: Lithic::CardRenewParams::ShippingMethod::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
       # options besides `STANDARD` require additional permissions.
@@ -136,19 +145,44 @@ module Lithic
       module ShippingMethod
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardRenewParams::ShippingMethod) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::CardRenewParams::ShippingMethod)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        SHIPPING_METHOD_2_DAY = T.let(:"2_DAY", Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
-        EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
-        EXPRESS = T.let(:EXPRESS, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
-        PRIORITY = T.let(:PRIORITY, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
-        STANDARD = T.let(:STANDARD, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
+        SHIPPING_METHOD_2_DAY =
+          T.let(:"2_DAY", Lithic::CardRenewParams::ShippingMethod::TaggedSymbol)
+        EXPEDITED =
+          T.let(
+            :EXPEDITED,
+            Lithic::CardRenewParams::ShippingMethod::TaggedSymbol
+          )
+        EXPRESS =
+          T.let(:EXPRESS, Lithic::CardRenewParams::ShippingMethod::TaggedSymbol)
+        PRIORITY =
+          T.let(
+            :PRIORITY,
+            Lithic::CardRenewParams::ShippingMethod::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :STANDARD,
+            Lithic::CardRenewParams::ShippingMethod::TaggedSymbol
+          )
         STANDARD_WITH_TRACKING =
-          T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol)
+          T.let(
+            :STANDARD_WITH_TRACKING,
+            Lithic::CardRenewParams::ShippingMethod::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::CardRenewParams::ShippingMethod::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::CardRenewParams::ShippingMethod::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

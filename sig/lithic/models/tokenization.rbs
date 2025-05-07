@@ -7,13 +7,13 @@ module Lithic
         card_token: String,
         created_at: Time,
         dpan: String?,
-        status: Lithic::Models::Tokenization::status,
-        token_requestor_name: Lithic::Models::Tokenization::token_requestor_name,
+        status: Lithic::Tokenization::status,
+        token_requestor_name: Lithic::Tokenization::token_requestor_name,
         token_unique_reference: String,
-        tokenization_channel: Lithic::Models::Tokenization::tokenization_channel,
+        tokenization_channel: Lithic::Tokenization::tokenization_channel,
         updated_at: Time,
         digital_card_art_token: String,
-        events: ::Array[Lithic::Models::Tokenization::Event],
+        events: ::Array[Lithic::Tokenization::Event],
         payment_account_reference_id: String?
       }
 
@@ -28,13 +28,13 @@ module Lithic
 
       attr_accessor dpan: String?
 
-      attr_accessor status: Lithic::Models::Tokenization::status
+      attr_accessor status: Lithic::Tokenization::status
 
-      attr_accessor token_requestor_name: Lithic::Models::Tokenization::token_requestor_name
+      attr_accessor token_requestor_name: Lithic::Tokenization::token_requestor_name
 
       attr_accessor token_unique_reference: String
 
-      attr_accessor tokenization_channel: Lithic::Models::Tokenization::tokenization_channel
+      attr_accessor tokenization_channel: Lithic::Tokenization::tokenization_channel
 
       attr_accessor updated_at: Time
 
@@ -42,11 +42,11 @@ module Lithic
 
       def digital_card_art_token=: (String) -> String
 
-      attr_reader events: ::Array[Lithic::Models::Tokenization::Event]?
+      attr_reader events: ::Array[Lithic::Tokenization::Event]?
 
       def events=: (
-        ::Array[Lithic::Models::Tokenization::Event]
-      ) -> ::Array[Lithic::Models::Tokenization::Event]
+        ::Array[Lithic::Tokenization::Event]
+      ) -> ::Array[Lithic::Tokenization::Event]
 
       attr_accessor payment_account_reference_id: String?
 
@@ -56,17 +56,15 @@ module Lithic
         card_token: String,
         created_at: Time,
         dpan: String?,
-        status: Lithic::Models::Tokenization::status,
-        token_requestor_name: Lithic::Models::Tokenization::token_requestor_name,
+        status: Lithic::Tokenization::status,
+        token_requestor_name: Lithic::Tokenization::token_requestor_name,
         token_unique_reference: String,
-        tokenization_channel: Lithic::Models::Tokenization::tokenization_channel,
+        tokenization_channel: Lithic::Tokenization::tokenization_channel,
         updated_at: Time,
         ?digital_card_art_token: String,
-        ?events: ::Array[Lithic::Models::Tokenization::Event],
+        ?events: ::Array[Lithic::Tokenization::Event],
         ?payment_account_reference_id: String?
       ) -> void
-
-      def to_hash: -> Lithic::Models::tokenization
 
       type status =
         :ACTIVE
@@ -88,7 +86,7 @@ module Lithic
         PENDING_ACTIVATION: :PENDING_ACTIVATION
         UNKNOWN: :UNKNOWN
 
-        def self?.values: -> ::Array[Lithic::Models::Tokenization::status]
+        def self?.values: -> ::Array[Lithic::Tokenization::status]
       end
 
       type token_requestor_name =
@@ -119,7 +117,7 @@ module Lithic
         UNKNOWN: :UNKNOWN
         VISA_CHECKOUT: :VISA_CHECKOUT
 
-        def self?.values: -> ::Array[Lithic::Models::Tokenization::token_requestor_name]
+        def self?.values: -> ::Array[Lithic::Tokenization::token_requestor_name]
       end
 
       type tokenization_channel = :DIGITAL_WALLET | :MERCHANT
@@ -130,15 +128,15 @@ module Lithic
         DIGITAL_WALLET: :DIGITAL_WALLET
         MERCHANT: :MERCHANT
 
-        def self?.values: -> ::Array[Lithic::Models::Tokenization::tokenization_channel]
+        def self?.values: -> ::Array[Lithic::Tokenization::tokenization_channel]
       end
 
       type event =
         {
           token: String,
           created_at: Time,
-          result: Lithic::Models::Tokenization::Event::result,
-          type: Lithic::Models::Tokenization::Event::type_
+          result: Lithic::Tokenization::Event::result,
+          type: Lithic::Tokenization::Event::type_
         }
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -150,26 +148,24 @@ module Lithic
 
         def created_at=: (Time) -> Time
 
-        attr_reader result: Lithic::Models::Tokenization::Event::result?
+        attr_reader result: Lithic::Tokenization::Event::result?
 
         def result=: (
-          Lithic::Models::Tokenization::Event::result
-        ) -> Lithic::Models::Tokenization::Event::result
+          Lithic::Tokenization::Event::result
+        ) -> Lithic::Tokenization::Event::result
 
-        attr_reader type: Lithic::Models::Tokenization::Event::type_?
+        attr_reader type: Lithic::Tokenization::Event::type_?
 
         def type=: (
-          Lithic::Models::Tokenization::Event::type_
-        ) -> Lithic::Models::Tokenization::Event::type_
+          Lithic::Tokenization::Event::type_
+        ) -> Lithic::Tokenization::Event::type_
 
         def initialize: (
           ?token: String,
           ?created_at: Time,
-          ?result: Lithic::Models::Tokenization::Event::result,
-          ?type: Lithic::Models::Tokenization::Event::type_
+          ?result: Lithic::Tokenization::Event::result,
+          ?type: Lithic::Tokenization::Event::type_
         ) -> void
-
-        def to_hash: -> Lithic::Models::Tokenization::event
 
         type result =
           :APPROVED
@@ -199,7 +195,7 @@ module Lithic
           TOKEN_SUSPENDED: :TOKEN_SUSPENDED
           TOKEN_UPDATED: :TOKEN_UPDATED
 
-          def self?.values: -> ::Array[Lithic::Models::Tokenization::Event::result]
+          def self?.values: -> ::Array[Lithic::Tokenization::Event::result]
         end
 
         type type_ =
@@ -218,7 +214,7 @@ module Lithic
           TOKENIZATION_ELIGIBILITY_CHECK: :TOKENIZATION_ELIGIBILITY_CHECK
           TOKENIZATION_UPDATED: :TOKENIZATION_UPDATED
 
-          def self?.values: -> ::Array[Lithic::Models::Tokenization::Event::type_]
+          def self?.values: -> ::Array[Lithic::Tokenization::Event::type_]
         end
       end
     end

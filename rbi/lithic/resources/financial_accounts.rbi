@@ -6,7 +6,9 @@ module Lithic
       sig { returns(Lithic::Resources::FinancialAccounts::Balances) }
       attr_reader :balances
 
-      sig { returns(Lithic::Resources::FinancialAccounts::FinancialTransactions) }
+      sig do
+        returns(Lithic::Resources::FinancialAccounts::FinancialTransactions)
+      end
       attr_reader :financial_transactions
 
       sig { returns(Lithic::Resources::FinancialAccounts::CreditConfiguration) }
@@ -22,13 +24,12 @@ module Lithic
       sig do
         params(
           nickname: String,
-          type: Lithic::Models::FinancialAccountCreateParams::Type::OrSymbol,
+          type: Lithic::FinancialAccountCreateParams::Type::OrSymbol,
           account_token: String,
           is_for_benefit_of: T::Boolean,
           idempotency_key: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::FinancialAccount)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::FinancialAccount)
       end
       def create(
         # Body param:
@@ -42,20 +43,29 @@ module Lithic
         # Header param:
         idempotency_key: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get a financial account
       sig do
-        params(financial_account_token: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::FinancialAccount)
+        params(
+          financial_account_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::FinancialAccount)
       end
-      def retrieve(financial_account_token, request_options: {}); end
+      def retrieve(financial_account_token, request_options: {})
+      end
 
       # Update a financial account
       sig do
-        params(financial_account_token: String, nickname: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::FinancialAccount)
+        params(
+          financial_account_token: String,
+          nickname: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::FinancialAccount)
       end
-      def update(financial_account_token, nickname: nil, request_options: {}); end
+      def update(financial_account_token, nickname: nil, request_options: {})
+      end
 
       # Retrieve information on your financial accounts including routing and account
       # number.
@@ -63,10 +73,9 @@ module Lithic
         params(
           account_token: String,
           business_account_token: String,
-          type: Lithic::Models::FinancialAccountListParams::Type::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Internal::SinglePage[Lithic::Models::FinancialAccount])
+          type: Lithic::FinancialAccountListParams::Type::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Internal::SinglePage[Lithic::FinancialAccount])
       end
       def list(
         # List financial accounts for a given account_token or business_account_token
@@ -76,16 +85,20 @@ module Lithic
         # List financial accounts of a given type
         type: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Update financial account status
       sig do
         params(
           financial_account_token: String,
-          status: Lithic::Models::FinancialAccountUpdateStatusParams::Status::OrSymbol,
-          substatus: T.nilable(Lithic::Models::FinancialAccountUpdateStatusParams::Substatus::OrSymbol),
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::FinancialAccount)
+          status: Lithic::FinancialAccountUpdateStatusParams::Status::OrSymbol,
+          substatus:
+            T.nilable(
+              Lithic::FinancialAccountUpdateStatusParams::Substatus::OrSymbol
+            ),
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::FinancialAccount)
       end
       def update_status(
         # Globally unique identifier for financial account.
@@ -95,10 +108,13 @@ module Lithic
         # Substatus for the financial account
         substatus:,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

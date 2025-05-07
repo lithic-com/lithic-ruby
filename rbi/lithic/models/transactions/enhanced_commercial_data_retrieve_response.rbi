@@ -4,19 +4,26 @@ module Lithic
   module Models
     module Transactions
       class EnhancedCommercialDataRetrieveResponse < Lithic::Internal::Type::BaseModel
-        sig { returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData]) }
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
+        sig { returns(T::Array[Lithic::Transactions::Events::EnhancedData]) }
         attr_accessor :data
 
         sig do
           params(
-            data: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData, Lithic::Internal::AnyHash)]
-          )
-            .returns(T.attached_class)
+            data: T::Array[Lithic::Transactions::Events::EnhancedData::OrHash]
+          ).returns(T.attached_class)
         end
-        def self.new(data:); end
+        def self.new(data:)
+        end
 
-        sig { override.returns({data: T::Array[Lithic::Models::Transactions::Events::EnhancedData]}) }
-        def to_hash; end
+        sig do
+          override.returns(
+            { data: T::Array[Lithic::Transactions::Events::EnhancedData] }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

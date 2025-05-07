@@ -47,18 +47,14 @@ module Lithic
         #   {Lithic::Models::FinancialAccounts::LoanTapeListParams} for more details.
         #
         #   @param begin_ [Date] Date string in RFC 3339 format. Only entries created after the specified date wi
-        #   ...
         #
         #   @param end_ [Date] Date string in RFC 3339 format. Only entries created before the specified date w
-        #   ...
         #
         #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-        #   ...
         #
         #   @param page_size [Integer] Page size (for pagination).
         #
         #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-        #   ...
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end

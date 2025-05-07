@@ -16,29 +16,25 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> void
 
-        def to_hash: -> Lithic::Models::AuthRules::v2_draft_params
-
         type parameters =
-          Lithic::Models::AuthRules::ConditionalBlockParameters
-          | Lithic::Models::AuthRules::VelocityLimitParams
-          | Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters
+          Lithic::AuthRules::ConditionalBlockParameters
+          | Lithic::AuthRules::VelocityLimitParams
+          | Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters
 
         module Parameters
           extend Lithic::Internal::Type::Union
 
           type merchant_lock_parameters =
             {
-              merchants: ::Array[Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant]
+              merchants: ::Array[Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant]
             }
 
           class MerchantLockParameters < Lithic::Internal::Type::BaseModel
-            attr_accessor merchants: ::Array[Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant]
+            attr_accessor merchants: ::Array[Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant]
 
             def initialize: (
-              merchants: ::Array[Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant]
+              merchants: ::Array[Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant]
             ) -> void
-
-            def to_hash: -> Lithic::Models::AuthRules::V2DraftParams::Parameters::merchant_lock_parameters
 
             type merchant =
               { comment: String, descriptor: String, merchant_id: String }
@@ -61,12 +57,10 @@ module Lithic
                 ?descriptor: String,
                 ?merchant_id: String
               ) -> void
-
-              def to_hash: -> Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::merchant
             end
           end
 
-          def self?.variants: -> [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters]
+          def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2DraftParams::parameters]
         end
       end
     end

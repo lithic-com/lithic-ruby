@@ -3,7 +3,7 @@ module Lithic
     class AuthStreamEnrollment
       def retrieve_secret: (
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::AuthStreamSecret
+      ) -> Lithic::AuthStreamSecret
 
       def rotate_secret: (?request_options: Lithic::request_opts) -> nil
 

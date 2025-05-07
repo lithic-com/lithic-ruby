@@ -7,14 +7,20 @@ module Lithic
         class NetworkTotals
           # Retrieve a specific network total record by token. Not available in sandbox.
           sig do
-            params(token: String, request_options: Lithic::RequestOpts)
-              .returns(Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse)
+            params(
+              token: String,
+              request_options: Lithic::RequestOptions::OrHash
+            ).returns(
+              Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse
+            )
           end
           def retrieve(
             # Token of the network total record to retrieve
             token,
             request_options: {}
-          ); end
+          )
+          end
+
           # List network total records with optional filters. Not available in sandbox.
           sig do
             params(
@@ -22,16 +28,20 @@ module Lithic
               end_: Time,
               ending_before: String,
               institution_id: String,
-              network: Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol,
+              network:
+                Lithic::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol,
               page_size: Integer,
               report_date: Date,
               report_date_begin: Date,
               report_date_end: Date,
               settlement_institution_id: String,
               starting_after: String,
-              request_options: Lithic::RequestOpts
+              request_options: Lithic::RequestOptions::OrHash
+            ).returns(
+              Lithic::Internal::CursorPage[
+                Lithic::Models::Reports::Settlement::NetworkTotalListResponse
+              ]
             )
-              .returns(Lithic::Internal::CursorPage[Lithic::Models::Reports::Settlement::NetworkTotalListResponse])
           end
           def list(
             # Datetime in RFC 3339 format. Only entries created after the specified time will
@@ -62,10 +72,13 @@ module Lithic
             # begin. Used to retrieve the next page of results after this item.
             starting_after: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # @api private
           sig { params(client: Lithic::Client).returns(T.attached_class) }
-          def self.new(client:); end
+          def self.new(client:)
+          end
         end
       end
     end

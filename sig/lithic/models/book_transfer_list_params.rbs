@@ -85,8 +85,6 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> Lithic::Models::book_transfer_list_params
-
       type category =
         :BALANCE_OR_FUNDING
         | :FEE

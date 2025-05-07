@@ -7,14 +7,25 @@ module Lithic
       module ChallengeResult
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::ChallengeResult) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::ThreeDS::ChallengeResult) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        APPROVE = T.let(:APPROVE, Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol)
-        DECLINE_BY_CUSTOMER = T.let(:DECLINE_BY_CUSTOMER, Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol)
+        APPROVE =
+          T.let(:APPROVE, Lithic::ThreeDS::ChallengeResult::TaggedSymbol)
+        DECLINE_BY_CUSTOMER =
+          T.let(
+            :DECLINE_BY_CUSTOMER,
+            Lithic::ThreeDS::ChallengeResult::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ThreeDS::ChallengeResult::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::ThreeDS::ChallengeResult::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

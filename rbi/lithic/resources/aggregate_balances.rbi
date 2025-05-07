@@ -7,19 +7,22 @@ module Lithic
       # type
       sig do
         params(
-          financial_account_type: Lithic::Models::AggregateBalanceListParams::FinancialAccountType::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Internal::SinglePage[Lithic::Models::AggregateBalance])
+          financial_account_type:
+            Lithic::AggregateBalanceListParams::FinancialAccountType::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Internal::SinglePage[Lithic::AggregateBalance])
       end
       def list(
         # Get the aggregate balance for a given Financial Account type.
         financial_account_type: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       sig { returns(T.nilable(String)) }
       attr_reader :account_token
 
@@ -26,10 +28,12 @@ module Lithic
       sig { params(business_account_token: String).void }
       attr_writer :business_account_token
 
-      sig { returns(T.nilable(Lithic::Models::PaymentListParams::Category::OrSymbol)) }
+      sig { returns(T.nilable(Lithic::PaymentListParams::Category::OrSymbol)) }
       attr_reader :category
 
-      sig { params(category: Lithic::Models::PaymentListParams::Category::OrSymbol).void }
+      sig do
+        params(category: Lithic::PaymentListParams::Category::OrSymbol).void
+      end
       attr_writer :category
 
       # Date string in RFC 3339 format. Only entries created before the specified time
@@ -61,10 +65,10 @@ module Lithic
       sig { params(page_size: Integer).void }
       attr_writer :page_size
 
-      sig { returns(T.nilable(Lithic::Models::PaymentListParams::Result::OrSymbol)) }
+      sig { returns(T.nilable(Lithic::PaymentListParams::Result::OrSymbol)) }
       attr_reader :result
 
-      sig { params(result: Lithic::Models::PaymentListParams::Result::OrSymbol).void }
+      sig { params(result: Lithic::PaymentListParams::Result::OrSymbol).void }
       attr_writer :result
 
       # A cursor representing an item's token after which a page of results should
@@ -75,10 +79,10 @@ module Lithic
       sig { params(starting_after: String).void }
       attr_writer :starting_after
 
-      sig { returns(T.nilable(Lithic::Models::PaymentListParams::Status::OrSymbol)) }
+      sig { returns(T.nilable(Lithic::PaymentListParams::Status::OrSymbol)) }
       attr_reader :status
 
-      sig { params(status: Lithic::Models::PaymentListParams::Status::OrSymbol).void }
+      sig { params(status: Lithic::PaymentListParams::Status::OrSymbol).void }
       attr_writer :status
 
       sig do
@@ -86,17 +90,16 @@ module Lithic
           account_token: String,
           begin_: Time,
           business_account_token: String,
-          category: Lithic::Models::PaymentListParams::Category::OrSymbol,
+          category: Lithic::PaymentListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
-          result: Lithic::Models::PaymentListParams::Result::OrSymbol,
+          result: Lithic::PaymentListParams::Result::OrSymbol,
           starting_after: String,
-          status: Lithic::Models::PaymentListParams::Status::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          status: Lithic::PaymentListParams::Status::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         account_token: nil,
@@ -120,66 +123,92 @@ module Lithic
         starting_after: nil,
         status: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              account_token: String,
-              begin_: Time,
-              business_account_token: String,
-              category: Lithic::Models::PaymentListParams::Category::OrSymbol,
-              end_: Time,
-              ending_before: String,
-              financial_account_token: String,
-              page_size: Integer,
-              result: Lithic::Models::PaymentListParams::Result::OrSymbol,
-              starting_after: String,
-              status: Lithic::Models::PaymentListParams::Status::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            account_token: String,
+            begin_: Time,
+            business_account_token: String,
+            category: Lithic::PaymentListParams::Category::OrSymbol,
+            end_: Time,
+            ending_before: String,
+            financial_account_token: String,
+            page_size: Integer,
+            result: Lithic::PaymentListParams::Result::OrSymbol,
+            starting_after: String,
+            status: Lithic::PaymentListParams::Status::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       module Category
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentListParams::Category) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::PaymentListParams::Category) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ACH = T.let(:ACH, Lithic::Models::PaymentListParams::Category::TaggedSymbol)
+        ACH = T.let(:ACH, Lithic::PaymentListParams::Category::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::PaymentListParams::Category::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::PaymentListParams::Category::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       module Result
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentListParams::Result) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::PaymentListParams::Result) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        APPROVED = T.let(:APPROVED, Lithic::Models::PaymentListParams::Result::TaggedSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::PaymentListParams::Result::TaggedSymbol)
+        APPROVED =
+          T.let(:APPROVED, Lithic::PaymentListParams::Result::TaggedSymbol)
+        DECLINED =
+          T.let(:DECLINED, Lithic::PaymentListParams::Result::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::PaymentListParams::Result::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::PaymentListParams::Result::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       module Status
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::PaymentListParams::Status) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::PaymentListParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        DECLINED = T.let(:DECLINED, Lithic::Models::PaymentListParams::Status::TaggedSymbol)
-        PENDING = T.let(:PENDING, Lithic::Models::PaymentListParams::Status::TaggedSymbol)
-        RETURNED = T.let(:RETURNED, Lithic::Models::PaymentListParams::Status::TaggedSymbol)
-        SETTLED = T.let(:SETTLED, Lithic::Models::PaymentListParams::Status::TaggedSymbol)
+        DECLINED =
+          T.let(:DECLINED, Lithic::PaymentListParams::Status::TaggedSymbol)
+        PENDING =
+          T.let(:PENDING, Lithic::PaymentListParams::Status::TaggedSymbol)
+        RETURNED =
+          T.let(:RETURNED, Lithic::PaymentListParams::Status::TaggedSymbol)
+        SETTLED =
+          T.let(:SETTLED, Lithic::PaymentListParams::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::PaymentListParams::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::PaymentListParams::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

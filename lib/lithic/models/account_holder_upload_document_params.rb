@@ -10,8 +10,8 @@ module Lithic
       # @!attribute document_type
       #   The type of document to upload
       #
-      #   @return [Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType]
-      required :document_type, enum: -> { Lithic::Models::AccountHolderUploadDocumentParams::DocumentType }
+      #   @return [Symbol, Lithic::AccountHolderUploadDocumentParams::DocumentType]
+      required :document_type, enum: -> { Lithic::AccountHolderUploadDocumentParams::DocumentType }
 
       # @!attribute entity_token
       #   Globally unique identifier for the entity.
@@ -20,7 +20,7 @@ module Lithic
       required :entity_token, String
 
       # @!method initialize(document_type:, entity_token:, request_options: {})
-      #   @param document_type [Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType] The type of document to upload
+      #   @param document_type [Symbol, Lithic::AccountHolderUploadDocumentParams::DocumentType] The type of document to upload
       #
       #   @param entity_token [String] Globally unique identifier for the entity.
       #

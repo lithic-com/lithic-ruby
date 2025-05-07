@@ -6,30 +6,30 @@ module Lithic
           url: String,
           ?description: String,
           ?disabled: bool,
-          ?event_types: ::Array[Lithic::Models::Events::SubscriptionCreateParams::event_type],
+          ?event_types: ::Array[Lithic::Events::SubscriptionCreateParams::event_type],
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::EventSubscription
+        ) -> Lithic::EventSubscription
 
         def retrieve: (
           String event_subscription_token,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::EventSubscription
+        ) -> Lithic::EventSubscription
 
         def update: (
           String event_subscription_token,
           url: String,
           ?description: String,
           ?disabled: bool,
-          ?event_types: ::Array[Lithic::Models::Events::SubscriptionUpdateParams::event_type],
+          ?event_types: ::Array[Lithic::Events::SubscriptionUpdateParams::event_type],
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::EventSubscription
+        ) -> Lithic::EventSubscription
 
         def list: (
           ?ending_before: String,
           ?page_size: Integer,
           ?starting_after: String,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Internal::CursorPage[Lithic::Models::EventSubscription]
+        ) -> Lithic::Internal::CursorPage[Lithic::EventSubscription]
 
         def delete: (
           String event_subscription_token,
@@ -45,7 +45,7 @@ module Lithic
           ?starting_after: String,
           ?status: Lithic::Models::Events::SubscriptionListAttemptsParams::status,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Internal::CursorPage[Lithic::Models::MessageAttempt]
+        ) -> Lithic::Internal::CursorPage[Lithic::MessageAttempt]
 
         def recover: (
           String event_subscription_token,

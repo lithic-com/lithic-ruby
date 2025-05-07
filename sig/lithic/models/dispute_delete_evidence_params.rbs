@@ -13,8 +13,6 @@ module Lithic
         dispute_token: String,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::dispute_delete_evidence_params
     end
   end
 end

@@ -7,6 +7,8 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Account tokens to which the Auth Rule applies.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :account_tokens
@@ -23,10 +25,14 @@ module Lithic
         # Note that only deactivating an Auth Rule through this endpoint is supported at
         # this time. If you need to (re-)activate an Auth Rule the /promote endpoint
         # should be used to promote a draft to the currently active version.
-        sig { returns(T.nilable(Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol)) }
+        sig do
+          returns(T.nilable(Lithic::AuthRules::V2UpdateParams::State::OrSymbol))
+        end
         attr_reader :state
 
-        sig { params(state: Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol).void }
+        sig do
+          params(state: Lithic::AuthRules::V2UpdateParams::State::OrSymbol).void
+        end
         attr_writer :state
 
         # Card tokens to which the Auth Rule applies.
@@ -54,13 +60,12 @@ module Lithic
           params(
             account_tokens: T::Array[String],
             name: T.nilable(String),
-            state: Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol,
+            state: Lithic::AuthRules::V2UpdateParams::State::OrSymbol,
             card_tokens: T::Array[String],
             excluded_card_tokens: T::Array[String],
             program_level: T::Boolean,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Account tokens to which the Auth Rule applies.
@@ -80,22 +85,24 @@ module Lithic
           # Whether the Auth Rule applies to all authorizations on the card program.
           program_level: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                account_tokens: T::Array[String],
-                name: T.nilable(String),
-                state: Lithic::Models::AuthRules::V2UpdateParams::State::OrSymbol,
-                card_tokens: T::Array[String],
-                excluded_card_tokens: T::Array[String],
-                program_level: T::Boolean,
-                request_options: Lithic::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              account_tokens: T::Array[String],
+              name: T.nilable(String),
+              state: Lithic::AuthRules::V2UpdateParams::State::OrSymbol,
+              card_tokens: T::Array[String],
+              excluded_card_tokens: T::Array[String],
+              program_level: T::Boolean,
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The desired state of the Auth Rule.
         #
@@ -105,13 +112,25 @@ module Lithic
         module State
           extend Lithic::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::V2UpdateParams::State) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Lithic::AuthRules::V2UpdateParams::State)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          INACTIVE = T.let(:INACTIVE, Lithic::Models::AuthRules::V2UpdateParams::State::TaggedSymbol)
+          INACTIVE =
+            T.let(
+              :INACTIVE,
+              Lithic::AuthRules::V2UpdateParams::State::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::AuthRules::V2UpdateParams::State::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Lithic::AuthRules::V2UpdateParams::State::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

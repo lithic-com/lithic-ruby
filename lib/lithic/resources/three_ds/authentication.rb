@@ -34,14 +34,13 @@ module Lithic
         #
         # @overload simulate(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {})
         #
-        # @param merchant [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant]
+        # @param merchant [Lithic::ThreeDS::AuthenticationSimulateParams::Merchant]
         #
         # @param pan [String] Sixteen digit card number.
         #
-        # @param transaction [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction]
+        # @param transaction [Lithic::ThreeDS::AuthenticationSimulateParams::Transaction]
         #
-        # @param card_expiry_check [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck] When set will use the following values as part of the Simulated Authentication.
-        # ...
+        # @param card_expiry_check [Symbol, Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck] When set will use the following values as part of the Simulated Authentication.
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -49,7 +48,7 @@ module Lithic
         #
         # @see Lithic::Models::ThreeDS::AuthenticationSimulateParams
         def simulate(params)
-          parsed, options = Lithic::Models::ThreeDS::AuthenticationSimulateParams.dump_request(params)
+          parsed, options = Lithic::ThreeDS::AuthenticationSimulateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/three_ds_authentication/simulate",
@@ -71,7 +70,6 @@ module Lithic
         # @overload simulate_otp_entry(token:, otp:, request_options: {})
         #
         # @param token [String] A unique token returned as part of a /v1/three_ds_authentication/simulate call t
-        # ...
         #
         # @param otp [String] The OTP entered by the cardholder
         #
@@ -81,7 +79,7 @@ module Lithic
         #
         # @see Lithic::Models::ThreeDS::AuthenticationSimulateOtpEntryParams
         def simulate_otp_entry(params)
-          parsed, options = Lithic::Models::ThreeDS::AuthenticationSimulateOtpEntryParams.dump_request(params)
+          parsed, options = Lithic::ThreeDS::AuthenticationSimulateOtpEntryParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/three_ds_decisioning/simulate/enter_otp",

@@ -31,8 +31,8 @@ module Lithic
       #   - `REJECTED` - Evidence was rejected.
       #   - `UPLOADED` - Evidence was uploaded.
       #
-      #   @return [Symbol, Lithic::Models::DisputeEvidence::UploadStatus]
-      required :upload_status, enum: -> { Lithic::Models::DisputeEvidence::UploadStatus }
+      #   @return [Symbol, Lithic::DisputeEvidence::UploadStatus]
+      required :upload_status, enum: -> { Lithic::DisputeEvidence::UploadStatus }
 
       # @!attribute download_url
       #   URL to download evidence. Only shown when `upload_status` is `UPLOADED`.
@@ -54,8 +54,8 @@ module Lithic
       optional :upload_url, String
 
       # @!method initialize(token:, created:, dispute_token:, upload_status:, download_url: nil, filename: nil, upload_url: nil)
-      #   Some parameter documentations has been truncated, see
-      #   {Lithic::Models::DisputeEvidence} for more details.
+      #   Some parameter documentations has been truncated, see {Lithic::DisputeEvidence}
+      #   for more details.
       #
       #   Dispute evidence.
       #
@@ -65,12 +65,11 @@ module Lithic
       #
       #   @param dispute_token [String] Dispute token evidence is attached to.
       #
-      #   @param upload_status [Symbol, Lithic::Models::DisputeEvidence::UploadStatus] Upload status types: ...
+      #   @param upload_status [Symbol, Lithic::DisputeEvidence::UploadStatus] Upload status types:
       #
       #   @param download_url [String] URL to download evidence. Only shown when `upload_status` is `UPLOADED`.
       #
       #   @param filename [String] File name of evidence. Recommended to give the dispute evidence a human-readable
-      #   ...
       #
       #   @param upload_url [String] URL to upload evidence. Only shown when `upload_status` is `PENDING`.
 
@@ -82,7 +81,7 @@ module Lithic
       # - `REJECTED` - Evidence was rejected.
       # - `UPLOADED` - Evidence was uploaded.
       #
-      # @see Lithic::Models::DisputeEvidence#upload_status
+      # @see Lithic::DisputeEvidence#upload_status
       module UploadStatus
         extend Lithic::Internal::Type::Enum
 

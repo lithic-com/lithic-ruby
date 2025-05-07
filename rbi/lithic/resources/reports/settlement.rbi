@@ -14,9 +14,8 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            request_options: Lithic::RequestOpts
-          )
-            .returns(Lithic::Internal::CursorPage[Lithic::Models::SettlementDetail])
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::Internal::CursorPage[Lithic::SettlementDetail])
         end
         def list_details(
           # Date of the settlement report to retrieve. Not available in sandbox.
@@ -30,17 +29,27 @@ module Lithic
           # begin. Used to retrieve the next page of results after this item.
           starting_after: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Get the settlement report for a specified report date. Not available in sandbox.
-        sig { params(report_date: Date, request_options: Lithic::RequestOpts).returns(Lithic::Models::SettlementReport) }
+        sig do
+          params(
+            report_date: Date,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::SettlementReport)
+        end
         def summary(
           # Date of the settlement report to retrieve.
           report_date,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

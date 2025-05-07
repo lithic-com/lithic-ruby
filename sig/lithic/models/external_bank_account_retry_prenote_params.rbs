@@ -16,8 +16,6 @@ module Lithic
         ?financial_account_token: String,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::external_bank_account_retry_prenote_params
     end
   end
 end

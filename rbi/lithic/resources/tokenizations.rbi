@@ -5,14 +5,18 @@ module Lithic
     class Tokenizations
       # Get tokenization
       sig do
-        params(tokenization_token: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::TokenizationRetrieveResponse)
+        params(
+          tokenization_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::TokenizationRetrieveResponse)
       end
       def retrieve(
         # Tokenization token
         tokenization_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # List card tokenizations
       sig do
         params(
@@ -23,10 +27,10 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          tokenization_channel: Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Internal::CursorPage[Lithic::Models::Tokenization])
+          tokenization_channel:
+            Lithic::TokenizationListParams::TokenizationChannel::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Internal::CursorPage[Lithic::Tokenization])
       end
       def list(
         # Filters for tokenizations associated with a specific account.
@@ -49,7 +53,9 @@ module Lithic
         # DIGITAL_WALLET tokenizations will be returned.
         tokenization_channel: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used to ask the card network to activate a tokenization. A
       # successful response indicates that the request was successfully delivered to the
       # card network. When the card network activates the tokenization, the state will
@@ -58,12 +64,19 @@ module Lithic
       # `PENDING_ACTIVATION`, or `PENDING_2FA`. This will put the tokenization in an
       # active state, and transactions will be allowed. Reach out at
       # [lithic.com/contact](https://lithic.com/contact) for more information.
-      sig { params(tokenization_token: String, request_options: Lithic::RequestOpts).void }
+      sig do
+        params(
+          tokenization_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).void
+      end
       def activate(
         # Tokenization token
         tokenization_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used to ask the card network to deactivate a tokenization. A
       # successful response indicates that the request was successfully delivered to the
       # card network. When the card network deactivates the tokenization, the state will
@@ -73,12 +86,19 @@ module Lithic
       # operation. If the target is a digital wallet tokenization, it will be removed
       # from its device. Reach out at [lithic.com/contact](https://lithic.com/contact)
       # for more information.
-      sig { params(tokenization_token: String, request_options: Lithic::RequestOpts).void }
+      sig do
+        params(
+          tokenization_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).void
+      end
       def deactivate(
         # Tokenization token
         tokenization_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used to ask the card network to pause a tokenization. A
       # successful response indicates that the request was successfully delivered to the
       # card network. When the card network pauses the tokenization, the state will be
@@ -87,12 +107,19 @@ module Lithic
       # merchants from sending authorizations, and is a temporary status that can be
       # changed. Reach out at [lithic.com/contact](https://lithic.com/contact) for more
       # information.
-      sig { params(tokenization_token: String, request_options: Lithic::RequestOpts).void }
+      sig do
+        params(
+          tokenization_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).void
+      end
       def pause(
         # Tokenization token
         tokenization_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used to ask the card network to send another activation code to
       # a cardholder that has already tried tokenizing a card. A successful response
       # indicates that the request was successfully delivered to the card network. The
@@ -106,10 +133,10 @@ module Lithic
       sig do
         params(
           tokenization_token: String,
-          activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .void
+          activation_method_type:
+            Lithic::TokenizationResendActivationCodeParams::ActivationMethodType::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).void
       end
       def resend_activation_code(
         # Tokenization token
@@ -119,7 +146,9 @@ module Lithic
         # = "EMAIL_TO_CARDHOLDER_ADDRESS"
         activation_method_type: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used to simulate a card's tokenization in the Digital Wallet
       # and merchant tokenization ecosystem.
       sig do
@@ -127,14 +156,15 @@ module Lithic
           cvv: String,
           expiration_date: String,
           pan: String,
-          tokenization_source: Lithic::Models::TokenizationSimulateParams::TokenizationSource::OrSymbol,
+          tokenization_source:
+            Lithic::TokenizationSimulateParams::TokenizationSource::OrSymbol,
           account_score: Integer,
           device_score: Integer,
           entity: String,
-          wallet_recommended_decision: Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::TokenizationSimulateResponse)
+          wallet_recommended_decision:
+            Lithic::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::TokenizationSimulateResponse)
       end
       def simulate(
         # The three digit cvv for the card.
@@ -157,7 +187,9 @@ module Lithic
         # The decision that the Digital Wallet's recommend
         wallet_recommended_decision: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used to ask the card network to unpause a tokenization. A
       # successful response indicates that the request was successfully delivered to the
       # card network. When the card network unpauses the tokenization, the state will be
@@ -165,12 +197,19 @@ module Lithic
       # used on tokenizations with status `PAUSED`. This will put the tokenization in an
       # active state, and transactions may resume. Reach out at
       # [lithic.com/contact](https://lithic.com/contact) for more information.
-      sig { params(tokenization_token: String, request_options: Lithic::RequestOpts).void }
+      sig do
+        params(
+          tokenization_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).void
+      end
       def unpause(
         # Tokenization token
         tokenization_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used update the digital card art for a digital wallet
       # tokenization. A successful response indicates that the card network has updated
       # the tokenization's art, and the tokenization's `digital_cart_art_token` field
@@ -183,9 +222,8 @@ module Lithic
         params(
           tokenization_token: String,
           digital_card_art_token: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::TokenizationUpdateDigitalCardArtResponse)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::TokenizationUpdateDigitalCardArtResponse)
       end
       def update_digital_card_art(
         # Tokenization token
@@ -196,10 +234,13 @@ module Lithic
         # [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
         digital_card_art_token: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

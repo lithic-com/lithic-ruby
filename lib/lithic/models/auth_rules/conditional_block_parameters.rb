@@ -6,11 +6,11 @@ module Lithic
       class ConditionalBlockParameters < Lithic::Internal::Type::BaseModel
         # @!attribute conditions
         #
-        #   @return [Array<Lithic::Models::AuthRules::AuthRuleCondition>]
-        required :conditions, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AuthRules::AuthRuleCondition] }
+        #   @return [Array<Lithic::AuthRules::AuthRuleCondition>]
+        required :conditions, -> { Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::AuthRuleCondition] }
 
         # @!method initialize(conditions:)
-        #   @param conditions [Array<Lithic::Models::AuthRules::AuthRuleCondition>]
+        #   @param conditions [Array<Lithic::AuthRules::AuthRuleCondition>]
       end
     end
   end

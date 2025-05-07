@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       sig { returns(T.nilable(String)) }
       attr_reader :nickname
 
@@ -13,13 +15,21 @@ module Lithic
       attr_writer :nickname
 
       sig do
-        params(nickname: String, request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash))
-          .returns(T.attached_class)
+        params(
+          nickname: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(nickname: nil, request_options: {}); end
+      def self.new(nickname: nil, request_options: {})
+      end
 
-      sig { override.returns({nickname: String, request_options: Lithic::RequestOptions}) }
-      def to_hash; end
+      sig do
+        override.returns(
+          { nickname: String, request_options: Lithic::RequestOptions }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

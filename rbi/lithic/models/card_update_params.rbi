@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Specifies the digital card art to be displayed in the user’s digital wallet
       # after tokenization. This artwork must be approved by Mastercard and configured
       # by Lithic to use. See
@@ -34,10 +36,12 @@ module Lithic
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       # attempts). Can only be set to `OK` to unblock a card.
-      sig { returns(T.nilable(Lithic::Models::CardUpdateParams::PinStatus::OrSymbol)) }
+      sig { returns(T.nilable(Lithic::CardUpdateParams::PinStatus::OrSymbol)) }
       attr_reader :pin_status
 
-      sig { params(pin_status: Lithic::Models::CardUpdateParams::PinStatus::OrSymbol).void }
+      sig do
+        params(pin_status: Lithic::CardUpdateParams::PinStatus::OrSymbol).void
+      end
       attr_writer :pin_status
 
       # Amount (in cents) to limit approved authorizations (e.g. 100000 would be a
@@ -63,10 +67,12 @@ module Lithic
       #   starts 6 days after the current calendar date one month prior.
       # - `TRANSACTION` - Card will authorize multiple transactions if each individual
       #   transaction is under the spend limit.
-      sig { returns(T.nilable(Lithic::Models::SpendLimitDuration::OrSymbol)) }
+      sig { returns(T.nilable(Lithic::SpendLimitDuration::OrSymbol)) }
       attr_reader :spend_limit_duration
 
-      sig { params(spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol).void }
+      sig do
+        params(spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol).void
+      end
       attr_writer :spend_limit_duration
 
       # Card state values:
@@ -77,10 +83,10 @@ module Lithic
       #   parameters).
       # - `PAUSED` - Card will decline authorizations, but can be resumed at a later
       #   time.
-      sig { returns(T.nilable(Lithic::Models::CardUpdateParams::State::OrSymbol)) }
+      sig { returns(T.nilable(Lithic::CardUpdateParams::State::OrSymbol)) }
       attr_reader :state
 
-      sig { params(state: Lithic::Models::CardUpdateParams::State::OrSymbol).void }
+      sig { params(state: Lithic::CardUpdateParams::State::OrSymbol).void }
       attr_writer :state
 
       sig do
@@ -88,13 +94,12 @@ module Lithic
           digital_card_art_token: String,
           memo: String,
           pin: String,
-          pin_status: Lithic::Models::CardUpdateParams::PinStatus::OrSymbol,
+          pin_status: Lithic::CardUpdateParams::PinStatus::OrSymbol,
           spend_limit: Integer,
-          spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
-          state: Lithic::Models::CardUpdateParams::State::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol,
+          state: Lithic::CardUpdateParams::State::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Specifies the digital card art to be displayed in the user’s digital wallet
@@ -140,36 +145,44 @@ module Lithic
         #   time.
         state: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              digital_card_art_token: String,
-              memo: String,
-              pin: String,
-              pin_status: Lithic::Models::CardUpdateParams::PinStatus::OrSymbol,
-              spend_limit: Integer,
-              spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
-              state: Lithic::Models::CardUpdateParams::State::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            digital_card_art_token: String,
+            memo: String,
+            pin: String,
+            pin_status: Lithic::CardUpdateParams::PinStatus::OrSymbol,
+            spend_limit: Integer,
+            spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol,
+            state: Lithic::CardUpdateParams::State::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       # attempts). Can only be set to `OK` to unblock a card.
       module PinStatus
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardUpdateParams::PinStatus) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::CardUpdateParams::PinStatus) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        OK = T.let(:OK, Lithic::Models::CardUpdateParams::PinStatus::TaggedSymbol)
+        OK = T.let(:OK, Lithic::CardUpdateParams::PinStatus::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::CardUpdateParams::PinStatus::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::CardUpdateParams::PinStatus::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # Card state values:
@@ -183,15 +196,21 @@ module Lithic
       module State
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardUpdateParams::State) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::CardUpdateParams::State) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        CLOSED = T.let(:CLOSED, Lithic::Models::CardUpdateParams::State::TaggedSymbol)
-        OPEN = T.let(:OPEN, Lithic::Models::CardUpdateParams::State::TaggedSymbol)
-        PAUSED = T.let(:PAUSED, Lithic::Models::CardUpdateParams::State::TaggedSymbol)
+        CLOSED = T.let(:CLOSED, Lithic::CardUpdateParams::State::TaggedSymbol)
+        OPEN = T.let(:OPEN, Lithic::CardUpdateParams::State::TaggedSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::CardUpdateParams::State::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::CardUpdateParams::State::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::CardUpdateParams::State::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

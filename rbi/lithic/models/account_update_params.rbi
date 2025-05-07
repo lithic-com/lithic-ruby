@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a
       # $1,000 limit). By default the daily spend limit is set to $1,250.
       sig { returns(T.nilable(Integer)) }
@@ -36,24 +38,26 @@ module Lithic
       attr_writer :monthly_spend_limit
 
       # Account states.
-      sig { returns(T.nilable(Lithic::Models::AccountUpdateParams::State::OrSymbol)) }
+      sig { returns(T.nilable(Lithic::AccountUpdateParams::State::OrSymbol)) }
       attr_reader :state
 
-      sig { params(state: Lithic::Models::AccountUpdateParams::State::OrSymbol).void }
+      sig { params(state: Lithic::AccountUpdateParams::State::OrSymbol).void }
       attr_writer :state
 
       # Address used during Address Verification Service (AVS) checks during
       # transactions if enabled via Auth Rules. This field is deprecated as AVS checks
       # are no longer supported by Authorization Rules. The field will be removed from
       # the schema in a future release.
-      sig { returns(T.nilable(Lithic::Models::AccountUpdateParams::VerificationAddress)) }
+      sig do
+        returns(T.nilable(Lithic::AccountUpdateParams::VerificationAddress))
+      end
       attr_reader :verification_address
 
       sig do
         params(
-          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Internal::AnyHash)
-        )
-          .void
+          verification_address:
+            Lithic::AccountUpdateParams::VerificationAddress::OrHash
+        ).void
       end
       attr_writer :verification_address
 
@@ -62,11 +66,11 @@ module Lithic
           daily_spend_limit: Integer,
           lifetime_spend_limit: Integer,
           monthly_spend_limit: Integer,
-          state: Lithic::Models::AccountUpdateParams::State::OrSymbol,
-          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Internal::AnyHash),
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          state: Lithic::AccountUpdateParams::State::OrSymbol,
+          verification_address:
+            Lithic::AccountUpdateParams::VerificationAddress::OrHash,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a
@@ -91,37 +95,50 @@ module Lithic
         # the schema in a future release.
         verification_address: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              daily_spend_limit: Integer,
-              lifetime_spend_limit: Integer,
-              monthly_spend_limit: Integer,
-              state: Lithic::Models::AccountUpdateParams::State::OrSymbol,
-              verification_address: Lithic::Models::AccountUpdateParams::VerificationAddress,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            daily_spend_limit: Integer,
+            lifetime_spend_limit: Integer,
+            monthly_spend_limit: Integer,
+            state: Lithic::AccountUpdateParams::State::OrSymbol,
+            verification_address:
+              Lithic::AccountUpdateParams::VerificationAddress,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Account states.
       module State
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountUpdateParams::State) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::AccountUpdateParams::State) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ACTIVE = T.let(:ACTIVE, Lithic::Models::AccountUpdateParams::State::TaggedSymbol)
-        PAUSED = T.let(:PAUSED, Lithic::Models::AccountUpdateParams::State::TaggedSymbol)
+        ACTIVE =
+          T.let(:ACTIVE, Lithic::AccountUpdateParams::State::TaggedSymbol)
+        PAUSED =
+          T.let(:PAUSED, Lithic::AccountUpdateParams::State::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::AccountUpdateParams::State::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::AccountUpdateParams::State::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       class VerificationAddress < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         sig { returns(T.nilable(String)) }
         attr_reader :address1
 
@@ -170,25 +187,32 @@ module Lithic
             country: String,
             postal_code: String,
             state: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
-        def self.new(address1: nil, address2: nil, city: nil, country: nil, postal_code: nil, state: nil); end
+        def self.new(
+          address1: nil,
+          address2: nil,
+          city: nil,
+          country: nil,
+          postal_code: nil,
+          state: nil
+        )
+        end
 
         sig do
-          override
-            .returns(
-              {
-                address1: String,
-                address2: String,
-                city: String,
-                country: String,
-                postal_code: String,
-                state: String
-              }
-            )
+          override.returns(
+            {
+              address1: String,
+              address2: String,
+              city: String,
+              country: String,
+              postal_code: String,
+              state: String
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

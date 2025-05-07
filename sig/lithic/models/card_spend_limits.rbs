@@ -2,33 +2,31 @@ module Lithic
   module Models
     type card_spend_limits =
       {
-        available_spend_limit: Lithic::Models::CardSpendLimits::AvailableSpendLimit,
-        spend_limit: Lithic::Models::CardSpendLimits::SpendLimit,
-        spend_velocity: Lithic::Models::CardSpendLimits::SpendVelocity
+        available_spend_limit: Lithic::CardSpendLimits::AvailableSpendLimit,
+        spend_limit: Lithic::CardSpendLimits::SpendLimit,
+        spend_velocity: Lithic::CardSpendLimits::SpendVelocity
       }
 
     class CardSpendLimits < Lithic::Internal::Type::BaseModel
-      attr_accessor available_spend_limit: Lithic::Models::CardSpendLimits::AvailableSpendLimit
+      attr_accessor available_spend_limit: Lithic::CardSpendLimits::AvailableSpendLimit
 
-      attr_reader spend_limit: Lithic::Models::CardSpendLimits::SpendLimit?
+      attr_reader spend_limit: Lithic::CardSpendLimits::SpendLimit?
 
       def spend_limit=: (
-        Lithic::Models::CardSpendLimits::SpendLimit
-      ) -> Lithic::Models::CardSpendLimits::SpendLimit
+        Lithic::CardSpendLimits::SpendLimit
+      ) -> Lithic::CardSpendLimits::SpendLimit
 
-      attr_reader spend_velocity: Lithic::Models::CardSpendLimits::SpendVelocity?
+      attr_reader spend_velocity: Lithic::CardSpendLimits::SpendVelocity?
 
       def spend_velocity=: (
-        Lithic::Models::CardSpendLimits::SpendVelocity
-      ) -> Lithic::Models::CardSpendLimits::SpendVelocity
+        Lithic::CardSpendLimits::SpendVelocity
+      ) -> Lithic::CardSpendLimits::SpendVelocity
 
       def initialize: (
-        available_spend_limit: Lithic::Models::CardSpendLimits::AvailableSpendLimit,
-        ?spend_limit: Lithic::Models::CardSpendLimits::SpendLimit,
-        ?spend_velocity: Lithic::Models::CardSpendLimits::SpendVelocity
+        available_spend_limit: Lithic::CardSpendLimits::AvailableSpendLimit,
+        ?spend_limit: Lithic::CardSpendLimits::SpendLimit,
+        ?spend_velocity: Lithic::CardSpendLimits::SpendVelocity
       ) -> void
-
-      def to_hash: -> Lithic::Models::card_spend_limits
 
       type available_spend_limit =
         { annually: Integer, forever: Integer, monthly: Integer }
@@ -51,8 +49,6 @@ module Lithic
           ?forever: Integer,
           ?monthly: Integer
         ) -> void
-
-        def to_hash: -> Lithic::Models::CardSpendLimits::available_spend_limit
       end
 
       type spend_limit =
@@ -76,8 +72,6 @@ module Lithic
           ?forever: Integer,
           ?monthly: Integer
         ) -> void
-
-        def to_hash: -> Lithic::Models::CardSpendLimits::spend_limit
       end
 
       type spend_velocity =
@@ -101,8 +95,6 @@ module Lithic
           ?forever: Integer,
           ?monthly: Integer
         ) -> void
-
-        def to_hash: -> Lithic::Models::CardSpendLimits::spend_velocity
       end
     end
   end

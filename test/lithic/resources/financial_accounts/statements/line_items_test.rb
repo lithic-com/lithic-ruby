@@ -18,18 +18,18 @@ class Lithic::Test::Resources::FinancialAccounts::Statements::LineItemsTest < Li
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data
+      row => Lithic::FinancialAccounts::Statements::StatementLineItems::Data
     end
 
     assert_pattern do
       row => {
         token: String,
         amount: Integer,
-        category: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category,
+        category: Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category,
         created: Time,
         currency: String,
         effective_date: Date,
-        event_type: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType,
+        event_type: Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType,
         financial_account_token: String,
         financial_transaction_event_token: String,
         financial_transaction_token: String,

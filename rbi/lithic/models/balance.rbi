@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class Balance < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Funds available for spend in the currency's smallest unit (e.g., cents for USD)
       sig { returns(Integer) }
       attr_accessor :available_amount
@@ -20,7 +22,7 @@ module Lithic
       attr_accessor :financial_account_token
 
       # Type of financial account.
-      sig { returns(Lithic::Models::Balance::FinancialAccountType::TaggedSymbol) }
+      sig { returns(Lithic::Balance::FinancialAccountType::TaggedSymbol) }
       attr_accessor :financial_account_type
 
       # Globally unique identifier for the last financial transaction event that
@@ -54,14 +56,14 @@ module Lithic
           created: Time,
           currency: String,
           financial_account_token: String,
-          financial_account_type: Lithic::Models::Balance::FinancialAccountType::OrSymbol,
+          financial_account_type:
+            Lithic::Balance::FinancialAccountType::OrSymbol,
           last_transaction_event_token: String,
           last_transaction_token: String,
           pending_amount: Integer,
           total_amount: Integer,
           updated: Time
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Funds available for spend in the currency's smallest unit (e.g., cents for USD)
@@ -88,39 +90,51 @@ module Lithic
         total_amount:,
         # Date and time for when the balance was last updated.
         updated:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              available_amount: Integer,
-              created: Time,
-              currency: String,
-              financial_account_token: String,
-              financial_account_type: Lithic::Models::Balance::FinancialAccountType::TaggedSymbol,
-              last_transaction_event_token: String,
-              last_transaction_token: String,
-              pending_amount: Integer,
-              total_amount: Integer,
-              updated: Time
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            available_amount: Integer,
+            created: Time,
+            currency: String,
+            financial_account_token: String,
+            financial_account_type:
+              Lithic::Balance::FinancialAccountType::TaggedSymbol,
+            last_transaction_event_token: String,
+            last_transaction_token: String,
+            pending_amount: Integer,
+            total_amount: Integer,
+            updated: Time
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Type of financial account.
       module FinancialAccountType
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::Balance::FinancialAccountType) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::Balance::FinancialAccountType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ISSUING = T.let(:ISSUING, Lithic::Models::Balance::FinancialAccountType::TaggedSymbol)
-        OPERATING = T.let(:OPERATING, Lithic::Models::Balance::FinancialAccountType::TaggedSymbol)
-        RESERVE = T.let(:RESERVE, Lithic::Models::Balance::FinancialAccountType::TaggedSymbol)
+        ISSUING =
+          T.let(:ISSUING, Lithic::Balance::FinancialAccountType::TaggedSymbol)
+        OPERATING =
+          T.let(:OPERATING, Lithic::Balance::FinancialAccountType::TaggedSymbol)
+        RESERVE =
+          T.let(:RESERVE, Lithic::Balance::FinancialAccountType::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::Balance::FinancialAccountType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::Balance::FinancialAccountType::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

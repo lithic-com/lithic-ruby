@@ -28,9 +28,9 @@ module Lithic
 
       # @!attribute event_types
       #
-      #   @return [Array<Symbol, Lithic::Models::EventSubscription::EventType>, nil]
+      #   @return [Array<Symbol, Lithic::EventSubscription::EventType>, nil]
       optional :event_types,
-               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType] },
+               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::EventSubscription::EventType] },
                nil?: true
 
       # @!method initialize(token:, description:, disabled:, url:, event_types: nil)
@@ -44,7 +44,7 @@ module Lithic
       #
       #   @param url [String]
       #
-      #   @param event_types [Array<Symbol, Lithic::Models::EventSubscription::EventType>, nil]
+      #   @param event_types [Array<Symbol, Lithic::EventSubscription::EventType>, nil]
 
       module EventType
         extend Lithic::Internal::Type::Enum

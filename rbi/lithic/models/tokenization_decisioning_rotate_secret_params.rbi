@@ -6,18 +6,19 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      sig do
-        params(
-          request_options: T.any(
-            Lithic::RequestOptions,
-            Lithic::Internal::AnyHash
-          )
-        ).returns(T.attached_class)
-      end
-      def self.new(request_options: {}); end
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
 
-      sig { override.returns({request_options: Lithic::RequestOptions}) }
-      def to_hash; end
+      sig do
+        params(request_options: Lithic::RequestOptions::OrHash).returns(
+          T.attached_class
+        )
+      end
+      def self.new(request_options: {})
+      end
+
+      sig { override.returns({ request_options: Lithic::RequestOptions }) }
+      def to_hash
+      end
     end
   end
 end

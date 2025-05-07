@@ -26,8 +26,8 @@ module Lithic
 
       # @!attribute category
       #
-      #   @return [Symbol, Lithic::Models::PaymentListParams::Category, nil]
-      optional :category, enum: -> { Lithic::Models::PaymentListParams::Category }
+      #   @return [Symbol, Lithic::PaymentListParams::Category, nil]
+      optional :category, enum: -> { Lithic::PaymentListParams::Category }
 
       # @!attribute end_
       #   Date string in RFC 3339 format. Only entries created before the specified time
@@ -56,8 +56,8 @@ module Lithic
 
       # @!attribute result
       #
-      #   @return [Symbol, Lithic::Models::PaymentListParams::Result, nil]
-      optional :result, enum: -> { Lithic::Models::PaymentListParams::Result }
+      #   @return [Symbol, Lithic::PaymentListParams::Result, nil]
+      optional :result, enum: -> { Lithic::PaymentListParams::Result }
 
       # @!attribute starting_after
       #   A cursor representing an item's token after which a page of results should
@@ -68,8 +68,8 @@ module Lithic
 
       # @!attribute status
       #
-      #   @return [Symbol, Lithic::Models::PaymentListParams::Status, nil]
-      optional :status, enum: -> { Lithic::Models::PaymentListParams::Status }
+      #   @return [Symbol, Lithic::PaymentListParams::Status, nil]
+      optional :status, enum: -> { Lithic::PaymentListParams::Status }
 
       # @!method initialize(account_token: nil, begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -78,28 +78,24 @@ module Lithic
       #   @param account_token [String]
       #
       #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-      #   ...
       #
       #   @param business_account_token [String]
       #
-      #   @param category [Symbol, Lithic::Models::PaymentListParams::Category]
+      #   @param category [Symbol, Lithic::PaymentListParams::Category]
       #
       #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-      #   ...
       #
       #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-      #   ...
       #
       #   @param financial_account_token [String]
       #
       #   @param page_size [Integer] Page size (for pagination).
       #
-      #   @param result [Symbol, Lithic::Models::PaymentListParams::Result]
+      #   @param result [Symbol, Lithic::PaymentListParams::Result]
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-      #   ...
       #
-      #   @param status [Symbol, Lithic::Models::PaymentListParams::Status]
+      #   @param status [Symbol, Lithic::PaymentListParams::Status]
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

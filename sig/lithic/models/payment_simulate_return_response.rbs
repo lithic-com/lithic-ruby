@@ -20,8 +20,6 @@ module Lithic
         transaction_event_token: String
       ) -> void
 
-      def to_hash: -> Lithic::Models::payment_simulate_return_response
-
       type result = :APPROVED | :DECLINED
 
       module Result

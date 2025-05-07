@@ -17,11 +17,11 @@ module Lithic
       # values safely.
       #
       # @example
-      #   # `account_financial_account_type` is a `Lithic::Models::AccountFinancialAccountType`
+      #   # `account_financial_account_type` is a `Lithic::AccountFinancialAccountType`
       #   case account_financial_account_type
-      #   when Lithic::Models::AccountFinancialAccountType::ISSUING
+      #   when Lithic::AccountFinancialAccountType::ISSUING
       #     # ...
-      #   when Lithic::Models::AccountFinancialAccountType::OPERATING
+      #   when Lithic::AccountFinancialAccountType::OPERATING
       #     # ...
       #   else
       #     puts(account_financial_account_type)

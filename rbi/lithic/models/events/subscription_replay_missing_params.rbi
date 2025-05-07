@@ -7,6 +7,8 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Date string in RFC 3339 format. Only entries created after the specified time
         # will be included. UTC time zone.
         sig { returns(T.nilable(Time)) }
@@ -27,9 +29,8 @@ module Lithic
           params(
             begin_: Time,
             end_: Time,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Date string in RFC 3339 format. Only entries created after the specified time
@@ -39,9 +40,20 @@ module Lithic
           # will be included. UTC time zone.
           end_: nil,
           request_options: {}
-        ); end
-        sig { override.returns({begin_: Time, end_: Time, request_options: Lithic::RequestOptions}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              begin_: Time,
+              end_: Time,
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

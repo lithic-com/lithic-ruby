@@ -14,13 +14,13 @@ module Lithic
 
       # @!attribute category
       #
-      #   @return [Symbol, Lithic::Models::ManagementOperationCreateParams::Category]
-      required :category, enum: -> { Lithic::Models::ManagementOperationCreateParams::Category }
+      #   @return [Symbol, Lithic::ManagementOperationCreateParams::Category]
+      required :category, enum: -> { Lithic::ManagementOperationCreateParams::Category }
 
       # @!attribute direction
       #
-      #   @return [Symbol, Lithic::Models::ManagementOperationCreateParams::Direction]
-      required :direction, enum: -> { Lithic::Models::ManagementOperationCreateParams::Direction }
+      #   @return [Symbol, Lithic::ManagementOperationCreateParams::Direction]
+      required :direction, enum: -> { Lithic::ManagementOperationCreateParams::Direction }
 
       # @!attribute effective_date
       #
@@ -29,8 +29,8 @@ module Lithic
 
       # @!attribute event_type
       #
-      #   @return [Symbol, Lithic::Models::ManagementOperationCreateParams::EventType]
-      required :event_type, enum: -> { Lithic::Models::ManagementOperationCreateParams::EventType }
+      #   @return [Symbol, Lithic::ManagementOperationCreateParams::EventType]
+      required :event_type, enum: -> { Lithic::ManagementOperationCreateParams::EventType }
 
       # @!attribute financial_account_token
       #
@@ -59,10 +59,10 @@ module Lithic
 
       # @!method initialize(amount:, category:, direction:, effective_date:, event_type:, financial_account_token:, token: nil, memo: nil, subtype: nil, user_defined_id: nil, request_options: {})
       #   @param amount [Integer]
-      #   @param category [Symbol, Lithic::Models::ManagementOperationCreateParams::Category]
-      #   @param direction [Symbol, Lithic::Models::ManagementOperationCreateParams::Direction]
+      #   @param category [Symbol, Lithic::ManagementOperationCreateParams::Category]
+      #   @param direction [Symbol, Lithic::ManagementOperationCreateParams::Direction]
       #   @param effective_date [Date]
-      #   @param event_type [Symbol, Lithic::Models::ManagementOperationCreateParams::EventType]
+      #   @param event_type [Symbol, Lithic::ManagementOperationCreateParams::EventType]
       #   @param financial_account_token [String]
       #   @param token [String]
       #   @param memo [String]

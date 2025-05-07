@@ -1,15 +1,13 @@
 module Lithic
   module Models
-    type payment_create_response = { balance: Lithic::Models::Balance }
+    type payment_create_response = { balance: Lithic::Balance }
 
     class PaymentCreateResponse < Lithic::Models::Payment
-      def balance: -> Lithic::Models::Balance?
+      def balance: -> Lithic::Balance?
 
-      def balance=: (Lithic::Models::Balance _) -> Lithic::Models::Balance
+      def balance=: (Lithic::Balance _) -> Lithic::Balance
 
-      def initialize: (?balance: Lithic::Models::Balance) -> void
-
-      def to_hash: -> Lithic::Models::payment_create_response
+      def initialize: (?balance: Lithic::Balance) -> void
     end
   end
 end

@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Filters for tokenizations associated with a specific account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_token
@@ -59,10 +61,21 @@ module Lithic
 
       # Filter for tokenizations by tokenization channel. If this is not specified, only
       # DIGITAL_WALLET tokenizations will be returned.
-      sig { returns(T.nilable(Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(
+            Lithic::TokenizationListParams::TokenizationChannel::OrSymbol
+          )
+        )
+      end
       attr_reader :tokenization_channel
 
-      sig { params(tokenization_channel: Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol).void }
+      sig do
+        params(
+          tokenization_channel:
+            Lithic::TokenizationListParams::TokenizationChannel::OrSymbol
+        ).void
+      end
       attr_writer :tokenization_channel
 
       sig do
@@ -74,10 +87,10 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          tokenization_channel: Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          tokenization_channel:
+            Lithic::TokenizationListParams::TokenizationChannel::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Filters for tokenizations associated with a specific account.
@@ -100,24 +113,27 @@ module Lithic
         # DIGITAL_WALLET tokenizations will be returned.
         tokenization_channel: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              account_token: String,
-              begin_: Date,
-              card_token: String,
-              end_: Date,
-              ending_before: String,
-              page_size: Integer,
-              starting_after: String,
-              tokenization_channel: Lithic::Models::TokenizationListParams::TokenizationChannel::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            account_token: String,
+            begin_: Date,
+            card_token: String,
+            end_: Date,
+            ending_before: String,
+            page_size: Integer,
+            starting_after: String,
+            tokenization_channel:
+              Lithic::TokenizationListParams::TokenizationChannel::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Filter for tokenizations by tokenization channel. If this is not specified, only
       # DIGITAL_WALLET tokenizations will be returned.
@@ -125,16 +141,36 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel) }
+          T.type_alias do
+            T.all(Symbol, Lithic::TokenizationListParams::TokenizationChannel)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         DIGITAL_WALLET =
-          T.let(:DIGITAL_WALLET, Lithic::Models::TokenizationListParams::TokenizationChannel::TaggedSymbol)
-        MERCHANT = T.let(:MERCHANT, Lithic::Models::TokenizationListParams::TokenizationChannel::TaggedSymbol)
-        ALL = T.let(:ALL, Lithic::Models::TokenizationListParams::TokenizationChannel::TaggedSymbol)
+          T.let(
+            :DIGITAL_WALLET,
+            Lithic::TokenizationListParams::TokenizationChannel::TaggedSymbol
+          )
+        MERCHANT =
+          T.let(
+            :MERCHANT,
+            Lithic::TokenizationListParams::TokenizationChannel::TaggedSymbol
+          )
+        ALL =
+          T.let(
+            :ALL,
+            Lithic::TokenizationListParams::TokenizationChannel::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::TokenizationListParams::TokenizationChannel::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::TokenizationListParams::TokenizationChannel::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

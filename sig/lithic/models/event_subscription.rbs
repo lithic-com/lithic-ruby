@@ -6,7 +6,7 @@ module Lithic
         description: String,
         disabled: bool,
         url: String,
-        event_types: ::Array[Lithic::Models::EventSubscription::event_type]?
+        event_types: ::Array[Lithic::EventSubscription::event_type]?
       }
 
     class EventSubscription < Lithic::Internal::Type::BaseModel
@@ -18,17 +18,15 @@ module Lithic
 
       attr_accessor url: String
 
-      attr_accessor event_types: ::Array[Lithic::Models::EventSubscription::event_type]?
+      attr_accessor event_types: ::Array[Lithic::EventSubscription::event_type]?
 
       def initialize: (
         token: String,
         description: String,
         disabled: bool,
         url: String,
-        ?event_types: ::Array[Lithic::Models::EventSubscription::event_type]?
+        ?event_types: ::Array[Lithic::EventSubscription::event_type]?
       ) -> void
-
-      def to_hash: -> Lithic::Models::event_subscription
 
       type event_type =
         :"account_holder.created"
@@ -120,7 +118,7 @@ module Lithic
         TOKENIZATION_TWO_FACTOR_AUTHENTICATION_CODE_SENT: :"tokenization.two_factor_authentication_code_sent"
         TOKENIZATION_UPDATED: :"tokenization.updated"
 
-        def self?.values: -> ::Array[Lithic::Models::EventSubscription::event_type]
+        def self?.values: -> ::Array[Lithic::EventSubscription::event_type]
       end
     end
   end

@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class NonPCICard < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Globally unique identifier.
       sig { returns(String) }
       attr_accessor :token
@@ -20,10 +22,10 @@ module Lithic
       attr_accessor :created
 
       # Deprecated: Funding account for the card.
-      sig { returns(Lithic::Models::NonPCICard::Funding) }
+      sig { returns(Lithic::NonPCICard::Funding) }
       attr_reader :funding
 
-      sig { params(funding: T.any(Lithic::Models::NonPCICard::Funding, Lithic::Internal::AnyHash)).void }
+      sig { params(funding: Lithic::NonPCICard::Funding::OrHash).void }
       attr_writer :funding
 
       # Last four digits of the card number.
@@ -32,7 +34,7 @@ module Lithic
 
       # Indicates if a card is blocked due a PIN status issue (e.g. excessive incorrect
       # attempts).
-      sig { returns(Lithic::Models::NonPCICard::PinStatus::TaggedSymbol) }
+      sig { returns(Lithic::NonPCICard::PinStatus::TaggedSymbol) }
       attr_accessor :pin_status
 
       # Amount (in cents) to limit approved authorizations (e.g. 100000 would be a
@@ -41,7 +43,7 @@ module Lithic
       attr_accessor :spend_limit
 
       # Spend limit duration
-      sig { returns(Lithic::Models::NonPCICard::SpendLimitDuration::TaggedSymbol) }
+      sig { returns(Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol) }
       attr_accessor :spend_limit_duration
 
       # Card state values: _ `CLOSED` - Card will no longer approve authorizations.
@@ -59,7 +61,7 @@ module Lithic
       # card's state to `OPEN` only after the cardholder confirms receipt of the card.
       # In sandbox, the same daily batch fulfillment occurs, but no cards are actually
       # manufactured.
-      sig { returns(Lithic::Models::NonPCICard::State::TaggedSymbol) }
+      sig { returns(Lithic::NonPCICard::State::TaggedSymbol) }
       attr_accessor :state
 
       # Card types: _ `VIRTUAL` - Card will authorize at any merchant and can be added
@@ -72,7 +74,7 @@ module Lithic
       # Similar behavior to VIRTUAL cards, please use VIRTUAL instead. _
       # `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please use
       # VIRTUAL instead.
-      sig { returns(Lithic::Models::NonPCICard::Type::TaggedSymbol) }
+      sig { returns(Lithic::NonPCICard::Type::TaggedSymbol) }
       attr_accessor :type
 
       # List of identifiers for the Auth Rule(s) that are applied on the card. This
@@ -159,13 +161,14 @@ module Lithic
           account_token: String,
           card_program_token: String,
           created: Time,
-          funding: T.any(Lithic::Models::NonPCICard::Funding, Lithic::Internal::AnyHash),
+          funding: Lithic::NonPCICard::Funding::OrHash,
           last_four: String,
-          pin_status: Lithic::Models::NonPCICard::PinStatus::OrSymbol,
+          pin_status: Lithic::NonPCICard::PinStatus::OrSymbol,
           spend_limit: Integer,
-          spend_limit_duration: Lithic::Models::NonPCICard::SpendLimitDuration::OrSymbol,
-          state: Lithic::Models::NonPCICard::State::OrSymbol,
-          type: Lithic::Models::NonPCICard::Type::OrSymbol,
+          spend_limit_duration:
+            Lithic::NonPCICard::SpendLimitDuration::OrSymbol,
+          state: Lithic::NonPCICard::State::OrSymbol,
+          type: Lithic::NonPCICard::Type::OrSymbol,
           auth_rule_tokens: T::Array[String],
           cardholder_currency: String,
           digital_card_art_token: String,
@@ -176,8 +179,7 @@ module Lithic
           pending_commands: T::Array[String],
           product_id: String,
           replacement_for: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Globally unique identifier.
@@ -257,38 +259,43 @@ module Lithic
         # If the card is a replacement for another card, the globally unique identifier
         # for the card that was replaced.
         replacement_for: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              token: String,
-              account_token: String,
-              card_program_token: String,
-              created: Time,
-              funding: Lithic::Models::NonPCICard::Funding,
-              last_four: String,
-              pin_status: Lithic::Models::NonPCICard::PinStatus::TaggedSymbol,
-              spend_limit: Integer,
-              spend_limit_duration: Lithic::Models::NonPCICard::SpendLimitDuration::TaggedSymbol,
-              state: Lithic::Models::NonPCICard::State::TaggedSymbol,
-              type: Lithic::Models::NonPCICard::Type::TaggedSymbol,
-              auth_rule_tokens: T::Array[String],
-              cardholder_currency: String,
-              digital_card_art_token: String,
-              exp_month: String,
-              exp_year: String,
-              hostname: String,
-              memo: String,
-              pending_commands: T::Array[String],
-              product_id: String,
-              replacement_for: T.nilable(String)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            token: String,
+            account_token: String,
+            card_program_token: String,
+            created: Time,
+            funding: Lithic::NonPCICard::Funding,
+            last_four: String,
+            pin_status: Lithic::NonPCICard::PinStatus::TaggedSymbol,
+            spend_limit: Integer,
+            spend_limit_duration:
+              Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol,
+            state: Lithic::NonPCICard::State::TaggedSymbol,
+            type: Lithic::NonPCICard::Type::TaggedSymbol,
+            auth_rule_tokens: T::Array[String],
+            cardholder_currency: String,
+            digital_card_art_token: String,
+            exp_month: String,
+            exp_year: String,
+            hostname: String,
+            memo: String,
+            pending_commands: T::Array[String],
+            product_id: String,
+            replacement_for: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Funding < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # A globally unique identifier for this FundingAccount.
         sig { returns(String) }
         attr_accessor :token
@@ -307,12 +314,12 @@ module Lithic
         # account is available to use for card creation and transactions. _ `PENDING` -
         # The funding account is still being verified e.g. bank micro-deposits
         # verification. \* `DELETED` - The founding account has been deleted.
-        sig { returns(Lithic::Models::NonPCICard::Funding::State::TaggedSymbol) }
+        sig { returns(Lithic::NonPCICard::Funding::State::TaggedSymbol) }
         attr_accessor :state
 
         # Types of funding source: _ `DEPOSITORY_CHECKING` - Bank checking account. _
         # `DEPOSITORY_SAVINGS` - Bank savings account.
-        sig { returns(Lithic::Models::NonPCICard::Funding::Type::TaggedSymbol) }
+        sig { returns(Lithic::NonPCICard::Funding::Type::TaggedSymbol) }
         attr_accessor :type
 
         # Account name identifying the funding source. This may be `null`.
@@ -335,12 +342,11 @@ module Lithic
             token: String,
             created: Time,
             last_four: String,
-            state: Lithic::Models::NonPCICard::Funding::State::OrSymbol,
-            type: Lithic::Models::NonPCICard::Funding::Type::OrSymbol,
+            state: Lithic::NonPCICard::Funding::State::OrSymbol,
+            type: Lithic::NonPCICard::Funding::Type::OrSymbol,
             account_name: String,
             nickname: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # A globally unique identifier for this FundingAccount.
@@ -363,22 +369,24 @@ module Lithic
           account_name: nil,
           # The nickname given to the `FundingAccount` or `null` if it has no nickname.
           nickname: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                token: String,
-                created: Time,
-                last_four: String,
-                state: Lithic::Models::NonPCICard::Funding::State::TaggedSymbol,
-                type: Lithic::Models::NonPCICard::Funding::Type::TaggedSymbol,
-                account_name: String,
-                nickname: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              token: String,
+              created: Time,
+              last_four: String,
+              state: Lithic::NonPCICard::Funding::State::TaggedSymbol,
+              type: Lithic::NonPCICard::Funding::Type::TaggedSymbol,
+              account_name: String,
+              nickname: String
+            }
+          )
+        end
+        def to_hash
+        end
 
         # State of funding source. Funding source states: _ `ENABLED` - The funding
         # account is available to use for card creation and transactions. _ `PENDING` -
@@ -387,15 +395,24 @@ module Lithic
         module State
           extend Lithic::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::NonPCICard::Funding::State) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::NonPCICard::Funding::State) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          DELETED = T.let(:DELETED, Lithic::Models::NonPCICard::Funding::State::TaggedSymbol)
-          ENABLED = T.let(:ENABLED, Lithic::Models::NonPCICard::Funding::State::TaggedSymbol)
-          PENDING = T.let(:PENDING, Lithic::Models::NonPCICard::Funding::State::TaggedSymbol)
+          DELETED =
+            T.let(:DELETED, Lithic::NonPCICard::Funding::State::TaggedSymbol)
+          ENABLED =
+            T.let(:ENABLED, Lithic::NonPCICard::Funding::State::TaggedSymbol)
+          PENDING =
+            T.let(:PENDING, Lithic::NonPCICard::Funding::State::TaggedSymbol)
 
-          sig { override.returns(T::Array[Lithic::Models::NonPCICard::Funding::State::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Lithic::NonPCICard::Funding::State::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         # Types of funding source: _ `DEPOSITORY_CHECKING` - Bank checking account. _
@@ -403,15 +420,28 @@ module Lithic
         module Type
           extend Lithic::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::NonPCICard::Funding::Type) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::NonPCICard::Funding::Type) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           DEPOSITORY_CHECKING =
-            T.let(:DEPOSITORY_CHECKING, Lithic::Models::NonPCICard::Funding::Type::TaggedSymbol)
-          DEPOSITORY_SAVINGS = T.let(:DEPOSITORY_SAVINGS, Lithic::Models::NonPCICard::Funding::Type::TaggedSymbol)
+            T.let(
+              :DEPOSITORY_CHECKING,
+              Lithic::NonPCICard::Funding::Type::TaggedSymbol
+            )
+          DEPOSITORY_SAVINGS =
+            T.let(
+              :DEPOSITORY_SAVINGS,
+              Lithic::NonPCICard::Funding::Type::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::NonPCICard::Funding::Type::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Lithic::NonPCICard::Funding::Type::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
       end
 
@@ -420,32 +450,52 @@ module Lithic
       module PinStatus
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::NonPCICard::PinStatus) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::NonPCICard::PinStatus) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        OK = T.let(:OK, Lithic::Models::NonPCICard::PinStatus::TaggedSymbol)
-        BLOCKED = T.let(:BLOCKED, Lithic::Models::NonPCICard::PinStatus::TaggedSymbol)
-        NOT_SET = T.let(:NOT_SET, Lithic::Models::NonPCICard::PinStatus::TaggedSymbol)
+        OK = T.let(:OK, Lithic::NonPCICard::PinStatus::TaggedSymbol)
+        BLOCKED = T.let(:BLOCKED, Lithic::NonPCICard::PinStatus::TaggedSymbol)
+        NOT_SET = T.let(:NOT_SET, Lithic::NonPCICard::PinStatus::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::NonPCICard::PinStatus::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::NonPCICard::PinStatus::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # Spend limit duration
       module SpendLimitDuration
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::NonPCICard::SpendLimitDuration) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::NonPCICard::SpendLimitDuration) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ANNUALLY = T.let(:ANNUALLY, Lithic::Models::NonPCICard::SpendLimitDuration::TaggedSymbol)
-        FOREVER = T.let(:FOREVER, Lithic::Models::NonPCICard::SpendLimitDuration::TaggedSymbol)
-        MONTHLY = T.let(:MONTHLY, Lithic::Models::NonPCICard::SpendLimitDuration::TaggedSymbol)
-        TRANSACTION = T.let(:TRANSACTION, Lithic::Models::NonPCICard::SpendLimitDuration::TaggedSymbol)
-        DAILY = T.let(:DAILY, Lithic::Models::NonPCICard::SpendLimitDuration::TaggedSymbol)
+        ANNUALLY =
+          T.let(:ANNUALLY, Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol)
+        FOREVER =
+          T.let(:FOREVER, Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol)
+        MONTHLY =
+          T.let(:MONTHLY, Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol)
+        TRANSACTION =
+          T.let(
+            :TRANSACTION,
+            Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol
+          )
+        DAILY =
+          T.let(:DAILY, Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::NonPCICard::SpendLimitDuration::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # Card state values: _ `CLOSED` - Card will no longer approve authorizations.
@@ -466,17 +516,22 @@ module Lithic
       module State
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::NonPCICard::State) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::NonPCICard::State) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        CLOSED = T.let(:CLOSED, Lithic::Models::NonPCICard::State::TaggedSymbol)
-        OPEN = T.let(:OPEN, Lithic::Models::NonPCICard::State::TaggedSymbol)
-        PAUSED = T.let(:PAUSED, Lithic::Models::NonPCICard::State::TaggedSymbol)
-        PENDING_ACTIVATION = T.let(:PENDING_ACTIVATION, Lithic::Models::NonPCICard::State::TaggedSymbol)
-        PENDING_FULFILLMENT = T.let(:PENDING_FULFILLMENT, Lithic::Models::NonPCICard::State::TaggedSymbol)
+        CLOSED = T.let(:CLOSED, Lithic::NonPCICard::State::TaggedSymbol)
+        OPEN = T.let(:OPEN, Lithic::NonPCICard::State::TaggedSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::NonPCICard::State::TaggedSymbol)
+        PENDING_ACTIVATION =
+          T.let(:PENDING_ACTIVATION, Lithic::NonPCICard::State::TaggedSymbol)
+        PENDING_FULFILLMENT =
+          T.let(:PENDING_FULFILLMENT, Lithic::NonPCICard::State::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::NonPCICard::State::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(T::Array[Lithic::NonPCICard::State::TaggedSymbol])
+        end
+        def self.values
+        end
       end
 
       # Card types: _ `VIRTUAL` - Card will authorize at any merchant and can be added
@@ -492,18 +547,23 @@ module Lithic
       module Type
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::NonPCICard::Type) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::NonPCICard::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        MERCHANT_LOCKED = T.let(:MERCHANT_LOCKED, Lithic::Models::NonPCICard::Type::TaggedSymbol)
-        PHYSICAL = T.let(:PHYSICAL, Lithic::Models::NonPCICard::Type::TaggedSymbol)
-        SINGLE_USE = T.let(:SINGLE_USE, Lithic::Models::NonPCICard::Type::TaggedSymbol)
-        VIRTUAL = T.let(:VIRTUAL, Lithic::Models::NonPCICard::Type::TaggedSymbol)
-        UNLOCKED = T.let(:UNLOCKED, Lithic::Models::NonPCICard::Type::TaggedSymbol)
-        DIGITAL_WALLET = T.let(:DIGITAL_WALLET, Lithic::Models::NonPCICard::Type::TaggedSymbol)
+        MERCHANT_LOCKED =
+          T.let(:MERCHANT_LOCKED, Lithic::NonPCICard::Type::TaggedSymbol)
+        PHYSICAL = T.let(:PHYSICAL, Lithic::NonPCICard::Type::TaggedSymbol)
+        SINGLE_USE = T.let(:SINGLE_USE, Lithic::NonPCICard::Type::TaggedSymbol)
+        VIRTUAL = T.let(:VIRTUAL, Lithic::NonPCICard::Type::TaggedSymbol)
+        UNLOCKED = T.let(:UNLOCKED, Lithic::NonPCICard::Type::TaggedSymbol)
+        DIGITAL_WALLET =
+          T.let(:DIGITAL_WALLET, Lithic::NonPCICard::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::NonPCICard::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(T::Array[Lithic::NonPCICard::Type::TaggedSymbol])
+        end
+        def self.values
+        end
       end
     end
   end

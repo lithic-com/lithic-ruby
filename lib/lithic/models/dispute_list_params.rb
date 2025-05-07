@@ -44,8 +44,8 @@ module Lithic
       # @!attribute status
       #   List disputes of a specific status.
       #
-      #   @return [Symbol, Lithic::Models::DisputeListParams::Status, nil]
-      optional :status, enum: -> { Lithic::Models::DisputeListParams::Status }
+      #   @return [Symbol, Lithic::DisputeListParams::Status, nil]
+      optional :status, enum: -> { Lithic::DisputeListParams::Status }
 
       # @!attribute transaction_tokens
       #   Transaction tokens to filter by.
@@ -58,20 +58,16 @@ module Lithic
       #   {Lithic::Models::DisputeListParams} for more details.
       #
       #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-      #   ...
       #
       #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-      #   ...
       #
       #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-      #   ...
       #
       #   @param page_size [Integer] Page size (for pagination).
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-      #   ...
       #
-      #   @param status [Symbol, Lithic::Models::DisputeListParams::Status] List disputes of a specific status.
+      #   @param status [Symbol, Lithic::DisputeListParams::Status] List disputes of a specific status.
       #
       #   @param transaction_tokens [Array<String>] Transaction tokens to filter by.
       #

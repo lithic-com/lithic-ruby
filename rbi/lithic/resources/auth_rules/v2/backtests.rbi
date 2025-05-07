@@ -31,8 +31,12 @@ module Lithic
           # configurations. If a historical transaction does not feature the required inputs
           # to evaluate the rule, then it will not be included in the final backtest report.
           sig do
-            params(auth_rule_token: String, end_: Time, start: Time, request_options: Lithic::RequestOpts)
-              .returns(Lithic::Models::AuthRules::V2::BacktestCreateResponse)
+            params(
+              auth_rule_token: String,
+              end_: Time,
+              start: Time,
+              request_options: Lithic::RequestOptions::OrHash
+            ).returns(Lithic::Models::AuthRules::V2::BacktestCreateResponse)
           end
           def create(
             # Globally unique identifier for the Auth Rule.
@@ -42,7 +46,9 @@ module Lithic
             # The start time of the backtest.
             start: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # Returns the backtest results of an authorization rule (if available).
           #
           # Backtesting is an asynchronous process that requires time to complete. If a
@@ -65,9 +71,8 @@ module Lithic
             params(
               auth_rule_backtest_token: String,
               auth_rule_token: String,
-              request_options: Lithic::RequestOpts
-            )
-              .returns(Lithic::Models::AuthRules::V2::BacktestResults)
+              request_options: Lithic::RequestOptions::OrHash
+            ).returns(Lithic::AuthRules::V2::BacktestResults)
           end
           def retrieve(
             # Globally unique identifier for an Auth Rule backtest.
@@ -75,10 +80,13 @@ module Lithic
             # Globally unique identifier for the Auth Rule.
             auth_rule_token:,
             request_options: {}
-          ); end
+          )
+          end
+
           # @api private
           sig { params(client: Lithic::Client).returns(T.attached_class) }
-          def self.new(client:); end
+          def self.new(client:)
+          end
         end
       end
     end

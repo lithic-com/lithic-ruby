@@ -6,10 +6,12 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       sig { returns(Integer) }
       attr_accessor :amount
 
-      sig { returns(Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol) }
+      sig { returns(Lithic::ExternalPaymentCreateParams::Category::OrSymbol) }
       attr_accessor :category
 
       sig { returns(Date) }
@@ -18,7 +20,9 @@ module Lithic
       sig { returns(String) }
       attr_accessor :financial_account_token
 
-      sig { returns(Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol) }
+      sig do
+        returns(Lithic::ExternalPaymentCreateParams::PaymentType::OrSymbol)
+      end
       attr_accessor :payment_type
 
       sig { returns(T.nilable(String)) }
@@ -33,10 +37,18 @@ module Lithic
       sig { params(memo: String).void }
       attr_writer :memo
 
-      sig { returns(T.nilable(Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(Lithic::ExternalPaymentCreateParams::ProgressTo::OrSymbol)
+        )
+      end
       attr_reader :progress_to
 
-      sig { params(progress_to: Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol).void }
+      sig do
+        params(
+          progress_to: Lithic::ExternalPaymentCreateParams::ProgressTo::OrSymbol
+        ).void
+      end
       attr_writer :progress_to
 
       sig { returns(T.nilable(String)) }
@@ -48,17 +60,18 @@ module Lithic
       sig do
         params(
           amount: Integer,
-          category: Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol,
+          category: Lithic::ExternalPaymentCreateParams::Category::OrSymbol,
           effective_date: Date,
           financial_account_token: String,
-          payment_type: Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol,
+          payment_type:
+            Lithic::ExternalPaymentCreateParams::PaymentType::OrSymbol,
           token: String,
           memo: String,
-          progress_to: Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol,
+          progress_to:
+            Lithic::ExternalPaymentCreateParams::ProgressTo::OrSymbol,
           user_defined_id: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         amount:,
@@ -71,68 +84,131 @@ module Lithic
         progress_to: nil,
         user_defined_id: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              amount: Integer,
-              category: Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol,
-              effective_date: Date,
-              financial_account_token: String,
-              payment_type: Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol,
-              token: String,
-              memo: String,
-              progress_to: Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol,
-              user_defined_id: String,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            amount: Integer,
+            category: Lithic::ExternalPaymentCreateParams::Category::OrSymbol,
+            effective_date: Date,
+            financial_account_token: String,
+            payment_type:
+              Lithic::ExternalPaymentCreateParams::PaymentType::OrSymbol,
+            token: String,
+            memo: String,
+            progress_to:
+              Lithic::ExternalPaymentCreateParams::ProgressTo::OrSymbol,
+            user_defined_id: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       module Category
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::Category) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ExternalPaymentCreateParams::Category)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         EXTERNAL_WIRE =
-          T.let(:EXTERNAL_WIRE, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol)
-        EXTERNAL_ACH = T.let(:EXTERNAL_ACH, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol)
+          T.let(
+            :EXTERNAL_WIRE,
+            Lithic::ExternalPaymentCreateParams::Category::TaggedSymbol
+          )
+        EXTERNAL_ACH =
+          T.let(
+            :EXTERNAL_ACH,
+            Lithic::ExternalPaymentCreateParams::Category::TaggedSymbol
+          )
         EXTERNAL_CHECK =
-          T.let(:EXTERNAL_CHECK, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol)
+          T.let(
+            :EXTERNAL_CHECK,
+            Lithic::ExternalPaymentCreateParams::Category::TaggedSymbol
+          )
         EXTERNAL_TRANSFER =
-          T.let(:EXTERNAL_TRANSFER, Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol)
+          T.let(
+            :EXTERNAL_TRANSFER,
+            Lithic::ExternalPaymentCreateParams::Category::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalPaymentCreateParams::Category::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::ExternalPaymentCreateParams::Category::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       module PaymentType
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ExternalPaymentCreateParams::PaymentType)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        DEPOSIT = T.let(:DEPOSIT, Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol)
-        WITHDRAWAL = T.let(:WITHDRAWAL, Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol)
+        DEPOSIT =
+          T.let(
+            :DEPOSIT,
+            Lithic::ExternalPaymentCreateParams::PaymentType::TaggedSymbol
+          )
+        WITHDRAWAL =
+          T.let(
+            :WITHDRAWAL,
+            Lithic::ExternalPaymentCreateParams::PaymentType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalPaymentCreateParams::PaymentType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::ExternalPaymentCreateParams::PaymentType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       module ProgressTo
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ExternalPaymentCreateParams::ProgressTo)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol)
-        RELEASED = T.let(:RELEASED, Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol)
+        SETTLED =
+          T.let(
+            :SETTLED,
+            Lithic::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol
+          )
+        RELEASED =
+          T.let(
+            :RELEASED,
+            Lithic::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::ExternalPaymentCreateParams::ProgressTo::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

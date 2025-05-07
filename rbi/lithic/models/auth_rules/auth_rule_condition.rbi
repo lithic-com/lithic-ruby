@@ -6,6 +6,8 @@ module Lithic
 
     module AuthRules
       class AuthRuleCondition < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # The attribute to target.
         #
         # The following attributes may be targeted:
@@ -53,17 +55,31 @@ module Lithic
         # - `WALLET_TYPE`: For transactions using a digital wallet token, indicates the
         #   source of the token. Valid values are `APPLE_PAY`, `GOOGLE_PAY`,
         #   `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
-        sig { returns(T.nilable(Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol)) }
+        sig do
+          returns(T.nilable(Lithic::AuthRules::ConditionalAttribute::OrSymbol))
+        end
         attr_reader :attribute
 
-        sig { params(attribute: Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol).void }
+        sig do
+          params(
+            attribute: Lithic::AuthRules::ConditionalAttribute::OrSymbol
+          ).void
+        end
         attr_writer :attribute
 
         # The operation to apply to the attribute
-        sig { returns(T.nilable(Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(Lithic::AuthRules::AuthRuleCondition::Operation::OrSymbol)
+          )
+        end
         attr_reader :operation
 
-        sig { params(operation: Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol).void }
+        sig do
+          params(
+            operation: Lithic::AuthRules::AuthRuleCondition::Operation::OrSymbol
+          ).void
+        end
         attr_writer :operation
 
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
@@ -75,11 +91,11 @@ module Lithic
 
         sig do
           params(
-            attribute: Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol,
-            operation: Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol,
+            attribute: Lithic::AuthRules::ConditionalAttribute::OrSymbol,
+            operation:
+              Lithic::AuthRules::AuthRuleCondition::Operation::OrSymbol,
             value: T.any(String, Integer, T::Array[String])
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The attribute to target.
@@ -134,49 +150,93 @@ module Lithic
           operation: nil,
           # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
           value: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                attribute: Lithic::Models::AuthRules::ConditionalAttribute::OrSymbol,
-                operation: Lithic::Models::AuthRules::AuthRuleCondition::Operation::OrSymbol,
-                value: T.any(String, Integer, T::Array[String])
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              attribute: Lithic::AuthRules::ConditionalAttribute::OrSymbol,
+              operation:
+                Lithic::AuthRules::AuthRuleCondition::Operation::OrSymbol,
+              value: T.any(String, Integer, T::Array[String])
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The operation to apply to the attribute
         module Operation
           extend Lithic::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Lithic::AuthRules::AuthRuleCondition::Operation)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          IS_ONE_OF = T.let(:IS_ONE_OF, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
+          IS_ONE_OF =
+            T.let(
+              :IS_ONE_OF,
+              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
+            )
           IS_NOT_ONE_OF =
-            T.let(:IS_NOT_ONE_OF, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
-          MATCHES = T.let(:MATCHES, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
+            T.let(
+              :IS_NOT_ONE_OF,
+              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
+            )
+          MATCHES =
+            T.let(
+              :MATCHES,
+              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
+            )
           DOES_NOT_MATCH =
-            T.let(:DOES_NOT_MATCH, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
+            T.let(
+              :DOES_NOT_MATCH,
+              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
+            )
           IS_GREATER_THAN =
-            T.let(:IS_GREATER_THAN, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
+            T.let(
+              :IS_GREATER_THAN,
+              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
+            )
           IS_LESS_THAN =
-            T.let(:IS_LESS_THAN, Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol)
+            T.let(
+              :IS_LESS_THAN,
+              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::AuthRules::AuthRuleCondition::Operation::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
         module Value
           extend Lithic::Internal::Type::Union
 
-          sig { override.returns([String, Integer, T::Array[String]]) }
-          def self.variants; end
+          Variants = T.type_alias { T.any(String, Integer, T::Array[String]) }
 
-          StringArray = T.let(Lithic::Internal::Type::ArrayOf[String], Lithic::Internal::Type::Converter)
+          sig do
+            override.returns(
+              T::Array[Lithic::AuthRules::AuthRuleCondition::Value::Variants]
+            )
+          end
+          def self.variants
+          end
+
+          StringArray =
+            T.let(
+              Lithic::Internal::Type::ArrayOf[String],
+              Lithic::Internal::Type::Converter
+            )
         end
       end
     end

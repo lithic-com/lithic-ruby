@@ -13,8 +13,6 @@ module Lithic
         pan: String,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::card_search_by_pan_params
     end
   end
 end

@@ -50,8 +50,8 @@ module Lithic
       # @!attribute owner_type
       #   Owner Type
       #
-      #   @return [Symbol, Lithic::Models::OwnerType]
-      required :owner_type, enum: -> { Lithic::Models::OwnerType }
+      #   @return [Symbol, Lithic::OwnerType]
+      required :owner_type, enum: -> { Lithic::OwnerType }
 
       # @!attribute routing_number
       #   Routing Number
@@ -80,8 +80,8 @@ module Lithic
       # @!attribute verification_method
       #   Verification Method
       #
-      #   @return [Symbol, Lithic::Models::VerificationMethod]
-      required :verification_method, enum: -> { Lithic::Models::VerificationMethod }
+      #   @return [Symbol, Lithic::VerificationMethod]
+      required :verification_method, enum: -> { Lithic::VerificationMethod }
 
       # @!attribute verification_state
       #   Verification State
@@ -101,8 +101,8 @@ module Lithic
       # @!attribute address
       #   Address
       #
-      #   @return [Lithic::Models::ExternalBankAccountAddress, nil]
-      optional :address, -> { Lithic::Models::ExternalBankAccountAddress }
+      #   @return [Lithic::ExternalBankAccountAddress, nil]
+      optional :address, -> { Lithic::ExternalBankAccountAddress }
 
       # @!attribute company_id
       #   Optional field that helps identify bank accounts in receipts
@@ -153,23 +153,18 @@ module Lithic
       #   {Lithic::Models::ExternalBankAccountRetryPrenoteResponse} for more details.
       #
       #   @param token [String] A globally unique identifier for this record of an external bank account associa
-      #   ...
       #
       #   @param country [String] The country that the bank account is located in using ISO 3166-1. We will only a
-      #   ...
       #
       #   @param created [Time] An ISO 8601 string representing when this funding source was added to the Lithic
-      #   ...
       #
       #   @param currency [String] currency of the external account 3-character alphabetic ISO 4217 code
       #
       #   @param last_four [String] The last 4 digits of the bank account. Derived by Lithic from the account number
-      #   ...
       #
       #   @param owner [String] Legal Name of the business or individual who owns the external account. This wil
-      #   ...
       #
-      #   @param owner_type [Symbol, Lithic::Models::OwnerType] Owner Type
+      #   @param owner_type [Symbol, Lithic::OwnerType] Owner Type
       #
       #   @param routing_number [String] Routing Number
       #
@@ -179,14 +174,13 @@ module Lithic
       #
       #   @param verification_attempts [Integer] The number of attempts at verification
       #
-      #   @param verification_method [Symbol, Lithic::Models::VerificationMethod] Verification Method
+      #   @param verification_method [Symbol, Lithic::VerificationMethod] Verification Method
       #
       #   @param verification_state [Symbol, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState] Verification State
       #
       #   @param account_token [String] Indicates which Lithic account the external account is associated with. For exte
-      #   ...
       #
-      #   @param address [Lithic::Models::ExternalBankAccountAddress] Address
+      #   @param address [Lithic::ExternalBankAccountAddress] Address
       #
       #   @param company_id [String] Optional field that helps identify bank accounts in receipts
       #
@@ -201,7 +195,6 @@ module Lithic
       #   @param user_defined_id [String] User Defined ID
       #
       #   @param verification_failed_reason [String] Optional free text description of the reason for the failed verification. For AC
-      #   ...
 
       # Account State
       #

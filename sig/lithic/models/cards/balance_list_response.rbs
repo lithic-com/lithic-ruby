@@ -49,8 +49,6 @@ module Lithic
           updated: Time
         ) -> void
 
-        def to_hash: -> Lithic::Models::Cards::balance_list_response
-
         type type_ = :ISSUING | :OPERATING | :RESERVE
 
         module Type

@@ -4,6 +4,8 @@ module Lithic
   module Models
     module AuthRules
       class V2ReportResponse < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         sig { returns(T.nilable(String)) }
         attr_reader :report_token
 
@@ -11,10 +13,12 @@ module Lithic
         attr_writer :report_token
 
         sig { params(report_token: String).returns(T.attached_class) }
-        def self.new(report_token: nil); end
+        def self.new(report_token: nil)
+        end
 
-        sig { override.returns({report_token: String}) }
-        def to_hash; end
+        sig { override.returns({ report_token: String }) }
+        def to_hash
+        end
       end
     end
   end

@@ -6,8 +6,14 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # The type of document to upload
-      sig { returns(Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol) }
+      sig do
+        returns(
+          Lithic::AccountHolderUploadDocumentParams::DocumentType::OrSymbol
+        )
+      end
       attr_accessor :document_type
 
       # Globally unique identifier for the entity.
@@ -16,11 +22,11 @@ module Lithic
 
       sig do
         params(
-          document_type: Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
+          document_type:
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
           entity_token: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The type of document to upload
@@ -28,88 +34,140 @@ module Lithic
         # Globally unique identifier for the entity.
         entity_token:,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              document_type: Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
-              entity_token: String,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            document_type:
+              Lithic::AccountHolderUploadDocumentParams::DocumentType::OrSymbol,
+            entity_token: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # The type of document to upload
       module DocumentType
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::AccountHolderUploadDocumentParams::DocumentType
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         EIN_LETTER =
-          T.let(:EIN_LETTER, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
+          T.let(
+            :EIN_LETTER,
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+          )
         TAX_RETURN =
-          T.let(:TAX_RETURN, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
+          T.let(
+            :TAX_RETURN,
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+          )
         OPERATING_AGREEMENT =
-          T.let(:OPERATING_AGREEMENT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
+          T.let(
+            :OPERATING_AGREEMENT,
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+          )
         CERTIFICATE_OF_FORMATION =
           T.let(
             :CERTIFICATE_OF_FORMATION,
-            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
           )
         DRIVERS_LICENSE =
-          T.let(:DRIVERS_LICENSE, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
+          T.let(
+            :DRIVERS_LICENSE,
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+          )
         PASSPORT =
-          T.let(:PASSPORT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
+          T.let(
+            :PASSPORT,
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+          )
         PASSPORT_CARD =
-          T.let(:PASSPORT_CARD, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
+          T.let(
+            :PASSPORT_CARD,
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+          )
         CERTIFICATE_OF_GOOD_STANDING =
           T.let(
             :CERTIFICATE_OF_GOOD_STANDING,
-            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
           )
         ARTICLES_OF_INCORPORATION =
           T.let(
             :ARTICLES_OF_INCORPORATION,
-            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
           )
         ARTICLES_OF_ORGANIZATION =
           T.let(
             :ARTICLES_OF_ORGANIZATION,
-            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
           )
-        BYLAWS = T.let(:BYLAWS, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
+        BYLAWS =
+          T.let(
+            :BYLAWS,
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+          )
         GOVERNMENT_BUSINESS_LICENSE =
           T.let(
             :GOVERNMENT_BUSINESS_LICENSE,
-            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
           )
         PARTNERSHIP_AGREEMENT =
           T.let(
             :PARTNERSHIP_AGREEMENT,
-            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
           )
         SS4_FORM =
-          T.let(:SS4_FORM, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
+          T.let(
+            :SS4_FORM,
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+          )
         BANK_STATEMENT =
-          T.let(:BANK_STATEMENT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
+          T.let(
+            :BANK_STATEMENT,
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+          )
         UTILITY_BILL_STATEMENT =
           T.let(
             :UTILITY_BILL_STATEMENT,
-            Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
           )
         SSN_CARD =
-          T.let(:SSN_CARD, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
+          T.let(
+            :SSN_CARD,
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+          )
         ITIN_LETTER =
-          T.let(:ITIN_LETTER, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
+          T.let(
+            :ITIN_LETTER,
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+          )
         FINCEN_BOI_REPORT =
-          T.let(:FINCEN_BOI_REPORT, Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol)
+          T.let(
+            :FINCEN_BOI_REPORT,
+            Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::AccountHolderUploadDocumentParams::DocumentType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

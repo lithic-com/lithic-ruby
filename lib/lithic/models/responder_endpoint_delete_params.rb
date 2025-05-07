@@ -10,11 +10,11 @@ module Lithic
       # @!attribute type
       #   The type of the endpoint.
       #
-      #   @return [Symbol, Lithic::Models::ResponderEndpointDeleteParams::Type]
-      required :type, enum: -> { Lithic::Models::ResponderEndpointDeleteParams::Type }
+      #   @return [Symbol, Lithic::ResponderEndpointDeleteParams::Type]
+      required :type, enum: -> { Lithic::ResponderEndpointDeleteParams::Type }
 
       # @!method initialize(type:, request_options: {})
-      #   @param type [Symbol, Lithic::Models::ResponderEndpointDeleteParams::Type] The type of the endpoint.
+      #   @param type [Symbol, Lithic::ResponderEndpointDeleteParams::Type] The type of the endpoint.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

@@ -48,8 +48,8 @@ module Lithic
       optional :settlement_currencies, Lithic::Internal::Type::ArrayOf[String]
 
       # @!method initialize(token:, created:, name:, pan_range_end:, pan_range_start:, cardholder_currency: nil, settlement_currencies: nil)
-      #   Some parameter documentations has been truncated, see
-      #   {Lithic::Models::CardProgram} for more details.
+      #   Some parameter documentations has been truncated, see {Lithic::CardProgram} for
+      #   more details.
       #
       #   @param token [String] Globally unique identifier.
       #
@@ -64,7 +64,6 @@ module Lithic
       #   @param cardholder_currency [String] 3-character alphabetic ISO 4217 code for the currency of the cardholder.
       #
       #   @param settlement_currencies [Array<String>] List of 3-character alphabetic ISO 4217 codes for the currencies that the card p
-      #   ...
     end
   end
 end

@@ -4,10 +4,10 @@ module Lithic
       {
         token: String,
         account_token: String,
-        beneficial_owner_entities: ::Array[Lithic::Models::KYBBusinessEntity],
+        beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
         beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual],
         business_account_token: String,
-        business_entity: Lithic::Models::KYBBusinessEntity,
+        business_entity: Lithic::KYBBusinessEntity,
         control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
         created: Time,
         email: String,
@@ -16,7 +16,7 @@ module Lithic
         individual: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
         nature_of_business: String,
         phone_number: String,
-        required_documents: ::Array[Lithic::Models::RequiredDocument],
+        required_documents: ::Array[Lithic::RequiredDocument],
         status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::status,
         status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::status_reason],
         user_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::user_type,
@@ -33,11 +33,11 @@ module Lithic
 
       def account_token=: (String) -> String
 
-      attr_reader beneficial_owner_entities: ::Array[Lithic::Models::KYBBusinessEntity]?
+      attr_reader beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity]?
 
       def beneficial_owner_entities=: (
-        ::Array[Lithic::Models::KYBBusinessEntity]
-      ) -> ::Array[Lithic::Models::KYBBusinessEntity]
+        ::Array[Lithic::KYBBusinessEntity]
+      ) -> ::Array[Lithic::KYBBusinessEntity]
 
       attr_reader beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual]?
 
@@ -49,11 +49,11 @@ module Lithic
 
       def business_account_token=: (String) -> String
 
-      attr_reader business_entity: Lithic::Models::KYBBusinessEntity?
+      attr_reader business_entity: Lithic::KYBBusinessEntity?
 
       def business_entity=: (
-        Lithic::Models::KYBBusinessEntity
-      ) -> Lithic::Models::KYBBusinessEntity
+        Lithic::KYBBusinessEntity
+      ) -> Lithic::KYBBusinessEntity
 
       attr_reader control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson?
 
@@ -93,11 +93,11 @@ module Lithic
 
       def phone_number=: (String) -> String
 
-      attr_reader required_documents: ::Array[Lithic::Models::RequiredDocument]?
+      attr_reader required_documents: ::Array[Lithic::RequiredDocument]?
 
       def required_documents=: (
-        ::Array[Lithic::Models::RequiredDocument]
-      ) -> ::Array[Lithic::Models::RequiredDocument]
+        ::Array[Lithic::RequiredDocument]
+      ) -> ::Array[Lithic::RequiredDocument]
 
       attr_reader status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::status?
 
@@ -130,10 +130,10 @@ module Lithic
       def initialize: (
         ?token: String,
         ?account_token: String,
-        ?beneficial_owner_entities: ::Array[Lithic::Models::KYBBusinessEntity],
+        ?beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
         ?beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual],
         ?business_account_token: String,
-        ?business_entity: Lithic::Models::KYBBusinessEntity,
+        ?business_entity: Lithic::KYBBusinessEntity,
         ?control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
         ?created: Time,
         ?email: String,
@@ -142,15 +142,13 @@ module Lithic
         ?individual: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
         ?nature_of_business: String,
         ?phone_number: String,
-        ?required_documents: ::Array[Lithic::Models::RequiredDocument],
+        ?required_documents: ::Array[Lithic::RequiredDocument],
         ?status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::status,
         ?status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::status_reason],
         ?user_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::user_type,
         ?verification_application: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
         ?website_url: String
       ) -> void
-
-      def to_hash: -> Lithic::Models::account_holder_simulate_enrollment_review_response
 
       type beneficial_owner_individual =
         {
@@ -199,8 +197,6 @@ module Lithic
           ?phone_number: String
         ) -> void
 
-        def to_hash: -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::beneficial_owner_individual
-
         type address =
           {
             :address1 => String,
@@ -234,8 +230,6 @@ module Lithic
             state: String,
             ?address2: String
           ) -> void
-
-          def to_hash: -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::address
         end
       end
 
@@ -286,8 +280,6 @@ module Lithic
           ?phone_number: String
         ) -> void
 
-        def to_hash: -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::control_person
-
         type address =
           {
             :address1 => String,
@@ -321,8 +313,6 @@ module Lithic
             state: String,
             ?address2: String
           ) -> void
-
-          def to_hash: -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::address
         end
       end
 
@@ -384,8 +374,6 @@ module Lithic
           ?phone_number: String
         ) -> void
 
-        def to_hash: -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::individual
-
         type address =
           {
             :address1 => String,
@@ -419,8 +407,6 @@ module Lithic
             state: String,
             ?address2: String
           ) -> void
-
-          def to_hash: -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::address
         end
       end
 
@@ -529,8 +515,6 @@ module Lithic
           status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::status_reason],
           updated: Time
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::verification_application
 
         type status =
           :ACCEPTED | :PENDING_DOCUMENT | :PENDING_RESUBMIT | :REJECTED

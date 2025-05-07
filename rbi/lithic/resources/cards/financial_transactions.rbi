@@ -9,30 +9,33 @@ module Lithic
           params(
             financial_transaction_token: String,
             card_token: String,
-            request_options: Lithic::RequestOpts
-          )
-            .returns(Lithic::Models::FinancialTransaction)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::FinancialTransaction)
         end
         def retrieve(
           # Globally unique identifier for financial transaction token.
           financial_transaction_token,
           card_token:,
           request_options: {}
-        ); end
+        )
+        end
+
         # List the financial transactions for a given card.
         sig do
           params(
             card_token: String,
             begin_: Time,
-            category: Lithic::Models::Cards::FinancialTransactionListParams::Category::OrSymbol,
+            category:
+              Lithic::Cards::FinancialTransactionListParams::Category::OrSymbol,
             end_: Time,
             ending_before: String,
-            result: Lithic::Models::Cards::FinancialTransactionListParams::Result::OrSymbol,
+            result:
+              Lithic::Cards::FinancialTransactionListParams::Result::OrSymbol,
             starting_after: String,
-            status: Lithic::Models::Cards::FinancialTransactionListParams::Status::OrSymbol,
-            request_options: Lithic::RequestOpts
-          )
-            .returns(Lithic::Internal::SinglePage[Lithic::Models::FinancialTransaction])
+            status:
+              Lithic::Cards::FinancialTransactionListParams::Status::OrSymbol,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::Internal::SinglePage[Lithic::FinancialTransaction])
         end
         def list(
           card_token,
@@ -55,10 +58,13 @@ module Lithic
           # Financial Transaction status to be returned.
           status: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

@@ -7,7 +7,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     response = @lithic.cards.create(type: :VIRTUAL)
 
     assert_pattern do
-      response => Lithic::Models::Card
+      response => Lithic::Card
     end
   end
 
@@ -15,7 +15,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     response = @lithic.cards.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::Card
+      response => Lithic::Card
     end
   end
 
@@ -23,7 +23,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     response = @lithic.cards.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::Card
+      response => Lithic::Card
     end
   end
 
@@ -38,7 +38,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::NonPCICard
+      row => Lithic::NonPCICard
     end
 
     assert_pattern do
@@ -47,13 +47,13 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         account_token: String,
         card_program_token: String,
         created: Time,
-        funding: Lithic::Models::NonPCICard::Funding,
+        funding: Lithic::NonPCICard::Funding,
         last_four: String,
-        pin_status: Lithic::Models::NonPCICard::PinStatus,
+        pin_status: Lithic::NonPCICard::PinStatus,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::Models::NonPCICard::SpendLimitDuration,
-        state: Lithic::Models::NonPCICard::State,
-        type: Lithic::Models::NonPCICard::Type,
+        spend_limit_duration: Lithic::NonPCICard::SpendLimitDuration,
+        state: Lithic::NonPCICard::State,
+        type: Lithic::NonPCICard::Type,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
         digital_card_art_token: String | nil,
@@ -84,7 +84,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Lithic::Models::Card
+      response => Lithic::Card
     end
   end
 
@@ -114,7 +114,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     response = @lithic.cards.reissue("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::Card
+      response => Lithic::Card
     end
   end
 
@@ -134,7 +134,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Lithic::Models::Card
+      response => Lithic::Card
     end
   end
 
@@ -142,14 +142,14 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     response = @lithic.cards.retrieve_spend_limits("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::CardSpendLimits
+      response => Lithic::CardSpendLimits
     end
 
     assert_pattern do
       response => {
-        available_spend_limit: Lithic::Models::CardSpendLimits::AvailableSpendLimit,
-        spend_limit: Lithic::Models::CardSpendLimits::SpendLimit | nil,
-        spend_velocity: Lithic::Models::CardSpendLimits::SpendVelocity | nil
+        available_spend_limit: Lithic::CardSpendLimits::AvailableSpendLimit,
+        spend_limit: Lithic::CardSpendLimits::SpendLimit | nil,
+        spend_velocity: Lithic::CardSpendLimits::SpendVelocity | nil
       }
     end
   end
@@ -158,7 +158,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     response = @lithic.cards.search_by_pan(pan: "4111111289144142")
 
     assert_pattern do
-      response => Lithic::Models::Card
+      response => Lithic::Card
     end
   end
 end

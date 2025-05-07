@@ -13,14 +13,14 @@ module Lithic
         institution: String,
         interchange_fee_extended_precision: Integer,
         interchange_gross_amount: Integer,
-        network: Lithic::Models::SettlementDetail::network,
-        other_fees_details: Lithic::Models::SettlementDetail::OtherFeesDetails,
+        network: Lithic::SettlementDetail::network,
+        other_fees_details: Lithic::SettlementDetail::OtherFeesDetails,
         other_fees_gross_amount: Integer,
         report_date: String,
         settlement_date: String,
         transaction_token: String,
         transactions_gross_amount: Integer,
-        type: Lithic::Models::SettlementDetail::type_,
+        type: Lithic::SettlementDetail::type_,
         updated: Time,
         fee_description: String
       }
@@ -48,9 +48,9 @@ module Lithic
 
       attr_accessor interchange_gross_amount: Integer
 
-      attr_accessor network: Lithic::Models::SettlementDetail::network
+      attr_accessor network: Lithic::SettlementDetail::network
 
-      attr_accessor other_fees_details: Lithic::Models::SettlementDetail::OtherFeesDetails
+      attr_accessor other_fees_details: Lithic::SettlementDetail::OtherFeesDetails
 
       attr_accessor other_fees_gross_amount: Integer
 
@@ -62,7 +62,7 @@ module Lithic
 
       attr_accessor transactions_gross_amount: Integer
 
-      attr_accessor type: Lithic::Models::SettlementDetail::type_
+      attr_accessor type: Lithic::SettlementDetail::type_
 
       attr_accessor updated: Time
 
@@ -82,19 +82,17 @@ module Lithic
         institution: String,
         interchange_fee_extended_precision: Integer,
         interchange_gross_amount: Integer,
-        network: Lithic::Models::SettlementDetail::network,
-        other_fees_details: Lithic::Models::SettlementDetail::OtherFeesDetails,
+        network: Lithic::SettlementDetail::network,
+        other_fees_details: Lithic::SettlementDetail::OtherFeesDetails,
         other_fees_gross_amount: Integer,
         report_date: String,
         settlement_date: String,
         transaction_token: String,
         transactions_gross_amount: Integer,
-        type: Lithic::Models::SettlementDetail::type_,
+        type: Lithic::SettlementDetail::type_,
         updated: Time,
         ?fee_description: String
       ) -> void
-
-      def to_hash: -> Lithic::Models::settlement_detail
 
       type network = :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
 
@@ -107,7 +105,7 @@ module Lithic
         UNKNOWN: :UNKNOWN
         VISA: :VISA
 
-        def self?.values: -> ::Array[Lithic::Models::SettlementDetail::network]
+        def self?.values: -> ::Array[Lithic::SettlementDetail::network]
       end
 
       type other_fees_details = { isa: Integer }
@@ -118,8 +116,6 @@ module Lithic
         def isa=: (Integer) -> Integer
 
         def initialize: (?isa: Integer) -> void
-
-        def to_hash: -> Lithic::Models::SettlementDetail::other_fees_details
       end
 
       type type_ =
@@ -146,7 +142,7 @@ module Lithic
         PREARBITRATION: :PREARBITRATION
         REPRESENTMENT: :REPRESENTMENT
 
-        def self?.values: -> ::Array[Lithic::Models::SettlementDetail::type_]
+        def self?.values: -> ::Array[Lithic::SettlementDetail::type_]
       end
     end
   end

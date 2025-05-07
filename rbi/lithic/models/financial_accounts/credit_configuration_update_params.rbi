@@ -7,6 +7,8 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         sig { returns(T.nilable(Integer)) }
         attr_reader :credit_limit
 
@@ -39,9 +41,8 @@ module Lithic
             credit_product_token: String,
             external_bank_account_token: String,
             tier: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           credit_limit: nil,
@@ -51,20 +52,22 @@ module Lithic
           # Tier to assign to a financial account
           tier: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                credit_limit: Integer,
-                credit_product_token: String,
-                external_bank_account_token: String,
-                tier: String,
-                request_options: Lithic::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              credit_limit: Integer,
+              credit_product_token: String,
+              external_bank_account_token: String,
+              tier: String,
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

@@ -2,19 +2,19 @@ module Lithic
   module Models
     type kyc =
       {
-        individual: Lithic::Models::KYC::Individual,
+        individual: Lithic::KYC::Individual,
         tos_timestamp: String,
-        workflow: Lithic::Models::KYC::workflow,
+        workflow: Lithic::KYC::workflow,
         external_id: String,
         kyc_passed_timestamp: String
       }
 
     class KYC < Lithic::Internal::Type::BaseModel
-      attr_accessor individual: Lithic::Models::KYC::Individual
+      attr_accessor individual: Lithic::KYC::Individual
 
       attr_accessor tos_timestamp: String
 
-      attr_accessor workflow: Lithic::Models::KYC::workflow
+      attr_accessor workflow: Lithic::KYC::workflow
 
       attr_reader external_id: String?
 
@@ -25,18 +25,16 @@ module Lithic
       def kyc_passed_timestamp=: (String) -> String
 
       def initialize: (
-        individual: Lithic::Models::KYC::Individual,
+        individual: Lithic::KYC::Individual,
         tos_timestamp: String,
-        workflow: Lithic::Models::KYC::workflow,
+        workflow: Lithic::KYC::workflow,
         ?external_id: String,
         ?kyc_passed_timestamp: String
       ) -> void
 
-      def to_hash: -> Lithic::Models::kyc
-
       type individual =
         {
-          address: Lithic::Models::Address,
+          address: Lithic::Address,
           dob: String,
           email: String,
           first_name: String,
@@ -46,7 +44,7 @@ module Lithic
         }
 
       class Individual < Lithic::Internal::Type::BaseModel
-        attr_accessor address: Lithic::Models::Address
+        attr_accessor address: Lithic::Address
 
         attr_accessor dob: String
 
@@ -61,7 +59,7 @@ module Lithic
         attr_accessor phone_number: String
 
         def initialize: (
-          address: Lithic::Models::Address,
+          address: Lithic::Address,
           dob: String,
           email: String,
           first_name: String,
@@ -69,8 +67,6 @@ module Lithic
           last_name: String,
           phone_number: String
         ) -> void
-
-        def to_hash: -> Lithic::Models::KYC::individual
       end
 
       type workflow = :KYC_BASIC | :KYC_BYO
@@ -81,7 +77,7 @@ module Lithic
         KYC_BASIC: :KYC_BASIC
         KYC_BYO: :KYC_BYO
 
-        def self?.values: -> ::Array[Lithic::Models::KYC::workflow]
+        def self?.values: -> ::Array[Lithic::KYC::workflow]
       end
     end
   end

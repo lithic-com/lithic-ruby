@@ -4,7 +4,9 @@ module Lithic
   module Resources
     class FinancialAccounts
       class Statements
-        sig { returns(Lithic::Resources::FinancialAccounts::Statements::LineItems) }
+        sig do
+          returns(Lithic::Resources::FinancialAccounts::Statements::LineItems)
+        end
         attr_reader :line_items
 
         # Get a specific statement for a given financial account.
@@ -12,9 +14,8 @@ module Lithic
           params(
             statement_token: String,
             financial_account_token: String,
-            request_options: Lithic::RequestOpts
-          )
-            .returns(Lithic::Models::FinancialAccounts::Statement)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::FinancialAccounts::Statement)
         end
         def retrieve(
           # Globally unique identifier for statements.
@@ -22,7 +23,9 @@ module Lithic
           # Globally unique identifier for financial account.
           financial_account_token:,
           request_options: {}
-        ); end
+        )
+        end
+
         # List the statements for a given financial account.
         sig do
           params(
@@ -33,9 +36,10 @@ module Lithic
             include_initial_statements: T::Boolean,
             page_size: Integer,
             starting_after: String,
-            request_options: Lithic::RequestOpts
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(
+            Lithic::Internal::CursorPage[Lithic::FinancialAccounts::Statement]
           )
-            .returns(Lithic::Internal::CursorPage[Lithic::Models::FinancialAccounts::Statement])
         end
         def list(
           # Globally unique identifier for financial account.
@@ -57,10 +61,13 @@ module Lithic
           # begin. Used to retrieve the next page of results after this item.
           starting_after: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

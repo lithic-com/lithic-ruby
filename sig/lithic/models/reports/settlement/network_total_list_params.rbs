@@ -83,8 +83,6 @@ module Lithic
             ?request_options: Lithic::request_opts
           ) -> void
 
-          def to_hash: -> Lithic::Models::Reports::Settlement::network_total_list_params
-
           type network = :VISA | :MASTERCARD | :MAESTRO | :INTERLINK
 
           module Network

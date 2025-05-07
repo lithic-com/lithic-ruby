@@ -6,10 +6,12 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       sig { returns(String) }
       attr_accessor :nickname
 
-      sig { returns(Lithic::Models::FinancialAccountCreateParams::Type::OrSymbol) }
+      sig { returns(Lithic::FinancialAccountCreateParams::Type::OrSymbol) }
       attr_accessor :type
 
       sig { returns(T.nilable(String)) }
@@ -33,13 +35,12 @@ module Lithic
       sig do
         params(
           nickname: String,
-          type: Lithic::Models::FinancialAccountCreateParams::Type::OrSymbol,
+          type: Lithic::FinancialAccountCreateParams::Type::OrSymbol,
           account_token: String,
           is_for_benefit_of: T::Boolean,
           idempotency_key: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         nickname:,
@@ -52,30 +53,42 @@ module Lithic
       end
 
       sig do
-        override
-          .returns(
-            {
-              nickname: String,
-              type: Lithic::Models::FinancialAccountCreateParams::Type::OrSymbol,
-              account_token: String,
-              is_for_benefit_of: T::Boolean,
-              idempotency_key: String,
-              request_options: Lithic::RequestOptions
-            }
-          )
+        override.returns(
+          {
+            nickname: String,
+            type: Lithic::FinancialAccountCreateParams::Type::OrSymbol,
+            account_token: String,
+            is_for_benefit_of: T::Boolean,
+            idempotency_key: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       module Type
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::FinancialAccountCreateParams::Type) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::FinancialAccountCreateParams::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        OPERATING = T.let(:OPERATING, Lithic::Models::FinancialAccountCreateParams::Type::TaggedSymbol)
+        OPERATING =
+          T.let(
+            :OPERATING,
+            Lithic::FinancialAccountCreateParams::Type::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::FinancialAccountCreateParams::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::FinancialAccountCreateParams::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

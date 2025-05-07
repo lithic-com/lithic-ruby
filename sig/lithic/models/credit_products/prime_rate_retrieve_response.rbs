@@ -17,8 +17,6 @@ module Lithic
           has_more: bool
         ) -> void
 
-        def to_hash: -> Lithic::Models::CreditProducts::prime_rate_retrieve_response
-
         type data = { effective_date: Date, rate: String }
 
         class Data < Lithic::Internal::Type::BaseModel
@@ -27,8 +25,6 @@ module Lithic
           attr_accessor rate: String
 
           def initialize: (effective_date: Date, rate: String) -> void
-
-          def to_hash: -> Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::data
         end
       end
     end

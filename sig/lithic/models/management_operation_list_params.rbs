@@ -71,8 +71,6 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> Lithic::Models::management_operation_list_params
-
       type category =
         :MANAGEMENT_FEE
         | :MANAGEMENT_DISPUTE

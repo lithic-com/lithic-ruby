@@ -6,7 +6,7 @@ module Lithic
         external_bank_account_token: String,
         financial_account_token: String,
         method_: Lithic::Models::PaymentCreateParams::method_,
-        method_attributes: Lithic::Models::PaymentCreateParams::MethodAttributes,
+        method_attributes: Lithic::PaymentCreateParams::MethodAttributes,
         type: Lithic::Models::PaymentCreateParams::type_,
         ?token: String,
         ?memo: String,
@@ -17,7 +17,7 @@ module Lithic
       def retrieve: (
         String payment_token,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::Payment
+      ) -> Lithic::Payment
 
       def list: (
         ?account_token: String,
@@ -32,7 +32,7 @@ module Lithic
         ?starting_after: String,
         ?status: Lithic::Models::PaymentListParams::status,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Internal::CursorPage[Lithic::Models::Payment]
+      ) -> Lithic::Internal::CursorPage[Lithic::Payment]
 
       def retry_: (
         String payment_token,

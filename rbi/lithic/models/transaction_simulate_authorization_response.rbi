@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class TransactionSimulateAuthorizationResponse < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # A unique token to reference this transaction with later calls to void or clear
       # the authorization.
       sig { returns(T.nilable(String)) }
@@ -18,16 +20,23 @@ module Lithic
       sig { params(debugging_request_id: String).void }
       attr_writer :debugging_request_id
 
-      sig { params(token: String, debugging_request_id: String).returns(T.attached_class) }
+      sig do
+        params(token: String, debugging_request_id: String).returns(
+          T.attached_class
+        )
+      end
       def self.new(
         # A unique token to reference this transaction with later calls to void or clear
         # the authorization.
         token: nil,
         # Debugging request ID to share with Lithic Support team.
         debugging_request_id: nil
-      ); end
-      sig { override.returns({token: String, debugging_request_id: String}) }
-      def to_hash; end
+      )
+      end
+
+      sig { override.returns({ token: String, debugging_request_id: String }) }
+      def to_hash
+      end
     end
   end
 end

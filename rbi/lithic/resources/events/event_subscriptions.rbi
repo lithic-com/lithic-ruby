@@ -9,14 +9,16 @@ module Lithic
           params(
             event_subscription_token: String,
             event_token: String,
-            request_options: Lithic::RequestOpts
+            request_options: Lithic::RequestOptions::OrHash
           ).void
         end
-        def resend(event_subscription_token, event_token:, request_options: {}); end
+        def resend(event_subscription_token, event_token:, request_options: {})
+        end
 
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

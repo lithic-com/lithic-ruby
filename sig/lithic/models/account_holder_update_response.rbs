@@ -11,10 +11,10 @@ module Lithic
         {
           token: String,
           account_token: String,
-          beneficial_owner_entities: ::Array[Lithic::Models::KYBBusinessEntity],
+          beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
           beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual],
           business_account_token: String,
-          business_entity: Lithic::Models::KYBBusinessEntity,
+          business_entity: Lithic::KYBBusinessEntity,
           control_person: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
           created: Time,
           email: String,
@@ -23,7 +23,7 @@ module Lithic
           individual: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual,
           nature_of_business: String,
           phone_number: String,
-          required_documents: ::Array[Lithic::Models::RequiredDocument],
+          required_documents: ::Array[Lithic::RequiredDocument],
           status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status,
           status_reasons: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status_reason],
           user_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::user_type,
@@ -40,11 +40,11 @@ module Lithic
 
         def account_token=: (String) -> String
 
-        attr_reader beneficial_owner_entities: ::Array[Lithic::Models::KYBBusinessEntity]?
+        attr_reader beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity]?
 
         def beneficial_owner_entities=: (
-          ::Array[Lithic::Models::KYBBusinessEntity]
-        ) -> ::Array[Lithic::Models::KYBBusinessEntity]
+          ::Array[Lithic::KYBBusinessEntity]
+        ) -> ::Array[Lithic::KYBBusinessEntity]
 
         attr_reader beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual]?
 
@@ -56,11 +56,11 @@ module Lithic
 
         def business_account_token=: (String) -> String
 
-        attr_reader business_entity: Lithic::Models::KYBBusinessEntity?
+        attr_reader business_entity: Lithic::KYBBusinessEntity?
 
         def business_entity=: (
-          Lithic::Models::KYBBusinessEntity
-        ) -> Lithic::Models::KYBBusinessEntity
+          Lithic::KYBBusinessEntity
+        ) -> Lithic::KYBBusinessEntity
 
         attr_reader control_person: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson?
 
@@ -100,11 +100,11 @@ module Lithic
 
         def phone_number=: (String) -> String
 
-        attr_reader required_documents: ::Array[Lithic::Models::RequiredDocument]?
+        attr_reader required_documents: ::Array[Lithic::RequiredDocument]?
 
         def required_documents=: (
-          ::Array[Lithic::Models::RequiredDocument]
-        ) -> ::Array[Lithic::Models::RequiredDocument]
+          ::Array[Lithic::RequiredDocument]
+        ) -> ::Array[Lithic::RequiredDocument]
 
         attr_reader status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status?
 
@@ -137,10 +137,10 @@ module Lithic
         def initialize: (
           ?token: String,
           ?account_token: String,
-          ?beneficial_owner_entities: ::Array[Lithic::Models::KYBBusinessEntity],
+          ?beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
           ?beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual],
           ?business_account_token: String,
-          ?business_entity: Lithic::Models::KYBBusinessEntity,
+          ?business_entity: Lithic::KYBBusinessEntity,
           ?control_person: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
           ?created: Time,
           ?email: String,
@@ -149,15 +149,13 @@ module Lithic
           ?individual: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual,
           ?nature_of_business: String,
           ?phone_number: String,
-          ?required_documents: ::Array[Lithic::Models::RequiredDocument],
+          ?required_documents: ::Array[Lithic::RequiredDocument],
           ?status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status,
           ?status_reasons: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status_reason],
           ?user_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::user_type,
           ?verification_application: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication,
           ?website_url: String
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::kybkyc_patch_response
 
         type beneficial_owner_individual =
           {
@@ -206,8 +204,6 @@ module Lithic
             ?phone_number: String
           ) -> void
 
-          def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::beneficial_owner_individual
-
           type address =
             {
               :address1 => String,
@@ -241,8 +237,6 @@ module Lithic
               state: String,
               ?address2: String
             ) -> void
-
-            def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::address
           end
         end
 
@@ -293,8 +287,6 @@ module Lithic
             ?phone_number: String
           ) -> void
 
-          def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::control_person
-
           type address =
             {
               :address1 => String,
@@ -328,8 +320,6 @@ module Lithic
               state: String,
               ?address2: String
             ) -> void
-
-            def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::address
           end
         end
 
@@ -391,8 +381,6 @@ module Lithic
             ?phone_number: String
           ) -> void
 
-          def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::individual
-
           type address =
             {
               :address1 => String,
@@ -426,8 +414,6 @@ module Lithic
               state: String,
               ?address2: String
             ) -> void
-
-            def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::address
           end
         end
 
@@ -536,8 +522,6 @@ module Lithic
             status_reasons: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status_reason],
             updated: Time
           ) -> void
-
-          def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::verification_application
 
           type status =
             :ACCEPTED | :PENDING_DOCUMENT | :PENDING_RESUBMIT | :REJECTED
@@ -670,8 +654,6 @@ module Lithic
           ?phone_number: String
         ) -> void
 
-        def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::patch_response
-
         type address =
           {
             :address1 => String,
@@ -705,12 +687,10 @@ module Lithic
             state: String,
             ?address2: String
           ) -> void
-
-          def to_hash: -> Lithic::Models::AccountHolderUpdateResponse::PatchResponse::address
         end
       end
 
-      def self?.variants: -> [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse, Lithic::Models::AccountHolderUpdateResponse::PatchResponse]
+      def self?.variants: -> ::Array[Lithic::Models::account_holder_update_response]
     end
   end
 end

@@ -39,8 +39,6 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> Lithic::Models::balance_list_params
-
       type financial_account_type = :ISSUING | :OPERATING | :RESERVE
 
       module FinancialAccountType

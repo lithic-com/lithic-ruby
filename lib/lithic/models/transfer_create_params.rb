@@ -46,16 +46,12 @@ module Lithic
       #   {Lithic::Models::TransferCreateParams} for more details.
       #
       #   @param amount [Integer] Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
-      #   ...
       #
       #   @param from [String] Globally unique identifier for the financial account or card that will send the
-      #   ...
       #
       #   @param to [String] Globally unique identifier for the financial account or card that will receive t
-      #   ...
       #
       #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
-      #   ...
       #
       #   @param memo [String] Optional descriptor for the transfer.
       #

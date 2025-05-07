@@ -36,8 +36,8 @@ module Lithic
       # @!attribute state
       #   Account states.
       #
-      #   @return [Symbol, Lithic::Models::AccountUpdateParams::State, nil]
-      optional :state, enum: -> { Lithic::Models::AccountUpdateParams::State }
+      #   @return [Symbol, Lithic::AccountUpdateParams::State, nil]
+      optional :state, enum: -> { Lithic::AccountUpdateParams::State }
 
       # @!attribute verification_address
       #   @deprecated
@@ -47,26 +47,22 @@ module Lithic
       #   are no longer supported by Authorization Rules. The field will be removed from
       #   the schema in a future release.
       #
-      #   @return [Lithic::Models::AccountUpdateParams::VerificationAddress, nil]
-      optional :verification_address, -> { Lithic::Models::AccountUpdateParams::VerificationAddress }
+      #   @return [Lithic::AccountUpdateParams::VerificationAddress, nil]
+      optional :verification_address, -> { Lithic::AccountUpdateParams::VerificationAddress }
 
       # @!method initialize(daily_spend_limit: nil, lifetime_spend_limit: nil, monthly_spend_limit: nil, state: nil, verification_address: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::AccountUpdateParams} for more details.
       #
       #   @param daily_spend_limit [Integer] Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a $1
-      #   ...
       #
       #   @param lifetime_spend_limit [Integer] Amount (in cents) for the account's lifetime spend limit (e.g. 100000 would be a
-      #   ...
       #
       #   @param monthly_spend_limit [Integer] Amount (in cents) for the account's monthly spend limit (e.g. 100000 would be a
-      #   ...
       #
-      #   @param state [Symbol, Lithic::Models::AccountUpdateParams::State] Account states.
+      #   @param state [Symbol, Lithic::AccountUpdateParams::State] Account states.
       #
-      #   @param verification_address [Lithic::Models::AccountUpdateParams::VerificationAddress] Address used during Address Verification Service (AVS) checks during transaction
-      #   ...
+      #   @param verification_address [Lithic::AccountUpdateParams::VerificationAddress] Address used during Address Verification Service (AVS) checks during transaction
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

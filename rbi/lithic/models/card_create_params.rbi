@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Card types:
       #
       # - `VIRTUAL` - Card will authorize at any merchant and can be added to a digital
@@ -22,7 +24,7 @@ module Lithic
       #   VIRTUAL instead.
       # - `DIGITAL_WALLET` - _[Deprecated]_ Similar behavior to VIRTUAL cards, please
       #   use VIRTUAL instead.
-      sig { returns(Lithic::Models::CardCreateParams::Type::OrSymbol) }
+      sig { returns(Lithic::CardCreateParams::Type::OrSymbol) }
       attr_accessor :type
 
       # Globally unique identifier for the account that the card will be associated
@@ -47,10 +49,10 @@ module Lithic
       sig { params(card_program_token: String).void }
       attr_writer :card_program_token
 
-      sig { returns(T.nilable(Lithic::Models::Carrier)) }
+      sig { returns(T.nilable(Lithic::Carrier)) }
       attr_reader :carrier
 
-      sig { params(carrier: T.any(Lithic::Models::Carrier, Lithic::Internal::AnyHash)).void }
+      sig { params(carrier: Lithic::Carrier::OrHash).void }
       attr_writer :carrier
 
       # Specifies the digital card art to be displayed in the user’s digital wallet
@@ -124,10 +126,10 @@ module Lithic
       sig { params(replacement_for: String).void }
       attr_writer :replacement_for
 
-      sig { returns(T.nilable(Lithic::Models::ShippingAddress)) }
+      sig { returns(T.nilable(Lithic::ShippingAddress)) }
       attr_reader :shipping_address
 
-      sig { params(shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Internal::AnyHash)).void }
+      sig { params(shipping_address: Lithic::ShippingAddress::OrHash).void }
       attr_writer :shipping_address
 
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
@@ -142,10 +144,16 @@ module Lithic
       # - `2_DAY` - FedEx 2-day shipping, with tracking
       # - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #   tracking
-      sig { returns(T.nilable(Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol)) }
+      sig do
+        returns(T.nilable(Lithic::CardCreateParams::ShippingMethod::OrSymbol))
+      end
       attr_reader :shipping_method
 
-      sig { params(shipping_method: Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol).void }
+      sig do
+        params(
+          shipping_method: Lithic::CardCreateParams::ShippingMethod::OrSymbol
+        ).void
+      end
       attr_writer :shipping_method
 
       # Amount (in cents) to limit approved authorizations (e.g. 100000 would be a
@@ -171,10 +179,12 @@ module Lithic
       #   starts 6 days after the current calendar date one month prior.
       # - `TRANSACTION` - Card will authorize multiple transactions if each individual
       #   transaction is under the spend limit.
-      sig { returns(T.nilable(Lithic::Models::SpendLimitDuration::OrSymbol)) }
+      sig { returns(T.nilable(Lithic::SpendLimitDuration::OrSymbol)) }
       attr_reader :spend_limit_duration
 
-      sig { params(spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol).void }
+      sig do
+        params(spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol).void
+      end
       attr_writer :spend_limit_duration
 
       # Card state values:
@@ -183,18 +193,18 @@ module Lithic
       #   parameters).
       # - `PAUSED` - Card will decline authorizations, but can be resumed at a later
       #   time.
-      sig { returns(T.nilable(Lithic::Models::CardCreateParams::State::OrSymbol)) }
+      sig { returns(T.nilable(Lithic::CardCreateParams::State::OrSymbol)) }
       attr_reader :state
 
-      sig { params(state: Lithic::Models::CardCreateParams::State::OrSymbol).void }
+      sig { params(state: Lithic::CardCreateParams::State::OrSymbol).void }
       attr_writer :state
 
       sig do
         params(
-          type: Lithic::Models::CardCreateParams::Type::OrSymbol,
+          type: Lithic::CardCreateParams::Type::OrSymbol,
           account_token: String,
           card_program_token: String,
-          carrier: T.any(Lithic::Models::Carrier, Lithic::Internal::AnyHash),
+          carrier: Lithic::Carrier::OrHash,
           digital_card_art_token: String,
           exp_month: String,
           exp_year: String,
@@ -203,14 +213,13 @@ module Lithic
           product_id: String,
           replacement_account_token: String,
           replacement_for: String,
-          shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Internal::AnyHash),
-          shipping_method: Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol,
+          shipping_address: Lithic::ShippingAddress::OrHash,
+          shipping_method: Lithic::CardCreateParams::ShippingMethod::OrSymbol,
           spend_limit: Integer,
-          spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
-          state: Lithic::Models::CardCreateParams::State::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol,
+          state: Lithic::CardCreateParams::State::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Card types:
@@ -315,33 +324,35 @@ module Lithic
         #   time.
         state: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              type: Lithic::Models::CardCreateParams::Type::OrSymbol,
-              account_token: String,
-              card_program_token: String,
-              carrier: Lithic::Models::Carrier,
-              digital_card_art_token: String,
-              exp_month: String,
-              exp_year: String,
-              memo: String,
-              pin: String,
-              product_id: String,
-              replacement_account_token: String,
-              replacement_for: String,
-              shipping_address: Lithic::Models::ShippingAddress,
-              shipping_method: Lithic::Models::CardCreateParams::ShippingMethod::OrSymbol,
-              spend_limit: Integer,
-              spend_limit_duration: Lithic::Models::SpendLimitDuration::OrSymbol,
-              state: Lithic::Models::CardCreateParams::State::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            type: Lithic::CardCreateParams::Type::OrSymbol,
+            account_token: String,
+            card_program_token: String,
+            carrier: Lithic::Carrier,
+            digital_card_art_token: String,
+            exp_month: String,
+            exp_year: String,
+            memo: String,
+            pin: String,
+            product_id: String,
+            replacement_account_token: String,
+            replacement_for: String,
+            shipping_address: Lithic::ShippingAddress,
+            shipping_method: Lithic::CardCreateParams::ShippingMethod::OrSymbol,
+            spend_limit: Integer,
+            spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol,
+            state: Lithic::CardCreateParams::State::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Card types:
       #
@@ -362,18 +373,29 @@ module Lithic
       module Type
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardCreateParams::Type) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::CardCreateParams::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        MERCHANT_LOCKED = T.let(:MERCHANT_LOCKED, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
-        PHYSICAL = T.let(:PHYSICAL, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
-        SINGLE_USE = T.let(:SINGLE_USE, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
-        VIRTUAL = T.let(:VIRTUAL, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
-        UNLOCKED = T.let(:UNLOCKED, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
-        DIGITAL_WALLET = T.let(:DIGITAL_WALLET, Lithic::Models::CardCreateParams::Type::TaggedSymbol)
+        MERCHANT_LOCKED =
+          T.let(:MERCHANT_LOCKED, Lithic::CardCreateParams::Type::TaggedSymbol)
+        PHYSICAL =
+          T.let(:PHYSICAL, Lithic::CardCreateParams::Type::TaggedSymbol)
+        SINGLE_USE =
+          T.let(:SINGLE_USE, Lithic::CardCreateParams::Type::TaggedSymbol)
+        VIRTUAL = T.let(:VIRTUAL, Lithic::CardCreateParams::Type::TaggedSymbol)
+        UNLOCKED =
+          T.let(:UNLOCKED, Lithic::CardCreateParams::Type::TaggedSymbol)
+        DIGITAL_WALLET =
+          T.let(:DIGITAL_WALLET, Lithic::CardCreateParams::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::CardCreateParams::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::CardCreateParams::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
@@ -391,19 +413,50 @@ module Lithic
       module ShippingMethod
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardCreateParams::ShippingMethod) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::CardCreateParams::ShippingMethod)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        SHIPPING_METHOD_2_DAY = T.let(:"2_DAY", Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
-        EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
-        EXPRESS = T.let(:EXPRESS, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
-        PRIORITY = T.let(:PRIORITY, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
-        STANDARD = T.let(:STANDARD, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
+        SHIPPING_METHOD_2_DAY =
+          T.let(
+            :"2_DAY",
+            Lithic::CardCreateParams::ShippingMethod::TaggedSymbol
+          )
+        EXPEDITED =
+          T.let(
+            :EXPEDITED,
+            Lithic::CardCreateParams::ShippingMethod::TaggedSymbol
+          )
+        EXPRESS =
+          T.let(
+            :EXPRESS,
+            Lithic::CardCreateParams::ShippingMethod::TaggedSymbol
+          )
+        PRIORITY =
+          T.let(
+            :PRIORITY,
+            Lithic::CardCreateParams::ShippingMethod::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :STANDARD,
+            Lithic::CardCreateParams::ShippingMethod::TaggedSymbol
+          )
         STANDARD_WITH_TRACKING =
-          T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol)
+          T.let(
+            :STANDARD_WITH_TRACKING,
+            Lithic::CardCreateParams::ShippingMethod::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::CardCreateParams::ShippingMethod::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::CardCreateParams::ShippingMethod::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # Card state values:
@@ -415,14 +468,20 @@ module Lithic
       module State
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardCreateParams::State) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::CardCreateParams::State) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        OPEN = T.let(:OPEN, Lithic::Models::CardCreateParams::State::TaggedSymbol)
-        PAUSED = T.let(:PAUSED, Lithic::Models::CardCreateParams::State::TaggedSymbol)
+        OPEN = T.let(:OPEN, Lithic::CardCreateParams::State::TaggedSymbol)
+        PAUSED = T.let(:PAUSED, Lithic::CardCreateParams::State::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::CardCreateParams::State::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::CardCreateParams::State::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

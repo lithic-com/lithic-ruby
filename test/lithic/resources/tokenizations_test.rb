@@ -12,7 +12,7 @@ class Lithic::Test::Resources::TokenizationsTest < Lithic::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Lithic::Models::Tokenization | nil
+        data: Lithic::Tokenization | nil
       }
     end
   end
@@ -28,7 +28,7 @@ class Lithic::Test::Resources::TokenizationsTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::Tokenization
+      row => Lithic::Tokenization
     end
 
     assert_pattern do
@@ -38,13 +38,13 @@ class Lithic::Test::Resources::TokenizationsTest < Lithic::Test::ResourceTest
         card_token: String,
         created_at: Time,
         dpan: String | nil,
-        status: Lithic::Models::Tokenization::Status,
-        token_requestor_name: Lithic::Models::Tokenization::TokenRequestorName,
+        status: Lithic::Tokenization::Status,
+        token_requestor_name: Lithic::Tokenization::TokenRequestorName,
         token_unique_reference: String,
-        tokenization_channel: Lithic::Models::Tokenization::TokenizationChannel,
+        tokenization_channel: Lithic::Tokenization::TokenizationChannel,
         updated_at: Time,
         digital_card_art_token: String | nil,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Tokenization::Event]) | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Tokenization::Event]) | nil,
         payment_account_reference_id: String | nil
       }
     end
@@ -97,7 +97,7 @@ class Lithic::Test::Resources::TokenizationsTest < Lithic::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Tokenization]) | nil
+        data: ^(Lithic::Internal::Type::ArrayOf[Lithic::Tokenization]) | nil
       }
     end
   end
@@ -119,7 +119,7 @@ class Lithic::Test::Resources::TokenizationsTest < Lithic::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Lithic::Models::Tokenization | nil
+        data: Lithic::Tokenization | nil
       }
     end
   end

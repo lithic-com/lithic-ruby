@@ -8,8 +8,6 @@ module Lithic
       def qr_code_url=: (String) -> String
 
       def initialize: (?qr_code_url: String) -> void
-
-      def to_hash: -> Lithic::Models::carrier
     end
   end
 end

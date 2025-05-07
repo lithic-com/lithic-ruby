@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class AggregateBalance < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Funds available for spend in the currency's smallest unit (e.g., cents for USD)
       sig { returns(Integer) }
       attr_accessor :available_amount
@@ -16,7 +18,9 @@ module Lithic
       attr_accessor :currency
 
       # Type of financial account
-      sig { returns(Lithic::Models::AggregateBalance::FinancialAccountType::TaggedSymbol) }
+      sig do
+        returns(Lithic::AggregateBalance::FinancialAccountType::TaggedSymbol)
+      end
       attr_accessor :financial_account_type
 
       # Globally unique identifier for the financial account that had its balance
@@ -53,15 +57,15 @@ module Lithic
           available_amount: Integer,
           created: Time,
           currency: String,
-          financial_account_type: Lithic::Models::AggregateBalance::FinancialAccountType::OrSymbol,
+          financial_account_type:
+            Lithic::AggregateBalance::FinancialAccountType::OrSymbol,
           last_financial_account_token: String,
           last_transaction_event_token: String,
           last_transaction_token: String,
           pending_amount: Integer,
           total_amount: Integer,
           updated: Time
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Funds available for spend in the currency's smallest unit (e.g., cents for USD)
@@ -88,39 +92,64 @@ module Lithic
         total_amount:,
         # Date and time for when the balance was last updated.
         updated:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              available_amount: Integer,
-              created: Time,
-              currency: String,
-              financial_account_type: Lithic::Models::AggregateBalance::FinancialAccountType::TaggedSymbol,
-              last_financial_account_token: String,
-              last_transaction_event_token: String,
-              last_transaction_token: String,
-              pending_amount: Integer,
-              total_amount: Integer,
-              updated: Time
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            available_amount: Integer,
+            created: Time,
+            currency: String,
+            financial_account_type:
+              Lithic::AggregateBalance::FinancialAccountType::TaggedSymbol,
+            last_financial_account_token: String,
+            last_transaction_event_token: String,
+            last_transaction_token: String,
+            pending_amount: Integer,
+            total_amount: Integer,
+            updated: Time
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Type of financial account
       module FinancialAccountType
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AggregateBalance::FinancialAccountType) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::AggregateBalance::FinancialAccountType)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ISSUING = T.let(:ISSUING, Lithic::Models::AggregateBalance::FinancialAccountType::TaggedSymbol)
-        OPERATING = T.let(:OPERATING, Lithic::Models::AggregateBalance::FinancialAccountType::TaggedSymbol)
-        RESERVE = T.let(:RESERVE, Lithic::Models::AggregateBalance::FinancialAccountType::TaggedSymbol)
+        ISSUING =
+          T.let(
+            :ISSUING,
+            Lithic::AggregateBalance::FinancialAccountType::TaggedSymbol
+          )
+        OPERATING =
+          T.let(
+            :OPERATING,
+            Lithic::AggregateBalance::FinancialAccountType::TaggedSymbol
+          )
+        RESERVE =
+          T.let(
+            :RESERVE,
+            Lithic::AggregateBalance::FinancialAccountType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::AggregateBalance::FinancialAccountType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::AggregateBalance::FinancialAccountType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

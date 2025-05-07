@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class ResponderEndpointCreateResponse < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # True if the endpoint was enrolled successfully.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :enrolled
@@ -14,9 +16,12 @@ module Lithic
       def self.new(
         # True if the endpoint was enrolled successfully.
         enrolled: nil
-      ); end
-      sig { override.returns({enrolled: T::Boolean}) }
-      def to_hash; end
+      )
+      end
+
+      sig { override.returns({ enrolled: T::Boolean }) }
+      def to_hash
+      end
     end
   end
 end

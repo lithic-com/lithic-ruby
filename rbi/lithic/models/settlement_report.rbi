@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class SettlementReport < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Date and time when the transaction first occurred. UTC time zone.
       sig { returns(Time) }
       attr_accessor :created
@@ -12,7 +14,7 @@ module Lithic
       sig { returns(String) }
       attr_accessor :currency
 
-      sig { returns(T::Array[Lithic::Models::SettlementSummaryDetails]) }
+      sig { returns(T::Array[Lithic::SettlementSummaryDetails]) }
       attr_accessor :details
 
       # The total gross amount of disputes settlements. (This field is deprecated and
@@ -65,7 +67,7 @@ module Lithic
         params(
           created: Time,
           currency: String,
-          details: T::Array[T.any(Lithic::Models::SettlementSummaryDetails, Lithic::Internal::AnyHash)],
+          details: T::Array[Lithic::SettlementSummaryDetails::OrHash],
           disputes_gross_amount: Integer,
           interchange_gross_amount: Integer,
           is_complete: T::Boolean,
@@ -74,8 +76,7 @@ module Lithic
           settled_net_amount: Integer,
           transactions_gross_amount: Integer,
           updated: Time
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Date and time when the transaction first occurred. UTC time zone.
@@ -114,26 +115,28 @@ module Lithic
         transactions_gross_amount:,
         # Date and time when the transaction first occurred. UTC time zone.
         updated:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              created: Time,
-              currency: String,
-              details: T::Array[Lithic::Models::SettlementSummaryDetails],
-              disputes_gross_amount: Integer,
-              interchange_gross_amount: Integer,
-              is_complete: T::Boolean,
-              other_fees_gross_amount: Integer,
-              report_date: String,
-              settled_net_amount: Integer,
-              transactions_gross_amount: Integer,
-              updated: Time
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            created: Time,
+            currency: String,
+            details: T::Array[Lithic::SettlementSummaryDetails],
+            disputes_gross_amount: Integer,
+            interchange_gross_amount: Integer,
+            is_complete: T::Boolean,
+            other_fees_gross_amount: Integer,
+            report_date: String,
+            settled_net_amount: Integer,
+            transactions_gross_amount: Integer,
+            updated: Time
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

@@ -3,12 +3,14 @@
 module Lithic
   module Models
     class KYBBusinessEntity < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
       # acceptable; APO/FPO are acceptable.
-      sig { returns(Lithic::Models::KYBBusinessEntity::Address) }
+      sig { returns(Lithic::KYBBusinessEntity::Address) }
       attr_reader :address
 
-      sig { params(address: T.any(Lithic::Models::KYBBusinessEntity::Address, Lithic::Internal::AnyHash)).void }
+      sig { params(address: Lithic::KYBBusinessEntity::Address::OrHash).void }
       attr_writer :address
 
       # Government-issued identification number. US Federal Employer Identification
@@ -43,14 +45,13 @@ module Lithic
 
       sig do
         params(
-          address: T.any(Lithic::Models::KYBBusinessEntity::Address, Lithic::Internal::AnyHash),
+          address: Lithic::KYBBusinessEntity::Address::OrHash,
           government_id: String,
           legal_business_name: String,
           phone_numbers: T::Array[String],
           dba_business_name: String,
           parent_company: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
@@ -70,23 +71,27 @@ module Lithic
         dba_business_name: nil,
         # Parent company name (if applicable).
         parent_company: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              address: Lithic::Models::KYBBusinessEntity::Address,
-              government_id: String,
-              legal_business_name: String,
-              phone_numbers: T::Array[String],
-              dba_business_name: String,
-              parent_company: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            address: Lithic::KYBBusinessEntity::Address,
+            government_id: String,
+            legal_business_name: String,
+            phone_numbers: T::Array[String],
+            dba_business_name: String,
+            parent_company: String
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Address < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Valid deliverable address (no PO boxes).
         sig { returns(String) }
         attr_accessor :address1
@@ -127,8 +132,7 @@ module Lithic
             postal_code: String,
             state: String,
             address2: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Valid deliverable address (no PO boxes).
@@ -146,21 +150,23 @@ module Lithic
           state:,
           # Unit or apartment number (if applicable).
           address2: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                address1: String,
-                city: String,
-                country: String,
-                postal_code: String,
-                state: String,
-                address2: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              address1: String,
+              city: String,
+              country: String,
+              postal_code: String,
+              state: String,
+              address2: String
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

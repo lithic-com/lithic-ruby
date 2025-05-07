@@ -97,8 +97,6 @@ module Lithic
           ?transaction: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction?
         ) -> void
 
-        def to_hash: -> Lithic::Models::ThreeDS::authentication_retrieve_response
-
         type account_type = :CREDIT | :DEBIT | :NOT_APPLICABLE
 
         module AccountType
@@ -185,8 +183,6 @@ module Lithic
             ?shipping_address: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress
           ) -> void
 
-          def to_hash: -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::cardholder
-
           type billing_address =
             {
               :address1 => String?,
@@ -218,8 +214,6 @@ module Lithic
               ?country: String?,
               ?postal_code: String?
             ) -> void
-
-            def to_hash: -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::billing_address
           end
 
           type shipping_address =
@@ -253,8 +247,6 @@ module Lithic
               ?country: String?,
               ?postal_code: String?
             ) -> void
-
-            def to_hash: -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::shipping_address
           end
         end
 
@@ -297,8 +289,6 @@ module Lithic
             name: String,
             risk_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator
           ) -> void
-
-          def to_hash: -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::merchant
 
           type risk_indicator =
             {
@@ -343,8 +333,6 @@ module Lithic
               ?reorder_items: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::reorder_items?,
               ?shipping_method: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::shipping_method?
             ) -> void
-
-            def to_hash: -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::risk_indicator
 
             type delivery_time_frame =
               :ELECTRONIC_DELIVERY
@@ -466,8 +454,6 @@ module Lithic
             ?network_risk_score: Integer?
           ) -> void
 
-          def to_hash: -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::additional_data
-
           type network_decision = :LOW_RISK | :NOT_LOW_RISK
 
           module NetworkDecision
@@ -490,8 +476,6 @@ module Lithic
           def ip=: (String) -> String
 
           def initialize: (?device_info: String?, ?ip: String) -> void
-
-          def to_hash: -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::app
         end
 
         type authentication_request_type =
@@ -554,8 +538,6 @@ module Lithic
             ?time_zone: String?,
             ?user_agent: String?
           ) -> void
-
-          def to_hash: -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::browser
         end
 
         type challenge_metadata =
@@ -573,8 +555,6 @@ module Lithic
             method_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::method_type,
             ?phone_number: String?
           ) -> void
-
-          def to_hash: -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::challenge_metadata
 
           type method_type = :SMS_OTP | :OUT_OF_BAND
 
@@ -687,8 +667,6 @@ module Lithic
             date_time: Time,
             type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::type_?
           ) -> void
-
-          def to_hash: -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::transaction
 
           type type_ =
             :ACCOUNT_FUNDING

@@ -17,26 +17,24 @@ module Lithic
         # @param report_date [Date] Date of the settlement report to retrieve. Not available in sandbox.
         #
         # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-        # ...
         #
         # @param page_size [Integer] Page size (for pagination).
         #
         # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-        # ...
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::CursorPage<Lithic::Models::SettlementDetail>]
+        # @return [Lithic::Internal::CursorPage<Lithic::SettlementDetail>]
         #
         # @see Lithic::Models::Reports::SettlementListDetailsParams
         def list_details(report_date, params = {})
-          parsed, options = Lithic::Models::Reports::SettlementListDetailsParams.dump_request(params)
+          parsed, options = Lithic::Reports::SettlementListDetailsParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["v1/reports/settlement/details/%1$s", report_date],
             query: parsed,
             page: Lithic::Internal::CursorPage,
-            model: Lithic::Models::SettlementDetail,
+            model: Lithic::SettlementDetail,
             options: options
           )
         end
@@ -49,14 +47,14 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::SettlementReport]
+        # @return [Lithic::SettlementReport]
         #
         # @see Lithic::Models::Reports::SettlementSummaryParams
         def summary(report_date, params = {})
           @client.request(
             method: :get,
             path: ["v1/reports/settlement/summary/%1$s", report_date],
-            model: Lithic::Models::SettlementReport,
+            model: Lithic::SettlementReport,
             options: params[:request_options]
           )
         end

@@ -1,15 +1,13 @@
 module Lithic
   module Models
-    type tokenization_retrieve_response = { data: Lithic::Models::Tokenization }
+    type tokenization_retrieve_response = { data: Lithic::Tokenization }
 
     class TokenizationRetrieveResponse < Lithic::Internal::Type::BaseModel
-      attr_reader data: Lithic::Models::Tokenization?
+      attr_reader data: Lithic::Tokenization?
 
-      def data=: (Lithic::Models::Tokenization) -> Lithic::Models::Tokenization
+      def data=: (Lithic::Tokenization) -> Lithic::Tokenization
 
-      def initialize: (?data: Lithic::Models::Tokenization) -> void
-
-      def to_hash: -> Lithic::Models::tokenization_retrieve_response
+      def initialize: (?data: Lithic::Tokenization) -> void
     end
   end
 end

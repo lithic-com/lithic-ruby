@@ -31,7 +31,7 @@ class Lithic::Test::Resources::ResponderEndpointsTest < Lithic::Test::ResourceTe
     response = @lithic.responder_endpoints.check_status(type: :AUTH_STREAM_ACCESS)
 
     assert_pattern do
-      response => Lithic::Models::ResponderEndpointStatus
+      response => Lithic::ResponderEndpointStatus
     end
 
     assert_pattern do

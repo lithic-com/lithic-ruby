@@ -12,9 +12,8 @@ module Lithic
         # @overload challenge_response(token:, challenge_response:, request_options: {})
         #
         # @param token [String] Globally unique identifier for the 3DS authentication. This token is sent as par
-        # ...
         #
-        # @param challenge_response [Symbol, Lithic::Models::ThreeDS::ChallengeResult] Whether the Cardholder has Approved or Declined the issued Challenge
+        # @param challenge_response [Symbol, Lithic::ThreeDS::ChallengeResult] Whether the Cardholder has Approved or Declined the issued Challenge
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -22,7 +21,7 @@ module Lithic
         #
         # @see Lithic::Models::ThreeDS::DecisioningChallengeResponseParams
         def challenge_response(params)
-          parsed, options = Lithic::Models::ThreeDS::DecisioningChallengeResponseParams.dump_request(params)
+          parsed, options = Lithic::ThreeDS::DecisioningChallengeResponseParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/three_ds_decisioning/challenge_response",

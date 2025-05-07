@@ -3,10 +3,12 @@
 module Lithic
   module Models
     class ExternalPayment < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       sig { returns(String) }
       attr_accessor :token
 
-      sig { returns(Lithic::Models::ExternalPayment::Category::TaggedSymbol) }
+      sig { returns(Lithic::ExternalPayment::Category::TaggedSymbol) }
       attr_accessor :category
 
       sig { returns(Time) }
@@ -15,25 +17,25 @@ module Lithic
       sig { returns(String) }
       attr_accessor :currency
 
-      sig { returns(T::Array[Lithic::Models::ExternalPayment::Event]) }
+      sig { returns(T::Array[Lithic::ExternalPayment::Event]) }
       attr_accessor :events
 
       sig { returns(String) }
       attr_accessor :financial_account_token
 
-      sig { returns(Lithic::Models::ExternalPayment::PaymentType::TaggedSymbol) }
+      sig { returns(Lithic::ExternalPayment::PaymentType::TaggedSymbol) }
       attr_accessor :payment_type
 
       sig { returns(Integer) }
       attr_accessor :pending_amount
 
-      sig { returns(Lithic::Models::ExternalPayment::Result::TaggedSymbol) }
+      sig { returns(Lithic::ExternalPayment::Result::TaggedSymbol) }
       attr_accessor :result
 
       sig { returns(Integer) }
       attr_accessor :settled_amount
 
-      sig { returns(Lithic::Models::ExternalPayment::Status::TaggedSymbol) }
+      sig { returns(Lithic::ExternalPayment::Status::TaggedSymbol) }
       attr_accessor :status
 
       sig { returns(Time) }
@@ -48,20 +50,19 @@ module Lithic
       sig do
         params(
           token: String,
-          category: Lithic::Models::ExternalPayment::Category::OrSymbol,
+          category: Lithic::ExternalPayment::Category::OrSymbol,
           created: Time,
           currency: String,
-          events: T::Array[T.any(Lithic::Models::ExternalPayment::Event, Lithic::Internal::AnyHash)],
+          events: T::Array[Lithic::ExternalPayment::Event::OrHash],
           financial_account_token: String,
-          payment_type: Lithic::Models::ExternalPayment::PaymentType::OrSymbol,
+          payment_type: Lithic::ExternalPayment::PaymentType::OrSymbol,
           pending_amount: Integer,
-          result: Lithic::Models::ExternalPayment::Result::OrSymbol,
+          result: Lithic::ExternalPayment::Result::OrSymbol,
           settled_amount: Integer,
-          status: Lithic::Models::ExternalPayment::Status::OrSymbol,
+          status: Lithic::ExternalPayment::Status::OrSymbol,
           updated: Time,
           user_defined_id: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         token:,
@@ -77,45 +78,65 @@ module Lithic
         status:,
         updated:,
         user_defined_id: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              token: String,
-              category: Lithic::Models::ExternalPayment::Category::TaggedSymbol,
-              created: Time,
-              currency: String,
-              events: T::Array[Lithic::Models::ExternalPayment::Event],
-              financial_account_token: String,
-              payment_type: Lithic::Models::ExternalPayment::PaymentType::TaggedSymbol,
-              pending_amount: Integer,
-              result: Lithic::Models::ExternalPayment::Result::TaggedSymbol,
-              settled_amount: Integer,
-              status: Lithic::Models::ExternalPayment::Status::TaggedSymbol,
-              updated: Time,
-              user_defined_id: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            token: String,
+            category: Lithic::ExternalPayment::Category::TaggedSymbol,
+            created: Time,
+            currency: String,
+            events: T::Array[Lithic::ExternalPayment::Event],
+            financial_account_token: String,
+            payment_type: Lithic::ExternalPayment::PaymentType::TaggedSymbol,
+            pending_amount: Integer,
+            result: Lithic::ExternalPayment::Result::TaggedSymbol,
+            settled_amount: Integer,
+            status: Lithic::ExternalPayment::Status::TaggedSymbol,
+            updated: Time,
+            user_defined_id: String
+          }
+        )
+      end
+      def to_hash
+      end
 
       module Category
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Category) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::ExternalPayment::Category) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        EXTERNAL_WIRE = T.let(:EXTERNAL_WIRE, Lithic::Models::ExternalPayment::Category::TaggedSymbol)
-        EXTERNAL_ACH = T.let(:EXTERNAL_ACH, Lithic::Models::ExternalPayment::Category::TaggedSymbol)
-        EXTERNAL_CHECK = T.let(:EXTERNAL_CHECK, Lithic::Models::ExternalPayment::Category::TaggedSymbol)
-        EXTERNAL_TRANSFER = T.let(:EXTERNAL_TRANSFER, Lithic::Models::ExternalPayment::Category::TaggedSymbol)
+        EXTERNAL_WIRE =
+          T.let(:EXTERNAL_WIRE, Lithic::ExternalPayment::Category::TaggedSymbol)
+        EXTERNAL_ACH =
+          T.let(:EXTERNAL_ACH, Lithic::ExternalPayment::Category::TaggedSymbol)
+        EXTERNAL_CHECK =
+          T.let(
+            :EXTERNAL_CHECK,
+            Lithic::ExternalPayment::Category::TaggedSymbol
+          )
+        EXTERNAL_TRANSFER =
+          T.let(
+            :EXTERNAL_TRANSFER,
+            Lithic::ExternalPayment::Category::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalPayment::Category::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::ExternalPayment::Category::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       class Event < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :token
 
@@ -125,7 +146,13 @@ module Lithic
         sig { returns(Time) }
         attr_accessor :created
 
-        sig { returns(T::Array[Lithic::Models::ExternalPayment::Event::DetailedResult::TaggedSymbol]) }
+        sig do
+          returns(
+            T::Array[
+              Lithic::ExternalPayment::Event::DetailedResult::TaggedSymbol
+            ]
+          )
+        end
         attr_accessor :detailed_results
 
         sig { returns(Date) }
@@ -134,10 +161,10 @@ module Lithic
         sig { returns(String) }
         attr_accessor :memo
 
-        sig { returns(Lithic::Models::ExternalPayment::Event::Result::TaggedSymbol) }
+        sig { returns(Lithic::ExternalPayment::Event::Result::TaggedSymbol) }
         attr_accessor :result
 
-        sig { returns(Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol) }
+        sig { returns(Lithic::ExternalPayment::Event::Type::TaggedSymbol) }
         attr_accessor :type
 
         sig do
@@ -145,151 +172,286 @@ module Lithic
             token: String,
             amount: Integer,
             created: Time,
-            detailed_results: T::Array[Lithic::Models::ExternalPayment::Event::DetailedResult::OrSymbol],
+            detailed_results:
+              T::Array[
+                Lithic::ExternalPayment::Event::DetailedResult::OrSymbol
+              ],
             effective_date: Date,
             memo: String,
-            result: Lithic::Models::ExternalPayment::Event::Result::OrSymbol,
-            type: Lithic::Models::ExternalPayment::Event::Type::OrSymbol
-          )
-            .returns(T.attached_class)
+            result: Lithic::ExternalPayment::Event::Result::OrSymbol,
+            type: Lithic::ExternalPayment::Event::Type::OrSymbol
+          ).returns(T.attached_class)
         end
-        def self.new(token:, amount:, created:, detailed_results:, effective_date:, memo:, result:, type:)
+        def self.new(
+          token:,
+          amount:,
+          created:,
+          detailed_results:,
+          effective_date:,
+          memo:,
+          result:,
+          type:
+        )
         end
 
         sig do
-          override
-            .returns(
-              {
-                token: String,
-                amount: Integer,
-                created: Time,
-                detailed_results: T::Array[Lithic::Models::ExternalPayment::Event::DetailedResult::TaggedSymbol],
-                effective_date: Date,
-                memo: String,
-                result: Lithic::Models::ExternalPayment::Event::Result::TaggedSymbol,
-                type: Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol
-              }
-            )
+          override.returns(
+            {
+              token: String,
+              amount: Integer,
+              created: Time,
+              detailed_results:
+                T::Array[
+                  Lithic::ExternalPayment::Event::DetailedResult::TaggedSymbol
+                ],
+              effective_date: Date,
+              memo: String,
+              result: Lithic::ExternalPayment::Event::Result::TaggedSymbol,
+              type: Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         module DetailedResult
           extend Lithic::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Event::DetailedResult) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Lithic::ExternalPayment::Event::DetailedResult)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          APPROVED = T.let(:APPROVED, Lithic::Models::ExternalPayment::Event::DetailedResult::TaggedSymbol)
+          APPROVED =
+            T.let(
+              :APPROVED,
+              Lithic::ExternalPayment::Event::DetailedResult::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::ExternalPayment::Event::DetailedResult::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::ExternalPayment::Event::DetailedResult::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Result
           extend Lithic::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Event::Result) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Lithic::ExternalPayment::Event::Result)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          APPROVED = T.let(:APPROVED, Lithic::Models::ExternalPayment::Event::Result::TaggedSymbol)
-          DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPayment::Event::Result::TaggedSymbol)
+          APPROVED =
+            T.let(
+              :APPROVED,
+              Lithic::ExternalPayment::Event::Result::TaggedSymbol
+            )
+          DECLINED =
+            T.let(
+              :DECLINED,
+              Lithic::ExternalPayment::Event::Result::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::ExternalPayment::Event::Result::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Lithic::ExternalPayment::Event::Result::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         module Type
           extend Lithic::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Event::Type) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::ExternalPayment::Event::Type) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           EXTERNAL_WIRE_INITIATED =
-            T.let(:EXTERNAL_WIRE_INITIATED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_WIRE_INITIATED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_WIRE_CANCELED =
-            T.let(:EXTERNAL_WIRE_CANCELED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_WIRE_CANCELED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_WIRE_SETTLED =
-            T.let(:EXTERNAL_WIRE_SETTLED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_WIRE_SETTLED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_WIRE_REVERSED =
-            T.let(:EXTERNAL_WIRE_REVERSED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_WIRE_REVERSED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_WIRE_RELEASED =
-            T.let(:EXTERNAL_WIRE_RELEASED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_WIRE_RELEASED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_ACH_INITIATED =
-            T.let(:EXTERNAL_ACH_INITIATED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_ACH_INITIATED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_ACH_CANCELED =
-            T.let(:EXTERNAL_ACH_CANCELED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_ACH_CANCELED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_ACH_SETTLED =
-            T.let(:EXTERNAL_ACH_SETTLED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_ACH_SETTLED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_ACH_REVERSED =
-            T.let(:EXTERNAL_ACH_REVERSED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_ACH_REVERSED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_ACH_RELEASED =
-            T.let(:EXTERNAL_ACH_RELEASED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_ACH_RELEASED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_TRANSFER_INITIATED =
-            T.let(:EXTERNAL_TRANSFER_INITIATED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_TRANSFER_INITIATED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_TRANSFER_CANCELED =
-            T.let(:EXTERNAL_TRANSFER_CANCELED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_TRANSFER_CANCELED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_TRANSFER_SETTLED =
-            T.let(:EXTERNAL_TRANSFER_SETTLED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_TRANSFER_SETTLED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_TRANSFER_REVERSED =
-            T.let(:EXTERNAL_TRANSFER_REVERSED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_TRANSFER_REVERSED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_TRANSFER_RELEASED =
-            T.let(:EXTERNAL_TRANSFER_RELEASED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_TRANSFER_RELEASED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_CHECK_INITIATED =
-            T.let(:EXTERNAL_CHECK_INITIATED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_CHECK_INITIATED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_CHECK_CANCELED =
-            T.let(:EXTERNAL_CHECK_CANCELED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_CHECK_CANCELED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_CHECK_SETTLED =
-            T.let(:EXTERNAL_CHECK_SETTLED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_CHECK_SETTLED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_CHECK_REVERSED =
-            T.let(:EXTERNAL_CHECK_REVERSED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_CHECK_REVERSED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
           EXTERNAL_CHECK_RELEASED =
-            T.let(:EXTERNAL_CHECK_RELEASED, Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol)
+            T.let(
+              :EXTERNAL_CHECK_RELEASED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::ExternalPayment::Event::Type::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Lithic::ExternalPayment::Event::Type::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
       end
 
       module PaymentType
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::PaymentType) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::ExternalPayment::PaymentType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        DEPOSIT = T.let(:DEPOSIT, Lithic::Models::ExternalPayment::PaymentType::TaggedSymbol)
-        WITHDRAWAL = T.let(:WITHDRAWAL, Lithic::Models::ExternalPayment::PaymentType::TaggedSymbol)
+        DEPOSIT =
+          T.let(:DEPOSIT, Lithic::ExternalPayment::PaymentType::TaggedSymbol)
+        WITHDRAWAL =
+          T.let(:WITHDRAWAL, Lithic::ExternalPayment::PaymentType::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalPayment::PaymentType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::ExternalPayment::PaymentType::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       module Result
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Result) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::ExternalPayment::Result) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        APPROVED = T.let(:APPROVED, Lithic::Models::ExternalPayment::Result::TaggedSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPayment::Result::TaggedSymbol)
+        APPROVED =
+          T.let(:APPROVED, Lithic::ExternalPayment::Result::TaggedSymbol)
+        DECLINED =
+          T.let(:DECLINED, Lithic::ExternalPayment::Result::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalPayment::Result::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::ExternalPayment::Result::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       module Status
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalPayment::Status) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::ExternalPayment::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        PENDING = T.let(:PENDING, Lithic::Models::ExternalPayment::Status::TaggedSymbol)
-        SETTLED = T.let(:SETTLED, Lithic::Models::ExternalPayment::Status::TaggedSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::ExternalPayment::Status::TaggedSymbol)
-        REVERSED = T.let(:REVERSED, Lithic::Models::ExternalPayment::Status::TaggedSymbol)
-        CANCELED = T.let(:CANCELED, Lithic::Models::ExternalPayment::Status::TaggedSymbol)
+        PENDING = T.let(:PENDING, Lithic::ExternalPayment::Status::TaggedSymbol)
+        SETTLED = T.let(:SETTLED, Lithic::ExternalPayment::Status::TaggedSymbol)
+        DECLINED =
+          T.let(:DECLINED, Lithic::ExternalPayment::Status::TaggedSymbol)
+        REVERSED =
+          T.let(:REVERSED, Lithic::ExternalPayment::Status::TaggedSymbol)
+        CANCELED =
+          T.let(:CANCELED, Lithic::ExternalPayment::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalPayment::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::ExternalPayment::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

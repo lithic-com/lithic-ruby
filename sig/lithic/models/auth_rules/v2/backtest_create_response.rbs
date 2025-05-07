@@ -10,8 +10,6 @@ module Lithic
           def backtest_token=: (String) -> String
 
           def initialize: (?backtest_token: String) -> void
-
-          def to_hash: -> Lithic::Models::AuthRules::V2::backtest_create_response
         end
       end
     end

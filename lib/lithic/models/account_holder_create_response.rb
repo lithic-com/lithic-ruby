@@ -50,8 +50,8 @@ module Lithic
       #   Only present for "KYB_BASIC" workflow. A list of documents required for the
       #   account holder to be approved.
       #
-      #   @return [Array<Lithic::Models::RequiredDocument>, nil]
-      optional :required_documents, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument] }
+      #   @return [Array<Lithic::RequiredDocument>, nil]
+      optional :required_documents, -> { Lithic::Internal::Type::ArrayOf[Lithic::RequiredDocument] }
 
       # @!method initialize(token:, account_token:, status:, status_reasons:, created: nil, external_id: nil, required_documents: nil)
       #   Some parameter documentations has been truncated, see
@@ -61,17 +61,15 @@ module Lithic
       #
       #   @param account_token [String] Globally unique identifier for the account.
       #
-      #   @param status [Symbol, Lithic::Models::AccountHolderCreateResponse::Status] KYC and KYB evaluation states. ...
+      #   @param status [Symbol, Lithic::Models::AccountHolderCreateResponse::Status] KYC and KYB evaluation states.
       #
       #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderCreateResponse::StatusReason>] Reason for the evaluation status.
       #
       #   @param created [Time] Timestamp of when the account holder was created.
       #
       #   @param external_id [String] Customer-provided token that indicates a relationship with an object outside of
-      #   ...
       #
-      #   @param required_documents [Array<Lithic::Models::RequiredDocument>] Only present for "KYB_BASIC" workflow. A list of documents required for the acco
-      #   ...
+      #   @param required_documents [Array<Lithic::RequiredDocument>] Only present for "KYB_BASIC" workflow. A list of documents required for the acco
 
       # KYC and KYB evaluation states.
       #

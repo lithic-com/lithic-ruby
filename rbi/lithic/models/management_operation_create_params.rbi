@@ -6,19 +6,27 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       sig { returns(Integer) }
       attr_accessor :amount
 
-      sig { returns(Lithic::Models::ManagementOperationCreateParams::Category::OrSymbol) }
+      sig do
+        returns(Lithic::ManagementOperationCreateParams::Category::OrSymbol)
+      end
       attr_accessor :category
 
-      sig { returns(Lithic::Models::ManagementOperationCreateParams::Direction::OrSymbol) }
+      sig do
+        returns(Lithic::ManagementOperationCreateParams::Direction::OrSymbol)
+      end
       attr_accessor :direction
 
       sig { returns(Date) }
       attr_accessor :effective_date
 
-      sig { returns(Lithic::Models::ManagementOperationCreateParams::EventType::OrSymbol) }
+      sig do
+        returns(Lithic::ManagementOperationCreateParams::EventType::OrSymbol)
+      end
       attr_accessor :event_type
 
       sig { returns(String) }
@@ -51,18 +59,19 @@ module Lithic
       sig do
         params(
           amount: Integer,
-          category: Lithic::Models::ManagementOperationCreateParams::Category::OrSymbol,
-          direction: Lithic::Models::ManagementOperationCreateParams::Direction::OrSymbol,
+          category: Lithic::ManagementOperationCreateParams::Category::OrSymbol,
+          direction:
+            Lithic::ManagementOperationCreateParams::Direction::OrSymbol,
           effective_date: Date,
-          event_type: Lithic::Models::ManagementOperationCreateParams::EventType::OrSymbol,
+          event_type:
+            Lithic::ManagementOperationCreateParams::EventType::OrSymbol,
           financial_account_token: String,
           token: String,
           memo: String,
           subtype: String,
           user_defined_id: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         amount:,
@@ -76,114 +85,223 @@ module Lithic
         subtype: nil,
         user_defined_id: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              amount: Integer,
-              category: Lithic::Models::ManagementOperationCreateParams::Category::OrSymbol,
-              direction: Lithic::Models::ManagementOperationCreateParams::Direction::OrSymbol,
-              effective_date: Date,
-              event_type: Lithic::Models::ManagementOperationCreateParams::EventType::OrSymbol,
-              financial_account_token: String,
-              token: String,
-              memo: String,
-              subtype: String,
-              user_defined_id: String,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            amount: Integer,
+            category:
+              Lithic::ManagementOperationCreateParams::Category::OrSymbol,
+            direction:
+              Lithic::ManagementOperationCreateParams::Direction::OrSymbol,
+            effective_date: Date,
+            event_type:
+              Lithic::ManagementOperationCreateParams::EventType::OrSymbol,
+            financial_account_token: String,
+            token: String,
+            memo: String,
+            subtype: String,
+            user_defined_id: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       module Category
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationCreateParams::Category) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ManagementOperationCreateParams::Category)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         MANAGEMENT_FEE =
-          T.let(:MANAGEMENT_FEE, Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol)
+          T.let(
+            :MANAGEMENT_FEE,
+            Lithic::ManagementOperationCreateParams::Category::TaggedSymbol
+          )
         MANAGEMENT_DISPUTE =
-          T.let(:MANAGEMENT_DISPUTE, Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol)
+          T.let(
+            :MANAGEMENT_DISPUTE,
+            Lithic::ManagementOperationCreateParams::Category::TaggedSymbol
+          )
         MANAGEMENT_REWARD =
-          T.let(:MANAGEMENT_REWARD, Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol)
+          T.let(
+            :MANAGEMENT_REWARD,
+            Lithic::ManagementOperationCreateParams::Category::TaggedSymbol
+          )
         MANAGEMENT_ADJUSTMENT =
-          T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol)
+          T.let(
+            :MANAGEMENT_ADJUSTMENT,
+            Lithic::ManagementOperationCreateParams::Category::TaggedSymbol
+          )
         MANAGEMENT_DISBURSEMENT =
-          T.let(:MANAGEMENT_DISBURSEMENT, Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol)
+          T.let(
+            :MANAGEMENT_DISBURSEMENT,
+            Lithic::ManagementOperationCreateParams::Category::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ManagementOperationCreateParams::Category::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::ManagementOperationCreateParams::Category::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       module Direction
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationCreateParams::Direction) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ManagementOperationCreateParams::Direction)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        CREDIT = T.let(:CREDIT, Lithic::Models::ManagementOperationCreateParams::Direction::TaggedSymbol)
-        DEBIT = T.let(:DEBIT, Lithic::Models::ManagementOperationCreateParams::Direction::TaggedSymbol)
+        CREDIT =
+          T.let(
+            :CREDIT,
+            Lithic::ManagementOperationCreateParams::Direction::TaggedSymbol
+          )
+        DEBIT =
+          T.let(
+            :DEBIT,
+            Lithic::ManagementOperationCreateParams::Direction::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ManagementOperationCreateParams::Direction::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::ManagementOperationCreateParams::Direction::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       module EventType
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationCreateParams::EventType) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ManagementOperationCreateParams::EventType)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         LOSS_WRITE_OFF =
-          T.let(:LOSS_WRITE_OFF, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
-        CASH_BACK = T.let(:CASH_BACK, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+          T.let(
+            :LOSS_WRITE_OFF,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
+        CASH_BACK =
+          T.let(
+            :CASH_BACK,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
         CASH_BACK_REVERSAL =
-          T.let(:CASH_BACK_REVERSAL, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+          T.let(
+            :CASH_BACK_REVERSAL,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
         CURRENCY_CONVERSION =
-          T.let(:CURRENCY_CONVERSION, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+          T.let(
+            :CURRENCY_CONVERSION,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
         CURRENCY_CONVERSION_REVERSAL =
           T.let(
             :CURRENCY_CONVERSION_REVERSAL,
-            Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
-        INTEREST = T.let(:INTEREST, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+        INTEREST =
+          T.let(
+            :INTEREST,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
         INTEREST_REVERSAL =
-          T.let(:INTEREST_REVERSAL, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+          T.let(
+            :INTEREST_REVERSAL,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
         LATE_PAYMENT =
-          T.let(:LATE_PAYMENT, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+          T.let(
+            :LATE_PAYMENT,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
         LATE_PAYMENT_REVERSAL =
-          T.let(:LATE_PAYMENT_REVERSAL, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+          T.let(
+            :LATE_PAYMENT_REVERSAL,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
         BILLING_ERROR =
-          T.let(:BILLING_ERROR, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+          T.let(
+            :BILLING_ERROR,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
         BILLING_ERROR_REVERSAL =
-          T.let(:BILLING_ERROR_REVERSAL, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+          T.let(
+            :BILLING_ERROR_REVERSAL,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
         PROVISIONAL_CREDIT =
-          T.let(:PROVISIONAL_CREDIT, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+          T.let(
+            :PROVISIONAL_CREDIT,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
         PROVISIONAL_CREDIT_REVERSAL =
           T.let(
             :PROVISIONAL_CREDIT_REVERSAL,
-            Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
         RETURNED_PAYMENT =
-          T.let(:RETURNED_PAYMENT, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+          T.let(
+            :RETURNED_PAYMENT,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
         RETURNED_PAYMENT_REVERSAL =
           T.let(
             :RETURNED_PAYMENT_REVERSAL,
-            Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
           )
         DISPUTE_WON =
-          T.let(:DISPUTE_WON, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+          T.let(
+            :DISPUTE_WON,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
         DISPUTE_WON_REVERSAL =
-          T.let(:DISPUTE_WON_REVERSAL, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
-        DISBURSE = T.let(:DISBURSE, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+          T.let(
+            :DISPUTE_WON_REVERSAL,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
+        DISBURSE =
+          T.let(
+            :DISBURSE,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
         DISBURSE_REVERSAL =
-          T.let(:DISBURSE_REVERSAL, Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol)
+          T.let(
+            :DISBURSE_REVERSAL,
+            Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ManagementOperationCreateParams::EventType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

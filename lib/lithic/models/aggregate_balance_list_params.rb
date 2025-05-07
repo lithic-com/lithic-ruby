@@ -10,12 +10,11 @@ module Lithic
       # @!attribute financial_account_type
       #   Get the aggregate balance for a given Financial Account type.
       #
-      #   @return [Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType, nil]
-      optional :financial_account_type,
-               enum: -> { Lithic::Models::AggregateBalanceListParams::FinancialAccountType }
+      #   @return [Symbol, Lithic::AggregateBalanceListParams::FinancialAccountType, nil]
+      optional :financial_account_type, enum: -> { Lithic::AggregateBalanceListParams::FinancialAccountType }
 
       # @!method initialize(financial_account_type: nil, request_options: {})
-      #   @param financial_account_type [Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType] Get the aggregate balance for a given Financial Account type.
+      #   @param financial_account_type [Symbol, Lithic::AggregateBalanceListParams::FinancialAccountType] Get the aggregate balance for a given Financial Account type.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

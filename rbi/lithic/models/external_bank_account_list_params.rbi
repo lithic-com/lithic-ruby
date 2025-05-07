@@ -6,16 +6,33 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       sig { returns(T.nilable(String)) }
       attr_reader :account_token
 
       sig { params(account_token: String).void }
       attr_writer :account_token
 
-      sig { returns(T.nilable(T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol])) }
+      sig do
+        returns(
+          T.nilable(
+            T::Array[
+              Lithic::ExternalBankAccountListParams::AccountType::OrSymbol
+            ]
+          )
+        )
+      end
       attr_reader :account_types
 
-      sig { params(account_types: T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol]).void }
+      sig do
+        params(
+          account_types:
+            T::Array[
+              Lithic::ExternalBankAccountListParams::AccountType::OrSymbol
+            ]
+        ).void
+      end
       attr_writer :account_types
 
       sig { returns(T.nilable(T::Array[String])) }
@@ -32,10 +49,10 @@ module Lithic
       sig { params(ending_before: String).void }
       attr_writer :ending_before
 
-      sig { returns(T.nilable(T::Array[Lithic::Models::OwnerType::OrSymbol])) }
+      sig { returns(T.nilable(T::Array[Lithic::OwnerType::OrSymbol])) }
       attr_reader :owner_types
 
-      sig { params(owner_types: T::Array[Lithic::Models::OwnerType::OrSymbol]).void }
+      sig { params(owner_types: T::Array[Lithic::OwnerType::OrSymbol]).void }
       attr_writer :owner_types
 
       # Page size (for pagination).
@@ -53,37 +70,64 @@ module Lithic
       sig { params(starting_after: String).void }
       attr_writer :starting_after
 
-      sig { returns(T.nilable(T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol])) }
+      sig do
+        returns(
+          T.nilable(
+            T::Array[Lithic::ExternalBankAccountListParams::State::OrSymbol]
+          )
+        )
+      end
       attr_reader :states
 
-      sig { params(states: T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol]).void }
+      sig do
+        params(
+          states:
+            T::Array[Lithic::ExternalBankAccountListParams::State::OrSymbol]
+        ).void
+      end
       attr_writer :states
 
-      sig { returns(T.nilable(T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol])) }
+      sig do
+        returns(
+          T.nilable(
+            T::Array[
+              Lithic::ExternalBankAccountListParams::VerificationState::OrSymbol
+            ]
+          )
+        )
+      end
       attr_reader :verification_states
 
       sig do
         params(
-          verification_states: T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol]
-        )
-          .void
+          verification_states:
+            T::Array[
+              Lithic::ExternalBankAccountListParams::VerificationState::OrSymbol
+            ]
+        ).void
       end
       attr_writer :verification_states
 
       sig do
         params(
           account_token: String,
-          account_types: T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol],
+          account_types:
+            T::Array[
+              Lithic::ExternalBankAccountListParams::AccountType::OrSymbol
+            ],
           countries: T::Array[String],
           ending_before: String,
-          owner_types: T::Array[Lithic::Models::OwnerType::OrSymbol],
+          owner_types: T::Array[Lithic::OwnerType::OrSymbol],
           page_size: Integer,
           starting_after: String,
-          states: T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol],
-          verification_states: T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol],
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          states:
+            T::Array[Lithic::ExternalBankAccountListParams::State::OrSymbol],
+          verification_states:
+            T::Array[
+              Lithic::ExternalBankAccountListParams::VerificationState::OrSymbol
+            ],
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         account_token: nil,
@@ -101,72 +145,142 @@ module Lithic
         states: nil,
         verification_states: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              account_token: String,
-              account_types: T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::OrSymbol],
-              countries: T::Array[String],
-              ending_before: String,
-              owner_types: T::Array[Lithic::Models::OwnerType::OrSymbol],
-              page_size: Integer,
-              starting_after: String,
-              states: T::Array[Lithic::Models::ExternalBankAccountListParams::State::OrSymbol],
-              verification_states: T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::OrSymbol],
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            account_token: String,
+            account_types:
+              T::Array[
+                Lithic::ExternalBankAccountListParams::AccountType::OrSymbol
+              ],
+            countries: T::Array[String],
+            ending_before: String,
+            owner_types: T::Array[Lithic::OwnerType::OrSymbol],
+            page_size: Integer,
+            starting_after: String,
+            states:
+              T::Array[Lithic::ExternalBankAccountListParams::State::OrSymbol],
+            verification_states:
+              T::Array[
+                Lithic::ExternalBankAccountListParams::VerificationState::OrSymbol
+              ],
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       module AccountType
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ExternalBankAccountListParams::AccountType)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountListParams::AccountType::TaggedSymbol)
-        SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountListParams::AccountType::TaggedSymbol)
+        CHECKING =
+          T.let(
+            :CHECKING,
+            Lithic::ExternalBankAccountListParams::AccountType::TaggedSymbol
+          )
+        SAVINGS =
+          T.let(
+            :SAVINGS,
+            Lithic::ExternalBankAccountListParams::AccountType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::AccountType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::ExternalBankAccountListParams::AccountType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       module State
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountListParams::State) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ExternalBankAccountListParams::State)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ENABLED = T.let(:ENABLED, Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol)
-        CLOSED = T.let(:CLOSED, Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol)
-        PAUSED = T.let(:PAUSED, Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol)
+        ENABLED =
+          T.let(
+            :ENABLED,
+            Lithic::ExternalBankAccountListParams::State::TaggedSymbol
+          )
+        CLOSED =
+          T.let(
+            :CLOSED,
+            Lithic::ExternalBankAccountListParams::State::TaggedSymbol
+          )
+        PAUSED =
+          T.let(
+            :PAUSED,
+            Lithic::ExternalBankAccountListParams::State::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::State::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::ExternalBankAccountListParams::State::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       module VerificationState
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::ExternalBankAccountListParams::VerificationState
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        PENDING = T.let(:PENDING, Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol)
-        ENABLED = T.let(:ENABLED, Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol)
+        PENDING =
+          T.let(
+            :PENDING,
+            Lithic::ExternalBankAccountListParams::VerificationState::TaggedSymbol
+          )
+        ENABLED =
+          T.let(
+            :ENABLED,
+            Lithic::ExternalBankAccountListParams::VerificationState::TaggedSymbol
+          )
         FAILED_VERIFICATION =
           T.let(
             :FAILED_VERIFICATION,
-            Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol
+            Lithic::ExternalBankAccountListParams::VerificationState::TaggedSymbol
           )
         INSUFFICIENT_FUNDS =
-          T.let(:INSUFFICIENT_FUNDS, Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol)
+          T.let(
+            :INSUFFICIENT_FUNDS,
+            Lithic::ExternalBankAccountListParams::VerificationState::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountListParams::VerificationState::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::ExternalBankAccountListParams::VerificationState::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

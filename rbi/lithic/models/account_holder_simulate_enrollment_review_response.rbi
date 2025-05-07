@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class AccountHolderSimulateEnrollmentReviewResponse < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Globally unique identifier for the account holder.
       sig { returns(T.nilable(String)) }
       attr_reader :token
@@ -18,14 +20,13 @@ module Lithic
       attr_writer :account_token
 
       # Deprecated.
-      sig { returns(T.nilable(T::Array[Lithic::Models::KYBBusinessEntity])) }
+      sig { returns(T.nilable(T::Array[Lithic::KYBBusinessEntity])) }
       attr_reader :beneficial_owner_entities
 
       sig do
         params(
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::AnyHash)]
-        )
-          .void
+          beneficial_owner_entities: T::Array[Lithic::KYBBusinessEntity::OrHash]
+        ).void
       end
       attr_writer :beneficial_owner_entities
 
@@ -38,7 +39,9 @@ module Lithic
       sig do
         returns(
           T.nilable(
-            T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual]
+            T::Array[
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual
+            ]
           )
         )
       end
@@ -46,14 +49,11 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_individuals: T::Array[
-            T.any(
-              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
-              Lithic::Internal::AnyHash
-            )
-          ]
-        )
-          .void
+          beneficial_owner_individuals:
+            T::Array[
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::OrHash
+            ]
+        ).void
       end
       attr_writer :beneficial_owner_individuals
 
@@ -68,10 +68,10 @@ module Lithic
 
       # Only present when user_type == "BUSINESS". Information about the business for
       # which the account is being opened and KYB is being run.
-      sig { returns(T.nilable(Lithic::Models::KYBBusinessEntity)) }
+      sig { returns(T.nilable(Lithic::KYBBusinessEntity)) }
       attr_reader :business_entity
 
-      sig { params(business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::AnyHash)).void }
+      sig { params(business_entity: Lithic::KYBBusinessEntity::OrHash).void }
       attr_writer :business_entity
 
       # Only present when user_type == "BUSINESS".
@@ -85,17 +85,20 @@ module Lithic
       #
       # to the cards that Lithic will provide. In some cases, this individual could also
       # be a beneficial owner listed above.
-      sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson)) }
+      sig do
+        returns(
+          T.nilable(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson
+          )
+        )
+      end
       attr_reader :control_person
 
       sig do
         params(
-          control_person: T.any(
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
-            Lithic::Internal::AnyHash
-          )
-        )
-          .void
+          control_person:
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::OrHash
+        ).void
       end
       attr_writer :control_person
 
@@ -120,16 +123,18 @@ module Lithic
       # holder is not KYC-Exempt.
       sig do
         returns(
-          T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol)
+          T.nilable(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol
+          )
         )
       end
       attr_reader :exemption_type
 
       sig do
         params(
-          exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::OrSymbol
-        )
-          .void
+          exemption_type:
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::OrSymbol
+        ).void
       end
       attr_writer :exemption_type
 
@@ -143,17 +148,20 @@ module Lithic
 
       # Only present when user_type == "INDIVIDUAL". Information about the individual
       # for which the account is being opened and KYC is being run.
-      sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual)) }
+      sig do
+        returns(
+          T.nilable(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual
+          )
+        )
+      end
       attr_reader :individual
 
       sig do
         params(
-          individual: T.any(
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
-            Lithic::Internal::AnyHash
-          )
-        )
-          .void
+          individual:
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::OrHash
+        ).void
       end
       attr_writer :individual
 
@@ -177,12 +185,13 @@ module Lithic
 
       # Only present for "KYB_BASIC" and "KYC_ADVANCED" workflows. A list of documents
       # required for the account holder to be approved.
-      sig { returns(T.nilable(T::Array[Lithic::Models::RequiredDocument])) }
+      sig { returns(T.nilable(T::Array[Lithic::RequiredDocument])) }
       attr_reader :required_documents
 
       sig do
-        params(required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::AnyHash)])
-          .void
+        params(
+          required_documents: T::Array[Lithic::RequiredDocument::OrHash]
+        ).void
       end
       attr_writer :required_documents
 
@@ -192,10 +201,21 @@ module Lithic
       #
       # Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
       # `ADVANCED` workflow.
-      sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol)) }
+      sig do
+        returns(
+          T.nilable(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol
+          )
+        )
+      end
       attr_reader :status
 
-      sig { params(status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::OrSymbol).void }
+      sig do
+        params(
+          status:
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::OrSymbol
+        ).void
+      end
       attr_writer :status
 
       # <Deprecated. Use verification_application.status_reasons> Reason for the
@@ -203,7 +223,9 @@ module Lithic
       sig do
         returns(
           T.nilable(
-            T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol]
+            T::Array[
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol
+            ]
           )
         )
       end
@@ -211,9 +233,11 @@ module Lithic
 
       sig do
         params(
-          status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::OrSymbol]
-        )
-          .void
+          status_reasons:
+            T::Array[
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::OrSymbol
+            ]
+        ).void
       end
       attr_writer :status_reasons
 
@@ -223,24 +247,38 @@ module Lithic
       # If the type is "BUSINESS" then the "business_entity", "control_person",
       # "beneficial_owner_individuals", "nature_of_business", and "website_url"
       # attributes will be present.
-      sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol)) }
+      sig do
+        returns(
+          T.nilable(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol
+          )
+        )
+      end
       attr_reader :user_type
 
-      sig { params(user_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::OrSymbol).void }
+      sig do
+        params(
+          user_type:
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::OrSymbol
+        ).void
+      end
       attr_writer :user_type
 
       # Information about the most recent identity verification attempt
-      sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication)) }
+      sig do
+        returns(
+          T.nilable(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication
+          )
+        )
+      end
       attr_reader :verification_application
 
       sig do
         params(
-          verification_application: T.any(
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
-            Lithic::Internal::AnyHash
-          )
-        )
-          .void
+          verification_application:
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::OrHash
+        ).void
       end
       attr_writer :verification_application
 
@@ -255,40 +293,38 @@ module Lithic
         params(
           token: String,
           account_token: String,
-          beneficial_owner_entities: T::Array[T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::AnyHash)],
-          beneficial_owner_individuals: T::Array[
-            T.any(
-              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
-              Lithic::Internal::AnyHash
-            )
-          ],
+          beneficial_owner_entities:
+            T::Array[Lithic::KYBBusinessEntity::OrHash],
+          beneficial_owner_individuals:
+            T::Array[
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::OrHash
+            ],
           business_account_token: String,
-          business_entity: T.any(Lithic::Models::KYBBusinessEntity, Lithic::Internal::AnyHash),
-          control_person: T.any(
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
-            Lithic::Internal::AnyHash
-          ),
+          business_entity: Lithic::KYBBusinessEntity::OrHash,
+          control_person:
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::OrHash,
           created: Time,
           email: String,
-          exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::OrSymbol,
+          exemption_type:
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::OrSymbol,
           external_id: String,
-          individual: T.any(
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
-            Lithic::Internal::AnyHash
-          ),
+          individual:
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::OrHash,
           nature_of_business: String,
           phone_number: String,
-          required_documents: T::Array[T.any(Lithic::Models::RequiredDocument, Lithic::Internal::AnyHash)],
-          status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::OrSymbol,
-          status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::OrSymbol],
-          user_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::OrSymbol,
-          verification_application: T.any(
-            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
-            Lithic::Internal::AnyHash
-          ),
+          required_documents: T::Array[Lithic::RequiredDocument::OrHash],
+          status:
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::OrSymbol,
+          status_reasons:
+            T::Array[
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::OrSymbol
+            ],
+          user_type:
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::OrSymbol,
+          verification_application:
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::OrHash,
           website_url: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Globally unique identifier for the account holder.
@@ -371,37 +407,53 @@ module Lithic
         verification_application: nil,
         # Only present when user_type == "BUSINESS". Business's primary website.
         website_url: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              token: String,
-              account_token: String,
-              beneficial_owner_entities: T::Array[Lithic::Models::KYBBusinessEntity],
-              beneficial_owner_individuals: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual],
-              business_account_token: String,
-              business_entity: Lithic::Models::KYBBusinessEntity,
-              control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
-              created: Time,
-              email: String,
-              exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol,
-              external_id: String,
-              individual: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
-              nature_of_business: String,
-              phone_number: String,
-              required_documents: T::Array[Lithic::Models::RequiredDocument],
-              status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol,
-              status_reasons: T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol],
-              user_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol,
-              verification_application: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
-              website_url: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            token: String,
+            account_token: String,
+            beneficial_owner_entities: T::Array[Lithic::KYBBusinessEntity],
+            beneficial_owner_individuals:
+              T::Array[
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual
+              ],
+            business_account_token: String,
+            business_entity: Lithic::KYBBusinessEntity,
+            control_person:
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
+            created: Time,
+            email: String,
+            exemption_type:
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol,
+            external_id: String,
+            individual:
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
+            nature_of_business: String,
+            phone_number: String,
+            required_documents: T::Array[Lithic::RequiredDocument],
+            status:
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol,
+            status_reasons:
+              T::Array[
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol
+              ],
+            user_type:
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol,
+            verification_application:
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
+            website_url: String
+          }
+        )
+      end
+      def to_hash
+      end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         sig do
@@ -415,12 +467,9 @@ module Lithic
 
         sig do
           params(
-            address: T.any(
-              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
-              Lithic::Internal::AnyHash
-            )
-          )
-            .void
+            address:
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address::OrHash
+          ).void
         end
         attr_writer :address
 
@@ -462,17 +511,14 @@ module Lithic
 
         sig do
           params(
-            address: T.any(
-              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
-              Lithic::Internal::AnyHash
-            ),
+            address:
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address::OrHash,
             dob: String,
             email: String,
             first_name: String,
             last_name: String,
             phone_number: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -489,24 +535,30 @@ module Lithic
           last_name: nil,
           # Individual's phone number, entered in E.164 format.
           phone_number: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
-                dob: String,
-                email: String,
-                first_name: String,
-                government_id: String,
-                last_name: String,
-                phone_number: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              address:
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
+              dob: String,
+              email: String,
+              first_name: String,
+              government_id: String,
+              last_name: String,
+              phone_number: String
+            }
+          )
+        end
+        def to_hash
+        end
 
         class Address < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Valid deliverable address (no PO boxes).
           sig { returns(String) }
           attr_accessor :address1
@@ -547,8 +599,7 @@ module Lithic
               postal_code: String,
               state: String,
               address2: String
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # Valid deliverable address (no PO boxes).
@@ -566,38 +617,45 @@ module Lithic
             state:,
             # Unit or apartment number (if applicable).
             address2: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  address1: String,
-                  city: String,
-                  country: String,
-                  postal_code: String,
-                  state: String,
-                  address2: String
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                address1: String,
+                city: String,
+                country: String,
+                postal_code: String,
+                state: String,
+                address2: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class ControlPerson < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-        sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address)) }
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address
+            )
+          )
+        end
         attr_reader :address
 
         sig do
           params(
-            address: T.any(
-              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address,
-              Lithic::Internal::AnyHash
-            )
-          )
-            .void
+            address:
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address::OrHash
+          ).void
         end
         attr_writer :address
 
@@ -650,17 +708,14 @@ module Lithic
         # be a beneficial owner listed above.
         sig do
           params(
-            address: T.any(
-              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address,
-              Lithic::Internal::AnyHash
-            ),
+            address:
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address::OrHash,
             dob: String,
             email: String,
             first_name: String,
             last_name: String,
             phone_number: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -677,24 +732,30 @@ module Lithic
           last_name: nil,
           # Individual's phone number, entered in E.164 format.
           phone_number: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address,
-                dob: String,
-                email: String,
-                first_name: String,
-                government_id: String,
-                last_name: String,
-                phone_number: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              address:
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address,
+              dob: String,
+              email: String,
+              first_name: String,
+              government_id: String,
+              last_name: String,
+              phone_number: String
+            }
+          )
+        end
+        def to_hash
+        end
 
         class Address < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Valid deliverable address (no PO boxes).
           sig { returns(String) }
           attr_accessor :address1
@@ -735,8 +796,7 @@ module Lithic
               postal_code: String,
               state: String,
               address2: String
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # Valid deliverable address (no PO boxes).
@@ -754,21 +814,23 @@ module Lithic
             state:,
             # Unit or apartment number (if applicable).
             address2: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  address1: String,
-                  city: String,
-                  country: String,
-                  postal_code: String,
-                  state: String,
-                  address2: String
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                address1: String,
+                city: String,
+                country: String,
+                postal_code: String,
+                state: String,
+                address2: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
@@ -778,7 +840,12 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AUTHORIZED_USER =
@@ -793,28 +860,35 @@ module Lithic
           )
 
         sig do
-          override
-            .returns(
-              T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol]
-            )
+          override.returns(
+            T::Array[
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ExemptionType::TaggedSymbol
+            ]
+          )
         end
-        def self.values; end
+        def self.values
+        end
       end
 
       class Individual < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
-        sig { returns(T.nilable(Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address)) }
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address
+            )
+          )
+        end
         attr_reader :address
 
         sig do
           params(
-            address: T.any(
-              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address,
-              Lithic::Internal::AnyHash
-            )
-          )
-            .void
+            address:
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address::OrHash
+          ).void
         end
         attr_writer :address
 
@@ -858,17 +932,14 @@ module Lithic
         # for which the account is being opened and KYC is being run.
         sig do
           params(
-            address: T.any(
-              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address,
-              Lithic::Internal::AnyHash
-            ),
+            address:
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address::OrHash,
             dob: String,
             email: String,
             first_name: String,
             last_name: String,
             phone_number: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
@@ -885,24 +956,30 @@ module Lithic
           last_name: nil,
           # Individual's phone number, entered in E.164 format.
           phone_number: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address,
-                dob: String,
-                email: String,
-                first_name: String,
-                government_id: String,
-                last_name: String,
-                phone_number: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              address:
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address,
+              dob: String,
+              email: String,
+              first_name: String,
+              government_id: String,
+              last_name: String,
+              phone_number: String
+            }
+          )
+        end
+        def to_hash
+        end
 
         class Address < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Valid deliverable address (no PO boxes).
           sig { returns(String) }
           attr_accessor :address1
@@ -943,8 +1020,7 @@ module Lithic
               postal_code: String,
               state: String,
               address2: String
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # Valid deliverable address (no PO boxes).
@@ -962,21 +1038,23 @@ module Lithic
             state:,
             # Unit or apartment number (if applicable).
             address2: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  address1: String,
-                  city: String,
-                  country: String,
-                  postal_code: String,
-                  state: String,
-                  address2: String
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                address1: String,
+                city: String,
+                country: String,
+                postal_code: String,
+                state: String,
+                address2: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
@@ -990,11 +1068,19 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACCEPTED =
-          T.let(:ACCEPTED, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol)
+          T.let(
+            :ACCEPTED,
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol
+          )
         PENDING_DOCUMENT =
           T.let(
             :PENDING_DOCUMENT,
@@ -1006,13 +1092,20 @@ module Lithic
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol
           )
         REJECTED =
-          T.let(:REJECTED, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol)
+          T.let(
+            :REJECTED,
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol
+          )
 
         sig do
-          override
-            .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol])
+          override.returns(
+            T::Array[
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status::TaggedSymbol
+            ]
+          )
         end
-        def self.values; end
+        def self.values
+        end
       end
 
       # Status Reasons for KYC/KYB enrollment states
@@ -1020,7 +1113,12 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ADDRESS_VERIFICATION_FAILURE =
@@ -1145,12 +1243,14 @@ module Lithic
           )
 
         sig do
-          override
-            .returns(
-              T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol]
-            )
+          override.returns(
+            T::Array[
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason::TaggedSymbol
+            ]
+          )
         end
-        def self.values; end
+        def self.values
+        end
       end
 
       # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
@@ -1163,22 +1263,39 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         BUSINESS =
-          T.let(:BUSINESS, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol)
+          T.let(
+            :BUSINESS,
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol
+          )
         INDIVIDUAL =
-          T.let(:INDIVIDUAL, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol)
+          T.let(
+            :INDIVIDUAL,
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol
+          )
 
         sig do
-          override
-            .returns(T::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol])
+          override.returns(
+            T::Array[
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType::TaggedSymbol
+            ]
+          )
         end
-        def self.values; end
+        def self.values
+        end
       end
 
       class VerificationApplication < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Timestamp of when the application was created.
         sig { returns(Time) }
         attr_accessor :created
@@ -1212,13 +1329,14 @@ module Lithic
         sig do
           params(
             created: Time,
-            status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::OrSymbol,
-            status_reasons: T::Array[
-              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::OrSymbol
-            ],
+            status:
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::OrSymbol,
+            status_reasons:
+              T::Array[
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::OrSymbol
+              ],
             updated: Time
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Timestamp of when the application was created.
@@ -1232,21 +1350,25 @@ module Lithic
           status_reasons:,
           # Timestamp of when the application was last updated.
           updated:
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                created: Time,
-                status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::TaggedSymbol,
-                status_reasons: T::Array[
+          override.returns(
+            {
+              created: Time,
+              status:
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::TaggedSymbol,
+              status_reasons:
+                T::Array[
                   Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
                 ],
-                updated: Time
-              }
-            )
+              updated: Time
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # KYC and KYB evaluation states.
         #
@@ -1257,7 +1379,10 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status)
+              T.all(
+                Symbol,
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -1283,14 +1408,14 @@ module Lithic
             )
 
           sig do
-            override
-              .returns(
-                T::Array[
-                  Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::TaggedSymbol
-                ]
-              )
+            override.returns(
+              T::Array[
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::Status::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         # Status Reasons for KYC/KYB enrollment states
@@ -1299,7 +1424,10 @@ module Lithic
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason)
+              T.all(
+                Symbol,
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -1425,14 +1553,14 @@ module Lithic
             )
 
           sig do
-            override
-              .returns(
-                T::Array[
-                  Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
-                ]
-              )
+            override.returns(
+              T::Array[
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

@@ -8,17 +8,17 @@ class Lithic::Test::Resources::FinancialAccounts::CreditConfigurationTest < Lith
       @lithic.financial_accounts.credit_configuration.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig
+      response => Lithic::FinancialAccounts::FinancialAccountCreditConfig
     end
 
     assert_pattern do
       response => {
         account_token: String,
-        charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason | nil,
+        charged_off_reason: Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason | nil,
         credit_limit: Integer | nil,
         credit_product_token: String | nil,
         external_bank_account_token: String | nil,
-        financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState,
+        financial_account_state: Lithic::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState,
         is_spend_blocked: Lithic::Internal::Type::Boolean,
         tier: String | nil
       }
@@ -29,17 +29,17 @@ class Lithic::Test::Resources::FinancialAccounts::CreditConfigurationTest < Lith
     response = @lithic.financial_accounts.credit_configuration.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig
+      response => Lithic::FinancialAccounts::FinancialAccountCreditConfig
     end
 
     assert_pattern do
       response => {
         account_token: String,
-        charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason | nil,
+        charged_off_reason: Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason | nil,
         credit_limit: Integer | nil,
         credit_product_token: String | nil,
         external_bank_account_token: String | nil,
-        financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState,
+        financial_account_state: Lithic::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState,
         is_spend_blocked: Lithic::Internal::Type::Boolean,
         tier: String | nil
       }

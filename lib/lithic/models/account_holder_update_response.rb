@@ -26,9 +26,8 @@ module Lithic
         # @!attribute beneficial_owner_entities
         #   Deprecated.
         #
-        #   @return [Array<Lithic::Models::KYBBusinessEntity>, nil]
-        optional :beneficial_owner_entities,
-                 -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::KYBBusinessEntity] }
+        #   @return [Array<Lithic::KYBBusinessEntity>, nil]
+        optional :beneficial_owner_entities, -> { Lithic::Internal::Type::ArrayOf[Lithic::KYBBusinessEntity] }
 
         # @!attribute beneficial_owner_individuals
         #   Only present when user_type == "BUSINESS". You must submit a list of all direct
@@ -54,8 +53,8 @@ module Lithic
         #   Only present when user_type == "BUSINESS". Information about the business for
         #   which the account is being opened and KYB is being run.
         #
-        #   @return [Lithic::Models::KYBBusinessEntity, nil]
-        optional :business_entity, -> { Lithic::Models::KYBBusinessEntity }
+        #   @return [Lithic::KYBBusinessEntity, nil]
+        optional :business_entity, -> { Lithic::KYBBusinessEntity }
 
         # @!attribute control_person
         #   Only present when user_type == "BUSINESS".
@@ -131,8 +130,8 @@ module Lithic
         #   Only present for "KYB_BASIC" and "KYC_ADVANCED" workflows. A list of documents
         #   required for the account holder to be approved.
         #
-        #   @return [Array<Lithic::Models::RequiredDocument>, nil]
-        optional :required_documents, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument] }
+        #   @return [Array<Lithic::RequiredDocument>, nil]
+        optional :required_documents, -> { Lithic::Internal::Type::ArrayOf[Lithic::RequiredDocument] }
 
         # @!attribute status
         #   <Deprecated. Use verification_application.status instead>
@@ -187,47 +186,37 @@ module Lithic
         #
         #   @param account_token [String] Globally unique identifier for the account.
         #
-        #   @param beneficial_owner_entities [Array<Lithic::Models::KYBBusinessEntity>] Deprecated.
+        #   @param beneficial_owner_entities [Array<Lithic::KYBBusinessEntity>] Deprecated.
         #
         #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual>] Only present when user_type == "BUSINESS". You must submit a list of all direct
-        #   ...
         #
         #   @param business_account_token [String] Only applicable for customers using the KYC-Exempt workflow to enroll authorized
-        #   ...
         #
-        #   @param business_entity [Lithic::Models::KYBBusinessEntity] Only present when user_type == "BUSINESS". Information about the business for wh
-        #   ...
+        #   @param business_entity [Lithic::KYBBusinessEntity] Only present when user_type == "BUSINESS". Information about the business for wh
         #
-        #   @param control_person [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson] Only present when user_type == "BUSINESS". ...
+        #   @param control_person [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson] Only present when user_type == "BUSINESS".
         #
         #   @param created [Time] Timestamp of when the account holder was created.
         #
-        #   @param email [String] < ...
+        #   @param email [String] <
         #
         #   @param exemption_type [Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType] The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
-        #   ...
         #
         #   @param external_id [String] Customer-provided token that indicates a relationship with an object outside of
-        #   ...
         #
         #   @param individual [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual] Only present when user_type == "INDIVIDUAL". Information about the individual fo
-        #   ...
         #
         #   @param nature_of_business [String] Only present when user_type == "BUSINESS". User-submitted description of the bus
-        #   ...
         #
-        #   @param phone_number [String] < ...
+        #   @param phone_number [String] <
         #
-        #   @param required_documents [Array<Lithic::Models::RequiredDocument>] Only present for "KYB_BASIC" and "KYC_ADVANCED" workflows. A list of documents r
-        #   ...
+        #   @param required_documents [Array<Lithic::RequiredDocument>] Only present for "KYB_BASIC" and "KYC_ADVANCED" workflows. A list of documents r
         #
-        #   @param status [Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status] <Deprecated. Use verification_application.status instead> ...
+        #   @param status [Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status] <Deprecated. Use verification_application.status instead>
         #
         #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason>] <Deprecated. Use verification_application.status_reasons> Reason for the evaluat
-        #   ...
         #
         #   @param user_type [Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType] The type of Account Holder. If the type is "INDIVIDUAL", the "individual" attrib
-        #   ...
         #
         #   @param verification_application [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication] Information about the most recent identity verification attempt
         #
@@ -279,12 +268,10 @@ module Lithic
           #   for more details.
           #
           #   @param address [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
-          #   ...
           #
           #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
           #
           #   @param email [String] Individual's email address. If utilizing Lithic for chargeback processing, this
-          #   ...
           #
           #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
           #
@@ -346,13 +333,10 @@ module Lithic
             #   @param city [String] Name of city.
             #
             #   @param country [String] Valid country code. Only USA is currently supported, entered in uppercase ISO 31
-            #   ...
             #
             #   @param postal_code [String] Valid postal code. Only USA ZIP codes are currently supported, entered as a five
-            #   ...
             #
             #   @param state [String] Valid state code. Only USA state codes are currently supported, entered in upper
-            #   ...
             #
             #   @param address2 [String] Unit or apartment number (if applicable).
           end
@@ -417,12 +401,10 @@ module Lithic
           #   be a beneficial owner listed above.
           #
           #   @param address [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
-          #   ...
           #
           #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
           #
           #   @param email [String] Individual's email address. If utilizing Lithic for chargeback processing, this
-          #   ...
           #
           #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
           #
@@ -484,13 +466,10 @@ module Lithic
             #   @param city [String] Name of city.
             #
             #   @param country [String] Valid country code. Only USA is currently supported, entered in uppercase ISO 31
-            #   ...
             #
             #   @param postal_code [String] Valid postal code. Only USA ZIP codes are currently supported, entered as a five
-            #   ...
             #
             #   @param state [String] Valid state code. Only USA state codes are currently supported, entered in upper
-            #   ...
             #
             #   @param address2 [String] Unit or apartment number (if applicable).
           end
@@ -560,12 +539,10 @@ module Lithic
           #   for which the account is being opened and KYC is being run.
           #
           #   @param address [Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
-          #   ...
           #
           #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
           #
           #   @param email [String] Individual's email address. If utilizing Lithic for chargeback processing, this
-          #   ...
           #
           #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
           #
@@ -627,13 +604,10 @@ module Lithic
             #   @param city [String] Name of city.
             #
             #   @param country [String] Valid country code. Only USA is currently supported, entered in uppercase ISO 31
-            #   ...
             #
             #   @param postal_code [String] Valid postal code. Only USA ZIP codes are currently supported, entered as a five
-            #   ...
             #
             #   @param state [String] Valid state code. Only USA state codes are currently supported, entered in upper
-            #   ...
             #
             #   @param address2 [String] Unit or apartment number (if applicable).
           end
@@ -756,7 +730,7 @@ module Lithic
           #
           #   @param created [Time] Timestamp of when the application was created.
           #
-          #   @param status [Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status] KYC and KYB evaluation states. ...
+          #   @param status [Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::Status] KYC and KYB evaluation states.
           #
           #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason>] Reason for the evaluation status.
           #
@@ -936,13 +910,10 @@ module Lithic
           #   @param city [String] Name of city.
           #
           #   @param country [String] Valid country code. Only USA is currently supported, entered in uppercase ISO 31
-          #   ...
           #
           #   @param postal_code [String] Valid postal code. Only USA ZIP codes are currently supported, entered as a five
-          #   ...
           #
           #   @param state [String] Valid state code. Only USA state codes are currently supported, entered in upper
-          #   ...
           #
           #   @param address2 [String] Unit or apartment number (if applicable).
         end

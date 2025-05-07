@@ -27,10 +27,8 @@ module Lithic
         #   {Lithic::Models::Events::SubscriptionRecoverParams} for more details.
         #
         #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-        #   ...
         #
         #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-        #   ...
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end

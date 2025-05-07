@@ -35,8 +35,6 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> Lithic::Models::account_holder_simulate_enrollment_document_review_params
-
       type status = :UPLOADED | :ACCEPTED | :REJECTED | :PARTIAL_APPROVAL
 
       module Status

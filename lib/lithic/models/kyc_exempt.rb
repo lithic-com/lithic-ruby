@@ -7,8 +7,8 @@ module Lithic
       #   KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
       #   acceptable; APO/FPO are acceptable.
       #
-      #   @return [Lithic::Models::Address]
-      required :address, -> { Lithic::Models::Address }
+      #   @return [Lithic::Address]
+      required :address, -> { Lithic::Address }
 
       # @!attribute email
       #   The KYC Exempt user's email
@@ -25,8 +25,8 @@ module Lithic
       # @!attribute kyc_exemption_type
       #   Specifies the type of KYC Exempt user
       #
-      #   @return [Symbol, Lithic::Models::KYCExempt::KYCExemptionType]
-      required :kyc_exemption_type, enum: -> { Lithic::Models::KYCExempt::KYCExemptionType }
+      #   @return [Symbol, Lithic::KYCExempt::KYCExemptionType]
+      required :kyc_exemption_type, enum: -> { Lithic::KYCExempt::KYCExemptionType }
 
       # @!attribute last_name
       #   The KYC Exempt user's last name
@@ -43,8 +43,8 @@ module Lithic
       # @!attribute workflow
       #   Specifies the workflow type. This must be 'KYC_EXEMPT'
       #
-      #   @return [Symbol, Lithic::Models::KYCExempt::Workflow]
-      required :workflow, enum: -> { Lithic::Models::KYCExempt::Workflow }
+      #   @return [Symbol, Lithic::KYCExempt::Workflow]
+      required :workflow, enum: -> { Lithic::KYCExempt::Workflow }
 
       # @!attribute business_account_token
       #   Only applicable for customers using the KYC-Exempt workflow to enroll authorized
@@ -62,33 +62,30 @@ module Lithic
       optional :external_id, String
 
       # @!method initialize(address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, workflow:, business_account_token: nil, external_id: nil)
-      #   Some parameter documentations has been truncated, see
-      #   {Lithic::Models::KYCExempt} for more details.
+      #   Some parameter documentations has been truncated, see {Lithic::KYCExempt} for
+      #   more details.
       #
-      #   @param address [Lithic::Models::Address] KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
-      #   ...
+      #   @param address [Lithic::Address] KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
       #
       #   @param email [String] The KYC Exempt user's email
       #
       #   @param first_name [String] The KYC Exempt user's first name
       #
-      #   @param kyc_exemption_type [Symbol, Lithic::Models::KYCExempt::KYCExemptionType] Specifies the type of KYC Exempt user
+      #   @param kyc_exemption_type [Symbol, Lithic::KYCExempt::KYCExemptionType] Specifies the type of KYC Exempt user
       #
       #   @param last_name [String] The KYC Exempt user's last name
       #
       #   @param phone_number [String] The KYC Exempt user's phone number, entered in E.164 format.
       #
-      #   @param workflow [Symbol, Lithic::Models::KYCExempt::Workflow] Specifies the workflow type. This must be 'KYC_EXEMPT'
+      #   @param workflow [Symbol, Lithic::KYCExempt::Workflow] Specifies the workflow type. This must be 'KYC_EXEMPT'
       #
       #   @param business_account_token [String] Only applicable for customers using the KYC-Exempt workflow to enroll authorized
-      #   ...
       #
       #   @param external_id [String] A user provided id that can be used to link an account holder with an external s
-      #   ...
 
       # Specifies the type of KYC Exempt user
       #
-      # @see Lithic::Models::KYCExempt#kyc_exemption_type
+      # @see Lithic::KYCExempt#kyc_exemption_type
       module KYCExemptionType
         extend Lithic::Internal::Type::Enum
 
@@ -101,7 +98,7 @@ module Lithic
 
       # Specifies the workflow type. This must be 'KYC_EXEMPT'
       #
-      # @see Lithic::Models::KYCExempt#workflow
+      # @see Lithic::KYCExempt#workflow
       module Workflow
         extend Lithic::Internal::Type::Enum
 

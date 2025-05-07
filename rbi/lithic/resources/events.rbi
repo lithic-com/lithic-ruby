@@ -10,8 +10,14 @@ module Lithic
       attr_reader :event_subscriptions
 
       # Get an event.
-      sig { params(event_token: String, request_options: Lithic::RequestOpts).returns(Lithic::Models::Event) }
-      def retrieve(event_token, request_options: {}); end
+      sig do
+        params(
+          event_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Event)
+      end
+      def retrieve(event_token, request_options: {})
+      end
 
       # List all events.
       sig do
@@ -19,13 +25,12 @@ module Lithic
           begin_: Time,
           end_: Time,
           ending_before: String,
-          event_types: T::Array[Lithic::Models::EventListParams::EventType::OrSymbol],
+          event_types: T::Array[Lithic::EventListParams::EventType::OrSymbol],
           page_size: Integer,
           starting_after: String,
           with_content: T::Boolean,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Internal::CursorPage[Lithic::Models::Event])
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Internal::CursorPage[Lithic::Event])
       end
       def list(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -47,7 +52,9 @@ module Lithic
         # Whether to include the event payload content in the response.
         with_content: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List all the message attempts for a given event.
       sig do
         params(
@@ -57,10 +64,9 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          status: Lithic::Models::EventListAttemptsParams::Status::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Internal::CursorPage[Lithic::Models::MessageAttempt])
+          status: Lithic::EventListAttemptsParams::Status::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Internal::CursorPage[Lithic::MessageAttempt])
       end
       def list_attempts(
         event_token,
@@ -80,10 +86,13 @@ module Lithic
         starting_after: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -10,8 +10,6 @@ module Lithic
       attr_accessor url: String?
 
       def initialize: (?enrolled: bool, ?url: String?) -> void
-
-      def to_hash: -> Lithic::Models::responder_endpoint_status
     end
   end
 end

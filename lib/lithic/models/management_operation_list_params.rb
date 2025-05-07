@@ -22,8 +22,8 @@ module Lithic
       # @!attribute category
       #   Management operation category to be returned.
       #
-      #   @return [Symbol, Lithic::Models::ManagementOperationListParams::Category, nil]
-      optional :category, enum: -> { Lithic::Models::ManagementOperationListParams::Category }
+      #   @return [Symbol, Lithic::ManagementOperationListParams::Category, nil]
+      optional :category, enum: -> { Lithic::ManagementOperationListParams::Category }
 
       # @!attribute end_
       #   Date string in RFC 3339 format. Only entries created before the specified time
@@ -62,35 +62,30 @@ module Lithic
       # @!attribute status
       #   Management operation status to be returned.
       #
-      #   @return [Symbol, Lithic::Models::ManagementOperationListParams::Status, nil]
-      optional :status, enum: -> { Lithic::Models::ManagementOperationListParams::Status }
+      #   @return [Symbol, Lithic::ManagementOperationListParams::Status, nil]
+      optional :status, enum: -> { Lithic::ManagementOperationListParams::Status }
 
       # @!method initialize(begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, starting_after: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::ManagementOperationListParams} for more details.
       #
       #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-      #   ...
       #
       #   @param business_account_token [String]
       #
-      #   @param category [Symbol, Lithic::Models::ManagementOperationListParams::Category] Management operation category to be returned.
+      #   @param category [Symbol, Lithic::ManagementOperationListParams::Category] Management operation category to be returned.
       #
       #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-      #   ...
       #
       #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-      #   ...
       #
       #   @param financial_account_token [String] Globally unique identifier for the financial account. Accepted type dependent on
-      #   ...
       #
       #   @param page_size [Integer] Page size (for pagination).
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-      #   ...
       #
-      #   @param status [Symbol, Lithic::Models::ManagementOperationListParams::Status] Management operation status to be returned.
+      #   @param status [Symbol, Lithic::ManagementOperationListParams::Status] Management operation status to be returned.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

@@ -7,6 +7,8 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Account tokens to which the Auth Rule applies.
         sig { returns(T::Array[String]) }
         attr_accessor :account_tokens
@@ -20,9 +22,9 @@ module Lithic
           returns(
             T.nilable(
               T.any(
-                Lithic::Models::AuthRules::ConditionalBlockParameters,
-                Lithic::Models::AuthRules::VelocityLimitParams,
-                Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters
+                Lithic::AuthRules::ConditionalBlockParameters,
+                Lithic::AuthRules::VelocityLimitParams,
+                Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters
               )
             )
           )
@@ -31,22 +33,25 @@ module Lithic
 
         sig do
           params(
-            parameters: T.any(
-              Lithic::Models::AuthRules::ConditionalBlockParameters,
-              Lithic::Internal::AnyHash,
-              Lithic::Models::AuthRules::VelocityLimitParams,
-              Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters
-            )
-          )
-            .void
+            parameters:
+              T.any(
+                Lithic::AuthRules::ConditionalBlockParameters::OrHash,
+                Lithic::AuthRules::VelocityLimitParams::OrHash,
+                Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::OrHash
+              )
+          ).void
         end
         attr_writer :parameters
 
         # The type of Auth Rule
-        sig { returns(T.nilable(Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol)) }
+        sig do
+          returns(T.nilable(Lithic::AuthRules::V2CreateParams::Type::OrSymbol))
+        end
         attr_reader :type
 
-        sig { params(type: Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol).void }
+        sig do
+          params(type: Lithic::AuthRules::V2CreateParams::Type::OrSymbol).void
+        end
         attr_writer :type
 
         # Card tokens to which the Auth Rule applies.
@@ -70,17 +75,16 @@ module Lithic
             card_tokens: T::Array[String],
             program_level: T::Boolean,
             name: T.nilable(String),
-            parameters: T.any(
-              Lithic::Models::AuthRules::ConditionalBlockParameters,
-              Lithic::Internal::AnyHash,
-              Lithic::Models::AuthRules::VelocityLimitParams,
-              Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters
-            ),
-            type: Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol,
+            parameters:
+              T.any(
+                Lithic::AuthRules::ConditionalBlockParameters::OrHash,
+                Lithic::AuthRules::VelocityLimitParams::OrHash,
+                Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::OrHash
+              ),
+            type: Lithic::AuthRules::V2CreateParams::Type::OrSymbol,
             excluded_card_tokens: T::Array[String],
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Account tokens to which the Auth Rule applies.
@@ -98,65 +102,91 @@ module Lithic
           # Card tokens to which the Auth Rule does not apply.
           excluded_card_tokens: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                account_tokens: T::Array[String],
-                name: T.nilable(String),
-                parameters: T.any(
-                  Lithic::Models::AuthRules::ConditionalBlockParameters,
-                  Lithic::Models::AuthRules::VelocityLimitParams,
-                  Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters
-                ),
-                type: Lithic::Models::AuthRules::V2CreateParams::Type::OrSymbol,
-                card_tokens: T::Array[String],
-                program_level: T::Boolean,
-                excluded_card_tokens: T::Array[String],
-                request_options: Lithic::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              account_tokens: T::Array[String],
+              name: T.nilable(String),
+              parameters:
+                T.any(
+                  Lithic::AuthRules::ConditionalBlockParameters,
+                  Lithic::AuthRules::VelocityLimitParams,
+                  Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters
+                ),
+              type: Lithic::AuthRules::V2CreateParams::Type::OrSymbol,
+              card_tokens: T::Array[String],
+              program_level: T::Boolean,
+              excluded_card_tokens: T::Array[String],
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         # Parameters for the Auth Rule
         module Parameters
           extend Lithic::Internal::Type::Union
 
+          Variants =
+            T.type_alias do
+              T.any(
+                Lithic::AuthRules::ConditionalBlockParameters,
+                Lithic::AuthRules::VelocityLimitParams,
+                Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters
+              )
+            end
+
           class MerchantLockParameters < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
             # A list of merchant locks defining specific merchants or groups of merchants
             # (based on descriptors or IDs) that the lock applies to.
-            sig { returns(T::Array[Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant]) }
+            sig do
+              returns(
+                T::Array[
+                  Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant
+                ]
+              )
+            end
             attr_accessor :merchants
 
             sig do
               params(
-                merchants: T::Array[
-                  T.any(
-                    Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant,
-                    Lithic::Internal::AnyHash
-                  )
-                ]
-              )
-                .returns(T.attached_class)
+                merchants:
+                  T::Array[
+                    Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant::OrHash
+                  ]
+              ).returns(T.attached_class)
             end
             def self.new(
               # A list of merchant locks defining specific merchants or groups of merchants
               # (based on descriptors or IDs) that the lock applies to.
               merchants:
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    merchants: T::Array[Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant]
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  merchants:
+                    T::Array[
+                      Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant
+                    ]
+                }
+              )
+            end
+            def to_hash
+            end
 
             class Merchant < Lithic::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
               # A comment or explanation about the merchant, used internally for rule management
               # purposes.
               sig { returns(T.nilable(String)) }
@@ -187,7 +217,11 @@ module Lithic
               # merchant object allows transaction rules to work at a granular level and
               # requires at least one of merchant_id or descriptor.
               sig do
-                params(comment: String, descriptor: String, merchant_id: String).returns(T.attached_class)
+                params(
+                  comment: String,
+                  descriptor: String,
+                  merchant_id: String
+                ).returns(T.attached_class)
               end
               def self.new(
                 # A comment or explanation about the merchant, used internally for rule management
@@ -201,35 +235,61 @@ module Lithic
                 # attribute specifies the merchant entity that will be locked or referenced for
                 # authorization rules.
                 merchant_id: nil
-              ); end
-              sig { override.returns({comment: String, descriptor: String, merchant_id: String}) }
-              def to_hash; end
+              )
+              end
+
+              sig do
+                override.returns(
+                  { comment: String, descriptor: String, merchant_id: String }
+                )
+              end
+              def to_hash
+              end
             end
           end
 
           sig do
-            override
-              .returns(
-                [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters]
-              )
+            override.returns(
+              T::Array[Lithic::AuthRules::V2CreateParams::Parameters::Variants]
+            )
           end
-          def self.variants; end
+          def self.variants
+          end
         end
 
         # The type of Auth Rule
         module Type
           extend Lithic::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::V2CreateParams::Type) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Lithic::AuthRules::V2CreateParams::Type)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           CONDITIONAL_BLOCK =
-            T.let(:CONDITIONAL_BLOCK, Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol)
-          VELOCITY_LIMIT = T.let(:VELOCITY_LIMIT, Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol)
-          MERCHANT_LOCK = T.let(:MERCHANT_LOCK, Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol)
+            T.let(
+              :CONDITIONAL_BLOCK,
+              Lithic::AuthRules::V2CreateParams::Type::TaggedSymbol
+            )
+          VELOCITY_LIMIT =
+            T.let(
+              :VELOCITY_LIMIT,
+              Lithic::AuthRules::V2CreateParams::Type::TaggedSymbol
+            )
+          MERCHANT_LOCK =
+            T.let(
+              :MERCHANT_LOCK,
+              Lithic::AuthRules::V2CreateParams::Type::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::AuthRules::V2CreateParams::Type::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Lithic::AuthRules::V2CreateParams::Type::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

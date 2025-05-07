@@ -6,11 +6,11 @@ module Lithic
     class AccountHolderListDocumentsResponse < Lithic::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Array<Lithic::Models::Document>, nil]
-      optional :data, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Document] }
+      #   @return [Array<Lithic::Document>, nil]
+      optional :data, -> { Lithic::Internal::Type::ArrayOf[Lithic::Document] }
 
       # @!method initialize(data: nil)
-      #   @param data [Array<Lithic::Models::Document>]
+      #   @param data [Array<Lithic::Document>]
     end
   end
 end

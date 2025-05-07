@@ -9,15 +9,15 @@ module Lithic
           amount: Integer,
           external_bank_account_token: String,
           financial_account_token: String,
-          method_: Lithic::Models::PaymentCreateParams::Method::OrSymbol,
-          method_attributes: T.any(Lithic::Models::PaymentCreateParams::MethodAttributes, Lithic::Internal::AnyHash),
-          type: Lithic::Models::PaymentCreateParams::Type::OrSymbol,
+          method_: Lithic::PaymentCreateParams::Method::OrSymbol,
+          method_attributes:
+            Lithic::PaymentCreateParams::MethodAttributes::OrHash,
+          type: Lithic::PaymentCreateParams::Type::OrSymbol,
           token: String,
           memo: String,
           user_defined_id: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::PaymentCreateResponse)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::PaymentCreateResponse)
       end
       def create(
         amount:,
@@ -32,10 +32,18 @@ module Lithic
         memo: nil,
         user_defined_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get the payment by token.
-      sig { params(payment_token: String, request_options: Lithic::RequestOpts).returns(Lithic::Models::Payment) }
-      def retrieve(payment_token, request_options: {}); end
+      sig do
+        params(
+          payment_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Payment)
+      end
+      def retrieve(payment_token, request_options: {})
+      end
 
       # List all the payments for the provided search criteria.
       sig do
@@ -43,17 +51,16 @@ module Lithic
           account_token: String,
           begin_: Time,
           business_account_token: String,
-          category: Lithic::Models::PaymentListParams::Category::OrSymbol,
+          category: Lithic::PaymentListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
-          result: Lithic::Models::PaymentListParams::Result::OrSymbol,
+          result: Lithic::PaymentListParams::Result::OrSymbol,
           starting_after: String,
-          status: Lithic::Models::PaymentListParams::Status::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Internal::CursorPage[Lithic::Models::Payment])
+          status: Lithic::PaymentListParams::Status::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Internal::CursorPage[Lithic::Payment])
       end
       def list(
         account_token: nil,
@@ -77,24 +84,29 @@ module Lithic
         starting_after: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retry an origination which has been returned.
       sig do
-        params(payment_token: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::PaymentRetryResponse)
+        params(
+          payment_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::PaymentRetryResponse)
       end
-      def retry_(payment_token, request_options: {}); end
+      def retry_(payment_token, request_options: {})
+      end
 
       # Simulate payment lifecycle event
       sig do
         params(
           payment_token: String,
-          event_type: Lithic::Models::PaymentSimulateActionParams::EventType::OrSymbol,
-          decline_reason: Lithic::Models::PaymentSimulateActionParams::DeclineReason::OrSymbol,
+          event_type: Lithic::PaymentSimulateActionParams::EventType::OrSymbol,
+          decline_reason:
+            Lithic::PaymentSimulateActionParams::DeclineReason::OrSymbol,
           return_reason_code: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::PaymentSimulateActionResponse)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::PaymentSimulateActionResponse)
       end
       def simulate_action(
         payment_token,
@@ -105,18 +117,20 @@ module Lithic
         # Return Reason Code
         return_reason_code: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Simulates a receipt of a Payment.
       sig do
         params(
           token: String,
           amount: Integer,
           financial_account_token: String,
-          receipt_type: Lithic::Models::PaymentSimulateReceiptParams::ReceiptType::OrSymbol,
+          receipt_type:
+            Lithic::PaymentSimulateReceiptParams::ReceiptType::OrSymbol,
           memo: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::PaymentSimulateReceiptResponse)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::PaymentSimulateReceiptResponse)
       end
       def simulate_receipt(
         # Customer-generated payment token used to uniquely identify the simulated payment
@@ -130,21 +144,30 @@ module Lithic
         # Memo
         memo: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Simulates a release of a Payment.
       sig do
-        params(payment_token: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::PaymentSimulateReleaseResponse)
+        params(
+          payment_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::PaymentSimulateReleaseResponse)
       end
       def simulate_release(
         # Payment Token
         payment_token:,
         request_options: {}
-      ); end
+      )
+      end
+
       # Simulates a return of a Payment.
       sig do
-        params(payment_token: String, return_reason_code: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::PaymentSimulateReturnResponse)
+        params(
+          payment_token: String,
+          return_reason_code: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::PaymentSimulateReturnResponse)
       end
       def simulate_return(
         # Payment Token
@@ -152,10 +175,13 @@ module Lithic
         # Return Reason Code
         return_reason_code: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

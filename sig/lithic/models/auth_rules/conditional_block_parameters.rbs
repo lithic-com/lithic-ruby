@@ -2,16 +2,14 @@ module Lithic
   module Models
     module AuthRules
       type conditional_block_parameters =
-        { conditions: ::Array[Lithic::Models::AuthRules::AuthRuleCondition] }
+        { conditions: ::Array[Lithic::AuthRules::AuthRuleCondition] }
 
       class ConditionalBlockParameters < Lithic::Internal::Type::BaseModel
-        attr_accessor conditions: ::Array[Lithic::Models::AuthRules::AuthRuleCondition]
+        attr_accessor conditions: ::Array[Lithic::AuthRules::AuthRuleCondition]
 
         def initialize: (
-          conditions: ::Array[Lithic::Models::AuthRules::AuthRuleCondition]
+          conditions: ::Array[Lithic::AuthRules::AuthRuleCondition]
         ) -> void
-
-        def to_hash: -> Lithic::Models::AuthRules::conditional_block_parameters
       end
     end
   end

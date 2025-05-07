@@ -33,8 +33,6 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> Lithic::Models::financial_account_list_params
-
       type type_ = :ISSUING | :OPERATING | :RESERVE
 
       module Type

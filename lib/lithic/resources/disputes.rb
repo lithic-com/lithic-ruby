@@ -9,7 +9,7 @@ module Lithic
       #
       # @param amount [Integer] Amount to dispute
       #
-      # @param reason [Symbol, Lithic::Models::DisputeCreateParams::Reason] Reason for dispute
+      # @param reason [Symbol, Lithic::DisputeCreateParams::Reason] Reason for dispute
       #
       # @param transaction_token [String] Transaction to dispute
       #
@@ -19,16 +19,16 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::Dispute]
+      # @return [Lithic::Dispute]
       #
       # @see Lithic::Models::DisputeCreateParams
       def create(params)
-        parsed, options = Lithic::Models::DisputeCreateParams.dump_request(params)
+        parsed, options = Lithic::DisputeCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v1/disputes",
           body: parsed,
-          model: Lithic::Models::Dispute,
+          model: Lithic::Dispute,
           options: options
         )
       end
@@ -40,14 +40,14 @@ module Lithic
       # @param dispute_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::Dispute]
+      # @return [Lithic::Dispute]
       #
       # @see Lithic::Models::DisputeRetrieveParams
       def retrieve(dispute_token, params = {})
         @client.request(
           method: :get,
           path: ["v1/disputes/%1$s", dispute_token],
-          model: Lithic::Models::Dispute,
+          model: Lithic::Dispute,
           options: params[:request_options]
         )
       end
@@ -64,20 +64,20 @@ module Lithic
       #
       # @param customer_note [String] Customer description of dispute
       #
-      # @param reason [Symbol, Lithic::Models::DisputeUpdateParams::Reason] Reason for dispute
+      # @param reason [Symbol, Lithic::DisputeUpdateParams::Reason] Reason for dispute
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::Dispute]
+      # @return [Lithic::Dispute]
       #
       # @see Lithic::Models::DisputeUpdateParams
       def update(dispute_token, params = {})
-        parsed, options = Lithic::Models::DisputeUpdateParams.dump_request(params)
+        parsed, options = Lithic::DisputeUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["v1/disputes/%1$s", dispute_token],
           body: parsed,
-          model: Lithic::Models::Dispute,
+          model: Lithic::Dispute,
           options: options
         )
       end
@@ -90,36 +90,32 @@ module Lithic
       # @overload list(begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, status: nil, transaction_tokens: nil, request_options: {})
       #
       # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-      # ...
       #
       # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-      # ...
       #
       # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-      # ...
       #
       # @param page_size [Integer] Page size (for pagination).
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-      # ...
       #
-      # @param status [Symbol, Lithic::Models::DisputeListParams::Status] List disputes of a specific status.
+      # @param status [Symbol, Lithic::DisputeListParams::Status] List disputes of a specific status.
       #
       # @param transaction_tokens [Array<String>] Transaction tokens to filter by.
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::Models::Dispute>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Dispute>]
       #
       # @see Lithic::Models::DisputeListParams
       def list(params = {})
-        parsed, options = Lithic::Models::DisputeListParams.dump_request(params)
+        parsed, options = Lithic::DisputeListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/disputes",
           query: parsed.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
-          model: Lithic::Models::Dispute,
+          model: Lithic::Dispute,
           options: options
         )
       end
@@ -131,14 +127,14 @@ module Lithic
       # @param dispute_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::Dispute]
+      # @return [Lithic::Dispute]
       #
       # @see Lithic::Models::DisputeDeleteParams
       def delete(dispute_token, params = {})
         @client.request(
           method: :delete,
           path: ["v1/disputes/%1$s", dispute_token],
-          model: Lithic::Models::Dispute,
+          model: Lithic::Dispute,
           options: params[:request_options]
         )
       end
@@ -152,11 +148,11 @@ module Lithic
       # @param dispute_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::DisputeEvidence]
+      # @return [Lithic::DisputeEvidence]
       #
       # @see Lithic::Models::DisputeDeleteEvidenceParams
       def delete_evidence(evidence_token, params)
-        parsed, options = Lithic::Models::DisputeDeleteEvidenceParams.dump_request(params)
+        parsed, options = Lithic::DisputeDeleteEvidenceParams.dump_request(params)
         dispute_token =
           parsed.delete(:dispute_token) do
             raise ArgumentError.new("missing required path argument #{_1}")
@@ -164,7 +160,7 @@ module Lithic
         @client.request(
           method: :delete,
           path: ["v1/disputes/%1$s/evidences/%2$s", dispute_token, evidence_token],
-          model: Lithic::Models::DisputeEvidence,
+          model: Lithic::DisputeEvidence,
           options: options
         )
       end
@@ -183,16 +179,16 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::DisputeEvidence]
+      # @return [Lithic::DisputeEvidence]
       #
       # @see Lithic::Models::DisputeInitiateEvidenceUploadParams
       def initiate_evidence_upload(dispute_token, params = {})
-        parsed, options = Lithic::Models::DisputeInitiateEvidenceUploadParams.dump_request(params)
+        parsed, options = Lithic::DisputeInitiateEvidenceUploadParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["v1/disputes/%1$s/evidences", dispute_token],
           body: parsed,
-          model: Lithic::Models::DisputeEvidence,
+          model: Lithic::DisputeEvidence,
           options: options
         )
       end
@@ -207,32 +203,28 @@ module Lithic
       # @param dispute_token [String]
       #
       # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-      # ...
       #
       # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-      # ...
       #
       # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-      # ...
       #
       # @param page_size [Integer] Page size (for pagination).
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-      # ...
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::Models::DisputeEvidence>]
+      # @return [Lithic::Internal::CursorPage<Lithic::DisputeEvidence>]
       #
       # @see Lithic::Models::DisputeListEvidencesParams
       def list_evidences(dispute_token, params = {})
-        parsed, options = Lithic::Models::DisputeListEvidencesParams.dump_request(params)
+        parsed, options = Lithic::DisputeListEvidencesParams.dump_request(params)
         @client.request(
           method: :get,
           path: ["v1/disputes/%1$s/evidences", dispute_token],
           query: parsed.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
-          model: Lithic::Models::DisputeEvidence,
+          model: Lithic::DisputeEvidence,
           options: options
         )
       end
@@ -245,11 +237,11 @@ module Lithic
       # @param dispute_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::DisputeEvidence]
+      # @return [Lithic::DisputeEvidence]
       #
       # @see Lithic::Models::DisputeRetrieveEvidenceParams
       def retrieve_evidence(evidence_token, params)
-        parsed, options = Lithic::Models::DisputeRetrieveEvidenceParams.dump_request(params)
+        parsed, options = Lithic::DisputeRetrieveEvidenceParams.dump_request(params)
         dispute_token =
           parsed.delete(:dispute_token) do
             raise ArgumentError.new("missing required path argument #{_1}")
@@ -257,7 +249,7 @@ module Lithic
         @client.request(
           method: :get,
           path: ["v1/disputes/%1$s/evidences/%2$s", dispute_token, evidence_token],
-          model: Lithic::Models::DisputeEvidence,
+          model: Lithic::DisputeEvidence,
           options: options
         )
       end

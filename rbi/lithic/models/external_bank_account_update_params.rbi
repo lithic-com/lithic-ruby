@@ -6,11 +6,13 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Address
-      sig { returns(T.nilable(Lithic::Models::ExternalBankAccountAddress)) }
+      sig { returns(T.nilable(Lithic::ExternalBankAccountAddress)) }
       attr_reader :address
 
-      sig { params(address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::AnyHash)).void }
+      sig { params(address: Lithic::ExternalBankAccountAddress::OrHash).void }
       attr_writer :address
 
       # Optional field that helps identify bank accounts in receipts
@@ -50,16 +52,24 @@ module Lithic
       attr_writer :owner
 
       # Owner Type
-      sig { returns(T.nilable(Lithic::Models::OwnerType::OrSymbol)) }
+      sig { returns(T.nilable(Lithic::OwnerType::OrSymbol)) }
       attr_reader :owner_type
 
-      sig { params(owner_type: Lithic::Models::OwnerType::OrSymbol).void }
+      sig { params(owner_type: Lithic::OwnerType::OrSymbol).void }
       attr_writer :owner_type
 
-      sig { returns(T.nilable(Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(Lithic::ExternalBankAccountUpdateParams::Type::OrSymbol)
+        )
+      end
       attr_reader :type
 
-      sig { params(type: Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol).void }
+      sig do
+        params(
+          type: Lithic::ExternalBankAccountUpdateParams::Type::OrSymbol
+        ).void
+      end
       attr_writer :type
 
       # User Defined ID
@@ -71,18 +81,17 @@ module Lithic
 
       sig do
         params(
-          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::AnyHash),
+          address: Lithic::ExternalBankAccountAddress::OrHash,
           company_id: String,
           dob: Date,
           doing_business_as: String,
           name: String,
           owner: String,
-          owner_type: Lithic::Models::OwnerType::OrSymbol,
-          type: Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol,
+          owner_type: Lithic::OwnerType::OrSymbol,
+          type: Lithic::ExternalBankAccountUpdateParams::Type::OrSymbol,
           user_defined_id: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Address
@@ -104,37 +113,57 @@ module Lithic
         # User Defined ID
         user_defined_id: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              address: Lithic::Models::ExternalBankAccountAddress,
-              company_id: String,
-              dob: Date,
-              doing_business_as: String,
-              name: String,
-              owner: String,
-              owner_type: Lithic::Models::OwnerType::OrSymbol,
-              type: Lithic::Models::ExternalBankAccountUpdateParams::Type::OrSymbol,
-              user_defined_id: String,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            address: Lithic::ExternalBankAccountAddress,
+            company_id: String,
+            dob: Date,
+            doing_business_as: String,
+            name: String,
+            owner: String,
+            owner_type: Lithic::OwnerType::OrSymbol,
+            type: Lithic::ExternalBankAccountUpdateParams::Type::OrSymbol,
+            user_defined_id: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       module Type
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountUpdateParams::Type) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ExternalBankAccountUpdateParams::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol)
-        SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol)
+        CHECKING =
+          T.let(
+            :CHECKING,
+            Lithic::ExternalBankAccountUpdateParams::Type::TaggedSymbol
+          )
+        SAVINGS =
+          T.let(
+            :SAVINGS,
+            Lithic::ExternalBankAccountUpdateParams::Type::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountUpdateParams::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::ExternalBankAccountUpdateParams::Type::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

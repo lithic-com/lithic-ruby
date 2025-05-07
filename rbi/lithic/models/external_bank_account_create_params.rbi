@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Account Number
       sig { returns(String) }
       attr_accessor :account_number
@@ -29,7 +31,7 @@ module Lithic
       attr_accessor :owner
 
       # Owner Type
-      sig { returns(Lithic::Models::OwnerType::OrSymbol) }
+      sig { returns(Lithic::OwnerType::OrSymbol) }
       attr_accessor :owner_type
 
       # Routing Number
@@ -37,11 +39,15 @@ module Lithic
       attr_accessor :routing_number
 
       # Account Type
-      sig { returns(Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol) }
+      sig { returns(Lithic::ExternalBankAccountCreateParams::Type::OrSymbol) }
       attr_accessor :type
 
       # Verification Method
-      sig { returns(Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol) }
+      sig do
+        returns(
+          Lithic::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol
+        )
+      end
       attr_accessor :verification_method
 
       # Indicates which Lithic account the external account is associated with. For
@@ -54,10 +60,10 @@ module Lithic
       attr_writer :account_token
 
       # Address
-      sig { returns(T.nilable(Lithic::Models::ExternalBankAccountAddress)) }
+      sig { returns(T.nilable(Lithic::ExternalBankAccountAddress)) }
       attr_reader :address
 
-      sig { params(address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::AnyHash)).void }
+      sig { params(address: Lithic::ExternalBankAccountAddress::OrHash).void }
       attr_writer :address
 
       # Optional field that helps identify bank accounts in receipts
@@ -111,22 +117,22 @@ module Lithic
           currency: String,
           financial_account_token: String,
           owner: String,
-          owner_type: Lithic::Models::OwnerType::OrSymbol,
+          owner_type: Lithic::OwnerType::OrSymbol,
           routing_number: String,
-          type: Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol,
-          verification_method: Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol,
+          type: Lithic::ExternalBankAccountCreateParams::Type::OrSymbol,
+          verification_method:
+            Lithic::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol,
           processor_token: String,
           account_token: String,
-          address: T.any(Lithic::Models::ExternalBankAccountAddress, Lithic::Internal::AnyHash),
+          address: Lithic::ExternalBankAccountAddress::OrHash,
           company_id: String,
           dob: Date,
           doing_business_as: String,
           name: String,
           user_defined_id: String,
           verification_enforcement: T::Boolean,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Account Number
@@ -168,47 +174,68 @@ module Lithic
         user_defined_id: nil,
         verification_enforcement: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              account_number: String,
-              country: String,
-              currency: String,
-              financial_account_token: String,
-              owner: String,
-              owner_type: Lithic::Models::OwnerType::OrSymbol,
-              routing_number: String,
-              type: Lithic::Models::ExternalBankAccountCreateParams::Type::OrSymbol,
-              verification_method: Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol,
-              account_token: String,
-              address: Lithic::Models::ExternalBankAccountAddress,
-              company_id: String,
-              dob: Date,
-              doing_business_as: String,
-              name: String,
-              user_defined_id: String,
-              verification_enforcement: T::Boolean,
-              processor_token: String,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            account_number: String,
+            country: String,
+            currency: String,
+            financial_account_token: String,
+            owner: String,
+            owner_type: Lithic::OwnerType::OrSymbol,
+            routing_number: String,
+            type: Lithic::ExternalBankAccountCreateParams::Type::OrSymbol,
+            verification_method:
+              Lithic::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol,
+            account_token: String,
+            address: Lithic::ExternalBankAccountAddress,
+            company_id: String,
+            dob: Date,
+            doing_business_as: String,
+            name: String,
+            user_defined_id: String,
+            verification_enforcement: T::Boolean,
+            processor_token: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Account Type
       module Type
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountCreateParams::Type) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ExternalBankAccountCreateParams::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        CHECKING = T.let(:CHECKING, Lithic::Models::ExternalBankAccountCreateParams::Type::TaggedSymbol)
-        SAVINGS = T.let(:SAVINGS, Lithic::Models::ExternalBankAccountCreateParams::Type::TaggedSymbol)
+        CHECKING =
+          T.let(
+            :CHECKING,
+            Lithic::ExternalBankAccountCreateParams::Type::TaggedSymbol
+          )
+        SAVINGS =
+          T.let(
+            :SAVINGS,
+            Lithic::ExternalBankAccountCreateParams::Type::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ExternalBankAccountCreateParams::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::ExternalBankAccountCreateParams::Type::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       # Verification Method
@@ -216,20 +243,29 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::ExternalBankAccountCreateParams::VerificationMethod
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         EXTERNALLY_VERIFIED =
           T.let(
             :EXTERNALLY_VERIFIED,
-            Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::TaggedSymbol
+            Lithic::ExternalBankAccountCreateParams::VerificationMethod::TaggedSymbol
           )
 
         sig do
-          override
-            .returns(T::Array[Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod::TaggedSymbol])
+          override.returns(
+            T::Array[
+              Lithic::ExternalBankAccountCreateParams::VerificationMethod::TaggedSymbol
+            ]
+          )
         end
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

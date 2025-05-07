@@ -19,8 +19,6 @@ module Lithic
         ?memo: String,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::external_payment_release_params
     end
   end
 end

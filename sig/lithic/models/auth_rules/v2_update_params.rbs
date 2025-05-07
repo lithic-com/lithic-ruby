@@ -50,8 +50,6 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> void
 
-        def to_hash: -> Lithic::Models::AuthRules::v2_update_params
-
         type state = :INACTIVE
 
         module State

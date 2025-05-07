@@ -30,7 +30,7 @@ class Lithic::Test::Resources::ExternalBankAccounts::MicroDepositsTest < Lithic:
         verification_method: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod,
         verification_state: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState,
         account_token: String | nil,
-        address: Lithic::Models::ExternalBankAccountAddress | nil,
+        address: Lithic::ExternalBankAccountAddress | nil,
         company_id: String | nil,
         dob: Date | nil,
         doing_business_as: String | nil,

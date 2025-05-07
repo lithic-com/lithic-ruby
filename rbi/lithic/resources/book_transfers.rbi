@@ -8,16 +8,15 @@ module Lithic
       sig do
         params(
           amount: Integer,
-          category: Lithic::Models::BookTransferCreateParams::Category::OrSymbol,
+          category: Lithic::BookTransferCreateParams::Category::OrSymbol,
           from_financial_account_token: String,
           subtype: String,
           to_financial_account_token: String,
-          type: Lithic::Models::BookTransferCreateParams::Type::OrSymbol,
+          type: Lithic::BookTransferCreateParams::Type::OrSymbol,
           token: String,
           memo: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::BookTransferResponse)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::BookTransferResponse)
       end
       def create(
         # Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
@@ -41,34 +40,39 @@ module Lithic
         # Optional descriptor for the transfer.
         memo: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get book transfer by token
       sig do
-        params(book_transfer_token: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::BookTransferResponse)
+        params(
+          book_transfer_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::BookTransferResponse)
       end
       def retrieve(
         # Id of the book transfer to retrieve
         book_transfer_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # List book transfers
       sig do
         params(
           account_token: String,
           begin_: Time,
           business_account_token: String,
-          category: Lithic::Models::BookTransferListParams::Category::OrSymbol,
+          category: Lithic::BookTransferListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
-          result: Lithic::Models::BookTransferListParams::Result::OrSymbol,
+          result: Lithic::BookTransferListParams::Result::OrSymbol,
           starting_after: String,
-          status: Lithic::Models::BookTransferListParams::Status::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Internal::CursorPage[Lithic::Models::BookTransferResponse])
+          status: Lithic::BookTransferListParams::Status::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Internal::CursorPage[Lithic::BookTransferResponse])
       end
       def list(
         account_token: nil,
@@ -97,11 +101,16 @@ module Lithic
         # Book transfer status to be returned.
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Reverse a book transfer
       sig do
-        params(book_transfer_token: String, memo: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::BookTransferResponse)
+        params(
+          book_transfer_token: String,
+          memo: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::BookTransferResponse)
       end
       def reverse(
         # Id of the book transfer to retrieve
@@ -109,10 +118,13 @@ module Lithic
         # Optional descriptor for the reversal.
         memo: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -34,7 +34,6 @@ module Lithic
       #   @param token [String] The transaction token returned from the /v1/simulate/authorize response.
       #
       #   @param amount [Integer] Amount (in cents) to clear. Typically this will match the amount in the original
-      #   ...
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end

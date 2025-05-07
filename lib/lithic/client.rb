@@ -104,16 +104,11 @@ module Lithic
     #
     # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
     #
-    # @return [Lithic::Models::APIStatus]
+    # @return [Lithic::APIStatus]
     #
     # @see Lithic::Models::ClientAPIStatusParams
     def api_status(params = {})
-      request(
-        method: :get,
-        path: "v1/status",
-        model: Lithic::Models::APIStatus,
-        options: params[:request_options]
-      )
+      request(method: :get, path: "v1/status", model: Lithic::APIStatus, options: params[:request_options])
     end
 
     # @api private
