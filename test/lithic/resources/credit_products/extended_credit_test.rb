@@ -7,7 +7,7 @@ class Lithic::Test::Resources::CreditProducts::ExtendedCreditTest < Lithic::Test
     response = @lithic.credit_products.extended_credit.retrieve("credit_product_token")
 
     assert_pattern do
-      response => Lithic::Models::CreditProducts::CreditProductsExtendedCredit
+      response => Lithic::CreditProducts::CreditProductsExtendedCredit
     end
 
     assert_pattern do

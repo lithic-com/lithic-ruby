@@ -8,7 +8,7 @@ module Lithic
       def retrieve: (
         String transaction_token,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::Transaction
+      ) -> Lithic::Transaction
 
       def list: (
         ?account_token: String,
@@ -21,7 +21,7 @@ module Lithic
         ?starting_after: String,
         ?status: Lithic::Models::TransactionListParams::status,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Internal::CursorPage[Lithic::Models::Transaction]
+      ) -> Lithic::Internal::CursorPage[Lithic::Transaction]
 
       def expire_authorization: (
         String transaction_token,

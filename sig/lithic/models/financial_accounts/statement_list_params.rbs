@@ -49,8 +49,6 @@ module Lithic
           ?starting_after: String,
           ?request_options: Lithic::request_opts
         ) -> void
-
-        def to_hash: -> Lithic::Models::FinancialAccounts::statement_list_params
       end
     end
   end

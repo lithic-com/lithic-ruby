@@ -33,7 +33,7 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         status_reasons: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolderCreateResponse::StatusReason]),
         created: Time | nil,
         external_id: String | nil,
-        required_documents: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument]) | nil
+        required_documents: ^(Lithic::Internal::Type::ArrayOf[Lithic::RequiredDocument]) | nil
       }
     end
   end
@@ -42,7 +42,7 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
     response = @lithic.account_holders.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::AccountHolder
+      response => Lithic::AccountHolder
     end
 
     assert_pattern do
@@ -50,22 +50,22 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         token: String,
         created: Time,
         account_token: String | nil,
-        beneficial_owner_entities: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerEntity]) | nil,
-        beneficial_owner_individuals: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerIndividual]) | nil,
+        beneficial_owner_entities: ^(Lithic::Internal::Type::ArrayOf[Lithic::AccountHolder::BeneficialOwnerEntity]) | nil,
+        beneficial_owner_individuals: ^(Lithic::Internal::Type::ArrayOf[Lithic::AccountHolder::BeneficialOwnerIndividual]) | nil,
         business_account_token: String | nil,
-        business_entity: Lithic::Models::AccountHolder::BusinessEntity | nil,
-        control_person: Lithic::Models::AccountHolder::ControlPerson | nil,
+        business_entity: Lithic::AccountHolder::BusinessEntity | nil,
+        control_person: Lithic::AccountHolder::ControlPerson | nil,
         email: String | nil,
-        exemption_type: Lithic::Models::AccountHolder::ExemptionType | nil,
+        exemption_type: Lithic::AccountHolder::ExemptionType | nil,
         external_id: String | nil,
-        individual: Lithic::Models::AccountHolder::Individual | nil,
+        individual: Lithic::AccountHolder::Individual | nil,
         nature_of_business: String | nil,
         phone_number: String | nil,
-        required_documents: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument]) | nil,
-        status: Lithic::Models::AccountHolder::Status | nil,
-        status_reasons: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolder::StatusReason]) | nil,
-        user_type: Lithic::Models::AccountHolder::UserType | nil,
-        verification_application: Lithic::Models::AccountHolder::VerificationApplication | nil,
+        required_documents: ^(Lithic::Internal::Type::ArrayOf[Lithic::RequiredDocument]) | nil,
+        status: Lithic::AccountHolder::Status | nil,
+        status_reasons: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountHolder::StatusReason]) | nil,
+        user_type: Lithic::AccountHolder::UserType | nil,
+        verification_application: Lithic::AccountHolder::VerificationApplication | nil,
         website_url: String | nil
       }
     end
@@ -97,7 +97,7 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::AccountHolder
+      row => Lithic::AccountHolder
     end
 
     assert_pattern do
@@ -105,22 +105,22 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         token: String,
         created: Time,
         account_token: String | nil,
-        beneficial_owner_entities: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerEntity]) | nil,
-        beneficial_owner_individuals: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolder::BeneficialOwnerIndividual]) | nil,
+        beneficial_owner_entities: ^(Lithic::Internal::Type::ArrayOf[Lithic::AccountHolder::BeneficialOwnerEntity]) | nil,
+        beneficial_owner_individuals: ^(Lithic::Internal::Type::ArrayOf[Lithic::AccountHolder::BeneficialOwnerIndividual]) | nil,
         business_account_token: String | nil,
-        business_entity: Lithic::Models::AccountHolder::BusinessEntity | nil,
-        control_person: Lithic::Models::AccountHolder::ControlPerson | nil,
+        business_entity: Lithic::AccountHolder::BusinessEntity | nil,
+        control_person: Lithic::AccountHolder::ControlPerson | nil,
         email: String | nil,
-        exemption_type: Lithic::Models::AccountHolder::ExemptionType | nil,
+        exemption_type: Lithic::AccountHolder::ExemptionType | nil,
         external_id: String | nil,
-        individual: Lithic::Models::AccountHolder::Individual | nil,
+        individual: Lithic::AccountHolder::Individual | nil,
         nature_of_business: String | nil,
         phone_number: String | nil,
-        required_documents: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument]) | nil,
-        status: Lithic::Models::AccountHolder::Status | nil,
-        status_reasons: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolder::StatusReason]) | nil,
-        user_type: Lithic::Models::AccountHolder::UserType | nil,
-        verification_application: Lithic::Models::AccountHolder::VerificationApplication | nil,
+        required_documents: ^(Lithic::Internal::Type::ArrayOf[Lithic::RequiredDocument]) | nil,
+        status: Lithic::AccountHolder::Status | nil,
+        status_reasons: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountHolder::StatusReason]) | nil,
+        user_type: Lithic::AccountHolder::UserType | nil,
+        verification_application: Lithic::AccountHolder::VerificationApplication | nil,
         website_url: String | nil
       }
     end
@@ -135,7 +135,7 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Document]) | nil
+        data: ^(Lithic::Internal::Type::ArrayOf[Lithic::Document]) | nil
       }
     end
   end
@@ -148,16 +148,16 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Lithic::Models::Document
+      response => Lithic::Document
     end
 
     assert_pattern do
       response => {
         token: String,
         account_holder_token: String,
-        document_type: Lithic::Models::Document::DocumentType,
+        document_type: Lithic::Document::DocumentType,
         entity_token: String,
-        required_document_uploads: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Document::RequiredDocumentUpload])
+        required_document_uploads: ^(Lithic::Internal::Type::ArrayOf[Lithic::Document::RequiredDocumentUpload])
       }
     end
   end
@@ -170,16 +170,16 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Lithic::Models::Document
+      response => Lithic::Document
     end
 
     assert_pattern do
       response => {
         token: String,
         account_holder_token: String,
-        document_type: Lithic::Models::Document::DocumentType,
+        document_type: Lithic::Document::DocumentType,
         entity_token: String,
-        required_document_uploads: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Document::RequiredDocumentUpload])
+        required_document_uploads: ^(Lithic::Internal::Type::ArrayOf[Lithic::Document::RequiredDocumentUpload])
       }
     end
   end
@@ -195,10 +195,10 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
       response => {
         token: String | nil,
         account_token: String | nil,
-        beneficial_owner_entities: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::KYBBusinessEntity]) | nil,
+        beneficial_owner_entities: ^(Lithic::Internal::Type::ArrayOf[Lithic::KYBBusinessEntity]) | nil,
         beneficial_owner_individuals: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual]) | nil,
         business_account_token: String | nil,
-        business_entity: Lithic::Models::KYBBusinessEntity | nil,
+        business_entity: Lithic::KYBBusinessEntity | nil,
         control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson | nil,
         created: Time | nil,
         email: String | nil,
@@ -207,7 +207,7 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
         individual: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual | nil,
         nature_of_business: String | nil,
         phone_number: String | nil,
-        required_documents: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::RequiredDocument]) | nil,
+        required_documents: ^(Lithic::Internal::Type::ArrayOf[Lithic::RequiredDocument]) | nil,
         status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status | nil,
         status_reasons: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::StatusReason]) | nil,
         user_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::UserType | nil,
@@ -226,16 +226,16 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Lithic::Models::Document
+      response => Lithic::Document
     end
 
     assert_pattern do
       response => {
         token: String,
         account_holder_token: String,
-        document_type: Lithic::Models::Document::DocumentType,
+        document_type: Lithic::Document::DocumentType,
         entity_token: String,
-        required_document_uploads: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Document::RequiredDocumentUpload])
+        required_document_uploads: ^(Lithic::Internal::Type::ArrayOf[Lithic::Document::RequiredDocumentUpload])
       }
     end
   end

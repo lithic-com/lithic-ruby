@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Date string in RFC 3339 format. Only entries created after the specified time
       # will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
@@ -104,9 +106,8 @@ module Lithic
           limit: Integer,
           phone_number: String,
           starting_after: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -140,27 +141,29 @@ module Lithic
         # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              begin_: Time,
-              email: String,
-              end_: Time,
-              ending_before: String,
-              external_id: String,
-              first_name: String,
-              last_name: String,
-              legal_business_name: String,
-              limit: Integer,
-              phone_number: String,
-              starting_after: String,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            begin_: Time,
+            email: String,
+            end_: Time,
+            ending_before: String,
+            external_id: String,
+            first_name: String,
+            last_name: String,
+            legal_business_name: String,
+            limit: Integer,
+            phone_number: String,
+            starting_after: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

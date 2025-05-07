@@ -4,6 +4,8 @@ module Lithic
   module Models
     module Events
       class SubscriptionRetrieveSecretResponse < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # The secret for the event subscription.
         sig { returns(T.nilable(String)) }
         attr_reader :secret
@@ -15,9 +17,12 @@ module Lithic
         def self.new(
           # The secret for the event subscription.
           secret: nil
-        ); end
-        sig { override.returns({secret: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig { override.returns({ secret: String }) }
+        def to_hash
+        end
       end
     end
   end

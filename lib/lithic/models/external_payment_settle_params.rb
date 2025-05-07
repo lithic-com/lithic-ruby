@@ -19,13 +19,13 @@ module Lithic
 
       # @!attribute progress_to
       #
-      #   @return [Symbol, Lithic::Models::ExternalPaymentSettleParams::ProgressTo, nil]
-      optional :progress_to, enum: -> { Lithic::Models::ExternalPaymentSettleParams::ProgressTo }
+      #   @return [Symbol, Lithic::ExternalPaymentSettleParams::ProgressTo, nil]
+      optional :progress_to, enum: -> { Lithic::ExternalPaymentSettleParams::ProgressTo }
 
       # @!method initialize(effective_date:, memo: nil, progress_to: nil, request_options: {})
       #   @param effective_date [Date]
       #   @param memo [String]
-      #   @param progress_to [Symbol, Lithic::Models::ExternalPaymentSettleParams::ProgressTo]
+      #   @param progress_to [Symbol, Lithic::ExternalPaymentSettleParams::ProgressTo]
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
       module ProgressTo

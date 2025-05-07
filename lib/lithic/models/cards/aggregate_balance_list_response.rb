@@ -76,18 +76,14 @@ module Lithic
         #   @param currency [String] 3-character alphabetic ISO 4217 code for the local currency of the balance.
         #
         #   @param last_card_token [String] Globally unique identifier for the card that had its balance updated most recent
-        #   ...
         #
         #   @param last_transaction_event_token [String] Globally unique identifier for the last transaction event that impacted this bal
-        #   ...
         #
         #   @param last_transaction_token [String] Globally unique identifier for the last transaction that impacted this balance
         #
         #   @param pending_amount [Integer] Funds not available for spend due to card authorizations or pending ACH release.
-        #   ...
         #
         #   @param total_amount [Integer] The sum of available and pending balance in the currency's smallest unit (e.g.,
-        #   ...
         #
         #   @param updated [Time] Date and time for when the balance was last updated.
       end

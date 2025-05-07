@@ -71,8 +71,6 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> Lithic::Models::transaction_list_params
-
       type result = :APPROVED | :DECLINED
 
       module Result

@@ -25,8 +25,8 @@ module Lithic
       #   time limit (rolling). A lifetime limit of 0 indicates that the lifetime limit
       #   feature is disabled.
       #
-      #   @return [Lithic::Models::Account::SpendLimit]
-      required :spend_limit, -> { Lithic::Models::Account::SpendLimit }
+      #   @return [Lithic::Account::SpendLimit]
+      required :spend_limit, -> { Lithic::Account::SpendLimit }
 
       # @!attribute state
       #   Account state:
@@ -41,13 +41,13 @@ module Lithic
       #     [support@lithic.com](mailto:support@lithic.com) if you believe this was in
       #     error.
       #
-      #   @return [Symbol, Lithic::Models::Account::State]
-      required :state, enum: -> { Lithic::Models::Account::State }
+      #   @return [Symbol, Lithic::Account::State]
+      required :state, enum: -> { Lithic::Account::State }
 
       # @!attribute account_holder
       #
-      #   @return [Lithic::Models::Account::AccountHolder, nil]
-      optional :account_holder, -> { Lithic::Models::Account::AccountHolder }
+      #   @return [Lithic::Account::AccountHolder, nil]
+      optional :account_holder, -> { Lithic::Account::AccountHolder }
 
       # @!attribute auth_rule_tokens
       #   @deprecated
@@ -69,32 +69,30 @@ module Lithic
       # @!attribute verification_address
       #   @deprecated
       #
-      #   @return [Lithic::Models::Account::VerificationAddress, nil]
-      optional :verification_address, -> { Lithic::Models::Account::VerificationAddress }
+      #   @return [Lithic::Account::VerificationAddress, nil]
+      optional :verification_address, -> { Lithic::Account::VerificationAddress }
 
       # @!method initialize(token:, created:, spend_limit:, state:, account_holder: nil, auth_rule_tokens: nil, cardholder_currency: nil, verification_address: nil)
-      #   Some parameter documentations has been truncated, see {Lithic::Models::Account}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see {Lithic::Account} for more
+      #   details.
       #
       #   @param token [String] Globally unique identifier for the account. This is the same as the account_toke
-      #   ...
       #
       #   @param created [Time, nil] Timestamp of when the account was created.
       #
-      #   @param spend_limit [Lithic::Models::Account::SpendLimit] Spend limit information for the user containing the daily, monthly, and lifetime
-      #   ...
+      #   @param spend_limit [Lithic::Account::SpendLimit] Spend limit information for the user containing the daily, monthly, and lifetime
       #
-      #   @param state [Symbol, Lithic::Models::Account::State] Account state: ...
+      #   @param state [Symbol, Lithic::Account::State] Account state:
       #
-      #   @param account_holder [Lithic::Models::Account::AccountHolder]
+      #   @param account_holder [Lithic::Account::AccountHolder]
       #
-      #   @param auth_rule_tokens [Array<String>] List of identifiers for the Auth Rule(s) that are applied on the account. ...
+      #   @param auth_rule_tokens [Array<String>] List of identifiers for the Auth Rule(s) that are applied on the account.
       #
       #   @param cardholder_currency [String] 3-character alphabetic ISO 4217 code for the currency of the cardholder.
       #
-      #   @param verification_address [Lithic::Models::Account::VerificationAddress]
+      #   @param verification_address [Lithic::Account::VerificationAddress]
 
-      # @see Lithic::Models::Account#spend_limit
+      # @see Lithic::Account#spend_limit
       class SpendLimit < Lithic::Internal::Type::BaseModel
         # @!attribute daily
         #   Daily spend limit (in cents).
@@ -140,7 +138,7 @@ module Lithic
       #   [support@lithic.com](mailto:support@lithic.com) if you believe this was in
       #   error.
       #
-      # @see Lithic::Models::Account#state
+      # @see Lithic::Account#state
       module State
         extend Lithic::Internal::Type::Enum
 
@@ -152,7 +150,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::Models::Account#account_holder
+      # @see Lithic::Account#account_holder
       class AccountHolder < Lithic::Internal::Type::BaseModel
         # @!attribute token
         #   Globally unique identifier for the account holder.
@@ -182,12 +180,11 @@ module Lithic
 
         # @!method initialize(token:, business_account_token:, email:, phone_number:)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::Account::AccountHolder} for more details.
+        #   {Lithic::Account::AccountHolder} for more details.
         #
         #   @param token [String] Globally unique identifier for the account holder.
         #
         #   @param business_account_token [String] Only applicable for customers using the KYC-Exempt workflow to enroll authorized
-        #   ...
         #
         #   @param email [String] Email address.
         #
@@ -196,7 +193,7 @@ module Lithic
 
       # @deprecated
       #
-      # @see Lithic::Models::Account#verification_address
+      # @see Lithic::Account#verification_address
       class VerificationAddress < Lithic::Internal::Type::BaseModel
         # @!attribute address1
         #   Valid deliverable address (no PO boxes).
@@ -239,7 +236,7 @@ module Lithic
 
         # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::Account::VerificationAddress} for more details.
+        #   {Lithic::Account::VerificationAddress} for more details.
         #
         #   @param address1 [String] Valid deliverable address (no PO boxes).
         #
@@ -248,10 +245,8 @@ module Lithic
         #   @param country [String] Country name. Only USA is currently supported.
         #
         #   @param postal_code [String] Valid postal code. Only USA postal codes (ZIP codes) are currently supported, en
-        #   ...
         #
         #   @param state [String] Valid state code. Only USA state codes are currently supported, entered in upper
-        #   ...
         #
         #   @param address2 [String] Unit or apartment number (if applicable).
       end

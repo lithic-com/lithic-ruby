@@ -12,14 +12,18 @@ module Lithic
       # Get a specific card transaction. All amounts are in the smallest unit of their
       # respective currency (e.g., cents for USD).
       sig do
-        params(transaction_token: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::Transaction)
+        params(
+          transaction_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Transaction)
       end
       def retrieve(
         # Globally unique identifier for the transaction.
         transaction_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # List card transactions. All amounts are in the smallest unit of their respective
       # currency (e.g., cents for USD) and inclusive of any acquirer fees.
       sig do
@@ -30,12 +34,11 @@ module Lithic
           end_: Time,
           ending_before: String,
           page_size: Integer,
-          result: Lithic::Models::TransactionListParams::Result::OrSymbol,
+          result: Lithic::TransactionListParams::Result::OrSymbol,
           starting_after: String,
-          status: Lithic::Models::TransactionListParams::Status::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Internal::CursorPage[Lithic::Models::Transaction])
+          status: Lithic::TransactionListParams::Status::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Internal::CursorPage[Lithic::Transaction])
       end
       def list(
         # Filters for transactions associated with a specific account.
@@ -62,14 +65,23 @@ module Lithic
         # Filters for transactions using transaction status field.
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Expire authorization
-      sig { params(transaction_token: String, request_options: Lithic::RequestOpts).void }
+      sig do
+        params(
+          transaction_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).void
+      end
       def expire_authorization(
         # The token of the transaction to expire.
         transaction_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # Simulates an authorization request from the card network as if it came from a
       # merchant acquirer. If you are configured for ASA, simulating authorizations
       # requires your ASA client to be set up properly, i.e. be able to respond to the
@@ -89,10 +101,10 @@ module Lithic
           merchant_currency: String,
           partial_approval_capable: T::Boolean,
           pin: String,
-          status: Lithic::Models::TransactionSimulateAuthorizationParams::Status::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::TransactionSimulateAuthorizationResponse)
+          status:
+            Lithic::TransactionSimulateAuthorizationParams::Status::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::TransactionSimulateAuthorizationResponse)
       end
       def simulate_authorization(
         # Amount (in cents) to authorize. For credit authorizations and financial credit
@@ -141,13 +153,20 @@ module Lithic
         #   the transaction.
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Simulates an authorization advice from the card network as if it came from a
       # merchant acquirer. An authorization advice changes the pending amount of the
       # transaction.
       sig do
-        params(token: String, amount: Integer, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::TransactionSimulateAuthorizationAdviceResponse)
+        params(
+          token: String,
+          amount: Integer,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(
+          Lithic::Models::TransactionSimulateAuthorizationAdviceResponse
+        )
       end
       def simulate_authorization_advice(
         # The transaction token returned from the /v1/simulate/authorize. response.
@@ -156,7 +175,9 @@ module Lithic
         # amount that was originally set by /v1/simulate/authorize.
         amount:,
         request_options: {}
-      ); end
+      )
+      end
+
       # Clears an existing authorization, either debit or credit. After this event, the
       # transaction transitions from `PENDING` to `SETTLED` status.
       #
@@ -164,8 +185,11 @@ module Lithic
       # Transactions that have already cleared, either partially or fully, cannot be
       # cleared again using this endpoint.
       sig do
-        params(token: String, amount: Integer, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::TransactionSimulateClearingResponse)
+        params(
+          token: String,
+          amount: Integer,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::TransactionSimulateClearingResponse)
       end
       def simulate_clearing(
         # The transaction token returned from the /v1/simulate/authorize response.
@@ -181,7 +205,9 @@ module Lithic
         # cleared again using this endpoint.
         amount: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Simulates a credit authorization advice from the card network. This message
       # indicates that the network approved a credit authorization on your behalf.
       sig do
@@ -191,9 +217,10 @@ module Lithic
           pan: String,
           mcc: String,
           merchant_acceptor_id: String,
-          request_options: Lithic::RequestOpts
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(
+          Lithic::Models::TransactionSimulateCreditAuthorizationResponse
         )
-          .returns(Lithic::Models::TransactionSimulateCreditAuthorizationResponse)
       end
       def simulate_credit_authorization(
         # Amount (in cents). Any value entered will be converted into a negative amount in
@@ -211,13 +238,19 @@ module Lithic
         # Unique identifier to identify the payment card acceptor.
         merchant_acceptor_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Returns, or refunds, an amount back to a card. Returns simulated via this
       # endpoint clear immediately, without prior authorization, and result in a
       # `SETTLED` transaction status.
       sig do
-        params(amount: Integer, descriptor: String, pan: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::TransactionSimulateReturnResponse)
+        params(
+          amount: Integer,
+          descriptor: String,
+          pan: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::TransactionSimulateReturnResponse)
       end
       def simulate_return(
         # Amount (in cents) to authorize.
@@ -227,19 +260,25 @@ module Lithic
         # Sixteen digit card number.
         pan:,
         request_options: {}
-      ); end
+      )
+      end
+
       # Reverses a return, i.e. a credit transaction with a `SETTLED` status. Returns
       # can be financial credit authorizations, or credit authorizations that have
       # cleared.
       sig do
-        params(token: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::TransactionSimulateReturnReversalResponse)
+        params(
+          token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::TransactionSimulateReturnReversalResponse)
       end
       def simulate_return_reversal(
         # The transaction token returned from the /v1/simulate/authorize response.
         token:,
         request_options: {}
-      ); end
+      )
+      end
+
       # Voids a pending authorization. If `amount` is not set, the full amount will be
       # voided. Can be used on partially voided transactions but not partially cleared
       # transactions. _Simulating an authorization expiry on credit authorizations or
@@ -248,10 +287,9 @@ module Lithic
         params(
           token: String,
           amount: Integer,
-          type: Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::TransactionSimulateVoidResponse)
+          type: Lithic::TransactionSimulateVoidParams::Type::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::TransactionSimulateVoidResponse)
       end
       def simulate_void(
         # The transaction token returned from the /v1/simulate/authorize response.
@@ -266,10 +304,13 @@ module Lithic
         # - `AUTHORIZATION_REVERSAL` indicates authorization was reversed by the merchant.
         type: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

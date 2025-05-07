@@ -11,32 +11,32 @@ class Lithic::Test::Resources::FinancialAccounts::LoanTapesTest < Lithic::Test::
       )
 
     assert_pattern do
-      response => Lithic::Models::FinancialAccounts::LoanTape
+      response => Lithic::FinancialAccounts::LoanTape
     end
 
     assert_pattern do
       response => {
         token: String,
-        account_standing: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding,
+        account_standing: Lithic::FinancialAccounts::LoanTape::AccountStanding,
         available_credit: Integer,
-        balances: Lithic::Models::FinancialAccounts::LoanTape::Balances,
+        balances: Lithic::FinancialAccounts::LoanTape::Balances,
         created: Time,
         credit_limit: Integer,
         credit_product_token: String,
         date: Date,
-        day_totals: Lithic::Models::FinancialAccounts::LoanTape::DayTotals,
+        day_totals: Lithic::FinancialAccounts::LoanTape::DayTotals,
         ending_balance: Integer,
         excess_credits: Integer,
         financial_account_token: String,
-        interest_details: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails | nil,
-        minimum_payment_balance: Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance,
-        payment_allocation: Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation,
-        period_totals: Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals,
-        previous_statement_balance: Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance,
+        interest_details: Lithic::FinancialAccounts::LoanTape::InterestDetails | nil,
+        minimum_payment_balance: Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance,
+        payment_allocation: Lithic::FinancialAccounts::LoanTape::PaymentAllocation,
+        period_totals: Lithic::FinancialAccounts::LoanTape::PeriodTotals,
+        previous_statement_balance: Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance,
         starting_balance: Integer,
         updated: Time,
         version: Integer,
-        ytd_totals: Lithic::Models::FinancialAccounts::LoanTape::YtdTotals,
+        ytd_totals: Lithic::FinancialAccounts::LoanTape::YtdTotals,
         tier: String | nil
       }
     end
@@ -53,32 +53,32 @@ class Lithic::Test::Resources::FinancialAccounts::LoanTapesTest < Lithic::Test::
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::FinancialAccounts::LoanTape
+      row => Lithic::FinancialAccounts::LoanTape
     end
 
     assert_pattern do
       row => {
         token: String,
-        account_standing: Lithic::Models::FinancialAccounts::LoanTape::AccountStanding,
+        account_standing: Lithic::FinancialAccounts::LoanTape::AccountStanding,
         available_credit: Integer,
-        balances: Lithic::Models::FinancialAccounts::LoanTape::Balances,
+        balances: Lithic::FinancialAccounts::LoanTape::Balances,
         created: Time,
         credit_limit: Integer,
         credit_product_token: String,
         date: Date,
-        day_totals: Lithic::Models::FinancialAccounts::LoanTape::DayTotals,
+        day_totals: Lithic::FinancialAccounts::LoanTape::DayTotals,
         ending_balance: Integer,
         excess_credits: Integer,
         financial_account_token: String,
-        interest_details: Lithic::Models::FinancialAccounts::LoanTape::InterestDetails | nil,
-        minimum_payment_balance: Lithic::Models::FinancialAccounts::LoanTape::MinimumPaymentBalance,
-        payment_allocation: Lithic::Models::FinancialAccounts::LoanTape::PaymentAllocation,
-        period_totals: Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals,
-        previous_statement_balance: Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance,
+        interest_details: Lithic::FinancialAccounts::LoanTape::InterestDetails | nil,
+        minimum_payment_balance: Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance,
+        payment_allocation: Lithic::FinancialAccounts::LoanTape::PaymentAllocation,
+        period_totals: Lithic::FinancialAccounts::LoanTape::PeriodTotals,
+        previous_statement_balance: Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance,
         starting_balance: Integer,
         updated: Time,
         version: Integer,
-        ytd_totals: Lithic::Models::FinancialAccounts::LoanTape::YtdTotals,
+        ytd_totals: Lithic::FinancialAccounts::LoanTape::YtdTotals,
         tier: String | nil
       }
     end

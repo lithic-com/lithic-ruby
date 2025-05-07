@@ -7,6 +7,8 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # UTC date of the balance to retrieve. Defaults to latest available balance
         sig { returns(T.nilable(Time)) }
         attr_reader :balance_date
@@ -27,9 +29,8 @@ module Lithic
           params(
             balance_date: Time,
             last_transaction_event_token: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # UTC date of the balance to retrieve. Defaults to latest available balance
@@ -39,18 +40,20 @@ module Lithic
           # decreased by $5
           last_transaction_event_token: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                balance_date: Time,
-                last_transaction_event_token: String,
-                request_options: Lithic::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              balance_date: Time,
+              last_transaction_event_token: String,
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

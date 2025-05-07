@@ -6,7 +6,7 @@ module Lithic
           url: String,
           description: String,
           disabled: bool,
-          event_types: ::Array[Lithic::Models::Events::SubscriptionUpdateParams::event_type]
+          event_types: ::Array[Lithic::Events::SubscriptionUpdateParams::event_type]
         }
         & Lithic::Internal::Type::request_parameters
 
@@ -24,21 +24,19 @@ module Lithic
 
         def disabled=: (bool) -> bool
 
-        attr_reader event_types: ::Array[Lithic::Models::Events::SubscriptionUpdateParams::event_type]?
+        attr_reader event_types: ::Array[Lithic::Events::SubscriptionUpdateParams::event_type]?
 
         def event_types=: (
-          ::Array[Lithic::Models::Events::SubscriptionUpdateParams::event_type]
-        ) -> ::Array[Lithic::Models::Events::SubscriptionUpdateParams::event_type]
+          ::Array[Lithic::Events::SubscriptionUpdateParams::event_type]
+        ) -> ::Array[Lithic::Events::SubscriptionUpdateParams::event_type]
 
         def initialize: (
           url: String,
           ?description: String,
           ?disabled: bool,
-          ?event_types: ::Array[Lithic::Models::Events::SubscriptionUpdateParams::event_type],
+          ?event_types: ::Array[Lithic::Events::SubscriptionUpdateParams::event_type],
           ?request_options: Lithic::request_opts
         ) -> void
-
-        def to_hash: -> Lithic::Models::Events::subscription_update_params
 
         type event_type =
           :"account_holder.created"
@@ -130,7 +128,7 @@ module Lithic
           TOKENIZATION_TWO_FACTOR_AUTHENTICATION_CODE_SENT: :"tokenization.two_factor_authentication_code_sent"
           TOKENIZATION_UPDATED: :"tokenization.updated"
 
-          def self?.values: -> ::Array[Lithic::Models::Events::SubscriptionUpdateParams::event_type]
+          def self?.values: -> ::Array[Lithic::Events::SubscriptionUpdateParams::event_type]
         end
       end
     end

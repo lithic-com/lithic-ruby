@@ -6,18 +6,20 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # The shipping address this card will be sent to.
-      sig { returns(Lithic::Models::ShippingAddress) }
+      sig { returns(Lithic::ShippingAddress) }
       attr_reader :shipping_address
 
-      sig { params(shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Internal::AnyHash)).void }
+      sig { params(shipping_address: Lithic::ShippingAddress::OrHash).void }
       attr_writer :shipping_address
 
       # If omitted, the previous carrier will be used.
-      sig { returns(T.nilable(Lithic::Models::Carrier)) }
+      sig { returns(T.nilable(Lithic::Carrier)) }
       attr_reader :carrier
 
-      sig { params(carrier: T.any(Lithic::Models::Carrier, Lithic::Internal::AnyHash)).void }
+      sig { params(carrier: Lithic::Carrier::OrHash).void }
       attr_writer :carrier
 
       # Specifies the configuration (e.g. physical card art) that the card should be
@@ -41,21 +43,30 @@ module Lithic
       # - `2_DAY` - FedEx 2-day shipping, with tracking
       # - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #   tracking
-      sig { returns(T.nilable(Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(Lithic::CardConvertPhysicalParams::ShippingMethod::OrSymbol)
+        )
+      end
       attr_reader :shipping_method
 
-      sig { params(shipping_method: Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol).void }
+      sig do
+        params(
+          shipping_method:
+            Lithic::CardConvertPhysicalParams::ShippingMethod::OrSymbol
+        ).void
+      end
       attr_writer :shipping_method
 
       sig do
         params(
-          shipping_address: T.any(Lithic::Models::ShippingAddress, Lithic::Internal::AnyHash),
-          carrier: T.any(Lithic::Models::Carrier, Lithic::Internal::AnyHash),
+          shipping_address: Lithic::ShippingAddress::OrHash,
+          carrier: Lithic::Carrier::OrHash,
           product_id: String,
-          shipping_method: Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          shipping_method:
+            Lithic::CardConvertPhysicalParams::ShippingMethod::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The shipping address this card will be sent to.
@@ -80,20 +91,23 @@ module Lithic
         #   tracking
         shipping_method: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              shipping_address: Lithic::Models::ShippingAddress,
-              carrier: Lithic::Models::Carrier,
-              product_id: String,
-              shipping_method: Lithic::Models::CardConvertPhysicalParams::ShippingMethod::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            shipping_address: Lithic::ShippingAddress,
+            carrier: Lithic::Carrier,
+            product_id: String,
+            shipping_method:
+              Lithic::CardConvertPhysicalParams::ShippingMethod::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Shipping method for the card. Only applies to cards of type PHYSICAL. Use of
       # options besides `STANDARD` require additional permissions.
@@ -110,20 +124,52 @@ module Lithic
       module ShippingMethod
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::CardConvertPhysicalParams::ShippingMethod) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::CardConvertPhysicalParams::ShippingMethod)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         SHIPPING_METHOD_2_DAY =
-          T.let(:"2_DAY", Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)
-        EXPEDITED = T.let(:EXPEDITED, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)
-        EXPRESS = T.let(:EXPRESS, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)
-        PRIORITY = T.let(:PRIORITY, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)
-        STANDARD = T.let(:STANDARD, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)
+          T.let(
+            :"2_DAY",
+            Lithic::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol
+          )
+        EXPEDITED =
+          T.let(
+            :EXPEDITED,
+            Lithic::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol
+          )
+        EXPRESS =
+          T.let(
+            :EXPRESS,
+            Lithic::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol
+          )
+        PRIORITY =
+          T.let(
+            :PRIORITY,
+            Lithic::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :STANDARD,
+            Lithic::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol
+          )
         STANDARD_WITH_TRACKING =
-          T.let(:STANDARD_WITH_TRACKING, Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol)
+          T.let(
+            :STANDARD_WITH_TRACKING,
+            Lithic::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::CardConvertPhysicalParams::ShippingMethod::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

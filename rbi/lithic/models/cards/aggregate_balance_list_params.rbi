@@ -7,6 +7,8 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Cardholder to retrieve aggregate balances for.
         sig { returns(T.nilable(String)) }
         attr_reader :account_token
@@ -25,9 +27,8 @@ module Lithic
           params(
             account_token: String,
             business_account_token: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Cardholder to retrieve aggregate balances for.
@@ -35,16 +36,20 @@ module Lithic
           # Business to retrieve aggregate balances for.
           business_account_token: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns({
-                       account_token: String,
-                       business_account_token: String,
-                       request_options: Lithic::RequestOptions
-                     })
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              account_token: String,
+              business_account_token: String,
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

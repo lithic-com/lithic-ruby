@@ -15,8 +15,6 @@ module Lithic
         ?nickname: String,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::financial_account_update_params
     end
   end
 end

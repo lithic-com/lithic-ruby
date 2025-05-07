@@ -14,11 +14,11 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::FinancialTransaction]
+        # @return [Lithic::FinancialTransaction]
         #
         # @see Lithic::Models::Cards::FinancialTransactionRetrieveParams
         def retrieve(financial_transaction_token, params)
-          parsed, options = Lithic::Models::Cards::FinancialTransactionRetrieveParams.dump_request(params)
+          parsed, options = Lithic::Cards::FinancialTransactionRetrieveParams.dump_request(params)
           card_token =
             parsed.delete(:card_token) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -26,7 +26,7 @@ module Lithic
           @client.request(
             method: :get,
             path: ["v1/cards/%1$s/financial_transactions/%2$s", card_token, financial_transaction_token],
-            model: Lithic::Models::FinancialTransaction,
+            model: Lithic::FinancialTransaction,
             options: options
           )
         end
@@ -41,36 +41,32 @@ module Lithic
         # @param card_token [String]
         #
         # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-        # ...
         #
-        # @param category [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Category] Financial Transaction category to be returned.
+        # @param category [Symbol, Lithic::Cards::FinancialTransactionListParams::Category] Financial Transaction category to be returned.
         #
         # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-        # ...
         #
         # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-        # ...
         #
-        # @param result [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Result] Financial Transaction result to be returned.
+        # @param result [Symbol, Lithic::Cards::FinancialTransactionListParams::Result] Financial Transaction result to be returned.
         #
         # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-        # ...
         #
-        # @param status [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Status] Financial Transaction status to be returned.
+        # @param status [Symbol, Lithic::Cards::FinancialTransactionListParams::Status] Financial Transaction status to be returned.
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::SinglePage<Lithic::Models::FinancialTransaction>]
+        # @return [Lithic::Internal::SinglePage<Lithic::FinancialTransaction>]
         #
         # @see Lithic::Models::Cards::FinancialTransactionListParams
         def list(card_token, params = {})
-          parsed, options = Lithic::Models::Cards::FinancialTransactionListParams.dump_request(params)
+          parsed, options = Lithic::Cards::FinancialTransactionListParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["v1/cards/%1$s/financial_transactions", card_token],
             query: parsed.transform_keys(begin_: "begin", end_: "end"),
             page: Lithic::Internal::SinglePage,
-            model: Lithic::Models::FinancialTransaction,
+            model: Lithic::FinancialTransaction,
             options: options
           )
         end

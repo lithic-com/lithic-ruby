@@ -31,8 +31,6 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> Lithic::Models::external_payment_settle_params
-
       type progress_to = :SETTLED | :RELEASED
 
       module ProgressTo

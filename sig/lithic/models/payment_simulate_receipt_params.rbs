@@ -35,8 +35,6 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> Lithic::Models::payment_simulate_receipt_params
-
       type receipt_type = :RECEIPT_CREDIT | :RECEIPT_DEBIT
 
       module ReceiptType

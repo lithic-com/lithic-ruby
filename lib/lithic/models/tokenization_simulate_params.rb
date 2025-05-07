@@ -28,8 +28,8 @@ module Lithic
       # @!attribute tokenization_source
       #   The source of the tokenization request.
       #
-      #   @return [Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource]
-      required :tokenization_source, enum: -> { Lithic::Models::TokenizationSimulateParams::TokenizationSource }
+      #   @return [Symbol, Lithic::TokenizationSimulateParams::TokenizationSource]
+      required :tokenization_source, enum: -> { Lithic::TokenizationSimulateParams::TokenizationSource }
 
       # @!attribute account_score
       #   The account score (1-5) that represents how the Digital Wallet's view on how
@@ -55,9 +55,9 @@ module Lithic
       # @!attribute wallet_recommended_decision
       #   The decision that the Digital Wallet's recommend
       #
-      #   @return [Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision, nil]
+      #   @return [Symbol, Lithic::TokenizationSimulateParams::WalletRecommendedDecision, nil]
       optional :wallet_recommended_decision,
-               enum: -> { Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision }
+               enum: -> { Lithic::TokenizationSimulateParams::WalletRecommendedDecision }
 
       # @!method initialize(cvv:, expiration_date:, pan:, tokenization_source:, account_score: nil, device_score: nil, entity: nil, wallet_recommended_decision: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -69,18 +69,15 @@ module Lithic
       #
       #   @param pan [String] The sixteen digit card number.
       #
-      #   @param tokenization_source [Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource] The source of the tokenization request.
+      #   @param tokenization_source [Symbol, Lithic::TokenizationSimulateParams::TokenizationSource] The source of the tokenization request.
       #
       #   @param account_score [Integer] The account score (1-5) that represents how the Digital Wallet's view on how rep
-      #   ...
       #
       #   @param device_score [Integer] The device score (1-5) that represents how the Digital Wallet's view on how repu
-      #   ...
       #
       #   @param entity [String] Optional field to specify the token requestor name for a merchant token simulati
-      #   ...
       #
-      #   @param wallet_recommended_decision [Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision] The decision that the Digital Wallet's recommend
+      #   @param wallet_recommended_decision [Symbol, Lithic::TokenizationSimulateParams::WalletRecommendedDecision] The decision that the Digital Wallet's recommend
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

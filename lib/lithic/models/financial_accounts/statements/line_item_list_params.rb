@@ -43,12 +43,10 @@ module Lithic
           #   @param financial_account_token [String] Globally unique identifier for financial account.
           #
           #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-          #   ...
           #
           #   @param page_size [Integer] Page size (for pagination).
           #
           #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-          #   ...
           #
           #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
         end

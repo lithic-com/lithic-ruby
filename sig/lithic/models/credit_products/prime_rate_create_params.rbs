@@ -18,8 +18,6 @@ module Lithic
           rate: String,
           ?request_options: Lithic::request_opts
         ) -> void
-
-        def to_hash: -> Lithic::Models::CreditProducts::prime_rate_create_params
       end
     end
   end

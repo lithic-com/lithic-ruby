@@ -7,14 +7,14 @@ class Lithic::Test::Resources::EventsTest < Lithic::Test::ResourceTest
     response = @lithic.events.retrieve("event_token")
 
     assert_pattern do
-      response => Lithic::Models::Event
+      response => Lithic::Event
     end
 
     assert_pattern do
       response => {
         token: String,
         created: Time,
-        event_type: Lithic::Models::Event::EventType,
+        event_type: Lithic::Event::EventType,
         payload: ^(Lithic::Internal::Type::HashOf[Lithic::Internal::Type::Unknown])
       }
     end
@@ -31,14 +31,14 @@ class Lithic::Test::Resources::EventsTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::Event
+      row => Lithic::Event
     end
 
     assert_pattern do
       row => {
         token: String,
         created: Time,
-        event_type: Lithic::Models::Event::EventType,
+        event_type: Lithic::Event::EventType,
         payload: ^(Lithic::Internal::Type::HashOf[Lithic::Internal::Type::Unknown])
       }
     end
@@ -55,7 +55,7 @@ class Lithic::Test::Resources::EventsTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::MessageAttempt
+      row => Lithic::MessageAttempt
     end
 
     assert_pattern do
@@ -66,7 +66,7 @@ class Lithic::Test::Resources::EventsTest < Lithic::Test::ResourceTest
         event_token: String,
         response: String,
         response_status_code: Integer,
-        status: Lithic::Models::MessageAttempt::Status,
+        status: Lithic::MessageAttempt::Status,
         url: String
       }
     end

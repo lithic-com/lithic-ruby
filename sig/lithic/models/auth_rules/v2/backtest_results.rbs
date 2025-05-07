@@ -5,48 +5,44 @@ module Lithic
         type backtest_results =
           {
             backtest_token: String,
-            results: Lithic::Models::AuthRules::V2::BacktestResults::Results,
-            simulation_parameters: Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters
+            results: Lithic::AuthRules::V2::BacktestResults::Results,
+            simulation_parameters: Lithic::AuthRules::V2::BacktestResults::SimulationParameters
           }
 
         class BacktestResults < Lithic::Internal::Type::BaseModel
           attr_accessor backtest_token: String
 
-          attr_accessor results: Lithic::Models::AuthRules::V2::BacktestResults::Results
+          attr_accessor results: Lithic::AuthRules::V2::BacktestResults::Results
 
-          attr_accessor simulation_parameters: Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters
+          attr_accessor simulation_parameters: Lithic::AuthRules::V2::BacktestResults::SimulationParameters
 
           def initialize: (
             backtest_token: String,
-            results: Lithic::Models::AuthRules::V2::BacktestResults::Results,
-            simulation_parameters: Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters
+            results: Lithic::AuthRules::V2::BacktestResults::Results,
+            simulation_parameters: Lithic::AuthRules::V2::BacktestResults::SimulationParameters
           ) -> void
-
-          def to_hash: -> Lithic::Models::AuthRules::V2::backtest_results
 
           type results =
             {
-              current_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion?,
-              draft_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion?
+              current_version: Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion?,
+              draft_version: Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion?
             }
 
           class Results < Lithic::Internal::Type::BaseModel
-            attr_accessor current_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion?
+            attr_accessor current_version: Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion?
 
-            attr_accessor draft_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion?
+            attr_accessor draft_version: Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion?
 
             def initialize: (
-              ?current_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion?,
-              ?draft_version: Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion?
+              ?current_version: Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion?,
+              ?draft_version: Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion?
             ) -> void
-
-            def to_hash: -> Lithic::Models::AuthRules::V2::BacktestResults::results
 
             type current_version =
               {
                 approved: Integer,
                 declined: Integer,
-                examples: ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example],
+                examples: ::Array[Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example],
                 version: Integer
               }
 
@@ -59,11 +55,11 @@ module Lithic
 
               def declined=: (Integer) -> Integer
 
-              attr_reader examples: ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example]?
+              attr_reader examples: ::Array[Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example]?
 
               def examples=: (
-                ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example]
-              ) -> ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example]
+                ::Array[Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example]
+              ) -> ::Array[Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example]
 
               attr_reader version: Integer?
 
@@ -72,11 +68,9 @@ module Lithic
               def initialize: (
                 ?approved: Integer,
                 ?declined: Integer,
-                ?examples: ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example],
+                ?examples: ::Array[Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example],
                 ?version: Integer
               ) -> void
-
-              def to_hash: -> Lithic::Models::AuthRules::V2::BacktestResults::Results::current_version
 
               type example =
                 { approved: bool, event_token: String, timestamp: Time }
@@ -99,8 +93,6 @@ module Lithic
                   ?event_token: String,
                   ?timestamp: Time
                 ) -> void
-
-                def to_hash: -> Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::example
               end
             end
 
@@ -108,7 +100,7 @@ module Lithic
               {
                 approved: Integer,
                 declined: Integer,
-                examples: ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example],
+                examples: ::Array[Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion::Example],
                 version: Integer
               }
 
@@ -121,11 +113,11 @@ module Lithic
 
               def declined=: (Integer) -> Integer
 
-              attr_reader examples: ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example]?
+              attr_reader examples: ::Array[Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion::Example]?
 
               def examples=: (
-                ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example]
-              ) -> ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example]
+                ::Array[Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion::Example]
+              ) -> ::Array[Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion::Example]
 
               attr_reader version: Integer?
 
@@ -134,11 +126,9 @@ module Lithic
               def initialize: (
                 ?approved: Integer,
                 ?declined: Integer,
-                ?examples: ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example],
+                ?examples: ::Array[Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion::Example],
                 ?version: Integer
               ) -> void
-
-              def to_hash: -> Lithic::Models::AuthRules::V2::BacktestResults::Results::draft_version
 
               type example =
                 { approved: bool, event_token: String, timestamp: Time }
@@ -161,8 +151,6 @@ module Lithic
                   ?event_token: String,
                   ?timestamp: Time
                 ) -> void
-
-                def to_hash: -> Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::example
               end
             end
           end
@@ -188,8 +176,6 @@ module Lithic
               ?end_: Time,
               ?start: Time
             ) -> void
-
-            def to_hash: -> Lithic::Models::AuthRules::V2::BacktestResults::simulation_parameters
           end
         end
       end

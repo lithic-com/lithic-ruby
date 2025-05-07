@@ -15,8 +15,6 @@ module Lithic
         ?filename: String,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::dispute_initiate_evidence_upload_params
     end
   end
 end

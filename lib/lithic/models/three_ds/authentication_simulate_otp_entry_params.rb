@@ -27,7 +27,6 @@ module Lithic
         #   details.
         #
         #   @param token [String] A unique token returned as part of a /v1/three_ds_authentication/simulate call t
-        #   ...
         #
         #   @param otp [String] The OTP entered by the cardholder
         #

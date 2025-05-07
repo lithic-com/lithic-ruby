@@ -11,8 +11,8 @@ module Lithic
 
       # @!attribute category
       #
-      #   @return [Symbol, Lithic::Models::ExternalPayment::Category]
-      required :category, enum: -> { Lithic::Models::ExternalPayment::Category }
+      #   @return [Symbol, Lithic::ExternalPayment::Category]
+      required :category, enum: -> { Lithic::ExternalPayment::Category }
 
       # @!attribute created
       #
@@ -26,8 +26,8 @@ module Lithic
 
       # @!attribute events
       #
-      #   @return [Array<Lithic::Models::ExternalPayment::Event>]
-      required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::ExternalPayment::Event] }
+      #   @return [Array<Lithic::ExternalPayment::Event>]
+      required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event] }
 
       # @!attribute financial_account_token
       #
@@ -36,8 +36,8 @@ module Lithic
 
       # @!attribute payment_type
       #
-      #   @return [Symbol, Lithic::Models::ExternalPayment::PaymentType]
-      required :payment_type, enum: -> { Lithic::Models::ExternalPayment::PaymentType }
+      #   @return [Symbol, Lithic::ExternalPayment::PaymentType]
+      required :payment_type, enum: -> { Lithic::ExternalPayment::PaymentType }
 
       # @!attribute pending_amount
       #
@@ -46,8 +46,8 @@ module Lithic
 
       # @!attribute result
       #
-      #   @return [Symbol, Lithic::Models::ExternalPayment::Result]
-      required :result, enum: -> { Lithic::Models::ExternalPayment::Result }
+      #   @return [Symbol, Lithic::ExternalPayment::Result]
+      required :result, enum: -> { Lithic::ExternalPayment::Result }
 
       # @!attribute settled_amount
       #
@@ -56,8 +56,8 @@ module Lithic
 
       # @!attribute status
       #
-      #   @return [Symbol, Lithic::Models::ExternalPayment::Status]
-      required :status, enum: -> { Lithic::Models::ExternalPayment::Status }
+      #   @return [Symbol, Lithic::ExternalPayment::Status]
+      required :status, enum: -> { Lithic::ExternalPayment::Status }
 
       # @!attribute updated
       #
@@ -71,20 +71,20 @@ module Lithic
 
       # @!method initialize(token:, category:, created:, currency:, events:, financial_account_token:, payment_type:, pending_amount:, result:, settled_amount:, status:, updated:, user_defined_id: nil)
       #   @param token [String]
-      #   @param category [Symbol, Lithic::Models::ExternalPayment::Category]
+      #   @param category [Symbol, Lithic::ExternalPayment::Category]
       #   @param created [Time]
       #   @param currency [String]
-      #   @param events [Array<Lithic::Models::ExternalPayment::Event>]
+      #   @param events [Array<Lithic::ExternalPayment::Event>]
       #   @param financial_account_token [String]
-      #   @param payment_type [Symbol, Lithic::Models::ExternalPayment::PaymentType]
+      #   @param payment_type [Symbol, Lithic::ExternalPayment::PaymentType]
       #   @param pending_amount [Integer]
-      #   @param result [Symbol, Lithic::Models::ExternalPayment::Result]
+      #   @param result [Symbol, Lithic::ExternalPayment::Result]
       #   @param settled_amount [Integer]
-      #   @param status [Symbol, Lithic::Models::ExternalPayment::Status]
+      #   @param status [Symbol, Lithic::ExternalPayment::Status]
       #   @param updated [Time]
       #   @param user_defined_id [String]
 
-      # @see Lithic::Models::ExternalPayment#category
+      # @see Lithic::ExternalPayment#category
       module Category
         extend Lithic::Internal::Type::Enum
 
@@ -115,9 +115,9 @@ module Lithic
 
         # @!attribute detailed_results
         #
-        #   @return [Array<Symbol, Lithic::Models::ExternalPayment::Event::DetailedResult>]
+        #   @return [Array<Symbol, Lithic::ExternalPayment::Event::DetailedResult>]
         required :detailed_results,
-                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::ExternalPayment::Event::DetailedResult] }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::ExternalPayment::Event::DetailedResult] }
 
         # @!attribute effective_date
         #
@@ -131,23 +131,23 @@ module Lithic
 
         # @!attribute result
         #
-        #   @return [Symbol, Lithic::Models::ExternalPayment::Event::Result]
-        required :result, enum: -> { Lithic::Models::ExternalPayment::Event::Result }
+        #   @return [Symbol, Lithic::ExternalPayment::Event::Result]
+        required :result, enum: -> { Lithic::ExternalPayment::Event::Result }
 
         # @!attribute type
         #
-        #   @return [Symbol, Lithic::Models::ExternalPayment::Event::Type]
-        required :type, enum: -> { Lithic::Models::ExternalPayment::Event::Type }
+        #   @return [Symbol, Lithic::ExternalPayment::Event::Type]
+        required :type, enum: -> { Lithic::ExternalPayment::Event::Type }
 
         # @!method initialize(token:, amount:, created:, detailed_results:, effective_date:, memo:, result:, type:)
         #   @param token [String]
         #   @param amount [Integer]
         #   @param created [Time]
-        #   @param detailed_results [Array<Symbol, Lithic::Models::ExternalPayment::Event::DetailedResult>]
+        #   @param detailed_results [Array<Symbol, Lithic::ExternalPayment::Event::DetailedResult>]
         #   @param effective_date [Date]
         #   @param memo [String]
-        #   @param result [Symbol, Lithic::Models::ExternalPayment::Event::Result]
-        #   @param type [Symbol, Lithic::Models::ExternalPayment::Event::Type]
+        #   @param result [Symbol, Lithic::ExternalPayment::Event::Result]
+        #   @param type [Symbol, Lithic::ExternalPayment::Event::Type]
 
         module DetailedResult
           extend Lithic::Internal::Type::Enum
@@ -158,7 +158,7 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # @see Lithic::Models::ExternalPayment::Event#result
+        # @see Lithic::ExternalPayment::Event#result
         module Result
           extend Lithic::Internal::Type::Enum
 
@@ -169,7 +169,7 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # @see Lithic::Models::ExternalPayment::Event#type
+        # @see Lithic::ExternalPayment::Event#type
         module Type
           extend Lithic::Internal::Type::Enum
 
@@ -199,7 +199,7 @@ module Lithic
         end
       end
 
-      # @see Lithic::Models::ExternalPayment#payment_type
+      # @see Lithic::ExternalPayment#payment_type
       module PaymentType
         extend Lithic::Internal::Type::Enum
 
@@ -210,7 +210,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::Models::ExternalPayment#result
+      # @see Lithic::ExternalPayment#result
       module Result
         extend Lithic::Internal::Type::Enum
 
@@ -221,7 +221,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::Models::ExternalPayment#status
+      # @see Lithic::ExternalPayment#status
       module Status
         extend Lithic::Internal::Type::Enum
 

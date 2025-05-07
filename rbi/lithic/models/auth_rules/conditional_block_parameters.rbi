@@ -4,19 +4,26 @@ module Lithic
   module Models
     module AuthRules
       class ConditionalBlockParameters < Lithic::Internal::Type::BaseModel
-        sig { returns(T::Array[Lithic::Models::AuthRules::AuthRuleCondition]) }
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
+        sig { returns(T::Array[Lithic::AuthRules::AuthRuleCondition]) }
         attr_accessor :conditions
 
         sig do
           params(
-            conditions: T::Array[T.any(Lithic::Models::AuthRules::AuthRuleCondition, Lithic::Internal::AnyHash)]
-          )
-            .returns(T.attached_class)
+            conditions: T::Array[Lithic::AuthRules::AuthRuleCondition::OrHash]
+          ).returns(T.attached_class)
         end
-        def self.new(conditions:); end
+        def self.new(conditions:)
+        end
 
-        sig { override.returns({conditions: T::Array[Lithic::Models::AuthRules::AuthRuleCondition]}) }
-        def to_hash; end
+        sig do
+          override.returns(
+            { conditions: T::Array[Lithic::AuthRules::AuthRuleCondition] }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

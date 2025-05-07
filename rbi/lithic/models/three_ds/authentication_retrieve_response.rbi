@@ -4,22 +4,38 @@ module Lithic
   module Models
     module ThreeDS
       class AuthenticationRetrieveResponse < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Globally unique identifier for the 3DS authentication.
         sig { returns(String) }
         attr_accessor :token
 
         # Type of account/card that is being used for the transaction. Maps to EMV 3DS
         # field `acctType`.
-        sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol
+            )
+          )
+        end
         attr_accessor :account_type
 
         # Indicates the outcome of the 3DS authentication process.
-        sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol) }
+        sig do
+          returns(
+            Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol
+          )
+        end
         attr_accessor :authentication_result
 
         # Indicates whether the expiration date provided by the cardholder during checkout
         # matches Lithic's record of the card's expiration date.
-        sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol) }
+        sig do
+          returns(
+            Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol
+          )
+        end
         attr_accessor :card_expiry_check
 
         # Globally unique identifier for the card on which the 3DS authentication has
@@ -28,19 +44,27 @@ module Lithic
         attr_accessor :card_token
 
         # Object containing data about the cardholder provided during the transaction.
-        sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder) }
+        sig do
+          returns(
+            Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder
+          )
+        end
         attr_reader :cardholder
 
         sig do
           params(
-            cardholder: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder, Lithic::Internal::AnyHash)
-          )
-            .void
+            cardholder:
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::OrHash
+          ).void
         end
         attr_writer :cardholder
 
         # Channel in which the authentication occurs. Maps to EMV 3DS field deviceChannel.
-        sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol) }
+        sig do
+          returns(
+            Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol
+          )
+        end
         attr_accessor :channel
 
         # Date and time when the authentication was created in Lithic's system.
@@ -49,21 +73,29 @@ module Lithic
 
         # Object containing data about the merchant involved in the e-commerce
         # transaction.
-        sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant) }
+        sig do
+          returns(
+            Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant
+          )
+        end
         attr_reader :merchant
 
         sig do
           params(
-            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant, Lithic::Internal::AnyHash)
-          )
-            .void
+            merchant:
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::OrHash
+          ).void
         end
         attr_writer :merchant
 
         # Either PAYMENT_AUTHENTICATION or NON_PAYMENT_AUTHENTICATION. For
         # NON_PAYMENT_AUTHENTICATION, additional_data and transaction fields are not
         # populated.
-        sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol) }
+        sig do
+          returns(
+            Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol
+          )
+        end
         attr_accessor :message_category
 
         # Indicates whether a challenge is requested for this transaction
@@ -86,29 +118,41 @@ module Lithic
         # Object containing additional data about the 3DS request that is beyond the EMV
         # 3DS standard spec (e.g., specific fields that only certain card networks send
         # but are not required across all 3DS requests).
-        sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData)) }
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData
+            )
+          )
+        end
         attr_reader :additional_data
 
         sig do
           params(
-            additional_data: T.nilable(
-              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData, Lithic::Internal::AnyHash)
-            )
-          )
-            .void
+            additional_data:
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::OrHash
+              )
+          ).void
         end
         attr_writer :additional_data
 
         # Object containing data about the app used in the e-commerce transaction. Present
         # if the channel is 'APP_BASED'.
-        sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App)) }
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App
+            )
+          )
+        end
         attr_reader :app
 
         sig do
           params(
-            app: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, Lithic::Internal::AnyHash)
-          )
-            .void
+            app:
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App::OrHash
+          ).void
         end
         attr_writer :app
 
@@ -126,44 +170,61 @@ module Lithic
 
         # Object containing data about the browser used in the e-commerce transaction.
         # Present if the channel is 'BROWSER'.
-        sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser)) }
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser
+            )
+          )
+        end
         attr_reader :browser
 
         sig do
           params(
-            browser: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, Lithic::Internal::AnyHash)
-          )
-            .void
+            browser:
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser::OrHash
+          ).void
         end
         attr_writer :browser
 
         # Metadata about the challenge method and delivery.
-        sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata)) }
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata
+            )
+          )
+        end
         attr_reader :challenge_metadata
 
         sig do
           params(
-            challenge_metadata: T.nilable(
-              T.any(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata,
-                Lithic::Internal::AnyHash
+            challenge_metadata:
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::OrHash
               )
-            )
-          )
-            .void
+          ).void
         end
         attr_writer :challenge_metadata
 
         # Entity that orchestrates the challenge.
         sig do
           returns(
-            T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol)
+            T.nilable(
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol
+            )
           )
         end
         attr_accessor :challenge_orchestrated_by
 
         # Entity that made the authentication decision.
-        sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol
+            )
+          )
+        end
         attr_accessor :decision_made_by
 
         # Type of 3DS Requestor Initiated (3RI) request i.e., a 3DS authentication that
@@ -173,59 +234,90 @@ module Lithic
         # Maps to EMV 3DS field threeRIInd.
         sig do
           returns(
-            T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol)
+            T.nilable(
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol
+            )
           )
         end
         attr_accessor :three_ri_request_type
 
         # Object containing data about the e-commerce transaction for which the merchant
         # is requesting authentication.
-        sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction)) }
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction
+            )
+          )
+        end
         attr_reader :transaction
 
         sig do
           params(
-            transaction: T.nilable(
-              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction, Lithic::Internal::AnyHash)
-            )
-          )
-            .void
+            transaction:
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::OrHash
+              )
+          ).void
         end
         attr_writer :transaction
 
         sig do
           params(
             token: String,
-            account_type: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::OrSymbol),
-            authentication_result: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::OrSymbol,
-            card_expiry_check: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::OrSymbol,
+            account_type:
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::OrSymbol
+              ),
+            authentication_result:
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::OrSymbol,
+            card_expiry_check:
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::OrSymbol,
             card_token: String,
-            cardholder: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder, Lithic::Internal::AnyHash),
-            channel: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::OrSymbol,
+            cardholder:
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::OrHash,
+            channel:
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::OrSymbol,
             created: Time,
-            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant, Lithic::Internal::AnyHash),
-            message_category: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::OrSymbol,
-            three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::OrSymbol,
-            additional_data: T.nilable(
-              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData, Lithic::Internal::AnyHash)
-            ),
-            app: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, Lithic::Internal::AnyHash),
-            authentication_request_type: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::OrSymbol),
-            browser: T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, Lithic::Internal::AnyHash),
-            challenge_metadata: T.nilable(
-              T.any(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata,
-                Lithic::Internal::AnyHash
+            merchant:
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::OrHash,
+            message_category:
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::OrSymbol,
+            three_ds_requestor_challenge_indicator:
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::OrSymbol,
+            additional_data:
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::OrHash
+              ),
+            app:
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App::OrHash,
+            authentication_request_type:
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::OrSymbol
+              ),
+            browser:
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser::OrHash,
+            challenge_metadata:
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::OrHash
+              ),
+            challenge_orchestrated_by:
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::OrSymbol
+              ),
+            decision_made_by:
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::OrSymbol
+              ),
+            three_ri_request_type:
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::OrSymbol
+              ),
+            transaction:
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::OrHash
               )
-            ),
-            challenge_orchestrated_by: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::OrSymbol),
-            decision_made_by: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::OrSymbol),
-            three_ri_request_type: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::OrSymbol),
-            transaction: T.nilable(
-              T.any(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction, Lithic::Internal::AnyHash)
-            )
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Globally unique identifier for the 3DS authentication.
@@ -294,37 +386,69 @@ module Lithic
           # Object containing data about the e-commerce transaction for which the merchant
           # is requesting authentication.
           transaction: nil
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                token: String,
-                account_type: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol),
-                authentication_result: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol,
-                card_expiry_check: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol,
-                card_token: String,
-                cardholder: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder,
-                channel: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol,
-                created: Time,
-                merchant: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant,
-                message_category: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol,
-                three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::TaggedSymbol,
-                additional_data: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData),
-                app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App,
-                authentication_request_type: T.nilable(
+          override.returns(
+            {
+              token: String,
+              account_type:
+                T.nilable(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol
+                ),
+              authentication_result:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol,
+              card_expiry_check:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol,
+              card_token: String,
+              cardholder:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder,
+              channel:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol,
+              created: Time,
+              merchant:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant,
+              message_category:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol,
+              three_ds_requestor_challenge_indicator:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::TaggedSymbol,
+              additional_data:
+                T.nilable(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData
+                ),
+              app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App,
+              authentication_request_type:
+                T.nilable(
                   Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::TaggedSymbol
                 ),
-                browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser,
-                challenge_metadata: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata),
-                challenge_orchestrated_by: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol),
-                decision_made_by: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol),
-                three_ri_request_type: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol),
-                transaction: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction)
-              }
-            )
+              browser:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser,
+              challenge_metadata:
+                T.nilable(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata
+                ),
+              challenge_orchestrated_by:
+                T.nilable(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol
+                ),
+              decision_made_by:
+                T.nilable(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol
+                ),
+              three_ri_request_type:
+                T.nilable(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol
+                ),
+              transaction:
+                T.nilable(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # Type of account/card that is being used for the transaction. Maps to EMV 3DS
         # field `acctType`.
@@ -332,20 +456,39 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           CREDIT =
-            T.let(:CREDIT, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol)
-          DEBIT = T.let(:DEBIT, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol)
+            T.let(
+              :CREDIT,
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol
+            )
+          DEBIT =
+            T.let(
+              :DEBIT,
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol
+            )
           NOT_APPLICABLE =
-            T.let(:NOT_APPLICABLE, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol)
+            T.let(
+              :NOT_APPLICABLE,
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol
+            )
 
           sig do
-            override
-              .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol])
+            override.returns(
+              T::Array[
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         # Indicates the outcome of the 3DS authentication process.
@@ -353,7 +496,12 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           DECLINE =
@@ -378,12 +526,14 @@ module Lithic
             )
 
           sig do
-            override
-              .returns(
-                T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol]
-              )
+            override.returns(
+              T::Array[
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         # Indicates whether the expiration date provided by the cardholder during checkout
@@ -392,13 +542,24 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           MATCH =
-            T.let(:MATCH, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol)
+            T.let(
+              :MATCH,
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol
+            )
           MISMATCH =
-            T.let(:MISMATCH, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol)
+            T.let(
+              :MISMATCH,
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol
+            )
           NOT_PRESENT =
             T.let(
               :NOT_PRESENT,
@@ -406,13 +567,20 @@ module Lithic
             )
 
           sig do
-            override
-              .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol])
+            override.returns(
+              T::Array[
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         class Cardholder < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Indicates whether the shipping address and billing address provided by the
           # cardholder are the same. This value - and assessment of whether the addresses
           # match - is provided directly in the 3DS request and is not determined by Lithic.
@@ -421,17 +589,20 @@ module Lithic
           attr_accessor :address_match
 
           # Object containing data on the billing address provided during the transaction.
-          sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress)) }
+          sig do
+            returns(
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress
+              )
+            )
+          end
           attr_reader :billing_address
 
           sig do
             params(
-              billing_address: T.any(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
-                Lithic::Internal::AnyHash
-              )
-            )
-              .void
+              billing_address:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress::OrHash
+            ).void
           end
           attr_writer :billing_address
 
@@ -460,17 +631,20 @@ module Lithic
           attr_accessor :phone_number_work
 
           # Object containing data on the shipping address provided during the transaction.
-          sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress)) }
+          sig do
+            returns(
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress
+              )
+            )
+          end
           attr_reader :shipping_address
 
           sig do
             params(
-              shipping_address: T.any(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress,
-                Lithic::Internal::AnyHash
-              )
-            )
-              .void
+              shipping_address:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress::OrHash
+            ).void
           end
           attr_writer :shipping_address
 
@@ -478,21 +652,16 @@ module Lithic
           sig do
             params(
               address_match: T.nilable(T::Boolean),
-              billing_address: T.any(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
-                Lithic::Internal::AnyHash
-              ),
+              billing_address:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress::OrHash,
               email: T.nilable(String),
               name: T.nilable(String),
               phone_number_home: T.nilable(String),
               phone_number_mobile: T.nilable(String),
               phone_number_work: T.nilable(String),
-              shipping_address: T.any(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress,
-                Lithic::Internal::AnyHash
-              )
-            )
-              .returns(T.attached_class)
+              shipping_address:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # Indicates whether the shipping address and billing address provided by the
@@ -518,25 +687,32 @@ module Lithic
             phone_number_work: nil,
             # Object containing data on the shipping address provided during the transaction.
             shipping_address: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  address_match: T.nilable(T::Boolean),
-                  billing_address: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
-                  email: T.nilable(String),
-                  name: T.nilable(String),
-                  phone_number_home: T.nilable(String),
-                  phone_number_mobile: T.nilable(String),
-                  phone_number_work: T.nilable(String),
-                  shipping_address: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                address_match: T.nilable(T::Boolean),
+                billing_address:
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
+                email: T.nilable(String),
+                name: T.nilable(String),
+                phone_number_home: T.nilable(String),
+                phone_number_mobile: T.nilable(String),
+                phone_number_work: T.nilable(String),
+                shipping_address:
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress
+              }
+            )
+          end
+          def to_hash
+          end
 
           class BillingAddress < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
             # First line of the street address provided by the cardholder.
             sig { returns(T.nilable(String)) }
             attr_accessor :address1
@@ -571,8 +747,7 @@ module Lithic
                 city: T.nilable(String),
                 country: T.nilable(String),
                 postal_code: T.nilable(String)
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               # First line of the street address provided by the cardholder.
@@ -588,24 +763,29 @@ module Lithic
               country: nil,
               # Postal code (e.g., ZIP code) of the address provided by the cardholder
               postal_code: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    address1: T.nilable(String),
-                    address2: T.nilable(String),
-                    address3: T.nilable(String),
-                    city: T.nilable(String),
-                    country: T.nilable(String),
-                    postal_code: T.nilable(String)
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  address1: T.nilable(String),
+                  address2: T.nilable(String),
+                  address3: T.nilable(String),
+                  city: T.nilable(String),
+                  country: T.nilable(String),
+                  postal_code: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
           end
 
           class ShippingAddress < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
             # First line of the street address provided by the cardholder.
             sig { returns(T.nilable(String)) }
             attr_accessor :address1
@@ -640,8 +820,7 @@ module Lithic
                 city: T.nilable(String),
                 country: T.nilable(String),
                 postal_code: T.nilable(String)
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               # First line of the street address provided by the cardholder.
@@ -657,21 +836,23 @@ module Lithic
               country: nil,
               # Postal code (e.g., ZIP code) of the address provided by the cardholder
               postal_code: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    address1: T.nilable(String),
-                    address2: T.nilable(String),
-                    address3: T.nilable(String),
-                    city: T.nilable(String),
-                    country: T.nilable(String),
-                    postal_code: T.nilable(String)
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  address1: T.nilable(String),
+                  address2: T.nilable(String),
+                  address3: T.nilable(String),
+                  city: T.nilable(String),
+                  country: T.nilable(String),
+                  postal_code: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
           end
         end
 
@@ -680,23 +861,45 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           APP_BASED =
-            T.let(:APP_BASED, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol)
-          BROWSER = T.let(:BROWSER, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol)
+            T.let(
+              :APP_BASED,
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol
+            )
+          BROWSER =
+            T.let(
+              :BROWSER,
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol
+            )
           THREE_DS_REQUESTOR_INITIATED =
             T.let(
               :THREE_DS_REQUESTOR_INITIATED,
               Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol
             )
 
-          sig { override.returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class Merchant < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field
           # acquirerMerchantId.
           sig { returns(String) }
@@ -718,17 +921,18 @@ module Lithic
 
           # Object containing additional data indicating additional risk factors related to
           # the e-commerce transaction.
-          sig { returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator) }
+          sig do
+            returns(
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator
+            )
+          end
           attr_reader :risk_indicator
 
           sig do
             params(
-              risk_indicator: T.any(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator,
-                Lithic::Internal::AnyHash
-              )
-            )
-              .void
+              risk_indicator:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrHash
+            ).void
           end
           attr_writer :risk_indicator
 
@@ -740,12 +944,9 @@ module Lithic
               country: String,
               mcc: String,
               name: String,
-              risk_indicator: T.any(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator,
-                Lithic::Internal::AnyHash
-              )
-            )
-              .returns(T.attached_class)
+              risk_indicator:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field
@@ -762,22 +963,28 @@ module Lithic
             # Object containing additional data indicating additional risk factors related to
             # the e-commerce transaction.
             risk_indicator:
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  country: String,
-                  mcc: String,
-                  name: String,
-                  risk_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                country: String,
+                mcc: String,
+                name: String,
+                risk_indicator:
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator
+              }
+            )
+          end
+          def to_hash
+          end
 
           class RiskIndicator < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
             # In transactions with electronic delivery, email address to which merchandise is
             # delivered. Maps to EMV 3DS field deliveryEmailAddress.
             sig { returns(T.nilable(String)) }
@@ -855,24 +1062,27 @@ module Lithic
             sig do
               params(
                 delivery_email_address: T.nilable(String),
-                delivery_time_frame: T.nilable(
-                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame::OrSymbol
-                ),
+                delivery_time_frame:
+                  T.nilable(
+                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame::OrSymbol
+                  ),
                 gift_card_amount: T.nilable(Integer),
                 gift_card_count: T.nilable(Integer),
                 gift_card_currency: T.nilable(String),
-                order_availability: T.nilable(
-                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability::OrSymbol
-                ),
+                order_availability:
+                  T.nilable(
+                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability::OrSymbol
+                  ),
                 pre_order_available_date: T.nilable(Time),
-                reorder_items: T.nilable(
-                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems::OrSymbol
-                ),
-                shipping_method: T.nilable(
-                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod::OrSymbol
-                )
-              )
-                .returns(T.attached_class)
+                reorder_items:
+                  T.nilable(
+                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems::OrSymbol
+                  ),
+                shipping_method:
+                  T.nilable(
+                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod::OrSymbol
+                  )
+              ).returns(T.attached_class)
             end
             def self.new(
               # In transactions with electronic delivery, email address to which merchandise is
@@ -905,32 +1115,38 @@ module Lithic
               # purchase only includes digital goods, this indicator is used to describe the
               # most expensive item purchased. Maps to EMV 3DS field shipIndicator.
               shipping_method: nil
-            ); end
+            )
+            end
+
             sig do
-              override
-                .returns(
-                  {
-                    delivery_email_address: T.nilable(String),
-                    delivery_time_frame: T.nilable(
+              override.returns(
+                {
+                  delivery_email_address: T.nilable(String),
+                  delivery_time_frame:
+                    T.nilable(
                       Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame::TaggedSymbol
                     ),
-                    gift_card_amount: T.nilable(Integer),
-                    gift_card_count: T.nilable(Integer),
-                    gift_card_currency: T.nilable(String),
-                    order_availability: T.nilable(
+                  gift_card_amount: T.nilable(Integer),
+                  gift_card_count: T.nilable(Integer),
+                  gift_card_currency: T.nilable(String),
+                  order_availability:
+                    T.nilable(
                       Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability::TaggedSymbol
                     ),
-                    pre_order_available_date: T.nilable(Time),
-                    reorder_items: T.nilable(
+                  pre_order_available_date: T.nilable(Time),
+                  reorder_items:
+                    T.nilable(
                       Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems::TaggedSymbol
                     ),
-                    shipping_method: T.nilable(
+                  shipping_method:
+                    T.nilable(
                       Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod::TaggedSymbol
                     )
-                  }
-                )
+                }
+              )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             # The delivery time frame for the merchandise. Maps to EMV 3DS field
             # deliveryTimeframe.
@@ -939,7 +1155,10 @@ module Lithic
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame)
+                  T.all(
+                    Symbol,
+                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame
+                  )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -965,14 +1184,14 @@ module Lithic
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[
-                      Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame::TaggedSymbol
-                    ]
-                  )
+                override.returns(
+                  T::Array[
+                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
 
             # Indicates whether the purchase is for merchandise that is available now or at a
@@ -982,7 +1201,10 @@ module Lithic
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability)
+                  T.all(
+                    Symbol,
+                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability
+                  )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -998,14 +1220,14 @@ module Lithic
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[
-                      Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability::TaggedSymbol
-                    ]
-                  )
+                override.returns(
+                  T::Array[
+                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
 
             # Indicates whether the cardholder is reordering previously purchased merchandise.
@@ -1015,7 +1237,10 @@ module Lithic
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems)
+                  T.all(
+                    Symbol,
+                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems
+                  )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -1031,14 +1256,14 @@ module Lithic
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[
-                      Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems::TaggedSymbol
-                    ]
-                  )
+                override.returns(
+                  T::Array[
+                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
 
             # Shipping method that the cardholder chose for the transaction. If purchase
@@ -1050,7 +1275,10 @@ module Lithic
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod)
+                  T.all(
+                    Symbol,
+                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod
+                  )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -1101,14 +1329,14 @@ module Lithic
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[
-                      Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod::TaggedSymbol
-                    ]
-                  )
+                override.returns(
+                  T::Array[
+                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
         end
@@ -1120,7 +1348,12 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           NON_PAYMENT_AUTHENTICATION =
@@ -1135,10 +1368,14 @@ module Lithic
             )
 
           sig do
-            override
-              .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol])
+            override.returns(
+              T::Array[
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         # Indicates whether a challenge is requested for this transaction
@@ -1155,7 +1392,12 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           NO_PREFERENCE =
@@ -1195,15 +1437,20 @@ module Lithic
             )
 
           sig do
-            override
-              .returns(
-                T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::TaggedSymbol]
-              )
+            override.returns(
+              T::Array[
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         class AdditionalData < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Mastercard only: Indicates whether the network would have considered the
           # authentication request to be low risk or not.
           sig do
@@ -1225,12 +1472,12 @@ module Lithic
           # but are not required across all 3DS requests).
           sig do
             params(
-              network_decision: T.nilable(
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision::OrSymbol
-              ),
+              network_decision:
+                T.nilable(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision::OrSymbol
+                ),
               network_risk_score: T.nilable(Integer)
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # Mastercard only: Indicates whether the network would have considered the
@@ -1239,19 +1486,22 @@ module Lithic
             # Mastercard only: Assessment by the network of the authentication risk level,
             # with a higher value indicating a higher amount of risk.
             network_risk_score: nil
-          ); end
+          )
+          end
+
           sig do
-            override
-              .returns(
-                {
-                  network_decision: T.nilable(
+            override.returns(
+              {
+                network_decision:
+                  T.nilable(
                     Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision::TaggedSymbol
                   ),
-                  network_risk_score: T.nilable(Integer)
-                }
-              )
+                network_risk_score: T.nilable(Integer)
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           # Mastercard only: Indicates whether the network would have considered the
           # authentication request to be low risk or not.
@@ -1259,7 +1509,12 @@ module Lithic
             extend Lithic::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             LOW_RISK =
@@ -1274,16 +1529,21 @@ module Lithic
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData::NetworkDecision::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class App < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Device information gathered from the cardholder's device - JSON name/value pairs
           # that is Base64url encoded. Maps to EMV 3DS field deviceInfo.
           sig { returns(T.nilable(String)) }
@@ -1299,7 +1559,11 @@ module Lithic
 
           # Object containing data about the app used in the e-commerce transaction. Present
           # if the channel is 'APP_BASED'.
-          sig { params(device_info: T.nilable(String), ip: String).returns(T.attached_class) }
+          sig do
+            params(device_info: T.nilable(String), ip: String).returns(
+              T.attached_class
+            )
+          end
           def self.new(
             # Device information gathered from the cardholder's device - JSON name/value pairs
             # that is Base64url encoded. Maps to EMV 3DS field deviceInfo.
@@ -1307,9 +1571,14 @@ module Lithic
             # External IP address used by the app generating the 3DS authentication request.
             # Maps to EMV 3DS field appIp.
             ip: nil
-          ); end
-          sig { override.returns({device_info: T.nilable(String), ip: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns({ device_info: T.nilable(String), ip: String })
+          end
+          def to_hash
+          end
         end
 
         # Type of authentication request - i.e., the type of transaction or interaction is
@@ -1319,7 +1588,12 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ADD_CARD =
@@ -1374,15 +1648,20 @@ module Lithic
             )
 
           sig do
-            override
-              .returns(
-                T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::TaggedSymbol]
-              )
+            override.returns(
+              T::Array[
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         class Browser < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # IP address of the browser as returned by the HTTP headers to the 3DS requestor
           # (e.g., merchant or digital wallet). Maps to EMV 3DS field browserIP.
           sig { returns(T.nilable(String)) }
@@ -1423,8 +1702,7 @@ module Lithic
               language: T.nilable(String),
               time_zone: T.nilable(String),
               user_agent: T.nilable(String)
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # IP address of the browser as returned by the HTTP headers to the 3DS requestor
@@ -1445,24 +1723,29 @@ module Lithic
             time_zone: nil,
             # Content of the HTTP user-agent header. Maps to EMV 3DS field browserUserAgent.
             user_agent: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  ip: T.nilable(String),
-                  java_enabled: T.nilable(T::Boolean),
-                  javascript_enabled: T.nilable(T::Boolean),
-                  language: T.nilable(String),
-                  time_zone: T.nilable(String),
-                  user_agent: T.nilable(String)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                ip: T.nilable(String),
+                java_enabled: T.nilable(T::Boolean),
+                javascript_enabled: T.nilable(T::Boolean),
+                language: T.nilable(String),
+                time_zone: T.nilable(String),
+                user_agent: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class ChallengeMetadata < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # The type of challenge method used for authentication.
           sig do
             returns(
@@ -1478,34 +1761,42 @@ module Lithic
           # Metadata about the challenge method and delivery.
           sig do
             params(
-              method_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::OrSymbol,
+              method_type:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::OrSymbol,
               phone_number: T.nilable(String)
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # The type of challenge method used for authentication.
             method_type:,
             # The phone number used for delivering the OTP. Relevant only for SMS_OTP method.
             phone_number: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  method_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol,
-                  phone_number: T.nilable(String)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                method_type:
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol,
+                phone_number: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
 
           # The type of challenge method used for authentication.
           module MethodType
             extend Lithic::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             SMS_OTP =
@@ -1520,12 +1811,14 @@ module Lithic
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -1534,7 +1827,12 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           LITHIC =
@@ -1554,12 +1852,14 @@ module Lithic
             )
 
           sig do
-            override
-              .returns(
-                T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol]
-              )
+            override.returns(
+              T::Array[
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         # Entity that made the authentication decision.
@@ -1567,7 +1867,12 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           CUSTOMER_ENDPOINT =
@@ -1586,15 +1891,25 @@ module Lithic
               Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol
             )
           NETWORK =
-            T.let(:NETWORK, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol)
+            T.let(
+              :NETWORK,
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol
+            )
           UNKNOWN =
-            T.let(:UNKNOWN, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol)
+            T.let(
+              :UNKNOWN,
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol
+            )
 
           sig do
-            override
-              .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol])
+            override.returns(
+              T::Array[
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         # Type of 3DS Requestor Initiated (3RI) request i.e., a 3DS authentication that
@@ -1606,7 +1921,12 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ACCOUNT_VERIFICATION =
@@ -1680,7 +2000,10 @@ module Lithic
               Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol
             )
           TOP_UP =
-            T.let(:TOP_UP, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol)
+            T.let(
+              :TOP_UP,
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol
+            )
           TRUST_LIST_STATUS_CHECK =
             T.let(
               :TRUST_LIST_STATUS_CHECK,
@@ -1688,15 +2011,20 @@ module Lithic
             )
 
           sig do
-            override
-              .returns(
-                T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol]
-              )
+            override.returns(
+              T::Array[
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         class Transaction < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Amount of the purchase in minor units of currency with all punctuation removed.
           # Maps to EMV 3DS field purchaseAmount.
           sig { returns(Float) }
@@ -1720,7 +2048,9 @@ module Lithic
           # Maps to EMV 3DS field transType.
           sig do
             returns(
-              T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::TaggedSymbol)
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::TaggedSymbol
+              )
             )
           end
           attr_accessor :type
@@ -1733,9 +2063,11 @@ module Lithic
               currency: String,
               currency_exponent: Float,
               date_time: Time,
-              type: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::OrSymbol)
-            )
-              .returns(T.attached_class)
+              type:
+                T.nilable(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::OrSymbol
+                )
+            ).returns(T.attached_class)
           end
           def self.new(
             # Amount of the purchase in minor units of currency with all punctuation removed.
@@ -1752,20 +2084,25 @@ module Lithic
             # Type of the transaction for which a 3DS authentication request is occurring.
             # Maps to EMV 3DS field transType.
             type:
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  amount: Float,
-                  currency: String,
-                  currency_exponent: Float,
-                  date_time: Time,
-                  type: T.nilable(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::TaggedSymbol)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                amount: Float,
+                currency: String,
+                currency_exponent: Float,
+                date_time: Time,
+                type:
+                  T.nilable(
+                    Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::TaggedSymbol
+                  )
+              }
+            )
+          end
+          def to_hash
+          end
 
           # Type of the transaction for which a 3DS authentication request is occurring.
           # Maps to EMV 3DS field transType.
@@ -1773,7 +2110,12 @@ module Lithic
             extend Lithic::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             ACCOUNT_FUNDING =
@@ -1803,12 +2145,14 @@ module Lithic
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

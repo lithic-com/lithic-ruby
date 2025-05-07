@@ -8,7 +8,7 @@ module Lithic
           String statement_token,
           financial_account_token: String,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::FinancialAccounts::Statement
+        ) -> Lithic::FinancialAccounts::Statement
 
         def list: (
           String financial_account_token,
@@ -19,7 +19,7 @@ module Lithic
           ?page_size: Integer,
           ?starting_after: String,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Internal::CursorPage[Lithic::Models::FinancialAccounts::Statement]
+        ) -> Lithic::Internal::CursorPage[Lithic::FinancialAccounts::Statement]
 
         def initialize: (client: Lithic::Client) -> void
       end

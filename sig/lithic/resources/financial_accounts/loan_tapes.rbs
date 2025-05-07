@@ -6,7 +6,7 @@ module Lithic
           String loan_tape_token,
           financial_account_token: String,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::FinancialAccounts::LoanTape
+        ) -> Lithic::FinancialAccounts::LoanTape
 
         def list: (
           String financial_account_token,
@@ -16,7 +16,7 @@ module Lithic
           ?page_size: Integer,
           ?starting_after: String,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Internal::CursorPage[Lithic::Models::FinancialAccounts::LoanTape]
+        ) -> Lithic::Internal::CursorPage[Lithic::FinancialAccounts::LoanTape]
 
         def initialize: (client: Lithic::Client) -> void
       end

@@ -14,14 +14,14 @@ module Lithic
           #
           # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Lithic::Models::Transactions::Events::EnhancedData]
+          # @return [Lithic::Transactions::Events::EnhancedData]
           #
           # @see Lithic::Models::Transactions::Events::EnhancedCommercialDataRetrieveParams
           def retrieve(event_token, params = {})
             @client.request(
               method: :get,
               path: ["v1/transactions/events/%1$s/enhanced_commercial_data", event_token],
-              model: Lithic::Models::Transactions::Events::EnhancedData,
+              model: Lithic::Transactions::Events::EnhancedData,
               options: params[:request_options]
             )
           end

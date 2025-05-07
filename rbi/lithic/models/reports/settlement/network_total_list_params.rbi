@@ -8,6 +8,9 @@ module Lithic
           extend Lithic::Internal::Type::RequestParameters::Converter
           include Lithic::Internal::Type::RequestParameters
 
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Datetime in RFC 3339 format. Only entries created after the specified time will
           # be included. UTC time zone.
           sig { returns(T.nilable(Time)) }
@@ -40,10 +43,21 @@ module Lithic
           attr_writer :institution_id
 
           # Network to filter on.
-          sig { returns(T.nilable(Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol)) }
+          sig do
+            returns(
+              T.nilable(
+                Lithic::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol
+              )
+            )
+          end
           attr_reader :network
 
-          sig { params(network: Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol).void }
+          sig do
+            params(
+              network:
+                Lithic::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol
+            ).void
+          end
           attr_writer :network
 
           # Number of records per page.
@@ -96,16 +110,16 @@ module Lithic
               end_: Time,
               ending_before: String,
               institution_id: String,
-              network: Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol,
+              network:
+                Lithic::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol,
               page_size: Integer,
               report_date: Date,
               report_date_begin: Date,
               report_date_end: Date,
               settlement_institution_id: String,
               starting_after: String,
-              request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              request_options: Lithic::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # Datetime in RFC 3339 format. Only entries created after the specified time will
@@ -136,49 +150,74 @@ module Lithic
             # begin. Used to retrieve the next page of results after this item.
             starting_after: nil,
             request_options: {}
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  begin_: Time,
-                  end_: Time,
-                  ending_before: String,
-                  institution_id: String,
-                  network: Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol,
-                  page_size: Integer,
-                  report_date: Date,
-                  report_date_begin: Date,
-                  report_date_end: Date,
-                  settlement_institution_id: String,
-                  starting_after: String,
-                  request_options: Lithic::RequestOptions
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                begin_: Time,
+                end_: Time,
+                ending_before: String,
+                institution_id: String,
+                network:
+                  Lithic::Reports::Settlement::NetworkTotalListParams::Network::OrSymbol,
+                page_size: Integer,
+                report_date: Date,
+                report_date_begin: Date,
+                report_date_end: Date,
+                settlement_institution_id: String,
+                starting_after: String,
+                request_options: Lithic::RequestOptions
+              }
+            )
+          end
+          def to_hash
+          end
 
           # Network to filter on.
           module Network
             extend Lithic::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::Reports::Settlement::NetworkTotalListParams::Network
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            VISA = T.let(:VISA, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol)
+            VISA =
+              T.let(
+                :VISA,
+                Lithic::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol
+              )
             MASTERCARD =
-              T.let(:MASTERCARD, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol)
+              T.let(
+                :MASTERCARD,
+                Lithic::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol
+              )
             MAESTRO =
-              T.let(:MAESTRO, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol)
+              T.let(
+                :MAESTRO,
+                Lithic::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol
+              )
             INTERLINK =
-              T.let(:INTERLINK, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol)
+              T.let(
+                :INTERLINK,
+                Lithic::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Lithic::Reports::Settlement::NetworkTotalListParams::Network::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

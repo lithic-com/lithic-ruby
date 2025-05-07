@@ -12,9 +12,11 @@ module Lithic
       #
       #   Deprecated.
       #
-      #   @return [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity>, nil]
+      #   @return [Array<Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity>, nil]
       optional :beneficial_owner_entities,
-               -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity] }
+               -> {
+                 Lithic::Internal::Type::ArrayOf[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity]
+               }
 
       # @!attribute beneficial_owner_individuals
       #   You must submit a list of all direct and indirect individuals with 25% or more
@@ -24,16 +26,18 @@ module Lithic
       #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
       #   (Section I) for more background on individuals that should be included.
       #
-      #   @return [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual>, nil]
+      #   @return [Array<Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual>, nil]
       optional :beneficial_owner_individuals,
-               -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual] }
+               -> {
+                 Lithic::Internal::Type::ArrayOf[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual]
+               }
 
       # @!attribute business_entity
       #   Information for business for which the account is being opened and KYB is being
       #   run.
       #
-      #   @return [Lithic::Models::AccountHolderUpdateParams::BusinessEntity, nil]
-      optional :business_entity, -> { Lithic::Models::AccountHolderUpdateParams::BusinessEntity }
+      #   @return [Lithic::AccountHolderUpdateParams::BusinessEntity, nil]
+      optional :business_entity, -> { Lithic::AccountHolderUpdateParams::BusinessEntity }
 
       # @!attribute control_person
       #   An individual with significant responsibility for managing the legal entity
@@ -45,8 +49,8 @@ module Lithic
       #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
       #   (Section II) for more background.
       #
-      #   @return [Lithic::Models::AccountHolderUpdateParams::ControlPerson, nil]
-      optional :control_person, -> { Lithic::Models::AccountHolderUpdateParams::ControlPerson }
+      #   @return [Lithic::AccountHolderUpdateParams::ControlPerson, nil]
+      optional :control_person, -> { Lithic::AccountHolderUpdateParams::ControlPerson }
 
       # @!attribute external_id
       #   A user provided id that can be used to link an account holder with an external
@@ -72,14 +76,14 @@ module Lithic
       #   Information on the individual for whom the account is being opened and KYC is
       #   being run.
       #
-      #   @return [Lithic::Models::AccountHolderUpdateParams::Individual, nil]
-      optional :individual, -> { Lithic::Models::AccountHolderUpdateParams::Individual }
+      #   @return [Lithic::AccountHolderUpdateParams::Individual, nil]
+      optional :individual, -> { Lithic::AccountHolderUpdateParams::Individual }
 
       # @!attribute address
       #   Allowed for: KYC-Exempt, BYO-KYC, BYO-KYB.
       #
-      #   @return [Lithic::Models::AddressUpdate, nil]
-      optional :address, -> { Lithic::Models::AddressUpdate }
+      #   @return [Lithic::AddressUpdate, nil]
+      optional :address, -> { Lithic::AddressUpdate }
 
       # @!attribute business_account_token
       #   Allowed for: KYC-Exempt, BYO-KYC. The token of the business account to which the
@@ -126,35 +130,27 @@ module Lithic
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::AccountHolderUpdateParams} for more details.
       #
-      #   @param beneficial_owner_entities [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity>] Deprecated.
+      #   @param beneficial_owner_entities [Array<Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity>] Deprecated.
       #
-      #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual>] You must submit a list of all direct and indirect individuals with 25% or more o
-      #   ...
+      #   @param beneficial_owner_individuals [Array<Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual>] You must submit a list of all direct and indirect individuals with 25% or more o
       #
-      #   @param business_entity [Lithic::Models::AccountHolderUpdateParams::BusinessEntity] Information for business for which the account is being opened and KYB is being
-      #   ...
+      #   @param business_entity [Lithic::AccountHolderUpdateParams::BusinessEntity] Information for business for which the account is being opened and KYB is being
       #
-      #   @param control_person [Lithic::Models::AccountHolderUpdateParams::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
-      #   ...
+      #   @param control_person [Lithic::AccountHolderUpdateParams::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
       #
       #   @param external_id [String] A user provided id that can be used to link an account holder with an external s
-      #   ...
       #
       #   @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
-      #   ...
       #
       #   @param website_url [String] Company website URL.
       #
-      #   @param individual [Lithic::Models::AccountHolderUpdateParams::Individual] Information on the individual for whom the account is being opened and KYC is be
-      #   ...
+      #   @param individual [Lithic::AccountHolderUpdateParams::Individual] Information on the individual for whom the account is being opened and KYC is be
       #
-      #   @param address [Lithic::Models::AddressUpdate] Allowed for: KYC-Exempt, BYO-KYC, BYO-KYB.
+      #   @param address [Lithic::AddressUpdate] Allowed for: KYC-Exempt, BYO-KYC, BYO-KYB.
       #
       #   @param business_account_token [String] Allowed for: KYC-Exempt, BYO-KYC. The token of the business account to which the
-      #   ...
       #
       #   @param email [String] Allowed for all Account Holders. Account holder's email address. The primary pur
-      #   ...
       #
       #   @param first_name [String] Allowed for KYC-Exempt, BYO-KYC. Account holder's first name.
       #
@@ -163,7 +159,6 @@ module Lithic
       #   @param legal_business_name [String] Allowed for BYO-KYB. Legal business name of the account holder.
       #
       #   @param phone_number [String] Allowed for all Account Holders. Account holder's phone number, entered in E.164
-      #   ...
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
@@ -178,8 +173,8 @@ module Lithic
         #   Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable.
         #
-        #   @return [Lithic::Models::AddressUpdate, nil]
-        optional :address, -> { Lithic::Models::AddressUpdate }
+        #   @return [Lithic::AddressUpdate, nil]
+        optional :address, -> { Lithic::AddressUpdate }
 
         # @!attribute dba_business_name
         #   Any name that the business operates under that is not its legal business name
@@ -217,26 +212,21 @@ module Lithic
 
         # @!method initialize(entity_token:, address: nil, dba_business_name: nil, government_id: nil, legal_business_name: nil, parent_company: nil, phone_numbers: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity} for more
-        #   details.
+        #   {Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity} for more details.
         #
         #   @param entity_token [String] Globally unique identifier for an entity.
         #
-        #   @param address [Lithic::Models::AddressUpdate] Business''s physical address - PO boxes, UPS drops, and FedEx drops are not acce
-        #   ...
+        #   @param address [Lithic::AddressUpdate] Business''s physical address - PO boxes, UPS drops, and FedEx drops are not acce
         #
         #   @param dba_business_name [String] Any name that the business operates under that is not its legal business name (i
-        #   ...
         #
         #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
-        #   ...
         #
         #   @param legal_business_name [String] Legal (formal) business name.
         #
         #   @param parent_company [String] Parent company name (if applicable).
         #
         #   @param phone_numbers [Array<String>] One or more of the business's phone number(s), entered as a list in E.164 format
-        #   ...
       end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
@@ -250,8 +240,8 @@ module Lithic
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         #
-        #   @return [Lithic::Models::AddressUpdate, nil]
-        optional :address, -> { Lithic::Models::AddressUpdate }
+        #   @return [Lithic::AddressUpdate, nil]
+        optional :address, -> { Lithic::AddressUpdate }
 
         # @!attribute dob
         #   Individual's date of birth, as an RFC 3339 date.
@@ -297,25 +287,21 @@ module Lithic
 
         # @!method initialize(entity_token:, address: nil, dob: nil, email: nil, first_name: nil, government_id: nil, last_name: nil, phone_number: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual} for more
-        #   details.
+        #   {Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual} for more details.
         #
         #   Individuals associated with a KYB application. Phone number is optional.
         #
         #   @param entity_token [String] Globally unique identifier for an entity.
         #
-        #   @param address [Lithic::Models::AddressUpdate] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
-        #   ...
+        #   @param address [Lithic::AddressUpdate] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
         #
         #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
         #
         #   @param email [String] Individual's email address. If utilizing Lithic for chargeback processing, this
-        #   ...
         #
         #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
         #
         #   @param government_id [String] Government-issued identification number (required for identity verification and
-        #   ...
         #
         #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
         #
@@ -333,8 +319,8 @@ module Lithic
         #   Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable.
         #
-        #   @return [Lithic::Models::AddressUpdate, nil]
-        optional :address, -> { Lithic::Models::AddressUpdate }
+        #   @return [Lithic::AddressUpdate, nil]
+        optional :address, -> { Lithic::AddressUpdate }
 
         # @!attribute dba_business_name
         #   Any name that the business operates under that is not its legal business name
@@ -372,28 +358,24 @@ module Lithic
 
         # @!method initialize(entity_token:, address: nil, dba_business_name: nil, government_id: nil, legal_business_name: nil, parent_company: nil, phone_numbers: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AccountHolderUpdateParams::BusinessEntity} for more details.
+        #   {Lithic::AccountHolderUpdateParams::BusinessEntity} for more details.
         #
         #   Information for business for which the account is being opened and KYB is being
         #   run.
         #
         #   @param entity_token [String] Globally unique identifier for an entity.
         #
-        #   @param address [Lithic::Models::AddressUpdate] Business''s physical address - PO boxes, UPS drops, and FedEx drops are not acce
-        #   ...
+        #   @param address [Lithic::AddressUpdate] Business''s physical address - PO boxes, UPS drops, and FedEx drops are not acce
         #
         #   @param dba_business_name [String] Any name that the business operates under that is not its legal business name (i
-        #   ...
         #
         #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
-        #   ...
         #
         #   @param legal_business_name [String] Legal (formal) business name.
         #
         #   @param parent_company [String] Parent company name (if applicable).
         #
         #   @param phone_numbers [Array<String>] One or more of the business's phone number(s), entered as a list in E.164 format
-        #   ...
       end
 
       class ControlPerson < Lithic::Internal::Type::BaseModel
@@ -407,8 +389,8 @@ module Lithic
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         #
-        #   @return [Lithic::Models::AddressUpdate, nil]
-        optional :address, -> { Lithic::Models::AddressUpdate }
+        #   @return [Lithic::AddressUpdate, nil]
+        optional :address, -> { Lithic::AddressUpdate }
 
         # @!attribute dob
         #   Individual's date of birth, as an RFC 3339 date.
@@ -454,7 +436,7 @@ module Lithic
 
         # @!method initialize(entity_token:, address: nil, dob: nil, email: nil, first_name: nil, government_id: nil, last_name: nil, phone_number: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AccountHolderUpdateParams::ControlPerson} for more details.
+        #   {Lithic::AccountHolderUpdateParams::ControlPerson} for more details.
         #
         #   An individual with significant responsibility for managing the legal entity
         #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
@@ -467,18 +449,15 @@ module Lithic
         #
         #   @param entity_token [String] Globally unique identifier for an entity.
         #
-        #   @param address [Lithic::Models::AddressUpdate] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
-        #   ...
+        #   @param address [Lithic::AddressUpdate] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
         #
         #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
         #
         #   @param email [String] Individual's email address. If utilizing Lithic for chargeback processing, this
-        #   ...
         #
         #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
         #
         #   @param government_id [String] Government-issued identification number (required for identity verification and
-        #   ...
         #
         #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
         #
@@ -496,8 +475,8 @@ module Lithic
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         #
-        #   @return [Lithic::Models::AddressUpdate, nil]
-        optional :address, -> { Lithic::Models::AddressUpdate }
+        #   @return [Lithic::AddressUpdate, nil]
+        optional :address, -> { Lithic::AddressUpdate }
 
         # @!attribute dob
         #   Individual's date of birth, as an RFC 3339 date.
@@ -543,25 +522,22 @@ module Lithic
 
         # @!method initialize(entity_token:, address: nil, dob: nil, email: nil, first_name: nil, government_id: nil, last_name: nil, phone_number: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::AccountHolderUpdateParams::Individual} for more details.
+        #   {Lithic::AccountHolderUpdateParams::Individual} for more details.
         #
         #   Information on the individual for whom the account is being opened and KYC is
         #   being run.
         #
         #   @param entity_token [String] Globally unique identifier for an entity.
         #
-        #   @param address [Lithic::Models::AddressUpdate] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
-        #   ...
+        #   @param address [Lithic::AddressUpdate] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
         #
         #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
         #
         #   @param email [String] Individual's email address. If utilizing Lithic for chargeback processing, this
-        #   ...
         #
         #   @param first_name [String] Individual's first name, as it appears on government-issued identity documents.
         #
         #   @param government_id [String] Government-issued identification number (required for identity verification and
-        #   ...
         #
         #   @param last_name [String] Individual's last name, as it appears on government-issued identity documents.
         #

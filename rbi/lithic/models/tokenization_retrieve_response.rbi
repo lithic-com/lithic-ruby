@@ -3,17 +3,23 @@
 module Lithic
   module Models
     class TokenizationRetrieveResponse < Lithic::Internal::Type::BaseModel
-      sig { returns(T.nilable(Lithic::Models::Tokenization)) }
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
+      sig { returns(T.nilable(Lithic::Tokenization)) }
       attr_reader :data
 
-      sig { params(data: T.any(Lithic::Models::Tokenization, Lithic::Internal::AnyHash)).void }
+      sig { params(data: Lithic::Tokenization::OrHash).void }
       attr_writer :data
 
-      sig { params(data: T.any(Lithic::Models::Tokenization, Lithic::Internal::AnyHash)).returns(T.attached_class) }
-      def self.new(data: nil); end
+      sig do
+        params(data: Lithic::Tokenization::OrHash).returns(T.attached_class)
+      end
+      def self.new(data: nil)
+      end
 
-      sig { override.returns({data: Lithic::Models::Tokenization}) }
-      def to_hash; end
+      sig { override.returns({ data: Lithic::Tokenization }) }
+      def to_hash
+      end
     end
   end
 end

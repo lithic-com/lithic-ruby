@@ -39,29 +39,26 @@ module Lithic
       # @param end_ [Date] Filter for tokenizations created before this date.
       #
       # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-      # ...
       #
       # @param page_size [Integer] Page size (for pagination).
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-      # ...
       #
-      # @param tokenization_channel [Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel] Filter for tokenizations by tokenization channel. If this is not specified, only
-      # ...
+      # @param tokenization_channel [Symbol, Lithic::TokenizationListParams::TokenizationChannel] Filter for tokenizations by tokenization channel. If this is not specified, only
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::Models::Tokenization>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Tokenization>]
       #
       # @see Lithic::Models::TokenizationListParams
       def list(params = {})
-        parsed, options = Lithic::Models::TokenizationListParams.dump_request(params)
+        parsed, options = Lithic::TokenizationListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/tokenizations",
           query: parsed.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
-          model: Lithic::Models::Tokenization,
+          model: Lithic::Tokenization,
           options: options
         )
       end
@@ -166,8 +163,7 @@ module Lithic
       #
       # @param tokenization_token [String] Tokenization token
       #
-      # @param activation_method_type [Symbol, Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType] The communication method that the user has selected to use to receive the authen
-      # ...
+      # @param activation_method_type [Symbol, Lithic::TokenizationResendActivationCodeParams::ActivationMethodType] The communication method that the user has selected to use to receive the authen
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -175,7 +171,7 @@ module Lithic
       #
       # @see Lithic::Models::TokenizationResendActivationCodeParams
       def resend_activation_code(tokenization_token, params = {})
-        parsed, options = Lithic::Models::TokenizationResendActivationCodeParams.dump_request(params)
+        parsed, options = Lithic::TokenizationResendActivationCodeParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["v1/tokenizations/%1$s/resend_activation_code", tokenization_token],
@@ -199,18 +195,15 @@ module Lithic
       #
       # @param pan [String] The sixteen digit card number.
       #
-      # @param tokenization_source [Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource] The source of the tokenization request.
+      # @param tokenization_source [Symbol, Lithic::TokenizationSimulateParams::TokenizationSource] The source of the tokenization request.
       #
       # @param account_score [Integer] The account score (1-5) that represents how the Digital Wallet's view on how rep
-      # ...
       #
       # @param device_score [Integer] The device score (1-5) that represents how the Digital Wallet's view on how repu
-      # ...
       #
       # @param entity [String] Optional field to specify the token requestor name for a merchant token simulati
-      # ...
       #
-      # @param wallet_recommended_decision [Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision] The decision that the Digital Wallet's recommend
+      # @param wallet_recommended_decision [Symbol, Lithic::TokenizationSimulateParams::WalletRecommendedDecision] The decision that the Digital Wallet's recommend
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -218,7 +211,7 @@ module Lithic
       #
       # @see Lithic::Models::TokenizationSimulateParams
       def simulate(params)
-        parsed, options = Lithic::Models::TokenizationSimulateParams.dump_request(params)
+        parsed, options = Lithic::TokenizationSimulateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v1/simulate/tokenizations",
@@ -271,7 +264,6 @@ module Lithic
       # @param tokenization_token [String] Tokenization token
       #
       # @param digital_card_art_token [String] Specifies the digital card art to be displayed in the user’s digital wallet for
-      # ...
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -279,7 +271,7 @@ module Lithic
       #
       # @see Lithic::Models::TokenizationUpdateDigitalCardArtParams
       def update_digital_card_art(tokenization_token, params = {})
-        parsed, options = Lithic::Models::TokenizationUpdateDigitalCardArtParams.dump_request(params)
+        parsed, options = Lithic::TokenizationUpdateDigitalCardArtParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["v1/tokenizations/%1$s/update_digital_card_art", tokenization_token],

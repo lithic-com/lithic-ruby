@@ -10,8 +10,8 @@ module Lithic
 
         # @!attribute merchant
         #
-        #   @return [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant]
-        required :merchant, -> { Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant }
+        #   @return [Lithic::ThreeDS::AuthenticationSimulateParams::Merchant]
+        required :merchant, -> { Lithic::ThreeDS::AuthenticationSimulateParams::Merchant }
 
         # @!attribute pan
         #   Sixteen digit card number.
@@ -21,29 +21,30 @@ module Lithic
 
         # @!attribute transaction
         #
-        #   @return [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction]
-        required :transaction, -> { Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction }
+        #   @return [Lithic::ThreeDS::AuthenticationSimulateParams::Transaction]
+        required :transaction, -> { Lithic::ThreeDS::AuthenticationSimulateParams::Transaction }
 
         # @!attribute card_expiry_check
         #   When set will use the following values as part of the Simulated Authentication.
         #   When not set defaults to MATCH
         #
-        #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck, nil]
+        #   @return [Symbol, Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck, nil]
         optional :card_expiry_check,
-                 enum: -> { Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck }
+                 enum: -> {
+                   Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck
+                 }
 
         # @!method initialize(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::ThreeDS::AuthenticationSimulateParams} for more details.
         #
-        #   @param merchant [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant]
+        #   @param merchant [Lithic::ThreeDS::AuthenticationSimulateParams::Merchant]
         #
         #   @param pan [String] Sixteen digit card number.
         #
-        #   @param transaction [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction]
+        #   @param transaction [Lithic::ThreeDS::AuthenticationSimulateParams::Transaction]
         #
-        #   @param card_expiry_check [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck] When set will use the following values as part of the Simulated Authentication.
-        #   ...
+        #   @param card_expiry_check [Symbol, Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck] When set will use the following values as part of the Simulated Authentication.
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
@@ -79,20 +80,15 @@ module Lithic
 
           # @!method initialize(id:, country:, mcc:, name:)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant} for more
-          #   details.
+          #   {Lithic::ThreeDS::AuthenticationSimulateParams::Merchant} for more details.
           #
           #   @param id [String] Unique identifier to identify the payment card acceptor. Corresponds to `merchan
-          #   ...
           #
           #   @param country [String] Country of the address provided by the cardholder in ISO 3166-1 alpha-3 format (
-          #   ...
           #
           #   @param mcc [String] Merchant category code for the transaction to be simulated. A four-digit number
-          #   ...
           #
           #   @param name [String] Merchant descriptor, corresponds to `descriptor` in authorization. If CHALLENGE
-          #   ...
         end
 
         class Transaction < Lithic::Internal::Type::BaseModel

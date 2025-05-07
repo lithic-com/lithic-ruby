@@ -6,27 +6,33 @@ module Lithic
       class Authentication
         # Get 3DS Authentication by token
         sig do
-          params(three_ds_authentication_token: String, request_options: Lithic::RequestOpts)
-            .returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse)
+          params(
+            three_ds_authentication_token: String,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse)
         end
         def retrieve(
           # 3DS Authentication Token
           three_ds_authentication_token,
           request_options: {}
-        ); end
+        )
+        end
+
         # Simulates a 3DS authentication request from the payment network as if it came
         # from an ACS. If you're configured for 3DS Customer Decisioning, simulating
         # authentications requires your customer decisioning endpoint to be set up
         # properly (respond with a valid JSON).
         sig do
           params(
-            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Internal::AnyHash),
+            merchant:
+              Lithic::ThreeDS::AuthenticationSimulateParams::Merchant::OrHash,
             pan: String,
-            transaction: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Internal::AnyHash),
-            card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
-            request_options: Lithic::RequestOpts
-          )
-            .returns(Lithic::Models::ThreeDS::AuthenticationSimulateResponse)
+            transaction:
+              Lithic::ThreeDS::AuthenticationSimulateParams::Transaction::OrHash,
+            card_expiry_check:
+              Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::Models::ThreeDS::AuthenticationSimulateResponse)
         end
         def simulate(
           merchant:,
@@ -37,12 +43,20 @@ module Lithic
           # When not set defaults to MATCH
           card_expiry_check: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Endpoint for simulating entering OTP into 3DS Challenge UI. A call to
         # /v1/three_ds_authentication/simulate that resulted in triggered SMS-OTP
         # challenge must precede. Only a single attempt is supported; upon entering OTP,
         # the challenge is either approved or declined.
-        sig { params(token: String, otp: String, request_options: Lithic::RequestOpts).void }
+        sig do
+          params(
+            token: String,
+            otp: String,
+            request_options: Lithic::RequestOptions::OrHash
+          ).void
+        end
         def simulate_otp_entry(
           # A unique token returned as part of a /v1/three_ds_authentication/simulate call
           # that resulted in PENDING_CHALLENGE authentication result.
@@ -50,10 +64,13 @@ module Lithic
           # The OTP entered by the cardholder
           otp:,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

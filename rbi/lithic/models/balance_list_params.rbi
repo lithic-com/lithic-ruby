@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # List balances for all financial accounts of a given account_token.
       sig { returns(T.nilable(String)) }
       attr_reader :account_token
@@ -29,10 +31,19 @@ module Lithic
       attr_writer :business_account_token
 
       # List balances for a given Financial Account type.
-      sig { returns(T.nilable(Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(Lithic::BalanceListParams::FinancialAccountType::OrSymbol)
+        )
+      end
       attr_reader :financial_account_type
 
-      sig { params(financial_account_type: Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol).void }
+      sig do
+        params(
+          financial_account_type:
+            Lithic::BalanceListParams::FinancialAccountType::OrSymbol
+        ).void
+      end
       attr_writer :financial_account_type
 
       sig do
@@ -40,10 +51,10 @@ module Lithic
           account_token: String,
           balance_date: Time,
           business_account_token: String,
-          financial_account_type: Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          financial_account_type:
+            Lithic::BalanceListParams::FinancialAccountType::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # List balances for all financial accounts of a given account_token.
@@ -56,34 +67,59 @@ module Lithic
         # List balances for a given Financial Account type.
         financial_account_type: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              account_token: String,
-              balance_date: Time,
-              business_account_token: String,
-              financial_account_type: Lithic::Models::BalanceListParams::FinancialAccountType::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            account_token: String,
+            balance_date: Time,
+            business_account_token: String,
+            financial_account_type:
+              Lithic::BalanceListParams::FinancialAccountType::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # List balances for a given Financial Account type.
       module FinancialAccountType
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BalanceListParams::FinancialAccountType) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::BalanceListParams::FinancialAccountType)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ISSUING = T.let(:ISSUING, Lithic::Models::BalanceListParams::FinancialAccountType::TaggedSymbol)
-        OPERATING = T.let(:OPERATING, Lithic::Models::BalanceListParams::FinancialAccountType::TaggedSymbol)
-        RESERVE = T.let(:RESERVE, Lithic::Models::BalanceListParams::FinancialAccountType::TaggedSymbol)
+        ISSUING =
+          T.let(
+            :ISSUING,
+            Lithic::BalanceListParams::FinancialAccountType::TaggedSymbol
+          )
+        OPERATING =
+          T.let(
+            :OPERATING,
+            Lithic::BalanceListParams::FinancialAccountType::TaggedSymbol
+          )
+        RESERVE =
+          T.let(
+            :RESERVE,
+            Lithic::BalanceListParams::FinancialAccountType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::BalanceListParams::FinancialAccountType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::BalanceListParams::FinancialAccountType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

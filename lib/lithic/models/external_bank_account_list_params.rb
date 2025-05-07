@@ -14,9 +14,11 @@ module Lithic
 
       # @!attribute account_types
       #
-      #   @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType>, nil]
+      #   @return [Array<Symbol, Lithic::ExternalBankAccountListParams::AccountType>, nil]
       optional :account_types,
-               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::ExternalBankAccountListParams::AccountType] }
+               -> {
+                 Lithic::Internal::Type::ArrayOf[enum: Lithic::ExternalBankAccountListParams::AccountType]
+               }
 
       # @!attribute countries
       #
@@ -32,8 +34,8 @@ module Lithic
 
       # @!attribute owner_types
       #
-      #   @return [Array<Symbol, Lithic::Models::OwnerType>, nil]
-      optional :owner_types, -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::OwnerType] }
+      #   @return [Array<Symbol, Lithic::OwnerType>, nil]
+      optional :owner_types, -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::OwnerType] }
 
       # @!attribute page_size
       #   Page size (for pagination).
@@ -50,15 +52,17 @@ module Lithic
 
       # @!attribute states
       #
-      #   @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::State>, nil]
+      #   @return [Array<Symbol, Lithic::ExternalBankAccountListParams::State>, nil]
       optional :states,
-               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::ExternalBankAccountListParams::State] }
+               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::ExternalBankAccountListParams::State] }
 
       # @!attribute verification_states
       #
-      #   @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState>, nil]
+      #   @return [Array<Symbol, Lithic::ExternalBankAccountListParams::VerificationState>, nil]
       optional :verification_states,
-               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::ExternalBankAccountListParams::VerificationState] }
+               -> {
+                 Lithic::Internal::Type::ArrayOf[enum: Lithic::ExternalBankAccountListParams::VerificationState]
+               }
 
       # @!method initialize(account_token: nil, account_types: nil, countries: nil, ending_before: nil, owner_types: nil, page_size: nil, starting_after: nil, states: nil, verification_states: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -66,23 +70,21 @@ module Lithic
       #
       #   @param account_token [String]
       #
-      #   @param account_types [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType>]
+      #   @param account_types [Array<Symbol, Lithic::ExternalBankAccountListParams::AccountType>]
       #
       #   @param countries [Array<String>]
       #
       #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-      #   ...
       #
-      #   @param owner_types [Array<Symbol, Lithic::Models::OwnerType>]
+      #   @param owner_types [Array<Symbol, Lithic::OwnerType>]
       #
       #   @param page_size [Integer] Page size (for pagination).
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-      #   ...
       #
-      #   @param states [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::State>]
+      #   @param states [Array<Symbol, Lithic::ExternalBankAccountListParams::State>]
       #
-      #   @param verification_states [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState>]
+      #   @param verification_states [Array<Symbol, Lithic::ExternalBankAccountListParams::VerificationState>]
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

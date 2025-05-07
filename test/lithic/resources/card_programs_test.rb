@@ -7,7 +7,7 @@ class Lithic::Test::Resources::CardProgramsTest < Lithic::Test::ResourceTest
     response = @lithic.card_programs.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::CardProgram
+      response => Lithic::CardProgram
     end
 
     assert_pattern do
@@ -34,7 +34,7 @@ class Lithic::Test::Resources::CardProgramsTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::CardProgram
+      row => Lithic::CardProgram
     end
 
     assert_pattern do

@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # The transaction token returned from the /v1/simulate/authorize response.
       sig { returns(String) }
       attr_accessor :token
@@ -23,20 +25,25 @@ module Lithic
       # - `AUTHORIZATION_EXPIRY` indicates authorization has expired and been reversed
       #   by Lithic.
       # - `AUTHORIZATION_REVERSAL` indicates authorization was reversed by the merchant.
-      sig { returns(T.nilable(Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(Lithic::TransactionSimulateVoidParams::Type::OrSymbol)
+        )
+      end
       attr_reader :type
 
-      sig { params(type: Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol).void }
+      sig do
+        params(type: Lithic::TransactionSimulateVoidParams::Type::OrSymbol).void
+      end
       attr_writer :type
 
       sig do
         params(
           token: String,
           amount: Integer,
-          type: Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          type: Lithic::TransactionSimulateVoidParams::Type::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The transaction token returned from the /v1/simulate/authorize response.
@@ -51,19 +58,21 @@ module Lithic
         # - `AUTHORIZATION_REVERSAL` indicates authorization was reversed by the merchant.
         type: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              token: String,
-              amount: Integer,
-              type: Lithic::Models::TransactionSimulateVoidParams::Type::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            token: String,
+            amount: Integer,
+            type: Lithic::TransactionSimulateVoidParams::Type::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`.
       #
@@ -73,16 +82,30 @@ module Lithic
       module Type
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::TransactionSimulateVoidParams::Type) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::TransactionSimulateVoidParams::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AUTHORIZATION_EXPIRY =
-          T.let(:AUTHORIZATION_EXPIRY, Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol)
+          T.let(
+            :AUTHORIZATION_EXPIRY,
+            Lithic::TransactionSimulateVoidParams::Type::TaggedSymbol
+          )
         AUTHORIZATION_REVERSAL =
-          T.let(:AUTHORIZATION_REVERSAL, Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol)
+          T.let(
+            :AUTHORIZATION_REVERSAL,
+            Lithic::TransactionSimulateVoidParams::Type::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::TransactionSimulateVoidParams::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::TransactionSimulateVoidParams::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

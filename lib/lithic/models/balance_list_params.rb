@@ -29,8 +29,8 @@ module Lithic
       # @!attribute financial_account_type
       #   List balances for a given Financial Account type.
       #
-      #   @return [Symbol, Lithic::Models::BalanceListParams::FinancialAccountType, nil]
-      optional :financial_account_type, enum: -> { Lithic::Models::BalanceListParams::FinancialAccountType }
+      #   @return [Symbol, Lithic::BalanceListParams::FinancialAccountType, nil]
+      optional :financial_account_type, enum: -> { Lithic::BalanceListParams::FinancialAccountType }
 
       # @!method initialize(account_token: nil, balance_date: nil, business_account_token: nil, financial_account_type: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -39,11 +39,10 @@ module Lithic
       #   @param account_token [String] List balances for all financial accounts of a given account_token.
       #
       #   @param balance_date [Time] UTC date and time of the balances to retrieve. Defaults to latest available bala
-      #   ...
       #
       #   @param business_account_token [String] List balances for all financial accounts of a given business_account_token.
       #
-      #   @param financial_account_type [Symbol, Lithic::Models::BalanceListParams::FinancialAccountType] List balances for a given Financial Account type.
+      #   @param financial_account_type [Symbol, Lithic::BalanceListParams::FinancialAccountType] List balances for a given Financial Account type.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

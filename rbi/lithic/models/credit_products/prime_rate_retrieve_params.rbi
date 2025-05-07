@@ -7,6 +7,8 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # The effective date that the prime rates ends before
         sig { returns(T.nilable(Date)) }
         attr_reader :ending_before
@@ -25,9 +27,8 @@ module Lithic
           params(
             ending_before: Date,
             starting_after: Date,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # The effective date that the prime rates ends before
@@ -35,7 +36,9 @@ module Lithic
           # The effective date that the prime rate starts after
           starting_after: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         sig do
           override.returns(
             {
@@ -45,7 +48,8 @@ module Lithic
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

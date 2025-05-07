@@ -3,20 +3,25 @@
 module Lithic
   module Models
     class AccountHolderListDocumentsResponse < Lithic::Internal::Type::BaseModel
-      sig { returns(T.nilable(T::Array[Lithic::Models::Document])) }
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
+      sig { returns(T.nilable(T::Array[Lithic::Document])) }
       attr_reader :data
 
-      sig { params(data: T::Array[T.any(Lithic::Models::Document, Lithic::Internal::AnyHash)]).void }
+      sig { params(data: T::Array[Lithic::Document::OrHash]).void }
       attr_writer :data
 
       sig do
-        params(data: T::Array[T.any(Lithic::Models::Document, Lithic::Internal::AnyHash)])
-          .returns(T.attached_class)
+        params(data: T::Array[Lithic::Document::OrHash]).returns(
+          T.attached_class
+        )
       end
-      def self.new(data: nil); end
+      def self.new(data: nil)
+      end
 
-      sig { override.returns({data: T::Array[Lithic::Models::Document]}) }
-      def to_hash; end
+      sig { override.returns({ data: T::Array[Lithic::Document] }) }
+      def to_hash
+      end
     end
   end
 end

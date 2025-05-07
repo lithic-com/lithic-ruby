@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class AddressUpdate < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Valid deliverable address (no PO boxes).
       sig { returns(T.nilable(String)) }
       attr_reader :address1
@@ -56,8 +58,7 @@ module Lithic
           country: String,
           postal_code: String,
           state: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Valid deliverable address (no PO boxes).
@@ -75,21 +76,23 @@ module Lithic
         # Valid state code. Only USA state codes are currently supported, entered in
         # uppercase ISO 3166-2 two-character format.
         state: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              address1: String,
-              address2: String,
-              city: String,
-              country: String,
-              postal_code: String,
-              state: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            address1: String,
+            address2: String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

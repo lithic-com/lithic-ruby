@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Date string in RFC 3339 format. Only entries created after the specified time
       # will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
@@ -46,10 +48,10 @@ module Lithic
       attr_writer :starting_after
 
       # List disputes of a specific status.
-      sig { returns(T.nilable(Lithic::Models::DisputeListParams::Status::OrSymbol)) }
+      sig { returns(T.nilable(Lithic::DisputeListParams::Status::OrSymbol)) }
       attr_reader :status
 
-      sig { params(status: Lithic::Models::DisputeListParams::Status::OrSymbol).void }
+      sig { params(status: Lithic::DisputeListParams::Status::OrSymbol).void }
       attr_writer :status
 
       # Transaction tokens to filter by.
@@ -66,11 +68,10 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          status: Lithic::Models::DisputeListParams::Status::OrSymbol,
+          status: Lithic::DisputeListParams::Status::OrSymbol,
           transaction_tokens: T::Array[String],
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -92,42 +93,63 @@ module Lithic
         # Transaction tokens to filter by.
         transaction_tokens: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              begin_: Time,
-              end_: Time,
-              ending_before: String,
-              page_size: Integer,
-              starting_after: String,
-              status: Lithic::Models::DisputeListParams::Status::OrSymbol,
-              transaction_tokens: T::Array[String],
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            begin_: Time,
+            end_: Time,
+            ending_before: String,
+            page_size: Integer,
+            starting_after: String,
+            status: Lithic::DisputeListParams::Status::OrSymbol,
+            transaction_tokens: T::Array[String],
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # List disputes of a specific status.
       module Status
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DisputeListParams::Status) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::DisputeListParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ARBITRATION = T.let(:ARBITRATION, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
-        CASE_CLOSED = T.let(:CASE_CLOSED, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
-        CASE_WON = T.let(:CASE_WON, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
-        NEW = T.let(:NEW, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
-        PENDING_CUSTOMER = T.let(:PENDING_CUSTOMER, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
-        PREARBITRATION = T.let(:PREARBITRATION, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
-        REPRESENTMENT = T.let(:REPRESENTMENT, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
-        SUBMITTED = T.let(:SUBMITTED, Lithic::Models::DisputeListParams::Status::TaggedSymbol)
+        ARBITRATION =
+          T.let(:ARBITRATION, Lithic::DisputeListParams::Status::TaggedSymbol)
+        CASE_CLOSED =
+          T.let(:CASE_CLOSED, Lithic::DisputeListParams::Status::TaggedSymbol)
+        CASE_WON =
+          T.let(:CASE_WON, Lithic::DisputeListParams::Status::TaggedSymbol)
+        NEW = T.let(:NEW, Lithic::DisputeListParams::Status::TaggedSymbol)
+        PENDING_CUSTOMER =
+          T.let(
+            :PENDING_CUSTOMER,
+            Lithic::DisputeListParams::Status::TaggedSymbol
+          )
+        PREARBITRATION =
+          T.let(
+            :PREARBITRATION,
+            Lithic::DisputeListParams::Status::TaggedSymbol
+          )
+        REPRESENTMENT =
+          T.let(:REPRESENTMENT, Lithic::DisputeListParams::Status::TaggedSymbol)
+        SUBMITTED =
+          T.let(:SUBMITTED, Lithic::DisputeListParams::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::DisputeListParams::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::DisputeListParams::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

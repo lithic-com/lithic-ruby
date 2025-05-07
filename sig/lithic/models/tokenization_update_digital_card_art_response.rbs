@@ -1,16 +1,14 @@
 module Lithic
   module Models
     type tokenization_update_digital_card_art_response =
-      { data: Lithic::Models::Tokenization }
+      { data: Lithic::Tokenization }
 
     class TokenizationUpdateDigitalCardArtResponse < Lithic::Internal::Type::BaseModel
-      attr_reader data: Lithic::Models::Tokenization?
+      attr_reader data: Lithic::Tokenization?
 
-      def data=: (Lithic::Models::Tokenization) -> Lithic::Models::Tokenization
+      def data=: (Lithic::Tokenization) -> Lithic::Tokenization
 
-      def initialize: (?data: Lithic::Models::Tokenization) -> void
-
-      def to_hash: -> Lithic::Models::tokenization_update_digital_card_art_response
+      def initialize: (?data: Lithic::Tokenization) -> void
     end
   end
 end

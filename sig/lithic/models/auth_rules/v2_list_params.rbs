@@ -52,8 +52,6 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> void
 
-        def to_hash: -> Lithic::Models::AuthRules::v2_list_params
-
         type scope = :PROGRAM | :ACCOUNT | :CARD
 
         module Scope

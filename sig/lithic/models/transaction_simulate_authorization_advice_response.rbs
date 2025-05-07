@@ -13,8 +13,6 @@ module Lithic
       def debugging_request_id=: (String) -> String
 
       def initialize: (?token: String, ?debugging_request_id: String) -> void
-
-      def to_hash: -> Lithic::Models::transaction_simulate_authorization_advice_response
     end
   end
 end

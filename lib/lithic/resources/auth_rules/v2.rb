@@ -19,9 +19,9 @@ module Lithic
         #
         # @param name [String, nil] Auth Rule Name
         #
-        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters] Parameters for the Auth Rule
+        # @param parameters [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters] Parameters for the Auth Rule
         #
-        # @param type [Symbol, Lithic::Models::AuthRules::V2CreateParams::Type] The type of Auth Rule
+        # @param type [Symbol, Lithic::AuthRules::V2CreateParams::Type] The type of Auth Rule
         #
         # @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
         #
@@ -31,7 +31,7 @@ module Lithic
         #
         # @see Lithic::Models::AuthRules::V2CreateParams
         def create(params)
-          parsed, options = Lithic::Models::AuthRules::V2CreateParams.dump_request(params)
+          parsed, options = Lithic::AuthRules::V2CreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v2/auth_rules",
@@ -78,7 +78,7 @@ module Lithic
         #
         # @param name [String, nil] Auth Rule Name
         #
-        # @param state [Symbol, Lithic::Models::AuthRules::V2UpdateParams::State] The desired state of the Auth Rule. ...
+        # @param state [Symbol, Lithic::AuthRules::V2UpdateParams::State] The desired state of the Auth Rule.
         #
         # @param card_tokens [Array<String>] Card tokens to which the Auth Rule applies.
         #
@@ -92,7 +92,7 @@ module Lithic
         #
         # @see Lithic::Models::AuthRules::V2UpdateParams
         def update(auth_rule_token, params = {})
-          parsed, options = Lithic::Models::AuthRules::V2UpdateParams.dump_request(params)
+          parsed, options = Lithic::AuthRules::V2UpdateParams.dump_request(params)
           @client.request(
             method: :patch,
             path: ["v2/auth_rules/%1$s", auth_rule_token],
@@ -114,14 +114,12 @@ module Lithic
         # @param card_token [String] Only return Authorization Rules that are bound to the provided card token.
         #
         # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-        # ...
         #
         # @param page_size [Integer] Page size (for pagination).
         #
-        # @param scope [Symbol, Lithic::Models::AuthRules::V2ListParams::Scope] Only return Authorization Rules that are bound to the provided scope;
+        # @param scope [Symbol, Lithic::AuthRules::V2ListParams::Scope] Only return Authorization Rules that are bound to the provided scope;
         #
         # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-        # ...
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -129,7 +127,7 @@ module Lithic
         #
         # @see Lithic::Models::AuthRules::V2ListParams
         def list(params = {})
-          parsed, options = Lithic::Models::AuthRules::V2ListParams.dump_request(params)
+          parsed, options = Lithic::AuthRules::V2ListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "v2/auth_rules",
@@ -183,7 +181,7 @@ module Lithic
         #
         # @see Lithic::Models::AuthRules::V2ApplyParams
         def apply(auth_rule_token, params)
-          parsed, options = Lithic::Models::AuthRules::V2ApplyParams.dump_request(params)
+          parsed, options = Lithic::AuthRules::V2ApplyParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["v2/auth_rules/%1$s/apply", auth_rule_token],
@@ -202,7 +200,7 @@ module Lithic
         #
         # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
         #
-        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters, nil] Parameters for the Auth Rule
+        # @param parameters [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters, nil] Parameters for the Auth Rule
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -210,7 +208,7 @@ module Lithic
         #
         # @see Lithic::Models::AuthRules::V2DraftParams
         def draft(auth_rule_token, params = {})
-          parsed, options = Lithic::Models::AuthRules::V2DraftParams.dump_request(params)
+          parsed, options = Lithic::AuthRules::V2DraftParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["v2/auth_rules/%1$s/draft", auth_rule_token],

@@ -56,8 +56,6 @@ module Lithic
             ?cycle: Integer
           ) -> void
 
-          def to_hash: -> Lithic::Models::Reports::Settlement::network_total_retrieve_response
-
           type amounts =
             {
               gross_settlement: Integer,
@@ -83,8 +81,6 @@ module Lithic
               net_settlement: Integer,
               ?visa_charges: Integer
             ) -> void
-
-            def to_hash: -> Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::amounts
           end
 
           type network = :VISA | :MASTERCARD | :MAESTRO | :INTERLINK

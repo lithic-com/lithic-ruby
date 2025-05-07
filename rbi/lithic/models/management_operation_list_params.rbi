@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Date string in RFC 3339 format. Only entries created after the specified time
       # will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
@@ -21,10 +23,18 @@ module Lithic
       attr_writer :business_account_token
 
       # Management operation category to be returned.
-      sig { returns(T.nilable(Lithic::Models::ManagementOperationListParams::Category::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(Lithic::ManagementOperationListParams::Category::OrSymbol)
+        )
+      end
       attr_reader :category
 
-      sig { params(category: Lithic::Models::ManagementOperationListParams::Category::OrSymbol).void }
+      sig do
+        params(
+          category: Lithic::ManagementOperationListParams::Category::OrSymbol
+        ).void
+      end
       attr_writer :category
 
       # Date string in RFC 3339 format. Only entries created before the specified time
@@ -67,26 +77,33 @@ module Lithic
       attr_writer :starting_after
 
       # Management operation status to be returned.
-      sig { returns(T.nilable(Lithic::Models::ManagementOperationListParams::Status::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(Lithic::ManagementOperationListParams::Status::OrSymbol)
+        )
+      end
       attr_reader :status
 
-      sig { params(status: Lithic::Models::ManagementOperationListParams::Status::OrSymbol).void }
+      sig do
+        params(
+          status: Lithic::ManagementOperationListParams::Status::OrSymbol
+        ).void
+      end
       attr_writer :status
 
       sig do
         params(
           begin_: Time,
           business_account_token: String,
-          category: Lithic::Models::ManagementOperationListParams::Category::OrSymbol,
+          category: Lithic::ManagementOperationListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
           starting_after: String,
-          status: Lithic::Models::ManagementOperationListParams::Status::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          status: Lithic::ManagementOperationListParams::Status::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -112,63 +129,120 @@ module Lithic
         # Management operation status to be returned.
         status: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              begin_: Time,
-              business_account_token: String,
-              category: Lithic::Models::ManagementOperationListParams::Category::OrSymbol,
-              end_: Time,
-              ending_before: String,
-              financial_account_token: String,
-              page_size: Integer,
-              starting_after: String,
-              status: Lithic::Models::ManagementOperationListParams::Status::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            begin_: Time,
+            business_account_token: String,
+            category: Lithic::ManagementOperationListParams::Category::OrSymbol,
+            end_: Time,
+            ending_before: String,
+            financial_account_token: String,
+            page_size: Integer,
+            starting_after: String,
+            status: Lithic::ManagementOperationListParams::Status::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Management operation category to be returned.
       module Category
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationListParams::Category) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ManagementOperationListParams::Category)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         MANAGEMENT_FEE =
-          T.let(:MANAGEMENT_FEE, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
+          T.let(
+            :MANAGEMENT_FEE,
+            Lithic::ManagementOperationListParams::Category::TaggedSymbol
+          )
         MANAGEMENT_DISPUTE =
-          T.let(:MANAGEMENT_DISPUTE, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
+          T.let(
+            :MANAGEMENT_DISPUTE,
+            Lithic::ManagementOperationListParams::Category::TaggedSymbol
+          )
         MANAGEMENT_REWARD =
-          T.let(:MANAGEMENT_REWARD, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
+          T.let(
+            :MANAGEMENT_REWARD,
+            Lithic::ManagementOperationListParams::Category::TaggedSymbol
+          )
         MANAGEMENT_ADJUSTMENT =
-          T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
+          T.let(
+            :MANAGEMENT_ADJUSTMENT,
+            Lithic::ManagementOperationListParams::Category::TaggedSymbol
+          )
         MANAGEMENT_DISBURSEMENT =
-          T.let(:MANAGEMENT_DISBURSEMENT, Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol)
+          T.let(
+            :MANAGEMENT_DISBURSEMENT,
+            Lithic::ManagementOperationListParams::Category::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ManagementOperationListParams::Category::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::ManagementOperationListParams::Category::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       # Management operation status to be returned.
       module Status
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::ManagementOperationListParams::Status) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ManagementOperationListParams::Status)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        PENDING = T.let(:PENDING, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
-        SETTLED = T.let(:SETTLED, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
-        REVERSED = T.let(:REVERSED, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
-        CANCELED = T.let(:CANCELED, Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol)
+        PENDING =
+          T.let(
+            :PENDING,
+            Lithic::ManagementOperationListParams::Status::TaggedSymbol
+          )
+        SETTLED =
+          T.let(
+            :SETTLED,
+            Lithic::ManagementOperationListParams::Status::TaggedSymbol
+          )
+        DECLINED =
+          T.let(
+            :DECLINED,
+            Lithic::ManagementOperationListParams::Status::TaggedSymbol
+          )
+        REVERSED =
+          T.let(
+            :REVERSED,
+            Lithic::ManagementOperationListParams::Status::TaggedSymbol
+          )
+        CANCELED =
+          T.let(
+            :CANCELED,
+            Lithic::ManagementOperationListParams::Status::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::ManagementOperationListParams::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::ManagementOperationListParams::Status::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

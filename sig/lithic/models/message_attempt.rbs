@@ -8,7 +8,7 @@ module Lithic
         event_token: String,
         response: String,
         response_status_code: Integer,
-        status: Lithic::Models::MessageAttempt::status,
+        status: Lithic::MessageAttempt::status,
         url: String
       }
 
@@ -25,7 +25,7 @@ module Lithic
 
       attr_accessor response_status_code: Integer
 
-      attr_accessor status: Lithic::Models::MessageAttempt::status
+      attr_accessor status: Lithic::MessageAttempt::status
 
       attr_accessor url: String
 
@@ -36,11 +36,9 @@ module Lithic
         event_token: String,
         response: String,
         response_status_code: Integer,
-        status: Lithic::Models::MessageAttempt::status,
+        status: Lithic::MessageAttempt::status,
         url: String
       ) -> void
-
-      def to_hash: -> Lithic::Models::message_attempt
 
       type status = :FAILED | :PENDING | :SENDING | :SUCCESS
 
@@ -52,7 +50,7 @@ module Lithic
         SENDING: :SENDING
         SUCCESS: :SUCCESS
 
-        def self?.values: -> ::Array[Lithic::Models::MessageAttempt::status]
+        def self?.values: -> ::Array[Lithic::MessageAttempt::status]
       end
     end
   end

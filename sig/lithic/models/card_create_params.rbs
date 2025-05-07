@@ -5,7 +5,7 @@ module Lithic
         type: Lithic::Models::CardCreateParams::type_,
         account_token: String,
         card_program_token: String,
-        carrier: Lithic::Models::Carrier,
+        carrier: Lithic::Carrier,
         digital_card_art_token: String,
         exp_month: String,
         exp_year: String,
@@ -14,7 +14,7 @@ module Lithic
         product_id: String,
         replacement_account_token: String,
         replacement_for: String,
-        shipping_address: Lithic::Models::ShippingAddress,
+        shipping_address: Lithic::ShippingAddress,
         shipping_method: Lithic::Models::CardCreateParams::shipping_method,
         spend_limit: Integer,
         spend_limit_duration: Lithic::Models::spend_limit_duration,
@@ -36,9 +36,9 @@ module Lithic
 
       def card_program_token=: (String) -> String
 
-      attr_reader carrier: Lithic::Models::Carrier?
+      attr_reader carrier: Lithic::Carrier?
 
-      def carrier=: (Lithic::Models::Carrier) -> Lithic::Models::Carrier
+      def carrier=: (Lithic::Carrier) -> Lithic::Carrier
 
       attr_reader digital_card_art_token: String?
 
@@ -72,11 +72,11 @@ module Lithic
 
       def replacement_for=: (String) -> String
 
-      attr_reader shipping_address: Lithic::Models::ShippingAddress?
+      attr_reader shipping_address: Lithic::ShippingAddress?
 
       def shipping_address=: (
-        Lithic::Models::ShippingAddress
-      ) -> Lithic::Models::ShippingAddress
+        Lithic::ShippingAddress
+      ) -> Lithic::ShippingAddress
 
       attr_reader shipping_method: Lithic::Models::CardCreateParams::shipping_method?
 
@@ -104,7 +104,7 @@ module Lithic
         type: Lithic::Models::CardCreateParams::type_,
         ?account_token: String,
         ?card_program_token: String,
-        ?carrier: Lithic::Models::Carrier,
+        ?carrier: Lithic::Carrier,
         ?digital_card_art_token: String,
         ?exp_month: String,
         ?exp_year: String,
@@ -113,15 +113,13 @@ module Lithic
         ?product_id: String,
         ?replacement_account_token: String,
         ?replacement_for: String,
-        ?shipping_address: Lithic::Models::ShippingAddress,
+        ?shipping_address: Lithic::ShippingAddress,
         ?shipping_method: Lithic::Models::CardCreateParams::shipping_method,
         ?spend_limit: Integer,
         ?spend_limit_duration: Lithic::Models::spend_limit_duration,
         ?state: Lithic::Models::CardCreateParams::state,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::card_create_params
 
       type type_ =
         :MERCHANT_LOCKED

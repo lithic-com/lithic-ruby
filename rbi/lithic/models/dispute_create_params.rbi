@@ -6,12 +6,14 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Amount to dispute
       sig { returns(Integer) }
       attr_accessor :amount
 
       # Reason for dispute
-      sig { returns(Lithic::Models::DisputeCreateParams::Reason::OrSymbol) }
+      sig { returns(Lithic::DisputeCreateParams::Reason::OrSymbol) }
       attr_accessor :reason
 
       # Transaction to dispute
@@ -35,13 +37,12 @@ module Lithic
       sig do
         params(
           amount: Integer,
-          reason: Lithic::Models::DisputeCreateParams::Reason::OrSymbol,
+          reason: Lithic::DisputeCreateParams::Reason::OrSymbol,
           transaction_token: String,
           customer_filed_date: Time,
           customer_note: String,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Amount to dispute
@@ -55,53 +56,97 @@ module Lithic
         # Customer description of dispute
         customer_note: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              amount: Integer,
-              reason: Lithic::Models::DisputeCreateParams::Reason::OrSymbol,
-              transaction_token: String,
-              customer_filed_date: Time,
-              customer_note: String,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            amount: Integer,
+            reason: Lithic::DisputeCreateParams::Reason::OrSymbol,
+            transaction_token: String,
+            customer_filed_date: Time,
+            customer_note: String,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Reason for dispute
       module Reason
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::DisputeCreateParams::Reason) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::DisputeCreateParams::Reason) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ATM_CASH_MISDISPENSE =
-          T.let(:ATM_CASH_MISDISPENSE, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
-        CANCELLED = T.let(:CANCELLED, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
-        DUPLICATED = T.let(:DUPLICATED, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+          T.let(
+            :ATM_CASH_MISDISPENSE,
+            Lithic::DisputeCreateParams::Reason::TaggedSymbol
+          )
+        CANCELLED =
+          T.let(:CANCELLED, Lithic::DisputeCreateParams::Reason::TaggedSymbol)
+        DUPLICATED =
+          T.let(:DUPLICATED, Lithic::DisputeCreateParams::Reason::TaggedSymbol)
         FRAUD_CARD_NOT_PRESENT =
-          T.let(:FRAUD_CARD_NOT_PRESENT, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+          T.let(
+            :FRAUD_CARD_NOT_PRESENT,
+            Lithic::DisputeCreateParams::Reason::TaggedSymbol
+          )
         FRAUD_CARD_PRESENT =
-          T.let(:FRAUD_CARD_PRESENT, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
-        FRAUD_OTHER = T.let(:FRAUD_OTHER, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+          T.let(
+            :FRAUD_CARD_PRESENT,
+            Lithic::DisputeCreateParams::Reason::TaggedSymbol
+          )
+        FRAUD_OTHER =
+          T.let(:FRAUD_OTHER, Lithic::DisputeCreateParams::Reason::TaggedSymbol)
         GOODS_SERVICES_NOT_AS_DESCRIBED =
-          T.let(:GOODS_SERVICES_NOT_AS_DESCRIBED, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+          T.let(
+            :GOODS_SERVICES_NOT_AS_DESCRIBED,
+            Lithic::DisputeCreateParams::Reason::TaggedSymbol
+          )
         GOODS_SERVICES_NOT_RECEIVED =
-          T.let(:GOODS_SERVICES_NOT_RECEIVED, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
-        INCORRECT_AMOUNT = T.let(:INCORRECT_AMOUNT, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
-        MISSING_AUTH = T.let(:MISSING_AUTH, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
-        OTHER = T.let(:OTHER, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
-        PROCESSING_ERROR = T.let(:PROCESSING_ERROR, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+          T.let(
+            :GOODS_SERVICES_NOT_RECEIVED,
+            Lithic::DisputeCreateParams::Reason::TaggedSymbol
+          )
+        INCORRECT_AMOUNT =
+          T.let(
+            :INCORRECT_AMOUNT,
+            Lithic::DisputeCreateParams::Reason::TaggedSymbol
+          )
+        MISSING_AUTH =
+          T.let(
+            :MISSING_AUTH,
+            Lithic::DisputeCreateParams::Reason::TaggedSymbol
+          )
+        OTHER = T.let(:OTHER, Lithic::DisputeCreateParams::Reason::TaggedSymbol)
+        PROCESSING_ERROR =
+          T.let(
+            :PROCESSING_ERROR,
+            Lithic::DisputeCreateParams::Reason::TaggedSymbol
+          )
         RECURRING_TRANSACTION_NOT_CANCELLED =
-          T.let(:RECURRING_TRANSACTION_NOT_CANCELLED, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+          T.let(
+            :RECURRING_TRANSACTION_NOT_CANCELLED,
+            Lithic::DisputeCreateParams::Reason::TaggedSymbol
+          )
         REFUND_NOT_PROCESSED =
-          T.let(:REFUND_NOT_PROCESSED, Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol)
+          T.let(
+            :REFUND_NOT_PROCESSED,
+            Lithic::DisputeCreateParams::Reason::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::DisputeCreateParams::Reason::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::DisputeCreateParams::Reason::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

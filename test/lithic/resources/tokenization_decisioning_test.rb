@@ -7,7 +7,7 @@ class Lithic::Test::Resources::TokenizationDecisioningTest < Lithic::Test::Resou
     response = @lithic.tokenization_decisioning.retrieve_secret
 
     assert_pattern do
-      response => Lithic::Models::TokenizationSecret
+      response => Lithic::TokenizationSecret
     end
 
     assert_pattern do

@@ -5,7 +5,7 @@ module Lithic
         token: String,
         created: Time,
         dispute_token: String,
-        upload_status: Lithic::Models::DisputeEvidence::upload_status,
+        upload_status: Lithic::DisputeEvidence::upload_status,
         download_url: String,
         filename: String,
         upload_url: String
@@ -18,7 +18,7 @@ module Lithic
 
       attr_accessor dispute_token: String
 
-      attr_accessor upload_status: Lithic::Models::DisputeEvidence::upload_status
+      attr_accessor upload_status: Lithic::DisputeEvidence::upload_status
 
       attr_reader download_url: String?
 
@@ -36,13 +36,11 @@ module Lithic
         token: String,
         created: Time,
         dispute_token: String,
-        upload_status: Lithic::Models::DisputeEvidence::upload_status,
+        upload_status: Lithic::DisputeEvidence::upload_status,
         ?download_url: String,
         ?filename: String,
         ?upload_url: String
       ) -> void
-
-      def to_hash: -> Lithic::Models::dispute_evidence
 
       type upload_status = :DELETED | :ERROR | :PENDING | :REJECTED | :UPLOADED
 
@@ -55,7 +53,7 @@ module Lithic
         REJECTED: :REJECTED
         UPLOADED: :UPLOADED
 
-        def self?.values: -> ::Array[Lithic::Models::DisputeEvidence::upload_status]
+        def self?.values: -> ::Array[Lithic::DisputeEvidence::upload_status]
       end
     end
   end

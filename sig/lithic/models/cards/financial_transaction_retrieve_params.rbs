@@ -14,8 +14,6 @@ module Lithic
           card_token: String,
           ?request_options: Lithic::request_opts
         ) -> void
-
-        def to_hash: -> Lithic::Models::Cards::financial_transaction_retrieve_params
       end
     end
   end

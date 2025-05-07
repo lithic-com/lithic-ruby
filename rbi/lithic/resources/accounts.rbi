@@ -4,12 +4,19 @@ module Lithic
   module Resources
     class Accounts
       # Get account configuration such as spend limits.
-      sig { params(account_token: String, request_options: Lithic::RequestOpts).returns(Lithic::Models::Account) }
+      sig do
+        params(
+          account_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Account)
+      end
       def retrieve(
         # Globally unique identifier for account.
         account_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # Update account configuration such as state or spend limits. Can only be run on
       # accounts that are part of the program managed by this API key. Accounts that are
       # in the `PAUSED` state will not be able to transact or create new cards.
@@ -19,11 +26,11 @@ module Lithic
           daily_spend_limit: Integer,
           lifetime_spend_limit: Integer,
           monthly_spend_limit: Integer,
-          state: Lithic::Models::AccountUpdateParams::State::OrSymbol,
-          verification_address: T.any(Lithic::Models::AccountUpdateParams::VerificationAddress, Lithic::Internal::AnyHash),
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::Account)
+          state: Lithic::AccountUpdateParams::State::OrSymbol,
+          verification_address:
+            Lithic::AccountUpdateParams::VerificationAddress::OrHash,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Account)
       end
       def update(
         # Globally unique identifier for account.
@@ -50,7 +57,9 @@ module Lithic
         # the schema in a future release.
         verification_address: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List account configurations.
       sig do
         params(
@@ -59,9 +68,8 @@ module Lithic
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Internal::CursorPage[Lithic::Models::Account])
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Internal::CursorPage[Lithic::Account])
       end
       def list(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -79,24 +87,31 @@ module Lithic
         # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get an Account's available spend limits, which is based on the spend limit
       # configured on the Account and the amount already spent over the spend limit's
       # duration. For example, if the Account has a daily spend limit of $1000
       # configured, and has spent $600 in the last 24 hours, the available spend limit
       # returned would be $400.
       sig do
-        params(account_token: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::AccountSpendLimits)
+        params(
+          account_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::AccountSpendLimits)
       end
       def retrieve_spend_limits(
         # Globally unique identifier for account.
         account_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

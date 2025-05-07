@@ -5,23 +5,26 @@ module Lithic
     class CardPrograms
       # Get card program.
       sig do
-        params(card_program_token: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::CardProgram)
+        params(
+          card_program_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::CardProgram)
       end
       def retrieve(
         # Globally unique identifier for the card program.
         card_program_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # List card programs.
       sig do
         params(
           ending_before: String,
           page_size: Integer,
           starting_after: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Internal::CursorPage[Lithic::Models::CardProgram])
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Internal::CursorPage[Lithic::CardProgram])
       end
       def list(
         # A cursor representing an item's token before which a page of results should end.
@@ -33,10 +36,13 @@ module Lithic
         # begin. Used to retrieve the next page of results after this item.
         starting_after: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -5,22 +5,22 @@ module Lithic
         token: String,
         created: Time,
         account_token: String,
-        beneficial_owner_entities: ::Array[Lithic::Models::AccountHolder::BeneficialOwnerEntity],
-        beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolder::BeneficialOwnerIndividual],
+        beneficial_owner_entities: ::Array[Lithic::AccountHolder::BeneficialOwnerEntity],
+        beneficial_owner_individuals: ::Array[Lithic::AccountHolder::BeneficialOwnerIndividual],
         business_account_token: String,
-        business_entity: Lithic::Models::AccountHolder::BusinessEntity,
-        control_person: Lithic::Models::AccountHolder::ControlPerson,
+        business_entity: Lithic::AccountHolder::BusinessEntity,
+        control_person: Lithic::AccountHolder::ControlPerson,
         email: String,
-        exemption_type: Lithic::Models::AccountHolder::exemption_type,
+        exemption_type: Lithic::AccountHolder::exemption_type,
         external_id: String,
-        individual: Lithic::Models::AccountHolder::Individual,
+        individual: Lithic::AccountHolder::Individual,
         nature_of_business: String,
         phone_number: String,
-        required_documents: ::Array[Lithic::Models::RequiredDocument],
-        status: Lithic::Models::AccountHolder::status,
-        status_reasons: ::Array[Lithic::Models::AccountHolder::status_reason],
-        user_type: Lithic::Models::AccountHolder::user_type,
-        verification_application: Lithic::Models::AccountHolder::VerificationApplication,
+        required_documents: ::Array[Lithic::RequiredDocument],
+        status: Lithic::AccountHolder::status,
+        status_reasons: ::Array[Lithic::AccountHolder::status_reason],
+        user_type: Lithic::AccountHolder::user_type,
+        verification_application: Lithic::AccountHolder::VerificationApplication,
         website_url: String
       }
 
@@ -33,53 +33,53 @@ module Lithic
 
       def account_token=: (String) -> String
 
-      attr_reader beneficial_owner_entities: ::Array[Lithic::Models::AccountHolder::BeneficialOwnerEntity]?
+      attr_reader beneficial_owner_entities: ::Array[Lithic::AccountHolder::BeneficialOwnerEntity]?
 
       def beneficial_owner_entities=: (
-        ::Array[Lithic::Models::AccountHolder::BeneficialOwnerEntity]
-      ) -> ::Array[Lithic::Models::AccountHolder::BeneficialOwnerEntity]
+        ::Array[Lithic::AccountHolder::BeneficialOwnerEntity]
+      ) -> ::Array[Lithic::AccountHolder::BeneficialOwnerEntity]
 
-      attr_reader beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolder::BeneficialOwnerIndividual]?
+      attr_reader beneficial_owner_individuals: ::Array[Lithic::AccountHolder::BeneficialOwnerIndividual]?
 
       def beneficial_owner_individuals=: (
-        ::Array[Lithic::Models::AccountHolder::BeneficialOwnerIndividual]
-      ) -> ::Array[Lithic::Models::AccountHolder::BeneficialOwnerIndividual]
+        ::Array[Lithic::AccountHolder::BeneficialOwnerIndividual]
+      ) -> ::Array[Lithic::AccountHolder::BeneficialOwnerIndividual]
 
       attr_reader business_account_token: String?
 
       def business_account_token=: (String) -> String
 
-      attr_reader business_entity: Lithic::Models::AccountHolder::BusinessEntity?
+      attr_reader business_entity: Lithic::AccountHolder::BusinessEntity?
 
       def business_entity=: (
-        Lithic::Models::AccountHolder::BusinessEntity
-      ) -> Lithic::Models::AccountHolder::BusinessEntity
+        Lithic::AccountHolder::BusinessEntity
+      ) -> Lithic::AccountHolder::BusinessEntity
 
-      attr_reader control_person: Lithic::Models::AccountHolder::ControlPerson?
+      attr_reader control_person: Lithic::AccountHolder::ControlPerson?
 
       def control_person=: (
-        Lithic::Models::AccountHolder::ControlPerson
-      ) -> Lithic::Models::AccountHolder::ControlPerson
+        Lithic::AccountHolder::ControlPerson
+      ) -> Lithic::AccountHolder::ControlPerson
 
       attr_reader email: String?
 
       def email=: (String) -> String
 
-      attr_reader exemption_type: Lithic::Models::AccountHolder::exemption_type?
+      attr_reader exemption_type: Lithic::AccountHolder::exemption_type?
 
       def exemption_type=: (
-        Lithic::Models::AccountHolder::exemption_type
-      ) -> Lithic::Models::AccountHolder::exemption_type
+        Lithic::AccountHolder::exemption_type
+      ) -> Lithic::AccountHolder::exemption_type
 
       attr_reader external_id: String?
 
       def external_id=: (String) -> String
 
-      attr_reader individual: Lithic::Models::AccountHolder::Individual?
+      attr_reader individual: Lithic::AccountHolder::Individual?
 
       def individual=: (
-        Lithic::Models::AccountHolder::Individual
-      ) -> Lithic::Models::AccountHolder::Individual
+        Lithic::AccountHolder::Individual
+      ) -> Lithic::AccountHolder::Individual
 
       attr_reader nature_of_business: String?
 
@@ -89,35 +89,35 @@ module Lithic
 
       def phone_number=: (String) -> String
 
-      attr_reader required_documents: ::Array[Lithic::Models::RequiredDocument]?
+      attr_reader required_documents: ::Array[Lithic::RequiredDocument]?
 
       def required_documents=: (
-        ::Array[Lithic::Models::RequiredDocument]
-      ) -> ::Array[Lithic::Models::RequiredDocument]
+        ::Array[Lithic::RequiredDocument]
+      ) -> ::Array[Lithic::RequiredDocument]
 
-      attr_reader status: Lithic::Models::AccountHolder::status?
+      attr_reader status: Lithic::AccountHolder::status?
 
       def status=: (
-        Lithic::Models::AccountHolder::status
-      ) -> Lithic::Models::AccountHolder::status
+        Lithic::AccountHolder::status
+      ) -> Lithic::AccountHolder::status
 
-      attr_reader status_reasons: ::Array[Lithic::Models::AccountHolder::status_reason]?
+      attr_reader status_reasons: ::Array[Lithic::AccountHolder::status_reason]?
 
       def status_reasons=: (
-        ::Array[Lithic::Models::AccountHolder::status_reason]
-      ) -> ::Array[Lithic::Models::AccountHolder::status_reason]
+        ::Array[Lithic::AccountHolder::status_reason]
+      ) -> ::Array[Lithic::AccountHolder::status_reason]
 
-      attr_reader user_type: Lithic::Models::AccountHolder::user_type?
+      attr_reader user_type: Lithic::AccountHolder::user_type?
 
       def user_type=: (
-        Lithic::Models::AccountHolder::user_type
-      ) -> Lithic::Models::AccountHolder::user_type
+        Lithic::AccountHolder::user_type
+      ) -> Lithic::AccountHolder::user_type
 
-      attr_reader verification_application: Lithic::Models::AccountHolder::VerificationApplication?
+      attr_reader verification_application: Lithic::AccountHolder::VerificationApplication?
 
       def verification_application=: (
-        Lithic::Models::AccountHolder::VerificationApplication
-      ) -> Lithic::Models::AccountHolder::VerificationApplication
+        Lithic::AccountHolder::VerificationApplication
+      ) -> Lithic::AccountHolder::VerificationApplication
 
       attr_reader website_url: String?
 
@@ -127,30 +127,28 @@ module Lithic
         token: String,
         created: Time,
         ?account_token: String,
-        ?beneficial_owner_entities: ::Array[Lithic::Models::AccountHolder::BeneficialOwnerEntity],
-        ?beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolder::BeneficialOwnerIndividual],
+        ?beneficial_owner_entities: ::Array[Lithic::AccountHolder::BeneficialOwnerEntity],
+        ?beneficial_owner_individuals: ::Array[Lithic::AccountHolder::BeneficialOwnerIndividual],
         ?business_account_token: String,
-        ?business_entity: Lithic::Models::AccountHolder::BusinessEntity,
-        ?control_person: Lithic::Models::AccountHolder::ControlPerson,
+        ?business_entity: Lithic::AccountHolder::BusinessEntity,
+        ?control_person: Lithic::AccountHolder::ControlPerson,
         ?email: String,
-        ?exemption_type: Lithic::Models::AccountHolder::exemption_type,
+        ?exemption_type: Lithic::AccountHolder::exemption_type,
         ?external_id: String,
-        ?individual: Lithic::Models::AccountHolder::Individual,
+        ?individual: Lithic::AccountHolder::Individual,
         ?nature_of_business: String,
         ?phone_number: String,
-        ?required_documents: ::Array[Lithic::Models::RequiredDocument],
-        ?status: Lithic::Models::AccountHolder::status,
-        ?status_reasons: ::Array[Lithic::Models::AccountHolder::status_reason],
-        ?user_type: Lithic::Models::AccountHolder::user_type,
-        ?verification_application: Lithic::Models::AccountHolder::VerificationApplication,
+        ?required_documents: ::Array[Lithic::RequiredDocument],
+        ?status: Lithic::AccountHolder::status,
+        ?status_reasons: ::Array[Lithic::AccountHolder::status_reason],
+        ?user_type: Lithic::AccountHolder::user_type,
+        ?verification_application: Lithic::AccountHolder::VerificationApplication,
         ?website_url: String
       ) -> void
 
-      def to_hash: -> Lithic::Models::account_holder
-
       type beneficial_owner_entity =
         {
-          address: Lithic::Models::Address,
+          address: Lithic::Address,
           dba_business_name: String,
           entity_token: String,
           government_id: String,
@@ -160,7 +158,7 @@ module Lithic
         }
 
       class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
-        attr_accessor address: Lithic::Models::Address
+        attr_accessor address: Lithic::Address
 
         attr_accessor dba_business_name: String
 
@@ -177,7 +175,7 @@ module Lithic
         def parent_company=: (String) -> String
 
         def initialize: (
-          address: Lithic::Models::Address,
+          address: Lithic::Address,
           dba_business_name: String,
           entity_token: String,
           government_id: String,
@@ -185,13 +183,11 @@ module Lithic
           phone_numbers: ::Array[String],
           ?parent_company: String
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountHolder::beneficial_owner_entity
       end
 
       type beneficial_owner_individual =
         {
-          address: Lithic::Models::Address,
+          address: Lithic::Address,
           dob: String,
           email: String,
           entity_token: String,
@@ -201,7 +197,7 @@ module Lithic
         }
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
-        attr_accessor address: Lithic::Models::Address
+        attr_accessor address: Lithic::Address
 
         attr_accessor dob: String
 
@@ -216,7 +212,7 @@ module Lithic
         attr_accessor phone_number: String
 
         def initialize: (
-          address: Lithic::Models::Address,
+          address: Lithic::Address,
           dob: String,
           email: String,
           entity_token: String,
@@ -224,13 +220,11 @@ module Lithic
           last_name: String,
           phone_number: String
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountHolder::beneficial_owner_individual
       end
 
       type business_entity =
         {
-          address: Lithic::Models::Address,
+          address: Lithic::Address,
           dba_business_name: String,
           entity_token: String,
           government_id: String,
@@ -240,7 +234,7 @@ module Lithic
         }
 
       class BusinessEntity < Lithic::Internal::Type::BaseModel
-        attr_accessor address: Lithic::Models::Address
+        attr_accessor address: Lithic::Address
 
         attr_accessor dba_business_name: String
 
@@ -257,7 +251,7 @@ module Lithic
         def parent_company=: (String) -> String
 
         def initialize: (
-          address: Lithic::Models::Address,
+          address: Lithic::Address,
           dba_business_name: String,
           entity_token: String,
           government_id: String,
@@ -265,13 +259,11 @@ module Lithic
           phone_numbers: ::Array[String],
           ?parent_company: String
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountHolder::business_entity
       end
 
       type control_person =
         {
-          address: Lithic::Models::Address,
+          address: Lithic::Address,
           dob: String,
           email: String,
           entity_token: String,
@@ -281,7 +273,7 @@ module Lithic
         }
 
       class ControlPerson < Lithic::Internal::Type::BaseModel
-        attr_accessor address: Lithic::Models::Address
+        attr_accessor address: Lithic::Address
 
         attr_accessor dob: String
 
@@ -296,7 +288,7 @@ module Lithic
         attr_accessor phone_number: String
 
         def initialize: (
-          address: Lithic::Models::Address,
+          address: Lithic::Address,
           dob: String,
           email: String,
           entity_token: String,
@@ -304,8 +296,6 @@ module Lithic
           last_name: String,
           phone_number: String
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountHolder::control_person
       end
 
       type exemption_type = :AUTHORIZED_USER | :PREPAID_CARD_USER
@@ -316,12 +306,12 @@ module Lithic
         AUTHORIZED_USER: :AUTHORIZED_USER
         PREPAID_CARD_USER: :PREPAID_CARD_USER
 
-        def self?.values: -> ::Array[Lithic::Models::AccountHolder::exemption_type]
+        def self?.values: -> ::Array[Lithic::AccountHolder::exemption_type]
       end
 
       type individual =
         {
-          address: Lithic::Models::Address,
+          address: Lithic::Address,
           dob: String,
           email: String,
           entity_token: String,
@@ -331,7 +321,7 @@ module Lithic
         }
 
       class Individual < Lithic::Internal::Type::BaseModel
-        attr_accessor address: Lithic::Models::Address
+        attr_accessor address: Lithic::Address
 
         attr_accessor dob: String
 
@@ -346,7 +336,7 @@ module Lithic
         attr_accessor phone_number: String
 
         def initialize: (
-          address: Lithic::Models::Address,
+          address: Lithic::Address,
           dob: String,
           email: String,
           entity_token: String,
@@ -354,8 +344,6 @@ module Lithic
           last_name: String,
           phone_number: String
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountHolder::individual
       end
 
       type status =
@@ -374,7 +362,7 @@ module Lithic
         PENDING_RESUBMIT: :PENDING_RESUBMIT
         REJECTED: :REJECTED
 
-        def self?.values: -> ::Array[Lithic::Models::AccountHolder::status]
+        def self?.values: -> ::Array[Lithic::AccountHolder::status]
       end
 
       type status_reason =
@@ -405,7 +393,7 @@ module Lithic
         RISK_THRESHOLD_FAILURE: :RISK_THRESHOLD_FAILURE
         WATCHLIST_ALERT_FAILURE: :WATCHLIST_ALERT_FAILURE
 
-        def self?.values: -> ::Array[Lithic::Models::AccountHolder::status_reason]
+        def self?.values: -> ::Array[Lithic::AccountHolder::status_reason]
       end
 
       type user_type = :BUSINESS | :INDIVIDUAL
@@ -416,14 +404,14 @@ module Lithic
         BUSINESS: :BUSINESS
         INDIVIDUAL: :INDIVIDUAL
 
-        def self?.values: -> ::Array[Lithic::Models::AccountHolder::user_type]
+        def self?.values: -> ::Array[Lithic::AccountHolder::user_type]
       end
 
       type verification_application =
         {
           created: Time,
-          status: Lithic::Models::AccountHolder::VerificationApplication::status,
-          status_reasons: ::Array[Lithic::Models::AccountHolder::VerificationApplication::status_reason],
+          status: Lithic::AccountHolder::VerificationApplication::status,
+          status_reasons: ::Array[Lithic::AccountHolder::VerificationApplication::status_reason],
           updated: Time
         }
 
@@ -432,17 +420,17 @@ module Lithic
 
         def created=: (Time) -> Time
 
-        attr_reader status: Lithic::Models::AccountHolder::VerificationApplication::status?
+        attr_reader status: Lithic::AccountHolder::VerificationApplication::status?
 
         def status=: (
-          Lithic::Models::AccountHolder::VerificationApplication::status
-        ) -> Lithic::Models::AccountHolder::VerificationApplication::status
+          Lithic::AccountHolder::VerificationApplication::status
+        ) -> Lithic::AccountHolder::VerificationApplication::status
 
-        attr_reader status_reasons: ::Array[Lithic::Models::AccountHolder::VerificationApplication::status_reason]?
+        attr_reader status_reasons: ::Array[Lithic::AccountHolder::VerificationApplication::status_reason]?
 
         def status_reasons=: (
-          ::Array[Lithic::Models::AccountHolder::VerificationApplication::status_reason]
-        ) -> ::Array[Lithic::Models::AccountHolder::VerificationApplication::status_reason]
+          ::Array[Lithic::AccountHolder::VerificationApplication::status_reason]
+        ) -> ::Array[Lithic::AccountHolder::VerificationApplication::status_reason]
 
         attr_reader updated: Time?
 
@@ -450,12 +438,10 @@ module Lithic
 
         def initialize: (
           ?created: Time,
-          ?status: Lithic::Models::AccountHolder::VerificationApplication::status,
-          ?status_reasons: ::Array[Lithic::Models::AccountHolder::VerificationApplication::status_reason],
+          ?status: Lithic::AccountHolder::VerificationApplication::status,
+          ?status_reasons: ::Array[Lithic::AccountHolder::VerificationApplication::status_reason],
           ?updated: Time
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountHolder::verification_application
 
         type status =
           :ACCEPTED
@@ -473,7 +459,7 @@ module Lithic
           PENDING_RESUBMIT: :PENDING_RESUBMIT
           REJECTED: :REJECTED
 
-          def self?.values: -> ::Array[Lithic::Models::AccountHolder::VerificationApplication::status]
+          def self?.values: -> ::Array[Lithic::AccountHolder::VerificationApplication::status]
         end
 
         type status_reason =
@@ -504,7 +490,7 @@ module Lithic
           RISK_THRESHOLD_FAILURE: :RISK_THRESHOLD_FAILURE
           WATCHLIST_ALERT_FAILURE: :WATCHLIST_ALERT_FAILURE
 
-          def self?.values: -> ::Array[Lithic::Models::AccountHolder::VerificationApplication::status_reason]
+          def self?.values: -> ::Array[Lithic::AccountHolder::VerificationApplication::status_reason]
         end
       end
     end

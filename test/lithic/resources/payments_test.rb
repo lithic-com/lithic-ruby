@@ -23,27 +23,27 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
     response = @lithic.payments.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::Payment
+      response => Lithic::Payment
     end
 
     assert_pattern do
       response => {
         token: String,
-        category: Lithic::Models::Payment::Category,
+        category: Lithic::Payment::Category,
         created: Time,
         currency: String,
         descriptor: String,
-        direction: Lithic::Models::Payment::Direction,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Payment::Event]),
+        direction: Lithic::Payment::Direction,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Payment::Event]),
         external_bank_account_token: String | nil,
         financial_account_token: String,
-        method_: Lithic::Models::Payment::Method,
-        method_attributes: Lithic::Models::Payment::MethodAttributes,
+        method_: Lithic::Payment::Method,
+        method_attributes: Lithic::Payment::MethodAttributes,
         pending_amount: Integer,
-        result: Lithic::Models::Payment::Result,
+        result: Lithic::Payment::Result,
         settled_amount: Integer,
-        source: Lithic::Models::Payment::Source,
-        status: Lithic::Models::Payment::Status,
+        source: Lithic::Payment::Source,
+        status: Lithic::Payment::Status,
         updated: Time,
         user_defined_id: String | nil,
         expected_release_date: Date | nil
@@ -62,27 +62,27 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::Payment
+      row => Lithic::Payment
     end
 
     assert_pattern do
       row => {
         token: String,
-        category: Lithic::Models::Payment::Category,
+        category: Lithic::Payment::Category,
         created: Time,
         currency: String,
         descriptor: String,
-        direction: Lithic::Models::Payment::Direction,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Payment::Event]),
+        direction: Lithic::Payment::Direction,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Payment::Event]),
         external_bank_account_token: String | nil,
         financial_account_token: String,
-        method_: Lithic::Models::Payment::Method,
-        method_attributes: Lithic::Models::Payment::MethodAttributes,
+        method_: Lithic::Payment::Method,
+        method_attributes: Lithic::Payment::MethodAttributes,
         pending_amount: Integer,
-        result: Lithic::Models::Payment::Result,
+        result: Lithic::Payment::Result,
         settled_amount: Integer,
-        source: Lithic::Models::Payment::Source,
-        status: Lithic::Models::Payment::Status,
+        source: Lithic::Payment::Source,
+        status: Lithic::Payment::Status,
         updated: Time,
         user_defined_id: String | nil,
         expected_release_date: Date | nil

@@ -15,21 +15,21 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Lithic::Models::BookTransferResponse
+      response => Lithic::BookTransferResponse
     end
 
     assert_pattern do
       response => {
         token: String,
-        category: Lithic::Models::BookTransferResponse::Category,
+        category: Lithic::BookTransferResponse::Category,
         created: Time,
         currency: String,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::BookTransferResponse::Event]),
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::BookTransferResponse::Event]),
         from_financial_account_token: String,
         pending_amount: Integer,
-        result: Lithic::Models::BookTransferResponse::Result,
+        result: Lithic::BookTransferResponse::Result,
         settled_amount: Integer,
-        status: Lithic::Models::BookTransferResponse::Status,
+        status: Lithic::BookTransferResponse::Status,
         to_financial_account_token: Lithic::Internal::Type::Unknown,
         updated: Time
       }
@@ -40,21 +40,21 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
     response = @lithic.book_transfers.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::BookTransferResponse
+      response => Lithic::BookTransferResponse
     end
 
     assert_pattern do
       response => {
         token: String,
-        category: Lithic::Models::BookTransferResponse::Category,
+        category: Lithic::BookTransferResponse::Category,
         created: Time,
         currency: String,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::BookTransferResponse::Event]),
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::BookTransferResponse::Event]),
         from_financial_account_token: String,
         pending_amount: Integer,
-        result: Lithic::Models::BookTransferResponse::Result,
+        result: Lithic::BookTransferResponse::Result,
         settled_amount: Integer,
-        status: Lithic::Models::BookTransferResponse::Status,
+        status: Lithic::BookTransferResponse::Status,
         to_financial_account_token: Lithic::Internal::Type::Unknown,
         updated: Time
       }
@@ -72,21 +72,21 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::BookTransferResponse
+      row => Lithic::BookTransferResponse
     end
 
     assert_pattern do
       row => {
         token: String,
-        category: Lithic::Models::BookTransferResponse::Category,
+        category: Lithic::BookTransferResponse::Category,
         created: Time,
         currency: String,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::BookTransferResponse::Event]),
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::BookTransferResponse::Event]),
         from_financial_account_token: String,
         pending_amount: Integer,
-        result: Lithic::Models::BookTransferResponse::Result,
+        result: Lithic::BookTransferResponse::Result,
         settled_amount: Integer,
-        status: Lithic::Models::BookTransferResponse::Status,
+        status: Lithic::BookTransferResponse::Status,
         to_financial_account_token: Lithic::Internal::Type::Unknown,
         updated: Time
       }
@@ -97,21 +97,21 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
     response = @lithic.book_transfers.reverse("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::BookTransferResponse
+      response => Lithic::BookTransferResponse
     end
 
     assert_pattern do
       response => {
         token: String,
-        category: Lithic::Models::BookTransferResponse::Category,
+        category: Lithic::BookTransferResponse::Category,
         created: Time,
         currency: String,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::BookTransferResponse::Event]),
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::BookTransferResponse::Event]),
         from_financial_account_token: String,
         pending_amount: Integer,
-        result: Lithic::Models::BookTransferResponse::Result,
+        result: Lithic::BookTransferResponse::Result,
         settled_amount: Integer,
-        status: Lithic::Models::BookTransferResponse::Status,
+        status: Lithic::BookTransferResponse::Status,
         to_financial_account_token: Lithic::Internal::Type::Unknown,
         updated: Time
       }

@@ -22,8 +22,8 @@ module Lithic
 
       # @!attribute credit_configuration
       #
-      #   @return [Lithic::Models::FinancialAccount::CreditConfiguration, nil]
-      required :credit_configuration, -> { Lithic::Models::FinancialAccount::CreditConfiguration }, nil?: true
+      #   @return [Lithic::FinancialAccount::CreditConfiguration, nil]
+      required :credit_configuration, -> { Lithic::FinancialAccount::CreditConfiguration }, nil?: true
 
       # @!attribute is_for_benefit_of
       #   Whether financial account is for the benefit of another entity
@@ -39,13 +39,13 @@ module Lithic
       # @!attribute status
       #   Status of the financial account
       #
-      #   @return [Symbol, Lithic::Models::FinancialAccount::Status]
-      required :status, enum: -> { Lithic::Models::FinancialAccount::Status }
+      #   @return [Symbol, Lithic::FinancialAccount::Status]
+      required :status, enum: -> { Lithic::FinancialAccount::Status }
 
       # @!attribute type
       #
-      #   @return [Symbol, Lithic::Models::FinancialAccount::Type]
-      required :type, enum: -> { Lithic::Models::FinancialAccount::Type }
+      #   @return [Symbol, Lithic::FinancialAccount::Type]
+      required :type, enum: -> { Lithic::FinancialAccount::Type }
 
       # @!attribute updated
       #
@@ -65,8 +65,8 @@ module Lithic
       # @!attribute substatus
       #   Substatus for the financial account
       #
-      #   @return [Symbol, Lithic::Models::FinancialAccount::Substatus, nil]
-      optional :substatus, enum: -> { Lithic::Models::FinancialAccount::Substatus }, nil?: true
+      #   @return [Symbol, Lithic::FinancialAccount::Substatus, nil]
+      optional :substatus, enum: -> { Lithic::FinancialAccount::Substatus }, nil?: true
 
       # @!method initialize(token:, account_token:, created:, credit_configuration:, is_for_benefit_of:, nickname:, status:, type:, updated:, account_number: nil, routing_number: nil, substatus: nil)
       #   @param token [String] Globally unique identifier for the account
@@ -75,15 +75,15 @@ module Lithic
       #
       #   @param created [Time]
       #
-      #   @param credit_configuration [Lithic::Models::FinancialAccount::CreditConfiguration, nil]
+      #   @param credit_configuration [Lithic::FinancialAccount::CreditConfiguration, nil]
       #
       #   @param is_for_benefit_of [Boolean] Whether financial account is for the benefit of another entity
       #
       #   @param nickname [String, nil]
       #
-      #   @param status [Symbol, Lithic::Models::FinancialAccount::Status] Status of the financial account
+      #   @param status [Symbol, Lithic::FinancialAccount::Status] Status of the financial account
       #
-      #   @param type [Symbol, Lithic::Models::FinancialAccount::Type]
+      #   @param type [Symbol, Lithic::FinancialAccount::Type]
       #
       #   @param updated [Time]
       #
@@ -91,16 +91,16 @@ module Lithic
       #
       #   @param routing_number [String, nil]
       #
-      #   @param substatus [Symbol, Lithic::Models::FinancialAccount::Substatus, nil] Substatus for the financial account
+      #   @param substatus [Symbol, Lithic::FinancialAccount::Substatus, nil] Substatus for the financial account
 
-      # @see Lithic::Models::FinancialAccount#credit_configuration
+      # @see Lithic::FinancialAccount#credit_configuration
       class CreditConfiguration < Lithic::Internal::Type::BaseModel
         # @!attribute charged_off_reason
         #   Reason for the financial account being marked as Charged Off
         #
-        #   @return [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason, nil]
+        #   @return [Symbol, Lithic::FinancialAccount::CreditConfiguration::ChargedOffReason, nil]
         required :charged_off_reason,
-                 enum: -> { Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason },
+                 enum: -> { Lithic::FinancialAccount::CreditConfiguration::ChargedOffReason },
                  nil?: true
 
         # @!attribute credit_limit
@@ -122,9 +122,9 @@ module Lithic
         # @!attribute financial_account_state
         #   State of the financial account
         #
-        #   @return [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState, nil]
+        #   @return [Symbol, Lithic::FinancialAccount::CreditConfiguration::FinancialAccountState, nil]
         required :financial_account_state,
-                 enum: -> { Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState },
+                 enum: -> { Lithic::FinancialAccount::CreditConfiguration::FinancialAccountState },
                  nil?: true
 
         # @!attribute is_spend_blocked
@@ -139,7 +139,7 @@ module Lithic
         required :tier, String, nil?: true
 
         # @!method initialize(charged_off_reason:, credit_limit:, credit_product_token:, external_bank_account_token:, financial_account_state:, is_spend_blocked:, tier:)
-        #   @param charged_off_reason [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason, nil] Reason for the financial account being marked as Charged Off
+        #   @param charged_off_reason [Symbol, Lithic::FinancialAccount::CreditConfiguration::ChargedOffReason, nil] Reason for the financial account being marked as Charged Off
         #
         #   @param credit_limit [Integer, nil]
         #
@@ -147,7 +147,7 @@ module Lithic
         #
         #   @param external_bank_account_token [String, nil]
         #
-        #   @param financial_account_state [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState, nil] State of the financial account
+        #   @param financial_account_state [Symbol, Lithic::FinancialAccount::CreditConfiguration::FinancialAccountState, nil] State of the financial account
         #
         #   @param is_spend_blocked [Boolean]
         #
@@ -155,7 +155,7 @@ module Lithic
 
         # Reason for the financial account being marked as Charged Off
         #
-        # @see Lithic::Models::FinancialAccount::CreditConfiguration#charged_off_reason
+        # @see Lithic::FinancialAccount::CreditConfiguration#charged_off_reason
         module ChargedOffReason
           extend Lithic::Internal::Type::Enum
 
@@ -168,7 +168,7 @@ module Lithic
 
         # State of the financial account
         #
-        # @see Lithic::Models::FinancialAccount::CreditConfiguration#financial_account_state
+        # @see Lithic::FinancialAccount::CreditConfiguration#financial_account_state
         module FinancialAccountState
           extend Lithic::Internal::Type::Enum
 
@@ -184,7 +184,7 @@ module Lithic
 
       # Status of the financial account
       #
-      # @see Lithic::Models::FinancialAccount#status
+      # @see Lithic::FinancialAccount#status
       module Status
         extend Lithic::Internal::Type::Enum
 
@@ -197,7 +197,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::Models::FinancialAccount#type
+      # @see Lithic::FinancialAccount#type
       module Type
         extend Lithic::Internal::Type::Enum
 
@@ -216,7 +216,7 @@ module Lithic
 
       # Substatus for the financial account
       #
-      # @see Lithic::Models::FinancialAccount#substatus
+      # @see Lithic::FinancialAccount#substatus
       module Substatus
         extend Lithic::Internal::Type::Enum
 

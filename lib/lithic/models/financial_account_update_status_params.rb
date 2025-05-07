@@ -10,21 +10,19 @@ module Lithic
       # @!attribute status
       #   Status of the financial account
       #
-      #   @return [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status]
-      required :status, enum: -> { Lithic::Models::FinancialAccountUpdateStatusParams::Status }
+      #   @return [Symbol, Lithic::FinancialAccountUpdateStatusParams::Status]
+      required :status, enum: -> { Lithic::FinancialAccountUpdateStatusParams::Status }
 
       # @!attribute substatus
       #   Substatus for the financial account
       #
-      #   @return [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil]
-      required :substatus,
-               enum: -> { Lithic::Models::FinancialAccountUpdateStatusParams::Substatus },
-               nil?: true
+      #   @return [Symbol, Lithic::FinancialAccountUpdateStatusParams::Substatus, nil]
+      required :substatus, enum: -> { Lithic::FinancialAccountUpdateStatusParams::Substatus }, nil?: true
 
       # @!method initialize(status:, substatus:, request_options: {})
-      #   @param status [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status] Status of the financial account
+      #   @param status [Symbol, Lithic::FinancialAccountUpdateStatusParams::Status] Status of the financial account
       #
-      #   @param substatus [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil] Substatus for the financial account
+      #   @param substatus [Symbol, Lithic::FinancialAccountUpdateStatusParams::Substatus, nil] Substatus for the financial account
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

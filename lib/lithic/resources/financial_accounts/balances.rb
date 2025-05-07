@@ -15,7 +15,7 @@ module Lithic
         #
         # @param balance_date [Time] UTC date of the balance to retrieve. Defaults to latest available balance
         #
-        # @param last_transaction_event_token [String] Balance after a given financial event occured. ...
+        # @param last_transaction_event_token [String] Balance after a given financial event occured.
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -23,7 +23,7 @@ module Lithic
         #
         # @see Lithic::Models::FinancialAccounts::BalanceListParams
         def list(financial_account_token, params = {})
-          parsed, options = Lithic::Models::FinancialAccounts::BalanceListParams.dump_request(params)
+          parsed, options = Lithic::FinancialAccounts::BalanceListParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["v1/financial_accounts/%1$s/balances", financial_account_token],

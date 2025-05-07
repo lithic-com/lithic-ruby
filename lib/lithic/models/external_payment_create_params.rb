@@ -14,8 +14,8 @@ module Lithic
 
       # @!attribute category
       #
-      #   @return [Symbol, Lithic::Models::ExternalPaymentCreateParams::Category]
-      required :category, enum: -> { Lithic::Models::ExternalPaymentCreateParams::Category }
+      #   @return [Symbol, Lithic::ExternalPaymentCreateParams::Category]
+      required :category, enum: -> { Lithic::ExternalPaymentCreateParams::Category }
 
       # @!attribute effective_date
       #
@@ -29,8 +29,8 @@ module Lithic
 
       # @!attribute payment_type
       #
-      #   @return [Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType]
-      required :payment_type, enum: -> { Lithic::Models::ExternalPaymentCreateParams::PaymentType }
+      #   @return [Symbol, Lithic::ExternalPaymentCreateParams::PaymentType]
+      required :payment_type, enum: -> { Lithic::ExternalPaymentCreateParams::PaymentType }
 
       # @!attribute token
       #
@@ -44,8 +44,8 @@ module Lithic
 
       # @!attribute progress_to
       #
-      #   @return [Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo, nil]
-      optional :progress_to, enum: -> { Lithic::Models::ExternalPaymentCreateParams::ProgressTo }
+      #   @return [Symbol, Lithic::ExternalPaymentCreateParams::ProgressTo, nil]
+      optional :progress_to, enum: -> { Lithic::ExternalPaymentCreateParams::ProgressTo }
 
       # @!attribute user_defined_id
       #
@@ -54,13 +54,13 @@ module Lithic
 
       # @!method initialize(amount:, category:, effective_date:, financial_account_token:, payment_type:, token: nil, memo: nil, progress_to: nil, user_defined_id: nil, request_options: {})
       #   @param amount [Integer]
-      #   @param category [Symbol, Lithic::Models::ExternalPaymentCreateParams::Category]
+      #   @param category [Symbol, Lithic::ExternalPaymentCreateParams::Category]
       #   @param effective_date [Date]
       #   @param financial_account_token [String]
-      #   @param payment_type [Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType]
+      #   @param payment_type [Symbol, Lithic::ExternalPaymentCreateParams::PaymentType]
       #   @param token [String]
       #   @param memo [String]
-      #   @param progress_to [Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo]
+      #   @param progress_to [Symbol, Lithic::ExternalPaymentCreateParams::ProgressTo]
       #   @param user_defined_id [String]
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

@@ -6,7 +6,7 @@ module Lithic
         external_bank_account_token: String,
         financial_account_token: String,
         method_: Lithic::Models::PaymentCreateParams::method_,
-        method_attributes: Lithic::Models::PaymentCreateParams::MethodAttributes,
+        method_attributes: Lithic::PaymentCreateParams::MethodAttributes,
         type: Lithic::Models::PaymentCreateParams::type_,
         token: String,
         memo: String,
@@ -26,7 +26,7 @@ module Lithic
 
       attr_accessor method_: Lithic::Models::PaymentCreateParams::method_
 
-      attr_accessor method_attributes: Lithic::Models::PaymentCreateParams::MethodAttributes
+      attr_accessor method_attributes: Lithic::PaymentCreateParams::MethodAttributes
 
       attr_accessor type: Lithic::Models::PaymentCreateParams::type_
 
@@ -47,15 +47,13 @@ module Lithic
         external_bank_account_token: String,
         financial_account_token: String,
         method_: Lithic::Models::PaymentCreateParams::method_,
-        method_attributes: Lithic::Models::PaymentCreateParams::MethodAttributes,
+        method_attributes: Lithic::PaymentCreateParams::MethodAttributes,
         type: Lithic::Models::PaymentCreateParams::type_,
         ?token: String,
         ?memo: String,
         ?user_defined_id: String,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::payment_create_params
 
       type method_ = :ACH_NEXT_DAY | :ACH_SAME_DAY
 
@@ -69,18 +67,14 @@ module Lithic
       end
 
       type method_attributes =
-        {
-          sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code
-        }
+        { sec_code: Lithic::PaymentCreateParams::MethodAttributes::sec_code }
 
       class MethodAttributes < Lithic::Internal::Type::BaseModel
-        attr_accessor sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code
+        attr_accessor sec_code: Lithic::PaymentCreateParams::MethodAttributes::sec_code
 
         def initialize: (
-          sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code
+          sec_code: Lithic::PaymentCreateParams::MethodAttributes::sec_code
         ) -> void
-
-        def to_hash: -> Lithic::Models::PaymentCreateParams::method_attributes
 
         type sec_code = :CCD | :PPD | :WEB
 
@@ -91,7 +85,7 @@ module Lithic
           PPD: :PPD
           WEB: :WEB
 
-          def self?.values: -> ::Array[Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code]
+          def self?.values: -> ::Array[Lithic::PaymentCreateParams::MethodAttributes::sec_code]
         end
       end
 

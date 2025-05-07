@@ -6,12 +6,14 @@ module Lithic
 
     module AuthRules
       class AuthRule < Lithic::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Globally unique identifier.
         sig { returns(String) }
         attr_accessor :token
 
         # Indicates whether the Auth Rule is ACTIVE or INACTIVE
-        sig { returns(Lithic::Models::AuthRules::AuthRule::State::OrSymbol) }
+        sig { returns(Lithic::AuthRules::AuthRule::State::OrSymbol) }
         attr_accessor :state
 
         # Array of account_token(s) identifying the accounts that the Auth Rule applies
@@ -72,7 +74,7 @@ module Lithic
         sig do
           params(
             token: String,
-            state: Lithic::Models::AuthRules::AuthRule::State::OrSymbol,
+            state: Lithic::AuthRules::AuthRule::State::OrSymbol,
             account_tokens: T::Array[String],
             allowed_countries: T::Array[String],
             allowed_mcc: T::Array[String],
@@ -80,8 +82,7 @@ module Lithic
             blocked_mcc: T::Array[String],
             card_tokens: T::Array[String],
             program_level: T::Boolean
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Globally unique identifier.
@@ -108,37 +109,47 @@ module Lithic
           card_tokens: nil,
           # Boolean indicating whether the Auth Rule is applied at the program level.
           program_level: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                token: String,
-                state: Lithic::Models::AuthRules::AuthRule::State::OrSymbol,
-                account_tokens: T::Array[String],
-                allowed_countries: T::Array[String],
-                allowed_mcc: T::Array[String],
-                blocked_countries: T::Array[String],
-                blocked_mcc: T::Array[String],
-                card_tokens: T::Array[String],
-                program_level: T::Boolean
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              token: String,
+              state: Lithic::AuthRules::AuthRule::State::OrSymbol,
+              account_tokens: T::Array[String],
+              allowed_countries: T::Array[String],
+              allowed_mcc: T::Array[String],
+              blocked_countries: T::Array[String],
+              blocked_mcc: T::Array[String],
+              card_tokens: T::Array[String],
+              program_level: T::Boolean
+            }
+          )
+        end
+        def to_hash
+        end
 
         # Indicates whether the Auth Rule is ACTIVE or INACTIVE
         module State
           extend Lithic::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AuthRules::AuthRule::State) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::AuthRules::AuthRule::State) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ACTIVE = T.let(:ACTIVE, Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol)
-          INACTIVE = T.let(:INACTIVE, Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol)
+          ACTIVE =
+            T.let(:ACTIVE, Lithic::AuthRules::AuthRule::State::TaggedSymbol)
+          INACTIVE =
+            T.let(:INACTIVE, Lithic::AuthRules::AuthRule::State::TaggedSymbol)
 
-          sig { override.returns(T::Array[Lithic::Models::AuthRules::AuthRule::State::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Lithic::AuthRules::AuthRule::State::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

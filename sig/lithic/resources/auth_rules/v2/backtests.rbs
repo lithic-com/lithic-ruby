@@ -14,7 +14,7 @@ module Lithic
             String auth_rule_backtest_token,
             auth_rule_token: String,
             ?request_options: Lithic::request_opts
-          ) -> Lithic::Models::AuthRules::V2::BacktestResults
+          ) -> Lithic::AuthRules::V2::BacktestResults
 
           def initialize: (client: Lithic::Client) -> void
         end

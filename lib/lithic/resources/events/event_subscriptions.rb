@@ -16,7 +16,7 @@ module Lithic
         #
         # @see Lithic::Models::Events::EventSubscriptionResendParams
         def resend(event_subscription_token, params)
-          parsed, options = Lithic::Models::Events::EventSubscriptionResendParams.dump_request(params)
+          parsed, options = Lithic::Events::EventSubscriptionResendParams.dump_request(params)
           event_token =
             parsed.delete(:event_token) do
               raise ArgumentError.new("missing required path argument #{_1}")

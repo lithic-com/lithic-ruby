@@ -6,14 +6,22 @@ module Lithic
     module AccountFinancialAccountType
       extend Lithic::Internal::Type::Enum
 
-      TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::AccountFinancialAccountType) }
+      TaggedSymbol =
+        T.type_alias { T.all(Symbol, Lithic::AccountFinancialAccountType) }
       OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-      ISSUING = T.let(:ISSUING, Lithic::Models::AccountFinancialAccountType::TaggedSymbol)
-      OPERATING = T.let(:OPERATING, Lithic::Models::AccountFinancialAccountType::TaggedSymbol)
+      ISSUING =
+        T.let(:ISSUING, Lithic::AccountFinancialAccountType::TaggedSymbol)
+      OPERATING =
+        T.let(:OPERATING, Lithic::AccountFinancialAccountType::TaggedSymbol)
 
-      sig { override.returns(T::Array[Lithic::Models::AccountFinancialAccountType::TaggedSymbol]) }
-      def self.values; end
+      sig do
+        override.returns(
+          T::Array[Lithic::AccountFinancialAccountType::TaggedSymbol]
+        )
+      end
+      def self.values
+      end
     end
   end
 end

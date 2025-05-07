@@ -20,8 +20,8 @@ module Lithic
 
       # @!attribute details
       #
-      #   @return [Array<Lithic::Models::SettlementSummaryDetails>]
-      required :details, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::SettlementSummaryDetails] }
+      #   @return [Array<Lithic::SettlementSummaryDetails>]
+      required :details, -> { Lithic::Internal::Type::ArrayOf[Lithic::SettlementSummaryDetails] }
 
       # @!attribute disputes_gross_amount
       #   @deprecated
@@ -96,34 +96,28 @@ module Lithic
       required :updated, Time
 
       # @!method initialize(created:, currency:, details:, disputes_gross_amount:, interchange_gross_amount:, is_complete:, other_fees_gross_amount:, report_date:, settled_net_amount:, transactions_gross_amount:, updated:)
-      #   Some parameter documentations has been truncated, see
-      #   {Lithic::Models::SettlementReport} for more details.
+      #   Some parameter documentations has been truncated, see {Lithic::SettlementReport}
+      #   for more details.
       #
       #   @param created [Time] Date and time when the transaction first occurred. UTC time zone.
       #
       #   @param currency [String] 3-character alphabetic ISO 4217 code. (This field is deprecated and will be remo
-      #   ...
       #
-      #   @param details [Array<Lithic::Models::SettlementSummaryDetails>]
+      #   @param details [Array<Lithic::SettlementSummaryDetails>]
       #
       #   @param disputes_gross_amount [Integer] The total gross amount of disputes settlements. (This field is deprecated and wi
-      #   ...
       #
       #   @param interchange_gross_amount [Integer] The total amount of interchange. (This field is deprecated and will be removed i
-      #   ...
       #
       #   @param is_complete [Boolean] Indicates that all data expected on the given report date is available.
       #
       #   @param other_fees_gross_amount [Integer] Total amount of gross other fees outside of interchange. (This field is deprecat
-      #   ...
       #
       #   @param report_date [String] Date of when the report was first generated.
       #
       #   @param settled_net_amount [Integer] The total net amount of cash moved. (net value of settled_gross_amount, intercha
-      #   ...
       #
       #   @param transactions_gross_amount [Integer] The total amount of settlement impacting transactions (excluding interchange, fe
-      #   ...
       #
       #   @param updated [Time] Date and time when the transaction first occurred. UTC time zone.
     end

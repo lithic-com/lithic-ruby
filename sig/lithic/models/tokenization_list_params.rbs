@@ -63,8 +63,6 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> Lithic::Models::tokenization_list_params
-
       type tokenization_channel = :DIGITAL_WALLET | :MERCHANT | :ALL
 
       module TokenizationChannel

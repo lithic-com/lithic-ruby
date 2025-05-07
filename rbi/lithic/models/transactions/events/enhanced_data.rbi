@@ -5,18 +5,20 @@ module Lithic
     module Transactions
       module Events
         class EnhancedData < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # A unique identifier for the enhanced commercial data.
           sig { returns(String) }
           attr_accessor :token
 
-          sig { returns(Lithic::Models::Transactions::Events::EnhancedData::Common) }
+          sig { returns(Lithic::Transactions::Events::EnhancedData::Common) }
           attr_reader :common
 
           sig do
             params(
-              common: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Internal::AnyHash)
-            )
-              .void
+              common: Lithic::Transactions::Events::EnhancedData::Common::OrHash
+            ).void
           end
           attr_writer :common
 
@@ -24,7 +26,9 @@ module Lithic
           sig { returns(String) }
           attr_accessor :event_token
 
-          sig { returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet]) }
+          sig do
+            returns(T::Array[Lithic::Transactions::Events::EnhancedData::Fleet])
+          end
           attr_accessor :fleet
 
           # The token of the transaction that the enhanced data is associated with.
@@ -34,12 +38,15 @@ module Lithic
           sig do
             params(
               token: String,
-              common: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common, Lithic::Internal::AnyHash),
+              common:
+                Lithic::Transactions::Events::EnhancedData::Common::OrHash,
               event_token: String,
-              fleet: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet, Lithic::Internal::AnyHash)],
+              fleet:
+                T::Array[
+                  Lithic::Transactions::Events::EnhancedData::Fleet::OrHash
+                ],
               transaction_token: String
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # A unique identifier for the enhanced commercial data.
@@ -50,33 +57,47 @@ module Lithic
             fleet:,
             # The token of the transaction that the enhanced data is associated with.
             transaction_token:
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  token: String,
-                  common: Lithic::Models::Transactions::Events::EnhancedData::Common,
-                  event_token: String,
-                  fleet: T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet],
-                  transaction_token: String
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                token: String,
+                common: Lithic::Transactions::Events::EnhancedData::Common,
+                event_token: String,
+                fleet:
+                  T::Array[Lithic::Transactions::Events::EnhancedData::Fleet],
+                transaction_token: String
+              }
+            )
+          end
+          def to_hash
+          end
 
           class Common < Lithic::Internal::Type::BaseModel
-            sig { returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem]) }
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
+            sig do
+              returns(
+                T::Array[
+                  Lithic::Transactions::Events::EnhancedData::Common::LineItem
+                ]
+              )
+            end
             attr_accessor :line_items
 
-            sig { returns(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax) }
+            sig do
+              returns(Lithic::Transactions::Events::EnhancedData::Common::Tax)
+            end
             attr_reader :tax
 
             sig do
               params(
-                tax: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Internal::AnyHash)
-              )
-                .void
+                tax:
+                  Lithic::Transactions::Events::EnhancedData::Common::Tax::OrHash
+              ).void
             end
             attr_writer :tax
 
@@ -103,13 +124,16 @@ module Lithic
 
             sig do
               params(
-                line_items: T::Array[T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem, Lithic::Internal::AnyHash)],
-                tax: T.any(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax, Lithic::Internal::AnyHash),
+                line_items:
+                  T::Array[
+                    Lithic::Transactions::Events::EnhancedData::Common::LineItem::OrHash
+                  ],
+                tax:
+                  Lithic::Transactions::Events::EnhancedData::Common::Tax::OrHash,
                 customer_reference_number: String,
                 merchant_reference_number: String,
                 order_date: Date
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               line_items:,
@@ -120,22 +144,30 @@ module Lithic
               merchant_reference_number: nil,
               # The date of the order.
               order_date: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    line_items: T::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem],
-                    tax: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax,
-                    customer_reference_number: String,
-                    merchant_reference_number: String,
-                    order_date: Date
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  line_items:
+                    T::Array[
+                      Lithic::Transactions::Events::EnhancedData::Common::LineItem
+                    ],
+                  tax: Lithic::Transactions::Events::EnhancedData::Common::Tax,
+                  customer_reference_number: String,
+                  merchant_reference_number: String,
+                  order_date: Date
+                }
+              )
+            end
+            def to_hash
+            end
 
             class LineItem < Lithic::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
               # The price of the item purchased in merchant currency.
               sig { returns(T.nilable(Float)) }
               attr_reader :amount
@@ -182,14 +214,27 @@ module Lithic
                 product_code: nil,
                 # The quantity of the item purchased.
                 quantity: nil
-              ); end
-              sig do
-                override.returns({amount: Float, description: String, product_code: String, quantity: Float})
+              )
               end
-              def to_hash; end
+
+              sig do
+                override.returns(
+                  {
+                    amount: Float,
+                    description: String,
+                    product_code: String,
+                    quantity: Float
+                  }
+                )
+              end
+              def to_hash
+              end
             end
 
             class Tax < Lithic::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
               # The amount of tax collected.
               sig { returns(T.nilable(Integer)) }
               attr_reader :amount
@@ -198,10 +243,21 @@ module Lithic
               attr_writer :amount
 
               # A flag indicating whether the transaction is tax exempt or not.
-              sig { returns(T.nilable(Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol)) }
+              sig do
+                returns(
+                  T.nilable(
+                    Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
+                  )
+                )
+              end
               attr_reader :exempt
 
-              sig { params(exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::OrSymbol).void }
+              sig do
+                params(
+                  exempt:
+                    Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt::OrSymbol
+                ).void
+              end
               attr_writer :exempt
 
               # The tax ID of the merchant.
@@ -214,10 +270,10 @@ module Lithic
               sig do
                 params(
                   amount: Integer,
-                  exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::OrSymbol,
+                  exempt:
+                    Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt::OrSymbol,
                   merchant_tax_id: String
-                )
-                  .returns(T.attached_class)
+                ).returns(T.attached_class)
               end
               def self.new(
                 # The amount of tax collected.
@@ -226,72 +282,93 @@ module Lithic
                 exempt: nil,
                 # The tax ID of the merchant.
                 merchant_tax_id: nil
-              ); end
-              sig do
-                override
-                  .returns(
-                    {
-                      amount: Integer,
-                      exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol,
-                      merchant_tax_id: String
-                    }
-                  )
+              )
               end
-              def to_hash; end
+
+              sig do
+                override.returns(
+                  {
+                    amount: Integer,
+                    exempt:
+                      Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol,
+                    merchant_tax_id: String
+                  }
+                )
+              end
+              def to_hash
+              end
 
               # A flag indicating whether the transaction is tax exempt or not.
               module Exempt
                 extend Lithic::Internal::Type::Enum
 
                 TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt) }
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt
+                    )
+                  end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 TAX_INCLUDED =
                   T.let(
                     :TAX_INCLUDED,
-                    Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
                   )
                 TAX_NOT_INCLUDED =
                   T.let(
                     :TAX_NOT_INCLUDED,
-                    Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
                   )
                 NOT_SUPPORTED =
                   T.let(
                     :NOT_SUPPORTED,
-                    Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
                   )
 
                 sig do
-                  override
-                    .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol])
+                  override.returns(
+                    T::Array[
+                      Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
+                    ]
+                  )
                 end
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
 
           class Fleet < Lithic::Internal::Type::BaseModel
-            sig { returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals) }
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
+            sig do
+              returns(
+                Lithic::Transactions::Events::EnhancedData::Fleet::AmountTotals
+              )
+            end
             attr_reader :amount_totals
 
             sig do
               params(
-                amount_totals: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals, Lithic::Internal::AnyHash)
-              )
-                .void
+                amount_totals:
+                  Lithic::Transactions::Events::EnhancedData::Fleet::AmountTotals::OrHash
+              ).void
             end
             attr_writer :amount_totals
 
-            sig { returns(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel) }
+            sig do
+              returns(Lithic::Transactions::Events::EnhancedData::Fleet::Fuel)
+            end
             attr_reader :fuel
 
             sig do
               params(
-                fuel: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Internal::AnyHash)
-              )
-                .void
+                fuel:
+                  Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::OrHash
+              ).void
             end
             attr_writer :fuel
 
@@ -311,11 +388,20 @@ module Lithic
             attr_writer :odometer
 
             # The type of fuel service.
-            sig { returns(T.nilable(Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)) }
+            sig do
+              returns(
+                T.nilable(
+                  Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol
+                )
+              )
+            end
             attr_reader :service_type
 
             sig do
-              params(service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol).void
+              params(
+                service_type:
+                  Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol
+              ).void
             end
             attr_writer :service_type
 
@@ -329,14 +415,16 @@ module Lithic
 
             sig do
               params(
-                amount_totals: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals, Lithic::Internal::AnyHash),
-                fuel: T.any(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel, Lithic::Internal::AnyHash),
+                amount_totals:
+                  Lithic::Transactions::Events::EnhancedData::Fleet::AmountTotals::OrHash,
+                fuel:
+                  Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::OrHash,
                 driver_number: String,
                 odometer: Integer,
-                service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol,
+                service_type:
+                  Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol,
                 vehicle_number: String
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               amount_totals:,
@@ -351,23 +439,30 @@ module Lithic
               # The vehicle number entered into the terminal at the time of sale, with leading
               # zeros stripped.
               vehicle_number: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    amount_totals: Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals,
-                    fuel: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel,
-                    driver_number: String,
-                    odometer: Integer,
-                    service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol,
-                    vehicle_number: String
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  amount_totals:
+                    Lithic::Transactions::Events::EnhancedData::Fleet::AmountTotals,
+                  fuel: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel,
+                  driver_number: String,
+                  odometer: Integer,
+                  service_type:
+                    Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol,
+                  vehicle_number: String
+                }
+              )
+            end
+            def to_hash
+            end
 
             class AmountTotals < Lithic::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
               # The discount applied to the gross sale amount.
               sig { returns(T.nilable(Integer)) }
               attr_reader :discount
@@ -390,7 +485,11 @@ module Lithic
               attr_writer :net_sale
 
               sig do
-                params(discount: Integer, gross_sale: Integer, net_sale: Integer).returns(T.attached_class)
+                params(
+                  discount: Integer,
+                  gross_sale: Integer,
+                  net_sale: Integer
+                ).returns(T.attached_class)
               end
               def self.new(
                 # The discount applied to the gross sale amount.
@@ -399,12 +498,22 @@ module Lithic
                 gross_sale: nil,
                 # The amount after discount.
                 net_sale: nil
-              ); end
-              sig { override.returns({discount: Integer, gross_sale: Integer, net_sale: Integer}) }
-              def to_hash; end
+              )
+              end
+
+              sig do
+                override.returns(
+                  { discount: Integer, gross_sale: Integer, net_sale: Integer }
+                )
+              end
+              def to_hash
+              end
             end
 
             class Fuel < Lithic::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
               # The quantity of fuel purchased.
               sig { returns(T.nilable(Float)) }
               attr_reader :quantity
@@ -413,25 +522,38 @@ module Lithic
               attr_writer :quantity
 
               # The type of fuel purchased.
-              sig { returns(T.nilable(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)) }
+              sig do
+                returns(
+                  T.nilable(
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
+                )
+              end
               attr_reader :type
 
-              sig { params(type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::OrSymbol).void }
+              sig do
+                params(
+                  type:
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::OrSymbol
+                ).void
+              end
               attr_writer :type
 
               # Unit of measure for fuel disbursement.
               sig do
                 returns(
-                  T.nilable(Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol)
+                  T.nilable(
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                  )
                 )
               end
               attr_reader :unit_of_measure
 
               sig do
                 params(
-                  unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::OrSymbol
-                )
-                  .void
+                  unit_of_measure:
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::OrSymbol
+                ).void
               end
               attr_writer :unit_of_measure
 
@@ -445,11 +567,12 @@ module Lithic
               sig do
                 params(
                   quantity: Float,
-                  type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::OrSymbol,
-                  unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::OrSymbol,
+                  type:
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::OrSymbol,
+                  unit_of_measure:
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::OrSymbol,
                   unit_price: Integer
-                )
-                  .returns(T.attached_class)
+                ).returns(T.attached_class)
               end
               def self.new(
                 # The quantity of fuel purchased.
@@ -460,558 +583,632 @@ module Lithic
                 unit_of_measure: nil,
                 # The price per unit of fuel.
                 unit_price: nil
-              ); end
-              sig do
-                override
-                  .returns(
-                    {
-                      quantity: Float,
-                      type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol,
-                      unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol,
-                      unit_price: Integer
-                    }
-                  )
+              )
               end
-              def to_hash; end
+
+              sig do
+                override.returns(
+                  {
+                    quantity: Float,
+                    type:
+                      Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol,
+                    unit_of_measure:
+                      Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol,
+                    unit_price: Integer
+                  }
+                )
+              end
+              def to_hash
+              end
 
               # The type of fuel purchased.
               module Type
                 extend Lithic::Internal::Type::Enum
 
                 TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type) }
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type
+                    )
+                  end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 UNKNOWN =
-                  T.let(:UNKNOWN, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :UNKNOWN,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 REGULAR =
-                  T.let(:REGULAR, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :REGULAR,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 MID_PLUS =
-                  T.let(:MID_PLUS, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :MID_PLUS,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 PREMIUM_SUPER =
-                  T.let(:PREMIUM_SUPER, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :PREMIUM_SUPER,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 MID_PLUS_2 =
-                  T.let(:MID_PLUS_2, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :MID_PLUS_2,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 PREMIUM_SUPER_2 =
                   T.let(
                     :PREMIUM_SUPER_2,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 ETHANOL_5_7_BLEND =
                   T.let(
                     :ETHANOL_5_7_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 MID_PLUS_ETHANOL_5_7_PERCENT_BLEND =
                   T.let(
                     :MID_PLUS_ETHANOL_5_7_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 PREMIUM_SUPER_ETHANOL_5_7_PERCENT_BLEND =
                   T.let(
                     :PREMIUM_SUPER_ETHANOL_5_7_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 ETHANOL_7_7_PERCENT_BLEND =
                   T.let(
                     :ETHANOL_7_7_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 MID_PLUS_ETHANOL_7_7_PERCENT_BLEND =
                   T.let(
                     :MID_PLUS_ETHANOL_7_7_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 GREEN_GASOLINE_REGULAR =
                   T.let(
                     :GREEN_GASOLINE_REGULAR,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 GREEN_GASOLINE_MID_PLUS =
                   T.let(
                     :GREEN_GASOLINE_MID_PLUS,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 GREEN_GASOLINE_PREMIUM_SUPER =
                   T.let(
                     :GREEN_GASOLINE_PREMIUM_SUPER,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 REGULAR_DIESEL_2 =
                   T.let(
                     :REGULAR_DIESEL_2,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 PREMIUM_DIESEL_2 =
                   T.let(
                     :PREMIUM_DIESEL_2,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 REGULAR_DIESEL_1 =
                   T.let(
                     :REGULAR_DIESEL_1,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 COMPRESSED_NATURAL_GAS =
                   T.let(
                     :COMPRESSED_NATURAL_GAS,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 LIQUID_PROPANE_GAS =
                   T.let(
                     :LIQUID_PROPANE_GAS,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 LIQUID_NATURAL_GAS =
                   T.let(
                     :LIQUID_NATURAL_GAS,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
-                E_85 = T.let(:E_85, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                E_85 =
+                  T.let(
+                    :E_85,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 REFORMULATED_1 =
                   T.let(
                     :REFORMULATED_1,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 REFORMULATED_2 =
                   T.let(
                     :REFORMULATED_2,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 REFORMULATED_3 =
                   T.let(
                     :REFORMULATED_3,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 REFORMULATED_4 =
                   T.let(
                     :REFORMULATED_4,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 REFORMULATED_5 =
                   T.let(
                     :REFORMULATED_5,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 DIESEL_OFF_ROAD_1_AND_2_NON_TAXABLE =
                   T.let(
                     :DIESEL_OFF_ROAD_1_AND_2_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 DIESEL_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :DIESEL_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 BIODIESEL_BLEND_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :BIODIESEL_BLEND_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 UNDEFINED_FUEL =
                   T.let(
                     :UNDEFINED_FUEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 RACING_FUEL =
-                  T.let(:RACING_FUEL, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :RACING_FUEL,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 MID_PLUS_2_10_PERCENT_BLEND =
                   T.let(
                     :MID_PLUS_2_10_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 PREMIUM_SUPER_2_10_PERCENT_BLEND =
                   T.let(
                     :PREMIUM_SUPER_2_10_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 MID_PLUS_ETHANOL_2_15_PERCENT_BLEND =
                   T.let(
                     :MID_PLUS_ETHANOL_2_15_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 PREMIUM_SUPER_ETHANOL_2_15_PERCENT_BLEND =
                   T.let(
                     :PREMIUM_SUPER_ETHANOL_2_15_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 PREMIUM_SUPER_ETHANOL_7_7_PERCENT_BLEND =
                   T.let(
                     :PREMIUM_SUPER_ETHANOL_7_7_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 REGULAR_ETHANOL_10_PERCENT_BLEND =
                   T.let(
                     :REGULAR_ETHANOL_10_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 MID_PLUS_ETHANOL_10_PERCENT_BLEND =
                   T.let(
                     :MID_PLUS_ETHANOL_10_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 PREMIUM_SUPER_ETHANOL_10_PERCENT_BLEND =
                   T.let(
                     :PREMIUM_SUPER_ETHANOL_10_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 B2_DIESEL_BLEND_2_PERCENT_BIODIESEL =
                   T.let(
                     :B2_DIESEL_BLEND_2_PERCENT_BIODIESEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 B5_DIESEL_BLEND_5_PERCENT_BIODIESEL =
                   T.let(
                     :B5_DIESEL_BLEND_5_PERCENT_BIODIESEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 B10_DIESEL_BLEND_10_PERCENT_BIODIESEL =
                   T.let(
                     :B10_DIESEL_BLEND_10_PERCENT_BIODIESEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 B11_DIESEL_BLEND_11_PERCENT_BIODIESEL =
                   T.let(
                     :B11_DIESEL_BLEND_11_PERCENT_BIODIESEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 B15_DIESEL_BLEND_15_PERCENT_BIODIESEL =
                   T.let(
                     :B15_DIESEL_BLEND_15_PERCENT_BIODIESEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 B20_DIESEL_BLEND_20_PERCENT_BIODIESEL =
                   T.let(
                     :B20_DIESEL_BLEND_20_PERCENT_BIODIESEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 B100_DIESEL_BLEND_100_PERCENT_BIODIESEL =
                   T.let(
                     :B100_DIESEL_BLEND_100_PERCENT_BIODIESEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 B1_DIESEL_BLEND_1_PERCENT_BIODIESEL =
                   T.let(
                     :B1_DIESEL_BLEND_1_PERCENT_BIODIESEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 ADDITIZED_DIESEL_2 =
                   T.let(
                     :ADDITIZED_DIESEL_2,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 ADDITIZED_DIESEL_3 =
                   T.let(
                     :ADDITIZED_DIESEL_3,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 RENEWABLE_DIESEL_R95 =
                   T.let(
                     :RENEWABLE_DIESEL_R95,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT =
                   T.let(
                     :RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 DIESEL_EXHAUST_FLUID =
                   T.let(
                     :DIESEL_EXHAUST_FLUID,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 PREMIUM_DIESEL_1 =
                   T.let(
                     :PREMIUM_DIESEL_1,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 REGULAR_ETHANOL_15_PERCENT_BLEND =
                   T.let(
                     :REGULAR_ETHANOL_15_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 MID_PLUS_ETHANOL_15_PERCENT_BLEND =
                   T.let(
                     :MID_PLUS_ETHANOL_15_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 PREMIUM_SUPER_ETHANOL_15_PERCENT_BLEND =
                   T.let(
                     :PREMIUM_SUPER_ETHANOL_15_PERCENT_BLEND,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 PREMIUM_DIESEL_BLEND_LESS_THAN_20_PERCENT_BIODIESEL =
                   T.let(
                     :PREMIUM_DIESEL_BLEND_LESS_THAN_20_PERCENT_BIODIESEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 PREMIUM_DIESEL_BLEND_GREATER_THAN_20_PERCENT_BIODIESEL =
                   T.let(
                     :PREMIUM_DIESEL_BLEND_GREATER_THAN_20_PERCENT_BIODIESEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 B75_DIESEL_BLEND_75_PERCENT_BIODIESEL =
                   T.let(
                     :B75_DIESEL_BLEND_75_PERCENT_BIODIESEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 B99_DIESEL_BLEND_99_PERCENT_BIODIESEL =
                   T.let(
                     :B99_DIESEL_BLEND_99_PERCENT_BIODIESEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 MISCELLANEOUS_FUEL =
                   T.let(
                     :MISCELLANEOUS_FUEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 JET_FUEL =
-                  T.let(:JET_FUEL, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :JET_FUEL,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 AVIATION_FUEL_REGULAR =
                   T.let(
                     :AVIATION_FUEL_REGULAR,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 AVIATION_FUEL_PREMIUM =
                   T.let(
                     :AVIATION_FUEL_PREMIUM,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 AVIATION_FUEL_JP8 =
                   T.let(
                     :AVIATION_FUEL_JP8,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 AVIATION_FUEL_4 =
                   T.let(
                     :AVIATION_FUEL_4,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 AVIATION_FUEL_5 =
                   T.let(
                     :AVIATION_FUEL_5,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 BIOJET_DIESEL =
-                  T.let(:BIOJET_DIESEL, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :BIOJET_DIESEL,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 AVIATION_BIOFUEL_GASOLINE =
                   T.let(
                     :AVIATION_BIOFUEL_GASOLINE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 MISCELLANEOUS_AVIATION_FUEL =
                   T.let(
                     :MISCELLANEOUS_AVIATION_FUEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 MARINE_FUEL_1 =
-                  T.let(:MARINE_FUEL_1, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :MARINE_FUEL_1,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 MARINE_FUEL_2 =
-                  T.let(:MARINE_FUEL_2, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :MARINE_FUEL_2,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 MARINE_FUEL_3 =
-                  T.let(:MARINE_FUEL_3, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :MARINE_FUEL_3,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 MARINE_FUEL_4 =
-                  T.let(:MARINE_FUEL_4, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :MARINE_FUEL_4,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 MARINE_FUEL_5 =
-                  T.let(:MARINE_FUEL_5, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :MARINE_FUEL_5,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 MARINE_OTHER =
-                  T.let(:MARINE_OTHER, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :MARINE_OTHER,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 MARINE_DIESEL =
-                  T.let(:MARINE_DIESEL, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :MARINE_DIESEL,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 MISCELLANEOUS_MARINE_FUEL =
                   T.let(
                     :MISCELLANEOUS_MARINE_FUEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 KEROSENE_LOW_SULFUR =
                   T.let(
                     :KEROSENE_LOW_SULFUR,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 WHITE_GAS =
-                  T.let(:WHITE_GAS, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :WHITE_GAS,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 HEATING_OIL =
-                  T.let(:HEATING_OIL, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :HEATING_OIL,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 OTHER_FUEL_NON_TAXABLE =
                   T.let(
                     :OTHER_FUEL_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 KEROSENE_ULTRA_LOW_SULFUR =
                   T.let(
                     :KEROSENE_ULTRA_LOW_SULFUR,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 KEROSENE_LOW_SULFUR_NON_TAXABLE =
                   T.let(
                     :KEROSENE_LOW_SULFUR_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 KEROSENE_ULTRA_LOW_SULFUR_NON_TAXABLE =
                   T.let(
                     :KEROSENE_ULTRA_LOW_SULFUR_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 EVC_1_LEVEL_1_CHARGE_110_V_15_AMP =
                   T.let(
                     :EVC_1_LEVEL_1_CHARGE_110V_15_AMP,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 EVC_2_LEVEL_2_CHARGE_240_V_15_40_AMP =
                   T.let(
                     :EVC_2_LEVEL_2_CHARGE_240V_15_40_AMP,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 EVC_3_LEVEL_3_CHARGE_480_V_3_PHASE_CHARGE =
                   T.let(
                     :EVC_3_LEVEL_3_CHARGE_480V_3_PHASE_CHARGE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 BIODIESEL_BLEND_2_PERCENT_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :BIODIESEL_BLEND_2_PERCENT_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 BIODIESEL_BLEND_5_PERCENT_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :BIODIESEL_BLEND_5_PERCENT_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 BIODIESEL_BLEND_10_PERCENT_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :BIODIESEL_BLEND_10_PERCENT_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 BIODIESEL_BLEND_11_PERCENT_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :BIODIESEL_BLEND_11_PERCENT_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 BIODIESEL_BLEND_15_PERCENT_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :BIODIESEL_BLEND_15_PERCENT_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 BIODIESEL_BLEND_20_PERCENT_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :BIODIESEL_BLEND_20_PERCENT_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 DIESEL_1_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :DIESEL_1_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 DIESEL_2_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :DIESEL_2_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 DIESEL_1_PREMIUM_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :DIESEL_1_PREMIUM_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 DIESEL_2_PREMIUM_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :DIESEL_2_PREMIUM_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 ADDITIVE_DOSAGE =
                   T.let(
                     :ADDITIVE_DOSAGE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 ETHANOL_BLENDS_E16_E84 =
                   T.let(
                     :ETHANOL_BLENDS_E16_E84,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 LOW_OCTANE_UNL =
                   T.let(
                     :LOW_OCTANE_UNL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 BLENDED_DIESEL_1_AND_2 =
                   T.let(
                     :BLENDED_DIESEL_1_AND_2,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 OFF_ROAD_REGULAR_NON_TAXABLE =
                   T.let(
                     :OFF_ROAD_REGULAR_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 OFF_ROAD_MID_PLUS_NON_TAXABLE =
                   T.let(
                     :OFF_ROAD_MID_PLUS_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 OFF_ROAD_PREMIUM_SUPER_NON_TAXABLE =
                   T.let(
                     :OFF_ROAD_PREMIUM_SUPER_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 OFF_ROAD_MID_PLUS_2_NON_TAXABLE =
                   T.let(
                     :OFF_ROAD_MID_PLUS_2_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 OFF_ROAD_PREMIUM_SUPER_2_NON_TAXABLE =
                   T.let(
                     :OFF_ROAD_PREMIUM_SUPER_2_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 RECREATIONAL_FUEL_90_OCTANE =
                   T.let(
                     :RECREATIONAL_FUEL_90_OCTANE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 HYDROGEN_H35 =
-                  T.let(:HYDROGEN_H35, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :HYDROGEN_H35,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 HYDROGEN_H70 =
-                  T.let(:HYDROGEN_H70, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol)
+                  T.let(
+                    :HYDROGEN_H70,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                  )
                 RENEWABLE_DIESEL_R95_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :RENEWABLE_DIESEL_R95_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 BIODIESEL_BLEND_1_PERCENT_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :BIODIESEL_BLEND_1_PERCENT_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 BIODIESEL_BLEND_75_PERCENT_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :BIODIESEL_BLEND_75_PERCENT_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 BIODIESEL_BLEND_99_PERCENT_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :BIODIESEL_BLEND_99_PERCENT_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 BIODIESEL_BLEND_100_PERCENT_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :BIODIESEL_BLEND_100_PERCENT_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT_OFF_ROAD_NON_TAXABLE =
                   T.let(
                     :RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT_OFF_ROAD_NON_TAXABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
                 MISCELLANEOUS_OTHER_FUEL =
                   T.let(
                     :MISCELLANEOUS_OTHER_FUEL,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
                   )
 
                 sig do
-                  override
-                    .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol])
+                  override.returns(
+                    T::Array[
+                      Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                    ]
+                  )
                 end
-                def self.values; end
+                def self.values
+                end
               end
 
               # Unit of measure for fuel disbursement.
@@ -1019,52 +1216,59 @@ module Lithic
                 extend Lithic::Internal::Type::Enum
 
                 TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure) }
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure
+                    )
+                  end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 GALLONS =
                   T.let(
                     :GALLONS,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
                   )
                 LITERS =
                   T.let(
                     :LITERS,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
                   )
                 POUNDS =
                   T.let(
                     :POUNDS,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
                   )
                 KILOGRAMS =
                   T.let(
                     :KILOGRAMS,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
                   )
                 IMPERIAL_GALLONS =
                   T.let(
                     :IMPERIAL_GALLONS,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
                   )
                 NOT_APPLICABLE =
                   T.let(
                     :NOT_APPLICABLE,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
                   )
                 UNKNOWN =
                   T.let(
                     :UNKNOWN,
-                    Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
                   )
 
                 sig do
-                  override
-                    .returns(
-                      T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol]
-                    )
+                  override.returns(
+                    T::Array[
+                      Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                    ]
+                  )
                 end
-                def self.values; end
+                def self.values
+                end
               end
             end
 
@@ -1073,28 +1277,49 @@ module Lithic
               extend Lithic::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               UNKNOWN =
-                T.let(:UNKNOWN, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)
+                T.let(
+                  :UNKNOWN,
+                  Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol
+                )
               UNDEFINED =
-                T.let(:UNDEFINED, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)
+                T.let(
+                  :UNDEFINED,
+                  Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol
+                )
               SELF_SERVICE =
-                T.let(:SELF_SERVICE, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)
+                T.let(
+                  :SELF_SERVICE,
+                  Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol
+                )
               FULL_SERVICE =
-                T.let(:FULL_SERVICE, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol)
+                T.let(
+                  :FULL_SERVICE,
+                  Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol
+                )
               NON_FUEL_ONLY =
                 T.let(
                   :NON_FUEL_ONLY,
-                  Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol
+                  Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol
                 )
 
               sig do
-                override
-                  .returns(T::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol])
+                override.returns(
+                  T::Array[
+                    Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
         end

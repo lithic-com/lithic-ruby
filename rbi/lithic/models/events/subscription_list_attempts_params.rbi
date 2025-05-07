@@ -7,6 +7,8 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Date string in RFC 3339 format. Only entries created after the specified time
         # will be included. UTC time zone.
         sig { returns(T.nilable(Time)) }
@@ -46,10 +48,21 @@ module Lithic
         sig { params(starting_after: String).void }
         attr_writer :starting_after
 
-        sig { returns(T.nilable(Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Events::SubscriptionListAttemptsParams::Status::OrSymbol
+            )
+          )
+        end
         attr_reader :status
 
-        sig { params(status: Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol).void }
+        sig do
+          params(
+            status:
+              Lithic::Events::SubscriptionListAttemptsParams::Status::OrSymbol
+          ).void
+        end
         attr_writer :status
 
         sig do
@@ -59,10 +72,10 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            status: Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            status:
+              Lithic::Events::SubscriptionListAttemptsParams::Status::OrSymbol,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Date string in RFC 3339 format. Only entries created after the specified time
@@ -81,37 +94,68 @@ module Lithic
           starting_after: nil,
           status: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                begin_: Time,
-                end_: Time,
-                ending_before: String,
-                page_size: Integer,
-                starting_after: String,
-                status: Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol,
-                request_options: Lithic::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              begin_: Time,
+              end_: Time,
+              ending_before: String,
+              page_size: Integer,
+              starting_after: String,
+              status:
+                Lithic::Events::SubscriptionListAttemptsParams::Status::OrSymbol,
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         module Status
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::Events::SubscriptionListAttemptsParams::Status) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Events::SubscriptionListAttemptsParams::Status
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          FAILED = T.let(:FAILED, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol)
-          PENDING = T.let(:PENDING, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol)
-          SENDING = T.let(:SENDING, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol)
-          SUCCESS = T.let(:SUCCESS, Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol)
+          FAILED =
+            T.let(
+              :FAILED,
+              Lithic::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol
+            )
+          PENDING =
+            T.let(
+              :PENDING,
+              Lithic::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol
+            )
+          SENDING =
+            T.let(
+              :SENDING,
+              Lithic::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol
+            )
+          SUCCESS =
+            T.let(
+              :SUCCESS,
+              Lithic::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Lithic::Models::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::Events::SubscriptionListAttemptsParams::Status::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

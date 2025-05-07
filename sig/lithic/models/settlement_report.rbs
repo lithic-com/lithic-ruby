@@ -4,7 +4,7 @@ module Lithic
       {
         created: Time,
         currency: String,
-        details: ::Array[Lithic::Models::SettlementSummaryDetails],
+        details: ::Array[Lithic::SettlementSummaryDetails],
         disputes_gross_amount: Integer,
         interchange_gross_amount: Integer,
         is_complete: bool,
@@ -20,7 +20,7 @@ module Lithic
 
       attr_accessor currency: String
 
-      attr_accessor details: ::Array[Lithic::Models::SettlementSummaryDetails]
+      attr_accessor details: ::Array[Lithic::SettlementSummaryDetails]
 
       attr_accessor disputes_gross_amount: Integer
 
@@ -41,7 +41,7 @@ module Lithic
       def initialize: (
         created: Time,
         currency: String,
-        details: ::Array[Lithic::Models::SettlementSummaryDetails],
+        details: ::Array[Lithic::SettlementSummaryDetails],
         disputes_gross_amount: Integer,
         interchange_gross_amount: Integer,
         is_complete: bool,
@@ -51,8 +51,6 @@ module Lithic
         transactions_gross_amount: Integer,
         updated: Time
       ) -> void
-
-      def to_hash: -> Lithic::Models::settlement_report
     end
   end
 end

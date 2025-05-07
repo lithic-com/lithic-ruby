@@ -11,12 +11,12 @@ module Lithic
         ?token: String,
         ?memo: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::BookTransferResponse
+      ) -> Lithic::BookTransferResponse
 
       def retrieve: (
         String book_transfer_token,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::BookTransferResponse
+      ) -> Lithic::BookTransferResponse
 
       def list: (
         ?account_token: String,
@@ -31,13 +31,13 @@ module Lithic
         ?starting_after: String,
         ?status: Lithic::Models::BookTransferListParams::status,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Internal::CursorPage[Lithic::Models::BookTransferResponse]
+      ) -> Lithic::Internal::CursorPage[Lithic::BookTransferResponse]
 
       def reverse: (
         String book_transfer_token,
         ?memo: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::BookTransferResponse
+      ) -> Lithic::BookTransferResponse
 
       def initialize: (client: Lithic::Client) -> void
     end

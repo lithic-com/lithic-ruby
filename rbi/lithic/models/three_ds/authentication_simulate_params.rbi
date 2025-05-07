@@ -7,14 +7,16 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        sig { returns(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant) }
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
+        sig { returns(Lithic::ThreeDS::AuthenticationSimulateParams::Merchant) }
         attr_reader :merchant
 
         sig do
           params(
-            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Internal::AnyHash)
-          )
-            .void
+            merchant:
+              Lithic::ThreeDS::AuthenticationSimulateParams::Merchant::OrHash
+          ).void
         end
         attr_writer :merchant
 
@@ -22,39 +24,49 @@ module Lithic
         sig { returns(String) }
         attr_accessor :pan
 
-        sig { returns(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction) }
+        sig do
+          returns(Lithic::ThreeDS::AuthenticationSimulateParams::Transaction)
+        end
         attr_reader :transaction
 
         sig do
           params(
-            transaction: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Internal::AnyHash)
-          )
-            .void
+            transaction:
+              Lithic::ThreeDS::AuthenticationSimulateParams::Transaction::OrHash
+          ).void
         end
         attr_writer :transaction
 
         # When set will use the following values as part of the Simulated Authentication.
         # When not set defaults to MATCH
-        sig { returns(T.nilable(Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol
+            )
+          )
+        end
         attr_reader :card_expiry_check
 
         sig do
           params(
-            card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol
-          )
-            .void
+            card_expiry_check:
+              Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol
+          ).void
         end
         attr_writer :card_expiry_check
 
         sig do
           params(
-            merchant: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant, Lithic::Internal::AnyHash),
+            merchant:
+              Lithic::ThreeDS::AuthenticationSimulateParams::Merchant::OrHash,
             pan: String,
-            transaction: T.any(Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction, Lithic::Internal::AnyHash),
-            card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            transaction:
+              Lithic::ThreeDS::AuthenticationSimulateParams::Transaction::OrHash,
+            card_expiry_check:
+              Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           merchant:,
@@ -65,22 +77,29 @@ module Lithic
           # When not set defaults to MATCH
           card_expiry_check: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                merchant: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant,
-                pan: String,
-                transaction: Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction,
-                card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
-                request_options: Lithic::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              merchant: Lithic::ThreeDS::AuthenticationSimulateParams::Merchant,
+              pan: String,
+              transaction:
+                Lithic::ThreeDS::AuthenticationSimulateParams::Transaction,
+              card_expiry_check:
+                Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::OrSymbol,
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         class Merchant < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Unique identifier to identify the payment card acceptor. Corresponds to
           # `merchant_acceptor_id` in authorization.
           sig { returns(String) }
@@ -102,7 +121,14 @@ module Lithic
           sig { returns(String) }
           attr_accessor :name
 
-          sig { params(id: String, country: String, mcc: String, name: String).returns(T.attached_class) }
+          sig do
+            params(
+              id: String,
+              country: String,
+              mcc: String,
+              name: String
+            ).returns(T.attached_class)
+          end
           def self.new(
             # Unique identifier to identify the payment card acceptor. Corresponds to
             # `merchant_acceptor_id` in authorization.
@@ -117,12 +143,22 @@ module Lithic
             # Merchant descriptor, corresponds to `descriptor` in authorization. If CHALLENGE
             # keyword is included, Lithic will trigger a challenge.
             name:
-          ); end
-          sig { override.returns({id: String, country: String, mcc: String, name: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { id: String, country: String, mcc: String, name: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Transaction < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
           # Amount (in cents) to authenticate.
           sig { returns(Integer) }
           attr_accessor :amount
@@ -131,15 +167,20 @@ module Lithic
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(amount: Integer, currency: String).returns(T.attached_class) }
+          sig do
+            params(amount: Integer, currency: String).returns(T.attached_class)
+          end
           def self.new(
             # Amount (in cents) to authenticate.
             amount:,
             # 3-character alphabetic ISO 4217 currency code.
             currency:
-          ); end
-          sig { override.returns({amount: Integer, currency: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig { override.returns({ amount: Integer, currency: String }) }
+          def to_hash
+          end
         end
 
         # When set will use the following values as part of the Simulated Authentication.
@@ -148,21 +189,39 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           MATCH =
-            T.let(:MATCH, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol)
+            T.let(
+              :MATCH,
+              Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol
+            )
           MISMATCH =
-            T.let(:MISMATCH, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol)
+            T.let(
+              :MISMATCH,
+              Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol
+            )
           NOT_PRESENT =
-            T.let(:NOT_PRESENT, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol)
+            T.let(
+              :NOT_PRESENT,
+              Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol
+            )
 
           sig do
-            override
-              .returns(T::Array[Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol])
+            override.returns(
+              T::Array[
+                Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

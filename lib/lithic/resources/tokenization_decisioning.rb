@@ -14,14 +14,14 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::TokenizationSecret]
+      # @return [Lithic::TokenizationSecret]
       #
       # @see Lithic::Models::TokenizationDecisioningRetrieveSecretParams
       def retrieve_secret(params = {})
         @client.request(
           method: :get,
           path: "v1/tokenization_decisioning/secret",
-          model: Lithic::Models::TokenizationSecret,
+          model: Lithic::TokenizationSecret,
           options: params[:request_options]
         )
       end

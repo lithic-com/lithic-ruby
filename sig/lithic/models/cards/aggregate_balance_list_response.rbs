@@ -44,8 +44,6 @@ module Lithic
           total_amount: Integer,
           updated: Time
         ) -> void
-
-        def to_hash: -> Lithic::Models::Cards::aggregate_balance_list_response
       end
     end
   end

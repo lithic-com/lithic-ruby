@@ -14,11 +14,11 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::FinancialAccounts::LoanTape]
+        # @return [Lithic::FinancialAccounts::LoanTape]
         #
         # @see Lithic::Models::FinancialAccounts::LoanTapeRetrieveParams
         def retrieve(loan_tape_token, params)
-          parsed, options = Lithic::Models::FinancialAccounts::LoanTapeRetrieveParams.dump_request(params)
+          parsed, options = Lithic::FinancialAccounts::LoanTapeRetrieveParams.dump_request(params)
           financial_account_token =
             parsed.delete(:financial_account_token) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -26,7 +26,7 @@ module Lithic
           @client.request(
             method: :get,
             path: ["v1/financial_accounts/%1$s/loan_tapes/%2$s", financial_account_token, loan_tape_token],
-            model: Lithic::Models::FinancialAccounts::LoanTape,
+            model: Lithic::FinancialAccounts::LoanTape,
             options: options
           )
         end
@@ -41,32 +41,28 @@ module Lithic
         # @param financial_account_token [String] Globally unique identifier for financial account.
         #
         # @param begin_ [Date] Date string in RFC 3339 format. Only entries created after the specified date wi
-        # ...
         #
         # @param end_ [Date] Date string in RFC 3339 format. Only entries created before the specified date w
-        # ...
         #
         # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-        # ...
         #
         # @param page_size [Integer] Page size (for pagination).
         #
         # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-        # ...
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::CursorPage<Lithic::Models::FinancialAccounts::LoanTape>]
+        # @return [Lithic::Internal::CursorPage<Lithic::FinancialAccounts::LoanTape>]
         #
         # @see Lithic::Models::FinancialAccounts::LoanTapeListParams
         def list(financial_account_token, params = {})
-          parsed, options = Lithic::Models::FinancialAccounts::LoanTapeListParams.dump_request(params)
+          parsed, options = Lithic::FinancialAccounts::LoanTapeListParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["v1/financial_accounts/%1$s/loan_tapes", financial_account_token],
             query: parsed.transform_keys(begin_: "begin", end_: "end"),
             page: Lithic::Internal::CursorPage,
-            model: Lithic::Models::FinancialAccounts::LoanTape,
+            model: Lithic::FinancialAccounts::LoanTape,
             options: options
           )
         end

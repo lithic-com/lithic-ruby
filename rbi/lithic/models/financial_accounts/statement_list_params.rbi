@@ -7,6 +7,8 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
         # Date string in RFC 3339 format. Only entries created after the specified date
         # will be included.
         sig { returns(T.nilable(Date)) }
@@ -61,9 +63,8 @@ module Lithic
             include_initial_statements: T::Boolean,
             page_size: Integer,
             starting_after: String,
-            request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Date string in RFC 3339 format. Only entries created after the specified date
@@ -83,22 +84,24 @@ module Lithic
           # begin. Used to retrieve the next page of results after this item.
           starting_after: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                begin_: Date,
-                end_: Date,
-                ending_before: String,
-                include_initial_statements: T::Boolean,
-                page_size: Integer,
-                starting_after: String,
-                request_options: Lithic::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              begin_: Date,
+              end_: Date,
+              ending_before: String,
+              include_initial_statements: T::Boolean,
+              page_size: Integer,
+              starting_after: String,
+              request_options: Lithic::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

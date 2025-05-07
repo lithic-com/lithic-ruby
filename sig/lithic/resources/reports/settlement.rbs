@@ -10,12 +10,12 @@ module Lithic
           ?page_size: Integer,
           ?starting_after: String,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Internal::CursorPage[Lithic::Models::SettlementDetail]
+        ) -> Lithic::Internal::CursorPage[Lithic::SettlementDetail]
 
         def summary: (
           Date report_date,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::SettlementReport
+        ) -> Lithic::SettlementReport
 
         def initialize: (client: Lithic::Client) -> void
       end

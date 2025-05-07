@@ -7,7 +7,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
     response = @lithic.events.subscriptions.create(url: "https://example.com")
 
     assert_pattern do
-      response => Lithic::Models::EventSubscription
+      response => Lithic::EventSubscription
     end
 
     assert_pattern do
@@ -16,7 +16,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
         description: String,
         disabled: Lithic::Internal::Type::Boolean,
         url: String,
-        event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
+        event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::EventSubscription::EventType]) | nil
       }
     end
   end
@@ -25,7 +25,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
     response = @lithic.events.subscriptions.retrieve("event_subscription_token")
 
     assert_pattern do
-      response => Lithic::Models::EventSubscription
+      response => Lithic::EventSubscription
     end
 
     assert_pattern do
@@ -34,7 +34,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
         description: String,
         disabled: Lithic::Internal::Type::Boolean,
         url: String,
-        event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
+        event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::EventSubscription::EventType]) | nil
       }
     end
   end
@@ -43,7 +43,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
     response = @lithic.events.subscriptions.update("event_subscription_token", url: "https://example.com")
 
     assert_pattern do
-      response => Lithic::Models::EventSubscription
+      response => Lithic::EventSubscription
     end
 
     assert_pattern do
@@ -52,7 +52,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
         description: String,
         disabled: Lithic::Internal::Type::Boolean,
         url: String,
-        event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
+        event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::EventSubscription::EventType]) | nil
       }
     end
   end
@@ -68,7 +68,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::EventSubscription
+      row => Lithic::EventSubscription
     end
 
     assert_pattern do
@@ -77,7 +77,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
         description: String,
         disabled: Lithic::Internal::Type::Boolean,
         url: String,
-        event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::Models::EventSubscription::EventType]) | nil
+        event_types: ^(Lithic::Internal::Type::ArrayOf[enum: Lithic::EventSubscription::EventType]) | nil
       }
     end
   end
@@ -103,7 +103,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::MessageAttempt
+      row => Lithic::MessageAttempt
     end
 
     assert_pattern do
@@ -114,7 +114,7 @@ class Lithic::Test::Resources::Events::SubscriptionsTest < Lithic::Test::Resourc
         event_token: String,
         response: String,
         response_status_code: Integer,
-        status: Lithic::Models::MessageAttempt::Status,
+        status: Lithic::MessageAttempt::Status,
         url: String
       }
     end

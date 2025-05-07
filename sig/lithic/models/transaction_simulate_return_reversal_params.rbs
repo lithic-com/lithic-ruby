@@ -13,8 +13,6 @@ module Lithic
         token: String,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::transaction_simulate_return_reversal_params
     end
   end
 end

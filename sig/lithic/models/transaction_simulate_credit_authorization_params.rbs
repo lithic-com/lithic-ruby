@@ -36,8 +36,6 @@ module Lithic
         ?merchant_acceptor_id: String,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::transaction_simulate_credit_authorization_params
     end
   end
 end

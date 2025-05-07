@@ -28,7 +28,7 @@ module Lithic
         #
         #   @param balance_date [Time] UTC date of the balance to retrieve. Defaults to latest available balance
         #
-        #   @param last_transaction_event_token [String] Balance after a given financial event occured. ...
+        #   @param last_transaction_event_token [String] Balance after a given financial event occured.
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
       end

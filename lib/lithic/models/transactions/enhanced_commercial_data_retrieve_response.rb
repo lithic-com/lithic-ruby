@@ -7,11 +7,11 @@ module Lithic
       class EnhancedCommercialDataRetrieveResponse < Lithic::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Array<Lithic::Models::Transactions::Events::EnhancedData>]
-        required :data, -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::Transactions::Events::EnhancedData] }
+        #   @return [Array<Lithic::Transactions::Events::EnhancedData>]
+        required :data, -> { Lithic::Internal::Type::ArrayOf[Lithic::Transactions::Events::EnhancedData] }
 
         # @!method initialize(data:)
-        #   @param data [Array<Lithic::Models::Transactions::Events::EnhancedData>]
+        #   @param data [Array<Lithic::Transactions::Events::EnhancedData>]
       end
     end
   end

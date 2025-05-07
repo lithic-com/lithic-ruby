@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class AuthStreamSecret < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # The shared HMAC ASA secret
       sig { returns(T.nilable(String)) }
       attr_reader :secret
@@ -14,9 +16,12 @@ module Lithic
       def self.new(
         # The shared HMAC ASA secret
         secret: nil
-      ); end
-      sig { override.returns({secret: String}) }
-      def to_hash; end
+      )
+      end
+
+      sig { override.returns({ secret: String }) }
+      def to_hash
+      end
     end
   end
 end

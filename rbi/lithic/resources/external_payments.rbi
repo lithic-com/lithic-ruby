@@ -7,17 +7,18 @@ module Lithic
       sig do
         params(
           amount: Integer,
-          category: Lithic::Models::ExternalPaymentCreateParams::Category::OrSymbol,
+          category: Lithic::ExternalPaymentCreateParams::Category::OrSymbol,
           effective_date: Date,
           financial_account_token: String,
-          payment_type: Lithic::Models::ExternalPaymentCreateParams::PaymentType::OrSymbol,
+          payment_type:
+            Lithic::ExternalPaymentCreateParams::PaymentType::OrSymbol,
           token: String,
           memo: String,
-          progress_to: Lithic::Models::ExternalPaymentCreateParams::ProgressTo::OrSymbol,
+          progress_to:
+            Lithic::ExternalPaymentCreateParams::ProgressTo::OrSymbol,
           user_defined_id: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::ExternalPayment)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::ExternalPayment)
       end
       def create(
         amount:,
@@ -30,33 +31,38 @@ module Lithic
         progress_to: nil,
         user_defined_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get external payment
       sig do
-        params(external_payment_token: String, request_options: Lithic::RequestOpts)
-          .returns(Lithic::Models::ExternalPayment)
+        params(
+          external_payment_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::ExternalPayment)
       end
       def retrieve(
         # Globally unique identifier for the external payment
         external_payment_token,
         request_options: {}
-      ); end
+      )
+      end
+
       # List external payments
       sig do
         params(
           begin_: Time,
           business_account_token: String,
-          category: Lithic::Models::ExternalPaymentListParams::Category::OrSymbol,
+          category: Lithic::ExternalPaymentListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
-          result: Lithic::Models::ExternalPaymentListParams::Result::OrSymbol,
+          result: Lithic::ExternalPaymentListParams::Result::OrSymbol,
           starting_after: String,
-          status: Lithic::Models::ExternalPaymentListParams::Status::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Internal::CursorPage[Lithic::Models::ExternalPayment])
+          status: Lithic::ExternalPaymentListParams::Status::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Internal::CursorPage[Lithic::ExternalPayment])
       end
       def list(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -84,16 +90,17 @@ module Lithic
         # Book transfer status to be returned.
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Cancel external payment
       sig do
         params(
           external_payment_token: String,
           effective_date: Date,
           memo: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::ExternalPayment)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::ExternalPayment)
       end
       def cancel(
         # Globally unique identifier for the external payment
@@ -101,16 +108,17 @@ module Lithic
         effective_date:,
         memo: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Release external payment
       sig do
         params(
           external_payment_token: String,
           effective_date: Date,
           memo: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::ExternalPayment)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::ExternalPayment)
       end
       def release(
         # Globally unique identifier for the external payment
@@ -118,16 +126,17 @@ module Lithic
         effective_date:,
         memo: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Reverse external payment
       sig do
         params(
           external_payment_token: String,
           effective_date: Date,
           memo: String,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::ExternalPayment)
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::ExternalPayment)
       end
       def reverse(
         # Globally unique identifier for the external payment
@@ -135,17 +144,19 @@ module Lithic
         effective_date:,
         memo: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Settle external payment
       sig do
         params(
           external_payment_token: String,
           effective_date: Date,
           memo: String,
-          progress_to: Lithic::Models::ExternalPaymentSettleParams::ProgressTo::OrSymbol,
-          request_options: Lithic::RequestOpts
-        )
-          .returns(Lithic::Models::ExternalPayment)
+          progress_to:
+            Lithic::ExternalPaymentSettleParams::ProgressTo::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::ExternalPayment)
       end
       def settle(
         # Globally unique identifier for the external payment
@@ -154,10 +165,13 @@ module Lithic
         memo: nil,
         progress_to: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

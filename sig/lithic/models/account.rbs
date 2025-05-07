@@ -4,12 +4,12 @@ module Lithic
       {
         token: String,
         created: Time?,
-        spend_limit: Lithic::Models::Account::SpendLimit,
-        state: Lithic::Models::Account::state,
-        account_holder: Lithic::Models::Account::AccountHolder,
+        spend_limit: Lithic::Account::SpendLimit,
+        state: Lithic::Account::state,
+        account_holder: Lithic::Account::AccountHolder,
         auth_rule_tokens: ::Array[String],
         cardholder_currency: String,
-        verification_address: Lithic::Models::Account::VerificationAddress
+        verification_address: Lithic::Account::VerificationAddress
       }
 
     class Account < Lithic::Internal::Type::BaseModel
@@ -17,15 +17,15 @@ module Lithic
 
       attr_accessor created: Time?
 
-      attr_accessor spend_limit: Lithic::Models::Account::SpendLimit
+      attr_accessor spend_limit: Lithic::Account::SpendLimit
 
-      attr_accessor state: Lithic::Models::Account::state
+      attr_accessor state: Lithic::Account::state
 
-      attr_reader account_holder: Lithic::Models::Account::AccountHolder?
+      attr_reader account_holder: Lithic::Account::AccountHolder?
 
       def account_holder=: (
-        Lithic::Models::Account::AccountHolder
-      ) -> Lithic::Models::Account::AccountHolder
+        Lithic::Account::AccountHolder
+      ) -> Lithic::Account::AccountHolder
 
       attr_reader auth_rule_tokens: ::Array[String]?
 
@@ -35,24 +35,22 @@ module Lithic
 
       def cardholder_currency=: (String) -> String
 
-      attr_reader verification_address: Lithic::Models::Account::VerificationAddress?
+      attr_reader verification_address: Lithic::Account::VerificationAddress?
 
       def verification_address=: (
-        Lithic::Models::Account::VerificationAddress
-      ) -> Lithic::Models::Account::VerificationAddress
+        Lithic::Account::VerificationAddress
+      ) -> Lithic::Account::VerificationAddress
 
       def initialize: (
         token: String,
         created: Time?,
-        spend_limit: Lithic::Models::Account::SpendLimit,
-        state: Lithic::Models::Account::state,
-        ?account_holder: Lithic::Models::Account::AccountHolder,
+        spend_limit: Lithic::Account::SpendLimit,
+        state: Lithic::Account::state,
+        ?account_holder: Lithic::Account::AccountHolder,
         ?auth_rule_tokens: ::Array[String],
         ?cardholder_currency: String,
-        ?verification_address: Lithic::Models::Account::VerificationAddress
+        ?verification_address: Lithic::Account::VerificationAddress
       ) -> void
-
-      def to_hash: -> Lithic::Models::account
 
       type spend_limit = { daily: Integer, lifetime: Integer, monthly: Integer }
 
@@ -68,8 +66,6 @@ module Lithic
           lifetime: Integer,
           monthly: Integer
         ) -> void
-
-        def to_hash: -> Lithic::Models::Account::spend_limit
       end
 
       type state = :ACTIVE | :PAUSED | :CLOSED
@@ -81,7 +77,7 @@ module Lithic
         PAUSED: :PAUSED
         CLOSED: :CLOSED
 
-        def self?.values: -> ::Array[Lithic::Models::Account::state]
+        def self?.values: -> ::Array[Lithic::Account::state]
       end
 
       type account_holder =
@@ -107,8 +103,6 @@ module Lithic
           email: String,
           phone_number: String
         ) -> void
-
-        def to_hash: -> Lithic::Models::Account::account_holder
       end
 
       type verification_address =
@@ -144,8 +138,6 @@ module Lithic
           state: String,
           ?address2: String
         ) -> void
-
-        def to_hash: -> Lithic::Models::Account::verification_address
       end
     end
   end

@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class Card < Lithic::Models::NonPCICard
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Three digit cvv printed on the back of the card.
       sig { returns(T.nilable(String)) }
       attr_reader :cvv
@@ -28,9 +30,12 @@ module Lithic
         # compliant to have PAN returned as a field in production. Please contact
         # support@lithic.com for questions.
         pan: nil
-      ); end
-      sig { override.returns({cvv: String, pan: String}) }
-      def to_hash; end
+      )
+      end
+
+      sig { override.returns({ cvv: String, pan: String }) }
+      def to_hash
+      end
     end
   end
 end

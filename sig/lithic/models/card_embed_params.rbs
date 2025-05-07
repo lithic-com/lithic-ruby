@@ -17,8 +17,6 @@ module Lithic
         hmac: String,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::card_embed_params
     end
   end
 end

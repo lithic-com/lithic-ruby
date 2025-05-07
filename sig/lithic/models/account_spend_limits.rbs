@@ -2,33 +2,31 @@ module Lithic
   module Models
     type account_spend_limits =
       {
-        available_spend_limit: Lithic::Models::AccountSpendLimits::AvailableSpendLimit,
-        spend_limit: Lithic::Models::AccountSpendLimits::SpendLimit,
-        spend_velocity: Lithic::Models::AccountSpendLimits::SpendVelocity
+        available_spend_limit: Lithic::AccountSpendLimits::AvailableSpendLimit,
+        spend_limit: Lithic::AccountSpendLimits::SpendLimit,
+        spend_velocity: Lithic::AccountSpendLimits::SpendVelocity
       }
 
     class AccountSpendLimits < Lithic::Internal::Type::BaseModel
-      attr_accessor available_spend_limit: Lithic::Models::AccountSpendLimits::AvailableSpendLimit
+      attr_accessor available_spend_limit: Lithic::AccountSpendLimits::AvailableSpendLimit
 
-      attr_reader spend_limit: Lithic::Models::AccountSpendLimits::SpendLimit?
+      attr_reader spend_limit: Lithic::AccountSpendLimits::SpendLimit?
 
       def spend_limit=: (
-        Lithic::Models::AccountSpendLimits::SpendLimit
-      ) -> Lithic::Models::AccountSpendLimits::SpendLimit
+        Lithic::AccountSpendLimits::SpendLimit
+      ) -> Lithic::AccountSpendLimits::SpendLimit
 
-      attr_reader spend_velocity: Lithic::Models::AccountSpendLimits::SpendVelocity?
+      attr_reader spend_velocity: Lithic::AccountSpendLimits::SpendVelocity?
 
       def spend_velocity=: (
-        Lithic::Models::AccountSpendLimits::SpendVelocity
-      ) -> Lithic::Models::AccountSpendLimits::SpendVelocity
+        Lithic::AccountSpendLimits::SpendVelocity
+      ) -> Lithic::AccountSpendLimits::SpendVelocity
 
       def initialize: (
-        available_spend_limit: Lithic::Models::AccountSpendLimits::AvailableSpendLimit,
-        ?spend_limit: Lithic::Models::AccountSpendLimits::SpendLimit,
-        ?spend_velocity: Lithic::Models::AccountSpendLimits::SpendVelocity
+        available_spend_limit: Lithic::AccountSpendLimits::AvailableSpendLimit,
+        ?spend_limit: Lithic::AccountSpendLimits::SpendLimit,
+        ?spend_velocity: Lithic::AccountSpendLimits::SpendVelocity
       ) -> void
-
-      def to_hash: -> Lithic::Models::account_spend_limits
 
       type available_spend_limit =
         { daily: Integer, lifetime: Integer, monthly: Integer }
@@ -51,8 +49,6 @@ module Lithic
           ?lifetime: Integer,
           ?monthly: Integer
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountSpendLimits::available_spend_limit
       end
 
       type spend_limit = { daily: Integer, lifetime: Integer, monthly: Integer }
@@ -75,8 +71,6 @@ module Lithic
           ?lifetime: Integer,
           ?monthly: Integer
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountSpendLimits::spend_limit
       end
 
       type spend_velocity =
@@ -100,8 +94,6 @@ module Lithic
           ?lifetime: Integer,
           ?monthly: Integer
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountSpendLimits::spend_velocity
       end
     end
   end

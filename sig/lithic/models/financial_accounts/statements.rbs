@@ -2,22 +2,17 @@ module Lithic
   module Models
     module FinancialAccounts
       type financial_accounts_statements =
-        {
-          data: ::Array[Lithic::Models::FinancialAccounts::Statement],
-          has_more: bool
-        }
+        { data: ::Array[Lithic::FinancialAccounts::Statement], has_more: bool }
 
       class FinancialAccountsStatements < Lithic::Internal::Type::BaseModel
-        attr_accessor data: ::Array[Lithic::Models::FinancialAccounts::Statement]
+        attr_accessor data: ::Array[Lithic::FinancialAccounts::Statement]
 
         attr_accessor has_more: bool
 
         def initialize: (
-          data: ::Array[Lithic::Models::FinancialAccounts::Statement],
+          data: ::Array[Lithic::FinancialAccounts::Statement],
           has_more: bool
         ) -> void
-
-        def to_hash: -> Lithic::Models::FinancialAccounts::financial_accounts_statements
       end
     end
   end

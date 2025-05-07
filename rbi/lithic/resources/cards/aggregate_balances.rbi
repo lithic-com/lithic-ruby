@@ -6,8 +6,15 @@ module Lithic
       class AggregateBalances
         # Get the aggregated card balance across all end-user accounts.
         sig do
-          params(account_token: String, business_account_token: String, request_options: Lithic::RequestOpts)
-            .returns(Lithic::Internal::SinglePage[Lithic::Models::Cards::AggregateBalanceListResponse])
+          params(
+            account_token: String,
+            business_account_token: String,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(
+            Lithic::Internal::SinglePage[
+              Lithic::Models::Cards::AggregateBalanceListResponse
+            ]
+          )
         end
         def list(
           # Cardholder to retrieve aggregate balances for.
@@ -15,10 +22,13 @@ module Lithic
           # Business to retrieve aggregate balances for.
           business_account_token: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

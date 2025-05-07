@@ -18,8 +18,8 @@ module Lithic
         # @!attribute category
         #   Financial Transaction category to be returned.
         #
-        #   @return [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Category, nil]
-        optional :category, enum: -> { Lithic::Models::Cards::FinancialTransactionListParams::Category }
+        #   @return [Symbol, Lithic::Cards::FinancialTransactionListParams::Category, nil]
+        optional :category, enum: -> { Lithic::Cards::FinancialTransactionListParams::Category }
 
         # @!attribute end_
         #   Date string in RFC 3339 format. Only entries created before the specified time
@@ -38,8 +38,8 @@ module Lithic
         # @!attribute result
         #   Financial Transaction result to be returned.
         #
-        #   @return [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Result, nil]
-        optional :result, enum: -> { Lithic::Models::Cards::FinancialTransactionListParams::Result }
+        #   @return [Symbol, Lithic::Cards::FinancialTransactionListParams::Result, nil]
+        optional :result, enum: -> { Lithic::Cards::FinancialTransactionListParams::Result }
 
         # @!attribute starting_after
         #   A cursor representing an item's token after which a page of results should
@@ -51,30 +51,26 @@ module Lithic
         # @!attribute status
         #   Financial Transaction status to be returned.
         #
-        #   @return [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Status, nil]
-        optional :status, enum: -> { Lithic::Models::Cards::FinancialTransactionListParams::Status }
+        #   @return [Symbol, Lithic::Cards::FinancialTransactionListParams::Status, nil]
+        optional :status, enum: -> { Lithic::Cards::FinancialTransactionListParams::Status }
 
         # @!method initialize(begin_: nil, category: nil, end_: nil, ending_before: nil, result: nil, starting_after: nil, status: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::Cards::FinancialTransactionListParams} for more details.
         #
         #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-        #   ...
         #
-        #   @param category [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Category] Financial Transaction category to be returned.
+        #   @param category [Symbol, Lithic::Cards::FinancialTransactionListParams::Category] Financial Transaction category to be returned.
         #
         #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-        #   ...
         #
         #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-        #   ...
         #
-        #   @param result [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Result] Financial Transaction result to be returned.
+        #   @param result [Symbol, Lithic::Cards::FinancialTransactionListParams::Result] Financial Transaction result to be returned.
         #
         #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-        #   ...
         #
-        #   @param status [Symbol, Lithic::Models::Cards::FinancialTransactionListParams::Status] Financial Transaction status to be returned.
+        #   @param status [Symbol, Lithic::Cards::FinancialTransactionListParams::Status] Financial Transaction status to be returned.
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

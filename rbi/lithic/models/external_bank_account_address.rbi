@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class ExternalBankAccountAddress < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       sig { returns(String) }
       attr_accessor :address1
 
@@ -32,25 +34,32 @@ module Lithic
           postal_code: String,
           state: String,
           address2: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
-      def self.new(address1:, city:, country:, postal_code:, state:, address2: nil); end
+      def self.new(
+        address1:,
+        city:,
+        country:,
+        postal_code:,
+        state:,
+        address2: nil
+      )
+      end
 
       sig do
-        override
-          .returns(
-            {
-              address1: String,
-              city: String,
-              country: String,
-              postal_code: String,
-              state: String,
-              address2: String
-            }
-          )
+        override.returns(
+          {
+            address1: String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String,
+            address2: String
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

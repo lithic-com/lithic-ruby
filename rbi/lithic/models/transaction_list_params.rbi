@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # Filters for transactions associated with a specific account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_token
@@ -53,10 +55,14 @@ module Lithic
 
       # Filters for transactions using transaction result field. Can filter by
       # `APPROVED`, and `DECLINED`.
-      sig { returns(T.nilable(Lithic::Models::TransactionListParams::Result::OrSymbol)) }
+      sig do
+        returns(T.nilable(Lithic::TransactionListParams::Result::OrSymbol))
+      end
       attr_reader :result
 
-      sig { params(result: Lithic::Models::TransactionListParams::Result::OrSymbol).void }
+      sig do
+        params(result: Lithic::TransactionListParams::Result::OrSymbol).void
+      end
       attr_writer :result
 
       # A cursor representing an item's token after which a page of results should
@@ -68,10 +74,14 @@ module Lithic
       attr_writer :starting_after
 
       # Filters for transactions using transaction status field.
-      sig { returns(T.nilable(Lithic::Models::TransactionListParams::Status::OrSymbol)) }
+      sig do
+        returns(T.nilable(Lithic::TransactionListParams::Status::OrSymbol))
+      end
       attr_reader :status
 
-      sig { params(status: Lithic::Models::TransactionListParams::Status::OrSymbol).void }
+      sig do
+        params(status: Lithic::TransactionListParams::Status::OrSymbol).void
+      end
       attr_writer :status
 
       sig do
@@ -82,12 +92,11 @@ module Lithic
           end_: Time,
           ending_before: String,
           page_size: Integer,
-          result: Lithic::Models::TransactionListParams::Result::OrSymbol,
+          result: Lithic::TransactionListParams::Result::OrSymbol,
           starting_after: String,
-          status: Lithic::Models::TransactionListParams::Status::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          status: Lithic::TransactionListParams::Status::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Filters for transactions associated with a specific account.
@@ -114,56 +123,77 @@ module Lithic
         # Filters for transactions using transaction status field.
         status: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              account_token: String,
-              begin_: Time,
-              card_token: String,
-              end_: Time,
-              ending_before: String,
-              page_size: Integer,
-              result: Lithic::Models::TransactionListParams::Result::OrSymbol,
-              starting_after: String,
-              status: Lithic::Models::TransactionListParams::Status::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            account_token: String,
+            begin_: Time,
+            card_token: String,
+            end_: Time,
+            ending_before: String,
+            page_size: Integer,
+            result: Lithic::TransactionListParams::Result::OrSymbol,
+            starting_after: String,
+            status: Lithic::TransactionListParams::Status::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Filters for transactions using transaction result field. Can filter by
       # `APPROVED`, and `DECLINED`.
       module Result
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::TransactionListParams::Result) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::TransactionListParams::Result) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        APPROVED = T.let(:APPROVED, Lithic::Models::TransactionListParams::Result::TaggedSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::TransactionListParams::Result::TaggedSymbol)
+        APPROVED =
+          T.let(:APPROVED, Lithic::TransactionListParams::Result::TaggedSymbol)
+        DECLINED =
+          T.let(:DECLINED, Lithic::TransactionListParams::Result::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::TransactionListParams::Result::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::TransactionListParams::Result::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # Filters for transactions using transaction status field.
       module Status
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::TransactionListParams::Status) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::TransactionListParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        PENDING = T.let(:PENDING, Lithic::Models::TransactionListParams::Status::TaggedSymbol)
-        VOIDED = T.let(:VOIDED, Lithic::Models::TransactionListParams::Status::TaggedSymbol)
-        SETTLED = T.let(:SETTLED, Lithic::Models::TransactionListParams::Status::TaggedSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::TransactionListParams::Status::TaggedSymbol)
-        EXPIRED = T.let(:EXPIRED, Lithic::Models::TransactionListParams::Status::TaggedSymbol)
+        PENDING =
+          T.let(:PENDING, Lithic::TransactionListParams::Status::TaggedSymbol)
+        VOIDED =
+          T.let(:VOIDED, Lithic::TransactionListParams::Status::TaggedSymbol)
+        SETTLED =
+          T.let(:SETTLED, Lithic::TransactionListParams::Status::TaggedSymbol)
+        DECLINED =
+          T.let(:DECLINED, Lithic::TransactionListParams::Status::TaggedSymbol)
+        EXPIRED =
+          T.let(:EXPIRED, Lithic::TransactionListParams::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::TransactionListParams::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::TransactionListParams::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

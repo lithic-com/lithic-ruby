@@ -16,7 +16,7 @@ module Lithic
         verification_method: Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::verification_method,
         verification_state: Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::verification_state,
         account_token: String,
-        address: Lithic::Models::ExternalBankAccountAddress,
+        address: Lithic::ExternalBankAccountAddress,
         company_id: String,
         dob: Date,
         doing_business_as: String,
@@ -57,11 +57,11 @@ module Lithic
 
       def account_token=: (String) -> String
 
-      attr_reader address: Lithic::Models::ExternalBankAccountAddress?
+      attr_reader address: Lithic::ExternalBankAccountAddress?
 
       def address=: (
-        Lithic::Models::ExternalBankAccountAddress
-      ) -> Lithic::Models::ExternalBankAccountAddress
+        Lithic::ExternalBankAccountAddress
+      ) -> Lithic::ExternalBankAccountAddress
 
       attr_reader company_id: String?
 
@@ -106,7 +106,7 @@ module Lithic
         verification_method: Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::verification_method,
         verification_state: Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::verification_state,
         ?account_token: String,
-        ?address: Lithic::Models::ExternalBankAccountAddress,
+        ?address: Lithic::ExternalBankAccountAddress,
         ?company_id: String,
         ?dob: Date,
         ?doing_business_as: String,
@@ -115,8 +115,6 @@ module Lithic
         ?user_defined_id: String,
         ?verification_failed_reason: String
       ) -> void
-
-      def to_hash: -> Lithic::Models::external_bank_account_retry_micro_deposits_response
 
       type owner_type = :BUSINESS | :INDIVIDUAL
 

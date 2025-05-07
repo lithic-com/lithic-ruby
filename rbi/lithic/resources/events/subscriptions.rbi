@@ -10,10 +10,12 @@ module Lithic
             url: String,
             description: String,
             disabled: T::Boolean,
-            event_types: T::Array[Lithic::Models::Events::SubscriptionCreateParams::EventType::OrSymbol],
-            request_options: Lithic::RequestOpts
-          )
-            .returns(Lithic::Models::EventSubscription)
+            event_types:
+              T::Array[
+                Lithic::Events::SubscriptionCreateParams::EventType::OrSymbol
+              ],
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::EventSubscription)
         end
         def create(
           # URL to which event webhooks will be sent. URL must be a valid HTTPS address.
@@ -26,13 +28,18 @@ module Lithic
           # all types will be sent.
           event_types: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Get an event subscription.
         sig do
-          params(event_subscription_token: String, request_options: Lithic::RequestOpts)
-            .returns(Lithic::Models::EventSubscription)
+          params(
+            event_subscription_token: String,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::EventSubscription)
         end
-        def retrieve(event_subscription_token, request_options: {}); end
+        def retrieve(event_subscription_token, request_options: {})
+        end
 
         # Update an event subscription.
         sig do
@@ -41,10 +48,12 @@ module Lithic
             url: String,
             description: String,
             disabled: T::Boolean,
-            event_types: T::Array[Lithic::Models::Events::SubscriptionUpdateParams::EventType::OrSymbol],
-            request_options: Lithic::RequestOpts
-          )
-            .returns(Lithic::Models::EventSubscription)
+            event_types:
+              T::Array[
+                Lithic::Events::SubscriptionUpdateParams::EventType::OrSymbol
+              ],
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::EventSubscription)
         end
         def update(
           event_subscription_token,
@@ -58,16 +67,17 @@ module Lithic
           # all types will be sent.
           event_types: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # List all the event subscriptions.
         sig do
           params(
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            request_options: Lithic::RequestOpts
-          )
-            .returns(Lithic::Internal::CursorPage[Lithic::Models::EventSubscription])
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::Internal::CursorPage[Lithic::EventSubscription])
         end
         def list(
           # A cursor representing an item's token before which a page of results should end.
@@ -79,10 +89,18 @@ module Lithic
           # begin. Used to retrieve the next page of results after this item.
           starting_after: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Delete an event subscription.
-        sig { params(event_subscription_token: String, request_options: Lithic::RequestOpts).void }
-        def delete(event_subscription_token, request_options: {}); end
+        sig do
+          params(
+            event_subscription_token: String,
+            request_options: Lithic::RequestOptions::OrHash
+          ).void
+        end
+        def delete(event_subscription_token, request_options: {})
+        end
 
         # List all the message attempts for a given event subscription.
         sig do
@@ -93,10 +111,10 @@ module Lithic
             ending_before: String,
             page_size: Integer,
             starting_after: String,
-            status: Lithic::Models::Events::SubscriptionListAttemptsParams::Status::OrSymbol,
-            request_options: Lithic::RequestOpts
-          )
-            .returns(Lithic::Internal::CursorPage[Lithic::Models::MessageAttempt])
+            status:
+              Lithic::Events::SubscriptionListAttemptsParams::Status::OrSymbol,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::Internal::CursorPage[Lithic::MessageAttempt])
         end
         def list_attempts(
           event_subscription_token,
@@ -116,16 +134,17 @@ module Lithic
           starting_after: nil,
           status: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Resend all failed messages since a given time.
         sig do
           params(
             event_subscription_token: String,
             begin_: Time,
             end_: Time,
-            request_options: Lithic::RequestOpts
-          )
-            .void
+            request_options: Lithic::RequestOptions::OrHash
+          ).void
         end
         def recover(
           event_subscription_token,
@@ -136,7 +155,9 @@ module Lithic
           # will be included. UTC time zone.
           end_: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Replays messages to the endpoint. Only messages that were created after `begin`
         # will be sent. Messages that were previously sent to the endpoint are not resent.
         # Message will be retried if endpoint responds with a non-2xx status code. See
@@ -147,9 +168,8 @@ module Lithic
             event_subscription_token: String,
             begin_: Time,
             end_: Time,
-            request_options: Lithic::RequestOpts
-          )
-            .void
+            request_options: Lithic::RequestOptions::OrHash
+          ).void
         end
         def replay_missing(
           event_subscription_token,
@@ -160,37 +180,51 @@ module Lithic
           # will be included. UTC time zone.
           end_: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Get the secret for an event subscription.
         sig do
-          params(event_subscription_token: String, request_options: Lithic::RequestOpts)
-            .returns(Lithic::Models::Events::SubscriptionRetrieveSecretResponse)
+          params(
+            event_subscription_token: String,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::Models::Events::SubscriptionRetrieveSecretResponse)
         end
-        def retrieve_secret(event_subscription_token, request_options: {}); end
+        def retrieve_secret(event_subscription_token, request_options: {})
+        end
 
         # Rotate the secret for an event subscription. The previous secret will be valid
         # for the next 24 hours.
-        sig { params(event_subscription_token: String, request_options: Lithic::RequestOpts).void }
-        def rotate_secret(event_subscription_token, request_options: {}); end
+        sig do
+          params(
+            event_subscription_token: String,
+            request_options: Lithic::RequestOptions::OrHash
+          ).void
+        end
+        def rotate_secret(event_subscription_token, request_options: {})
+        end
 
         # Send an example message for event.
         sig do
           params(
             event_subscription_token: String,
-            event_type: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType::OrSymbol,
-            request_options: Lithic::RequestOpts
-          )
-            .void
+            event_type:
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::OrSymbol,
+            request_options: Lithic::RequestOptions::OrHash
+          ).void
         end
         def send_simulated_example(
           event_subscription_token,
           # Event type to send example message for.
           event_type: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Lithic::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

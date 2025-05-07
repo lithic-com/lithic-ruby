@@ -14,7 +14,7 @@ class Lithic::Test::Resources::Reports::SettlementTest < Lithic::Test::ResourceT
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::SettlementDetail
+      row => Lithic::SettlementDetail
     end
 
     assert_pattern do
@@ -30,14 +30,14 @@ class Lithic::Test::Resources::Reports::SettlementTest < Lithic::Test::ResourceT
         institution: String,
         interchange_fee_extended_precision: Integer,
         interchange_gross_amount: Integer,
-        network: Lithic::Models::SettlementDetail::Network,
-        other_fees_details: Lithic::Models::SettlementDetail::OtherFeesDetails,
+        network: Lithic::SettlementDetail::Network,
+        other_fees_details: Lithic::SettlementDetail::OtherFeesDetails,
         other_fees_gross_amount: Integer,
         report_date: String,
         settlement_date: String,
         transaction_token: String,
         transactions_gross_amount: Integer,
-        type: Lithic::Models::SettlementDetail::Type,
+        type: Lithic::SettlementDetail::Type,
         updated: Time,
         fee_description: String | nil
       }
@@ -48,14 +48,14 @@ class Lithic::Test::Resources::Reports::SettlementTest < Lithic::Test::ResourceT
     response = @lithic.reports.settlement.summary("2019-12-27")
 
     assert_pattern do
-      response => Lithic::Models::SettlementReport
+      response => Lithic::SettlementReport
     end
 
     assert_pattern do
       response => {
         created: Time,
         currency: String,
-        details: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::SettlementSummaryDetails]),
+        details: ^(Lithic::Internal::Type::ArrayOf[Lithic::SettlementSummaryDetails]),
         disputes_gross_amount: Integer,
         interchange_gross_amount: Integer,
         is_complete: Lithic::Internal::Type::Boolean,

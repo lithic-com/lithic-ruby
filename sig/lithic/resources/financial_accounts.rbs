@@ -18,32 +18,32 @@ module Lithic
         ?is_for_benefit_of: bool,
         ?idempotency_key: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::FinancialAccount
+      ) -> Lithic::FinancialAccount
 
       def retrieve: (
         String financial_account_token,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::FinancialAccount
+      ) -> Lithic::FinancialAccount
 
       def update: (
         String financial_account_token,
         ?nickname: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::FinancialAccount
+      ) -> Lithic::FinancialAccount
 
       def list: (
         ?account_token: String,
         ?business_account_token: String,
         ?type: Lithic::Models::FinancialAccountListParams::type_,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Internal::SinglePage[Lithic::Models::FinancialAccount]
+      ) -> Lithic::Internal::SinglePage[Lithic::FinancialAccount]
 
       def update_status: (
         String financial_account_token,
         status: Lithic::Models::FinancialAccountUpdateStatusParams::status,
         substatus: Lithic::Models::FinancialAccountUpdateStatusParams::substatus?,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::FinancialAccount
+      ) -> Lithic::FinancialAccount
 
       def initialize: (client: Lithic::Client) -> void
     end

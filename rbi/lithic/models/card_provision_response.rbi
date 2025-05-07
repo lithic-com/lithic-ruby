@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class CardProvisionResponse < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       sig { returns(T.nilable(String)) }
       attr_reader :provisioning_payload
 
@@ -10,10 +12,12 @@ module Lithic
       attr_writer :provisioning_payload
 
       sig { params(provisioning_payload: String).returns(T.attached_class) }
-      def self.new(provisioning_payload: nil); end
+      def self.new(provisioning_payload: nil)
+      end
 
-      sig { override.returns({provisioning_payload: String}) }
-      def to_hash; end
+      sig { override.returns({ provisioning_payload: String }) }
+      def to_hash
+      end
     end
   end
 end

@@ -12,23 +12,23 @@ class Lithic::Test::Resources::TransfersTest < Lithic::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Lithic::Models::Transfer
+      response => Lithic::Transfer
     end
 
     assert_pattern do
       response => {
         token: String | nil,
-        category: Lithic::Models::Transfer::Category | nil,
+        category: Lithic::Transfer::Category | nil,
         created: Time | nil,
         currency: String | nil,
         descriptor: String | nil,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Transfer::Event]) | nil,
-        from_balance: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Balance]) | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Transfer::Event]) | nil,
+        from_balance: ^(Lithic::Internal::Type::ArrayOf[Lithic::Balance]) | nil,
         pending_amount: Integer | nil,
-        result: Lithic::Models::Transfer::Result | nil,
+        result: Lithic::Transfer::Result | nil,
         settled_amount: Integer | nil,
-        status: Lithic::Models::Transfer::Status | nil,
-        to_balance: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::Balance]) | nil,
+        status: Lithic::Transfer::Status | nil,
+        to_balance: ^(Lithic::Internal::Type::ArrayOf[Lithic::Balance]) | nil,
         updated: Time | nil
       }
     end

@@ -86,34 +86,26 @@ module Lithic
       #   {Lithic::Models::AccountHolderListParams} for more details.
       #
       #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-      #   ...
       #
       #   @param email [String] Email address of the account holder. The query must be an exact match, case inse
-      #   ...
       #
       #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-      #   ...
       #
       #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-      #   ...
       #
       #   @param external_id [String] If applicable, represents the external_id associated with the account_holder.
       #
       #   @param first_name [String] (Individual Account Holders only) The first name of the account holder. The quer
-      #   ...
       #
       #   @param last_name [String] (Individual Account Holders only) The last name of the account holder. The query
-      #   ...
       #
       #   @param legal_business_name [String] (Business Account Holders only) The legal business name of the account holder. T
-      #   ...
       #
       #   @param limit [Integer] The number of account_holders to limit the response to.
       #
       #   @param phone_number [String] Phone number of the account holder. The query must be an exact match.
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-      #   ...
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
     end

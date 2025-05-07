@@ -33,8 +33,6 @@ module Lithic
         state: String,
         ?address2: String
       ) -> void
-
-      def to_hash: -> Lithic::Models::external_bank_account_address
     end
   end
 end

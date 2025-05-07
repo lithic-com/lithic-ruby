@@ -6,6 +6,8 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       sig { returns(T.nilable(String)) }
       attr_reader :account_token
 
@@ -27,10 +29,16 @@ module Lithic
       attr_writer :business_account_token
 
       # Book Transfer category to be returned.
-      sig { returns(T.nilable(Lithic::Models::BookTransferListParams::Category::OrSymbol)) }
+      sig do
+        returns(T.nilable(Lithic::BookTransferListParams::Category::OrSymbol))
+      end
       attr_reader :category
 
-      sig { params(category: Lithic::Models::BookTransferListParams::Category::OrSymbol).void }
+      sig do
+        params(
+          category: Lithic::BookTransferListParams::Category::OrSymbol
+        ).void
+      end
       attr_writer :category
 
       # Date string in RFC 3339 format. Only entries created before the specified time
@@ -65,10 +73,14 @@ module Lithic
       attr_writer :page_size
 
       # Book transfer result to be returned.
-      sig { returns(T.nilable(Lithic::Models::BookTransferListParams::Result::OrSymbol)) }
+      sig do
+        returns(T.nilable(Lithic::BookTransferListParams::Result::OrSymbol))
+      end
       attr_reader :result
 
-      sig { params(result: Lithic::Models::BookTransferListParams::Result::OrSymbol).void }
+      sig do
+        params(result: Lithic::BookTransferListParams::Result::OrSymbol).void
+      end
       attr_writer :result
 
       # A cursor representing an item's token after which a page of results should
@@ -80,10 +92,14 @@ module Lithic
       attr_writer :starting_after
 
       # Book transfer status to be returned.
-      sig { returns(T.nilable(Lithic::Models::BookTransferListParams::Status::OrSymbol)) }
+      sig do
+        returns(T.nilable(Lithic::BookTransferListParams::Status::OrSymbol))
+      end
       attr_reader :status
 
-      sig { params(status: Lithic::Models::BookTransferListParams::Status::OrSymbol).void }
+      sig do
+        params(status: Lithic::BookTransferListParams::Status::OrSymbol).void
+      end
       attr_writer :status
 
       sig do
@@ -91,17 +107,16 @@ module Lithic
           account_token: String,
           begin_: Time,
           business_account_token: String,
-          category: Lithic::Models::BookTransferListParams::Category::OrSymbol,
+          category: Lithic::BookTransferListParams::Category::OrSymbol,
           end_: Time,
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
-          result: Lithic::Models::BookTransferListParams::Result::OrSymbol,
+          result: Lithic::BookTransferListParams::Result::OrSymbol,
           starting_after: String,
-          status: Lithic::Models::BookTransferListParams::Status::OrSymbol,
-          request_options: T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          status: Lithic::BookTransferListParams::Status::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         account_token: nil,
@@ -130,74 +145,121 @@ module Lithic
         # Book transfer status to be returned.
         status: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              account_token: String,
-              begin_: Time,
-              business_account_token: String,
-              category: Lithic::Models::BookTransferListParams::Category::OrSymbol,
-              end_: Time,
-              ending_before: String,
-              financial_account_token: String,
-              page_size: Integer,
-              result: Lithic::Models::BookTransferListParams::Result::OrSymbol,
-              starting_after: String,
-              status: Lithic::Models::BookTransferListParams::Status::OrSymbol,
-              request_options: Lithic::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            account_token: String,
+            begin_: Time,
+            business_account_token: String,
+            category: Lithic::BookTransferListParams::Category::OrSymbol,
+            end_: Time,
+            ending_before: String,
+            financial_account_token: String,
+            page_size: Integer,
+            result: Lithic::BookTransferListParams::Result::OrSymbol,
+            starting_after: String,
+            status: Lithic::BookTransferListParams::Status::OrSymbol,
+            request_options: Lithic::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Book Transfer category to be returned.
       module Category
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferListParams::Category) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::BookTransferListParams::Category)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         BALANCE_OR_FUNDING =
-          T.let(:BALANCE_OR_FUNDING, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
-        FEE = T.let(:FEE, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
-        REWARD = T.let(:REWARD, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
-        ADJUSTMENT = T.let(:ADJUSTMENT, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
-        DERECOGNITION = T.let(:DERECOGNITION, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
-        DISPUTE = T.let(:DISPUTE, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
-        INTERNAL = T.let(:INTERNAL, Lithic::Models::BookTransferListParams::Category::TaggedSymbol)
+          T.let(
+            :BALANCE_OR_FUNDING,
+            Lithic::BookTransferListParams::Category::TaggedSymbol
+          )
+        FEE =
+          T.let(:FEE, Lithic::BookTransferListParams::Category::TaggedSymbol)
+        REWARD =
+          T.let(:REWARD, Lithic::BookTransferListParams::Category::TaggedSymbol)
+        ADJUSTMENT =
+          T.let(
+            :ADJUSTMENT,
+            Lithic::BookTransferListParams::Category::TaggedSymbol
+          )
+        DERECOGNITION =
+          T.let(
+            :DERECOGNITION,
+            Lithic::BookTransferListParams::Category::TaggedSymbol
+          )
+        DISPUTE =
+          T.let(
+            :DISPUTE,
+            Lithic::BookTransferListParams::Category::TaggedSymbol
+          )
+        INTERNAL =
+          T.let(
+            :INTERNAL,
+            Lithic::BookTransferListParams::Category::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Category::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::BookTransferListParams::Category::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # Book transfer result to be returned.
       module Result
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferListParams::Result) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::BookTransferListParams::Result) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        APPROVED = T.let(:APPROVED, Lithic::Models::BookTransferListParams::Result::TaggedSymbol)
-        DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferListParams::Result::TaggedSymbol)
+        APPROVED =
+          T.let(:APPROVED, Lithic::BookTransferListParams::Result::TaggedSymbol)
+        DECLINED =
+          T.let(:DECLINED, Lithic::BookTransferListParams::Result::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Result::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::BookTransferListParams::Result::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # Book transfer status to be returned.
       module Status
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::BookTransferListParams::Status) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::BookTransferListParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        DECLINED = T.let(:DECLINED, Lithic::Models::BookTransferListParams::Status::TaggedSymbol)
-        SETTLED = T.let(:SETTLED, Lithic::Models::BookTransferListParams::Status::TaggedSymbol)
+        DECLINED =
+          T.let(:DECLINED, Lithic::BookTransferListParams::Status::TaggedSymbol)
+        SETTLED =
+          T.let(:SETTLED, Lithic::BookTransferListParams::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::BookTransferListParams::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::BookTransferListParams::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

@@ -5,7 +5,7 @@ module Lithic
         def retrieve: (
           String credit_product_token,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::CreditProducts::CreditProductsExtendedCredit
+        ) -> Lithic::CreditProducts::CreditProductsExtendedCredit
 
         def initialize: (client: Lithic::Client) -> void
       end

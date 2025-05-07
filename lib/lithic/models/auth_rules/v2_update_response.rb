@@ -89,7 +89,7 @@ module Lithic
           # @!attribute parameters
           #   Parameters for the Auth Rule
           #
-          #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2UpdateResponse::CurrentVersion::Parameters::MerchantLockParameters]
+          #   @return [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2UpdateResponse::CurrentVersion::Parameters::MerchantLockParameters]
           required :parameters,
                    union: -> { Lithic::Models::AuthRules::V2UpdateResponse::CurrentVersion::Parameters }
 
@@ -106,10 +106,9 @@ module Lithic
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::AuthRules::V2UpdateResponse::CurrentVersion} for more details.
           #
-          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2UpdateResponse::CurrentVersion::Parameters::MerchantLockParameters] Parameters for the Auth Rule
+          #   @param parameters [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2UpdateResponse::CurrentVersion::Parameters::MerchantLockParameters] Parameters for the Auth Rule
           #
           #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
-          #   ...
 
           # Parameters for the Auth Rule
           #
@@ -117,9 +116,9 @@ module Lithic
           module Parameters
             extend Lithic::Internal::Type::Union
 
-            variant -> { Lithic::Models::AuthRules::ConditionalBlockParameters }
+            variant -> { Lithic::AuthRules::ConditionalBlockParameters }
 
-            variant -> { Lithic::Models::AuthRules::VelocityLimitParams }
+            variant -> { Lithic::AuthRules::VelocityLimitParams }
 
             variant -> { Lithic::Models::AuthRules::V2UpdateResponse::CurrentVersion::Parameters::MerchantLockParameters }
 
@@ -138,7 +137,6 @@ module Lithic
               #   for more details.
               #
               #   @param merchants [Array<Lithic::Models::AuthRules::V2UpdateResponse::CurrentVersion::Parameters::MerchantLockParameters::Merchant>] A list of merchant locks defining specific merchants or groups of merchants (bas
-              #   ...
 
               class Merchant < Lithic::Internal::Type::BaseModel
                 # @!attribute comment
@@ -174,18 +172,15 @@ module Lithic
                 #   requires at least one of merchant_id or descriptor.
                 #
                 #   @param comment [String] A comment or explanation about the merchant, used internally for rule management
-                #   ...
                 #
                 #   @param descriptor [String] Short description of the merchant, often used to provide more human-readable con
-                #   ...
                 #
                 #   @param merchant_id [String] Unique alphanumeric identifier for the payment card acceptor (merchant). This at
-                #   ...
               end
             end
 
             # @!method self.variants
-            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2UpdateResponse::CurrentVersion::Parameters::MerchantLockParameters)]
+            #   @return [Array(Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2UpdateResponse::CurrentVersion::Parameters::MerchantLockParameters)]
           end
         end
 
@@ -194,7 +189,7 @@ module Lithic
           # @!attribute parameters
           #   Parameters for the Auth Rule
           #
-          #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2UpdateResponse::DraftVersion::Parameters::MerchantLockParameters]
+          #   @return [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2UpdateResponse::DraftVersion::Parameters::MerchantLockParameters]
           required :parameters, union: -> { Lithic::Models::AuthRules::V2UpdateResponse::DraftVersion::Parameters }
 
           response_only do
@@ -210,10 +205,9 @@ module Lithic
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::AuthRules::V2UpdateResponse::DraftVersion} for more details.
           #
-          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2UpdateResponse::DraftVersion::Parameters::MerchantLockParameters] Parameters for the Auth Rule
+          #   @param parameters [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2UpdateResponse::DraftVersion::Parameters::MerchantLockParameters] Parameters for the Auth Rule
           #
           #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
-          #   ...
 
           # Parameters for the Auth Rule
           #
@@ -221,9 +215,9 @@ module Lithic
           module Parameters
             extend Lithic::Internal::Type::Union
 
-            variant -> { Lithic::Models::AuthRules::ConditionalBlockParameters }
+            variant -> { Lithic::AuthRules::ConditionalBlockParameters }
 
-            variant -> { Lithic::Models::AuthRules::VelocityLimitParams }
+            variant -> { Lithic::AuthRules::VelocityLimitParams }
 
             variant -> { Lithic::Models::AuthRules::V2UpdateResponse::DraftVersion::Parameters::MerchantLockParameters }
 
@@ -242,7 +236,6 @@ module Lithic
               #   for more details.
               #
               #   @param merchants [Array<Lithic::Models::AuthRules::V2UpdateResponse::DraftVersion::Parameters::MerchantLockParameters::Merchant>] A list of merchant locks defining specific merchants or groups of merchants (bas
-              #   ...
 
               class Merchant < Lithic::Internal::Type::BaseModel
                 # @!attribute comment
@@ -278,18 +271,15 @@ module Lithic
                 #   requires at least one of merchant_id or descriptor.
                 #
                 #   @param comment [String] A comment or explanation about the merchant, used internally for rule management
-                #   ...
                 #
                 #   @param descriptor [String] Short description of the merchant, often used to provide more human-readable con
-                #   ...
                 #
                 #   @param merchant_id [String] Unique alphanumeric identifier for the payment card acceptor (merchant). This at
-                #   ...
               end
             end
 
             # @!method self.variants
-            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2UpdateResponse::DraftVersion::Parameters::MerchantLockParameters)]
+            #   @return [Array(Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2UpdateResponse::DraftVersion::Parameters::MerchantLockParameters)]
           end
         end
 

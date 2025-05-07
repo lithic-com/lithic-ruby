@@ -17,21 +17,20 @@ module Lithic
         #
         # @param disabled [Boolean] Whether the event subscription is active (false) or inactive (true).
         #
-        # @param event_types [Array<Symbol, Lithic::Models::Events::SubscriptionCreateParams::EventType>] Indicates types of events that will be sent to this subscription. If left blank,
-        # ...
+        # @param event_types [Array<Symbol, Lithic::Events::SubscriptionCreateParams::EventType>] Indicates types of events that will be sent to this subscription. If left blank,
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::EventSubscription]
+        # @return [Lithic::EventSubscription]
         #
         # @see Lithic::Models::Events::SubscriptionCreateParams
         def create(params)
-          parsed, options = Lithic::Models::Events::SubscriptionCreateParams.dump_request(params)
+          parsed, options = Lithic::Events::SubscriptionCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/event_subscriptions",
             body: parsed,
-            model: Lithic::Models::EventSubscription,
+            model: Lithic::EventSubscription,
             options: options
           )
         end
@@ -43,14 +42,14 @@ module Lithic
         # @param event_subscription_token [String]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::EventSubscription]
+        # @return [Lithic::EventSubscription]
         #
         # @see Lithic::Models::Events::SubscriptionRetrieveParams
         def retrieve(event_subscription_token, params = {})
           @client.request(
             method: :get,
             path: ["v1/event_subscriptions/%1$s", event_subscription_token],
-            model: Lithic::Models::EventSubscription,
+            model: Lithic::EventSubscription,
             options: params[:request_options]
           )
         end
@@ -70,21 +69,20 @@ module Lithic
         #
         # @param disabled [Boolean] Whether the event subscription is active (false) or inactive (true).
         #
-        # @param event_types [Array<Symbol, Lithic::Models::Events::SubscriptionUpdateParams::EventType>] Indicates types of events that will be sent to this subscription. If left blank,
-        # ...
+        # @param event_types [Array<Symbol, Lithic::Events::SubscriptionUpdateParams::EventType>] Indicates types of events that will be sent to this subscription. If left blank,
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::EventSubscription]
+        # @return [Lithic::EventSubscription]
         #
         # @see Lithic::Models::Events::SubscriptionUpdateParams
         def update(event_subscription_token, params)
-          parsed, options = Lithic::Models::Events::SubscriptionUpdateParams.dump_request(params)
+          parsed, options = Lithic::Events::SubscriptionUpdateParams.dump_request(params)
           @client.request(
             method: :patch,
             path: ["v1/event_subscriptions/%1$s", event_subscription_token],
             body: parsed,
-            model: Lithic::Models::EventSubscription,
+            model: Lithic::EventSubscription,
             options: options
           )
         end
@@ -97,26 +95,24 @@ module Lithic
         # @overload list(ending_before: nil, page_size: nil, starting_after: nil, request_options: {})
         #
         # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-        # ...
         #
         # @param page_size [Integer] Page size (for pagination).
         #
         # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-        # ...
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::CursorPage<Lithic::Models::EventSubscription>]
+        # @return [Lithic::Internal::CursorPage<Lithic::EventSubscription>]
         #
         # @see Lithic::Models::Events::SubscriptionListParams
         def list(params = {})
-          parsed, options = Lithic::Models::Events::SubscriptionListParams.dump_request(params)
+          parsed, options = Lithic::Events::SubscriptionListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "v1/event_subscriptions",
             query: parsed,
             page: Lithic::Internal::CursorPage,
-            model: Lithic::Models::EventSubscription,
+            model: Lithic::EventSubscription,
             options: options
           )
         end
@@ -150,34 +146,30 @@ module Lithic
         # @param event_subscription_token [String]
         #
         # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-        # ...
         #
         # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-        # ...
         #
         # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-        # ...
         #
         # @param page_size [Integer] Page size (for pagination).
         #
         # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-        # ...
         #
-        # @param status [Symbol, Lithic::Models::Events::SubscriptionListAttemptsParams::Status]
+        # @param status [Symbol, Lithic::Events::SubscriptionListAttemptsParams::Status]
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::CursorPage<Lithic::Models::MessageAttempt>]
+        # @return [Lithic::Internal::CursorPage<Lithic::MessageAttempt>]
         #
         # @see Lithic::Models::Events::SubscriptionListAttemptsParams
         def list_attempts(event_subscription_token, params = {})
-          parsed, options = Lithic::Models::Events::SubscriptionListAttemptsParams.dump_request(params)
+          parsed, options = Lithic::Events::SubscriptionListAttemptsParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["v1/event_subscriptions/%1$s/attempts", event_subscription_token],
             query: parsed.transform_keys(begin_: "begin", end_: "end"),
             page: Lithic::Internal::CursorPage,
-            model: Lithic::Models::MessageAttempt,
+            model: Lithic::MessageAttempt,
             options: options
           )
         end
@@ -192,10 +184,8 @@ module Lithic
         # @param event_subscription_token [String]
         #
         # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-        # ...
         #
         # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-        # ...
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -203,7 +193,7 @@ module Lithic
         #
         # @see Lithic::Models::Events::SubscriptionRecoverParams
         def recover(event_subscription_token, params = {})
-          parsed, options = Lithic::Models::Events::SubscriptionRecoverParams.dump_request(params)
+          parsed, options = Lithic::Events::SubscriptionRecoverParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["v1/event_subscriptions/%1$s/recover", event_subscription_token],
@@ -227,10 +217,8 @@ module Lithic
         # @param event_subscription_token [String]
         #
         # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-        # ...
         #
         # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-        # ...
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -238,7 +226,7 @@ module Lithic
         #
         # @see Lithic::Models::Events::SubscriptionReplayMissingParams
         def replay_missing(event_subscription_token, params = {})
-          parsed, options = Lithic::Models::Events::SubscriptionReplayMissingParams.dump_request(params)
+          parsed, options = Lithic::Events::SubscriptionReplayMissingParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["v1/event_subscriptions/%1$s/replay_missing", event_subscription_token],
@@ -293,7 +281,7 @@ module Lithic
         #
         # @param event_subscription_token [String]
         #
-        # @param event_type [Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType] Event type to send example message for.
+        # @param event_type [Symbol, Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType] Event type to send example message for.
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -301,7 +289,7 @@ module Lithic
         #
         # @see Lithic::Models::Events::SubscriptionSendSimulatedExampleParams
         def send_simulated_example(event_subscription_token, params = {})
-          parsed, options = Lithic::Models::Events::SubscriptionSendSimulatedExampleParams.dump_request(params)
+          parsed, options = Lithic::Events::SubscriptionSendSimulatedExampleParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["v1/simulate/event_subscriptions/%1$s/send_example", event_subscription_token],

@@ -46,14 +46,12 @@ module Lithic
       #   {Lithic::Models::TransactionSimulateCreditAuthorizationParams} for more details.
       #
       #   @param amount [Integer] Amount (in cents). Any value entered will be converted into a negative amount in
-      #   ...
       #
       #   @param descriptor [String] Merchant descriptor.
       #
       #   @param pan [String] Sixteen digit card number.
       #
       #   @param mcc [String] Merchant category code for the transaction to be simulated. A four-digit number
-      #   ...
       #
       #   @param merchant_acceptor_id [String] Unique identifier to identify the payment card acceptor.
       #

@@ -25,14 +25,14 @@ class Lithic::Test::Resources::AuthRules::V2::BacktestsTest < Lithic::Test::Reso
       )
 
     assert_pattern do
-      response => Lithic::Models::AuthRules::V2::BacktestResults
+      response => Lithic::AuthRules::V2::BacktestResults
     end
 
     assert_pattern do
       response => {
         backtest_token: String,
-        results: Lithic::Models::AuthRules::V2::BacktestResults::Results,
-        simulation_parameters: Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters
+        results: Lithic::AuthRules::V2::BacktestResults::Results,
+        simulation_parameters: Lithic::AuthRules::V2::BacktestResults::SimulationParameters
       }
     end
   end

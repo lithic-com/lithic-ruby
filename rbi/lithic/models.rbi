@@ -9,28 +9,33 @@ module Lithic
 
   AccountHolderCreateParams = Lithic::Models::AccountHolderCreateParams
 
-  AccountHolderListDocumentsParams = Lithic::Models::AccountHolderListDocumentsParams
+  AccountHolderListDocumentsParams =
+    Lithic::Models::AccountHolderListDocumentsParams
 
   AccountHolderListParams = Lithic::Models::AccountHolderListParams
 
-  AccountHolderRetrieveDocumentParams = Lithic::Models::AccountHolderRetrieveDocumentParams
+  AccountHolderRetrieveDocumentParams =
+    Lithic::Models::AccountHolderRetrieveDocumentParams
 
   AccountHolderRetrieveParams = Lithic::Models::AccountHolderRetrieveParams
 
   AccountHolderSimulateEnrollmentDocumentReviewParams =
     Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams
 
-  AccountHolderSimulateEnrollmentReviewParams = Lithic::Models::AccountHolderSimulateEnrollmentReviewParams
+  AccountHolderSimulateEnrollmentReviewParams =
+    Lithic::Models::AccountHolderSimulateEnrollmentReviewParams
 
   AccountHolderUpdateParams = Lithic::Models::AccountHolderUpdateParams
 
-  AccountHolderUploadDocumentParams = Lithic::Models::AccountHolderUploadDocumentParams
+  AccountHolderUploadDocumentParams =
+    Lithic::Models::AccountHolderUploadDocumentParams
 
   AccountListParams = Lithic::Models::AccountListParams
 
   AccountRetrieveParams = Lithic::Models::AccountRetrieveParams
 
-  AccountRetrieveSpendLimitsParams = Lithic::Models::AccountRetrieveSpendLimitsParams
+  AccountRetrieveSpendLimitsParams =
+    Lithic::Models::AccountRetrieveSpendLimitsParams
 
   AccountSpendLimits = Lithic::Models::AccountSpendLimits
 
@@ -48,9 +53,11 @@ module Lithic
 
   AuthRules = Lithic::Models::AuthRules
 
-  AuthStreamEnrollmentRetrieveSecretParams = Lithic::Models::AuthStreamEnrollmentRetrieveSecretParams
+  AuthStreamEnrollmentRetrieveSecretParams =
+    Lithic::Models::AuthStreamEnrollmentRetrieveSecretParams
 
-  AuthStreamEnrollmentRotateSecretParams = Lithic::Models::AuthStreamEnrollmentRotateSecretParams
+  AuthStreamEnrollmentRotateSecretParams =
+    Lithic::Models::AuthStreamEnrollmentRotateSecretParams
 
   AuthStreamSecret = Lithic::Models::AuthStreamSecret
 
@@ -126,7 +133,8 @@ module Lithic
 
   DisputeEvidence = Lithic::Models::DisputeEvidence
 
-  DisputeInitiateEvidenceUploadParams = Lithic::Models::DisputeInitiateEvidenceUploadParams
+  DisputeInitiateEvidenceUploadParams =
+    Lithic::Models::DisputeInitiateEvidenceUploadParams
 
   DisputeListEvidencesParams = Lithic::Models::DisputeListEvidencesParams
 
@@ -154,19 +162,24 @@ module Lithic
 
   ExternalBankAccountAddress = Lithic::Models::ExternalBankAccountAddress
 
-  ExternalBankAccountCreateParams = Lithic::Models::ExternalBankAccountCreateParams
+  ExternalBankAccountCreateParams =
+    Lithic::Models::ExternalBankAccountCreateParams
 
   ExternalBankAccountListParams = Lithic::Models::ExternalBankAccountListParams
 
-  ExternalBankAccountRetrieveParams = Lithic::Models::ExternalBankAccountRetrieveParams
+  ExternalBankAccountRetrieveParams =
+    Lithic::Models::ExternalBankAccountRetrieveParams
 
-  ExternalBankAccountRetryMicroDepositsParams = Lithic::Models::ExternalBankAccountRetryMicroDepositsParams
+  ExternalBankAccountRetryMicroDepositsParams =
+    Lithic::Models::ExternalBankAccountRetryMicroDepositsParams
 
-  ExternalBankAccountRetryPrenoteParams = Lithic::Models::ExternalBankAccountRetryPrenoteParams
+  ExternalBankAccountRetryPrenoteParams =
+    Lithic::Models::ExternalBankAccountRetryPrenoteParams
 
   ExternalBankAccounts = Lithic::Models::ExternalBankAccounts
 
-  ExternalBankAccountUpdateParams = Lithic::Models::ExternalBankAccountUpdateParams
+  ExternalBankAccountUpdateParams =
+    Lithic::Models::ExternalBankAccountUpdateParams
 
   ExternalPayment = Lithic::Models::ExternalPayment
 
@@ -190,13 +203,15 @@ module Lithic
 
   FinancialAccountListParams = Lithic::Models::FinancialAccountListParams
 
-  FinancialAccountRetrieveParams = Lithic::Models::FinancialAccountRetrieveParams
+  FinancialAccountRetrieveParams =
+    Lithic::Models::FinancialAccountRetrieveParams
 
   FinancialAccounts = Lithic::Models::FinancialAccounts
 
   FinancialAccountUpdateParams = Lithic::Models::FinancialAccountUpdateParams
 
-  FinancialAccountUpdateStatusParams = Lithic::Models::FinancialAccountUpdateStatusParams
+  FinancialAccountUpdateStatusParams =
+    Lithic::Models::FinancialAccountUpdateStatusParams
 
   FinancialTransaction = Lithic::Models::FinancialTransaction
 
@@ -210,15 +225,19 @@ module Lithic
 
   KYCExempt = Lithic::Models::KYCExempt
 
-  ManagementOperationCreateParams = Lithic::Models::ManagementOperationCreateParams
+  ManagementOperationCreateParams =
+    Lithic::Models::ManagementOperationCreateParams
 
   ManagementOperationListParams = Lithic::Models::ManagementOperationListParams
 
-  ManagementOperationRetrieveParams = Lithic::Models::ManagementOperationRetrieveParams
+  ManagementOperationRetrieveParams =
+    Lithic::Models::ManagementOperationRetrieveParams
 
-  ManagementOperationReverseParams = Lithic::Models::ManagementOperationReverseParams
+  ManagementOperationReverseParams =
+    Lithic::Models::ManagementOperationReverseParams
 
-  ManagementOperationTransaction = Lithic::Models::ManagementOperationTransaction
+  ManagementOperationTransaction =
+    Lithic::Models::ManagementOperationTransaction
 
   MessageAttempt = Lithic::Models::MessageAttempt
 
@@ -248,7 +267,8 @@ module Lithic
 
   RequiredDocument = Lithic::Models::RequiredDocument
 
-  ResponderEndpointCheckStatusParams = Lithic::Models::ResponderEndpointCheckStatusParams
+  ResponderEndpointCheckStatusParams =
+    Lithic::Models::ResponderEndpointCheckStatusParams
 
   ResponderEndpointCreateParams = Lithic::Models::ResponderEndpointCreateParams
 
@@ -274,15 +294,18 @@ module Lithic
 
   TokenizationDeactivateParams = Lithic::Models::TokenizationDeactivateParams
 
-  TokenizationDecisioningRetrieveSecretParams = Lithic::Models::TokenizationDecisioningRetrieveSecretParams
+  TokenizationDecisioningRetrieveSecretParams =
+    Lithic::Models::TokenizationDecisioningRetrieveSecretParams
 
-  TokenizationDecisioningRotateSecretParams = Lithic::Models::TokenizationDecisioningRotateSecretParams
+  TokenizationDecisioningRotateSecretParams =
+    Lithic::Models::TokenizationDecisioningRotateSecretParams
 
   TokenizationListParams = Lithic::Models::TokenizationListParams
 
   TokenizationPauseParams = Lithic::Models::TokenizationPauseParams
 
-  TokenizationResendActivationCodeParams = Lithic::Models::TokenizationResendActivationCodeParams
+  TokenizationResendActivationCodeParams =
+    Lithic::Models::TokenizationResendActivationCodeParams
 
   TokenizationRetrieveParams = Lithic::Models::TokenizationRetrieveParams
 
@@ -292,11 +315,13 @@ module Lithic
 
   TokenizationUnpauseParams = Lithic::Models::TokenizationUnpauseParams
 
-  TokenizationUpdateDigitalCardArtParams = Lithic::Models::TokenizationUpdateDigitalCardArtParams
+  TokenizationUpdateDigitalCardArtParams =
+    Lithic::Models::TokenizationUpdateDigitalCardArtParams
 
   Transaction = Lithic::Models::Transaction
 
-  TransactionExpireAuthorizationParams = Lithic::Models::TransactionExpireAuthorizationParams
+  TransactionExpireAuthorizationParams =
+    Lithic::Models::TransactionExpireAuthorizationParams
 
   TransactionListParams = Lithic::Models::TransactionListParams
 
@@ -307,16 +332,20 @@ module Lithic
   TransactionSimulateAuthorizationAdviceParams =
     Lithic::Models::TransactionSimulateAuthorizationAdviceParams
 
-  TransactionSimulateAuthorizationParams = Lithic::Models::TransactionSimulateAuthorizationParams
+  TransactionSimulateAuthorizationParams =
+    Lithic::Models::TransactionSimulateAuthorizationParams
 
-  TransactionSimulateClearingParams = Lithic::Models::TransactionSimulateClearingParams
+  TransactionSimulateClearingParams =
+    Lithic::Models::TransactionSimulateClearingParams
 
   TransactionSimulateCreditAuthorizationParams =
     Lithic::Models::TransactionSimulateCreditAuthorizationParams
 
-  TransactionSimulateReturnParams = Lithic::Models::TransactionSimulateReturnParams
+  TransactionSimulateReturnParams =
+    Lithic::Models::TransactionSimulateReturnParams
 
-  TransactionSimulateReturnReversalParams = Lithic::Models::TransactionSimulateReturnReversalParams
+  TransactionSimulateReturnReversalParams =
+    Lithic::Models::TransactionSimulateReturnReversalParams
 
   TransactionSimulateVoidParams = Lithic::Models::TransactionSimulateVoidParams
 

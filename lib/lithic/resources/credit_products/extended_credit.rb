@@ -12,14 +12,14 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::CreditProducts::CreditProductsExtendedCredit]
+        # @return [Lithic::CreditProducts::CreditProductsExtendedCredit]
         #
         # @see Lithic::Models::CreditProducts::ExtendedCreditRetrieveParams
         def retrieve(credit_product_token, params = {})
           @client.request(
             method: :get,
             path: ["v1/credit_products/%1$s/extended_credit", credit_product_token],
-            model: Lithic::Models::CreditProducts::CreditProductsExtendedCredit,
+            model: Lithic::CreditProducts::CreditProductsExtendedCredit,
             options: params[:request_options]
           )
         end

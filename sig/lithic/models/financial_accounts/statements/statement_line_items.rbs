@@ -6,31 +6,29 @@ module Lithic
       module Statements
         type statement_line_items =
           {
-            data: ::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data],
+            data: ::Array[Lithic::FinancialAccounts::Statements::StatementLineItems::Data],
             has_more: bool
           }
 
         class StatementLineItems < Lithic::Internal::Type::BaseModel
-          attr_accessor data: ::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data]
+          attr_accessor data: ::Array[Lithic::FinancialAccounts::Statements::StatementLineItems::Data]
 
           attr_accessor has_more: bool
 
           def initialize: (
-            data: ::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data],
+            data: ::Array[Lithic::FinancialAccounts::Statements::StatementLineItems::Data],
             has_more: bool
           ) -> void
-
-          def to_hash: -> Lithic::Models::FinancialAccounts::Statements::statement_line_items
 
           type data =
             {
               token: String,
               amount: Integer,
-              category: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::category,
+              category: Lithic::FinancialAccounts::Statements::StatementLineItems::Data::category,
               created: Time,
               currency: String,
               effective_date: Date,
-              event_type: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::event_type,
+              event_type: Lithic::FinancialAccounts::Statements::StatementLineItems::Data::event_type,
               financial_account_token: String,
               financial_transaction_event_token: String,
               financial_transaction_token: String,
@@ -43,7 +41,7 @@ module Lithic
 
             attr_accessor amount: Integer
 
-            attr_accessor category: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::category
+            attr_accessor category: Lithic::FinancialAccounts::Statements::StatementLineItems::Data::category
 
             attr_accessor created: Time
 
@@ -51,7 +49,7 @@ module Lithic
 
             attr_accessor effective_date: Date
 
-            attr_accessor event_type: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::event_type
+            attr_accessor event_type: Lithic::FinancialAccounts::Statements::StatementLineItems::Data::event_type
 
             attr_accessor financial_account_token: String
 
@@ -70,19 +68,17 @@ module Lithic
             def initialize: (
               token: String,
               amount: Integer,
-              category: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::category,
+              category: Lithic::FinancialAccounts::Statements::StatementLineItems::Data::category,
               created: Time,
               currency: String,
               effective_date: Date,
-              event_type: Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::event_type,
+              event_type: Lithic::FinancialAccounts::Statements::StatementLineItems::Data::event_type,
               financial_account_token: String,
               financial_transaction_event_token: String,
               financial_transaction_token: String,
               ?card_token: String,
               ?descriptor: String
             ) -> void
-
-            def to_hash: -> Lithic::Models::FinancialAccounts::Statements::StatementLineItems::data
 
             type category =
               :ACH
@@ -114,7 +110,7 @@ module Lithic
               MANAGEMENT_REWARD: :MANAGEMENT_REWARD
               MANAGEMENT_DISBURSEMENT: :MANAGEMENT_DISBURSEMENT
 
-              def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::category]
+              def self?.values: -> ::Array[Lithic::FinancialAccounts::Statements::StatementLineItems::Data::category]
             end
 
             type event_type =
@@ -257,7 +253,7 @@ module Lithic
               RETURNED_PAYMENT_REVERSAL: :RETURNED_PAYMENT_REVERSAL
               LITHIC_NETWORK_PAYMENT: :LITHIC_NETWORK_PAYMENT
 
-              def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::event_type]
+              def self?.values: -> ::Array[Lithic::FinancialAccounts::Statements::StatementLineItems::Data::event_type]
             end
           end
         end

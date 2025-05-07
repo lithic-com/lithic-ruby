@@ -12,12 +12,12 @@ module Lithic
         ?progress_to: Lithic::Models::ExternalPaymentCreateParams::progress_to,
         ?user_defined_id: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::ExternalPayment
+      ) -> Lithic::ExternalPayment
 
       def retrieve: (
         String external_payment_token,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::ExternalPayment
+      ) -> Lithic::ExternalPayment
 
       def list: (
         ?begin_: Time,
@@ -31,28 +31,28 @@ module Lithic
         ?starting_after: String,
         ?status: Lithic::Models::ExternalPaymentListParams::status,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Internal::CursorPage[Lithic::Models::ExternalPayment]
+      ) -> Lithic::Internal::CursorPage[Lithic::ExternalPayment]
 
       def cancel: (
         String external_payment_token,
         effective_date: Date,
         ?memo: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::ExternalPayment
+      ) -> Lithic::ExternalPayment
 
       def release: (
         String external_payment_token,
         effective_date: Date,
         ?memo: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::ExternalPayment
+      ) -> Lithic::ExternalPayment
 
       def reverse: (
         String external_payment_token,
         effective_date: Date,
         ?memo: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::ExternalPayment
+      ) -> Lithic::ExternalPayment
 
       def settle: (
         String external_payment_token,
@@ -60,7 +60,7 @@ module Lithic
         ?memo: String,
         ?progress_to: Lithic::Models::ExternalPaymentSettleParams::progress_to,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::ExternalPayment
+      ) -> Lithic::ExternalPayment
 
       def initialize: (client: Lithic::Client) -> void
     end

@@ -8,10 +8,10 @@ module Lithic
       # @overload create(amount:, category:, direction:, effective_date:, event_type:, financial_account_token:, token: nil, memo: nil, subtype: nil, user_defined_id: nil, request_options: {})
       #
       # @param amount [Integer]
-      # @param category [Symbol, Lithic::Models::ManagementOperationCreateParams::Category]
-      # @param direction [Symbol, Lithic::Models::ManagementOperationCreateParams::Direction]
+      # @param category [Symbol, Lithic::ManagementOperationCreateParams::Category]
+      # @param direction [Symbol, Lithic::ManagementOperationCreateParams::Direction]
       # @param effective_date [Date]
-      # @param event_type [Symbol, Lithic::Models::ManagementOperationCreateParams::EventType]
+      # @param event_type [Symbol, Lithic::ManagementOperationCreateParams::EventType]
       # @param financial_account_token [String]
       # @param token [String]
       # @param memo [String]
@@ -19,16 +19,16 @@ module Lithic
       # @param user_defined_id [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::ManagementOperationTransaction]
+      # @return [Lithic::ManagementOperationTransaction]
       #
       # @see Lithic::Models::ManagementOperationCreateParams
       def create(params)
-        parsed, options = Lithic::Models::ManagementOperationCreateParams.dump_request(params)
+        parsed, options = Lithic::ManagementOperationCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v1/management_operations",
           body: parsed,
-          model: Lithic::Models::ManagementOperationTransaction,
+          model: Lithic::ManagementOperationTransaction,
           options: options
         )
       end
@@ -41,14 +41,14 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::ManagementOperationTransaction]
+      # @return [Lithic::ManagementOperationTransaction]
       #
       # @see Lithic::Models::ManagementOperationRetrieveParams
       def retrieve(management_operation_token, params = {})
         @client.request(
           method: :get,
           path: ["v1/management_operations/%1$s", management_operation_token],
-          model: Lithic::Models::ManagementOperationTransaction,
+          model: Lithic::ManagementOperationTransaction,
           options: params[:request_options]
         )
       end
@@ -61,41 +61,36 @@ module Lithic
       # @overload list(begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, starting_after: nil, status: nil, request_options: {})
       #
       # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
-      # ...
       #
       # @param business_account_token [String]
       #
-      # @param category [Symbol, Lithic::Models::ManagementOperationListParams::Category] Management operation category to be returned.
+      # @param category [Symbol, Lithic::ManagementOperationListParams::Category] Management operation category to be returned.
       #
       # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
-      # ...
       #
       # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
-      # ...
       #
       # @param financial_account_token [String] Globally unique identifier for the financial account. Accepted type dependent on
-      # ...
       #
       # @param page_size [Integer] Page size (for pagination).
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
-      # ...
       #
-      # @param status [Symbol, Lithic::Models::ManagementOperationListParams::Status] Management operation status to be returned.
+      # @param status [Symbol, Lithic::ManagementOperationListParams::Status] Management operation status to be returned.
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::Models::ManagementOperationTransaction>]
+      # @return [Lithic::Internal::CursorPage<Lithic::ManagementOperationTransaction>]
       #
       # @see Lithic::Models::ManagementOperationListParams
       def list(params = {})
-        parsed, options = Lithic::Models::ManagementOperationListParams.dump_request(params)
+        parsed, options = Lithic::ManagementOperationListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/management_operations",
           query: parsed.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
-          model: Lithic::Models::ManagementOperationTransaction,
+          model: Lithic::ManagementOperationTransaction,
           options: options
         )
       end
@@ -112,16 +107,16 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::ManagementOperationTransaction]
+      # @return [Lithic::ManagementOperationTransaction]
       #
       # @see Lithic::Models::ManagementOperationReverseParams
       def reverse(management_operation_token, params)
-        parsed, options = Lithic::Models::ManagementOperationReverseParams.dump_request(params)
+        parsed, options = Lithic::ManagementOperationReverseParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["v1/management_operations/%1$s/reverse", management_operation_token],
           body: parsed,
-          model: Lithic::Models::ManagementOperationTransaction,
+          model: Lithic::ManagementOperationTransaction,
           options: options
         )
       end

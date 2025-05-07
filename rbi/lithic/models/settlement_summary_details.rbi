@@ -3,6 +3,8 @@
 module Lithic
   module Models
     class SettlementSummaryDetails < Lithic::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
       # 3-character alphabetic ISO 4217 code.
       sig { returns(T.nilable(String)) }
       attr_reader :currency
@@ -33,10 +35,18 @@ module Lithic
       attr_writer :interchange_gross_amount
 
       # Card network where the transaction took place
-      sig { returns(T.nilable(Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)) }
+      sig do
+        returns(
+          T.nilable(Lithic::SettlementSummaryDetails::Network::TaggedSymbol)
+        )
+      end
       attr_reader :network
 
-      sig { params(network: Lithic::Models::SettlementSummaryDetails::Network::OrSymbol).void }
+      sig do
+        params(
+          network: Lithic::SettlementSummaryDetails::Network::OrSymbol
+        ).void
+      end
       attr_writer :network
 
       # Total amount of gross other fees outside of interchange.
@@ -68,12 +78,11 @@ module Lithic
           disputes_gross_amount: Integer,
           institution: String,
           interchange_gross_amount: Integer,
-          network: Lithic::Models::SettlementSummaryDetails::Network::OrSymbol,
+          network: Lithic::SettlementSummaryDetails::Network::OrSymbol,
           other_fees_gross_amount: Integer,
           settled_net_amount: Integer,
           transactions_gross_amount: Integer
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # 3-character alphabetic ISO 4217 code.
@@ -95,39 +104,66 @@ module Lithic
         # The total amount of settlement impacting transactions (excluding interchange,
         # fees, and disputes).
         transactions_gross_amount: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              currency: String,
-              disputes_gross_amount: Integer,
-              institution: String,
-              interchange_gross_amount: Integer,
-              network: Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol,
-              other_fees_gross_amount: Integer,
-              settled_net_amount: Integer,
-              transactions_gross_amount: Integer
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            currency: String,
+            disputes_gross_amount: Integer,
+            institution: String,
+            interchange_gross_amount: Integer,
+            network: Lithic::SettlementSummaryDetails::Network::TaggedSymbol,
+            other_fees_gross_amount: Integer,
+            settled_net_amount: Integer,
+            transactions_gross_amount: Integer
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Card network where the transaction took place
       module Network
         extend Lithic::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Models::SettlementSummaryDetails::Network) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::SettlementSummaryDetails::Network)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        INTERLINK = T.let(:INTERLINK, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
-        MAESTRO = T.let(:MAESTRO, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
-        MASTERCARD = T.let(:MASTERCARD, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
-        UNKNOWN = T.let(:UNKNOWN, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
-        VISA = T.let(:VISA, Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol)
+        INTERLINK =
+          T.let(
+            :INTERLINK,
+            Lithic::SettlementSummaryDetails::Network::TaggedSymbol
+          )
+        MAESTRO =
+          T.let(
+            :MAESTRO,
+            Lithic::SettlementSummaryDetails::Network::TaggedSymbol
+          )
+        MASTERCARD =
+          T.let(
+            :MASTERCARD,
+            Lithic::SettlementSummaryDetails::Network::TaggedSymbol
+          )
+        UNKNOWN =
+          T.let(
+            :UNKNOWN,
+            Lithic::SettlementSummaryDetails::Network::TaggedSymbol
+          )
+        VISA =
+          T.let(:VISA, Lithic::SettlementSummaryDetails::Network::TaggedSymbol)
 
-        sig { override.returns(T::Array[Lithic::Models::SettlementSummaryDetails::Network::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Lithic::SettlementSummaryDetails::Network::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

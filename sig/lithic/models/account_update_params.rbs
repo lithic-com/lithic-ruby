@@ -6,7 +6,7 @@ module Lithic
         lifetime_spend_limit: Integer,
         monthly_spend_limit: Integer,
         state: Lithic::Models::AccountUpdateParams::state,
-        verification_address: Lithic::Models::AccountUpdateParams::VerificationAddress
+        verification_address: Lithic::AccountUpdateParams::VerificationAddress
       }
       & Lithic::Internal::Type::request_parameters
 
@@ -32,22 +32,20 @@ module Lithic
         Lithic::Models::AccountUpdateParams::state
       ) -> Lithic::Models::AccountUpdateParams::state
 
-      attr_reader verification_address: Lithic::Models::AccountUpdateParams::VerificationAddress?
+      attr_reader verification_address: Lithic::AccountUpdateParams::VerificationAddress?
 
       def verification_address=: (
-        Lithic::Models::AccountUpdateParams::VerificationAddress
-      ) -> Lithic::Models::AccountUpdateParams::VerificationAddress
+        Lithic::AccountUpdateParams::VerificationAddress
+      ) -> Lithic::AccountUpdateParams::VerificationAddress
 
       def initialize: (
         ?daily_spend_limit: Integer,
         ?lifetime_spend_limit: Integer,
         ?monthly_spend_limit: Integer,
         ?state: Lithic::Models::AccountUpdateParams::state,
-        ?verification_address: Lithic::Models::AccountUpdateParams::VerificationAddress,
+        ?verification_address: Lithic::AccountUpdateParams::VerificationAddress,
         ?request_options: Lithic::request_opts
       ) -> void
-
-      def to_hash: -> Lithic::Models::account_update_params
 
       type state = :ACTIVE | :PAUSED
 
@@ -103,8 +101,6 @@ module Lithic
           ?postal_code: String,
           ?state: String
         ) -> void
-
-        def to_hash: -> Lithic::Models::AccountUpdateParams::verification_address
       end
     end
   end

@@ -37,8 +37,6 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
-      def to_hash: -> Lithic::Models::dispute_create_params
-
       type reason =
         :ATM_CASH_MISDISPENSE
         | :CANCELLED

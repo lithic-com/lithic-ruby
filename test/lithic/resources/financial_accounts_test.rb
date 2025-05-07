@@ -7,7 +7,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
     response = @lithic.financial_accounts.create(nickname: "nickname", type: :OPERATING)
 
     assert_pattern do
-      response => Lithic::Models::FinancialAccount
+      response => Lithic::FinancialAccount
     end
 
     assert_pattern do
@@ -15,15 +15,15 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         token: String,
         account_token: String | nil,
         created: Time,
-        credit_configuration: Lithic::Models::FinancialAccount::CreditConfiguration | nil,
+        credit_configuration: Lithic::FinancialAccount::CreditConfiguration | nil,
         is_for_benefit_of: Lithic::Internal::Type::Boolean,
         nickname: String | nil,
-        status: Lithic::Models::FinancialAccount::Status,
-        type: Lithic::Models::FinancialAccount::Type,
+        status: Lithic::FinancialAccount::Status,
+        type: Lithic::FinancialAccount::Type,
         updated: Time,
         account_number: String | nil,
         routing_number: String | nil,
-        substatus: Lithic::Models::FinancialAccount::Substatus | nil
+        substatus: Lithic::FinancialAccount::Substatus | nil
       }
     end
   end
@@ -32,7 +32,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
     response = @lithic.financial_accounts.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::FinancialAccount
+      response => Lithic::FinancialAccount
     end
 
     assert_pattern do
@@ -40,15 +40,15 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         token: String,
         account_token: String | nil,
         created: Time,
-        credit_configuration: Lithic::Models::FinancialAccount::CreditConfiguration | nil,
+        credit_configuration: Lithic::FinancialAccount::CreditConfiguration | nil,
         is_for_benefit_of: Lithic::Internal::Type::Boolean,
         nickname: String | nil,
-        status: Lithic::Models::FinancialAccount::Status,
-        type: Lithic::Models::FinancialAccount::Type,
+        status: Lithic::FinancialAccount::Status,
+        type: Lithic::FinancialAccount::Type,
         updated: Time,
         account_number: String | nil,
         routing_number: String | nil,
-        substatus: Lithic::Models::FinancialAccount::Substatus | nil
+        substatus: Lithic::FinancialAccount::Substatus | nil
       }
     end
   end
@@ -57,7 +57,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
     response = @lithic.financial_accounts.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::FinancialAccount
+      response => Lithic::FinancialAccount
     end
 
     assert_pattern do
@@ -65,15 +65,15 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         token: String,
         account_token: String | nil,
         created: Time,
-        credit_configuration: Lithic::Models::FinancialAccount::CreditConfiguration | nil,
+        credit_configuration: Lithic::FinancialAccount::CreditConfiguration | nil,
         is_for_benefit_of: Lithic::Internal::Type::Boolean,
         nickname: String | nil,
-        status: Lithic::Models::FinancialAccount::Status,
-        type: Lithic::Models::FinancialAccount::Type,
+        status: Lithic::FinancialAccount::Status,
+        type: Lithic::FinancialAccount::Type,
         updated: Time,
         account_number: String | nil,
         routing_number: String | nil,
-        substatus: Lithic::Models::FinancialAccount::Substatus | nil
+        substatus: Lithic::FinancialAccount::Substatus | nil
       }
     end
   end
@@ -89,7 +89,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::FinancialAccount
+      row => Lithic::FinancialAccount
     end
 
     assert_pattern do
@@ -97,15 +97,15 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         token: String,
         account_token: String | nil,
         created: Time,
-        credit_configuration: Lithic::Models::FinancialAccount::CreditConfiguration | nil,
+        credit_configuration: Lithic::FinancialAccount::CreditConfiguration | nil,
         is_for_benefit_of: Lithic::Internal::Type::Boolean,
         nickname: String | nil,
-        status: Lithic::Models::FinancialAccount::Status,
-        type: Lithic::Models::FinancialAccount::Type,
+        status: Lithic::FinancialAccount::Status,
+        type: Lithic::FinancialAccount::Type,
         updated: Time,
         account_number: String | nil,
         routing_number: String | nil,
-        substatus: Lithic::Models::FinancialAccount::Substatus | nil
+        substatus: Lithic::FinancialAccount::Substatus | nil
       }
     end
   end
@@ -119,7 +119,7 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
       )
 
     assert_pattern do
-      response => Lithic::Models::FinancialAccount
+      response => Lithic::FinancialAccount
     end
 
     assert_pattern do
@@ -127,15 +127,15 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
         token: String,
         account_token: String | nil,
         created: Time,
-        credit_configuration: Lithic::Models::FinancialAccount::CreditConfiguration | nil,
+        credit_configuration: Lithic::FinancialAccount::CreditConfiguration | nil,
         is_for_benefit_of: Lithic::Internal::Type::Boolean,
         nickname: String | nil,
-        status: Lithic::Models::FinancialAccount::Status,
-        type: Lithic::Models::FinancialAccount::Type,
+        status: Lithic::FinancialAccount::Status,
+        type: Lithic::FinancialAccount::Type,
         updated: Time,
         account_number: String | nil,
         routing_number: String | nil,
-        substatus: Lithic::Models::FinancialAccount::Substatus | nil
+        substatus: Lithic::FinancialAccount::Substatus | nil
       }
     end
   end
