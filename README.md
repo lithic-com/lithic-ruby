@@ -71,7 +71,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  card = lithic.cards.create(type: "an_incorrect_type")
+  card = lithic.cards.create(type: "MERCHANT_LOCKED")
 rescue Lithic::Errors::APIError => e
   puts(e.status) # 400
 end
