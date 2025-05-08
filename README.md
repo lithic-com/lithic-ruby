@@ -15,7 +15,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "lithic", "~> 0.1.0.pre.alpha.23"
+gem "lithic", "~> 0.1.0.pre.alpha.24"
 ```
 
 <!-- x-release-please-end -->
@@ -71,7 +71,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  card = lithic.cards.create(type: "an_incorrect_type")
+  card = lithic.cards.create(type: "MERCHANT_LOCKED")
 rescue Lithic::Errors::APIError => e
   puts(e.status) # 400
 end
