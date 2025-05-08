@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.24 (2025-05-08)
+
+Full Changelog: [v0.1.0-alpha.23...v0.1.0-alpha.24](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.23...v0.1.0-alpha.24)
+
+### Documentation
+
+* remove or fix invalid readme examples ([a533c26](https://github.com/lithic-com/lithic-ruby/commit/a533c267af8a88c539880430ce6616a1387425ff))
+
 ## 0.1.0-alpha.23 (2025-05-07)
 
 Full Changelog: [v0.1.0-alpha.22...v0.1.0-alpha.23](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.22...v0.1.0-alpha.23)
