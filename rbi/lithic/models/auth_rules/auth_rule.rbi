@@ -6,7 +6,10 @@ module Lithic
 
     module AuthRules
       class AuthRule < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::AuthRules::AuthRule, Lithic::Internal::AnyHash)
+          end
 
         # Globally unique identifier.
         sig { returns(String) }

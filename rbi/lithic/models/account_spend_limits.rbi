@@ -3,7 +3,10 @@
 module Lithic
   module Models
     class AccountSpendLimits < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::AccountSpendLimits, Lithic::Internal::AnyHash)
+        end
 
       sig { returns(Lithic::AccountSpendLimits::AvailableSpendLimit) }
       attr_reader :available_spend_limit
@@ -63,7 +66,13 @@ module Lithic
       end
 
       class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AccountSpendLimits::AvailableSpendLimit,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # The available spend limit (in cents) relative to the daily limit configured on
         # the Account (e.g. 100000 would be a $1,000 limit).
@@ -117,7 +126,13 @@ module Lithic
       end
 
       class SpendLimit < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AccountSpendLimits::SpendLimit,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # The configured daily spend limit (in cents) on the Account.
         sig { returns(T.nilable(Integer)) }
@@ -165,7 +180,13 @@ module Lithic
       end
 
       class SpendVelocity < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AccountSpendLimits::SpendVelocity,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Current daily spend velocity (in cents) on the Account. Present if daily spend
         # limit is set.

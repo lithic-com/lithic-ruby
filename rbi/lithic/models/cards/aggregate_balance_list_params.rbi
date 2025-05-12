@@ -7,7 +7,13 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Cards::AggregateBalanceListParams,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Cardholder to retrieve aggregate balances for.
         sig { returns(T.nilable(String)) }

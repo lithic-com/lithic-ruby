@@ -6,7 +6,13 @@ module Lithic
 
     module AuthRules
       class AuthRuleCondition < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AuthRules::AuthRuleCondition,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # The attribute to target.
         #

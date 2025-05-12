@@ -3,7 +3,8 @@
 module Lithic
   module Models
     class Payment < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Lithic::Payment, Lithic::Internal::AnyHash) }
 
       # Globally unique identifier.
       sig { returns(String) }
@@ -224,7 +225,10 @@ module Lithic
       end
 
       class Event < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Payment::Event, Lithic::Internal::AnyHash)
+          end
 
         # Globally unique identifier.
         sig { returns(String) }
@@ -533,7 +537,10 @@ module Lithic
       end
 
       class MethodAttributes < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Payment::MethodAttributes, Lithic::Internal::AnyHash)
+          end
 
         sig { returns(T.nilable(String)) }
         attr_accessor :company_id

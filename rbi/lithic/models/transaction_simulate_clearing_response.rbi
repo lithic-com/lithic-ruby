@@ -3,7 +3,13 @@
 module Lithic
   module Models
     class TransactionSimulateClearingResponse < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::Models::TransactionSimulateClearingResponse,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       # Debugging request ID to share with Lithic Support team.
       sig { returns(T.nilable(String)) }

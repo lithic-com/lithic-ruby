@@ -6,7 +6,10 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::AccountUpdateParams, Lithic::Internal::AnyHash)
+        end
 
       # Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a
       # $1,000 limit). By default the daily spend limit is set to $1,250.
@@ -137,7 +140,13 @@ module Lithic
       end
 
       class VerificationAddress < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AccountUpdateParams::VerificationAddress,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         sig { returns(T.nilable(String)) }
         attr_reader :address1

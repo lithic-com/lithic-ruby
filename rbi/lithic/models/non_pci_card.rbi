@@ -3,7 +3,8 @@
 module Lithic
   module Models
     class NonPCICard < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Lithic::NonPCICard, Lithic::Internal::AnyHash) }
 
       # Globally unique identifier.
       sig { returns(String) }
@@ -294,7 +295,10 @@ module Lithic
       end
 
       class Funding < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::NonPCICard::Funding, Lithic::Internal::AnyHash)
+          end
 
         # A globally unique identifier for this FundingAccount.
         sig { returns(String) }

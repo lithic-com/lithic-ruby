@@ -3,7 +3,10 @@
 module Lithic
   module Models
     class ExternalPayment < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::ExternalPayment, Lithic::Internal::AnyHash)
+        end
 
       sig { returns(String) }
       attr_accessor :token
@@ -135,7 +138,10 @@ module Lithic
       end
 
       class Event < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::ExternalPayment::Event, Lithic::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :token

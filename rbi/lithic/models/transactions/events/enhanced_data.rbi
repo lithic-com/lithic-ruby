@@ -6,7 +6,12 @@ module Lithic
       module Events
         class EnhancedData < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Transactions::Events::EnhancedData,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # A unique identifier for the enhanced commercial data.
           sig { returns(String) }
@@ -77,7 +82,12 @@ module Lithic
 
           class Common < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Transactions::Events::EnhancedData::Common,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -166,7 +176,12 @@ module Lithic
 
             class LineItem < Lithic::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Lithic::Transactions::Events::EnhancedData::Common::LineItem,
+                    Lithic::Internal::AnyHash
+                  )
+                end
 
               # The price of the item purchased in merchant currency.
               sig { returns(T.nilable(Float)) }
@@ -233,7 +248,12 @@ module Lithic
 
             class Tax < Lithic::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Lithic::Transactions::Events::EnhancedData::Common::Tax,
+                    Lithic::Internal::AnyHash
+                  )
+                end
 
               # The amount of tax collected.
               sig { returns(T.nilable(Integer)) }
@@ -342,7 +362,12 @@ module Lithic
 
           class Fleet < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Transactions::Events::EnhancedData::Fleet,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -461,7 +486,12 @@ module Lithic
 
             class AmountTotals < Lithic::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Lithic::Transactions::Events::EnhancedData::Fleet::AmountTotals,
+                    Lithic::Internal::AnyHash
+                  )
+                end
 
               # The discount applied to the gross sale amount.
               sig { returns(T.nilable(Integer)) }
@@ -512,7 +542,12 @@ module Lithic
 
             class Fuel < Lithic::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel,
+                    Lithic::Internal::AnyHash
+                  )
+                end
 
               # The quantity of fuel purchased.
               sig { returns(T.nilable(Float)) }

@@ -1,5 +1,7 @@
 module Lithic
   module Internal
+    extend Lithic::Internal::Util::SorbetRuntimeSupport
+
     OMIT: Object
   end
 end

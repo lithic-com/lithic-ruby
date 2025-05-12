@@ -3,7 +3,13 @@
 module Lithic
   module Models
     class CardProvisionResponse < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::Models::CardProvisionResponse,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       sig { returns(T.nilable(String)) }
       attr_reader :provisioning_payload

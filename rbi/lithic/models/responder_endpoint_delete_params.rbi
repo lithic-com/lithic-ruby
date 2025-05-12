@@ -6,7 +6,13 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::ResponderEndpointDeleteParams,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       # The type of the endpoint.
       sig { returns(Lithic::ResponderEndpointDeleteParams::Type::OrSymbol) }

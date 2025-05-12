@@ -9,7 +9,12 @@ module Lithic
           include Lithic::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::Statements::LineItemListParams,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Globally unique identifier for financial account.
           sig { returns(String) }

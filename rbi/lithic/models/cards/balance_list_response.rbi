@@ -4,7 +4,13 @@ module Lithic
   module Models
     module Cards
       class BalanceListResponse < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Models::Cards::BalanceListResponse,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Globally unique identifier for the financial account that holds this balance.
         sig { returns(String) }

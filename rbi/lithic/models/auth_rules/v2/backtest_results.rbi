@@ -6,7 +6,12 @@ module Lithic
       module V2
         class BacktestResults < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::AuthRules::V2::BacktestResults,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Auth Rule Backtest Token
           sig { returns(String) }
@@ -68,7 +73,12 @@ module Lithic
 
           class Results < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::AuthRules::V2::BacktestResults::Results,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -142,7 +152,12 @@ module Lithic
 
             class CurrentVersion < Lithic::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion,
+                    Lithic::Internal::AnyHash
+                  )
+                end
 
               # The total number of historical transactions approved by this rule during the
               # backtest period, or the number of transactions that would have been approved if
@@ -238,7 +253,12 @@ module Lithic
 
               class Example < Lithic::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example,
+                      Lithic::Internal::AnyHash
+                    )
+                  end
 
                 # Whether the rule would have approved the authorization request.
                 sig { returns(T.nilable(T::Boolean)) }
@@ -294,7 +314,12 @@ module Lithic
 
             class DraftVersion < Lithic::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion,
+                    Lithic::Internal::AnyHash
+                  )
+                end
 
               # The total number of historical transactions approved by this rule during the
               # backtest period, or the number of transactions that would have been approved if
@@ -390,7 +415,12 @@ module Lithic
 
               class Example < Lithic::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion::Example,
+                      Lithic::Internal::AnyHash
+                    )
+                  end
 
                 # Whether the rule would have approved the authorization request.
                 sig { returns(T.nilable(T::Boolean)) }
@@ -447,7 +477,12 @@ module Lithic
 
           class SimulationParameters < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::AuthRules::V2::BacktestResults::SimulationParameters,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # Auth Rule Token
             sig { returns(T.nilable(String)) }

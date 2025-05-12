@@ -7,7 +7,13 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::ThreeDS::AuthenticationSimulateParams,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         sig { returns(Lithic::ThreeDS::AuthenticationSimulateParams::Merchant) }
         attr_reader :merchant
@@ -98,7 +104,12 @@ module Lithic
 
         class Merchant < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::ThreeDS::AuthenticationSimulateParams::Merchant,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Unique identifier to identify the payment card acceptor. Corresponds to
           # `merchant_acceptor_id` in authorization.
@@ -157,7 +168,12 @@ module Lithic
 
         class Transaction < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::ThreeDS::AuthenticationSimulateParams::Transaction,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Amount (in cents) to authenticate.
           sig { returns(Integer) }

@@ -6,7 +6,10 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::CardEmbedParams, Lithic::Internal::AnyHash)
+        end
 
       # A base64 encoded JSON string of an EmbedRequest to specify which card to load.
       sig { returns(String) }

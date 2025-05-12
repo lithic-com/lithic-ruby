@@ -7,7 +7,13 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::ThreeDS::AuthenticationSimulateOtpEntryParams,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # A unique token returned as part of a /v1/three_ds_authentication/simulate call
         # that resulted in PENDING_CHALLENGE authentication result.

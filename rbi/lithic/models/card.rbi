@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class Card < Lithic::Models::NonPCICard
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Lithic::Card, Lithic::Internal::AnyHash) }
 
       # Three digit cvv printed on the back of the card.
       sig { returns(T.nilable(String)) }

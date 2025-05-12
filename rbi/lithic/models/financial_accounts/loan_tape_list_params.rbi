@@ -7,7 +7,13 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::FinancialAccounts::LoanTapeListParams,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Date string in RFC 3339 format. Only entries created after the specified date
         # will be included.

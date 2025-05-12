@@ -2,6 +2,8 @@ module Lithic
   module Internal
     module Transport
       class BaseClient
+        extend Lithic::Internal::Util::SorbetRuntimeSupport
+
         type request_components =
           {
             method: Symbol,
@@ -20,7 +22,6 @@ module Lithic
             model: Lithic::Internal::Type::Converter::input?,
             options: Lithic::request_opts?
           }
-
         type request_input =
           {
             method: Symbol,

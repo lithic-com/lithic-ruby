@@ -6,7 +6,10 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::TransactionListParams, Lithic::Internal::AnyHash)
+        end
 
       # Filters for transactions associated with a specific account.
       sig { returns(T.nilable(String)) }

@@ -6,7 +6,10 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::FinancialAccountListParams, Lithic::Internal::AnyHash)
+        end
 
       # List financial accounts for a given account_token or business_account_token
       sig { returns(T.nilable(String)) }

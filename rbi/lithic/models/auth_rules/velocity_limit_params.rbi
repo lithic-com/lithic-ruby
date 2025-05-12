@@ -4,7 +4,13 @@ module Lithic
   module Models
     module AuthRules
       class VelocityLimitParams < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AuthRules::VelocityLimitParams,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         sig { returns(Lithic::AuthRules::VelocityLimitParams::Filters) }
         attr_reader :filters
@@ -97,7 +103,12 @@ module Lithic
 
         class Filters < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::AuthRules::VelocityLimitParams::Filters,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # ISO-3166-1 alpha-3 Country Codes to exclude from the velocity calculation.
           # Transactions matching any of the provided will be excluded from the calculated

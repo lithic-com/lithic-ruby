@@ -29,8 +29,7 @@ module Lithic
         sig do
           params(
             client: Lithic::Internal::Transport::BaseClient,
-            req:
-              Lithic::Internal::Transport::BaseClient::RequestComponentsShape,
+            req: Lithic::Internal::Transport::BaseClient::RequestComponents,
             headers: T.any(T::Hash[String, String], Net::HTTPHeader),
             page_data: T.anything
           ).void

@@ -5,10 +5,11 @@ module Lithic
     module Type
       class BaseModel
         extend Lithic::Internal::Type::Converter
+        extend Lithic::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
-        KnownFieldShape =
+        KnownField =
           T.type_alias do
             {
               mode: T.nilable(Symbol),
@@ -17,19 +18,27 @@ module Lithic
             }
           end
 
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Internal::Type::BaseModel, Lithic::Internal::AnyHash)
+          end
 
         class << self
           # @api private
           #
           # Assumes superclass fields are totally defined before fields are accessed /
           # defined on subclasses.
+          sig { params(child: T.self_type).void }
+          def inherited(child)
+          end
+
+          # @api private
           sig do
             returns(
               T::Hash[
                 Symbol,
                 T.all(
-                  Lithic::Internal::Type::BaseModel::KnownFieldShape,
+                  Lithic::Internal::Type::BaseModel::KnownField,
                   {
                     type_fn:
                       T.proc.returns(Lithic::Internal::Type::Converter::Input)
@@ -47,7 +56,7 @@ module Lithic
               T::Hash[
                 Symbol,
                 T.all(
-                  Lithic::Internal::Type::BaseModel::KnownFieldShape,
+                  Lithic::Internal::Type::BaseModel::KnownField,
                   { type: Lithic::Internal::Type::Converter::Input }
                 )
               ]

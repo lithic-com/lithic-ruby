@@ -8,7 +8,12 @@ module Lithic
       module Statements
         class StatementLineItems < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::Statements::StatementLineItems,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -50,7 +55,12 @@ module Lithic
 
           class Data < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # Globally unique identifier for a Statement Line Item
             sig { returns(String) }

@@ -4,7 +4,10 @@ module Lithic
   module Models
     module ThreeDS
       class ChallengeResponse < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::ThreeDS::ChallengeResponse, Lithic::Internal::AnyHash)
+          end
 
         # Globally unique identifier for the 3DS authentication. This token is sent as
         # part of the initial 3DS Decisioning Request and as part of the 3DS Challenge

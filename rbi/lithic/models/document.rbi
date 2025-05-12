@@ -3,7 +3,8 @@
 module Lithic
   module Models
     class Document < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Lithic::Document, Lithic::Internal::AnyHash) }
 
       # Globally unique identifier for the document.
       sig { returns(String) }
@@ -149,7 +150,13 @@ module Lithic
       end
 
       class RequiredDocumentUpload < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Document::RequiredDocumentUpload,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Globally unique identifier for the document upload.
         sig { returns(String) }

@@ -6,7 +6,10 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::AccountHolderUpdateParams, Lithic::Internal::AnyHash)
+        end
 
       # Deprecated.
       sig do
@@ -296,7 +299,13 @@ module Lithic
       end
 
       class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Globally unique identifier for an entity.
         sig { returns(String) }
@@ -401,7 +410,13 @@ module Lithic
       end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Globally unique identifier for an entity.
         sig { returns(String) }
@@ -518,7 +533,13 @@ module Lithic
       end
 
       class BusinessEntity < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AccountHolderUpdateParams::BusinessEntity,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Globally unique identifier for an entity.
         sig { returns(String) }
@@ -625,7 +646,13 @@ module Lithic
       end
 
       class ControlPerson < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AccountHolderUpdateParams::ControlPerson,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Globally unique identifier for an entity.
         sig { returns(String) }
@@ -749,7 +776,13 @@ module Lithic
       end
 
       class Individual < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AccountHolderUpdateParams::Individual,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Globally unique identifier for an entity.
         sig { returns(String) }

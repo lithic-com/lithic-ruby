@@ -3,7 +3,13 @@
 module Lithic
   module Models
     class ExternalBankAccountRetrieveResponse < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::Models::ExternalBankAccountRetrieveResponse,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       # A globally unique identifier for this record of an external bank account
       # association. If a program links an external bank account to more than one

@@ -4,7 +4,13 @@ module Lithic
   module Models
     module CreditProducts
       class PrimeRateRetrieveResponse < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Models::CreditProducts::PrimeRateRetrieveResponse,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # List of prime rates
         sig do
@@ -53,7 +59,12 @@ module Lithic
 
         class Data < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::CreditProducts::PrimeRateRetrieveResponse::Data,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Date the rate goes into effect
           sig { returns(Date) }

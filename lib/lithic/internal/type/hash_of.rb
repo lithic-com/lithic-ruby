@@ -29,7 +29,7 @@ module Lithic
         #
         #   @option spec [Boolean] :"nil?"
         #
-        # @return [Lithic::Internal::Type::HashOf]
+        # @return [self]
         def self.[](...) = new(...)
 
         # @api public

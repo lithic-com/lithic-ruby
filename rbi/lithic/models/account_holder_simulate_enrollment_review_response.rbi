@@ -3,7 +3,13 @@
 module Lithic
   module Models
     class AccountHolderSimulateEnrollmentReviewResponse < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       # Globally unique identifier for the account holder.
       sig { returns(T.nilable(String)) }
@@ -452,7 +458,13 @@ module Lithic
       end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -557,7 +569,12 @@ module Lithic
 
         class Address < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Valid deliverable address (no PO boxes).
           sig { returns(String) }
@@ -638,7 +655,13 @@ module Lithic
       end
 
       class ControlPerson < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -754,7 +777,12 @@ module Lithic
 
         class Address < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Valid deliverable address (no PO boxes).
           sig { returns(String) }
@@ -871,7 +899,13 @@ module Lithic
       end
 
       class Individual < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -978,7 +1012,12 @@ module Lithic
 
         class Address < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Valid deliverable address (no PO boxes).
           sig { returns(String) }
@@ -1294,7 +1333,13 @@ module Lithic
       end
 
       class VerificationApplication < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Timestamp of when the application was created.
         sig { returns(Time) }
