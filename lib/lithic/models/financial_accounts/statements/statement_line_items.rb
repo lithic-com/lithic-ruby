@@ -142,6 +142,7 @@ module Lithic
               MANAGEMENT_FEE = :MANAGEMENT_FEE
               MANAGEMENT_REWARD = :MANAGEMENT_REWARD
               MANAGEMENT_DISBURSEMENT = :MANAGEMENT_DISBURSEMENT
+              PROGRAM_FUNDING = :PROGRAM_FUNDING
 
               # @!method self.values
               #   @return [Array<Symbol>]

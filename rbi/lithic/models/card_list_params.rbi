@@ -39,6 +39,13 @@ module Lithic
       sig { params(ending_before: String).void }
       attr_writer :ending_before
 
+      # Returns cards containing the specified partial or full memo text.
+      sig { returns(T.nilable(String)) }
+      attr_reader :memo
+
+      sig { params(memo: String).void }
+      attr_writer :memo
+
       # Page size (for pagination).
       sig { returns(T.nilable(Integer)) }
       attr_reader :page_size
@@ -67,6 +74,7 @@ module Lithic
           begin_: Time,
           end_: Time,
           ending_before: String,
+          memo: String,
           page_size: Integer,
           starting_after: String,
           state: Lithic::CardListParams::State::OrSymbol,
@@ -85,6 +93,8 @@ module Lithic
         # A cursor representing an item's token before which a page of results should end.
         # Used to retrieve the previous page of results before this item.
         ending_before: nil,
+        # Returns cards containing the specified partial or full memo text.
+        memo: nil,
         # Page size (for pagination).
         page_size: nil,
         # A cursor representing an item's token after which a page of results should
@@ -103,6 +113,7 @@ module Lithic
             begin_: Time,
             end_: Time,
             ending_before: String,
+            memo: String,
             page_size: Integer,
             starting_after: String,
             state: Lithic::CardListParams::State::OrSymbol,

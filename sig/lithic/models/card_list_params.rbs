@@ -6,6 +6,7 @@ module Lithic
         begin_: Time,
         end_: Time,
         ending_before: String,
+        memo: String,
         page_size: Integer,
         starting_after: String,
         state: Lithic::Models::CardListParams::state
@@ -32,6 +33,10 @@ module Lithic
 
       def ending_before=: (String) -> String
 
+      attr_reader memo: String?
+
+      def memo=: (String) -> String
+
       attr_reader page_size: Integer?
 
       def page_size=: (Integer) -> Integer
@@ -51,6 +56,7 @@ module Lithic
         ?begin_: Time,
         ?end_: Time,
         ?ending_before: String,
+        ?memo: String,
         ?page_size: Integer,
         ?starting_after: String,
         ?state: Lithic::Models::CardListParams::state,

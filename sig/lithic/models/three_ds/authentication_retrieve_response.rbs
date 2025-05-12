@@ -643,6 +643,7 @@ module Lithic
         type transaction =
           {
             amount: Float,
+            cardholder_amount: Float?,
             currency: String,
             currency_exponent: Float,
             date_time: Time,
@@ -651,6 +652,8 @@ module Lithic
 
         class Transaction < Lithic::Internal::Type::BaseModel
           attr_accessor amount: Float
+
+          attr_accessor cardholder_amount: Float?
 
           attr_accessor currency: String
 
@@ -662,6 +665,7 @@ module Lithic
 
           def initialize: (
             amount: Float,
+            cardholder_amount: Float?,
             currency: String,
             currency_exponent: Float,
             date_time: Time,

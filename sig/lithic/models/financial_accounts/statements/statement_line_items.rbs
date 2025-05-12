@@ -93,6 +93,7 @@ module Lithic
               | :MANAGEMENT_FEE
               | :MANAGEMENT_REWARD
               | :MANAGEMENT_DISBURSEMENT
+              | :PROGRAM_FUNDING
 
             module Category
               extend Lithic::Internal::Type::Enum
@@ -109,6 +110,7 @@ module Lithic
               MANAGEMENT_FEE: :MANAGEMENT_FEE
               MANAGEMENT_REWARD: :MANAGEMENT_REWARD
               MANAGEMENT_DISBURSEMENT: :MANAGEMENT_DISBURSEMENT
+              PROGRAM_FUNDING: :PROGRAM_FUNDING
 
               def self?.values: -> ::Array[Lithic::FinancialAccounts::Statements::StatementLineItems::Data::category]
             end
