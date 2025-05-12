@@ -251,6 +251,11 @@ module Lithic
                   :MANAGEMENT_DISBURSEMENT,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
                 )
+              PROGRAM_FUNDING =
+                T.let(
+                  :PROGRAM_FUNDING,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
+                )
 
               sig do
                 override.returns(

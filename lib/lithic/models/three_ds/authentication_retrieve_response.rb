@@ -1011,6 +1011,13 @@ module Lithic
           #   @return [Float]
           required :amount, Float
 
+          # @!attribute cardholder_amount
+          #   Approximate amount of the purchase in minor units of cardholder currency.
+          #   Derived from `amount` using a daily conversion rate.
+          #
+          #   @return [Float, nil]
+          required :cardholder_amount, Float, nil?: true
+
           # @!attribute currency
           #   Currency of the purchase. Maps to EMV 3DS field purchaseCurrency.
           #
@@ -1040,7 +1047,7 @@ module Lithic
                    enum: -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type },
                    nil?: true
 
-          # @!method initialize(amount:, currency:, currency_exponent:, date_time:, type:)
+          # @!method initialize(amount:, cardholder_amount:, currency:, currency_exponent:, date_time:, type:)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction} for more
           #   details.
@@ -1049,6 +1056,8 @@ module Lithic
           #   is requesting authentication.
           #
           #   @param amount [Float] Amount of the purchase in minor units of currency with all punctuation removed.
+          #
+          #   @param cardholder_amount [Float, nil] Approximate amount of the purchase in minor units of cardholder currency. Derive
           #
           #   @param currency [String] Currency of the purchase. Maps to EMV 3DS field purchaseCurrency.
           #

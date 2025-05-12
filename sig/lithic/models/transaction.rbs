@@ -203,7 +203,8 @@ module Lithic
           liability_shift: Lithic::Transaction::CardholderAuthentication::liability_shift,
           three_ds_authentication_token: String?,
           verification_attempted: Lithic::Transaction::CardholderAuthentication::verification_attempted,
-          verification_result: Lithic::Transaction::CardholderAuthentication::verification_result
+          verification_result: Lithic::Transaction::CardholderAuthentication::verification_result,
+          authentication_method: Lithic::Transaction::CardholderAuthentication::authentication_method
         }
 
       class CardholderAuthentication < Lithic::Internal::Type::BaseModel
@@ -223,6 +224,12 @@ module Lithic
 
         attr_accessor verification_result: Lithic::Transaction::CardholderAuthentication::verification_result
 
+        attr_reader authentication_method: Lithic::Transaction::CardholderAuthentication::authentication_method?
+
+        def authentication_method=: (
+          Lithic::Transaction::CardholderAuthentication::authentication_method
+        ) -> Lithic::Transaction::CardholderAuthentication::authentication_method
+
         def initialize: (
           three_ds_version: String?,
           acquirer_exemption: Lithic::Transaction::CardholderAuthentication::acquirer_exemption,
@@ -231,7 +238,8 @@ module Lithic
           liability_shift: Lithic::Transaction::CardholderAuthentication::liability_shift,
           three_ds_authentication_token: String?,
           verification_attempted: Lithic::Transaction::CardholderAuthentication::verification_attempted,
-          verification_result: Lithic::Transaction::CardholderAuthentication::verification_result
+          verification_result: Lithic::Transaction::CardholderAuthentication::verification_result,
+          ?authentication_method: Lithic::Transaction::CardholderAuthentication::authentication_method
         ) -> void
 
         type acquirer_exemption =
@@ -339,6 +347,18 @@ module Lithic
 
           def self?.values: -> ::Array[Lithic::Transaction::CardholderAuthentication::verification_result]
         end
+
+        type authentication_method = :FRICTIONLESS | :CHALLENGE | :NONE
+
+        module AuthenticationMethod
+          extend Lithic::Internal::Type::Enum
+
+          FRICTIONLESS: :FRICTIONLESS
+          CHALLENGE: :CHALLENGE
+          NONE: :NONE
+
+          def self?.values: -> ::Array[Lithic::Transaction::CardholderAuthentication::authentication_method]
+        end
       end
 
       type merchant =
@@ -378,11 +398,13 @@ module Lithic
         ) -> void
       end
 
-      type network = :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
+      type network =
+        :AMEX | :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
 
       module Network
         extend Lithic::Internal::Type::Enum
 
+        AMEX: :AMEX
         INTERLINK: :INTERLINK
         MAESTRO: :MAESTRO
         MASTERCARD: :MASTERCARD
@@ -990,6 +1012,7 @@ module Lithic
         type network_info =
           {
             acquirer: Lithic::Transaction::Event::NetworkInfo::Acquirer?,
+            amex: Lithic::Transaction::Event::NetworkInfo::Amex?,
             mastercard: Lithic::Transaction::Event::NetworkInfo::Mastercard?,
             visa: Lithic::Transaction::Event::NetworkInfo::Visa?
           }
@@ -997,12 +1020,15 @@ module Lithic
         class NetworkInfo < Lithic::Internal::Type::BaseModel
           attr_accessor acquirer: Lithic::Transaction::Event::NetworkInfo::Acquirer?
 
+          attr_accessor amex: Lithic::Transaction::Event::NetworkInfo::Amex?
+
           attr_accessor mastercard: Lithic::Transaction::Event::NetworkInfo::Mastercard?
 
           attr_accessor visa: Lithic::Transaction::Event::NetworkInfo::Visa?
 
           def initialize: (
             acquirer: Lithic::Transaction::Event::NetworkInfo::Acquirer?,
+            amex: Lithic::Transaction::Event::NetworkInfo::Amex?,
             mastercard: Lithic::Transaction::Event::NetworkInfo::Mastercard?,
             visa: Lithic::Transaction::Event::NetworkInfo::Visa?
           ) -> void
@@ -1021,6 +1047,20 @@ module Lithic
             def initialize: (
               acquirer_reference_number: String?,
               retrieval_reference_number: String?
+            ) -> void
+          end
+
+          type amex =
+            { original_transaction_id: String?, transaction_id: String? }
+
+          class Amex < Lithic::Internal::Type::BaseModel
+            attr_accessor original_transaction_id: String?
+
+            attr_accessor transaction_id: String?
+
+            def initialize: (
+              original_transaction_id: String?,
+              transaction_id: String?
             ) -> void
           end
 

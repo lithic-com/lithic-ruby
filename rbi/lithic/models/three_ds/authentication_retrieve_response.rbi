@@ -2030,6 +2030,11 @@ module Lithic
           sig { returns(Float) }
           attr_accessor :amount
 
+          # Approximate amount of the purchase in minor units of cardholder currency.
+          # Derived from `amount` using a daily conversion rate.
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :cardholder_amount
+
           # Currency of the purchase. Maps to EMV 3DS field purchaseCurrency.
           sig { returns(String) }
           attr_accessor :currency
@@ -2060,6 +2065,7 @@ module Lithic
           sig do
             params(
               amount: Float,
+              cardholder_amount: T.nilable(Float),
               currency: String,
               currency_exponent: Float,
               date_time: Time,
@@ -2073,6 +2079,9 @@ module Lithic
             # Amount of the purchase in minor units of currency with all punctuation removed.
             # Maps to EMV 3DS field purchaseAmount.
             amount:,
+            # Approximate amount of the purchase in minor units of cardholder currency.
+            # Derived from `amount` using a daily conversion rate.
+            cardholder_amount:,
             # Currency of the purchase. Maps to EMV 3DS field purchaseCurrency.
             currency:,
             # Minor units of currency, as specified in ISO 4217 currency exponent. Maps to EMV
@@ -2091,6 +2100,7 @@ module Lithic
             override.returns(
               {
                 amount: Float,
+                cardholder_amount: T.nilable(Float),
                 currency: String,
                 currency_exponent: Float,
                 date_time: Time,
