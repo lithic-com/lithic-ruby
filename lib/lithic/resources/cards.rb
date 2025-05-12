@@ -131,7 +131,7 @@ module Lithic
       #
       # List cards.
       #
-      # @overload list(account_token: nil, begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, state: nil, request_options: {})
+      # @overload list(account_token: nil, begin_: nil, end_: nil, ending_before: nil, memo: nil, page_size: nil, starting_after: nil, state: nil, request_options: {})
       #
       # @param account_token [String] Returns cards associated with the specified account.
       #
@@ -140,6 +140,8 @@ module Lithic
       # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
       #
       # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+      #
+      # @param memo [String] Returns cards containing the specified partial or full memo text.
       #
       # @param page_size [Integer] Page size (for pagination).
       #

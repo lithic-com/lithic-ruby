@@ -116,9 +116,8 @@ module Lithic
       required :merchant_currency, String
 
       # @!attribute network
-      #   Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
-      #   `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
-      #   network code from the upstream provider.
+      #   Card network of the authorization. Value is `UNKNOWN` when Lithic cannot
+      #   determine the network code from the upstream provider.
       #
       #   @return [Symbol, Lithic::Transaction::Network, nil]
       required :network, enum: -> { Lithic::Transaction::Network }, nil?: true
@@ -209,7 +208,7 @@ module Lithic
       #
       #   @param merchant_currency [String] 3-character alphabetic ISO 4217 code for the local currency of the transaction.
       #
-      #   @param network [Symbol, Lithic::Transaction::Network, nil] Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
+      #   @param network [Symbol, Lithic::Transaction::Network, nil] Card network of the authorization. Value is `UNKNOWN` when Lithic cannot determi
       #
       #   @param network_risk_score [Integer, nil] Network-provided score assessing risk level associated with a given authorizatio
       #
@@ -439,7 +438,14 @@ module Lithic
         required :verification_result,
                  enum: -> { Lithic::Transaction::CardholderAuthentication::VerificationResult }
 
-        # @!method initialize(three_ds_version:, acquirer_exemption:, authentication_result:, decision_made_by:, liability_shift:, three_ds_authentication_token:, verification_attempted:, verification_result:)
+        # @!attribute authentication_method
+        #   Indicates the method used to authenticate the cardholder.
+        #
+        #   @return [Symbol, Lithic::Transaction::CardholderAuthentication::AuthenticationMethod, nil]
+        optional :authentication_method,
+                 enum: -> { Lithic::Transaction::CardholderAuthentication::AuthenticationMethod }
+
+        # @!method initialize(three_ds_version:, acquirer_exemption:, authentication_result:, decision_made_by:, liability_shift:, three_ds_authentication_token:, verification_attempted:, verification_result:, authentication_method: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Transaction::CardholderAuthentication} for more details.
         #
@@ -458,6 +464,8 @@ module Lithic
         #   @param verification_attempted [Symbol, Lithic::Transaction::CardholderAuthentication::VerificationAttempted] Indicates whether a 3DS challenge flow was used, and if so, what the verificatio
         #
         #   @param verification_result [Symbol, Lithic::Transaction::CardholderAuthentication::VerificationResult] Indicates whether a transaction is considered 3DS authenticated. (deprecated, us
+        #
+        #   @param authentication_method [Symbol, Lithic::Transaction::CardholderAuthentication::AuthenticationMethod] Indicates the method used to authenticate the cardholder.
 
         # Whether an acquirer exemption applied to the transaction.
         #
@@ -566,6 +574,20 @@ module Lithic
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+
+        # Indicates the method used to authenticate the cardholder.
+        #
+        # @see Lithic::Transaction::CardholderAuthentication#authentication_method
+        module AuthenticationMethod
+          extend Lithic::Internal::Type::Enum
+
+          FRICTIONLESS = :FRICTIONLESS
+          CHALLENGE = :CHALLENGE
+          NONE = :NONE
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
 
       # @see Lithic::Transaction#merchant
@@ -634,14 +656,14 @@ module Lithic
         #   @param state [String] Geographic state of card acceptor.
       end
 
-      # Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
-      # `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
-      # network code from the upstream provider.
+      # Card network of the authorization. Value is `UNKNOWN` when Lithic cannot
+      # determine the network code from the upstream provider.
       #
       # @see Lithic::Transaction#network
       module Network
         extend Lithic::Internal::Type::Enum
 
+        AMEX = :AMEX
         INTERLINK = :INTERLINK
         MAESTRO = :MAESTRO
         MASTERCARD = :MASTERCARD
@@ -1280,6 +1302,11 @@ module Lithic
           #   @return [Lithic::Transaction::Event::NetworkInfo::Acquirer, nil]
           required :acquirer, -> { Lithic::Transaction::Event::NetworkInfo::Acquirer }, nil?: true
 
+          # @!attribute amex
+          #
+          #   @return [Lithic::Transaction::Event::NetworkInfo::Amex, nil]
+          required :amex, -> { Lithic::Transaction::Event::NetworkInfo::Amex }, nil?: true
+
           # @!attribute mastercard
           #
           #   @return [Lithic::Transaction::Event::NetworkInfo::Mastercard, nil]
@@ -1290,7 +1317,7 @@ module Lithic
           #   @return [Lithic::Transaction::Event::NetworkInfo::Visa, nil]
           required :visa, -> { Lithic::Transaction::Event::NetworkInfo::Visa }, nil?: true
 
-          # @!method initialize(acquirer:, mastercard:, visa:)
+          # @!method initialize(acquirer:, amex:, mastercard:, visa:)
           #   Information provided by the card network in each event. This includes common
           #   identifiers shared between you, Lithic, the card network and in some cases the
           #   acquirer. These identifiers often link together events within the same
@@ -1302,6 +1329,7 @@ module Lithic
           #   for more details about these fields and how to use them.
           #
           #   @param acquirer [Lithic::Transaction::Event::NetworkInfo::Acquirer, nil]
+          #   @param amex [Lithic::Transaction::Event::NetworkInfo::Amex, nil]
           #   @param mastercard [Lithic::Transaction::Event::NetworkInfo::Mastercard, nil]
           #   @param visa [Lithic::Transaction::Event::NetworkInfo::Visa, nil]
 
@@ -1330,6 +1358,34 @@ module Lithic
             #   @param acquirer_reference_number [String, nil] Identifier assigned by the acquirer, applicable to dual-message transactions onl
             #
             #   @param retrieval_reference_number [String, nil] Identifier assigned by the acquirer.
+          end
+
+          # @see Lithic::Transaction::Event::NetworkInfo#amex
+          class Amex < Lithic::Internal::Type::BaseModel
+            # @!attribute original_transaction_id
+            #   Identifier assigned by American Express. Matches the `transaction_id` of a prior
+            #   related event. May be populated in incremental authorizations (authorization
+            #   requests that augment a previously authorized amount), authorization advices,
+            #   financial authorizations, and clearings.
+            #
+            #   @return [String, nil]
+            required :original_transaction_id, String, nil?: true
+
+            # @!attribute transaction_id
+            #   Identifier assigned by American Express to link original messages to subsequent
+            #   messages. Guaranteed by American Express to be unique for each original
+            #   authorization and financial authorization.
+            #
+            #   @return [String, nil]
+            required :transaction_id, String, nil?: true
+
+            # @!method initialize(original_transaction_id:, transaction_id:)
+            #   Some parameter documentations has been truncated, see
+            #   {Lithic::Transaction::Event::NetworkInfo::Amex} for more details.
+            #
+            #   @param original_transaction_id [String, nil] Identifier assigned by American Express. Matches the `transaction_id` of a prior
+            #
+            #   @param transaction_id [String, nil] Identifier assigned by American Express to link original messages to subsequent
           end
 
           # @see Lithic::Transaction::Event::NetworkInfo#mastercard

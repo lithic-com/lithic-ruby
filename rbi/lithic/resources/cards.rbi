@@ -225,6 +225,7 @@ module Lithic
           begin_: Time,
           end_: Time,
           ending_before: String,
+          memo: String,
           page_size: Integer,
           starting_after: String,
           state: Lithic::CardListParams::State::OrSymbol,
@@ -243,6 +244,8 @@ module Lithic
         # A cursor representing an item's token before which a page of results should end.
         # Used to retrieve the previous page of results before this item.
         ending_before: nil,
+        # Returns cards containing the specified partial or full memo text.
+        memo: nil,
         # Page size (for pagination).
         page_size: nil,
         # A cursor representing an item's token after which a page of results should

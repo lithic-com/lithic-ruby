@@ -34,6 +34,12 @@ module Lithic
       #   @return [String, nil]
       optional :ending_before, String
 
+      # @!attribute memo
+      #   Returns cards containing the specified partial or full memo text.
+      #
+      #   @return [String, nil]
+      optional :memo, String
+
       # @!attribute page_size
       #   Page size (for pagination).
       #
@@ -53,7 +59,7 @@ module Lithic
       #   @return [Symbol, Lithic::CardListParams::State, nil]
       optional :state, enum: -> { Lithic::CardListParams::State }
 
-      # @!method initialize(account_token: nil, begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, state: nil, request_options: {})
+      # @!method initialize(account_token: nil, begin_: nil, end_: nil, ending_before: nil, memo: nil, page_size: nil, starting_after: nil, state: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardListParams} for more details.
       #
@@ -64,6 +70,8 @@ module Lithic
       #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
       #
       #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
+      #
+      #   @param memo [String] Returns cards containing the specified partial or full memo text.
       #
       #   @param page_size [Integer] Page size (for pagination).
       #

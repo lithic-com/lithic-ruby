@@ -50,6 +50,7 @@ module Lithic
         ?begin_: Time,
         ?end_: Time,
         ?ending_before: String,
+        ?memo: String,
         ?page_size: Integer,
         ?starting_after: String,
         ?state: Lithic::Models::CardListParams::state,

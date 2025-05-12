@@ -227,6 +227,11 @@ module Lithic
               :"financial_account.updated",
               Lithic::Events::SubscriptionCreateParams::EventType::TaggedSymbol
             )
+          FUNDING_EVENT_CREATED =
+            T.let(
+              :"funding_event.created",
+              Lithic::Events::SubscriptionCreateParams::EventType::TaggedSymbol
+            )
           LOAN_TAPE_CREATED =
             T.let(
               :"loan_tape.created",

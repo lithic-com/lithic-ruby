@@ -89,9 +89,8 @@ module Lithic
       sig { returns(String) }
       attr_accessor :merchant_currency
 
-      # Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
-      # `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
-      # network code from the upstream provider.
+      # Card network of the authorization. Value is `UNKNOWN` when Lithic cannot
+      # determine the network code from the upstream provider.
       sig { returns(T.nilable(Lithic::Transaction::Network::TaggedSymbol)) }
       attr_accessor :network
 
@@ -206,9 +205,8 @@ module Lithic
         merchant_authorization_amount:,
         # 3-character alphabetic ISO 4217 code for the local currency of the transaction.
         merchant_currency:,
-        # Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
-        # `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
-        # network code from the upstream provider.
+        # Card network of the authorization. Value is `UNKNOWN` when Lithic cannot
+        # determine the network code from the upstream provider.
         network:,
         # Network-provided score assessing risk level associated with a given
         # authorization. Scores are on a range of 0-999, with 0 representing the lowest
@@ -558,6 +556,24 @@ module Lithic
         end
         attr_accessor :verification_result
 
+        # Indicates the method used to authenticate the cardholder.
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :authentication_method
+
+        sig do
+          params(
+            authentication_method:
+              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::OrSymbol
+          ).void
+        end
+        attr_writer :authentication_method
+
         sig do
           params(
             three_ds_version: T.nilable(String),
@@ -573,7 +589,9 @@ module Lithic
             verification_attempted:
               Lithic::Transaction::CardholderAuthentication::VerificationAttempted::OrSymbol,
             verification_result:
-              Lithic::Transaction::CardholderAuthentication::VerificationResult::OrSymbol
+              Lithic::Transaction::CardholderAuthentication::VerificationResult::OrSymbol,
+            authentication_method:
+              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -608,7 +626,9 @@ module Lithic
           verification_attempted:,
           # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
           # use `authentication_result`)
-          verification_result:
+          verification_result:,
+          # Indicates the method used to authenticate the cardholder.
+          authentication_method: nil
         )
         end
 
@@ -628,7 +648,9 @@ module Lithic
               verification_attempted:
                 Lithic::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol,
               verification_result:
-                Lithic::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
+                Lithic::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol,
+              authentication_method:
+                Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
             }
           )
         end
@@ -942,6 +964,46 @@ module Lithic
           def self.values
           end
         end
+
+        # Indicates the method used to authenticate the cardholder.
+        module AuthenticationMethod
+          extend Lithic::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Transaction::CardholderAuthentication::AuthenticationMethod
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          FRICTIONLESS =
+            T.let(
+              :FRICTIONLESS,
+              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
+            )
+          CHALLENGE =
+            T.let(
+              :CHALLENGE,
+              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
+            )
+          NONE =
+            T.let(
+              :NONE,
+              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
       end
 
       class Merchant < Lithic::Internal::Type::BaseModel
@@ -1027,9 +1089,8 @@ module Lithic
         end
       end
 
-      # Card network of the authorization. Can be `INTERLINK`, `MAESTRO`, `MASTERCARD`,
-      # `VISA`, or `UNKNOWN`. Value is `UNKNOWN` when Lithic cannot determine the
-      # network code from the upstream provider.
+      # Card network of the authorization. Value is `UNKNOWN` when Lithic cannot
+      # determine the network code from the upstream provider.
       module Network
         extend Lithic::Internal::Type::Enum
 
@@ -1037,6 +1098,7 @@ module Lithic
           T.type_alias { T.all(Symbol, Lithic::Transaction::Network) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        AMEX = T.let(:AMEX, Lithic::Transaction::Network::TaggedSymbol)
         INTERLINK =
           T.let(:INTERLINK, Lithic::Transaction::Network::TaggedSymbol)
         MAESTRO = T.let(:MAESTRO, Lithic::Transaction::Network::TaggedSymbol)
@@ -2569,6 +2631,19 @@ module Lithic
           attr_writer :acquirer
 
           sig do
+            returns(T.nilable(Lithic::Transaction::Event::NetworkInfo::Amex))
+          end
+          attr_reader :amex
+
+          sig do
+            params(
+              amex:
+                T.nilable(Lithic::Transaction::Event::NetworkInfo::Amex::OrHash)
+            ).void
+          end
+          attr_writer :amex
+
+          sig do
             returns(
               T.nilable(Lithic::Transaction::Event::NetworkInfo::Mastercard)
             )
@@ -2613,6 +2688,10 @@ module Lithic
                 T.nilable(
                   Lithic::Transaction::Event::NetworkInfo::Acquirer::OrHash
                 ),
+              amex:
+                T.nilable(
+                  Lithic::Transaction::Event::NetworkInfo::Amex::OrHash
+                ),
               mastercard:
                 T.nilable(
                   Lithic::Transaction::Event::NetworkInfo::Mastercard::OrHash
@@ -2621,7 +2700,7 @@ module Lithic
                 T.nilable(Lithic::Transaction::Event::NetworkInfo::Visa::OrHash)
             ).returns(T.attached_class)
           end
-          def self.new(acquirer:, mastercard:, visa:)
+          def self.new(acquirer:, amex:, mastercard:, visa:)
           end
 
           sig do
@@ -2629,6 +2708,7 @@ module Lithic
               {
                 acquirer:
                   T.nilable(Lithic::Transaction::Event::NetworkInfo::Acquirer),
+                amex: T.nilable(Lithic::Transaction::Event::NetworkInfo::Amex),
                 mastercard:
                   T.nilable(
                     Lithic::Transaction::Event::NetworkInfo::Mastercard
@@ -2679,6 +2759,54 @@ module Lithic
                 {
                   acquirer_reference_number: T.nilable(String),
                   retrieval_reference_number: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
+          end
+
+          class Amex < Lithic::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+
+            # Identifier assigned by American Express. Matches the `transaction_id` of a prior
+            # related event. May be populated in incremental authorizations (authorization
+            # requests that augment a previously authorized amount), authorization advices,
+            # financial authorizations, and clearings.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :original_transaction_id
+
+            # Identifier assigned by American Express to link original messages to subsequent
+            # messages. Guaranteed by American Express to be unique for each original
+            # authorization and financial authorization.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :transaction_id
+
+            sig do
+              params(
+                original_transaction_id: T.nilable(String),
+                transaction_id: T.nilable(String)
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Identifier assigned by American Express. Matches the `transaction_id` of a prior
+              # related event. May be populated in incremental authorizations (authorization
+              # requests that augment a previously authorized amount), authorization advices,
+              # financial authorizations, and clearings.
+              original_transaction_id:,
+              # Identifier assigned by American Express to link original messages to subsequent
+              # messages. Guaranteed by American Express to be unique for each original
+              # authorization and financial authorization.
+              transaction_id:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  original_transaction_id: T.nilable(String),
+                  transaction_id: T.nilable(String)
                 }
               )
             end
