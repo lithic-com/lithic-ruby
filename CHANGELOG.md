@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.1.0-alpha.24 (2025-05-12)
+
+Full Changelog: [v0.1.0-alpha.23...v0.1.0-alpha.24](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.23...v0.1.0-alpha.24)
+
+### Features
+
+* **api:** manual updates ([2190d4d](https://github.com/lithic-com/lithic-ruby/commit/2190d4d4b9efc8b24cefeb0c8f6e011821f012a6))
+* expose base client options as read only attributes ([6aa1141](https://github.com/lithic-com/lithic-ruby/commit/6aa1141978a57e8d138e182c7f5dd6f1135e2106))
+* expose recursive `#to_h` conversion ([0d2635e](https://github.com/lithic-com/lithic-ruby/commit/0d2635eaf67be12441797b0d067b618b3e2cb076))
+* support sorbet aliases at the runtime ([aeb0c42](https://github.com/lithic-com/lithic-ruby/commit/aeb0c4266234c86ac7b36b46ddbc6dc956faa599))
+
+
+### Chores
+
+* fix misc linting / minor issues ([5b17b81](https://github.com/lithic-com/lithic-ruby/commit/5b17b8150b6eeed2e347960e2f5e86093b391a97))
+
+
+### Documentation
+
+* remove or fix invalid readme examples ([a533c26](https://github.com/lithic-com/lithic-ruby/commit/a533c267af8a88c539880430ce6616a1387425ff))
+
 ## 0.1.0-alpha.23 (2025-05-07)
 
 Full Changelog: [v0.1.0-alpha.22...v0.1.0-alpha.23](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.22...v0.1.0-alpha.23)
