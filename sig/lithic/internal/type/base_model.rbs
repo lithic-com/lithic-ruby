@@ -3,9 +3,12 @@ module Lithic
     module Type
       class BaseModel
         extend Lithic::Internal::Type::Converter
+        extend Lithic::Internal::Util::SorbetRuntimeSupport
 
         type known_field =
           { mode: (:coerce | :dump)?, required: bool, nilable: bool }
+
+        def self.inherited: (self child) -> void
 
         def self.known_fields: -> ::Hash[Symbol, (Lithic::Internal::Type::BaseModel::known_field
         & { type_fn: (^-> Lithic::Internal::Type::Converter::input) })]
@@ -58,10 +61,10 @@ module Lithic
         def self.coerce: (
           Lithic::Internal::Type::BaseModel | ::Hash[top, top] | top value,
           state: Lithic::Internal::Type::Converter::coerce_state
-        ) -> (instance | top)
+        ) -> (self | top)
 
         def self.dump: (
-          instance | top value,
+          self | top value,
           state: Lithic::Internal::Type::Converter::dump_state
         ) -> (::Hash[top, top] | top)
 

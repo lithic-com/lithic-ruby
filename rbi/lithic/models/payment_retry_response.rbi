@@ -3,7 +3,10 @@
 module Lithic
   module Models
     class PaymentRetryResponse < Lithic::Models::Payment
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::Models::PaymentRetryResponse, Lithic::Internal::AnyHash)
+        end
 
       # Balance
       sig { returns(T.nilable(Lithic::Balance)) }

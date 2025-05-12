@@ -5,9 +5,11 @@ module Lithic
     module Transport
       # @api private
       class BaseClient
+        extend Lithic::Internal::Util::SorbetRuntimeSupport
+
         abstract!
 
-        RequestComponentsShape =
+        RequestComponents =
           T.type_alias do
             {
               method: Symbol,
@@ -53,7 +55,7 @@ module Lithic
             }
           end
 
-        RequestInputShape =
+        RequestInput =
           T.type_alias do
             {
               method: Symbol,
@@ -74,8 +76,7 @@ module Lithic
           # @api private
           sig do
             params(
-              req:
-                Lithic::Internal::Transport::BaseClient::RequestComponentsShape
+              req: Lithic::Internal::Transport::BaseClient::RequestComponents
             ).void
           end
           def validate!(req)
@@ -94,13 +95,10 @@ module Lithic
           # @api private
           sig do
             params(
-              request:
-                Lithic::Internal::Transport::BaseClient::RequestInputShape,
+              request: Lithic::Internal::Transport::BaseClient::RequestInput,
               status: Integer,
               response_headers: T.any(T::Hash[String, String], Net::HTTPHeader)
-            ).returns(
-              Lithic::Internal::Transport::BaseClient::RequestInputShape
-            )
+            ).returns(Lithic::Internal::Transport::BaseClient::RequestInput)
           end
           def follow_redirect(request, status:, response_headers:)
           end
@@ -167,11 +165,10 @@ module Lithic
         sig do
           overridable
             .params(
-              req:
-                Lithic::Internal::Transport::BaseClient::RequestComponentsShape,
+              req: Lithic::Internal::Transport::BaseClient::RequestComponents,
               opts: Lithic::Internal::AnyHash
             )
-            .returns(Lithic::Internal::Transport::BaseClient::RequestInputShape)
+            .returns(Lithic::Internal::Transport::BaseClient::RequestInput)
         end
         private def build_request(req, opts)
         end
@@ -189,7 +186,7 @@ module Lithic
         # @api private
         sig do
           params(
-            request: Lithic::Internal::Transport::BaseClient::RequestInputShape,
+            request: Lithic::Internal::Transport::BaseClient::RequestInput,
             redirect_count: Integer,
             retry_count: Integer,
             send_retry_header: T::Boolean

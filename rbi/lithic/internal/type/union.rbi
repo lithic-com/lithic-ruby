@@ -6,6 +6,7 @@ module Lithic
       # @api private
       module Union
         include Lithic::Internal::Type::Converter
+        include Lithic::Internal::Util::SorbetRuntimeSupport
 
         # @api private
         #

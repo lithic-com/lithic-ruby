@@ -6,7 +6,13 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::TransactionSimulateCreditAuthorizationParams,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       # Amount (in cents). Any value entered will be converted into a negative amount in
       # the simulated transaction. For example, entering 100 in this field will appear

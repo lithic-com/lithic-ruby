@@ -4,7 +4,13 @@ module Lithic
   module Models
     module FinancialAccounts
       class FinancialAccountsStatements < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::FinancialAccounts::FinancialAccountsStatements,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         sig { returns(T::Array[Lithic::FinancialAccounts::Statement]) }
         attr_accessor :data

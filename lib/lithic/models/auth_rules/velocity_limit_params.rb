@@ -117,6 +117,10 @@ module Lithic
 
           # @!method self.variants
           #   @return [Array(Integer, Symbol, Lithic::AuthRules::VelocityLimitParamsPeriodWindow)]
+
+          define_sorbet_constant!(:Variants) do
+            T.type_alias { T.any(Integer, Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol) }
+          end
         end
 
         # @see Lithic::AuthRules::VelocityLimitParams#scope

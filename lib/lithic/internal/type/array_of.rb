@@ -29,7 +29,7 @@ module Lithic
         #
         #   @option spec [Boolean] :"nil?"
         #
-        # @return [Lithic::Internal::Type::ArrayOf]
+        # @return [self]
         def self.[](...) = new(...)
 
         # @api public

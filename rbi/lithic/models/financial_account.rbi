@@ -3,7 +3,10 @@
 module Lithic
   module Models
     class FinancialAccount < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::FinancialAccount, Lithic::Internal::AnyHash)
+        end
 
       # Globally unique identifier for the account
       sig { returns(String) }
@@ -116,7 +119,13 @@ module Lithic
       end
 
       class CreditConfiguration < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::FinancialAccount::CreditConfiguration,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Reason for the financial account being marked as Charged Off
         sig do

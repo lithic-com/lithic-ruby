@@ -3,7 +3,8 @@
 module Lithic
   module Models
     class AccountHolder < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Lithic::AccountHolder, Lithic::Internal::AnyHash) }
 
       # Globally unique identifier for the account holder.
       sig { returns(String) }
@@ -361,7 +362,13 @@ module Lithic
       end
 
       class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AccountHolder::BeneficialOwnerEntity,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable.
@@ -454,7 +461,13 @@ module Lithic
       end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AccountHolder::BeneficialOwnerIndividual,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Individual's current address
         sig { returns(Lithic::Address) }
@@ -537,7 +550,13 @@ module Lithic
       end
 
       class BusinessEntity < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AccountHolder::BusinessEntity,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable.
@@ -632,7 +651,13 @@ module Lithic
       end
 
       class ControlPerson < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AccountHolder::ControlPerson,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Individual's current address
         sig { returns(Lithic::Address) }
@@ -746,7 +771,10 @@ module Lithic
       end
 
       class Individual < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::AccountHolder::Individual, Lithic::Internal::AnyHash)
+          end
 
         # Individual's current address
         sig { returns(Lithic::Address) }
@@ -957,7 +985,13 @@ module Lithic
       end
 
       class VerificationApplication < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::AccountHolder::VerificationApplication,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Timestamp of when the application was created.
         sig { returns(T.nilable(Time)) }

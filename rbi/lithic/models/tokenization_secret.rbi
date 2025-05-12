@@ -3,7 +3,10 @@
 module Lithic
   module Models
     class TokenizationSecret < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::TokenizationSecret, Lithic::Internal::AnyHash)
+        end
 
       # The Tokenization Decisioning HMAC secret
       sig { returns(T.nilable(String)) }

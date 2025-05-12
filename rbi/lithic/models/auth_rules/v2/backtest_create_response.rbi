@@ -6,7 +6,12 @@ module Lithic
       module V2
         class BacktestCreateResponse < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::AuthRules::V2::BacktestCreateResponse,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Auth Rule Backtest Token
           sig { returns(T.nilable(String)) }

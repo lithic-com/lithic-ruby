@@ -6,7 +6,10 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::CardUpdateParams, Lithic::Internal::AnyHash)
+        end
 
       # Specifies the digital card art to be displayed in the user’s digital wallet
       # after tokenization. This artwork must be approved by Mastercard and configured

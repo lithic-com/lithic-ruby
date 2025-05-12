@@ -3,7 +3,10 @@
 module Lithic
   module Models
     class FinancialTransaction < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::FinancialTransaction, Lithic::Internal::AnyHash)
+        end
 
       # Globally unique identifier.
       sig { returns(String) }
@@ -182,7 +185,13 @@ module Lithic
       end
 
       class Event < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::FinancialTransaction::Event,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Globally unique identifier.
         sig { returns(T.nilable(String)) }

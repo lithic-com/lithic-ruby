@@ -3,7 +3,8 @@
 module Lithic
   module Models
     class Address < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Lithic::Address, Lithic::Internal::AnyHash) }
 
       # Valid deliverable address (no PO boxes).
       sig { returns(String) }

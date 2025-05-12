@@ -3,7 +3,10 @@
 module Lithic
   module Models
     class DisputeEvidence < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::DisputeEvidence, Lithic::Internal::AnyHash)
+        end
 
       # Globally unique identifier.
       sig { returns(String) }

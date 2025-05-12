@@ -3,7 +3,13 @@
 module Lithic
   module Models
     class PaymentSimulateReceiptResponse < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::Models::PaymentSimulateReceiptResponse,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       # Debugging Request Id
       sig { returns(String) }

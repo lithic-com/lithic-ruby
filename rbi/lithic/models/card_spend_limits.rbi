@@ -3,7 +3,10 @@
 module Lithic
   module Models
     class CardSpendLimits < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::CardSpendLimits, Lithic::Internal::AnyHash)
+        end
 
       sig { returns(Lithic::CardSpendLimits::AvailableSpendLimit) }
       attr_reader :available_spend_limit
@@ -62,7 +65,13 @@ module Lithic
       end
 
       class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::CardSpendLimits::AvailableSpendLimit,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # The available spend limit (in cents) relative to the annual limit configured on
         # the Card (e.g. 100000 would be a $1,000 limit).
@@ -116,7 +125,13 @@ module Lithic
       end
 
       class SpendLimit < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::CardSpendLimits::SpendLimit,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # The configured annual spend limit (in cents) on the Card.
         sig { returns(T.nilable(Integer)) }
@@ -164,7 +179,13 @@ module Lithic
       end
 
       class SpendVelocity < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::CardSpendLimits::SpendVelocity,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Current annual spend velocity (in cents) on the Card. Present if annual spend
         # limit is set.

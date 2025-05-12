@@ -3,7 +3,10 @@
 module Lithic
   module Models
     class ExternalBankAccountAddress < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::ExternalBankAccountAddress, Lithic::Internal::AnyHash)
+        end
 
       sig { returns(String) }
       attr_accessor :address1

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class KYB < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Lithic::KYB, Lithic::Internal::AnyHash) }
 
       # You must submit a list of all direct and indirect individuals with 25% or more
       # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
@@ -170,7 +170,13 @@ module Lithic
       end
 
       class BeneficialOwnerIndividual < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::KYB::BeneficialOwnerIndividual,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -264,7 +270,10 @@ module Lithic
       end
 
       class BusinessEntity < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::KYB::BusinessEntity, Lithic::Internal::AnyHash)
+          end
 
         # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable.
@@ -354,7 +363,10 @@ module Lithic
       end
 
       class ControlPerson < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::KYB::ControlPerson, Lithic::Internal::AnyHash)
+          end
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
@@ -470,7 +482,10 @@ module Lithic
       end
 
       class BeneficialOwnerEntity < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::KYB::BeneficialOwnerEntity, Lithic::Internal::AnyHash)
+          end
 
         # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable.

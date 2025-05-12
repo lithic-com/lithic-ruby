@@ -6,7 +6,13 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::TransactionSimulateAuthorizationAdviceParams,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       # The transaction token returned from the /v1/simulate/authorize. response.
       sig { returns(String) }

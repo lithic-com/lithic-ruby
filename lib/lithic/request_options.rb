@@ -69,5 +69,9 @@ module Lithic
     #   Returns a new instance of RequestOptions.
     #
     #   @param values [Hash{Symbol=>Object}]
+
+    define_sorbet_constant!(:OrHash) do
+      T.type_alias { T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash) }
+    end
   end
 end

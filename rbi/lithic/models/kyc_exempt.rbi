@@ -3,7 +3,8 @@
 module Lithic
   module Models
     class KYCExempt < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Lithic::KYCExempt, Lithic::Internal::AnyHash) }
 
       # KYC Exempt user's current address - PO boxes, UPS drops, and FedEx drops are not
       # acceptable; APO/FPO are acceptable.

@@ -3,7 +3,13 @@
 module Lithic
   module Models
     class TokenizationUpdateDigitalCardArtResponse < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::Models::TokenizationUpdateDigitalCardArtResponse,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       sig { returns(T.nilable(Lithic::Tokenization)) }
       attr_reader :data

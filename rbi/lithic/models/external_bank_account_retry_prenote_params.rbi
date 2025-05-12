@@ -6,7 +6,13 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::ExternalBankAccountRetryPrenoteParams,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       sig { returns(T.nilable(String)) }
       attr_reader :financial_account_token

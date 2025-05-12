@@ -6,7 +6,12 @@ module Lithic
       module Settlement
         class NetworkTotalListResponse < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::Reports::Settlement::NetworkTotalListResponse,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Globally unique identifier.
           sig { returns(String) }
@@ -146,7 +151,12 @@ module Lithic
 
           class Amounts < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Amounts,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # Total settlement amount excluding interchange, in currency's smallest unit.
             sig { returns(Integer) }

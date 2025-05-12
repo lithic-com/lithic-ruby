@@ -3,7 +3,13 @@
 module Lithic
   module Models
     class TokenizationSimulateResponse < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::Models::TokenizationSimulateResponse,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       sig { returns(T.nilable(T::Array[Lithic::Tokenization])) }
       attr_reader :data
