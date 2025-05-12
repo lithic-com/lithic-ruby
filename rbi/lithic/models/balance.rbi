@@ -3,7 +3,8 @@
 module Lithic
   module Models
     class Balance < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Lithic::Balance, Lithic::Internal::AnyHash) }
 
       # Funds available for spend in the currency's smallest unit (e.g., cents for USD)
       sig { returns(Integer) }

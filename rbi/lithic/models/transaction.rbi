@@ -3,7 +3,8 @@
 module Lithic
   module Models
     class Transaction < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Lithic::Transaction, Lithic::Internal::AnyHash) }
 
       # Globally unique identifier.
       sig { returns(String) }
@@ -263,7 +264,10 @@ module Lithic
       end
 
       class Amounts < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Transaction::Amounts, Lithic::Internal::AnyHash)
+          end
 
         sig { returns(Lithic::Transaction::Amounts::Cardholder) }
         attr_reader :cardholder
@@ -325,7 +329,12 @@ module Lithic
 
         class Cardholder < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Transaction::Amounts::Cardholder,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # The estimated settled amount of the transaction in the cardholder billing
           # currency.
@@ -371,7 +380,12 @@ module Lithic
 
         class Hold < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Transaction::Amounts::Hold,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # The pending amount of the transaction in the anticipated settlement currency.
           sig { returns(Integer) }
@@ -399,7 +413,12 @@ module Lithic
 
         class Merchant < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Transaction::Amounts::Merchant,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # The settled amount of the transaction in the merchant currency.
           sig { returns(Integer) }
@@ -427,7 +446,12 @@ module Lithic
 
         class Settlement < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Transaction::Amounts::Settlement,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # The settled amount of the transaction in the settlement currency.
           sig { returns(Integer) }
@@ -455,7 +479,10 @@ module Lithic
       end
 
       class Avs < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Transaction::Avs, Lithic::Internal::AnyHash)
+          end
 
         # Cardholder address
         sig { returns(String) }
@@ -482,7 +509,13 @@ module Lithic
       end
 
       class CardholderAuthentication < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Transaction::CardholderAuthentication,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # The 3DS version used for the authentication
         sig { returns(T.nilable(String)) }
@@ -1007,7 +1040,10 @@ module Lithic
       end
 
       class Merchant < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Transaction::Merchant, Lithic::Internal::AnyHash)
+          end
 
         # Unique alphanumeric identifier for the payment card acceptor (merchant).
         sig { returns(String) }
@@ -1115,7 +1151,10 @@ module Lithic
       end
 
       class Pos < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Transaction::Pos, Lithic::Internal::AnyHash)
+          end
 
         sig { returns(Lithic::Transaction::Pos::EntryMode) }
         attr_reader :entry_mode
@@ -1155,7 +1194,12 @@ module Lithic
 
         class EntryMode < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Transaction::Pos::EntryMode,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Card presence indicator
           sig do
@@ -1428,7 +1472,12 @@ module Lithic
 
         class Terminal < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Transaction::Pos::Terminal,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # True if a clerk is present at the sale.
           sig { returns(T::Boolean) }
@@ -1869,7 +1918,10 @@ module Lithic
       end
 
       class TokenInfo < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Transaction::TokenInfo, Lithic::Internal::AnyHash)
+          end
 
         # The wallet_type field will indicate the source of the token. Possible token
         # sources include digital wallets (Apple, Google, or Samsung Pay), merchant
@@ -1960,7 +2012,10 @@ module Lithic
       end
 
       class Event < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Transaction::Event, Lithic::Internal::AnyHash)
+          end
 
         # Transaction event identifier.
         sig { returns(String) }
@@ -2114,7 +2169,12 @@ module Lithic
 
         class Amounts < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Transaction::Event::Amounts,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           sig { returns(Lithic::Transaction::Event::Amounts::Cardholder) }
           attr_reader :cardholder
@@ -2181,7 +2241,12 @@ module Lithic
 
           class Cardholder < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Transaction::Event::Amounts::Cardholder,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # Amount of the event in the cardholder billing currency.
             sig { returns(Integer) }
@@ -2225,7 +2290,12 @@ module Lithic
 
           class Merchant < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Transaction::Event::Amounts::Merchant,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # Amount of the event in the merchant currency.
             sig { returns(Integer) }
@@ -2255,7 +2325,12 @@ module Lithic
 
           class Settlement < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Transaction::Event::Amounts::Settlement,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # Amount of the event, if it is financial, in the settlement currency.
             # Non-financial events do not contain this amount because they do not move funds.
@@ -2611,7 +2686,12 @@ module Lithic
 
         class NetworkInfo < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Transaction::Event::NetworkInfo,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -2722,7 +2802,12 @@ module Lithic
 
           class Acquirer < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Transaction::Event::NetworkInfo::Acquirer,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # Identifier assigned by the acquirer, applicable to dual-message transactions
             # only. The acquirer reference number (ARN) is only populated once a transaction
@@ -2768,7 +2853,12 @@ module Lithic
 
           class Amex < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Transaction::Event::NetworkInfo::Amex,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # Identifier assigned by American Express. Matches the `transaction_id` of a prior
             # related event. May be populated in incremental authorizations (authorization
@@ -2816,7 +2906,12 @@ module Lithic
 
           class Mastercard < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Transaction::Event::NetworkInfo::Mastercard,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # Identifier assigned by Mastercard. Guaranteed by Mastercard to be unique for any
             # transaction within a specific financial network on any processing day.
@@ -2898,7 +2993,12 @@ module Lithic
 
           class Visa < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Transaction::Event::NetworkInfo::Visa,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # Identifier assigned by Visa. Matches the `transaction_id` of a prior related
             # event. May be populated in incremental authorizations (authorization requests
@@ -3073,7 +3173,12 @@ module Lithic
 
         class RuleResult < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Transaction::Event::RuleResult,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # The Auth Rule Token associated with the rule from which the decline originated.
           # If this is set to null, then the decline was not associated with a
@@ -3502,7 +3607,12 @@ module Lithic
 
         class NetworkSpecificData < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Transaction::Event::NetworkSpecificData,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(Lithic::Transaction::Event::NetworkSpecificData::Mastercard)
@@ -3553,7 +3663,12 @@ module Lithic
 
           class Mastercard < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Transaction::Event::NetworkSpecificData::Mastercard,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # Indicates the electronic commerce security level and UCAF collection.
             sig { returns(T.nilable(String)) }
@@ -3620,7 +3735,12 @@ module Lithic
 
             class OnBehalfServiceResult < Lithic::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Lithic::Transaction::Event::NetworkSpecificData::Mastercard::OnBehalfServiceResult,
+                    Lithic::Internal::AnyHash
+                  )
+                end
 
               # Indicates the results of the service processing.
               sig { returns(String) }
@@ -3663,7 +3783,12 @@ module Lithic
 
           class Visa < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Transaction::Event::NetworkSpecificData::Visa,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # Identifies the purpose or category of a transaction, used to classify and
             # process transactions according to Visa’s rules.

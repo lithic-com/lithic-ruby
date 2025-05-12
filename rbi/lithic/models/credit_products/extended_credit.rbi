@@ -4,7 +4,13 @@ module Lithic
   module Models
     module CreditProducts
       class CreditProductsExtendedCredit < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::CreditProducts::CreditProductsExtendedCredit,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         sig { returns(Integer) }
         attr_accessor :credit_extended

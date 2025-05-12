@@ -9,7 +9,12 @@ module Lithic
           include Lithic::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Transactions::Events::EnhancedCommercialDataRetrieveParams,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           sig do
             params(request_options: Lithic::RequestOptions::OrHash).returns(

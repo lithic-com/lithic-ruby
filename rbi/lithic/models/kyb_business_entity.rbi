@@ -3,7 +3,10 @@
 module Lithic
   module Models
     class KYBBusinessEntity < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::KYBBusinessEntity, Lithic::Internal::AnyHash)
+        end
 
       # Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
       # acceptable; APO/FPO are acceptable.
@@ -90,7 +93,10 @@ module Lithic
       end
 
       class Address < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::KYBBusinessEntity::Address, Lithic::Internal::AnyHash)
+          end
 
         # Valid deliverable address (no PO boxes).
         sig { returns(String) }

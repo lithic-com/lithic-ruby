@@ -6,7 +6,10 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::CardProvisionParams, Lithic::Internal::AnyHash)
+        end
 
       # Only applicable if `digital_wallet` is `APPLE_PAY`. Omit to receive only
       # `activationData` in the response. Apple's public leaf certificate. Base64

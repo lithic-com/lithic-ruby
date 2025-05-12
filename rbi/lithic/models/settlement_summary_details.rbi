@@ -3,7 +3,10 @@
 module Lithic
   module Models
     class SettlementSummaryDetails < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::SettlementSummaryDetails, Lithic::Internal::AnyHash)
+        end
 
       # 3-character alphabetic ISO 4217 code.
       sig { returns(T.nilable(String)) }

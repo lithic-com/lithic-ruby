@@ -9,7 +9,12 @@ module Lithic
           include Lithic::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::AuthRules::V2::BacktestCreateParams,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # The end time of the backtest.
           sig { returns(T.nilable(Time)) }

@@ -38,6 +38,7 @@ module Lithic
       #   end
       module Enum
         include Lithic::Internal::Type::Converter
+        include Lithic::Internal::Util::SorbetRuntimeSupport
 
         # All of the valid Symbol values for this enum.
         #

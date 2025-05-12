@@ -3,7 +3,7 @@
 module Lithic
   module Models
     class KYC < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Lithic::KYC, Lithic::Internal::AnyHash) }
 
       # Information on individual for whom the account is being opened and KYC is being
       # run.
@@ -86,7 +86,10 @@ module Lithic
       end
 
       class Individual < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::KYC::Individual, Lithic::Internal::AnyHash)
+          end
 
         # Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         # acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.

@@ -6,7 +6,10 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::DigitalCardArtListParams, Lithic::Internal::AnyHash)
+        end
 
       # A cursor representing an item's token before which a page of results should end.
       # Used to retrieve the previous page of results before this item.

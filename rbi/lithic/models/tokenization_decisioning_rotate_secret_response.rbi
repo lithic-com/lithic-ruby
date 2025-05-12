@@ -3,7 +3,13 @@
 module Lithic
   module Models
     class TokenizationDecisioningRotateSecretResponse < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::Models::TokenizationDecisioningRotateSecretResponse,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       # The new Tokenization Decisioning HMAC secret
       sig { returns(T.nilable(String)) }

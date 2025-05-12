@@ -6,7 +6,13 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::AccountHolderSimulateEnrollmentReviewParams,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       # The account holder which to perform the simulation upon.
       sig { returns(T.nilable(String)) }

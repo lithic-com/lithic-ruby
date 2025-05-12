@@ -3,7 +3,13 @@
 module Lithic
   module Models
     class ManagementOperationTransaction < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::ManagementOperationTransaction,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       sig { returns(String) }
       attr_accessor :token
@@ -221,7 +227,13 @@ module Lithic
       end
 
       class Event < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::ManagementOperationTransaction::Event,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :token
@@ -578,7 +590,13 @@ module Lithic
       end
 
       class TransactionSeries < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::ManagementOperationTransaction::TransactionSeries,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         sig { returns(T.nilable(String)) }
         attr_accessor :related_transaction_event_token

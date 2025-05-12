@@ -9,7 +9,12 @@ module Lithic
           include Lithic::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::AuthRules::V2::BacktestRetrieveParams,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :auth_rule_token

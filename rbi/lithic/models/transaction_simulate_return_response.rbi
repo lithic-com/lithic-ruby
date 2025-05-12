@@ -3,7 +3,13 @@
 module Lithic
   module Models
     class TransactionSimulateReturnResponse < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::Models::TransactionSimulateReturnResponse,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       # A unique token to reference this transaction.
       sig { returns(T.nilable(String)) }

@@ -3,7 +3,8 @@
 module Lithic
   module Models
     class Carrier < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Lithic::Carrier, Lithic::Internal::AnyHash) }
 
       # QR code url to display on the card carrier
       sig { returns(T.nilable(String)) }

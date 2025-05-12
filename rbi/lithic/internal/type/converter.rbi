@@ -5,6 +5,8 @@ module Lithic
     module Type
       # @api private
       module Converter
+        extend Lithic::Internal::Util::SorbetRuntimeSupport
+
         Input =
           T.type_alias do
             T.any(Lithic::Internal::Type::Converter, T::Class[T.anything])

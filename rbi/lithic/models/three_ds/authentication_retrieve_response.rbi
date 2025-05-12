@@ -4,7 +4,13 @@ module Lithic
   module Models
     module ThreeDS
       class AuthenticationRetrieveResponse < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Models::ThreeDS::AuthenticationRetrieveResponse,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Globally unique identifier for the 3DS authentication.
         sig { returns(String) }
@@ -579,7 +585,12 @@ module Lithic
 
         class Cardholder < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Indicates whether the shipping address and billing address provided by the
           # cardholder are the same. This value - and assessment of whether the addresses
@@ -711,7 +722,12 @@ module Lithic
 
           class BillingAddress < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # First line of the street address provided by the cardholder.
             sig { returns(T.nilable(String)) }
@@ -784,7 +800,12 @@ module Lithic
 
           class ShippingAddress < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # First line of the street address provided by the cardholder.
             sig { returns(T.nilable(String)) }
@@ -898,7 +919,12 @@ module Lithic
 
         class Merchant < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field
           # acquirerMerchantId.
@@ -983,7 +1009,12 @@ module Lithic
 
           class RiskIndicator < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # In transactions with electronic delivery, email address to which merchandise is
             # delivered. Maps to EMV 3DS field deliveryEmailAddress.
@@ -1449,7 +1480,12 @@ module Lithic
 
         class AdditionalData < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Mastercard only: Indicates whether the network would have considered the
           # authentication request to be low risk or not.
@@ -1542,7 +1578,12 @@ module Lithic
 
         class App < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Device information gathered from the cardholder's device - JSON name/value pairs
           # that is Base64url encoded. Maps to EMV 3DS field deviceInfo.
@@ -1660,7 +1701,12 @@ module Lithic
 
         class Browser < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # IP address of the browser as returned by the HTTP headers to the 3DS requestor
           # (e.g., merchant or digital wallet). Maps to EMV 3DS field browserIP.
@@ -1744,7 +1790,12 @@ module Lithic
 
         class ChallengeMetadata < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # The type of challenge method used for authentication.
           sig do
@@ -2023,7 +2074,12 @@ module Lithic
 
         class Transaction < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Amount of the purchase in minor units of currency with all punctuation removed.
           # Maps to EMV 3DS field purchaseAmount.

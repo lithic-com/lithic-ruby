@@ -3,7 +3,13 @@
 module Lithic
   module Models
     class ResponderEndpointCreateResponse < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Lithic::Models::ResponderEndpointCreateResponse,
+            Lithic::Internal::AnyHash
+          )
+        end
 
       # True if the endpoint was enrolled successfully.
       sig { returns(T.nilable(T::Boolean)) }

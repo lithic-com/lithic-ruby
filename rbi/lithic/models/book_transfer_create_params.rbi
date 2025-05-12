@@ -6,7 +6,10 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::BookTransferCreateParams, Lithic::Internal::AnyHash)
+        end
 
       # Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
       # This should always be a positive value.

@@ -3,7 +3,10 @@
 module Lithic
   module Models
     class ResponderEndpointStatus < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Lithic::ResponderEndpointStatus, Lithic::Internal::AnyHash)
+        end
 
       # True if the instance has an endpoint enrolled.
       sig { returns(T.nilable(T::Boolean)) }

@@ -3,7 +3,8 @@
 module Lithic
   module Models
     class Account < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Lithic::Account, Lithic::Internal::AnyHash) }
 
       # Globally unique identifier for the account. This is the same as the
       # account_token returned by the enroll endpoint. If using this parameter, do not
@@ -142,7 +143,10 @@ module Lithic
       end
 
       class SpendLimit < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Account::SpendLimit, Lithic::Internal::AnyHash)
+          end
 
         # Daily spend limit (in cents).
         sig { returns(Integer) }
@@ -212,7 +216,10 @@ module Lithic
       end
 
       class AccountHolder < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Account::AccountHolder, Lithic::Internal::AnyHash)
+          end
 
         # Globally unique identifier for the account holder.
         sig { returns(String) }
@@ -269,7 +276,13 @@ module Lithic
       end
 
       class VerificationAddress < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Account::VerificationAddress,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Valid deliverable address (no PO boxes).
         sig { returns(String) }

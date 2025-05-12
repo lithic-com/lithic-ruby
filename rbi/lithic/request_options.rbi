@@ -7,7 +7,8 @@ module Lithic
   # When making a request, you can pass an actual {RequestOptions} instance, or
   # simply pass a Hash with symbol keys matching the attributes on this class.
   class RequestOptions < Lithic::Internal::Type::BaseModel
-    OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+    OrHash =
+      T.type_alias { T.any(Lithic::RequestOptions, Lithic::Internal::AnyHash) }
 
     # @api private
     sig { params(opts: Lithic::RequestOptions::OrHash).void }

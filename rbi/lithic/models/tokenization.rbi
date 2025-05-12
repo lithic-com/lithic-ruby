@@ -3,7 +3,8 @@
 module Lithic
   module Models
     class Tokenization < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Lithic::Tokenization, Lithic::Internal::AnyHash) }
 
       # Globally unique identifier for a Tokenization
       sig { returns(String) }
@@ -277,7 +278,10 @@ module Lithic
       end
 
       class Event < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Tokenization::Event, Lithic::Internal::AnyHash)
+          end
 
         # Globally unique identifier for a Tokenization Event
         sig { returns(T.nilable(String)) }

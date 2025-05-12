@@ -9,7 +9,12 @@ module Lithic
           include Lithic::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Reports::Settlement::NetworkTotalListParams,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Datetime in RFC 3339 format. Only entries created after the specified time will
           # be included. UTC time zone.

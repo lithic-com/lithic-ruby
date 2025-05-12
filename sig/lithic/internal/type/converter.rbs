@@ -2,6 +2,8 @@ module Lithic
   module Internal
     module Type
       module Converter
+        extend Lithic::Internal::Util::SorbetRuntimeSupport
+
         type input = Lithic::Internal::Type::Converter | Class
 
         type coerce_state =

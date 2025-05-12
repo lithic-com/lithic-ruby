@@ -7,7 +7,10 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Cards::BalanceListParams, Lithic::Internal::AnyHash)
+          end
 
         # UTC date of the balance to retrieve. Defaults to latest available balance
         sig { returns(T.nilable(Time)) }

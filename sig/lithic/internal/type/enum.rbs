@@ -3,6 +3,7 @@ module Lithic
     module Type
       module Enum
         include Lithic::Internal::Type::Converter
+        include Lithic::Internal::Util::SorbetRuntimeSupport
 
         def self.values: -> ::Array[(nil | bool | Integer | Float | Symbol)]
 

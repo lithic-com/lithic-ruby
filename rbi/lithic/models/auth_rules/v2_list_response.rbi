@@ -4,7 +4,13 @@ module Lithic
   module Models
     module AuthRules
       class V2ListResponse < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Models::AuthRules::V2ListResponse,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Auth Rule Token
         sig { returns(String) }
@@ -152,7 +158,12 @@ module Lithic
 
         class CurrentVersion < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::AuthRules::V2ListResponse::CurrentVersion,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Parameters for the Auth Rule
           sig do
@@ -222,7 +233,12 @@ module Lithic
 
             class MerchantLockParameters < Lithic::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Lithic::Models::AuthRules::V2ListResponse::CurrentVersion::Parameters::MerchantLockParameters,
+                    Lithic::Internal::AnyHash
+                  )
+                end
 
               # A list of merchant locks defining specific merchants or groups of merchants
               # (based on descriptors or IDs) that the lock applies to.
@@ -265,7 +281,12 @@ module Lithic
 
               class Merchant < Lithic::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Lithic::Models::AuthRules::V2ListResponse::CurrentVersion::Parameters::MerchantLockParameters::Merchant,
+                      Lithic::Internal::AnyHash
+                    )
+                  end
 
                 # A comment or explanation about the merchant, used internally for rule management
                 # purposes.
@@ -342,7 +363,12 @@ module Lithic
 
         class DraftVersion < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::Models::AuthRules::V2ListResponse::DraftVersion,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Parameters for the Auth Rule
           sig do
@@ -412,7 +438,12 @@ module Lithic
 
             class MerchantLockParameters < Lithic::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Lithic::Models::AuthRules::V2ListResponse::DraftVersion::Parameters::MerchantLockParameters,
+                    Lithic::Internal::AnyHash
+                  )
+                end
 
               # A list of merchant locks defining specific merchants or groups of merchants
               # (based on descriptors or IDs) that the lock applies to.
@@ -455,7 +486,12 @@ module Lithic
 
               class Merchant < Lithic::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Lithic::Models::AuthRules::V2ListResponse::DraftVersion::Parameters::MerchantLockParameters::Merchant,
+                      Lithic::Internal::AnyHash
+                    )
+                  end
 
                 # A comment or explanation about the merchant, used internally for rule management
                 # purposes.

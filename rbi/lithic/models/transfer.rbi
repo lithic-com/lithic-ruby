@@ -3,7 +3,8 @@
 module Lithic
   module Models
     class Transfer < Lithic::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Lithic::Transfer, Lithic::Internal::AnyHash) }
 
       # Globally unique identifier for the transfer event.
       sig { returns(T.nilable(String)) }
@@ -216,7 +217,10 @@ module Lithic
       end
 
       class Event < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Lithic::Transfer::Event, Lithic::Internal::AnyHash)
+          end
 
         # Globally unique identifier.
         sig { returns(T.nilable(String)) }

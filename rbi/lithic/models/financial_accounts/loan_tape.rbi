@@ -4,7 +4,13 @@ module Lithic
   module Models
     module FinancialAccounts
       class LoanTape < Lithic::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::FinancialAccounts::LoanTape,
+              Lithic::Internal::AnyHash
+            )
+          end
 
         # Globally unique identifier for a loan tape
         sig { returns(String) }
@@ -286,7 +292,12 @@ module Lithic
 
         class AccountStanding < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::LoanTape::AccountStanding,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Number of consecutive full payments made
           sig { returns(Integer) }
@@ -389,7 +400,12 @@ module Lithic
 
           class FinancialAccountState < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             # Status of the financial account
             sig do
@@ -581,7 +597,12 @@ module Lithic
 
         class Balances < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::LoanTape::Balances,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Amount due for the prior billing cycle. Any amounts not fully paid off on this
           # due date will be considered past due the next day
@@ -687,7 +708,12 @@ module Lithic
 
           class Due < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::FinancialAccounts::LoanTape::Balances::Due,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             sig { returns(Integer) }
             attr_accessor :fees
@@ -721,7 +747,12 @@ module Lithic
 
           class NextStatementDue < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::FinancialAccounts::LoanTape::Balances::NextStatementDue,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             sig { returns(Integer) }
             attr_accessor :fees
@@ -756,7 +787,12 @@ module Lithic
 
           class PastDue < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::FinancialAccounts::LoanTape::Balances::PastDue,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             sig { returns(Integer) }
             attr_accessor :fees
@@ -789,7 +825,12 @@ module Lithic
 
           class PastStatementsDue < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::FinancialAccounts::LoanTape::Balances::PastStatementsDue,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             sig { returns(Integer) }
             attr_accessor :fees
@@ -823,7 +864,12 @@ module Lithic
 
         class DayTotals < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::LoanTape::DayTotals,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Opening balance transferred from previous account in cents
           sig { returns(Integer) }
@@ -903,7 +949,12 @@ module Lithic
 
         class InterestDetails < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::LoanTape::InterestDetails,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(Integer)) }
           attr_accessor :actual_interest_charged
@@ -1014,7 +1065,12 @@ module Lithic
 
           class DailyBalanceAmounts < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :balance_transfers
@@ -1050,7 +1106,12 @@ module Lithic
 
           class EffectiveApr < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :balance_transfers
@@ -1120,7 +1181,12 @@ module Lithic
 
           class InterestForPeriod < Lithic::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
+                  Lithic::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :balance_transfers
@@ -1157,7 +1223,12 @@ module Lithic
 
         class MinimumPaymentBalance < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :amount
@@ -1180,7 +1251,12 @@ module Lithic
 
         class PaymentAllocation < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::LoanTape::PaymentAllocation,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :fees
@@ -1212,7 +1288,12 @@ module Lithic
 
         class PeriodTotals < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::LoanTape::PeriodTotals,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Opening balance transferred from previous account in cents
           sig { returns(Integer) }
@@ -1292,7 +1373,12 @@ module Lithic
 
         class PreviousStatementBalance < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :amount
@@ -1315,7 +1401,12 @@ module Lithic
 
         class YtdTotals < Lithic::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Lithic::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::LoanTape::YtdTotals,
+                Lithic::Internal::AnyHash
+              )
+            end
 
           # Opening balance transferred from previous account in cents
           sig { returns(Integer) }

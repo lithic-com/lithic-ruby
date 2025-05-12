@@ -5,7 +5,9 @@ module Lithic
     module Transport
       # @api private
       class PooledNetRequester
-        RequestShape =
+        extend Lithic::Internal::Util::SorbetRuntimeSupport
+
+        Request =
           T.type_alias do
             {
               method: Symbol,
@@ -34,8 +36,7 @@ module Lithic
           # @api private
           sig do
             params(
-              request:
-                Lithic::Internal::Transport::PooledNetRequester::RequestShape,
+              request: Lithic::Internal::Transport::PooledNetRequester::Request,
               blk: T.proc.params(arg0: String).void
             ).returns([Net::HTTPGenericRequest, T.proc.void])
           end
@@ -57,8 +58,7 @@ module Lithic
         # @api private
         sig do
           params(
-            request:
-              Lithic::Internal::Transport::PooledNetRequester::RequestShape
+            request: Lithic::Internal::Transport::PooledNetRequester::Request
           ).returns([Integer, Net::HTTPResponse, T::Enumerable[String]])
         end
         def execute(request)
