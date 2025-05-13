@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.25 (2025-05-13)
+
+Full Changelog: [v0.1.0-alpha.24...v0.1.0-alpha.25](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.24...v0.1.0-alpha.25)
+
+### Bug Fixes
+
+* **internal:** update gemspec name ([b6bb2f8](https://github.com/lithic-com/lithic-ruby/commit/b6bb2f8f1379020fd87b8866074ad0a857986048))
+
 ## 0.1.0-alpha.24 (2025-05-12)
 
 Full Changelog: [v0.1.0-alpha.23...v0.1.0-alpha.24](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.23...v0.1.0-alpha.24)
