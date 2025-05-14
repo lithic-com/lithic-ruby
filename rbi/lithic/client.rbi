@@ -97,6 +97,9 @@ module Lithic
     sig { returns(Lithic::Resources::ManagementOperations) }
     attr_reader :management_operations
 
+    sig { returns(Lithic::Resources::FundingEvents) }
+    attr_reader :funding_events
+
     # Status of api
     sig do
       params(request_options: Lithic::RequestOptions::OrHash).returns(

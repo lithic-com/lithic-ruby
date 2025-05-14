@@ -1,0 +1,24 @@
+module Lithic
+  module Models
+    type funding_event_retrieve_details_response =
+      {
+        token: String,
+        settlement_details_url: String,
+        settlement_summary_url: String
+      }
+
+    class FundingEventRetrieveDetailsResponse < Lithic::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      attr_accessor settlement_details_url: String
+
+      attr_accessor settlement_summary_url: String
+
+      def initialize: (
+        token: String,
+        settlement_details_url: String,
+        settlement_summary_url: String
+      ) -> void
+    end
+  end
+end

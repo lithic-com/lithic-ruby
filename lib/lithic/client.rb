@@ -98,6 +98,9 @@ module Lithic
     # @return [Lithic::Resources::ManagementOperations]
     attr_reader :management_operations
 
+    # @return [Lithic::Resources::FundingEvents]
+    attr_reader :funding_events
+
     # Status of api
     #
     # @overload api_status(request_options: {})
@@ -197,6 +200,7 @@ module Lithic
       @credit_products = Lithic::Resources::CreditProducts.new(client: self)
       @external_payments = Lithic::Resources::ExternalPayments.new(client: self)
       @management_operations = Lithic::Resources::ManagementOperations.new(client: self)
+      @funding_events = Lithic::Resources::FundingEvents.new(client: self)
     end
   end
 end

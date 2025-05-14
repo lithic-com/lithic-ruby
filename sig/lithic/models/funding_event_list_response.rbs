@@ -1,0 +1,65 @@
+module Lithic
+  module Models
+    type funding_event_list_response =
+      {
+        token: String,
+        collection_resource_type: Lithic::Models::FundingEventListResponse::collection_resource_type,
+        collection_tokens: ::Array[String],
+        created: Time,
+        high_watermark: Time,
+        previous_high_watermark: Time,
+        settlement_breakdowns: ::Array[Lithic::Models::FundingEventListResponse::SettlementBreakdown],
+        updated: Time
+      }
+
+    class FundingEventListResponse < Lithic::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      attr_accessor collection_resource_type: Lithic::Models::FundingEventListResponse::collection_resource_type
+
+      attr_accessor collection_tokens: ::Array[String]
+
+      attr_accessor created: Time
+
+      attr_accessor high_watermark: Time
+
+      attr_accessor previous_high_watermark: Time
+
+      attr_accessor settlement_breakdowns: ::Array[Lithic::Models::FundingEventListResponse::SettlementBreakdown]
+
+      attr_accessor updated: Time
+
+      def initialize: (
+        token: String,
+        collection_resource_type: Lithic::Models::FundingEventListResponse::collection_resource_type,
+        collection_tokens: ::Array[String],
+        created: Time,
+        high_watermark: Time,
+        previous_high_watermark: Time,
+        settlement_breakdowns: ::Array[Lithic::Models::FundingEventListResponse::SettlementBreakdown],
+        updated: Time
+      ) -> void
+
+      type collection_resource_type = :BOOK_TRANSFER | :PAYMENT
+
+      module CollectionResourceType
+        extend Lithic::Internal::Type::Enum
+
+        BOOK_TRANSFER: :BOOK_TRANSFER
+        PAYMENT: :PAYMENT
+
+        def self?.values: -> ::Array[Lithic::Models::FundingEventListResponse::collection_resource_type]
+      end
+
+      type settlement_breakdown = { amount: Integer, settlement_date: Date }
+
+      class SettlementBreakdown < Lithic::Internal::Type::BaseModel
+        attr_accessor amount: Integer
+
+        attr_accessor settlement_date: Date
+
+        def initialize: (amount: Integer, settlement_date: Date) -> void
+      end
+    end
+  end
+end
