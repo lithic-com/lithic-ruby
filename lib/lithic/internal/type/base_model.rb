@@ -386,6 +386,14 @@ module Lithic
         # @param keys [Array<Symbol>, nil]
         #
         # @return [Hash{Symbol=>Object}]
+        #
+        # @example
+        #   # `address` is a `Lithic::Address`
+        #   address => {
+        #     address1: address1,
+        #     city: city,
+        #     country: country
+        #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)
             .filter_map do |k|
