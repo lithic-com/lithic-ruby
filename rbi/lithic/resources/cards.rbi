@@ -523,6 +523,29 @@ module Lithic
       )
       end
 
+      # Allow your cardholders to directly add payment cards to the device's digital
+      # wallet from a browser on the web. Currently only suported for Apple Pay.
+      #
+      # This requires some additional setup and configuration. Please
+      # [Contact Us](https://lithic.com/contact) or your Customer Success representative
+      # for more information.
+      sig do
+        params(
+          card_token: String,
+          digital_wallet:
+            Lithic::CardWebProvisionParams::DigitalWallet::OrSymbol,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::CardWebProvisionResponse)
+      end
+      def web_provision(
+        # The unique token of the card to add to the device's digital wallet.
+        card_token,
+        # Name of digital wallet provider.
+        digital_wallet: nil,
+        request_options: {}
+      )
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
       def self.new(client:)

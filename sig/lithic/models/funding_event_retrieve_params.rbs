@@ -1,0 +1,13 @@
+module Lithic
+  module Models
+    type funding_event_retrieve_params =
+      {  } & Lithic::Internal::Type::request_parameters
+
+    class FundingEventRetrieveParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      def initialize: (?request_options: Lithic::request_opts) -> void
+    end
+  end
+end
