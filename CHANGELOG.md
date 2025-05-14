@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.26 (2025-05-14)
+
+Full Changelog: [v0.1.0-alpha.25...v0.1.0-alpha.26](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.25...v0.1.0-alpha.26)
+
+### Features
+
+* **api:** new Funding Events and Card Web Provision API's ([1e3868e](https://github.com/lithic-com/lithic-ruby/commit/1e3868e233fb636a3b783160777b77715465ac13))
+* bump default connection pool size limit to minimum of 99 ([07ebbb8](https://github.com/lithic-com/lithic-ruby/commit/07ebbb88612e4156407a0b0b6828f53c82adfe31))
+
 ## 0.1.0-alpha.25 (2025-05-13)
 
 Full Changelog: [v0.1.0-alpha.24...v0.1.0-alpha.25](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.24...v0.1.0-alpha.25)
