@@ -1,0 +1,68 @@
+module Lithic
+  module Models
+    type card_web_provision_response =
+      { jws: Lithic::Models::CardWebProvisionResponse::Jws, state: String }
+
+    class CardWebProvisionResponse < Lithic::Internal::Type::BaseModel
+      attr_reader jws: Lithic::Models::CardWebProvisionResponse::Jws?
+
+      def jws=: (
+        Lithic::Models::CardWebProvisionResponse::Jws
+      ) -> Lithic::Models::CardWebProvisionResponse::Jws
+
+      attr_reader state: String?
+
+      def state=: (String) -> String
+
+      def initialize: (
+        ?jws: Lithic::Models::CardWebProvisionResponse::Jws,
+        ?state: String
+      ) -> void
+
+      type jws =
+        {
+          header: Lithic::Models::CardWebProvisionResponse::Jws::Header,
+          payload: String,
+          protected: String,
+          signature: String
+        }
+
+      class Jws < Lithic::Internal::Type::BaseModel
+        attr_reader header: Lithic::Models::CardWebProvisionResponse::Jws::Header?
+
+        def header=: (
+          Lithic::Models::CardWebProvisionResponse::Jws::Header
+        ) -> Lithic::Models::CardWebProvisionResponse::Jws::Header
+
+        attr_reader payload: String?
+
+        def payload=: (String) -> String
+
+        attr_reader protected: String?
+
+        def protected=: (String) -> String
+
+        attr_reader signature: String?
+
+        def signature=: (String) -> String
+
+        def initialize: (
+          ?header: Lithic::Models::CardWebProvisionResponse::Jws::Header,
+          ?payload: String,
+          ?protected: String,
+          ?signature: String
+        ) -> void
+
+        type header = { kid: String }
+
+        class Header < Lithic::Internal::Type::BaseModel
+          attr_reader kid: String?
+
+          def kid=: (String) -> String
+
+          def initialize: (?kid: String) -> void
+        end
+      end
+    end
+  end
+end

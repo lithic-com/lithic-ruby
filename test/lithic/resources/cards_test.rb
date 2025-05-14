@@ -161,4 +161,19 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
       response => Lithic::Card
     end
   end
+
+  def test_web_provision
+    response = @lithic.cards.web_provision("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Lithic::Models::CardWebProvisionResponse
+    end
+
+    assert_pattern do
+      response => {
+        jws: Lithic::Models::CardWebProvisionResponse::Jws | nil,
+        state: String | nil
+      }
+    end
+  end
 end

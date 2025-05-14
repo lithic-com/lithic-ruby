@@ -1,0 +1,24 @@
+module Lithic
+  module Resources
+    class FundingEvents
+      def retrieve: (
+        String funding_event_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::FundingEventRetrieveResponse
+
+      def list: (
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Internal::CursorPage[Lithic::Models::FundingEventListResponse]
+
+      def retrieve_details: (
+        String funding_event_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::FundingEventRetrieveDetailsResponse
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

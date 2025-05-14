@@ -99,6 +99,8 @@ module Lithic
 
   class CardUpdateParams = Lithic::Models::CardUpdateParams
 
+  class CardWebProvisionParams = Lithic::Models::CardWebProvisionParams
+
   class Carrier = Lithic::Models::Carrier
 
   class ClientAPIStatusParams = Lithic::Models::ClientAPIStatusParams
@@ -196,6 +198,12 @@ module Lithic
   class FinancialAccountUpdateStatusParams = Lithic::Models::FinancialAccountUpdateStatusParams
 
   class FinancialTransaction = Lithic::Models::FinancialTransaction
+
+  class FundingEventListParams = Lithic::Models::FundingEventListParams
+
+  class FundingEventRetrieveDetailsParams = Lithic::Models::FundingEventRetrieveDetailsParams
+
+  class FundingEventRetrieveParams = Lithic::Models::FundingEventRetrieveParams
 
   module InstanceFinancialAccountType = Lithic::Models::InstanceFinancialAccountType
 

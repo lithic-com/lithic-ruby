@@ -1,0 +1,33 @@
+module Lithic
+  module Models
+    type card_web_provision_params =
+      { digital_wallet: Lithic::Models::CardWebProvisionParams::digital_wallet }
+      & Lithic::Internal::Type::request_parameters
+
+    class CardWebProvisionParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_reader digital_wallet: Lithic::Models::CardWebProvisionParams::digital_wallet?
+
+      def digital_wallet=: (
+        Lithic::Models::CardWebProvisionParams::digital_wallet
+      ) -> Lithic::Models::CardWebProvisionParams::digital_wallet
+
+      def initialize: (
+        ?digital_wallet: Lithic::Models::CardWebProvisionParams::digital_wallet,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      type digital_wallet = :APPLE_PAY
+
+      module DigitalWallet
+        extend Lithic::Internal::Type::Enum
+
+        APPLE_PAY: :APPLE_PAY
+
+        def self?.values: -> ::Array[Lithic::Models::CardWebProvisionParams::digital_wallet]
+      end
+    end
+  end
+end
