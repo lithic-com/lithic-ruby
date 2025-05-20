@@ -25,6 +25,7 @@ class Lithic::Test::SorbetRuntimeSupportTest < Minitest::Test
     err = Lithic::Internal::Util::SorbetRuntimeSupport::MissingSorbetRuntimeError
 
     assert_raises(err) { Lithic::Internal::AnyHash }
+    assert_raises(err) { Lithic::Internal::FileInput }
     assert_raises(err) { Lithic::Internal::Type::Converter::Input }
     assert_raises(err) { Lithic::Internal::Type::Converter::CoerceState }
     assert_raises(err) { Lithic::Internal::Type::Converter::DumpState }
