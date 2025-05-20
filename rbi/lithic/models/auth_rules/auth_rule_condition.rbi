@@ -89,10 +89,18 @@ module Lithic
         attr_writer :operation
 
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
-        sig { returns(T.nilable(T.any(String, Integer, T::Array[String]))) }
+        sig do
+          returns(
+            T.nilable(Lithic::AuthRules::AuthRuleCondition::Value::Variants)
+          )
+        end
         attr_reader :value
 
-        sig { params(value: T.any(String, Integer, T::Array[String])).void }
+        sig do
+          params(
+            value: Lithic::AuthRules::AuthRuleCondition::Value::Variants
+          ).void
+        end
         attr_writer :value
 
         sig do
@@ -100,7 +108,7 @@ module Lithic
             attribute: Lithic::AuthRules::ConditionalAttribute::OrSymbol,
             operation:
               Lithic::AuthRules::AuthRuleCondition::Operation::OrSymbol,
-            value: T.any(String, Integer, T::Array[String])
+            value: Lithic::AuthRules::AuthRuleCondition::Value::Variants
           ).returns(T.attached_class)
         end
         def self.new(
@@ -165,7 +173,7 @@ module Lithic
               attribute: Lithic::AuthRules::ConditionalAttribute::OrSymbol,
               operation:
                 Lithic::AuthRules::AuthRuleCondition::Operation::OrSymbol,
-              value: T.any(String, Integer, T::Array[String])
+              value: Lithic::AuthRules::AuthRuleCondition::Value::Variants
             }
           )
         end

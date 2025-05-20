@@ -172,11 +172,7 @@ module Lithic
           # Parameters for the Auth Rule
           sig do
             returns(
-              T.any(
-                Lithic::AuthRules::ConditionalBlockParameters,
-                Lithic::AuthRules::VelocityLimitParams,
-                Lithic::Models::AuthRules::V2ApplyResponse::CurrentVersion::Parameters::MerchantLockParameters
-              )
+              Lithic::Models::AuthRules::V2ApplyResponse::CurrentVersion::Parameters::Variants
             )
           end
           attr_accessor :parameters
@@ -210,11 +206,7 @@ module Lithic
             override.returns(
               {
                 parameters:
-                  T.any(
-                    Lithic::AuthRules::ConditionalBlockParameters,
-                    Lithic::AuthRules::VelocityLimitParams,
-                    Lithic::Models::AuthRules::V2ApplyResponse::CurrentVersion::Parameters::MerchantLockParameters
-                  ),
+                  Lithic::Models::AuthRules::V2ApplyResponse::CurrentVersion::Parameters::Variants,
                 version: Integer
               }
             )
@@ -377,11 +369,7 @@ module Lithic
           # Parameters for the Auth Rule
           sig do
             returns(
-              T.any(
-                Lithic::AuthRules::ConditionalBlockParameters,
-                Lithic::AuthRules::VelocityLimitParams,
-                Lithic::Models::AuthRules::V2ApplyResponse::DraftVersion::Parameters::MerchantLockParameters
-              )
+              Lithic::Models::AuthRules::V2ApplyResponse::DraftVersion::Parameters::Variants
             )
           end
           attr_accessor :parameters
@@ -415,11 +403,7 @@ module Lithic
             override.returns(
               {
                 parameters:
-                  T.any(
-                    Lithic::AuthRules::ConditionalBlockParameters,
-                    Lithic::AuthRules::VelocityLimitParams,
-                    Lithic::Models::AuthRules::V2ApplyResponse::DraftVersion::Parameters::MerchantLockParameters
-                  ),
+                  Lithic::Models::AuthRules::V2ApplyResponse::DraftVersion::Parameters::Variants,
                 version: Integer
               }
             )
