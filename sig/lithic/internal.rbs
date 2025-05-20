@@ -2,6 +2,8 @@ module Lithic
   module Internal
     extend Lithic::Internal::Util::SorbetRuntimeSupport
 
+    type file_input = Pathname | StringIO | IO | String | Lithic::FilePart
+
     OMIT: Object
   end
 end
