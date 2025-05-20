@@ -3,6 +3,7 @@ module Lithic
     module Type
       class HashOf[Elem]
         include Lithic::Internal::Type::Converter
+        include Lithic::Internal::Util::SorbetRuntimeSupport
 
         def self.[]: (
           ::Hash[Symbol, top]
@@ -26,6 +27,8 @@ module Lithic
           ::Hash[top, top] | top value,
           state: Lithic::Internal::Type::Converter::dump_state
         ) -> (::Hash[Symbol, top] | top)
+
+        def to_sorbet_type: -> top
 
         def item_type: -> Elem
 

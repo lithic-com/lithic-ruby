@@ -3,6 +3,7 @@ module Lithic
     module Type
       class Boolean
         extend Lithic::Internal::Type::Converter
+        extend Lithic::Internal::Util::SorbetRuntimeSupport
 
         def self.===: (top other) -> bool
 
@@ -17,6 +18,8 @@ module Lithic
           bool | top value,
           state: Lithic::Internal::Type::Converter::dump_state
         ) -> (bool | top)
+
+        def self.to_sorbet_type: -> top
       end
     end
   end
