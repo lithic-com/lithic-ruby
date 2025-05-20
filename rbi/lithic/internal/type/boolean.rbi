@@ -8,6 +8,7 @@ module Lithic
       # Ruby has no Boolean class; this is something for models to refer to.
       class Boolean
         extend Lithic::Internal::Type::Converter
+        extend Lithic::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
@@ -42,6 +43,11 @@ module Lithic
               .returns(T.any(T::Boolean, T.anything))
           end
           def dump(value, state:)
+          end
+
+          # @api private
+          sig { returns(T.anything) }
+          def to_sorbet_type
           end
         end
       end

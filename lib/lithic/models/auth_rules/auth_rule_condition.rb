@@ -113,10 +113,6 @@ module Lithic
           # @!method self.variants
           #   @return [Array(String, Integer, Array<String>)]
 
-          define_sorbet_constant!(:Variants) do
-            T.type_alias { T.any(String, Integer, T::Array[String]) }
-          end
-
           # @type [Lithic::Internal::Type::Converter]
           StringArray = Lithic::Internal::Type::ArrayOf[String]
         end
