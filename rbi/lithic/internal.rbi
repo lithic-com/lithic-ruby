@@ -8,6 +8,9 @@ module Lithic
     # this alias might be refined in the future.
     AnyHash = T.type_alias { T::Hash[Symbol, T.anything] }
 
+    FileInput =
+      T.type_alias { T.any(Pathname, StringIO, IO, String, Lithic::FilePart) }
+
     OMIT = T.let(Object.new.freeze, T.anything)
   end
 end

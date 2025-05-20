@@ -25,7 +25,12 @@ module Lithic
         # The size of the trailing window to calculate Spend Velocity over in seconds. The
         # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
         sig do
-          returns(Lithic::AuthRules::VelocityLimitParams::Period::Variants)
+          returns(
+            T.any(
+              Integer,
+              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol
+            )
+          )
         end
         attr_accessor :period
 
@@ -49,7 +54,11 @@ module Lithic
         sig do
           params(
             filters: Lithic::AuthRules::VelocityLimitParams::Filters::OrHash,
-            period: Lithic::AuthRules::VelocityLimitParams::Period::Variants,
+            period:
+              T.any(
+                Integer,
+                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol
+              ),
             scope: Lithic::AuthRules::VelocityLimitParams::Scope::OrSymbol,
             limit_amount: T.nilable(Integer),
             limit_count: T.nilable(Integer)
@@ -78,7 +87,11 @@ module Lithic
           override.returns(
             {
               filters: Lithic::AuthRules::VelocityLimitParams::Filters,
-              period: Lithic::AuthRules::VelocityLimitParams::Period::Variants,
+              period:
+                T.any(
+                  Integer,
+                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol
+                ),
               scope: Lithic::AuthRules::VelocityLimitParams::Scope::OrSymbol,
               limit_amount: T.nilable(Integer),
               limit_count: T.nilable(Integer)
