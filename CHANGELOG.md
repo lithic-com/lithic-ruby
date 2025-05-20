@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-alpha.27 (2025-05-20)
+
+Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)
+
+### Bug Fixes
+
+* correctly instantiate sorbet type aliases for enums and unions ([456477f](https://github.com/lithic-com/lithic-ruby/commit/456477fed1f46dd9ecfd278ddda29c642e5684f7))
+
+
+### Chores
+
+* refine Yard and Sorbet types and ensure linting is turned on for examples ([1c7093d](https://github.com/lithic-com/lithic-ruby/commit/1c7093dac0961af658685d5788c2b0dbe1871947))
+* use sorbet union aliases where available ([68cbe7c](https://github.com/lithic-com/lithic-ruby/commit/68cbe7c8831d674ddb1080ca53ae1018966f1c87))
+* whitespaces ([862a44f](https://github.com/lithic-com/lithic-ruby/commit/862a44f890c5b9d0034a99e2d09125f9a4551a1b))
+
+
+### Documentation
+
+* rewrite much of README.md for readability ([786647f](https://github.com/lithic-com/lithic-ruby/commit/786647f1e376849b800dfb59fdc941925590ab17))
+
 ## 0.1.0-alpha.26 (2025-05-14)
 
 Full Changelog: [v0.1.0-alpha.25...v0.1.0-alpha.26](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.25...v0.1.0-alpha.26)
