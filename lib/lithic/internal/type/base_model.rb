@@ -304,6 +304,13 @@ module Lithic
 
             acc
           end
+
+          # @api private
+          #
+          # @return [Object]
+          def to_sorbet_type
+            self
+          end
         end
 
         class << self

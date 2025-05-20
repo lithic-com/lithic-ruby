@@ -8,6 +8,7 @@ module Lithic
       # Array of items of a given type.
       class ArrayOf
         include Lithic::Internal::Type::Converter
+        include Lithic::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
@@ -61,6 +62,11 @@ module Lithic
             .returns(T.any(T::Array[T.anything], T.anything))
         end
         def dump(value, state:)
+        end
+
+        # @api private
+        sig { returns(T.anything) }
+        def to_sorbet_type
         end
 
         # @api private

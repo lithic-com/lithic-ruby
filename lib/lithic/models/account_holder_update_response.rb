@@ -921,15 +921,6 @@ module Lithic
 
       # @!method self.variants
       #   @return [Array(Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse, Lithic::Models::AccountHolderUpdateResponse::PatchResponse)]
-
-      define_sorbet_constant!(:Variants) do
-        T.type_alias do
-          T.any(
-            Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse,
-            Lithic::Models::AccountHolderUpdateResponse::PatchResponse
-          )
-        end
-      end
     end
   end
 end

@@ -180,16 +180,6 @@ module Lithic
 
             # @!method self.variants
             #   @return [Array(Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::MerchantLockParameters)]
-
-            define_sorbet_constant!(:Variants) do
-              T.type_alias do
-                T.any(
-                  Lithic::AuthRules::ConditionalBlockParameters,
-                  Lithic::AuthRules::VelocityLimitParams,
-                  Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::MerchantLockParameters
-                )
-              end
-            end
           end
         end
 
@@ -289,16 +279,6 @@ module Lithic
 
             # @!method self.variants
             #   @return [Array(Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::MerchantLockParameters)]
-
-            define_sorbet_constant!(:Variants) do
-              T.type_alias do
-                T.any(
-                  Lithic::AuthRules::ConditionalBlockParameters,
-                  Lithic::AuthRules::VelocityLimitParams,
-                  Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::MerchantLockParameters
-                )
-              end
-            end
           end
         end
 
