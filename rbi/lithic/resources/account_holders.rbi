@@ -166,12 +166,7 @@ module Lithic
           legal_business_name: String,
           phone_number: String,
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(
-          T.any(
-            Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse,
-            Lithic::Models::AccountHolderUpdateResponse::PatchResponse
-          )
-        )
+        ).returns(Lithic::Models::AccountHolderUpdateResponse::Variants)
       end
       def update(
         # Globally unique identifier for the account holder.
