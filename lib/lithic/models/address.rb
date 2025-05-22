@@ -45,8 +45,8 @@ module Lithic
       optional :address2, String
 
       # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
-      #   Some parameter documentations has been truncated, see {Lithic::Address} for more
-      #   details.
+      #   Some parameter documentations has been truncated, see {Lithic::Models::Address}
+      #   for more details.
       #
       #   @param address1 [String] Valid deliverable address (no PO boxes).
       #

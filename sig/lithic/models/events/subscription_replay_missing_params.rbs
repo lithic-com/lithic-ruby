@@ -22,6 +22,12 @@ module Lithic
           ?end_: Time,
           ?request_options: Lithic::request_opts
         ) -> void
+
+        def to_hash: -> {
+          begin_: Time,
+          end_: Time,
+          request_options: Lithic::RequestOptions
+        }
       end
     end
   end

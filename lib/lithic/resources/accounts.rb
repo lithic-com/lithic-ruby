@@ -11,7 +11,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Account]
+      # @return [Lithic::Models::Account]
       #
       # @see Lithic::Models::AccountRetrieveParams
       def retrieve(account_token, params = {})
@@ -40,13 +40,13 @@ module Lithic
       #
       # @param monthly_spend_limit [Integer] Amount (in cents) for the account's monthly spend limit (e.g. 100000 would be a
       #
-      # @param state [Symbol, Lithic::AccountUpdateParams::State] Account states.
+      # @param state [Symbol, Lithic::Models::AccountUpdateParams::State] Account states.
       #
-      # @param verification_address [Lithic::AccountUpdateParams::VerificationAddress] Address used during Address Verification Service (AVS) checks during transaction
+      # @param verification_address [Lithic::Models::AccountUpdateParams::VerificationAddress] Address used during Address Verification Service (AVS) checks during transaction
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Account]
+      # @return [Lithic::Models::Account]
       #
       # @see Lithic::Models::AccountUpdateParams
       def update(account_token, params = {})
@@ -79,7 +79,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::Account>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::Account>]
       #
       # @see Lithic::Models::AccountListParams
       def list(params = {})
@@ -106,7 +106,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::AccountSpendLimits]
+      # @return [Lithic::Models::AccountSpendLimits]
       #
       # @see Lithic::Models::AccountRetrieveSpendLimitsParams
       def retrieve_spend_limits(account_token, params = {})

@@ -35,6 +35,15 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        token: String,
+        amount: Integer,
+        financial_account_token: String,
+        receipt_type: Lithic::Models::PaymentSimulateReceiptParams::receipt_type,
+        memo: String,
+        request_options: Lithic::RequestOptions
+      }
+
       type receipt_type = :RECEIPT_CREDIT | :RECEIPT_DEBIT
 
       module ReceiptType

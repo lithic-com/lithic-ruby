@@ -71,6 +71,19 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        begin_: Time,
+        business_account_token: String,
+        category: Lithic::Models::ManagementOperationListParams::category,
+        end_: Time,
+        ending_before: String,
+        financial_account_token: String,
+        page_size: Integer,
+        starting_after: String,
+        status: Lithic::Models::ManagementOperationListParams::status,
+        request_options: Lithic::RequestOptions
+      }
+
       type category =
         :MANAGEMENT_FEE
         | :MANAGEMENT_DISPUTE

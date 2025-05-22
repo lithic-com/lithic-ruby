@@ -11,11 +11,11 @@ module Lithic
         # @!attribute parameters
         #   Parameters for the Auth Rule
         #
-        #   @return [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters, nil]
+        #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters, nil]
         optional :parameters, union: -> { Lithic::AuthRules::V2DraftParams::Parameters }, nil?: true
 
         # @!method initialize(parameters: nil, request_options: {})
-        #   @param parameters [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters, nil] Parameters for the Auth Rule
+        #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters, nil] Parameters for the Auth Rule
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
@@ -34,7 +34,7 @@ module Lithic
             #   A list of merchant locks defining specific merchants or groups of merchants
             #   (based on descriptors or IDs) that the lock applies to.
             #
-            #   @return [Array<Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant>]
+            #   @return [Array<Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant>]
             required :merchants,
                      -> {
                        Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant]
@@ -42,10 +42,10 @@ module Lithic
 
             # @!method initialize(merchants:)
             #   Some parameter documentations has been truncated, see
-            #   {Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters} for more
-            #   details.
+            #   {Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters}
+            #   for more details.
             #
-            #   @param merchants [Array<Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant>] A list of merchant locks defining specific merchants or groups of merchants (bas
+            #   @param merchants [Array<Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant>] A list of merchant locks defining specific merchants or groups of merchants (bas
 
             class Merchant < Lithic::Internal::Type::BaseModel
               # @!attribute comment
@@ -73,7 +73,7 @@ module Lithic
 
               # @!method initialize(comment: nil, descriptor: nil, merchant_id: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant}
+              #   {Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant}
               #   for more details.
               #
               #   Represents a specific merchant lock based on their ID or descriptor. Each
@@ -89,7 +89,7 @@ module Lithic
           end
 
           # @!method self.variants
-          #   @return [Array(Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters)]
+          #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters)]
         end
       end
     end

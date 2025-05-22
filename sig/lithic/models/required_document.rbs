@@ -19,6 +19,12 @@ module Lithic
         status_reasons: ::Array[String],
         valid_documents: ::Array[String]
       ) -> void
+
+      def to_hash: -> {
+        entity_token: String,
+        status_reasons: ::Array[String],
+        valid_documents: ::Array[String]
+      }
     end
   end
 end

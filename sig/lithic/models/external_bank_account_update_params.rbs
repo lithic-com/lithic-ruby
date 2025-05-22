@@ -73,6 +73,19 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        address: Lithic::ExternalBankAccountAddress,
+        company_id: String,
+        dob: Date,
+        doing_business_as: String,
+        name: String,
+        owner: String,
+        owner_type: Lithic::Models::owner_type,
+        type: Lithic::Models::ExternalBankAccountUpdateParams::type_,
+        user_defined_id: String,
+        request_options: Lithic::RequestOptions
+      }
+
       type type_ = :CHECKING | :SAVINGS
 
       module Type

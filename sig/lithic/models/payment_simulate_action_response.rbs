@@ -20,6 +20,12 @@ module Lithic
         transaction_event_token: String
       ) -> void
 
+      def to_hash: -> {
+        debugging_request_id: String,
+        result: Lithic::Models::PaymentSimulateActionResponse::result,
+        transaction_event_token: String
+      }
+
       type result = :APPROVED | :DECLINED
 
       module Result

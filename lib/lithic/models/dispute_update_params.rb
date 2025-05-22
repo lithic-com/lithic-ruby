@@ -28,7 +28,7 @@ module Lithic
       # @!attribute reason
       #   Reason for dispute
       #
-      #   @return [Symbol, Lithic::DisputeUpdateParams::Reason, nil]
+      #   @return [Symbol, Lithic::Models::DisputeUpdateParams::Reason, nil]
       optional :reason, enum: -> { Lithic::DisputeUpdateParams::Reason }
 
       # @!method initialize(amount: nil, customer_filed_date: nil, customer_note: nil, reason: nil, request_options: {})
@@ -38,7 +38,7 @@ module Lithic
       #
       #   @param customer_note [String] Customer description of dispute
       #
-      #   @param reason [Symbol, Lithic::DisputeUpdateParams::Reason] Reason for dispute
+      #   @param reason [Symbol, Lithic::Models::DisputeUpdateParams::Reason] Reason for dispute
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

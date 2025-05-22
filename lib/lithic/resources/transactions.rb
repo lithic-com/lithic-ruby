@@ -18,7 +18,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Transaction]
+      # @return [Lithic::Models::Transaction]
       #
       # @see Lithic::Models::TransactionRetrieveParams
       def retrieve(transaction_token, params = {})
@@ -50,15 +50,15 @@ module Lithic
       #
       # @param page_size [Integer] Page size (for pagination).
       #
-      # @param result [Symbol, Lithic::TransactionListParams::Result] Filters for transactions using transaction result field. Can filter by `APPROVED
+      # @param result [Symbol, Lithic::Models::TransactionListParams::Result] Filters for transactions using transaction result field. Can filter by `APPROVED
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      # @param status [Symbol, Lithic::TransactionListParams::Status] Filters for transactions using transaction status field.
+      # @param status [Symbol, Lithic::Models::TransactionListParams::Status] Filters for transactions using transaction status field.
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::Transaction>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::Transaction>]
       #
       # @see Lithic::Models::TransactionListParams
       def list(params = {})
@@ -125,7 +125,7 @@ module Lithic
       #
       # @param pin [String] Simulate entering a PIN. If omitted, PIN check will not be performed.
       #
-      # @param status [Symbol, Lithic::TransactionSimulateAuthorizationParams::Status] Type of event to simulate.
+      # @param status [Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status] Type of event to simulate.
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -304,7 +304,7 @@ module Lithic
       #
       # @param amount [Integer] Amount (in cents) to void. Typically this will match the amount in the original
       #
-      # @param type [Symbol, Lithic::TransactionSimulateVoidParams::Type] Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`.
+      # @param type [Symbol, Lithic::Models::TransactionSimulateVoidParams::Type] Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`.
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #

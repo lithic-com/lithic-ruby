@@ -13,6 +13,8 @@ module Lithic
       def debugging_request_id=: (String) -> String
 
       def initialize: (?token: String, ?debugging_request_id: String) -> void
+
+      def to_hash: -> { token: String, debugging_request_id: String }
     end
   end
 end

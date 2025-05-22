@@ -13,12 +13,12 @@ module Lithic
         network_reason_code: String?,
         prearbitration_date: Time?,
         primary_claim_id: String?,
-        reason: Lithic::Dispute::reason,
+        reason: Lithic::Models::Dispute::reason,
         representment_date: Time?,
         resolution_date: Time?,
         resolution_note: String?,
-        resolution_reason: Lithic::Dispute::resolution_reason?,
-        status: Lithic::Dispute::status,
+        resolution_reason: Lithic::Models::Dispute::resolution_reason?,
+        status: Lithic::Models::Dispute::status,
         transaction_token: String
       }
 
@@ -45,7 +45,7 @@ module Lithic
 
       attr_accessor primary_claim_id: String?
 
-      attr_accessor reason: Lithic::Dispute::reason
+      attr_accessor reason: Lithic::Models::Dispute::reason
 
       attr_accessor representment_date: Time?
 
@@ -53,9 +53,9 @@ module Lithic
 
       attr_accessor resolution_note: String?
 
-      attr_accessor resolution_reason: Lithic::Dispute::resolution_reason?
+      attr_accessor resolution_reason: Lithic::Models::Dispute::resolution_reason?
 
-      attr_accessor status: Lithic::Dispute::status
+      attr_accessor status: Lithic::Models::Dispute::status
 
       attr_accessor transaction_token: String
 
@@ -71,14 +71,35 @@ module Lithic
         network_reason_code: String?,
         prearbitration_date: Time?,
         primary_claim_id: String?,
-        reason: Lithic::Dispute::reason,
+        reason: Lithic::Models::Dispute::reason,
         representment_date: Time?,
         resolution_date: Time?,
         resolution_note: String?,
-        resolution_reason: Lithic::Dispute::resolution_reason?,
-        status: Lithic::Dispute::status,
+        resolution_reason: Lithic::Models::Dispute::resolution_reason?,
+        status: Lithic::Models::Dispute::status,
         transaction_token: String
       ) -> void
+
+      def to_hash: -> {
+        token: String,
+        amount: Integer,
+        arbitration_date: Time?,
+        created: Time,
+        customer_filed_date: Time?,
+        customer_note: String?,
+        network_claim_ids: ::Array[String]?,
+        network_filed_date: Time?,
+        network_reason_code: String?,
+        prearbitration_date: Time?,
+        primary_claim_id: String?,
+        reason: Lithic::Models::Dispute::reason,
+        representment_date: Time?,
+        resolution_date: Time?,
+        resolution_note: String?,
+        resolution_reason: Lithic::Models::Dispute::resolution_reason?,
+        status: Lithic::Models::Dispute::status,
+        transaction_token: String
+      }
 
       type reason =
         :ATM_CASH_MISDISPENSE
@@ -114,7 +135,7 @@ module Lithic
         RECURRING_TRANSACTION_NOT_CANCELLED: :RECURRING_TRANSACTION_NOT_CANCELLED
         REFUND_NOT_PROCESSED: :REFUND_NOT_PROCESSED
 
-        def self?.values: -> ::Array[Lithic::Dispute::reason]
+        def self?.values: -> ::Array[Lithic::Models::Dispute::reason]
       end
 
       type resolution_reason =
@@ -157,7 +178,7 @@ module Lithic
         WON_FIRST_CHARGEBACK: :WON_FIRST_CHARGEBACK
         WON_PREARBITRATION: :WON_PREARBITRATION
 
-        def self?.values: -> ::Array[Lithic::Dispute::resolution_reason]
+        def self?.values: -> ::Array[Lithic::Models::Dispute::resolution_reason]
       end
 
       type status =
@@ -182,7 +203,7 @@ module Lithic
         REPRESENTMENT: :REPRESENTMENT
         SUBMITTED: :SUBMITTED
 
-        def self?.values: -> ::Array[Lithic::Dispute::status]
+        def self?.values: -> ::Array[Lithic::Models::Dispute::status]
       end
     end
   end

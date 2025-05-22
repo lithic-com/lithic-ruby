@@ -56,6 +56,20 @@ module Lithic
             ?cycle: Integer
           ) -> void
 
+          def to_hash: -> {
+            token: String,
+            amounts: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts,
+            created: Time,
+            currency: String,
+            institution_id: String,
+            network: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::network,
+            report_date: Date,
+            settlement_institution_id: String,
+            settlement_service: String,
+            updated: Time,
+            cycle: Integer
+          }
+
           type amounts =
             {
               gross_settlement: Integer,
@@ -81,6 +95,13 @@ module Lithic
               net_settlement: Integer,
               ?visa_charges: Integer
             ) -> void
+
+            def to_hash: -> {
+              gross_settlement: Integer,
+              interchange_fees: Integer,
+              net_settlement: Integer,
+              visa_charges: Integer
+            }
           end
 
           type network = :VISA | :MASTERCARD | :MAESTRO | :INTERLINK

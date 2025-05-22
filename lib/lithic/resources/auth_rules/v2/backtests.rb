@@ -82,7 +82,7 @@ module Lithic
           #
           # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Lithic::AuthRules::V2::BacktestResults]
+          # @return [Lithic::Models::AuthRules::V2::BacktestResults]
           #
           # @see Lithic::Models::AuthRules::V2::BacktestRetrieveParams
           def retrieve(auth_rule_backtest_token, params)

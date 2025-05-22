@@ -7,7 +7,7 @@ module Lithic
       #   Information on individual for whom the account is being opened and KYC is being
       #   run.
       #
-      #   @return [Lithic::KYC::Individual]
+      #   @return [Lithic::Models::KYC::Individual]
       required :individual, -> { Lithic::KYC::Individual }
 
       # @!attribute tos_timestamp
@@ -21,7 +21,7 @@ module Lithic
       # @!attribute workflow
       #   Specifies the type of KYC workflow to run.
       #
-      #   @return [Symbol, Lithic::KYC::Workflow]
+      #   @return [Symbol, Lithic::Models::KYC::Workflow]
       required :workflow, enum: -> { Lithic::KYC::Workflow }
 
       # @!attribute external_id
@@ -41,26 +41,26 @@ module Lithic
       optional :kyc_passed_timestamp, String
 
       # @!method initialize(individual:, tos_timestamp:, workflow:, external_id: nil, kyc_passed_timestamp: nil)
-      #   Some parameter documentations has been truncated, see {Lithic::KYC} for more
-      #   details.
+      #   Some parameter documentations has been truncated, see {Lithic::Models::KYC} for
+      #   more details.
       #
-      #   @param individual [Lithic::KYC::Individual] Information on individual for whom the account is being opened and KYC is being
+      #   @param individual [Lithic::Models::KYC::Individual] Information on individual for whom the account is being opened and KYC is being
       #
       #   @param tos_timestamp [String] An RFC 3339 timestamp indicating when the account holder accepted the applicable
       #
-      #   @param workflow [Symbol, Lithic::KYC::Workflow] Specifies the type of KYC workflow to run.
+      #   @param workflow [Symbol, Lithic::Models::KYC::Workflow] Specifies the type of KYC workflow to run.
       #
       #   @param external_id [String] A user provided id that can be used to link an account holder with an external s
       #
       #   @param kyc_passed_timestamp [String] An RFC 3339 timestamp indicating when precomputed KYC was completed on the indiv
 
-      # @see Lithic::KYC#individual
+      # @see Lithic::Models::KYC#individual
       class Individual < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         #
-        #   @return [Lithic::Address]
+        #   @return [Lithic::Models::Address]
         required :address, -> { Lithic::Address }
 
         # @!attribute dob
@@ -104,13 +104,13 @@ module Lithic
         required :phone_number, String
 
         # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number:)
-        #   Some parameter documentations has been truncated, see {Lithic::KYC::Individual}
-        #   for more details.
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::KYC::Individual} for more details.
         #
         #   Information on individual for whom the account is being opened and KYC is being
         #   run.
         #
-        #   @param address [Lithic::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
+        #   @param address [Lithic::Models::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
         #
         #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
         #
@@ -127,7 +127,7 @@ module Lithic
 
       # Specifies the type of KYC workflow to run.
       #
-      # @see Lithic::KYC#workflow
+      # @see Lithic::Models::KYC#workflow
       module Workflow
         extend Lithic::Internal::Type::Enum
 

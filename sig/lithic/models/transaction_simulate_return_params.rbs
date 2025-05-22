@@ -20,6 +20,13 @@ module Lithic
         pan: String,
         ?request_options: Lithic::request_opts
       ) -> void
+
+      def to_hash: -> {
+        amount: Integer,
+        descriptor: String,
+        pan: String,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

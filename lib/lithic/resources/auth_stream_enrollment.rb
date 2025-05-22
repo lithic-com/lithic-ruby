@@ -14,7 +14,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::AuthStreamSecret]
+      # @return [Lithic::Models::AuthStreamSecret]
       #
       # @see Lithic::Models::AuthStreamEnrollmentRetrieveSecretParams
       def retrieve_secret(params = {})

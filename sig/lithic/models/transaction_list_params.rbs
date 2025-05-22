@@ -71,6 +71,19 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        account_token: String,
+        begin_: Time,
+        card_token: String,
+        end_: Time,
+        ending_before: String,
+        page_size: Integer,
+        result: Lithic::Models::TransactionListParams::result,
+        starting_after: String,
+        status: Lithic::Models::TransactionListParams::status,
+        request_options: Lithic::RequestOptions
+      }
+
       type result = :APPROVED | :DECLINED
 
       module Result

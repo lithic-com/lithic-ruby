@@ -16,6 +16,11 @@ module Lithic
         ?digital_card_art_token: String,
         ?request_options: Lithic::request_opts
       ) -> void
+
+      def to_hash: -> {
+        digital_card_art_token: String,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

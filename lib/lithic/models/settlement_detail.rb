@@ -76,13 +76,13 @@ module Lithic
       # @!attribute network
       #   Card network where the transaction took place.
       #
-      #   @return [Symbol, Lithic::SettlementDetail::Network]
+      #   @return [Symbol, Lithic::Models::SettlementDetail::Network]
       required :network, enum: -> { Lithic::SettlementDetail::Network }
 
       # @!attribute other_fees_details
       #   The total gross amount of other fees by type.
       #
-      #   @return [Lithic::SettlementDetail::OtherFeesDetails]
+      #   @return [Lithic::Models::SettlementDetail::OtherFeesDetails]
       required :other_fees_details, -> { Lithic::SettlementDetail::OtherFeesDetails }
 
       # @!attribute other_fees_gross_amount
@@ -119,7 +119,7 @@ module Lithic
       # @!attribute type
       #   The type of settlement record.
       #
-      #   @return [Symbol, Lithic::SettlementDetail::Type]
+      #   @return [Symbol, Lithic::Models::SettlementDetail::Type]
       required :type, enum: -> { Lithic::SettlementDetail::Type }
 
       # @!attribute updated
@@ -135,8 +135,8 @@ module Lithic
       optional :fee_description, String
 
       # @!method initialize(token:, account_token:, card_program_token:, card_token:, created:, currency:, disputes_gross_amount:, event_tokens:, institution:, interchange_fee_extended_precision:, interchange_gross_amount:, network:, other_fees_details:, other_fees_gross_amount:, report_date:, settlement_date:, transaction_token:, transactions_gross_amount:, type:, updated:, fee_description: nil)
-      #   Some parameter documentations has been truncated, see {Lithic::SettlementDetail}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::SettlementDetail} for more details.
       #
       #   @param token [String] Globally unique identifier denoting the Settlement Detail.
       #
@@ -160,9 +160,9 @@ module Lithic
       #
       #   @param interchange_gross_amount [Integer] The total amount of interchange.
       #
-      #   @param network [Symbol, Lithic::SettlementDetail::Network] Card network where the transaction took place.
+      #   @param network [Symbol, Lithic::Models::SettlementDetail::Network] Card network where the transaction took place.
       #
-      #   @param other_fees_details [Lithic::SettlementDetail::OtherFeesDetails] The total gross amount of other fees by type.
+      #   @param other_fees_details [Lithic::Models::SettlementDetail::OtherFeesDetails] The total gross amount of other fees by type.
       #
       #   @param other_fees_gross_amount [Integer] Total amount of gross other fees outside of interchange.
       #
@@ -174,7 +174,7 @@ module Lithic
       #
       #   @param transactions_gross_amount [Integer] The total amount of settlement impacting transactions (excluding interchange, fe
       #
-      #   @param type [Symbol, Lithic::SettlementDetail::Type] The type of settlement record.
+      #   @param type [Symbol, Lithic::Models::SettlementDetail::Type] The type of settlement record.
       #
       #   @param updated [Time] Date and time when the transaction first occurred. UTC time zone.
       #
@@ -182,7 +182,7 @@ module Lithic
 
       # Card network where the transaction took place.
       #
-      # @see Lithic::SettlementDetail#network
+      # @see Lithic::Models::SettlementDetail#network
       module Network
         extend Lithic::Internal::Type::Enum
 
@@ -196,7 +196,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::SettlementDetail#other_fees_details
+      # @see Lithic::Models::SettlementDetail#other_fees_details
       class OtherFeesDetails < Lithic::Internal::Type::BaseModel
         # @!attribute isa
         #
@@ -211,7 +211,7 @@ module Lithic
 
       # The type of settlement record.
       #
-      # @see Lithic::SettlementDetail#type
+      # @see Lithic::Models::SettlementDetail#type
       module Type
         extend Lithic::Internal::Type::Enum
 

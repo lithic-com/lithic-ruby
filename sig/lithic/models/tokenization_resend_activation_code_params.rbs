@@ -21,6 +21,11 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        activation_method_type: Lithic::Models::TokenizationResendActivationCodeParams::activation_method_type,
+        request_options: Lithic::RequestOptions
+      }
+
       type activation_method_type =
         :EMAIL_TO_CARDHOLDER_ADDRESS | :TEXT_TO_CARDHOLDER_NUMBER
 

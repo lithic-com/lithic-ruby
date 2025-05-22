@@ -22,6 +22,12 @@ module Lithic
           ?last_transaction_event_token: String,
           ?request_options: Lithic::request_opts
         ) -> void
+
+        def to_hash: -> {
+          balance_date: Time,
+          last_transaction_event_token: String,
+          request_options: Lithic::RequestOptions
+        }
       end
     end
   end

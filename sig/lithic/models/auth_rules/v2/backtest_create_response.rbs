@@ -10,6 +10,8 @@ module Lithic
           def backtest_token=: (String) -> String
 
           def initialize: (?backtest_token: String) -> void
+
+          def to_hash: -> { backtest_token: String }
         end
       end
     end

@@ -52,6 +52,17 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> void
 
+        def to_hash: -> {
+          account_tokens: ::Array[String],
+          name: String?,
+          parameters: Lithic::Models::AuthRules::V2CreateParams::parameters,
+          type: Lithic::Models::AuthRules::V2CreateParams::type_,
+          card_tokens: ::Array[String],
+          program_level: bool,
+          excluded_card_tokens: ::Array[String],
+          request_options: Lithic::RequestOptions
+        }
+
         type parameters =
           Lithic::AuthRules::ConditionalBlockParameters
           | Lithic::AuthRules::VelocityLimitParams
@@ -71,6 +82,10 @@ module Lithic
             def initialize: (
               merchants: ::Array[Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant]
             ) -> void
+
+            def to_hash: -> {
+              merchants: ::Array[Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant]
+            }
 
             type merchant =
               { comment: String, descriptor: String, merchant_id: String }
@@ -93,6 +108,12 @@ module Lithic
                 ?descriptor: String,
                 ?merchant_id: String
               ) -> void
+
+              def to_hash: -> {
+                comment: String,
+                descriptor: String,
+                merchant_id: String
+              }
             end
           end
 

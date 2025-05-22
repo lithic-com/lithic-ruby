@@ -17,7 +17,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::FinancialAccounts::Statement]
+        # @return [Lithic::Models::FinancialAccounts::Statement]
         #
         # @see Lithic::Models::FinancialAccounts::StatementRetrieveParams
         def retrieve(statement_token, params)
@@ -57,7 +57,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::CursorPage<Lithic::FinancialAccounts::Statement>]
+        # @return [Lithic::Internal::CursorPage<Lithic::Models::FinancialAccounts::Statement>]
         #
         # @see Lithic::Models::FinancialAccounts::StatementListParams
         def list(financial_account_token, params = {})

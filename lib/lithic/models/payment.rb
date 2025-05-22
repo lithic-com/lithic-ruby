@@ -13,7 +13,7 @@ module Lithic
       # @!attribute category
       #   Payment category
       #
-      #   @return [Symbol, Lithic::Payment::Category]
+      #   @return [Symbol, Lithic::Models::Payment::Category]
       required :category, enum: -> { Lithic::Payment::Category }
 
       # @!attribute created
@@ -37,13 +37,13 @@ module Lithic
 
       # @!attribute direction
       #
-      #   @return [Symbol, Lithic::Payment::Direction]
+      #   @return [Symbol, Lithic::Models::Payment::Direction]
       required :direction, enum: -> { Lithic::Payment::Direction }
 
       # @!attribute events
       #   A list of all payment events that have modified this payment.
       #
-      #   @return [Array<Lithic::Payment::Event>]
+      #   @return [Array<Lithic::Models::Payment::Event>]
       required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Payment::Event] }
 
       # @!attribute external_bank_account_token
@@ -58,12 +58,12 @@ module Lithic
 
       # @!attribute method_
       #
-      #   @return [Symbol, Lithic::Payment::Method]
+      #   @return [Symbol, Lithic::Models::Payment::Method]
       required :method_, enum: -> { Lithic::Payment::Method }, api_name: :method
 
       # @!attribute method_attributes
       #
-      #   @return [Lithic::Payment::MethodAttributes]
+      #   @return [Lithic::Models::Payment::MethodAttributes]
       required :method_attributes, -> { Lithic::Payment::MethodAttributes }
 
       # @!attribute pending_amount
@@ -77,7 +77,7 @@ module Lithic
       #   APPROVED payments were successful while DECLINED payments were declined by
       #   Lithic or returned.
       #
-      #   @return [Symbol, Lithic::Payment::Result]
+      #   @return [Symbol, Lithic::Models::Payment::Result]
       required :result, enum: -> { Lithic::Payment::Result }
 
       # @!attribute settled_amount
@@ -89,7 +89,7 @@ module Lithic
 
       # @!attribute source
       #
-      #   @return [Symbol, Lithic::Payment::Source]
+      #   @return [Symbol, Lithic::Models::Payment::Source]
       required :source, enum: -> { Lithic::Payment::Source }
 
       # @!attribute status
@@ -101,7 +101,7 @@ module Lithic
       #   - `RETURNED` - The payment has been returned.
       #   - `SETTLED` - The payment is completed.
       #
-      #   @return [Symbol, Lithic::Payment::Status]
+      #   @return [Symbol, Lithic::Models::Payment::Status]
       required :status, enum: -> { Lithic::Payment::Status }
 
       # @!attribute updated
@@ -122,12 +122,12 @@ module Lithic
       optional :expected_release_date, Date
 
       # @!method initialize(token:, category:, created:, currency:, descriptor:, direction:, events:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, pending_amount:, result:, settled_amount:, source:, status:, updated:, user_defined_id:, expected_release_date: nil)
-      #   Some parameter documentations has been truncated, see {Lithic::Payment} for more
-      #   details.
+      #   Some parameter documentations has been truncated, see {Lithic::Models::Payment}
+      #   for more details.
       #
       #   @param token [String] Globally unique identifier.
       #
-      #   @param category [Symbol, Lithic::Payment::Category] Payment category
+      #   @param category [Symbol, Lithic::Models::Payment::Category] Payment category
       #
       #   @param created [Time] Date and time when the payment first occurred. UTC time zone.
       #
@@ -135,27 +135,27 @@ module Lithic
       #
       #   @param descriptor [String] A string that provides a description of the payment; may be useful to display to
       #
-      #   @param direction [Symbol, Lithic::Payment::Direction]
+      #   @param direction [Symbol, Lithic::Models::Payment::Direction]
       #
-      #   @param events [Array<Lithic::Payment::Event>] A list of all payment events that have modified this payment.
+      #   @param events [Array<Lithic::Models::Payment::Event>] A list of all payment events that have modified this payment.
       #
       #   @param external_bank_account_token [String, nil]
       #
       #   @param financial_account_token [String]
       #
-      #   @param method_ [Symbol, Lithic::Payment::Method]
+      #   @param method_ [Symbol, Lithic::Models::Payment::Method]
       #
-      #   @param method_attributes [Lithic::Payment::MethodAttributes]
+      #   @param method_attributes [Lithic::Models::Payment::MethodAttributes]
       #
       #   @param pending_amount [Integer] Pending amount of the payment in the currency's smallest unit (e.g., cents).
       #
-      #   @param result [Symbol, Lithic::Payment::Result] APPROVED payments were successful while DECLINED payments were declined by Lithi
+      #   @param result [Symbol, Lithic::Models::Payment::Result] APPROVED payments were successful while DECLINED payments were declined by Lithi
       #
       #   @param settled_amount [Integer] Amount of the payment that has been settled in the currency's smallest unit (e.g
       #
-      #   @param source [Symbol, Lithic::Payment::Source]
+      #   @param source [Symbol, Lithic::Models::Payment::Source]
       #
-      #   @param status [Symbol, Lithic::Payment::Status] Status types:
+      #   @param status [Symbol, Lithic::Models::Payment::Status] Status types:
       #
       #   @param updated [Time] Date and time when the financial transaction was last updated. UTC time zone.
       #
@@ -165,7 +165,7 @@ module Lithic
 
       # Payment category
       #
-      # @see Lithic::Payment#category
+      # @see Lithic::Models::Payment#category
       module Category
         extend Lithic::Internal::Type::Enum
 
@@ -175,7 +175,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::Payment#direction
+      # @see Lithic::Models::Payment#direction
       module Direction
         extend Lithic::Internal::Type::Enum
 
@@ -210,7 +210,7 @@ module Lithic
         #   APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         #
-        #   @return [Symbol, Lithic::Payment::Event::Result]
+        #   @return [Symbol, Lithic::Models::Payment::Event::Result]
         required :result, enum: -> { Lithic::Payment::Event::Result }
 
         # @!attribute type
@@ -235,19 +235,19 @@ module Lithic
         #   - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
         #     Financial Institution.
         #
-        #   @return [Symbol, Lithic::Payment::Event::Type]
+        #   @return [Symbol, Lithic::Models::Payment::Event::Type]
         required :type, enum: -> { Lithic::Payment::Event::Type }
 
         # @!attribute detailed_results
         #   More detailed reasons for the event
         #
-        #   @return [Array<Symbol, Lithic::Payment::Event::DetailedResult>, nil]
+        #   @return [Array<Symbol, Lithic::Models::Payment::Event::DetailedResult>, nil]
         optional :detailed_results,
                  -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Payment::Event::DetailedResult] }
 
         # @!method initialize(token:, amount:, created:, result:, type:, detailed_results: nil)
-        #   Some parameter documentations has been truncated, see {Lithic::Payment::Event}
-        #   for more details.
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::Payment::Event} for more details.
         #
         #   @param token [String] Globally unique identifier.
         #
@@ -255,16 +255,16 @@ module Lithic
         #
         #   @param created [Time] Date and time when the financial event occurred. UTC time zone.
         #
-        #   @param result [Symbol, Lithic::Payment::Event::Result] APPROVED financial events were successful while DECLINED financial events were d
+        #   @param result [Symbol, Lithic::Models::Payment::Event::Result] APPROVED financial events were successful while DECLINED financial events were d
         #
-        #   @param type [Symbol, Lithic::Payment::Event::Type] Event types:
+        #   @param type [Symbol, Lithic::Models::Payment::Event::Type] Event types:
         #
-        #   @param detailed_results [Array<Symbol, Lithic::Payment::Event::DetailedResult>] More detailed reasons for the event
+        #   @param detailed_results [Array<Symbol, Lithic::Models::Payment::Event::DetailedResult>] More detailed reasons for the event
 
         # APPROVED financial events were successful while DECLINED financial events were
         # declined by user, Lithic, or the network.
         #
-        # @see Lithic::Payment::Event#result
+        # @see Lithic::Models::Payment::Event#result
         module Result
           extend Lithic::Internal::Type::Enum
 
@@ -296,7 +296,7 @@ module Lithic
         # - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
         #   Financial Institution.
         #
-        # @see Lithic::Payment::Event#type
+        # @see Lithic::Models::Payment::Event#type
         module Type
           extend Lithic::Internal::Type::Enum
 
@@ -331,7 +331,7 @@ module Lithic
         end
       end
 
-      # @see Lithic::Payment#method_
+      # @see Lithic::Models::Payment#method_
       module Method
         extend Lithic::Internal::Type::Enum
 
@@ -342,7 +342,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::Payment#method_attributes
+      # @see Lithic::Models::Payment#method_attributes
       class MethodAttributes < Lithic::Internal::Type::BaseModel
         # @!attribute company_id
         #
@@ -366,7 +366,7 @@ module Lithic
 
         # @!attribute sec_code
         #
-        #   @return [Symbol, Lithic::Payment::MethodAttributes::SecCode]
+        #   @return [Symbol, Lithic::Models::Payment::MethodAttributes::SecCode]
         required :sec_code, enum: -> { Lithic::Payment::MethodAttributes::SecCode }
 
         # @!attribute trace_numbers
@@ -379,10 +379,10 @@ module Lithic
         #   @param receipt_routing_number [String, nil]
         #   @param retries [Integer, nil]
         #   @param return_reason_code [String, nil]
-        #   @param sec_code [Symbol, Lithic::Payment::MethodAttributes::SecCode]
+        #   @param sec_code [Symbol, Lithic::Models::Payment::MethodAttributes::SecCode]
         #   @param trace_numbers [Array<String, nil>]
 
-        # @see Lithic::Payment::MethodAttributes#sec_code
+        # @see Lithic::Models::Payment::MethodAttributes#sec_code
         module SecCode
           extend Lithic::Internal::Type::Enum
 
@@ -398,7 +398,7 @@ module Lithic
       # APPROVED payments were successful while DECLINED payments were declined by
       # Lithic or returned.
       #
-      # @see Lithic::Payment#result
+      # @see Lithic::Models::Payment#result
       module Result
         extend Lithic::Internal::Type::Enum
 
@@ -409,7 +409,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::Payment#source
+      # @see Lithic::Models::Payment#source
       module Source
         extend Lithic::Internal::Type::Enum
 
@@ -428,7 +428,7 @@ module Lithic
       # - `RETURNED` - The payment has been returned.
       # - `SETTLED` - The payment is completed.
       #
-      # @see Lithic::Payment#status
+      # @see Lithic::Models::Payment#status
       module Status
         extend Lithic::Internal::Type::Enum
 

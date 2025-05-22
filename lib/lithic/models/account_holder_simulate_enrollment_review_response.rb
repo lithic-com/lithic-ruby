@@ -19,7 +19,7 @@ module Lithic
       # @!attribute beneficial_owner_entities
       #   Deprecated.
       #
-      #   @return [Array<Lithic::KYBBusinessEntity>, nil]
+      #   @return [Array<Lithic::Models::KYBBusinessEntity>, nil]
       optional :beneficial_owner_entities, -> { Lithic::Internal::Type::ArrayOf[Lithic::KYBBusinessEntity] }
 
       # @!attribute beneficial_owner_individuals
@@ -46,7 +46,7 @@ module Lithic
       #   Only present when user_type == "BUSINESS". Information about the business for
       #   which the account is being opened and KYB is being run.
       #
-      #   @return [Lithic::KYBBusinessEntity, nil]
+      #   @return [Lithic::Models::KYBBusinessEntity, nil]
       optional :business_entity, -> { Lithic::KYBBusinessEntity }
 
       # @!attribute control_person
@@ -123,7 +123,7 @@ module Lithic
       #   Only present for "KYB_BASIC" and "KYC_ADVANCED" workflows. A list of documents
       #   required for the account holder to be approved.
       #
-      #   @return [Array<Lithic::RequiredDocument>, nil]
+      #   @return [Array<Lithic::Models::RequiredDocument>, nil]
       optional :required_documents, -> { Lithic::Internal::Type::ArrayOf[Lithic::RequiredDocument] }
 
       # @!attribute status
@@ -178,13 +178,13 @@ module Lithic
       #
       #   @param account_token [String] Globally unique identifier for the account.
       #
-      #   @param beneficial_owner_entities [Array<Lithic::KYBBusinessEntity>] Deprecated.
+      #   @param beneficial_owner_entities [Array<Lithic::Models::KYBBusinessEntity>] Deprecated.
       #
       #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual>] Only present when user_type == "BUSINESS". You must submit a list of all direct
       #
       #   @param business_account_token [String] Only applicable for customers using the KYC-Exempt workflow to enroll authorized
       #
-      #   @param business_entity [Lithic::KYBBusinessEntity] Only present when user_type == "BUSINESS". Information about the business for wh
+      #   @param business_entity [Lithic::Models::KYBBusinessEntity] Only present when user_type == "BUSINESS". Information about the business for wh
       #
       #   @param control_person [Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson] Only present when user_type == "BUSINESS".
       #
@@ -202,7 +202,7 @@ module Lithic
       #
       #   @param phone_number [String] <
       #
-      #   @param required_documents [Array<Lithic::RequiredDocument>] Only present for "KYB_BASIC" and "KYC_ADVANCED" workflows. A list of documents r
+      #   @param required_documents [Array<Lithic::Models::RequiredDocument>] Only present for "KYB_BASIC" and "KYC_ADVANCED" workflows. A list of documents r
       #
       #   @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Status] <Deprecated. Use verification_application.status instead>
       #

@@ -83,6 +83,21 @@ module Lithic
             ?request_options: Lithic::request_opts
           ) -> void
 
+          def to_hash: -> {
+            begin_: Time,
+            end_: Time,
+            ending_before: String,
+            institution_id: String,
+            network: Lithic::Models::Reports::Settlement::NetworkTotalListParams::network,
+            page_size: Integer,
+            report_date: Date,
+            report_date_begin: Date,
+            report_date_end: Date,
+            settlement_institution_id: String,
+            starting_after: String,
+            request_options: Lithic::RequestOptions
+          }
+
           type network = :VISA | :MASTERCARD | :MAESTRO | :INTERLINK
 
           module Network

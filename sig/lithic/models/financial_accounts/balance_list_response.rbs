@@ -49,6 +49,19 @@ module Lithic
           updated: Time
         ) -> void
 
+        def to_hash: -> {
+          token: String,
+          available_amount: Integer,
+          created: Time,
+          currency: String,
+          last_transaction_event_token: String,
+          last_transaction_token: String,
+          pending_amount: Integer,
+          total_amount: Integer,
+          type: Lithic::Models::FinancialAccounts::BalanceListResponse::type_,
+          updated: Time
+        }
+
         type type_ = :ISSUING | :OPERATING | :RESERVE
 
         module Type

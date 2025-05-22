@@ -33,6 +33,13 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        account_token: String,
+        business_account_token: String,
+        type: Lithic::Models::FinancialAccountListParams::type_,
+        request_options: Lithic::RequestOptions
+      }
+
       type type_ = :ISSUING | :OPERATING | :RESERVE
 
       module Type

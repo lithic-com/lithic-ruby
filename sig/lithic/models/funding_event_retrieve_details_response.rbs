@@ -19,6 +19,12 @@ module Lithic
         settlement_details_url: String,
         settlement_summary_url: String
       ) -> void
+
+      def to_hash: -> {
+        token: String,
+        settlement_details_url: String,
+        settlement_summary_url: String
+      }
     end
   end
 end

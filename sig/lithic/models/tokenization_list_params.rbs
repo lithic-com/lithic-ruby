@@ -63,6 +63,18 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        account_token: String,
+        begin_: Date,
+        card_token: String,
+        end_: Date,
+        ending_before: String,
+        page_size: Integer,
+        starting_after: String,
+        tokenization_channel: Lithic::Models::TokenizationListParams::tokenization_channel,
+        request_options: Lithic::RequestOptions
+      }
+
       type tokenization_channel = :DIGITAL_WALLET | :MERCHANT | :ALL
 
       module TokenizationChannel

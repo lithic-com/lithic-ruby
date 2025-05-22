@@ -14,7 +14,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::FinancialTransaction]
+        # @return [Lithic::Models::FinancialTransaction]
         #
         # @see Lithic::Models::FinancialAccounts::FinancialTransactionRetrieveParams
         def retrieve(financial_transaction_token, params)
@@ -47,21 +47,21 @@ module Lithic
         #
         # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
         #
-        # @param category [Symbol, Lithic::FinancialAccounts::FinancialTransactionListParams::Category] Financial Transaction category to be returned.
+        # @param category [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Category] Financial Transaction category to be returned.
         #
         # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
         #
         # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
         #
-        # @param result [Symbol, Lithic::FinancialAccounts::FinancialTransactionListParams::Result] Financial Transaction result to be returned.
+        # @param result [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Result] Financial Transaction result to be returned.
         #
         # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
         #
-        # @param status [Symbol, Lithic::FinancialAccounts::FinancialTransactionListParams::Status] Financial Transaction status to be returned.
+        # @param status [Symbol, Lithic::Models::FinancialAccounts::FinancialTransactionListParams::Status] Financial Transaction status to be returned.
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::SinglePage<Lithic::FinancialTransaction>]
+        # @return [Lithic::Internal::SinglePage<Lithic::Models::FinancialTransaction>]
         #
         # @see Lithic::Models::FinancialAccounts::FinancialTransactionListParams
         def list(financial_account_token, params = {})

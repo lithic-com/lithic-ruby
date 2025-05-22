@@ -25,7 +25,7 @@ module Lithic
       # @!attribute financial_account_type
       #   Type of financial account
       #
-      #   @return [Symbol, Lithic::AggregateBalance::FinancialAccountType]
+      #   @return [Symbol, Lithic::Models::AggregateBalance::FinancialAccountType]
       required :financial_account_type, enum: -> { Lithic::AggregateBalance::FinancialAccountType }
 
       # @!attribute last_financial_account_token
@@ -69,8 +69,8 @@ module Lithic
       required :updated, Time
 
       # @!method initialize(available_amount:, created:, currency:, financial_account_type:, last_financial_account_token:, last_transaction_event_token:, last_transaction_token:, pending_amount:, total_amount:, updated:)
-      #   Some parameter documentations has been truncated, see {Lithic::AggregateBalance}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::AggregateBalance} for more details.
       #
       #   Aggregate Balance across all end-user accounts
       #
@@ -80,7 +80,7 @@ module Lithic
       #
       #   @param currency [String] 3-character alphabetic ISO 4217 code for the local currency of the balance.
       #
-      #   @param financial_account_type [Symbol, Lithic::AggregateBalance::FinancialAccountType] Type of financial account
+      #   @param financial_account_type [Symbol, Lithic::Models::AggregateBalance::FinancialAccountType] Type of financial account
       #
       #   @param last_financial_account_token [String] Globally unique identifier for the financial account that had its balance update
       #
@@ -96,7 +96,7 @@ module Lithic
 
       # Type of financial account
       #
-      # @see Lithic::AggregateBalance#financial_account_type
+      # @see Lithic::Models::AggregateBalance#financial_account_type
       module FinancialAccountType
         extend Lithic::Internal::Type::Enum
 

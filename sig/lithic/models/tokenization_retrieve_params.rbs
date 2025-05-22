@@ -8,6 +8,8 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       def initialize: (?request_options: Lithic::request_opts) -> void
+
+      def to_hash: -> { request_options: Lithic::RequestOptions }
     end
   end
 end

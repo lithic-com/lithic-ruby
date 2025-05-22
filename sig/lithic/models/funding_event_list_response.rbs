@@ -40,6 +40,17 @@ module Lithic
         updated: Time
       ) -> void
 
+      def to_hash: -> {
+        token: String,
+        collection_resource_type: Lithic::Models::FundingEventListResponse::collection_resource_type,
+        collection_tokens: ::Array[String],
+        created: Time,
+        high_watermark: Time,
+        previous_high_watermark: Time,
+        settlement_breakdowns: ::Array[Lithic::Models::FundingEventListResponse::SettlementBreakdown],
+        updated: Time
+      }
+
       type collection_resource_type = :BOOK_TRANSFER | :PAYMENT
 
       module CollectionResourceType
@@ -59,6 +70,8 @@ module Lithic
         attr_accessor settlement_date: Date
 
         def initialize: (amount: Integer, settlement_date: Date) -> void
+
+        def to_hash: -> { amount: Integer, settlement_date: Date }
       end
     end
   end

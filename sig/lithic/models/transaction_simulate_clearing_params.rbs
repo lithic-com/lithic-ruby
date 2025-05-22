@@ -19,6 +19,12 @@ module Lithic
         ?amount: Integer,
         ?request_options: Lithic::request_opts
       ) -> void
+
+      def to_hash: -> {
+        token: String,
+        amount: Integer,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

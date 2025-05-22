@@ -51,6 +51,20 @@ module Lithic
         transactions_gross_amount: Integer,
         updated: Time
       ) -> void
+
+      def to_hash: -> {
+        created: Time,
+        currency: String,
+        details: ::Array[Lithic::SettlementSummaryDetails],
+        disputes_gross_amount: Integer,
+        interchange_gross_amount: Integer,
+        is_complete: bool,
+        other_fees_gross_amount: Integer,
+        report_date: String,
+        settled_net_amount: Integer,
+        transactions_gross_amount: Integer,
+        updated: Time
+      }
     end
   end
 end

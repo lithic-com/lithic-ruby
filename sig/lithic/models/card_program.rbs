@@ -39,6 +39,16 @@ module Lithic
         ?cardholder_currency: String,
         ?settlement_currencies: ::Array[String]
       ) -> void
+
+      def to_hash: -> {
+        token: String,
+        created: Time,
+        name: String,
+        pan_range_end: String,
+        pan_range_start: String,
+        cardholder_currency: String,
+        settlement_currencies: ::Array[String]
+      }
     end
   end
 end

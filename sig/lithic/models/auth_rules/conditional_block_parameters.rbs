@@ -10,6 +10,10 @@ module Lithic
         def initialize: (
           conditions: ::Array[Lithic::AuthRules::AuthRuleCondition]
         ) -> void
+
+        def to_hash: -> {
+          conditions: ::Array[Lithic::AuthRules::AuthRuleCondition]
+        }
       end
     end
   end

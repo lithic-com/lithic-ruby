@@ -23,13 +23,13 @@ module Lithic
         # @!attribute parameters
         #   Parameters for the Auth Rule
         #
-        #   @return [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters, nil]
+        #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters, nil]
         optional :parameters, union: -> { Lithic::AuthRules::V2CreateParams::Parameters }
 
         # @!attribute type
         #   The type of Auth Rule
         #
-        #   @return [Symbol, Lithic::AuthRules::V2CreateParams::Type, nil]
+        #   @return [Symbol, Lithic::Models::AuthRules::V2CreateParams::Type, nil]
         optional :type, enum: -> { Lithic::AuthRules::V2CreateParams::Type }
 
         # @!attribute card_tokens
@@ -59,9 +59,9 @@ module Lithic
         #
         #   @param name [String, nil] Auth Rule Name
         #
-        #   @param parameters [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters] Parameters for the Auth Rule
+        #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters] Parameters for the Auth Rule
         #
-        #   @param type [Symbol, Lithic::AuthRules::V2CreateParams::Type] The type of Auth Rule
+        #   @param type [Symbol, Lithic::Models::AuthRules::V2CreateParams::Type] The type of Auth Rule
         #
         #   @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
         #
@@ -82,7 +82,7 @@ module Lithic
             #   A list of merchant locks defining specific merchants or groups of merchants
             #   (based on descriptors or IDs) that the lock applies to.
             #
-            #   @return [Array<Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant>]
+            #   @return [Array<Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant>]
             required :merchants,
                      -> {
                        Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant]
@@ -90,10 +90,10 @@ module Lithic
 
             # @!method initialize(merchants:)
             #   Some parameter documentations has been truncated, see
-            #   {Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters} for more
-            #   details.
+            #   {Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters}
+            #   for more details.
             #
-            #   @param merchants [Array<Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant>] A list of merchant locks defining specific merchants or groups of merchants (bas
+            #   @param merchants [Array<Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant>] A list of merchant locks defining specific merchants or groups of merchants (bas
 
             class Merchant < Lithic::Internal::Type::BaseModel
               # @!attribute comment
@@ -121,7 +121,7 @@ module Lithic
 
               # @!method initialize(comment: nil, descriptor: nil, merchant_id: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant}
+              #   {Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::Merchant}
               #   for more details.
               #
               #   Represents a specific merchant lock based on their ID or descriptor. Each
@@ -137,7 +137,7 @@ module Lithic
           end
 
           # @!method self.variants
-          #   @return [Array(Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters)]
+          #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters)]
         end
 
         # The type of Auth Rule

@@ -16,7 +16,7 @@ module Lithic
       # @!attribute status
       #   An account holder document's upload status for use within the simulation.
       #
-      #   @return [Symbol, Lithic::AccountHolderSimulateEnrollmentDocumentReviewParams::Status]
+      #   @return [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status]
       required :status, enum: -> { Lithic::AccountHolderSimulateEnrollmentDocumentReviewParams::Status }
 
       # @!attribute accepted_entity_status_reasons
@@ -29,7 +29,7 @@ module Lithic
       #   Status reason that will be associated with the simulated account holder status.
       #   Only required for a `REJECTED` status or `PARTIAL_APPROVAL` status.
       #
-      #   @return [Symbol, Lithic::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason, nil]
+      #   @return [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason, nil]
       optional :status_reason,
                enum: -> { Lithic::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason }
 
@@ -40,11 +40,11 @@ module Lithic
       #
       #   @param document_upload_token [String] The account holder document upload which to perform the simulation upon.
       #
-      #   @param status [Symbol, Lithic::AccountHolderSimulateEnrollmentDocumentReviewParams::Status] An account holder document's upload status for use within the simulation.
+      #   @param status [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::Status] An account holder document's upload status for use within the simulation.
       #
       #   @param accepted_entity_status_reasons [Array<String>] A list of status reasons associated with a KYB account holder in PENDING_REVIEW
       #
-      #   @param status_reason [Symbol, Lithic::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason] Status reason that will be associated with the simulated account holder status.
+      #   @param status_reason [Symbol, Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::StatusReason] Status reason that will be associated with the simulated account holder status.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

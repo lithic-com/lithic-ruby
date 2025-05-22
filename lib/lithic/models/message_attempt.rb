@@ -45,7 +45,7 @@ module Lithic
       # @!attribute status
       #   The status of the event attempt.
       #
-      #   @return [Symbol, Lithic::MessageAttempt::Status]
+      #   @return [Symbol, Lithic::Models::MessageAttempt::Status]
       required :status, enum: -> { Lithic::MessageAttempt::Status }
 
       # @!attribute url
@@ -54,8 +54,8 @@ module Lithic
       required :url, String
 
       # @!method initialize(token:, created:, event_subscription_token:, event_token:, response:, response_status_code:, status:, url:)
-      #   Some parameter documentations has been truncated, see {Lithic::MessageAttempt}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::MessageAttempt} for more details.
       #
       #   A subscription to specific event types.
       #
@@ -71,13 +71,13 @@ module Lithic
       #
       #   @param response_status_code [Integer] The response status code from the event subscription's URL.
       #
-      #   @param status [Symbol, Lithic::MessageAttempt::Status] The status of the event attempt.
+      #   @param status [Symbol, Lithic::Models::MessageAttempt::Status] The status of the event attempt.
       #
       #   @param url [String]
 
       # The status of the event attempt.
       #
-      # @see Lithic::MessageAttempt#status
+      # @see Lithic::Models::MessageAttempt#status
       module Status
         extend Lithic::Internal::Type::Enum
 

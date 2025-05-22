@@ -31,7 +31,7 @@ module Lithic
       # @!attribute network
       #   Card network where the transaction took place
       #
-      #   @return [Symbol, Lithic::SettlementSummaryDetails::Network, nil]
+      #   @return [Symbol, Lithic::Models::SettlementSummaryDetails::Network, nil]
       optional :network, enum: -> { Lithic::SettlementSummaryDetails::Network }
 
       # @!attribute other_fees_gross_amount
@@ -56,7 +56,7 @@ module Lithic
 
       # @!method initialize(currency: nil, disputes_gross_amount: nil, institution: nil, interchange_gross_amount: nil, network: nil, other_fees_gross_amount: nil, settled_net_amount: nil, transactions_gross_amount: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Lithic::SettlementSummaryDetails} for more details.
+      #   {Lithic::Models::SettlementSummaryDetails} for more details.
       #
       #   @param currency [String] 3-character alphabetic ISO 4217 code.
       #
@@ -66,7 +66,7 @@ module Lithic
       #
       #   @param interchange_gross_amount [Integer] The total amount of interchange.
       #
-      #   @param network [Symbol, Lithic::SettlementSummaryDetails::Network] Card network where the transaction took place
+      #   @param network [Symbol, Lithic::Models::SettlementSummaryDetails::Network] Card network where the transaction took place
       #
       #   @param other_fees_gross_amount [Integer] Total amount of gross other fees outside of interchange.
       #
@@ -76,7 +76,7 @@ module Lithic
 
       # Card network where the transaction took place
       #
-      # @see Lithic::SettlementSummaryDetails#network
+      # @see Lithic::Models::SettlementSummaryDetails#network
       module Network
         extend Lithic::Internal::Type::Enum
 

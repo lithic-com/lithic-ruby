@@ -17,6 +17,12 @@ module Lithic
         hmac: String,
         ?request_options: Lithic::request_opts
       ) -> void
+
+      def to_hash: -> {
+        embed_request: String,
+        hmac: String,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

@@ -44,11 +44,11 @@ module Lithic
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      # @param tokenization_channel [Symbol, Lithic::TokenizationListParams::TokenizationChannel] Filter for tokenizations by tokenization channel. If this is not specified, only
+      # @param tokenization_channel [Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel] Filter for tokenizations by tokenization channel. If this is not specified, only
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::Tokenization>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::Tokenization>]
       #
       # @see Lithic::Models::TokenizationListParams
       def list(params = {})
@@ -163,7 +163,7 @@ module Lithic
       #
       # @param tokenization_token [String] Tokenization token
       #
-      # @param activation_method_type [Symbol, Lithic::TokenizationResendActivationCodeParams::ActivationMethodType] The communication method that the user has selected to use to receive the authen
+      # @param activation_method_type [Symbol, Lithic::Models::TokenizationResendActivationCodeParams::ActivationMethodType] The communication method that the user has selected to use to receive the authen
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -195,7 +195,7 @@ module Lithic
       #
       # @param pan [String] The sixteen digit card number.
       #
-      # @param tokenization_source [Symbol, Lithic::TokenizationSimulateParams::TokenizationSource] The source of the tokenization request.
+      # @param tokenization_source [Symbol, Lithic::Models::TokenizationSimulateParams::TokenizationSource] The source of the tokenization request.
       #
       # @param account_score [Integer] The account score (1-5) that represents how the Digital Wallet's view on how rep
       #
@@ -203,7 +203,7 @@ module Lithic
       #
       # @param entity [String] Optional field to specify the token requestor name for a merchant token simulati
       #
-      # @param wallet_recommended_decision [Symbol, Lithic::TokenizationSimulateParams::WalletRecommendedDecision] The decision that the Digital Wallet's recommend
+      # @param wallet_recommended_decision [Symbol, Lithic::Models::TokenizationSimulateParams::WalletRecommendedDecision] The decision that the Digital Wallet's recommend
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #

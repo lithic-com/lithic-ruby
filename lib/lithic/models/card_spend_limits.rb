@@ -6,25 +6,25 @@ module Lithic
     class CardSpendLimits < Lithic::Internal::Type::BaseModel
       # @!attribute available_spend_limit
       #
-      #   @return [Lithic::CardSpendLimits::AvailableSpendLimit]
+      #   @return [Lithic::Models::CardSpendLimits::AvailableSpendLimit]
       required :available_spend_limit, -> { Lithic::CardSpendLimits::AvailableSpendLimit }
 
       # @!attribute spend_limit
       #
-      #   @return [Lithic::CardSpendLimits::SpendLimit, nil]
+      #   @return [Lithic::Models::CardSpendLimits::SpendLimit, nil]
       optional :spend_limit, -> { Lithic::CardSpendLimits::SpendLimit }
 
       # @!attribute spend_velocity
       #
-      #   @return [Lithic::CardSpendLimits::SpendVelocity, nil]
+      #   @return [Lithic::Models::CardSpendLimits::SpendVelocity, nil]
       optional :spend_velocity, -> { Lithic::CardSpendLimits::SpendVelocity }
 
       # @!method initialize(available_spend_limit:, spend_limit: nil, spend_velocity: nil)
-      #   @param available_spend_limit [Lithic::CardSpendLimits::AvailableSpendLimit]
-      #   @param spend_limit [Lithic::CardSpendLimits::SpendLimit]
-      #   @param spend_velocity [Lithic::CardSpendLimits::SpendVelocity]
+      #   @param available_spend_limit [Lithic::Models::CardSpendLimits::AvailableSpendLimit]
+      #   @param spend_limit [Lithic::Models::CardSpendLimits::SpendLimit]
+      #   @param spend_velocity [Lithic::Models::CardSpendLimits::SpendVelocity]
 
-      # @see Lithic::CardSpendLimits#available_spend_limit
+      # @see Lithic::Models::CardSpendLimits#available_spend_limit
       class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
         # @!attribute annually
         #   The available spend limit (in cents) relative to the annual limit configured on
@@ -49,7 +49,7 @@ module Lithic
 
         # @!method initialize(annually: nil, forever: nil, monthly: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::CardSpendLimits::AvailableSpendLimit} for more details.
+        #   {Lithic::Models::CardSpendLimits::AvailableSpendLimit} for more details.
         #
         #   @param annually [Integer] The available spend limit (in cents) relative to the annual limit configured on
         #
@@ -58,7 +58,7 @@ module Lithic
         #   @param monthly [Integer] The available spend limit (in cents) relative to the monthly limit configured on
       end
 
-      # @see Lithic::CardSpendLimits#spend_limit
+      # @see Lithic::Models::CardSpendLimits#spend_limit
       class SpendLimit < Lithic::Internal::Type::BaseModel
         # @!attribute annually
         #   The configured annual spend limit (in cents) on the Card.
@@ -86,7 +86,7 @@ module Lithic
         #   @param monthly [Integer] The configured monthly spend limit (in cents) on the Card.
       end
 
-      # @see Lithic::CardSpendLimits#spend_velocity
+      # @see Lithic::Models::CardSpendLimits#spend_velocity
       class SpendVelocity < Lithic::Internal::Type::BaseModel
         # @!attribute annually
         #   Current annual spend velocity (in cents) on the Card. Present if annual spend
@@ -111,7 +111,7 @@ module Lithic
 
         # @!method initialize(annually: nil, forever: nil, monthly: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::CardSpendLimits::SpendVelocity} for more details.
+        #   {Lithic::Models::CardSpendLimits::SpendVelocity} for more details.
         #
         #   @param annually [Integer] Current annual spend velocity (in cents) on the Card. Present if annual spend li
         #

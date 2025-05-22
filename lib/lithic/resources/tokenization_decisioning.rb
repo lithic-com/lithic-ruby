@@ -14,7 +14,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::TokenizationSecret]
+      # @return [Lithic::Models::TokenizationSecret]
       #
       # @see Lithic::Models::TokenizationDecisioningRetrieveSecretParams
       def retrieve_secret(params = {})

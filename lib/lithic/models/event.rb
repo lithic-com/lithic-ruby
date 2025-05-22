@@ -49,7 +49,7 @@ module Lithic
       #   - `digital_wallet.tokenization_updated` - Notification that a digital wallet
       #     tokenization's status has changed.
       #
-      #   @return [Symbol, Lithic::Event::EventType]
+      #   @return [Symbol, Lithic::Models::Event::EventType]
       required :event_type, enum: -> { Lithic::Event::EventType }
 
       # @!attribute payload
@@ -58,8 +58,8 @@ module Lithic
       required :payload, Lithic::Internal::Type::HashOf[Lithic::Internal::Type::Unknown]
 
       # @!method initialize(token:, created:, event_type:, payload:)
-      #   Some parameter documentations has been truncated, see {Lithic::Event} for more
-      #   details.
+      #   Some parameter documentations has been truncated, see {Lithic::Models::Event}
+      #   for more details.
       #
       #   A single event that affects the transaction state and lifecycle.
       #
@@ -67,7 +67,7 @@ module Lithic
       #
       #   @param created [Time] An RFC 3339 timestamp for when the event was created. UTC time zone.
       #
-      #   @param event_type [Symbol, Lithic::Event::EventType] Event types:
+      #   @param event_type [Symbol, Lithic::Models::Event::EventType] Event types:
       #
       #   @param payload [Hash{Symbol=>Object}]
 
@@ -101,7 +101,7 @@ module Lithic
       # - `digital_wallet.tokenization_updated` - Notification that a digital wallet
       #   tokenization's status has changed.
       #
-      # @see Lithic::Event#event_type
+      # @see Lithic::Models::Event#event_type
       module EventType
         extend Lithic::Internal::Type::Enum
 

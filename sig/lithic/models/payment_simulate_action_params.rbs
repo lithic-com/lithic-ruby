@@ -31,6 +31,13 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        event_type: Lithic::Models::PaymentSimulateActionParams::event_type,
+        decline_reason: Lithic::Models::PaymentSimulateActionParams::decline_reason,
+        return_reason_code: String,
+        request_options: Lithic::RequestOptions
+      }
+
       type event_type =
         :ACH_ORIGINATION_REVIEWED
         | :ACH_ORIGINATION_RELEASED

@@ -30,7 +30,7 @@ module Lithic
         #   Indicates types of events that will be sent to this subscription. If left blank,
         #   all types will be sent.
         #
-        #   @return [Array<Symbol, Lithic::Events::SubscriptionCreateParams::EventType>, nil]
+        #   @return [Array<Symbol, Lithic::Models::Events::SubscriptionCreateParams::EventType>, nil]
         optional :event_types,
                  -> {
                    Lithic::Internal::Type::ArrayOf[enum: Lithic::Events::SubscriptionCreateParams::EventType]
@@ -46,7 +46,7 @@ module Lithic
         #
         #   @param disabled [Boolean] Whether the event subscription is active (false) or inactive (true).
         #
-        #   @param event_types [Array<Symbol, Lithic::Events::SubscriptionCreateParams::EventType>] Indicates types of events that will be sent to this subscription. If left blank,
+        #   @param event_types [Array<Symbol, Lithic::Models::Events::SubscriptionCreateParams::EventType>] Indicates types of events that will be sent to this subscription. If left blank,
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

@@ -37,6 +37,14 @@ module Lithic
           ?tier: String,
           ?request_options: Lithic::request_opts
         ) -> void
+
+        def to_hash: -> {
+          credit_limit: Integer,
+          credit_product_token: String,
+          external_bank_account_token: String,
+          tier: String,
+          request_options: Lithic::RequestOptions
+        }
       end
     end
   end

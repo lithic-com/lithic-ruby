@@ -11,6 +11,8 @@ module Lithic
       ) -> ::Array[Lithic::Tokenization]
 
       def initialize: (?data: ::Array[Lithic::Tokenization]) -> void
+
+      def to_hash: -> { data: ::Array[Lithic::Tokenization] }
     end
   end
 end

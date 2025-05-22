@@ -25,7 +25,7 @@ module Lithic
           #
           # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Lithic::Internal::CursorPage<Lithic::FinancialAccounts::Statements::StatementLineItems::Data>]
+          # @return [Lithic::Internal::CursorPage<Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data>]
           #
           # @see Lithic::Models::FinancialAccounts::Statements::LineItemListParams
           def list(statement_token, params)

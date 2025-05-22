@@ -13,7 +13,7 @@ module Lithic
         # @!attribute state
         #   Indicates whether the Auth Rule is ACTIVE or INACTIVE
         #
-        #   @return [Symbol, Lithic::AuthRules::AuthRule::State]
+        #   @return [Symbol, Lithic::Models::AuthRules::AuthRule::State]
         required :state, enum: -> { Lithic::AuthRules::AuthRule::State }
 
         # @!attribute account_tokens
@@ -66,11 +66,11 @@ module Lithic
 
         # @!method initialize(token:, state:, account_tokens: nil, allowed_countries: nil, allowed_mcc: nil, blocked_countries: nil, blocked_mcc: nil, card_tokens: nil, program_level: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::AuthRules::AuthRule} for more details.
+        #   {Lithic::Models::AuthRules::AuthRule} for more details.
         #
         #   @param token [String] Globally unique identifier.
         #
-        #   @param state [Symbol, Lithic::AuthRules::AuthRule::State] Indicates whether the Auth Rule is ACTIVE or INACTIVE
+        #   @param state [Symbol, Lithic::Models::AuthRules::AuthRule::State] Indicates whether the Auth Rule is ACTIVE or INACTIVE
         #
         #   @param account_tokens [Array<String>] Array of account_token(s) identifying the accounts that the Auth Rule applies to
         #
@@ -88,7 +88,7 @@ module Lithic
 
         # Indicates whether the Auth Rule is ACTIVE or INACTIVE
         #
-        # @see Lithic::AuthRules::AuthRule#state
+        # @see Lithic::Models::AuthRules::AuthRule#state
         module State
           extend Lithic::Internal::Type::Enum
 

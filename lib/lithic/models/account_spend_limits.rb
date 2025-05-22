@@ -6,25 +6,25 @@ module Lithic
     class AccountSpendLimits < Lithic::Internal::Type::BaseModel
       # @!attribute available_spend_limit
       #
-      #   @return [Lithic::AccountSpendLimits::AvailableSpendLimit]
+      #   @return [Lithic::Models::AccountSpendLimits::AvailableSpendLimit]
       required :available_spend_limit, -> { Lithic::AccountSpendLimits::AvailableSpendLimit }
 
       # @!attribute spend_limit
       #
-      #   @return [Lithic::AccountSpendLimits::SpendLimit, nil]
+      #   @return [Lithic::Models::AccountSpendLimits::SpendLimit, nil]
       optional :spend_limit, -> { Lithic::AccountSpendLimits::SpendLimit }
 
       # @!attribute spend_velocity
       #
-      #   @return [Lithic::AccountSpendLimits::SpendVelocity, nil]
+      #   @return [Lithic::Models::AccountSpendLimits::SpendVelocity, nil]
       optional :spend_velocity, -> { Lithic::AccountSpendLimits::SpendVelocity }
 
       # @!method initialize(available_spend_limit:, spend_limit: nil, spend_velocity: nil)
-      #   @param available_spend_limit [Lithic::AccountSpendLimits::AvailableSpendLimit]
-      #   @param spend_limit [Lithic::AccountSpendLimits::SpendLimit]
-      #   @param spend_velocity [Lithic::AccountSpendLimits::SpendVelocity]
+      #   @param available_spend_limit [Lithic::Models::AccountSpendLimits::AvailableSpendLimit]
+      #   @param spend_limit [Lithic::Models::AccountSpendLimits::SpendLimit]
+      #   @param spend_velocity [Lithic::Models::AccountSpendLimits::SpendVelocity]
 
-      # @see Lithic::AccountSpendLimits#available_spend_limit
+      # @see Lithic::Models::AccountSpendLimits#available_spend_limit
       class AvailableSpendLimit < Lithic::Internal::Type::BaseModel
         # @!attribute daily
         #   The available spend limit (in cents) relative to the daily limit configured on
@@ -49,7 +49,7 @@ module Lithic
 
         # @!method initialize(daily: nil, lifetime: nil, monthly: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::AccountSpendLimits::AvailableSpendLimit} for more details.
+        #   {Lithic::Models::AccountSpendLimits::AvailableSpendLimit} for more details.
         #
         #   @param daily [Integer] The available spend limit (in cents) relative to the daily limit configured on t
         #
@@ -58,7 +58,7 @@ module Lithic
         #   @param monthly [Integer] The available spend limit (in cents) relative to the monthly limit configured on
       end
 
-      # @see Lithic::AccountSpendLimits#spend_limit
+      # @see Lithic::Models::AccountSpendLimits#spend_limit
       class SpendLimit < Lithic::Internal::Type::BaseModel
         # @!attribute daily
         #   The configured daily spend limit (in cents) on the Account.
@@ -86,7 +86,7 @@ module Lithic
         #   @param monthly [Integer] The configured monthly spend limit (in cents) on the Account.
       end
 
-      # @see Lithic::AccountSpendLimits#spend_velocity
+      # @see Lithic::Models::AccountSpendLimits#spend_velocity
       class SpendVelocity < Lithic::Internal::Type::BaseModel
         # @!attribute daily
         #   Current daily spend velocity (in cents) on the Account. Present if daily spend
@@ -111,7 +111,7 @@ module Lithic
 
         # @!method initialize(daily: nil, lifetime: nil, monthly: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::AccountSpendLimits::SpendVelocity} for more details.
+        #   {Lithic::Models::AccountSpendLimits::SpendVelocity} for more details.
         #
         #   @param daily [Integer] Current daily spend velocity (in cents) on the Account. Present if daily spend l
         #

@@ -31,6 +31,14 @@ module Lithic
           ?excluded_card_tokens: ::Array[String],
           ?request_options: Lithic::request_opts
         ) -> void
+
+        def to_hash: -> {
+          account_tokens: ::Array[String],
+          card_tokens: ::Array[String],
+          program_level: bool,
+          excluded_card_tokens: ::Array[String],
+          request_options: Lithic::RequestOptions
+        }
       end
     end
   end

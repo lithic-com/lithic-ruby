@@ -5,7 +5,7 @@ module Lithic
         begin_: Time,
         end_: Time,
         ending_before: String,
-        event_types: ::Array[Lithic::EventListParams::event_type],
+        event_types: ::Array[Lithic::Models::EventListParams::event_type],
         page_size: Integer,
         starting_after: String,
         with_content: bool
@@ -28,11 +28,11 @@ module Lithic
 
       def ending_before=: (String) -> String
 
-      attr_reader event_types: ::Array[Lithic::EventListParams::event_type]?
+      attr_reader event_types: ::Array[Lithic::Models::EventListParams::event_type]?
 
       def event_types=: (
-        ::Array[Lithic::EventListParams::event_type]
-      ) -> ::Array[Lithic::EventListParams::event_type]
+        ::Array[Lithic::Models::EventListParams::event_type]
+      ) -> ::Array[Lithic::Models::EventListParams::event_type]
 
       attr_reader page_size: Integer?
 
@@ -50,12 +50,23 @@ module Lithic
         ?begin_: Time,
         ?end_: Time,
         ?ending_before: String,
-        ?event_types: ::Array[Lithic::EventListParams::event_type],
+        ?event_types: ::Array[Lithic::Models::EventListParams::event_type],
         ?page_size: Integer,
         ?starting_after: String,
         ?with_content: bool,
         ?request_options: Lithic::request_opts
       ) -> void
+
+      def to_hash: -> {
+        begin_: Time,
+        end_: Time,
+        ending_before: String,
+        event_types: ::Array[Lithic::Models::EventListParams::event_type],
+        page_size: Integer,
+        starting_after: String,
+        with_content: bool,
+        request_options: Lithic::RequestOptions
+      }
 
       type event_type =
         :"account_holder.created"
@@ -149,7 +160,7 @@ module Lithic
         TOKENIZATION_TWO_FACTOR_AUTHENTICATION_CODE_SENT: :"tokenization.two_factor_authentication_code_sent"
         TOKENIZATION_UPDATED: :"tokenization.updated"
 
-        def self?.values: -> ::Array[Lithic::EventListParams::event_type]
+        def self?.values: -> ::Array[Lithic::Models::EventListParams::event_type]
       end
     end
   end

@@ -37,14 +37,14 @@ module Lithic
       # @!attribute status
       #   The status of the tokenization request
       #
-      #   @return [Symbol, Lithic::Tokenization::Status]
+      #   @return [Symbol, Lithic::Models::Tokenization::Status]
       required :status, enum: -> { Lithic::Tokenization::Status }
 
       # @!attribute token_requestor_name
       #   The entity that requested the tokenization. Represents a Digital Wallet or
       #   merchant.
       #
-      #   @return [Symbol, Lithic::Tokenization::TokenRequestorName]
+      #   @return [Symbol, Lithic::Models::Tokenization::TokenRequestorName]
       required :token_requestor_name, enum: -> { Lithic::Tokenization::TokenRequestorName }
 
       # @!attribute token_unique_reference
@@ -56,7 +56,7 @@ module Lithic
       # @!attribute tokenization_channel
       #   The channel through which the tokenization was made.
       #
-      #   @return [Symbol, Lithic::Tokenization::TokenizationChannel]
+      #   @return [Symbol, Lithic::Models::Tokenization::TokenizationChannel]
       required :tokenization_channel, enum: -> { Lithic::Tokenization::TokenizationChannel }
 
       # @!attribute updated_at
@@ -77,7 +77,7 @@ module Lithic
       # @!attribute events
       #   A list of events related to the tokenization.
       #
-      #   @return [Array<Lithic::Tokenization::Event>, nil]
+      #   @return [Array<Lithic::Models::Tokenization::Event>, nil]
       optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Tokenization::Event] }
 
       # @!attribute payment_account_reference_id
@@ -87,8 +87,8 @@ module Lithic
       optional :payment_account_reference_id, String, nil?: true
 
       # @!method initialize(token:, account_token:, card_token:, created_at:, dpan:, status:, token_requestor_name:, token_unique_reference:, tokenization_channel:, updated_at:, digital_card_art_token: nil, events: nil, payment_account_reference_id: nil)
-      #   Some parameter documentations has been truncated, see {Lithic::Tokenization} for
-      #   more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::Tokenization} for more details.
       #
       #   @param token [String] Globally unique identifier for a Tokenization
       #
@@ -100,25 +100,25 @@ module Lithic
       #
       #   @param dpan [String, nil] The dynamic pan assigned to the token by the network.
       #
-      #   @param status [Symbol, Lithic::Tokenization::Status] The status of the tokenization request
+      #   @param status [Symbol, Lithic::Models::Tokenization::Status] The status of the tokenization request
       #
-      #   @param token_requestor_name [Symbol, Lithic::Tokenization::TokenRequestorName] The entity that requested the tokenization. Represents a Digital Wallet or merch
+      #   @param token_requestor_name [Symbol, Lithic::Models::Tokenization::TokenRequestorName] The entity that requested the tokenization. Represents a Digital Wallet or merch
       #
       #   @param token_unique_reference [String] The network's unique reference for the tokenization.
       #
-      #   @param tokenization_channel [Symbol, Lithic::Tokenization::TokenizationChannel] The channel through which the tokenization was made.
+      #   @param tokenization_channel [Symbol, Lithic::Models::Tokenization::TokenizationChannel] The channel through which the tokenization was made.
       #
       #   @param updated_at [Time] Latest date and time when the tokenization was updated. UTC time zone.
       #
       #   @param digital_card_art_token [String] Specifies the digital card art displayed in the user’s digital wallet after toke
       #
-      #   @param events [Array<Lithic::Tokenization::Event>] A list of events related to the tokenization.
+      #   @param events [Array<Lithic::Models::Tokenization::Event>] A list of events related to the tokenization.
       #
       #   @param payment_account_reference_id [String, nil] The network's unique reference for the card that is tokenized.
 
       # The status of the tokenization request
       #
-      # @see Lithic::Tokenization#status
+      # @see Lithic::Models::Tokenization#status
       module Status
         extend Lithic::Internal::Type::Enum
 
@@ -137,7 +137,7 @@ module Lithic
       # The entity that requested the tokenization. Represents a Digital Wallet or
       # merchant.
       #
-      # @see Lithic::Tokenization#token_requestor_name
+      # @see Lithic::Models::Tokenization#token_requestor_name
       module TokenRequestorName
         extend Lithic::Internal::Type::Enum
 
@@ -159,7 +159,7 @@ module Lithic
 
       # The channel through which the tokenization was made.
       #
-      # @see Lithic::Tokenization#tokenization_channel
+      # @see Lithic::Models::Tokenization#tokenization_channel
       module TokenizationChannel
         extend Lithic::Internal::Type::Enum
 
@@ -186,13 +186,13 @@ module Lithic
         # @!attribute result
         #   Enum representing the result of the tokenization event
         #
-        #   @return [Symbol, Lithic::Tokenization::Event::Result, nil]
+        #   @return [Symbol, Lithic::Models::Tokenization::Event::Result, nil]
         optional :result, enum: -> { Lithic::Tokenization::Event::Result }
 
         # @!attribute type
         #   Enum representing the type of tokenization event that occurred
         #
-        #   @return [Symbol, Lithic::Tokenization::Event::Type, nil]
+        #   @return [Symbol, Lithic::Models::Tokenization::Event::Type, nil]
         optional :type, enum: -> { Lithic::Tokenization::Event::Type }
 
         # @!method initialize(token: nil, created_at: nil, result: nil, type: nil)
@@ -200,13 +200,13 @@ module Lithic
         #
         #   @param created_at [Time] Date and time when the tokenization event first occurred. UTC time zone.
         #
-        #   @param result [Symbol, Lithic::Tokenization::Event::Result] Enum representing the result of the tokenization event
+        #   @param result [Symbol, Lithic::Models::Tokenization::Event::Result] Enum representing the result of the tokenization event
         #
-        #   @param type [Symbol, Lithic::Tokenization::Event::Type] Enum representing the type of tokenization event that occurred
+        #   @param type [Symbol, Lithic::Models::Tokenization::Event::Type] Enum representing the type of tokenization event that occurred
 
         # Enum representing the result of the tokenization event
         #
-        # @see Lithic::Tokenization::Event#result
+        # @see Lithic::Models::Tokenization::Event#result
         module Result
           extend Lithic::Internal::Type::Enum
 
@@ -228,7 +228,7 @@ module Lithic
 
         # Enum representing the type of tokenization event that occurred
         #
-        # @see Lithic::Tokenization::Event#type
+        # @see Lithic::Models::Tokenization::Event#type
         module Type
           extend Lithic::Internal::Type::Enum
 

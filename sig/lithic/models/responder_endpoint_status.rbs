@@ -10,6 +10,8 @@ module Lithic
       attr_accessor url: String?
 
       def initialize: (?enrolled: bool, ?url: String?) -> void
+
+      def to_hash: -> { enrolled: bool, url: String? }
     end
   end
 end

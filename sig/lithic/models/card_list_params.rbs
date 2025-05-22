@@ -63,6 +63,18 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        account_token: String,
+        begin_: Time,
+        end_: Time,
+        ending_before: String,
+        memo: String,
+        page_size: Integer,
+        starting_after: String,
+        state: Lithic::Models::CardListParams::state,
+        request_options: Lithic::RequestOptions
+      }
+
       type state =
         :CLOSED | :OPEN | :PAUSED | :PENDING_ACTIVATION | :PENDING_FULFILLMENT
 

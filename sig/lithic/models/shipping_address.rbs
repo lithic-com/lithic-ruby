@@ -59,6 +59,20 @@ module Lithic
         ?line2_text: String,
         ?phone_number: String
       ) -> void
+
+      def to_hash: -> {
+        :address1 => String,
+        city: String,
+        country: String,
+        first_name: String,
+        last_name: String,
+        postal_code: String,
+        state: String,
+        :address2 => String,
+        email: String,
+        :line2_text => String,
+        phone_number: String
+      }
     end
   end
 end

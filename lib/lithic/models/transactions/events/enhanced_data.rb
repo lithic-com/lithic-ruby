@@ -14,7 +14,7 @@ module Lithic
 
           # @!attribute common
           #
-          #   @return [Lithic::Transactions::Events::EnhancedData::Common]
+          #   @return [Lithic::Models::Transactions::Events::EnhancedData::Common]
           required :common, -> { Lithic::Transactions::Events::EnhancedData::Common }
 
           # @!attribute event_token
@@ -25,7 +25,7 @@ module Lithic
 
           # @!attribute fleet
           #
-          #   @return [Array<Lithic::Transactions::Events::EnhancedData::Fleet>]
+          #   @return [Array<Lithic::Models::Transactions::Events::EnhancedData::Fleet>]
           required :fleet,
                    -> {
                      Lithic::Internal::Type::ArrayOf[Lithic::Transactions::Events::EnhancedData::Fleet]
@@ -40,19 +40,19 @@ module Lithic
           # @!method initialize(token:, common:, event_token:, fleet:, transaction_token:)
           #   @param token [String] A unique identifier for the enhanced commercial data.
           #
-          #   @param common [Lithic::Transactions::Events::EnhancedData::Common]
+          #   @param common [Lithic::Models::Transactions::Events::EnhancedData::Common]
           #
           #   @param event_token [String] The token of the event that the enhanced data is associated with.
           #
-          #   @param fleet [Array<Lithic::Transactions::Events::EnhancedData::Fleet>]
+          #   @param fleet [Array<Lithic::Models::Transactions::Events::EnhancedData::Fleet>]
           #
           #   @param transaction_token [String] The token of the transaction that the enhanced data is associated with.
 
-          # @see Lithic::Transactions::Events::EnhancedData#common
+          # @see Lithic::Models::Transactions::Events::EnhancedData#common
           class Common < Lithic::Internal::Type::BaseModel
             # @!attribute line_items
             #
-            #   @return [Array<Lithic::Transactions::Events::EnhancedData::Common::LineItem>]
+            #   @return [Array<Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem>]
             required :line_items,
                      -> {
                        Lithic::Internal::Type::ArrayOf[Lithic::Transactions::Events::EnhancedData::Common::LineItem]
@@ -60,7 +60,7 @@ module Lithic
 
             # @!attribute tax
             #
-            #   @return [Lithic::Transactions::Events::EnhancedData::Common::Tax]
+            #   @return [Lithic::Models::Transactions::Events::EnhancedData::Common::Tax]
             required :tax, -> { Lithic::Transactions::Events::EnhancedData::Common::Tax }
 
             # @!attribute customer_reference_number
@@ -82,9 +82,9 @@ module Lithic
             optional :order_date, Date
 
             # @!method initialize(line_items:, tax:, customer_reference_number: nil, merchant_reference_number: nil, order_date: nil)
-            #   @param line_items [Array<Lithic::Transactions::Events::EnhancedData::Common::LineItem>]
+            #   @param line_items [Array<Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem>]
             #
-            #   @param tax [Lithic::Transactions::Events::EnhancedData::Common::Tax]
+            #   @param tax [Lithic::Models::Transactions::Events::EnhancedData::Common::Tax]
             #
             #   @param customer_reference_number [String] A customer identifier.
             #
@@ -129,7 +129,7 @@ module Lithic
               #   @param quantity [Float] The quantity of the item purchased.
             end
 
-            # @see Lithic::Transactions::Events::EnhancedData::Common#tax
+            # @see Lithic::Models::Transactions::Events::EnhancedData::Common#tax
             class Tax < Lithic::Internal::Type::BaseModel
               # @!attribute amount
               #   The amount of tax collected.
@@ -140,7 +140,7 @@ module Lithic
               # @!attribute exempt
               #   A flag indicating whether the transaction is tax exempt or not.
               #
-              #   @return [Symbol, Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt, nil]
+              #   @return [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt, nil]
               optional :exempt, enum: -> { Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt }
 
               # @!attribute merchant_tax_id
@@ -152,13 +152,13 @@ module Lithic
               # @!method initialize(amount: nil, exempt: nil, merchant_tax_id: nil)
               #   @param amount [Integer] The amount of tax collected.
               #
-              #   @param exempt [Symbol, Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt] A flag indicating whether the transaction is tax exempt or not.
+              #   @param exempt [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt] A flag indicating whether the transaction is tax exempt or not.
               #
               #   @param merchant_tax_id [String] The tax ID of the merchant.
 
               # A flag indicating whether the transaction is tax exempt or not.
               #
-              # @see Lithic::Transactions::Events::EnhancedData::Common::Tax#exempt
+              # @see Lithic::Models::Transactions::Events::EnhancedData::Common::Tax#exempt
               module Exempt
                 extend Lithic::Internal::Type::Enum
 
@@ -175,12 +175,12 @@ module Lithic
           class Fleet < Lithic::Internal::Type::BaseModel
             # @!attribute amount_totals
             #
-            #   @return [Lithic::Transactions::Events::EnhancedData::Fleet::AmountTotals]
+            #   @return [Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals]
             required :amount_totals, -> { Lithic::Transactions::Events::EnhancedData::Fleet::AmountTotals }
 
             # @!attribute fuel
             #
-            #   @return [Lithic::Transactions::Events::EnhancedData::Fleet::Fuel]
+            #   @return [Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel]
             required :fuel, -> { Lithic::Transactions::Events::EnhancedData::Fleet::Fuel }
 
             # @!attribute driver_number
@@ -199,7 +199,7 @@ module Lithic
             # @!attribute service_type
             #   The type of fuel service.
             #
-            #   @return [Symbol, Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType, nil]
+            #   @return [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType, nil]
             optional :service_type,
                      enum: -> {
                        Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType
@@ -214,21 +214,21 @@ module Lithic
 
             # @!method initialize(amount_totals:, fuel:, driver_number: nil, odometer: nil, service_type: nil, vehicle_number: nil)
             #   Some parameter documentations has been truncated, see
-            #   {Lithic::Transactions::Events::EnhancedData::Fleet} for more details.
+            #   {Lithic::Models::Transactions::Events::EnhancedData::Fleet} for more details.
             #
-            #   @param amount_totals [Lithic::Transactions::Events::EnhancedData::Fleet::AmountTotals]
+            #   @param amount_totals [Lithic::Models::Transactions::Events::EnhancedData::Fleet::AmountTotals]
             #
-            #   @param fuel [Lithic::Transactions::Events::EnhancedData::Fleet::Fuel]
+            #   @param fuel [Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel]
             #
             #   @param driver_number [String] The driver number entered into the terminal at the time of sale, with leading ze
             #
             #   @param odometer [Integer] The odometer reading entered into the terminal at the time of sale.
             #
-            #   @param service_type [Symbol, Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType] The type of fuel service.
+            #   @param service_type [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType] The type of fuel service.
             #
             #   @param vehicle_number [String] The vehicle number entered into the terminal at the time of sale, with leading z
 
-            # @see Lithic::Transactions::Events::EnhancedData::Fleet#amount_totals
+            # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet#amount_totals
             class AmountTotals < Lithic::Internal::Type::BaseModel
               # @!attribute discount
               #   The discount applied to the gross sale amount.
@@ -256,7 +256,7 @@ module Lithic
               #   @param net_sale [Integer] The amount after discount.
             end
 
-            # @see Lithic::Transactions::Events::EnhancedData::Fleet#fuel
+            # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet#fuel
             class Fuel < Lithic::Internal::Type::BaseModel
               # @!attribute quantity
               #   The quantity of fuel purchased.
@@ -267,13 +267,13 @@ module Lithic
               # @!attribute type
               #   The type of fuel purchased.
               #
-              #   @return [Symbol, Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type, nil]
+              #   @return [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type, nil]
               optional :type, enum: -> { Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type }
 
               # @!attribute unit_of_measure
               #   Unit of measure for fuel disbursement.
               #
-              #   @return [Symbol, Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure, nil]
+              #   @return [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure, nil]
               optional :unit_of_measure,
                        enum: -> { Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure }
 
@@ -286,15 +286,15 @@ module Lithic
               # @!method initialize(quantity: nil, type: nil, unit_of_measure: nil, unit_price: nil)
               #   @param quantity [Float] The quantity of fuel purchased.
               #
-              #   @param type [Symbol, Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type] The type of fuel purchased.
+              #   @param type [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type] The type of fuel purchased.
               #
-              #   @param unit_of_measure [Symbol, Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure] Unit of measure for fuel disbursement.
+              #   @param unit_of_measure [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure] Unit of measure for fuel disbursement.
               #
               #   @param unit_price [Integer] The price per unit of fuel.
 
               # The type of fuel purchased.
               #
-              # @see Lithic::Transactions::Events::EnhancedData::Fleet::Fuel#type
+              # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel#type
               module Type
                 extend Lithic::Internal::Type::Enum
 
@@ -425,7 +425,7 @@ module Lithic
 
               # Unit of measure for fuel disbursement.
               #
-              # @see Lithic::Transactions::Events::EnhancedData::Fleet::Fuel#unit_of_measure
+              # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel#unit_of_measure
               module UnitOfMeasure
                 extend Lithic::Internal::Type::Enum
 
@@ -444,7 +444,7 @@ module Lithic
 
             # The type of fuel service.
             #
-            # @see Lithic::Transactions::Events::EnhancedData::Fleet#service_type
+            # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet#service_type
             module ServiceType
               extend Lithic::Internal::Type::Enum
 

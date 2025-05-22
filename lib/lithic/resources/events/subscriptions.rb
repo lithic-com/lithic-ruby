@@ -17,11 +17,11 @@ module Lithic
         #
         # @param disabled [Boolean] Whether the event subscription is active (false) or inactive (true).
         #
-        # @param event_types [Array<Symbol, Lithic::Events::SubscriptionCreateParams::EventType>] Indicates types of events that will be sent to this subscription. If left blank,
+        # @param event_types [Array<Symbol, Lithic::Models::Events::SubscriptionCreateParams::EventType>] Indicates types of events that will be sent to this subscription. If left blank,
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::EventSubscription]
+        # @return [Lithic::Models::EventSubscription]
         #
         # @see Lithic::Models::Events::SubscriptionCreateParams
         def create(params)
@@ -42,7 +42,7 @@ module Lithic
         # @param event_subscription_token [String]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::EventSubscription]
+        # @return [Lithic::Models::EventSubscription]
         #
         # @see Lithic::Models::Events::SubscriptionRetrieveParams
         def retrieve(event_subscription_token, params = {})
@@ -69,11 +69,11 @@ module Lithic
         #
         # @param disabled [Boolean] Whether the event subscription is active (false) or inactive (true).
         #
-        # @param event_types [Array<Symbol, Lithic::Events::SubscriptionUpdateParams::EventType>] Indicates types of events that will be sent to this subscription. If left blank,
+        # @param event_types [Array<Symbol, Lithic::Models::Events::SubscriptionUpdateParams::EventType>] Indicates types of events that will be sent to this subscription. If left blank,
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::EventSubscription]
+        # @return [Lithic::Models::EventSubscription]
         #
         # @see Lithic::Models::Events::SubscriptionUpdateParams
         def update(event_subscription_token, params)
@@ -102,7 +102,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::CursorPage<Lithic::EventSubscription>]
+        # @return [Lithic::Internal::CursorPage<Lithic::Models::EventSubscription>]
         #
         # @see Lithic::Models::Events::SubscriptionListParams
         def list(params = {})
@@ -155,11 +155,11 @@ module Lithic
         #
         # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
         #
-        # @param status [Symbol, Lithic::Events::SubscriptionListAttemptsParams::Status]
+        # @param status [Symbol, Lithic::Models::Events::SubscriptionListAttemptsParams::Status]
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::CursorPage<Lithic::MessageAttempt>]
+        # @return [Lithic::Internal::CursorPage<Lithic::Models::MessageAttempt>]
         #
         # @see Lithic::Models::Events::SubscriptionListAttemptsParams
         def list_attempts(event_subscription_token, params = {})
@@ -281,7 +281,7 @@ module Lithic
         #
         # @param event_subscription_token [String]
         #
-        # @param event_type [Symbol, Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType] Event type to send example message for.
+        # @param event_type [Symbol, Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::EventType] Event type to send example message for.
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #

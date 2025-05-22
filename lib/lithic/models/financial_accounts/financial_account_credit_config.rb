@@ -14,7 +14,7 @@ module Lithic
         # @!attribute charged_off_reason
         #   Reason for the financial account being marked as Charged Off
         #
-        #   @return [Symbol, Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason, nil]
+        #   @return [Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason, nil]
         required :charged_off_reason,
                  enum: -> { Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason },
                  nil?: true
@@ -38,7 +38,7 @@ module Lithic
         # @!attribute financial_account_state
         #   State of the financial account
         #
-        #   @return [Symbol, Lithic::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState]
+        #   @return [Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState]
         required :financial_account_state,
                  enum: -> { Lithic::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState }
 
@@ -56,7 +56,7 @@ module Lithic
         # @!method initialize(account_token:, charged_off_reason:, credit_limit:, credit_product_token:, external_bank_account_token:, financial_account_state:, is_spend_blocked:, tier:)
         #   @param account_token [String] Globally unique identifier for the account
         #
-        #   @param charged_off_reason [Symbol, Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason, nil] Reason for the financial account being marked as Charged Off
+        #   @param charged_off_reason [Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason, nil] Reason for the financial account being marked as Charged Off
         #
         #   @param credit_limit [Integer, nil]
         #
@@ -64,7 +64,7 @@ module Lithic
         #
         #   @param external_bank_account_token [String, nil]
         #
-        #   @param financial_account_state [Symbol, Lithic::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState] State of the financial account
+        #   @param financial_account_state [Symbol, Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState] State of the financial account
         #
         #   @param is_spend_blocked [Boolean]
         #
@@ -72,7 +72,7 @@ module Lithic
 
         # Reason for the financial account being marked as Charged Off
         #
-        # @see Lithic::FinancialAccounts::FinancialAccountCreditConfig#charged_off_reason
+        # @see Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig#charged_off_reason
         module ChargedOffReason
           extend Lithic::Internal::Type::Enum
 
@@ -85,7 +85,7 @@ module Lithic
 
         # State of the financial account
         #
-        # @see Lithic::FinancialAccounts::FinancialAccountCreditConfig#financial_account_state
+        # @see Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig#financial_account_state
         module FinancialAccountState
           extend Lithic::Internal::Type::Enum
 

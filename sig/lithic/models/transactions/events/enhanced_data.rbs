@@ -30,6 +30,14 @@ module Lithic
             transaction_token: String
           ) -> void
 
+          def to_hash: -> {
+            token: String,
+            common: Lithic::Transactions::Events::EnhancedData::Common,
+            event_token: String,
+            fleet: ::Array[Lithic::Transactions::Events::EnhancedData::Fleet],
+            transaction_token: String
+          }
+
           type common =
             {
               line_items: ::Array[Lithic::Transactions::Events::EnhancedData::Common::LineItem],
@@ -64,6 +72,14 @@ module Lithic
               ?order_date: Date
             ) -> void
 
+            def to_hash: -> {
+              line_items: ::Array[Lithic::Transactions::Events::EnhancedData::Common::LineItem],
+              tax: Lithic::Transactions::Events::EnhancedData::Common::Tax,
+              customer_reference_number: String,
+              merchant_reference_number: String,
+              order_date: Date
+            }
+
             type line_item =
               {
                 amount: Float,
@@ -95,12 +111,19 @@ module Lithic
                 ?product_code: String,
                 ?quantity: Float
               ) -> void
+
+              def to_hash: -> {
+                amount: Float,
+                description: String,
+                product_code: String,
+                quantity: Float
+              }
             end
 
             type tax =
               {
                 amount: Integer,
-                exempt: Lithic::Transactions::Events::EnhancedData::Common::Tax::exempt,
+                exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt,
                 merchant_tax_id: String
               }
 
@@ -109,11 +132,11 @@ module Lithic
 
               def amount=: (Integer) -> Integer
 
-              attr_reader exempt: Lithic::Transactions::Events::EnhancedData::Common::Tax::exempt?
+              attr_reader exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt?
 
               def exempt=: (
-                Lithic::Transactions::Events::EnhancedData::Common::Tax::exempt
-              ) -> Lithic::Transactions::Events::EnhancedData::Common::Tax::exempt
+                Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt
+              ) -> Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt
 
               attr_reader merchant_tax_id: String?
 
@@ -121,9 +144,15 @@ module Lithic
 
               def initialize: (
                 ?amount: Integer,
-                ?exempt: Lithic::Transactions::Events::EnhancedData::Common::Tax::exempt,
+                ?exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt,
                 ?merchant_tax_id: String
               ) -> void
+
+              def to_hash: -> {
+                amount: Integer,
+                exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt,
+                merchant_tax_id: String
+              }
 
               type exempt = :TAX_INCLUDED | :TAX_NOT_INCLUDED | :NOT_SUPPORTED
 
@@ -134,7 +163,7 @@ module Lithic
                 TAX_NOT_INCLUDED: :TAX_NOT_INCLUDED
                 NOT_SUPPORTED: :NOT_SUPPORTED
 
-                def self?.values: -> ::Array[Lithic::Transactions::Events::EnhancedData::Common::Tax::exempt]
+                def self?.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt]
               end
             end
           end
@@ -145,7 +174,7 @@ module Lithic
               fuel: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel,
               driver_number: String,
               odometer: Integer,
-              service_type: Lithic::Transactions::Events::EnhancedData::Fleet::service_type,
+              service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type,
               vehicle_number: String
             }
 
@@ -162,11 +191,11 @@ module Lithic
 
             def odometer=: (Integer) -> Integer
 
-            attr_reader service_type: Lithic::Transactions::Events::EnhancedData::Fleet::service_type?
+            attr_reader service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type?
 
             def service_type=: (
-              Lithic::Transactions::Events::EnhancedData::Fleet::service_type
-            ) -> Lithic::Transactions::Events::EnhancedData::Fleet::service_type
+              Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type
+            ) -> Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type
 
             attr_reader vehicle_number: String?
 
@@ -177,9 +206,18 @@ module Lithic
               fuel: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel,
               ?driver_number: String,
               ?odometer: Integer,
-              ?service_type: Lithic::Transactions::Events::EnhancedData::Fleet::service_type,
+              ?service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type,
               ?vehicle_number: String
             ) -> void
+
+            def to_hash: -> {
+              amount_totals: Lithic::Transactions::Events::EnhancedData::Fleet::AmountTotals,
+              fuel: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel,
+              driver_number: String,
+              odometer: Integer,
+              service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type,
+              vehicle_number: String
+            }
 
             type amount_totals =
               { discount: Integer, gross_sale: Integer, net_sale: Integer }
@@ -202,13 +240,19 @@ module Lithic
                 ?gross_sale: Integer,
                 ?net_sale: Integer
               ) -> void
+
+              def to_hash: -> {
+                discount: Integer,
+                gross_sale: Integer,
+                net_sale: Integer
+              }
             end
 
             type fuel =
               {
                 quantity: Float,
-                type: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::type_,
-                unit_of_measure: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure,
+                type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_,
+                unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure,
                 unit_price: Integer
               }
 
@@ -217,17 +261,17 @@ module Lithic
 
               def quantity=: (Float) -> Float
 
-              attr_reader type: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::type_?
+              attr_reader type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_?
 
               def type=: (
-                Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::type_
-              ) -> Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::type_
+                Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_
+              ) -> Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_
 
-              attr_reader unit_of_measure: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure?
+              attr_reader unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure?
 
               def unit_of_measure=: (
-                Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure
-              ) -> Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure
+                Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure
+              ) -> Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure
 
               attr_reader unit_price: Integer?
 
@@ -235,10 +279,17 @@ module Lithic
 
               def initialize: (
                 ?quantity: Float,
-                ?type: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::type_,
-                ?unit_of_measure: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure,
+                ?type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_,
+                ?unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure,
                 ?unit_price: Integer
               ) -> void
+
+              def to_hash: -> {
+                quantity: Float,
+                type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_,
+                unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure,
+                unit_price: Integer
+              }
 
               type type_ =
                 :UNKNOWN
@@ -480,7 +531,7 @@ module Lithic
                 RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT_OFF_ROAD_NON_TAXABLE: :RENEWABLE_DIESEL_BIODIESEL_6_20_PERCENT_OFF_ROAD_NON_TAXABLE
                 MISCELLANEOUS_OTHER_FUEL: :MISCELLANEOUS_OTHER_FUEL
 
-                def self?.values: -> ::Array[Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::type_]
+                def self?.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_]
               end
 
               type unit_of_measure =
@@ -503,7 +554,7 @@ module Lithic
                 NOT_APPLICABLE: :NOT_APPLICABLE
                 UNKNOWN: :UNKNOWN
 
-                def self?.values: -> ::Array[Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure]
+                def self?.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure]
               end
             end
 
@@ -523,7 +574,7 @@ module Lithic
               FULL_SERVICE: :FULL_SERVICE
               NON_FUEL_ONLY: :NON_FUEL_ONLY
 
-              def self?.values: -> ::Array[Lithic::Transactions::Events::EnhancedData::Fleet::service_type]
+              def self?.values: -> ::Array[Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type]
             end
           end
         end

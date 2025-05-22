@@ -24,7 +24,7 @@ module Lithic
       #
       # @param nickname [String] Body param:
       #
-      # @param type [Symbol, Lithic::FinancialAccountCreateParams::Type] Body param:
+      # @param type [Symbol, Lithic::Models::FinancialAccountCreateParams::Type] Body param:
       #
       # @param account_token [String] Body param:
       #
@@ -34,7 +34,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::FinancialAccount]
+      # @return [Lithic::Models::FinancialAccount]
       #
       # @see Lithic::Models::FinancialAccountCreateParams
       def create(params)
@@ -57,7 +57,7 @@ module Lithic
       # @param financial_account_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::FinancialAccount]
+      # @return [Lithic::Models::FinancialAccount]
       #
       # @see Lithic::Models::FinancialAccountRetrieveParams
       def retrieve(financial_account_token, params = {})
@@ -77,7 +77,7 @@ module Lithic
       # @param nickname [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::FinancialAccount]
+      # @return [Lithic::Models::FinancialAccount]
       #
       # @see Lithic::Models::FinancialAccountUpdateParams
       def update(financial_account_token, params = {})
@@ -100,11 +100,11 @@ module Lithic
       #
       # @param business_account_token [String] List financial accounts for a given business_account_token
       #
-      # @param type [Symbol, Lithic::FinancialAccountListParams::Type] List financial accounts of a given type
+      # @param type [Symbol, Lithic::Models::FinancialAccountListParams::Type] List financial accounts of a given type
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::SinglePage<Lithic::FinancialAccount>]
+      # @return [Lithic::Internal::SinglePage<Lithic::Models::FinancialAccount>]
       #
       # @see Lithic::Models::FinancialAccountListParams
       def list(params = {})
@@ -125,13 +125,13 @@ module Lithic
       #
       # @param financial_account_token [String] Globally unique identifier for financial account.
       #
-      # @param status [Symbol, Lithic::FinancialAccountUpdateStatusParams::Status] Status of the financial account
+      # @param status [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Status] Status of the financial account
       #
-      # @param substatus [Symbol, Lithic::FinancialAccountUpdateStatusParams::Substatus, nil] Substatus for the financial account
+      # @param substatus [Symbol, Lithic::Models::FinancialAccountUpdateStatusParams::Substatus, nil] Substatus for the financial account
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::FinancialAccount]
+      # @return [Lithic::Models::FinancialAccount]
       #
       # @see Lithic::Models::FinancialAccountUpdateStatusParams
       def update_status(financial_account_token, params)

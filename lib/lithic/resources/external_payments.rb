@@ -8,17 +8,17 @@ module Lithic
       # @overload create(amount:, category:, effective_date:, financial_account_token:, payment_type:, token: nil, memo: nil, progress_to: nil, user_defined_id: nil, request_options: {})
       #
       # @param amount [Integer]
-      # @param category [Symbol, Lithic::ExternalPaymentCreateParams::Category]
+      # @param category [Symbol, Lithic::Models::ExternalPaymentCreateParams::Category]
       # @param effective_date [Date]
       # @param financial_account_token [String]
-      # @param payment_type [Symbol, Lithic::ExternalPaymentCreateParams::PaymentType]
+      # @param payment_type [Symbol, Lithic::Models::ExternalPaymentCreateParams::PaymentType]
       # @param token [String]
       # @param memo [String]
-      # @param progress_to [Symbol, Lithic::ExternalPaymentCreateParams::ProgressTo]
+      # @param progress_to [Symbol, Lithic::Models::ExternalPaymentCreateParams::ProgressTo]
       # @param user_defined_id [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::ExternalPayment]
+      # @return [Lithic::Models::ExternalPayment]
       #
       # @see Lithic::Models::ExternalPaymentCreateParams
       def create(params)
@@ -40,7 +40,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::ExternalPayment]
+      # @return [Lithic::Models::ExternalPayment]
       #
       # @see Lithic::Models::ExternalPaymentRetrieveParams
       def retrieve(external_payment_token, params = {})
@@ -63,7 +63,7 @@ module Lithic
       #
       # @param business_account_token [String]
       #
-      # @param category [Symbol, Lithic::ExternalPaymentListParams::Category] External Payment category to be returned.
+      # @param category [Symbol, Lithic::Models::ExternalPaymentListParams::Category] External Payment category to be returned.
       #
       # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
       #
@@ -73,15 +73,15 @@ module Lithic
       #
       # @param page_size [Integer] Page size (for pagination).
       #
-      # @param result [Symbol, Lithic::ExternalPaymentListParams::Result] External Payment result to be returned.
+      # @param result [Symbol, Lithic::Models::ExternalPaymentListParams::Result] External Payment result to be returned.
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      # @param status [Symbol, Lithic::ExternalPaymentListParams::Status] Book transfer status to be returned.
+      # @param status [Symbol, Lithic::Models::ExternalPaymentListParams::Status] Book transfer status to be returned.
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::ExternalPayment>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::ExternalPayment>]
       #
       # @see Lithic::Models::ExternalPaymentListParams
       def list(params = {})
@@ -108,7 +108,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::ExternalPayment]
+      # @return [Lithic::Models::ExternalPayment]
       #
       # @see Lithic::Models::ExternalPaymentCancelParams
       def cancel(external_payment_token, params)
@@ -134,7 +134,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::ExternalPayment]
+      # @return [Lithic::Models::ExternalPayment]
       #
       # @see Lithic::Models::ExternalPaymentReleaseParams
       def release(external_payment_token, params)
@@ -160,7 +160,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::ExternalPayment]
+      # @return [Lithic::Models::ExternalPayment]
       #
       # @see Lithic::Models::ExternalPaymentReverseParams
       def reverse(external_payment_token, params)
@@ -184,11 +184,11 @@ module Lithic
       #
       # @param memo [String]
       #
-      # @param progress_to [Symbol, Lithic::ExternalPaymentSettleParams::ProgressTo]
+      # @param progress_to [Symbol, Lithic::Models::ExternalPaymentSettleParams::ProgressTo]
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::ExternalPayment]
+      # @return [Lithic::Models::ExternalPayment]
       #
       # @see Lithic::Models::ExternalPaymentSettleParams
       def settle(external_payment_token, params)

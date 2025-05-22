@@ -6,19 +6,19 @@ module Lithic
       class VelocityLimitParams < Lithic::Internal::Type::BaseModel
         # @!attribute filters
         #
-        #   @return [Lithic::AuthRules::VelocityLimitParams::Filters]
+        #   @return [Lithic::Models::AuthRules::VelocityLimitParams::Filters]
         required :filters, -> { Lithic::AuthRules::VelocityLimitParams::Filters }
 
         # @!attribute period
         #   The size of the trailing window to calculate Spend Velocity over in seconds. The
         #   minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
         #
-        #   @return [Integer, Symbol, Lithic::AuthRules::VelocityLimitParamsPeriodWindow]
+        #   @return [Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow]
         required :period, union: -> { Lithic::AuthRules::VelocityLimitParams::Period }
 
         # @!attribute scope
         #
-        #   @return [Symbol, Lithic::AuthRules::VelocityLimitParams::Scope]
+        #   @return [Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope]
         required :scope, enum: -> { Lithic::AuthRules::VelocityLimitParams::Scope }
 
         # @!attribute limit_amount
@@ -41,19 +41,19 @@ module Lithic
 
         # @!method initialize(filters:, period:, scope:, limit_amount: nil, limit_count: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::AuthRules::VelocityLimitParams} for more details.
+        #   {Lithic::Models::AuthRules::VelocityLimitParams} for more details.
         #
-        #   @param filters [Lithic::AuthRules::VelocityLimitParams::Filters]
+        #   @param filters [Lithic::Models::AuthRules::VelocityLimitParams::Filters]
         #
-        #   @param period [Integer, Symbol, Lithic::AuthRules::VelocityLimitParamsPeriodWindow] The size of the trailing window to calculate Spend Velocity over in seconds. The
+        #   @param period [Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow] The size of the trailing window to calculate Spend Velocity over in seconds. The
         #
-        #   @param scope [Symbol, Lithic::AuthRules::VelocityLimitParams::Scope]
+        #   @param scope [Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope]
         #
         #   @param limit_amount [Integer, nil] The maximum amount of spend velocity allowed in the period in minor units (the s
         #
         #   @param limit_count [Integer, nil] The number of spend velocity impacting transactions may not exceed this limit in
 
-        # @see Lithic::AuthRules::VelocityLimitParams#filters
+        # @see Lithic::Models::AuthRules::VelocityLimitParams#filters
         class Filters < Lithic::Internal::Type::BaseModel
           # @!attribute exclude_countries
           #   ISO-3166-1 alpha-3 Country Codes to exclude from the velocity calculation.
@@ -87,7 +87,7 @@ module Lithic
 
           # @!method initialize(exclude_countries: nil, exclude_mccs: nil, include_countries: nil, include_mccs: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::AuthRules::VelocityLimitParams::Filters} for more details.
+          #   {Lithic::Models::AuthRules::VelocityLimitParams::Filters} for more details.
           #
           #   @param exclude_countries [Array<String>, nil] ISO-3166-1 alpha-3 Country Codes to exclude from the velocity calculation. Trans
           #
@@ -101,7 +101,7 @@ module Lithic
         # The size of the trailing window to calculate Spend Velocity over in seconds. The
         # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
         #
-        # @see Lithic::AuthRules::VelocityLimitParams#period
+        # @see Lithic::Models::AuthRules::VelocityLimitParams#period
         module Period
           extend Lithic::Internal::Type::Union
 
@@ -116,10 +116,10 @@ module Lithic
           variant enum: -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow }
 
           # @!method self.variants
-          #   @return [Array(Integer, Symbol, Lithic::AuthRules::VelocityLimitParamsPeriodWindow)]
+          #   @return [Array(Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow)]
         end
 
-        # @see Lithic::AuthRules::VelocityLimitParams#scope
+        # @see Lithic::Models::AuthRules::VelocityLimitParams#scope
         module Scope
           extend Lithic::Internal::Type::Enum
 

@@ -79,8 +79,8 @@ module Lithic
       optional :phone_number, String
 
       # @!method initialize(address1:, city:, country:, first_name:, last_name:, postal_code:, state:, address2: nil, email: nil, line2_text: nil, phone_number: nil)
-      #   Some parameter documentations has been truncated, see {Lithic::ShippingAddress}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::ShippingAddress} for more details.
       #
       #   @param address1 [String] Valid USPS routable address.
       #
