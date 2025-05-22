@@ -28,7 +28,7 @@ module Lithic
       # @!attribute receipt_type
       #   Receipt Type
       #
-      #   @return [Symbol, Lithic::PaymentSimulateReceiptParams::ReceiptType]
+      #   @return [Symbol, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType]
       required :receipt_type, enum: -> { Lithic::PaymentSimulateReceiptParams::ReceiptType }
 
       # @!attribute memo
@@ -47,7 +47,7 @@ module Lithic
       #
       #   @param financial_account_token [String] Financial Account Token
       #
-      #   @param receipt_type [Symbol, Lithic::PaymentSimulateReceiptParams::ReceiptType] Receipt Type
+      #   @param receipt_type [Symbol, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType] Receipt Type
       #
       #   @param memo [String] Memo
       #

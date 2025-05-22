@@ -7,7 +7,7 @@ module Lithic
       #   Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
       #   acceptable; APO/FPO are acceptable.
       #
-      #   @return [Lithic::KYBBusinessEntity::Address]
+      #   @return [Lithic::Models::KYBBusinessEntity::Address]
       required :address, -> { Lithic::KYBBusinessEntity::Address }
 
       # @!attribute government_id
@@ -46,9 +46,9 @@ module Lithic
 
       # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Lithic::KYBBusinessEntity} for more details.
+      #   {Lithic::Models::KYBBusinessEntity} for more details.
       #
-      #   @param address [Lithic::KYBBusinessEntity::Address] Business''s physical address - PO boxes, UPS drops, and FedEx drops are not acce
+      #   @param address [Lithic::Models::KYBBusinessEntity::Address] Business''s physical address - PO boxes, UPS drops, and FedEx drops are not acce
       #
       #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
       #
@@ -60,7 +60,7 @@ module Lithic
       #
       #   @param parent_company [String] Parent company name (if applicable).
 
-      # @see Lithic::KYBBusinessEntity#address
+      # @see Lithic::Models::KYBBusinessEntity#address
       class Address < Lithic::Internal::Type::BaseModel
         # @!attribute address1
         #   Valid deliverable address (no PO boxes).
@@ -103,7 +103,7 @@ module Lithic
 
         # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::KYBBusinessEntity::Address} for more details.
+        #   {Lithic::Models::KYBBusinessEntity::Address} for more details.
         #
         #   Business''s physical address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable.

@@ -9,6 +9,8 @@ module Lithic
         def token=: (String) -> String
 
         def initialize: (?token: String) -> void
+
+        def to_hash: -> { token: String }
       end
     end
   end

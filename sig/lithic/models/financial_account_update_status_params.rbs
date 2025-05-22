@@ -21,6 +21,12 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        status: Lithic::Models::FinancialAccountUpdateStatusParams::status,
+        substatus: Lithic::Models::FinancialAccountUpdateStatusParams::substatus?,
+        request_options: Lithic::RequestOptions
+      }
+
       type status = :OPEN | :CLOSED | :SUSPENDED | :PENDING
 
       module Status

@@ -3,21 +3,21 @@ module Lithic
     type payment =
       {
         token: String,
-        category: Lithic::Payment::category,
+        category: Lithic::Models::Payment::category,
         created: Time,
         currency: String,
         descriptor: String,
-        direction: Lithic::Payment::direction,
+        direction: Lithic::Models::Payment::direction,
         events: ::Array[Lithic::Payment::Event],
         external_bank_account_token: String?,
         financial_account_token: String,
-        method_: Lithic::Payment::method_,
+        method_: Lithic::Models::Payment::method_,
         method_attributes: Lithic::Payment::MethodAttributes,
         pending_amount: Integer,
-        result: Lithic::Payment::result,
+        result: Lithic::Models::Payment::result,
         settled_amount: Integer,
-        source: Lithic::Payment::source,
-        status: Lithic::Payment::status,
+        source: Lithic::Models::Payment::source,
+        status: Lithic::Models::Payment::status,
         updated: Time,
         user_defined_id: String?,
         expected_release_date: Date
@@ -26,7 +26,7 @@ module Lithic
     class Payment < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
-      attr_accessor category: Lithic::Payment::category
+      attr_accessor category: Lithic::Models::Payment::category
 
       attr_accessor created: Time
 
@@ -34,7 +34,7 @@ module Lithic
 
       attr_accessor descriptor: String
 
-      attr_accessor direction: Lithic::Payment::direction
+      attr_accessor direction: Lithic::Models::Payment::direction
 
       attr_accessor events: ::Array[Lithic::Payment::Event]
 
@@ -42,19 +42,19 @@ module Lithic
 
       attr_accessor financial_account_token: String
 
-      attr_accessor method_: Lithic::Payment::method_
+      attr_accessor method_: Lithic::Models::Payment::method_
 
       attr_accessor method_attributes: Lithic::Payment::MethodAttributes
 
       attr_accessor pending_amount: Integer
 
-      attr_accessor result: Lithic::Payment::result
+      attr_accessor result: Lithic::Models::Payment::result
 
       attr_accessor settled_amount: Integer
 
-      attr_accessor source: Lithic::Payment::source
+      attr_accessor source: Lithic::Models::Payment::source
 
-      attr_accessor status: Lithic::Payment::status
+      attr_accessor status: Lithic::Models::Payment::status
 
       attr_accessor updated: Time
 
@@ -66,25 +66,47 @@ module Lithic
 
       def initialize: (
         token: String,
-        category: Lithic::Payment::category,
+        category: Lithic::Models::Payment::category,
         created: Time,
         currency: String,
         descriptor: String,
-        direction: Lithic::Payment::direction,
+        direction: Lithic::Models::Payment::direction,
         events: ::Array[Lithic::Payment::Event],
         external_bank_account_token: String?,
         financial_account_token: String,
-        method_: Lithic::Payment::method_,
+        method_: Lithic::Models::Payment::method_,
         method_attributes: Lithic::Payment::MethodAttributes,
         pending_amount: Integer,
-        result: Lithic::Payment::result,
+        result: Lithic::Models::Payment::result,
         settled_amount: Integer,
-        source: Lithic::Payment::source,
-        status: Lithic::Payment::status,
+        source: Lithic::Models::Payment::source,
+        status: Lithic::Models::Payment::status,
         updated: Time,
         user_defined_id: String?,
         ?expected_release_date: Date
       ) -> void
+
+      def to_hash: -> {
+        token: String,
+        category: Lithic::Models::Payment::category,
+        created: Time,
+        currency: String,
+        descriptor: String,
+        direction: Lithic::Models::Payment::direction,
+        events: ::Array[Lithic::Payment::Event],
+        external_bank_account_token: String?,
+        financial_account_token: String,
+        method_: Lithic::Models::Payment::method_,
+        method_attributes: Lithic::Payment::MethodAttributes,
+        pending_amount: Integer,
+        result: Lithic::Models::Payment::result,
+        settled_amount: Integer,
+        source: Lithic::Models::Payment::source,
+        status: Lithic::Models::Payment::status,
+        updated: Time,
+        user_defined_id: String?,
+        expected_release_date: Date
+      }
 
       type category = :ACH
 
@@ -93,7 +115,7 @@ module Lithic
 
         ACH: :ACH
 
-        def self?.values: -> ::Array[Lithic::Payment::category]
+        def self?.values: -> ::Array[Lithic::Models::Payment::category]
       end
 
       type direction = :CREDIT | :DEBIT
@@ -104,7 +126,7 @@ module Lithic
         CREDIT: :CREDIT
         DEBIT: :DEBIT
 
-        def self?.values: -> ::Array[Lithic::Payment::direction]
+        def self?.values: -> ::Array[Lithic::Models::Payment::direction]
       end
 
       type event =
@@ -112,9 +134,9 @@ module Lithic
           token: String,
           amount: Integer,
           created: Time,
-          result: Lithic::Payment::Event::result,
-          type: Lithic::Payment::Event::type_,
-          detailed_results: ::Array[Lithic::Payment::Event::detailed_result]
+          result: Lithic::Models::Payment::Event::result,
+          type: Lithic::Models::Payment::Event::type_,
+          detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result]
         }
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -124,24 +146,33 @@ module Lithic
 
         attr_accessor created: Time
 
-        attr_accessor result: Lithic::Payment::Event::result
+        attr_accessor result: Lithic::Models::Payment::Event::result
 
-        attr_accessor type: Lithic::Payment::Event::type_
+        attr_accessor type: Lithic::Models::Payment::Event::type_
 
-        attr_reader detailed_results: ::Array[Lithic::Payment::Event::detailed_result]?
+        attr_reader detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result]?
 
         def detailed_results=: (
-          ::Array[Lithic::Payment::Event::detailed_result]
-        ) -> ::Array[Lithic::Payment::Event::detailed_result]
+          ::Array[Lithic::Models::Payment::Event::detailed_result]
+        ) -> ::Array[Lithic::Models::Payment::Event::detailed_result]
 
         def initialize: (
           token: String,
           amount: Integer,
           created: Time,
-          result: Lithic::Payment::Event::result,
-          type: Lithic::Payment::Event::type_,
-          ?detailed_results: ::Array[Lithic::Payment::Event::detailed_result]
+          result: Lithic::Models::Payment::Event::result,
+          type: Lithic::Models::Payment::Event::type_,
+          ?detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result]
         ) -> void
+
+        def to_hash: -> {
+          token: String,
+          amount: Integer,
+          created: Time,
+          result: Lithic::Models::Payment::Event::result,
+          type: Lithic::Models::Payment::Event::type_,
+          detailed_results: ::Array[Lithic::Models::Payment::Event::detailed_result]
+        }
 
         type result = :APPROVED | :DECLINED
 
@@ -151,7 +182,7 @@ module Lithic
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
-          def self?.values: -> ::Array[Lithic::Payment::Event::result]
+          def self?.values: -> ::Array[Lithic::Models::Payment::Event::result]
         end
 
         type type_ =
@@ -182,7 +213,7 @@ module Lithic
           ACH_RETURN_PROCESSED: :ACH_RETURN_PROCESSED
           ACH_RETURN_SETTLED: :ACH_RETURN_SETTLED
 
-          def self?.values: -> ::Array[Lithic::Payment::Event::type_]
+          def self?.values: -> ::Array[Lithic::Models::Payment::Event::type_]
         end
 
         type detailed_result =
@@ -203,7 +234,7 @@ module Lithic
           PROGRAM_DAILY_LIMIT_EXCEEDED: :PROGRAM_DAILY_LIMIT_EXCEEDED
           PROGRAM_MONTHLY_LIMIT_EXCEEDED: :PROGRAM_MONTHLY_LIMIT_EXCEEDED
 
-          def self?.values: -> ::Array[Lithic::Payment::Event::detailed_result]
+          def self?.values: -> ::Array[Lithic::Models::Payment::Event::detailed_result]
         end
       end
 
@@ -215,7 +246,7 @@ module Lithic
         ACH_NEXT_DAY: :ACH_NEXT_DAY
         ACH_SAME_DAY: :ACH_SAME_DAY
 
-        def self?.values: -> ::Array[Lithic::Payment::method_]
+        def self?.values: -> ::Array[Lithic::Models::Payment::method_]
       end
 
       type method_attributes =
@@ -224,7 +255,7 @@ module Lithic
           receipt_routing_number: String?,
           retries: Integer?,
           return_reason_code: String?,
-          sec_code: Lithic::Payment::MethodAttributes::sec_code,
+          sec_code: Lithic::Models::Payment::MethodAttributes::sec_code,
           trace_numbers: ::Array[String?]
         }
 
@@ -237,7 +268,7 @@ module Lithic
 
         attr_accessor return_reason_code: String?
 
-        attr_accessor sec_code: Lithic::Payment::MethodAttributes::sec_code
+        attr_accessor sec_code: Lithic::Models::Payment::MethodAttributes::sec_code
 
         attr_accessor trace_numbers: ::Array[String?]
 
@@ -246,9 +277,18 @@ module Lithic
           receipt_routing_number: String?,
           retries: Integer?,
           return_reason_code: String?,
-          sec_code: Lithic::Payment::MethodAttributes::sec_code,
+          sec_code: Lithic::Models::Payment::MethodAttributes::sec_code,
           trace_numbers: ::Array[String?]
         ) -> void
+
+        def to_hash: -> {
+          company_id: String?,
+          receipt_routing_number: String?,
+          retries: Integer?,
+          return_reason_code: String?,
+          sec_code: Lithic::Models::Payment::MethodAttributes::sec_code,
+          trace_numbers: ::Array[String?]
+        }
 
         type sec_code = :CCD | :PPD | :WEB
 
@@ -259,7 +299,7 @@ module Lithic
           PPD: :PPD
           WEB: :WEB
 
-          def self?.values: -> ::Array[Lithic::Payment::MethodAttributes::sec_code]
+          def self?.values: -> ::Array[Lithic::Models::Payment::MethodAttributes::sec_code]
         end
       end
 
@@ -271,7 +311,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self?.values: -> ::Array[Lithic::Payment::result]
+        def self?.values: -> ::Array[Lithic::Models::Payment::result]
       end
 
       type source = :CUSTOMER | :LITHIC
@@ -282,7 +322,7 @@ module Lithic
         CUSTOMER: :CUSTOMER
         LITHIC: :LITHIC
 
-        def self?.values: -> ::Array[Lithic::Payment::source]
+        def self?.values: -> ::Array[Lithic::Models::Payment::source]
       end
 
       type status = :DECLINED | :PENDING | :RETURNED | :SETTLED
@@ -295,7 +335,7 @@ module Lithic
         RETURNED: :RETURNED
         SETTLED: :SETTLED
 
-        def self?.values: -> ::Array[Lithic::Payment::status]
+        def self?.values: -> ::Array[Lithic::Models::Payment::status]
       end
     end
   end

@@ -44,6 +44,18 @@ module Lithic
           total_amount: Integer,
           updated: Time
         ) -> void
+
+        def to_hash: -> {
+          available_amount: Integer,
+          created: Time,
+          currency: String,
+          last_card_token: String,
+          last_transaction_event_token: String,
+          last_transaction_token: String,
+          pending_amount: Integer,
+          total_amount: Integer,
+          updated: Time
+        }
       end
     end
   end

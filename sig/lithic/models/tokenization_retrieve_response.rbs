@@ -8,6 +8,8 @@ module Lithic
       def data=: (Lithic::Tokenization) -> Lithic::Tokenization
 
       def initialize: (?data: Lithic::Tokenization) -> void
+
+      def to_hash: -> { data: Lithic::Tokenization }
     end
   end
 end

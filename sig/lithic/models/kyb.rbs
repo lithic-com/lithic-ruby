@@ -7,7 +7,7 @@ module Lithic
         control_person: Lithic::KYB::ControlPerson,
         nature_of_business: String,
         tos_timestamp: String,
-        workflow: Lithic::KYB::workflow,
+        workflow: Lithic::Models::KYB::workflow,
         beneficial_owner_entities: ::Array[Lithic::KYB::BeneficialOwnerEntity],
         external_id: String,
         kyb_passed_timestamp: String,
@@ -25,7 +25,7 @@ module Lithic
 
       attr_accessor tos_timestamp: String
 
-      attr_accessor workflow: Lithic::KYB::workflow
+      attr_accessor workflow: Lithic::Models::KYB::workflow
 
       attr_reader beneficial_owner_entities: ::Array[Lithic::KYB::BeneficialOwnerEntity]?
 
@@ -51,12 +51,25 @@ module Lithic
         control_person: Lithic::KYB::ControlPerson,
         nature_of_business: String,
         tos_timestamp: String,
-        workflow: Lithic::KYB::workflow,
+        workflow: Lithic::Models::KYB::workflow,
         ?beneficial_owner_entities: ::Array[Lithic::KYB::BeneficialOwnerEntity],
         ?external_id: String,
         ?kyb_passed_timestamp: String,
         ?website_url: String
       ) -> void
+
+      def to_hash: -> {
+        beneficial_owner_individuals: ::Array[Lithic::KYB::BeneficialOwnerIndividual],
+        business_entity: Lithic::KYB::BusinessEntity,
+        control_person: Lithic::KYB::ControlPerson,
+        nature_of_business: String,
+        tos_timestamp: String,
+        workflow: Lithic::Models::KYB::workflow,
+        beneficial_owner_entities: ::Array[Lithic::KYB::BeneficialOwnerEntity],
+        external_id: String,
+        kyb_passed_timestamp: String,
+        website_url: String
+      }
 
       type beneficial_owner_individual =
         {
@@ -95,6 +108,16 @@ module Lithic
           last_name: String,
           ?phone_number: String
         ) -> void
+
+        def to_hash: -> {
+          address: Lithic::Address,
+          dob: String,
+          email: String,
+          first_name: String,
+          government_id: String,
+          last_name: String,
+          phone_number: String
+        }
       end
 
       type business_entity =
@@ -132,6 +155,15 @@ module Lithic
           ?dba_business_name: String,
           ?parent_company: String
         ) -> void
+
+        def to_hash: -> {
+          address: Lithic::Address,
+          government_id: String,
+          legal_business_name: String,
+          phone_numbers: ::Array[String],
+          dba_business_name: String,
+          parent_company: String
+        }
       end
 
       type control_person =
@@ -171,6 +203,16 @@ module Lithic
           last_name: String,
           ?phone_number: String
         ) -> void
+
+        def to_hash: -> {
+          address: Lithic::Address,
+          dob: String,
+          email: String,
+          first_name: String,
+          government_id: String,
+          last_name: String,
+          phone_number: String
+        }
       end
 
       type workflow = :KYB_BASIC | :KYB_BYO
@@ -181,7 +223,7 @@ module Lithic
         KYB_BASIC: :KYB_BASIC
         KYB_BYO: :KYB_BYO
 
-        def self?.values: -> ::Array[Lithic::KYB::workflow]
+        def self?.values: -> ::Array[Lithic::Models::KYB::workflow]
       end
 
       type beneficial_owner_entity =
@@ -219,6 +261,15 @@ module Lithic
           ?dba_business_name: String,
           ?parent_company: String
         ) -> void
+
+        def to_hash: -> {
+          address: Lithic::Address,
+          government_id: String,
+          legal_business_name: String,
+          phone_numbers: ::Array[String],
+          dba_business_name: String,
+          parent_company: String
+        }
       end
     end
   end

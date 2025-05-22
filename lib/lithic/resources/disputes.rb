@@ -9,7 +9,7 @@ module Lithic
       #
       # @param amount [Integer] Amount to dispute
       #
-      # @param reason [Symbol, Lithic::DisputeCreateParams::Reason] Reason for dispute
+      # @param reason [Symbol, Lithic::Models::DisputeCreateParams::Reason] Reason for dispute
       #
       # @param transaction_token [String] Transaction to dispute
       #
@@ -19,7 +19,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Dispute]
+      # @return [Lithic::Models::Dispute]
       #
       # @see Lithic::Models::DisputeCreateParams
       def create(params)
@@ -40,7 +40,7 @@ module Lithic
       # @param dispute_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Dispute]
+      # @return [Lithic::Models::Dispute]
       #
       # @see Lithic::Models::DisputeRetrieveParams
       def retrieve(dispute_token, params = {})
@@ -64,11 +64,11 @@ module Lithic
       #
       # @param customer_note [String] Customer description of dispute
       #
-      # @param reason [Symbol, Lithic::DisputeUpdateParams::Reason] Reason for dispute
+      # @param reason [Symbol, Lithic::Models::DisputeUpdateParams::Reason] Reason for dispute
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Dispute]
+      # @return [Lithic::Models::Dispute]
       #
       # @see Lithic::Models::DisputeUpdateParams
       def update(dispute_token, params = {})
@@ -99,13 +99,13 @@ module Lithic
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      # @param status [Symbol, Lithic::DisputeListParams::Status] List disputes of a specific status.
+      # @param status [Symbol, Lithic::Models::DisputeListParams::Status] List disputes of a specific status.
       #
       # @param transaction_tokens [Array<String>] Transaction tokens to filter by.
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::Dispute>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::Dispute>]
       #
       # @see Lithic::Models::DisputeListParams
       def list(params = {})
@@ -127,7 +127,7 @@ module Lithic
       # @param dispute_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Dispute]
+      # @return [Lithic::Models::Dispute]
       #
       # @see Lithic::Models::DisputeDeleteParams
       def delete(dispute_token, params = {})
@@ -148,7 +148,7 @@ module Lithic
       # @param dispute_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::DisputeEvidence]
+      # @return [Lithic::Models::DisputeEvidence]
       #
       # @see Lithic::Models::DisputeDeleteEvidenceParams
       def delete_evidence(evidence_token, params)
@@ -179,7 +179,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::DisputeEvidence]
+      # @return [Lithic::Models::DisputeEvidence]
       #
       # @see Lithic::Models::DisputeInitiateEvidenceUploadParams
       def initiate_evidence_upload(dispute_token, params = {})
@@ -214,7 +214,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::DisputeEvidence>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::DisputeEvidence>]
       #
       # @see Lithic::Models::DisputeListEvidencesParams
       def list_evidences(dispute_token, params = {})
@@ -237,7 +237,7 @@ module Lithic
       # @param dispute_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::DisputeEvidence]
+      # @return [Lithic::Models::DisputeEvidence]
       #
       # @see Lithic::Models::DisputeRetrieveEvidenceParams
       def retrieve_evidence(evidence_token, params)

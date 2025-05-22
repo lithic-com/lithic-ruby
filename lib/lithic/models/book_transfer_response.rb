@@ -14,7 +14,7 @@ module Lithic
       # @!attribute category
       #   Category of the book transfer
       #
-      #   @return [Symbol, Lithic::BookTransferResponse::Category]
+      #   @return [Symbol, Lithic::Models::BookTransferResponse::Category]
       required :category, enum: -> { Lithic::BookTransferResponse::Category }
 
       # @!attribute created
@@ -33,7 +33,7 @@ module Lithic
       # @!attribute events
       #   A list of all financial events that have modified this transfer.
       #
-      #   @return [Array<Lithic::BookTransferResponse::Event>]
+      #   @return [Array<Lithic::Models::BookTransferResponse::Event>]
       required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::BookTransferResponse::Event] }
 
       # @!attribute from_financial_account_token
@@ -55,7 +55,7 @@ module Lithic
       #   APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
       #
-      #   @return [Symbol, Lithic::BookTransferResponse::Result]
+      #   @return [Symbol, Lithic::Models::BookTransferResponse::Result]
       required :result, enum: -> { Lithic::BookTransferResponse::Result }
 
       # @!attribute settled_amount
@@ -69,7 +69,7 @@ module Lithic
       #   Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
       #   transfer was reversed \* `SETTLED` - The transfer is completed.
       #
-      #   @return [Symbol, Lithic::BookTransferResponse::Status]
+      #   @return [Symbol, Lithic::Models::BookTransferResponse::Status]
       required :status, enum: -> { Lithic::BookTransferResponse::Status }
 
       # @!attribute to_financial_account_token
@@ -87,27 +87,27 @@ module Lithic
 
       # @!method initialize(token:, category:, created:, currency:, events:, from_financial_account_token:, pending_amount:, result:, settled_amount:, status:, to_financial_account_token:, updated:)
       #   Some parameter documentations has been truncated, see
-      #   {Lithic::BookTransferResponse} for more details.
+      #   {Lithic::Models::BookTransferResponse} for more details.
       #
       #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
       #
-      #   @param category [Symbol, Lithic::BookTransferResponse::Category] Category of the book transfer
+      #   @param category [Symbol, Lithic::Models::BookTransferResponse::Category] Category of the book transfer
       #
       #   @param created [Time] Date and time when the transfer occurred. UTC time zone.
       #
       #   @param currency [String] 3-character alphabetic ISO 4217 code for the settling currency of the transactio
       #
-      #   @param events [Array<Lithic::BookTransferResponse::Event>] A list of all financial events that have modified this transfer.
+      #   @param events [Array<Lithic::Models::BookTransferResponse::Event>] A list of all financial events that have modified this transfer.
       #
       #   @param from_financial_account_token [String] Globally unique identifier for the financial account or card that will send the
       #
       #   @param pending_amount [Integer] Pending amount of the transaction in the currency's smallest unit (e.g., cents),
       #
-      #   @param result [Symbol, Lithic::BookTransferResponse::Result] APPROVED transactions were successful while DECLINED transactions were declined
+      #   @param result [Symbol, Lithic::Models::BookTransferResponse::Result] APPROVED transactions were successful while DECLINED transactions were declined
       #
       #   @param settled_amount [Integer] Amount of the transaction that has been settled in the currency's smallest unit
       #
-      #   @param status [Symbol, Lithic::BookTransferResponse::Status] Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The trans
+      #   @param status [Symbol, Lithic::Models::BookTransferResponse::Status] Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The trans
       #
       #   @param to_financial_account_token [Object] Globally unique identifier for the financial account or card that will receive t
       #
@@ -115,7 +115,7 @@ module Lithic
 
       # Category of the book transfer
       #
-      # @see Lithic::BookTransferResponse#category
+      # @see Lithic::Models::BookTransferResponse#category
       module Category
         extend Lithic::Internal::Type::Enum
 
@@ -154,7 +154,7 @@ module Lithic
         # @!attribute detailed_results
         #   Detailed Results
         #
-        #   @return [Array<Symbol, Lithic::BookTransferResponse::Event::DetailedResult>]
+        #   @return [Array<Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResult>]
         required :detailed_results,
                  -> {
                    Lithic::Internal::Type::ArrayOf[enum: Lithic::BookTransferResponse::Event::DetailedResult]
@@ -170,7 +170,7 @@ module Lithic
         #   APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         #
-        #   @return [Symbol, Lithic::BookTransferResponse::Event::Result]
+        #   @return [Symbol, Lithic::Models::BookTransferResponse::Event::Result]
         required :result, enum: -> { Lithic::BookTransferResponse::Event::Result }
 
         # @!attribute subtype
@@ -187,7 +187,7 @@ module Lithic
 
         # @!method initialize(token:, amount:, created:, detailed_results:, memo:, result:, subtype:, type:)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::BookTransferResponse::Event} for more details.
+        #   {Lithic::Models::BookTransferResponse::Event} for more details.
         #
         #   @param token [String] Globally unique identifier.
         #
@@ -195,11 +195,11 @@ module Lithic
         #
         #   @param created [Time] Date and time when the financial event occurred. UTC time zone.
         #
-        #   @param detailed_results [Array<Symbol, Lithic::BookTransferResponse::Event::DetailedResult>] Detailed Results
+        #   @param detailed_results [Array<Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResult>] Detailed Results
         #
         #   @param memo [String] Memo for the transfer.
         #
-        #   @param result [Symbol, Lithic::BookTransferResponse::Event::Result] APPROVED financial events were successful while DECLINED financial events were d
+        #   @param result [Symbol, Lithic::Models::BookTransferResponse::Event::Result] APPROVED financial events were successful while DECLINED financial events were d
         #
         #   @param subtype [String] The program specific subtype code for the specified category/type.
         #
@@ -218,7 +218,7 @@ module Lithic
         # APPROVED financial events were successful while DECLINED financial events were
         # declined by user, Lithic, or the network.
         #
-        # @see Lithic::BookTransferResponse::Event#result
+        # @see Lithic::Models::BookTransferResponse::Event#result
         module Result
           extend Lithic::Internal::Type::Enum
 
@@ -233,7 +233,7 @@ module Lithic
       # APPROVED transactions were successful while DECLINED transactions were declined
       # by user, Lithic, or the network.
       #
-      # @see Lithic::BookTransferResponse#result
+      # @see Lithic::Models::BookTransferResponse#result
       module Result
         extend Lithic::Internal::Type::Enum
 
@@ -247,7 +247,7 @@ module Lithic
       # Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The
       # transfer was reversed \* `SETTLED` - The transfer is completed.
       #
-      # @see Lithic::BookTransferResponse#status
+      # @see Lithic::Models::BookTransferResponse#status
       module Status
         extend Lithic::Internal::Type::Enum
 

@@ -8,6 +8,8 @@ module Lithic
       def provisioning_payload=: (String) -> String
 
       def initialize: (?provisioning_payload: String) -> void
+
+      def to_hash: -> { provisioning_payload: String }
     end
   end
 end

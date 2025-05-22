@@ -5,10 +5,10 @@ module Lithic
         address: Lithic::Address,
         email: String,
         first_name: String,
-        kyc_exemption_type: Lithic::KYCExempt::kyc_exemption_type,
+        kyc_exemption_type: Lithic::Models::KYCExempt::kyc_exemption_type,
         last_name: String,
         phone_number: String,
-        workflow: Lithic::KYCExempt::workflow,
+        workflow: Lithic::Models::KYCExempt::workflow,
         business_account_token: String,
         external_id: String
       }
@@ -20,13 +20,13 @@ module Lithic
 
       attr_accessor first_name: String
 
-      attr_accessor kyc_exemption_type: Lithic::KYCExempt::kyc_exemption_type
+      attr_accessor kyc_exemption_type: Lithic::Models::KYCExempt::kyc_exemption_type
 
       attr_accessor last_name: String
 
       attr_accessor phone_number: String
 
-      attr_accessor workflow: Lithic::KYCExempt::workflow
+      attr_accessor workflow: Lithic::Models::KYCExempt::workflow
 
       attr_reader business_account_token: String?
 
@@ -40,13 +40,25 @@ module Lithic
         address: Lithic::Address,
         email: String,
         first_name: String,
-        kyc_exemption_type: Lithic::KYCExempt::kyc_exemption_type,
+        kyc_exemption_type: Lithic::Models::KYCExempt::kyc_exemption_type,
         last_name: String,
         phone_number: String,
-        workflow: Lithic::KYCExempt::workflow,
+        workflow: Lithic::Models::KYCExempt::workflow,
         ?business_account_token: String,
         ?external_id: String
       ) -> void
+
+      def to_hash: -> {
+        address: Lithic::Address,
+        email: String,
+        first_name: String,
+        kyc_exemption_type: Lithic::Models::KYCExempt::kyc_exemption_type,
+        last_name: String,
+        phone_number: String,
+        workflow: Lithic::Models::KYCExempt::workflow,
+        business_account_token: String,
+        external_id: String
+      }
 
       type kyc_exemption_type = :AUTHORIZED_USER | :PREPAID_CARD_USER
 
@@ -56,7 +68,7 @@ module Lithic
         AUTHORIZED_USER: :AUTHORIZED_USER
         PREPAID_CARD_USER: :PREPAID_CARD_USER
 
-        def self?.values: -> ::Array[Lithic::KYCExempt::kyc_exemption_type]
+        def self?.values: -> ::Array[Lithic::Models::KYCExempt::kyc_exemption_type]
       end
 
       type workflow = :KYC_EXEMPT
@@ -66,7 +78,7 @@ module Lithic
 
         KYC_EXEMPT: :KYC_EXEMPT
 
-        def self?.values: -> ::Array[Lithic::KYCExempt::workflow]
+        def self?.values: -> ::Array[Lithic::Models::KYCExempt::workflow]
       end
     end
   end

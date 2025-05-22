@@ -51,6 +51,16 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        certificate: String,
+        client_device_id: String,
+        client_wallet_account_id: String,
+        digital_wallet: Lithic::Models::CardProvisionParams::digital_wallet,
+        nonce: String,
+        nonce_signature: String,
+        request_options: Lithic::RequestOptions
+      }
+
       type digital_wallet = :APPLE_PAY | :GOOGLE_PAY | :SAMSUNG_PAY
 
       module DigitalWallet

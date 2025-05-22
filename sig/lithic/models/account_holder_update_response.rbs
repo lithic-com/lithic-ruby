@@ -157,6 +157,29 @@ module Lithic
           ?website_url: String
         ) -> void
 
+        def to_hash: -> {
+          token: String,
+          account_token: String,
+          beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
+          beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual],
+          business_account_token: String,
+          business_entity: Lithic::KYBBusinessEntity,
+          control_person: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
+          created: Time,
+          email: String,
+          exemption_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::exemption_type,
+          external_id: String,
+          individual: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual,
+          nature_of_business: String,
+          phone_number: String,
+          required_documents: ::Array[Lithic::RequiredDocument],
+          status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status,
+          status_reasons: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::status_reason],
+          user_type: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::user_type,
+          verification_application: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication,
+          website_url: String
+        }
+
         type beneficial_owner_individual =
           {
             address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address,
@@ -204,6 +227,16 @@ module Lithic
             ?phone_number: String
           ) -> void
 
+          def to_hash: -> {
+            address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::Address,
+            dob: String,
+            email: String,
+            first_name: String,
+            government_id: String,
+            last_name: String,
+            phone_number: String
+          }
+
           type address =
             {
               :address1 => String,
@@ -237,6 +270,15 @@ module Lithic
               state: String,
               ?address2: String
             ) -> void
+
+            def to_hash: -> {
+              :address1 => String,
+              city: String,
+              country: String,
+              postal_code: String,
+              state: String,
+              :address2 => String
+            }
           end
         end
 
@@ -287,6 +329,16 @@ module Lithic
             ?phone_number: String
           ) -> void
 
+          def to_hash: -> {
+            address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::Address,
+            dob: String,
+            email: String,
+            first_name: String,
+            government_id: String,
+            last_name: String,
+            phone_number: String
+          }
+
           type address =
             {
               :address1 => String,
@@ -320,6 +372,15 @@ module Lithic
               state: String,
               ?address2: String
             ) -> void
+
+            def to_hash: -> {
+              :address1 => String,
+              city: String,
+              country: String,
+              postal_code: String,
+              state: String,
+              :address2 => String
+            }
           end
         end
 
@@ -381,6 +442,16 @@ module Lithic
             ?phone_number: String
           ) -> void
 
+          def to_hash: -> {
+            address: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Individual::Address,
+            dob: String,
+            email: String,
+            first_name: String,
+            government_id: String,
+            last_name: String,
+            phone_number: String
+          }
+
           type address =
             {
               :address1 => String,
@@ -414,6 +485,15 @@ module Lithic
               state: String,
               ?address2: String
             ) -> void
+
+            def to_hash: -> {
+              :address1 => String,
+              city: String,
+              country: String,
+              postal_code: String,
+              state: String,
+              :address2 => String
+            }
           end
         end
 
@@ -522,6 +602,13 @@ module Lithic
             status_reasons: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status_reason],
             updated: Time
           ) -> void
+
+          def to_hash: -> {
+            created: Time,
+            status: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status,
+            status_reasons: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::status_reason],
+            updated: Time
+          }
 
           type status =
             :ACCEPTED | :PENDING_DOCUMENT | :PENDING_RESUBMIT | :REJECTED
@@ -654,6 +741,17 @@ module Lithic
           ?phone_number: String
         ) -> void
 
+        def to_hash: -> {
+          token: String,
+          address: Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address,
+          business_account_token: String,
+          email: String,
+          first_name: String,
+          last_name: String,
+          legal_business_name: String,
+          phone_number: String
+        }
+
         type address =
           {
             :address1 => String,
@@ -687,6 +785,15 @@ module Lithic
             state: String,
             ?address2: String
           ) -> void
+
+          def to_hash: -> {
+            :address1 => String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String,
+            :address2 => String
+          }
         end
       end
 

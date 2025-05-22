@@ -7,7 +7,7 @@ module Lithic
       #
       # @overload create(type: nil, url: nil, request_options: {})
       #
-      # @param type [Symbol, Lithic::ResponderEndpointCreateParams::Type] The type of the endpoint.
+      # @param type [Symbol, Lithic::Models::ResponderEndpointCreateParams::Type] The type of the endpoint.
       #
       # @param url [String] The URL for the responder endpoint (must be http(s)).
       #
@@ -31,7 +31,7 @@ module Lithic
       #
       # @overload delete(type:, request_options: {})
       #
-      # @param type [Symbol, Lithic::ResponderEndpointDeleteParams::Type] The type of the endpoint.
+      # @param type [Symbol, Lithic::Models::ResponderEndpointDeleteParams::Type] The type of the endpoint.
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -53,11 +53,11 @@ module Lithic
       #
       # @overload check_status(type:, request_options: {})
       #
-      # @param type [Symbol, Lithic::ResponderEndpointCheckStatusParams::Type] The type of the endpoint.
+      # @param type [Symbol, Lithic::Models::ResponderEndpointCheckStatusParams::Type] The type of the endpoint.
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::ResponderEndpointStatus]
+      # @return [Lithic::Models::ResponderEndpointStatus]
       #
       # @see Lithic::Models::ResponderEndpointCheckStatusParams
       def check_status(params)

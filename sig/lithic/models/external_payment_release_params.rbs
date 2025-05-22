@@ -19,6 +19,12 @@ module Lithic
         ?memo: String,
         ?request_options: Lithic::request_opts
       ) -> void
+
+      def to_hash: -> {
+        effective_date: Date,
+        memo: String,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

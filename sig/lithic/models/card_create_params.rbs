@@ -121,6 +121,27 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        type: Lithic::Models::CardCreateParams::type_,
+        account_token: String,
+        card_program_token: String,
+        carrier: Lithic::Carrier,
+        digital_card_art_token: String,
+        exp_month: String,
+        exp_year: String,
+        memo: String,
+        pin: String,
+        product_id: String,
+        replacement_account_token: String,
+        replacement_for: String,
+        shipping_address: Lithic::ShippingAddress,
+        shipping_method: Lithic::Models::CardCreateParams::shipping_method,
+        spend_limit: Integer,
+        spend_limit_duration: Lithic::Models::spend_limit_duration,
+        state: Lithic::Models::CardCreateParams::state,
+        request_options: Lithic::RequestOptions
+      }
+
       type type_ =
         :MERCHANT_LOCKED
         | :PHYSICAL

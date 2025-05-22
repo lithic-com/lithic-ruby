@@ -9,6 +9,8 @@ module Lithic
       def data=: (::Array[Lithic::Document]) -> ::Array[Lithic::Document]
 
       def initialize: (?data: ::Array[Lithic::Document]) -> void
+
+      def to_hash: -> { data: ::Array[Lithic::Document] }
     end
   end
 end

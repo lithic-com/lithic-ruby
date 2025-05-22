@@ -24,17 +24,17 @@ module Lithic
 
       # @!attribute method_
       #
-      #   @return [Symbol, Lithic::PaymentCreateParams::Method]
+      #   @return [Symbol, Lithic::Models::PaymentCreateParams::Method]
       required :method_, enum: -> { Lithic::PaymentCreateParams::Method }, api_name: :method
 
       # @!attribute method_attributes
       #
-      #   @return [Lithic::PaymentCreateParams::MethodAttributes]
+      #   @return [Lithic::Models::PaymentCreateParams::MethodAttributes]
       required :method_attributes, -> { Lithic::PaymentCreateParams::MethodAttributes }
 
       # @!attribute type
       #
-      #   @return [Symbol, Lithic::PaymentCreateParams::Type]
+      #   @return [Symbol, Lithic::Models::PaymentCreateParams::Type]
       required :type, enum: -> { Lithic::PaymentCreateParams::Type }
 
       # @!attribute token
@@ -64,11 +64,11 @@ module Lithic
       #
       #   @param financial_account_token [String]
       #
-      #   @param method_ [Symbol, Lithic::PaymentCreateParams::Method]
+      #   @param method_ [Symbol, Lithic::Models::PaymentCreateParams::Method]
       #
-      #   @param method_attributes [Lithic::PaymentCreateParams::MethodAttributes]
+      #   @param method_attributes [Lithic::Models::PaymentCreateParams::MethodAttributes]
       #
-      #   @param type [Symbol, Lithic::PaymentCreateParams::Type]
+      #   @param type [Symbol, Lithic::Models::PaymentCreateParams::Type]
       #
       #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
       #
@@ -91,13 +91,13 @@ module Lithic
       class MethodAttributes < Lithic::Internal::Type::BaseModel
         # @!attribute sec_code
         #
-        #   @return [Symbol, Lithic::PaymentCreateParams::MethodAttributes::SecCode]
+        #   @return [Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode]
         required :sec_code, enum: -> { Lithic::PaymentCreateParams::MethodAttributes::SecCode }
 
         # @!method initialize(sec_code:)
-        #   @param sec_code [Symbol, Lithic::PaymentCreateParams::MethodAttributes::SecCode]
+        #   @param sec_code [Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode]
 
-        # @see Lithic::PaymentCreateParams::MethodAttributes#sec_code
+        # @see Lithic::Models::PaymentCreateParams::MethodAttributes#sec_code
         module SecCode
           extend Lithic::Internal::Type::Enum
 

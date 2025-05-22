@@ -22,6 +22,11 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> void
 
+        def to_hash: -> {
+          event_type: Lithic::Models::Events::SubscriptionSendSimulatedExampleParams::event_type,
+          request_options: Lithic::RequestOptions
+        }
+
         type event_type =
           :"account_holder.created"
           | :"account_holder.updated"

@@ -19,9 +19,9 @@ module Lithic
         #
         # @param name [String, nil] Auth Rule Name
         #
-        # @param parameters [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters] Parameters for the Auth Rule
+        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters] Parameters for the Auth Rule
         #
-        # @param type [Symbol, Lithic::AuthRules::V2CreateParams::Type] The type of Auth Rule
+        # @param type [Symbol, Lithic::Models::AuthRules::V2CreateParams::Type] The type of Auth Rule
         #
         # @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
         #
@@ -78,7 +78,7 @@ module Lithic
         #
         # @param name [String, nil] Auth Rule Name
         #
-        # @param state [Symbol, Lithic::AuthRules::V2UpdateParams::State] The desired state of the Auth Rule.
+        # @param state [Symbol, Lithic::Models::AuthRules::V2UpdateParams::State] The desired state of the Auth Rule.
         #
         # @param card_tokens [Array<String>] Card tokens to which the Auth Rule applies.
         #
@@ -117,7 +117,7 @@ module Lithic
         #
         # @param page_size [Integer] Page size (for pagination).
         #
-        # @param scope [Symbol, Lithic::AuthRules::V2ListParams::Scope] Only return Authorization Rules that are bound to the provided scope;
+        # @param scope [Symbol, Lithic::Models::AuthRules::V2ListParams::Scope] Only return Authorization Rules that are bound to the provided scope;
         #
         # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
         #
@@ -200,7 +200,7 @@ module Lithic
         #
         # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
         #
-        # @param parameters [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters, nil] Parameters for the Auth Rule
+        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters, nil] Parameters for the Auth Rule
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #

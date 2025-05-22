@@ -20,7 +20,7 @@ module Lithic
 
       # @!attribute details
       #
-      #   @return [Array<Lithic::SettlementSummaryDetails>]
+      #   @return [Array<Lithic::Models::SettlementSummaryDetails>]
       required :details, -> { Lithic::Internal::Type::ArrayOf[Lithic::SettlementSummaryDetails] }
 
       # @!attribute disputes_gross_amount
@@ -96,14 +96,14 @@ module Lithic
       required :updated, Time
 
       # @!method initialize(created:, currency:, details:, disputes_gross_amount:, interchange_gross_amount:, is_complete:, other_fees_gross_amount:, report_date:, settled_net_amount:, transactions_gross_amount:, updated:)
-      #   Some parameter documentations has been truncated, see {Lithic::SettlementReport}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::SettlementReport} for more details.
       #
       #   @param created [Time] Date and time when the transaction first occurred. UTC time zone.
       #
       #   @param currency [String] 3-character alphabetic ISO 4217 code. (This field is deprecated and will be remo
       #
-      #   @param details [Array<Lithic::SettlementSummaryDetails>]
+      #   @param details [Array<Lithic::Models::SettlementSummaryDetails>]
       #
       #   @param disputes_gross_amount [Integer] The total gross amount of disputes settlements. (This field is deprecated and wi
       #

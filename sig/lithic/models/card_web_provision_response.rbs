@@ -19,6 +19,11 @@ module Lithic
         ?state: String
       ) -> void
 
+      def to_hash: -> {
+        jws: Lithic::Models::CardWebProvisionResponse::Jws,
+        state: String
+      }
+
       type jws =
         {
           header: Lithic::Models::CardWebProvisionResponse::Jws::Header,
@@ -53,6 +58,13 @@ module Lithic
           ?signature: String
         ) -> void
 
+        def to_hash: -> {
+          header: Lithic::Models::CardWebProvisionResponse::Jws::Header,
+          payload: String,
+          protected: String,
+          signature: String
+        }
+
         type header = { kid: String }
 
         class Header < Lithic::Internal::Type::BaseModel
@@ -61,6 +73,8 @@ module Lithic
           def kid=: (String) -> String
 
           def initialize: (?kid: String) -> void
+
+          def to_hash: -> { kid: String }
         end
       end
     end

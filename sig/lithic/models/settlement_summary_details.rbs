@@ -6,7 +6,7 @@ module Lithic
         disputes_gross_amount: Integer,
         institution: String,
         interchange_gross_amount: Integer,
-        network: Lithic::SettlementSummaryDetails::network,
+        network: Lithic::Models::SettlementSummaryDetails::network,
         other_fees_gross_amount: Integer,
         settled_net_amount: Integer,
         transactions_gross_amount: Integer
@@ -29,11 +29,11 @@ module Lithic
 
       def interchange_gross_amount=: (Integer) -> Integer
 
-      attr_reader network: Lithic::SettlementSummaryDetails::network?
+      attr_reader network: Lithic::Models::SettlementSummaryDetails::network?
 
       def network=: (
-        Lithic::SettlementSummaryDetails::network
-      ) -> Lithic::SettlementSummaryDetails::network
+        Lithic::Models::SettlementSummaryDetails::network
+      ) -> Lithic::Models::SettlementSummaryDetails::network
 
       attr_reader other_fees_gross_amount: Integer?
 
@@ -52,11 +52,22 @@ module Lithic
         ?disputes_gross_amount: Integer,
         ?institution: String,
         ?interchange_gross_amount: Integer,
-        ?network: Lithic::SettlementSummaryDetails::network,
+        ?network: Lithic::Models::SettlementSummaryDetails::network,
         ?other_fees_gross_amount: Integer,
         ?settled_net_amount: Integer,
         ?transactions_gross_amount: Integer
       ) -> void
+
+      def to_hash: -> {
+        currency: String,
+        disputes_gross_amount: Integer,
+        institution: String,
+        interchange_gross_amount: Integer,
+        network: Lithic::Models::SettlementSummaryDetails::network,
+        other_fees_gross_amount: Integer,
+        settled_net_amount: Integer,
+        transactions_gross_amount: Integer
+      }
 
       type network = :INTERLINK | :MAESTRO | :MASTERCARD | :UNKNOWN | :VISA
 
@@ -69,7 +80,7 @@ module Lithic
         UNKNOWN: :UNKNOWN
         VISA: :VISA
 
-        def self?.values: -> ::Array[Lithic::SettlementSummaryDetails::network]
+        def self?.values: -> ::Array[Lithic::Models::SettlementSummaryDetails::network]
       end
     end
   end

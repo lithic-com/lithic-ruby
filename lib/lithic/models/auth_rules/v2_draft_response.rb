@@ -89,7 +89,7 @@ module Lithic
           # @!attribute parameters
           #   Parameters for the Auth Rule
           #
-          #   @return [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::MerchantLockParameters]
+          #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::MerchantLockParameters]
           required :parameters, union: -> { Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters }
 
           response_only do
@@ -105,7 +105,7 @@ module Lithic
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion} for more details.
           #
-          #   @param parameters [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::MerchantLockParameters] Parameters for the Auth Rule
+          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::MerchantLockParameters] Parameters for the Auth Rule
           #
           #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
 
@@ -179,7 +179,7 @@ module Lithic
             end
 
             # @!method self.variants
-            #   @return [Array(Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::MerchantLockParameters)]
+            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::MerchantLockParameters)]
           end
         end
 
@@ -188,7 +188,7 @@ module Lithic
           # @!attribute parameters
           #   Parameters for the Auth Rule
           #
-          #   @return [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::MerchantLockParameters]
+          #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::MerchantLockParameters]
           required :parameters, union: -> { Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters }
 
           response_only do
@@ -204,7 +204,7 @@ module Lithic
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::AuthRules::V2DraftResponse::DraftVersion} for more details.
           #
-          #   @param parameters [Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::MerchantLockParameters] Parameters for the Auth Rule
+          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::MerchantLockParameters] Parameters for the Auth Rule
           #
           #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
 
@@ -278,7 +278,7 @@ module Lithic
             end
 
             # @!method self.variants
-            #   @return [Array(Lithic::AuthRules::ConditionalBlockParameters, Lithic::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::MerchantLockParameters)]
+            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::MerchantLockParameters)]
           end
         end
 

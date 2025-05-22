@@ -61,6 +61,20 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        amount: Integer,
+        category: Lithic::Models::ManagementOperationCreateParams::category,
+        direction: Lithic::Models::ManagementOperationCreateParams::direction,
+        effective_date: Date,
+        event_type: Lithic::Models::ManagementOperationCreateParams::event_type,
+        financial_account_token: String,
+        token: String,
+        memo: String,
+        subtype: String,
+        user_defined_id: String,
+        request_options: Lithic::RequestOptions
+      }
+
       type category =
         :MANAGEMENT_FEE
         | :MANAGEMENT_DISPUTE

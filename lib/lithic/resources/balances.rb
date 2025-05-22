@@ -16,11 +16,11 @@ module Lithic
       #
       # @param business_account_token [String] List balances for all financial accounts of a given business_account_token.
       #
-      # @param financial_account_type [Symbol, Lithic::BalanceListParams::FinancialAccountType] List balances for a given Financial Account type.
+      # @param financial_account_type [Symbol, Lithic::Models::BalanceListParams::FinancialAccountType] List balances for a given Financial Account type.
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::SinglePage<Lithic::Balance>]
+      # @return [Lithic::Internal::SinglePage<Lithic::Models::Balance>]
       #
       # @see Lithic::Models::BalanceListParams
       def list(params = {})

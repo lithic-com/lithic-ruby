@@ -35,6 +35,14 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        document_upload_token: String,
+        status: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status,
+        accepted_entity_status_reasons: ::Array[String],
+        status_reason: Lithic::Models::AccountHolderSimulateEnrollmentDocumentReviewParams::status_reason,
+        request_options: Lithic::RequestOptions
+      }
+
       type status = :UPLOADED | :ACCEPTED | :REJECTED | :PARTIAL_APPROVAL
 
       module Status

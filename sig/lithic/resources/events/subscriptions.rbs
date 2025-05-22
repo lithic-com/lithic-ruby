@@ -6,7 +6,7 @@ module Lithic
           url: String,
           ?description: String,
           ?disabled: bool,
-          ?event_types: ::Array[Lithic::Events::SubscriptionCreateParams::event_type],
+          ?event_types: ::Array[Lithic::Models::Events::SubscriptionCreateParams::event_type],
           ?request_options: Lithic::request_opts
         ) -> Lithic::EventSubscription
 
@@ -20,7 +20,7 @@ module Lithic
           url: String,
           ?description: String,
           ?disabled: bool,
-          ?event_types: ::Array[Lithic::Events::SubscriptionUpdateParams::event_type],
+          ?event_types: ::Array[Lithic::Models::Events::SubscriptionUpdateParams::event_type],
           ?request_options: Lithic::request_opts
         ) -> Lithic::EventSubscription
 

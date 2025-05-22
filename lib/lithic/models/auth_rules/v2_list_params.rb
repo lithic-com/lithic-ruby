@@ -36,7 +36,7 @@ module Lithic
         # @!attribute scope
         #   Only return Authorization Rules that are bound to the provided scope;
         #
-        #   @return [Symbol, Lithic::AuthRules::V2ListParams::Scope, nil]
+        #   @return [Symbol, Lithic::Models::AuthRules::V2ListParams::Scope, nil]
         optional :scope, enum: -> { Lithic::AuthRules::V2ListParams::Scope }
 
         # @!attribute starting_after
@@ -58,7 +58,7 @@ module Lithic
         #
         #   @param page_size [Integer] Page size (for pagination).
         #
-        #   @param scope [Symbol, Lithic::AuthRules::V2ListParams::Scope] Only return Authorization Rules that are bound to the provided scope;
+        #   @param scope [Symbol, Lithic::Models::AuthRules::V2ListParams::Scope] Only return Authorization Rules that are bound to the provided scope;
         #
         #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
         #

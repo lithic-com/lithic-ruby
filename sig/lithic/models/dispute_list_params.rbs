@@ -57,6 +57,17 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        begin_: Time,
+        end_: Time,
+        ending_before: String,
+        page_size: Integer,
+        starting_after: String,
+        status: Lithic::Models::DisputeListParams::status,
+        transaction_tokens: ::Array[String],
+        request_options: Lithic::RequestOptions
+      }
+
       type status =
         :ARBITRATION
         | :CASE_CLOSED

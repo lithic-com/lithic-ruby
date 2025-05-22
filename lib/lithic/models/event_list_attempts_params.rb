@@ -43,7 +43,7 @@ module Lithic
 
       # @!attribute status
       #
-      #   @return [Symbol, Lithic::EventListAttemptsParams::Status, nil]
+      #   @return [Symbol, Lithic::Models::EventListAttemptsParams::Status, nil]
       optional :status, enum: -> { Lithic::EventListAttemptsParams::Status }
 
       # @!method initialize(begin_: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, status: nil, request_options: {})
@@ -60,7 +60,7 @@ module Lithic
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      #   @param status [Symbol, Lithic::EventListAttemptsParams::Status]
+      #   @param status [Symbol, Lithic::Models::EventListAttemptsParams::Status]
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

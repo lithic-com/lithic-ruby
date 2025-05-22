@@ -3,16 +3,16 @@ module Lithic
     type management_operation_transaction =
       {
         token: String,
-        category: Lithic::ManagementOperationTransaction::category,
+        category: Lithic::Models::ManagementOperationTransaction::category,
         created: Time,
         currency: String,
-        direction: Lithic::ManagementOperationTransaction::direction,
+        direction: Lithic::Models::ManagementOperationTransaction::direction,
         events: ::Array[Lithic::ManagementOperationTransaction::Event],
         financial_account_token: String,
         pending_amount: Integer,
-        result: Lithic::ManagementOperationTransaction::result,
+        result: Lithic::Models::ManagementOperationTransaction::result,
         settled_amount: Integer,
-        status: Lithic::ManagementOperationTransaction::status,
+        status: Lithic::Models::ManagementOperationTransaction::status,
         transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries?,
         updated: Time,
         user_defined_id: String
@@ -21,13 +21,13 @@ module Lithic
     class ManagementOperationTransaction < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
-      attr_accessor category: Lithic::ManagementOperationTransaction::category
+      attr_accessor category: Lithic::Models::ManagementOperationTransaction::category
 
       attr_accessor created: Time
 
       attr_accessor currency: String
 
-      attr_accessor direction: Lithic::ManagementOperationTransaction::direction
+      attr_accessor direction: Lithic::Models::ManagementOperationTransaction::direction
 
       attr_accessor events: ::Array[Lithic::ManagementOperationTransaction::Event]
 
@@ -35,11 +35,11 @@ module Lithic
 
       attr_accessor pending_amount: Integer
 
-      attr_accessor result: Lithic::ManagementOperationTransaction::result
+      attr_accessor result: Lithic::Models::ManagementOperationTransaction::result
 
       attr_accessor settled_amount: Integer
 
-      attr_accessor status: Lithic::ManagementOperationTransaction::status
+      attr_accessor status: Lithic::Models::ManagementOperationTransaction::status
 
       attr_accessor transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries?
 
@@ -51,20 +51,37 @@ module Lithic
 
       def initialize: (
         token: String,
-        category: Lithic::ManagementOperationTransaction::category,
+        category: Lithic::Models::ManagementOperationTransaction::category,
         created: Time,
         currency: String,
-        direction: Lithic::ManagementOperationTransaction::direction,
+        direction: Lithic::Models::ManagementOperationTransaction::direction,
         events: ::Array[Lithic::ManagementOperationTransaction::Event],
         financial_account_token: String,
         pending_amount: Integer,
-        result: Lithic::ManagementOperationTransaction::result,
+        result: Lithic::Models::ManagementOperationTransaction::result,
         settled_amount: Integer,
-        status: Lithic::ManagementOperationTransaction::status,
+        status: Lithic::Models::ManagementOperationTransaction::status,
         transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries?,
         updated: Time,
         ?user_defined_id: String
       ) -> void
+
+      def to_hash: -> {
+        token: String,
+        category: Lithic::Models::ManagementOperationTransaction::category,
+        created: Time,
+        currency: String,
+        direction: Lithic::Models::ManagementOperationTransaction::direction,
+        events: ::Array[Lithic::ManagementOperationTransaction::Event],
+        financial_account_token: String,
+        pending_amount: Integer,
+        result: Lithic::Models::ManagementOperationTransaction::result,
+        settled_amount: Integer,
+        status: Lithic::Models::ManagementOperationTransaction::status,
+        transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries?,
+        updated: Time,
+        user_defined_id: String
+      }
 
       type category =
         :MANAGEMENT_FEE
@@ -82,7 +99,7 @@ module Lithic
         MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
         MANAGEMENT_DISBURSEMENT: :MANAGEMENT_DISBURSEMENT
 
-        def self?.values: -> ::Array[Lithic::ManagementOperationTransaction::category]
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::category]
       end
 
       type direction = :CREDIT | :DEBIT
@@ -93,7 +110,7 @@ module Lithic
         CREDIT: :CREDIT
         DEBIT: :DEBIT
 
-        def self?.values: -> ::Array[Lithic::ManagementOperationTransaction::direction]
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::direction]
       end
 
       type event =
@@ -101,11 +118,11 @@ module Lithic
           token: String,
           amount: Integer,
           created: Time,
-          detailed_results: ::Array[Lithic::ManagementOperationTransaction::Event::detailed_result],
+          detailed_results: ::Array[Lithic::Models::ManagementOperationTransaction::Event::detailed_result],
           effective_date: Date,
           memo: String,
-          result: Lithic::ManagementOperationTransaction::Event::result,
-          type: Lithic::ManagementOperationTransaction::Event::type_,
+          result: Lithic::Models::ManagementOperationTransaction::Event::result,
+          type: Lithic::Models::ManagementOperationTransaction::Event::type_,
           subtype: String
         }
 
@@ -116,15 +133,15 @@ module Lithic
 
         attr_accessor created: Time
 
-        attr_accessor detailed_results: ::Array[Lithic::ManagementOperationTransaction::Event::detailed_result]
+        attr_accessor detailed_results: ::Array[Lithic::Models::ManagementOperationTransaction::Event::detailed_result]
 
         attr_accessor effective_date: Date
 
         attr_accessor memo: String
 
-        attr_accessor result: Lithic::ManagementOperationTransaction::Event::result
+        attr_accessor result: Lithic::Models::ManagementOperationTransaction::Event::result
 
-        attr_accessor type: Lithic::ManagementOperationTransaction::Event::type_
+        attr_accessor type: Lithic::Models::ManagementOperationTransaction::Event::type_
 
         attr_reader subtype: String?
 
@@ -134,13 +151,25 @@ module Lithic
           token: String,
           amount: Integer,
           created: Time,
-          detailed_results: ::Array[Lithic::ManagementOperationTransaction::Event::detailed_result],
+          detailed_results: ::Array[Lithic::Models::ManagementOperationTransaction::Event::detailed_result],
           effective_date: Date,
           memo: String,
-          result: Lithic::ManagementOperationTransaction::Event::result,
-          type: Lithic::ManagementOperationTransaction::Event::type_,
+          result: Lithic::Models::ManagementOperationTransaction::Event::result,
+          type: Lithic::Models::ManagementOperationTransaction::Event::type_,
           ?subtype: String
         ) -> void
+
+        def to_hash: -> {
+          token: String,
+          amount: Integer,
+          created: Time,
+          detailed_results: ::Array[Lithic::Models::ManagementOperationTransaction::Event::detailed_result],
+          effective_date: Date,
+          memo: String,
+          result: Lithic::Models::ManagementOperationTransaction::Event::result,
+          type: Lithic::Models::ManagementOperationTransaction::Event::type_,
+          subtype: String
+        }
 
         type detailed_result = :APPROVED
 
@@ -149,7 +178,7 @@ module Lithic
 
           APPROVED: :APPROVED
 
-          def self?.values: -> ::Array[Lithic::ManagementOperationTransaction::Event::detailed_result]
+          def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::detailed_result]
         end
 
         type result = :APPROVED | :DECLINED
@@ -160,7 +189,7 @@ module Lithic
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
-          def self?.values: -> ::Array[Lithic::ManagementOperationTransaction::Event::result]
+          def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::result]
         end
 
         type type_ =
@@ -207,7 +236,7 @@ module Lithic
           DISBURSE: :DISBURSE
           DISBURSE_REVERSAL: :DISBURSE_REVERSAL
 
-          def self?.values: -> ::Array[Lithic::ManagementOperationTransaction::Event::type_]
+          def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::type_]
         end
       end
 
@@ -219,7 +248,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self?.values: -> ::Array[Lithic::ManagementOperationTransaction::result]
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::result]
       end
 
       type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
@@ -233,7 +262,7 @@ module Lithic
         REVERSED: :REVERSED
         CANCELED: :CANCELED
 
-        def self?.values: -> ::Array[Lithic::ManagementOperationTransaction::status]
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::status]
       end
 
       type transaction_series =
@@ -255,6 +284,12 @@ module Lithic
           related_transaction_token: String?,
           type: String
         ) -> void
+
+        def to_hash: -> {
+          related_transaction_event_token: String?,
+          related_transaction_token: String?,
+          type: String
+        }
       end
     end
   end

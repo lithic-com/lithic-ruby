@@ -49,6 +49,18 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        amount: Integer,
+        category: Lithic::Models::BookTransferCreateParams::category,
+        from_financial_account_token: String,
+        subtype: String,
+        to_financial_account_token: String,
+        type: Lithic::Models::BookTransferCreateParams::type_,
+        token: String,
+        memo: String,
+        request_options: Lithic::RequestOptions
+      }
+
       type category =
         :ADJUSTMENT
         | :BALANCE_OR_FUNDING

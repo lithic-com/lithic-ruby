@@ -34,13 +34,13 @@ module Lithic
         #
         # @overload simulate(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {})
         #
-        # @param merchant [Lithic::ThreeDS::AuthenticationSimulateParams::Merchant]
+        # @param merchant [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant]
         #
         # @param pan [String] Sixteen digit card number.
         #
-        # @param transaction [Lithic::ThreeDS::AuthenticationSimulateParams::Transaction]
+        # @param transaction [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction]
         #
-        # @param card_expiry_check [Symbol, Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck] When set will use the following values as part of the Simulated Authentication.
+        # @param card_expiry_check [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck] When set will use the following values as part of the Simulated Authentication.
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #

@@ -55,7 +55,7 @@ module Lithic
       #   Filter for tokenizations by tokenization channel. If this is not specified, only
       #   DIGITAL_WALLET tokenizations will be returned.
       #
-      #   @return [Symbol, Lithic::TokenizationListParams::TokenizationChannel, nil]
+      #   @return [Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel, nil]
       optional :tokenization_channel, enum: -> { Lithic::TokenizationListParams::TokenizationChannel }
 
       # @!method initialize(account_token: nil, begin_: nil, card_token: nil, end_: nil, ending_before: nil, page_size: nil, starting_after: nil, tokenization_channel: nil, request_options: {})
@@ -76,7 +76,7 @@ module Lithic
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      #   @param tokenization_channel [Symbol, Lithic::TokenizationListParams::TokenizationChannel] Filter for tokenizations by tokenization channel. If this is not specified, only
+      #   @param tokenization_channel [Symbol, Lithic::Models::TokenizationListParams::TokenizationChannel] Filter for tokenizations by tokenization channel. If this is not specified, only
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

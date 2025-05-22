@@ -113,6 +113,25 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        beneficial_owner_entities: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity],
+        beneficial_owner_individuals: ::Array[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual],
+        business_entity: Lithic::AccountHolderUpdateParams::BusinessEntity,
+        control_person: Lithic::AccountHolderUpdateParams::ControlPerson,
+        external_id: String,
+        nature_of_business: String,
+        website_url: String,
+        individual: Lithic::AccountHolderUpdateParams::Individual,
+        address: Lithic::AddressUpdate,
+        business_account_token: String,
+        email: String,
+        first_name: String,
+        last_name: String,
+        legal_business_name: String,
+        phone_number: String,
+        request_options: Lithic::RequestOptions
+      }
+
       type beneficial_owner_entity =
         {
           entity_token: String,
@@ -160,6 +179,16 @@ module Lithic
           ?parent_company: String,
           ?phone_numbers: ::Array[String]
         ) -> void
+
+        def to_hash: -> {
+          entity_token: String,
+          address: Lithic::AddressUpdate,
+          dba_business_name: String,
+          government_id: String,
+          legal_business_name: String,
+          parent_company: String,
+          phone_numbers: ::Array[String]
+        }
       end
 
       type beneficial_owner_individual =
@@ -215,6 +244,17 @@ module Lithic
           ?last_name: String,
           ?phone_number: String
         ) -> void
+
+        def to_hash: -> {
+          entity_token: String,
+          address: Lithic::AddressUpdate,
+          dob: String,
+          email: String,
+          first_name: String,
+          government_id: String,
+          last_name: String,
+          phone_number: String
+        }
       end
 
       type business_entity =
@@ -264,6 +304,16 @@ module Lithic
           ?parent_company: String,
           ?phone_numbers: ::Array[String]
         ) -> void
+
+        def to_hash: -> {
+          entity_token: String,
+          address: Lithic::AddressUpdate,
+          dba_business_name: String,
+          government_id: String,
+          legal_business_name: String,
+          parent_company: String,
+          phone_numbers: ::Array[String]
+        }
       end
 
       type control_person =
@@ -319,6 +369,17 @@ module Lithic
           ?last_name: String,
           ?phone_number: String
         ) -> void
+
+        def to_hash: -> {
+          entity_token: String,
+          address: Lithic::AddressUpdate,
+          dob: String,
+          email: String,
+          first_name: String,
+          government_id: String,
+          last_name: String,
+          phone_number: String
+        }
       end
 
       type individual =
@@ -374,6 +435,17 @@ module Lithic
           ?last_name: String,
           ?phone_number: String
         ) -> void
+
+        def to_hash: -> {
+          entity_token: String,
+          address: Lithic::AddressUpdate,
+          dob: String,
+          email: String,
+          first_name: String,
+          government_id: String,
+          last_name: String,
+          phone_number: String
+        }
       end
     end
   end

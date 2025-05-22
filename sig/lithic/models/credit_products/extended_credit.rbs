@@ -7,6 +7,8 @@ module Lithic
         attr_accessor credit_extended: Integer
 
         def initialize: (credit_extended: Integer) -> void
+
+        def to_hash: -> { credit_extended: Integer }
       end
     end
   end

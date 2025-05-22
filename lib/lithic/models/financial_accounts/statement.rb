@@ -13,12 +13,12 @@ module Lithic
 
         # @!attribute account_standing
         #
-        #   @return [Lithic::FinancialAccounts::Statement::AccountStanding]
+        #   @return [Lithic::Models::FinancialAccounts::Statement::AccountStanding]
         required :account_standing, -> { Lithic::FinancialAccounts::Statement::AccountStanding }
 
         # @!attribute amount_due
         #
-        #   @return [Lithic::FinancialAccounts::Statement::AmountDue]
+        #   @return [Lithic::Models::FinancialAccounts::Statement::AmountDue]
         required :amount_due, -> { Lithic::FinancialAccounts::Statement::AmountDue }
 
         # @!attribute available_credit
@@ -72,7 +72,7 @@ module Lithic
 
         # @!attribute period_totals
         #
-        #   @return [Lithic::FinancialAccounts::Statement::PeriodTotals]
+        #   @return [Lithic::Models::FinancialAccounts::Statement::PeriodTotals]
         required :period_totals, -> { Lithic::FinancialAccounts::Statement::PeriodTotals }
 
         # @!attribute starting_balance
@@ -95,7 +95,7 @@ module Lithic
 
         # @!attribute statement_type
         #
-        #   @return [Symbol, Lithic::FinancialAccounts::Statement::StatementType]
+        #   @return [Symbol, Lithic::Models::FinancialAccounts::Statement::StatementType]
         required :statement_type, enum: -> { Lithic::FinancialAccounts::Statement::StatementType }
 
         # @!attribute updated
@@ -106,12 +106,12 @@ module Lithic
 
         # @!attribute ytd_totals
         #
-        #   @return [Lithic::FinancialAccounts::Statement::YtdTotals]
+        #   @return [Lithic::Models::FinancialAccounts::Statement::YtdTotals]
         required :ytd_totals, -> { Lithic::FinancialAccounts::Statement::YtdTotals }
 
         # @!attribute interest_details
         #
-        #   @return [Lithic::FinancialAccounts::Statement::InterestDetails, nil]
+        #   @return [Lithic::Models::FinancialAccounts::Statement::InterestDetails, nil]
         optional :interest_details, -> { Lithic::FinancialAccounts::Statement::InterestDetails }, nil?: true
 
         # @!attribute next_payment_due_date
@@ -128,13 +128,13 @@ module Lithic
 
         # @!method initialize(token:, account_standing:, amount_due:, available_credit:, created:, credit_limit:, credit_product_token:, days_in_billing_cycle:, ending_balance:, financial_account_token:, payment_due_date:, period_totals:, starting_balance:, statement_end_date:, statement_start_date:, statement_type:, updated:, ytd_totals:, interest_details: nil, next_payment_due_date: nil, next_statement_end_date: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::FinancialAccounts::Statement} for more details.
+        #   {Lithic::Models::FinancialAccounts::Statement} for more details.
         #
         #   @param token [String] Globally unique identifier for a statement
         #
-        #   @param account_standing [Lithic::FinancialAccounts::Statement::AccountStanding]
+        #   @param account_standing [Lithic::Models::FinancialAccounts::Statement::AccountStanding]
         #
-        #   @param amount_due [Lithic::FinancialAccounts::Statement::AmountDue]
+        #   @param amount_due [Lithic::Models::FinancialAccounts::Statement::AmountDue]
         #
         #   @param available_credit [Integer] Amount of credit available to spend in cents
         #
@@ -152,7 +152,7 @@ module Lithic
         #
         #   @param payment_due_date [Date, nil] Date when the payment is due
         #
-        #   @param period_totals [Lithic::FinancialAccounts::Statement::PeriodTotals]
+        #   @param period_totals [Lithic::Models::FinancialAccounts::Statement::PeriodTotals]
         #
         #   @param starting_balance [Integer] Balance at the start of the billing period
         #
@@ -160,19 +160,19 @@ module Lithic
         #
         #   @param statement_start_date [Date] Date when the billing period began
         #
-        #   @param statement_type [Symbol, Lithic::FinancialAccounts::Statement::StatementType]
+        #   @param statement_type [Symbol, Lithic::Models::FinancialAccounts::Statement::StatementType]
         #
         #   @param updated [Time] Timestamp of when the statement was updated
         #
-        #   @param ytd_totals [Lithic::FinancialAccounts::Statement::YtdTotals]
+        #   @param ytd_totals [Lithic::Models::FinancialAccounts::Statement::YtdTotals]
         #
-        #   @param interest_details [Lithic::FinancialAccounts::Statement::InterestDetails, nil]
+        #   @param interest_details [Lithic::Models::FinancialAccounts::Statement::InterestDetails, nil]
         #
         #   @param next_payment_due_date [Date] Date when the next payment is due
         #
         #   @param next_statement_end_date [Date] Date when the next billing period will end
 
-        # @see Lithic::FinancialAccounts::Statement#account_standing
+        # @see Lithic::Models::FinancialAccounts::Statement#account_standing
         class AccountStanding < Lithic::Internal::Type::BaseModel
           # @!attribute consecutive_full_payments_made
           #   Number of consecutive full payments made
@@ -201,7 +201,7 @@ module Lithic
           # @!attribute financial_account_state
           #   Information about the financial account state
           #
-          #   @return [Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState]
+          #   @return [Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState]
           required :financial_account_state,
                    -> { Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState }
 
@@ -219,7 +219,7 @@ module Lithic
 
           # @!attribute period_state
           #
-          #   @return [Symbol, Lithic::FinancialAccounts::Statement::AccountStanding::PeriodState]
+          #   @return [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState]
           required :period_state,
                    enum: -> {
                      Lithic::FinancialAccounts::Statement::AccountStanding::PeriodState
@@ -234,20 +234,20 @@ module Lithic
           #
           #   @param days_past_due [Integer] Number of days past due
           #
-          #   @param financial_account_state [Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState] Information about the financial account state
+          #   @param financial_account_state [Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState] Information about the financial account state
           #
           #   @param has_grace [Boolean] Whether the account currently has grace or not
           #
           #   @param period_number [Integer] Current overall period number
           #
-          #   @param period_state [Symbol, Lithic::FinancialAccounts::Statement::AccountStanding::PeriodState]
+          #   @param period_state [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState]
 
-          # @see Lithic::FinancialAccounts::Statement::AccountStanding#financial_account_state
+          # @see Lithic::Models::FinancialAccounts::Statement::AccountStanding#financial_account_state
           class FinancialAccountState < Lithic::Internal::Type::BaseModel
             # @!attribute status
             #   Status of the financial account
             #
-            #   @return [Symbol, Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Status]
+            #   @return [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Status]
             required :status,
                      enum: -> {
                        Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Status
@@ -256,7 +256,7 @@ module Lithic
             # @!attribute substatus
             #   Substatus for the financial account
             #
-            #   @return [Symbol, Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Substatus, nil]
+            #   @return [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Substatus, nil]
             optional :substatus,
                      enum: -> {
                        Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Substatus
@@ -266,13 +266,13 @@ module Lithic
             # @!method initialize(status:, substatus: nil)
             #   Information about the financial account state
             #
-            #   @param status [Symbol, Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Status] Status of the financial account
+            #   @param status [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Status] Status of the financial account
             #
-            #   @param substatus [Symbol, Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Substatus, nil] Substatus for the financial account
+            #   @param substatus [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Substatus, nil] Substatus for the financial account
 
             # Status of the financial account
             #
-            # @see Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState#status
+            # @see Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState#status
             module Status
               extend Lithic::Internal::Type::Enum
 
@@ -287,7 +287,7 @@ module Lithic
 
             # Substatus for the financial account
             #
-            # @see Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState#substatus
+            # @see Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState#substatus
             module Substatus
               extend Lithic::Internal::Type::Enum
 
@@ -302,7 +302,7 @@ module Lithic
             end
           end
 
-          # @see Lithic::FinancialAccounts::Statement::AccountStanding#period_state
+          # @see Lithic::Models::FinancialAccounts::Statement::AccountStanding#period_state
           module PeriodState
             extend Lithic::Internal::Type::Enum
 
@@ -315,7 +315,7 @@ module Lithic
           end
         end
 
-        # @see Lithic::FinancialAccounts::Statement#amount_due
+        # @see Lithic::Models::FinancialAccounts::Statement#amount_due
         class AmountDue < Lithic::Internal::Type::BaseModel
           # @!attribute amount
           #   Payment due at the end of the billing period in cents. Negative amount indicates
@@ -334,14 +334,14 @@ module Lithic
 
           # @!method initialize(amount:, past_due:)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::FinancialAccounts::Statement::AmountDue} for more details.
+          #   {Lithic::Models::FinancialAccounts::Statement::AmountDue} for more details.
           #
           #   @param amount [Integer] Payment due at the end of the billing period in cents. Negative amount indicates
           #
           #   @param past_due [Integer] Amount past due for statement in cents
         end
 
-        # @see Lithic::FinancialAccounts::Statement#period_totals
+        # @see Lithic::Models::FinancialAccounts::Statement#period_totals
         class PeriodTotals < Lithic::Internal::Type::BaseModel
           # @!attribute balance_transfers
           #   Opening balance transferred from previous account in cents
@@ -388,7 +388,7 @@ module Lithic
 
           # @!method initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::FinancialAccounts::Statement::PeriodTotals} for more details.
+          #   {Lithic::Models::FinancialAccounts::Statement::PeriodTotals} for more details.
           #
           #   @param balance_transfers [Integer] Opening balance transferred from previous account in cents
           #
@@ -405,7 +405,7 @@ module Lithic
           #   @param purchases [Integer] Net card transaction volume less any cash advances in cents
         end
 
-        # @see Lithic::FinancialAccounts::Statement#statement_type
+        # @see Lithic::Models::FinancialAccounts::Statement#statement_type
         module StatementType
           extend Lithic::Internal::Type::Enum
 
@@ -417,7 +417,7 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # @see Lithic::FinancialAccounts::Statement#ytd_totals
+        # @see Lithic::Models::FinancialAccounts::Statement#ytd_totals
         class YtdTotals < Lithic::Internal::Type::BaseModel
           # @!attribute balance_transfers
           #   Opening balance transferred from previous account in cents
@@ -464,7 +464,7 @@ module Lithic
 
           # @!method initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::FinancialAccounts::Statement::YtdTotals} for more details.
+          #   {Lithic::Models::FinancialAccounts::Statement::YtdTotals} for more details.
           #
           #   @param balance_transfers [Integer] Opening balance transferred from previous account in cents
           #
@@ -481,7 +481,7 @@ module Lithic
           #   @param purchases [Integer] Net card transaction volume less any cash advances in cents
         end
 
-        # @see Lithic::FinancialAccounts::Statement#interest_details
+        # @see Lithic::Models::FinancialAccounts::Statement#interest_details
         class InterestDetails < Lithic::Internal::Type::BaseModel
           # @!attribute actual_interest_charged
           #
@@ -490,18 +490,18 @@ module Lithic
 
           # @!attribute daily_balance_amounts
           #
-          #   @return [Lithic::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts]
+          #   @return [Lithic::Models::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts]
           required :daily_balance_amounts,
                    -> { Lithic::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts }
 
           # @!attribute effective_apr
           #
-          #   @return [Lithic::FinancialAccounts::Statement::InterestDetails::EffectiveApr]
+          #   @return [Lithic::Models::FinancialAccounts::Statement::InterestDetails::EffectiveApr]
           required :effective_apr, -> { Lithic::FinancialAccounts::Statement::InterestDetails::EffectiveApr }
 
           # @!attribute interest_calculation_method
           #
-          #   @return [Symbol, Lithic::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod]
+          #   @return [Symbol, Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod]
           required :interest_calculation_method,
                    enum: -> {
                      Lithic::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod
@@ -509,7 +509,7 @@ module Lithic
 
           # @!attribute interest_for_period
           #
-          #   @return [Lithic::FinancialAccounts::Statement::InterestDetails::InterestForPeriod]
+          #   @return [Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestForPeriod]
           required :interest_for_period,
                    -> { Lithic::FinancialAccounts::Statement::InterestDetails::InterestForPeriod }
 
@@ -525,14 +525,14 @@ module Lithic
 
           # @!method initialize(actual_interest_charged:, daily_balance_amounts:, effective_apr:, interest_calculation_method:, interest_for_period:, prime_rate:, minimum_interest_charged: nil)
           #   @param actual_interest_charged [Integer, nil]
-          #   @param daily_balance_amounts [Lithic::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts]
-          #   @param effective_apr [Lithic::FinancialAccounts::Statement::InterestDetails::EffectiveApr]
-          #   @param interest_calculation_method [Symbol, Lithic::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod]
-          #   @param interest_for_period [Lithic::FinancialAccounts::Statement::InterestDetails::InterestForPeriod]
+          #   @param daily_balance_amounts [Lithic::Models::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts]
+          #   @param effective_apr [Lithic::Models::FinancialAccounts::Statement::InterestDetails::EffectiveApr]
+          #   @param interest_calculation_method [Symbol, Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod]
+          #   @param interest_for_period [Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestForPeriod]
           #   @param prime_rate [String, nil]
           #   @param minimum_interest_charged [Integer, nil]
 
-          # @see Lithic::FinancialAccounts::Statement::InterestDetails#daily_balance_amounts
+          # @see Lithic::Models::FinancialAccounts::Statement::InterestDetails#daily_balance_amounts
           class DailyBalanceAmounts < Lithic::Internal::Type::BaseModel
             # @!attribute balance_transfers
             #
@@ -555,7 +555,7 @@ module Lithic
             #   @param purchases [String]
           end
 
-          # @see Lithic::FinancialAccounts::Statement::InterestDetails#effective_apr
+          # @see Lithic::Models::FinancialAccounts::Statement::InterestDetails#effective_apr
           class EffectiveApr < Lithic::Internal::Type::BaseModel
             # @!attribute balance_transfers
             #
@@ -578,7 +578,7 @@ module Lithic
             #   @param purchases [String]
           end
 
-          # @see Lithic::FinancialAccounts::Statement::InterestDetails#interest_calculation_method
+          # @see Lithic::Models::FinancialAccounts::Statement::InterestDetails#interest_calculation_method
           module InterestCalculationMethod
             extend Lithic::Internal::Type::Enum
 
@@ -589,7 +589,7 @@ module Lithic
             #   @return [Array<Symbol>]
           end
 
-          # @see Lithic::FinancialAccounts::Statement::InterestDetails#interest_for_period
+          # @see Lithic::Models::FinancialAccounts::Statement::InterestDetails#interest_for_period
           class InterestForPeriod < Lithic::Internal::Type::BaseModel
             # @!attribute balance_transfers
             #

@@ -10,6 +10,10 @@ module Lithic
         def initialize: (
           data: ::Array[Lithic::Transactions::Events::EnhancedData]
         ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Lithic::Transactions::Events::EnhancedData]
+        }
       end
     end
   end

@@ -69,6 +69,20 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        amount: Integer,
+        descriptor: String,
+        pan: String,
+        mcc: String,
+        merchant_acceptor_id: String,
+        merchant_amount: Integer,
+        merchant_currency: String,
+        partial_approval_capable: bool,
+        pin: String,
+        status: Lithic::Models::TransactionSimulateAuthorizationParams::status,
+        request_options: Lithic::RequestOptions
+      }
+
       type status =
         :AUTHORIZATION
         | :BALANCE_INQUIRY

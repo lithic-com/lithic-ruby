@@ -6,11 +6,11 @@ module Lithic
       type financial_account_credit_config =
         {
           account_token: String,
-          charged_off_reason: Lithic::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
+          charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
           credit_limit: Integer?,
           credit_product_token: String?,
           external_bank_account_token: String?,
-          financial_account_state: Lithic::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state,
+          financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state,
           is_spend_blocked: bool,
           tier: String?
         }
@@ -18,7 +18,7 @@ module Lithic
       class FinancialAccountCreditConfig < Lithic::Internal::Type::BaseModel
         attr_accessor account_token: String
 
-        attr_accessor charged_off_reason: Lithic::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?
+        attr_accessor charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?
 
         attr_accessor credit_limit: Integer?
 
@@ -26,7 +26,7 @@ module Lithic
 
         attr_accessor external_bank_account_token: String?
 
-        attr_accessor financial_account_state: Lithic::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state
+        attr_accessor financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state
 
         attr_accessor is_spend_blocked: bool
 
@@ -34,14 +34,25 @@ module Lithic
 
         def initialize: (
           account_token: String,
-          charged_off_reason: Lithic::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
+          charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
           credit_limit: Integer?,
           credit_product_token: String?,
           external_bank_account_token: String?,
-          financial_account_state: Lithic::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state,
+          financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state,
           is_spend_blocked: bool,
           tier: String?
         ) -> void
+
+        def to_hash: -> {
+          account_token: String,
+          charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
+          credit_limit: Integer?,
+          credit_product_token: String?,
+          external_bank_account_token: String?,
+          financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state,
+          is_spend_blocked: bool,
+          tier: String?
+        }
 
         type charged_off_reason = :DELINQUENT | :FRAUD
 
@@ -51,7 +62,7 @@ module Lithic
           DELINQUENT: :DELINQUENT
           FRAUD: :FRAUD
 
-          def self?.values: -> ::Array[Lithic::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason]
+          def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason]
         end
 
         type financial_account_state =
@@ -65,7 +76,7 @@ module Lithic
           DELINQUENT: :DELINQUENT
           CHARGED_OFF: :CHARGED_OFF
 
-          def self?.values: -> ::Array[Lithic::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state]
+          def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state]
         end
       end
     end

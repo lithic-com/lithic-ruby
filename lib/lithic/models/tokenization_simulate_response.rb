@@ -6,11 +6,11 @@ module Lithic
     class TokenizationSimulateResponse < Lithic::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Array<Lithic::Tokenization>, nil]
+      #   @return [Array<Lithic::Models::Tokenization>, nil]
       optional :data, -> { Lithic::Internal::Type::ArrayOf[Lithic::Tokenization] }
 
       # @!method initialize(data: nil)
-      #   @param data [Array<Lithic::Tokenization>]
+      #   @param data [Array<Lithic::Models::Tokenization>]
     end
   end
 end

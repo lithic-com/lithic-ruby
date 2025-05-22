@@ -150,6 +150,29 @@ module Lithic
         ?website_url: String
       ) -> void
 
+      def to_hash: -> {
+        token: String,
+        account_token: String,
+        beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
+        beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual],
+        business_account_token: String,
+        business_entity: Lithic::KYBBusinessEntity,
+        control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
+        created: Time,
+        email: String,
+        exemption_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::exemption_type,
+        external_id: String,
+        individual: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual,
+        nature_of_business: String,
+        phone_number: String,
+        required_documents: ::Array[Lithic::RequiredDocument],
+        status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::status,
+        status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::status_reason],
+        user_type: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::user_type,
+        verification_application: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication,
+        website_url: String
+      }
+
       type beneficial_owner_individual =
         {
           address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
@@ -197,6 +220,16 @@ module Lithic
           ?phone_number: String
         ) -> void
 
+        def to_hash: -> {
+          address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::Address,
+          dob: String,
+          email: String,
+          first_name: String,
+          government_id: String,
+          last_name: String,
+          phone_number: String
+        }
+
         type address =
           {
             :address1 => String,
@@ -230,6 +263,15 @@ module Lithic
             state: String,
             ?address2: String
           ) -> void
+
+          def to_hash: -> {
+            :address1 => String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String,
+            :address2 => String
+          }
         end
       end
 
@@ -280,6 +322,16 @@ module Lithic
           ?phone_number: String
         ) -> void
 
+        def to_hash: -> {
+          address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::Address,
+          dob: String,
+          email: String,
+          first_name: String,
+          government_id: String,
+          last_name: String,
+          phone_number: String
+        }
+
         type address =
           {
             :address1 => String,
@@ -313,6 +365,15 @@ module Lithic
             state: String,
             ?address2: String
           ) -> void
+
+          def to_hash: -> {
+            :address1 => String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String,
+            :address2 => String
+          }
         end
       end
 
@@ -374,6 +435,16 @@ module Lithic
           ?phone_number: String
         ) -> void
 
+        def to_hash: -> {
+          address: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::Individual::Address,
+          dob: String,
+          email: String,
+          first_name: String,
+          government_id: String,
+          last_name: String,
+          phone_number: String
+        }
+
         type address =
           {
             :address1 => String,
@@ -407,6 +478,15 @@ module Lithic
             state: String,
             ?address2: String
           ) -> void
+
+          def to_hash: -> {
+            :address1 => String,
+            city: String,
+            country: String,
+            postal_code: String,
+            state: String,
+            :address2 => String
+          }
         end
       end
 
@@ -515,6 +595,13 @@ module Lithic
           status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::status_reason],
           updated: Time
         ) -> void
+
+        def to_hash: -> {
+          created: Time,
+          status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::status,
+          status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::status_reason],
+          updated: Time
+        }
 
         type status =
           :ACCEPTED | :PENDING_DOCUMENT | :PENDING_RESUBMIT | :REJECTED

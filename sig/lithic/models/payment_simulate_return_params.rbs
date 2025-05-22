@@ -19,6 +19,12 @@ module Lithic
         ?return_reason_code: String,
         ?request_options: Lithic::request_opts
       ) -> void
+
+      def to_hash: -> {
+        payment_token: String,
+        return_reason_code: String,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

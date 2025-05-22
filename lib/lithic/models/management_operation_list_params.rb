@@ -22,7 +22,7 @@ module Lithic
       # @!attribute category
       #   Management operation category to be returned.
       #
-      #   @return [Symbol, Lithic::ManagementOperationListParams::Category, nil]
+      #   @return [Symbol, Lithic::Models::ManagementOperationListParams::Category, nil]
       optional :category, enum: -> { Lithic::ManagementOperationListParams::Category }
 
       # @!attribute end_
@@ -62,7 +62,7 @@ module Lithic
       # @!attribute status
       #   Management operation status to be returned.
       #
-      #   @return [Symbol, Lithic::ManagementOperationListParams::Status, nil]
+      #   @return [Symbol, Lithic::Models::ManagementOperationListParams::Status, nil]
       optional :status, enum: -> { Lithic::ManagementOperationListParams::Status }
 
       # @!method initialize(begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, starting_after: nil, status: nil, request_options: {})
@@ -73,7 +73,7 @@ module Lithic
       #
       #   @param business_account_token [String]
       #
-      #   @param category [Symbol, Lithic::ManagementOperationListParams::Category] Management operation category to be returned.
+      #   @param category [Symbol, Lithic::Models::ManagementOperationListParams::Category] Management operation category to be returned.
       #
       #   @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
       #
@@ -85,7 +85,7 @@ module Lithic
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      #   @param status [Symbol, Lithic::ManagementOperationListParams::Status] Management operation status to be returned.
+      #   @param status [Symbol, Lithic::Models::ManagementOperationListParams::Status] Management operation status to be returned.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

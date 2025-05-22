@@ -50,7 +50,7 @@ module Lithic
       #   Only present for "KYB_BASIC" workflow. A list of documents required for the
       #   account holder to be approved.
       #
-      #   @return [Array<Lithic::RequiredDocument>, nil]
+      #   @return [Array<Lithic::Models::RequiredDocument>, nil]
       optional :required_documents, -> { Lithic::Internal::Type::ArrayOf[Lithic::RequiredDocument] }
 
       # @!method initialize(token:, account_token:, status:, status_reasons:, created: nil, external_id: nil, required_documents: nil)
@@ -69,7 +69,7 @@ module Lithic
       #
       #   @param external_id [String] Customer-provided token that indicates a relationship with an object outside of
       #
-      #   @param required_documents [Array<Lithic::RequiredDocument>] Only present for "KYB_BASIC" workflow. A list of documents required for the acco
+      #   @param required_documents [Array<Lithic::Models::RequiredDocument>] Only present for "KYB_BASIC" workflow. A list of documents required for the acco
 
       # KYC and KYB evaluation states.
       #

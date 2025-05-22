@@ -40,7 +40,7 @@ module Lithic
           #
           # @param institution_id [String] Institution ID to filter on.
           #
-          # @param network [Symbol, Lithic::Reports::Settlement::NetworkTotalListParams::Network] Network to filter on.
+          # @param network [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network] Network to filter on.
           #
           # @param page_size [Integer] Number of records per page.
           #

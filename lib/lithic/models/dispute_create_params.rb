@@ -16,7 +16,7 @@ module Lithic
       # @!attribute reason
       #   Reason for dispute
       #
-      #   @return [Symbol, Lithic::DisputeCreateParams::Reason]
+      #   @return [Symbol, Lithic::Models::DisputeCreateParams::Reason]
       required :reason, enum: -> { Lithic::DisputeCreateParams::Reason }
 
       # @!attribute transaction_token
@@ -40,7 +40,7 @@ module Lithic
       # @!method initialize(amount:, reason:, transaction_token:, customer_filed_date: nil, customer_note: nil, request_options: {})
       #   @param amount [Integer] Amount to dispute
       #
-      #   @param reason [Symbol, Lithic::DisputeCreateParams::Reason] Reason for dispute
+      #   @param reason [Symbol, Lithic::Models::DisputeCreateParams::Reason] Reason for dispute
       #
       #   @param transaction_token [String] Transaction to dispute
       #

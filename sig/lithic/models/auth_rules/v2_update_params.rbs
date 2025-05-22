@@ -50,6 +50,16 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> void
 
+        def to_hash: -> {
+          account_tokens: ::Array[String],
+          name: String?,
+          state: Lithic::Models::AuthRules::V2UpdateParams::state,
+          card_tokens: ::Array[String],
+          excluded_card_tokens: ::Array[String],
+          program_level: bool,
+          request_options: Lithic::RequestOptions
+        }
+
         type state = :INACTIVE
 
         module State

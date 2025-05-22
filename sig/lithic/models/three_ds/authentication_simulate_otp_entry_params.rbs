@@ -18,6 +18,12 @@ module Lithic
           otp: String,
           ?request_options: Lithic::request_opts
         ) -> void
+
+        def to_hash: -> {
+          token: String,
+          otp: String,
+          request_options: Lithic::RequestOptions
+        }
       end
     end
   end

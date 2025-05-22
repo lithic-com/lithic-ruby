@@ -11,7 +11,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::CardProgram]
+      # @return [Lithic::Models::CardProgram]
       #
       # @see Lithic::Models::CardProgramRetrieveParams
       def retrieve(card_program_token, params = {})
@@ -38,7 +38,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::CardProgram>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::CardProgram>]
       #
       # @see Lithic::Models::CardProgramListParams
       def list(params = {})

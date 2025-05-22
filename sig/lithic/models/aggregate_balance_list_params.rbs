@@ -21,6 +21,11 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        financial_account_type: Lithic::Models::AggregateBalanceListParams::financial_account_type,
+        request_options: Lithic::RequestOptions
+      }
+
       type financial_account_type = :ISSUING | :OPERATING | :RESERVE
 
       module FinancialAccountType

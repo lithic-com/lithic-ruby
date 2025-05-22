@@ -22,6 +22,12 @@ module Lithic
             simulation_parameters: Lithic::AuthRules::V2::BacktestResults::SimulationParameters
           ) -> void
 
+          def to_hash: -> {
+            backtest_token: String,
+            results: Lithic::AuthRules::V2::BacktestResults::Results,
+            simulation_parameters: Lithic::AuthRules::V2::BacktestResults::SimulationParameters
+          }
+
           type results =
             {
               current_version: Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion?,
@@ -37,6 +43,11 @@ module Lithic
               ?current_version: Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion?,
               ?draft_version: Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion?
             ) -> void
+
+            def to_hash: -> {
+              current_version: Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion?,
+              draft_version: Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion?
+            }
 
             type current_version =
               {
@@ -72,6 +83,13 @@ module Lithic
                 ?version: Integer
               ) -> void
 
+              def to_hash: -> {
+                approved: Integer,
+                declined: Integer,
+                examples: ::Array[Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example],
+                version: Integer
+              }
+
               type example =
                 { approved: bool, event_token: String, timestamp: Time }
 
@@ -93,6 +111,12 @@ module Lithic
                   ?event_token: String,
                   ?timestamp: Time
                 ) -> void
+
+                def to_hash: -> {
+                  approved: bool,
+                  event_token: String,
+                  timestamp: Time
+                }
               end
             end
 
@@ -130,6 +154,13 @@ module Lithic
                 ?version: Integer
               ) -> void
 
+              def to_hash: -> {
+                approved: Integer,
+                declined: Integer,
+                examples: ::Array[Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion::Example],
+                version: Integer
+              }
+
               type example =
                 { approved: bool, event_token: String, timestamp: Time }
 
@@ -151,6 +182,12 @@ module Lithic
                   ?event_token: String,
                   ?timestamp: Time
                 ) -> void
+
+                def to_hash: -> {
+                  approved: bool,
+                  event_token: String,
+                  timestamp: Time
+                }
               end
             end
           end
@@ -176,6 +213,8 @@ module Lithic
               ?end_: Time,
               ?start: Time
             ) -> void
+
+            def to_hash: -> { auth_rule_token: String, end_: Time, start: Time }
           end
         end
       end

@@ -13,6 +13,11 @@ module Lithic
           data: ::Array[Lithic::FinancialAccounts::Statement],
           has_more: bool
         ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Lithic::FinancialAccounts::Statement],
+          has_more: bool
+        }
       end
     end
   end

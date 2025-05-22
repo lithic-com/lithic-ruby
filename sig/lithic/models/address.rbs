@@ -33,6 +33,15 @@ module Lithic
         state: String,
         ?address2: String
       ) -> void
+
+      def to_hash: -> {
+        :address1 => String,
+        city: String,
+        country: String,
+        postal_code: String,
+        state: String,
+        :address2 => String
+      }
     end
   end
 end

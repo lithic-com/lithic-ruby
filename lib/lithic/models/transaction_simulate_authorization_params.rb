@@ -89,7 +89,7 @@ module Lithic
       #     to credit funds immediately, and no subsequent clearing is required to settle
       #     the transaction.
       #
-      #   @return [Symbol, Lithic::TransactionSimulateAuthorizationParams::Status, nil]
+      #   @return [Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status, nil]
       optional :status, enum: -> { Lithic::TransactionSimulateAuthorizationParams::Status }
 
       # @!method initialize(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, merchant_amount: nil, merchant_currency: nil, partial_approval_capable: nil, pin: nil, status: nil, request_options: {})
@@ -114,7 +114,7 @@ module Lithic
       #
       #   @param pin [String] Simulate entering a PIN. If omitted, PIN check will not be performed.
       #
-      #   @param status [Symbol, Lithic::TransactionSimulateAuthorizationParams::Status] Type of event to simulate.
+      #   @param status [Symbol, Lithic::Models::TransactionSimulateAuthorizationParams::Status] Type of event to simulate.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

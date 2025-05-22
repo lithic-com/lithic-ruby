@@ -12,7 +12,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::CreditProducts::CreditProductsExtendedCredit]
+        # @return [Lithic::Models::CreditProducts::CreditProductsExtendedCredit]
         #
         # @see Lithic::Models::CreditProducts::ExtendedCreditRetrieveParams
         def retrieve(credit_product_token, params = {})

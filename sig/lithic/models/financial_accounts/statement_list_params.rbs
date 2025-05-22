@@ -49,6 +49,16 @@ module Lithic
           ?starting_after: String,
           ?request_options: Lithic::request_opts
         ) -> void
+
+        def to_hash: -> {
+          begin_: Date,
+          end_: Date,
+          ending_before: String,
+          include_initial_statements: bool,
+          page_size: Integer,
+          starting_after: String,
+          request_options: Lithic::RequestOptions
+        }
       end
     end
   end

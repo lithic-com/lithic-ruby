@@ -46,14 +46,14 @@ module Lithic
 
       def list: (
         ?account_token: String,
-        ?account_types: ::Array[Lithic::ExternalBankAccountListParams::account_type],
+        ?account_types: ::Array[Lithic::Models::ExternalBankAccountListParams::account_type],
         ?countries: ::Array[String],
         ?ending_before: String,
         ?owner_types: ::Array[Lithic::Models::owner_type],
         ?page_size: Integer,
         ?starting_after: String,
-        ?states: ::Array[Lithic::ExternalBankAccountListParams::state],
-        ?verification_states: ::Array[Lithic::ExternalBankAccountListParams::verification_state],
+        ?states: ::Array[Lithic::Models::ExternalBankAccountListParams::state],
+        ?verification_states: ::Array[Lithic::Models::ExternalBankAccountListParams::verification_state],
         ?request_options: Lithic::request_opts
       ) -> Lithic::Internal::CursorPage[Lithic::Models::ExternalBankAccountListResponse]
 
