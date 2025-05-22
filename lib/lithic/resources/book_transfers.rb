@@ -13,7 +13,7 @@ module Lithic
       #
       # @param amount [Integer] Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
       #
-      # @param category [Symbol, Lithic::BookTransferCreateParams::Category] Category of the book transfer
+      # @param category [Symbol, Lithic::Models::BookTransferCreateParams::Category] Category of the book transfer
       #
       # @param from_financial_account_token [String] Globally unique identifier for the financial account or card that will send the
       #
@@ -21,7 +21,7 @@ module Lithic
       #
       # @param to_financial_account_token [String] Globally unique identifier for the financial account or card that will receive t
       #
-      # @param type [Symbol, Lithic::BookTransferCreateParams::Type] Type of book_transfer
+      # @param type [Symbol, Lithic::Models::BookTransferCreateParams::Type] Type of book_transfer
       #
       # @param token [String] Customer-provided token that will serve as an idempotency token. This token will
       #
@@ -29,7 +29,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::BookTransferResponse]
+      # @return [Lithic::Models::BookTransferResponse]
       #
       # @see Lithic::Models::BookTransferCreateParams
       def create(params)
@@ -51,7 +51,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::BookTransferResponse]
+      # @return [Lithic::Models::BookTransferResponse]
       #
       # @see Lithic::Models::BookTransferRetrieveParams
       def retrieve(book_transfer_token, params = {})
@@ -76,7 +76,7 @@ module Lithic
       #
       # @param business_account_token [String]
       #
-      # @param category [Symbol, Lithic::BookTransferListParams::Category] Book Transfer category to be returned.
+      # @param category [Symbol, Lithic::Models::BookTransferListParams::Category] Book Transfer category to be returned.
       #
       # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
       #
@@ -86,15 +86,15 @@ module Lithic
       #
       # @param page_size [Integer] Page size (for pagination).
       #
-      # @param result [Symbol, Lithic::BookTransferListParams::Result] Book transfer result to be returned.
+      # @param result [Symbol, Lithic::Models::BookTransferListParams::Result] Book transfer result to be returned.
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      # @param status [Symbol, Lithic::BookTransferListParams::Status] Book transfer status to be returned.
+      # @param status [Symbol, Lithic::Models::BookTransferListParams::Status] Book transfer status to be returned.
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::BookTransferResponse>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::BookTransferResponse>]
       #
       # @see Lithic::Models::BookTransferListParams
       def list(params = {})
@@ -119,7 +119,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::BookTransferResponse]
+      # @return [Lithic::Models::BookTransferResponse]
       #
       # @see Lithic::Models::BookTransferReverseParams
       def reverse(book_transfer_token, params = {})

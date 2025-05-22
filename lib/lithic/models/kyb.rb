@@ -11,7 +11,7 @@ module Lithic
       #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
       #   (Section I) for more background on individuals that should be included.
       #
-      #   @return [Array<Lithic::KYB::BeneficialOwnerIndividual>]
+      #   @return [Array<Lithic::Models::KYB::BeneficialOwnerIndividual>]
       required :beneficial_owner_individuals,
                -> { Lithic::Internal::Type::ArrayOf[Lithic::KYB::BeneficialOwnerIndividual] }
 
@@ -19,7 +19,7 @@ module Lithic
       #   Information for business for which the account is being opened and KYB is being
       #   run.
       #
-      #   @return [Lithic::KYB::BusinessEntity]
+      #   @return [Lithic::Models::KYB::BusinessEntity]
       required :business_entity, -> { Lithic::KYB::BusinessEntity }
 
       # @!attribute control_person
@@ -32,7 +32,7 @@ module Lithic
       #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
       #   (Section II) for more background.
       #
-      #   @return [Lithic::KYB::ControlPerson]
+      #   @return [Lithic::Models::KYB::ControlPerson]
       required :control_person, -> { Lithic::KYB::ControlPerson }
 
       # @!attribute nature_of_business
@@ -53,7 +53,7 @@ module Lithic
       # @!attribute workflow
       #   Specifies the type of KYB workflow to run.
       #
-      #   @return [Symbol, Lithic::KYB::Workflow]
+      #   @return [Symbol, Lithic::Models::KYB::Workflow]
       required :workflow, enum: -> { Lithic::KYB::Workflow }
 
       # @!attribute beneficial_owner_entities
@@ -61,7 +61,7 @@ module Lithic
       #
       #   Deprecated.
       #
-      #   @return [Array<Lithic::KYB::BeneficialOwnerEntity>, nil]
+      #   @return [Array<Lithic::Models::KYB::BeneficialOwnerEntity>, nil]
       optional :beneficial_owner_entities,
                -> { Lithic::Internal::Type::ArrayOf[Lithic::KYB::BeneficialOwnerEntity] }
 
@@ -88,22 +88,22 @@ module Lithic
       optional :website_url, String
 
       # @!method initialize(beneficial_owner_individuals:, business_entity:, control_person:, nature_of_business:, tos_timestamp:, workflow:, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, website_url: nil)
-      #   Some parameter documentations has been truncated, see {Lithic::KYB} for more
-      #   details.
+      #   Some parameter documentations has been truncated, see {Lithic::Models::KYB} for
+      #   more details.
       #
-      #   @param beneficial_owner_individuals [Array<Lithic::KYB::BeneficialOwnerIndividual>] You must submit a list of all direct and indirect individuals with 25% or more o
+      #   @param beneficial_owner_individuals [Array<Lithic::Models::KYB::BeneficialOwnerIndividual>] You must submit a list of all direct and indirect individuals with 25% or more o
       #
-      #   @param business_entity [Lithic::KYB::BusinessEntity] Information for business for which the account is being opened and KYB is being
+      #   @param business_entity [Lithic::Models::KYB::BusinessEntity] Information for business for which the account is being opened and KYB is being
       #
-      #   @param control_person [Lithic::KYB::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
+      #   @param control_person [Lithic::Models::KYB::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
       #
       #   @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
       #
       #   @param tos_timestamp [String] An RFC 3339 timestamp indicating when the account holder accepted the applicable
       #
-      #   @param workflow [Symbol, Lithic::KYB::Workflow] Specifies the type of KYB workflow to run.
+      #   @param workflow [Symbol, Lithic::Models::KYB::Workflow] Specifies the type of KYB workflow to run.
       #
-      #   @param beneficial_owner_entities [Array<Lithic::KYB::BeneficialOwnerEntity>] Deprecated.
+      #   @param beneficial_owner_entities [Array<Lithic::Models::KYB::BeneficialOwnerEntity>] Deprecated.
       #
       #   @param external_id [String] A user provided id that can be used to link an account holder with an external s
       #
@@ -116,7 +116,7 @@ module Lithic
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         #
-        #   @return [Lithic::Address]
+        #   @return [Lithic::Models::Address]
         required :address, -> { Lithic::Address }
 
         # @!attribute dob
@@ -161,11 +161,11 @@ module Lithic
 
         # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::KYB::BeneficialOwnerIndividual} for more details.
+        #   {Lithic::Models::KYB::BeneficialOwnerIndividual} for more details.
         #
         #   Individuals associated with a KYB application. Phone number is optional.
         #
-        #   @param address [Lithic::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
+        #   @param address [Lithic::Models::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
         #
         #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
         #
@@ -180,13 +180,13 @@ module Lithic
         #   @param phone_number [String] Individual's phone number, entered in E.164 format.
       end
 
-      # @see Lithic::KYB#business_entity
+      # @see Lithic::Models::KYB#business_entity
       class BusinessEntity < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Business's physical address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable.
         #
-        #   @return [Lithic::Address]
+        #   @return [Lithic::Models::Address]
         required :address, -> { Lithic::Address }
 
         # @!attribute government_id
@@ -225,12 +225,12 @@ module Lithic
 
         # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::KYB::BusinessEntity} for more details.
+        #   {Lithic::Models::KYB::BusinessEntity} for more details.
         #
         #   Information for business for which the account is being opened and KYB is being
         #   run.
         #
-        #   @param address [Lithic::Address] Business's physical address - PO boxes, UPS drops, and FedEx drops are not accep
+        #   @param address [Lithic::Models::Address] Business's physical address - PO boxes, UPS drops, and FedEx drops are not accep
         #
         #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
         #
@@ -243,13 +243,13 @@ module Lithic
         #   @param parent_company [String] Parent company name (if applicable).
       end
 
-      # @see Lithic::KYB#control_person
+      # @see Lithic::Models::KYB#control_person
       class ControlPerson < Lithic::Internal::Type::BaseModel
         # @!attribute address
         #   Individual's current address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable. Only USA addresses are currently supported.
         #
-        #   @return [Lithic::Address]
+        #   @return [Lithic::Models::Address]
         required :address, -> { Lithic::Address }
 
         # @!attribute dob
@@ -294,7 +294,7 @@ module Lithic
 
         # @!method initialize(address:, dob:, email:, first_name:, government_id:, last_name:, phone_number: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::KYB::ControlPerson} for more details.
+        #   {Lithic::Models::KYB::ControlPerson} for more details.
         #
         #   An individual with significant responsibility for managing the legal entity
         #   (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
@@ -305,7 +305,7 @@ module Lithic
         #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
         #   (Section II) for more background.
         #
-        #   @param address [Lithic::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
+        #   @param address [Lithic::Models::Address] Individual's current address - PO boxes, UPS drops, and FedEx drops are not acce
         #
         #   @param dob [String] Individual's date of birth, as an RFC 3339 date.
         #
@@ -322,7 +322,7 @@ module Lithic
 
       # Specifies the type of KYB workflow to run.
       #
-      # @see Lithic::KYB#workflow
+      # @see Lithic::Models::KYB#workflow
       module Workflow
         extend Lithic::Internal::Type::Enum
 
@@ -338,7 +338,7 @@ module Lithic
         #   Business's physical address - PO boxes, UPS drops, and FedEx drops are not
         #   acceptable; APO/FPO are acceptable.
         #
-        #   @return [Lithic::Address]
+        #   @return [Lithic::Models::Address]
         required :address, -> { Lithic::Address }
 
         # @!attribute government_id
@@ -377,9 +377,9 @@ module Lithic
 
         # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::KYB::BeneficialOwnerEntity} for more details.
+        #   {Lithic::Models::KYB::BeneficialOwnerEntity} for more details.
         #
-        #   @param address [Lithic::Address] Business's physical address - PO boxes, UPS drops, and FedEx drops are not accep
+        #   @param address [Lithic::Models::Address] Business's physical address - PO boxes, UPS drops, and FedEx drops are not accep
         #
         #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
         #

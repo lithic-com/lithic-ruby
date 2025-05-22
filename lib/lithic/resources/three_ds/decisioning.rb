@@ -13,7 +13,7 @@ module Lithic
         #
         # @param token [String] Globally unique identifier for the 3DS authentication. This token is sent as par
         #
-        # @param challenge_response [Symbol, Lithic::ThreeDS::ChallengeResult] Whether the Cardholder has Approved or Declined the issued Challenge
+        # @param challenge_response [Symbol, Lithic::Models::ThreeDS::ChallengeResult] Whether the Cardholder has Approved or Declined the issued Challenge
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #

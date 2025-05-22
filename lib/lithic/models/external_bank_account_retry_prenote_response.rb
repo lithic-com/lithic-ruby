@@ -50,7 +50,7 @@ module Lithic
       # @!attribute owner_type
       #   Owner Type
       #
-      #   @return [Symbol, Lithic::OwnerType]
+      #   @return [Symbol, Lithic::Models::OwnerType]
       required :owner_type, enum: -> { Lithic::OwnerType }
 
       # @!attribute routing_number
@@ -80,7 +80,7 @@ module Lithic
       # @!attribute verification_method
       #   Verification Method
       #
-      #   @return [Symbol, Lithic::VerificationMethod]
+      #   @return [Symbol, Lithic::Models::VerificationMethod]
       required :verification_method, enum: -> { Lithic::VerificationMethod }
 
       # @!attribute verification_state
@@ -101,7 +101,7 @@ module Lithic
       # @!attribute address
       #   Address
       #
-      #   @return [Lithic::ExternalBankAccountAddress, nil]
+      #   @return [Lithic::Models::ExternalBankAccountAddress, nil]
       optional :address, -> { Lithic::ExternalBankAccountAddress }
 
       # @!attribute company_id
@@ -164,7 +164,7 @@ module Lithic
       #
       #   @param owner [String] Legal Name of the business or individual who owns the external account. This wil
       #
-      #   @param owner_type [Symbol, Lithic::OwnerType] Owner Type
+      #   @param owner_type [Symbol, Lithic::Models::OwnerType] Owner Type
       #
       #   @param routing_number [String] Routing Number
       #
@@ -174,13 +174,13 @@ module Lithic
       #
       #   @param verification_attempts [Integer] The number of attempts at verification
       #
-      #   @param verification_method [Symbol, Lithic::VerificationMethod] Verification Method
+      #   @param verification_method [Symbol, Lithic::Models::VerificationMethod] Verification Method
       #
       #   @param verification_state [Symbol, Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState] Verification State
       #
       #   @param account_token [String] Indicates which Lithic account the external account is associated with. For exte
       #
-      #   @param address [Lithic::ExternalBankAccountAddress] Address
+      #   @param address [Lithic::Models::ExternalBankAccountAddress] Address
       #
       #   @param company_id [String] Optional field that helps identify bank accounts in receipts
       #

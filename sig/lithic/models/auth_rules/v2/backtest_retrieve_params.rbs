@@ -16,6 +16,11 @@ module Lithic
             auth_rule_token: String,
             ?request_options: Lithic::request_opts
           ) -> void
+
+          def to_hash: -> {
+            auth_rule_token: String,
+            request_options: Lithic::RequestOptions
+          }
         end
       end
     end

@@ -117,6 +117,31 @@ module Lithic
           ?verification_failed_reason: String
         ) -> void
 
+        def to_hash: -> {
+          token: String,
+          country: String,
+          created: Time,
+          currency: String,
+          last_four: String,
+          owner: String,
+          owner_type: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::owner_type,
+          routing_number: String,
+          state: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::state,
+          type: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::type_,
+          verification_attempts: Integer,
+          verification_method: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::verification_method,
+          verification_state: Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::verification_state,
+          account_token: String,
+          address: Lithic::ExternalBankAccountAddress,
+          company_id: String,
+          dob: Date,
+          doing_business_as: String,
+          financial_account_token: String,
+          name: String,
+          user_defined_id: String,
+          verification_failed_reason: String
+        }
+
         type owner_type = :BUSINESS | :INDIVIDUAL
 
         module OwnerType

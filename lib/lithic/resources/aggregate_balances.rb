@@ -8,11 +8,11 @@ module Lithic
       #
       # @overload list(financial_account_type: nil, request_options: {})
       #
-      # @param financial_account_type [Symbol, Lithic::AggregateBalanceListParams::FinancialAccountType] Get the aggregate balance for a given Financial Account type.
+      # @param financial_account_type [Symbol, Lithic::Models::AggregateBalanceListParams::FinancialAccountType] Get the aggregate balance for a given Financial Account type.
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::SinglePage<Lithic::AggregateBalance>]
+      # @return [Lithic::Internal::SinglePage<Lithic::Models::AggregateBalance>]
       #
       # @see Lithic::Models::AggregateBalanceListParams
       def list(params = {})

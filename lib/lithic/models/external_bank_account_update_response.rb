@@ -102,7 +102,7 @@ module Lithic
       # @!attribute address
       #   Address
       #
-      #   @return [Lithic::ExternalBankAccountAddress, nil]
+      #   @return [Lithic::Models::ExternalBankAccountAddress, nil]
       optional :address, -> { Lithic::ExternalBankAccountAddress }
 
       # @!attribute company_id
@@ -181,7 +181,7 @@ module Lithic
       #
       #   @param account_token [String] Indicates which Lithic account the external account is associated with. For exte
       #
-      #   @param address [Lithic::ExternalBankAccountAddress] Address
+      #   @param address [Lithic::Models::ExternalBankAccountAddress] Address
       #
       #   @param company_id [String] Optional field that helps identify bank accounts in receipts
       #

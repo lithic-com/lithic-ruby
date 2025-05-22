@@ -16,6 +16,11 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> void
 
+        def to_hash: -> {
+          parameters: Lithic::Models::AuthRules::V2DraftParams::parameters?,
+          request_options: Lithic::RequestOptions
+        }
+
         type parameters =
           Lithic::AuthRules::ConditionalBlockParameters
           | Lithic::AuthRules::VelocityLimitParams
@@ -35,6 +40,10 @@ module Lithic
             def initialize: (
               merchants: ::Array[Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant]
             ) -> void
+
+            def to_hash: -> {
+              merchants: ::Array[Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::Merchant]
+            }
 
             type merchant =
               { comment: String, descriptor: String, merchant_id: String }
@@ -57,6 +66,12 @@ module Lithic
                 ?descriptor: String,
                 ?merchant_id: String
               ) -> void
+
+              def to_hash: -> {
+                comment: String,
+                descriptor: String,
+                merchant_id: String
+              }
             end
           end
 

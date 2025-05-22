@@ -19,6 +19,11 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        digital_wallet: Lithic::Models::CardWebProvisionParams::digital_wallet,
+        request_options: Lithic::RequestOptions
+      }
+
       type digital_wallet = :APPLE_PAY
 
       module DigitalWallet

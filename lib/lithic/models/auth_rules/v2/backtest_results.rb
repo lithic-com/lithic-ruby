@@ -14,33 +14,33 @@ module Lithic
 
           # @!attribute results
           #
-          #   @return [Lithic::AuthRules::V2::BacktestResults::Results]
+          #   @return [Lithic::Models::AuthRules::V2::BacktestResults::Results]
           required :results, -> { Lithic::AuthRules::V2::BacktestResults::Results }
 
           # @!attribute simulation_parameters
           #
-          #   @return [Lithic::AuthRules::V2::BacktestResults::SimulationParameters]
+          #   @return [Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters]
           required :simulation_parameters, -> { Lithic::AuthRules::V2::BacktestResults::SimulationParameters }
 
           # @!method initialize(backtest_token:, results:, simulation_parameters:)
           #   @param backtest_token [String] Auth Rule Backtest Token
           #
-          #   @param results [Lithic::AuthRules::V2::BacktestResults::Results]
+          #   @param results [Lithic::Models::AuthRules::V2::BacktestResults::Results]
           #
-          #   @param simulation_parameters [Lithic::AuthRules::V2::BacktestResults::SimulationParameters]
+          #   @param simulation_parameters [Lithic::Models::AuthRules::V2::BacktestResults::SimulationParameters]
 
-          # @see Lithic::AuthRules::V2::BacktestResults#results
+          # @see Lithic::Models::AuthRules::V2::BacktestResults#results
           class Results < Lithic::Internal::Type::BaseModel
             # @!attribute current_version
             #
-            #   @return [Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion, nil]
+            #   @return [Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion, nil]
             optional :current_version,
                      -> { Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion },
                      nil?: true
 
             # @!attribute draft_version
             #
-            #   @return [Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion, nil]
+            #   @return [Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion, nil]
             optional :draft_version,
                      -> {
                        Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion
@@ -48,10 +48,10 @@ module Lithic
                      nil?: true
 
             # @!method initialize(current_version: nil, draft_version: nil)
-            #   @param current_version [Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion, nil]
-            #   @param draft_version [Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion, nil]
+            #   @param current_version [Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion, nil]
+            #   @param draft_version [Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion, nil]
 
-            # @see Lithic::AuthRules::V2::BacktestResults::Results#current_version
+            # @see Lithic::Models::AuthRules::V2::BacktestResults::Results#current_version
             class CurrentVersion < Lithic::Internal::Type::BaseModel
               # @!attribute approved
               #   The total number of historical transactions approved by this rule during the
@@ -72,7 +72,7 @@ module Lithic
               # @!attribute examples
               #   Example authorization request events that would have been approved or declined.
               #
-              #   @return [Array<Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example>, nil]
+              #   @return [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example>, nil]
               optional :examples,
                        -> {
                          Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example]
@@ -89,14 +89,14 @@ module Lithic
 
               # @!method initialize(approved: nil, declined: nil, examples: nil, version: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion} for more
-              #   details.
+              #   {Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion} for
+              #   more details.
               #
               #   @param approved [Integer] The total number of historical transactions approved by this rule during the bac
               #
               #   @param declined [Integer] The total number of historical transactions declined by this rule during the bac
               #
-              #   @param examples [Array<Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example>] Example authorization request events that would have been approved or declined.
+              #   @param examples [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example>] Example authorization request events that would have been approved or declined.
               #
               #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
 
@@ -128,7 +128,7 @@ module Lithic
               end
             end
 
-            # @see Lithic::AuthRules::V2::BacktestResults::Results#draft_version
+            # @see Lithic::Models::AuthRules::V2::BacktestResults::Results#draft_version
             class DraftVersion < Lithic::Internal::Type::BaseModel
               # @!attribute approved
               #   The total number of historical transactions approved by this rule during the
@@ -149,7 +149,7 @@ module Lithic
               # @!attribute examples
               #   Example authorization request events that would have been approved or declined.
               #
-              #   @return [Array<Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion::Example>, nil]
+              #   @return [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example>, nil]
               optional :examples,
                        -> {
                          Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion::Example]
@@ -166,14 +166,14 @@ module Lithic
 
               # @!method initialize(approved: nil, declined: nil, examples: nil, version: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion} for more
+              #   {Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion} for more
               #   details.
               #
               #   @param approved [Integer] The total number of historical transactions approved by this rule during the bac
               #
               #   @param declined [Integer] The total number of historical transactions declined by this rule during the bac
               #
-              #   @param examples [Array<Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion::Example>] Example authorization request events that would have been approved or declined.
+              #   @param examples [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example>] Example authorization request events that would have been approved or declined.
               #
               #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
 
@@ -206,7 +206,7 @@ module Lithic
             end
           end
 
-          # @see Lithic::AuthRules::V2::BacktestResults#simulation_parameters
+          # @see Lithic::Models::AuthRules::V2::BacktestResults#simulation_parameters
           class SimulationParameters < Lithic::Internal::Type::BaseModel
             # @!attribute auth_rule_token
             #   Auth Rule Token

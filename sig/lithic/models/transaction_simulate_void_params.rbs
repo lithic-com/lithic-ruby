@@ -31,6 +31,13 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        token: String,
+        amount: Integer,
+        type: Lithic::Models::TransactionSimulateVoidParams::type_,
+        request_options: Lithic::RequestOptions
+      }
+
       type type_ = :AUTHORIZATION_EXPIRY | :AUTHORIZATION_REVERSAL
 
       module Type

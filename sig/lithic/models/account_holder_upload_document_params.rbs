@@ -21,6 +21,12 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        document_type: Lithic::Models::AccountHolderUploadDocumentParams::document_type,
+        entity_token: String,
+        request_options: Lithic::RequestOptions
+      }
+
       type document_type =
         :EIN_LETTER
         | :TAX_RETURN

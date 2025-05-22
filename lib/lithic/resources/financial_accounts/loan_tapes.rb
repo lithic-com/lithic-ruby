@@ -14,7 +14,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::FinancialAccounts::LoanTape]
+        # @return [Lithic::Models::FinancialAccounts::LoanTape]
         #
         # @see Lithic::Models::FinancialAccounts::LoanTapeRetrieveParams
         def retrieve(loan_tape_token, params)
@@ -52,7 +52,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::CursorPage<Lithic::FinancialAccounts::LoanTape>]
+        # @return [Lithic::Internal::CursorPage<Lithic::Models::FinancialAccounts::LoanTape>]
         #
         # @see Lithic::Models::FinancialAccounts::LoanTapeListParams
         def list(financial_account_token, params = {})

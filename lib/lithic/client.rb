@@ -107,7 +107,7 @@ module Lithic
     #
     # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
     #
-    # @return [Lithic::APIStatus]
+    # @return [Lithic::Models::APIStatus]
     #
     # @see Lithic::Models::ClientAPIStatusParams
     def api_status(params = {})

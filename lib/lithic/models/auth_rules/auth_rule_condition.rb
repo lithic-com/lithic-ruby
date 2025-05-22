@@ -53,13 +53,13 @@ module Lithic
         #     source of the token. Valid values are `APPLE_PAY`, `GOOGLE_PAY`,
         #     `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
         #
-        #   @return [Symbol, Lithic::AuthRules::ConditionalAttribute, nil]
+        #   @return [Symbol, Lithic::Models::AuthRules::ConditionalAttribute, nil]
         optional :attribute, enum: -> { Lithic::AuthRules::ConditionalAttribute }
 
         # @!attribute operation
         #   The operation to apply to the attribute
         #
-        #   @return [Symbol, Lithic::AuthRules::AuthRuleCondition::Operation, nil]
+        #   @return [Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation, nil]
         optional :operation, enum: -> { Lithic::AuthRules::AuthRuleCondition::Operation }
 
         # @!attribute value
@@ -70,17 +70,17 @@ module Lithic
 
         # @!method initialize(attribute: nil, operation: nil, value: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Lithic::AuthRules::AuthRuleCondition} for more details.
+        #   {Lithic::Models::AuthRules::AuthRuleCondition} for more details.
         #
-        #   @param attribute [Symbol, Lithic::AuthRules::ConditionalAttribute] The attribute to target.
+        #   @param attribute [Symbol, Lithic::Models::AuthRules::ConditionalAttribute] The attribute to target.
         #
-        #   @param operation [Symbol, Lithic::AuthRules::AuthRuleCondition::Operation] The operation to apply to the attribute
+        #   @param operation [Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation] The operation to apply to the attribute
         #
         #   @param value [String, Integer, Array<String>] A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
 
         # The operation to apply to the attribute
         #
-        # @see Lithic::AuthRules::AuthRuleCondition#operation
+        # @see Lithic::Models::AuthRules::AuthRuleCondition#operation
         module Operation
           extend Lithic::Internal::Type::Enum
 
@@ -97,7 +97,7 @@ module Lithic
 
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
         #
-        # @see Lithic::AuthRules::AuthRuleCondition#value
+        # @see Lithic::Models::AuthRules::AuthRuleCondition#value
         module Value
           extend Lithic::Internal::Type::Union
 
@@ -108,7 +108,7 @@ module Lithic
           variant Integer
 
           # An array of strings, to be used with `IS_ONE_OF` or `IS_NOT_ONE_OF`
-          variant -> { Lithic::AuthRules::AuthRuleCondition::Value::StringArray }
+          variant -> { Lithic::Models::AuthRules::AuthRuleCondition::Value::StringArray }
 
           # @!method self.variants
           #   @return [Array(String, Integer, Array<String>)]

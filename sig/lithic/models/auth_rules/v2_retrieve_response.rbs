@@ -51,6 +51,19 @@ module Lithic
           ?excluded_card_tokens: ::Array[String]
         ) -> void
 
+        def to_hash: -> {
+          token: String,
+          account_tokens: ::Array[String],
+          card_tokens: ::Array[String],
+          current_version: Lithic::Models::AuthRules::V2RetrieveResponse::CurrentVersion?,
+          draft_version: Lithic::Models::AuthRules::V2RetrieveResponse::DraftVersion?,
+          name: String?,
+          program_level: bool,
+          state: Lithic::Models::AuthRules::V2RetrieveResponse::state,
+          type: Lithic::Models::AuthRules::V2RetrieveResponse::type_,
+          excluded_card_tokens: ::Array[String]
+        }
+
         type current_version =
           {
             parameters: Lithic::Models::AuthRules::V2RetrieveResponse::CurrentVersion::parameters,
@@ -66,6 +79,11 @@ module Lithic
             parameters: Lithic::Models::AuthRules::V2RetrieveResponse::CurrentVersion::parameters,
             version: Integer
           ) -> void
+
+          def to_hash: -> {
+            parameters: Lithic::Models::AuthRules::V2RetrieveResponse::CurrentVersion::parameters,
+            version: Integer
+          }
 
           type parameters =
             Lithic::AuthRules::ConditionalBlockParameters
@@ -86,6 +104,10 @@ module Lithic
               def initialize: (
                 merchants: ::Array[Lithic::Models::AuthRules::V2RetrieveResponse::CurrentVersion::Parameters::MerchantLockParameters::Merchant]
               ) -> void
+
+              def to_hash: -> {
+                merchants: ::Array[Lithic::Models::AuthRules::V2RetrieveResponse::CurrentVersion::Parameters::MerchantLockParameters::Merchant]
+              }
 
               type merchant =
                 { comment: String, descriptor: String, merchant_id: String }
@@ -108,6 +130,12 @@ module Lithic
                   ?descriptor: String,
                   ?merchant_id: String
                 ) -> void
+
+                def to_hash: -> {
+                  comment: String,
+                  descriptor: String,
+                  merchant_id: String
+                }
               end
             end
 
@@ -131,6 +159,11 @@ module Lithic
             version: Integer
           ) -> void
 
+          def to_hash: -> {
+            parameters: Lithic::Models::AuthRules::V2RetrieveResponse::DraftVersion::parameters,
+            version: Integer
+          }
+
           type parameters =
             Lithic::AuthRules::ConditionalBlockParameters
             | Lithic::AuthRules::VelocityLimitParams
@@ -150,6 +183,10 @@ module Lithic
               def initialize: (
                 merchants: ::Array[Lithic::Models::AuthRules::V2RetrieveResponse::DraftVersion::Parameters::MerchantLockParameters::Merchant]
               ) -> void
+
+              def to_hash: -> {
+                merchants: ::Array[Lithic::Models::AuthRules::V2RetrieveResponse::DraftVersion::Parameters::MerchantLockParameters::Merchant]
+              }
 
               type merchant =
                 { comment: String, descriptor: String, merchant_id: String }
@@ -172,6 +209,12 @@ module Lithic
                   ?descriptor: String,
                   ?merchant_id: String
                 ) -> void
+
+                def to_hash: -> {
+                  comment: String,
+                  descriptor: String,
+                  merchant_id: String
+                }
               end
             end
 

@@ -3,15 +3,15 @@ module Lithic
     type book_transfer_response =
       {
         token: String,
-        category: Lithic::BookTransferResponse::category,
+        category: Lithic::Models::BookTransferResponse::category,
         created: Time,
         currency: String,
         events: ::Array[Lithic::BookTransferResponse::Event],
         from_financial_account_token: String,
         pending_amount: Integer,
-        result: Lithic::BookTransferResponse::result,
+        result: Lithic::Models::BookTransferResponse::result,
         settled_amount: Integer,
-        status: Lithic::BookTransferResponse::status,
+        status: Lithic::Models::BookTransferResponse::status,
         to_financial_account_token: top,
         updated: Time
       }
@@ -19,7 +19,7 @@ module Lithic
     class BookTransferResponse < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
-      attr_accessor category: Lithic::BookTransferResponse::category
+      attr_accessor category: Lithic::Models::BookTransferResponse::category
 
       attr_accessor created: Time
 
@@ -31,11 +31,11 @@ module Lithic
 
       attr_accessor pending_amount: Integer
 
-      attr_accessor result: Lithic::BookTransferResponse::result
+      attr_accessor result: Lithic::Models::BookTransferResponse::result
 
       attr_accessor settled_amount: Integer
 
-      attr_accessor status: Lithic::BookTransferResponse::status
+      attr_accessor status: Lithic::Models::BookTransferResponse::status
 
       attr_accessor to_financial_account_token: top
 
@@ -43,18 +43,33 @@ module Lithic
 
       def initialize: (
         token: String,
-        category: Lithic::BookTransferResponse::category,
+        category: Lithic::Models::BookTransferResponse::category,
         created: Time,
         currency: String,
         events: ::Array[Lithic::BookTransferResponse::Event],
         from_financial_account_token: String,
         pending_amount: Integer,
-        result: Lithic::BookTransferResponse::result,
+        result: Lithic::Models::BookTransferResponse::result,
         settled_amount: Integer,
-        status: Lithic::BookTransferResponse::status,
+        status: Lithic::Models::BookTransferResponse::status,
         to_financial_account_token: top,
         updated: Time
       ) -> void
+
+      def to_hash: -> {
+        token: String,
+        category: Lithic::Models::BookTransferResponse::category,
+        created: Time,
+        currency: String,
+        events: ::Array[Lithic::BookTransferResponse::Event],
+        from_financial_account_token: String,
+        pending_amount: Integer,
+        result: Lithic::Models::BookTransferResponse::result,
+        settled_amount: Integer,
+        status: Lithic::Models::BookTransferResponse::status,
+        to_financial_account_token: top,
+        updated: Time
+      }
 
       type category =
         :ADJUSTMENT
@@ -76,7 +91,7 @@ module Lithic
         REWARD: :REWARD
         TRANSFER: :TRANSFER
 
-        def self?.values: -> ::Array[Lithic::BookTransferResponse::category]
+        def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::category]
       end
 
       type event =
@@ -84,9 +99,9 @@ module Lithic
           token: String,
           amount: Integer,
           created: Time,
-          detailed_results: ::Array[Lithic::BookTransferResponse::Event::detailed_result],
+          detailed_results: ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result],
           memo: String,
-          result: Lithic::BookTransferResponse::Event::result,
+          result: Lithic::Models::BookTransferResponse::Event::result,
           subtype: String,
           type: String
         }
@@ -98,11 +113,11 @@ module Lithic
 
         attr_accessor created: Time
 
-        attr_accessor detailed_results: ::Array[Lithic::BookTransferResponse::Event::detailed_result]
+        attr_accessor detailed_results: ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result]
 
         attr_accessor memo: String
 
-        attr_accessor result: Lithic::BookTransferResponse::Event::result
+        attr_accessor result: Lithic::Models::BookTransferResponse::Event::result
 
         attr_accessor subtype: String
 
@@ -112,12 +127,23 @@ module Lithic
           token: String,
           amount: Integer,
           created: Time,
-          detailed_results: ::Array[Lithic::BookTransferResponse::Event::detailed_result],
+          detailed_results: ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result],
           memo: String,
-          result: Lithic::BookTransferResponse::Event::result,
+          result: Lithic::Models::BookTransferResponse::Event::result,
           subtype: String,
           type: String
         ) -> void
+
+        def to_hash: -> {
+          token: String,
+          amount: Integer,
+          created: Time,
+          detailed_results: ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result],
+          memo: String,
+          result: Lithic::Models::BookTransferResponse::Event::result,
+          subtype: String,
+          type: String
+        }
 
         type detailed_result = :APPROVED | :FUNDS_INSUFFICIENT
 
@@ -127,7 +153,7 @@ module Lithic
           APPROVED: :APPROVED
           FUNDS_INSUFFICIENT: :FUNDS_INSUFFICIENT
 
-          def self?.values: -> ::Array[Lithic::BookTransferResponse::Event::detailed_result]
+          def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result]
         end
 
         type result = :APPROVED | :DECLINED
@@ -138,7 +164,7 @@ module Lithic
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
-          def self?.values: -> ::Array[Lithic::BookTransferResponse::Event::result]
+          def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::Event::result]
         end
       end
 
@@ -150,7 +176,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self?.values: -> ::Array[Lithic::BookTransferResponse::result]
+        def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::result]
       end
 
       type status = :DECLINED | :REVERSED | :SETTLED
@@ -162,7 +188,7 @@ module Lithic
         REVERSED: :REVERSED
         SETTLED: :SETTLED
 
-        def self?.values: -> ::Array[Lithic::BookTransferResponse::status]
+        def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::status]
       end
     end
   end

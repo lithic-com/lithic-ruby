@@ -10,11 +10,11 @@ module Lithic
       # @!attribute digital_wallet
       #   Name of digital wallet provider.
       #
-      #   @return [Symbol, Lithic::CardWebProvisionParams::DigitalWallet, nil]
+      #   @return [Symbol, Lithic::Models::CardWebProvisionParams::DigitalWallet, nil]
       optional :digital_wallet, enum: -> { Lithic::CardWebProvisionParams::DigitalWallet }
 
       # @!method initialize(digital_wallet: nil, request_options: {})
-      #   @param digital_wallet [Symbol, Lithic::CardWebProvisionParams::DigitalWallet] Name of digital wallet provider.
+      #   @param digital_wallet [Symbol, Lithic::Models::CardWebProvisionParams::DigitalWallet] Name of digital wallet provider.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

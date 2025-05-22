@@ -4,7 +4,7 @@ module Lithic
       {
         token: String,
         account_holder_token: String,
-        document_type: Lithic::Document::document_type,
+        document_type: Lithic::Models::Document::document_type,
         entity_token: String,
         required_document_uploads: ::Array[Lithic::Document::RequiredDocumentUpload]
       }
@@ -14,7 +14,7 @@ module Lithic
 
       attr_accessor account_holder_token: String
 
-      attr_accessor document_type: Lithic::Document::document_type
+      attr_accessor document_type: Lithic::Models::Document::document_type
 
       attr_accessor entity_token: String
 
@@ -23,10 +23,18 @@ module Lithic
       def initialize: (
         token: String,
         account_holder_token: String,
-        document_type: Lithic::Document::document_type,
+        document_type: Lithic::Models::Document::document_type,
         entity_token: String,
         required_document_uploads: ::Array[Lithic::Document::RequiredDocumentUpload]
       ) -> void
+
+      def to_hash: -> {
+        token: String,
+        account_holder_token: String,
+        document_type: Lithic::Models::Document::document_type,
+        entity_token: String,
+        required_document_uploads: ::Array[Lithic::Document::RequiredDocumentUpload]
+      }
 
       type document_type =
         :DRIVERS_LICENSE
@@ -72,7 +80,7 @@ module Lithic
         ITIN_LETTER: :ITIN_LETTER
         FINCEN_BOI_REPORT: :FINCEN_BOI_REPORT
 
-        def self?.values: -> ::Array[Lithic::Document::document_type]
+        def self?.values: -> ::Array[Lithic::Models::Document::document_type]
       end
 
       type required_document_upload =
@@ -80,10 +88,10 @@ module Lithic
           token: String,
           accepted_entity_status_reasons: ::Array[String],
           created: Time,
-          image_type: Lithic::Document::RequiredDocumentUpload::image_type,
+          image_type: Lithic::Models::Document::RequiredDocumentUpload::image_type,
           rejected_entity_status_reasons: ::Array[String],
-          status: Lithic::Document::RequiredDocumentUpload::status,
-          status_reasons: ::Array[Lithic::Document::RequiredDocumentUpload::status_reason],
+          status: Lithic::Models::Document::RequiredDocumentUpload::status,
+          status_reasons: ::Array[Lithic::Models::Document::RequiredDocumentUpload::status_reason],
           updated: Time,
           upload_url: String
         }
@@ -95,13 +103,13 @@ module Lithic
 
         attr_accessor created: Time
 
-        attr_accessor image_type: Lithic::Document::RequiredDocumentUpload::image_type
+        attr_accessor image_type: Lithic::Models::Document::RequiredDocumentUpload::image_type
 
         attr_accessor rejected_entity_status_reasons: ::Array[String]
 
-        attr_accessor status: Lithic::Document::RequiredDocumentUpload::status
+        attr_accessor status: Lithic::Models::Document::RequiredDocumentUpload::status
 
-        attr_accessor status_reasons: ::Array[Lithic::Document::RequiredDocumentUpload::status_reason]
+        attr_accessor status_reasons: ::Array[Lithic::Models::Document::RequiredDocumentUpload::status_reason]
 
         attr_accessor updated: Time
 
@@ -111,13 +119,25 @@ module Lithic
           token: String,
           accepted_entity_status_reasons: ::Array[String],
           created: Time,
-          image_type: Lithic::Document::RequiredDocumentUpload::image_type,
+          image_type: Lithic::Models::Document::RequiredDocumentUpload::image_type,
           rejected_entity_status_reasons: ::Array[String],
-          status: Lithic::Document::RequiredDocumentUpload::status,
-          status_reasons: ::Array[Lithic::Document::RequiredDocumentUpload::status_reason],
+          status: Lithic::Models::Document::RequiredDocumentUpload::status,
+          status_reasons: ::Array[Lithic::Models::Document::RequiredDocumentUpload::status_reason],
           updated: Time,
           upload_url: String
         ) -> void
+
+        def to_hash: -> {
+          token: String,
+          accepted_entity_status_reasons: ::Array[String],
+          created: Time,
+          image_type: Lithic::Models::Document::RequiredDocumentUpload::image_type,
+          rejected_entity_status_reasons: ::Array[String],
+          status: Lithic::Models::Document::RequiredDocumentUpload::status,
+          status_reasons: ::Array[Lithic::Models::Document::RequiredDocumentUpload::status_reason],
+          updated: Time,
+          upload_url: String
+        }
 
         type image_type = :FRONT | :BACK
 
@@ -127,7 +147,7 @@ module Lithic
           FRONT: :FRONT
           BACK: :BACK
 
-          def self?.values: -> ::Array[Lithic::Document::RequiredDocumentUpload::image_type]
+          def self?.values: -> ::Array[Lithic::Models::Document::RequiredDocumentUpload::image_type]
         end
 
         type status =
@@ -146,7 +166,7 @@ module Lithic
           UPLOADED: :UPLOADED
           PARTIAL_APPROVAL: :PARTIAL_APPROVAL
 
-          def self?.values: -> ::Array[Lithic::Document::RequiredDocumentUpload::status]
+          def self?.values: -> ::Array[Lithic::Models::Document::RequiredDocumentUpload::status]
         end
 
         type status_reason =
@@ -177,7 +197,7 @@ module Lithic
           UNKNOWN_FAILURE_REASON: :UNKNOWN_FAILURE_REASON
           UNKNOWN_ERROR: :UNKNOWN_ERROR
 
-          def self?.values: -> ::Array[Lithic::Document::RequiredDocumentUpload::status_reason]
+          def self?.values: -> ::Array[Lithic::Models::Document::RequiredDocumentUpload::status_reason]
         end
       end
     end

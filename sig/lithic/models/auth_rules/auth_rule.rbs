@@ -6,7 +6,7 @@ module Lithic
       type auth_rule =
         {
           token: String,
-          state: Lithic::AuthRules::AuthRule::state,
+          state: Lithic::Models::AuthRules::AuthRule::state,
           account_tokens: ::Array[String],
           allowed_countries: ::Array[String],
           allowed_mcc: ::Array[String],
@@ -19,7 +19,7 @@ module Lithic
       class AuthRule < Lithic::Internal::Type::BaseModel
         attr_accessor token: String
 
-        attr_accessor state: Lithic::AuthRules::AuthRule::state
+        attr_accessor state: Lithic::Models::AuthRules::AuthRule::state
 
         attr_reader account_tokens: ::Array[String]?
 
@@ -51,7 +51,7 @@ module Lithic
 
         def initialize: (
           token: String,
-          state: Lithic::AuthRules::AuthRule::state,
+          state: Lithic::Models::AuthRules::AuthRule::state,
           ?account_tokens: ::Array[String],
           ?allowed_countries: ::Array[String],
           ?allowed_mcc: ::Array[String],
@@ -61,6 +61,18 @@ module Lithic
           ?program_level: bool
         ) -> void
 
+        def to_hash: -> {
+          token: String,
+          state: Lithic::Models::AuthRules::AuthRule::state,
+          account_tokens: ::Array[String],
+          allowed_countries: ::Array[String],
+          allowed_mcc: ::Array[String],
+          blocked_countries: ::Array[String],
+          blocked_mcc: ::Array[String],
+          card_tokens: ::Array[String],
+          program_level: bool
+        }
+
         type state = :ACTIVE | :INACTIVE
 
         module State
@@ -69,7 +81,7 @@ module Lithic
           ACTIVE: :ACTIVE
           INACTIVE: :INACTIVE
 
-          def self?.values: -> ::Array[Lithic::AuthRules::AuthRule::state]
+          def self?.values: -> ::Array[Lithic::Models::AuthRules::AuthRule::state]
         end
       end
     end

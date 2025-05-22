@@ -49,6 +49,16 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        shipping_address: Lithic::ShippingAddress,
+        carrier: Lithic::Carrier,
+        exp_month: String,
+        exp_year: String,
+        product_id: String,
+        shipping_method: Lithic::Models::CardRenewParams::shipping_method,
+        request_options: Lithic::RequestOptions
+      }
+
       type shipping_method =
         :"2_DAY"
         | :EXPEDITED

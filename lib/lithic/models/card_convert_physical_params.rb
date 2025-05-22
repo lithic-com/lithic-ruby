@@ -10,13 +10,13 @@ module Lithic
       # @!attribute shipping_address
       #   The shipping address this card will be sent to.
       #
-      #   @return [Lithic::ShippingAddress]
+      #   @return [Lithic::Models::ShippingAddress]
       required :shipping_address, -> { Lithic::ShippingAddress }
 
       # @!attribute carrier
       #   If omitted, the previous carrier will be used.
       #
-      #   @return [Lithic::Carrier, nil]
+      #   @return [Lithic::Models::Carrier, nil]
       optional :carrier, -> { Lithic::Carrier }
 
       # @!attribute product_id
@@ -41,20 +41,20 @@ module Lithic
       #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #     tracking
       #
-      #   @return [Symbol, Lithic::CardConvertPhysicalParams::ShippingMethod, nil]
+      #   @return [Symbol, Lithic::Models::CardConvertPhysicalParams::ShippingMethod, nil]
       optional :shipping_method, enum: -> { Lithic::CardConvertPhysicalParams::ShippingMethod }
 
       # @!method initialize(shipping_address:, carrier: nil, product_id: nil, shipping_method: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardConvertPhysicalParams} for more details.
       #
-      #   @param shipping_address [Lithic::ShippingAddress] The shipping address this card will be sent to.
+      #   @param shipping_address [Lithic::Models::ShippingAddress] The shipping address this card will be sent to.
       #
-      #   @param carrier [Lithic::Carrier] If omitted, the previous carrier will be used.
+      #   @param carrier [Lithic::Models::Carrier] If omitted, the previous carrier will be used.
       #
       #   @param product_id [String] Specifies the configuration (e.g. physical card art) that the card should be man
       #
-      #   @param shipping_method [Symbol, Lithic::CardConvertPhysicalParams::ShippingMethod] Shipping method for the card. Only applies to cards of type PHYSICAL.
+      #   @param shipping_method [Symbol, Lithic::Models::CardConvertPhysicalParams::ShippingMethod] Shipping method for the card. Only applies to cards of type PHYSICAL.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

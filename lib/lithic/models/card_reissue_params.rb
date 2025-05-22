@@ -10,7 +10,7 @@ module Lithic
       # @!attribute carrier
       #   If omitted, the previous carrier will be used.
       #
-      #   @return [Lithic::Carrier, nil]
+      #   @return [Lithic::Models::Carrier, nil]
       optional :carrier, -> { Lithic::Carrier }
 
       # @!attribute product_id
@@ -24,7 +24,7 @@ module Lithic
       # @!attribute shipping_address
       #   If omitted, the previous shipping address will be used.
       #
-      #   @return [Lithic::ShippingAddress, nil]
+      #   @return [Lithic::Models::ShippingAddress, nil]
       optional :shipping_address, -> { Lithic::ShippingAddress }
 
       # @!attribute shipping_method
@@ -41,20 +41,20 @@ module Lithic
       #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #     tracking
       #
-      #   @return [Symbol, Lithic::CardReissueParams::ShippingMethod, nil]
+      #   @return [Symbol, Lithic::Models::CardReissueParams::ShippingMethod, nil]
       optional :shipping_method, enum: -> { Lithic::CardReissueParams::ShippingMethod }
 
       # @!method initialize(carrier: nil, product_id: nil, shipping_address: nil, shipping_method: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardReissueParams} for more details.
       #
-      #   @param carrier [Lithic::Carrier] If omitted, the previous carrier will be used.
+      #   @param carrier [Lithic::Models::Carrier] If omitted, the previous carrier will be used.
       #
       #   @param product_id [String] Specifies the configuration (e.g. physical card art) that the card should be man
       #
-      #   @param shipping_address [Lithic::ShippingAddress] If omitted, the previous shipping address will be used.
+      #   @param shipping_address [Lithic::Models::ShippingAddress] If omitted, the previous shipping address will be used.
       #
-      #   @param shipping_method [Symbol, Lithic::CardReissueParams::ShippingMethod] Shipping method for the card. Only applies to cards of type PHYSICAL.
+      #   @param shipping_method [Symbol, Lithic::Models::CardReissueParams::ShippingMethod] Shipping method for the card. Only applies to cards of type PHYSICAL.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

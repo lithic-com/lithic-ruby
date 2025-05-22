@@ -23,7 +23,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Transfer]
+      # @return [Lithic::Models::Transfer]
       #
       # @see Lithic::Models::TransferCreateParams
       def create(params)

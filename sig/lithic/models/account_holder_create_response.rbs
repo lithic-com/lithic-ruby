@@ -44,6 +44,16 @@ module Lithic
         ?required_documents: ::Array[Lithic::RequiredDocument]
       ) -> void
 
+      def to_hash: -> {
+        token: String,
+        account_token: String,
+        status: Lithic::Models::AccountHolderCreateResponse::status,
+        status_reasons: ::Array[Lithic::Models::AccountHolderCreateResponse::status_reason],
+        created: Time,
+        external_id: String,
+        required_documents: ::Array[Lithic::RequiredDocument]
+      }
+
       type status =
         :ACCEPTED
         | :PENDING_REVIEW

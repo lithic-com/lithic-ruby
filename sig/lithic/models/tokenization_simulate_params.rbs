@@ -55,6 +55,18 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        cvv: String,
+        expiration_date: String,
+        pan: String,
+        tokenization_source: Lithic::Models::TokenizationSimulateParams::tokenization_source,
+        account_score: Integer,
+        device_score: Integer,
+        entity: String,
+        wallet_recommended_decision: Lithic::Models::TokenizationSimulateParams::wallet_recommended_decision,
+        request_options: Lithic::RequestOptions
+      }
+
       type tokenization_source = :APPLE_PAY | :GOOGLE | :SAMSUNG_PAY | :MERCHANT
 
       module TokenizationSource

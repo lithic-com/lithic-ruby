@@ -37,7 +37,7 @@ module Lithic
       # @!attribute network
       #   Card network.
       #
-      #   @return [Symbol, Lithic::DigitalCardArtAPI::Network]
+      #   @return [Symbol, Lithic::Models::DigitalCardArtAPI::Network]
       required :network, enum: -> { Lithic::DigitalCardArtAPI::Network }
 
       # @!attribute is_card_program_default
@@ -57,13 +57,13 @@ module Lithic
       #
       #   @param is_enabled [Boolean] Whether the card art is enabled.
       #
-      #   @param network [Symbol, Lithic::DigitalCardArtAPI::Network] Card network.
+      #   @param network [Symbol, Lithic::Models::DigitalCardArtAPI::Network] Card network.
       #
       #   @param is_card_program_default [Boolean] Whether the card art is the default card art to be added upon tokenization.
 
       # Card network.
       #
-      # @see Lithic::DigitalCardArtAPI#network
+      # @see Lithic::Models::DigitalCardArtAPI#network
       module Network
         extend Lithic::Internal::Type::Enum
 

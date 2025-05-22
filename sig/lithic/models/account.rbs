@@ -5,7 +5,7 @@ module Lithic
         token: String,
         created: Time?,
         spend_limit: Lithic::Account::SpendLimit,
-        state: Lithic::Account::state,
+        state: Lithic::Models::Account::state,
         account_holder: Lithic::Account::AccountHolder,
         auth_rule_tokens: ::Array[String],
         cardholder_currency: String,
@@ -19,7 +19,7 @@ module Lithic
 
       attr_accessor spend_limit: Lithic::Account::SpendLimit
 
-      attr_accessor state: Lithic::Account::state
+      attr_accessor state: Lithic::Models::Account::state
 
       attr_reader account_holder: Lithic::Account::AccountHolder?
 
@@ -45,12 +45,23 @@ module Lithic
         token: String,
         created: Time?,
         spend_limit: Lithic::Account::SpendLimit,
-        state: Lithic::Account::state,
+        state: Lithic::Models::Account::state,
         ?account_holder: Lithic::Account::AccountHolder,
         ?auth_rule_tokens: ::Array[String],
         ?cardholder_currency: String,
         ?verification_address: Lithic::Account::VerificationAddress
       ) -> void
+
+      def to_hash: -> {
+        token: String,
+        created: Time?,
+        spend_limit: Lithic::Account::SpendLimit,
+        state: Lithic::Models::Account::state,
+        account_holder: Lithic::Account::AccountHolder,
+        auth_rule_tokens: ::Array[String],
+        cardholder_currency: String,
+        verification_address: Lithic::Account::VerificationAddress
+      }
 
       type spend_limit = { daily: Integer, lifetime: Integer, monthly: Integer }
 
@@ -66,6 +77,8 @@ module Lithic
           lifetime: Integer,
           monthly: Integer
         ) -> void
+
+        def to_hash: -> { daily: Integer, lifetime: Integer, monthly: Integer }
       end
 
       type state = :ACTIVE | :PAUSED | :CLOSED
@@ -77,7 +90,7 @@ module Lithic
         PAUSED: :PAUSED
         CLOSED: :CLOSED
 
-        def self?.values: -> ::Array[Lithic::Account::state]
+        def self?.values: -> ::Array[Lithic::Models::Account::state]
       end
 
       type account_holder =
@@ -103,6 +116,13 @@ module Lithic
           email: String,
           phone_number: String
         ) -> void
+
+        def to_hash: -> {
+          token: String,
+          business_account_token: String,
+          email: String,
+          phone_number: String
+        }
       end
 
       type verification_address =
@@ -138,6 +158,15 @@ module Lithic
           state: String,
           ?address2: String
         ) -> void
+
+        def to_hash: -> {
+          :address1 => String,
+          city: String,
+          country: String,
+          postal_code: String,
+          state: String,
+          :address2 => String
+        }
       end
     end
   end

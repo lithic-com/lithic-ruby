@@ -11,7 +11,7 @@ module Lithic
 
       # @!attribute category
       #
-      #   @return [Symbol, Lithic::ManagementOperationTransaction::Category]
+      #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Category]
       required :category, enum: -> { Lithic::ManagementOperationTransaction::Category }
 
       # @!attribute created
@@ -26,12 +26,12 @@ module Lithic
 
       # @!attribute direction
       #
-      #   @return [Symbol, Lithic::ManagementOperationTransaction::Direction]
+      #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Direction]
       required :direction, enum: -> { Lithic::ManagementOperationTransaction::Direction }
 
       # @!attribute events
       #
-      #   @return [Array<Lithic::ManagementOperationTransaction::Event>]
+      #   @return [Array<Lithic::Models::ManagementOperationTransaction::Event>]
       required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::ManagementOperationTransaction::Event] }
 
       # @!attribute financial_account_token
@@ -46,7 +46,7 @@ module Lithic
 
       # @!attribute result
       #
-      #   @return [Symbol, Lithic::ManagementOperationTransaction::Result]
+      #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Result]
       required :result, enum: -> { Lithic::ManagementOperationTransaction::Result }
 
       # @!attribute settled_amount
@@ -56,12 +56,12 @@ module Lithic
 
       # @!attribute status
       #
-      #   @return [Symbol, Lithic::ManagementOperationTransaction::Status]
+      #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Status]
       required :status, enum: -> { Lithic::ManagementOperationTransaction::Status }
 
       # @!attribute transaction_series
       #
-      #   @return [Lithic::ManagementOperationTransaction::TransactionSeries, nil]
+      #   @return [Lithic::Models::ManagementOperationTransaction::TransactionSeries, nil]
       required :transaction_series,
                -> {
                  Lithic::ManagementOperationTransaction::TransactionSeries
@@ -80,21 +80,21 @@ module Lithic
 
       # @!method initialize(token:, category:, created:, currency:, direction:, events:, financial_account_token:, pending_amount:, result:, settled_amount:, status:, transaction_series:, updated:, user_defined_id: nil)
       #   @param token [String]
-      #   @param category [Symbol, Lithic::ManagementOperationTransaction::Category]
+      #   @param category [Symbol, Lithic::Models::ManagementOperationTransaction::Category]
       #   @param created [Time]
       #   @param currency [String]
-      #   @param direction [Symbol, Lithic::ManagementOperationTransaction::Direction]
-      #   @param events [Array<Lithic::ManagementOperationTransaction::Event>]
+      #   @param direction [Symbol, Lithic::Models::ManagementOperationTransaction::Direction]
+      #   @param events [Array<Lithic::Models::ManagementOperationTransaction::Event>]
       #   @param financial_account_token [String]
       #   @param pending_amount [Integer]
-      #   @param result [Symbol, Lithic::ManagementOperationTransaction::Result]
+      #   @param result [Symbol, Lithic::Models::ManagementOperationTransaction::Result]
       #   @param settled_amount [Integer]
-      #   @param status [Symbol, Lithic::ManagementOperationTransaction::Status]
-      #   @param transaction_series [Lithic::ManagementOperationTransaction::TransactionSeries, nil]
+      #   @param status [Symbol, Lithic::Models::ManagementOperationTransaction::Status]
+      #   @param transaction_series [Lithic::Models::ManagementOperationTransaction::TransactionSeries, nil]
       #   @param updated [Time]
       #   @param user_defined_id [String]
 
-      # @see Lithic::ManagementOperationTransaction#category
+      # @see Lithic::Models::ManagementOperationTransaction#category
       module Category
         extend Lithic::Internal::Type::Enum
 
@@ -108,7 +108,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::ManagementOperationTransaction#direction
+      # @see Lithic::Models::ManagementOperationTransaction#direction
       module Direction
         extend Lithic::Internal::Type::Enum
 
@@ -137,7 +137,7 @@ module Lithic
 
         # @!attribute detailed_results
         #
-        #   @return [Array<Symbol, Lithic::ManagementOperationTransaction::Event::DetailedResult>]
+        #   @return [Array<Symbol, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult>]
         required :detailed_results,
                  -> {
                    Lithic::Internal::Type::ArrayOf[enum: Lithic::ManagementOperationTransaction::Event::DetailedResult]
@@ -155,12 +155,12 @@ module Lithic
 
         # @!attribute result
         #
-        #   @return [Symbol, Lithic::ManagementOperationTransaction::Event::Result]
+        #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Event::Result]
         required :result, enum: -> { Lithic::ManagementOperationTransaction::Event::Result }
 
         # @!attribute type
         #
-        #   @return [Symbol, Lithic::ManagementOperationTransaction::Event::Type]
+        #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Event::Type]
         required :type, enum: -> { Lithic::ManagementOperationTransaction::Event::Type }
 
         # @!attribute subtype
@@ -172,11 +172,11 @@ module Lithic
         #   @param token [String]
         #   @param amount [Integer]
         #   @param created [Time]
-        #   @param detailed_results [Array<Symbol, Lithic::ManagementOperationTransaction::Event::DetailedResult>]
+        #   @param detailed_results [Array<Symbol, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult>]
         #   @param effective_date [Date]
         #   @param memo [String]
-        #   @param result [Symbol, Lithic::ManagementOperationTransaction::Event::Result]
-        #   @param type [Symbol, Lithic::ManagementOperationTransaction::Event::Type]
+        #   @param result [Symbol, Lithic::Models::ManagementOperationTransaction::Event::Result]
+        #   @param type [Symbol, Lithic::Models::ManagementOperationTransaction::Event::Type]
         #   @param subtype [String]
 
         module DetailedResult
@@ -188,7 +188,7 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # @see Lithic::ManagementOperationTransaction::Event#result
+        # @see Lithic::Models::ManagementOperationTransaction::Event#result
         module Result
           extend Lithic::Internal::Type::Enum
 
@@ -199,7 +199,7 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # @see Lithic::ManagementOperationTransaction::Event#type
+        # @see Lithic::Models::ManagementOperationTransaction::Event#type
         module Type
           extend Lithic::Internal::Type::Enum
 
@@ -228,7 +228,7 @@ module Lithic
         end
       end
 
-      # @see Lithic::ManagementOperationTransaction#result
+      # @see Lithic::Models::ManagementOperationTransaction#result
       module Result
         extend Lithic::Internal::Type::Enum
 
@@ -239,7 +239,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::ManagementOperationTransaction#status
+      # @see Lithic::Models::ManagementOperationTransaction#status
       module Status
         extend Lithic::Internal::Type::Enum
 
@@ -253,7 +253,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # @see Lithic::ManagementOperationTransaction#transaction_series
+      # @see Lithic::Models::ManagementOperationTransaction#transaction_series
       class TransactionSeries < Lithic::Internal::Type::BaseModel
         # @!attribute related_transaction_event_token
         #

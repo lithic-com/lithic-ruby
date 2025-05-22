@@ -19,8 +19,8 @@ module Lithic
       optional :pan, String
 
       # @!method initialize(cvv: nil, pan: nil)
-      #   Some parameter documentations has been truncated, see {Lithic::Card} for more
-      #   details.
+      #   Some parameter documentations has been truncated, see {Lithic::Models::Card} for
+      #   more details.
       #
       #   Card details with potentially PCI sensitive information for Enterprise customers
       #

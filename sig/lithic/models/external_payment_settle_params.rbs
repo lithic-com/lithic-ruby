@@ -31,6 +31,13 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        effective_date: Date,
+        memo: String,
+        progress_to: Lithic::Models::ExternalPaymentSettleParams::progress_to,
+        request_options: Lithic::RequestOptions
+      }
+
       type progress_to = :SETTLED | :RELEASED
 
       module ProgressTo

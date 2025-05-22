@@ -27,7 +27,7 @@ module Lithic
         #   this time. If you need to (re-)activate an Auth Rule the /promote endpoint
         #   should be used to promote a draft to the currently active version.
         #
-        #   @return [Symbol, Lithic::AuthRules::V2UpdateParams::State, nil]
+        #   @return [Symbol, Lithic::Models::AuthRules::V2UpdateParams::State, nil]
         optional :state, enum: -> { Lithic::AuthRules::V2UpdateParams::State }
 
         # @!attribute card_tokens
@@ -56,7 +56,7 @@ module Lithic
         #
         #   @param name [String, nil] Auth Rule Name
         #
-        #   @param state [Symbol, Lithic::AuthRules::V2UpdateParams::State] The desired state of the Auth Rule.
+        #   @param state [Symbol, Lithic::Models::AuthRules::V2UpdateParams::State] The desired state of the Auth Rule.
         #
         #   @param card_tokens [Array<String>] Card tokens to which the Auth Rule applies.
         #

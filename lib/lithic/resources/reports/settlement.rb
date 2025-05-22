@@ -24,7 +24,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::CursorPage<Lithic::SettlementDetail>]
+        # @return [Lithic::Internal::CursorPage<Lithic::Models::SettlementDetail>]
         #
         # @see Lithic::Models::Reports::SettlementListDetailsParams
         def list_details(report_date, params = {})
@@ -47,7 +47,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::SettlementReport]
+        # @return [Lithic::Models::SettlementReport]
         #
         # @see Lithic::Models::Reports::SettlementSummaryParams
         def summary(report_date, params = {})

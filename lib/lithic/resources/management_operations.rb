@@ -8,10 +8,10 @@ module Lithic
       # @overload create(amount:, category:, direction:, effective_date:, event_type:, financial_account_token:, token: nil, memo: nil, subtype: nil, user_defined_id: nil, request_options: {})
       #
       # @param amount [Integer]
-      # @param category [Symbol, Lithic::ManagementOperationCreateParams::Category]
-      # @param direction [Symbol, Lithic::ManagementOperationCreateParams::Direction]
+      # @param category [Symbol, Lithic::Models::ManagementOperationCreateParams::Category]
+      # @param direction [Symbol, Lithic::Models::ManagementOperationCreateParams::Direction]
       # @param effective_date [Date]
-      # @param event_type [Symbol, Lithic::ManagementOperationCreateParams::EventType]
+      # @param event_type [Symbol, Lithic::Models::ManagementOperationCreateParams::EventType]
       # @param financial_account_token [String]
       # @param token [String]
       # @param memo [String]
@@ -19,7 +19,7 @@ module Lithic
       # @param user_defined_id [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::ManagementOperationTransaction]
+      # @return [Lithic::Models::ManagementOperationTransaction]
       #
       # @see Lithic::Models::ManagementOperationCreateParams
       def create(params)
@@ -41,7 +41,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::ManagementOperationTransaction]
+      # @return [Lithic::Models::ManagementOperationTransaction]
       #
       # @see Lithic::Models::ManagementOperationRetrieveParams
       def retrieve(management_operation_token, params = {})
@@ -64,7 +64,7 @@ module Lithic
       #
       # @param business_account_token [String]
       #
-      # @param category [Symbol, Lithic::ManagementOperationListParams::Category] Management operation category to be returned.
+      # @param category [Symbol, Lithic::Models::ManagementOperationListParams::Category] Management operation category to be returned.
       #
       # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
       #
@@ -76,11 +76,11 @@ module Lithic
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      # @param status [Symbol, Lithic::ManagementOperationListParams::Status] Management operation status to be returned.
+      # @param status [Symbol, Lithic::Models::ManagementOperationListParams::Status] Management operation status to be returned.
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::ManagementOperationTransaction>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::ManagementOperationTransaction>]
       #
       # @see Lithic::Models::ManagementOperationListParams
       def list(params = {})
@@ -107,7 +107,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::ManagementOperationTransaction]
+      # @return [Lithic::Models::ManagementOperationTransaction]
       #
       # @see Lithic::Models::ManagementOperationReverseParams
       def reverse(management_operation_token, params)

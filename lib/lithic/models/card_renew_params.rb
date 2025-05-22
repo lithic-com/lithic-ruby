@@ -10,13 +10,13 @@ module Lithic
       # @!attribute shipping_address
       #   The shipping address this card will be sent to.
       #
-      #   @return [Lithic::ShippingAddress]
+      #   @return [Lithic::Models::ShippingAddress]
       required :shipping_address, -> { Lithic::ShippingAddress }
 
       # @!attribute carrier
       #   If omitted, the previous carrier will be used.
       #
-      #   @return [Lithic::Carrier, nil]
+      #   @return [Lithic::Models::Carrier, nil]
       optional :carrier, -> { Lithic::Carrier }
 
       # @!attribute exp_month
@@ -55,16 +55,16 @@ module Lithic
       #   - `EXPEDITED` - FedEx Standard Overnight or similar international option, with
       #     tracking
       #
-      #   @return [Symbol, Lithic::CardRenewParams::ShippingMethod, nil]
+      #   @return [Symbol, Lithic::Models::CardRenewParams::ShippingMethod, nil]
       optional :shipping_method, enum: -> { Lithic::CardRenewParams::ShippingMethod }
 
       # @!method initialize(shipping_address:, carrier: nil, exp_month: nil, exp_year: nil, product_id: nil, shipping_method: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardRenewParams} for more details.
       #
-      #   @param shipping_address [Lithic::ShippingAddress] The shipping address this card will be sent to.
+      #   @param shipping_address [Lithic::Models::ShippingAddress] The shipping address this card will be sent to.
       #
-      #   @param carrier [Lithic::Carrier] If omitted, the previous carrier will be used.
+      #   @param carrier [Lithic::Models::Carrier] If omitted, the previous carrier will be used.
       #
       #   @param exp_month [String] Two digit (MM) expiry month. If neither `exp_month` nor `exp_year` is provided,
       #
@@ -72,7 +72,7 @@ module Lithic
       #
       #   @param product_id [String] Specifies the configuration (e.g. physical card art) that the card should be man
       #
-      #   @param shipping_method [Symbol, Lithic::CardRenewParams::ShippingMethod] Shipping method for the card. Only applies to cards of type PHYSICAL.
+      #   @param shipping_method [Symbol, Lithic::Models::CardRenewParams::ShippingMethod] Shipping method for the card. Only applies to cards of type PHYSICAL.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

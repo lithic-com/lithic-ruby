@@ -7,11 +7,11 @@ module Lithic
       # @!attribute balance
       #   Balance
       #
-      #   @return [Lithic::Balance, nil]
+      #   @return [Lithic::Models::Balance, nil]
       optional :balance, -> { Lithic::Balance }
 
       # @!method initialize(balance: nil)
-      #   @param balance [Lithic::Balance] Balance
+      #   @param balance [Lithic::Models::Balance] Balance
     end
   end
 end

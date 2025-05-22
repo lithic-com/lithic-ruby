@@ -18,7 +18,7 @@ module Lithic
           starting_balance: Integer,
           statement_end_date: Date,
           statement_start_date: Date,
-          statement_type: Lithic::FinancialAccounts::Statement::statement_type,
+          statement_type: Lithic::Models::FinancialAccounts::Statement::statement_type,
           updated: Time,
           ytd_totals: Lithic::FinancialAccounts::Statement::YtdTotals,
           interest_details: Lithic::FinancialAccounts::Statement::InterestDetails?,
@@ -57,7 +57,7 @@ module Lithic
 
         attr_accessor statement_start_date: Date
 
-        attr_accessor statement_type: Lithic::FinancialAccounts::Statement::statement_type
+        attr_accessor statement_type: Lithic::Models::FinancialAccounts::Statement::statement_type
 
         attr_accessor updated: Time
 
@@ -89,13 +89,37 @@ module Lithic
           starting_balance: Integer,
           statement_end_date: Date,
           statement_start_date: Date,
-          statement_type: Lithic::FinancialAccounts::Statement::statement_type,
+          statement_type: Lithic::Models::FinancialAccounts::Statement::statement_type,
           updated: Time,
           ytd_totals: Lithic::FinancialAccounts::Statement::YtdTotals,
           ?interest_details: Lithic::FinancialAccounts::Statement::InterestDetails?,
           ?next_payment_due_date: Date,
           ?next_statement_end_date: Date
         ) -> void
+
+        def to_hash: -> {
+          token: String,
+          account_standing: Lithic::FinancialAccounts::Statement::AccountStanding,
+          amount_due: Lithic::FinancialAccounts::Statement::AmountDue,
+          available_credit: Integer,
+          created: Time,
+          credit_limit: Integer,
+          credit_product_token: String,
+          days_in_billing_cycle: Integer,
+          ending_balance: Integer,
+          financial_account_token: String,
+          payment_due_date: Date?,
+          period_totals: Lithic::FinancialAccounts::Statement::PeriodTotals,
+          starting_balance: Integer,
+          statement_end_date: Date,
+          statement_start_date: Date,
+          statement_type: Lithic::Models::FinancialAccounts::Statement::statement_type,
+          updated: Time,
+          ytd_totals: Lithic::FinancialAccounts::Statement::YtdTotals,
+          interest_details: Lithic::FinancialAccounts::Statement::InterestDetails?,
+          next_payment_due_date: Date,
+          next_statement_end_date: Date
+        }
 
         type account_standing =
           {
@@ -106,7 +130,7 @@ module Lithic
             financial_account_state: Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState,
             has_grace: bool,
             period_number: Integer,
-            period_state: Lithic::FinancialAccounts::Statement::AccountStanding::period_state
+            period_state: Lithic::Models::FinancialAccounts::Statement::AccountStanding::period_state
           }
 
         class AccountStanding < Lithic::Internal::Type::BaseModel
@@ -124,7 +148,7 @@ module Lithic
 
           attr_accessor period_number: Integer
 
-          attr_accessor period_state: Lithic::FinancialAccounts::Statement::AccountStanding::period_state
+          attr_accessor period_state: Lithic::Models::FinancialAccounts::Statement::AccountStanding::period_state
 
           def initialize: (
             consecutive_full_payments_made: Integer,
@@ -134,24 +158,40 @@ module Lithic
             financial_account_state: Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState,
             has_grace: bool,
             period_number: Integer,
-            period_state: Lithic::FinancialAccounts::Statement::AccountStanding::period_state
+            period_state: Lithic::Models::FinancialAccounts::Statement::AccountStanding::period_state
           ) -> void
+
+          def to_hash: -> {
+            consecutive_full_payments_made: Integer,
+            consecutive_minimum_payments_made: Integer,
+            consecutive_minimum_payments_missed: Integer,
+            days_past_due: Integer,
+            financial_account_state: Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState,
+            has_grace: bool,
+            period_number: Integer,
+            period_state: Lithic::Models::FinancialAccounts::Statement::AccountStanding::period_state
+          }
 
           type financial_account_state =
             {
-              status: Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status,
-              substatus: Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::substatus?
+              status: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status,
+              substatus: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::substatus?
             }
 
           class FinancialAccountState < Lithic::Internal::Type::BaseModel
-            attr_accessor status: Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status
+            attr_accessor status: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status
 
-            attr_accessor substatus: Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::substatus?
+            attr_accessor substatus: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::substatus?
 
             def initialize: (
-              status: Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status,
-              ?substatus: Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::substatus?
+              status: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status,
+              ?substatus: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::substatus?
             ) -> void
+
+            def to_hash: -> {
+              status: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status,
+              substatus: Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::substatus?
+            }
 
             type status = :OPEN | :CLOSED | :SUSPENDED | :PENDING
 
@@ -163,7 +203,7 @@ module Lithic
               SUSPENDED: :SUSPENDED
               PENDING: :PENDING
 
-              def self?.values: -> ::Array[Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status]
+              def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::status]
             end
 
             type substatus =
@@ -182,7 +222,7 @@ module Lithic
               BANK_REQUEST: :BANK_REQUEST
               DELINQUENT: :DELINQUENT
 
-              def self?.values: -> ::Array[Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::substatus]
+              def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::substatus]
             end
           end
 
@@ -195,7 +235,7 @@ module Lithic
             PROMO: :PROMO
             PENALTY: :PENALTY
 
-            def self?.values: -> ::Array[Lithic::FinancialAccounts::Statement::AccountStanding::period_state]
+            def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statement::AccountStanding::period_state]
           end
         end
 
@@ -207,6 +247,8 @@ module Lithic
           attr_accessor past_due: Integer
 
           def initialize: (amount: Integer, past_due: Integer) -> void
+
+          def to_hash: -> { amount: Integer, past_due: Integer }
         end
 
         type period_totals =
@@ -244,6 +286,16 @@ module Lithic
             payments: Integer,
             purchases: Integer
           ) -> void
+
+          def to_hash: -> {
+            balance_transfers: Integer,
+            cash_advances: Integer,
+            credits: Integer,
+            fees: Integer,
+            interest: Integer,
+            payments: Integer,
+            purchases: Integer
+          }
         end
 
         type statement_type = :INITIAL | :PERIOD_END | :FINAL
@@ -255,7 +307,7 @@ module Lithic
           PERIOD_END: :PERIOD_END
           FINAL: :FINAL
 
-          def self?.values: -> ::Array[Lithic::FinancialAccounts::Statement::statement_type]
+          def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statement::statement_type]
         end
 
         type ytd_totals =
@@ -293,6 +345,16 @@ module Lithic
             payments: Integer,
             purchases: Integer
           ) -> void
+
+          def to_hash: -> {
+            balance_transfers: Integer,
+            cash_advances: Integer,
+            credits: Integer,
+            fees: Integer,
+            interest: Integer,
+            payments: Integer,
+            purchases: Integer
+          }
         end
 
         type interest_details =
@@ -300,7 +362,7 @@ module Lithic
             actual_interest_charged: Integer?,
             daily_balance_amounts: Lithic::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts,
             effective_apr: Lithic::FinancialAccounts::Statement::InterestDetails::EffectiveApr,
-            interest_calculation_method: Lithic::FinancialAccounts::Statement::InterestDetails::interest_calculation_method,
+            interest_calculation_method: Lithic::Models::FinancialAccounts::Statement::InterestDetails::interest_calculation_method,
             interest_for_period: Lithic::FinancialAccounts::Statement::InterestDetails::InterestForPeriod,
             prime_rate: String?,
             minimum_interest_charged: Integer?
@@ -313,7 +375,7 @@ module Lithic
 
           attr_accessor effective_apr: Lithic::FinancialAccounts::Statement::InterestDetails::EffectiveApr
 
-          attr_accessor interest_calculation_method: Lithic::FinancialAccounts::Statement::InterestDetails::interest_calculation_method
+          attr_accessor interest_calculation_method: Lithic::Models::FinancialAccounts::Statement::InterestDetails::interest_calculation_method
 
           attr_accessor interest_for_period: Lithic::FinancialAccounts::Statement::InterestDetails::InterestForPeriod
 
@@ -325,11 +387,21 @@ module Lithic
             actual_interest_charged: Integer?,
             daily_balance_amounts: Lithic::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts,
             effective_apr: Lithic::FinancialAccounts::Statement::InterestDetails::EffectiveApr,
-            interest_calculation_method: Lithic::FinancialAccounts::Statement::InterestDetails::interest_calculation_method,
+            interest_calculation_method: Lithic::Models::FinancialAccounts::Statement::InterestDetails::interest_calculation_method,
             interest_for_period: Lithic::FinancialAccounts::Statement::InterestDetails::InterestForPeriod,
             prime_rate: String?,
             ?minimum_interest_charged: Integer?
           ) -> void
+
+          def to_hash: -> {
+            actual_interest_charged: Integer?,
+            daily_balance_amounts: Lithic::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts,
+            effective_apr: Lithic::FinancialAccounts::Statement::InterestDetails::EffectiveApr,
+            interest_calculation_method: Lithic::Models::FinancialAccounts::Statement::InterestDetails::interest_calculation_method,
+            interest_for_period: Lithic::FinancialAccounts::Statement::InterestDetails::InterestForPeriod,
+            prime_rate: String?,
+            minimum_interest_charged: Integer?
+          }
 
           type daily_balance_amounts =
             {
@@ -350,6 +422,12 @@ module Lithic
               cash_advances: String,
               purchases: String
             ) -> void
+
+            def to_hash: -> {
+              balance_transfers: String,
+              cash_advances: String,
+              purchases: String
+            }
           end
 
           type effective_apr =
@@ -371,6 +449,12 @@ module Lithic
               cash_advances: String,
               purchases: String
             ) -> void
+
+            def to_hash: -> {
+              balance_transfers: String,
+              cash_advances: String,
+              purchases: String
+            }
           end
 
           type interest_calculation_method = :DAILY | :AVERAGE_DAILY
@@ -381,7 +465,7 @@ module Lithic
             DAILY: :DAILY
             AVERAGE_DAILY: :AVERAGE_DAILY
 
-            def self?.values: -> ::Array[Lithic::FinancialAccounts::Statement::InterestDetails::interest_calculation_method]
+            def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::Statement::InterestDetails::interest_calculation_method]
           end
 
           type interest_for_period =
@@ -403,6 +487,12 @@ module Lithic
               cash_advances: String,
               purchases: String
             ) -> void
+
+            def to_hash: -> {
+              balance_transfers: String,
+              cash_advances: String,
+              purchases: String
+            }
           end
         end
       end

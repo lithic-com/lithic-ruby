@@ -3,16 +3,16 @@ module Lithic
     type transfer =
       {
         token: String,
-        category: Lithic::Transfer::category,
+        category: Lithic::Models::Transfer::category,
         created: Time,
         currency: String,
         descriptor: String,
         events: ::Array[Lithic::Transfer::Event],
         from_balance: ::Array[Lithic::Balance],
         pending_amount: Integer,
-        result: Lithic::Transfer::result,
+        result: Lithic::Models::Transfer::result,
         settled_amount: Integer,
-        status: Lithic::Transfer::status,
+        status: Lithic::Models::Transfer::status,
         to_balance: ::Array[Lithic::Balance],
         updated: Time
       }
@@ -22,9 +22,11 @@ module Lithic
 
       def token=: (String) -> String
 
-      attr_reader category: Lithic::Transfer::category?
+      attr_reader category: Lithic::Models::Transfer::category?
 
-      def category=: (Lithic::Transfer::category) -> Lithic::Transfer::category
+      def category=: (
+        Lithic::Models::Transfer::category
+      ) -> Lithic::Models::Transfer::category
 
       attr_reader created: Time?
 
@@ -52,17 +54,21 @@ module Lithic
 
       def pending_amount=: (Integer) -> Integer
 
-      attr_reader result: Lithic::Transfer::result?
+      attr_reader result: Lithic::Models::Transfer::result?
 
-      def result=: (Lithic::Transfer::result) -> Lithic::Transfer::result
+      def result=: (
+        Lithic::Models::Transfer::result
+      ) -> Lithic::Models::Transfer::result
 
       attr_reader settled_amount: Integer?
 
       def settled_amount=: (Integer) -> Integer
 
-      attr_reader status: Lithic::Transfer::status?
+      attr_reader status: Lithic::Models::Transfer::status?
 
-      def status=: (Lithic::Transfer::status) -> Lithic::Transfer::status
+      def status=: (
+        Lithic::Models::Transfer::status
+      ) -> Lithic::Models::Transfer::status
 
       attr_reader to_balance: ::Array[Lithic::Balance]?
 
@@ -74,19 +80,35 @@ module Lithic
 
       def initialize: (
         ?token: String,
-        ?category: Lithic::Transfer::category,
+        ?category: Lithic::Models::Transfer::category,
         ?created: Time,
         ?currency: String,
         ?descriptor: String,
         ?events: ::Array[Lithic::Transfer::Event],
         ?from_balance: ::Array[Lithic::Balance],
         ?pending_amount: Integer,
-        ?result: Lithic::Transfer::result,
+        ?result: Lithic::Models::Transfer::result,
         ?settled_amount: Integer,
-        ?status: Lithic::Transfer::status,
+        ?status: Lithic::Models::Transfer::status,
         ?to_balance: ::Array[Lithic::Balance],
         ?updated: Time
       ) -> void
+
+      def to_hash: -> {
+        token: String,
+        category: Lithic::Models::Transfer::category,
+        created: Time,
+        currency: String,
+        descriptor: String,
+        events: ::Array[Lithic::Transfer::Event],
+        from_balance: ::Array[Lithic::Balance],
+        pending_amount: Integer,
+        result: Lithic::Models::Transfer::result,
+        settled_amount: Integer,
+        status: Lithic::Models::Transfer::status,
+        to_balance: ::Array[Lithic::Balance],
+        updated: Time
+      }
 
       type category = :TRANSFER
 
@@ -95,7 +117,7 @@ module Lithic
 
         TRANSFER: :TRANSFER
 
-        def self?.values: -> ::Array[Lithic::Transfer::category]
+        def self?.values: -> ::Array[Lithic::Models::Transfer::category]
       end
 
       type event =
@@ -103,8 +125,8 @@ module Lithic
           token: String,
           amount: Integer,
           created: Time,
-          result: Lithic::Transfer::Event::result,
-          type: Lithic::Transfer::Event::type_
+          result: Lithic::Models::Transfer::Event::result,
+          type: Lithic::Models::Transfer::Event::type_
         }
 
       class Event < Lithic::Internal::Type::BaseModel
@@ -120,25 +142,33 @@ module Lithic
 
         def created=: (Time) -> Time
 
-        attr_reader result: Lithic::Transfer::Event::result?
+        attr_reader result: Lithic::Models::Transfer::Event::result?
 
         def result=: (
-          Lithic::Transfer::Event::result
-        ) -> Lithic::Transfer::Event::result
+          Lithic::Models::Transfer::Event::result
+        ) -> Lithic::Models::Transfer::Event::result
 
-        attr_reader type: Lithic::Transfer::Event::type_?
+        attr_reader type: Lithic::Models::Transfer::Event::type_?
 
         def type=: (
-          Lithic::Transfer::Event::type_
-        ) -> Lithic::Transfer::Event::type_
+          Lithic::Models::Transfer::Event::type_
+        ) -> Lithic::Models::Transfer::Event::type_
 
         def initialize: (
           ?token: String,
           ?amount: Integer,
           ?created: Time,
-          ?result: Lithic::Transfer::Event::result,
-          ?type: Lithic::Transfer::Event::type_
+          ?result: Lithic::Models::Transfer::Event::result,
+          ?type: Lithic::Models::Transfer::Event::type_
         ) -> void
+
+        def to_hash: -> {
+          token: String,
+          amount: Integer,
+          created: Time,
+          result: Lithic::Models::Transfer::Event::result,
+          type: Lithic::Models::Transfer::Event::type_
+        }
 
         type result = :APPROVED | :DECLINED
 
@@ -148,7 +178,7 @@ module Lithic
           APPROVED: :APPROVED
           DECLINED: :DECLINED
 
-          def self?.values: -> ::Array[Lithic::Transfer::Event::result]
+          def self?.values: -> ::Array[Lithic::Models::Transfer::Event::result]
         end
 
         type type_ =
@@ -291,7 +321,7 @@ module Lithic
           RETURNED_PAYMENT_REVERSAL: :RETURNED_PAYMENT_REVERSAL
           LITHIC_NETWORK_PAYMENT: :LITHIC_NETWORK_PAYMENT
 
-          def self?.values: -> ::Array[Lithic::Transfer::Event::type_]
+          def self?.values: -> ::Array[Lithic::Models::Transfer::Event::type_]
         end
       end
 
@@ -303,7 +333,7 @@ module Lithic
         APPROVED: :APPROVED
         DECLINED: :DECLINED
 
-        def self?.values: -> ::Array[Lithic::Transfer::result]
+        def self?.values: -> ::Array[Lithic::Models::Transfer::result]
       end
 
       type status = :DECLINED | :EXPIRED | :PENDING | :SETTLED | :VOIDED
@@ -317,7 +347,7 @@ module Lithic
         SETTLED: :SETTLED
         VOIDED: :VOIDED
 
-        def self?.values: -> ::Array[Lithic::Transfer::status]
+        def self?.values: -> ::Array[Lithic::Models::Transfer::status]
       end
     end
   end

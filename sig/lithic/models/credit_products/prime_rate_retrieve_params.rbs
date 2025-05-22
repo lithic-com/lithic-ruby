@@ -22,6 +22,12 @@ module Lithic
           ?starting_after: Date,
           ?request_options: Lithic::request_opts
         ) -> void
+
+        def to_hash: -> {
+          ending_before: Date,
+          starting_after: Date,
+          request_options: Lithic::RequestOptions
+        }
       end
     end
   end

@@ -16,11 +16,11 @@ module Lithic
       #
       # @param financial_account_token [String]
       #
-      # @param method_ [Symbol, Lithic::PaymentCreateParams::Method]
+      # @param method_ [Symbol, Lithic::Models::PaymentCreateParams::Method]
       #
-      # @param method_attributes [Lithic::PaymentCreateParams::MethodAttributes]
+      # @param method_attributes [Lithic::Models::PaymentCreateParams::MethodAttributes]
       #
-      # @param type [Symbol, Lithic::PaymentCreateParams::Type]
+      # @param type [Symbol, Lithic::Models::PaymentCreateParams::Type]
       #
       # @param token [String] Customer-provided token that will serve as an idempotency token. This token will
       #
@@ -51,7 +51,7 @@ module Lithic
       # @param payment_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Payment]
+      # @return [Lithic::Models::Payment]
       #
       # @see Lithic::Models::PaymentRetrieveParams
       def retrieve(payment_token, params = {})
@@ -76,7 +76,7 @@ module Lithic
       #
       # @param business_account_token [String]
       #
-      # @param category [Symbol, Lithic::PaymentListParams::Category]
+      # @param category [Symbol, Lithic::Models::PaymentListParams::Category]
       #
       # @param end_ [Time] Date string in RFC 3339 format. Only entries created before the specified time w
       #
@@ -86,15 +86,15 @@ module Lithic
       #
       # @param page_size [Integer] Page size (for pagination).
       #
-      # @param result [Symbol, Lithic::PaymentListParams::Result]
+      # @param result [Symbol, Lithic::Models::PaymentListParams::Result]
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      # @param status [Symbol, Lithic::PaymentListParams::Status]
+      # @param status [Symbol, Lithic::Models::PaymentListParams::Status]
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::Payment>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::Payment>]
       #
       # @see Lithic::Models::PaymentListParams
       def list(params = {})
@@ -134,9 +134,9 @@ module Lithic
       #
       # @param payment_token [String]
       #
-      # @param event_type [Symbol, Lithic::PaymentSimulateActionParams::EventType] Event Type
+      # @param event_type [Symbol, Lithic::Models::PaymentSimulateActionParams::EventType] Event Type
       #
-      # @param decline_reason [Symbol, Lithic::PaymentSimulateActionParams::DeclineReason] Decline reason
+      # @param decline_reason [Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason] Decline reason
       #
       # @param return_reason_code [String] Return Reason Code
       #
@@ -169,7 +169,7 @@ module Lithic
       #
       # @param financial_account_token [String] Financial Account Token
       #
-      # @param receipt_type [Symbol, Lithic::PaymentSimulateReceiptParams::ReceiptType] Receipt Type
+      # @param receipt_type [Symbol, Lithic::Models::PaymentSimulateReceiptParams::ReceiptType] Receipt Type
       #
       # @param memo [String] Memo
       #

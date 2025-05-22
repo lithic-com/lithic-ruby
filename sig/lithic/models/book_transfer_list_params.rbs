@@ -85,6 +85,21 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        account_token: String,
+        begin_: Time,
+        business_account_token: String,
+        category: Lithic::Models::BookTransferListParams::category,
+        end_: Time,
+        ending_before: String,
+        financial_account_token: String,
+        page_size: Integer,
+        result: Lithic::Models::BookTransferListParams::result,
+        starting_after: String,
+        status: Lithic::Models::BookTransferListParams::status,
+        request_options: Lithic::RequestOptions
+      }
+
       type category =
         :BALANCE_OR_FUNDING
         | :FEE

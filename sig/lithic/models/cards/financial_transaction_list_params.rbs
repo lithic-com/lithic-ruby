@@ -62,6 +62,17 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> void
 
+        def to_hash: -> {
+          begin_: Time,
+          category: Lithic::Models::Cards::FinancialTransactionListParams::category,
+          end_: Time,
+          ending_before: String,
+          result: Lithic::Models::Cards::FinancialTransactionListParams::result,
+          starting_after: String,
+          status: Lithic::Models::Cards::FinancialTransactionListParams::status,
+          request_options: Lithic::RequestOptions
+        }
+
         type category = :CARD | :TRANSFER
 
         module Category

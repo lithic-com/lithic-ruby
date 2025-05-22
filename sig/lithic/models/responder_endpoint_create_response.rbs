@@ -8,6 +8,8 @@ module Lithic
       def enrolled=: (bool) -> bool
 
       def initialize: (?enrolled: bool) -> void
+
+      def to_hash: -> { enrolled: bool }
     end
   end
 end

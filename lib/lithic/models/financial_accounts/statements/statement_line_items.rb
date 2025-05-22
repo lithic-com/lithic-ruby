@@ -7,7 +7,7 @@ module Lithic
         class StatementLineItems < Lithic::Internal::Type::BaseModel
           # @!attribute data
           #
-          #   @return [Array<Lithic::FinancialAccounts::Statements::StatementLineItems::Data>]
+          #   @return [Array<Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data>]
           required :data,
                    -> {
                      Lithic::Internal::Type::ArrayOf[Lithic::FinancialAccounts::Statements::StatementLineItems::Data]
@@ -19,7 +19,7 @@ module Lithic
           required :has_more, Lithic::Internal::Type::Boolean
 
           # @!method initialize(data:, has_more:)
-          #   @param data [Array<Lithic::FinancialAccounts::Statements::StatementLineItems::Data>]
+          #   @param data [Array<Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data>]
           #   @param has_more [Boolean]
 
           class Data < Lithic::Internal::Type::BaseModel
@@ -37,7 +37,7 @@ module Lithic
 
             # @!attribute category
             #
-            #   @return [Symbol, Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category]
+            #   @return [Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category]
             required :category,
                      enum: -> {
                        Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category
@@ -64,7 +64,7 @@ module Lithic
 
             # @!attribute event_type
             #
-            #   @return [Symbol, Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType]
+            #   @return [Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType]
             required :event_type,
                      enum: -> { Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType }
 
@@ -99,14 +99,14 @@ module Lithic
 
             # @!method initialize(token:, amount:, category:, created:, currency:, effective_date:, event_type:, financial_account_token:, financial_transaction_event_token:, financial_transaction_token:, card_token: nil, descriptor: nil)
             #   Some parameter documentations has been truncated, see
-            #   {Lithic::FinancialAccounts::Statements::StatementLineItems::Data} for more
-            #   details.
+            #   {Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data} for
+            #   more details.
             #
             #   @param token [String] Globally unique identifier for a Statement Line Item
             #
             #   @param amount [Integer] Transaction amount in cents
             #
-            #   @param category [Symbol, Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category]
+            #   @param category [Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category]
             #
             #   @param created [Time] Timestamp of when the line item was generated
             #
@@ -114,7 +114,7 @@ module Lithic
             #
             #   @param effective_date [Date] Date that the transaction effected the account balance
             #
-            #   @param event_type [Symbol, Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType]
+            #   @param event_type [Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::EventType]
             #
             #   @param financial_account_token [String] Globally unique identifier for a financial account
             #
@@ -126,7 +126,7 @@ module Lithic
             #
             #   @param descriptor [String]
 
-            # @see Lithic::FinancialAccounts::Statements::StatementLineItems::Data#category
+            # @see Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data#category
             module Category
               extend Lithic::Internal::Type::Enum
 
@@ -148,7 +148,7 @@ module Lithic
               #   @return [Array<Symbol>]
             end
 
-            # @see Lithic::FinancialAccounts::Statements::StatementLineItems::Data#event_type
+            # @see Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data#event_type
             module EventType
               extend Lithic::Internal::Type::Enum
 

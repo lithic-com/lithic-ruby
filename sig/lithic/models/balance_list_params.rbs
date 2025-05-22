@@ -39,6 +39,14 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        account_token: String,
+        balance_date: Time,
+        business_account_token: String,
+        financial_account_type: Lithic::Models::BalanceListParams::financial_account_type,
+        request_options: Lithic::RequestOptions
+      }
+
       type financial_account_type = :ISSUING | :OPERATING | :RESERVE
 
       module FinancialAccountType

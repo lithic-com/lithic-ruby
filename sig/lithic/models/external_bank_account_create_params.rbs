@@ -103,6 +103,28 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        account_number: String,
+        country: String,
+        currency: String,
+        financial_account_token: String,
+        owner: String,
+        owner_type: Lithic::Models::owner_type,
+        routing_number: String,
+        type: Lithic::Models::ExternalBankAccountCreateParams::type_,
+        verification_method: Lithic::Models::ExternalBankAccountCreateParams::verification_method,
+        account_token: String,
+        address: Lithic::ExternalBankAccountAddress,
+        company_id: String,
+        dob: Date,
+        doing_business_as: String,
+        name: String,
+        user_defined_id: String,
+        verification_enforcement: bool,
+        processor_token: String,
+        request_options: Lithic::RequestOptions
+      }
+
       type type_ = :CHECKING | :SAVINGS
 
       module Type

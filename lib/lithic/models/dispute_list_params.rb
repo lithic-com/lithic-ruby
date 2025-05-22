@@ -44,7 +44,7 @@ module Lithic
       # @!attribute status
       #   List disputes of a specific status.
       #
-      #   @return [Symbol, Lithic::DisputeListParams::Status, nil]
+      #   @return [Symbol, Lithic::Models::DisputeListParams::Status, nil]
       optional :status, enum: -> { Lithic::DisputeListParams::Status }
 
       # @!attribute transaction_tokens
@@ -67,7 +67,7 @@ module Lithic
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      #   @param status [Symbol, Lithic::DisputeListParams::Status] List disputes of a specific status.
+      #   @param status [Symbol, Lithic::Models::DisputeListParams::Status] List disputes of a specific status.
       #
       #   @param transaction_tokens [Array<String>] Transaction tokens to filter by.
       #

@@ -16,7 +16,7 @@ module Lithic
       #   - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #     program.
       #
-      #   @return [Symbol, Lithic::Transfer::Category, nil]
+      #   @return [Symbol, Lithic::Models::Transfer::Category, nil]
       optional :category, enum: -> { Lithic::Transfer::Category }
 
       # @!attribute created
@@ -42,13 +42,13 @@ module Lithic
       # @!attribute events
       #   A list of all financial events that have modified this trasnfer.
       #
-      #   @return [Array<Lithic::Transfer::Event>, nil]
+      #   @return [Array<Lithic::Models::Transfer::Event>, nil]
       optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Transfer::Event] }
 
       # @!attribute from_balance
       #   The updated balance of the sending financial account.
       #
-      #   @return [Array<Lithic::Balance>, nil]
+      #   @return [Array<Lithic::Models::Balance>, nil]
       optional :from_balance, -> { Lithic::Internal::Type::ArrayOf[Lithic::Balance] }
 
       # @!attribute pending_amount
@@ -63,7 +63,7 @@ module Lithic
       #   APPROVED transactions were successful while DECLINED transactions were declined
       #   by user, Lithic, or the network.
       #
-      #   @return [Symbol, Lithic::Transfer::Result, nil]
+      #   @return [Symbol, Lithic::Models::Transfer::Result, nil]
       optional :result, enum: -> { Lithic::Transfer::Result }
 
       # @!attribute settled_amount
@@ -82,13 +82,13 @@ module Lithic
       #   - `SETTLED` - The transfer is completed.
       #   - `VOIDED` - The transfer was reversed before it settled.
       #
-      #   @return [Symbol, Lithic::Transfer::Status, nil]
+      #   @return [Symbol, Lithic::Models::Transfer::Status, nil]
       optional :status, enum: -> { Lithic::Transfer::Status }
 
       # @!attribute to_balance
       #   The updated balance of the receiving financial account.
       #
-      #   @return [Array<Lithic::Balance>, nil]
+      #   @return [Array<Lithic::Models::Balance>, nil]
       optional :to_balance, -> { Lithic::Internal::Type::ArrayOf[Lithic::Balance] }
 
       # @!attribute updated
@@ -98,12 +98,12 @@ module Lithic
       optional :updated, Time
 
       # @!method initialize(token: nil, category: nil, created: nil, currency: nil, descriptor: nil, events: nil, from_balance: nil, pending_amount: nil, result: nil, settled_amount: nil, status: nil, to_balance: nil, updated: nil)
-      #   Some parameter documentations has been truncated, see {Lithic::Transfer} for
-      #   more details.
+      #   Some parameter documentations has been truncated, see {Lithic::Models::Transfer}
+      #   for more details.
       #
       #   @param token [String] Globally unique identifier for the transfer event.
       #
-      #   @param category [Symbol, Lithic::Transfer::Category] Status types:
+      #   @param category [Symbol, Lithic::Models::Transfer::Category] Status types:
       #
       #   @param created [Time] Date and time when the transfer occurred. UTC time zone.
       #
@@ -111,19 +111,19 @@ module Lithic
       #
       #   @param descriptor [String] A string that provides a description of the transfer; may be useful to display t
       #
-      #   @param events [Array<Lithic::Transfer::Event>] A list of all financial events that have modified this trasnfer.
+      #   @param events [Array<Lithic::Models::Transfer::Event>] A list of all financial events that have modified this trasnfer.
       #
-      #   @param from_balance [Array<Lithic::Balance>] The updated balance of the sending financial account.
+      #   @param from_balance [Array<Lithic::Models::Balance>] The updated balance of the sending financial account.
       #
       #   @param pending_amount [Integer] Pending amount of the transaction in the currency's smallest unit (e.g., cents),
       #
-      #   @param result [Symbol, Lithic::Transfer::Result] APPROVED transactions were successful while DECLINED transactions were declined
+      #   @param result [Symbol, Lithic::Models::Transfer::Result] APPROVED transactions were successful while DECLINED transactions were declined
       #
       #   @param settled_amount [Integer] Amount of the transaction that has been settled in the currency's smallest unit
       #
-      #   @param status [Symbol, Lithic::Transfer::Status] Status types:
+      #   @param status [Symbol, Lithic::Models::Transfer::Status] Status types:
       #
-      #   @param to_balance [Array<Lithic::Balance>] The updated balance of the receiving financial account.
+      #   @param to_balance [Array<Lithic::Models::Balance>] The updated balance of the receiving financial account.
       #
       #   @param updated [Time] Date and time when the financial transaction was last updated. UTC time zone.
 
@@ -132,7 +132,7 @@ module Lithic
       # - `TRANSFER` - Internal transfer of funds between financial accounts in your
       #   program.
       #
-      # @see Lithic::Transfer#category
+      # @see Lithic::Models::Transfer#category
       module Category
         extend Lithic::Internal::Type::Enum
 
@@ -166,17 +166,17 @@ module Lithic
         #   APPROVED financial events were successful while DECLINED financial events were
         #   declined by user, Lithic, or the network.
         #
-        #   @return [Symbol, Lithic::Transfer::Event::Result, nil]
+        #   @return [Symbol, Lithic::Models::Transfer::Event::Result, nil]
         optional :result, enum: -> { Lithic::Transfer::Event::Result }
 
         # @!attribute type
         #
-        #   @return [Symbol, Lithic::Transfer::Event::Type, nil]
+        #   @return [Symbol, Lithic::Models::Transfer::Event::Type, nil]
         optional :type, enum: -> { Lithic::Transfer::Event::Type }
 
         # @!method initialize(token: nil, amount: nil, created: nil, result: nil, type: nil)
-        #   Some parameter documentations has been truncated, see {Lithic::Transfer::Event}
-        #   for more details.
+        #   Some parameter documentations has been truncated, see
+        #   {Lithic::Models::Transfer::Event} for more details.
         #
         #   @param token [String] Globally unique identifier.
         #
@@ -184,14 +184,14 @@ module Lithic
         #
         #   @param created [Time] Date and time when the financial event occurred. UTC time zone.
         #
-        #   @param result [Symbol, Lithic::Transfer::Event::Result] APPROVED financial events were successful while DECLINED financial events were d
+        #   @param result [Symbol, Lithic::Models::Transfer::Event::Result] APPROVED financial events were successful while DECLINED financial events were d
         #
-        #   @param type [Symbol, Lithic::Transfer::Event::Type]
+        #   @param type [Symbol, Lithic::Models::Transfer::Event::Type]
 
         # APPROVED financial events were successful while DECLINED financial events were
         # declined by user, Lithic, or the network.
         #
-        # @see Lithic::Transfer::Event#result
+        # @see Lithic::Models::Transfer::Event#result
         module Result
           extend Lithic::Internal::Type::Enum
 
@@ -202,7 +202,7 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # @see Lithic::Transfer::Event#type
+        # @see Lithic::Models::Transfer::Event#type
         module Type
           extend Lithic::Internal::Type::Enum
 
@@ -282,7 +282,7 @@ module Lithic
       # APPROVED transactions were successful while DECLINED transactions were declined
       # by user, Lithic, or the network.
       #
-      # @see Lithic::Transfer#result
+      # @see Lithic::Models::Transfer#result
       module Result
         extend Lithic::Internal::Type::Enum
 
@@ -301,7 +301,7 @@ module Lithic
       # - `SETTLED` - The transfer is completed.
       # - `VOIDED` - The transfer was reversed before it settled.
       #
-      # @see Lithic::Transfer#status
+      # @see Lithic::Models::Transfer#status
       module Status
         extend Lithic::Internal::Type::Enum
 

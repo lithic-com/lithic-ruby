@@ -78,6 +78,21 @@ module Lithic
         ?starting_after: String,
         ?request_options: Lithic::request_opts
       ) -> void
+
+      def to_hash: -> {
+        begin_: Time,
+        email: String,
+        end_: Time,
+        ending_before: String,
+        external_id: String,
+        first_name: String,
+        last_name: String,
+        legal_business_name: String,
+        limit: Integer,
+        phone_number: String,
+        starting_after: String,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

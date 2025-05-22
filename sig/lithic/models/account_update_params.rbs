@@ -47,6 +47,15 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        daily_spend_limit: Integer,
+        lifetime_spend_limit: Integer,
+        monthly_spend_limit: Integer,
+        state: Lithic::Models::AccountUpdateParams::state,
+        verification_address: Lithic::AccountUpdateParams::VerificationAddress,
+        request_options: Lithic::RequestOptions
+      }
+
       type state = :ACTIVE | :PAUSED
 
       module State
@@ -101,6 +110,15 @@ module Lithic
           ?postal_code: String,
           ?state: String
         ) -> void
+
+        def to_hash: -> {
+          :address1 => String,
+          :address2 => String,
+          city: String,
+          country: String,
+          postal_code: String,
+          state: String
+        }
       end
     end
   end

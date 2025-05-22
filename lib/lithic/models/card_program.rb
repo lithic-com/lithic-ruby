@@ -48,8 +48,8 @@ module Lithic
       optional :settlement_currencies, Lithic::Internal::Type::ArrayOf[String]
 
       # @!method initialize(token:, created:, name:, pan_range_end:, pan_range_start:, cardholder_currency: nil, settlement_currencies: nil)
-      #   Some parameter documentations has been truncated, see {Lithic::CardProgram} for
-      #   more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::CardProgram} for more details.
       #
       #   @param token [String] Globally unique identifier.
       #

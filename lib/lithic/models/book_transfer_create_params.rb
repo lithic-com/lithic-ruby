@@ -17,7 +17,7 @@ module Lithic
       # @!attribute category
       #   Category of the book transfer
       #
-      #   @return [Symbol, Lithic::BookTransferCreateParams::Category]
+      #   @return [Symbol, Lithic::Models::BookTransferCreateParams::Category]
       required :category, enum: -> { Lithic::BookTransferCreateParams::Category }
 
       # @!attribute from_financial_account_token
@@ -43,7 +43,7 @@ module Lithic
       # @!attribute type
       #   Type of book_transfer
       #
-      #   @return [Symbol, Lithic::BookTransferCreateParams::Type]
+      #   @return [Symbol, Lithic::Models::BookTransferCreateParams::Type]
       required :type, enum: -> { Lithic::BookTransferCreateParams::Type }
 
       # @!attribute token
@@ -65,7 +65,7 @@ module Lithic
       #
       #   @param amount [Integer] Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
       #
-      #   @param category [Symbol, Lithic::BookTransferCreateParams::Category] Category of the book transfer
+      #   @param category [Symbol, Lithic::Models::BookTransferCreateParams::Category] Category of the book transfer
       #
       #   @param from_financial_account_token [String] Globally unique identifier for the financial account or card that will send the
       #
@@ -73,7 +73,7 @@ module Lithic
       #
       #   @param to_financial_account_token [String] Globally unique identifier for the financial account or card that will receive t
       #
-      #   @param type [Symbol, Lithic::BookTransferCreateParams::Type] Type of book_transfer
+      #   @param type [Symbol, Lithic::Models::BookTransferCreateParams::Type] Type of book_transfer
       #
       #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
       #

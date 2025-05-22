@@ -8,6 +8,8 @@ module Lithic
       def balance=: (Lithic::Balance _) -> Lithic::Balance
 
       def initialize: (?balance: Lithic::Balance) -> void
+
+      def to_hash: -> { balance: Lithic::Balance }
     end
   end
 end

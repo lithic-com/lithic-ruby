@@ -4,7 +4,7 @@ module Lithic
       {
         individual: Lithic::KYC::Individual,
         tos_timestamp: String,
-        workflow: Lithic::KYC::workflow,
+        workflow: Lithic::Models::KYC::workflow,
         external_id: String,
         kyc_passed_timestamp: String
       }
@@ -14,7 +14,7 @@ module Lithic
 
       attr_accessor tos_timestamp: String
 
-      attr_accessor workflow: Lithic::KYC::workflow
+      attr_accessor workflow: Lithic::Models::KYC::workflow
 
       attr_reader external_id: String?
 
@@ -27,10 +27,18 @@ module Lithic
       def initialize: (
         individual: Lithic::KYC::Individual,
         tos_timestamp: String,
-        workflow: Lithic::KYC::workflow,
+        workflow: Lithic::Models::KYC::workflow,
         ?external_id: String,
         ?kyc_passed_timestamp: String
       ) -> void
+
+      def to_hash: -> {
+        individual: Lithic::KYC::Individual,
+        tos_timestamp: String,
+        workflow: Lithic::Models::KYC::workflow,
+        external_id: String,
+        kyc_passed_timestamp: String
+      }
 
       type individual =
         {
@@ -67,6 +75,16 @@ module Lithic
           last_name: String,
           phone_number: String
         ) -> void
+
+        def to_hash: -> {
+          address: Lithic::Address,
+          dob: String,
+          email: String,
+          first_name: String,
+          government_id: String,
+          last_name: String,
+          phone_number: String
+        }
       end
 
       type workflow = :KYC_BASIC | :KYC_BYO
@@ -77,7 +95,7 @@ module Lithic
         KYC_BASIC: :KYC_BASIC
         KYC_BYO: :KYC_BYO
 
-        def self?.values: -> ::Array[Lithic::KYC::workflow]
+        def self?.values: -> ::Array[Lithic::Models::KYC::workflow]
       end
     end
   end

@@ -86,7 +86,7 @@ module Lithic
       def simulate_enrollment_review: (
         ?account_holder_token: String,
         ?status: Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status,
-        ?status_reasons: ::Array[Lithic::AccountHolderSimulateEnrollmentReviewParams::status_reason],
+        ?status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::status_reason],
         ?request_options: Lithic::request_opts
       ) -> Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse
 

@@ -37,6 +37,15 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        amount: Integer,
+        reason: Lithic::Models::DisputeCreateParams::reason,
+        transaction_token: String,
+        customer_filed_date: Time,
+        customer_note: String,
+        request_options: Lithic::RequestOptions
+      }
+
       type reason =
         :ATM_CASH_MISDISPENSE
         | :CANCELLED

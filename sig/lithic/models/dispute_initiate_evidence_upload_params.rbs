@@ -15,6 +15,11 @@ module Lithic
         ?filename: String,
         ?request_options: Lithic::request_opts
       ) -> void
+
+      def to_hash: -> {
+        filename: String,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

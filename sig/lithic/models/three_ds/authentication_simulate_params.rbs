@@ -34,6 +34,14 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> void
 
+        def to_hash: -> {
+          merchant: Lithic::ThreeDS::AuthenticationSimulateParams::Merchant,
+          pan: String,
+          transaction: Lithic::ThreeDS::AuthenticationSimulateParams::Transaction,
+          card_expiry_check: Lithic::Models::ThreeDS::AuthenticationSimulateParams::card_expiry_check,
+          request_options: Lithic::RequestOptions
+        }
+
         type merchant =
           { id: String, country: String, mcc: String, name: String }
 
@@ -52,6 +60,13 @@ module Lithic
             mcc: String,
             name: String
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            country: String,
+            mcc: String,
+            name: String
+          }
         end
 
         type transaction = { amount: Integer, currency: String }
@@ -62,6 +77,8 @@ module Lithic
           attr_accessor currency: String
 
           def initialize: (amount: Integer, currency: String) -> void
+
+          def to_hash: -> { amount: Integer, currency: String }
         end
 
         type card_expiry_check = :MATCH | :MISMATCH | :NOT_PRESENT

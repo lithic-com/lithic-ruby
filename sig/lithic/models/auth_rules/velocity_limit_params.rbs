@@ -4,8 +4,8 @@ module Lithic
       type velocity_limit_params =
         {
           filters: Lithic::AuthRules::VelocityLimitParams::Filters,
-          period: Lithic::AuthRules::VelocityLimitParams::period,
-          scope: Lithic::AuthRules::VelocityLimitParams::scope,
+          period: Lithic::Models::AuthRules::VelocityLimitParams::period,
+          scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
           limit_amount: Integer?,
           limit_count: Integer?
         }
@@ -13,9 +13,9 @@ module Lithic
       class VelocityLimitParams < Lithic::Internal::Type::BaseModel
         attr_accessor filters: Lithic::AuthRules::VelocityLimitParams::Filters
 
-        attr_accessor period: Lithic::AuthRules::VelocityLimitParams::period
+        attr_accessor period: Lithic::Models::AuthRules::VelocityLimitParams::period
 
-        attr_accessor scope: Lithic::AuthRules::VelocityLimitParams::scope
+        attr_accessor scope: Lithic::Models::AuthRules::VelocityLimitParams::scope
 
         attr_accessor limit_amount: Integer?
 
@@ -23,11 +23,19 @@ module Lithic
 
         def initialize: (
           filters: Lithic::AuthRules::VelocityLimitParams::Filters,
-          period: Lithic::AuthRules::VelocityLimitParams::period,
-          scope: Lithic::AuthRules::VelocityLimitParams::scope,
+          period: Lithic::Models::AuthRules::VelocityLimitParams::period,
+          scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
           ?limit_amount: Integer?,
           ?limit_count: Integer?
         ) -> void
+
+        def to_hash: -> {
+          filters: Lithic::AuthRules::VelocityLimitParams::Filters,
+          period: Lithic::Models::AuthRules::VelocityLimitParams::period,
+          scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
+          limit_amount: Integer?,
+          limit_count: Integer?
+        }
 
         type filters =
           {
@@ -52,6 +60,13 @@ module Lithic
             ?include_countries: ::Array[String]?,
             ?include_mccs: ::Array[String]?
           ) -> void
+
+          def to_hash: -> {
+            exclude_countries: ::Array[String]?,
+            exclude_mccs: ::Array[String]?,
+            include_countries: ::Array[String]?,
+            include_mccs: ::Array[String]?
+          }
         end
 
         type period =
@@ -61,7 +76,7 @@ module Lithic
         module Period
           extend Lithic::Internal::Type::Union
 
-          def self?.variants: -> ::Array[Lithic::AuthRules::VelocityLimitParams::period]
+          def self?.variants: -> ::Array[Lithic::Models::AuthRules::VelocityLimitParams::period]
         end
 
         type scope = :CARD | :ACCOUNT
@@ -72,7 +87,7 @@ module Lithic
           CARD: :CARD
           ACCOUNT: :ACCOUNT
 
-          def self?.values: -> ::Array[Lithic::AuthRules::VelocityLimitParams::scope]
+          def self?.values: -> ::Array[Lithic::Models::AuthRules::VelocityLimitParams::scope]
         end
       end
     end

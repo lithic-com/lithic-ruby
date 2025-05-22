@@ -59,6 +59,19 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> void
 
+      def to_hash: -> {
+        amount: Integer,
+        category: Lithic::Models::ExternalPaymentCreateParams::category,
+        effective_date: Date,
+        financial_account_token: String,
+        payment_type: Lithic::Models::ExternalPaymentCreateParams::payment_type,
+        token: String,
+        memo: String,
+        progress_to: Lithic::Models::ExternalPaymentCreateParams::progress_to,
+        user_defined_id: String,
+        request_options: Lithic::RequestOptions
+      }
+
       type category =
         :EXTERNAL_WIRE | :EXTERNAL_ACH | :EXTERNAL_CHECK | :EXTERNAL_TRANSFER
 

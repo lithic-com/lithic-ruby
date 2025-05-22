@@ -31,7 +31,7 @@ module Lithic
       # @!attribute event_types
       #   Event types to filter events by.
       #
-      #   @return [Array<Symbol, Lithic::EventListParams::EventType>, nil]
+      #   @return [Array<Symbol, Lithic::Models::EventListParams::EventType>, nil]
       optional :event_types, -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::EventListParams::EventType] }
 
       # @!attribute page_size
@@ -63,7 +63,7 @@ module Lithic
       #
       #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
       #
-      #   @param event_types [Array<Symbol, Lithic::EventListParams::EventType>] Event types to filter events by.
+      #   @param event_types [Array<Symbol, Lithic::Models::EventListParams::EventType>] Event types to filter events by.
       #
       #   @param page_size [Integer] Page size (for pagination).
       #

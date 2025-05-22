@@ -56,7 +56,7 @@ module Lithic
       # @!attribute state
       #   Returns cards with the specified state.
       #
-      #   @return [Symbol, Lithic::CardListParams::State, nil]
+      #   @return [Symbol, Lithic::Models::CardListParams::State, nil]
       optional :state, enum: -> { Lithic::CardListParams::State }
 
       # @!method initialize(account_token: nil, begin_: nil, end_: nil, ending_before: nil, memo: nil, page_size: nil, starting_after: nil, state: nil, request_options: {})
@@ -77,7 +77,7 @@ module Lithic
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      #   @param state [Symbol, Lithic::CardListParams::State] Returns cards with the specified state.
+      #   @param state [Symbol, Lithic::Models::CardListParams::State] Returns cards with the specified state.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

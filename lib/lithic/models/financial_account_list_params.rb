@@ -22,7 +22,7 @@ module Lithic
       # @!attribute type
       #   List financial accounts of a given type
       #
-      #   @return [Symbol, Lithic::FinancialAccountListParams::Type, nil]
+      #   @return [Symbol, Lithic::Models::FinancialAccountListParams::Type, nil]
       optional :type, enum: -> { Lithic::FinancialAccountListParams::Type }
 
       # @!method initialize(account_token: nil, business_account_token: nil, type: nil, request_options: {})
@@ -30,7 +30,7 @@ module Lithic
       #
       #   @param business_account_token [String] List financial accounts for a given business_account_token
       #
-      #   @param type [Symbol, Lithic::FinancialAccountListParams::Type] List financial accounts of a given type
+      #   @param type [Symbol, Lithic::Models::FinancialAccountListParams::Type] List financial accounts of a given type
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

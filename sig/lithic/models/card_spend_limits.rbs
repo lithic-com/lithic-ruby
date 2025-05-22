@@ -28,6 +28,12 @@ module Lithic
         ?spend_velocity: Lithic::CardSpendLimits::SpendVelocity
       ) -> void
 
+      def to_hash: -> {
+        available_spend_limit: Lithic::CardSpendLimits::AvailableSpendLimit,
+        spend_limit: Lithic::CardSpendLimits::SpendLimit,
+        spend_velocity: Lithic::CardSpendLimits::SpendVelocity
+      }
+
       type available_spend_limit =
         { annually: Integer, forever: Integer, monthly: Integer }
 
@@ -49,6 +55,12 @@ module Lithic
           ?forever: Integer,
           ?monthly: Integer
         ) -> void
+
+        def to_hash: -> {
+          annually: Integer,
+          forever: Integer,
+          monthly: Integer
+        }
       end
 
       type spend_limit =
@@ -72,6 +84,12 @@ module Lithic
           ?forever: Integer,
           ?monthly: Integer
         ) -> void
+
+        def to_hash: -> {
+          annually: Integer,
+          forever: Integer,
+          monthly: Integer
+        }
       end
 
       type spend_velocity =
@@ -95,6 +113,12 @@ module Lithic
           ?forever: Integer,
           ?monthly: Integer
         ) -> void
+
+        def to_hash: -> {
+          annually: Integer,
+          forever: Integer,
+          monthly: Integer
+        }
       end
     end
   end

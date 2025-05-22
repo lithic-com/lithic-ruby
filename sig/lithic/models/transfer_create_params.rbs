@@ -30,6 +30,15 @@ module Lithic
         ?memo: String,
         ?request_options: Lithic::request_opts
       ) -> void
+
+      def to_hash: -> {
+        amount: Integer,
+        from: String,
+        to: String,
+        token: String,
+        memo: String,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

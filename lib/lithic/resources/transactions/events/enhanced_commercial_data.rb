@@ -14,7 +14,7 @@ module Lithic
           #
           # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Lithic::Transactions::Events::EnhancedData]
+          # @return [Lithic::Models::Transactions::Events::EnhancedData]
           #
           # @see Lithic::Models::Transactions::Events::EnhancedCommercialDataRetrieveParams
           def retrieve(event_token, params = {})

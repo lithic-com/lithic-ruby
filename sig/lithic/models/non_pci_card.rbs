@@ -8,11 +8,11 @@ module Lithic
         created: Time,
         funding: Lithic::NonPCICard::Funding,
         last_four: String,
-        pin_status: Lithic::NonPCICard::pin_status,
+        pin_status: Lithic::Models::NonPCICard::pin_status,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::NonPCICard::spend_limit_duration,
-        state: Lithic::NonPCICard::state,
-        type: Lithic::NonPCICard::type_,
+        spend_limit_duration: Lithic::Models::NonPCICard::spend_limit_duration,
+        state: Lithic::Models::NonPCICard::state,
+        type: Lithic::Models::NonPCICard::type_,
         auth_rule_tokens: ::Array[String],
         cardholder_currency: String,
         digital_card_art_token: String,
@@ -38,15 +38,15 @@ module Lithic
 
       attr_accessor last_four: String
 
-      attr_accessor pin_status: Lithic::NonPCICard::pin_status
+      attr_accessor pin_status: Lithic::Models::NonPCICard::pin_status
 
       attr_accessor spend_limit: Integer
 
-      attr_accessor spend_limit_duration: Lithic::NonPCICard::spend_limit_duration
+      attr_accessor spend_limit_duration: Lithic::Models::NonPCICard::spend_limit_duration
 
-      attr_accessor state: Lithic::NonPCICard::state
+      attr_accessor state: Lithic::Models::NonPCICard::state
 
-      attr_accessor type: Lithic::NonPCICard::type_
+      attr_accessor type: Lithic::Models::NonPCICard::type_
 
       attr_reader auth_rule_tokens: ::Array[String]?
 
@@ -93,11 +93,11 @@ module Lithic
         created: Time,
         funding: Lithic::NonPCICard::Funding,
         last_four: String,
-        pin_status: Lithic::NonPCICard::pin_status,
+        pin_status: Lithic::Models::NonPCICard::pin_status,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::NonPCICard::spend_limit_duration,
-        state: Lithic::NonPCICard::state,
-        type: Lithic::NonPCICard::type_,
+        spend_limit_duration: Lithic::Models::NonPCICard::spend_limit_duration,
+        state: Lithic::Models::NonPCICard::state,
+        type: Lithic::Models::NonPCICard::type_,
         ?auth_rule_tokens: ::Array[String],
         ?cardholder_currency: String,
         ?digital_card_art_token: String,
@@ -110,13 +110,37 @@ module Lithic
         ?replacement_for: String?
       ) -> void
 
+      def to_hash: -> {
+        token: String,
+        account_token: String,
+        card_program_token: String,
+        created: Time,
+        funding: Lithic::NonPCICard::Funding,
+        last_four: String,
+        pin_status: Lithic::Models::NonPCICard::pin_status,
+        spend_limit: Integer,
+        spend_limit_duration: Lithic::Models::NonPCICard::spend_limit_duration,
+        state: Lithic::Models::NonPCICard::state,
+        type: Lithic::Models::NonPCICard::type_,
+        auth_rule_tokens: ::Array[String],
+        cardholder_currency: String,
+        digital_card_art_token: String,
+        exp_month: String,
+        exp_year: String,
+        hostname: String,
+        memo: String,
+        pending_commands: ::Array[String],
+        product_id: String,
+        replacement_for: String?
+      }
+
       type funding =
         {
           token: String,
           created: Time,
           last_four: String,
-          state: Lithic::NonPCICard::Funding::state,
-          type: Lithic::NonPCICard::Funding::type_,
+          state: Lithic::Models::NonPCICard::Funding::state,
+          type: Lithic::Models::NonPCICard::Funding::type_,
           account_name: String,
           nickname: String
         }
@@ -128,9 +152,9 @@ module Lithic
 
         attr_accessor last_four: String
 
-        attr_accessor state: Lithic::NonPCICard::Funding::state
+        attr_accessor state: Lithic::Models::NonPCICard::Funding::state
 
-        attr_accessor type: Lithic::NonPCICard::Funding::type_
+        attr_accessor type: Lithic::Models::NonPCICard::Funding::type_
 
         attr_reader account_name: String?
 
@@ -144,11 +168,21 @@ module Lithic
           token: String,
           created: Time,
           last_four: String,
-          state: Lithic::NonPCICard::Funding::state,
-          type: Lithic::NonPCICard::Funding::type_,
+          state: Lithic::Models::NonPCICard::Funding::state,
+          type: Lithic::Models::NonPCICard::Funding::type_,
           ?account_name: String,
           ?nickname: String
         ) -> void
+
+        def to_hash: -> {
+          token: String,
+          created: Time,
+          last_four: String,
+          state: Lithic::Models::NonPCICard::Funding::state,
+          type: Lithic::Models::NonPCICard::Funding::type_,
+          account_name: String,
+          nickname: String
+        }
 
         type state = :DELETED | :ENABLED | :PENDING
 
@@ -159,7 +193,7 @@ module Lithic
           ENABLED: :ENABLED
           PENDING: :PENDING
 
-          def self?.values: -> ::Array[Lithic::NonPCICard::Funding::state]
+          def self?.values: -> ::Array[Lithic::Models::NonPCICard::Funding::state]
         end
 
         type type_ = :DEPOSITORY_CHECKING | :DEPOSITORY_SAVINGS
@@ -170,7 +204,7 @@ module Lithic
           DEPOSITORY_CHECKING: :DEPOSITORY_CHECKING
           DEPOSITORY_SAVINGS: :DEPOSITORY_SAVINGS
 
-          def self?.values: -> ::Array[Lithic::NonPCICard::Funding::type_]
+          def self?.values: -> ::Array[Lithic::Models::NonPCICard::Funding::type_]
         end
       end
 
@@ -183,7 +217,7 @@ module Lithic
         BLOCKED: :BLOCKED
         NOT_SET: :NOT_SET
 
-        def self?.values: -> ::Array[Lithic::NonPCICard::pin_status]
+        def self?.values: -> ::Array[Lithic::Models::NonPCICard::pin_status]
       end
 
       type spend_limit_duration =
@@ -198,7 +232,7 @@ module Lithic
         TRANSACTION: :TRANSACTION
         DAILY: :DAILY
 
-        def self?.values: -> ::Array[Lithic::NonPCICard::spend_limit_duration]
+        def self?.values: -> ::Array[Lithic::Models::NonPCICard::spend_limit_duration]
       end
 
       type state =
@@ -213,7 +247,7 @@ module Lithic
         PENDING_ACTIVATION: :PENDING_ACTIVATION
         PENDING_FULFILLMENT: :PENDING_FULFILLMENT
 
-        def self?.values: -> ::Array[Lithic::NonPCICard::state]
+        def self?.values: -> ::Array[Lithic::Models::NonPCICard::state]
       end
 
       type type_ =
@@ -234,7 +268,7 @@ module Lithic
         UNLOCKED: :UNLOCKED
         DIGITAL_WALLET: :DIGITAL_WALLET
 
-        def self?.values: -> ::Array[Lithic::NonPCICard::type_]
+        def self?.values: -> ::Array[Lithic::Models::NonPCICard::type_]
       end
     end
   end

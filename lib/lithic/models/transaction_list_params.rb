@@ -50,7 +50,7 @@ module Lithic
       #   Filters for transactions using transaction result field. Can filter by
       #   `APPROVED`, and `DECLINED`.
       #
-      #   @return [Symbol, Lithic::TransactionListParams::Result, nil]
+      #   @return [Symbol, Lithic::Models::TransactionListParams::Result, nil]
       optional :result, enum: -> { Lithic::TransactionListParams::Result }
 
       # @!attribute starting_after
@@ -63,7 +63,7 @@ module Lithic
       # @!attribute status
       #   Filters for transactions using transaction status field.
       #
-      #   @return [Symbol, Lithic::TransactionListParams::Status, nil]
+      #   @return [Symbol, Lithic::Models::TransactionListParams::Status, nil]
       optional :status, enum: -> { Lithic::TransactionListParams::Status }
 
       # @!method initialize(account_token: nil, begin_: nil, card_token: nil, end_: nil, ending_before: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
@@ -82,11 +82,11 @@ module Lithic
       #
       #   @param page_size [Integer] Page size (for pagination).
       #
-      #   @param result [Symbol, Lithic::TransactionListParams::Result] Filters for transactions using transaction result field. Can filter by `APPROVED
+      #   @param result [Symbol, Lithic::Models::TransactionListParams::Result] Filters for transactions using transaction result field. Can filter by `APPROVED
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      #   @param status [Symbol, Lithic::TransactionListParams::Status] Filters for transactions using transaction status field.
+      #   @param status [Symbol, Lithic::Models::TransactionListParams::Status] Filters for transactions using transaction status field.
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 

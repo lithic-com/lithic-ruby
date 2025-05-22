@@ -36,6 +36,15 @@ module Lithic
         ?merchant_acceptor_id: String,
         ?request_options: Lithic::request_opts
       ) -> void
+
+      def to_hash: -> {
+        amount: Integer,
+        descriptor: String,
+        pan: String,
+        mcc: String,
+        merchant_acceptor_id: String,
+        request_options: Lithic::RequestOptions
+      }
     end
   end
 end

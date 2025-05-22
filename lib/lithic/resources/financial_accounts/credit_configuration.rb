@@ -12,7 +12,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::FinancialAccounts::FinancialAccountCreditConfig]
+        # @return [Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig]
         #
         # @see Lithic::Models::FinancialAccounts::CreditConfigurationRetrieveParams
         def retrieve(financial_account_token, params = {})
@@ -40,7 +40,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::FinancialAccounts::FinancialAccountCreditConfig]
+        # @return [Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig]
         #
         # @see Lithic::Models::FinancialAccounts::CreditConfigurationUpdateParams
         def update(financial_account_token, params = {})

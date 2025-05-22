@@ -39,7 +39,7 @@ module Lithic
           # @!attribute network
           #   Network to filter on.
           #
-          #   @return [Symbol, Lithic::Reports::Settlement::NetworkTotalListParams::Network, nil]
+          #   @return [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network, nil]
           optional :network, enum: -> { Lithic::Reports::Settlement::NetworkTotalListParams::Network }
 
           # @!attribute page_size
@@ -92,7 +92,7 @@ module Lithic
           #
           #   @param institution_id [String] Institution ID to filter on.
           #
-          #   @param network [Symbol, Lithic::Reports::Settlement::NetworkTotalListParams::Network] Network to filter on.
+          #   @param network [Symbol, Lithic::Models::Reports::Settlement::NetworkTotalListParams::Network] Network to filter on.
           #
           #   @param page_size [Integer] Number of records per page.
           #

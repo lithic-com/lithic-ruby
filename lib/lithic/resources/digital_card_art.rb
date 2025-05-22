@@ -14,7 +14,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::DigitalCardArtAPI]
+      # @return [Lithic::Models::DigitalCardArtAPI]
       #
       # @see Lithic::Models::DigitalCardArtRetrieveParams
       def retrieve(digital_card_art_token, params = {})
@@ -41,7 +41,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::DigitalCardArtAPI>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::DigitalCardArtAPI>]
       #
       # @see Lithic::Models::DigitalCardArtListParams
       def list(params = {})

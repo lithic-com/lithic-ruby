@@ -6,7 +6,7 @@ module Lithic
         created: Time,
         currency: String,
         financial_account_token: String,
-        financial_account_type: Lithic::Balance::financial_account_type,
+        financial_account_type: Lithic::Models::Balance::financial_account_type,
         last_transaction_event_token: String,
         last_transaction_token: String,
         pending_amount: Integer,
@@ -23,7 +23,7 @@ module Lithic
 
       attr_accessor financial_account_token: String
 
-      attr_accessor financial_account_type: Lithic::Balance::financial_account_type
+      attr_accessor financial_account_type: Lithic::Models::Balance::financial_account_type
 
       attr_accessor last_transaction_event_token: String
 
@@ -40,13 +40,26 @@ module Lithic
         created: Time,
         currency: String,
         financial_account_token: String,
-        financial_account_type: Lithic::Balance::financial_account_type,
+        financial_account_type: Lithic::Models::Balance::financial_account_type,
         last_transaction_event_token: String,
         last_transaction_token: String,
         pending_amount: Integer,
         total_amount: Integer,
         updated: Time
       ) -> void
+
+      def to_hash: -> {
+        available_amount: Integer,
+        created: Time,
+        currency: String,
+        financial_account_token: String,
+        financial_account_type: Lithic::Models::Balance::financial_account_type,
+        last_transaction_event_token: String,
+        last_transaction_token: String,
+        pending_amount: Integer,
+        total_amount: Integer,
+        updated: Time
+      }
 
       type financial_account_type = :ISSUING | :OPERATING | :RESERVE
 
@@ -57,7 +70,7 @@ module Lithic
         OPERATING: :OPERATING
         RESERVE: :RESERVE
 
-        def self?.values: -> ::Array[Lithic::Balance::financial_account_type]
+        def self?.values: -> ::Array[Lithic::Models::Balance::financial_account_type]
       end
     end
   end
