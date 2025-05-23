@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.28 (2025-05-23)
+
+Full Changelog: [v0.1.0-alpha.27...v0.1.0-alpha.28](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.27...v0.1.0-alpha.28)
+
+### Bug Fixes
+
+* prevent rubocop from mangling `===` to `is_a?` check ([17d829b](https://github.com/lithic-com/lithic-ruby/commit/17d829bdf146635a77f48734396b7bab4ace5ec7))
+
+
+### Chores
+
+* **docs:** grammar improvements ([32caea3](https://github.com/lithic-com/lithic-ruby/commit/32caea327297944f1981f54b5c6180b63f938e1d))
+* force utf-8 locale via `RUBYOPT` when formatting ([1b5a754](https://github.com/lithic-com/lithic-ruby/commit/1b5a754e631bf579fc6a79569ad847cc65ddff1c))
+* use fully qualified names for yard annotations and rbs aliases ([2f72cee](https://github.com/lithic-com/lithic-ruby/commit/2f72cee42923b41ac739d0dd7b118152a36a8b93))
+
 ## 0.1.0-alpha.27 (2025-05-20)
 
 Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)
