@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.29 (2025-05-27)
+
+Full Changelog: [v0.1.0-alpha.28...v0.1.0-alpha.29](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.28...v0.1.0-alpha.29)
+
+### Bug Fixes
+
+* sorbet types for enums, and make tapioca detection ignore `tapioca dsl` ([8f652e8](https://github.com/lithic-com/lithic-ruby/commit/8f652e819994698ce6b0b895349abd230755a9d8))
+
 ## 0.1.0-alpha.28 (2025-05-23)
 
 Full Changelog: [v0.1.0-alpha.27...v0.1.0-alpha.28](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.27...v0.1.0-alpha.28)
