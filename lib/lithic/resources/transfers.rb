@@ -3,6 +3,8 @@
 module Lithic
   module Resources
     class Transfers
+      # @deprecated
+      #
       # Some parameter documentations has been truncated, see
       # {Lithic::Models::TransferCreateParams} for more details.
       #
