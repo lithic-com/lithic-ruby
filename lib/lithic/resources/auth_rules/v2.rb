@@ -158,6 +158,8 @@ module Lithic
           )
         end
 
+        # @deprecated
+        #
         # Associates a V2 authorization rule with a card program, the provided account(s)
         # or card(s).
         #
