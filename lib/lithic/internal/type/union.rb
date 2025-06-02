@@ -206,11 +206,14 @@ module Lithic
         #
         # @return [Object]
         def to_sorbet_type
-          case (v = variants)
+          types = variants.map { Lithic::Internal::Util::SorbetRuntimeSupport.to_sorbet_type(_1) }.uniq
+          case types
           in []
             T.noreturn
+          in [type]
+            type
           else
-            T.any(*v.map { Lithic::Internal::Util::SorbetRuntimeSupport.to_sorbet_type(_1) })
+            T.any(*types)
           end
         end
 
