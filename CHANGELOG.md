@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.30 (2025-06-02)
+
+Full Changelog: [v0.1.0-alpha.29...v0.1.0-alpha.30](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.29...v0.1.0-alpha.30)
+
+### Bug Fixes
+
+* `to_sorbet_type` should not return branded types ([d044f89](https://github.com/lithic-com/lithic-ruby/commit/d044f89b4031bb1e24223df52626e7512da07ea3))
+
+
+### Chores
+
+* **api:** mark some methods as deprecated ([3e09fe4](https://github.com/lithic-com/lithic-ruby/commit/3e09fe4e86ee7d02a15f57917089a74b30876bda))
+
 ## 0.1.0-alpha.29 (2025-05-27)
 
 Full Changelog: [v0.1.0-alpha.28...v0.1.0-alpha.29](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.28...v0.1.0-alpha.29)
