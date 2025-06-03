@@ -10,7 +10,7 @@ module Lithic
       required :entity_token, String
 
       # @!attribute status_reasons
-      #   rovides the status reasons that will be satisfied by providing one of the valid
+      #   Provides the status reasons that will be satisfied by providing one of the valid
       #   documents.
       #
       #   @return [Array<String>]
@@ -29,7 +29,7 @@ module Lithic
       #
       #   @param entity_token [String] Globally unique identifier for an entity.
       #
-      #   @param status_reasons [Array<String>] rovides the status reasons that will be satisfied by providing one of the valid
+      #   @param status_reasons [Array<String>] Provides the status reasons that will be satisfied by providing one of the valid
       #
       #   @param valid_documents [Array<String>] A list of valid documents that will satisfy the KYC requirements for the specifi
     end

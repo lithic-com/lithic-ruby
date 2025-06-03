@@ -44,8 +44,8 @@ module Lithic
       #
       #   Address used during Address Verification Service (AVS) checks during
       #   transactions if enabled via Auth Rules. This field is deprecated as AVS checks
-      #   are no longer supported by Authorization Rules. The field will be removed from
-      #   the schema in a future release.
+      #   are no longer supported by Auth Rules. The field will be removed from the schema
+      #   in a future release.
       #
       #   @return [Lithic::Models::AccountUpdateParams::VerificationAddress, nil]
       optional :verification_address, -> { Lithic::AccountUpdateParams::VerificationAddress }
@@ -112,8 +112,8 @@ module Lithic
         # @!method initialize(address1: nil, address2: nil, city: nil, country: nil, postal_code: nil, state: nil)
         #   Address used during Address Verification Service (AVS) checks during
         #   transactions if enabled via Auth Rules. This field is deprecated as AVS checks
-        #   are no longer supported by Authorization Rules. The field will be removed from
-        #   the schema in a future release.
+        #   are no longer supported by Auth Rules. The field will be removed from the schema
+        #   in a future release.
         #
         #   @param address1 [String]
         #   @param address2 [String]
