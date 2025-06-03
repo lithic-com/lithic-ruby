@@ -17,8 +17,8 @@ class Lithic::Test::Resources::FundingEventsTest < Lithic::Test::ResourceTest
         collection_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         created: Time,
         high_watermark: Time,
+        network_settlement_summary: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::FundingEventRetrieveResponse::NetworkSettlementSummary]),
         previous_high_watermark: Time,
-        settlement_breakdowns: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::FundingEventRetrieveResponse::SettlementBreakdown]),
         updated: Time
       }
     end
@@ -45,8 +45,8 @@ class Lithic::Test::Resources::FundingEventsTest < Lithic::Test::ResourceTest
         collection_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         created: Time,
         high_watermark: Time,
+        network_settlement_summary: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::FundingEventListResponse::NetworkSettlementSummary]),
         previous_high_watermark: Time,
-        settlement_breakdowns: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::FundingEventListResponse::SettlementBreakdown]),
         updated: Time
       }
     end

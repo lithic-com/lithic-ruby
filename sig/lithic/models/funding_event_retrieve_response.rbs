@@ -7,8 +7,8 @@ module Lithic
         collection_tokens: ::Array[String],
         created: Time,
         high_watermark: Time,
+        network_settlement_summary: ::Array[Lithic::Models::FundingEventRetrieveResponse::NetworkSettlementSummary],
         previous_high_watermark: Time,
-        settlement_breakdowns: ::Array[Lithic::Models::FundingEventRetrieveResponse::SettlementBreakdown],
         updated: Time
       }
 
@@ -23,9 +23,9 @@ module Lithic
 
       attr_accessor high_watermark: Time
 
-      attr_accessor previous_high_watermark: Time
+      attr_accessor network_settlement_summary: ::Array[Lithic::Models::FundingEventRetrieveResponse::NetworkSettlementSummary]
 
-      attr_accessor settlement_breakdowns: ::Array[Lithic::Models::FundingEventRetrieveResponse::SettlementBreakdown]
+      attr_accessor previous_high_watermark: Time
 
       attr_accessor updated: Time
 
@@ -35,8 +35,8 @@ module Lithic
         collection_tokens: ::Array[String],
         created: Time,
         high_watermark: Time,
+        network_settlement_summary: ::Array[Lithic::Models::FundingEventRetrieveResponse::NetworkSettlementSummary],
         previous_high_watermark: Time,
-        settlement_breakdowns: ::Array[Lithic::Models::FundingEventRetrieveResponse::SettlementBreakdown],
         updated: Time
       ) -> void
 
@@ -46,8 +46,8 @@ module Lithic
         collection_tokens: ::Array[String],
         created: Time,
         high_watermark: Time,
+        network_settlement_summary: ::Array[Lithic::Models::FundingEventRetrieveResponse::NetworkSettlementSummary],
         previous_high_watermark: Time,
-        settlement_breakdowns: ::Array[Lithic::Models::FundingEventRetrieveResponse::SettlementBreakdown],
         updated: Time
       }
 
@@ -62,16 +62,23 @@ module Lithic
         def self?.values: -> ::Array[Lithic::Models::FundingEventRetrieveResponse::collection_resource_type]
       end
 
-      type settlement_breakdown = { amount: Integer, settlement_date: Date }
+      type network_settlement_summary =
+        { network_settlement_date: Date, settled_gross_amount: Integer }
 
-      class SettlementBreakdown < Lithic::Internal::Type::BaseModel
-        attr_accessor amount: Integer
+      class NetworkSettlementSummary < Lithic::Internal::Type::BaseModel
+        attr_accessor network_settlement_date: Date
 
-        attr_accessor settlement_date: Date
+        attr_accessor settled_gross_amount: Integer
 
-        def initialize: (amount: Integer, settlement_date: Date) -> void
+        def initialize: (
+          network_settlement_date: Date,
+          settled_gross_amount: Integer
+        ) -> void
 
-        def to_hash: -> { amount: Integer, settlement_date: Date }
+        def to_hash: -> {
+          network_settlement_date: Date,
+          settled_gross_amount: Integer
+        }
       end
     end
   end

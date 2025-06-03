@@ -8,6 +8,7 @@ module Lithic
           card_tokens: ::Array[String],
           current_version: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion?,
           draft_version: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion?,
+          event_stream: Lithic::Models::AuthRules::V2DraftResponse::event_stream,
           name: String?,
           program_level: bool,
           state: Lithic::Models::AuthRules::V2DraftResponse::state,
@@ -25,6 +26,8 @@ module Lithic
         attr_accessor current_version: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion?
 
         attr_accessor draft_version: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion?
+
+        attr_accessor event_stream: Lithic::Models::AuthRules::V2DraftResponse::event_stream
 
         attr_accessor name: String?
 
@@ -44,6 +47,7 @@ module Lithic
           card_tokens: ::Array[String],
           current_version: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion?,
           draft_version: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion?,
+          event_stream: Lithic::Models::AuthRules::V2DraftResponse::event_stream,
           name: String?,
           program_level: bool,
           state: Lithic::Models::AuthRules::V2DraftResponse::state,
@@ -57,6 +61,7 @@ module Lithic
           card_tokens: ::Array[String],
           current_version: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion?,
           draft_version: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion?,
+          event_stream: Lithic::Models::AuthRules::V2DraftResponse::event_stream,
           name: String?,
           program_level: bool,
           state: Lithic::Models::AuthRules::V2DraftResponse::state,
@@ -89,6 +94,7 @@ module Lithic
             Lithic::AuthRules::ConditionalBlockParameters
             | Lithic::AuthRules::VelocityLimitParams
             | Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::MerchantLockParameters
+            | Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters
 
           module Parameters
             extend Lithic::Internal::Type::Union
@@ -139,6 +145,134 @@ module Lithic
               end
             end
 
+            type conditional3_ds_action_parameters =
+              {
+                action: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::action,
+                conditions: ::Array[Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition]
+              }
+
+            class Conditional3DSActionParameters < Lithic::Internal::Type::BaseModel
+              attr_accessor action: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::action
+
+              attr_accessor conditions: ::Array[Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition]
+
+              def initialize: (
+                action: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::action,
+                conditions: ::Array[Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition]
+              ) -> void
+
+              def to_hash: -> {
+                action: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::action,
+                conditions: ::Array[Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition]
+              }
+
+              type action = :DECLINE | :CHALLENGE
+
+              module Action
+                extend Lithic::Internal::Type::Enum
+
+                DECLINE: :DECLINE
+                CHALLENGE: :CHALLENGE
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::action]
+              end
+
+              type condition =
+                {
+                  attribute: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::attribute,
+                  operation: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::operation,
+                  value: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::value
+                }
+
+              class Condition < Lithic::Internal::Type::BaseModel
+                attr_reader attribute: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::attribute?
+
+                def attribute=: (
+                  Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::attribute
+                ) -> Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::attribute
+
+                attr_reader operation: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::operation?
+
+                def operation=: (
+                  Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::operation
+                ) -> Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::operation
+
+                attr_reader value: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::value?
+
+                def value=: (
+                  Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::value
+                ) -> Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::value
+
+                def initialize: (
+                  ?attribute: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::attribute,
+                  ?operation: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::operation,
+                  ?value: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::value
+                ) -> void
+
+                def to_hash: -> {
+                  attribute: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::attribute,
+                  operation: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::operation,
+                  value: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::value
+                }
+
+                type attribute =
+                  :MCC
+                  | :COUNTRY
+                  | :CURRENCY
+                  | :MERCHANT_ID
+                  | :DESCRIPTOR
+                  | :TRANSACTION_AMOUNT
+                  | :RISK_SCORE
+                  | :MESSAGE_CATEGORY
+
+                module Attribute
+                  extend Lithic::Internal::Type::Enum
+
+                  MCC: :MCC
+                  COUNTRY: :COUNTRY
+                  CURRENCY: :CURRENCY
+                  MERCHANT_ID: :MERCHANT_ID
+                  DESCRIPTOR: :DESCRIPTOR
+                  TRANSACTION_AMOUNT: :TRANSACTION_AMOUNT
+                  RISK_SCORE: :RISK_SCORE
+                  MESSAGE_CATEGORY: :MESSAGE_CATEGORY
+
+                  def self?.values: -> ::Array[Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::attribute]
+                end
+
+                type operation =
+                  :IS_ONE_OF
+                  | :IS_NOT_ONE_OF
+                  | :MATCHES
+                  | :DOES_NOT_MATCH
+                  | :IS_GREATER_THAN
+                  | :IS_LESS_THAN
+
+                module Operation
+                  extend Lithic::Internal::Type::Enum
+
+                  IS_ONE_OF: :IS_ONE_OF
+                  IS_NOT_ONE_OF: :IS_NOT_ONE_OF
+                  MATCHES: :MATCHES
+                  DOES_NOT_MATCH: :DOES_NOT_MATCH
+                  IS_GREATER_THAN: :IS_GREATER_THAN
+                  IS_LESS_THAN: :IS_LESS_THAN
+
+                  def self?.values: -> ::Array[Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::operation]
+                end
+
+                type value = String | Integer | ::Array[String]
+
+                module Value
+                  extend Lithic::Internal::Type::Union
+
+                  def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::Parameters::Conditional3DSActionParameters::Condition::value]
+
+                  StringArray: Lithic::Internal::Type::Converter
+                end
+              end
+            end
+
             def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion::parameters]
           end
         end
@@ -168,6 +302,7 @@ module Lithic
             Lithic::AuthRules::ConditionalBlockParameters
             | Lithic::AuthRules::VelocityLimitParams
             | Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::MerchantLockParameters
+            | Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters
 
           module Parameters
             extend Lithic::Internal::Type::Union
@@ -218,8 +353,147 @@ module Lithic
               end
             end
 
+            type conditional3_ds_action_parameters =
+              {
+                action: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::action,
+                conditions: ::Array[Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition]
+              }
+
+            class Conditional3DSActionParameters < Lithic::Internal::Type::BaseModel
+              attr_accessor action: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::action
+
+              attr_accessor conditions: ::Array[Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition]
+
+              def initialize: (
+                action: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::action,
+                conditions: ::Array[Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition]
+              ) -> void
+
+              def to_hash: -> {
+                action: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::action,
+                conditions: ::Array[Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition]
+              }
+
+              type action = :DECLINE | :CHALLENGE
+
+              module Action
+                extend Lithic::Internal::Type::Enum
+
+                DECLINE: :DECLINE
+                CHALLENGE: :CHALLENGE
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::action]
+              end
+
+              type condition =
+                {
+                  attribute: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::attribute,
+                  operation: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::operation,
+                  value: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::value
+                }
+
+              class Condition < Lithic::Internal::Type::BaseModel
+                attr_reader attribute: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::attribute?
+
+                def attribute=: (
+                  Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::attribute
+                ) -> Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::attribute
+
+                attr_reader operation: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::operation?
+
+                def operation=: (
+                  Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::operation
+                ) -> Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::operation
+
+                attr_reader value: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::value?
+
+                def value=: (
+                  Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::value
+                ) -> Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::value
+
+                def initialize: (
+                  ?attribute: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::attribute,
+                  ?operation: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::operation,
+                  ?value: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::value
+                ) -> void
+
+                def to_hash: -> {
+                  attribute: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::attribute,
+                  operation: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::operation,
+                  value: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::value
+                }
+
+                type attribute =
+                  :MCC
+                  | :COUNTRY
+                  | :CURRENCY
+                  | :MERCHANT_ID
+                  | :DESCRIPTOR
+                  | :TRANSACTION_AMOUNT
+                  | :RISK_SCORE
+                  | :MESSAGE_CATEGORY
+
+                module Attribute
+                  extend Lithic::Internal::Type::Enum
+
+                  MCC: :MCC
+                  COUNTRY: :COUNTRY
+                  CURRENCY: :CURRENCY
+                  MERCHANT_ID: :MERCHANT_ID
+                  DESCRIPTOR: :DESCRIPTOR
+                  TRANSACTION_AMOUNT: :TRANSACTION_AMOUNT
+                  RISK_SCORE: :RISK_SCORE
+                  MESSAGE_CATEGORY: :MESSAGE_CATEGORY
+
+                  def self?.values: -> ::Array[Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::attribute]
+                end
+
+                type operation =
+                  :IS_ONE_OF
+                  | :IS_NOT_ONE_OF
+                  | :MATCHES
+                  | :DOES_NOT_MATCH
+                  | :IS_GREATER_THAN
+                  | :IS_LESS_THAN
+
+                module Operation
+                  extend Lithic::Internal::Type::Enum
+
+                  IS_ONE_OF: :IS_ONE_OF
+                  IS_NOT_ONE_OF: :IS_NOT_ONE_OF
+                  MATCHES: :MATCHES
+                  DOES_NOT_MATCH: :DOES_NOT_MATCH
+                  IS_GREATER_THAN: :IS_GREATER_THAN
+                  IS_LESS_THAN: :IS_LESS_THAN
+
+                  def self?.values: -> ::Array[Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::operation]
+                end
+
+                type value = String | Integer | ::Array[String]
+
+                module Value
+                  extend Lithic::Internal::Type::Union
+
+                  def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::Parameters::Conditional3DSActionParameters::Condition::value]
+
+                  StringArray: Lithic::Internal::Type::Converter
+                end
+              end
+            end
+
             def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2DraftResponse::DraftVersion::parameters]
           end
+        end
+
+        type event_stream = :AUTHORIZATION | :THREE_DS_AUTHENTICATION
+
+        module EventStream
+          extend Lithic::Internal::Type::Enum
+
+          AUTHORIZATION: :AUTHORIZATION
+          THREE_DS_AUTHENTICATION: :THREE_DS_AUTHENTICATION
+
+          def self?.values: -> ::Array[Lithic::Models::AuthRules::V2DraftResponse::event_stream]
         end
 
         type state = :ACTIVE | :INACTIVE
@@ -233,7 +507,11 @@ module Lithic
           def self?.values: -> ::Array[Lithic::Models::AuthRules::V2DraftResponse::state]
         end
 
-        type type_ = :CONDITIONAL_BLOCK | :VELOCITY_LIMIT | :MERCHANT_LOCK
+        type type_ =
+          :CONDITIONAL_BLOCK
+          | :VELOCITY_LIMIT
+          | :MERCHANT_LOCK
+          | :CONDITIONAL_3DS_ACTION
 
         module Type
           extend Lithic::Internal::Type::Enum
@@ -241,6 +519,7 @@ module Lithic
           CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
           VELOCITY_LIMIT: :VELOCITY_LIMIT
           MERCHANT_LOCK: :MERCHANT_LOCK
+          CONDITIONAL_3DS_ACTION: :CONDITIONAL_3DS_ACTION
 
           def self?.values: -> ::Array[Lithic::Models::AuthRules::V2DraftResponse::type_]
         end

@@ -23,7 +23,8 @@ module Lithic
       end
       attr_accessor :collection_resource_type
 
-      # IDs of collections
+      # IDs of collections, further information can be gathered from the appropriate
+      # collection API based on collection_resource_type
       sig { returns(T::Array[String]) }
       attr_accessor :collection_tokens
 
@@ -35,19 +36,19 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :high_watermark
 
-      # Time of the previous high watermark
-      sig { returns(Time) }
-      attr_accessor :previous_high_watermark
-
-      # List of settlements
+      # Network settlement summary breakdown by network settlement date
       sig do
         returns(
           T::Array[
-            Lithic::Models::FundingEventRetrieveResponse::SettlementBreakdown
+            Lithic::Models::FundingEventRetrieveResponse::NetworkSettlementSummary
           ]
         )
       end
-      attr_accessor :settlement_breakdowns
+      attr_accessor :network_settlement_summary
+
+      # Time of the previous high watermark
+      sig { returns(Time) }
+      attr_accessor :previous_high_watermark
 
       # Time of the update
       sig { returns(Time) }
@@ -61,11 +62,11 @@ module Lithic
           collection_tokens: T::Array[String],
           created: Time,
           high_watermark: Time,
-          previous_high_watermark: Time,
-          settlement_breakdowns:
+          network_settlement_summary:
             T::Array[
-              Lithic::Models::FundingEventRetrieveResponse::SettlementBreakdown::OrHash
+              Lithic::Models::FundingEventRetrieveResponse::NetworkSettlementSummary::OrHash
             ],
+          previous_high_watermark: Time,
           updated: Time
         ).returns(T.attached_class)
       end
@@ -74,16 +75,17 @@ module Lithic
         token:,
         # Collection resource type
         collection_resource_type:,
-        # IDs of collections
+        # IDs of collections, further information can be gathered from the appropriate
+        # collection API based on collection_resource_type
         collection_tokens:,
         # Time of the creation
         created:,
         # Time of the high watermark
         high_watermark:,
+        # Network settlement summary breakdown by network settlement date
+        network_settlement_summary:,
         # Time of the previous high watermark
         previous_high_watermark:,
-        # List of settlements
-        settlement_breakdowns:,
         # Time of the update
         updated:
       )
@@ -98,11 +100,11 @@ module Lithic
             collection_tokens: T::Array[String],
             created: Time,
             high_watermark: Time,
-            previous_high_watermark: Time,
-            settlement_breakdowns:
+            network_settlement_summary:
               T::Array[
-                Lithic::Models::FundingEventRetrieveResponse::SettlementBreakdown
+                Lithic::Models::FundingEventRetrieveResponse::NetworkSettlementSummary
               ],
+            previous_high_watermark: Time,
             updated: Time
           }
         )
@@ -145,30 +147,35 @@ module Lithic
         end
       end
 
-      class SettlementBreakdown < Lithic::Internal::Type::BaseModel
+      class NetworkSettlementSummary < Lithic::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Lithic::Models::FundingEventRetrieveResponse::SettlementBreakdown,
+              Lithic::Models::FundingEventRetrieveResponse::NetworkSettlementSummary,
               Lithic::Internal::AnyHash
             )
           end
 
-        sig { returns(Integer) }
-        attr_accessor :amount
-
         sig { returns(Date) }
-        attr_accessor :settlement_date
+        attr_accessor :network_settlement_date
+
+        sig { returns(Integer) }
+        attr_accessor :settled_gross_amount
 
         sig do
-          params(amount: Integer, settlement_date: Date).returns(
-            T.attached_class
-          )
+          params(
+            network_settlement_date: Date,
+            settled_gross_amount: Integer
+          ).returns(T.attached_class)
         end
-        def self.new(amount:, settlement_date:)
+        def self.new(network_settlement_date:, settled_gross_amount:)
         end
 
-        sig { override.returns({ amount: Integer, settlement_date: Date }) }
+        sig do
+          override.returns(
+            { network_settlement_date: Date, settled_gross_amount: Integer }
+          )
+        end
         def to_hash
         end
       end
