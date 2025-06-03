@@ -52,6 +52,7 @@ module Lithic
             type current_version =
               {
                 approved: Integer,
+                challenged: Integer,
                 declined: Integer,
                 examples: ::Array[Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example],
                 version: Integer
@@ -61,6 +62,10 @@ module Lithic
               attr_reader approved: Integer?
 
               def approved=: (Integer) -> Integer
+
+              attr_reader challenged: Integer?
+
+              def challenged=: (Integer) -> Integer
 
               attr_reader declined: Integer?
 
@@ -78,6 +83,7 @@ module Lithic
 
               def initialize: (
                 ?approved: Integer,
+                ?challenged: Integer,
                 ?declined: Integer,
                 ?examples: ::Array[Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example],
                 ?version: Integer
@@ -85,18 +91,30 @@ module Lithic
 
               def to_hash: -> {
                 approved: Integer,
+                challenged: Integer,
                 declined: Integer,
                 examples: ::Array[Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example],
                 version: Integer
               }
 
               type example =
-                { approved: bool, event_token: String, timestamp: Time }
+                {
+                  approved: bool,
+                  decision: Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example::decision,
+                  event_token: String,
+                  timestamp: Time
+                }
 
               class Example < Lithic::Internal::Type::BaseModel
                 attr_reader approved: bool?
 
                 def approved=: (bool) -> bool
+
+                attr_reader decision: Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example::decision?
+
+                def decision=: (
+                  Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example::decision
+                ) -> Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example::decision
 
                 attr_reader event_token: String?
 
@@ -108,21 +126,36 @@ module Lithic
 
                 def initialize: (
                   ?approved: bool,
+                  ?decision: Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example::decision,
                   ?event_token: String,
                   ?timestamp: Time
                 ) -> void
 
                 def to_hash: -> {
                   approved: bool,
+                  decision: Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example::decision,
                   event_token: String,
                   timestamp: Time
                 }
+
+                type decision = :APPROVED | :DECLINED | :CHALLENGED
+
+                module Decision
+                  extend Lithic::Internal::Type::Enum
+
+                  APPROVED: :APPROVED
+                  DECLINED: :DECLINED
+                  CHALLENGED: :CHALLENGED
+
+                  def self?.values: -> ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example::decision]
+                end
               end
             end
 
             type draft_version =
               {
                 approved: Integer,
+                challenged: Integer,
                 declined: Integer,
                 examples: ::Array[Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion::Example],
                 version: Integer
@@ -132,6 +165,10 @@ module Lithic
               attr_reader approved: Integer?
 
               def approved=: (Integer) -> Integer
+
+              attr_reader challenged: Integer?
+
+              def challenged=: (Integer) -> Integer
 
               attr_reader declined: Integer?
 
@@ -149,6 +186,7 @@ module Lithic
 
               def initialize: (
                 ?approved: Integer,
+                ?challenged: Integer,
                 ?declined: Integer,
                 ?examples: ::Array[Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion::Example],
                 ?version: Integer
@@ -156,18 +194,30 @@ module Lithic
 
               def to_hash: -> {
                 approved: Integer,
+                challenged: Integer,
                 declined: Integer,
                 examples: ::Array[Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion::Example],
                 version: Integer
               }
 
               type example =
-                { approved: bool, event_token: String, timestamp: Time }
+                {
+                  approved: bool,
+                  decision: Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example::decision,
+                  event_token: String,
+                  timestamp: Time
+                }
 
               class Example < Lithic::Internal::Type::BaseModel
                 attr_reader approved: bool?
 
                 def approved=: (bool) -> bool
+
+                attr_reader decision: Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example::decision?
+
+                def decision=: (
+                  Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example::decision
+                ) -> Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example::decision
 
                 attr_reader event_token: String?
 
@@ -179,15 +229,29 @@ module Lithic
 
                 def initialize: (
                   ?approved: bool,
+                  ?decision: Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example::decision,
                   ?event_token: String,
                   ?timestamp: Time
                 ) -> void
 
                 def to_hash: -> {
                   approved: bool,
+                  decision: Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example::decision,
                   event_token: String,
                   timestamp: Time
                 }
+
+                type decision = :APPROVED | :DECLINED | :CHALLENGED
+
+                module Decision
+                  extend Lithic::Internal::Type::Enum
+
+                  APPROVED: :APPROVED
+                  DECLINED: :DECLINED
+                  CHALLENGED: :CHALLENGED
+
+                  def self?.values: -> ::Array[Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example::decision]
+                end
               end
             end
           end

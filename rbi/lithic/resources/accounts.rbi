@@ -53,8 +53,8 @@ module Lithic
         state: nil,
         # Address used during Address Verification Service (AVS) checks during
         # transactions if enabled via Auth Rules. This field is deprecated as AVS checks
-        # are no longer supported by Authorization Rules. The field will be removed from
-        # the schema in a future release.
+        # are no longer supported by Auth Rules. The field will be removed from the schema
+        # in a future release.
         verification_address: nil,
         request_options: {}
       )

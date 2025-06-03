@@ -18,7 +18,8 @@ module Lithic
                enum: -> { Lithic::Models::FundingEventRetrieveResponse::CollectionResourceType }
 
       # @!attribute collection_tokens
-      #   IDs of collections
+      #   IDs of collections, further information can be gathered from the appropriate
+      #   collection API based on collection_resource_type
       #
       #   @return [Array<String>]
       required :collection_tokens, Lithic::Internal::Type::ArrayOf[String]
@@ -35,18 +36,18 @@ module Lithic
       #   @return [Time]
       required :high_watermark, Time
 
+      # @!attribute network_settlement_summary
+      #   Network settlement summary breakdown by network settlement date
+      #
+      #   @return [Array<Lithic::Models::FundingEventRetrieveResponse::NetworkSettlementSummary>]
+      required :network_settlement_summary,
+               -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::FundingEventRetrieveResponse::NetworkSettlementSummary] }
+
       # @!attribute previous_high_watermark
       #   Time of the previous high watermark
       #
       #   @return [Time]
       required :previous_high_watermark, Time
-
-      # @!attribute settlement_breakdowns
-      #   List of settlements
-      #
-      #   @return [Array<Lithic::Models::FundingEventRetrieveResponse::SettlementBreakdown>]
-      required :settlement_breakdowns,
-               -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::FundingEventRetrieveResponse::SettlementBreakdown] }
 
       # @!attribute updated
       #   Time of the update
@@ -54,20 +55,23 @@ module Lithic
       #   @return [Time]
       required :updated, Time
 
-      # @!method initialize(token:, collection_resource_type:, collection_tokens:, created:, high_watermark:, previous_high_watermark:, settlement_breakdowns:, updated:)
+      # @!method initialize(token:, collection_resource_type:, collection_tokens:, created:, high_watermark:, network_settlement_summary:, previous_high_watermark:, updated:)
+      #   Some parameter documentations has been truncated, see
+      #   {Lithic::Models::FundingEventRetrieveResponse} for more details.
+      #
       #   @param token [String] Unique token ID
       #
       #   @param collection_resource_type [Symbol, Lithic::Models::FundingEventRetrieveResponse::CollectionResourceType] Collection resource type
       #
-      #   @param collection_tokens [Array<String>] IDs of collections
+      #   @param collection_tokens [Array<String>] IDs of collections, further information can be gathered from the appropriate col
       #
       #   @param created [Time] Time of the creation
       #
       #   @param high_watermark [Time] Time of the high watermark
       #
-      #   @param previous_high_watermark [Time] Time of the previous high watermark
+      #   @param network_settlement_summary [Array<Lithic::Models::FundingEventRetrieveResponse::NetworkSettlementSummary>] Network settlement summary breakdown by network settlement date
       #
-      #   @param settlement_breakdowns [Array<Lithic::Models::FundingEventRetrieveResponse::SettlementBreakdown>] List of settlements
+      #   @param previous_high_watermark [Time] Time of the previous high watermark
       #
       #   @param updated [Time] Time of the update
 
@@ -84,20 +88,20 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      class SettlementBreakdown < Lithic::Internal::Type::BaseModel
-        # @!attribute amount
-        #
-        #   @return [Integer]
-        required :amount, Integer
-
-        # @!attribute settlement_date
+      class NetworkSettlementSummary < Lithic::Internal::Type::BaseModel
+        # @!attribute network_settlement_date
         #
         #   @return [Date]
-        required :settlement_date, Date
+        required :network_settlement_date, Date
 
-        # @!method initialize(amount:, settlement_date:)
-        #   @param amount [Integer]
-        #   @param settlement_date [Date]
+        # @!attribute settled_gross_amount
+        #
+        #   @return [Integer]
+        required :settled_gross_amount, Integer
+
+        # @!method initialize(network_settlement_date:, settled_gross_amount:)
+        #   @param network_settlement_date [Date]
+        #   @param settled_gross_amount [Integer]
       end
     end
   end

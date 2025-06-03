@@ -55,22 +55,31 @@ module Lithic
             class CurrentVersion < Lithic::Internal::Type::BaseModel
               # @!attribute approved
               #   The total number of historical transactions approved by this rule during the
-              #   backtest period, or the number of transactions that would have been approved if
+              #   relevant period, or the number of transactions that would have been approved if
               #   the rule was evaluated in shadow mode.
               #
               #   @return [Integer, nil]
               optional :approved, Integer
 
+              # @!attribute challenged
+              #   The total number of historical transactions challenged by this rule during the
+              #   relevant period, or the number of transactions that would have been challenged
+              #   if the rule was evaluated in shadow mode. Currently applicable only for 3DS Auth
+              #   Rules.
+              #
+              #   @return [Integer, nil]
+              optional :challenged, Integer
+
               # @!attribute declined
               #   The total number of historical transactions declined by this rule during the
-              #   backtest period, or the number of transactions that would have been declined if
+              #   relevant period, or the number of transactions that would have been declined if
               #   the rule was evaluated in shadow mode.
               #
               #   @return [Integer, nil]
               optional :declined, Integer
 
               # @!attribute examples
-              #   Example authorization request events that would have been approved or declined.
+              #   Example events and their outcomes.
               #
               #   @return [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example>, nil]
               optional :examples,
@@ -87,44 +96,71 @@ module Lithic
                 optional :version, Integer
               end
 
-              # @!method initialize(approved: nil, declined: nil, examples: nil, version: nil)
+              # @!method initialize(approved: nil, challenged: nil, declined: nil, examples: nil, version: nil)
               #   Some parameter documentations has been truncated, see
               #   {Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion} for
               #   more details.
               #
-              #   @param approved [Integer] The total number of historical transactions approved by this rule during the bac
+              #   @param approved [Integer] The total number of historical transactions approved by this rule during the rel
               #
-              #   @param declined [Integer] The total number of historical transactions declined by this rule during the bac
+              #   @param challenged [Integer] The total number of historical transactions challenged by this rule during the r
               #
-              #   @param examples [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example>] Example authorization request events that would have been approved or declined.
+              #   @param declined [Integer] The total number of historical transactions declined by this rule during the rel
+              #
+              #   @param examples [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example>] Example events and their outcomes.
               #
               #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
 
               class Example < Lithic::Internal::Type::BaseModel
                 # @!attribute approved
-                #   Whether the rule would have approved the authorization request.
+                #   Whether the rule would have approved the request.
                 #
                 #   @return [Boolean, nil]
                 optional :approved, Lithic::Internal::Type::Boolean
 
+                # @!attribute decision
+                #   The decision made by the rule for this event.
+                #
+                #   @return [Symbol, Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example::Decision, nil]
+                optional :decision,
+                         enum: -> {
+                           Lithic::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example::Decision
+                         }
+
                 # @!attribute event_token
-                #   The authorization request event token.
+                #   The event token.
                 #
                 #   @return [String, nil]
                 optional :event_token, String
 
                 # @!attribute timestamp
-                #   The timestamp of the authorization request event.
+                #   The timestamp of the event.
                 #
                 #   @return [Time, nil]
                 optional :timestamp, Time
 
-                # @!method initialize(approved: nil, event_token: nil, timestamp: nil)
-                #   @param approved [Boolean] Whether the rule would have approved the authorization request.
+                # @!method initialize(approved: nil, decision: nil, event_token: nil, timestamp: nil)
+                #   @param approved [Boolean] Whether the rule would have approved the request.
                 #
-                #   @param event_token [String] The authorization request event token.
+                #   @param decision [Symbol, Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example::Decision] The decision made by the rule for this event.
                 #
-                #   @param timestamp [Time] The timestamp of the authorization request event.
+                #   @param event_token [String] The event token.
+                #
+                #   @param timestamp [Time] The timestamp of the event.
+
+                # The decision made by the rule for this event.
+                #
+                # @see Lithic::Models::AuthRules::V2::BacktestResults::Results::CurrentVersion::Example#decision
+                module Decision
+                  extend Lithic::Internal::Type::Enum
+
+                  APPROVED = :APPROVED
+                  DECLINED = :DECLINED
+                  CHALLENGED = :CHALLENGED
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
               end
             end
 
@@ -132,22 +168,31 @@ module Lithic
             class DraftVersion < Lithic::Internal::Type::BaseModel
               # @!attribute approved
               #   The total number of historical transactions approved by this rule during the
-              #   backtest period, or the number of transactions that would have been approved if
+              #   relevant period, or the number of transactions that would have been approved if
               #   the rule was evaluated in shadow mode.
               #
               #   @return [Integer, nil]
               optional :approved, Integer
 
+              # @!attribute challenged
+              #   The total number of historical transactions challenged by this rule during the
+              #   relevant period, or the number of transactions that would have been challenged
+              #   if the rule was evaluated in shadow mode. Currently applicable only for 3DS Auth
+              #   Rules.
+              #
+              #   @return [Integer, nil]
+              optional :challenged, Integer
+
               # @!attribute declined
               #   The total number of historical transactions declined by this rule during the
-              #   backtest period, or the number of transactions that would have been declined if
+              #   relevant period, or the number of transactions that would have been declined if
               #   the rule was evaluated in shadow mode.
               #
               #   @return [Integer, nil]
               optional :declined, Integer
 
               # @!attribute examples
-              #   Example authorization request events that would have been approved or declined.
+              #   Example events and their outcomes.
               #
               #   @return [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example>, nil]
               optional :examples,
@@ -164,44 +209,71 @@ module Lithic
                 optional :version, Integer
               end
 
-              # @!method initialize(approved: nil, declined: nil, examples: nil, version: nil)
+              # @!method initialize(approved: nil, challenged: nil, declined: nil, examples: nil, version: nil)
               #   Some parameter documentations has been truncated, see
               #   {Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion} for more
               #   details.
               #
-              #   @param approved [Integer] The total number of historical transactions approved by this rule during the bac
+              #   @param approved [Integer] The total number of historical transactions approved by this rule during the rel
               #
-              #   @param declined [Integer] The total number of historical transactions declined by this rule during the bac
+              #   @param challenged [Integer] The total number of historical transactions challenged by this rule during the r
               #
-              #   @param examples [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example>] Example authorization request events that would have been approved or declined.
+              #   @param declined [Integer] The total number of historical transactions declined by this rule during the rel
+              #
+              #   @param examples [Array<Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example>] Example events and their outcomes.
               #
               #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
 
               class Example < Lithic::Internal::Type::BaseModel
                 # @!attribute approved
-                #   Whether the rule would have approved the authorization request.
+                #   Whether the rule would have approved the request.
                 #
                 #   @return [Boolean, nil]
                 optional :approved, Lithic::Internal::Type::Boolean
 
+                # @!attribute decision
+                #   The decision made by the rule for this event.
+                #
+                #   @return [Symbol, Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example::Decision, nil]
+                optional :decision,
+                         enum: -> {
+                           Lithic::AuthRules::V2::BacktestResults::Results::DraftVersion::Example::Decision
+                         }
+
                 # @!attribute event_token
-                #   The authorization request event token.
+                #   The event token.
                 #
                 #   @return [String, nil]
                 optional :event_token, String
 
                 # @!attribute timestamp
-                #   The timestamp of the authorization request event.
+                #   The timestamp of the event.
                 #
                 #   @return [Time, nil]
                 optional :timestamp, Time
 
-                # @!method initialize(approved: nil, event_token: nil, timestamp: nil)
-                #   @param approved [Boolean] Whether the rule would have approved the authorization request.
+                # @!method initialize(approved: nil, decision: nil, event_token: nil, timestamp: nil)
+                #   @param approved [Boolean] Whether the rule would have approved the request.
                 #
-                #   @param event_token [String] The authorization request event token.
+                #   @param decision [Symbol, Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example::Decision] The decision made by the rule for this event.
                 #
-                #   @param timestamp [Time] The timestamp of the authorization request event.
+                #   @param event_token [String] The event token.
+                #
+                #   @param timestamp [Time] The timestamp of the event.
+
+                # The decision made by the rule for this event.
+                #
+                # @see Lithic::Models::AuthRules::V2::BacktestResults::Results::DraftVersion::Example#decision
+                module Decision
+                  extend Lithic::Internal::Type::Enum
+
+                  APPROVED = :APPROVED
+                  DECLINED = :DECLINED
+                  CHALLENGED = :CHALLENGED
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
               end
             end
           end
