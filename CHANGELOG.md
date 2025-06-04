@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.31 (2025-06-04)
+
+Full Changelog: [v0.1.0-alpha.30...v0.1.0-alpha.31](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.30...v0.1.0-alpha.31)
+
+### Features
+
+* **client:** adds support for 3DS to Auth Rules ([e6fe981](https://github.com/lithic-com/lithic-ruby/commit/e6fe9812f9757af993396cb544240698b96e769a))
+
+
+### Bug Fixes
+
+* default content-type for text in multi-part formdata uploads should be text/plain ([e992bea](https://github.com/lithic-com/lithic-ruby/commit/e992beadf27a198a2a1d6259b3df2a094a3986b7))
+
 ## 0.1.0-alpha.30 (2025-06-02)
 
 Full Changelog: [v0.1.0-alpha.29...v0.1.0-alpha.30](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.29...v0.1.0-alpha.30)
