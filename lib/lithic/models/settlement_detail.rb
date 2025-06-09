@@ -98,7 +98,9 @@ module Lithic
       required :report_date, String
 
       # @!attribute settlement_date
-      #   Date of when money movement is triggered for the transaction.
+      #   Date of when money movement is triggered for the transaction. One exception
+      #   applies - for Mastercard dual message settlement, this is the settlement
+      #   advisement date, which is distinct from the date of money movement.
       #
       #   @return [String]
       required :settlement_date, String
@@ -168,7 +170,7 @@ module Lithic
       #
       #   @param report_date [String] Date of when the report was first generated.
       #
-      #   @param settlement_date [String] Date of when money movement is triggered for the transaction.
+      #   @param settlement_date [String] Date of when money movement is triggered for the transaction. One exception appl
       #
       #   @param transaction_token [String] Globally unique identifier denoting the associated Transaction object.
       #

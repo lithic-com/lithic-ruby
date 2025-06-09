@@ -110,6 +110,18 @@ class Lithic::Test::Resources::FinancialAccountsTest < Lithic::Test::ResourceTes
     end
   end
 
+  def test_register_account_number_required_params
+    response =
+      @lithic.financial_accounts.register_account_number(
+        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        account_number: "account_number"
+      )
+
+    assert_pattern do
+      response => nil
+    end
+  end
+
   def test_update_status_required_params
     response =
       @lithic.financial_accounts.update_status(

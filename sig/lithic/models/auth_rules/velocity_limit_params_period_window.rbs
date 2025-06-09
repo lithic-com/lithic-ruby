@@ -1,7 +1,7 @@
 module Lithic
   module Models
     module AuthRules
-      type velocity_limit_params_period_window = :DAY | :WEEK | :MONTH
+      type velocity_limit_params_period_window = :DAY | :WEEK | :MONTH | :YEAR
 
       module VelocityLimitParamsPeriodWindow
         extend Lithic::Internal::Type::Enum
@@ -9,6 +9,7 @@ module Lithic
         DAY: :DAY
         WEEK: :WEEK
         MONTH: :MONTH
+        YEAR: :YEAR
 
         def self?.values: -> ::Array[Lithic::Models::AuthRules::velocity_limit_params_period_window]
       end

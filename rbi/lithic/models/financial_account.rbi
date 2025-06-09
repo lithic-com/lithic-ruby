@@ -353,6 +353,8 @@ module Lithic
             :PROGRAM_RECEIVABLES,
             Lithic::FinancialAccount::Type::TaggedSymbol
           )
+        COLLECTION =
+          T.let(:COLLECTION, Lithic::FinancialAccount::Type::TaggedSymbol)
 
         sig do
           override.returns(

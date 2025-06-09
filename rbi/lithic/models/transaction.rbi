@@ -815,6 +815,11 @@ module Lithic
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+          CUSTOMER_RULES =
+            T.let(
+              :CUSTOMER_RULES,
+              Lithic::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol
+            )
           CUSTOMER_ENDPOINT =
             T.let(
               :CUSTOMER_ENDPOINT,

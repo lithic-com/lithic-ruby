@@ -119,6 +119,30 @@ module Lithic
         )
       end
 
+      # Register account number
+      #
+      # @overload register_account_number(financial_account_token, account_number:, request_options: {})
+      #
+      # @param financial_account_token [String] Globally unique identifier for financial account.
+      #
+      # @param account_number [String]
+      #
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [nil]
+      #
+      # @see Lithic::Models::FinancialAccountRegisterAccountNumberParams
+      def register_account_number(financial_account_token, params)
+        parsed, options = Lithic::FinancialAccountRegisterAccountNumberParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/financial_accounts/%1$s/register_account_number", financial_account_token],
+          body: parsed,
+          model: NilClass,
+          options: options
+        )
+      end
+
       # Update financial account status
       #
       # @overload update_status(financial_account_token, status:, substatus:, request_options: {})

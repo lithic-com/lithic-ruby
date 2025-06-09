@@ -88,6 +88,22 @@ module Lithic
       )
       end
 
+      # Register account number
+      sig do
+        params(
+          financial_account_token: String,
+          account_number: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).void
+      end
+      def register_account_number(
+        # Globally unique identifier for financial account.
+        financial_account_token,
+        account_number:,
+        request_options: {}
+      )
+      end
+
       # Update financial account status
       sig do
         params(

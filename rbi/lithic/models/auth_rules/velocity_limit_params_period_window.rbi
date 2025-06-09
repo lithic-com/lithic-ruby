@@ -10,6 +10,8 @@ module Lithic
       #   Eastern Time.
       # - `MONTH`: Velocity over the current month since 00:00 / 12 AM on the first of
       #   the month in Eastern Time.
+      # - `YEAR`: Velocity over the current year since 00:00 / 12 AM on January 1st in
+      #   Eastern Time.
       module VelocityLimitParamsPeriodWindow
         extend Lithic::Internal::Type::Enum
 
@@ -32,6 +34,11 @@ module Lithic
         MONTH =
           T.let(
             :MONTH,
+            Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol
+          )
+        YEAR =
+          T.let(
+            :YEAR,
             Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol
           )
 

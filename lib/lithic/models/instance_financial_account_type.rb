@@ -14,6 +14,7 @@ module Lithic
       CHARGED_OFF_PRINCIPAL = :CHARGED_OFF_PRINCIPAL
       SECURITY = :SECURITY
       PROGRAM_RECEIVABLES = :PROGRAM_RECEIVABLES
+      COLLECTION = :COLLECTION
 
       # @!method self.values
       #   @return [Array<Symbol>]
