@@ -38,6 +38,12 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> Lithic::Internal::SinglePage[Lithic::FinancialAccount]
 
+      def register_account_number: (
+        String financial_account_token,
+        account_number: String,
+        ?request_options: Lithic::request_opts
+      ) -> nil
+
       def update_status: (
         String financial_account_token,
         status: Lithic::Models::FinancialAccountUpdateStatusParams::status,

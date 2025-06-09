@@ -342,7 +342,8 @@ module Lithic
         end
 
         type decision_made_by =
-          :CUSTOMER_ENDPOINT
+          :CUSTOMER_RULES
+          | :CUSTOMER_ENDPOINT
           | :LITHIC_DEFAULT
           | :LITHIC_RULES
           | :NETWORK
@@ -351,6 +352,7 @@ module Lithic
         module DecisionMadeBy
           extend Lithic::Internal::Type::Enum
 
+          CUSTOMER_RULES: :CUSTOMER_RULES
           CUSTOMER_ENDPOINT: :CUSTOMER_ENDPOINT
           LITHIC_DEFAULT: :LITHIC_DEFAULT
           LITHIC_RULES: :LITHIC_RULES

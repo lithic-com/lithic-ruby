@@ -30,7 +30,9 @@ module Lithic
         # Simulates a 3DS authentication request from the payment network as if it came
         # from an ACS. If you're configured for 3DS Customer Decisioning, simulating
         # authentications requires your customer decisioning endpoint to be set up
-        # properly (respond with a valid JSON).
+        # properly (respond with a valid JSON). If the authentication decision is to
+        # challenge, ensure that the account holder associated with the card transaction
+        # has a valid phone number configured to receive the OTP code via SMS.
         #
         # @overload simulate(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {})
         #
