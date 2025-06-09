@@ -1,0 +1,23 @@
+module Lithic
+  module Models
+    type financial_account_register_account_number_params =
+      { account_number: String } & Lithic::Internal::Type::request_parameters
+
+    class FinancialAccountRegisterAccountNumberParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor account_number: String
+
+      def initialize: (
+        account_number: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        account_number: String,
+        request_options: Lithic::RequestOptions
+      }
+    end
+  end
+end

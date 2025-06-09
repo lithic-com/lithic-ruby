@@ -165,6 +165,7 @@ module Lithic
         | :CHARGED_OFF_PRINCIPAL
         | :SECURITY
         | :PROGRAM_RECEIVABLES
+        | :COLLECTION
 
       module Type
         extend Lithic::Internal::Type::Enum
@@ -177,6 +178,7 @@ module Lithic
         CHARGED_OFF_PRINCIPAL: :CHARGED_OFF_PRINCIPAL
         SECURITY: :SECURITY
         PROGRAM_RECEIVABLES: :PROGRAM_RECEIVABLES
+        COLLECTION: :COLLECTION
 
         def self?.values: -> ::Array[Lithic::Models::FinancialAccount::type_]
       end
