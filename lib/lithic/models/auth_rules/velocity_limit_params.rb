@@ -113,6 +113,7 @@ module Lithic
           # * `DAY`: Velocity over the current day since midnight Eastern Time.
           # * `WEEK`: Velocity over the current week since 00:00 / 12 AM on Monday in Eastern Time.
           # * `MONTH`: Velocity over the current month since 00:00 / 12 AM on the first of the month in Eastern Time.
+          # * `YEAR`: Velocity over the current year since 00:00 / 12 AM on January 1st in Eastern Time.
           variant enum: -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow }
 
           # @!method self.variants

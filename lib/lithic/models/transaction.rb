@@ -508,6 +508,7 @@ module Lithic
         module DecisionMadeBy
           extend Lithic::Internal::Type::Enum
 
+          CUSTOMER_RULES = :CUSTOMER_RULES
           CUSTOMER_ENDPOINT = :CUSTOMER_ENDPOINT
           LITHIC_DEFAULT = :LITHIC_DEFAULT
           LITHIC_RULES = :LITHIC_RULES

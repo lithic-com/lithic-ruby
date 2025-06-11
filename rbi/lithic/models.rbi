@@ -205,6 +205,9 @@ module Lithic
 
   FinancialAccountListParams = Lithic::Models::FinancialAccountListParams
 
+  FinancialAccountRegisterAccountNumberParams =
+    Lithic::Models::FinancialAccountRegisterAccountNumberParams
+
   FinancialAccountRetrieveParams =
     Lithic::Models::FinancialAccountRetrieveParams
 

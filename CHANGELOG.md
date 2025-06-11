@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.32 (2025-06-11)
+
+Full Changelog: [v0.1.0-alpha.31...v0.1.0-alpha.32](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.31...v0.1.0-alpha.32)
+
+### Features
+
+* **client:** adds endpoint to register an account number on a Financial Account ([82d726f](https://github.com/lithic-com/lithic-ruby/commit/82d726f88eb26013f71c7135ada25fbb9fd02cc4))
+
+
+### Chores
+
+* **ci:** link to correct github repo ([e7e327a](https://github.com/lithic-com/lithic-ruby/commit/e7e327ad30f205f20ad2b00bd0d3314836a42269))
+
 ## 0.1.0-alpha.31 (2025-06-04)
 
 Full Changelog: [v0.1.0-alpha.30...v0.1.0-alpha.31](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.30...v0.1.0-alpha.31)

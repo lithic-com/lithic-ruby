@@ -79,7 +79,9 @@ module Lithic
       sig { returns(String) }
       attr_accessor :report_date
 
-      # Date of when money movement is triggered for the transaction.
+      # Date of when money movement is triggered for the transaction. One exception
+      # applies - for Mastercard dual message settlement, this is the settlement
+      # advisement date, which is distinct from the date of money movement.
       sig { returns(String) }
       attr_accessor :settlement_date
 
@@ -168,7 +170,9 @@ module Lithic
         other_fees_gross_amount:,
         # Date of when the report was first generated.
         report_date:,
-        # Date of when money movement is triggered for the transaction.
+        # Date of when money movement is triggered for the transaction. One exception
+        # applies - for Mastercard dual message settlement, this is the settlement
+        # advisement date, which is distinct from the date of money movement.
         settlement_date:,
         # Globally unique identifier denoting the associated Transaction object.
         transaction_token:,
