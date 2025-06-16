@@ -72,6 +72,7 @@ module Lithic
 
         ACTIVE = :ACTIVE
         PAUSED = :PAUSED
+        CLOSED = :CLOSED
 
         # @!method self.values
         #   @return [Array<Symbol>]

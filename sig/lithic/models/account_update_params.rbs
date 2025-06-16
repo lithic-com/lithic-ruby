@@ -56,13 +56,14 @@ module Lithic
         request_options: Lithic::RequestOptions
       }
 
-      type state = :ACTIVE | :PAUSED
+      type state = :ACTIVE | :PAUSED | :CLOSED
 
       module State
         extend Lithic::Internal::Type::Enum
 
         ACTIVE: :ACTIVE
         PAUSED: :PAUSED
+        CLOSED: :CLOSED
 
         def self?.values: -> ::Array[Lithic::Models::AccountUpdateParams::state]
       end

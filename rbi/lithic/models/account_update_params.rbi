@@ -129,6 +129,8 @@ module Lithic
           T.let(:ACTIVE, Lithic::AccountUpdateParams::State::TaggedSymbol)
         PAUSED =
           T.let(:PAUSED, Lithic::AccountUpdateParams::State::TaggedSymbol)
+        CLOSED =
+          T.let(:CLOSED, Lithic::AccountUpdateParams::State::TaggedSymbol)
 
         sig do
           override.returns(

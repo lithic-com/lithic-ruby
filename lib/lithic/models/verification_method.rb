@@ -10,6 +10,7 @@ module Lithic
       PLAID = :PLAID
       PRENOTE = :PRENOTE
       EXTERNALLY_VERIFIED = :EXTERNALLY_VERIFIED
+      UNVERIFIED = :UNVERIFIED
 
       # @!method self.values
       #   @return [Array<Symbol>]
