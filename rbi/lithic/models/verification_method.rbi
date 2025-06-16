@@ -15,6 +15,7 @@ module Lithic
       PRENOTE = T.let(:PRENOTE, Lithic::VerificationMethod::TaggedSymbol)
       EXTERNALLY_VERIFIED =
         T.let(:EXTERNALLY_VERIFIED, Lithic::VerificationMethod::TaggedSymbol)
+      UNVERIFIED = T.let(:UNVERIFIED, Lithic::VerificationMethod::TaggedSymbol)
 
       sig do
         override.returns(T::Array[Lithic::VerificationMethod::TaggedSymbol])

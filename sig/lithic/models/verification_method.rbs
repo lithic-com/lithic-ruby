@@ -1,7 +1,12 @@
 module Lithic
   module Models
     type verification_method =
-      :MANUAL | :MICRO_DEPOSIT | :PLAID | :PRENOTE | :EXTERNALLY_VERIFIED
+      :MANUAL
+      | :MICRO_DEPOSIT
+      | :PLAID
+      | :PRENOTE
+      | :EXTERNALLY_VERIFIED
+      | :UNVERIFIED
 
     module VerificationMethod
       extend Lithic::Internal::Type::Enum
@@ -11,6 +16,7 @@ module Lithic
       PLAID: :PLAID
       PRENOTE: :PRENOTE
       EXTERNALLY_VERIFIED: :EXTERNALLY_VERIFIED
+      UNVERIFIED: :UNVERIFIED
 
       def self?.values: -> ::Array[Lithic::Models::verification_method]
     end
