@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.32 (2025-06-17)
+
+Full Changelog: [v0.1.0-alpha.31...v0.1.0-alpha.32](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.31...v0.1.0-alpha.32)
+
+### Features
+
+* **api:** add CLOSED account state option and UNVERIFIED verification method ([a8eb01e](https://github.com/lithic-com/lithic-ruby/commit/a8eb01e4a8511742953953e86245fa434b923d01))
+* **client:** adds endpoint to register an account number on a Financial Account ([82d726f](https://github.com/lithic-com/lithic-ruby/commit/82d726f88eb26013f71c7135ada25fbb9fd02cc4))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([cf910d6](https://github.com/lithic-com/lithic-ruby/commit/cf910d68015385090f887f24ea27519a3ab12d75))
+* **ci:** link to correct github repo ([e7e327a](https://github.com/lithic-com/lithic-ruby/commit/e7e327ad30f205f20ad2b00bd0d3314836a42269))
+
 ## 0.1.0-alpha.31 (2025-06-04)
 
 Full Changelog: [v0.1.0-alpha.30...v0.1.0-alpha.31](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.30...v0.1.0-alpha.31)
