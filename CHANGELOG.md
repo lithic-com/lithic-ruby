@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.33 (2025-06-18)
+
+Full Changelog: [v0.1.0-alpha.32...v0.1.0-alpha.33](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.32...v0.1.0-alpha.33)
+
+### Bug Fixes
+
+* issue where we cannot mutate arrays on base model derivatives ([d9e95e7](https://github.com/lithic-com/lithic-ruby/commit/d9e95e745161befcf4908ea5fad28b5a9a30c131))
+
 ## 0.1.0-alpha.32 (2025-06-17)
 
 Full Changelog: [v0.1.0-alpha.31...v0.1.0-alpha.32](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.31...v0.1.0-alpha.32)
