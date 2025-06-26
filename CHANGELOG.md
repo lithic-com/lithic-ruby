@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.34 (2025-06-26)
+
+Full Changelog: [v0.1.0-alpha.33...v0.1.0-alpha.34](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.33...v0.1.0-alpha.34)
+
+### Features
+
+* **client:** adds support for on-demand Auth Rule Performance Reports ([54fcb64](https://github.com/lithic-com/lithic-ruby/commit/54fcb64ea4678afd8049d070b5f28873beeec3a4))
+
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([664a344](https://github.com/lithic-com/lithic-ruby/commit/664a344c803fc568d8011c18acb0246564a589ec))
+
 ## 0.1.0-alpha.33 (2025-06-18)
 
 Full Changelog: [v0.1.0-alpha.32...v0.1.0-alpha.33](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.32...v0.1.0-alpha.33)
