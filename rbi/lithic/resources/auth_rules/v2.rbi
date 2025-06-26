@@ -230,10 +230,11 @@ module Lithic
         )
         end
 
-        # Requests a performance report of an Auth rule to be asynchronously generated.
-        # Reports can only be run on rules in draft or active mode and will included
-        # approved and declined statistics as well as examples. The generated report will
-        # be delivered asynchronously through a webhook with `event_type` =
+        # This endpoint is deprecated and will be removed in the future. Requests a
+        # performance report of an Auth rule to be asynchronously generated. Reports can
+        # only be run on rules in draft or active mode and will included approved and
+        # declined statistics as well as examples. The generated report will be delivered
+        # asynchronously through a webhook with `event_type` =
         # `auth_rules.performance_report.created`. See the docs on setting up
         # [webhook subscriptions](https://docs.lithic.com/docs/events-api).
         #
@@ -289,6 +290,38 @@ module Lithic
         def report(
           # Globally unique identifier for the Auth Rule.
           auth_rule_token,
+          request_options: {}
+        )
+        end
+
+        # Retrieves a performance report for an Auth rule containing daily statistics and
+        # evaluation outcomes.
+        #
+        # **Time Range Limitations:**
+        #
+        # - Reports are supported for the past 3 months only
+        # - Maximum interval length is 1 month
+        # - Report data is available only through the previous day in UTC (current day
+        #   data is not available)
+        #
+        # The report provides daily statistics for both current and draft versions of the
+        # Auth rule, including approval, decline, and challenge counts along with sample
+        # events.
+        sig do
+          params(
+            auth_rule_token: String,
+            begin_: Date,
+            end_: Date,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::Models::AuthRules::V2RetrieveReportResponse)
+        end
+        def retrieve_report(
+          # Globally unique identifier for the Auth Rule.
+          auth_rule_token,
+          # Start date for the report
+          begin_:,
+          # End date for the report
+          end_:,
           request_options: {}
         )
         end

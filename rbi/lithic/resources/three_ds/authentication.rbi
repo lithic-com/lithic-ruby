@@ -12,7 +12,7 @@ module Lithic
           ).returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse)
         end
         def retrieve(
-          # 3DS Authentication Token
+          # Globally unique identifier for the 3DS authentication.
           three_ds_authentication_token,
           request_options: {}
         )
@@ -37,9 +37,11 @@ module Lithic
           ).returns(Lithic::Models::ThreeDS::AuthenticationSimulateResponse)
         end
         def simulate(
+          # Merchant information for the simulated transaction
           merchant:,
           # Sixteen digit card number.
           pan:,
+          # Transaction details for the simulation
           transaction:,
           # When set will use the following values as part of the Simulated Authentication.
           # When not set defaults to MATCH
@@ -49,9 +51,9 @@ module Lithic
         end
 
         # Endpoint for simulating entering OTP into 3DS Challenge UI. A call to
-        # /v1/three_ds_authentication/simulate that resulted in triggered SMS-OTP
-        # challenge must precede. Only a single attempt is supported; upon entering OTP,
-        # the challenge is either approved or declined.
+        # [/v1/three_ds_authentication/simulate](https://docs.lithic.com/reference/postsimulateauthentication)
+        # that resulted in triggered SMS-OTP challenge must precede. Only a single attempt
+        # is supported; upon entering OTP, the challenge is either approved or declined.
         sig do
           params(
             token: String,

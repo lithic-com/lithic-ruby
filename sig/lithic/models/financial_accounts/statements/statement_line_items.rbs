@@ -158,6 +158,7 @@ module Lithic
               | :CASH_BACK
               | :CASH_BACK_REVERSAL
               | :CLEARING
+              | :COLLECTION
               | :CORRECTION_CREDIT
               | :CORRECTION_DEBIT
               | :CREDIT_AUTHORIZATION
@@ -229,6 +230,7 @@ module Lithic
               CASH_BACK: :CASH_BACK
               CASH_BACK_REVERSAL: :CASH_BACK_REVERSAL
               CLEARING: :CLEARING
+              COLLECTION: :COLLECTION
               CORRECTION_CREDIT: :CORRECTION_CREDIT
               CORRECTION_DEBIT: :CORRECTION_DEBIT
               CREDIT_AUTHORIZATION: :CREDIT_AUTHORIZATION

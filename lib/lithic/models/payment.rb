@@ -374,13 +374,19 @@ module Lithic
         #   @return [Array<String, nil>]
         required :trace_numbers, Lithic::Internal::Type::ArrayOf[String, nil?: true]
 
-        # @!method initialize(company_id:, receipt_routing_number:, retries:, return_reason_code:, sec_code:, trace_numbers:)
+        # @!attribute addenda
+        #
+        #   @return [String, nil]
+        optional :addenda, String, nil?: true
+
+        # @!method initialize(company_id:, receipt_routing_number:, retries:, return_reason_code:, sec_code:, trace_numbers:, addenda: nil)
         #   @param company_id [String, nil]
         #   @param receipt_routing_number [String, nil]
         #   @param retries [Integer, nil]
         #   @param return_reason_code [String, nil]
         #   @param sec_code [Symbol, Lithic::Models::Payment::MethodAttributes::SecCode]
         #   @param trace_numbers [Array<String, nil>]
+        #   @param addenda [String, nil]
 
         # @see Lithic::Models::Payment::MethodAttributes#sec_code
         module SecCode

@@ -174,7 +174,7 @@ module Lithic
       module VerificationMethod
         extend Lithic::Internal::Type::Enum
 
-        EXTERNALLY_VERIFIED = :EXTERNALLY_VERIFIED
+        UNVERIFIED = :UNVERIFIED
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -100,6 +100,9 @@ module Lithic
     sig { returns(Lithic::Resources::FundingEvents) }
     attr_reader :funding_events
 
+    sig { returns(Lithic::Resources::Fraud) }
+    attr_reader :fraud
+
     # Status of api
     sig do
       params(request_options: Lithic::RequestOptions::OrHash).returns(

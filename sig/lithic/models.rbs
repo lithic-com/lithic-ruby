@@ -201,6 +201,8 @@ module Lithic
 
   class FinancialTransaction = Lithic::Models::FinancialTransaction
 
+  module Fraud = Lithic::Models::Fraud
+
   class FundingEventListParams = Lithic::Models::FundingEventListParams
 
   class FundingEventRetrieveDetailsParams = Lithic::Models::FundingEventRetrieveDetailsParams

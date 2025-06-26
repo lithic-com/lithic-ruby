@@ -257,9 +257,9 @@ module Lithic
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        EXTERNALLY_VERIFIED =
+        UNVERIFIED =
           T.let(
-            :EXTERNALLY_VERIFIED,
+            :UNVERIFIED,
             Lithic::ExternalBankAccountCreateParams::VerificationMethod::TaggedSymbol
           )
 

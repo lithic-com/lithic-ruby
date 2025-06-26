@@ -1,0 +1,108 @@
+module Lithic
+  module Models
+    module AuthRules
+      type rule_stats =
+        {
+          approved: Integer,
+          challenged: Integer,
+          declined: Integer,
+          examples: ::Array[Lithic::AuthRules::RuleStats::Example],
+          version: Integer
+        }
+
+      class RuleStats < Lithic::Internal::Type::BaseModel
+        attr_reader approved: Integer?
+
+        def approved=: (Integer) -> Integer
+
+        attr_reader challenged: Integer?
+
+        def challenged=: (Integer) -> Integer
+
+        attr_reader declined: Integer?
+
+        def declined=: (Integer) -> Integer
+
+        attr_reader examples: ::Array[Lithic::AuthRules::RuleStats::Example]?
+
+        def examples=: (
+          ::Array[Lithic::AuthRules::RuleStats::Example]
+        ) -> ::Array[Lithic::AuthRules::RuleStats::Example]
+
+        attr_reader version: Integer?
+
+        def version=: (Integer) -> Integer
+
+        def initialize: (
+          ?approved: Integer,
+          ?challenged: Integer,
+          ?declined: Integer,
+          ?examples: ::Array[Lithic::AuthRules::RuleStats::Example],
+          ?version: Integer
+        ) -> void
+
+        def to_hash: -> {
+          approved: Integer,
+          challenged: Integer,
+          declined: Integer,
+          examples: ::Array[Lithic::AuthRules::RuleStats::Example],
+          version: Integer
+        }
+
+        type example =
+          {
+            approved: bool,
+            decision: Lithic::Models::AuthRules::RuleStats::Example::decision,
+            event_token: String,
+            timestamp: Time
+          }
+
+        class Example < Lithic::Internal::Type::BaseModel
+          attr_reader approved: bool?
+
+          def approved=: (bool) -> bool
+
+          attr_reader decision: Lithic::Models::AuthRules::RuleStats::Example::decision?
+
+          def decision=: (
+            Lithic::Models::AuthRules::RuleStats::Example::decision
+          ) -> Lithic::Models::AuthRules::RuleStats::Example::decision
+
+          attr_reader event_token: String?
+
+          def event_token=: (String) -> String
+
+          attr_reader timestamp: Time?
+
+          def timestamp=: (Time) -> Time
+
+          def initialize: (
+            ?approved: bool,
+            ?decision: Lithic::Models::AuthRules::RuleStats::Example::decision,
+            ?event_token: String,
+            ?timestamp: Time
+          ) -> void
+
+          def to_hash: -> {
+            approved: bool,
+            decision: Lithic::Models::AuthRules::RuleStats::Example::decision,
+            event_token: String,
+            timestamp: Time
+          }
+
+          type decision = :APPROVED | :DECLINED | :CHALLENGED
+
+          module Decision
+            extend Lithic::Internal::Type::Enum
+
+            APPROVED: :APPROVED
+            DECLINED: :DECLINED
+            CHALLENGED: :CHALLENGED
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::RuleStats::Example::decision]
+          end
+        end
+      end
+    end
+  end
+end
