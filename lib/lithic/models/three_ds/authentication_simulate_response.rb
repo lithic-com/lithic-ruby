@@ -6,17 +6,13 @@ module Lithic
       # @see Lithic::Resources::ThreeDS::Authentication#simulate
       class AuthenticationSimulateResponse < Lithic::Internal::Type::BaseModel
         # @!attribute token
-        #   A unique token to reference this transaction with later calls to void or clear
-        #   the authorization.
+        #   Globally unique identifier for the 3DS authentication.
         #
         #   @return [String, nil]
         optional :token, String
 
         # @!method initialize(token: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::ThreeDS::AuthenticationSimulateResponse} for more details.
-        #
-        #   @param token [String] A unique token to reference this transaction with later calls to void or clear t
+        #   @param token [String] Globally unique identifier for the 3DS authentication.
       end
     end
   end

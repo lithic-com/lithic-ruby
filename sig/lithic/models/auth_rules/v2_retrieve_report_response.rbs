@@ -1,0 +1,64 @@
+module Lithic
+  module Models
+    module AuthRules
+      type v2_retrieve_report_response =
+        {
+          auth_rule_token: String,
+          begin_: Date,
+          daily_statistics: ::Array[Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic],
+          end_: Date
+        }
+
+      class V2RetrieveReportResponse < Lithic::Internal::Type::BaseModel
+        attr_accessor auth_rule_token: String
+
+        attr_accessor begin_: Date
+
+        attr_accessor daily_statistics: ::Array[Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic]
+
+        attr_accessor end_: Date
+
+        def initialize: (
+          auth_rule_token: String,
+          begin_: Date,
+          daily_statistics: ::Array[Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic],
+          end_: Date
+        ) -> void
+
+        def to_hash: -> {
+          auth_rule_token: String,
+          begin_: Date,
+          daily_statistics: ::Array[Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic],
+          end_: Date
+        }
+
+        type daily_statistic =
+          {
+            current_version_statistics: Lithic::AuthRules::RuleStats?,
+            date: Date,
+            draft_version_statistics: Lithic::AuthRules::RuleStats?
+          }
+
+        class DailyStatistic < Lithic::Internal::Type::BaseModel
+          attr_accessor current_version_statistics: Lithic::AuthRules::RuleStats?
+
+          attr_accessor date: Date
+
+          attr_accessor draft_version_statistics: Lithic::AuthRules::RuleStats?
+
+          def initialize: (
+            current_version_statistics: Lithic::AuthRules::RuleStats?,
+            date: Date,
+            draft_version_statistics: Lithic::AuthRules::RuleStats?
+          ) -> void
+
+          def to_hash: -> {
+            current_version_statistics: Lithic::AuthRules::RuleStats?,
+            date: Date,
+            draft_version_statistics: Lithic::AuthRules::RuleStats?
+          }
+        end
+      end
+    end
+  end
+end

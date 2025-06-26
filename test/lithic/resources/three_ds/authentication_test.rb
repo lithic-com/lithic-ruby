@@ -41,7 +41,7 @@ class Lithic::Test::Resources::ThreeDS::AuthenticationTest < Lithic::Test::Resou
       @lithic.three_ds.authentication.simulate(
         merchant: {id: "OODKZAPJVN4YS7O", country: "USA", mcc: "5812", name: "COFFEE SHOP"},
         pan: "4111111289144142",
-        transaction: {amount: 100, currency: "USD"}
+        transaction: {amount: 0, currency: "GBP"}
       )
 
     assert_pattern do

@@ -72,6 +72,13 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> Lithic::Models::AuthRules::V2ReportResponse
 
+        def retrieve_report: (
+          String auth_rule_token,
+          begin_: Date,
+          end_: Date,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::AuthRules::V2RetrieveReportResponse
+
         def initialize: (client: Lithic::Client) -> void
       end
     end

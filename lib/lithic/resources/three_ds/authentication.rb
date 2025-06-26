@@ -8,7 +8,7 @@ module Lithic
         #
         # @overload retrieve(three_ds_authentication_token, request_options: {})
         #
-        # @param three_ds_authentication_token [String] 3DS Authentication Token
+        # @param three_ds_authentication_token [String] Globally unique identifier for the 3DS authentication.
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -36,11 +36,11 @@ module Lithic
         #
         # @overload simulate(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {})
         #
-        # @param merchant [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant]
+        # @param merchant [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant] Merchant information for the simulated transaction
         #
         # @param pan [String] Sixteen digit card number.
         #
-        # @param transaction [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction]
+        # @param transaction [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction] Transaction details for the simulation
         #
         # @param card_expiry_check [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck] When set will use the following values as part of the Simulated Authentication.
         #
@@ -65,9 +65,9 @@ module Lithic
         # details.
         #
         # Endpoint for simulating entering OTP into 3DS Challenge UI. A call to
-        # /v1/three_ds_authentication/simulate that resulted in triggered SMS-OTP
-        # challenge must precede. Only a single attempt is supported; upon entering OTP,
-        # the challenge is either approved or declined.
+        # [/v1/three_ds_authentication/simulate](https://docs.lithic.com/reference/postsimulateauthentication)
+        # that resulted in triggered SMS-OTP challenge must precede. Only a single attempt
+        # is supported; upon entering OTP, the challenge is either approved or declined.
         #
         # @overload simulate_otp_entry(token:, otp:, request_options: {})
         #

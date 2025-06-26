@@ -136,12 +136,12 @@ module Lithic
         def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateParams::type_]
       end
 
-      type verification_method = :EXTERNALLY_VERIFIED
+      type verification_method = :UNVERIFIED
 
       module VerificationMethod
         extend Lithic::Internal::Type::Enum
 
-        EXTERNALLY_VERIFIED: :EXTERNALLY_VERIFIED
+        UNVERIFIED: :UNVERIFIED
 
         def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountCreateParams::verification_method]
       end

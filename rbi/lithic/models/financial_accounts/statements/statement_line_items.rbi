@@ -400,6 +400,11 @@ module Lithic
                   :CLEARING,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
+              COLLECTION =
+                T.let(
+                  :COLLECTION,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
               CORRECTION_CREDIT =
                 T.let(
                   :CORRECTION_CREDIT,

@@ -3,7 +3,7 @@
 module Lithic
   module Models
     module ThreeDS
-      # Whether the Cardholder has Approved or Declined the issued Challenge
+      # Whether the Cardholder has approved or declined the issued Challenge
       module ChallengeResult
         extend Lithic::Internal::Type::Enum
 

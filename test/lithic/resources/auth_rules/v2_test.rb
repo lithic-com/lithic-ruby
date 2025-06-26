@@ -203,4 +203,26 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
       }
     end
   end
+
+  def test_retrieve_report_required_params
+    response =
+      @lithic.auth_rules.v2.retrieve_report(
+        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        begin_: "2019-12-27",
+        end_: "2019-12-27"
+      )
+
+    assert_pattern do
+      response => Lithic::Models::AuthRules::V2RetrieveReportResponse
+    end
+
+    assert_pattern do
+      response => {
+        auth_rule_token: String,
+        begin_: Date,
+        daily_statistics: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::AuthRules::V2RetrieveReportResponse::DailyStatistic]),
+        end_: Date
+      }
+    end
+  end
 end

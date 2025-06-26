@@ -1,0 +1,75 @@
+module Lithic
+  module Models
+    module Fraud
+      type transaction_report_params =
+        {
+          fraud_status: Lithic::Models::Fraud::TransactionReportParams::fraud_status,
+          comment: String,
+          fraud_type: Lithic::Models::Fraud::TransactionReportParams::fraud_type
+        }
+        & Lithic::Internal::Type::request_parameters
+
+      class TransactionReportParams < Lithic::Internal::Type::BaseModel
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
+
+        attr_accessor fraud_status: Lithic::Models::Fraud::TransactionReportParams::fraud_status
+
+        attr_reader comment: String?
+
+        def comment=: (String) -> String
+
+        attr_reader fraud_type: Lithic::Models::Fraud::TransactionReportParams::fraud_type?
+
+        def fraud_type=: (
+          Lithic::Models::Fraud::TransactionReportParams::fraud_type
+        ) -> Lithic::Models::Fraud::TransactionReportParams::fraud_type
+
+        def initialize: (
+          fraud_status: Lithic::Models::Fraud::TransactionReportParams::fraud_status,
+          ?comment: String,
+          ?fraud_type: Lithic::Models::Fraud::TransactionReportParams::fraud_type,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          fraud_status: Lithic::Models::Fraud::TransactionReportParams::fraud_status,
+          comment: String,
+          fraud_type: Lithic::Models::Fraud::TransactionReportParams::fraud_type,
+          request_options: Lithic::RequestOptions
+        }
+
+        type fraud_status = :SUSPECTED_FRAUD | :FRAUDULENT | :NOT_FRAUDULENT
+
+        module FraudStatus
+          extend Lithic::Internal::Type::Enum
+
+          SUSPECTED_FRAUD: :SUSPECTED_FRAUD
+          FRAUDULENT: :FRAUDULENT
+          NOT_FRAUDULENT: :NOT_FRAUDULENT
+
+          def self?.values: -> ::Array[Lithic::Models::Fraud::TransactionReportParams::fraud_status]
+        end
+
+        type fraud_type =
+          :FIRST_PARTY_FRAUD
+          | :ACCOUNT_TAKEOVER
+          | :CARD_COMPROMISED
+          | :IDENTITY_THEFT
+          | :CARDHOLDER_MANIPULATION
+
+        module FraudType
+          extend Lithic::Internal::Type::Enum
+
+          FIRST_PARTY_FRAUD: :FIRST_PARTY_FRAUD
+          ACCOUNT_TAKEOVER: :ACCOUNT_TAKEOVER
+          CARD_COMPROMISED: :CARD_COMPROMISED
+          IDENTITY_THEFT: :IDENTITY_THEFT
+          CARDHOLDER_MANIPULATION: :CARDHOLDER_MANIPULATION
+
+          def self?.values: -> ::Array[Lithic::Models::Fraud::TransactionReportParams::fraud_type]
+        end
+      end
+    end
+  end
+end

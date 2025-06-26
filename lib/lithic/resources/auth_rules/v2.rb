@@ -246,10 +246,13 @@ module Lithic
           )
         end
 
-        # Requests a performance report of an Auth rule to be asynchronously generated.
-        # Reports can only be run on rules in draft or active mode and will included
-        # approved and declined statistics as well as examples. The generated report will
-        # be delivered asynchronously through a webhook with `event_type` =
+        # @deprecated
+        #
+        # This endpoint is deprecated and will be removed in the future. Requests a
+        # performance report of an Auth rule to be asynchronously generated. Reports can
+        # only be run on rules in draft or active mode and will included approved and
+        # declined statistics as well as examples. The generated report will be delivered
+        # asynchronously through a webhook with `event_type` =
         # `auth_rules.performance_report.created`. See the docs on setting up
         # [webhook subscriptions](https://docs.lithic.com/docs/events-api).
         #
@@ -312,6 +315,44 @@ module Lithic
             path: ["v2/auth_rules/%1$s/report", auth_rule_token],
             model: Lithic::Models::AuthRules::V2ReportResponse,
             options: params[:request_options]
+          )
+        end
+
+        # Retrieves a performance report for an Auth rule containing daily statistics and
+        # evaluation outcomes.
+        #
+        # **Time Range Limitations:**
+        #
+        # - Reports are supported for the past 3 months only
+        # - Maximum interval length is 1 month
+        # - Report data is available only through the previous day in UTC (current day
+        #   data is not available)
+        #
+        # The report provides daily statistics for both current and draft versions of the
+        # Auth rule, including approval, decline, and challenge counts along with sample
+        # events.
+        #
+        # @overload retrieve_report(auth_rule_token, begin_:, end_:, request_options: {})
+        #
+        # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
+        #
+        # @param begin_ [Date] Start date for the report
+        #
+        # @param end_ [Date] End date for the report
+        #
+        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Lithic::Models::AuthRules::V2RetrieveReportResponse]
+        #
+        # @see Lithic::Models::AuthRules::V2RetrieveReportParams
+        def retrieve_report(auth_rule_token, params)
+          parsed, options = Lithic::AuthRules::V2RetrieveReportParams.dump_request(params)
+          @client.request(
+            method: :get,
+            path: ["v2/auth_rules/%1$s/report", auth_rule_token],
+            query: parsed.transform_keys(begin_: "begin", end_: "end"),
+            model: Lithic::Models::AuthRules::V2RetrieveReportResponse,
+            options: options
           )
         end
 

@@ -81,18 +81,23 @@ module Lithic
 
       type method_attributes =
         {
-          sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code
+          sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code,
+          addenda: String?
         }
 
       class MethodAttributes < Lithic::Internal::Type::BaseModel
         attr_accessor sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code
 
+        attr_accessor addenda: String?
+
         def initialize: (
-          sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code
+          sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code,
+          ?addenda: String?
         ) -> void
 
         def to_hash: -> {
-          sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code
+          sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code,
+          addenda: String?
         }
 
         type sec_code = :CCD | :PPD | :WEB

@@ -67,6 +67,8 @@ module Lithic
 
     attr_reader funding_events: Lithic::Resources::FundingEvents
 
+    attr_reader fraud: Lithic::Resources::Fraud
+
     def api_status: (
       ?request_options: Lithic::request_opts
     ) -> Lithic::APIStatus

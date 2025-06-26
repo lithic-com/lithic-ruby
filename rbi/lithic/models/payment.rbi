@@ -562,6 +562,9 @@ module Lithic
         sig { returns(T::Array[T.nilable(String)]) }
         attr_accessor :trace_numbers
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :addenda
+
         sig do
           params(
             company_id: T.nilable(String),
@@ -569,7 +572,8 @@ module Lithic
             retries: T.nilable(Integer),
             return_reason_code: T.nilable(String),
             sec_code: Lithic::Payment::MethodAttributes::SecCode::OrSymbol,
-            trace_numbers: T::Array[T.nilable(String)]
+            trace_numbers: T::Array[T.nilable(String)],
+            addenda: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -578,7 +582,8 @@ module Lithic
           retries:,
           return_reason_code:,
           sec_code:,
-          trace_numbers:
+          trace_numbers:,
+          addenda: nil
         )
         end
 
@@ -591,7 +596,8 @@ module Lithic
               return_reason_code: T.nilable(String),
               sec_code:
                 Lithic::Payment::MethodAttributes::SecCode::TaggedSymbol,
-              trace_numbers: T::Array[T.nilable(String)]
+              trace_numbers: T::Array[T.nilable(String)],
+              addenda: T.nilable(String)
             }
           )
         end

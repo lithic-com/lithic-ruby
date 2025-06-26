@@ -256,7 +256,8 @@ module Lithic
           retries: Integer?,
           return_reason_code: String?,
           sec_code: Lithic::Models::Payment::MethodAttributes::sec_code,
-          trace_numbers: ::Array[String?]
+          trace_numbers: ::Array[String?],
+          addenda: String?
         }
 
       class MethodAttributes < Lithic::Internal::Type::BaseModel
@@ -272,13 +273,16 @@ module Lithic
 
         attr_accessor trace_numbers: ::Array[String?]
 
+        attr_accessor addenda: String?
+
         def initialize: (
           company_id: String?,
           receipt_routing_number: String?,
           retries: Integer?,
           return_reason_code: String?,
           sec_code: Lithic::Models::Payment::MethodAttributes::sec_code,
-          trace_numbers: ::Array[String?]
+          trace_numbers: ::Array[String?],
+          ?addenda: String?
         ) -> void
 
         def to_hash: -> {
@@ -287,7 +291,8 @@ module Lithic
           retries: Integer?,
           return_reason_code: String?,
           sec_code: Lithic::Models::Payment::MethodAttributes::sec_code,
-          trace_numbers: ::Array[String?]
+          trace_numbers: ::Array[String?],
+          addenda: String?
         }
 
         type sec_code = :CCD | :PPD | :WEB

@@ -9,6 +9,7 @@ module Lithic
         include Lithic::Internal::Type::RequestParameters
 
         # @!attribute merchant
+        #   Merchant information for the simulated transaction
         #
         #   @return [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant]
         required :merchant, -> { Lithic::ThreeDS::AuthenticationSimulateParams::Merchant }
@@ -20,6 +21,7 @@ module Lithic
         required :pan, String
 
         # @!attribute transaction
+        #   Transaction details for the simulation
         #
         #   @return [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction]
         required :transaction, -> { Lithic::ThreeDS::AuthenticationSimulateParams::Transaction }
@@ -38,11 +40,11 @@ module Lithic
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::ThreeDS::AuthenticationSimulateParams} for more details.
         #
-        #   @param merchant [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant]
+        #   @param merchant [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant] Merchant information for the simulated transaction
         #
         #   @param pan [String] Sixteen digit card number.
         #
-        #   @param transaction [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction]
+        #   @param transaction [Lithic::Models::ThreeDS::AuthenticationSimulateParams::Transaction] Transaction details for the simulation
         #
         #   @param card_expiry_check [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck] When set will use the following values as part of the Simulated Authentication.
         #
@@ -83,6 +85,8 @@ module Lithic
           #   {Lithic::Models::ThreeDS::AuthenticationSimulateParams::Merchant} for more
           #   details.
           #
+          #   Merchant information for the simulated transaction
+          #
           #   @param id [String] Unique identifier to identify the payment card acceptor. Corresponds to `merchan
           #
           #   @param country [String] Country of the address provided by the cardholder in ISO 3166-1 alpha-3 format (
@@ -106,6 +110,8 @@ module Lithic
           required :currency, String
 
           # @!method initialize(amount:, currency:)
+          #   Transaction details for the simulation
+          #
           #   @param amount [Integer] Amount (in cents) to authenticate.
           #
           #   @param currency [String] 3-character alphabetic ISO 4217 currency code.

@@ -6,7 +6,8 @@ module Lithic
       # @see Lithic::Resources::ThreeDS::Authentication#retrieve
       class AuthenticationRetrieveResponse < Lithic::Internal::Type::BaseModel
         # @!attribute token
-        #   Globally unique identifier for the 3DS authentication.
+        #   Globally unique identifier for the 3DS authentication. Permitted values:
+        #   36-digit version 4 UUID (including hyphens).
         #
         #   @return [String]
         required :token, String
@@ -37,7 +38,7 @@ module Lithic
 
         # @!attribute card_token
         #   Globally unique identifier for the card on which the 3DS authentication has
-        #   occurred.
+        #   occurred. Permitted values: 36-digit version 4 UUID (including hyphens).
         #
         #   @return [String]
         required :card_token, String
@@ -49,13 +50,15 @@ module Lithic
         required :cardholder, -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder }
 
         # @!attribute channel
-        #   Channel in which the authentication occurs. Maps to EMV 3DS field deviceChannel.
+        #   Channel in which the authentication occurs. Maps to EMV 3DS field
+        #   `deviceChannel`.
         #
         #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel]
         required :channel, enum: -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel }
 
         # @!attribute created
-        #   Date and time when the authentication was created in Lithic's system.
+        #   Date and time when the authentication was created in Lithic's system. Permitted
+        #   values: Date string in the ISO 8601 format yyyy-MM-dd'T'hh:mm:ssZ.
         #
         #   @return [Time]
         required :created, Time
@@ -107,12 +110,12 @@ module Lithic
         #   if the channel is 'APP_BASED'.
         #
         #   @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, nil]
-        optional :app, -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App }
+        optional :app, -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App }, nil?: true
 
         # @!attribute authentication_request_type
         #   Type of authentication request - i.e., the type of transaction or interaction is
         #   causing the merchant to request an authentication. Maps to EMV 3DS field
-        #   threeDSRequestorAuthenticationInd.
+        #   `threeDSRequestorAuthenticationInd`.
         #
         #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType, nil]
         optional :authentication_request_type,
@@ -124,10 +127,11 @@ module Lithic
         #   Present if the channel is 'BROWSER'.
         #
         #   @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, nil]
-        optional :browser, -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser }
+        optional :browser, -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser }, nil?: true
 
         # @!attribute challenge_metadata
-        #   Metadata about the challenge method and delivery.
+        #   Metadata about the challenge method and delivery. Only present when a challenge
+        #   is triggered.
         #
         #   @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata, nil]
         optional :challenge_metadata,
@@ -135,7 +139,9 @@ module Lithic
                  nil?: true
 
         # @!attribute challenge_orchestrated_by
-        #   Entity that orchestrates the challenge.
+        #   Entity that orchestrates the challenge. This won't be set for authentications
+        #   for which a decision has not yet been made (e.g. in-flight customer decisioning
+        #   request).
         #
         #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy, nil]
         optional :challenge_orchestrated_by,
@@ -143,7 +149,9 @@ module Lithic
                  nil?: true
 
         # @!attribute decision_made_by
-        #   Entity that made the authentication decision.
+        #   Entity that made the authentication decision. This won't be set for
+        #   authentications for which a decision has not yet been made (e.g. in-flight
+        #   customer decisioning request).
         #
         #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy, nil]
         optional :decision_made_by,
@@ -151,11 +159,11 @@ module Lithic
                  nil?: true
 
         # @!attribute three_ri_request_type
-        #   Type of 3DS Requestor Initiated (3RI) request i.e., a 3DS authentication that
+        #   Type of 3DS Requestor Initiated (3RI) request — i.e., a 3DS authentication that
         #   takes place at the initiation of the merchant rather than the cardholder. The
         #   most common example of this is where a merchant is authenticating before billing
         #   for a recurring transaction such as a pay TV subscription or a utility bill.
-        #   Maps to EMV 3DS field threeRIInd.
+        #   Maps to EMV 3DS field `threeRIInd`.
         #
         #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType, nil]
         optional :three_ri_request_type,
@@ -175,7 +183,9 @@ module Lithic
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::ThreeDS::AuthenticationRetrieveResponse} for more details.
         #
-        #   @param token [String] Globally unique identifier for the 3DS authentication.
+        #   Represents a 3DS authentication
+        #
+        #   @param token [String] Globally unique identifier for the 3DS authentication. Permitted values: 36-digi
         #
         #   @param account_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType, nil] Type of account/card that is being used for the transaction. Maps to EMV 3DS fie
         #
@@ -187,31 +197,31 @@ module Lithic
         #
         #   @param cardholder [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder] Object containing data about the cardholder provided during the transaction.
         #
-        #   @param channel [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel] Channel in which the authentication occurs. Maps to EMV 3DS field deviceChannel.
+        #   @param channel [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel] Channel in which the authentication occurs. Maps to EMV 3DS field `deviceChannel
         #
-        #   @param created [Time] Date and time when the authentication was created in Lithic's system.
+        #   @param created [Time] Date and time when the authentication was created in Lithic's system. Permitted
         #
         #   @param merchant [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant] Object containing data about the merchant involved in the e-commerce transaction
         #
-        #   @param message_category [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory] Either PAYMENT_AUTHENTICATION or NON_PAYMENT_AUTHENTICATION. For NON_PAYMENT_AU
+        #   @param message_category [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory] Either PAYMENT_AUTHENTICATION or NON_PAYMENT_AUTHENTICATION. For NON_PAYMENT_AUT
         #
         #   @param three_ds_requestor_challenge_indicator [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator] Indicates whether a challenge is requested for this transaction
         #
         #   @param additional_data [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData, nil] Object containing additional data about the 3DS request that is beyond the EMV 3
         #
-        #   @param app [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App] Object containing data about the app used in the e-commerce transaction. Present
+        #   @param app [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App, nil] Object containing data about the app used in the e-commerce transaction. Present
         #
         #   @param authentication_request_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType, nil] Type of authentication request - i.e., the type of transaction or interaction is
         #
-        #   @param browser [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser] Object containing data about the browser used in the e-commerce transaction. Pre
+        #   @param browser [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser, nil] Object containing data about the browser used in the e-commerce transaction. Pre
         #
-        #   @param challenge_metadata [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata, nil] Metadata about the challenge method and delivery.
+        #   @param challenge_metadata [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata, nil] Metadata about the challenge method and delivery. Only present when a challenge
         #
-        #   @param challenge_orchestrated_by [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy, nil] Entity that orchestrates the challenge.
+        #   @param challenge_orchestrated_by [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy, nil] Entity that orchestrates the challenge. This won't be set for authentications fo
         #
-        #   @param decision_made_by [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy, nil] Entity that made the authentication decision.
+        #   @param decision_made_by [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy, nil] Entity that made the authentication decision. This won't be set for authenticati
         #
-        #   @param three_ri_request_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType, nil] Type of 3DS Requestor Initiated (3RI) request i.e., a 3DS authentication that ta
+        #   @param three_ri_request_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType, nil] Type of 3DS Requestor Initiated (3RI) request — i.e., a 3DS authentication that
         #
         #   @param transaction [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction, nil] Object containing data about the e-commerce transaction for which the merchant i
 
@@ -266,7 +276,7 @@ module Lithic
           #   Indicates whether the shipping address and billing address provided by the
           #   cardholder are the same. This value - and assessment of whether the addresses
           #   match - is provided directly in the 3DS request and is not determined by Lithic.
-          #   Maps to EMV 3DS field addrMatch.
+          #   Maps to EMV 3DS field `addrMatch`.
           #
           #   @return [Boolean, nil]
           optional :address_match, Lithic::Internal::Type::Boolean, nil?: true
@@ -280,34 +290,34 @@ module Lithic
 
           # @!attribute email
           #   Email address that is either provided by the cardholder or is on file with the
-          #   merchant in a 3RI request. Maps to EMV 3DS field email.
+          #   merchant in a 3RI request. Maps to EMV 3DS field `email`.
           #
           #   @return [String, nil]
           optional :email, String, nil?: true
 
           # @!attribute name
-          #   Name of the cardholder. Maps to EMV 3DS field cardholderName.
+          #   Name of the cardholder. Maps to EMV 3DS field `cardholderName`.
           #
           #   @return [String, nil]
           optional :name, String, nil?: true
 
           # @!attribute phone_number_home
           #   Home phone number provided by the cardholder. Maps to EMV 3DS fields
-          #   homePhone.cc and homePhone.subscriber.
+          #   `homePhone.cc` and `homePhone.subscriber`.
           #
           #   @return [String, nil]
           optional :phone_number_home, String, nil?: true
 
           # @!attribute phone_number_mobile
           #   Mobile/cell phone number provided by the cardholder. Maps to EMV 3DS fields
-          #   mobilePhone.cc and mobilePhone.subscriber.
+          #   `mobilePhone.cc` and `mobilePhone.subscriber`.
           #
           #   @return [String, nil]
           optional :phone_number_mobile, String, nil?: true
 
           # @!attribute phone_number_work
           #   Work phone number provided by the cardholder. Maps to EMV 3DS fields
-          #   workPhone.cc and workPhone.subscriber.
+          #   `workPhone.cc` and `workPhone.subscriber`.
           #
           #   @return [String, nil]
           optional :phone_number_work, String, nil?: true
@@ -332,13 +342,13 @@ module Lithic
           #
           #   @param email [String, nil] Email address that is either provided by the cardholder or is on file with the m
           #
-          #   @param name [String, nil] Name of the cardholder. Maps to EMV 3DS field cardholderName.
+          #   @param name [String, nil] Name of the cardholder. Maps to EMV 3DS field `cardholderName`.
           #
-          #   @param phone_number_home [String, nil] Home phone number provided by the cardholder. Maps to EMV 3DS fields homePhone.c
+          #   @param phone_number_home [String, nil] Home phone number provided by the cardholder. Maps to EMV 3DS fields `homePhone.
           #
-          #   @param phone_number_mobile [String, nil] Mobile/cell phone number provided by the cardholder. Maps to EMV 3DS fields mobi
+          #   @param phone_number_mobile [String, nil] Mobile/cell phone number provided by the cardholder. Maps to EMV 3DS fields `mob
           #
-          #   @param phone_number_work [String, nil] Work phone number provided by the cardholder. Maps to EMV 3DS fields workPhone.c
+          #   @param phone_number_work [String, nil] Work phone number provided by the cardholder. Maps to EMV 3DS fields `workPhone.
           #
           #   @param shipping_address [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress] Object containing data on the shipping address provided during the transaction.
 
@@ -461,7 +471,8 @@ module Lithic
           end
         end
 
-        # Channel in which the authentication occurs. Maps to EMV 3DS field deviceChannel.
+        # Channel in which the authentication occurs. Maps to EMV 3DS field
+        # `deviceChannel`.
         #
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#channel
         module Channel
@@ -479,27 +490,28 @@ module Lithic
         class Merchant < Lithic::Internal::Type::BaseModel
           # @!attribute id
           #   Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field
-          #   acquirerMerchantId.
+          #   `acquirerMerchantId`.
           #
           #   @return [String]
           required :id, String
 
           # @!attribute country
           #   Country code of the merchant requesting 3DS authentication. Maps to EMV 3DS
-          #   field merchantCountryCode.
+          #   field `merchantCountryCode`. Permitted values: ISO 3166-1 alpha-3 country code
+          #   (e.g., USA).
           #
           #   @return [String]
           required :country, String
 
           # @!attribute mcc
           #   Merchant category code assigned to the merchant that describes its business
-          #   activity type. Maps to EMV 3DS field mcc.
+          #   activity type. Maps to EMV 3DS field `mcc`.
           #
           #   @return [String]
           required :mcc, String
 
           # @!attribute name
-          #   Name of the merchant. Maps to EMV 3DS field merchantName.
+          #   Name of the merchant. Maps to EMV 3DS field `merchantName`.
           #
           #   @return [String]
           required :name, String
@@ -520,13 +532,13 @@ module Lithic
           #   Object containing data about the merchant involved in the e-commerce
           #   transaction.
           #
-          #   @param id [String] Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field acquirerM
+          #   @param id [String] Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field `acquirer
           #
           #   @param country [String] Country code of the merchant requesting 3DS authentication. Maps to EMV 3DS fiel
           #
           #   @param mcc [String] Merchant category code assigned to the merchant that describes its business acti
           #
-          #   @param name [String] Name of the merchant. Maps to EMV 3DS field merchantName.
+          #   @param name [String] Name of the merchant. Maps to EMV 3DS field `merchantName`.
           #
           #   @param risk_indicator [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator] Object containing additional data indicating additional risk factors related to
 
@@ -534,14 +546,14 @@ module Lithic
           class RiskIndicator < Lithic::Internal::Type::BaseModel
             # @!attribute delivery_email_address
             #   In transactions with electronic delivery, email address to which merchandise is
-            #   delivered. Maps to EMV 3DS field deliveryEmailAddress.
+            #   delivered. Maps to EMV 3DS field `deliveryEmailAddress`.
             #
             #   @return [String, nil]
             optional :delivery_email_address, String, nil?: true
 
             # @!attribute delivery_time_frame
             #   The delivery time frame for the merchandise. Maps to EMV 3DS field
-            #   deliveryTimeframe.
+            #   `deliveryTimeframe`.
             #
             #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame, nil]
             optional :delivery_time_frame,
@@ -551,28 +563,29 @@ module Lithic
             # @!attribute gift_card_amount
             #   In prepaid or gift card purchase transactions, purchase amount total in major
             #   units (e.g., a purchase of USD $205.10 would be 205). Maps to EMV 3DS field
-            #   giftCardAmount.
+            #   `giftCardAmount`.
             #
             #   @return [Integer, nil]
             optional :gift_card_amount, Integer, nil?: true
 
             # @!attribute gift_card_count
             #   In prepaid or gift card purchase transactions, count of individual prepaid or
-            #   gift cards/codes purchased. Maps to EMV 3DS field giftCardCount.
+            #   gift cards/codes purchased. Maps to EMV 3DS field `giftCardCount`.
             #
             #   @return [Integer, nil]
             optional :gift_card_count, Integer, nil?: true
 
             # @!attribute gift_card_currency
             #   In prepaid or gift card purchase transactions, currency code of the gift card.
-            #   Maps to EMV 3DS field giftCardCurr.
+            #   Maps to EMV 3DS field `giftCardCurr`. Permitted values: ISO 4217 three-character
+            #   currency code (e.g., USD).
             #
             #   @return [String, nil]
             optional :gift_card_currency, String, nil?: true
 
             # @!attribute order_availability
             #   Indicates whether the purchase is for merchandise that is available now or at a
-            #   future date. Maps to EMV 3DS field preOrderPurchaseInd.
+            #   future date. Maps to EMV 3DS field `preOrderPurchaseInd`.
             #
             #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrderAvailability, nil]
             optional :order_availability,
@@ -581,14 +594,15 @@ module Lithic
 
             # @!attribute pre_order_available_date
             #   In pre-order purchase transactions, the expected date that the merchandise will
-            #   be available. Maps to EMV 3DS field preOrderDate.
+            #   be available. Maps to EMV 3DS field `preOrderDate`. Permitted values: Date
+            #   string in the ISO 8601 format yyyy-MM-dd'T'hh:mm:ssZ
             #
             #   @return [Time, nil]
             optional :pre_order_available_date, Time, nil?: true
 
             # @!attribute reorder_items
             #   Indicates whether the cardholder is reordering previously purchased merchandise.
-            #   Maps to EMV 3DS field reorderItemsInd.
+            #   Maps to EMV 3DS field `reorderItemsInd`.
             #
             #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ReorderItems, nil]
             optional :reorder_items,
@@ -599,7 +613,7 @@ module Lithic
             #   Shipping method that the cardholder chose for the transaction. If purchase
             #   includes one or more item, this indicator is used for the physical goods; if the
             #   purchase only includes digital goods, this indicator is used to describe the
-            #   most expensive item purchased. Maps to EMV 3DS field shipIndicator.
+            #   most expensive item purchased. Maps to EMV 3DS field `shipIndicator`.
             #
             #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod, nil]
             optional :shipping_method,
@@ -616,7 +630,7 @@ module Lithic
             #
             #   @param delivery_email_address [String, nil] In transactions with electronic delivery, email address to which merchandise is
             #
-            #   @param delivery_time_frame [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame, nil] The delivery time frame for the merchandise. Maps to EMV 3DS field deliveryTimef
+            #   @param delivery_time_frame [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::DeliveryTimeFrame, nil] The delivery time frame for the merchandise. Maps to EMV 3DS field `deliveryTime
             #
             #   @param gift_card_amount [Integer, nil] In prepaid or gift card purchase transactions, purchase amount total in major un
             #
@@ -633,7 +647,7 @@ module Lithic
             #   @param shipping_method [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::ShippingMethod, nil] Shipping method that the cardholder chose for the transaction. If purchase inclu
 
             # The delivery time frame for the merchandise. Maps to EMV 3DS field
-            # deliveryTimeframe.
+            # `deliveryTimeframe`.
             #
             # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator#delivery_time_frame
             module DeliveryTimeFrame
@@ -649,7 +663,7 @@ module Lithic
             end
 
             # Indicates whether the purchase is for merchandise that is available now or at a
-            # future date. Maps to EMV 3DS field preOrderPurchaseInd.
+            # future date. Maps to EMV 3DS field `preOrderPurchaseInd`.
             #
             # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator#order_availability
             module OrderAvailability
@@ -663,7 +677,7 @@ module Lithic
             end
 
             # Indicates whether the cardholder is reordering previously purchased merchandise.
-            # Maps to EMV 3DS field reorderItemsInd.
+            # Maps to EMV 3DS field `reorderItemsInd`.
             #
             # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator#reorder_items
             module ReorderItems
@@ -679,7 +693,7 @@ module Lithic
             # Shipping method that the cardholder chose for the transaction. If purchase
             # includes one or more item, this indicator is used for the physical goods; if the
             # purchase only includes digital goods, this indicator is used to describe the
-            # most expensive item purchased. Maps to EMV 3DS field shipIndicator.
+            # most expensive item purchased. Maps to EMV 3DS field `shipIndicator`.
             #
             # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator#shipping_method
             module ShippingMethod
@@ -756,7 +770,8 @@ module Lithic
 
           # @!attribute network_risk_score
           #   Mastercard only: Assessment by the network of the authentication risk level,
-          #   with a higher value indicating a higher amount of risk.
+          #   with a higher value indicating a higher amount of risk. Permitted values:
+          #   Integer between 0-950, in increments of 50.
           #
           #   @return [Integer, nil]
           optional :network_risk_score, Integer, nil?: true
@@ -793,14 +808,14 @@ module Lithic
         class App < Lithic::Internal::Type::BaseModel
           # @!attribute device_info
           #   Device information gathered from the cardholder's device - JSON name/value pairs
-          #   that is Base64url encoded. Maps to EMV 3DS field deviceInfo.
+          #   that is Base64url encoded. Maps to EMV 3DS field `deviceInfo`.
           #
           #   @return [String, nil]
           optional :device_info, String, nil?: true
 
           # @!attribute ip
           #   External IP address used by the app generating the 3DS authentication request.
-          #   Maps to EMV 3DS field appIp.
+          #   Maps to EMV 3DS field `appIp`.
           #
           #   @return [String, nil]
           optional :ip, String
@@ -819,7 +834,7 @@ module Lithic
 
         # Type of authentication request - i.e., the type of transaction or interaction is
         # causing the merchant to request an authentication. Maps to EMV 3DS field
-        # threeDSRequestorAuthenticationInd.
+        # `threeDSRequestorAuthenticationInd`.
         #
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#authentication_request_type
         module AuthenticationRequestType
@@ -842,30 +857,37 @@ module Lithic
 
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#browser
         class Browser < Lithic::Internal::Type::BaseModel
+          # @!attribute accept_header
+          #   Content of the HTTP accept headers as sent from the cardholder's browser to the
+          #   3DS requestor (e.g., merchant or digital wallet).
+          #
+          #   @return [String, nil]
+          optional :accept_header, String, nil?: true
+
           # @!attribute ip
           #   IP address of the browser as returned by the HTTP headers to the 3DS requestor
-          #   (e.g., merchant or digital wallet). Maps to EMV 3DS field browserIP.
+          #   (e.g., merchant or digital wallet). Maps to EMV 3DS field `browserIP`.
           #
           #   @return [String, nil]
           optional :ip, String, nil?: true
 
           # @!attribute java_enabled
           #   Indicates whether the cardholder's browser has the ability to execute Java. Maps
-          #   to EMV 3DS field browserJavaEnabled.
+          #   to EMV 3DS field `browserJavaEnabled`.
           #
           #   @return [Boolean, nil]
           optional :java_enabled, Lithic::Internal::Type::Boolean, nil?: true
 
           # @!attribute javascript_enabled
           #   Indicates whether the cardholder's browser has the ability to execute
-          #   JavaScript. Maps to EMV 3DS field browserJavascriptEnabled.
+          #   JavaScript. Maps to EMV 3DS field `browserJavascriptEnabled`.
           #
           #   @return [Boolean, nil]
           optional :javascript_enabled, Lithic::Internal::Type::Boolean, nil?: true
 
           # @!attribute language
           #   Language of the cardholder's browser as defined in IETF BCP47. Maps to EMV 3DS
-          #   field browserLanguage.
+          #   field `browserLanguage`.
           #
           #   @return [String, nil]
           optional :language, String, nil?: true
@@ -873,24 +895,26 @@ module Lithic
           # @!attribute time_zone
           #   Time zone of the cardholder's browser offset in minutes between UTC and the
           #   cardholder browser's local time. The offset is positive if the local time is
-          #   behind UTC and negative if it is ahead. Maps to EMV 3DS field browserTz.
+          #   behind UTC and negative if it is ahead. Maps to EMV 3DS field `browserTz`.
           #
           #   @return [String, nil]
           optional :time_zone, String, nil?: true
 
           # @!attribute user_agent
-          #   Content of the HTTP user-agent header. Maps to EMV 3DS field browserUserAgent.
+          #   Content of the HTTP user-agent header. Maps to EMV 3DS field `browserUserAgent`.
           #
           #   @return [String, nil]
           optional :user_agent, String, nil?: true
 
-          # @!method initialize(ip: nil, java_enabled: nil, javascript_enabled: nil, language: nil, time_zone: nil, user_agent: nil)
+          # @!method initialize(accept_header: nil, ip: nil, java_enabled: nil, javascript_enabled: nil, language: nil, time_zone: nil, user_agent: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser} for more
           #   details.
           #
           #   Object containing data about the browser used in the e-commerce transaction.
           #   Present if the channel is 'BROWSER'.
+          #
+          #   @param accept_header [String, nil] Content of the HTTP accept headers as sent from the cardholder's browser to the
           #
           #   @param ip [String, nil] IP address of the browser as returned by the HTTP headers to the 3DS requestor (
           #
@@ -902,7 +926,7 @@ module Lithic
           #
           #   @param time_zone [String, nil] Time zone of the cardholder's browser offset in minutes between UTC and the card
           #
-          #   @param user_agent [String, nil] Content of the HTTP user-agent header. Maps to EMV 3DS field browserUserAgent.
+          #   @param user_agent [String, nil] Content of the HTTP user-agent header. Maps to EMV 3DS field `browserUserAgent`.
         end
 
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#challenge_metadata
@@ -921,7 +945,8 @@ module Lithic
           optional :phone_number, String, nil?: true
 
           # @!method initialize(method_type:, phone_number: nil)
-          #   Metadata about the challenge method and delivery.
+          #   Metadata about the challenge method and delivery. Only present when a challenge
+          #   is triggered.
           #
           #   @param method_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType] The type of challenge method used for authentication.
           #
@@ -941,7 +966,9 @@ module Lithic
           end
         end
 
-        # Entity that orchestrates the challenge.
+        # Entity that orchestrates the challenge. This won't be set for authentications
+        # for which a decision has not yet been made (e.g. in-flight customer decisioning
+        # request).
         #
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#challenge_orchestrated_by
         module ChallengeOrchestratedBy
@@ -955,15 +982,18 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # Entity that made the authentication decision.
+        # Entity that made the authentication decision. This won't be set for
+        # authentications for which a decision has not yet been made (e.g. in-flight
+        # customer decisioning request).
         #
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#decision_made_by
         module DecisionMadeBy
           extend Lithic::Internal::Type::Enum
 
-          CUSTOMER_ENDPOINT = :CUSTOMER_ENDPOINT
-          LITHIC_DEFAULT = :LITHIC_DEFAULT
           LITHIC_RULES = :LITHIC_RULES
+          LITHIC_DEFAULT = :LITHIC_DEFAULT
+          CUSTOMER_RULES = :CUSTOMER_RULES
+          CUSTOMER_ENDPOINT = :CUSTOMER_ENDPOINT
           NETWORK = :NETWORK
           UNKNOWN = :UNKNOWN
 
@@ -971,11 +1001,11 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # Type of 3DS Requestor Initiated (3RI) request i.e., a 3DS authentication that
+        # Type of 3DS Requestor Initiated (3RI) request — i.e., a 3DS authentication that
         # takes place at the initiation of the merchant rather than the cardholder. The
         # most common example of this is where a merchant is authenticating before billing
         # for a recurring transaction such as a pay TV subscription or a utility bill.
-        # Maps to EMV 3DS field threeRIInd.
+        # Maps to EMV 3DS field `threeRIInd`.
         #
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#three_ri_request_type
         module ThreeRiRequestType
@@ -1006,7 +1036,7 @@ module Lithic
         class Transaction < Lithic::Internal::Type::BaseModel
           # @!attribute amount
           #   Amount of the purchase in minor units of currency with all punctuation removed.
-          #   Maps to EMV 3DS field purchaseAmount.
+          #   Maps to EMV 3DS field `purchaseAmount`.
           #
           #   @return [Float]
           required :amount, Float
@@ -1019,28 +1049,30 @@ module Lithic
           required :cardholder_amount, Float, nil?: true
 
           # @!attribute currency
-          #   Currency of the purchase. Maps to EMV 3DS field purchaseCurrency.
+          #   Currency of the purchase. Maps to EMV 3DS field `purchaseCurrency`. Permitted
+          #   values: ISO 4217 three-character currency code (e.g., USD).
           #
           #   @return [String]
           required :currency, String
 
           # @!attribute currency_exponent
           #   Minor units of currency, as specified in ISO 4217 currency exponent. Maps to EMV
-          #   3DS field purchaseExponent.
+          #   3DS field `purchaseExponent`.
           #
           #   @return [Float]
           required :currency_exponent, Float
 
           # @!attribute date_time
           #   Date and time when the authentication was generated by the merchant/acquirer's
-          #   3DS server. Maps to EMV 3DS field purchaseDate.
+          #   3DS server. Maps to EMV 3DS field `purchaseDate`. Permitted values: Date string
+          #   in the ISO 8601 format yyyy-MM-dd'T'hh:mm:ssZ.
           #
           #   @return [Time]
           required :date_time, Time
 
           # @!attribute type
           #   Type of the transaction for which a 3DS authentication request is occurring.
-          #   Maps to EMV 3DS field transType.
+          #   Maps to EMV 3DS field `transType`.
           #
           #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type, nil]
           required :type,
@@ -1059,7 +1091,7 @@ module Lithic
           #
           #   @param cardholder_amount [Float, nil] Approximate amount of the purchase in minor units of cardholder currency. Derive
           #
-          #   @param currency [String] Currency of the purchase. Maps to EMV 3DS field purchaseCurrency.
+          #   @param currency [String] Currency of the purchase. Maps to EMV 3DS field `purchaseCurrency`. Permitted va
           #
           #   @param currency_exponent [Float] Minor units of currency, as specified in ISO 4217 currency exponent. Maps to EMV
           #
@@ -1068,7 +1100,7 @@ module Lithic
           #   @param type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction::Type, nil] Type of the transaction for which a 3DS authentication request is occurring. Map
 
           # Type of the transaction for which a 3DS authentication request is occurring.
-          # Maps to EMV 3DS field transType.
+          # Maps to EMV 3DS field `transType`.
           #
           # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction#type
           module Type
