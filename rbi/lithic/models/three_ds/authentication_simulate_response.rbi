@@ -12,8 +12,7 @@ module Lithic
             )
           end
 
-        # A unique token to reference this transaction with later calls to void or clear
-        # the authorization.
+        # Globally unique identifier for the 3DS authentication.
         sig { returns(T.nilable(String)) }
         attr_reader :token
 
@@ -22,8 +21,7 @@ module Lithic
 
         sig { params(token: String).returns(T.attached_class) }
         def self.new(
-          # A unique token to reference this transaction with later calls to void or clear
-          # the authorization.
+          # Globally unique identifier for the 3DS authentication.
           token: nil
         )
         end

@@ -150,20 +150,25 @@ module Lithic
         end
         attr_accessor :sec_code
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :addenda
+
         sig do
           params(
             sec_code:
-              Lithic::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol
+              Lithic::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol,
+            addenda: T.nilable(String)
           ).returns(T.attached_class)
         end
-        def self.new(sec_code:)
+        def self.new(sec_code:, addenda: nil)
         end
 
         sig do
           override.returns(
             {
               sec_code:
-                Lithic::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol
+                Lithic::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol,
+              addenda: T.nilable(String)
             }
           )
         end

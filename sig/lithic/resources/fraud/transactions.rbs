@@ -1,0 +1,22 @@
+module Lithic
+  module Resources
+    class Fraud
+      class Transactions
+        def retrieve: (
+          String transaction_token,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::Fraud::TransactionRetrieveResponse
+
+        def report: (
+          String transaction_token,
+          fraud_status: Lithic::Models::Fraud::TransactionReportParams::fraud_status,
+          ?comment: String,
+          ?fraud_type: Lithic::Models::Fraud::TransactionReportParams::fraud_type,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::Fraud::TransactionReportResponse
+
+        def initialize: (client: Lithic::Client) -> void
+      end
+    end
+  end
+end

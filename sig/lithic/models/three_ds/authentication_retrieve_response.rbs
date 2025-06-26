@@ -15,9 +15,9 @@ module Lithic
           message_category: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::message_category,
           three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::three_ds_requestor_challenge_indicator,
           additional_data: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData?,
-          app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App,
+          app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App?,
           authentication_request_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::authentication_request_type?,
-          browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser,
+          browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser?,
           challenge_metadata: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata?,
           challenge_orchestrated_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::challenge_orchestrated_by?,
           decision_made_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::decision_made_by?,
@@ -50,19 +50,11 @@ module Lithic
 
         attr_accessor additional_data: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData?
 
-        attr_reader app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App?
-
-        def app=: (
-          Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App
-        ) -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App
+        attr_accessor app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App?
 
         attr_accessor authentication_request_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::authentication_request_type?
 
-        attr_reader browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser?
-
-        def browser=: (
-          Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser
-        ) -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser
+        attr_accessor browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser?
 
         attr_accessor challenge_metadata: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata?
 
@@ -87,9 +79,9 @@ module Lithic
           message_category: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::message_category,
           three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::three_ds_requestor_challenge_indicator,
           ?additional_data: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData?,
-          ?app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App,
+          ?app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App?,
           ?authentication_request_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::authentication_request_type?,
-          ?browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser,
+          ?browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser?,
           ?challenge_metadata: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata?,
           ?challenge_orchestrated_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::challenge_orchestrated_by?,
           ?decision_made_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::decision_made_by?,
@@ -110,9 +102,9 @@ module Lithic
           message_category: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::message_category,
           three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::three_ds_requestor_challenge_indicator,
           additional_data: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData?,
-          app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App,
+          app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App?,
           authentication_request_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::authentication_request_type?,
-          browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser,
+          browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser?,
           challenge_metadata: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata?,
           challenge_orchestrated_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::challenge_orchestrated_by?,
           decision_made_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::decision_made_by?,
@@ -588,6 +580,7 @@ module Lithic
 
         type browser =
           {
+            accept_header: String?,
             ip: String?,
             java_enabled: bool?,
             javascript_enabled: bool?,
@@ -597,6 +590,8 @@ module Lithic
           }
 
         class Browser < Lithic::Internal::Type::BaseModel
+          attr_accessor accept_header: String?
+
           attr_accessor ip: String?
 
           attr_accessor java_enabled: bool?
@@ -610,6 +605,7 @@ module Lithic
           attr_accessor user_agent: String?
 
           def initialize: (
+            ?accept_header: String?,
             ?ip: String?,
             ?java_enabled: bool?,
             ?javascript_enabled: bool?,
@@ -619,6 +615,7 @@ module Lithic
           ) -> void
 
           def to_hash: -> {
+            accept_header: String?,
             ip: String?,
             java_enabled: bool?,
             javascript_enabled: bool?,
@@ -674,18 +671,20 @@ module Lithic
         end
 
         type decision_made_by =
-          :CUSTOMER_ENDPOINT
+          :LITHIC_RULES
           | :LITHIC_DEFAULT
-          | :LITHIC_RULES
+          | :CUSTOMER_RULES
+          | :CUSTOMER_ENDPOINT
           | :NETWORK
           | :UNKNOWN
 
         module DecisionMadeBy
           extend Lithic::Internal::Type::Enum
 
-          CUSTOMER_ENDPOINT: :CUSTOMER_ENDPOINT
-          LITHIC_DEFAULT: :LITHIC_DEFAULT
           LITHIC_RULES: :LITHIC_RULES
+          LITHIC_DEFAULT: :LITHIC_DEFAULT
+          CUSTOMER_RULES: :CUSTOMER_RULES
+          CUSTOMER_ENDPOINT: :CUSTOMER_ENDPOINT
           NETWORK: :NETWORK
           UNKNOWN: :UNKNOWN
 

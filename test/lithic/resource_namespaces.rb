@@ -25,6 +25,9 @@ module Lithic
         end
       end
 
+      module Fraud
+      end
+
       module Reports
         module Settlement
         end

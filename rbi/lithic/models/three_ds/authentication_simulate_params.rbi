@@ -15,6 +15,7 @@ module Lithic
             )
           end
 
+        # Merchant information for the simulated transaction
         sig { returns(Lithic::ThreeDS::AuthenticationSimulateParams::Merchant) }
         attr_reader :merchant
 
@@ -30,6 +31,7 @@ module Lithic
         sig { returns(String) }
         attr_accessor :pan
 
+        # Transaction details for the simulation
         sig do
           returns(Lithic::ThreeDS::AuthenticationSimulateParams::Transaction)
         end
@@ -75,9 +77,11 @@ module Lithic
           ).returns(T.attached_class)
         end
         def self.new(
+          # Merchant information for the simulated transaction
           merchant:,
           # Sixteen digit card number.
           pan:,
+          # Transaction details for the simulation
           transaction:,
           # When set will use the following values as part of the Simulated Authentication.
           # When not set defaults to MATCH
@@ -132,6 +136,7 @@ module Lithic
           sig { returns(String) }
           attr_accessor :name
 
+          # Merchant information for the simulated transaction
           sig do
             params(
               id: String,
@@ -183,6 +188,7 @@ module Lithic
           sig { returns(String) }
           attr_accessor :currency
 
+          # Transaction details for the simulation
           sig do
             params(amount: Integer, currency: String).returns(T.attached_class)
           end

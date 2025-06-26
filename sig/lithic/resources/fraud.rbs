@@ -1,0 +1,9 @@
+module Lithic
+  module Resources
+    class Fraud
+      attr_reader transactions: Lithic::Resources::Fraud::Transactions
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

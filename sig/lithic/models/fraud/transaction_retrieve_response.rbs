@@ -1,0 +1,90 @@
+module Lithic
+  module Models
+    module Fraud
+      type transaction_retrieve_response =
+        {
+          fraud_status: Lithic::Models::Fraud::TransactionRetrieveResponse::fraud_status,
+          transaction_token: String,
+          comment: String,
+          created_at: Time,
+          fraud_type: Lithic::Models::Fraud::TransactionRetrieveResponse::fraud_type,
+          updated_at: Time
+        }
+
+      class TransactionRetrieveResponse < Lithic::Internal::Type::BaseModel
+        attr_accessor fraud_status: Lithic::Models::Fraud::TransactionRetrieveResponse::fraud_status
+
+        attr_accessor transaction_token: String
+
+        attr_reader comment: String?
+
+        def comment=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader fraud_type: Lithic::Models::Fraud::TransactionRetrieveResponse::fraud_type?
+
+        def fraud_type=: (
+          Lithic::Models::Fraud::TransactionRetrieveResponse::fraud_type
+        ) -> Lithic::Models::Fraud::TransactionRetrieveResponse::fraud_type
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          fraud_status: Lithic::Models::Fraud::TransactionRetrieveResponse::fraud_status,
+          transaction_token: String,
+          ?comment: String,
+          ?created_at: Time,
+          ?fraud_type: Lithic::Models::Fraud::TransactionRetrieveResponse::fraud_type,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          fraud_status: Lithic::Models::Fraud::TransactionRetrieveResponse::fraud_status,
+          transaction_token: String,
+          comment: String,
+          created_at: Time,
+          fraud_type: Lithic::Models::Fraud::TransactionRetrieveResponse::fraud_type,
+          updated_at: Time
+        }
+
+        type fraud_status =
+          :SUSPECTED_FRAUD | :FRAUDULENT | :NOT_FRAUDULENT | :NO_REPORTED_FRAUD
+
+        module FraudStatus
+          extend Lithic::Internal::Type::Enum
+
+          SUSPECTED_FRAUD: :SUSPECTED_FRAUD
+          FRAUDULENT: :FRAUDULENT
+          NOT_FRAUDULENT: :NOT_FRAUDULENT
+          NO_REPORTED_FRAUD: :NO_REPORTED_FRAUD
+
+          def self?.values: -> ::Array[Lithic::Models::Fraud::TransactionRetrieveResponse::fraud_status]
+        end
+
+        type fraud_type =
+          :FIRST_PARTY_FRAUD
+          | :ACCOUNT_TAKEOVER
+          | :CARD_COMPROMISED
+          | :IDENTITY_THEFT
+          | :CARDHOLDER_MANIPULATION
+
+        module FraudType
+          extend Lithic::Internal::Type::Enum
+
+          FIRST_PARTY_FRAUD: :FIRST_PARTY_FRAUD
+          ACCOUNT_TAKEOVER: :ACCOUNT_TAKEOVER
+          CARD_COMPROMISED: :CARD_COMPROMISED
+          IDENTITY_THEFT: :IDENTITY_THEFT
+          CARDHOLDER_MANIPULATION: :CARDHOLDER_MANIPULATION
+
+          def self?.values: -> ::Array[Lithic::Models::Fraud::TransactionRetrieveResponse::fraud_type]
+        end
+      end
+    end
+  end
+end

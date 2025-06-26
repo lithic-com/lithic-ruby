@@ -7,13 +7,18 @@ module Lithic
         # Some parameter documentations has been truncated, see
         # {Lithic::Models::ThreeDS::DecisioningChallengeResponseParams} for more details.
         #
-        # Card program's response to a 3DS Challenge Request (CReq)
+        # Card program's response to a 3DS Challenge Request. Challenge Request is emitted
+        # as a webhook
+        # [three_ds_authentication.challenge](https://docs.lithic.com/reference/post_three-ds-authentication-challenge)
+        # and your Card Program needs to be configured with Out of Band (OOB) Challenges
+        # in order to receive it (see https://docs.lithic.com/docs/3ds-challenge-flow for
+        # more information).
         #
         # @overload challenge_response(token:, challenge_response:, request_options: {})
         #
-        # @param token [String] Globally unique identifier for the 3DS authentication. This token is sent as par
+        # @param token [String] Globally unique identifier for 3DS Authentication that resulted in PENDING_CHALL
         #
-        # @param challenge_response [Symbol, Lithic::Models::ThreeDS::ChallengeResult] Whether the Cardholder has Approved or Declined the issued Challenge
+        # @param challenge_response [Symbol, Lithic::Models::ThreeDS::ChallengeResult] Whether the Cardholder has approved or declined the issued Challenge
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #

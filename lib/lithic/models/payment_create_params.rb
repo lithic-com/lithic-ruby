@@ -94,8 +94,14 @@ module Lithic
         #   @return [Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode]
         required :sec_code, enum: -> { Lithic::PaymentCreateParams::MethodAttributes::SecCode }
 
-        # @!method initialize(sec_code:)
+        # @!attribute addenda
+        #
+        #   @return [String, nil]
+        optional :addenda, String, nil?: true
+
+        # @!method initialize(sec_code:, addenda: nil)
         #   @param sec_code [Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode]
+        #   @param addenda [String, nil]
 
         # @see Lithic::Models::PaymentCreateParams::MethodAttributes#sec_code
         module SecCode

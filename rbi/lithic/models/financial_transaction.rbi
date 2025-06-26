@@ -433,6 +433,11 @@ module Lithic
               :CLEARING,
               Lithic::FinancialTransaction::Event::Type::TaggedSymbol
             )
+          COLLECTION =
+            T.let(
+              :COLLECTION,
+              Lithic::FinancialTransaction::Event::Type::TaggedSymbol
+            )
           CORRECTION_CREDIT =
             T.let(
               :CORRECTION_CREDIT,

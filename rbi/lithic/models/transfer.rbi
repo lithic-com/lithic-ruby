@@ -420,6 +420,8 @@ module Lithic
             )
           CLEARING =
             T.let(:CLEARING, Lithic::Transfer::Event::Type::TaggedSymbol)
+          COLLECTION =
+            T.let(:COLLECTION, Lithic::Transfer::Event::Type::TaggedSymbol)
           CORRECTION_CREDIT =
             T.let(
               :CORRECTION_CREDIT,

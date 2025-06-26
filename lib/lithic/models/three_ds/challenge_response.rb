@@ -5,16 +5,14 @@ module Lithic
     module ThreeDS
       class ChallengeResponse < Lithic::Internal::Type::BaseModel
         # @!attribute token
-        #   Globally unique identifier for the 3DS authentication. This token is sent as
-        #   part of the initial 3DS Decisioning Request and as part of the 3DS Challenge
-        #   Event in the [ThreeDSAuthentication](#/components/schemas/ThreeDSAuthentication)
-        #   object
+        #   Globally unique identifier for 3DS Authentication that resulted in
+        #   PENDING_CHALLENGE authentication result.
         #
         #   @return [String]
         required :token, String
 
         # @!attribute challenge_response
-        #   Whether the Cardholder has Approved or Declined the issued Challenge
+        #   Whether the Cardholder has approved or declined the issued Challenge
         #
         #   @return [Symbol, Lithic::Models::ThreeDS::ChallengeResult]
         required :challenge_response, enum: -> { Lithic::ThreeDS::ChallengeResult }
@@ -23,9 +21,11 @@ module Lithic
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::ThreeDS::ChallengeResponse} for more details.
         #
-        #   @param token [String] Globally unique identifier for the 3DS authentication. This token is sent as par
+        #   Response from Card Program to a 3DS Authentication challenge
         #
-        #   @param challenge_response [Symbol, Lithic::Models::ThreeDS::ChallengeResult] Whether the Cardholder has Approved or Declined the issued Challenge
+        #   @param token [String] Globally unique identifier for 3DS Authentication that resulted in PENDING_CHALL
+        #
+        #   @param challenge_response [Symbol, Lithic::Models::ThreeDS::ChallengeResult] Whether the Cardholder has approved or declined the issued Challenge
       end
     end
   end
