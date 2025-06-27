@@ -51,7 +51,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         last_four: String,
         pin_status: Lithic::NonPCICard::PinStatus,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::NonPCICard::SpendLimitDuration,
+        spend_limit_duration: Lithic::SpendLimitDuration,
         state: Lithic::NonPCICard::State,
         type: Lithic::NonPCICard::Type,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,

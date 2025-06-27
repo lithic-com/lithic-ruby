@@ -55,10 +55,21 @@ module Lithic
       required :spend_limit, Integer
 
       # @!attribute spend_limit_duration
-      #   Spend limit duration
+      #   Spend limit duration values:
       #
-      #   @return [Symbol, Lithic::Models::NonPCICard::SpendLimitDuration]
-      required :spend_limit_duration, enum: -> { Lithic::NonPCICard::SpendLimitDuration }
+      #   - `ANNUALLY` - Card will authorize transactions up to spend limit for the
+      #     trailing year.
+      #   - `FOREVER` - Card will authorize only up to spend limit for the entire lifetime
+      #     of the card.
+      #   - `MONTHLY` - Card will authorize transactions up to spend limit for the
+      #     trailing month. To support recurring monthly payments, which can occur on
+      #     different day every month, the time window we consider for monthly velocity
+      #     starts 6 days after the current calendar date one month prior.
+      #   - `TRANSACTION` - Card will authorize multiple transactions if each individual
+      #     transaction is under the spend limit.
+      #
+      #   @return [Symbol, Lithic::Models::SpendLimitDuration]
+      required :spend_limit_duration, enum: -> { Lithic::SpendLimitDuration }
 
       # @!attribute state
       #   Card state values: _ `CLOSED` - Card will no longer approve authorizations.
@@ -189,7 +200,7 @@ module Lithic
       #
       #   @param spend_limit [Integer] Amount (in cents) to limit approved authorizations (e.g. 100000 would be a $1,00
       #
-      #   @param spend_limit_duration [Symbol, Lithic::Models::NonPCICard::SpendLimitDuration] Spend limit duration
+      #   @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration] Spend limit duration values:
       #
       #   @param state [Symbol, Lithic::Models::NonPCICard::State] Card state values: \* `CLOSED` - Card will no longer approve authorizations.
       #   Clos
@@ -330,22 +341,6 @@ module Lithic
         OK = :OK
         BLOCKED = :BLOCKED
         NOT_SET = :NOT_SET
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      # Spend limit duration
-      #
-      # @see Lithic::Models::NonPCICard#spend_limit_duration
-      module SpendLimitDuration
-        extend Lithic::Internal::Type::Enum
-
-        ANNUALLY = :ANNUALLY
-        FOREVER = :FOREVER
-        MONTHLY = :MONTHLY
-        TRANSACTION = :TRANSACTION
-        DAILY = :DAILY
 
         # @!method self.values
         #   @return [Array<Symbol>]
