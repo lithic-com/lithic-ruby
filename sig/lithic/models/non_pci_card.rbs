@@ -10,7 +10,7 @@ module Lithic
         last_four: String,
         pin_status: Lithic::Models::NonPCICard::pin_status,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::Models::NonPCICard::spend_limit_duration,
+        spend_limit_duration: Lithic::Models::spend_limit_duration,
         state: Lithic::Models::NonPCICard::state,
         type: Lithic::Models::NonPCICard::type_,
         auth_rule_tokens: ::Array[String],
@@ -42,7 +42,7 @@ module Lithic
 
       attr_accessor spend_limit: Integer
 
-      attr_accessor spend_limit_duration: Lithic::Models::NonPCICard::spend_limit_duration
+      attr_accessor spend_limit_duration: Lithic::Models::spend_limit_duration
 
       attr_accessor state: Lithic::Models::NonPCICard::state
 
@@ -95,7 +95,7 @@ module Lithic
         last_four: String,
         pin_status: Lithic::Models::NonPCICard::pin_status,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::Models::NonPCICard::spend_limit_duration,
+        spend_limit_duration: Lithic::Models::spend_limit_duration,
         state: Lithic::Models::NonPCICard::state,
         type: Lithic::Models::NonPCICard::type_,
         ?auth_rule_tokens: ::Array[String],
@@ -119,7 +119,7 @@ module Lithic
         last_four: String,
         pin_status: Lithic::Models::NonPCICard::pin_status,
         spend_limit: Integer,
-        spend_limit_duration: Lithic::Models::NonPCICard::spend_limit_duration,
+        spend_limit_duration: Lithic::Models::spend_limit_duration,
         state: Lithic::Models::NonPCICard::state,
         type: Lithic::Models::NonPCICard::type_,
         auth_rule_tokens: ::Array[String],
@@ -218,21 +218,6 @@ module Lithic
         NOT_SET: :NOT_SET
 
         def self?.values: -> ::Array[Lithic::Models::NonPCICard::pin_status]
-      end
-
-      type spend_limit_duration =
-        :ANNUALLY | :FOREVER | :MONTHLY | :TRANSACTION | :DAILY
-
-      module SpendLimitDuration
-        extend Lithic::Internal::Type::Enum
-
-        ANNUALLY: :ANNUALLY
-        FOREVER: :FOREVER
-        MONTHLY: :MONTHLY
-        TRANSACTION: :TRANSACTION
-        DAILY: :DAILY
-
-        def self?.values: -> ::Array[Lithic::Models::NonPCICard::spend_limit_duration]
       end
 
       type state =
