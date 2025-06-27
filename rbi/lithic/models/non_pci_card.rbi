@@ -43,8 +43,19 @@ module Lithic
       sig { returns(Integer) }
       attr_accessor :spend_limit
 
-      # Spend limit duration
-      sig { returns(Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol) }
+      # Spend limit duration values:
+      #
+      # - `ANNUALLY` - Card will authorize transactions up to spend limit for the
+      #   trailing year.
+      # - `FOREVER` - Card will authorize only up to spend limit for the entire lifetime
+      #   of the card.
+      # - `MONTHLY` - Card will authorize transactions up to spend limit for the
+      #   trailing month. To support recurring monthly payments, which can occur on
+      #   different day every month, the time window we consider for monthly velocity
+      #   starts 6 days after the current calendar date one month prior.
+      # - `TRANSACTION` - Card will authorize multiple transactions if each individual
+      #   transaction is under the spend limit.
+      sig { returns(Lithic::SpendLimitDuration::TaggedSymbol) }
       attr_accessor :spend_limit_duration
 
       # Card state values: _ `CLOSED` - Card will no longer approve authorizations.
@@ -166,8 +177,7 @@ module Lithic
           last_four: String,
           pin_status: Lithic::NonPCICard::PinStatus::OrSymbol,
           spend_limit: Integer,
-          spend_limit_duration:
-            Lithic::NonPCICard::SpendLimitDuration::OrSymbol,
+          spend_limit_duration: Lithic::SpendLimitDuration::OrSymbol,
           state: Lithic::NonPCICard::State::OrSymbol,
           type: Lithic::NonPCICard::Type::OrSymbol,
           auth_rule_tokens: T::Array[String],
@@ -201,7 +211,18 @@ module Lithic
         # Amount (in cents) to limit approved authorizations (e.g. 100000 would be a
         # $1,000 limit). Transaction requests above the spend limit will be declined.
         spend_limit:,
-        # Spend limit duration
+        # Spend limit duration values:
+        #
+        # - `ANNUALLY` - Card will authorize transactions up to spend limit for the
+        #   trailing year.
+        # - `FOREVER` - Card will authorize only up to spend limit for the entire lifetime
+        #   of the card.
+        # - `MONTHLY` - Card will authorize transactions up to spend limit for the
+        #   trailing month. To support recurring monthly payments, which can occur on
+        #   different day every month, the time window we consider for monthly velocity
+        #   starts 6 days after the current calendar date one month prior.
+        # - `TRANSACTION` - Card will authorize multiple transactions if each individual
+        #   transaction is under the spend limit.
         spend_limit_duration:,
         # Card state values: _ `CLOSED` - Card will no longer approve authorizations.
         # Closing a card cannot be undone. _ `OPEN` - Card will approve authorizations (if
@@ -274,8 +295,7 @@ module Lithic
             last_four: String,
             pin_status: Lithic::NonPCICard::PinStatus::TaggedSymbol,
             spend_limit: Integer,
-            spend_limit_duration:
-              Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol,
+            spend_limit_duration: Lithic::SpendLimitDuration::TaggedSymbol,
             state: Lithic::NonPCICard::State::TaggedSymbol,
             type: Lithic::NonPCICard::Type::TaggedSymbol,
             auth_rule_tokens: T::Array[String],
@@ -465,37 +485,6 @@ module Lithic
         sig do
           override.returns(
             T::Array[Lithic::NonPCICard::PinStatus::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
-      end
-
-      # Spend limit duration
-      module SpendLimitDuration
-        extend Lithic::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::NonPCICard::SpendLimitDuration) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        ANNUALLY =
-          T.let(:ANNUALLY, Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol)
-        FOREVER =
-          T.let(:FOREVER, Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol)
-        MONTHLY =
-          T.let(:MONTHLY, Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol)
-        TRANSACTION =
-          T.let(
-            :TRANSACTION,
-            Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol
-          )
-        DAILY =
-          T.let(:DAILY, Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol)
-
-        sig do
-          override.returns(
-            T::Array[Lithic::NonPCICard::SpendLimitDuration::TaggedSymbol]
           )
         end
         def self.values
