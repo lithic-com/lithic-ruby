@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.35 (2025-06-27)
+
+Full Changelog: [v0.1.0-alpha.34...v0.1.0-alpha.35](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.34...v0.1.0-alpha.35)
+
+### Features
+
+* **api:** introduce dedicated model for SpendLimitDuration ([47e4f42](https://github.com/lithic-com/lithic-ruby/commit/47e4f42231c996fe56ff2f681baaae2ac1c6c588))
+
 ## 0.1.0-alpha.34 (2025-06-26)
 
 Full Changelog: [v0.1.0-alpha.33...v0.1.0-alpha.34](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.33...v0.1.0-alpha.34)
