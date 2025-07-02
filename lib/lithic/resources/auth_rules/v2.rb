@@ -22,7 +22,7 @@ module Lithic
         #
         # @param name [String, nil] Auth Rule Name
         #
-        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2CreateParams::Parameters::MerchantLockParameters, Lithic::Models::AuthRules::V2CreateParams::Parameters::Conditional3DSActionParameters] Parameters for the Auth Rule
+        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters] Parameters for the Auth Rule
         #
         # @param type [Symbol, Lithic::Models::AuthRules::V2CreateParams::Type] The type of Auth Rule. Effectively determines the event stream during which it w
         #
@@ -207,7 +207,7 @@ module Lithic
         #
         # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
         #
-        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::V2DraftParams::Parameters::MerchantLockParameters, Lithic::Models::AuthRules::V2DraftParams::Parameters::Conditional3DSActionParameters, nil] Parameters for the Auth Rule
+        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, nil] Parameters for the Auth Rule
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
