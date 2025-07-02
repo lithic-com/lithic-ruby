@@ -2088,6 +2088,20 @@ module Lithic
         attr_accessor :type
 
         sig do
+          returns(
+            T.nilable(Lithic::Transaction::Event::AccountType::TaggedSymbol)
+          )
+        end
+        attr_reader :account_type
+
+        sig do
+          params(
+            account_type: Lithic::Transaction::Event::AccountType::OrSymbol
+          ).void
+        end
+        attr_writer :account_type
+
+        sig do
           returns(T.nilable(Lithic::Transaction::Event::NetworkSpecificData))
         end
         attr_reader :network_specific_data
@@ -2116,6 +2130,7 @@ module Lithic
             rule_results:
               T::Array[Lithic::Transaction::Event::RuleResult::OrHash],
             type: Lithic::Transaction::Event::Type::OrSymbol,
+            account_type: Lithic::Transaction::Event::AccountType::OrSymbol,
             network_specific_data:
               Lithic::Transaction::Event::NetworkSpecificData::OrHash
           ).returns(T.attached_class)
@@ -2145,6 +2160,7 @@ module Lithic
           rule_results:,
           # Type of transaction event
           type:,
+          account_type: nil,
           network_specific_data: nil
         )
         end
@@ -2166,6 +2182,8 @@ module Lithic
               result: Lithic::Transaction::Event::Result::TaggedSymbol,
               rule_results: T::Array[Lithic::Transaction::Event::RuleResult],
               type: Lithic::Transaction::Event::Type::TaggedSymbol,
+              account_type:
+                Lithic::Transaction::Event::AccountType::TaggedSymbol,
               network_specific_data:
                 Lithic::Transaction::Event::NetworkSpecificData
             }
@@ -3606,6 +3624,35 @@ module Lithic
           sig do
             override.returns(
               T::Array[Lithic::Transaction::Event::Type::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+
+        module AccountType
+          extend Lithic::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Lithic::Transaction::Event::AccountType)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          CHECKING =
+            T.let(
+              :CHECKING,
+              Lithic::Transaction::Event::AccountType::TaggedSymbol
+            )
+          SAVINGS =
+            T.let(
+              :SAVINGS,
+              Lithic::Transaction::Event::AccountType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Lithic::Transaction::Event::AccountType::TaggedSymbol]
             )
           end
           def self.values
