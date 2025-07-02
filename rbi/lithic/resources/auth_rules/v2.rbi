@@ -18,8 +18,8 @@ module Lithic
               T.any(
                 Lithic::AuthRules::ConditionalBlockParameters::OrHash,
                 Lithic::AuthRules::VelocityLimitParams::OrHash,
-                Lithic::AuthRules::V2CreateParams::Parameters::MerchantLockParameters::OrHash,
-                Lithic::AuthRules::V2CreateParams::Parameters::Conditional3DSActionParameters::OrHash
+                Lithic::AuthRules::MerchantLockParameters::OrHash,
+                Lithic::AuthRules::Conditional3DSActionParameters::OrHash
               ),
             type: Lithic::AuthRules::V2CreateParams::Type::OrSymbol,
             excluded_card_tokens: T::Array[String],
@@ -199,8 +199,8 @@ module Lithic
                 T.any(
                   Lithic::AuthRules::ConditionalBlockParameters::OrHash,
                   Lithic::AuthRules::VelocityLimitParams::OrHash,
-                  Lithic::AuthRules::V2DraftParams::Parameters::MerchantLockParameters::OrHash,
-                  Lithic::AuthRules::V2DraftParams::Parameters::Conditional3DSActionParameters::OrHash
+                  Lithic::AuthRules::MerchantLockParameters::OrHash,
+                  Lithic::AuthRules::Conditional3DSActionParameters::OrHash
                 )
               ),
             request_options: Lithic::RequestOptions::OrHash

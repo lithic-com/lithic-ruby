@@ -1,0 +1,51 @@
+module Lithic
+  module Models
+    module AuthRules
+      type merchant_lock_parameters =
+        {
+          merchants: ::Array[Lithic::AuthRules::MerchantLockParameters::Merchant]
+        }
+
+      class MerchantLockParameters < Lithic::Internal::Type::BaseModel
+        attr_accessor merchants: ::Array[Lithic::AuthRules::MerchantLockParameters::Merchant]
+
+        def initialize: (
+          merchants: ::Array[Lithic::AuthRules::MerchantLockParameters::Merchant]
+        ) -> void
+
+        def to_hash: -> {
+          merchants: ::Array[Lithic::AuthRules::MerchantLockParameters::Merchant]
+        }
+
+        type merchant =
+          { comment: String, descriptor: String, merchant_id: String }
+
+        class Merchant < Lithic::Internal::Type::BaseModel
+          attr_reader comment: String?
+
+          def comment=: (String) -> String
+
+          attr_reader descriptor: String?
+
+          def descriptor=: (String) -> String
+
+          attr_reader merchant_id: String?
+
+          def merchant_id=: (String) -> String
+
+          def initialize: (
+            ?comment: String,
+            ?descriptor: String,
+            ?merchant_id: String
+          ) -> void
+
+          def to_hash: -> {
+            comment: String,
+            descriptor: String,
+            merchant_id: String
+          }
+        end
+      end
+    end
+  end
+end
