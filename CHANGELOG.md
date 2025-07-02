@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.38 (2025-07-02)
+
+Full Changelog: [v0.1.0-alpha.37...v0.1.0-alpha.38](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.37...v0.1.0-alpha.38)
+
+### Features
+
+* **api:** add models for merchant_lock_parameters and conditional_3ds_action_parameters ([246c60f](https://github.com/lithic-com/lithic-ruby/commit/246c60f3befd7dfb5a7ee1cf3d048b9a7a0ce843))
+
 ## 0.1.0-alpha.37 (2025-07-02)
 
 Full Changelog: [v0.1.0-alpha.36...v0.1.0-alpha.37](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.36...v0.1.0-alpha.37)
