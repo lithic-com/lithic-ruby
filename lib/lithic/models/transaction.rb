@@ -1086,12 +1086,17 @@ module Lithic
         #   @return [Symbol, Lithic::Models::Transaction::Event::Type]
         required :type, enum: -> { Lithic::Transaction::Event::Type }
 
+        # @!attribute account_type
+        #
+        #   @return [Symbol, Lithic::Models::Transaction::Event::AccountType, nil]
+        optional :account_type, enum: -> { Lithic::Transaction::Event::AccountType }
+
         # @!attribute network_specific_data
         #
         #   @return [Lithic::Models::Transaction::Event::NetworkSpecificData, nil]
         optional :network_specific_data, -> { Lithic::Transaction::Event::NetworkSpecificData }
 
-        # @!method initialize(token:, amount:, amounts:, created:, detailed_results:, effective_polarity:, network_info:, result:, rule_results:, type:, network_specific_data: nil)
+        # @!method initialize(token:, amount:, amounts:, created:, detailed_results:, effective_polarity:, network_info:, result:, rule_results:, type:, account_type: nil, network_specific_data: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::Transaction::Event} for more details.
         #
@@ -1114,6 +1119,8 @@ module Lithic
         #   @param rule_results [Array<Lithic::Models::Transaction::Event::RuleResult>]
         #
         #   @param type [Symbol, Lithic::Models::Transaction::Event::Type] Type of transaction event
+        #
+        #   @param account_type [Symbol, Lithic::Models::Transaction::Event::AccountType]
         #
         #   @param network_specific_data [Lithic::Models::Transaction::Event::NetworkSpecificData]
 
@@ -1628,6 +1635,17 @@ module Lithic
           FINANCIAL_CREDIT_AUTHORIZATION = :FINANCIAL_CREDIT_AUTHORIZATION
           RETURN = :RETURN
           RETURN_REVERSAL = :RETURN_REVERSAL
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # @see Lithic::Models::Transaction::Event#account_type
+        module AccountType
+          extend Lithic::Internal::Type::Enum
+
+          CHECKING = :CHECKING
+          SAVINGS = :SAVINGS
 
           # @!method self.values
           #   @return [Array<Symbol>]

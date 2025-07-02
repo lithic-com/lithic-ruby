@@ -876,6 +876,7 @@ module Lithic
           result: Lithic::Models::Transaction::Event::result,
           rule_results: ::Array[Lithic::Transaction::Event::RuleResult],
           type: Lithic::Models::Transaction::Event::type_,
+          account_type: Lithic::Models::Transaction::Event::account_type,
           network_specific_data: Lithic::Transaction::Event::NetworkSpecificData
         }
 
@@ -900,6 +901,12 @@ module Lithic
 
         attr_accessor type: Lithic::Models::Transaction::Event::type_
 
+        attr_reader account_type: Lithic::Models::Transaction::Event::account_type?
+
+        def account_type=: (
+          Lithic::Models::Transaction::Event::account_type
+        ) -> Lithic::Models::Transaction::Event::account_type
+
         attr_reader network_specific_data: Lithic::Transaction::Event::NetworkSpecificData?
 
         def network_specific_data=: (
@@ -917,6 +924,7 @@ module Lithic
           result: Lithic::Models::Transaction::Event::result,
           rule_results: ::Array[Lithic::Transaction::Event::RuleResult],
           type: Lithic::Models::Transaction::Event::type_,
+          ?account_type: Lithic::Models::Transaction::Event::account_type,
           ?network_specific_data: Lithic::Transaction::Event::NetworkSpecificData
         ) -> void
 
@@ -931,6 +939,7 @@ module Lithic
           result: Lithic::Models::Transaction::Event::result,
           rule_results: ::Array[Lithic::Transaction::Event::RuleResult],
           type: Lithic::Models::Transaction::Event::type_,
+          account_type: Lithic::Models::Transaction::Event::account_type,
           network_specific_data: Lithic::Transaction::Event::NetworkSpecificData
         }
 
@@ -1502,6 +1511,17 @@ module Lithic
           RETURN_REVERSAL: :RETURN_REVERSAL
 
           def self?.values: -> ::Array[Lithic::Models::Transaction::Event::type_]
+        end
+
+        type account_type = :CHECKING | :SAVINGS
+
+        module AccountType
+          extend Lithic::Internal::Type::Enum
+
+          CHECKING: :CHECKING
+          SAVINGS: :SAVINGS
+
+          def self?.values: -> ::Array[Lithic::Models::Transaction::Event::account_type]
         end
 
         type network_specific_data =
