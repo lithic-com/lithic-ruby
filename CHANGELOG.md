@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.37 (2025-07-02)
+
+Full Changelog: [v0.1.0-alpha.36...v0.1.0-alpha.37](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.36...v0.1.0-alpha.37)
+
+### Features
+
+* **api:** api update ([95e6f93](https://github.com/lithic-com/lithic-ruby/commit/95e6f93cf300b9b2b96adaacc238da151d76bf06))
+
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([5e19b24](https://github.com/lithic-com/lithic-ruby/commit/5e19b24fcad22d51f01f3c26c82da029af648a3e))
+* **internal:** allow streams to also be unwrapped on a per-row basis ([99c6f00](https://github.com/lithic-com/lithic-ruby/commit/99c6f001da13f61889cd29108f5ac6f49d875263))
+* **internal:** manual updates ([05f1d5c](https://github.com/lithic-com/lithic-ruby/commit/05f1d5ceec90714c132c664035d658492c806653))
+
 ## 0.1.0-alpha.36 (2025-06-27)
 
 Full Changelog: [v0.1.0-alpha.35...v0.1.0-alpha.36](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.35...v0.1.0-alpha.36)
