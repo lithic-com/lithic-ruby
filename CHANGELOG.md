@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.39 (2025-07-03)
+
+Full Changelog: [v0.1.0-alpha.38...v0.1.0-alpha.39](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.38...v0.1.0-alpha.39)
+
+### Features
+
+* **api:** api update ([c096398](https://github.com/lithic-com/lithic-ruby/commit/c0963987f272b3c94603f5072a0e480b06d99a02))
+* **api:** api update ([d85ee36](https://github.com/lithic-com/lithic-ruby/commit/d85ee366181cd1d8c2530049d4bf13bfd8f22d19))
+
 ## 0.1.0-alpha.38 (2025-07-02)
 
 Full Changelog: [v0.1.0-alpha.37...v0.1.0-alpha.38](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.37...v0.1.0-alpha.38)

@@ -9,6 +9,7 @@ module Lithic
             created: Time,
             currency: String,
             institution_id: String,
+            is_complete: bool,
             network: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::network,
             report_date: Date,
             settlement_institution_id: String,
@@ -27,6 +28,8 @@ module Lithic
           attr_accessor currency: String
 
           attr_accessor institution_id: String
+
+          attr_accessor is_complete: bool
 
           attr_accessor network: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::network
 
@@ -48,6 +51,7 @@ module Lithic
             created: Time,
             currency: String,
             institution_id: String,
+            is_complete: bool,
             network: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::network,
             report_date: Date,
             settlement_institution_id: String,
@@ -62,6 +66,7 @@ module Lithic
             created: Time,
             currency: String,
             institution_id: String,
+            is_complete: bool,
             network: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::network,
             report_date: Date,
             settlement_institution_id: String,
@@ -104,11 +109,12 @@ module Lithic
             }
           end
 
-          type network = :VISA | :MASTERCARD | :MAESTRO | :INTERLINK
+          type network = :AMEX | :VISA | :MASTERCARD | :MAESTRO | :INTERLINK
 
           module Network
             extend Lithic::Internal::Type::Enum
 
+            AMEX: :AMEX
             VISA: :VISA
             MASTERCARD: :MASTERCARD
             MAESTRO: :MAESTRO

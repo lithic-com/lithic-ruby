@@ -46,8 +46,13 @@ module Lithic
           sig { returns(String) }
           attr_accessor :institution_id
 
-          # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
-          # INTERLINK.
+          # Indicates that all settlement records related to this Network Total are
+          # available in the details endpoint.
+          sig { returns(T::Boolean) }
+          attr_accessor :is_complete
+
+          # Card network where the transaction took place. AMEX, VISA, MASTERCARD, MAESTRO,
+          # or INTERLINK.
           sig do
             returns(
               Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol
@@ -88,6 +93,7 @@ module Lithic
               created: Time,
               currency: String,
               institution_id: String,
+              is_complete: T::Boolean,
               network:
                 Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::OrSymbol,
               report_date: Date,
@@ -109,8 +115,11 @@ module Lithic
             # Association). For Maestro: institution ID. For Visa: lowest level SRE
             # (Settlement Reporting Entity).
             institution_id:,
-            # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
-            # INTERLINK.
+            # Indicates that all settlement records related to this Network Total are
+            # available in the details endpoint.
+            is_complete:,
+            # Card network where the transaction took place. AMEX, VISA, MASTERCARD, MAESTRO,
+            # or INTERLINK.
             network:,
             # Date that the network total record applies to. YYYY-MM-DD format.
             report_date:,
@@ -136,6 +145,7 @@ module Lithic
                 created: Time,
                 currency: String,
                 institution_id: String,
+                is_complete: T::Boolean,
                 network:
                   Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol,
                 report_date: Date,
@@ -213,8 +223,8 @@ module Lithic
             end
           end
 
-          # Card network where the transaction took place. VISA, MASTERCARD, MAESTRO, or
-          # INTERLINK.
+          # Card network where the transaction took place. AMEX, VISA, MASTERCARD, MAESTRO,
+          # or INTERLINK.
           module Network
             extend Lithic::Internal::Type::Enum
 
@@ -227,6 +237,11 @@ module Lithic
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+            AMEX =
+              T.let(
+                :AMEX,
+                Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network::TaggedSymbol
+              )
             VISA =
               T.let(
                 :VISA,

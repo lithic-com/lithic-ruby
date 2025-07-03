@@ -258,6 +258,16 @@ module Lithic
               :"management_operation.updated",
               Lithic::Events::SubscriptionCreateParams::EventType::TaggedSymbol
             )
+          NETWORK_TOTAL_CREATED =
+            T.let(
+              :"network_total.created",
+              Lithic::Events::SubscriptionCreateParams::EventType::TaggedSymbol
+            )
+          NETWORK_TOTAL_UPDATED =
+            T.let(
+              :"network_total.updated",
+              Lithic::Events::SubscriptionCreateParams::EventType::TaggedSymbol
+            )
           PAYMENT_TRANSACTION_CREATED =
             T.let(
               :"payment_transaction.created",
