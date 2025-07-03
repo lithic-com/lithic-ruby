@@ -137,6 +137,8 @@ module Lithic
         LOAN_TAPE_UPDATED = :"loan_tape.updated"
         MANAGEMENT_OPERATION_CREATED = :"management_operation.created"
         MANAGEMENT_OPERATION_UPDATED = :"management_operation.updated"
+        NETWORK_TOTAL_CREATED = :"network_total.created"
+        NETWORK_TOTAL_UPDATED = :"network_total.updated"
         PAYMENT_TRANSACTION_CREATED = :"payment_transaction.created"
         PAYMENT_TRANSACTION_UPDATED = :"payment_transaction.updated"
         INTERNAL_TRANSACTION_CREATED = :"internal_transaction.created"
