@@ -72,6 +72,17 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :updated
 
+      # External resource associated with the management operation
+      sig { returns(T.nilable(Lithic::ExternalResource)) }
+      attr_reader :external_resource
+
+      sig do
+        params(
+          external_resource: T.nilable(Lithic::ExternalResource::OrHash)
+        ).void
+      end
+      attr_writer :external_resource
+
       sig { returns(T.nilable(String)) }
       attr_reader :user_defined_id
 
@@ -98,6 +109,7 @@ module Lithic
               Lithic::ManagementOperationTransaction::TransactionSeries::OrHash
             ),
           updated: Time,
+          external_resource: T.nilable(Lithic::ExternalResource::OrHash),
           user_defined_id: String
         ).returns(T.attached_class)
       end
@@ -115,6 +127,8 @@ module Lithic
         status:,
         transaction_series:,
         updated:,
+        # External resource associated with the management operation
+        external_resource: nil,
         user_defined_id: nil
       )
       end
@@ -142,6 +156,7 @@ module Lithic
                 Lithic::ManagementOperationTransaction::TransactionSeries
               ),
             updated: Time,
+            external_resource: T.nilable(Lithic::ExternalResource),
             user_defined_id: String
           }
         )

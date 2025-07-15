@@ -10,6 +10,7 @@ module Lithic
         financial_account_token: String,
         token: String,
         memo: String,
+        on_closed_account: Lithic::Models::ManagementOperationCreateParams::on_closed_account,
         subtype: String,
         user_defined_id: String
       }
@@ -39,6 +40,12 @@ module Lithic
 
       def memo=: (String) -> String
 
+      attr_reader on_closed_account: Lithic::Models::ManagementOperationCreateParams::on_closed_account?
+
+      def on_closed_account=: (
+        Lithic::Models::ManagementOperationCreateParams::on_closed_account
+      ) -> Lithic::Models::ManagementOperationCreateParams::on_closed_account
+
       attr_reader subtype: String?
 
       def subtype=: (String) -> String
@@ -56,6 +63,7 @@ module Lithic
         financial_account_token: String,
         ?token: String,
         ?memo: String,
+        ?on_closed_account: Lithic::Models::ManagementOperationCreateParams::on_closed_account,
         ?subtype: String,
         ?user_defined_id: String,
         ?request_options: Lithic::request_opts
@@ -70,6 +78,7 @@ module Lithic
         financial_account_token: String,
         token: String,
         memo: String,
+        on_closed_account: Lithic::Models::ManagementOperationCreateParams::on_closed_account,
         subtype: String,
         user_defined_id: String,
         request_options: Lithic::RequestOptions
@@ -150,6 +159,17 @@ module Lithic
         DISBURSE_REVERSAL: :DISBURSE_REVERSAL
 
         def self?.values: -> ::Array[Lithic::Models::ManagementOperationCreateParams::event_type]
+      end
+
+      type on_closed_account = :FAIL | :USE_SUSPENSE
+
+      module OnClosedAccount
+        extend Lithic::Internal::Type::Enum
+
+        FAIL: :FAIL
+        USE_SUSPENSE: :USE_SUSPENSE
+
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationCreateParams::on_closed_account]
       end
     end
   end

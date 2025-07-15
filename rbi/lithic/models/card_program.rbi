@@ -26,6 +26,14 @@ module Lithic
       sig { returns(String) }
       attr_accessor :pan_range_start
 
+      # Whether the card program is participating in Account Level Management. Currently
+      # applicable to Visa card programs only.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :account_level_management_enabled
+
+      sig { params(account_level_management_enabled: T::Boolean).void }
+      attr_writer :account_level_management_enabled
+
       # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
       sig { returns(T.nilable(String)) }
       attr_reader :cardholder_currency
@@ -48,6 +56,7 @@ module Lithic
           name: String,
           pan_range_end: String,
           pan_range_start: String,
+          account_level_management_enabled: T::Boolean,
           cardholder_currency: String,
           settlement_currencies: T::Array[String]
         ).returns(T.attached_class)
@@ -63,6 +72,9 @@ module Lithic
         pan_range_end:,
         # The first digits of the card number that this card program starts with.
         pan_range_start:,
+        # Whether the card program is participating in Account Level Management. Currently
+        # applicable to Visa card programs only.
+        account_level_management_enabled: nil,
         # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
         cardholder_currency: nil,
         # List of 3-character alphabetic ISO 4217 codes for the currencies that the card
@@ -79,6 +91,7 @@ module Lithic
             name: String,
             pan_range_end: String,
             pan_range_start: String,
+            account_level_management_enabled: T::Boolean,
             cardholder_currency: String,
             settlement_currencies: T::Array[String]
           }

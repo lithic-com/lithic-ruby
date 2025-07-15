@@ -2,19 +2,26 @@ module Lithic
   module Models
     type card_update_params =
       {
+        comment: String,
         digital_card_art_token: String,
         memo: String,
+        network_program_token: String,
         pin: String,
         pin_status: Lithic::Models::CardUpdateParams::pin_status,
         spend_limit: Integer,
         spend_limit_duration: Lithic::Models::spend_limit_duration,
-        state: Lithic::Models::CardUpdateParams::state
+        state: Lithic::Models::CardUpdateParams::state,
+        substatus: Lithic::Models::CardUpdateParams::substatus
       }
       & Lithic::Internal::Type::request_parameters
 
     class CardUpdateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_reader comment: String?
+
+      def comment=: (String) -> String
 
       attr_reader digital_card_art_token: String?
 
@@ -23,6 +30,10 @@ module Lithic
       attr_reader memo: String?
 
       def memo=: (String) -> String
+
+      attr_reader network_program_token: String?
+
+      def network_program_token=: (String) -> String
 
       attr_reader pin: String?
 
@@ -50,25 +61,37 @@ module Lithic
         Lithic::Models::CardUpdateParams::state
       ) -> Lithic::Models::CardUpdateParams::state
 
+      attr_reader substatus: Lithic::Models::CardUpdateParams::substatus?
+
+      def substatus=: (
+        Lithic::Models::CardUpdateParams::substatus
+      ) -> Lithic::Models::CardUpdateParams::substatus
+
       def initialize: (
+        ?comment: String,
         ?digital_card_art_token: String,
         ?memo: String,
+        ?network_program_token: String,
         ?pin: String,
         ?pin_status: Lithic::Models::CardUpdateParams::pin_status,
         ?spend_limit: Integer,
         ?spend_limit_duration: Lithic::Models::spend_limit_duration,
         ?state: Lithic::Models::CardUpdateParams::state,
+        ?substatus: Lithic::Models::CardUpdateParams::substatus,
         ?request_options: Lithic::request_opts
       ) -> void
 
       def to_hash: -> {
+        comment: String,
         digital_card_art_token: String,
         memo: String,
+        network_program_token: String,
         pin: String,
         pin_status: Lithic::Models::CardUpdateParams::pin_status,
         spend_limit: Integer,
         spend_limit_duration: Lithic::Models::spend_limit_duration,
         state: Lithic::Models::CardUpdateParams::state,
+        substatus: Lithic::Models::CardUpdateParams::substatus,
         request_options: Lithic::RequestOptions
       }
 
@@ -92,6 +115,37 @@ module Lithic
         PAUSED: :PAUSED
 
         def self?.values: -> ::Array[Lithic::Models::CardUpdateParams::state]
+      end
+
+      type substatus =
+        :LOST
+        | :COMPROMISED
+        | :DAMAGED
+        | :END_USER_REQUEST
+        | :ISSUER_REQUEST
+        | :NOT_ACTIVE
+        | :SUSPICIOUS_ACTIVITY
+        | :INTERNAL_REVIEW
+        | :EXPIRED
+        | :UNDELIVERABLE
+        | :OTHER
+
+      module Substatus
+        extend Lithic::Internal::Type::Enum
+
+        LOST: :LOST
+        COMPROMISED: :COMPROMISED
+        DAMAGED: :DAMAGED
+        END_USER_REQUEST: :END_USER_REQUEST
+        ISSUER_REQUEST: :ISSUER_REQUEST
+        NOT_ACTIVE: :NOT_ACTIVE
+        SUSPICIOUS_ACTIVITY: :SUSPICIOUS_ACTIVITY
+        INTERNAL_REVIEW: :INTERNAL_REVIEW
+        EXPIRED: :EXPIRED
+        UNDELIVERABLE: :UNDELIVERABLE
+        OTHER: :OTHER
+
+        def self?.values: -> ::Array[Lithic::Models::CardUpdateParams::substatus]
       end
     end
   end

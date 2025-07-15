@@ -104,6 +104,9 @@ module Lithic
     # @return [Lithic::Resources::Fraud]
     attr_reader :fraud
 
+    # @return [Lithic::Resources::NetworkPrograms]
+    attr_reader :network_programs
+
     # Status of api
     #
     # @overload api_status(request_options: {})
@@ -205,6 +208,7 @@ module Lithic
       @management_operations = Lithic::Resources::ManagementOperations.new(client: self)
       @funding_events = Lithic::Resources::FundingEvents.new(client: self)
       @fraud = Lithic::Resources::Fraud.new(client: self)
+      @network_programs = Lithic::Resources::NetworkPrograms.new(client: self)
     end
   end
 end

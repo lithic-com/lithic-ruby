@@ -33,6 +33,7 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
         status: Lithic::ManagementOperationTransaction::Status,
         transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries | nil,
         updated: Time,
+        external_resource: Lithic::ExternalResource | nil,
         user_defined_id: String | nil
       }
     end
@@ -60,6 +61,7 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
         status: Lithic::ManagementOperationTransaction::Status,
         transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries | nil,
         updated: Time,
+        external_resource: Lithic::ExternalResource | nil,
         user_defined_id: String | nil
       }
     end
@@ -94,6 +96,7 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
         status: Lithic::ManagementOperationTransaction::Status,
         transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries | nil,
         updated: Time,
+        external_resource: Lithic::ExternalResource | nil,
         user_defined_id: String | nil
       }
     end
@@ -125,6 +128,7 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
         status: Lithic::ManagementOperationTransaction::Status,
         transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries | nil,
         updated: Time,
+        external_resource: Lithic::ExternalResource | nil,
         user_defined_id: String | nil
       }
     end

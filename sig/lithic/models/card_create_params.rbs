@@ -13,7 +13,9 @@ module Lithic
         pin: String,
         product_id: String,
         replacement_account_token: String,
+        replacement_comment: String,
         replacement_for: String,
+        replacement_substatus: Lithic::Models::CardCreateParams::replacement_substatus,
         shipping_address: Lithic::ShippingAddress,
         shipping_method: Lithic::Models::CardCreateParams::shipping_method,
         spend_limit: Integer,
@@ -68,9 +70,19 @@ module Lithic
 
       def replacement_account_token=: (String) -> String
 
+      attr_reader replacement_comment: String?
+
+      def replacement_comment=: (String) -> String
+
       attr_reader replacement_for: String?
 
       def replacement_for=: (String) -> String
+
+      attr_reader replacement_substatus: Lithic::Models::CardCreateParams::replacement_substatus?
+
+      def replacement_substatus=: (
+        Lithic::Models::CardCreateParams::replacement_substatus
+      ) -> Lithic::Models::CardCreateParams::replacement_substatus
 
       attr_reader shipping_address: Lithic::ShippingAddress?
 
@@ -112,7 +124,9 @@ module Lithic
         ?pin: String,
         ?product_id: String,
         ?replacement_account_token: String,
+        ?replacement_comment: String,
         ?replacement_for: String,
+        ?replacement_substatus: Lithic::Models::CardCreateParams::replacement_substatus,
         ?shipping_address: Lithic::ShippingAddress,
         ?shipping_method: Lithic::Models::CardCreateParams::shipping_method,
         ?spend_limit: Integer,
@@ -133,7 +147,9 @@ module Lithic
         pin: String,
         product_id: String,
         replacement_account_token: String,
+        replacement_comment: String,
         replacement_for: String,
+        replacement_substatus: Lithic::Models::CardCreateParams::replacement_substatus,
         shipping_address: Lithic::ShippingAddress,
         shipping_method: Lithic::Models::CardCreateParams::shipping_method,
         spend_limit: Integer,
@@ -161,6 +177,37 @@ module Lithic
         DIGITAL_WALLET: :DIGITAL_WALLET
 
         def self?.values: -> ::Array[Lithic::Models::CardCreateParams::type_]
+      end
+
+      type replacement_substatus =
+        :LOST
+        | :COMPROMISED
+        | :DAMAGED
+        | :END_USER_REQUEST
+        | :ISSUER_REQUEST
+        | :NOT_ACTIVE
+        | :SUSPICIOUS_ACTIVITY
+        | :INTERNAL_REVIEW
+        | :EXPIRED
+        | :UNDELIVERABLE
+        | :OTHER
+
+      module ReplacementSubstatus
+        extend Lithic::Internal::Type::Enum
+
+        LOST: :LOST
+        COMPROMISED: :COMPROMISED
+        DAMAGED: :DAMAGED
+        END_USER_REQUEST: :END_USER_REQUEST
+        ISSUER_REQUEST: :ISSUER_REQUEST
+        NOT_ACTIVE: :NOT_ACTIVE
+        SUSPICIOUS_ACTIVITY: :SUSPICIOUS_ACTIVITY
+        INTERNAL_REVIEW: :INTERNAL_REVIEW
+        EXPIRED: :EXPIRED
+        UNDELIVERABLE: :UNDELIVERABLE
+        OTHER: :OTHER
+
+        def self?.values: -> ::Array[Lithic::Models::CardCreateParams::replacement_substatus]
       end
 
       type shipping_method =

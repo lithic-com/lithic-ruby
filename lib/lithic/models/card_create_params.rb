@@ -108,6 +108,13 @@ module Lithic
       #   @return [String, nil]
       optional :replacement_account_token, String
 
+      # @!attribute replacement_comment
+      #   Additional context or information related to the card that this card will
+      #   replace.
+      #
+      #   @return [String, nil]
+      optional :replacement_comment, String
+
       # @!attribute replacement_for
       #   Globally unique identifier for the card that this card will replace. If the card
       #   type is `PHYSICAL` it will be replaced by a `PHYSICAL` card. If the card type is
@@ -115,6 +122,38 @@ module Lithic
       #
       #   @return [String, nil]
       optional :replacement_for, String
+
+      # @!attribute replacement_substatus
+      #   Card state substatus values for the card that this card will replace:
+      #
+      #   - `LOST` - The physical card is no longer in the cardholder's possession due to
+      #     being lost or never received by the cardholder.
+      #   - `COMPROMISED` - Card information has been exposed, potentially leading to
+      #     unauthorized access. This may involve physical card theft, cloning, or online
+      #     data breaches.
+      #   - `DAMAGED` - The physical card is not functioning properly, such as having chip
+      #     failures or a demagnetized magnetic stripe.
+      #   - `END_USER_REQUEST` - The cardholder requested the closure of the card for
+      #     reasons unrelated to fraud or damage, such as switching to a different product
+      #     or closing the account.
+      #   - `ISSUER_REQUEST` - The issuer closed the card for reasons unrelated to fraud
+      #     or damage, such as account inactivity, product or policy changes, or
+      #     technology upgrades.
+      #   - `NOT_ACTIVE` - The card hasn’t had any transaction activity for a specified
+      #     period, applicable to statuses like `PAUSED` or `CLOSED`.
+      #   - `SUSPICIOUS_ACTIVITY` - The card has one or more suspicious transactions or
+      #     activities that require review. This can involve prompting the cardholder to
+      #     confirm legitimate use or report confirmed fraud.
+      #   - `INTERNAL_REVIEW` - The card is temporarily paused pending further internal
+      #     review.
+      #   - `EXPIRED` - The card has expired and has been closed without being reissued.
+      #   - `UNDELIVERABLE` - The card cannot be delivered to the cardholder and has been
+      #     returned.
+      #   - `OTHER` - The reason for the status does not fall into any of the above
+      #     categories. A comment should be provided to specify the reason.
+      #
+      #   @return [Symbol, Lithic::Models::CardCreateParams::ReplacementSubstatus, nil]
+      optional :replacement_substatus, enum: -> { Lithic::CardCreateParams::ReplacementSubstatus }
 
       # @!attribute shipping_address
       #
@@ -178,7 +217,7 @@ module Lithic
       #   @return [Symbol, Lithic::Models::CardCreateParams::State, nil]
       optional :state, enum: -> { Lithic::CardCreateParams::State }
 
-      # @!method initialize(type:, account_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_for: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
+      # @!method initialize(type:, account_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_comment: nil, replacement_for: nil, replacement_substatus: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardCreateParams} for more details.
       #
@@ -204,7 +243,11 @@ module Lithic
       #
       #   @param replacement_account_token [String] Restricted field limited to select use cases. Lithic will reach out directly if
       #
+      #   @param replacement_comment [String] Additional context or information related to the card that this card will replac
+      #
       #   @param replacement_for [String] Globally unique identifier for the card that this card will replace. If the card
+      #
+      #   @param replacement_substatus [Symbol, Lithic::Models::CardCreateParams::ReplacementSubstatus] Card state substatus values for the card that this card will replace:
       #
       #   @param shipping_address [Lithic::Models::ShippingAddress]
       #
@@ -243,6 +286,52 @@ module Lithic
         VIRTUAL = :VIRTUAL
         UNLOCKED = :UNLOCKED
         DIGITAL_WALLET = :DIGITAL_WALLET
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # Card state substatus values for the card that this card will replace:
+      #
+      # - `LOST` - The physical card is no longer in the cardholder's possession due to
+      #   being lost or never received by the cardholder.
+      # - `COMPROMISED` - Card information has been exposed, potentially leading to
+      #   unauthorized access. This may involve physical card theft, cloning, or online
+      #   data breaches.
+      # - `DAMAGED` - The physical card is not functioning properly, such as having chip
+      #   failures or a demagnetized magnetic stripe.
+      # - `END_USER_REQUEST` - The cardholder requested the closure of the card for
+      #   reasons unrelated to fraud or damage, such as switching to a different product
+      #   or closing the account.
+      # - `ISSUER_REQUEST` - The issuer closed the card for reasons unrelated to fraud
+      #   or damage, such as account inactivity, product or policy changes, or
+      #   technology upgrades.
+      # - `NOT_ACTIVE` - The card hasn’t had any transaction activity for a specified
+      #   period, applicable to statuses like `PAUSED` or `CLOSED`.
+      # - `SUSPICIOUS_ACTIVITY` - The card has one or more suspicious transactions or
+      #   activities that require review. This can involve prompting the cardholder to
+      #   confirm legitimate use or report confirmed fraud.
+      # - `INTERNAL_REVIEW` - The card is temporarily paused pending further internal
+      #   review.
+      # - `EXPIRED` - The card has expired and has been closed without being reissued.
+      # - `UNDELIVERABLE` - The card cannot be delivered to the cardholder and has been
+      #   returned.
+      # - `OTHER` - The reason for the status does not fall into any of the above
+      #   categories. A comment should be provided to specify the reason.
+      module ReplacementSubstatus
+        extend Lithic::Internal::Type::Enum
+
+        LOST = :LOST
+        COMPROMISED = :COMPROMISED
+        DAMAGED = :DAMAGED
+        END_USER_REQUEST = :END_USER_REQUEST
+        ISSUER_REQUEST = :ISSUER_REQUEST
+        NOT_ACTIVE = :NOT_ACTIVE
+        SUSPICIOUS_ACTIVITY = :SUSPICIOUS_ACTIVITY
+        INTERNAL_REVIEW = :INTERNAL_REVIEW
+        EXPIRED = :EXPIRED
+        UNDELIVERABLE = :UNDELIVERABLE
+        OTHER = :OTHER
 
         # @!method self.values
         #   @return [Array<Symbol>]

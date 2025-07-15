@@ -1,0 +1,19 @@
+module Lithic
+  module Resources
+    class NetworkPrograms
+      def retrieve: (
+        String network_program_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::NetworkProgram
+
+      def list: (
+        ?begin_: Time,
+        ?end_: Time,
+        ?page_size: Integer,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Internal::SinglePage[Lithic::NetworkProgram]
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

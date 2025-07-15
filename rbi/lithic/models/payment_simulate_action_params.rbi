@@ -110,6 +110,11 @@ module Lithic
             :ACH_RECEIPT_SETTLED,
             Lithic::PaymentSimulateActionParams::EventType::TaggedSymbol
           )
+        ACH_RECEIPT_RELEASED =
+          T.let(
+            :ACH_RECEIPT_RELEASED,
+            Lithic::PaymentSimulateActionParams::EventType::TaggedSymbol
+          )
         ACH_RETURN_INITIATED =
           T.let(
             :ACH_RETURN_INITIATED,

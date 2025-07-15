@@ -1,0 +1,35 @@
+module Lithic
+  module Models
+    type network_program =
+      {
+        token: String,
+        default_product_code: String,
+        name: String,
+        registered_program_identification_number: String
+      }
+
+    class NetworkProgram < Lithic::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      attr_accessor default_product_code: String
+
+      attr_accessor name: String
+
+      attr_accessor registered_program_identification_number: String
+
+      def initialize: (
+        token: String,
+        default_product_code: String,
+        name: String,
+        registered_program_identification_number: String
+      ) -> void
+
+      def to_hash: -> {
+        token: String,
+        default_product_code: String,
+        name: String,
+        registered_program_identification_number: String
+      }
+    end
+  end
+end

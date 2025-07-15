@@ -11,6 +11,13 @@ module Lithic
           T.any(Lithic::AccountUpdateParams, Lithic::Internal::AnyHash)
         end
 
+      # Additional context or information related to the account.
+      sig { returns(T.nilable(String)) }
+      attr_reader :comment
+
+      sig { params(comment: String).void }
+      attr_writer :comment
+
       # Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a
       # $1,000 limit). By default the daily spend limit is set to $1,250.
       sig { returns(T.nilable(Integer)) }
@@ -47,6 +54,43 @@ module Lithic
       sig { params(state: Lithic::AccountUpdateParams::State::OrSymbol).void }
       attr_writer :state
 
+      # Account state substatus values:
+      #
+      # - `FRAUD_IDENTIFIED` - The account has been recognized as being created or used
+      #   with stolen or fabricated identity information, encompassing both true
+      #   identity theft and synthetic identities.
+      # - `SUSPICIOUS_ACTIVITY` - The account has exhibited suspicious behavior, such as
+      #   unauthorized access or fraudulent transactions, necessitating further
+      #   investigation.
+      # - `RISK_VIOLATION` - The account has been involved in deliberate misuse by the
+      #   legitimate account holder. Examples include disputing valid transactions
+      #   without cause, falsely claiming non-receipt of goods, or engaging in
+      #   intentional bust-out schemes to exploit account services.
+      # - `END_USER_REQUEST` - The account holder has voluntarily requested the closure
+      #   of the account for personal reasons. This encompasses situations such as
+      #   bankruptcy, other financial considerations, or the account holder's death.
+      # - `ISSUER_REQUEST` - The issuer has initiated the closure of the account due to
+      #   business strategy, risk management, inactivity, product changes, regulatory
+      #   concerns, or violations of terms and conditions.
+      # - `NOT_ACTIVE` - The account has not had any transactions or payment activity
+      #   within a specified period. This status applies to accounts that are paused or
+      #   closed due to inactivity.
+      # - `INTERNAL_REVIEW` - The account is temporarily paused pending further internal
+      #   review. In future implementations, this status may prevent clients from
+      #   activating the account via APIs until the review is completed.
+      # - `OTHER` - The reason for the account's current status does not fall into any
+      #   of the above categories. A comment should be provided to specify the
+      #   particular reason.
+      sig do
+        returns(T.nilable(Lithic::AccountUpdateParams::Substatus::OrSymbol))
+      end
+      attr_reader :substatus
+
+      sig do
+        params(substatus: Lithic::AccountUpdateParams::Substatus::OrSymbol).void
+      end
+      attr_writer :substatus
+
       # Address used during Address Verification Service (AVS) checks during
       # transactions if enabled via Auth Rules. This field is deprecated as AVS checks
       # are no longer supported by Auth Rules. The field will be removed from the schema
@@ -66,16 +110,20 @@ module Lithic
 
       sig do
         params(
+          comment: String,
           daily_spend_limit: Integer,
           lifetime_spend_limit: Integer,
           monthly_spend_limit: Integer,
           state: Lithic::AccountUpdateParams::State::OrSymbol,
+          substatus: Lithic::AccountUpdateParams::Substatus::OrSymbol,
           verification_address:
             Lithic::AccountUpdateParams::VerificationAddress::OrHash,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        # Additional context or information related to the account.
+        comment: nil,
         # Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a
         # $1,000 limit). By default the daily spend limit is set to $1,250.
         daily_spend_limit: nil,
@@ -92,6 +140,34 @@ module Lithic
         monthly_spend_limit: nil,
         # Account states.
         state: nil,
+        # Account state substatus values:
+        #
+        # - `FRAUD_IDENTIFIED` - The account has been recognized as being created or used
+        #   with stolen or fabricated identity information, encompassing both true
+        #   identity theft and synthetic identities.
+        # - `SUSPICIOUS_ACTIVITY` - The account has exhibited suspicious behavior, such as
+        #   unauthorized access or fraudulent transactions, necessitating further
+        #   investigation.
+        # - `RISK_VIOLATION` - The account has been involved in deliberate misuse by the
+        #   legitimate account holder. Examples include disputing valid transactions
+        #   without cause, falsely claiming non-receipt of goods, or engaging in
+        #   intentional bust-out schemes to exploit account services.
+        # - `END_USER_REQUEST` - The account holder has voluntarily requested the closure
+        #   of the account for personal reasons. This encompasses situations such as
+        #   bankruptcy, other financial considerations, or the account holder's death.
+        # - `ISSUER_REQUEST` - The issuer has initiated the closure of the account due to
+        #   business strategy, risk management, inactivity, product changes, regulatory
+        #   concerns, or violations of terms and conditions.
+        # - `NOT_ACTIVE` - The account has not had any transactions or payment activity
+        #   within a specified period. This status applies to accounts that are paused or
+        #   closed due to inactivity.
+        # - `INTERNAL_REVIEW` - The account is temporarily paused pending further internal
+        #   review. In future implementations, this status may prevent clients from
+        #   activating the account via APIs until the review is completed.
+        # - `OTHER` - The reason for the account's current status does not fall into any
+        #   of the above categories. A comment should be provided to specify the
+        #   particular reason.
+        substatus: nil,
         # Address used during Address Verification Service (AVS) checks during
         # transactions if enabled via Auth Rules. This field is deprecated as AVS checks
         # are no longer supported by Auth Rules. The field will be removed from the schema
@@ -104,10 +180,12 @@ module Lithic
       sig do
         override.returns(
           {
+            comment: String,
             daily_spend_limit: Integer,
             lifetime_spend_limit: Integer,
             monthly_spend_limit: Integer,
             state: Lithic::AccountUpdateParams::State::OrSymbol,
+            substatus: Lithic::AccountUpdateParams::Substatus::OrSymbol,
             verification_address:
               Lithic::AccountUpdateParams::VerificationAddress,
             request_options: Lithic::RequestOptions
@@ -135,6 +213,87 @@ module Lithic
         sig do
           override.returns(
             T::Array[Lithic::AccountUpdateParams::State::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # Account state substatus values:
+      #
+      # - `FRAUD_IDENTIFIED` - The account has been recognized as being created or used
+      #   with stolen or fabricated identity information, encompassing both true
+      #   identity theft and synthetic identities.
+      # - `SUSPICIOUS_ACTIVITY` - The account has exhibited suspicious behavior, such as
+      #   unauthorized access or fraudulent transactions, necessitating further
+      #   investigation.
+      # - `RISK_VIOLATION` - The account has been involved in deliberate misuse by the
+      #   legitimate account holder. Examples include disputing valid transactions
+      #   without cause, falsely claiming non-receipt of goods, or engaging in
+      #   intentional bust-out schemes to exploit account services.
+      # - `END_USER_REQUEST` - The account holder has voluntarily requested the closure
+      #   of the account for personal reasons. This encompasses situations such as
+      #   bankruptcy, other financial considerations, or the account holder's death.
+      # - `ISSUER_REQUEST` - The issuer has initiated the closure of the account due to
+      #   business strategy, risk management, inactivity, product changes, regulatory
+      #   concerns, or violations of terms and conditions.
+      # - `NOT_ACTIVE` - The account has not had any transactions or payment activity
+      #   within a specified period. This status applies to accounts that are paused or
+      #   closed due to inactivity.
+      # - `INTERNAL_REVIEW` - The account is temporarily paused pending further internal
+      #   review. In future implementations, this status may prevent clients from
+      #   activating the account via APIs until the review is completed.
+      # - `OTHER` - The reason for the account's current status does not fall into any
+      #   of the above categories. A comment should be provided to specify the
+      #   particular reason.
+      module Substatus
+        extend Lithic::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::AccountUpdateParams::Substatus) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        FRAUD_IDENTIFIED =
+          T.let(
+            :FRAUD_IDENTIFIED,
+            Lithic::AccountUpdateParams::Substatus::TaggedSymbol
+          )
+        SUSPICIOUS_ACTIVITY =
+          T.let(
+            :SUSPICIOUS_ACTIVITY,
+            Lithic::AccountUpdateParams::Substatus::TaggedSymbol
+          )
+        RISK_VIOLATION =
+          T.let(
+            :RISK_VIOLATION,
+            Lithic::AccountUpdateParams::Substatus::TaggedSymbol
+          )
+        END_USER_REQUEST =
+          T.let(
+            :END_USER_REQUEST,
+            Lithic::AccountUpdateParams::Substatus::TaggedSymbol
+          )
+        ISSUER_REQUEST =
+          T.let(
+            :ISSUER_REQUEST,
+            Lithic::AccountUpdateParams::Substatus::TaggedSymbol
+          )
+        NOT_ACTIVE =
+          T.let(
+            :NOT_ACTIVE,
+            Lithic::AccountUpdateParams::Substatus::TaggedSymbol
+          )
+        INTERNAL_REVIEW =
+          T.let(
+            :INTERNAL_REVIEW,
+            Lithic::AccountUpdateParams::Substatus::TaggedSymbol
+          )
+        OTHER =
+          T.let(:OTHER, Lithic::AccountUpdateParams::Substatus::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Lithic::AccountUpdateParams::Substatus::TaggedSymbol]
           )
         end
         def self.values

@@ -7,6 +7,7 @@ module Lithic
         name: String,
         pan_range_end: String,
         pan_range_start: String,
+        account_level_management_enabled: bool,
         cardholder_currency: String,
         settlement_currencies: ::Array[String]
       }
@@ -22,6 +23,10 @@ module Lithic
 
       attr_accessor pan_range_start: String
 
+      attr_reader account_level_management_enabled: bool?
+
+      def account_level_management_enabled=: (bool) -> bool
+
       attr_reader cardholder_currency: String?
 
       def cardholder_currency=: (String) -> String
@@ -36,6 +41,7 @@ module Lithic
         name: String,
         pan_range_end: String,
         pan_range_start: String,
+        ?account_level_management_enabled: bool,
         ?cardholder_currency: String,
         ?settlement_currencies: ::Array[String]
       ) -> void
@@ -46,6 +52,7 @@ module Lithic
         name: String,
         pan_range_end: String,
         pan_range_start: String,
+        account_level_management_enabled: bool,
         cardholder_currency: String,
         settlement_currencies: ::Array[String]
       }

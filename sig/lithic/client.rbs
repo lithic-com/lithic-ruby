@@ -69,6 +69,8 @@ module Lithic
 
     attr_reader fraud: Lithic::Resources::Fraud
 
+    attr_reader network_programs: Lithic::Resources::NetworkPrograms
+
     def api_status: (
       ?request_options: Lithic::request_opts
     ) -> Lithic::APIStatus

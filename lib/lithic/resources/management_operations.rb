@@ -5,18 +5,30 @@ module Lithic
     class ManagementOperations
       # Create management operation
       #
-      # @overload create(amount:, category:, direction:, effective_date:, event_type:, financial_account_token:, token: nil, memo: nil, subtype: nil, user_defined_id: nil, request_options: {})
+      # @overload create(amount:, category:, direction:, effective_date:, event_type:, financial_account_token:, token: nil, memo: nil, on_closed_account: nil, subtype: nil, user_defined_id: nil, request_options: {})
       #
       # @param amount [Integer]
+      #
       # @param category [Symbol, Lithic::Models::ManagementOperationCreateParams::Category]
+      #
       # @param direction [Symbol, Lithic::Models::ManagementOperationCreateParams::Direction]
+      #
       # @param effective_date [Date]
+      #
       # @param event_type [Symbol, Lithic::Models::ManagementOperationCreateParams::EventType]
+      #
       # @param financial_account_token [String]
+      #
       # @param token [String]
+      #
       # @param memo [String]
+      #
+      # @param on_closed_account [Symbol, Lithic::Models::ManagementOperationCreateParams::OnClosedAccount] What to do if the financial account is closed when posting an operation
+      #
       # @param subtype [String]
+      #
       # @param user_defined_id [String]
+      #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Lithic::Models::ManagementOperationTransaction]

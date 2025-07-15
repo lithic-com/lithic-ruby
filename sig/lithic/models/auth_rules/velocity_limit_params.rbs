@@ -4,7 +4,7 @@ module Lithic
       type velocity_limit_params =
         {
           filters: Lithic::AuthRules::VelocityLimitParams::Filters,
-          period: Lithic::Models::AuthRules::VelocityLimitParams::period,
+          period: Lithic::Models::AuthRules::velocity_limit_params_period_window,
           scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
           limit_amount: Integer?,
           limit_count: Integer?
@@ -13,7 +13,7 @@ module Lithic
       class VelocityLimitParams < Lithic::Internal::Type::BaseModel
         attr_accessor filters: Lithic::AuthRules::VelocityLimitParams::Filters
 
-        attr_accessor period: Lithic::Models::AuthRules::VelocityLimitParams::period
+        attr_accessor period: Lithic::Models::AuthRules::velocity_limit_params_period_window
 
         attr_accessor scope: Lithic::Models::AuthRules::VelocityLimitParams::scope
 
@@ -23,7 +23,7 @@ module Lithic
 
         def initialize: (
           filters: Lithic::AuthRules::VelocityLimitParams::Filters,
-          period: Lithic::Models::AuthRules::VelocityLimitParams::period,
+          period: Lithic::Models::AuthRules::velocity_limit_params_period_window,
           scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
           ?limit_amount: Integer?,
           ?limit_count: Integer?
@@ -31,7 +31,7 @@ module Lithic
 
         def to_hash: -> {
           filters: Lithic::AuthRules::VelocityLimitParams::Filters,
-          period: Lithic::Models::AuthRules::VelocityLimitParams::period,
+          period: Lithic::Models::AuthRules::velocity_limit_params_period_window,
           scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
           limit_amount: Integer?,
           limit_count: Integer?
@@ -67,16 +67,6 @@ module Lithic
             include_countries: ::Array[String]?,
             include_mccs: ::Array[String]?
           }
-        end
-
-        type period =
-          Integer
-          | Lithic::Models::AuthRules::velocity_limit_params_period_window
-
-        module Period
-          extend Lithic::Internal::Type::Union
-
-          def self?.variants: -> ::Array[Lithic::Models::AuthRules::VelocityLimitParams::period]
         end
 
         type scope = :CARD | :ACCOUNT

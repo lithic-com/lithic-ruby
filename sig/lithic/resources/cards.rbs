@@ -19,7 +19,9 @@ module Lithic
         ?pin: String,
         ?product_id: String,
         ?replacement_account_token: String,
+        ?replacement_comment: String,
         ?replacement_for: String,
+        ?replacement_substatus: Lithic::Models::CardCreateParams::replacement_substatus,
         ?shipping_address: Lithic::ShippingAddress,
         ?shipping_method: Lithic::Models::CardCreateParams::shipping_method,
         ?spend_limit: Integer,
@@ -35,13 +37,16 @@ module Lithic
 
       def update: (
         String card_token,
+        ?comment: String,
         ?digital_card_art_token: String,
         ?memo: String,
+        ?network_program_token: String,
         ?pin: String,
         ?pin_status: Lithic::Models::CardUpdateParams::pin_status,
         ?spend_limit: Integer,
         ?spend_limit_duration: Lithic::Models::spend_limit_duration,
         ?state: Lithic::Models::CardUpdateParams::state,
+        ?substatus: Lithic::Models::CardUpdateParams::substatus,
         ?request_options: Lithic::request_opts
       ) -> Lithic::Card
 
