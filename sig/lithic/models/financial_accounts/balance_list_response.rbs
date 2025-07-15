@@ -62,7 +62,7 @@ module Lithic
           updated: Time
         }
 
-        type type_ = :ISSUING | :OPERATING | :RESERVE
+        type type_ = :ISSUING | :OPERATING | :RESERVE | :SECURITY
 
         module Type
           extend Lithic::Internal::Type::Enum
@@ -70,6 +70,7 @@ module Lithic
           ISSUING: :ISSUING
           OPERATING: :OPERATING
           RESERVE: :RESERVE
+          SECURITY: :SECURITY
 
           def self?.values: -> ::Array[Lithic::Models::FinancialAccounts::BalanceListResponse::type_]
         end

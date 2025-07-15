@@ -28,7 +28,12 @@ module Lithic
           returns(
             T.any(
               Integer,
-              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol
+              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindow::OrSymbol,
+              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject,
+              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay,
+              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek,
+              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth,
+              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear
             )
           )
         end
@@ -57,7 +62,12 @@ module Lithic
             period:
               T.any(
                 Integer,
-                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol
+                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindow::OrSymbol,
+                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject::OrHash,
+                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay::OrHash,
+                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek::OrHash,
+                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth::OrHash,
+                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear::OrHash
               ),
             scope: Lithic::AuthRules::VelocityLimitParams::Scope::OrSymbol,
             limit_amount: T.nilable(Integer),
@@ -90,7 +100,12 @@ module Lithic
               period:
                 T.any(
                   Integer,
-                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::OrSymbol
+                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindow::OrSymbol,
+                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject,
+                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay,
+                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek,
+                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth,
+                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear
                 ),
               scope: Lithic::AuthRules::VelocityLimitParams::Scope::OrSymbol,
               limit_amount: T.nilable(Integer),
@@ -169,28 +184,6 @@ module Lithic
             )
           end
           def to_hash
-          end
-        end
-
-        # The size of the trailing window to calculate Spend Velocity over in seconds. The
-        # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
-        module Period
-          extend Lithic::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Integer,
-                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TaggedSymbol
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[Lithic::AuthRules::VelocityLimitParams::Period::Variants]
-            )
-          end
-          def self.variants
           end
         end
 

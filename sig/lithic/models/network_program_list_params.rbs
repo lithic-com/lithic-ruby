@@ -1,0 +1,38 @@
+module Lithic
+  module Models
+    type network_program_list_params =
+      { begin_: Time, end_: Time, page_size: Integer }
+      & Lithic::Internal::Type::request_parameters
+
+    class NetworkProgramListParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_reader begin_: Time?
+
+      def begin_=: (Time) -> Time
+
+      attr_reader end_: Time?
+
+      def end_=: (Time) -> Time
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      def initialize: (
+        ?begin_: Time,
+        ?end_: Time,
+        ?page_size: Integer,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        begin_: Time,
+        end_: Time,
+        page_size: Integer,
+        request_options: Lithic::RequestOptions
+      }
+    end
+  end
+end

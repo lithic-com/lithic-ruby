@@ -93,6 +93,11 @@ module Lithic
             :RESERVE,
             Lithic::FinancialAccountListParams::Type::TaggedSymbol
           )
+        SECURITY =
+          T.let(
+            :SECURITY,
+            Lithic::FinancialAccountListParams::Type::TaggedSymbol
+          )
 
         sig do
           override.returns(

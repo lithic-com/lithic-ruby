@@ -372,20 +372,25 @@ module Lithic
       # @see Lithic::Models::Transaction#cardholder_authentication
       class CardholderAuthentication < Lithic::Internal::Type::BaseModel
         # @!attribute three_ds_version
+        #   @deprecated
+        #
         #   The 3DS version used for the authentication
         #
         #   @return [String, nil]
         required :three_ds_version, String, api_name: :"3ds_version", nil?: true
 
         # @!attribute acquirer_exemption
-        #   Whether an acquirer exemption applied to the transaction.
+        #   @deprecated
+        #
+        #   Whether an acquirer exemption applied to the transaction. Not currently
+        #   populated and will be removed in the future.
         #
         #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption]
         required :acquirer_exemption,
                  enum: -> { Lithic::Transaction::CardholderAuthentication::AcquirerExemption }
 
         # @!attribute authentication_result
-        #   Indicates what the outcome of the 3DS authentication process is.
+        #   Indicates the outcome of the 3DS authentication process.
         #
         #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult]
         required :authentication_result,
@@ -401,12 +406,10 @@ module Lithic
         #   Indicates whether chargeback liability shift applies to the transaction.
         #   Possible enum values:
         #
-        #       * `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D Secure flow, chargeback liability shift applies.
-        #
-        #       * `ACQUIRER_EXEMPTION`: The acquirer utilised an exemption to bypass Strong Customer Authentication (`transStatus = N`, or `transStatus = I`). Liability remains with the acquirer and in this case the `acquirer_exemption` field is expected to be not `NONE`.
-        #
-        #       * `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the merchant is liable.
-        #
+        #   - `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D
+        #     Secure flow, chargeback liability shift applies.
+        #   - `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the
+        #     merchant is liable.
         #   - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
         #     cryptography, possibly recurring. Chargeback liability shift to the issuer
         #     applies.
@@ -424,6 +427,8 @@ module Lithic
         required :three_ds_authentication_token, String, nil?: true
 
         # @!attribute verification_attempted
+        #   @deprecated
+        #
         #   Indicates whether a 3DS challenge flow was used, and if so, what the
         #   verification method was. (deprecated, use `authentication_result`)
         #
@@ -432,6 +437,8 @@ module Lithic
                  enum: -> { Lithic::Transaction::CardholderAuthentication::VerificationAttempted }
 
         # @!attribute verification_result
+        #   @deprecated
+        #
         #   Indicates whether a transaction is considered 3DS authenticated. (deprecated,
         #   use `authentication_result`)
         #
@@ -452,9 +459,9 @@ module Lithic
         #
         #   @param three_ds_version [String, nil] The 3DS version used for the authentication
         #
-        #   @param acquirer_exemption [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption] Whether an acquirer exemption applied to the transaction.
+        #   @param acquirer_exemption [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption] Whether an acquirer exemption applied to the transaction. Not currently populate
         #
-        #   @param authentication_result [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult] Indicates what the outcome of the 3DS authentication process is.
+        #   @param authentication_result [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult] Indicates the outcome of the 3DS authentication process.
         #
         #   @param decision_made_by [Symbol, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy] Indicates which party made the 3DS authentication decision.
         #
@@ -468,7 +475,10 @@ module Lithic
         #
         #   @param authentication_method [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationMethod] Indicates the method used to authenticate the cardholder.
 
-        # Whether an acquirer exemption applied to the transaction.
+        # @deprecated
+        #
+        # Whether an acquirer exemption applied to the transaction. Not currently
+        # populated and will be removed in the future.
         #
         # @see Lithic::Models::Transaction::CardholderAuthentication#acquirer_exemption
         module AcquirerExemption
@@ -487,7 +497,7 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # Indicates what the outcome of the 3DS authentication process is.
+        # Indicates the outcome of the 3DS authentication process.
         #
         # @see Lithic::Models::Transaction::CardholderAuthentication#authentication_result
         module AuthenticationResult
@@ -522,12 +532,10 @@ module Lithic
         # Indicates whether chargeback liability shift applies to the transaction.
         # Possible enum values:
         #
-        #     * `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D Secure flow, chargeback liability shift applies.
-        #
-        #     * `ACQUIRER_EXEMPTION`: The acquirer utilised an exemption to bypass Strong Customer Authentication (`transStatus = N`, or `transStatus = I`). Liability remains with the acquirer and in this case the `acquirer_exemption` field is expected to be not `NONE`.
-        #
-        #     * `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the merchant is liable.
-        #
+        # - `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D
+        #   Secure flow, chargeback liability shift applies.
+        # - `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the
+        #   merchant is liable.
         # - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
         #   cryptography, possibly recurring. Chargeback liability shift to the issuer
         #   applies.
@@ -537,14 +545,15 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           LIABILITY_SHIFT_3DS_AUTHENTICATED = :"3DS_AUTHENTICATED"
-          ACQUIRER_EXEMPTION = :ACQUIRER_EXEMPTION
-          NONE = :NONE
           TOKEN_AUTHENTICATED = :TOKEN_AUTHENTICATED
+          NONE = :NONE
 
           # @!method self.values
           #   @return [Array<Symbol>]
         end
 
+        # @deprecated
+        #
         # Indicates whether a 3DS challenge flow was used, and if so, what the
         # verification method was. (deprecated, use `authentication_result`)
         #
@@ -559,6 +568,8 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
+        # @deprecated
+        #
         # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
         # use `authentication_result`)
         #

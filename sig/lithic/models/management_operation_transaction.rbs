@@ -15,6 +15,7 @@ module Lithic
         status: Lithic::Models::ManagementOperationTransaction::status,
         transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries?,
         updated: Time,
+        external_resource: Lithic::ExternalResource?,
         user_defined_id: String
       }
 
@@ -45,6 +46,8 @@ module Lithic
 
       attr_accessor updated: Time
 
+      attr_accessor external_resource: Lithic::ExternalResource?
+
       attr_reader user_defined_id: String?
 
       def user_defined_id=: (String) -> String
@@ -63,6 +66,7 @@ module Lithic
         status: Lithic::Models::ManagementOperationTransaction::status,
         transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries?,
         updated: Time,
+        ?external_resource: Lithic::ExternalResource?,
         ?user_defined_id: String
       ) -> void
 
@@ -80,6 +84,7 @@ module Lithic
         status: Lithic::Models::ManagementOperationTransaction::status,
         transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries?,
         updated: Time,
+        external_resource: Lithic::ExternalResource?,
         user_defined_id: String
       }
 

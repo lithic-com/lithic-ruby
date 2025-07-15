@@ -128,6 +128,8 @@ module Lithic
           T.let(:OPERATING, Lithic::Balance::FinancialAccountType::TaggedSymbol)
         RESERVE =
           T.let(:RESERVE, Lithic::Balance::FinancialAccountType::TaggedSymbol)
+        SECURITY =
+          T.let(:SECURITY, Lithic::Balance::FinancialAccountType::TaggedSymbol)
 
         sig do
           override.returns(

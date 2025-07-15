@@ -17,6 +17,7 @@ class Lithic::Test::Resources::CardProgramsTest < Lithic::Test::ResourceTest
         name: String,
         pan_range_end: String,
         pan_range_start: String,
+        account_level_management_enabled: Lithic::Internal::Type::Boolean | nil,
         cardholder_currency: String | nil,
         settlement_currencies: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
@@ -44,6 +45,7 @@ class Lithic::Test::Resources::CardProgramsTest < Lithic::Test::ResourceTest
         name: String,
         pan_range_end: String,
         pan_range_start: String,
+        account_level_management_enabled: Lithic::Internal::Type::Boolean | nil,
         cardholder_currency: String | nil,
         settlement_currencies: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }

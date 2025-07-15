@@ -1,17 +1,222 @@
 module Lithic
   module Models
     module AuthRules
-      type velocity_limit_params_period_window = :DAY | :WEEK | :MONTH | :YEAR
+      type velocity_limit_params_period_window =
+        Integer
+        | Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::fixed_window
+        | Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject
+        | Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay
+        | Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek
+        | Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth
+        | Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear
 
       module VelocityLimitParamsPeriodWindow
-        extend Lithic::Internal::Type::Enum
+        extend Lithic::Internal::Type::Union
 
-        DAY: :DAY
-        WEEK: :WEEK
-        MONTH: :MONTH
-        YEAR: :YEAR
+        type fixed_window = :DAY | :WEEK | :MONTH | :YEAR
 
-        def self?.values: -> ::Array[Lithic::Models::AuthRules::velocity_limit_params_period_window]
+        module FixedWindow
+          extend Lithic::Internal::Type::Enum
+
+          DAY: :DAY
+          WEEK: :WEEK
+          MONTH: :MONTH
+          YEAR: :YEAR
+
+          def self?.values: -> ::Array[Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::fixed_window]
+        end
+
+        type trailing_window_object =
+          {
+            duration: Integer,
+            type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject::type_
+          }
+
+        class TrailingWindowObject < Lithic::Internal::Type::BaseModel
+          attr_reader duration: Integer?
+
+          def duration=: (Integer) -> Integer
+
+          attr_reader type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject::type_?
+
+          def type=: (
+            Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject::type_
+          ) -> Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject::type_
+
+          def initialize: (
+            ?duration: Integer,
+            ?type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject::type_
+          ) -> void
+
+          def to_hash: -> {
+            duration: Integer,
+            type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject::type_
+          }
+
+          type type_ = :CUSTOM
+
+          module Type
+            extend Lithic::Internal::Type::Enum
+
+            CUSTOM: :CUSTOM
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject::type_]
+          end
+        end
+
+        type fixed_window_day =
+          {
+            type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay::type_
+          }
+
+        class FixedWindowDay < Lithic::Internal::Type::BaseModel
+          attr_reader type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay::type_?
+
+          def type=: (
+            Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay::type_
+          ) -> Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay::type_
+
+          def initialize: (
+            ?type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay::type_
+          ) -> void
+
+          def to_hash: -> {
+            type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay::type_
+          }
+
+          type type_ = :DAY
+
+          module Type
+            extend Lithic::Internal::Type::Enum
+
+            DAY: :DAY
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay::type_]
+          end
+        end
+
+        type fixed_window_week =
+          {
+            day_of_week: Integer,
+            type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek::type_
+          }
+
+        class FixedWindowWeek < Lithic::Internal::Type::BaseModel
+          attr_reader day_of_week: Integer?
+
+          def day_of_week=: (Integer) -> Integer
+
+          attr_reader type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek::type_?
+
+          def type=: (
+            Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek::type_
+          ) -> Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek::type_
+
+          def initialize: (
+            ?day_of_week: Integer,
+            ?type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek::type_
+          ) -> void
+
+          def to_hash: -> {
+            day_of_week: Integer,
+            type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek::type_
+          }
+
+          type type_ = :WEEK
+
+          module Type
+            extend Lithic::Internal::Type::Enum
+
+            WEEK: :WEEK
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek::type_]
+          end
+        end
+
+        type fixed_window_month =
+          {
+            day_of_month: Integer,
+            type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth::type_
+          }
+
+        class FixedWindowMonth < Lithic::Internal::Type::BaseModel
+          attr_reader day_of_month: Integer?
+
+          def day_of_month=: (Integer) -> Integer
+
+          attr_reader type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth::type_?
+
+          def type=: (
+            Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth::type_
+          ) -> Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth::type_
+
+          def initialize: (
+            ?day_of_month: Integer,
+            ?type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth::type_
+          ) -> void
+
+          def to_hash: -> {
+            day_of_month: Integer,
+            type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth::type_
+          }
+
+          type type_ = :MONTH
+
+          module Type
+            extend Lithic::Internal::Type::Enum
+
+            MONTH: :MONTH
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth::type_]
+          end
+        end
+
+        type fixed_window_year =
+          {
+            day_of_month: Integer,
+            month: Integer,
+            type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear::type_
+          }
+
+        class FixedWindowYear < Lithic::Internal::Type::BaseModel
+          attr_reader day_of_month: Integer?
+
+          def day_of_month=: (Integer) -> Integer
+
+          attr_reader month: Integer?
+
+          def month=: (Integer) -> Integer
+
+          attr_reader type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear::type_?
+
+          def type=: (
+            Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear::type_
+          ) -> Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear::type_
+
+          def initialize: (
+            ?day_of_month: Integer,
+            ?month: Integer,
+            ?type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear::type_
+          ) -> void
+
+          def to_hash: -> {
+            day_of_month: Integer,
+            month: Integer,
+            type: Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear::type_
+          }
+
+          type type_ = :YEAR
+
+          module Type
+            extend Lithic::Internal::Type::Enum
+
+            YEAR: :YEAR
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear::type_]
+          end
+        end
+
+        def self?.variants: -> ::Array[Lithic::Models::AuthRules::velocity_limit_params_period_window]
       end
     end
   end

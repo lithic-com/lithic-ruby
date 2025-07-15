@@ -103,6 +103,7 @@ module Lithic
         ISSUING = :ISSUING
         OPERATING = :OPERATING
         RESERVE = :RESERVE
+        SECURITY = :SECURITY
 
         # @!method self.values
         #   @return [Array<Symbol>]

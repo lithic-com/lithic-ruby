@@ -56,14 +56,17 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         type: Lithic::NonPCICard::Type,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
+        comment: String | nil,
         digital_card_art_token: String | nil,
         exp_month: String | nil,
         exp_year: String | nil,
         hostname: String | nil,
         memo: String | nil,
+        network_program_token: String | nil,
         pending_commands: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         product_id: String | nil,
-        replacement_for: String | nil
+        replacement_for: String | nil,
+        substatus: Lithic::NonPCICard::Substatus | nil
       }
     end
   end

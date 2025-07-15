@@ -123,6 +123,12 @@ module Lithic
       #   @return [String, nil]
       optional :cardholder_currency, String
 
+      # @!attribute comment
+      #   Additional context or information related to the card.
+      #
+      #   @return [String, nil]
+      optional :comment, String
+
       # @!attribute digital_card_art_token
       #   Specifies the digital card art to be displayed in the user's digital wallet
       #   after tokenization. This artwork must be approved by Mastercard and configured
@@ -155,6 +161,14 @@ module Lithic
       #   @return [String, nil]
       optional :memo, String
 
+      # @!attribute network_program_token
+      #   Globally unique identifier for the card's network program. Null if the card is
+      #   not associated with a network program. Currently applicable to Visa cards
+      #   participating in Account Level Management only
+      #
+      #   @return [String, nil]
+      optional :network_program_token, String, nil?: true
+
       # @!attribute pending_commands
       #   Indicates if there are offline PIN changes pending card interaction with an
       #   offline PIN terminal. Possible commands are: CHANGE_PIN, UNBLOCK_PIN. Applicable
@@ -178,7 +192,32 @@ module Lithic
       #   @return [String, nil]
       optional :replacement_for, String, nil?: true
 
-      # @!method initialize(token:, account_token:, card_program_token:, created:, funding:, last_four:, pin_status:, spend_limit:, spend_limit_duration:, state:, type:, auth_rule_tokens: nil, cardholder_currency: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, hostname: nil, memo: nil, pending_commands: nil, product_id: nil, replacement_for: nil)
+      # @!attribute substatus
+      #   Card state substatus values: _ `LOST` - The physical card is no longer in the
+      #   cardholder's possession due to being lost or never received by the cardholder. _
+      #   `COMPROMISED` - Card information has been exposed, potentially leading to
+      #   unauthorized access. This may involve physical card theft, cloning, or online
+      #   data breaches. _ `DAMAGED` - The physical card is not functioning properly, such
+      #   as having chip failures or a demagnetized magnetic stripe. _
+      #   `END_USER_REQUEST` - The cardholder requested the closure of the card for
+      #   reasons unrelated to fraud or damage, such as switching to a different product
+      #   or closing the account. _ `ISSUER_REQUEST` - The issuer closed the card for
+      #   reasons unrelated to fraud or damage, such as account inactivity, product or
+      #   policy changes, or technology upgrades. _ `NOT_ACTIVE` - The card hasn’t had any
+      #   transaction activity for a specified period, applicable to statuses like
+      #   `PAUSED` or `CLOSED`. _ `SUSPICIOUS_ACTIVITY` - The card has one or more
+      #   suspicious transactions or activities that require review. This can involve
+      #   prompting the cardholder to confirm legitimate use or report confirmed fraud. _
+      #   `INTERNAL_REVIEW` - The card is temporarily paused pending further internal
+      #   review. _ `EXPIRED` - The card has expired and has been closed without being
+      #   reissued. _ `UNDELIVERABLE` - The card cannot be delivered to the cardholder and
+      #   has been returned. \* `OTHER` - The reason for the status does not fall into any
+      #   of the above categories. A comment can be provided to specify the reason.
+      #
+      #   @return [Symbol, Lithic::Models::NonPCICard::Substatus, nil]
+      optional :substatus, enum: -> { Lithic::NonPCICard::Substatus }
+
+      # @!method initialize(token:, account_token:, card_program_token:, created:, funding:, last_four:, pin_status:, spend_limit:, spend_limit_duration:, state:, type:, auth_rule_tokens: nil, cardholder_currency: nil, comment: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, hostname: nil, memo: nil, network_program_token: nil, pending_commands: nil, product_id: nil, replacement_for: nil, substatus: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::NonPCICard} for more details.
       #
@@ -212,6 +251,8 @@ module Lithic
       #
       #   @param cardholder_currency [String] 3-character alphabetic ISO 4217 code for the currency of the cardholder.
       #
+      #   @param comment [String] Additional context or information related to the card.
+      #
       #   @param digital_card_art_token [String] Specifies the digital card art to be displayed in the user's digital wallet afte
       #
       #   @param exp_month [String] Two digit (MM) expiry month.
@@ -222,11 +263,16 @@ module Lithic
       #
       #   @param memo [String] Friendly name to identify the card.
       #
+      #   @param network_program_token [String, nil] Globally unique identifier for the card's network program. Null if the card is n
+      #
       #   @param pending_commands [Array<String>] Indicates if there are offline PIN changes pending card interaction with an offl
       #
       #   @param product_id [String] Only applicable to cards of type `PHYSICAL`. This must be configured with Lithic
       #
       #   @param replacement_for [String, nil] If the card is a replacement for another card, the globally unique identifier fo
+      #
+      #   @param substatus [Symbol, Lithic::Models::NonPCICard::Substatus] Card state substatus values: \* `LOST` - The physical card is no longer in the
+      #   ca
 
       # @see Lithic::Models::NonPCICard#funding
       class Funding < Lithic::Internal::Type::BaseModel
@@ -397,6 +443,47 @@ module Lithic
         VIRTUAL = :VIRTUAL
         UNLOCKED = :UNLOCKED
         DIGITAL_WALLET = :DIGITAL_WALLET
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # Card state substatus values: _ `LOST` - The physical card is no longer in the
+      # cardholder's possession due to being lost or never received by the cardholder. _
+      # `COMPROMISED` - Card information has been exposed, potentially leading to
+      # unauthorized access. This may involve physical card theft, cloning, or online
+      # data breaches. _ `DAMAGED` - The physical card is not functioning properly, such
+      # as having chip failures or a demagnetized magnetic stripe. _
+      # `END_USER_REQUEST` - The cardholder requested the closure of the card for
+      # reasons unrelated to fraud or damage, such as switching to a different product
+      # or closing the account. _ `ISSUER_REQUEST` - The issuer closed the card for
+      # reasons unrelated to fraud or damage, such as account inactivity, product or
+      # policy changes, or technology upgrades. _ `NOT_ACTIVE` - The card hasn’t had any
+      # transaction activity for a specified period, applicable to statuses like
+      # `PAUSED` or `CLOSED`. _ `SUSPICIOUS_ACTIVITY` - The card has one or more
+      # suspicious transactions or activities that require review. This can involve
+      # prompting the cardholder to confirm legitimate use or report confirmed fraud. _
+      # `INTERNAL_REVIEW` - The card is temporarily paused pending further internal
+      # review. _ `EXPIRED` - The card has expired and has been closed without being
+      # reissued. _ `UNDELIVERABLE` - The card cannot be delivered to the cardholder and
+      # has been returned. \* `OTHER` - The reason for the status does not fall into any
+      # of the above categories. A comment can be provided to specify the reason.
+      #
+      # @see Lithic::Models::NonPCICard#substatus
+      module Substatus
+        extend Lithic::Internal::Type::Enum
+
+        LOST = :LOST
+        COMPROMISED = :COMPROMISED
+        DAMAGED = :DAMAGED
+        END_USER_REQUEST = :END_USER_REQUEST
+        ISSUER_REQUEST = :ISSUER_REQUEST
+        NOT_ACTIVE = :NOT_ACTIVE
+        SUSPICIOUS_ACTIVITY = :SUSPICIOUS_ACTIVITY
+        INTERNAL_REVIEW = :INTERNAL_REVIEW
+        EXPIRED = :EXPIRED
+        UNDELIVERABLE = :UNDELIVERABLE
+        OTHER = :OTHER
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -103,6 +103,9 @@ module Lithic
     sig { returns(Lithic::Resources::Fraud) }
     attr_reader :fraud
 
+    sig { returns(Lithic::Resources::NetworkPrograms) }
+    attr_reader :network_programs
+
     # Status of api
     sig do
       params(request_options: Lithic::RequestOptions::OrHash).returns(

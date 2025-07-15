@@ -66,13 +66,51 @@ module Lithic
       #   @return [String, nil]
       optional :cardholder_currency, String
 
+      # @!attribute comment
+      #   Additional context or information related to the account.
+      #
+      #   @return [String, nil]
+      optional :comment, String
+
+      # @!attribute substatus
+      #   Account state substatus values:
+      #
+      #   - `FRAUD_IDENTIFIED` - The account has been recognized as being created or used
+      #     with stolen or fabricated identity information, encompassing both true
+      #     identity theft and synthetic identities.
+      #   - `SUSPICIOUS_ACTIVITY` - The account has exhibited suspicious behavior, such as
+      #     unauthorized access or fraudulent transactions, necessitating further
+      #     investigation.
+      #   - `RISK_VIOLATION` - The account has been involved in deliberate misuse by the
+      #     legitimate account holder. Examples include disputing valid transactions
+      #     without cause, falsely claiming non-receipt of goods, or engaging in
+      #     intentional bust-out schemes to exploit account services.
+      #   - `END_USER_REQUEST` - The account holder has voluntarily requested the closure
+      #     of the account for personal reasons. This encompasses situations such as
+      #     bankruptcy, other financial considerations, or the account holder's death.
+      #   - `ISSUER_REQUEST` - The issuer has initiated the closure of the account due to
+      #     business strategy, risk management, inactivity, product changes, regulatory
+      #     concerns, or violations of terms and conditions.
+      #   - `NOT_ACTIVE` - The account has not had any transactions or payment activity
+      #     within a specified period. This status applies to accounts that are paused or
+      #     closed due to inactivity.
+      #   - `INTERNAL_REVIEW` - The account is temporarily paused pending further internal
+      #     review. In future implementations, this status may prevent clients from
+      #     activating the account via APIs until the review is completed.
+      #   - `OTHER` - The reason for the account's current status does not fall into any
+      #     of the above categories. A comment should be provided to specify the
+      #     particular reason.
+      #
+      #   @return [Symbol, Lithic::Models::Account::Substatus, nil]
+      optional :substatus, enum: -> { Lithic::Account::Substatus }
+
       # @!attribute verification_address
       #   @deprecated
       #
       #   @return [Lithic::Models::Account::VerificationAddress, nil]
       optional :verification_address, -> { Lithic::Account::VerificationAddress }
 
-      # @!method initialize(token:, created:, spend_limit:, state:, account_holder: nil, auth_rule_tokens: nil, cardholder_currency: nil, verification_address: nil)
+      # @!method initialize(token:, created:, spend_limit:, state:, account_holder: nil, auth_rule_tokens: nil, cardholder_currency: nil, comment: nil, substatus: nil, verification_address: nil)
       #   Some parameter documentations has been truncated, see {Lithic::Models::Account}
       #   for more details.
       #
@@ -89,6 +127,10 @@ module Lithic
       #   @param auth_rule_tokens [Array<String>] List of identifiers for the Auth Rule(s) that are applied on the account.
       #
       #   @param cardholder_currency [String] 3-character alphabetic ISO 4217 code for the currency of the cardholder.
+      #
+      #   @param comment [String] Additional context or information related to the account.
+      #
+      #   @param substatus [Symbol, Lithic::Models::Account::Substatus] Account state substatus values:
       #
       #   @param verification_address [Lithic::Models::Account::VerificationAddress]
 
@@ -189,6 +231,51 @@ module Lithic
         #   @param email [String] Email address.
         #
         #   @param phone_number [String] Phone number of the individual.
+      end
+
+      # Account state substatus values:
+      #
+      # - `FRAUD_IDENTIFIED` - The account has been recognized as being created or used
+      #   with stolen or fabricated identity information, encompassing both true
+      #   identity theft and synthetic identities.
+      # - `SUSPICIOUS_ACTIVITY` - The account has exhibited suspicious behavior, such as
+      #   unauthorized access or fraudulent transactions, necessitating further
+      #   investigation.
+      # - `RISK_VIOLATION` - The account has been involved in deliberate misuse by the
+      #   legitimate account holder. Examples include disputing valid transactions
+      #   without cause, falsely claiming non-receipt of goods, or engaging in
+      #   intentional bust-out schemes to exploit account services.
+      # - `END_USER_REQUEST` - The account holder has voluntarily requested the closure
+      #   of the account for personal reasons. This encompasses situations such as
+      #   bankruptcy, other financial considerations, or the account holder's death.
+      # - `ISSUER_REQUEST` - The issuer has initiated the closure of the account due to
+      #   business strategy, risk management, inactivity, product changes, regulatory
+      #   concerns, or violations of terms and conditions.
+      # - `NOT_ACTIVE` - The account has not had any transactions or payment activity
+      #   within a specified period. This status applies to accounts that are paused or
+      #   closed due to inactivity.
+      # - `INTERNAL_REVIEW` - The account is temporarily paused pending further internal
+      #   review. In future implementations, this status may prevent clients from
+      #   activating the account via APIs until the review is completed.
+      # - `OTHER` - The reason for the account's current status does not fall into any
+      #   of the above categories. A comment should be provided to specify the
+      #   particular reason.
+      #
+      # @see Lithic::Models::Account#substatus
+      module Substatus
+        extend Lithic::Internal::Type::Enum
+
+        FRAUD_IDENTIFIED = :FRAUD_IDENTIFIED
+        SUSPICIOUS_ACTIVITY = :SUSPICIOUS_ACTIVITY
+        RISK_VIOLATION = :RISK_VIOLATION
+        END_USER_REQUEST = :END_USER_REQUEST
+        ISSUER_REQUEST = :ISSUER_REQUEST
+        NOT_ACTIVE = :NOT_ACTIVE
+        INTERNAL_REVIEW = :INTERNAL_REVIEW
+        OTHER = :OTHER
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @deprecated

@@ -26,7 +26,7 @@ module Lithic
         request_options: Lithic::RequestOptions
       }
 
-      type financial_account_type = :ISSUING | :OPERATING | :RESERVE
+      type financial_account_type = :ISSUING | :OPERATING | :RESERVE | :SECURITY
 
       module FinancialAccountType
         extend Lithic::Internal::Type::Enum
@@ -34,6 +34,7 @@ module Lithic
         ISSUING: :ISSUING
         OPERATING: :OPERATING
         RESERVE: :RESERVE
+        SECURITY: :SECURITY
 
         def self?.values: -> ::Array[Lithic::Models::AggregateBalanceListParams::financial_account_type]
       end

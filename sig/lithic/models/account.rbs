@@ -9,6 +9,8 @@ module Lithic
         account_holder: Lithic::Account::AccountHolder,
         auth_rule_tokens: ::Array[String],
         cardholder_currency: String,
+        comment: String,
+        substatus: Lithic::Models::Account::substatus,
         verification_address: Lithic::Account::VerificationAddress
       }
 
@@ -35,6 +37,16 @@ module Lithic
 
       def cardholder_currency=: (String) -> String
 
+      attr_reader comment: String?
+
+      def comment=: (String) -> String
+
+      attr_reader substatus: Lithic::Models::Account::substatus?
+
+      def substatus=: (
+        Lithic::Models::Account::substatus
+      ) -> Lithic::Models::Account::substatus
+
       attr_reader verification_address: Lithic::Account::VerificationAddress?
 
       def verification_address=: (
@@ -49,6 +61,8 @@ module Lithic
         ?account_holder: Lithic::Account::AccountHolder,
         ?auth_rule_tokens: ::Array[String],
         ?cardholder_currency: String,
+        ?comment: String,
+        ?substatus: Lithic::Models::Account::substatus,
         ?verification_address: Lithic::Account::VerificationAddress
       ) -> void
 
@@ -60,6 +74,8 @@ module Lithic
         account_holder: Lithic::Account::AccountHolder,
         auth_rule_tokens: ::Array[String],
         cardholder_currency: String,
+        comment: String,
+        substatus: Lithic::Models::Account::substatus,
         verification_address: Lithic::Account::VerificationAddress
       }
 
@@ -123,6 +139,31 @@ module Lithic
           email: String,
           phone_number: String
         }
+      end
+
+      type substatus =
+        :FRAUD_IDENTIFIED
+        | :SUSPICIOUS_ACTIVITY
+        | :RISK_VIOLATION
+        | :END_USER_REQUEST
+        | :ISSUER_REQUEST
+        | :NOT_ACTIVE
+        | :INTERNAL_REVIEW
+        | :OTHER
+
+      module Substatus
+        extend Lithic::Internal::Type::Enum
+
+        FRAUD_IDENTIFIED: :FRAUD_IDENTIFIED
+        SUSPICIOUS_ACTIVITY: :SUSPICIOUS_ACTIVITY
+        RISK_VIOLATION: :RISK_VIOLATION
+        END_USER_REQUEST: :END_USER_REQUEST
+        ISSUER_REQUEST: :ISSUER_REQUEST
+        NOT_ACTIVE: :NOT_ACTIVE
+        INTERNAL_REVIEW: :INTERNAL_REVIEW
+        OTHER: :OTHER
+
+        def self?.values: -> ::Array[Lithic::Models::Account::substatus]
       end
 
       type verification_address =

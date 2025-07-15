@@ -2,10 +2,12 @@ module Lithic
   module Models
     type account_update_params =
       {
+        comment: String,
         daily_spend_limit: Integer,
         lifetime_spend_limit: Integer,
         monthly_spend_limit: Integer,
         state: Lithic::Models::AccountUpdateParams::state,
+        substatus: Lithic::Models::AccountUpdateParams::substatus,
         verification_address: Lithic::AccountUpdateParams::VerificationAddress
       }
       & Lithic::Internal::Type::request_parameters
@@ -13,6 +15,10 @@ module Lithic
     class AccountUpdateParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_reader comment: String?
+
+      def comment=: (String) -> String
 
       attr_reader daily_spend_limit: Integer?
 
@@ -32,6 +38,12 @@ module Lithic
         Lithic::Models::AccountUpdateParams::state
       ) -> Lithic::Models::AccountUpdateParams::state
 
+      attr_reader substatus: Lithic::Models::AccountUpdateParams::substatus?
+
+      def substatus=: (
+        Lithic::Models::AccountUpdateParams::substatus
+      ) -> Lithic::Models::AccountUpdateParams::substatus
+
       attr_reader verification_address: Lithic::AccountUpdateParams::VerificationAddress?
 
       def verification_address=: (
@@ -39,19 +51,23 @@ module Lithic
       ) -> Lithic::AccountUpdateParams::VerificationAddress
 
       def initialize: (
+        ?comment: String,
         ?daily_spend_limit: Integer,
         ?lifetime_spend_limit: Integer,
         ?monthly_spend_limit: Integer,
         ?state: Lithic::Models::AccountUpdateParams::state,
+        ?substatus: Lithic::Models::AccountUpdateParams::substatus,
         ?verification_address: Lithic::AccountUpdateParams::VerificationAddress,
         ?request_options: Lithic::request_opts
       ) -> void
 
       def to_hash: -> {
+        comment: String,
         daily_spend_limit: Integer,
         lifetime_spend_limit: Integer,
         monthly_spend_limit: Integer,
         state: Lithic::Models::AccountUpdateParams::state,
+        substatus: Lithic::Models::AccountUpdateParams::substatus,
         verification_address: Lithic::AccountUpdateParams::VerificationAddress,
         request_options: Lithic::RequestOptions
       }
@@ -66,6 +82,31 @@ module Lithic
         CLOSED: :CLOSED
 
         def self?.values: -> ::Array[Lithic::Models::AccountUpdateParams::state]
+      end
+
+      type substatus =
+        :FRAUD_IDENTIFIED
+        | :SUSPICIOUS_ACTIVITY
+        | :RISK_VIOLATION
+        | :END_USER_REQUEST
+        | :ISSUER_REQUEST
+        | :NOT_ACTIVE
+        | :INTERNAL_REVIEW
+        | :OTHER
+
+      module Substatus
+        extend Lithic::Internal::Type::Enum
+
+        FRAUD_IDENTIFIED: :FRAUD_IDENTIFIED
+        SUSPICIOUS_ACTIVITY: :SUSPICIOUS_ACTIVITY
+        RISK_VIOLATION: :RISK_VIOLATION
+        END_USER_REQUEST: :END_USER_REQUEST
+        ISSUER_REQUEST: :ISSUER_REQUEST
+        NOT_ACTIVE: :NOT_ACTIVE
+        INTERNAL_REVIEW: :INTERNAL_REVIEW
+        OTHER: :OTHER
+
+        def self?.values: -> ::Array[Lithic::Models::AccountUpdateParams::substatus]
       end
 
       type verification_address =
