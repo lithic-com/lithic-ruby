@@ -363,18 +363,14 @@ module Lithic
         end
 
         type liability_shift =
-          :"3DS_AUTHENTICATED"
-          | :ACQUIRER_EXEMPTION
-          | :NONE
-          | :TOKEN_AUTHENTICATED
+          :"3DS_AUTHENTICATED" | :TOKEN_AUTHENTICATED | :NONE
 
         module LiabilityShift
           extend Lithic::Internal::Type::Enum
 
           LIABILITY_SHIFT_3DS_AUTHENTICATED: :"3DS_AUTHENTICATED"
-          ACQUIRER_EXEMPTION: :ACQUIRER_EXEMPTION
-          NONE: :NONE
           TOKEN_AUTHENTICATED: :TOKEN_AUTHENTICATED
+          NONE: :NONE
 
           def self?.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::liability_shift]
         end

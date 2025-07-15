@@ -1,0 +1,32 @@
+module Lithic
+  module Models
+    type external_resource =
+      {
+        external_resource_token: String,
+        external_resource_type: Lithic::Models::external_resource_type,
+        external_resource_sub_token: String
+      }
+
+    class ExternalResource < Lithic::Internal::Type::BaseModel
+      attr_accessor external_resource_token: String
+
+      attr_accessor external_resource_type: Lithic::Models::external_resource_type
+
+      attr_reader external_resource_sub_token: String?
+
+      def external_resource_sub_token=: (String) -> String
+
+      def initialize: (
+        external_resource_token: String,
+        external_resource_type: Lithic::Models::external_resource_type,
+        ?external_resource_sub_token: String
+      ) -> void
+
+      def to_hash: -> {
+        external_resource_token: String,
+        external_resource_type: Lithic::Models::external_resource_type,
+        external_resource_sub_token: String
+      }
+    end
+  end
+end

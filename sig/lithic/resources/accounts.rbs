@@ -8,10 +8,12 @@ module Lithic
 
       def update: (
         String account_token,
+        ?comment: String,
         ?daily_spend_limit: Integer,
         ?lifetime_spend_limit: Integer,
         ?monthly_spend_limit: Integer,
         ?state: Lithic::Models::AccountUpdateParams::state,
+        ?substatus: Lithic::Models::AccountUpdateParams::substatus,
         ?verification_address: Lithic::AccountUpdateParams::VerificationAddress,
         ?request_options: Lithic::request_opts
       ) -> Lithic::Account

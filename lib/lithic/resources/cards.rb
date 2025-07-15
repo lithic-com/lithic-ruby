@@ -18,7 +18,7 @@ module Lithic
       # Create a new virtual or physical card. Parameters `shipping_address` and
       # `product_id` only apply to physical cards.
       #
-      # @overload create(type:, account_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_for: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
+      # @overload create(type:, account_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_comment: nil, replacement_for: nil, replacement_substatus: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
       #
       # @param type [Symbol, Lithic::Models::CardCreateParams::Type] Card types:
       #
@@ -42,7 +42,11 @@ module Lithic
       #
       # @param replacement_account_token [String] Restricted field limited to select use cases. Lithic will reach out directly if
       #
+      # @param replacement_comment [String] Additional context or information related to the card that this card will replac
+      #
       # @param replacement_for [String] Globally unique identifier for the card that this card will replace. If the card
+      #
+      # @param replacement_substatus [Symbol, Lithic::Models::CardCreateParams::ReplacementSubstatus] Card state substatus values for the card that this card will replace:
       #
       # @param shipping_address [Lithic::Models::ShippingAddress]
       #
@@ -92,13 +96,17 @@ module Lithic
       # _Note: setting a card to a `CLOSED` state is a final action that cannot be
       # undone._
       #
-      # @overload update(card_token, digital_card_art_token: nil, memo: nil, pin: nil, pin_status: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
+      # @overload update(card_token, comment: nil, digital_card_art_token: nil, memo: nil, network_program_token: nil, pin: nil, pin_status: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, substatus: nil, request_options: {})
       #
       # @param card_token [String]
+      #
+      # @param comment [String] Additional context or information related to the card.
       #
       # @param digital_card_art_token [String] Specifies the digital card art to be displayed in the user’s digital wallet afte
       #
       # @param memo [String] Friendly name to identify the card.
+      #
+      # @param network_program_token [String] Globally unique identifier for the card's network program. Currently applicable
       #
       # @param pin [String] Encrypted PIN block (in base64). Only applies to cards of type `PHYSICAL` and `V
       #
@@ -109,6 +117,8 @@ module Lithic
       # @param spend_limit_duration [Symbol, Lithic::Models::SpendLimitDuration] Spend limit duration values:
       #
       # @param state [Symbol, Lithic::Models::CardUpdateParams::State] Card state values:
+      #
+      # @param substatus [Symbol, Lithic::Models::CardUpdateParams::Substatus] Card state substatus values:
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #

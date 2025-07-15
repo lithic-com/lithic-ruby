@@ -73,25 +73,46 @@ module Lithic
       #   @return [Time]
       required :updated, Time
 
+      # @!attribute external_resource
+      #   External resource associated with the management operation
+      #
+      #   @return [Lithic::Models::ExternalResource, nil]
+      optional :external_resource, -> { Lithic::ExternalResource }, nil?: true
+
       # @!attribute user_defined_id
       #
       #   @return [String, nil]
       optional :user_defined_id, String
 
-      # @!method initialize(token:, category:, created:, currency:, direction:, events:, financial_account_token:, pending_amount:, result:, settled_amount:, status:, transaction_series:, updated:, user_defined_id: nil)
+      # @!method initialize(token:, category:, created:, currency:, direction:, events:, financial_account_token:, pending_amount:, result:, settled_amount:, status:, transaction_series:, updated:, external_resource: nil, user_defined_id: nil)
       #   @param token [String]
+      #
       #   @param category [Symbol, Lithic::Models::ManagementOperationTransaction::Category]
+      #
       #   @param created [Time]
+      #
       #   @param currency [String]
+      #
       #   @param direction [Symbol, Lithic::Models::ManagementOperationTransaction::Direction]
+      #
       #   @param events [Array<Lithic::Models::ManagementOperationTransaction::Event>]
+      #
       #   @param financial_account_token [String]
+      #
       #   @param pending_amount [Integer]
+      #
       #   @param result [Symbol, Lithic::Models::ManagementOperationTransaction::Result]
+      #
       #   @param settled_amount [Integer]
+      #
       #   @param status [Symbol, Lithic::Models::ManagementOperationTransaction::Status]
+      #
       #   @param transaction_series [Lithic::Models::ManagementOperationTransaction::TransactionSeries, nil]
+      #
       #   @param updated [Time]
+      #
+      #   @param external_resource [Lithic::Models::ExternalResource, nil] External resource associated with the management operation
+      #
       #   @param user_defined_id [String]
 
       # @see Lithic::Models::ManagementOperationTransaction#category

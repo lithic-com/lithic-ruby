@@ -523,7 +523,8 @@ module Lithic
         sig { returns(T.nilable(String)) }
         attr_accessor :three_ds_version
 
-        # Whether an acquirer exemption applied to the transaction.
+        # Whether an acquirer exemption applied to the transaction. Not currently
+        # populated and will be removed in the future.
         sig do
           returns(
             Lithic::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
@@ -531,7 +532,7 @@ module Lithic
         end
         attr_accessor :acquirer_exemption
 
-        # Indicates what the outcome of the 3DS authentication process is.
+        # Indicates the outcome of the 3DS authentication process.
         sig do
           returns(
             Lithic::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol
@@ -550,12 +551,10 @@ module Lithic
         # Indicates whether chargeback liability shift applies to the transaction.
         # Possible enum values:
         #
-        #     * `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D Secure flow, chargeback liability shift applies.
-        #
-        #     * `ACQUIRER_EXEMPTION`: The acquirer utilised an exemption to bypass Strong Customer Authentication (`transStatus = N`, or `transStatus = I`). Liability remains with the acquirer and in this case the `acquirer_exemption` field is expected to be not `NONE`.
-        #
-        #     * `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the merchant is liable.
-        #
+        # - `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D
+        #   Secure flow, chargeback liability shift applies.
+        # - `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the
+        #   merchant is liable.
         # - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
         #   cryptography, possibly recurring. Chargeback liability shift to the issuer
         #   applies.
@@ -632,21 +631,20 @@ module Lithic
         def self.new(
           # The 3DS version used for the authentication
           three_ds_version:,
-          # Whether an acquirer exemption applied to the transaction.
+          # Whether an acquirer exemption applied to the transaction. Not currently
+          # populated and will be removed in the future.
           acquirer_exemption:,
-          # Indicates what the outcome of the 3DS authentication process is.
+          # Indicates the outcome of the 3DS authentication process.
           authentication_result:,
           # Indicates which party made the 3DS authentication decision.
           decision_made_by:,
           # Indicates whether chargeback liability shift applies to the transaction.
           # Possible enum values:
           #
-          #     * `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D Secure flow, chargeback liability shift applies.
-          #
-          #     * `ACQUIRER_EXEMPTION`: The acquirer utilised an exemption to bypass Strong Customer Authentication (`transStatus = N`, or `transStatus = I`). Liability remains with the acquirer and in this case the `acquirer_exemption` field is expected to be not `NONE`.
-          #
-          #     * `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the merchant is liable.
-          #
+          # - `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D
+          #   Secure flow, chargeback liability shift applies.
+          # - `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the
+          #   merchant is liable.
           # - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
           #   cryptography, possibly recurring. Chargeback liability shift to the issuer
           #   applies.
@@ -692,7 +690,8 @@ module Lithic
         def to_hash
         end
 
-        # Whether an acquirer exemption applied to the transaction.
+        # Whether an acquirer exemption applied to the transaction. Not currently
+        # populated and will be removed in the future.
         module AcquirerExemption
           extend Lithic::Internal::Type::Enum
 
@@ -757,7 +756,7 @@ module Lithic
           end
         end
 
-        # Indicates what the outcome of the 3DS authentication process is.
+        # Indicates the outcome of the 3DS authentication process.
         module AuthenticationResult
           extend Lithic::Internal::Type::Enum
 
@@ -860,12 +859,10 @@ module Lithic
         # Indicates whether chargeback liability shift applies to the transaction.
         # Possible enum values:
         #
-        #     * `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D Secure flow, chargeback liability shift applies.
-        #
-        #     * `ACQUIRER_EXEMPTION`: The acquirer utilised an exemption to bypass Strong Customer Authentication (`transStatus = N`, or `transStatus = I`). Liability remains with the acquirer and in this case the `acquirer_exemption` field is expected to be not `NONE`.
-        #
-        #     * `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the merchant is liable.
-        #
+        # - `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D
+        #   Secure flow, chargeback liability shift applies.
+        # - `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the
+        #   merchant is liable.
         # - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
         #   cryptography, possibly recurring. Chargeback liability shift to the issuer
         #   applies.
@@ -886,19 +883,14 @@ module Lithic
               :"3DS_AUTHENTICATED",
               Lithic::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
             )
-          ACQUIRER_EXEMPTION =
+          TOKEN_AUTHENTICATED =
             T.let(
-              :ACQUIRER_EXEMPTION,
+              :TOKEN_AUTHENTICATED,
               Lithic::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
             )
           NONE =
             T.let(
               :NONE,
-              Lithic::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
-            )
-          TOKEN_AUTHENTICATED =
-            T.let(
-              :TOKEN_AUTHENTICATED,
               Lithic::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
             )
 

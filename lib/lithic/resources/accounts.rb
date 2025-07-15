@@ -30,9 +30,11 @@ module Lithic
       # accounts that are part of the program managed by this API key. Accounts that are
       # in the `PAUSED` state will not be able to transact or create new cards.
       #
-      # @overload update(account_token, daily_spend_limit: nil, lifetime_spend_limit: nil, monthly_spend_limit: nil, state: nil, verification_address: nil, request_options: {})
+      # @overload update(account_token, comment: nil, daily_spend_limit: nil, lifetime_spend_limit: nil, monthly_spend_limit: nil, state: nil, substatus: nil, verification_address: nil, request_options: {})
       #
       # @param account_token [String] Globally unique identifier for account.
+      #
+      # @param comment [String] Additional context or information related to the account.
       #
       # @param daily_spend_limit [Integer] Amount (in cents) for the account's daily spend limit (e.g. 100000 would be a $1
       #
@@ -41,6 +43,8 @@ module Lithic
       # @param monthly_spend_limit [Integer] Amount (in cents) for the account's monthly spend limit (e.g. 100000 would be a
       #
       # @param state [Symbol, Lithic::Models::AccountUpdateParams::State] Account states.
+      #
+      # @param substatus [Symbol, Lithic::Models::AccountUpdateParams::Substatus] Account state substatus values:
       #
       # @param verification_address [Lithic::Models::AccountUpdateParams::VerificationAddress] Address used during Address Verification Service (AVS) checks during transaction
       #

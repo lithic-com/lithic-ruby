@@ -16,6 +16,8 @@ module Lithic
           financial_account_token: String,
           token: String,
           memo: String,
+          on_closed_account:
+            Lithic::ManagementOperationCreateParams::OnClosedAccount::OrSymbol,
           subtype: String,
           user_defined_id: String,
           request_options: Lithic::RequestOptions::OrHash
@@ -30,6 +32,8 @@ module Lithic
         financial_account_token:,
         token: nil,
         memo: nil,
+        # What to do if the financial account is closed when posting an operation
+        on_closed_account: nil,
         subtype: nil,
         user_defined_id: nil,
         request_options: {}

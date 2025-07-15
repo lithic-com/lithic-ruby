@@ -19,6 +19,8 @@ class Lithic::Test::Resources::AccountsTest < Lithic::Test::ResourceTest
         account_holder: Lithic::Account::AccountHolder | nil,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
+        comment: String | nil,
+        substatus: Lithic::Account::Substatus | nil,
         verification_address: Lithic::Account::VerificationAddress | nil
       }
     end
@@ -42,6 +44,8 @@ class Lithic::Test::Resources::AccountsTest < Lithic::Test::ResourceTest
         account_holder: Lithic::Account::AccountHolder | nil,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
+        comment: String | nil,
+        substatus: Lithic::Account::Substatus | nil,
         verification_address: Lithic::Account::VerificationAddress | nil
       }
     end
@@ -70,6 +74,8 @@ class Lithic::Test::Resources::AccountsTest < Lithic::Test::ResourceTest
         account_holder: Lithic::Account::AccountHolder | nil,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
         cardholder_currency: String | nil,
+        comment: String | nil,
+        substatus: Lithic::Account::Substatus | nil,
         verification_address: Lithic::Account::VerificationAddress | nil
       }
     end

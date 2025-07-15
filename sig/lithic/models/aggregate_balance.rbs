@@ -61,7 +61,7 @@ module Lithic
         updated: Time
       }
 
-      type financial_account_type = :ISSUING | :OPERATING | :RESERVE
+      type financial_account_type = :ISSUING | :OPERATING | :RESERVE | :SECURITY
 
       module FinancialAccountType
         extend Lithic::Internal::Type::Enum
@@ -69,6 +69,7 @@ module Lithic
         ISSUING: :ISSUING
         OPERATING: :OPERATING
         RESERVE: :RESERVE
+        SECURITY: :SECURITY
 
         def self?.values: -> ::Array[Lithic::Models::AggregateBalance::financial_account_type]
       end

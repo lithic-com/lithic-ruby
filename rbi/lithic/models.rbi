@@ -199,6 +199,10 @@ module Lithic
 
   ExternalPaymentSettleParams = Lithic::Models::ExternalPaymentSettleParams
 
+  ExternalResource = Lithic::Models::ExternalResource
+
+  ExternalResourceType = Lithic::Models::ExternalResourceType
+
   FinancialAccount = Lithic::Models::FinancialAccount
 
   FinancialAccountCreateParams = Lithic::Models::FinancialAccountCreateParams
@@ -254,6 +258,12 @@ module Lithic
     Lithic::Models::ManagementOperationTransaction
 
   MessageAttempt = Lithic::Models::MessageAttempt
+
+  NetworkProgram = Lithic::Models::NetworkProgram
+
+  NetworkProgramListParams = Lithic::Models::NetworkProgramListParams
+
+  NetworkProgramRetrieveParams = Lithic::Models::NetworkProgramRetrieveParams
 
   NonPCICard = Lithic::Models::NonPCICard
 

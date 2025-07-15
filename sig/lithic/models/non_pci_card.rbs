@@ -15,14 +15,17 @@ module Lithic
         type: Lithic::Models::NonPCICard::type_,
         auth_rule_tokens: ::Array[String],
         cardholder_currency: String,
+        comment: String,
         digital_card_art_token: String,
         exp_month: String,
         exp_year: String,
         hostname: String,
         memo: String,
+        network_program_token: String?,
         pending_commands: ::Array[String],
         product_id: String,
-        replacement_for: String?
+        replacement_for: String?,
+        substatus: Lithic::Models::NonPCICard::substatus
       }
 
     class NonPCICard < Lithic::Internal::Type::BaseModel
@@ -56,6 +59,10 @@ module Lithic
 
       def cardholder_currency=: (String) -> String
 
+      attr_reader comment: String?
+
+      def comment=: (String) -> String
+
       attr_reader digital_card_art_token: String?
 
       def digital_card_art_token=: (String) -> String
@@ -76,6 +83,8 @@ module Lithic
 
       def memo=: (String) -> String
 
+      attr_accessor network_program_token: String?
+
       attr_reader pending_commands: ::Array[String]?
 
       def pending_commands=: (::Array[String]) -> ::Array[String]
@@ -85,6 +94,12 @@ module Lithic
       def product_id=: (String) -> String
 
       attr_accessor replacement_for: String?
+
+      attr_reader substatus: Lithic::Models::NonPCICard::substatus?
+
+      def substatus=: (
+        Lithic::Models::NonPCICard::substatus
+      ) -> Lithic::Models::NonPCICard::substatus
 
       def initialize: (
         token: String,
@@ -100,14 +115,17 @@ module Lithic
         type: Lithic::Models::NonPCICard::type_,
         ?auth_rule_tokens: ::Array[String],
         ?cardholder_currency: String,
+        ?comment: String,
         ?digital_card_art_token: String,
         ?exp_month: String,
         ?exp_year: String,
         ?hostname: String,
         ?memo: String,
+        ?network_program_token: String?,
         ?pending_commands: ::Array[String],
         ?product_id: String,
-        ?replacement_for: String?
+        ?replacement_for: String?,
+        ?substatus: Lithic::Models::NonPCICard::substatus
       ) -> void
 
       def to_hash: -> {
@@ -124,14 +142,17 @@ module Lithic
         type: Lithic::Models::NonPCICard::type_,
         auth_rule_tokens: ::Array[String],
         cardholder_currency: String,
+        comment: String,
         digital_card_art_token: String,
         exp_month: String,
         exp_year: String,
         hostname: String,
         memo: String,
+        network_program_token: String?,
         pending_commands: ::Array[String],
         product_id: String,
-        replacement_for: String?
+        replacement_for: String?,
+        substatus: Lithic::Models::NonPCICard::substatus
       }
 
       type funding =
@@ -254,6 +275,37 @@ module Lithic
         DIGITAL_WALLET: :DIGITAL_WALLET
 
         def self?.values: -> ::Array[Lithic::Models::NonPCICard::type_]
+      end
+
+      type substatus =
+        :LOST
+        | :COMPROMISED
+        | :DAMAGED
+        | :END_USER_REQUEST
+        | :ISSUER_REQUEST
+        | :NOT_ACTIVE
+        | :SUSPICIOUS_ACTIVITY
+        | :INTERNAL_REVIEW
+        | :EXPIRED
+        | :UNDELIVERABLE
+        | :OTHER
+
+      module Substatus
+        extend Lithic::Internal::Type::Enum
+
+        LOST: :LOST
+        COMPROMISED: :COMPROMISED
+        DAMAGED: :DAMAGED
+        END_USER_REQUEST: :END_USER_REQUEST
+        ISSUER_REQUEST: :ISSUER_REQUEST
+        NOT_ACTIVE: :NOT_ACTIVE
+        SUSPICIOUS_ACTIVITY: :SUSPICIOUS_ACTIVITY
+        INTERNAL_REVIEW: :INTERNAL_REVIEW
+        EXPIRED: :EXPIRED
+        UNDELIVERABLE: :UNDELIVERABLE
+        OTHER: :OTHER
+
+        def self?.values: -> ::Array[Lithic::Models::NonPCICard::substatus]
       end
     end
   end

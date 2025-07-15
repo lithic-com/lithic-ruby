@@ -50,6 +50,24 @@ module Lithic
       sig { params(memo: String).void }
       attr_writer :memo
 
+      # What to do if the financial account is closed when posting an operation
+      sig do
+        returns(
+          T.nilable(
+            Lithic::ManagementOperationCreateParams::OnClosedAccount::OrSymbol
+          )
+        )
+      end
+      attr_reader :on_closed_account
+
+      sig do
+        params(
+          on_closed_account:
+            Lithic::ManagementOperationCreateParams::OnClosedAccount::OrSymbol
+        ).void
+      end
+      attr_writer :on_closed_account
+
       sig { returns(T.nilable(String)) }
       attr_reader :subtype
 
@@ -74,6 +92,8 @@ module Lithic
           financial_account_token: String,
           token: String,
           memo: String,
+          on_closed_account:
+            Lithic::ManagementOperationCreateParams::OnClosedAccount::OrSymbol,
           subtype: String,
           user_defined_id: String,
           request_options: Lithic::RequestOptions::OrHash
@@ -88,6 +108,8 @@ module Lithic
         financial_account_token:,
         token: nil,
         memo: nil,
+        # What to do if the financial account is closed when posting an operation
+        on_closed_account: nil,
         subtype: nil,
         user_defined_id: nil,
         request_options: {}
@@ -108,6 +130,8 @@ module Lithic
             financial_account_token: String,
             token: String,
             memo: String,
+            on_closed_account:
+              Lithic::ManagementOperationCreateParams::OnClosedAccount::OrSymbol,
             subtype: String,
             user_defined_id: String,
             request_options: Lithic::RequestOptions
@@ -303,6 +327,41 @@ module Lithic
           override.returns(
             T::Array[
               Lithic::ManagementOperationCreateParams::EventType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # What to do if the financial account is closed when posting an operation
+      module OnClosedAccount
+        extend Lithic::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Lithic::ManagementOperationCreateParams::OnClosedAccount
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        FAIL =
+          T.let(
+            :FAIL,
+            Lithic::ManagementOperationCreateParams::OnClosedAccount::TaggedSymbol
+          )
+        USE_SUSPENSE =
+          T.let(
+            :USE_SUSPENSE,
+            Lithic::ManagementOperationCreateParams::OnClosedAccount::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::ManagementOperationCreateParams::OnClosedAccount::TaggedSymbol
             ]
           )
         end
