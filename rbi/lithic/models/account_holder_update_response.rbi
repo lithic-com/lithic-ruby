@@ -127,10 +127,9 @@ module Lithic
         sig { params(created: Time).void }
         attr_writer :created
 
-        # < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
-        # individual.phone_number when user_type == "INDIVIDUAL".
-        #
-        # > Primary email of Account Holder.
+        # (Deprecated. Use control_person.email when user_type == "BUSINESS". Use
+        # individual.phone_number when user_type == "INDIVIDUAL".) Primary email of
+        # Account Holder.
         sig { returns(T.nilable(String)) }
         attr_reader :email
 
@@ -191,10 +190,9 @@ module Lithic
         sig { params(nature_of_business: String).void }
         attr_writer :nature_of_business
 
-        # < Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
-        # individual.phone_number when user_type == "INDIVIDUAL".
-        #
-        # > Primary phone of Account Holder, entered in E.164 format.
+        # (Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
+        # individual.phone_number when user_type == "INDIVIDUAL".) Primary phone of
+        # Account Holder, entered in E.164 format.
         sig { returns(T.nilable(String)) }
         attr_reader :phone_number
 
@@ -213,9 +211,8 @@ module Lithic
         end
         attr_writer :required_documents
 
-        # <Deprecated. Use verification_application.status instead>
-        #
-        # KYC and KYB evaluation states.
+        # (Deprecated. Use verification_application.status instead) KYC and KYB evaluation
+        # states.
         #
         # Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
         # `ADVANCED` workflow.
@@ -236,7 +233,7 @@ module Lithic
         end
         attr_writer :status
 
-        # <Deprecated. Use verification_application.status_reasons> Reason for the
+        # (Deprecated. Use verification_application.status_reasons) Reason for the
         # evaluation status.
         sig do
           returns(
@@ -379,10 +376,9 @@ module Lithic
           control_person: nil,
           # Timestamp of when the account holder was created.
           created: nil,
-          # < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
-          # individual.phone_number when user_type == "INDIVIDUAL".
-          #
-          # > Primary email of Account Holder.
+          # (Deprecated. Use control_person.email when user_type == "BUSINESS". Use
+          # individual.phone_number when user_type == "INDIVIDUAL".) Primary email of
+          # Account Holder.
           email: nil,
           # The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
           # holder is not KYC-Exempt.
@@ -396,22 +392,20 @@ module Lithic
           # Only present when user_type == "BUSINESS". User-submitted description of the
           # business.
           nature_of_business: nil,
-          # < Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
-          # individual.phone_number when user_type == "INDIVIDUAL".
-          #
-          # > Primary phone of Account Holder, entered in E.164 format.
+          # (Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
+          # individual.phone_number when user_type == "INDIVIDUAL".) Primary phone of
+          # Account Holder, entered in E.164 format.
           phone_number: nil,
           # Only present for "KYB_BASIC" and "KYC_ADVANCED" workflows. A list of documents
           # required for the account holder to be approved.
           required_documents: nil,
-          # <Deprecated. Use verification_application.status instead>
-          #
-          # KYC and KYB evaluation states.
+          # (Deprecated. Use verification_application.status instead) KYC and KYB evaluation
+          # states.
           #
           # Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
           # `ADVANCED` workflow.
           status: nil,
-          # <Deprecated. Use verification_application.status_reasons> Reason for the
+          # (Deprecated. Use verification_application.status_reasons) Reason for the
           # evaluation status.
           status_reasons: nil,
           # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
@@ -1109,9 +1103,8 @@ module Lithic
           end
         end
 
-        # <Deprecated. Use verification_application.status instead>
-        #
-        # KYC and KYB evaluation states.
+        # (Deprecated. Use verification_application.status instead) KYC and KYB evaluation
+        # states.
         #
         # Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
         # `ADVANCED` workflow.

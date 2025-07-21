@@ -80,10 +80,9 @@ module Lithic
         optional :created, Time
 
         # @!attribute email
-        #   < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
-        #   individual.phone_number when user_type == "INDIVIDUAL".
-        #
-        #   > Primary email of Account Holder.
+        #   (Deprecated. Use control_person.email when user_type == "BUSINESS". Use
+        #   individual.phone_number when user_type == "INDIVIDUAL".) Primary email of
+        #   Account Holder.
         #
         #   @return [String, nil]
         optional :email, String
@@ -118,10 +117,9 @@ module Lithic
         optional :nature_of_business, String
 
         # @!attribute phone_number
-        #   < Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
-        #   individual.phone_number when user_type == "INDIVIDUAL".
-        #
-        #   > Primary phone of Account Holder, entered in E.164 format.
+        #   (Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
+        #   individual.phone_number when user_type == "INDIVIDUAL".) Primary phone of
+        #   Account Holder, entered in E.164 format.
         #
         #   @return [String, nil]
         optional :phone_number, String
@@ -134,9 +132,8 @@ module Lithic
         optional :required_documents, -> { Lithic::Internal::Type::ArrayOf[Lithic::RequiredDocument] }
 
         # @!attribute status
-        #   <Deprecated. Use verification_application.status instead>
-        #
-        #   KYC and KYB evaluation states.
+        #   (Deprecated. Use verification_application.status instead) KYC and KYB evaluation
+        #   states.
         #
         #   Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
         #   `ADVANCED` workflow.
@@ -145,7 +142,7 @@ module Lithic
         optional :status, enum: -> { Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status }
 
         # @!attribute status_reasons
-        #   <Deprecated. Use verification_application.status_reasons> Reason for the
+        #   (Deprecated. Use verification_application.status_reasons) Reason for the
         #   evaluation status.
         #
         #   @return [Array<Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason>, nil]
@@ -198,7 +195,7 @@ module Lithic
         #
         #   @param created [Time] Timestamp of when the account holder was created.
         #
-        #   @param email [String] <
+        #   @param email [String] (Deprecated. Use control_person.email when user_type == "BUSINESS".
         #
         #   @param exemption_type [Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ExemptionType] The type of KYC exemption for a KYC-Exempt Account Holder. "None" if the account
         #
@@ -208,13 +205,13 @@ module Lithic
         #
         #   @param nature_of_business [String] Only present when user_type == "BUSINESS". User-submitted description of the bus
         #
-        #   @param phone_number [String] <
+        #   @param phone_number [String] (Deprecated. Use control_person.phone_number when user_type == "BUSINESS".
         #
         #   @param required_documents [Array<Lithic::Models::RequiredDocument>] Only present for "KYB_BASIC" and "KYC_ADVANCED" workflows. A list of documents r
         #
-        #   @param status [Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status] <Deprecated. Use verification_application.status instead>
+        #   @param status [Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::Status] (Deprecated. Use verification_application.status instead)
         #
-        #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason>] <Deprecated. Use verification_application.status_reasons> Reason for the evaluat
+        #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::StatusReason>] (Deprecated. Use verification_application.status_reasons)
         #
         #   @param user_type [Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::UserType] The type of Account Holder. If the type is "INDIVIDUAL", the "individual" attrib
         #
@@ -613,9 +610,8 @@ module Lithic
           end
         end
 
-        # <Deprecated. Use verification_application.status instead>
-        #
-        # KYC and KYB evaluation states.
+        # (Deprecated. Use verification_application.status instead) KYC and KYB evaluation
+        # states.
         #
         # Note: `PENDING_RESUBMIT` and `PENDING_DOCUMENT` are only applicable for the
         # `ADVANCED` workflow.
