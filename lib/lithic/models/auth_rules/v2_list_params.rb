@@ -90,6 +90,7 @@ module Lithic
           PROGRAM = :PROGRAM
           ACCOUNT = :ACCOUNT
           CARD = :CARD
+          ANY = :ANY
 
           # @!method self.values
           #   @return [Array<Symbol>]

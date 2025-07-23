@@ -181,6 +181,8 @@ module Lithic
             )
           CARD =
             T.let(:CARD, Lithic::AuthRules::V2ListParams::Scope::TaggedSymbol)
+          ANY =
+            T.let(:ANY, Lithic::AuthRules::V2ListParams::Scope::TaggedSymbol)
 
           sig do
             override.returns(

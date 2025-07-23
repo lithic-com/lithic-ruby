@@ -286,6 +286,8 @@ module Lithic
           T.let(:CHARGEBACK, Lithic::SettlementDetail::Type::TaggedSymbol)
         CLEARING =
           T.let(:CLEARING, Lithic::SettlementDetail::Type::TaggedSymbol)
+        COLLABORATION =
+          T.let(:COLLABORATION, Lithic::SettlementDetail::Type::TaggedSymbol)
         FEE = T.let(:FEE, Lithic::SettlementDetail::Type::TaggedSymbol)
         FINANCIAL =
           T.let(:FINANCIAL, Lithic::SettlementDetail::Type::TaggedSymbol)
