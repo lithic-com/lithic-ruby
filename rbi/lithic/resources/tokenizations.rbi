@@ -8,7 +8,7 @@ module Lithic
         params(
           tokenization_token: String,
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::TokenizationRetrieveResponse)
+        ).returns(Lithic::Tokenization)
       end
       def retrieve(
         # Tokenization token
