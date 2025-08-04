@@ -1,0 +1,26 @@
+module Lithic
+  module Resources
+    class AccountActivity
+      def list: (
+        ?begin_: Time,
+        ?business_account_token: String,
+        ?category: Lithic::Models::AccountActivityListParams::category,
+        ?end_: Time,
+        ?ending_before: String,
+        ?financial_account_token: String,
+        ?page_size: Integer,
+        ?result: ::Array[Lithic::Models::AccountActivityListParams::result],
+        ?starting_after: String,
+        ?status: ::Array[Lithic::Models::AccountActivityListParams::status],
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Internal::CursorPage[Lithic::Models::account_activity_list_response]
+
+      def retrieve_transaction: (
+        String transaction_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::account_activity_retrieve_transaction_response
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

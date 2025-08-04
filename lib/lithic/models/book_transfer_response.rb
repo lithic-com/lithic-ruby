@@ -36,6 +36,12 @@ module Lithic
       #   @return [Array<Lithic::Models::BookTransferResponse::Event>]
       required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::BookTransferResponse::Event] }
 
+      # @!attribute external_resource
+      #   External resource associated with the management operation
+      #
+      #   @return [Lithic::Models::ExternalResource, nil]
+      required :external_resource, -> { Lithic::ExternalResource }, nil?: true
+
       # @!attribute from_financial_account_token
       #   Globally unique identifier for the financial account or card that will send the
       #   funds. Accepted type dependent on the program's use case.
@@ -79,13 +85,19 @@ module Lithic
       #   @return [Object]
       required :to_financial_account_token, Lithic::Internal::Type::Unknown
 
+      # @!attribute transaction_series
+      #   A series of transactions that are grouped together.
+      #
+      #   @return [Lithic::Models::BookTransferResponse::TransactionSeries, nil]
+      required :transaction_series, -> { Lithic::BookTransferResponse::TransactionSeries }, nil?: true
+
       # @!attribute updated
       #   Date and time when the financial transaction was last updated. UTC time zone.
       #
       #   @return [Time]
       required :updated, Time
 
-      # @!method initialize(token:, category:, created:, currency:, events:, from_financial_account_token:, pending_amount:, result:, settled_amount:, status:, to_financial_account_token:, updated:)
+      # @!method initialize(token:, category:, created:, currency:, events:, external_resource:, from_financial_account_token:, pending_amount:, result:, settled_amount:, status:, to_financial_account_token:, transaction_series:, updated:)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::BookTransferResponse} for more details.
       #
@@ -99,6 +111,8 @@ module Lithic
       #
       #   @param events [Array<Lithic::Models::BookTransferResponse::Event>] A list of all financial events that have modified this transfer.
       #
+      #   @param external_resource [Lithic::Models::ExternalResource, nil] External resource associated with the management operation
+      #
       #   @param from_financial_account_token [String] Globally unique identifier for the financial account or card that will send the
       #
       #   @param pending_amount [Integer] Pending amount of the transaction in the currency's smallest unit (e.g., cents),
@@ -110,6 +124,8 @@ module Lithic
       #   @param status [Symbol, Lithic::Models::BookTransferResponse::Status] Status types: _ `DECLINED` - The transfer was declined. _ `REVERSED` - The trans
       #
       #   @param to_financial_account_token [Object] Globally unique identifier for the financial account or card that will receive t
+      #
+      #   @param transaction_series [Lithic::Models::BookTransferResponse::TransactionSeries, nil] A series of transactions that are grouped together.
       #
       #   @param updated [Time] Date and time when the financial transaction was last updated. UTC time zone.
 
@@ -257,6 +273,31 @@ module Lithic
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # @see Lithic::Models::BookTransferResponse#transaction_series
+      class TransactionSeries < Lithic::Internal::Type::BaseModel
+        # @!attribute related_transaction_event_token
+        #
+        #   @return [String, nil]
+        required :related_transaction_event_token, String, nil?: true
+
+        # @!attribute related_transaction_token
+        #
+        #   @return [String, nil]
+        required :related_transaction_token, String, nil?: true
+
+        # @!attribute type
+        #
+        #   @return [String]
+        required :type, String
+
+        # @!method initialize(related_transaction_event_token:, related_transaction_token:, type:)
+        #   A series of transactions that are grouped together.
+        #
+        #   @param related_transaction_event_token [String, nil]
+        #   @param related_transaction_token [String, nil]
+        #   @param type [String]
       end
     end
   end

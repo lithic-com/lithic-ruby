@@ -207,6 +207,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
+          INSUFFICIENT_FUNDS = :INSUFFICIENT_FUNDS
 
           # @!method self.values
           #   @return [Array<Symbol>]

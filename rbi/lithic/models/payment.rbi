@@ -58,6 +58,17 @@ module Lithic
       sig { returns(Integer) }
       attr_accessor :pending_amount
 
+      # Account tokens related to a payment transaction
+      sig { returns(Lithic::Payment::RelatedAccountTokens) }
+      attr_reader :related_account_tokens
+
+      sig do
+        params(
+          related_account_tokens: Lithic::Payment::RelatedAccountTokens::OrHash
+        ).void
+      end
+      attr_writer :related_account_tokens
+
       # APPROVED payments were successful while DECLINED payments were declined by
       # Lithic or returned.
       sig { returns(Lithic::Payment::Result::TaggedSymbol) }
@@ -109,6 +120,7 @@ module Lithic
           method_: Lithic::Payment::Method::OrSymbol,
           method_attributes: Lithic::Payment::MethodAttributes::OrHash,
           pending_amount: Integer,
+          related_account_tokens: Lithic::Payment::RelatedAccountTokens::OrHash,
           result: Lithic::Payment::Result::OrSymbol,
           settled_amount: Integer,
           source: Lithic::Payment::Source::OrSymbol,
@@ -140,6 +152,8 @@ module Lithic
         # Pending amount of the payment in the currency's smallest unit (e.g., cents). The
         # value of this field will go to zero over time once the payment is settled.
         pending_amount:,
+        # Account tokens related to a payment transaction
+        related_account_tokens:,
         # APPROVED payments were successful while DECLINED payments were declined by
         # Lithic or returned.
         result:,
@@ -178,6 +192,7 @@ module Lithic
             method_: Lithic::Payment::Method::TaggedSymbol,
             method_attributes: Lithic::Payment::MethodAttributes,
             pending_amount: Integer,
+            related_account_tokens: Lithic::Payment::RelatedAccountTokens,
             result: Lithic::Payment::Result::TaggedSymbol,
             settled_amount: Integer,
             source: Lithic::Payment::Source::TaggedSymbol,
@@ -636,6 +651,50 @@ module Lithic
           end
           def self.values
           end
+        end
+      end
+
+      class RelatedAccountTokens < Lithic::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Payment::RelatedAccountTokens,
+              Lithic::Internal::AnyHash
+            )
+          end
+
+        # Globally unique identifier for the account
+        sig { returns(T.nilable(String)) }
+        attr_accessor :account_token
+
+        # Globally unique identifier for the business account
+        sig { returns(T.nilable(String)) }
+        attr_accessor :business_account_token
+
+        # Account tokens related to a payment transaction
+        sig do
+          params(
+            account_token: T.nilable(String),
+            business_account_token: T.nilable(String)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Globally unique identifier for the account
+          account_token:,
+          # Globally unique identifier for the business account
+          business_account_token:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              account_token: T.nilable(String),
+              business_account_token: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
         end
       end
 

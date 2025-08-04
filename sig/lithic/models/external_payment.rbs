@@ -207,12 +207,13 @@ module Lithic
           type: Lithic::Models::ExternalPayment::Event::type_
         }
 
-        type detailed_result = :APPROVED
+        type detailed_result = :APPROVED | :INSUFFICIENT_FUNDS
 
         module DetailedResult
           extend Lithic::Internal::Type::Enum
 
           APPROVED: :APPROVED
+          INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
 
           def self?.values: -> ::Array[Lithic::Models::ExternalPayment::Event::detailed_result]
         end

@@ -536,6 +536,11 @@ module Lithic
               :APPROVED,
               Lithic::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol
             )
+          INSUFFICIENT_FUNDS =
+            T.let(
+              :INSUFFICIENT_FUNDS,
+              Lithic::ManagementOperationTransaction::Event::DetailedResult::TaggedSymbol
+            )
 
           sig do
             override.returns(

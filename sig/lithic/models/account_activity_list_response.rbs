@@ -1,0 +1,854 @@
+module Lithic
+  module Models
+    type account_activity_list_response =
+      Lithic::Models::AccountActivityListResponse::FinancialTransaction
+      | Lithic::Models::AccountActivityListResponse::BookTransferTransaction
+      | Lithic::Models::AccountActivityListResponse::CardTransaction
+      | Lithic::Models::AccountActivityListResponse::PaymentTransaction
+      | Lithic::ExternalPayment
+      | Lithic::ManagementOperationTransaction
+
+    module AccountActivityListResponse
+      extend Lithic::Internal::Type::Union
+
+      type financial_transaction =
+        {
+          token: String,
+          category: Lithic::Models::AccountActivityListResponse::FinancialTransaction::category,
+          created: Time,
+          currency: String,
+          descriptor: String,
+          events: ::Array[top],
+          family: Lithic::Models::AccountActivityListResponse::FinancialTransaction::family,
+          financial_account_token: String,
+          pending_amount: Integer,
+          result: Lithic::Models::AccountActivityListResponse::FinancialTransaction::result,
+          settled_amount: Integer,
+          status: Lithic::Models::AccountActivityListResponse::FinancialTransaction::status,
+          updated: Time
+        }
+
+      class FinancialTransaction < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor category: Lithic::Models::AccountActivityListResponse::FinancialTransaction::category
+
+        attr_accessor created: Time
+
+        attr_accessor currency: String
+
+        attr_accessor descriptor: String
+
+        attr_accessor events: ::Array[top]
+
+        attr_accessor family: Lithic::Models::AccountActivityListResponse::FinancialTransaction::family
+
+        attr_accessor financial_account_token: String
+
+        attr_accessor pending_amount: Integer
+
+        attr_accessor result: Lithic::Models::AccountActivityListResponse::FinancialTransaction::result
+
+        attr_accessor settled_amount: Integer
+
+        attr_accessor status: Lithic::Models::AccountActivityListResponse::FinancialTransaction::status
+
+        attr_accessor updated: Time
+
+        def initialize: (
+          token: String,
+          category: Lithic::Models::AccountActivityListResponse::FinancialTransaction::category,
+          created: Time,
+          currency: String,
+          descriptor: String,
+          events: ::Array[top],
+          family: Lithic::Models::AccountActivityListResponse::FinancialTransaction::family,
+          financial_account_token: String,
+          pending_amount: Integer,
+          result: Lithic::Models::AccountActivityListResponse::FinancialTransaction::result,
+          settled_amount: Integer,
+          status: Lithic::Models::AccountActivityListResponse::FinancialTransaction::status,
+          updated: Time
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          category: Lithic::Models::AccountActivityListResponse::FinancialTransaction::category,
+          created: Time,
+          currency: String,
+          descriptor: String,
+          events: ::Array[top],
+          family: Lithic::Models::AccountActivityListResponse::FinancialTransaction::family,
+          financial_account_token: String,
+          pending_amount: Integer,
+          result: Lithic::Models::AccountActivityListResponse::FinancialTransaction::result,
+          settled_amount: Integer,
+          status: Lithic::Models::AccountActivityListResponse::FinancialTransaction::status,
+          updated: Time
+        }
+
+        type category =
+          :ACH
+          | :BALANCE_OR_FUNDING
+          | :CARD
+          | :EXTERNAL_ACH
+          | :EXTERNAL_CHECK
+          | :EXTERNAL_TRANSFER
+          | :EXTERNAL_WIRE
+          | :MANAGEMENT_ADJUSTMENT
+          | :MANAGEMENT_DISPUTE
+          | :MANAGEMENT_FEE
+          | :MANAGEMENT_REWARD
+          | :MANAGEMENT_DISBURSEMENT
+          | :PROGRAM_FUNDING
+
+        module Category
+          extend Lithic::Internal::Type::Enum
+
+          ACH: :ACH
+          BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
+          CARD: :CARD
+          EXTERNAL_ACH: :EXTERNAL_ACH
+          EXTERNAL_CHECK: :EXTERNAL_CHECK
+          EXTERNAL_TRANSFER: :EXTERNAL_TRANSFER
+          EXTERNAL_WIRE: :EXTERNAL_WIRE
+          MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
+          MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
+          MANAGEMENT_FEE: :MANAGEMENT_FEE
+          MANAGEMENT_REWARD: :MANAGEMENT_REWARD
+          MANAGEMENT_DISBURSEMENT: :MANAGEMENT_DISBURSEMENT
+          PROGRAM_FUNDING: :PROGRAM_FUNDING
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::FinancialTransaction::category]
+        end
+
+        type family =
+          :CARD
+          | :PAYMENT
+          | :TRANSFER
+          | :INTERNAL
+          | :EXTERNAL_PAYMENT
+          | :MANAGEMENT_OPERATION
+
+        module Family
+          extend Lithic::Internal::Type::Enum
+
+          CARD: :CARD
+          PAYMENT: :PAYMENT
+          TRANSFER: :TRANSFER
+          INTERNAL: :INTERNAL
+          EXTERNAL_PAYMENT: :EXTERNAL_PAYMENT
+          MANAGEMENT_OPERATION: :MANAGEMENT_OPERATION
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::FinancialTransaction::family]
+        end
+
+        type result = :APPROVED | :DECLINED
+
+        module Result
+          extend Lithic::Internal::Type::Enum
+
+          APPROVED: :APPROVED
+          DECLINED: :DECLINED
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::FinancialTransaction::result]
+        end
+
+        type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
+
+        module Status
+          extend Lithic::Internal::Type::Enum
+
+          PENDING: :PENDING
+          SETTLED: :SETTLED
+          DECLINED: :DECLINED
+          REVERSED: :REVERSED
+          CANCELED: :CANCELED
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::FinancialTransaction::status]
+        end
+      end
+
+      type book_transfer_transaction =
+        {
+          token: String,
+          category: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::category,
+          created: Time,
+          currency: String,
+          events: ::Array[top],
+          family: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::family,
+          from_financial_account_token: String,
+          pending_amount: Integer,
+          result: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::result,
+          settled_amount: Integer,
+          status: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::status,
+          to_financial_account_token: String,
+          updated: Time,
+          external_id: String,
+          external_resource: Lithic::ExternalResource?,
+          transaction_series: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::TransactionSeries?
+        }
+
+      class BookTransferTransaction < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor category: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::category
+
+        attr_accessor created: Time
+
+        attr_accessor currency: String
+
+        attr_accessor events: ::Array[top]
+
+        attr_accessor family: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::family
+
+        attr_accessor from_financial_account_token: String
+
+        attr_accessor pending_amount: Integer
+
+        attr_accessor result: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::result
+
+        attr_accessor settled_amount: Integer
+
+        attr_accessor status: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::status
+
+        attr_accessor to_financial_account_token: String
+
+        attr_accessor updated: Time
+
+        attr_reader external_id: String?
+
+        def external_id=: (String) -> String
+
+        attr_accessor external_resource: Lithic::ExternalResource?
+
+        attr_accessor transaction_series: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::TransactionSeries?
+
+        def initialize: (
+          token: String,
+          category: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::category,
+          created: Time,
+          currency: String,
+          events: ::Array[top],
+          family: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::family,
+          from_financial_account_token: String,
+          pending_amount: Integer,
+          result: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::result,
+          settled_amount: Integer,
+          status: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::status,
+          to_financial_account_token: String,
+          updated: Time,
+          ?external_id: String,
+          ?external_resource: Lithic::ExternalResource?,
+          ?transaction_series: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::TransactionSeries?
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          category: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::category,
+          created: Time,
+          currency: String,
+          events: ::Array[top],
+          family: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::family,
+          from_financial_account_token: String,
+          pending_amount: Integer,
+          result: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::result,
+          settled_amount: Integer,
+          status: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::status,
+          to_financial_account_token: String,
+          updated: Time,
+          external_id: String,
+          external_resource: Lithic::ExternalResource?,
+          transaction_series: Lithic::Models::AccountActivityListResponse::BookTransferTransaction::TransactionSeries?
+        }
+
+        type category =
+          :ACH
+          | :BALANCE_OR_FUNDING
+          | :CARD
+          | :EXTERNAL_ACH
+          | :EXTERNAL_CHECK
+          | :EXTERNAL_TRANSFER
+          | :EXTERNAL_WIRE
+          | :MANAGEMENT_ADJUSTMENT
+          | :MANAGEMENT_DISPUTE
+          | :MANAGEMENT_FEE
+          | :MANAGEMENT_REWARD
+          | :MANAGEMENT_DISBURSEMENT
+          | :PROGRAM_FUNDING
+
+        module Category
+          extend Lithic::Internal::Type::Enum
+
+          ACH: :ACH
+          BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
+          CARD: :CARD
+          EXTERNAL_ACH: :EXTERNAL_ACH
+          EXTERNAL_CHECK: :EXTERNAL_CHECK
+          EXTERNAL_TRANSFER: :EXTERNAL_TRANSFER
+          EXTERNAL_WIRE: :EXTERNAL_WIRE
+          MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
+          MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
+          MANAGEMENT_FEE: :MANAGEMENT_FEE
+          MANAGEMENT_REWARD: :MANAGEMENT_REWARD
+          MANAGEMENT_DISBURSEMENT: :MANAGEMENT_DISBURSEMENT
+          PROGRAM_FUNDING: :PROGRAM_FUNDING
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::BookTransferTransaction::category]
+        end
+
+        type family =
+          :CARD
+          | :PAYMENT
+          | :TRANSFER
+          | :INTERNAL
+          | :EXTERNAL_PAYMENT
+          | :MANAGEMENT_OPERATION
+
+        module Family
+          extend Lithic::Internal::Type::Enum
+
+          CARD: :CARD
+          PAYMENT: :PAYMENT
+          TRANSFER: :TRANSFER
+          INTERNAL: :INTERNAL
+          EXTERNAL_PAYMENT: :EXTERNAL_PAYMENT
+          MANAGEMENT_OPERATION: :MANAGEMENT_OPERATION
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::BookTransferTransaction::family]
+        end
+
+        type result = :APPROVED | :DECLINED
+
+        module Result
+          extend Lithic::Internal::Type::Enum
+
+          APPROVED: :APPROVED
+          DECLINED: :DECLINED
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::BookTransferTransaction::result]
+        end
+
+        type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
+
+        module Status
+          extend Lithic::Internal::Type::Enum
+
+          PENDING: :PENDING
+          SETTLED: :SETTLED
+          DECLINED: :DECLINED
+          REVERSED: :REVERSED
+          CANCELED: :CANCELED
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::BookTransferTransaction::status]
+        end
+
+        type transaction_series =
+          {
+            related_transaction_event_token: String?,
+            related_transaction_token: String?,
+            type: String
+          }
+
+        class TransactionSeries < Lithic::Internal::Type::BaseModel
+          attr_accessor related_transaction_event_token: String?
+
+          attr_accessor related_transaction_token: String?
+
+          attr_accessor type: String
+
+          def initialize: (
+            related_transaction_event_token: String?,
+            related_transaction_token: String?,
+            type: String
+          ) -> void
+
+          def to_hash: -> {
+            related_transaction_event_token: String?,
+            related_transaction_token: String?,
+            type: String
+          }
+        end
+      end
+
+      type card_transaction =
+        {
+          token: String,
+          created: Time,
+          family: Lithic::Models::AccountActivityListResponse::CardTransaction::family,
+          status: Lithic::Models::AccountActivityListResponse::CardTransaction::status,
+          updated: Time
+        }
+
+      class CardTransaction < Lithic::Models::Transaction
+        def token: -> String
+
+        def token=: (String _) -> String
+
+        def created: -> Time
+
+        def created=: (Time _) -> Time
+
+        def family: -> Lithic::Models::AccountActivityListResponse::CardTransaction::family
+
+        def family=: (
+          Lithic::Models::AccountActivityListResponse::CardTransaction::family _
+        ) -> Lithic::Models::AccountActivityListResponse::CardTransaction::family
+
+        def status: -> Lithic::Models::AccountActivityListResponse::CardTransaction::status
+
+        def status=: (
+          Lithic::Models::AccountActivityListResponse::CardTransaction::status _
+        ) -> Lithic::Models::AccountActivityListResponse::CardTransaction::status
+
+        def updated: -> Time
+
+        def updated=: (Time _) -> Time
+
+        def initialize: (
+          token: String,
+          created: Time,
+          family: Lithic::Models::AccountActivityListResponse::CardTransaction::family,
+          status: Lithic::Models::AccountActivityListResponse::CardTransaction::status,
+          updated: Time
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          created: Time,
+          family: Lithic::Models::AccountActivityListResponse::CardTransaction::family,
+          status: Lithic::Models::AccountActivityListResponse::CardTransaction::status,
+          updated: Time
+        }
+
+        type family =
+          :CARD
+          | :PAYMENT
+          | :TRANSFER
+          | :INTERNAL
+          | :EXTERNAL_PAYMENT
+          | :MANAGEMENT_OPERATION
+
+        module Family
+          extend Lithic::Internal::Type::Enum
+
+          CARD: :CARD
+          PAYMENT: :PAYMENT
+          TRANSFER: :TRANSFER
+          INTERNAL: :INTERNAL
+          EXTERNAL_PAYMENT: :EXTERNAL_PAYMENT
+          MANAGEMENT_OPERATION: :MANAGEMENT_OPERATION
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::CardTransaction::family]
+        end
+
+        type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
+
+        module Status
+          extend Lithic::Internal::Type::Enum
+
+          PENDING: :PENDING
+          SETTLED: :SETTLED
+          DECLINED: :DECLINED
+          REVERSED: :REVERSED
+          CANCELED: :CANCELED
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::CardTransaction::status]
+        end
+      end
+
+      type payment_transaction =
+        {
+          token: String,
+          category: Lithic::Models::AccountActivityListResponse::PaymentTransaction::category,
+          created: Time,
+          descriptor: String,
+          direction: Lithic::Models::AccountActivityListResponse::PaymentTransaction::direction,
+          events: ::Array[top],
+          family: Lithic::Models::AccountActivityListResponse::PaymentTransaction::family,
+          financial_account_token: String,
+          method_: Lithic::Models::AccountActivityListResponse::PaymentTransaction::method_,
+          method_attributes: Lithic::Models::AccountActivityListResponse::PaymentTransaction::method_attributes,
+          pending_amount: Integer,
+          related_account_tokens: Lithic::Models::AccountActivityListResponse::PaymentTransaction::RelatedAccountTokens,
+          result: Lithic::Models::AccountActivityListResponse::PaymentTransaction::result,
+          settled_amount: Integer,
+          source: Lithic::Models::AccountActivityListResponse::PaymentTransaction::source,
+          status: Lithic::Models::AccountActivityListResponse::PaymentTransaction::status,
+          updated: Time,
+          currency: String,
+          expected_release_date: Date?,
+          external_bank_account_token: String?,
+          user_defined_id: String?
+        }
+
+      class PaymentTransaction < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor category: Lithic::Models::AccountActivityListResponse::PaymentTransaction::category
+
+        attr_accessor created: Time
+
+        attr_accessor descriptor: String
+
+        attr_accessor direction: Lithic::Models::AccountActivityListResponse::PaymentTransaction::direction
+
+        attr_accessor events: ::Array[top]
+
+        attr_accessor family: Lithic::Models::AccountActivityListResponse::PaymentTransaction::family
+
+        attr_accessor financial_account_token: String
+
+        attr_accessor method_: Lithic::Models::AccountActivityListResponse::PaymentTransaction::method_
+
+        attr_accessor method_attributes: Lithic::Models::AccountActivityListResponse::PaymentTransaction::method_attributes
+
+        attr_accessor pending_amount: Integer
+
+        attr_accessor related_account_tokens: Lithic::Models::AccountActivityListResponse::PaymentTransaction::RelatedAccountTokens
+
+        attr_accessor result: Lithic::Models::AccountActivityListResponse::PaymentTransaction::result
+
+        attr_accessor settled_amount: Integer
+
+        attr_accessor source: Lithic::Models::AccountActivityListResponse::PaymentTransaction::source
+
+        attr_accessor status: Lithic::Models::AccountActivityListResponse::PaymentTransaction::status
+
+        attr_accessor updated: Time
+
+        attr_reader currency: String?
+
+        def currency=: (String) -> String
+
+        attr_accessor expected_release_date: Date?
+
+        attr_accessor external_bank_account_token: String?
+
+        attr_accessor user_defined_id: String?
+
+        def initialize: (
+          token: String,
+          category: Lithic::Models::AccountActivityListResponse::PaymentTransaction::category,
+          created: Time,
+          descriptor: String,
+          direction: Lithic::Models::AccountActivityListResponse::PaymentTransaction::direction,
+          events: ::Array[top],
+          family: Lithic::Models::AccountActivityListResponse::PaymentTransaction::family,
+          financial_account_token: String,
+          method_: Lithic::Models::AccountActivityListResponse::PaymentTransaction::method_,
+          method_attributes: Lithic::Models::AccountActivityListResponse::PaymentTransaction::method_attributes,
+          pending_amount: Integer,
+          related_account_tokens: Lithic::Models::AccountActivityListResponse::PaymentTransaction::RelatedAccountTokens,
+          result: Lithic::Models::AccountActivityListResponse::PaymentTransaction::result,
+          settled_amount: Integer,
+          source: Lithic::Models::AccountActivityListResponse::PaymentTransaction::source,
+          status: Lithic::Models::AccountActivityListResponse::PaymentTransaction::status,
+          updated: Time,
+          ?currency: String,
+          ?expected_release_date: Date?,
+          ?external_bank_account_token: String?,
+          ?user_defined_id: String?
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          category: Lithic::Models::AccountActivityListResponse::PaymentTransaction::category,
+          created: Time,
+          descriptor: String,
+          direction: Lithic::Models::AccountActivityListResponse::PaymentTransaction::direction,
+          events: ::Array[top],
+          family: Lithic::Models::AccountActivityListResponse::PaymentTransaction::family,
+          financial_account_token: String,
+          method_: Lithic::Models::AccountActivityListResponse::PaymentTransaction::method_,
+          method_attributes: Lithic::Models::AccountActivityListResponse::PaymentTransaction::method_attributes,
+          pending_amount: Integer,
+          related_account_tokens: Lithic::Models::AccountActivityListResponse::PaymentTransaction::RelatedAccountTokens,
+          result: Lithic::Models::AccountActivityListResponse::PaymentTransaction::result,
+          settled_amount: Integer,
+          source: Lithic::Models::AccountActivityListResponse::PaymentTransaction::source,
+          status: Lithic::Models::AccountActivityListResponse::PaymentTransaction::status,
+          updated: Time,
+          currency: String,
+          expected_release_date: Date?,
+          external_bank_account_token: String?,
+          user_defined_id: String?
+        }
+
+        type category =
+          :ACH
+          | :BALANCE_OR_FUNDING
+          | :CARD
+          | :EXTERNAL_ACH
+          | :EXTERNAL_CHECK
+          | :EXTERNAL_TRANSFER
+          | :EXTERNAL_WIRE
+          | :MANAGEMENT_ADJUSTMENT
+          | :MANAGEMENT_DISPUTE
+          | :MANAGEMENT_FEE
+          | :MANAGEMENT_REWARD
+          | :MANAGEMENT_DISBURSEMENT
+          | :PROGRAM_FUNDING
+
+        module Category
+          extend Lithic::Internal::Type::Enum
+
+          ACH: :ACH
+          BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
+          CARD: :CARD
+          EXTERNAL_ACH: :EXTERNAL_ACH
+          EXTERNAL_CHECK: :EXTERNAL_CHECK
+          EXTERNAL_TRANSFER: :EXTERNAL_TRANSFER
+          EXTERNAL_WIRE: :EXTERNAL_WIRE
+          MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
+          MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
+          MANAGEMENT_FEE: :MANAGEMENT_FEE
+          MANAGEMENT_REWARD: :MANAGEMENT_REWARD
+          MANAGEMENT_DISBURSEMENT: :MANAGEMENT_DISBURSEMENT
+          PROGRAM_FUNDING: :PROGRAM_FUNDING
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::PaymentTransaction::category]
+        end
+
+        type direction = :CREDIT | :DEBIT
+
+        module Direction
+          extend Lithic::Internal::Type::Enum
+
+          CREDIT: :CREDIT
+          DEBIT: :DEBIT
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::PaymentTransaction::direction]
+        end
+
+        type family =
+          :CARD
+          | :PAYMENT
+          | :TRANSFER
+          | :INTERNAL
+          | :EXTERNAL_PAYMENT
+          | :MANAGEMENT_OPERATION
+
+        module Family
+          extend Lithic::Internal::Type::Enum
+
+          CARD: :CARD
+          PAYMENT: :PAYMENT
+          TRANSFER: :TRANSFER
+          INTERNAL: :INTERNAL
+          EXTERNAL_PAYMENT: :EXTERNAL_PAYMENT
+          MANAGEMENT_OPERATION: :MANAGEMENT_OPERATION
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::PaymentTransaction::family]
+        end
+
+        type method_ = :ACH_NEXT_DAY | :ACH_SAME_DAY | :WIRE
+
+        module Method
+          extend Lithic::Internal::Type::Enum
+
+          ACH_NEXT_DAY: :ACH_NEXT_DAY
+          ACH_SAME_DAY: :ACH_SAME_DAY
+          WIRE: :WIRE
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::PaymentTransaction::method_]
+        end
+
+        type method_attributes =
+          Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::ACHMethodAttributes
+          | Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes
+
+        module MethodAttributes
+          extend Lithic::Internal::Type::Union
+
+          type ach_method_attributes =
+            {
+              sec_code: Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::ACHMethodAttributes::sec_code,
+              addenda: String?,
+              company_id: String?,
+              receipt_routing_number: String?,
+              retries: Integer?,
+              return_reason_code: String?,
+              trace_numbers: ::Array[String]
+            }
+
+          class ACHMethodAttributes < Lithic::Internal::Type::BaseModel
+            attr_accessor sec_code: Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::ACHMethodAttributes::sec_code
+
+            attr_accessor addenda: String?
+
+            attr_accessor company_id: String?
+
+            attr_accessor receipt_routing_number: String?
+
+            attr_accessor retries: Integer?
+
+            attr_accessor return_reason_code: String?
+
+            attr_reader trace_numbers: ::Array[String]?
+
+            def trace_numbers=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              sec_code: Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::ACHMethodAttributes::sec_code,
+              ?addenda: String?,
+              ?company_id: String?,
+              ?receipt_routing_number: String?,
+              ?retries: Integer?,
+              ?return_reason_code: String?,
+              ?trace_numbers: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              sec_code: Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::ACHMethodAttributes::sec_code,
+              addenda: String?,
+              company_id: String?,
+              receipt_routing_number: String?,
+              retries: Integer?,
+              return_reason_code: String?,
+              trace_numbers: ::Array[String]
+            }
+
+            type sec_code = :CCD | :PPD | :WEB | :TEL | :CIE | :CTX
+
+            module SecCode
+              extend Lithic::Internal::Type::Enum
+
+              CCD: :CCD
+              PPD: :PPD
+              WEB: :WEB
+              TEL: :TEL
+              CIE: :CIE
+              CTX: :CTX
+
+              def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::ACHMethodAttributes::sec_code]
+            end
+          end
+
+          type wire_method_attributes =
+            {
+              wire_transfer_type: Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_transfer_type,
+              external_bank_name: String?,
+              external_bank_routing_number: String?,
+              external_individual_name: String?,
+              lithic_bank_name: String?,
+              lithic_bank_routing_number: String?,
+              lithic_individual_name: String?,
+              previous_transfer: String?
+            }
+
+          class WireMethodAttributes < Lithic::Internal::Type::BaseModel
+            attr_accessor wire_transfer_type: Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_transfer_type
+
+            attr_accessor external_bank_name: String?
+
+            attr_accessor external_bank_routing_number: String?
+
+            attr_accessor external_individual_name: String?
+
+            attr_accessor lithic_bank_name: String?
+
+            attr_accessor lithic_bank_routing_number: String?
+
+            attr_accessor lithic_individual_name: String?
+
+            attr_accessor previous_transfer: String?
+
+            def initialize: (
+              wire_transfer_type: Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_transfer_type,
+              ?external_bank_name: String?,
+              ?external_bank_routing_number: String?,
+              ?external_individual_name: String?,
+              ?lithic_bank_name: String?,
+              ?lithic_bank_routing_number: String?,
+              ?lithic_individual_name: String?,
+              ?previous_transfer: String?
+            ) -> void
+
+            def to_hash: -> {
+              wire_transfer_type: Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_transfer_type,
+              external_bank_name: String?,
+              external_bank_routing_number: String?,
+              external_individual_name: String?,
+              lithic_bank_name: String?,
+              lithic_bank_routing_number: String?,
+              lithic_individual_name: String?,
+              previous_transfer: String?
+            }
+
+            type wire_transfer_type = :FEDWIRE | :SWIFT
+
+            module WireTransferType
+              extend Lithic::Internal::Type::Enum
+
+              FEDWIRE: :FEDWIRE
+              SWIFT: :SWIFT
+
+              def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_transfer_type]
+            end
+          end
+
+          def self?.variants: -> ::Array[Lithic::Models::AccountActivityListResponse::PaymentTransaction::method_attributes]
+        end
+
+        type related_account_tokens =
+          { account_token: String?, business_account_token: String? }
+
+        class RelatedAccountTokens < Lithic::Internal::Type::BaseModel
+          attr_accessor account_token: String?
+
+          attr_accessor business_account_token: String?
+
+          def initialize: (
+            account_token: String?,
+            business_account_token: String?
+          ) -> void
+
+          def to_hash: -> {
+            account_token: String?,
+            business_account_token: String?
+          }
+        end
+
+        type result = :APPROVED | :DECLINED
+
+        module Result
+          extend Lithic::Internal::Type::Enum
+
+          APPROVED: :APPROVED
+          DECLINED: :DECLINED
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::PaymentTransaction::result]
+        end
+
+        type source = :LITHIC | :EXTERNAL | :CUSTOMER
+
+        module Source
+          extend Lithic::Internal::Type::Enum
+
+          LITHIC: :LITHIC
+          EXTERNAL: :EXTERNAL
+          CUSTOMER: :CUSTOMER
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::PaymentTransaction::source]
+        end
+
+        type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
+
+        module Status
+          extend Lithic::Internal::Type::Enum
+
+          PENDING: :PENDING
+          SETTLED: :SETTLED
+          DECLINED: :DECLINED
+          REVERSED: :REVERSED
+          CANCELED: :CANCELED
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::PaymentTransaction::status]
+        end
+      end
+
+      def self?.variants: -> ::Array[Lithic::Models::account_activity_list_response]
+    end
+  end
+end

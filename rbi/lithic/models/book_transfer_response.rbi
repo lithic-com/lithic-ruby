@@ -30,6 +30,17 @@ module Lithic
       sig { returns(T::Array[Lithic::BookTransferResponse::Event]) }
       attr_accessor :events
 
+      # External resource associated with the management operation
+      sig { returns(T.nilable(Lithic::ExternalResource)) }
+      attr_reader :external_resource
+
+      sig do
+        params(
+          external_resource: T.nilable(Lithic::ExternalResource::OrHash)
+        ).void
+      end
+      attr_writer :external_resource
+
       # Globally unique identifier for the financial account or card that will send the
       # funds. Accepted type dependent on the program's use case.
       sig { returns(String) }
@@ -61,6 +72,20 @@ module Lithic
       sig { returns(T.anything) }
       attr_accessor :to_financial_account_token
 
+      # A series of transactions that are grouped together.
+      sig do
+        returns(T.nilable(Lithic::BookTransferResponse::TransactionSeries))
+      end
+      attr_reader :transaction_series
+
+      sig do
+        params(
+          transaction_series:
+            T.nilable(Lithic::BookTransferResponse::TransactionSeries::OrHash)
+        ).void
+      end
+      attr_writer :transaction_series
+
       # Date and time when the financial transaction was last updated. UTC time zone.
       sig { returns(Time) }
       attr_accessor :updated
@@ -72,12 +97,15 @@ module Lithic
           created: Time,
           currency: String,
           events: T::Array[Lithic::BookTransferResponse::Event::OrHash],
+          external_resource: T.nilable(Lithic::ExternalResource::OrHash),
           from_financial_account_token: String,
           pending_amount: Integer,
           result: Lithic::BookTransferResponse::Result::OrSymbol,
           settled_amount: Integer,
           status: Lithic::BookTransferResponse::Status::OrSymbol,
           to_financial_account_token: T.anything,
+          transaction_series:
+            T.nilable(Lithic::BookTransferResponse::TransactionSeries::OrHash),
           updated: Time
         ).returns(T.attached_class)
       end
@@ -94,6 +122,8 @@ module Lithic
         currency:,
         # A list of all financial events that have modified this transfer.
         events:,
+        # External resource associated with the management operation
+        external_resource:,
         # Globally unique identifier for the financial account or card that will send the
         # funds. Accepted type dependent on the program's use case.
         from_financial_account_token:,
@@ -113,6 +143,8 @@ module Lithic
         # Globally unique identifier for the financial account or card that will receive
         # the funds. Accepted type dependent on the program's use case.
         to_financial_account_token:,
+        # A series of transactions that are grouped together.
+        transaction_series:,
         # Date and time when the financial transaction was last updated. UTC time zone.
         updated:
       )
@@ -126,12 +158,15 @@ module Lithic
             created: Time,
             currency: String,
             events: T::Array[Lithic::BookTransferResponse::Event],
+            external_resource: T.nilable(Lithic::ExternalResource),
             from_financial_account_token: String,
             pending_amount: Integer,
             result: Lithic::BookTransferResponse::Result::TaggedSymbol,
             settled_amount: Integer,
             status: Lithic::BookTransferResponse::Status::TaggedSymbol,
             to_financial_account_token: T.anything,
+            transaction_series:
+              T.nilable(Lithic::BookTransferResponse::TransactionSeries),
             updated: Time
           }
         )
@@ -397,6 +432,52 @@ module Lithic
           )
         end
         def self.values
+        end
+      end
+
+      class TransactionSeries < Lithic::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::BookTransferResponse::TransactionSeries,
+              Lithic::Internal::AnyHash
+            )
+          end
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :related_transaction_event_token
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :related_transaction_token
+
+        sig { returns(String) }
+        attr_accessor :type
+
+        # A series of transactions that are grouped together.
+        sig do
+          params(
+            related_transaction_event_token: T.nilable(String),
+            related_transaction_token: T.nilable(String),
+            type: String
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          related_transaction_event_token:,
+          related_transaction_token:,
+          type:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              related_transaction_event_token: T.nilable(String),
+              related_transaction_token: T.nilable(String),
+              type: String
+            }
+          )
+        end
+        def to_hash
         end
       end
     end

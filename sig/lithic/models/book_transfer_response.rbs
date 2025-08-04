@@ -7,12 +7,14 @@ module Lithic
         created: Time,
         currency: String,
         events: ::Array[Lithic::BookTransferResponse::Event],
+        external_resource: Lithic::ExternalResource?,
         from_financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::BookTransferResponse::result,
         settled_amount: Integer,
         status: Lithic::Models::BookTransferResponse::status,
         to_financial_account_token: top,
+        transaction_series: Lithic::BookTransferResponse::TransactionSeries?,
         updated: Time
       }
 
@@ -27,6 +29,8 @@ module Lithic
 
       attr_accessor events: ::Array[Lithic::BookTransferResponse::Event]
 
+      attr_accessor external_resource: Lithic::ExternalResource?
+
       attr_accessor from_financial_account_token: String
 
       attr_accessor pending_amount: Integer
@@ -39,6 +43,8 @@ module Lithic
 
       attr_accessor to_financial_account_token: top
 
+      attr_accessor transaction_series: Lithic::BookTransferResponse::TransactionSeries?
+
       attr_accessor updated: Time
 
       def initialize: (
@@ -47,12 +53,14 @@ module Lithic
         created: Time,
         currency: String,
         events: ::Array[Lithic::BookTransferResponse::Event],
+        external_resource: Lithic::ExternalResource?,
         from_financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::BookTransferResponse::result,
         settled_amount: Integer,
         status: Lithic::Models::BookTransferResponse::status,
         to_financial_account_token: top,
+        transaction_series: Lithic::BookTransferResponse::TransactionSeries?,
         updated: Time
       ) -> void
 
@@ -62,12 +70,14 @@ module Lithic
         created: Time,
         currency: String,
         events: ::Array[Lithic::BookTransferResponse::Event],
+        external_resource: Lithic::ExternalResource?,
         from_financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::BookTransferResponse::result,
         settled_amount: Integer,
         status: Lithic::Models::BookTransferResponse::status,
         to_financial_account_token: top,
+        transaction_series: Lithic::BookTransferResponse::TransactionSeries?,
         updated: Time
       }
 
@@ -189,6 +199,33 @@ module Lithic
         SETTLED: :SETTLED
 
         def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::status]
+      end
+
+      type transaction_series =
+        {
+          related_transaction_event_token: String?,
+          related_transaction_token: String?,
+          type: String
+        }
+
+      class TransactionSeries < Lithic::Internal::Type::BaseModel
+        attr_accessor related_transaction_event_token: String?
+
+        attr_accessor related_transaction_token: String?
+
+        attr_accessor type: String
+
+        def initialize: (
+          related_transaction_event_token: String?,
+          related_transaction_token: String?,
+          type: String
+        ) -> void
+
+        def to_hash: -> {
+          related_transaction_event_token: String?,
+          related_transaction_token: String?,
+          type: String
+        }
       end
     end
   end

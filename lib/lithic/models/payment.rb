@@ -73,6 +73,12 @@ module Lithic
       #   @return [Integer]
       required :pending_amount, Integer
 
+      # @!attribute related_account_tokens
+      #   Account tokens related to a payment transaction
+      #
+      #   @return [Lithic::Models::Payment::RelatedAccountTokens]
+      required :related_account_tokens, -> { Lithic::Payment::RelatedAccountTokens }
+
       # @!attribute result
       #   APPROVED payments were successful while DECLINED payments were declined by
       #   Lithic or returned.
@@ -121,7 +127,7 @@ module Lithic
       #   @return [Date, nil]
       optional :expected_release_date, Date
 
-      # @!method initialize(token:, category:, created:, currency:, descriptor:, direction:, events:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, pending_amount:, result:, settled_amount:, source:, status:, updated:, user_defined_id:, expected_release_date: nil)
+      # @!method initialize(token:, category:, created:, currency:, descriptor:, direction:, events:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, pending_amount:, related_account_tokens:, result:, settled_amount:, source:, status:, updated:, user_defined_id:, expected_release_date: nil)
       #   Some parameter documentations has been truncated, see {Lithic::Models::Payment}
       #   for more details.
       #
@@ -148,6 +154,8 @@ module Lithic
       #   @param method_attributes [Lithic::Models::Payment::MethodAttributes]
       #
       #   @param pending_amount [Integer] Pending amount of the payment in the currency's smallest unit (e.g., cents).
+      #
+      #   @param related_account_tokens [Lithic::Models::Payment::RelatedAccountTokens] Account tokens related to a payment transaction
       #
       #   @param result [Symbol, Lithic::Models::Payment::Result] APPROVED payments were successful while DECLINED payments were declined by Lithi
       #
@@ -399,6 +407,28 @@ module Lithic
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      # @see Lithic::Models::Payment#related_account_tokens
+      class RelatedAccountTokens < Lithic::Internal::Type::BaseModel
+        # @!attribute account_token
+        #   Globally unique identifier for the account
+        #
+        #   @return [String, nil]
+        required :account_token, String, nil?: true
+
+        # @!attribute business_account_token
+        #   Globally unique identifier for the business account
+        #
+        #   @return [String, nil]
+        required :business_account_token, String, nil?: true
+
+        # @!method initialize(account_token:, business_account_token:)
+        #   Account tokens related to a payment transaction
+        #
+        #   @param account_token [String, nil] Globally unique identifier for the account
+        #
+        #   @param business_account_token [String, nil] Globally unique identifier for the business account
       end
 
       # APPROVED payments were successful while DECLINED payments were declined by

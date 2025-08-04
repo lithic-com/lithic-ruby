@@ -14,6 +14,7 @@ module Lithic
         method_: Lithic::Models::Payment::method_,
         method_attributes: Lithic::Payment::MethodAttributes,
         pending_amount: Integer,
+        related_account_tokens: Lithic::Payment::RelatedAccountTokens,
         result: Lithic::Models::Payment::result,
         settled_amount: Integer,
         source: Lithic::Models::Payment::source,
@@ -48,6 +49,8 @@ module Lithic
 
       attr_accessor pending_amount: Integer
 
+      attr_accessor related_account_tokens: Lithic::Payment::RelatedAccountTokens
+
       attr_accessor result: Lithic::Models::Payment::result
 
       attr_accessor settled_amount: Integer
@@ -77,6 +80,7 @@ module Lithic
         method_: Lithic::Models::Payment::method_,
         method_attributes: Lithic::Payment::MethodAttributes,
         pending_amount: Integer,
+        related_account_tokens: Lithic::Payment::RelatedAccountTokens,
         result: Lithic::Models::Payment::result,
         settled_amount: Integer,
         source: Lithic::Models::Payment::source,
@@ -99,6 +103,7 @@ module Lithic
         method_: Lithic::Models::Payment::method_,
         method_attributes: Lithic::Payment::MethodAttributes,
         pending_amount: Integer,
+        related_account_tokens: Lithic::Payment::RelatedAccountTokens,
         result: Lithic::Models::Payment::result,
         settled_amount: Integer,
         source: Lithic::Models::Payment::source,
@@ -306,6 +311,25 @@ module Lithic
 
           def self?.values: -> ::Array[Lithic::Models::Payment::MethodAttributes::sec_code]
         end
+      end
+
+      type related_account_tokens =
+        { account_token: String?, business_account_token: String? }
+
+      class RelatedAccountTokens < Lithic::Internal::Type::BaseModel
+        attr_accessor account_token: String?
+
+        attr_accessor business_account_token: String?
+
+        def initialize: (
+          account_token: String?,
+          business_account_token: String?
+        ) -> void
+
+        def to_hash: -> {
+          account_token: String?,
+          business_account_token: String?
+        }
       end
 
       type result = :APPROVED | :DECLINED
