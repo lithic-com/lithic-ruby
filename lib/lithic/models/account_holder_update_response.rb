@@ -717,7 +717,14 @@ module Lithic
           #   @return [Time]
           required :updated, Time
 
-          # @!method initialize(created:, status:, status_reasons:, updated:)
+          # @!attribute ky_passed_at
+          #   Timestamp of when the application passed the verification process. Only present
+          #   if `status` is `ACCEPTED`
+          #
+          #   @return [Time, nil]
+          optional :ky_passed_at, Time
+
+          # @!method initialize(created:, status:, status_reasons:, updated:, ky_passed_at: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication}
           #   for more details.
@@ -731,6 +738,8 @@ module Lithic
           #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::VerificationApplication::StatusReason>] Reason for the evaluation status.
           #
           #   @param updated [Time] Timestamp of when the application was last updated.
+          #
+          #   @param ky_passed_at [Time] Timestamp of when the application passed the verification process. Only present
 
           # KYC and KYB evaluation states.
           #

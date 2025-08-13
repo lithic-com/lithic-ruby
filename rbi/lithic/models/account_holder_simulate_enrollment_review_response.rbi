@@ -1363,6 +1363,14 @@ module Lithic
         sig { returns(Time) }
         attr_accessor :updated
 
+        # Timestamp of when the application passed the verification process. Only present
+        # if `status` is `ACCEPTED`
+        sig { returns(T.nilable(Time)) }
+        attr_reader :ky_passed_at
+
+        sig { params(ky_passed_at: Time).void }
+        attr_writer :ky_passed_at
+
         # Information about the most recent identity verification attempt
         sig do
           params(
@@ -1373,7 +1381,8 @@ module Lithic
               T::Array[
                 Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::OrSymbol
               ],
-            updated: Time
+            updated: Time,
+            ky_passed_at: Time
           ).returns(T.attached_class)
         end
         def self.new(
@@ -1387,7 +1396,10 @@ module Lithic
           # Reason for the evaluation status.
           status_reasons:,
           # Timestamp of when the application was last updated.
-          updated:
+          updated:,
+          # Timestamp of when the application passed the verification process. Only present
+          # if `status` is `ACCEPTED`
+          ky_passed_at: nil
         )
         end
 
@@ -1401,7 +1413,8 @@ module Lithic
                 T::Array[
                   Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::StatusReason::TaggedSymbol
                 ],
-              updated: Time
+              updated: Time,
+              ky_passed_at: Time
             }
           )
         end
