@@ -2,6 +2,7 @@ module Lithic
   module Resources
     class AccountActivity
       def list: (
+        ?account_token: String,
         ?begin_: Time,
         ?business_account_token: String,
         ?category: Lithic::Models::AccountActivityListParams::category,

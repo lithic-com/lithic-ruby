@@ -2,6 +2,7 @@ module Lithic
   module Models
     type account_activity_list_params =
       {
+        account_token: String,
         begin_: Time,
         business_account_token: String,
         category: Lithic::Models::AccountActivityListParams::category,
@@ -18,6 +19,10 @@ module Lithic
     class AccountActivityListParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_reader account_token: String?
+
+      def account_token=: (String) -> String
 
       attr_reader begin_: Time?
 
@@ -66,6 +71,7 @@ module Lithic
       ) -> ::Array[Lithic::Models::AccountActivityListParams::status]
 
       def initialize: (
+        ?account_token: String,
         ?begin_: Time,
         ?business_account_token: String,
         ?category: Lithic::Models::AccountActivityListParams::category,
@@ -80,6 +86,7 @@ module Lithic
       ) -> void
 
       def to_hash: -> {
+        account_token: String,
         begin_: Time,
         business_account_token: String,
         category: Lithic::Models::AccountActivityListParams::category,

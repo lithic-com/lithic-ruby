@@ -7,6 +7,12 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
+      # @!attribute account_token
+      #   Filter by account token
+      #
+      #   @return [String, nil]
+      optional :account_token, String
+
       # @!attribute begin_
       #   Date string in RFC 3339 format. Only entries created after the specified time
       #   will be included. UTC time zone.
@@ -77,9 +83,11 @@ module Lithic
                  Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountActivityListParams::Status]
                }
 
-      # @!method initialize(begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
+      # @!method initialize(account_token: nil, begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::AccountActivityListParams} for more details.
+      #
+      #   @param account_token [String] Filter by account token
       #
       #   @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
       #

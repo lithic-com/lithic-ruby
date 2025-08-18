@@ -11,6 +11,13 @@ module Lithic
           T.any(Lithic::AccountActivityListParams, Lithic::Internal::AnyHash)
         end
 
+      # Filter by account token
+      sig { returns(T.nilable(String)) }
+      attr_reader :account_token
+
+      sig { params(account_token: String).void }
+      attr_writer :account_token
+
       # Date string in RFC 3339 format. Only entries created after the specified time
       # will be included. UTC time zone.
       sig { returns(T.nilable(Time)) }
@@ -115,6 +122,7 @@ module Lithic
 
       sig do
         params(
+          account_token: String,
           begin_: Time,
           business_account_token: String,
           category: Lithic::AccountActivityListParams::Category::OrSymbol,
@@ -129,6 +137,8 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
+        # Filter by account token
+        account_token: nil,
         # Date string in RFC 3339 format. Only entries created after the specified time
         # will be included. UTC time zone.
         begin_: nil,
@@ -160,6 +170,7 @@ module Lithic
       sig do
         override.returns(
           {
+            account_token: String,
             begin_: Time,
             business_account_token: String,
             category: Lithic::AccountActivityListParams::Category::OrSymbol,

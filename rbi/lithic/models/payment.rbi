@@ -106,6 +106,13 @@ module Lithic
       sig { params(expected_release_date: Date).void }
       attr_writer :expected_release_date
 
+      # Payment type indicating the specific ACH message or Fedwire transfer type
+      sig { returns(T.nilable(Lithic::Payment::Type::TaggedSymbol)) }
+      attr_reader :type
+
+      sig { params(type: Lithic::Payment::Type::OrSymbol).void }
+      attr_writer :type
+
       sig do
         params(
           token: String,
@@ -127,7 +134,8 @@ module Lithic
           status: Lithic::Payment::Status::OrSymbol,
           updated: Time,
           user_defined_id: T.nilable(String),
-          expected_release_date: Date
+          expected_release_date: Date,
+          type: Lithic::Payment::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -173,7 +181,9 @@ module Lithic
         updated:,
         user_defined_id:,
         # Date when the financial transaction expected to be released after settlement
-        expected_release_date: nil
+        expected_release_date: nil,
+        # Payment type indicating the specific ACH message or Fedwire transfer type
+        type: nil
       )
       end
 
@@ -199,7 +209,8 @@ module Lithic
             status: Lithic::Payment::Status::TaggedSymbol,
             updated: Time,
             user_defined_id: T.nilable(String),
-            expected_release_date: Date
+            expected_release_date: Date,
+            type: Lithic::Payment::Type::TaggedSymbol
           }
         )
       end
@@ -304,6 +315,7 @@ module Lithic
         end
         attr_writer :detailed_results
 
+        # Payment Event
         sig do
           params(
             token: String,
@@ -753,6 +765,39 @@ module Lithic
         sig do
           override.returns(T::Array[Lithic::Payment::Status::TaggedSymbol])
         end
+        def self.values
+        end
+      end
+
+      # Payment type indicating the specific ACH message or Fedwire transfer type
+      module Type
+        extend Lithic::Internal::Type::Enum
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Payment::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        ORIGINATION_CREDIT =
+          T.let(:ORIGINATION_CREDIT, Lithic::Payment::Type::TaggedSymbol)
+        ORIGINATION_DEBIT =
+          T.let(:ORIGINATION_DEBIT, Lithic::Payment::Type::TaggedSymbol)
+        RECEIPT_CREDIT =
+          T.let(:RECEIPT_CREDIT, Lithic::Payment::Type::TaggedSymbol)
+        RECEIPT_DEBIT =
+          T.let(:RECEIPT_DEBIT, Lithic::Payment::Type::TaggedSymbol)
+        CUSTOMER_TRANSFER =
+          T.let(:CUSTOMER_TRANSFER, Lithic::Payment::Type::TaggedSymbol)
+        DRAWDOWN_PAYMENT =
+          T.let(:DRAWDOWN_PAYMENT, Lithic::Payment::Type::TaggedSymbol)
+        REVERSAL_PAYMENT =
+          T.let(:REVERSAL_PAYMENT, Lithic::Payment::Type::TaggedSymbol)
+        DRAWDOWN_REQUEST =
+          T.let(:DRAWDOWN_REQUEST, Lithic::Payment::Type::TaggedSymbol)
+        REVERSAL_REQUEST =
+          T.let(:REVERSAL_REQUEST, Lithic::Payment::Type::TaggedSymbol)
+        DRAWDOWN_REFUSAL =
+          T.let(:DRAWDOWN_REFUSAL, Lithic::Payment::Type::TaggedSymbol)
+
+        sig { override.returns(T::Array[Lithic::Payment::Type::TaggedSymbol]) }
         def self.values
         end
       end

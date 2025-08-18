@@ -127,7 +127,13 @@ module Lithic
       #   @return [Date, nil]
       optional :expected_release_date, Date
 
-      # @!method initialize(token:, category:, created:, currency:, descriptor:, direction:, events:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, pending_amount:, related_account_tokens:, result:, settled_amount:, source:, status:, updated:, user_defined_id:, expected_release_date: nil)
+      # @!attribute type
+      #   Payment type indicating the specific ACH message or Fedwire transfer type
+      #
+      #   @return [Symbol, Lithic::Models::Payment::Type, nil]
+      optional :type, enum: -> { Lithic::Payment::Type }
+
+      # @!method initialize(token:, category:, created:, currency:, descriptor:, direction:, events:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, pending_amount:, related_account_tokens:, result:, settled_amount:, source:, status:, updated:, user_defined_id:, expected_release_date: nil, type: nil)
       #   Some parameter documentations has been truncated, see {Lithic::Models::Payment}
       #   for more details.
       #
@@ -170,6 +176,8 @@ module Lithic
       #   @param user_defined_id [String, nil]
       #
       #   @param expected_release_date [Date] Date when the financial transaction expected to be released after settlement
+      #
+      #   @param type [Symbol, Lithic::Models::Payment::Type] Payment type indicating the specific ACH message or Fedwire transfer type
 
       # Payment category
       #
@@ -256,6 +264,8 @@ module Lithic
         # @!method initialize(token:, amount:, created:, result:, type:, detailed_results: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::Payment::Event} for more details.
+        #
+        #   Payment Event
         #
         #   @param token [String] Globally unique identifier.
         #
@@ -472,6 +482,27 @@ module Lithic
         PENDING = :PENDING
         RETURNED = :RETURNED
         SETTLED = :SETTLED
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # Payment type indicating the specific ACH message or Fedwire transfer type
+      #
+      # @see Lithic::Models::Payment#type
+      module Type
+        extend Lithic::Internal::Type::Enum
+
+        ORIGINATION_CREDIT = :ORIGINATION_CREDIT
+        ORIGINATION_DEBIT = :ORIGINATION_DEBIT
+        RECEIPT_CREDIT = :RECEIPT_CREDIT
+        RECEIPT_DEBIT = :RECEIPT_DEBIT
+        CUSTOMER_TRANSFER = :CUSTOMER_TRANSFER
+        DRAWDOWN_PAYMENT = :DRAWDOWN_PAYMENT
+        REVERSAL_PAYMENT = :REVERSAL_PAYMENT
+        DRAWDOWN_REQUEST = :DRAWDOWN_REQUEST
+        REVERSAL_REQUEST = :REVERSAL_REQUEST
+        DRAWDOWN_REFUSAL = :DRAWDOWN_REFUSAL
 
         # @!method self.values
         #   @return [Array<Symbol>]

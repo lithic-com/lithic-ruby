@@ -8,7 +8,9 @@ module Lithic
       #
       # Retrieve a list of transactions across all public accounts.
       #
-      # @overload list(begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
+      # @overload list(account_token: nil, begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
+      #
+      # @param account_token [String] Filter by account token
       #
       # @param begin_ [Time] Date string in RFC 3339 format. Only entries created after the specified time wi
       #

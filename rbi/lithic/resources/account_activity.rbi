@@ -6,6 +6,7 @@ module Lithic
       # Retrieve a list of transactions across all public accounts.
       sig do
         params(
+          account_token: String,
           begin_: Time,
           business_account_token: String,
           category: Lithic::AccountActivityListParams::Category::OrSymbol,
@@ -24,6 +25,8 @@ module Lithic
         )
       end
       def list(
+        # Filter by account token
+        account_token: nil,
         # Date string in RFC 3339 format. Only entries created after the specified time
         # will be included. UTC time zone.
         begin_: nil,
