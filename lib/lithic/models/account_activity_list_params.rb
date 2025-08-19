@@ -62,10 +62,7 @@ module Lithic
       #   Filter by transaction result
       #
       #   @return [Array<Symbol, Lithic::Models::AccountActivityListParams::Result>, nil]
-      optional :result,
-               -> {
-                 Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountActivityListParams::Result]
-               }
+      optional :result, -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountActivityListParams::Result] }
 
       # @!attribute starting_after
       #   A cursor representing an item's token after which a page of results should
@@ -78,10 +75,7 @@ module Lithic
       #   Filter by transaction status
       #
       #   @return [Array<Symbol, Lithic::Models::AccountActivityListParams::Status>, nil]
-      optional :status,
-               -> {
-                 Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountActivityListParams::Status]
-               }
+      optional :status, -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountActivityListParams::Status] }
 
       # @!method initialize(account_token: nil, begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see

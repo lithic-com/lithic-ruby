@@ -202,9 +202,7 @@ module Lithic
         #
         #   @return [Array<Symbol, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult>]
         required :detailed_results,
-                 -> {
-                   Lithic::Internal::Type::ArrayOf[enum: Lithic::ManagementOperationTransaction::Event::DetailedResult]
-                 }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::ManagementOperationTransaction::Event::DetailedResult] }
 
         # @!attribute effective_date
         #

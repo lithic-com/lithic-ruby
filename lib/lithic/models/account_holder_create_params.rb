@@ -17,9 +17,7 @@ module Lithic
       #
       #   @return [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>]
       required :beneficial_owner_individuals,
-               -> {
-                 Lithic::Internal::Type::ArrayOf[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual]
-               }
+               -> { Lithic::Internal::Type::ArrayOf[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual] }
 
       # @!attribute business_entity
       #   Information for business for which the account is being opened and KYB is being
@@ -69,9 +67,7 @@ module Lithic
       #
       #   @return [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity>, nil]
       optional :beneficial_owner_entities,
-               -> {
-                 Lithic::Internal::Type::ArrayOf[Lithic::AccountHolderCreateParams::BeneficialOwnerEntity]
-               }
+               -> { Lithic::Internal::Type::ArrayOf[Lithic::AccountHolderCreateParams::BeneficialOwnerEntity] }
 
       # @!attribute external_id
       #   A user provided id that can be used to link an account holder with an external

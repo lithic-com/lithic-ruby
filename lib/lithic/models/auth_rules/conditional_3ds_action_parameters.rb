@@ -14,9 +14,7 @@ module Lithic
         #
         #   @return [Array<Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition>]
         required :conditions,
-                 -> {
-                   Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::Conditional3DSActionParameters::Condition]
-                 }
+                 -> { Lithic::Internal::Type::ArrayOf[Lithic::AuthRules::Conditional3DSActionParameters::Condition] }
 
         # @!method initialize(action:, conditions:)
         #   @param action [Symbol, Lithic::Models::AuthRules::Conditional3DSActionParameters::Action] The action to take if the conditions are met.
@@ -61,19 +59,13 @@ module Lithic
           #   - `MESSAGE_CATEGORY`: The category of the authentication being processed.
           #
           #   @return [Symbol, Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::Attribute, nil]
-          optional :attribute,
-                   enum: -> {
-                     Lithic::AuthRules::Conditional3DSActionParameters::Condition::Attribute
-                   }
+          optional :attribute, enum: -> { Lithic::AuthRules::Conditional3DSActionParameters::Condition::Attribute }
 
           # @!attribute operation
           #   The operation to apply to the attribute
           #
           #   @return [Symbol, Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::Operation, nil]
-          optional :operation,
-                   enum: -> {
-                     Lithic::AuthRules::Conditional3DSActionParameters::Condition::Operation
-                   }
+          optional :operation, enum: -> { Lithic::AuthRules::Conditional3DSActionParameters::Condition::Operation }
 
           # @!attribute value
           #   A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`

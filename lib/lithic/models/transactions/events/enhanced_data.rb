@@ -26,10 +26,7 @@ module Lithic
           # @!attribute fleet
           #
           #   @return [Array<Lithic::Models::Transactions::Events::EnhancedData::Fleet>]
-          required :fleet,
-                   -> {
-                     Lithic::Internal::Type::ArrayOf[Lithic::Transactions::Events::EnhancedData::Fleet]
-                   }
+          required :fleet, -> { Lithic::Internal::Type::ArrayOf[Lithic::Transactions::Events::EnhancedData::Fleet] }
 
           # @!attribute transaction_token
           #   The token of the transaction that the enhanced data is associated with.
@@ -54,9 +51,7 @@ module Lithic
             #
             #   @return [Array<Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem>]
             required :line_items,
-                     -> {
-                       Lithic::Internal::Type::ArrayOf[Lithic::Transactions::Events::EnhancedData::Common::LineItem]
-                     }
+                     -> { Lithic::Internal::Type::ArrayOf[Lithic::Transactions::Events::EnhancedData::Common::LineItem] }
 
             # @!attribute tax
             #
@@ -200,10 +195,7 @@ module Lithic
             #   The type of fuel service.
             #
             #   @return [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType, nil]
-            optional :service_type,
-                     enum: -> {
-                       Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType
-                     }
+            optional :service_type, enum: -> { Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType }
 
             # @!attribute vehicle_number
             #   The vehicle number entered into the terminal at the time of sale, with leading

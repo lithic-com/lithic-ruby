@@ -629,9 +629,7 @@ module Lithic
         #
         #   @return [Array<Symbol, Lithic::Models::AccountHolder::VerificationApplication::StatusReason>, nil]
         optional :status_reasons,
-                 -> {
-                   Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountHolder::VerificationApplication::StatusReason]
-                 }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountHolder::VerificationApplication::StatusReason] }
 
         # @!attribute updated
         #   Timestamp of when the application was last updated.

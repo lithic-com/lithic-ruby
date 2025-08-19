@@ -16,9 +16,7 @@ module Lithic
       #
       #   @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::AccountType>, nil]
       optional :account_types,
-               -> {
-                 Lithic::Internal::Type::ArrayOf[enum: Lithic::ExternalBankAccountListParams::AccountType]
-               }
+               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::ExternalBankAccountListParams::AccountType] }
 
       # @!attribute countries
       #
@@ -60,9 +58,7 @@ module Lithic
       #
       #   @return [Array<Symbol, Lithic::Models::ExternalBankAccountListParams::VerificationState>, nil]
       optional :verification_states,
-               -> {
-                 Lithic::Internal::Type::ArrayOf[enum: Lithic::ExternalBankAccountListParams::VerificationState]
-               }
+               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::ExternalBankAccountListParams::VerificationState] }
 
       # @!method initialize(account_token: nil, account_types: nil, countries: nil, ending_before: nil, owner_types: nil, page_size: nil, starting_after: nil, states: nil, verification_states: nil, request_options: {})
       #   Some parameter documentations has been truncated, see

@@ -157,6 +157,7 @@ end
 class Lithic::Test::EnumModelTest < Minitest::Test
   class E0
     include Lithic::Internal::Type::Enum
+
     attr_reader :values
 
     def initialize(*values) = (@values = values)
@@ -476,6 +477,7 @@ class Lithic::Test::UnionTest < Minitest::Test
 
   module U1
     extend Lithic::Internal::Type::Union
+
     variant const: :a
     variant const: 2
   end
@@ -492,6 +494,7 @@ class Lithic::Test::UnionTest < Minitest::Test
 
   module U2
     extend Lithic::Internal::Type::Union
+
     discriminator :type
 
     variant :a, M1
@@ -500,6 +503,7 @@ class Lithic::Test::UnionTest < Minitest::Test
 
   module U3
     extend Lithic::Internal::Type::Union
+
     discriminator :type
 
     variant :a, M1
@@ -508,6 +512,7 @@ class Lithic::Test::UnionTest < Minitest::Test
 
   module U4
     extend Lithic::Internal::Type::Union
+
     discriminator :type
 
     variant String
@@ -601,6 +606,7 @@ end
 class Lithic::Test::BaseModelQoLTest < Minitest::Test
   class E0
     include Lithic::Internal::Type::Enum
+
     attr_reader :values
 
     def initialize(*values) = (@values = values)

@@ -14,9 +14,7 @@ module Lithic
       #
       #   @return [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerEntity>, nil]
       optional :beneficial_owner_entities,
-               -> {
-                 Lithic::Internal::Type::ArrayOf[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity]
-               }
+               -> { Lithic::Internal::Type::ArrayOf[Lithic::AccountHolderUpdateParams::BeneficialOwnerEntity] }
 
       # @!attribute beneficial_owner_individuals
       #   You must submit a list of all direct and indirect individuals with 25% or more
@@ -28,9 +26,7 @@ module Lithic
       #
       #   @return [Array<Lithic::Models::AccountHolderUpdateParams::BeneficialOwnerIndividual>, nil]
       optional :beneficial_owner_individuals,
-               -> {
-                 Lithic::Internal::Type::ArrayOf[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual]
-               }
+               -> { Lithic::Internal::Type::ArrayOf[Lithic::AccountHolderUpdateParams::BeneficialOwnerIndividual] }
 
       # @!attribute business_entity
       #   Information for business for which the account is being opened and KYB is being

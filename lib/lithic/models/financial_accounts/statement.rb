@@ -220,10 +220,7 @@ module Lithic
           # @!attribute period_state
           #
           #   @return [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::PeriodState]
-          required :period_state,
-                   enum: -> {
-                     Lithic::FinancialAccounts::Statement::AccountStanding::PeriodState
-                   }
+          required :period_state, enum: -> { Lithic::FinancialAccounts::Statement::AccountStanding::PeriodState }
 
           # @!method initialize(consecutive_full_payments_made:, consecutive_minimum_payments_made:, consecutive_minimum_payments_missed:, days_past_due:, financial_account_state:, has_grace:, period_number:, period_state:)
           #   @param consecutive_full_payments_made [Integer] Number of consecutive full payments made
@@ -249,9 +246,7 @@ module Lithic
             #
             #   @return [Symbol, Lithic::Models::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Status]
             required :status,
-                     enum: -> {
-                       Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Status
-                     }
+                     enum: -> { Lithic::FinancialAccounts::Statement::AccountStanding::FinancialAccountState::Status }
 
             # @!attribute substatus
             #   Substatus for the financial account
@@ -503,9 +498,7 @@ module Lithic
           #
           #   @return [Symbol, Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod]
           required :interest_calculation_method,
-                   enum: -> {
-                     Lithic::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod
-                   }
+                   enum: -> { Lithic::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod }
 
           # @!attribute interest_for_period
           #
