@@ -106,6 +106,9 @@ module Lithic
     sig { returns(Lithic::Resources::NetworkPrograms) }
     attr_reader :network_programs
 
+    sig { returns(Lithic::Resources::AccountActivity) }
+    attr_reader :account_activity
+
     # Status of api
     sig do
       params(request_options: Lithic::RequestOptions::OrHash).returns(

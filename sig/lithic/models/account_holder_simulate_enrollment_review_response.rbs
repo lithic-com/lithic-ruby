@@ -577,7 +577,8 @@ module Lithic
           created: Time,
           status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::status,
           status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::status_reason],
-          updated: Time
+          updated: Time,
+          ky_passed_at: Time
         }
 
       class VerificationApplication < Lithic::Internal::Type::BaseModel
@@ -589,18 +590,24 @@ module Lithic
 
         attr_accessor updated: Time
 
+        attr_reader ky_passed_at: Time?
+
+        def ky_passed_at=: (Time) -> Time
+
         def initialize: (
           created: Time,
           status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::status,
           status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::status_reason],
-          updated: Time
+          updated: Time,
+          ?ky_passed_at: Time
         ) -> void
 
         def to_hash: -> {
           created: Time,
           status: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::status,
           status_reasons: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::VerificationApplication::status_reason],
-          updated: Time
+          updated: Time,
+          ky_passed_at: Time
         }
 
         type status =

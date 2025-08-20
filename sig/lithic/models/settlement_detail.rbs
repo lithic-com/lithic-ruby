@@ -149,6 +149,7 @@ module Lithic
         | :ARBITRATION
         | :CHARGEBACK
         | :CLEARING
+        | :COLLABORATION
         | :FEE
         | :FINANCIAL
         | :"NON-FINANCIAL"
@@ -162,6 +163,7 @@ module Lithic
         ARBITRATION: :ARBITRATION
         CHARGEBACK: :CHARGEBACK
         CLEARING: :CLEARING
+        COLLABORATION: :COLLABORATION
         FEE: :FEE
         FINANCIAL: :FINANCIAL
         NON_FINANCIAL: :"NON-FINANCIAL"

@@ -25,9 +25,7 @@ module Lithic
       #
       #   @return [Array<Symbol, Lithic::Models::AccountHolderSimulateEnrollmentReviewParams::StatusReason>, nil]
       optional :status_reasons,
-               -> {
-                 Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountHolderSimulateEnrollmentReviewParams::StatusReason]
-               }
+               -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountHolderSimulateEnrollmentReviewParams::StatusReason] }
 
       # @!method initialize(account_holder_token: nil, status: nil, status_reasons: nil, request_options: {})
       #   Some parameter documentations has been truncated, see

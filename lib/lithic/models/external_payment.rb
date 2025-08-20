@@ -5,84 +5,138 @@ module Lithic
     # @see Lithic::Resources::ExternalPayments#create
     class ExternalPayment < Lithic::Internal::Type::BaseModel
       # @!attribute token
+      #   Unique identifier for the transaction
       #
       #   @return [String]
       required :token, String
 
-      # @!attribute category
-      #
-      #   @return [Symbol, Lithic::Models::ExternalPayment::Category]
-      required :category, enum: -> { Lithic::ExternalPayment::Category }
-
       # @!attribute created
+      #   ISO 8601 timestamp of when the transaction was created
       #
       #   @return [Time]
       required :created, Time
 
-      # @!attribute currency
+      # @!attribute family
       #
-      #   @return [String]
-      required :currency, String
-
-      # @!attribute events
-      #
-      #   @return [Array<Lithic::Models::ExternalPayment::Event>]
-      required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event] }
-
-      # @!attribute financial_account_token
-      #
-      #   @return [String]
-      required :financial_account_token, String
-
-      # @!attribute payment_type
-      #
-      #   @return [Symbol, Lithic::Models::ExternalPayment::PaymentType]
-      required :payment_type, enum: -> { Lithic::ExternalPayment::PaymentType }
-
-      # @!attribute pending_amount
-      #
-      #   @return [Integer]
-      required :pending_amount, Integer
-
-      # @!attribute result
-      #
-      #   @return [Symbol, Lithic::Models::ExternalPayment::Result]
-      required :result, enum: -> { Lithic::ExternalPayment::Result }
-
-      # @!attribute settled_amount
-      #
-      #   @return [Integer]
-      required :settled_amount, Integer
+      #   @return [Symbol, Lithic::Models::ExternalPayment::Family]
+      required :family, enum: -> { Lithic::ExternalPayment::Family }
 
       # @!attribute status
+      #   The status of the transaction
       #
       #   @return [Symbol, Lithic::Models::ExternalPayment::Status]
       required :status, enum: -> { Lithic::ExternalPayment::Status }
 
       # @!attribute updated
+      #   ISO 8601 timestamp of when the transaction was last updated
       #
       #   @return [Time]
       required :updated, Time
+
+      # @!attribute category
+      #
+      #   @return [Symbol, Lithic::Models::ExternalPayment::Category, nil]
+      optional :category, enum: -> { Lithic::ExternalPayment::Category }
+
+      # @!attribute currency
+      #
+      #   @return [String, nil]
+      optional :currency, String
+
+      # @!attribute events
+      #
+      #   @return [Array<Lithic::Models::ExternalPayment::Event>, nil]
+      optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event] }
+
+      # @!attribute financial_account_token
+      #
+      #   @return [String, nil]
+      optional :financial_account_token, String
+
+      # @!attribute payment_type
+      #
+      #   @return [Symbol, Lithic::Models::ExternalPayment::PaymentType, nil]
+      optional :payment_type, enum: -> { Lithic::ExternalPayment::PaymentType }
+
+      # @!attribute pending_amount
+      #
+      #   @return [Integer, nil]
+      optional :pending_amount, Integer
+
+      # @!attribute result
+      #
+      #   @return [Symbol, Lithic::Models::ExternalPayment::Result, nil]
+      optional :result, enum: -> { Lithic::ExternalPayment::Result }
+
+      # @!attribute settled_amount
+      #
+      #   @return [Integer, nil]
+      optional :settled_amount, Integer
 
       # @!attribute user_defined_id
       #
       #   @return [String, nil]
       optional :user_defined_id, String
 
-      # @!method initialize(token:, category:, created:, currency:, events:, financial_account_token:, payment_type:, pending_amount:, result:, settled_amount:, status:, updated:, user_defined_id: nil)
-      #   @param token [String]
+      # @!method initialize(token:, created:, family:, status:, updated:, category: nil, currency: nil, events: nil, financial_account_token: nil, payment_type: nil, pending_amount: nil, result: nil, settled_amount: nil, user_defined_id: nil)
+      #   @param token [String] Unique identifier for the transaction
+      #
+      #   @param created [Time] ISO 8601 timestamp of when the transaction was created
+      #
+      #   @param family [Symbol, Lithic::Models::ExternalPayment::Family]
+      #
+      #   @param status [Symbol, Lithic::Models::ExternalPayment::Status] The status of the transaction
+      #
+      #   @param updated [Time] ISO 8601 timestamp of when the transaction was last updated
+      #
       #   @param category [Symbol, Lithic::Models::ExternalPayment::Category]
-      #   @param created [Time]
+      #
       #   @param currency [String]
+      #
       #   @param events [Array<Lithic::Models::ExternalPayment::Event>]
+      #
       #   @param financial_account_token [String]
+      #
       #   @param payment_type [Symbol, Lithic::Models::ExternalPayment::PaymentType]
+      #
       #   @param pending_amount [Integer]
+      #
       #   @param result [Symbol, Lithic::Models::ExternalPayment::Result]
+      #
       #   @param settled_amount [Integer]
-      #   @param status [Symbol, Lithic::Models::ExternalPayment::Status]
-      #   @param updated [Time]
+      #
       #   @param user_defined_id [String]
+
+      # @see Lithic::Models::ExternalPayment#family
+      module Family
+        extend Lithic::Internal::Type::Enum
+
+        CARD = :CARD
+        PAYMENT = :PAYMENT
+        TRANSFER = :TRANSFER
+        INTERNAL = :INTERNAL
+        EXTERNAL_PAYMENT = :EXTERNAL_PAYMENT
+        MANAGEMENT_OPERATION = :MANAGEMENT_OPERATION
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # The status of the transaction
+      #
+      # @see Lithic::Models::ExternalPayment#status
+      module Status
+        extend Lithic::Internal::Type::Enum
+
+        PENDING = :PENDING
+        SETTLED = :SETTLED
+        DECLINED = :DECLINED
+        REVERSED = :REVERSED
+        CANCELED = :CANCELED
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # @see Lithic::Models::ExternalPayment#category
       module Category
@@ -153,6 +207,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
+          INSUFFICIENT_FUNDS = :INSUFFICIENT_FUNDS
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -216,20 +271,6 @@ module Lithic
 
         APPROVED = :APPROVED
         DECLINED = :DECLINED
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      # @see Lithic::Models::ExternalPayment#status
-      module Status
-        extend Lithic::Internal::Type::Enum
-
-        PENDING = :PENDING
-        SETTLED = :SETTLED
-        DECLINED = :DECLINED
-        REVERSED = :REVERSED
-        CANCELED = :CANCELED
 
         # @!method self.values
         #   @return [Array<Symbol>]

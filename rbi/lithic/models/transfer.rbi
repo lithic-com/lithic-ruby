@@ -260,6 +260,7 @@ module Lithic
         sig { params(type: Lithic::Transfer::Event::Type::OrSymbol).void }
         attr_writer :type
 
+        # Financial Event
         sig do
           params(
             token: String,

@@ -9,7 +9,9 @@ module Lithic
         to_financial_account_token: String,
         type: Lithic::Models::BookTransferCreateParams::type_,
         token: String,
-        memo: String
+        external_id: String,
+        memo: String,
+        on_closed_account: Lithic::Models::BookTransferCreateParams::on_closed_account
       }
       & Lithic::Internal::Type::request_parameters
 
@@ -33,9 +35,19 @@ module Lithic
 
       def token=: (String) -> String
 
+      attr_reader external_id: String?
+
+      def external_id=: (String) -> String
+
       attr_reader memo: String?
 
       def memo=: (String) -> String
+
+      attr_reader on_closed_account: Lithic::Models::BookTransferCreateParams::on_closed_account?
+
+      def on_closed_account=: (
+        Lithic::Models::BookTransferCreateParams::on_closed_account
+      ) -> Lithic::Models::BookTransferCreateParams::on_closed_account
 
       def initialize: (
         amount: Integer,
@@ -45,7 +57,9 @@ module Lithic
         to_financial_account_token: String,
         type: Lithic::Models::BookTransferCreateParams::type_,
         ?token: String,
+        ?external_id: String,
         ?memo: String,
+        ?on_closed_account: Lithic::Models::BookTransferCreateParams::on_closed_account,
         ?request_options: Lithic::request_opts
       ) -> void
 
@@ -57,7 +71,9 @@ module Lithic
         to_financial_account_token: String,
         type: Lithic::Models::BookTransferCreateParams::type_,
         token: String,
+        external_id: String,
         memo: String,
+        on_closed_account: Lithic::Models::BookTransferCreateParams::on_closed_account,
         request_options: Lithic::RequestOptions
       }
 
@@ -157,6 +173,17 @@ module Lithic
         TRANSFER: :TRANSFER
 
         def self?.values: -> ::Array[Lithic::Models::BookTransferCreateParams::type_]
+      end
+
+      type on_closed_account = :FAIL | :USE_SUSPENSE
+
+      module OnClosedAccount
+        extend Lithic::Internal::Type::Enum
+
+        FAIL: :FAIL
+        USE_SUSPENSE: :USE_SUSPENSE
+
+        def self?.values: -> ::Array[Lithic::Models::BookTransferCreateParams::on_closed_account]
       end
     end
   end

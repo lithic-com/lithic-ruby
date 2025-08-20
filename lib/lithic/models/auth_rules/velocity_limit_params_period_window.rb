@@ -92,10 +92,7 @@ module Lithic
           # @!attribute type
           #
           #   @return [Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay::Type, nil]
-          optional :type,
-                   enum: -> {
-                     Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay::Type
-                   }
+          optional :type, enum: -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay::Type }
 
           # @!method initialize(type: nil)
           #   Velocity over the current day since 00:00 / 12 AM in Eastern Time
@@ -124,10 +121,7 @@ module Lithic
           # @!attribute type
           #
           #   @return [Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek::Type, nil]
-          optional :type,
-                   enum: -> {
-                     Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek::Type
-                   }
+          optional :type, enum: -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek::Type }
 
           # @!method initialize(day_of_week: nil, type: nil)
           #   Some parameter documentations has been truncated, see
@@ -164,10 +158,7 @@ module Lithic
           # @!attribute type
           #
           #   @return [Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth::Type, nil]
-          optional :type,
-                   enum: -> {
-                     Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth::Type
-                   }
+          optional :type, enum: -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth::Type }
 
           # @!method initialize(day_of_month: nil, type: nil)
           #   Some parameter documentations has been truncated, see
@@ -210,10 +201,7 @@ module Lithic
           # @!attribute type
           #
           #   @return [Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear::Type, nil]
-          optional :type,
-                   enum: -> {
-                     Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear::Type
-                   }
+          optional :type, enum: -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear::Type }
 
           # @!method initialize(day_of_month: nil, month: nil, type: nil)
           #   Some parameter documentations has been truncated, see

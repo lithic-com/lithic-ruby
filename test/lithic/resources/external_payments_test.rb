@@ -20,17 +20,18 @@ class Lithic::Test::Resources::ExternalPaymentsTest < Lithic::Test::ResourceTest
     assert_pattern do
       response => {
         token: String,
-        category: Lithic::ExternalPayment::Category,
         created: Time,
-        currency: String,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event]),
-        financial_account_token: String,
-        payment_type: Lithic::ExternalPayment::PaymentType,
-        pending_amount: Integer,
-        result: Lithic::ExternalPayment::Result,
-        settled_amount: Integer,
+        family: Lithic::ExternalPayment::Family,
         status: Lithic::ExternalPayment::Status,
         updated: Time,
+        category: Lithic::ExternalPayment::Category | nil,
+        currency: String | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event]) | nil,
+        financial_account_token: String | nil,
+        payment_type: Lithic::ExternalPayment::PaymentType | nil,
+        pending_amount: Integer | nil,
+        result: Lithic::ExternalPayment::Result | nil,
+        settled_amount: Integer | nil,
         user_defined_id: String | nil
       }
     end
@@ -46,17 +47,18 @@ class Lithic::Test::Resources::ExternalPaymentsTest < Lithic::Test::ResourceTest
     assert_pattern do
       response => {
         token: String,
-        category: Lithic::ExternalPayment::Category,
         created: Time,
-        currency: String,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event]),
-        financial_account_token: String,
-        payment_type: Lithic::ExternalPayment::PaymentType,
-        pending_amount: Integer,
-        result: Lithic::ExternalPayment::Result,
-        settled_amount: Integer,
+        family: Lithic::ExternalPayment::Family,
         status: Lithic::ExternalPayment::Status,
         updated: Time,
+        category: Lithic::ExternalPayment::Category | nil,
+        currency: String | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event]) | nil,
+        financial_account_token: String | nil,
+        payment_type: Lithic::ExternalPayment::PaymentType | nil,
+        pending_amount: Integer | nil,
+        result: Lithic::ExternalPayment::Result | nil,
+        settled_amount: Integer | nil,
         user_defined_id: String | nil
       }
     end
@@ -79,17 +81,18 @@ class Lithic::Test::Resources::ExternalPaymentsTest < Lithic::Test::ResourceTest
     assert_pattern do
       row => {
         token: String,
-        category: Lithic::ExternalPayment::Category,
         created: Time,
-        currency: String,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event]),
-        financial_account_token: String,
-        payment_type: Lithic::ExternalPayment::PaymentType,
-        pending_amount: Integer,
-        result: Lithic::ExternalPayment::Result,
-        settled_amount: Integer,
+        family: Lithic::ExternalPayment::Family,
         status: Lithic::ExternalPayment::Status,
         updated: Time,
+        category: Lithic::ExternalPayment::Category | nil,
+        currency: String | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event]) | nil,
+        financial_account_token: String | nil,
+        payment_type: Lithic::ExternalPayment::PaymentType | nil,
+        pending_amount: Integer | nil,
+        result: Lithic::ExternalPayment::Result | nil,
+        settled_amount: Integer | nil,
         user_defined_id: String | nil
       }
     end
@@ -106,17 +109,18 @@ class Lithic::Test::Resources::ExternalPaymentsTest < Lithic::Test::ResourceTest
     assert_pattern do
       response => {
         token: String,
-        category: Lithic::ExternalPayment::Category,
         created: Time,
-        currency: String,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event]),
-        financial_account_token: String,
-        payment_type: Lithic::ExternalPayment::PaymentType,
-        pending_amount: Integer,
-        result: Lithic::ExternalPayment::Result,
-        settled_amount: Integer,
+        family: Lithic::ExternalPayment::Family,
         status: Lithic::ExternalPayment::Status,
         updated: Time,
+        category: Lithic::ExternalPayment::Category | nil,
+        currency: String | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event]) | nil,
+        financial_account_token: String | nil,
+        payment_type: Lithic::ExternalPayment::PaymentType | nil,
+        pending_amount: Integer | nil,
+        result: Lithic::ExternalPayment::Result | nil,
+        settled_amount: Integer | nil,
         user_defined_id: String | nil
       }
     end
@@ -133,17 +137,18 @@ class Lithic::Test::Resources::ExternalPaymentsTest < Lithic::Test::ResourceTest
     assert_pattern do
       response => {
         token: String,
-        category: Lithic::ExternalPayment::Category,
         created: Time,
-        currency: String,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event]),
-        financial_account_token: String,
-        payment_type: Lithic::ExternalPayment::PaymentType,
-        pending_amount: Integer,
-        result: Lithic::ExternalPayment::Result,
-        settled_amount: Integer,
+        family: Lithic::ExternalPayment::Family,
         status: Lithic::ExternalPayment::Status,
         updated: Time,
+        category: Lithic::ExternalPayment::Category | nil,
+        currency: String | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event]) | nil,
+        financial_account_token: String | nil,
+        payment_type: Lithic::ExternalPayment::PaymentType | nil,
+        pending_amount: Integer | nil,
+        result: Lithic::ExternalPayment::Result | nil,
+        settled_amount: Integer | nil,
         user_defined_id: String | nil
       }
     end
@@ -160,17 +165,18 @@ class Lithic::Test::Resources::ExternalPaymentsTest < Lithic::Test::ResourceTest
     assert_pattern do
       response => {
         token: String,
-        category: Lithic::ExternalPayment::Category,
         created: Time,
-        currency: String,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event]),
-        financial_account_token: String,
-        payment_type: Lithic::ExternalPayment::PaymentType,
-        pending_amount: Integer,
-        result: Lithic::ExternalPayment::Result,
-        settled_amount: Integer,
+        family: Lithic::ExternalPayment::Family,
         status: Lithic::ExternalPayment::Status,
         updated: Time,
+        category: Lithic::ExternalPayment::Category | nil,
+        currency: String | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event]) | nil,
+        financial_account_token: String | nil,
+        payment_type: Lithic::ExternalPayment::PaymentType | nil,
+        pending_amount: Integer | nil,
+        result: Lithic::ExternalPayment::Result | nil,
+        settled_amount: Integer | nil,
         user_defined_id: String | nil
       }
     end
@@ -187,17 +193,18 @@ class Lithic::Test::Resources::ExternalPaymentsTest < Lithic::Test::ResourceTest
     assert_pattern do
       response => {
         token: String,
-        category: Lithic::ExternalPayment::Category,
         created: Time,
-        currency: String,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event]),
-        financial_account_token: String,
-        payment_type: Lithic::ExternalPayment::PaymentType,
-        pending_amount: Integer,
-        result: Lithic::ExternalPayment::Result,
-        settled_amount: Integer,
+        family: Lithic::ExternalPayment::Family,
         status: Lithic::ExternalPayment::Status,
         updated: Time,
+        category: Lithic::ExternalPayment::Category | nil,
+        currency: String | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event]) | nil,
+        financial_account_token: String | nil,
+        payment_type: Lithic::ExternalPayment::PaymentType | nil,
+        pending_amount: Integer | nil,
+        result: Lithic::ExternalPayment::Result | nil,
+        settled_amount: Integer | nil,
         user_defined_id: String | nil
       }
     end

@@ -9,9 +9,7 @@ module Lithic
           #
           #   @return [Array<Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data>]
           required :data,
-                   -> {
-                     Lithic::Internal::Type::ArrayOf[Lithic::FinancialAccounts::Statements::StatementLineItems::Data]
-                   }
+                   -> { Lithic::Internal::Type::ArrayOf[Lithic::FinancialAccounts::Statements::StatementLineItems::Data] }
 
           # @!attribute has_more
           #
@@ -38,10 +36,7 @@ module Lithic
             # @!attribute category
             #
             #   @return [Symbol, Lithic::Models::FinancialAccounts::Statements::StatementLineItems::Data::Category]
-            required :category,
-                     enum: -> {
-                       Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category
-                     }
+            required :category, enum: -> { Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category }
 
             # @!attribute created
             #   Timestamp of when the line item was generated

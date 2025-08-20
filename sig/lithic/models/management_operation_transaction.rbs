@@ -3,50 +3,77 @@ module Lithic
     type management_operation_transaction =
       {
         token: String,
-        category: Lithic::Models::ManagementOperationTransaction::category,
         created: Time,
+        family: Lithic::Models::ManagementOperationTransaction::family,
+        status: Lithic::Models::ManagementOperationTransaction::status,
+        updated: Time,
+        category: Lithic::Models::ManagementOperationTransaction::category,
         currency: String,
         direction: Lithic::Models::ManagementOperationTransaction::direction,
         events: ::Array[Lithic::ManagementOperationTransaction::Event],
+        external_resource: Lithic::ExternalResource?,
         financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::ManagementOperationTransaction::result,
         settled_amount: Integer,
-        status: Lithic::Models::ManagementOperationTransaction::status,
         transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries?,
-        updated: Time,
-        external_resource: Lithic::ExternalResource?,
         user_defined_id: String
       }
 
     class ManagementOperationTransaction < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
-      attr_accessor category: Lithic::Models::ManagementOperationTransaction::category
-
       attr_accessor created: Time
 
-      attr_accessor currency: String
-
-      attr_accessor direction: Lithic::Models::ManagementOperationTransaction::direction
-
-      attr_accessor events: ::Array[Lithic::ManagementOperationTransaction::Event]
-
-      attr_accessor financial_account_token: String
-
-      attr_accessor pending_amount: Integer
-
-      attr_accessor result: Lithic::Models::ManagementOperationTransaction::result
-
-      attr_accessor settled_amount: Integer
+      attr_accessor family: Lithic::Models::ManagementOperationTransaction::family
 
       attr_accessor status: Lithic::Models::ManagementOperationTransaction::status
 
-      attr_accessor transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries?
-
       attr_accessor updated: Time
 
+      attr_reader category: Lithic::Models::ManagementOperationTransaction::category?
+
+      def category=: (
+        Lithic::Models::ManagementOperationTransaction::category
+      ) -> Lithic::Models::ManagementOperationTransaction::category
+
+      attr_reader currency: String?
+
+      def currency=: (String) -> String
+
+      attr_reader direction: Lithic::Models::ManagementOperationTransaction::direction?
+
+      def direction=: (
+        Lithic::Models::ManagementOperationTransaction::direction
+      ) -> Lithic::Models::ManagementOperationTransaction::direction
+
+      attr_reader events: ::Array[Lithic::ManagementOperationTransaction::Event]?
+
+      def events=: (
+        ::Array[Lithic::ManagementOperationTransaction::Event]
+      ) -> ::Array[Lithic::ManagementOperationTransaction::Event]
+
       attr_accessor external_resource: Lithic::ExternalResource?
+
+      attr_reader financial_account_token: String?
+
+      def financial_account_token=: (String) -> String
+
+      attr_reader pending_amount: Integer?
+
+      def pending_amount=: (Integer) -> Integer
+
+      attr_reader result: Lithic::Models::ManagementOperationTransaction::result?
+
+      def result=: (
+        Lithic::Models::ManagementOperationTransaction::result
+      ) -> Lithic::Models::ManagementOperationTransaction::result
+
+      attr_reader settled_amount: Integer?
+
+      def settled_amount=: (Integer) -> Integer
+
+      attr_accessor transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries?
 
       attr_reader user_defined_id: String?
 
@@ -54,39 +81,76 @@ module Lithic
 
       def initialize: (
         token: String,
-        category: Lithic::Models::ManagementOperationTransaction::category,
         created: Time,
-        currency: String,
-        direction: Lithic::Models::ManagementOperationTransaction::direction,
-        events: ::Array[Lithic::ManagementOperationTransaction::Event],
-        financial_account_token: String,
-        pending_amount: Integer,
-        result: Lithic::Models::ManagementOperationTransaction::result,
-        settled_amount: Integer,
+        family: Lithic::Models::ManagementOperationTransaction::family,
         status: Lithic::Models::ManagementOperationTransaction::status,
-        transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries?,
         updated: Time,
+        ?category: Lithic::Models::ManagementOperationTransaction::category,
+        ?currency: String,
+        ?direction: Lithic::Models::ManagementOperationTransaction::direction,
+        ?events: ::Array[Lithic::ManagementOperationTransaction::Event],
         ?external_resource: Lithic::ExternalResource?,
+        ?financial_account_token: String,
+        ?pending_amount: Integer,
+        ?result: Lithic::Models::ManagementOperationTransaction::result,
+        ?settled_amount: Integer,
+        ?transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries?,
         ?user_defined_id: String
       ) -> void
 
       def to_hash: -> {
         token: String,
-        category: Lithic::Models::ManagementOperationTransaction::category,
         created: Time,
+        family: Lithic::Models::ManagementOperationTransaction::family,
+        status: Lithic::Models::ManagementOperationTransaction::status,
+        updated: Time,
+        category: Lithic::Models::ManagementOperationTransaction::category,
         currency: String,
         direction: Lithic::Models::ManagementOperationTransaction::direction,
         events: ::Array[Lithic::ManagementOperationTransaction::Event],
+        external_resource: Lithic::ExternalResource?,
         financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::ManagementOperationTransaction::result,
         settled_amount: Integer,
-        status: Lithic::Models::ManagementOperationTransaction::status,
         transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries?,
-        updated: Time,
-        external_resource: Lithic::ExternalResource?,
         user_defined_id: String
       }
+
+      type family =
+        :CARD
+        | :PAYMENT
+        | :TRANSFER
+        | :INTERNAL
+        | :EXTERNAL_PAYMENT
+        | :MANAGEMENT_OPERATION
+
+      module Family
+        extend Lithic::Internal::Type::Enum
+
+        CARD: :CARD
+        PAYMENT: :PAYMENT
+        TRANSFER: :TRANSFER
+        INTERNAL: :INTERNAL
+        EXTERNAL_PAYMENT: :EXTERNAL_PAYMENT
+        MANAGEMENT_OPERATION: :MANAGEMENT_OPERATION
+
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::family]
+      end
+
+      type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
+
+      module Status
+        extend Lithic::Internal::Type::Enum
+
+        PENDING: :PENDING
+        SETTLED: :SETTLED
+        DECLINED: :DECLINED
+        REVERSED: :REVERSED
+        CANCELED: :CANCELED
+
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::status]
+      end
 
       type category =
         :MANAGEMENT_FEE
@@ -176,12 +240,13 @@ module Lithic
           subtype: String
         }
 
-        type detailed_result = :APPROVED
+        type detailed_result = :APPROVED | :INSUFFICIENT_FUNDS
 
         module DetailedResult
           extend Lithic::Internal::Type::Enum
 
           APPROVED: :APPROVED
+          INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
 
           def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::detailed_result]
         end
@@ -254,20 +319,6 @@ module Lithic
         DECLINED: :DECLINED
 
         def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::result]
-      end
-
-      type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
-
-      module Status
-        extend Lithic::Internal::Type::Enum
-
-        PENDING: :PENDING
-        SETTLED: :SETTLED
-        DECLINED: :DECLINED
-        REVERSED: :REVERSED
-        CANCELED: :CANCELED
-
-        def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::status]
       end
 
       type transaction_series =

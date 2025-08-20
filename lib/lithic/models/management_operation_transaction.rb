@@ -5,73 +5,53 @@ module Lithic
     # @see Lithic::Resources::ManagementOperations#create
     class ManagementOperationTransaction < Lithic::Internal::Type::BaseModel
       # @!attribute token
+      #   Unique identifier for the transaction
       #
       #   @return [String]
       required :token, String
 
-      # @!attribute category
-      #
-      #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Category]
-      required :category, enum: -> { Lithic::ManagementOperationTransaction::Category }
-
       # @!attribute created
+      #   ISO 8601 timestamp of when the transaction was created
       #
       #   @return [Time]
       required :created, Time
 
-      # @!attribute currency
+      # @!attribute family
       #
-      #   @return [String]
-      required :currency, String
-
-      # @!attribute direction
-      #
-      #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Direction]
-      required :direction, enum: -> { Lithic::ManagementOperationTransaction::Direction }
-
-      # @!attribute events
-      #
-      #   @return [Array<Lithic::Models::ManagementOperationTransaction::Event>]
-      required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::ManagementOperationTransaction::Event] }
-
-      # @!attribute financial_account_token
-      #
-      #   @return [String]
-      required :financial_account_token, String
-
-      # @!attribute pending_amount
-      #
-      #   @return [Integer]
-      required :pending_amount, Integer
-
-      # @!attribute result
-      #
-      #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Result]
-      required :result, enum: -> { Lithic::ManagementOperationTransaction::Result }
-
-      # @!attribute settled_amount
-      #
-      #   @return [Integer]
-      required :settled_amount, Integer
+      #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Family]
+      required :family, enum: -> { Lithic::ManagementOperationTransaction::Family }
 
       # @!attribute status
+      #   The status of the transaction
       #
       #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Status]
       required :status, enum: -> { Lithic::ManagementOperationTransaction::Status }
 
-      # @!attribute transaction_series
-      #
-      #   @return [Lithic::Models::ManagementOperationTransaction::TransactionSeries, nil]
-      required :transaction_series,
-               -> {
-                 Lithic::ManagementOperationTransaction::TransactionSeries
-               },
-               nil?: true
-
       # @!attribute updated
+      #   ISO 8601 timestamp of when the transaction was last updated
       #
       #   @return [Time]
       required :updated, Time
+
+      # @!attribute category
+      #
+      #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Category, nil]
+      optional :category, enum: -> { Lithic::ManagementOperationTransaction::Category }
+
+      # @!attribute currency
+      #
+      #   @return [String, nil]
+      optional :currency, String
+
+      # @!attribute direction
+      #
+      #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Direction, nil]
+      optional :direction, enum: -> { Lithic::ManagementOperationTransaction::Direction }
+
+      # @!attribute events
+      #
+      #   @return [Array<Lithic::Models::ManagementOperationTransaction::Event>, nil]
+      optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::ManagementOperationTransaction::Event] }
 
       # @!attribute external_resource
       #   External resource associated with the management operation
@@ -79,23 +59,60 @@ module Lithic
       #   @return [Lithic::Models::ExternalResource, nil]
       optional :external_resource, -> { Lithic::ExternalResource }, nil?: true
 
+      # @!attribute financial_account_token
+      #
+      #   @return [String, nil]
+      optional :financial_account_token, String
+
+      # @!attribute pending_amount
+      #
+      #   @return [Integer, nil]
+      optional :pending_amount, Integer
+
+      # @!attribute result
+      #
+      #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Result, nil]
+      optional :result, enum: -> { Lithic::ManagementOperationTransaction::Result }
+
+      # @!attribute settled_amount
+      #
+      #   @return [Integer, nil]
+      optional :settled_amount, Integer
+
+      # @!attribute transaction_series
+      #
+      #   @return [Lithic::Models::ManagementOperationTransaction::TransactionSeries, nil]
+      optional :transaction_series,
+               -> {
+                 Lithic::ManagementOperationTransaction::TransactionSeries
+               },
+               nil?: true
+
       # @!attribute user_defined_id
       #
       #   @return [String, nil]
       optional :user_defined_id, String
 
-      # @!method initialize(token:, category:, created:, currency:, direction:, events:, financial_account_token:, pending_amount:, result:, settled_amount:, status:, transaction_series:, updated:, external_resource: nil, user_defined_id: nil)
-      #   @param token [String]
+      # @!method initialize(token:, created:, family:, status:, updated:, category: nil, currency: nil, direction: nil, events: nil, external_resource: nil, financial_account_token: nil, pending_amount: nil, result: nil, settled_amount: nil, transaction_series: nil, user_defined_id: nil)
+      #   @param token [String] Unique identifier for the transaction
+      #
+      #   @param created [Time] ISO 8601 timestamp of when the transaction was created
+      #
+      #   @param family [Symbol, Lithic::Models::ManagementOperationTransaction::Family]
+      #
+      #   @param status [Symbol, Lithic::Models::ManagementOperationTransaction::Status] The status of the transaction
+      #
+      #   @param updated [Time] ISO 8601 timestamp of when the transaction was last updated
       #
       #   @param category [Symbol, Lithic::Models::ManagementOperationTransaction::Category]
-      #
-      #   @param created [Time]
       #
       #   @param currency [String]
       #
       #   @param direction [Symbol, Lithic::Models::ManagementOperationTransaction::Direction]
       #
       #   @param events [Array<Lithic::Models::ManagementOperationTransaction::Event>]
+      #
+      #   @param external_resource [Lithic::Models::ExternalResource, nil] External resource associated with the management operation
       #
       #   @param financial_account_token [String]
       #
@@ -105,15 +122,40 @@ module Lithic
       #
       #   @param settled_amount [Integer]
       #
-      #   @param status [Symbol, Lithic::Models::ManagementOperationTransaction::Status]
-      #
       #   @param transaction_series [Lithic::Models::ManagementOperationTransaction::TransactionSeries, nil]
       #
-      #   @param updated [Time]
-      #
-      #   @param external_resource [Lithic::Models::ExternalResource, nil] External resource associated with the management operation
-      #
       #   @param user_defined_id [String]
+
+      # @see Lithic::Models::ManagementOperationTransaction#family
+      module Family
+        extend Lithic::Internal::Type::Enum
+
+        CARD = :CARD
+        PAYMENT = :PAYMENT
+        TRANSFER = :TRANSFER
+        INTERNAL = :INTERNAL
+        EXTERNAL_PAYMENT = :EXTERNAL_PAYMENT
+        MANAGEMENT_OPERATION = :MANAGEMENT_OPERATION
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # The status of the transaction
+      #
+      # @see Lithic::Models::ManagementOperationTransaction#status
+      module Status
+        extend Lithic::Internal::Type::Enum
+
+        PENDING = :PENDING
+        SETTLED = :SETTLED
+        DECLINED = :DECLINED
+        REVERSED = :REVERSED
+        CANCELED = :CANCELED
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # @see Lithic::Models::ManagementOperationTransaction#category
       module Category
@@ -160,9 +202,7 @@ module Lithic
         #
         #   @return [Array<Symbol, Lithic::Models::ManagementOperationTransaction::Event::DetailedResult>]
         required :detailed_results,
-                 -> {
-                   Lithic::Internal::Type::ArrayOf[enum: Lithic::ManagementOperationTransaction::Event::DetailedResult]
-                 }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::ManagementOperationTransaction::Event::DetailedResult] }
 
         # @!attribute effective_date
         #
@@ -204,6 +244,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
+          INSUFFICIENT_FUNDS = :INSUFFICIENT_FUNDS
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -255,20 +296,6 @@ module Lithic
 
         APPROVED = :APPROVED
         DECLINED = :DECLINED
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      # @see Lithic::Models::ManagementOperationTransaction#status
-      module Status
-        extend Lithic::Internal::Type::Enum
-
-        PENDING = :PENDING
-        SETTLED = :SETTLED
-        DECLINED = :DECLINED
-        REVERSED = :REVERSED
-        CANCELED = :CANCELED
 
         # @!method self.values
         #   @return [Array<Symbol>]

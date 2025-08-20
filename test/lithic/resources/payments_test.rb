@@ -40,13 +40,15 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
         method_: Lithic::Payment::Method,
         method_attributes: Lithic::Payment::MethodAttributes,
         pending_amount: Integer,
+        related_account_tokens: Lithic::Payment::RelatedAccountTokens,
         result: Lithic::Payment::Result,
         settled_amount: Integer,
         source: Lithic::Payment::Source,
         status: Lithic::Payment::Status,
         updated: Time,
         user_defined_id: String | nil,
-        expected_release_date: Date | nil
+        expected_release_date: Date | nil,
+        type: Lithic::Payment::Type | nil
       }
     end
   end
@@ -79,13 +81,15 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
         method_: Lithic::Payment::Method,
         method_attributes: Lithic::Payment::MethodAttributes,
         pending_amount: Integer,
+        related_account_tokens: Lithic::Payment::RelatedAccountTokens,
         result: Lithic::Payment::Result,
         settled_amount: Integer,
         source: Lithic::Payment::Source,
         status: Lithic::Payment::Status,
         updated: Time,
         user_defined_id: String | nil,
-        expected_release_date: Date | nil
+        expected_release_date: Date | nil,
+        type: Lithic::Payment::Type | nil
       }
     end
   end

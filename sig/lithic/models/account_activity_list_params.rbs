@@ -1,0 +1,173 @@
+module Lithic
+  module Models
+    type account_activity_list_params =
+      {
+        account_token: String,
+        begin_: Time,
+        business_account_token: String,
+        category: Lithic::Models::AccountActivityListParams::category,
+        end_: Time,
+        ending_before: String,
+        financial_account_token: String,
+        page_size: Integer,
+        result: ::Array[Lithic::Models::AccountActivityListParams::result],
+        starting_after: String,
+        status: ::Array[Lithic::Models::AccountActivityListParams::status]
+      }
+      & Lithic::Internal::Type::request_parameters
+
+    class AccountActivityListParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_reader account_token: String?
+
+      def account_token=: (String) -> String
+
+      attr_reader begin_: Time?
+
+      def begin_=: (Time) -> Time
+
+      attr_reader business_account_token: String?
+
+      def business_account_token=: (String) -> String
+
+      attr_reader category: Lithic::Models::AccountActivityListParams::category?
+
+      def category=: (
+        Lithic::Models::AccountActivityListParams::category
+      ) -> Lithic::Models::AccountActivityListParams::category
+
+      attr_reader end_: Time?
+
+      def end_=: (Time) -> Time
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader financial_account_token: String?
+
+      def financial_account_token=: (String) -> String
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader result: ::Array[Lithic::Models::AccountActivityListParams::result]?
+
+      def result=: (
+        ::Array[Lithic::Models::AccountActivityListParams::result]
+      ) -> ::Array[Lithic::Models::AccountActivityListParams::result]
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      attr_reader status: ::Array[Lithic::Models::AccountActivityListParams::status]?
+
+      def status=: (
+        ::Array[Lithic::Models::AccountActivityListParams::status]
+      ) -> ::Array[Lithic::Models::AccountActivityListParams::status]
+
+      def initialize: (
+        ?account_token: String,
+        ?begin_: Time,
+        ?business_account_token: String,
+        ?category: Lithic::Models::AccountActivityListParams::category,
+        ?end_: Time,
+        ?ending_before: String,
+        ?financial_account_token: String,
+        ?page_size: Integer,
+        ?result: ::Array[Lithic::Models::AccountActivityListParams::result],
+        ?starting_after: String,
+        ?status: ::Array[Lithic::Models::AccountActivityListParams::status],
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        account_token: String,
+        begin_: Time,
+        business_account_token: String,
+        category: Lithic::Models::AccountActivityListParams::category,
+        end_: Time,
+        ending_before: String,
+        financial_account_token: String,
+        page_size: Integer,
+        result: ::Array[Lithic::Models::AccountActivityListParams::result],
+        starting_after: String,
+        status: ::Array[Lithic::Models::AccountActivityListParams::status],
+        request_options: Lithic::RequestOptions
+      }
+
+      type category =
+        :ACH
+        | :BALANCE_OR_FUNDING
+        | :CARD
+        | :EXTERNAL_ACH
+        | :EXTERNAL_CHECK
+        | :EXTERNAL_TRANSFER
+        | :EXTERNAL_WIRE
+        | :MANAGEMENT_ADJUSTMENT
+        | :MANAGEMENT_DISPUTE
+        | :MANAGEMENT_FEE
+        | :MANAGEMENT_REWARD
+        | :MANAGEMENT_DISBURSEMENT
+        | :PROGRAM_FUNDING
+
+      module Category
+        extend Lithic::Internal::Type::Enum
+
+        ACH: :ACH
+        BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
+        CARD: :CARD
+        EXTERNAL_ACH: :EXTERNAL_ACH
+        EXTERNAL_CHECK: :EXTERNAL_CHECK
+        EXTERNAL_TRANSFER: :EXTERNAL_TRANSFER
+        EXTERNAL_WIRE: :EXTERNAL_WIRE
+        MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
+        MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
+        MANAGEMENT_FEE: :MANAGEMENT_FEE
+        MANAGEMENT_REWARD: :MANAGEMENT_REWARD
+        MANAGEMENT_DISBURSEMENT: :MANAGEMENT_DISBURSEMENT
+        PROGRAM_FUNDING: :PROGRAM_FUNDING
+
+        def self?.values: -> ::Array[Lithic::Models::AccountActivityListParams::category]
+      end
+
+      type result = :APPROVED | :DECLINED
+
+      module Result
+        extend Lithic::Internal::Type::Enum
+
+        APPROVED: :APPROVED
+        DECLINED: :DECLINED
+
+        def self?.values: -> ::Array[Lithic::Models::AccountActivityListParams::result]
+      end
+
+      type status =
+        :DECLINED
+        | :EXPIRED
+        | :PENDING
+        | :SETTLED
+        | :VOIDED
+        | :RETURNED
+        | :REVERSED
+
+      module Status
+        extend Lithic::Internal::Type::Enum
+
+        DECLINED: :DECLINED
+        EXPIRED: :EXPIRED
+        PENDING: :PENDING
+        SETTLED: :SETTLED
+        VOIDED: :VOIDED
+        RETURNED: :RETURNED
+        REVERSED: :REVERSED
+
+        def self?.values: -> ::Array[Lithic::Models::AccountActivityListParams::status]
+      end
+    end
+  end
+end

@@ -355,6 +355,11 @@ module Lithic
           )
         COLLECTION =
           T.let(:COLLECTION, Lithic::FinancialAccount::Type::TaggedSymbol)
+        BANK_ACCOUNTS_PAYABLE =
+          T.let(
+            :BANK_ACCOUNTS_PAYABLE,
+            Lithic::FinancialAccount::Type::TaggedSymbol
+          )
 
         sig do
           override.returns(

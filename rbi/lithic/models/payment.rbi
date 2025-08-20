@@ -58,6 +58,17 @@ module Lithic
       sig { returns(Integer) }
       attr_accessor :pending_amount
 
+      # Account tokens related to a payment transaction
+      sig { returns(Lithic::Payment::RelatedAccountTokens) }
+      attr_reader :related_account_tokens
+
+      sig do
+        params(
+          related_account_tokens: Lithic::Payment::RelatedAccountTokens::OrHash
+        ).void
+      end
+      attr_writer :related_account_tokens
+
       # APPROVED payments were successful while DECLINED payments were declined by
       # Lithic or returned.
       sig { returns(Lithic::Payment::Result::TaggedSymbol) }
@@ -95,6 +106,13 @@ module Lithic
       sig { params(expected_release_date: Date).void }
       attr_writer :expected_release_date
 
+      # Payment type indicating the specific ACH message or Fedwire transfer type
+      sig { returns(T.nilable(Lithic::Payment::Type::TaggedSymbol)) }
+      attr_reader :type
+
+      sig { params(type: Lithic::Payment::Type::OrSymbol).void }
+      attr_writer :type
+
       sig do
         params(
           token: String,
@@ -109,13 +127,15 @@ module Lithic
           method_: Lithic::Payment::Method::OrSymbol,
           method_attributes: Lithic::Payment::MethodAttributes::OrHash,
           pending_amount: Integer,
+          related_account_tokens: Lithic::Payment::RelatedAccountTokens::OrHash,
           result: Lithic::Payment::Result::OrSymbol,
           settled_amount: Integer,
           source: Lithic::Payment::Source::OrSymbol,
           status: Lithic::Payment::Status::OrSymbol,
           updated: Time,
           user_defined_id: T.nilable(String),
-          expected_release_date: Date
+          expected_release_date: Date,
+          type: Lithic::Payment::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -140,6 +160,8 @@ module Lithic
         # Pending amount of the payment in the currency's smallest unit (e.g., cents). The
         # value of this field will go to zero over time once the payment is settled.
         pending_amount:,
+        # Account tokens related to a payment transaction
+        related_account_tokens:,
         # APPROVED payments were successful while DECLINED payments were declined by
         # Lithic or returned.
         result:,
@@ -159,7 +181,9 @@ module Lithic
         updated:,
         user_defined_id:,
         # Date when the financial transaction expected to be released after settlement
-        expected_release_date: nil
+        expected_release_date: nil,
+        # Payment type indicating the specific ACH message or Fedwire transfer type
+        type: nil
       )
       end
 
@@ -178,13 +202,15 @@ module Lithic
             method_: Lithic::Payment::Method::TaggedSymbol,
             method_attributes: Lithic::Payment::MethodAttributes,
             pending_amount: Integer,
+            related_account_tokens: Lithic::Payment::RelatedAccountTokens,
             result: Lithic::Payment::Result::TaggedSymbol,
             settled_amount: Integer,
             source: Lithic::Payment::Source::TaggedSymbol,
             status: Lithic::Payment::Status::TaggedSymbol,
             updated: Time,
             user_defined_id: T.nilable(String),
-            expected_release_date: Date
+            expected_release_date: Date,
+            type: Lithic::Payment::Type::TaggedSymbol
           }
         )
       end
@@ -289,6 +315,7 @@ module Lithic
         end
         attr_writer :detailed_results
 
+        # Payment Event
         sig do
           params(
             token: String,
@@ -639,6 +666,50 @@ module Lithic
         end
       end
 
+      class RelatedAccountTokens < Lithic::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Lithic::Payment::RelatedAccountTokens,
+              Lithic::Internal::AnyHash
+            )
+          end
+
+        # Globally unique identifier for the account
+        sig { returns(T.nilable(String)) }
+        attr_accessor :account_token
+
+        # Globally unique identifier for the business account
+        sig { returns(T.nilable(String)) }
+        attr_accessor :business_account_token
+
+        # Account tokens related to a payment transaction
+        sig do
+          params(
+            account_token: T.nilable(String),
+            business_account_token: T.nilable(String)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Globally unique identifier for the account
+          account_token:,
+          # Globally unique identifier for the business account
+          business_account_token:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              account_token: T.nilable(String),
+              business_account_token: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
+        end
+      end
+
       # APPROVED payments were successful while DECLINED payments were declined by
       # Lithic or returned.
       module Result
@@ -694,6 +765,39 @@ module Lithic
         sig do
           override.returns(T::Array[Lithic::Payment::Status::TaggedSymbol])
         end
+        def self.values
+        end
+      end
+
+      # Payment type indicating the specific ACH message or Fedwire transfer type
+      module Type
+        extend Lithic::Internal::Type::Enum
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Payment::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        ORIGINATION_CREDIT =
+          T.let(:ORIGINATION_CREDIT, Lithic::Payment::Type::TaggedSymbol)
+        ORIGINATION_DEBIT =
+          T.let(:ORIGINATION_DEBIT, Lithic::Payment::Type::TaggedSymbol)
+        RECEIPT_CREDIT =
+          T.let(:RECEIPT_CREDIT, Lithic::Payment::Type::TaggedSymbol)
+        RECEIPT_DEBIT =
+          T.let(:RECEIPT_DEBIT, Lithic::Payment::Type::TaggedSymbol)
+        CUSTOMER_TRANSFER =
+          T.let(:CUSTOMER_TRANSFER, Lithic::Payment::Type::TaggedSymbol)
+        DRAWDOWN_PAYMENT =
+          T.let(:DRAWDOWN_PAYMENT, Lithic::Payment::Type::TaggedSymbol)
+        REVERSAL_PAYMENT =
+          T.let(:REVERSAL_PAYMENT, Lithic::Payment::Type::TaggedSymbol)
+        DRAWDOWN_REQUEST =
+          T.let(:DRAWDOWN_REQUEST, Lithic::Payment::Type::TaggedSymbol)
+        REVERSAL_REQUEST =
+          T.let(:REVERSAL_REQUEST, Lithic::Payment::Type::TaggedSymbol)
+        DRAWDOWN_REFUSAL =
+          T.let(:DRAWDOWN_REFUSAL, Lithic::Payment::Type::TaggedSymbol)
+
+        sig { override.returns(T::Array[Lithic::Payment::Type::TaggedSymbol]) }
         def self.values
         end
       end

@@ -11,14 +11,14 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::TokenizationRetrieveResponse]
+      # @return [Lithic::Models::Tokenization]
       #
       # @see Lithic::Models::TokenizationRetrieveParams
       def retrieve(tokenization_token, params = {})
         @client.request(
           method: :get,
           path: ["v1/tokenizations/%1$s", tokenization_token],
-          model: Lithic::Models::TokenizationRetrieveResponse,
+          model: Lithic::Tokenization,
           options: params[:request_options]
         )
       end

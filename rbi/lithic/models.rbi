@@ -3,6 +3,11 @@
 module Lithic
   Account = Lithic::Models::Account
 
+  AccountActivityListParams = Lithic::Models::AccountActivityListParams
+
+  AccountActivityRetrieveTransactionParams =
+    Lithic::Models::AccountActivityRetrieveTransactionParams
+
   AccountFinancialAccountType = Lithic::Models::AccountFinancialAccountType
 
   AccountHolder = Lithic::Models::AccountHolder

@@ -14,12 +14,15 @@ module Lithic
           to_financial_account_token: String,
           type: Lithic::BookTransferCreateParams::Type::OrSymbol,
           token: String,
+          external_id: String,
           memo: String,
+          on_closed_account:
+            Lithic::BookTransferCreateParams::OnClosedAccount::OrSymbol,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(Lithic::BookTransferResponse)
       end
       def create(
-        # Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
+        # Amount to be transferred in the currency's smallest unit (e.g., cents for USD).
         # This should always be a positive value.
         amount:,
         # Category of the book transfer
@@ -32,13 +35,17 @@ module Lithic
         # Globally unique identifier for the financial account or card that will receive
         # the funds. Accepted type dependent on the program's use case.
         to_financial_account_token:,
-        # Type of book_transfer
+        # Type of the book transfer
         type:,
         # Customer-provided token that will serve as an idempotency token. This token will
         # become the transaction token.
         token: nil,
+        # External ID defined by the customer
+        external_id: nil,
         # Optional descriptor for the transfer.
         memo: nil,
+        # What to do if the financial account is closed when posting an operation
+        on_closed_account: nil,
         request_options: {}
       )
       end

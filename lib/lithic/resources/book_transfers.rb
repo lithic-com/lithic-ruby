@@ -9,9 +9,9 @@ module Lithic
       # Book transfer funds between two financial accounts or between a financial
       # account and card
       #
-      # @overload create(amount:, category:, from_financial_account_token:, subtype:, to_financial_account_token:, type:, token: nil, memo: nil, request_options: {})
+      # @overload create(amount:, category:, from_financial_account_token:, subtype:, to_financial_account_token:, type:, token: nil, external_id: nil, memo: nil, on_closed_account: nil, request_options: {})
       #
-      # @param amount [Integer] Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
+      # @param amount [Integer] Amount to be transferred in the currency's smallest unit (e.g., cents for USD).
       #
       # @param category [Symbol, Lithic::Models::BookTransferCreateParams::Category] Category of the book transfer
       #
@@ -21,11 +21,15 @@ module Lithic
       #
       # @param to_financial_account_token [String] Globally unique identifier for the financial account or card that will receive t
       #
-      # @param type [Symbol, Lithic::Models::BookTransferCreateParams::Type] Type of book_transfer
+      # @param type [Symbol, Lithic::Models::BookTransferCreateParams::Type] Type of the book transfer
       #
       # @param token [String] Customer-provided token that will serve as an idempotency token. This token will
       #
+      # @param external_id [String] External ID defined by the customer
+      #
       # @param memo [String] Optional descriptor for the transfer.
+      #
+      # @param on_closed_account [Symbol, Lithic::Models::BookTransferCreateParams::OnClosedAccount] What to do if the financial account is closed when posting an operation
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
