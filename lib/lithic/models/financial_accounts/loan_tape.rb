@@ -101,10 +101,7 @@ module Lithic
         # @!attribute previous_statement_balance
         #
         #   @return [Lithic::Models::FinancialAccounts::LoanTape::PreviousStatementBalance]
-        required :previous_statement_balance,
-                 -> {
-                   Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance
-                 }
+        required :previous_statement_balance, -> { Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance }
 
         # @!attribute starting_balance
         #   Balance at the start of the day
@@ -231,10 +228,7 @@ module Lithic
           # @!attribute period_state
           #
           #   @return [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::PeriodState]
-          required :period_state,
-                   enum: -> {
-                     Lithic::FinancialAccounts::LoanTape::AccountStanding::PeriodState
-                   }
+          required :period_state, enum: -> { Lithic::FinancialAccounts::LoanTape::AccountStanding::PeriodState }
 
           # @!method initialize(consecutive_full_payments_made:, consecutive_minimum_payments_made:, consecutive_minimum_payments_missed:, days_past_due:, financial_account_state:, has_grace:, period_number:, period_state:)
           #   @param consecutive_full_payments_made [Integer] Number of consecutive full payments made
@@ -260,9 +254,7 @@ module Lithic
             #
             #   @return [Symbol, Lithic::Models::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status]
             required :status,
-                     enum: -> {
-                       Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status
-                     }
+                     enum: -> { Lithic::FinancialAccounts::LoanTape::AccountStanding::FinancialAccountState::Status }
 
             # @!attribute substatus
             #   Substatus for the financial account
@@ -353,10 +345,7 @@ module Lithic
           #   Amount due for the past billing cycles.
           #
           #   @return [Lithic::Models::FinancialAccounts::LoanTape::Balances::PastStatementsDue]
-          required :past_statements_due,
-                   -> {
-                     Lithic::FinancialAccounts::LoanTape::Balances::PastStatementsDue
-                   }
+          required :past_statements_due, -> { Lithic::FinancialAccounts::LoanTape::Balances::PastStatementsDue }
 
           # @!method initialize(due:, next_statement_due:, past_due:, past_statements_due:)
           #   Some parameter documentations has been truncated, see
@@ -560,9 +549,7 @@ module Lithic
           #
           #   @return [Symbol, Lithic::Models::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod]
           required :interest_calculation_method,
-                   enum: -> {
-                     Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod
-                   }
+                   enum: -> { Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod }
 
           # @!attribute interest_for_period
           #

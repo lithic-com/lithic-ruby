@@ -4,7 +4,7 @@ module Lithic
       def retrieve: (
         String tokenization_token,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::TokenizationRetrieveResponse
+      ) -> Lithic::Tokenization
 
       def list: (
         ?account_token: String,

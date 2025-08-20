@@ -365,7 +365,7 @@ module Lithic
         #
         # @raise [Lithic::Errors::APIError]
         # @return [Array(Integer, Net::HTTPResponse, Enumerable<String>)]
-        private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
+        def send_request(request, redirect_count:, retry_count:, send_retry_header:)
           url, headers, max_retries, timeout = request.fetch_values(:url, :headers, :max_retries, :timeout)
           input = {**request.except(:timeout), deadline: Lithic::Internal::Util.monotonic_secs + timeout}
 

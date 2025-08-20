@@ -8,7 +8,7 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute amount
-      #   Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
+      #   Amount to be transferred in the currency's smallest unit (e.g., cents for USD).
       #   This should always be a positive value.
       #
       #   @return [Integer]
@@ -41,7 +41,7 @@ module Lithic
       required :to_financial_account_token, String
 
       # @!attribute type
-      #   Type of book_transfer
+      #   Type of the book transfer
       #
       #   @return [Symbol, Lithic::Models::BookTransferCreateParams::Type]
       required :type, enum: -> { Lithic::BookTransferCreateParams::Type }
@@ -53,17 +53,29 @@ module Lithic
       #   @return [String, nil]
       optional :token, String
 
+      # @!attribute external_id
+      #   External ID defined by the customer
+      #
+      #   @return [String, nil]
+      optional :external_id, String
+
       # @!attribute memo
       #   Optional descriptor for the transfer.
       #
       #   @return [String, nil]
       optional :memo, String
 
-      # @!method initialize(amount:, category:, from_financial_account_token:, subtype:, to_financial_account_token:, type:, token: nil, memo: nil, request_options: {})
+      # @!attribute on_closed_account
+      #   What to do if the financial account is closed when posting an operation
+      #
+      #   @return [Symbol, Lithic::Models::BookTransferCreateParams::OnClosedAccount, nil]
+      optional :on_closed_account, enum: -> { Lithic::BookTransferCreateParams::OnClosedAccount }
+
+      # @!method initialize(amount:, category:, from_financial_account_token:, subtype:, to_financial_account_token:, type:, token: nil, external_id: nil, memo: nil, on_closed_account: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::BookTransferCreateParams} for more details.
       #
-      #   @param amount [Integer] Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
+      #   @param amount [Integer] Amount to be transferred in the currency's smallest unit (e.g., cents for USD).
       #
       #   @param category [Symbol, Lithic::Models::BookTransferCreateParams::Category] Category of the book transfer
       #
@@ -73,11 +85,15 @@ module Lithic
       #
       #   @param to_financial_account_token [String] Globally unique identifier for the financial account or card that will receive t
       #
-      #   @param type [Symbol, Lithic::Models::BookTransferCreateParams::Type] Type of book_transfer
+      #   @param type [Symbol, Lithic::Models::BookTransferCreateParams::Type] Type of the book transfer
       #
       #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
       #
+      #   @param external_id [String] External ID defined by the customer
+      #
       #   @param memo [String] Optional descriptor for the transfer.
+      #
+      #   @param on_closed_account [Symbol, Lithic::Models::BookTransferCreateParams::OnClosedAccount] What to do if the financial account is closed when posting an operation
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
@@ -97,7 +113,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # Type of book_transfer
+      # Type of the book transfer
       module Type
         extend Lithic::Internal::Type::Enum
 
@@ -134,6 +150,17 @@ module Lithic
         DISPUTE_WON = :DISPUTE_WON
         SERVICE = :SERVICE
         TRANSFER = :TRANSFER
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # What to do if the financial account is closed when posting an operation
+      module OnClosedAccount
+        extend Lithic::Internal::Type::Enum
+
+        FAIL = :FAIL
+        USE_SUSPENSE = :USE_SUSPENSE
 
         # @!method self.values
         #   @return [Array<Symbol>]

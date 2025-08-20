@@ -99,7 +99,7 @@ module Lithic
       sig { params(external_id: String).void }
       attr_writer :external_id
 
-      # An RFC 3339 timestamp indicating when precomputed KYC was completed on the
+      # An RFC 3339 timestamp indicating when precomputed KYB was completed on the
       # business with a pass result.
       #
       # This field is required only if workflow type is `KYB_BYO`.
@@ -260,7 +260,7 @@ module Lithic
         # A user provided id that can be used to link an account holder with an external
         # system
         external_id: nil,
-        # An RFC 3339 timestamp indicating when precomputed KYC was completed on the
+        # An RFC 3339 timestamp indicating when precomputed KYB was completed on the
         # business with a pass result.
         #
         # This field is required only if workflow type is `KYB_BYO`.

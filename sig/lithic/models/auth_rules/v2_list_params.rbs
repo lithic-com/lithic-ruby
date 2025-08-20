@@ -82,7 +82,7 @@ module Lithic
           def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream]
         end
 
-        type scope = :PROGRAM | :ACCOUNT | :CARD
+        type scope = :PROGRAM | :ACCOUNT | :CARD | :ANY
 
         module Scope
           extend Lithic::Internal::Type::Enum
@@ -90,6 +90,7 @@ module Lithic
           PROGRAM: :PROGRAM
           ACCOUNT: :ACCOUNT
           CARD: :CARD
+          ANY: :ANY
 
           def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListParams::scope]
         end

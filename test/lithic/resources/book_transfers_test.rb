@@ -25,12 +25,15 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
         created: Time,
         currency: String,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::BookTransferResponse::Event]),
+        external_id: String | nil,
+        external_resource: Lithic::ExternalResource | nil,
         from_financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::BookTransferResponse::Result,
         settled_amount: Integer,
         status: Lithic::BookTransferResponse::Status,
-        to_financial_account_token: Lithic::Internal::Type::Unknown,
+        to_financial_account_token: String,
+        transaction_series: Lithic::BookTransferResponse::TransactionSeries | nil,
         updated: Time
       }
     end
@@ -50,12 +53,15 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
         created: Time,
         currency: String,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::BookTransferResponse::Event]),
+        external_id: String | nil,
+        external_resource: Lithic::ExternalResource | nil,
         from_financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::BookTransferResponse::Result,
         settled_amount: Integer,
         status: Lithic::BookTransferResponse::Status,
-        to_financial_account_token: Lithic::Internal::Type::Unknown,
+        to_financial_account_token: String,
+        transaction_series: Lithic::BookTransferResponse::TransactionSeries | nil,
         updated: Time
       }
     end
@@ -82,12 +88,15 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
         created: Time,
         currency: String,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::BookTransferResponse::Event]),
+        external_id: String | nil,
+        external_resource: Lithic::ExternalResource | nil,
         from_financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::BookTransferResponse::Result,
         settled_amount: Integer,
         status: Lithic::BookTransferResponse::Status,
-        to_financial_account_token: Lithic::Internal::Type::Unknown,
+        to_financial_account_token: String,
+        transaction_series: Lithic::BookTransferResponse::TransactionSeries | nil,
         updated: Time
       }
     end
@@ -107,12 +116,15 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
         created: Time,
         currency: String,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::BookTransferResponse::Event]),
+        external_id: String | nil,
+        external_resource: Lithic::ExternalResource | nil,
         from_financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::BookTransferResponse::Result,
         settled_amount: Integer,
         status: Lithic::BookTransferResponse::Status,
-        to_financial_account_token: Lithic::Internal::Type::Unknown,
+        to_financial_account_token: String,
+        transaction_series: Lithic::BookTransferResponse::TransactionSeries | nil,
         updated: Time
       }
     end

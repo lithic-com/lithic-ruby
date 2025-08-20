@@ -122,9 +122,7 @@ module Lithic
         #
         #   @return [Array<Symbol, Lithic::Models::Document::RequiredDocumentUpload::StatusReason>]
         required :status_reasons,
-                 -> {
-                   Lithic::Internal::Type::ArrayOf[enum: Lithic::Document::RequiredDocumentUpload::StatusReason]
-                 }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Document::RequiredDocumentUpload::StatusReason] }
 
         # @!attribute updated
         #   When the document upload was last updated

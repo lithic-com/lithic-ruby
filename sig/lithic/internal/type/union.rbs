@@ -5,9 +5,9 @@ module Lithic
         include Lithic::Internal::Type::Converter
         include Lithic::Internal::Util::SorbetRuntimeSupport
 
-        private def self.known_variants: -> ::Array[[Symbol?, (^-> Lithic::Internal::Type::Converter::input)]]
+        private def self.known_variants: -> ::Array[[Symbol?, (^-> Lithic::Internal::Type::Converter::input), ::Hash[Symbol, top]]]
 
-        def self.derefed_variants: -> ::Array[[Symbol?, top]]
+        def self.derefed_variants: -> ::Array[[Symbol?, top, ::Hash[Symbol, top]]]
 
         def self.variants: -> ::Array[top]
 

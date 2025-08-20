@@ -16,7 +16,8 @@ module Lithic
             T::Array[
               [
                 T.nilable(Symbol),
-                T.proc.returns(Lithic::Internal::Type::Converter::Input)
+                T.proc.returns(Lithic::Internal::Type::Converter::Input),
+                Lithic::Internal::AnyHash
               ]
             ]
           )
@@ -25,7 +26,11 @@ module Lithic
         end
 
         # @api private
-        sig { returns(T::Array[[T.nilable(Symbol), T.anything]]) }
+        sig do
+          returns(
+            T::Array[[T.nilable(Symbol), T.anything, Lithic::Internal::AnyHash]]
+          )
+        end
         protected def derefed_variants
         end
 

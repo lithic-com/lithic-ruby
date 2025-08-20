@@ -73,7 +73,7 @@ module Lithic
       optional :external_id, String
 
       # @!attribute kyb_passed_timestamp
-      #   An RFC 3339 timestamp indicating when precomputed KYC was completed on the
+      #   An RFC 3339 timestamp indicating when precomputed KYB was completed on the
       #   business with a pass result.
       #
       #   This field is required only if workflow type is `KYB_BYO`.
@@ -107,7 +107,7 @@ module Lithic
       #
       #   @param external_id [String] A user provided id that can be used to link an account holder with an external s
       #
-      #   @param kyb_passed_timestamp [String] An RFC 3339 timestamp indicating when precomputed KYC was completed on the busin
+      #   @param kyb_passed_timestamp [String] An RFC 3339 timestamp indicating when precomputed KYB was completed on the busin
       #
       #   @param website_url [String] Company website URL.
 

@@ -938,17 +938,45 @@ module Lithic
           required :method_type,
                    enum: -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType }
 
+          # @!attribute status
+          #   Indicates the status of the challenge
+          #
+          #   - SUCCESS - Cardholder completed the challenge successfully
+          #   - PENDING - Challenge was issued to the cardholder and was not completed yet
+          #   - SMS_DELIVERY_FAILED - Lithic confirmed undeliverability of the SMS to the
+          #     provided phone number. Relevant only for SMS_OTP method
+          #   - CARDHOLDER_TIMEOUT - Cardholder failed to complete the challenge within the
+          #     given challenge TTL
+          #   - CANCELED_VIA_CHALLENGE_UI - Cardholder canceled the challenge by selecting
+          #     "cancel" on the challenge UI
+          #   - CANCELED_OOB - Cardholder canceled the challenge out of band
+          #   - ATTEMPTS_EXCEEDED - Cardholder failed the challenge by either entering an
+          #     incorrect OTP more than the allowed number of times or requesting a new OTP
+          #     more than the allowed number of times
+          #   - ABORTED - Merchant aborted authentication after a challenge was requested
+          #   - ERROR - The challenge failed for a reason different than those documented
+          #
+          #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::Status]
+          required :status,
+                   enum: -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::Status }
+
           # @!attribute phone_number
           #   The phone number used for delivering the OTP. Relevant only for SMS_OTP method.
           #
           #   @return [String, nil]
           optional :phone_number, String, nil?: true
 
-          # @!method initialize(method_type:, phone_number: nil)
+          # @!method initialize(method_type:, status:, phone_number: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata} for
+          #   more details.
+          #
           #   Metadata about the challenge method and delivery. Only present when a challenge
           #   is triggered.
           #
           #   @param method_type [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::MethodType] The type of challenge method used for authentication.
+          #
+          #   @param status [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::Status] Indicates the status of the challenge
           #
           #   @param phone_number [String, nil] The phone number used for delivering the OTP. Relevant only for SMS_OTP method.
 
@@ -960,6 +988,41 @@ module Lithic
 
             SMS_OTP = :SMS_OTP
             OUT_OF_BAND = :OUT_OF_BAND
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Indicates the status of the challenge
+          #
+          # - SUCCESS - Cardholder completed the challenge successfully
+          # - PENDING - Challenge was issued to the cardholder and was not completed yet
+          # - SMS_DELIVERY_FAILED - Lithic confirmed undeliverability of the SMS to the
+          #   provided phone number. Relevant only for SMS_OTP method
+          # - CARDHOLDER_TIMEOUT - Cardholder failed to complete the challenge within the
+          #   given challenge TTL
+          # - CANCELED_VIA_CHALLENGE_UI - Cardholder canceled the challenge by selecting
+          #   "cancel" on the challenge UI
+          # - CANCELED_OOB - Cardholder canceled the challenge out of band
+          # - ATTEMPTS_EXCEEDED - Cardholder failed the challenge by either entering an
+          #   incorrect OTP more than the allowed number of times or requesting a new OTP
+          #   more than the allowed number of times
+          # - ABORTED - Merchant aborted authentication after a challenge was requested
+          # - ERROR - The challenge failed for a reason different than those documented
+          #
+          # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata#status
+          module Status
+            extend Lithic::Internal::Type::Enum
+
+            SUCCESS = :SUCCESS
+            PENDING = :PENDING
+            SMS_DELIVERY_FAILED = :SMS_DELIVERY_FAILED
+            CARDHOLDER_TIMEOUT = :CARDHOLDER_TIMEOUT
+            CANCELED_VIA_CHALLENGE_UI = :CANCELED_VIA_CHALLENGE_UI
+            CANCELED_OOB = :CANCELED_OOB
+            ATTEMPTS_EXCEEDED = :ATTEMPTS_EXCEEDED
+            ABORTED = :ABORTED
+            ERROR = :ERROR
 
             # @!method self.values
             #   @return [Array<Symbol>]

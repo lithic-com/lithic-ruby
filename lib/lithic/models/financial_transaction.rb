@@ -172,6 +172,8 @@ module Lithic
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::FinancialTransaction::Event} for more details.
         #
+        #   Financial Event
+        #
         #   @param token [String] Globally unique identifier.
         #
         #   @param amount [Integer] Amount of the financial event that has been settled in the currency's smallest u

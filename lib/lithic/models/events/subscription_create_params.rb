@@ -32,9 +32,7 @@ module Lithic
         #
         #   @return [Array<Symbol, Lithic::Models::Events::SubscriptionCreateParams::EventType>, nil]
         optional :event_types,
-                 -> {
-                   Lithic::Internal::Type::ArrayOf[enum: Lithic::Events::SubscriptionCreateParams::EventType]
-                 }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Events::SubscriptionCreateParams::EventType] }
 
         # @!method initialize(url:, description: nil, disabled: nil, event_types: nil, request_options: {})
         #   Some parameter documentations has been truncated, see

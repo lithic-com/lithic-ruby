@@ -31,10 +31,7 @@ module Lithic
         #   When not set defaults to MATCH
         #
         #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck, nil]
-        optional :card_expiry_check,
-                 enum: -> {
-                   Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck
-                 }
+        optional :card_expiry_check, enum: -> { Lithic::ThreeDS::AuthenticationSimulateParams::CardExpiryCheck }
 
         # @!method initialize(merchant:, pan:, transaction:, card_expiry_check: nil, request_options: {})
         #   Some parameter documentations has been truncated, see

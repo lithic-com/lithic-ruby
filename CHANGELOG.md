@@ -1,15 +1,5 @@
 # Changelog
 
-## 0.1.0-alpha.40 (2025-07-15)
-
-Full Changelog: [v0.1.0-alpha.39...v0.1.0-alpha.40](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.39...v0.1.0-alpha.40)
-
-### Features
-
-* **api:** adds Network Programs and Account/Card Sub-statuses ([b5e5077](https://github.com/lithic-com/lithic-ruby/commit/b5e5077794684767a425d31f746cee2ed69d8ba7))
-* **api:** api update ([b8de03e](https://github.com/lithic-com/lithic-ruby/commit/b8de03e418647489f4e34b4a55ca4256f34c52fe))
-* **api:** api update ([72d4aab](https://github.com/lithic-com/lithic-ruby/commit/72d4aabb27fe144144c10899e64c863785d6595b))
-
 ## 0.1.0-alpha.39 (2025-07-03)
 
 Full Changelog: [v0.1.0-alpha.38...v0.1.0-alpha.39](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.38...v0.1.0-alpha.39)

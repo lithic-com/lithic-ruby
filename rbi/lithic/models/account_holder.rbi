@@ -95,10 +95,9 @@ module Lithic
       end
       attr_writer :control_person
 
-      # < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
-      # individual.phone_number when user_type == "INDIVIDUAL".
-      #
-      # > Primary email of Account Holder.
+      # (Deprecated. Use control_person.email when user_type == "BUSINESS". Use
+      # individual.phone_number when user_type == "INDIVIDUAL".) Primary email of
+      # Account Holder.
       sig { returns(T.nilable(String)) }
       attr_reader :email
 
@@ -142,10 +141,9 @@ module Lithic
       sig { params(nature_of_business: String).void }
       attr_writer :nature_of_business
 
-      # < Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
-      # individual.phone_number when user_type == "INDIVIDUAL".
-      #
-      # > Primary phone of Account Holder, entered in E.164 format.
+      # (Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
+      # individual.phone_number when user_type == "INDIVIDUAL".) Primary phone of
+      # Account Holder, entered in E.164 format.
       sig { returns(T.nilable(String)) }
       attr_reader :phone_number
 
@@ -164,7 +162,7 @@ module Lithic
       end
       attr_writer :required_documents
 
-      # <Deprecated. Use verification_application.status instead>
+      # (Deprecated. Use verification_application.status instead)
       #
       # KYC and KYB evaluation states.
       #
@@ -177,8 +175,9 @@ module Lithic
       sig { params(status: Lithic::AccountHolder::Status::OrSymbol).void }
       attr_writer :status
 
-      # <Deprecated. Use verification_application.status_reasons> Reason for the
-      # evaluation status.
+      # (Deprecated. Use verification_application.status_reasons)
+      #
+      # Reason for the evaluation status.
       sig do
         returns(
           T.nilable(T::Array[Lithic::AccountHolder::StatusReason::TaggedSymbol])
@@ -281,10 +280,9 @@ module Lithic
         # someone who will have program-wide access to the cards that Lithic will provide.
         # In some cases, this individual could also be a beneficial owner listed above.
         control_person: nil,
-        # < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
-        # individual.phone_number when user_type == "INDIVIDUAL".
-        #
-        # > Primary email of Account Holder.
+        # (Deprecated. Use control_person.email when user_type == "BUSINESS". Use
+        # individual.phone_number when user_type == "INDIVIDUAL".) Primary email of
+        # Account Holder.
         email: nil,
         # The type of KYC exemption for a KYC-Exempt Account Holder.
         exemption_type: nil,
@@ -297,15 +295,14 @@ module Lithic
         # Only present when user_type == "BUSINESS". User-submitted description of the
         # business.
         nature_of_business: nil,
-        # < Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
-        # individual.phone_number when user_type == "INDIVIDUAL".
-        #
-        # > Primary phone of Account Holder, entered in E.164 format.
+        # (Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
+        # individual.phone_number when user_type == "INDIVIDUAL".) Primary phone of
+        # Account Holder, entered in E.164 format.
         phone_number: nil,
         # Only present for "KYB_BASIC" workflow. A list of documents required for the
         # account holder to be approved.
         required_documents: nil,
-        # <Deprecated. Use verification_application.status instead>
+        # (Deprecated. Use verification_application.status instead)
         #
         # KYC and KYB evaluation states.
         #
@@ -313,8 +310,9 @@ module Lithic
         #
         # - `PENDING_REVIEW` is only applicable for the `KYB_BASIC` workflow.
         status: nil,
-        # <Deprecated. Use verification_application.status_reasons> Reason for the
-        # evaluation status.
+        # (Deprecated. Use verification_application.status_reasons)
+        #
+        # Reason for the evaluation status.
         status_reasons: nil,
         # The type of Account Holder. If the type is "INDIVIDUAL", the "individual"
         # attribute will be present. If the type is "BUSINESS" then the "business_entity",
@@ -855,7 +853,7 @@ module Lithic
         end
       end
 
-      # <Deprecated. Use verification_application.status instead>
+      # (Deprecated. Use verification_application.status instead)
       #
       # KYC and KYB evaluation states.
       #

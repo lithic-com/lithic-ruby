@@ -166,6 +166,7 @@ module Lithic
         | :SECURITY
         | :PROGRAM_RECEIVABLES
         | :COLLECTION
+        | :BANK_ACCOUNTS_PAYABLE
 
       module Type
         extend Lithic::Internal::Type::Enum
@@ -179,6 +180,7 @@ module Lithic
         SECURITY: :SECURITY
         PROGRAM_RECEIVABLES: :PROGRAM_RECEIVABLES
         COLLECTION: :COLLECTION
+        BANK_ACCOUNTS_PAYABLE: :BANK_ACCOUNTS_PAYABLE
 
         def self?.values: -> ::Array[Lithic::Models::FinancialAccount::type_]
       end

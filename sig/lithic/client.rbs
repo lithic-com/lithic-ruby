@@ -71,6 +71,8 @@ module Lithic
 
     attr_reader network_programs: Lithic::Resources::NetworkPrograms
 
+    attr_reader account_activity: Lithic::Resources::AccountActivity
+
     def api_status: (
       ?request_options: Lithic::request_opts
     ) -> Lithic::APIStatus

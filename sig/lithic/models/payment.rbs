@@ -14,13 +14,15 @@ module Lithic
         method_: Lithic::Models::Payment::method_,
         method_attributes: Lithic::Payment::MethodAttributes,
         pending_amount: Integer,
+        related_account_tokens: Lithic::Payment::RelatedAccountTokens,
         result: Lithic::Models::Payment::result,
         settled_amount: Integer,
         source: Lithic::Models::Payment::source,
         status: Lithic::Models::Payment::status,
         updated: Time,
         user_defined_id: String?,
-        expected_release_date: Date
+        expected_release_date: Date,
+        type: Lithic::Models::Payment::type_
       }
 
     class Payment < Lithic::Internal::Type::BaseModel
@@ -48,6 +50,8 @@ module Lithic
 
       attr_accessor pending_amount: Integer
 
+      attr_accessor related_account_tokens: Lithic::Payment::RelatedAccountTokens
+
       attr_accessor result: Lithic::Models::Payment::result
 
       attr_accessor settled_amount: Integer
@@ -64,6 +68,12 @@ module Lithic
 
       def expected_release_date=: (Date) -> Date
 
+      attr_reader type: Lithic::Models::Payment::type_?
+
+      def type=: (
+        Lithic::Models::Payment::type_
+      ) -> Lithic::Models::Payment::type_
+
       def initialize: (
         token: String,
         category: Lithic::Models::Payment::category,
@@ -77,13 +87,15 @@ module Lithic
         method_: Lithic::Models::Payment::method_,
         method_attributes: Lithic::Payment::MethodAttributes,
         pending_amount: Integer,
+        related_account_tokens: Lithic::Payment::RelatedAccountTokens,
         result: Lithic::Models::Payment::result,
         settled_amount: Integer,
         source: Lithic::Models::Payment::source,
         status: Lithic::Models::Payment::status,
         updated: Time,
         user_defined_id: String?,
-        ?expected_release_date: Date
+        ?expected_release_date: Date,
+        ?type: Lithic::Models::Payment::type_
       ) -> void
 
       def to_hash: -> {
@@ -99,13 +111,15 @@ module Lithic
         method_: Lithic::Models::Payment::method_,
         method_attributes: Lithic::Payment::MethodAttributes,
         pending_amount: Integer,
+        related_account_tokens: Lithic::Payment::RelatedAccountTokens,
         result: Lithic::Models::Payment::result,
         settled_amount: Integer,
         source: Lithic::Models::Payment::source,
         status: Lithic::Models::Payment::status,
         updated: Time,
         user_defined_id: String?,
-        expected_release_date: Date
+        expected_release_date: Date,
+        type: Lithic::Models::Payment::type_
       }
 
       type category = :ACH
@@ -308,6 +322,25 @@ module Lithic
         end
       end
 
+      type related_account_tokens =
+        { account_token: String?, business_account_token: String? }
+
+      class RelatedAccountTokens < Lithic::Internal::Type::BaseModel
+        attr_accessor account_token: String?
+
+        attr_accessor business_account_token: String?
+
+        def initialize: (
+          account_token: String?,
+          business_account_token: String?
+        ) -> void
+
+        def to_hash: -> {
+          account_token: String?,
+          business_account_token: String?
+        }
+      end
+
       type result = :APPROVED | :DECLINED
 
       module Result
@@ -341,6 +374,35 @@ module Lithic
         SETTLED: :SETTLED
 
         def self?.values: -> ::Array[Lithic::Models::Payment::status]
+      end
+
+      type type_ =
+        :ORIGINATION_CREDIT
+        | :ORIGINATION_DEBIT
+        | :RECEIPT_CREDIT
+        | :RECEIPT_DEBIT
+        | :CUSTOMER_TRANSFER
+        | :DRAWDOWN_PAYMENT
+        | :REVERSAL_PAYMENT
+        | :DRAWDOWN_REQUEST
+        | :REVERSAL_REQUEST
+        | :DRAWDOWN_REFUSAL
+
+      module Type
+        extend Lithic::Internal::Type::Enum
+
+        ORIGINATION_CREDIT: :ORIGINATION_CREDIT
+        ORIGINATION_DEBIT: :ORIGINATION_DEBIT
+        RECEIPT_CREDIT: :RECEIPT_CREDIT
+        RECEIPT_DEBIT: :RECEIPT_DEBIT
+        CUSTOMER_TRANSFER: :CUSTOMER_TRANSFER
+        DRAWDOWN_PAYMENT: :DRAWDOWN_PAYMENT
+        REVERSAL_PAYMENT: :REVERSAL_PAYMENT
+        DRAWDOWN_REQUEST: :DRAWDOWN_REQUEST
+        REVERSAL_REQUEST: :REVERSAL_REQUEST
+        DRAWDOWN_REFUSAL: :DRAWDOWN_REFUSAL
+
+        def self?.values: -> ::Array[Lithic::Models::Payment::type_]
       end
     end
   end

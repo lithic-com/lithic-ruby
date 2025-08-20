@@ -9,7 +9,9 @@ module Lithic
         to_financial_account_token: String,
         type: Lithic::Models::BookTransferCreateParams::type_,
         ?token: String,
+        ?external_id: String,
         ?memo: String,
+        ?on_closed_account: Lithic::Models::BookTransferCreateParams::on_closed_account,
         ?request_options: Lithic::request_opts
       ) -> Lithic::BookTransferResponse
 

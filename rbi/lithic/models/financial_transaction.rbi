@@ -243,6 +243,7 @@ module Lithic
         end
         attr_writer :type
 
+        # Financial Event
         sig do
           params(
             token: String,

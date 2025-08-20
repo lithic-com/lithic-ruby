@@ -628,21 +628,26 @@ module Lithic
         type challenge_metadata =
           {
             method_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::method_type,
+            status: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::status,
             phone_number: String?
           }
 
         class ChallengeMetadata < Lithic::Internal::Type::BaseModel
           attr_accessor method_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::method_type
 
+          attr_accessor status: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::status
+
           attr_accessor phone_number: String?
 
           def initialize: (
             method_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::method_type,
+            status: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::status,
             ?phone_number: String?
           ) -> void
 
           def to_hash: -> {
             method_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::method_type,
+            status: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::status,
             phone_number: String?
           }
 
@@ -655,6 +660,33 @@ module Lithic
             OUT_OF_BAND: :OUT_OF_BAND
 
             def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::method_type]
+          end
+
+          type status =
+            :SUCCESS
+            | :PENDING
+            | :SMS_DELIVERY_FAILED
+            | :CARDHOLDER_TIMEOUT
+            | :CANCELED_VIA_CHALLENGE_UI
+            | :CANCELED_OOB
+            | :ATTEMPTS_EXCEEDED
+            | :ABORTED
+            | :ERROR
+
+          module Status
+            extend Lithic::Internal::Type::Enum
+
+            SUCCESS: :SUCCESS
+            PENDING: :PENDING
+            SMS_DELIVERY_FAILED: :SMS_DELIVERY_FAILED
+            CARDHOLDER_TIMEOUT: :CARDHOLDER_TIMEOUT
+            CANCELED_VIA_CHALLENGE_UI: :CANCELED_VIA_CHALLENGE_UI
+            CANCELED_OOB: :CANCELED_OOB
+            ATTEMPTS_EXCEEDED: :ATTEMPTS_EXCEEDED
+            ABORTED: :ABORTED
+            ERROR: :ERROR
+
+            def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata::status]
           end
         end
 

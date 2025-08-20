@@ -11,7 +11,7 @@ module Lithic
           T.any(Lithic::BookTransferCreateParams, Lithic::Internal::AnyHash)
         end
 
-      # Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
+      # Amount to be transferred in the currency's smallest unit (e.g., cents for USD).
       # This should always be a positive value.
       sig { returns(Integer) }
       attr_accessor :amount
@@ -34,7 +34,7 @@ module Lithic
       sig { returns(String) }
       attr_accessor :to_financial_account_token
 
-      # Type of book_transfer
+      # Type of the book transfer
       sig { returns(Lithic::BookTransferCreateParams::Type::OrSymbol) }
       attr_accessor :type
 
@@ -46,12 +46,35 @@ module Lithic
       sig { params(token: String).void }
       attr_writer :token
 
+      # External ID defined by the customer
+      sig { returns(T.nilable(String)) }
+      attr_reader :external_id
+
+      sig { params(external_id: String).void }
+      attr_writer :external_id
+
       # Optional descriptor for the transfer.
       sig { returns(T.nilable(String)) }
       attr_reader :memo
 
       sig { params(memo: String).void }
       attr_writer :memo
+
+      # What to do if the financial account is closed when posting an operation
+      sig do
+        returns(
+          T.nilable(Lithic::BookTransferCreateParams::OnClosedAccount::OrSymbol)
+        )
+      end
+      attr_reader :on_closed_account
+
+      sig do
+        params(
+          on_closed_account:
+            Lithic::BookTransferCreateParams::OnClosedAccount::OrSymbol
+        ).void
+      end
+      attr_writer :on_closed_account
 
       sig do
         params(
@@ -62,12 +85,15 @@ module Lithic
           to_financial_account_token: String,
           type: Lithic::BookTransferCreateParams::Type::OrSymbol,
           token: String,
+          external_id: String,
           memo: String,
+          on_closed_account:
+            Lithic::BookTransferCreateParams::OnClosedAccount::OrSymbol,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
-        # Amount to be transferred in the currency’s smallest unit (e.g., cents for USD).
+        # Amount to be transferred in the currency's smallest unit (e.g., cents for USD).
         # This should always be a positive value.
         amount:,
         # Category of the book transfer
@@ -80,13 +106,17 @@ module Lithic
         # Globally unique identifier for the financial account or card that will receive
         # the funds. Accepted type dependent on the program's use case.
         to_financial_account_token:,
-        # Type of book_transfer
+        # Type of the book transfer
         type:,
         # Customer-provided token that will serve as an idempotency token. This token will
         # become the transaction token.
         token: nil,
+        # External ID defined by the customer
+        external_id: nil,
         # Optional descriptor for the transfer.
         memo: nil,
+        # What to do if the financial account is closed when posting an operation
+        on_closed_account: nil,
         request_options: {}
       )
       end
@@ -101,7 +131,10 @@ module Lithic
             to_financial_account_token: String,
             type: Lithic::BookTransferCreateParams::Type::OrSymbol,
             token: String,
+            external_id: String,
             memo: String,
+            on_closed_account:
+              Lithic::BookTransferCreateParams::OnClosedAccount::OrSymbol,
             request_options: Lithic::RequestOptions
           }
         )
@@ -161,7 +194,7 @@ module Lithic
         end
       end
 
-      # Type of book_transfer
+      # Type of the book transfer
       module Type
         extend Lithic::Internal::Type::Enum
 
@@ -320,6 +353,38 @@ module Lithic
         sig do
           override.returns(
             T::Array[Lithic::BookTransferCreateParams::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # What to do if the financial account is closed when posting an operation
+      module OnClosedAccount
+        extend Lithic::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::BookTransferCreateParams::OnClosedAccount)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        FAIL =
+          T.let(
+            :FAIL,
+            Lithic::BookTransferCreateParams::OnClosedAccount::TaggedSymbol
+          )
+        USE_SUSPENSE =
+          T.let(
+            :USE_SUSPENSE,
+            Lithic::BookTransferCreateParams::OnClosedAccount::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::BookTransferCreateParams::OnClosedAccount::TaggedSymbol
+            ]
           )
         end
         def self.values

@@ -70,10 +70,9 @@ module Lithic
       optional :control_person, -> { Lithic::AccountHolder::ControlPerson }
 
       # @!attribute email
-      #   < Deprecated. Use control_person.email when user_type == "BUSINESS". Use
-      #   individual.phone_number when user_type == "INDIVIDUAL".
-      #
-      #   > Primary email of Account Holder.
+      #   (Deprecated. Use control_person.email when user_type == "BUSINESS". Use
+      #   individual.phone_number when user_type == "INDIVIDUAL".) Primary email of
+      #   Account Holder.
       #
       #   @return [String, nil]
       optional :email, String
@@ -106,10 +105,9 @@ module Lithic
       optional :nature_of_business, String
 
       # @!attribute phone_number
-      #   < Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
-      #   individual.phone_number when user_type == "INDIVIDUAL".
-      #
-      #   > Primary phone of Account Holder, entered in E.164 format.
+      #   (Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use
+      #   individual.phone_number when user_type == "INDIVIDUAL".) Primary phone of
+      #   Account Holder, entered in E.164 format.
       #
       #   @return [String, nil]
       optional :phone_number, String
@@ -122,7 +120,7 @@ module Lithic
       optional :required_documents, -> { Lithic::Internal::Type::ArrayOf[Lithic::RequiredDocument] }
 
       # @!attribute status
-      #   <Deprecated. Use verification_application.status instead>
+      #   (Deprecated. Use verification_application.status instead)
       #
       #   KYC and KYB evaluation states.
       #
@@ -134,8 +132,9 @@ module Lithic
       optional :status, enum: -> { Lithic::AccountHolder::Status }
 
       # @!attribute status_reasons
-      #   <Deprecated. Use verification_application.status_reasons> Reason for the
-      #   evaluation status.
+      #   (Deprecated. Use verification_application.status_reasons)
+      #
+      #   Reason for the evaluation status.
       #
       #   @return [Array<Symbol, Lithic::Models::AccountHolder::StatusReason>, nil]
       optional :status_reasons,
@@ -182,7 +181,7 @@ module Lithic
       #
       #   @param control_person [Lithic::Models::AccountHolder::ControlPerson] Only present when user_type == "BUSINESS".
       #
-      #   @param email [String] <
+      #   @param email [String] (Deprecated. Use control_person.email when user_type == "BUSINESS". Use individu
       #
       #   @param exemption_type [Symbol, Lithic::Models::AccountHolder::ExemptionType] The type of KYC exemption for a KYC-Exempt Account Holder.
       #
@@ -192,13 +191,13 @@ module Lithic
       #
       #   @param nature_of_business [String] Only present when user_type == "BUSINESS". User-submitted description of the bus
       #
-      #   @param phone_number [String] <
+      #   @param phone_number [String] (Deprecated. Use control_person.phone_number when user_type == "BUSINESS". Use i
       #
       #   @param required_documents [Array<Lithic::Models::RequiredDocument>] Only present for "KYB_BASIC" workflow. A list of documents required for the acco
       #
-      #   @param status [Symbol, Lithic::Models::AccountHolder::Status] <Deprecated. Use verification_application.status instead>
+      #   @param status [Symbol, Lithic::Models::AccountHolder::Status] (Deprecated. Use verification_application.status instead)
       #
-      #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolder::StatusReason>] <Deprecated. Use verification_application.status_reasons> Reason for the evaluat
+      #   @param status_reasons [Array<Symbol, Lithic::Models::AccountHolder::StatusReason>] (Deprecated. Use verification_application.status_reasons)
       #
       #   @param user_type [Symbol, Lithic::Models::AccountHolder::UserType] The type of Account Holder. If the type is "INDIVIDUAL", the "individual" attrib
       #
@@ -550,7 +549,7 @@ module Lithic
         #   @param phone_number [String] Individual's phone number, entered in E.164 format.
       end
 
-      # <Deprecated. Use verification_application.status instead>
+      # (Deprecated. Use verification_application.status instead)
       #
       # KYC and KYB evaluation states.
       #
@@ -630,9 +629,7 @@ module Lithic
         #
         #   @return [Array<Symbol, Lithic::Models::AccountHolder::VerificationApplication::StatusReason>, nil]
         optional :status_reasons,
-                 -> {
-                   Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountHolder::VerificationApplication::StatusReason]
-                 }
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountHolder::VerificationApplication::StatusReason] }
 
         # @!attribute updated
         #   Timestamp of when the application was last updated.
