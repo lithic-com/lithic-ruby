@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0 (2025-08-22)
+
+Full Changelog: [v0.1.0-alpha.40...v0.1.0](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.40...v0.1.0)
+
+### Chores
+
+* sync repo ([bc9dd5c](https://github.com/lithic-com/lithic-ruby/commit/bc9dd5c574eb24959f3760ff9bd9f3c5240064cc))
+
 ## 0.1.0-alpha.40 (2025-07-15)
 
 Full Changelog: [v0.1.0-alpha.39...v0.1.0-alpha.40](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.39...v0.1.0-alpha.40)
