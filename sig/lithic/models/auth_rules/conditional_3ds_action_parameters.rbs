@@ -101,8 +101,12 @@ module Lithic
             | :IS_NOT_ONE_OF
             | :MATCHES
             | :DOES_NOT_MATCH
+            | :IS_EQUAL_TO
+            | :IS_NOT_EQUAL_TO
             | :IS_GREATER_THAN
+            | :IS_GREATER_THAN_OR_EQUAL_TO
             | :IS_LESS_THAN
+            | :IS_LESS_THAN_OR_EQUAL_TO
 
           module Operation
             extend Lithic::Internal::Type::Enum
@@ -111,8 +115,12 @@ module Lithic
             IS_NOT_ONE_OF: :IS_NOT_ONE_OF
             MATCHES: :MATCHES
             DOES_NOT_MATCH: :DOES_NOT_MATCH
+            IS_EQUAL_TO: :IS_EQUAL_TO
+            IS_NOT_EQUAL_TO: :IS_NOT_EQUAL_TO
             IS_GREATER_THAN: :IS_GREATER_THAN
+            IS_GREATER_THAN_OR_EQUAL_TO: :IS_GREATER_THAN_OR_EQUAL_TO
             IS_LESS_THAN: :IS_LESS_THAN
+            IS_LESS_THAN_OR_EQUAL_TO: :IS_LESS_THAN_OR_EQUAL_TO
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::operation]
           end

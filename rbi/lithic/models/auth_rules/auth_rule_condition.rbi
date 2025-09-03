@@ -210,14 +210,34 @@ module Lithic
               :DOES_NOT_MATCH,
               Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
             )
+          IS_EQUAL_TO =
+            T.let(
+              :IS_EQUAL_TO,
+              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
+            )
+          IS_NOT_EQUAL_TO =
+            T.let(
+              :IS_NOT_EQUAL_TO,
+              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
+            )
           IS_GREATER_THAN =
             T.let(
               :IS_GREATER_THAN,
               Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
             )
+          IS_GREATER_THAN_OR_EQUAL_TO =
+            T.let(
+              :IS_GREATER_THAN_OR_EQUAL_TO,
+              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
+            )
           IS_LESS_THAN =
             T.let(
               :IS_LESS_THAN,
+              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
+            )
+          IS_LESS_THAN_OR_EQUAL_TO =
+            T.let(
+              :IS_LESS_THAN_OR_EQUAL_TO,
               Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
             )
 

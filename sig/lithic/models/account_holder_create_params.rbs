@@ -28,13 +28,23 @@ module Lithic
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
 
-      attr_accessor beneficial_owner_individuals: ::Array[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual]
+      attr_reader beneficial_owner_individuals: ::Array[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual]?
+
+      def beneficial_owner_individuals=: (
+        ::Array[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual]
+      ) -> ::Array[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual]
 
       attr_accessor business_entity: Lithic::AccountHolderCreateParams::BusinessEntity
 
-      attr_accessor control_person: Lithic::AccountHolderCreateParams::ControlPerson
+      attr_reader control_person: Lithic::AccountHolderCreateParams::ControlPerson?
 
-      attr_accessor nature_of_business: String
+      def control_person=: (
+        Lithic::AccountHolderCreateParams::ControlPerson
+      ) -> Lithic::AccountHolderCreateParams::ControlPerson
+
+      attr_reader nature_of_business: String?
+
+      def nature_of_business=: (String) -> String
 
       attr_accessor tos_timestamp: String
 
@@ -81,10 +91,7 @@ module Lithic
       def business_account_token=: (String) -> String
 
       def initialize: (
-        beneficial_owner_individuals: ::Array[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual],
         business_entity: Lithic::AccountHolderCreateParams::BusinessEntity,
-        control_person: Lithic::AccountHolderCreateParams::ControlPerson,
-        nature_of_business: String,
         tos_timestamp: String,
         workflow: Lithic::Models::AccountHolderCreateParams::workflow,
         individual: Lithic::AccountHolderCreateParams::Individual,
@@ -94,6 +101,9 @@ module Lithic
         kyc_exemption_type: Lithic::Models::AccountHolderCreateParams::kyc_exemption_type,
         last_name: String,
         phone_number: String,
+        ?beneficial_owner_individuals: ::Array[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual],
+        ?control_person: Lithic::AccountHolderCreateParams::ControlPerson,
+        ?nature_of_business: String,
         ?beneficial_owner_entities: ::Array[Lithic::AccountHolderCreateParams::BeneficialOwnerEntity],
         ?external_id: String,
         ?kyb_passed_timestamp: String,
@@ -178,46 +188,50 @@ module Lithic
       type business_entity =
         {
           address: Lithic::Address,
-          government_id: String,
           legal_business_name: String,
-          phone_numbers: ::Array[String],
           dba_business_name: String,
-          parent_company: String
+          government_id: String,
+          parent_company: String,
+          phone_numbers: ::Array[String]
         }
 
       class BusinessEntity < Lithic::Internal::Type::BaseModel
         attr_accessor address: Lithic::Address
 
-        attr_accessor government_id: String
-
         attr_accessor legal_business_name: String
-
-        attr_accessor phone_numbers: ::Array[String]
 
         attr_reader dba_business_name: String?
 
         def dba_business_name=: (String) -> String
 
+        attr_reader government_id: String?
+
+        def government_id=: (String) -> String
+
         attr_reader parent_company: String?
 
         def parent_company=: (String) -> String
 
+        attr_reader phone_numbers: ::Array[String]?
+
+        def phone_numbers=: (::Array[String]) -> ::Array[String]
+
         def initialize: (
           address: Lithic::Address,
-          government_id: String,
           legal_business_name: String,
-          phone_numbers: ::Array[String],
           ?dba_business_name: String,
-          ?parent_company: String
+          ?government_id: String,
+          ?parent_company: String,
+          ?phone_numbers: ::Array[String]
         ) -> void
 
         def to_hash: -> {
           address: Lithic::Address,
-          government_id: String,
           legal_business_name: String,
-          phone_numbers: ::Array[String],
           dba_business_name: String,
-          parent_company: String
+          government_id: String,
+          parent_company: String,
+          phone_numbers: ::Array[String]
         }
       end
 

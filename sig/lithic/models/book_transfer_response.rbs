@@ -216,6 +216,7 @@ module Lithic
           | :DISPUTE_WON
           | :SERVICE
           | :TRANSFER
+          | :COLLECTION
 
         module Type
           extend Lithic::Internal::Type::Enum
@@ -253,6 +254,7 @@ module Lithic
           DISPUTE_WON: :DISPUTE_WON
           SERVICE: :SERVICE
           TRANSFER: :TRANSFER
+          COLLECTION: :COLLECTION
 
           def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::Event::type_]
         end

@@ -210,7 +210,7 @@ module Lithic
         SECURITY = :SECURITY
         PROGRAM_RECEIVABLES = :PROGRAM_RECEIVABLES
         COLLECTION = :COLLECTION
-        BANK_ACCOUNTS_PAYABLE = :BANK_ACCOUNTS_PAYABLE
+        PROGRAM_BANK_ACCOUNTS_PAYABLE = :PROGRAM_BANK_ACCOUNTS_PAYABLE
 
         # @!method self.values
         #   @return [Array<Symbol>]

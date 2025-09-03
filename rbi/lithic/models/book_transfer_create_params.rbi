@@ -349,6 +349,11 @@ module Lithic
           T.let(:SERVICE, Lithic::BookTransferCreateParams::Type::TaggedSymbol)
         TRANSFER =
           T.let(:TRANSFER, Lithic::BookTransferCreateParams::Type::TaggedSymbol)
+        COLLECTION =
+          T.let(
+            :COLLECTION,
+            Lithic::BookTransferCreateParams::Type::TaggedSymbol
+          )
 
         sig do
           override.returns(

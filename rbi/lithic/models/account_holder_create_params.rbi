@@ -11,7 +11,7 @@ module Lithic
           T.any(Lithic::AccountHolderCreateParams, Lithic::Internal::AnyHash)
         end
 
-      # You must submit a list of all direct and indirect individuals with 25% or more
+      # You can submit a list of all direct and indirect individuals with 25% or more
       # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
       # no individual owns 25% of the company you do not need to send beneficial owner
       # information. See
@@ -19,13 +19,26 @@ module Lithic
       # (Section I) for more background on individuals that should be included.
       sig do
         returns(
-          T::Array[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual]
+          T.nilable(
+            T::Array[
+              Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual
+            ]
+          )
         )
       end
-      attr_accessor :beneficial_owner_individuals
+      attr_reader :beneficial_owner_individuals
 
-      # Information for business for which the account is being opened and KYB is being
-      # run.
+      sig do
+        params(
+          beneficial_owner_individuals:
+            T::Array[
+              Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual::OrHash
+            ]
+        ).void
+      end
+      attr_writer :beneficial_owner_individuals
+
+      # Information for business for which the account is being opened.
       sig { returns(Lithic::AccountHolderCreateParams::BusinessEntity) }
       attr_reader :business_entity
 
@@ -45,7 +58,9 @@ module Lithic
       # could also be a beneficial owner listed above. See
       # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
       # (Section II) for more background.
-      sig { returns(Lithic::AccountHolderCreateParams::ControlPerson) }
+      sig do
+        returns(T.nilable(Lithic::AccountHolderCreateParams::ControlPerson))
+      end
       attr_reader :control_person
 
       sig do
@@ -58,8 +73,11 @@ module Lithic
 
       # Short description of the company's line of business (i.e., what does the company
       # do?).
-      sig { returns(String) }
-      attr_accessor :nature_of_business
+      sig { returns(T.nilable(String)) }
+      attr_reader :nature_of_business
+
+      sig { params(nature_of_business: String).void }
+      attr_writer :nature_of_business
 
       # An RFC 3339 timestamp indicating when the account holder accepted the applicable
       # legal agreements (e.g., cardholder terms) as agreed upon during API customer's
@@ -179,15 +197,8 @@ module Lithic
 
       sig do
         params(
-          beneficial_owner_individuals:
-            T::Array[
-              Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual::OrHash
-            ],
           business_entity:
             Lithic::AccountHolderCreateParams::BusinessEntity::OrHash,
-          control_person:
-            Lithic::AccountHolderCreateParams::ControlPerson::OrHash,
-          nature_of_business: String,
           tos_timestamp: String,
           workflow: Lithic::AccountHolderCreateParams::Workflow::OrSymbol,
           individual: Lithic::AccountHolderCreateParams::Individual::OrHash,
@@ -198,6 +209,13 @@ module Lithic
             Lithic::AccountHolderCreateParams::KYCExemptionType::OrSymbol,
           last_name: String,
           phone_number: String,
+          beneficial_owner_individuals:
+            T::Array[
+              Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual::OrHash
+            ],
+          control_person:
+            Lithic::AccountHolderCreateParams::ControlPerson::OrHash,
+          nature_of_business: String,
           beneficial_owner_entities:
             T::Array[
               Lithic::AccountHolderCreateParams::BeneficialOwnerEntity::OrHash
@@ -211,28 +229,8 @@ module Lithic
         ).returns(T.attached_class)
       end
       def self.new(
-        # You must submit a list of all direct and indirect individuals with 25% or more
-        # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
-        # no individual owns 25% of the company you do not need to send beneficial owner
-        # information. See
-        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        # (Section I) for more background on individuals that should be included.
-        beneficial_owner_individuals:,
-        # Information for business for which the account is being opened and KYB is being
-        # run.
+        # Information for business for which the account is being opened.
         business_entity:,
-        # An individual with significant responsibility for managing the legal entity
-        # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-        # Officer, Managing Member, General Partner, President, Vice President, or
-        # Treasurer). This can be an executive, or someone who will have program-wide
-        # access to the cards that Lithic will provide. In some cases, this individual
-        # could also be a beneficial owner listed above. See
-        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        # (Section II) for more background.
-        control_person:,
-        # Short description of the company's line of business (i.e., what does the company
-        # do?).
-        nature_of_business:,
         # An RFC 3339 timestamp indicating when the account holder accepted the applicable
         # legal agreements (e.g., cardholder terms) as agreed upon during API customer's
         # implementation with Lithic.
@@ -255,6 +253,25 @@ module Lithic
         last_name:,
         # The KYC Exempt user's phone number, entered in E.164 format.
         phone_number:,
+        # You can submit a list of all direct and indirect individuals with 25% or more
+        # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
+        # no individual owns 25% of the company you do not need to send beneficial owner
+        # information. See
+        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+        # (Section I) for more background on individuals that should be included.
+        beneficial_owner_individuals: nil,
+        # An individual with significant responsibility for managing the legal entity
+        # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+        # Officer, Managing Member, General Partner, President, Vice President, or
+        # Treasurer). This can be an executive, or someone who will have program-wide
+        # access to the cards that Lithic will provide. In some cases, this individual
+        # could also be a beneficial owner listed above. See
+        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+        # (Section II) for more background.
+        control_person: nil,
+        # Short description of the company's line of business (i.e., what does the company
+        # do?).
+        nature_of_business: nil,
         # Deprecated.
         beneficial_owner_entities: nil,
         # A user provided id that can be used to link an account holder with an external
@@ -433,20 +450,9 @@ module Lithic
         sig { params(address: Lithic::Address::OrHash).void }
         attr_writer :address
 
-        # Government-issued identification number. US Federal Employer Identification
-        # Numbers (EIN) are currently supported, entered as full nine-digits, with or
-        # without hyphens.
-        sig { returns(String) }
-        attr_accessor :government_id
-
         # Legal (formal) business name.
         sig { returns(String) }
         attr_accessor :legal_business_name
-
-        # One or more of the business's phone number(s), entered as a list in E.164
-        # format.
-        sig { returns(T::Array[String]) }
-        attr_accessor :phone_numbers
 
         # Any name that the business operates under that is not its legal business name
         # (if applicable).
@@ -456,6 +462,15 @@ module Lithic
         sig { params(dba_business_name: String).void }
         attr_writer :dba_business_name
 
+        # Government-issued identification number. US Federal Employer Identification
+        # Numbers (EIN) are currently supported, entered as full nine-digits, with or
+        # without hyphens.
+        sig { returns(T.nilable(String)) }
+        attr_reader :government_id
+
+        sig { params(government_id: String).void }
+        attr_writer :government_id
+
         # Parent company name (if applicable).
         sig { returns(T.nilable(String)) }
         attr_reader :parent_company
@@ -463,36 +478,43 @@ module Lithic
         sig { params(parent_company: String).void }
         attr_writer :parent_company
 
-        # Information for business for which the account is being opened and KYB is being
-        # run.
+        # One or more of the business's phone number(s), entered as a list in E.164
+        # format.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :phone_numbers
+
+        sig { params(phone_numbers: T::Array[String]).void }
+        attr_writer :phone_numbers
+
+        # Information for business for which the account is being opened.
         sig do
           params(
             address: Lithic::Address::OrHash,
-            government_id: String,
             legal_business_name: String,
-            phone_numbers: T::Array[String],
             dba_business_name: String,
-            parent_company: String
+            government_id: String,
+            parent_company: String,
+            phone_numbers: T::Array[String]
           ).returns(T.attached_class)
         end
         def self.new(
           # Business's physical address - PO boxes, UPS drops, and FedEx drops are not
           # acceptable; APO/FPO are acceptable.
           address:,
-          # Government-issued identification number. US Federal Employer Identification
-          # Numbers (EIN) are currently supported, entered as full nine-digits, with or
-          # without hyphens.
-          government_id:,
           # Legal (formal) business name.
           legal_business_name:,
-          # One or more of the business's phone number(s), entered as a list in E.164
-          # format.
-          phone_numbers:,
           # Any name that the business operates under that is not its legal business name
           # (if applicable).
           dba_business_name: nil,
+          # Government-issued identification number. US Federal Employer Identification
+          # Numbers (EIN) are currently supported, entered as full nine-digits, with or
+          # without hyphens.
+          government_id: nil,
           # Parent company name (if applicable).
-          parent_company: nil
+          parent_company: nil,
+          # One or more of the business's phone number(s), entered as a list in E.164
+          # format.
+          phone_numbers: nil
         )
         end
 
@@ -500,11 +522,11 @@ module Lithic
           override.returns(
             {
               address: Lithic::Address,
-              government_id: String,
               legal_business_name: String,
-              phone_numbers: T::Array[String],
               dba_business_name: String,
-              parent_company: String
+              government_id: String,
+              parent_company: String,
+              phone_numbers: T::Array[String]
             }
           )
         end

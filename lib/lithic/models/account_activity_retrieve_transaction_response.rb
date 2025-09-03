@@ -645,6 +645,7 @@ module Lithic
             DISPUTE_WON = :DISPUTE_WON
             SERVICE = :SERVICE
             TRANSFER = :TRANSFER
+            COLLECTION = :COLLECTION
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -922,13 +923,19 @@ module Lithic
         #   @return [String, nil]
         optional :external_bank_account_token, String, nil?: true
 
+        # @!attribute type
+        #
+        #   @return [Symbol, Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::Type, nil]
+        optional :type,
+                 enum: -> { Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::Type }
+
         # @!attribute user_defined_id
         #   User-defined identifier
         #
         #   @return [String, nil]
         optional :user_defined_id, String, nil?: true
 
-        # @!method initialize(token:, category:, created:, descriptor:, direction:, events:, family:, financial_account_token:, method_:, method_attributes:, pending_amount:, related_account_tokens:, result:, settled_amount:, source:, status:, updated:, currency: nil, expected_release_date: nil, external_bank_account_token: nil, user_defined_id: nil)
+        # @!method initialize(token:, category:, created:, descriptor:, direction:, events:, family:, financial_account_token:, method_:, method_attributes:, pending_amount:, related_account_tokens:, result:, settled_amount:, source:, status:, updated:, currency: nil, expected_release_date: nil, external_bank_account_token: nil, type: nil, user_defined_id: nil)
         #   Payment transaction
         #
         #   @param token [String] Unique identifier for the transaction
@@ -970,6 +977,8 @@ module Lithic
         #   @param expected_release_date [Date, nil] Expected release date for the transaction
         #
         #   @param external_bank_account_token [String, nil] External bank account token
+        #
+        #   @param type [Symbol, Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::Type]
         #
         #   @param user_defined_id [String, nil] User-defined identifier
 
@@ -1281,100 +1290,63 @@ module Lithic
           end
 
           class WireMethodAttributes < Lithic::Internal::Type::BaseModel
-            # @!attribute wire_transfer_type
+            # @!attribute wire_network
             #   Type of wire transfer
             #
-            #   @return [Symbol, Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireTransferType]
-            required :wire_transfer_type,
-                     enum: -> { Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireTransferType }
+            #   @return [Symbol, Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireNetwork]
+            required :wire_network,
+                     enum: -> { Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireNetwork }
 
-            # @!attribute external_bank_name
-            #   External bank name
+            # @!attribute creditor
+            #
+            #   @return [Lithic::Models::WirePartyDetails, nil]
+            optional :creditor, -> { Lithic::WirePartyDetails }
+
+            # @!attribute debtor
+            #
+            #   @return [Lithic::Models::WirePartyDetails, nil]
+            optional :debtor, -> { Lithic::WirePartyDetails }
+
+            # @!attribute message_id
+            #   Point to point reference identifier, as assigned by the instructing party, used
+            #   for tracking the message through the Fedwire system
             #
             #   @return [String, nil]
-            optional :external_bank_name, String, nil?: true
+            optional :message_id, String, nil?: true
 
-            # @!attribute external_bank_routing_number
-            #   External bank routing number
+            # @!attribute remittance_information
+            #   Payment details or invoice reference
             #
             #   @return [String, nil]
-            optional :external_bank_routing_number, String, nil?: true
+            optional :remittance_information, String, nil?: true
 
-            # @!attribute external_individual_name
-            #   External individual name
+            # @!attribute wire_message_type
+            #   Type of wire message
             #
             #   @return [String, nil]
-            optional :external_individual_name, String, nil?: true
+            optional :wire_message_type, String
 
-            # @!attribute imad
-            #   IMAD
+            # @!method initialize(wire_network:, creditor: nil, debtor: nil, message_id: nil, remittance_information: nil, wire_message_type: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes}
+            #   for more details.
             #
-            #   @return [String, nil]
-            optional :imad, String, nil?: true
-
-            # @!attribute lithic_bank_name
-            #   Lithic bank name
+            #   @param wire_network [Symbol, Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireNetwork] Type of wire transfer
             #
-            #   @return [String, nil]
-            optional :lithic_bank_name, String, nil?: true
-
-            # @!attribute lithic_bank_routing_number
-            #   Lithic bank routing number
+            #   @param creditor [Lithic::Models::WirePartyDetails]
             #
-            #   @return [String, nil]
-            optional :lithic_bank_routing_number, String, nil?: true
-
-            # @!attribute lithic_individual_name
-            #   Lithic individual name
+            #   @param debtor [Lithic::Models::WirePartyDetails]
             #
-            #   @return [String, nil]
-            optional :lithic_individual_name, String, nil?: true
-
-            # @!attribute omad
-            #   OMAD
+            #   @param message_id [String, nil] Point to point reference identifier, as assigned by the instructing party, used
             #
-            #   @return [String, nil]
-            optional :omad, String, nil?: true
-
-            # @!attribute previous_transfer
-            #   UUID of previous transfer if this is a retry
+            #   @param remittance_information [String, nil] Payment details or invoice reference
             #
-            #   @return [String, nil]
-            optional :previous_transfer, String, nil?: true
-
-            # @!attribute wire_token
-            #   Wire token
-            #
-            #   @return [String, nil]
-            optional :wire_token, String, nil?: true
-
-            # @!method initialize(wire_transfer_type:, external_bank_name: nil, external_bank_routing_number: nil, external_individual_name: nil, imad: nil, lithic_bank_name: nil, lithic_bank_routing_number: nil, lithic_individual_name: nil, omad: nil, previous_transfer: nil, wire_token: nil)
-            #   @param wire_transfer_type [Symbol, Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireTransferType] Type of wire transfer
-            #
-            #   @param external_bank_name [String, nil] External bank name
-            #
-            #   @param external_bank_routing_number [String, nil] External bank routing number
-            #
-            #   @param external_individual_name [String, nil] External individual name
-            #
-            #   @param imad [String, nil] IMAD
-            #
-            #   @param lithic_bank_name [String, nil] Lithic bank name
-            #
-            #   @param lithic_bank_routing_number [String, nil] Lithic bank routing number
-            #
-            #   @param lithic_individual_name [String, nil] Lithic individual name
-            #
-            #   @param omad [String, nil] OMAD
-            #
-            #   @param previous_transfer [String, nil] UUID of previous transfer if this is a retry
-            #
-            #   @param wire_token [String, nil] Wire token
+            #   @param wire_message_type [String] Type of wire message
 
             # Type of wire transfer
             #
-            # @see Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes#wire_transfer_type
-            module WireTransferType
+            # @see Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes#wire_network
+            module WireNetwork
               extend Lithic::Internal::Type::Enum
 
               FEDWIRE = :FEDWIRE
@@ -1449,6 +1421,23 @@ module Lithic
           DECLINED = :DECLINED
           REVERSED = :REVERSED
           CANCELED = :CANCELED
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # @see Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction#type
+        module Type
+          extend Lithic::Internal::Type::Enum
+
+          ORIGINATION_CREDIT = :ORIGINATION_CREDIT
+          ORIGINATION_DEBIT = :ORIGINATION_DEBIT
+          RECEIPT_CREDIT = :RECEIPT_CREDIT
+          RECEIPT_DEBIT = :RECEIPT_DEBIT
+          WIRE_INBOUND_PAYMENT = :WIRE_INBOUND_PAYMENT
+          WIRE_INBOUND_ADMIN = :WIRE_INBOUND_ADMIN
+          WIRE_OUTBOUND_PAYMENT = :WIRE_OUTBOUND_PAYMENT
+          WIRE_OUTBOUND_ADMIN = :WIRE_OUTBOUND_ADMIN
 
           # @!method self.values
           #   @return [Array<Symbol>]
