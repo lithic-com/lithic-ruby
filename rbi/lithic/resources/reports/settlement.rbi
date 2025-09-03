@@ -23,7 +23,7 @@ module Lithic
           # A cursor representing an item's token before which a page of results should end.
           # Used to retrieve the previous page of results before this item.
           ending_before: nil,
-          # Page size (for pagination).
+          # Number of records per page.
           page_size: nil,
           # A cursor representing an item's token after which a page of results should
           # begin. Used to retrieve the next page of results after this item.

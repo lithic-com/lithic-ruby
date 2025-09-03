@@ -150,6 +150,7 @@ module Lithic
         DISPUTE_WON = :DISPUTE_WON
         SERVICE = :SERVICE
         TRANSFER = :TRANSFER
+        COLLECTION = :COLLECTION
 
         # @!method self.values
         #   @return [Array<Symbol>]

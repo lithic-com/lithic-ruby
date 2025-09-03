@@ -13,15 +13,8 @@ module Lithic
       # that the calling API key manages.
       sig do
         params(
-          beneficial_owner_individuals:
-            T::Array[
-              Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual::OrHash
-            ],
           business_entity:
             Lithic::AccountHolderCreateParams::BusinessEntity::OrHash,
-          control_person:
-            Lithic::AccountHolderCreateParams::ControlPerson::OrHash,
-          nature_of_business: String,
           tos_timestamp: String,
           workflow: Lithic::AccountHolderCreateParams::Workflow::OrSymbol,
           individual: Lithic::AccountHolderCreateParams::Individual::OrHash,
@@ -32,6 +25,13 @@ module Lithic
             Lithic::AccountHolderCreateParams::KYCExemptionType::OrSymbol,
           last_name: String,
           phone_number: String,
+          beneficial_owner_individuals:
+            T::Array[
+              Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual::OrHash
+            ],
+          control_person:
+            Lithic::AccountHolderCreateParams::ControlPerson::OrHash,
+          nature_of_business: String,
           beneficial_owner_entities:
             T::Array[
               Lithic::AccountHolderCreateParams::BeneficialOwnerEntity::OrHash
@@ -45,28 +45,8 @@ module Lithic
         ).returns(Lithic::Models::AccountHolderCreateResponse)
       end
       def create(
-        # You must submit a list of all direct and indirect individuals with 25% or more
-        # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
-        # no individual owns 25% of the company you do not need to send beneficial owner
-        # information. See
-        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        # (Section I) for more background on individuals that should be included.
-        beneficial_owner_individuals:,
-        # Information for business for which the account is being opened and KYB is being
-        # run.
+        # Information for business for which the account is being opened.
         business_entity:,
-        # An individual with significant responsibility for managing the legal entity
-        # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
-        # Officer, Managing Member, General Partner, President, Vice President, or
-        # Treasurer). This can be an executive, or someone who will have program-wide
-        # access to the cards that Lithic will provide. In some cases, this individual
-        # could also be a beneficial owner listed above. See
-        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
-        # (Section II) for more background.
-        control_person:,
-        # Short description of the company's line of business (i.e., what does the company
-        # do?).
-        nature_of_business:,
         # An RFC 3339 timestamp indicating when the account holder accepted the applicable
         # legal agreements (e.g., cardholder terms) as agreed upon during API customer's
         # implementation with Lithic.
@@ -89,6 +69,25 @@ module Lithic
         last_name:,
         # The KYC Exempt user's phone number, entered in E.164 format.
         phone_number:,
+        # You can submit a list of all direct and indirect individuals with 25% or more
+        # ownership in the company. A maximum of 4 beneficial owners can be submitted. If
+        # no individual owns 25% of the company you do not need to send beneficial owner
+        # information. See
+        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+        # (Section I) for more background on individuals that should be included.
+        beneficial_owner_individuals: nil,
+        # An individual with significant responsibility for managing the legal entity
+        # (e.g., a Chief Executive Officer, Chief Financial Officer, Chief Operating
+        # Officer, Managing Member, General Partner, President, Vice President, or
+        # Treasurer). This can be an executive, or someone who will have program-wide
+        # access to the cards that Lithic will provide. In some cases, this individual
+        # could also be a beneficial owner listed above. See
+        # [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
+        # (Section II) for more background.
+        control_person: nil,
+        # Short description of the company's line of business (i.e., what does the company
+        # do?).
+        nature_of_business: nil,
         # Deprecated.
         beneficial_owner_entities: nil,
         # A user provided id that can be used to link an account holder with an external

@@ -571,6 +571,11 @@ module Lithic
               :TRANSFER,
               Lithic::BookTransferResponse::Event::Type::TaggedSymbol
             )
+          COLLECTION =
+            T.let(
+              :COLLECTION,
+              Lithic::BookTransferResponse::Event::Type::TaggedSymbol
+            )
 
           sig do
             override.returns(

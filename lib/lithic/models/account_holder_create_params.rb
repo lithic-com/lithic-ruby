@@ -8,20 +8,19 @@ module Lithic
       include Lithic::Internal::Type::RequestParameters
 
       # @!attribute beneficial_owner_individuals
-      #   You must submit a list of all direct and indirect individuals with 25% or more
+      #   You can submit a list of all direct and indirect individuals with 25% or more
       #   ownership in the company. A maximum of 4 beneficial owners can be submitted. If
       #   no individual owns 25% of the company you do not need to send beneficial owner
       #   information. See
       #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
       #   (Section I) for more background on individuals that should be included.
       #
-      #   @return [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>]
-      required :beneficial_owner_individuals,
+      #   @return [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>, nil]
+      optional :beneficial_owner_individuals,
                -> { Lithic::Internal::Type::ArrayOf[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual] }
 
       # @!attribute business_entity
-      #   Information for business for which the account is being opened and KYB is being
-      #   run.
+      #   Information for business for which the account is being opened.
       #
       #   @return [Lithic::Models::AccountHolderCreateParams::BusinessEntity]
       required :business_entity, -> { Lithic::AccountHolderCreateParams::BusinessEntity }
@@ -36,15 +35,15 @@ module Lithic
       #   [FinCEN requirements](https://www.fincen.gov/sites/default/files/shared/CDD_Rev6.7_Sept_2017_Certificate.pdf)
       #   (Section II) for more background.
       #
-      #   @return [Lithic::Models::AccountHolderCreateParams::ControlPerson]
-      required :control_person, -> { Lithic::AccountHolderCreateParams::ControlPerson }
+      #   @return [Lithic::Models::AccountHolderCreateParams::ControlPerson, nil]
+      optional :control_person, -> { Lithic::AccountHolderCreateParams::ControlPerson }
 
       # @!attribute nature_of_business
       #   Short description of the company's line of business (i.e., what does the company
       #   do?).
       #
-      #   @return [String]
-      required :nature_of_business, String
+      #   @return [String, nil]
+      optional :nature_of_business, String
 
       # @!attribute tos_timestamp
       #   An RFC 3339 timestamp indicating when the account holder accepted the applicable
@@ -152,17 +151,11 @@ module Lithic
       #   @return [String, nil]
       optional :business_account_token, String
 
-      # @!method initialize(beneficial_owner_individuals:, business_entity:, control_person:, nature_of_business:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
+      # @!method initialize(business_entity:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, beneficial_owner_individuals: nil, control_person: nil, nature_of_business: nil, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::AccountHolderCreateParams} for more details.
       #
-      #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>] You must submit a list of all direct and indirect individuals with 25% or more o
-      #
-      #   @param business_entity [Lithic::Models::AccountHolderCreateParams::BusinessEntity] Information for business for which the account is being opened and KYB is being
-      #
-      #   @param control_person [Lithic::Models::AccountHolderCreateParams::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
-      #
-      #   @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
+      #   @param business_entity [Lithic::Models::AccountHolderCreateParams::BusinessEntity] Information for business for which the account is being opened.
       #
       #   @param tos_timestamp [String] An RFC 3339 timestamp indicating when the account holder accepted the applicable
       #
@@ -181,6 +174,12 @@ module Lithic
       #   @param last_name [String] The KYC Exempt user's last name
       #
       #   @param phone_number [String] The KYC Exempt user's phone number, entered in E.164 format.
+      #
+      #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>] You can submit a list of all direct and indirect individuals with 25% or more ow
+      #
+      #   @param control_person [Lithic::Models::AccountHolderCreateParams::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
+      #
+      #   @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
       #
       #   @param beneficial_owner_entities [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity>] Deprecated.
       #
@@ -274,26 +273,11 @@ module Lithic
         #   @return [Lithic::Models::Address]
         required :address, -> { Lithic::Address }
 
-        # @!attribute government_id
-        #   Government-issued identification number. US Federal Employer Identification
-        #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
-        #   without hyphens.
-        #
-        #   @return [String]
-        required :government_id, String
-
         # @!attribute legal_business_name
         #   Legal (formal) business name.
         #
         #   @return [String]
         required :legal_business_name, String
-
-        # @!attribute phone_numbers
-        #   One or more of the business's phone number(s), entered as a list in E.164
-        #   format.
-        #
-        #   @return [Array<String>]
-        required :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
 
         # @!attribute dba_business_name
         #   Any name that the business operates under that is not its legal business name
@@ -302,30 +286,44 @@ module Lithic
         #   @return [String, nil]
         optional :dba_business_name, String
 
+        # @!attribute government_id
+        #   Government-issued identification number. US Federal Employer Identification
+        #   Numbers (EIN) are currently supported, entered as full nine-digits, with or
+        #   without hyphens.
+        #
+        #   @return [String, nil]
+        optional :government_id, String
+
         # @!attribute parent_company
         #   Parent company name (if applicable).
         #
         #   @return [String, nil]
         optional :parent_company, String
 
-        # @!method initialize(address:, government_id:, legal_business_name:, phone_numbers:, dba_business_name: nil, parent_company: nil)
+        # @!attribute phone_numbers
+        #   One or more of the business's phone number(s), entered as a list in E.164
+        #   format.
+        #
+        #   @return [Array<String>, nil]
+        optional :phone_numbers, Lithic::Internal::Type::ArrayOf[String]
+
+        # @!method initialize(address:, legal_business_name:, dba_business_name: nil, government_id: nil, parent_company: nil, phone_numbers: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AccountHolderCreateParams::BusinessEntity} for more details.
         #
-        #   Information for business for which the account is being opened and KYB is being
-        #   run.
+        #   Information for business for which the account is being opened.
         #
         #   @param address [Lithic::Models::Address] Business's physical address - PO boxes, UPS drops, and FedEx drops are not accep
         #
-        #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
-        #
         #   @param legal_business_name [String] Legal (formal) business name.
-        #
-        #   @param phone_numbers [Array<String>] One or more of the business's phone number(s), entered as a list in E.164 format
         #
         #   @param dba_business_name [String] Any name that the business operates under that is not its legal business name (i
         #
+        #   @param government_id [String] Government-issued identification number. US Federal Employer Identification Numb
+        #
         #   @param parent_company [String] Parent company name (if applicable).
+        #
+        #   @param phone_numbers [Array<String>] One or more of the business's phone number(s), entered as a list in E.164 format
       end
 
       class ControlPerson < Lithic::Internal::Type::BaseModel

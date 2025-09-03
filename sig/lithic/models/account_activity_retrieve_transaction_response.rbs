@@ -611,6 +611,7 @@ module Lithic
             | :DISPUTE_WON
             | :SERVICE
             | :TRANSFER
+            | :COLLECTION
 
           module Type
             extend Lithic::Internal::Type::Enum
@@ -648,6 +649,7 @@ module Lithic
             DISPUTE_WON: :DISPUTE_WON
             SERVICE: :SERVICE
             TRANSFER: :TRANSFER
+            COLLECTION: :COLLECTION
 
             def self?.values: -> ::Array[Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Event::type_]
           end
@@ -835,6 +837,7 @@ module Lithic
           currency: String,
           expected_release_date: Date?,
           external_bank_account_token: String?,
+          type: Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::type_,
           user_defined_id: String?
         }
 
@@ -881,6 +884,12 @@ module Lithic
 
         attr_accessor external_bank_account_token: String?
 
+        attr_reader type: Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::type_?
+
+        def type=: (
+          Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::type_
+        ) -> Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::type_
+
         attr_accessor user_defined_id: String?
 
         def initialize: (
@@ -904,6 +913,7 @@ module Lithic
           ?currency: String,
           ?expected_release_date: Date?,
           ?external_bank_account_token: String?,
+          ?type: Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::type_,
           ?user_defined_id: String?
         ) -> void
 
@@ -928,6 +938,7 @@ module Lithic
           currency: String,
           expected_release_date: Date?,
           external_bank_account_token: String?,
+          type: Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::type_,
           user_defined_id: String?
         }
 
@@ -1192,79 +1203,62 @@ module Lithic
 
           type wire_method_attributes =
             {
-              wire_transfer_type: Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_transfer_type,
-              external_bank_name: String?,
-              external_bank_routing_number: String?,
-              external_individual_name: String?,
-              imad: String?,
-              lithic_bank_name: String?,
-              lithic_bank_routing_number: String?,
-              lithic_individual_name: String?,
-              omad: String?,
-              previous_transfer: String?,
-              wire_token: String?
+              wire_network: Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_network,
+              creditor: Lithic::WirePartyDetails,
+              debtor: Lithic::WirePartyDetails,
+              message_id: String?,
+              remittance_information: String?,
+              wire_message_type: String
             }
 
           class WireMethodAttributes < Lithic::Internal::Type::BaseModel
-            attr_accessor wire_transfer_type: Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_transfer_type
+            attr_accessor wire_network: Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_network
 
-            attr_accessor external_bank_name: String?
+            attr_reader creditor: Lithic::WirePartyDetails?
 
-            attr_accessor external_bank_routing_number: String?
+            def creditor=: (
+              Lithic::WirePartyDetails
+            ) -> Lithic::WirePartyDetails
 
-            attr_accessor external_individual_name: String?
+            attr_reader debtor: Lithic::WirePartyDetails?
 
-            attr_accessor imad: String?
+            def debtor=: (Lithic::WirePartyDetails) -> Lithic::WirePartyDetails
 
-            attr_accessor lithic_bank_name: String?
+            attr_accessor message_id: String?
 
-            attr_accessor lithic_bank_routing_number: String?
+            attr_accessor remittance_information: String?
 
-            attr_accessor lithic_individual_name: String?
+            attr_reader wire_message_type: String?
 
-            attr_accessor omad: String?
-
-            attr_accessor previous_transfer: String?
-
-            attr_accessor wire_token: String?
+            def wire_message_type=: (String) -> String
 
             def initialize: (
-              wire_transfer_type: Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_transfer_type,
-              ?external_bank_name: String?,
-              ?external_bank_routing_number: String?,
-              ?external_individual_name: String?,
-              ?imad: String?,
-              ?lithic_bank_name: String?,
-              ?lithic_bank_routing_number: String?,
-              ?lithic_individual_name: String?,
-              ?omad: String?,
-              ?previous_transfer: String?,
-              ?wire_token: String?
+              wire_network: Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_network,
+              ?creditor: Lithic::WirePartyDetails,
+              ?debtor: Lithic::WirePartyDetails,
+              ?message_id: String?,
+              ?remittance_information: String?,
+              ?wire_message_type: String
             ) -> void
 
             def to_hash: -> {
-              wire_transfer_type: Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_transfer_type,
-              external_bank_name: String?,
-              external_bank_routing_number: String?,
-              external_individual_name: String?,
-              imad: String?,
-              lithic_bank_name: String?,
-              lithic_bank_routing_number: String?,
-              lithic_individual_name: String?,
-              omad: String?,
-              previous_transfer: String?,
-              wire_token: String?
+              wire_network: Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_network,
+              creditor: Lithic::WirePartyDetails,
+              debtor: Lithic::WirePartyDetails,
+              message_id: String?,
+              remittance_information: String?,
+              wire_message_type: String
             }
 
-            type wire_transfer_type = :FEDWIRE | :SWIFT
+            type wire_network = :FEDWIRE | :SWIFT
 
-            module WireTransferType
+            module WireNetwork
               extend Lithic::Internal::Type::Enum
 
               FEDWIRE: :FEDWIRE
               SWIFT: :SWIFT
 
-              def self?.values: -> ::Array[Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_transfer_type]
+              def self?.values: -> ::Array[Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::wire_network]
             end
           end
 
@@ -1325,6 +1319,31 @@ module Lithic
           CANCELED: :CANCELED
 
           def self?.values: -> ::Array[Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::status]
+        end
+
+        type type_ =
+          :ORIGINATION_CREDIT
+          | :ORIGINATION_DEBIT
+          | :RECEIPT_CREDIT
+          | :RECEIPT_DEBIT
+          | :WIRE_INBOUND_PAYMENT
+          | :WIRE_INBOUND_ADMIN
+          | :WIRE_OUTBOUND_PAYMENT
+          | :WIRE_OUTBOUND_ADMIN
+
+        module Type
+          extend Lithic::Internal::Type::Enum
+
+          ORIGINATION_CREDIT: :ORIGINATION_CREDIT
+          ORIGINATION_DEBIT: :ORIGINATION_DEBIT
+          RECEIPT_CREDIT: :RECEIPT_CREDIT
+          RECEIPT_DEBIT: :RECEIPT_DEBIT
+          WIRE_INBOUND_PAYMENT: :WIRE_INBOUND_PAYMENT
+          WIRE_INBOUND_ADMIN: :WIRE_INBOUND_ADMIN
+          WIRE_OUTBOUND_PAYMENT: :WIRE_OUTBOUND_PAYMENT
+          WIRE_OUTBOUND_ADMIN: :WIRE_OUTBOUND_ADMIN
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::type_]
         end
       end
 

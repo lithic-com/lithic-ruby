@@ -2,10 +2,7 @@ module Lithic
   module Resources
     class AccountHolders
       def create: (
-        beneficial_owner_individuals: ::Array[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual],
         business_entity: Lithic::AccountHolderCreateParams::BusinessEntity,
-        control_person: Lithic::AccountHolderCreateParams::ControlPerson,
-        nature_of_business: String,
         tos_timestamp: String,
         workflow: Lithic::Models::AccountHolderCreateParams::workflow,
         individual: Lithic::AccountHolderCreateParams::Individual,
@@ -15,6 +12,9 @@ module Lithic
         kyc_exemption_type: Lithic::Models::AccountHolderCreateParams::kyc_exemption_type,
         last_name: String,
         phone_number: String,
+        ?beneficial_owner_individuals: ::Array[Lithic::AccountHolderCreateParams::BeneficialOwnerIndividual],
+        ?control_person: Lithic::AccountHolderCreateParams::ControlPerson,
+        ?nature_of_business: String,
         ?beneficial_owner_entities: ::Array[Lithic::AccountHolderCreateParams::BeneficialOwnerEntity],
         ?external_id: String,
         ?kyb_passed_timestamp: String,

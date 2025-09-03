@@ -88,8 +88,12 @@ module Lithic
           IS_NOT_ONE_OF = :IS_NOT_ONE_OF
           MATCHES = :MATCHES
           DOES_NOT_MATCH = :DOES_NOT_MATCH
+          IS_EQUAL_TO = :IS_EQUAL_TO
+          IS_NOT_EQUAL_TO = :IS_NOT_EQUAL_TO
           IS_GREATER_THAN = :IS_GREATER_THAN
+          IS_GREATER_THAN_OR_EQUAL_TO = :IS_GREATER_THAN_OR_EQUAL_TO
           IS_LESS_THAN = :IS_LESS_THAN
+          IS_LESS_THAN_OR_EQUAL_TO = :IS_LESS_THAN_OR_EQUAL_TO
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -104,7 +108,7 @@ module Lithic
           # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
           variant String
 
-          # A number, to be used with `IS_GREATER_THAN` or `IS_LESS_THAN`
+          # A number, to be used with `IS_GREATER_THAN`, `IS_GREATER_THAN_OR_EQUAL_TO`, `IS_LESS_THAN`, `IS_LESS_THAN_OR_EQUAL_TO`, `IS_EQUAL_TO`, or `IS_NOT_EQUAL_TO`
           variant Integer
 
           # An array of strings, to be used with `IS_ONE_OF` or `IS_NOT_ONE_OF`

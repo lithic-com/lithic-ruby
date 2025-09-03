@@ -15,15 +15,9 @@ module Lithic
       # process. This endpoint can only be used on accounts that are part of the program
       # that the calling API key manages.
       #
-      # @overload create(beneficial_owner_individuals:, business_entity:, control_person:, nature_of_business:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
+      # @overload create(business_entity:, tos_timestamp:, workflow:, individual:, address:, email:, first_name:, kyc_exemption_type:, last_name:, phone_number:, beneficial_owner_individuals: nil, control_person: nil, nature_of_business: nil, beneficial_owner_entities: nil, external_id: nil, kyb_passed_timestamp: nil, website_url: nil, kyc_passed_timestamp: nil, business_account_token: nil, request_options: {})
       #
-      # @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>] You must submit a list of all direct and indirect individuals with 25% or more o
-      #
-      # @param business_entity [Lithic::Models::AccountHolderCreateParams::BusinessEntity] Information for business for which the account is being opened and KYB is being
-      #
-      # @param control_person [Lithic::Models::AccountHolderCreateParams::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
-      #
-      # @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
+      # @param business_entity [Lithic::Models::AccountHolderCreateParams::BusinessEntity] Information for business for which the account is being opened.
       #
       # @param tos_timestamp [String] An RFC 3339 timestamp indicating when the account holder accepted the applicable
       #
@@ -42,6 +36,12 @@ module Lithic
       # @param last_name [String] The KYC Exempt user's last name
       #
       # @param phone_number [String] The KYC Exempt user's phone number, entered in E.164 format.
+      #
+      # @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerIndividual>] You can submit a list of all direct and indirect individuals with 25% or more ow
+      #
+      # @param control_person [Lithic::Models::AccountHolderCreateParams::ControlPerson] An individual with significant responsibility for managing the legal entity (e.g
+      #
+      # @param nature_of_business [String] Short description of the company's line of business (i.e., what does the company
       #
       # @param beneficial_owner_entities [Array<Lithic::Models::AccountHolderCreateParams::BeneficialOwnerEntity>] Deprecated.
       #

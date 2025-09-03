@@ -1624,38 +1624,114 @@ module Lithic
               )
             end
 
-          # Device information gathered from the cardholder's device - JSON name/value pairs
-          # that is Base64url encoded. Maps to EMV 3DS field `deviceInfo`.
+          # Device model: e.g. "Apple iPhone 16".
+          sig { returns(T.nilable(String)) }
+          attr_accessor :device
+
+          # Raw device information - base64-encoded JSON object. Maps to EMV 3DS field
+          # `deviceInfo`.
           sig { returns(T.nilable(String)) }
           attr_accessor :device_info
 
-          # External IP address used by the app generating the 3DS authentication request.
-          # Maps to EMV 3DS field `appIp`.
+          # IP address of the device.
           sig { returns(T.nilable(String)) }
           attr_reader :ip
 
           sig { params(ip: String).void }
           attr_writer :ip
 
+          # Latitude coordinate of current device location.
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :latitude
+
+          # Device locale: e.g. "en-US".
+          sig { returns(T.nilable(String)) }
+          attr_accessor :locale
+
+          # Longitude coordinate of current device location.
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :longitude
+
+          # Operating System: e.g. "Android 12", "iOS 17.1".
+          sig { returns(T.nilable(String)) }
+          attr_accessor :os
+
+          # Device platform: Android, iOS, Windows, etc.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :platform
+
+          # Screen height in pixels.
+          sig { returns(T.nilable(Integer)) }
+          attr_accessor :screen_height
+
+          # Screen width in pixels.
+          sig { returns(T.nilable(Integer)) }
+          attr_accessor :screen_width
+
+          # Time zone offset in minutes between UTC and device local time.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :time_zone
+
           # Object containing data about the app used in the e-commerce transaction. Present
           # if the channel is 'APP_BASED'.
           sig do
-            params(device_info: T.nilable(String), ip: String).returns(
-              T.attached_class
-            )
+            params(
+              device: T.nilable(String),
+              device_info: T.nilable(String),
+              ip: String,
+              latitude: T.nilable(Float),
+              locale: T.nilable(String),
+              longitude: T.nilable(Float),
+              os: T.nilable(String),
+              platform: T.nilable(String),
+              screen_height: T.nilable(Integer),
+              screen_width: T.nilable(Integer),
+              time_zone: T.nilable(String)
+            ).returns(T.attached_class)
           end
           def self.new(
-            # Device information gathered from the cardholder's device - JSON name/value pairs
-            # that is Base64url encoded. Maps to EMV 3DS field `deviceInfo`.
+            # Device model: e.g. "Apple iPhone 16".
+            device: nil,
+            # Raw device information - base64-encoded JSON object. Maps to EMV 3DS field
+            # `deviceInfo`.
             device_info: nil,
-            # External IP address used by the app generating the 3DS authentication request.
-            # Maps to EMV 3DS field `appIp`.
-            ip: nil
+            # IP address of the device.
+            ip: nil,
+            # Latitude coordinate of current device location.
+            latitude: nil,
+            # Device locale: e.g. "en-US".
+            locale: nil,
+            # Longitude coordinate of current device location.
+            longitude: nil,
+            # Operating System: e.g. "Android 12", "iOS 17.1".
+            os: nil,
+            # Device platform: Android, iOS, Windows, etc.
+            platform: nil,
+            # Screen height in pixels.
+            screen_height: nil,
+            # Screen width in pixels.
+            screen_width: nil,
+            # Time zone offset in minutes between UTC and device local time.
+            time_zone: nil
           )
           end
 
           sig do
-            override.returns({ device_info: T.nilable(String), ip: String })
+            override.returns(
+              {
+                device: T.nilable(String),
+                device_info: T.nilable(String),
+                ip: String,
+                latitude: T.nilable(Float),
+                locale: T.nilable(String),
+                longitude: T.nilable(Float),
+                os: T.nilable(String),
+                platform: T.nilable(String),
+                screen_height: T.nilable(Integer),
+                screen_width: T.nilable(Integer),
+                time_zone: T.nilable(String)
+              }
+            )
           end
           def to_hash
           end
@@ -1772,9 +1848,8 @@ module Lithic
           sig { returns(T.nilable(String)) }
           attr_accessor :language
 
-          # Time zone of the cardholder's browser offset in minutes between UTC and the
-          # cardholder browser's local time. The offset is positive if the local time is
-          # behind UTC and negative if it is ahead. Maps to EMV 3DS field `browserTz`.
+          # Time zone offset in minutes between UTC and browser local time. Maps to EMV 3DS
+          # field `browserTz`.
           sig { returns(T.nilable(String)) }
           attr_accessor :time_zone
 
@@ -1811,9 +1886,8 @@ module Lithic
             # Language of the cardholder's browser as defined in IETF BCP47. Maps to EMV 3DS
             # field `browserLanguage`.
             language: nil,
-            # Time zone of the cardholder's browser offset in minutes between UTC and the
-            # cardholder browser's local time. The offset is positive if the local time is
-            # behind UTC and negative if it is ahead. Maps to EMV 3DS field `browserTz`.
+            # Time zone offset in minutes between UTC and browser local time. Maps to EMV 3DS
+            # field `browserTz`.
             time_zone: nil,
             # Content of the HTTP user-agent header. Maps to EMV 3DS field `browserUserAgent`.
             user_agent: nil

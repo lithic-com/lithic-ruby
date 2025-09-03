@@ -784,18 +784,14 @@ module Lithic
           T.let(:RECEIPT_CREDIT, Lithic::Payment::Type::TaggedSymbol)
         RECEIPT_DEBIT =
           T.let(:RECEIPT_DEBIT, Lithic::Payment::Type::TaggedSymbol)
-        CUSTOMER_TRANSFER =
-          T.let(:CUSTOMER_TRANSFER, Lithic::Payment::Type::TaggedSymbol)
-        DRAWDOWN_PAYMENT =
-          T.let(:DRAWDOWN_PAYMENT, Lithic::Payment::Type::TaggedSymbol)
-        REVERSAL_PAYMENT =
-          T.let(:REVERSAL_PAYMENT, Lithic::Payment::Type::TaggedSymbol)
-        DRAWDOWN_REQUEST =
-          T.let(:DRAWDOWN_REQUEST, Lithic::Payment::Type::TaggedSymbol)
-        REVERSAL_REQUEST =
-          T.let(:REVERSAL_REQUEST, Lithic::Payment::Type::TaggedSymbol)
-        DRAWDOWN_REFUSAL =
-          T.let(:DRAWDOWN_REFUSAL, Lithic::Payment::Type::TaggedSymbol)
+        WIRE_INBOUND_PAYMENT =
+          T.let(:WIRE_INBOUND_PAYMENT, Lithic::Payment::Type::TaggedSymbol)
+        WIRE_INBOUND_ADMIN =
+          T.let(:WIRE_INBOUND_ADMIN, Lithic::Payment::Type::TaggedSymbol)
+        WIRE_OUTBOUND_PAYMENT =
+          T.let(:WIRE_OUTBOUND_PAYMENT, Lithic::Payment::Type::TaggedSymbol)
+        WIRE_OUTBOUND_ADMIN =
+          T.let(:WIRE_OUTBOUND_ADMIN, Lithic::Payment::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Lithic::Payment::Type::TaggedSymbol]) }
         def self.values

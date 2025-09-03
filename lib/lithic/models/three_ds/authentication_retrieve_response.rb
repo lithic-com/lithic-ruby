@@ -806,30 +806,101 @@ module Lithic
 
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#app
         class App < Lithic::Internal::Type::BaseModel
+          # @!attribute device
+          #   Device model: e.g. "Apple iPhone 16".
+          #
+          #   @return [String, nil]
+          optional :device, String, nil?: true
+
           # @!attribute device_info
-          #   Device information gathered from the cardholder's device - JSON name/value pairs
-          #   that is Base64url encoded. Maps to EMV 3DS field `deviceInfo`.
+          #   Raw device information - base64-encoded JSON object. Maps to EMV 3DS field
+          #   `deviceInfo`.
           #
           #   @return [String, nil]
           optional :device_info, String, nil?: true
 
           # @!attribute ip
-          #   External IP address used by the app generating the 3DS authentication request.
-          #   Maps to EMV 3DS field `appIp`.
+          #   IP address of the device.
           #
           #   @return [String, nil]
           optional :ip, String
 
-          # @!method initialize(device_info: nil, ip: nil)
+          # @!attribute latitude
+          #   Latitude coordinate of current device location.
+          #
+          #   @return [Float, nil]
+          optional :latitude, Float, nil?: true
+
+          # @!attribute locale
+          #   Device locale: e.g. "en-US".
+          #
+          #   @return [String, nil]
+          optional :locale, String, nil?: true
+
+          # @!attribute longitude
+          #   Longitude coordinate of current device location.
+          #
+          #   @return [Float, nil]
+          optional :longitude, Float, nil?: true
+
+          # @!attribute os
+          #   Operating System: e.g. "Android 12", "iOS 17.1".
+          #
+          #   @return [String, nil]
+          optional :os, String, nil?: true
+
+          # @!attribute platform
+          #   Device platform: Android, iOS, Windows, etc.
+          #
+          #   @return [String, nil]
+          optional :platform, String, nil?: true
+
+          # @!attribute screen_height
+          #   Screen height in pixels.
+          #
+          #   @return [Integer, nil]
+          optional :screen_height, Integer, nil?: true
+
+          # @!attribute screen_width
+          #   Screen width in pixels.
+          #
+          #   @return [Integer, nil]
+          optional :screen_width, Integer, nil?: true
+
+          # @!attribute time_zone
+          #   Time zone offset in minutes between UTC and device local time.
+          #
+          #   @return [String, nil]
+          optional :time_zone, String, nil?: true
+
+          # @!method initialize(device: nil, device_info: nil, ip: nil, latitude: nil, locale: nil, longitude: nil, os: nil, platform: nil, screen_height: nil, screen_width: nil, time_zone: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App} for more details.
           #
           #   Object containing data about the app used in the e-commerce transaction. Present
           #   if the channel is 'APP_BASED'.
           #
-          #   @param device_info [String, nil] Device information gathered from the cardholder's device - JSON name/value pairs
+          #   @param device [String, nil] Device model: e.g. "Apple iPhone 16".
           #
-          #   @param ip [String] External IP address used by the app generating the 3DS authentication request. M
+          #   @param device_info [String, nil] Raw device information - base64-encoded JSON object. Maps to EMV 3DS field `devi
+          #
+          #   @param ip [String] IP address of the device.
+          #
+          #   @param latitude [Float, nil] Latitude coordinate of current device location.
+          #
+          #   @param locale [String, nil] Device locale: e.g. "en-US".
+          #
+          #   @param longitude [Float, nil] Longitude coordinate of current device location.
+          #
+          #   @param os [String, nil] Operating System: e.g. "Android 12", "iOS 17.1".
+          #
+          #   @param platform [String, nil] Device platform: Android, iOS, Windows, etc.
+          #
+          #   @param screen_height [Integer, nil] Screen height in pixels.
+          #
+          #   @param screen_width [Integer, nil] Screen width in pixels.
+          #
+          #   @param time_zone [String, nil] Time zone offset in minutes between UTC and device local time.
         end
 
         # Type of authentication request - i.e., the type of transaction or interaction is
@@ -893,9 +964,8 @@ module Lithic
           optional :language, String, nil?: true
 
           # @!attribute time_zone
-          #   Time zone of the cardholder's browser offset in minutes between UTC and the
-          #   cardholder browser's local time. The offset is positive if the local time is
-          #   behind UTC and negative if it is ahead. Maps to EMV 3DS field `browserTz`.
+          #   Time zone offset in minutes between UTC and browser local time. Maps to EMV 3DS
+          #   field `browserTz`.
           #
           #   @return [String, nil]
           optional :time_zone, String, nil?: true
@@ -924,7 +994,7 @@ module Lithic
           #
           #   @param language [String, nil] Language of the cardholder's browser as defined in IETF BCP47. Maps to EMV 3DS f
           #
-          #   @param time_zone [String, nil] Time zone of the cardholder's browser offset in minutes between UTC and the card
+          #   @param time_zone [String, nil] Time zone offset in minutes between UTC and browser local time. Maps to EMV 3DS
           #
           #   @param user_agent [String, nil] Content of the HTTP user-agent header. Maps to EMV 3DS field `browserUserAgent`.
         end
