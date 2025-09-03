@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.41 (2025-09-03)
+
+Full Changelog: [v0.1.0-alpha.40...v0.1.0-alpha.41](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.40...v0.1.0-alpha.41)
+
+### Features
+
+* **api:** adds support for delegated KYB onboarding and more device details in 3DS Authentications ([37126bc](https://github.com/lithic-com/lithic-ruby/commit/37126bc6c52176bee9e1a6c645a4033d7b48b81a))
+
+
+### Chores
+
+* add json schema comment for rubocop.yml ([d5f9cf9](https://github.com/lithic-com/lithic-ruby/commit/d5f9cf9a5a4b9c2450c9ac65c5ec0708466c8331))
+* sync repo ([bc9dd5c](https://github.com/lithic-com/lithic-ruby/commit/bc9dd5c574eb24959f3760ff9bd9f3c5240064cc))
+
 ## 0.1.0-alpha.40 (2025-07-15)
 
 Full Changelog: [v0.1.0-alpha.39...v0.1.0-alpha.40](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.39...v0.1.0-alpha.40)
