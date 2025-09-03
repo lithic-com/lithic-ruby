@@ -383,4 +383,6 @@ module Lithic
   TransferCreateParams = Lithic::Models::TransferCreateParams
 
   VerificationMethod = Lithic::Models::VerificationMethod
+
+  WirePartyDetails = Lithic::Models::WirePartyDetails
 end

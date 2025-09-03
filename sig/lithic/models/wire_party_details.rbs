@@ -1,0 +1,35 @@
+module Lithic
+  module Models
+    type wire_party_details =
+      {
+        account_number: String?,
+        agent_id: String?,
+        agent_name: String?,
+        name: String?
+      }
+
+    class WirePartyDetails < Lithic::Internal::Type::BaseModel
+      attr_accessor account_number: String?
+
+      attr_accessor agent_id: String?
+
+      attr_accessor agent_name: String?
+
+      attr_accessor name: String?
+
+      def initialize: (
+        ?account_number: String?,
+        ?agent_id: String?,
+        ?agent_name: String?,
+        ?name: String?
+      ) -> void
+
+      def to_hash: -> {
+        account_number: String?,
+        agent_id: String?,
+        agent_name: String?,
+        name: String?
+      }
+    end
+  end
+end

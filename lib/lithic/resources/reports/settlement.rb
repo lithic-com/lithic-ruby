@@ -18,7 +18,7 @@ module Lithic
         #
         # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
         #
-        # @param page_size [Integer] Page size (for pagination).
+        # @param page_size [Integer] Number of records per page.
         #
         # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
         #

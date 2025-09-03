@@ -1587,6 +1587,11 @@ module Lithic
                 :TRANSFER,
                 Lithic::Models::AccountActivityListResponse::BookTransferTransaction::Event::Type::TaggedSymbol
               )
+            COLLECTION =
+              T.let(
+                :COLLECTION,
+                Lithic::Models::AccountActivityListResponse::BookTransferTransaction::Event::Type::TaggedSymbol
+              )
 
             sig do
               override.returns(
@@ -2107,6 +2112,23 @@ module Lithic
         sig { returns(T.nilable(String)) }
         attr_accessor :external_bank_account_token
 
+        sig do
+          returns(
+            T.nilable(
+              Lithic::Models::AccountActivityListResponse::PaymentTransaction::Type::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :type
+
+        sig do
+          params(
+            type:
+              Lithic::Models::AccountActivityListResponse::PaymentTransaction::Type::OrSymbol
+          ).void
+        end
+        attr_writer :type
+
         # User-defined identifier
         sig { returns(T.nilable(String)) }
         attr_accessor :user_defined_id
@@ -2149,6 +2171,8 @@ module Lithic
             currency: String,
             expected_release_date: T.nilable(Date),
             external_bank_account_token: T.nilable(String),
+            type:
+              Lithic::Models::AccountActivityListResponse::PaymentTransaction::Type::OrSymbol,
             user_defined_id: T.nilable(String)
           ).returns(T.attached_class)
         end
@@ -2192,6 +2216,7 @@ module Lithic
           expected_release_date: nil,
           # External bank account token
           external_bank_account_token: nil,
+          type: nil,
           # User-defined identifier
           user_defined_id: nil
         )
@@ -2232,6 +2257,8 @@ module Lithic
               currency: String,
               expected_release_date: T.nilable(Date),
               external_bank_account_token: T.nilable(String),
+              type:
+                Lithic::Models::AccountActivityListResponse::PaymentTransaction::Type::TaggedSymbol,
               user_defined_id: T.nilable(String)
             }
           )
@@ -2972,108 +2999,75 @@ module Lithic
             # Type of wire transfer
             sig do
               returns(
-                Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireTransferType::TaggedSymbol
+                Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireNetwork::TaggedSymbol
               )
             end
-            attr_accessor :wire_transfer_type
+            attr_accessor :wire_network
 
-            # External bank name
-            sig { returns(T.nilable(String)) }
-            attr_accessor :external_bank_name
+            sig { returns(T.nilable(Lithic::WirePartyDetails)) }
+            attr_reader :creditor
 
-            # External bank routing number
-            sig { returns(T.nilable(String)) }
-            attr_accessor :external_bank_routing_number
+            sig { params(creditor: Lithic::WirePartyDetails::OrHash).void }
+            attr_writer :creditor
 
-            # External individual name
-            sig { returns(T.nilable(String)) }
-            attr_accessor :external_individual_name
+            sig { returns(T.nilable(Lithic::WirePartyDetails)) }
+            attr_reader :debtor
 
-            # IMAD
-            sig { returns(T.nilable(String)) }
-            attr_accessor :imad
+            sig { params(debtor: Lithic::WirePartyDetails::OrHash).void }
+            attr_writer :debtor
 
-            # Lithic bank name
+            # Point to point reference identifier, as assigned by the instructing party, used
+            # for tracking the message through the Fedwire system
             sig { returns(T.nilable(String)) }
-            attr_accessor :lithic_bank_name
+            attr_accessor :message_id
 
-            # Lithic bank routing number
+            # Payment details or invoice reference
             sig { returns(T.nilable(String)) }
-            attr_accessor :lithic_bank_routing_number
+            attr_accessor :remittance_information
 
-            # Lithic individual name
+            # Type of wire message
             sig { returns(T.nilable(String)) }
-            attr_accessor :lithic_individual_name
+            attr_reader :wire_message_type
 
-            # OMAD
-            sig { returns(T.nilable(String)) }
-            attr_accessor :omad
-
-            # UUID of previous transfer if this is a retry
-            sig { returns(T.nilable(String)) }
-            attr_accessor :previous_transfer
-
-            # Wire token
-            sig { returns(T.nilable(String)) }
-            attr_accessor :wire_token
+            sig { params(wire_message_type: String).void }
+            attr_writer :wire_message_type
 
             sig do
               params(
-                wire_transfer_type:
-                  Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireTransferType::OrSymbol,
-                external_bank_name: T.nilable(String),
-                external_bank_routing_number: T.nilable(String),
-                external_individual_name: T.nilable(String),
-                imad: T.nilable(String),
-                lithic_bank_name: T.nilable(String),
-                lithic_bank_routing_number: T.nilable(String),
-                lithic_individual_name: T.nilable(String),
-                omad: T.nilable(String),
-                previous_transfer: T.nilable(String),
-                wire_token: T.nilable(String)
+                wire_network:
+                  Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireNetwork::OrSymbol,
+                creditor: Lithic::WirePartyDetails::OrHash,
+                debtor: Lithic::WirePartyDetails::OrHash,
+                message_id: T.nilable(String),
+                remittance_information: T.nilable(String),
+                wire_message_type: String
               ).returns(T.attached_class)
             end
             def self.new(
               # Type of wire transfer
-              wire_transfer_type:,
-              # External bank name
-              external_bank_name: nil,
-              # External bank routing number
-              external_bank_routing_number: nil,
-              # External individual name
-              external_individual_name: nil,
-              # IMAD
-              imad: nil,
-              # Lithic bank name
-              lithic_bank_name: nil,
-              # Lithic bank routing number
-              lithic_bank_routing_number: nil,
-              # Lithic individual name
-              lithic_individual_name: nil,
-              # OMAD
-              omad: nil,
-              # UUID of previous transfer if this is a retry
-              previous_transfer: nil,
-              # Wire token
-              wire_token: nil
+              wire_network:,
+              creditor: nil,
+              debtor: nil,
+              # Point to point reference identifier, as assigned by the instructing party, used
+              # for tracking the message through the Fedwire system
+              message_id: nil,
+              # Payment details or invoice reference
+              remittance_information: nil,
+              # Type of wire message
+              wire_message_type: nil
             )
             end
 
             sig do
               override.returns(
                 {
-                  wire_transfer_type:
-                    Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireTransferType::TaggedSymbol,
-                  external_bank_name: T.nilable(String),
-                  external_bank_routing_number: T.nilable(String),
-                  external_individual_name: T.nilable(String),
-                  imad: T.nilable(String),
-                  lithic_bank_name: T.nilable(String),
-                  lithic_bank_routing_number: T.nilable(String),
-                  lithic_individual_name: T.nilable(String),
-                  omad: T.nilable(String),
-                  previous_transfer: T.nilable(String),
-                  wire_token: T.nilable(String)
+                  wire_network:
+                    Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireNetwork::TaggedSymbol,
+                  creditor: Lithic::WirePartyDetails,
+                  debtor: Lithic::WirePartyDetails,
+                  message_id: T.nilable(String),
+                  remittance_information: T.nilable(String),
+                  wire_message_type: String
                 }
               )
             end
@@ -3081,14 +3075,14 @@ module Lithic
             end
 
             # Type of wire transfer
-            module WireTransferType
+            module WireNetwork
               extend Lithic::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireTransferType
+                    Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireNetwork
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3096,18 +3090,18 @@ module Lithic
               FEDWIRE =
                 T.let(
                   :FEDWIRE,
-                  Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireTransferType::TaggedSymbol
+                  Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireNetwork::TaggedSymbol
                 )
               SWIFT =
                 T.let(
                   :SWIFT,
-                  Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireTransferType::TaggedSymbol
+                  Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireNetwork::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireTransferType::TaggedSymbol
+                    Lithic::Models::AccountActivityListResponse::PaymentTransaction::MethodAttributes::WireMethodAttributes::WireNetwork::TaggedSymbol
                   ]
                 )
               end
@@ -3289,6 +3283,70 @@ module Lithic
             override.returns(
               T::Array[
                 Lithic::Models::AccountActivityListResponse::PaymentTransaction::Status::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        module Type
+          extend Lithic::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Models::AccountActivityListResponse::PaymentTransaction::Type
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ORIGINATION_CREDIT =
+            T.let(
+              :ORIGINATION_CREDIT,
+              Lithic::Models::AccountActivityListResponse::PaymentTransaction::Type::TaggedSymbol
+            )
+          ORIGINATION_DEBIT =
+            T.let(
+              :ORIGINATION_DEBIT,
+              Lithic::Models::AccountActivityListResponse::PaymentTransaction::Type::TaggedSymbol
+            )
+          RECEIPT_CREDIT =
+            T.let(
+              :RECEIPT_CREDIT,
+              Lithic::Models::AccountActivityListResponse::PaymentTransaction::Type::TaggedSymbol
+            )
+          RECEIPT_DEBIT =
+            T.let(
+              :RECEIPT_DEBIT,
+              Lithic::Models::AccountActivityListResponse::PaymentTransaction::Type::TaggedSymbol
+            )
+          WIRE_INBOUND_PAYMENT =
+            T.let(
+              :WIRE_INBOUND_PAYMENT,
+              Lithic::Models::AccountActivityListResponse::PaymentTransaction::Type::TaggedSymbol
+            )
+          WIRE_INBOUND_ADMIN =
+            T.let(
+              :WIRE_INBOUND_ADMIN,
+              Lithic::Models::AccountActivityListResponse::PaymentTransaction::Type::TaggedSymbol
+            )
+          WIRE_OUTBOUND_PAYMENT =
+            T.let(
+              :WIRE_OUTBOUND_PAYMENT,
+              Lithic::Models::AccountActivityListResponse::PaymentTransaction::Type::TaggedSymbol
+            )
+          WIRE_OUTBOUND_ADMIN =
+            T.let(
+              :WIRE_OUTBOUND_ADMIN,
+              Lithic::Models::AccountActivityListResponse::PaymentTransaction::Type::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::Models::AccountActivityListResponse::PaymentTransaction::Type::TaggedSymbol
               ]
             )
           end

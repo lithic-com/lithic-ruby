@@ -535,18 +535,73 @@ module Lithic
           end
         end
 
-        type app = { device_info: String?, ip: String }
+        type app =
+          {
+            device: String?,
+            device_info: String?,
+            ip: String,
+            latitude: Float?,
+            locale: String?,
+            longitude: Float?,
+            os: String?,
+            platform: String?,
+            screen_height: Integer?,
+            screen_width: Integer?,
+            time_zone: String?
+          }
 
         class App < Lithic::Internal::Type::BaseModel
+          attr_accessor device: String?
+
           attr_accessor device_info: String?
 
           attr_reader ip: String?
 
           def ip=: (String) -> String
 
-          def initialize: (?device_info: String?, ?ip: String) -> void
+          attr_accessor latitude: Float?
 
-          def to_hash: -> { device_info: String?, ip: String }
+          attr_accessor locale: String?
+
+          attr_accessor longitude: Float?
+
+          attr_accessor os: String?
+
+          attr_accessor platform: String?
+
+          attr_accessor screen_height: Integer?
+
+          attr_accessor screen_width: Integer?
+
+          attr_accessor time_zone: String?
+
+          def initialize: (
+            ?device: String?,
+            ?device_info: String?,
+            ?ip: String,
+            ?latitude: Float?,
+            ?locale: String?,
+            ?longitude: Float?,
+            ?os: String?,
+            ?platform: String?,
+            ?screen_height: Integer?,
+            ?screen_width: Integer?,
+            ?time_zone: String?
+          ) -> void
+
+          def to_hash: -> {
+            device: String?,
+            device_info: String?,
+            ip: String,
+            latitude: Float?,
+            locale: String?,
+            longitude: Float?,
+            os: String?,
+            platform: String?,
+            screen_height: Integer?,
+            screen_width: Integer?,
+            time_zone: String?
+          }
         end
 
         type authentication_request_type =
