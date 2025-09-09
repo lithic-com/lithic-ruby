@@ -4,6 +4,8 @@ module Lithic
       type v2_create_params =
         {
           account_tokens: ::Array[String],
+          business_account_tokens: ::Array[String],
+          event_stream: Lithic::Models::AuthRules::V2CreateParams::event_stream,
           name: String?,
           parameters: Lithic::Models::AuthRules::V2CreateParams::parameters,
           type: Lithic::Models::AuthRules::V2CreateParams::type_,
@@ -17,7 +19,19 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        attr_accessor account_tokens: ::Array[String]
+        attr_reader account_tokens: ::Array[String]?
+
+        def account_tokens=: (::Array[String]) -> ::Array[String]
+
+        attr_reader business_account_tokens: ::Array[String]?
+
+        def business_account_tokens=: (::Array[String]) -> ::Array[String]
+
+        attr_reader event_stream: Lithic::Models::AuthRules::V2CreateParams::event_stream?
+
+        def event_stream=: (
+          Lithic::Models::AuthRules::V2CreateParams::event_stream
+        ) -> Lithic::Models::AuthRules::V2CreateParams::event_stream
 
         attr_accessor name: String?
 
@@ -42,9 +56,11 @@ module Lithic
         def excluded_card_tokens=: (::Array[String]) -> ::Array[String]
 
         def initialize: (
-          account_tokens: ::Array[String],
           card_tokens: ::Array[String],
           program_level: bool,
+          ?account_tokens: ::Array[String],
+          ?business_account_tokens: ::Array[String],
+          ?event_stream: Lithic::Models::AuthRules::V2CreateParams::event_stream,
           ?name: String?,
           ?parameters: Lithic::Models::AuthRules::V2CreateParams::parameters,
           ?type: Lithic::Models::AuthRules::V2CreateParams::type_,
@@ -54,6 +70,8 @@ module Lithic
 
         def to_hash: -> {
           account_tokens: ::Array[String],
+          business_account_tokens: ::Array[String],
+          event_stream: Lithic::Models::AuthRules::V2CreateParams::event_stream,
           name: String?,
           parameters: Lithic::Models::AuthRules::V2CreateParams::parameters,
           type: Lithic::Models::AuthRules::V2CreateParams::type_,
@@ -63,14 +81,180 @@ module Lithic
           request_options: Lithic::RequestOptions
         }
 
+        type event_stream = :AUTHORIZATION | :THREE_DS_AUTHENTICATION
+
+        module EventStream
+          extend Lithic::Internal::Type::Enum
+
+          AUTHORIZATION: :AUTHORIZATION
+          THREE_DS_AUTHENTICATION: :THREE_DS_AUTHENTICATION
+
+          def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::event_stream]
+        end
+
         type parameters =
           Lithic::AuthRules::ConditionalBlockParameters
           | Lithic::AuthRules::VelocityLimitParams
           | Lithic::AuthRules::MerchantLockParameters
           | Lithic::AuthRules::Conditional3DSActionParameters
+          | Lithic::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters
 
         module Parameters
           extend Lithic::Internal::Type::Union
+
+          type conditional_authorization_action_parameters =
+            {
+              action: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::action,
+              conditions: ::Array[Lithic::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition]
+            }
+
+          class ConditionalAuthorizationActionParameters < Lithic::Internal::Type::BaseModel
+            attr_accessor action: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::action
+
+            attr_accessor conditions: ::Array[Lithic::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition]
+
+            def initialize: (
+              action: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::action,
+              conditions: ::Array[Lithic::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition]
+            ) -> void
+
+            def to_hash: -> {
+              action: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::action,
+              conditions: ::Array[Lithic::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition]
+            }
+
+            type action = :DECLINE | :CHALLENGE
+
+            module Action
+              extend Lithic::Internal::Type::Enum
+
+              DECLINE: :DECLINE
+              CHALLENGE: :CHALLENGE
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::action]
+            end
+
+            type condition =
+              {
+                attribute: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::attribute,
+                operation: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::operation,
+                value: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::value
+              }
+
+            class Condition < Lithic::Internal::Type::BaseModel
+              attr_reader attribute: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::attribute?
+
+              def attribute=: (
+                Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::attribute
+              ) -> Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::attribute
+
+              attr_reader operation: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::operation?
+
+              def operation=: (
+                Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::operation
+              ) -> Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::operation
+
+              attr_reader value: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::value?
+
+              def value=: (
+                Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::value
+              ) -> Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::value
+
+              def initialize: (
+                ?attribute: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::attribute,
+                ?operation: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::operation,
+                ?value: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::value
+              ) -> void
+
+              def to_hash: -> {
+                attribute: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::attribute,
+                operation: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::operation,
+                value: Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::value
+              }
+
+              type attribute =
+                :MCC
+                | :COUNTRY
+                | :CURRENCY
+                | :MERCHANT_ID
+                | :DESCRIPTOR
+                | :LIABILITY_SHIFT
+                | :PAN_ENTRY_MODE
+                | :TRANSACTION_AMOUNT
+                | :RISK_SCORE
+                | :CARD_TRANSACTION_COUNT_15M
+                | :CARD_TRANSACTION_COUNT_1H
+                | :CARD_TRANSACTION_COUNT_24H
+                | :CARD_STATE
+                | :PIN_ENTERED
+                | :PIN_STATUS
+                | :WALLET_TYPE
+                | :TRANSACTION_INITIATOR
+
+              module Attribute
+                extend Lithic::Internal::Type::Enum
+
+                MCC: :MCC
+                COUNTRY: :COUNTRY
+                CURRENCY: :CURRENCY
+                MERCHANT_ID: :MERCHANT_ID
+                DESCRIPTOR: :DESCRIPTOR
+                LIABILITY_SHIFT: :LIABILITY_SHIFT
+                PAN_ENTRY_MODE: :PAN_ENTRY_MODE
+                TRANSACTION_AMOUNT: :TRANSACTION_AMOUNT
+                RISK_SCORE: :RISK_SCORE
+                CARD_TRANSACTION_COUNT_15_M: :CARD_TRANSACTION_COUNT_15M
+                CARD_TRANSACTION_COUNT_1_H: :CARD_TRANSACTION_COUNT_1H
+                CARD_TRANSACTION_COUNT_24_H: :CARD_TRANSACTION_COUNT_24H
+                CARD_STATE: :CARD_STATE
+                PIN_ENTERED: :PIN_ENTERED
+                PIN_STATUS: :PIN_STATUS
+                WALLET_TYPE: :WALLET_TYPE
+                TRANSACTION_INITIATOR: :TRANSACTION_INITIATOR
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::attribute]
+              end
+
+              type operation =
+                :IS_ONE_OF
+                | :IS_NOT_ONE_OF
+                | :MATCHES
+                | :DOES_NOT_MATCH
+                | :IS_EQUAL_TO
+                | :IS_NOT_EQUAL_TO
+                | :IS_GREATER_THAN
+                | :IS_GREATER_THAN_OR_EQUAL_TO
+                | :IS_LESS_THAN
+                | :IS_LESS_THAN_OR_EQUAL_TO
+
+              module Operation
+                extend Lithic::Internal::Type::Enum
+
+                IS_ONE_OF: :IS_ONE_OF
+                IS_NOT_ONE_OF: :IS_NOT_ONE_OF
+                MATCHES: :MATCHES
+                DOES_NOT_MATCH: :DOES_NOT_MATCH
+                IS_EQUAL_TO: :IS_EQUAL_TO
+                IS_NOT_EQUAL_TO: :IS_NOT_EQUAL_TO
+                IS_GREATER_THAN: :IS_GREATER_THAN
+                IS_GREATER_THAN_OR_EQUAL_TO: :IS_GREATER_THAN_OR_EQUAL_TO
+                IS_LESS_THAN: :IS_LESS_THAN
+                IS_LESS_THAN_OR_EQUAL_TO: :IS_LESS_THAN_OR_EQUAL_TO
+
+                def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::operation]
+              end
+
+              type value = String | Integer | ::Array[String]
+
+              module Value
+                extend Lithic::Internal::Type::Union
+
+                def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::value]
+
+                StringArray: Lithic::Internal::Type::Converter
+              end
+            end
+          end
 
           def self?.variants: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::parameters]
         end
@@ -79,7 +263,7 @@ module Lithic
           :CONDITIONAL_BLOCK
           | :VELOCITY_LIMIT
           | :MERCHANT_LOCK
-          | :CONDITIONAL_3DS_ACTION
+          | :CONDITIONAL_ACTION
 
         module Type
           extend Lithic::Internal::Type::Enum
@@ -87,7 +271,7 @@ module Lithic
           CONDITIONAL_BLOCK: :CONDITIONAL_BLOCK
           VELOCITY_LIMIT: :VELOCITY_LIMIT
           MERCHANT_LOCK: :MERCHANT_LOCK
-          CONDITIONAL_3DS_ACTION: :CONDITIONAL_3DS_ACTION
+          CONDITIONAL_ACTION: :CONDITIONAL_ACTION
 
           def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::type_]
         end

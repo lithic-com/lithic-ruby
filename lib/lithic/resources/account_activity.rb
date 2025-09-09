@@ -26,11 +26,11 @@ module Lithic
       #
       # @param page_size [Integer] Page size (for pagination).
       #
-      # @param result [Array<Symbol, Lithic::Models::AccountActivityListParams::Result>] Filter by transaction result
+      # @param result [Symbol, Lithic::Models::AccountActivityListParams::Result] Filter by transaction result
       #
       # @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      # @param status [Array<Symbol, Lithic::Models::AccountActivityListParams::Status>] Filter by transaction status
+      # @param status [Symbol, Lithic::Models::AccountActivityListParams::Status] Filter by transaction status
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #

@@ -10,9 +10,9 @@ module Lithic
         ?ending_before: String,
         ?financial_account_token: String,
         ?page_size: Integer,
-        ?result: ::Array[Lithic::Models::AccountActivityListParams::result],
+        ?result: Lithic::Models::AccountActivityListParams::result,
         ?starting_after: String,
-        ?status: ::Array[Lithic::Models::AccountActivityListParams::status],
+        ?status: Lithic::Models::AccountActivityListParams::status,
         ?request_options: Lithic::request_opts
       ) -> Lithic::Internal::CursorPage[Lithic::Models::account_activity_list_response]
 

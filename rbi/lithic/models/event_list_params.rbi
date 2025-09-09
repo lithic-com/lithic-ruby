@@ -226,6 +226,16 @@ module Lithic
             :"dispute_evidence.upload_failed",
             Lithic::EventListParams::EventType::TaggedSymbol
           )
+        DISPUTE_TRANSACTION_CREATED =
+          T.let(
+            :"dispute_transaction.created",
+            Lithic::EventListParams::EventType::TaggedSymbol
+          )
+        DISPUTE_TRANSACTION_UPDATED =
+          T.let(
+            :"dispute_transaction.updated",
+            Lithic::EventListParams::EventType::TaggedSymbol
+          )
         EXTERNAL_BANK_ACCOUNT_CREATED =
           T.let(
             :"external_bank_account.created",

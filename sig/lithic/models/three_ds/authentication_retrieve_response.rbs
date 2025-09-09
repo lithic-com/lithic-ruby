@@ -308,38 +308,38 @@ module Lithic
 
         type merchant =
           {
-            id: String,
-            country: String,
-            mcc: String,
-            name: String,
-            risk_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator
+            risk_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator,
+            id: String?,
+            country: String?,
+            mcc: String?,
+            name: String?
           }
 
         class Merchant < Lithic::Internal::Type::BaseModel
-          attr_accessor id: String
-
-          attr_accessor country: String
-
-          attr_accessor mcc: String
-
-          attr_accessor name: String
-
           attr_accessor risk_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator
 
+          attr_accessor id: String?
+
+          attr_accessor country: String?
+
+          attr_accessor mcc: String?
+
+          attr_accessor name: String?
+
           def initialize: (
-            id: String,
-            country: String,
-            mcc: String,
-            name: String,
-            risk_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator
+            risk_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator,
+            ?id: String?,
+            ?country: String?,
+            ?mcc: String?,
+            ?name: String?
           ) -> void
 
           def to_hash: -> {
-            id: String,
-            country: String,
-            mcc: String,
-            name: String,
-            risk_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator
+            risk_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator,
+            id: String?,
+            country: String?,
+            mcc: String?,
+            name: String?
           }
 
           type risk_indicator =

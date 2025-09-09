@@ -3,8 +3,8 @@
 require_relative "../../test_helper"
 
 class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
-  def test_create_required_params
-    response = @lithic.auth_rules.v2.create(account_tokens: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"])
+  def test_create
+    response = @lithic.auth_rules.v2.create(card_tokens: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"])
 
     assert_pattern do
       response => Lithic::Models::AuthRules::V2CreateResponse
@@ -14,6 +14,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
       response => {
         token: String,
         account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2CreateResponse::DraftVersion | nil,
@@ -38,6 +39,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
       response => {
         token: String,
         account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::Models::AuthRules::V2RetrieveResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2RetrieveResponse::DraftVersion | nil,
@@ -62,6 +64,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
       response => {
         token: String,
         account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::Models::AuthRules::V2UpdateResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2UpdateResponse::DraftVersion | nil,
@@ -93,6 +96,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
       row => {
         token: String,
         account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::Models::AuthRules::V2ListResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2ListResponse::DraftVersion | nil,
@@ -114,11 +118,11 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     end
   end
 
-  def test_apply_required_params
+  def test_apply
     response =
       @lithic.auth_rules.v2.apply(
         "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        account_tokens: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"]
+        card_tokens: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"]
       )
 
     assert_pattern do
@@ -129,6 +133,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
       response => {
         token: String,
         account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::Models::AuthRules::V2ApplyResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2ApplyResponse::DraftVersion | nil,
@@ -153,6 +158,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
       response => {
         token: String,
         account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion | nil,
@@ -177,6 +183,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
       response => {
         token: String,
         account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
+        business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         current_version: Lithic::Models::AuthRules::V2PromoteResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2PromoteResponse::DraftVersion | nil,
