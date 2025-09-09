@@ -10,9 +10,9 @@ module Lithic
         ending_before: String,
         financial_account_token: String,
         page_size: Integer,
-        result: ::Array[Lithic::Models::AccountActivityListParams::result],
+        result: Lithic::Models::AccountActivityListParams::result,
         starting_after: String,
-        status: ::Array[Lithic::Models::AccountActivityListParams::status]
+        status: Lithic::Models::AccountActivityListParams::status
       }
       & Lithic::Internal::Type::request_parameters
 
@@ -54,21 +54,21 @@ module Lithic
 
       def page_size=: (Integer) -> Integer
 
-      attr_reader result: ::Array[Lithic::Models::AccountActivityListParams::result]?
+      attr_reader result: Lithic::Models::AccountActivityListParams::result?
 
       def result=: (
-        ::Array[Lithic::Models::AccountActivityListParams::result]
-      ) -> ::Array[Lithic::Models::AccountActivityListParams::result]
+        Lithic::Models::AccountActivityListParams::result
+      ) -> Lithic::Models::AccountActivityListParams::result
 
       attr_reader starting_after: String?
 
       def starting_after=: (String) -> String
 
-      attr_reader status: ::Array[Lithic::Models::AccountActivityListParams::status]?
+      attr_reader status: Lithic::Models::AccountActivityListParams::status?
 
       def status=: (
-        ::Array[Lithic::Models::AccountActivityListParams::status]
-      ) -> ::Array[Lithic::Models::AccountActivityListParams::status]
+        Lithic::Models::AccountActivityListParams::status
+      ) -> Lithic::Models::AccountActivityListParams::status
 
       def initialize: (
         ?account_token: String,
@@ -79,9 +79,9 @@ module Lithic
         ?ending_before: String,
         ?financial_account_token: String,
         ?page_size: Integer,
-        ?result: ::Array[Lithic::Models::AccountActivityListParams::result],
+        ?result: Lithic::Models::AccountActivityListParams::result,
         ?starting_after: String,
-        ?status: ::Array[Lithic::Models::AccountActivityListParams::status],
+        ?status: Lithic::Models::AccountActivityListParams::status,
         ?request_options: Lithic::request_opts
       ) -> void
 
@@ -94,9 +94,9 @@ module Lithic
         ending_before: String,
         financial_account_token: String,
         page_size: Integer,
-        result: ::Array[Lithic::Models::AccountActivityListParams::result],
+        result: Lithic::Models::AccountActivityListParams::result,
         starting_after: String,
-        status: ::Array[Lithic::Models::AccountActivityListParams::status],
+        status: Lithic::Models::AccountActivityListParams::status,
         request_options: Lithic::RequestOptions
       }
 
@@ -150,10 +150,10 @@ module Lithic
         :DECLINED
         | :EXPIRED
         | :PENDING
-        | :SETTLED
-        | :VOIDED
         | :RETURNED
         | :REVERSED
+        | :SETTLED
+        | :VOIDED
 
       module Status
         extend Lithic::Internal::Type::Enum
@@ -161,10 +161,10 @@ module Lithic
         DECLINED: :DECLINED
         EXPIRED: :EXPIRED
         PENDING: :PENDING
-        SETTLED: :SETTLED
-        VOIDED: :VOIDED
         RETURNED: :RETURNED
         REVERSED: :REVERSED
+        SETTLED: :SETTLED
+        VOIDED: :VOIDED
 
         def self?.values: -> ::Array[Lithic::Models::AccountActivityListParams::status]
       end

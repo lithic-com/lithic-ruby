@@ -12,19 +12,23 @@ module Lithic
         #
         # Creates a new V2 Auth rule in draft mode
         #
-        # @overload create(account_tokens:, card_tokens:, program_level:, name: nil, parameters: nil, type: nil, excluded_card_tokens: nil, request_options: {})
-        #
-        # @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
+        # @overload create(card_tokens:, program_level:, account_tokens: nil, business_account_tokens: nil, event_stream: nil, name: nil, parameters: nil, type: nil, excluded_card_tokens: nil, request_options: {})
         #
         # @param card_tokens [Array<String>] Card tokens to which the Auth Rule applies.
         #
         # @param program_level [Boolean] Whether the Auth Rule applies to all authorizations on the card program.
         #
+        # @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
+        #
+        # @param business_account_tokens [Array<String>] Business Account tokens to which the Auth Rule applies.
+        #
+        # @param event_stream [Symbol, Lithic::Models::AuthRules::V2CreateParams::EventStream] The event stream during which the rule will be evaluated.
+        #
         # @param name [String, nil] Auth Rule Name
         #
-        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters] Parameters for the Auth Rule
+        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters] Parameters for the Auth Rule
         #
-        # @param type [Symbol, Lithic::Models::AuthRules::V2CreateParams::Type] The type of Auth Rule. Effectively determines the event stream during which it w
+        # @param type [Symbol, Lithic::Models::AuthRules::V2CreateParams::Type] The type of Auth Rule. For certain rule types, this determines the event stream
         #
         # @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
         #
@@ -73,11 +77,9 @@ module Lithic
         # is provided, this will replace existing associations with the provided list of
         # entities.
         #
-        # @overload update(auth_rule_token, account_tokens: nil, name: nil, state: nil, card_tokens: nil, excluded_card_tokens: nil, program_level: nil, request_options: {})
+        # @overload update(auth_rule_token, name: nil, state: nil, card_tokens: nil, excluded_card_tokens: nil, program_level: nil, request_options: {})
         #
         # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
-        #
-        # @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
         #
         # @param name [String, nil] Auth Rule Name
         #
@@ -110,9 +112,11 @@ module Lithic
         #
         # Lists V2 Auth rules
         #
-        # @overload list(account_token: nil, card_token: nil, ending_before: nil, event_stream: nil, page_size: nil, scope: nil, starting_after: nil, request_options: {})
+        # @overload list(account_token: nil, business_account_token: nil, card_token: nil, ending_before: nil, event_stream: nil, page_size: nil, scope: nil, starting_after: nil, request_options: {})
         #
         # @param account_token [String] Only return Auth Rules that are bound to the provided account token.
+        #
+        # @param business_account_token [String] Only return Auth Rules that are bound to the provided business account token.
         #
         # @param card_token [String] Only return Auth Rules that are bound to the provided card token.
         #
@@ -170,15 +174,17 @@ module Lithic
         #
         # Prefer using the `PATCH` method for this operation.
         #
-        # @overload apply(auth_rule_token, account_tokens:, card_tokens:, program_level:, excluded_card_tokens: nil, request_options: {})
+        # @overload apply(auth_rule_token, card_tokens:, program_level:, account_tokens: nil, business_account_tokens: nil, excluded_card_tokens: nil, request_options: {})
         #
         # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
-        #
-        # @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
         #
         # @param card_tokens [Array<String>] Card tokens to which the Auth Rule applies.
         #
         # @param program_level [Boolean] Whether the Auth Rule applies to all authorizations on the card program.
+        #
+        # @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
+        #
+        # @param business_account_tokens [Array<String>] Business Account tokens to which the Auth Rule applies.
         #
         # @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
         #
@@ -207,7 +213,7 @@ module Lithic
         #
         # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
         #
-        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, nil] Parameters for the Auth Rule
+        # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::V2DraftParams::Parameters::ConditionalAuthorizationActionParameters, nil] Parameters for the Auth Rule
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #

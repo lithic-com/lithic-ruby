@@ -32,6 +32,8 @@ module Lithic
       # - `card_transaction.updated` - Transaction Lifecycle webhook. See
       #   https://docs.lithic.com/docs/transaction-webhooks.
       # - `dispute.updated` - A dispute has been updated.
+      # - `dispute_transaction.created` - A new dispute transaction has been created.
+      # - `dispute_transaction.updated` - A dispute transaction has been updated.
       # - `digital_wallet.tokenization_approval_request` - Card network's request to
       #   Lithic to activate a digital wallet token.
       # - `digital_wallet.tokenization_result` - Notification of the end result of a
@@ -83,6 +85,8 @@ module Lithic
         # - `card_transaction.updated` - Transaction Lifecycle webhook. See
         #   https://docs.lithic.com/docs/transaction-webhooks.
         # - `dispute.updated` - A dispute has been updated.
+        # - `dispute_transaction.created` - A new dispute transaction has been created.
+        # - `dispute_transaction.updated` - A dispute transaction has been updated.
         # - `digital_wallet.tokenization_approval_request` - Card network's request to
         #   Lithic to activate a digital wallet token.
         # - `digital_wallet.tokenization_result` - Notification of the end result of a
@@ -130,6 +134,8 @@ module Lithic
       # - `card_transaction.updated` - Transaction Lifecycle webhook. See
       #   https://docs.lithic.com/docs/transaction-webhooks.
       # - `dispute.updated` - A dispute has been updated.
+      # - `dispute_transaction.created` - A new dispute transaction has been created.
+      # - `dispute_transaction.updated` - A dispute transaction has been updated.
       # - `digital_wallet.tokenization_approval_request` - Card network's request to
       #   Lithic to activate a digital wallet token.
       # - `digital_wallet.tokenization_result` - Notification of the end result of a
@@ -220,6 +226,16 @@ module Lithic
         DISPUTE_EVIDENCE_UPLOAD_FAILED =
           T.let(
             :"dispute_evidence.upload_failed",
+            Lithic::Event::EventType::TaggedSymbol
+          )
+        DISPUTE_TRANSACTION_CREATED =
+          T.let(
+            :"dispute_transaction.created",
+            Lithic::Event::EventType::TaggedSymbol
+          )
+        DISPUTE_TRANSACTION_UPDATED =
+          T.let(
+            :"dispute_transaction.updated",
             Lithic::Event::EventType::TaggedSymbol
           )
         EXTERNAL_BANK_ACCOUNT_CREATED =

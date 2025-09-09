@@ -957,26 +957,6 @@ module Lithic
               )
             end
 
-          # Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field
-          # `acquirerMerchantId`.
-          sig { returns(String) }
-          attr_accessor :id
-
-          # Country code of the merchant requesting 3DS authentication. Maps to EMV 3DS
-          # field `merchantCountryCode`. Permitted values: ISO 3166-1 alpha-3 country code
-          # (e.g., USA).
-          sig { returns(String) }
-          attr_accessor :country
-
-          # Merchant category code assigned to the merchant that describes its business
-          # activity type. Maps to EMV 3DS field `mcc`.
-          sig { returns(String) }
-          attr_accessor :mcc
-
-          # Name of the merchant. Maps to EMV 3DS field `merchantName`.
-          sig { returns(String) }
-          attr_accessor :name
-
           # Object containing additional data indicating additional risk factors related to
           # the e-commerce transaction.
           sig do
@@ -994,46 +974,70 @@ module Lithic
           end
           attr_writer :risk_indicator
 
+          # Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field
+          # `acquirerMerchantId`. May not be present for non-payment authentications.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :id
+
+          # Country code of the merchant requesting 3DS authentication. Maps to EMV 3DS
+          # field `merchantCountryCode`. Permitted values: ISO 3166-1 alpha-3 country code
+          # (e.g., USA). May not be present for non-payment authentications.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :country
+
+          # Merchant category code assigned to the merchant that describes its business
+          # activity type. Maps to EMV 3DS field `mcc`. May not be present for non-payment
+          # authentications.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :mcc
+
+          # Name of the merchant. Maps to EMV 3DS field `merchantName`. May not be present
+          # for non-payment authentications.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :name
+
           # Object containing data about the merchant involved in the e-commerce
           # transaction.
           sig do
             params(
-              id: String,
-              country: String,
-              mcc: String,
-              name: String,
               risk_indicator:
-                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrHash
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator::OrHash,
+              id: T.nilable(String),
+              country: T.nilable(String),
+              mcc: T.nilable(String),
+              name: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
-            # Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field
-            # `acquirerMerchantId`.
-            id:,
-            # Country code of the merchant requesting 3DS authentication. Maps to EMV 3DS
-            # field `merchantCountryCode`. Permitted values: ISO 3166-1 alpha-3 country code
-            # (e.g., USA).
-            country:,
-            # Merchant category code assigned to the merchant that describes its business
-            # activity type. Maps to EMV 3DS field `mcc`.
-            mcc:,
-            # Name of the merchant. Maps to EMV 3DS field `merchantName`.
-            name:,
             # Object containing additional data indicating additional risk factors related to
             # the e-commerce transaction.
-            risk_indicator:
+            risk_indicator:,
+            # Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field
+            # `acquirerMerchantId`. May not be present for non-payment authentications.
+            id: nil,
+            # Country code of the merchant requesting 3DS authentication. Maps to EMV 3DS
+            # field `merchantCountryCode`. Permitted values: ISO 3166-1 alpha-3 country code
+            # (e.g., USA). May not be present for non-payment authentications.
+            country: nil,
+            # Merchant category code assigned to the merchant that describes its business
+            # activity type. Maps to EMV 3DS field `mcc`. May not be present for non-payment
+            # authentications.
+            mcc: nil,
+            # Name of the merchant. Maps to EMV 3DS field `merchantName`. May not be present
+            # for non-payment authentications.
+            name: nil
           )
           end
 
           sig do
             override.returns(
               {
-                id: String,
-                country: String,
-                mcc: String,
-                name: String,
                 risk_indicator:
-                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator,
+                id: T.nilable(String),
+                country: T.nilable(String),
+                mcc: T.nilable(String),
+                name: T.nilable(String)
               }
             )
           end

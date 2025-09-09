@@ -13,8 +13,18 @@ module Lithic
           end
 
         # Account tokens to which the Auth Rule applies.
-        sig { returns(T::Array[String]) }
-        attr_accessor :account_tokens
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :account_tokens
+
+        sig { params(account_tokens: T::Array[String]).void }
+        attr_writer :account_tokens
+
+        # Business Account tokens to which the Auth Rule applies.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :business_account_tokens
+
+        sig { params(business_account_tokens: T::Array[String]).void }
+        attr_writer :business_account_tokens
 
         # Card tokens to which the Auth Rule applies.
         sig { returns(T::Array[String]) }
@@ -33,20 +43,23 @@ module Lithic
 
         sig do
           params(
-            account_tokens: T::Array[String],
             card_tokens: T::Array[String],
             program_level: T::Boolean,
+            account_tokens: T::Array[String],
+            business_account_tokens: T::Array[String],
             excluded_card_tokens: T::Array[String],
             request_options: Lithic::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
-          # Account tokens to which the Auth Rule applies.
-          account_tokens:,
           # Card tokens to which the Auth Rule applies.
           card_tokens:,
           # Whether the Auth Rule applies to all authorizations on the card program.
           program_level:,
+          # Account tokens to which the Auth Rule applies.
+          account_tokens: nil,
+          # Business Account tokens to which the Auth Rule applies.
+          business_account_tokens: nil,
           # Card tokens to which the Auth Rule does not apply.
           excluded_card_tokens: nil,
           request_options: {}
@@ -57,6 +70,7 @@ module Lithic
           override.returns(
             {
               account_tokens: T::Array[String],
+              business_account_tokens: T::Array[String],
               card_tokens: T::Array[String],
               program_level: T::Boolean,
               excluded_card_tokens: T::Array[String],
