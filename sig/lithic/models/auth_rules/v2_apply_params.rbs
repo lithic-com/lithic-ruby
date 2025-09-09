@@ -4,6 +4,7 @@ module Lithic
       type v2_apply_params =
         {
           account_tokens: ::Array[String],
+          business_account_tokens: ::Array[String],
           card_tokens: ::Array[String],
           program_level: bool,
           excluded_card_tokens: ::Array[String]
@@ -14,7 +15,13 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        attr_accessor account_tokens: ::Array[String]
+        attr_reader account_tokens: ::Array[String]?
+
+        def account_tokens=: (::Array[String]) -> ::Array[String]
+
+        attr_reader business_account_tokens: ::Array[String]?
+
+        def business_account_tokens=: (::Array[String]) -> ::Array[String]
 
         attr_accessor card_tokens: ::Array[String]
 
@@ -25,15 +32,17 @@ module Lithic
         def excluded_card_tokens=: (::Array[String]) -> ::Array[String]
 
         def initialize: (
-          account_tokens: ::Array[String],
           card_tokens: ::Array[String],
           program_level: bool,
+          ?account_tokens: ::Array[String],
+          ?business_account_tokens: ::Array[String],
           ?excluded_card_tokens: ::Array[String],
           ?request_options: Lithic::request_opts
         ) -> void
 
         def to_hash: -> {
           account_tokens: ::Array[String],
+          business_account_tokens: ::Array[String],
           card_tokens: ::Array[String],
           program_level: bool,
           excluded_card_tokens: ::Array[String],

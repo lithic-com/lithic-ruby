@@ -488,34 +488,6 @@ module Lithic
 
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse#merchant
         class Merchant < Lithic::Internal::Type::BaseModel
-          # @!attribute id
-          #   Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field
-          #   `acquirerMerchantId`.
-          #
-          #   @return [String]
-          required :id, String
-
-          # @!attribute country
-          #   Country code of the merchant requesting 3DS authentication. Maps to EMV 3DS
-          #   field `merchantCountryCode`. Permitted values: ISO 3166-1 alpha-3 country code
-          #   (e.g., USA).
-          #
-          #   @return [String]
-          required :country, String
-
-          # @!attribute mcc
-          #   Merchant category code assigned to the merchant that describes its business
-          #   activity type. Maps to EMV 3DS field `mcc`.
-          #
-          #   @return [String]
-          required :mcc, String
-
-          # @!attribute name
-          #   Name of the merchant. Maps to EMV 3DS field `merchantName`.
-          #
-          #   @return [String]
-          required :name, String
-
           # @!attribute risk_indicator
           #   Object containing additional data indicating additional risk factors related to
           #   the e-commerce transaction.
@@ -524,7 +496,37 @@ module Lithic
           required :risk_indicator,
                    -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator }
 
-          # @!method initialize(id:, country:, mcc:, name:, risk_indicator:)
+          # @!attribute id
+          #   Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field
+          #   `acquirerMerchantId`. May not be present for non-payment authentications.
+          #
+          #   @return [String, nil]
+          optional :id, String, nil?: true
+
+          # @!attribute country
+          #   Country code of the merchant requesting 3DS authentication. Maps to EMV 3DS
+          #   field `merchantCountryCode`. Permitted values: ISO 3166-1 alpha-3 country code
+          #   (e.g., USA). May not be present for non-payment authentications.
+          #
+          #   @return [String, nil]
+          optional :country, String, nil?: true
+
+          # @!attribute mcc
+          #   Merchant category code assigned to the merchant that describes its business
+          #   activity type. Maps to EMV 3DS field `mcc`. May not be present for non-payment
+          #   authentications.
+          #
+          #   @return [String, nil]
+          optional :mcc, String, nil?: true
+
+          # @!attribute name
+          #   Name of the merchant. Maps to EMV 3DS field `merchantName`. May not be present
+          #   for non-payment authentications.
+          #
+          #   @return [String, nil]
+          optional :name, String, nil?: true
+
+          # @!method initialize(risk_indicator:, id: nil, country: nil, mcc: nil, name: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant} for more
           #   details.
@@ -532,15 +534,15 @@ module Lithic
           #   Object containing data about the merchant involved in the e-commerce
           #   transaction.
           #
-          #   @param id [String] Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field `acquirer
-          #
-          #   @param country [String] Country code of the merchant requesting 3DS authentication. Maps to EMV 3DS fiel
-          #
-          #   @param mcc [String] Merchant category code assigned to the merchant that describes its business acti
-          #
-          #   @param name [String] Name of the merchant. Maps to EMV 3DS field `merchantName`.
-          #
           #   @param risk_indicator [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant::RiskIndicator] Object containing additional data indicating additional risk factors related to
+          #
+          #   @param id [String, nil] Merchant identifier as assigned by the acquirer. Maps to EMV 3DS field `acquirer
+          #
+          #   @param country [String, nil] Country code of the merchant requesting 3DS authentication. Maps to EMV 3DS fiel
+          #
+          #   @param mcc [String, nil] Merchant category code assigned to the merchant that describes its business acti
+          #
+          #   @param name [String, nil] Name of the merchant. Maps to EMV 3DS field `merchantName`. May not be present f
 
           # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant#risk_indicator
           class RiskIndicator < Lithic::Internal::Type::BaseModel

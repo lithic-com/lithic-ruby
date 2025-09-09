@@ -1813,6 +1813,8 @@ module Lithic
           T.type_alias { T.all(Symbol, Lithic::Transaction::Result) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        ACCOUNT_PAUSED =
+          T.let(:ACCOUNT_PAUSED, Lithic::Transaction::Result::TaggedSymbol)
         ACCOUNT_STATE_TRANSACTION_FAIL =
           T.let(
             :ACCOUNT_STATE_TRANSACTION_FAIL,
@@ -2422,6 +2424,11 @@ module Lithic
           ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED =
             T.let(
               :ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED,
+              Lithic::Transaction::Event::DetailedResult::TaggedSymbol
+            )
+          ACCOUNT_PAUSED =
+            T.let(
+              :ACCOUNT_PAUSED,
               Lithic::Transaction::Event::DetailedResult::TaggedSymbol
             )
           ACCOUNT_UNDER_REVIEW =
@@ -3069,6 +3076,11 @@ module Lithic
             T.type_alias { T.all(Symbol, Lithic::Transaction::Event::Result) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+          ACCOUNT_PAUSED =
+            T.let(
+              :ACCOUNT_PAUSED,
+              Lithic::Transaction::Event::Result::TaggedSymbol
+            )
           ACCOUNT_STATE_TRANSACTION_FAIL =
             T.let(
               :ACCOUNT_STATE_TRANSACTION_FAIL,
@@ -3290,6 +3302,11 @@ module Lithic
             ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED =
               T.let(
                 :ACCOUNT_MONTHLY_SPEND_LIMIT_EXCEEDED,
+                Lithic::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            ACCOUNT_PAUSED =
+              T.let(
+                :ACCOUNT_PAUSED,
                 Lithic::Transaction::Event::RuleResult::Result::TaggedSymbol
               )
             ACCOUNT_UNDER_REVIEW =

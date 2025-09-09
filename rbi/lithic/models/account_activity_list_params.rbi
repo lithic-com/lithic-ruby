@@ -80,18 +80,12 @@ module Lithic
 
       # Filter by transaction result
       sig do
-        returns(
-          T.nilable(
-            T::Array[Lithic::AccountActivityListParams::Result::OrSymbol]
-          )
-        )
+        returns(T.nilable(Lithic::AccountActivityListParams::Result::OrSymbol))
       end
       attr_reader :result
 
       sig do
-        params(
-          result: T::Array[Lithic::AccountActivityListParams::Result::OrSymbol]
-        ).void
+        params(result: Lithic::AccountActivityListParams::Result::OrSymbol).void
       end
       attr_writer :result
 
@@ -105,18 +99,12 @@ module Lithic
 
       # Filter by transaction status
       sig do
-        returns(
-          T.nilable(
-            T::Array[Lithic::AccountActivityListParams::Status::OrSymbol]
-          )
-        )
+        returns(T.nilable(Lithic::AccountActivityListParams::Status::OrSymbol))
       end
       attr_reader :status
 
       sig do
-        params(
-          status: T::Array[Lithic::AccountActivityListParams::Status::OrSymbol]
-        ).void
+        params(status: Lithic::AccountActivityListParams::Status::OrSymbol).void
       end
       attr_writer :status
 
@@ -130,9 +118,9 @@ module Lithic
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
-          result: T::Array[Lithic::AccountActivityListParams::Result::OrSymbol],
+          result: Lithic::AccountActivityListParams::Result::OrSymbol,
           starting_after: String,
-          status: T::Array[Lithic::AccountActivityListParams::Status::OrSymbol],
+          status: Lithic::AccountActivityListParams::Status::OrSymbol,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -178,11 +166,9 @@ module Lithic
             ending_before: String,
             financial_account_token: String,
             page_size: Integer,
-            result:
-              T::Array[Lithic::AccountActivityListParams::Result::OrSymbol],
+            result: Lithic::AccountActivityListParams::Result::OrSymbol,
             starting_after: String,
-            status:
-              T::Array[Lithic::AccountActivityListParams::Status::OrSymbol],
+            status: Lithic::AccountActivityListParams::Status::OrSymbol,
             request_options: Lithic::RequestOptions
           }
         )
@@ -272,6 +258,7 @@ module Lithic
         end
       end
 
+      # Filter by transaction result
       module Result
         extend Lithic::Internal::Type::Enum
 
@@ -301,6 +288,7 @@ module Lithic
         end
       end
 
+      # Filter by transaction status
       module Status
         extend Lithic::Internal::Type::Enum
 
@@ -325,16 +313,6 @@ module Lithic
             :PENDING,
             Lithic::AccountActivityListParams::Status::TaggedSymbol
           )
-        SETTLED =
-          T.let(
-            :SETTLED,
-            Lithic::AccountActivityListParams::Status::TaggedSymbol
-          )
-        VOIDED =
-          T.let(
-            :VOIDED,
-            Lithic::AccountActivityListParams::Status::TaggedSymbol
-          )
         RETURNED =
           T.let(
             :RETURNED,
@@ -343,6 +321,16 @@ module Lithic
         REVERSED =
           T.let(
             :REVERSED,
+            Lithic::AccountActivityListParams::Status::TaggedSymbol
+          )
+        SETTLED =
+          T.let(
+            :SETTLED,
+            Lithic::AccountActivityListParams::Status::TaggedSymbol
+          )
+        VOIDED =
+          T.let(
+            :VOIDED,
             Lithic::AccountActivityListParams::Status::TaggedSymbol
           )
 

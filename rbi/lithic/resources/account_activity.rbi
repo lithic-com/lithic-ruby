@@ -14,9 +14,9 @@ module Lithic
           ending_before: String,
           financial_account_token: String,
           page_size: Integer,
-          result: T::Array[Lithic::AccountActivityListParams::Result::OrSymbol],
+          result: Lithic::AccountActivityListParams::Result::OrSymbol,
           starting_after: String,
-          status: T::Array[Lithic::AccountActivityListParams::Status::OrSymbol],
+          status: Lithic::AccountActivityListParams::Status::OrSymbol,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(
           Lithic::Internal::CursorPage[

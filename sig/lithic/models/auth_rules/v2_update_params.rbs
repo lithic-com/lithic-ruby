@@ -3,7 +3,6 @@ module Lithic
     module AuthRules
       type v2_update_params =
         {
-          account_tokens: ::Array[String],
           name: String?,
           state: Lithic::Models::AuthRules::V2UpdateParams::state,
           card_tokens: ::Array[String],
@@ -15,10 +14,6 @@ module Lithic
       class V2UpdateParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
-
-        attr_reader account_tokens: ::Array[String]?
-
-        def account_tokens=: (::Array[String]) -> ::Array[String]
 
         attr_accessor name: String?
 
@@ -41,7 +36,6 @@ module Lithic
         def program_level=: (bool) -> bool
 
         def initialize: (
-          ?account_tokens: ::Array[String],
           ?name: String?,
           ?state: Lithic::Models::AuthRules::V2UpdateParams::state,
           ?card_tokens: ::Array[String],
@@ -51,7 +45,6 @@ module Lithic
         ) -> void
 
         def to_hash: -> {
-          account_tokens: ::Array[String],
           name: String?,
           state: Lithic::Models::AuthRules::V2UpdateParams::state,
           card_tokens: ::Array[String],

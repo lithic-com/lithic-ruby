@@ -36,6 +36,8 @@ module Lithic
       #   - `card_transaction.updated` - Transaction Lifecycle webhook. See
       #     https://docs.lithic.com/docs/transaction-webhooks.
       #   - `dispute.updated` - A dispute has been updated.
+      #   - `dispute_transaction.created` - A new dispute transaction has been created.
+      #   - `dispute_transaction.updated` - A dispute transaction has been updated.
       #   - `digital_wallet.tokenization_approval_request` - Card network's request to
       #     Lithic to activate a digital wallet token.
       #   - `digital_wallet.tokenization_result` - Notification of the end result of a
@@ -88,6 +90,8 @@ module Lithic
       # - `card_transaction.updated` - Transaction Lifecycle webhook. See
       #   https://docs.lithic.com/docs/transaction-webhooks.
       # - `dispute.updated` - A dispute has been updated.
+      # - `dispute_transaction.created` - A new dispute transaction has been created.
+      # - `dispute_transaction.updated` - A dispute transaction has been updated.
       # - `digital_wallet.tokenization_approval_request` - Card network's request to
       #   Lithic to activate a digital wallet token.
       # - `digital_wallet.tokenization_result` - Notification of the end result of a
@@ -126,6 +130,8 @@ module Lithic
         DIGITAL_WALLET_TOKENIZATION_UPDATED = :"digital_wallet.tokenization_updated"
         DISPUTE_UPDATED = :"dispute.updated"
         DISPUTE_EVIDENCE_UPLOAD_FAILED = :"dispute_evidence.upload_failed"
+        DISPUTE_TRANSACTION_CREATED = :"dispute_transaction.created"
+        DISPUTE_TRANSACTION_UPDATED = :"dispute_transaction.updated"
         EXTERNAL_BANK_ACCOUNT_CREATED = :"external_bank_account.created"
         EXTERNAL_BANK_ACCOUNT_UPDATED = :"external_bank_account.updated"
         EXTERNAL_PAYMENT_CREATED = :"external_payment.created"

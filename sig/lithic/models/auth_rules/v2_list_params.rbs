@@ -4,6 +4,7 @@ module Lithic
       type v2_list_params =
         {
           account_token: String,
+          business_account_token: String,
           card_token: String,
           ending_before: String,
           event_stream: Lithic::Models::AuthRules::V2ListParams::event_stream,
@@ -20,6 +21,10 @@ module Lithic
         attr_reader account_token: String?
 
         def account_token=: (String) -> String
+
+        attr_reader business_account_token: String?
+
+        def business_account_token=: (String) -> String
 
         attr_reader card_token: String?
 
@@ -51,6 +56,7 @@ module Lithic
 
         def initialize: (
           ?account_token: String,
+          ?business_account_token: String,
           ?card_token: String,
           ?ending_before: String,
           ?event_stream: Lithic::Models::AuthRules::V2ListParams::event_stream,
@@ -62,6 +68,7 @@ module Lithic
 
         def to_hash: -> {
           account_token: String,
+          business_account_token: String,
           card_token: String,
           ending_before: String,
           event_stream: Lithic::Models::AuthRules::V2ListParams::event_stream,
@@ -82,13 +89,14 @@ module Lithic
           def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream]
         end
 
-        type scope = :PROGRAM | :ACCOUNT | :CARD | :ANY
+        type scope = :PROGRAM | :ACCOUNT | :BUSINESS_ACCOUNT | :CARD | :ANY
 
         module Scope
           extend Lithic::Internal::Type::Enum
 
           PROGRAM: :PROGRAM
           ACCOUNT: :ACCOUNT
+          BUSINESS_ACCOUNT: :BUSINESS_ACCOUNT
           CARD: :CARD
           ANY: :ANY
 

@@ -14,6 +14,12 @@ module Lithic
         #   @return [String, nil]
         optional :account_token, String
 
+        # @!attribute business_account_token
+        #   Only return Auth Rules that are bound to the provided business account token.
+        #
+        #   @return [String, nil]
+        optional :business_account_token, String
+
         # @!attribute card_token
         #   Only return Auth Rules that are bound to the provided card token.
         #
@@ -52,11 +58,13 @@ module Lithic
         #   @return [String, nil]
         optional :starting_after, String
 
-        # @!method initialize(account_token: nil, card_token: nil, ending_before: nil, event_stream: nil, page_size: nil, scope: nil, starting_after: nil, request_options: {})
+        # @!method initialize(account_token: nil, business_account_token: nil, card_token: nil, ending_before: nil, event_stream: nil, page_size: nil, scope: nil, starting_after: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::V2ListParams} for more details.
         #
         #   @param account_token [String] Only return Auth Rules that are bound to the provided account token.
+        #
+        #   @param business_account_token [String] Only return Auth Rules that are bound to the provided business account token.
         #
         #   @param card_token [String] Only return Auth Rules that are bound to the provided card token.
         #
@@ -89,6 +97,7 @@ module Lithic
 
           PROGRAM = :PROGRAM
           ACCOUNT = :ACCOUNT
+          BUSINESS_ACCOUNT = :BUSINESS_ACCOUNT
           CARD = :CARD
           ANY = :ANY
 

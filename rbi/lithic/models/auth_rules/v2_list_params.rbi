@@ -19,6 +19,13 @@ module Lithic
         sig { params(account_token: String).void }
         attr_writer :account_token
 
+        # Only return Auth Rules that are bound to the provided business account token.
+        sig { returns(T.nilable(String)) }
+        attr_reader :business_account_token
+
+        sig { params(business_account_token: String).void }
+        attr_writer :business_account_token
+
         # Only return Auth Rules that are bound to the provided card token.
         sig { returns(T.nilable(String)) }
         attr_reader :card_token
@@ -78,6 +85,7 @@ module Lithic
         sig do
           params(
             account_token: String,
+            business_account_token: String,
             card_token: String,
             ending_before: String,
             event_stream:
@@ -91,6 +99,8 @@ module Lithic
         def self.new(
           # Only return Auth Rules that are bound to the provided account token.
           account_token: nil,
+          # Only return Auth Rules that are bound to the provided business account token.
+          business_account_token: nil,
           # Only return Auth Rules that are bound to the provided card token.
           card_token: nil,
           # A cursor representing an item's token before which a page of results should end.
@@ -113,6 +123,7 @@ module Lithic
           override.returns(
             {
               account_token: String,
+              business_account_token: String,
               card_token: String,
               ending_before: String,
               event_stream:
@@ -177,6 +188,11 @@ module Lithic
           ACCOUNT =
             T.let(
               :ACCOUNT,
+              Lithic::AuthRules::V2ListParams::Scope::TaggedSymbol
+            )
+          BUSINESS_ACCOUNT =
+            T.let(
+              :BUSINESS_ACCOUNT,
               Lithic::AuthRules::V2ListParams::Scope::TaggedSymbol
             )
           CARD =

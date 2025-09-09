@@ -8,12 +8,6 @@ module Lithic
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
 
-        # @!attribute account_tokens
-        #   Account tokens to which the Auth Rule applies.
-        #
-        #   @return [Array<String>, nil]
-        optional :account_tokens, Lithic::Internal::Type::ArrayOf[String]
-
         # @!attribute name
         #   Auth Rule Name
         #
@@ -48,11 +42,9 @@ module Lithic
         #   @return [Boolean, nil]
         optional :program_level, Lithic::Internal::Type::Boolean
 
-        # @!method initialize(account_tokens: nil, name: nil, state: nil, card_tokens: nil, excluded_card_tokens: nil, program_level: nil, request_options: {})
+        # @!method initialize(name: nil, state: nil, card_tokens: nil, excluded_card_tokens: nil, program_level: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::V2UpdateParams} for more details.
-        #
-        #   @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
         #
         #   @param name [String, nil] Auth Rule Name
         #

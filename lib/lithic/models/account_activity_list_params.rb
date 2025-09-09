@@ -61,8 +61,8 @@ module Lithic
       # @!attribute result
       #   Filter by transaction result
       #
-      #   @return [Array<Symbol, Lithic::Models::AccountActivityListParams::Result>, nil]
-      optional :result, -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountActivityListParams::Result] }
+      #   @return [Symbol, Lithic::Models::AccountActivityListParams::Result, nil]
+      optional :result, enum: -> { Lithic::AccountActivityListParams::Result }
 
       # @!attribute starting_after
       #   A cursor representing an item's token after which a page of results should
@@ -74,8 +74,8 @@ module Lithic
       # @!attribute status
       #   Filter by transaction status
       #
-      #   @return [Array<Symbol, Lithic::Models::AccountActivityListParams::Status>, nil]
-      optional :status, -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::AccountActivityListParams::Status] }
+      #   @return [Symbol, Lithic::Models::AccountActivityListParams::Status, nil]
+      optional :status, enum: -> { Lithic::AccountActivityListParams::Status }
 
       # @!method initialize(account_token: nil, begin_: nil, business_account_token: nil, category: nil, end_: nil, ending_before: nil, financial_account_token: nil, page_size: nil, result: nil, starting_after: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -97,11 +97,11 @@ module Lithic
       #
       #   @param page_size [Integer] Page size (for pagination).
       #
-      #   @param result [Array<Symbol, Lithic::Models::AccountActivityListParams::Result>] Filter by transaction result
+      #   @param result [Symbol, Lithic::Models::AccountActivityListParams::Result] Filter by transaction result
       #
       #   @param starting_after [String] A cursor representing an item's token after which a page of results should begin
       #
-      #   @param status [Array<Symbol, Lithic::Models::AccountActivityListParams::Status>] Filter by transaction status
+      #   @param status [Symbol, Lithic::Models::AccountActivityListParams::Status] Filter by transaction status
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
@@ -127,6 +127,7 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
+      # Filter by transaction result
       module Result
         extend Lithic::Internal::Type::Enum
 
@@ -137,16 +138,17 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
+      # Filter by transaction status
       module Status
         extend Lithic::Internal::Type::Enum
 
         DECLINED = :DECLINED
         EXPIRED = :EXPIRED
         PENDING = :PENDING
-        SETTLED = :SETTLED
-        VOIDED = :VOIDED
         RETURNED = :RETURNED
         REVERSED = :REVERSED
+        SETTLED = :SETTLED
+        VOIDED = :VOIDED
 
         # @!method self.values
         #   @return [Array<Symbol>]
