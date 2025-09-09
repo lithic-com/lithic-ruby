@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.42 (2025-09-09)
+
+Full Changelog: [v0.1.0-alpha.41...v0.1.0-alpha.42](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.41...v0.1.0-alpha.42)
+
+### Features
+
+* **api:** adds support for unpauseing external bank accounts ([ad64d5d](https://github.com/lithic-com/lithic-ruby/commit/ad64d5d1cbd89b6d908f6a414b80004de94cb168))
+
 ## 0.1.0-alpha.41 (2025-09-03)
 
 Full Changelog: [v0.1.0-alpha.40...v0.1.0-alpha.41](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.40...v0.1.0-alpha.41)
