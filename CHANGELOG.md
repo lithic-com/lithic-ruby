@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.44 (2025-09-11)
+
+Full Changelog: [v0.1.0-alpha.43...v0.1.0-alpha.44](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.43...v0.1.0-alpha.44)
+
+### Features
+
+* **api:** correct deprecation ([5f3c64b](https://github.com/lithic-com/lithic-ruby/commit/5f3c64b290779e9eeeae4bc6207adb702d10bcfb))
+
 ## 0.1.0-alpha.43 (2025-09-11)
 
 Full Changelog: [v0.1.0-alpha.42...v0.1.0-alpha.43](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.42...v0.1.0-alpha.43)
