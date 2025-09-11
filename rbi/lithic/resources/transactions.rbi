@@ -219,39 +219,6 @@ module Lithic
           merchant_acceptor_id: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(
-          Lithic::Models::TransactionSimulateCreditAuthorizationResponse
-        )
-      end
-      def simulate_credit_authorization(
-        # Amount (in cents). Any value entered will be converted into a negative amount in
-        # the simulated transaction. For example, entering 100 in this field will appear
-        # as a -100 amount in the transaction.
-        amount:,
-        # Merchant descriptor.
-        descriptor:,
-        # Sixteen digit card number.
-        pan:,
-        # Merchant category code for the transaction to be simulated. A four-digit number
-        # listed in ISO 18245. Supported merchant category codes can be found
-        # [here](https://docs.lithic.com/docs/transactions#merchant-category-codes-mccs).
-        mcc: nil,
-        # Unique identifier to identify the payment card acceptor.
-        merchant_acceptor_id: nil,
-        request_options: {}
-      )
-      end
-
-      # Simulates a credit authorization advice from the card network. This message
-      # indicates that the network approved a credit authorization on your behalf.
-      sig do
-        params(
-          amount: Integer,
-          descriptor: String,
-          pan: String,
-          mcc: String,
-          merchant_acceptor_id: String,
-          request_options: Lithic::RequestOptions::OrHash
-        ).returns(
           Lithic::Models::TransactionSimulateCreditAuthorizationAdviceResponse
         )
       end
