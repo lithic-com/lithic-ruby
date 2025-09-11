@@ -378,9 +378,6 @@ module Lithic
   TransactionSimulateCreditAuthorizationAdviceParams =
     Lithic::Models::TransactionSimulateCreditAuthorizationAdviceParams
 
-  TransactionSimulateCreditAuthorizationParams =
-    Lithic::Models::TransactionSimulateCreditAuthorizationParams
-
   TransactionSimulateReturnParams = Lithic::Models::TransactionSimulateReturnParams
 
   TransactionSimulateReturnReversalParams = Lithic::Models::TransactionSimulateReturnReversalParams
