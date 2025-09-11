@@ -147,26 +147,6 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
     end
   end
 
-  def test_simulate_credit_authorization_required_params
-    response =
-      @lithic.transactions.simulate_credit_authorization(
-        amount: 3831,
-        descriptor: "COFFEE SHOP",
-        pan: "4111111289144142"
-      )
-
-    assert_pattern do
-      response => Lithic::Models::TransactionSimulateCreditAuthorizationResponse
-    end
-
-    assert_pattern do
-      response => {
-        token: String | nil,
-        debugging_request_id: String | nil
-      }
-    end
-  end
-
   def test_simulate_credit_authorization_advice_required_params
     response =
       @lithic.transactions.simulate_credit_authorization_advice(

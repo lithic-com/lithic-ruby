@@ -204,42 +204,6 @@ module Lithic
         )
       end
 
-      # @deprecated use `simulate_credit_authorization_advice` instead
-      #
-      # Some parameter documentations has been truncated, see
-      # {Lithic::Models::TransactionSimulateCreditAuthorizationParams} for more details.
-      #
-      # Simulates a credit authorization advice from the card network. This message
-      # indicates that the network approved a credit authorization on your behalf.
-      #
-      # @overload simulate_credit_authorization(amount:, descriptor:, pan:, mcc: nil, merchant_acceptor_id: nil, request_options: {})
-      #
-      # @param amount [Integer] Amount (in cents). Any value entered will be converted into a negative amount in
-      #
-      # @param descriptor [String] Merchant descriptor.
-      #
-      # @param pan [String] Sixteen digit card number.
-      #
-      # @param mcc [String] Merchant category code for the transaction to be simulated. A four-digit number
-      #
-      # @param merchant_acceptor_id [String] Unique identifier to identify the payment card acceptor.
-      #
-      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [Lithic::Models::TransactionSimulateCreditAuthorizationResponse]
-      #
-      # @see Lithic::Models::TransactionSimulateCreditAuthorizationParams
-      def simulate_credit_authorization(params)
-        parsed, options = Lithic::TransactionSimulateCreditAuthorizationParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "v1/simulate/credit_authorization_advice",
-          body: parsed,
-          model: Lithic::Models::TransactionSimulateCreditAuthorizationResponse,
-          options: options
-        )
-      end
-
       # Some parameter documentations has been truncated, see
       # {Lithic::Models::TransactionSimulateCreditAuthorizationAdviceParams} for more
       # details.
