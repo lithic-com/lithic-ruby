@@ -333,6 +333,8 @@ module Lithic
 
   class TransactionSimulateClearingParams = Lithic::Models::TransactionSimulateClearingParams
 
+  class TransactionSimulateCreditAuthorizationAdviceParams = Lithic::Models::TransactionSimulateCreditAuthorizationAdviceParams
+
   class TransactionSimulateCreditAuthorizationParams = Lithic::Models::TransactionSimulateCreditAuthorizationParams
 
   class TransactionSimulateReturnParams = Lithic::Models::TransactionSimulateReturnParams

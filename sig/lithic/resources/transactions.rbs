@@ -63,6 +63,15 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> Lithic::Models::TransactionSimulateCreditAuthorizationResponse
 
+      def simulate_credit_authorization_advice: (
+        amount: Integer,
+        descriptor: String,
+        pan: String,
+        ?mcc: String,
+        ?merchant_acceptor_id: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::TransactionSimulateCreditAuthorizationAdviceResponse
+
       def simulate_return: (
         amount: Integer,
         descriptor: String,
