@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.43 (2025-09-11)
+
+Full Changelog: [v0.1.0-alpha.42...v0.1.0-alpha.43](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.42...v0.1.0-alpha.43)
+
+### Features
+
+* **api:** manual updates ([bde90fd](https://github.com/lithic-com/lithic-ruby/commit/bde90fdad11812628ad656e2a32c40d06184cbaf))
+
 ## 0.1.0-alpha.42 (2025-09-09)
 
 Full Changelog: [v0.1.0-alpha.41...v0.1.0-alpha.42](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.41...v0.1.0-alpha.42)
