@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Lithic::Test::Resources::Fraud::TransactionsTest < Lithic::Test::ResourceTest
   def test_retrieve
-    response = @lithic.fraud.transactions.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+    response = @lithic.fraud.transactions.retrieve("00000000-0000-0000-0000-000000000000")
 
     assert_pattern do
       response => Lithic::Models::Fraud::TransactionRetrieveResponse
@@ -25,7 +25,7 @@ class Lithic::Test::Resources::Fraud::TransactionsTest < Lithic::Test::ResourceT
   def test_report_required_params
     response =
       @lithic.fraud.transactions.report(
-        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        "00000000-0000-0000-0000-000000000000",
         fraud_status: :SUSPECTED_FRAUD
       )
 
