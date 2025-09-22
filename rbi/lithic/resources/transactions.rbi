@@ -295,7 +295,8 @@ module Lithic
         # The transaction token returned from the /v1/simulate/authorize response.
         token:,
         # Amount (in cents) to void. Typically this will match the amount in the original
-        # authorization, but can be less.
+        # authorization, but can be less. Applies to authorization reversals only. An
+        # authorization expiry will always apply to the full pending amount.
         amount: nil,
         # Type of event to simulate. Defaults to `AUTHORIZATION_REVERSAL`.
         #
