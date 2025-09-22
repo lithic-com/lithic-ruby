@@ -8,6 +8,8 @@ module Lithic
     module AccountActivityRetrieveTransactionResponse
       extend Lithic::Internal::Type::Union
 
+      discriminator :family
+
       # Financial transaction with inheritance from unified base transaction
       variant -> { Lithic::Models::AccountActivityRetrieveTransactionResponse::FinancialTransaction }
 
