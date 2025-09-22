@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Lithic::Test::Resources::Reports::SettlementTest < Lithic::Test::ResourceTest
   def test_list_details
-    response = @lithic.reports.settlement.list_details("2019-12-27")
+    response = @lithic.reports.settlement.list_details("2023-09-01")
 
     assert_pattern do
       response => Lithic::Internal::CursorPage
@@ -45,7 +45,7 @@ class Lithic::Test::Resources::Reports::SettlementTest < Lithic::Test::ResourceT
   end
 
   def test_summary
-    response = @lithic.reports.settlement.summary("2019-12-27")
+    response = @lithic.reports.settlement.summary("2023-09-01")
 
     assert_pattern do
       response => Lithic::SettlementReport
