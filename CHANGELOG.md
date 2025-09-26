@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.46 (2025-09-26)
+
+Full Changelog: [v0.1.0-alpha.45...v0.1.0-alpha.46](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.45...v0.1.0-alpha.46)
+
+### Bug Fixes
+
+* shorten multipart boundary sep to less than RFC specificed max length ([e5d086e](https://github.com/lithic-com/lithic-ruby/commit/e5d086ebb012d4e173072048d7ea3a5e7fc11a5f))
+
 ## 0.1.0-alpha.45 (2025-09-26)
 
 Full Changelog: [v0.1.0-alpha.44...v0.1.0-alpha.45](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.44...v0.1.0-alpha.45)
