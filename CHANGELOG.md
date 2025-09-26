@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.1.0-alpha.45 (2025-09-26)
+
+Full Changelog: [v0.1.0-alpha.44...v0.1.0-alpha.45](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.44...v0.1.0-alpha.45)
+
+### Features
+
+* expose response headers for both streams and errors ([a0a6aba](https://github.com/lithic-com/lithic-ruby/commit/a0a6aba5882df60a0019557a7e7d38aba3fb7176))
+
+
+### Bug Fixes
+
+* **internal:** use null byte as file separator in the fast formatting script ([7260d7a](https://github.com/lithic-com/lithic-ruby/commit/7260d7a16edee1733a39556e554ed6f1901595de))
+
+
+### Performance Improvements
+
+* faster code formatting ([0367f27](https://github.com/lithic-com/lithic-ruby/commit/0367f2706e7903d3552ee18b7a75f62ece9fc927))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([23ebf5c](https://github.com/lithic-com/lithic-ruby/commit/23ebf5c02a0c168955ed2ebf1e7ef38d2d4eeda4))
+* **docs:** small updates to doc strings on a few endpoints ([b7c4832](https://github.com/lithic-com/lithic-ruby/commit/b7c4832186d3ecddb47728496bf966e00e3c15eb))
+* improve example values ([5c934d6](https://github.com/lithic-com/lithic-ruby/commit/5c934d6d52eccc89a72dfe7d5a850280b44ded75))
+
 ## 0.1.0-alpha.44 (2025-09-11)
 
 Full Changelog: [v0.1.0-alpha.43...v0.1.0-alpha.44](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.43...v0.1.0-alpha.44)
