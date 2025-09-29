@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.47 (2025-09-29)
+
+Full Changelog: [v0.1.0-alpha.46...v0.1.0-alpha.47](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.46...v0.1.0-alpha.47)
+
+### Bug Fixes
+
+* always send `filename=...` for multipart requests where a file is expected ([f52304d](https://github.com/lithic-com/lithic-ruby/commit/f52304dd7ef5d4dc716e173121f9d1f478275ec8))
+
+
+### Chores
+
+* allow fast-format to use bsd sed as well ([5022d53](https://github.com/lithic-com/lithic-ruby/commit/5022d5368e2e3bdb98b69edc72f0bef7a8da0abf))
+
 ## 0.1.0-alpha.46 (2025-09-26)
 
 Full Changelog: [v0.1.0-alpha.45...v0.1.0-alpha.46](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.45...v0.1.0-alpha.46)
