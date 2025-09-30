@@ -1,0 +1,158 @@
+module Lithic
+  module Models
+    module AuthRules
+      type v2_retrieve_features_response =
+        {
+          evaluated: Time,
+          features: ::Array[Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature]
+        }
+
+      class V2RetrieveFeaturesResponse < Lithic::Internal::Type::BaseModel
+        attr_accessor evaluated: Time
+
+        attr_accessor features: ::Array[Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature]
+
+        def initialize: (
+          evaluated: Time,
+          features: ::Array[Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature]
+        ) -> void
+
+        def to_hash: -> {
+          evaluated: Time,
+          features: ::Array[Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature]
+        }
+
+        type feature =
+          {
+            filters: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters,
+            period: Lithic::Models::AuthRules::velocity_limit_params_period_window,
+            scope: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::scope,
+            value: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Value
+          }
+
+        class Feature < Lithic::Internal::Type::BaseModel
+          attr_accessor filters: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters
+
+          attr_accessor period: Lithic::Models::AuthRules::velocity_limit_params_period_window
+
+          attr_accessor scope: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::scope
+
+          attr_accessor value: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Value
+
+          def initialize: (
+            filters: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters,
+            period: Lithic::Models::AuthRules::velocity_limit_params_period_window,
+            scope: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::scope,
+            value: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Value
+          ) -> void
+
+          def to_hash: -> {
+            filters: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters,
+            period: Lithic::Models::AuthRules::velocity_limit_params_period_window,
+            scope: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::scope,
+            value: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Value
+          }
+
+          type filters =
+            {
+              exclude_countries: ::Array[String]?,
+              exclude_mccs: ::Array[String]?,
+              include_countries: ::Array[String]?,
+              include_mccs: ::Array[String]?,
+              include_pan_entry_modes: ::Array[Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters::include_pan_entry_mode]?
+            }
+
+          class Filters < Lithic::Internal::Type::BaseModel
+            attr_accessor exclude_countries: ::Array[String]?
+
+            attr_accessor exclude_mccs: ::Array[String]?
+
+            attr_accessor include_countries: ::Array[String]?
+
+            attr_accessor include_mccs: ::Array[String]?
+
+            attr_accessor include_pan_entry_modes: ::Array[Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters::include_pan_entry_mode]?
+
+            def initialize: (
+              ?exclude_countries: ::Array[String]?,
+              ?exclude_mccs: ::Array[String]?,
+              ?include_countries: ::Array[String]?,
+              ?include_mccs: ::Array[String]?,
+              ?include_pan_entry_modes: ::Array[Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters::include_pan_entry_mode]?
+            ) -> void
+
+            def to_hash: -> {
+              exclude_countries: ::Array[String]?,
+              exclude_mccs: ::Array[String]?,
+              include_countries: ::Array[String]?,
+              include_mccs: ::Array[String]?,
+              include_pan_entry_modes: ::Array[Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters::include_pan_entry_mode]?
+            }
+
+            type include_pan_entry_mode =
+              :AUTO_ENTRY
+              | :BAR_CODE
+              | :CONTACTLESS
+              | :CREDENTIAL_ON_FILE
+              | :ECOMMERCE
+              | :ERROR_KEYED
+              | :ERROR_MAGNETIC_STRIPE
+              | :ICC
+              | :KEY_ENTERED
+              | :MAGNETIC_STRIPE
+              | :MANUAL
+              | :OCR
+              | :SECURE_CARDLESS
+              | :UNSPECIFIED
+              | :UNKNOWN
+
+            module IncludePanEntryMode
+              extend Lithic::Internal::Type::Enum
+
+              AUTO_ENTRY: :AUTO_ENTRY
+              BAR_CODE: :BAR_CODE
+              CONTACTLESS: :CONTACTLESS
+              CREDENTIAL_ON_FILE: :CREDENTIAL_ON_FILE
+              ECOMMERCE: :ECOMMERCE
+              ERROR_KEYED: :ERROR_KEYED
+              ERROR_MAGNETIC_STRIPE: :ERROR_MAGNETIC_STRIPE
+              ICC: :ICC
+              KEY_ENTERED: :KEY_ENTERED
+              MAGNETIC_STRIPE: :MAGNETIC_STRIPE
+              MANUAL: :MANUAL
+              OCR: :OCR
+              SECURE_CARDLESS: :SECURE_CARDLESS
+              UNSPECIFIED: :UNSPECIFIED
+              UNKNOWN: :UNKNOWN
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters::include_pan_entry_mode]
+            end
+          end
+
+          type scope = :CARD | :ACCOUNT
+
+          module Scope
+            extend Lithic::Internal::Type::Enum
+
+            CARD: :CARD
+            ACCOUNT: :ACCOUNT
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::scope]
+          end
+
+          type value = { amount: Integer, count: Integer }
+
+          class Value < Lithic::Internal::Type::BaseModel
+            attr_accessor amount: Integer
+
+            attr_accessor count: Integer
+
+            def initialize: (amount: Integer, count: Integer) -> void
+
+            def to_hash: -> { amount: Integer, count: Integer }
+          end
+        end
+      end
+    end
+  end
+end

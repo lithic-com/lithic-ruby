@@ -213,6 +213,8 @@ module Lithic
               #   fee field in the settlement/cardholder billing currency. This is the amount
               #   the issuer should authorize against unless the issuer is paying the acquirer
               #   fee on behalf of the cardholder.
+              # - `CASH_AMOUNT`: The cash amount of the transaction in minor units (cents). This
+              #   represents the amount of cash being withdrawn or advanced.
               # - `RISK_SCORE`: Network-provided score assessing risk level associated with a
               #   given authorization. Scores are on a range of 0-999, with 0 representing the
               #   lowest risk and 999 representing the highest risk. For Visa transactions,
@@ -326,6 +328,8 @@ module Lithic
                 #   fee field in the settlement/cardholder billing currency. This is the amount
                 #   the issuer should authorize against unless the issuer is paying the acquirer
                 #   fee on behalf of the cardholder.
+                # - `CASH_AMOUNT`: The cash amount of the transaction in minor units (cents). This
+                #   represents the amount of cash being withdrawn or advanced.
                 # - `RISK_SCORE`: Network-provided score assessing risk level associated with a
                 #   given authorization. Scores are on a range of 0-999, with 0 representing the
                 #   lowest risk and 999 representing the highest risk. For Visa transactions,
@@ -398,6 +402,8 @@ module Lithic
               #   fee field in the settlement/cardholder billing currency. This is the amount
               #   the issuer should authorize against unless the issuer is paying the acquirer
               #   fee on behalf of the cardholder.
+              # - `CASH_AMOUNT`: The cash amount of the transaction in minor units (cents). This
+              #   represents the amount of cash being withdrawn or advanced.
               # - `RISK_SCORE`: Network-provided score assessing risk level associated with a
               #   given authorization. Scores are on a range of 0-999, with 0 representing the
               #   lowest risk and 999 representing the highest risk. For Visa transactions,
@@ -471,6 +477,11 @@ module Lithic
                 TRANSACTION_AMOUNT =
                   T.let(
                     :TRANSACTION_AMOUNT,
+                    Lithic::AuthRules::V2DraftParams::Parameters::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
+                  )
+                CASH_AMOUNT =
+                  T.let(
+                    :CASH_AMOUNT,
                     Lithic::AuthRules::V2DraftParams::Parameters::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
                   )
                 RISK_SCORE =
