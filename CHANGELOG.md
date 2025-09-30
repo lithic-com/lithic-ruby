@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.48 (2025-09-30)
+
+Full Changelog: [v0.1.0-alpha.47...v0.1.0-alpha.48](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.47...v0.1.0-alpha.48)
+
+### Features
+
+* **api:** adds support for Auth Rule features ([f12343f](https://github.com/lithic-com/lithic-ruby/commit/f12343f949c28e3545a7e7add90238e8133d5916))
+
 ## 0.1.0-alpha.47 (2025-09-29)
 
 Full Changelog: [v0.1.0-alpha.46...v0.1.0-alpha.47](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.46...v0.1.0-alpha.47)
