@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.49 (2025-09-30)
+
+Full Changelog: [v0.1.0-alpha.48...v0.1.0-alpha.49](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.48...v0.1.0-alpha.49)
+
+### Bug Fixes
+
+* coroutine leaks from connection pool ([fa96625](https://github.com/lithic-com/lithic-ruby/commit/fa96625074db9b9d8f6ef6dc5a14c45b6faa42a3))
+
 ## 0.1.0-alpha.48 (2025-09-30)
 
 Full Changelog: [v0.1.0-alpha.47...v0.1.0-alpha.48](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.47...v0.1.0-alpha.48)
