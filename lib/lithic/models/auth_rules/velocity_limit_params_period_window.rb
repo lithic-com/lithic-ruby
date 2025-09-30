@@ -3,14 +3,20 @@
 module Lithic
   module Models
     module AuthRules
+      # DEPRECATED: This has been deprecated in favor of the Trailing Window Objects
+      #
       # The size of the trailing window to calculate Spend Velocity over in seconds. The
       # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
       module VelocityLimitParamsPeriodWindow
         extend Lithic::Internal::Type::Union
 
+        # DEPRECATED: This has been deprecated in favor of the Trailing Window Objects
+        #
         # The size of the trailing window to calculate Spend Velocity over in seconds. The minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
         variant Integer
 
+        # DEPRECATED: This has been deprecated in favor of the other Fixed Window Objects
+        #
         # The window of time to calculate Spend Velocity over.
         #
         # * `DAY`: Velocity over the current day since midnight Eastern Time.
@@ -33,6 +39,10 @@ module Lithic
         # Velocity over the current year since 00:00 / 12 AM in Eastern Time on specified `month` and `day_of_month`. This validates the month and day of the year to start from is a real date. In the event that February 29th is selected, in non-leap years, the window will start from February 28th.
         variant -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear }
 
+        # @deprecated
+        #
+        # DEPRECATED: This has been deprecated in favor of the other Fixed Window Objects
+        #
         # The window of time to calculate Spend Velocity over.
         #
         # - `DAY`: Velocity over the current day since midnight Eastern Time.

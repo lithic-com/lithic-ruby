@@ -19,6 +19,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         current_version: Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2CreateResponse::DraftVersion | nil,
         event_stream: Lithic::Models::AuthRules::V2CreateResponse::EventStream,
+        lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
         program_level: Lithic::Internal::Type::Boolean,
         state: Lithic::Models::AuthRules::V2CreateResponse::State,
@@ -44,6 +45,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         current_version: Lithic::Models::AuthRules::V2RetrieveResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2RetrieveResponse::DraftVersion | nil,
         event_stream: Lithic::Models::AuthRules::V2RetrieveResponse::EventStream,
+        lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
         program_level: Lithic::Internal::Type::Boolean,
         state: Lithic::Models::AuthRules::V2RetrieveResponse::State,
@@ -69,6 +71,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         current_version: Lithic::Models::AuthRules::V2UpdateResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2UpdateResponse::DraftVersion | nil,
         event_stream: Lithic::Models::AuthRules::V2UpdateResponse::EventStream,
+        lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
         program_level: Lithic::Internal::Type::Boolean,
         state: Lithic::Models::AuthRules::V2UpdateResponse::State,
@@ -101,6 +104,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         current_version: Lithic::Models::AuthRules::V2ListResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2ListResponse::DraftVersion | nil,
         event_stream: Lithic::Models::AuthRules::V2ListResponse::EventStream,
+        lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
         program_level: Lithic::Internal::Type::Boolean,
         state: Lithic::Models::AuthRules::V2ListResponse::State,
@@ -138,6 +142,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         current_version: Lithic::Models::AuthRules::V2ApplyResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2ApplyResponse::DraftVersion | nil,
         event_stream: Lithic::Models::AuthRules::V2ApplyResponse::EventStream,
+        lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
         program_level: Lithic::Internal::Type::Boolean,
         state: Lithic::Models::AuthRules::V2ApplyResponse::State,
@@ -163,6 +168,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         current_version: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion | nil,
         event_stream: Lithic::Models::AuthRules::V2DraftResponse::EventStream,
+        lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
         program_level: Lithic::Internal::Type::Boolean,
         state: Lithic::Models::AuthRules::V2DraftResponse::State,
@@ -188,6 +194,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         current_version: Lithic::Models::AuthRules::V2PromoteResponse::CurrentVersion | nil,
         draft_version: Lithic::Models::AuthRules::V2PromoteResponse::DraftVersion | nil,
         event_stream: Lithic::Models::AuthRules::V2PromoteResponse::EventStream,
+        lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
         program_level: Lithic::Internal::Type::Boolean,
         state: Lithic::Models::AuthRules::V2PromoteResponse::State,
@@ -207,6 +214,21 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     assert_pattern do
       response => {
         report_token: String | nil
+      }
+    end
+  end
+
+  def test_retrieve_features
+    response = @lithic.auth_rules.v2.retrieve_features("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Lithic::Models::AuthRules::V2RetrieveFeaturesResponse
+    end
+
+    assert_pattern do
+      response => {
+        evaluated: Time,
+        features: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature])
       }
     end
   end

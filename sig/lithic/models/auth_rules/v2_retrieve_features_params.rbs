@@ -1,0 +1,34 @@
+module Lithic
+  module Models
+    module AuthRules
+      type v2_retrieve_features_params =
+        { account_token: String, card_token: String }
+        & Lithic::Internal::Type::request_parameters
+
+      class V2RetrieveFeaturesParams < Lithic::Internal::Type::BaseModel
+        extend Lithic::Internal::Type::RequestParameters::Converter
+        include Lithic::Internal::Type::RequestParameters
+
+        attr_reader account_token: String?
+
+        def account_token=: (String) -> String
+
+        attr_reader card_token: String?
+
+        def card_token=: (String) -> String
+
+        def initialize: (
+          ?account_token: String,
+          ?card_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          account_token: String,
+          card_token: String,
+          request_options: Lithic::RequestOptions
+        }
+      end
+    end
+  end
+end

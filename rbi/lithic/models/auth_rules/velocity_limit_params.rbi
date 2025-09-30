@@ -22,6 +22,8 @@ module Lithic
         end
         attr_writer :filters
 
+        # DEPRECATED: This has been deprecated in favor of the Trailing Window Objects
+        #
         # The size of the trailing window to calculate Spend Velocity over in seconds. The
         # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
         sig do
@@ -39,6 +41,7 @@ module Lithic
         end
         attr_accessor :period
 
+        # The scope the velocity is calculated for
         sig { returns(Lithic::AuthRules::VelocityLimitParams::Scope::OrSymbol) }
         attr_accessor :scope
 
@@ -76,9 +79,12 @@ module Lithic
         end
         def self.new(
           filters:,
+          # DEPRECATED: This has been deprecated in favor of the Trailing Window Objects
+          #
           # The size of the trailing window to calculate Spend Velocity over in seconds. The
           # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
           period:,
+          # The scope the velocity is calculated for
           scope:,
           # The maximum amount of spend velocity allowed in the period in minor units (the
           # smallest unit of a currency, e.g. cents for USD). Transactions exceeding this
@@ -147,12 +153,31 @@ module Lithic
           sig { returns(T.nilable(T::Array[String])) }
           attr_accessor :include_mccs
 
+          # PAN entry modes to include in the velocity calculation. Transactions not
+          # matching any of the provided will not be included in the calculated velocity.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::OrSymbol
+                ]
+              )
+            )
+          end
+          attr_accessor :include_pan_entry_modes
+
           sig do
             params(
               exclude_countries: T.nilable(T::Array[String]),
               exclude_mccs: T.nilable(T::Array[String]),
               include_countries: T.nilable(T::Array[String]),
-              include_mccs: T.nilable(T::Array[String])
+              include_mccs: T.nilable(T::Array[String]),
+              include_pan_entry_modes:
+                T.nilable(
+                  T::Array[
+                    Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::OrSymbol
+                  ]
+                )
             ).returns(T.attached_class)
           end
           def self.new(
@@ -169,7 +194,10 @@ module Lithic
             include_countries: nil,
             # Merchant Category Codes to include in the velocity calculation. Transactions not
             # matching this MCC will not be included in the calculated velocity.
-            include_mccs: nil
+            include_mccs: nil,
+            # PAN entry modes to include in the velocity calculation. Transactions not
+            # matching any of the provided will not be included in the calculated velocity.
+            include_pan_entry_modes: nil
           )
           end
 
@@ -179,14 +207,120 @@ module Lithic
                 exclude_countries: T.nilable(T::Array[String]),
                 exclude_mccs: T.nilable(T::Array[String]),
                 include_countries: T.nilable(T::Array[String]),
-                include_mccs: T.nilable(T::Array[String])
+                include_mccs: T.nilable(T::Array[String]),
+                include_pan_entry_modes:
+                  T.nilable(
+                    T::Array[
+                      Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::OrSymbol
+                    ]
+                  )
               }
             )
           end
           def to_hash
           end
+
+          module IncludePanEntryMode
+            extend Lithic::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            AUTO_ENTRY =
+              T.let(
+                :AUTO_ENTRY,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+            BAR_CODE =
+              T.let(
+                :BAR_CODE,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+            CONTACTLESS =
+              T.let(
+                :CONTACTLESS,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+            CREDENTIAL_ON_FILE =
+              T.let(
+                :CREDENTIAL_ON_FILE,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+            ECOMMERCE =
+              T.let(
+                :ECOMMERCE,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+            ERROR_KEYED =
+              T.let(
+                :ERROR_KEYED,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+            ERROR_MAGNETIC_STRIPE =
+              T.let(
+                :ERROR_MAGNETIC_STRIPE,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+            ICC =
+              T.let(
+                :ICC,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+            KEY_ENTERED =
+              T.let(
+                :KEY_ENTERED,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+            MAGNETIC_STRIPE =
+              T.let(
+                :MAGNETIC_STRIPE,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+            MANUAL =
+              T.let(
+                :MANUAL,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+            OCR =
+              T.let(
+                :OCR,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+            SECURE_CARDLESS =
+              T.let(
+                :SECURE_CARDLESS,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+            UNSPECIFIED =
+              T.let(
+                :UNSPECIFIED,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+            UNKNOWN =
+              T.let(
+                :UNKNOWN,
+                Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::AuthRules::VelocityLimitParams::Filters::IncludePanEntryMode::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
         end
 
+        # The scope the velocity is calculated for
         module Scope
           extend Lithic::Internal::Type::Enum
 

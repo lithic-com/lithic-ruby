@@ -3,6 +3,8 @@
 module Lithic
   module Models
     module AuthRules
+      # DEPRECATED: This has been deprecated in favor of the Trailing Window Objects
+      #
       # The size of the trailing window to calculate Spend Velocity over in seconds. The
       # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
       module VelocityLimitParamsPeriodWindow
@@ -21,6 +23,8 @@ module Lithic
             )
           end
 
+        # DEPRECATED: This has been deprecated in favor of the other Fixed Window Objects
+        #
         # The window of time to calculate Spend Velocity over.
         #
         # - `DAY`: Velocity over the current day since midnight Eastern Time.
