@@ -75,6 +75,13 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> Lithic::Models::AuthRules::V2ReportResponse
 
+        def retrieve_features: (
+          String auth_rule_token,
+          ?account_token: String,
+          ?card_token: String,
+          ?request_options: Lithic::request_opts
+        ) -> Lithic::Models::AuthRules::V2RetrieveFeaturesResponse
+
         def retrieve_report: (
           String auth_rule_token,
           begin_: Date,

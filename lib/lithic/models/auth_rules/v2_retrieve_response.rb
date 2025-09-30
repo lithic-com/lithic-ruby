@@ -47,6 +47,13 @@ module Lithic
         #   @return [Symbol, Lithic::Models::AuthRules::V2RetrieveResponse::EventStream]
         required :event_stream, enum: -> { Lithic::Models::AuthRules::V2RetrieveResponse::EventStream }
 
+        # @!attribute lithic_managed
+        #   Indicates whether this auth rule is managed by Lithic. If true, the rule cannot
+        #   be modified or deleted by the user
+        #
+        #   @return [Boolean]
+        required :lithic_managed, Lithic::Internal::Type::Boolean
+
         # @!attribute name
         #   Auth Rule Name
         #
@@ -85,7 +92,7 @@ module Lithic
         #   @return [Array<String>, nil]
         optional :excluded_card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(token:, account_tokens:, business_account_tokens:, card_tokens:, current_version:, draft_version:, event_stream:, name:, program_level:, state:, type:, excluded_card_tokens: nil)
+        # @!method initialize(token:, account_tokens:, business_account_tokens:, card_tokens:, current_version:, draft_version:, event_stream:, lithic_managed:, name:, program_level:, state:, type:, excluded_card_tokens: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::V2RetrieveResponse} for more details.
         #
@@ -102,6 +109,8 @@ module Lithic
         #   @param draft_version [Lithic::Models::AuthRules::V2RetrieveResponse::DraftVersion, nil]
         #
         #   @param event_stream [Symbol, Lithic::Models::AuthRules::V2RetrieveResponse::EventStream] The event stream during which the rule will be evaluated.
+        #
+        #   @param lithic_managed [Boolean] Indicates whether this auth rule is managed by Lithic. If true, the rule cannot
         #
         #   @param name [String, nil] Auth Rule Name
         #
@@ -220,6 +229,8 @@ module Lithic
                 #     fee field in the settlement/cardholder billing currency. This is the amount
                 #     the issuer should authorize against unless the issuer is paying the acquirer
                 #     fee on behalf of the cardholder.
+                #   - `CASH_AMOUNT`: The cash amount of the transaction in minor units (cents). This
+                #     represents the amount of cash being withdrawn or advanced.
                 #   - `RISK_SCORE`: Network-provided score assessing risk level associated with a
                 #     given authorization. Scores are on a range of 0-999, with 0 representing the
                 #     lowest risk and 999 representing the highest risk. For Visa transactions,
@@ -299,6 +310,8 @@ module Lithic
                 #   fee field in the settlement/cardholder billing currency. This is the amount
                 #   the issuer should authorize against unless the issuer is paying the acquirer
                 #   fee on behalf of the cardholder.
+                # - `CASH_AMOUNT`: The cash amount of the transaction in minor units (cents). This
+                #   represents the amount of cash being withdrawn or advanced.
                 # - `RISK_SCORE`: Network-provided score assessing risk level associated with a
                 #   given authorization. Scores are on a range of 0-999, with 0 representing the
                 #   lowest risk and 999 representing the highest risk. For Visa transactions,
@@ -335,6 +348,7 @@ module Lithic
                   LIABILITY_SHIFT = :LIABILITY_SHIFT
                   PAN_ENTRY_MODE = :PAN_ENTRY_MODE
                   TRANSACTION_AMOUNT = :TRANSACTION_AMOUNT
+                  CASH_AMOUNT = :CASH_AMOUNT
                   RISK_SCORE = :RISK_SCORE
                   CARD_TRANSACTION_COUNT_15_M = :CARD_TRANSACTION_COUNT_15M
                   CARD_TRANSACTION_COUNT_1_H = :CARD_TRANSACTION_COUNT_1H
@@ -505,6 +519,8 @@ module Lithic
                 #     fee field in the settlement/cardholder billing currency. This is the amount
                 #     the issuer should authorize against unless the issuer is paying the acquirer
                 #     fee on behalf of the cardholder.
+                #   - `CASH_AMOUNT`: The cash amount of the transaction in minor units (cents). This
+                #     represents the amount of cash being withdrawn or advanced.
                 #   - `RISK_SCORE`: Network-provided score assessing risk level associated with a
                 #     given authorization. Scores are on a range of 0-999, with 0 representing the
                 #     lowest risk and 999 representing the highest risk. For Visa transactions,
@@ -584,6 +600,8 @@ module Lithic
                 #   fee field in the settlement/cardholder billing currency. This is the amount
                 #   the issuer should authorize against unless the issuer is paying the acquirer
                 #   fee on behalf of the cardholder.
+                # - `CASH_AMOUNT`: The cash amount of the transaction in minor units (cents). This
+                #   represents the amount of cash being withdrawn or advanced.
                 # - `RISK_SCORE`: Network-provided score assessing risk level associated with a
                 #   given authorization. Scores are on a range of 0-999, with 0 representing the
                 #   lowest risk and 999 representing the highest risk. For Visa transactions,
@@ -620,6 +638,7 @@ module Lithic
                   LIABILITY_SHIFT = :LIABILITY_SHIFT
                   PAN_ENTRY_MODE = :PAN_ENTRY_MODE
                   TRANSACTION_AMOUNT = :TRANSACTION_AMOUNT
+                  CASH_AMOUNT = :CASH_AMOUNT
                   RISK_SCORE = :RISK_SCORE
                   CARD_TRANSACTION_COUNT_15_M = :CARD_TRANSACTION_COUNT_15M
                   CARD_TRANSACTION_COUNT_1_H = :CARD_TRANSACTION_COUNT_1H

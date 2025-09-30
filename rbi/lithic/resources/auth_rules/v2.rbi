@@ -308,6 +308,32 @@ module Lithic
         )
         end
 
+        # Fetches the current calculated Feature values for the given Auth Rule
+        #
+        # This only calculates the features for the active version.
+        #
+        # - VelocityLimit Rules calculates the current Velocity Feature data. This
+        #   requires a `card_token` or `account_token` matching what the rule is Scoped
+        #   to.
+        # - ConditionalBlock Rules calculates the CARD*TRANSACTION_COUNT*\* attributes on
+        #   the rule. This requires a `card_token`
+        sig do
+          params(
+            auth_rule_token: String,
+            account_token: String,
+            card_token: String,
+            request_options: Lithic::RequestOptions::OrHash
+          ).returns(Lithic::Models::AuthRules::V2RetrieveFeaturesResponse)
+        end
+        def retrieve_features(
+          # Globally unique identifier for the Auth Rule.
+          auth_rule_token,
+          account_token: nil,
+          card_token: nil,
+          request_options: {}
+        )
+        end
+
         # Retrieves a performance report for an Auth rule containing daily statistics and
         # evaluation outcomes.
         #
