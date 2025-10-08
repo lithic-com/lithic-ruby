@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.50 (2025-10-08)
+
+Full Changelog: [v0.1.0-alpha.49...v0.1.0-alpha.50](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.49...v0.1.0-alpha.50)
+
+### Features
+
+* **api:** adds support for Auto-Collections ([9a83609](https://github.com/lithic-com/lithic-ruby/commit/9a8360991fa3f625725ca4055caea66cd6a1a46d))
+
+
+### Chores
+
+* ignore linter error for tests having large collections ([655be4b](https://github.com/lithic-com/lithic-ruby/commit/655be4b22393b0ded92424e58393993c6edbeb16))
+
 ## 0.1.0-alpha.49 (2025-09-30)
 
 Full Changelog: [v0.1.0-alpha.48...v0.1.0-alpha.49](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.48...v0.1.0-alpha.49)
