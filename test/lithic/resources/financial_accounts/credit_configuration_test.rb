@@ -14,6 +14,7 @@ class Lithic::Test::Resources::FinancialAccounts::CreditConfigurationTest < Lith
     assert_pattern do
       response => {
         account_token: String,
+        auto_collection_configuration: Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration,
         charged_off_reason: Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason | nil,
         credit_limit: Integer | nil,
         credit_product_token: String | nil,
@@ -35,6 +36,7 @@ class Lithic::Test::Resources::FinancialAccounts::CreditConfigurationTest < Lith
     assert_pattern do
       response => {
         account_token: String,
+        auto_collection_configuration: Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration,
         charged_off_reason: Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason | nil,
         credit_limit: Integer | nil,
         credit_product_token: String | nil,

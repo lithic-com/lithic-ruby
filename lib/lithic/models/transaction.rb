@@ -87,6 +87,11 @@ module Lithic
       #   @return [Time]
       required :created, Time
 
+      # @!attribute financial_account_token
+      #
+      #   @return [String, nil]
+      required :financial_account_token, String, nil?: true
+
       # @!attribute merchant
       #
       #   @return [Lithic::Models::Transaction::Merchant]
@@ -173,7 +178,7 @@ module Lithic
       #   @return [Array<Lithic::Models::Transaction::Event>, nil]
       optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Transaction::Event] }
 
-      # @!method initialize(token:, account_token:, acquirer_fee:, acquirer_reference_number:, amount:, amounts:, authorization_amount:, authorization_code:, avs:, card_token:, cardholder_authentication:, created:, merchant:, merchant_amount:, merchant_authorization_amount:, merchant_currency:, network:, network_risk_score:, pos:, result:, settled_amount:, status:, token_info:, updated:, events: nil)
+      # @!method initialize(token:, account_token:, acquirer_fee:, acquirer_reference_number:, amount:, amounts:, authorization_amount:, authorization_code:, avs:, card_token:, cardholder_authentication:, created:, financial_account_token:, merchant:, merchant_amount:, merchant_authorization_amount:, merchant_currency:, network:, network_risk_score:, pos:, result:, settled_amount:, status:, token_info:, updated:, events: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::Transaction} for more details.
       #
@@ -200,6 +205,8 @@ module Lithic
       #   @param cardholder_authentication [Lithic::Models::Transaction::CardholderAuthentication, nil]
       #
       #   @param created [Time] Date and time when the transaction first occurred. UTC time zone.
+      #
+      #   @param financial_account_token [String, nil]
       #
       #   @param merchant [Lithic::Models::Transaction::Merchant]
       #
@@ -957,6 +964,7 @@ module Lithic
         DECLINED = :DECLINED
         FRAUD_ADVICE = :FRAUD_ADVICE
         IGNORED_TTL_EXPIRY = :IGNORED_TTL_EXPIRY
+        SUSPECTED_FRAUD = :SUSPECTED_FRAUD
         INACTIVE_ACCOUNT = :INACTIVE_ACCOUNT
         INCORRECT_PIN = :INCORRECT_PIN
         INVALID_CARD_DETAILS = :INVALID_CARD_DETAILS
@@ -1293,6 +1301,7 @@ module Lithic
           REVERSAL_UNMATCHED = :REVERSAL_UNMATCHED
           SECURITY_VIOLATION = :SECURITY_VIOLATION
           SINGLE_USE_CARD_REATTEMPTED = :SINGLE_USE_CARD_REATTEMPTED
+          SUSPECTED_FRAUD = :SUSPECTED_FRAUD
           TRANSACTION_INVALID = :TRANSACTION_INVALID
           TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL = :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
           TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER = :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER
@@ -1506,6 +1515,7 @@ module Lithic
           DECLINED = :DECLINED
           FRAUD_ADVICE = :FRAUD_ADVICE
           IGNORED_TTL_EXPIRY = :IGNORED_TTL_EXPIRY
+          SUSPECTED_FRAUD = :SUSPECTED_FRAUD
           INACTIVE_ACCOUNT = :INACTIVE_ACCOUNT
           INCORRECT_PIN = :INCORRECT_PIN
           INVALID_CARD_DETAILS = :INVALID_CARD_DETAILS
@@ -1618,6 +1628,7 @@ module Lithic
             REVERSAL_UNMATCHED = :REVERSAL_UNMATCHED
             SECURITY_VIOLATION = :SECURITY_VIOLATION
             SINGLE_USE_CARD_REATTEMPTED = :SINGLE_USE_CARD_REATTEMPTED
+            SUSPECTED_FRAUD = :SUSPECTED_FRAUD
             TRANSACTION_INVALID = :TRANSACTION_INVALID
             TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL = :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
             TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER = :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER

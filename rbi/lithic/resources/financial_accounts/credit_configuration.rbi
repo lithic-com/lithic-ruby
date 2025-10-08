@@ -22,6 +22,8 @@ module Lithic
         sig do
           params(
             financial_account_token: String,
+            auto_collection_configuration:
+              Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration::OrHash,
             credit_limit: Integer,
             credit_product_token: String,
             external_bank_account_token: String,
@@ -32,6 +34,7 @@ module Lithic
         def update(
           # Globally unique identifier for financial account.
           financial_account_token,
+          auto_collection_configuration: nil,
           credit_limit: nil,
           # Globally unique identifier for the credit product
           credit_product_token: nil,

@@ -22,6 +22,10 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :created_at
 
+      # The device identifier associated with the tokenization.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :device_id
+
       # The dynamic pan assigned to the token by the network.
       sig { returns(T.nilable(String)) }
       attr_accessor :dpan
@@ -74,6 +78,7 @@ module Lithic
           account_token: String,
           card_token: String,
           created_at: Time,
+          device_id: T.nilable(String),
           dpan: T.nilable(String),
           status: Lithic::Tokenization::Status::OrSymbol,
           token_requestor_name:
@@ -96,6 +101,8 @@ module Lithic
         card_token:,
         # Date and time when the tokenization first occurred. UTC time zone.
         created_at:,
+        # The device identifier associated with the tokenization.
+        device_id:,
         # The dynamic pan assigned to the token by the network.
         dpan:,
         # The status of the tokenization request
@@ -128,6 +135,7 @@ module Lithic
             account_token: String,
             card_token: String,
             created_at: Time,
+            device_id: T.nilable(String),
             dpan: T.nilable(String),
             status: Lithic::Tokenization::Status::TaggedSymbol,
             token_requestor_name:

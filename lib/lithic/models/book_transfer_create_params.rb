@@ -15,7 +15,6 @@ module Lithic
       required :amount, Integer
 
       # @!attribute category
-      #   Category of the book transfer
       #
       #   @return [Symbol, Lithic::Models::BookTransferCreateParams::Category]
       required :category, enum: -> { Lithic::BookTransferCreateParams::Category }
@@ -77,7 +76,7 @@ module Lithic
       #
       #   @param amount [Integer] Amount to be transferred in the currency's smallest unit (e.g., cents for USD).
       #
-      #   @param category [Symbol, Lithic::Models::BookTransferCreateParams::Category] Category of the book transfer
+      #   @param category [Symbol, Lithic::Models::BookTransferCreateParams::Category]
       #
       #   @param from_financial_account_token [String] Globally unique identifier for the financial account or card that will send the
       #
@@ -97,7 +96,6 @@ module Lithic
       #
       #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
-      # Category of the book transfer
       module Category
         extend Lithic::Internal::Type::Enum
 
@@ -106,7 +104,9 @@ module Lithic
         DERECOGNITION = :DERECOGNITION
         DISPUTE = :DISPUTE
         FEE = :FEE
+        INTERNAL = :INTERNAL
         REWARD = :REWARD
+        PROGRAM_FUNDING = :PROGRAM_FUNDING
         TRANSFER = :TRANSFER
 
         # @!method self.values
@@ -117,6 +117,7 @@ module Lithic
       module Type
         extend Lithic::Internal::Type::Enum
 
+        ATM_BALANCE_INQUIRY = :ATM_BALANCE_INQUIRY
         ATM_WITHDRAWAL = :ATM_WITHDRAWAL
         ATM_DECLINE = :ATM_DECLINE
         INTERNATIONAL_ATM_WITHDRAWAL = :INTERNATIONAL_ATM_WITHDRAWAL

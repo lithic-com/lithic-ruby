@@ -16,7 +16,6 @@ module Lithic
       sig { returns(Integer) }
       attr_accessor :amount
 
-      # Category of the book transfer
       sig { returns(Lithic::BookTransferCreateParams::Category::OrSymbol) }
       attr_accessor :category
 
@@ -96,7 +95,6 @@ module Lithic
         # Amount to be transferred in the currency's smallest unit (e.g., cents for USD).
         # This should always be a positive value.
         amount:,
-        # Category of the book transfer
         category:,
         # Globally unique identifier for the financial account or card that will send the
         # funds. Accepted type dependent on the program's use case.
@@ -142,7 +140,6 @@ module Lithic
       def to_hash
       end
 
-      # Category of the book transfer
       module Category
         extend Lithic::Internal::Type::Enum
 
@@ -174,9 +171,19 @@ module Lithic
           )
         FEE =
           T.let(:FEE, Lithic::BookTransferCreateParams::Category::TaggedSymbol)
+        INTERNAL =
+          T.let(
+            :INTERNAL,
+            Lithic::BookTransferCreateParams::Category::TaggedSymbol
+          )
         REWARD =
           T.let(
             :REWARD,
+            Lithic::BookTransferCreateParams::Category::TaggedSymbol
+          )
+        PROGRAM_FUNDING =
+          T.let(
+            :PROGRAM_FUNDING,
             Lithic::BookTransferCreateParams::Category::TaggedSymbol
           )
         TRANSFER =
@@ -202,6 +209,11 @@ module Lithic
           T.type_alias { T.all(Symbol, Lithic::BookTransferCreateParams::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        ATM_BALANCE_INQUIRY =
+          T.let(
+            :ATM_BALANCE_INQUIRY,
+            Lithic::BookTransferCreateParams::Type::TaggedSymbol
+          )
         ATM_WITHDRAWAL =
           T.let(
             :ATM_WITHDRAWAL,

@@ -19,6 +19,21 @@ module Lithic
         sig { returns(String) }
         attr_accessor :account_token
 
+        sig do
+          returns(
+            Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration
+          )
+        end
+        attr_reader :auto_collection_configuration
+
+        sig do
+          params(
+            auto_collection_configuration:
+              Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration::OrHash
+          ).void
+        end
+        attr_writer :auto_collection_configuration
+
         # Reason for the financial account being marked as Charged Off
         sig do
           returns(
@@ -57,6 +72,8 @@ module Lithic
         sig do
           params(
             account_token: String,
+            auto_collection_configuration:
+              Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration::OrHash,
             charged_off_reason:
               T.nilable(
                 Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::OrSymbol
@@ -73,6 +90,7 @@ module Lithic
         def self.new(
           # Globally unique identifier for the account
           account_token:,
+          auto_collection_configuration:,
           # Reason for the financial account being marked as Charged Off
           charged_off_reason:,
           credit_limit:,
@@ -91,6 +109,8 @@ module Lithic
           override.returns(
             {
               account_token: String,
+              auto_collection_configuration:
+                Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration,
               charged_off_reason:
                 T.nilable(
                   Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol
@@ -106,6 +126,35 @@ module Lithic
           )
         end
         def to_hash
+        end
+
+        class AutoCollectionConfiguration < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # If auto collection is enabled for this account
+          sig { returns(T::Boolean) }
+          attr_accessor :auto_collection_enabled
+
+          sig do
+            params(auto_collection_enabled: T::Boolean).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # If auto collection is enabled for this account
+            auto_collection_enabled:
+          )
+          end
+
+          sig { override.returns({ auto_collection_enabled: T::Boolean }) }
+          def to_hash
+          end
         end
 
         # Reason for the financial account being marked as Charged Off

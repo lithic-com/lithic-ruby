@@ -138,7 +138,13 @@ module Lithic
         #   @return [String, nil]
         required :tier, String, nil?: true
 
-        # @!method initialize(charged_off_reason:, credit_limit:, credit_product_token:, external_bank_account_token:, financial_account_state:, is_spend_blocked:, tier:)
+        # @!attribute auto_collection_configuration
+        #
+        #   @return [Lithic::Models::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration, nil]
+        optional :auto_collection_configuration,
+                 -> { Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration }
+
+        # @!method initialize(charged_off_reason:, credit_limit:, credit_product_token:, external_bank_account_token:, financial_account_state:, is_spend_blocked:, tier:, auto_collection_configuration: nil)
         #   @param charged_off_reason [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason, nil] Reason for the financial account being marked as Charged Off
         #
         #   @param credit_limit [Integer, nil]
@@ -152,6 +158,8 @@ module Lithic
         #   @param is_spend_blocked [Boolean]
         #
         #   @param tier [String, nil] Tier assigned to the financial account
+        #
+        #   @param auto_collection_configuration [Lithic::Models::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration]
 
         # Reason for the financial account being marked as Charged Off
         #
@@ -179,6 +187,18 @@ module Lithic
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Lithic::Models::FinancialAccount::CreditConfiguration#auto_collection_configuration
+        class AutoCollectionConfiguration < Lithic::Internal::Type::BaseModel
+          # @!attribute auto_collection_enabled
+          #   If auto collection is enabled for this account
+          #
+          #   @return [Boolean]
+          required :auto_collection_enabled, Lithic::Internal::Type::Boolean
+
+          # @!method initialize(auto_collection_enabled:)
+          #   @param auto_collection_enabled [Boolean] If auto collection is enabled for this account
         end
       end
 

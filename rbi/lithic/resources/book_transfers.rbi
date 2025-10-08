@@ -25,7 +25,6 @@ module Lithic
         # Amount to be transferred in the currency's smallest unit (e.g., cents for USD).
         # This should always be a positive value.
         amount:,
-        # Category of the book transfer
         category:,
         # Globally unique identifier for the financial account or card that will send the
         # funds. Accepted type dependent on the program's use case.

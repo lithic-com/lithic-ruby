@@ -28,6 +28,12 @@ module Lithic
       #   @return [Time]
       required :created_at, Time
 
+      # @!attribute device_id
+      #   The device identifier associated with the tokenization.
+      #
+      #   @return [String, nil]
+      required :device_id, String, nil?: true
+
       # @!attribute dpan
       #   The dynamic pan assigned to the token by the network.
       #
@@ -86,7 +92,7 @@ module Lithic
       #   @return [String, nil]
       optional :payment_account_reference_id, String, nil?: true
 
-      # @!method initialize(token:, account_token:, card_token:, created_at:, dpan:, status:, token_requestor_name:, token_unique_reference:, tokenization_channel:, updated_at:, digital_card_art_token: nil, events: nil, payment_account_reference_id: nil)
+      # @!method initialize(token:, account_token:, card_token:, created_at:, device_id:, dpan:, status:, token_requestor_name:, token_unique_reference:, tokenization_channel:, updated_at:, digital_card_art_token: nil, events: nil, payment_account_reference_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::Tokenization} for more details.
       #
@@ -97,6 +103,8 @@ module Lithic
       #   @param card_token [String] The card token associated with the card being tokenized.
       #
       #   @param created_at [Time] Date and time when the tokenization first occurred. UTC time zone.
+      #
+      #   @param device_id [String, nil] The device identifier associated with the tokenization.
       #
       #   @param dpan [String, nil] The dynamic pan assigned to the token by the network.
       #

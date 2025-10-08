@@ -9,6 +9,7 @@ module Lithic
 
         def update: (
           String financial_account_token,
+          ?auto_collection_configuration: Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration,
           ?credit_limit: Integer,
           ?credit_product_token: String,
           ?external_bank_account_token: String,
