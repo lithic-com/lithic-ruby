@@ -349,6 +349,11 @@ module Lithic
               :ACH_ORIGINATION_RELEASED,
               Lithic::Transfer::Event::Type::TaggedSymbol
             )
+          ACH_ORIGINATION_REJECTED =
+            T.let(
+              :ACH_ORIGINATION_REJECTED,
+              Lithic::Transfer::Event::Type::TaggedSymbol
+            )
           ACH_ORIGINATION_REVIEWED =
             T.let(
               :ACH_ORIGINATION_REVIEWED,
@@ -377,6 +382,11 @@ module Lithic
           ACH_RETURN_PROCESSED =
             T.let(
               :ACH_RETURN_PROCESSED,
+              Lithic::Transfer::Event::Type::TaggedSymbol
+            )
+          ACH_RETURN_REJECTED =
+            T.let(
+              :ACH_RETURN_REJECTED,
               Lithic::Transfer::Event::Type::TaggedSymbol
             )
           ACH_RETURN_SETTLED =

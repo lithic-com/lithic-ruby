@@ -24,6 +24,8 @@ module Lithic
 
         def update: (
           String auth_rule_token,
+          ?account_tokens: ::Array[String],
+          ?business_account_tokens: ::Array[String],
           ?name: String?,
           ?state: Lithic::Models::AuthRules::V2UpdateParams::state,
           ?card_tokens: ::Array[String],

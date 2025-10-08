@@ -92,7 +92,9 @@ module Lithic
         | :DERECOGNITION
         | :DISPUTE
         | :FEE
+        | :INTERNAL
         | :REWARD
+        | :PROGRAM_FUNDING
         | :TRANSFER
 
       module Category
@@ -103,7 +105,9 @@ module Lithic
         DERECOGNITION: :DERECOGNITION
         DISPUTE: :DISPUTE
         FEE: :FEE
+        INTERNAL: :INTERNAL
         REWARD: :REWARD
+        PROGRAM_FUNDING: :PROGRAM_FUNDING
         TRANSFER: :TRANSFER
 
         def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::category]
@@ -183,7 +187,8 @@ module Lithic
         end
 
         type type_ =
-          :ATM_WITHDRAWAL
+          :ATM_BALANCE_INQUIRY
+          | :ATM_WITHDRAWAL
           | :ATM_DECLINE
           | :INTERNATIONAL_ATM_WITHDRAWAL
           | :INACTIVITY
@@ -221,6 +226,7 @@ module Lithic
         module Type
           extend Lithic::Internal::Type::Enum
 
+          ATM_BALANCE_INQUIRY: :ATM_BALANCE_INQUIRY
           ATM_WITHDRAWAL: :ATM_WITHDRAWAL
           ATM_DECLINE: :ATM_DECLINE
           INTERNATIONAL_ATM_WITHDRAWAL: :INTERNATIONAL_ATM_WITHDRAWAL

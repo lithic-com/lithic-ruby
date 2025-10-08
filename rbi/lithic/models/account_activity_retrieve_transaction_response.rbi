@@ -206,6 +206,31 @@ module Lithic
               :BALANCE_OR_FUNDING,
               Lithic::Models::AccountActivityRetrieveTransactionResponse::FinancialTransaction::Category::TaggedSymbol
             )
+          FEE =
+            T.let(
+              :FEE,
+              Lithic::Models::AccountActivityRetrieveTransactionResponse::FinancialTransaction::Category::TaggedSymbol
+            )
+          REWARD =
+            T.let(
+              :REWARD,
+              Lithic::Models::AccountActivityRetrieveTransactionResponse::FinancialTransaction::Category::TaggedSymbol
+            )
+          ADJUSTMENT =
+            T.let(
+              :ADJUSTMENT,
+              Lithic::Models::AccountActivityRetrieveTransactionResponse::FinancialTransaction::Category::TaggedSymbol
+            )
+          DERECOGNITION =
+            T.let(
+              :DERECOGNITION,
+              Lithic::Models::AccountActivityRetrieveTransactionResponse::FinancialTransaction::Category::TaggedSymbol
+            )
+          DISPUTE =
+            T.let(
+              :DISPUTE,
+              Lithic::Models::AccountActivityRetrieveTransactionResponse::FinancialTransaction::Category::TaggedSymbol
+            )
           CARD =
             T.let(
               :CARD,
@@ -451,6 +476,11 @@ module Lithic
                 :ACH_ORIGINATION_RELEASED,
                 Lithic::Models::AccountActivityRetrieveTransactionResponse::FinancialTransaction::Event::Type::TaggedSymbol
               )
+            ACH_ORIGINATION_REJECTED =
+              T.let(
+                :ACH_ORIGINATION_REJECTED,
+                Lithic::Models::AccountActivityRetrieveTransactionResponse::FinancialTransaction::Event::Type::TaggedSymbol
+              )
             ACH_ORIGINATION_REVIEWED =
               T.let(
                 :ACH_ORIGINATION_REVIEWED,
@@ -479,6 +509,11 @@ module Lithic
             ACH_RETURN_PROCESSED =
               T.let(
                 :ACH_RETURN_PROCESSED,
+                Lithic::Models::AccountActivityRetrieveTransactionResponse::FinancialTransaction::Event::Type::TaggedSymbol
+              )
+            ACH_RETURN_REJECTED =
+              T.let(
+                :ACH_RETURN_REJECTED,
                 Lithic::Models::AccountActivityRetrieveTransactionResponse::FinancialTransaction::Event::Type::TaggedSymbol
               )
             ACH_RETURN_SETTLED =
@@ -1151,9 +1186,9 @@ module Lithic
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ACH =
+          ADJUSTMENT =
             T.let(
-              :ACH,
+              :ADJUSTMENT,
               Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Category::TaggedSymbol
             )
           BALANCE_OR_FUNDING =
@@ -1161,59 +1196,39 @@ module Lithic
               :BALANCE_OR_FUNDING,
               Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Category::TaggedSymbol
             )
-          CARD =
+          DERECOGNITION =
             T.let(
-              :CARD,
+              :DERECOGNITION,
               Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Category::TaggedSymbol
             )
-          EXTERNAL_ACH =
+          DISPUTE =
             T.let(
-              :EXTERNAL_ACH,
+              :DISPUTE,
               Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Category::TaggedSymbol
             )
-          EXTERNAL_CHECK =
+          FEE =
             T.let(
-              :EXTERNAL_CHECK,
+              :FEE,
               Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Category::TaggedSymbol
             )
-          EXTERNAL_TRANSFER =
+          INTERNAL =
             T.let(
-              :EXTERNAL_TRANSFER,
+              :INTERNAL,
               Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Category::TaggedSymbol
             )
-          EXTERNAL_WIRE =
+          REWARD =
             T.let(
-              :EXTERNAL_WIRE,
-              Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Category::TaggedSymbol
-            )
-          MANAGEMENT_ADJUSTMENT =
-            T.let(
-              :MANAGEMENT_ADJUSTMENT,
-              Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Category::TaggedSymbol
-            )
-          MANAGEMENT_DISPUTE =
-            T.let(
-              :MANAGEMENT_DISPUTE,
-              Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Category::TaggedSymbol
-            )
-          MANAGEMENT_FEE =
-            T.let(
-              :MANAGEMENT_FEE,
-              Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Category::TaggedSymbol
-            )
-          MANAGEMENT_REWARD =
-            T.let(
-              :MANAGEMENT_REWARD,
-              Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Category::TaggedSymbol
-            )
-          MANAGEMENT_DISBURSEMENT =
-            T.let(
-              :MANAGEMENT_DISBURSEMENT,
+              :REWARD,
               Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Category::TaggedSymbol
             )
           PROGRAM_FUNDING =
             T.let(
               :PROGRAM_FUNDING,
+              Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Category::TaggedSymbol
+            )
+          TRANSFER =
+            T.let(
+              :TRANSFER,
               Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Category::TaggedSymbol
             )
 
@@ -1422,6 +1437,11 @@ module Lithic
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+            ATM_BALANCE_INQUIRY =
+              T.let(
+                :ATM_BALANCE_INQUIRY,
+                Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::Event::Type::TaggedSymbol
+              )
             ATM_WITHDRAWAL =
               T.let(
                 :ATM_WITHDRAWAL,
@@ -2287,6 +2307,31 @@ module Lithic
           BALANCE_OR_FUNDING =
             T.let(
               :BALANCE_OR_FUNDING,
+              Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::Category::TaggedSymbol
+            )
+          FEE =
+            T.let(
+              :FEE,
+              Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::Category::TaggedSymbol
+            )
+          REWARD =
+            T.let(
+              :REWARD,
+              Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::Category::TaggedSymbol
+            )
+          ADJUSTMENT =
+            T.let(
+              :ADJUSTMENT,
+              Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::Category::TaggedSymbol
+            )
+          DERECOGNITION =
+            T.let(
+              :DERECOGNITION,
+              Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::Category::TaggedSymbol
+            )
+          DISPUTE =
+            T.let(
+              :DISPUTE,
               Lithic::Models::AccountActivityRetrieveTransactionResponse::PaymentTransaction::Category::TaggedSymbol
             )
           CARD =

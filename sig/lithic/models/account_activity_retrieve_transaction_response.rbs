@@ -90,6 +90,11 @@ module Lithic
         type category =
           :ACH
           | :BALANCE_OR_FUNDING
+          | :FEE
+          | :REWARD
+          | :ADJUSTMENT
+          | :DERECOGNITION
+          | :DISPUTE
           | :CARD
           | :EXTERNAL_ACH
           | :EXTERNAL_CHECK
@@ -107,6 +112,11 @@ module Lithic
 
           ACH: :ACH
           BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
+          FEE: :FEE
+          REWARD: :REWARD
+          ADJUSTMENT: :ADJUSTMENT
+          DERECOGNITION: :DERECOGNITION
+          DISPUTE: :DISPUTE
           CARD: :CARD
           EXTERNAL_ACH: :EXTERNAL_ACH
           EXTERNAL_CHECK: :EXTERNAL_CHECK
@@ -188,12 +198,14 @@ module Lithic
             | :ACH_ORIGINATION_INITIATED
             | :ACH_ORIGINATION_PROCESSED
             | :ACH_ORIGINATION_RELEASED
+            | :ACH_ORIGINATION_REJECTED
             | :ACH_ORIGINATION_REVIEWED
             | :ACH_ORIGINATION_SETTLED
             | :ACH_RECEIPT_PROCESSED
             | :ACH_RECEIPT_SETTLED
             | :ACH_RETURN_INITIATED
             | :ACH_RETURN_PROCESSED
+            | :ACH_RETURN_REJECTED
             | :ACH_RETURN_SETTLED
             | :AUTHORIZATION
             | :AUTHORIZATION_ADVICE
@@ -260,12 +272,14 @@ module Lithic
             ACH_ORIGINATION_INITIATED: :ACH_ORIGINATION_INITIATED
             ACH_ORIGINATION_PROCESSED: :ACH_ORIGINATION_PROCESSED
             ACH_ORIGINATION_RELEASED: :ACH_ORIGINATION_RELEASED
+            ACH_ORIGINATION_REJECTED: :ACH_ORIGINATION_REJECTED
             ACH_ORIGINATION_REVIEWED: :ACH_ORIGINATION_REVIEWED
             ACH_ORIGINATION_SETTLED: :ACH_ORIGINATION_SETTLED
             ACH_RECEIPT_PROCESSED: :ACH_RECEIPT_PROCESSED
             ACH_RECEIPT_SETTLED: :ACH_RECEIPT_SETTLED
             ACH_RETURN_INITIATED: :ACH_RETURN_INITIATED
             ACH_RETURN_PROCESSED: :ACH_RETURN_PROCESSED
+            ACH_RETURN_REJECTED: :ACH_RETURN_REJECTED
             ACH_RETURN_SETTLED: :ACH_RETURN_SETTLED
             AUTHORIZATION: :AUTHORIZATION
             AUTHORIZATION_ADVICE: :AUTHORIZATION_ADVICE
@@ -470,36 +484,28 @@ module Lithic
         }
 
         type category =
-          :ACH
+          :ADJUSTMENT
           | :BALANCE_OR_FUNDING
-          | :CARD
-          | :EXTERNAL_ACH
-          | :EXTERNAL_CHECK
-          | :EXTERNAL_TRANSFER
-          | :EXTERNAL_WIRE
-          | :MANAGEMENT_ADJUSTMENT
-          | :MANAGEMENT_DISPUTE
-          | :MANAGEMENT_FEE
-          | :MANAGEMENT_REWARD
-          | :MANAGEMENT_DISBURSEMENT
+          | :DERECOGNITION
+          | :DISPUTE
+          | :FEE
+          | :INTERNAL
+          | :REWARD
           | :PROGRAM_FUNDING
+          | :TRANSFER
 
         module Category
           extend Lithic::Internal::Type::Enum
 
-          ACH: :ACH
+          ADJUSTMENT: :ADJUSTMENT
           BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
-          CARD: :CARD
-          EXTERNAL_ACH: :EXTERNAL_ACH
-          EXTERNAL_CHECK: :EXTERNAL_CHECK
-          EXTERNAL_TRANSFER: :EXTERNAL_TRANSFER
-          EXTERNAL_WIRE: :EXTERNAL_WIRE
-          MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
-          MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
-          MANAGEMENT_FEE: :MANAGEMENT_FEE
-          MANAGEMENT_REWARD: :MANAGEMENT_REWARD
-          MANAGEMENT_DISBURSEMENT: :MANAGEMENT_DISBURSEMENT
+          DERECOGNITION: :DERECOGNITION
+          DISPUTE: :DISPUTE
+          FEE: :FEE
+          INTERNAL: :INTERNAL
+          REWARD: :REWARD
           PROGRAM_FUNDING: :PROGRAM_FUNDING
+          TRANSFER: :TRANSFER
 
           def self?.values: -> ::Array[Lithic::Models::AccountActivityRetrieveTransactionResponse::BookTransferTransaction::category]
         end
@@ -578,7 +584,8 @@ module Lithic
           end
 
           type type_ =
-            :ATM_WITHDRAWAL
+            :ATM_BALANCE_INQUIRY
+            | :ATM_WITHDRAWAL
             | :ATM_DECLINE
             | :INTERNATIONAL_ATM_WITHDRAWAL
             | :INACTIVITY
@@ -616,6 +623,7 @@ module Lithic
           module Type
             extend Lithic::Internal::Type::Enum
 
+            ATM_BALANCE_INQUIRY: :ATM_BALANCE_INQUIRY
             ATM_WITHDRAWAL: :ATM_WITHDRAWAL
             ATM_DECLINE: :ATM_DECLINE
             INTERNATIONAL_ATM_WITHDRAWAL: :INTERNATIONAL_ATM_WITHDRAWAL
@@ -945,6 +953,11 @@ module Lithic
         type category =
           :ACH
           | :BALANCE_OR_FUNDING
+          | :FEE
+          | :REWARD
+          | :ADJUSTMENT
+          | :DERECOGNITION
+          | :DISPUTE
           | :CARD
           | :EXTERNAL_ACH
           | :EXTERNAL_CHECK
@@ -962,6 +975,11 @@ module Lithic
 
           ACH: :ACH
           BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
+          FEE: :FEE
+          REWARD: :REWARD
+          ADJUSTMENT: :ADJUSTMENT
+          DERECOGNITION: :DERECOGNITION
+          DISPUTE: :DISPUTE
           CARD: :CARD
           EXTERNAL_ACH: :EXTERNAL_ACH
           EXTERNAL_CHECK: :EXTERNAL_CHECK

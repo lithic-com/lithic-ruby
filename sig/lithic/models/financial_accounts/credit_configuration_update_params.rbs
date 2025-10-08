@@ -3,6 +3,7 @@ module Lithic
     module FinancialAccounts
       type credit_configuration_update_params =
         {
+          auto_collection_configuration: Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration,
           credit_limit: Integer,
           credit_product_token: String,
           external_bank_account_token: String,
@@ -13,6 +14,12 @@ module Lithic
       class CreditConfigurationUpdateParams < Lithic::Internal::Type::BaseModel
         extend Lithic::Internal::Type::RequestParameters::Converter
         include Lithic::Internal::Type::RequestParameters
+
+        attr_reader auto_collection_configuration: Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration?
+
+        def auto_collection_configuration=: (
+          Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration
+        ) -> Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration
 
         attr_reader credit_limit: Integer?
 
@@ -31,6 +38,7 @@ module Lithic
         def tier=: (String) -> String
 
         def initialize: (
+          ?auto_collection_configuration: Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration,
           ?credit_limit: Integer,
           ?credit_product_token: String,
           ?external_bank_account_token: String,
@@ -39,12 +47,25 @@ module Lithic
         ) -> void
 
         def to_hash: -> {
+          auto_collection_configuration: Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration,
           credit_limit: Integer,
           credit_product_token: String,
           external_bank_account_token: String,
           tier: String,
           request_options: Lithic::RequestOptions
         }
+
+        type auto_collection_configuration = { auto_collection_enabled: bool }
+
+        class AutoCollectionConfiguration < Lithic::Internal::Type::BaseModel
+          attr_reader auto_collection_enabled: bool?
+
+          def auto_collection_enabled=: (bool) -> bool
+
+          def initialize: (?auto_collection_enabled: bool) -> void
+
+          def to_hash: -> { auto_collection_enabled: bool }
+        end
       end
     end
   end

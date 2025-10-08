@@ -6,6 +6,7 @@ module Lithic
       type financial_account_credit_config =
         {
           account_token: String,
+          auto_collection_configuration: Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration,
           charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
           credit_limit: Integer?,
           credit_product_token: String?,
@@ -17,6 +18,8 @@ module Lithic
 
       class FinancialAccountCreditConfig < Lithic::Internal::Type::BaseModel
         attr_accessor account_token: String
+
+        attr_accessor auto_collection_configuration: Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration
 
         attr_accessor charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?
 
@@ -34,6 +37,7 @@ module Lithic
 
         def initialize: (
           account_token: String,
+          auto_collection_configuration: Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration,
           charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
           credit_limit: Integer?,
           credit_product_token: String?,
@@ -45,6 +49,7 @@ module Lithic
 
         def to_hash: -> {
           account_token: String,
+          auto_collection_configuration: Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration,
           charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
           credit_limit: Integer?,
           credit_product_token: String?,
@@ -53,6 +58,16 @@ module Lithic
           is_spend_blocked: bool,
           tier: String?
         }
+
+        type auto_collection_configuration = { auto_collection_enabled: bool }
+
+        class AutoCollectionConfiguration < Lithic::Internal::Type::BaseModel
+          attr_accessor auto_collection_enabled: bool
+
+          def initialize: (auto_collection_enabled: bool) -> void
+
+          def to_hash: -> { auto_collection_enabled: bool }
+        end
 
         type charged_off_reason = :DELINQUENT | :FRAUD
 

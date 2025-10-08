@@ -26,9 +26,11 @@ module Lithic
 
         # Update an account's credit configuration
         #
-        # @overload update(financial_account_token, credit_limit: nil, credit_product_token: nil, external_bank_account_token: nil, tier: nil, request_options: {})
+        # @overload update(financial_account_token, auto_collection_configuration: nil, credit_limit: nil, credit_product_token: nil, external_bank_account_token: nil, tier: nil, request_options: {})
         #
         # @param financial_account_token [String] Globally unique identifier for financial account.
+        #
+        # @param auto_collection_configuration [Lithic::Models::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration]
         #
         # @param credit_limit [Integer]
         #

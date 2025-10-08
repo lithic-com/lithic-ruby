@@ -12,6 +12,20 @@ module Lithic
             T.any(Lithic::AuthRules::V2UpdateParams, Lithic::Internal::AnyHash)
           end
 
+        # Account tokens to which the Auth Rule applies.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :account_tokens
+
+        sig { params(account_tokens: T::Array[String]).void }
+        attr_writer :account_tokens
+
+        # Business Account tokens to which the Auth Rule applies.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :business_account_tokens
+
+        sig { params(business_account_tokens: T::Array[String]).void }
+        attr_writer :business_account_tokens
+
         # Auth Rule Name
         sig { returns(T.nilable(String)) }
         attr_accessor :name
@@ -54,6 +68,8 @@ module Lithic
 
         sig do
           params(
+            account_tokens: T::Array[String],
+            business_account_tokens: T::Array[String],
             name: T.nilable(String),
             state: Lithic::AuthRules::V2UpdateParams::State::OrSymbol,
             card_tokens: T::Array[String],
@@ -63,6 +79,10 @@ module Lithic
           ).returns(T.attached_class)
         end
         def self.new(
+          # Account tokens to which the Auth Rule applies.
+          account_tokens: nil,
+          # Business Account tokens to which the Auth Rule applies.
+          business_account_tokens: nil,
           # Auth Rule Name
           name: nil,
           # The desired state of the Auth Rule.
@@ -84,6 +104,8 @@ module Lithic
         sig do
           override.returns(
             {
+              account_tokens: T::Array[String],
+              business_account_tokens: T::Array[String],
               name: T.nilable(String),
               state: Lithic::AuthRules::V2UpdateParams::State::OrSymbol,
               card_tokens: T::Array[String],

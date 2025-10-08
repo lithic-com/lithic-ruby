@@ -12,17 +12,17 @@ module Lithic
       sig { returns(String) }
       attr_accessor :token
 
-      # The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
-      # for Visa).
+      # Globally unique identifier denoting the account that the associated transaction
+      # occurred on.
       sig { returns(String) }
       attr_accessor :account_token
 
       # Globally unique identifier denoting the card program that the associated
-      # Transaction occurred on.
+      # transaction occurred on.
       sig { returns(String) }
       attr_accessor :card_program_token
 
-      # Globally unique identifier denoting the card that the associated Transaction
+      # Globally unique identifier denoting the card that the associated transaction
       # occurred on.
       sig { returns(String) }
       attr_accessor :card_token
@@ -138,13 +138,13 @@ module Lithic
       def self.new(
         # Globally unique identifier denoting the Settlement Detail.
         token:,
-        # The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
-        # for Visa).
+        # Globally unique identifier denoting the account that the associated transaction
+        # occurred on.
         account_token:,
         # Globally unique identifier denoting the card program that the associated
-        # Transaction occurred on.
+        # transaction occurred on.
         card_program_token:,
-        # Globally unique identifier denoting the card that the associated Transaction
+        # Globally unique identifier denoting the card that the associated transaction
         # occurred on.
         card_token:,
         # Date and time when the transaction first occurred. UTC time zone.

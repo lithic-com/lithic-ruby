@@ -13,7 +13,7 @@ module Lithic
       #
       # @param amount [Integer] Amount to be transferred in the currency's smallest unit (e.g., cents for USD).
       #
-      # @param category [Symbol, Lithic::Models::BookTransferCreateParams::Category] Category of the book transfer
+      # @param category [Symbol, Lithic::Models::BookTransferCreateParams::Category]
       #
       # @param from_financial_account_token [String] Globally unique identifier for the financial account or card that will send the
       #

@@ -83,6 +83,8 @@ module Lithic
         sig do
           params(
             auth_rule_token: String,
+            account_tokens: T::Array[String],
+            business_account_tokens: T::Array[String],
             name: T.nilable(String),
             state: Lithic::AuthRules::V2UpdateParams::State::OrSymbol,
             card_tokens: T::Array[String],
@@ -94,6 +96,10 @@ module Lithic
         def update(
           # Globally unique identifier for the Auth Rule.
           auth_rule_token,
+          # Account tokens to which the Auth Rule applies.
+          account_tokens: nil,
+          # Business Account tokens to which the Auth Rule applies.
+          business_account_tokens: nil,
           # Auth Rule Name
           name: nil,
           # The desired state of the Auth Rule.
