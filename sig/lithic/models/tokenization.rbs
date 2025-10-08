@@ -6,6 +6,7 @@ module Lithic
         account_token: String,
         card_token: String,
         created_at: Time,
+        device_id: String?,
         dpan: String?,
         status: Lithic::Models::Tokenization::status,
         token_requestor_name: Lithic::Models::Tokenization::token_requestor_name,
@@ -25,6 +26,8 @@ module Lithic
       attr_accessor card_token: String
 
       attr_accessor created_at: Time
+
+      attr_accessor device_id: String?
 
       attr_accessor dpan: String?
 
@@ -55,6 +58,7 @@ module Lithic
         account_token: String,
         card_token: String,
         created_at: Time,
+        device_id: String?,
         dpan: String?,
         status: Lithic::Models::Tokenization::status,
         token_requestor_name: Lithic::Models::Tokenization::token_requestor_name,
@@ -71,6 +75,7 @@ module Lithic
         account_token: String,
         card_token: String,
         created_at: Time,
+        device_id: String?,
         dpan: String?,
         status: Lithic::Models::Tokenization::status,
         token_requestor_name: Lithic::Models::Tokenization::token_requestor_name,

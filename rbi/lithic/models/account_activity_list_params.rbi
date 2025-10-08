@@ -193,6 +193,28 @@ module Lithic
             :BALANCE_OR_FUNDING,
             Lithic::AccountActivityListParams::Category::TaggedSymbol
           )
+        FEE =
+          T.let(:FEE, Lithic::AccountActivityListParams::Category::TaggedSymbol)
+        REWARD =
+          T.let(
+            :REWARD,
+            Lithic::AccountActivityListParams::Category::TaggedSymbol
+          )
+        ADJUSTMENT =
+          T.let(
+            :ADJUSTMENT,
+            Lithic::AccountActivityListParams::Category::TaggedSymbol
+          )
+        DERECOGNITION =
+          T.let(
+            :DERECOGNITION,
+            Lithic::AccountActivityListParams::Category::TaggedSymbol
+          )
+        DISPUTE =
+          T.let(
+            :DISPUTE,
+            Lithic::AccountActivityListParams::Category::TaggedSymbol
+          )
         CARD =
           T.let(
             :CARD,

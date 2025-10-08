@@ -12,7 +12,6 @@ module Lithic
       required :token, String
 
       # @!attribute category
-      #   Category of the book transfer
       #
       #   @return [Symbol, Lithic::Models::BookTransferResponse::Category]
       required :category, enum: -> { Lithic::BookTransferResponse::Category }
@@ -112,7 +111,7 @@ module Lithic
       #
       #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
       #
-      #   @param category [Symbol, Lithic::Models::BookTransferResponse::Category] Category of the book transfer
+      #   @param category [Symbol, Lithic::Models::BookTransferResponse::Category]
       #
       #   @param created [Time] Date and time when the transfer occurred. UTC time zone.
       #
@@ -140,8 +139,6 @@ module Lithic
       #
       #   @param updated [Time] Date and time when the financial transaction was last updated. UTC time zone.
 
-      # Category of the book transfer
-      #
       # @see Lithic::Models::BookTransferResponse#category
       module Category
         extend Lithic::Internal::Type::Enum
@@ -151,7 +148,9 @@ module Lithic
         DERECOGNITION = :DERECOGNITION
         DISPUTE = :DISPUTE
         FEE = :FEE
+        INTERNAL = :INTERNAL
         REWARD = :REWARD
+        PROGRAM_FUNDING = :PROGRAM_FUNDING
         TRANSFER = :TRANSFER
 
         # @!method self.values
@@ -261,6 +260,7 @@ module Lithic
         module Type
           extend Lithic::Internal::Type::Enum
 
+          ATM_BALANCE_INQUIRY = :ATM_BALANCE_INQUIRY
           ATM_WITHDRAWAL = :ATM_WITHDRAWAL
           ATM_DECLINE = :ATM_DECLINE
           INTERNATIONAL_ATM_WITHDRAWAL = :INTERNATIONAL_ATM_WITHDRAWAL

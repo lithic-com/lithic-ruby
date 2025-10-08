@@ -73,6 +73,9 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :created
 
+      sig { returns(T.nilable(String)) }
+      attr_accessor :financial_account_token
+
       sig { returns(Lithic::Transaction::Merchant) }
       attr_reader :merchant
 
@@ -156,6 +159,7 @@ module Lithic
           cardholder_authentication:
             T.nilable(Lithic::Transaction::CardholderAuthentication::OrHash),
           created: Time,
+          financial_account_token: T.nilable(String),
           merchant: Lithic::Transaction::Merchant::OrHash,
           merchant_amount: T.nilable(Integer),
           merchant_authorization_amount: T.nilable(Integer),
@@ -201,6 +205,7 @@ module Lithic
         cardholder_authentication:,
         # Date and time when the transaction first occurred. UTC time zone.
         created:,
+        financial_account_token:,
         merchant:,
         # Analogous to the 'amount', but in the merchant currency.
         merchant_amount:,
@@ -246,6 +251,7 @@ module Lithic
             cardholder_authentication:
               T.nilable(Lithic::Transaction::CardholderAuthentication),
             created: Time,
+            financial_account_token: T.nilable(String),
             merchant: Lithic::Transaction::Merchant,
             merchant_amount: T.nilable(Integer),
             merchant_authorization_amount: T.nilable(Integer),
@@ -1837,6 +1843,8 @@ module Lithic
           T.let(:FRAUD_ADVICE, Lithic::Transaction::Result::TaggedSymbol)
         IGNORED_TTL_EXPIRY =
           T.let(:IGNORED_TTL_EXPIRY, Lithic::Transaction::Result::TaggedSymbol)
+        SUSPECTED_FRAUD =
+          T.let(:SUSPECTED_FRAUD, Lithic::Transaction::Result::TaggedSymbol)
         INACTIVE_ACCOUNT =
           T.let(:INACTIVE_ACCOUNT, Lithic::Transaction::Result::TaggedSymbol)
         INCORRECT_PIN =
@@ -2636,6 +2644,11 @@ module Lithic
               :SINGLE_USE_CARD_REATTEMPTED,
               Lithic::Transaction::Event::DetailedResult::TaggedSymbol
             )
+          SUSPECTED_FRAUD =
+            T.let(
+              :SUSPECTED_FRAUD,
+              Lithic::Transaction::Event::DetailedResult::TaggedSymbol
+            )
           TRANSACTION_INVALID =
             T.let(
               :TRANSACTION_INVALID,
@@ -3120,6 +3133,11 @@ module Lithic
               :IGNORED_TTL_EXPIRY,
               Lithic::Transaction::Event::Result::TaggedSymbol
             )
+          SUSPECTED_FRAUD =
+            T.let(
+              :SUSPECTED_FRAUD,
+              Lithic::Transaction::Event::Result::TaggedSymbol
+            )
           INACTIVE_ACCOUNT =
             T.let(
               :INACTIVE_ACCOUNT,
@@ -3512,6 +3530,11 @@ module Lithic
             SINGLE_USE_CARD_REATTEMPTED =
               T.let(
                 :SINGLE_USE_CARD_REATTEMPTED,
+                Lithic::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            SUSPECTED_FRAUD =
+              T.let(
+                :SUSPECTED_FRAUD,
                 Lithic::Transaction::Event::RuleResult::Result::TaggedSymbol
               )
             TRANSACTION_INVALID =

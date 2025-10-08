@@ -165,6 +165,23 @@ module Lithic
         attr_accessor :tier
 
         sig do
+          returns(
+            T.nilable(
+              Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration
+            )
+          )
+        end
+        attr_reader :auto_collection_configuration
+
+        sig do
+          params(
+            auto_collection_configuration:
+              Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration::OrHash
+          ).void
+        end
+        attr_writer :auto_collection_configuration
+
+        sig do
           params(
             charged_off_reason:
               T.nilable(
@@ -178,7 +195,9 @@ module Lithic
                 Lithic::FinancialAccount::CreditConfiguration::FinancialAccountState::OrSymbol
               ),
             is_spend_blocked: T::Boolean,
-            tier: T.nilable(String)
+            tier: T.nilable(String),
+            auto_collection_configuration:
+              Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -192,7 +211,8 @@ module Lithic
           financial_account_state:,
           is_spend_blocked:,
           # Tier assigned to the financial account
-          tier:
+          tier:,
+          auto_collection_configuration: nil
         )
         end
 
@@ -211,7 +231,9 @@ module Lithic
                   Lithic::FinancialAccount::CreditConfiguration::FinancialAccountState::TaggedSymbol
                 ),
               is_spend_blocked: T::Boolean,
-              tier: T.nilable(String)
+              tier: T.nilable(String),
+              auto_collection_configuration:
+                Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration
             }
           )
         end
@@ -295,6 +317,35 @@ module Lithic
             )
           end
           def self.values
+          end
+        end
+
+        class AutoCollectionConfiguration < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # If auto collection is enabled for this account
+          sig { returns(T::Boolean) }
+          attr_accessor :auto_collection_enabled
+
+          sig do
+            params(auto_collection_enabled: T::Boolean).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # If auto collection is enabled for this account
+            auto_collection_enabled:
+          )
+          end
+
+          sig { override.returns({ auto_collection_enabled: T::Boolean }) }
+          def to_hash
           end
         end
       end

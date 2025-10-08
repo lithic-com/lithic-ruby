@@ -11,7 +11,7 @@ class Lithic::Test::Resources::BookTransfersTest < Lithic::Test::ResourceTest
         from_financial_account_token: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         subtype: "subtype",
         to_financial_account_token: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        type: :ATM_WITHDRAWAL
+        type: :ATM_BALANCE_INQUIRY
       )
 
     assert_pattern do

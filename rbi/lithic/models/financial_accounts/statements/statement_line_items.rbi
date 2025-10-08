@@ -211,6 +211,31 @@ module Lithic
                   :BALANCE_OR_FUNDING,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
                 )
+              FEE =
+                T.let(
+                  :FEE,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
+                )
+              REWARD =
+                T.let(
+                  :REWARD,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
+                )
+              ADJUSTMENT =
+                T.let(
+                  :ADJUSTMENT,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
+                )
+              DERECOGNITION =
+                T.let(
+                  :DERECOGNITION,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
+                )
+              DISPUTE =
+                T.let(
+                  :DISPUTE,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
+                )
               CARD =
                 T.let(
                   :CARD,
@@ -310,6 +335,11 @@ module Lithic
                   :ACH_ORIGINATION_RELEASED,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
+              ACH_ORIGINATION_REJECTED =
+                T.let(
+                  :ACH_ORIGINATION_REJECTED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
               ACH_ORIGINATION_REVIEWED =
                 T.let(
                   :ACH_ORIGINATION_REVIEWED,
@@ -338,6 +368,11 @@ module Lithic
               ACH_RETURN_PROCESSED =
                 T.let(
                   :ACH_RETURN_PROCESSED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              ACH_RETURN_REJECTED =
+                T.let(
+                  :ACH_RETURN_REJECTED,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
               ACH_RETURN_SETTLED =

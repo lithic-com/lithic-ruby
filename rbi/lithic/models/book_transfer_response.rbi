@@ -13,7 +13,6 @@ module Lithic
       sig { returns(String) }
       attr_accessor :token
 
-      # Category of the book transfer
       sig { returns(Lithic::BookTransferResponse::Category::TaggedSymbol) }
       attr_accessor :category
 
@@ -121,7 +120,6 @@ module Lithic
         # Customer-provided token that will serve as an idempotency token. This token will
         # become the transaction token.
         token:,
-        # Category of the book transfer
         category:,
         # Date and time when the transfer occurred. UTC time zone.
         created:,
@@ -188,7 +186,6 @@ module Lithic
       def to_hash
       end
 
-      # Category of the book transfer
       module Category
         extend Lithic::Internal::Type::Enum
 
@@ -214,8 +211,15 @@ module Lithic
         DISPUTE =
           T.let(:DISPUTE, Lithic::BookTransferResponse::Category::TaggedSymbol)
         FEE = T.let(:FEE, Lithic::BookTransferResponse::Category::TaggedSymbol)
+        INTERNAL =
+          T.let(:INTERNAL, Lithic::BookTransferResponse::Category::TaggedSymbol)
         REWARD =
           T.let(:REWARD, Lithic::BookTransferResponse::Category::TaggedSymbol)
+        PROGRAM_FUNDING =
+          T.let(
+            :PROGRAM_FUNDING,
+            Lithic::BookTransferResponse::Category::TaggedSymbol
+          )
         TRANSFER =
           T.let(:TRANSFER, Lithic::BookTransferResponse::Category::TaggedSymbol)
 
@@ -406,6 +410,11 @@ module Lithic
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+          ATM_BALANCE_INQUIRY =
+            T.let(
+              :ATM_BALANCE_INQUIRY,
+              Lithic::BookTransferResponse::Event::Type::TaggedSymbol
+            )
           ATM_WITHDRAWAL =
             T.let(
               :ATM_WITHDRAWAL,

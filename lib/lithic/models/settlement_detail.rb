@@ -10,21 +10,21 @@ module Lithic
       required :token, String
 
       # @!attribute account_token
-      #   The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE
-      #   for Visa).
+      #   Globally unique identifier denoting the account that the associated transaction
+      #   occurred on.
       #
       #   @return [String]
       required :account_token, String
 
       # @!attribute card_program_token
       #   Globally unique identifier denoting the card program that the associated
-      #   Transaction occurred on.
+      #   transaction occurred on.
       #
       #   @return [String]
       required :card_program_token, String
 
       # @!attribute card_token
-      #   Globally unique identifier denoting the card that the associated Transaction
+      #   Globally unique identifier denoting the card that the associated transaction
       #   occurred on.
       #
       #   @return [String]
@@ -142,11 +142,11 @@ module Lithic
       #
       #   @param token [String] Globally unique identifier denoting the Settlement Detail.
       #
-      #   @param account_token [String] The most granular ID the network settles with (e.g., ICA for Mastercard, FTSRE f
+      #   @param account_token [String] Globally unique identifier denoting the account that the associated transaction
       #
-      #   @param card_program_token [String] Globally unique identifier denoting the card program that the associated Transac
+      #   @param card_program_token [String] Globally unique identifier denoting the card program that the associated transac
       #
-      #   @param card_token [String] Globally unique identifier denoting the card that the associated Transaction occ
+      #   @param card_token [String] Globally unique identifier denoting the card that the associated transaction occ
       #
       #   @param created [Time] Date and time when the transaction first occurred. UTC time zone.
       #

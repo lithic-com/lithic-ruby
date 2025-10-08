@@ -108,13 +108,15 @@ module Lithic
       module Category
         extend Lithic::Internal::Type::Enum
 
-        BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
-        FEE = :FEE
-        REWARD = :REWARD
         ADJUSTMENT = :ADJUSTMENT
+        BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
         DERECOGNITION = :DERECOGNITION
         DISPUTE = :DISPUTE
+        FEE = :FEE
         INTERNAL = :INTERNAL
+        REWARD = :REWARD
+        PROGRAM_FUNDING = :PROGRAM_FUNDING
+        TRANSFER = :TRANSFER
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -14,6 +14,7 @@ module Lithic
         card_token: String,
         cardholder_authentication: Lithic::Transaction::CardholderAuthentication?,
         created: Time,
+        financial_account_token: String?,
         merchant: Lithic::Transaction::Merchant,
         merchant_amount: Integer?,
         merchant_authorization_amount: Integer?,
@@ -53,6 +54,8 @@ module Lithic
       attr_accessor cardholder_authentication: Lithic::Transaction::CardholderAuthentication?
 
       attr_accessor created: Time
+
+      attr_accessor financial_account_token: String?
 
       attr_accessor merchant: Lithic::Transaction::Merchant
 
@@ -97,6 +100,7 @@ module Lithic
         card_token: String,
         cardholder_authentication: Lithic::Transaction::CardholderAuthentication?,
         created: Time,
+        financial_account_token: String?,
         merchant: Lithic::Transaction::Merchant,
         merchant_amount: Integer?,
         merchant_authorization_amount: Integer?,
@@ -125,6 +129,7 @@ module Lithic
         card_token: String,
         cardholder_authentication: Lithic::Transaction::CardholderAuthentication?,
         created: Time,
+        financial_account_token: String?,
         merchant: Lithic::Transaction::Merchant,
         merchant_amount: Integer?,
         merchant_authorization_amount: Integer?,
@@ -766,6 +771,7 @@ module Lithic
         | :DECLINED
         | :FRAUD_ADVICE
         | :IGNORED_TTL_EXPIRY
+        | :SUSPECTED_FRAUD
         | :INACTIVE_ACCOUNT
         | :INCORRECT_PIN
         | :INVALID_CARD_DETAILS
@@ -794,6 +800,7 @@ module Lithic
         DECLINED: :DECLINED
         FRAUD_ADVICE: :FRAUD_ADVICE
         IGNORED_TTL_EXPIRY: :IGNORED_TTL_EXPIRY
+        SUSPECTED_FRAUD: :SUSPECTED_FRAUD
         INACTIVE_ACCOUNT: :INACTIVE_ACCOUNT
         INCORRECT_PIN: :INCORRECT_PIN
         INVALID_CARD_DETAILS: :INVALID_CARD_DETAILS
@@ -1074,6 +1081,7 @@ module Lithic
           | :REVERSAL_UNMATCHED
           | :SECURITY_VIOLATION
           | :SINGLE_USE_CARD_REATTEMPTED
+          | :SUSPECTED_FRAUD
           | :TRANSACTION_INVALID
           | :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
           | :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER
@@ -1131,6 +1139,7 @@ module Lithic
           REVERSAL_UNMATCHED: :REVERSAL_UNMATCHED
           SECURITY_VIOLATION: :SECURITY_VIOLATION
           SINGLE_USE_CARD_REATTEMPTED: :SINGLE_USE_CARD_REATTEMPTED
+          SUSPECTED_FRAUD: :SUSPECTED_FRAUD
           TRANSACTION_INVALID: :TRANSACTION_INVALID
           TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL: :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
           TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER: :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER
@@ -1287,6 +1296,7 @@ module Lithic
           | :DECLINED
           | :FRAUD_ADVICE
           | :IGNORED_TTL_EXPIRY
+          | :SUSPECTED_FRAUD
           | :INACTIVE_ACCOUNT
           | :INCORRECT_PIN
           | :INVALID_CARD_DETAILS
@@ -1315,6 +1325,7 @@ module Lithic
           DECLINED: :DECLINED
           FRAUD_ADVICE: :FRAUD_ADVICE
           IGNORED_TTL_EXPIRY: :IGNORED_TTL_EXPIRY
+          SUSPECTED_FRAUD: :SUSPECTED_FRAUD
           INACTIVE_ACCOUNT: :INACTIVE_ACCOUNT
           INCORRECT_PIN: :INCORRECT_PIN
           INVALID_CARD_DETAILS: :INVALID_CARD_DETAILS
@@ -1412,6 +1423,7 @@ module Lithic
             | :REVERSAL_UNMATCHED
             | :SECURITY_VIOLATION
             | :SINGLE_USE_CARD_REATTEMPTED
+            | :SUSPECTED_FRAUD
             | :TRANSACTION_INVALID
             | :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
             | :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER
@@ -1469,6 +1481,7 @@ module Lithic
             REVERSAL_UNMATCHED: :REVERSAL_UNMATCHED
             SECURITY_VIOLATION: :SECURITY_VIOLATION
             SINGLE_USE_CARD_REATTEMPTED: :SINGLE_USE_CARD_REATTEMPTED
+            SUSPECTED_FRAUD: :SUSPECTED_FRAUD
             TRANSACTION_INVALID: :TRANSACTION_INVALID
             TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL: :TRANSACTION_NOT_PERMITTED_TO_ACQUIRER_OR_TERMINAL
             TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER: :TRANSACTION_NOT_PERMITTED_TO_ISSUER_OR_CARDHOLDER

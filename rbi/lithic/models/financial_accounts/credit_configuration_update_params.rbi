@@ -15,6 +15,23 @@ module Lithic
             )
           end
 
+        sig do
+          returns(
+            T.nilable(
+              Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration
+            )
+          )
+        end
+        attr_reader :auto_collection_configuration
+
+        sig do
+          params(
+            auto_collection_configuration:
+              Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration::OrHash
+          ).void
+        end
+        attr_writer :auto_collection_configuration
+
         sig { returns(T.nilable(Integer)) }
         attr_reader :credit_limit
 
@@ -43,6 +60,8 @@ module Lithic
 
         sig do
           params(
+            auto_collection_configuration:
+              Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration::OrHash,
             credit_limit: Integer,
             credit_product_token: String,
             external_bank_account_token: String,
@@ -51,6 +70,7 @@ module Lithic
           ).returns(T.attached_class)
         end
         def self.new(
+          auto_collection_configuration: nil,
           credit_limit: nil,
           # Globally unique identifier for the credit product
           credit_product_token: nil,
@@ -64,6 +84,8 @@ module Lithic
         sig do
           override.returns(
             {
+              auto_collection_configuration:
+                Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration,
               credit_limit: Integer,
               credit_product_token: String,
               external_bank_account_token: String,
@@ -73,6 +95,38 @@ module Lithic
           )
         end
         def to_hash
+        end
+
+        class AutoCollectionConfiguration < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::CreditConfigurationUpdateParams::AutoCollectionConfiguration,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # If auto collection is enabled for this account
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :auto_collection_enabled
+
+          sig { params(auto_collection_enabled: T::Boolean).void }
+          attr_writer :auto_collection_enabled
+
+          sig do
+            params(auto_collection_enabled: T::Boolean).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # If auto collection is enabled for this account
+            auto_collection_enabled: nil
+          )
+          end
+
+          sig { override.returns({ auto_collection_enabled: T::Boolean }) }
+          def to_hash
+          end
         end
       end
     end

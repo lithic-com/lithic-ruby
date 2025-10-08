@@ -77,9 +77,13 @@ module Lithic
         # is provided, this will replace existing associations with the provided list of
         # entities.
         #
-        # @overload update(auth_rule_token, name: nil, state: nil, card_tokens: nil, excluded_card_tokens: nil, program_level: nil, request_options: {})
+        # @overload update(auth_rule_token, account_tokens: nil, business_account_tokens: nil, name: nil, state: nil, card_tokens: nil, excluded_card_tokens: nil, program_level: nil, request_options: {})
         #
         # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
+        #
+        # @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
+        #
+        # @param business_account_tokens [Array<String>] Business Account tokens to which the Auth Rule applies.
         #
         # @param name [String, nil] Auth Rule Name
         #

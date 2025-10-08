@@ -182,18 +182,14 @@ module Lithic
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        BALANCE_OR_FUNDING =
-          T.let(
-            :BALANCE_OR_FUNDING,
-            Lithic::BookTransferListParams::Category::TaggedSymbol
-          )
-        FEE =
-          T.let(:FEE, Lithic::BookTransferListParams::Category::TaggedSymbol)
-        REWARD =
-          T.let(:REWARD, Lithic::BookTransferListParams::Category::TaggedSymbol)
         ADJUSTMENT =
           T.let(
             :ADJUSTMENT,
+            Lithic::BookTransferListParams::Category::TaggedSymbol
+          )
+        BALANCE_OR_FUNDING =
+          T.let(
+            :BALANCE_OR_FUNDING,
             Lithic::BookTransferListParams::Category::TaggedSymbol
           )
         DERECOGNITION =
@@ -206,9 +202,23 @@ module Lithic
             :DISPUTE,
             Lithic::BookTransferListParams::Category::TaggedSymbol
           )
+        FEE =
+          T.let(:FEE, Lithic::BookTransferListParams::Category::TaggedSymbol)
         INTERNAL =
           T.let(
             :INTERNAL,
+            Lithic::BookTransferListParams::Category::TaggedSymbol
+          )
+        REWARD =
+          T.let(:REWARD, Lithic::BookTransferListParams::Category::TaggedSymbol)
+        PROGRAM_FUNDING =
+          T.let(
+            :PROGRAM_FUNDING,
+            Lithic::BookTransferListParams::Category::TaggedSymbol
+          )
+        TRANSFER =
+          T.let(
+            :TRANSFER,
             Lithic::BookTransferListParams::Category::TaggedSymbol
           )
 
