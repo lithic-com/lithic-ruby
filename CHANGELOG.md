@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.51 (2025-10-14)
+
+Full Changelog: [v0.1.0-alpha.50...v0.1.0-alpha.51](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.50...v0.1.0-alpha.51)
+
+### Bug Fixes
+
+* should not reuse buffers for `IO.copy_stream` interop ([f6e4858](https://github.com/lithic-com/lithic-ruby/commit/f6e485884b92ac962d4cd4c61e913aac40fbc175))
+
 ## 0.1.0-alpha.50 (2025-10-08)
 
 Full Changelog: [v0.1.0-alpha.49...v0.1.0-alpha.50](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.49...v0.1.0-alpha.50)
