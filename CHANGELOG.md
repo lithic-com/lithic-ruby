@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.52 (2025-10-15)
+
+Full Changelog: [v0.1.0-alpha.51...v0.1.0-alpha.52](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.51...v0.1.0-alpha.52)
+
+### Bug Fixes
+
+* absolutely qualified uris should always override the default ([603aa2e](https://github.com/lithic-com/lithic-ruby/commit/603aa2e88449994118f1f5c19edc1accbcf57cb1))
+
 ## 0.1.0-alpha.51 (2025-10-14)
 
 Full Changelog: [v0.1.0-alpha.50...v0.1.0-alpha.51](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.50...v0.1.0-alpha.51)
