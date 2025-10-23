@@ -1,15 +1,32 @@
 module Lithic
   module Models
-    type card_provision_response = { provisioning_payload: String }
+    type card_provision_response =
+      {
+        provisioning_payload: Lithic::Models::CardProvisionResponse::provisioning_payload
+      }
 
     class CardProvisionResponse < Lithic::Internal::Type::BaseModel
-      attr_reader provisioning_payload: String?
+      attr_reader provisioning_payload: Lithic::Models::CardProvisionResponse::provisioning_payload?
 
-      def provisioning_payload=: (String) -> String
+      def provisioning_payload=: (
+        Lithic::Models::CardProvisionResponse::provisioning_payload
+      ) -> Lithic::Models::CardProvisionResponse::provisioning_payload
 
-      def initialize: (?provisioning_payload: String) -> void
+      def initialize: (
+        ?provisioning_payload: Lithic::Models::CardProvisionResponse::provisioning_payload
+      ) -> void
 
-      def to_hash: -> { provisioning_payload: String }
+      def to_hash: -> {
+        provisioning_payload: Lithic::Models::CardProvisionResponse::provisioning_payload
+      }
+
+      type provisioning_payload = String | Lithic::ProvisionResponse
+
+      module ProvisioningPayload
+        extend Lithic::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Lithic::Models::CardProvisionResponse::provisioning_payload]
+      end
     end
   end
 end

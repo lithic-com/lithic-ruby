@@ -191,6 +191,7 @@ module Lithic
                 | :PIN_STATUS
                 | :WALLET_TYPE
                 | :TRANSACTION_INITIATOR
+                | :ADDRESS_MATCH
 
               module Attribute
                 extend Lithic::Internal::Type::Enum
@@ -213,6 +214,7 @@ module Lithic
                 PIN_STATUS: :PIN_STATUS
                 WALLET_TYPE: :WALLET_TYPE
                 TRANSACTION_INITIATOR: :TRANSACTION_INITIATOR
+                ADDRESS_MATCH: :ADDRESS_MATCH
 
                 def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::Condition::attribute]
               end

@@ -72,11 +72,6 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> Lithic::Models::AuthRules::V2PromoteResponse
 
-        def report: (
-          String auth_rule_token,
-          ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::AuthRules::V2ReportResponse
-
         def retrieve_features: (
           String auth_rule_token,
           ?account_token: String,

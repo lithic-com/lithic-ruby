@@ -11,7 +11,7 @@ module Lithic
       #
       # Creates an external bank account within a program or Lithic account.
       #
-      # @overload create(account_number:, country:, currency:, financial_account_token:, owner:, owner_type:, routing_number:, type:, verification_method:, processor_token:, account_token: nil, address: nil, company_id: nil, dob: nil, doing_business_as: nil, name: nil, user_defined_id: nil, verification_enforcement: nil, request_options: {})
+      # @overload create(account_number:, country:, currency:, financial_account_token:, owner:, owner_type:, routing_number:, type:, verification_method:, account_token: nil, address: nil, company_id: nil, dob: nil, doing_business_as: nil, name: nil, user_defined_id: nil, verification_enforcement: nil, request_options: {})
       #
       # @param account_number [String] Account Number
       #
@@ -30,8 +30,6 @@ module Lithic
       # @param type [Symbol, Lithic::Models::ExternalBankAccountCreateParams::Type] Account Type
       #
       # @param verification_method [Symbol, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod] Verification Method
-      #
-      # @param processor_token [String]
       #
       # @param account_token [String] Indicates which Lithic account the external account is associated with. For exte
       #

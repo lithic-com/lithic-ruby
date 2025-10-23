@@ -18,8 +18,7 @@ module Lithic
         doing_business_as: String,
         name: String,
         user_defined_id: String,
-        verification_enforcement: bool,
-        processor_token: String
+        verification_enforcement: bool
       }
       & Lithic::Internal::Type::request_parameters
 
@@ -79,8 +78,6 @@ module Lithic
 
       def verification_enforcement=: (bool) -> bool
 
-      attr_accessor processor_token: String
-
       def initialize: (
         account_number: String,
         country: String,
@@ -91,7 +88,6 @@ module Lithic
         routing_number: String,
         type: Lithic::Models::ExternalBankAccountCreateParams::type_,
         verification_method: Lithic::Models::ExternalBankAccountCreateParams::verification_method,
-        processor_token: String,
         ?account_token: String,
         ?address: Lithic::ExternalBankAccountAddress,
         ?company_id: String,
@@ -121,7 +117,6 @@ module Lithic
         name: String,
         user_defined_id: String,
         verification_enforcement: bool,
-        processor_token: String,
         request_options: Lithic::RequestOptions
       }
 

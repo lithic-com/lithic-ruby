@@ -18,6 +18,7 @@ module Lithic
       sig { params(balance: Lithic::Balance::OrHash).void }
       attr_writer :balance
 
+      # Payment transaction
       sig { params(balance: Lithic::Balance::OrHash).returns(T.attached_class) }
       def self.new(
         # Balance

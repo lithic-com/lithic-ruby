@@ -1,19 +1,13 @@
 module Lithic
   module Models
     type verification_method =
-      :MANUAL
-      | :MICRO_DEPOSIT
-      | :PLAID
-      | :PRENOTE
-      | :EXTERNALLY_VERIFIED
-      | :UNVERIFIED
+      :MANUAL | :MICRO_DEPOSIT | :PRENOTE | :EXTERNALLY_VERIFIED | :UNVERIFIED
 
     module VerificationMethod
       extend Lithic::Internal::Type::Enum
 
       MANUAL: :MANUAL
       MICRO_DEPOSIT: :MICRO_DEPOSIT
-      PLAID: :PLAID
       PRENOTE: :PRENOTE
       EXTERNALLY_VERIFIED: :EXTERNALLY_VERIFIED
       UNVERIFIED: :UNVERIFIED

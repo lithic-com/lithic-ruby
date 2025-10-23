@@ -8,12 +8,24 @@ module Lithic
       # @example
       #   # `account_activity_list_response` is a `Lithic::Models::AccountActivityListResponse`
       #   case account_activity_list_response
-      #   when Lithic::Models::AccountActivityListResponse::FinancialTransaction
+      #   when Lithic::Models::AccountActivityListResponse::Internal
       #     puts(account_activity_list_response.token)
-      #   when Lithic::Models::AccountActivityListResponse::BookTransferTransaction
+      #   when Lithic::BookTransferResponse
       #     puts(account_activity_list_response.category)
-      #   when Lithic::Models::AccountActivityListResponse::CardTransaction
+      #   when Lithic::Models::AccountActivityListResponse::Card
       #     # ...
+      #   else
+      #     puts(account_activity_list_response)
+      #   end
+      #
+      # @example
+      #   case account_activity_list_response
+      #   in {family: :INTERNAL, token: token, category: category, created: created}
+      #     puts(token)
+      #   in {family: :TRANSFER, token: token, category: category, created: created}
+      #     puts(category)
+      #   in {family: :PAYMENT, token: token, category: category, created: created}
+      #     puts(created)
       #   else
       #     puts(account_activity_list_response)
       #   end

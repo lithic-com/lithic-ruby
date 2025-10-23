@@ -251,6 +251,9 @@ module Lithic
                 #     `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
                 #   - `TRANSACTION_INITIATOR`: The entity that initiated the transaction indicates
                 #     the source of the token. Valid values are `CARDHOLDER`, `MERCHANT`, `UNKNOWN`.
+                #   - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+                #     data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+                #     `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
                 #
                 #   @return [Symbol, Lithic::Models::AuthRules::V2PromoteResponse::CurrentVersion::Parameters::ConditionalAuthorizationActionParameters::Condition::Attribute, nil]
                 optional :attribute,
@@ -332,6 +335,9 @@ module Lithic
                 #   `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
                 # - `TRANSACTION_INITIATOR`: The entity that initiated the transaction indicates
                 #   the source of the token. Valid values are `CARDHOLDER`, `MERCHANT`, `UNKNOWN`.
+                # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+                #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+                #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
                 #
                 # @see Lithic::Models::AuthRules::V2PromoteResponse::CurrentVersion::Parameters::ConditionalAuthorizationActionParameters::Condition#attribute
                 module Attribute
@@ -355,6 +361,7 @@ module Lithic
                   PIN_STATUS = :PIN_STATUS
                   WALLET_TYPE = :WALLET_TYPE
                   TRANSACTION_INITIATOR = :TRANSACTION_INITIATOR
+                  ADDRESS_MATCH = :ADDRESS_MATCH
 
                   # @!method self.values
                   #   @return [Array<Symbol>]
@@ -540,6 +547,9 @@ module Lithic
                 #     `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
                 #   - `TRANSACTION_INITIATOR`: The entity that initiated the transaction indicates
                 #     the source of the token. Valid values are `CARDHOLDER`, `MERCHANT`, `UNKNOWN`.
+                #   - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+                #     data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+                #     `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
                 #
                 #   @return [Symbol, Lithic::Models::AuthRules::V2PromoteResponse::DraftVersion::Parameters::ConditionalAuthorizationActionParameters::Condition::Attribute, nil]
                 optional :attribute,
@@ -621,6 +631,9 @@ module Lithic
                 #   `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
                 # - `TRANSACTION_INITIATOR`: The entity that initiated the transaction indicates
                 #   the source of the token. Valid values are `CARDHOLDER`, `MERCHANT`, `UNKNOWN`.
+                # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+                #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+                #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
                 #
                 # @see Lithic::Models::AuthRules::V2PromoteResponse::DraftVersion::Parameters::ConditionalAuthorizationActionParameters::Condition#attribute
                 module Attribute
@@ -644,6 +657,7 @@ module Lithic
                   PIN_STATUS = :PIN_STATUS
                   WALLET_TYPE = :WALLET_TYPE
                   TRANSACTION_INITIATOR = :TRANSACTION_INITIATOR
+                  ADDRESS_MATCH = :ADDRESS_MATCH
 
                   # @!method self.values
                   #   @return [Array<Symbol>]

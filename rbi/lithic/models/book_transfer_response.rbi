@@ -8,26 +8,63 @@ module Lithic
           T.any(Lithic::BookTransferResponse, Lithic::Internal::AnyHash)
         end
 
-      # Customer-provided token that will serve as an idempotency token. This token will
-      # become the transaction token.
+      # Unique identifier for the transaction
       sig { returns(String) }
       attr_accessor :token
 
       sig { returns(Lithic::BookTransferResponse::Category::TaggedSymbol) }
       attr_accessor :category
 
-      # Date and time when the transfer occurred. UTC time zone.
+      # ISO 8601 timestamp of when the transaction was created
       sig { returns(Time) }
       attr_accessor :created
 
       # 3-character alphabetic ISO 4217 code for the settling currency of the
-      # transaction.
+      # transaction
       sig { returns(String) }
       attr_accessor :currency
 
-      # A list of all financial events that have modified this transfer.
+      # A list of all financial events that have modified this transfer
       sig { returns(T::Array[Lithic::BookTransferResponse::Event]) }
       attr_accessor :events
+
+      # TRANSFER - Book Transfer Transaction
+      sig { returns(Symbol) }
+      attr_accessor :family
+
+      # Globally unique identifier for the financial account or card that will send the
+      # funds. Accepted type dependent on the program's use case
+      sig { returns(String) }
+      attr_accessor :from_financial_account_token
+
+      # Pending amount of the transaction in the currency's smallest unit (e.g., cents),
+      # including any acquirer fees.
+      #
+      # The value of this field will go to zero over time once the financial transaction
+      # is settled.
+      sig { returns(Integer) }
+      attr_accessor :pending_amount
+
+      sig { returns(Lithic::BookTransferResponse::Result::TaggedSymbol) }
+      attr_accessor :result
+
+      # Amount of the transaction that has been settled in the currency's smallest unit
+      # (e.g., cents)
+      sig { returns(Integer) }
+      attr_accessor :settled_amount
+
+      # The status of the transaction
+      sig { returns(Lithic::BookTransferResponse::Status::TaggedSymbol) }
+      attr_accessor :status
+
+      # Globally unique identifier for the financial account or card that will receive
+      # the funds. Accepted type dependent on the program's use case
+      sig { returns(String) }
+      attr_accessor :to_financial_account_token
+
+      # ISO 8601 timestamp of when the transaction was last updated
+      sig { returns(Time) }
+      attr_accessor :updated
 
       # External ID defined by the customer
       sig { returns(T.nilable(String)) }
@@ -44,41 +81,7 @@ module Lithic
       end
       attr_writer :external_resource
 
-      # Globally unique identifier for the financial account or card that will send the
-      # funds. Accepted type dependent on the program's use case.
-      sig { returns(String) }
-      attr_accessor :from_financial_account_token
-
-      # Pending amount of the transaction in the currency's smallest unit (e.g., cents),
-      # including any acquirer fees.
-      #
-      # The value of this field will go to zero over time once the financial transaction
-      # is settled.
-      sig { returns(Integer) }
-      attr_accessor :pending_amount
-
-      sig { returns(Lithic::BookTransferResponse::Result::TaggedSymbol) }
-      attr_accessor :result
-
-      # Amount of the transaction that has been settled in the currency's smallest unit
-      # (e.g., cents).
-      sig { returns(Integer) }
-      attr_accessor :settled_amount
-
-      # Status types:
-      #
-      # - `DECLINED` - The transfer was declined.
-      # - `REVERSED` - The transfer was reversed
-      # - `SETTLED` - The transfer is completed.
-      sig { returns(Lithic::BookTransferResponse::Status::TaggedSymbol) }
-      attr_accessor :status
-
-      # Globally unique identifier for the financial account or card that will receive
-      # the funds. Accepted type dependent on the program's use case.
-      sig { returns(String) }
-      attr_accessor :to_financial_account_token
-
-      # A series of transactions that are grouped together.
+      # A series of transactions that are grouped together
       sig do
         returns(T.nilable(Lithic::BookTransferResponse::TransactionSeries))
       end
@@ -92,10 +95,7 @@ module Lithic
       end
       attr_writer :transaction_series
 
-      # Date and time when the financial transaction was last updated. UTC time zone.
-      sig { returns(Time) }
-      attr_accessor :updated
-
+      # Book transfer transaction
       sig do
         params(
           token: String,
@@ -103,37 +103,33 @@ module Lithic
           created: Time,
           currency: String,
           events: T::Array[Lithic::BookTransferResponse::Event::OrHash],
-          external_id: T.nilable(String),
-          external_resource: T.nilable(Lithic::ExternalResource::OrHash),
           from_financial_account_token: String,
           pending_amount: Integer,
           result: Lithic::BookTransferResponse::Result::OrSymbol,
           settled_amount: Integer,
           status: Lithic::BookTransferResponse::Status::OrSymbol,
           to_financial_account_token: String,
+          updated: Time,
+          external_id: T.nilable(String),
+          external_resource: T.nilable(Lithic::ExternalResource::OrHash),
           transaction_series:
             T.nilable(Lithic::BookTransferResponse::TransactionSeries::OrHash),
-          updated: Time
+          family: Symbol
         ).returns(T.attached_class)
       end
       def self.new(
-        # Customer-provided token that will serve as an idempotency token. This token will
-        # become the transaction token.
+        # Unique identifier for the transaction
         token:,
         category:,
-        # Date and time when the transfer occurred. UTC time zone.
+        # ISO 8601 timestamp of when the transaction was created
         created:,
         # 3-character alphabetic ISO 4217 code for the settling currency of the
-        # transaction.
+        # transaction
         currency:,
-        # A list of all financial events that have modified this transfer.
+        # A list of all financial events that have modified this transfer
         events:,
-        # External ID defined by the customer
-        external_id:,
-        # External resource associated with the management operation
-        external_resource:,
         # Globally unique identifier for the financial account or card that will send the
-        # funds. Accepted type dependent on the program's use case.
+        # funds. Accepted type dependent on the program's use case
         from_financial_account_token:,
         # Pending amount of the transaction in the currency's smallest unit (e.g., cents),
         # including any acquirer fees.
@@ -143,21 +139,23 @@ module Lithic
         pending_amount:,
         result:,
         # Amount of the transaction that has been settled in the currency's smallest unit
-        # (e.g., cents).
+        # (e.g., cents)
         settled_amount:,
-        # Status types:
-        #
-        # - `DECLINED` - The transfer was declined.
-        # - `REVERSED` - The transfer was reversed
-        # - `SETTLED` - The transfer is completed.
+        # The status of the transaction
         status:,
         # Globally unique identifier for the financial account or card that will receive
-        # the funds. Accepted type dependent on the program's use case.
+        # the funds. Accepted type dependent on the program's use case
         to_financial_account_token:,
-        # A series of transactions that are grouped together.
-        transaction_series:,
-        # Date and time when the financial transaction was last updated. UTC time zone.
-        updated:
+        # ISO 8601 timestamp of when the transaction was last updated
+        updated:,
+        # External ID defined by the customer
+        external_id: nil,
+        # External resource associated with the management operation
+        external_resource: nil,
+        # A series of transactions that are grouped together
+        transaction_series: nil,
+        # TRANSFER - Book Transfer Transaction
+        family: :TRANSFER
       )
       end
 
@@ -169,17 +167,18 @@ module Lithic
             created: Time,
             currency: String,
             events: T::Array[Lithic::BookTransferResponse::Event],
-            external_id: T.nilable(String),
-            external_resource: T.nilable(Lithic::ExternalResource),
+            family: Symbol,
             from_financial_account_token: String,
             pending_amount: Integer,
             result: Lithic::BookTransferResponse::Result::TaggedSymbol,
             settled_amount: Integer,
             status: Lithic::BookTransferResponse::Status::TaggedSymbol,
             to_financial_account_token: String,
+            updated: Time,
+            external_id: T.nilable(String),
+            external_resource: T.nilable(Lithic::ExternalResource),
             transaction_series:
-              T.nilable(Lithic::BookTransferResponse::TransactionSeries),
-            updated: Time
+              T.nilable(Lithic::BookTransferResponse::TransactionSeries)
           }
         )
       end
@@ -617,11 +616,7 @@ module Lithic
         end
       end
 
-      # Status types:
-      #
-      # - `DECLINED` - The transfer was declined.
-      # - `REVERSED` - The transfer was reversed
-      # - `SETTLED` - The transfer is completed.
+      # The status of the transaction
       module Status
         extend Lithic::Internal::Type::Enum
 
@@ -629,12 +624,16 @@ module Lithic
           T.type_alias { T.all(Symbol, Lithic::BookTransferResponse::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        PENDING =
+          T.let(:PENDING, Lithic::BookTransferResponse::Status::TaggedSymbol)
+        SETTLED =
+          T.let(:SETTLED, Lithic::BookTransferResponse::Status::TaggedSymbol)
         DECLINED =
           T.let(:DECLINED, Lithic::BookTransferResponse::Status::TaggedSymbol)
         REVERSED =
           T.let(:REVERSED, Lithic::BookTransferResponse::Status::TaggedSymbol)
-        SETTLED =
-          T.let(:SETTLED, Lithic::BookTransferResponse::Status::TaggedSymbol)
+        CANCELED =
+          T.let(:CANCELED, Lithic::BookTransferResponse::Status::TaggedSymbol)
 
         sig do
           override.returns(
@@ -663,7 +662,7 @@ module Lithic
         sig { returns(String) }
         attr_accessor :type
 
-        # A series of transactions that are grouped together.
+        # A series of transactions that are grouped together
         sig do
           params(
             related_transaction_event_token: T.nilable(String),

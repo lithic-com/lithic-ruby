@@ -13,7 +13,6 @@ module Lithic
         routing_number: String,
         type: Lithic::Models::ExternalBankAccountCreateParams::type_,
         verification_method: Lithic::Models::ExternalBankAccountCreateParams::verification_method,
-        processor_token: String,
         ?account_token: String,
         ?address: Lithic::ExternalBankAccountAddress,
         ?company_id: String,

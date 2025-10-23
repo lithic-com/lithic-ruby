@@ -11,6 +11,8 @@ module Lithic
       optional :balance, -> { Lithic::Balance }
 
       # @!method initialize(balance: nil)
+      #   Payment transaction
+      #
       #   @param balance [Lithic::Models::Balance] Balance
     end
   end

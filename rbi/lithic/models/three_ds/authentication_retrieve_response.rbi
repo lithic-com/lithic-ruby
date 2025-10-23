@@ -629,6 +629,27 @@ module Lithic
           sig { returns(T.nilable(T::Boolean)) }
           attr_accessor :address_match
 
+          # Lithic's evaluation result comparing the transaction's address data with the
+          # cardholder KYC data if it exists. In the event Lithic does not have any
+          # Cardholder KYC data, or the transaction does not contain any address data,
+          # NOT_PRESENT will be returned
+          sig do
+            returns(
+              T.nilable(
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::AddressOnFileMatch::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :address_on_file_match
+
+          sig do
+            params(
+              address_on_file_match:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::AddressOnFileMatch::OrSymbol
+            ).void
+          end
+          attr_writer :address_on_file_match
+
           # Object containing data on the billing address provided during the transaction.
           sig do
             returns(
@@ -693,6 +714,8 @@ module Lithic
           sig do
             params(
               address_match: T.nilable(T::Boolean),
+              address_on_file_match:
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::AddressOnFileMatch::OrSymbol,
               billing_address:
                 Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress::OrHash,
               email: T.nilable(String),
@@ -710,6 +733,11 @@ module Lithic
             # match - is provided directly in the 3DS request and is not determined by Lithic.
             # Maps to EMV 3DS field `addrMatch`.
             address_match: nil,
+            # Lithic's evaluation result comparing the transaction's address data with the
+            # cardholder KYC data if it exists. In the event Lithic does not have any
+            # Cardholder KYC data, or the transaction does not contain any address data,
+            # NOT_PRESENT will be returned
+            address_on_file_match: nil,
             # Object containing data on the billing address provided during the transaction.
             billing_address: nil,
             # Email address that is either provided by the cardholder or is on file with the
@@ -735,6 +763,8 @@ module Lithic
             override.returns(
               {
                 address_match: T.nilable(T::Boolean),
+                address_on_file_match:
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::AddressOnFileMatch::TaggedSymbol,
                 billing_address:
                   Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
                 email: T.nilable(String),
@@ -748,6 +778,59 @@ module Lithic
             )
           end
           def to_hash
+          end
+
+          # Lithic's evaluation result comparing the transaction's address data with the
+          # cardholder KYC data if it exists. In the event Lithic does not have any
+          # Cardholder KYC data, or the transaction does not contain any address data,
+          # NOT_PRESENT will be returned
+          module AddressOnFileMatch
+            extend Lithic::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::AddressOnFileMatch
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            MATCH =
+              T.let(
+                :MATCH,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::AddressOnFileMatch::TaggedSymbol
+              )
+            MATCH_ADDRESS_ONLY =
+              T.let(
+                :MATCH_ADDRESS_ONLY,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::AddressOnFileMatch::TaggedSymbol
+              )
+            MATCH_ZIP_ONLY =
+              T.let(
+                :MATCH_ZIP_ONLY,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::AddressOnFileMatch::TaggedSymbol
+              )
+            MISMATCH =
+              T.let(
+                :MISMATCH,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::AddressOnFileMatch::TaggedSymbol
+              )
+            NOT_PRESENT =
+              T.let(
+                :NOT_PRESENT,
+                Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::AddressOnFileMatch::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::AddressOnFileMatch::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
 
           class BillingAddress < Lithic::Internal::Type::BaseModel

@@ -18,6 +18,7 @@ module Lithic
         | :PIN_ENTERED
         | :PIN_STATUS
         | :WALLET_TYPE
+        | :ADDRESS_MATCH
 
       module ConditionalAttribute
         extend Lithic::Internal::Type::Enum
@@ -38,6 +39,7 @@ module Lithic
         PIN_ENTERED: :PIN_ENTERED
         PIN_STATUS: :PIN_STATUS
         WALLET_TYPE: :WALLET_TYPE
+        ADDRESS_MATCH: :ADDRESS_MATCH
 
         def self?.values: -> ::Array[Lithic::Models::AuthRules::conditional_attribute]
       end

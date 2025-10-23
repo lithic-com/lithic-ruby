@@ -57,6 +57,9 @@ module Lithic
           #   - `RISK_SCORE`: Mastercard only: Assessment by the network of the authentication
           #     risk level, with a higher value indicating a higher amount of risk.
           #   - `MESSAGE_CATEGORY`: The category of the authentication being processed.
+          #   - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+          #     data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+          #     `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
           #
           #   @return [Symbol, Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::Attribute, nil]
           optional :attribute, enum: -> { Lithic::AuthRules::Conditional3DSActionParameters::Condition::Attribute }
@@ -105,6 +108,9 @@ module Lithic
           # - `RISK_SCORE`: Mastercard only: Assessment by the network of the authentication
           #   risk level, with a higher value indicating a higher amount of risk.
           # - `MESSAGE_CATEGORY`: The category of the authentication being processed.
+          # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+          #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+          #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
           #
           # @see Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition#attribute
           module Attribute
@@ -118,6 +124,7 @@ module Lithic
             TRANSACTION_AMOUNT = :TRANSACTION_AMOUNT
             RISK_SCORE = :RISK_SCORE
             MESSAGE_CATEGORY = :MESSAGE_CATEGORY
+            ADDRESS_MATCH = :ADDRESS_MATCH
 
             # @!method self.values
             #   @return [Array<Symbol>]

@@ -113,9 +113,6 @@ module Lithic
       sig { params(verification_enforcement: T::Boolean).void }
       attr_writer :verification_enforcement
 
-      sig { returns(String) }
-      attr_accessor :processor_token
-
       sig do
         params(
           account_number: String,
@@ -128,7 +125,6 @@ module Lithic
           type: Lithic::ExternalBankAccountCreateParams::Type::OrSymbol,
           verification_method:
             Lithic::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol,
-          processor_token: String,
           account_token: String,
           address: Lithic::ExternalBankAccountAddress::OrHash,
           company_id: String,
@@ -161,7 +157,6 @@ module Lithic
         type:,
         # Verification Method
         verification_method:,
-        processor_token:,
         # Indicates which Lithic account the external account is associated with. For
         # external accounts that are associated with the program, account_token field
         # returned will be null
@@ -204,7 +199,6 @@ module Lithic
             name: String,
             user_defined_id: String,
             verification_enforcement: T::Boolean,
-            processor_token: String,
             request_options: Lithic::RequestOptions
           }
         )

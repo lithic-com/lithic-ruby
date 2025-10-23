@@ -16,9 +16,6 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :created
 
-      sig { returns(Lithic::ExternalPayment::Family::TaggedSymbol) }
-      attr_accessor :family
-
       # The status of the transaction
       sig { returns(Lithic::ExternalPayment::Status::TaggedSymbol) }
       attr_accessor :status
@@ -48,6 +45,13 @@ module Lithic
         params(events: T::Array[Lithic::ExternalPayment::Event::OrHash]).void
       end
       attr_writer :events
+
+      # EXTERNAL_PAYMENT - External Payment Response
+      sig { returns(T.nilable(Lithic::ExternalPayment::Family::TaggedSymbol)) }
+      attr_reader :family
+
+      sig { params(family: Lithic::ExternalPayment::Family::OrSymbol).void }
+      attr_writer :family
 
       sig { returns(T.nilable(String)) }
       attr_reader :financial_account_token
@@ -95,12 +99,12 @@ module Lithic
         params(
           token: String,
           created: Time,
-          family: Lithic::ExternalPayment::Family::OrSymbol,
           status: Lithic::ExternalPayment::Status::OrSymbol,
           updated: Time,
           category: Lithic::ExternalPayment::Category::OrSymbol,
           currency: String,
           events: T::Array[Lithic::ExternalPayment::Event::OrHash],
+          family: Lithic::ExternalPayment::Family::OrSymbol,
           financial_account_token: String,
           payment_type: Lithic::ExternalPayment::PaymentType::OrSymbol,
           pending_amount: Integer,
@@ -114,7 +118,6 @@ module Lithic
         token:,
         # ISO 8601 timestamp of when the transaction was created
         created:,
-        family:,
         # The status of the transaction
         status:,
         # ISO 8601 timestamp of when the transaction was last updated
@@ -122,6 +125,8 @@ module Lithic
         category: nil,
         currency: nil,
         events: nil,
+        # EXTERNAL_PAYMENT - External Payment Response
+        family: nil,
         financial_account_token: nil,
         payment_type: nil,
         pending_amount: nil,
@@ -136,12 +141,12 @@ module Lithic
           {
             token: String,
             created: Time,
-            family: Lithic::ExternalPayment::Family::TaggedSymbol,
             status: Lithic::ExternalPayment::Status::TaggedSymbol,
             updated: Time,
             category: Lithic::ExternalPayment::Category::TaggedSymbol,
             currency: String,
             events: T::Array[Lithic::ExternalPayment::Event],
+            family: Lithic::ExternalPayment::Family::TaggedSymbol,
             financial_account_token: String,
             payment_type: Lithic::ExternalPayment::PaymentType::TaggedSymbol,
             pending_amount: Integer,
@@ -152,39 +157,6 @@ module Lithic
         )
       end
       def to_hash
-      end
-
-      module Family
-        extend Lithic::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Lithic::ExternalPayment::Family) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        CARD = T.let(:CARD, Lithic::ExternalPayment::Family::TaggedSymbol)
-        PAYMENT = T.let(:PAYMENT, Lithic::ExternalPayment::Family::TaggedSymbol)
-        TRANSFER =
-          T.let(:TRANSFER, Lithic::ExternalPayment::Family::TaggedSymbol)
-        INTERNAL =
-          T.let(:INTERNAL, Lithic::ExternalPayment::Family::TaggedSymbol)
-        EXTERNAL_PAYMENT =
-          T.let(
-            :EXTERNAL_PAYMENT,
-            Lithic::ExternalPayment::Family::TaggedSymbol
-          )
-        MANAGEMENT_OPERATION =
-          T.let(
-            :MANAGEMENT_OPERATION,
-            Lithic::ExternalPayment::Family::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[Lithic::ExternalPayment::Family::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
       end
 
       # The status of the transaction
@@ -502,6 +474,29 @@ module Lithic
           end
           def self.values
           end
+        end
+      end
+
+      # EXTERNAL_PAYMENT - External Payment Response
+      module Family
+        extend Lithic::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Lithic::ExternalPayment::Family) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXTERNAL_PAYMENT =
+          T.let(
+            :EXTERNAL_PAYMENT,
+            Lithic::ExternalPayment::Family::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[Lithic::ExternalPayment::Family::TaggedSymbol]
+          )
+        end
+        def self.values
         end
       end
 

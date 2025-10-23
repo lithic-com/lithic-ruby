@@ -428,6 +428,9 @@ module Lithic
                 #   `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
                 # - `TRANSACTION_INITIATOR`: The entity that initiated the transaction indicates
                 #   the source of the token. Valid values are `CARDHOLDER`, `MERCHANT`, `UNKNOWN`.
+                # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+                #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+                #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
                 sig do
                   returns(
                     T.nilable(
@@ -543,6 +546,9 @@ module Lithic
                   #   `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
                   # - `TRANSACTION_INITIATOR`: The entity that initiated the transaction indicates
                   #   the source of the token. Valid values are `CARDHOLDER`, `MERCHANT`, `UNKNOWN`.
+                  # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+                  #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+                  #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
                   attribute: nil,
                   # The operation to apply to the attribute
                   operation: nil,
@@ -617,6 +623,9 @@ module Lithic
                 #   `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
                 # - `TRANSACTION_INITIATOR`: The entity that initiated the transaction indicates
                 #   the source of the token. Valid values are `CARDHOLDER`, `MERCHANT`, `UNKNOWN`.
+                # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+                #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+                #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
                 module Attribute
                   extend Lithic::Internal::Type::Enum
 
@@ -717,6 +726,11 @@ module Lithic
                   TRANSACTION_INITIATOR =
                     T.let(
                       :TRANSACTION_INITIATOR,
+                      Lithic::Models::AuthRules::V2ListResponse::CurrentVersion::Parameters::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
+                    )
+                  ADDRESS_MATCH =
+                    T.let(
+                      :ADDRESS_MATCH,
                       Lithic::Models::AuthRules::V2ListResponse::CurrentVersion::Parameters::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
                     )
 
@@ -1068,6 +1082,9 @@ module Lithic
                 #   `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
                 # - `TRANSACTION_INITIATOR`: The entity that initiated the transaction indicates
                 #   the source of the token. Valid values are `CARDHOLDER`, `MERCHANT`, `UNKNOWN`.
+                # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+                #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+                #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
                 sig do
                   returns(
                     T.nilable(
@@ -1183,6 +1200,9 @@ module Lithic
                   #   `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
                   # - `TRANSACTION_INITIATOR`: The entity that initiated the transaction indicates
                   #   the source of the token. Valid values are `CARDHOLDER`, `MERCHANT`, `UNKNOWN`.
+                  # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+                  #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+                  #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
                   attribute: nil,
                   # The operation to apply to the attribute
                   operation: nil,
@@ -1257,6 +1277,9 @@ module Lithic
                 #   `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
                 # - `TRANSACTION_INITIATOR`: The entity that initiated the transaction indicates
                 #   the source of the token. Valid values are `CARDHOLDER`, `MERCHANT`, `UNKNOWN`.
+                # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+                #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+                #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
                 module Attribute
                   extend Lithic::Internal::Type::Enum
 
@@ -1357,6 +1380,11 @@ module Lithic
                   TRANSACTION_INITIATOR =
                     T.let(
                       :TRANSACTION_INITIATOR,
+                      Lithic::Models::AuthRules::V2ListResponse::DraftVersion::Parameters::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
+                    )
+                  ADDRESS_MATCH =
+                    T.let(
+                      :ADDRESS_MATCH,
                       Lithic::Models::AuthRules::V2ListResponse::DraftVersion::Parameters::ConditionalAuthorizationActionParameters::Condition::Attribute::TaggedSymbol
                     )
 
