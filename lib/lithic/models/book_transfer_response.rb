@@ -5,8 +5,7 @@ module Lithic
     # @see Lithic::Resources::BookTransfers#create
     class BookTransferResponse < Lithic::Internal::Type::BaseModel
       # @!attribute token
-      #   Customer-provided token that will serve as an idempotency token. This token will
-      #   become the transaction token.
+      #   Unique identifier for the transaction
       #
       #   @return [String]
       required :token, String
@@ -17,39 +16,33 @@ module Lithic
       required :category, enum: -> { Lithic::BookTransferResponse::Category }
 
       # @!attribute created
-      #   Date and time when the transfer occurred. UTC time zone.
+      #   ISO 8601 timestamp of when the transaction was created
       #
       #   @return [Time]
       required :created, Time
 
       # @!attribute currency
       #   3-character alphabetic ISO 4217 code for the settling currency of the
-      #   transaction.
+      #   transaction
       #
       #   @return [String]
       required :currency, String
 
       # @!attribute events
-      #   A list of all financial events that have modified this transfer.
+      #   A list of all financial events that have modified this transfer
       #
       #   @return [Array<Lithic::Models::BookTransferResponse::Event>]
       required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::BookTransferResponse::Event] }
 
-      # @!attribute external_id
-      #   External ID defined by the customer
+      # @!attribute family
+      #   TRANSFER - Book Transfer Transaction
       #
-      #   @return [String, nil]
-      required :external_id, String, nil?: true
-
-      # @!attribute external_resource
-      #   External resource associated with the management operation
-      #
-      #   @return [Lithic::Models::ExternalResource, nil]
-      required :external_resource, -> { Lithic::ExternalResource }, nil?: true
+      #   @return [Symbol, :TRANSFER]
+      required :family, const: :TRANSFER
 
       # @!attribute from_financial_account_token
       #   Globally unique identifier for the financial account or card that will send the
-      #   funds. Accepted type dependent on the program's use case.
+      #   funds. Accepted type dependent on the program's use case
       #
       #   @return [String]
       required :from_financial_account_token, String
@@ -71,57 +64,63 @@ module Lithic
 
       # @!attribute settled_amount
       #   Amount of the transaction that has been settled in the currency's smallest unit
-      #   (e.g., cents).
+      #   (e.g., cents)
       #
       #   @return [Integer]
       required :settled_amount, Integer
 
       # @!attribute status
-      #   Status types:
-      #
-      #   - `DECLINED` - The transfer was declined.
-      #   - `REVERSED` - The transfer was reversed
-      #   - `SETTLED` - The transfer is completed.
+      #   The status of the transaction
       #
       #   @return [Symbol, Lithic::Models::BookTransferResponse::Status]
       required :status, enum: -> { Lithic::BookTransferResponse::Status }
 
       # @!attribute to_financial_account_token
       #   Globally unique identifier for the financial account or card that will receive
-      #   the funds. Accepted type dependent on the program's use case.
+      #   the funds. Accepted type dependent on the program's use case
       #
       #   @return [String]
       required :to_financial_account_token, String
 
-      # @!attribute transaction_series
-      #   A series of transactions that are grouped together.
-      #
-      #   @return [Lithic::Models::BookTransferResponse::TransactionSeries, nil]
-      required :transaction_series, -> { Lithic::BookTransferResponse::TransactionSeries }, nil?: true
-
       # @!attribute updated
-      #   Date and time when the financial transaction was last updated. UTC time zone.
+      #   ISO 8601 timestamp of when the transaction was last updated
       #
       #   @return [Time]
       required :updated, Time
 
-      # @!method initialize(token:, category:, created:, currency:, events:, external_id:, external_resource:, from_financial_account_token:, pending_amount:, result:, settled_amount:, status:, to_financial_account_token:, transaction_series:, updated:)
+      # @!attribute external_id
+      #   External ID defined by the customer
+      #
+      #   @return [String, nil]
+      optional :external_id, String, nil?: true
+
+      # @!attribute external_resource
+      #   External resource associated with the management operation
+      #
+      #   @return [Lithic::Models::ExternalResource, nil]
+      optional :external_resource, -> { Lithic::ExternalResource }, nil?: true
+
+      # @!attribute transaction_series
+      #   A series of transactions that are grouped together
+      #
+      #   @return [Lithic::Models::BookTransferResponse::TransactionSeries, nil]
+      optional :transaction_series, -> { Lithic::BookTransferResponse::TransactionSeries }, nil?: true
+
+      # @!method initialize(token:, category:, created:, currency:, events:, from_financial_account_token:, pending_amount:, result:, settled_amount:, status:, to_financial_account_token:, updated:, external_id: nil, external_resource: nil, transaction_series: nil, family: :TRANSFER)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::BookTransferResponse} for more details.
       #
-      #   @param token [String] Customer-provided token that will serve as an idempotency token. This token will
+      #   Book transfer transaction
+      #
+      #   @param token [String] Unique identifier for the transaction
       #
       #   @param category [Symbol, Lithic::Models::BookTransferResponse::Category]
       #
-      #   @param created [Time] Date and time when the transfer occurred. UTC time zone.
+      #   @param created [Time] ISO 8601 timestamp of when the transaction was created
       #
       #   @param currency [String] 3-character alphabetic ISO 4217 code for the settling currency of the transactio
       #
-      #   @param events [Array<Lithic::Models::BookTransferResponse::Event>] A list of all financial events that have modified this transfer.
-      #
-      #   @param external_id [String, nil] External ID defined by the customer
-      #
-      #   @param external_resource [Lithic::Models::ExternalResource, nil] External resource associated with the management operation
+      #   @param events [Array<Lithic::Models::BookTransferResponse::Event>] A list of all financial events that have modified this transfer
       #
       #   @param from_financial_account_token [String] Globally unique identifier for the financial account or card that will send the
       #
@@ -131,13 +130,19 @@ module Lithic
       #
       #   @param settled_amount [Integer] Amount of the transaction that has been settled in the currency's smallest unit
       #
-      #   @param status [Symbol, Lithic::Models::BookTransferResponse::Status] Status types:
+      #   @param status [Symbol, Lithic::Models::BookTransferResponse::Status] The status of the transaction
       #
       #   @param to_financial_account_token [String] Globally unique identifier for the financial account or card that will receive t
       #
-      #   @param transaction_series [Lithic::Models::BookTransferResponse::TransactionSeries, nil] A series of transactions that are grouped together.
+      #   @param updated [Time] ISO 8601 timestamp of when the transaction was last updated
       #
-      #   @param updated [Time] Date and time when the financial transaction was last updated. UTC time zone.
+      #   @param external_id [String, nil] External ID defined by the customer
+      #
+      #   @param external_resource [Lithic::Models::ExternalResource, nil] External resource associated with the management operation
+      #
+      #   @param transaction_series [Lithic::Models::BookTransferResponse::TransactionSeries, nil] A series of transactions that are grouped together
+      #
+      #   @param family [Symbol, :TRANSFER] TRANSFER - Book Transfer Transaction
 
       # @see Lithic::Models::BookTransferResponse#category
       module Category
@@ -312,19 +317,17 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
-      # Status types:
-      #
-      # - `DECLINED` - The transfer was declined.
-      # - `REVERSED` - The transfer was reversed
-      # - `SETTLED` - The transfer is completed.
+      # The status of the transaction
       #
       # @see Lithic::Models::BookTransferResponse#status
       module Status
         extend Lithic::Internal::Type::Enum
 
+        PENDING = :PENDING
+        SETTLED = :SETTLED
         DECLINED = :DECLINED
         REVERSED = :REVERSED
-        SETTLED = :SETTLED
+        CANCELED = :CANCELED
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -348,7 +351,7 @@ module Lithic
         required :type, String
 
         # @!method initialize(related_transaction_event_token:, related_transaction_token:, type:)
-        #   A series of transactions that are grouped together.
+        #   A series of transactions that are grouped together
         #
         #   @param related_transaction_event_token [String, nil]
         #   @param related_transaction_token [String, nil]

@@ -4,12 +4,12 @@ module Lithic
       {
         token: String,
         created: Time,
-        family: Lithic::Models::ExternalPayment::family,
         status: Lithic::Models::ExternalPayment::status,
         updated: Time,
         category: Lithic::Models::ExternalPayment::category,
         currency: String,
         events: ::Array[Lithic::ExternalPayment::Event],
+        family: Lithic::Models::ExternalPayment::family,
         financial_account_token: String,
         payment_type: Lithic::Models::ExternalPayment::payment_type,
         pending_amount: Integer,
@@ -22,8 +22,6 @@ module Lithic
       attr_accessor token: String
 
       attr_accessor created: Time
-
-      attr_accessor family: Lithic::Models::ExternalPayment::family
 
       attr_accessor status: Lithic::Models::ExternalPayment::status
 
@@ -44,6 +42,12 @@ module Lithic
       def events=: (
         ::Array[Lithic::ExternalPayment::Event]
       ) -> ::Array[Lithic::ExternalPayment::Event]
+
+      attr_reader family: Lithic::Models::ExternalPayment::family?
+
+      def family=: (
+        Lithic::Models::ExternalPayment::family
+      ) -> Lithic::Models::ExternalPayment::family
 
       attr_reader financial_account_token: String?
 
@@ -76,12 +80,12 @@ module Lithic
       def initialize: (
         token: String,
         created: Time,
-        family: Lithic::Models::ExternalPayment::family,
         status: Lithic::Models::ExternalPayment::status,
         updated: Time,
         ?category: Lithic::Models::ExternalPayment::category,
         ?currency: String,
         ?events: ::Array[Lithic::ExternalPayment::Event],
+        ?family: Lithic::Models::ExternalPayment::family,
         ?financial_account_token: String,
         ?payment_type: Lithic::Models::ExternalPayment::payment_type,
         ?pending_amount: Integer,
@@ -93,12 +97,12 @@ module Lithic
       def to_hash: -> {
         token: String,
         created: Time,
-        family: Lithic::Models::ExternalPayment::family,
         status: Lithic::Models::ExternalPayment::status,
         updated: Time,
         category: Lithic::Models::ExternalPayment::category,
         currency: String,
         events: ::Array[Lithic::ExternalPayment::Event],
+        family: Lithic::Models::ExternalPayment::family,
         financial_account_token: String,
         payment_type: Lithic::Models::ExternalPayment::payment_type,
         pending_amount: Integer,
@@ -106,27 +110,6 @@ module Lithic
         settled_amount: Integer,
         user_defined_id: String
       }
-
-      type family =
-        :CARD
-        | :PAYMENT
-        | :TRANSFER
-        | :INTERNAL
-        | :EXTERNAL_PAYMENT
-        | :MANAGEMENT_OPERATION
-
-      module Family
-        extend Lithic::Internal::Type::Enum
-
-        CARD: :CARD
-        PAYMENT: :PAYMENT
-        TRANSFER: :TRANSFER
-        INTERNAL: :INTERNAL
-        EXTERNAL_PAYMENT: :EXTERNAL_PAYMENT
-        MANAGEMENT_OPERATION: :MANAGEMENT_OPERATION
-
-        def self?.values: -> ::Array[Lithic::Models::ExternalPayment::family]
-      end
 
       type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
 
@@ -277,6 +260,16 @@ module Lithic
 
           def self?.values: -> ::Array[Lithic::Models::ExternalPayment::Event::type_]
         end
+      end
+
+      type family = :EXTERNAL_PAYMENT
+
+      module Family
+        extend Lithic::Internal::Type::Enum
+
+        EXTERNAL_PAYMENT: :EXTERNAL_PAYMENT
+
+        def self?.values: -> ::Array[Lithic::Models::ExternalPayment::family]
       end
 
       type payment_type = :DEPOSIT | :WITHDRAWAL

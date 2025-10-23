@@ -16,11 +16,6 @@ module Lithic
       #   @return [Time]
       required :created, Time
 
-      # @!attribute family
-      #
-      #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Family]
-      required :family, enum: -> { Lithic::ManagementOperationTransaction::Family }
-
       # @!attribute status
       #   The status of the transaction
       #
@@ -59,6 +54,12 @@ module Lithic
       #   @return [Lithic::Models::ExternalResource, nil]
       optional :external_resource, -> { Lithic::ExternalResource }, nil?: true
 
+      # @!attribute family
+      #   MANAGEMENT_OPERATION - Management Operation Transaction
+      #
+      #   @return [Symbol, Lithic::Models::ManagementOperationTransaction::Family, nil]
+      optional :family, enum: -> { Lithic::ManagementOperationTransaction::Family }
+
       # @!attribute financial_account_token
       #
       #   @return [String, nil]
@@ -93,12 +94,10 @@ module Lithic
       #   @return [String, nil]
       optional :user_defined_id, String
 
-      # @!method initialize(token:, created:, family:, status:, updated:, category: nil, currency: nil, direction: nil, events: nil, external_resource: nil, financial_account_token: nil, pending_amount: nil, result: nil, settled_amount: nil, transaction_series: nil, user_defined_id: nil)
+      # @!method initialize(token:, created:, status:, updated:, category: nil, currency: nil, direction: nil, events: nil, external_resource: nil, family: nil, financial_account_token: nil, pending_amount: nil, result: nil, settled_amount: nil, transaction_series: nil, user_defined_id: nil)
       #   @param token [String] Unique identifier for the transaction
       #
       #   @param created [Time] ISO 8601 timestamp of when the transaction was created
-      #
-      #   @param family [Symbol, Lithic::Models::ManagementOperationTransaction::Family]
       #
       #   @param status [Symbol, Lithic::Models::ManagementOperationTransaction::Status] The status of the transaction
       #
@@ -114,6 +113,8 @@ module Lithic
       #
       #   @param external_resource [Lithic::Models::ExternalResource, nil] External resource associated with the management operation
       #
+      #   @param family [Symbol, Lithic::Models::ManagementOperationTransaction::Family] MANAGEMENT_OPERATION - Management Operation Transaction
+      #
       #   @param financial_account_token [String]
       #
       #   @param pending_amount [Integer]
@@ -125,21 +126,6 @@ module Lithic
       #   @param transaction_series [Lithic::Models::ManagementOperationTransaction::TransactionSeries, nil]
       #
       #   @param user_defined_id [String]
-
-      # @see Lithic::Models::ManagementOperationTransaction#family
-      module Family
-        extend Lithic::Internal::Type::Enum
-
-        CARD = :CARD
-        PAYMENT = :PAYMENT
-        TRANSFER = :TRANSFER
-        INTERNAL = :INTERNAL
-        EXTERNAL_PAYMENT = :EXTERNAL_PAYMENT
-        MANAGEMENT_OPERATION = :MANAGEMENT_OPERATION
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
 
       # The status of the transaction
       #
@@ -288,6 +274,18 @@ module Lithic
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      # MANAGEMENT_OPERATION - Management Operation Transaction
+      #
+      # @see Lithic::Models::ManagementOperationTransaction#family
+      module Family
+        extend Lithic::Internal::Type::Enum
+
+        MANAGEMENT_OPERATION = :MANAGEMENT_OPERATION
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::ManagementOperationTransaction#result

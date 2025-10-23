@@ -6,59 +6,51 @@ module Lithic
       OrHash =
         T.type_alias { T.any(Lithic::Payment, Lithic::Internal::AnyHash) }
 
-      # Globally unique identifier.
+      # Unique identifier for the transaction
       sig { returns(String) }
       attr_accessor :token
 
-      # Payment category
+      # Transaction category
       sig { returns(Lithic::Payment::Category::TaggedSymbol) }
       attr_accessor :category
 
-      # Date and time when the payment first occurred. UTC time zone.
+      # ISO 8601 timestamp of when the transaction was created
       sig { returns(Time) }
       attr_accessor :created
 
-      # 3-character alphabetic ISO 4217 code for the settling currency of the payment.
-      sig { returns(String) }
-      attr_accessor :currency
-
-      # A string that provides a description of the payment; may be useful to display to
-      # users.
+      # Transaction descriptor
       sig { returns(String) }
       attr_accessor :descriptor
 
+      # Transfer direction
       sig { returns(Lithic::Payment::Direction::TaggedSymbol) }
       attr_accessor :direction
 
-      # A list of all payment events that have modified this payment.
+      # List of transaction events
       sig { returns(T::Array[Lithic::Payment::Event]) }
       attr_accessor :events
 
-      sig { returns(T.nilable(String)) }
-      attr_accessor :external_bank_account_token
+      # PAYMENT - Payment Transaction
+      sig { returns(Symbol) }
+      attr_accessor :family
 
+      # Financial account token
       sig { returns(String) }
       attr_accessor :financial_account_token
 
+      # Transfer method
       sig { returns(Lithic::Payment::Method::TaggedSymbol) }
       attr_accessor :method_
 
-      sig { returns(Lithic::Payment::MethodAttributes) }
-      attr_reader :method_attributes
+      # Method-specific attributes
+      sig { returns(Lithic::Payment::MethodAttributes::Variants) }
+      attr_accessor :method_attributes
 
-      sig do
-        params(
-          method_attributes: Lithic::Payment::MethodAttributes::OrHash
-        ).void
-      end
-      attr_writer :method_attributes
-
-      # Pending amount of the payment in the currency's smallest unit (e.g., cents). The
-      # value of this field will go to zero over time once the payment is settled.
+      # Pending amount in cents
       sig { returns(Integer) }
       attr_accessor :pending_amount
 
-      # Account tokens related to a payment transaction
+      # Related account tokens for the transaction
       sig { returns(Lithic::Payment::RelatedAccountTokens) }
       attr_reader :related_account_tokens
 
@@ -69,63 +61,67 @@ module Lithic
       end
       attr_writer :related_account_tokens
 
-      # APPROVED payments were successful while DECLINED payments were declined by
-      # Lithic or returned.
+      # Transaction result
       sig { returns(Lithic::Payment::Result::TaggedSymbol) }
       attr_accessor :result
 
-      # Amount of the payment that has been settled in the currency's smallest unit
-      # (e.g., cents).
+      # Settled amount in cents
       sig { returns(Integer) }
       attr_accessor :settled_amount
 
+      # Transaction source
       sig { returns(Lithic::Payment::Source::TaggedSymbol) }
       attr_accessor :source
 
-      # Status types:
-      #
-      # - `DECLINED` - The payment was declined.
-      # - `PENDING` - The payment is being processed and has yet to settle or release
-      #   (origination debit).
-      # - `RETURNED` - The payment has been returned.
-      # - `SETTLED` - The payment is completed.
+      # The status of the transaction
       sig { returns(Lithic::Payment::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # Date and time when the financial transaction was last updated. UTC time zone.
+      # ISO 8601 timestamp of when the transaction was last updated
       sig { returns(Time) }
       attr_accessor :updated
 
+      # Currency of the transaction in ISO 4217 format
       sig { returns(T.nilable(String)) }
-      attr_accessor :user_defined_id
+      attr_reader :currency
 
-      # Date when the financial transaction expected to be released after settlement
+      sig { params(currency: String).void }
+      attr_writer :currency
+
+      # Expected release date for the transaction
       sig { returns(T.nilable(Date)) }
-      attr_reader :expected_release_date
+      attr_accessor :expected_release_date
 
-      sig { params(expected_release_date: Date).void }
-      attr_writer :expected_release_date
+      # External bank account token
+      sig { returns(T.nilable(String)) }
+      attr_accessor :external_bank_account_token
 
-      # Payment type indicating the specific ACH message or Fedwire transfer type
       sig { returns(T.nilable(Lithic::Payment::Type::TaggedSymbol)) }
       attr_reader :type
 
       sig { params(type: Lithic::Payment::Type::OrSymbol).void }
       attr_writer :type
 
+      # User-defined identifier
+      sig { returns(T.nilable(String)) }
+      attr_accessor :user_defined_id
+
+      # Payment transaction
       sig do
         params(
           token: String,
           category: Lithic::Payment::Category::OrSymbol,
           created: Time,
-          currency: String,
           descriptor: String,
           direction: Lithic::Payment::Direction::OrSymbol,
           events: T::Array[Lithic::Payment::Event::OrHash],
-          external_bank_account_token: T.nilable(String),
           financial_account_token: String,
           method_: Lithic::Payment::Method::OrSymbol,
-          method_attributes: Lithic::Payment::MethodAttributes::OrHash,
+          method_attributes:
+            T.any(
+              Lithic::Payment::MethodAttributes::ACHMethodAttributes::OrHash,
+              Lithic::Payment::MethodAttributes::WireMethodAttributes::OrHash
+            ),
           pending_amount: Integer,
           related_account_tokens: Lithic::Payment::RelatedAccountTokens::OrHash,
           result: Lithic::Payment::Result::OrSymbol,
@@ -133,57 +129,58 @@ module Lithic
           source: Lithic::Payment::Source::OrSymbol,
           status: Lithic::Payment::Status::OrSymbol,
           updated: Time,
+          currency: String,
+          expected_release_date: T.nilable(Date),
+          external_bank_account_token: T.nilable(String),
+          type: Lithic::Payment::Type::OrSymbol,
           user_defined_id: T.nilable(String),
-          expected_release_date: Date,
-          type: Lithic::Payment::Type::OrSymbol
+          family: Symbol
         ).returns(T.attached_class)
       end
       def self.new(
-        # Globally unique identifier.
+        # Unique identifier for the transaction
         token:,
-        # Payment category
+        # Transaction category
         category:,
-        # Date and time when the payment first occurred. UTC time zone.
+        # ISO 8601 timestamp of when the transaction was created
         created:,
-        # 3-character alphabetic ISO 4217 code for the settling currency of the payment.
-        currency:,
-        # A string that provides a description of the payment; may be useful to display to
-        # users.
+        # Transaction descriptor
         descriptor:,
+        # Transfer direction
         direction:,
-        # A list of all payment events that have modified this payment.
+        # List of transaction events
         events:,
-        external_bank_account_token:,
+        # Financial account token
         financial_account_token:,
+        # Transfer method
         method_:,
+        # Method-specific attributes
         method_attributes:,
-        # Pending amount of the payment in the currency's smallest unit (e.g., cents). The
-        # value of this field will go to zero over time once the payment is settled.
+        # Pending amount in cents
         pending_amount:,
-        # Account tokens related to a payment transaction
+        # Related account tokens for the transaction
         related_account_tokens:,
-        # APPROVED payments were successful while DECLINED payments were declined by
-        # Lithic or returned.
+        # Transaction result
         result:,
-        # Amount of the payment that has been settled in the currency's smallest unit
-        # (e.g., cents).
+        # Settled amount in cents
         settled_amount:,
+        # Transaction source
         source:,
-        # Status types:
-        #
-        # - `DECLINED` - The payment was declined.
-        # - `PENDING` - The payment is being processed and has yet to settle or release
-        #   (origination debit).
-        # - `RETURNED` - The payment has been returned.
-        # - `SETTLED` - The payment is completed.
+        # The status of the transaction
         status:,
-        # Date and time when the financial transaction was last updated. UTC time zone.
+        # ISO 8601 timestamp of when the transaction was last updated
         updated:,
-        user_defined_id:,
-        # Date when the financial transaction expected to be released after settlement
+        # Currency of the transaction in ISO 4217 format
+        currency: nil,
+        # Expected release date for the transaction
         expected_release_date: nil,
-        # Payment type indicating the specific ACH message or Fedwire transfer type
-        type: nil
+        # External bank account token
+        external_bank_account_token: nil,
+        type: nil,
+        # User-defined identifier
+        user_defined_id: nil,
+        # PAYMENT - Payment Transaction
+        family: :PAYMENT
       )
       end
 
@@ -193,14 +190,13 @@ module Lithic
             token: String,
             category: Lithic::Payment::Category::TaggedSymbol,
             created: Time,
-            currency: String,
             descriptor: String,
             direction: Lithic::Payment::Direction::TaggedSymbol,
             events: T::Array[Lithic::Payment::Event],
-            external_bank_account_token: T.nilable(String),
+            family: Symbol,
             financial_account_token: String,
             method_: Lithic::Payment::Method::TaggedSymbol,
-            method_attributes: Lithic::Payment::MethodAttributes,
+            method_attributes: Lithic::Payment::MethodAttributes::Variants,
             pending_amount: Integer,
             related_account_tokens: Lithic::Payment::RelatedAccountTokens,
             result: Lithic::Payment::Result::TaggedSymbol,
@@ -208,16 +204,18 @@ module Lithic
             source: Lithic::Payment::Source::TaggedSymbol,
             status: Lithic::Payment::Status::TaggedSymbol,
             updated: Time,
-            user_defined_id: T.nilable(String),
-            expected_release_date: Date,
-            type: Lithic::Payment::Type::TaggedSymbol
+            currency: String,
+            expected_release_date: T.nilable(Date),
+            external_bank_account_token: T.nilable(String),
+            type: Lithic::Payment::Type::TaggedSymbol,
+            user_defined_id: T.nilable(String)
           }
         )
       end
       def to_hash
       end
 
-      # Payment category
+      # Transaction category
       module Category
         extend Lithic::Internal::Type::Enum
 
@@ -225,6 +223,38 @@ module Lithic
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACH = T.let(:ACH, Lithic::Payment::Category::TaggedSymbol)
+        BALANCE_OR_FUNDING =
+          T.let(:BALANCE_OR_FUNDING, Lithic::Payment::Category::TaggedSymbol)
+        FEE = T.let(:FEE, Lithic::Payment::Category::TaggedSymbol)
+        REWARD = T.let(:REWARD, Lithic::Payment::Category::TaggedSymbol)
+        ADJUSTMENT = T.let(:ADJUSTMENT, Lithic::Payment::Category::TaggedSymbol)
+        DERECOGNITION =
+          T.let(:DERECOGNITION, Lithic::Payment::Category::TaggedSymbol)
+        DISPUTE = T.let(:DISPUTE, Lithic::Payment::Category::TaggedSymbol)
+        CARD = T.let(:CARD, Lithic::Payment::Category::TaggedSymbol)
+        EXTERNAL_ACH =
+          T.let(:EXTERNAL_ACH, Lithic::Payment::Category::TaggedSymbol)
+        EXTERNAL_CHECK =
+          T.let(:EXTERNAL_CHECK, Lithic::Payment::Category::TaggedSymbol)
+        EXTERNAL_TRANSFER =
+          T.let(:EXTERNAL_TRANSFER, Lithic::Payment::Category::TaggedSymbol)
+        EXTERNAL_WIRE =
+          T.let(:EXTERNAL_WIRE, Lithic::Payment::Category::TaggedSymbol)
+        MANAGEMENT_ADJUSTMENT =
+          T.let(:MANAGEMENT_ADJUSTMENT, Lithic::Payment::Category::TaggedSymbol)
+        MANAGEMENT_DISPUTE =
+          T.let(:MANAGEMENT_DISPUTE, Lithic::Payment::Category::TaggedSymbol)
+        MANAGEMENT_FEE =
+          T.let(:MANAGEMENT_FEE, Lithic::Payment::Category::TaggedSymbol)
+        MANAGEMENT_REWARD =
+          T.let(:MANAGEMENT_REWARD, Lithic::Payment::Category::TaggedSymbol)
+        MANAGEMENT_DISBURSEMENT =
+          T.let(
+            :MANAGEMENT_DISBURSEMENT,
+            Lithic::Payment::Category::TaggedSymbol
+          )
+        PROGRAM_FUNDING =
+          T.let(:PROGRAM_FUNDING, Lithic::Payment::Category::TaggedSymbol)
 
         sig do
           override.returns(T::Array[Lithic::Payment::Category::TaggedSymbol])
@@ -233,6 +263,7 @@ module Lithic
         end
       end
 
+      # Transfer direction
       module Direction
         extend Lithic::Internal::Type::Enum
 
@@ -545,6 +576,7 @@ module Lithic
         end
       end
 
+      # Transfer method
       module Method
         extend Lithic::Internal::Type::Enum
 
@@ -555,6 +587,7 @@ module Lithic
           T.let(:ACH_NEXT_DAY, Lithic::Payment::Method::TaggedSymbol)
         ACH_SAME_DAY =
           T.let(:ACH_SAME_DAY, Lithic::Payment::Method::TaggedSymbol)
+        WIRE = T.let(:WIRE, Lithic::Payment::Method::TaggedSymbol)
 
         sig do
           override.returns(T::Array[Lithic::Payment::Method::TaggedSymbol])
@@ -563,106 +596,294 @@ module Lithic
         end
       end
 
-      class MethodAttributes < Lithic::Internal::Type::BaseModel
-        OrHash =
+      # Method-specific attributes
+      module MethodAttributes
+        extend Lithic::Internal::Type::Union
+
+        Variants =
           T.type_alias do
-            T.any(Lithic::Payment::MethodAttributes, Lithic::Internal::AnyHash)
+            T.any(
+              Lithic::Payment::MethodAttributes::ACHMethodAttributes,
+              Lithic::Payment::MethodAttributes::WireMethodAttributes
+            )
           end
 
-        sig { returns(T.nilable(String)) }
-        attr_accessor :company_id
+        class ACHMethodAttributes < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::Payment::MethodAttributes::ACHMethodAttributes,
+                Lithic::Internal::AnyHash
+              )
+            end
 
-        sig { returns(T.nilable(String)) }
-        attr_accessor :receipt_routing_number
+          # SEC code for ACH transaction
+          sig do
+            returns(
+              Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode::TaggedSymbol
+            )
+          end
+          attr_accessor :sec_code
 
-        sig { returns(T.nilable(Integer)) }
-        attr_accessor :retries
+          # Addenda information
+          sig { returns(T.nilable(String)) }
+          attr_accessor :addenda
 
-        sig { returns(T.nilable(String)) }
-        attr_accessor :return_reason_code
+          # Company ID for the ACH transaction
+          sig { returns(T.nilable(String)) }
+          attr_accessor :company_id
 
-        sig do
-          returns(Lithic::Payment::MethodAttributes::SecCode::TaggedSymbol)
-        end
-        attr_accessor :sec_code
+          # Receipt routing number
+          sig { returns(T.nilable(String)) }
+          attr_accessor :receipt_routing_number
 
-        sig { returns(T::Array[T.nilable(String)]) }
-        attr_accessor :trace_numbers
+          # Number of retries attempted
+          sig { returns(T.nilable(Integer)) }
+          attr_accessor :retries
 
-        sig { returns(T.nilable(String)) }
-        attr_accessor :addenda
+          # Return reason code if the transaction was returned
+          sig { returns(T.nilable(String)) }
+          attr_accessor :return_reason_code
 
-        sig do
-          params(
-            company_id: T.nilable(String),
-            receipt_routing_number: T.nilable(String),
-            retries: T.nilable(Integer),
-            return_reason_code: T.nilable(String),
-            sec_code: Lithic::Payment::MethodAttributes::SecCode::OrSymbol,
-            trace_numbers: T::Array[T.nilable(String)],
-            addenda: T.nilable(String)
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          company_id:,
-          receipt_routing_number:,
-          retries:,
-          return_reason_code:,
-          sec_code:,
-          trace_numbers:,
-          addenda: nil
-        )
-        end
+          # Trace numbers for the ACH transaction
+          sig { returns(T.nilable(T::Array[String])) }
+          attr_reader :trace_numbers
 
-        sig do
-          override.returns(
-            {
+          sig { params(trace_numbers: T::Array[String]).void }
+          attr_writer :trace_numbers
+
+          sig do
+            params(
+              sec_code:
+                Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode::OrSymbol,
+              addenda: T.nilable(String),
               company_id: T.nilable(String),
               receipt_routing_number: T.nilable(String),
               retries: T.nilable(Integer),
               return_reason_code: T.nilable(String),
-              sec_code:
-                Lithic::Payment::MethodAttributes::SecCode::TaggedSymbol,
-              trace_numbers: T::Array[T.nilable(String)],
-              addenda: T.nilable(String)
-            }
+              trace_numbers: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # SEC code for ACH transaction
+            sec_code:,
+            # Addenda information
+            addenda: nil,
+            # Company ID for the ACH transaction
+            company_id: nil,
+            # Receipt routing number
+            receipt_routing_number: nil,
+            # Number of retries attempted
+            retries: nil,
+            # Return reason code if the transaction was returned
+            return_reason_code: nil,
+            # Trace numbers for the ACH transaction
+            trace_numbers: nil
           )
-        end
-        def to_hash
-        end
-
-        module SecCode
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Lithic::Payment::MethodAttributes::SecCode)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          CCD =
-            T.let(
-              :CCD,
-              Lithic::Payment::MethodAttributes::SecCode::TaggedSymbol
-            )
-          PPD =
-            T.let(
-              :PPD,
-              Lithic::Payment::MethodAttributes::SecCode::TaggedSymbol
-            )
-          WEB =
-            T.let(
-              :WEB,
-              Lithic::Payment::MethodAttributes::SecCode::TaggedSymbol
-            )
+          end
 
           sig do
             override.returns(
-              T::Array[Lithic::Payment::MethodAttributes::SecCode::TaggedSymbol]
+              {
+                sec_code:
+                  Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode::TaggedSymbol,
+                addenda: T.nilable(String),
+                company_id: T.nilable(String),
+                receipt_routing_number: T.nilable(String),
+                retries: T.nilable(Integer),
+                return_reason_code: T.nilable(String),
+                trace_numbers: T::Array[String]
+              }
             )
           end
-          def self.values
+          def to_hash
           end
+
+          # SEC code for ACH transaction
+          module SecCode
+            extend Lithic::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            CCD =
+              T.let(
+                :CCD,
+                Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode::TaggedSymbol
+              )
+            PPD =
+              T.let(
+                :PPD,
+                Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode::TaggedSymbol
+              )
+            WEB =
+              T.let(
+                :WEB,
+                Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode::TaggedSymbol
+              )
+            TEL =
+              T.let(
+                :TEL,
+                Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode::TaggedSymbol
+              )
+            CIE =
+              T.let(
+                :CIE,
+                Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode::TaggedSymbol
+              )
+            CTX =
+              T.let(
+                :CTX,
+                Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class WireMethodAttributes < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::Payment::MethodAttributes::WireMethodAttributes,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # Type of wire transfer
+          sig do
+            returns(
+              Lithic::Payment::MethodAttributes::WireMethodAttributes::WireNetwork::TaggedSymbol
+            )
+          end
+          attr_accessor :wire_network
+
+          sig { returns(T.nilable(Lithic::WirePartyDetails)) }
+          attr_reader :creditor
+
+          sig { params(creditor: Lithic::WirePartyDetails::OrHash).void }
+          attr_writer :creditor
+
+          sig { returns(T.nilable(Lithic::WirePartyDetails)) }
+          attr_reader :debtor
+
+          sig { params(debtor: Lithic::WirePartyDetails::OrHash).void }
+          attr_writer :debtor
+
+          # Point to point reference identifier, as assigned by the instructing party, used
+          # for tracking the message through the Fedwire system
+          sig { returns(T.nilable(String)) }
+          attr_accessor :message_id
+
+          # Payment details or invoice reference
+          sig { returns(T.nilable(String)) }
+          attr_accessor :remittance_information
+
+          # Type of wire message
+          sig { returns(T.nilable(String)) }
+          attr_reader :wire_message_type
+
+          sig { params(wire_message_type: String).void }
+          attr_writer :wire_message_type
+
+          sig do
+            params(
+              wire_network:
+                Lithic::Payment::MethodAttributes::WireMethodAttributes::WireNetwork::OrSymbol,
+              creditor: Lithic::WirePartyDetails::OrHash,
+              debtor: Lithic::WirePartyDetails::OrHash,
+              message_id: T.nilable(String),
+              remittance_information: T.nilable(String),
+              wire_message_type: String
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Type of wire transfer
+            wire_network:,
+            creditor: nil,
+            debtor: nil,
+            # Point to point reference identifier, as assigned by the instructing party, used
+            # for tracking the message through the Fedwire system
+            message_id: nil,
+            # Payment details or invoice reference
+            remittance_information: nil,
+            # Type of wire message
+            wire_message_type: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                wire_network:
+                  Lithic::Payment::MethodAttributes::WireMethodAttributes::WireNetwork::TaggedSymbol,
+                creditor: Lithic::WirePartyDetails,
+                debtor: Lithic::WirePartyDetails,
+                message_id: T.nilable(String),
+                remittance_information: T.nilable(String),
+                wire_message_type: String
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # Type of wire transfer
+          module WireNetwork
+            extend Lithic::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Lithic::Payment::MethodAttributes::WireMethodAttributes::WireNetwork
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            FEDWIRE =
+              T.let(
+                :FEDWIRE,
+                Lithic::Payment::MethodAttributes::WireMethodAttributes::WireNetwork::TaggedSymbol
+              )
+            SWIFT =
+              T.let(
+                :SWIFT,
+                Lithic::Payment::MethodAttributes::WireMethodAttributes::WireNetwork::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::Payment::MethodAttributes::WireMethodAttributes::WireNetwork::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        sig do
+          override.returns(
+            T::Array[Lithic::Payment::MethodAttributes::Variants]
+          )
+        end
+        def self.variants
         end
       end
 
@@ -683,7 +904,7 @@ module Lithic
         sig { returns(T.nilable(String)) }
         attr_accessor :business_account_token
 
-        # Account tokens related to a payment transaction
+        # Related account tokens for the transaction
         sig do
           params(
             account_token: T.nilable(String),
@@ -710,8 +931,7 @@ module Lithic
         end
       end
 
-      # APPROVED payments were successful while DECLINED payments were declined by
-      # Lithic or returned.
+      # Transaction result
       module Result
         extend Lithic::Internal::Type::Enum
 
@@ -728,14 +948,16 @@ module Lithic
         end
       end
 
+      # Transaction source
       module Source
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Payment::Source) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        CUSTOMER = T.let(:CUSTOMER, Lithic::Payment::Source::TaggedSymbol)
         LITHIC = T.let(:LITHIC, Lithic::Payment::Source::TaggedSymbol)
+        EXTERNAL = T.let(:EXTERNAL, Lithic::Payment::Source::TaggedSymbol)
+        CUSTOMER = T.let(:CUSTOMER, Lithic::Payment::Source::TaggedSymbol)
 
         sig do
           override.returns(T::Array[Lithic::Payment::Source::TaggedSymbol])
@@ -744,23 +966,18 @@ module Lithic
         end
       end
 
-      # Status types:
-      #
-      # - `DECLINED` - The payment was declined.
-      # - `PENDING` - The payment is being processed and has yet to settle or release
-      #   (origination debit).
-      # - `RETURNED` - The payment has been returned.
-      # - `SETTLED` - The payment is completed.
+      # The status of the transaction
       module Status
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Payment::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        DECLINED = T.let(:DECLINED, Lithic::Payment::Status::TaggedSymbol)
         PENDING = T.let(:PENDING, Lithic::Payment::Status::TaggedSymbol)
-        RETURNED = T.let(:RETURNED, Lithic::Payment::Status::TaggedSymbol)
         SETTLED = T.let(:SETTLED, Lithic::Payment::Status::TaggedSymbol)
+        DECLINED = T.let(:DECLINED, Lithic::Payment::Status::TaggedSymbol)
+        REVERSED = T.let(:REVERSED, Lithic::Payment::Status::TaggedSymbol)
+        CANCELED = T.let(:CANCELED, Lithic::Payment::Status::TaggedSymbol)
 
         sig do
           override.returns(T::Array[Lithic::Payment::Status::TaggedSymbol])
@@ -769,7 +986,6 @@ module Lithic
         end
       end
 
-      # Payment type indicating the specific ACH message or Fedwire transfer type
       module Type
         extend Lithic::Internal::Type::Enum
 

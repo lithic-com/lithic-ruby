@@ -50,6 +50,9 @@ module Lithic
       # - `WALLET_TYPE`: For transactions using a digital wallet token, indicates the
       #   source of the token. Valid values are `APPLE_PAY`, `GOOGLE_PAY`,
       #   `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
+      # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+      #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+      #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
       module ConditionalAttribute
         extend Lithic::Internal::Type::Enum
 
@@ -69,6 +72,7 @@ module Lithic
         PIN_ENTERED = :PIN_ENTERED
         PIN_STATUS = :PIN_STATUS
         WALLET_TYPE = :WALLET_TYPE
+        ADDRESS_MATCH = :ADDRESS_MATCH
 
         # @!method self.values
         #   @return [Array<Symbol>]

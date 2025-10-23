@@ -1088,6 +1088,8 @@ module Lithic
           | :TRANSACTION_PREVIOUSLY_COMPLETED
           | :UNAUTHORIZED_MERCHANT
           | :VEHICLE_NUMBER_INVALID
+          | :CARDHOLDER_CHALLENGED
+          | :CARDHOLDER_CHALLENGE_FAILED
 
         module DetailedResult
           extend Lithic::Internal::Type::Enum
@@ -1146,6 +1148,8 @@ module Lithic
           TRANSACTION_PREVIOUSLY_COMPLETED: :TRANSACTION_PREVIOUSLY_COMPLETED
           UNAUTHORIZED_MERCHANT: :UNAUTHORIZED_MERCHANT
           VEHICLE_NUMBER_INVALID: :VEHICLE_NUMBER_INVALID
+          CARDHOLDER_CHALLENGED: :CARDHOLDER_CHALLENGED
+          CARDHOLDER_CHALLENGE_FAILED: :CARDHOLDER_CHALLENGE_FAILED
 
           def self?.values: -> ::Array[Lithic::Models::Transaction::Event::detailed_result]
         end
@@ -1430,6 +1434,8 @@ module Lithic
             | :TRANSACTION_PREVIOUSLY_COMPLETED
             | :UNAUTHORIZED_MERCHANT
             | :VEHICLE_NUMBER_INVALID
+            | :CARDHOLDER_CHALLENGED
+            | :CARDHOLDER_CHALLENGE_FAILED
 
           module Result
             extend Lithic::Internal::Type::Enum
@@ -1488,6 +1494,8 @@ module Lithic
             TRANSACTION_PREVIOUSLY_COMPLETED: :TRANSACTION_PREVIOUSLY_COMPLETED
             UNAUTHORIZED_MERCHANT: :UNAUTHORIZED_MERCHANT
             VEHICLE_NUMBER_INVALID: :VEHICLE_NUMBER_INVALID
+            CARDHOLDER_CHALLENGED: :CARDHOLDER_CHALLENGED
+            CARDHOLDER_CHALLENGE_FAILED: :CARDHOLDER_CHALLENGE_FAILED
 
             def self?.values: -> ::Array[Lithic::Models::Transaction::Event::RuleResult::result]
           end

@@ -16,11 +16,6 @@ module Lithic
       #   @return [Time]
       required :created, Time
 
-      # @!attribute family
-      #
-      #   @return [Symbol, Lithic::Models::ExternalPayment::Family]
-      required :family, enum: -> { Lithic::ExternalPayment::Family }
-
       # @!attribute status
       #   The status of the transaction
       #
@@ -47,6 +42,12 @@ module Lithic
       #
       #   @return [Array<Lithic::Models::ExternalPayment::Event>, nil]
       optional :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::ExternalPayment::Event] }
+
+      # @!attribute family
+      #   EXTERNAL_PAYMENT - External Payment Response
+      #
+      #   @return [Symbol, Lithic::Models::ExternalPayment::Family, nil]
+      optional :family, enum: -> { Lithic::ExternalPayment::Family }
 
       # @!attribute financial_account_token
       #
@@ -78,12 +79,10 @@ module Lithic
       #   @return [String, nil]
       optional :user_defined_id, String
 
-      # @!method initialize(token:, created:, family:, status:, updated:, category: nil, currency: nil, events: nil, financial_account_token: nil, payment_type: nil, pending_amount: nil, result: nil, settled_amount: nil, user_defined_id: nil)
+      # @!method initialize(token:, created:, status:, updated:, category: nil, currency: nil, events: nil, family: nil, financial_account_token: nil, payment_type: nil, pending_amount: nil, result: nil, settled_amount: nil, user_defined_id: nil)
       #   @param token [String] Unique identifier for the transaction
       #
       #   @param created [Time] ISO 8601 timestamp of when the transaction was created
-      #
-      #   @param family [Symbol, Lithic::Models::ExternalPayment::Family]
       #
       #   @param status [Symbol, Lithic::Models::ExternalPayment::Status] The status of the transaction
       #
@@ -94,6 +93,8 @@ module Lithic
       #   @param currency [String]
       #
       #   @param events [Array<Lithic::Models::ExternalPayment::Event>]
+      #
+      #   @param family [Symbol, Lithic::Models::ExternalPayment::Family] EXTERNAL_PAYMENT - External Payment Response
       #
       #   @param financial_account_token [String]
       #
@@ -106,21 +107,6 @@ module Lithic
       #   @param settled_amount [Integer]
       #
       #   @param user_defined_id [String]
-
-      # @see Lithic::Models::ExternalPayment#family
-      module Family
-        extend Lithic::Internal::Type::Enum
-
-        CARD = :CARD
-        PAYMENT = :PAYMENT
-        TRANSFER = :TRANSFER
-        INTERNAL = :INTERNAL
-        EXTERNAL_PAYMENT = :EXTERNAL_PAYMENT
-        MANAGEMENT_OPERATION = :MANAGEMENT_OPERATION
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
 
       # The status of the transaction
       #
@@ -252,6 +238,18 @@ module Lithic
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      # EXTERNAL_PAYMENT - External Payment Response
+      #
+      # @see Lithic::Models::ExternalPayment#family
+      module Family
+        extend Lithic::Internal::Type::Enum
+
+        EXTERNAL_PAYMENT = :EXTERNAL_PAYMENT
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Lithic::Models::ExternalPayment#payment_type

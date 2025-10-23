@@ -95,13 +95,11 @@ module Lithic
 
       # @see Lithic::Models::FinancialAccount#credit_configuration
       class CreditConfiguration < Lithic::Internal::Type::BaseModel
-        # @!attribute charged_off_reason
-        #   Reason for the financial account being marked as Charged Off
+        # @!attribute auto_collection_configuration
         #
-        #   @return [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason, nil]
-        required :charged_off_reason,
-                 enum: -> { Lithic::FinancialAccount::CreditConfiguration::ChargedOffReason },
-                 nil?: true
+        #   @return [Lithic::Models::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration]
+        required :auto_collection_configuration,
+                 -> { Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration }
 
         # @!attribute credit_limit
         #
@@ -119,33 +117,40 @@ module Lithic
         #   @return [String, nil]
         required :external_bank_account_token, String, nil?: true
 
-        # @!attribute financial_account_state
-        #   State of the financial account
-        #
-        #   @return [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState, nil]
-        required :financial_account_state,
-                 enum: -> { Lithic::FinancialAccount::CreditConfiguration::FinancialAccountState },
-                 nil?: true
-
-        # @!attribute is_spend_blocked
-        #
-        #   @return [Boolean]
-        required :is_spend_blocked, Lithic::Internal::Type::Boolean
-
         # @!attribute tier
         #   Tier assigned to the financial account
         #
         #   @return [String, nil]
         required :tier, String, nil?: true
 
-        # @!attribute auto_collection_configuration
+        # @!attribute charged_off_reason
+        #   @deprecated
         #
-        #   @return [Lithic::Models::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration, nil]
-        optional :auto_collection_configuration,
-                 -> { Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration }
+        #   Reason for the financial account being marked as Charged Off
+        #
+        #   @return [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason, nil]
+        optional :charged_off_reason,
+                 enum: -> { Lithic::FinancialAccount::CreditConfiguration::ChargedOffReason },
+                 nil?: true
 
-        # @!method initialize(charged_off_reason:, credit_limit:, credit_product_token:, external_bank_account_token:, financial_account_state:, is_spend_blocked:, tier:, auto_collection_configuration: nil)
-        #   @param charged_off_reason [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason, nil] Reason for the financial account being marked as Charged Off
+        # @!attribute financial_account_state
+        #   @deprecated
+        #
+        #   State of the financial account
+        #
+        #   @return [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState, nil]
+        optional :financial_account_state,
+                 enum: -> { Lithic::FinancialAccount::CreditConfiguration::FinancialAccountState },
+                 nil?: true
+
+        # @!attribute is_spend_blocked
+        #   @deprecated
+        #
+        #   @return [Boolean, nil]
+        optional :is_spend_blocked, Lithic::Internal::Type::Boolean
+
+        # @!method initialize(auto_collection_configuration:, credit_limit:, credit_product_token:, external_bank_account_token:, tier:, charged_off_reason: nil, financial_account_state: nil, is_spend_blocked: nil)
+        #   @param auto_collection_configuration [Lithic::Models::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration]
         #
         #   @param credit_limit [Integer, nil]
         #
@@ -153,14 +158,28 @@ module Lithic
         #
         #   @param external_bank_account_token [String, nil]
         #
+        #   @param tier [String, nil] Tier assigned to the financial account
+        #
+        #   @param charged_off_reason [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::ChargedOffReason, nil] Reason for the financial account being marked as Charged Off
+        #
         #   @param financial_account_state [Symbol, Lithic::Models::FinancialAccount::CreditConfiguration::FinancialAccountState, nil] State of the financial account
         #
         #   @param is_spend_blocked [Boolean]
-        #
-        #   @param tier [String, nil] Tier assigned to the financial account
-        #
-        #   @param auto_collection_configuration [Lithic::Models::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration]
 
+        # @see Lithic::Models::FinancialAccount::CreditConfiguration#auto_collection_configuration
+        class AutoCollectionConfiguration < Lithic::Internal::Type::BaseModel
+          # @!attribute auto_collection_enabled
+          #   If auto collection is enabled for this account
+          #
+          #   @return [Boolean]
+          required :auto_collection_enabled, Lithic::Internal::Type::Boolean
+
+          # @!method initialize(auto_collection_enabled:)
+          #   @param auto_collection_enabled [Boolean] If auto collection is enabled for this account
+        end
+
+        # @deprecated
+        #
         # Reason for the financial account being marked as Charged Off
         #
         # @see Lithic::Models::FinancialAccount::CreditConfiguration#charged_off_reason
@@ -174,6 +193,8 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
+        # @deprecated
+        #
         # State of the financial account
         #
         # @see Lithic::Models::FinancialAccount::CreditConfiguration#financial_account_state
@@ -187,18 +208,6 @@ module Lithic
 
           # @!method self.values
           #   @return [Array<Symbol>]
-        end
-
-        # @see Lithic::Models::FinancialAccount::CreditConfiguration#auto_collection_configuration
-        class AutoCollectionConfiguration < Lithic::Internal::Type::BaseModel
-          # @!attribute auto_collection_enabled
-          #   If auto collection is enabled for this account
-          #
-          #   @return [Boolean]
-          required :auto_collection_enabled, Lithic::Internal::Type::Boolean
-
-          # @!method initialize(auto_collection_enabled:)
-          #   @param auto_collection_enabled [Boolean] If auto collection is enabled for this account
         end
       end
 

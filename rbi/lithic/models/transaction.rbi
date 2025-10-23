@@ -2679,6 +2679,16 @@ module Lithic
               :VEHICLE_NUMBER_INVALID,
               Lithic::Transaction::Event::DetailedResult::TaggedSymbol
             )
+          CARDHOLDER_CHALLENGED =
+            T.let(
+              :CARDHOLDER_CHALLENGED,
+              Lithic::Transaction::Event::DetailedResult::TaggedSymbol
+            )
+          CARDHOLDER_CHALLENGE_FAILED =
+            T.let(
+              :CARDHOLDER_CHALLENGE_FAILED,
+              Lithic::Transaction::Event::DetailedResult::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -3565,6 +3575,16 @@ module Lithic
             VEHICLE_NUMBER_INVALID =
               T.let(
                 :VEHICLE_NUMBER_INVALID,
+                Lithic::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            CARDHOLDER_CHALLENGED =
+              T.let(
+                :CARDHOLDER_CHALLENGED,
+                Lithic::Transaction::Event::RuleResult::Result::TaggedSymbol
+              )
+            CARDHOLDER_CHALLENGE_FAILED =
+              T.let(
+                :CARDHOLDER_CHALLENGE_FAILED,
                 Lithic::Transaction::Event::RuleResult::Result::TaggedSymbol
               )
 

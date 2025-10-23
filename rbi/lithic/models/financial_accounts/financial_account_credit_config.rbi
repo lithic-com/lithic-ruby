@@ -34,16 +34,6 @@ module Lithic
         end
         attr_writer :auto_collection_configuration
 
-        # Reason for the financial account being marked as Charged Off
-        sig do
-          returns(
-            T.nilable(
-              Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol
-            )
-          )
-        end
-        attr_accessor :charged_off_reason
-
         sig { returns(T.nilable(Integer)) }
         attr_accessor :credit_limit
 
@@ -54,54 +44,77 @@ module Lithic
         sig { returns(T.nilable(String)) }
         attr_accessor :external_bank_account_token
 
-        # State of the financial account
-        sig do
-          returns(
-            Lithic::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
-          )
-        end
-        attr_accessor :financial_account_state
-
-        sig { returns(T::Boolean) }
-        attr_accessor :is_spend_blocked
-
         # Tier assigned to the financial account
         sig { returns(T.nilable(String)) }
         attr_accessor :tier
+
+        # Reason for the financial account being marked as Charged Off
+        sig do
+          returns(
+            T.nilable(
+              Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol
+            )
+          )
+        end
+        attr_accessor :charged_off_reason
+
+        # State of the financial account
+        sig do
+          returns(
+            T.nilable(
+              Lithic::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :financial_account_state
+
+        sig do
+          params(
+            financial_account_state:
+              Lithic::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::OrSymbol
+          ).void
+        end
+        attr_writer :financial_account_state
+
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :is_spend_blocked
+
+        sig { params(is_spend_blocked: T::Boolean).void }
+        attr_writer :is_spend_blocked
 
         sig do
           params(
             account_token: String,
             auto_collection_configuration:
               Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration::OrHash,
+            credit_limit: T.nilable(Integer),
+            credit_product_token: T.nilable(String),
+            external_bank_account_token: T.nilable(String),
+            tier: T.nilable(String),
             charged_off_reason:
               T.nilable(
                 Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::OrSymbol
               ),
-            credit_limit: T.nilable(Integer),
-            credit_product_token: T.nilable(String),
-            external_bank_account_token: T.nilable(String),
             financial_account_state:
               Lithic::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::OrSymbol,
-            is_spend_blocked: T::Boolean,
-            tier: T.nilable(String)
+            is_spend_blocked: T::Boolean
           ).returns(T.attached_class)
         end
         def self.new(
           # Globally unique identifier for the account
           account_token:,
           auto_collection_configuration:,
-          # Reason for the financial account being marked as Charged Off
-          charged_off_reason:,
           credit_limit:,
           # Globally unique identifier for the credit product
           credit_product_token:,
           external_bank_account_token:,
-          # State of the financial account
-          financial_account_state:,
-          is_spend_blocked:,
           # Tier assigned to the financial account
-          tier:
+          tier:,
+          # Reason for the financial account being marked as Charged Off
+          charged_off_reason: nil,
+          # State of the financial account
+          financial_account_state: nil,
+          is_spend_blocked: nil
         )
         end
 
@@ -111,17 +124,17 @@ module Lithic
               account_token: String,
               auto_collection_configuration:
                 Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration,
+              credit_limit: T.nilable(Integer),
+              credit_product_token: T.nilable(String),
+              external_bank_account_token: T.nilable(String),
+              tier: T.nilable(String),
               charged_off_reason:
                 T.nilable(
                   Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason::TaggedSymbol
                 ),
-              credit_limit: T.nilable(Integer),
-              credit_product_token: T.nilable(String),
-              external_bank_account_token: T.nilable(String),
               financial_account_state:
                 Lithic::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState::TaggedSymbol,
-              is_spend_blocked: T::Boolean,
-              tier: T.nilable(String)
+              is_spend_blocked: T::Boolean
             }
           )
         end

@@ -19,11 +19,6 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :created
 
-      sig do
-        returns(Lithic::ManagementOperationTransaction::Family::TaggedSymbol)
-      end
-      attr_accessor :family
-
       # The status of the transaction
       sig do
         returns(Lithic::ManagementOperationTransaction::Status::TaggedSymbol)
@@ -98,6 +93,23 @@ module Lithic
       end
       attr_writer :external_resource
 
+      # MANAGEMENT_OPERATION - Management Operation Transaction
+      sig do
+        returns(
+          T.nilable(
+            Lithic::ManagementOperationTransaction::Family::TaggedSymbol
+          )
+        )
+      end
+      attr_reader :family
+
+      sig do
+        params(
+          family: Lithic::ManagementOperationTransaction::Family::OrSymbol
+        ).void
+      end
+      attr_writer :family
+
       sig { returns(T.nilable(String)) }
       attr_reader :financial_account_token
 
@@ -159,7 +171,6 @@ module Lithic
         params(
           token: String,
           created: Time,
-          family: Lithic::ManagementOperationTransaction::Family::OrSymbol,
           status: Lithic::ManagementOperationTransaction::Status::OrSymbol,
           updated: Time,
           category: Lithic::ManagementOperationTransaction::Category::OrSymbol,
@@ -169,6 +180,7 @@ module Lithic
           events:
             T::Array[Lithic::ManagementOperationTransaction::Event::OrHash],
           external_resource: T.nilable(Lithic::ExternalResource::OrHash),
+          family: Lithic::ManagementOperationTransaction::Family::OrSymbol,
           financial_account_token: String,
           pending_amount: Integer,
           result: Lithic::ManagementOperationTransaction::Result::OrSymbol,
@@ -185,7 +197,6 @@ module Lithic
         token:,
         # ISO 8601 timestamp of when the transaction was created
         created:,
-        family:,
         # The status of the transaction
         status:,
         # ISO 8601 timestamp of when the transaction was last updated
@@ -196,6 +207,8 @@ module Lithic
         events: nil,
         # External resource associated with the management operation
         external_resource: nil,
+        # MANAGEMENT_OPERATION - Management Operation Transaction
+        family: nil,
         financial_account_token: nil,
         pending_amount: nil,
         result: nil,
@@ -210,8 +223,6 @@ module Lithic
           {
             token: String,
             created: Time,
-            family:
-              Lithic::ManagementOperationTransaction::Family::TaggedSymbol,
             status:
               Lithic::ManagementOperationTransaction::Status::TaggedSymbol,
             updated: Time,
@@ -222,6 +233,8 @@ module Lithic
               Lithic::ManagementOperationTransaction::Direction::TaggedSymbol,
             events: T::Array[Lithic::ManagementOperationTransaction::Event],
             external_resource: T.nilable(Lithic::ExternalResource),
+            family:
+              Lithic::ManagementOperationTransaction::Family::TaggedSymbol,
             financial_account_token: String,
             pending_amount: Integer,
             result:
@@ -236,57 +249,6 @@ module Lithic
         )
       end
       def to_hash
-      end
-
-      module Family
-        extend Lithic::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Lithic::ManagementOperationTransaction::Family)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        CARD =
-          T.let(
-            :CARD,
-            Lithic::ManagementOperationTransaction::Family::TaggedSymbol
-          )
-        PAYMENT =
-          T.let(
-            :PAYMENT,
-            Lithic::ManagementOperationTransaction::Family::TaggedSymbol
-          )
-        TRANSFER =
-          T.let(
-            :TRANSFER,
-            Lithic::ManagementOperationTransaction::Family::TaggedSymbol
-          )
-        INTERNAL =
-          T.let(
-            :INTERNAL,
-            Lithic::ManagementOperationTransaction::Family::TaggedSymbol
-          )
-        EXTERNAL_PAYMENT =
-          T.let(
-            :EXTERNAL_PAYMENT,
-            Lithic::ManagementOperationTransaction::Family::TaggedSymbol
-          )
-        MANAGEMENT_OPERATION =
-          T.let(
-            :MANAGEMENT_OPERATION,
-            Lithic::ManagementOperationTransaction::Family::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Lithic::ManagementOperationTransaction::Family::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
 
       # The status of the transaction
@@ -701,6 +663,33 @@ module Lithic
           end
           def self.values
           end
+        end
+      end
+
+      # MANAGEMENT_OPERATION - Management Operation Transaction
+      module Family
+        extend Lithic::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Lithic::ManagementOperationTransaction::Family)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        MANAGEMENT_OPERATION =
+          T.let(
+            :MANAGEMENT_OPERATION,
+            Lithic::ManagementOperationTransaction::Family::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Lithic::ManagementOperationTransaction::Family::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
         end
       end
 

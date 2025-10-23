@@ -267,6 +267,8 @@ module Lithic
 
   class PaymentSimulateReturnParams = Lithic::Models::PaymentSimulateReturnParams
 
+  class ProvisionResponse = Lithic::Models::ProvisionResponse
+
   module Reports = Lithic::Models::Reports
 
   class RequiredDocument = Lithic::Models::RequiredDocument

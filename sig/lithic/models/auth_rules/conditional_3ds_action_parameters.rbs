@@ -80,6 +80,7 @@ module Lithic
             | :TRANSACTION_AMOUNT
             | :RISK_SCORE
             | :MESSAGE_CATEGORY
+            | :ADDRESS_MATCH
 
           module Attribute
             extend Lithic::Internal::Type::Enum
@@ -92,6 +93,7 @@ module Lithic
             TRANSACTION_AMOUNT: :TRANSACTION_AMOUNT
             RISK_SCORE: :RISK_SCORE
             MESSAGE_CATEGORY: :MESSAGE_CATEGORY
+            ADDRESS_MATCH: :ADDRESS_MATCH
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::attribute]
           end

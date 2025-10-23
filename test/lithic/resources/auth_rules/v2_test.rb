@@ -204,20 +204,6 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     end
   end
 
-  def test_report
-    response = @lithic.auth_rules.v2.report("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-
-    assert_pattern do
-      response => Lithic::Models::AuthRules::V2ReportResponse
-    end
-
-    assert_pattern do
-      response => {
-        report_token: String | nil
-      }
-    end
-  end
-
   def test_retrieve_features
     response = @lithic.auth_rules.v2.retrieve_features("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

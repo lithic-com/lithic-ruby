@@ -1,0 +1,36 @@
+module Lithic
+  module Models
+    type provision_response =
+      {
+        activation_data: String,
+        encrypted_data: String,
+        ephemeral_public_key: String
+      }
+
+    class ProvisionResponse < Lithic::Internal::Type::BaseModel
+      attr_reader activation_data: String?
+
+      def activation_data=: (String) -> String
+
+      attr_reader encrypted_data: String?
+
+      def encrypted_data=: (String) -> String
+
+      attr_reader ephemeral_public_key: String?
+
+      def ephemeral_public_key=: (String) -> String
+
+      def initialize: (
+        ?activation_data: String,
+        ?encrypted_data: String,
+        ?ephemeral_public_key: String
+      ) -> void
+
+      def to_hash: -> {
+        activation_data: String,
+        encrypted_data: String,
+        ephemeral_public_key: String
+      }
+    end
+  end
+end

@@ -308,6 +308,8 @@ module Lithic
 
   PaymentSimulateReturnParams = Lithic::Models::PaymentSimulateReturnParams
 
+  ProvisionResponse = Lithic::Models::ProvisionResponse
+
   Reports = Lithic::Models::Reports
 
   RequiredDocument = Lithic::Models::RequiredDocument

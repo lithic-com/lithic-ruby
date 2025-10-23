@@ -31,11 +31,10 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
         token: String,
         category: Lithic::Payment::Category,
         created: Time,
-        currency: String,
         descriptor: String,
         direction: Lithic::Payment::Direction,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Payment::Event]),
-        external_bank_account_token: String | nil,
+        family: Symbol,
         financial_account_token: String,
         method_: Lithic::Payment::Method,
         method_attributes: Lithic::Payment::MethodAttributes,
@@ -46,9 +45,11 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
         source: Lithic::Payment::Source,
         status: Lithic::Payment::Status,
         updated: Time,
-        user_defined_id: String | nil,
+        currency: String | nil,
         expected_release_date: Date | nil,
-        type: Lithic::Payment::Type | nil
+        external_bank_account_token: String | nil,
+        type: Lithic::Payment::Type | nil,
+        user_defined_id: String | nil
       }
     end
   end
@@ -72,11 +73,10 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
         token: String,
         category: Lithic::Payment::Category,
         created: Time,
-        currency: String,
         descriptor: String,
         direction: Lithic::Payment::Direction,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Payment::Event]),
-        external_bank_account_token: String | nil,
+        family: Symbol,
         financial_account_token: String,
         method_: Lithic::Payment::Method,
         method_attributes: Lithic::Payment::MethodAttributes,
@@ -87,9 +87,11 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
         source: Lithic::Payment::Source,
         status: Lithic::Payment::Status,
         updated: Time,
-        user_defined_id: String | nil,
+        currency: String | nil,
         expected_release_date: Date | nil,
-        type: Lithic::Payment::Type | nil
+        external_bank_account_token: String | nil,
+        type: Lithic::Payment::Type | nil,
+        user_defined_id: String | nil
       }
     end
   end

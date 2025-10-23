@@ -19,7 +19,6 @@ module Lithic
           type: Lithic::ExternalBankAccountCreateParams::Type::OrSymbol,
           verification_method:
             Lithic::ExternalBankAccountCreateParams::VerificationMethod::OrSymbol,
-          processor_token: String,
           account_token: String,
           address: Lithic::ExternalBankAccountAddress::OrHash,
           company_id: String,
@@ -52,7 +51,6 @@ module Lithic
         type:,
         # Verification Method
         verification_method:,
-        processor_token:,
         # Indicates which Lithic account the external account is associated with. For
         # external accounts that are associated with the program, account_token field
         # returned will be null

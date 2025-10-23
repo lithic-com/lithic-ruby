@@ -26,7 +26,6 @@ module Lithic
           ACCOUNT_HOLDER_CREATED = :"account_holder.created"
           ACCOUNT_HOLDER_UPDATED = :"account_holder.updated"
           ACCOUNT_HOLDER_VERIFICATION = :"account_holder.verification"
-          AUTH_RULES_PERFORMANCE_REPORT_CREATED = :"auth_rules.performance_report.created"
           BALANCE_UPDATED = :"balance.updated"
           BOOK_TRANSFER_TRANSACTION_CREATED = :"book_transfer_transaction.created"
           CARD_CREATED = :"card.created"

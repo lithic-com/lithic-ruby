@@ -281,6 +281,16 @@ module Lithic
           #   @return [Boolean, nil]
           optional :address_match, Lithic::Internal::Type::Boolean, nil?: true
 
+          # @!attribute address_on_file_match
+          #   Lithic's evaluation result comparing the transaction's address data with the
+          #   cardholder KYC data if it exists. In the event Lithic does not have any
+          #   Cardholder KYC data, or the transaction does not contain any address data,
+          #   NOT_PRESENT will be returned
+          #
+          #   @return [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::AddressOnFileMatch, nil]
+          optional :address_on_file_match,
+                   enum: -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::AddressOnFileMatch }
+
           # @!attribute billing_address
           #   Object containing data on the billing address provided during the transaction.
           #
@@ -329,7 +339,7 @@ module Lithic
           optional :shipping_address,
                    -> { Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress }
 
-          # @!method initialize(address_match: nil, billing_address: nil, email: nil, name: nil, phone_number_home: nil, phone_number_mobile: nil, phone_number_work: nil, shipping_address: nil)
+          # @!method initialize(address_match: nil, address_on_file_match: nil, billing_address: nil, email: nil, name: nil, phone_number_home: nil, phone_number_mobile: nil, phone_number_work: nil, shipping_address: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder} for more
           #   details.
@@ -337,6 +347,8 @@ module Lithic
           #   Object containing data about the cardholder provided during the transaction.
           #
           #   @param address_match [Boolean, nil] Indicates whether the shipping address and billing address provided by the cardh
+          #
+          #   @param address_on_file_match [Symbol, Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::AddressOnFileMatch] Lithic's evaluation result comparing the transaction's address data with the car
           #
           #   @param billing_address [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress] Object containing data on the billing address provided during the transaction.
           #
@@ -351,6 +363,25 @@ module Lithic
           #   @param phone_number_work [String, nil] Work phone number provided by the cardholder. Maps to EMV 3DS fields `workPhone.
           #
           #   @param shipping_address [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress] Object containing data on the shipping address provided during the transaction.
+
+          # Lithic's evaluation result comparing the transaction's address data with the
+          # cardholder KYC data if it exists. In the event Lithic does not have any
+          # Cardholder KYC data, or the transaction does not contain any address data,
+          # NOT_PRESENT will be returned
+          #
+          # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder#address_on_file_match
+          module AddressOnFileMatch
+            extend Lithic::Internal::Type::Enum
+
+            MATCH = :MATCH
+            MATCH_ADDRESS_ONLY = :MATCH_ADDRESS_ONLY
+            MATCH_ZIP_ONLY = :MATCH_ZIP_ONLY
+            MISMATCH = :MISMATCH
+            NOT_PRESENT = :NOT_PRESENT
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
 
           # @see Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder#billing_address
           class BillingAddress < Lithic::Internal::Type::BaseModel
