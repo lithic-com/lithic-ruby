@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.53 (2025-10-23)
+
+Full Changelog: [v0.1.0-alpha.52...v0.1.0-alpha.53](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.52...v0.1.0-alpha.53)
+
+### Features
+
+* **api:** updates to Auth Rules and Card provisioning ([fe22047](https://github.com/lithic-com/lithic-ruby/commit/fe22047b0689b63872eb7454cb4fc733aabe81cc))
+* handle thread interrupts in the core HTTP client ([1f9867e](https://github.com/lithic-com/lithic-ruby/commit/1f9867e2708d86c52e212e11a55d04ef03410b5d))
+
 ## 0.1.0-alpha.52 (2025-10-15)
 
 Full Changelog: [v0.1.0-alpha.51...v0.1.0-alpha.52](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.51...v0.1.0-alpha.52)
