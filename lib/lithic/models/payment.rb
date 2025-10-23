@@ -5,192 +5,214 @@ module Lithic
     # @see Lithic::Resources::Payments#retrieve
     class Payment < Lithic::Internal::Type::BaseModel
       # @!attribute token
-      #   Globally unique identifier.
+      #   Unique identifier for the transaction
       #
       #   @return [String]
       required :token, String
 
       # @!attribute category
-      #   Payment category
+      #   Transaction category
       #
       #   @return [Symbol, Lithic::Models::Payment::Category]
       required :category, enum: -> { Lithic::Payment::Category }
 
       # @!attribute created
-      #   Date and time when the payment first occurred. UTC time zone.
+      #   ISO 8601 timestamp of when the transaction was created
       #
       #   @return [Time]
       required :created, Time
 
-      # @!attribute currency
-      #   3-character alphabetic ISO 4217 code for the settling currency of the payment.
-      #
-      #   @return [String]
-      required :currency, String
-
       # @!attribute descriptor
-      #   A string that provides a description of the payment; may be useful to display to
-      #   users.
+      #   Transaction descriptor
       #
       #   @return [String]
       required :descriptor, String
 
       # @!attribute direction
+      #   Transfer direction
       #
       #   @return [Symbol, Lithic::Models::Payment::Direction]
       required :direction, enum: -> { Lithic::Payment::Direction }
 
       # @!attribute events
-      #   A list of all payment events that have modified this payment.
+      #   List of transaction events
       #
       #   @return [Array<Lithic::Models::Payment::Event>]
       required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::Payment::Event] }
 
-      # @!attribute external_bank_account_token
+      # @!attribute family
+      #   PAYMENT - Payment Transaction
       #
-      #   @return [String, nil]
-      required :external_bank_account_token, String, nil?: true
+      #   @return [Symbol, :PAYMENT]
+      required :family, const: :PAYMENT
 
       # @!attribute financial_account_token
+      #   Financial account token
       #
       #   @return [String]
       required :financial_account_token, String
 
       # @!attribute method_
+      #   Transfer method
       #
       #   @return [Symbol, Lithic::Models::Payment::Method]
       required :method_, enum: -> { Lithic::Payment::Method }, api_name: :method
 
       # @!attribute method_attributes
+      #   Method-specific attributes
       #
-      #   @return [Lithic::Models::Payment::MethodAttributes]
-      required :method_attributes, -> { Lithic::Payment::MethodAttributes }
+      #   @return [Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes]
+      required :method_attributes, union: -> { Lithic::Payment::MethodAttributes }
 
       # @!attribute pending_amount
-      #   Pending amount of the payment in the currency's smallest unit (e.g., cents). The
-      #   value of this field will go to zero over time once the payment is settled.
+      #   Pending amount in cents
       #
       #   @return [Integer]
       required :pending_amount, Integer
 
       # @!attribute related_account_tokens
-      #   Account tokens related to a payment transaction
+      #   Related account tokens for the transaction
       #
       #   @return [Lithic::Models::Payment::RelatedAccountTokens]
       required :related_account_tokens, -> { Lithic::Payment::RelatedAccountTokens }
 
       # @!attribute result
-      #   APPROVED payments were successful while DECLINED payments were declined by
-      #   Lithic or returned.
+      #   Transaction result
       #
       #   @return [Symbol, Lithic::Models::Payment::Result]
       required :result, enum: -> { Lithic::Payment::Result }
 
       # @!attribute settled_amount
-      #   Amount of the payment that has been settled in the currency's smallest unit
-      #   (e.g., cents).
+      #   Settled amount in cents
       #
       #   @return [Integer]
       required :settled_amount, Integer
 
       # @!attribute source
+      #   Transaction source
       #
       #   @return [Symbol, Lithic::Models::Payment::Source]
       required :source, enum: -> { Lithic::Payment::Source }
 
       # @!attribute status
-      #   Status types:
-      #
-      #   - `DECLINED` - The payment was declined.
-      #   - `PENDING` - The payment is being processed and has yet to settle or release
-      #     (origination debit).
-      #   - `RETURNED` - The payment has been returned.
-      #   - `SETTLED` - The payment is completed.
+      #   The status of the transaction
       #
       #   @return [Symbol, Lithic::Models::Payment::Status]
       required :status, enum: -> { Lithic::Payment::Status }
 
       # @!attribute updated
-      #   Date and time when the financial transaction was last updated. UTC time zone.
+      #   ISO 8601 timestamp of when the transaction was last updated
       #
       #   @return [Time]
       required :updated, Time
 
-      # @!attribute user_defined_id
+      # @!attribute currency
+      #   Currency of the transaction in ISO 4217 format
       #
       #   @return [String, nil]
-      required :user_defined_id, String, nil?: true
+      optional :currency, String
 
       # @!attribute expected_release_date
-      #   Date when the financial transaction expected to be released after settlement
+      #   Expected release date for the transaction
       #
       #   @return [Date, nil]
-      optional :expected_release_date, Date
+      optional :expected_release_date, Date, nil?: true
+
+      # @!attribute external_bank_account_token
+      #   External bank account token
+      #
+      #   @return [String, nil]
+      optional :external_bank_account_token, String, nil?: true
 
       # @!attribute type
-      #   Payment type indicating the specific ACH message or Fedwire transfer type
       #
       #   @return [Symbol, Lithic::Models::Payment::Type, nil]
       optional :type, enum: -> { Lithic::Payment::Type }
 
-      # @!method initialize(token:, category:, created:, currency:, descriptor:, direction:, events:, external_bank_account_token:, financial_account_token:, method_:, method_attributes:, pending_amount:, related_account_tokens:, result:, settled_amount:, source:, status:, updated:, user_defined_id:, expected_release_date: nil, type: nil)
-      #   Some parameter documentations has been truncated, see {Lithic::Models::Payment}
-      #   for more details.
+      # @!attribute user_defined_id
+      #   User-defined identifier
       #
-      #   @param token [String] Globally unique identifier.
-      #
-      #   @param category [Symbol, Lithic::Models::Payment::Category] Payment category
-      #
-      #   @param created [Time] Date and time when the payment first occurred. UTC time zone.
-      #
-      #   @param currency [String] 3-character alphabetic ISO 4217 code for the settling currency of the payment.
-      #
-      #   @param descriptor [String] A string that provides a description of the payment; may be useful to display to
-      #
-      #   @param direction [Symbol, Lithic::Models::Payment::Direction]
-      #
-      #   @param events [Array<Lithic::Models::Payment::Event>] A list of all payment events that have modified this payment.
-      #
-      #   @param external_bank_account_token [String, nil]
-      #
-      #   @param financial_account_token [String]
-      #
-      #   @param method_ [Symbol, Lithic::Models::Payment::Method]
-      #
-      #   @param method_attributes [Lithic::Models::Payment::MethodAttributes]
-      #
-      #   @param pending_amount [Integer] Pending amount of the payment in the currency's smallest unit (e.g., cents).
-      #
-      #   @param related_account_tokens [Lithic::Models::Payment::RelatedAccountTokens] Account tokens related to a payment transaction
-      #
-      #   @param result [Symbol, Lithic::Models::Payment::Result] APPROVED payments were successful while DECLINED payments were declined by Lithi
-      #
-      #   @param settled_amount [Integer] Amount of the payment that has been settled in the currency's smallest unit (e.g
-      #
-      #   @param source [Symbol, Lithic::Models::Payment::Source]
-      #
-      #   @param status [Symbol, Lithic::Models::Payment::Status] Status types:
-      #
-      #   @param updated [Time] Date and time when the financial transaction was last updated. UTC time zone.
-      #
-      #   @param user_defined_id [String, nil]
-      #
-      #   @param expected_release_date [Date] Date when the financial transaction expected to be released after settlement
-      #
-      #   @param type [Symbol, Lithic::Models::Payment::Type] Payment type indicating the specific ACH message or Fedwire transfer type
+      #   @return [String, nil]
+      optional :user_defined_id, String, nil?: true
 
-      # Payment category
+      # @!method initialize(token:, category:, created:, descriptor:, direction:, events:, financial_account_token:, method_:, method_attributes:, pending_amount:, related_account_tokens:, result:, settled_amount:, source:, status:, updated:, currency: nil, expected_release_date: nil, external_bank_account_token: nil, type: nil, user_defined_id: nil, family: :PAYMENT)
+      #   Payment transaction
+      #
+      #   @param token [String] Unique identifier for the transaction
+      #
+      #   @param category [Symbol, Lithic::Models::Payment::Category] Transaction category
+      #
+      #   @param created [Time] ISO 8601 timestamp of when the transaction was created
+      #
+      #   @param descriptor [String] Transaction descriptor
+      #
+      #   @param direction [Symbol, Lithic::Models::Payment::Direction] Transfer direction
+      #
+      #   @param events [Array<Lithic::Models::Payment::Event>] List of transaction events
+      #
+      #   @param financial_account_token [String] Financial account token
+      #
+      #   @param method_ [Symbol, Lithic::Models::Payment::Method] Transfer method
+      #
+      #   @param method_attributes [Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes] Method-specific attributes
+      #
+      #   @param pending_amount [Integer] Pending amount in cents
+      #
+      #   @param related_account_tokens [Lithic::Models::Payment::RelatedAccountTokens] Related account tokens for the transaction
+      #
+      #   @param result [Symbol, Lithic::Models::Payment::Result] Transaction result
+      #
+      #   @param settled_amount [Integer] Settled amount in cents
+      #
+      #   @param source [Symbol, Lithic::Models::Payment::Source] Transaction source
+      #
+      #   @param status [Symbol, Lithic::Models::Payment::Status] The status of the transaction
+      #
+      #   @param updated [Time] ISO 8601 timestamp of when the transaction was last updated
+      #
+      #   @param currency [String] Currency of the transaction in ISO 4217 format
+      #
+      #   @param expected_release_date [Date, nil] Expected release date for the transaction
+      #
+      #   @param external_bank_account_token [String, nil] External bank account token
+      #
+      #   @param type [Symbol, Lithic::Models::Payment::Type]
+      #
+      #   @param user_defined_id [String, nil] User-defined identifier
+      #
+      #   @param family [Symbol, :PAYMENT] PAYMENT - Payment Transaction
+
+      # Transaction category
       #
       # @see Lithic::Models::Payment#category
       module Category
         extend Lithic::Internal::Type::Enum
 
         ACH = :ACH
+        BALANCE_OR_FUNDING = :BALANCE_OR_FUNDING
+        FEE = :FEE
+        REWARD = :REWARD
+        ADJUSTMENT = :ADJUSTMENT
+        DERECOGNITION = :DERECOGNITION
+        DISPUTE = :DISPUTE
+        CARD = :CARD
+        EXTERNAL_ACH = :EXTERNAL_ACH
+        EXTERNAL_CHECK = :EXTERNAL_CHECK
+        EXTERNAL_TRANSFER = :EXTERNAL_TRANSFER
+        EXTERNAL_WIRE = :EXTERNAL_WIRE
+        MANAGEMENT_ADJUSTMENT = :MANAGEMENT_ADJUSTMENT
+        MANAGEMENT_DISPUTE = :MANAGEMENT_DISPUTE
+        MANAGEMENT_FEE = :MANAGEMENT_FEE
+        MANAGEMENT_REWARD = :MANAGEMENT_REWARD
+        MANAGEMENT_DISBURSEMENT = :MANAGEMENT_DISBURSEMENT
+        PROGRAM_FUNDING = :PROGRAM_FUNDING
 
         # @!method self.values
         #   @return [Array<Symbol>]
       end
 
+      # Transfer direction
+      #
       # @see Lithic::Models::Payment#direction
       module Direction
         extend Lithic::Internal::Type::Enum
@@ -349,74 +371,175 @@ module Lithic
         end
       end
 
+      # Transfer method
+      #
       # @see Lithic::Models::Payment#method_
       module Method
         extend Lithic::Internal::Type::Enum
 
         ACH_NEXT_DAY = :ACH_NEXT_DAY
         ACH_SAME_DAY = :ACH_SAME_DAY
+        WIRE = :WIRE
 
         # @!method self.values
         #   @return [Array<Symbol>]
       end
 
+      # Method-specific attributes
+      #
       # @see Lithic::Models::Payment#method_attributes
-      class MethodAttributes < Lithic::Internal::Type::BaseModel
-        # @!attribute company_id
-        #
-        #   @return [String, nil]
-        required :company_id, String, nil?: true
+      module MethodAttributes
+        extend Lithic::Internal::Type::Union
 
-        # @!attribute receipt_routing_number
-        #
-        #   @return [String, nil]
-        required :receipt_routing_number, String, nil?: true
+        variant -> { Lithic::Payment::MethodAttributes::ACHMethodAttributes }
 
-        # @!attribute retries
-        #
-        #   @return [Integer, nil]
-        required :retries, Integer, nil?: true
+        variant -> { Lithic::Payment::MethodAttributes::WireMethodAttributes }
 
-        # @!attribute return_reason_code
-        #
-        #   @return [String, nil]
-        required :return_reason_code, String, nil?: true
+        class ACHMethodAttributes < Lithic::Internal::Type::BaseModel
+          # @!attribute sec_code
+          #   SEC code for ACH transaction
+          #
+          #   @return [Symbol, Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes::SecCode]
+          required :sec_code, enum: -> { Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode }
 
-        # @!attribute sec_code
-        #
-        #   @return [Symbol, Lithic::Models::Payment::MethodAttributes::SecCode]
-        required :sec_code, enum: -> { Lithic::Payment::MethodAttributes::SecCode }
+          # @!attribute addenda
+          #   Addenda information
+          #
+          #   @return [String, nil]
+          optional :addenda, String, nil?: true
 
-        # @!attribute trace_numbers
-        #
-        #   @return [Array<String, nil>]
-        required :trace_numbers, Lithic::Internal::Type::ArrayOf[String, nil?: true]
+          # @!attribute company_id
+          #   Company ID for the ACH transaction
+          #
+          #   @return [String, nil]
+          optional :company_id, String, nil?: true
 
-        # @!attribute addenda
-        #
-        #   @return [String, nil]
-        optional :addenda, String, nil?: true
+          # @!attribute receipt_routing_number
+          #   Receipt routing number
+          #
+          #   @return [String, nil]
+          optional :receipt_routing_number, String, nil?: true
 
-        # @!method initialize(company_id:, receipt_routing_number:, retries:, return_reason_code:, sec_code:, trace_numbers:, addenda: nil)
-        #   @param company_id [String, nil]
-        #   @param receipt_routing_number [String, nil]
-        #   @param retries [Integer, nil]
-        #   @param return_reason_code [String, nil]
-        #   @param sec_code [Symbol, Lithic::Models::Payment::MethodAttributes::SecCode]
-        #   @param trace_numbers [Array<String, nil>]
-        #   @param addenda [String, nil]
+          # @!attribute retries
+          #   Number of retries attempted
+          #
+          #   @return [Integer, nil]
+          optional :retries, Integer, nil?: true
 
-        # @see Lithic::Models::Payment::MethodAttributes#sec_code
-        module SecCode
-          extend Lithic::Internal::Type::Enum
+          # @!attribute return_reason_code
+          #   Return reason code if the transaction was returned
+          #
+          #   @return [String, nil]
+          optional :return_reason_code, String, nil?: true
 
-          CCD = :CCD
-          PPD = :PPD
-          WEB = :WEB
+          # @!attribute trace_numbers
+          #   Trace numbers for the ACH transaction
+          #
+          #   @return [Array<String>, nil]
+          optional :trace_numbers, Lithic::Internal::Type::ArrayOf[String]
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          # @!method initialize(sec_code:, addenda: nil, company_id: nil, receipt_routing_number: nil, retries: nil, return_reason_code: nil, trace_numbers: nil)
+          #   @param sec_code [Symbol, Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes::SecCode] SEC code for ACH transaction
+          #
+          #   @param addenda [String, nil] Addenda information
+          #
+          #   @param company_id [String, nil] Company ID for the ACH transaction
+          #
+          #   @param receipt_routing_number [String, nil] Receipt routing number
+          #
+          #   @param retries [Integer, nil] Number of retries attempted
+          #
+          #   @param return_reason_code [String, nil] Return reason code if the transaction was returned
+          #
+          #   @param trace_numbers [Array<String>] Trace numbers for the ACH transaction
+
+          # SEC code for ACH transaction
+          #
+          # @see Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes#sec_code
+          module SecCode
+            extend Lithic::Internal::Type::Enum
+
+            CCD = :CCD
+            PPD = :PPD
+            WEB = :WEB
+            TEL = :TEL
+            CIE = :CIE
+            CTX = :CTX
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
+
+        class WireMethodAttributes < Lithic::Internal::Type::BaseModel
+          # @!attribute wire_network
+          #   Type of wire transfer
+          #
+          #   @return [Symbol, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::WireNetwork]
+          required :wire_network, enum: -> { Lithic::Payment::MethodAttributes::WireMethodAttributes::WireNetwork }
+
+          # @!attribute creditor
+          #
+          #   @return [Lithic::Models::WirePartyDetails, nil]
+          optional :creditor, -> { Lithic::WirePartyDetails }
+
+          # @!attribute debtor
+          #
+          #   @return [Lithic::Models::WirePartyDetails, nil]
+          optional :debtor, -> { Lithic::WirePartyDetails }
+
+          # @!attribute message_id
+          #   Point to point reference identifier, as assigned by the instructing party, used
+          #   for tracking the message through the Fedwire system
+          #
+          #   @return [String, nil]
+          optional :message_id, String, nil?: true
+
+          # @!attribute remittance_information
+          #   Payment details or invoice reference
+          #
+          #   @return [String, nil]
+          optional :remittance_information, String, nil?: true
+
+          # @!attribute wire_message_type
+          #   Type of wire message
+          #
+          #   @return [String, nil]
+          optional :wire_message_type, String
+
+          # @!method initialize(wire_network:, creditor: nil, debtor: nil, message_id: nil, remittance_information: nil, wire_message_type: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::Payment::MethodAttributes::WireMethodAttributes} for more
+          #   details.
+          #
+          #   @param wire_network [Symbol, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::WireNetwork] Type of wire transfer
+          #
+          #   @param creditor [Lithic::Models::WirePartyDetails]
+          #
+          #   @param debtor [Lithic::Models::WirePartyDetails]
+          #
+          #   @param message_id [String, nil] Point to point reference identifier, as assigned by the instructing party, used
+          #
+          #   @param remittance_information [String, nil] Payment details or invoice reference
+          #
+          #   @param wire_message_type [String] Type of wire message
+
+          # Type of wire transfer
+          #
+          # @see Lithic::Models::Payment::MethodAttributes::WireMethodAttributes#wire_network
+          module WireNetwork
+            extend Lithic::Internal::Type::Enum
+
+            FEDWIRE = :FEDWIRE
+            SWIFT = :SWIFT
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        # @!method self.variants
+        #   @return [Array(Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes)]
       end
 
       # @see Lithic::Models::Payment#related_account_tokens
@@ -434,15 +557,14 @@ module Lithic
         required :business_account_token, String, nil?: true
 
         # @!method initialize(account_token:, business_account_token:)
-        #   Account tokens related to a payment transaction
+        #   Related account tokens for the transaction
         #
         #   @param account_token [String, nil] Globally unique identifier for the account
         #
         #   @param business_account_token [String, nil] Globally unique identifier for the business account
       end
 
-      # APPROVED payments were successful while DECLINED payments were declined by
-      # Lithic or returned.
+      # Transaction result
       #
       # @see Lithic::Models::Payment#result
       module Result
@@ -455,40 +577,36 @@ module Lithic
         #   @return [Array<Symbol>]
       end
 
+      # Transaction source
+      #
       # @see Lithic::Models::Payment#source
       module Source
         extend Lithic::Internal::Type::Enum
 
-        CUSTOMER = :CUSTOMER
         LITHIC = :LITHIC
+        EXTERNAL = :EXTERNAL
+        CUSTOMER = :CUSTOMER
 
         # @!method self.values
         #   @return [Array<Symbol>]
       end
 
-      # Status types:
-      #
-      # - `DECLINED` - The payment was declined.
-      # - `PENDING` - The payment is being processed and has yet to settle or release
-      #   (origination debit).
-      # - `RETURNED` - The payment has been returned.
-      # - `SETTLED` - The payment is completed.
+      # The status of the transaction
       #
       # @see Lithic::Models::Payment#status
       module Status
         extend Lithic::Internal::Type::Enum
 
-        DECLINED = :DECLINED
         PENDING = :PENDING
-        RETURNED = :RETURNED
         SETTLED = :SETTLED
+        DECLINED = :DECLINED
+        REVERSED = :REVERSED
+        CANCELED = :CANCELED
 
         # @!method self.values
         #   @return [Array<Symbol>]
       end
 
-      # Payment type indicating the specific ACH message or Fedwire transfer type
-      #
       # @see Lithic::Models::Payment#type
       module Type
         extend Lithic::Internal::Type::Enum

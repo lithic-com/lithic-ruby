@@ -5,14 +5,13 @@ module Lithic
         token: String,
         category: Lithic::Models::Payment::category,
         created: Time,
-        currency: String,
         descriptor: String,
         direction: Lithic::Models::Payment::direction,
         events: ::Array[Lithic::Payment::Event],
-        external_bank_account_token: String?,
+        family: :PAYMENT,
         financial_account_token: String,
         method_: Lithic::Models::Payment::method_,
-        method_attributes: Lithic::Payment::MethodAttributes,
+        method_attributes: Lithic::Models::Payment::method_attributes,
         pending_amount: Integer,
         related_account_tokens: Lithic::Payment::RelatedAccountTokens,
         result: Lithic::Models::Payment::result,
@@ -20,9 +19,11 @@ module Lithic
         source: Lithic::Models::Payment::source,
         status: Lithic::Models::Payment::status,
         updated: Time,
-        user_defined_id: String?,
-        expected_release_date: Date,
-        type: Lithic::Models::Payment::type_
+        currency: String,
+        expected_release_date: Date?,
+        external_bank_account_token: String?,
+        type: Lithic::Models::Payment::type_,
+        user_defined_id: String?
       }
 
     class Payment < Lithic::Internal::Type::BaseModel
@@ -32,21 +33,19 @@ module Lithic
 
       attr_accessor created: Time
 
-      attr_accessor currency: String
-
       attr_accessor descriptor: String
 
       attr_accessor direction: Lithic::Models::Payment::direction
 
       attr_accessor events: ::Array[Lithic::Payment::Event]
 
-      attr_accessor external_bank_account_token: String?
+      attr_accessor family: :PAYMENT
 
       attr_accessor financial_account_token: String
 
       attr_accessor method_: Lithic::Models::Payment::method_
 
-      attr_accessor method_attributes: Lithic::Payment::MethodAttributes
+      attr_accessor method_attributes: Lithic::Models::Payment::method_attributes
 
       attr_accessor pending_amount: Integer
 
@@ -62,11 +61,13 @@ module Lithic
 
       attr_accessor updated: Time
 
-      attr_accessor user_defined_id: String?
+      attr_reader currency: String?
 
-      attr_reader expected_release_date: Date?
+      def currency=: (String) -> String
 
-      def expected_release_date=: (Date) -> Date
+      attr_accessor expected_release_date: Date?
+
+      attr_accessor external_bank_account_token: String?
 
       attr_reader type: Lithic::Models::Payment::type_?
 
@@ -74,18 +75,18 @@ module Lithic
         Lithic::Models::Payment::type_
       ) -> Lithic::Models::Payment::type_
 
+      attr_accessor user_defined_id: String?
+
       def initialize: (
         token: String,
         category: Lithic::Models::Payment::category,
         created: Time,
-        currency: String,
         descriptor: String,
         direction: Lithic::Models::Payment::direction,
         events: ::Array[Lithic::Payment::Event],
-        external_bank_account_token: String?,
         financial_account_token: String,
         method_: Lithic::Models::Payment::method_,
-        method_attributes: Lithic::Payment::MethodAttributes,
+        method_attributes: Lithic::Models::Payment::method_attributes,
         pending_amount: Integer,
         related_account_tokens: Lithic::Payment::RelatedAccountTokens,
         result: Lithic::Models::Payment::result,
@@ -93,23 +94,25 @@ module Lithic
         source: Lithic::Models::Payment::source,
         status: Lithic::Models::Payment::status,
         updated: Time,
-        user_defined_id: String?,
-        ?expected_release_date: Date,
-        ?type: Lithic::Models::Payment::type_
+        ?currency: String,
+        ?expected_release_date: Date?,
+        ?external_bank_account_token: String?,
+        ?type: Lithic::Models::Payment::type_,
+        ?user_defined_id: String?,
+        ?family: :PAYMENT
       ) -> void
 
       def to_hash: -> {
         token: String,
         category: Lithic::Models::Payment::category,
         created: Time,
-        currency: String,
         descriptor: String,
         direction: Lithic::Models::Payment::direction,
         events: ::Array[Lithic::Payment::Event],
-        external_bank_account_token: String?,
+        family: :PAYMENT,
         financial_account_token: String,
         method_: Lithic::Models::Payment::method_,
-        method_attributes: Lithic::Payment::MethodAttributes,
+        method_attributes: Lithic::Models::Payment::method_attributes,
         pending_amount: Integer,
         related_account_tokens: Lithic::Payment::RelatedAccountTokens,
         result: Lithic::Models::Payment::result,
@@ -117,17 +120,54 @@ module Lithic
         source: Lithic::Models::Payment::source,
         status: Lithic::Models::Payment::status,
         updated: Time,
-        user_defined_id: String?,
-        expected_release_date: Date,
-        type: Lithic::Models::Payment::type_
+        currency: String,
+        expected_release_date: Date?,
+        external_bank_account_token: String?,
+        type: Lithic::Models::Payment::type_,
+        user_defined_id: String?
       }
 
-      type category = :ACH
+      type category =
+        :ACH
+        | :BALANCE_OR_FUNDING
+        | :FEE
+        | :REWARD
+        | :ADJUSTMENT
+        | :DERECOGNITION
+        | :DISPUTE
+        | :CARD
+        | :EXTERNAL_ACH
+        | :EXTERNAL_CHECK
+        | :EXTERNAL_TRANSFER
+        | :EXTERNAL_WIRE
+        | :MANAGEMENT_ADJUSTMENT
+        | :MANAGEMENT_DISPUTE
+        | :MANAGEMENT_FEE
+        | :MANAGEMENT_REWARD
+        | :MANAGEMENT_DISBURSEMENT
+        | :PROGRAM_FUNDING
 
       module Category
         extend Lithic::Internal::Type::Enum
 
         ACH: :ACH
+        BALANCE_OR_FUNDING: :BALANCE_OR_FUNDING
+        FEE: :FEE
+        REWARD: :REWARD
+        ADJUSTMENT: :ADJUSTMENT
+        DERECOGNITION: :DERECOGNITION
+        DISPUTE: :DISPUTE
+        CARD: :CARD
+        EXTERNAL_ACH: :EXTERNAL_ACH
+        EXTERNAL_CHECK: :EXTERNAL_CHECK
+        EXTERNAL_TRANSFER: :EXTERNAL_TRANSFER
+        EXTERNAL_WIRE: :EXTERNAL_WIRE
+        MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
+        MANAGEMENT_DISPUTE: :MANAGEMENT_DISPUTE
+        MANAGEMENT_FEE: :MANAGEMENT_FEE
+        MANAGEMENT_REWARD: :MANAGEMENT_REWARD
+        MANAGEMENT_DISBURSEMENT: :MANAGEMENT_DISBURSEMENT
+        PROGRAM_FUNDING: :PROGRAM_FUNDING
 
         def self?.values: -> ::Array[Lithic::Models::Payment::category]
       end
@@ -252,74 +292,149 @@ module Lithic
         end
       end
 
-      type method_ = :ACH_NEXT_DAY | :ACH_SAME_DAY
+      type method_ = :ACH_NEXT_DAY | :ACH_SAME_DAY | :WIRE
 
       module Method
         extend Lithic::Internal::Type::Enum
 
         ACH_NEXT_DAY: :ACH_NEXT_DAY
         ACH_SAME_DAY: :ACH_SAME_DAY
+        WIRE: :WIRE
 
         def self?.values: -> ::Array[Lithic::Models::Payment::method_]
       end
 
       type method_attributes =
-        {
-          company_id: String?,
-          receipt_routing_number: String?,
-          retries: Integer?,
-          return_reason_code: String?,
-          sec_code: Lithic::Models::Payment::MethodAttributes::sec_code,
-          trace_numbers: ::Array[String?],
-          addenda: String?
-        }
+        Lithic::Payment::MethodAttributes::ACHMethodAttributes
+        | Lithic::Payment::MethodAttributes::WireMethodAttributes
 
-      class MethodAttributes < Lithic::Internal::Type::BaseModel
-        attr_accessor company_id: String?
+      module MethodAttributes
+        extend Lithic::Internal::Type::Union
 
-        attr_accessor receipt_routing_number: String?
+        type ach_method_attributes =
+          {
+            sec_code: Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes::sec_code,
+            addenda: String?,
+            company_id: String?,
+            receipt_routing_number: String?,
+            retries: Integer?,
+            return_reason_code: String?,
+            trace_numbers: ::Array[String]
+          }
 
-        attr_accessor retries: Integer?
+        class ACHMethodAttributes < Lithic::Internal::Type::BaseModel
+          attr_accessor sec_code: Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes::sec_code
 
-        attr_accessor return_reason_code: String?
+          attr_accessor addenda: String?
 
-        attr_accessor sec_code: Lithic::Models::Payment::MethodAttributes::sec_code
+          attr_accessor company_id: String?
 
-        attr_accessor trace_numbers: ::Array[String?]
+          attr_accessor receipt_routing_number: String?
 
-        attr_accessor addenda: String?
+          attr_accessor retries: Integer?
 
-        def initialize: (
-          company_id: String?,
-          receipt_routing_number: String?,
-          retries: Integer?,
-          return_reason_code: String?,
-          sec_code: Lithic::Models::Payment::MethodAttributes::sec_code,
-          trace_numbers: ::Array[String?],
-          ?addenda: String?
-        ) -> void
+          attr_accessor return_reason_code: String?
 
-        def to_hash: -> {
-          company_id: String?,
-          receipt_routing_number: String?,
-          retries: Integer?,
-          return_reason_code: String?,
-          sec_code: Lithic::Models::Payment::MethodAttributes::sec_code,
-          trace_numbers: ::Array[String?],
-          addenda: String?
-        }
+          attr_reader trace_numbers: ::Array[String]?
 
-        type sec_code = :CCD | :PPD | :WEB
+          def trace_numbers=: (::Array[String]) -> ::Array[String]
 
-        module SecCode
-          extend Lithic::Internal::Type::Enum
+          def initialize: (
+            sec_code: Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes::sec_code,
+            ?addenda: String?,
+            ?company_id: String?,
+            ?receipt_routing_number: String?,
+            ?retries: Integer?,
+            ?return_reason_code: String?,
+            ?trace_numbers: ::Array[String]
+          ) -> void
 
-          CCD: :CCD
-          PPD: :PPD
-          WEB: :WEB
+          def to_hash: -> {
+            sec_code: Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes::sec_code,
+            addenda: String?,
+            company_id: String?,
+            receipt_routing_number: String?,
+            retries: Integer?,
+            return_reason_code: String?,
+            trace_numbers: ::Array[String]
+          }
 
-          def self?.values: -> ::Array[Lithic::Models::Payment::MethodAttributes::sec_code]
+          type sec_code = :CCD | :PPD | :WEB | :TEL | :CIE | :CTX
+
+          module SecCode
+            extend Lithic::Internal::Type::Enum
+
+            CCD: :CCD
+            PPD: :PPD
+            WEB: :WEB
+            TEL: :TEL
+            CIE: :CIE
+            CTX: :CTX
+
+            def self?.values: -> ::Array[Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes::sec_code]
+          end
         end
+
+        type wire_method_attributes =
+          {
+            wire_network: Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::wire_network,
+            creditor: Lithic::WirePartyDetails,
+            debtor: Lithic::WirePartyDetails,
+            message_id: String?,
+            remittance_information: String?,
+            wire_message_type: String
+          }
+
+        class WireMethodAttributes < Lithic::Internal::Type::BaseModel
+          attr_accessor wire_network: Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::wire_network
+
+          attr_reader creditor: Lithic::WirePartyDetails?
+
+          def creditor=: (Lithic::WirePartyDetails) -> Lithic::WirePartyDetails
+
+          attr_reader debtor: Lithic::WirePartyDetails?
+
+          def debtor=: (Lithic::WirePartyDetails) -> Lithic::WirePartyDetails
+
+          attr_accessor message_id: String?
+
+          attr_accessor remittance_information: String?
+
+          attr_reader wire_message_type: String?
+
+          def wire_message_type=: (String) -> String
+
+          def initialize: (
+            wire_network: Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::wire_network,
+            ?creditor: Lithic::WirePartyDetails,
+            ?debtor: Lithic::WirePartyDetails,
+            ?message_id: String?,
+            ?remittance_information: String?,
+            ?wire_message_type: String
+          ) -> void
+
+          def to_hash: -> {
+            wire_network: Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::wire_network,
+            creditor: Lithic::WirePartyDetails,
+            debtor: Lithic::WirePartyDetails,
+            message_id: String?,
+            remittance_information: String?,
+            wire_message_type: String
+          }
+
+          type wire_network = :FEDWIRE | :SWIFT
+
+          module WireNetwork
+            extend Lithic::Internal::Type::Enum
+
+            FEDWIRE: :FEDWIRE
+            SWIFT: :SWIFT
+
+            def self?.values: -> ::Array[Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::wire_network]
+          end
+        end
+
+        def self?.variants: -> ::Array[Lithic::Models::Payment::method_attributes]
       end
 
       type related_account_tokens =
@@ -352,26 +467,28 @@ module Lithic
         def self?.values: -> ::Array[Lithic::Models::Payment::result]
       end
 
-      type source = :CUSTOMER | :LITHIC
+      type source = :LITHIC | :EXTERNAL | :CUSTOMER
 
       module Source
         extend Lithic::Internal::Type::Enum
 
-        CUSTOMER: :CUSTOMER
         LITHIC: :LITHIC
+        EXTERNAL: :EXTERNAL
+        CUSTOMER: :CUSTOMER
 
         def self?.values: -> ::Array[Lithic::Models::Payment::source]
       end
 
-      type status = :DECLINED | :PENDING | :RETURNED | :SETTLED
+      type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
 
       module Status
         extend Lithic::Internal::Type::Enum
 
-        DECLINED: :DECLINED
         PENDING: :PENDING
-        RETURNED: :RETURNED
         SETTLED: :SETTLED
+        DECLINED: :DECLINED
+        REVERSED: :REVERSED
+        CANCELED: :CANCELED
 
         def self?.values: -> ::Array[Lithic::Models::Payment::status]
       end

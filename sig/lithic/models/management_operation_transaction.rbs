@@ -4,7 +4,6 @@ module Lithic
       {
         token: String,
         created: Time,
-        family: Lithic::Models::ManagementOperationTransaction::family,
         status: Lithic::Models::ManagementOperationTransaction::status,
         updated: Time,
         category: Lithic::Models::ManagementOperationTransaction::category,
@@ -12,6 +11,7 @@ module Lithic
         direction: Lithic::Models::ManagementOperationTransaction::direction,
         events: ::Array[Lithic::ManagementOperationTransaction::Event],
         external_resource: Lithic::ExternalResource?,
+        family: Lithic::Models::ManagementOperationTransaction::family,
         financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::ManagementOperationTransaction::result,
@@ -24,8 +24,6 @@ module Lithic
       attr_accessor token: String
 
       attr_accessor created: Time
-
-      attr_accessor family: Lithic::Models::ManagementOperationTransaction::family
 
       attr_accessor status: Lithic::Models::ManagementOperationTransaction::status
 
@@ -55,6 +53,12 @@ module Lithic
 
       attr_accessor external_resource: Lithic::ExternalResource?
 
+      attr_reader family: Lithic::Models::ManagementOperationTransaction::family?
+
+      def family=: (
+        Lithic::Models::ManagementOperationTransaction::family
+      ) -> Lithic::Models::ManagementOperationTransaction::family
+
       attr_reader financial_account_token: String?
 
       def financial_account_token=: (String) -> String
@@ -82,7 +86,6 @@ module Lithic
       def initialize: (
         token: String,
         created: Time,
-        family: Lithic::Models::ManagementOperationTransaction::family,
         status: Lithic::Models::ManagementOperationTransaction::status,
         updated: Time,
         ?category: Lithic::Models::ManagementOperationTransaction::category,
@@ -90,6 +93,7 @@ module Lithic
         ?direction: Lithic::Models::ManagementOperationTransaction::direction,
         ?events: ::Array[Lithic::ManagementOperationTransaction::Event],
         ?external_resource: Lithic::ExternalResource?,
+        ?family: Lithic::Models::ManagementOperationTransaction::family,
         ?financial_account_token: String,
         ?pending_amount: Integer,
         ?result: Lithic::Models::ManagementOperationTransaction::result,
@@ -101,7 +105,6 @@ module Lithic
       def to_hash: -> {
         token: String,
         created: Time,
-        family: Lithic::Models::ManagementOperationTransaction::family,
         status: Lithic::Models::ManagementOperationTransaction::status,
         updated: Time,
         category: Lithic::Models::ManagementOperationTransaction::category,
@@ -109,6 +112,7 @@ module Lithic
         direction: Lithic::Models::ManagementOperationTransaction::direction,
         events: ::Array[Lithic::ManagementOperationTransaction::Event],
         external_resource: Lithic::ExternalResource?,
+        family: Lithic::Models::ManagementOperationTransaction::family,
         financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::ManagementOperationTransaction::result,
@@ -116,27 +120,6 @@ module Lithic
         transaction_series: Lithic::ManagementOperationTransaction::TransactionSeries?,
         user_defined_id: String
       }
-
-      type family =
-        :CARD
-        | :PAYMENT
-        | :TRANSFER
-        | :INTERNAL
-        | :EXTERNAL_PAYMENT
-        | :MANAGEMENT_OPERATION
-
-      module Family
-        extend Lithic::Internal::Type::Enum
-
-        CARD: :CARD
-        PAYMENT: :PAYMENT
-        TRANSFER: :TRANSFER
-        INTERNAL: :INTERNAL
-        EXTERNAL_PAYMENT: :EXTERNAL_PAYMENT
-        MANAGEMENT_OPERATION: :MANAGEMENT_OPERATION
-
-        def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::family]
-      end
 
       type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
 
@@ -308,6 +291,16 @@ module Lithic
 
           def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::Event::type_]
         end
+      end
+
+      type family = :MANAGEMENT_OPERATION
+
+      module Family
+        extend Lithic::Internal::Type::Enum
+
+        MANAGEMENT_OPERATION: :MANAGEMENT_OPERATION
+
+        def self?.values: -> ::Array[Lithic::Models::ManagementOperationTransaction::family]
       end
 
       type result = :APPROVED | :DECLINED

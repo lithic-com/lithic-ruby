@@ -94,11 +94,6 @@ module Lithic
             :"account_holder.verification",
             Lithic::EventSubscription::EventType::TaggedSymbol
           )
-        AUTH_RULES_PERFORMANCE_REPORT_CREATED =
-          T.let(
-            :"auth_rules.performance_report.created",
-            Lithic::EventSubscription::EventType::TaggedSymbol
-          )
         BALANCE_UPDATED =
           T.let(
             :"balance.updated",

@@ -7,13 +7,13 @@ module Lithic
         {
           account_token: String,
           auto_collection_configuration: Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration,
-          charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
           credit_limit: Integer?,
           credit_product_token: String?,
           external_bank_account_token: String?,
+          tier: String?,
+          charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
           financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state,
-          is_spend_blocked: bool,
-          tier: String?
+          is_spend_blocked: bool
         }
 
       class FinancialAccountCreditConfig < Lithic::Internal::Type::BaseModel
@@ -21,42 +21,48 @@ module Lithic
 
         attr_accessor auto_collection_configuration: Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration
 
-        attr_accessor charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?
-
         attr_accessor credit_limit: Integer?
 
         attr_accessor credit_product_token: String?
 
         attr_accessor external_bank_account_token: String?
 
-        attr_accessor financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state
-
-        attr_accessor is_spend_blocked: bool
-
         attr_accessor tier: String?
+
+        attr_accessor charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?
+
+        attr_reader financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state?
+
+        def financial_account_state=: (
+          Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state
+        ) -> Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state
+
+        attr_reader is_spend_blocked: bool?
+
+        def is_spend_blocked=: (bool) -> bool
 
         def initialize: (
           account_token: String,
           auto_collection_configuration: Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration,
-          charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
           credit_limit: Integer?,
           credit_product_token: String?,
           external_bank_account_token: String?,
-          financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state,
-          is_spend_blocked: bool,
-          tier: String?
+          tier: String?,
+          ?charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
+          ?financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state,
+          ?is_spend_blocked: bool
         ) -> void
 
         def to_hash: -> {
           account_token: String,
           auto_collection_configuration: Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration,
-          charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
           credit_limit: Integer?,
           credit_product_token: String?,
           external_bank_account_token: String?,
+          tier: String?,
+          charged_off_reason: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::charged_off_reason?,
           financial_account_state: Lithic::Models::FinancialAccounts::FinancialAccountCreditConfig::financial_account_state,
-          is_spend_blocked: bool,
-          tier: String?
+          is_spend_blocked: bool
         }
 
         type auto_collection_configuration = { auto_collection_enabled: bool }

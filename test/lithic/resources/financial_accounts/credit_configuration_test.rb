@@ -15,13 +15,13 @@ class Lithic::Test::Resources::FinancialAccounts::CreditConfigurationTest < Lith
       response => {
         account_token: String,
         auto_collection_configuration: Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration,
-        charged_off_reason: Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason | nil,
         credit_limit: Integer | nil,
         credit_product_token: String | nil,
         external_bank_account_token: String | nil,
-        financial_account_state: Lithic::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState,
-        is_spend_blocked: Lithic::Internal::Type::Boolean,
-        tier: String | nil
+        tier: String | nil,
+        charged_off_reason: Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason | nil,
+        financial_account_state: Lithic::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState | nil,
+        is_spend_blocked: Lithic::Internal::Type::Boolean | nil
       }
     end
   end
@@ -37,13 +37,13 @@ class Lithic::Test::Resources::FinancialAccounts::CreditConfigurationTest < Lith
       response => {
         account_token: String,
         auto_collection_configuration: Lithic::FinancialAccounts::FinancialAccountCreditConfig::AutoCollectionConfiguration,
-        charged_off_reason: Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason | nil,
         credit_limit: Integer | nil,
         credit_product_token: String | nil,
         external_bank_account_token: String | nil,
-        financial_account_state: Lithic::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState,
-        is_spend_blocked: Lithic::Internal::Type::Boolean,
-        tier: String | nil
+        tier: String | nil,
+        charged_off_reason: Lithic::FinancialAccounts::FinancialAccountCreditConfig::ChargedOffReason | nil,
+        financial_account_state: Lithic::FinancialAccounts::FinancialAccountCreditConfig::FinancialAccountState | nil,
+        is_spend_blocked: Lithic::Internal::Type::Boolean | nil
       }
     end
   end

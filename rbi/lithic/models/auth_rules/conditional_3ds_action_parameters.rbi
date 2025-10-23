@@ -126,6 +126,9 @@ module Lithic
           # - `RISK_SCORE`: Mastercard only: Assessment by the network of the authentication
           #   risk level, with a higher value indicating a higher amount of risk.
           # - `MESSAGE_CATEGORY`: The category of the authentication being processed.
+          # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+          #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+          #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
           sig do
             returns(
               T.nilable(
@@ -211,6 +214,9 @@ module Lithic
             # - `RISK_SCORE`: Mastercard only: Assessment by the network of the authentication
             #   risk level, with a higher value indicating a higher amount of risk.
             # - `MESSAGE_CATEGORY`: The category of the authentication being processed.
+            # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+            #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+            #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
             attribute: nil,
             # The operation to apply to the attribute
             operation: nil,
@@ -255,6 +261,9 @@ module Lithic
           # - `RISK_SCORE`: Mastercard only: Assessment by the network of the authentication
           #   risk level, with a higher value indicating a higher amount of risk.
           # - `MESSAGE_CATEGORY`: The category of the authentication being processed.
+          # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+          #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+          #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
           module Attribute
             extend Lithic::Internal::Type::Enum
 
@@ -305,6 +314,11 @@ module Lithic
             MESSAGE_CATEGORY =
               T.let(
                 :MESSAGE_CATEGORY,
+                Lithic::AuthRules::Conditional3DSActionParameters::Condition::Attribute::TaggedSymbol
+              )
+            ADDRESS_MATCH =
+              T.let(
+                :ADDRESS_MATCH,
                 Lithic::AuthRules::Conditional3DSActionParameters::Condition::Attribute::TaggedSymbol
               )
 

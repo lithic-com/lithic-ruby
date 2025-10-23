@@ -112,12 +112,7 @@ module Lithic
       #   @return [Boolean, nil]
       optional :verification_enforcement, Lithic::Internal::Type::Boolean
 
-      # @!attribute processor_token
-      #
-      #   @return [String]
-      required :processor_token, String
-
-      # @!method initialize(account_number:, country:, currency:, financial_account_token:, owner:, owner_type:, routing_number:, type:, verification_method:, processor_token:, account_token: nil, address: nil, company_id: nil, dob: nil, doing_business_as: nil, name: nil, user_defined_id: nil, verification_enforcement: nil, request_options: {})
+      # @!method initialize(account_number:, country:, currency:, financial_account_token:, owner:, owner_type:, routing_number:, type:, verification_method:, account_token: nil, address: nil, company_id: nil, dob: nil, doing_business_as: nil, name: nil, user_defined_id: nil, verification_enforcement: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::ExternalBankAccountCreateParams} for more details.
       #
@@ -138,8 +133,6 @@ module Lithic
       #   @param type [Symbol, Lithic::Models::ExternalBankAccountCreateParams::Type] Account Type
       #
       #   @param verification_method [Symbol, Lithic::Models::ExternalBankAccountCreateParams::VerificationMethod] Verification Method
-      #
-      #   @param processor_token [String]
       #
       #   @param account_token [String] Indicates which Lithic account the external account is associated with. For exte
       #

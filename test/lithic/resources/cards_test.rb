@@ -108,7 +108,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
 
     assert_pattern do
       response => {
-        provisioning_payload: String | nil
+        provisioning_payload: Lithic::Models::CardProvisionResponse::ProvisioningPayload | nil
       }
     end
   end

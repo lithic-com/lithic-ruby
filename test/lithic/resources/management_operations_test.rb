@@ -22,7 +22,6 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
       response => {
         token: String,
         created: Time,
-        family: Lithic::ManagementOperationTransaction::Family,
         status: Lithic::ManagementOperationTransaction::Status,
         updated: Time,
         category: Lithic::ManagementOperationTransaction::Category | nil,
@@ -30,6 +29,7 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
         direction: Lithic::ManagementOperationTransaction::Direction | nil,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ManagementOperationTransaction::Event]) | nil,
         external_resource: Lithic::ExternalResource | nil,
+        family: Lithic::ManagementOperationTransaction::Family | nil,
         financial_account_token: String | nil,
         pending_amount: Integer | nil,
         result: Lithic::ManagementOperationTransaction::Result | nil,
@@ -51,7 +51,6 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
       response => {
         token: String,
         created: Time,
-        family: Lithic::ManagementOperationTransaction::Family,
         status: Lithic::ManagementOperationTransaction::Status,
         updated: Time,
         category: Lithic::ManagementOperationTransaction::Category | nil,
@@ -59,6 +58,7 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
         direction: Lithic::ManagementOperationTransaction::Direction | nil,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ManagementOperationTransaction::Event]) | nil,
         external_resource: Lithic::ExternalResource | nil,
+        family: Lithic::ManagementOperationTransaction::Family | nil,
         financial_account_token: String | nil,
         pending_amount: Integer | nil,
         result: Lithic::ManagementOperationTransaction::Result | nil,
@@ -87,7 +87,6 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
       row => {
         token: String,
         created: Time,
-        family: Lithic::ManagementOperationTransaction::Family,
         status: Lithic::ManagementOperationTransaction::Status,
         updated: Time,
         category: Lithic::ManagementOperationTransaction::Category | nil,
@@ -95,6 +94,7 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
         direction: Lithic::ManagementOperationTransaction::Direction | nil,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ManagementOperationTransaction::Event]) | nil,
         external_resource: Lithic::ExternalResource | nil,
+        family: Lithic::ManagementOperationTransaction::Family | nil,
         financial_account_token: String | nil,
         pending_amount: Integer | nil,
         result: Lithic::ManagementOperationTransaction::Result | nil,
@@ -120,7 +120,6 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
       response => {
         token: String,
         created: Time,
-        family: Lithic::ManagementOperationTransaction::Family,
         status: Lithic::ManagementOperationTransaction::Status,
         updated: Time,
         category: Lithic::ManagementOperationTransaction::Category | nil,
@@ -128,6 +127,7 @@ class Lithic::Test::Resources::ManagementOperationsTest < Lithic::Test::Resource
         direction: Lithic::ManagementOperationTransaction::Direction | nil,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::ManagementOperationTransaction::Event]) | nil,
         external_resource: Lithic::ExternalResource | nil,
+        family: Lithic::ManagementOperationTransaction::Family | nil,
         financial_account_token: String | nil,
         pending_amount: Integer | nil,
         result: Lithic::ManagementOperationTransaction::Result | nil,

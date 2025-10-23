@@ -395,6 +395,11 @@ module Lithic
               :TOKEN_DEACTIVATED,
               Lithic::Tokenization::Event::Result::TaggedSymbol
             )
+          TOKEN_DELETED_FROM_CONSUMER_APP =
+            T.let(
+              :TOKEN_DELETED_FROM_CONSUMER_APP,
+              Lithic::Tokenization::Event::Result::TaggedSymbol
+            )
           TOKEN_INACTIVE =
             T.let(
               :TOKEN_INACTIVE,

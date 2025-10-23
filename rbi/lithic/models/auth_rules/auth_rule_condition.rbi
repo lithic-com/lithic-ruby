@@ -61,6 +61,9 @@ module Lithic
         # - `WALLET_TYPE`: For transactions using a digital wallet token, indicates the
         #   source of the token. Valid values are `APPLE_PAY`, `GOOGLE_PAY`,
         #   `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
+        # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+        #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+        #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
         sig do
           returns(T.nilable(Lithic::AuthRules::ConditionalAttribute::OrSymbol))
         end
@@ -159,6 +162,9 @@ module Lithic
           # - `WALLET_TYPE`: For transactions using a digital wallet token, indicates the
           #   source of the token. Valid values are `APPLE_PAY`, `GOOGLE_PAY`,
           #   `SAMSUNG_PAY`, `MASTERPASS`, `MERCHANT`, `OTHER`, `NONE`.
+          # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
+          #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
+          #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
           attribute: nil,
           # The operation to apply to the attribute
           operation: nil,

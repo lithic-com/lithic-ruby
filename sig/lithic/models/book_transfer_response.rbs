@@ -7,16 +7,17 @@ module Lithic
         created: Time,
         currency: String,
         events: ::Array[Lithic::BookTransferResponse::Event],
-        external_id: String?,
-        external_resource: Lithic::ExternalResource?,
+        family: :TRANSFER,
         from_financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::BookTransferResponse::result,
         settled_amount: Integer,
         status: Lithic::Models::BookTransferResponse::status,
         to_financial_account_token: String,
-        transaction_series: Lithic::BookTransferResponse::TransactionSeries?,
-        updated: Time
+        updated: Time,
+        external_id: String?,
+        external_resource: Lithic::ExternalResource?,
+        transaction_series: Lithic::BookTransferResponse::TransactionSeries?
       }
 
     class BookTransferResponse < Lithic::Internal::Type::BaseModel
@@ -30,9 +31,7 @@ module Lithic
 
       attr_accessor events: ::Array[Lithic::BookTransferResponse::Event]
 
-      attr_accessor external_id: String?
-
-      attr_accessor external_resource: Lithic::ExternalResource?
+      attr_accessor family: :TRANSFER
 
       attr_accessor from_financial_account_token: String
 
@@ -46,9 +45,13 @@ module Lithic
 
       attr_accessor to_financial_account_token: String
 
-      attr_accessor transaction_series: Lithic::BookTransferResponse::TransactionSeries?
-
       attr_accessor updated: Time
+
+      attr_accessor external_id: String?
+
+      attr_accessor external_resource: Lithic::ExternalResource?
+
+      attr_accessor transaction_series: Lithic::BookTransferResponse::TransactionSeries?
 
       def initialize: (
         token: String,
@@ -56,16 +59,17 @@ module Lithic
         created: Time,
         currency: String,
         events: ::Array[Lithic::BookTransferResponse::Event],
-        external_id: String?,
-        external_resource: Lithic::ExternalResource?,
         from_financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::BookTransferResponse::result,
         settled_amount: Integer,
         status: Lithic::Models::BookTransferResponse::status,
         to_financial_account_token: String,
-        transaction_series: Lithic::BookTransferResponse::TransactionSeries?,
-        updated: Time
+        updated: Time,
+        ?external_id: String?,
+        ?external_resource: Lithic::ExternalResource?,
+        ?transaction_series: Lithic::BookTransferResponse::TransactionSeries?,
+        ?family: :TRANSFER
       ) -> void
 
       def to_hash: -> {
@@ -74,16 +78,17 @@ module Lithic
         created: Time,
         currency: String,
         events: ::Array[Lithic::BookTransferResponse::Event],
-        external_id: String?,
-        external_resource: Lithic::ExternalResource?,
+        family: :TRANSFER,
         from_financial_account_token: String,
         pending_amount: Integer,
         result: Lithic::Models::BookTransferResponse::result,
         settled_amount: Integer,
         status: Lithic::Models::BookTransferResponse::status,
         to_financial_account_token: String,
-        transaction_series: Lithic::BookTransferResponse::TransactionSeries?,
-        updated: Time
+        updated: Time,
+        external_id: String?,
+        external_resource: Lithic::ExternalResource?,
+        transaction_series: Lithic::BookTransferResponse::TransactionSeries?
       }
 
       type category =
@@ -277,14 +282,16 @@ module Lithic
         def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::result]
       end
 
-      type status = :DECLINED | :REVERSED | :SETTLED
+      type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
 
       module Status
         extend Lithic::Internal::Type::Enum
 
+        PENDING: :PENDING
+        SETTLED: :SETTLED
         DECLINED: :DECLINED
         REVERSED: :REVERSED
-        SETTLED: :SETTLED
+        CANCELED: :CANCELED
 
         def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::status]
       end

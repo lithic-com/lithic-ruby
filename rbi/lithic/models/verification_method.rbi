@@ -11,7 +11,6 @@ module Lithic
       MANUAL = T.let(:MANUAL, Lithic::VerificationMethod::TaggedSymbol)
       MICRO_DEPOSIT =
         T.let(:MICRO_DEPOSIT, Lithic::VerificationMethod::TaggedSymbol)
-      PLAID = T.let(:PLAID, Lithic::VerificationMethod::TaggedSymbol)
       PRENOTE = T.let(:PRENOTE, Lithic::VerificationMethod::TaggedSymbol)
       EXTERNALLY_VERIFIED =
         T.let(:EXTERNALLY_VERIFIED, Lithic::VerificationMethod::TaggedSymbol)

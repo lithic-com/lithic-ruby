@@ -153,6 +153,7 @@ module Lithic
         type cardholder =
           {
             address_match: bool?,
+            address_on_file_match: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::address_on_file_match,
             billing_address: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
             email: String?,
             name: String?,
@@ -164,6 +165,12 @@ module Lithic
 
         class Cardholder < Lithic::Internal::Type::BaseModel
           attr_accessor address_match: bool?
+
+          attr_reader address_on_file_match: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::address_on_file_match?
+
+          def address_on_file_match=: (
+            Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::address_on_file_match
+          ) -> Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::address_on_file_match
 
           attr_reader billing_address: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress?
 
@@ -189,6 +196,7 @@ module Lithic
 
           def initialize: (
             ?address_match: bool?,
+            ?address_on_file_match: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::address_on_file_match,
             ?billing_address: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
             ?email: String?,
             ?name: String?,
@@ -200,6 +208,7 @@ module Lithic
 
           def to_hash: -> {
             address_match: bool?,
+            address_on_file_match: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::address_on_file_match,
             billing_address: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::BillingAddress,
             email: String?,
             name: String?,
@@ -208,6 +217,25 @@ module Lithic
             phone_number_work: String?,
             shipping_address: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress
           }
+
+          type address_on_file_match =
+            :MATCH
+            | :MATCH_ADDRESS_ONLY
+            | :MATCH_ZIP_ONLY
+            | :MISMATCH
+            | :NOT_PRESENT
+
+          module AddressOnFileMatch
+            extend Lithic::Internal::Type::Enum
+
+            MATCH: :MATCH
+            MATCH_ADDRESS_ONLY: :MATCH_ADDRESS_ONLY
+            MATCH_ZIP_ONLY: :MATCH_ZIP_ONLY
+            MISMATCH: :MISMATCH
+            NOT_PRESENT: :NOT_PRESENT
+
+            def self?.values: -> ::Array[Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::address_on_file_match]
+          end
 
           type billing_address =
             {
