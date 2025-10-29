@@ -364,6 +364,11 @@ module Lithic
               :ACH_RECEIPT_PROCESSED,
               Lithic::FinancialTransaction::Event::Type::TaggedSymbol
             )
+          ACH_RECEIPT_RELEASED =
+            T.let(
+              :ACH_RECEIPT_RELEASED,
+              Lithic::FinancialTransaction::Event::Type::TaggedSymbol
+            )
           ACH_RECEIPT_SETTLED =
             T.let(
               :ACH_RECEIPT_SETTLED,
