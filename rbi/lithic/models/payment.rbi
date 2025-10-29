@@ -316,14 +316,18 @@ module Lithic
         # - `ACH_ORIGINATION_SETTLED` - ACH origination has settled.
         # - `ACH_ORIGINATION_RELEASED` - ACH origination released from pending to
         #   available balance.
-        # - `ACH_RETURN_PROCESSED` - ACH origination returned by the Receiving Depository
-        #   Financial Institution.
+        # - `ACH_ORIGINATION_REJECTED` - ACH origination was rejected and not sent to the
+        #   Federal Reserve.
         # - `ACH_RECEIPT_PROCESSED` - ACH receipt pending release from an ACH holder.
-        # - `ACH_RETURN_INITIATED` - ACH initiated return for a ACH receipt.
         # - `ACH_RECEIPT_SETTLED` - ACH receipt funds have settled.
         # - `ACH_RECEIPT_RELEASED` - ACH receipt released from pending to available
         #   balance.
-        # - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
+        # - `ACH_RETURN_INITIATED` - ACH initiated return for an ACH receipt.
+        # - `ACH_RETURN_PROCESSED` - ACH receipt returned by the Receiving Depository
+        #   Financial Institution.
+        # - `ACH_RETURN_SETTLED` - ACH return settled by the Receiving Depository
+        #   Financial Institution.
+        # - `ACH_RETURN_REJECTED` - ACH return was rejected by the Receiving Depository
         #   Financial Institution.
         sig { returns(Lithic::Payment::Event::Type::TaggedSymbol) }
         attr_accessor :type
@@ -380,14 +384,18 @@ module Lithic
           # - `ACH_ORIGINATION_SETTLED` - ACH origination has settled.
           # - `ACH_ORIGINATION_RELEASED` - ACH origination released from pending to
           #   available balance.
-          # - `ACH_RETURN_PROCESSED` - ACH origination returned by the Receiving Depository
-          #   Financial Institution.
+          # - `ACH_ORIGINATION_REJECTED` - ACH origination was rejected and not sent to the
+          #   Federal Reserve.
           # - `ACH_RECEIPT_PROCESSED` - ACH receipt pending release from an ACH holder.
-          # - `ACH_RETURN_INITIATED` - ACH initiated return for a ACH receipt.
           # - `ACH_RECEIPT_SETTLED` - ACH receipt funds have settled.
           # - `ACH_RECEIPT_RELEASED` - ACH receipt released from pending to available
           #   balance.
-          # - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
+          # - `ACH_RETURN_INITIATED` - ACH initiated return for an ACH receipt.
+          # - `ACH_RETURN_PROCESSED` - ACH receipt returned by the Receiving Depository
+          #   Financial Institution.
+          # - `ACH_RETURN_SETTLED` - ACH return settled by the Receiving Depository
+          #   Financial Institution.
+          # - `ACH_RETURN_REJECTED` - ACH return was rejected by the Receiving Depository
           #   Financial Institution.
           type:,
           # More detailed reasons for the event
@@ -445,14 +453,18 @@ module Lithic
         # - `ACH_ORIGINATION_SETTLED` - ACH origination has settled.
         # - `ACH_ORIGINATION_RELEASED` - ACH origination released from pending to
         #   available balance.
-        # - `ACH_RETURN_PROCESSED` - ACH origination returned by the Receiving Depository
-        #   Financial Institution.
+        # - `ACH_ORIGINATION_REJECTED` - ACH origination was rejected and not sent to the
+        #   Federal Reserve.
         # - `ACH_RECEIPT_PROCESSED` - ACH receipt pending release from an ACH holder.
-        # - `ACH_RETURN_INITIATED` - ACH initiated return for a ACH receipt.
         # - `ACH_RECEIPT_SETTLED` - ACH receipt funds have settled.
         # - `ACH_RECEIPT_RELEASED` - ACH receipt released from pending to available
         #   balance.
-        # - `ACH_RETURN_SETTLED` - ACH receipt return settled by the Receiving Depository
+        # - `ACH_RETURN_INITIATED` - ACH initiated return for an ACH receipt.
+        # - `ACH_RETURN_PROCESSED` - ACH receipt returned by the Receiving Depository
+        #   Financial Institution.
+        # - `ACH_RETURN_SETTLED` - ACH return settled by the Receiving Depository
+        #   Financial Institution.
+        # - `ACH_RETURN_REJECTED` - ACH return was rejected by the Receiving Depository
         #   Financial Institution.
         module Type
           extend Lithic::Internal::Type::Enum
@@ -476,9 +488,9 @@ module Lithic
               :ACH_ORIGINATION_PROCESSED,
               Lithic::Payment::Event::Type::TaggedSymbol
             )
-          ACH_ORIGINATION_SETTLED =
+          ACH_ORIGINATION_REJECTED =
             T.let(
-              :ACH_ORIGINATION_SETTLED,
+              :ACH_ORIGINATION_REJECTED,
               Lithic::Payment::Event::Type::TaggedSymbol
             )
           ACH_ORIGINATION_RELEASED =
@@ -491,9 +503,19 @@ module Lithic
               :ACH_ORIGINATION_REVIEWED,
               Lithic::Payment::Event::Type::TaggedSymbol
             )
+          ACH_ORIGINATION_SETTLED =
+            T.let(
+              :ACH_ORIGINATION_SETTLED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
           ACH_RECEIPT_PROCESSED =
             T.let(
               :ACH_RECEIPT_PROCESSED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
+          ACH_RECEIPT_RELEASED =
+            T.let(
+              :ACH_RECEIPT_RELEASED,
               Lithic::Payment::Event::Type::TaggedSymbol
             )
           ACH_RECEIPT_SETTLED =
@@ -509,6 +531,11 @@ module Lithic
           ACH_RETURN_PROCESSED =
             T.let(
               :ACH_RETURN_PROCESSED,
+              Lithic::Payment::Event::Type::TaggedSymbol
+            )
+          ACH_RETURN_REJECTED =
+            T.let(
+              :ACH_RETURN_REJECTED,
               Lithic::Payment::Event::Type::TaggedSymbol
             )
           ACH_RETURN_SETTLED =
