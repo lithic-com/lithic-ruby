@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.54 (2025-11-04)
+
+Full Changelog: [v0.1.0-alpha.53...v0.1.0-alpha.54](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.53...v0.1.0-alpha.54)
+
+### Bug Fixes
+
+* better thread safety via early initializing SSL store during HTTP client creation ([67db6d5](https://github.com/lithic-com/lithic-ruby/commit/67db6d53b0af488113c3506c6cacfbfafcf28164))
+
+
+### Chores
+
+* **api:** adds support for new ACH_RECEIPT_RELEASED event ([1834708](https://github.com/lithic-com/lithic-ruby/commit/183470896e9f3fb3e6f1b5d1e242e14ac6992d89))
+* **client:** send user-agent header ([60cfe27](https://github.com/lithic-com/lithic-ruby/commit/60cfe272af1a4018aabca79debcbb6426ba9de0f))
+* **internal:** codegen related update ([b4dbac6](https://github.com/lithic-com/lithic-ruby/commit/b4dbac6efd1ca89c7e60fe9a85f19fdc68654492))
+
 ## 0.1.0-alpha.53 (2025-10-23)
 
 Full Changelog: [v0.1.0-alpha.52...v0.1.0-alpha.53](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.52...v0.1.0-alpha.53)
