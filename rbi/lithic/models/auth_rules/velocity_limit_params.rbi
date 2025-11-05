@@ -22,15 +22,10 @@ module Lithic
         end
         attr_writer :filters
 
-        # DEPRECATED: This has been deprecated in favor of the Trailing Window Objects
-        #
-        # The size of the trailing window to calculate Spend Velocity over in seconds. The
-        # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
+        # Velocity over the current day since 00:00 / 12 AM in Eastern Time
         sig do
           returns(
             T.any(
-              Integer,
-              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindow::OrSymbol,
               Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject,
               Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay,
               Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek,
@@ -64,8 +59,6 @@ module Lithic
             filters: Lithic::AuthRules::VelocityLimitParams::Filters::OrHash,
             period:
               T.any(
-                Integer,
-                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindow::OrSymbol,
                 Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject::OrHash,
                 Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay::OrHash,
                 Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek::OrHash,
@@ -79,10 +72,7 @@ module Lithic
         end
         def self.new(
           filters:,
-          # DEPRECATED: This has been deprecated in favor of the Trailing Window Objects
-          #
-          # The size of the trailing window to calculate Spend Velocity over in seconds. The
-          # minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
+          # Velocity over the current day since 00:00 / 12 AM in Eastern Time
           period:,
           # The scope the velocity is calculated for
           scope:,
@@ -105,8 +95,6 @@ module Lithic
               filters: Lithic::AuthRules::VelocityLimitParams::Filters,
               period:
                 T.any(
-                  Integer,
-                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindow::OrSymbol,
                   Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject,
                   Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay,
                   Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek,

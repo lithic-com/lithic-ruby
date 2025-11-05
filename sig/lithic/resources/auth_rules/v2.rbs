@@ -51,16 +51,6 @@ module Lithic
           ?request_options: Lithic::request_opts
         ) -> nil
 
-        def apply: (
-          String auth_rule_token,
-          card_tokens: ::Array[String],
-          program_level: bool,
-          ?account_tokens: ::Array[String],
-          ?business_account_tokens: ::Array[String],
-          ?excluded_card_tokens: ::Array[String],
-          ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::AuthRules::V2ApplyResponse
-
         def draft: (
           String auth_rule_token,
           ?parameters: Lithic::Models::AuthRules::V2DraftParams::parameters?,

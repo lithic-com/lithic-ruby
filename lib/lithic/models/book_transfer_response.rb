@@ -184,8 +184,9 @@ module Lithic
 
         # @!attribute detailed_results
         #
-        #   @return [Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResults]
-        required :detailed_results, enum: -> { Lithic::BookTransferResponse::Event::DetailedResults }
+        #   @return [Array<Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResult>]
+        required :detailed_results,
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::BookTransferResponse::Event::DetailedResult] }
 
         # @!attribute memo
         #   Memo for the transfer.
@@ -224,7 +225,7 @@ module Lithic
         #
         #   @param created [Time] Date and time when the financial event occurred. UTC time zone.
         #
-        #   @param detailed_results [Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResults]
+        #   @param detailed_results [Array<Symbol, Lithic::Models::BookTransferResponse::Event::DetailedResult>]
         #
         #   @param memo [String] Memo for the transfer.
         #
@@ -234,8 +235,7 @@ module Lithic
         #
         #   @param type [Symbol, Lithic::Models::BookTransferResponse::Event::Type] Type of the book transfer
 
-        # @see Lithic::Models::BookTransferResponse::Event#detailed_results
-        module DetailedResults
+        module DetailedResult
           extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED

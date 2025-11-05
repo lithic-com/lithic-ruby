@@ -52,8 +52,7 @@ module Lithic
         #
         # @overload retrieve(auth_rule_token, request_options: {})
         #
-        # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
-        #
+        # @param auth_rule_token [String]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::AuthRules::V2RetrieveResponse]
@@ -79,7 +78,7 @@ module Lithic
         #
         # @overload update(auth_rule_token, account_tokens: nil, business_account_tokens: nil, name: nil, state: nil, card_tokens: nil, excluded_card_tokens: nil, program_level: nil, request_options: {})
         #
-        # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
+        # @param auth_rule_token [String]
         #
         # @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
         #
@@ -155,8 +154,7 @@ module Lithic
         #
         # @overload delete(auth_rule_token, request_options: {})
         #
-        # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
-        #
+        # @param auth_rule_token [String]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
@@ -171,43 +169,6 @@ module Lithic
           )
         end
 
-        # @deprecated
-        #
-        # Associates a V2 Auth rule with a card program, the provided account(s) or
-        # card(s).
-        #
-        # Prefer using the `PATCH` method for this operation.
-        #
-        # @overload apply(auth_rule_token, card_tokens:, program_level:, account_tokens: nil, business_account_tokens: nil, excluded_card_tokens: nil, request_options: {})
-        #
-        # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
-        #
-        # @param card_tokens [Array<String>] Card tokens to which the Auth Rule applies.
-        #
-        # @param program_level [Boolean] Whether the Auth Rule applies to all authorizations on the card program.
-        #
-        # @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
-        #
-        # @param business_account_tokens [Array<String>] Business Account tokens to which the Auth Rule applies.
-        #
-        # @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
-        #
-        # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
-        #
-        # @return [Lithic::Models::AuthRules::V2ApplyResponse]
-        #
-        # @see Lithic::Models::AuthRules::V2ApplyParams
-        def apply(auth_rule_token, params)
-          parsed, options = Lithic::AuthRules::V2ApplyParams.dump_request(params)
-          @client.request(
-            method: :post,
-            path: ["v2/auth_rules/%1$s/apply", auth_rule_token],
-            body: parsed,
-            model: Lithic::Models::AuthRules::V2ApplyResponse,
-            options: options
-          )
-        end
-
         # Creates a new draft version of a rule that will be ran in shadow mode.
         #
         # This can also be utilized to reset the draft parameters, causing a draft version
@@ -215,7 +176,7 @@ module Lithic
         #
         # @overload draft(auth_rule_token, parameters: nil, request_options: {})
         #
-        # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
+        # @param auth_rule_token [String]
         #
         # @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::V2DraftParams::Parameters::ConditionalAuthorizationActionParameters, nil] Parameters for the Auth Rule
         #
@@ -240,8 +201,7 @@ module Lithic
         #
         # @overload promote(auth_rule_token, request_options: {})
         #
-        # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
-        #
+        # @param auth_rule_token [String]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::AuthRules::V2PromoteResponse]
@@ -268,12 +228,9 @@ module Lithic
         #
         # @overload retrieve_features(auth_rule_token, account_token: nil, card_token: nil, request_options: {})
         #
-        # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
-        #
+        # @param auth_rule_token [String]
         # @param account_token [String]
-        #
         # @param card_token [String]
-        #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Lithic::Models::AuthRules::V2RetrieveFeaturesResponse]
@@ -306,7 +263,7 @@ module Lithic
         #
         # @overload retrieve_report(auth_rule_token, begin_:, end_:, request_options: {})
         #
-        # @param auth_rule_token [String] Globally unique identifier for the Auth Rule.
+        # @param auth_rule_token [String]
         #
         # @param begin_ [Date] Start date for the report
         #

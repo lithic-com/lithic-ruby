@@ -483,6 +483,12 @@ module Lithic
         end
 
         class WireMethodAttributes < Lithic::Internal::Type::BaseModel
+          # @!attribute wire_message_type
+          #   Type of wire message
+          #
+          #   @return [String, nil]
+          required :wire_message_type, String, nil?: true
+
           # @!attribute wire_network
           #   Type of wire transfer
           #
@@ -512,16 +518,12 @@ module Lithic
           #   @return [String, nil]
           optional :remittance_information, String, nil?: true
 
-          # @!attribute wire_message_type
-          #   Type of wire message
-          #
-          #   @return [String, nil]
-          optional :wire_message_type, String
-
-          # @!method initialize(wire_network:, creditor: nil, debtor: nil, message_id: nil, remittance_information: nil, wire_message_type: nil)
+          # @!method initialize(wire_message_type:, wire_network:, creditor: nil, debtor: nil, message_id: nil, remittance_information: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::Payment::MethodAttributes::WireMethodAttributes} for more
           #   details.
+          #
+          #   @param wire_message_type [String, nil] Type of wire message
           #
           #   @param wire_network [Symbol, Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::WireNetwork] Type of wire transfer
           #
@@ -532,8 +534,6 @@ module Lithic
           #   @param message_id [String, nil] Point to point reference identifier, as assigned by the instructing party, used
           #
           #   @param remittance_information [String, nil] Payment details or invoice reference
-          #
-          #   @param wire_message_type [String] Type of wire message
 
           # Type of wire transfer
           #

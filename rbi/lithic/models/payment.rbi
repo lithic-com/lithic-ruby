@@ -791,6 +791,10 @@ module Lithic
               )
             end
 
+          # Type of wire message
+          sig { returns(T.nilable(String)) }
+          attr_accessor :wire_message_type
+
           # Type of wire transfer
           sig do
             returns(
@@ -820,25 +824,20 @@ module Lithic
           sig { returns(T.nilable(String)) }
           attr_accessor :remittance_information
 
-          # Type of wire message
-          sig { returns(T.nilable(String)) }
-          attr_reader :wire_message_type
-
-          sig { params(wire_message_type: String).void }
-          attr_writer :wire_message_type
-
           sig do
             params(
+              wire_message_type: T.nilable(String),
               wire_network:
                 Lithic::Payment::MethodAttributes::WireMethodAttributes::WireNetwork::OrSymbol,
               creditor: Lithic::WirePartyDetails::OrHash,
               debtor: Lithic::WirePartyDetails::OrHash,
               message_id: T.nilable(String),
-              remittance_information: T.nilable(String),
-              wire_message_type: String
+              remittance_information: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
+            # Type of wire message
+            wire_message_type:,
             # Type of wire transfer
             wire_network:,
             creditor: nil,
@@ -847,22 +846,20 @@ module Lithic
             # for tracking the message through the Fedwire system
             message_id: nil,
             # Payment details or invoice reference
-            remittance_information: nil,
-            # Type of wire message
-            wire_message_type: nil
+            remittance_information: nil
           )
           end
 
           sig do
             override.returns(
               {
+                wire_message_type: T.nilable(String),
                 wire_network:
                   Lithic::Payment::MethodAttributes::WireMethodAttributes::WireNetwork::TaggedSymbol,
                 creditor: Lithic::WirePartyDetails,
                 debtor: Lithic::WirePartyDetails,
                 message_id: T.nilable(String),
-                remittance_information: T.nilable(String),
-                wire_message_type: String
+                remittance_information: T.nilable(String)
               }
             )
           end

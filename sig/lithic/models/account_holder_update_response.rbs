@@ -13,7 +13,7 @@ module Lithic
           account_token: String,
           beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
           beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual],
-          business_account_token: String,
+          business_account_token: String?,
           business_entity: Lithic::KYBBusinessEntity,
           control_person: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
           created: Time,
@@ -52,9 +52,7 @@ module Lithic
           ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual]
         ) -> ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual]
 
-        attr_reader business_account_token: String?
-
-        def business_account_token=: (String) -> String
+        attr_accessor business_account_token: String?
 
         attr_reader business_entity: Lithic::KYBBusinessEntity?
 
@@ -139,7 +137,7 @@ module Lithic
           ?account_token: String,
           ?beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
           ?beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual],
-          ?business_account_token: String,
+          ?business_account_token: String?,
           ?business_entity: Lithic::KYBBusinessEntity,
           ?control_person: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
           ?created: Time,
@@ -162,7 +160,7 @@ module Lithic
           account_token: String,
           beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
           beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual],
-          business_account_token: String,
+          business_account_token: String?,
           business_entity: Lithic::KYBBusinessEntity,
           control_person: Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
           created: Time,
@@ -694,7 +692,7 @@ module Lithic
         {
           token: String,
           address: Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address,
-          business_account_token: String,
+          business_account_token: String?,
           email: String,
           first_name: String,
           last_name: String,
@@ -713,9 +711,7 @@ module Lithic
           Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address
         ) -> Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address
 
-        attr_reader business_account_token: String?
-
-        def business_account_token=: (String) -> String
+        attr_accessor business_account_token: String?
 
         attr_reader email: String?
 
@@ -740,7 +736,7 @@ module Lithic
         def initialize: (
           ?token: String,
           ?address: Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address,
-          ?business_account_token: String,
+          ?business_account_token: String?,
           ?email: String,
           ?first_name: String,
           ?last_name: String,
@@ -751,7 +747,7 @@ module Lithic
         def to_hash: -> {
           token: String,
           address: Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address,
-          business_account_token: String,
+          business_account_token: String?,
           email: String,
           first_name: String,
           last_name: String,

@@ -122,36 +122,6 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     end
   end
 
-  def test_apply
-    response =
-      @lithic.auth_rules.v2.apply(
-        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        card_tokens: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"]
-      )
-
-    assert_pattern do
-      response => Lithic::Models::AuthRules::V2ApplyResponse
-    end
-
-    assert_pattern do
-      response => {
-        token: String,
-        account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
-        business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
-        card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
-        current_version: Lithic::Models::AuthRules::V2ApplyResponse::CurrentVersion | nil,
-        draft_version: Lithic::Models::AuthRules::V2ApplyResponse::DraftVersion | nil,
-        event_stream: Lithic::Models::AuthRules::V2ApplyResponse::EventStream,
-        lithic_managed: Lithic::Internal::Type::Boolean,
-        name: String | nil,
-        program_level: Lithic::Internal::Type::Boolean,
-        state: Lithic::Models::AuthRules::V2ApplyResponse::State,
-        type: Lithic::Models::AuthRules::V2ApplyResponse::Type,
-        excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
-      }
-    end
-  end
-
   def test_draft
     response = @lithic.auth_rules.v2.draft("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

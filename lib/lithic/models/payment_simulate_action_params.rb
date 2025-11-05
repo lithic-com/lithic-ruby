@@ -13,11 +13,23 @@ module Lithic
       #   @return [Symbol, Lithic::Models::PaymentSimulateActionParams::EventType]
       required :event_type, enum: -> { Lithic::PaymentSimulateActionParams::EventType }
 
+      # @!attribute date_of_death
+      #   Date of Death for ACH Return
+      #
+      #   @return [Date, nil]
+      optional :date_of_death, Date
+
       # @!attribute decline_reason
       #   Decline reason
       #
       #   @return [Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason, nil]
       optional :decline_reason, enum: -> { Lithic::PaymentSimulateActionParams::DeclineReason }
+
+      # @!attribute return_addenda
+      #   Return Addenda
+      #
+      #   @return [String, nil]
+      optional :return_addenda, String
 
       # @!attribute return_reason_code
       #   Return Reason Code
@@ -25,10 +37,14 @@ module Lithic
       #   @return [String, nil]
       optional :return_reason_code, String
 
-      # @!method initialize(event_type:, decline_reason: nil, return_reason_code: nil, request_options: {})
+      # @!method initialize(event_type:, date_of_death: nil, decline_reason: nil, return_addenda: nil, return_reason_code: nil, request_options: {})
       #   @param event_type [Symbol, Lithic::Models::PaymentSimulateActionParams::EventType] Event Type
       #
+      #   @param date_of_death [Date] Date of Death for ACH Return
+      #
       #   @param decline_reason [Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason] Decline reason
+      #
+      #   @param return_addenda [String] Return Addenda
       #
       #   @param return_reason_code [String] Return Reason Code
       #

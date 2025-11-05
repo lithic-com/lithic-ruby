@@ -47,7 +47,7 @@ module Lithic
         #   with the AUTHORIZED_USER in this field.
         #
         #   @return [String, nil]
-        optional :business_account_token, String
+        optional :business_account_token, String, nil?: true
 
         # @!attribute business_entity
         #   Only present when user_type == "BUSINESS". Information about the business for
@@ -187,7 +187,7 @@ module Lithic
         #
         #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual>] Only present when user_type == "BUSINESS". You must submit a list of all direct
         #
-        #   @param business_account_token [String] Only applicable for customers using the KYC-Exempt workflow to enroll authorized
+        #   @param business_account_token [String, nil] Only applicable for customers using the KYC-Exempt workflow to enroll authorized
         #
         #   @param business_entity [Lithic::Models::KYBBusinessEntity] Only present when user_type == "BUSINESS". Information about the business for wh
         #
@@ -813,7 +813,7 @@ module Lithic
         #   The token for the business account that the account holder is associated with
         #
         #   @return [String, nil]
-        optional :business_account_token, String
+        optional :business_account_token, String, nil?: true
 
         # @!attribute email
         #   The email for the account holder
@@ -850,7 +850,7 @@ module Lithic
         #
         #   @param address [Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address] The address for the account holder
         #
-        #   @param business_account_token [String] The token for the business account that the account holder is associated with
+        #   @param business_account_token [String, nil] The token for the business account that the account holder is associated with
         #
         #   @param email [String] The email for the account holder
         #

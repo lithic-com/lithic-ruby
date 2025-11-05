@@ -102,8 +102,10 @@ module Lithic
         params(
           payment_token: String,
           event_type: Lithic::PaymentSimulateActionParams::EventType::OrSymbol,
+          date_of_death: Date,
           decline_reason:
             Lithic::PaymentSimulateActionParams::DeclineReason::OrSymbol,
+          return_addenda: String,
           return_reason_code: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(Lithic::Models::PaymentSimulateActionResponse)
@@ -112,8 +114,12 @@ module Lithic
         payment_token,
         # Event Type
         event_type:,
+        # Date of Death for ACH Return
+        date_of_death: nil,
         # Decline reason
         decline_reason: nil,
+        # Return Addenda
+        return_addenda: nil,
         # Return Reason Code
         return_reason_code: nil,
         request_options: {}

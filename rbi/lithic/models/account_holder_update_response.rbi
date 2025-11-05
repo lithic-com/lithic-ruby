@@ -79,10 +79,7 @@ module Lithic
         # users of businesses. Pass the account_token of the enrolled business associated
         # with the AUTHORIZED_USER in this field.
         sig { returns(T.nilable(String)) }
-        attr_reader :business_account_token
-
-        sig { params(business_account_token: String).void }
-        attr_writer :business_account_token
+        attr_accessor :business_account_token
 
         # Only present when user_type == "BUSINESS". Information about the business for
         # which the account is being opened and KYB is being run.
@@ -314,7 +311,7 @@ module Lithic
               T::Array[
                 Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual::OrHash
               ],
-            business_account_token: String,
+            business_account_token: T.nilable(String),
             business_entity: Lithic::KYBBusinessEntity::OrHash,
             control_person:
               Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson::OrHash,
@@ -432,7 +429,7 @@ module Lithic
                 T::Array[
                   Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::BeneficialOwnerIndividual
                 ],
-              business_account_token: String,
+              business_account_token: T.nilable(String),
               business_entity: Lithic::KYBBusinessEntity,
               control_person:
                 Lithic::Models::AccountHolderUpdateResponse::KYBKYCPatchResponse::ControlPerson,
@@ -1664,10 +1661,7 @@ module Lithic
 
         # The token for the business account that the account holder is associated with
         sig { returns(T.nilable(String)) }
-        attr_reader :business_account_token
-
-        sig { params(business_account_token: String).void }
-        attr_writer :business_account_token
+        attr_accessor :business_account_token
 
         # The email for the account holder
         sig { returns(T.nilable(String)) }
@@ -1709,7 +1703,7 @@ module Lithic
             token: String,
             address:
               Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address::OrHash,
-            business_account_token: String,
+            business_account_token: T.nilable(String),
             email: String,
             first_name: String,
             last_name: String,
@@ -1743,7 +1737,7 @@ module Lithic
               token: String,
               address:
                 Lithic::Models::AccountHolderUpdateResponse::PatchResponse::Address,
-              business_account_token: String,
+              business_account_token: T.nilable(String),
               email: String,
               first_name: String,
               last_name: String,

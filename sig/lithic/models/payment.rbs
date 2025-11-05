@@ -383,15 +383,17 @@ module Lithic
 
         type wire_method_attributes =
           {
+            wire_message_type: String?,
             wire_network: Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::wire_network,
             creditor: Lithic::WirePartyDetails,
             debtor: Lithic::WirePartyDetails,
             message_id: String?,
-            remittance_information: String?,
-            wire_message_type: String
+            remittance_information: String?
           }
 
         class WireMethodAttributes < Lithic::Internal::Type::BaseModel
+          attr_accessor wire_message_type: String?
+
           attr_accessor wire_network: Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::wire_network
 
           attr_reader creditor: Lithic::WirePartyDetails?
@@ -406,26 +408,22 @@ module Lithic
 
           attr_accessor remittance_information: String?
 
-          attr_reader wire_message_type: String?
-
-          def wire_message_type=: (String) -> String
-
           def initialize: (
+            wire_message_type: String?,
             wire_network: Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::wire_network,
             ?creditor: Lithic::WirePartyDetails,
             ?debtor: Lithic::WirePartyDetails,
             ?message_id: String?,
-            ?remittance_information: String?,
-            ?wire_message_type: String
+            ?remittance_information: String?
           ) -> void
 
           def to_hash: -> {
+            wire_message_type: String?,
             wire_network: Lithic::Models::Payment::MethodAttributes::WireMethodAttributes::wire_network,
             creditor: Lithic::WirePartyDetails,
             debtor: Lithic::WirePartyDetails,
             message_id: String?,
-            remittance_information: String?,
-            wire_message_type: String
+            remittance_information: String?
           }
 
           type wire_network = :FEDWIRE | :SWIFT
