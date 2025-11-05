@@ -165,7 +165,7 @@ class Lithic::Test::Resources::AccountHoldersTest < Lithic::Test::ResourceTest
   def test_simulate_enrollment_document_review_required_params
     response =
       @lithic.account_holders.simulate_enrollment_document_review(
-        document_upload_token: "document_upload_token",
+        document_upload_token: "b11cd67b-0a52-4180-8365-314f3def5426",
         status: :UPLOADED
       )
 

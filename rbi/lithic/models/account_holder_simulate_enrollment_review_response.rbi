@@ -67,10 +67,7 @@ module Lithic
       # users of businesses. Pass the account_token of the enrolled business associated
       # with the AUTHORIZED_USER in this field.
       sig { returns(T.nilable(String)) }
-      attr_reader :business_account_token
-
-      sig { params(business_account_token: String).void }
-      attr_writer :business_account_token
+      attr_accessor :business_account_token
 
       # Only present when user_type == "BUSINESS". Information about the business for
       # which the account is being opened and KYB is being run.
@@ -302,7 +299,7 @@ module Lithic
             T::Array[
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual::OrHash
             ],
-          business_account_token: String,
+          business_account_token: T.nilable(String),
           business_entity: Lithic::KYBBusinessEntity::OrHash,
           control_person:
             Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson::OrHash,
@@ -420,7 +417,7 @@ module Lithic
               T::Array[
                 Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual
               ],
-            business_account_token: String,
+            business_account_token: T.nilable(String),
             business_entity: Lithic::KYBBusinessEntity,
             control_person:
               Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,

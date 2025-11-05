@@ -30,12 +30,9 @@ module Lithic
           required :filters, -> { Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters }
 
           # @!attribute period
-          #   DEPRECATED: This has been deprecated in favor of the Trailing Window Objects
+          #   Velocity over the current day since 00:00 / 12 AM in Eastern Time
           #
-          #   The size of the trailing window to calculate Spend Velocity over in seconds. The
-          #   minimum value is 10 seconds, and the maximum value is 2678400 seconds (31 days).
-          #
-          #   @return [Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindow, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear]
+          #   @return [Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear]
           required :period, union: -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow }
 
           # @!attribute scope
@@ -50,13 +47,9 @@ module Lithic
           required :value, -> { Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Value }
 
           # @!method initialize(filters:, period:, scope:, value:)
-          #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature} for more
-          #   details.
-          #
           #   @param filters [Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters]
           #
-          #   @param period [Integer, Symbol, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindow, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear] DEPRECATED: This has been deprecated in favor of the Trailing Window Objects
+          #   @param period [Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear] Velocity over the current day since 00:00 / 12 AM in Eastern Time
           #
           #   @param scope [Symbol, Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Scope] The scope the velocity is calculated for
           #

@@ -15,37 +15,106 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :created
 
-      # Event types:
+      # The type of event that occurred. Possible values:
       #
-      # - `account_holder.created` - Notification that a new account holder has been
-      #   created and was not rejected.
-      # - `account_holder.updated` - Notification that an account holder was updated.
-      # - `account_holder.verification` - Notification than an account holder's identity
-      #   verification is complete.
-      # - `card.created` - Notification that a card has been created.
-      # - `card.renewed` - Notification that a card has been renewed.
-      # - `card.reissued` - Notification that a card has been reissued.
-      # - `card.shipped` - Physical card shipment notification. See
-      #   https://docs.lithic.com/docs/cards#physical-card-shipped-webhook.
-      # - `card.converted` - Notification that a virtual card has been converted to a
-      #   physical card.
-      # - `card_transaction.updated` - Transaction Lifecycle webhook. See
-      #   https://docs.lithic.com/docs/transaction-webhooks.
-      # - `dispute.updated` - A dispute has been updated.
-      # - `dispute_transaction.created` - A new dispute transaction has been created.
-      # - `dispute_transaction.updated` - A dispute transaction has been updated.
-      # - `digital_wallet.tokenization_approval_request` - Card network's request to
-      #   Lithic to activate a digital wallet token.
-      # - `digital_wallet.tokenization_result` - Notification of the end result of a
-      #   tokenization, whether successful or failed.
-      # - `digital_wallet.tokenization_two_factor_authentication_code` - A code to be
-      #   passed to an end user to complete digital wallet authentication. See
-      #   https://docs.lithic.com/docs/tokenization-control#digital-wallet-tokenization-auth-code.
-      # - `digital_wallet.tokenization_two_factor_authentication_code_sent` -
-      #   Notification that a two factor authentication code for activating a digital
-      #   wallet has been sent to the end user.
-      # - `digital_wallet.tokenization_updated` - Notification that a digital wallet
-      #   tokenization's status has changed.
+      # - account_holder_document.updated: Occurs when an account holder's document
+      #   upload status has been updated
+      # - account_holder.created: Occurs when a new account_holder is created.
+      # - account_holder.updated: Occurs when an account_holder is updated.
+      # - account_holder.verification: Occurs when an asynchronous account_holder's
+      #   verification is completed.
+      # - auth_rules.backtest_report.created: Auth Rules backtest report created.
+      # - balance.updated: Financial Account Balance Update
+      # - book_transfer_transaction.created: Occurs when a book transfer transaction is
+      #   created.
+      # - book_transfer_transaction.updated: Occurs when a book transfer transaction is
+      #   updated.
+      # - card_transaction.enhanced_data.created: Occurs when L2/L3 enhanced commercial
+      #   data is processed for a transaction event.
+      # - card_transaction.enhanced_data.updated: Occurs when L2/L3 enhanced commercial
+      #   data is reprocessed for a transaction event.
+      # - card_transaction.updated: Occurs when a card transaction happens.
+      # - card.converted: Occurs when a card is converted from virtual to physical
+      #   cards.
+      # - card.created: Occurs when a new card is created.
+      # - card.reissued: Occurs when a card is reissued.
+      # - card.renewed: Occurs when a card is renewed.
+      # - card.shipped: Occurs when a card is shipped.
+      # - digital_wallet.tokenization_approval_request: Occurs when a tokenization
+      #   approval request is made. This event will be deprecated in the future. We
+      #   recommend using `tokenization.approval_request` instead.
+      # - digital_wallet.tokenization_result: Occurs when a tokenization request
+      #   succeeded or failed.
+      #
+      # This event will be deprecated in the future. We recommend using
+      # `tokenization.result` instead.
+      #
+      # - digital_wallet.tokenization_two_factor_authentication_code: Occurs when a
+      #   tokenization request 2FA code is sent to the Lithic customer for self serve
+      #   delivery.
+      #
+      # This event will be deprecated in the future. We recommend using
+      # `tokenization.two_factor_authentication_code` instead.
+      #
+      # - digital_wallet.tokenization_two_factor_authentication_code_sent: Occurs when a
+      #   tokenization request 2FA code is sent to our downstream messaging providers
+      #   for delivery.
+      #
+      # This event will be deprecated in the future. We recommend using
+      # `tokenization.two_factor_authentication_code_sent` instead.
+      #
+      # - digital_wallet.tokenization_updated: Occurs when a tokenization's status has
+      #   changed.
+      #
+      # This event will be deprecated in the future. We recommend using
+      # `tokenization.updated` instead.
+      #
+      # - dispute_evidence.upload_failed: Occurs when a dispute evidence upload fails.
+      # - dispute_transaction.created: Occurs when a new dispute transaction is created
+      # - dispute_transaction.updated: Occurs when a dispute transaction is updated
+      # - dispute.updated: Occurs when a dispute is updated.
+      # - external_bank_account.created: Occurs when an external bank account is
+      #   created.
+      # - external_bank_account.updated: Occurs when an external bank account is
+      #   updated.
+      # - external_payment.created: Occurs when an external payment is created.
+      # - external_payment.updated: Occurs when an external payment is updated.
+      # - financial_account.created: Occurs when a financial account is created.
+      # - financial_account.updated: Occurs when a financial account is updated.
+      # - funding_event.created: Occurs when a funding event is created.
+      # - internal_transaction.created: Occurs when an internal adjustment is created.
+      # - internal_transaction.updated: Occurs when an internal adjustment is updated.
+      # - loan_tape.created: Occurs when a loan tape is created.
+      # - loan_tape.updated: Occurs when a loan tape is updated.
+      # - management_operation.created: Occurs when an management operation is created.
+      # - management_operation.updated: Occurs when an management operation is updated.
+      # - network_total.created: Occurs when a network total is created.
+      # - network_total.updated: Occurs when a network total is updated.
+      # - payment_transaction.created: Occurs when a payment transaction is created.
+      # - payment_transaction.updated: Occurs when a payment transaction is updated.
+      # - settlement_report.updated: Occurs when a settlement report is created or
+      #   updated.
+      # - statements.created: Occurs when a statement has been created
+      # - three_ds_authentication.challenge: The `three_ds_authentication.challenge`
+      #   event. Upon receiving this request, the Card Program should issue its own
+      #   challenge to the cardholder. After a cardholder challenge is successfully
+      #   completed, the Card Program needs to respond back to Lithic by call to
+      #   [/v1/three_ds_decisioning/challenge_response](https://docs.lithic.com/reference/post_v1-three-ds-decisioning-challenge-response).
+      #   Then the cardholder must navigate back to the merchant checkout flow to
+      #   complete the transaction. Some merchants will include an `app_requestor_url`
+      #   for app-based purchases; Lithic recommends triggering a redirect to that URL
+      #   after the cardholder completes an app-based challenge.
+      # - three_ds_authentication.created: Occurs when a 3DS authentication is created.
+      # - three_ds_authentication.updated: Occurs when a 3DS authentication is updated
+      #   (eg. challenge is completed).
+      # - tokenization.approval_request: Occurs when a tokenization approval request is
+      #   made.
+      # - tokenization.result: Occurs when a tokenization request succeeded or failed.
+      # - tokenization.two_factor_authentication_code: Occurs when a tokenization
+      #   request 2FA code is sent to the Lithic customer for self serve delivery.
+      # - tokenization.two_factor_authentication_code_sent: Occurs when a tokenization
+      #   request 2FA code is sent to our downstream messaging providers for delivery.
+      # - tokenization.updated: Occurs when a tokenization's status has changed.
       sig { returns(Lithic::Event::EventType::TaggedSymbol) }
       attr_accessor :event_type
 
@@ -68,37 +137,106 @@ module Lithic
         #
         # If no timezone is specified, UTC will be used.
         created:,
-        # Event types:
+        # The type of event that occurred. Possible values:
         #
-        # - `account_holder.created` - Notification that a new account holder has been
-        #   created and was not rejected.
-        # - `account_holder.updated` - Notification that an account holder was updated.
-        # - `account_holder.verification` - Notification than an account holder's identity
-        #   verification is complete.
-        # - `card.created` - Notification that a card has been created.
-        # - `card.renewed` - Notification that a card has been renewed.
-        # - `card.reissued` - Notification that a card has been reissued.
-        # - `card.shipped` - Physical card shipment notification. See
-        #   https://docs.lithic.com/docs/cards#physical-card-shipped-webhook.
-        # - `card.converted` - Notification that a virtual card has been converted to a
-        #   physical card.
-        # - `card_transaction.updated` - Transaction Lifecycle webhook. See
-        #   https://docs.lithic.com/docs/transaction-webhooks.
-        # - `dispute.updated` - A dispute has been updated.
-        # - `dispute_transaction.created` - A new dispute transaction has been created.
-        # - `dispute_transaction.updated` - A dispute transaction has been updated.
-        # - `digital_wallet.tokenization_approval_request` - Card network's request to
-        #   Lithic to activate a digital wallet token.
-        # - `digital_wallet.tokenization_result` - Notification of the end result of a
-        #   tokenization, whether successful or failed.
-        # - `digital_wallet.tokenization_two_factor_authentication_code` - A code to be
-        #   passed to an end user to complete digital wallet authentication. See
-        #   https://docs.lithic.com/docs/tokenization-control#digital-wallet-tokenization-auth-code.
-        # - `digital_wallet.tokenization_two_factor_authentication_code_sent` -
-        #   Notification that a two factor authentication code for activating a digital
-        #   wallet has been sent to the end user.
-        # - `digital_wallet.tokenization_updated` - Notification that a digital wallet
-        #   tokenization's status has changed.
+        # - account_holder_document.updated: Occurs when an account holder's document
+        #   upload status has been updated
+        # - account_holder.created: Occurs when a new account_holder is created.
+        # - account_holder.updated: Occurs when an account_holder is updated.
+        # - account_holder.verification: Occurs when an asynchronous account_holder's
+        #   verification is completed.
+        # - auth_rules.backtest_report.created: Auth Rules backtest report created.
+        # - balance.updated: Financial Account Balance Update
+        # - book_transfer_transaction.created: Occurs when a book transfer transaction is
+        #   created.
+        # - book_transfer_transaction.updated: Occurs when a book transfer transaction is
+        #   updated.
+        # - card_transaction.enhanced_data.created: Occurs when L2/L3 enhanced commercial
+        #   data is processed for a transaction event.
+        # - card_transaction.enhanced_data.updated: Occurs when L2/L3 enhanced commercial
+        #   data is reprocessed for a transaction event.
+        # - card_transaction.updated: Occurs when a card transaction happens.
+        # - card.converted: Occurs when a card is converted from virtual to physical
+        #   cards.
+        # - card.created: Occurs when a new card is created.
+        # - card.reissued: Occurs when a card is reissued.
+        # - card.renewed: Occurs when a card is renewed.
+        # - card.shipped: Occurs when a card is shipped.
+        # - digital_wallet.tokenization_approval_request: Occurs when a tokenization
+        #   approval request is made. This event will be deprecated in the future. We
+        #   recommend using `tokenization.approval_request` instead.
+        # - digital_wallet.tokenization_result: Occurs when a tokenization request
+        #   succeeded or failed.
+        #
+        # This event will be deprecated in the future. We recommend using
+        # `tokenization.result` instead.
+        #
+        # - digital_wallet.tokenization_two_factor_authentication_code: Occurs when a
+        #   tokenization request 2FA code is sent to the Lithic customer for self serve
+        #   delivery.
+        #
+        # This event will be deprecated in the future. We recommend using
+        # `tokenization.two_factor_authentication_code` instead.
+        #
+        # - digital_wallet.tokenization_two_factor_authentication_code_sent: Occurs when a
+        #   tokenization request 2FA code is sent to our downstream messaging providers
+        #   for delivery.
+        #
+        # This event will be deprecated in the future. We recommend using
+        # `tokenization.two_factor_authentication_code_sent` instead.
+        #
+        # - digital_wallet.tokenization_updated: Occurs when a tokenization's status has
+        #   changed.
+        #
+        # This event will be deprecated in the future. We recommend using
+        # `tokenization.updated` instead.
+        #
+        # - dispute_evidence.upload_failed: Occurs when a dispute evidence upload fails.
+        # - dispute_transaction.created: Occurs when a new dispute transaction is created
+        # - dispute_transaction.updated: Occurs when a dispute transaction is updated
+        # - dispute.updated: Occurs when a dispute is updated.
+        # - external_bank_account.created: Occurs when an external bank account is
+        #   created.
+        # - external_bank_account.updated: Occurs when an external bank account is
+        #   updated.
+        # - external_payment.created: Occurs when an external payment is created.
+        # - external_payment.updated: Occurs when an external payment is updated.
+        # - financial_account.created: Occurs when a financial account is created.
+        # - financial_account.updated: Occurs when a financial account is updated.
+        # - funding_event.created: Occurs when a funding event is created.
+        # - internal_transaction.created: Occurs when an internal adjustment is created.
+        # - internal_transaction.updated: Occurs when an internal adjustment is updated.
+        # - loan_tape.created: Occurs when a loan tape is created.
+        # - loan_tape.updated: Occurs when a loan tape is updated.
+        # - management_operation.created: Occurs when an management operation is created.
+        # - management_operation.updated: Occurs when an management operation is updated.
+        # - network_total.created: Occurs when a network total is created.
+        # - network_total.updated: Occurs when a network total is updated.
+        # - payment_transaction.created: Occurs when a payment transaction is created.
+        # - payment_transaction.updated: Occurs when a payment transaction is updated.
+        # - settlement_report.updated: Occurs when a settlement report is created or
+        #   updated.
+        # - statements.created: Occurs when a statement has been created
+        # - three_ds_authentication.challenge: The `three_ds_authentication.challenge`
+        #   event. Upon receiving this request, the Card Program should issue its own
+        #   challenge to the cardholder. After a cardholder challenge is successfully
+        #   completed, the Card Program needs to respond back to Lithic by call to
+        #   [/v1/three_ds_decisioning/challenge_response](https://docs.lithic.com/reference/post_v1-three-ds-decisioning-challenge-response).
+        #   Then the cardholder must navigate back to the merchant checkout flow to
+        #   complete the transaction. Some merchants will include an `app_requestor_url`
+        #   for app-based purchases; Lithic recommends triggering a redirect to that URL
+        #   after the cardholder completes an app-based challenge.
+        # - three_ds_authentication.created: Occurs when a 3DS authentication is created.
+        # - three_ds_authentication.updated: Occurs when a 3DS authentication is updated
+        #   (eg. challenge is completed).
+        # - tokenization.approval_request: Occurs when a tokenization approval request is
+        #   made.
+        # - tokenization.result: Occurs when a tokenization request succeeded or failed.
+        # - tokenization.two_factor_authentication_code: Occurs when a tokenization
+        #   request 2FA code is sent to the Lithic customer for self serve delivery.
+        # - tokenization.two_factor_authentication_code_sent: Occurs when a tokenization
+        #   request 2FA code is sent to our downstream messaging providers for delivery.
+        # - tokenization.updated: Occurs when a tokenization's status has changed.
         event_type:,
         payload:
       )
@@ -117,43 +255,117 @@ module Lithic
       def to_hash
       end
 
-      # Event types:
+      # The type of event that occurred. Possible values:
       #
-      # - `account_holder.created` - Notification that a new account holder has been
-      #   created and was not rejected.
-      # - `account_holder.updated` - Notification that an account holder was updated.
-      # - `account_holder.verification` - Notification than an account holder's identity
-      #   verification is complete.
-      # - `card.created` - Notification that a card has been created.
-      # - `card.renewed` - Notification that a card has been renewed.
-      # - `card.reissued` - Notification that a card has been reissued.
-      # - `card.shipped` - Physical card shipment notification. See
-      #   https://docs.lithic.com/docs/cards#physical-card-shipped-webhook.
-      # - `card.converted` - Notification that a virtual card has been converted to a
-      #   physical card.
-      # - `card_transaction.updated` - Transaction Lifecycle webhook. See
-      #   https://docs.lithic.com/docs/transaction-webhooks.
-      # - `dispute.updated` - A dispute has been updated.
-      # - `dispute_transaction.created` - A new dispute transaction has been created.
-      # - `dispute_transaction.updated` - A dispute transaction has been updated.
-      # - `digital_wallet.tokenization_approval_request` - Card network's request to
-      #   Lithic to activate a digital wallet token.
-      # - `digital_wallet.tokenization_result` - Notification of the end result of a
-      #   tokenization, whether successful or failed.
-      # - `digital_wallet.tokenization_two_factor_authentication_code` - A code to be
-      #   passed to an end user to complete digital wallet authentication. See
-      #   https://docs.lithic.com/docs/tokenization-control#digital-wallet-tokenization-auth-code.
-      # - `digital_wallet.tokenization_two_factor_authentication_code_sent` -
-      #   Notification that a two factor authentication code for activating a digital
-      #   wallet has been sent to the end user.
-      # - `digital_wallet.tokenization_updated` - Notification that a digital wallet
-      #   tokenization's status has changed.
+      # - account_holder_document.updated: Occurs when an account holder's document
+      #   upload status has been updated
+      # - account_holder.created: Occurs when a new account_holder is created.
+      # - account_holder.updated: Occurs when an account_holder is updated.
+      # - account_holder.verification: Occurs when an asynchronous account_holder's
+      #   verification is completed.
+      # - auth_rules.backtest_report.created: Auth Rules backtest report created.
+      # - balance.updated: Financial Account Balance Update
+      # - book_transfer_transaction.created: Occurs when a book transfer transaction is
+      #   created.
+      # - book_transfer_transaction.updated: Occurs when a book transfer transaction is
+      #   updated.
+      # - card_transaction.enhanced_data.created: Occurs when L2/L3 enhanced commercial
+      #   data is processed for a transaction event.
+      # - card_transaction.enhanced_data.updated: Occurs when L2/L3 enhanced commercial
+      #   data is reprocessed for a transaction event.
+      # - card_transaction.updated: Occurs when a card transaction happens.
+      # - card.converted: Occurs when a card is converted from virtual to physical
+      #   cards.
+      # - card.created: Occurs when a new card is created.
+      # - card.reissued: Occurs when a card is reissued.
+      # - card.renewed: Occurs when a card is renewed.
+      # - card.shipped: Occurs when a card is shipped.
+      # - digital_wallet.tokenization_approval_request: Occurs when a tokenization
+      #   approval request is made. This event will be deprecated in the future. We
+      #   recommend using `tokenization.approval_request` instead.
+      # - digital_wallet.tokenization_result: Occurs when a tokenization request
+      #   succeeded or failed.
+      #
+      # This event will be deprecated in the future. We recommend using
+      # `tokenization.result` instead.
+      #
+      # - digital_wallet.tokenization_two_factor_authentication_code: Occurs when a
+      #   tokenization request 2FA code is sent to the Lithic customer for self serve
+      #   delivery.
+      #
+      # This event will be deprecated in the future. We recommend using
+      # `tokenization.two_factor_authentication_code` instead.
+      #
+      # - digital_wallet.tokenization_two_factor_authentication_code_sent: Occurs when a
+      #   tokenization request 2FA code is sent to our downstream messaging providers
+      #   for delivery.
+      #
+      # This event will be deprecated in the future. We recommend using
+      # `tokenization.two_factor_authentication_code_sent` instead.
+      #
+      # - digital_wallet.tokenization_updated: Occurs when a tokenization's status has
+      #   changed.
+      #
+      # This event will be deprecated in the future. We recommend using
+      # `tokenization.updated` instead.
+      #
+      # - dispute_evidence.upload_failed: Occurs when a dispute evidence upload fails.
+      # - dispute_transaction.created: Occurs when a new dispute transaction is created
+      # - dispute_transaction.updated: Occurs when a dispute transaction is updated
+      # - dispute.updated: Occurs when a dispute is updated.
+      # - external_bank_account.created: Occurs when an external bank account is
+      #   created.
+      # - external_bank_account.updated: Occurs when an external bank account is
+      #   updated.
+      # - external_payment.created: Occurs when an external payment is created.
+      # - external_payment.updated: Occurs when an external payment is updated.
+      # - financial_account.created: Occurs when a financial account is created.
+      # - financial_account.updated: Occurs when a financial account is updated.
+      # - funding_event.created: Occurs when a funding event is created.
+      # - internal_transaction.created: Occurs when an internal adjustment is created.
+      # - internal_transaction.updated: Occurs when an internal adjustment is updated.
+      # - loan_tape.created: Occurs when a loan tape is created.
+      # - loan_tape.updated: Occurs when a loan tape is updated.
+      # - management_operation.created: Occurs when an management operation is created.
+      # - management_operation.updated: Occurs when an management operation is updated.
+      # - network_total.created: Occurs when a network total is created.
+      # - network_total.updated: Occurs when a network total is updated.
+      # - payment_transaction.created: Occurs when a payment transaction is created.
+      # - payment_transaction.updated: Occurs when a payment transaction is updated.
+      # - settlement_report.updated: Occurs when a settlement report is created or
+      #   updated.
+      # - statements.created: Occurs when a statement has been created
+      # - three_ds_authentication.challenge: The `three_ds_authentication.challenge`
+      #   event. Upon receiving this request, the Card Program should issue its own
+      #   challenge to the cardholder. After a cardholder challenge is successfully
+      #   completed, the Card Program needs to respond back to Lithic by call to
+      #   [/v1/three_ds_decisioning/challenge_response](https://docs.lithic.com/reference/post_v1-three-ds-decisioning-challenge-response).
+      #   Then the cardholder must navigate back to the merchant checkout flow to
+      #   complete the transaction. Some merchants will include an `app_requestor_url`
+      #   for app-based purchases; Lithic recommends triggering a redirect to that URL
+      #   after the cardholder completes an app-based challenge.
+      # - three_ds_authentication.created: Occurs when a 3DS authentication is created.
+      # - three_ds_authentication.updated: Occurs when a 3DS authentication is updated
+      #   (eg. challenge is completed).
+      # - tokenization.approval_request: Occurs when a tokenization approval request is
+      #   made.
+      # - tokenization.result: Occurs when a tokenization request succeeded or failed.
+      # - tokenization.two_factor_authentication_code: Occurs when a tokenization
+      #   request 2FA code is sent to the Lithic customer for self serve delivery.
+      # - tokenization.two_factor_authentication_code_sent: Occurs when a tokenization
+      #   request 2FA code is sent to our downstream messaging providers for delivery.
+      # - tokenization.updated: Occurs when a tokenization's status has changed.
       module EventType
         extend Lithic::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Lithic::Event::EventType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        ACCOUNT_HOLDER_DOCUMENT_UPDATED =
+          T.let(
+            :"account_holder_document.updated",
+            Lithic::Event::EventType::TaggedSymbol
+          )
         ACCOUNT_HOLDER_CREATED =
           T.let(
             :"account_holder.created",
@@ -169,6 +381,11 @@ module Lithic
             :"account_holder.verification",
             Lithic::Event::EventType::TaggedSymbol
           )
+        AUTH_RULES_BACKTEST_REPORT_CREATED =
+          T.let(
+            :"auth_rules.backtest_report.created",
+            Lithic::Event::EventType::TaggedSymbol
+          )
         BALANCE_UPDATED =
           T.let(:"balance.updated", Lithic::Event::EventType::TaggedSymbol)
         BOOK_TRANSFER_TRANSACTION_CREATED =
@@ -176,21 +393,36 @@ module Lithic
             :"book_transfer_transaction.created",
             Lithic::Event::EventType::TaggedSymbol
           )
-        CARD_CREATED =
-          T.let(:"card.created", Lithic::Event::EventType::TaggedSymbol)
-        CARD_RENEWED =
-          T.let(:"card.renewed", Lithic::Event::EventType::TaggedSymbol)
-        CARD_REISSUED =
-          T.let(:"card.reissued", Lithic::Event::EventType::TaggedSymbol)
-        CARD_CONVERTED =
-          T.let(:"card.converted", Lithic::Event::EventType::TaggedSymbol)
-        CARD_SHIPPED =
-          T.let(:"card.shipped", Lithic::Event::EventType::TaggedSymbol)
+        BOOK_TRANSFER_TRANSACTION_UPDATED =
+          T.let(
+            :"book_transfer_transaction.updated",
+            Lithic::Event::EventType::TaggedSymbol
+          )
+        CARD_TRANSACTION_ENHANCED_DATA_CREATED =
+          T.let(
+            :"card_transaction.enhanced_data.created",
+            Lithic::Event::EventType::TaggedSymbol
+          )
+        CARD_TRANSACTION_ENHANCED_DATA_UPDATED =
+          T.let(
+            :"card_transaction.enhanced_data.updated",
+            Lithic::Event::EventType::TaggedSymbol
+          )
         CARD_TRANSACTION_UPDATED =
           T.let(
             :"card_transaction.updated",
             Lithic::Event::EventType::TaggedSymbol
           )
+        CARD_CONVERTED =
+          T.let(:"card.converted", Lithic::Event::EventType::TaggedSymbol)
+        CARD_CREATED =
+          T.let(:"card.created", Lithic::Event::EventType::TaggedSymbol)
+        CARD_REISSUED =
+          T.let(:"card.reissued", Lithic::Event::EventType::TaggedSymbol)
+        CARD_RENEWED =
+          T.let(:"card.renewed", Lithic::Event::EventType::TaggedSymbol)
+        CARD_SHIPPED =
+          T.let(:"card.shipped", Lithic::Event::EventType::TaggedSymbol)
         DIGITAL_WALLET_TOKENIZATION_APPROVAL_REQUEST =
           T.let(
             :"digital_wallet.tokenization_approval_request",
@@ -216,8 +448,6 @@ module Lithic
             :"digital_wallet.tokenization_updated",
             Lithic::Event::EventType::TaggedSymbol
           )
-        DISPUTE_UPDATED =
-          T.let(:"dispute.updated", Lithic::Event::EventType::TaggedSymbol)
         DISPUTE_EVIDENCE_UPLOAD_FAILED =
           T.let(
             :"dispute_evidence.upload_failed",
@@ -233,6 +463,8 @@ module Lithic
             :"dispute_transaction.updated",
             Lithic::Event::EventType::TaggedSymbol
           )
+        DISPUTE_UPDATED =
+          T.let(:"dispute.updated", Lithic::Event::EventType::TaggedSymbol)
         EXTERNAL_BANK_ACCOUNT_CREATED =
           T.let(
             :"external_bank_account.created",
@@ -266,6 +498,16 @@ module Lithic
         FUNDING_EVENT_CREATED =
           T.let(
             :"funding_event.created",
+            Lithic::Event::EventType::TaggedSymbol
+          )
+        INTERNAL_TRANSACTION_CREATED =
+          T.let(
+            :"internal_transaction.created",
+            Lithic::Event::EventType::TaggedSymbol
+          )
+        INTERNAL_TRANSACTION_UPDATED =
+          T.let(
+            :"internal_transaction.updated",
             Lithic::Event::EventType::TaggedSymbol
           )
         LOAN_TAPE_CREATED =
@@ -302,16 +544,6 @@ module Lithic
             :"payment_transaction.updated",
             Lithic::Event::EventType::TaggedSymbol
           )
-        INTERNAL_TRANSACTION_CREATED =
-          T.let(
-            :"internal_transaction.created",
-            Lithic::Event::EventType::TaggedSymbol
-          )
-        INTERNAL_TRANSACTION_UPDATED =
-          T.let(
-            :"internal_transaction.updated",
-            Lithic::Event::EventType::TaggedSymbol
-          )
         SETTLEMENT_REPORT_UPDATED =
           T.let(
             :"settlement_report.updated",
@@ -319,6 +551,11 @@ module Lithic
           )
         STATEMENTS_CREATED =
           T.let(:"statements.created", Lithic::Event::EventType::TaggedSymbol)
+        THREE_DS_AUTHENTICATION_CHALLENGE =
+          T.let(
+            :"three_ds_authentication.challenge",
+            Lithic::Event::EventType::TaggedSymbol
+          )
         THREE_DS_AUTHENTICATION_CREATED =
           T.let(
             :"three_ds_authentication.created",

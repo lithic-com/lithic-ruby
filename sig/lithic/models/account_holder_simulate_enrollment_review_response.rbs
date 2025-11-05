@@ -6,7 +6,7 @@ module Lithic
         account_token: String,
         beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
         beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual],
-        business_account_token: String,
+        business_account_token: String?,
         business_entity: Lithic::KYBBusinessEntity,
         control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
         created: Time,
@@ -45,9 +45,7 @@ module Lithic
         ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual]
       ) -> ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual]
 
-      attr_reader business_account_token: String?
-
-      def business_account_token=: (String) -> String
+      attr_accessor business_account_token: String?
 
       attr_reader business_entity: Lithic::KYBBusinessEntity?
 
@@ -132,7 +130,7 @@ module Lithic
         ?account_token: String,
         ?beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
         ?beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual],
-        ?business_account_token: String,
+        ?business_account_token: String?,
         ?business_entity: Lithic::KYBBusinessEntity,
         ?control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
         ?created: Time,
@@ -155,7 +153,7 @@ module Lithic
         account_token: String,
         beneficial_owner_entities: ::Array[Lithic::KYBBusinessEntity],
         beneficial_owner_individuals: ::Array[Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual],
-        business_account_token: String,
+        business_account_token: String?,
         business_entity: Lithic::KYBBusinessEntity,
         control_person: Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::ControlPerson,
         created: Time,

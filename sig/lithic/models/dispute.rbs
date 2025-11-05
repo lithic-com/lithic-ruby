@@ -3,207 +3,467 @@ module Lithic
     type dispute =
       {
         token: String,
-        amount: Integer,
-        arbitration_date: Time?,
+        account_token: String,
+        card_token: String,
+        case_id: String?,
         created: Time,
-        customer_filed_date: Time?,
-        customer_note: String?,
-        network_claim_ids: ::Array[String]?,
-        network_filed_date: Time?,
-        network_reason_code: String?,
-        prearbitration_date: Time?,
-        primary_claim_id: String?,
-        reason: Lithic::Models::Dispute::reason,
-        representment_date: Time?,
-        resolution_date: Time?,
-        resolution_note: String?,
-        resolution_reason: Lithic::Models::Dispute::resolution_reason?,
-        status: Lithic::Models::Dispute::status,
-        transaction_token: String
+        currency: String,
+        disposition: Lithic::Models::Dispute::disposition?,
+        events: ::Array[Lithic::Dispute::Event],
+        liability_allocation: Lithic::Dispute::LiabilityAllocation,
+        merchant: Lithic::Dispute::Merchant,
+        network: Lithic::Models::Dispute::network,
+        status: Lithic::Models::Dispute::status?,
+        transaction_series: Lithic::Dispute::TransactionSeries?,
+        updated: Time
       }
 
     class Dispute < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
 
-      attr_accessor amount: Integer
+      attr_accessor account_token: String
 
-      attr_accessor arbitration_date: Time?
+      attr_accessor card_token: String
+
+      attr_accessor case_id: String?
 
       attr_accessor created: Time
 
-      attr_accessor customer_filed_date: Time?
+      attr_accessor currency: String
 
-      attr_accessor customer_note: String?
+      attr_accessor disposition: Lithic::Models::Dispute::disposition?
 
-      attr_accessor network_claim_ids: ::Array[String]?
+      attr_accessor events: ::Array[Lithic::Dispute::Event]
 
-      attr_accessor network_filed_date: Time?
+      attr_accessor liability_allocation: Lithic::Dispute::LiabilityAllocation
 
-      attr_accessor network_reason_code: String?
+      attr_accessor merchant: Lithic::Dispute::Merchant
 
-      attr_accessor prearbitration_date: Time?
+      attr_accessor network: Lithic::Models::Dispute::network
 
-      attr_accessor primary_claim_id: String?
+      attr_accessor status: Lithic::Models::Dispute::status?
 
-      attr_accessor reason: Lithic::Models::Dispute::reason
+      attr_accessor transaction_series: Lithic::Dispute::TransactionSeries?
 
-      attr_accessor representment_date: Time?
-
-      attr_accessor resolution_date: Time?
-
-      attr_accessor resolution_note: String?
-
-      attr_accessor resolution_reason: Lithic::Models::Dispute::resolution_reason?
-
-      attr_accessor status: Lithic::Models::Dispute::status
-
-      attr_accessor transaction_token: String
+      attr_accessor updated: Time
 
       def initialize: (
         token: String,
-        amount: Integer,
-        arbitration_date: Time?,
+        account_token: String,
+        card_token: String,
+        case_id: String?,
         created: Time,
-        customer_filed_date: Time?,
-        customer_note: String?,
-        network_claim_ids: ::Array[String]?,
-        network_filed_date: Time?,
-        network_reason_code: String?,
-        prearbitration_date: Time?,
-        primary_claim_id: String?,
-        reason: Lithic::Models::Dispute::reason,
-        representment_date: Time?,
-        resolution_date: Time?,
-        resolution_note: String?,
-        resolution_reason: Lithic::Models::Dispute::resolution_reason?,
-        status: Lithic::Models::Dispute::status,
-        transaction_token: String
+        currency: String,
+        disposition: Lithic::Models::Dispute::disposition?,
+        events: ::Array[Lithic::Dispute::Event],
+        liability_allocation: Lithic::Dispute::LiabilityAllocation,
+        merchant: Lithic::Dispute::Merchant,
+        network: Lithic::Models::Dispute::network,
+        status: Lithic::Models::Dispute::status?,
+        transaction_series: Lithic::Dispute::TransactionSeries?,
+        updated: Time
       ) -> void
 
       def to_hash: -> {
         token: String,
-        amount: Integer,
-        arbitration_date: Time?,
+        account_token: String,
+        card_token: String,
+        case_id: String?,
         created: Time,
-        customer_filed_date: Time?,
-        customer_note: String?,
-        network_claim_ids: ::Array[String]?,
-        network_filed_date: Time?,
-        network_reason_code: String?,
-        prearbitration_date: Time?,
-        primary_claim_id: String?,
-        reason: Lithic::Models::Dispute::reason,
-        representment_date: Time?,
-        resolution_date: Time?,
-        resolution_note: String?,
-        resolution_reason: Lithic::Models::Dispute::resolution_reason?,
-        status: Lithic::Models::Dispute::status,
-        transaction_token: String
+        currency: String,
+        disposition: Lithic::Models::Dispute::disposition?,
+        events: ::Array[Lithic::Dispute::Event],
+        liability_allocation: Lithic::Dispute::LiabilityAllocation,
+        merchant: Lithic::Dispute::Merchant,
+        network: Lithic::Models::Dispute::network,
+        status: Lithic::Models::Dispute::status?,
+        transaction_series: Lithic::Dispute::TransactionSeries?,
+        updated: Time
       }
 
-      type reason =
-        :ATM_CASH_MISDISPENSE
-        | :CANCELLED
-        | :DUPLICATED
-        | :FRAUD_CARD_NOT_PRESENT
-        | :FRAUD_CARD_PRESENT
-        | :FRAUD_OTHER
-        | :GOODS_SERVICES_NOT_AS_DESCRIBED
-        | :GOODS_SERVICES_NOT_RECEIVED
-        | :INCORRECT_AMOUNT
-        | :MISSING_AUTH
-        | :OTHER
-        | :PROCESSING_ERROR
-        | :RECURRING_TRANSACTION_NOT_CANCELLED
-        | :REFUND_NOT_PROCESSED
+      type disposition = :WON | :LOST | :PARTIALLY_WON | :WITHDRAWN | :DENIED
 
-      module Reason
+      module Disposition
         extend Lithic::Internal::Type::Enum
 
-        ATM_CASH_MISDISPENSE: :ATM_CASH_MISDISPENSE
-        CANCELLED: :CANCELLED
-        DUPLICATED: :DUPLICATED
-        FRAUD_CARD_NOT_PRESENT: :FRAUD_CARD_NOT_PRESENT
-        FRAUD_CARD_PRESENT: :FRAUD_CARD_PRESENT
-        FRAUD_OTHER: :FRAUD_OTHER
-        GOODS_SERVICES_NOT_AS_DESCRIBED: :GOODS_SERVICES_NOT_AS_DESCRIBED
-        GOODS_SERVICES_NOT_RECEIVED: :GOODS_SERVICES_NOT_RECEIVED
-        INCORRECT_AMOUNT: :INCORRECT_AMOUNT
-        MISSING_AUTH: :MISSING_AUTH
-        OTHER: :OTHER
-        PROCESSING_ERROR: :PROCESSING_ERROR
-        RECURRING_TRANSACTION_NOT_CANCELLED: :RECURRING_TRANSACTION_NOT_CANCELLED
-        REFUND_NOT_PROCESSED: :REFUND_NOT_PROCESSED
-
-        def self?.values: -> ::Array[Lithic::Models::Dispute::reason]
-      end
-
-      type resolution_reason =
-        :CASE_LOST
-        | :NETWORK_REJECTED
-        | :NO_DISPUTE_RIGHTS_3DS
-        | :NO_DISPUTE_RIGHTS_BELOW_THRESHOLD
-        | :NO_DISPUTE_RIGHTS_CONTACTLESS
-        | :NO_DISPUTE_RIGHTS_HYBRID
-        | :NO_DISPUTE_RIGHTS_MAX_CHARGEBACKS
-        | :NO_DISPUTE_RIGHTS_OTHER
-        | :PAST_FILING_DATE
-        | :PREARBITRATION_REJECTED
-        | :PROCESSOR_REJECTED_OTHER
-        | :REFUNDED
-        | :REFUNDED_AFTER_CHARGEBACK
-        | :WITHDRAWN
-        | :WON_ARBITRATION
-        | :WON_FIRST_CHARGEBACK
-        | :WON_PREARBITRATION
-
-      module ResolutionReason
-        extend Lithic::Internal::Type::Enum
-
-        CASE_LOST: :CASE_LOST
-        NETWORK_REJECTED: :NETWORK_REJECTED
-        NO_DISPUTE_RIGHTS_3DS: :NO_DISPUTE_RIGHTS_3DS
-        NO_DISPUTE_RIGHTS_BELOW_THRESHOLD: :NO_DISPUTE_RIGHTS_BELOW_THRESHOLD
-        NO_DISPUTE_RIGHTS_CONTACTLESS: :NO_DISPUTE_RIGHTS_CONTACTLESS
-        NO_DISPUTE_RIGHTS_HYBRID: :NO_DISPUTE_RIGHTS_HYBRID
-        NO_DISPUTE_RIGHTS_MAX_CHARGEBACKS: :NO_DISPUTE_RIGHTS_MAX_CHARGEBACKS
-        NO_DISPUTE_RIGHTS_OTHER: :NO_DISPUTE_RIGHTS_OTHER
-        PAST_FILING_DATE: :PAST_FILING_DATE
-        PREARBITRATION_REJECTED: :PREARBITRATION_REJECTED
-        PROCESSOR_REJECTED_OTHER: :PROCESSOR_REJECTED_OTHER
-        REFUNDED: :REFUNDED
-        REFUNDED_AFTER_CHARGEBACK: :REFUNDED_AFTER_CHARGEBACK
+        WON: :WON
+        LOST: :LOST
+        PARTIALLY_WON: :PARTIALLY_WON
         WITHDRAWN: :WITHDRAWN
-        WON_ARBITRATION: :WON_ARBITRATION
-        WON_FIRST_CHARGEBACK: :WON_FIRST_CHARGEBACK
-        WON_PREARBITRATION: :WON_PREARBITRATION
+        DENIED: :DENIED
 
-        def self?.values: -> ::Array[Lithic::Models::Dispute::resolution_reason]
+        def self?.values: -> ::Array[Lithic::Models::Dispute::disposition]
       end
 
-      type status =
-        :ARBITRATION
-        | :CASE_CLOSED
-        | :CASE_WON
-        | :NEW
-        | :PENDING_CUSTOMER
-        | :PREARBITRATION
-        | :REPRESENTMENT
-        | :SUBMITTED
+      type event =
+        {
+          token: String,
+          created: Time,
+          data: Lithic::Models::Dispute::Event::data,
+          type: Lithic::Models::Dispute::Event::type_
+        }
+
+      class Event < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor created: Time
+
+        attr_accessor data: Lithic::Models::Dispute::Event::data
+
+        attr_accessor type: Lithic::Models::Dispute::Event::type_
+
+        def initialize: (
+          token: String,
+          created: Time,
+          data: Lithic::Models::Dispute::Event::data,
+          type: Lithic::Models::Dispute::Event::type_
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          created: Time,
+          data: Lithic::Models::Dispute::Event::data,
+          type: Lithic::Models::Dispute::Event::type_
+        }
+
+        type data =
+          Lithic::Dispute::Event::Data::WorkflowEventData
+          | Lithic::Dispute::Event::Data::FinancialEventData
+          | Lithic::Dispute::Event::Data::CardholderLiabilityEventData
+
+        module Data
+          extend Lithic::Internal::Type::Union
+
+          type workflow_event_data =
+            {
+              action: Lithic::Models::Dispute::Event::Data::WorkflowEventData::action,
+              amount: Integer?,
+              disposition: Lithic::Models::Dispute::Event::Data::WorkflowEventData::disposition?,
+              reason: String?,
+              stage: Lithic::Models::Dispute::Event::Data::WorkflowEventData::stage
+            }
+
+          class WorkflowEventData < Lithic::Internal::Type::BaseModel
+            attr_accessor action: Lithic::Models::Dispute::Event::Data::WorkflowEventData::action
+
+            attr_accessor amount: Integer?
+
+            attr_accessor disposition: Lithic::Models::Dispute::Event::Data::WorkflowEventData::disposition?
+
+            attr_accessor reason: String?
+
+            attr_accessor stage: Lithic::Models::Dispute::Event::Data::WorkflowEventData::stage
+
+            def initialize: (
+              action: Lithic::Models::Dispute::Event::Data::WorkflowEventData::action,
+              amount: Integer?,
+              disposition: Lithic::Models::Dispute::Event::Data::WorkflowEventData::disposition?,
+              reason: String?,
+              stage: Lithic::Models::Dispute::Event::Data::WorkflowEventData::stage
+            ) -> void
+
+            def to_hash: -> {
+              action: Lithic::Models::Dispute::Event::Data::WorkflowEventData::action,
+              amount: Integer?,
+              disposition: Lithic::Models::Dispute::Event::Data::WorkflowEventData::disposition?,
+              reason: String?,
+              stage: Lithic::Models::Dispute::Event::Data::WorkflowEventData::stage
+            }
+
+            type action = :OPENED | :CLOSED | :REOPENED
+
+            module Action
+              extend Lithic::Internal::Type::Enum
+
+              OPENED: :OPENED
+              CLOSED: :CLOSED
+              REOPENED: :REOPENED
+
+              def self?.values: -> ::Array[Lithic::Models::Dispute::Event::Data::WorkflowEventData::action]
+            end
+
+            type disposition =
+              :WON | :LOST | :PARTIALLY_WON | :WITHDRAWN | :DENIED
+
+            module Disposition
+              extend Lithic::Internal::Type::Enum
+
+              WON: :WON
+              LOST: :LOST
+              PARTIALLY_WON: :PARTIALLY_WON
+              WITHDRAWN: :WITHDRAWN
+              DENIED: :DENIED
+
+              def self?.values: -> ::Array[Lithic::Models::Dispute::Event::Data::WorkflowEventData::disposition]
+            end
+
+            type stage = :CLAIM
+
+            module Stage
+              extend Lithic::Internal::Type::Enum
+
+              CLAIM: :CLAIM
+
+              def self?.values: -> ::Array[Lithic::Models::Dispute::Event::Data::WorkflowEventData::stage]
+            end
+          end
+
+          type financial_event_data =
+            {
+              amount: Integer,
+              polarity: Lithic::Models::Dispute::Event::Data::FinancialEventData::polarity,
+              stage: Lithic::Models::Dispute::Event::Data::FinancialEventData::stage
+            }
+
+          class FinancialEventData < Lithic::Internal::Type::BaseModel
+            attr_accessor amount: Integer
+
+            attr_accessor polarity: Lithic::Models::Dispute::Event::Data::FinancialEventData::polarity
+
+            attr_accessor stage: Lithic::Models::Dispute::Event::Data::FinancialEventData::stage
+
+            def initialize: (
+              amount: Integer,
+              polarity: Lithic::Models::Dispute::Event::Data::FinancialEventData::polarity,
+              stage: Lithic::Models::Dispute::Event::Data::FinancialEventData::stage
+            ) -> void
+
+            def to_hash: -> {
+              amount: Integer,
+              polarity: Lithic::Models::Dispute::Event::Data::FinancialEventData::polarity,
+              stage: Lithic::Models::Dispute::Event::Data::FinancialEventData::stage
+            }
+
+            type polarity = :CREDIT | :DEBIT
+
+            module Polarity
+              extend Lithic::Internal::Type::Enum
+
+              CREDIT: :CREDIT
+              DEBIT: :DEBIT
+
+              def self?.values: -> ::Array[Lithic::Models::Dispute::Event::Data::FinancialEventData::polarity]
+            end
+
+            type stage =
+              :CHARGEBACK
+              | :REPRESENTMENT
+              | :PREARBITRATION
+              | :ARBITRATION
+              | :COLLABORATION
+
+            module Stage
+              extend Lithic::Internal::Type::Enum
+
+              CHARGEBACK: :CHARGEBACK
+              REPRESENTMENT: :REPRESENTMENT
+              PREARBITRATION: :PREARBITRATION
+              ARBITRATION: :ARBITRATION
+              COLLABORATION: :COLLABORATION
+
+              def self?.values: -> ::Array[Lithic::Models::Dispute::Event::Data::FinancialEventData::stage]
+            end
+          end
+
+          type cardholder_liability_event_data =
+            {
+              action: Lithic::Models::Dispute::Event::Data::CardholderLiabilityEventData::action,
+              amount: Integer,
+              reason: String
+            }
+
+          class CardholderLiabilityEventData < Lithic::Internal::Type::BaseModel
+            attr_accessor action: Lithic::Models::Dispute::Event::Data::CardholderLiabilityEventData::action
+
+            attr_accessor amount: Integer
+
+            attr_accessor reason: String
+
+            def initialize: (
+              action: Lithic::Models::Dispute::Event::Data::CardholderLiabilityEventData::action,
+              amount: Integer,
+              reason: String
+            ) -> void
+
+            def to_hash: -> {
+              action: Lithic::Models::Dispute::Event::Data::CardholderLiabilityEventData::action,
+              amount: Integer,
+              reason: String
+            }
+
+            type action =
+              :PROVISIONAL_CREDIT_GRANTED
+              | :PROVISIONAL_CREDIT_REVERSED
+              | :WRITTEN_OFF
+
+            module Action
+              extend Lithic::Internal::Type::Enum
+
+              PROVISIONAL_CREDIT_GRANTED: :PROVISIONAL_CREDIT_GRANTED
+              PROVISIONAL_CREDIT_REVERSED: :PROVISIONAL_CREDIT_REVERSED
+              WRITTEN_OFF: :WRITTEN_OFF
+
+              def self?.values: -> ::Array[Lithic::Models::Dispute::Event::Data::CardholderLiabilityEventData::action]
+            end
+          end
+
+          def self?.variants: -> ::Array[Lithic::Models::Dispute::Event::data]
+        end
+
+        type type_ = :WORKFLOW | :FINANCIAL | :CARDHOLDER_LIABILITY
+
+        module Type
+          extend Lithic::Internal::Type::Enum
+
+          WORKFLOW: :WORKFLOW
+          FINANCIAL: :FINANCIAL
+          CARDHOLDER_LIABILITY: :CARDHOLDER_LIABILITY
+
+          def self?.values: -> ::Array[Lithic::Models::Dispute::Event::type_]
+        end
+      end
+
+      type liability_allocation =
+        {
+          denied_amount: Integer,
+          original_amount: Integer,
+          recovered_amount: Integer,
+          remaining_amount: Integer,
+          written_off_amount: Integer
+        }
+
+      class LiabilityAllocation < Lithic::Internal::Type::BaseModel
+        attr_accessor denied_amount: Integer
+
+        attr_accessor original_amount: Integer
+
+        attr_accessor recovered_amount: Integer
+
+        attr_accessor remaining_amount: Integer
+
+        attr_accessor written_off_amount: Integer
+
+        def initialize: (
+          denied_amount: Integer,
+          original_amount: Integer,
+          recovered_amount: Integer,
+          remaining_amount: Integer,
+          written_off_amount: Integer
+        ) -> void
+
+        def to_hash: -> {
+          denied_amount: Integer,
+          original_amount: Integer,
+          recovered_amount: Integer,
+          remaining_amount: Integer,
+          written_off_amount: Integer
+        }
+      end
+
+      type merchant =
+        {
+          acceptor_id: String,
+          acquiring_institution_id: String,
+          city: String,
+          country: String,
+          descriptor: String,
+          mcc: String,
+          state: String
+        }
+
+      class Merchant < Lithic::Internal::Type::BaseModel
+        attr_accessor acceptor_id: String
+
+        attr_accessor acquiring_institution_id: String
+
+        attr_accessor city: String
+
+        attr_accessor country: String
+
+        attr_accessor descriptor: String
+
+        attr_accessor mcc: String
+
+        attr_accessor state: String
+
+        def initialize: (
+          acceptor_id: String,
+          acquiring_institution_id: String,
+          city: String,
+          country: String,
+          descriptor: String,
+          mcc: String,
+          state: String
+        ) -> void
+
+        def to_hash: -> {
+          acceptor_id: String,
+          acquiring_institution_id: String,
+          city: String,
+          country: String,
+          descriptor: String,
+          mcc: String,
+          state: String
+        }
+      end
+
+      type network = :VISA | :MASTERCARD
+
+      module Network
+        extend Lithic::Internal::Type::Enum
+
+        VISA: :VISA
+        MASTERCARD: :MASTERCARD
+
+        def self?.values: -> ::Array[Lithic::Models::Dispute::network]
+      end
+
+      type status = :OPEN | :CLOSED
 
       module Status
         extend Lithic::Internal::Type::Enum
 
-        ARBITRATION: :ARBITRATION
-        CASE_CLOSED: :CASE_CLOSED
-        CASE_WON: :CASE_WON
-        NEW: :NEW
-        PENDING_CUSTOMER: :PENDING_CUSTOMER
-        PREARBITRATION: :PREARBITRATION
-        REPRESENTMENT: :REPRESENTMENT
-        SUBMITTED: :SUBMITTED
+        OPEN: :OPEN
+        CLOSED: :CLOSED
 
         def self?.values: -> ::Array[Lithic::Models::Dispute::status]
+      end
+
+      type transaction_series =
+        {
+          related_transaction_event_token: String?,
+          related_transaction_token: String,
+          type: Lithic::Models::Dispute::TransactionSeries::type_
+        }
+
+      class TransactionSeries < Lithic::Internal::Type::BaseModel
+        attr_accessor related_transaction_event_token: String?
+
+        attr_accessor related_transaction_token: String
+
+        attr_accessor type: Lithic::Models::Dispute::TransactionSeries::type_
+
+        def initialize: (
+          related_transaction_event_token: String?,
+          related_transaction_token: String,
+          type: Lithic::Models::Dispute::TransactionSeries::type_
+        ) -> void
+
+        def to_hash: -> {
+          related_transaction_event_token: String?,
+          related_transaction_token: String,
+          type: Lithic::Models::Dispute::TransactionSeries::type_
+        }
+
+        type type_ = :DISPUTE
+
+        module Type
+          extend Lithic::Internal::Type::Enum
+
+          DISPUTE: :DISPUTE
+
+          def self?.values: -> ::Array[Lithic::Models::Dispute::TransactionSeries::type_]
+        end
       end
     end
   end
