@@ -77,10 +77,7 @@ module Lithic
           credit_limit: Integer?,
           credit_product_token: String?,
           external_bank_account_token: String?,
-          tier: String?,
-          charged_off_reason: Lithic::Models::FinancialAccount::CreditConfiguration::charged_off_reason?,
-          financial_account_state: Lithic::Models::FinancialAccount::CreditConfiguration::financial_account_state?,
-          is_spend_blocked: bool
+          tier: String?
         }
 
       class CreditConfiguration < Lithic::Internal::Type::BaseModel
@@ -94,23 +91,12 @@ module Lithic
 
         attr_accessor tier: String?
 
-        attr_accessor charged_off_reason: Lithic::Models::FinancialAccount::CreditConfiguration::charged_off_reason?
-
-        attr_accessor financial_account_state: Lithic::Models::FinancialAccount::CreditConfiguration::financial_account_state?
-
-        attr_reader is_spend_blocked: bool?
-
-        def is_spend_blocked=: (bool) -> bool
-
         def initialize: (
           auto_collection_configuration: Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration,
           credit_limit: Integer?,
           credit_product_token: String?,
           external_bank_account_token: String?,
-          tier: String?,
-          ?charged_off_reason: Lithic::Models::FinancialAccount::CreditConfiguration::charged_off_reason?,
-          ?financial_account_state: Lithic::Models::FinancialAccount::CreditConfiguration::financial_account_state?,
-          ?is_spend_blocked: bool
+          tier: String?
         ) -> void
 
         def to_hash: -> {
@@ -118,10 +104,7 @@ module Lithic
           credit_limit: Integer?,
           credit_product_token: String?,
           external_bank_account_token: String?,
-          tier: String?,
-          charged_off_reason: Lithic::Models::FinancialAccount::CreditConfiguration::charged_off_reason?,
-          financial_account_state: Lithic::Models::FinancialAccount::CreditConfiguration::financial_account_state?,
-          is_spend_blocked: bool
+          tier: String?
         }
 
         type auto_collection_configuration = { auto_collection_enabled: bool }
@@ -132,31 +115,6 @@ module Lithic
           def initialize: (auto_collection_enabled: bool) -> void
 
           def to_hash: -> { auto_collection_enabled: bool }
-        end
-
-        type charged_off_reason = :DELINQUENT | :FRAUD
-
-        module ChargedOffReason
-          extend Lithic::Internal::Type::Enum
-
-          DELINQUENT: :DELINQUENT
-          FRAUD: :FRAUD
-
-          def self?.values: -> ::Array[Lithic::Models::FinancialAccount::CreditConfiguration::charged_off_reason]
-        end
-
-        type financial_account_state =
-          :PENDING | :CURRENT | :DELINQUENT | :CHARGED_OFF
-
-        module FinancialAccountState
-          extend Lithic::Internal::Type::Enum
-
-          PENDING: :PENDING
-          CURRENT: :CURRENT
-          DELINQUENT: :DELINQUENT
-          CHARGED_OFF: :CHARGED_OFF
-
-          def self?.values: -> ::Array[Lithic::Models::FinancialAccount::CreditConfiguration::financial_account_state]
         end
       end
 

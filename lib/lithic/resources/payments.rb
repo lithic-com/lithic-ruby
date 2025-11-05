@@ -130,13 +130,17 @@ module Lithic
 
       # Simulate payment lifecycle event
       #
-      # @overload simulate_action(payment_token, event_type:, decline_reason: nil, return_reason_code: nil, request_options: {})
+      # @overload simulate_action(payment_token, event_type:, date_of_death: nil, decline_reason: nil, return_addenda: nil, return_reason_code: nil, request_options: {})
       #
       # @param payment_token [String]
       #
       # @param event_type [Symbol, Lithic::Models::PaymentSimulateActionParams::EventType] Event Type
       #
+      # @param date_of_death [Date] Date of Death for ACH Return
+      #
       # @param decline_reason [Symbol, Lithic::Models::PaymentSimulateActionParams::DeclineReason] Decline reason
+      #
+      # @param return_addenda [String] Return Addenda
       #
       # @param return_reason_code [String] Return Reason Code
       #

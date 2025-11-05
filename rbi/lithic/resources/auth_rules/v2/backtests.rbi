@@ -39,7 +39,6 @@ module Lithic
             ).returns(Lithic::Models::AuthRules::V2::BacktestCreateResponse)
           end
           def create(
-            # Globally unique identifier for the Auth Rule.
             auth_rule_token,
             # The end time of the backtest.
             end_: nil,
@@ -75,9 +74,7 @@ module Lithic
             ).returns(Lithic::AuthRules::V2::BacktestResults)
           end
           def retrieve(
-            # Globally unique identifier for an Auth Rule backtest.
             auth_rule_backtest_token,
-            # Globally unique identifier for the Auth Rule.
             auth_rule_token:,
             request_options: {}
           )

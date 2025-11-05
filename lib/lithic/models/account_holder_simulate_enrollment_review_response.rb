@@ -40,7 +40,7 @@ module Lithic
       #   with the AUTHORIZED_USER in this field.
       #
       #   @return [String, nil]
-      optional :business_account_token, String
+      optional :business_account_token, String, nil?: true
 
       # @!attribute business_entity
       #   Only present when user_type == "BUSINESS". Information about the business for
@@ -179,7 +179,7 @@ module Lithic
       #
       #   @param beneficial_owner_individuals [Array<Lithic::Models::AccountHolderSimulateEnrollmentReviewResponse::BeneficialOwnerIndividual>] Only present when user_type == "BUSINESS". You must submit a list of all direct
       #
-      #   @param business_account_token [String] Only applicable for customers using the KYC-Exempt workflow to enroll authorized
+      #   @param business_account_token [String, nil] Only applicable for customers using the KYC-Exempt workflow to enroll authorized
       #
       #   @param business_entity [Lithic::Models::KYBBusinessEntity] Only present when user_type == "BUSINESS". Information about the business for wh
       #

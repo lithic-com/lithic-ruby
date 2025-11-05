@@ -123,7 +123,7 @@ module Lithic
           token: String,
           amount: Integer,
           created: Time,
-          detailed_results: Lithic::Models::BookTransferResponse::Event::detailed_results,
+          detailed_results: ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result],
           memo: String,
           result: Lithic::Models::BookTransferResponse::Event::result,
           subtype: String,
@@ -137,7 +137,7 @@ module Lithic
 
         attr_accessor created: Time
 
-        attr_accessor detailed_results: Lithic::Models::BookTransferResponse::Event::detailed_results
+        attr_accessor detailed_results: ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result]
 
         attr_accessor memo: String
 
@@ -151,7 +151,7 @@ module Lithic
           token: String,
           amount: Integer,
           created: Time,
-          detailed_results: Lithic::Models::BookTransferResponse::Event::detailed_results,
+          detailed_results: ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result],
           memo: String,
           result: Lithic::Models::BookTransferResponse::Event::result,
           subtype: String,
@@ -162,22 +162,22 @@ module Lithic
           token: String,
           amount: Integer,
           created: Time,
-          detailed_results: Lithic::Models::BookTransferResponse::Event::detailed_results,
+          detailed_results: ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result],
           memo: String,
           result: Lithic::Models::BookTransferResponse::Event::result,
           subtype: String,
           type: Lithic::Models::BookTransferResponse::Event::type_
         }
 
-        type detailed_results = :APPROVED | :FUNDS_INSUFFICIENT
+        type detailed_result = :APPROVED | :FUNDS_INSUFFICIENT
 
-        module DetailedResults
+        module DetailedResult
           extend Lithic::Internal::Type::Enum
 
           APPROVED: :APPROVED
           FUNDS_INSUFFICIENT: :FUNDS_INSUFFICIENT
 
-          def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::Event::detailed_results]
+          def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::Event::detailed_result]
         end
 
         type result = :APPROVED | :DECLINED

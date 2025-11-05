@@ -68,11 +68,7 @@ module Lithic
             request_options: Lithic::RequestOptions::OrHash
           ).returns(Lithic::Models::AuthRules::V2RetrieveResponse)
         end
-        def retrieve(
-          # Globally unique identifier for the Auth Rule.
-          auth_rule_token,
-          request_options: {}
-        )
+        def retrieve(auth_rule_token, request_options: {})
         end
 
         # Updates a V2 Auth rule's properties
@@ -94,7 +90,6 @@ module Lithic
           ).returns(Lithic::Models::AuthRules::V2UpdateResponse)
         end
         def update(
-          # Globally unique identifier for the Auth Rule.
           auth_rule_token,
           # Account tokens to which the Auth Rule applies.
           account_tokens: nil,
@@ -167,43 +162,7 @@ module Lithic
             request_options: Lithic::RequestOptions::OrHash
           ).void
         end
-        def delete(
-          # Globally unique identifier for the Auth Rule.
-          auth_rule_token,
-          request_options: {}
-        )
-        end
-
-        # Associates a V2 Auth rule with a card program, the provided account(s) or
-        # card(s).
-        #
-        # Prefer using the `PATCH` method for this operation.
-        sig do
-          params(
-            auth_rule_token: String,
-            card_tokens: T::Array[String],
-            program_level: T::Boolean,
-            account_tokens: T::Array[String],
-            business_account_tokens: T::Array[String],
-            excluded_card_tokens: T::Array[String],
-            request_options: Lithic::RequestOptions::OrHash
-          ).returns(Lithic::Models::AuthRules::V2ApplyResponse)
-        end
-        def apply(
-          # Globally unique identifier for the Auth Rule.
-          auth_rule_token,
-          # Card tokens to which the Auth Rule applies.
-          card_tokens:,
-          # Whether the Auth Rule applies to all authorizations on the card program.
-          program_level:,
-          # Account tokens to which the Auth Rule applies.
-          account_tokens: nil,
-          # Business Account tokens to which the Auth Rule applies.
-          business_account_tokens: nil,
-          # Card tokens to which the Auth Rule does not apply.
-          excluded_card_tokens: nil,
-          request_options: {}
-        )
+        def delete(auth_rule_token, request_options: {})
         end
 
         # Creates a new draft version of a rule that will be ran in shadow mode.
@@ -227,7 +186,6 @@ module Lithic
           ).returns(Lithic::Models::AuthRules::V2DraftResponse)
         end
         def draft(
-          # Globally unique identifier for the Auth Rule.
           auth_rule_token,
           # Parameters for the Auth Rule
           parameters: nil,
@@ -243,11 +201,7 @@ module Lithic
             request_options: Lithic::RequestOptions::OrHash
           ).returns(Lithic::Models::AuthRules::V2PromoteResponse)
         end
-        def promote(
-          # Globally unique identifier for the Auth Rule.
-          auth_rule_token,
-          request_options: {}
-        )
+        def promote(auth_rule_token, request_options: {})
         end
 
         # Fetches the current calculated Feature values for the given Auth Rule
@@ -268,7 +222,6 @@ module Lithic
           ).returns(Lithic::Models::AuthRules::V2RetrieveFeaturesResponse)
         end
         def retrieve_features(
-          # Globally unique identifier for the Auth Rule.
           auth_rule_token,
           account_token: nil,
           card_token: nil,
@@ -298,7 +251,6 @@ module Lithic
           ).returns(Lithic::Models::AuthRules::V2RetrieveReportResponse)
         end
         def retrieve_report(
-          # Globally unique identifier for the Auth Rule.
           auth_rule_token,
           # Start date for the report
           begin_:,

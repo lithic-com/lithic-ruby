@@ -255,7 +255,9 @@ module Lithic
 
         sig do
           returns(
-            Lithic::BookTransferResponse::Event::DetailedResults::TaggedSymbol
+            T::Array[
+              Lithic::BookTransferResponse::Event::DetailedResult::TaggedSymbol
+            ]
           )
         end
         attr_accessor :detailed_results
@@ -286,7 +288,9 @@ module Lithic
             amount: Integer,
             created: Time,
             detailed_results:
-              Lithic::BookTransferResponse::Event::DetailedResults::OrSymbol,
+              T::Array[
+                Lithic::BookTransferResponse::Event::DetailedResult::OrSymbol
+              ],
             memo: String,
             result: Lithic::BookTransferResponse::Event::Result::OrSymbol,
             subtype: String,
@@ -321,7 +325,9 @@ module Lithic
               amount: Integer,
               created: Time,
               detailed_results:
-                Lithic::BookTransferResponse::Event::DetailedResults::TaggedSymbol,
+                T::Array[
+                  Lithic::BookTransferResponse::Event::DetailedResult::TaggedSymbol
+                ],
               memo: String,
               result: Lithic::BookTransferResponse::Event::Result::TaggedSymbol,
               subtype: String,
@@ -332,33 +338,30 @@ module Lithic
         def to_hash
         end
 
-        module DetailedResults
+        module DetailedResult
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias do
-              T.all(
-                Symbol,
-                Lithic::BookTransferResponse::Event::DetailedResults
-              )
+              T.all(Symbol, Lithic::BookTransferResponse::Event::DetailedResult)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           APPROVED =
             T.let(
               :APPROVED,
-              Lithic::BookTransferResponse::Event::DetailedResults::TaggedSymbol
+              Lithic::BookTransferResponse::Event::DetailedResult::TaggedSymbol
             )
           FUNDS_INSUFFICIENT =
             T.let(
               :FUNDS_INSUFFICIENT,
-              Lithic::BookTransferResponse::Event::DetailedResults::TaggedSymbol
+              Lithic::BookTransferResponse::Event::DetailedResult::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Lithic::BookTransferResponse::Event::DetailedResults::TaggedSymbol
+                Lithic::BookTransferResponse::Event::DetailedResult::TaggedSymbol
               ]
             )
           end

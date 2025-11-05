@@ -72,6 +72,11 @@ module Lithic
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+          ACCOUNT_HOLDER_DOCUMENT_UPDATED =
+            T.let(
+              :"account_holder_document.updated",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
           ACCOUNT_HOLDER_CREATED =
             T.let(
               :"account_holder.created",
@@ -87,6 +92,11 @@ module Lithic
               :"account_holder.verification",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
+          AUTH_RULES_BACKTEST_REPORT_CREATED =
+            T.let(
+              :"auth_rules.backtest_report.created",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
           BALANCE_UPDATED =
             T.let(
               :"balance.updated",
@@ -97,19 +107,24 @@ module Lithic
               :"book_transfer_transaction.created",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
-          CARD_CREATED =
+          BOOK_TRANSFER_TRANSACTION_UPDATED =
             T.let(
-              :"card.created",
+              :"book_transfer_transaction.updated",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
-          CARD_RENEWED =
+          CARD_TRANSACTION_ENHANCED_DATA_CREATED =
             T.let(
-              :"card.renewed",
+              :"card_transaction.enhanced_data.created",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
-          CARD_REISSUED =
+          CARD_TRANSACTION_ENHANCED_DATA_UPDATED =
             T.let(
-              :"card.reissued",
+              :"card_transaction.enhanced_data.updated",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
+          CARD_TRANSACTION_UPDATED =
+            T.let(
+              :"card_transaction.updated",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
           CARD_CONVERTED =
@@ -117,14 +132,24 @@ module Lithic
               :"card.converted",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
+          CARD_CREATED =
+            T.let(
+              :"card.created",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
+          CARD_REISSUED =
+            T.let(
+              :"card.reissued",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
+          CARD_RENEWED =
+            T.let(
+              :"card.renewed",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
           CARD_SHIPPED =
             T.let(
               :"card.shipped",
-              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
-            )
-          CARD_TRANSACTION_UPDATED =
-            T.let(
-              :"card_transaction.updated",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
           DIGITAL_WALLET_TOKENIZATION_APPROVAL_REQUEST =
@@ -152,11 +177,6 @@ module Lithic
               :"digital_wallet.tokenization_updated",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
-          DISPUTE_UPDATED =
-            T.let(
-              :"dispute.updated",
-              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
-            )
           DISPUTE_EVIDENCE_UPLOAD_FAILED =
             T.let(
               :"dispute_evidence.upload_failed",
@@ -170,6 +190,11 @@ module Lithic
           DISPUTE_TRANSACTION_UPDATED =
             T.let(
               :"dispute_transaction.updated",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
+          DISPUTE_UPDATED =
+            T.let(
+              :"dispute.updated",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
           EXTERNAL_BANK_ACCOUNT_CREATED =
@@ -205,6 +230,16 @@ module Lithic
           FUNDING_EVENT_CREATED =
             T.let(
               :"funding_event.created",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
+          INTERNAL_TRANSACTION_CREATED =
+            T.let(
+              :"internal_transaction.created",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
+          INTERNAL_TRANSACTION_UPDATED =
+            T.let(
+              :"internal_transaction.updated",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
           LOAN_TAPE_CREATED =
@@ -247,16 +282,6 @@ module Lithic
               :"payment_transaction.updated",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
-          INTERNAL_TRANSACTION_CREATED =
-            T.let(
-              :"internal_transaction.created",
-              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
-            )
-          INTERNAL_TRANSACTION_UPDATED =
-            T.let(
-              :"internal_transaction.updated",
-              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
-            )
           SETTLEMENT_REPORT_UPDATED =
             T.let(
               :"settlement_report.updated",
@@ -265,6 +290,11 @@ module Lithic
           STATEMENTS_CREATED =
             T.let(
               :"statements.created",
+              Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
+            )
+          THREE_DS_AUTHENTICATION_CHALLENGE =
+            T.let(
+              :"three_ds_authentication.challenge",
               Lithic::Events::SubscriptionSendSimulatedExampleParams::EventType::TaggedSymbol
             )
           THREE_DS_AUTHENTICATION_CREATED =

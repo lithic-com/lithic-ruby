@@ -15,6 +15,13 @@ module Lithic
       sig { returns(Lithic::PaymentSimulateActionParams::EventType::OrSymbol) }
       attr_accessor :event_type
 
+      # Date of Death for ACH Return
+      sig { returns(T.nilable(Date)) }
+      attr_reader :date_of_death
+
+      sig { params(date_of_death: Date).void }
+      attr_writer :date_of_death
+
       # Decline reason
       sig do
         returns(
@@ -33,6 +40,13 @@ module Lithic
       end
       attr_writer :decline_reason
 
+      # Return Addenda
+      sig { returns(T.nilable(String)) }
+      attr_reader :return_addenda
+
+      sig { params(return_addenda: String).void }
+      attr_writer :return_addenda
+
       # Return Reason Code
       sig { returns(T.nilable(String)) }
       attr_reader :return_reason_code
@@ -43,8 +57,10 @@ module Lithic
       sig do
         params(
           event_type: Lithic::PaymentSimulateActionParams::EventType::OrSymbol,
+          date_of_death: Date,
           decline_reason:
             Lithic::PaymentSimulateActionParams::DeclineReason::OrSymbol,
+          return_addenda: String,
           return_reason_code: String,
           request_options: Lithic::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -52,8 +68,12 @@ module Lithic
       def self.new(
         # Event Type
         event_type:,
+        # Date of Death for ACH Return
+        date_of_death: nil,
         # Decline reason
         decline_reason: nil,
+        # Return Addenda
+        return_addenda: nil,
         # Return Reason Code
         return_reason_code: nil,
         request_options: {}
@@ -65,8 +85,10 @@ module Lithic
           {
             event_type:
               Lithic::PaymentSimulateActionParams::EventType::OrSymbol,
+            date_of_death: Date,
             decline_reason:
               Lithic::PaymentSimulateActionParams::DeclineReason::OrSymbol,
+            return_addenda: String,
             return_reason_code: String,
             request_options: Lithic::RequestOptions
           }
