@@ -256,10 +256,13 @@ module Lithic
             balance_transfers: Integer,
             cash_advances: Integer,
             credits: Integer,
+            debits: Integer,
             fees: Integer,
             interest: Integer,
             payments: Integer,
-            purchases: Integer
+            purchases: Integer,
+            credit_details: top,
+            debit_details: top
           }
 
         class PeriodTotals < Lithic::Internal::Type::BaseModel
@@ -269,6 +272,8 @@ module Lithic
 
           attr_accessor credits: Integer
 
+          attr_accessor debits: Integer
+
           attr_accessor fees: Integer
 
           attr_accessor interest: Integer
@@ -277,24 +282,38 @@ module Lithic
 
           attr_accessor purchases: Integer
 
+          attr_reader credit_details: top?
+
+          def credit_details=: (top) -> top
+
+          attr_reader debit_details: top?
+
+          def debit_details=: (top) -> top
+
           def initialize: (
             balance_transfers: Integer,
             cash_advances: Integer,
             credits: Integer,
+            debits: Integer,
             fees: Integer,
             interest: Integer,
             payments: Integer,
-            purchases: Integer
+            purchases: Integer,
+            ?credit_details: top,
+            ?debit_details: top
           ) -> void
 
           def to_hash: -> {
             balance_transfers: Integer,
             cash_advances: Integer,
             credits: Integer,
+            debits: Integer,
             fees: Integer,
             interest: Integer,
             payments: Integer,
-            purchases: Integer
+            purchases: Integer,
+            credit_details: top,
+            debit_details: top
           }
         end
 
@@ -315,10 +334,13 @@ module Lithic
             balance_transfers: Integer,
             cash_advances: Integer,
             credits: Integer,
+            debits: Integer,
             fees: Integer,
             interest: Integer,
             payments: Integer,
-            purchases: Integer
+            purchases: Integer,
+            credit_details: top,
+            debit_details: top
           }
 
         class YtdTotals < Lithic::Internal::Type::BaseModel
@@ -328,6 +350,8 @@ module Lithic
 
           attr_accessor credits: Integer
 
+          attr_accessor debits: Integer
+
           attr_accessor fees: Integer
 
           attr_accessor interest: Integer
@@ -336,24 +360,38 @@ module Lithic
 
           attr_accessor purchases: Integer
 
+          attr_reader credit_details: top?
+
+          def credit_details=: (top) -> top
+
+          attr_reader debit_details: top?
+
+          def debit_details=: (top) -> top
+
           def initialize: (
             balance_transfers: Integer,
             cash_advances: Integer,
             credits: Integer,
+            debits: Integer,
             fees: Integer,
             interest: Integer,
             payments: Integer,
-            purchases: Integer
+            purchases: Integer,
+            ?credit_details: top,
+            ?debit_details: top
           ) -> void
 
           def to_hash: -> {
             balance_transfers: Integer,
             cash_advances: Integer,
             credits: Integer,
+            debits: Integer,
             fees: Integer,
             interest: Integer,
             payments: Integer,
-            purchases: Integer
+            purchases: Integer,
+            credit_details: top,
+            debit_details: top
           }
         end
 

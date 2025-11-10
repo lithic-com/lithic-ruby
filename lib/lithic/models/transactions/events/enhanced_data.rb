@@ -91,8 +91,8 @@ module Lithic
               # @!attribute amount
               #   The price of the item purchased in merchant currency.
               #
-              #   @return [Float, nil]
-              optional :amount, Float
+              #   @return [String, nil]
+              optional :amount, String
 
               # @!attribute description
               #   A human-readable description of the item.
@@ -109,19 +109,19 @@ module Lithic
               # @!attribute quantity
               #   The quantity of the item purchased.
               #
-              #   @return [Float, nil]
-              optional :quantity, Float
+              #   @return [String, nil]
+              optional :quantity, String
 
               # @!method initialize(amount: nil, description: nil, product_code: nil, quantity: nil)
               #   An L2/L3 enhanced commercial data line item.
               #
-              #   @param amount [Float] The price of the item purchased in merchant currency.
+              #   @param amount [String] The price of the item purchased in merchant currency.
               #
               #   @param description [String] A human-readable description of the item.
               #
               #   @param product_code [String] An identifier for the item purchased.
               #
-              #   @param quantity [Float] The quantity of the item purchased.
+              #   @param quantity [String] The quantity of the item purchased.
             end
 
             # @see Lithic::Models::Transactions::Events::EnhancedData::Common#tax
@@ -253,8 +253,8 @@ module Lithic
               # @!attribute quantity
               #   The quantity of fuel purchased.
               #
-              #   @return [Float, nil]
-              optional :quantity, Float
+              #   @return [String, nil]
+              optional :quantity, String
 
               # @!attribute type
               #   The type of fuel purchased.
@@ -276,7 +276,7 @@ module Lithic
               optional :unit_price, Integer
 
               # @!method initialize(quantity: nil, type: nil, unit_of_measure: nil, unit_price: nil)
-              #   @param quantity [Float] The quantity of fuel purchased.
+              #   @param quantity [String] The quantity of fuel purchased.
               #
               #   @param type [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type] The type of fuel purchased.
               #
