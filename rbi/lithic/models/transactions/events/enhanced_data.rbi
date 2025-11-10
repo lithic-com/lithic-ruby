@@ -184,10 +184,10 @@ module Lithic
                 end
 
               # The price of the item purchased in merchant currency.
-              sig { returns(T.nilable(Float)) }
+              sig { returns(T.nilable(String)) }
               attr_reader :amount
 
-              sig { params(amount: Float).void }
+              sig { params(amount: String).void }
               attr_writer :amount
 
               # A human-readable description of the item.
@@ -205,19 +205,19 @@ module Lithic
               attr_writer :product_code
 
               # The quantity of the item purchased.
-              sig { returns(T.nilable(Float)) }
+              sig { returns(T.nilable(String)) }
               attr_reader :quantity
 
-              sig { params(quantity: Float).void }
+              sig { params(quantity: String).void }
               attr_writer :quantity
 
               # An L2/L3 enhanced commercial data line item.
               sig do
                 params(
-                  amount: Float,
+                  amount: String,
                   description: String,
                   product_code: String,
-                  quantity: Float
+                  quantity: String
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -235,10 +235,10 @@ module Lithic
               sig do
                 override.returns(
                   {
-                    amount: Float,
+                    amount: String,
                     description: String,
                     product_code: String,
-                    quantity: Float
+                    quantity: String
                   }
                 )
               end
@@ -550,10 +550,10 @@ module Lithic
                 end
 
               # The quantity of fuel purchased.
-              sig { returns(T.nilable(Float)) }
+              sig { returns(T.nilable(String)) }
               attr_reader :quantity
 
-              sig { params(quantity: Float).void }
+              sig { params(quantity: String).void }
               attr_writer :quantity
 
               # The type of fuel purchased.
@@ -601,7 +601,7 @@ module Lithic
 
               sig do
                 params(
-                  quantity: Float,
+                  quantity: String,
                   type:
                     Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::OrSymbol,
                   unit_of_measure:
@@ -624,7 +624,7 @@ module Lithic
               sig do
                 override.returns(
                   {
-                    quantity: Float,
+                    quantity: String,
                     type:
                       Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol,
                     unit_of_measure:

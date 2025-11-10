@@ -22,10 +22,6 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The device identifier associated with the tokenization.
-      sig { returns(T.nilable(String)) }
-      attr_accessor :device_id
-
       # The dynamic pan assigned to the token by the network.
       sig { returns(T.nilable(String)) }
       attr_accessor :dpan
@@ -34,9 +30,10 @@ module Lithic
       sig { returns(Lithic::Tokenization::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # The entity that requested the tokenization. Represents a Digital Wallet or
-      # merchant.
-      sig { returns(Lithic::Tokenization::TokenRequestorName::TaggedSymbol) }
+      # The entity that requested the tokenization. For digital wallets, this will be
+      # one of the defined wallet types. For merchant tokenizations, this will be a
+      # free-form merchant name string.
+      sig { returns(Lithic::Tokenization::TokenRequestorName::Variants) }
       attr_accessor :token_requestor_name
 
       # The network's unique reference for the tokenization.
@@ -51,15 +48,16 @@ module Lithic
       sig { returns(Time) }
       attr_accessor :updated_at
 
-      # Specifies the digital card art displayed in the user’s digital wallet after
+      # The device identifier associated with the tokenization.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :device_id
+
+      # Specifies the digital card art displayed in the user's digital wallet after
       # tokenization. This will be null if the tokenization was created without an
       # associated digital card art. See
       # [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
       sig { returns(T.nilable(String)) }
-      attr_reader :digital_card_art_token
-
-      sig { params(digital_card_art_token: String).void }
-      attr_writer :digital_card_art_token
+      attr_accessor :digital_card_art_token
 
       # A list of events related to the tokenization.
       sig { returns(T.nilable(T::Array[Lithic::Tokenization::Event])) }
@@ -78,16 +76,16 @@ module Lithic
           account_token: String,
           card_token: String,
           created_at: Time,
-          device_id: T.nilable(String),
           dpan: T.nilable(String),
           status: Lithic::Tokenization::Status::OrSymbol,
           token_requestor_name:
-            Lithic::Tokenization::TokenRequestorName::OrSymbol,
+            T.any(Lithic::Tokenization::TokenRequestorName::OrSymbol, String),
           token_unique_reference: String,
           tokenization_channel:
             Lithic::Tokenization::TokenizationChannel::OrSymbol,
           updated_at: Time,
-          digital_card_art_token: String,
+          device_id: T.nilable(String),
+          digital_card_art_token: T.nilable(String),
           events: T::Array[Lithic::Tokenization::Event::OrHash],
           payment_account_reference_id: T.nilable(String)
         ).returns(T.attached_class)
@@ -101,14 +99,13 @@ module Lithic
         card_token:,
         # Date and time when the tokenization first occurred. UTC time zone.
         created_at:,
-        # The device identifier associated with the tokenization.
-        device_id:,
         # The dynamic pan assigned to the token by the network.
         dpan:,
         # The status of the tokenization request
         status:,
-        # The entity that requested the tokenization. Represents a Digital Wallet or
-        # merchant.
+        # The entity that requested the tokenization. For digital wallets, this will be
+        # one of the defined wallet types. For merchant tokenizations, this will be a
+        # free-form merchant name string.
         token_requestor_name:,
         # The network's unique reference for the tokenization.
         token_unique_reference:,
@@ -116,7 +113,9 @@ module Lithic
         tokenization_channel:,
         # Latest date and time when the tokenization was updated. UTC time zone.
         updated_at:,
-        # Specifies the digital card art displayed in the user’s digital wallet after
+        # The device identifier associated with the tokenization.
+        device_id: nil,
+        # Specifies the digital card art displayed in the user's digital wallet after
         # tokenization. This will be null if the tokenization was created without an
         # associated digital card art. See
         # [Flexible Card Art Guide](https://docs.lithic.com/docs/about-digital-wallets#flexible-card-art).
@@ -135,16 +134,16 @@ module Lithic
             account_token: String,
             card_token: String,
             created_at: Time,
-            device_id: T.nilable(String),
             dpan: T.nilable(String),
             status: Lithic::Tokenization::Status::TaggedSymbol,
             token_requestor_name:
-              Lithic::Tokenization::TokenRequestorName::TaggedSymbol,
+              Lithic::Tokenization::TokenRequestorName::Variants,
             token_unique_reference: String,
             tokenization_channel:
               Lithic::Tokenization::TokenizationChannel::TaggedSymbol,
             updated_at: Time,
-            digital_card_art_token: String,
+            device_id: T.nilable(String),
+            digital_card_art_token: T.nilable(String),
             events: T::Array[Lithic::Tokenization::Event],
             payment_account_reference_id: T.nilable(String)
           }
@@ -179,10 +178,27 @@ module Lithic
         end
       end
 
-      # The entity that requested the tokenization. Represents a Digital Wallet or
-      # merchant.
+      # The entity that requested the tokenization. For digital wallets, this will be
+      # one of the defined wallet types. For merchant tokenizations, this will be a
+      # free-form merchant name string.
       module TokenRequestorName
-        extend Lithic::Internal::Type::Enum
+        extend Lithic::Internal::Type::Union
+
+        Variants =
+          T.type_alias do
+            T.any(
+              Lithic::Tokenization::TokenRequestorName::TaggedSymbol,
+              String
+            )
+          end
+
+        sig do
+          override.returns(
+            T::Array[Lithic::Tokenization::TokenRequestorName::Variants]
+          )
+        end
+        def self.variants
+        end
 
         TaggedSymbol =
           T.type_alias do
@@ -220,6 +236,11 @@ module Lithic
             :GARMIN_PAY,
             Lithic::Tokenization::TokenRequestorName::TaggedSymbol
           )
+        GOOGLE_PAY =
+          T.let(
+            :GOOGLE_PAY,
+            Lithic::Tokenization::TokenRequestorName::TaggedSymbol
+          )
         MICROSOFT_PAY =
           T.let(
             :MICROSOFT_PAY,
@@ -245,14 +266,6 @@ module Lithic
             :VISA_CHECKOUT,
             Lithic::Tokenization::TokenRequestorName::TaggedSymbol
           )
-
-        sig do
-          override.returns(
-            T::Array[Lithic::Tokenization::TokenRequestorName::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
       end
 
       # The channel through which the tokenization was made.
