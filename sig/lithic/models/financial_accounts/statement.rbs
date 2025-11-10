@@ -262,7 +262,8 @@ module Lithic
             payments: Integer,
             purchases: Integer,
             credit_details: top,
-            debit_details: top
+            debit_details: top,
+            payment_details: top
           }
 
         class PeriodTotals < Lithic::Internal::Type::BaseModel
@@ -290,6 +291,10 @@ module Lithic
 
           def debit_details=: (top) -> top
 
+          attr_reader payment_details: top?
+
+          def payment_details=: (top) -> top
+
           def initialize: (
             balance_transfers: Integer,
             cash_advances: Integer,
@@ -300,7 +305,8 @@ module Lithic
             payments: Integer,
             purchases: Integer,
             ?credit_details: top,
-            ?debit_details: top
+            ?debit_details: top,
+            ?payment_details: top
           ) -> void
 
           def to_hash: -> {
@@ -313,7 +319,8 @@ module Lithic
             payments: Integer,
             purchases: Integer,
             credit_details: top,
-            debit_details: top
+            debit_details: top,
+            payment_details: top
           }
         end
 
@@ -340,7 +347,8 @@ module Lithic
             payments: Integer,
             purchases: Integer,
             credit_details: top,
-            debit_details: top
+            debit_details: top,
+            payment_details: top
           }
 
         class YtdTotals < Lithic::Internal::Type::BaseModel
@@ -368,6 +376,10 @@ module Lithic
 
           def debit_details=: (top) -> top
 
+          attr_reader payment_details: top?
+
+          def payment_details=: (top) -> top
+
           def initialize: (
             balance_transfers: Integer,
             cash_advances: Integer,
@@ -378,7 +390,8 @@ module Lithic
             payments: Integer,
             purchases: Integer,
             ?credit_details: top,
-            ?debit_details: top
+            ?debit_details: top,
+            ?payment_details: top
           ) -> void
 
           def to_hash: -> {
@@ -391,7 +404,8 @@ module Lithic
             payments: Integer,
             purchases: Integer,
             credit_details: top,
-            debit_details: top
+            debit_details: top,
+            payment_details: top
           }
         end
 
