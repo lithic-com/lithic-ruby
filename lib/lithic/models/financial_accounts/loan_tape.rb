@@ -484,6 +484,12 @@ module Lithic
           #   @return [Integer]
           required :credits, Integer
 
+          # @!attribute debits
+          #   Volume of debit management operation transactions less any interest in cents
+          #
+          #   @return [Integer]
+          required :debits, Integer
+
           # @!attribute fees
           #   Volume of debit management operation transactions less any interest in cents
           #
@@ -508,7 +514,19 @@ module Lithic
           #   @return [Integer]
           required :purchases, Integer
 
-          # @!method initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
+          # @!attribute credit_details
+          #   Breakdown of credits
+          #
+          #   @return [Object, nil]
+          optional :credit_details, Lithic::Internal::Type::Unknown
+
+          # @!attribute debit_details
+          #   Breakdown of debits
+          #
+          #   @return [Object, nil]
+          optional :debit_details, Lithic::Internal::Type::Unknown
+
+          # @!method initialize(balance_transfers:, cash_advances:, credits:, debits:, fees:, interest:, payments:, purchases:, credit_details: nil, debit_details: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::FinancialAccounts::LoanTape::DayTotals} for more details.
           #
@@ -518,6 +536,8 @@ module Lithic
           #
           #   @param credits [Integer] Volume of credit management operation transactions less any balance transfers in
           #
+          #   @param debits [Integer] Volume of debit management operation transactions less any interest in cents
+          #
           #   @param fees [Integer] Volume of debit management operation transactions less any interest in cents
           #
           #   @param interest [Integer] Interest accrued in cents
@@ -525,6 +545,10 @@ module Lithic
           #   @param payments [Integer] Any funds transfers which affective the balance in cents
           #
           #   @param purchases [Integer] Net card transaction volume less any cash advances in cents
+          #
+          #   @param credit_details [Object] Breakdown of credits
+          #
+          #   @param debit_details [Object] Breakdown of debits
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#interest_details
@@ -718,6 +742,12 @@ module Lithic
           #   @return [Integer]
           required :credits, Integer
 
+          # @!attribute debits
+          #   Volume of debit management operation transactions less any interest in cents
+          #
+          #   @return [Integer]
+          required :debits, Integer
+
           # @!attribute fees
           #   Volume of debit management operation transactions less any interest in cents
           #
@@ -742,7 +772,19 @@ module Lithic
           #   @return [Integer]
           required :purchases, Integer
 
-          # @!method initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
+          # @!attribute credit_details
+          #   Breakdown of credits
+          #
+          #   @return [Object, nil]
+          optional :credit_details, Lithic::Internal::Type::Unknown
+
+          # @!attribute debit_details
+          #   Breakdown of debits
+          #
+          #   @return [Object, nil]
+          optional :debit_details, Lithic::Internal::Type::Unknown
+
+          # @!method initialize(balance_transfers:, cash_advances:, credits:, debits:, fees:, interest:, payments:, purchases:, credit_details: nil, debit_details: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::FinancialAccounts::LoanTape::PeriodTotals} for more details.
           #
@@ -752,6 +794,8 @@ module Lithic
           #
           #   @param credits [Integer] Volume of credit management operation transactions less any balance transfers in
           #
+          #   @param debits [Integer] Volume of debit management operation transactions less any interest in cents
+          #
           #   @param fees [Integer] Volume of debit management operation transactions less any interest in cents
           #
           #   @param interest [Integer] Interest accrued in cents
@@ -759,6 +803,10 @@ module Lithic
           #   @param payments [Integer] Any funds transfers which affective the balance in cents
           #
           #   @param purchases [Integer] Net card transaction volume less any cash advances in cents
+          #
+          #   @param credit_details [Object] Breakdown of credits
+          #
+          #   @param debit_details [Object] Breakdown of debits
         end
 
         # @see Lithic::Models::FinancialAccounts::LoanTape#previous_statement_balance
@@ -799,6 +847,12 @@ module Lithic
           #   @return [Integer]
           required :credits, Integer
 
+          # @!attribute debits
+          #   Volume of debit management operation transactions less any interest in cents
+          #
+          #   @return [Integer]
+          required :debits, Integer
+
           # @!attribute fees
           #   Volume of debit management operation transactions less any interest in cents
           #
@@ -823,7 +877,19 @@ module Lithic
           #   @return [Integer]
           required :purchases, Integer
 
-          # @!method initialize(balance_transfers:, cash_advances:, credits:, fees:, interest:, payments:, purchases:)
+          # @!attribute credit_details
+          #   Breakdown of credits
+          #
+          #   @return [Object, nil]
+          optional :credit_details, Lithic::Internal::Type::Unknown
+
+          # @!attribute debit_details
+          #   Breakdown of debits
+          #
+          #   @return [Object, nil]
+          optional :debit_details, Lithic::Internal::Type::Unknown
+
+          # @!method initialize(balance_transfers:, cash_advances:, credits:, debits:, fees:, interest:, payments:, purchases:, credit_details: nil, debit_details: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::FinancialAccounts::LoanTape::YtdTotals} for more details.
           #
@@ -833,6 +899,8 @@ module Lithic
           #
           #   @param credits [Integer] Volume of credit management operation transactions less any balance transfers in
           #
+          #   @param debits [Integer] Volume of debit management operation transactions less any interest in cents
+          #
           #   @param fees [Integer] Volume of debit management operation transactions less any interest in cents
           #
           #   @param interest [Integer] Interest accrued in cents
@@ -840,6 +908,10 @@ module Lithic
           #   @param payments [Integer] Any funds transfers which affective the balance in cents
           #
           #   @param purchases [Integer] Net card transaction volume less any cash advances in cents
+          #
+          #   @param credit_details [Object] Breakdown of credits
+          #
+          #   @param debit_details [Object] Breakdown of debits
         end
       end
     end

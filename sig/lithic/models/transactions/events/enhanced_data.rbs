@@ -82,16 +82,16 @@ module Lithic
 
             type line_item =
               {
-                amount: Float,
+                amount: String,
                 description: String,
                 product_code: String,
-                quantity: Float
+                quantity: String
               }
 
             class LineItem < Lithic::Internal::Type::BaseModel
-              attr_reader amount: Float?
+              attr_reader amount: String?
 
-              def amount=: (Float) -> Float
+              def amount=: (String) -> String
 
               attr_reader description: String?
 
@@ -101,22 +101,22 @@ module Lithic
 
               def product_code=: (String) -> String
 
-              attr_reader quantity: Float?
+              attr_reader quantity: String?
 
-              def quantity=: (Float) -> Float
+              def quantity=: (String) -> String
 
               def initialize: (
-                ?amount: Float,
+                ?amount: String,
                 ?description: String,
                 ?product_code: String,
-                ?quantity: Float
+                ?quantity: String
               ) -> void
 
               def to_hash: -> {
-                amount: Float,
+                amount: String,
                 description: String,
                 product_code: String,
-                quantity: Float
+                quantity: String
               }
             end
 
@@ -250,16 +250,16 @@ module Lithic
 
             type fuel =
               {
-                quantity: Float,
+                quantity: String,
                 type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_,
                 unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure,
                 unit_price: Integer
               }
 
             class Fuel < Lithic::Internal::Type::BaseModel
-              attr_reader quantity: Float?
+              attr_reader quantity: String?
 
-              def quantity=: (Float) -> Float
+              def quantity=: (String) -> String
 
               attr_reader type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_?
 
@@ -278,14 +278,14 @@ module Lithic
               def unit_price=: (Integer) -> Integer
 
               def initialize: (
-                ?quantity: Float,
+                ?quantity: String,
                 ?type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_,
                 ?unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure,
                 ?unit_price: Integer
               ) -> void
 
               def to_hash: -> {
-                quantity: Float,
+                quantity: String,
                 type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_,
                 unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure,
                 unit_price: Integer

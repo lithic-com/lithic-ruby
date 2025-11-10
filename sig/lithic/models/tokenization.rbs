@@ -6,14 +6,14 @@ module Lithic
         account_token: String,
         card_token: String,
         created_at: Time,
-        device_id: String?,
         dpan: String?,
         status: Lithic::Models::Tokenization::status,
         token_requestor_name: Lithic::Models::Tokenization::token_requestor_name,
         token_unique_reference: String,
         tokenization_channel: Lithic::Models::Tokenization::tokenization_channel,
         updated_at: Time,
-        digital_card_art_token: String,
+        device_id: String?,
+        digital_card_art_token: String?,
         events: ::Array[Lithic::Tokenization::Event],
         payment_account_reference_id: String?
       }
@@ -27,8 +27,6 @@ module Lithic
 
       attr_accessor created_at: Time
 
-      attr_accessor device_id: String?
-
       attr_accessor dpan: String?
 
       attr_accessor status: Lithic::Models::Tokenization::status
@@ -41,9 +39,9 @@ module Lithic
 
       attr_accessor updated_at: Time
 
-      attr_reader digital_card_art_token: String?
+      attr_accessor device_id: String?
 
-      def digital_card_art_token=: (String) -> String
+      attr_accessor digital_card_art_token: String?
 
       attr_reader events: ::Array[Lithic::Tokenization::Event]?
 
@@ -58,14 +56,14 @@ module Lithic
         account_token: String,
         card_token: String,
         created_at: Time,
-        device_id: String?,
         dpan: String?,
         status: Lithic::Models::Tokenization::status,
         token_requestor_name: Lithic::Models::Tokenization::token_requestor_name,
         token_unique_reference: String,
         tokenization_channel: Lithic::Models::Tokenization::tokenization_channel,
         updated_at: Time,
-        ?digital_card_art_token: String,
+        ?device_id: String?,
+        ?digital_card_art_token: String?,
         ?events: ::Array[Lithic::Tokenization::Event],
         ?payment_account_reference_id: String?
       ) -> void
@@ -75,14 +73,14 @@ module Lithic
         account_token: String,
         card_token: String,
         created_at: Time,
-        device_id: String?,
         dpan: String?,
         status: Lithic::Models::Tokenization::status,
         token_requestor_name: Lithic::Models::Tokenization::token_requestor_name,
         token_unique_reference: String,
         tokenization_channel: Lithic::Models::Tokenization::tokenization_channel,
         updated_at: Time,
-        digital_card_art_token: String,
+        device_id: String?,
+        digital_card_art_token: String?,
         events: ::Array[Lithic::Tokenization::Event],
         payment_account_reference_id: String?
       }
@@ -117,14 +115,18 @@ module Lithic
         | :FACEBOOK
         | :FITBIT_PAY
         | :GARMIN_PAY
+        | :GOOGLE_PAY
         | :MICROSOFT_PAY
         | :NETFLIX
         | :SAMSUNG_PAY
         | :UNKNOWN
         | :VISA_CHECKOUT
+        | String
 
       module TokenRequestorName
-        extend Lithic::Internal::Type::Enum
+        extend Lithic::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Lithic::Models::Tokenization::token_requestor_name]
 
         AMAZON_ONE: :AMAZON_ONE
         ANDROID_PAY: :ANDROID_PAY
@@ -132,13 +134,12 @@ module Lithic
         FACEBOOK: :FACEBOOK
         FITBIT_PAY: :FITBIT_PAY
         GARMIN_PAY: :GARMIN_PAY
+        GOOGLE_PAY: :GOOGLE_PAY
         MICROSOFT_PAY: :MICROSOFT_PAY
         NETFLIX: :NETFLIX
         SAMSUNG_PAY: :SAMSUNG_PAY
         UNKNOWN: :UNKNOWN
         VISA_CHECKOUT: :VISA_CHECKOUT
-
-        def self?.values: -> ::Array[Lithic::Models::Tokenization::token_requestor_name]
       end
 
       type tokenization_channel = :DIGITAL_WALLET | :MERCHANT
