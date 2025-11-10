@@ -399,7 +399,13 @@ module Lithic
           #   @return [Object, nil]
           optional :debit_details, Lithic::Internal::Type::Unknown
 
-          # @!method initialize(balance_transfers:, cash_advances:, credits:, debits:, fees:, interest:, payments:, purchases:, credit_details: nil, debit_details: nil)
+          # @!attribute payment_details
+          #   Breakdown of payments
+          #
+          #   @return [Object, nil]
+          optional :payment_details, Lithic::Internal::Type::Unknown
+
+          # @!method initialize(balance_transfers:, cash_advances:, credits:, debits:, fees:, interest:, payments:, purchases:, credit_details: nil, debit_details: nil, payment_details: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::FinancialAccounts::Statement::PeriodTotals} for more details.
           #
@@ -422,6 +428,8 @@ module Lithic
           #   @param credit_details [Object] Breakdown of credits
           #
           #   @param debit_details [Object] Breakdown of debits
+          #
+          #   @param payment_details [Object] Breakdown of payments
         end
 
         # @see Lithic::Models::FinancialAccounts::Statement#statement_type
@@ -499,7 +507,13 @@ module Lithic
           #   @return [Object, nil]
           optional :debit_details, Lithic::Internal::Type::Unknown
 
-          # @!method initialize(balance_transfers:, cash_advances:, credits:, debits:, fees:, interest:, payments:, purchases:, credit_details: nil, debit_details: nil)
+          # @!attribute payment_details
+          #   Breakdown of payments
+          #
+          #   @return [Object, nil]
+          optional :payment_details, Lithic::Internal::Type::Unknown
+
+          # @!method initialize(balance_transfers:, cash_advances:, credits:, debits:, fees:, interest:, payments:, purchases:, credit_details: nil, debit_details: nil, payment_details: nil)
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::FinancialAccounts::Statement::YtdTotals} for more details.
           #
@@ -522,6 +536,8 @@ module Lithic
           #   @param credit_details [Object] Breakdown of credits
           #
           #   @param debit_details [Object] Breakdown of debits
+          #
+          #   @param payment_details [Object] Breakdown of payments
         end
 
         # @see Lithic::Models::FinancialAccounts::Statement#interest_details

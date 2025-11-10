@@ -918,6 +918,13 @@ module Lithic
           sig { params(debit_details: T.anything).void }
           attr_writer :debit_details
 
+          # Breakdown of payments
+          sig { returns(T.nilable(T.anything)) }
+          attr_reader :payment_details
+
+          sig { params(payment_details: T.anything).void }
+          attr_writer :payment_details
+
           sig do
             params(
               balance_transfers: Integer,
@@ -929,7 +936,8 @@ module Lithic
               payments: Integer,
               purchases: Integer,
               credit_details: T.anything,
-              debit_details: T.anything
+              debit_details: T.anything,
+              payment_details: T.anything
             ).returns(T.attached_class)
           end
           def self.new(
@@ -953,7 +961,9 @@ module Lithic
             # Breakdown of credits
             credit_details: nil,
             # Breakdown of debits
-            debit_details: nil
+            debit_details: nil,
+            # Breakdown of payments
+            payment_details: nil
           )
           end
 
@@ -969,7 +979,8 @@ module Lithic
                 payments: Integer,
                 purchases: Integer,
                 credit_details: T.anything,
-                debit_details: T.anything
+                debit_details: T.anything,
+                payment_details: T.anything
               }
             )
           end
@@ -1372,6 +1383,13 @@ module Lithic
           sig { params(debit_details: T.anything).void }
           attr_writer :debit_details
 
+          # Breakdown of payments
+          sig { returns(T.nilable(T.anything)) }
+          attr_reader :payment_details
+
+          sig { params(payment_details: T.anything).void }
+          attr_writer :payment_details
+
           sig do
             params(
               balance_transfers: Integer,
@@ -1383,7 +1401,8 @@ module Lithic
               payments: Integer,
               purchases: Integer,
               credit_details: T.anything,
-              debit_details: T.anything
+              debit_details: T.anything,
+              payment_details: T.anything
             ).returns(T.attached_class)
           end
           def self.new(
@@ -1407,7 +1426,9 @@ module Lithic
             # Breakdown of credits
             credit_details: nil,
             # Breakdown of debits
-            debit_details: nil
+            debit_details: nil,
+            # Breakdown of payments
+            payment_details: nil
           )
           end
 
@@ -1423,7 +1444,8 @@ module Lithic
                 payments: Integer,
                 purchases: Integer,
                 credit_details: T.anything,
-                debit_details: T.anything
+                debit_details: T.anything,
+                payment_details: T.anything
               }
             )
           end
@@ -1515,6 +1537,13 @@ module Lithic
           sig { params(debit_details: T.anything).void }
           attr_writer :debit_details
 
+          # Breakdown of payments
+          sig { returns(T.nilable(T.anything)) }
+          attr_reader :payment_details
+
+          sig { params(payment_details: T.anything).void }
+          attr_writer :payment_details
+
           sig do
             params(
               balance_transfers: Integer,
@@ -1526,7 +1555,8 @@ module Lithic
               payments: Integer,
               purchases: Integer,
               credit_details: T.anything,
-              debit_details: T.anything
+              debit_details: T.anything,
+              payment_details: T.anything
             ).returns(T.attached_class)
           end
           def self.new(
@@ -1550,7 +1580,9 @@ module Lithic
             # Breakdown of credits
             credit_details: nil,
             # Breakdown of debits
-            debit_details: nil
+            debit_details: nil,
+            # Breakdown of payments
+            payment_details: nil
           )
           end
 
@@ -1566,7 +1598,8 @@ module Lithic
                 payments: Integer,
                 purchases: Integer,
                 credit_details: T.anything,
-                debit_details: T.anything
+                debit_details: T.anything,
+                payment_details: T.anything
               }
             )
           end
