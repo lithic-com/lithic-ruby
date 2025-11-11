@@ -10,6 +10,15 @@ module Lithic
         # Creates a new V2 Auth rule in draft mode
         sig do
           params(
+            parameters:
+              T.any(
+                Lithic::AuthRules::ConditionalBlockParameters::OrHash,
+                Lithic::AuthRules::VelocityLimitParams::OrHash,
+                Lithic::AuthRules::MerchantLockParameters::OrHash,
+                Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
+                Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash
+              ),
+            type: Lithic::AuthRules::V2CreateParams::Type::OrSymbol,
             card_tokens: T::Array[String],
             program_level: T::Boolean,
             account_tokens: T::Array[String],
@@ -17,20 +26,23 @@ module Lithic
             event_stream:
               Lithic::AuthRules::V2CreateParams::EventStream::OrSymbol,
             name: T.nilable(String),
-            parameters:
-              T.any(
-                Lithic::AuthRules::ConditionalBlockParameters::OrHash,
-                Lithic::AuthRules::VelocityLimitParams::OrHash,
-                Lithic::AuthRules::MerchantLockParameters::OrHash,
-                Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
-                Lithic::AuthRules::V2CreateParams::Parameters::ConditionalAuthorizationActionParameters::OrHash
-              ),
-            type: Lithic::AuthRules::V2CreateParams::Type::OrSymbol,
             excluded_card_tokens: T::Array[String],
             request_options: Lithic::RequestOptions::OrHash
           ).returns(Lithic::Models::AuthRules::V2CreateResponse)
         end
         def create(
+          # Parameters for the Auth Rule
+          parameters:,
+          # The type of Auth Rule. For certain rule types, this determines the event stream
+          # during which it will be evaluated. For rules that can be applied to one of
+          # several event streams, the effective one is defined by the separate
+          # `event_stream` field.
+          #
+          # - `CONDITIONAL_BLOCK`: AUTHORIZATION event stream.
+          # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
+          # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
+          # - `CONDITIONAL_ACTION`: AUTHORIZATION or THREE_DS_AUTHENTICATION event stream.
+          type:,
           # Card tokens to which the Auth Rule applies.
           card_tokens:,
           # Whether the Auth Rule applies to all authorizations on the card program.
@@ -43,18 +55,6 @@ module Lithic
           event_stream: nil,
           # Auth Rule Name
           name: nil,
-          # Parameters for the Auth Rule
-          parameters: nil,
-          # The type of Auth Rule. For certain rule types, this determines the event stream
-          # during which it will be evaluated. For rules that can be applied to one of
-          # several event streams, the effective one is defined by the separate
-          # `event_stream` field.
-          #
-          # - `CONDITIONAL_BLOCK`: AUTHORIZATION event stream.
-          # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
-          # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
-          # - `CONDITIONAL_ACTION`: AUTHORIZATION or THREE_DS_AUTHENTICATION event stream.
-          type: nil,
           # Card tokens to which the Auth Rule does not apply.
           excluded_card_tokens: nil,
           request_options: {}
@@ -179,7 +179,7 @@ module Lithic
                   Lithic::AuthRules::VelocityLimitParams::OrHash,
                   Lithic::AuthRules::MerchantLockParameters::OrHash,
                   Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
-                  Lithic::AuthRules::V2DraftParams::Parameters::ConditionalAuthorizationActionParameters::OrHash
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash
                 )
               ),
             request_options: Lithic::RequestOptions::OrHash

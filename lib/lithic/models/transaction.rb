@@ -378,23 +378,12 @@ module Lithic
 
       # @see Lithic::Models::Transaction#cardholder_authentication
       class CardholderAuthentication < Lithic::Internal::Type::BaseModel
-        # @!attribute three_ds_version
-        #   @deprecated
+        # @!attribute authentication_method
+        #   Indicates the method used to authenticate the cardholder.
         #
-        #   The 3DS version used for the authentication
-        #
-        #   @return [String, nil]
-        required :three_ds_version, String, api_name: :"3ds_version", nil?: true
-
-        # @!attribute acquirer_exemption
-        #   @deprecated
-        #
-        #   Whether an acquirer exemption applied to the transaction. Not currently
-        #   populated and will be removed in the future.
-        #
-        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption]
-        required :acquirer_exemption,
-                 enum: -> { Lithic::Transaction::CardholderAuthentication::AcquirerExemption }
+        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationMethod]
+        required :authentication_method,
+                 enum: -> { Lithic::Transaction::CardholderAuthentication::AuthenticationMethod }
 
         # @!attribute authentication_result
         #   Indicates the outcome of the 3DS authentication process.
@@ -433,40 +422,11 @@ module Lithic
         #   @return [String, nil]
         required :three_ds_authentication_token, String, nil?: true
 
-        # @!attribute verification_attempted
-        #   @deprecated
-        #
-        #   Indicates whether a 3DS challenge flow was used, and if so, what the
-        #   verification method was. (deprecated, use `authentication_result`)
-        #
-        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted]
-        required :verification_attempted,
-                 enum: -> { Lithic::Transaction::CardholderAuthentication::VerificationAttempted }
-
-        # @!attribute verification_result
-        #   @deprecated
-        #
-        #   Indicates whether a transaction is considered 3DS authenticated. (deprecated,
-        #   use `authentication_result`)
-        #
-        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult]
-        required :verification_result,
-                 enum: -> { Lithic::Transaction::CardholderAuthentication::VerificationResult }
-
-        # @!attribute authentication_method
-        #   Indicates the method used to authenticate the cardholder.
-        #
-        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationMethod, nil]
-        optional :authentication_method,
-                 enum: -> { Lithic::Transaction::CardholderAuthentication::AuthenticationMethod }
-
-        # @!method initialize(three_ds_version:, acquirer_exemption:, authentication_result:, decision_made_by:, liability_shift:, three_ds_authentication_token:, verification_attempted:, verification_result:, authentication_method: nil)
+        # @!method initialize(authentication_method:, authentication_result:, decision_made_by:, liability_shift:, three_ds_authentication_token:)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::Transaction::CardholderAuthentication} for more details.
         #
-        #   @param three_ds_version [String, nil] The 3DS version used for the authentication
-        #
-        #   @param acquirer_exemption [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AcquirerExemption] Whether an acquirer exemption applied to the transaction. Not currently populate
+        #   @param authentication_method [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationMethod] Indicates the method used to authenticate the cardholder.
         #
         #   @param authentication_result [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult] Indicates the outcome of the 3DS authentication process.
         #
@@ -475,30 +435,16 @@ module Lithic
         #   @param liability_shift [Symbol, Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift] Indicates whether chargeback liability shift applies to the transaction. Possibl
         #
         #   @param three_ds_authentication_token [String, nil] Unique identifier you can use to match a given 3DS authentication (available via
-        #
-        #   @param verification_attempted [Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationAttempted] Indicates whether a 3DS challenge flow was used, and if so, what the verificatio
-        #
-        #   @param verification_result [Symbol, Lithic::Models::Transaction::CardholderAuthentication::VerificationResult] Indicates whether a transaction is considered 3DS authenticated. (deprecated, us
-        #
-        #   @param authentication_method [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationMethod] Indicates the method used to authenticate the cardholder.
 
-        # @deprecated
+        # Indicates the method used to authenticate the cardholder.
         #
-        # Whether an acquirer exemption applied to the transaction. Not currently
-        # populated and will be removed in the future.
-        #
-        # @see Lithic::Models::Transaction::CardholderAuthentication#acquirer_exemption
-        module AcquirerExemption
+        # @see Lithic::Models::Transaction::CardholderAuthentication#authentication_method
+        module AuthenticationMethod
           extend Lithic::Internal::Type::Enum
 
-          AUTHENTICATION_OUTAGE_EXCEPTION = :AUTHENTICATION_OUTAGE_EXCEPTION
-          LOW_VALUE = :LOW_VALUE
-          MERCHANT_INITIATED_TRANSACTION = :MERCHANT_INITIATED_TRANSACTION
+          FRICTIONLESS = :FRICTIONLESS
+          CHALLENGE = :CHALLENGE
           NONE = :NONE
-          RECURRING_PAYMENT = :RECURRING_PAYMENT
-          SECURE_CORPORATE_PAYMENT = :SECURE_CORPORATE_PAYMENT
-          STRONG_CUSTOMER_AUTHENTICATION_DELEGATION = :STRONG_CUSTOMER_AUTHENTICATION_DELEGATION
-          TRANSACTION_RISK_ANALYSIS = :TRANSACTION_RISK_ANALYSIS
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -553,56 +499,6 @@ module Lithic
 
           LIABILITY_SHIFT_3DS_AUTHENTICATED = :"3DS_AUTHENTICATED"
           TOKEN_AUTHENTICATED = :TOKEN_AUTHENTICATED
-          NONE = :NONE
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # @deprecated
-        #
-        # Indicates whether a 3DS challenge flow was used, and if so, what the
-        # verification method was. (deprecated, use `authentication_result`)
-        #
-        # @see Lithic::Models::Transaction::CardholderAuthentication#verification_attempted
-        module VerificationAttempted
-          extend Lithic::Internal::Type::Enum
-
-          NONE = :NONE
-          OTHER = :OTHER
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # @deprecated
-        #
-        # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
-        # use `authentication_result`)
-        #
-        # @see Lithic::Models::Transaction::CardholderAuthentication#verification_result
-        module VerificationResult
-          extend Lithic::Internal::Type::Enum
-
-          CANCELLED = :CANCELLED
-          FAILED = :FAILED
-          FRICTIONLESS = :FRICTIONLESS
-          NOT_ATTEMPTED = :NOT_ATTEMPTED
-          REJECTED = :REJECTED
-          SUCCESS = :SUCCESS
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # Indicates the method used to authenticate the cardholder.
-        #
-        # @see Lithic::Models::Transaction::CardholderAuthentication#authentication_method
-        module AuthenticationMethod
-          extend Lithic::Internal::Type::Enum
-
-          FRICTIONLESS = :FRICTIONLESS
-          CHALLENGE = :CHALLENGE
           NONE = :NONE
 
           # @!method self.values

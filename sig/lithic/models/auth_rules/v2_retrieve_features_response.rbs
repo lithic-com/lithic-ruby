@@ -25,7 +25,7 @@ module Lithic
         type feature =
           {
             filters: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters,
-            period: Lithic::Models::AuthRules::velocity_limit_params_period_window,
+            period: Lithic::Models::AuthRules::velocity_limit_period,
             scope: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::scope,
             value: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Value
           }
@@ -33,7 +33,7 @@ module Lithic
         class Feature < Lithic::Internal::Type::BaseModel
           attr_accessor filters: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters
 
-          attr_accessor period: Lithic::Models::AuthRules::velocity_limit_params_period_window
+          attr_accessor period: Lithic::Models::AuthRules::velocity_limit_period
 
           attr_accessor scope: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::scope
 
@@ -41,14 +41,14 @@ module Lithic
 
           def initialize: (
             filters: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters,
-            period: Lithic::Models::AuthRules::velocity_limit_params_period_window,
+            period: Lithic::Models::AuthRules::velocity_limit_period,
             scope: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::scope,
             value: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Value
           ) -> void
 
           def to_hash: -> {
             filters: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters,
-            period: Lithic::Models::AuthRules::velocity_limit_params_period_window,
+            period: Lithic::Models::AuthRules::velocity_limit_period,
             scope: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::scope,
             value: Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Value
           }
