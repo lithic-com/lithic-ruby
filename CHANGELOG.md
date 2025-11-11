@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.0-alpha.55 (2025-11-11)
+
+Full Changelog: [v0.1.0-alpha.54...v0.1.0-alpha.55](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.54...v0.1.0-alpha.55)
+
+### Features
+
+* **api:** add payment_details ([413b65a](https://github.com/lithic-com/lithic-ruby/commit/413b65a7028d3277f1e4f3419fd643e7c0730966))
+* **api:** deprecate auth rule apply endpoint and fix several schemas ([7b9a282](https://github.com/lithic-com/lithic-ruby/commit/7b9a282603b666e314c6445439cfb839c479eada))
+* **api:** new fields in Statements APIs ([be8c6ea](https://github.com/lithic-com/lithic-ruby/commit/be8c6ea99b996707b3848cba8e0109c47fc1715e))
+* **api:** re-add rules metadata to tokenization events ([da13854](https://github.com/lithic-com/lithic-ruby/commit/da13854e8c9794024b786da4584ffbe492999c6a))
+* **api:** remove deprecated fields from Cardholder Authentication object ([da13854](https://github.com/lithic-com/lithic-ruby/commit/da13854e8c9794024b786da4584ffbe492999c6a))
+
+
+### Bug Fixes
+
+* **api:** adjust Auth Rules spec for better SDK structure ([da13854](https://github.com/lithic-com/lithic-ruby/commit/da13854e8c9794024b786da4584ffbe492999c6a))
+* **api:** fix oneOf -&gt; anyOf in account holder update ([413b65a](https://github.com/lithic-com/lithic-ruby/commit/413b65a7028d3277f1e4f3419fd643e7c0730966))
+* **api:** fixing spec for Tokenizations and Enhanced data ([be8c6ea](https://github.com/lithic-com/lithic-ruby/commit/be8c6ea99b996707b3848cba8e0109c47fc1715e))
+
 ## 0.1.0-alpha.54 (2025-11-04)
 
 Full Changelog: [v0.1.0-alpha.53...v0.1.0-alpha.54](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.53...v0.1.0-alpha.54)
