@@ -525,18 +525,13 @@ module Lithic
             )
           end
 
-        # The 3DS version used for the authentication
-        sig { returns(T.nilable(String)) }
-        attr_accessor :three_ds_version
-
-        # Whether an acquirer exemption applied to the transaction. Not currently
-        # populated and will be removed in the future.
+        # Indicates the method used to authenticate the cardholder.
         sig do
           returns(
-            Lithic::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
+            Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
           )
         end
-        attr_accessor :acquirer_exemption
+        attr_accessor :authentication_method
 
         # Indicates the outcome of the 3DS authentication process.
         sig do
@@ -578,68 +573,22 @@ module Lithic
         sig { returns(T.nilable(String)) }
         attr_accessor :three_ds_authentication_token
 
-        # Indicates whether a 3DS challenge flow was used, and if so, what the
-        # verification method was. (deprecated, use `authentication_result`)
-        sig do
-          returns(
-            Lithic::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol
-          )
-        end
-        attr_accessor :verification_attempted
-
-        # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
-        # use `authentication_result`)
-        sig do
-          returns(
-            Lithic::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
-          )
-        end
-        attr_accessor :verification_result
-
-        # Indicates the method used to authenticate the cardholder.
-        sig do
-          returns(
-            T.nilable(
-              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
-            )
-          )
-        end
-        attr_reader :authentication_method
-
         sig do
           params(
             authentication_method:
-              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::OrSymbol
-          ).void
-        end
-        attr_writer :authentication_method
-
-        sig do
-          params(
-            three_ds_version: T.nilable(String),
-            acquirer_exemption:
-              Lithic::Transaction::CardholderAuthentication::AcquirerExemption::OrSymbol,
+              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::OrSymbol,
             authentication_result:
               Lithic::Transaction::CardholderAuthentication::AuthenticationResult::OrSymbol,
             decision_made_by:
               Lithic::Transaction::CardholderAuthentication::DecisionMadeBy::OrSymbol,
             liability_shift:
               Lithic::Transaction::CardholderAuthentication::LiabilityShift::OrSymbol,
-            three_ds_authentication_token: T.nilable(String),
-            verification_attempted:
-              Lithic::Transaction::CardholderAuthentication::VerificationAttempted::OrSymbol,
-            verification_result:
-              Lithic::Transaction::CardholderAuthentication::VerificationResult::OrSymbol,
-            authentication_method:
-              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::OrSymbol
+            three_ds_authentication_token: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
-          # The 3DS version used for the authentication
-          three_ds_version:,
-          # Whether an acquirer exemption applied to the transaction. Not currently
-          # populated and will be removed in the future.
-          acquirer_exemption:,
+          # Indicates the method used to authenticate the cardholder.
+          authentication_method:,
           # Indicates the outcome of the 3DS authentication process.
           authentication_result:,
           # Indicates which party made the 3DS authentication decision.
@@ -659,102 +608,61 @@ module Lithic
           # the three_ds_authentication.created event webhook) and the transaction. Note
           # that in cases where liability shift does not occur, this token is matched to the
           # transaction on a best-effort basis.
-          three_ds_authentication_token:,
-          # Indicates whether a 3DS challenge flow was used, and if so, what the
-          # verification method was. (deprecated, use `authentication_result`)
-          verification_attempted:,
-          # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
-          # use `authentication_result`)
-          verification_result:,
-          # Indicates the method used to authenticate the cardholder.
-          authentication_method: nil
+          three_ds_authentication_token:
         )
         end
 
         sig do
           override.returns(
             {
-              three_ds_version: T.nilable(String),
-              acquirer_exemption:
-                Lithic::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol,
+              authentication_method:
+                Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol,
               authentication_result:
                 Lithic::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol,
               decision_made_by:
                 Lithic::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol,
               liability_shift:
                 Lithic::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol,
-              three_ds_authentication_token: T.nilable(String),
-              verification_attempted:
-                Lithic::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol,
-              verification_result:
-                Lithic::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol,
-              authentication_method:
-                Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
+              three_ds_authentication_token: T.nilable(String)
             }
           )
         end
         def to_hash
         end
 
-        # Whether an acquirer exemption applied to the transaction. Not currently
-        # populated and will be removed in the future.
-        module AcquirerExemption
+        # Indicates the method used to authenticate the cardholder.
+        module AuthenticationMethod
           extend Lithic::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias do
               T.all(
                 Symbol,
-                Lithic::Transaction::CardholderAuthentication::AcquirerExemption
+                Lithic::Transaction::CardholderAuthentication::AuthenticationMethod
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          AUTHENTICATION_OUTAGE_EXCEPTION =
+          FRICTIONLESS =
             T.let(
-              :AUTHENTICATION_OUTAGE_EXCEPTION,
-              Lithic::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
+              :FRICTIONLESS,
+              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
             )
-          LOW_VALUE =
+          CHALLENGE =
             T.let(
-              :LOW_VALUE,
-              Lithic::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
-            )
-          MERCHANT_INITIATED_TRANSACTION =
-            T.let(
-              :MERCHANT_INITIATED_TRANSACTION,
-              Lithic::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
+              :CHALLENGE,
+              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
             )
           NONE =
             T.let(
               :NONE,
-              Lithic::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
-            )
-          RECURRING_PAYMENT =
-            T.let(
-              :RECURRING_PAYMENT,
-              Lithic::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
-            )
-          SECURE_CORPORATE_PAYMENT =
-            T.let(
-              :SECURE_CORPORATE_PAYMENT,
-              Lithic::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
-            )
-          STRONG_CUSTOMER_AUTHENTICATION_DELEGATION =
-            T.let(
-              :STRONG_CUSTOMER_AUTHENTICATION_DELEGATION,
-              Lithic::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
-            )
-          TRANSACTION_RISK_ANALYSIS =
-            T.let(
-              :TRANSACTION_RISK_ANALYSIS,
-              Lithic::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
+              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Lithic::Transaction::CardholderAuthentication::AcquirerExemption::TaggedSymbol
+                Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
               ]
             )
           end
@@ -904,138 +812,6 @@ module Lithic
             override.returns(
               T::Array[
                 Lithic::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # Indicates whether a 3DS challenge flow was used, and if so, what the
-        # verification method was. (deprecated, use `authentication_result`)
-        module VerificationAttempted
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Lithic::Transaction::CardholderAuthentication::VerificationAttempted
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          NONE =
-            T.let(
-              :NONE,
-              Lithic::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol
-            )
-          OTHER =
-            T.let(
-              :OTHER,
-              Lithic::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Lithic::Transaction::CardholderAuthentication::VerificationAttempted::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # Indicates whether a transaction is considered 3DS authenticated. (deprecated,
-        # use `authentication_result`)
-        module VerificationResult
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Lithic::Transaction::CardholderAuthentication::VerificationResult
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          CANCELLED =
-            T.let(
-              :CANCELLED,
-              Lithic::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
-            )
-          FAILED =
-            T.let(
-              :FAILED,
-              Lithic::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
-            )
-          FRICTIONLESS =
-            T.let(
-              :FRICTIONLESS,
-              Lithic::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
-            )
-          NOT_ATTEMPTED =
-            T.let(
-              :NOT_ATTEMPTED,
-              Lithic::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
-            )
-          REJECTED =
-            T.let(
-              :REJECTED,
-              Lithic::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
-            )
-          SUCCESS =
-            T.let(
-              :SUCCESS,
-              Lithic::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Lithic::Transaction::CardholderAuthentication::VerificationResult::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # Indicates the method used to authenticate the cardholder.
-        module AuthenticationMethod
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Lithic::Transaction::CardholderAuthentication::AuthenticationMethod
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          FRICTIONLESS =
-            T.let(
-              :FRICTIONLESS,
-              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
-            )
-          CHALLENGE =
-            T.let(
-              :CHALLENGE,
-              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
-            )
-          NONE =
-            T.let(
-              :NONE,
-              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
               ]
             )
           end

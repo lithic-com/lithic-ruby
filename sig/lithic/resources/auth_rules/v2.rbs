@@ -5,14 +5,14 @@ module Lithic
         attr_reader backtests: Lithic::Resources::AuthRules::V2::Backtests
 
         def create: (
+          parameters: Lithic::Models::AuthRules::V2CreateParams::parameters,
+          type: Lithic::Models::AuthRules::V2CreateParams::type_,
           card_tokens: ::Array[String],
           program_level: bool,
           ?account_tokens: ::Array[String],
           ?business_account_tokens: ::Array[String],
           ?event_stream: Lithic::Models::AuthRules::V2CreateParams::event_stream,
           ?name: String?,
-          ?parameters: Lithic::Models::AuthRules::V2CreateParams::parameters,
-          ?type: Lithic::Models::AuthRules::V2CreateParams::type_,
           ?excluded_card_tokens: ::Array[String],
           ?request_options: Lithic::request_opts
         ) -> Lithic::Models::AuthRules::V2CreateResponse

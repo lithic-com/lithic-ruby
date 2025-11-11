@@ -4,22 +4,22 @@ module Lithic
   module Models
     module AuthRules
       # Velocity over the current day since 00:00 / 12 AM in Eastern Time
-      module VelocityLimitParamsPeriodWindow
+      module VelocityLimitPeriod
         extend Lithic::Internal::Type::Union
 
-        variant -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject }
+        variant -> { Lithic::AuthRules::VelocityLimitPeriod::TrailingWindowObject }
 
         # Velocity over the current day since 00:00 / 12 AM in Eastern Time
-        variant -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay }
+        variant -> { Lithic::AuthRules::VelocityLimitPeriod::FixedWindowDay }
 
         # Velocity over the current week since 00:00 / 12 AM in Eastern Time on specified `day_of_week`
-        variant -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek }
+        variant -> { Lithic::AuthRules::VelocityLimitPeriod::FixedWindowWeek }
 
         # Velocity over the current month since 00:00 / 12 AM in Eastern Time on specified `day_of_month`.
-        variant -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth }
+        variant -> { Lithic::AuthRules::VelocityLimitPeriod::FixedWindowMonth }
 
         # Velocity over the current year since 00:00 / 12 AM in Eastern Time on specified `month` and `day_of_month`. This validates the month and day of the year to start from is a real date. In the event that February 29th is selected, in non-leap years, the window will start from February 28th.
-        variant -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear }
+        variant -> { Lithic::AuthRules::VelocityLimitPeriod::FixedWindowYear }
 
         class TrailingWindowObject < Lithic::Internal::Type::BaseModel
           # @!attribute duration
@@ -36,8 +36,8 @@ module Lithic
 
           # @!method initialize(duration:, type: :CUSTOM)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject}
-          #   for more details.
+          #   {Lithic::Models::AuthRules::VelocityLimitPeriod::TrailingWindowObject} for more
+          #   details.
           #
           #   @param duration [Integer] The size of the trailing window to calculate Spend Velocity over in seconds. The
           #
@@ -71,8 +71,8 @@ module Lithic
 
           # @!method initialize(day_of_week: nil, type: :WEEK)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek}
-          #   for more details.
+          #   {Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowWeek} for more
+          #   details.
           #
           #   Velocity over the current week since 00:00 / 12 AM in Eastern Time on specified
           #   `day_of_week`
@@ -98,8 +98,8 @@ module Lithic
 
           # @!method initialize(day_of_month: nil, type: :MONTH)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth}
-          #   for more details.
+          #   {Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowMonth} for more
+          #   details.
           #
           #   Velocity over the current month since 00:00 / 12 AM in Eastern Time on specified
           #   `day_of_month`.
@@ -131,8 +131,8 @@ module Lithic
 
           # @!method initialize(day_of_month: nil, month: nil, type: :YEAR)
           #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear}
-          #   for more details.
+          #   {Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowYear} for more
+          #   details.
           #
           #   Velocity over the current year since 00:00 / 12 AM in Eastern Time on specified
           #   `month` and `day_of_month`. This validates the month and day of the year to
@@ -147,7 +147,7 @@ module Lithic
         end
 
         # @!method self.variants
-        #   @return [Array(Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear)]
+        #   @return [Array(Lithic::Models::AuthRules::VelocityLimitPeriod::TrailingWindowObject, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowDay, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowWeek, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowMonth, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowYear)]
       end
     end
   end

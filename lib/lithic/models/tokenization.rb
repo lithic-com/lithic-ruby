@@ -235,18 +235,44 @@ module Lithic
         #   @return [Symbol, Lithic::Models::Tokenization::Event::Result, nil]
         optional :result, enum: -> { Lithic::Tokenization::Event::Result }
 
+        # @!attribute rule_results
+        #   Results from rules that were evaluated for this tokenization
+        #
+        #   @return [Array<Lithic::Models::Tokenization::Event::RuleResult>, nil]
+        optional :rule_results, -> { Lithic::Internal::Type::ArrayOf[Lithic::Tokenization::Event::RuleResult] }
+
+        # @!attribute tokenization_decline_reasons
+        #   List of reasons why the tokenization was declined
+        #
+        #   @return [Array<Symbol, Lithic::Models::Tokenization::Event::TokenizationDeclineReason>, nil]
+        optional :tokenization_decline_reasons,
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Tokenization::Event::TokenizationDeclineReason] }
+
+        # @!attribute tokenization_tfa_reasons
+        #   List of reasons why two-factor authentication was required
+        #
+        #   @return [Array<Symbol, Lithic::Models::Tokenization::Event::TokenizationTfaReason>, nil]
+        optional :tokenization_tfa_reasons,
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::Tokenization::Event::TokenizationTfaReason] }
+
         # @!attribute type
         #   Enum representing the type of tokenization event that occurred
         #
         #   @return [Symbol, Lithic::Models::Tokenization::Event::Type, nil]
         optional :type, enum: -> { Lithic::Tokenization::Event::Type }
 
-        # @!method initialize(token: nil, created_at: nil, result: nil, type: nil)
+        # @!method initialize(token: nil, created_at: nil, result: nil, rule_results: nil, tokenization_decline_reasons: nil, tokenization_tfa_reasons: nil, type: nil)
         #   @param token [String] Globally unique identifier for a Tokenization Event
         #
         #   @param created_at [Time] Date and time when the tokenization event first occurred. UTC time zone.
         #
         #   @param result [Symbol, Lithic::Models::Tokenization::Event::Result] Enum representing the result of the tokenization event
+        #
+        #   @param rule_results [Array<Lithic::Models::Tokenization::Event::RuleResult>] Results from rules that were evaluated for this tokenization
+        #
+        #   @param tokenization_decline_reasons [Array<Symbol, Lithic::Models::Tokenization::Event::TokenizationDeclineReason>] List of reasons why the tokenization was declined
+        #
+        #   @param tokenization_tfa_reasons [Array<Symbol, Lithic::Models::Tokenization::Event::TokenizationTfaReason>] List of reasons why two-factor authentication was required
         #
         #   @param type [Symbol, Lithic::Models::Tokenization::Event::Type] Enum representing the type of tokenization event that occurred
 
@@ -268,6 +294,108 @@ module Lithic
           TOKEN_STATE_UNKNOWN = :TOKEN_STATE_UNKNOWN
           TOKEN_SUSPENDED = :TOKEN_SUSPENDED
           TOKEN_UPDATED = :TOKEN_UPDATED
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        class RuleResult < Lithic::Internal::Type::BaseModel
+          # @!attribute auth_rule_token
+          #   The Auth Rule Token associated with the rule. If this is set to null, then the
+          #   result was not associated with a customer-configured rule. This may happen in
+          #   cases where a tokenization is declined or requires TFA due to a
+          #   Lithic-configured security or compliance rule, for example.
+          #
+          #   @return [String, nil]
+          required :auth_rule_token, String, nil?: true
+
+          # @!attribute explanation
+          #   A human-readable explanation outlining the motivation for the rule's result
+          #
+          #   @return [String, nil]
+          required :explanation, String, nil?: true
+
+          # @!attribute name
+          #   The name for the rule, if any was configured
+          #
+          #   @return [String, nil]
+          required :name, String, nil?: true
+
+          # @!attribute result
+          #   The result associated with this rule
+          #
+          #   @return [Symbol, Lithic::Models::Tokenization::Event::RuleResult::Result]
+          required :result, enum: -> { Lithic::Tokenization::Event::RuleResult::Result }
+
+          # @!method initialize(auth_rule_token:, explanation:, name:, result:)
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::Tokenization::Event::RuleResult} for more details.
+          #
+          #   @param auth_rule_token [String, nil] The Auth Rule Token associated with the rule. If this is set to null, then the r
+          #
+          #   @param explanation [String, nil] A human-readable explanation outlining the motivation for the rule's result
+          #
+          #   @param name [String, nil] The name for the rule, if any was configured
+          #
+          #   @param result [Symbol, Lithic::Models::Tokenization::Event::RuleResult::Result] The result associated with this rule
+
+          # The result associated with this rule
+          #
+          # @see Lithic::Models::Tokenization::Event::RuleResult#result
+          module Result
+            extend Lithic::Internal::Type::Enum
+
+            APPROVED = :APPROVED
+            DECLINED = :DECLINED
+            REQUIRE_TFA = :REQUIRE_TFA
+            ERROR = :ERROR
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        # Reason code for why a tokenization was declined
+        module TokenizationDeclineReason
+          extend Lithic::Internal::Type::Enum
+
+          ACCOUNT_SCORE_1 = :ACCOUNT_SCORE_1
+          DEVICE_SCORE_1 = :DEVICE_SCORE_1
+          ALL_WALLET_DECLINE_REASONS_PRESENT = :ALL_WALLET_DECLINE_REASONS_PRESENT
+          WALLET_RECOMMENDED_DECISION_RED = :WALLET_RECOMMENDED_DECISION_RED
+          CVC_MISMATCH = :CVC_MISMATCH
+          CARD_EXPIRY_MONTH_MISMATCH = :CARD_EXPIRY_MONTH_MISMATCH
+          CARD_EXPIRY_YEAR_MISMATCH = :CARD_EXPIRY_YEAR_MISMATCH
+          CARD_INVALID_STATE = :CARD_INVALID_STATE
+          CUSTOMER_RED_PATH = :CUSTOMER_RED_PATH
+          INVALID_CUSTOMER_RESPONSE = :INVALID_CUSTOMER_RESPONSE
+          NETWORK_FAILURE = :NETWORK_FAILURE
+          GENERIC_DECLINE = :GENERIC_DECLINE
+          DIGITAL_CARD_ART_REQUIRED = :DIGITAL_CARD_ART_REQUIRED
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Reason code for why a tokenization required two-factor authentication
+        module TokenizationTfaReason
+          extend Lithic::Internal::Type::Enum
+
+          WALLET_RECOMMENDED_TFA = :WALLET_RECOMMENDED_TFA
+          SUSPICIOUS_ACTIVITY = :SUSPICIOUS_ACTIVITY
+          DEVICE_RECENTLY_LOST = :DEVICE_RECENTLY_LOST
+          TOO_MANY_RECENT_ATTEMPTS = :TOO_MANY_RECENT_ATTEMPTS
+          TOO_MANY_RECENT_TOKENS = :TOO_MANY_RECENT_TOKENS
+          TOO_MANY_DIFFERENT_CARDHOLDERS = :TOO_MANY_DIFFERENT_CARDHOLDERS
+          OUTSIDE_HOME_TERRITORY = :OUTSIDE_HOME_TERRITORY
+          HAS_SUSPENDED_TOKENS = :HAS_SUSPENDED_TOKENS
+          HIGH_RISK = :HIGH_RISK
+          ACCOUNT_SCORE_LOW = :ACCOUNT_SCORE_LOW
+          DEVICE_SCORE_LOW = :DEVICE_SCORE_LOW
+          CARD_STATE_TFA = :CARD_STATE_TFA
+          HARDCODED_TFA = :HARDCODED_TFA
+          CUSTOMER_RULE_TFA = :CUSTOMER_RULE_TFA
+          DEVICE_HOST_CARD_EMULATION = :DEVICE_HOST_CARD_EMULATION
 
           # @!method self.values
           #   @return [Array<Symbol>]

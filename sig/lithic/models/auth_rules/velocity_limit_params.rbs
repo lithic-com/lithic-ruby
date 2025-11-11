@@ -4,7 +4,7 @@ module Lithic
       type velocity_limit_params =
         {
           filters: Lithic::AuthRules::VelocityLimitParams::Filters,
-          period: Lithic::Models::AuthRules::velocity_limit_params_period_window,
+          period: Lithic::Models::AuthRules::velocity_limit_period,
           scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
           limit_amount: Integer?,
           limit_count: Integer?
@@ -13,7 +13,7 @@ module Lithic
       class VelocityLimitParams < Lithic::Internal::Type::BaseModel
         attr_accessor filters: Lithic::AuthRules::VelocityLimitParams::Filters
 
-        attr_accessor period: Lithic::Models::AuthRules::velocity_limit_params_period_window
+        attr_accessor period: Lithic::Models::AuthRules::velocity_limit_period
 
         attr_accessor scope: Lithic::Models::AuthRules::VelocityLimitParams::scope
 
@@ -23,7 +23,7 @@ module Lithic
 
         def initialize: (
           filters: Lithic::AuthRules::VelocityLimitParams::Filters,
-          period: Lithic::Models::AuthRules::velocity_limit_params_period_window,
+          period: Lithic::Models::AuthRules::velocity_limit_period,
           scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
           ?limit_amount: Integer?,
           ?limit_count: Integer?
@@ -31,7 +31,7 @@ module Lithic
 
         def to_hash: -> {
           filters: Lithic::AuthRules::VelocityLimitParams::Filters,
-          period: Lithic::Models::AuthRules::velocity_limit_params_period_window,
+          period: Lithic::Models::AuthRules::velocity_limit_period,
           scope: Lithic::Models::AuthRules::VelocityLimitParams::scope,
           limit_amount: Integer?,
           limit_count: Integer?
