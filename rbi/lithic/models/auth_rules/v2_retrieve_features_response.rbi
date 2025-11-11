@@ -82,11 +82,7 @@ module Lithic
           attr_writer :filters
 
           # Velocity over the current day since 00:00 / 12 AM in Eastern Time
-          sig do
-            returns(
-              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::Variants
-            )
-          end
+          sig { returns(Lithic::AuthRules::VelocityLimitPeriod::Variants) }
           attr_accessor :period
 
           # The scope the velocity is calculated for
@@ -118,11 +114,11 @@ module Lithic
                 Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters::OrHash,
               period:
                 T.any(
-                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject::OrHash,
-                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay::OrHash,
-                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek::OrHash,
-                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth::OrHash,
-                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear::OrHash
+                  Lithic::AuthRules::VelocityLimitPeriod::TrailingWindowObject::OrHash,
+                  Lithic::AuthRules::VelocityLimitPeriod::FixedWindowDay::OrHash,
+                  Lithic::AuthRules::VelocityLimitPeriod::FixedWindowWeek::OrHash,
+                  Lithic::AuthRules::VelocityLimitPeriod::FixedWindowMonth::OrHash,
+                  Lithic::AuthRules::VelocityLimitPeriod::FixedWindowYear::OrHash
                 ),
               scope:
                 Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Scope::OrSymbol,
@@ -145,8 +141,7 @@ module Lithic
               {
                 filters:
                   Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Filters,
-                period:
-                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::Variants,
+                period: Lithic::AuthRules::VelocityLimitPeriod::Variants,
                 scope:
                   Lithic::Models::AuthRules::V2RetrieveFeaturesResponse::Feature::Scope::TaggedSymbol,
                 value:

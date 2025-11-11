@@ -4,17 +4,17 @@ module Lithic
   module Models
     module AuthRules
       # Velocity over the current day since 00:00 / 12 AM in Eastern Time
-      module VelocityLimitParamsPeriodWindow
+      module VelocityLimitPeriod
         extend Lithic::Internal::Type::Union
 
         Variants =
           T.type_alias do
             T.any(
-              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject,
-              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay,
-              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek,
-              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth,
-              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear
+              Lithic::AuthRules::VelocityLimitPeriod::TrailingWindowObject,
+              Lithic::AuthRules::VelocityLimitPeriod::FixedWindowDay,
+              Lithic::AuthRules::VelocityLimitPeriod::FixedWindowWeek,
+              Lithic::AuthRules::VelocityLimitPeriod::FixedWindowMonth,
+              Lithic::AuthRules::VelocityLimitPeriod::FixedWindowYear
             )
           end
 
@@ -22,7 +22,7 @@ module Lithic
           OrHash =
             T.type_alias do
               T.any(
-                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject,
+                Lithic::AuthRules::VelocityLimitPeriod::TrailingWindowObject,
                 Lithic::Internal::AnyHash
               )
             end
@@ -55,7 +55,7 @@ module Lithic
           OrHash =
             T.type_alias do
               T.any(
-                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay,
+                Lithic::AuthRules::VelocityLimitPeriod::FixedWindowDay,
                 Lithic::Internal::AnyHash
               )
             end
@@ -77,7 +77,7 @@ module Lithic
           OrHash =
             T.type_alias do
               T.any(
-                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek,
+                Lithic::AuthRules::VelocityLimitPeriod::FixedWindowWeek,
                 Lithic::Internal::AnyHash
               )
             end
@@ -115,7 +115,7 @@ module Lithic
           OrHash =
             T.type_alias do
               T.any(
-                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth,
+                Lithic::AuthRules::VelocityLimitPeriod::FixedWindowMonth,
                 Lithic::Internal::AnyHash
               )
             end
@@ -157,7 +157,7 @@ module Lithic
           OrHash =
             T.type_alias do
               T.any(
-                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear,
+                Lithic::AuthRules::VelocityLimitPeriod::FixedWindowYear,
                 Lithic::Internal::AnyHash
               )
             end
@@ -212,9 +212,7 @@ module Lithic
 
         sig do
           override.returns(
-            T::Array[
-              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::Variants
-            ]
+            T::Array[Lithic::AuthRules::VelocityLimitPeriod::Variants]
           )
         end
         def self.variants

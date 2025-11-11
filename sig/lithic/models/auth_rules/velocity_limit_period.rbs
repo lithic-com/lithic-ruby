@@ -1,14 +1,14 @@
 module Lithic
   module Models
     module AuthRules
-      type velocity_limit_params_period_window =
-        Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject
-        | Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay
-        | Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek
-        | Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth
-        | Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear
+      type velocity_limit_period =
+        Lithic::AuthRules::VelocityLimitPeriod::TrailingWindowObject
+        | Lithic::AuthRules::VelocityLimitPeriod::FixedWindowDay
+        | Lithic::AuthRules::VelocityLimitPeriod::FixedWindowWeek
+        | Lithic::AuthRules::VelocityLimitPeriod::FixedWindowMonth
+        | Lithic::AuthRules::VelocityLimitPeriod::FixedWindowYear
 
-      module VelocityLimitParamsPeriodWindow
+      module VelocityLimitPeriod
         extend Lithic::Internal::Type::Union
 
         type trailing_window_object = { duration: Integer, type: :CUSTOM }
@@ -84,7 +84,7 @@ module Lithic
           def to_hash: -> { type: :YEAR, day_of_month: Integer, month: Integer }
         end
 
-        def self?.variants: -> ::Array[Lithic::Models::AuthRules::velocity_limit_params_period_window]
+        def self?.variants: -> ::Array[Lithic::Models::AuthRules::velocity_limit_period]
       end
     end
   end

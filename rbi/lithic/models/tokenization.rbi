@@ -329,6 +329,64 @@ module Lithic
         end
         attr_writer :result
 
+        # Results from rules that were evaluated for this tokenization
+        sig do
+          returns(T.nilable(T::Array[Lithic::Tokenization::Event::RuleResult]))
+        end
+        attr_reader :rule_results
+
+        sig do
+          params(
+            rule_results:
+              T::Array[Lithic::Tokenization::Event::RuleResult::OrHash]
+          ).void
+        end
+        attr_writer :rule_results
+
+        # List of reasons why the tokenization was declined
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+              ]
+            )
+          )
+        end
+        attr_reader :tokenization_decline_reasons
+
+        sig do
+          params(
+            tokenization_decline_reasons:
+              T::Array[
+                Lithic::Tokenization::Event::TokenizationDeclineReason::OrSymbol
+              ]
+          ).void
+        end
+        attr_writer :tokenization_decline_reasons
+
+        # List of reasons why two-factor authentication was required
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+              ]
+            )
+          )
+        end
+        attr_reader :tokenization_tfa_reasons
+
+        sig do
+          params(
+            tokenization_tfa_reasons:
+              T::Array[
+                Lithic::Tokenization::Event::TokenizationTfaReason::OrSymbol
+              ]
+          ).void
+        end
+        attr_writer :tokenization_tfa_reasons
+
         # Enum representing the type of tokenization event that occurred
         sig do
           returns(T.nilable(Lithic::Tokenization::Event::Type::TaggedSymbol))
@@ -343,6 +401,16 @@ module Lithic
             token: String,
             created_at: Time,
             result: Lithic::Tokenization::Event::Result::OrSymbol,
+            rule_results:
+              T::Array[Lithic::Tokenization::Event::RuleResult::OrHash],
+            tokenization_decline_reasons:
+              T::Array[
+                Lithic::Tokenization::Event::TokenizationDeclineReason::OrSymbol
+              ],
+            tokenization_tfa_reasons:
+              T::Array[
+                Lithic::Tokenization::Event::TokenizationTfaReason::OrSymbol
+              ],
             type: Lithic::Tokenization::Event::Type::OrSymbol
           ).returns(T.attached_class)
         end
@@ -353,6 +421,12 @@ module Lithic
           created_at: nil,
           # Enum representing the result of the tokenization event
           result: nil,
+          # Results from rules that were evaluated for this tokenization
+          rule_results: nil,
+          # List of reasons why the tokenization was declined
+          tokenization_decline_reasons: nil,
+          # List of reasons why two-factor authentication was required
+          tokenization_tfa_reasons: nil,
           # Enum representing the type of tokenization event that occurred
           type: nil
         )
@@ -364,6 +438,15 @@ module Lithic
               token: String,
               created_at: Time,
               result: Lithic::Tokenization::Event::Result::TaggedSymbol,
+              rule_results: T::Array[Lithic::Tokenization::Event::RuleResult],
+              tokenization_decline_reasons:
+                T::Array[
+                  Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+                ],
+              tokenization_tfa_reasons:
+                T::Array[
+                  Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+                ],
               type: Lithic::Tokenization::Event::Type::TaggedSymbol
             }
           )
@@ -437,6 +520,305 @@ module Lithic
           sig do
             override.returns(
               T::Array[Lithic::Tokenization::Event::Result::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+
+        class RuleResult < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::Tokenization::Event::RuleResult,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # The Auth Rule Token associated with the rule. If this is set to null, then the
+          # result was not associated with a customer-configured rule. This may happen in
+          # cases where a tokenization is declined or requires TFA due to a
+          # Lithic-configured security or compliance rule, for example.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :auth_rule_token
+
+          # A human-readable explanation outlining the motivation for the rule's result
+          sig { returns(T.nilable(String)) }
+          attr_accessor :explanation
+
+          # The name for the rule, if any was configured
+          sig { returns(T.nilable(String)) }
+          attr_accessor :name
+
+          # The result associated with this rule
+          sig do
+            returns(
+              Lithic::Tokenization::Event::RuleResult::Result::TaggedSymbol
+            )
+          end
+          attr_accessor :result
+
+          sig do
+            params(
+              auth_rule_token: T.nilable(String),
+              explanation: T.nilable(String),
+              name: T.nilable(String),
+              result: Lithic::Tokenization::Event::RuleResult::Result::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The Auth Rule Token associated with the rule. If this is set to null, then the
+            # result was not associated with a customer-configured rule. This may happen in
+            # cases where a tokenization is declined or requires TFA due to a
+            # Lithic-configured security or compliance rule, for example.
+            auth_rule_token:,
+            # A human-readable explanation outlining the motivation for the rule's result
+            explanation:,
+            # The name for the rule, if any was configured
+            name:,
+            # The result associated with this rule
+            result:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                auth_rule_token: T.nilable(String),
+                explanation: T.nilable(String),
+                name: T.nilable(String),
+                result:
+                  Lithic::Tokenization::Event::RuleResult::Result::TaggedSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The result associated with this rule
+          module Result
+            extend Lithic::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Lithic::Tokenization::Event::RuleResult::Result)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            APPROVED =
+              T.let(
+                :APPROVED,
+                Lithic::Tokenization::Event::RuleResult::Result::TaggedSymbol
+              )
+            DECLINED =
+              T.let(
+                :DECLINED,
+                Lithic::Tokenization::Event::RuleResult::Result::TaggedSymbol
+              )
+            REQUIRE_TFA =
+              T.let(
+                :REQUIRE_TFA,
+                Lithic::Tokenization::Event::RuleResult::Result::TaggedSymbol
+              )
+            ERROR =
+              T.let(
+                :ERROR,
+                Lithic::Tokenization::Event::RuleResult::Result::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::Tokenization::Event::RuleResult::Result::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        # Reason code for why a tokenization was declined
+        module TokenizationDeclineReason
+          extend Lithic::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Lithic::Tokenization::Event::TokenizationDeclineReason
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ACCOUNT_SCORE_1 =
+            T.let(
+              :ACCOUNT_SCORE_1,
+              Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+            )
+          DEVICE_SCORE_1 =
+            T.let(
+              :DEVICE_SCORE_1,
+              Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+            )
+          ALL_WALLET_DECLINE_REASONS_PRESENT =
+            T.let(
+              :ALL_WALLET_DECLINE_REASONS_PRESENT,
+              Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+            )
+          WALLET_RECOMMENDED_DECISION_RED =
+            T.let(
+              :WALLET_RECOMMENDED_DECISION_RED,
+              Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+            )
+          CVC_MISMATCH =
+            T.let(
+              :CVC_MISMATCH,
+              Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+            )
+          CARD_EXPIRY_MONTH_MISMATCH =
+            T.let(
+              :CARD_EXPIRY_MONTH_MISMATCH,
+              Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+            )
+          CARD_EXPIRY_YEAR_MISMATCH =
+            T.let(
+              :CARD_EXPIRY_YEAR_MISMATCH,
+              Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+            )
+          CARD_INVALID_STATE =
+            T.let(
+              :CARD_INVALID_STATE,
+              Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+            )
+          CUSTOMER_RED_PATH =
+            T.let(
+              :CUSTOMER_RED_PATH,
+              Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+            )
+          INVALID_CUSTOMER_RESPONSE =
+            T.let(
+              :INVALID_CUSTOMER_RESPONSE,
+              Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+            )
+          NETWORK_FAILURE =
+            T.let(
+              :NETWORK_FAILURE,
+              Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+            )
+          GENERIC_DECLINE =
+            T.let(
+              :GENERIC_DECLINE,
+              Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+            )
+          DIGITAL_CARD_ART_REQUIRED =
+            T.let(
+              :DIGITAL_CARD_ART_REQUIRED,
+              Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::Tokenization::Event::TokenizationDeclineReason::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Reason code for why a tokenization required two-factor authentication
+        module TokenizationTfaReason
+          extend Lithic::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Lithic::Tokenization::Event::TokenizationTfaReason)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          WALLET_RECOMMENDED_TFA =
+            T.let(
+              :WALLET_RECOMMENDED_TFA,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+          SUSPICIOUS_ACTIVITY =
+            T.let(
+              :SUSPICIOUS_ACTIVITY,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+          DEVICE_RECENTLY_LOST =
+            T.let(
+              :DEVICE_RECENTLY_LOST,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+          TOO_MANY_RECENT_ATTEMPTS =
+            T.let(
+              :TOO_MANY_RECENT_ATTEMPTS,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+          TOO_MANY_RECENT_TOKENS =
+            T.let(
+              :TOO_MANY_RECENT_TOKENS,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+          TOO_MANY_DIFFERENT_CARDHOLDERS =
+            T.let(
+              :TOO_MANY_DIFFERENT_CARDHOLDERS,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+          OUTSIDE_HOME_TERRITORY =
+            T.let(
+              :OUTSIDE_HOME_TERRITORY,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+          HAS_SUSPENDED_TOKENS =
+            T.let(
+              :HAS_SUSPENDED_TOKENS,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+          HIGH_RISK =
+            T.let(
+              :HIGH_RISK,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+          ACCOUNT_SCORE_LOW =
+            T.let(
+              :ACCOUNT_SCORE_LOW,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+          DEVICE_SCORE_LOW =
+            T.let(
+              :DEVICE_SCORE_LOW,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+          CARD_STATE_TFA =
+            T.let(
+              :CARD_STATE_TFA,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+          HARDCODED_TFA =
+            T.let(
+              :HARDCODED_TFA,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+          CUSTOMER_RULE_TFA =
+            T.let(
+              :CUSTOMER_RULE_TFA,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+          DEVICE_HOST_CARD_EMULATION =
+            T.let(
+              :DEVICE_HOST_CARD_EMULATION,
+              Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Lithic::Tokenization::Event::TokenizationTfaReason::TaggedSymbol
+              ]
             )
           end
           def self.values

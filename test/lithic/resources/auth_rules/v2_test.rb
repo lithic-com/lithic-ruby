@@ -3,8 +3,13 @@
 require_relative "../../test_helper"
 
 class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
-  def test_create
-    response = @lithic.auth_rules.v2.create(card_tokens: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"])
+  def test_create_required_params
+    response =
+      @lithic.auth_rules.v2.create(
+        card_tokens: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+        parameters: {conditions: [{}]},
+        type: :CONDITIONAL_BLOCK
+      )
 
     assert_pattern do
       response => Lithic::Models::AuthRules::V2CreateResponse

@@ -26,11 +26,11 @@ module Lithic
         sig do
           returns(
             T.any(
-              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject,
-              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay,
-              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek,
-              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth,
-              Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear
+              Lithic::AuthRules::VelocityLimitPeriod::TrailingWindowObject,
+              Lithic::AuthRules::VelocityLimitPeriod::FixedWindowDay,
+              Lithic::AuthRules::VelocityLimitPeriod::FixedWindowWeek,
+              Lithic::AuthRules::VelocityLimitPeriod::FixedWindowMonth,
+              Lithic::AuthRules::VelocityLimitPeriod::FixedWindowYear
             )
           )
         end
@@ -59,11 +59,11 @@ module Lithic
             filters: Lithic::AuthRules::VelocityLimitParams::Filters::OrHash,
             period:
               T.any(
-                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject::OrHash,
-                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay::OrHash,
-                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek::OrHash,
-                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth::OrHash,
-                Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear::OrHash
+                Lithic::AuthRules::VelocityLimitPeriod::TrailingWindowObject::OrHash,
+                Lithic::AuthRules::VelocityLimitPeriod::FixedWindowDay::OrHash,
+                Lithic::AuthRules::VelocityLimitPeriod::FixedWindowWeek::OrHash,
+                Lithic::AuthRules::VelocityLimitPeriod::FixedWindowMonth::OrHash,
+                Lithic::AuthRules::VelocityLimitPeriod::FixedWindowYear::OrHash
               ),
             scope: Lithic::AuthRules::VelocityLimitParams::Scope::OrSymbol,
             limit_amount: T.nilable(Integer),
@@ -95,11 +95,11 @@ module Lithic
               filters: Lithic::AuthRules::VelocityLimitParams::Filters,
               period:
                 T.any(
-                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject,
-                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay,
-                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek,
-                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth,
-                  Lithic::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear
+                  Lithic::AuthRules::VelocityLimitPeriod::TrailingWindowObject,
+                  Lithic::AuthRules::VelocityLimitPeriod::FixedWindowDay,
+                  Lithic::AuthRules::VelocityLimitPeriod::FixedWindowWeek,
+                  Lithic::AuthRules::VelocityLimitPeriod::FixedWindowMonth,
+                  Lithic::AuthRules::VelocityLimitPeriod::FixedWindowYear
                 ),
               scope: Lithic::AuthRules::VelocityLimitParams::Scope::OrSymbol,
               limit_amount: T.nilable(Integer),

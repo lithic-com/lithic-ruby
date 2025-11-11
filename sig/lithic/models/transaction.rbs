@@ -250,21 +250,15 @@ module Lithic
 
       type cardholder_authentication =
         {
-          three_ds_version: String?,
-          acquirer_exemption: Lithic::Models::Transaction::CardholderAuthentication::acquirer_exemption,
+          authentication_method: Lithic::Models::Transaction::CardholderAuthentication::authentication_method,
           authentication_result: Lithic::Models::Transaction::CardholderAuthentication::authentication_result,
           decision_made_by: Lithic::Models::Transaction::CardholderAuthentication::decision_made_by,
           liability_shift: Lithic::Models::Transaction::CardholderAuthentication::liability_shift,
-          three_ds_authentication_token: String?,
-          verification_attempted: Lithic::Models::Transaction::CardholderAuthentication::verification_attempted,
-          verification_result: Lithic::Models::Transaction::CardholderAuthentication::verification_result,
-          authentication_method: Lithic::Models::Transaction::CardholderAuthentication::authentication_method
+          three_ds_authentication_token: String?
         }
 
       class CardholderAuthentication < Lithic::Internal::Type::BaseModel
-        attr_accessor three_ds_version: String?
-
-        attr_accessor acquirer_exemption: Lithic::Models::Transaction::CardholderAuthentication::acquirer_exemption
+        attr_accessor authentication_method: Lithic::Models::Transaction::CardholderAuthentication::authentication_method
 
         attr_accessor authentication_result: Lithic::Models::Transaction::CardholderAuthentication::authentication_result
 
@@ -274,63 +268,32 @@ module Lithic
 
         attr_accessor three_ds_authentication_token: String?
 
-        attr_accessor verification_attempted: Lithic::Models::Transaction::CardholderAuthentication::verification_attempted
-
-        attr_accessor verification_result: Lithic::Models::Transaction::CardholderAuthentication::verification_result
-
-        attr_reader authentication_method: Lithic::Models::Transaction::CardholderAuthentication::authentication_method?
-
-        def authentication_method=: (
-          Lithic::Models::Transaction::CardholderAuthentication::authentication_method
-        ) -> Lithic::Models::Transaction::CardholderAuthentication::authentication_method
-
         def initialize: (
-          three_ds_version: String?,
-          acquirer_exemption: Lithic::Models::Transaction::CardholderAuthentication::acquirer_exemption,
+          authentication_method: Lithic::Models::Transaction::CardholderAuthentication::authentication_method,
           authentication_result: Lithic::Models::Transaction::CardholderAuthentication::authentication_result,
           decision_made_by: Lithic::Models::Transaction::CardholderAuthentication::decision_made_by,
           liability_shift: Lithic::Models::Transaction::CardholderAuthentication::liability_shift,
-          three_ds_authentication_token: String?,
-          verification_attempted: Lithic::Models::Transaction::CardholderAuthentication::verification_attempted,
-          verification_result: Lithic::Models::Transaction::CardholderAuthentication::verification_result,
-          ?authentication_method: Lithic::Models::Transaction::CardholderAuthentication::authentication_method
+          three_ds_authentication_token: String?
         ) -> void
 
         def to_hash: -> {
-          three_ds_version: String?,
-          acquirer_exemption: Lithic::Models::Transaction::CardholderAuthentication::acquirer_exemption,
+          authentication_method: Lithic::Models::Transaction::CardholderAuthentication::authentication_method,
           authentication_result: Lithic::Models::Transaction::CardholderAuthentication::authentication_result,
           decision_made_by: Lithic::Models::Transaction::CardholderAuthentication::decision_made_by,
           liability_shift: Lithic::Models::Transaction::CardholderAuthentication::liability_shift,
-          three_ds_authentication_token: String?,
-          verification_attempted: Lithic::Models::Transaction::CardholderAuthentication::verification_attempted,
-          verification_result: Lithic::Models::Transaction::CardholderAuthentication::verification_result,
-          authentication_method: Lithic::Models::Transaction::CardholderAuthentication::authentication_method
+          three_ds_authentication_token: String?
         }
 
-        type acquirer_exemption =
-          :AUTHENTICATION_OUTAGE_EXCEPTION
-          | :LOW_VALUE
-          | :MERCHANT_INITIATED_TRANSACTION
-          | :NONE
-          | :RECURRING_PAYMENT
-          | :SECURE_CORPORATE_PAYMENT
-          | :STRONG_CUSTOMER_AUTHENTICATION_DELEGATION
-          | :TRANSACTION_RISK_ANALYSIS
+        type authentication_method = :FRICTIONLESS | :CHALLENGE | :NONE
 
-        module AcquirerExemption
+        module AuthenticationMethod
           extend Lithic::Internal::Type::Enum
 
-          AUTHENTICATION_OUTAGE_EXCEPTION: :AUTHENTICATION_OUTAGE_EXCEPTION
-          LOW_VALUE: :LOW_VALUE
-          MERCHANT_INITIATED_TRANSACTION: :MERCHANT_INITIATED_TRANSACTION
+          FRICTIONLESS: :FRICTIONLESS
+          CHALLENGE: :CHALLENGE
           NONE: :NONE
-          RECURRING_PAYMENT: :RECURRING_PAYMENT
-          SECURE_CORPORATE_PAYMENT: :SECURE_CORPORATE_PAYMENT
-          STRONG_CUSTOMER_AUTHENTICATION_DELEGATION: :STRONG_CUSTOMER_AUTHENTICATION_DELEGATION
-          TRANSACTION_RISK_ANALYSIS: :TRANSACTION_RISK_ANALYSIS
 
-          def self?.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::acquirer_exemption]
+          def self?.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::authentication_method]
         end
 
         type authentication_result = :ATTEMPTS | :DECLINE | :NONE | :SUCCESS
@@ -378,50 +341,6 @@ module Lithic
           NONE: :NONE
 
           def self?.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::liability_shift]
-        end
-
-        type verification_attempted = :NONE | :OTHER
-
-        module VerificationAttempted
-          extend Lithic::Internal::Type::Enum
-
-          NONE: :NONE
-          OTHER: :OTHER
-
-          def self?.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::verification_attempted]
-        end
-
-        type verification_result =
-          :CANCELLED
-          | :FAILED
-          | :FRICTIONLESS
-          | :NOT_ATTEMPTED
-          | :REJECTED
-          | :SUCCESS
-
-        module VerificationResult
-          extend Lithic::Internal::Type::Enum
-
-          CANCELLED: :CANCELLED
-          FAILED: :FAILED
-          FRICTIONLESS: :FRICTIONLESS
-          NOT_ATTEMPTED: :NOT_ATTEMPTED
-          REJECTED: :REJECTED
-          SUCCESS: :SUCCESS
-
-          def self?.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::verification_result]
-        end
-
-        type authentication_method = :FRICTIONLESS | :CHALLENGE | :NONE
-
-        module AuthenticationMethod
-          extend Lithic::Internal::Type::Enum
-
-          FRICTIONLESS: :FRICTIONLESS
-          CHALLENGE: :CHALLENGE
-          NONE: :NONE
-
-          def self?.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::authentication_method]
         end
       end
 

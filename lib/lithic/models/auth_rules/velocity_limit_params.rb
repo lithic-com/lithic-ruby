@@ -12,8 +12,8 @@ module Lithic
         # @!attribute period
         #   Velocity over the current day since 00:00 / 12 AM in Eastern Time
         #
-        #   @return [Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear]
-        required :period, union: -> { Lithic::AuthRules::VelocityLimitParamsPeriodWindow }
+        #   @return [Lithic::Models::AuthRules::VelocityLimitPeriod::TrailingWindowObject, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowDay, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowWeek, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowMonth, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowYear]
+        required :period, union: -> { Lithic::AuthRules::VelocityLimitPeriod }
 
         # @!attribute scope
         #   The scope the velocity is calculated for
@@ -45,7 +45,7 @@ module Lithic
         #
         #   @param filters [Lithic::Models::AuthRules::VelocityLimitParams::Filters]
         #
-        #   @param period [Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::TrailingWindowObject, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowDay, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowWeek, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowMonth, Lithic::Models::AuthRules::VelocityLimitParamsPeriodWindow::FixedWindowYear] Velocity over the current day since 00:00 / 12 AM in Eastern Time
+        #   @param period [Lithic::Models::AuthRules::VelocityLimitPeriod::TrailingWindowObject, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowDay, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowWeek, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowMonth, Lithic::Models::AuthRules::VelocityLimitPeriod::FixedWindowYear] Velocity over the current day since 00:00 / 12 AM in Eastern Time
         #
         #   @param scope [Symbol, Lithic::Models::AuthRules::VelocityLimitParams::Scope] The scope the velocity is calculated for
         #
