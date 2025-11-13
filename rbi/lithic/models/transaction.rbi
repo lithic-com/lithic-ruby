@@ -76,10 +76,10 @@ module Lithic
       sig { returns(T.nilable(String)) }
       attr_accessor :financial_account_token
 
-      sig { returns(Lithic::Transaction::Merchant) }
+      sig { returns(Lithic::Merchant) }
       attr_reader :merchant
 
-      sig { params(merchant: Lithic::Transaction::Merchant::OrHash).void }
+      sig { params(merchant: Lithic::Merchant::OrHash).void }
       attr_writer :merchant
 
       # Analogous to the 'amount', but in the merchant currency.
@@ -160,7 +160,7 @@ module Lithic
             T.nilable(Lithic::Transaction::CardholderAuthentication::OrHash),
           created: Time,
           financial_account_token: T.nilable(String),
-          merchant: Lithic::Transaction::Merchant::OrHash,
+          merchant: Lithic::Merchant::OrHash,
           merchant_amount: T.nilable(Integer),
           merchant_authorization_amount: T.nilable(Integer),
           merchant_currency: String,
@@ -252,7 +252,7 @@ module Lithic
               T.nilable(Lithic::Transaction::CardholderAuthentication),
             created: Time,
             financial_account_token: T.nilable(String),
-            merchant: Lithic::Transaction::Merchant,
+            merchant: Lithic::Merchant,
             merchant_amount: T.nilable(Integer),
             merchant_authorization_amount: T.nilable(Integer),
             merchant_currency: String,
@@ -817,92 +817,6 @@ module Lithic
           end
           def self.values
           end
-        end
-      end
-
-      class Merchant < Lithic::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Lithic::Transaction::Merchant, Lithic::Internal::AnyHash)
-          end
-
-        # Unique alphanumeric identifier for the payment card acceptor (merchant).
-        sig { returns(String) }
-        attr_accessor :acceptor_id
-
-        # Unique numeric identifier of the acquiring institution.
-        sig { returns(String) }
-        attr_accessor :acquiring_institution_id
-
-        # City of card acceptor. Note that in many cases, particularly in card-not-present
-        # transactions, merchants may send through a phone number or URL in this field.
-        sig { returns(String) }
-        attr_accessor :city
-
-        # Country or entity of card acceptor. Possible values are: (1) all ISO 3166-1
-        # alpha-3 country codes, (2) QZZ for Kosovo, and (3) ANT for Netherlands Antilles.
-        sig { returns(String) }
-        attr_accessor :country
-
-        # Short description of card acceptor.
-        sig { returns(String) }
-        attr_accessor :descriptor
-
-        # Merchant category code (MCC). A four-digit number listed in ISO 18245. An MCC is
-        # used to classify a business by the types of goods or services it provides.
-        sig { returns(String) }
-        attr_accessor :mcc
-
-        # Geographic state of card acceptor.
-        sig { returns(String) }
-        attr_accessor :state
-
-        sig do
-          params(
-            acceptor_id: String,
-            acquiring_institution_id: String,
-            city: String,
-            country: String,
-            descriptor: String,
-            mcc: String,
-            state: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Unique alphanumeric identifier for the payment card acceptor (merchant).
-          acceptor_id:,
-          # Unique numeric identifier of the acquiring institution.
-          acquiring_institution_id:,
-          # City of card acceptor. Note that in many cases, particularly in card-not-present
-          # transactions, merchants may send through a phone number or URL in this field.
-          city:,
-          # Country or entity of card acceptor. Possible values are: (1) all ISO 3166-1
-          # alpha-3 country codes, (2) QZZ for Kosovo, and (3) ANT for Netherlands Antilles.
-          country:,
-          # Short description of card acceptor.
-          descriptor:,
-          # Merchant category code (MCC). A four-digit number listed in ISO 18245. An MCC is
-          # used to classify a business by the types of goods or services it provides.
-          mcc:,
-          # Geographic state of card acceptor.
-          state:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              acceptor_id: String,
-              acquiring_institution_id: String,
-              city: String,
-              country: String,
-              descriptor: String,
-              mcc: String,
-              state: String
-            }
-          )
-        end
-        def to_hash
         end
       end
 

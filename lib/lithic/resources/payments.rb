@@ -128,6 +128,54 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::PaymentReturnParams} for more details.
+      #
+      # Return an ACH payment with a specified return reason code. Returns must be
+      # initiated within the time window specified by NACHA rules for each return code
+      # (typically 2 banking days for most codes, 60 calendar days for unauthorized
+      # debits). For a complete list of return codes and their meanings, see the
+      # [ACH Return Reasons documentation](https://docs.lithic.com/docs/ach-overview#ach-return-reasons).
+      #
+      # Note:
+      #
+      # - This endpoint does not modify the state of the financial account associated
+      #   with the payment. If you would like to change the account state, use the
+      #   [Update financial account status](https://docs.lithic.com/reference/updatefinancialaccountstatus)
+      #   endpoint.
+      # - By default this endpoint is not enabled for your account. Please contact your
+      #   implementations manager to enable this feature.
+      #
+      # @overload return_(payment_token, financial_account_token:, return_reason_code:, addenda: nil, date_of_death: nil, memo: nil, request_options: {})
+      #
+      # @param payment_token [String]
+      #
+      # @param financial_account_token [String] Globally unique identifier for the financial account
+      #
+      # @param return_reason_code [String] ACH return reason code indicating the reason for returning the payment. Supporte
+      #
+      # @param addenda [String, nil] Optional additional information about the return. Limited to 44 characters
+      #
+      # @param date_of_death [Date, nil] Date of death in YYYY-MM-DD format. Required when using return codes **R14** (re
+      #
+      # @param memo [String, nil] Optional memo for the return. Limited to 10 characters
+      #
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Lithic::Models::PaymentReturnResponse]
+      #
+      # @see Lithic::Models::PaymentReturnParams
+      def return_(payment_token, params)
+        parsed, options = Lithic::PaymentReturnParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/payments/%1$s/return", payment_token],
+          body: parsed,
+          model: Lithic::Models::PaymentReturnResponse,
+          options: options
+        )
+      end
+
       # Simulate payment lifecycle event
       #
       # @overload simulate_action(payment_token, event_type:, date_of_death: nil, decline_reason: nil, return_addenda: nil, return_reason_code: nil, request_options: {})

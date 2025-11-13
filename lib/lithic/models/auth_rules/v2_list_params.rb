@@ -86,6 +86,9 @@ module Lithic
 
           AUTHORIZATION = :AUTHORIZATION
           THREE_DS_AUTHENTICATION = :THREE_DS_AUTHENTICATION
+          TOKENIZATION = :TOKENIZATION
+          ACH_CREDIT_RECEIPT = :ACH_CREDIT_RECEIPT
+          ACH_DEBIT_RECEIPT = :ACH_DEBIT_RECEIPT
 
           # @!method self.values
           #   @return [Array<Symbol>]

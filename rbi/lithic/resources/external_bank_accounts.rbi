@@ -197,6 +197,16 @@ module Lithic
       )
       end
 
+      # Unpause an external bank account
+      sig do
+        params(
+          external_bank_account_token: String,
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::ExternalBankAccountUnpauseResponse)
+      end
+      def unpause(external_bank_account_token, request_options: {})
+      end
+
       # @api private
       sig { params(client: Lithic::Client).returns(T.attached_class) }
       def self.new(client:)

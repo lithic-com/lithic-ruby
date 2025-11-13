@@ -36,39 +36,27 @@ module Lithic
         type condition =
           {
             attribute: Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::attribute,
-            operation: Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::operation,
-            value: Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::value
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value
           }
 
         class Condition < Lithic::Internal::Type::BaseModel
-          attr_reader attribute: Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::attribute?
+          attr_accessor attribute: Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::attribute
 
-          def attribute=: (
-            Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::attribute
-          ) -> Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::attribute
+          attr_accessor operation: Lithic::Models::AuthRules::conditional_operation
 
-          attr_reader operation: Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::operation?
-
-          def operation=: (
-            Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::operation
-          ) -> Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::operation
-
-          attr_reader value: Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::value?
-
-          def value=: (
-            Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::value
-          ) -> Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::value
+          attr_accessor value: Lithic::Models::AuthRules::conditional_value
 
           def initialize: (
-            ?attribute: Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::attribute,
-            ?operation: Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::operation,
-            ?value: Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::value
+            attribute: Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::attribute,
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value
           ) -> void
 
           def to_hash: -> {
             attribute: Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::attribute,
-            operation: Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::operation,
-            value: Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::value
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value
           }
 
           type attribute =
@@ -96,45 +84,6 @@ module Lithic
             ADDRESS_MATCH: :ADDRESS_MATCH
 
             def self?.values: -> ::Array[Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::attribute]
-          end
-
-          type operation =
-            :IS_ONE_OF
-            | :IS_NOT_ONE_OF
-            | :MATCHES
-            | :DOES_NOT_MATCH
-            | :IS_EQUAL_TO
-            | :IS_NOT_EQUAL_TO
-            | :IS_GREATER_THAN
-            | :IS_GREATER_THAN_OR_EQUAL_TO
-            | :IS_LESS_THAN
-            | :IS_LESS_THAN_OR_EQUAL_TO
-
-          module Operation
-            extend Lithic::Internal::Type::Enum
-
-            IS_ONE_OF: :IS_ONE_OF
-            IS_NOT_ONE_OF: :IS_NOT_ONE_OF
-            MATCHES: :MATCHES
-            DOES_NOT_MATCH: :DOES_NOT_MATCH
-            IS_EQUAL_TO: :IS_EQUAL_TO
-            IS_NOT_EQUAL_TO: :IS_NOT_EQUAL_TO
-            IS_GREATER_THAN: :IS_GREATER_THAN
-            IS_GREATER_THAN_OR_EQUAL_TO: :IS_GREATER_THAN_OR_EQUAL_TO
-            IS_LESS_THAN: :IS_LESS_THAN
-            IS_LESS_THAN_OR_EQUAL_TO: :IS_LESS_THAN_OR_EQUAL_TO
-
-            def self?.values: -> ::Array[Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::operation]
-          end
-
-          type value = String | Integer | ::Array[String]
-
-          module Value
-            extend Lithic::Internal::Type::Union
-
-            def self?.variants: -> ::Array[Lithic::Models::AuthRules::Conditional3DSActionParameters::Condition::value]
-
-            StringArray: Lithic::Internal::Type::Converter
           end
         end
       end

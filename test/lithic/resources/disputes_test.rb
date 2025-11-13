@@ -12,7 +12,7 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Lithic::Models::DisputeCreateResponse
+      response => Lithic::Dispute
     end
 
     assert_pattern do
@@ -28,12 +28,12 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
         network_reason_code: String | nil,
         prearbitration_date: Time | nil,
         primary_claim_id: String | nil,
-        reason: Lithic::Models::DisputeCreateResponse::Reason,
+        reason: Lithic::Dispute::Reason,
         representment_date: Time | nil,
         resolution_date: Time | nil,
         resolution_note: String | nil,
-        resolution_reason: Lithic::Models::DisputeCreateResponse::ResolutionReason | nil,
-        status: Lithic::Models::DisputeCreateResponse::Status,
+        resolution_reason: Lithic::Dispute::ResolutionReason | nil,
+        status: Lithic::Dispute::Status,
         transaction_token: String
       }
     end
@@ -43,7 +43,7 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
     response = @lithic.disputes.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::DisputeRetrieveResponse
+      response => Lithic::Dispute
     end
 
     assert_pattern do
@@ -59,12 +59,12 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
         network_reason_code: String | nil,
         prearbitration_date: Time | nil,
         primary_claim_id: String | nil,
-        reason: Lithic::Models::DisputeRetrieveResponse::Reason,
+        reason: Lithic::Dispute::Reason,
         representment_date: Time | nil,
         resolution_date: Time | nil,
         resolution_note: String | nil,
-        resolution_reason: Lithic::Models::DisputeRetrieveResponse::ResolutionReason | nil,
-        status: Lithic::Models::DisputeRetrieveResponse::Status,
+        resolution_reason: Lithic::Dispute::ResolutionReason | nil,
+        status: Lithic::Dispute::Status,
         transaction_token: String
       }
     end
@@ -74,7 +74,7 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
     response = @lithic.disputes.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::DisputeUpdateResponse
+      response => Lithic::Dispute
     end
 
     assert_pattern do
@@ -90,12 +90,12 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
         network_reason_code: String | nil,
         prearbitration_date: Time | nil,
         primary_claim_id: String | nil,
-        reason: Lithic::Models::DisputeUpdateResponse::Reason,
+        reason: Lithic::Dispute::Reason,
         representment_date: Time | nil,
         resolution_date: Time | nil,
         resolution_note: String | nil,
-        resolution_reason: Lithic::Models::DisputeUpdateResponse::ResolutionReason | nil,
-        status: Lithic::Models::DisputeUpdateResponse::Status,
+        resolution_reason: Lithic::Dispute::ResolutionReason | nil,
+        status: Lithic::Dispute::Status,
         transaction_token: String
       }
     end
@@ -112,7 +112,7 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::DisputeListResponse
+      row => Lithic::Dispute
     end
 
     assert_pattern do
@@ -128,12 +128,12 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
         network_reason_code: String | nil,
         prearbitration_date: Time | nil,
         primary_claim_id: String | nil,
-        reason: Lithic::Models::DisputeListResponse::Reason,
+        reason: Lithic::Dispute::Reason,
         representment_date: Time | nil,
         resolution_date: Time | nil,
         resolution_note: String | nil,
-        resolution_reason: Lithic::Models::DisputeListResponse::ResolutionReason | nil,
-        status: Lithic::Models::DisputeListResponse::Status,
+        resolution_reason: Lithic::Dispute::ResolutionReason | nil,
+        status: Lithic::Dispute::Status,
         transaction_token: String
       }
     end
@@ -143,7 +143,7 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
     response = @lithic.disputes.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::DisputeDeleteResponse
+      response => Lithic::Dispute
     end
 
     assert_pattern do
@@ -159,12 +159,12 @@ class Lithic::Test::Resources::DisputesTest < Lithic::Test::ResourceTest
         network_reason_code: String | nil,
         prearbitration_date: Time | nil,
         primary_claim_id: String | nil,
-        reason: Lithic::Models::DisputeDeleteResponse::Reason,
+        reason: Lithic::Dispute::Reason,
         representment_date: Time | nil,
         resolution_date: Time | nil,
         resolution_note: String | nil,
-        resolution_reason: Lithic::Models::DisputeDeleteResponse::ResolutionReason | nil,
-        status: Lithic::Models::DisputeDeleteResponse::Status,
+        resolution_reason: Lithic::Dispute::ResolutionReason | nil,
+        status: Lithic::Dispute::Status,
         transaction_token: String
       }
     end

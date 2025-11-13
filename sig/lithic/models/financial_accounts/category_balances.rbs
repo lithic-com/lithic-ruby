@@ -1,0 +1,24 @@
+module Lithic
+  module Models
+    module FinancialAccounts
+      type category_balances =
+        { fees: Integer, interest: Integer, principal: Integer }
+
+      class CategoryBalances < Lithic::Internal::Type::BaseModel
+        attr_accessor fees: Integer
+
+        attr_accessor interest: Integer
+
+        attr_accessor principal: Integer
+
+        def initialize: (
+          fees: Integer,
+          interest: Integer,
+          principal: Integer
+        ) -> void
+
+        def to_hash: -> { fees: Integer, interest: Integer, principal: Integer }
+      end
+    end
+  end
+end

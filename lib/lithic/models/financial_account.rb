@@ -97,9 +97,10 @@ module Lithic
       class CreditConfiguration < Lithic::Internal::Type::BaseModel
         # @!attribute auto_collection_configuration
         #
-        #   @return [Lithic::Models::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration]
+        #   @return [Lithic::Models::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration, nil]
         required :auto_collection_configuration,
-                 -> { Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration }
+                 -> { Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration },
+                 nil?: true
 
         # @!attribute credit_limit
         #
@@ -124,7 +125,7 @@ module Lithic
         required :tier, String, nil?: true
 
         # @!method initialize(auto_collection_configuration:, credit_limit:, credit_product_token:, external_bank_account_token:, tier:)
-        #   @param auto_collection_configuration [Lithic::Models::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration]
+        #   @param auto_collection_configuration [Lithic::Models::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration, nil]
         #
         #   @param credit_limit [Integer, nil]
         #

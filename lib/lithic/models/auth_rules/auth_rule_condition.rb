@@ -56,73 +56,30 @@ module Lithic
         #     data with the cardholder KYC data if it exists. Valid values are `MATCH`,
         #     `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
         #
-        #   @return [Symbol, Lithic::Models::AuthRules::ConditionalAttribute, nil]
-        optional :attribute, enum: -> { Lithic::AuthRules::ConditionalAttribute }
+        #   @return [Symbol, Lithic::Models::AuthRules::ConditionalAttribute]
+        required :attribute, enum: -> { Lithic::AuthRules::ConditionalAttribute }
 
         # @!attribute operation
         #   The operation to apply to the attribute
         #
-        #   @return [Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation, nil]
-        optional :operation, enum: -> { Lithic::AuthRules::AuthRuleCondition::Operation }
+        #   @return [Symbol, Lithic::Models::AuthRules::ConditionalOperation]
+        required :operation, enum: -> { Lithic::AuthRules::ConditionalOperation }
 
         # @!attribute value
         #   A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
         #
-        #   @return [String, Integer, Array<String>, nil]
-        optional :value, union: -> { Lithic::AuthRules::AuthRuleCondition::Value }
+        #   @return [String, Integer, Array<String>]
+        required :value, union: -> { Lithic::AuthRules::ConditionalValue }
 
-        # @!method initialize(attribute: nil, operation: nil, value: nil)
+        # @!method initialize(attribute:, operation:, value:)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::AuthRuleCondition} for more details.
         #
         #   @param attribute [Symbol, Lithic::Models::AuthRules::ConditionalAttribute] The attribute to target.
         #
-        #   @param operation [Symbol, Lithic::Models::AuthRules::AuthRuleCondition::Operation] The operation to apply to the attribute
+        #   @param operation [Symbol, Lithic::Models::AuthRules::ConditionalOperation] The operation to apply to the attribute
         #
         #   @param value [String, Integer, Array<String>] A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
-
-        # The operation to apply to the attribute
-        #
-        # @see Lithic::Models::AuthRules::AuthRuleCondition#operation
-        module Operation
-          extend Lithic::Internal::Type::Enum
-
-          IS_ONE_OF = :IS_ONE_OF
-          IS_NOT_ONE_OF = :IS_NOT_ONE_OF
-          MATCHES = :MATCHES
-          DOES_NOT_MATCH = :DOES_NOT_MATCH
-          IS_EQUAL_TO = :IS_EQUAL_TO
-          IS_NOT_EQUAL_TO = :IS_NOT_EQUAL_TO
-          IS_GREATER_THAN = :IS_GREATER_THAN
-          IS_GREATER_THAN_OR_EQUAL_TO = :IS_GREATER_THAN_OR_EQUAL_TO
-          IS_LESS_THAN = :IS_LESS_THAN
-          IS_LESS_THAN_OR_EQUAL_TO = :IS_LESS_THAN_OR_EQUAL_TO
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
-        #
-        # @see Lithic::Models::AuthRules::AuthRuleCondition#value
-        module Value
-          extend Lithic::Internal::Type::Union
-
-          # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
-          variant String
-
-          # A number, to be used with `IS_GREATER_THAN`, `IS_GREATER_THAN_OR_EQUAL_TO`, `IS_LESS_THAN`, `IS_LESS_THAN_OR_EQUAL_TO`, `IS_EQUAL_TO`, or `IS_NOT_EQUAL_TO`
-          variant Integer
-
-          # An array of strings, to be used with `IS_ONE_OF` or `IS_NOT_ONE_OF`
-          variant -> { Lithic::Models::AuthRules::AuthRuleCondition::Value::StringArray }
-
-          # @!method self.variants
-          #   @return [Array(String, Integer, Array<String>)]
-
-          # @type [Lithic::Internal::Type::Converter]
-          StringArray = Lithic::Internal::Type::ArrayOf[String]
-        end
       end
     end
 

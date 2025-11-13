@@ -637,6 +637,8 @@ module Lithic
           T.let(:REVERSED, Lithic::BookTransferResponse::Status::TaggedSymbol)
         CANCELED =
           T.let(:CANCELED, Lithic::BookTransferResponse::Status::TaggedSymbol)
+        RETURNED =
+          T.let(:RETURNED, Lithic::BookTransferResponse::Status::TaggedSymbol)
 
         sig do
           override.returns(

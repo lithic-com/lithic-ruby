@@ -95,68 +95,48 @@ module Lithic
         # external accounts that are associated with the program, account_token field
         # returned will be null
         sig { returns(T.nilable(String)) }
-        attr_reader :account_token
-
-        sig { params(account_token: String).void }
-        attr_writer :account_token
+        attr_accessor :account_token
 
         # Address
         sig { returns(T.nilable(Lithic::ExternalBankAccountAddress)) }
         attr_reader :address
 
-        sig { params(address: Lithic::ExternalBankAccountAddress::OrHash).void }
+        sig do
+          params(
+            address: T.nilable(Lithic::ExternalBankAccountAddress::OrHash)
+          ).void
+        end
         attr_writer :address
 
         # Optional field that helps identify bank accounts in receipts
         sig { returns(T.nilable(String)) }
-        attr_reader :company_id
-
-        sig { params(company_id: String).void }
-        attr_writer :company_id
+        attr_accessor :company_id
 
         # Date of Birth of the Individual that owns the external bank account
         sig { returns(T.nilable(Date)) }
-        attr_reader :dob
-
-        sig { params(dob: Date).void }
-        attr_writer :dob
+        attr_accessor :dob
 
         # Doing Business As
         sig { returns(T.nilable(String)) }
-        attr_reader :doing_business_as
-
-        sig { params(doing_business_as: String).void }
-        attr_writer :doing_business_as
+        attr_accessor :doing_business_as
 
         # The financial account token of the operating account to fund the micro deposits
         sig { returns(T.nilable(String)) }
-        attr_reader :financial_account_token
-
-        sig { params(financial_account_token: String).void }
-        attr_writer :financial_account_token
+        attr_accessor :financial_account_token
 
         # The nickname for this External Bank Account
         sig { returns(T.nilable(String)) }
-        attr_reader :name
-
-        sig { params(name: String).void }
-        attr_writer :name
+        attr_accessor :name
 
         # User Defined ID
         sig { returns(T.nilable(String)) }
-        attr_reader :user_defined_id
-
-        sig { params(user_defined_id: String).void }
-        attr_writer :user_defined_id
+        attr_accessor :user_defined_id
 
         # Optional free text description of the reason for the failed verification. For
         # ACH micro-deposits returned, this field will display the reason return code sent
         # by the ACH network
         sig { returns(T.nilable(String)) }
-        attr_reader :verification_failed_reason
-
-        sig { params(verification_failed_reason: String).void }
-        attr_writer :verification_failed_reason
+        attr_accessor :verification_failed_reason
 
         sig do
           params(
@@ -178,15 +158,15 @@ module Lithic
               Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::OrSymbol,
             verification_state:
               Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::OrSymbol,
-            account_token: String,
-            address: Lithic::ExternalBankAccountAddress::OrHash,
-            company_id: String,
-            dob: Date,
-            doing_business_as: String,
-            financial_account_token: String,
-            name: String,
-            user_defined_id: String,
-            verification_failed_reason: String
+            account_token: T.nilable(String),
+            address: T.nilable(Lithic::ExternalBankAccountAddress::OrHash),
+            company_id: T.nilable(String),
+            dob: T.nilable(Date),
+            doing_business_as: T.nilable(String),
+            financial_account_token: T.nilable(String),
+            name: T.nilable(String),
+            user_defined_id: T.nilable(String),
+            verification_failed_reason: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -269,15 +249,15 @@ module Lithic
                 Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationMethod::TaggedSymbol,
               verification_state:
                 Lithic::Models::ExternalBankAccounts::MicroDepositCreateResponse::VerificationState::TaggedSymbol,
-              account_token: String,
-              address: Lithic::ExternalBankAccountAddress,
-              company_id: String,
-              dob: Date,
-              doing_business_as: String,
-              financial_account_token: String,
-              name: String,
-              user_defined_id: String,
-              verification_failed_reason: String
+              account_token: T.nilable(String),
+              address: T.nilable(Lithic::ExternalBankAccountAddress),
+              company_id: T.nilable(String),
+              dob: T.nilable(Date),
+              doing_business_as: T.nilable(String),
+              financial_account_token: T.nilable(String),
+              name: T.nilable(String),
+              user_defined_id: T.nilable(String),
+              verification_failed_reason: T.nilable(String)
             }
           )
         end

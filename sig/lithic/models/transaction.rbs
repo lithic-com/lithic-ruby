@@ -15,7 +15,7 @@ module Lithic
         cardholder_authentication: Lithic::Transaction::CardholderAuthentication?,
         created: Time,
         financial_account_token: String?,
-        merchant: Lithic::Transaction::Merchant,
+        merchant: Lithic::Merchant,
         merchant_amount: Integer?,
         merchant_authorization_amount: Integer?,
         merchant_currency: String,
@@ -57,7 +57,7 @@ module Lithic
 
       attr_accessor financial_account_token: String?
 
-      attr_accessor merchant: Lithic::Transaction::Merchant
+      attr_accessor merchant: Lithic::Merchant
 
       attr_accessor merchant_amount: Integer?
 
@@ -101,7 +101,7 @@ module Lithic
         cardholder_authentication: Lithic::Transaction::CardholderAuthentication?,
         created: Time,
         financial_account_token: String?,
-        merchant: Lithic::Transaction::Merchant,
+        merchant: Lithic::Merchant,
         merchant_amount: Integer?,
         merchant_authorization_amount: Integer?,
         merchant_currency: String,
@@ -130,7 +130,7 @@ module Lithic
         cardholder_authentication: Lithic::Transaction::CardholderAuthentication?,
         created: Time,
         financial_account_token: String?,
-        merchant: Lithic::Transaction::Merchant,
+        merchant: Lithic::Merchant,
         merchant_amount: Integer?,
         merchant_authorization_amount: Integer?,
         merchant_currency: String,
@@ -342,53 +342,6 @@ module Lithic
 
           def self?.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::liability_shift]
         end
-      end
-
-      type merchant =
-        {
-          acceptor_id: String,
-          acquiring_institution_id: String,
-          city: String,
-          country: String,
-          descriptor: String,
-          mcc: String,
-          state: String
-        }
-
-      class Merchant < Lithic::Internal::Type::BaseModel
-        attr_accessor acceptor_id: String
-
-        attr_accessor acquiring_institution_id: String
-
-        attr_accessor city: String
-
-        attr_accessor country: String
-
-        attr_accessor descriptor: String
-
-        attr_accessor mcc: String
-
-        attr_accessor state: String
-
-        def initialize: (
-          acceptor_id: String,
-          acquiring_institution_id: String,
-          city: String,
-          country: String,
-          descriptor: String,
-          mcc: String,
-          state: String
-        ) -> void
-
-        def to_hash: -> {
-          acceptor_id: String,
-          acquiring_institution_id: String,
-          city: String,
-          country: String,
-          descriptor: String,
-          mcc: String,
-          state: String
-        }
       end
 
       type network =

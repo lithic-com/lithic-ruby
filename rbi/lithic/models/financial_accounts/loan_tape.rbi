@@ -59,14 +59,10 @@ module Lithic
         sig { returns(Date) }
         attr_accessor :date
 
-        sig { returns(Lithic::FinancialAccounts::LoanTape::DayTotals) }
+        sig { returns(Lithic::StatementTotals) }
         attr_reader :day_totals
 
-        sig do
-          params(
-            day_totals: Lithic::FinancialAccounts::LoanTape::DayTotals::OrHash
-          ).void
-        end
+        sig { params(day_totals: Lithic::StatementTotals::OrHash).void }
         attr_writer :day_totals
 
         # Balance at the end of the day
@@ -113,26 +109,21 @@ module Lithic
         end
         attr_writer :minimum_payment_balance
 
-        sig { returns(Lithic::FinancialAccounts::LoanTape::PaymentAllocation) }
+        sig { returns(Lithic::FinancialAccounts::CategoryBalances) }
         attr_reader :payment_allocation
 
         sig do
           params(
             payment_allocation:
-              Lithic::FinancialAccounts::LoanTape::PaymentAllocation::OrHash
+              Lithic::FinancialAccounts::CategoryBalances::OrHash
           ).void
         end
         attr_writer :payment_allocation
 
-        sig { returns(Lithic::FinancialAccounts::LoanTape::PeriodTotals) }
+        sig { returns(Lithic::StatementTotals) }
         attr_reader :period_totals
 
-        sig do
-          params(
-            period_totals:
-              Lithic::FinancialAccounts::LoanTape::PeriodTotals::OrHash
-          ).void
-        end
+        sig { params(period_totals: Lithic::StatementTotals::OrHash).void }
         attr_writer :period_totals
 
         sig do
@@ -160,22 +151,15 @@ module Lithic
         sig { returns(Integer) }
         attr_accessor :version
 
-        sig { returns(Lithic::FinancialAccounts::LoanTape::YtdTotals) }
+        sig { returns(Lithic::StatementTotals) }
         attr_reader :ytd_totals
 
-        sig do
-          params(
-            ytd_totals: Lithic::FinancialAccounts::LoanTape::YtdTotals::OrHash
-          ).void
-        end
+        sig { params(ytd_totals: Lithic::StatementTotals::OrHash).void }
         attr_writer :ytd_totals
 
         # Interest tier to which this account belongs to
         sig { returns(T.nilable(String)) }
-        attr_reader :tier
-
-        sig { params(tier: String).void }
-        attr_writer :tier
+        attr_accessor :tier
 
         sig do
           params(
@@ -188,7 +172,7 @@ module Lithic
             credit_limit: Integer,
             credit_product_token: String,
             date: Date,
-            day_totals: Lithic::FinancialAccounts::LoanTape::DayTotals::OrHash,
+            day_totals: Lithic::StatementTotals::OrHash,
             ending_balance: Integer,
             excess_credits: Integer,
             financial_account_token: String,
@@ -199,16 +183,15 @@ module Lithic
             minimum_payment_balance:
               Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance::OrHash,
             payment_allocation:
-              Lithic::FinancialAccounts::LoanTape::PaymentAllocation::OrHash,
-            period_totals:
-              Lithic::FinancialAccounts::LoanTape::PeriodTotals::OrHash,
+              Lithic::FinancialAccounts::CategoryBalances::OrHash,
+            period_totals: Lithic::StatementTotals::OrHash,
             previous_statement_balance:
               Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance::OrHash,
             starting_balance: Integer,
             updated: Time,
             version: Integer,
-            ytd_totals: Lithic::FinancialAccounts::LoanTape::YtdTotals::OrHash,
-            tier: String
+            ytd_totals: Lithic::StatementTotals::OrHash,
+            tier: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -266,7 +249,7 @@ module Lithic
               credit_limit: Integer,
               credit_product_token: String,
               date: Date,
-              day_totals: Lithic::FinancialAccounts::LoanTape::DayTotals,
+              day_totals: Lithic::StatementTotals,
               ending_balance: Integer,
               excess_credits: Integer,
               financial_account_token: String,
@@ -274,16 +257,15 @@ module Lithic
                 T.nilable(Lithic::FinancialAccounts::LoanTape::InterestDetails),
               minimum_payment_balance:
                 Lithic::FinancialAccounts::LoanTape::MinimumPaymentBalance,
-              payment_allocation:
-                Lithic::FinancialAccounts::LoanTape::PaymentAllocation,
-              period_totals: Lithic::FinancialAccounts::LoanTape::PeriodTotals,
+              payment_allocation: Lithic::FinancialAccounts::CategoryBalances,
+              period_totals: Lithic::StatementTotals,
               previous_statement_balance:
                 Lithic::FinancialAccounts::LoanTape::PreviousStatementBalance,
               starting_balance: Integer,
               updated: Time,
               version: Integer,
-              ytd_totals: Lithic::FinancialAccounts::LoanTape::YtdTotals,
-              tier: String
+              ytd_totals: Lithic::StatementTotals,
+              tier: T.nilable(String)
             }
           )
         end
@@ -606,12 +588,12 @@ module Lithic
 
           # Amount due for the prior billing cycle. Any amounts not fully paid off on this
           # due date will be considered past due the next day
-          sig { returns(Lithic::FinancialAccounts::LoanTape::Balances::Due) }
+          sig { returns(Lithic::FinancialAccounts::CategoryBalances) }
           attr_reader :due
 
           sig do
             params(
-              due: Lithic::FinancialAccounts::LoanTape::Balances::Due::OrHash
+              due: Lithic::FinancialAccounts::CategoryBalances::OrHash
             ).void
           end
           attr_writer :due
@@ -619,60 +601,48 @@ module Lithic
           # Amount due for the current billing cycle. Any amounts not paid off by early
           # payments or credits will be considered due at the end of the current billing
           # period
-          sig do
-            returns(
-              Lithic::FinancialAccounts::LoanTape::Balances::NextStatementDue
-            )
-          end
+          sig { returns(Lithic::FinancialAccounts::CategoryBalances) }
           attr_reader :next_statement_due
 
           sig do
             params(
               next_statement_due:
-                Lithic::FinancialAccounts::LoanTape::Balances::NextStatementDue::OrHash
+                Lithic::FinancialAccounts::CategoryBalances::OrHash
             ).void
           end
           attr_writer :next_statement_due
 
           # Amount not paid off on previous due dates
-          sig do
-            returns(Lithic::FinancialAccounts::LoanTape::Balances::PastDue)
-          end
+          sig { returns(Lithic::FinancialAccounts::CategoryBalances) }
           attr_reader :past_due
 
           sig do
             params(
-              past_due:
-                Lithic::FinancialAccounts::LoanTape::Balances::PastDue::OrHash
+              past_due: Lithic::FinancialAccounts::CategoryBalances::OrHash
             ).void
           end
           attr_writer :past_due
 
           # Amount due for the past billing cycles.
-          sig do
-            returns(
-              Lithic::FinancialAccounts::LoanTape::Balances::PastStatementsDue
-            )
-          end
+          sig { returns(Lithic::FinancialAccounts::CategoryBalances) }
           attr_reader :past_statements_due
 
           sig do
             params(
               past_statements_due:
-                Lithic::FinancialAccounts::LoanTape::Balances::PastStatementsDue::OrHash
+                Lithic::FinancialAccounts::CategoryBalances::OrHash
             ).void
           end
           attr_writer :past_statements_due
 
           sig do
             params(
-              due: Lithic::FinancialAccounts::LoanTape::Balances::Due::OrHash,
+              due: Lithic::FinancialAccounts::CategoryBalances::OrHash,
               next_statement_due:
-                Lithic::FinancialAccounts::LoanTape::Balances::NextStatementDue::OrHash,
-              past_due:
-                Lithic::FinancialAccounts::LoanTape::Balances::PastDue::OrHash,
+                Lithic::FinancialAccounts::CategoryBalances::OrHash,
+              past_due: Lithic::FinancialAccounts::CategoryBalances::OrHash,
               past_statements_due:
-                Lithic::FinancialAccounts::LoanTape::Balances::PastStatementsDue::OrHash
+                Lithic::FinancialAccounts::CategoryBalances::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
@@ -693,294 +663,10 @@ module Lithic
           sig do
             override.returns(
               {
-                due: Lithic::FinancialAccounts::LoanTape::Balances::Due,
-                next_statement_due:
-                  Lithic::FinancialAccounts::LoanTape::Balances::NextStatementDue,
-                past_due:
-                  Lithic::FinancialAccounts::LoanTape::Balances::PastDue,
-                past_statements_due:
-                  Lithic::FinancialAccounts::LoanTape::Balances::PastStatementsDue
-              }
-            )
-          end
-          def to_hash
-          end
-
-          class Due < Lithic::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Lithic::FinancialAccounts::LoanTape::Balances::Due,
-                  Lithic::Internal::AnyHash
-                )
-              end
-
-            sig { returns(Integer) }
-            attr_accessor :fees
-
-            sig { returns(Integer) }
-            attr_accessor :interest
-
-            sig { returns(Integer) }
-            attr_accessor :principal
-
-            # Amount due for the prior billing cycle. Any amounts not fully paid off on this
-            # due date will be considered past due the next day
-            sig do
-              params(
-                fees: Integer,
-                interest: Integer,
-                principal: Integer
-              ).returns(T.attached_class)
-            end
-            def self.new(fees:, interest:, principal:)
-            end
-
-            sig do
-              override.returns(
-                { fees: Integer, interest: Integer, principal: Integer }
-              )
-            end
-            def to_hash
-            end
-          end
-
-          class NextStatementDue < Lithic::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Lithic::FinancialAccounts::LoanTape::Balances::NextStatementDue,
-                  Lithic::Internal::AnyHash
-                )
-              end
-
-            sig { returns(Integer) }
-            attr_accessor :fees
-
-            sig { returns(Integer) }
-            attr_accessor :interest
-
-            sig { returns(Integer) }
-            attr_accessor :principal
-
-            # Amount due for the current billing cycle. Any amounts not paid off by early
-            # payments or credits will be considered due at the end of the current billing
-            # period
-            sig do
-              params(
-                fees: Integer,
-                interest: Integer,
-                principal: Integer
-              ).returns(T.attached_class)
-            end
-            def self.new(fees:, interest:, principal:)
-            end
-
-            sig do
-              override.returns(
-                { fees: Integer, interest: Integer, principal: Integer }
-              )
-            end
-            def to_hash
-            end
-          end
-
-          class PastDue < Lithic::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Lithic::FinancialAccounts::LoanTape::Balances::PastDue,
-                  Lithic::Internal::AnyHash
-                )
-              end
-
-            sig { returns(Integer) }
-            attr_accessor :fees
-
-            sig { returns(Integer) }
-            attr_accessor :interest
-
-            sig { returns(Integer) }
-            attr_accessor :principal
-
-            # Amount not paid off on previous due dates
-            sig do
-              params(
-                fees: Integer,
-                interest: Integer,
-                principal: Integer
-              ).returns(T.attached_class)
-            end
-            def self.new(fees:, interest:, principal:)
-            end
-
-            sig do
-              override.returns(
-                { fees: Integer, interest: Integer, principal: Integer }
-              )
-            end
-            def to_hash
-            end
-          end
-
-          class PastStatementsDue < Lithic::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Lithic::FinancialAccounts::LoanTape::Balances::PastStatementsDue,
-                  Lithic::Internal::AnyHash
-                )
-              end
-
-            sig { returns(Integer) }
-            attr_accessor :fees
-
-            sig { returns(Integer) }
-            attr_accessor :interest
-
-            sig { returns(Integer) }
-            attr_accessor :principal
-
-            # Amount due for the past billing cycles.
-            sig do
-              params(
-                fees: Integer,
-                interest: Integer,
-                principal: Integer
-              ).returns(T.attached_class)
-            end
-            def self.new(fees:, interest:, principal:)
-            end
-
-            sig do
-              override.returns(
-                { fees: Integer, interest: Integer, principal: Integer }
-              )
-            end
-            def to_hash
-            end
-          end
-        end
-
-        class DayTotals < Lithic::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Lithic::FinancialAccounts::LoanTape::DayTotals,
-                Lithic::Internal::AnyHash
-              )
-            end
-
-          # Opening balance transferred from previous account in cents
-          sig { returns(Integer) }
-          attr_accessor :balance_transfers
-
-          # ATM and cashback transactions in cents
-          sig { returns(Integer) }
-          attr_accessor :cash_advances
-
-          # Volume of credit management operation transactions less any balance transfers in
-          # cents
-          sig { returns(Integer) }
-          attr_accessor :credits
-
-          # Volume of debit management operation transactions less any interest in cents
-          sig { returns(Integer) }
-          attr_accessor :debits
-
-          # Volume of debit management operation transactions less any interest in cents
-          sig { returns(Integer) }
-          attr_accessor :fees
-
-          # Interest accrued in cents
-          sig { returns(Integer) }
-          attr_accessor :interest
-
-          # Any funds transfers which affective the balance in cents
-          sig { returns(Integer) }
-          attr_accessor :payments
-
-          # Net card transaction volume less any cash advances in cents
-          sig { returns(Integer) }
-          attr_accessor :purchases
-
-          # Breakdown of credits
-          sig { returns(T.nilable(T.anything)) }
-          attr_reader :credit_details
-
-          sig { params(credit_details: T.anything).void }
-          attr_writer :credit_details
-
-          # Breakdown of debits
-          sig { returns(T.nilable(T.anything)) }
-          attr_reader :debit_details
-
-          sig { params(debit_details: T.anything).void }
-          attr_writer :debit_details
-
-          # Breakdown of payments
-          sig { returns(T.nilable(T.anything)) }
-          attr_reader :payment_details
-
-          sig { params(payment_details: T.anything).void }
-          attr_writer :payment_details
-
-          sig do
-            params(
-              balance_transfers: Integer,
-              cash_advances: Integer,
-              credits: Integer,
-              debits: Integer,
-              fees: Integer,
-              interest: Integer,
-              payments: Integer,
-              purchases: Integer,
-              credit_details: T.anything,
-              debit_details: T.anything,
-              payment_details: T.anything
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # Opening balance transferred from previous account in cents
-            balance_transfers:,
-            # ATM and cashback transactions in cents
-            cash_advances:,
-            # Volume of credit management operation transactions less any balance transfers in
-            # cents
-            credits:,
-            # Volume of debit management operation transactions less any interest in cents
-            debits:,
-            # Volume of debit management operation transactions less any interest in cents
-            fees:,
-            # Interest accrued in cents
-            interest:,
-            # Any funds transfers which affective the balance in cents
-            payments:,
-            # Net card transaction volume less any cash advances in cents
-            purchases:,
-            # Breakdown of credits
-            credit_details: nil,
-            # Breakdown of debits
-            debit_details: nil,
-            # Breakdown of payments
-            payment_details: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                balance_transfers: Integer,
-                cash_advances: Integer,
-                credits: Integer,
-                debits: Integer,
-                fees: Integer,
-                interest: Integer,
-                payments: Integer,
-                purchases: Integer,
-                credit_details: T.anything,
-                debit_details: T.anything,
-                payment_details: T.anything
+                due: Lithic::FinancialAccounts::CategoryBalances,
+                next_statement_due: Lithic::FinancialAccounts::CategoryBalances,
+                past_due: Lithic::FinancialAccounts::CategoryBalances,
+                past_statements_due: Lithic::FinancialAccounts::CategoryBalances
               }
             )
           end
@@ -1000,34 +686,18 @@ module Lithic
           sig { returns(T.nilable(Integer)) }
           attr_accessor :actual_interest_charged
 
-          sig do
-            returns(
-              Lithic::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts
-            )
-          end
+          sig { returns(Lithic::CategoryDetails) }
           attr_reader :daily_balance_amounts
 
           sig do
-            params(
-              daily_balance_amounts:
-                Lithic::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts::OrHash
-            ).void
+            params(daily_balance_amounts: Lithic::CategoryDetails::OrHash).void
           end
           attr_writer :daily_balance_amounts
 
-          sig do
-            returns(
-              Lithic::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr
-            )
-          end
+          sig { returns(Lithic::CategoryDetails) }
           attr_reader :effective_apr
 
-          sig do
-            params(
-              effective_apr:
-                Lithic::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr::OrHash
-            ).void
-          end
+          sig { params(effective_apr: Lithic::CategoryDetails::OrHash).void }
           attr_writer :effective_apr
 
           sig do
@@ -1037,18 +707,11 @@ module Lithic
           end
           attr_accessor :interest_calculation_method
 
-          sig do
-            returns(
-              Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod
-            )
-          end
+          sig { returns(Lithic::CategoryDetails) }
           attr_reader :interest_for_period
 
           sig do
-            params(
-              interest_for_period:
-                Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod::OrHash
-            ).void
+            params(interest_for_period: Lithic::CategoryDetails::OrHash).void
           end
           attr_writer :interest_for_period
 
@@ -1061,14 +724,11 @@ module Lithic
           sig do
             params(
               actual_interest_charged: T.nilable(Integer),
-              daily_balance_amounts:
-                Lithic::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts::OrHash,
-              effective_apr:
-                Lithic::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr::OrHash,
+              daily_balance_amounts: Lithic::CategoryDetails::OrHash,
+              effective_apr: Lithic::CategoryDetails::OrHash,
               interest_calculation_method:
                 Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::OrSymbol,
-              interest_for_period:
-                Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod::OrHash,
+              interest_for_period: Lithic::CategoryDetails::OrHash,
               prime_rate: T.nilable(String),
               minimum_interest_charged: T.nilable(Integer)
             ).returns(T.attached_class)
@@ -1088,102 +748,17 @@ module Lithic
             override.returns(
               {
                 actual_interest_charged: T.nilable(Integer),
-                daily_balance_amounts:
-                  Lithic::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
-                effective_apr:
-                  Lithic::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr,
+                daily_balance_amounts: Lithic::CategoryDetails,
+                effective_apr: Lithic::CategoryDetails,
                 interest_calculation_method:
                   Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestCalculationMethod::TaggedSymbol,
-                interest_for_period:
-                  Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
+                interest_for_period: Lithic::CategoryDetails,
                 prime_rate: T.nilable(String),
                 minimum_interest_charged: T.nilable(Integer)
               }
             )
           end
           def to_hash
-          end
-
-          class DailyBalanceAmounts < Lithic::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Lithic::FinancialAccounts::LoanTape::InterestDetails::DailyBalanceAmounts,
-                  Lithic::Internal::AnyHash
-                )
-              end
-
-            sig { returns(String) }
-            attr_accessor :balance_transfers
-
-            sig { returns(String) }
-            attr_accessor :cash_advances
-
-            sig { returns(String) }
-            attr_accessor :purchases
-
-            sig do
-              params(
-                balance_transfers: String,
-                cash_advances: String,
-                purchases: String
-              ).returns(T.attached_class)
-            end
-            def self.new(balance_transfers:, cash_advances:, purchases:)
-            end
-
-            sig do
-              override.returns(
-                {
-                  balance_transfers: String,
-                  cash_advances: String,
-                  purchases: String
-                }
-              )
-            end
-            def to_hash
-            end
-          end
-
-          class EffectiveApr < Lithic::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Lithic::FinancialAccounts::LoanTape::InterestDetails::EffectiveApr,
-                  Lithic::Internal::AnyHash
-                )
-              end
-
-            sig { returns(String) }
-            attr_accessor :balance_transfers
-
-            sig { returns(String) }
-            attr_accessor :cash_advances
-
-            sig { returns(String) }
-            attr_accessor :purchases
-
-            sig do
-              params(
-                balance_transfers: String,
-                cash_advances: String,
-                purchases: String
-              ).returns(T.attached_class)
-            end
-            def self.new(balance_transfers:, cash_advances:, purchases:)
-            end
-
-            sig do
-              override.returns(
-                {
-                  balance_transfers: String,
-                  cash_advances: String,
-                  purchases: String
-                }
-              )
-            end
-            def to_hash
-            end
           end
 
           module InterestCalculationMethod
@@ -1219,47 +794,6 @@ module Lithic
             def self.values
             end
           end
-
-          class InterestForPeriod < Lithic::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Lithic::FinancialAccounts::LoanTape::InterestDetails::InterestForPeriod,
-                  Lithic::Internal::AnyHash
-                )
-              end
-
-            sig { returns(String) }
-            attr_accessor :balance_transfers
-
-            sig { returns(String) }
-            attr_accessor :cash_advances
-
-            sig { returns(String) }
-            attr_accessor :purchases
-
-            sig do
-              params(
-                balance_transfers: String,
-                cash_advances: String,
-                purchases: String
-              ).returns(T.attached_class)
-            end
-            def self.new(balance_transfers:, cash_advances:, purchases:)
-            end
-
-            sig do
-              override.returns(
-                {
-                  balance_transfers: String,
-                  cash_advances: String,
-                  purchases: String
-                }
-              )
-            end
-            def to_hash
-            end
-          end
         end
 
         class MinimumPaymentBalance < Lithic::Internal::Type::BaseModel
@@ -1290,169 +824,6 @@ module Lithic
           end
         end
 
-        class PaymentAllocation < Lithic::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Lithic::FinancialAccounts::LoanTape::PaymentAllocation,
-                Lithic::Internal::AnyHash
-              )
-            end
-
-          sig { returns(Integer) }
-          attr_accessor :fees
-
-          sig { returns(Integer) }
-          attr_accessor :interest
-
-          sig { returns(Integer) }
-          attr_accessor :principal
-
-          sig do
-            params(
-              fees: Integer,
-              interest: Integer,
-              principal: Integer
-            ).returns(T.attached_class)
-          end
-          def self.new(fees:, interest:, principal:)
-          end
-
-          sig do
-            override.returns(
-              { fees: Integer, interest: Integer, principal: Integer }
-            )
-          end
-          def to_hash
-          end
-        end
-
-        class PeriodTotals < Lithic::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Lithic::FinancialAccounts::LoanTape::PeriodTotals,
-                Lithic::Internal::AnyHash
-              )
-            end
-
-          # Opening balance transferred from previous account in cents
-          sig { returns(Integer) }
-          attr_accessor :balance_transfers
-
-          # ATM and cashback transactions in cents
-          sig { returns(Integer) }
-          attr_accessor :cash_advances
-
-          # Volume of credit management operation transactions less any balance transfers in
-          # cents
-          sig { returns(Integer) }
-          attr_accessor :credits
-
-          # Volume of debit management operation transactions less any interest in cents
-          sig { returns(Integer) }
-          attr_accessor :debits
-
-          # Volume of debit management operation transactions less any interest in cents
-          sig { returns(Integer) }
-          attr_accessor :fees
-
-          # Interest accrued in cents
-          sig { returns(Integer) }
-          attr_accessor :interest
-
-          # Any funds transfers which affective the balance in cents
-          sig { returns(Integer) }
-          attr_accessor :payments
-
-          # Net card transaction volume less any cash advances in cents
-          sig { returns(Integer) }
-          attr_accessor :purchases
-
-          # Breakdown of credits
-          sig { returns(T.nilable(T.anything)) }
-          attr_reader :credit_details
-
-          sig { params(credit_details: T.anything).void }
-          attr_writer :credit_details
-
-          # Breakdown of debits
-          sig { returns(T.nilable(T.anything)) }
-          attr_reader :debit_details
-
-          sig { params(debit_details: T.anything).void }
-          attr_writer :debit_details
-
-          # Breakdown of payments
-          sig { returns(T.nilable(T.anything)) }
-          attr_reader :payment_details
-
-          sig { params(payment_details: T.anything).void }
-          attr_writer :payment_details
-
-          sig do
-            params(
-              balance_transfers: Integer,
-              cash_advances: Integer,
-              credits: Integer,
-              debits: Integer,
-              fees: Integer,
-              interest: Integer,
-              payments: Integer,
-              purchases: Integer,
-              credit_details: T.anything,
-              debit_details: T.anything,
-              payment_details: T.anything
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # Opening balance transferred from previous account in cents
-            balance_transfers:,
-            # ATM and cashback transactions in cents
-            cash_advances:,
-            # Volume of credit management operation transactions less any balance transfers in
-            # cents
-            credits:,
-            # Volume of debit management operation transactions less any interest in cents
-            debits:,
-            # Volume of debit management operation transactions less any interest in cents
-            fees:,
-            # Interest accrued in cents
-            interest:,
-            # Any funds transfers which affective the balance in cents
-            payments:,
-            # Net card transaction volume less any cash advances in cents
-            purchases:,
-            # Breakdown of credits
-            credit_details: nil,
-            # Breakdown of debits
-            debit_details: nil,
-            # Breakdown of payments
-            payment_details: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                balance_transfers: Integer,
-                cash_advances: Integer,
-                credits: Integer,
-                debits: Integer,
-                fees: Integer,
-                interest: Integer,
-                payments: Integer,
-                purchases: Integer,
-                credit_details: T.anything,
-                debit_details: T.anything,
-                payment_details: T.anything
-              }
-            )
-          end
-          def to_hash
-          end
-        end
-
         class PreviousStatementBalance < Lithic::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
@@ -1477,132 +848,6 @@ module Lithic
           end
 
           sig { override.returns({ amount: Integer, remaining: Integer }) }
-          def to_hash
-          end
-        end
-
-        class YtdTotals < Lithic::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Lithic::FinancialAccounts::LoanTape::YtdTotals,
-                Lithic::Internal::AnyHash
-              )
-            end
-
-          # Opening balance transferred from previous account in cents
-          sig { returns(Integer) }
-          attr_accessor :balance_transfers
-
-          # ATM and cashback transactions in cents
-          sig { returns(Integer) }
-          attr_accessor :cash_advances
-
-          # Volume of credit management operation transactions less any balance transfers in
-          # cents
-          sig { returns(Integer) }
-          attr_accessor :credits
-
-          # Volume of debit management operation transactions less any interest in cents
-          sig { returns(Integer) }
-          attr_accessor :debits
-
-          # Volume of debit management operation transactions less any interest in cents
-          sig { returns(Integer) }
-          attr_accessor :fees
-
-          # Interest accrued in cents
-          sig { returns(Integer) }
-          attr_accessor :interest
-
-          # Any funds transfers which affective the balance in cents
-          sig { returns(Integer) }
-          attr_accessor :payments
-
-          # Net card transaction volume less any cash advances in cents
-          sig { returns(Integer) }
-          attr_accessor :purchases
-
-          # Breakdown of credits
-          sig { returns(T.nilable(T.anything)) }
-          attr_reader :credit_details
-
-          sig { params(credit_details: T.anything).void }
-          attr_writer :credit_details
-
-          # Breakdown of debits
-          sig { returns(T.nilable(T.anything)) }
-          attr_reader :debit_details
-
-          sig { params(debit_details: T.anything).void }
-          attr_writer :debit_details
-
-          # Breakdown of payments
-          sig { returns(T.nilable(T.anything)) }
-          attr_reader :payment_details
-
-          sig { params(payment_details: T.anything).void }
-          attr_writer :payment_details
-
-          sig do
-            params(
-              balance_transfers: Integer,
-              cash_advances: Integer,
-              credits: Integer,
-              debits: Integer,
-              fees: Integer,
-              interest: Integer,
-              payments: Integer,
-              purchases: Integer,
-              credit_details: T.anything,
-              debit_details: T.anything,
-              payment_details: T.anything
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # Opening balance transferred from previous account in cents
-            balance_transfers:,
-            # ATM and cashback transactions in cents
-            cash_advances:,
-            # Volume of credit management operation transactions less any balance transfers in
-            # cents
-            credits:,
-            # Volume of debit management operation transactions less any interest in cents
-            debits:,
-            # Volume of debit management operation transactions less any interest in cents
-            fees:,
-            # Interest accrued in cents
-            interest:,
-            # Any funds transfers which affective the balance in cents
-            payments:,
-            # Net card transaction volume less any cash advances in cents
-            purchases:,
-            # Breakdown of credits
-            credit_details: nil,
-            # Breakdown of debits
-            debit_details: nil,
-            # Breakdown of payments
-            payment_details: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                balance_transfers: Integer,
-                cash_advances: Integer,
-                credits: Integer,
-                debits: Integer,
-                fees: Integer,
-                interest: Integer,
-                payments: Integer,
-                purchases: Integer,
-                credit_details: T.anything,
-                debit_details: T.anything,
-                payment_details: T.anything
-              }
-            )
-          end
           def to_hash
           end
         end

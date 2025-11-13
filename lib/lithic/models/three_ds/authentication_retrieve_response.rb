@@ -312,22 +312,22 @@ module Lithic
           optional :name, String, nil?: true
 
           # @!attribute phone_number_home
-          #   Home phone number provided by the cardholder. Maps to EMV 3DS fields
-          #   `homePhone.cc` and `homePhone.subscriber`.
+          #   Home phone number in E.164 format provided by the cardholder. Maps to EMV 3DS
+          #   fields `homePhone.cc` and `homePhone.subscriber`.
           #
           #   @return [String, nil]
           optional :phone_number_home, String, nil?: true
 
           # @!attribute phone_number_mobile
-          #   Mobile/cell phone number provided by the cardholder. Maps to EMV 3DS fields
-          #   `mobilePhone.cc` and `mobilePhone.subscriber`.
+          #   Mobile/cell phone number in E.164 format provided by the cardholder. Maps to EMV
+          #   3DS fields `mobilePhone.cc` and `mobilePhone.subscriber`.
           #
           #   @return [String, nil]
           optional :phone_number_mobile, String, nil?: true
 
           # @!attribute phone_number_work
-          #   Work phone number provided by the cardholder. Maps to EMV 3DS fields
-          #   `workPhone.cc` and `workPhone.subscriber`.
+          #   Work phone number in E.164 format provided by the cardholder. Maps to EMV 3DS
+          #   fields `workPhone.cc` and `workPhone.subscriber`.
           #
           #   @return [String, nil]
           optional :phone_number_work, String, nil?: true
@@ -356,11 +356,11 @@ module Lithic
           #
           #   @param name [String, nil] Name of the cardholder. Maps to EMV 3DS field `cardholderName`.
           #
-          #   @param phone_number_home [String, nil] Home phone number provided by the cardholder. Maps to EMV 3DS fields `homePhone.
+          #   @param phone_number_home [String, nil] Home phone number in E.164 format provided by the cardholder. Maps to EMV 3DS fi
           #
-          #   @param phone_number_mobile [String, nil] Mobile/cell phone number provided by the cardholder. Maps to EMV 3DS fields `mob
+          #   @param phone_number_mobile [String, nil] Mobile/cell phone number in E.164 format provided by the cardholder. Maps to EMV
           #
-          #   @param phone_number_work [String, nil] Work phone number provided by the cardholder. Maps to EMV 3DS fields `workPhone.
+          #   @param phone_number_work [String, nil] Work phone number in E.164 format provided by the cardholder. Maps to EMV 3DS fi
           #
           #   @param shipping_address [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder::ShippingAddress] Object containing data on the shipping address provided during the transaction.
 

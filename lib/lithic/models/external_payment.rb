@@ -77,7 +77,7 @@ module Lithic
       # @!attribute user_defined_id
       #
       #   @return [String, nil]
-      optional :user_defined_id, String
+      optional :user_defined_id, String, nil?: true
 
       # @!method initialize(token:, created:, status:, updated:, category: nil, currency: nil, events: nil, family: nil, financial_account_token: nil, payment_type: nil, pending_amount: nil, result: nil, settled_amount: nil, user_defined_id: nil)
       #   @param token [String] Unique identifier for the transaction
@@ -106,7 +106,7 @@ module Lithic
       #
       #   @param settled_amount [Integer]
       #
-      #   @param user_defined_id [String]
+      #   @param user_defined_id [String, nil]
 
       # The status of the transaction
       #
@@ -119,6 +119,7 @@ module Lithic
         DECLINED = :DECLINED
         REVERSED = :REVERSED
         CANCELED = :CANCELED
+        RETURNED = :RETURNED
 
         # @!method self.values
         #   @return [Array<Symbol>]

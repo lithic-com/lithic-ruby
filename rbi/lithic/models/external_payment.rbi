@@ -90,10 +90,7 @@ module Lithic
       attr_writer :settled_amount
 
       sig { returns(T.nilable(String)) }
-      attr_reader :user_defined_id
-
-      sig { params(user_defined_id: String).void }
-      attr_writer :user_defined_id
+      attr_accessor :user_defined_id
 
       sig do
         params(
@@ -110,7 +107,7 @@ module Lithic
           pending_amount: Integer,
           result: Lithic::ExternalPayment::Result::OrSymbol,
           settled_amount: Integer,
-          user_defined_id: String
+          user_defined_id: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -152,7 +149,7 @@ module Lithic
             pending_amount: Integer,
             result: Lithic::ExternalPayment::Result::TaggedSymbol,
             settled_amount: Integer,
-            user_defined_id: String
+            user_defined_id: T.nilable(String)
           }
         )
       end
@@ -175,6 +172,8 @@ module Lithic
           T.let(:REVERSED, Lithic::ExternalPayment::Status::TaggedSymbol)
         CANCELED =
           T.let(:CANCELED, Lithic::ExternalPayment::Status::TaggedSymbol)
+        RETURNED =
+          T.let(:RETURNED, Lithic::ExternalPayment::Status::TaggedSymbol)
 
         sig do
           override.returns(

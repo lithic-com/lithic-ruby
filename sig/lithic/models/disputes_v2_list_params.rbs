@@ -1,0 +1,77 @@
+module Lithic
+  module Models
+    type disputes_v2_list_params =
+      {
+        account_token: String,
+        begin_: Time,
+        card_token: String,
+        disputed_transaction_token: String,
+        end_: Time,
+        ending_before: String,
+        page_size: Integer,
+        starting_after: String
+      }
+      & Lithic::Internal::Type::request_parameters
+
+    class DisputesV2ListParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_reader account_token: String?
+
+      def account_token=: (String) -> String
+
+      attr_reader begin_: Time?
+
+      def begin_=: (Time) -> Time
+
+      attr_reader card_token: String?
+
+      def card_token=: (String) -> String
+
+      attr_reader disputed_transaction_token: String?
+
+      def disputed_transaction_token=: (String) -> String
+
+      attr_reader end_: Time?
+
+      def end_=: (Time) -> Time
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      def initialize: (
+        ?account_token: String,
+        ?begin_: Time,
+        ?card_token: String,
+        ?disputed_transaction_token: String,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        account_token: String,
+        begin_: Time,
+        card_token: String,
+        disputed_transaction_token: String,
+        end_: Time,
+        ending_before: String,
+        page_size: Integer,
+        starting_after: String,
+        request_options: Lithic::RequestOptions
+      }
+    end
+  end
+end

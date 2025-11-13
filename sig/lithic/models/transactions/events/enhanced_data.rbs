@@ -42,9 +42,9 @@ module Lithic
             {
               line_items: ::Array[Lithic::Transactions::Events::EnhancedData::Common::LineItem],
               tax: Lithic::Transactions::Events::EnhancedData::Common::Tax,
-              customer_reference_number: String,
-              merchant_reference_number: String,
-              order_date: Date
+              customer_reference_number: String?,
+              merchant_reference_number: String?,
+              order_date: Date?
             }
 
           class Common < Lithic::Internal::Type::BaseModel
@@ -52,106 +52,84 @@ module Lithic
 
             attr_accessor tax: Lithic::Transactions::Events::EnhancedData::Common::Tax
 
-            attr_reader customer_reference_number: String?
+            attr_accessor customer_reference_number: String?
 
-            def customer_reference_number=: (String) -> String
+            attr_accessor merchant_reference_number: String?
 
-            attr_reader merchant_reference_number: String?
-
-            def merchant_reference_number=: (String) -> String
-
-            attr_reader order_date: Date?
-
-            def order_date=: (Date) -> Date
+            attr_accessor order_date: Date?
 
             def initialize: (
               line_items: ::Array[Lithic::Transactions::Events::EnhancedData::Common::LineItem],
               tax: Lithic::Transactions::Events::EnhancedData::Common::Tax,
-              ?customer_reference_number: String,
-              ?merchant_reference_number: String,
-              ?order_date: Date
+              ?customer_reference_number: String?,
+              ?merchant_reference_number: String?,
+              ?order_date: Date?
             ) -> void
 
             def to_hash: -> {
               line_items: ::Array[Lithic::Transactions::Events::EnhancedData::Common::LineItem],
               tax: Lithic::Transactions::Events::EnhancedData::Common::Tax,
-              customer_reference_number: String,
-              merchant_reference_number: String,
-              order_date: Date
+              customer_reference_number: String?,
+              merchant_reference_number: String?,
+              order_date: Date?
             }
 
             type line_item =
               {
-                amount: String,
-                description: String,
-                product_code: String,
-                quantity: String
+                amount: String?,
+                description: String?,
+                product_code: String?,
+                quantity: String?
               }
 
             class LineItem < Lithic::Internal::Type::BaseModel
-              attr_reader amount: String?
+              attr_accessor amount: String?
 
-              def amount=: (String) -> String
+              attr_accessor description: String?
 
-              attr_reader description: String?
+              attr_accessor product_code: String?
 
-              def description=: (String) -> String
-
-              attr_reader product_code: String?
-
-              def product_code=: (String) -> String
-
-              attr_reader quantity: String?
-
-              def quantity=: (String) -> String
+              attr_accessor quantity: String?
 
               def initialize: (
-                ?amount: String,
-                ?description: String,
-                ?product_code: String,
-                ?quantity: String
+                ?amount: String?,
+                ?description: String?,
+                ?product_code: String?,
+                ?quantity: String?
               ) -> void
 
               def to_hash: -> {
-                amount: String,
-                description: String,
-                product_code: String,
-                quantity: String
+                amount: String?,
+                description: String?,
+                product_code: String?,
+                quantity: String?
               }
             end
 
             type tax =
               {
-                amount: Integer,
-                exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt,
-                merchant_tax_id: String
+                amount: Integer?,
+                exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt?,
+                merchant_tax_id: String?
               }
 
             class Tax < Lithic::Internal::Type::BaseModel
-              attr_reader amount: Integer?
+              attr_accessor amount: Integer?
 
-              def amount=: (Integer) -> Integer
+              attr_accessor exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt?
 
-              attr_reader exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt?
-
-              def exempt=: (
-                Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt
-              ) -> Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt
-
-              attr_reader merchant_tax_id: String?
-
-              def merchant_tax_id=: (String) -> String
+              attr_accessor merchant_tax_id: String?
 
               def initialize: (
-                ?amount: Integer,
-                ?exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt,
-                ?merchant_tax_id: String
+                ?amount: Integer?,
+                ?exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt?,
+                ?merchant_tax_id: String?
               ) -> void
 
               def to_hash: -> {
-                amount: Integer,
-                exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt,
-                merchant_tax_id: String
+                amount: Integer?,
+                exempt: Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::exempt?,
+                merchant_tax_id: String?
               }
 
               type exempt = :TAX_INCLUDED | :TAX_NOT_INCLUDED | :NOT_SUPPORTED
@@ -172,10 +150,10 @@ module Lithic
             {
               amount_totals: Lithic::Transactions::Events::EnhancedData::Fleet::AmountTotals,
               fuel: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel,
-              driver_number: String,
-              odometer: Integer,
+              driver_number: String?,
+              odometer: Integer?,
               service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type,
-              vehicle_number: String
+              vehicle_number: String?
             }
 
           class Fleet < Lithic::Internal::Type::BaseModel
@@ -183,13 +161,9 @@ module Lithic
 
             attr_accessor fuel: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel
 
-            attr_reader driver_number: String?
+            attr_accessor driver_number: String?
 
-            def driver_number=: (String) -> String
-
-            attr_reader odometer: Integer?
-
-            def odometer=: (Integer) -> Integer
+            attr_accessor odometer: Integer?
 
             attr_reader service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type?
 
@@ -197,98 +171,78 @@ module Lithic
               Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type
             ) -> Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type
 
-            attr_reader vehicle_number: String?
-
-            def vehicle_number=: (String) -> String
+            attr_accessor vehicle_number: String?
 
             def initialize: (
               amount_totals: Lithic::Transactions::Events::EnhancedData::Fleet::AmountTotals,
               fuel: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel,
-              ?driver_number: String,
-              ?odometer: Integer,
+              ?driver_number: String?,
+              ?odometer: Integer?,
               ?service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type,
-              ?vehicle_number: String
+              ?vehicle_number: String?
             ) -> void
 
             def to_hash: -> {
               amount_totals: Lithic::Transactions::Events::EnhancedData::Fleet::AmountTotals,
               fuel: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel,
-              driver_number: String,
-              odometer: Integer,
+              driver_number: String?,
+              odometer: Integer?,
               service_type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::service_type,
-              vehicle_number: String
+              vehicle_number: String?
             }
 
             type amount_totals =
-              { discount: Integer, gross_sale: Integer, net_sale: Integer }
+              { discount: Integer?, gross_sale: Integer?, net_sale: Integer? }
 
             class AmountTotals < Lithic::Internal::Type::BaseModel
-              attr_reader discount: Integer?
+              attr_accessor discount: Integer?
 
-              def discount=: (Integer) -> Integer
+              attr_accessor gross_sale: Integer?
 
-              attr_reader gross_sale: Integer?
-
-              def gross_sale=: (Integer) -> Integer
-
-              attr_reader net_sale: Integer?
-
-              def net_sale=: (Integer) -> Integer
+              attr_accessor net_sale: Integer?
 
               def initialize: (
-                ?discount: Integer,
-                ?gross_sale: Integer,
-                ?net_sale: Integer
+                ?discount: Integer?,
+                ?gross_sale: Integer?,
+                ?net_sale: Integer?
               ) -> void
 
               def to_hash: -> {
-                discount: Integer,
-                gross_sale: Integer,
-                net_sale: Integer
+                discount: Integer?,
+                gross_sale: Integer?,
+                net_sale: Integer?
               }
             end
 
             type fuel =
               {
-                quantity: String,
-                type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_,
-                unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure,
-                unit_price: Integer
+                quantity: String?,
+                type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_?,
+                unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure?,
+                unit_price: Integer?
               }
 
             class Fuel < Lithic::Internal::Type::BaseModel
-              attr_reader quantity: String?
+              attr_accessor quantity: String?
 
-              def quantity=: (String) -> String
+              attr_accessor type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_?
 
-              attr_reader type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_?
+              attr_accessor unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure?
 
-              def type=: (
-                Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_
-              ) -> Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_
-
-              attr_reader unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure?
-
-              def unit_of_measure=: (
-                Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure
-              ) -> Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure
-
-              attr_reader unit_price: Integer?
-
-              def unit_price=: (Integer) -> Integer
+              attr_accessor unit_price: Integer?
 
               def initialize: (
-                ?quantity: String,
-                ?type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_,
-                ?unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure,
-                ?unit_price: Integer
+                ?quantity: String?,
+                ?type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_?,
+                ?unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure?,
+                ?unit_price: Integer?
               ) -> void
 
               def to_hash: -> {
-                quantity: String,
-                type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_,
-                unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure,
-                unit_price: Integer
+                quantity: String?,
+                type: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::type_?,
+                unit_of_measure: Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::unit_of_measure?,
+                unit_price: Integer?
               }
 
               type type_ =

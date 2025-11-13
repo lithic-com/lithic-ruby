@@ -39,7 +39,7 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
         method_: Lithic::Payment::Method,
         method_attributes: Lithic::Payment::MethodAttributes,
         pending_amount: Integer,
-        related_account_tokens: Lithic::Payment::RelatedAccountTokens,
+        related_account_tokens: Lithic::Payment::RelatedAccountTokens | nil,
         result: Lithic::Payment::Result,
         settled_amount: Integer,
         source: Lithic::Payment::Source,
@@ -81,7 +81,7 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
         method_: Lithic::Payment::Method,
         method_attributes: Lithic::Payment::MethodAttributes,
         pending_amount: Integer,
-        related_account_tokens: Lithic::Payment::RelatedAccountTokens,
+        related_account_tokens: Lithic::Payment::RelatedAccountTokens | nil,
         result: Lithic::Payment::Result,
         settled_amount: Integer,
         source: Lithic::Payment::Source,
@@ -101,6 +101,27 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
 
     assert_pattern do
       response => Lithic::Models::PaymentRetryResponse
+    end
+  end
+
+  def test_return__required_params
+    response =
+      @lithic.payments.return_(
+        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        financial_account_token: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        return_reason_code: "R01"
+      )
+
+    assert_pattern do
+      response => Lithic::Models::PaymentReturnResponse
+    end
+
+    assert_pattern do
+      response => {
+        result: Lithic::Models::PaymentReturnResponse::Result,
+        transaction_group_uuid: String,
+        transaction_uuid: String
+      }
     end
   end
 

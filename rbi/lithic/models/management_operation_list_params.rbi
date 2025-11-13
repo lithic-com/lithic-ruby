@@ -239,6 +239,11 @@ module Lithic
             :CANCELED,
             Lithic::ManagementOperationListParams::Status::TaggedSymbol
           )
+        RETURNED =
+          T.let(
+            :RETURNED,
+            Lithic::ManagementOperationListParams::Status::TaggedSymbol
+          )
 
         sig do
           override.returns(

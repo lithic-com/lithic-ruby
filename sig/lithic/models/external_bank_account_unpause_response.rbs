@@ -1,0 +1,162 @@
+module Lithic
+  module Models
+    type external_bank_account_unpause_response =
+      {
+        token: String,
+        country: String,
+        created: Time,
+        currency: String,
+        last_four: String,
+        owner: String,
+        owner_type: Lithic::Models::owner_type,
+        routing_number: String,
+        state: Lithic::Models::ExternalBankAccountUnpauseResponse::state,
+        type: Lithic::Models::ExternalBankAccountUnpauseResponse::type_,
+        verification_attempts: Integer,
+        verification_method: Lithic::Models::verification_method,
+        verification_state: Lithic::Models::ExternalBankAccountUnpauseResponse::verification_state,
+        account_token: String?,
+        address: Lithic::ExternalBankAccountAddress?,
+        company_id: String?,
+        dob: Date?,
+        doing_business_as: String?,
+        financial_account_token: String?,
+        name: String?,
+        user_defined_id: String?,
+        verification_failed_reason: String?
+      }
+
+    class ExternalBankAccountUnpauseResponse < Lithic::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      attr_accessor country: String
+
+      attr_accessor created: Time
+
+      attr_accessor currency: String
+
+      attr_accessor last_four: String
+
+      attr_accessor owner: String
+
+      attr_accessor owner_type: Lithic::Models::owner_type
+
+      attr_accessor routing_number: String
+
+      attr_accessor state: Lithic::Models::ExternalBankAccountUnpauseResponse::state
+
+      attr_accessor type: Lithic::Models::ExternalBankAccountUnpauseResponse::type_
+
+      attr_accessor verification_attempts: Integer
+
+      attr_accessor verification_method: Lithic::Models::verification_method
+
+      attr_accessor verification_state: Lithic::Models::ExternalBankAccountUnpauseResponse::verification_state
+
+      attr_accessor account_token: String?
+
+      attr_accessor address: Lithic::ExternalBankAccountAddress?
+
+      attr_accessor company_id: String?
+
+      attr_accessor dob: Date?
+
+      attr_accessor doing_business_as: String?
+
+      attr_accessor financial_account_token: String?
+
+      attr_accessor name: String?
+
+      attr_accessor user_defined_id: String?
+
+      attr_accessor verification_failed_reason: String?
+
+      def initialize: (
+        token: String,
+        country: String,
+        created: Time,
+        currency: String,
+        last_four: String,
+        owner: String,
+        owner_type: Lithic::Models::owner_type,
+        routing_number: String,
+        state: Lithic::Models::ExternalBankAccountUnpauseResponse::state,
+        type: Lithic::Models::ExternalBankAccountUnpauseResponse::type_,
+        verification_attempts: Integer,
+        verification_method: Lithic::Models::verification_method,
+        verification_state: Lithic::Models::ExternalBankAccountUnpauseResponse::verification_state,
+        ?account_token: String?,
+        ?address: Lithic::ExternalBankAccountAddress?,
+        ?company_id: String?,
+        ?dob: Date?,
+        ?doing_business_as: String?,
+        ?financial_account_token: String?,
+        ?name: String?,
+        ?user_defined_id: String?,
+        ?verification_failed_reason: String?
+      ) -> void
+
+      def to_hash: -> {
+        token: String,
+        country: String,
+        created: Time,
+        currency: String,
+        last_four: String,
+        owner: String,
+        owner_type: Lithic::Models::owner_type,
+        routing_number: String,
+        state: Lithic::Models::ExternalBankAccountUnpauseResponse::state,
+        type: Lithic::Models::ExternalBankAccountUnpauseResponse::type_,
+        verification_attempts: Integer,
+        verification_method: Lithic::Models::verification_method,
+        verification_state: Lithic::Models::ExternalBankAccountUnpauseResponse::verification_state,
+        account_token: String?,
+        address: Lithic::ExternalBankAccountAddress?,
+        company_id: String?,
+        dob: Date?,
+        doing_business_as: String?,
+        financial_account_token: String?,
+        name: String?,
+        user_defined_id: String?,
+        verification_failed_reason: String?
+      }
+
+      type state = :ENABLED | :CLOSED | :PAUSED
+
+      module State
+        extend Lithic::Internal::Type::Enum
+
+        ENABLED: :ENABLED
+        CLOSED: :CLOSED
+        PAUSED: :PAUSED
+
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountUnpauseResponse::state]
+      end
+
+      type type_ = :CHECKING | :SAVINGS
+
+      module Type
+        extend Lithic::Internal::Type::Enum
+
+        CHECKING: :CHECKING
+        SAVINGS: :SAVINGS
+
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountUnpauseResponse::type_]
+      end
+
+      type verification_state =
+        :PENDING | :ENABLED | :FAILED_VERIFICATION | :INSUFFICIENT_FUNDS
+
+      module VerificationState
+        extend Lithic::Internal::Type::Enum
+
+        PENDING: :PENDING
+        ENABLED: :ENABLED
+        FAILED_VERIFICATION: :FAILED_VERIFICATION
+        INSUFFICIENT_FUNDS: :INSUFFICIENT_FUNDS
+
+        def self?.values: -> ::Array[Lithic::Models::ExternalBankAccountUnpauseResponse::verification_state]
+      end
+    end
+  end
+end

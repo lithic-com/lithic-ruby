@@ -162,10 +162,7 @@ module Lithic
       attr_writer :transaction_series
 
       sig { returns(T.nilable(String)) }
-      attr_reader :user_defined_id
-
-      sig { params(user_defined_id: String).void }
-      attr_writer :user_defined_id
+      attr_accessor :user_defined_id
 
       sig do
         params(
@@ -189,7 +186,7 @@ module Lithic
             T.nilable(
               Lithic::ManagementOperationTransaction::TransactionSeries::OrHash
             ),
-          user_defined_id: String
+          user_defined_id: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -244,7 +241,7 @@ module Lithic
               T.nilable(
                 Lithic::ManagementOperationTransaction::TransactionSeries
               ),
-            user_defined_id: String
+            user_defined_id: T.nilable(String)
           }
         )
       end
@@ -284,6 +281,11 @@ module Lithic
         CANCELED =
           T.let(
             :CANCELED,
+            Lithic::ManagementOperationTransaction::Status::TaggedSymbol
+          )
+        RETURNED =
+          T.let(
+            :RETURNED,
             Lithic::ManagementOperationTransaction::Status::TaggedSymbol
           )
 
@@ -423,10 +425,7 @@ module Lithic
         attr_accessor :type
 
         sig { returns(T.nilable(String)) }
-        attr_reader :subtype
-
-        sig { params(subtype: String).void }
-        attr_writer :subtype
+        attr_accessor :subtype
 
         sig do
           params(
@@ -442,7 +441,7 @@ module Lithic
             result:
               Lithic::ManagementOperationTransaction::Event::Result::OrSymbol,
             type: Lithic::ManagementOperationTransaction::Event::Type::OrSymbol,
-            subtype: String
+            subtype: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -474,7 +473,7 @@ module Lithic
                 Lithic::ManagementOperationTransaction::Event::Result::TaggedSymbol,
               type:
                 Lithic::ManagementOperationTransaction::Event::Type::TaggedSymbol,
-              subtype: String
+              subtype: T.nilable(String)
             }
           )
         end

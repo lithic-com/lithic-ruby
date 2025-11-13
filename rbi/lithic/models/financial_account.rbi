@@ -129,7 +129,9 @@ module Lithic
 
         sig do
           returns(
-            Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration
+            T.nilable(
+              Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration
+            )
           )
         end
         attr_reader :auto_collection_configuration
@@ -137,7 +139,9 @@ module Lithic
         sig do
           params(
             auto_collection_configuration:
-              Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration::OrHash
+              T.nilable(
+                Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration::OrHash
+              )
           ).void
         end
         attr_writer :auto_collection_configuration
@@ -159,7 +163,9 @@ module Lithic
         sig do
           params(
             auto_collection_configuration:
-              Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration::OrHash,
+              T.nilable(
+                Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration::OrHash
+              ),
             credit_limit: T.nilable(Integer),
             credit_product_token: T.nilable(String),
             external_bank_account_token: T.nilable(String),
@@ -181,7 +187,9 @@ module Lithic
           override.returns(
             {
               auto_collection_configuration:
-                Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration,
+                T.nilable(
+                  Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration
+                ),
               credit_limit: T.nilable(Integer),
               credit_product_token: T.nilable(String),
               external_bank_account_token: T.nilable(String),

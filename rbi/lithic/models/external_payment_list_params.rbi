@@ -270,6 +270,11 @@ module Lithic
             :CANCELED,
             Lithic::ExternalPaymentListParams::Status::TaggedSymbol
           )
+        RETURNED =
+          T.let(
+            :RETURNED,
+            Lithic::ExternalPaymentListParams::Status::TaggedSymbol
+          )
 
         sig do
           override.returns(

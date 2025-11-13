@@ -97,49 +97,49 @@ module Lithic
       #   returned will be null
       #
       #   @return [String, nil]
-      optional :account_token, String
+      optional :account_token, String, nil?: true
 
       # @!attribute address
       #   Address
       #
       #   @return [Lithic::Models::ExternalBankAccountAddress, nil]
-      optional :address, -> { Lithic::ExternalBankAccountAddress }
+      optional :address, -> { Lithic::ExternalBankAccountAddress }, nil?: true
 
       # @!attribute company_id
       #   Optional field that helps identify bank accounts in receipts
       #
       #   @return [String, nil]
-      optional :company_id, String
+      optional :company_id, String, nil?: true
 
       # @!attribute dob
       #   Date of Birth of the Individual that owns the external bank account
       #
       #   @return [Date, nil]
-      optional :dob, Date
+      optional :dob, Date, nil?: true
 
       # @!attribute doing_business_as
       #   Doing Business As
       #
       #   @return [String, nil]
-      optional :doing_business_as, String
+      optional :doing_business_as, String, nil?: true
 
       # @!attribute financial_account_token
       #   The financial account token of the operating account to fund the micro deposits
       #
       #   @return [String, nil]
-      optional :financial_account_token, String
+      optional :financial_account_token, String, nil?: true
 
       # @!attribute name
       #   The nickname for this External Bank Account
       #
       #   @return [String, nil]
-      optional :name, String
+      optional :name, String, nil?: true
 
       # @!attribute user_defined_id
       #   User Defined ID
       #
       #   @return [String, nil]
-      optional :user_defined_id, String
+      optional :user_defined_id, String, nil?: true
 
       # @!attribute verification_failed_reason
       #   Optional free text description of the reason for the failed verification. For
@@ -147,7 +147,7 @@ module Lithic
       #   by the ACH network
       #
       #   @return [String, nil]
-      optional :verification_failed_reason, String
+      optional :verification_failed_reason, String, nil?: true
 
       # @!method initialize(token:, country:, created:, currency:, last_four:, owner:, owner_type:, routing_number:, state:, type:, verification_attempts:, verification_method:, verification_state:, account_token: nil, address: nil, company_id: nil, dob: nil, doing_business_as: nil, financial_account_token: nil, name: nil, user_defined_id: nil, verification_failed_reason: nil)
       #   Some parameter documentations has been truncated, see
@@ -179,23 +179,23 @@ module Lithic
       #
       #   @param verification_state [Symbol, Lithic::Models::ExternalBankAccountRetrieveResponse::VerificationState] Verification State
       #
-      #   @param account_token [String] Indicates which Lithic account the external account is associated with. For exte
+      #   @param account_token [String, nil] Indicates which Lithic account the external account is associated with. For exte
       #
-      #   @param address [Lithic::Models::ExternalBankAccountAddress] Address
+      #   @param address [Lithic::Models::ExternalBankAccountAddress, nil] Address
       #
-      #   @param company_id [String] Optional field that helps identify bank accounts in receipts
+      #   @param company_id [String, nil] Optional field that helps identify bank accounts in receipts
       #
-      #   @param dob [Date] Date of Birth of the Individual that owns the external bank account
+      #   @param dob [Date, nil] Date of Birth of the Individual that owns the external bank account
       #
-      #   @param doing_business_as [String] Doing Business As
+      #   @param doing_business_as [String, nil] Doing Business As
       #
-      #   @param financial_account_token [String] The financial account token of the operating account to fund the micro deposits
+      #   @param financial_account_token [String, nil] The financial account token of the operating account to fund the micro deposits
       #
-      #   @param name [String] The nickname for this External Bank Account
+      #   @param name [String, nil] The nickname for this External Bank Account
       #
-      #   @param user_defined_id [String] User Defined ID
+      #   @param user_defined_id [String, nil] User Defined ID
       #
-      #   @param verification_failed_reason [String] Optional free text description of the reason for the failed verification. For AC
+      #   @param verification_failed_reason [String, nil] Optional free text description of the reason for the failed verification. For AC
 
       # Owner Type
       #
