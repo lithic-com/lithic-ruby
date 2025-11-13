@@ -7,7 +7,7 @@ module Lithic
         country: String,
         postal_code: String,
         state: String,
-        :address2 => String
+        :address2 => String?
       }
 
     class ExternalBankAccountAddress < Lithic::Internal::Type::BaseModel
@@ -21,9 +21,7 @@ module Lithic
 
       attr_accessor state: String
 
-      attr_reader address2: String?
-
-      def address2=: (String) -> String
+      attr_accessor address2: String?
 
       def initialize: (
         address1: String,
@@ -31,7 +29,7 @@ module Lithic
         country: String,
         postal_code: String,
         state: String,
-        ?address2: String
+        ?address2: String?
       ) -> void
 
       def to_hash: -> {
@@ -40,7 +38,7 @@ module Lithic
         country: String,
         postal_code: String,
         state: String,
-        :address2 => String
+        :address2 => String?
       }
     end
   end

@@ -1,0 +1,26 @@
+module Lithic
+  module Models
+    type category_details =
+      { balance_transfers: String, cash_advances: String, purchases: String }
+
+    class CategoryDetails < Lithic::Internal::Type::BaseModel
+      attr_accessor balance_transfers: String
+
+      attr_accessor cash_advances: String
+
+      attr_accessor purchases: String
+
+      def initialize: (
+        balance_transfers: String,
+        cash_advances: String,
+        purchases: String
+      ) -> void
+
+      def to_hash: -> {
+        balance_transfers: String,
+        cash_advances: String,
+        purchases: String
+      }
+    end
+  end
+end

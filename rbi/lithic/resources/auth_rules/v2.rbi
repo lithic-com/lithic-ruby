@@ -16,7 +16,9 @@ module Lithic
                 Lithic::AuthRules::VelocityLimitParams::OrHash,
                 Lithic::AuthRules::MerchantLockParameters::OrHash,
                 Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
-                Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash
+                Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash,
+                Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
+                Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash
               ),
             type: Lithic::AuthRules::V2CreateParams::Type::OrSymbol,
             card_tokens: T::Array[String],
@@ -41,7 +43,8 @@ module Lithic
           # - `CONDITIONAL_BLOCK`: AUTHORIZATION event stream.
           # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
           # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
-          # - `CONDITIONAL_ACTION`: AUTHORIZATION or THREE_DS_AUTHENTICATION event stream.
+          # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+          #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
           type:,
           # Card tokens to which the Auth Rule applies.
           card_tokens:,
@@ -179,7 +182,9 @@ module Lithic
                   Lithic::AuthRules::VelocityLimitParams::OrHash,
                   Lithic::AuthRules::MerchantLockParameters::OrHash,
                   Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
-                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash,
+                  Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash
                 )
               ),
             request_options: Lithic::RequestOptions::OrHash

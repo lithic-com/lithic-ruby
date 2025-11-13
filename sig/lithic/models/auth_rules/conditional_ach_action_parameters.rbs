@@ -1,0 +1,293 @@
+module Lithic
+  module Models
+    module AuthRules
+      type conditional_ach_action_parameters =
+        {
+          action: Lithic::Models::AuthRules::ConditionalACHActionParameters::action,
+          conditions: ::Array[Lithic::AuthRules::ConditionalACHActionParameters::Condition]
+        }
+
+      class ConditionalACHActionParameters < Lithic::Internal::Type::BaseModel
+        attr_accessor action: Lithic::Models::AuthRules::ConditionalACHActionParameters::action
+
+        attr_accessor conditions: ::Array[Lithic::AuthRules::ConditionalACHActionParameters::Condition]
+
+        def initialize: (
+          action: Lithic::Models::AuthRules::ConditionalACHActionParameters::action,
+          conditions: ::Array[Lithic::AuthRules::ConditionalACHActionParameters::Condition]
+        ) -> void
+
+        def to_hash: -> {
+          action: Lithic::Models::AuthRules::ConditionalACHActionParameters::action,
+          conditions: ::Array[Lithic::AuthRules::ConditionalACHActionParameters::Condition]
+        }
+
+        type action =
+          Lithic::AuthRules::ConditionalACHActionParameters::Action::ApproveAction
+          | Lithic::AuthRules::ConditionalACHActionParameters::Action::ReturnAction
+
+        module Action
+          extend Lithic::Internal::Type::Union
+
+          type approve_action =
+            {
+              type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::type_
+            }
+
+          class ApproveAction < Lithic::Internal::Type::BaseModel
+            attr_accessor type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::type_
+
+            def initialize: (
+              type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::type_
+            ) -> void
+
+            def to_hash: -> {
+              type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::type_
+            }
+
+            type type_ = :APPROVE
+
+            module Type
+              extend Lithic::Internal::Type::Enum
+
+              APPROVE: :APPROVE
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ApproveAction::type_]
+            end
+          end
+
+          type return_action =
+            {
+              code: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction::code,
+              type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction::type_
+            }
+
+          class ReturnAction < Lithic::Internal::Type::BaseModel
+            attr_accessor code: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction::code
+
+            attr_accessor type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction::type_
+
+            def initialize: (
+              code: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction::code,
+              type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction::type_
+            ) -> void
+
+            def to_hash: -> {
+              code: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction::code,
+              type: Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction::type_
+            }
+
+            type code =
+              :R01
+              | :R02
+              | :R03
+              | :R04
+              | :R05
+              | :R06
+              | :R07
+              | :R08
+              | :R09
+              | :R10
+              | :R11
+              | :R12
+              | :R13
+              | :R14
+              | :R15
+              | :R16
+              | :R17
+              | :R18
+              | :R19
+              | :R20
+              | :R21
+              | :R22
+              | :R23
+              | :R24
+              | :R25
+              | :R26
+              | :R27
+              | :R28
+              | :R29
+              | :R30
+              | :R31
+              | :R32
+              | :R33
+              | :R34
+              | :R35
+              | :R36
+              | :R37
+              | :R38
+              | :R39
+              | :R40
+              | :R41
+              | :R42
+              | :R43
+              | :R44
+              | :R45
+              | :R46
+              | :R47
+              | :R50
+              | :R51
+              | :R52
+              | :R53
+              | :R61
+              | :R62
+              | :R67
+              | :R68
+              | :R69
+              | :R70
+              | :R71
+              | :R72
+              | :R73
+              | :R74
+              | :R75
+              | :R76
+              | :R77
+              | :R80
+              | :R81
+              | :R82
+              | :R83
+              | :R84
+              | :R85
+
+            module Code
+              extend Lithic::Internal::Type::Enum
+
+              R01: :R01
+              R02: :R02
+              R03: :R03
+              R04: :R04
+              R05: :R05
+              R06: :R06
+              R07: :R07
+              R08: :R08
+              R09: :R09
+              R10: :R10
+              R11: :R11
+              R12: :R12
+              R13: :R13
+              R14: :R14
+              R15: :R15
+              R16: :R16
+              R17: :R17
+              R18: :R18
+              R19: :R19
+              R20: :R20
+              R21: :R21
+              R22: :R22
+              R23: :R23
+              R24: :R24
+              R25: :R25
+              R26: :R26
+              R27: :R27
+              R28: :R28
+              R29: :R29
+              R30: :R30
+              R31: :R31
+              R32: :R32
+              R33: :R33
+              R34: :R34
+              R35: :R35
+              R36: :R36
+              R37: :R37
+              R38: :R38
+              R39: :R39
+              R40: :R40
+              R41: :R41
+              R42: :R42
+              R43: :R43
+              R44: :R44
+              R45: :R45
+              R46: :R46
+              R47: :R47
+              R50: :R50
+              R51: :R51
+              R52: :R52
+              R53: :R53
+              R61: :R61
+              R62: :R62
+              R67: :R67
+              R68: :R68
+              R69: :R69
+              R70: :R70
+              R71: :R71
+              R72: :R72
+              R73: :R73
+              R74: :R74
+              R75: :R75
+              R76: :R76
+              R77: :R77
+              R80: :R80
+              R81: :R81
+              R82: :R82
+              R83: :R83
+              R84: :R84
+              R85: :R85
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction::code]
+            end
+
+            type type_ = :RETURN
+
+            module Type
+              extend Lithic::Internal::Type::Enum
+
+              RETURN: :RETURN
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalACHActionParameters::Action::ReturnAction::type_]
+            end
+          end
+
+          def self?.variants: -> ::Array[Lithic::Models::AuthRules::ConditionalACHActionParameters::action]
+        end
+
+        type condition =
+          {
+            attribute: Lithic::Models::AuthRules::ConditionalACHActionParameters::Condition::attribute,
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value
+          }
+
+        class Condition < Lithic::Internal::Type::BaseModel
+          attr_accessor attribute: Lithic::Models::AuthRules::ConditionalACHActionParameters::Condition::attribute
+
+          attr_accessor operation: Lithic::Models::AuthRules::conditional_operation
+
+          attr_accessor value: Lithic::Models::AuthRules::conditional_value
+
+          def initialize: (
+            attribute: Lithic::Models::AuthRules::ConditionalACHActionParameters::Condition::attribute,
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value
+          ) -> void
+
+          def to_hash: -> {
+            attribute: Lithic::Models::AuthRules::ConditionalACHActionParameters::Condition::attribute,
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value
+          }
+
+          type attribute =
+            :COMPANY_NAME
+            | :COMPANY_ID
+            | :TIMESTAMP
+            | :TRANSACTION_AMOUNT
+            | :SEC_CODE
+            | :MEMO
+
+          module Attribute
+            extend Lithic::Internal::Type::Enum
+
+            COMPANY_NAME: :COMPANY_NAME
+            COMPANY_ID: :COMPANY_ID
+            TIMESTAMP: :TIMESTAMP
+            TRANSACTION_AMOUNT: :TRANSACTION_AMOUNT
+            SEC_CODE: :SEC_CODE
+            MEMO: :MEMO
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalACHActionParameters::Condition::attribute]
+          end
+        end
+      end
+    end
+  end
+end

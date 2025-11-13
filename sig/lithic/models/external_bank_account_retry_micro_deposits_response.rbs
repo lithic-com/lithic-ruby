@@ -15,15 +15,15 @@ module Lithic
         verification_attempts: Integer,
         verification_method: Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::verification_method,
         verification_state: Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::verification_state,
-        account_token: String,
-        address: Lithic::ExternalBankAccountAddress,
-        company_id: String,
-        dob: Date,
-        doing_business_as: String,
-        financial_account_token: String,
-        name: String,
-        user_defined_id: String,
-        verification_failed_reason: String
+        account_token: String?,
+        address: Lithic::ExternalBankAccountAddress?,
+        company_id: String?,
+        dob: Date?,
+        doing_business_as: String?,
+        financial_account_token: String?,
+        name: String?,
+        user_defined_id: String?,
+        verification_failed_reason: String?
       }
 
     class ExternalBankAccountRetryMicroDepositsResponse < Lithic::Internal::Type::BaseModel
@@ -53,43 +53,23 @@ module Lithic
 
       attr_accessor verification_state: Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::verification_state
 
-      attr_reader account_token: String?
+      attr_accessor account_token: String?
 
-      def account_token=: (String) -> String
+      attr_accessor address: Lithic::ExternalBankAccountAddress?
 
-      attr_reader address: Lithic::ExternalBankAccountAddress?
+      attr_accessor company_id: String?
 
-      def address=: (
-        Lithic::ExternalBankAccountAddress
-      ) -> Lithic::ExternalBankAccountAddress
+      attr_accessor dob: Date?
 
-      attr_reader company_id: String?
+      attr_accessor doing_business_as: String?
 
-      def company_id=: (String) -> String
+      attr_accessor financial_account_token: String?
 
-      attr_reader dob: Date?
+      attr_accessor name: String?
 
-      def dob=: (Date) -> Date
+      attr_accessor user_defined_id: String?
 
-      attr_reader doing_business_as: String?
-
-      def doing_business_as=: (String) -> String
-
-      attr_reader financial_account_token: String?
-
-      def financial_account_token=: (String) -> String
-
-      attr_reader name: String?
-
-      def name=: (String) -> String
-
-      attr_reader user_defined_id: String?
-
-      def user_defined_id=: (String) -> String
-
-      attr_reader verification_failed_reason: String?
-
-      def verification_failed_reason=: (String) -> String
+      attr_accessor verification_failed_reason: String?
 
       def initialize: (
         token: String,
@@ -105,15 +85,15 @@ module Lithic
         verification_attempts: Integer,
         verification_method: Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::verification_method,
         verification_state: Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::verification_state,
-        ?account_token: String,
-        ?address: Lithic::ExternalBankAccountAddress,
-        ?company_id: String,
-        ?dob: Date,
-        ?doing_business_as: String,
-        ?financial_account_token: String,
-        ?name: String,
-        ?user_defined_id: String,
-        ?verification_failed_reason: String
+        ?account_token: String?,
+        ?address: Lithic::ExternalBankAccountAddress?,
+        ?company_id: String?,
+        ?dob: Date?,
+        ?doing_business_as: String?,
+        ?financial_account_token: String?,
+        ?name: String?,
+        ?user_defined_id: String?,
+        ?verification_failed_reason: String?
       ) -> void
 
       def to_hash: -> {
@@ -130,15 +110,15 @@ module Lithic
         verification_attempts: Integer,
         verification_method: Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::verification_method,
         verification_state: Lithic::Models::ExternalBankAccountRetryMicroDepositsResponse::verification_state,
-        account_token: String,
-        address: Lithic::ExternalBankAccountAddress,
-        company_id: String,
-        dob: Date,
-        doing_business_as: String,
-        financial_account_token: String,
-        name: String,
-        user_defined_id: String,
-        verification_failed_reason: String
+        account_token: String?,
+        address: Lithic::ExternalBankAccountAddress?,
+        company_id: String?,
+        dob: Date?,
+        doing_business_as: String?,
+        financial_account_token: String?,
+        name: String?,
+        user_defined_id: String?,
+        verification_failed_reason: String?
       }
 
       type owner_type = :BUSINESS | :INDIVIDUAL

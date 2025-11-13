@@ -68,6 +68,11 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> Lithic::Models::ExternalBankAccountRetryPrenoteResponse
 
+      def unpause: (
+        String external_bank_account_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::ExternalBankAccountUnpauseResponse
+
       def initialize: (client: Lithic::Client) -> void
     end
   end

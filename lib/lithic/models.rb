@@ -148,6 +148,8 @@ module Lithic
 
   Carrier = Lithic::Models::Carrier
 
+  CategoryDetails = Lithic::Models::CategoryDetails
+
   ClientAPIStatusParams = Lithic::Models::ClientAPIStatusParams
 
   CreditProducts = Lithic::Models::CreditProducts
@@ -180,7 +182,13 @@ module Lithic
 
   DisputeRetrieveParams = Lithic::Models::DisputeRetrieveParams
 
+  DisputesV2ListParams = Lithic::Models::DisputesV2ListParams
+
+  DisputesV2RetrieveParams = Lithic::Models::DisputesV2RetrieveParams
+
   DisputeUpdateParams = Lithic::Models::DisputeUpdateParams
+
+  DisputeV2 = Lithic::Models::DisputeV2
 
   Document = Lithic::Models::Document
 
@@ -209,6 +217,8 @@ module Lithic
   ExternalBankAccountRetryPrenoteParams = Lithic::Models::ExternalBankAccountRetryPrenoteParams
 
   ExternalBankAccounts = Lithic::Models::ExternalBankAccounts
+
+  ExternalBankAccountUnpauseParams = Lithic::Models::ExternalBankAccountUnpauseParams
 
   ExternalBankAccountUpdateParams = Lithic::Models::ExternalBankAccountUpdateParams
 
@@ -248,6 +258,8 @@ module Lithic
 
   FinancialAccountUpdateStatusParams = Lithic::Models::FinancialAccountUpdateStatusParams
 
+  FinancialEvent = Lithic::Models::FinancialEvent
+
   FinancialTransaction = Lithic::Models::FinancialTransaction
 
   Fraud = Lithic::Models::Fraud
@@ -278,6 +290,8 @@ module Lithic
 
   ManagementOperationTransaction = Lithic::Models::ManagementOperationTransaction
 
+  Merchant = Lithic::Models::Merchant
+
   MessageAttempt = Lithic::Models::MessageAttempt
 
   NetworkProgram = Lithic::Models::NetworkProgram
@@ -299,6 +313,8 @@ module Lithic
   PaymentRetrieveParams = Lithic::Models::PaymentRetrieveParams
 
   PaymentRetryParams = Lithic::Models::PaymentRetryParams
+
+  PaymentReturnParams = Lithic::Models::PaymentReturnParams
 
   PaymentSimulateActionParams = Lithic::Models::PaymentSimulateActionParams
 
@@ -331,6 +347,8 @@ module Lithic
   ShippingAddress = Lithic::Models::ShippingAddress
 
   SpendLimitDuration = Lithic::Models::SpendLimitDuration
+
+  StatementTotals = Lithic::Models::StatementTotals
 
   ThreeDS = Lithic::Models::ThreeDS
 

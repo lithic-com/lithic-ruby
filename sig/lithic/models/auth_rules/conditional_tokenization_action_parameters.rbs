@@ -1,0 +1,237 @@
+module Lithic
+  module Models
+    module AuthRules
+      type conditional_tokenization_action_parameters =
+        {
+          action: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::action,
+          conditions: ::Array[Lithic::AuthRules::ConditionalTokenizationActionParameters::Condition]
+        }
+
+      class ConditionalTokenizationActionParameters < Lithic::Internal::Type::BaseModel
+        attr_accessor action: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::action
+
+        attr_accessor conditions: ::Array[Lithic::AuthRules::ConditionalTokenizationActionParameters::Condition]
+
+        def initialize: (
+          action: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::action,
+          conditions: ::Array[Lithic::AuthRules::ConditionalTokenizationActionParameters::Condition]
+        ) -> void
+
+        def to_hash: -> {
+          action: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::action,
+          conditions: ::Array[Lithic::AuthRules::ConditionalTokenizationActionParameters::Condition]
+        }
+
+        type action =
+          Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction
+          | Lithic::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction
+
+        module Action
+          extend Lithic::Internal::Type::Union
+
+          type decline_action =
+            {
+              type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::type_,
+              reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::reason
+            }
+
+          class DeclineAction < Lithic::Internal::Type::BaseModel
+            attr_accessor type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::type_
+
+            attr_reader reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::reason?
+
+            def reason=: (
+              Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::reason
+            ) -> Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::reason
+
+            def initialize: (
+              type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::type_,
+              ?reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::reason
+            ) -> void
+
+            def to_hash: -> {
+              type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::type_,
+              reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::reason
+            }
+
+            type type_ = :DECLINE
+
+            module Type
+              extend Lithic::Internal::Type::Enum
+
+              DECLINE: :DECLINE
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::type_]
+            end
+
+            type reason =
+              :ACCOUNT_SCORE_1
+              | :DEVICE_SCORE_1
+              | :ALL_WALLET_DECLINE_REASONS_PRESENT
+              | :WALLET_RECOMMENDED_DECISION_RED
+              | :CVC_MISMATCH
+              | :CARD_EXPIRY_MONTH_MISMATCH
+              | :CARD_EXPIRY_YEAR_MISMATCH
+              | :CARD_INVALID_STATE
+              | :CUSTOMER_RED_PATH
+              | :INVALID_CUSTOMER_RESPONSE
+              | :NETWORK_FAILURE
+              | :GENERIC_DECLINE
+              | :DIGITAL_CARD_ART_REQUIRED
+
+            module Reason
+              extend Lithic::Internal::Type::Enum
+
+              ACCOUNT_SCORE_1: :ACCOUNT_SCORE_1
+              DEVICE_SCORE_1: :DEVICE_SCORE_1
+              ALL_WALLET_DECLINE_REASONS_PRESENT: :ALL_WALLET_DECLINE_REASONS_PRESENT
+              WALLET_RECOMMENDED_DECISION_RED: :WALLET_RECOMMENDED_DECISION_RED
+              CVC_MISMATCH: :CVC_MISMATCH
+              CARD_EXPIRY_MONTH_MISMATCH: :CARD_EXPIRY_MONTH_MISMATCH
+              CARD_EXPIRY_YEAR_MISMATCH: :CARD_EXPIRY_YEAR_MISMATCH
+              CARD_INVALID_STATE: :CARD_INVALID_STATE
+              CUSTOMER_RED_PATH: :CUSTOMER_RED_PATH
+              INVALID_CUSTOMER_RESPONSE: :INVALID_CUSTOMER_RESPONSE
+              NETWORK_FAILURE: :NETWORK_FAILURE
+              GENERIC_DECLINE: :GENERIC_DECLINE
+              DIGITAL_CARD_ART_REQUIRED: :DIGITAL_CARD_ART_REQUIRED
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::DeclineAction::reason]
+            end
+          end
+
+          type require_tfa_action =
+            {
+              type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction::type_,
+              reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction::reason
+            }
+
+          class RequireTfaAction < Lithic::Internal::Type::BaseModel
+            attr_accessor type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction::type_
+
+            attr_reader reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction::reason?
+
+            def reason=: (
+              Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction::reason
+            ) -> Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction::reason
+
+            def initialize: (
+              type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction::type_,
+              ?reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction::reason
+            ) -> void
+
+            def to_hash: -> {
+              type: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction::type_,
+              reason: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction::reason
+            }
+
+            type type_ = :REQUIRE_TFA
+
+            module Type
+              extend Lithic::Internal::Type::Enum
+
+              REQUIRE_TFA: :REQUIRE_TFA
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction::type_]
+            end
+
+            type reason =
+              :WALLET_RECOMMENDED_TFA
+              | :SUSPICIOUS_ACTIVITY
+              | :DEVICE_RECENTLY_LOST
+              | :TOO_MANY_RECENT_ATTEMPTS
+              | :TOO_MANY_RECENT_TOKENS
+              | :TOO_MANY_DIFFERENT_CARDHOLDERS
+              | :OUTSIDE_HOME_TERRITORY
+              | :HAS_SUSPENDED_TOKENS
+              | :HIGH_RISK
+              | :ACCOUNT_SCORE_LOW
+              | :DEVICE_SCORE_LOW
+              | :CARD_STATE_TFA
+              | :HARDCODED_TFA
+              | :CUSTOMER_RULE_TFA
+              | :DEVICE_HOST_CARD_EMULATION
+
+            module Reason
+              extend Lithic::Internal::Type::Enum
+
+              WALLET_RECOMMENDED_TFA: :WALLET_RECOMMENDED_TFA
+              SUSPICIOUS_ACTIVITY: :SUSPICIOUS_ACTIVITY
+              DEVICE_RECENTLY_LOST: :DEVICE_RECENTLY_LOST
+              TOO_MANY_RECENT_ATTEMPTS: :TOO_MANY_RECENT_ATTEMPTS
+              TOO_MANY_RECENT_TOKENS: :TOO_MANY_RECENT_TOKENS
+              TOO_MANY_DIFFERENT_CARDHOLDERS: :TOO_MANY_DIFFERENT_CARDHOLDERS
+              OUTSIDE_HOME_TERRITORY: :OUTSIDE_HOME_TERRITORY
+              HAS_SUSPENDED_TOKENS: :HAS_SUSPENDED_TOKENS
+              HIGH_RISK: :HIGH_RISK
+              ACCOUNT_SCORE_LOW: :ACCOUNT_SCORE_LOW
+              DEVICE_SCORE_LOW: :DEVICE_SCORE_LOW
+              CARD_STATE_TFA: :CARD_STATE_TFA
+              HARDCODED_TFA: :HARDCODED_TFA
+              CUSTOMER_RULE_TFA: :CUSTOMER_RULE_TFA
+              DEVICE_HOST_CARD_EMULATION: :DEVICE_HOST_CARD_EMULATION
+
+              def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Action::RequireTfaAction::reason]
+            end
+          end
+
+          def self?.variants: -> ::Array[Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::action]
+        end
+
+        type condition =
+          {
+            attribute: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Condition::attribute,
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value
+          }
+
+        class Condition < Lithic::Internal::Type::BaseModel
+          attr_accessor attribute: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Condition::attribute
+
+          attr_accessor operation: Lithic::Models::AuthRules::conditional_operation
+
+          attr_accessor value: Lithic::Models::AuthRules::conditional_value
+
+          def initialize: (
+            attribute: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Condition::attribute,
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value
+          ) -> void
+
+          def to_hash: -> {
+            attribute: Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Condition::attribute,
+            operation: Lithic::Models::AuthRules::conditional_operation,
+            value: Lithic::Models::AuthRules::conditional_value
+          }
+
+          type attribute =
+            :TIMESTAMP
+            | :TOKENIZATION_CHANNEL
+            | :TOKENIZATION_SOURCE
+            | :TOKEN_REQUESTOR_NAME
+            | :WALLET_ACCOUNT_SCORE
+            | :WALLET_DEVICE_SCORE
+            | :WALLET_RECOMMENDED_DECISION
+            | :TOKEN_REQUESTOR_ID
+            | :WALLET_TOKEN_STATUS
+
+          module Attribute
+            extend Lithic::Internal::Type::Enum
+
+            TIMESTAMP: :TIMESTAMP
+            TOKENIZATION_CHANNEL: :TOKENIZATION_CHANNEL
+            TOKENIZATION_SOURCE: :TOKENIZATION_SOURCE
+            TOKEN_REQUESTOR_NAME: :TOKEN_REQUESTOR_NAME
+            WALLET_ACCOUNT_SCORE: :WALLET_ACCOUNT_SCORE
+            WALLET_DEVICE_SCORE: :WALLET_DEVICE_SCORE
+            WALLET_RECOMMENDED_DECISION: :WALLET_RECOMMENDED_DECISION
+            TOKEN_REQUESTOR_ID: :TOKEN_REQUESTOR_ID
+            WALLET_TOKEN_STATUS: :WALLET_TOKEN_STATUS
+
+            def self?.values: -> ::Array[Lithic::Models::AuthRules::ConditionalTokenizationActionParameters::Condition::attribute]
+          end
+        end
+      end
+    end
+  end
+end

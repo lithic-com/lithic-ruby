@@ -8,12 +8,12 @@ module Lithic
         ?customer_filed_date: Time,
         ?customer_note: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::DisputeCreateResponse
+      ) -> Lithic::Dispute
 
       def retrieve: (
         String dispute_token,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::DisputeRetrieveResponse
+      ) -> Lithic::Dispute
 
       def update: (
         String dispute_token,
@@ -22,7 +22,7 @@ module Lithic
         ?customer_note: String,
         ?reason: Lithic::Models::DisputeUpdateParams::reason,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::DisputeUpdateResponse
+      ) -> Lithic::Dispute
 
       def list: (
         ?begin_: Time,
@@ -33,12 +33,12 @@ module Lithic
         ?status: Lithic::Models::DisputeListParams::status,
         ?transaction_tokens: ::Array[String],
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Internal::CursorPage[Lithic::Models::DisputeListResponse]
+      ) -> Lithic::Internal::CursorPage[Lithic::Dispute]
 
       def delete: (
         String dispute_token,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::DisputeDeleteResponse
+      ) -> Lithic::Dispute
 
       def delete_evidence: (
         String evidence_token,

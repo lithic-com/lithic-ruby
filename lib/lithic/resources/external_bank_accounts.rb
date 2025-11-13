@@ -211,6 +211,25 @@ module Lithic
         )
       end
 
+      # Unpause an external bank account
+      #
+      # @overload unpause(external_bank_account_token, request_options: {})
+      #
+      # @param external_bank_account_token [String]
+      # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Lithic::Models::ExternalBankAccountUnpauseResponse]
+      #
+      # @see Lithic::Models::ExternalBankAccountUnpauseParams
+      def unpause(external_bank_account_token, params = {})
+        @client.request(
+          method: :post,
+          path: ["v1/external_bank_accounts/%1$s/unpause", external_bank_account_token],
+          model: Lithic::Models::ExternalBankAccountUnpauseResponse,
+          options: params[:request_options]
+        )
+      end
+
       # @api private
       #
       # @param client [Lithic::Client]

@@ -52,6 +52,9 @@ module Lithic
     sig { returns(Lithic::Resources::Disputes) }
     attr_reader :disputes
 
+    sig { returns(Lithic::Resources::DisputesV2) }
+    attr_reader :disputes_v2
+
     sig { returns(Lithic::Resources::Events) }
     attr_reader :events
 

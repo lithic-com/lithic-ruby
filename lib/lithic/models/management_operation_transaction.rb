@@ -92,7 +92,7 @@ module Lithic
       # @!attribute user_defined_id
       #
       #   @return [String, nil]
-      optional :user_defined_id, String
+      optional :user_defined_id, String, nil?: true
 
       # @!method initialize(token:, created:, status:, updated:, category: nil, currency: nil, direction: nil, events: nil, external_resource: nil, family: nil, financial_account_token: nil, pending_amount: nil, result: nil, settled_amount: nil, transaction_series: nil, user_defined_id: nil)
       #   @param token [String] Unique identifier for the transaction
@@ -125,7 +125,7 @@ module Lithic
       #
       #   @param transaction_series [Lithic::Models::ManagementOperationTransaction::TransactionSeries, nil]
       #
-      #   @param user_defined_id [String]
+      #   @param user_defined_id [String, nil]
 
       # The status of the transaction
       #
@@ -138,6 +138,7 @@ module Lithic
         DECLINED = :DECLINED
         REVERSED = :REVERSED
         CANCELED = :CANCELED
+        RETURNED = :RETURNED
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -213,7 +214,7 @@ module Lithic
         # @!attribute subtype
         #
         #   @return [String, nil]
-        optional :subtype, String
+        optional :subtype, String, nil?: true
 
         # @!method initialize(token:, amount:, created:, detailed_results:, effective_date:, memo:, result:, type:, subtype: nil)
         #   @param token [String]
@@ -224,7 +225,7 @@ module Lithic
         #   @param memo [String]
         #   @param result [Symbol, Lithic::Models::ManagementOperationTransaction::Event::Result]
         #   @param type [Symbol, Lithic::Models::ManagementOperationTransaction::Event::Type]
-        #   @param subtype [String]
+        #   @param subtype [String, nil]
 
         module DetailedResult
           extend Lithic::Internal::Type::Enum

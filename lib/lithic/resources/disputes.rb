@@ -19,7 +19,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::DisputeCreateResponse]
+      # @return [Lithic::Models::Dispute]
       #
       # @see Lithic::Models::DisputeCreateParams
       def create(params)
@@ -28,7 +28,7 @@ module Lithic
           method: :post,
           path: "v1/disputes",
           body: parsed,
-          model: Lithic::Models::DisputeCreateResponse,
+          model: Lithic::Dispute,
           options: options
         )
       end
@@ -40,14 +40,14 @@ module Lithic
       # @param dispute_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::DisputeRetrieveResponse]
+      # @return [Lithic::Models::Dispute]
       #
       # @see Lithic::Models::DisputeRetrieveParams
       def retrieve(dispute_token, params = {})
         @client.request(
           method: :get,
           path: ["v1/disputes/%1$s", dispute_token],
-          model: Lithic::Models::DisputeRetrieveResponse,
+          model: Lithic::Dispute,
           options: params[:request_options]
         )
       end
@@ -68,7 +68,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::DisputeUpdateResponse]
+      # @return [Lithic::Models::Dispute]
       #
       # @see Lithic::Models::DisputeUpdateParams
       def update(dispute_token, params = {})
@@ -77,7 +77,7 @@ module Lithic
           method: :patch,
           path: ["v1/disputes/%1$s", dispute_token],
           body: parsed,
-          model: Lithic::Models::DisputeUpdateResponse,
+          model: Lithic::Dispute,
           options: options
         )
       end
@@ -105,7 +105,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::Models::DisputeListResponse>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::Dispute>]
       #
       # @see Lithic::Models::DisputeListParams
       def list(params = {})
@@ -115,7 +115,7 @@ module Lithic
           path: "v1/disputes",
           query: parsed.transform_keys(begin_: "begin", end_: "end"),
           page: Lithic::Internal::CursorPage,
-          model: Lithic::Models::DisputeListResponse,
+          model: Lithic::Dispute,
           options: options
         )
       end
@@ -127,14 +127,14 @@ module Lithic
       # @param dispute_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::DisputeDeleteResponse]
+      # @return [Lithic::Models::Dispute]
       #
       # @see Lithic::Models::DisputeDeleteParams
       def delete(dispute_token, params = {})
         @client.request(
           method: :delete,
           path: ["v1/disputes/%1$s", dispute_token],
-          model: Lithic::Models::DisputeDeleteResponse,
+          model: Lithic::Dispute,
           options: params[:request_options]
         )
       end

@@ -72,8 +72,8 @@ module Lithic
 
         # @!attribute period_totals
         #
-        #   @return [Lithic::Models::FinancialAccounts::Statement::PeriodTotals]
-        required :period_totals, -> { Lithic::FinancialAccounts::Statement::PeriodTotals }
+        #   @return [Lithic::Models::StatementTotals]
+        required :period_totals, -> { Lithic::StatementTotals }
 
         # @!attribute starting_balance
         #   Balance at the start of the billing period
@@ -106,8 +106,8 @@ module Lithic
 
         # @!attribute ytd_totals
         #
-        #   @return [Lithic::Models::FinancialAccounts::Statement::YtdTotals]
-        required :ytd_totals, -> { Lithic::FinancialAccounts::Statement::YtdTotals }
+        #   @return [Lithic::Models::StatementTotals]
+        required :ytd_totals, -> { Lithic::StatementTotals }
 
         # @!attribute interest_details
         #
@@ -152,7 +152,7 @@ module Lithic
         #
         #   @param payment_due_date [Date, nil] Date when the payment is due
         #
-        #   @param period_totals [Lithic::Models::FinancialAccounts::Statement::PeriodTotals]
+        #   @param period_totals [Lithic::Models::StatementTotals]
         #
         #   @param starting_balance [Integer] Balance at the start of the billing period
         #
@@ -164,7 +164,7 @@ module Lithic
         #
         #   @param updated [Time] Timestamp of when the statement was updated
         #
-        #   @param ytd_totals [Lithic::Models::FinancialAccounts::Statement::YtdTotals]
+        #   @param ytd_totals [Lithic::Models::StatementTotals]
         #
         #   @param interest_details [Lithic::Models::FinancialAccounts::Statement::InterestDetails, nil]
         #
@@ -336,102 +336,6 @@ module Lithic
           #   @param past_due [Integer] Amount past due for statement in cents
         end
 
-        # @see Lithic::Models::FinancialAccounts::Statement#period_totals
-        class PeriodTotals < Lithic::Internal::Type::BaseModel
-          # @!attribute balance_transfers
-          #   Opening balance transferred from previous account in cents
-          #
-          #   @return [Integer]
-          required :balance_transfers, Integer
-
-          # @!attribute cash_advances
-          #   ATM and cashback transactions in cents
-          #
-          #   @return [Integer]
-          required :cash_advances, Integer
-
-          # @!attribute credits
-          #   Volume of credit management operation transactions less any balance transfers in
-          #   cents
-          #
-          #   @return [Integer]
-          required :credits, Integer
-
-          # @!attribute debits
-          #   Volume of debit management operation transactions less any interest in cents
-          #
-          #   @return [Integer]
-          required :debits, Integer
-
-          # @!attribute fees
-          #   Volume of debit management operation transactions less any interest in cents
-          #
-          #   @return [Integer]
-          required :fees, Integer
-
-          # @!attribute interest
-          #   Interest accrued in cents
-          #
-          #   @return [Integer]
-          required :interest, Integer
-
-          # @!attribute payments
-          #   Any funds transfers which affective the balance in cents
-          #
-          #   @return [Integer]
-          required :payments, Integer
-
-          # @!attribute purchases
-          #   Net card transaction volume less any cash advances in cents
-          #
-          #   @return [Integer]
-          required :purchases, Integer
-
-          # @!attribute credit_details
-          #   Breakdown of credits
-          #
-          #   @return [Object, nil]
-          optional :credit_details, Lithic::Internal::Type::Unknown
-
-          # @!attribute debit_details
-          #   Breakdown of debits
-          #
-          #   @return [Object, nil]
-          optional :debit_details, Lithic::Internal::Type::Unknown
-
-          # @!attribute payment_details
-          #   Breakdown of payments
-          #
-          #   @return [Object, nil]
-          optional :payment_details, Lithic::Internal::Type::Unknown
-
-          # @!method initialize(balance_transfers:, cash_advances:, credits:, debits:, fees:, interest:, payments:, purchases:, credit_details: nil, debit_details: nil, payment_details: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::FinancialAccounts::Statement::PeriodTotals} for more details.
-          #
-          #   @param balance_transfers [Integer] Opening balance transferred from previous account in cents
-          #
-          #   @param cash_advances [Integer] ATM and cashback transactions in cents
-          #
-          #   @param credits [Integer] Volume of credit management operation transactions less any balance transfers in
-          #
-          #   @param debits [Integer] Volume of debit management operation transactions less any interest in cents
-          #
-          #   @param fees [Integer] Volume of debit management operation transactions less any interest in cents
-          #
-          #   @param interest [Integer] Interest accrued in cents
-          #
-          #   @param payments [Integer] Any funds transfers which affective the balance in cents
-          #
-          #   @param purchases [Integer] Net card transaction volume less any cash advances in cents
-          #
-          #   @param credit_details [Object] Breakdown of credits
-          #
-          #   @param debit_details [Object] Breakdown of debits
-          #
-          #   @param payment_details [Object] Breakdown of payments
-        end
-
         # @see Lithic::Models::FinancialAccounts::Statement#statement_type
         module StatementType
           extend Lithic::Internal::Type::Enum
@@ -444,102 +348,6 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        # @see Lithic::Models::FinancialAccounts::Statement#ytd_totals
-        class YtdTotals < Lithic::Internal::Type::BaseModel
-          # @!attribute balance_transfers
-          #   Opening balance transferred from previous account in cents
-          #
-          #   @return [Integer]
-          required :balance_transfers, Integer
-
-          # @!attribute cash_advances
-          #   ATM and cashback transactions in cents
-          #
-          #   @return [Integer]
-          required :cash_advances, Integer
-
-          # @!attribute credits
-          #   Volume of credit management operation transactions less any balance transfers in
-          #   cents
-          #
-          #   @return [Integer]
-          required :credits, Integer
-
-          # @!attribute debits
-          #   Volume of debit management operation transactions less any interest in cents
-          #
-          #   @return [Integer]
-          required :debits, Integer
-
-          # @!attribute fees
-          #   Volume of debit management operation transactions less any interest in cents
-          #
-          #   @return [Integer]
-          required :fees, Integer
-
-          # @!attribute interest
-          #   Interest accrued in cents
-          #
-          #   @return [Integer]
-          required :interest, Integer
-
-          # @!attribute payments
-          #   Any funds transfers which affective the balance in cents
-          #
-          #   @return [Integer]
-          required :payments, Integer
-
-          # @!attribute purchases
-          #   Net card transaction volume less any cash advances in cents
-          #
-          #   @return [Integer]
-          required :purchases, Integer
-
-          # @!attribute credit_details
-          #   Breakdown of credits
-          #
-          #   @return [Object, nil]
-          optional :credit_details, Lithic::Internal::Type::Unknown
-
-          # @!attribute debit_details
-          #   Breakdown of debits
-          #
-          #   @return [Object, nil]
-          optional :debit_details, Lithic::Internal::Type::Unknown
-
-          # @!attribute payment_details
-          #   Breakdown of payments
-          #
-          #   @return [Object, nil]
-          optional :payment_details, Lithic::Internal::Type::Unknown
-
-          # @!method initialize(balance_transfers:, cash_advances:, credits:, debits:, fees:, interest:, payments:, purchases:, credit_details: nil, debit_details: nil, payment_details: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::FinancialAccounts::Statement::YtdTotals} for more details.
-          #
-          #   @param balance_transfers [Integer] Opening balance transferred from previous account in cents
-          #
-          #   @param cash_advances [Integer] ATM and cashback transactions in cents
-          #
-          #   @param credits [Integer] Volume of credit management operation transactions less any balance transfers in
-          #
-          #   @param debits [Integer] Volume of debit management operation transactions less any interest in cents
-          #
-          #   @param fees [Integer] Volume of debit management operation transactions less any interest in cents
-          #
-          #   @param interest [Integer] Interest accrued in cents
-          #
-          #   @param payments [Integer] Any funds transfers which affective the balance in cents
-          #
-          #   @param purchases [Integer] Net card transaction volume less any cash advances in cents
-          #
-          #   @param credit_details [Object] Breakdown of credits
-          #
-          #   @param debit_details [Object] Breakdown of debits
-          #
-          #   @param payment_details [Object] Breakdown of payments
-        end
-
         # @see Lithic::Models::FinancialAccounts::Statement#interest_details
         class InterestDetails < Lithic::Internal::Type::BaseModel
           # @!attribute actual_interest_charged
@@ -549,14 +357,13 @@ module Lithic
 
           # @!attribute daily_balance_amounts
           #
-          #   @return [Lithic::Models::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts]
-          required :daily_balance_amounts,
-                   -> { Lithic::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts }
+          #   @return [Lithic::Models::CategoryDetails]
+          required :daily_balance_amounts, -> { Lithic::CategoryDetails }
 
           # @!attribute effective_apr
           #
-          #   @return [Lithic::Models::FinancialAccounts::Statement::InterestDetails::EffectiveApr]
-          required :effective_apr, -> { Lithic::FinancialAccounts::Statement::InterestDetails::EffectiveApr }
+          #   @return [Lithic::Models::CategoryDetails]
+          required :effective_apr, -> { Lithic::CategoryDetails }
 
           # @!attribute interest_calculation_method
           #
@@ -566,9 +373,8 @@ module Lithic
 
           # @!attribute interest_for_period
           #
-          #   @return [Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestForPeriod]
-          required :interest_for_period,
-                   -> { Lithic::FinancialAccounts::Statement::InterestDetails::InterestForPeriod }
+          #   @return [Lithic::Models::CategoryDetails]
+          required :interest_for_period, -> { Lithic::CategoryDetails }
 
           # @!attribute prime_rate
           #
@@ -582,58 +388,12 @@ module Lithic
 
           # @!method initialize(actual_interest_charged:, daily_balance_amounts:, effective_apr:, interest_calculation_method:, interest_for_period:, prime_rate:, minimum_interest_charged: nil)
           #   @param actual_interest_charged [Integer, nil]
-          #   @param daily_balance_amounts [Lithic::Models::FinancialAccounts::Statement::InterestDetails::DailyBalanceAmounts]
-          #   @param effective_apr [Lithic::Models::FinancialAccounts::Statement::InterestDetails::EffectiveApr]
+          #   @param daily_balance_amounts [Lithic::Models::CategoryDetails]
+          #   @param effective_apr [Lithic::Models::CategoryDetails]
           #   @param interest_calculation_method [Symbol, Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestCalculationMethod]
-          #   @param interest_for_period [Lithic::Models::FinancialAccounts::Statement::InterestDetails::InterestForPeriod]
+          #   @param interest_for_period [Lithic::Models::CategoryDetails]
           #   @param prime_rate [String, nil]
           #   @param minimum_interest_charged [Integer, nil]
-
-          # @see Lithic::Models::FinancialAccounts::Statement::InterestDetails#daily_balance_amounts
-          class DailyBalanceAmounts < Lithic::Internal::Type::BaseModel
-            # @!attribute balance_transfers
-            #
-            #   @return [String]
-            required :balance_transfers, String
-
-            # @!attribute cash_advances
-            #
-            #   @return [String]
-            required :cash_advances, String
-
-            # @!attribute purchases
-            #
-            #   @return [String]
-            required :purchases, String
-
-            # @!method initialize(balance_transfers:, cash_advances:, purchases:)
-            #   @param balance_transfers [String]
-            #   @param cash_advances [String]
-            #   @param purchases [String]
-          end
-
-          # @see Lithic::Models::FinancialAccounts::Statement::InterestDetails#effective_apr
-          class EffectiveApr < Lithic::Internal::Type::BaseModel
-            # @!attribute balance_transfers
-            #
-            #   @return [String]
-            required :balance_transfers, String
-
-            # @!attribute cash_advances
-            #
-            #   @return [String]
-            required :cash_advances, String
-
-            # @!attribute purchases
-            #
-            #   @return [String]
-            required :purchases, String
-
-            # @!method initialize(balance_transfers:, cash_advances:, purchases:)
-            #   @param balance_transfers [String]
-            #   @param cash_advances [String]
-            #   @param purchases [String]
-          end
 
           # @see Lithic::Models::FinancialAccounts::Statement::InterestDetails#interest_calculation_method
           module InterestCalculationMethod
@@ -644,29 +404,6 @@ module Lithic
 
             # @!method self.values
             #   @return [Array<Symbol>]
-          end
-
-          # @see Lithic::Models::FinancialAccounts::Statement::InterestDetails#interest_for_period
-          class InterestForPeriod < Lithic::Internal::Type::BaseModel
-            # @!attribute balance_transfers
-            #
-            #   @return [String]
-            required :balance_transfers, String
-
-            # @!attribute cash_advances
-            #
-            #   @return [String]
-            required :cash_advances, String
-
-            # @!attribute purchases
-            #
-            #   @return [String]
-            required :purchases, String
-
-            # @!method initialize(balance_transfers:, cash_advances:, purchases:)
-            #   @param balance_transfers [String]
-            #   @param cash_advances [String]
-            #   @param purchases [String]
           end
         end
       end

@@ -282,7 +282,8 @@ module Lithic
         def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::result]
       end
 
-      type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
+      type status =
+        :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED | :RETURNED
 
       module Status
         extend Lithic::Internal::Type::Enum
@@ -292,6 +293,7 @@ module Lithic
         DECLINED: :DECLINED
         REVERSED: :REVERSED
         CANCELED: :CANCELED
+        RETURNED: :RETURNED
 
         def self?.values: -> ::Array[Lithic::Models::BookTransferResponse::status]
       end

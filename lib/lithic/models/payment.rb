@@ -71,10 +71,10 @@ module Lithic
       required :pending_amount, Integer
 
       # @!attribute related_account_tokens
-      #   Related account tokens for the transaction
+      #   Account tokens related to a payment transaction
       #
-      #   @return [Lithic::Models::Payment::RelatedAccountTokens]
-      required :related_account_tokens, -> { Lithic::Payment::RelatedAccountTokens }
+      #   @return [Lithic::Models::Payment::RelatedAccountTokens, nil]
+      required :related_account_tokens, -> { Lithic::Payment::RelatedAccountTokens }, nil?: true
 
       # @!attribute result
       #   Transaction result
@@ -158,7 +158,7 @@ module Lithic
       #
       #   @param pending_amount [Integer] Pending amount in cents
       #
-      #   @param related_account_tokens [Lithic::Models::Payment::RelatedAccountTokens] Related account tokens for the transaction
+      #   @param related_account_tokens [Lithic::Models::Payment::RelatedAccountTokens, nil] Account tokens related to a payment transaction
       #
       #   @param result [Symbol, Lithic::Models::Payment::Result] Transaction result
       #
@@ -371,6 +371,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           APPROVED = :APPROVED
+          DECLINED = :DECLINED
           FUNDS_INSUFFICIENT = :FUNDS_INSUFFICIENT
           ACCOUNT_INVALID = :ACCOUNT_INVALID
           PROGRAM_TRANSACTION_LIMIT_EXCEEDED = :PROGRAM_TRANSACTION_LIMIT_EXCEEDED
@@ -568,7 +569,7 @@ module Lithic
         required :business_account_token, String, nil?: true
 
         # @!method initialize(account_token:, business_account_token:)
-        #   Related account tokens for the transaction
+        #   Account tokens related to a payment transaction
         #
         #   @param account_token [String, nil] Globally unique identifier for the account
         #
@@ -613,6 +614,7 @@ module Lithic
         DECLINED = :DECLINED
         REVERSED = :REVERSED
         CANCELED = :CANCELED
+        RETURNED = :RETURNED
 
         # @!method self.values
         #   @return [Array<Symbol>]

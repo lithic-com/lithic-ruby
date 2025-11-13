@@ -677,18 +677,18 @@ module Lithic
           sig { returns(T.nilable(String)) }
           attr_accessor :name
 
-          # Home phone number provided by the cardholder. Maps to EMV 3DS fields
-          # `homePhone.cc` and `homePhone.subscriber`.
+          # Home phone number in E.164 format provided by the cardholder. Maps to EMV 3DS
+          # fields `homePhone.cc` and `homePhone.subscriber`.
           sig { returns(T.nilable(String)) }
           attr_accessor :phone_number_home
 
-          # Mobile/cell phone number provided by the cardholder. Maps to EMV 3DS fields
-          # `mobilePhone.cc` and `mobilePhone.subscriber`.
+          # Mobile/cell phone number in E.164 format provided by the cardholder. Maps to EMV
+          # 3DS fields `mobilePhone.cc` and `mobilePhone.subscriber`.
           sig { returns(T.nilable(String)) }
           attr_accessor :phone_number_mobile
 
-          # Work phone number provided by the cardholder. Maps to EMV 3DS fields
-          # `workPhone.cc` and `workPhone.subscriber`.
+          # Work phone number in E.164 format provided by the cardholder. Maps to EMV 3DS
+          # fields `workPhone.cc` and `workPhone.subscriber`.
           sig { returns(T.nilable(String)) }
           attr_accessor :phone_number_work
 
@@ -745,14 +745,14 @@ module Lithic
             email: nil,
             # Name of the cardholder. Maps to EMV 3DS field `cardholderName`.
             name: nil,
-            # Home phone number provided by the cardholder. Maps to EMV 3DS fields
-            # `homePhone.cc` and `homePhone.subscriber`.
+            # Home phone number in E.164 format provided by the cardholder. Maps to EMV 3DS
+            # fields `homePhone.cc` and `homePhone.subscriber`.
             phone_number_home: nil,
-            # Mobile/cell phone number provided by the cardholder. Maps to EMV 3DS fields
-            # `mobilePhone.cc` and `mobilePhone.subscriber`.
+            # Mobile/cell phone number in E.164 format provided by the cardholder. Maps to EMV
+            # 3DS fields `mobilePhone.cc` and `mobilePhone.subscriber`.
             phone_number_mobile: nil,
-            # Work phone number provided by the cardholder. Maps to EMV 3DS fields
-            # `workPhone.cc` and `workPhone.subscriber`.
+            # Work phone number in E.164 format provided by the cardholder. Maps to EMV 3DS
+            # fields `workPhone.cc` and `workPhone.subscriber`.
             phone_number_work: nil,
             # Object containing data on the shipping address provided during the transaction.
             shipping_address: nil

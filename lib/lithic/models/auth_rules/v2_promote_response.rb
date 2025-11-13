@@ -79,7 +79,8 @@ module Lithic
         #   - `CONDITIONAL_BLOCK`: AUTHORIZATION event stream.
         #   - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
         #   - `MERCHANT_LOCK`: AUTHORIZATION event stream.
-        #   - `CONDITIONAL_ACTION`: AUTHORIZATION or THREE_DS_AUTHENTICATION event stream.
+        #   - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+        #     ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
         #
         #   @return [Symbol, Lithic::Models::AuthRules::V2PromoteResponse::Type]
         required :type, enum: -> { Lithic::Models::AuthRules::V2PromoteResponse::Type }
@@ -125,7 +126,7 @@ module Lithic
           # @!attribute parameters
           #   Parameters for the Auth Rule
           #
-          #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters]
+          #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters]
           required :parameters,
                    union: -> { Lithic::Models::AuthRules::V2PromoteResponse::CurrentVersion::Parameters }
 
@@ -142,7 +143,7 @@ module Lithic
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::AuthRules::V2PromoteResponse::CurrentVersion} for more details.
           #
-          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters] Parameters for the Auth Rule
+          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters] Parameters for the Auth Rule
           #
           #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
 
@@ -162,8 +163,12 @@ module Lithic
 
             variant -> { Lithic::AuthRules::ConditionalAuthorizationActionParameters }
 
+            variant -> { Lithic::AuthRules::ConditionalACHActionParameters }
+
+            variant -> { Lithic::AuthRules::ConditionalTokenizationActionParameters }
+
             # @!method self.variants
-            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters)]
+            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters)]
           end
         end
 
@@ -172,7 +177,7 @@ module Lithic
           # @!attribute parameters
           #   Parameters for the Auth Rule
           #
-          #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters]
+          #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters]
           required :parameters, union: -> { Lithic::Models::AuthRules::V2PromoteResponse::DraftVersion::Parameters }
 
           response_only do
@@ -188,7 +193,7 @@ module Lithic
           #   Some parameter documentations has been truncated, see
           #   {Lithic::Models::AuthRules::V2PromoteResponse::DraftVersion} for more details.
           #
-          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters] Parameters for the Auth Rule
+          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters] Parameters for the Auth Rule
           #
           #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
 
@@ -208,8 +213,12 @@ module Lithic
 
             variant -> { Lithic::AuthRules::ConditionalAuthorizationActionParameters }
 
+            variant -> { Lithic::AuthRules::ConditionalACHActionParameters }
+
+            variant -> { Lithic::AuthRules::ConditionalTokenizationActionParameters }
+
             # @!method self.variants
-            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters)]
+            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters)]
           end
         end
 
@@ -221,6 +230,9 @@ module Lithic
 
           AUTHORIZATION = :AUTHORIZATION
           THREE_DS_AUTHENTICATION = :THREE_DS_AUTHENTICATION
+          TOKENIZATION = :TOKENIZATION
+          ACH_CREDIT_RECEIPT = :ACH_CREDIT_RECEIPT
+          ACH_DEBIT_RECEIPT = :ACH_DEBIT_RECEIPT
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -247,7 +259,8 @@ module Lithic
         # - `CONDITIONAL_BLOCK`: AUTHORIZATION event stream.
         # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
         # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
-        # - `CONDITIONAL_ACTION`: AUTHORIZATION or THREE_DS_AUTHENTICATION event stream.
+        # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+        #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
         #
         # @see Lithic::Models::AuthRules::V2PromoteResponse#type
         module Type

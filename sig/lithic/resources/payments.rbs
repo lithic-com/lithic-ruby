@@ -39,6 +39,16 @@ module Lithic
         ?request_options: Lithic::request_opts
       ) -> Lithic::Models::PaymentRetryResponse
 
+      def return_: (
+        String payment_token,
+        financial_account_token: String,
+        return_reason_code: String,
+        ?addenda: String?,
+        ?date_of_death: Date?,
+        ?memo: String?,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Models::PaymentReturnResponse
+
       def simulate_action: (
         String payment_token,
         event_type: Lithic::Models::PaymentSimulateActionParams::event_type,

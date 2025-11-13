@@ -62,66 +62,66 @@ module Lithic
             #   A customer identifier.
             #
             #   @return [String, nil]
-            optional :customer_reference_number, String
+            optional :customer_reference_number, String, nil?: true
 
             # @!attribute merchant_reference_number
             #   A merchant identifier.
             #
             #   @return [String, nil]
-            optional :merchant_reference_number, String
+            optional :merchant_reference_number, String, nil?: true
 
             # @!attribute order_date
             #   The date of the order.
             #
             #   @return [Date, nil]
-            optional :order_date, Date
+            optional :order_date, Date, nil?: true
 
             # @!method initialize(line_items:, tax:, customer_reference_number: nil, merchant_reference_number: nil, order_date: nil)
             #   @param line_items [Array<Lithic::Models::Transactions::Events::EnhancedData::Common::LineItem>]
             #
             #   @param tax [Lithic::Models::Transactions::Events::EnhancedData::Common::Tax]
             #
-            #   @param customer_reference_number [String] A customer identifier.
+            #   @param customer_reference_number [String, nil] A customer identifier.
             #
-            #   @param merchant_reference_number [String] A merchant identifier.
+            #   @param merchant_reference_number [String, nil] A merchant identifier.
             #
-            #   @param order_date [Date] The date of the order.
+            #   @param order_date [Date, nil] The date of the order.
 
             class LineItem < Lithic::Internal::Type::BaseModel
               # @!attribute amount
               #   The price of the item purchased in merchant currency.
               #
               #   @return [String, nil]
-              optional :amount, String
+              optional :amount, String, nil?: true
 
               # @!attribute description
               #   A human-readable description of the item.
               #
               #   @return [String, nil]
-              optional :description, String
+              optional :description, String, nil?: true
 
               # @!attribute product_code
               #   An identifier for the item purchased.
               #
               #   @return [String, nil]
-              optional :product_code, String
+              optional :product_code, String, nil?: true
 
               # @!attribute quantity
               #   The quantity of the item purchased.
               #
               #   @return [String, nil]
-              optional :quantity, String
+              optional :quantity, String, nil?: true
 
               # @!method initialize(amount: nil, description: nil, product_code: nil, quantity: nil)
               #   An L2/L3 enhanced commercial data line item.
               #
-              #   @param amount [String] The price of the item purchased in merchant currency.
+              #   @param amount [String, nil] The price of the item purchased in merchant currency.
               #
-              #   @param description [String] A human-readable description of the item.
+              #   @param description [String, nil] A human-readable description of the item.
               #
-              #   @param product_code [String] An identifier for the item purchased.
+              #   @param product_code [String, nil] An identifier for the item purchased.
               #
-              #   @param quantity [String] The quantity of the item purchased.
+              #   @param quantity [String, nil] The quantity of the item purchased.
             end
 
             # @see Lithic::Models::Transactions::Events::EnhancedData::Common#tax
@@ -130,26 +130,30 @@ module Lithic
               #   The amount of tax collected.
               #
               #   @return [Integer, nil]
-              optional :amount, Integer
+              optional :amount, Integer, nil?: true
 
               # @!attribute exempt
               #   A flag indicating whether the transaction is tax exempt or not.
               #
               #   @return [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt, nil]
-              optional :exempt, enum: -> { Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt }
+              optional :exempt,
+                       enum: -> {
+                         Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt
+                       },
+                       nil?: true
 
               # @!attribute merchant_tax_id
               #   The tax ID of the merchant.
               #
               #   @return [String, nil]
-              optional :merchant_tax_id, String
+              optional :merchant_tax_id, String, nil?: true
 
               # @!method initialize(amount: nil, exempt: nil, merchant_tax_id: nil)
-              #   @param amount [Integer] The amount of tax collected.
+              #   @param amount [Integer, nil] The amount of tax collected.
               #
-              #   @param exempt [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt] A flag indicating whether the transaction is tax exempt or not.
+              #   @param exempt [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Common::Tax::Exempt, nil] A flag indicating whether the transaction is tax exempt or not.
               #
-              #   @param merchant_tax_id [String] The tax ID of the merchant.
+              #   @param merchant_tax_id [String, nil] The tax ID of the merchant.
 
               # A flag indicating whether the transaction is tax exempt or not.
               #
@@ -183,13 +187,13 @@ module Lithic
             #   zeros stripped.
             #
             #   @return [String, nil]
-            optional :driver_number, String
+            optional :driver_number, String, nil?: true
 
             # @!attribute odometer
             #   The odometer reading entered into the terminal at the time of sale.
             #
             #   @return [Integer, nil]
-            optional :odometer, Integer
+            optional :odometer, Integer, nil?: true
 
             # @!attribute service_type
             #   The type of fuel service.
@@ -202,7 +206,7 @@ module Lithic
             #   zeros stripped.
             #
             #   @return [String, nil]
-            optional :vehicle_number, String
+            optional :vehicle_number, String, nil?: true
 
             # @!method initialize(amount_totals:, fuel:, driver_number: nil, odometer: nil, service_type: nil, vehicle_number: nil)
             #   Some parameter documentations has been truncated, see
@@ -212,13 +216,13 @@ module Lithic
             #
             #   @param fuel [Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel]
             #
-            #   @param driver_number [String] The driver number entered into the terminal at the time of sale, with leading ze
+            #   @param driver_number [String, nil] The driver number entered into the terminal at the time of sale, with leading ze
             #
-            #   @param odometer [Integer] The odometer reading entered into the terminal at the time of sale.
+            #   @param odometer [Integer, nil] The odometer reading entered into the terminal at the time of sale.
             #
             #   @param service_type [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::ServiceType] The type of fuel service.
             #
-            #   @param vehicle_number [String] The vehicle number entered into the terminal at the time of sale, with leading z
+            #   @param vehicle_number [String, nil] The vehicle number entered into the terminal at the time of sale, with leading z
 
             # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet#amount_totals
             class AmountTotals < Lithic::Internal::Type::BaseModel
@@ -226,26 +230,26 @@ module Lithic
               #   The discount applied to the gross sale amount.
               #
               #   @return [Integer, nil]
-              optional :discount, Integer
+              optional :discount, Integer, nil?: true
 
               # @!attribute gross_sale
               #   The gross sale amount.
               #
               #   @return [Integer, nil]
-              optional :gross_sale, Integer
+              optional :gross_sale, Integer, nil?: true
 
               # @!attribute net_sale
               #   The amount after discount.
               #
               #   @return [Integer, nil]
-              optional :net_sale, Integer
+              optional :net_sale, Integer, nil?: true
 
               # @!method initialize(discount: nil, gross_sale: nil, net_sale: nil)
-              #   @param discount [Integer] The discount applied to the gross sale amount.
+              #   @param discount [Integer, nil] The discount applied to the gross sale amount.
               #
-              #   @param gross_sale [Integer] The gross sale amount.
+              #   @param gross_sale [Integer, nil] The gross sale amount.
               #
-              #   @param net_sale [Integer] The amount after discount.
+              #   @param net_sale [Integer, nil] The amount after discount.
             end
 
             # @see Lithic::Models::Transactions::Events::EnhancedData::Fleet#fuel
@@ -254,35 +258,40 @@ module Lithic
               #   The quantity of fuel purchased.
               #
               #   @return [String, nil]
-              optional :quantity, String
+              optional :quantity, String, nil?: true
 
               # @!attribute type
               #   The type of fuel purchased.
               #
               #   @return [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type, nil]
-              optional :type, enum: -> { Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type }
+              optional :type,
+                       enum: -> {
+                         Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type
+                       },
+                       nil?: true
 
               # @!attribute unit_of_measure
               #   Unit of measure for fuel disbursement.
               #
               #   @return [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure, nil]
               optional :unit_of_measure,
-                       enum: -> { Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure }
+                       enum: -> { Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure },
+                       nil?: true
 
               # @!attribute unit_price
               #   The price per unit of fuel.
               #
               #   @return [Integer, nil]
-              optional :unit_price, Integer
+              optional :unit_price, Integer, nil?: true
 
               # @!method initialize(quantity: nil, type: nil, unit_of_measure: nil, unit_price: nil)
-              #   @param quantity [String] The quantity of fuel purchased.
+              #   @param quantity [String, nil] The quantity of fuel purchased.
               #
-              #   @param type [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type] The type of fuel purchased.
+              #   @param type [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::Type, nil] The type of fuel purchased.
               #
-              #   @param unit_of_measure [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure] Unit of measure for fuel disbursement.
+              #   @param unit_of_measure [Symbol, Lithic::Models::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure, nil] Unit of measure for fuel disbursement.
               #
-              #   @param unit_price [Integer] The price per unit of fuel.
+              #   @param unit_price [Integer, nil] The price per unit of fuel.
 
               # The type of fuel purchased.
               #

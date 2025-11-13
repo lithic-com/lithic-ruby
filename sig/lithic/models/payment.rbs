@@ -13,7 +13,7 @@ module Lithic
         method_: Lithic::Models::Payment::method_,
         method_attributes: Lithic::Models::Payment::method_attributes,
         pending_amount: Integer,
-        related_account_tokens: Lithic::Payment::RelatedAccountTokens,
+        related_account_tokens: Lithic::Payment::RelatedAccountTokens?,
         result: Lithic::Models::Payment::result,
         settled_amount: Integer,
         source: Lithic::Models::Payment::source,
@@ -49,7 +49,7 @@ module Lithic
 
       attr_accessor pending_amount: Integer
 
-      attr_accessor related_account_tokens: Lithic::Payment::RelatedAccountTokens
+      attr_accessor related_account_tokens: Lithic::Payment::RelatedAccountTokens?
 
       attr_accessor result: Lithic::Models::Payment::result
 
@@ -88,7 +88,7 @@ module Lithic
         method_: Lithic::Models::Payment::method_,
         method_attributes: Lithic::Models::Payment::method_attributes,
         pending_amount: Integer,
-        related_account_tokens: Lithic::Payment::RelatedAccountTokens,
+        related_account_tokens: Lithic::Payment::RelatedAccountTokens?,
         result: Lithic::Models::Payment::result,
         settled_amount: Integer,
         source: Lithic::Models::Payment::source,
@@ -114,7 +114,7 @@ module Lithic
         method_: Lithic::Models::Payment::method_,
         method_attributes: Lithic::Models::Payment::method_attributes,
         pending_amount: Integer,
-        related_account_tokens: Lithic::Payment::RelatedAccountTokens,
+        related_account_tokens: Lithic::Payment::RelatedAccountTokens?,
         result: Lithic::Models::Payment::result,
         settled_amount: Integer,
         source: Lithic::Models::Payment::source,
@@ -278,6 +278,7 @@ module Lithic
 
         type detailed_result =
           :APPROVED
+          | :DECLINED
           | :FUNDS_INSUFFICIENT
           | :ACCOUNT_INVALID
           | :PROGRAM_TRANSACTION_LIMIT_EXCEEDED
@@ -288,6 +289,7 @@ module Lithic
           extend Lithic::Internal::Type::Enum
 
           APPROVED: :APPROVED
+          DECLINED: :DECLINED
           FUNDS_INSUFFICIENT: :FUNDS_INSUFFICIENT
           ACCOUNT_INVALID: :ACCOUNT_INVALID
           PROGRAM_TRANSACTION_LIMIT_EXCEEDED: :PROGRAM_TRANSACTION_LIMIT_EXCEEDED
@@ -483,7 +485,8 @@ module Lithic
         def self?.values: -> ::Array[Lithic::Models::Payment::source]
       end
 
-      type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
+      type status =
+        :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED | :RETURNED
 
       module Status
         extend Lithic::Internal::Type::Enum
@@ -493,6 +496,7 @@ module Lithic
         DECLINED: :DECLINED
         REVERSED: :REVERSED
         CANCELED: :CANCELED
+        RETURNED: :RETURNED
 
         def self?.values: -> ::Array[Lithic::Models::Payment::status]
       end

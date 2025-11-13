@@ -1,0 +1,50 @@
+module Lithic
+  module Models
+    type merchant =
+      {
+        acceptor_id: String,
+        acquiring_institution_id: String,
+        city: String,
+        country: String,
+        descriptor: String,
+        mcc: String,
+        state: String
+      }
+
+    class Merchant < Lithic::Internal::Type::BaseModel
+      attr_accessor acceptor_id: String
+
+      attr_accessor acquiring_institution_id: String
+
+      attr_accessor city: String
+
+      attr_accessor country: String
+
+      attr_accessor descriptor: String
+
+      attr_accessor mcc: String
+
+      attr_accessor state: String
+
+      def initialize: (
+        acceptor_id: String,
+        acquiring_institution_id: String,
+        city: String,
+        country: String,
+        descriptor: String,
+        mcc: String,
+        state: String
+      ) -> void
+
+      def to_hash: -> {
+        acceptor_id: String,
+        acquiring_institution_id: String,
+        city: String,
+        country: String,
+        descriptor: String,
+        mcc: String,
+        state: String
+      }
+    end
+  end
+end

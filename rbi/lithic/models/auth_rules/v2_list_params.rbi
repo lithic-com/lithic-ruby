@@ -158,6 +158,21 @@ module Lithic
               :THREE_DS_AUTHENTICATION,
               Lithic::AuthRules::V2ListParams::EventStream::TaggedSymbol
             )
+          TOKENIZATION =
+            T.let(
+              :TOKENIZATION,
+              Lithic::AuthRules::V2ListParams::EventStream::TaggedSymbol
+            )
+          ACH_CREDIT_RECEIPT =
+            T.let(
+              :ACH_CREDIT_RECEIPT,
+              Lithic::AuthRules::V2ListParams::EventStream::TaggedSymbol
+            )
+          ACH_DEBIT_RECEIPT =
+            T.let(
+              :ACH_DEBIT_RECEIPT,
+              Lithic::AuthRules::V2ListParams::EventStream::TaggedSymbol
+            )
 
           sig do
             override.returns(

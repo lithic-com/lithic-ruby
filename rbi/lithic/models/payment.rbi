@@ -50,13 +50,14 @@ module Lithic
       sig { returns(Integer) }
       attr_accessor :pending_amount
 
-      # Related account tokens for the transaction
-      sig { returns(Lithic::Payment::RelatedAccountTokens) }
+      # Account tokens related to a payment transaction
+      sig { returns(T.nilable(Lithic::Payment::RelatedAccountTokens)) }
       attr_reader :related_account_tokens
 
       sig do
         params(
-          related_account_tokens: Lithic::Payment::RelatedAccountTokens::OrHash
+          related_account_tokens:
+            T.nilable(Lithic::Payment::RelatedAccountTokens::OrHash)
         ).void
       end
       attr_writer :related_account_tokens
@@ -123,7 +124,8 @@ module Lithic
               Lithic::Payment::MethodAttributes::WireMethodAttributes::OrHash
             ),
           pending_amount: Integer,
-          related_account_tokens: Lithic::Payment::RelatedAccountTokens::OrHash,
+          related_account_tokens:
+            T.nilable(Lithic::Payment::RelatedAccountTokens::OrHash),
           result: Lithic::Payment::Result::OrSymbol,
           settled_amount: Integer,
           source: Lithic::Payment::Source::OrSymbol,
@@ -158,7 +160,7 @@ module Lithic
         method_attributes:,
         # Pending amount in cents
         pending_amount:,
-        # Related account tokens for the transaction
+        # Account tokens related to a payment transaction
         related_account_tokens:,
         # Transaction result
         result:,
@@ -198,7 +200,8 @@ module Lithic
             method_: Lithic::Payment::Method::TaggedSymbol,
             method_attributes: Lithic::Payment::MethodAttributes::Variants,
             pending_amount: Integer,
-            related_account_tokens: Lithic::Payment::RelatedAccountTokens,
+            related_account_tokens:
+              T.nilable(Lithic::Payment::RelatedAccountTokens),
             result: Lithic::Payment::Result::TaggedSymbol,
             settled_amount: Integer,
             source: Lithic::Payment::Source::TaggedSymbol,
@@ -567,6 +570,11 @@ module Lithic
               :APPROVED,
               Lithic::Payment::Event::DetailedResult::TaggedSymbol
             )
+          DECLINED =
+            T.let(
+              :DECLINED,
+              Lithic::Payment::Event::DetailedResult::TaggedSymbol
+            )
           FUNDS_INSUFFICIENT =
             T.let(
               :FUNDS_INSUFFICIENT,
@@ -928,7 +936,7 @@ module Lithic
         sig { returns(T.nilable(String)) }
         attr_accessor :business_account_token
 
-        # Related account tokens for the transaction
+        # Account tokens related to a payment transaction
         sig do
           params(
             account_token: T.nilable(String),
@@ -1002,6 +1010,7 @@ module Lithic
         DECLINED = T.let(:DECLINED, Lithic::Payment::Status::TaggedSymbol)
         REVERSED = T.let(:REVERSED, Lithic::Payment::Status::TaggedSymbol)
         CANCELED = T.let(:CANCELED, Lithic::Payment::Status::TaggedSymbol)
+        RETURNED = T.let(:RETURNED, Lithic::Payment::Status::TaggedSymbol)
 
         sig do
           override.returns(T::Array[Lithic::Payment::Status::TaggedSymbol])

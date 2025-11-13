@@ -12,7 +12,7 @@ module Lithic
           customer_filed_date: Time,
           customer_note: String,
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::DisputeCreateResponse)
+        ).returns(Lithic::Dispute)
       end
       def create(
         # Amount to dispute
@@ -34,7 +34,7 @@ module Lithic
         params(
           dispute_token: String,
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::DisputeRetrieveResponse)
+        ).returns(Lithic::Dispute)
       end
       def retrieve(dispute_token, request_options: {})
       end
@@ -48,7 +48,7 @@ module Lithic
           customer_note: String,
           reason: Lithic::DisputeUpdateParams::Reason::OrSymbol,
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::DisputeUpdateResponse)
+        ).returns(Lithic::Dispute)
       end
       def update(
         dispute_token,
@@ -75,9 +75,7 @@ module Lithic
           status: Lithic::DisputeListParams::Status::OrSymbol,
           transaction_tokens: T::Array[String],
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(
-          Lithic::Internal::CursorPage[Lithic::Models::DisputeListResponse]
-        )
+        ).returns(Lithic::Internal::CursorPage[Lithic::Dispute])
       end
       def list(
         # Date string in RFC 3339 format. Only entries created after the specified time
@@ -107,7 +105,7 @@ module Lithic
         params(
           dispute_token: String,
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::DisputeDeleteResponse)
+        ).returns(Lithic::Dispute)
       end
       def delete(dispute_token, request_options: {})
       end

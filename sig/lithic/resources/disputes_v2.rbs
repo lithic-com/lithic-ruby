@@ -1,0 +1,24 @@
+module Lithic
+  module Resources
+    class DisputesV2
+      def retrieve: (
+        String dispute_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::DisputeV2
+
+      def list: (
+        ?account_token: String,
+        ?begin_: Time,
+        ?card_token: String,
+        ?disputed_transaction_token: String,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Internal::CursorPage[Lithic::DisputeV2]
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,46 @@
+module Lithic
+  module Models
+    type payment_return_params =
+      {
+        financial_account_token: String,
+        return_reason_code: String,
+        addenda: String?,
+        date_of_death: Date?,
+        memo: String?
+      }
+      & Lithic::Internal::Type::request_parameters
+
+    class PaymentReturnParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor financial_account_token: String
+
+      attr_accessor return_reason_code: String
+
+      attr_accessor addenda: String?
+
+      attr_accessor date_of_death: Date?
+
+      attr_accessor memo: String?
+
+      def initialize: (
+        financial_account_token: String,
+        return_reason_code: String,
+        ?addenda: String?,
+        ?date_of_death: Date?,
+        ?memo: String?,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        financial_account_token: String,
+        return_reason_code: String,
+        addenda: String?,
+        date_of_death: Date?,
+        memo: String?,
+        request_options: Lithic::RequestOptions
+      }
+    end
+  end
+end
