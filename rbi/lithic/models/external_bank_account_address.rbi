@@ -24,10 +24,7 @@ module Lithic
       attr_accessor :state
 
       sig { returns(T.nilable(String)) }
-      attr_reader :address2
-
-      sig { params(address2: String).void }
-      attr_writer :address2
+      attr_accessor :address2
 
       sig do
         params(
@@ -36,7 +33,7 @@ module Lithic
           country: String,
           postal_code: String,
           state: String,
-          address2: String
+          address2: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -57,7 +54,7 @@ module Lithic
             country: String,
             postal_code: String,
             state: String,
-            address2: String
+            address2: T.nilable(String)
           }
         )
       end

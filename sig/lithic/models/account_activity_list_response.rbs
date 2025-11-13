@@ -18,7 +18,7 @@ module Lithic
           created: Time,
           currency: String,
           descriptor: String,
-          events: ::Array[Lithic::Models::AccountActivityListResponse::Internal::Event],
+          events: ::Array[Lithic::FinancialEvent],
           family: :INTERNAL,
           financial_account_token: String,
           pending_amount: Integer,
@@ -39,7 +39,7 @@ module Lithic
 
         attr_accessor descriptor: String
 
-        attr_accessor events: ::Array[Lithic::Models::AccountActivityListResponse::Internal::Event]
+        attr_accessor events: ::Array[Lithic::FinancialEvent]
 
         attr_accessor family: :INTERNAL
 
@@ -61,7 +61,7 @@ module Lithic
           created: Time,
           currency: String,
           descriptor: String,
-          events: ::Array[Lithic::Models::AccountActivityListResponse::Internal::Event],
+          events: ::Array[Lithic::FinancialEvent],
           financial_account_token: String,
           pending_amount: Integer,
           result: Lithic::Models::AccountActivityListResponse::Internal::result,
@@ -77,7 +77,7 @@ module Lithic
           created: Time,
           currency: String,
           descriptor: String,
-          events: ::Array[Lithic::Models::AccountActivityListResponse::Internal::Event],
+          events: ::Array[Lithic::FinancialEvent],
           family: :INTERNAL,
           financial_account_token: String,
           pending_amount: Integer,
@@ -132,219 +132,6 @@ module Lithic
           def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::Internal::category]
         end
 
-        type event =
-          {
-            token: String,
-            amount: Integer,
-            created: Time,
-            result: Lithic::Models::AccountActivityListResponse::Internal::Event::result,
-            type: Lithic::Models::AccountActivityListResponse::Internal::Event::type_
-          }
-
-        class Event < Lithic::Internal::Type::BaseModel
-          attr_reader token: String?
-
-          def token=: (String) -> String
-
-          attr_reader amount: Integer?
-
-          def amount=: (Integer) -> Integer
-
-          attr_reader created: Time?
-
-          def created=: (Time) -> Time
-
-          attr_reader result: Lithic::Models::AccountActivityListResponse::Internal::Event::result?
-
-          def result=: (
-            Lithic::Models::AccountActivityListResponse::Internal::Event::result
-          ) -> Lithic::Models::AccountActivityListResponse::Internal::Event::result
-
-          attr_reader type: Lithic::Models::AccountActivityListResponse::Internal::Event::type_?
-
-          def type=: (
-            Lithic::Models::AccountActivityListResponse::Internal::Event::type_
-          ) -> Lithic::Models::AccountActivityListResponse::Internal::Event::type_
-
-          def initialize: (
-            ?token: String,
-            ?amount: Integer,
-            ?created: Time,
-            ?result: Lithic::Models::AccountActivityListResponse::Internal::Event::result,
-            ?type: Lithic::Models::AccountActivityListResponse::Internal::Event::type_
-          ) -> void
-
-          def to_hash: -> {
-            token: String,
-            amount: Integer,
-            created: Time,
-            result: Lithic::Models::AccountActivityListResponse::Internal::Event::result,
-            type: Lithic::Models::AccountActivityListResponse::Internal::Event::type_
-          }
-
-          type result = :APPROVED | :DECLINED
-
-          module Result
-            extend Lithic::Internal::Type::Enum
-
-            APPROVED: :APPROVED
-            DECLINED: :DECLINED
-
-            def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::Internal::Event::result]
-          end
-
-          type type_ =
-            :ACH_ORIGINATION_CANCELLED
-            | :ACH_ORIGINATION_INITIATED
-            | :ACH_ORIGINATION_PROCESSED
-            | :ACH_ORIGINATION_RELEASED
-            | :ACH_ORIGINATION_REJECTED
-            | :ACH_ORIGINATION_REVIEWED
-            | :ACH_ORIGINATION_SETTLED
-            | :ACH_RECEIPT_PROCESSED
-            | :ACH_RECEIPT_RELEASED
-            | :ACH_RECEIPT_SETTLED
-            | :ACH_RETURN_INITIATED
-            | :ACH_RETURN_PROCESSED
-            | :ACH_RETURN_REJECTED
-            | :ACH_RETURN_SETTLED
-            | :AUTHORIZATION
-            | :AUTHORIZATION_ADVICE
-            | :AUTHORIZATION_EXPIRY
-            | :AUTHORIZATION_REVERSAL
-            | :BALANCE_INQUIRY
-            | :BILLING_ERROR
-            | :BILLING_ERROR_REVERSAL
-            | :CARD_TO_CARD
-            | :CASH_BACK
-            | :CASH_BACK_REVERSAL
-            | :CLEARING
-            | :COLLECTION
-            | :CORRECTION_CREDIT
-            | :CORRECTION_DEBIT
-            | :CREDIT_AUTHORIZATION
-            | :CREDIT_AUTHORIZATION_ADVICE
-            | :CURRENCY_CONVERSION
-            | :CURRENCY_CONVERSION_REVERSAL
-            | :DISPUTE_WON
-            | :EXTERNAL_ACH_CANCELED
-            | :EXTERNAL_ACH_INITIATED
-            | :EXTERNAL_ACH_RELEASED
-            | :EXTERNAL_ACH_REVERSED
-            | :EXTERNAL_ACH_SETTLED
-            | :EXTERNAL_CHECK_CANCELED
-            | :EXTERNAL_CHECK_INITIATED
-            | :EXTERNAL_CHECK_RELEASED
-            | :EXTERNAL_CHECK_REVERSED
-            | :EXTERNAL_CHECK_SETTLED
-            | :EXTERNAL_TRANSFER_CANCELED
-            | :EXTERNAL_TRANSFER_INITIATED
-            | :EXTERNAL_TRANSFER_RELEASED
-            | :EXTERNAL_TRANSFER_REVERSED
-            | :EXTERNAL_TRANSFER_SETTLED
-            | :EXTERNAL_WIRE_CANCELED
-            | :EXTERNAL_WIRE_INITIATED
-            | :EXTERNAL_WIRE_RELEASED
-            | :EXTERNAL_WIRE_REVERSED
-            | :EXTERNAL_WIRE_SETTLED
-            | :FINANCIAL_AUTHORIZATION
-            | :FINANCIAL_CREDIT_AUTHORIZATION
-            | :INTEREST
-            | :INTEREST_REVERSAL
-            | :INTERNAL_ADJUSTMENT
-            | :LATE_PAYMENT
-            | :LATE_PAYMENT_REVERSAL
-            | :LOSS_WRITE_OFF
-            | :PROVISIONAL_CREDIT
-            | :PROVISIONAL_CREDIT_REVERSAL
-            | :SERVICE
-            | :RETURN
-            | :RETURN_REVERSAL
-            | :TRANSFER
-            | :TRANSFER_INSUFFICIENT_FUNDS
-            | :RETURNED_PAYMENT
-            | :RETURNED_PAYMENT_REVERSAL
-            | :LITHIC_NETWORK_PAYMENT
-
-          module Type
-            extend Lithic::Internal::Type::Enum
-
-            ACH_ORIGINATION_CANCELLED: :ACH_ORIGINATION_CANCELLED
-            ACH_ORIGINATION_INITIATED: :ACH_ORIGINATION_INITIATED
-            ACH_ORIGINATION_PROCESSED: :ACH_ORIGINATION_PROCESSED
-            ACH_ORIGINATION_RELEASED: :ACH_ORIGINATION_RELEASED
-            ACH_ORIGINATION_REJECTED: :ACH_ORIGINATION_REJECTED
-            ACH_ORIGINATION_REVIEWED: :ACH_ORIGINATION_REVIEWED
-            ACH_ORIGINATION_SETTLED: :ACH_ORIGINATION_SETTLED
-            ACH_RECEIPT_PROCESSED: :ACH_RECEIPT_PROCESSED
-            ACH_RECEIPT_RELEASED: :ACH_RECEIPT_RELEASED
-            ACH_RECEIPT_SETTLED: :ACH_RECEIPT_SETTLED
-            ACH_RETURN_INITIATED: :ACH_RETURN_INITIATED
-            ACH_RETURN_PROCESSED: :ACH_RETURN_PROCESSED
-            ACH_RETURN_REJECTED: :ACH_RETURN_REJECTED
-            ACH_RETURN_SETTLED: :ACH_RETURN_SETTLED
-            AUTHORIZATION: :AUTHORIZATION
-            AUTHORIZATION_ADVICE: :AUTHORIZATION_ADVICE
-            AUTHORIZATION_EXPIRY: :AUTHORIZATION_EXPIRY
-            AUTHORIZATION_REVERSAL: :AUTHORIZATION_REVERSAL
-            BALANCE_INQUIRY: :BALANCE_INQUIRY
-            BILLING_ERROR: :BILLING_ERROR
-            BILLING_ERROR_REVERSAL: :BILLING_ERROR_REVERSAL
-            CARD_TO_CARD: :CARD_TO_CARD
-            CASH_BACK: :CASH_BACK
-            CASH_BACK_REVERSAL: :CASH_BACK_REVERSAL
-            CLEARING: :CLEARING
-            COLLECTION: :COLLECTION
-            CORRECTION_CREDIT: :CORRECTION_CREDIT
-            CORRECTION_DEBIT: :CORRECTION_DEBIT
-            CREDIT_AUTHORIZATION: :CREDIT_AUTHORIZATION
-            CREDIT_AUTHORIZATION_ADVICE: :CREDIT_AUTHORIZATION_ADVICE
-            CURRENCY_CONVERSION: :CURRENCY_CONVERSION
-            CURRENCY_CONVERSION_REVERSAL: :CURRENCY_CONVERSION_REVERSAL
-            DISPUTE_WON: :DISPUTE_WON
-            EXTERNAL_ACH_CANCELED: :EXTERNAL_ACH_CANCELED
-            EXTERNAL_ACH_INITIATED: :EXTERNAL_ACH_INITIATED
-            EXTERNAL_ACH_RELEASED: :EXTERNAL_ACH_RELEASED
-            EXTERNAL_ACH_REVERSED: :EXTERNAL_ACH_REVERSED
-            EXTERNAL_ACH_SETTLED: :EXTERNAL_ACH_SETTLED
-            EXTERNAL_CHECK_CANCELED: :EXTERNAL_CHECK_CANCELED
-            EXTERNAL_CHECK_INITIATED: :EXTERNAL_CHECK_INITIATED
-            EXTERNAL_CHECK_RELEASED: :EXTERNAL_CHECK_RELEASED
-            EXTERNAL_CHECK_REVERSED: :EXTERNAL_CHECK_REVERSED
-            EXTERNAL_CHECK_SETTLED: :EXTERNAL_CHECK_SETTLED
-            EXTERNAL_TRANSFER_CANCELED: :EXTERNAL_TRANSFER_CANCELED
-            EXTERNAL_TRANSFER_INITIATED: :EXTERNAL_TRANSFER_INITIATED
-            EXTERNAL_TRANSFER_RELEASED: :EXTERNAL_TRANSFER_RELEASED
-            EXTERNAL_TRANSFER_REVERSED: :EXTERNAL_TRANSFER_REVERSED
-            EXTERNAL_TRANSFER_SETTLED: :EXTERNAL_TRANSFER_SETTLED
-            EXTERNAL_WIRE_CANCELED: :EXTERNAL_WIRE_CANCELED
-            EXTERNAL_WIRE_INITIATED: :EXTERNAL_WIRE_INITIATED
-            EXTERNAL_WIRE_RELEASED: :EXTERNAL_WIRE_RELEASED
-            EXTERNAL_WIRE_REVERSED: :EXTERNAL_WIRE_REVERSED
-            EXTERNAL_WIRE_SETTLED: :EXTERNAL_WIRE_SETTLED
-            FINANCIAL_AUTHORIZATION: :FINANCIAL_AUTHORIZATION
-            FINANCIAL_CREDIT_AUTHORIZATION: :FINANCIAL_CREDIT_AUTHORIZATION
-            INTEREST: :INTEREST
-            INTEREST_REVERSAL: :INTEREST_REVERSAL
-            INTERNAL_ADJUSTMENT: :INTERNAL_ADJUSTMENT
-            LATE_PAYMENT: :LATE_PAYMENT
-            LATE_PAYMENT_REVERSAL: :LATE_PAYMENT_REVERSAL
-            LOSS_WRITE_OFF: :LOSS_WRITE_OFF
-            PROVISIONAL_CREDIT: :PROVISIONAL_CREDIT
-            PROVISIONAL_CREDIT_REVERSAL: :PROVISIONAL_CREDIT_REVERSAL
-            SERVICE: :SERVICE
-            RETURN: :RETURN
-            RETURN_REVERSAL: :RETURN_REVERSAL
-            TRANSFER: :TRANSFER
-            TRANSFER_INSUFFICIENT_FUNDS: :TRANSFER_INSUFFICIENT_FUNDS
-            RETURNED_PAYMENT: :RETURNED_PAYMENT
-            RETURNED_PAYMENT_REVERSAL: :RETURNED_PAYMENT_REVERSAL
-            LITHIC_NETWORK_PAYMENT: :LITHIC_NETWORK_PAYMENT
-
-            def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::Internal::Event::type_]
-          end
-        end
-
         type result = :APPROVED | :DECLINED
 
         module Result
@@ -356,7 +143,8 @@ module Lithic
           def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::Internal::result]
         end
 
-        type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
+        type status =
+          :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED | :RETURNED
 
         module Status
           extend Lithic::Internal::Type::Enum
@@ -366,17 +154,75 @@ module Lithic
           DECLINED: :DECLINED
           REVERSED: :REVERSED
           CANCELED: :CANCELED
+          RETURNED: :RETURNED
 
           def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::Internal::status]
         end
       end
 
-      type card = {  }
+      type card =
+        {
+          token: String,
+          created: Time,
+          family: :CARD,
+          status: Lithic::Models::AccountActivityListResponse::Card::status,
+          updated: Time
+        }
 
       class Card < Lithic::Models::Transaction
-        def initialize: -> void
+        def token: -> String
 
-        def to_hash: -> {  }
+        def token=: (String _) -> String
+
+        def created: -> Time
+
+        def created=: (Time _) -> Time
+
+        def family: -> :CARD
+
+        def family=: (:CARD _) -> :CARD
+
+        def status: -> Lithic::Models::AccountActivityListResponse::Card::status
+
+        def status=: (
+          Lithic::Models::AccountActivityListResponse::Card::status _
+        ) -> Lithic::Models::AccountActivityListResponse::Card::status
+
+        def updated: -> Time
+
+        def updated=: (Time _) -> Time
+
+        def initialize: (
+          token: String,
+          created: Time,
+          status: Lithic::Models::AccountActivityListResponse::Card::status,
+          updated: Time,
+          ?family: :CARD
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          created: Time,
+          family: :CARD,
+          status: Lithic::Models::AccountActivityListResponse::Card::status,
+          updated: Time
+        }
+
+        type status =
+          :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED | :RETURNED
+
+        module Status
+          extend Lithic::Internal::Type::Enum
+
+          PENDING: :PENDING
+          SETTLED: :SETTLED
+          DECLINED: :DECLINED
+          REVERSED: :REVERSED
+          CANCELED: :CANCELED
+          RETURNED: :RETURNED
+
+          def self?.values: -> ::Array[Lithic::Models::AccountActivityListResponse::Card::status]
+        end
       end
 
       def self?.variants: -> ::Array[Lithic::Models::account_activity_list_response]

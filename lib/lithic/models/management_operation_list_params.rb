@@ -112,6 +112,7 @@ module Lithic
         DECLINED = :DECLINED
         REVERSED = :REVERSED
         CANCELED = :CANCELED
+        RETURNED = :RETURNED
 
         # @!method self.values
         #   @return [Array<Symbol>]

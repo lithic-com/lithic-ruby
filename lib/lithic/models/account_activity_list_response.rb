@@ -64,9 +64,8 @@ module Lithic
         # @!attribute events
         #   List of transaction events
         #
-        #   @return [Array<Lithic::Models::AccountActivityListResponse::Internal::Event>]
-        required :events,
-                 -> { Lithic::Internal::Type::ArrayOf[Lithic::Models::AccountActivityListResponse::Internal::Event] }
+        #   @return [Array<Lithic::Models::FinancialEvent>]
+        required :events, -> { Lithic::Internal::Type::ArrayOf[Lithic::FinancialEvent] }
 
         # @!attribute family
         #   INTERNAL - Financial Transaction
@@ -123,7 +122,7 @@ module Lithic
         #
         #   @param descriptor [String] Transaction descriptor
         #
-        #   @param events [Array<Lithic::Models::AccountActivityListResponse::Internal::Event>] List of transaction events
+        #   @param events [Array<Lithic::Models::FinancialEvent>] List of transaction events
         #
         #   @param financial_account_token [String] Financial account token associated with the transaction
         #
@@ -168,149 +167,6 @@ module Lithic
           #   @return [Array<Symbol>]
         end
 
-        class Event < Lithic::Internal::Type::BaseModel
-          # @!attribute token
-          #   Globally unique identifier.
-          #
-          #   @return [String, nil]
-          optional :token, String
-
-          # @!attribute amount
-          #   Amount of the financial event that has been settled in the currency's smallest
-          #   unit (e.g., cents).
-          #
-          #   @return [Integer, nil]
-          optional :amount, Integer
-
-          # @!attribute created
-          #   Date and time when the financial event occurred. UTC time zone.
-          #
-          #   @return [Time, nil]
-          optional :created, Time
-
-          # @!attribute result
-          #   APPROVED financial events were successful while DECLINED financial events were
-          #   declined by user, Lithic, or the network.
-          #
-          #   @return [Symbol, Lithic::Models::AccountActivityListResponse::Internal::Event::Result, nil]
-          optional :result, enum: -> { Lithic::Models::AccountActivityListResponse::Internal::Event::Result }
-
-          # @!attribute type
-          #
-          #   @return [Symbol, Lithic::Models::AccountActivityListResponse::Internal::Event::Type, nil]
-          optional :type, enum: -> { Lithic::Models::AccountActivityListResponse::Internal::Event::Type }
-
-          # @!method initialize(token: nil, amount: nil, created: nil, result: nil, type: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Lithic::Models::AccountActivityListResponse::Internal::Event} for more details.
-          #
-          #   Financial Event
-          #
-          #   @param token [String] Globally unique identifier.
-          #
-          #   @param amount [Integer] Amount of the financial event that has been settled in the currency's smallest u
-          #
-          #   @param created [Time] Date and time when the financial event occurred. UTC time zone.
-          #
-          #   @param result [Symbol, Lithic::Models::AccountActivityListResponse::Internal::Event::Result] APPROVED financial events were successful while DECLINED financial events were d
-          #
-          #   @param type [Symbol, Lithic::Models::AccountActivityListResponse::Internal::Event::Type]
-
-          # APPROVED financial events were successful while DECLINED financial events were
-          # declined by user, Lithic, or the network.
-          #
-          # @see Lithic::Models::AccountActivityListResponse::Internal::Event#result
-          module Result
-            extend Lithic::Internal::Type::Enum
-
-            APPROVED = :APPROVED
-            DECLINED = :DECLINED
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-
-          # @see Lithic::Models::AccountActivityListResponse::Internal::Event#type
-          module Type
-            extend Lithic::Internal::Type::Enum
-
-            ACH_ORIGINATION_CANCELLED = :ACH_ORIGINATION_CANCELLED
-            ACH_ORIGINATION_INITIATED = :ACH_ORIGINATION_INITIATED
-            ACH_ORIGINATION_PROCESSED = :ACH_ORIGINATION_PROCESSED
-            ACH_ORIGINATION_RELEASED = :ACH_ORIGINATION_RELEASED
-            ACH_ORIGINATION_REJECTED = :ACH_ORIGINATION_REJECTED
-            ACH_ORIGINATION_REVIEWED = :ACH_ORIGINATION_REVIEWED
-            ACH_ORIGINATION_SETTLED = :ACH_ORIGINATION_SETTLED
-            ACH_RECEIPT_PROCESSED = :ACH_RECEIPT_PROCESSED
-            ACH_RECEIPT_RELEASED = :ACH_RECEIPT_RELEASED
-            ACH_RECEIPT_SETTLED = :ACH_RECEIPT_SETTLED
-            ACH_RETURN_INITIATED = :ACH_RETURN_INITIATED
-            ACH_RETURN_PROCESSED = :ACH_RETURN_PROCESSED
-            ACH_RETURN_REJECTED = :ACH_RETURN_REJECTED
-            ACH_RETURN_SETTLED = :ACH_RETURN_SETTLED
-            AUTHORIZATION = :AUTHORIZATION
-            AUTHORIZATION_ADVICE = :AUTHORIZATION_ADVICE
-            AUTHORIZATION_EXPIRY = :AUTHORIZATION_EXPIRY
-            AUTHORIZATION_REVERSAL = :AUTHORIZATION_REVERSAL
-            BALANCE_INQUIRY = :BALANCE_INQUIRY
-            BILLING_ERROR = :BILLING_ERROR
-            BILLING_ERROR_REVERSAL = :BILLING_ERROR_REVERSAL
-            CARD_TO_CARD = :CARD_TO_CARD
-            CASH_BACK = :CASH_BACK
-            CASH_BACK_REVERSAL = :CASH_BACK_REVERSAL
-            CLEARING = :CLEARING
-            COLLECTION = :COLLECTION
-            CORRECTION_CREDIT = :CORRECTION_CREDIT
-            CORRECTION_DEBIT = :CORRECTION_DEBIT
-            CREDIT_AUTHORIZATION = :CREDIT_AUTHORIZATION
-            CREDIT_AUTHORIZATION_ADVICE = :CREDIT_AUTHORIZATION_ADVICE
-            CURRENCY_CONVERSION = :CURRENCY_CONVERSION
-            CURRENCY_CONVERSION_REVERSAL = :CURRENCY_CONVERSION_REVERSAL
-            DISPUTE_WON = :DISPUTE_WON
-            EXTERNAL_ACH_CANCELED = :EXTERNAL_ACH_CANCELED
-            EXTERNAL_ACH_INITIATED = :EXTERNAL_ACH_INITIATED
-            EXTERNAL_ACH_RELEASED = :EXTERNAL_ACH_RELEASED
-            EXTERNAL_ACH_REVERSED = :EXTERNAL_ACH_REVERSED
-            EXTERNAL_ACH_SETTLED = :EXTERNAL_ACH_SETTLED
-            EXTERNAL_CHECK_CANCELED = :EXTERNAL_CHECK_CANCELED
-            EXTERNAL_CHECK_INITIATED = :EXTERNAL_CHECK_INITIATED
-            EXTERNAL_CHECK_RELEASED = :EXTERNAL_CHECK_RELEASED
-            EXTERNAL_CHECK_REVERSED = :EXTERNAL_CHECK_REVERSED
-            EXTERNAL_CHECK_SETTLED = :EXTERNAL_CHECK_SETTLED
-            EXTERNAL_TRANSFER_CANCELED = :EXTERNAL_TRANSFER_CANCELED
-            EXTERNAL_TRANSFER_INITIATED = :EXTERNAL_TRANSFER_INITIATED
-            EXTERNAL_TRANSFER_RELEASED = :EXTERNAL_TRANSFER_RELEASED
-            EXTERNAL_TRANSFER_REVERSED = :EXTERNAL_TRANSFER_REVERSED
-            EXTERNAL_TRANSFER_SETTLED = :EXTERNAL_TRANSFER_SETTLED
-            EXTERNAL_WIRE_CANCELED = :EXTERNAL_WIRE_CANCELED
-            EXTERNAL_WIRE_INITIATED = :EXTERNAL_WIRE_INITIATED
-            EXTERNAL_WIRE_RELEASED = :EXTERNAL_WIRE_RELEASED
-            EXTERNAL_WIRE_REVERSED = :EXTERNAL_WIRE_REVERSED
-            EXTERNAL_WIRE_SETTLED = :EXTERNAL_WIRE_SETTLED
-            FINANCIAL_AUTHORIZATION = :FINANCIAL_AUTHORIZATION
-            FINANCIAL_CREDIT_AUTHORIZATION = :FINANCIAL_CREDIT_AUTHORIZATION
-            INTEREST = :INTEREST
-            INTEREST_REVERSAL = :INTEREST_REVERSAL
-            INTERNAL_ADJUSTMENT = :INTERNAL_ADJUSTMENT
-            LATE_PAYMENT = :LATE_PAYMENT
-            LATE_PAYMENT_REVERSAL = :LATE_PAYMENT_REVERSAL
-            LOSS_WRITE_OFF = :LOSS_WRITE_OFF
-            PROVISIONAL_CREDIT = :PROVISIONAL_CREDIT
-            PROVISIONAL_CREDIT_REVERSAL = :PROVISIONAL_CREDIT_REVERSAL
-            SERVICE = :SERVICE
-            RETURN = :RETURN
-            RETURN_REVERSAL = :RETURN_REVERSAL
-            TRANSFER = :TRANSFER
-            TRANSFER_INSUFFICIENT_FUNDS = :TRANSFER_INSUFFICIENT_FUNDS
-            RETURNED_PAYMENT = :RETURNED_PAYMENT
-            RETURNED_PAYMENT_REVERSAL = :RETURNED_PAYMENT_REVERSAL
-            LITHIC_NETWORK_PAYMENT = :LITHIC_NETWORK_PAYMENT
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-        end
-
         # Transaction result
         #
         # @see Lithic::Models::AccountActivityListResponse::Internal#result
@@ -335,6 +191,7 @@ module Lithic
           DECLINED = :DECLINED
           REVERSED = :REVERSED
           CANCELED = :CANCELED
+          RETURNED = :RETURNED
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -342,8 +199,63 @@ module Lithic
       end
 
       class Card < Lithic::Models::Transaction
-        # @!method initialize
+        # @!attribute token
+        #   Unique identifier for the transaction
+        #
+        #   @return [String]
+        required :token, String
+
+        # @!attribute created
+        #   ISO 8601 timestamp of when the transaction was created
+        #
+        #   @return [Time]
+        required :created, Time
+
+        # @!attribute family
+        #   CARD - Card Transaction
+        #
+        #   @return [Symbol, :CARD]
+        required :family, const: :CARD
+
+        # @!attribute status
+        #   The status of the transaction
+        #
+        #   @return [Symbol, Lithic::Models::AccountActivityListResponse::Card::Status]
+        required :status, enum: -> { Lithic::Models::AccountActivityListResponse::Card::Status }
+
+        # @!attribute updated
+        #   ISO 8601 timestamp of when the transaction was last updated
+        #
+        #   @return [Time]
+        required :updated, Time
+
+        # @!method initialize(token:, created:, status:, updated:, family: :CARD)
         #   Card transaction with ledger base properties
+        #
+        #   @param token [String] Unique identifier for the transaction
+        #
+        #   @param created [Time] ISO 8601 timestamp of when the transaction was created
+        #
+        #   @param status [Symbol, Lithic::Models::AccountActivityListResponse::Card::Status] The status of the transaction
+        #
+        #   @param updated [Time] ISO 8601 timestamp of when the transaction was last updated
+        #
+        #   @param family [Symbol, :CARD] CARD - Card Transaction
+
+        # The status of the transaction
+        module Status
+          extend Lithic::Internal::Type::Enum
+
+          PENDING = :PENDING
+          SETTLED = :SETTLED
+          DECLINED = :DECLINED
+          REVERSED = :REVERSED
+          CANCELED = :CANCELED
+          RETURNED = :RETURNED
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
 
       # @!method self.variants

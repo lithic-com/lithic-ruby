@@ -15,7 +15,7 @@ module Lithic
         pending_amount: Integer,
         result: Lithic::Models::ExternalPayment::result,
         settled_amount: Integer,
-        user_defined_id: String
+        user_defined_id: String?
       }
 
     class ExternalPayment < Lithic::Internal::Type::BaseModel
@@ -73,9 +73,7 @@ module Lithic
 
       def settled_amount=: (Integer) -> Integer
 
-      attr_reader user_defined_id: String?
-
-      def user_defined_id=: (String) -> String
+      attr_accessor user_defined_id: String?
 
       def initialize: (
         token: String,
@@ -91,7 +89,7 @@ module Lithic
         ?pending_amount: Integer,
         ?result: Lithic::Models::ExternalPayment::result,
         ?settled_amount: Integer,
-        ?user_defined_id: String
+        ?user_defined_id: String?
       ) -> void
 
       def to_hash: -> {
@@ -108,10 +106,11 @@ module Lithic
         pending_amount: Integer,
         result: Lithic::Models::ExternalPayment::result,
         settled_amount: Integer,
-        user_defined_id: String
+        user_defined_id: String?
       }
 
-      type status = :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED
+      type status =
+        :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED | :RETURNED
 
       module Status
         extend Lithic::Internal::Type::Enum
@@ -121,6 +120,7 @@ module Lithic
         DECLINED: :DECLINED
         REVERSED: :REVERSED
         CANCELED: :CANCELED
+        RETURNED: :RETURNED
 
         def self?.values: -> ::Array[Lithic::Models::ExternalPayment::status]
       end

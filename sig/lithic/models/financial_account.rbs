@@ -73,7 +73,7 @@ module Lithic
 
       type credit_configuration =
         {
-          auto_collection_configuration: Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration,
+          auto_collection_configuration: Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration?,
           credit_limit: Integer?,
           credit_product_token: String?,
           external_bank_account_token: String?,
@@ -81,7 +81,7 @@ module Lithic
         }
 
       class CreditConfiguration < Lithic::Internal::Type::BaseModel
-        attr_accessor auto_collection_configuration: Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration
+        attr_accessor auto_collection_configuration: Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration?
 
         attr_accessor credit_limit: Integer?
 
@@ -92,7 +92,7 @@ module Lithic
         attr_accessor tier: String?
 
         def initialize: (
-          auto_collection_configuration: Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration,
+          auto_collection_configuration: Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration?,
           credit_limit: Integer?,
           credit_product_token: String?,
           external_bank_account_token: String?,
@@ -100,7 +100,7 @@ module Lithic
         ) -> void
 
         def to_hash: -> {
-          auto_collection_configuration: Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration,
+          auto_collection_configuration: Lithic::FinancialAccount::CreditConfiguration::AutoCollectionConfiguration?,
           credit_limit: Integer?,
           credit_product_token: String?,
           external_bank_account_token: String?,

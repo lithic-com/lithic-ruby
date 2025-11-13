@@ -6,79 +6,28 @@ module Lithic
       type auth_rule_condition =
         {
           attribute: Lithic::Models::AuthRules::conditional_attribute,
-          operation: Lithic::Models::AuthRules::AuthRuleCondition::operation,
-          value: Lithic::Models::AuthRules::AuthRuleCondition::value
+          operation: Lithic::Models::AuthRules::conditional_operation,
+          value: Lithic::Models::AuthRules::conditional_value
         }
 
       class AuthRuleCondition < Lithic::Internal::Type::BaseModel
-        attr_reader attribute: Lithic::Models::AuthRules::conditional_attribute?
+        attr_accessor attribute: Lithic::Models::AuthRules::conditional_attribute
 
-        def attribute=: (
-          Lithic::Models::AuthRules::conditional_attribute
-        ) -> Lithic::Models::AuthRules::conditional_attribute
+        attr_accessor operation: Lithic::Models::AuthRules::conditional_operation
 
-        attr_reader operation: Lithic::Models::AuthRules::AuthRuleCondition::operation?
-
-        def operation=: (
-          Lithic::Models::AuthRules::AuthRuleCondition::operation
-        ) -> Lithic::Models::AuthRules::AuthRuleCondition::operation
-
-        attr_reader value: Lithic::Models::AuthRules::AuthRuleCondition::value?
-
-        def value=: (
-          Lithic::Models::AuthRules::AuthRuleCondition::value
-        ) -> Lithic::Models::AuthRules::AuthRuleCondition::value
+        attr_accessor value: Lithic::Models::AuthRules::conditional_value
 
         def initialize: (
-          ?attribute: Lithic::Models::AuthRules::conditional_attribute,
-          ?operation: Lithic::Models::AuthRules::AuthRuleCondition::operation,
-          ?value: Lithic::Models::AuthRules::AuthRuleCondition::value
+          attribute: Lithic::Models::AuthRules::conditional_attribute,
+          operation: Lithic::Models::AuthRules::conditional_operation,
+          value: Lithic::Models::AuthRules::conditional_value
         ) -> void
 
         def to_hash: -> {
           attribute: Lithic::Models::AuthRules::conditional_attribute,
-          operation: Lithic::Models::AuthRules::AuthRuleCondition::operation,
-          value: Lithic::Models::AuthRules::AuthRuleCondition::value
+          operation: Lithic::Models::AuthRules::conditional_operation,
+          value: Lithic::Models::AuthRules::conditional_value
         }
-
-        type operation =
-          :IS_ONE_OF
-          | :IS_NOT_ONE_OF
-          | :MATCHES
-          | :DOES_NOT_MATCH
-          | :IS_EQUAL_TO
-          | :IS_NOT_EQUAL_TO
-          | :IS_GREATER_THAN
-          | :IS_GREATER_THAN_OR_EQUAL_TO
-          | :IS_LESS_THAN
-          | :IS_LESS_THAN_OR_EQUAL_TO
-
-        module Operation
-          extend Lithic::Internal::Type::Enum
-
-          IS_ONE_OF: :IS_ONE_OF
-          IS_NOT_ONE_OF: :IS_NOT_ONE_OF
-          MATCHES: :MATCHES
-          DOES_NOT_MATCH: :DOES_NOT_MATCH
-          IS_EQUAL_TO: :IS_EQUAL_TO
-          IS_NOT_EQUAL_TO: :IS_NOT_EQUAL_TO
-          IS_GREATER_THAN: :IS_GREATER_THAN
-          IS_GREATER_THAN_OR_EQUAL_TO: :IS_GREATER_THAN_OR_EQUAL_TO
-          IS_LESS_THAN: :IS_LESS_THAN
-          IS_LESS_THAN_OR_EQUAL_TO: :IS_LESS_THAN_OR_EQUAL_TO
-
-          def self?.values: -> ::Array[Lithic::Models::AuthRules::AuthRuleCondition::operation]
-        end
-
-        type value = String | Integer | ::Array[String]
-
-        module Value
-          extend Lithic::Internal::Type::Union
-
-          def self?.variants: -> ::Array[Lithic::Models::AuthRules::AuthRuleCondition::value]
-
-          StringArray: Lithic::Internal::Type::Converter
-        end
       end
     end
   end

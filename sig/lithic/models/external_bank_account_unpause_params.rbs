@@ -1,0 +1,15 @@
+module Lithic
+  module Models
+    type external_bank_account_unpause_params =
+      {  } & Lithic::Internal::Type::request_parameters
+
+    class ExternalBankAccountUnpauseParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      def initialize: (?request_options: Lithic::request_opts) -> void
+
+      def to_hash: -> { request_options: Lithic::RequestOptions }
+    end
+  end
+end

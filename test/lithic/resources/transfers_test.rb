@@ -22,7 +22,7 @@ class Lithic::Test::Resources::TransfersTest < Lithic::Test::ResourceTest
         created: Time | nil,
         currency: String | nil,
         descriptor: String | nil,
-        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Transfer::Event]) | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::FinancialEvent]) | nil,
         from_balance: ^(Lithic::Internal::Type::ArrayOf[Lithic::Balance]) | nil,
         pending_amount: Integer | nil,
         result: Lithic::Transfer::Result | nil,

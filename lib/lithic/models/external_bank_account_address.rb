@@ -31,7 +31,7 @@ module Lithic
       # @!attribute address2
       #
       #   @return [String, nil]
-      optional :address2, String
+      optional :address2, String, nil?: true
 
       # @!method initialize(address1:, city:, country:, postal_code:, state:, address2: nil)
       #   @param address1 [String]
@@ -39,7 +39,7 @@ module Lithic
       #   @param country [String]
       #   @param postal_code [String]
       #   @param state [String]
-      #   @param address2 [String]
+      #   @param address2 [String, nil]
     end
   end
 end

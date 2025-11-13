@@ -1,0 +1,76 @@
+module Lithic
+  module Models
+    type statement_totals =
+      {
+        balance_transfers: Integer,
+        cash_advances: Integer,
+        credits: Integer,
+        debits: Integer,
+        fees: Integer,
+        interest: Integer,
+        payments: Integer,
+        purchases: Integer,
+        credit_details: top,
+        debit_details: top,
+        payment_details: top
+      }
+
+    class StatementTotals < Lithic::Internal::Type::BaseModel
+      attr_accessor balance_transfers: Integer
+
+      attr_accessor cash_advances: Integer
+
+      attr_accessor credits: Integer
+
+      attr_accessor debits: Integer
+
+      attr_accessor fees: Integer
+
+      attr_accessor interest: Integer
+
+      attr_accessor payments: Integer
+
+      attr_accessor purchases: Integer
+
+      attr_reader credit_details: top?
+
+      def credit_details=: (top) -> top
+
+      attr_reader debit_details: top?
+
+      def debit_details=: (top) -> top
+
+      attr_reader payment_details: top?
+
+      def payment_details=: (top) -> top
+
+      def initialize: (
+        balance_transfers: Integer,
+        cash_advances: Integer,
+        credits: Integer,
+        debits: Integer,
+        fees: Integer,
+        interest: Integer,
+        payments: Integer,
+        purchases: Integer,
+        ?credit_details: top,
+        ?debit_details: top,
+        ?payment_details: top
+      ) -> void
+
+      def to_hash: -> {
+        balance_transfers: Integer,
+        cash_advances: Integer,
+        credits: Integer,
+        debits: Integer,
+        fees: Integer,
+        interest: Integer,
+        payments: Integer,
+        purchases: Integer,
+        credit_details: top,
+        debit_details: top,
+        payment_details: top
+      }
+    end
+  end
+end

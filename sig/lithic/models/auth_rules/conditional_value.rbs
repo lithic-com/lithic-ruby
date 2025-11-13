@@ -1,0 +1,15 @@
+module Lithic
+  module Models
+    module AuthRules
+      type conditional_value = String | Integer | ::Array[String]
+
+      module ConditionalValue
+        extend Lithic::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Lithic::Models::AuthRules::conditional_value]
+
+        StringArray: Lithic::Internal::Type::Converter
+      end
+    end
+  end
+end

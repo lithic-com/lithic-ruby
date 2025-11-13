@@ -64,54 +64,22 @@ module Lithic
         # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
         #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
         #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
-        sig do
-          returns(T.nilable(Lithic::AuthRules::ConditionalAttribute::OrSymbol))
-        end
-        attr_reader :attribute
-
-        sig do
-          params(
-            attribute: Lithic::AuthRules::ConditionalAttribute::OrSymbol
-          ).void
-        end
-        attr_writer :attribute
+        sig { returns(Lithic::AuthRules::ConditionalAttribute::OrSymbol) }
+        attr_accessor :attribute
 
         # The operation to apply to the attribute
-        sig do
-          returns(
-            T.nilable(Lithic::AuthRules::AuthRuleCondition::Operation::OrSymbol)
-          )
-        end
-        attr_reader :operation
-
-        sig do
-          params(
-            operation: Lithic::AuthRules::AuthRuleCondition::Operation::OrSymbol
-          ).void
-        end
-        attr_writer :operation
+        sig { returns(Lithic::AuthRules::ConditionalOperation::OrSymbol) }
+        attr_accessor :operation
 
         # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
-        sig do
-          returns(
-            T.nilable(Lithic::AuthRules::AuthRuleCondition::Value::Variants)
-          )
-        end
-        attr_reader :value
-
-        sig do
-          params(
-            value: Lithic::AuthRules::AuthRuleCondition::Value::Variants
-          ).void
-        end
-        attr_writer :value
+        sig { returns(Lithic::AuthRules::ConditionalValue::Variants) }
+        attr_accessor :value
 
         sig do
           params(
             attribute: Lithic::AuthRules::ConditionalAttribute::OrSymbol,
-            operation:
-              Lithic::AuthRules::AuthRuleCondition::Operation::OrSymbol,
-            value: Lithic::AuthRules::AuthRuleCondition::Value::Variants
+            operation: Lithic::AuthRules::ConditionalOperation::OrSymbol,
+            value: Lithic::AuthRules::ConditionalValue::Variants
           ).returns(T.attached_class)
         end
         def self.new(
@@ -165,11 +133,11 @@ module Lithic
           # - `ADDRESS_MATCH`: Lithic's evaluation result comparing transaction's address
           #   data with the cardholder KYC data if it exists. Valid values are `MATCH`,
           #   `MATCH_ADDRESS_ONLY`, `MATCH_ZIP_ONLY`,`MISMATCH`,`NOT_PRESENT`.
-          attribute: nil,
+          attribute:,
           # The operation to apply to the attribute
-          operation: nil,
+          operation:,
           # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
-          value: nil
+          value:
         )
         end
 
@@ -177,106 +145,12 @@ module Lithic
           override.returns(
             {
               attribute: Lithic::AuthRules::ConditionalAttribute::OrSymbol,
-              operation:
-                Lithic::AuthRules::AuthRuleCondition::Operation::OrSymbol,
-              value: Lithic::AuthRules::AuthRuleCondition::Value::Variants
+              operation: Lithic::AuthRules::ConditionalOperation::OrSymbol,
+              value: Lithic::AuthRules::ConditionalValue::Variants
             }
           )
         end
         def to_hash
-        end
-
-        # The operation to apply to the attribute
-        module Operation
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Lithic::AuthRules::AuthRuleCondition::Operation)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          IS_ONE_OF =
-            T.let(
-              :IS_ONE_OF,
-              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
-            )
-          IS_NOT_ONE_OF =
-            T.let(
-              :IS_NOT_ONE_OF,
-              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
-            )
-          MATCHES =
-            T.let(
-              :MATCHES,
-              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
-            )
-          DOES_NOT_MATCH =
-            T.let(
-              :DOES_NOT_MATCH,
-              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
-            )
-          IS_EQUAL_TO =
-            T.let(
-              :IS_EQUAL_TO,
-              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
-            )
-          IS_NOT_EQUAL_TO =
-            T.let(
-              :IS_NOT_EQUAL_TO,
-              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
-            )
-          IS_GREATER_THAN =
-            T.let(
-              :IS_GREATER_THAN,
-              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
-            )
-          IS_GREATER_THAN_OR_EQUAL_TO =
-            T.let(
-              :IS_GREATER_THAN_OR_EQUAL_TO,
-              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
-            )
-          IS_LESS_THAN =
-            T.let(
-              :IS_LESS_THAN,
-              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
-            )
-          IS_LESS_THAN_OR_EQUAL_TO =
-            T.let(
-              :IS_LESS_THAN_OR_EQUAL_TO,
-              Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Lithic::AuthRules::AuthRuleCondition::Operation::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
-        module Value
-          extend Lithic::Internal::Type::Union
-
-          Variants = T.type_alias { T.any(String, Integer, T::Array[String]) }
-
-          sig do
-            override.returns(
-              T::Array[Lithic::AuthRules::AuthRuleCondition::Value::Variants]
-            )
-          end
-          def self.variants
-          end
-
-          StringArray =
-            T.let(
-              Lithic::Internal::Type::ArrayOf[String],
-              Lithic::Internal::Type::Converter
-            )
         end
       end
     end

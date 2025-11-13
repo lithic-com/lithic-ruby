@@ -79,6 +79,8 @@ module Lithic
           | Lithic::AuthRules::MerchantLockParameters
           | Lithic::AuthRules::Conditional3DSActionParameters
           | Lithic::AuthRules::ConditionalAuthorizationActionParameters
+          | Lithic::AuthRules::ConditionalACHActionParameters
+          | Lithic::AuthRules::ConditionalTokenizationActionParameters
 
         module Parameters
           extend Lithic::Internal::Type::Union
@@ -103,13 +105,21 @@ module Lithic
           def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::type_]
         end
 
-        type event_stream = :AUTHORIZATION | :THREE_DS_AUTHENTICATION
+        type event_stream =
+          :AUTHORIZATION
+          | :THREE_DS_AUTHENTICATION
+          | :TOKENIZATION
+          | :ACH_CREDIT_RECEIPT
+          | :ACH_DEBIT_RECEIPT
 
         module EventStream
           extend Lithic::Internal::Type::Enum
 
           AUTHORIZATION: :AUTHORIZATION
           THREE_DS_AUTHENTICATION: :THREE_DS_AUTHENTICATION
+          TOKENIZATION: :TOKENIZATION
+          ACH_CREDIT_RECEIPT: :ACH_CREDIT_RECEIPT
+          ACH_DEBIT_RECEIPT: :ACH_DEBIT_RECEIPT
 
           def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::event_stream]
         end

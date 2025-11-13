@@ -7,7 +7,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     response =
       @lithic.auth_rules.v2.create(
         card_tokens: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
-        parameters: {conditions: [{}]},
+        parameters: {conditions: [{attribute: :MCC, operation: :IS_ONE_OF, value: "string"}]},
         type: :CONDITIONAL_BLOCK
       )
 

@@ -53,6 +53,9 @@ module Lithic
     # @return [Lithic::Resources::Disputes]
     attr_reader :disputes
 
+    # @return [Lithic::Resources::DisputesV2]
+    attr_reader :disputes_v2
+
     # @return [Lithic::Resources::Events]
     attr_reader :events
 
@@ -194,6 +197,7 @@ module Lithic
       @balances = Lithic::Resources::Balances.new(client: self)
       @aggregate_balances = Lithic::Resources::AggregateBalances.new(client: self)
       @disputes = Lithic::Resources::Disputes.new(client: self)
+      @disputes_v2 = Lithic::Resources::DisputesV2.new(client: self)
       @events = Lithic::Resources::Events.new(client: self)
       @transfers = Lithic::Resources::Transfers.new(client: self)
       @financial_accounts = Lithic::Resources::FinancialAccounts.new(client: self)

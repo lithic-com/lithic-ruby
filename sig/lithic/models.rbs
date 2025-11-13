@@ -107,6 +107,8 @@ module Lithic
 
   class Carrier = Lithic::Models::Carrier
 
+  class CategoryDetails = Lithic::Models::CategoryDetails
+
   class ClientAPIStatusParams = Lithic::Models::ClientAPIStatusParams
 
   module CreditProducts = Lithic::Models::CreditProducts
@@ -139,7 +141,13 @@ module Lithic
 
   class DisputeRetrieveParams = Lithic::Models::DisputeRetrieveParams
 
+  class DisputesV2ListParams = Lithic::Models::DisputesV2ListParams
+
+  class DisputesV2RetrieveParams = Lithic::Models::DisputesV2RetrieveParams
+
   class DisputeUpdateParams = Lithic::Models::DisputeUpdateParams
+
+  class DisputeV2 = Lithic::Models::DisputeV2
 
   class Document = Lithic::Models::Document
 
@@ -168,6 +176,8 @@ module Lithic
   class ExternalBankAccountRetryPrenoteParams = Lithic::Models::ExternalBankAccountRetryPrenoteParams
 
   module ExternalBankAccounts = Lithic::Models::ExternalBankAccounts
+
+  class ExternalBankAccountUnpauseParams = Lithic::Models::ExternalBankAccountUnpauseParams
 
   class ExternalBankAccountUpdateParams = Lithic::Models::ExternalBankAccountUpdateParams
 
@@ -207,6 +217,8 @@ module Lithic
 
   class FinancialAccountUpdateStatusParams = Lithic::Models::FinancialAccountUpdateStatusParams
 
+  class FinancialEvent = Lithic::Models::FinancialEvent
+
   class FinancialTransaction = Lithic::Models::FinancialTransaction
 
   module Fraud = Lithic::Models::Fraud
@@ -237,6 +249,8 @@ module Lithic
 
   class ManagementOperationTransaction = Lithic::Models::ManagementOperationTransaction
 
+  class Merchant = Lithic::Models::Merchant
+
   class MessageAttempt = Lithic::Models::MessageAttempt
 
   class NetworkProgram = Lithic::Models::NetworkProgram
@@ -258,6 +272,8 @@ module Lithic
   class PaymentRetrieveParams = Lithic::Models::PaymentRetrieveParams
 
   class PaymentRetryParams = Lithic::Models::PaymentRetryParams
+
+  class PaymentReturnParams = Lithic::Models::PaymentReturnParams
 
   class PaymentSimulateActionParams = Lithic::Models::PaymentSimulateActionParams
 
@@ -290,6 +306,8 @@ module Lithic
   class ShippingAddress = Lithic::Models::ShippingAddress
 
   module SpendLimitDuration = Lithic::Models::SpendLimitDuration
+
+  class StatementTotals = Lithic::Models::StatementTotals
 
   module ThreeDS = Lithic::Models::ThreeDS
 

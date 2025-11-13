@@ -21,7 +21,9 @@ module Lithic
                 Lithic::AuthRules::VelocityLimitParams,
                 Lithic::AuthRules::MerchantLockParameters,
                 Lithic::AuthRules::Conditional3DSActionParameters,
-                Lithic::AuthRules::ConditionalAuthorizationActionParameters
+                Lithic::AuthRules::ConditionalAuthorizationActionParameters,
+                Lithic::AuthRules::ConditionalACHActionParameters,
+                Lithic::AuthRules::ConditionalTokenizationActionParameters
               )
             )
           )
@@ -37,7 +39,9 @@ module Lithic
                   Lithic::AuthRules::VelocityLimitParams::OrHash,
                   Lithic::AuthRules::MerchantLockParameters::OrHash,
                   Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
-                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash,
+                  Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash
                 )
               ),
             request_options: Lithic::RequestOptions::OrHash
@@ -60,7 +64,9 @@ module Lithic
                     Lithic::AuthRules::VelocityLimitParams,
                     Lithic::AuthRules::MerchantLockParameters,
                     Lithic::AuthRules::Conditional3DSActionParameters,
-                    Lithic::AuthRules::ConditionalAuthorizationActionParameters
+                    Lithic::AuthRules::ConditionalAuthorizationActionParameters,
+                    Lithic::AuthRules::ConditionalACHActionParameters,
+                    Lithic::AuthRules::ConditionalTokenizationActionParameters
                   )
                 ),
               request_options: Lithic::RequestOptions
@@ -81,7 +87,9 @@ module Lithic
                 Lithic::AuthRules::VelocityLimitParams,
                 Lithic::AuthRules::MerchantLockParameters,
                 Lithic::AuthRules::Conditional3DSActionParameters,
-                Lithic::AuthRules::ConditionalAuthorizationActionParameters
+                Lithic::AuthRules::ConditionalAuthorizationActionParameters,
+                Lithic::AuthRules::ConditionalACHActionParameters,
+                Lithic::AuthRules::ConditionalTokenizationActionParameters
               )
             end
 

@@ -97,6 +97,52 @@ module Lithic
       def retry_(payment_token, request_options: {})
       end
 
+      # Return an ACH payment with a specified return reason code. Returns must be
+      # initiated within the time window specified by NACHA rules for each return code
+      # (typically 2 banking days for most codes, 60 calendar days for unauthorized
+      # debits). For a complete list of return codes and their meanings, see the
+      # [ACH Return Reasons documentation](https://docs.lithic.com/docs/ach-overview#ach-return-reasons).
+      #
+      # Note:
+      #
+      # - This endpoint does not modify the state of the financial account associated
+      #   with the payment. If you would like to change the account state, use the
+      #   [Update financial account status](https://docs.lithic.com/reference/updatefinancialaccountstatus)
+      #   endpoint.
+      # - By default this endpoint is not enabled for your account. Please contact your
+      #   implementations manager to enable this feature.
+      sig do
+        params(
+          payment_token: String,
+          financial_account_token: String,
+          return_reason_code: String,
+          addenda: T.nilable(String),
+          date_of_death: T.nilable(Date),
+          memo: T.nilable(String),
+          request_options: Lithic::RequestOptions::OrHash
+        ).returns(Lithic::Models::PaymentReturnResponse)
+      end
+      def return_(
+        payment_token,
+        # Globally unique identifier for the financial account
+        financial_account_token:,
+        # ACH return reason code indicating the reason for returning the payment.
+        # Supported codes include R01-R53 and R80-R85. For a complete list of return codes
+        # and their meanings, see
+        # [ACH Return Reasons](https://docs.lithic.com/docs/ach-overview#ach-return-reasons)
+        return_reason_code:,
+        # Optional additional information about the return. Limited to 44 characters
+        addenda: nil,
+        # Date of death in YYYY-MM-DD format. Required when using return codes **R14**
+        # (representative payee deceased) or **R15** (beneficiary or account holder
+        # deceased)
+        date_of_death: nil,
+        # Optional memo for the return. Limited to 10 characters
+        memo: nil,
+        request_options: {}
+      )
+      end
+
       # Simulate payment lifecycle event
       sig do
         params(

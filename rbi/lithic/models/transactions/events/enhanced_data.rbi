@@ -113,24 +113,15 @@ module Lithic
 
             # A customer identifier.
             sig { returns(T.nilable(String)) }
-            attr_reader :customer_reference_number
-
-            sig { params(customer_reference_number: String).void }
-            attr_writer :customer_reference_number
+            attr_accessor :customer_reference_number
 
             # A merchant identifier.
             sig { returns(T.nilable(String)) }
-            attr_reader :merchant_reference_number
-
-            sig { params(merchant_reference_number: String).void }
-            attr_writer :merchant_reference_number
+            attr_accessor :merchant_reference_number
 
             # The date of the order.
             sig { returns(T.nilable(Date)) }
-            attr_reader :order_date
-
-            sig { params(order_date: Date).void }
-            attr_writer :order_date
+            attr_accessor :order_date
 
             sig do
               params(
@@ -140,9 +131,9 @@ module Lithic
                   ],
                 tax:
                   Lithic::Transactions::Events::EnhancedData::Common::Tax::OrHash,
-                customer_reference_number: String,
-                merchant_reference_number: String,
-                order_date: Date
+                customer_reference_number: T.nilable(String),
+                merchant_reference_number: T.nilable(String),
+                order_date: T.nilable(Date)
               ).returns(T.attached_class)
             end
             def self.new(
@@ -165,9 +156,9 @@ module Lithic
                       Lithic::Transactions::Events::EnhancedData::Common::LineItem
                     ],
                   tax: Lithic::Transactions::Events::EnhancedData::Common::Tax,
-                  customer_reference_number: String,
-                  merchant_reference_number: String,
-                  order_date: Date
+                  customer_reference_number: T.nilable(String),
+                  merchant_reference_number: T.nilable(String),
+                  order_date: T.nilable(Date)
                 }
               )
             end
@@ -185,39 +176,27 @@ module Lithic
 
               # The price of the item purchased in merchant currency.
               sig { returns(T.nilable(String)) }
-              attr_reader :amount
-
-              sig { params(amount: String).void }
-              attr_writer :amount
+              attr_accessor :amount
 
               # A human-readable description of the item.
               sig { returns(T.nilable(String)) }
-              attr_reader :description
-
-              sig { params(description: String).void }
-              attr_writer :description
+              attr_accessor :description
 
               # An identifier for the item purchased.
               sig { returns(T.nilable(String)) }
-              attr_reader :product_code
-
-              sig { params(product_code: String).void }
-              attr_writer :product_code
+              attr_accessor :product_code
 
               # The quantity of the item purchased.
               sig { returns(T.nilable(String)) }
-              attr_reader :quantity
-
-              sig { params(quantity: String).void }
-              attr_writer :quantity
+              attr_accessor :quantity
 
               # An L2/L3 enhanced commercial data line item.
               sig do
                 params(
-                  amount: String,
-                  description: String,
-                  product_code: String,
-                  quantity: String
+                  amount: T.nilable(String),
+                  description: T.nilable(String),
+                  product_code: T.nilable(String),
+                  quantity: T.nilable(String)
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -235,10 +214,10 @@ module Lithic
               sig do
                 override.returns(
                   {
-                    amount: String,
-                    description: String,
-                    product_code: String,
-                    quantity: String
+                    amount: T.nilable(String),
+                    description: T.nilable(String),
+                    product_code: T.nilable(String),
+                    quantity: T.nilable(String)
                   }
                 )
               end
@@ -257,10 +236,7 @@ module Lithic
 
               # The amount of tax collected.
               sig { returns(T.nilable(Integer)) }
-              attr_reader :amount
-
-              sig { params(amount: Integer).void }
-              attr_writer :amount
+              attr_accessor :amount
 
               # A flag indicating whether the transaction is tax exempt or not.
               sig do
@@ -270,29 +246,20 @@ module Lithic
                   )
                 )
               end
-              attr_reader :exempt
-
-              sig do
-                params(
-                  exempt:
-                    Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt::OrSymbol
-                ).void
-              end
-              attr_writer :exempt
+              attr_accessor :exempt
 
               # The tax ID of the merchant.
               sig { returns(T.nilable(String)) }
-              attr_reader :merchant_tax_id
-
-              sig { params(merchant_tax_id: String).void }
-              attr_writer :merchant_tax_id
+              attr_accessor :merchant_tax_id
 
               sig do
                 params(
-                  amount: Integer,
+                  amount: T.nilable(Integer),
                   exempt:
-                    Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt::OrSymbol,
-                  merchant_tax_id: String
+                    T.nilable(
+                      Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt::OrSymbol
+                    ),
+                  merchant_tax_id: T.nilable(String)
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -308,10 +275,12 @@ module Lithic
               sig do
                 override.returns(
                   {
-                    amount: Integer,
+                    amount: T.nilable(Integer),
                     exempt:
-                      Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol,
-                    merchant_tax_id: String
+                      T.nilable(
+                        Lithic::Transactions::Events::EnhancedData::Common::Tax::Exempt::TaggedSymbol
+                      ),
+                    merchant_tax_id: T.nilable(String)
                   }
                 )
               end
@@ -400,17 +369,11 @@ module Lithic
             # The driver number entered into the terminal at the time of sale, with leading
             # zeros stripped.
             sig { returns(T.nilable(String)) }
-            attr_reader :driver_number
-
-            sig { params(driver_number: String).void }
-            attr_writer :driver_number
+            attr_accessor :driver_number
 
             # The odometer reading entered into the terminal at the time of sale.
             sig { returns(T.nilable(Integer)) }
-            attr_reader :odometer
-
-            sig { params(odometer: Integer).void }
-            attr_writer :odometer
+            attr_accessor :odometer
 
             # The type of fuel service.
             sig do
@@ -433,10 +396,7 @@ module Lithic
             # The vehicle number entered into the terminal at the time of sale, with leading
             # zeros stripped.
             sig { returns(T.nilable(String)) }
-            attr_reader :vehicle_number
-
-            sig { params(vehicle_number: String).void }
-            attr_writer :vehicle_number
+            attr_accessor :vehicle_number
 
             sig do
               params(
@@ -444,11 +404,11 @@ module Lithic
                   Lithic::Transactions::Events::EnhancedData::Fleet::AmountTotals::OrHash,
                 fuel:
                   Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::OrHash,
-                driver_number: String,
-                odometer: Integer,
+                driver_number: T.nilable(String),
+                odometer: T.nilable(Integer),
                 service_type:
                   Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType::OrSymbol,
-                vehicle_number: String
+                vehicle_number: T.nilable(String)
               ).returns(T.attached_class)
             end
             def self.new(
@@ -473,11 +433,11 @@ module Lithic
                   amount_totals:
                     Lithic::Transactions::Events::EnhancedData::Fleet::AmountTotals,
                   fuel: Lithic::Transactions::Events::EnhancedData::Fleet::Fuel,
-                  driver_number: String,
-                  odometer: Integer,
+                  driver_number: T.nilable(String),
+                  odometer: T.nilable(Integer),
                   service_type:
                     Lithic::Transactions::Events::EnhancedData::Fleet::ServiceType::TaggedSymbol,
-                  vehicle_number: String
+                  vehicle_number: T.nilable(String)
                 }
               )
             end
@@ -495,30 +455,21 @@ module Lithic
 
               # The discount applied to the gross sale amount.
               sig { returns(T.nilable(Integer)) }
-              attr_reader :discount
-
-              sig { params(discount: Integer).void }
-              attr_writer :discount
+              attr_accessor :discount
 
               # The gross sale amount.
               sig { returns(T.nilable(Integer)) }
-              attr_reader :gross_sale
-
-              sig { params(gross_sale: Integer).void }
-              attr_writer :gross_sale
+              attr_accessor :gross_sale
 
               # The amount after discount.
               sig { returns(T.nilable(Integer)) }
-              attr_reader :net_sale
-
-              sig { params(net_sale: Integer).void }
-              attr_writer :net_sale
+              attr_accessor :net_sale
 
               sig do
                 params(
-                  discount: Integer,
-                  gross_sale: Integer,
-                  net_sale: Integer
+                  discount: T.nilable(Integer),
+                  gross_sale: T.nilable(Integer),
+                  net_sale: T.nilable(Integer)
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -533,7 +484,11 @@ module Lithic
 
               sig do
                 override.returns(
-                  { discount: Integer, gross_sale: Integer, net_sale: Integer }
+                  {
+                    discount: T.nilable(Integer),
+                    gross_sale: T.nilable(Integer),
+                    net_sale: T.nilable(Integer)
+                  }
                 )
               end
               def to_hash
@@ -551,10 +506,7 @@ module Lithic
 
               # The quantity of fuel purchased.
               sig { returns(T.nilable(String)) }
-              attr_reader :quantity
-
-              sig { params(quantity: String).void }
-              attr_writer :quantity
+              attr_accessor :quantity
 
               # The type of fuel purchased.
               sig do
@@ -564,15 +516,7 @@ module Lithic
                   )
                 )
               end
-              attr_reader :type
-
-              sig do
-                params(
-                  type:
-                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::OrSymbol
-                ).void
-              end
-              attr_writer :type
+              attr_accessor :type
 
               # Unit of measure for fuel disbursement.
               sig do
@@ -582,31 +526,24 @@ module Lithic
                   )
                 )
               end
-              attr_reader :unit_of_measure
-
-              sig do
-                params(
-                  unit_of_measure:
-                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::OrSymbol
-                ).void
-              end
-              attr_writer :unit_of_measure
+              attr_accessor :unit_of_measure
 
               # The price per unit of fuel.
               sig { returns(T.nilable(Integer)) }
-              attr_reader :unit_price
-
-              sig { params(unit_price: Integer).void }
-              attr_writer :unit_price
+              attr_accessor :unit_price
 
               sig do
                 params(
-                  quantity: String,
+                  quantity: T.nilable(String),
                   type:
-                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::OrSymbol,
+                    T.nilable(
+                      Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::OrSymbol
+                    ),
                   unit_of_measure:
-                    Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::OrSymbol,
-                  unit_price: Integer
+                    T.nilable(
+                      Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::OrSymbol
+                    ),
+                  unit_price: T.nilable(Integer)
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -624,12 +561,16 @@ module Lithic
               sig do
                 override.returns(
                   {
-                    quantity: String,
+                    quantity: T.nilable(String),
                     type:
-                      Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol,
+                      T.nilable(
+                        Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::Type::TaggedSymbol
+                      ),
                     unit_of_measure:
-                      Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol,
-                    unit_price: Integer
+                      T.nilable(
+                        Lithic::Transactions::Events::EnhancedData::Fleet::Fuel::UnitOfMeasure::TaggedSymbol
+                      ),
+                    unit_price: T.nilable(Integer)
                   }
                 )
               end

@@ -27,6 +27,8 @@ module Lithic
           | Lithic::AuthRules::MerchantLockParameters
           | Lithic::AuthRules::Conditional3DSActionParameters
           | Lithic::AuthRules::ConditionalAuthorizationActionParameters
+          | Lithic::AuthRules::ConditionalACHActionParameters
+          | Lithic::AuthRules::ConditionalTokenizationActionParameters
 
         module Parameters
           extend Lithic::Internal::Type::Union
