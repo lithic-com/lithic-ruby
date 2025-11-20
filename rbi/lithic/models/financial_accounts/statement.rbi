@@ -136,6 +136,24 @@ module Lithic
         sig { params(next_statement_end_date: Date).void }
         attr_writer :next_statement_end_date
 
+        # Details on number and size of payments to pay off balance
+        sig do
+          returns(
+            T.nilable(Lithic::FinancialAccounts::Statement::PayoffDetails)
+          )
+        end
+        attr_reader :payoff_details
+
+        sig do
+          params(
+            payoff_details:
+              T.nilable(
+                Lithic::FinancialAccounts::Statement::PayoffDetails::OrHash
+              )
+          ).void
+        end
+        attr_writer :payoff_details
+
         sig do
           params(
             token: String,
@@ -163,7 +181,11 @@ module Lithic
                 Lithic::FinancialAccounts::Statement::InterestDetails::OrHash
               ),
             next_payment_due_date: Date,
-            next_statement_end_date: Date
+            next_statement_end_date: Date,
+            payoff_details:
+              T.nilable(
+                Lithic::FinancialAccounts::Statement::PayoffDetails::OrHash
+              )
           ).returns(T.attached_class)
         end
         def self.new(
@@ -203,7 +225,9 @@ module Lithic
           # Date when the next payment is due
           next_payment_due_date: nil,
           # Date when the next billing period will end
-          next_statement_end_date: nil
+          next_statement_end_date: nil,
+          # Details on number and size of payments to pay off balance
+          payoff_details: nil
         )
         end
 
@@ -235,7 +259,9 @@ module Lithic
                   Lithic::FinancialAccounts::Statement::InterestDetails
                 ),
               next_payment_due_date: Date,
-              next_statement_end_date: Date
+              next_statement_end_date: Date,
+              payoff_details:
+                T.nilable(Lithic::FinancialAccounts::Statement::PayoffDetails)
             }
           )
         end
@@ -741,6 +767,82 @@ module Lithic
             end
             def self.values
             end
+          end
+        end
+
+        class PayoffDetails < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::FinancialAccounts::Statement::PayoffDetails,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # The number of months it would take to pay off the balance in full by only paying
+          # the minimum payment. "NA" will signal negative or zero amortization
+          sig { returns(String) }
+          attr_accessor :minimum_payment_months
+
+          # The sum of all interest and principal paid, in cents, when only paying minimum
+          # monthly payment. "NA" will signal negative or zero amortization
+          sig { returns(String) }
+          attr_accessor :minimum_payment_total
+
+          # Number of months to full pay off
+          sig { returns(Integer) }
+          attr_accessor :payoff_period_length_months
+
+          # The amount needed to be paid, in cents, each month in order to pay off current
+          # balance in the payoff period
+          sig { returns(Integer) }
+          attr_accessor :payoff_period_monthly_payment_amount
+
+          # The sum of all interest and principal paid, in cents, when paying off in the
+          # payoff period
+          sig { returns(Integer) }
+          attr_accessor :payoff_period_payment_total
+
+          # Details on number and size of payments to pay off balance
+          sig do
+            params(
+              minimum_payment_months: String,
+              minimum_payment_total: String,
+              payoff_period_length_months: Integer,
+              payoff_period_monthly_payment_amount: Integer,
+              payoff_period_payment_total: Integer
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The number of months it would take to pay off the balance in full by only paying
+            # the minimum payment. "NA" will signal negative or zero amortization
+            minimum_payment_months:,
+            # The sum of all interest and principal paid, in cents, when only paying minimum
+            # monthly payment. "NA" will signal negative or zero amortization
+            minimum_payment_total:,
+            # Number of months to full pay off
+            payoff_period_length_months:,
+            # The amount needed to be paid, in cents, each month in order to pay off current
+            # balance in the payoff period
+            payoff_period_monthly_payment_amount:,
+            # The sum of all interest and principal paid, in cents, when paying off in the
+            # payoff period
+            payoff_period_payment_total:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                minimum_payment_months: String,
+                minimum_payment_total: String,
+                payoff_period_length_months: Integer,
+                payoff_period_monthly_payment_amount: Integer,
+                payoff_period_payment_total: Integer
+              }
+            )
+          end
+          def to_hash
           end
         end
       end

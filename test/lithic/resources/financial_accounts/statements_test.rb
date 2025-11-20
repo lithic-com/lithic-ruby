@@ -36,7 +36,8 @@ class Lithic::Test::Resources::FinancialAccounts::StatementsTest < Lithic::Test:
         ytd_totals: Lithic::StatementTotals,
         interest_details: Lithic::FinancialAccounts::Statement::InterestDetails | nil,
         next_payment_due_date: Date | nil,
-        next_statement_end_date: Date | nil
+        next_statement_end_date: Date | nil,
+        payoff_details: Lithic::FinancialAccounts::Statement::PayoffDetails | nil
       }
     end
   end
@@ -77,7 +78,8 @@ class Lithic::Test::Resources::FinancialAccounts::StatementsTest < Lithic::Test:
         ytd_totals: Lithic::StatementTotals,
         interest_details: Lithic::FinancialAccounts::Statement::InterestDetails | nil,
         next_payment_due_date: Date | nil,
-        next_statement_end_date: Date | nil
+        next_statement_end_date: Date | nil,
+        payoff_details: Lithic::FinancialAccounts::Statement::PayoffDetails | nil
       }
     end
   end

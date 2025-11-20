@@ -126,7 +126,13 @@ module Lithic
         #   @return [Date, nil]
         optional :next_statement_end_date, Date
 
-        # @!method initialize(token:, account_standing:, amount_due:, available_credit:, created:, credit_limit:, credit_product_token:, days_in_billing_cycle:, ending_balance:, financial_account_token:, payment_due_date:, period_totals:, starting_balance:, statement_end_date:, statement_start_date:, statement_type:, updated:, ytd_totals:, interest_details: nil, next_payment_due_date: nil, next_statement_end_date: nil)
+        # @!attribute payoff_details
+        #   Details on number and size of payments to pay off balance
+        #
+        #   @return [Lithic::Models::FinancialAccounts::Statement::PayoffDetails, nil]
+        optional :payoff_details, -> { Lithic::FinancialAccounts::Statement::PayoffDetails }, nil?: true
+
+        # @!method initialize(token:, account_standing:, amount_due:, available_credit:, created:, credit_limit:, credit_product_token:, days_in_billing_cycle:, ending_balance:, financial_account_token:, payment_due_date:, period_totals:, starting_balance:, statement_end_date:, statement_start_date:, statement_type:, updated:, ytd_totals:, interest_details: nil, next_payment_due_date: nil, next_statement_end_date: nil, payoff_details: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::FinancialAccounts::Statement} for more details.
         #
@@ -171,6 +177,8 @@ module Lithic
         #   @param next_payment_due_date [Date] Date when the next payment is due
         #
         #   @param next_statement_end_date [Date] Date when the next billing period will end
+        #
+        #   @param payoff_details [Lithic::Models::FinancialAccounts::Statement::PayoffDetails, nil] Details on number and size of payments to pay off balance
 
         # @see Lithic::Models::FinancialAccounts::Statement#account_standing
         class AccountStanding < Lithic::Internal::Type::BaseModel
@@ -405,6 +413,59 @@ module Lithic
             # @!method self.values
             #   @return [Array<Symbol>]
           end
+        end
+
+        # @see Lithic::Models::FinancialAccounts::Statement#payoff_details
+        class PayoffDetails < Lithic::Internal::Type::BaseModel
+          # @!attribute minimum_payment_months
+          #   The number of months it would take to pay off the balance in full by only paying
+          #   the minimum payment. "NA" will signal negative or zero amortization
+          #
+          #   @return [String]
+          required :minimum_payment_months, String
+
+          # @!attribute minimum_payment_total
+          #   The sum of all interest and principal paid, in cents, when only paying minimum
+          #   monthly payment. "NA" will signal negative or zero amortization
+          #
+          #   @return [String]
+          required :minimum_payment_total, String
+
+          # @!attribute payoff_period_length_months
+          #   Number of months to full pay off
+          #
+          #   @return [Integer]
+          required :payoff_period_length_months, Integer
+
+          # @!attribute payoff_period_monthly_payment_amount
+          #   The amount needed to be paid, in cents, each month in order to pay off current
+          #   balance in the payoff period
+          #
+          #   @return [Integer]
+          required :payoff_period_monthly_payment_amount, Integer
+
+          # @!attribute payoff_period_payment_total
+          #   The sum of all interest and principal paid, in cents, when paying off in the
+          #   payoff period
+          #
+          #   @return [Integer]
+          required :payoff_period_payment_total, Integer
+
+          # @!method initialize(minimum_payment_months:, minimum_payment_total:, payoff_period_length_months:, payoff_period_monthly_payment_amount:, payoff_period_payment_total:)
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::FinancialAccounts::Statement::PayoffDetails} for more details.
+          #
+          #   Details on number and size of payments to pay off balance
+          #
+          #   @param minimum_payment_months [String] The number of months it would take to pay off the balance in full by only paying
+          #
+          #   @param minimum_payment_total [String] The sum of all interest and principal paid, in cents, when only paying minimum m
+          #
+          #   @param payoff_period_length_months [Integer] Number of months to full pay off
+          #
+          #   @param payoff_period_monthly_payment_amount [Integer] The amount needed to be paid, in cents, each month in order to pay off current b
+          #
+          #   @param payoff_period_payment_total [Integer] The sum of all interest and principal paid, in cents, when paying off in the pay
         end
       end
     end

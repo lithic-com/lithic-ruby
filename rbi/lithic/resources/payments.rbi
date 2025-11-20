@@ -120,7 +120,7 @@ module Lithic
           date_of_death: T.nilable(Date),
           memo: T.nilable(String),
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::PaymentReturnResponse)
+        ).returns(Lithic::Payment)
       end
       def return_(
         payment_token,
