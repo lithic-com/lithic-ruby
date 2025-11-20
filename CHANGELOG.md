@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-alpha.56 (2025-11-20)
+
+Full Changelog: [v0.1.0-alpha.55...v0.1.0-alpha.56](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.55...v0.1.0-alpha.56)
+
+### Features
+
+* **api:** add disputes V2 endpoints ([0730dce](https://github.com/lithic-com/lithic-ruby/commit/0730dcede8d11f0b56c0beb90c692552b229c6fb))
+* **api:** Add Payoff Details ([e21e546](https://github.com/lithic-com/lithic-ruby/commit/e21e5460240174de29a51d67c8206220e3cf19d1))
+* **api:** add return payment method ([0730dce](https://github.com/lithic-com/lithic-ruby/commit/0730dcede8d11f0b56c0beb90c692552b229c6fb))
+* **api:** add Tokenization and ACH Rules ([0730dce](https://github.com/lithic-com/lithic-ruby/commit/0730dcede8d11f0b56c0beb90c692552b229c6fb))
+* **api:** add unpause external_bank_accounts API method ([0730dce](https://github.com/lithic-com/lithic-ruby/commit/0730dcede8d11f0b56c0beb90c692552b229c6fb))
+* **api:** extract some common schemas into models ([0730dce](https://github.com/lithic-com/lithic-ruby/commit/0730dcede8d11f0b56c0beb90c692552b229c6fb))
+
+
+### Bug Fixes
+
+* **api:** change allowed phone number length from 18 to 16 ([0730dce](https://github.com/lithic-com/lithic-ruby/commit/0730dcede8d11f0b56c0beb90c692552b229c6fb))
+* **api:** mark certain optional fields as nullable ([0730dce](https://github.com/lithic-com/lithic-ruby/commit/0730dcede8d11f0b56c0beb90c692552b229c6fb))
+* **api:** Modify return type of returns API to payment-transaction ([e21e546](https://github.com/lithic-com/lithic-ruby/commit/e21e5460240174de29a51d67c8206220e3cf19d1))
+
 ## 0.1.0-alpha.55 (2025-11-11)
 
 Full Changelog: [v0.1.0-alpha.54...v0.1.0-alpha.55](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.54...v0.1.0-alpha.55)
