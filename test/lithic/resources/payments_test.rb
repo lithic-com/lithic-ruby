@@ -113,14 +113,33 @@ class Lithic::Test::Resources::PaymentsTest < Lithic::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Lithic::Models::PaymentReturnResponse
+      response => Lithic::Payment
     end
 
     assert_pattern do
       response => {
-        result: Lithic::Models::PaymentReturnResponse::Result,
-        transaction_group_uuid: String,
-        transaction_uuid: String
+        token: String,
+        category: Lithic::Payment::Category,
+        created: Time,
+        descriptor: String,
+        direction: Lithic::Payment::Direction,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Payment::Event]),
+        family: Symbol,
+        financial_account_token: String,
+        method_: Lithic::Payment::Method,
+        method_attributes: Lithic::Payment::MethodAttributes,
+        pending_amount: Integer,
+        related_account_tokens: Lithic::Payment::RelatedAccountTokens | nil,
+        result: Lithic::Payment::Result,
+        settled_amount: Integer,
+        source: Lithic::Payment::Source,
+        status: Lithic::Payment::Status,
+        updated: Time,
+        currency: String | nil,
+        expected_release_date: Date | nil,
+        external_bank_account_token: String | nil,
+        type: Lithic::Payment::Type | nil,
+        user_defined_id: String | nil
       }
     end
   end

@@ -47,7 +47,7 @@ module Lithic
         ?date_of_death: Date?,
         ?memo: String?,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::PaymentReturnResponse
+      ) -> Lithic::Payment
 
       def simulate_action: (
         String payment_token,
