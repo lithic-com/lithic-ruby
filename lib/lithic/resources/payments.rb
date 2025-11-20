@@ -162,7 +162,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::PaymentReturnResponse]
+      # @return [Lithic::Models::Payment]
       #
       # @see Lithic::Models::PaymentReturnParams
       def return_(payment_token, params)
@@ -171,7 +171,7 @@ module Lithic
           method: :post,
           path: ["v1/payments/%1$s/return", payment_token],
           body: parsed,
-          model: Lithic::Models::PaymentReturnResponse,
+          model: Lithic::Payment,
           options: options
         )
       end
