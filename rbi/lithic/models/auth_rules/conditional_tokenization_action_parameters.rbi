@@ -504,6 +504,14 @@ module Lithic
           # - `WALLET_RECOMMENDED_DECISION`: The decision recommended by the digital wallet
           #   provider. Valid values include APPROVE, DECLINE,
           #   REQUIRE_ADDITIONAL_AUTHENTICATION.
+          # - `WALLET_RECOMMENDATION_REASONS`: List of reasons provided by the digital
+          #   wallet provider for the recommended decision. Valid values are
+          #   `ACCOUNT_CARD_TOO_NEW`, `ACCOUNT_RECENTLY_CHANGED`, `ACCOUNT_TOO_NEW`,
+          #   `ACCOUNT_TOO_NEW_SINCE_LAUNCH`, `DEVICE_RECENTLY_LOST`,
+          #   `HAS_SUSPENDED_TOKENS`, `HIGH_RISK`, `INACTIVE_ACCOUNT`, `LOW_ACCOUNT_SCORE`,
+          #   `LOW_DEVICE_SCORE`, `OUTSIDE_HOME_TERRITORY`, `SUSPICIOUS_ACTIVITY`,
+          #   `TOO_MANY_DIFFERENT_CARDHOLDERS`, `TOO_MANY_RECENT_ATTEMPTS`,
+          #   `TOO_MANY_RECENT_TOKENS`, `UNABLE_TO_ASSESS`.
           # - `TOKEN_REQUESTOR_ID`: Unique identifier for the entity requesting the token.
           # - `WALLET_TOKEN_STATUS`: The current status of the wallet token.
           sig do
@@ -552,6 +560,14 @@ module Lithic
             # - `WALLET_RECOMMENDED_DECISION`: The decision recommended by the digital wallet
             #   provider. Valid values include APPROVE, DECLINE,
             #   REQUIRE_ADDITIONAL_AUTHENTICATION.
+            # - `WALLET_RECOMMENDATION_REASONS`: List of reasons provided by the digital
+            #   wallet provider for the recommended decision. Valid values are
+            #   `ACCOUNT_CARD_TOO_NEW`, `ACCOUNT_RECENTLY_CHANGED`, `ACCOUNT_TOO_NEW`,
+            #   `ACCOUNT_TOO_NEW_SINCE_LAUNCH`, `DEVICE_RECENTLY_LOST`,
+            #   `HAS_SUSPENDED_TOKENS`, `HIGH_RISK`, `INACTIVE_ACCOUNT`, `LOW_ACCOUNT_SCORE`,
+            #   `LOW_DEVICE_SCORE`, `OUTSIDE_HOME_TERRITORY`, `SUSPICIOUS_ACTIVITY`,
+            #   `TOO_MANY_DIFFERENT_CARDHOLDERS`, `TOO_MANY_RECENT_ATTEMPTS`,
+            #   `TOO_MANY_RECENT_TOKENS`, `UNABLE_TO_ASSESS`.
             # - `TOKEN_REQUESTOR_ID`: Unique identifier for the entity requesting the token.
             # - `WALLET_TOKEN_STATUS`: The current status of the wallet token.
             attribute:,
@@ -597,6 +613,14 @@ module Lithic
           # - `WALLET_RECOMMENDED_DECISION`: The decision recommended by the digital wallet
           #   provider. Valid values include APPROVE, DECLINE,
           #   REQUIRE_ADDITIONAL_AUTHENTICATION.
+          # - `WALLET_RECOMMENDATION_REASONS`: List of reasons provided by the digital
+          #   wallet provider for the recommended decision. Valid values are
+          #   `ACCOUNT_CARD_TOO_NEW`, `ACCOUNT_RECENTLY_CHANGED`, `ACCOUNT_TOO_NEW`,
+          #   `ACCOUNT_TOO_NEW_SINCE_LAUNCH`, `DEVICE_RECENTLY_LOST`,
+          #   `HAS_SUSPENDED_TOKENS`, `HIGH_RISK`, `INACTIVE_ACCOUNT`, `LOW_ACCOUNT_SCORE`,
+          #   `LOW_DEVICE_SCORE`, `OUTSIDE_HOME_TERRITORY`, `SUSPICIOUS_ACTIVITY`,
+          #   `TOO_MANY_DIFFERENT_CARDHOLDERS`, `TOO_MANY_RECENT_ATTEMPTS`,
+          #   `TOO_MANY_RECENT_TOKENS`, `UNABLE_TO_ASSESS`.
           # - `TOKEN_REQUESTOR_ID`: Unique identifier for the entity requesting the token.
           # - `WALLET_TOKEN_STATUS`: The current status of the wallet token.
           module Attribute
@@ -644,6 +668,11 @@ module Lithic
             WALLET_RECOMMENDED_DECISION =
               T.let(
                 :WALLET_RECOMMENDED_DECISION,
+                Lithic::AuthRules::ConditionalTokenizationActionParameters::Condition::Attribute::TaggedSymbol
+              )
+            WALLET_RECOMMENDATION_REASONS =
+              T.let(
+                :WALLET_RECOMMENDATION_REASONS,
                 Lithic::AuthRules::ConditionalTokenizationActionParameters::Condition::Attribute::TaggedSymbol
               )
             TOKEN_REQUESTOR_ID =

@@ -3,90 +3,241 @@
 module Lithic
   module Models
     module AuthRules
+      # @see Lithic::Resources::AuthRules::V2#create
       class AuthRule < Lithic::Internal::Type::BaseModel
         # @!attribute token
-        #   Globally unique identifier.
+        #   Auth Rule Token
         #
         #   @return [String]
         required :token, String
 
+        # @!attribute account_tokens
+        #   Account tokens to which the Auth Rule applies.
+        #
+        #   @return [Array<String>]
+        required :account_tokens, Lithic::Internal::Type::ArrayOf[String]
+
+        # @!attribute business_account_tokens
+        #   Business Account tokens to which the Auth Rule applies.
+        #
+        #   @return [Array<String>]
+        required :business_account_tokens, Lithic::Internal::Type::ArrayOf[String]
+
+        # @!attribute card_tokens
+        #   Card tokens to which the Auth Rule applies.
+        #
+        #   @return [Array<String>]
+        required :card_tokens, Lithic::Internal::Type::ArrayOf[String]
+
+        # @!attribute current_version
+        #
+        #   @return [Lithic::Models::AuthRules::AuthRule::CurrentVersion, nil]
+        required :current_version, -> { Lithic::AuthRules::AuthRule::CurrentVersion }, nil?: true
+
+        # @!attribute draft_version
+        #
+        #   @return [Lithic::Models::AuthRules::AuthRule::DraftVersion, nil]
+        required :draft_version, -> { Lithic::AuthRules::AuthRule::DraftVersion }, nil?: true
+
+        # @!attribute event_stream
+        #   The event stream during which the rule will be evaluated.
+        #
+        #   @return [Symbol, Lithic::Models::AuthRules::AuthRule::EventStream]
+        required :event_stream, enum: -> { Lithic::AuthRules::AuthRule::EventStream }
+
+        # @!attribute lithic_managed
+        #   Indicates whether this auth rule is managed by Lithic. If true, the rule cannot
+        #   be modified or deleted by the user
+        #
+        #   @return [Boolean]
+        required :lithic_managed, Lithic::Internal::Type::Boolean
+
+        # @!attribute name
+        #   Auth Rule Name
+        #
+        #   @return [String, nil]
+        required :name, String, nil?: true
+
+        # @!attribute program_level
+        #   Whether the Auth Rule applies to all authorizations on the card program.
+        #
+        #   @return [Boolean]
+        required :program_level, Lithic::Internal::Type::Boolean
+
         # @!attribute state
-        #   Indicates whether the Auth Rule is ACTIVE or INACTIVE
+        #   The state of the Auth Rule
         #
         #   @return [Symbol, Lithic::Models::AuthRules::AuthRule::State]
         required :state, enum: -> { Lithic::AuthRules::AuthRule::State }
 
-        # @!attribute account_tokens
-        #   Array of account_token(s) identifying the accounts that the Auth Rule applies
-        #   to. Note that only this field or `card_tokens` can be provided for a given Auth
-        #   Rule.
+        # @!attribute type
+        #   The type of Auth Rule. For certain rule types, this determines the event stream
+        #   during which it will be evaluated. For rules that can be applied to one of
+        #   several event streams, the effective one is defined by the separate
+        #   `event_stream` field.
+        #
+        #   - `CONDITIONAL_BLOCK`: AUTHORIZATION event stream.
+        #   - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
+        #   - `MERCHANT_LOCK`: AUTHORIZATION event stream.
+        #   - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+        #     ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+        #
+        #   @return [Symbol, Lithic::Models::AuthRules::AuthRule::Type]
+        required :type, enum: -> { Lithic::AuthRules::AuthRule::Type }
+
+        # @!attribute excluded_card_tokens
+        #   Card tokens to which the Auth Rule does not apply.
         #
         #   @return [Array<String>, nil]
-        optional :account_tokens, Lithic::Internal::Type::ArrayOf[String]
+        optional :excluded_card_tokens, Lithic::Internal::Type::ArrayOf[String]
 
-        # @!attribute allowed_countries
-        #   Countries in which the Auth Rule permits transactions. Note that Lithic
-        #   maintains a list of countries in which all transactions are blocked; "allowing"
-        #   those countries in an Auth Rule does not override the Lithic-wide restrictions.
-        #
-        #   @return [Array<String>, nil]
-        optional :allowed_countries, Lithic::Internal::Type::ArrayOf[String]
-
-        # @!attribute allowed_mcc
-        #   Merchant category codes for which the Auth Rule permits transactions.
-        #
-        #   @return [Array<String>, nil]
-        optional :allowed_mcc, Lithic::Internal::Type::ArrayOf[String]
-
-        # @!attribute blocked_countries
-        #   Countries in which the Auth Rule automatically declines transactions.
-        #
-        #   @return [Array<String>, nil]
-        optional :blocked_countries, Lithic::Internal::Type::ArrayOf[String]
-
-        # @!attribute blocked_mcc
-        #   Merchant category codes for which the Auth Rule automatically declines
-        #   transactions.
-        #
-        #   @return [Array<String>, nil]
-        optional :blocked_mcc, Lithic::Internal::Type::ArrayOf[String]
-
-        # @!attribute card_tokens
-        #   Array of card_token(s) identifying the cards that the Auth Rule applies to. Note
-        #   that only this field or `account_tokens` can be provided for a given Auth Rule.
-        #
-        #   @return [Array<String>, nil]
-        optional :card_tokens, Lithic::Internal::Type::ArrayOf[String]
-
-        # @!attribute program_level
-        #   Boolean indicating whether the Auth Rule is applied at the program level.
-        #
-        #   @return [Boolean, nil]
-        optional :program_level, Lithic::Internal::Type::Boolean
-
-        # @!method initialize(token:, state:, account_tokens: nil, allowed_countries: nil, allowed_mcc: nil, blocked_countries: nil, blocked_mcc: nil, card_tokens: nil, program_level: nil)
+        # @!method initialize(token:, account_tokens:, business_account_tokens:, card_tokens:, current_version:, draft_version:, event_stream:, lithic_managed:, name:, program_level:, state:, type:, excluded_card_tokens: nil)
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::AuthRule} for more details.
         #
-        #   @param token [String] Globally unique identifier.
+        #   @param token [String] Auth Rule Token
         #
-        #   @param state [Symbol, Lithic::Models::AuthRules::AuthRule::State] Indicates whether the Auth Rule is ACTIVE or INACTIVE
+        #   @param account_tokens [Array<String>] Account tokens to which the Auth Rule applies.
         #
-        #   @param account_tokens [Array<String>] Array of account_token(s) identifying the accounts that the Auth Rule applies to
+        #   @param business_account_tokens [Array<String>] Business Account tokens to which the Auth Rule applies.
         #
-        #   @param allowed_countries [Array<String>] Countries in which the Auth Rule permits transactions. Note that Lithic maintain
+        #   @param card_tokens [Array<String>] Card tokens to which the Auth Rule applies.
         #
-        #   @param allowed_mcc [Array<String>] Merchant category codes for which the Auth Rule permits transactions.
+        #   @param current_version [Lithic::Models::AuthRules::AuthRule::CurrentVersion, nil]
         #
-        #   @param blocked_countries [Array<String>] Countries in which the Auth Rule automatically declines transactions.
+        #   @param draft_version [Lithic::Models::AuthRules::AuthRule::DraftVersion, nil]
         #
-        #   @param blocked_mcc [Array<String>] Merchant category codes for which the Auth Rule automatically declines transacti
+        #   @param event_stream [Symbol, Lithic::Models::AuthRules::AuthRule::EventStream] The event stream during which the rule will be evaluated.
         #
-        #   @param card_tokens [Array<String>] Array of card_token(s) identifying the cards that the Auth Rule applies to. Note
+        #   @param lithic_managed [Boolean] Indicates whether this auth rule is managed by Lithic. If true, the rule cannot
         #
-        #   @param program_level [Boolean] Boolean indicating whether the Auth Rule is applied at the program level.
+        #   @param name [String, nil] Auth Rule Name
+        #
+        #   @param program_level [Boolean] Whether the Auth Rule applies to all authorizations on the card program.
+        #
+        #   @param state [Symbol, Lithic::Models::AuthRules::AuthRule::State] The state of the Auth Rule
+        #
+        #   @param type [Symbol, Lithic::Models::AuthRules::AuthRule::Type] The type of Auth Rule. For certain rule types, this determines the event stream
+        #
+        #   @param excluded_card_tokens [Array<String>] Card tokens to which the Auth Rule does not apply.
 
-        # Indicates whether the Auth Rule is ACTIVE or INACTIVE
+        # @see Lithic::Models::AuthRules::AuthRule#current_version
+        class CurrentVersion < Lithic::Internal::Type::BaseModel
+          # @!attribute parameters
+          #   Parameters for the Auth Rule
+          #
+          #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters]
+          required :parameters, union: -> { Lithic::AuthRules::AuthRule::CurrentVersion::Parameters }
+
+          response_only do
+            # @!attribute version
+            #   The version of the rule, this is incremented whenever the rule's parameters
+            #   change.
+            #
+            #   @return [Integer]
+            required :version, Integer
+          end
+
+          # @!method initialize(parameters:, version:)
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::AuthRules::AuthRule::CurrentVersion} for more details.
+          #
+          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters] Parameters for the Auth Rule
+          #
+          #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
+
+          # Parameters for the Auth Rule
+          #
+          # @see Lithic::Models::AuthRules::AuthRule::CurrentVersion#parameters
+          module Parameters
+            extend Lithic::Internal::Type::Union
+
+            variant -> { Lithic::AuthRules::ConditionalBlockParameters }
+
+            variant -> { Lithic::AuthRules::VelocityLimitParams }
+
+            variant -> { Lithic::AuthRules::MerchantLockParameters }
+
+            variant -> { Lithic::AuthRules::Conditional3DSActionParameters }
+
+            variant -> { Lithic::AuthRules::ConditionalAuthorizationActionParameters }
+
+            variant -> { Lithic::AuthRules::ConditionalACHActionParameters }
+
+            variant -> { Lithic::AuthRules::ConditionalTokenizationActionParameters }
+
+            # @!method self.variants
+            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters)]
+          end
+        end
+
+        # @see Lithic::Models::AuthRules::AuthRule#draft_version
+        class DraftVersion < Lithic::Internal::Type::BaseModel
+          # @!attribute parameters
+          #   Parameters for the Auth Rule
+          #
+          #   @return [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters]
+          required :parameters, union: -> { Lithic::AuthRules::AuthRule::DraftVersion::Parameters }
+
+          response_only do
+            # @!attribute version
+            #   The version of the rule, this is incremented whenever the rule's parameters
+            #   change.
+            #
+            #   @return [Integer]
+            required :version, Integer
+          end
+
+          # @!method initialize(parameters:, version:)
+          #   Some parameter documentations has been truncated, see
+          #   {Lithic::Models::AuthRules::AuthRule::DraftVersion} for more details.
+          #
+          #   @param parameters [Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters] Parameters for the Auth Rule
+          #
+          #   @param version [Integer] The version of the rule, this is incremented whenever the rule's parameters chan
+
+          # Parameters for the Auth Rule
+          #
+          # @see Lithic::Models::AuthRules::AuthRule::DraftVersion#parameters
+          module Parameters
+            extend Lithic::Internal::Type::Union
+
+            variant -> { Lithic::AuthRules::ConditionalBlockParameters }
+
+            variant -> { Lithic::AuthRules::VelocityLimitParams }
+
+            variant -> { Lithic::AuthRules::MerchantLockParameters }
+
+            variant -> { Lithic::AuthRules::Conditional3DSActionParameters }
+
+            variant -> { Lithic::AuthRules::ConditionalAuthorizationActionParameters }
+
+            variant -> { Lithic::AuthRules::ConditionalACHActionParameters }
+
+            variant -> { Lithic::AuthRules::ConditionalTokenizationActionParameters }
+
+            # @!method self.variants
+            #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters)]
+          end
+        end
+
+        # The event stream during which the rule will be evaluated.
+        #
+        # @see Lithic::Models::AuthRules::AuthRule#event_stream
+        module EventStream
+          extend Lithic::Internal::Type::Enum
+
+          AUTHORIZATION = :AUTHORIZATION
+          THREE_DS_AUTHENTICATION = :THREE_DS_AUTHENTICATION
+          TOKENIZATION = :TOKENIZATION
+          ACH_CREDIT_RECEIPT = :ACH_CREDIT_RECEIPT
+          ACH_DEBIT_RECEIPT = :ACH_DEBIT_RECEIPT
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # The state of the Auth Rule
         #
         # @see Lithic::Models::AuthRules::AuthRule#state
         module State
@@ -94,6 +245,30 @@ module Lithic
 
           ACTIVE = :ACTIVE
           INACTIVE = :INACTIVE
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # The type of Auth Rule. For certain rule types, this determines the event stream
+        # during which it will be evaluated. For rules that can be applied to one of
+        # several event streams, the effective one is defined by the separate
+        # `event_stream` field.
+        #
+        # - `CONDITIONAL_BLOCK`: AUTHORIZATION event stream.
+        # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
+        # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
+        # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+        #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+        #
+        # @see Lithic::Models::AuthRules::AuthRule#type
+        module Type
+          extend Lithic::Internal::Type::Enum
+
+          CONDITIONAL_BLOCK = :CONDITIONAL_BLOCK
+          VELOCITY_LIMIT = :VELOCITY_LIMIT
+          MERCHANT_LOCK = :MERCHANT_LOCK
+          CONDITIONAL_ACTION = :CONDITIONAL_ACTION
 
           # @!method self.values
           #   @return [Array<Symbol>]
