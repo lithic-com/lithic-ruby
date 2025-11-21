@@ -17,6 +17,9 @@ module Lithic
         IS_GREATER_THAN_OR_EQUAL_TO = :IS_GREATER_THAN_OR_EQUAL_TO
         IS_LESS_THAN = :IS_LESS_THAN
         IS_LESS_THAN_OR_EQUAL_TO = :IS_LESS_THAN_OR_EQUAL_TO
+        CONTAINS_ANY = :CONTAINS_ANY
+        CONTAINS_ALL = :CONTAINS_ALL
+        CONTAINS_NONE = :CONTAINS_NONE
 
         # @!method self.values
         #   @return [Array<Symbol>]

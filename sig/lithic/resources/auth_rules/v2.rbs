@@ -15,12 +15,12 @@ module Lithic
           ?name: String?,
           ?excluded_card_tokens: ::Array[String],
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::AuthRules::V2CreateResponse
+        ) -> Lithic::AuthRules::AuthRule
 
         def retrieve: (
           String auth_rule_token,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::AuthRules::V2RetrieveResponse
+        ) -> Lithic::AuthRules::AuthRule
 
         def update: (
           String auth_rule_token,
@@ -32,7 +32,7 @@ module Lithic
           ?excluded_card_tokens: ::Array[String],
           ?program_level: bool,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::AuthRules::V2UpdateResponse
+        ) -> Lithic::AuthRules::AuthRule
 
         def list: (
           ?account_token: String,
@@ -44,7 +44,7 @@ module Lithic
           ?scope: Lithic::Models::AuthRules::V2ListParams::scope,
           ?starting_after: String,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Internal::CursorPage[Lithic::Models::AuthRules::V2ListResponse]
+        ) -> Lithic::Internal::CursorPage[Lithic::AuthRules::AuthRule]
 
         def delete: (
           String auth_rule_token,
@@ -55,12 +55,12 @@ module Lithic
           String auth_rule_token,
           ?parameters: Lithic::Models::AuthRules::V2DraftParams::parameters?,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::AuthRules::V2DraftResponse
+        ) -> Lithic::AuthRules::AuthRule
 
         def promote: (
           String auth_rule_token,
           ?request_options: Lithic::request_opts
-        ) -> Lithic::Models::AuthRules::V2PromoteResponse
+        ) -> Lithic::AuthRules::AuthRule
 
         def retrieve_features: (
           String auth_rule_token,
