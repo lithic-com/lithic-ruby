@@ -330,9 +330,9 @@ module Lithic
           {
             minimum_payment_months: String,
             minimum_payment_total: String,
-            payoff_period_length_months: Integer,
-            payoff_period_monthly_payment_amount: Integer,
-            payoff_period_payment_total: Integer
+            payoff_period_length_months: Integer?,
+            payoff_period_monthly_payment_amount: Integer?,
+            payoff_period_payment_total: Integer?
           }
 
         class PayoffDetails < Lithic::Internal::Type::BaseModel
@@ -340,26 +340,26 @@ module Lithic
 
           attr_accessor minimum_payment_total: String
 
-          attr_accessor payoff_period_length_months: Integer
+          attr_accessor payoff_period_length_months: Integer?
 
-          attr_accessor payoff_period_monthly_payment_amount: Integer
+          attr_accessor payoff_period_monthly_payment_amount: Integer?
 
-          attr_accessor payoff_period_payment_total: Integer
+          attr_accessor payoff_period_payment_total: Integer?
 
           def initialize: (
             minimum_payment_months: String,
             minimum_payment_total: String,
-            payoff_period_length_months: Integer,
-            payoff_period_monthly_payment_amount: Integer,
-            payoff_period_payment_total: Integer
+            payoff_period_length_months: Integer?,
+            payoff_period_monthly_payment_amount: Integer?,
+            payoff_period_payment_total: Integer?
           ) -> void
 
           def to_hash: -> {
             minimum_payment_months: String,
             minimum_payment_total: String,
-            payoff_period_length_months: Integer,
-            payoff_period_monthly_payment_amount: Integer,
-            payoff_period_payment_total: Integer
+            payoff_period_length_months: Integer?,
+            payoff_period_monthly_payment_amount: Integer?,
+            payoff_period_payment_total: Integer?
           }
         end
       end

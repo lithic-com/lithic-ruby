@@ -60,6 +60,21 @@ module Lithic
             :IS_LESS_THAN_OR_EQUAL_TO,
             Lithic::AuthRules::ConditionalOperation::TaggedSymbol
           )
+        CONTAINS_ANY =
+          T.let(
+            :CONTAINS_ANY,
+            Lithic::AuthRules::ConditionalOperation::TaggedSymbol
+          )
+        CONTAINS_ALL =
+          T.let(
+            :CONTAINS_ALL,
+            Lithic::AuthRules::ConditionalOperation::TaggedSymbol
+          )
+        CONTAINS_NONE =
+          T.let(
+            :CONTAINS_NONE,
+            Lithic::AuthRules::ConditionalOperation::TaggedSymbol
+          )
 
         sig do
           override.returns(

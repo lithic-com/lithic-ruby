@@ -49,7 +49,7 @@ module Lithic
         ?entity: String,
         ?wallet_recommended_decision: Lithic::Models::TokenizationSimulateParams::wallet_recommended_decision,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::TokenizationSimulateResponse
+      ) -> Lithic::Tokenization
 
       def unpause: (
         String tokenization_token,
@@ -60,7 +60,7 @@ module Lithic
         String tokenization_token,
         ?digital_card_art_token: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::TokenizationUpdateDigitalCardArtResponse
+      ) -> Lithic::Tokenization
 
       def initialize: (client: Lithic::Client) -> void
     end

@@ -3,17 +3,19 @@ module Lithic
     type card_program =
       {
         token: String,
+        account_level_management_enabled: bool,
         created: Time,
         name: String,
         pan_range_end: String,
         pan_range_start: String,
-        account_level_management_enabled: bool,
         cardholder_currency: String,
         settlement_currencies: ::Array[String]
       }
 
     class CardProgram < Lithic::Internal::Type::BaseModel
       attr_accessor token: String
+
+      attr_accessor account_level_management_enabled: bool
 
       attr_accessor created: Time
 
@@ -22,10 +24,6 @@ module Lithic
       attr_accessor pan_range_end: String
 
       attr_accessor pan_range_start: String
-
-      attr_reader account_level_management_enabled: bool?
-
-      def account_level_management_enabled=: (bool) -> bool
 
       attr_reader cardholder_currency: String?
 
@@ -37,22 +35,22 @@ module Lithic
 
       def initialize: (
         token: String,
+        account_level_management_enabled: bool,
         created: Time,
         name: String,
         pan_range_end: String,
         pan_range_start: String,
-        ?account_level_management_enabled: bool,
         ?cardholder_currency: String,
         ?settlement_currencies: ::Array[String]
       ) -> void
 
       def to_hash: -> {
         token: String,
+        account_level_management_enabled: bool,
         created: Time,
         name: String,
         pan_range_end: String,
         pan_range_start: String,
-        account_level_management_enabled: bool,
         cardholder_currency: String,
         settlement_currencies: ::Array[String]
       }

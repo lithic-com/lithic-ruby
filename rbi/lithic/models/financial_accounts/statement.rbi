@@ -790,17 +790,17 @@ module Lithic
           attr_accessor :minimum_payment_total
 
           # Number of months to full pay off
-          sig { returns(Integer) }
+          sig { returns(T.nilable(Integer)) }
           attr_accessor :payoff_period_length_months
 
           # The amount needed to be paid, in cents, each month in order to pay off current
           # balance in the payoff period
-          sig { returns(Integer) }
+          sig { returns(T.nilable(Integer)) }
           attr_accessor :payoff_period_monthly_payment_amount
 
           # The sum of all interest and principal paid, in cents, when paying off in the
           # payoff period
-          sig { returns(Integer) }
+          sig { returns(T.nilable(Integer)) }
           attr_accessor :payoff_period_payment_total
 
           # Details on number and size of payments to pay off balance
@@ -808,9 +808,9 @@ module Lithic
             params(
               minimum_payment_months: String,
               minimum_payment_total: String,
-              payoff_period_length_months: Integer,
-              payoff_period_monthly_payment_amount: Integer,
-              payoff_period_payment_total: Integer
+              payoff_period_length_months: T.nilable(Integer),
+              payoff_period_monthly_payment_amount: T.nilable(Integer),
+              payoff_period_payment_total: T.nilable(Integer)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -836,9 +836,9 @@ module Lithic
               {
                 minimum_payment_months: String,
                 minimum_payment_total: String,
-                payoff_period_length_months: Integer,
-                payoff_period_monthly_payment_amount: Integer,
-                payoff_period_payment_total: Integer
+                payoff_period_length_months: T.nilable(Integer),
+                payoff_period_monthly_payment_amount: T.nilable(Integer),
+                payoff_period_payment_total: T.nilable(Integer)
               }
             )
           end
