@@ -12,6 +12,9 @@ module Lithic
         | :IS_GREATER_THAN_OR_EQUAL_TO
         | :IS_LESS_THAN
         | :IS_LESS_THAN_OR_EQUAL_TO
+        | :CONTAINS_ANY
+        | :CONTAINS_ALL
+        | :CONTAINS_NONE
 
       module ConditionalOperation
         extend Lithic::Internal::Type::Enum
@@ -26,6 +29,9 @@ module Lithic
         IS_GREATER_THAN_OR_EQUAL_TO: :IS_GREATER_THAN_OR_EQUAL_TO
         IS_LESS_THAN: :IS_LESS_THAN
         IS_LESS_THAN_OR_EQUAL_TO: :IS_LESS_THAN_OR_EQUAL_TO
+        CONTAINS_ANY: :CONTAINS_ANY
+        CONTAINS_ALL: :CONTAINS_ALL
+        CONTAINS_NONE: :CONTAINS_NONE
 
         def self?.values: -> ::Array[Lithic::Models::AuthRules::conditional_operation]
       end

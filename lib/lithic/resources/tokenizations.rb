@@ -207,7 +207,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::TokenizationSimulateResponse]
+      # @return [Lithic::Models::Tokenization]
       #
       # @see Lithic::Models::TokenizationSimulateParams
       def simulate(params)
@@ -216,7 +216,7 @@ module Lithic
           method: :post,
           path: "v1/simulate/tokenizations",
           body: parsed,
-          model: Lithic::Models::TokenizationSimulateResponse,
+          model: Lithic::Tokenization,
           options: options
         )
       end
@@ -267,7 +267,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::TokenizationUpdateDigitalCardArtResponse]
+      # @return [Lithic::Models::Tokenization]
       #
       # @see Lithic::Models::TokenizationUpdateDigitalCardArtParams
       def update_digital_card_art(tokenization_token, params = {})
@@ -276,7 +276,7 @@ module Lithic
           method: :post,
           path: ["v1/tokenizations/%1$s/update_digital_card_art", tokenization_token],
           body: parsed,
-          model: Lithic::Models::TokenizationUpdateDigitalCardArtResponse,
+          model: Lithic::Tokenization,
           options: options
         )
       end

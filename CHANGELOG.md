@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0 (2025-11-21)
+
+Full Changelog: [v0.1.0-alpha.56...v0.1.0](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.56...v0.1.0)
+
+### Features
+
+* **api:** add WALLET_RECOMMENDATION_REASONS attribute for tokenization rules ([13b07cb](https://github.com/lithic-com/lithic-ruby/commit/13b07cbc3cf7f8acd8b1bab6c5d1abf84762e7d6))
+* **api:** provide a unified model for AuthRule ([13b07cb](https://github.com/lithic-com/lithic-ruby/commit/13b07cbc3cf7f8acd8b1bab6c5d1abf84762e7d6))
+
+
+### Bug Fixes
+
+* **api:** fix examples in spec that were not fully valid ([13b07cb](https://github.com/lithic-com/lithic-ruby/commit/13b07cbc3cf7f8acd8b1bab6c5d1abf84762e7d6))
+* **api:** make certain payoff fields nullable ([13b07cb](https://github.com/lithic-com/lithic-ruby/commit/13b07cbc3cf7f8acd8b1bab6c5d1abf84762e7d6))
+
+
+### Chores
+
+* explicitly require "base64" gem ([635f951](https://github.com/lithic-com/lithic-ruby/commit/635f9513543431da16261d80ede76d30d6338de3))
+
 ## 0.1.0-alpha.56 (2025-11-20)
 
 Full Changelog: [v0.1.0-alpha.55...v0.1.0-alpha.56](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.55...v0.1.0-alpha.56)

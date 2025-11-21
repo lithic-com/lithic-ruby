@@ -10,6 +10,11 @@ module Lithic
       sig { returns(String) }
       attr_accessor :token
 
+      # Whether the card program is participating in Account Level Management. Currently
+      # applicable to Visa card programs only.
+      sig { returns(T::Boolean) }
+      attr_accessor :account_level_management_enabled
+
       # Timestamp of when the card program was created.
       sig { returns(Time) }
       attr_accessor :created
@@ -25,14 +30,6 @@ module Lithic
       # The first digits of the card number that this card program starts with.
       sig { returns(String) }
       attr_accessor :pan_range_start
-
-      # Whether the card program is participating in Account Level Management. Currently
-      # applicable to Visa card programs only.
-      sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :account_level_management_enabled
-
-      sig { params(account_level_management_enabled: T::Boolean).void }
-      attr_writer :account_level_management_enabled
 
       # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
       sig { returns(T.nilable(String)) }
@@ -52,11 +49,11 @@ module Lithic
       sig do
         params(
           token: String,
+          account_level_management_enabled: T::Boolean,
           created: Time,
           name: String,
           pan_range_end: String,
           pan_range_start: String,
-          account_level_management_enabled: T::Boolean,
           cardholder_currency: String,
           settlement_currencies: T::Array[String]
         ).returns(T.attached_class)
@@ -64,6 +61,9 @@ module Lithic
       def self.new(
         # Globally unique identifier.
         token:,
+        # Whether the card program is participating in Account Level Management. Currently
+        # applicable to Visa card programs only.
+        account_level_management_enabled:,
         # Timestamp of when the card program was created.
         created:,
         # The name of the card program.
@@ -72,9 +72,6 @@ module Lithic
         pan_range_end:,
         # The first digits of the card number that this card program starts with.
         pan_range_start:,
-        # Whether the card program is participating in Account Level Management. Currently
-        # applicable to Visa card programs only.
-        account_level_management_enabled: nil,
         # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
         cardholder_currency: nil,
         # List of 3-character alphabetic ISO 4217 codes for the currencies that the card
@@ -87,11 +84,11 @@ module Lithic
         override.returns(
           {
             token: String,
+            account_level_management_enabled: T::Boolean,
             created: Time,
             name: String,
             pan_range_end: String,
             pan_range_start: String,
-            account_level_management_enabled: T::Boolean,
             cardholder_currency: String,
             settlement_currencies: T::Array[String]
           }

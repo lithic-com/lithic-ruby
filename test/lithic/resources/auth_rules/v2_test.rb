@@ -12,7 +12,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Lithic::Models::AuthRules::V2CreateResponse
+      response => Lithic::AuthRules::AuthRule
     end
 
     assert_pattern do
@@ -21,14 +21,14 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
-        current_version: Lithic::Models::AuthRules::V2CreateResponse::CurrentVersion | nil,
-        draft_version: Lithic::Models::AuthRules::V2CreateResponse::DraftVersion | nil,
-        event_stream: Lithic::Models::AuthRules::V2CreateResponse::EventStream,
+        current_version: Lithic::AuthRules::AuthRule::CurrentVersion | nil,
+        draft_version: Lithic::AuthRules::AuthRule::DraftVersion | nil,
+        event_stream: Lithic::AuthRules::AuthRule::EventStream,
         lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
         program_level: Lithic::Internal::Type::Boolean,
-        state: Lithic::Models::AuthRules::V2CreateResponse::State,
-        type: Lithic::Models::AuthRules::V2CreateResponse::Type,
+        state: Lithic::AuthRules::AuthRule::State,
+        type: Lithic::AuthRules::AuthRule::Type,
         excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -38,7 +38,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     response = @lithic.auth_rules.v2.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::AuthRules::V2RetrieveResponse
+      response => Lithic::AuthRules::AuthRule
     end
 
     assert_pattern do
@@ -47,14 +47,14 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
-        current_version: Lithic::Models::AuthRules::V2RetrieveResponse::CurrentVersion | nil,
-        draft_version: Lithic::Models::AuthRules::V2RetrieveResponse::DraftVersion | nil,
-        event_stream: Lithic::Models::AuthRules::V2RetrieveResponse::EventStream,
+        current_version: Lithic::AuthRules::AuthRule::CurrentVersion | nil,
+        draft_version: Lithic::AuthRules::AuthRule::DraftVersion | nil,
+        event_stream: Lithic::AuthRules::AuthRule::EventStream,
         lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
         program_level: Lithic::Internal::Type::Boolean,
-        state: Lithic::Models::AuthRules::V2RetrieveResponse::State,
-        type: Lithic::Models::AuthRules::V2RetrieveResponse::Type,
+        state: Lithic::AuthRules::AuthRule::State,
+        type: Lithic::AuthRules::AuthRule::Type,
         excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -64,7 +64,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     response = @lithic.auth_rules.v2.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::AuthRules::V2UpdateResponse
+      response => Lithic::AuthRules::AuthRule
     end
 
     assert_pattern do
@@ -73,14 +73,14 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
-        current_version: Lithic::Models::AuthRules::V2UpdateResponse::CurrentVersion | nil,
-        draft_version: Lithic::Models::AuthRules::V2UpdateResponse::DraftVersion | nil,
-        event_stream: Lithic::Models::AuthRules::V2UpdateResponse::EventStream,
+        current_version: Lithic::AuthRules::AuthRule::CurrentVersion | nil,
+        draft_version: Lithic::AuthRules::AuthRule::DraftVersion | nil,
+        event_stream: Lithic::AuthRules::AuthRule::EventStream,
         lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
         program_level: Lithic::Internal::Type::Boolean,
-        state: Lithic::Models::AuthRules::V2UpdateResponse::State,
-        type: Lithic::Models::AuthRules::V2UpdateResponse::Type,
+        state: Lithic::AuthRules::AuthRule::State,
+        type: Lithic::AuthRules::AuthRule::Type,
         excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -97,7 +97,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::AuthRules::V2ListResponse
+      row => Lithic::AuthRules::AuthRule
     end
 
     assert_pattern do
@@ -106,14 +106,14 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
-        current_version: Lithic::Models::AuthRules::V2ListResponse::CurrentVersion | nil,
-        draft_version: Lithic::Models::AuthRules::V2ListResponse::DraftVersion | nil,
-        event_stream: Lithic::Models::AuthRules::V2ListResponse::EventStream,
+        current_version: Lithic::AuthRules::AuthRule::CurrentVersion | nil,
+        draft_version: Lithic::AuthRules::AuthRule::DraftVersion | nil,
+        event_stream: Lithic::AuthRules::AuthRule::EventStream,
         lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
         program_level: Lithic::Internal::Type::Boolean,
-        state: Lithic::Models::AuthRules::V2ListResponse::State,
-        type: Lithic::Models::AuthRules::V2ListResponse::Type,
+        state: Lithic::AuthRules::AuthRule::State,
+        type: Lithic::AuthRules::AuthRule::Type,
         excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -131,7 +131,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     response = @lithic.auth_rules.v2.draft("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::AuthRules::V2DraftResponse
+      response => Lithic::AuthRules::AuthRule
     end
 
     assert_pattern do
@@ -140,14 +140,14 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
-        current_version: Lithic::Models::AuthRules::V2DraftResponse::CurrentVersion | nil,
-        draft_version: Lithic::Models::AuthRules::V2DraftResponse::DraftVersion | nil,
-        event_stream: Lithic::Models::AuthRules::V2DraftResponse::EventStream,
+        current_version: Lithic::AuthRules::AuthRule::CurrentVersion | nil,
+        draft_version: Lithic::AuthRules::AuthRule::DraftVersion | nil,
+        event_stream: Lithic::AuthRules::AuthRule::EventStream,
         lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
         program_level: Lithic::Internal::Type::Boolean,
-        state: Lithic::Models::AuthRules::V2DraftResponse::State,
-        type: Lithic::Models::AuthRules::V2DraftResponse::Type,
+        state: Lithic::AuthRules::AuthRule::State,
+        type: Lithic::AuthRules::AuthRule::Type,
         excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -157,7 +157,7 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
     response = @lithic.auth_rules.v2.promote("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::AuthRules::V2PromoteResponse
+      response => Lithic::AuthRules::AuthRule
     end
 
     assert_pattern do
@@ -166,14 +166,14 @@ class Lithic::Test::Resources::AuthRules::V2Test < Lithic::Test::ResourceTest
         account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         business_account_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
-        current_version: Lithic::Models::AuthRules::V2PromoteResponse::CurrentVersion | nil,
-        draft_version: Lithic::Models::AuthRules::V2PromoteResponse::DraftVersion | nil,
-        event_stream: Lithic::Models::AuthRules::V2PromoteResponse::EventStream,
+        current_version: Lithic::AuthRules::AuthRule::CurrentVersion | nil,
+        draft_version: Lithic::AuthRules::AuthRule::DraftVersion | nil,
+        event_stream: Lithic::AuthRules::AuthRule::EventStream,
         lithic_managed: Lithic::Internal::Type::Boolean,
         name: String | nil,
         program_level: Lithic::Internal::Type::Boolean,
-        state: Lithic::Models::AuthRules::V2PromoteResponse::State,
-        type: Lithic::Models::AuthRules::V2PromoteResponse::Type,
+        state: Lithic::AuthRules::AuthRule::State,
+        type: Lithic::AuthRules::AuthRule::Type,
         excluded_card_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil
       }
     end

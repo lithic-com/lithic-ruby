@@ -30,7 +30,7 @@ module Lithic
             name: T.nilable(String),
             excluded_card_tokens: T::Array[String],
             request_options: Lithic::RequestOptions::OrHash
-          ).returns(Lithic::Models::AuthRules::V2CreateResponse)
+          ).returns(Lithic::AuthRules::AuthRule)
         end
         def create(
           # Parameters for the Auth Rule
@@ -69,7 +69,7 @@ module Lithic
           params(
             auth_rule_token: String,
             request_options: Lithic::RequestOptions::OrHash
-          ).returns(Lithic::Models::AuthRules::V2RetrieveResponse)
+          ).returns(Lithic::AuthRules::AuthRule)
         end
         def retrieve(auth_rule_token, request_options: {})
         end
@@ -90,7 +90,7 @@ module Lithic
             excluded_card_tokens: T::Array[String],
             program_level: T::Boolean,
             request_options: Lithic::RequestOptions::OrHash
-          ).returns(Lithic::Models::AuthRules::V2UpdateResponse)
+          ).returns(Lithic::AuthRules::AuthRule)
         end
         def update(
           auth_rule_token,
@@ -129,11 +129,7 @@ module Lithic
             scope: Lithic::AuthRules::V2ListParams::Scope::OrSymbol,
             starting_after: String,
             request_options: Lithic::RequestOptions::OrHash
-          ).returns(
-            Lithic::Internal::CursorPage[
-              Lithic::Models::AuthRules::V2ListResponse
-            ]
-          )
+          ).returns(Lithic::Internal::CursorPage[Lithic::AuthRules::AuthRule])
         end
         def list(
           # Only return Auth Rules that are bound to the provided account token.
@@ -188,7 +184,7 @@ module Lithic
                 )
               ),
             request_options: Lithic::RequestOptions::OrHash
-          ).returns(Lithic::Models::AuthRules::V2DraftResponse)
+          ).returns(Lithic::AuthRules::AuthRule)
         end
         def draft(
           auth_rule_token,
@@ -204,7 +200,7 @@ module Lithic
           params(
             auth_rule_token: String,
             request_options: Lithic::RequestOptions::OrHash
-          ).returns(Lithic::Models::AuthRules::V2PromoteResponse)
+          ).returns(Lithic::AuthRules::AuthRule)
         end
         def promote(auth_rule_token, request_options: {})
         end

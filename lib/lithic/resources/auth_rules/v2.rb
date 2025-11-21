@@ -34,7 +34,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::AuthRules::V2CreateResponse]
+        # @return [Lithic::Models::AuthRules::AuthRule]
         #
         # @see Lithic::Models::AuthRules::V2CreateParams
         def create(params)
@@ -43,7 +43,7 @@ module Lithic
             method: :post,
             path: "v2/auth_rules",
             body: parsed,
-            model: Lithic::Models::AuthRules::V2CreateResponse,
+            model: Lithic::AuthRules::AuthRule,
             options: options
           )
         end
@@ -55,14 +55,14 @@ module Lithic
         # @param auth_rule_token [String]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::AuthRules::V2RetrieveResponse]
+        # @return [Lithic::Models::AuthRules::AuthRule]
         #
         # @see Lithic::Models::AuthRules::V2RetrieveParams
         def retrieve(auth_rule_token, params = {})
           @client.request(
             method: :get,
             path: ["v2/auth_rules/%1$s", auth_rule_token],
-            model: Lithic::Models::AuthRules::V2RetrieveResponse,
+            model: Lithic::AuthRules::AuthRule,
             options: params[:request_options]
           )
         end
@@ -96,7 +96,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::AuthRules::V2UpdateResponse]
+        # @return [Lithic::Models::AuthRules::AuthRule]
         #
         # @see Lithic::Models::AuthRules::V2UpdateParams
         def update(auth_rule_token, params = {})
@@ -105,7 +105,7 @@ module Lithic
             method: :patch,
             path: ["v2/auth_rules/%1$s", auth_rule_token],
             body: parsed,
-            model: Lithic::Models::AuthRules::V2UpdateResponse,
+            model: Lithic::AuthRules::AuthRule,
             options: options
           )
         end
@@ -135,7 +135,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::CursorPage<Lithic::Models::AuthRules::V2ListResponse>]
+        # @return [Lithic::Internal::CursorPage<Lithic::Models::AuthRules::AuthRule>]
         #
         # @see Lithic::Models::AuthRules::V2ListParams
         def list(params = {})
@@ -145,7 +145,7 @@ module Lithic
             path: "v2/auth_rules",
             query: parsed,
             page: Lithic::Internal::CursorPage,
-            model: Lithic::Models::AuthRules::V2ListResponse,
+            model: Lithic::AuthRules::AuthRule,
             options: options
           )
         end
@@ -182,7 +182,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::AuthRules::V2DraftResponse]
+        # @return [Lithic::Models::AuthRules::AuthRule]
         #
         # @see Lithic::Models::AuthRules::V2DraftParams
         def draft(auth_rule_token, params = {})
@@ -191,7 +191,7 @@ module Lithic
             method: :post,
             path: ["v2/auth_rules/%1$s/draft", auth_rule_token],
             body: parsed,
-            model: Lithic::Models::AuthRules::V2DraftResponse,
+            model: Lithic::AuthRules::AuthRule,
             options: options
           )
         end
@@ -204,14 +204,14 @@ module Lithic
         # @param auth_rule_token [String]
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::AuthRules::V2PromoteResponse]
+        # @return [Lithic::Models::AuthRules::AuthRule]
         #
         # @see Lithic::Models::AuthRules::V2PromoteParams
         def promote(auth_rule_token, params = {})
           @client.request(
             method: :post,
             path: ["v2/auth_rules/%1$s/promote", auth_rule_token],
-            model: Lithic::Models::AuthRules::V2PromoteResponse,
+            model: Lithic::AuthRules::AuthRule,
             options: params[:request_options]
           )
         end
