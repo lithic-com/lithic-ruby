@@ -434,22 +434,22 @@ module Lithic
           # @!attribute payoff_period_length_months
           #   Number of months to full pay off
           #
-          #   @return [Integer]
-          required :payoff_period_length_months, Integer
+          #   @return [Integer, nil]
+          required :payoff_period_length_months, Integer, nil?: true
 
           # @!attribute payoff_period_monthly_payment_amount
           #   The amount needed to be paid, in cents, each month in order to pay off current
           #   balance in the payoff period
           #
-          #   @return [Integer]
-          required :payoff_period_monthly_payment_amount, Integer
+          #   @return [Integer, nil]
+          required :payoff_period_monthly_payment_amount, Integer, nil?: true
 
           # @!attribute payoff_period_payment_total
           #   The sum of all interest and principal paid, in cents, when paying off in the
           #   payoff period
           #
-          #   @return [Integer]
-          required :payoff_period_payment_total, Integer
+          #   @return [Integer, nil]
+          required :payoff_period_payment_total, Integer, nil?: true
 
           # @!method initialize(minimum_payment_months:, minimum_payment_total:, payoff_period_length_months:, payoff_period_monthly_payment_amount:, payoff_period_payment_total:)
           #   Some parameter documentations has been truncated, see
@@ -461,11 +461,11 @@ module Lithic
           #
           #   @param minimum_payment_total [String] The sum of all interest and principal paid, in cents, when only paying minimum m
           #
-          #   @param payoff_period_length_months [Integer] Number of months to full pay off
+          #   @param payoff_period_length_months [Integer, nil] Number of months to full pay off
           #
-          #   @param payoff_period_monthly_payment_amount [Integer] The amount needed to be paid, in cents, each month in order to pay off current b
+          #   @param payoff_period_monthly_payment_amount [Integer, nil] The amount needed to be paid, in cents, each month in order to pay off current b
           #
-          #   @param payoff_period_payment_total [Integer] The sum of all interest and principal paid, in cents, when paying off in the pay
+          #   @param payoff_period_payment_total [Integer, nil] The sum of all interest and principal paid, in cents, when paying off in the pay
         end
       end
     end

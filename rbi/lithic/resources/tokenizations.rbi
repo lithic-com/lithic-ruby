@@ -164,7 +164,7 @@ module Lithic
           wallet_recommended_decision:
             Lithic::TokenizationSimulateParams::WalletRecommendedDecision::OrSymbol,
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::TokenizationSimulateResponse)
+        ).returns(Lithic::Tokenization)
       end
       def simulate(
         # The three digit cvv for the card.
@@ -223,7 +223,7 @@ module Lithic
           tokenization_token: String,
           digital_card_art_token: String,
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::TokenizationUpdateDigitalCardArtResponse)
+        ).returns(Lithic::Tokenization)
       end
       def update_digital_card_art(
         # Tokenization token

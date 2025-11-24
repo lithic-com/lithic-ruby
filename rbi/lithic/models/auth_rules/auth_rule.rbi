@@ -11,107 +11,139 @@ module Lithic
             T.any(Lithic::AuthRules::AuthRule, Lithic::Internal::AnyHash)
           end
 
-        # Globally unique identifier.
+        # Auth Rule Token
         sig { returns(String) }
         attr_accessor :token
 
-        # Indicates whether the Auth Rule is ACTIVE or INACTIVE
-        sig { returns(Lithic::AuthRules::AuthRule::State::OrSymbol) }
+        # Account tokens to which the Auth Rule applies.
+        sig { returns(T::Array[String]) }
+        attr_accessor :account_tokens
+
+        # Business Account tokens to which the Auth Rule applies.
+        sig { returns(T::Array[String]) }
+        attr_accessor :business_account_tokens
+
+        # Card tokens to which the Auth Rule applies.
+        sig { returns(T::Array[String]) }
+        attr_accessor :card_tokens
+
+        sig { returns(T.nilable(Lithic::AuthRules::AuthRule::CurrentVersion)) }
+        attr_reader :current_version
+
+        sig do
+          params(
+            current_version:
+              T.nilable(Lithic::AuthRules::AuthRule::CurrentVersion::OrHash)
+          ).void
+        end
+        attr_writer :current_version
+
+        sig { returns(T.nilable(Lithic::AuthRules::AuthRule::DraftVersion)) }
+        attr_reader :draft_version
+
+        sig do
+          params(
+            draft_version:
+              T.nilable(Lithic::AuthRules::AuthRule::DraftVersion::OrHash)
+          ).void
+        end
+        attr_writer :draft_version
+
+        # The event stream during which the rule will be evaluated.
+        sig { returns(Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol) }
+        attr_accessor :event_stream
+
+        # Indicates whether this auth rule is managed by Lithic. If true, the rule cannot
+        # be modified or deleted by the user
+        sig { returns(T::Boolean) }
+        attr_accessor :lithic_managed
+
+        # Auth Rule Name
+        sig { returns(T.nilable(String)) }
+        attr_accessor :name
+
+        # Whether the Auth Rule applies to all authorizations on the card program.
+        sig { returns(T::Boolean) }
+        attr_accessor :program_level
+
+        # The state of the Auth Rule
+        sig { returns(Lithic::AuthRules::AuthRule::State::TaggedSymbol) }
         attr_accessor :state
 
-        # Array of account_token(s) identifying the accounts that the Auth Rule applies
-        # to. Note that only this field or `card_tokens` can be provided for a given Auth
-        # Rule.
+        # The type of Auth Rule. For certain rule types, this determines the event stream
+        # during which it will be evaluated. For rules that can be applied to one of
+        # several event streams, the effective one is defined by the separate
+        # `event_stream` field.
+        #
+        # - `CONDITIONAL_BLOCK`: AUTHORIZATION event stream.
+        # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
+        # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
+        # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+        #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+        sig { returns(Lithic::AuthRules::AuthRule::Type::TaggedSymbol) }
+        attr_accessor :type
+
+        # Card tokens to which the Auth Rule does not apply.
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :account_tokens
+        attr_reader :excluded_card_tokens
 
-        sig { params(account_tokens: T::Array[String]).void }
-        attr_writer :account_tokens
-
-        # Countries in which the Auth Rule permits transactions. Note that Lithic
-        # maintains a list of countries in which all transactions are blocked; "allowing"
-        # those countries in an Auth Rule does not override the Lithic-wide restrictions.
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :allowed_countries
-
-        sig { params(allowed_countries: T::Array[String]).void }
-        attr_writer :allowed_countries
-
-        # Merchant category codes for which the Auth Rule permits transactions.
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :allowed_mcc
-
-        sig { params(allowed_mcc: T::Array[String]).void }
-        attr_writer :allowed_mcc
-
-        # Countries in which the Auth Rule automatically declines transactions.
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :blocked_countries
-
-        sig { params(blocked_countries: T::Array[String]).void }
-        attr_writer :blocked_countries
-
-        # Merchant category codes for which the Auth Rule automatically declines
-        # transactions.
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :blocked_mcc
-
-        sig { params(blocked_mcc: T::Array[String]).void }
-        attr_writer :blocked_mcc
-
-        # Array of card_token(s) identifying the cards that the Auth Rule applies to. Note
-        # that only this field or `account_tokens` can be provided for a given Auth Rule.
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :card_tokens
-
-        sig { params(card_tokens: T::Array[String]).void }
-        attr_writer :card_tokens
-
-        # Boolean indicating whether the Auth Rule is applied at the program level.
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :program_level
-
-        sig { params(program_level: T::Boolean).void }
-        attr_writer :program_level
+        sig { params(excluded_card_tokens: T::Array[String]).void }
+        attr_writer :excluded_card_tokens
 
         sig do
           params(
             token: String,
-            state: Lithic::AuthRules::AuthRule::State::OrSymbol,
             account_tokens: T::Array[String],
-            allowed_countries: T::Array[String],
-            allowed_mcc: T::Array[String],
-            blocked_countries: T::Array[String],
-            blocked_mcc: T::Array[String],
+            business_account_tokens: T::Array[String],
             card_tokens: T::Array[String],
-            program_level: T::Boolean
+            current_version:
+              T.nilable(Lithic::AuthRules::AuthRule::CurrentVersion::OrHash),
+            draft_version:
+              T.nilable(Lithic::AuthRules::AuthRule::DraftVersion::OrHash),
+            event_stream: Lithic::AuthRules::AuthRule::EventStream::OrSymbol,
+            lithic_managed: T::Boolean,
+            name: T.nilable(String),
+            program_level: T::Boolean,
+            state: Lithic::AuthRules::AuthRule::State::OrSymbol,
+            type: Lithic::AuthRules::AuthRule::Type::OrSymbol,
+            excluded_card_tokens: T::Array[String]
           ).returns(T.attached_class)
         end
         def self.new(
-          # Globally unique identifier.
+          # Auth Rule Token
           token:,
-          # Indicates whether the Auth Rule is ACTIVE or INACTIVE
+          # Account tokens to which the Auth Rule applies.
+          account_tokens:,
+          # Business Account tokens to which the Auth Rule applies.
+          business_account_tokens:,
+          # Card tokens to which the Auth Rule applies.
+          card_tokens:,
+          current_version:,
+          draft_version:,
+          # The event stream during which the rule will be evaluated.
+          event_stream:,
+          # Indicates whether this auth rule is managed by Lithic. If true, the rule cannot
+          # be modified or deleted by the user
+          lithic_managed:,
+          # Auth Rule Name
+          name:,
+          # Whether the Auth Rule applies to all authorizations on the card program.
+          program_level:,
+          # The state of the Auth Rule
           state:,
-          # Array of account_token(s) identifying the accounts that the Auth Rule applies
-          # to. Note that only this field or `card_tokens` can be provided for a given Auth
-          # Rule.
-          account_tokens: nil,
-          # Countries in which the Auth Rule permits transactions. Note that Lithic
-          # maintains a list of countries in which all transactions are blocked; "allowing"
-          # those countries in an Auth Rule does not override the Lithic-wide restrictions.
-          allowed_countries: nil,
-          # Merchant category codes for which the Auth Rule permits transactions.
-          allowed_mcc: nil,
-          # Countries in which the Auth Rule automatically declines transactions.
-          blocked_countries: nil,
-          # Merchant category codes for which the Auth Rule automatically declines
-          # transactions.
-          blocked_mcc: nil,
-          # Array of card_token(s) identifying the cards that the Auth Rule applies to. Note
-          # that only this field or `account_tokens` can be provided for a given Auth Rule.
-          card_tokens: nil,
-          # Boolean indicating whether the Auth Rule is applied at the program level.
-          program_level: nil
+          # The type of Auth Rule. For certain rule types, this determines the event stream
+          # during which it will be evaluated. For rules that can be applied to one of
+          # several event streams, the effective one is defined by the separate
+          # `event_stream` field.
+          #
+          # - `CONDITIONAL_BLOCK`: AUTHORIZATION event stream.
+          # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
+          # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
+          # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+          #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+          type:,
+          # Card tokens to which the Auth Rule does not apply.
+          excluded_card_tokens: nil
         )
         end
 
@@ -119,21 +151,247 @@ module Lithic
           override.returns(
             {
               token: String,
-              state: Lithic::AuthRules::AuthRule::State::OrSymbol,
               account_tokens: T::Array[String],
-              allowed_countries: T::Array[String],
-              allowed_mcc: T::Array[String],
-              blocked_countries: T::Array[String],
-              blocked_mcc: T::Array[String],
+              business_account_tokens: T::Array[String],
               card_tokens: T::Array[String],
-              program_level: T::Boolean
+              current_version:
+                T.nilable(Lithic::AuthRules::AuthRule::CurrentVersion),
+              draft_version:
+                T.nilable(Lithic::AuthRules::AuthRule::DraftVersion),
+              event_stream:
+                Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol,
+              lithic_managed: T::Boolean,
+              name: T.nilable(String),
+              program_level: T::Boolean,
+              state: Lithic::AuthRules::AuthRule::State::TaggedSymbol,
+              type: Lithic::AuthRules::AuthRule::Type::TaggedSymbol,
+              excluded_card_tokens: T::Array[String]
             }
           )
         end
         def to_hash
         end
 
-        # Indicates whether the Auth Rule is ACTIVE or INACTIVE
+        class CurrentVersion < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::AuthRules::AuthRule::CurrentVersion,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # Parameters for the Auth Rule
+          sig do
+            returns(
+              Lithic::AuthRules::AuthRule::CurrentVersion::Parameters::Variants
+            )
+          end
+          attr_accessor :parameters
+
+          # The version of the rule, this is incremented whenever the rule's parameters
+          # change.
+          sig { returns(Integer) }
+          attr_accessor :version
+
+          sig do
+            params(
+              parameters:
+                T.any(
+                  Lithic::AuthRules::ConditionalBlockParameters::OrHash,
+                  Lithic::AuthRules::VelocityLimitParams::OrHash,
+                  Lithic::AuthRules::MerchantLockParameters::OrHash,
+                  Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash,
+                  Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash
+                ),
+              version: Integer
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Parameters for the Auth Rule
+            parameters:,
+            # The version of the rule, this is incremented whenever the rule's parameters
+            # change.
+            version:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                parameters:
+                  Lithic::AuthRules::AuthRule::CurrentVersion::Parameters::Variants,
+                version: Integer
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # Parameters for the Auth Rule
+          module Parameters
+            extend Lithic::Internal::Type::Union
+
+            Variants =
+              T.type_alias do
+                T.any(
+                  Lithic::AuthRules::ConditionalBlockParameters,
+                  Lithic::AuthRules::VelocityLimitParams,
+                  Lithic::AuthRules::MerchantLockParameters,
+                  Lithic::AuthRules::Conditional3DSActionParameters,
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters,
+                  Lithic::AuthRules::ConditionalACHActionParameters,
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters
+                )
+              end
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::AuthRules::AuthRule::CurrentVersion::Parameters::Variants
+                ]
+              )
+            end
+            def self.variants
+            end
+          end
+        end
+
+        class DraftVersion < Lithic::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Lithic::AuthRules::AuthRule::DraftVersion,
+                Lithic::Internal::AnyHash
+              )
+            end
+
+          # Parameters for the Auth Rule
+          sig do
+            returns(
+              Lithic::AuthRules::AuthRule::DraftVersion::Parameters::Variants
+            )
+          end
+          attr_accessor :parameters
+
+          # The version of the rule, this is incremented whenever the rule's parameters
+          # change.
+          sig { returns(Integer) }
+          attr_accessor :version
+
+          sig do
+            params(
+              parameters:
+                T.any(
+                  Lithic::AuthRules::ConditionalBlockParameters::OrHash,
+                  Lithic::AuthRules::VelocityLimitParams::OrHash,
+                  Lithic::AuthRules::MerchantLockParameters::OrHash,
+                  Lithic::AuthRules::Conditional3DSActionParameters::OrHash,
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters::OrHash,
+                  Lithic::AuthRules::ConditionalACHActionParameters::OrHash,
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters::OrHash
+                ),
+              version: Integer
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Parameters for the Auth Rule
+            parameters:,
+            # The version of the rule, this is incremented whenever the rule's parameters
+            # change.
+            version:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                parameters:
+                  Lithic::AuthRules::AuthRule::DraftVersion::Parameters::Variants,
+                version: Integer
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # Parameters for the Auth Rule
+          module Parameters
+            extend Lithic::Internal::Type::Union
+
+            Variants =
+              T.type_alias do
+                T.any(
+                  Lithic::AuthRules::ConditionalBlockParameters,
+                  Lithic::AuthRules::VelocityLimitParams,
+                  Lithic::AuthRules::MerchantLockParameters,
+                  Lithic::AuthRules::Conditional3DSActionParameters,
+                  Lithic::AuthRules::ConditionalAuthorizationActionParameters,
+                  Lithic::AuthRules::ConditionalACHActionParameters,
+                  Lithic::AuthRules::ConditionalTokenizationActionParameters
+                )
+              end
+
+            sig do
+              override.returns(
+                T::Array[
+                  Lithic::AuthRules::AuthRule::DraftVersion::Parameters::Variants
+                ]
+              )
+            end
+            def self.variants
+            end
+          end
+        end
+
+        # The event stream during which the rule will be evaluated.
+        module EventStream
+          extend Lithic::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Lithic::AuthRules::AuthRule::EventStream)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          AUTHORIZATION =
+            T.let(
+              :AUTHORIZATION,
+              Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol
+            )
+          THREE_DS_AUTHENTICATION =
+            T.let(
+              :THREE_DS_AUTHENTICATION,
+              Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol
+            )
+          TOKENIZATION =
+            T.let(
+              :TOKENIZATION,
+              Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol
+            )
+          ACH_CREDIT_RECEIPT =
+            T.let(
+              :ACH_CREDIT_RECEIPT,
+              Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol
+            )
+          ACH_DEBIT_RECEIPT =
+            T.let(
+              :ACH_DEBIT_RECEIPT,
+              Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # The state of the Auth Rule
         module State
           extend Lithic::Internal::Type::Enum
 
@@ -149,6 +407,53 @@ module Lithic
           sig do
             override.returns(
               T::Array[Lithic::AuthRules::AuthRule::State::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # The type of Auth Rule. For certain rule types, this determines the event stream
+        # during which it will be evaluated. For rules that can be applied to one of
+        # several event streams, the effective one is defined by the separate
+        # `event_stream` field.
+        #
+        # - `CONDITIONAL_BLOCK`: AUTHORIZATION event stream.
+        # - `VELOCITY_LIMIT`: AUTHORIZATION event stream.
+        # - `MERCHANT_LOCK`: AUTHORIZATION event stream.
+        # - `CONDITIONAL_ACTION`: AUTHORIZATION, THREE_DS_AUTHENTICATION, TOKENIZATION,
+        #   ACH_CREDIT_RECEIPT, or ACH_DEBIT_RECEIPT event stream.
+        module Type
+          extend Lithic::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Lithic::AuthRules::AuthRule::Type) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          CONDITIONAL_BLOCK =
+            T.let(
+              :CONDITIONAL_BLOCK,
+              Lithic::AuthRules::AuthRule::Type::TaggedSymbol
+            )
+          VELOCITY_LIMIT =
+            T.let(
+              :VELOCITY_LIMIT,
+              Lithic::AuthRules::AuthRule::Type::TaggedSymbol
+            )
+          MERCHANT_LOCK =
+            T.let(
+              :MERCHANT_LOCK,
+              Lithic::AuthRules::AuthRule::Type::TaggedSymbol
+            )
+          CONDITIONAL_ACTION =
+            T.let(
+              :CONDITIONAL_ACTION,
+              Lithic::AuthRules::AuthRule::Type::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Lithic::AuthRules::AuthRule::Type::TaggedSymbol]
             )
           end
           def self.values

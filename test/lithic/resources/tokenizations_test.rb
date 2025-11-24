@@ -106,12 +106,25 @@ class Lithic::Test::Resources::TokenizationsTest < Lithic::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Lithic::Models::TokenizationSimulateResponse
+      response => Lithic::Tokenization
     end
 
     assert_pattern do
       response => {
-        data: ^(Lithic::Internal::Type::ArrayOf[Lithic::Tokenization]) | nil
+        token: String,
+        account_token: String,
+        card_token: String,
+        created_at: Time,
+        dpan: String | nil,
+        status: Lithic::Tokenization::Status,
+        token_requestor_name: Lithic::Tokenization::TokenRequestorName,
+        token_unique_reference: String,
+        tokenization_channel: Lithic::Tokenization::TokenizationChannel,
+        updated_at: Time,
+        device_id: String | nil,
+        digital_card_art_token: String | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Tokenization::Event]) | nil,
+        payment_account_reference_id: String | nil
       }
     end
   end
@@ -128,12 +141,25 @@ class Lithic::Test::Resources::TokenizationsTest < Lithic::Test::ResourceTest
     response = @lithic.tokenizations.update_digital_card_art("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::TokenizationUpdateDigitalCardArtResponse
+      response => Lithic::Tokenization
     end
 
     assert_pattern do
       response => {
-        data: Lithic::Tokenization | nil
+        token: String,
+        account_token: String,
+        card_token: String,
+        created_at: Time,
+        dpan: String | nil,
+        status: Lithic::Tokenization::Status,
+        token_requestor_name: Lithic::Tokenization::TokenRequestorName,
+        token_unique_reference: String,
+        tokenization_channel: Lithic::Tokenization::TokenizationChannel,
+        updated_at: Time,
+        device_id: String | nil,
+        digital_card_art_token: String | nil,
+        events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Tokenization::Event]) | nil,
+        payment_account_reference_id: String | nil
       }
     end
   end

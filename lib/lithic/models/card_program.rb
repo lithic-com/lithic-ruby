@@ -10,6 +10,13 @@ module Lithic
       #   @return [String]
       required :token, String
 
+      # @!attribute account_level_management_enabled
+      #   Whether the card program is participating in Account Level Management. Currently
+      #   applicable to Visa card programs only.
+      #
+      #   @return [Boolean]
+      required :account_level_management_enabled, Lithic::Internal::Type::Boolean
+
       # @!attribute created
       #   Timestamp of when the card program was created.
       #
@@ -34,13 +41,6 @@ module Lithic
       #   @return [String]
       required :pan_range_start, String
 
-      # @!attribute account_level_management_enabled
-      #   Whether the card program is participating in Account Level Management. Currently
-      #   applicable to Visa card programs only.
-      #
-      #   @return [Boolean, nil]
-      optional :account_level_management_enabled, Lithic::Internal::Type::Boolean
-
       # @!attribute cardholder_currency
       #   3-character alphabetic ISO 4217 code for the currency of the cardholder.
       #
@@ -54,11 +54,13 @@ module Lithic
       #   @return [Array<String>, nil]
       optional :settlement_currencies, Lithic::Internal::Type::ArrayOf[String]
 
-      # @!method initialize(token:, created:, name:, pan_range_end:, pan_range_start:, account_level_management_enabled: nil, cardholder_currency: nil, settlement_currencies: nil)
+      # @!method initialize(token:, account_level_management_enabled:, created:, name:, pan_range_end:, pan_range_start:, cardholder_currency: nil, settlement_currencies: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardProgram} for more details.
       #
       #   @param token [String] Globally unique identifier.
+      #
+      #   @param account_level_management_enabled [Boolean] Whether the card program is participating in Account Level Management. Currently
       #
       #   @param created [Time] Timestamp of when the card program was created.
       #
@@ -67,8 +69,6 @@ module Lithic
       #   @param pan_range_end [String] The first digits of the card number that this card program ends with.
       #
       #   @param pan_range_start [String] The first digits of the card number that this card program starts with.
-      #
-      #   @param account_level_management_enabled [Boolean] Whether the card program is participating in Account Level Management. Currently
       #
       #   @param cardholder_currency [String] 3-character alphabetic ISO 4217 code for the currency of the cardholder.
       #
