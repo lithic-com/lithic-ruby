@@ -4,14 +4,14 @@ module Lithic
       def retrieve: (
         String funding_event_token,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::FundingEventRetrieveResponse
+      ) -> Lithic::FundingEvent
 
       def list: (
         ?ending_before: String,
         ?page_size: Integer,
         ?starting_after: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Internal::CursorPage[Lithic::Models::FundingEventListResponse]
+      ) -> Lithic::Internal::CursorPage[Lithic::FundingEvent]
 
       def retrieve_details: (
         String funding_event_token,

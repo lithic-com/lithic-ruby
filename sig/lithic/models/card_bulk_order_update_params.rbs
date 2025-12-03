@@ -1,0 +1,34 @@
+module Lithic
+  module Models
+    type card_bulk_order_update_params =
+      { status: Lithic::Models::CardBulkOrderUpdateParams::status }
+      & Lithic::Internal::Type::request_parameters
+
+    class CardBulkOrderUpdateParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor status: Lithic::Models::CardBulkOrderUpdateParams::status
+
+      def initialize: (
+        status: Lithic::Models::CardBulkOrderUpdateParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        status: Lithic::Models::CardBulkOrderUpdateParams::status,
+        request_options: Lithic::RequestOptions
+      }
+
+      type status = :LOCKED
+
+      module Status
+        extend Lithic::Internal::Type::Enum
+
+        LOCKED: :LOCKED
+
+        def self?.values: -> ::Array[Lithic::Models::CardBulkOrderUpdateParams::status]
+      end
+    end
+  end
+end

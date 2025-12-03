@@ -48,6 +48,7 @@ module Lithic
       #   tracking
       # - `EXPEDITED` - FedEx or UPS depending on card manufacturer, Standard Overnight
       #   or similar international option, with tracking
+      # - `BULK_EXPEDITED` - Bulk shipment with Expedited shipping
       sig do
         returns(T.nilable(Lithic::CardReissueParams::ShippingMethod::OrSymbol))
       end
@@ -92,6 +93,7 @@ module Lithic
         #   tracking
         # - `EXPEDITED` - FedEx or UPS depending on card manufacturer, Standard Overnight
         #   or similar international option, with tracking
+        # - `BULK_EXPEDITED` - Bulk shipment with Expedited shipping
         shipping_method: nil,
         request_options: {}
       )
@@ -126,6 +128,7 @@ module Lithic
       #   tracking
       # - `EXPEDITED` - FedEx or UPS depending on card manufacturer, Standard Overnight
       #   or similar international option, with tracking
+      # - `BULK_EXPEDITED` - Bulk shipment with Expedited shipping
       module ShippingMethod
         extend Lithic::Internal::Type::Enum
 
@@ -138,6 +141,11 @@ module Lithic
         SHIPPING_METHOD_2_DAY =
           T.let(
             :"2_DAY",
+            Lithic::CardReissueParams::ShippingMethod::TaggedSymbol
+          )
+        BULK_EXPEDITED =
+          T.let(
+            :BULK_EXPEDITED,
             Lithic::CardReissueParams::ShippingMethod::TaggedSymbol
           )
         EXPEDITED =

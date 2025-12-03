@@ -55,6 +55,7 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
         state: Lithic::NonPCICard::State,
         type: Lithic::NonPCICard::Type,
         auth_rule_tokens: ^(Lithic::Internal::Type::ArrayOf[String]) | nil,
+        bulk_order_token: String | nil,
         cardholder_currency: String | nil,
         comment: String | nil,
         digital_card_art_token: String | nil,

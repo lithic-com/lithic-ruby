@@ -8,7 +8,7 @@ module Lithic
         params(
           funding_event_token: String,
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::FundingEventRetrieveResponse)
+        ).returns(Lithic::FundingEvent)
       end
       def retrieve(
         # Globally unique identifier for funding event.
@@ -24,9 +24,7 @@ module Lithic
           page_size: Integer,
           starting_after: String,
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(
-          Lithic::Internal::CursorPage[Lithic::Models::FundingEventListResponse]
-        )
+        ).returns(Lithic::Internal::CursorPage[Lithic::FundingEvent])
       end
       def list(
         # A cursor representing an item's token before which a page of results should end.

@@ -43,6 +43,9 @@ module Lithic
     sig { returns(Lithic::Resources::Cards) }
     attr_reader :cards
 
+    sig { returns(Lithic::Resources::CardBulkOrders) }
+    attr_reader :card_bulk_orders
+
     sig { returns(Lithic::Resources::Balances) }
     attr_reader :balances
 
@@ -99,6 +102,9 @@ module Lithic
 
     sig { returns(Lithic::Resources::ManagementOperations) }
     attr_reader :management_operations
+
+    sig { returns(Lithic::Resources::InternalTransaction) }
+    attr_reader :internal_transaction
 
     sig { returns(Lithic::Resources::FundingEvents) }
     attr_reader :funding_events

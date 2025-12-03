@@ -1,0 +1,15 @@
+module Lithic
+  module Models
+    type card_bulk_order_retrieve_params =
+      {  } & Lithic::Internal::Type::request_parameters
+
+    class CardBulkOrderRetrieveParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      def initialize: (?request_options: Lithic::request_opts) -> void
+
+      def to_hash: -> { request_options: Lithic::RequestOptions }
+    end
+  end
+end

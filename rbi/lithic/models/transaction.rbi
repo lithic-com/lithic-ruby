@@ -58,13 +58,13 @@ module Lithic
       sig { returns(String) }
       attr_accessor :card_token
 
-      sig { returns(T.nilable(Lithic::Transaction::CardholderAuthentication)) }
+      sig { returns(T.nilable(Lithic::CardholderAuthentication)) }
       attr_reader :cardholder_authentication
 
       sig do
         params(
           cardholder_authentication:
-            T.nilable(Lithic::Transaction::CardholderAuthentication::OrHash)
+            T.nilable(Lithic::CardholderAuthentication::OrHash)
         ).void
       end
       attr_writer :cardholder_authentication
@@ -124,14 +124,10 @@ module Lithic
       sig { returns(Lithic::Transaction::Status::TaggedSymbol) }
       attr_accessor :status
 
-      sig { returns(T.nilable(Lithic::Transaction::TokenInfo)) }
+      sig { returns(T.nilable(Lithic::TokenInfo)) }
       attr_reader :token_info
 
-      sig do
-        params(
-          token_info: T.nilable(Lithic::Transaction::TokenInfo::OrHash)
-        ).void
-      end
+      sig { params(token_info: T.nilable(Lithic::TokenInfo::OrHash)).void }
       attr_writer :token_info
 
       # Date and time when the transaction last updated. UTC time zone.
@@ -157,7 +153,7 @@ module Lithic
           avs: T.nilable(Lithic::Transaction::Avs::OrHash),
           card_token: String,
           cardholder_authentication:
-            T.nilable(Lithic::Transaction::CardholderAuthentication::OrHash),
+            T.nilable(Lithic::CardholderAuthentication::OrHash),
           created: Time,
           financial_account_token: T.nilable(String),
           merchant: Lithic::Merchant::OrHash,
@@ -170,7 +166,7 @@ module Lithic
           result: Lithic::Transaction::Result::OrSymbol,
           settled_amount: Integer,
           status: Lithic::Transaction::Status::OrSymbol,
-          token_info: T.nilable(Lithic::Transaction::TokenInfo::OrHash),
+          token_info: T.nilable(Lithic::TokenInfo::OrHash),
           updated: Time,
           events: T::Array[Lithic::Transaction::Event::OrHash]
         ).returns(T.attached_class)
@@ -249,7 +245,7 @@ module Lithic
             avs: T.nilable(Lithic::Transaction::Avs),
             card_token: String,
             cardholder_authentication:
-              T.nilable(Lithic::Transaction::CardholderAuthentication),
+              T.nilable(Lithic::CardholderAuthentication),
             created: Time,
             financial_account_token: T.nilable(String),
             merchant: Lithic::Merchant,
@@ -262,7 +258,7 @@ module Lithic
             result: Lithic::Transaction::Result::TaggedSymbol,
             settled_amount: Integer,
             status: Lithic::Transaction::Status::TaggedSymbol,
-            token_info: T.nilable(Lithic::Transaction::TokenInfo),
+            token_info: T.nilable(Lithic::TokenInfo),
             updated: Time,
             events: T::Array[Lithic::Transaction::Event]
           }
@@ -513,310 +509,6 @@ module Lithic
 
         sig { override.returns({ address: String, zipcode: String }) }
         def to_hash
-        end
-      end
-
-      class CardholderAuthentication < Lithic::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Lithic::Transaction::CardholderAuthentication,
-              Lithic::Internal::AnyHash
-            )
-          end
-
-        # Indicates the method used to authenticate the cardholder.
-        sig do
-          returns(
-            Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
-          )
-        end
-        attr_accessor :authentication_method
-
-        # Indicates the outcome of the 3DS authentication process.
-        sig do
-          returns(
-            Lithic::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol
-          )
-        end
-        attr_accessor :authentication_result
-
-        # Indicates which party made the 3DS authentication decision.
-        sig do
-          returns(
-            Lithic::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol
-          )
-        end
-        attr_accessor :decision_made_by
-
-        # Indicates whether chargeback liability shift applies to the transaction.
-        # Possible enum values:
-        #
-        # - `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D
-        #   Secure flow, chargeback liability shift applies.
-        # - `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the
-        #   merchant is liable.
-        # - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
-        #   cryptography, possibly recurring. Chargeback liability shift to the issuer
-        #   applies.
-        sig do
-          returns(
-            Lithic::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
-          )
-        end
-        attr_accessor :liability_shift
-
-        # Unique identifier you can use to match a given 3DS authentication (available via
-        # the three_ds_authentication.created event webhook) and the transaction. Note
-        # that in cases where liability shift does not occur, this token is matched to the
-        # transaction on a best-effort basis.
-        sig { returns(T.nilable(String)) }
-        attr_accessor :three_ds_authentication_token
-
-        sig do
-          params(
-            authentication_method:
-              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::OrSymbol,
-            authentication_result:
-              Lithic::Transaction::CardholderAuthentication::AuthenticationResult::OrSymbol,
-            decision_made_by:
-              Lithic::Transaction::CardholderAuthentication::DecisionMadeBy::OrSymbol,
-            liability_shift:
-              Lithic::Transaction::CardholderAuthentication::LiabilityShift::OrSymbol,
-            three_ds_authentication_token: T.nilable(String)
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Indicates the method used to authenticate the cardholder.
-          authentication_method:,
-          # Indicates the outcome of the 3DS authentication process.
-          authentication_result:,
-          # Indicates which party made the 3DS authentication decision.
-          decision_made_by:,
-          # Indicates whether chargeback liability shift applies to the transaction.
-          # Possible enum values:
-          #
-          # - `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D
-          #   Secure flow, chargeback liability shift applies.
-          # - `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the
-          #   merchant is liable.
-          # - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
-          #   cryptography, possibly recurring. Chargeback liability shift to the issuer
-          #   applies.
-          liability_shift:,
-          # Unique identifier you can use to match a given 3DS authentication (available via
-          # the three_ds_authentication.created event webhook) and the transaction. Note
-          # that in cases where liability shift does not occur, this token is matched to the
-          # transaction on a best-effort basis.
-          three_ds_authentication_token:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              authentication_method:
-                Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol,
-              authentication_result:
-                Lithic::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol,
-              decision_made_by:
-                Lithic::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol,
-              liability_shift:
-                Lithic::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol,
-              three_ds_authentication_token: T.nilable(String)
-            }
-          )
-        end
-        def to_hash
-        end
-
-        # Indicates the method used to authenticate the cardholder.
-        module AuthenticationMethod
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Lithic::Transaction::CardholderAuthentication::AuthenticationMethod
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          FRICTIONLESS =
-            T.let(
-              :FRICTIONLESS,
-              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
-            )
-          CHALLENGE =
-            T.let(
-              :CHALLENGE,
-              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
-            )
-          NONE =
-            T.let(
-              :NONE,
-              Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Lithic::Transaction::CardholderAuthentication::AuthenticationMethod::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # Indicates the outcome of the 3DS authentication process.
-        module AuthenticationResult
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Lithic::Transaction::CardholderAuthentication::AuthenticationResult
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          ATTEMPTS =
-            T.let(
-              :ATTEMPTS,
-              Lithic::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol
-            )
-          DECLINE =
-            T.let(
-              :DECLINE,
-              Lithic::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol
-            )
-          NONE =
-            T.let(
-              :NONE,
-              Lithic::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol
-            )
-          SUCCESS =
-            T.let(
-              :SUCCESS,
-              Lithic::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Lithic::Transaction::CardholderAuthentication::AuthenticationResult::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # Indicates which party made the 3DS authentication decision.
-        module DecisionMadeBy
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Lithic::Transaction::CardholderAuthentication::DecisionMadeBy
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          CUSTOMER_RULES =
-            T.let(
-              :CUSTOMER_RULES,
-              Lithic::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol
-            )
-          CUSTOMER_ENDPOINT =
-            T.let(
-              :CUSTOMER_ENDPOINT,
-              Lithic::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol
-            )
-          LITHIC_DEFAULT =
-            T.let(
-              :LITHIC_DEFAULT,
-              Lithic::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol
-            )
-          LITHIC_RULES =
-            T.let(
-              :LITHIC_RULES,
-              Lithic::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol
-            )
-          NETWORK =
-            T.let(
-              :NETWORK,
-              Lithic::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol
-            )
-          UNKNOWN =
-            T.let(
-              :UNKNOWN,
-              Lithic::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Lithic::Transaction::CardholderAuthentication::DecisionMadeBy::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # Indicates whether chargeback liability shift applies to the transaction.
-        # Possible enum values:
-        #
-        # - `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D
-        #   Secure flow, chargeback liability shift applies.
-        # - `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the
-        #   merchant is liable.
-        # - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
-        #   cryptography, possibly recurring. Chargeback liability shift to the issuer
-        #   applies.
-        module LiabilityShift
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Lithic::Transaction::CardholderAuthentication::LiabilityShift
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          LIABILITY_SHIFT_3DS_AUTHENTICATED =
-            T.let(
-              :"3DS_AUTHENTICATED",
-              Lithic::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
-            )
-          TOKEN_AUTHENTICATED =
-            T.let(
-              :TOKEN_AUTHENTICATED,
-              Lithic::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
-            )
-          NONE =
-            T.let(
-              :NONE,
-              Lithic::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Lithic::Transaction::CardholderAuthentication::LiabilityShift::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
       end
 
@@ -1613,100 +1305,6 @@ module Lithic
           override.returns(T::Array[Lithic::Transaction::Status::TaggedSymbol])
         end
         def self.values
-        end
-      end
-
-      class TokenInfo < Lithic::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Lithic::Transaction::TokenInfo, Lithic::Internal::AnyHash)
-          end
-
-        # The wallet_type field will indicate the source of the token. Possible token
-        # sources include digital wallets (Apple, Google, or Samsung Pay), merchant
-        # tokenization, and “other” sources like in-flight commerce. Masterpass is not
-        # currently supported and is included for future use.
-        sig do
-          returns(Lithic::Transaction::TokenInfo::WalletType::TaggedSymbol)
-        end
-        attr_accessor :wallet_type
-
-        sig do
-          params(
-            wallet_type: Lithic::Transaction::TokenInfo::WalletType::OrSymbol
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # The wallet_type field will indicate the source of the token. Possible token
-          # sources include digital wallets (Apple, Google, or Samsung Pay), merchant
-          # tokenization, and “other” sources like in-flight commerce. Masterpass is not
-          # currently supported and is included for future use.
-          wallet_type:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              wallet_type:
-                Lithic::Transaction::TokenInfo::WalletType::TaggedSymbol
-            }
-          )
-        end
-        def to_hash
-        end
-
-        # The wallet_type field will indicate the source of the token. Possible token
-        # sources include digital wallets (Apple, Google, or Samsung Pay), merchant
-        # tokenization, and “other” sources like in-flight commerce. Masterpass is not
-        # currently supported and is included for future use.
-        module WalletType
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Lithic::Transaction::TokenInfo::WalletType)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          APPLE_PAY =
-            T.let(
-              :APPLE_PAY,
-              Lithic::Transaction::TokenInfo::WalletType::TaggedSymbol
-            )
-          GOOGLE_PAY =
-            T.let(
-              :GOOGLE_PAY,
-              Lithic::Transaction::TokenInfo::WalletType::TaggedSymbol
-            )
-          MASTERPASS =
-            T.let(
-              :MASTERPASS,
-              Lithic::Transaction::TokenInfo::WalletType::TaggedSymbol
-            )
-          MERCHANT =
-            T.let(
-              :MERCHANT,
-              Lithic::Transaction::TokenInfo::WalletType::TaggedSymbol
-            )
-          OTHER =
-            T.let(
-              :OTHER,
-              Lithic::Transaction::TokenInfo::WalletType::TaggedSymbol
-            )
-          SAMSUNG_PAY =
-            T.let(
-              :SAMSUNG_PAY,
-              Lithic::Transaction::TokenInfo::WalletType::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[Lithic::Transaction::TokenInfo::WalletType::TaggedSymbol]
-            )
-          end
-          def self.values
-          end
         end
       end
 

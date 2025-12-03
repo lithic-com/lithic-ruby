@@ -12,14 +12,14 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Models::ThreeDS::AuthenticationRetrieveResponse]
+        # @return [Lithic::Models::ThreeDSAuthentication]
         #
         # @see Lithic::Models::ThreeDS::AuthenticationRetrieveParams
         def retrieve(three_ds_authentication_token, params = {})
           @client.request(
             method: :get,
             path: ["v1/three_ds_authentication/%1$s", three_ds_authentication_token],
-            model: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse,
+            model: Lithic::ThreeDSAuthentication,
             options: params[:request_options]
           )
         end

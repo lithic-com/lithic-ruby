@@ -117,6 +117,13 @@ module Lithic
       #   @return [Array<String>, nil]
       optional :auth_rule_tokens, Lithic::Internal::Type::ArrayOf[String]
 
+      # @!attribute bulk_order_token
+      #   Globally unique identifier for the bulk order associated with this card. Only
+      #   applicable to physical cards that are part of a bulk shipment
+      #
+      #   @return [String, nil]
+      optional :bulk_order_token, String, nil?: true
+
       # @!attribute cardholder_currency
       #   3-character alphabetic ISO 4217 code for the currency of the cardholder.
       #
@@ -217,7 +224,7 @@ module Lithic
       #   @return [Symbol, Lithic::Models::NonPCICard::Substatus, nil]
       optional :substatus, enum: -> { Lithic::NonPCICard::Substatus }
 
-      # @!method initialize(token:, account_token:, card_program_token:, created:, funding:, last_four:, pin_status:, spend_limit:, spend_limit_duration:, state:, type:, auth_rule_tokens: nil, cardholder_currency: nil, comment: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, hostname: nil, memo: nil, network_program_token: nil, pending_commands: nil, product_id: nil, replacement_for: nil, substatus: nil)
+      # @!method initialize(token:, account_token:, card_program_token:, created:, funding:, last_four:, pin_status:, spend_limit:, spend_limit_duration:, state:, type:, auth_rule_tokens: nil, bulk_order_token: nil, cardholder_currency: nil, comment: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, hostname: nil, memo: nil, network_program_token: nil, pending_commands: nil, product_id: nil, replacement_for: nil, substatus: nil)
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::NonPCICard} for more details.
       #
@@ -248,6 +255,8 @@ module Lithic
       #   t
       #
       #   @param auth_rule_tokens [Array<String>] List of identifiers for the Auth Rule(s) that are applied on the card. This fiel
+      #
+      #   @param bulk_order_token [String, nil] Globally unique identifier for the bulk order associated with this card. Only ap
       #
       #   @param cardholder_currency [String] 3-character alphabetic ISO 4217 code for the currency of the cardholder.
       #

@@ -9,7 +9,7 @@ module Lithic
           params(
             three_ds_authentication_token: String,
             request_options: Lithic::RequestOptions::OrHash
-          ).returns(Lithic::Models::ThreeDS::AuthenticationRetrieveResponse)
+          ).returns(Lithic::ThreeDSAuthentication)
         end
         def retrieve(
           # Globally unique identifier for the 3DS authentication.

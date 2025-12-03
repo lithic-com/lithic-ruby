@@ -7,18 +7,18 @@ class Lithic::Test::Resources::Reports::Settlement::NetworkTotalsTest < Lithic::
     response = @lithic.reports.settlement.network_totals.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse
+      response => Lithic::NetworkTotal
     end
 
     assert_pattern do
       response => {
         token: String,
-        amounts: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Amounts,
+        amounts: Lithic::NetworkTotal::Amounts,
         created: Time,
         currency: String,
         institution_id: String,
         is_complete: Lithic::Internal::Type::Boolean,
-        network: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse::Network,
+        network: Lithic::NetworkTotal::Network,
         report_date: Date,
         settlement_institution_id: String,
         settlement_service: String,
@@ -39,18 +39,18 @@ class Lithic::Test::Resources::Reports::Settlement::NetworkTotalsTest < Lithic::
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::Reports::Settlement::NetworkTotalListResponse
+      row => Lithic::NetworkTotal
     end
 
     assert_pattern do
       row => {
         token: String,
-        amounts: Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Amounts,
+        amounts: Lithic::NetworkTotal::Amounts,
         created: Time,
         currency: String,
         institution_id: String,
         is_complete: Lithic::Internal::Type::Boolean,
-        network: Lithic::Models::Reports::Settlement::NetworkTotalListResponse::Network,
+        network: Lithic::NetworkTotal::Network,
         report_date: Date,
         settlement_institution_id: String,
         settlement_service: String,

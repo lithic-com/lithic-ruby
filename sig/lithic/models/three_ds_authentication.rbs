@@ -1,0 +1,911 @@
+module Lithic
+  module Models
+    type three_ds_authentication =
+      {
+        token: String,
+        account_type: Lithic::Models::ThreeDSAuthentication::account_type?,
+        authentication_result: Lithic::Models::ThreeDSAuthentication::authentication_result,
+        card_expiry_check: Lithic::Models::ThreeDSAuthentication::card_expiry_check,
+        card_token: String,
+        cardholder: Lithic::ThreeDSAuthentication::Cardholder,
+        channel: Lithic::Models::ThreeDSAuthentication::channel,
+        created: Time,
+        merchant: Lithic::ThreeDSAuthentication::Merchant,
+        message_category: Lithic::Models::ThreeDSAuthentication::message_category,
+        three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDSAuthentication::three_ds_requestor_challenge_indicator,
+        additional_data: Lithic::ThreeDSAuthentication::AdditionalData?,
+        app: Lithic::ThreeDSAuthentication::App?,
+        authentication_request_type: Lithic::Models::ThreeDSAuthentication::authentication_request_type?,
+        browser: Lithic::ThreeDSAuthentication::Browser?,
+        challenge_metadata: Lithic::ThreeDSAuthentication::ChallengeMetadata?,
+        challenge_orchestrated_by: Lithic::Models::ThreeDSAuthentication::challenge_orchestrated_by?,
+        decision_made_by: Lithic::Models::ThreeDSAuthentication::decision_made_by?,
+        three_ri_request_type: Lithic::Models::ThreeDSAuthentication::three_ri_request_type?,
+        transaction: Lithic::ThreeDSAuthentication::Transaction?
+      }
+
+    class ThreeDSAuthentication < Lithic::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      attr_accessor account_type: Lithic::Models::ThreeDSAuthentication::account_type?
+
+      attr_accessor authentication_result: Lithic::Models::ThreeDSAuthentication::authentication_result
+
+      attr_accessor card_expiry_check: Lithic::Models::ThreeDSAuthentication::card_expiry_check
+
+      attr_accessor card_token: String
+
+      attr_accessor cardholder: Lithic::ThreeDSAuthentication::Cardholder
+
+      attr_accessor channel: Lithic::Models::ThreeDSAuthentication::channel
+
+      attr_accessor created: Time
+
+      attr_accessor merchant: Lithic::ThreeDSAuthentication::Merchant
+
+      attr_accessor message_category: Lithic::Models::ThreeDSAuthentication::message_category
+
+      attr_accessor three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDSAuthentication::three_ds_requestor_challenge_indicator
+
+      attr_accessor additional_data: Lithic::ThreeDSAuthentication::AdditionalData?
+
+      attr_accessor app: Lithic::ThreeDSAuthentication::App?
+
+      attr_accessor authentication_request_type: Lithic::Models::ThreeDSAuthentication::authentication_request_type?
+
+      attr_accessor browser: Lithic::ThreeDSAuthentication::Browser?
+
+      attr_accessor challenge_metadata: Lithic::ThreeDSAuthentication::ChallengeMetadata?
+
+      attr_accessor challenge_orchestrated_by: Lithic::Models::ThreeDSAuthentication::challenge_orchestrated_by?
+
+      attr_accessor decision_made_by: Lithic::Models::ThreeDSAuthentication::decision_made_by?
+
+      attr_accessor three_ri_request_type: Lithic::Models::ThreeDSAuthentication::three_ri_request_type?
+
+      attr_accessor transaction: Lithic::ThreeDSAuthentication::Transaction?
+
+      def initialize: (
+        token: String,
+        account_type: Lithic::Models::ThreeDSAuthentication::account_type?,
+        authentication_result: Lithic::Models::ThreeDSAuthentication::authentication_result,
+        card_expiry_check: Lithic::Models::ThreeDSAuthentication::card_expiry_check,
+        card_token: String,
+        cardholder: Lithic::ThreeDSAuthentication::Cardholder,
+        channel: Lithic::Models::ThreeDSAuthentication::channel,
+        created: Time,
+        merchant: Lithic::ThreeDSAuthentication::Merchant,
+        message_category: Lithic::Models::ThreeDSAuthentication::message_category,
+        three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDSAuthentication::three_ds_requestor_challenge_indicator,
+        ?additional_data: Lithic::ThreeDSAuthentication::AdditionalData?,
+        ?app: Lithic::ThreeDSAuthentication::App?,
+        ?authentication_request_type: Lithic::Models::ThreeDSAuthentication::authentication_request_type?,
+        ?browser: Lithic::ThreeDSAuthentication::Browser?,
+        ?challenge_metadata: Lithic::ThreeDSAuthentication::ChallengeMetadata?,
+        ?challenge_orchestrated_by: Lithic::Models::ThreeDSAuthentication::challenge_orchestrated_by?,
+        ?decision_made_by: Lithic::Models::ThreeDSAuthentication::decision_made_by?,
+        ?three_ri_request_type: Lithic::Models::ThreeDSAuthentication::three_ri_request_type?,
+        ?transaction: Lithic::ThreeDSAuthentication::Transaction?
+      ) -> void
+
+      def to_hash: -> {
+        token: String,
+        account_type: Lithic::Models::ThreeDSAuthentication::account_type?,
+        authentication_result: Lithic::Models::ThreeDSAuthentication::authentication_result,
+        card_expiry_check: Lithic::Models::ThreeDSAuthentication::card_expiry_check,
+        card_token: String,
+        cardholder: Lithic::ThreeDSAuthentication::Cardholder,
+        channel: Lithic::Models::ThreeDSAuthentication::channel,
+        created: Time,
+        merchant: Lithic::ThreeDSAuthentication::Merchant,
+        message_category: Lithic::Models::ThreeDSAuthentication::message_category,
+        three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDSAuthentication::three_ds_requestor_challenge_indicator,
+        additional_data: Lithic::ThreeDSAuthentication::AdditionalData?,
+        app: Lithic::ThreeDSAuthentication::App?,
+        authentication_request_type: Lithic::Models::ThreeDSAuthentication::authentication_request_type?,
+        browser: Lithic::ThreeDSAuthentication::Browser?,
+        challenge_metadata: Lithic::ThreeDSAuthentication::ChallengeMetadata?,
+        challenge_orchestrated_by: Lithic::Models::ThreeDSAuthentication::challenge_orchestrated_by?,
+        decision_made_by: Lithic::Models::ThreeDSAuthentication::decision_made_by?,
+        three_ri_request_type: Lithic::Models::ThreeDSAuthentication::three_ri_request_type?,
+        transaction: Lithic::ThreeDSAuthentication::Transaction?
+      }
+
+      type account_type = :CREDIT | :DEBIT | :NOT_APPLICABLE
+
+      module AccountType
+        extend Lithic::Internal::Type::Enum
+
+        CREDIT: :CREDIT
+        DEBIT: :DEBIT
+        NOT_APPLICABLE: :NOT_APPLICABLE
+
+        def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::account_type]
+      end
+
+      type authentication_result =
+        :DECLINE | :SUCCESS | :PENDING_CHALLENGE | :PENDING_DECISION
+
+      module AuthenticationResult
+        extend Lithic::Internal::Type::Enum
+
+        DECLINE: :DECLINE
+        SUCCESS: :SUCCESS
+        PENDING_CHALLENGE: :PENDING_CHALLENGE
+        PENDING_DECISION: :PENDING_DECISION
+
+        def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::authentication_result]
+      end
+
+      type card_expiry_check = :MATCH | :MISMATCH | :NOT_PRESENT
+
+      module CardExpiryCheck
+        extend Lithic::Internal::Type::Enum
+
+        MATCH: :MATCH
+        MISMATCH: :MISMATCH
+        NOT_PRESENT: :NOT_PRESENT
+
+        def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::card_expiry_check]
+      end
+
+      type cardholder =
+        {
+          address_match: bool?,
+          address_on_file_match: Lithic::Models::ThreeDSAuthentication::Cardholder::address_on_file_match,
+          billing_address: Lithic::ThreeDSAuthentication::Cardholder::BillingAddress,
+          email: String?,
+          name: String?,
+          phone_number_home: String?,
+          phone_number_mobile: String?,
+          phone_number_work: String?,
+          shipping_address: Lithic::ThreeDSAuthentication::Cardholder::ShippingAddress
+        }
+
+      class Cardholder < Lithic::Internal::Type::BaseModel
+        attr_accessor address_match: bool?
+
+        attr_reader address_on_file_match: Lithic::Models::ThreeDSAuthentication::Cardholder::address_on_file_match?
+
+        def address_on_file_match=: (
+          Lithic::Models::ThreeDSAuthentication::Cardholder::address_on_file_match
+        ) -> Lithic::Models::ThreeDSAuthentication::Cardholder::address_on_file_match
+
+        attr_reader billing_address: Lithic::ThreeDSAuthentication::Cardholder::BillingAddress?
+
+        def billing_address=: (
+          Lithic::ThreeDSAuthentication::Cardholder::BillingAddress
+        ) -> Lithic::ThreeDSAuthentication::Cardholder::BillingAddress
+
+        attr_accessor email: String?
+
+        attr_accessor name: String?
+
+        attr_accessor phone_number_home: String?
+
+        attr_accessor phone_number_mobile: String?
+
+        attr_accessor phone_number_work: String?
+
+        attr_reader shipping_address: Lithic::ThreeDSAuthentication::Cardholder::ShippingAddress?
+
+        def shipping_address=: (
+          Lithic::ThreeDSAuthentication::Cardholder::ShippingAddress
+        ) -> Lithic::ThreeDSAuthentication::Cardholder::ShippingAddress
+
+        def initialize: (
+          ?address_match: bool?,
+          ?address_on_file_match: Lithic::Models::ThreeDSAuthentication::Cardholder::address_on_file_match,
+          ?billing_address: Lithic::ThreeDSAuthentication::Cardholder::BillingAddress,
+          ?email: String?,
+          ?name: String?,
+          ?phone_number_home: String?,
+          ?phone_number_mobile: String?,
+          ?phone_number_work: String?,
+          ?shipping_address: Lithic::ThreeDSAuthentication::Cardholder::ShippingAddress
+        ) -> void
+
+        def to_hash: -> {
+          address_match: bool?,
+          address_on_file_match: Lithic::Models::ThreeDSAuthentication::Cardholder::address_on_file_match,
+          billing_address: Lithic::ThreeDSAuthentication::Cardholder::BillingAddress,
+          email: String?,
+          name: String?,
+          phone_number_home: String?,
+          phone_number_mobile: String?,
+          phone_number_work: String?,
+          shipping_address: Lithic::ThreeDSAuthentication::Cardholder::ShippingAddress
+        }
+
+        type address_on_file_match =
+          :MATCH
+          | :MATCH_ADDRESS_ONLY
+          | :MATCH_ZIP_ONLY
+          | :MISMATCH
+          | :NOT_PRESENT
+
+        module AddressOnFileMatch
+          extend Lithic::Internal::Type::Enum
+
+          MATCH: :MATCH
+          MATCH_ADDRESS_ONLY: :MATCH_ADDRESS_ONLY
+          MATCH_ZIP_ONLY: :MATCH_ZIP_ONLY
+          MISMATCH: :MISMATCH
+          NOT_PRESENT: :NOT_PRESENT
+
+          def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::Cardholder::address_on_file_match]
+        end
+
+        type billing_address =
+          {
+            :address1 => String?,
+            :address2 => String?,
+            :address3 => String?,
+            city: String?,
+            country: String?,
+            postal_code: String?
+          }
+
+        class BillingAddress < Lithic::Internal::Type::BaseModel
+          attr_accessor address1: String?
+
+          attr_accessor address2: String?
+
+          attr_accessor address3: String?
+
+          attr_accessor city: String?
+
+          attr_accessor country: String?
+
+          attr_accessor postal_code: String?
+
+          def initialize: (
+            ?address1: String?,
+            ?address2: String?,
+            ?address3: String?,
+            ?city: String?,
+            ?country: String?,
+            ?postal_code: String?
+          ) -> void
+
+          def to_hash: -> {
+            :address1 => String?,
+            :address2 => String?,
+            :address3 => String?,
+            city: String?,
+            country: String?,
+            postal_code: String?
+          }
+        end
+
+        type shipping_address =
+          {
+            :address1 => String?,
+            :address2 => String?,
+            :address3 => String?,
+            city: String?,
+            country: String?,
+            postal_code: String?
+          }
+
+        class ShippingAddress < Lithic::Internal::Type::BaseModel
+          attr_accessor address1: String?
+
+          attr_accessor address2: String?
+
+          attr_accessor address3: String?
+
+          attr_accessor city: String?
+
+          attr_accessor country: String?
+
+          attr_accessor postal_code: String?
+
+          def initialize: (
+            ?address1: String?,
+            ?address2: String?,
+            ?address3: String?,
+            ?city: String?,
+            ?country: String?,
+            ?postal_code: String?
+          ) -> void
+
+          def to_hash: -> {
+            :address1 => String?,
+            :address2 => String?,
+            :address3 => String?,
+            city: String?,
+            country: String?,
+            postal_code: String?
+          }
+        end
+      end
+
+      type channel = :APP_BASED | :BROWSER | :THREE_DS_REQUESTOR_INITIATED
+
+      module Channel
+        extend Lithic::Internal::Type::Enum
+
+        APP_BASED: :APP_BASED
+        BROWSER: :BROWSER
+        THREE_DS_REQUESTOR_INITIATED: :THREE_DS_REQUESTOR_INITIATED
+
+        def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::channel]
+      end
+
+      type merchant =
+        {
+          risk_indicator: Lithic::ThreeDSAuthentication::Merchant::RiskIndicator,
+          id: String?,
+          country: String?,
+          mcc: String?,
+          name: String?
+        }
+
+      class Merchant < Lithic::Internal::Type::BaseModel
+        attr_accessor risk_indicator: Lithic::ThreeDSAuthentication::Merchant::RiskIndicator
+
+        attr_accessor id: String?
+
+        attr_accessor country: String?
+
+        attr_accessor mcc: String?
+
+        attr_accessor name: String?
+
+        def initialize: (
+          risk_indicator: Lithic::ThreeDSAuthentication::Merchant::RiskIndicator,
+          ?id: String?,
+          ?country: String?,
+          ?mcc: String?,
+          ?name: String?
+        ) -> void
+
+        def to_hash: -> {
+          risk_indicator: Lithic::ThreeDSAuthentication::Merchant::RiskIndicator,
+          id: String?,
+          country: String?,
+          mcc: String?,
+          name: String?
+        }
+
+        type risk_indicator =
+          {
+            delivery_email_address: String?,
+            delivery_time_frame: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::delivery_time_frame?,
+            gift_card_amount: Integer?,
+            gift_card_count: Integer?,
+            gift_card_currency: String?,
+            order_availability: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::order_availability?,
+            pre_order_available_date: Time?,
+            reorder_items: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::reorder_items?,
+            shipping_method: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::shipping_method?
+          }
+
+        class RiskIndicator < Lithic::Internal::Type::BaseModel
+          attr_accessor delivery_email_address: String?
+
+          attr_accessor delivery_time_frame: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::delivery_time_frame?
+
+          attr_accessor gift_card_amount: Integer?
+
+          attr_accessor gift_card_count: Integer?
+
+          attr_accessor gift_card_currency: String?
+
+          attr_accessor order_availability: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::order_availability?
+
+          attr_accessor pre_order_available_date: Time?
+
+          attr_accessor reorder_items: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::reorder_items?
+
+          attr_accessor shipping_method: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::shipping_method?
+
+          def initialize: (
+            ?delivery_email_address: String?,
+            ?delivery_time_frame: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::delivery_time_frame?,
+            ?gift_card_amount: Integer?,
+            ?gift_card_count: Integer?,
+            ?gift_card_currency: String?,
+            ?order_availability: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::order_availability?,
+            ?pre_order_available_date: Time?,
+            ?reorder_items: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::reorder_items?,
+            ?shipping_method: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::shipping_method?
+          ) -> void
+
+          def to_hash: -> {
+            delivery_email_address: String?,
+            delivery_time_frame: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::delivery_time_frame?,
+            gift_card_amount: Integer?,
+            gift_card_count: Integer?,
+            gift_card_currency: String?,
+            order_availability: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::order_availability?,
+            pre_order_available_date: Time?,
+            reorder_items: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::reorder_items?,
+            shipping_method: Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::shipping_method?
+          }
+
+          type delivery_time_frame =
+            :ELECTRONIC_DELIVERY
+            | :OVERNIGHT_SHIPPING
+            | :SAME_DAY_SHIPPING
+            | :TWO_DAY_OR_MORE_SHIPPING
+
+          module DeliveryTimeFrame
+            extend Lithic::Internal::Type::Enum
+
+            ELECTRONIC_DELIVERY: :ELECTRONIC_DELIVERY
+            OVERNIGHT_SHIPPING: :OVERNIGHT_SHIPPING
+            SAME_DAY_SHIPPING: :SAME_DAY_SHIPPING
+            TWO_DAY_OR_MORE_SHIPPING: :TWO_DAY_OR_MORE_SHIPPING
+
+            def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::delivery_time_frame]
+          end
+
+          type order_availability =
+            :FUTURE_AVAILABILITY | :MERCHANDISE_AVAILABLE
+
+          module OrderAvailability
+            extend Lithic::Internal::Type::Enum
+
+            FUTURE_AVAILABILITY: :FUTURE_AVAILABILITY
+            MERCHANDISE_AVAILABLE: :MERCHANDISE_AVAILABLE
+
+            def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::order_availability]
+          end
+
+          type reorder_items = :FIRST_TIME_ORDERED | :REORDERED
+
+          module ReorderItems
+            extend Lithic::Internal::Type::Enum
+
+            FIRST_TIME_ORDERED: :FIRST_TIME_ORDERED
+            REORDERED: :REORDERED
+
+            def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::reorder_items]
+          end
+
+          type shipping_method =
+            :DIGITAL_GOODS
+            | :LOCKER_DELIVERY
+            | :OTHER
+            | :PICK_UP_AND_GO_DELIVERY
+            | :SHIP_TO_BILLING_ADDRESS
+            | :SHIP_TO_NON_BILLING_ADDRESS
+            | :SHIP_TO_OTHER_VERIFIED_ADDRESS
+            | :SHIP_TO_STORE
+            | :TRAVEL_AND_EVENT_TICKETS
+
+          module ShippingMethod
+            extend Lithic::Internal::Type::Enum
+
+            DIGITAL_GOODS: :DIGITAL_GOODS
+            LOCKER_DELIVERY: :LOCKER_DELIVERY
+            OTHER: :OTHER
+            PICK_UP_AND_GO_DELIVERY: :PICK_UP_AND_GO_DELIVERY
+            SHIP_TO_BILLING_ADDRESS: :SHIP_TO_BILLING_ADDRESS
+            SHIP_TO_NON_BILLING_ADDRESS: :SHIP_TO_NON_BILLING_ADDRESS
+            SHIP_TO_OTHER_VERIFIED_ADDRESS: :SHIP_TO_OTHER_VERIFIED_ADDRESS
+            SHIP_TO_STORE: :SHIP_TO_STORE
+            TRAVEL_AND_EVENT_TICKETS: :TRAVEL_AND_EVENT_TICKETS
+
+            def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::Merchant::RiskIndicator::shipping_method]
+          end
+        end
+      end
+
+      type message_category =
+        :NON_PAYMENT_AUTHENTICATION | :PAYMENT_AUTHENTICATION
+
+      module MessageCategory
+        extend Lithic::Internal::Type::Enum
+
+        NON_PAYMENT_AUTHENTICATION: :NON_PAYMENT_AUTHENTICATION
+        PAYMENT_AUTHENTICATION: :PAYMENT_AUTHENTICATION
+
+        def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::message_category]
+      end
+
+      type three_ds_requestor_challenge_indicator =
+        :NO_PREFERENCE
+        | :NO_CHALLENGE_REQUESTED
+        | :CHALLENGE_PREFERENCE
+        | :CHALLENGE_MANDATE
+        | :NO_CHALLENGE_RISK_ALREADY_ASSESSED
+        | :DATA_SHARE_ONLY
+        | :OTHER
+
+      module ThreeDSRequestorChallengeIndicator
+        extend Lithic::Internal::Type::Enum
+
+        NO_PREFERENCE: :NO_PREFERENCE
+        NO_CHALLENGE_REQUESTED: :NO_CHALLENGE_REQUESTED
+        CHALLENGE_PREFERENCE: :CHALLENGE_PREFERENCE
+        CHALLENGE_MANDATE: :CHALLENGE_MANDATE
+        NO_CHALLENGE_RISK_ALREADY_ASSESSED: :NO_CHALLENGE_RISK_ALREADY_ASSESSED
+        DATA_SHARE_ONLY: :DATA_SHARE_ONLY
+        OTHER: :OTHER
+
+        def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::three_ds_requestor_challenge_indicator]
+      end
+
+      type additional_data =
+        {
+          network_decision: Lithic::Models::ThreeDSAuthentication::AdditionalData::network_decision?,
+          network_risk_score: Integer?
+        }
+
+      class AdditionalData < Lithic::Internal::Type::BaseModel
+        attr_accessor network_decision: Lithic::Models::ThreeDSAuthentication::AdditionalData::network_decision?
+
+        attr_accessor network_risk_score: Integer?
+
+        def initialize: (
+          ?network_decision: Lithic::Models::ThreeDSAuthentication::AdditionalData::network_decision?,
+          ?network_risk_score: Integer?
+        ) -> void
+
+        def to_hash: -> {
+          network_decision: Lithic::Models::ThreeDSAuthentication::AdditionalData::network_decision?,
+          network_risk_score: Integer?
+        }
+
+        type network_decision = :LOW_RISK | :NOT_LOW_RISK
+
+        module NetworkDecision
+          extend Lithic::Internal::Type::Enum
+
+          LOW_RISK: :LOW_RISK
+          NOT_LOW_RISK: :NOT_LOW_RISK
+
+          def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::AdditionalData::network_decision]
+        end
+      end
+
+      type app =
+        {
+          device: String?,
+          device_info: String?,
+          ip: String,
+          latitude: Float?,
+          locale: String?,
+          longitude: Float?,
+          os: String?,
+          platform: String?,
+          screen_height: Integer?,
+          screen_width: Integer?,
+          time_zone: String?
+        }
+
+      class App < Lithic::Internal::Type::BaseModel
+        attr_accessor device: String?
+
+        attr_accessor device_info: String?
+
+        attr_reader ip: String?
+
+        def ip=: (String) -> String
+
+        attr_accessor latitude: Float?
+
+        attr_accessor locale: String?
+
+        attr_accessor longitude: Float?
+
+        attr_accessor os: String?
+
+        attr_accessor platform: String?
+
+        attr_accessor screen_height: Integer?
+
+        attr_accessor screen_width: Integer?
+
+        attr_accessor time_zone: String?
+
+        def initialize: (
+          ?device: String?,
+          ?device_info: String?,
+          ?ip: String,
+          ?latitude: Float?,
+          ?locale: String?,
+          ?longitude: Float?,
+          ?os: String?,
+          ?platform: String?,
+          ?screen_height: Integer?,
+          ?screen_width: Integer?,
+          ?time_zone: String?
+        ) -> void
+
+        def to_hash: -> {
+          device: String?,
+          device_info: String?,
+          ip: String,
+          latitude: Float?,
+          locale: String?,
+          longitude: Float?,
+          os: String?,
+          platform: String?,
+          screen_height: Integer?,
+          screen_width: Integer?,
+          time_zone: String?
+        }
+      end
+
+      type authentication_request_type =
+        :ADD_CARD
+        | :BILLING_AGREEMENT
+        | :DELAYED_SHIPMENT
+        | :EMV_TOKEN_CARDHOLDER_VERIFICATION
+        | :INSTALLMENT_TRANSACTION
+        | :MAINTAIN_CARD
+        | :PAYMENT_TRANSACTION
+        | :RECURRING_TRANSACTION
+        | :SPLIT_PAYMENT
+        | :SPLIT_SHIPMENT
+
+      module AuthenticationRequestType
+        extend Lithic::Internal::Type::Enum
+
+        ADD_CARD: :ADD_CARD
+        BILLING_AGREEMENT: :BILLING_AGREEMENT
+        DELAYED_SHIPMENT: :DELAYED_SHIPMENT
+        EMV_TOKEN_CARDHOLDER_VERIFICATION: :EMV_TOKEN_CARDHOLDER_VERIFICATION
+        INSTALLMENT_TRANSACTION: :INSTALLMENT_TRANSACTION
+        MAINTAIN_CARD: :MAINTAIN_CARD
+        PAYMENT_TRANSACTION: :PAYMENT_TRANSACTION
+        RECURRING_TRANSACTION: :RECURRING_TRANSACTION
+        SPLIT_PAYMENT: :SPLIT_PAYMENT
+        SPLIT_SHIPMENT: :SPLIT_SHIPMENT
+
+        def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::authentication_request_type]
+      end
+
+      type browser =
+        {
+          accept_header: String?,
+          ip: String?,
+          java_enabled: bool?,
+          javascript_enabled: bool?,
+          language: String?,
+          time_zone: String?,
+          user_agent: String?
+        }
+
+      class Browser < Lithic::Internal::Type::BaseModel
+        attr_accessor accept_header: String?
+
+        attr_accessor ip: String?
+
+        attr_accessor java_enabled: bool?
+
+        attr_accessor javascript_enabled: bool?
+
+        attr_accessor language: String?
+
+        attr_accessor time_zone: String?
+
+        attr_accessor user_agent: String?
+
+        def initialize: (
+          ?accept_header: String?,
+          ?ip: String?,
+          ?java_enabled: bool?,
+          ?javascript_enabled: bool?,
+          ?language: String?,
+          ?time_zone: String?,
+          ?user_agent: String?
+        ) -> void
+
+        def to_hash: -> {
+          accept_header: String?,
+          ip: String?,
+          java_enabled: bool?,
+          javascript_enabled: bool?,
+          language: String?,
+          time_zone: String?,
+          user_agent: String?
+        }
+      end
+
+      type challenge_metadata =
+        {
+          method_type: Lithic::Models::ThreeDSAuthentication::ChallengeMetadata::method_type,
+          status: Lithic::Models::ThreeDSAuthentication::ChallengeMetadata::status,
+          phone_number: String?
+        }
+
+      class ChallengeMetadata < Lithic::Internal::Type::BaseModel
+        attr_accessor method_type: Lithic::Models::ThreeDSAuthentication::ChallengeMetadata::method_type
+
+        attr_accessor status: Lithic::Models::ThreeDSAuthentication::ChallengeMetadata::status
+
+        attr_accessor phone_number: String?
+
+        def initialize: (
+          method_type: Lithic::Models::ThreeDSAuthentication::ChallengeMetadata::method_type,
+          status: Lithic::Models::ThreeDSAuthentication::ChallengeMetadata::status,
+          ?phone_number: String?
+        ) -> void
+
+        def to_hash: -> {
+          method_type: Lithic::Models::ThreeDSAuthentication::ChallengeMetadata::method_type,
+          status: Lithic::Models::ThreeDSAuthentication::ChallengeMetadata::status,
+          phone_number: String?
+        }
+
+        type method_type = :SMS_OTP | :OUT_OF_BAND
+
+        module MethodType
+          extend Lithic::Internal::Type::Enum
+
+          SMS_OTP: :SMS_OTP
+          OUT_OF_BAND: :OUT_OF_BAND
+
+          def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::ChallengeMetadata::method_type]
+        end
+
+        type status =
+          :SUCCESS
+          | :PENDING
+          | :SMS_DELIVERY_FAILED
+          | :CARDHOLDER_TIMEOUT
+          | :CANCELED_VIA_CHALLENGE_UI
+          | :CANCELED_OOB
+          | :ATTEMPTS_EXCEEDED
+          | :ABORTED
+          | :ERROR
+
+        module Status
+          extend Lithic::Internal::Type::Enum
+
+          SUCCESS: :SUCCESS
+          PENDING: :PENDING
+          SMS_DELIVERY_FAILED: :SMS_DELIVERY_FAILED
+          CARDHOLDER_TIMEOUT: :CARDHOLDER_TIMEOUT
+          CANCELED_VIA_CHALLENGE_UI: :CANCELED_VIA_CHALLENGE_UI
+          CANCELED_OOB: :CANCELED_OOB
+          ATTEMPTS_EXCEEDED: :ATTEMPTS_EXCEEDED
+          ABORTED: :ABORTED
+          ERROR: :ERROR
+
+          def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::ChallengeMetadata::status]
+        end
+      end
+
+      type challenge_orchestrated_by = :LITHIC | :CUSTOMER | :NO_CHALLENGE
+
+      module ChallengeOrchestratedBy
+        extend Lithic::Internal::Type::Enum
+
+        LITHIC: :LITHIC
+        CUSTOMER: :CUSTOMER
+        NO_CHALLENGE: :NO_CHALLENGE
+
+        def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::challenge_orchestrated_by]
+      end
+
+      type decision_made_by =
+        :LITHIC_RULES
+        | :LITHIC_DEFAULT
+        | :CUSTOMER_RULES
+        | :CUSTOMER_ENDPOINT
+        | :NETWORK
+        | :UNKNOWN
+
+      module DecisionMadeBy
+        extend Lithic::Internal::Type::Enum
+
+        LITHIC_RULES: :LITHIC_RULES
+        LITHIC_DEFAULT: :LITHIC_DEFAULT
+        CUSTOMER_RULES: :CUSTOMER_RULES
+        CUSTOMER_ENDPOINT: :CUSTOMER_ENDPOINT
+        NETWORK: :NETWORK
+        UNKNOWN: :UNKNOWN
+
+        def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::decision_made_by]
+      end
+
+      type three_ri_request_type =
+        :ACCOUNT_VERIFICATION
+        | :ADD_CARD
+        | :BILLING_AGREEMENT
+        | :CARD_SECURITY_CODE_STATUS_CHECK
+        | :DELAYED_SHIPMENT
+        | :DEVICE_BINDING_STATUS_CHECK
+        | :INSTALLMENT_TRANSACTION
+        | :MAIL_ORDER
+        | :MAINTAIN_CARD_INFO
+        | :OTHER_PAYMENT
+        | :RECURRING_TRANSACTION
+        | :SPLIT_PAYMENT
+        | :SPLIT_SHIPMENT
+        | :TELEPHONE_ORDER
+        | :TOP_UP
+        | :TRUST_LIST_STATUS_CHECK
+
+      module ThreeRiRequestType
+        extend Lithic::Internal::Type::Enum
+
+        ACCOUNT_VERIFICATION: :ACCOUNT_VERIFICATION
+        ADD_CARD: :ADD_CARD
+        BILLING_AGREEMENT: :BILLING_AGREEMENT
+        CARD_SECURITY_CODE_STATUS_CHECK: :CARD_SECURITY_CODE_STATUS_CHECK
+        DELAYED_SHIPMENT: :DELAYED_SHIPMENT
+        DEVICE_BINDING_STATUS_CHECK: :DEVICE_BINDING_STATUS_CHECK
+        INSTALLMENT_TRANSACTION: :INSTALLMENT_TRANSACTION
+        MAIL_ORDER: :MAIL_ORDER
+        MAINTAIN_CARD_INFO: :MAINTAIN_CARD_INFO
+        OTHER_PAYMENT: :OTHER_PAYMENT
+        RECURRING_TRANSACTION: :RECURRING_TRANSACTION
+        SPLIT_PAYMENT: :SPLIT_PAYMENT
+        SPLIT_SHIPMENT: :SPLIT_SHIPMENT
+        TELEPHONE_ORDER: :TELEPHONE_ORDER
+        TOP_UP: :TOP_UP
+        TRUST_LIST_STATUS_CHECK: :TRUST_LIST_STATUS_CHECK
+
+        def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::three_ri_request_type]
+      end
+
+      type transaction =
+        {
+          amount: Float,
+          cardholder_amount: Float?,
+          currency: String,
+          currency_exponent: Float,
+          date_time: Time,
+          type: Lithic::Models::ThreeDSAuthentication::Transaction::type_?
+        }
+
+      class Transaction < Lithic::Internal::Type::BaseModel
+        attr_accessor amount: Float
+
+        attr_accessor cardholder_amount: Float?
+
+        attr_accessor currency: String
+
+        attr_accessor currency_exponent: Float
+
+        attr_accessor date_time: Time
+
+        attr_accessor type: Lithic::Models::ThreeDSAuthentication::Transaction::type_?
+
+        def initialize: (
+          amount: Float,
+          cardholder_amount: Float?,
+          currency: String,
+          currency_exponent: Float,
+          date_time: Time,
+          type: Lithic::Models::ThreeDSAuthentication::Transaction::type_?
+        ) -> void
+
+        def to_hash: -> {
+          amount: Float,
+          cardholder_amount: Float?,
+          currency: String,
+          currency_exponent: Float,
+          date_time: Time,
+          type: Lithic::Models::ThreeDSAuthentication::Transaction::type_?
+        }
+
+        type type_ =
+          :ACCOUNT_FUNDING
+          | :CHECK_ACCEPTANCE
+          | :GOODS_SERVICE_PURCHASE
+          | :PREPAID_ACTIVATION_AND_LOAD
+          | :QUASI_CASH_TRANSACTION
+
+        module Type
+          extend Lithic::Internal::Type::Enum
+
+          ACCOUNT_FUNDING: :ACCOUNT_FUNDING
+          CHECK_ACCEPTANCE: :CHECK_ACCEPTANCE
+          GOODS_SERVICE_PURCHASE: :GOODS_SERVICE_PURCHASE
+          PREPAID_ACTIVATION_AND_LOAD: :PREPAID_ACTIVATION_AND_LOAD
+          QUASI_CASH_TRANSACTION: :QUASI_CASH_TRANSACTION
+
+          def self?.values: -> ::Array[Lithic::Models::ThreeDSAuthentication::Transaction::type_]
+        end
+      end
+    end
+  end
+end

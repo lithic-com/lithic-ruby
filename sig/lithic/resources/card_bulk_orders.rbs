@@ -1,0 +1,34 @@
+module Lithic
+  module Resources
+    class CardBulkOrders
+      def create: (
+        customer_product_id: String,
+        shipping_address: top,
+        shipping_method: Lithic::Models::CardBulkOrderCreateParams::shipping_method,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CardBulkOrder
+
+      def retrieve: (
+        String bulk_order_token,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CardBulkOrder
+
+      def update: (
+        String bulk_order_token,
+        status: Lithic::Models::CardBulkOrderUpdateParams::status,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::CardBulkOrder
+
+      def list: (
+        ?begin_: Time,
+        ?end_: Time,
+        ?ending_before: String,
+        ?page_size: Integer,
+        ?starting_after: String,
+        ?request_options: Lithic::request_opts
+      ) -> Lithic::Internal::CursorPage[Lithic::CardBulkOrder]
+
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

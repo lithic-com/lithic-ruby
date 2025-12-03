@@ -1,0 +1,27 @@
+# frozen_string_literal: true
+
+module Lithic
+  module Models
+    # Reason code for why a tokenization was declined
+    module TokenizationDeclineReason
+      extend Lithic::Internal::Type::Enum
+
+      ACCOUNT_SCORE_1 = :ACCOUNT_SCORE_1
+      DEVICE_SCORE_1 = :DEVICE_SCORE_1
+      ALL_WALLET_DECLINE_REASONS_PRESENT = :ALL_WALLET_DECLINE_REASONS_PRESENT
+      WALLET_RECOMMENDED_DECISION_RED = :WALLET_RECOMMENDED_DECISION_RED
+      CVC_MISMATCH = :CVC_MISMATCH
+      CARD_EXPIRY_MONTH_MISMATCH = :CARD_EXPIRY_MONTH_MISMATCH
+      CARD_EXPIRY_YEAR_MISMATCH = :CARD_EXPIRY_YEAR_MISMATCH
+      CARD_INVALID_STATE = :CARD_INVALID_STATE
+      CUSTOMER_RED_PATH = :CUSTOMER_RED_PATH
+      INVALID_CUSTOMER_RESPONSE = :INVALID_CUSTOMER_RESPONSE
+      NETWORK_FAILURE = :NETWORK_FAILURE
+      GENERIC_DECLINE = :GENERIC_DECLINE
+      DIGITAL_CARD_ART_REQUIRED = :DIGITAL_CARD_ART_REQUIRED
+
+      # @!method self.values
+      #   @return [Array<Symbol>]
+    end
+  end
+end

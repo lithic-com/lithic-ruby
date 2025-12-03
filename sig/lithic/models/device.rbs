@@ -1,0 +1,21 @@
+module Lithic
+  module Models
+    type device = { imei: String?, ip_address: String?, location: String? }
+
+    class Device < Lithic::Internal::Type::BaseModel
+      attr_accessor imei: String?
+
+      attr_accessor ip_address: String?
+
+      attr_accessor location: String?
+
+      def initialize: (
+        imei: String?,
+        ip_address: String?,
+        location: String?
+      ) -> void
+
+      def to_hash: -> { imei: String?, ip_address: String?, location: String? }
+    end
+  end
+end

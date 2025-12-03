@@ -4,6 +4,7 @@ module Lithic
       {
         type: Lithic::Models::CardCreateParams::type_,
         account_token: String,
+        bulk_order_token: String,
         card_program_token: String,
         carrier: Lithic::Carrier,
         digital_card_art_token: String,
@@ -33,6 +34,10 @@ module Lithic
       attr_reader account_token: String?
 
       def account_token=: (String) -> String
+
+      attr_reader bulk_order_token: String?
+
+      def bulk_order_token=: (String) -> String
 
       attr_reader card_program_token: String?
 
@@ -115,6 +120,7 @@ module Lithic
       def initialize: (
         type: Lithic::Models::CardCreateParams::type_,
         ?account_token: String,
+        ?bulk_order_token: String,
         ?card_program_token: String,
         ?carrier: Lithic::Carrier,
         ?digital_card_art_token: String,
@@ -138,6 +144,7 @@ module Lithic
       def to_hash: -> {
         type: Lithic::Models::CardCreateParams::type_,
         account_token: String,
+        bulk_order_token: String,
         card_program_token: String,
         carrier: Lithic::Carrier,
         digital_card_art_token: String,
@@ -212,6 +219,7 @@ module Lithic
 
       type shipping_method =
         :"2_DAY"
+        | :BULK_EXPEDITED
         | :EXPEDITED
         | :EXPRESS
         | :PRIORITY
@@ -222,6 +230,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         SHIPPING_METHOD_2_DAY: :"2_DAY"
+        BULK_EXPEDITED: :BULK_EXPEDITED
         EXPEDITED: :EXPEDITED
         EXPRESS: :EXPRESS
         PRIORITY: :PRIORITY

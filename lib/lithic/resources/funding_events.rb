@@ -11,14 +11,14 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::FundingEventRetrieveResponse]
+      # @return [Lithic::Models::FundingEvent]
       #
       # @see Lithic::Models::FundingEventRetrieveParams
       def retrieve(funding_event_token, params = {})
         @client.request(
           method: :get,
           path: ["v1/funding_events/%1$s", funding_event_token],
-          model: Lithic::Models::FundingEventRetrieveResponse,
+          model: Lithic::FundingEvent,
           options: params[:request_options]
         )
       end
@@ -38,7 +38,7 @@ module Lithic
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Internal::CursorPage<Lithic::Models::FundingEventListResponse>]
+      # @return [Lithic::Internal::CursorPage<Lithic::Models::FundingEvent>]
       #
       # @see Lithic::Models::FundingEventListParams
       def list(params = {})
@@ -48,7 +48,7 @@ module Lithic
           path: "v1/funding_events",
           query: parsed,
           page: Lithic::Internal::CursorPage,
-          model: Lithic::Models::FundingEventListResponse,
+          model: Lithic::FundingEvent,
           options: options
         )
       end

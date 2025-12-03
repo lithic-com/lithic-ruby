@@ -10,6 +10,7 @@ module Lithic
       def create: (
         type: Lithic::Models::CardCreateParams::type_,
         ?account_token: String,
+        ?bulk_order_token: String,
         ?card_program_token: String,
         ?carrier: Lithic::Carrier,
         ?digital_card_art_token: String,

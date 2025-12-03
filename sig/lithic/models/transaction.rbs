@@ -12,7 +12,7 @@ module Lithic
         authorization_code: String?,
         avs: Lithic::Transaction::Avs?,
         card_token: String,
-        cardholder_authentication: Lithic::Transaction::CardholderAuthentication?,
+        cardholder_authentication: Lithic::CardholderAuthentication?,
         created: Time,
         financial_account_token: String?,
         merchant: Lithic::Merchant,
@@ -25,7 +25,7 @@ module Lithic
         result: Lithic::Models::Transaction::result,
         settled_amount: Integer,
         status: Lithic::Models::Transaction::status,
-        token_info: Lithic::Transaction::TokenInfo?,
+        token_info: Lithic::TokenInfo?,
         updated: Time,
         events: ::Array[Lithic::Transaction::Event]
       }
@@ -51,7 +51,7 @@ module Lithic
 
       attr_accessor card_token: String
 
-      attr_accessor cardholder_authentication: Lithic::Transaction::CardholderAuthentication?
+      attr_accessor cardholder_authentication: Lithic::CardholderAuthentication?
 
       attr_accessor created: Time
 
@@ -77,7 +77,7 @@ module Lithic
 
       attr_accessor status: Lithic::Models::Transaction::status
 
-      attr_accessor token_info: Lithic::Transaction::TokenInfo?
+      attr_accessor token_info: Lithic::TokenInfo?
 
       attr_accessor updated: Time
 
@@ -98,7 +98,7 @@ module Lithic
         authorization_code: String?,
         avs: Lithic::Transaction::Avs?,
         card_token: String,
-        cardholder_authentication: Lithic::Transaction::CardholderAuthentication?,
+        cardholder_authentication: Lithic::CardholderAuthentication?,
         created: Time,
         financial_account_token: String?,
         merchant: Lithic::Merchant,
@@ -111,7 +111,7 @@ module Lithic
         result: Lithic::Models::Transaction::result,
         settled_amount: Integer,
         status: Lithic::Models::Transaction::status,
-        token_info: Lithic::Transaction::TokenInfo?,
+        token_info: Lithic::TokenInfo?,
         updated: Time,
         ?events: ::Array[Lithic::Transaction::Event]
       ) -> void
@@ -127,7 +127,7 @@ module Lithic
         authorization_code: String?,
         avs: Lithic::Transaction::Avs?,
         card_token: String,
-        cardholder_authentication: Lithic::Transaction::CardholderAuthentication?,
+        cardholder_authentication: Lithic::CardholderAuthentication?,
         created: Time,
         financial_account_token: String?,
         merchant: Lithic::Merchant,
@@ -140,7 +140,7 @@ module Lithic
         result: Lithic::Models::Transaction::result,
         settled_amount: Integer,
         status: Lithic::Models::Transaction::status,
-        token_info: Lithic::Transaction::TokenInfo?,
+        token_info: Lithic::TokenInfo?,
         updated: Time,
         events: ::Array[Lithic::Transaction::Event]
       }
@@ -246,102 +246,6 @@ module Lithic
         def initialize: (address: String, zipcode: String) -> void
 
         def to_hash: -> { address: String, zipcode: String }
-      end
-
-      type cardholder_authentication =
-        {
-          authentication_method: Lithic::Models::Transaction::CardholderAuthentication::authentication_method,
-          authentication_result: Lithic::Models::Transaction::CardholderAuthentication::authentication_result,
-          decision_made_by: Lithic::Models::Transaction::CardholderAuthentication::decision_made_by,
-          liability_shift: Lithic::Models::Transaction::CardholderAuthentication::liability_shift,
-          three_ds_authentication_token: String?
-        }
-
-      class CardholderAuthentication < Lithic::Internal::Type::BaseModel
-        attr_accessor authentication_method: Lithic::Models::Transaction::CardholderAuthentication::authentication_method
-
-        attr_accessor authentication_result: Lithic::Models::Transaction::CardholderAuthentication::authentication_result
-
-        attr_accessor decision_made_by: Lithic::Models::Transaction::CardholderAuthentication::decision_made_by
-
-        attr_accessor liability_shift: Lithic::Models::Transaction::CardholderAuthentication::liability_shift
-
-        attr_accessor three_ds_authentication_token: String?
-
-        def initialize: (
-          authentication_method: Lithic::Models::Transaction::CardholderAuthentication::authentication_method,
-          authentication_result: Lithic::Models::Transaction::CardholderAuthentication::authentication_result,
-          decision_made_by: Lithic::Models::Transaction::CardholderAuthentication::decision_made_by,
-          liability_shift: Lithic::Models::Transaction::CardholderAuthentication::liability_shift,
-          three_ds_authentication_token: String?
-        ) -> void
-
-        def to_hash: -> {
-          authentication_method: Lithic::Models::Transaction::CardholderAuthentication::authentication_method,
-          authentication_result: Lithic::Models::Transaction::CardholderAuthentication::authentication_result,
-          decision_made_by: Lithic::Models::Transaction::CardholderAuthentication::decision_made_by,
-          liability_shift: Lithic::Models::Transaction::CardholderAuthentication::liability_shift,
-          three_ds_authentication_token: String?
-        }
-
-        type authentication_method = :FRICTIONLESS | :CHALLENGE | :NONE
-
-        module AuthenticationMethod
-          extend Lithic::Internal::Type::Enum
-
-          FRICTIONLESS: :FRICTIONLESS
-          CHALLENGE: :CHALLENGE
-          NONE: :NONE
-
-          def self?.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::authentication_method]
-        end
-
-        type authentication_result = :ATTEMPTS | :DECLINE | :NONE | :SUCCESS
-
-        module AuthenticationResult
-          extend Lithic::Internal::Type::Enum
-
-          ATTEMPTS: :ATTEMPTS
-          DECLINE: :DECLINE
-          NONE: :NONE
-          SUCCESS: :SUCCESS
-
-          def self?.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::authentication_result]
-        end
-
-        type decision_made_by =
-          :CUSTOMER_RULES
-          | :CUSTOMER_ENDPOINT
-          | :LITHIC_DEFAULT
-          | :LITHIC_RULES
-          | :NETWORK
-          | :UNKNOWN
-
-        module DecisionMadeBy
-          extend Lithic::Internal::Type::Enum
-
-          CUSTOMER_RULES: :CUSTOMER_RULES
-          CUSTOMER_ENDPOINT: :CUSTOMER_ENDPOINT
-          LITHIC_DEFAULT: :LITHIC_DEFAULT
-          LITHIC_RULES: :LITHIC_RULES
-          NETWORK: :NETWORK
-          UNKNOWN: :UNKNOWN
-
-          def self?.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::decision_made_by]
-        end
-
-        type liability_shift =
-          :"3DS_AUTHENTICATED" | :TOKEN_AUTHENTICATED | :NONE
-
-        module LiabilityShift
-          extend Lithic::Internal::Type::Enum
-
-          LIABILITY_SHIFT_3DS_AUTHENTICATED: :"3DS_AUTHENTICATED"
-          TOKEN_AUTHENTICATED: :TOKEN_AUTHENTICATED
-          NONE: :NONE
-
-          def self?.values: -> ::Array[Lithic::Models::Transaction::CardholderAuthentication::liability_shift]
-        end
       end
 
       type network =
@@ -703,42 +607,6 @@ module Lithic
         VOIDED: :VOIDED
 
         def self?.values: -> ::Array[Lithic::Models::Transaction::status]
-      end
-
-      type token_info =
-        { wallet_type: Lithic::Models::Transaction::TokenInfo::wallet_type }
-
-      class TokenInfo < Lithic::Internal::Type::BaseModel
-        attr_accessor wallet_type: Lithic::Models::Transaction::TokenInfo::wallet_type
-
-        def initialize: (
-          wallet_type: Lithic::Models::Transaction::TokenInfo::wallet_type
-        ) -> void
-
-        def to_hash: -> {
-          wallet_type: Lithic::Models::Transaction::TokenInfo::wallet_type
-        }
-
-        type wallet_type =
-          :APPLE_PAY
-          | :GOOGLE_PAY
-          | :MASTERPASS
-          | :MERCHANT
-          | :OTHER
-          | :SAMSUNG_PAY
-
-        module WalletType
-          extend Lithic::Internal::Type::Enum
-
-          APPLE_PAY: :APPLE_PAY
-          GOOGLE_PAY: :GOOGLE_PAY
-          MASTERPASS: :MASTERPASS
-          MERCHANT: :MERCHANT
-          OTHER: :OTHER
-          SAMSUNG_PAY: :SAMSUNG_PAY
-
-          def self?.values: -> ::Array[Lithic::Models::Transaction::TokenInfo::wallet_type]
-        end
       end
 
       type event =

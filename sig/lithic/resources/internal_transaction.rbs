@@ -1,0 +1,7 @@
+module Lithic
+  module Resources
+    class InternalTransaction
+      def initialize: (client: Lithic::Client) -> void
+    end
+  end
+end

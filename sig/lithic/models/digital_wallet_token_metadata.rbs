@@ -1,0 +1,119 @@
+module Lithic
+  module Models
+    type digital_wallet_token_metadata =
+      {
+        payment_account_info: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo,
+        status: String,
+        payment_app_instance_id: String?,
+        token_requestor_id: String,
+        token_requestor_name: Lithic::Models::DigitalWalletTokenMetadata::token_requestor_name
+      }
+
+    class DigitalWalletTokenMetadata < Lithic::Internal::Type::BaseModel
+      attr_accessor payment_account_info: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo
+
+      attr_accessor status: String
+
+      attr_accessor payment_app_instance_id: String?
+
+      attr_reader token_requestor_id: String?
+
+      def token_requestor_id=: (String) -> String
+
+      attr_reader token_requestor_name: Lithic::Models::DigitalWalletTokenMetadata::token_requestor_name?
+
+      def token_requestor_name=: (
+        Lithic::Models::DigitalWalletTokenMetadata::token_requestor_name
+      ) -> Lithic::Models::DigitalWalletTokenMetadata::token_requestor_name
+
+      def initialize: (
+        payment_account_info: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo,
+        status: String,
+        ?payment_app_instance_id: String?,
+        ?token_requestor_id: String,
+        ?token_requestor_name: Lithic::Models::DigitalWalletTokenMetadata::token_requestor_name
+      ) -> void
+
+      def to_hash: -> {
+        payment_account_info: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo,
+        status: String,
+        payment_app_instance_id: String?,
+        token_requestor_id: String,
+        token_requestor_name: Lithic::Models::DigitalWalletTokenMetadata::token_requestor_name
+      }
+
+      type payment_account_info =
+        {
+          account_holder_data: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData,
+          pan_unique_reference: String?,
+          payment_account_reference: String?,
+          token_unique_reference: String?
+        }
+
+      class PaymentAccountInfo < Lithic::Internal::Type::BaseModel
+        attr_accessor account_holder_data: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData
+
+        attr_accessor pan_unique_reference: String?
+
+        attr_accessor payment_account_reference: String?
+
+        attr_accessor token_unique_reference: String?
+
+        def initialize: (
+          account_holder_data: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData,
+          ?pan_unique_reference: String?,
+          ?payment_account_reference: String?,
+          ?token_unique_reference: String?
+        ) -> void
+
+        def to_hash: -> {
+          account_holder_data: Lithic::DigitalWalletTokenMetadata::PaymentAccountInfo::AccountHolderData,
+          pan_unique_reference: String?,
+          payment_account_reference: String?,
+          token_unique_reference: String?
+        }
+
+        type account_holder_data = { phone_number: String? }
+
+        class AccountHolderData < Lithic::Internal::Type::BaseModel
+          attr_accessor phone_number: String?
+
+          def initialize: (?phone_number: String?) -> void
+
+          def to_hash: -> { phone_number: String? }
+        end
+      end
+
+      type token_requestor_name =
+        :AMAZON_ONE
+        | :ANDROID_PAY
+        | :APPLE_PAY
+        | :FACEBOOK
+        | :FITBIT_PAY
+        | :GARMIN_PAY
+        | :MICROSOFT_PAY
+        | :NETFLIX
+        | :SAMSUNG_PAY
+        | :UNKNOWN
+        | :VISA_CHECKOUT
+
+      module TokenRequestorName
+        extend Lithic::Internal::Type::Enum
+
+        AMAZON_ONE: :AMAZON_ONE
+        ANDROID_PAY: :ANDROID_PAY
+        APPLE_PAY: :APPLE_PAY
+        FACEBOOK: :FACEBOOK
+        FITBIT_PAY: :FITBIT_PAY
+        GARMIN_PAY: :GARMIN_PAY
+        MICROSOFT_PAY: :MICROSOFT_PAY
+        NETFLIX: :NETFLIX
+        SAMSUNG_PAY: :SAMSUNG_PAY
+        UNKNOWN: :UNKNOWN
+        VISA_CHECKOUT: :VISA_CHECKOUT
+
+        def self?.values: -> ::Array[Lithic::Models::DigitalWalletTokenMetadata::token_requestor_name]
+      end
+    end
+  end
+end
