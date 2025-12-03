@@ -7,31 +7,31 @@ class Lithic::Test::Resources::ThreeDS::AuthenticationTest < Lithic::Test::Resou
     response = @lithic.three_ds.authentication.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::ThreeDS::AuthenticationRetrieveResponse
+      response => Lithic::ThreeDSAuthentication
     end
 
     assert_pattern do
       response => {
         token: String,
-        account_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AccountType | nil,
-        authentication_result: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationResult,
-        card_expiry_check: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::CardExpiryCheck,
+        account_type: Lithic::ThreeDSAuthentication::AccountType | nil,
+        authentication_result: Lithic::ThreeDSAuthentication::AuthenticationResult,
+        card_expiry_check: Lithic::ThreeDSAuthentication::CardExpiryCheck,
         card_token: String,
-        cardholder: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Cardholder,
-        channel: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Channel,
+        cardholder: Lithic::ThreeDSAuthentication::Cardholder,
+        channel: Lithic::ThreeDSAuthentication::Channel,
         created: Time,
-        merchant: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Merchant,
-        message_category: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::MessageCategory,
-        three_ds_requestor_challenge_indicator: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeDSRequestorChallengeIndicator,
-        additional_data: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AdditionalData | nil,
-        app: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::App | nil,
-        authentication_request_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::AuthenticationRequestType | nil,
-        browser: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Browser | nil,
-        challenge_metadata: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeMetadata | nil,
-        challenge_orchestrated_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ChallengeOrchestratedBy | nil,
-        decision_made_by: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::DecisionMadeBy | nil,
-        three_ri_request_type: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::ThreeRiRequestType | nil,
-        transaction: Lithic::Models::ThreeDS::AuthenticationRetrieveResponse::Transaction | nil
+        merchant: Lithic::ThreeDSAuthentication::Merchant,
+        message_category: Lithic::ThreeDSAuthentication::MessageCategory,
+        three_ds_requestor_challenge_indicator: Lithic::ThreeDSAuthentication::ThreeDSRequestorChallengeIndicator,
+        additional_data: Lithic::ThreeDSAuthentication::AdditionalData | nil,
+        app: Lithic::ThreeDSAuthentication::App | nil,
+        authentication_request_type: Lithic::ThreeDSAuthentication::AuthenticationRequestType | nil,
+        browser: Lithic::ThreeDSAuthentication::Browser | nil,
+        challenge_metadata: Lithic::ThreeDSAuthentication::ChallengeMetadata | nil,
+        challenge_orchestrated_by: Lithic::ThreeDSAuthentication::ChallengeOrchestratedBy | nil,
+        decision_made_by: Lithic::ThreeDSAuthentication::DecisionMadeBy | nil,
+        three_ri_request_type: Lithic::ThreeDSAuthentication::ThreeRiRequestType | nil,
+        transaction: Lithic::ThreeDSAuthentication::Transaction | nil
       }
     end
   end

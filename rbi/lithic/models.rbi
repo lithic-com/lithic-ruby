@@ -82,11 +82,23 @@ module Lithic
 
   Card = Lithic::Models::Card
 
+  CardBulkOrder = Lithic::Models::CardBulkOrder
+
+  CardBulkOrderCreateParams = Lithic::Models::CardBulkOrderCreateParams
+
+  CardBulkOrderListParams = Lithic::Models::CardBulkOrderListParams
+
+  CardBulkOrderRetrieveParams = Lithic::Models::CardBulkOrderRetrieveParams
+
+  CardBulkOrderUpdateParams = Lithic::Models::CardBulkOrderUpdateParams
+
   CardConvertPhysicalParams = Lithic::Models::CardConvertPhysicalParams
 
   CardCreateParams = Lithic::Models::CardCreateParams
 
   CardEmbedParams = Lithic::Models::CardEmbedParams
+
+  CardholderAuthentication = Lithic::Models::CardholderAuthentication
 
   CardListParams = Lithic::Models::CardListParams
 
@@ -126,11 +138,15 @@ module Lithic
 
   Currency = Lithic::Models::Currency
 
+  Device = Lithic::Models::Device
+
   DigitalCardArtAPI = Lithic::Models::DigitalCardArtAPI
 
   DigitalCardArtListParams = Lithic::Models::DigitalCardArtListParams
 
   DigitalCardArtRetrieveParams = Lithic::Models::DigitalCardArtRetrieveParams
+
+  DigitalWalletTokenMetadata = Lithic::Models::DigitalWalletTokenMetadata
 
   Dispute = Lithic::Models::Dispute
 
@@ -174,6 +190,8 @@ module Lithic
   Events = Lithic::Models::Events
 
   EventSubscription = Lithic::Models::EventSubscription
+
+  ExternalBankAccount = Lithic::Models::ExternalBankAccount
 
   ExternalBankAccountAddress = Lithic::Models::ExternalBankAccountAddress
 
@@ -221,6 +239,8 @@ module Lithic
 
   FinancialAccount = Lithic::Models::FinancialAccount
 
+  FinancialAccountBalance = Lithic::Models::FinancialAccountBalance
+
   FinancialAccountCreateParams = Lithic::Models::FinancialAccountCreateParams
 
   FinancialAccountListParams = Lithic::Models::FinancialAccountListParams
@@ -244,6 +264,8 @@ module Lithic
 
   Fraud = Lithic::Models::Fraud
 
+  FundingEvent = Lithic::Models::FundingEvent
+
   FundingEventListParams = Lithic::Models::FundingEventListParams
 
   FundingEventRetrieveDetailsParams =
@@ -252,6 +274,8 @@ module Lithic
   FundingEventRetrieveParams = Lithic::Models::FundingEventRetrieveParams
 
   InstanceFinancialAccountType = Lithic::Models::InstanceFinancialAccountType
+
+  InternalTransactionAPI = Lithic::Models::InternalTransactionAPI
 
   KYB = Lithic::Models::KYB
 
@@ -284,6 +308,8 @@ module Lithic
   NetworkProgramListParams = Lithic::Models::NetworkProgramListParams
 
   NetworkProgramRetrieveParams = Lithic::Models::NetworkProgramRetrieveParams
+
+  NetworkTotal = Lithic::Models::NetworkTotal
 
   NonPCICard = Lithic::Models::NonPCICard
 
@@ -338,6 +364,10 @@ module Lithic
 
   ThreeDS = Lithic::Models::ThreeDS
 
+  ThreeDSAuthentication = Lithic::Models::ThreeDSAuthentication
+
+  TokenInfo = Lithic::Models::TokenInfo
+
   Tokenization = Lithic::Models::Tokenization
 
   TokenizationActivateParams = Lithic::Models::TokenizationActivateParams
@@ -350,6 +380,8 @@ module Lithic
   TokenizationDecisioningRotateSecretParams =
     Lithic::Models::TokenizationDecisioningRotateSecretParams
 
+  TokenizationDeclineReason = Lithic::Models::TokenizationDeclineReason
+
   TokenizationListParams = Lithic::Models::TokenizationListParams
 
   TokenizationPauseParams = Lithic::Models::TokenizationPauseParams
@@ -359,9 +391,13 @@ module Lithic
 
   TokenizationRetrieveParams = Lithic::Models::TokenizationRetrieveParams
 
+  TokenizationRuleResult = Lithic::Models::TokenizationRuleResult
+
   TokenizationSecret = Lithic::Models::TokenizationSecret
 
   TokenizationSimulateParams = Lithic::Models::TokenizationSimulateParams
+
+  TokenizationTfaReason = Lithic::Models::TokenizationTfaReason
 
   TokenizationUnpauseParams = Lithic::Models::TokenizationUnpauseParams
 
@@ -404,6 +440,8 @@ module Lithic
   TransferCreateParams = Lithic::Models::TransferCreateParams
 
   VerificationMethod = Lithic::Models::VerificationMethod
+
+  WalletDecisioningInfo = Lithic::Models::WalletDecisioningInfo
 
   WirePartyDetails = Lithic::Models::WirePartyDetails
 end

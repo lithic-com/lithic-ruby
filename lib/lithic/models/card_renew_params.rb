@@ -56,6 +56,7 @@ module Lithic
       #     tracking
       #   - `EXPEDITED` - FedEx or UPS depending on card manufacturer, Standard Overnight
       #     or similar international option, with tracking
+      #   - `BULK_EXPEDITED` - Bulk shipment with Expedited shipping
       #
       #   @return [Symbol, Lithic::Models::CardRenewParams::ShippingMethod, nil]
       optional :shipping_method, enum: -> { Lithic::CardRenewParams::ShippingMethod }
@@ -92,10 +93,12 @@ module Lithic
       #   tracking
       # - `EXPEDITED` - FedEx or UPS depending on card manufacturer, Standard Overnight
       #   or similar international option, with tracking
+      # - `BULK_EXPEDITED` - Bulk shipment with Expedited shipping
       module ShippingMethod
         extend Lithic::Internal::Type::Enum
 
         SHIPPING_METHOD_2_DAY = :"2_DAY"
+        BULK_EXPEDITED = :BULK_EXPEDITED
         EXPEDITED = :EXPEDITED
         EXPRESS = :EXPRESS
         PRIORITY = :PRIORITY

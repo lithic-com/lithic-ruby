@@ -1,0 +1,36 @@
+module Lithic
+  module Models
+    type token_info = { wallet_type: Lithic::Models::TokenInfo::wallet_type }
+
+    class TokenInfo < Lithic::Internal::Type::BaseModel
+      attr_accessor wallet_type: Lithic::Models::TokenInfo::wallet_type
+
+      def initialize: (
+        wallet_type: Lithic::Models::TokenInfo::wallet_type
+      ) -> void
+
+      def to_hash: -> { wallet_type: Lithic::Models::TokenInfo::wallet_type }
+
+      type wallet_type =
+        :APPLE_PAY
+        | :GOOGLE_PAY
+        | :MASTERPASS
+        | :MERCHANT
+        | :OTHER
+        | :SAMSUNG_PAY
+
+      module WalletType
+        extend Lithic::Internal::Type::Enum
+
+        APPLE_PAY: :APPLE_PAY
+        GOOGLE_PAY: :GOOGLE_PAY
+        MASTERPASS: :MASTERPASS
+        MERCHANT: :MERCHANT
+        OTHER: :OTHER
+        SAMSUNG_PAY: :SAMSUNG_PAY
+
+        def self?.values: -> ::Array[Lithic::Models::TokenInfo::wallet_type]
+      end
+    end
+  end
+end

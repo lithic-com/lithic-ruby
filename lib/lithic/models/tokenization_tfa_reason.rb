@@ -1,0 +1,29 @@
+# frozen_string_literal: true
+
+module Lithic
+  module Models
+    # Reason code for why a tokenization required two-factor authentication
+    module TokenizationTfaReason
+      extend Lithic::Internal::Type::Enum
+
+      WALLET_RECOMMENDED_TFA = :WALLET_RECOMMENDED_TFA
+      SUSPICIOUS_ACTIVITY = :SUSPICIOUS_ACTIVITY
+      DEVICE_RECENTLY_LOST = :DEVICE_RECENTLY_LOST
+      TOO_MANY_RECENT_ATTEMPTS = :TOO_MANY_RECENT_ATTEMPTS
+      TOO_MANY_RECENT_TOKENS = :TOO_MANY_RECENT_TOKENS
+      TOO_MANY_DIFFERENT_CARDHOLDERS = :TOO_MANY_DIFFERENT_CARDHOLDERS
+      OUTSIDE_HOME_TERRITORY = :OUTSIDE_HOME_TERRITORY
+      HAS_SUSPENDED_TOKENS = :HAS_SUSPENDED_TOKENS
+      HIGH_RISK = :HIGH_RISK
+      ACCOUNT_SCORE_LOW = :ACCOUNT_SCORE_LOW
+      DEVICE_SCORE_LOW = :DEVICE_SCORE_LOW
+      CARD_STATE_TFA = :CARD_STATE_TFA
+      HARDCODED_TFA = :HARDCODED_TFA
+      CUSTOMER_RULE_TFA = :CUSTOMER_RULE_TFA
+      DEVICE_HOST_CARD_EMULATION = :DEVICE_HOST_CARD_EMULATION
+
+      # @!method self.values
+      #   @return [Array<Symbol>]
+    end
+  end
+end

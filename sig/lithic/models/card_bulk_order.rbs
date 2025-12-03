@@ -1,0 +1,76 @@
+module Lithic
+  module Models
+    type card_bulk_order =
+      {
+        token: String,
+        card_tokens: ::Array[String],
+        created: Time,
+        customer_product_id: String?,
+        shipping_address: top,
+        shipping_method: Lithic::Models::CardBulkOrder::shipping_method,
+        status: Lithic::Models::CardBulkOrder::status,
+        updated: Time
+      }
+
+    class CardBulkOrder < Lithic::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      attr_accessor card_tokens: ::Array[String]
+
+      attr_accessor created: Time
+
+      attr_accessor customer_product_id: String?
+
+      attr_accessor shipping_address: top
+
+      attr_accessor shipping_method: Lithic::Models::CardBulkOrder::shipping_method
+
+      attr_accessor status: Lithic::Models::CardBulkOrder::status
+
+      attr_accessor updated: Time
+
+      def initialize: (
+        token: String,
+        card_tokens: ::Array[String],
+        created: Time,
+        customer_product_id: String?,
+        shipping_address: top,
+        shipping_method: Lithic::Models::CardBulkOrder::shipping_method,
+        status: Lithic::Models::CardBulkOrder::status,
+        updated: Time
+      ) -> void
+
+      def to_hash: -> {
+        token: String,
+        card_tokens: ::Array[String],
+        created: Time,
+        customer_product_id: String?,
+        shipping_address: top,
+        shipping_method: Lithic::Models::CardBulkOrder::shipping_method,
+        status: Lithic::Models::CardBulkOrder::status,
+        updated: Time
+      }
+
+      type shipping_method = :BULK_EXPEDITED
+
+      module ShippingMethod
+        extend Lithic::Internal::Type::Enum
+
+        BULK_EXPEDITED: :BULK_EXPEDITED
+
+        def self?.values: -> ::Array[Lithic::Models::CardBulkOrder::shipping_method]
+      end
+
+      type status = :OPEN | :LOCKED
+
+      module Status
+        extend Lithic::Internal::Type::Enum
+
+        OPEN: :OPEN
+        LOCKED: :LOCKED
+
+        def self?.values: -> ::Array[Lithic::Models::CardBulkOrder::status]
+      end
+    end
+  end
+end

@@ -61,6 +61,7 @@ module Lithic
 
       type shipping_method =
         :"2_DAY"
+        | :BULK_EXPEDITED
         | :EXPEDITED
         | :EXPRESS
         | :PRIORITY
@@ -71,6 +72,7 @@ module Lithic
         extend Lithic::Internal::Type::Enum
 
         SHIPPING_METHOD_2_DAY: :"2_DAY"
+        BULK_EXPEDITED: :BULK_EXPEDITED
         EXPEDITED: :EXPEDITED
         EXPRESS: :EXPRESS
         PRIORITY: :PRIORITY

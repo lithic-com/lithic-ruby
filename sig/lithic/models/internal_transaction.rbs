@@ -1,0 +1,165 @@
+module Lithic
+  module Models
+    type internal_transaction_api =
+      {
+        token: String,
+        category: Lithic::Models::InternalTransactionAPI::category,
+        created: Time,
+        currency: String,
+        descriptor: String,
+        events: ::Array[Lithic::InternalTransactionAPI::Event],
+        pending_amount: Integer,
+        result: Lithic::Models::InternalTransactionAPI::result,
+        settled_amount: Integer,
+        status: Lithic::Models::InternalTransactionAPI::status,
+        updated: Time
+      }
+
+    class InternalTransactionAPI < Lithic::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      attr_accessor category: Lithic::Models::InternalTransactionAPI::category
+
+      attr_accessor created: Time
+
+      attr_accessor currency: String
+
+      attr_accessor descriptor: String
+
+      attr_accessor events: ::Array[Lithic::InternalTransactionAPI::Event]
+
+      attr_accessor pending_amount: Integer
+
+      attr_accessor result: Lithic::Models::InternalTransactionAPI::result
+
+      attr_accessor settled_amount: Integer
+
+      attr_accessor status: Lithic::Models::InternalTransactionAPI::status
+
+      attr_accessor updated: Time
+
+      def initialize: (
+        token: String,
+        category: Lithic::Models::InternalTransactionAPI::category,
+        created: Time,
+        currency: String,
+        descriptor: String,
+        events: ::Array[Lithic::InternalTransactionAPI::Event],
+        pending_amount: Integer,
+        result: Lithic::Models::InternalTransactionAPI::result,
+        settled_amount: Integer,
+        status: Lithic::Models::InternalTransactionAPI::status,
+        updated: Time
+      ) -> void
+
+      def to_hash: -> {
+        token: String,
+        category: Lithic::Models::InternalTransactionAPI::category,
+        created: Time,
+        currency: String,
+        descriptor: String,
+        events: ::Array[Lithic::InternalTransactionAPI::Event],
+        pending_amount: Integer,
+        result: Lithic::Models::InternalTransactionAPI::result,
+        settled_amount: Integer,
+        status: Lithic::Models::InternalTransactionAPI::status,
+        updated: Time
+      }
+
+      type category = :INTERNAL
+
+      module Category
+        extend Lithic::Internal::Type::Enum
+
+        INTERNAL: :INTERNAL
+
+        def self?.values: -> ::Array[Lithic::Models::InternalTransactionAPI::category]
+      end
+
+      type event =
+        {
+          token: String,
+          amount: Integer,
+          created: Time,
+          result: Lithic::Models::InternalTransactionAPI::Event::result,
+          type: Lithic::Models::InternalTransactionAPI::Event::type_
+        }
+
+      class Event < Lithic::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor amount: Integer
+
+        attr_accessor created: Time
+
+        attr_accessor result: Lithic::Models::InternalTransactionAPI::Event::result
+
+        attr_accessor type: Lithic::Models::InternalTransactionAPI::Event::type_
+
+        def initialize: (
+          token: String,
+          amount: Integer,
+          created: Time,
+          result: Lithic::Models::InternalTransactionAPI::Event::result,
+          type: Lithic::Models::InternalTransactionAPI::Event::type_
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          amount: Integer,
+          created: Time,
+          result: Lithic::Models::InternalTransactionAPI::Event::result,
+          type: Lithic::Models::InternalTransactionAPI::Event::type_
+        }
+
+        type result = :APPROVED | :DECLINED
+
+        module Result
+          extend Lithic::Internal::Type::Enum
+
+          APPROVED: :APPROVED
+          DECLINED: :DECLINED
+
+          def self?.values: -> ::Array[Lithic::Models::InternalTransactionAPI::Event::result]
+        end
+
+        type type_ = :INTERNAL_ADJUSTMENT
+
+        module Type
+          extend Lithic::Internal::Type::Enum
+
+          INTERNAL_ADJUSTMENT: :INTERNAL_ADJUSTMENT
+
+          def self?.values: -> ::Array[Lithic::Models::InternalTransactionAPI::Event::type_]
+        end
+      end
+
+      type result = :APPROVED | :DECLINED
+
+      module Result
+        extend Lithic::Internal::Type::Enum
+
+        APPROVED: :APPROVED
+        DECLINED: :DECLINED
+
+        def self?.values: -> ::Array[Lithic::Models::InternalTransactionAPI::result]
+      end
+
+      type status =
+        :PENDING | :SETTLED | :DECLINED | :REVERSED | :CANCELED | :RETURNED
+
+      module Status
+        extend Lithic::Internal::Type::Enum
+
+        PENDING: :PENDING
+        SETTLED: :SETTLED
+        DECLINED: :DECLINED
+        REVERSED: :REVERSED
+        CANCELED: :CANCELED
+        RETURNED: :RETURNED
+
+        def self?.values: -> ::Array[Lithic::Models::InternalTransactionAPI::status]
+      end
+    end
+  end
+end

@@ -18,11 +18,13 @@ module Lithic
       # Create a new virtual or physical card. Parameters `shipping_address` and
       # `product_id` only apply to physical cards.
       #
-      # @overload create(type:, account_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_comment: nil, replacement_for: nil, replacement_substatus: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
+      # @overload create(type:, account_token: nil, bulk_order_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_comment: nil, replacement_for: nil, replacement_substatus: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
       #
       # @param type [Symbol, Lithic::Models::CardCreateParams::Type] Card types:
       #
       # @param account_token [String] Globally unique identifier for the account that the card will be associated with
+      #
+      # @param bulk_order_token [String] Globally unique identifier for an existing bulk order to associate this card wit
       #
       # @param card_program_token [String] For card programs with more than one BIN range. This must be configured with Lit
       #

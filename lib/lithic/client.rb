@@ -44,6 +44,9 @@ module Lithic
     # @return [Lithic::Resources::Cards]
     attr_reader :cards
 
+    # @return [Lithic::Resources::CardBulkOrders]
+    attr_reader :card_bulk_orders
+
     # @return [Lithic::Resources::Balances]
     attr_reader :balances
 
@@ -100,6 +103,9 @@ module Lithic
 
     # @return [Lithic::Resources::ManagementOperations]
     attr_reader :management_operations
+
+    # @return [Lithic::Resources::InternalTransaction]
+    attr_reader :internal_transaction
 
     # @return [Lithic::Resources::FundingEvents]
     attr_reader :funding_events
@@ -194,6 +200,7 @@ module Lithic
       @tokenization_decisioning = Lithic::Resources::TokenizationDecisioning.new(client: self)
       @tokenizations = Lithic::Resources::Tokenizations.new(client: self)
       @cards = Lithic::Resources::Cards.new(client: self)
+      @card_bulk_orders = Lithic::Resources::CardBulkOrders.new(client: self)
       @balances = Lithic::Resources::Balances.new(client: self)
       @aggregate_balances = Lithic::Resources::AggregateBalances.new(client: self)
       @disputes = Lithic::Resources::Disputes.new(client: self)
@@ -213,6 +220,7 @@ module Lithic
       @credit_products = Lithic::Resources::CreditProducts.new(client: self)
       @external_payments = Lithic::Resources::ExternalPayments.new(client: self)
       @management_operations = Lithic::Resources::ManagementOperations.new(client: self)
+      @internal_transaction = Lithic::Resources::InternalTransaction.new(client: self)
       @funding_events = Lithic::Resources::FundingEvents.new(client: self)
       @fraud = Lithic::Resources::Fraud.new(client: self)
       @network_programs = Lithic::Resources::NetworkPrograms.new(client: self)

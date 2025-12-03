@@ -78,8 +78,8 @@ module Lithic
 
       # @!attribute cardholder_authentication
       #
-      #   @return [Lithic::Models::Transaction::CardholderAuthentication, nil]
-      required :cardholder_authentication, -> { Lithic::Transaction::CardholderAuthentication }, nil?: true
+      #   @return [Lithic::Models::CardholderAuthentication, nil]
+      required :cardholder_authentication, -> { Lithic::CardholderAuthentication }, nil?: true
 
       # @!attribute created
       #   Date and time when the transaction first occurred. UTC time zone.
@@ -164,8 +164,8 @@ module Lithic
 
       # @!attribute token_info
       #
-      #   @return [Lithic::Models::Transaction::TokenInfo, nil]
-      required :token_info, -> { Lithic::Transaction::TokenInfo }, nil?: true
+      #   @return [Lithic::Models::TokenInfo, nil]
+      required :token_info, -> { Lithic::TokenInfo }, nil?: true
 
       # @!attribute updated
       #   Date and time when the transaction last updated. UTC time zone.
@@ -202,7 +202,7 @@ module Lithic
       #
       #   @param card_token [String] Token for the card used in this transaction.
       #
-      #   @param cardholder_authentication [Lithic::Models::Transaction::CardholderAuthentication, nil]
+      #   @param cardholder_authentication [Lithic::Models::CardholderAuthentication, nil]
       #
       #   @param created [Time] Date and time when the transaction first occurred. UTC time zone.
       #
@@ -228,7 +228,7 @@ module Lithic
       #
       #   @param status [Symbol, Lithic::Models::Transaction::Status] Status of the transaction.
       #
-      #   @param token_info [Lithic::Models::Transaction::TokenInfo, nil]
+      #   @param token_info [Lithic::Models::TokenInfo, nil]
       #
       #   @param updated [Time] Date and time when the transaction last updated. UTC time zone.
       #
@@ -374,136 +374,6 @@ module Lithic
         #   @param address [String] Cardholder address
         #
         #   @param zipcode [String] Cardholder ZIP code
-      end
-
-      # @see Lithic::Models::Transaction#cardholder_authentication
-      class CardholderAuthentication < Lithic::Internal::Type::BaseModel
-        # @!attribute authentication_method
-        #   Indicates the method used to authenticate the cardholder.
-        #
-        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationMethod]
-        required :authentication_method,
-                 enum: -> { Lithic::Transaction::CardholderAuthentication::AuthenticationMethod }
-
-        # @!attribute authentication_result
-        #   Indicates the outcome of the 3DS authentication process.
-        #
-        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult]
-        required :authentication_result,
-                 enum: -> { Lithic::Transaction::CardholderAuthentication::AuthenticationResult }
-
-        # @!attribute decision_made_by
-        #   Indicates which party made the 3DS authentication decision.
-        #
-        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy]
-        required :decision_made_by, enum: -> { Lithic::Transaction::CardholderAuthentication::DecisionMadeBy }
-
-        # @!attribute liability_shift
-        #   Indicates whether chargeback liability shift applies to the transaction.
-        #   Possible enum values:
-        #
-        #   - `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D
-        #     Secure flow, chargeback liability shift applies.
-        #   - `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the
-        #     merchant is liable.
-        #   - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
-        #     cryptography, possibly recurring. Chargeback liability shift to the issuer
-        #     applies.
-        #
-        #   @return [Symbol, Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift]
-        required :liability_shift, enum: -> { Lithic::Transaction::CardholderAuthentication::LiabilityShift }
-
-        # @!attribute three_ds_authentication_token
-        #   Unique identifier you can use to match a given 3DS authentication (available via
-        #   the three_ds_authentication.created event webhook) and the transaction. Note
-        #   that in cases where liability shift does not occur, this token is matched to the
-        #   transaction on a best-effort basis.
-        #
-        #   @return [String, nil]
-        required :three_ds_authentication_token, String, nil?: true
-
-        # @!method initialize(authentication_method:, authentication_result:, decision_made_by:, liability_shift:, three_ds_authentication_token:)
-        #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::Transaction::CardholderAuthentication} for more details.
-        #
-        #   @param authentication_method [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationMethod] Indicates the method used to authenticate the cardholder.
-        #
-        #   @param authentication_result [Symbol, Lithic::Models::Transaction::CardholderAuthentication::AuthenticationResult] Indicates the outcome of the 3DS authentication process.
-        #
-        #   @param decision_made_by [Symbol, Lithic::Models::Transaction::CardholderAuthentication::DecisionMadeBy] Indicates which party made the 3DS authentication decision.
-        #
-        #   @param liability_shift [Symbol, Lithic::Models::Transaction::CardholderAuthentication::LiabilityShift] Indicates whether chargeback liability shift applies to the transaction. Possibl
-        #
-        #   @param three_ds_authentication_token [String, nil] Unique identifier you can use to match a given 3DS authentication (available via
-
-        # Indicates the method used to authenticate the cardholder.
-        #
-        # @see Lithic::Models::Transaction::CardholderAuthentication#authentication_method
-        module AuthenticationMethod
-          extend Lithic::Internal::Type::Enum
-
-          FRICTIONLESS = :FRICTIONLESS
-          CHALLENGE = :CHALLENGE
-          NONE = :NONE
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # Indicates the outcome of the 3DS authentication process.
-        #
-        # @see Lithic::Models::Transaction::CardholderAuthentication#authentication_result
-        module AuthenticationResult
-          extend Lithic::Internal::Type::Enum
-
-          ATTEMPTS = :ATTEMPTS
-          DECLINE = :DECLINE
-          NONE = :NONE
-          SUCCESS = :SUCCESS
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # Indicates which party made the 3DS authentication decision.
-        #
-        # @see Lithic::Models::Transaction::CardholderAuthentication#decision_made_by
-        module DecisionMadeBy
-          extend Lithic::Internal::Type::Enum
-
-          CUSTOMER_RULES = :CUSTOMER_RULES
-          CUSTOMER_ENDPOINT = :CUSTOMER_ENDPOINT
-          LITHIC_DEFAULT = :LITHIC_DEFAULT
-          LITHIC_RULES = :LITHIC_RULES
-          NETWORK = :NETWORK
-          UNKNOWN = :UNKNOWN
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # Indicates whether chargeback liability shift applies to the transaction.
-        # Possible enum values:
-        #
-        # - `3DS_AUTHENTICATED`: The transaction was fully authenticated through a 3-D
-        #   Secure flow, chargeback liability shift applies.
-        # - `NONE`: Chargeback liability shift has not shifted to the issuer, i.e. the
-        #   merchant is liable.
-        # - `TOKEN_AUTHENTICATED`: The transaction was a tokenized payment with validated
-        #   cryptography, possibly recurring. Chargeback liability shift to the issuer
-        #   applies.
-        #
-        # @see Lithic::Models::Transaction::CardholderAuthentication#liability_shift
-        module LiabilityShift
-          extend Lithic::Internal::Type::Enum
-
-          LIABILITY_SHIFT_3DS_AUTHENTICATED = :"3DS_AUTHENTICATED"
-          TOKEN_AUTHENTICATED = :TOKEN_AUTHENTICATED
-          NONE = :NONE
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
       end
 
       # Card network of the authorization. Value is `UNKNOWN` when Lithic cannot
@@ -828,44 +698,6 @@ module Lithic
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      # @see Lithic::Models::Transaction#token_info
-      class TokenInfo < Lithic::Internal::Type::BaseModel
-        # @!attribute wallet_type
-        #   The wallet_type field will indicate the source of the token. Possible token
-        #   sources include digital wallets (Apple, Google, or Samsung Pay), merchant
-        #   tokenization, and “other” sources like in-flight commerce. Masterpass is not
-        #   currently supported and is included for future use.
-        #
-        #   @return [Symbol, Lithic::Models::Transaction::TokenInfo::WalletType]
-        required :wallet_type, enum: -> { Lithic::Transaction::TokenInfo::WalletType }
-
-        # @!method initialize(wallet_type:)
-        #   Some parameter documentations has been truncated, see
-        #   {Lithic::Models::Transaction::TokenInfo} for more details.
-        #
-        #   @param wallet_type [Symbol, Lithic::Models::Transaction::TokenInfo::WalletType] The wallet_type field will indicate the source of the token. Possible token sour
-
-        # The wallet_type field will indicate the source of the token. Possible token
-        # sources include digital wallets (Apple, Google, or Samsung Pay), merchant
-        # tokenization, and “other” sources like in-flight commerce. Masterpass is not
-        # currently supported and is included for future use.
-        #
-        # @see Lithic::Models::Transaction::TokenInfo#wallet_type
-        module WalletType
-          extend Lithic::Internal::Type::Enum
-
-          APPLE_PAY = :APPLE_PAY
-          GOOGLE_PAY = :GOOGLE_PAY
-          MASTERPASS = :MASTERPASS
-          MERCHANT = :MERCHANT
-          OTHER = :OTHER
-          SAMSUNG_PAY = :SAMSUNG_PAY
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
       end
 
       class Event < Lithic::Internal::Type::BaseModel
