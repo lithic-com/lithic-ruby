@@ -19,7 +19,7 @@ module Lithic
         #
         # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Lithic::Internal::SinglePage<Lithic::Models::Cards::BalanceListResponse>]
+        # @return [Lithic::Internal::SinglePage<Lithic::Models::FinancialAccountBalance>]
         #
         # @see Lithic::Models::Cards::BalanceListParams
         def list(card_token, params = {})
@@ -29,7 +29,7 @@ module Lithic
             path: ["v1/cards/%1$s/balances", card_token],
             query: parsed,
             page: Lithic::Internal::SinglePage,
-            model: Lithic::Models::Cards::BalanceListResponse,
+            model: Lithic::FinancialAccountBalance,
             options: options
           )
         end

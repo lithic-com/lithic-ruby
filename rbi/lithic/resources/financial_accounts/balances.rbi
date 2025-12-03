@@ -12,9 +12,7 @@ module Lithic
             last_transaction_event_token: String,
             request_options: Lithic::RequestOptions::OrHash
           ).returns(
-            Lithic::Internal::SinglePage[
-              Lithic::Models::FinancialAccounts::BalanceListResponse
-            ]
+            Lithic::Internal::SinglePage[Lithic::FinancialAccountBalance]
           )
         end
         def list(

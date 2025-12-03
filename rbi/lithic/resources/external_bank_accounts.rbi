@@ -188,7 +188,7 @@ module Lithic
           external_bank_account_token: String,
           financial_account_token: String,
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::ExternalBankAccountRetryPrenoteResponse)
+        ).returns(Lithic::ExternalBankAccount)
       end
       def retry_prenote(
         external_bank_account_token,
@@ -202,7 +202,7 @@ module Lithic
         params(
           external_bank_account_token: String,
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::ExternalBankAccountUnpauseResponse)
+        ).returns(Lithic::ExternalBankAccount)
       end
       def unpause(external_bank_account_token, request_options: {})
       end

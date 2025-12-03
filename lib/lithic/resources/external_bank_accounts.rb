@@ -197,7 +197,7 @@ module Lithic
       # @param financial_account_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::ExternalBankAccountRetryPrenoteResponse]
+      # @return [Lithic::Models::ExternalBankAccount]
       #
       # @see Lithic::Models::ExternalBankAccountRetryPrenoteParams
       def retry_prenote(external_bank_account_token, params = {})
@@ -206,7 +206,7 @@ module Lithic
           method: :post,
           path: ["v1/external_bank_accounts/%1$s/retry_prenote", external_bank_account_token],
           body: parsed,
-          model: Lithic::Models::ExternalBankAccountRetryPrenoteResponse,
+          model: Lithic::ExternalBankAccount,
           options: options
         )
       end
@@ -218,14 +218,14 @@ module Lithic
       # @param external_bank_account_token [String]
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::ExternalBankAccountUnpauseResponse]
+      # @return [Lithic::Models::ExternalBankAccount]
       #
       # @see Lithic::Models::ExternalBankAccountUnpauseParams
       def unpause(external_bank_account_token, params = {})
         @client.request(
           method: :post,
           path: ["v1/external_bank_accounts/%1$s/unpause", external_bank_account_token],
-          model: Lithic::Models::ExternalBankAccountUnpauseResponse,
+          model: Lithic::ExternalBankAccount,
           options: params[:request_options]
         )
       end

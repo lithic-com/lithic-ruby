@@ -29,6 +29,8 @@ module Lithic
 
     attr_reader cards: Lithic::Resources::Cards
 
+    attr_reader card_bulk_orders: Lithic::Resources::CardBulkOrders
+
     attr_reader balances: Lithic::Resources::Balances
 
     attr_reader aggregate_balances: Lithic::Resources::AggregateBalances
@@ -66,6 +68,8 @@ module Lithic
     attr_reader external_payments: Lithic::Resources::ExternalPayments
 
     attr_reader management_operations: Lithic::Resources::ManagementOperations
+
+    attr_reader internal_transaction: Lithic::Resources::InternalTransaction
 
     attr_reader funding_events: Lithic::Resources::FundingEvents
 

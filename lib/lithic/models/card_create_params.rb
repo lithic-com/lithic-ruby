@@ -37,6 +37,14 @@ module Lithic
       #   @return [String, nil]
       optional :account_token, String
 
+      # @!attribute bulk_order_token
+      #   Globally unique identifier for an existing bulk order to associate this card
+      #   with. When specified, the card will be added to the bulk order for batch
+      #   shipment. Only applicable to cards of type PHYSICAL
+      #
+      #   @return [String, nil]
+      optional :bulk_order_token, String
+
       # @!attribute card_program_token
       #   For card programs with more than one BIN range. This must be configured with
       #   Lithic before use. Identifies the card program/BIN range under which to create
@@ -175,6 +183,7 @@ module Lithic
       #     tracking
       #   - `EXPEDITED` - FedEx or UPS depending on card manufacturer, Standard Overnight
       #     or similar international option, with tracking
+      #   - `BULK_EXPEDITED` - Bulk shipment with Expedited shipping
       #
       #   @return [Symbol, Lithic::Models::CardCreateParams::ShippingMethod, nil]
       optional :shipping_method, enum: -> { Lithic::CardCreateParams::ShippingMethod }
@@ -217,13 +226,15 @@ module Lithic
       #   @return [Symbol, Lithic::Models::CardCreateParams::State, nil]
       optional :state, enum: -> { Lithic::CardCreateParams::State }
 
-      # @!method initialize(type:, account_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_comment: nil, replacement_for: nil, replacement_substatus: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
+      # @!method initialize(type:, account_token: nil, bulk_order_token: nil, card_program_token: nil, carrier: nil, digital_card_art_token: nil, exp_month: nil, exp_year: nil, memo: nil, pin: nil, product_id: nil, replacement_account_token: nil, replacement_comment: nil, replacement_for: nil, replacement_substatus: nil, shipping_address: nil, shipping_method: nil, spend_limit: nil, spend_limit_duration: nil, state: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Lithic::Models::CardCreateParams} for more details.
       #
       #   @param type [Symbol, Lithic::Models::CardCreateParams::Type] Card types:
       #
       #   @param account_token [String] Globally unique identifier for the account that the card will be associated with
+      #
+      #   @param bulk_order_token [String] Globally unique identifier for an existing bulk order to associate this card wit
       #
       #   @param card_program_token [String] For card programs with more than one BIN range. This must be configured with Lit
       #
@@ -351,10 +362,12 @@ module Lithic
       #   tracking
       # - `EXPEDITED` - FedEx or UPS depending on card manufacturer, Standard Overnight
       #   or similar international option, with tracking
+      # - `BULK_EXPEDITED` - Bulk shipment with Expedited shipping
       module ShippingMethod
         extend Lithic::Internal::Type::Enum
 
         SHIPPING_METHOD_2_DAY = :"2_DAY"
+        BULK_EXPEDITED = :BULK_EXPEDITED
         EXPEDITED = :EXPEDITED
         EXPRESS = :EXPRESS
         PRIORITY = :PRIORITY

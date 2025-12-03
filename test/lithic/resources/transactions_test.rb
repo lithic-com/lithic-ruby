@@ -22,7 +22,7 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
         authorization_code: String | nil,
         avs: Lithic::Transaction::Avs | nil,
         card_token: String,
-        cardholder_authentication: Lithic::Transaction::CardholderAuthentication | nil,
+        cardholder_authentication: Lithic::CardholderAuthentication | nil,
         created: Time,
         financial_account_token: String | nil,
         merchant: Lithic::Merchant,
@@ -35,7 +35,7 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
         result: Lithic::Transaction::Result,
         settled_amount: Integer,
         status: Lithic::Transaction::Status,
-        token_info: Lithic::Transaction::TokenInfo | nil,
+        token_info: Lithic::TokenInfo | nil,
         updated: Time,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Transaction::Event]) | nil
       }
@@ -68,7 +68,7 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
         authorization_code: String | nil,
         avs: Lithic::Transaction::Avs | nil,
         card_token: String,
-        cardholder_authentication: Lithic::Transaction::CardholderAuthentication | nil,
+        cardholder_authentication: Lithic::CardholderAuthentication | nil,
         created: Time,
         financial_account_token: String | nil,
         merchant: Lithic::Merchant,
@@ -81,7 +81,7 @@ class Lithic::Test::Resources::TransactionsTest < Lithic::Test::ResourceTest
         result: Lithic::Transaction::Result,
         settled_amount: Integer,
         status: Lithic::Transaction::Status,
-        token_info: Lithic::Transaction::TokenInfo | nil,
+        token_info: Lithic::TokenInfo | nil,
         updated: Time,
         events: ^(Lithic::Internal::Type::ArrayOf[Lithic::Transaction::Event]) | nil
       }

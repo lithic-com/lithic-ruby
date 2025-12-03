@@ -158,9 +158,9 @@ module Lithic
           token: String,
           created_at: Time,
           result: Lithic::Models::Tokenization::Event::result,
-          rule_results: ::Array[Lithic::Tokenization::Event::RuleResult],
-          tokenization_decline_reasons: ::Array[Lithic::Models::Tokenization::Event::tokenization_decline_reason],
-          tokenization_tfa_reasons: ::Array[Lithic::Models::Tokenization::Event::tokenization_tfa_reason],
+          rule_results: ::Array[Lithic::TokenizationRuleResult],
+          tokenization_decline_reasons: ::Array[Lithic::Models::tokenization_decline_reason],
+          tokenization_tfa_reasons: ::Array[Lithic::Models::tokenization_tfa_reason],
           type: Lithic::Models::Tokenization::Event::type_
         }
 
@@ -179,23 +179,23 @@ module Lithic
           Lithic::Models::Tokenization::Event::result
         ) -> Lithic::Models::Tokenization::Event::result
 
-        attr_reader rule_results: ::Array[Lithic::Tokenization::Event::RuleResult]?
+        attr_reader rule_results: ::Array[Lithic::TokenizationRuleResult]?
 
         def rule_results=: (
-          ::Array[Lithic::Tokenization::Event::RuleResult]
-        ) -> ::Array[Lithic::Tokenization::Event::RuleResult]
+          ::Array[Lithic::TokenizationRuleResult]
+        ) -> ::Array[Lithic::TokenizationRuleResult]
 
-        attr_reader tokenization_decline_reasons: ::Array[Lithic::Models::Tokenization::Event::tokenization_decline_reason]?
+        attr_reader tokenization_decline_reasons: ::Array[Lithic::Models::tokenization_decline_reason]?
 
         def tokenization_decline_reasons=: (
-          ::Array[Lithic::Models::Tokenization::Event::tokenization_decline_reason]
-        ) -> ::Array[Lithic::Models::Tokenization::Event::tokenization_decline_reason]
+          ::Array[Lithic::Models::tokenization_decline_reason]
+        ) -> ::Array[Lithic::Models::tokenization_decline_reason]
 
-        attr_reader tokenization_tfa_reasons: ::Array[Lithic::Models::Tokenization::Event::tokenization_tfa_reason]?
+        attr_reader tokenization_tfa_reasons: ::Array[Lithic::Models::tokenization_tfa_reason]?
 
         def tokenization_tfa_reasons=: (
-          ::Array[Lithic::Models::Tokenization::Event::tokenization_tfa_reason]
-        ) -> ::Array[Lithic::Models::Tokenization::Event::tokenization_tfa_reason]
+          ::Array[Lithic::Models::tokenization_tfa_reason]
+        ) -> ::Array[Lithic::Models::tokenization_tfa_reason]
 
         attr_reader type: Lithic::Models::Tokenization::Event::type_?
 
@@ -207,9 +207,9 @@ module Lithic
           ?token: String,
           ?created_at: Time,
           ?result: Lithic::Models::Tokenization::Event::result,
-          ?rule_results: ::Array[Lithic::Tokenization::Event::RuleResult],
-          ?tokenization_decline_reasons: ::Array[Lithic::Models::Tokenization::Event::tokenization_decline_reason],
-          ?tokenization_tfa_reasons: ::Array[Lithic::Models::Tokenization::Event::tokenization_tfa_reason],
+          ?rule_results: ::Array[Lithic::TokenizationRuleResult],
+          ?tokenization_decline_reasons: ::Array[Lithic::Models::tokenization_decline_reason],
+          ?tokenization_tfa_reasons: ::Array[Lithic::Models::tokenization_tfa_reason],
           ?type: Lithic::Models::Tokenization::Event::type_
         ) -> void
 
@@ -217,9 +217,9 @@ module Lithic
           token: String,
           created_at: Time,
           result: Lithic::Models::Tokenization::Event::result,
-          rule_results: ::Array[Lithic::Tokenization::Event::RuleResult],
-          tokenization_decline_reasons: ::Array[Lithic::Models::Tokenization::Event::tokenization_decline_reason],
-          tokenization_tfa_reasons: ::Array[Lithic::Models::Tokenization::Event::tokenization_tfa_reason],
+          rule_results: ::Array[Lithic::TokenizationRuleResult],
+          tokenization_decline_reasons: ::Array[Lithic::Models::tokenization_decline_reason],
+          tokenization_tfa_reasons: ::Array[Lithic::Models::tokenization_tfa_reason],
           type: Lithic::Models::Tokenization::Event::type_
         }
 
@@ -254,125 +254,6 @@ module Lithic
           TOKEN_UPDATED: :TOKEN_UPDATED
 
           def self?.values: -> ::Array[Lithic::Models::Tokenization::Event::result]
-        end
-
-        type rule_result =
-          {
-            auth_rule_token: String?,
-            explanation: String?,
-            name: String?,
-            result: Lithic::Models::Tokenization::Event::RuleResult::result
-          }
-
-        class RuleResult < Lithic::Internal::Type::BaseModel
-          attr_accessor auth_rule_token: String?
-
-          attr_accessor explanation: String?
-
-          attr_accessor name: String?
-
-          attr_accessor result: Lithic::Models::Tokenization::Event::RuleResult::result
-
-          def initialize: (
-            auth_rule_token: String?,
-            explanation: String?,
-            name: String?,
-            result: Lithic::Models::Tokenization::Event::RuleResult::result
-          ) -> void
-
-          def to_hash: -> {
-            auth_rule_token: String?,
-            explanation: String?,
-            name: String?,
-            result: Lithic::Models::Tokenization::Event::RuleResult::result
-          }
-
-          type result = :APPROVED | :DECLINED | :REQUIRE_TFA | :ERROR
-
-          module Result
-            extend Lithic::Internal::Type::Enum
-
-            APPROVED: :APPROVED
-            DECLINED: :DECLINED
-            REQUIRE_TFA: :REQUIRE_TFA
-            ERROR: :ERROR
-
-            def self?.values: -> ::Array[Lithic::Models::Tokenization::Event::RuleResult::result]
-          end
-        end
-
-        type tokenization_decline_reason =
-          :ACCOUNT_SCORE_1
-          | :DEVICE_SCORE_1
-          | :ALL_WALLET_DECLINE_REASONS_PRESENT
-          | :WALLET_RECOMMENDED_DECISION_RED
-          | :CVC_MISMATCH
-          | :CARD_EXPIRY_MONTH_MISMATCH
-          | :CARD_EXPIRY_YEAR_MISMATCH
-          | :CARD_INVALID_STATE
-          | :CUSTOMER_RED_PATH
-          | :INVALID_CUSTOMER_RESPONSE
-          | :NETWORK_FAILURE
-          | :GENERIC_DECLINE
-          | :DIGITAL_CARD_ART_REQUIRED
-
-        module TokenizationDeclineReason
-          extend Lithic::Internal::Type::Enum
-
-          ACCOUNT_SCORE_1: :ACCOUNT_SCORE_1
-          DEVICE_SCORE_1: :DEVICE_SCORE_1
-          ALL_WALLET_DECLINE_REASONS_PRESENT: :ALL_WALLET_DECLINE_REASONS_PRESENT
-          WALLET_RECOMMENDED_DECISION_RED: :WALLET_RECOMMENDED_DECISION_RED
-          CVC_MISMATCH: :CVC_MISMATCH
-          CARD_EXPIRY_MONTH_MISMATCH: :CARD_EXPIRY_MONTH_MISMATCH
-          CARD_EXPIRY_YEAR_MISMATCH: :CARD_EXPIRY_YEAR_MISMATCH
-          CARD_INVALID_STATE: :CARD_INVALID_STATE
-          CUSTOMER_RED_PATH: :CUSTOMER_RED_PATH
-          INVALID_CUSTOMER_RESPONSE: :INVALID_CUSTOMER_RESPONSE
-          NETWORK_FAILURE: :NETWORK_FAILURE
-          GENERIC_DECLINE: :GENERIC_DECLINE
-          DIGITAL_CARD_ART_REQUIRED: :DIGITAL_CARD_ART_REQUIRED
-
-          def self?.values: -> ::Array[Lithic::Models::Tokenization::Event::tokenization_decline_reason]
-        end
-
-        type tokenization_tfa_reason =
-          :WALLET_RECOMMENDED_TFA
-          | :SUSPICIOUS_ACTIVITY
-          | :DEVICE_RECENTLY_LOST
-          | :TOO_MANY_RECENT_ATTEMPTS
-          | :TOO_MANY_RECENT_TOKENS
-          | :TOO_MANY_DIFFERENT_CARDHOLDERS
-          | :OUTSIDE_HOME_TERRITORY
-          | :HAS_SUSPENDED_TOKENS
-          | :HIGH_RISK
-          | :ACCOUNT_SCORE_LOW
-          | :DEVICE_SCORE_LOW
-          | :CARD_STATE_TFA
-          | :HARDCODED_TFA
-          | :CUSTOMER_RULE_TFA
-          | :DEVICE_HOST_CARD_EMULATION
-
-        module TokenizationTfaReason
-          extend Lithic::Internal::Type::Enum
-
-          WALLET_RECOMMENDED_TFA: :WALLET_RECOMMENDED_TFA
-          SUSPICIOUS_ACTIVITY: :SUSPICIOUS_ACTIVITY
-          DEVICE_RECENTLY_LOST: :DEVICE_RECENTLY_LOST
-          TOO_MANY_RECENT_ATTEMPTS: :TOO_MANY_RECENT_ATTEMPTS
-          TOO_MANY_RECENT_TOKENS: :TOO_MANY_RECENT_TOKENS
-          TOO_MANY_DIFFERENT_CARDHOLDERS: :TOO_MANY_DIFFERENT_CARDHOLDERS
-          OUTSIDE_HOME_TERRITORY: :OUTSIDE_HOME_TERRITORY
-          HAS_SUSPENDED_TOKENS: :HAS_SUSPENDED_TOKENS
-          HIGH_RISK: :HIGH_RISK
-          ACCOUNT_SCORE_LOW: :ACCOUNT_SCORE_LOW
-          DEVICE_SCORE_LOW: :DEVICE_SCORE_LOW
-          CARD_STATE_TFA: :CARD_STATE_TFA
-          HARDCODED_TFA: :HARDCODED_TFA
-          CUSTOMER_RULE_TFA: :CUSTOMER_RULE_TFA
-          DEVICE_HOST_CARD_EMULATION: :DEVICE_HOST_CARD_EMULATION
-
-          def self?.values: -> ::Array[Lithic::Models::Tokenization::Event::tokenization_tfa_reason]
         end
 
         type type_ =

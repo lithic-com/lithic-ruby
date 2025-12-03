@@ -13,14 +13,14 @@ module Lithic
           #
           # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse]
+          # @return [Lithic::Models::NetworkTotal]
           #
           # @see Lithic::Models::Reports::Settlement::NetworkTotalRetrieveParams
           def retrieve(token, params = {})
             @client.request(
               method: :get,
               path: ["v1/reports/settlement/network_totals/%1$s", token],
-              model: Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse,
+              model: Lithic::NetworkTotal,
               options: params[:request_options]
             )
           end
@@ -56,7 +56,7 @@ module Lithic
           #
           # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Lithic::Internal::CursorPage<Lithic::Models::Reports::Settlement::NetworkTotalListResponse>]
+          # @return [Lithic::Internal::CursorPage<Lithic::Models::NetworkTotal>]
           #
           # @see Lithic::Models::Reports::Settlement::NetworkTotalListParams
           def list(params = {})
@@ -66,7 +66,7 @@ module Lithic
               path: "v1/reports/settlement/network_totals",
               query: parsed.transform_keys(begin_: "begin", end_: "end"),
               page: Lithic::Internal::CursorPage,
-              model: Lithic::Models::Reports::Settlement::NetworkTotalListResponse,
+              model: Lithic::NetworkTotal,
               options: options
             )
           end

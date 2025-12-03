@@ -40,6 +40,15 @@ module Lithic
       sig { params(account_token: String).void }
       attr_writer :account_token
 
+      # Globally unique identifier for an existing bulk order to associate this card
+      # with. When specified, the card will be added to the bulk order for batch
+      # shipment. Only applicable to cards of type PHYSICAL
+      sig { returns(T.nilable(String)) }
+      attr_reader :bulk_order_token
+
+      sig { params(bulk_order_token: String).void }
+      attr_writer :bulk_order_token
+
       # For card programs with more than one BIN range. This must be configured with
       # Lithic before use. Identifies the card program/BIN range under which to create
       # the card. If omitted, will utilize the program's default `card_program_token`.
@@ -199,6 +208,7 @@ module Lithic
       #   tracking
       # - `EXPEDITED` - FedEx or UPS depending on card manufacturer, Standard Overnight
       #   or similar international option, with tracking
+      # - `BULK_EXPEDITED` - Bulk shipment with Expedited shipping
       sig do
         returns(T.nilable(Lithic::CardCreateParams::ShippingMethod::OrSymbol))
       end
@@ -258,6 +268,7 @@ module Lithic
         params(
           type: Lithic::CardCreateParams::Type::OrSymbol,
           account_token: String,
+          bulk_order_token: String,
           card_program_token: String,
           carrier: Lithic::Carrier::OrHash,
           digital_card_art_token: String,
@@ -302,6 +313,10 @@ module Lithic
         # [/account_holders endpoint](https://docs.lithic.com/docs/account-holders-kyc).
         # See [Managing Your Program](doc:managing-your-program) for more information.
         account_token: nil,
+        # Globally unique identifier for an existing bulk order to associate this card
+        # with. When specified, the card will be added to the bulk order for batch
+        # shipment. Only applicable to cards of type PHYSICAL
+        bulk_order_token: nil,
         # For card programs with more than one BIN range. This must be configured with
         # Lithic before use. Identifies the card program/BIN range under which to create
         # the card. If omitted, will utilize the program's default `card_program_token`.
@@ -387,6 +402,7 @@ module Lithic
         #   tracking
         # - `EXPEDITED` - FedEx or UPS depending on card manufacturer, Standard Overnight
         #   or similar international option, with tracking
+        # - `BULK_EXPEDITED` - Bulk shipment with Expedited shipping
         shipping_method: nil,
         # Amount (in cents) to limit approved authorizations (e.g. 100000 would be a
         # $1,000 limit). Transaction requests above the spend limit will be declined. Note
@@ -423,6 +439,7 @@ module Lithic
           {
             type: Lithic::CardCreateParams::Type::OrSymbol,
             account_token: String,
+            bulk_order_token: String,
             card_program_token: String,
             carrier: Lithic::Carrier,
             digital_card_art_token: String,
@@ -609,6 +626,7 @@ module Lithic
       #   tracking
       # - `EXPEDITED` - FedEx or UPS depending on card manufacturer, Standard Overnight
       #   or similar international option, with tracking
+      # - `BULK_EXPEDITED` - Bulk shipment with Expedited shipping
       module ShippingMethod
         extend Lithic::Internal::Type::Enum
 
@@ -621,6 +639,11 @@ module Lithic
         SHIPPING_METHOD_2_DAY =
           T.let(
             :"2_DAY",
+            Lithic::CardCreateParams::ShippingMethod::TaggedSymbol
+          )
+        BULK_EXPEDITED =
+          T.let(
+            :BULK_EXPEDITED,
             Lithic::CardCreateParams::ShippingMethod::TaggedSymbol
           )
         EXPEDITED =

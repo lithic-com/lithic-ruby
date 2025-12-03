@@ -99,6 +99,11 @@ module Lithic
       sig { params(auth_rule_tokens: T::Array[String]).void }
       attr_writer :auth_rule_tokens
 
+      # Globally unique identifier for the bulk order associated with this card. Only
+      # applicable to physical cards that are part of a bulk shipment
+      sig { returns(T.nilable(String)) }
+      attr_accessor :bulk_order_token
+
       # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
       sig { returns(T.nilable(String)) }
       attr_reader :cardholder_currency
@@ -220,6 +225,7 @@ module Lithic
           state: Lithic::NonPCICard::State::OrSymbol,
           type: Lithic::NonPCICard::Type::OrSymbol,
           auth_rule_tokens: T::Array[String],
+          bulk_order_token: T.nilable(String),
           cardholder_currency: String,
           comment: String,
           digital_card_art_token: String,
@@ -298,6 +304,9 @@ module Lithic
         # key will be removed from the schema in a future release. Use the `/auth_rules`
         # endpoints to fetch Auth Rule information instead.
         auth_rule_tokens: nil,
+        # Globally unique identifier for the bulk order associated with this card. Only
+        # applicable to physical cards that are part of a bulk shipment
+        bulk_order_token: nil,
         # 3-character alphabetic ISO 4217 code for the currency of the cardholder.
         cardholder_currency: nil,
         # Additional context or information related to the card.
@@ -368,6 +377,7 @@ module Lithic
             state: Lithic::NonPCICard::State::TaggedSymbol,
             type: Lithic::NonPCICard::Type::TaggedSymbol,
             auth_rule_tokens: T::Array[String],
+            bulk_order_token: T.nilable(String),
             cardholder_currency: String,
             comment: String,
             digital_card_art_token: String,

@@ -7,17 +7,17 @@ class Lithic::Test::Resources::FundingEventsTest < Lithic::Test::ResourceTest
     response = @lithic.funding_events.retrieve("funding_event_token")
 
     assert_pattern do
-      response => Lithic::Models::FundingEventRetrieveResponse
+      response => Lithic::FundingEvent
     end
 
     assert_pattern do
       response => {
         token: String,
-        collection_resource_type: Lithic::Models::FundingEventRetrieveResponse::CollectionResourceType,
+        collection_resource_type: Lithic::FundingEvent::CollectionResourceType,
         collection_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         created: Time,
         high_watermark: Time,
-        network_settlement_summary: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::FundingEventRetrieveResponse::NetworkSettlementSummary]),
+        network_settlement_summary: ^(Lithic::Internal::Type::ArrayOf[Lithic::FundingEvent::NetworkSettlementSummary]),
         previous_high_watermark: Time,
         updated: Time
       }
@@ -35,17 +35,17 @@ class Lithic::Test::Resources::FundingEventsTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::FundingEventListResponse
+      row => Lithic::FundingEvent
     end
 
     assert_pattern do
       row => {
         token: String,
-        collection_resource_type: Lithic::Models::FundingEventListResponse::CollectionResourceType,
+        collection_resource_type: Lithic::FundingEvent::CollectionResourceType,
         collection_tokens: ^(Lithic::Internal::Type::ArrayOf[String]),
         created: Time,
         high_watermark: Time,
-        network_settlement_summary: ^(Lithic::Internal::Type::ArrayOf[Lithic::Models::FundingEventListResponse::NetworkSettlementSummary]),
+        network_settlement_summary: ^(Lithic::Internal::Type::ArrayOf[Lithic::FundingEvent::NetworkSettlementSummary]),
         previous_high_watermark: Time,
         updated: Time
       }

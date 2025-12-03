@@ -1,0 +1,48 @@
+module Lithic
+  module Models
+    type tokenization_rule_result =
+      {
+        auth_rule_token: String?,
+        explanation: String?,
+        name: String?,
+        result: Lithic::Models::TokenizationRuleResult::result
+      }
+
+    class TokenizationRuleResult < Lithic::Internal::Type::BaseModel
+      attr_accessor auth_rule_token: String?
+
+      attr_accessor explanation: String?
+
+      attr_accessor name: String?
+
+      attr_accessor result: Lithic::Models::TokenizationRuleResult::result
+
+      def initialize: (
+        auth_rule_token: String?,
+        explanation: String?,
+        name: String?,
+        result: Lithic::Models::TokenizationRuleResult::result
+      ) -> void
+
+      def to_hash: -> {
+        auth_rule_token: String?,
+        explanation: String?,
+        name: String?,
+        result: Lithic::Models::TokenizationRuleResult::result
+      }
+
+      type result = :APPROVED | :DECLINED | :REQUIRE_TFA | :ERROR
+
+      module Result
+        extend Lithic::Internal::Type::Enum
+
+        APPROVED: :APPROVED
+        DECLINED: :DECLINED
+        REQUIRE_TFA: :REQUIRE_TFA
+        ERROR: :ERROR
+
+        def self?.values: -> ::Array[Lithic::Models::TokenizationRuleResult::result]
+      end
+    end
+  end
+end

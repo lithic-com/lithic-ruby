@@ -200,7 +200,7 @@ class Lithic::Test::Resources::ExternalBankAccountsTest < Lithic::Test::Resource
     response = @lithic.external_bank_accounts.retry_prenote("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::ExternalBankAccountRetryPrenoteResponse
+      response => Lithic::ExternalBankAccount
     end
 
     assert_pattern do
@@ -213,11 +213,11 @@ class Lithic::Test::Resources::ExternalBankAccountsTest < Lithic::Test::Resource
         owner: String,
         owner_type: Lithic::OwnerType,
         routing_number: String,
-        state: Lithic::Models::ExternalBankAccountRetryPrenoteResponse::State,
-        type: Lithic::Models::ExternalBankAccountRetryPrenoteResponse::Type,
+        state: Lithic::ExternalBankAccount::State,
+        type: Lithic::ExternalBankAccount::Type,
         verification_attempts: Integer,
         verification_method: Lithic::VerificationMethod,
-        verification_state: Lithic::Models::ExternalBankAccountRetryPrenoteResponse::VerificationState,
+        verification_state: Lithic::ExternalBankAccount::VerificationState,
         account_token: String | nil,
         address: Lithic::ExternalBankAccountAddress | nil,
         company_id: String | nil,
@@ -235,7 +235,7 @@ class Lithic::Test::Resources::ExternalBankAccountsTest < Lithic::Test::Resource
     response = @lithic.external_bank_accounts.unpause("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Lithic::Models::ExternalBankAccountUnpauseResponse
+      response => Lithic::ExternalBankAccount
     end
 
     assert_pattern do
@@ -248,11 +248,11 @@ class Lithic::Test::Resources::ExternalBankAccountsTest < Lithic::Test::Resource
         owner: String,
         owner_type: Lithic::OwnerType,
         routing_number: String,
-        state: Lithic::Models::ExternalBankAccountUnpauseResponse::State,
-        type: Lithic::Models::ExternalBankAccountUnpauseResponse::Type,
+        state: Lithic::ExternalBankAccount::State,
+        type: Lithic::ExternalBankAccount::Type,
         verification_attempts: Integer,
         verification_method: Lithic::VerificationMethod,
-        verification_state: Lithic::Models::ExternalBankAccountUnpauseResponse::VerificationState,
+        verification_state: Lithic::ExternalBankAccount::VerificationState,
         account_token: String | nil,
         address: Lithic::ExternalBankAccountAddress | nil,
         company_id: String | nil,

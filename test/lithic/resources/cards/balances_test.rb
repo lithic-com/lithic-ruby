@@ -14,7 +14,7 @@ class Lithic::Test::Resources::Cards::BalancesTest < Lithic::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Lithic::Models::Cards::BalanceListResponse
+      row => Lithic::FinancialAccountBalance
     end
 
     assert_pattern do
@@ -27,7 +27,7 @@ class Lithic::Test::Resources::Cards::BalancesTest < Lithic::Test::ResourceTest
         last_transaction_token: String,
         pending_amount: Integer,
         total_amount: Integer,
-        type: Lithic::Models::Cards::BalanceListResponse::Type,
+        type: Lithic::FinancialAccountBalance::Type,
         updated: Time
       }
     end

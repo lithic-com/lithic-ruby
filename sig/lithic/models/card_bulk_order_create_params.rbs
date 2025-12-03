@@ -1,0 +1,46 @@
+module Lithic
+  module Models
+    type card_bulk_order_create_params =
+      {
+        customer_product_id: String,
+        shipping_address: top,
+        shipping_method: Lithic::Models::CardBulkOrderCreateParams::shipping_method
+      }
+      & Lithic::Internal::Type::request_parameters
+
+    class CardBulkOrderCreateParams < Lithic::Internal::Type::BaseModel
+      extend Lithic::Internal::Type::RequestParameters::Converter
+      include Lithic::Internal::Type::RequestParameters
+
+      attr_accessor customer_product_id: String
+
+      attr_accessor shipping_address: top
+
+      attr_accessor shipping_method: Lithic::Models::CardBulkOrderCreateParams::shipping_method
+
+      def initialize: (
+        customer_product_id: String,
+        shipping_address: top,
+        shipping_method: Lithic::Models::CardBulkOrderCreateParams::shipping_method,
+        ?request_options: Lithic::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        customer_product_id: String,
+        shipping_address: top,
+        shipping_method: Lithic::Models::CardBulkOrderCreateParams::shipping_method,
+        request_options: Lithic::RequestOptions
+      }
+
+      type shipping_method = :BULK_EXPEDITED
+
+      module ShippingMethod
+        extend Lithic::Internal::Type::Enum
+
+        BULK_EXPEDITED: :BULK_EXPEDITED
+
+        def self?.values: -> ::Array[Lithic::Models::CardBulkOrderCreateParams::shipping_method]
+      end
+    end
+  end
+end

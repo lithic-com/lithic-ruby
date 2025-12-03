@@ -1,0 +1,85 @@
+module Lithic
+  module Models
+    type funding_event =
+      {
+        token: String,
+        collection_resource_type: Lithic::Models::FundingEvent::collection_resource_type,
+        collection_tokens: ::Array[String],
+        created: Time,
+        high_watermark: Time,
+        network_settlement_summary: ::Array[Lithic::FundingEvent::NetworkSettlementSummary],
+        previous_high_watermark: Time,
+        updated: Time
+      }
+
+    class FundingEvent < Lithic::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      attr_accessor collection_resource_type: Lithic::Models::FundingEvent::collection_resource_type
+
+      attr_accessor collection_tokens: ::Array[String]
+
+      attr_accessor created: Time
+
+      attr_accessor high_watermark: Time
+
+      attr_accessor network_settlement_summary: ::Array[Lithic::FundingEvent::NetworkSettlementSummary]
+
+      attr_accessor previous_high_watermark: Time
+
+      attr_accessor updated: Time
+
+      def initialize: (
+        token: String,
+        collection_resource_type: Lithic::Models::FundingEvent::collection_resource_type,
+        collection_tokens: ::Array[String],
+        created: Time,
+        high_watermark: Time,
+        network_settlement_summary: ::Array[Lithic::FundingEvent::NetworkSettlementSummary],
+        previous_high_watermark: Time,
+        updated: Time
+      ) -> void
+
+      def to_hash: -> {
+        token: String,
+        collection_resource_type: Lithic::Models::FundingEvent::collection_resource_type,
+        collection_tokens: ::Array[String],
+        created: Time,
+        high_watermark: Time,
+        network_settlement_summary: ::Array[Lithic::FundingEvent::NetworkSettlementSummary],
+        previous_high_watermark: Time,
+        updated: Time
+      }
+
+      type collection_resource_type = :BOOK_TRANSFER | :PAYMENT
+
+      module CollectionResourceType
+        extend Lithic::Internal::Type::Enum
+
+        BOOK_TRANSFER: :BOOK_TRANSFER
+        PAYMENT: :PAYMENT
+
+        def self?.values: -> ::Array[Lithic::Models::FundingEvent::collection_resource_type]
+      end
+
+      type network_settlement_summary =
+        { network_settlement_date: Date, settled_gross_amount: Integer }
+
+      class NetworkSettlementSummary < Lithic::Internal::Type::BaseModel
+        attr_accessor network_settlement_date: Date
+
+        attr_accessor settled_gross_amount: Integer
+
+        def initialize: (
+          network_settlement_date: Date,
+          settled_gross_amount: Integer
+        ) -> void
+
+        def to_hash: -> {
+          network_settlement_date: Date,
+          settled_gross_amount: Integer
+        }
+      end
+    end
+  end
+end

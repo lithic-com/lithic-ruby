@@ -10,9 +10,7 @@ module Lithic
             params(
               token: String,
               request_options: Lithic::RequestOptions::OrHash
-            ).returns(
-              Lithic::Models::Reports::Settlement::NetworkTotalRetrieveResponse
-            )
+            ).returns(Lithic::NetworkTotal)
           end
           def retrieve(
             # Token of the network total record to retrieve
@@ -37,11 +35,7 @@ module Lithic
               settlement_institution_id: String,
               starting_after: String,
               request_options: Lithic::RequestOptions::OrHash
-            ).returns(
-              Lithic::Internal::CursorPage[
-                Lithic::Models::Reports::Settlement::NetworkTotalListResponse
-              ]
-            )
+            ).returns(Lithic::Internal::CursorPage[Lithic::NetworkTotal])
           end
           def list(
             # Datetime in RFC 3339 format. Only entries created after the specified time will
