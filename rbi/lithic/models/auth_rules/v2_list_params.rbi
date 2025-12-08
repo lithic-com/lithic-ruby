@@ -41,7 +41,8 @@ module Lithic
         sig { params(ending_before: String).void }
         attr_writer :ending_before
 
-        # Only return Auth rules that are executed during the provided event stream.
+        # Deprecated: Use event_streams instead. Only return Auth rules that are executed
+        # during the provided event stream.
         sig do
           returns(
             T.nilable(Lithic::AuthRules::V2ListParams::EventStream::OrSymbol)
@@ -55,6 +56,26 @@ module Lithic
           ).void
         end
         attr_writer :event_stream
+
+        # Only return Auth rules that are executed during any of the provided event
+        # streams. If event_streams and event_stream are specified, the values will be
+        # combined.
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Lithic::AuthRules::V2ListParams::EventStream::OrSymbol]
+            )
+          )
+        end
+        attr_reader :event_streams
+
+        sig do
+          params(
+            event_streams:
+              T::Array[Lithic::AuthRules::V2ListParams::EventStream::OrSymbol]
+          ).void
+        end
+        attr_writer :event_streams
 
         # Page size (for pagination).
         sig { returns(T.nilable(Integer)) }
@@ -90,6 +111,8 @@ module Lithic
             ending_before: String,
             event_stream:
               Lithic::AuthRules::V2ListParams::EventStream::OrSymbol,
+            event_streams:
+              T::Array[Lithic::AuthRules::V2ListParams::EventStream::OrSymbol],
             page_size: Integer,
             scope: Lithic::AuthRules::V2ListParams::Scope::OrSymbol,
             starting_after: String,
@@ -106,8 +129,13 @@ module Lithic
           # A cursor representing an item's token before which a page of results should end.
           # Used to retrieve the previous page of results before this item.
           ending_before: nil,
-          # Only return Auth rules that are executed during the provided event stream.
+          # Deprecated: Use event_streams instead. Only return Auth rules that are executed
+          # during the provided event stream.
           event_stream: nil,
+          # Only return Auth rules that are executed during any of the provided event
+          # streams. If event_streams and event_stream are specified, the values will be
+          # combined.
+          event_streams: nil,
           # Page size (for pagination).
           page_size: nil,
           # Only return Auth Rules that are bound to the provided scope.
@@ -128,6 +156,10 @@ module Lithic
               ending_before: String,
               event_stream:
                 Lithic::AuthRules::V2ListParams::EventStream::OrSymbol,
+              event_streams:
+                T::Array[
+                  Lithic::AuthRules::V2ListParams::EventStream::OrSymbol
+                ],
               page_size: Integer,
               scope: Lithic::AuthRules::V2ListParams::Scope::OrSymbol,
               starting_after: String,
@@ -138,7 +170,8 @@ module Lithic
         def to_hash
         end
 
-        # Only return Auth rules that are executed during the provided event stream.
+        # Deprecated: Use event_streams instead. Only return Auth rules that are executed
+        # during the provided event stream.
         module EventStream
           extend Lithic::Internal::Type::Enum
 

@@ -239,6 +239,10 @@ module Lithic
           T.let(:EXTERNAL_ACH, Lithic::Payment::Category::TaggedSymbol)
         EXTERNAL_CHECK =
           T.let(:EXTERNAL_CHECK, Lithic::Payment::Category::TaggedSymbol)
+        EXTERNAL_FEDNOW =
+          T.let(:EXTERNAL_FEDNOW, Lithic::Payment::Category::TaggedSymbol)
+        EXTERNAL_RTP =
+          T.let(:EXTERNAL_RTP, Lithic::Payment::Category::TaggedSymbol)
         EXTERNAL_TRANSFER =
           T.let(:EXTERNAL_TRANSFER, Lithic::Payment::Category::TaggedSymbol)
         EXTERNAL_WIRE =
@@ -660,6 +664,10 @@ module Lithic
           end
           attr_accessor :sec_code
 
+          # Number of days the ACH transaction is on hold
+          sig { returns(T.nilable(Integer)) }
+          attr_accessor :ach_hold_period
+
           # Addenda information
           sig { returns(T.nilable(String)) }
           attr_accessor :addenda
@@ -691,6 +699,7 @@ module Lithic
             params(
               sec_code:
                 Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode::OrSymbol,
+              ach_hold_period: T.nilable(Integer),
               addenda: T.nilable(String),
               company_id: T.nilable(String),
               receipt_routing_number: T.nilable(String),
@@ -702,6 +711,8 @@ module Lithic
           def self.new(
             # SEC code for ACH transaction
             sec_code:,
+            # Number of days the ACH transaction is on hold
+            ach_hold_period: nil,
             # Addenda information
             addenda: nil,
             # Company ID for the ACH transaction
@@ -722,6 +733,7 @@ module Lithic
               {
                 sec_code:
                   Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode::TaggedSymbol,
+                ach_hold_period: T.nilable(Integer),
                 addenda: T.nilable(String),
                 company_id: T.nilable(String),
                 receipt_routing_number: T.nilable(String),

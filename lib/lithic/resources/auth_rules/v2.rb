@@ -115,7 +115,7 @@ module Lithic
         #
         # Lists V2 Auth rules
         #
-        # @overload list(account_token: nil, business_account_token: nil, card_token: nil, ending_before: nil, event_stream: nil, page_size: nil, scope: nil, starting_after: nil, request_options: {})
+        # @overload list(account_token: nil, business_account_token: nil, card_token: nil, ending_before: nil, event_stream: nil, event_streams: nil, page_size: nil, scope: nil, starting_after: nil, request_options: {})
         #
         # @param account_token [String] Only return Auth Rules that are bound to the provided account token.
         #
@@ -125,7 +125,9 @@ module Lithic
         #
         # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
         #
-        # @param event_stream [Symbol, Lithic::Models::AuthRules::V2ListParams::EventStream] Only return Auth rules that are executed during the provided event stream.
+        # @param event_stream [Symbol, Lithic::Models::AuthRules::V2ListParams::EventStream] Deprecated: Use event_streams instead. Only return Auth rules that are executed
+        #
+        # @param event_streams [Array<Symbol, Lithic::Models::AuthRules::V2ListParams::EventStream>] Only return Auth rules that are executed during any of the provided event stream
         #
         # @param page_size [Integer] Page size (for pagination).
         #

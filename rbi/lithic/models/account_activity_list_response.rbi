@@ -234,6 +234,16 @@ module Lithic
               :EXTERNAL_CHECK,
               Lithic::Models::AccountActivityListResponse::Internal::Category::TaggedSymbol
             )
+          EXTERNAL_FEDNOW =
+            T.let(
+              :EXTERNAL_FEDNOW,
+              Lithic::Models::AccountActivityListResponse::Internal::Category::TaggedSymbol
+            )
+          EXTERNAL_RTP =
+            T.let(
+              :EXTERNAL_RTP,
+              Lithic::Models::AccountActivityListResponse::Internal::Category::TaggedSymbol
+            )
           EXTERNAL_TRANSFER =
             T.let(
               :EXTERNAL_TRANSFER,

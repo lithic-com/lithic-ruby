@@ -150,6 +150,13 @@ module Lithic
         end
         attr_accessor :sec_code
 
+        # Number of days to hold the ACH payment
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :ach_hold_period
+
+        sig { params(ach_hold_period: Integer).void }
+        attr_writer :ach_hold_period
+
         sig { returns(T.nilable(String)) }
         attr_accessor :addenda
 
@@ -157,10 +164,16 @@ module Lithic
           params(
             sec_code:
               Lithic::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol,
+            ach_hold_period: Integer,
             addenda: T.nilable(String)
           ).returns(T.attached_class)
         end
-        def self.new(sec_code:, addenda: nil)
+        def self.new(
+          sec_code:,
+          # Number of days to hold the ACH payment
+          ach_hold_period: nil,
+          addenda: nil
+        )
         end
 
         sig do
@@ -168,6 +181,7 @@ module Lithic
             {
               sec_code:
                 Lithic::PaymentCreateParams::MethodAttributes::SecCode::OrSymbol,
+              ach_hold_period: Integer,
               addenda: T.nilable(String)
             }
           )
