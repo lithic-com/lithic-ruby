@@ -652,6 +652,36 @@ module Lithic
               :DISBURSE_REVERSAL,
               Lithic::ManagementOperationTransaction::Event::Type::TaggedSymbol
             )
+          ANNUAL =
+            T.let(
+              :ANNUAL,
+              Lithic::ManagementOperationTransaction::Event::Type::TaggedSymbol
+            )
+          ANNUAL_REVERSAL =
+            T.let(
+              :ANNUAL_REVERSAL,
+              Lithic::ManagementOperationTransaction::Event::Type::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :QUARTERLY,
+              Lithic::ManagementOperationTransaction::Event::Type::TaggedSymbol
+            )
+          QUARTERLY_REVERSAL =
+            T.let(
+              :QUARTERLY_REVERSAL,
+              Lithic::ManagementOperationTransaction::Event::Type::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :MONTHLY,
+              Lithic::ManagementOperationTransaction::Event::Type::TaggedSymbol
+            )
+          MONTHLY_REVERSAL =
+            T.let(
+              :MONTHLY_REVERSAL,
+              Lithic::ManagementOperationTransaction::Event::Type::TaggedSymbol
+            )
 
           sig do
             override.returns(

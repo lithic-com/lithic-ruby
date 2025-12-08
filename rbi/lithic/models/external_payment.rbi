@@ -200,6 +200,13 @@ module Lithic
             :EXTERNAL_CHECK,
             Lithic::ExternalPayment::Category::TaggedSymbol
           )
+        EXTERNAL_FEDNOW =
+          T.let(
+            :EXTERNAL_FEDNOW,
+            Lithic::ExternalPayment::Category::TaggedSymbol
+          )
+        EXTERNAL_RTP =
+          T.let(:EXTERNAL_RTP, Lithic::ExternalPayment::Category::TaggedSymbol)
         EXTERNAL_TRANSFER =
           T.let(
             :EXTERNAL_TRANSFER,
@@ -463,6 +470,56 @@ module Lithic
           EXTERNAL_CHECK_RELEASED =
             T.let(
               :EXTERNAL_CHECK_RELEASED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_FEDNOW_INITIATED =
+            T.let(
+              :EXTERNAL_FEDNOW_INITIATED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_FEDNOW_CANCELED =
+            T.let(
+              :EXTERNAL_FEDNOW_CANCELED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_FEDNOW_SETTLED =
+            T.let(
+              :EXTERNAL_FEDNOW_SETTLED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_FEDNOW_REVERSED =
+            T.let(
+              :EXTERNAL_FEDNOW_REVERSED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_FEDNOW_RELEASED =
+            T.let(
+              :EXTERNAL_FEDNOW_RELEASED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_RTP_INITIATED =
+            T.let(
+              :EXTERNAL_RTP_INITIATED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_RTP_CANCELED =
+            T.let(
+              :EXTERNAL_RTP_CANCELED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_RTP_SETTLED =
+            T.let(
+              :EXTERNAL_RTP_SETTLED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_RTP_REVERSED =
+            T.let(
+              :EXTERNAL_RTP_REVERSED,
+              Lithic::ExternalPayment::Event::Type::TaggedSymbol
+            )
+          EXTERNAL_RTP_RELEASED =
+            T.let(
+              :EXTERNAL_RTP_RELEASED,
               Lithic::ExternalPayment::Event::Type::TaggedSymbol
             )
 

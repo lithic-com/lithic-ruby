@@ -8,6 +8,7 @@ module Lithic
           card_token: String,
           ending_before: String,
           event_stream: Lithic::Models::AuthRules::V2ListParams::event_stream,
+          event_streams: ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream],
           page_size: Integer,
           scope: Lithic::Models::AuthRules::V2ListParams::scope,
           starting_after: String
@@ -40,6 +41,12 @@ module Lithic
           Lithic::Models::AuthRules::V2ListParams::event_stream
         ) -> Lithic::Models::AuthRules::V2ListParams::event_stream
 
+        attr_reader event_streams: ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream]?
+
+        def event_streams=: (
+          ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream]
+        ) -> ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream]
+
         attr_reader page_size: Integer?
 
         def page_size=: (Integer) -> Integer
@@ -60,6 +67,7 @@ module Lithic
           ?card_token: String,
           ?ending_before: String,
           ?event_stream: Lithic::Models::AuthRules::V2ListParams::event_stream,
+          ?event_streams: ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream],
           ?page_size: Integer,
           ?scope: Lithic::Models::AuthRules::V2ListParams::scope,
           ?starting_after: String,
@@ -72,6 +80,7 @@ module Lithic
           card_token: String,
           ending_before: String,
           event_stream: Lithic::Models::AuthRules::V2ListParams::event_stream,
+          event_streams: ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream],
           page_size: Integer,
           scope: Lithic::Models::AuthRules::V2ListParams::scope,
           starting_after: String,

@@ -82,21 +82,28 @@ module Lithic
       type method_attributes =
         {
           sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code,
+          ach_hold_period: Integer,
           addenda: String?
         }
 
       class MethodAttributes < Lithic::Internal::Type::BaseModel
         attr_accessor sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code
 
+        attr_reader ach_hold_period: Integer?
+
+        def ach_hold_period=: (Integer) -> Integer
+
         attr_accessor addenda: String?
 
         def initialize: (
           sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code,
+          ?ach_hold_period: Integer,
           ?addenda: String?
         ) -> void
 
         def to_hash: -> {
           sec_code: Lithic::Models::PaymentCreateParams::MethodAttributes::sec_code,
+          ach_hold_period: Integer,
           addenda: String?
         }
 

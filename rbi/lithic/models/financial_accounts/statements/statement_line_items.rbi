@@ -251,6 +251,16 @@ module Lithic
                   :EXTERNAL_CHECK,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
                 )
+              EXTERNAL_FEDNOW =
+                T.let(
+                  :EXTERNAL_FEDNOW,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
+                )
+              EXTERNAL_RTP =
+                T.let(
+                  :EXTERNAL_RTP,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::Category::TaggedSymbol
+                )
               EXTERNAL_TRANSFER =
                 T.let(
                   :EXTERNAL_TRANSFER,
@@ -530,6 +540,56 @@ module Lithic
                   :EXTERNAL_CHECK_SETTLED,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
+              EXTERNAL_FEDNOW_CANCELED =
+                T.let(
+                  :EXTERNAL_FEDNOW_CANCELED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              EXTERNAL_FEDNOW_INITIATED =
+                T.let(
+                  :EXTERNAL_FEDNOW_INITIATED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              EXTERNAL_FEDNOW_RELEASED =
+                T.let(
+                  :EXTERNAL_FEDNOW_RELEASED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              EXTERNAL_FEDNOW_REVERSED =
+                T.let(
+                  :EXTERNAL_FEDNOW_REVERSED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              EXTERNAL_FEDNOW_SETTLED =
+                T.let(
+                  :EXTERNAL_FEDNOW_SETTLED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              EXTERNAL_RTP_CANCELED =
+                T.let(
+                  :EXTERNAL_RTP_CANCELED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              EXTERNAL_RTP_INITIATED =
+                T.let(
+                  :EXTERNAL_RTP_INITIATED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              EXTERNAL_RTP_RELEASED =
+                T.let(
+                  :EXTERNAL_RTP_RELEASED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              EXTERNAL_RTP_REVERSED =
+                T.let(
+                  :EXTERNAL_RTP_REVERSED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              EXTERNAL_RTP_SETTLED =
+                T.let(
+                  :EXTERNAL_RTP_SETTLED,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
               EXTERNAL_TRANSFER_CANCELED =
                 T.let(
                   :EXTERNAL_TRANSFER_CANCELED,
@@ -668,6 +728,36 @@ module Lithic
               LITHIC_NETWORK_PAYMENT =
                 T.let(
                   :LITHIC_NETWORK_PAYMENT,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :ANNUAL,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              ANNUAL_REVERSAL =
+                T.let(
+                  :ANNUAL_REVERSAL,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :QUARTERLY,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              QUARTERLY_REVERSAL =
+                T.let(
+                  :QUARTERLY_REVERSAL,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              MONTHLY =
+                T.let(
+                  :MONTHLY,
+                  Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
+                )
+              MONTHLY_REVERSAL =
+                T.let(
+                  :MONTHLY_REVERSAL,
                   Lithic::FinancialAccounts::Statements::StatementLineItems::Data::EventType::TaggedSymbol
                 )
 

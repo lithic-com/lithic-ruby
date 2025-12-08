@@ -138,6 +138,8 @@ module Lithic
         | :CARD
         | :EXTERNAL_ACH
         | :EXTERNAL_CHECK
+        | :EXTERNAL_FEDNOW
+        | :EXTERNAL_RTP
         | :EXTERNAL_TRANSFER
         | :EXTERNAL_WIRE
         | :MANAGEMENT_ADJUSTMENT
@@ -160,6 +162,8 @@ module Lithic
         CARD: :CARD
         EXTERNAL_ACH: :EXTERNAL_ACH
         EXTERNAL_CHECK: :EXTERNAL_CHECK
+        EXTERNAL_FEDNOW: :EXTERNAL_FEDNOW
+        EXTERNAL_RTP: :EXTERNAL_RTP
         EXTERNAL_TRANSFER: :EXTERNAL_TRANSFER
         EXTERNAL_WIRE: :EXTERNAL_WIRE
         MANAGEMENT_ADJUSTMENT: :MANAGEMENT_ADJUSTMENT
@@ -322,6 +326,7 @@ module Lithic
         type ach_method_attributes =
           {
             sec_code: Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes::sec_code,
+            ach_hold_period: Integer?,
             addenda: String?,
             company_id: String?,
             receipt_routing_number: String?,
@@ -332,6 +337,8 @@ module Lithic
 
         class ACHMethodAttributes < Lithic::Internal::Type::BaseModel
           attr_accessor sec_code: Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes::sec_code
+
+          attr_accessor ach_hold_period: Integer?
 
           attr_accessor addenda: String?
 
@@ -349,6 +356,7 @@ module Lithic
 
           def initialize: (
             sec_code: Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes::sec_code,
+            ?ach_hold_period: Integer?,
             ?addenda: String?,
             ?company_id: String?,
             ?receipt_routing_number: String?,
@@ -359,6 +367,7 @@ module Lithic
 
           def to_hash: -> {
             sec_code: Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes::sec_code,
+            ach_hold_period: Integer?,
             addenda: String?,
             company_id: String?,
             receipt_routing_number: String?,

@@ -125,6 +125,8 @@ module Lithic
             ending_before: String,
             event_stream:
               Lithic::AuthRules::V2ListParams::EventStream::OrSymbol,
+            event_streams:
+              T::Array[Lithic::AuthRules::V2ListParams::EventStream::OrSymbol],
             page_size: Integer,
             scope: Lithic::AuthRules::V2ListParams::Scope::OrSymbol,
             starting_after: String,
@@ -141,8 +143,13 @@ module Lithic
           # A cursor representing an item's token before which a page of results should end.
           # Used to retrieve the previous page of results before this item.
           ending_before: nil,
-          # Only return Auth rules that are executed during the provided event stream.
+          # Deprecated: Use event_streams instead. Only return Auth rules that are executed
+          # during the provided event stream.
           event_stream: nil,
+          # Only return Auth rules that are executed during any of the provided event
+          # streams. If event_streams and event_stream are specified, the values will be
+          # combined.
+          event_streams: nil,
           # Page size (for pagination).
           page_size: nil,
           # Only return Auth Rules that are bound to the provided scope.

@@ -198,6 +198,8 @@ module Lithic
         CARD = :CARD
         EXTERNAL_ACH = :EXTERNAL_ACH
         EXTERNAL_CHECK = :EXTERNAL_CHECK
+        EXTERNAL_FEDNOW = :EXTERNAL_FEDNOW
+        EXTERNAL_RTP = :EXTERNAL_RTP
         EXTERNAL_TRANSFER = :EXTERNAL_TRANSFER
         EXTERNAL_WIRE = :EXTERNAL_WIRE
         MANAGEMENT_ADJUSTMENT = :MANAGEMENT_ADJUSTMENT
@@ -414,6 +416,12 @@ module Lithic
           #   @return [Symbol, Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes::SecCode]
           required :sec_code, enum: -> { Lithic::Payment::MethodAttributes::ACHMethodAttributes::SecCode }
 
+          # @!attribute ach_hold_period
+          #   Number of days the ACH transaction is on hold
+          #
+          #   @return [Integer, nil]
+          optional :ach_hold_period, Integer, nil?: true
+
           # @!attribute addenda
           #   Addenda information
           #
@@ -450,8 +458,10 @@ module Lithic
           #   @return [Array<String>, nil]
           optional :trace_numbers, Lithic::Internal::Type::ArrayOf[String]
 
-          # @!method initialize(sec_code:, addenda: nil, company_id: nil, receipt_routing_number: nil, retries: nil, return_reason_code: nil, trace_numbers: nil)
+          # @!method initialize(sec_code:, ach_hold_period: nil, addenda: nil, company_id: nil, receipt_routing_number: nil, retries: nil, return_reason_code: nil, trace_numbers: nil)
           #   @param sec_code [Symbol, Lithic::Models::Payment::MethodAttributes::ACHMethodAttributes::SecCode] SEC code for ACH transaction
+          #
+          #   @param ach_hold_period [Integer, nil] Number of days the ACH transaction is on hold
           #
           #   @param addenda [String, nil] Addenda information
           #
