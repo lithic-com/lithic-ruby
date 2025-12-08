@@ -135,6 +135,16 @@ module Lithic
             :EXTERNAL_CHECK,
             Lithic::ExternalPaymentCreateParams::Category::TaggedSymbol
           )
+        EXTERNAL_FEDNOW =
+          T.let(
+            :EXTERNAL_FEDNOW,
+            Lithic::ExternalPaymentCreateParams::Category::TaggedSymbol
+          )
+        EXTERNAL_RTP =
+          T.let(
+            :EXTERNAL_RTP,
+            Lithic::ExternalPaymentCreateParams::Category::TaggedSymbol
+          )
         EXTERNAL_TRANSFER =
           T.let(
             :EXTERNAL_TRANSFER,

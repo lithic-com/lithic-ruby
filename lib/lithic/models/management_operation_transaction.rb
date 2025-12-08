@@ -271,6 +271,12 @@ module Lithic
           DISPUTE_WON_REVERSAL = :DISPUTE_WON_REVERSAL
           DISBURSE = :DISBURSE
           DISBURSE_REVERSAL = :DISBURSE_REVERSAL
+          ANNUAL = :ANNUAL
+          ANNUAL_REVERSAL = :ANNUAL_REVERSAL
+          QUARTERLY = :QUARTERLY
+          QUARTERLY_REVERSAL = :QUARTERLY_REVERSAL
+          MONTHLY = :MONTHLY
+          MONTHLY_REVERSAL = :MONTHLY_REVERSAL
 
           # @!method self.values
           #   @return [Array<Symbol>]

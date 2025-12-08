@@ -40,6 +40,7 @@ module Lithic
           ?card_token: String,
           ?ending_before: String,
           ?event_stream: Lithic::Models::AuthRules::V2ListParams::event_stream,
+          ?event_streams: ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream],
           ?page_size: Integer,
           ?scope: Lithic::Models::AuthRules::V2ListParams::scope,
           ?starting_after: String,

@@ -34,10 +34,20 @@ module Lithic
         optional :ending_before, String
 
         # @!attribute event_stream
-        #   Only return Auth rules that are executed during the provided event stream.
+        #   Deprecated: Use event_streams instead. Only return Auth rules that are executed
+        #   during the provided event stream.
         #
         #   @return [Symbol, Lithic::Models::AuthRules::V2ListParams::EventStream, nil]
         optional :event_stream, enum: -> { Lithic::AuthRules::V2ListParams::EventStream }
+
+        # @!attribute event_streams
+        #   Only return Auth rules that are executed during any of the provided event
+        #   streams. If event_streams and event_stream are specified, the values will be
+        #   combined.
+        #
+        #   @return [Array<Symbol, Lithic::Models::AuthRules::V2ListParams::EventStream>, nil]
+        optional :event_streams,
+                 -> { Lithic::Internal::Type::ArrayOf[enum: Lithic::AuthRules::V2ListParams::EventStream] }
 
         # @!attribute page_size
         #   Page size (for pagination).
@@ -58,7 +68,7 @@ module Lithic
         #   @return [String, nil]
         optional :starting_after, String
 
-        # @!method initialize(account_token: nil, business_account_token: nil, card_token: nil, ending_before: nil, event_stream: nil, page_size: nil, scope: nil, starting_after: nil, request_options: {})
+        # @!method initialize(account_token: nil, business_account_token: nil, card_token: nil, ending_before: nil, event_stream: nil, event_streams: nil, page_size: nil, scope: nil, starting_after: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Lithic::Models::AuthRules::V2ListParams} for more details.
         #
@@ -70,7 +80,9 @@ module Lithic
         #
         #   @param ending_before [String] A cursor representing an item's token before which a page of results should end.
         #
-        #   @param event_stream [Symbol, Lithic::Models::AuthRules::V2ListParams::EventStream] Only return Auth rules that are executed during the provided event stream.
+        #   @param event_stream [Symbol, Lithic::Models::AuthRules::V2ListParams::EventStream] Deprecated: Use event_streams instead. Only return Auth rules that are executed
+        #
+        #   @param event_streams [Array<Symbol, Lithic::Models::AuthRules::V2ListParams::EventStream>] Only return Auth rules that are executed during any of the provided event stream
         #
         #   @param page_size [Integer] Page size (for pagination).
         #
@@ -80,7 +92,8 @@ module Lithic
         #
         #   @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}]
 
-        # Only return Auth rules that are executed during the provided event stream.
+        # Deprecated: Use event_streams instead. Only return Auth rules that are executed
+        # during the provided event stream.
         module EventStream
           extend Lithic::Internal::Type::Enum
 

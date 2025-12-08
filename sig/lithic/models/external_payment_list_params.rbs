@@ -94,7 +94,12 @@ module Lithic
       }
 
       type category =
-        :EXTERNAL_WIRE | :EXTERNAL_ACH | :EXTERNAL_CHECK | :EXTERNAL_TRANSFER
+        :EXTERNAL_WIRE
+        | :EXTERNAL_ACH
+        | :EXTERNAL_CHECK
+        | :EXTERNAL_FEDNOW
+        | :EXTERNAL_RTP
+        | :EXTERNAL_TRANSFER
 
       module Category
         extend Lithic::Internal::Type::Enum
@@ -102,6 +107,8 @@ module Lithic
         EXTERNAL_WIRE: :EXTERNAL_WIRE
         EXTERNAL_ACH: :EXTERNAL_ACH
         EXTERNAL_CHECK: :EXTERNAL_CHECK
+        EXTERNAL_FEDNOW: :EXTERNAL_FEDNOW
+        EXTERNAL_RTP: :EXTERNAL_RTP
         EXTERNAL_TRANSFER: :EXTERNAL_TRANSFER
 
         def self?.values: -> ::Array[Lithic::Models::ExternalPaymentListParams::category]

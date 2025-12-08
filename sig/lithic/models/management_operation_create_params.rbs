@@ -134,6 +134,12 @@ module Lithic
         | :DISPUTE_WON_REVERSAL
         | :DISBURSE
         | :DISBURSE_REVERSAL
+        | :ANNUAL
+        | :ANNUAL_REVERSAL
+        | :QUARTERLY
+        | :QUARTERLY_REVERSAL
+        | :MONTHLY
+        | :MONTHLY_REVERSAL
 
       module EventType
         extend Lithic::Internal::Type::Enum
@@ -157,6 +163,12 @@ module Lithic
         DISPUTE_WON_REVERSAL: :DISPUTE_WON_REVERSAL
         DISBURSE: :DISBURSE
         DISBURSE_REVERSAL: :DISBURSE_REVERSAL
+        ANNUAL: :ANNUAL
+        ANNUAL_REVERSAL: :ANNUAL_REVERSAL
+        QUARTERLY: :QUARTERLY
+        QUARTERLY_REVERSAL: :QUARTERLY_REVERSAL
+        MONTHLY: :MONTHLY
+        MONTHLY_REVERSAL: :MONTHLY_REVERSAL
 
         def self?.values: -> ::Array[Lithic::Models::ManagementOperationCreateParams::event_type]
       end

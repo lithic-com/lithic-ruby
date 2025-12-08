@@ -94,13 +94,22 @@ module Lithic
         #   @return [Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode]
         required :sec_code, enum: -> { Lithic::PaymentCreateParams::MethodAttributes::SecCode }
 
+        # @!attribute ach_hold_period
+        #   Number of days to hold the ACH payment
+        #
+        #   @return [Integer, nil]
+        optional :ach_hold_period, Integer, api_name: :ach_hold__period
+
         # @!attribute addenda
         #
         #   @return [String, nil]
         optional :addenda, String, nil?: true
 
-        # @!method initialize(sec_code:, addenda: nil)
+        # @!method initialize(sec_code:, ach_hold_period: nil, addenda: nil)
         #   @param sec_code [Symbol, Lithic::Models::PaymentCreateParams::MethodAttributes::SecCode]
+        #
+        #   @param ach_hold_period [Integer] Number of days to hold the ACH payment
+        #
         #   @param addenda [String, nil]
 
         # @see Lithic::Models::PaymentCreateParams::MethodAttributes#sec_code

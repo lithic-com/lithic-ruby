@@ -291,6 +291,56 @@ module Lithic
             :EXTERNAL_CHECK_SETTLED,
             Lithic::FinancialEvent::Type::TaggedSymbol
           )
+        EXTERNAL_FEDNOW_CANCELED =
+          T.let(
+            :EXTERNAL_FEDNOW_CANCELED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        EXTERNAL_FEDNOW_INITIATED =
+          T.let(
+            :EXTERNAL_FEDNOW_INITIATED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        EXTERNAL_FEDNOW_RELEASED =
+          T.let(
+            :EXTERNAL_FEDNOW_RELEASED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        EXTERNAL_FEDNOW_REVERSED =
+          T.let(
+            :EXTERNAL_FEDNOW_REVERSED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        EXTERNAL_FEDNOW_SETTLED =
+          T.let(
+            :EXTERNAL_FEDNOW_SETTLED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        EXTERNAL_RTP_CANCELED =
+          T.let(
+            :EXTERNAL_RTP_CANCELED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        EXTERNAL_RTP_INITIATED =
+          T.let(
+            :EXTERNAL_RTP_INITIATED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        EXTERNAL_RTP_RELEASED =
+          T.let(
+            :EXTERNAL_RTP_RELEASED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        EXTERNAL_RTP_REVERSED =
+          T.let(
+            :EXTERNAL_RTP_REVERSED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
+        EXTERNAL_RTP_SETTLED =
+          T.let(
+            :EXTERNAL_RTP_SETTLED,
+            Lithic::FinancialEvent::Type::TaggedSymbol
+          )
         EXTERNAL_TRANSFER_CANCELED =
           T.let(
             :EXTERNAL_TRANSFER_CANCELED,
@@ -397,6 +447,16 @@ module Lithic
             :LITHIC_NETWORK_PAYMENT,
             Lithic::FinancialEvent::Type::TaggedSymbol
           )
+        ANNUAL = T.let(:ANNUAL, Lithic::FinancialEvent::Type::TaggedSymbol)
+        ANNUAL_REVERSAL =
+          T.let(:ANNUAL_REVERSAL, Lithic::FinancialEvent::Type::TaggedSymbol)
+        QUARTERLY =
+          T.let(:QUARTERLY, Lithic::FinancialEvent::Type::TaggedSymbol)
+        QUARTERLY_REVERSAL =
+          T.let(:QUARTERLY_REVERSAL, Lithic::FinancialEvent::Type::TaggedSymbol)
+        MONTHLY = T.let(:MONTHLY, Lithic::FinancialEvent::Type::TaggedSymbol)
+        MONTHLY_REVERSAL =
+          T.let(:MONTHLY_REVERSAL, Lithic::FinancialEvent::Type::TaggedSymbol)
 
         sig do
           override.returns(T::Array[Lithic::FinancialEvent::Type::TaggedSymbol])
