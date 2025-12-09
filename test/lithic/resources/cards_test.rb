@@ -174,10 +174,10 @@ class Lithic::Test::Resources::CardsTest < Lithic::Test::ResourceTest
     end
 
     assert_pattern do
-      response => {
-        jws: Lithic::Models::CardWebProvisionResponse::Jws | nil,
-        state: String | nil
-      }
+      case response
+      in Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse
+      in Lithic::Models::CardWebProvisionResponse::GoogleWebPushProvisioningResponse
+      end
     end
   end
 end

@@ -1,12 +1,25 @@
 module Lithic
   module Models
     type card_web_provision_params =
-      { digital_wallet: Lithic::Models::CardWebProvisionParams::digital_wallet }
+      {
+        client_device_id: String,
+        client_wallet_account_id: String,
+        digital_wallet: Lithic::Models::CardWebProvisionParams::digital_wallet,
+        server_session_id: String
+      }
       & Lithic::Internal::Type::request_parameters
 
     class CardWebProvisionParams < Lithic::Internal::Type::BaseModel
       extend Lithic::Internal::Type::RequestParameters::Converter
       include Lithic::Internal::Type::RequestParameters
+
+      attr_reader client_device_id: String?
+
+      def client_device_id=: (String) -> String
+
+      attr_reader client_wallet_account_id: String?
+
+      def client_wallet_account_id=: (String) -> String
 
       attr_reader digital_wallet: Lithic::Models::CardWebProvisionParams::digital_wallet?
 
@@ -14,22 +27,33 @@ module Lithic
         Lithic::Models::CardWebProvisionParams::digital_wallet
       ) -> Lithic::Models::CardWebProvisionParams::digital_wallet
 
+      attr_reader server_session_id: String?
+
+      def server_session_id=: (String) -> String
+
       def initialize: (
+        ?client_device_id: String,
+        ?client_wallet_account_id: String,
         ?digital_wallet: Lithic::Models::CardWebProvisionParams::digital_wallet,
+        ?server_session_id: String,
         ?request_options: Lithic::request_opts
       ) -> void
 
       def to_hash: -> {
+        client_device_id: String,
+        client_wallet_account_id: String,
         digital_wallet: Lithic::Models::CardWebProvisionParams::digital_wallet,
+        server_session_id: String,
         request_options: Lithic::RequestOptions
       }
 
-      type digital_wallet = :APPLE_PAY
+      type digital_wallet = :APPLE_PAY | :GOOGLE_PAY
 
       module DigitalWallet
         extend Lithic::Internal::Type::Enum
 
         APPLE_PAY: :APPLE_PAY
+        GOOGLE_PAY: :GOOGLE_PAY
 
         def self?.values: -> ::Array[Lithic::Models::CardWebProvisionParams::digital_wallet]
       end

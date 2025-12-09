@@ -16,8 +16,11 @@ module Lithic
         # An array of strings, to be used with `IS_ONE_OF` or `IS_NOT_ONE_OF`
         variant -> { Lithic::Models::AuthRules::ConditionalValue::StringArray }
 
+        # A timestamp, to be used with `IS_AFTER` or `IS_BEFORE`
+        variant Time
+
         # @!method self.variants
-        #   @return [Array(String, Integer, Array<String>)]
+        #   @return [Array(String, Integer, Array<String>, Time)]
 
         # @type [Lithic::Internal::Type::Converter]
         StringArray = Lithic::Internal::Type::ArrayOf[String]

@@ -104,7 +104,7 @@ module Lithic
           # @!attribute value
           #   A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
           #
-          #   @return [String, Integer, Array<String>]
+          #   @return [String, Integer, Array<String>, Time]
           required :value, union: -> { Lithic::AuthRules::ConditionalValue }
 
           # @!method initialize(attribute:, operation:, value:)
@@ -116,7 +116,7 @@ module Lithic
           #
           #   @param operation [Symbol, Lithic::Models::AuthRules::ConditionalOperation] The operation to apply to the attribute
           #
-          #   @param value [String, Integer, Array<String>] A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
+          #   @param value [String, Integer, Array<String>, Time] A regex string, to be used with `MATCHES` or `DOES_NOT_MATCH`
 
           # The attribute to target.
           #

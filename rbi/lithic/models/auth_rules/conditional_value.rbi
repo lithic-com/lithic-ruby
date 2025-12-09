@@ -7,7 +7,8 @@ module Lithic
       module ConditionalValue
         extend Lithic::Internal::Type::Union
 
-        Variants = T.type_alias { T.any(String, Integer, T::Array[String]) }
+        Variants =
+          T.type_alias { T.any(String, Integer, T::Array[String], Time) }
 
         sig do
           override.returns(
