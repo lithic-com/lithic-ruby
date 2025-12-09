@@ -1,82 +1,112 @@
 module Lithic
   module Models
     type card_web_provision_response =
-      { jws: Lithic::Models::CardWebProvisionResponse::Jws, state: String }
+      Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse
+      | Lithic::Models::CardWebProvisionResponse::GoogleWebPushProvisioningResponse
 
-    class CardWebProvisionResponse < Lithic::Internal::Type::BaseModel
-      attr_reader jws: Lithic::Models::CardWebProvisionResponse::Jws?
+    module CardWebProvisionResponse
+      extend Lithic::Internal::Type::Union
 
-      def jws=: (
-        Lithic::Models::CardWebProvisionResponse::Jws
-      ) -> Lithic::Models::CardWebProvisionResponse::Jws
-
-      attr_reader state: String?
-
-      def state=: (String) -> String
-
-      def initialize: (
-        ?jws: Lithic::Models::CardWebProvisionResponse::Jws,
-        ?state: String
-      ) -> void
-
-      def to_hash: -> {
-        jws: Lithic::Models::CardWebProvisionResponse::Jws,
-        state: String
-      }
-
-      type jws =
+      type apple_web_push_provisioning_response =
         {
-          header: Lithic::Models::CardWebProvisionResponse::Jws::Header,
-          payload: String,
-          protected: String,
-          signature: String
+          jws: Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws,
+          state: String
         }
 
-      class Jws < Lithic::Internal::Type::BaseModel
-        attr_reader header: Lithic::Models::CardWebProvisionResponse::Jws::Header?
+      class AppleWebPushProvisioningResponse < Lithic::Internal::Type::BaseModel
+        attr_reader jws: Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws?
 
-        def header=: (
-          Lithic::Models::CardWebProvisionResponse::Jws::Header
-        ) -> Lithic::Models::CardWebProvisionResponse::Jws::Header
+        def jws=: (
+          Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws
+        ) -> Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws
 
-        attr_reader payload: String?
+        attr_reader state: String?
 
-        def payload=: (String) -> String
-
-        attr_reader protected: String?
-
-        def protected=: (String) -> String
-
-        attr_reader signature: String?
-
-        def signature=: (String) -> String
+        def state=: (String) -> String
 
         def initialize: (
-          ?header: Lithic::Models::CardWebProvisionResponse::Jws::Header,
-          ?payload: String,
-          ?protected: String,
-          ?signature: String
+          ?jws: Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws,
+          ?state: String
         ) -> void
 
         def to_hash: -> {
-          header: Lithic::Models::CardWebProvisionResponse::Jws::Header,
-          payload: String,
-          protected: String,
-          signature: String
+          jws: Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws,
+          state: String
         }
 
-        type header = { kid: String }
+        type jws =
+          {
+            header: Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws::Header,
+            payload: String,
+            protected: String,
+            signature: String
+          }
 
-        class Header < Lithic::Internal::Type::BaseModel
-          attr_reader kid: String?
+        class Jws < Lithic::Internal::Type::BaseModel
+          attr_reader header: Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws::Header?
 
-          def kid=: (String) -> String
+          def header=: (
+            Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws::Header
+          ) -> Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws::Header
 
-          def initialize: (?kid: String) -> void
+          attr_reader payload: String?
 
-          def to_hash: -> { kid: String }
+          def payload=: (String) -> String
+
+          attr_reader protected: String?
+
+          def protected=: (String) -> String
+
+          attr_reader signature: String?
+
+          def signature=: (String) -> String
+
+          def initialize: (
+            ?header: Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws::Header,
+            ?payload: String,
+            ?protected: String,
+            ?signature: String
+          ) -> void
+
+          def to_hash: -> {
+            header: Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse::Jws::Header,
+            payload: String,
+            protected: String,
+            signature: String
+          }
+
+          type header = { kid: String }
+
+          class Header < Lithic::Internal::Type::BaseModel
+            attr_reader kid: String?
+
+            def kid=: (String) -> String
+
+            def initialize: (?kid: String) -> void
+
+            def to_hash: -> { kid: String }
+          end
         end
       end
+
+      type google_web_push_provisioning_response =
+        { google_opc: String, tsp_opc: String }
+
+      class GoogleWebPushProvisioningResponse < Lithic::Internal::Type::BaseModel
+        attr_reader google_opc: String?
+
+        def google_opc=: (String) -> String
+
+        attr_reader tsp_opc: String?
+
+        def tsp_opc=: (String) -> String
+
+        def initialize: (?google_opc: String, ?tsp_opc: String) -> void
+
+        def to_hash: -> { google_opc: String, tsp_opc: String }
+      end
+
+      def self?.variants: -> ::Array[Lithic::Models::card_web_provision_response]
     end
   end
 end

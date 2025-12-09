@@ -443,6 +443,9 @@ module Lithic
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Lithic::Models::CardWebProvisionParams} for more details.
+      #
       # Allow your cardholders to directly add payment cards to the device's digital
       # wallet from a browser on the web. Currently only suported for Apple Pay.
       #
@@ -450,15 +453,21 @@ module Lithic
       # [Contact Us](https://lithic.com/contact) or your Customer Success representative
       # for more information.
       #
-      # @overload web_provision(card_token, digital_wallet: nil, request_options: {})
+      # @overload web_provision(card_token, client_device_id: nil, client_wallet_account_id: nil, digital_wallet: nil, server_session_id: nil, request_options: {})
       #
       # @param card_token [String] The unique token of the card to add to the device's digital wallet.
       #
+      # @param client_device_id [String] Only applicable if `digital_wallet` is GOOGLE_PAY. Google Pay Web Push Provision
+      #
+      # @param client_wallet_account_id [String] Only applicable if `digital_wallet` is GOOGLE_PAY. Google Pay Web Push Provision
+      #
       # @param digital_wallet [Symbol, Lithic::Models::CardWebProvisionParams::DigitalWallet] Name of digital wallet provider.
+      #
+      # @param server_session_id [String] Only applicable if `digital_wallet` is GOOGLE_PAY. Google Pay Web Push Provision
       #
       # @param request_options [Lithic::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Lithic::Models::CardWebProvisionResponse]
+      # @return [Lithic::Models::CardWebProvisionResponse::AppleWebPushProvisioningResponse, Lithic::Models::CardWebProvisionResponse::GoogleWebPushProvisioningResponse]
       #
       # @see Lithic::Models::CardWebProvisionParams
       def web_provision(card_token, params = {})

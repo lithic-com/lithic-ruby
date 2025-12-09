@@ -60,6 +60,16 @@ module Lithic
             :IS_LESS_THAN_OR_EQUAL_TO,
             Lithic::AuthRules::ConditionalOperation::TaggedSymbol
           )
+        IS_AFTER =
+          T.let(
+            :IS_AFTER,
+            Lithic::AuthRules::ConditionalOperation::TaggedSymbol
+          )
+        IS_BEFORE =
+          T.let(
+            :IS_BEFORE,
+            Lithic::AuthRules::ConditionalOperation::TaggedSymbol
+          )
         CONTAINS_ANY =
           T.let(
             :CONTAINS_ANY,
