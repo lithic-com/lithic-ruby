@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.1.0 (2025-12-09)
+
+Full Changelog: [v0.1.0-alpha.56...v0.1.0](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.56...v0.1.0)
+
+### Features
+
+* **api:** add bulk card creation APIs ([cfad114](https://github.com/lithic-com/lithic-ruby/commit/cfad11458ae0cadb0fdc3df83a207899961373be))
+* **api:** Add event_streams to auth rules APIs ([f728be5](https://github.com/lithic-com/lithic-ruby/commit/f728be51aaadc3520da3ba43f6eebc748f0996d6))
+* **api:** add Google WPP to SDKs ([7eacd6a](https://github.com/lithic-com/lithic-ruby/commit/7eacd6a0dec947d4ceb0fe66004603cc897f2ace))
+* **api:** add IS_AFTER / IS_BEFORE operators to Auth Rule APIs ([7eacd6a](https://github.com/lithic-com/lithic-ruby/commit/7eacd6a0dec947d4ceb0fe66004603cc897f2ace))
+* **api:** Add new fee types ([f728be5](https://github.com/lithic-com/lithic-ruby/commit/f728be51aaadc3520da3ba43f6eebc748f0996d6))
+* **api:** Add optional ach_hold_period ([f728be5](https://github.com/lithic-com/lithic-ruby/commit/f728be51aaadc3520da3ba43f6eebc748f0996d6))
+* **api:** add WALLET_RECOMMENDATION_REASONS attribute for tokenization rules ([13b07cb](https://github.com/lithic-com/lithic-ruby/commit/13b07cbc3cf7f8acd8b1bab6c5d1abf84762e7d6))
+* **api:** provide a unified model for AuthRule ([13b07cb](https://github.com/lithic-com/lithic-ruby/commit/13b07cbc3cf7f8acd8b1bab6c5d1abf84762e7d6))
+* **api:** support event_streams in auth_rules list endpoint ([c5ddfb6](https://github.com/lithic-com/lithic-ruby/commit/c5ddfb614021df7a5945f8de4536401b1fd9237c))
+
+
+### Bug Fixes
+
+* **api:** extract several common types to reduce duplication ([cfad114](https://github.com/lithic-com/lithic-ruby/commit/cfad11458ae0cadb0fdc3df83a207899961373be))
+* **api:** fix examples in spec that were not fully valid ([13b07cb](https://github.com/lithic-com/lithic-ruby/commit/13b07cbc3cf7f8acd8b1bab6c5d1abf84762e7d6))
+* **api:** make certain payoff fields nullable ([13b07cb](https://github.com/lithic-com/lithic-ruby/commit/13b07cbc3cf7f8acd8b1bab6c5d1abf84762e7d6))
+
+
+### Chores
+
+* explicitly require "base64" gem ([635f951](https://github.com/lithic-com/lithic-ruby/commit/635f9513543431da16261d80ede76d30d6338de3))
+
+
+### Documentation
+
+* **api:** clarify error 422 for 3DS challenge response ([7eacd6a](https://github.com/lithic-com/lithic-ruby/commit/7eacd6a0dec947d4ceb0fe66004603cc897f2ace))
+
 ## 0.1.0-alpha.56 (2025-11-20)
 
 Full Changelog: [v0.1.0-alpha.55...v0.1.0-alpha.56](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.55...v0.1.0-alpha.56)
