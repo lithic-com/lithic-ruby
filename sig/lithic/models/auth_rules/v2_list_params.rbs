@@ -7,8 +7,8 @@ module Lithic
           business_account_token: String,
           card_token: String,
           ending_before: String,
-          event_stream: Lithic::Models::AuthRules::V2ListParams::event_stream,
-          event_streams: ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream],
+          event_stream: Lithic::Models::AuthRules::event_stream,
+          event_streams: ::Array[Lithic::Models::AuthRules::event_stream],
           page_size: Integer,
           scope: Lithic::Models::AuthRules::V2ListParams::scope,
           starting_after: String
@@ -35,17 +35,17 @@ module Lithic
 
         def ending_before=: (String) -> String
 
-        attr_reader event_stream: Lithic::Models::AuthRules::V2ListParams::event_stream?
+        attr_reader event_stream: Lithic::Models::AuthRules::event_stream?
 
         def event_stream=: (
-          Lithic::Models::AuthRules::V2ListParams::event_stream
-        ) -> Lithic::Models::AuthRules::V2ListParams::event_stream
+          Lithic::Models::AuthRules::event_stream
+        ) -> Lithic::Models::AuthRules::event_stream
 
-        attr_reader event_streams: ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream]?
+        attr_reader event_streams: ::Array[Lithic::Models::AuthRules::event_stream]?
 
         def event_streams=: (
-          ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream]
-        ) -> ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream]
+          ::Array[Lithic::Models::AuthRules::event_stream]
+        ) -> ::Array[Lithic::Models::AuthRules::event_stream]
 
         attr_reader page_size: Integer?
 
@@ -66,8 +66,8 @@ module Lithic
           ?business_account_token: String,
           ?card_token: String,
           ?ending_before: String,
-          ?event_stream: Lithic::Models::AuthRules::V2ListParams::event_stream,
-          ?event_streams: ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream],
+          ?event_stream: Lithic::Models::AuthRules::event_stream,
+          ?event_streams: ::Array[Lithic::Models::AuthRules::event_stream],
           ?page_size: Integer,
           ?scope: Lithic::Models::AuthRules::V2ListParams::scope,
           ?starting_after: String,
@@ -79,32 +79,13 @@ module Lithic
           business_account_token: String,
           card_token: String,
           ending_before: String,
-          event_stream: Lithic::Models::AuthRules::V2ListParams::event_stream,
-          event_streams: ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream],
+          event_stream: Lithic::Models::AuthRules::event_stream,
+          event_streams: ::Array[Lithic::Models::AuthRules::event_stream],
           page_size: Integer,
           scope: Lithic::Models::AuthRules::V2ListParams::scope,
           starting_after: String,
           request_options: Lithic::RequestOptions
         }
-
-        type event_stream =
-          :AUTHORIZATION
-          | :THREE_DS_AUTHENTICATION
-          | :TOKENIZATION
-          | :ACH_CREDIT_RECEIPT
-          | :ACH_DEBIT_RECEIPT
-
-        module EventStream
-          extend Lithic::Internal::Type::Enum
-
-          AUTHORIZATION: :AUTHORIZATION
-          THREE_DS_AUTHENTICATION: :THREE_DS_AUTHENTICATION
-          TOKENIZATION: :TOKENIZATION
-          ACH_CREDIT_RECEIPT: :ACH_CREDIT_RECEIPT
-          ACH_DEBIT_RECEIPT: :ACH_DEBIT_RECEIPT
-
-          def self?.values: -> ::Array[Lithic::Models::AuthRules::V2ListParams::event_stream]
-        end
 
         type scope = :PROGRAM | :ACCOUNT | :BUSINESS_ACCOUNT | :CARD | :ANY
 

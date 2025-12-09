@@ -50,7 +50,7 @@ module Lithic
         attr_writer :draft_version
 
         # The event stream during which the rule will be evaluated.
-        sig { returns(Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol) }
+        sig { returns(Lithic::AuthRules::EventStream::TaggedSymbol) }
         attr_accessor :event_stream
 
         # Indicates whether this auth rule is managed by Lithic. If true, the rule cannot
@@ -100,7 +100,7 @@ module Lithic
               T.nilable(Lithic::AuthRules::AuthRule::CurrentVersion::OrHash),
             draft_version:
               T.nilable(Lithic::AuthRules::AuthRule::DraftVersion::OrHash),
-            event_stream: Lithic::AuthRules::AuthRule::EventStream::OrSymbol,
+            event_stream: Lithic::AuthRules::EventStream::OrSymbol,
             lithic_managed: T::Boolean,
             name: T.nilable(String),
             program_level: T::Boolean,
@@ -158,8 +158,7 @@ module Lithic
                 T.nilable(Lithic::AuthRules::AuthRule::CurrentVersion),
               draft_version:
                 T.nilable(Lithic::AuthRules::AuthRule::DraftVersion),
-              event_stream:
-                Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol,
+              event_stream: Lithic::AuthRules::EventStream::TaggedSymbol,
               lithic_managed: T::Boolean,
               name: T.nilable(String),
               program_level: T::Boolean,
@@ -343,51 +342,6 @@ module Lithic
             end
             def self.variants
             end
-          end
-        end
-
-        # The event stream during which the rule will be evaluated.
-        module EventStream
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Lithic::AuthRules::AuthRule::EventStream)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          AUTHORIZATION =
-            T.let(
-              :AUTHORIZATION,
-              Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol
-            )
-          THREE_DS_AUTHENTICATION =
-            T.let(
-              :THREE_DS_AUTHENTICATION,
-              Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol
-            )
-          TOKENIZATION =
-            T.let(
-              :TOKENIZATION,
-              Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol
-            )
-          ACH_CREDIT_RECEIPT =
-            T.let(
-              :ACH_CREDIT_RECEIPT,
-              Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol
-            )
-          ACH_DEBIT_RECEIPT =
-            T.let(
-              :ACH_DEBIT_RECEIPT,
-              Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[Lithic::AuthRules::AuthRule::EventStream::TaggedSymbol]
-            )
-          end
-          def self.values
           end
         end
 

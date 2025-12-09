@@ -25,8 +25,7 @@ module Lithic
             program_level: T::Boolean,
             account_tokens: T::Array[String],
             business_account_tokens: T::Array[String],
-            event_stream:
-              Lithic::AuthRules::V2CreateParams::EventStream::OrSymbol,
+            event_stream: Lithic::AuthRules::EventStream::OrSymbol,
             name: T.nilable(String),
             excluded_card_tokens: T::Array[String],
             request_options: Lithic::RequestOptions::OrHash
@@ -123,10 +122,8 @@ module Lithic
             business_account_token: String,
             card_token: String,
             ending_before: String,
-            event_stream:
-              Lithic::AuthRules::V2ListParams::EventStream::OrSymbol,
-            event_streams:
-              T::Array[Lithic::AuthRules::V2ListParams::EventStream::OrSymbol],
+            event_stream: Lithic::AuthRules::EventStream::OrSymbol,
+            event_streams: T::Array[Lithic::AuthRules::EventStream::OrSymbol],
             page_size: Integer,
             scope: Lithic::AuthRules::V2ListParams::Scope::OrSymbol,
             starting_after: String,

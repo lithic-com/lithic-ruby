@@ -7,7 +7,7 @@ module Lithic
           type: Lithic::Models::AuthRules::V2CreateParams::type_,
           account_tokens: ::Array[String],
           business_account_tokens: ::Array[String],
-          event_stream: Lithic::Models::AuthRules::V2CreateParams::event_stream,
+          event_stream: Lithic::Models::AuthRules::event_stream,
           name: String?,
           card_tokens: ::Array[String],
           program_level: bool,
@@ -31,11 +31,11 @@ module Lithic
 
         def business_account_tokens=: (::Array[String]) -> ::Array[String]
 
-        attr_reader event_stream: Lithic::Models::AuthRules::V2CreateParams::event_stream?
+        attr_reader event_stream: Lithic::Models::AuthRules::event_stream?
 
         def event_stream=: (
-          Lithic::Models::AuthRules::V2CreateParams::event_stream
-        ) -> Lithic::Models::AuthRules::V2CreateParams::event_stream
+          Lithic::Models::AuthRules::event_stream
+        ) -> Lithic::Models::AuthRules::event_stream
 
         attr_accessor name: String?
 
@@ -54,7 +54,7 @@ module Lithic
           program_level: bool,
           ?account_tokens: ::Array[String],
           ?business_account_tokens: ::Array[String],
-          ?event_stream: Lithic::Models::AuthRules::V2CreateParams::event_stream,
+          ?event_stream: Lithic::Models::AuthRules::event_stream,
           ?name: String?,
           ?excluded_card_tokens: ::Array[String],
           ?request_options: Lithic::request_opts
@@ -65,7 +65,7 @@ module Lithic
           type: Lithic::Models::AuthRules::V2CreateParams::type_,
           account_tokens: ::Array[String],
           business_account_tokens: ::Array[String],
-          event_stream: Lithic::Models::AuthRules::V2CreateParams::event_stream,
+          event_stream: Lithic::Models::AuthRules::event_stream,
           name: String?,
           card_tokens: ::Array[String],
           program_level: bool,
@@ -103,25 +103,6 @@ module Lithic
           CONDITIONAL_ACTION: :CONDITIONAL_ACTION
 
           def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::type_]
-        end
-
-        type event_stream =
-          :AUTHORIZATION
-          | :THREE_DS_AUTHENTICATION
-          | :TOKENIZATION
-          | :ACH_CREDIT_RECEIPT
-          | :ACH_DEBIT_RECEIPT
-
-        module EventStream
-          extend Lithic::Internal::Type::Enum
-
-          AUTHORIZATION: :AUTHORIZATION
-          THREE_DS_AUTHENTICATION: :THREE_DS_AUTHENTICATION
-          TOKENIZATION: :TOKENIZATION
-          ACH_CREDIT_RECEIPT: :ACH_CREDIT_RECEIPT
-          ACH_DEBIT_RECEIPT: :ACH_DEBIT_RECEIPT
-
-          def self?.values: -> ::Array[Lithic::Models::AuthRules::V2CreateParams::event_stream]
         end
       end
     end

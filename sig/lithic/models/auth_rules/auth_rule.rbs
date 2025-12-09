@@ -11,7 +11,7 @@ module Lithic
           card_tokens: ::Array[String],
           current_version: Lithic::AuthRules::AuthRule::CurrentVersion?,
           draft_version: Lithic::AuthRules::AuthRule::DraftVersion?,
-          event_stream: Lithic::Models::AuthRules::AuthRule::event_stream,
+          event_stream: Lithic::Models::AuthRules::event_stream,
           lithic_managed: bool,
           name: String?,
           program_level: bool,
@@ -33,7 +33,7 @@ module Lithic
 
         attr_accessor draft_version: Lithic::AuthRules::AuthRule::DraftVersion?
 
-        attr_accessor event_stream: Lithic::Models::AuthRules::AuthRule::event_stream
+        attr_accessor event_stream: Lithic::Models::AuthRules::event_stream
 
         attr_accessor lithic_managed: bool
 
@@ -56,7 +56,7 @@ module Lithic
           card_tokens: ::Array[String],
           current_version: Lithic::AuthRules::AuthRule::CurrentVersion?,
           draft_version: Lithic::AuthRules::AuthRule::DraftVersion?,
-          event_stream: Lithic::Models::AuthRules::AuthRule::event_stream,
+          event_stream: Lithic::Models::AuthRules::event_stream,
           lithic_managed: bool,
           name: String?,
           program_level: bool,
@@ -72,7 +72,7 @@ module Lithic
           card_tokens: ::Array[String],
           current_version: Lithic::AuthRules::AuthRule::CurrentVersion?,
           draft_version: Lithic::AuthRules::AuthRule::DraftVersion?,
-          event_stream: Lithic::Models::AuthRules::AuthRule::event_stream,
+          event_stream: Lithic::Models::AuthRules::event_stream,
           lithic_managed: bool,
           name: String?,
           program_level: bool,
@@ -153,25 +153,6 @@ module Lithic
 
             def self?.variants: -> ::Array[Lithic::Models::AuthRules::AuthRule::DraftVersion::parameters]
           end
-        end
-
-        type event_stream =
-          :AUTHORIZATION
-          | :THREE_DS_AUTHENTICATION
-          | :TOKENIZATION
-          | :ACH_CREDIT_RECEIPT
-          | :ACH_DEBIT_RECEIPT
-
-        module EventStream
-          extend Lithic::Internal::Type::Enum
-
-          AUTHORIZATION: :AUTHORIZATION
-          THREE_DS_AUTHENTICATION: :THREE_DS_AUTHENTICATION
-          TOKENIZATION: :TOKENIZATION
-          ACH_CREDIT_RECEIPT: :ACH_CREDIT_RECEIPT
-          ACH_DEBIT_RECEIPT: :ACH_DEBIT_RECEIPT
-
-          def self?.values: -> ::Array[Lithic::Models::AuthRules::AuthRule::event_stream]
         end
 
         type state = :ACTIVE | :INACTIVE

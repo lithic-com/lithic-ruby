@@ -1,0 +1,24 @@
+module Lithic
+  module Models
+    module AuthRules
+      type event_stream =
+        :AUTHORIZATION
+        | :THREE_DS_AUTHENTICATION
+        | :TOKENIZATION
+        | :ACH_CREDIT_RECEIPT
+        | :ACH_DEBIT_RECEIPT
+
+      module EventStream
+        extend Lithic::Internal::Type::Enum
+
+        AUTHORIZATION: :AUTHORIZATION
+        THREE_DS_AUTHENTICATION: :THREE_DS_AUTHENTICATION
+        TOKENIZATION: :TOKENIZATION
+        ACH_CREDIT_RECEIPT: :ACH_CREDIT_RECEIPT
+        ACH_DEBIT_RECEIPT: :ACH_DEBIT_RECEIPT
+
+        def self?.values: -> ::Array[Lithic::Models::AuthRules::event_stream]
+      end
+    end
+  end
+end
