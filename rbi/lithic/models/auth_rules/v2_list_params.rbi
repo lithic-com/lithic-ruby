@@ -43,17 +43,11 @@ module Lithic
 
         # Deprecated: Use event_streams instead. Only return Auth rules that are executed
         # during the provided event stream.
-        sig do
-          returns(
-            T.nilable(Lithic::AuthRules::V2ListParams::EventStream::OrSymbol)
-          )
-        end
+        sig { returns(T.nilable(Lithic::AuthRules::EventStream::OrSymbol)) }
         attr_reader :event_stream
 
         sig do
-          params(
-            event_stream: Lithic::AuthRules::V2ListParams::EventStream::OrSymbol
-          ).void
+          params(event_stream: Lithic::AuthRules::EventStream::OrSymbol).void
         end
         attr_writer :event_stream
 
@@ -61,18 +55,13 @@ module Lithic
         # streams. If event_streams and event_stream are specified, the values will be
         # combined.
         sig do
-          returns(
-            T.nilable(
-              T::Array[Lithic::AuthRules::V2ListParams::EventStream::OrSymbol]
-            )
-          )
+          returns(T.nilable(T::Array[Lithic::AuthRules::EventStream::OrSymbol]))
         end
         attr_reader :event_streams
 
         sig do
           params(
-            event_streams:
-              T::Array[Lithic::AuthRules::V2ListParams::EventStream::OrSymbol]
+            event_streams: T::Array[Lithic::AuthRules::EventStream::OrSymbol]
           ).void
         end
         attr_writer :event_streams
@@ -109,10 +98,8 @@ module Lithic
             business_account_token: String,
             card_token: String,
             ending_before: String,
-            event_stream:
-              Lithic::AuthRules::V2ListParams::EventStream::OrSymbol,
-            event_streams:
-              T::Array[Lithic::AuthRules::V2ListParams::EventStream::OrSymbol],
+            event_stream: Lithic::AuthRules::EventStream::OrSymbol,
+            event_streams: T::Array[Lithic::AuthRules::EventStream::OrSymbol],
             page_size: Integer,
             scope: Lithic::AuthRules::V2ListParams::Scope::OrSymbol,
             starting_after: String,
@@ -154,12 +141,8 @@ module Lithic
               business_account_token: String,
               card_token: String,
               ending_before: String,
-              event_stream:
-                Lithic::AuthRules::V2ListParams::EventStream::OrSymbol,
-              event_streams:
-                T::Array[
-                  Lithic::AuthRules::V2ListParams::EventStream::OrSymbol
-                ],
+              event_stream: Lithic::AuthRules::EventStream::OrSymbol,
+              event_streams: T::Array[Lithic::AuthRules::EventStream::OrSymbol],
               page_size: Integer,
               scope: Lithic::AuthRules::V2ListParams::Scope::OrSymbol,
               starting_after: String,
@@ -168,54 +151,6 @@ module Lithic
           )
         end
         def to_hash
-        end
-
-        # Deprecated: Use event_streams instead. Only return Auth rules that are executed
-        # during the provided event stream.
-        module EventStream
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Lithic::AuthRules::V2ListParams::EventStream)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          AUTHORIZATION =
-            T.let(
-              :AUTHORIZATION,
-              Lithic::AuthRules::V2ListParams::EventStream::TaggedSymbol
-            )
-          THREE_DS_AUTHENTICATION =
-            T.let(
-              :THREE_DS_AUTHENTICATION,
-              Lithic::AuthRules::V2ListParams::EventStream::TaggedSymbol
-            )
-          TOKENIZATION =
-            T.let(
-              :TOKENIZATION,
-              Lithic::AuthRules::V2ListParams::EventStream::TaggedSymbol
-            )
-          ACH_CREDIT_RECEIPT =
-            T.let(
-              :ACH_CREDIT_RECEIPT,
-              Lithic::AuthRules::V2ListParams::EventStream::TaggedSymbol
-            )
-          ACH_DEBIT_RECEIPT =
-            T.let(
-              :ACH_DEBIT_RECEIPT,
-              Lithic::AuthRules::V2ListParams::EventStream::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Lithic::AuthRules::V2ListParams::EventStream::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
 
         # Only return Auth Rules that are bound to the provided scope.

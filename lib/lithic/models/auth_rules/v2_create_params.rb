@@ -44,8 +44,8 @@ module Lithic
         # @!attribute event_stream
         #   The event stream during which the rule will be evaluated.
         #
-        #   @return [Symbol, Lithic::Models::AuthRules::V2CreateParams::EventStream, nil]
-        optional :event_stream, enum: -> { Lithic::AuthRules::V2CreateParams::EventStream }
+        #   @return [Symbol, Lithic::Models::AuthRules::EventStream, nil]
+        optional :event_stream, enum: -> { Lithic::AuthRules::EventStream }
 
         # @!attribute name
         #   Auth Rule Name
@@ -87,7 +87,7 @@ module Lithic
         #
         #   @param business_account_tokens [Array<String>] Business Account tokens to which the Auth Rule applies.
         #
-        #   @param event_stream [Symbol, Lithic::Models::AuthRules::V2CreateParams::EventStream] The event stream during which the rule will be evaluated.
+        #   @param event_stream [Symbol, Lithic::Models::AuthRules::EventStream] The event stream during which the rule will be evaluated.
         #
         #   @param name [String, nil] Auth Rule Name
         #
@@ -134,20 +134,6 @@ module Lithic
           VELOCITY_LIMIT = :VELOCITY_LIMIT
           MERCHANT_LOCK = :MERCHANT_LOCK
           CONDITIONAL_ACTION = :CONDITIONAL_ACTION
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # The event stream during which the rule will be evaluated.
-        module EventStream
-          extend Lithic::Internal::Type::Enum
-
-          AUTHORIZATION = :AUTHORIZATION
-          THREE_DS_AUTHENTICATION = :THREE_DS_AUTHENTICATION
-          TOKENIZATION = :TOKENIZATION
-          ACH_CREDIT_RECEIPT = :ACH_CREDIT_RECEIPT
-          ACH_DEBIT_RECEIPT = :ACH_DEBIT_RECEIPT
 
           # @!method self.values
           #   @return [Array<Symbol>]

@@ -42,8 +42,8 @@ module Lithic
         # @!attribute event_stream
         #   The event stream during which the rule will be evaluated.
         #
-        #   @return [Symbol, Lithic::Models::AuthRules::AuthRule::EventStream]
-        required :event_stream, enum: -> { Lithic::AuthRules::AuthRule::EventStream }
+        #   @return [Symbol, Lithic::Models::AuthRules::EventStream]
+        required :event_stream, enum: -> { Lithic::AuthRules::EventStream }
 
         # @!attribute lithic_managed
         #   Indicates whether this auth rule is managed by Lithic. If true, the rule cannot
@@ -107,7 +107,7 @@ module Lithic
         #
         #   @param draft_version [Lithic::Models::AuthRules::AuthRule::DraftVersion, nil]
         #
-        #   @param event_stream [Symbol, Lithic::Models::AuthRules::AuthRule::EventStream] The event stream during which the rule will be evaluated.
+        #   @param event_stream [Symbol, Lithic::Models::AuthRules::EventStream] The event stream during which the rule will be evaluated.
         #
         #   @param lithic_managed [Boolean] Indicates whether this auth rule is managed by Lithic. If true, the rule cannot
         #
@@ -219,22 +219,6 @@ module Lithic
             # @!method self.variants
             #   @return [Array(Lithic::Models::AuthRules::ConditionalBlockParameters, Lithic::Models::AuthRules::VelocityLimitParams, Lithic::Models::AuthRules::MerchantLockParameters, Lithic::Models::AuthRules::Conditional3DSActionParameters, Lithic::Models::AuthRules::ConditionalAuthorizationActionParameters, Lithic::Models::AuthRules::ConditionalACHActionParameters, Lithic::Models::AuthRules::ConditionalTokenizationActionParameters)]
           end
-        end
-
-        # The event stream during which the rule will be evaluated.
-        #
-        # @see Lithic::Models::AuthRules::AuthRule#event_stream
-        module EventStream
-          extend Lithic::Internal::Type::Enum
-
-          AUTHORIZATION = :AUTHORIZATION
-          THREE_DS_AUTHENTICATION = :THREE_DS_AUTHENTICATION
-          TOKENIZATION = :TOKENIZATION
-          ACH_CREDIT_RECEIPT = :ACH_CREDIT_RECEIPT
-          ACH_DEBIT_RECEIPT = :ACH_DEBIT_RECEIPT
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
         end
 
         # The state of the Auth Rule
