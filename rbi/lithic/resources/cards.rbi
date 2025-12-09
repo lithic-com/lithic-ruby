@@ -619,16 +619,28 @@ module Lithic
       sig do
         params(
           card_token: String,
+          client_device_id: String,
+          client_wallet_account_id: String,
           digital_wallet:
             Lithic::CardWebProvisionParams::DigitalWallet::OrSymbol,
+          server_session_id: String,
           request_options: Lithic::RequestOptions::OrHash
-        ).returns(Lithic::Models::CardWebProvisionResponse)
+        ).returns(Lithic::Models::CardWebProvisionResponse::Variants)
       end
       def web_provision(
         # The unique token of the card to add to the device's digital wallet.
         card_token,
+        # Only applicable if `digital_wallet` is GOOGLE_PAY. Google Pay Web Push
+        # Provisioning device identifier required for the tokenization flow
+        client_device_id: nil,
+        # Only applicable if `digital_wallet` is GOOGLE_PAY. Google Pay Web Push
+        # Provisioning wallet account identifier required for the tokenization flow
+        client_wallet_account_id: nil,
         # Name of digital wallet provider.
         digital_wallet: nil,
+        # Only applicable if `digital_wallet` is GOOGLE_PAY. Google Pay Web Push
+        # Provisioning session identifier required for the FPAN flow.
+        server_session_id: nil,
         request_options: {}
       )
       end

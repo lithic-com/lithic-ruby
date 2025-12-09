@@ -121,9 +121,12 @@ module Lithic
 
       def web_provision: (
         String card_token,
+        ?client_device_id: String,
+        ?client_wallet_account_id: String,
         ?digital_wallet: Lithic::Models::CardWebProvisionParams::digital_wallet,
+        ?server_session_id: String,
         ?request_options: Lithic::request_opts
-      ) -> Lithic::Models::CardWebProvisionResponse
+      ) -> Lithic::Models::card_web_provision_response
 
       def initialize: (client: Lithic::Client) -> void
     end

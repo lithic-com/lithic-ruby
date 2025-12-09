@@ -1,7 +1,7 @@
 module Lithic
   module Models
     module AuthRules
-      type conditional_value = String | Integer | ::Array[String]
+      type conditional_value = String | Integer | ::Array[String] | Time
 
       module ConditionalValue
         extend Lithic::Internal::Type::Union
