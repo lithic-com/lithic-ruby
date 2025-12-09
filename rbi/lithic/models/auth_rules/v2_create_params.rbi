@@ -56,18 +56,11 @@ module Lithic
         attr_writer :business_account_tokens
 
         # The event stream during which the rule will be evaluated.
-        sig do
-          returns(
-            T.nilable(Lithic::AuthRules::V2CreateParams::EventStream::OrSymbol)
-          )
-        end
+        sig { returns(T.nilable(Lithic::AuthRules::EventStream::OrSymbol)) }
         attr_reader :event_stream
 
         sig do
-          params(
-            event_stream:
-              Lithic::AuthRules::V2CreateParams::EventStream::OrSymbol
-          ).void
+          params(event_stream: Lithic::AuthRules::EventStream::OrSymbol).void
         end
         attr_writer :event_stream
 
@@ -107,8 +100,7 @@ module Lithic
             program_level: T::Boolean,
             account_tokens: T::Array[String],
             business_account_tokens: T::Array[String],
-            event_stream:
-              Lithic::AuthRules::V2CreateParams::EventStream::OrSymbol,
+            event_stream: Lithic::AuthRules::EventStream::OrSymbol,
             name: T.nilable(String),
             excluded_card_tokens: T::Array[String],
             request_options: Lithic::RequestOptions::OrHash
@@ -162,8 +154,7 @@ module Lithic
               type: Lithic::AuthRules::V2CreateParams::Type::OrSymbol,
               account_tokens: T::Array[String],
               business_account_tokens: T::Array[String],
-              event_stream:
-                Lithic::AuthRules::V2CreateParams::EventStream::OrSymbol,
+              event_stream: Lithic::AuthRules::EventStream::OrSymbol,
               name: T.nilable(String),
               card_tokens: T::Array[String],
               program_level: T::Boolean,
@@ -244,53 +235,6 @@ module Lithic
           sig do
             override.returns(
               T::Array[Lithic::AuthRules::V2CreateParams::Type::TaggedSymbol]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # The event stream during which the rule will be evaluated.
-        module EventStream
-          extend Lithic::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Lithic::AuthRules::V2CreateParams::EventStream)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          AUTHORIZATION =
-            T.let(
-              :AUTHORIZATION,
-              Lithic::AuthRules::V2CreateParams::EventStream::TaggedSymbol
-            )
-          THREE_DS_AUTHENTICATION =
-            T.let(
-              :THREE_DS_AUTHENTICATION,
-              Lithic::AuthRules::V2CreateParams::EventStream::TaggedSymbol
-            )
-          TOKENIZATION =
-            T.let(
-              :TOKENIZATION,
-              Lithic::AuthRules::V2CreateParams::EventStream::TaggedSymbol
-            )
-          ACH_CREDIT_RECEIPT =
-            T.let(
-              :ACH_CREDIT_RECEIPT,
-              Lithic::AuthRules::V2CreateParams::EventStream::TaggedSymbol
-            )
-          ACH_DEBIT_RECEIPT =
-            T.let(
-              :ACH_DEBIT_RECEIPT,
-              Lithic::AuthRules::V2CreateParams::EventStream::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Lithic::AuthRules::V2CreateParams::EventStream::TaggedSymbol
-              ]
             )
           end
           def self.values

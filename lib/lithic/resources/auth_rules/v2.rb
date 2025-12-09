@@ -26,7 +26,7 @@ module Lithic
         #
         # @param business_account_tokens [Array<String>] Business Account tokens to which the Auth Rule applies.
         #
-        # @param event_stream [Symbol, Lithic::Models::AuthRules::V2CreateParams::EventStream] The event stream during which the rule will be evaluated.
+        # @param event_stream [Symbol, Lithic::Models::AuthRules::EventStream] The event stream during which the rule will be evaluated.
         #
         # @param name [String, nil] Auth Rule Name
         #
@@ -125,9 +125,9 @@ module Lithic
         #
         # @param ending_before [String] A cursor representing an item's token before which a page of results should end.
         #
-        # @param event_stream [Symbol, Lithic::Models::AuthRules::V2ListParams::EventStream] Deprecated: Use event_streams instead. Only return Auth rules that are executed
+        # @param event_stream [Symbol, Lithic::Models::AuthRules::EventStream] Deprecated: Use event_streams instead. Only return Auth rules that are executed
         #
-        # @param event_streams [Array<Symbol, Lithic::Models::AuthRules::V2ListParams::EventStream>] Only return Auth rules that are executed during any of the provided event stream
+        # @param event_streams [Array<Symbol, Lithic::Models::AuthRules::EventStream>] Only return Auth rules that are executed during any of the provided event stream
         #
         # @param page_size [Integer] Page size (for pagination).
         #
