@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.0 (2025-12-10)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* **api:** add webhook schemas to SDKs - add parse and parse_unsafe ([c40835b](https://github.com/lithic-com/lithic-ruby/commit/c40835b8afae6973e80baccab4017a99d15b4ac4))
+
+
+### Chores
+
+* replace custom webhook signature verification with standardwebhooks ([c40835b](https://github.com/lithic-com/lithic-ruby/commit/c40835b8afae6973e80baccab4017a99d15b4ac4))
+
 ## 0.1.0 (2025-12-09)
 
 Full Changelog: [v0.1.0-alpha.56...v0.1.0](https://github.com/lithic-com/lithic-ruby/compare/v0.1.0-alpha.56...v0.1.0)
